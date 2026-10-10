@@ -16,6 +16,9 @@ pub struct Config {
     pub bind: String,
     /// Where API key digests are persisted. Gitignored, 0600.
     pub keys_file: PathBuf,
+    /// Where question reports are persisted. Same treatment: operational data,
+    /// never the committed constant.
+    pub reports_file: PathBuf,
     /// Requests/minute applied to a key that has no explicit limit.
     pub default_rate_limit: u32,
     /// Directory holding the five table files. This is the constant (D23).
@@ -34,6 +37,9 @@ impl Config {
         let keys_file = env::var("UTMELAB_API_KEYS_FILE")
             .map(PathBuf::from)
             .unwrap_or_else(|_| PathBuf::from("var/api_keys.json"));
+        let reports_file = env::var("UTMELAB_API_REPORTS_FILE")
+            .map(PathBuf::from)
+            .unwrap_or_else(|_| PathBuf::from("var/reports.json"));
         let default_rate_limit = env::var("UTMELAB_API_DEFAULT_RATE_LIMIT")
             .ok()
             .and_then(|v| v.parse().ok())
@@ -46,6 +52,7 @@ impl Config {
         Ok(Self {
             bind,
             keys_file,
+            reports_file,
             default_rate_limit,
             data_dir,
         })

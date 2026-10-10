@@ -24,6 +24,9 @@ pub enum ApiError {
     #[error("missing or invalid credentials")]
     Unauthorized,
 
+    #[error("{code}: {detail}")]
+    BadRequest { code: &'static str, detail: String },
+
     #[error("rate limit exceeded")]
     RateLimited {
         /// The key's configured allowance, echoed so a client can adapt.
@@ -47,6 +50,13 @@ impl ApiError {
         Self::RateLimited { per_minute }
     }
 
+    pub fn bad_request(code: &'static str, detail: impl Into<String>) -> Self {
+        Self::BadRequest {
+            code,
+            detail: detail.into(),
+        }
+    }
+
     pub fn not_found(code: &'static str, detail: impl Into<String>) -> Self {
         Self::NotFound {
             code,
@@ -56,6 +66,7 @@ impl ApiError {
 
     fn status(&self) -> StatusCode {
         match self {
+            Self::BadRequest { .. } => StatusCode::BAD_REQUEST,
             Self::NotFound { .. } => StatusCode::NOT_FOUND,
             Self::Unauthorized => StatusCode::UNAUTHORIZED,
             Self::RateLimited { .. } => StatusCode::TOO_MANY_REQUESTS,
@@ -67,6 +78,7 @@ impl ApiError {
     fn code(&self) -> &'static str {
         match self {
             Self::Config(_) => "configuration_error",
+            Self::BadRequest { code, .. } => code,
             Self::NotFound { code, .. } => code,
             Self::Unauthorized => "unauthorized",
             Self::RateLimited { .. } => "rate_limited",
@@ -77,6 +89,7 @@ impl ApiError {
     fn title(&self) -> &'static str {
         match self {
             Self::Config(_) => "Server configuration error",
+            Self::BadRequest { .. } => "Bad request",
             Self::NotFound { .. } => "Not found",
             Self::Unauthorized => "Missing or invalid API key",
             Self::RateLimited { .. } => "Rate limit exceeded",
@@ -87,6 +100,7 @@ impl ApiError {
     /// What the client is allowed to read.
     fn public_detail(&self) -> String {
         match self {
+            Self::BadRequest { detail, .. } => detail.clone(),
             Self::NotFound { detail, .. } => detail.clone(),
             Self::Unauthorized => "Provide a valid key in the X-API-Key header.".to_owned(),
             Self::RateLimited { per_minute } => {

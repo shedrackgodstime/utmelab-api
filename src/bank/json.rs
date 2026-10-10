@@ -439,6 +439,10 @@ impl Store for JsonStore {
         })
     }
 
+    fn question(&self, id: &str) -> Option<&Question> {
+        self.questions.iter().find(|q| q.id == id)
+    }
+
     fn questions_page(&self, filter: QuestionFilter<'_>, page: u32, per_page: u32) -> QuestionPage {
         let per_page = per_page.clamp(1, MAX_PER_PAGE);
         let page = page.max(1);

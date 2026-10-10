@@ -14,7 +14,9 @@ use clap::{Parser, Subcommand};
 use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
 
-use utmelab_api::{ApiError, AppState, Config, JsonStore, KeyStore, RateLimiter, Store};
+use utmelab_api::{
+    ApiError, AppState, Config, JsonStore, KeyStore, RateLimiter, ReportStore, Store,
+};
 
 #[derive(Parser)]
 #[command(name = "utmelab-api", version, about = "UTME Lab question bank API")]
@@ -109,10 +111,15 @@ async fn serve(config: &Config) -> Result<(), ApiError> {
         "utmelab-api listening"
     );
 
+    let reports_path = config.reports_file.clone();
     let state = AppState {
         keys,
         bank: Arc::new(bank),
         limiter: Arc::new(Mutex::new(RateLimiter::new())),
+        reports: Arc::new(Mutex::new(
+            ReportStore::open(&reports_path)
+                .map_err(|e| ApiError::config(format!("reports store: {e}")))?,
+        )),
     };
     let listener = tokio::net::TcpListener::bind(&config.bind)
         .await

@@ -23,6 +23,7 @@ mod bank;
 mod config;
 mod error;
 mod keys;
+mod reports;
 
 pub use api::auth::Caller;
 pub use api::limit::RateLimiter;
@@ -32,6 +33,7 @@ pub use bank::{DEFAULT_PER_PAGE, JsonStore, MAX_PER_PAGE, QuestionFilter, Store,
 pub use config::Config;
 pub use error::ApiError;
 pub use keys::{ApiKey, KeyStore};
+pub use reports::{QuestionReport, ReportReason, ReportStore};
 
 use axum::Json;
 use axum::Router;
@@ -49,6 +51,8 @@ pub struct AppState {
     /// Behind an `Arc<Mutex<…>>` because axum requires `Clone` state but the
     /// limiter is mutable — one lock held for a few arithmetic operations.
     pub limiter: Arc<Mutex<RateLimiter>>,
+    /// Report store. Same pattern: mutable, shared, locked per call.
+    pub reports: Arc<Mutex<ReportStore>>,
 }
 
 #[derive(Serialize)]

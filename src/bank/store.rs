@@ -63,6 +63,9 @@ pub trait Store: Send + Sync {
 
     /// Select and page in one call. Implementations must clamp `per_page` to
     /// [`MAX_PER_PAGE`] and treat `page < 1` as page 1.
+    /// One question by id, for routes that address a single row.
+    fn question(&self, id: &str) -> Option<&Question>;
+
     fn questions_page(&self, filter: QuestionFilter<'_>, page: u32, per_page: u32) -> QuestionPage;
 
     fn subject_count(&self) -> usize;

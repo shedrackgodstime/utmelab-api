@@ -10,6 +10,7 @@ pub mod keys;
 pub mod novels;
 pub mod passages;
 pub mod questions;
+pub mod reports;
 pub mod subjects;
 pub mod topics;
 
@@ -20,6 +21,7 @@ pub fn router() -> Router<AppState> {
         .merge(questions::router())
         .merge(keys::router())
         .merge(novels::router())
+        .merge(reports::router())
         .merge(passages::router())
         .merge(topics::router())
 }

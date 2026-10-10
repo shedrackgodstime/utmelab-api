@@ -14,7 +14,7 @@ use axum::http::{Request, StatusCode};
 use http_body_util::BodyExt;
 use tower::ServiceExt;
 use utmelab_api::openapi_document;
-use utmelab_api::{AppState, JsonStore, KeyStore, RateLimiter, router};
+use utmelab_api::{AppState, JsonStore, KeyStore, RateLimiter, ReportStore, router};
 
 fn state() -> AppState {
     let data = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
@@ -22,10 +22,16 @@ fn state() -> AppState {
         std::env::temp_dir().join(format!("utmelab-openapi-{}.json", std::process::id()));
     let _ = std::fs::remove_file(&keys_path);
 
+    let reports_path =
+        std::env::temp_dir().join(format!("utmelab-reports-{}.json", std::process::id()));
+    let _ = std::fs::remove_file(&reports_path);
     AppState {
         bank: Arc::new(JsonStore::load(&data).expect("bank loads")),
         keys: KeyStore::open_json(&keys_path).expect("key store"),
         limiter: Arc::new(Mutex::new(RateLimiter::new())),
+        reports: Arc::new(Mutex::new(
+            ReportStore::open(&reports_path).expect("report store"),
+        )),
     }
 }
 
