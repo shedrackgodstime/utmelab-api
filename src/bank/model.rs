@@ -108,6 +108,12 @@ pub struct Passage {
 
 // ── novels (D35) ─────────────────────────────────────────────────────────────
 
+/// The default category. English reading texts are the primary use; Literature
+/// texts opt in explicitly.
+fn default_novel_category() -> String {
+    "english".to_owned()
+}
+
 /// A prescribed text. One row per (exam, cycle) — the novel rotates yearly, so
 /// `year_prescribed` is load-bearing, not decorative.
 #[derive(Clone, Debug, Serialize, Deserialize, ToSchema)]
@@ -115,12 +121,18 @@ pub struct Novel {
     pub id: String,
     pub title: String,
     pub author: String,
-    pub year_published: u16,
+    /// May be unknown for older set texts — absent, not zero.
+    #[serde(default)]
+    pub year_published: Option<u16>,
     pub exam: String,
     /// Every cycle this is (or was) the set text for. A novel routinely spans
     /// more than one UTME — *The Lekki Headmaster* covers 2025 and 2026.
     #[serde(default)]
     pub year_prescribed: Vec<u16>,
+    /// Which paper sets it: the Use-of-English reading text, or a
+    /// Literature-in-English prescribed text. Consumers filter on this.
+    #[serde(default = "default_novel_category")]
+    pub category: String,
     /// At most one per exam — enforced at load. The current set text.
     #[serde(default)]
     pub featured: bool,
