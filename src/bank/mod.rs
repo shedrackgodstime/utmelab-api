@@ -9,7 +9,7 @@ mod store;
 mod view;
 
 pub use json::{JsonStore, StoreError};
-pub use model::{Novel, NovelDoc, Subject, Subtopic, Topic};
+pub use model::{Novel, NovelDoc, Passage, Subject, Subtopic, Topic};
 pub use store::{DEFAULT_PER_PAGE, MAX_PER_PAGE, QuestionFilter, Store};
 pub use view::{RenderedNovelQuestion, RenderedQuestion, render, render_novel_question};
 

@@ -27,6 +27,8 @@ pub struct NovelFilter {
     pub year: Option<u16>,
     /// Only the featured (current set text) ones.
     pub featured: Option<bool>,
+    /// `english` (Use-of-English reading text) or `literature` (prescribed text).
+    pub category: Option<String>,
 }
 
 #[derive(Serialize, ToSchema)]
@@ -64,6 +66,8 @@ pub fn router() -> Router<AppState> {
         ("exam" = Option<String>, Query, description = "Scope to an exam."),
         ("year" = Option<u16>, Query, description = "Prescription year, e.g. 2025."),
         ("featured" = Option<bool>, Query, description = "Only the current set text."),
+        ("category" = Option<String>, Query,
+         description = "english (reading text) or literature (prescribed text)."),
     ),
     responses((status = 200, body = NovelList)),
 )]
@@ -74,6 +78,7 @@ pub async fn list(State(state): State<AppState>, Query(f): Query<NovelFilter>) -
         .into_iter()
         .filter(|n| f.year.is_none_or(|y| n.year_prescribed.contains(&y)))
         .filter(|n| f.featured.is_none_or(|want| n.featured == want))
+        .filter(|n| f.category.as_deref().is_none_or(|c| n.category == c))
         .cloned()
         .collect();
     novels.sort_by(|a, b| {

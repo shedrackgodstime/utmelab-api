@@ -4,6 +4,7 @@
 //! The dashboard lives in `app/` and must never leak in here.
 
 pub mod auth;
+pub mod internal;
 pub mod limit;
 pub mod openapi;
 pub mod v1;
@@ -16,4 +17,5 @@ pub fn router() -> Router<AppState> {
     Router::new()
         .merge(openapi::router())
         .nest("/api", v1::router())
+        .nest("/internal", internal::router())
 }

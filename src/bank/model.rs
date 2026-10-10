@@ -21,7 +21,7 @@ pub struct Subject {
 }
 
 /// A topic within one exam's syllabus.
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize, ToSchema)]
 pub struct Topic {
     pub slug: String,
     pub subject: String,
@@ -33,7 +33,7 @@ pub struct Topic {
 
 /// A drill-granular unit. Only exists for topics that hold enough questions to
 /// practise (D16).
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize, ToSchema)]
 pub struct Subtopic {
     pub slug: String,
     pub topic: String,

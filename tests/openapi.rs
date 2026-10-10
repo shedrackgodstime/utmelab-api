@@ -31,6 +31,17 @@ fn state() -> AppState {
 
 /// Substitute real values for path parameters, so the router matches.
 fn concrete(path: &str) -> String {
+    // `{id}` and `{slug}` name different resources on different paths, so
+    // substitute per-path rather than blindly.
+    if path.starts_with("/api/v1/passages/") {
+        return path.replace("{id}", "psg_jamb_2025_eng_comprehension_1");
+    }
+    if path.starts_with("/api/v1/topics/") {
+        return path
+            .replace("{exam}", "JAMB")
+            .replace("{subject}", "mathematics")
+            .replace("{slug}", "indices-logarithms-surds");
+    }
     path.replace("{exam}", "JAMB")
         .replace("{slug}", "use-of-english")
         .replace("{id}", "lekki-headmaster")

@@ -98,6 +98,221 @@
         ]
       }
     },
+    "/api/v1/novels": {
+      "get": {
+        "tags": [
+          "novels"
+        ],
+        "description": "All novels, newest prescription first. No key required.",
+        "operationId": "listNovels",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "description": "Scope to an exam.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "Prescription year, e.g. 2025.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "featured",
+            "in": "query",
+            "description": "Only the current set text.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "description": "english (reading text) or literature (prescribed text).",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NovelList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/novels/{id}": {
+      "get": {
+        "tags": [
+          "novels"
+        ],
+        "description": "One novel: book, chapters, characters, themes. No key required.",
+        "operationId": "getNovel",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Novel id, e.g. lekki-headmaster.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NovelDoc"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such novel"
+          }
+        }
+      }
+    },
+    "/api/v1/novels/{id}/questions": {
+      "get": {
+        "tags": [
+          "novels"
+        ],
+        "description": "Quiz items for one novel, paged. The answer is withheld unless asked.",
+        "operationId": "listNovelQuestions",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Novel id.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "chapter",
+            "in": "query",
+            "description": "Drill one chapter.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "include_explanation",
+            "in": "query",
+            "description": "Include the answer and the working. Default: false.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "1-based page number. Default: 1.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "Page size. Default: 50. Capped at 200.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NovelQuestionPage"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid API key"
+          },
+          "404": {
+            "description": "No such novel"
+          },
+          "429": {
+            "description": "Over the key's per-minute limit"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/passages/{id}": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "description": "One shared stimulus — a comprehension or cloze passage its questions point at.",
+        "operationId": "getPassage",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Passage id.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PassageEnvelope"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such passage"
+          }
+        }
+      }
+    },
     "/api/v1/questions": {
       "get": {
         "tags": [
@@ -243,6 +458,50 @@
         }
       }
     },
+    "/api/v1/subjects/{exam}/{slug}/coverage": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Coverage without the tree: counts only, for progress bars and checklists.",
+        "description": "How much of this subject you can practise — counts only, no topic tree.",
+        "operationId": "getCoverage",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "path",
+            "description": "Exam code.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Subject slug within that exam.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Coverage"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such subject in that exam"
+          }
+        }
+      }
+    },
     "/api/v1/subjects/{exam}/{slug}/syllabus": {
       "get": {
         "tags": [
@@ -282,6 +541,58 @@
           },
           "404": {
             "description": "No such subject in that exam"
+          }
+        }
+      }
+    },
+    "/api/v1/topics/{exam}/{subject}/{slug}": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "description": "One topic with its subtopics, each carrying its question count and objectives.",
+        "operationId": "getTopic",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "path",
+            "description": "Exam code.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "path",
+            "description": "Subject slug within that exam.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Topic slug.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TopicDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such topic"
           }
         }
       }
@@ -367,6 +678,26 @@
           }
         }
       },
+      "Coverage": {
+        "type": "object",
+        "description": "Counts without the tree — for progress bars and checklists.",
+        "required": [
+          "exam",
+          "subject",
+          "summary"
+        ],
+        "properties": {
+          "exam": {
+            "type": "string"
+          },
+          "subject": {
+            "$ref": "#/components/schemas/Subject"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/SyllabusSummary"
+          }
+        }
+      },
       "Exam": {
         "type": "object",
         "required": [
@@ -439,6 +770,348 @@
           }
         }
       },
+      "Novel": {
+        "type": "object",
+        "description": "A prescribed text. One row per (exam, cycle) — the novel rotates yearly, so\n`year_prescribed` is load-bearing, not decorative.",
+        "required": [
+          "id",
+          "title",
+          "author",
+          "exam",
+          "synopsis",
+          "setting_place",
+          "setting_period"
+        ],
+        "properties": {
+          "author": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string",
+            "description": "Which paper sets it: the Use-of-English reading text, or a\nLiterature-in-English prescribed text. Consumers filter on this."
+          },
+          "cover_image": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "exam": {
+            "type": "string"
+          },
+          "featured": {
+            "type": "boolean",
+            "description": "At most one per exam — enforced at load. The current set text."
+          },
+          "id": {
+            "type": "string"
+          },
+          "setting_period": {
+            "type": "string"
+          },
+          "setting_place": {
+            "type": "string"
+          },
+          "synopsis": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "year_prescribed": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            },
+            "description": "Every cycle this is (or was) the set text for. A novel routinely spans\nmore than one UTME — *The Lekki Headmaster* covers 2025 and 2026."
+          },
+          "year_published": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int32",
+            "description": "May be unknown for older set texts — absent, not zero.",
+            "minimum": 0
+          }
+        }
+      },
+      "NovelChapter": {
+        "type": "object",
+        "required": [
+          "number",
+          "title"
+        ],
+        "properties": {
+          "key_events": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "summary": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Null means not yet written — absence is the signal (D16)."
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      },
+      "NovelCharacter": {
+        "type": "object",
+        "description": "Character types use JAMB's own vocabulary (round/flat/foil/hero/antihero/\nvillain/heroine) because that is literally what the syllabus tests.",
+        "required": [
+          "name",
+          "role",
+          "character_type",
+          "description"
+        ],
+        "properties": {
+          "character_type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          }
+        }
+      },
+      "NovelDoc": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Novel"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "chapters": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NovelChapter"
+                }
+              },
+              "characters": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NovelCharacter"
+                }
+              },
+              "questions": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NovelQuestion"
+                }
+              },
+              "themes": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NovelTheme"
+                }
+              }
+            }
+          }
+        ],
+        "description": "One file in `data/novels/`. The directory is the index — no separate list\nto keep in sync. Dropping a novel is deleting its file."
+      },
+      "NovelList": {
+        "type": "object",
+        "required": [
+          "novels"
+        ],
+        "properties": {
+          "novels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Novel"
+            }
+          }
+        }
+      },
+      "NovelQuestion": {
+        "type": "object",
+        "description": "A quiz item about the book. Reuses Option/answer/Explanation machinery —\na novel question is answered, shuffled and explained exactly like a subject\nquestion. It points at a chapter, not a subtopic, and the novel is the\npassage, so there is no passage_id.",
+        "required": [
+          "id",
+          "text",
+          "options",
+          "answer",
+          "verified"
+        ],
+        "properties": {
+          "answer": {
+            "type": "string",
+            "description": "An option id, same contract as Question.answer (D15)."
+          },
+          "chapter_number": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int32",
+            "minimum": 0
+          },
+          "explanation": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Explanation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Choice"
+            }
+          },
+          "text": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "boolean"
+          }
+        }
+      },
+      "NovelQuestionPage": {
+        "type": "object",
+        "required": [
+          "questions",
+          "page",
+          "per_page",
+          "total_pages",
+          "total_records",
+          "includes_explanation"
+        ],
+        "properties": {
+          "includes_explanation": {
+            "type": "boolean"
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "per_page": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RenderedNovelQuestion"
+            }
+          },
+          "total_pages": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "total_records": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "NovelTheme": {
+        "type": "object",
+        "required": [
+          "name",
+          "description"
+        ],
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Passage": {
+        "type": "object",
+        "description": "A stimulus shared by many questions — one comprehension passage serving five\nquestions, one cloze serving ten.",
+        "required": [
+          "id",
+          "exam",
+          "subject",
+          "year",
+          "kind",
+          "text"
+        ],
+        "properties": {
+          "author": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "exam": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
+      "PassageEnvelope": {
+        "type": "object",
+        "required": [
+          "passage"
+        ],
+        "properties": {
+          "passage": {
+            "$ref": "#/components/schemas/Passage"
+          }
+        }
+      },
       "QuestionPage": {
         "type": "object",
         "description": "The paged response envelope (D3/D30).",
@@ -480,6 +1153,60 @@
           "total_records": {
             "type": "integer",
             "minimum": 0
+          }
+        }
+      },
+      "RenderedNovelQuestion": {
+        "type": "object",
+        "required": [
+          "id",
+          "novel_id",
+          "text",
+          "options",
+          "verified"
+        ],
+        "properties": {
+          "answer": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "chapter_number": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int32",
+            "minimum": 0
+          },
+          "explanation": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Explanation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "novel_id": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Choice"
+            }
+          },
+          "text": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "boolean"
           }
         }
       },
@@ -740,6 +1467,93 @@
             "minimum": 0
           }
         }
+      },
+      "Topic": {
+        "type": "object",
+        "description": "A topic within one exam's syllabus.",
+        "required": [
+          "slug",
+          "subject",
+          "exam",
+          "name",
+          "order",
+          "weight"
+        ],
+        "properties": {
+          "exam": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "slug": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "weight": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
+      "TopicDetail": {
+        "type": "object",
+        "required": [
+          "topic",
+          "subtopics"
+        ],
+        "properties": {
+          "subtopics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TopicSubtopic"
+            }
+          },
+          "topic": {
+            "$ref": "#/components/schemas/Topic"
+          }
+        }
+      },
+      "TopicSubtopic": {
+        "type": "object",
+        "required": [
+          "slug",
+          "name",
+          "order",
+          "question_count",
+          "objectives"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "objectives": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "question_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "slug": {
+            "type": "string"
+          }
+        }
       }
     },
     "securitySchemes": {
@@ -763,6 +1577,10 @@
     {
       "name": "account",
       "description": "The calling key."
+    },
+    {
+      "name": "novels",
+      "description": "Prescribed texts: book, chapters, characters, themes, quiz."
     },
     {
       "name": "meta",

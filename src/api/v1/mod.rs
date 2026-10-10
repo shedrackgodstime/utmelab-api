@@ -8,8 +8,10 @@ use crate::AppState;
 pub mod exams;
 pub mod keys;
 pub mod novels;
+pub mod passages;
 pub mod questions;
 pub mod subjects;
+pub mod topics;
 
 pub fn router() -> Router<AppState> {
     Router::new()
@@ -18,4 +20,6 @@ pub fn router() -> Router<AppState> {
         .merge(questions::router())
         .merge(keys::router())
         .merge(novels::router())
+        .merge(passages::router())
+        .merge(topics::router())
 }

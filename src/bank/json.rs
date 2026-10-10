@@ -13,7 +13,7 @@ use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::path::Path;
 
-use super::model::{Novel, NovelDoc, Question, Subject};
+use super::model::{Novel, NovelDoc, Passage, Question, Subject};
 use super::store::{MAX_PER_PAGE, QuestionFilter, QuestionPage, Store};
 use super::{Subtopic, Syllabus, SyllabusSubtopic, SyllabusSummary, SyllabusTopic, Topic};
 
@@ -69,6 +69,8 @@ pub struct JsonStore {
     withheld: usize,
     novels: Vec<NovelDoc>,
     novel_by_id: HashMap<String, usize>,
+    passages: Vec<Passage>,
+    passage_by_id: HashMap<String, usize>,
 }
 
 impl JsonStore {
@@ -79,8 +81,7 @@ impl JsonStore {
         let subjects: Vec<Subject> = read(dir, FILES[0], &mut c);
         let topics: Vec<Topic> = read(dir, FILES[1], &mut c);
         let subtopics: Vec<Subtopic> = read(dir, FILES[2], &mut c);
-        // Passages are read only so a malformed file still fails the boot.
-        let _: Vec<super::model::Passage> = read(dir, FILES[3], &mut c);
+        let mut store_passages: Vec<Passage> = read(dir, FILES[3], &mut c);
         let questions: Vec<Question> = read(dir, FILES[4], &mut c);
 
         let mut store = Self {
@@ -96,6 +97,8 @@ impl JsonStore {
             withheld: 0,
             novels: Vec::new(),
             novel_by_id: HashMap::new(),
+            passages: std::mem::take(&mut store_passages),
+            passage_by_id: HashMap::new(),
         };
         // Novels: one document per book; the directory is the index.
         store.novels = load_novels(&dir.join("novels"), &mut c);
@@ -329,6 +332,9 @@ impl JsonStore {
         for (i, n) in self.novels.iter().enumerate() {
             self.novel_by_id.insert(n.novel.id.clone(), i);
         }
+        for (i, p) in self.passages.iter().enumerate() {
+            self.passage_by_id.insert(p.id.clone(), i);
+        }
     }
 }
 
@@ -486,6 +492,23 @@ impl Store for JsonStore {
 
     fn withheld_count(&self) -> usize {
         self.withheld
+    }
+
+    fn passage(&self, id: &str) -> Option<&Passage> {
+        self.passage_by_id.get(id).map(|i| &self.passages[*i])
+    }
+
+    fn topic(&self, exam: &str, subject: &str, slug: &str) -> Option<(&Topic, Vec<&Subtopic>)> {
+        let topic = self
+            .topics
+            .iter()
+            .find(|t| t.exam == exam && t.subject == subject && t.slug == slug)?;
+        let mut subtopics: Vec<&Subtopic> =
+            self.subtopics.iter().filter(|s| s.topic == slug).collect();
+        // Only this exam's subject owns these subtopics — the topic row
+        // already scoped us, so no further filtering is needed.
+        subtopics.sort_by_key(|s| s.order);
+        Some((topic, subtopics))
     }
 
     fn novels(&self, exam: Option<&str>) -> Vec<&Novel> {

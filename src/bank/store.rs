@@ -5,8 +5,8 @@
 //! is a constructor change — no route, no domain type and no response shape
 //! moves.
 
-use crate::bank::model::{Question, Subject};
-use crate::bank::{Novel, NovelDoc, Syllabus};
+use crate::bank::model::{Question, Subject, Subtopic, Topic};
+use crate::bank::{Novel, NovelDoc, Passage, Syllabus};
 
 /// Default page size when a caller does not ask for one (D30).
 pub const DEFAULT_PER_PAGE: u32 = 50;
@@ -71,6 +71,10 @@ pub trait Store: Send + Sync {
     /// Records present but not servable (e.g. an unassigned exam, D21). Exposed
     /// on `/health` so a withheld record is never silent.
     fn withheld_count(&self) -> usize;
+
+    fn passage(&self, id: &str) -> Option<&Passage>;
+
+    fn topic(&self, exam: &str, subject: &str, slug: &str) -> Option<(&Topic, Vec<&Subtopic>)>;
 
     // ── novels (D35) ─────────────────────────────────────────────────────
     //
