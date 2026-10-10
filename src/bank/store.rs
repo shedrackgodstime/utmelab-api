@@ -5,8 +5,8 @@
 //! is a constructor change — no route, no domain type and no response shape
 //! moves.
 
-use crate::bank::Syllabus;
 use crate::bank::model::{Question, Subject};
+use crate::bank::{Novel, NovelDoc, Syllabus};
 
 /// Default page size when a caller does not ask for one (D30).
 pub const DEFAULT_PER_PAGE: u32 = 50;
@@ -71,4 +71,18 @@ pub trait Store: Send + Sync {
     /// Records present but not servable (e.g. an unassigned exam, D21). Exposed
     /// on `/health` so a withheld record is never silent.
     fn withheld_count(&self) -> usize;
+
+    // ── novels (D35) ─────────────────────────────────────────────────────
+    //
+    // Novels live as one document per book under `data/novels/` and never move
+    // to a database. The directory is the index.
+
+    /// All novels, optionally scoped to an exam, newest prescription first.
+    fn novels(&self, exam: Option<&str>) -> Vec<&Novel>;
+
+    /// The featured novel for an exam — the current set text.
+    fn featured_novel(&self, exam: &str) -> Option<&Novel>;
+
+    /// A whole novel document: book, chapters, characters, themes.
+    fn novel(&self, id: &str) -> Option<&NovelDoc>;
 }

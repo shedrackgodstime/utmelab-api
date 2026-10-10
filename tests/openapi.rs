@@ -33,6 +33,7 @@ fn state() -> AppState {
 fn concrete(path: &str) -> String {
     path.replace("{exam}", "JAMB")
         .replace("{slug}", "use-of-english")
+        .replace("{id}", "lekki-headmaster")
 }
 
 async fn get(path: &str) -> StatusCode {

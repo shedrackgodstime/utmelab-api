@@ -6,11 +6,26 @@
     "year": 2025,
     "text": "Rationalise the denominator of \\(\\dfrac{6}{\\sqrt{3}}\\).",
     "options": [
-      { "id": "a", "text": "2" },
-      { "id": "b", "text": "\\(2\\sqrt{3}\\)" },
-      { "id": "c", "text": "\\(3\\sqrt{2}\\)" },
-      { "id": "d", "text": "\\(6\\sqrt{3}\\)" },
-      { "id": "e", "text": "\\(\\sqrt{3}\\)" }
+      {
+        "id": "a",
+        "text": "2"
+      },
+      {
+        "id": "b",
+        "text": "\\(2\\sqrt{3}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(3\\sqrt{2}\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(6\\sqrt{3}\\)"
+      },
+      {
+        "id": "e",
+        "text": "\\(\\sqrt{3}\\)"
+      }
     ],
     "answer": "b",
     "subtopic_id": "surds",
@@ -20,7 +35,7 @@
     "explanation": {
       "key_point": "To rationalise, multiply numerator and denominator by the surd itself.",
       "body": "## Working\n\nMultiply top and bottom by \\(\\sqrt{3}\\):\n\n$$\\frac{6}{\\sqrt{3}} \\times \\frac{\\sqrt{3}}{\\sqrt{3}} = \\frac{6\\sqrt{3}}{3} = 2\\sqrt{3}$$",
-      "trap": "\\(2\\) comes from dividing 6 by 3 without carrying the surd down — rationalising removes the surd from the *denominator*, not from the answer."
+      "trap": "\\(2\\) comes from dividing 6 by 3 without carrying the surd down \u2014 rationalising removes the surd from the *denominator*, not from the answer."
     },
     "marks": 2.5,
     "difficulty": 2,
@@ -33,10 +48,22 @@
     "year": 2025,
     "text": "Evaluate \\(\\log_2 8\\).",
     "options": [
-      { "id": "a", "text": "1" },
-      { "id": "b", "text": "2" },
-      { "id": "c", "text": "3" },
-      { "id": "d", "text": "8" }
+      {
+        "id": "a",
+        "text": "1"
+      },
+      {
+        "id": "b",
+        "text": "2"
+      },
+      {
+        "id": "c",
+        "text": "3"
+      },
+      {
+        "id": "d",
+        "text": "8"
+      }
     ],
     "answer": "c",
     "subtopic_id": "change-of-bases",
@@ -59,10 +86,22 @@
     "year": 2025,
     "text": "If \\(2^{x} = 32\\), find the value of \\(x\\).",
     "options": [
-      { "id": "a", "text": "4" },
-      { "id": "b", "text": "5" },
-      { "id": "c", "text": "6" },
-      { "id": "d", "text": "16" }
+      {
+        "id": "a",
+        "text": "4"
+      },
+      {
+        "id": "b",
+        "text": "5"
+      },
+      {
+        "id": "c",
+        "text": "6"
+      },
+      {
+        "id": "d",
+        "text": "16"
+      }
     ],
     "answer": "b",
     "subtopic_id": "laws-of-indices",
@@ -72,7 +111,7 @@
     "explanation": {
       "key_point": "Write 32 as a power of 2, then read off the exponent.",
       "body": "$$32 = 2^5 \\Rightarrow x = 5$$",
-      "trap": "16 is \\(2^4\\) — the correct exponent for a base of 2 giving 16, not 32."
+      "trap": "16 is \\(2^4\\) \u2014 the correct exponent for a base of 2 giving 16, not 32."
     },
     "marks": 2.5,
     "difficulty": 1,
@@ -85,10 +124,22 @@
     "year": 2025,
     "text": "Given \\(\\log_a x = 2\\) and \\(\\log_a 8 = 3\\), find \\(x\\).",
     "options": [
-      { "id": "a", "text": "5" },
-      { "id": "b", "text": "6" },
-      { "id": "c", "text": "9" },
-      { "id": "d", "text": "27" }
+      {
+        "id": "a",
+        "text": "5"
+      },
+      {
+        "id": "b",
+        "text": "6"
+      },
+      {
+        "id": "c",
+        "text": "9"
+      },
+      {
+        "id": "d",
+        "text": "27"
+      }
     ],
     "answer": "c",
     "subtopic_id": "laws-of-logarithm",
@@ -111,8 +162,14 @@
     "year": 2025,
     "text": "The distance between the points \\((2, 3)\\) and \\((2, 8)\\) is:",
     "options": [
-      { "id": "a", "text": "5" },
-      { "id": "b", "text": "25" }
+      {
+        "id": "a",
+        "text": "5"
+      },
+      {
+        "id": "b",
+        "text": "25"
+      }
     ],
     "answer": "a",
     "subtopic_id": null,
@@ -131,10 +188,22 @@
     "year": 2025,
     "text": "A particle in simple harmonic motion has a period of \\(2\\,\\text{s}\\) and a maximum displacement of \\(0.5\\,\\text{m}\\). What is its maximum velocity?",
     "options": [
-      { "id": "a", "text": "\\(0.5\\,\\text{m/s}\\)" },
-      { "id": "b", "text": "\\(\\pi\\,\\text{m/s}\\)" },
-      { "id": "c", "text": "\\(2\\pi\\,\\text{m/s}\\)" },
-      { "id": "d", "text": "\\(\\pi^2\\,\\text{m/s}\\)" }
+      {
+        "id": "a",
+        "text": "\\(0.5\\,\\text{m/s}\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(\\pi\\,\\text{m/s}\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(2\\pi\\,\\text{m/s}\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(\\pi^2\\,\\text{m/s}\\)"
+      }
     ],
     "answer": "b",
     "subtopic_id": null,
@@ -157,10 +226,22 @@
     "year": 2025,
     "text": "According to the passage, what does Adura suspect about the adults around her?",
     "options": [
-      { "id": "a", "text": "They are accustomed to a version of events that will not bear close examination" },
-      { "id": "b", "text": "They are unkind to one another" },
-      { "id": "c", "text": "They left the village deliberately" },
-      { "id": "d", "text": "They rarely answer questions" }
+      {
+        "id": "a",
+        "text": "They are accustomed to a version of events that will not bear close examination"
+      },
+      {
+        "id": "b",
+        "text": "They are unkind to one another"
+      },
+      {
+        "id": "c",
+        "text": "They left the village deliberately"
+      },
+      {
+        "id": "d",
+        "text": "They rarely answer questions"
+      }
     ],
     "answer": "a",
     "subtopic_id": "fiction",
@@ -169,7 +250,7 @@
     "image": null,
     "explanation": {
       "key_point": "The final sentence states her suspicion outright.",
-      "body": "The closing line — *\"the suspicion that adults were accustomed to a version of events that did not survive being examined too closely\"* — restates option (a) almost verbatim.",
+      "body": "The closing line \u2014 *\"the suspicion that adults were accustomed to a version of events that did not survive being examined too closely\"* \u2014 restates option (a) almost verbatim.",
       "trap": "Option (d) describes her *behaviour* (she stopped asking), not the *suspicion* the question asks for."
     },
     "marks": 3,
@@ -183,10 +264,22 @@
     "year": 2025,
     "text": "The writer's phrase \"the person who asked the questions nobody else thought to ask\" mainly serves to:",
     "options": [
-      { "id": "a", "text": "Show that Adura was naturally rebellious" },
-      { "id": "b", "text": "Present maturity as a deliberate acquisition, not a birthright" },
-      { "id": "c", "text": "Contrast rural and city life" },
-      { "id": "d", "text": "Explain why her parents were silent" }
+      {
+        "id": "a",
+        "text": "Show that Adura was naturally rebellious"
+      },
+      {
+        "id": "b",
+        "text": "Present maturity as a deliberate acquisition, not a birthright"
+      },
+      {
+        "id": "c",
+        "text": "Contrast rural and city life"
+      },
+      {
+        "id": "d",
+        "text": "Explain why her parents were silent"
+      }
     ],
     "answer": "b",
     "subtopic_id": "fiction",
@@ -195,7 +288,7 @@
     "image": null,
     "explanation": {
       "key_point": "\"had already decided\" frames maturity as something she chose.",
-      "body": "The verb *decided* and the past perfect place the acquisition before the point described, which is what separates (b) from (a) — the passage attributes it to choice, not temperament.",
+      "body": "The verb *decided* and the past perfect place the acquisition before the point described, which is what separates (b) from (a) \u2014 the passage attributes it to choice, not temperament.",
       "trap": "Option (a) reads *rebellious*, which is a temperamental claim the passage never makes."
     },
     "marks": 3,
@@ -209,10 +302,22 @@
     "year": 2025,
     "text": "The headmaster's second law of the assembly hall, according to the passage, was:",
     "options": [
-      { "id": "a", "text": "punctuality" },
-      { "id": "b", "text": "attention" },
-      { "id": "c", "text": "obedience" },
-      { "id": "d", "text": "silence in the examination hall" }
+      {
+        "id": "a",
+        "text": "punctuality"
+      },
+      {
+        "id": "b",
+        "text": "attention"
+      },
+      {
+        "id": "c",
+        "text": "obedience"
+      },
+      {
+        "id": "d",
+        "text": "silence in the examination hall"
+      }
     ],
     "answer": "b",
     "subtopic_id": null,
@@ -235,11 +340,26 @@
     "year": 2025,
     "text": "Complete the gap in the passage: the court had declared him ...",
     "options": [
-      { "id": "a", "text": "illegal" },
-      { "id": "b", "text": "illegitimate" },
-      { "id": "c", "text": "illicit" },
-      { "id": "d", "text": "unlawful" },
-      { "id": "e", "text": "untenable" }
+      {
+        "id": "a",
+        "text": "illegal"
+      },
+      {
+        "id": "b",
+        "text": "illegitimate"
+      },
+      {
+        "id": "c",
+        "text": "illicit"
+      },
+      {
+        "id": "d",
+        "text": "unlawful"
+      },
+      {
+        "id": "e",
+        "text": "untenable"
+      }
     ],
     "answer": "b",
     "subtopic_id": null,
@@ -262,10 +382,22 @@
     "year": 2025,
     "text": "Which of the following vowels is a pure vowel?",
     "options": [
-      { "id": "a", "text": "\\(/aɪ/\\)" },
-      { "id": "b", "text": "\\(/aʊ/\\)" },
-      { "id": "c", "text": "\\(/iː/\\)" },
-      { "id": "d", "text": "\\(/ɔɪ/\\)" }
+      {
+        "id": "a",
+        "text": "\\(/a\u026a/\\)"
+      },
+      {
+        "id": "b",
+        "text": "\\(/a\u028a/\\)"
+      },
+      {
+        "id": "c",
+        "text": "\\(/i\u02d0/\\)"
+      },
+      {
+        "id": "d",
+        "text": "\\(/\u0254\u026a/\\)"
+      }
     ],
     "answer": "c",
     "subtopic_id": "vowels",
@@ -274,8 +406,8 @@
     "image": null,
     "explanation": {
       "key_point": "A pure vowel is one sound; a diphthong glides between two.",
-      "body": "\\(/iː/\\) is a single sustained quality. The other three are diphthongs — the mouth moves from one position to another within the one vowel.",
-      "trap": "\\(/aɪ/\\), \\(/aʊ/\\) and \\(/ɔɪ/\\) are the commonest diphthongs in English and are the usual distractors in this item."
+      "body": "\\(/i\u02d0/\\) is a single sustained quality. The other three are diphthongs \u2014 the mouth moves from one position to another within the one vowel.",
+      "trap": "\\(/a\u026a/\\), \\(/a\u028a/\\) and \\(/\u0254\u026a/\\) are the commonest diphthongs in English and are the usual distractors in this item."
     },
     "marks": 1,
     "difficulty": 2,
@@ -288,10 +420,22 @@
     "year": 2025,
     "text": "The three colours that cannot be produced by mixing other colours are called:",
     "options": [
-      { "id": "a", "text": "primary colours" },
-      { "id": "b", "text": "secondary colours" },
-      { "id": "c", "text": "tertiary colours" },
-      { "id": "d", "text": "complementary colours" }
+      {
+        "id": "a",
+        "text": "primary colours"
+      },
+      {
+        "id": "b",
+        "text": "secondary colours"
+      },
+      {
+        "id": "c",
+        "text": "tertiary colours"
+      },
+      {
+        "id": "d",
+        "text": "complementary colours"
+      }
     ],
     "answer": "a",
     "subtopic_id": null,
@@ -314,10 +458,22 @@
     "year": 2025,
     "text": "Which feed is richest in protein for cattle?",
     "options": [
-      { "id": "a", "text": "Cowpea hulls" },
-      { "id": "b", "text": "Groundnut cake" },
-      { "id": "c", "text": "Maize offal" },
-      { "id": "d", "text": "Rice bran" }
+      {
+        "id": "a",
+        "text": "Cowpea hulls"
+      },
+      {
+        "id": "b",
+        "text": "Groundnut cake"
+      },
+      {
+        "id": "c",
+        "text": "Maize offal"
+      },
+      {
+        "id": "d",
+        "text": "Rice bran"
+      }
     ],
     "answer": "b",
     "subtopic_id": null,
@@ -326,7 +482,7 @@
     "image": null,
     "explanation": {
       "key_point": "Groundnut cake is a high-protein oil-seed residue.",
-      "body": "Groundnut cake typically runs 40–50% crude protein, well above the cereals and hulls listed.",
+      "body": "Groundnut cake typically runs 40\u201350% crude protein, well above the cereals and hulls listed.",
       "trap": null
     },
     "marks": 1,
@@ -340,10 +496,22 @@
     "year": 2025,
     "text": "Citizenship by birth is normally conferred on persons born within a country's:",
     "options": [
-      { "id": "a", "text": "territorial boundaries" },
-      { "id": "b", "text": "capital city" },
-      { "id": "c", "text": "federal region only" },
-      { "id": "d", "text": "recognized coastal states" }
+      {
+        "id": "a",
+        "text": "territorial boundaries"
+      },
+      {
+        "id": "b",
+        "text": "capital city"
+      },
+      {
+        "id": "c",
+        "text": "federal region only"
+      },
+      {
+        "id": "d",
+        "text": "recognized coastal states"
+      }
     ],
     "answer": "a",
     "subtopic_id": null,
@@ -351,7 +519,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "Jus soli — the law of the place — is the rule.",
+      "key_point": "Jus soli \u2014 the law of the place \u2014 is the rule.",
       "body": "Birthright citizenship follows territorial boundaries, subject to constitutional exceptions.",
       "trap": null
     },
@@ -366,10 +534,22 @@
     "year": 2025,
     "text": "In the displacement-time graph of simple harmonic motion, a particle at maximum displacement has:",
     "options": [
-      { "id": "a", "text": "zero velocity and zero acceleration" },
-      { "id": "b", "text": "zero velocity and maximum acceleration" },
-      { "id": "c", "text": "maximum velocity and zero acceleration" },
-      { "id": "d", "text": "maximum velocity and maximum acceleration" }
+      {
+        "id": "a",
+        "text": "zero velocity and zero acceleration"
+      },
+      {
+        "id": "b",
+        "text": "zero velocity and maximum acceleration"
+      },
+      {
+        "id": "c",
+        "text": "maximum velocity and zero acceleration"
+      },
+      {
+        "id": "d",
+        "text": "maximum velocity and maximum acceleration"
+      }
     ],
     "answer": "b",
     "subtopic_id": null,
@@ -379,10 +559,5330 @@
     "explanation": {
       "key_point": "Acceleration is greatest at the extremes and zero at the centre.",
       "body": "$a = -\\omega^2 x$, so at maximum \\(|x|\\) the acceleration is at its peak, while velocity is zero because the graph has flattened.",
-      "trap": "Velocity and acceleration are 90° out of phase — reading them as moving together is the usual error."
+      "trap": "Velocity and acceleration are 90\u00b0 out of phase \u2014 reading them as moving together is the usual error."
     },
     "marks": 2.5,
     "difficulty": 3,
     "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_sentinterp_001",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option that best conveys the meaning of the underlined portion in the following sentence: After the audit, the manager knew the figures would not add up.",
+    "options": [
+      {
+        "id": "a",
+        "text": "the figures would be correct"
+      },
+      {
+        "id": "b",
+        "text": "the figures would be inconsistent"
+      },
+      {
+        "id": "c",
+        "text": "the figures would be impressive"
+      },
+      {
+        "id": "d",
+        "text": "the figures would be hidden"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "'Not add up' means inconsistent, especially of figures or a story.",
+      "body": "The idiom *not add up* is used when numbers \u2014 or an account of events \u2014 fail to agree with one another.",
+      "trap": "'Correct' inverts the idiom; *add up* without the negative would mean the opposite."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_sentinterp_002",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option that best conveys the meaning of the underlined portion in the following sentence: The principal called the bluff of the striking teachers.",
+    "options": [
+      {
+        "id": "a",
+        "text": "ignored their demands entirely"
+      },
+      {
+        "id": "b",
+        "text": "challenged them to carry out their threat"
+      },
+      {
+        "id": "c",
+        "text": "reported them to the authorities"
+      },
+      {
+        "id": "d",
+        "text": "negotiated a settlement with them"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "To call someone's bluff is to challenge them to act on a threat.",
+      "body": "A *bluff* is a threat made in the hope it will not be tested. Calling it forces the test.",
+      "trap": "'Ignored' misses the confrontation \u2014 calling a bluff is active, not passive."
+    },
+    "marks": 2,
+    "difficulty": 3,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_antonym_001",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word opposite in meaning to the underlined word: The plaintiff made very cogent submissions to the trial judge.",
+    "options": [
+      {
+        "id": "a",
+        "text": "persuasive"
+      },
+      {
+        "id": "b",
+        "text": "feeble"
+      },
+      {
+        "id": "c",
+        "text": "lengthy"
+      },
+      {
+        "id": "d",
+        "text": "oral"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Cogent* means forceful and convincing; its opposite is weak.",
+      "body": "A *cogent* submission carries weight. Of the options, only *feeble* reverses that quality.",
+      "trap": "'Lengthy' describes size, not force \u2014 a long submission can still be cogent."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_antonym_002",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word opposite in meaning to the underlined word: His taciturn nature made him unpopular at social gatherings.",
+    "options": [
+      {
+        "id": "a",
+        "text": "reserved"
+      },
+      {
+        "id": "b",
+        "text": "garrulous"
+      },
+      {
+        "id": "c",
+        "text": "modest"
+      },
+      {
+        "id": "d",
+        "text": "gentle"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Taciturn* means habitually silent; *garrulous* means excessively talkative.",
+      "body": "The pair is a direct antonym set tested repeatedly: silence against talkativeness.",
+      "trap": "'Reserved' is a near-synonym of *taciturn*, not its opposite."
+    },
+    "marks": 2,
+    "difficulty": 3,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_synonym_001",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word: The manager's decision was arbitrary.",
+    "options": [
+      {
+        "id": "a",
+        "text": "well-considered"
+      },
+      {
+        "id": "b",
+        "text": "capricious"
+      },
+      {
+        "id": "c",
+        "text": "collective"
+      },
+      {
+        "id": "d",
+        "text": "delayed"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Arbitrary* and *capricious* both mean decided by whim, not reason.",
+      "body": "An *arbitrary* decision follows no principle; a *capricious* one follows mood. Same defect.",
+      "trap": "'Collective' is the administrative opposite \u2014 a decision taken *together*, hence by a process."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_synonym_002",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word: The committee commended her meticulous preparation.",
+    "options": [
+      {
+        "id": "a",
+        "text": "hasty"
+      },
+      {
+        "id": "b",
+        "text": "thorough"
+      },
+      {
+        "id": "c",
+        "text": "lengthy"
+      },
+      {
+        "id": "d",
+        "text": "secret"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Meticulous* means showing great attention to detail.",
+      "body": "*Thorough* is the plain-English equivalent \u2014 nothing missed, nothing glossed.",
+      "trap": "'Lengthy' confuses duration with care; a long preparation can still be slapdash."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_grammar_001",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option that most suitably fills the space: Neither the teacher nor the students ___ present at the assembly.",
+    "options": [
+      {
+        "id": "a",
+        "text": "is"
+      },
+      {
+        "id": "b",
+        "text": "was"
+      },
+      {
+        "id": "c",
+        "text": "were"
+      },
+      {
+        "id": "d",
+        "text": "has been"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "basic-grammar",
+    "section": "Basic Grammar",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "With *neither\u2026nor*, the verb agrees with the nearer subject.",
+      "body": "The nearer subject is *the students* (plural), so the verb is plural: *were*.",
+      "trap": "'Was' agrees with *the teacher* \u2014 the farther subject, which the rule ignores."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_grammar_002",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option that most suitably fills the space: The principal insisted that every student ___ in full uniform.",
+    "options": [
+      {
+        "id": "a",
+        "text": "is"
+      },
+      {
+        "id": "b",
+        "text": "was"
+      },
+      {
+        "id": "c",
+        "text": "be"
+      },
+      {
+        "id": "d",
+        "text": "has been"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "basic-grammar",
+    "section": "Basic Grammar",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Insist* takes the subjunctive: the bare infinitive, no agreement.",
+      "body": "After verbs of demand (*insist, require, demand*), English uses the base form for all persons: *be*, not *is*.",
+      "trap": "'Is' applies normal third-person agreement \u2014 exactly what the subjunctive suspends."
+    },
+    "marks": 2,
+    "difficulty": 3,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_comprehension_003",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "The writer compares the arrival of the harmattan to an uninvited guest mainly to emphasise its:",
+    "options": [
+      {
+        "id": "a",
+        "text": "destructiveness"
+      },
+      {
+        "id": "b",
+        "text": "unexpectedness and insistence"
+      },
+      {
+        "id": "c",
+        "text": "annual regularity"
+      },
+      {
+        "id": "d",
+        "text": "effect on business"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "fiction",
+    "section": "Comprehension",
+    "passage_id": "psg_jamb_2025_eng_comprehension_2",
+    "image": null,
+    "explanation": {
+      "key_point": "'Loudly, without apology, and impossible to ignore' describes manner, not damage.",
+      "body": "The simile turns on *how* it arrives \u2014 the noise and presumption of it \u2014 not on what it destroys.",
+      "trap": "'Annual regularity' is true of the harmattan but is not what the *comparison* stresses."
+    },
+    "marks": 3,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_comprehension_004",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "The grandmothers' pronouncement that 'this year's dust is worse than last year's' is presented as:",
+    "options": [
+      {
+        "id": "a",
+        "text": "a verified meteorological fact"
+      },
+      {
+        "id": "b",
+        "text": "a ritual complaint of long experience"
+      },
+      {
+        "id": "c",
+        "text": "evidence of climate change"
+      },
+      {
+        "id": "d",
+        "text": "a warning to the children"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "fiction",
+    "section": "Comprehension",
+    "passage_id": "psg_jamb_2025_eng_comprehension_2",
+    "image": null,
+    "explanation": {
+      "key_point": "'With the authority of long experience' frames it as ritual, not measurement.",
+      "body": "The passage pairs the claim with *as they complain every year* \u2014 the point is the performance of experience, not the data.",
+      "trap": "'Climate change' imports a modern frame the passage never invokes."
+    },
+    "marks": 3,
+    "difficulty": 3,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_comprehension_005",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "'A stubborn festivity' (line 7) suggests that the harmattan season is:",
+    "options": [
+      {
+        "id": "a",
+        "text": "celebrated with formal ceremonies"
+      },
+      {
+        "id": "b",
+        "text": "enjoyed in spite of its discomforts"
+      },
+      {
+        "id": "c",
+        "text": "tolerated only by children"
+      },
+      {
+        "id": "d",
+        "text": "shorter than it used to be"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "fiction",
+    "section": "Comprehension",
+    "passage_id": "psg_jamb_2025_eng_comprehension_2",
+    "image": null,
+    "explanation": {
+      "key_point": "*Stubborn* modifies *festivity* \u2014 pleasure that persists against the odds.",
+      "body": "Children shrieking through the haze and grandmothers holding court in doorways are both enjoying something the dust should have spoiled.",
+      "trap": "'Formal ceremonies' literalises *festivity*, which here means atmosphere, not events."
+    },
+    "marks": 3,
+    "difficulty": 4,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_cloze_002",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Complete the first gap: A student with no money for textbooks could .... a whole education between their shelves.",
+    "options": [
+      {
+        "id": "a",
+        "text": "assemble"
+      },
+      {
+        "id": "b",
+        "text": "purchase"
+      },
+      {
+        "id": "c",
+        "text": "borrow"
+      },
+      {
+        "id": "d",
+        "text": "ignore"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": null,
+    "section": "Cloze",
+    "passage_id": "psg_jamb_2025_eng_cloze_2",
+    "image": null,
+    "explanation": {
+      "key_point": "*Assemble* \u2014 piece together from what is freely available.",
+      "body": "The sentence turns on having *no money*: the education is built, not bought. *Borrow* fails because library books return; the education stays.",
+      "trap": "'Borrow' is the library word, but you borrow *books* \u2014 an education assembled over years is not returned."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_cloze_003",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Complete the second gap: Today those same buildings stand .... in most cities.",
+    "options": [
+      {
+        "id": "a",
+        "text": "renovated"
+      },
+      {
+        "id": "b",
+        "text": "abandoned"
+      },
+      {
+        "id": "c",
+        "text": "crowded"
+      },
+      {
+        "id": "d",
+        "text": "guarded"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": null,
+    "section": "Cloze",
+    "passage_id": "psg_jamb_2025_eng_cloze_2",
+    "image": null,
+    "explanation": {
+      "key_point": "Outdated collections and leaking roofs describe abandonment, not use.",
+      "body": "*Renovated*, *crowded* and *guarded* all imply attention; the passage's evidence \u2014 decay \u2014 points the other way.",
+      "trap": "'Guarded' is tempting because valuable things are guarded, but nothing here suggests the buildings are valued."
+    },
+    "marks": 2,
+    "difficulty": 1,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_cloze_004",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Complete the third gap: The tragedy is not only the decay of the buildings but the .... of the habit they sustained.",
+    "options": [
+      {
+        "id": "a",
+        "text": "cost"
+      },
+      {
+        "id": "b",
+        "text": "loss"
+      },
+      {
+        "id": "c",
+        "text": "study"
+      },
+      {
+        "id": "d",
+        "text": "history"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": null,
+    "section": "Cloze",
+    "passage_id": "psg_jamb_2025_eng_cloze_2",
+    "image": null,
+    "explanation": {
+      "key_point": "The parallel structure demands it: *not only the decay\u2026 but the loss*.",
+      "body": "'Not only X but Y' pairs two bads. Only *loss* continues the lament; the others break the parallelism.",
+      "trap": "'Cost' is adjacent in meaning to decay-as-expense, but the grammar wants the noun the habit suffers."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_consonant_001",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word that has the same consonant sound as the one underlined in: think.",
+    "options": [
+      {
+        "id": "a",
+        "text": "this"
+      },
+      {
+        "id": "b",
+        "text": "thick"
+      },
+      {
+        "id": "c",
+        "text": "though"
+      },
+      {
+        "id": "d",
+        "text": "father"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Think* begins with the voiceless dental fricative /\u03b8/.",
+      "body": "/\u03b8/ is voiceless \u2014 no vibration of the vocal cords. Only *thick* shares it; *this*, *though* and *father* all carry the voiced /\u00f0/.",
+      "trap": "'Though' looks closest in spelling, but spelling is not sound \u2014 it carries /\u00f0/."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_consonant_002",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word that has the same consonant sound as the one underlined in: measure.",
+    "options": [
+      {
+        "id": "a",
+        "text": "mission"
+      },
+      {
+        "id": "b",
+        "text": "machine"
+      },
+      {
+        "id": "c",
+        "text": "pleasure"
+      },
+      {
+        "id": "d",
+        "text": "manner"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Measure* centres on /\u0292/, the voiced postalveolar fricative.",
+      "body": "/\u0292/ is the 'zh' sound. *Pleasure* carries it; *mission* and *machine* carry the voiceless /\u0283/, and *manner* has no fricative at all.",
+      "trap": "'Mission' is the spelling trap \u2014 *ss* suggests /\u0283/, not /\u0292/."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_rhyme_001",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word that rhymes with: bake.",
+    "options": [
+      {
+        "id": "a",
+        "text": "back"
+      },
+      {
+        "id": "b",
+        "text": "break"
+      },
+      {
+        "id": "c",
+        "text": "bracket"
+      },
+      {
+        "id": "d",
+        "text": "beak"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "rhymes",
+    "section": "Rhymes",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "A rhyme matches from the stressed vowel to the end: /e\u026ak/.",
+      "body": "*Bake* /be\u026ak/ and *break* /bre\u026ak/ share the rime exactly. *Back*, *bracket* and *beak* all diverge after the onset.",
+      "trap": "'Beak' shares three letters but a different vowel \u2014 rhyme is sound, not spelling."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_rhyme_002",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word that rhymes with: though.",
+    "options": [
+      {
+        "id": "a",
+        "text": "thought"
+      },
+      {
+        "id": "b",
+        "text": "tough"
+      },
+      {
+        "id": "c",
+        "text": "throw"
+      },
+      {
+        "id": "d",
+        "text": "through"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "rhymes",
+    "section": "Rhymes",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Though* is /\u00f0\u0259\u028a/ \u2014 the rime is /\u0259\u028a/.",
+      "body": "Only *throw* /\u03b8r\u0259\u028a/ matches. *Thought* (/\u0254\u02d0t/), *tough* (/\u028cf/) and *through* (/u\u02d0/) are the classic *-ough* spelling traps.",
+      "trap": "All four share *-ough*; English spelling is famously no guide here \u2014 only the sound counts."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_stress_001",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with a different stress pattern: commit \u00b7 begin \u00b7 record (verb) \u00b7 table.",
+    "options": [
+      {
+        "id": "a",
+        "text": "commit"
+      },
+      {
+        "id": "b",
+        "text": "begin"
+      },
+      {
+        "id": "c",
+        "text": "record (verb)"
+      },
+      {
+        "id": "d",
+        "text": "table"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "word-stress",
+    "section": "Word Stress",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "Two-syllable verbs stress the second syllable; *table* is a noun stressed on the first.",
+      "body": "*Com-MIT*, *be-GIN*, *re-CORD* \u2014 all second-syllable. *TA-ble* breaks the pattern on the first.",
+      "trap": "'Record' as a *noun* (RE-cord) would match *table* \u2014 the (verb) tag is doing real work."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_stress_002",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with a different stress pattern: eleven \u00b7 October \u00b7 banana \u00b7 record (noun).",
+    "options": [
+      {
+        "id": "a",
+        "text": "eleven"
+      },
+      {
+        "id": "b",
+        "text": "October"
+      },
+      {
+        "id": "c",
+        "text": "banana"
+      },
+      {
+        "id": "d",
+        "text": "record (noun)"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "word-stress",
+    "section": "Word Stress",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Eleven*, *October* and *banana* all stress the second of three syllables.",
+      "body": "E-LEV-en, Oc-TO-ber, ba-NA-na. *RE-cord* (noun) stresses the first of two \u2014 the odd pattern out.",
+      "trap": "Pair it with the previous item: *record* flips stress by word class, which is exactly what JAMB tests."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_emphatic_001",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option that correctly emphasises the underlined word in: Ada bought a NEW car.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Did Ada buy a new car?"
+      },
+      {
+        "id": "b",
+        "text": "Who bought a new car?"
+      },
+      {
+        "id": "c",
+        "text": "Did Ada buy a new bicycle?"
+      },
+      {
+        "id": "d",
+        "text": "Did Ada sell a new car?"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "emphatic-stress",
+    "section": "Emphatic Stress",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "Emphasis on *new* contrasts it with the alternative \u2014 *not* new.",
+      "body": "The question that *new* answers is 'a new what?' \u2014 (c) supplies the contrast (bicycle), which is what emphasis does.",
+      "trap": "(b) emphasises *Ada*, not *new* \u2014 it answers 'who', and the underlined word is not the subject."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_emphatic_002",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option that correctly emphasises the underlined word in: They arrived YESTERDAY.",
+    "options": [
+      {
+        "id": "a",
+        "text": "Who arrived yesterday?"
+      },
+      {
+        "id": "b",
+        "text": "Did they arrive today?"
+      },
+      {
+        "id": "c",
+        "text": "Where did they arrive?"
+      },
+      {
+        "id": "d",
+        "text": "Will they arrive tomorrow?"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "emphatic-stress",
+    "section": "Emphatic Stress",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "Emphasis on *yesterday* contrasts the time \u2014 *not* today.",
+      "body": "(b) is the only option that puts *yesterday* against its alternative. The others question the subject, the place, or the future.",
+      "trap": "(d) is about time too, but it questions *tomorrow* \u2014 the wrong day entirely."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_sentinterp_003",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option that best conveys the meaning of the underlined portion: The team played below par in the finals.",
+    "options": [
+      {
+        "id": "a",
+        "text": "played most brilliantly"
+      },
+      {
+        "id": "b",
+        "text": "played below their usual form"
+      },
+      {
+        "id": "c",
+        "text": "won unexpectedly"
+      },
+      {
+        "id": "d",
+        "text": "lost as expected"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Below par* means below the expected standard.",
+      "body": "*Par* is the standard. Falling below it is underperformance \u2014 not defeat, which is a separate outcome.",
+      "trap": "'Lost as expected' adds a result the idiom never states; a team can play below par and still win."
+    },
+    "marks": 2,
+    "difficulty": 1,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_sentinterp_004",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option that best conveys the meaning of the underlined portion: His resignation letter was just a red herring.",
+    "options": [
+      {
+        "id": "a",
+        "text": "a genuine complaint"
+      },
+      {
+        "id": "b",
+        "text": "a distraction from the real issue"
+      },
+      {
+        "id": "c",
+        "text": "a formal protest"
+      },
+      {
+        "id": "d",
+        "text": "a confidential document"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "A *red herring* is something that misleads by diverting attention.",
+      "body": "The letter's function was diversion \u2014 drawing eyes away from whatever actually mattered.",
+      "trap": "'Formal protest' takes the *letter* at face value, which is exactly what a red herring invites."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_sentinterp_005",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option that best conveys the meaning of the underlined portion: She let the cat out of the bag during the meeting.",
+    "options": [
+      {
+        "id": "a",
+        "text": "released an animal"
+      },
+      {
+        "id": "b",
+        "text": "caused a commotion"
+      },
+      {
+        "id": "c",
+        "text": "revealed a secret"
+      },
+      {
+        "id": "d",
+        "text": "asked a difficult question"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Let the cat out of the bag* means disclose what was meant to stay hidden.",
+      "body": "The secret is the cat; the bag is the keeping of it. Opening the one releases the other.",
+      "trap": "'Caused a commotion' describes a *possible consequence*, not the meaning of the act itself."
+    },
+    "marks": 2,
+    "difficulty": 1,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_sentinterp_006",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option that best conveys the meaning of the underlined portion: The new policy will separate the wheat from the chaff among contractors.",
+    "options": [
+      {
+        "id": "a",
+        "text": "reward all contractors equally"
+      },
+      {
+        "id": "b",
+        "text": "distinguish the competent from the incompetent"
+      },
+      {
+        "id": "c",
+        "text": "punish the worst offenders"
+      },
+      {
+        "id": "d",
+        "text": "reduce the number of contracts"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Separate the wheat from the chaff* is winnowing \u2014 keeping value, discarding waste.",
+      "body": "Wheat is kept, chaff is blown away. The policy sorts contractors by worth, keeping the good.",
+      "trap": "'Punish the worst' reads only the chaff half; winnowing keeps the wheat too."
+    },
+    "marks": 2,
+    "difficulty": 3,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_antonym_003",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word opposite in meaning to the underlined word: The principal gave an explicit instruction.",
+    "options": [
+      {
+        "id": "a",
+        "text": "clear"
+      },
+      {
+        "id": "b",
+        "text": "vague"
+      },
+      {
+        "id": "c",
+        "text": "strict"
+      },
+      {
+        "id": "d",
+        "text": "written"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Explicit* means stated plainly; its opposite leaves room for doubt.",
+      "body": "*Vague* is the direct reversal \u2014 an instruction you cannot pin down.",
+      "trap": "'Strict' describes severity, not clarity; a strict instruction can still be perfectly explicit."
+    },
+    "marks": 2,
+    "difficulty": 1,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_antonym_004",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word opposite in meaning to the underlined word: His transient stay in the village lasted barely a week.",
+    "options": [
+      {
+        "id": "a",
+        "text": "brief"
+      },
+      {
+        "id": "b",
+        "text": "prolonged"
+      },
+      {
+        "id": "c",
+        "text": "memorable"
+      },
+      {
+        "id": "d",
+        "text": "unannounced"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Transient* means passing quickly; *prolonged* means stretched out.",
+      "body": "The opposition is purely temporal \u2014 short stay against long one.",
+      "trap": "'Memorable' is about impression, not duration; a week can be both transient and memorable."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_antonym_005",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word opposite in meaning to the underlined word: The magistrate dismissed the case for want of diligent prosecution.",
+    "options": [
+      {
+        "id": "a",
+        "text": "careful"
+      },
+      {
+        "id": "b",
+        "text": "negligent"
+      },
+      {
+        "id": "c",
+        "text": "speedy"
+      },
+      {
+        "id": "d",
+        "text": "honest"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Diligent* means showing care in one's work; *negligent* means failing to show it.",
+      "body": "The legal pairing is exact \u2014 diligence against negligence is the standard opposition.",
+      "trap": "'Speedy' confuses pace with care; diligent work is not necessarily fast."
+    },
+    "marks": 2,
+    "difficulty": 3,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_antonym_006",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word opposite in meaning to the underlined word: The accused showed remorse throughout the trial.",
+    "options": [
+      {
+        "id": "a",
+        "text": "regret"
+      },
+      {
+        "id": "b",
+        "text": "defiance"
+      },
+      {
+        "id": "c",
+        "text": "sorrow"
+      },
+      {
+        "id": "d",
+        "text": "silence"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Remorse* is contrition; *defiance* is its refusal.",
+      "body": "Regret and sorrow are synonyms of remorse, which is why they sit in the options \u2014 the opposite is the *absence* of contrition.",
+      "trap": "Both 'regret' and 'sorrow' are synonyms; JAMB routinely plants two of them to punish skimming."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_synonym_003",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word: The witness gave a lucid account of the incident.",
+    "options": [
+      {
+        "id": "a",
+        "text": "confusing"
+      },
+      {
+        "id": "b",
+        "text": "lengthy"
+      },
+      {
+        "id": "c",
+        "text": "clear"
+      },
+      {
+        "id": "d",
+        "text": "brief"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Lucid* means easy to understand.",
+      "body": "A *lucid* account is one you can follow without effort \u2014 *clear* in plain English.",
+      "trap": "'Brief' confuses brevity with clarity; a lucid account can run long."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_synonym_004",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word: The governor's speech was replete with promises.",
+    "options": [
+      {
+        "id": "a",
+        "text": "devoid of"
+      },
+      {
+        "id": "b",
+        "text": "full of"
+      },
+      {
+        "id": "c",
+        "text": "cautious about"
+      },
+      {
+        "id": "d",
+        "text": "opposed to"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Replete* means abundantly supplied \u2014 full to completion.",
+      "body": "*Full of* is the plain equivalent; the speech overflowed with promises.",
+      "trap": "'Devoid of' is the exact antonym, planted for readers who know the word is about quantity but misjudge the direction."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_synonym_005",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word: Traders exploited the scarcity to inflate prices.",
+    "options": [
+      {
+        "id": "a",
+        "text": "ignored"
+      },
+      {
+        "id": "b",
+        "text": "created"
+      },
+      {
+        "id": "c",
+        "text": "used unfairly"
+      },
+      {
+        "id": "d",
+        "text": "reported"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Exploit* here means turn to unfair advantage.",
+      "body": "The traders did not merely *use* the scarcity \u2014 they used it *unfairly*. The phrase carries the abuse inside it.",
+      "trap": "'Used' alone is too neutral; it drops the unfairness that makes *exploit* what it is."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_synonym_006",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word: The old man narrated a poignant tale of the war.",
+    "options": [
+      {
+        "id": "a",
+        "text": "amusing"
+      },
+      {
+        "id": "b",
+        "text": "moving"
+      },
+      {
+        "id": "c",
+        "text": "lengthy"
+      },
+      {
+        "id": "d",
+        "text": "fictional"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Poignant* means painfully moving.",
+      "body": "A *poignant* tale stirs feeling \u2014 *moving* is its plain equivalent.",
+      "trap": "'Amusing' mistakes feeling for fun; poignancy hurts."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_grammar_003",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option that most suitably fills the space: By the time the results were released, most candidates ___ their fate.",
+    "options": [
+      {
+        "id": "a",
+        "text": "have accepted"
+      },
+      {
+        "id": "b",
+        "text": "had accepted"
+      },
+      {
+        "id": "c",
+        "text": "accept"
+      },
+      {
+        "id": "d",
+        "text": "are accepting"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "basic-grammar",
+    "section": "Basic Grammar",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*By the time* with a past reference point demands the past perfect.",
+      "body": "The accepting happened *before* the release \u2014 earlier of two pasts takes *had*.",
+      "trap": "'Have accepted' is present perfect; it anchors to now, not to the past release."
+    },
+    "marks": 2,
+    "difficulty": 3,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_grammar_004",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option that most suitably fills the space: The committee ___ submitted its report last Friday.",
+    "options": [
+      {
+        "id": "a",
+        "text": "have"
+      },
+      {
+        "id": "b",
+        "text": "has"
+      },
+      {
+        "id": "c",
+        "text": "are"
+      },
+      {
+        "id": "d",
+        "text": "were"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "basic-grammar",
+    "section": "Basic Grammar",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Committee* is a collective noun acting as one body \u2014 singular verb.",
+      "body": "The committee acted together in submitting one report, so *has*.",
+      "trap": "'Have' treats the members as individuals; that reading needs a plural action, which submitting one report is not."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_grammar_005",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option that most suitably fills the space: Each of the students ___ expected to pass the examination.",
+    "options": [
+      {
+        "id": "a",
+        "text": "are"
+      },
+      {
+        "id": "b",
+        "text": "were"
+      },
+      {
+        "id": "c",
+        "text": "is"
+      },
+      {
+        "id": "d",
+        "text": "have been"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "basic-grammar",
+    "section": "Basic Grammar",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Each* is always singular, whatever follows *of*.",
+      "body": "*Each of the students* \u2014 the subject is *each*, singular, so *is*.",
+      "trap": "'Are' agrees with *students*, the nearest noun \u2014 exactly the agreement error JAMB sets."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_grammar_006",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option that most suitably fills the space: Hardly had the bell rung ___ the students rushed out.",
+    "options": [
+      {
+        "id": "a",
+        "text": "than"
+      },
+      {
+        "id": "b",
+        "text": "when"
+      },
+      {
+        "id": "c",
+        "text": "then"
+      },
+      {
+        "id": "d",
+        "text": "that"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "basic-grammar",
+    "section": "Basic Grammar",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Hardly/scarcely* pairs with *when*; *no sooner* pairs with *than*.",
+      "body": "The correlative is fixed: hardly\u2026when, no sooner\u2026than. Mixing them is the tested error.",
+      "trap": "'Than' belongs to *no sooner* \u2014 know which opener you have before choosing the closer."
+    },
+    "marks": 2,
+    "difficulty": 4,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_comprehension_006",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "'She watched the shoulders of her father when the letters from the bank arrived' suggests that Adura:",
+    "options": [
+      {
+        "id": "a",
+        "text": "feared her father"
+      },
+      {
+        "id": "b",
+        "text": "read bodies the way others read words"
+      },
+      {
+        "id": "c",
+        "text": "expected good news"
+      },
+      {
+        "id": "d",
+        "text": "worked in a bank"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "fiction",
+    "section": "Comprehension",
+    "passage_id": "psg_jamb_2025_eng_comprehension_1",
+    "image": null,
+    "explanation": {
+      "key_point": "The opening sentence establishes her gift: reading people.",
+      "body": "*Learned to read the room before she learned to read words* \u2014 observation precedes literacy, and the shoulders are her first text.",
+      "trap": "'Feared' imports an emotion the passage never gives her; she watches to *know*, not out of fear."
+    },
+    "marks": 3,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_comprehension_007",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "'Growing up meant becoming the person who asked the questions nobody else thought to ask' implies that maturity, for Adura, is:",
+    "options": [
+      {
+        "id": "a",
+        "text": "a matter of age"
+      },
+      {
+        "id": "b",
+        "text": "an act of inquiry"
+      },
+      {
+        "id": "c",
+        "text": "obedience to adults"
+      },
+      {
+        "id": "d",
+        "text": "freedom from questions"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "fiction",
+    "section": "Comprehension",
+    "passage_id": "psg_jamb_2025_eng_comprehension_1",
+    "image": null,
+    "explanation": {
+      "key_point": "*Becoming the person who asked* \u2014 maturity as something done, not reached.",
+      "body": "The verb *becoming* plus the relative clause makes growing up an activity (asking) rather than a threshold (an age).",
+      "trap": "'A matter of age' is the conventional view the sentence quietly replaces."
+    },
+    "marks": 3,
+    "difficulty": 3,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_comprehension_008",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "The phrase 'did not survive being examined too closely' implies that the adults' version of events was:",
+    "options": [
+      {
+        "id": "a",
+        "text": "complicated"
+      },
+      {
+        "id": "b",
+        "text": "fragile"
+      },
+      {
+        "id": "c",
+        "text": "secret"
+      },
+      {
+        "id": "d",
+        "text": "official"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "fiction",
+    "section": "Comprehension",
+    "passage_id": "psg_jamb_2025_eng_comprehension_1",
+    "image": null,
+    "explanation": {
+      "key_point": "What cannot *survive* examination is fragile by definition.",
+      "body": "*Survive* selects for sturdiness; its negation selects for fragility. The version collapses under scrutiny.",
+      "trap": "'Secret' is adjacent \u2014 secrets also fear examination \u2014 but the verb is about *endurance*, not concealment."
+    },
+    "marks": 3,
+    "difficulty": 3,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_vowel_002",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: seat.",
+    "options": [
+      {
+        "id": "a",
+        "text": "sit"
+      },
+      {
+        "id": "b",
+        "text": "site"
+      },
+      {
+        "id": "c",
+        "text": "seed"
+      },
+      {
+        "id": "d",
+        "text": "said"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Seat* is /si\u02d0t/ \u2014 long high front vowel.",
+      "body": "Only *seed* /si\u02d0d/ shares it. *Sit* (/\u026a/), *site* (/a\u026a/) and *said* (/\u025b/) are the three classic near-miss qualities.",
+      "trap": "'Site' shares four letters and almost no sound \u2014 spelling misleads, the vowel decides."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_vowel_003",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: blood.",
+    "options": [
+      {
+        "id": "a",
+        "text": "food"
+      },
+      {
+        "id": "b",
+        "text": "flood"
+      },
+      {
+        "id": "c",
+        "text": "mood"
+      },
+      {
+        "id": "d",
+        "text": "boot"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Blood* is /bl\u028cd/ \u2014 the short central vowel, not the long /u\u02d0/ the spelling suggests.",
+      "body": "*Flood* /fl\u028cd/ matches. *Food*, *mood* and *boot* all carry /u\u02d0/ \u2014 the sound the *oo* usually spells, and the trap.",
+      "trap": "Three options share the *oo* spelling with the long vowel; only the sound counts."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": false
+  },
+  {
+    "id": "t74822",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option nearest in meaning to the word in italics: The students were reluctant to participate in the debate.",
+    "options": [
+      {
+        "id": "a",
+        "text": "excited"
+      },
+      {
+        "id": "b",
+        "text": "happy"
+      },
+      {
+        "id": "c",
+        "text": "unwilling"
+      },
+      {
+        "id": "d",
+        "text": "eager"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Reluctant* means unwilling.",
+      "body": "*Reluctant* is holding back from doing something. *Unwilling* states that directly.",
+      "trap": "'Eager' is the antonym, planted for readers who miss the direction of the question."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t74823",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option nearest in meaning to the word in italics: Parenting is really arduous even though enjoyable.",
+    "options": [
+      {
+        "id": "a",
+        "text": "strenuous"
+      },
+      {
+        "id": "b",
+        "text": "troublesome"
+      },
+      {
+        "id": "c",
+        "text": "hectic"
+      },
+      {
+        "id": "d",
+        "text": "severe"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Arduous* means requiring great effort.",
+      "body": "*Strenuous* carries the same weight of effort. The other three describe difficulty of different kinds \u2014 trouble, busyness, harshness \u2014 but not effort itself.",
+      "trap": "'Troublesome' is about causing problems, not about the effort something demands."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74824",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option nearest in meaning to the word in italics: The debater made a very scurrilous remark about his opponent.",
+    "options": [
+      {
+        "id": "a",
+        "text": "false"
+      },
+      {
+        "id": "b",
+        "text": "abusive"
+      },
+      {
+        "id": "c",
+        "text": "fake"
+      },
+      {
+        "id": "d",
+        "text": "sharp"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Scurrilous* means coarsely abusive in language.",
+      "body": "The word is specifically about *abusive* speech \u2014 not merely false speech. *Fake* and *false* miss the abusiveness that defines it.",
+      "trap": "'False' is adjacent \u2014 a scurrilous remark may well be false \u2014 but falsity is incidental to the abuse."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t74825",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option nearest in meaning to the word in italics: Giwa does odious things at times.",
+    "options": [
+      {
+        "id": "a",
+        "text": "horrible"
+      },
+      {
+        "id": "b",
+        "text": "great"
+      },
+      {
+        "id": "c",
+        "text": "strange"
+      },
+      {
+        "id": "d",
+        "text": "pleasant"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Odious* means deserving hatred \u2014 horrible.",
+      "body": "*Horrible* is the plain equivalent. *Great* and *pleasant* are opposites; *strange* is unrelated.",
+      "trap": "'Strange' catches readers who confuse unfamiliarity with offensiveness."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t74826",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option nearest in meaning to the word in italics: Gambling is a pernicious act.",
+    "options": [
+      {
+        "id": "a",
+        "text": "beneficial"
+      },
+      {
+        "id": "b",
+        "text": "harmless"
+      },
+      {
+        "id": "c",
+        "text": "noxious"
+      },
+      {
+        "id": "d",
+        "text": "benign"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Pernicious* means harmful in a gradual, insidious way \u2014 *noxious*.",
+      "body": "*Noxious* carries the same poisonous quality. **Note: the source key gives D (benign), which is the antonym \u2014 corrected here.** *Benign* means harmless and kind, the exact opposite of *pernicious*.",
+      "trap": "The source itself planted the trap: *benign* sits in the options as the antonym, and the original key fell for it."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74827",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option nearest in meaning to the word in italics: The building was haunted by a couple of spooks.",
+    "options": [
+      {
+        "id": "a",
+        "text": "ghosts"
+      },
+      {
+        "id": "b",
+        "text": "robbers"
+      },
+      {
+        "id": "c",
+        "text": "hyenas"
+      },
+      {
+        "id": "d",
+        "text": "hunters"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Spooks*, in the haunting sense, are ghosts.",
+      "body": "A haunted building holds ghosts. The other options are all living intruders of various kinds.",
+      "trap": "'Robbers' fits a building-break-in story, but *haunted* selects the supernatural reading."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t74828",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option nearest in meaning to the word in italics: The scientist made an astonishing discovery in the laboratory.",
+    "options": [
+      {
+        "id": "a",
+        "text": "common"
+      },
+      {
+        "id": "b",
+        "text": "amazing"
+      },
+      {
+        "id": "c",
+        "text": "expected"
+      },
+      {
+        "id": "d",
+        "text": "ordinary"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Astonishing* means causing great surprise \u2014 amazing.",
+      "body": "*Amazing* is the direct equivalent. *Common*, *expected* and *ordinary* all deny the surprise.",
+      "trap": "None of the distractors are close; this tests whether the word is known at all."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t74829",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option nearest in meaning to the word in italics: Between Achebe and Soyinka, it is debatable who is more enigmatic a writer.",
+    "options": [
+      {
+        "id": "a",
+        "text": "flamboyant"
+      },
+      {
+        "id": "b",
+        "text": "ludicrous"
+      },
+      {
+        "id": "c",
+        "text": "inscrutable"
+      },
+      {
+        "id": "d",
+        "text": "talented"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Enigmatic* means mysterious, hard to interpret \u2014 *inscrutable*.",
+      "body": "Both words describe what resists being read. *Flamboyant* is showy (the opposite problem), *talented* is unrelated to mystery.",
+      "trap": "'Talented' is true of both writers and therefore tempting, but it answers a different question."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t74830",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option nearest in meaning to the word in italics: When the landlady noticed the silhouette on the wall, she called up her son.",
+    "options": [
+      {
+        "id": "a",
+        "text": "outline"
+      },
+      {
+        "id": "b",
+        "text": "ghost"
+      },
+      {
+        "id": "c",
+        "text": "speck"
+      },
+      {
+        "id": "d",
+        "text": "soot"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "A *silhouette* is the dark outline of a shape against light.",
+      "body": "*Outline* is the plain term. A ghost is one *possible* silhouette, not what the word means.",
+      "trap": "'Ghost' reads the scene (a landlady, a dark shape) instead of the word."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74831",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option opposite in meaning to the word in italics: Musa vehemently opposed his son's political ambition.",
+    "options": [
+      {
+        "id": "a",
+        "text": "emphatically"
+      },
+      {
+        "id": "b",
+        "text": "strongly"
+      },
+      {
+        "id": "c",
+        "text": "coldly"
+      },
+      {
+        "id": "d",
+        "text": "carelessly"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Vehemently* means with passionate force; its opposite acts without passion.",
+      "body": "*Coldly* reverses the heat. *Emphatically* and *strongly* are synonyms \u2014 force by other names.",
+      "trap": "'Strongly' is the near-miss: it shares the force but not the reversal."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74832",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option opposite in meaning to the word in italics: The natives were allowed to stay.",
+    "options": [
+      {
+        "id": "a",
+        "text": "immigrants"
+      },
+      {
+        "id": "b",
+        "text": "foreigners"
+      },
+      {
+        "id": "c",
+        "text": "indigenes"
+      },
+      {
+        "id": "d",
+        "text": "visitors"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Natives* belong by origin; *foreigners* belong elsewhere.",
+      "body": "The opposition is origin against foreignness. *Indigenes* is a synonym of natives.",
+      "trap": "'Immigrants' describes movement, not origin \u2014 an immigrant can become a native's neighbour without ceasing to be one."
+    },
+    "marks": 2,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t74833",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option opposite in meaning to the word in italics: The scientist conducted a meticulous experiment.",
+    "options": [
+      {
+        "id": "a",
+        "text": "careless"
+      },
+      {
+        "id": "b",
+        "text": "detailed"
+      },
+      {
+        "id": "c",
+        "text": "thorough"
+      },
+      {
+        "id": "d",
+        "text": "careful"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Meticulous* is care taken to the fullest; *careless* is its absence.",
+      "body": "Three options \u2014 *detailed*, *thorough*, *careful* \u2014 are all synonyms. Only one reverses.",
+      "trap": "Three synonyms planted together punish anyone who reads for similarity instead of opposition."
+    },
+    "marks": 2,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t74834",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option opposite in meaning to the word in italics: In the past, anyone who angered the gods would be killed.",
+    "options": [
+      {
+        "id": "a",
+        "text": "pleased"
+      },
+      {
+        "id": "b",
+        "text": "appeased"
+      },
+      {
+        "id": "c",
+        "text": "begged"
+      },
+      {
+        "id": "d",
+        "text": "settled"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "To *anger* is to provoke; to *appease* is to pacify what was provoked.",
+      "body": "*Appeased* reverses the specific act \u2014 calming anger \u2014 where *pleased* merely describes a good mood.",
+      "trap": "'Pleased' is the loose opposite; *appeased* is the precise one, and precision is what is tested."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74835",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option opposite in meaning to the word in italics: Despite their efforts at the last Nations Cup fiesta, the team was chastised by their employers.",
+    "options": [
+      {
+        "id": "a",
+        "text": "rebuked"
+      },
+      {
+        "id": "b",
+        "text": "honoured"
+      },
+      {
+        "id": "c",
+        "text": "dethroned"
+      },
+      {
+        "id": "d",
+        "text": "denounced"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Chastised* is punished by words; *honoured* is rewarded by them.",
+      "body": "*Rebuked* and *denounced* are synonyms of chastised. Only *honoured* reverses the judgment.",
+      "trap": "Two synonyms in the options again \u2014 the question tests whether you read for opposition."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74836",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option opposite in meaning to the word in italics: He made a facile generalisation.",
+    "options": [
+      {
+        "id": "a",
+        "text": "broad"
+      },
+      {
+        "id": "b",
+        "text": "complex"
+      },
+      {
+        "id": "c",
+        "text": "quiet"
+      },
+      {
+        "id": "d",
+        "text": "careful"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Facile* means oversimplified \u2014 arrived at too easily.",
+      "body": "*Complex* reverses the simplicity. *Careful* is adjacent (facile things lack care) but not opposite.",
+      "trap": "'Careful' describes the *attitude* behind the claim; *complex* describes the *claim* \u2014 and the claim is what is tested."
+    },
+    "marks": 2,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t74837",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option opposite in meaning to the word in italics: The manager became flexible on critical matters.",
+    "options": [
+      {
+        "id": "a",
+        "text": "rigid"
+      },
+      {
+        "id": "b",
+        "text": "evasive"
+      },
+      {
+        "id": "c",
+        "text": "serious"
+      },
+      {
+        "id": "d",
+        "text": "unbendable"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Flexible* bends; *rigid* does not.",
+      "body": "A direct pairing. Note *unbendable* sitting in the options as a synonym of the answer \u2014 two words for the same thing, only one of them lettered right.",
+      "trap": "'Unbendable' *means* rigid. JAMB plants synonyms of the answer to catch anyone matching by meaning instead of by letter."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74838",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option opposite in meaning to the word in italics: The gear is immanent in a car.",
+    "options": [
+      {
+        "id": "a",
+        "text": "available"
+      },
+      {
+        "id": "b",
+        "text": "necessary"
+      },
+      {
+        "id": "c",
+        "text": "functional"
+      },
+      {
+        "id": "d",
+        "text": "transcendent"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Immanent* means present within; *transcendent* means beyond.",
+      "body": "The philosophical pairing is exact \u2014 inherent against exceeding.",
+      "trap": "'Functional' and 'necessary' both describe the gear truly, but neither opposes *immanent*."
+    },
+    "marks": 2,
+    "difficulty": 4,
+    "verified": true
+  },
+  {
+    "id": "t74839",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option opposite in meaning to the word in italics: Andrew is the protagonist in the play.",
+    "options": [
+      {
+        "id": "a",
+        "text": "enemy"
+      },
+      {
+        "id": "b",
+        "text": "antagonist"
+      },
+      {
+        "id": "c",
+        "text": "progressive"
+      },
+      {
+        "id": "d",
+        "text": "opponent"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Protagonist* and *antagonist* are the paired terms for chief character and chief opposer.",
+      "body": "An *enemy* or *opponent* may oppose, but only *antagonist* is the structural opposite in drama.",
+      "trap": "'Enemy' and 'opponent' are true in life but imprecise in theatre \u2014 the term of art is what counts."
+    },
+    "marks": 2,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t74840",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option opposite in meaning to the word in italics: The robbers gained access to the bank because of their porous security network.",
+    "options": [
+      {
+        "id": "a",
+        "text": "amorphous"
+      },
+      {
+        "id": "b",
+        "text": "impermeable"
+      },
+      {
+        "id": "c",
+        "text": "gorgeous"
+      },
+      {
+        "id": "d",
+        "text": "pervious"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Porous* lets things through; *impermeable* lets nothing through.",
+      "body": "The opposition is permeability itself. *Pervious* is a synonym of porous \u2014 permeable by another spelling.",
+      "trap": "'Pervious' looks technical enough to be the answer, but it means the same as the question word."
+    },
+    "marks": 2,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t74850",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: boot.",
+    "options": [
+      {
+        "id": "a",
+        "text": "cold"
+      },
+      {
+        "id": "b",
+        "text": "food"
+      },
+      {
+        "id": "c",
+        "text": "top"
+      },
+      {
+        "id": "d",
+        "text": "book"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Boot* is /bu\u02d0t/ \u2014 long high back vowel.",
+      "body": "Only *food* /fu\u02d0d/ shares it. *Book* /b\u028ak/ is the short version of the same quality \u2014 near, not same.",
+      "trap": "'Book' shares three letters and a related vowel, but /\u028a/ against /u\u02d0/ is exactly the distinction tested."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74851",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: money.",
+    "options": [
+      {
+        "id": "a",
+        "text": "love"
+      },
+      {
+        "id": "b",
+        "text": "lord"
+      },
+      {
+        "id": "c",
+        "text": "donkey"
+      },
+      {
+        "id": "d",
+        "text": "bought"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Money* is /\u02c8m\u028cni/ \u2014 the short central /\u028c/.",
+      "body": "*Love* /l\u028cv/ matches. *Lord* and *bought* carry /\u0254\u02d0/, *donkey* carries /\u0252/ \u2014 three different vowels hiding behind the letter *o*.",
+      "trap": "The letter *o* spells at least four vowels in these options; only the sound counts."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74852",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: beer.",
+    "options": [
+      {
+        "id": "a",
+        "text": "bare"
+      },
+      {
+        "id": "b",
+        "text": "their"
+      },
+      {
+        "id": "c",
+        "text": "swear"
+      },
+      {
+        "id": "d",
+        "text": "serious"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Beer* is /b\u026a\u0259/ \u2014 centring diphthong.",
+      "body": "*Serious* /\u02c8s\u026a\u0259ri\u0259s/ carries it in its first syllable. *Bare*, *their* and *swear* all carry /e\u0259/ \u2014 the near-miss that shares the spelling pattern.",
+      "trap": "Three options share *-ear* spellings with three different vowels; *beer* against *bare* is the classic minimal pair."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t74853",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: wound.",
+    "options": [
+      {
+        "id": "a",
+        "text": "foot"
+      },
+      {
+        "id": "b",
+        "text": "book"
+      },
+      {
+        "id": "c",
+        "text": "blood"
+      },
+      {
+        "id": "d",
+        "text": "moon"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "On the *injury* reading, *wound* is /wu\u02d0nd/, matching *moon* /mu\u02d0n/.",
+      "body": "**Note: *wound* is ambiguous without context** \u2014 as a verb (wind up) it is /wa\u028and/. The key assumes the noun, which pairs with *moon*. *Foot*, *book* (/\u028a/) and *blood* (/\u028c/) are all short vowels against the long /u\u02d0/.",
+      "trap": "The question is answerable only on one reading; a strict marker would discard it."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t76545",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: Money.",
+    "options": [
+      {
+        "id": "a",
+        "text": "port"
+      },
+      {
+        "id": "b",
+        "text": "son"
+      },
+      {
+        "id": "c",
+        "text": "coney"
+      },
+      {
+        "id": "d",
+        "text": "bottle"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Money* is /\u02c8m\u028cni/ \u2014 short central /\u028c/.",
+      "body": "*Son* /s\u028cn/ matches. *Port* (/\u0254\u02d0/), *coney* (/\u0259\u028a/) and *bottle* (/\u0252/) are three other vowels the letter *o* can spell.",
+      "trap": "Same lesson as ever: the letter tells you nothing, the sound everything."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76546",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: pour.",
+    "options": [
+      {
+        "id": "a",
+        "text": "hour"
+      },
+      {
+        "id": "b",
+        "text": "how"
+      },
+      {
+        "id": "c",
+        "text": "favour"
+      },
+      {
+        "id": "d",
+        "text": "ore"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Pour* is /p\u0254\u02d0/ \u2014 long open-mid back vowel.",
+      "body": "*Ore* /\u0254\u02d0/ matches. *Hour* (/a\u028a\u0259/), *how* (/a\u028a/) and *favour* (/e\u026a/) are the *our*-spelling traps.",
+      "trap": "Four *our* spellings, four different vowels \u2014 the set is designed to punish reading over listening."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74854",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: chess.",
+    "options": [
+      {
+        "id": "a",
+        "text": "soak"
+      },
+      {
+        "id": "b",
+        "text": "jazz"
+      },
+      {
+        "id": "c",
+        "text": "set"
+      },
+      {
+        "id": "d",
+        "text": "chain"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Chess* begins with /t\u0283/, the voiceless postalveolar affricate.",
+      "body": "Only *chain* /t\u0283e\u026an/ shares it. *Soak* and *set* carry /s/, *jazz* carries /z/ \u2014 the two fricatives either side of the affricate.",
+      "trap": "'Set' shares three letters and the final /s/ environment, but the initial is what is tested."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t74855",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: house.",
+    "options": [
+      {
+        "id": "a",
+        "text": "happy"
+      },
+      {
+        "id": "b",
+        "text": "rhythm"
+      },
+      {
+        "id": "c",
+        "text": "ghost"
+      },
+      {
+        "id": "d",
+        "text": "honour"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "Initial *h* in *house* is pronounced /h/ \u2014 and only *happy* pronounces it too.",
+      "body": "*Ghost* (/g/), *rhythm* (/r/) and *honour* (silent h, /\u0252/) all drop or replace it. The test is whether the letter sounds at all.",
+      "trap": "Three options contain the letter *h*; only one *sounds* it. The letter tells you nothing."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74856",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: shadow.",
+    "options": [
+      {
+        "id": "a",
+        "text": "sure"
+      },
+      {
+        "id": "b",
+        "text": "match"
+      },
+      {
+        "id": "c",
+        "text": "chemistry"
+      },
+      {
+        "id": "d",
+        "text": "scheme"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Shadow* begins with /\u0283/.",
+      "body": "*Sure* /\u0283\u028a\u0259/ matches. *Match* carries /t\u0283/, *chemistry* carries /k/, *scheme* carries /sk/ \u2014 the *sh*-spelling family in full.",
+      "trap": "All four contain *sh*, *ch* or *sch*; English spells /\u0283/ four ways here and only the sound decides."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74857",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: knot.",
+    "options": [
+      {
+        "id": "a",
+        "text": "church"
+      },
+      {
+        "id": "b",
+        "text": "norm"
+      },
+      {
+        "id": "c",
+        "text": "keep"
+      },
+      {
+        "id": "d",
+        "text": "cease"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "The *k* in *knot* is silent \u2014 the word begins /n/.",
+      "body": "*Norm* /n\u0254\u02d0m/ matches. *Keep* pronounces its *k*, *church* and *cease* begin elsewhere entirely.",
+      "trap": "'Keep' is the spelling trap: same initial letter, sounded where *knot* silences it."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76560",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: Orchid.",
+    "options": [
+      {
+        "id": "a",
+        "text": "sceptre"
+      },
+      {
+        "id": "b",
+        "text": "skewer"
+      },
+      {
+        "id": "c",
+        "text": "sham"
+      },
+      {
+        "id": "d",
+        "text": "chagrin"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Orchid* is /\u02c8\u0254\u02d0k\u026ad/ \u2014 the *ch* spells /k/.",
+      "body": "*Skewer* /\u02c8skju\u02d0\u0259/ carries the /k/. *Sceptre* (/s/), *sham* (/\u0283/) and *chagrin* (/\u0283/) are the three other things *ch* can spell.",
+      "trap": "The set is a catalogue of *ch* spellings; only the sound, never the letters, selects."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t76561",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: picture.",
+    "options": [
+      {
+        "id": "a",
+        "text": "passion"
+      },
+      {
+        "id": "b",
+        "text": "castor"
+      },
+      {
+        "id": "c",
+        "text": "nation"
+      },
+      {
+        "id": "d",
+        "text": "lurch"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Picture* centres on /t\u0283/.",
+      "body": "*Lurch* /l\u025c\u02d0t\u0283/ matches. *Passion* and *nation* carry /\u0283/, *castor* carries /st/ \u2014 the *-tion/-ssion* family against the *-ture* one.",
+      "trap": "'Nation' shares the *-tion* ending but a different consonant; endings mislead, middles decide."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74861",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the most appropriate stress pattern. The stressed syllables are written in capital letters: similarly.",
+    "options": [
+      {
+        "id": "a",
+        "text": "simiLARly"
+      },
+      {
+        "id": "b",
+        "text": "simlarLY"
+      },
+      {
+        "id": "c",
+        "text": "SImilarly"
+      },
+      {
+        "id": "d",
+        "text": "siMIlarly"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "word-stress",
+    "section": "Word Stress",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Similarly* stresses the first syllable: /\u02c8s\u026am\u026al\u0259li/.",
+      "body": "Four-syllable adverbs in *-ly* keep the stress of their adjective \u2014 *SImilar* gives *SImilarly*.",
+      "trap": "'siMIlarly' places it where the spelling's middle weight sits, not where the word says it."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74862",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the most appropriate stress pattern: convalescent.",
+    "options": [
+      {
+        "id": "a",
+        "text": "CONvalescent"
+      },
+      {
+        "id": "b",
+        "text": "conVAlescent"
+      },
+      {
+        "id": "c",
+        "text": "convaleSCENT"
+      },
+      {
+        "id": "d",
+        "text": "convaLEscent"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "word-stress",
+    "section": "Word Stress",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Convalescent* stresses the third syllable: /\u02cck\u0252nv\u0259\u02c8lesnt/.",
+      "body": "The primary stress falls on *-les-*, with a secondary on *con-*. Long Latinate words push stress right.",
+      "trap": "'CONvalescent' stresses the prefix, which carries only secondary weight."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t74864",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the most appropriate stress pattern: Grammarian.",
+    "options": [
+      {
+        "id": "a",
+        "text": "GRAmmarian"
+      },
+      {
+        "id": "b",
+        "text": "graMMArian"
+      },
+      {
+        "id": "c",
+        "text": "grammaRIan"
+      },
+      {
+        "id": "d",
+        "text": "grammariAN"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "word-stress",
+    "section": "Word Stress",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Grammarian* is /\u0261r\u0259\u02c8me\u0259ri\u0259n/ \u2014 stress on the second syllable.",
+      "body": "The *-arian* suffix pulls stress to the syllable before it, as in *librarian* and *vegetarian*.",
+      "trap": "'GRAmmarian' stresses the root as if the suffix added nothing \u2014 but *-arian* always shifts it."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t74865",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the most appropriate stress pattern: Hospitality.",
+    "options": [
+      {
+        "id": "a",
+        "text": "HOSpitality"
+      },
+      {
+        "id": "b",
+        "text": "hosPItality"
+      },
+      {
+        "id": "c",
+        "text": "hospiTAlity"
+      },
+      {
+        "id": "d",
+        "text": "hospitaLIty"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "word-stress",
+    "section": "Word Stress",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Hospitality* is /\u02cch\u0252sp\u026a\u02c8t\u00e6l\u0259ti/ \u2014 primary stress on the third syllable.",
+      "body": "The *-ity* suffix draws primary stress to the syllable before it, with secondary on the first.",
+      "trap": "'HOSpitality' keeps the stress of *hospital*, but the suffix moves it \u2014 suffixes govern, roots yield."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t76576",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word that rhymes with: fright.",
+    "options": [
+      {
+        "id": "a",
+        "text": "freight"
+      },
+      {
+        "id": "b",
+        "text": "plait"
+      },
+      {
+        "id": "c",
+        "text": "hate"
+      },
+      {
+        "id": "d",
+        "text": "height"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "rhymes",
+    "section": "Rhymes",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Fright* is /fra\u026at/; *height* is /ha\u026at/ \u2014 same rime.",
+      "body": "Only the onset differs. *Freight* (/fre\u026at/), *plait* (/pl\u00e6t/) and *hate* (/he\u026at/) all carry different vowels.",
+      "trap": "'Freight' shares five letters and almost no sound \u2014 the set is built to punish spelling readers."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76577",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word that rhymes with: tie.",
+    "options": [
+      {
+        "id": "a",
+        "text": "hay"
+      },
+      {
+        "id": "b",
+        "text": "high"
+      },
+      {
+        "id": "c",
+        "text": "claim"
+      },
+      {
+        "id": "d",
+        "text": "dim"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "rhymes",
+    "section": "Rhymes",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Tie* is /ta\u026a/; *high* is /ha\u026a/.",
+      "body": "Same diphthong, same final silence. The others diverge in vowel or coda.",
+      "trap": "'Hay' shares the two-letter shape but not the sound."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76578",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word that rhymes with: tern.",
+    "options": [
+      {
+        "id": "a",
+        "text": "born"
+      },
+      {
+        "id": "b",
+        "text": "earn"
+      },
+      {
+        "id": "c",
+        "text": "fan"
+      },
+      {
+        "id": "d",
+        "text": "birth"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "rhymes",
+    "section": "Rhymes",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Tern* is /t\u025c\u02d0n/; *earn* is /\u025c\u02d0n/ \u2014 rime identical.",
+      "body": "*Birth* /b\u025c\u02d0\u03b8/ shares the vowel but not the final consonant \u2014 near, not same.",
+      "trap": "'Birth' is the designed near-miss: same vowel, different coda. Rhyme needs both."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t76579",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word that rhymes with: fear.",
+    "options": [
+      {
+        "id": "a",
+        "text": "wore"
+      },
+      {
+        "id": "b",
+        "text": "there"
+      },
+      {
+        "id": "c",
+        "text": "deer"
+      },
+      {
+        "id": "d",
+        "text": "care"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "rhymes",
+    "section": "Rhymes",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Fear* is /f\u026a\u0259/; *deer* is /d\u026a\u0259/.",
+      "body": "The centring diphthong matches. *Wore* (/\u0254\u02d0/), *there* and *care* (/e\u0259/) are the three near vowels.",
+      "trap": "Three *-are/-ore* spellings against one *-eer*; the ear misleads, the vowel decides."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76581",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word that rhymes with: mother.",
+    "options": [
+      {
+        "id": "a",
+        "text": "other"
+      },
+      {
+        "id": "b",
+        "text": "smoothen"
+      },
+      {
+        "id": "c",
+        "text": "smoulder"
+      },
+      {
+        "id": "d",
+        "text": "murder"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "rhymes",
+    "section": "Rhymes",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Mother* is /\u02c8m\u028c\u00f0\u0259/; *other* is /\u02c8\u028c\u00f0\u0259/.",
+      "body": "Same stressed vowel, same ending. The rest carry /u\u02d0/, /\u0259\u028a/ and /\u025c\u02d0/ respectively.",
+      "trap": "'Murder' shares the *-urder/-other* shape most closely and the vowel least."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76440",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the most appropriate interpretation: Revealing that information will cut the ground from under my feet.",
+    "options": [
+      {
+        "id": "a",
+        "text": "expose my plans"
+      },
+      {
+        "id": "b",
+        "text": "ruin my plans"
+      },
+      {
+        "id": "c",
+        "text": "support my plans"
+      },
+      {
+        "id": "d",
+        "text": "promote my plans"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Cut the ground from under* someone's feet is to destroy their position.",
+      "body": "The ground is what you stand on; cutting it away ruins, not merely exposes.",
+      "trap": "'Expose' is what *revealing* does \u2014 the idiom describes the *consequence*, not the act."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76442",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the most appropriate interpretation: Mother always tells me to keep my nose clean. This means that she wants me to:",
+    "options": [
+      {
+        "id": "a",
+        "text": "be focused"
+      },
+      {
+        "id": "b",
+        "text": "stay healthy"
+      },
+      {
+        "id": "c",
+        "text": "stay out of trouble"
+      },
+      {
+        "id": "d",
+        "text": "do what pleases me"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Keep your nose clean* means stay out of trouble.",
+      "body": "A fixed idiom for avoiding wrongdoing \u2014 nothing to do with hygiene or focus.",
+      "trap": "'Stay healthy' reads the *nose* literally, which the idiom never intends."
+    },
+    "marks": 2,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76443",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the most appropriate interpretation: This action effectively puts the mockers on the project. This means that the project will:",
+    "options": [
+      {
+        "id": "a",
+        "text": "take off soon"
+      },
+      {
+        "id": "b",
+        "text": "be delayed"
+      },
+      {
+        "id": "c",
+        "text": "not be executed"
+      },
+      {
+        "id": "d",
+        "text": "not begin well"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Put the mockers on* something is to jinx it \u2014 to ruin its chances.",
+      "body": "The action kills the project outright, not merely delays it.",
+      "trap": "'Be delayed' softens a killing into a postponement."
+    },
+    "marks": 2,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t76444",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the most appropriate interpretation: You can see clearly that we are surpassed in numerical strength. This means that we are:",
+    "options": [
+      {
+        "id": "a",
+        "text": "much weaker than they"
+      },
+      {
+        "id": "b",
+        "text": "by far stronger than they"
+      },
+      {
+        "id": "c",
+        "text": "fewer than they are"
+      },
+      {
+        "id": "d",
+        "text": "more than they are"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Surpassed in numerical strength* is strictly about numbers \u2014 fewer.",
+      "body": "*Numerical* restricts the claim to count. Weakness in general is a different, broader claim the sentence never makes.",
+      "trap": "'Much weaker' imports strength where only numbers were compared."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76445",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the most appropriate interpretation: One of the athletes was disqualified because she jumped the gun. This means that she started:",
+    "options": [
+      {
+        "id": "a",
+        "text": "hurriedly"
+      },
+      {
+        "id": "b",
+        "text": "without permission"
+      },
+      {
+        "id": "c",
+        "text": "too soon"
+      },
+      {
+        "id": "d",
+        "text": "on time"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Jump the gun* means start before the signal.",
+      "body": "Too soon is the whole idiom \u2014 haste or permission are incidental to the timing.",
+      "trap": "'Hurriedly' describes manner; the idiom is about *when*, not how."
+    },
+    "marks": 2,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76446",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the most appropriate interpretation: Be careful of what you say; there are no flies on the boss. This means that the boss is:",
+    "options": [
+      {
+        "id": "a",
+        "text": "strict"
+      },
+      {
+        "id": "b",
+        "text": "smart"
+      },
+      {
+        "id": "c",
+        "text": "gullible"
+      },
+      {
+        "id": "d",
+        "text": "neat"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*No flies on* someone means they are sharp \u2014 not easily fooled.",
+      "body": "Flies settle on the slow and the still; their absence marks alertness.",
+      "trap": "'Gullible' is the exact antonym, planted for readers who invert the idiom."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76447",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the most appropriate interpretation: The students cocked their ears at the principal's speech. This means that they listened with:",
+    "options": [
+      {
+        "id": "a",
+        "text": "no understanding"
+      },
+      {
+        "id": "b",
+        "text": "no interest"
+      },
+      {
+        "id": "c",
+        "text": "little interest"
+      },
+      {
+        "id": "d",
+        "text": "rapt attention"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Cock one's ears* is to listen with full, strained attention.",
+      "body": "Like an animal pricking its ears \u2014 every sense directed at the sound.",
+      "trap": "The three distractors form a gradient of inattention; the idiom sits at the opposite pole."
+    },
+    "marks": 2,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76448",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the most appropriate interpretation: She has a good head on her shoulders. This means that she:",
+    "options": [
+      {
+        "id": "a",
+        "text": "is very beautiful"
+      },
+      {
+        "id": "b",
+        "text": "is well-behaved and diligent"
+      },
+      {
+        "id": "c",
+        "text": "is sensible"
+      },
+      {
+        "id": "d",
+        "text": "thinks fast"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "A *good head on one's shoulders* is sound judgment.",
+      "body": "*Sensible* is the plain term. Speed (*thinks fast*), beauty and diligence are all different virtues.",
+      "trap": "'Thinks fast' confuses quickness with soundness \u2014 a quick fool is still a fool."
+    },
+    "marks": 2,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76449",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the most appropriate interpretation: The accountant has been under a cloud since the fraud scandal. This means that the accountant is:",
+    "options": [
+      {
+        "id": "a",
+        "text": "unhappy"
+      },
+      {
+        "id": "b",
+        "text": "worried"
+      },
+      {
+        "id": "c",
+        "text": "under suspicion"
+      },
+      {
+        "id": "d",
+        "text": "under supervision"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Under a cloud* means under suspicion of wrongdoing.",
+      "body": "The cloud is disrepute \u2014 specifically the shadow a scandal casts on those near it.",
+      "trap": "'Under supervision' shares the *under* but means watched, not suspected."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76450",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the most appropriate interpretation: Immediately the truth was revealed, Ngozi flew into a rage. This means that Ngozi:",
+    "options": [
+      {
+        "id": "a",
+        "text": "ran away"
+      },
+      {
+        "id": "b",
+        "text": "became sad"
+      },
+      {
+        "id": "c",
+        "text": "became desperate"
+      },
+      {
+        "id": "d",
+        "text": "suddenly became very angry"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "sentence-interpretation",
+    "section": "Sentence Interpretation",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Fly into a rage* is sudden, violent anger.",
+      "body": "*Flew* carries the suddenness; *rage* carries the anger. Both elements must be present.",
+      "trap": "'Ran away' takes *flew* literally \u2014 the verb here is metaphorical, not physical."
+    },
+    "marks": 2,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76420",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option most nearly opposite in meaning to the underlined word that correctly fills the gap: The posh cars were sandwiched between two ______ ones.",
+    "options": [
+      {
+        "id": "a",
+        "text": "rickety"
+      },
+      {
+        "id": "b",
+        "text": "rugged"
+      },
+      {
+        "id": "c",
+        "text": "modest"
+      },
+      {
+        "id": "d",
+        "text": "dented"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Posh* means luxurious; *modest* in this sense means unpretentious.",
+      "body": "The opposition is luxury against modesty. *Rickety*, *rugged* and *dented* are all merely 'not posh' in other ways.",
+      "trap": "'Rugged' and 'dented' describe condition, not status \u2014 a dented Rolls is still posh."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76421",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option most nearly opposite in meaning to the underlined word that correctly fills the gap: A trivial issue often becomes ______ when it is not properly handled.",
+    "options": [
+      {
+        "id": "a",
+        "text": "unbearable"
+      },
+      {
+        "id": "b",
+        "text": "valuable"
+      },
+      {
+        "id": "c",
+        "text": "ordinary"
+      },
+      {
+        "id": "d",
+        "text": "serious"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Trivial* means of little importance; *serious* means of much.",
+      "body": "A direct scale reversal. *Unbearable* is about tolerance, *ordinary* about commonness \u2014 neither opposes triviality.",
+      "trap": "'Ordinary' feels close to trivial, but ordinary things can still matter."
+    },
+    "marks": 2,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76422",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option most nearly opposite in meaning to the underlined word that correctly fills the gap: The rockstar's stellar performance contrasted sharply with the ______ showing of the amateur.",
+    "options": [
+      {
+        "id": "a",
+        "text": "routine"
+      },
+      {
+        "id": "b",
+        "text": "awkward"
+      },
+      {
+        "id": "c",
+        "text": "mundane"
+      },
+      {
+        "id": "d",
+        "text": "woeful"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Stellar* means outstanding; *mundane* means ordinary.",
+      "body": "The contrast the sentence sets up (*contrasted sharply*) demands the plain opposite of brilliance.",
+      "trap": "'Woeful' and 'awkward' are negative, but a performance can be mundane without being bad."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76423",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option most nearly opposite in meaning to the underlined word that correctly fills the gap: Tolu was sanctioned for late-coming but his friend was ______.",
+    "options": [
+      {
+        "id": "a",
+        "text": "pardoned"
+      },
+      {
+        "id": "b",
+        "text": "released"
+      },
+      {
+        "id": "c",
+        "text": "ignored"
+      },
+      {
+        "id": "d",
+        "text": "exempted"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Sanctioned* here means punished; *pardoned* means forgiven the punishment.",
+      "body": "The sentence pairs punishment against its reversal. *Exempted* frees from an obligation, not from a penalty already imposed.",
+      "trap": "'Exempted' is the near-miss \u2014 freedom *before* versus forgiveness *after*."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76424",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option most nearly opposite in meaning to the underlined word that correctly fills the gap: While other teachers' support for the action ______, Victor's was dogged.",
+    "options": [
+      {
+        "id": "a",
+        "text": "woeful"
+      },
+      {
+        "id": "b",
+        "text": "disappointing"
+      },
+      {
+        "id": "c",
+        "text": "wavering"
+      },
+      {
+        "id": "d",
+        "text": "declining"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Dogged* means persistent; *wavering* means unsteady.",
+      "body": "The *while* sets up the contrast: steadfastness against unsteadiness.",
+      "trap": "'Declining' is about lessening, not unsteadiness \u2014 support can decline without wavering."
+    },
+    "marks": 2,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t76425",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option most nearly opposite in meaning to the underlined word that correctly fills the gap: Some people are good at terminating other people's projects but applaud those ______ them.",
+    "options": [
+      {
+        "id": "a",
+        "text": "designing"
+      },
+      {
+        "id": "b",
+        "text": "executing"
+      },
+      {
+        "id": "c",
+        "text": "initiating"
+      },
+      {
+        "id": "d",
+        "text": "organising"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Terminate* ends; *initiate* begins.",
+      "body": "The opposition is start against finish. *Executing* and *organising* continue a project; only *initiating* reverses its ending.",
+      "trap": "'Executing' feels active like terminating, but carrying on is not the opposite of stopping."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76426",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option most nearly opposite in meaning to the underlined word that correctly fills the gap: The precarious terraces of the stadium have been transformed into ______ ones.",
+    "options": [
+      {
+        "id": "a",
+        "text": "secure"
+      },
+      {
+        "id": "b",
+        "text": "narrow"
+      },
+      {
+        "id": "c",
+        "text": "durable"
+      },
+      {
+        "id": "d",
+        "text": "smooth"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Precarious* means dangerously unstable; *secure* means safe.",
+      "body": "The transformation is from danger to safety. *Durable* is adjacent \u2014 lasting \u2014 but a durable terrace can still be precarious.",
+      "trap": "'Durable' answers longevity where the question asks safety."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76427",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option most nearly opposite in meaning to the underlined word that correctly fills the gap: If one thing irritates you, it might ______ another.",
+    "options": [
+      {
+        "id": "a",
+        "text": "delight"
+      },
+      {
+        "id": "b",
+        "text": "concern"
+      },
+      {
+        "id": "c",
+        "text": "invigorate"
+      },
+      {
+        "id": "d",
+        "text": "bother"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Irritate* vexes; *delight* pleases.",
+      "body": "Direct affective reversal. *Bother* is a synonym of irritate, planted as the trap.",
+      "trap": "'Bother' *means* irritate \u2014 it sits in the options precisely to catch skimmers."
+    },
+    "marks": 2,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76428",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option most nearly opposite in meaning to the underlined word that correctly fills the gap: Jane was loud as a teenager but ______ as an adult.",
+    "options": [
+      {
+        "id": "a",
+        "text": "reserved"
+      },
+      {
+        "id": "b",
+        "text": "peaceful"
+      },
+      {
+        "id": "c",
+        "text": "respectful"
+      },
+      {
+        "id": "d",
+        "text": "humble"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Loud* in demeanour opposes *reserved* in demeanour.",
+      "body": "The contrast is social volume. *Peaceful*, *respectful* and *humble* are all quiet-adjacent virtues, but only *reserved* reverses loudness itself.",
+      "trap": "Three gentle virtues against one precise opposite \u2014 the question tests opposition, not niceness."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76429",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the option most nearly opposite in meaning to the underlined word that correctly fills the gap: Do not always reprimand your children; it is good to ______ them sometimes.",
+    "options": [
+      {
+        "id": "a",
+        "text": "pamper"
+      },
+      {
+        "id": "b",
+        "text": "forgive"
+      },
+      {
+        "id": "c",
+        "text": "compliment"
+      },
+      {
+        "id": "d",
+        "text": "advise"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "antonyms",
+    "section": "Antonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Reprimand* rebukes; *compliment* praises.",
+      "body": "Scold against praise is the direct reversal. *Forgive* follows wrongdoing without praising; *advise* neither scolds nor praises.",
+      "trap": "'Forgive' is the near-miss \u2014 clemency is adjacent to praise but is not praise."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76451",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word as used in the sentence: Parents encourage their children to exercise financial prudence.",
+    "options": [
+      {
+        "id": "a",
+        "text": "credence"
+      },
+      {
+        "id": "b",
+        "text": "sincerity"
+      },
+      {
+        "id": "c",
+        "text": "precision"
+      },
+      {
+        "id": "d",
+        "text": "caution"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Prudence* in money matters is caution.",
+      "body": "Financial prudence is carefulness with money \u2014 *caution* in plain terms.",
+      "trap": "'Precision' is exactness, a different virtue; prudence is about care, not accuracy."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76452",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word as used in the sentence: Awa deceived Ahmed into handing over all his savings.",
+    "options": [
+      {
+        "id": "a",
+        "text": "cooked"
+      },
+      {
+        "id": "b",
+        "text": "betrayed"
+      },
+      {
+        "id": "c",
+        "text": "cheated"
+      },
+      {
+        "id": "d",
+        "text": "fooled"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "To *deceive into* handing over is to fool into it.",
+      "body": "*Fooled* captures the trickery directly. *Cheated* and *betrayed* add violations of trust the sentence never states.",
+      "trap": "'Cheated' and 'betrayed' both fit a deception story, but the sentence tests the *act*, not its moral colour."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76453",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word as used in the sentence: It turned out that the plaintiff's claim was false.",
+    "options": [
+      {
+        "id": "a",
+        "text": "contention"
+      },
+      {
+        "id": "b",
+        "text": "allegation"
+      },
+      {
+        "id": "c",
+        "text": "surmise"
+      },
+      {
+        "id": "d",
+        "text": "pronouncement"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "A *claim* proved false was an *allegation* \u2014 asserted, never established.",
+      "body": "*Allegation* carries exactly the unproven-assertion sense that 'turned out false' requires.",
+      "trap": "'Contention' is an argument between parties; a claim can stand alone."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t76454",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word as used in the sentence: The aggrieved faction held a clandestine meeting.",
+    "options": [
+      {
+        "id": "a",
+        "text": "quiet"
+      },
+      {
+        "id": "b",
+        "text": "brief"
+      },
+      {
+        "id": "c",
+        "text": "secret"
+      },
+      {
+        "id": "d",
+        "text": "quick"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Clandestine* means kept secret, especially for concealment.",
+      "body": "*Secret* is the plain term. *Quiet* and *brief* describe manner and duration, not secrecy.",
+      "trap": "'Quiet' is how a secret meeting is held, not what makes it secret."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76455",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word as used in the sentence: Morgan Pharmacy is the sole distributor of the antiviral drug.",
+    "options": [
+      {
+        "id": "a",
+        "text": "creditable"
+      },
+      {
+        "id": "b",
+        "text": "only"
+      },
+      {
+        "id": "c",
+        "text": "first"
+      },
+      {
+        "id": "d",
+        "text": "major"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Sole* means one and only.",
+      "body": "*Only* is the direct equivalent. *First* and *major* describe rank, not exclusivity.",
+      "trap": "'Major' is true of a sole distributor but answers importance, not singularity."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76456",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word as used in the sentence: Police officers holding batons impounded the banker's car.",
+    "options": [
+      {
+        "id": "a",
+        "text": "collected"
+      },
+      {
+        "id": "b",
+        "text": "banned"
+      },
+      {
+        "id": "c",
+        "text": "seized"
+      },
+      {
+        "id": "d",
+        "text": "damaged"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "To *impound* is to seize officially.",
+      "body": "*Seized* carries the authority. *Collected* is too neutral; *damaged* is unrelated.",
+      "trap": "'Banned' confuses the car with its use \u2014 you ban driving, you impound cars."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76458",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word as used in the sentence: The English teacher is always cheerful.",
+    "options": [
+      {
+        "id": "a",
+        "text": "zealous"
+      },
+      {
+        "id": "b",
+        "text": "satisfied"
+      },
+      {
+        "id": "c",
+        "text": "careful"
+      },
+      {
+        "id": "d",
+        "text": "gleeful"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Cheerful* is visibly, actively glad \u2014 *gleeful*.",
+      "body": "Both describe gladness shown. *Satisfied* is contentment kept in; *zealous* is fervour about something else.",
+      "trap": "'Satisfied' is the quiet version; cheerfulness announces itself."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76459",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word as used in the sentence: The Chairman is of the opinion that laying off workers is pernicious to the growth of the company.",
+    "options": [
+      {
+        "id": "a",
+        "text": "indispensable"
+      },
+      {
+        "id": "b",
+        "text": "irrelevant"
+      },
+      {
+        "id": "c",
+        "text": "crucial"
+      },
+      {
+        "id": "d",
+        "text": "harmful"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Pernicious* means harmful \u2014 confirmed twice in this paper.",
+      "body": "*Harmful* is the plain term. This entry corroborates t74826: there, the key gave *benign* (the antonym) and was corrected here to *noxious*.",
+      "trap": "The paper itself contains both the error and its correction \u2014 read across questions, not in isolation."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76461",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word as used in the sentence: It was she that commanded me to leave the room.",
+    "options": [
+      {
+        "id": "a",
+        "text": "persuaded"
+      },
+      {
+        "id": "b",
+        "text": "ordered"
+      },
+      {
+        "id": "c",
+        "text": "induced"
+      },
+      {
+        "id": "d",
+        "text": "encouraged"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "To *command* is to order with authority.",
+      "body": "*Ordered* is the direct equivalent. *Persuaded*, *induced* and *encouraged* all work by influence, not authority.",
+      "trap": "Three synonyms of *influence* against one of *authority* \u2014 the sentence tests which kind of power."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76462",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word nearest in meaning to the underlined word as used in the sentence: The valedictorian was admired for her perseverance while at school.",
+    "options": [
+      {
+        "id": "a",
+        "text": "tenacity"
+      },
+      {
+        "id": "b",
+        "text": "enthusiasm"
+      },
+      {
+        "id": "c",
+        "text": "patience"
+      },
+      {
+        "id": "d",
+        "text": "humility"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "synonyms",
+    "section": "Synonyms",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Perseverance* is persistence \u2014 *tenacity*, holding on.",
+      "body": "Both describe refusing to let go. *Patience* waits; *tenacity* pushes.",
+      "trap": "'Patience' is the quiet virtue; perseverance acts."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76547",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: tie.",
+    "options": [
+      {
+        "id": "a",
+        "text": "hey"
+      },
+      {
+        "id": "b",
+        "text": "farce"
+      },
+      {
+        "id": "c",
+        "text": "hail"
+      },
+      {
+        "id": "d",
+        "text": "bile"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Tie* is /ta\u026a/; *bile* is /ba\u026al/.",
+      "body": "Same diphthong, same silence after it. *Hey*, *farce* and *hail* all carry different vowels behind similar spellings.",
+      "trap": "'Hail' shares the *-ail* shape and almost no sound."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76548",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: put.",
+    "options": [
+      {
+        "id": "a",
+        "text": "fool"
+      },
+      {
+        "id": "b",
+        "text": "school"
+      },
+      {
+        "id": "c",
+        "text": "wool"
+      },
+      {
+        "id": "d",
+        "text": "cool"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Put* is /p\u028at/ \u2014 short /\u028a/, not long /u\u02d0/.",
+      "body": "Only *wool* /w\u028al/ shares it. *Fool*, *school* and *cool* all carry the long /u\u02d0/ that the *oo* spelling usually signals.",
+      "trap": "Three long vowels against one short \u2014 the spelling promises /u\u02d0/ and only one option breaks the promise correctly."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76549",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: tailor.",
+    "options": [
+      {
+        "id": "a",
+        "text": "torn"
+      },
+      {
+        "id": "b",
+        "text": "dent"
+      },
+      {
+        "id": "c",
+        "text": "orchard"
+      },
+      {
+        "id": "d",
+        "text": "partake"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Tailor* is /\u02c8te\u026al\u0259/ \u2014 the *ai* spells /e\u026a/.",
+      "body": "*Partake* /p\u0251\u02d0\u02c8te\u026ak/ carries it. *Torn* (/\u0254\u02d0/), *dent* (/e/) and *orchard* (/\u0254\u02d0/) are three other vowels *a*-spellings can hide.",
+      "trap": "'Torn' shares the initial *t* and nothing else."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76550",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: fate.",
+    "options": [
+      {
+        "id": "a",
+        "text": "share"
+      },
+      {
+        "id": "b",
+        "text": "flat"
+      },
+      {
+        "id": "c",
+        "text": "said"
+      },
+      {
+        "id": "d",
+        "text": "weight"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Fate* is /fe\u026at/; *weight* is /we\u026at/.",
+      "body": "The *eigh* spelling reliably spells /e\u026a/. *Share* (/e\u0259/), *flat* (/\u00e6/) and *said* (/e/) are the three common impostors.",
+      "trap": "'Said' is the cruellest \u2014 the *ai* spelling that breaks its own rule."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76551",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: fern.",
+    "options": [
+      {
+        "id": "a",
+        "text": "heart"
+      },
+      {
+        "id": "b",
+        "text": "merge"
+      },
+      {
+        "id": "c",
+        "text": "eureka"
+      },
+      {
+        "id": "d",
+        "text": "beryl"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Fern* is /f\u025c\u02d0n/; *merge* is /m\u025c\u02d0d\u0292/.",
+      "body": "The *er* spelling reliably spells /\u025c\u02d0/ here. *Heart* (/\u0251\u02d0/), *eureka* (/i\u02d0/) and *beryl* (/e/) are three other vowels *er*-spellings can hide.",
+      "trap": "'Beryl' shares the *er* shape most closely and the vowel least."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76552",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: powder.",
+    "options": [
+      {
+        "id": "a",
+        "text": "potty"
+      },
+      {
+        "id": "b",
+        "text": "lout"
+      },
+      {
+        "id": "c",
+        "text": "tour"
+      },
+      {
+        "id": "d",
+        "text": "low"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Powder* is /\u02c8pa\u028ad\u0259/ \u2014 the *ow* spells /a\u028a/.",
+      "body": "*Lout* /la\u028at/ matches. *Tour* (/\u028a\u0259/), *low* (/\u0259\u028a/) and *potty* (/\u0252/) are the three other vowels *o*-spellings can hide.",
+      "trap": "'Low' and 'tour' share the *o* shapes; only the sound selects."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76553",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: cruise.",
+    "options": [
+      {
+        "id": "a",
+        "text": "quite"
+      },
+      {
+        "id": "b",
+        "text": "hood"
+      },
+      {
+        "id": "c",
+        "text": "move"
+      },
+      {
+        "id": "d",
+        "text": "suite"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Cruise* is /kru\u02d0z/; *move* is /mu\u02d0v/.",
+      "body": "Long /u\u02d0/ in both. *Hood* (/\u028a/) is the short version; *quite* (/a\u026a/) and *suite* (/i\u02d0/) are unrelated.",
+      "trap": "'Suite' shares the *ui* spelling and almost no sound \u2014 the *u* spellings mislead systematically here."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76555",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: spot.",
+    "options": [
+      {
+        "id": "a",
+        "text": "sport"
+      },
+      {
+        "id": "b",
+        "text": "glut"
+      },
+      {
+        "id": "c",
+        "text": "slot"
+      },
+      {
+        "id": "d",
+        "text": "hurt"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Spot* is /sp\u0252t/; *slot* is /sl\u0252t/.",
+      "body": "Short /\u0252/ in both. *Sport* (/\u0254\u02d0/), *glut* (/\u028c/) and *hurt* (/\u025c\u02d0/) are three other vowels *o*-spellings can hide.",
+      "trap": "'Sport' shares four letters and almost no vowel."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76556",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: there.",
+    "options": [
+      {
+        "id": "a",
+        "text": "their"
+      },
+      {
+        "id": "b",
+        "text": "ear"
+      },
+      {
+        "id": "c",
+        "text": "fear"
+      },
+      {
+        "id": "d",
+        "text": "peer"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*There* and *their* are homophones: /\u00f0e\u0259/.",
+      "body": "Identical in sound, different in spelling and meaning. *Ear*, *fear* and *peer* all carry /\u026a\u0259/.",
+      "trap": "The three distractors share the *-ear* shape and a different vowel \u2014 spelling misleads, sound decides."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76562",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: fissure.",
+    "options": [
+      {
+        "id": "a",
+        "text": "erase"
+      },
+      {
+        "id": "b",
+        "text": "vision"
+      },
+      {
+        "id": "c",
+        "text": "unsure"
+      },
+      {
+        "id": "d",
+        "text": "feature"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Fissure* centres on /\u0283/.",
+      "body": "*Unsure* /\u028cn\u02c8\u0283\u028a\u0259/ matches. *Erase* (/s/), *vision* (/\u0292/) and *feature* (/t\u0283/) are the three neighbouring fricatives.",
+      "trap": "'Vision' shares the *-sion* ending and almost no consonant \u2014 endings mislead."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76563",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: visit.",
+    "options": [
+      {
+        "id": "a",
+        "text": "easy"
+      },
+      {
+        "id": "b",
+        "text": "peace"
+      },
+      {
+        "id": "c",
+        "text": "face"
+      },
+      {
+        "id": "d",
+        "text": "mouse"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "The *s* in *visit* is voiced: /z/.",
+      "body": "*Easy* /\u02c8i\u02d0zi/ matches. *Peace*, *face* and *mouse* all carry the voiceless /s/ \u2014 the letter's usual value.",
+      "trap": "Three voiceless against one voiced; the letter *s* defaults to /s/ everywhere except here."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76564",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: hack.",
+    "options": [
+      {
+        "id": "a",
+        "text": "schedule"
+      },
+      {
+        "id": "b",
+        "text": "behaviour"
+      },
+      {
+        "id": "c",
+        "text": "honourable"
+      },
+      {
+        "id": "d",
+        "text": "exhibit"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Hack* begins with /h/; *behaviour* carries it mid-word.",
+      "body": "Position differs, sound matches. *Schedule* (/sk/ or /\u0283/), *honourable* (silent h) and *exhibit* (no /h/) all lack it.",
+      "trap": "'Honourable' contains the letter and not the sound \u2014 the recurring lesson of this set."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76566",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: left.",
+    "options": [
+      {
+        "id": "a",
+        "text": "half"
+      },
+      {
+        "id": "b",
+        "text": "could"
+      },
+      {
+        "id": "c",
+        "text": "yolk"
+      },
+      {
+        "id": "d",
+        "text": "bulk"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Left* and *bulk* both pronounce their *l*.",
+      "body": "*Half*, *could* (no l at all) and *yolk* silence or drop it. Only *bulk* /b\u028clk/ sounds the letter.",
+      "trap": "Three options contain *l*; one pronounces it. The letter, again, tells you nothing."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t76567",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: fly.",
+    "options": [
+      {
+        "id": "a",
+        "text": "tough"
+      },
+      {
+        "id": "b",
+        "text": "though"
+      },
+      {
+        "id": "c",
+        "text": "dough"
+      },
+      {
+        "id": "d",
+        "text": "revive"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Fly* begins with /f/; *tough* ends with it.",
+      "body": "Position differs, sound matches. *Though* (/\u00f0/), *dough* (silent *gh*) and *revive* (/v/) are the three things *gh*-spellings can hide.",
+      "trap": "The set is a catalogue of *ough* spellings; only the sound selects."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76568",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: text.",
+    "options": [
+      {
+        "id": "a",
+        "text": "kissed"
+      },
+      {
+        "id": "b",
+        "text": "west"
+      },
+      {
+        "id": "c",
+        "text": "fixed"
+      },
+      {
+        "id": "d",
+        "text": "risked"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Text* ends /kst/; *fixed* ends /kst/.",
+      "body": "The cluster matches exactly. *Kissed* and *west* end /st/, *risked* ends /skt/ \u2014 near, not same.",
+      "trap": "'Risked' shares three of four sounds; clusters must match whole, not mostly."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t76569",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: uncle.",
+    "options": [
+      {
+        "id": "a",
+        "text": "singe"
+      },
+      {
+        "id": "b",
+        "text": "knuckle"
+      },
+      {
+        "id": "c",
+        "text": "bangle"
+      },
+      {
+        "id": "d",
+        "text": "ankle"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Uncle* and *ankle* share the full rime /\u014bk\u0259l/.",
+      "body": "*Knuckle* shares the consonants but not the ending; *singe* (/nd\u0292/) and *bangle* (/\u014b\u0261/) diverge earlier.",
+      "trap": "'Knuckle' is the near-miss \u2014 same sounds, different rime. Rhyme needs the ending too."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76570",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: drive.",
+    "options": [
+      {
+        "id": "a",
+        "text": "wounded"
+      },
+      {
+        "id": "b",
+        "text": "kicked"
+      },
+      {
+        "id": "c",
+        "text": "jumped"
+      },
+      {
+        "id": "d",
+        "text": "risked"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Drive* begins with voiced /d/; only *wounded* contains it.",
+      "body": "*Kicked*, *jumped* and *risked* end in voiceless /t/ \u2014 the regular past-tense sound after voiceless consonants.",
+      "trap": "Three *-ed* spellings against one; the spelling is identical, the voicing is not."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76571",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: laboratory.",
+    "options": [
+      {
+        "id": "a",
+        "text": "thumb"
+      },
+      {
+        "id": "b",
+        "text": "subtle"
+      },
+      {
+        "id": "c",
+        "text": "debtor"
+      },
+      {
+        "id": "d",
+        "text": "dabble"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "The *b* in *laboratory* is pronounced; only *dabble* pronounces its *b* too.",
+      "body": "*Thumb* (/\u03b8/), *subtle* and *debtor* (both silent b) all drop it.",
+      "trap": "Three silent *b*s against one sounded \u2014 the set tests whether the letter sounds at all."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76572",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: upholstery.",
+    "options": [
+      {
+        "id": "a",
+        "text": "phonetics"
+      },
+      {
+        "id": "b",
+        "text": "upheaval"
+      },
+      {
+        "id": "c",
+        "text": "reception"
+      },
+      {
+        "id": "d",
+        "text": "rehearsal"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Upholstery* splits as *up-holstery* \u2014 /p/ then /h/ across the boundary.",
+      "body": "*Upheaval* shares the structure exactly. *Phonetics* merges them to /f/; the others drop one.",
+      "trap": "'Phonetics' is the *ph*-spelling trap \u2014 same letters, fused to a different sound."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t76573",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same consonant sound as the underlined letters in: rouge.",
+    "options": [
+      {
+        "id": "a",
+        "text": "leisure"
+      },
+      {
+        "id": "b",
+        "text": "jest"
+      },
+      {
+        "id": "c",
+        "text": "gem"
+      },
+      {
+        "id": "d",
+        "text": "rage"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "consonants",
+    "section": "Consonants",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Rouge* ends /\u0292/; *leisure* centres on it.",
+      "body": "The French borrowing keeps its French consonant. *Jest*, *gem* and *rage* all carry /d\u0292/ \u2014 the English hardening of the same spelling.",
+      "trap": "Three /d\u0292/ against one /\u0292/; the spelling *ge* defaults English and only *rouge* keeps French."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t76587",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Identify the word with a different stress pattern: maintenance, primary, enigma, candidate.",
+    "options": [
+      {
+        "id": "a",
+        "text": "maintenance"
+      },
+      {
+        "id": "b",
+        "text": "primary"
+      },
+      {
+        "id": "c",
+        "text": "enigma"
+      },
+      {
+        "id": "d",
+        "text": "candidate"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "word-stress",
+    "section": "Word Stress",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Maintenance*, *primary* and *candidate* stress the first syllable; *enigma* stresses the second.",
+      "body": "MAIN-te-nance, PRI-ma-ry, CAN-di-date against e-NIG-ma. One second-syllable stress among three firsts.",
+      "trap": "All four are three-plus syllables with similar weight; only counting reveals the odd one."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76588",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Identify the word with a different stress pattern: caution, mountain, creature, extrude.",
+    "options": [
+      {
+        "id": "a",
+        "text": "caution"
+      },
+      {
+        "id": "b",
+        "text": "mountain"
+      },
+      {
+        "id": "c",
+        "text": "creature"
+      },
+      {
+        "id": "d",
+        "text": "extrude"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "word-stress",
+    "section": "Word Stress",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Caution*, *mountain* and *creature* are trochees (stressed-unstressed); *extrude* is an iamb.",
+      "body": "CAU-tion, MOUN-tain, CREA-ture against ex-TRUDE. The verb stands apart from the nouns.",
+      "trap": "Word class predicts it \u2014 verbs stress late, nouns stress early \u2014 which is the pattern to learn, not just this set."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "t76589",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Identify the word with a different stress pattern: declare, annoy, radar, believe.",
+    "options": [
+      {
+        "id": "a",
+        "text": "declare"
+      },
+      {
+        "id": "b",
+        "text": "annoy"
+      },
+      {
+        "id": "c",
+        "text": "radar"
+      },
+      {
+        "id": "d",
+        "text": "believe"
+      }
+    ],
+    "answer": "c",
+    "subtopic_id": "word-stress",
+    "section": "Word Stress",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Declare*, *annoy* and *believe* stress the second syllable; *radar* stresses the first.",
+      "body": "de-CLARE, an-NOY, be-LIEVE against RA-dar. Three iambs and a trochee.",
+      "trap": "All four are two syllables of similar weight; only stress position distinguishes them."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76590",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Identify the word with a different stress pattern: discover, pertinent, retrospect, penitence.",
+    "options": [
+      {
+        "id": "a",
+        "text": "discover"
+      },
+      {
+        "id": "b",
+        "text": "pertinent"
+      },
+      {
+        "id": "c",
+        "text": "retrospect"
+      },
+      {
+        "id": "d",
+        "text": "penitence"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "word-stress",
+    "section": "Word Stress",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Pertinent*, *retrospect* and *penitence* stress the first syllable; *discover* stresses the second.",
+      "body": "PER-ti-nent, RET-ro-spect, PEN-i-tence against dis-COV-er. The verb stands apart.",
+      "trap": "'Retrospect' as a *verb* (ret-ro-SPECT) would match *discover* \u2014 the noun reading is what is tested."
+    },
+    "marks": 1,
+    "difficulty": 3,
+    "verified": true
+  },
+  {
+    "id": "t76591",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Identify the word with a different stress pattern: belief, enjoy, refer, reason.",
+    "options": [
+      {
+        "id": "a",
+        "text": "belief"
+      },
+      {
+        "id": "b",
+        "text": "enjoy"
+      },
+      {
+        "id": "c",
+        "text": "refer"
+      },
+      {
+        "id": "d",
+        "text": "reason"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": "word-stress",
+    "section": "Word Stress",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Belief*, *enjoy* and *refer* stress the second syllable; *reason* stresses the first.",
+      "body": "be-LIEF, en-JOY, re-FER against REA-son. Same verb-against-noun split as the last set.",
+      "trap": "The pattern repeats across sets: verbs stress late, nouns stress early. Learn the rule, not the set."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76557",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: crest.",
+    "options": [
+      {
+        "id": "a",
+        "text": "goitre"
+      },
+      {
+        "id": "b",
+        "text": "breakfast"
+      },
+      {
+        "id": "c",
+        "text": "firm"
+      },
+      {
+        "id": "d",
+        "text": "wheat"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Crest* is /krest/ \u2014 short /e/.",
+      "body": "*Breakfast* /\u02c8brekf\u0259st/ carries it in its first syllable. *Goitre* (/\u0254\u026a/), *firm* (/\u025c\u02d0/) and *wheat* (/i\u02d0/) are three other vowels *e*-spellings can hide.",
+      "trap": "'Wheat' shares the *ea* spelling and almost no sound."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "t76558",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Choose the word with the same vowel sound as the underlined letters in: sheath.",
+    "options": [
+      {
+        "id": "a",
+        "text": "meadow"
+      },
+      {
+        "id": "b",
+        "text": "beach"
+      },
+      {
+        "id": "c",
+        "text": "weather"
+      },
+      {
+        "id": "d",
+        "text": "heart"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "*Sheath* is /\u0283i\u02d0\u03b8/; *beach* is /bi\u02d0t\u0283/.",
+      "body": "Long /i\u02d0/ in both. *Meadow* and *weather* carry /e/, *heart* carries /\u0251\u02d0/ \u2014 three vowels the *ea* spelling can hide.",
+      "trap": "The *ea* spelling is the least trustworthy in English; only the sound selects."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
   }
 ]

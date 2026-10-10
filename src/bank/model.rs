@@ -105,3 +105,91 @@ pub struct Passage {
     pub author: Option<String>,
     pub text: String,
 }
+
+// ── novels (D35) ─────────────────────────────────────────────────────────────
+
+/// A prescribed text. One row per (exam, cycle) — the novel rotates yearly, so
+/// `year_prescribed` is load-bearing, not decorative.
+#[derive(Clone, Debug, Serialize, Deserialize, ToSchema)]
+pub struct Novel {
+    pub id: String,
+    pub title: String,
+    pub author: String,
+    pub year_published: u16,
+    pub exam: String,
+    /// Every cycle this is (or was) the set text for. A novel routinely spans
+    /// more than one UTME — *The Lekki Headmaster* covers 2025 and 2026.
+    #[serde(default)]
+    pub year_prescribed: Vec<u16>,
+    /// At most one per exam — enforced at load. The current set text.
+    #[serde(default)]
+    pub featured: bool,
+    pub synopsis: String,
+    pub setting_place: String,
+    pub setting_period: String,
+    #[serde(default)]
+    pub cover_image: Option<String>,
+}
+
+/// One file in `data/novels/`. The directory is the index — no separate list
+/// to keep in sync. Dropping a novel is deleting its file.
+#[derive(Clone, Debug, Serialize, Deserialize, ToSchema)]
+pub struct NovelDoc {
+    #[serde(flatten)]
+    pub novel: Novel,
+    #[serde(default)]
+    pub chapters: Vec<NovelChapter>,
+    #[serde(default)]
+    pub characters: Vec<NovelCharacter>,
+    #[serde(default)]
+    pub themes: Vec<NovelTheme>,
+    #[serde(default)]
+    pub questions: Vec<NovelQuestion>,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, ToSchema)]
+pub struct NovelChapter {
+    pub number: u8,
+    pub title: String,
+    /// Null means not yet written — absence is the signal (D16).
+    #[serde(default)]
+    pub summary: Option<String>,
+    #[serde(default)]
+    pub key_events: Vec<String>,
+}
+
+/// Character types use JAMB's own vocabulary (round/flat/foil/hero/antihero/
+/// villain/heroine) because that is literally what the syllabus tests.
+#[derive(Clone, Debug, Serialize, Deserialize, ToSchema)]
+pub struct NovelCharacter {
+    pub name: String,
+    pub role: String,
+    pub character_type: String,
+    pub description: String,
+}
+
+#[derive(Clone, Debug, Serialize, Deserialize, ToSchema)]
+pub struct NovelTheme {
+    pub name: String,
+    pub description: String,
+    #[serde(default)]
+    pub evidence: Vec<String>,
+}
+
+/// A quiz item about the book. Reuses Option/answer/Explanation machinery —
+/// a novel question is answered, shuffled and explained exactly like a subject
+/// question. It points at a chapter, not a subtopic, and the novel is the
+/// passage, so there is no passage_id.
+#[derive(Clone, Debug, Serialize, Deserialize, ToSchema)]
+pub struct NovelQuestion {
+    pub id: String,
+    #[serde(default)]
+    pub chapter_number: Option<u8>,
+    pub text: String,
+    pub options: Vec<Choice>,
+    /// An option id, same contract as Question.answer (D15).
+    pub answer: String,
+    #[serde(default)]
+    pub explanation: Option<Explanation>,
+    pub verified: bool,
+}

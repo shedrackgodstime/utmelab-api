@@ -1,19 +1,11 @@
 [
   {
-    "slug": "comprehension",
-    "subject": "use-of-english",
+    "slug": "colour-theory",
+    "subject": "art",
     "exam": "JAMB",
-    "name": "Comprehension and Summary",
-    "order": 1,
-    "weight": 25
-  },
-  {
-    "slug": "oral-forms",
-    "subject": "use-of-english",
-    "exam": "JAMB",
-    "name": "Oral Forms",
-    "order": 3,
-    "weight": 10
+    "name": "Colour Theory",
+    "order": 2,
+    "weight": 7
   },
   {
     "slug": "indices-logarithms-surds",
@@ -40,11 +32,27 @@
     "weight": 6
   },
   {
-    "slug": "colour-theory",
-    "subject": "art",
+    "slug": "comprehension",
+    "subject": "use-of-english",
     "exam": "JAMB",
-    "name": "Colour Theory",
+    "name": "Comprehension and Summary",
+    "order": 1,
+    "weight": 25
+  },
+  {
+    "slug": "lexis-and-structure",
+    "subject": "use-of-english",
+    "exam": "JAMB",
+    "name": "Lexis and Structure",
     "order": 2,
-    "weight": 7
+    "weight": 25
+  },
+  {
+    "slug": "oral-forms",
+    "subject": "use-of-english",
+    "exam": "JAMB",
+    "name": "Oral Forms",
+    "order": 3,
+    "weight": 10
   }
 ]

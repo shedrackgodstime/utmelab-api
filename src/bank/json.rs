@@ -13,7 +13,7 @@ use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::path::Path;
 
-use super::model::{Question, Subject};
+use super::model::{Novel, NovelDoc, Question, Subject};
 use super::store::{MAX_PER_PAGE, QuestionFilter, QuestionPage, Store};
 use super::{Subtopic, Syllabus, SyllabusSubtopic, SyllabusSummary, SyllabusTopic, Topic};
 
@@ -67,6 +67,8 @@ pub struct JsonStore {
     subtopics_by_topic: HashMap<String, Vec<usize>>,
     questions_by_subtopic: HashMap<String, Vec<usize>>,
     withheld: usize,
+    novels: Vec<NovelDoc>,
+    novel_by_id: HashMap<String, usize>,
 }
 
 impl JsonStore {
@@ -81,12 +83,6 @@ impl JsonStore {
         let _: Vec<super::model::Passage> = read(dir, FILES[3], &mut c);
         let questions: Vec<Question> = read(dir, FILES[4], &mut c);
 
-        if !c.problems.is_empty() {
-            return Err(StoreError {
-                problems: c.problems,
-            });
-        }
-
         let mut store = Self {
             subjects,
             topics,
@@ -98,7 +94,11 @@ impl JsonStore {
             subtopics_by_topic: HashMap::new(),
             questions_by_subtopic: HashMap::new(),
             withheld: 0,
+            novels: Vec::new(),
+            novel_by_id: HashMap::new(),
         };
+        // Novels: one document per book; the directory is the index.
+        store.novels = load_novels(&dir.join("novels"), &mut c);
         store.validate(&mut c);
 
         if !c.problems.is_empty() {
@@ -154,6 +154,54 @@ impl JsonStore {
                     "subtopics.json: '{}' references unknown topic '{}'",
                     s.slug, s.topic
                 ));
+            }
+        }
+
+        // Novels: at most one featured per exam, and every novel question must
+        // point at a chapter that exists with an answer that is an option id —
+        // the same contract as a subject question (D15).
+        {
+            let mut featured: HashMap<&str, &str> = HashMap::new();
+            for n in &self.novels {
+                if n.novel.featured {
+                    if let Some(prev) = featured.insert(n.novel.exam.as_str(), n.novel.id.as_str())
+                    {
+                        c.problems.push(format!(
+                            "novels: '{}' and '{}' both claim featured for {}",
+                            prev, n.novel.id, n.novel.exam
+                        ));
+                    }
+                }
+                let chapters: HashSet<u8> = n.chapters.iter().map(|ch| ch.number).collect();
+                for q in &n.questions {
+                    if let Some(ch) = q.chapter_number {
+                        if !chapters.contains(&ch) {
+                            c.problems.push(format!(
+                                "novels/{}.json: question '{}' points at missing chapter {}",
+                                n.novel.id, q.id, ch
+                            ));
+                        }
+                    }
+                    let ids: HashSet<&str> = q.options.iter().map(|o| o.id.as_str()).collect();
+                    if q.options.len() < 2 {
+                        c.problems.push(format!(
+                            "novels/{}.json: question '{}' has fewer than 2 options",
+                            n.novel.id, q.id
+                        ));
+                    }
+                    if ids.len() != q.options.len() {
+                        c.problems.push(format!(
+                            "novels/{}.json: question '{}' has duplicate option ids",
+                            n.novel.id, q.id
+                        ));
+                    }
+                    if !ids.contains(q.answer.as_str()) {
+                        c.problems.push(format!(
+                            "novels/{}.json: question '{}' answer '{}' is not an option id",
+                            n.novel.id, q.id, q.answer
+                        ));
+                    }
+                }
             }
         }
 
@@ -262,6 +310,9 @@ impl JsonStore {
                     .or_default()
                     .push(i);
             }
+        }
+        for (i, n) in self.novels.iter().enumerate() {
+            self.novel_by_id.insert(n.novel.id.clone(), i);
         }
     }
 }
@@ -421,6 +472,38 @@ impl Store for JsonStore {
     fn withheld_count(&self) -> usize {
         self.withheld
     }
+
+    fn novels(&self, exam: Option<&str>) -> Vec<&Novel> {
+        let mut out: Vec<&Novel> = self
+            .novels
+            .iter()
+            .filter(|n| exam.is_none_or(|e| n.novel.exam == e))
+            .map(|n| &n.novel)
+            .collect();
+        // Newest prescription first — the current set text leads.
+        out.sort_by(|a, b| {
+            newest(b)
+                .cmp(&newest(a))
+                .then_with(|| a.title.cmp(&b.title))
+        });
+        out
+    }
+
+    fn featured_novel(&self, exam: &str) -> Option<&Novel> {
+        self.novels
+            .iter()
+            .find(|n| n.novel.exam == exam && n.novel.featured)
+            .map(|n| &n.novel)
+    }
+
+    fn novel(&self, id: &str) -> Option<&NovelDoc> {
+        self.novel_by_id.get(id).map(|i| &self.novels[*i])
+    }
+}
+
+/// The latest cycle a novel is prescribed for — what "current" means.
+fn newest(novel: &Novel) -> u16 {
+    novel.year_prescribed.iter().copied().max().unwrap_or(0)
 }
 
 fn read<T: for<'de> serde::Deserialize<'de>>(dir: &Path, file: &str, c: &mut Checker) -> Vec<T> {
@@ -440,4 +523,68 @@ fn read<T: for<'de> serde::Deserialize<'de>>(dir: &Path, file: &str, c: &mut Che
             Vec::new()
         }
     }
+}
+
+/// Read every `*.json` under `dir`. The directory is the index — no list file
+/// to keep in sync, and dropping a novel is deleting its file.
+///
+/// A malformed file fails the boot with the filename attached; a missing
+/// directory simply means no novels yet.
+fn load_novels(dir: &std::path::Path, c: &mut Checker) -> Vec<NovelDoc> {
+    let mut out = Vec::new();
+    let entries = match std::fs::read_dir(dir) {
+        Ok(e) => e,
+        Err(e) if e.kind() == std::io::ErrorKind::NotFound => return out,
+        Err(e) => {
+            c.problems
+                .push(format!("novels/: cannot list ({}): {e}", dir.display()));
+            return out;
+        }
+    };
+    let mut files: Vec<_> = entries.filter_map(|e| e.ok().map(|e| e.path())).collect();
+    files.sort();
+    for path in files {
+        if path.extension().and_then(|e| e.to_str()) != Some("json") {
+            continue;
+        }
+        let name = path
+            .file_name()
+            .and_then(|n| n.to_str())
+            .unwrap_or("?")
+            .to_owned();
+        let bytes = match std::fs::read(&path) {
+            Ok(b) => b,
+            Err(e) => {
+                c.problems.push(format!("novels/{name}: cannot read: {e}"));
+                continue;
+            }
+        };
+        match serde_json::from_slice::<NovelDoc>(&bytes) {
+            Ok(mut doc) => {
+                if doc.novel.id.is_empty() {
+                    // The filename is the fallback id — a file must be
+                    // addressable even when its author forgot the field.
+                    doc.novel.id = path
+                        .file_stem()
+                        .and_then(|s| s.to_str())
+                        .unwrap_or("?")
+                        .to_owned();
+                }
+                out.push(doc);
+            }
+            Err(e) => c.problems.push(format!("novels/{name}: {e}")),
+        }
+    }
+    // Two files must never claim one id.
+    let mut seen = std::collections::HashSet::new();
+    out.retain(|doc| {
+        if !seen.insert(doc.novel.id.clone()) {
+            c.problems
+                .push(format!("novels/: duplicate novel id '{}'", doc.novel.id));
+            false
+        } else {
+            true
+        }
+    });
+    out
 }

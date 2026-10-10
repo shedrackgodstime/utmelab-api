@@ -48,3 +48,42 @@ pub fn render(q: &Question, include_explanation: bool) -> RenderedQuestion {
         explanation: include_explanation.then(|| q.explanation.clone()).flatten(),
     }
 }
+
+use super::model::NovelQuestion;
+
+#[derive(Serialize, ToSchema)]
+pub struct RenderedNovelQuestion {
+    pub id: String,
+    pub novel_id: String,
+    pub chapter_number: Option<u8>,
+    pub text: String,
+    pub options: Vec<Choice>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub answer: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub explanation: Option<Explanation>,
+    pub verified: bool,
+}
+
+/// Same withholding contract as [`render`]: no answer without asking (D27).
+pub fn render_novel_question(
+    q: &NovelQuestion,
+    include_explanation: bool,
+) -> RenderedNovelQuestion {
+    // The novel id travels with the stored shape, not the wire shape — the
+    // caller already knows which novel it asked for.
+    RenderedNovelQuestion {
+        id: q.id.clone(),
+        novel_id: String::new(),
+        chapter_number: q.chapter_number,
+        text: q.text.clone(),
+        options: q.options.clone(),
+        answer: include_explanation.then(|| q.answer.clone()),
+        explanation: if include_explanation {
+            q.explanation.clone()
+        } else {
+            None
+        },
+        verified: q.verified,
+    }
+}

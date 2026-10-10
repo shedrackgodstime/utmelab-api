@@ -260,3 +260,41 @@ fn verified_filter_narrows_the_total() {
     assert!(page.questions.iter().all(|q| q.verified));
     assert!(page.total_records < bank.question_count());
 }
+
+// ── novels (D35) ────────────────────────────────────────────────────────────
+
+#[test]
+fn novels_load_with_chapters_characters_and_themes() {
+    let bank = JsonStore::load(repo_root()).expect("load");
+    let novels = bank.novels(Some("JAMB"));
+    assert!(!novels.is_empty(), "at least one JAMB novel");
+
+    let lekki = bank
+        .novel("lekki-headmaster")
+        .expect("lekki-headmaster loads");
+    assert_eq!(lekki.novel.title, "The Lekki Headmaster");
+    assert_eq!(lekki.chapters.len(), 12);
+    assert!(!lekki.characters.is_empty());
+    assert!(!lekki.themes.is_empty());
+}
+
+#[test]
+fn featured_novel_is_the_current_set_text() {
+    let bank = JsonStore::load(repo_root()).expect("load");
+    let featured = bank.featured_novel("JAMB").expect("a featured JAMB novel");
+    assert_eq!(featured.id, "lekki-headmaster");
+    assert!(featured.year_prescribed.contains(&2025));
+}
+
+#[test]
+fn novels_are_newest_first() {
+    let bank = JsonStore::load(repo_root()).expect("load");
+    let novels = bank.novels(None);
+    let years: Vec<u16> = novels
+        .iter()
+        .map(|n| n.year_prescribed.iter().copied().max().unwrap_or(0))
+        .collect();
+    let mut sorted = years.clone();
+    sorted.sort_unstable_by(|a, b| b.cmp(a));
+    assert_eq!(years, sorted, "newest prescription first");
+}
