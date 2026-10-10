@@ -107,8 +107,10 @@ impl JsonStore {
             });
         }
 
-        // Only fully-assigned questions are servable (D21).
+        // Only fully-assigned questions are servable (D21), and only novels
+        // that meet the 50-question minimum (D36).
         store.questions.retain(|q| !q.exam.is_empty());
+        store.novels.retain(|n| n.questions.len() >= 50);
         for note in &c.withheld {
             tracing::warn!("withheld from serving: {note}");
         }
@@ -157,9 +159,14 @@ impl JsonStore {
             }
         }
 
-        // Novels: at most one featured per exam, and every novel question must
-        // point at a chapter that exists with an answer that is an option id —
-        // the same contract as a subject question (D15).
+        // Novels: at most one featured per exam, a minimum of 50 questions per
+        // novel (D36), and every novel question must point at a chapter that
+        // exists with an answer that is an option id — the same contract as a
+        // subject question (D15).
+        //
+        // Under 50 is *incomplete*, not corrupt: the novel is withheld from
+        // serving (logged, counted) rather than failing the boot. Customers
+        // never see a thin novel; authors can still iterate on one.
         {
             let mut featured: HashMap<&str, &str> = HashMap::new();
             for n in &self.novels {
@@ -171,6 +178,14 @@ impl JsonStore {
                             prev, n.novel.id, n.novel.exam
                         ));
                     }
+                }
+                if n.questions.len() < 50 {
+                    c.withheld.push(format!(
+                        "novels/{}.json: only {} questions — withheld until it reaches 50",
+                        n.novel.id,
+                        n.questions.len()
+                    ));
+                    continue;
                 }
                 let chapters: HashSet<u8> = n.chapters.iter().map(|ch| ch.number).collect();
                 for q in &n.questions {
