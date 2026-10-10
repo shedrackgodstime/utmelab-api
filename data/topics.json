@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "comprehension",
+    "subject": "use-of-english",
+    "exam": "JAMB",
+    "name": "Comprehension and Summary",
+    "order": 1,
+    "weight": 25
+  },
+  {
+    "slug": "oral-forms",
+    "subject": "use-of-english",
+    "exam": "JAMB",
+    "name": "Oral Forms",
+    "order": 3,
+    "weight": 10
+  },
+  {
+    "slug": "indices-logarithms-surds",
+    "subject": "mathematics",
+    "exam": "JAMB",
+    "name": "Indices, Logarithms and Surds",
+    "order": 4,
+    "weight": 8
+  },
+  {
+    "slug": "coordinate-geometry",
+    "subject": "mathematics",
+    "exam": "JAMB",
+    "name": "Coordinate Geometry",
+    "order": 12,
+    "weight": 5
+  },
+  {
+    "slug": "simple-harmonic-motion",
+    "subject": "physics",
+    "exam": "JAMB",
+    "name": "Simple Harmonic Motion",
+    "order": 18,
+    "weight": 6
+  },
+  {
+    "slug": "colour-theory",
+    "subject": "art",
+    "exam": "JAMB",
+    "name": "Colour Theory",
+    "order": 2,
+    "weight": 7
+  }
+]

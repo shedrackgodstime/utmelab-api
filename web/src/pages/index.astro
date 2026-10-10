@@ -1,0 +1,56 @@
+---
+// The landing page. It is an Astro page outside Starlight's base (/docs) so the
+// two do not both claim `/`.
+const specs = [
+	{ href: '/docs/', label: 'Documentation', note: 'Guides and the full API reference.' },
+	{ href: '/docs/api/', label: 'API reference', note: 'Generated from the OpenAPI document.' },
+	{ href: '/openapi.json', label: 'openapi.json', note: 'The machine-readable contract.' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>UTME Lab API</title>
+		<meta
+			name="description"
+			content="JAMB, WAEC and NECO past questions, syllabus and answers."
+		/>
+	</head>
+	<body>
+		<main>
+			<h1>UTME Lab API</h1>
+			<p>
+				Past questions for the Nigerian exams, keyed to subtopics. English plus three
+				others; every candidate writes the same four subjects.
+			</p>
+			<ul>
+				{
+					specs.map((s) => (
+						<li>
+							<a href={s.href}>{s.label}</a> — {s.note}
+						</li>
+					))
+				}
+			</ul>
+		</main>
+	</body>
+</html>
+
+<style>
+	main {
+		max-width: 42rem;
+		margin: 4rem auto;
+		padding: 0 1.5rem;
+		font-family: system-ui, sans-serif;
+		line-height: 1.6;
+	}
+	h1 {
+		color: var(--utmelab-accent, #0f766e);
+	}
+	li {
+		margin-block: 0.5rem;
+	}
+</style>

@@ -1,0 +1,74 @@
+//! The bank's storage seam (D23).
+//!
+//! Routes and the dashboard talk to `dyn Store`. `JsonStore` is the only
+//! implementation today; when Turso arrives it becomes a second one and the swap
+//! is a constructor change — no route, no domain type and no response shape
+//! moves.
+
+use crate::bank::Syllabus;
+use crate::bank::model::{Question, Subject};
+
+/// Default page size when a caller does not ask for one (D30).
+pub const DEFAULT_PER_PAGE: u32 = 50;
+
+/// Hard ceiling. A caller must not be able to request the whole bank in one
+/// response — that is what makes `/questions` safe to expose.
+pub const MAX_PER_PAGE: u32 = 200;
+
+/// What to select. Paging is deliberately **not** here: it belongs to the store
+/// so a Turso impl can push `LIMIT/OFFSET` down (D30).
+#[derive(Clone, Copy, Debug, Default)]
+pub struct QuestionFilter<'a> {
+    pub exam: Option<&'a str>,
+    pub subject: Option<&'a str>,
+    pub subtopic: Option<&'a str>,
+    pub verified: Option<bool>,
+}
+
+/// One page plus the totals (D3). Every implementation must produce identical
+/// numbers — that is D23 requirement 3.
+#[derive(Clone, Debug)]
+pub struct QuestionPage {
+    pub questions: Vec<Question>,
+    pub page: u32,
+    pub per_page: u32,
+    pub total_records: usize,
+}
+
+impl QuestionPage {
+    pub fn total_pages(&self) -> u32 {
+        if self.total_records == 0 {
+            return 0;
+        }
+        self.total_records.div_ceil(self.per_page as usize) as u32
+    }
+}
+
+/// Read-only access to the bank.
+///
+/// **Every implementation must agree on all five** or the swap is not free:
+/// 1. identical types (the D11 constant);
+/// 2. identical ordering (stable, by id);
+/// 3. identical paging totals;
+/// 4. identical *absence* — a topic with no questions does not appear (D16);
+/// 5. identical validation — invalid data fails to load, not to serve.
+pub trait Store: Send + Sync {
+    /// Distinct exams that have at least one subject, sorted.
+    fn exams(&self) -> Vec<&str>;
+
+    fn subjects(&self, exam: &str) -> Vec<&Subject>;
+    fn subject(&self, exam: &str, slug: &str) -> Option<&Subject>;
+
+    fn syllabus(&self, exam: &str, subject_slug: &str) -> Option<Syllabus>;
+
+    /// Select and page in one call. Implementations must clamp `per_page` to
+    /// [`MAX_PER_PAGE`] and treat `page < 1` as page 1.
+    fn questions_page(&self, filter: QuestionFilter<'_>, page: u32, per_page: u32) -> QuestionPage;
+
+    fn subject_count(&self) -> usize;
+    fn question_count(&self) -> usize;
+
+    /// Records present but not servable (e.g. an unassigned exam, D21). Exposed
+    /// on `/health` so a withheld record is never silent.
+    fn withheld_count(&self) -> usize;
+}

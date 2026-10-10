@@ -1,0 +1,5 @@
+/* Design tokens. Kept to a minimum — the docs must not outshine the product. */
+:root {
+	--utmelab-accent: #0f766e;
+	--utmelab-accent-highlight: #115e59;
+}

@@ -1,0 +1,388 @@
+[
+  {
+    "id": "q_jamb_2025_math_surds_001",
+    "exam": "JAMB",
+    "subject": "mathematics",
+    "year": 2025,
+    "text": "Rationalise the denominator of \\(\\dfrac{6}{\\sqrt{3}}\\).",
+    "options": [
+      { "id": "a", "text": "2" },
+      { "id": "b", "text": "\\(2\\sqrt{3}\\)" },
+      { "id": "c", "text": "\\(3\\sqrt{2}\\)" },
+      { "id": "d", "text": "\\(6\\sqrt{3}\\)" },
+      { "id": "e", "text": "\\(\\sqrt{3}\\)" }
+    ],
+    "answer": "b",
+    "subtopic_id": "surds",
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "To rationalise, multiply numerator and denominator by the surd itself.",
+      "body": "## Working\n\nMultiply top and bottom by \\(\\sqrt{3}\\):\n\n$$\\frac{6}{\\sqrt{3}} \\times \\frac{\\sqrt{3}}{\\sqrt{3}} = \\frac{6\\sqrt{3}}{3} = 2\\sqrt{3}$$",
+      "trap": "\\(2\\) comes from dividing 6 by 3 without carrying the surd down — rationalising removes the surd from the *denominator*, not from the answer."
+    },
+    "marks": 2.5,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "q_jamb_2025_math_change_of_bases_001",
+    "exam": "JAMB",
+    "subject": "mathematics",
+    "year": 2025,
+    "text": "Evaluate \\(\\log_2 8\\).",
+    "options": [
+      { "id": "a", "text": "1" },
+      { "id": "b", "text": "2" },
+      { "id": "c", "text": "3" },
+      { "id": "d", "text": "8" }
+    ],
+    "answer": "c",
+    "subtopic_id": "change-of-bases",
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "\\(\\log_b x = n\\) means \\(b^n = x\\).",
+      "body": "We need the exponent \\(n\\) where \\(2^n = 8\\).\n\n$$2^3 = 8 \\Rightarrow n = 3$$",
+      "trap": null
+    },
+    "marks": 2.5,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "q_jamb_2025_math_indices_001",
+    "exam": "JAMB",
+    "subject": "mathematics",
+    "year": 2025,
+    "text": "If \\(2^{x} = 32\\), find the value of \\(x\\).",
+    "options": [
+      { "id": "a", "text": "4" },
+      { "id": "b", "text": "5" },
+      { "id": "c", "text": "6" },
+      { "id": "d", "text": "16" }
+    ],
+    "answer": "b",
+    "subtopic_id": "laws-of-indices",
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "Write 32 as a power of 2, then read off the exponent.",
+      "body": "$$32 = 2^5 \\Rightarrow x = 5$$",
+      "trap": "16 is \\(2^4\\) — the correct exponent for a base of 2 giving 16, not 32."
+    },
+    "marks": 2.5,
+    "difficulty": 1,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_math_logarithm_001",
+    "exam": "JAMB",
+    "subject": "mathematics",
+    "year": 2025,
+    "text": "Given \\(\\log_a x = 2\\) and \\(\\log_a 8 = 3\\), find \\(x\\).",
+    "options": [
+      { "id": "a", "text": "5" },
+      { "id": "b", "text": "6" },
+      { "id": "c", "text": "9" },
+      { "id": "d", "text": "27" }
+    ],
+    "answer": "c",
+    "subtopic_id": "laws-of-logarithm",
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "Subtract the logarithms to divide the arguments.",
+      "body": "$$\\log_a \\frac{x}{8} = 2 - 3 = -1 \\Rightarrow \\frac{x}{8} = a^{-1}$$",
+      "trap": "27 comes from multiplying the exponents instead of subtracting them."
+    },
+    "marks": 2.5,
+    "difficulty": 4,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_math_coordinate_001",
+    "exam": "JAMB",
+    "subject": "mathematics",
+    "year": 2025,
+    "text": "The distance between the points \\((2, 3)\\) and \\((2, 8)\\) is:",
+    "options": [
+      { "id": "a", "text": "5" },
+      { "id": "b", "text": "25" }
+    ],
+    "answer": "a",
+    "subtopic_id": null,
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": null,
+    "marks": 2.5,
+    "difficulty": 1,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_physics_shm_001",
+    "exam": "JAMB",
+    "subject": "physics",
+    "year": 2025,
+    "text": "A particle in simple harmonic motion has a period of \\(2\\,\\text{s}\\) and a maximum displacement of \\(0.5\\,\\text{m}\\). What is its maximum velocity?",
+    "options": [
+      { "id": "a", "text": "\\(0.5\\,\\text{m/s}\\)" },
+      { "id": "b", "text": "\\(\\pi\\,\\text{m/s}\\)" },
+      { "id": "c", "text": "\\(2\\pi\\,\\text{m/s}\\)" },
+      { "id": "d", "text": "\\(\\pi^2\\,\\text{m/s}\\)" }
+    ],
+    "answer": "b",
+    "subtopic_id": null,
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "\\(v_{max} = 2\\pi A / T\\).",
+      "body": "$$v_{max} = \\frac{2\\pi A}{T} = \\frac{2\\pi (0.5)}{2} = \\pi\\,\\text{m/s}$$",
+      "trap": "\\(2\\pi\\,\\text{m/s}\\) forgets to divide by the period."
+    },
+    "marks": 2.5,
+    "difficulty": 3,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_eng_comprehension_001",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "According to the passage, what does Adura suspect about the adults around her?",
+    "options": [
+      { "id": "a", "text": "They are accustomed to a version of events that will not bear close examination" },
+      { "id": "b", "text": "They are unkind to one another" },
+      { "id": "c", "text": "They left the village deliberately" },
+      { "id": "d", "text": "They rarely answer questions" }
+    ],
+    "answer": "a",
+    "subtopic_id": "fiction",
+    "section": "Comprehension",
+    "passage_id": "psg_jamb_2025_eng_comprehension_1",
+    "image": null,
+    "explanation": {
+      "key_point": "The final sentence states her suspicion outright.",
+      "body": "The closing line — *\"the suspicion that adults were accustomed to a version of events that did not survive being examined too closely\"* — restates option (a) almost verbatim.",
+      "trap": "Option (d) describes her *behaviour* (she stopped asking), not the *suspicion* the question asks for."
+    },
+    "marks": 3,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "q_jamb_2025_eng_comprehension_002",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "The writer's phrase \"the person who asked the questions nobody else thought to ask\" mainly serves to:",
+    "options": [
+      { "id": "a", "text": "Show that Adura was naturally rebellious" },
+      { "id": "b", "text": "Present maturity as a deliberate acquisition, not a birthright" },
+      { "id": "c", "text": "Contrast rural and city life" },
+      { "id": "d", "text": "Explain why her parents were silent" }
+    ],
+    "answer": "b",
+    "subtopic_id": "fiction",
+    "section": "Comprehension",
+    "passage_id": "psg_jamb_2025_eng_comprehension_1",
+    "image": null,
+    "explanation": {
+      "key_point": "\"had already decided\" frames maturity as something she chose.",
+      "body": "The verb *decided* and the past perfect place the acquisition before the point described, which is what separates (b) from (a) — the passage attributes it to choice, not temperament.",
+      "trap": "Option (a) reads *rebellious*, which is a temperamental claim the passage never makes."
+    },
+    "marks": 3,
+    "difficulty": 4,
+    "verified": true
+  },
+  {
+    "id": "q_jamb_2025_eng_reading_001",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "The headmaster's second law of the assembly hall, according to the passage, was:",
+    "options": [
+      { "id": "a", "text": "punctuality" },
+      { "id": "b", "text": "attention" },
+      { "id": "c", "text": "obedience" },
+      { "id": "d", "text": "silence in the examination hall" }
+    ],
+    "answer": "b",
+    "subtopic_id": null,
+    "section": "Reading Text",
+    "passage_id": "psg_jamb_2025_eng_reading_1",
+    "image": null,
+    "explanation": {
+      "key_point": "Silence was the first law; attention was the second.",
+      "body": "The passage closes with *\"the first law of the assembly hall was silence, and the second was attention.\"",
+      "trap": "Option (d) sounds right because silence is mentioned, but it was the *first* law, not the second."
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": true
+  },
+  {
+    "id": "q_jamb_2025_eng_cloze_001",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Complete the gap in the passage: the court had declared him ...",
+    "options": [
+      { "id": "a", "text": "illegal" },
+      { "id": "b", "text": "illegitimate" },
+      { "id": "c", "text": "illicit" },
+      { "id": "d", "text": "unlawful" },
+      { "id": "e", "text": "untenable" }
+    ],
+    "answer": "b",
+    "subtopic_id": null,
+    "section": "Cloze",
+    "passage_id": "psg_jamb_2025_eng_cloze_1",
+    "image": null,
+    "explanation": {
+      "key_point": "A child born before the parents married is *illegitimate* in law.",
+      "body": "The collocation \"declared him **illegitimate**\" is the legal one; *untenable* is not a description of a person at all.",
+      "trap": "*Illegal* and *unlawful* both describe acts, not the legal status of a child."
+    },
+    "marks": 2,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "q_jamb_2025_eng_oral_001",
+    "exam": "JAMB",
+    "subject": "use-of-english",
+    "year": 2025,
+    "text": "Which of the following vowels is a pure vowel?",
+    "options": [
+      { "id": "a", "text": "\\(/aɪ/\\)" },
+      { "id": "b", "text": "\\(/aʊ/\\)" },
+      { "id": "c", "text": "\\(/iː/\\)" },
+      { "id": "d", "text": "\\(/ɔɪ/\\)" }
+    ],
+    "answer": "c",
+    "subtopic_id": "vowels",
+    "section": "Vowels",
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "A pure vowel is one sound; a diphthong glides between two.",
+      "body": "\\(/iː/\\) is a single sustained quality. The other three are diphthongs — the mouth moves from one position to another within the one vowel.",
+      "trap": "\\(/aɪ/\\), \\(/aʊ/\\) and \\(/ɔɪ/\\) are the commonest diphthongs in English and are the usual distractors in this item."
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_fine_arts_colour_001",
+    "exam": "JAMB",
+    "subject": "art",
+    "year": 2025,
+    "text": "The three colours that cannot be produced by mixing other colours are called:",
+    "options": [
+      { "id": "a", "text": "primary colours" },
+      { "id": "b", "text": "secondary colours" },
+      { "id": "c", "text": "tertiary colours" },
+      { "id": "d", "text": "complementary colours" }
+    ],
+    "answer": "a",
+    "subtopic_id": null,
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "Primary colours cannot be produced by mixing; they are the source of the others.",
+      "body": "Red, yellow and blue are the traditional primaries. Mixing two of them yields a secondary.",
+      "trap": null
+    },
+    "marks": 2.5,
+    "difficulty": 1,
+    "verified": false
+  },
+  {
+    "id": "q_waec_2025_animal_husbandry_001",
+    "exam": "WAEC",
+    "subject": "animal-husbandry",
+    "year": 2025,
+    "text": "Which feed is richest in protein for cattle?",
+    "options": [
+      { "id": "a", "text": "Cowpea hulls" },
+      { "id": "b", "text": "Groundnut cake" },
+      { "id": "c", "text": "Maize offal" },
+      { "id": "d", "text": "Rice bran" }
+    ],
+    "answer": "b",
+    "subtopic_id": null,
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "Groundnut cake is a high-protein oil-seed residue.",
+      "body": "Groundnut cake typically runs 40–50% crude protein, well above the cereals and hulls listed.",
+      "trap": null
+    },
+    "marks": 1,
+    "difficulty": 2,
+    "verified": false
+  },
+  {
+    "id": "q_unassigned_civic_001",
+    "exam": "",
+    "subject": "civic-education",
+    "year": 2025,
+    "text": "Citizenship by birth is normally conferred on persons born within a country's:",
+    "options": [
+      { "id": "a", "text": "territorial boundaries" },
+      { "id": "b", "text": "capital city" },
+      { "id": "c", "text": "federal region only" },
+      { "id": "d", "text": "recognized coastal states" }
+    ],
+    "answer": "a",
+    "subtopic_id": null,
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "Jus soli — the law of the place — is the rule.",
+      "body": "Birthright citizenship follows territorial boundaries, subject to constitutional exceptions.",
+      "trap": null
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": false
+  },
+  {
+    "id": "q_jamb_2025_physics_shm_002",
+    "exam": "JAMB",
+    "subject": "physics",
+    "year": 2025,
+    "text": "In the displacement-time graph of simple harmonic motion, a particle at maximum displacement has:",
+    "options": [
+      { "id": "a", "text": "zero velocity and zero acceleration" },
+      { "id": "b", "text": "zero velocity and maximum acceleration" },
+      { "id": "c", "text": "maximum velocity and zero acceleration" },
+      { "id": "d", "text": "maximum velocity and maximum acceleration" }
+    ],
+    "answer": "b",
+    "subtopic_id": null,
+    "section": null,
+    "passage_id": null,
+    "image": "diagrams/shm_displacement_time.svg",
+    "explanation": {
+      "key_point": "Acceleration is greatest at the extremes and zero at the centre.",
+      "body": "$a = -\\omega^2 x$, so at maximum \\(|x|\\) the acceleration is at its peak, while velocity is zero because the graph has flattened.",
+      "trap": "Velocity and acceleration are 90° out of phase — reading them as moving together is the usual error."
+    },
+    "marks": 2.5,
+    "difficulty": 3,
+    "verified": false
+  }
+]

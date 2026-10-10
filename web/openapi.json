@@ -1,0 +1,772 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "UTME Lab Question Bank API",
+    "description": "Every candidate writes English plus three others. Questions are keyed to subtopics so a weak spot is a 20-question sitting, not a 40-question paper. Explanations are Markdown and carry the trap that catches people.",
+    "license": {
+      "name": ""
+    },
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.utmelab.com",
+      "description": "Production"
+    }
+  ],
+  "paths": {
+    "/api/v1/exams": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "operationId": "listExams",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExamList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/exams/{exam}/subjects": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "operationId": "listSubjects",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "path",
+            "description": "Exam code, e.g. JAMB",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExamSubjects"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such exam"
+          }
+        }
+      }
+    },
+    "/api/v1/keys/me": {
+      "get": {
+        "tags": [
+          "account"
+        ],
+        "description": "Returns the calling key exactly as stored. Use it to check a key works.",
+        "operationId": "whoami",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiKey"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid API key"
+          },
+          "429": {
+            "description": "Over the key's per-minute limit"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/questions": {
+      "get": {
+        "tags": [
+          "questions"
+        ],
+        "description": "Paged, and the answer is withheld unless you ask for it.\n\n**The answer is only in the response when `include_explanation=true`.** A quiz consumer needs the stem first, and an answer in a default payload gets rendered by somebody, eventually, by accident.\n\nRender option labels from array position: ids are stable identity, labels are display.",
+        "operationId": "listQuestions",
+        "parameters": [
+          {
+            "name": "subtopic",
+            "in": "query",
+            "description": "Drill one subtopic.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "exam",
+            "in": "query",
+            "description": "Scope to an exam.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "description": "Scope to a subject within that exam.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "verified",
+            "in": "query",
+            "description": "Only human-checked questions. Default: no filter.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "include_explanation",
+            "in": "query",
+            "description": "Include the answer and the working. Default: false.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "1-based page number. Default: 1.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "Page size. Default: 50. Capped at 200.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QuestionPage"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid API key"
+          },
+          "404": {
+            "description": "No such subject, or no usable filter"
+          },
+          "429": {
+            "description": "Over the key's per-minute limit"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/subjects/{exam}/{slug}": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "operationId": "getSubject",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "path",
+            "description": "Exam code.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "The exam's own name for this subject.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubjectEnvelope"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such subject in that exam"
+          }
+        }
+      }
+    },
+    "/api/v1/subjects/{exam}/{slug}/syllabus": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "description": "The whole topic tree for one subject, with a question count and objectives on every node — what you must be able to do, beside what you can actually practise. A topic with no questions does not appear.",
+        "operationId": "getSyllabus",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "path",
+            "description": "Exam code.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "slug",
+            "in": "path",
+            "description": "Subject slug within that exam.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Syllabus"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No such subject in that exam"
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "summary": "`/health` and `/openapi.json` are real handlers elsewhere; these carry only the\ndocumentation, so the contract can name them without a route item here.",
+        "description": "Unauthenticated. Reports question and withheld-record counts.",
+        "operationId": "health",
+        "responses": {
+          "200": {
+            "description": "Service is up"
+          }
+        }
+      }
+    },
+    "/openapi.json": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "description": "This document.",
+        "operationId": "openapi",
+        "responses": {
+          "200": {
+            "description": "The OpenAPI description"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApiKey": {
+        "type": "object",
+        "description": "A key as stored. Deliberately carries no secret material.",
+        "required": [
+          "id",
+          "label",
+          "rate_limit",
+          "created_at"
+        ],
+        "properties": {
+          "created_at": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "rate_limit": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Per-key request allowance (D26) — a column, not a key *type*.",
+            "minimum": 0
+          },
+          "revoked_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "Choice": {
+        "type": "object",
+        "description": "One answer choice. Named `Choice` because `Option` is Rust's, not ours.\n\n`id` is stable identity; the **label** the student sees (A, B, C…) is\nassigned from array position at render time and is never stored (D15).",
+        "required": [
+          "id",
+          "text"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      },
+      "Exam": {
+        "type": "object",
+        "required": [
+          "code",
+          "subject_count"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Exam code, e.g. `JAMB`."
+          },
+          "subject_count": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "ExamList": {
+        "type": "object",
+        "required": [
+          "exams"
+        ],
+        "properties": {
+          "exams": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Exam"
+            }
+          }
+        }
+      },
+      "ExamSubjects": {
+        "type": "object",
+        "description": "One exam's subject list.",
+        "required": [
+          "exam",
+          "subjects"
+        ],
+        "properties": {
+          "exam": {
+            "type": "string"
+          },
+          "subjects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Subject"
+            }
+          }
+        }
+      },
+      "Explanation": {
+        "type": "object",
+        "description": "Why the answer is what it is (D17). `key_point` is the flashcard teaser,\n`body` the working, `trap` the distractor that catches people.",
+        "required": [
+          "key_point",
+          "body"
+        ],
+        "properties": {
+          "body": {
+            "type": "string"
+          },
+          "key_point": {
+            "type": "string"
+          },
+          "trap": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "QuestionPage": {
+        "type": "object",
+        "description": "The paged response envelope (D3/D30).",
+        "required": [
+          "questions",
+          "page",
+          "per_page",
+          "total_pages",
+          "total_records",
+          "includes_explanation"
+        ],
+        "properties": {
+          "includes_explanation": {
+            "type": "boolean",
+            "description": "Whether `answer` and `explanation` were included (D27)."
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "description": "1-based.",
+            "minimum": 0
+          },
+          "per_page": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RenderedQuestion"
+            }
+          },
+          "total_pages": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "total_records": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "RenderedQuestion": {
+        "type": "object",
+        "required": [
+          "id",
+          "exam",
+          "subject",
+          "year",
+          "text",
+          "options",
+          "marks",
+          "difficulty",
+          "verified"
+        ],
+        "properties": {
+          "answer": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Present only when explanations were requested."
+          },
+          "difficulty": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "exam": {
+            "type": "string"
+          },
+          "explanation": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Explanation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "image": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "marks": {
+            "type": "number",
+            "format": "float"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Choice"
+            }
+          },
+          "section": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "subject": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
+      "Subject": {
+        "type": "object",
+        "description": "One exam's offering of a subject (D21). The same concept can appear once per\nexam, carrying that board's own name — `Use of English` and\n`English Language` are two true rows, not one row with an alias.",
+        "required": [
+          "slug",
+          "exam",
+          "name",
+          "is_compulsory",
+          "full_exam_questions"
+        ],
+        "properties": {
+          "exam": {
+            "type": "string"
+          },
+          "full_exam_questions": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "is_compulsory": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          }
+        }
+      },
+      "SubjectEnvelope": {
+        "type": "object",
+        "description": "A single subject, wrapped so the response is one shape rather than a bare\nobject or a one-key envelope depending on the caller.",
+        "required": [
+          "subject"
+        ],
+        "properties": {
+          "subject": {
+            "$ref": "#/components/schemas/Subject"
+          }
+        }
+      },
+      "Syllabus": {
+        "type": "object",
+        "description": "The syllabus tree with coverage counts (D19).",
+        "required": [
+          "exam",
+          "subject",
+          "topics",
+          "summary"
+        ],
+        "properties": {
+          "exam": {
+            "type": "string"
+          },
+          "subject": {
+            "$ref": "#/components/schemas/Subject"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/SyllabusSummary"
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SyllabusTopic"
+            }
+          }
+        }
+      },
+      "SyllabusSubtopic": {
+        "type": "object",
+        "required": [
+          "slug",
+          "name",
+          "order",
+          "question_count",
+          "objectives"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "objectives": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "question_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "slug": {
+            "type": "string"
+          }
+        }
+      },
+      "SyllabusSummary": {
+        "type": "object",
+        "required": [
+          "topics",
+          "topics_with_questions",
+          "subtopics",
+          "subtopics_with_questions",
+          "questions"
+        ],
+        "properties": {
+          "questions": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "subtopics": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "subtopics_with_questions": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "topics": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "topics_with_questions": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
+      "SyllabusTopic": {
+        "type": "object",
+        "required": [
+          "slug",
+          "name",
+          "order",
+          "weight",
+          "question_count",
+          "note_available",
+          "subtopics"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "note_available": {
+            "type": "boolean",
+            "description": "Notes are shape-only until D18 is activated."
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "question_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "slug": {
+            "type": "string"
+          },
+          "subtopics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SyllabusSubtopic"
+            }
+          },
+          "weight": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key",
+        "description": "Send your key in the `X-API-Key` header. One key type: it works from a server, an app, or curl — we never ask where it lives. If you embed it in a client app it can be extracted, and whoever extracts it shares your quota."
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "catalog",
+      "description": "Exams, subjects and syllabi. No key required."
+    },
+    {
+      "name": "questions",
+      "description": "The metered surface. Requires a key."
+    },
+    {
+      "name": "account",
+      "description": "The calling key."
+    },
+    {
+      "name": "meta",
+      "description": "Service health and this document."
+    }
+  ]
+}

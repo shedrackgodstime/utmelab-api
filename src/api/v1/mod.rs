@@ -1,0 +1,19 @@
+//! v1 of the public API. When a breaking change arrives this becomes a sibling
+//! `api/v2/` directory — never a feature flag inside v1 (D25).
+
+use axum::Router;
+
+use crate::AppState;
+
+pub mod exams;
+pub mod keys;
+pub mod questions;
+pub mod subjects;
+
+pub fn router() -> Router<AppState> {
+    Router::new()
+        .merge(exams::router())
+        .merge(subjects::router())
+        .merge(questions::router())
+        .merge(keys::router())
+}

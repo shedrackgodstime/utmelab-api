@@ -1,0 +1,59 @@
+[
+  {
+    "slug": "fiction",
+    "topic": "comprehension",
+    "name": "Fiction",
+    "order": 1,
+    "objectives": [
+      "Identify the writer's attitude towards a character in a passage",
+      "Infer an implied meaning from context rather than from a stated one"
+    ]
+  },
+  {
+    "slug": "vowels",
+    "topic": "oral-forms",
+    "name": "Vowels",
+    "order": 1,
+    "objectives": [
+      "Distinguish between pure vowels and diphthongs"
+    ]
+  },
+  {
+    "slug": "laws-of-indices",
+    "topic": "indices-logarithms-surds",
+    "name": "Laws of Indices",
+    "order": 1,
+    "objectives": [
+      "Simplify expressions using the laws of indices",
+      "Evaluate expressions where the base has a negative or fractional index"
+    ]
+  },
+  {
+    "slug": "laws-of-logarithm",
+    "topic": "indices-logarithms-surds",
+    "name": "Laws of Logarithm",
+    "order": 2,
+    "objectives": [
+      "Apply the product and quotient laws of logarithms"
+    ]
+  },
+  {
+    "slug": "change-of-bases",
+    "topic": "indices-logarithms-surds",
+    "name": "Change of Bases",
+    "order": 3,
+    "objectives": [
+      "Convert a logarithm from one base to another",
+      "Evaluate numerical logarithms using change of base"
+    ]
+  },
+  {
+    "slug": "surds",
+    "topic": "indices-logarithms-surds",
+    "name": "Surds",
+    "order": 4,
+    "objectives": [
+      "Rationalise the denominator of expressions containing surds"
+    ]
+  }
+]

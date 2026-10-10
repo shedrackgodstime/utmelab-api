@@ -1,0 +1,16 @@
+[
+  { "slug": "use-of-english",     "exam": "JAMB", "name": "Use of English",       "is_compulsory": true,  "full_exam_questions": 60 },
+  { "slug": "english-language",   "exam": "WAEC", "name": "English Language",     "is_compulsory": true,  "full_exam_questions": 80 },
+  { "slug": "english-language",   "exam": "NECO", "name": "English Language",     "is_compulsory": true,  "full_exam_questions": 40 },
+  { "slug": "mathematics",        "exam": "JAMB", "name": "Mathematics",          "is_compulsory": false, "full_exam_questions": 40 },
+  { "slug": "general-mathematics","exam": "WAEC", "name": "General Mathematics",  "is_compulsory": true,  "full_exam_questions": 75 },
+  { "slug": "physics",            "exam": "JAMB", "name": "Physics",              "is_compulsory": false, "full_exam_questions": 40 },
+  { "slug": "art",                "exam": "JAMB", "name": "Art",                  "is_compulsory": false, "full_exam_questions": 40 },
+  { "slug": "visual-arts",        "exam": "WAEC", "name": "Visual Arts",          "is_compulsory": false, "full_exam_questions": 40 },
+  { "slug": "principles-of-accounts", "exam": "JAMB", "name": "Principles of Accounts", "is_compulsory": false, "full_exam_questions": 40 },
+  { "slug": "financial-accounting",   "exam": "WAEC", "name": "Financial Accounting",   "is_compulsory": false, "full_exam_questions": 40 },
+  { "slug": "animal-husbandry",  "exam": "WAEC", "name": "Animal Husbandry",     "is_compulsory": false, "full_exam_questions": 40 },
+  { "slug": "animal-husbandry",  "exam": "NECO", "name": "Animal Husbandry",     "is_compulsory": false, "full_exam_questions": 40 },
+  { "slug": "civic-education",    "exam": "WAEC", "name": "Civic Education",       "is_compulsory": true,  "full_exam_questions": 40 },
+  { "slug": "civic-education",    "exam": "NECO", "name": "Civic Education",       "is_compulsory": true,  "full_exam_questions": 40 }
+]

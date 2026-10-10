@@ -1,0 +1,32 @@
+[package]
+name = "utmelab-api"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+
+# Its own workspace, deliberately. This is a separate product (D23) and must not
+# inherit the UTME-Lab workspace's members, lockfile or patches, even while the
+# directory still lives inside that repo.
+[workspace]
+
+[lib]
+name = "utmelab_api"
+path = "src/lib.rs"
+
+[dependencies]
+axum = "0.8"
+clap = { version = "4", features = ["derive"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "signal"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+utoipa = { version = "6", features = ["axum_extras", "debug"] }
+sha2 = "0.10"
+rand = "0.9"
+thiserror = "2"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+turso = "0.8.2"
+
+[dev-dependencies]
+tower = { version = "0.5", features = ["util"] }
+http-body-util = "0.1"
