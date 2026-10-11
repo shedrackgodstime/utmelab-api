@@ -11,12 +11,25 @@
 api.utmelab.com {
 	encode gzip zstd
 
-	# The metered contract + health + spec.
-	@api path /api/* /health /openapi.json
-	reverse_proxy @api 127.0.0.1:8081
+	# API first, in explicit handle blocks. These cannot be reordered by
+	# accident: in Caddy's default directive order `file_server` runs BEFORE
+	# `reverse_proxy`, so a bare matcher + reverse_proxy would lose every
+	# request to the try_files fallback below and /health would answer with
+	# the docs homepage. handle blocks are sequential and make that explicit.
+	handle /api/* {
+		reverse_proxy 127.0.0.1:8081
+	}
+	handle /health {
+		reverse_proxy 127.0.0.1:8081
+	}
+	handle /openapi.json {
+		reverse_proxy 127.0.0.1:8081
+	}
 
 	# Static docs tier (Astro build output ships as web/ in the release).
-	root * /opt/apps/utmelab-api/current/web
-	try_files {path} /index.html
-	file_server
+	handle {
+		root * /opt/apps/utmelab-api/current/web
+		try_files {path} /index.html
+		file_server
+	}
 }
