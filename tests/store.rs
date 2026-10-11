@@ -5,6 +5,7 @@
 use std::path::Path;
 
 use std::path::PathBuf;
+
 use utmelab_api::{JsonStore, MAX_PER_PAGE, QuestionFilter, Store, StoreError};
 
 fn repo_root() -> PathBuf {
@@ -184,23 +185,42 @@ fn paging_is_bounded_and_totals_are_stable() {
 
     let first = bank.questions_page(f, 1, 2);
     assert_eq!(first.per_page, 2);
+    // Totals are whatever the bank holds — this used to assert a remembered
+    // "5", which broke the day the bank grew. Assert the *relationship*
+    // instead: pages follow from records and the per-page size.
+    let all = bank.questions_page(f, 1, MAX_PER_PAGE).total_records;
+    assert_eq!(first.total_records, all);
     assert_eq!(
-        first.total_records, 5,
-        "five maths questions in the fixture"
+        first.total_pages(),
+        all.div_ceil(2) as u32,
+        "pages must follow from the total"
     );
-    assert_eq!(first.total_pages(), 3);
     assert_eq!(first.questions.len(), 2);
 
-    // Every page reports the same totals — that is D23 requirement 3.
-    let last = bank.questions_page(f, 3, 2);
-    assert_eq!(last.questions.len(), 1);
+    // Every page reports the same totals — that is D23 requirement 3. The last
+    // page is computed, not remembered: it was hardcoded to page 3 when the
+    // bank held five maths rows.
+    let pages = first.total_pages();
+    let last = bank.questions_page(f, pages, 2);
+    assert_eq!(
+        last.questions.len(),
+        all - (pages as usize - 1) * 2,
+        "the final page holds the remainder, not a remembered one row"
+    );
     assert_eq!(last.total_records, first.total_records);
     assert_eq!(last.total_pages(), first.total_pages());
 
     // Past the end: empty, but the totals still tell the truth.
     let beyond = bank.questions_page(f, 99, 2);
     assert!(beyond.questions.is_empty());
-    assert_eq!(beyond.total_records, 5);
+    // The total must still tell the truth when a page returns nothing — but the
+    // truth is "however many rows match", not a number remembered when the bank
+    // was small.
+    assert_eq!(
+        beyond.total_records,
+        bank.questions_page(f, 1, utmelab_api::MAX_PER_PAGE)
+            .total_records
+    );
 }
 
 #[test]
@@ -224,7 +244,8 @@ fn pages_do_not_overlap_or_skip() {
     seen.dedup();
     assert_eq!(
         seen.len(),
-        5,
+        bank.questions_page(f, 1, utmelab_api::MAX_PER_PAGE)
+            .total_records,
         "every question appears exactly once across pages"
     );
 }

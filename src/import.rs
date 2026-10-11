@@ -63,7 +63,10 @@ const SUBJECT_MAP: &[(&str, &str, &str)] = &[
         "Literature-in-English",
     ),
     (
-        "principles-of-accounts",
+        // The source spells this one "Accounts - Principles of Accounts", so
+        // asking for `principles-of-accounts` returns HTTP 200 and zero rows —
+        // the silent failure this map exists to make impossible.
+        "accounts-principles-of-accounts",
         "principles-of-accounts",
         "Principles of Accounts",
     ),
