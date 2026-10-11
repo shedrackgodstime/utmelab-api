@@ -83,8 +83,8 @@ jobs:
       - name: Upload release artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${APP}-${{ steps.v.outputs.version }}
-          path: ${APP}-${{ steps.v.outputs.version }}.tar.gz
+          name: ${{ env.APP }}-${{ steps.v.outputs.version }}
+          path: ${{ env.APP }}-${{ steps.v.outputs.version }}.tar.gz
           if-no-files-found: error
 
   deploy:
