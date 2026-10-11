@@ -67,6 +67,36 @@ impl RateLimiter {
         self.buckets.retain(|id, _| live(id));
     }
 
+    /// What the caller may be told about its budget, without spending a token.
+    /// Returns `(limit, remaining, reset_secs)`: remaining is whole requests
+    /// still available, reset is seconds until at least one more is.
+    ///
+    /// Read-only: an unknown key is reported at full budget (nothing spent),
+    /// and `rate_limit == 0` (always-denied) reports a 60s wait rather than
+    /// dividing by a zero refill rate.
+    pub fn peek(&self, key_id: &str, rate_limit: u32) -> (u32, u32, u64) {
+        if rate_limit == 0 {
+            return (0, 0, 60);
+        }
+        let capacity = f64::from(rate_limit);
+        match self.buckets.get(key_id) {
+            Some(bucket) => {
+                let elapsed = Instant::now()
+                    .saturating_duration_since(bucket.last)
+                    .as_secs_f64();
+                let tokens = (bucket.tokens + elapsed * capacity / MINUTE).min(capacity);
+                let per_second = capacity / MINUTE;
+                let reset = if tokens >= 1.0 {
+                    0
+                } else {
+                    ((1.0 - tokens) / per_second).ceil() as u64
+                };
+                (rate_limit, tokens.floor() as u32, reset)
+            }
+            None => (rate_limit, rate_limit, 0),
+        }
+    }
+
     #[cfg(test)]
     pub fn buckets(&self) -> usize {
         self.buckets.len()
@@ -132,6 +162,41 @@ mod tests {
     fn a_zero_limit_admits_nothing() {
         let mut l = RateLimiter::new();
         assert!(!l.check_at("k1", 0, at(0)));
+    }
+
+    #[test]
+    fn peek_reports_the_budget_without_spending_it() {
+        let mut l = RateLimiter::new();
+        // Unknown key: full budget, nothing spent.
+        assert_eq!(l.peek("k1", 10), (10, 10, 0));
+
+        // Spend 3 of 10.
+        for _ in 0..3 {
+            l.check_at("k1", 10, at(0));
+        }
+        assert_eq!(l.peek("k1", 10), (10, 7, 0));
+
+        // Spend the rest: remaining 0, reset counts up to a refill.
+        for _ in 0..7 {
+            l.check_at("k1", 10, at(0));
+        }
+        let (limit, remaining, reset) = l.peek("k1", 10);
+        assert_eq!(limit, 10);
+        assert_eq!(remaining, 0);
+        assert!(
+            (1..=60).contains(&reset),
+            "one token is never 60s+ away: {reset}"
+        );
+
+        // Peek must not spend: still 0 remaining, still refused.
+        assert!(!l.check_at("k1", 10, at(0)));
+        assert_eq!(l.peek("k1", 10).1, 0);
+    }
+
+    #[test]
+    fn peek_survives_a_zero_limit() {
+        let l = RateLimiter::new();
+        assert_eq!(l.peek("k0", 0), (0, 0, 60), "no divide-by-zero on refill");
     }
 
     #[test]

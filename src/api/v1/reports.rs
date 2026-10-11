@@ -83,11 +83,9 @@ pub async fn report(
     })?;
 
     // Daily cap, checked before filing. Separate from the per-minute bucket:
-    // reporting is rare enough that ten a day is generous.
-    let mut reports = state
-        .reports
-        .lock()
-        .map_err(|_| ApiError::internal("report store poisoned"))?;
+    // reporting is rare enough that ten a day is generous. The tokio mutex
+    // cannot be poisoned, so there is no lock-failure branch to map (R3).
+    let mut reports = state.reports.lock().await;
     if reports.recent_count(&key.id) >= DEFAULT_REPORTS_PER_DAY as usize {
         return Err(ApiError::daily_limit(
             "This key has filed its reports for today; the cap resets at midnight UTC.",

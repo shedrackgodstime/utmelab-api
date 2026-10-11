@@ -6,6 +6,7 @@
 pub mod auth;
 pub mod internal;
 pub mod limit;
+pub mod middleware;
 pub mod openapi;
 pub mod v1;
 

@@ -47,7 +47,7 @@ fn state() -> AppState {
             KeyStore::open_json(&keys_path).expect("key store"),
         )),
         limiter: Arc::new(Mutex::new(RateLimiter::new())),
-        reports: Arc::new(Mutex::new(
+        reports: Arc::new(tokio::sync::Mutex::new(
             ReportStore::open(&reports_path).expect("report store"),
         )),
     }

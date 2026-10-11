@@ -178,11 +178,39 @@ async fn serve(config: &Config) -> Result<(), ApiError> {
         keys: Arc::new(keys),
         bank: Arc::new(bank),
         limiter: Arc::new(Mutex::new(RateLimiter::new())),
-        reports: Arc::new(Mutex::new(
+        reports: Arc::new(tokio::sync::Mutex::new(
             ReportStore::open(&reports_path)
                 .map_err(|e| ApiError::config(format!("reports store: {e}")))?,
         )),
     };
+
+    // R3 follow-through: evict rate-limit buckets for keys that are no longer
+    // live, so a long-running process does not grow one entry per key ever
+    // issued. Every 15 minutes, against a fresh live-key list.
+    {
+        let retention = state.clone();
+        tokio::spawn(async move {
+            let mut tick = tokio::time::interval(std::time::Duration::from_secs(900));
+            tick.tick().await; // first tick fires immediately; skip it
+            loop {
+                tick.tick().await;
+                let live: Vec<String> = match retention.keys.list().await {
+                    Ok(keys) => keys
+                        .into_iter()
+                        .filter(|k| k.is_live())
+                        .map(|k| k.id)
+                        .collect(),
+                    Err(e) => {
+                        tracing::warn!("rate-limit retention skipped: {e}");
+                        continue;
+                    }
+                };
+                if let Ok(mut limiter) = retention.limiter.lock() {
+                    limiter.retain(|id| live.iter().any(|live_id| live_id == id));
+                }
+            }
+        });
+    }
     let listener = tokio::net::TcpListener::bind(&config.bind)
         .await
         .map_err(|e| ApiError::config(format!("bind {}: {e}", config.bind)))?;

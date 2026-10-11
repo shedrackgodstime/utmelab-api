@@ -55,10 +55,14 @@ pub struct AppState {
     /// CLI-created/revoked keys land without a restart).
     pub keys: Arc<KeyBackend>,
     /// Behind an `Arc<Mutex<…>>` because axum requires `Clone` state but the
-    /// limiter is mutable — one lock held for a few arithmetic operations.
+    /// limiter is mutable — one lock held for a few arithmetic operations, and
+    /// never across an await, so the std lock is the right one here (an async
+    /// mutex would add a future-poll for no benefit).
     pub limiter: Arc<Mutex<RateLimiter>>,
-    /// Report store. Same pattern: mutable, shared, locked per call.
-    pub reports: Arc<Mutex<ReportStore>>,
+    /// Report store. **Tokio** mutex, unlike the limiter: `file()` performs
+    /// file IO under the lock, and a std mutex held across that would block
+    /// the executor thread (R3).
+    pub reports: Arc<tokio::sync::Mutex<ReportStore>>,
 }
 
 #[derive(Serialize)]
@@ -118,6 +122,12 @@ pub fn router(state: AppState) -> Router {
         .layer(axum::extract::DefaultBodyLimit::max(64 * 1024))
         .layer(cors)
         .layer(timeout)
+        // R6 + R9: rate-limit introspection and ETag/304 on the catalog.
+        // Reads cached state only — never spends a token, never blocks.
+        .layer(axum::middleware::from_fn_with_state(
+            state.clone(),
+            api::middleware::response_headers,
+        ))
         .with_state(state)
 }
 
