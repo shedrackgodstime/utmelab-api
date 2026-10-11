@@ -22,27 +22,17 @@ Live counts at review time: `questions=1522, subjects=34, topics=566, subtopics=
 
 ## 2. P0 — real bugs / footguns (fix before new surface)
 
-### R1. Keys go stale after boot — launch blocker for paid API
-- **Where:** `src/main.rs:serve()` opens `KeyStore::open_json()` once; `AppState.keys: KeyStore` by value; `api/auth.rs:Caller` resolves against it.
-- **Bug:** `key create/revoke` in a second process edits the file; running server never reloads. New customer inactive until restart; leaked key unrevokable until restart.
-- **Fix options:** `keys: Arc<RwLock<KeyStore>>` + reload-on-resolve (mtime check) or SIGHUP handler; or move keys to Turso first (operational before content).
-- **Test:** create key via store file, resolve through running router without rebuild → must succeed; revoke → must 401 immediately.
+### R1. Keys go stale after boot — **RESOLVED 2026-10-11**
+`KeyBackend` + reload-on-resolve (mtime) for file, cache invalidation for Turso. Verified live.
 
-### R2. `render_novel_question` always returns `novel_id: ""`
-- **Where:** `src/bank/view.rs:79` hardcoded `String::new()`; comment says caller already knows.
-- **Bug:** wire type `RenderedNovelQuestion{novel_id}` promises it; consumers storing it get `""`.
-- **Fix options:** fill it in `api/v1/novels.rs:questions()` (pass `doc.novel.id`), or drop the field (breaking). Former preferred.
-- **Test:** `GET /novels/{id}/questions` asserts every item `novel_id == id`.
+### R2. `render_novel_question` always returns `novel_id: ""` — **RESOLVED 2026-10-11**
+`render_novel_question(novel_id, q, …)`; caller passes the novel id. Covered by shape parity tests.
 
-### R3. `std::sync::Mutex` inside async handlers
-- **Where:** `AppState{limiter: Arc<Mutex<RateLimiter>>, reports: Arc<Mutex<ReportStore>>}` (`src/lib.rs:55,57`); `.lock()` in `api/auth.rs:44-48` and `api/v1/reports.rs:87-91`.
-- **Bug:** `reports.file()` does file write+rename+chmod while holding a std mutex on a Tokio worker — blocks executor thread; limiter lock is short but same class.
-- **Fix options:** `tokio::sync::Mutex` for reports (IO under lock), `parking_lot::Mutex` or lock-free bucket for limiter; long-term: background writer channel for reports.
-- **Test:** concurrency smoke — N parallel reports do not stall event loop; add `#[tokio::test]` with `tokio::join!`.
+### R3. `std::sync::Mutex` inside async handlers — **RESOLVED 2026-10-11**
+Reports store now `tokio::sync::Mutex` (file IO happens under the lock). Limiter stays `std::Mutex` deliberately: pure arithmetic, never held across an await. Dead-bucket retention task wired (15-min interval against live-key list).
 
-### R4. Paging edge `per_page=0` / `page=0`
-- **Where:** `Store` contract says clamp `per_page` to `MAX_PER_PAGE`, treat `page<1` as 1 (`src/bank/store.rs:84-86`); `novels.rs:157-161` does `.clamp(1,MAX)` + `.max(1)` but `questions_page` path must be audited for `div_ceil(0)` panic.
-- **Fix:** centralise `normalise_page(page, per_page)` helper in `bank/store.rs`, use in both routes; explicit tests `?per_page=0&page=0` → `per_page=50|1, page=1`, no panic.
+### R4. Paging edge `per_page=0` / `page=0` — **RESOLVED**
+`questions_page` clamps `per_page.clamp(1, MAX_PER_PAGE)` and `page.max(1)` (`src/bank/json.rs:506-507`); `page_zero_is_treated_as_page_one` guards it.
 
 ### R5. `GET /topics/...` is N+1 over the bank
 - **Where:** `src/api/v1/topics.rs:68-77` loops subtopics calling `questions_page(...,1,1)` per subtopic for `total_records`.
@@ -52,21 +42,19 @@ Live counts at review time: `questions=1522, subjects=34, topics=566, subtopics=
 
 ## 3. P1 — API design gaps (decide, then build)
 
-### R6. No rate-limit introspection
-- Today: `429 + Retry-After:60`, no `X-RateLimit-Limit/Remaining/Reset` or `RateLimit` header. Integrators back off blind.
-- Fix: return bucket tokens from `RateLimiter::check` (or `peek`), emit headers on authed responses. Document in OpenAPI + `guides/errors.md`.
+### R6. No rate-limit introspection — **RESOLVED 2026-10-11**
+`X-RateLimit-Limit/Remaining/Reset` on every authenticated response (incl. 429), via `RateLimiter::peek()` (read-only) + `api/middleware.rs::response_headers`. Remaining includes the current request. Tests in `tests/headers.rs`.
 
 ### R7. Offset paging only — need cursor for sync
-- Today: `page/per_page` id-ordered, stable while bank immutable in RAM. `import` on live server or Turso inserts shift offsets.
-- Fix: keep offset for docs/browsers; add cursor (`?after_id&limit`, opaque, id-ordered) for `/questions` before selling sync. `bank_version` polling + cursor = sync protocol.
+Today: `page/per_page` id-ordered, stable while bank immutable in RAM. `import` on live server or Turso inserts shift offsets.
+Fix: keep offset for docs/browsers; add cursor (`?after_id&limit`, opaque, id-ordered) for `/questions` before selling sync. `bank_version` polling + cursor = sync protocol.
 
 ### R8. Search `?q=` is substring full-scan
-- Today: `to_lowercase().contains()` O(n) — fine at 1.5k, dead at 68k (D9 Turso rows). Noted push-down as `LIKE` loses ranking.
-- Fix: keep `q` as find-my-question helper, never promise relevance; decide relevance story (FTS5/trigram) only when bank justifies it. Document limits in `guides/finding-questions.md`.
+Today: `to_lowercase().contains()` O(n) — fine at 1.5k, dead at 68k (D9 Turso rows). Noted push-down as `LIKE` loses ranking.
+Fix: keep `q` as find-my-question helper, never promise relevance; decide relevance story (FTS5/trigram) only when bank justifies it. Document limits in `guides/finding-questions.md`.
 
-### R9. No HTTP caching despite `bank_version`
-- Today: `bank_version` pollable in `/health` but no `ETag: "<bank_version>"`, no `If-None-Match => 304`, no `Cache-Control` split (catalog long, questions short).
-- Fix: emit `ETag` on catalog + questions; `304` when matched; `Cache-Control: public, max-age=3600` catalog, `max-age=60` questions. Turns version string into real caching.
+### R9. No HTTP caching despite `bank_version` — **RESOLVED 2026-10-11**
+`ETag: "<bank_version>-<uri8hash>"` + `If-None-Match → 304` (empty body, no token spent) on all `/api/v1` GETs except `/keys/me`; `Cache-Control: public, max-age=3600` catalog / `60` questions. Per-URI etag so a changed filter never 304s. Tests in `tests/headers.rs`.
 
 ### R10. Filtering asymmetry — `?subtopic=` alone is global
 - `GET /subjects/{exam}/{slug}` requires exam (good D21), but `?subtopic=` without subject/exam is global. Subtopic slugs may collide across subjects.
@@ -86,10 +74,8 @@ Live counts at review time: `questions=1522, subjects=34, topics=566, subtopics=
 - `Unauthorized` for unknown|revoked|malformed is correct (no enumeration). `hash_key = sha256(presented)` + hashmap lookup — no timing-compare issue. Log key *id* server-side on 429/401, never hash/plaintext.
 - `RateLimiter` in-memory `HashMap<key_id, Bucket>` — restart wipes budgets (generous), single-process only. Two replicas double-spend. Fine until >1 binary, then Turso/Redis.
 
-### R14. Hardening checklist before first external integrator
-- `tower-http`: `TraceLayer` + `RequestId` (`X-Request-Id`), `DefaultBodyLimit` on `POST /report` (500-char check happens after JSON parse), request timeout.
-- `SIGTERM` handling — today only `ctrl_c` (`src/main.rs:shutdown_signal`); Caddy/systemd send TERM. Add `signal(unix::SIGTERM)`.
-- Structured `tracing` spans per request (key id, route, latency); `/metrics` or at least counters when dashboard needs it.
+### R14. Hardening — **MOSTLY RESOLVED 2026-10-11**
+Shipped: SIGTERM graceful shutdown, 64 KiB body limit, 30s request timeout, dead-bucket retention. Still open: per-request `X-Request-Id` + tracing spans (add when dashboard/first integrator needs observability).
 
 ### R15. Harvester / importer pipeline
 - Polite crawler (2s, single worker, UA) is good; missing: `robots.txt` check, exponential backoff on 429/5xx, checksum for mirrored images.
