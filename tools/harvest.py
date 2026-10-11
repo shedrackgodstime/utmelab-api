@@ -158,8 +158,10 @@ def question_ids(subject: str, year: int, pages: int, delay: float) -> list[str]
         for qid, _exam, _year in found:
             if qid not in seen:
                 seen.append(qid)
-        print(f"  page {page}: {len(found)} links ({len(seen)} unique so far)", file=sys.stderr)
+        if page % 10 == 0 or not found:
+            print(f"    listing: {len(seen)} questions found so far", file=sys.stderr, flush=True)
         time.sleep(delay)
+    print(f"    listing complete: {len(seen)} questions available", file=sys.stderr, flush=True)
     return seen
 
 

@@ -48,6 +48,13 @@ SUBJECTS = [
 ]
 
 
+def to_question_rows(path: Path):
+    """Re-read one subject's file to count rows carrying a diagram."""
+    if not path.exists():
+        return []
+    return [q for q in json.loads(path.read_text())["questions"] if q.get("image")]
+
+
 def run(subject: str, year: int, delay: float, limit: int, pages: int, out: Path,
         resume: bool = False) -> tuple[int, int]:
     target = out / f"{subject}-{year}.json"
@@ -139,7 +146,12 @@ def main() -> int:
             continue
         total += got
         skipped_total += skipped
-        print(f"    {subject}: {got} harvested, {skipped} skipped", flush=True)
+        with_image = sum(1 for q in harvest.to_question_rows(path=out / f"{subject}-{year}.json"))
+        print(
+            f"    {subject}: {got} questions on disk, {skipped} refused, "
+            f"{with_image} with diagrams   [running total: {total}]",
+            flush=True,
+        )
 
     print(f"\nDONE: {total} questions across {len(subjects)} subjects, {skipped_total} skipped", flush=True)
     return 0
