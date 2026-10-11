@@ -102,11 +102,22 @@ pub fn router(state: AppState) -> Router {
         // on the wire (D43).
         .expose_headers([http::header::RETRY_AFTER, http::header::CONTENT_TYPE]);
 
+    // 30s ceiling: every read is RAM-local or one cached/remote key lookup;
+    // a request past 30s is a bug, not slowness worth waiting for. `new` is
+    // deprecated in tower-http 0.6 but its suggested replacement is not
+    // available in this version; the default timeout status (408) is correct.
+    #[allow(deprecated)]
+    let timeout = tower_http::timeout::TimeoutLayer::new(std::time::Duration::from_secs(30));
+
     Router::new()
         .route("/health", get(health))
         .merge(api::router())
         .fallback(not_found)
+        // 64 KiB: the largest body we accept is a report (a 500-char detail).
+        // A multi-megabyte JSON bomb must die at the edge, not at serde.
+        .layer(axum::extract::DefaultBodyLimit::max(64 * 1024))
         .layer(cors)
+        .layer(timeout)
         .with_state(state)
 }
 

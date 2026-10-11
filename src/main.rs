@@ -312,6 +312,17 @@ fn write_openapi(out: Option<PathBuf>) -> Result<(), ApiError> {
 }
 
 async fn shutdown_signal() {
-    let _ = tokio::signal::ctrl_c().await;
+    // Caddy and systemd stop us with SIGTERM, not ctrl-C — a service that only
+    // listens for ctrl-C gets SIGKILL'd mid-deploy and drops in-flight writes.
+    let term = async {
+        let _ = tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate())
+            .expect("SIGTERM handler")
+            .recv()
+            .await;
+    };
+    tokio::select! {
+        _ = tokio::signal::ctrl_c() => {}
+        _ = term => {}
+    }
     tracing::info!("shutting down");
 }

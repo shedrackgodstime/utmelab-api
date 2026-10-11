@@ -173,7 +173,7 @@ pub async fn questions(
             .into_iter()
             .skip(start)
             .take(per_page as usize)
-            .map(|q| render_novel_question(q, with_explanation))
+            .map(|q| render_novel_question(&id, q, with_explanation))
             .collect(),
         page,
         per_page,

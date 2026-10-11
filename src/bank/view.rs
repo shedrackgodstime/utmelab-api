@@ -68,15 +68,15 @@ pub struct RenderedNovelQuestion {
 }
 
 /// Same withholding contract as [`render`]: no answer without asking (D27).
+/// `novel_id` is filled by the caller — the stored row does not carry it.
 pub fn render_novel_question(
+    novel_id: &str,
     q: &NovelQuestion,
     include_explanation: bool,
 ) -> RenderedNovelQuestion {
-    // The novel id travels with the stored shape, not the wire shape — the
-    // caller already knows which novel it asked for.
     RenderedNovelQuestion {
         id: q.id.clone(),
-        novel_id: String::new(),
+        novel_id: novel_id.to_owned(),
         chapter_number: q.chapter_number,
         text: q.text.clone(),
         options: q.options.clone(),
