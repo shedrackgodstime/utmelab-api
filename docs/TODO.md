@@ -3,7 +3,10 @@
 > Last updated: 2026-10-10. Items move here from `QUESTION_BANK_DECISIONS.md`
 > when they become work. Done items stay for the record; delete nothing.
 
-## Now (build in this order)
+## Now
+
+**Build-now list is empty.** CORS, `bank_version`, `Retry-After`, search, scheme
+and the report endpoint are all shipped. What remains is content, not code:
 
 - [ ] **Assemble a paper** (`POST /exams/{exam}/papers`) — **gated on content, not on code** (D41). Scheme + readiness are live. Assembly (shuffle, `?seed=`, answers withheld, score) waits until a subject can fill its full count: JAMB needs 180 verified rows, we hold 103.
 
@@ -32,6 +35,7 @@
 
 ## Done
 
+- [x] CORS `*` (D39) — preflight answered, `x-api-key` permitted, `Retry-After` exposed to JS
 - [x] `?q=` search on `/questions` — substring, unranked, through the store seam (D44)
 - [x] `Retry-After` on every 429, and only on 429s (D43)
 - [x] `bank_version` in `/health` — content hash, not deployment hash (D42)

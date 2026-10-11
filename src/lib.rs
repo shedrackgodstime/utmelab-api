@@ -38,6 +38,7 @@ pub use reports::{QuestionReport, ReportReason, ReportStore};
 use axum::Json;
 use axum::Router;
 use axum::extract::State;
+use axum::http;
 use axum::routing::get;
 use serde::Serialize;
 use std::sync::{Arc, Mutex};
@@ -73,11 +74,34 @@ struct Health {
 
 /// One router. Caddy path-routes `/api/*` here and everything else to the static
 /// web tier (D32), so this process never serves HTML.
+///
+/// **CORS is `*` (D39).** A browser app must be able to call us directly —
+/// D26 already concedes the key is extractable from a client, so a permissive
+/// origin adds no exposure that decision did not already accept; the key is
+/// still required. Credentials are *not* allowed, because a cookie-bearing
+/// wildcard is invalid per spec and we never authenticate by cookie anyway.
 pub fn router(state: AppState) -> Router {
+    // `x-api-key` is the whole authentication surface — omit it here and every
+    // authenticated browser call fails at the preflight, before the key is ever
+    // read. That regression is asserted in `tests/cors.rs`.
+    let cors = tower_http::cors::CorsLayer::new()
+        .allow_origin(tower_http::cors::Any)
+        .allow_methods([http::Method::GET, http::Method::POST])
+        .allow_headers([
+            http::HeaderName::from_static("x-api-key"),
+            http::header::CONTENT_TYPE,
+            http::header::ACCEPT,
+            http::header::AUTHORIZATION,
+        ])
+        // Without this a browser sees `null` for Retry-After even though it is
+        // on the wire (D43).
+        .expose_headers([http::header::RETRY_AFTER, http::header::CONTENT_TYPE]);
+
     Router::new()
         .route("/health", get(health))
         .merge(api::router())
         .fallback(not_found)
+        .layer(cors)
         .with_state(state)
 }
 
