@@ -348,31 +348,31 @@ fn novels_are_newest_first() {
 
 // ── provenance (D48) ────────────────────────────────────────────────────────
 
-/// Minimal word-boundary search: the markers are plain names, and a full regex
-/// crate for this would be a dependency we do not otherwise need.
-mod regex_lite {
-    pub fn is_match(haystack: &str, needle: &str) -> bool {
-        let hay: Vec<char> = haystack.chars().collect();
-        let pat: Vec<char> = needle.chars().collect();
-        if pat.is_empty() || pat.len() > hay.len() {
-            return false;
-        }
-        let bounded = |i: usize| {
-            let before_ok = i == 0 || !hay[i - 1].is_alphanumeric();
-            let after = i + pat.len();
-            let after_ok = after >= hay.len() || !hay[after].is_alphanumeric();
-            before_ok && after_ok
-        };
-        (0..=hay.len() - pat.len()).any(|i| bounded(i) && hay[i..i + pat.len()] == pat[..])
-    }
+/// Whole-word, case-sensitive mention. `favour forward reaction` does not name
+/// the character `Favour`; `Favour refused the offer` does.
+fn mentions_word(blob: &str, marker: &str) -> bool {
+    blob.split(|c: char| !c.is_alphanumeric())
+        .any(|token| token == marker)
 }
 
 /// D35: a novel carries its own questions inside its own document. A question
 /// in the main bank that names a servable novel's characters cannot be answered
 /// from anything we serve — the student would need the book — and 78 of them
 /// arrived exactly that way.
+///
+/// The guard only applies to the subjects a novel question could belong to
+/// (Use of English, Literature-in-English). Two false positives proved why
+/// (2026-10-11): `q_claim_2025_chemistry_74204` says "favour forward reaction"
+/// — the equilibrium verb, not the Lekki Headmaster character — and a CRK
+/// question names the prophet `Amos`, who is also a Lekki Headmaster character.
+/// A chemistry or CRK row can never be a novel question, and a plain
+/// case-insensitive substring scan cannot tell the word from the name. Within
+/// the novel-eligible subjects, whole-word + case-sensitive is the line; the
+/// residual edge (an English passage genuinely mentioning a Lekki character)
+/// is exactly what the guard should surface.
 #[test]
 fn no_question_in_the_bank_depends_on_a_novel_we_hold() {
+    const NOVEL_SUBJECTS: [&str; 2] = ["use-of-english", "literature-in-english"];
     let data = repo_root();
     let bank = JsonStore::load(&data).expect("load");
     // Every page. Checking only the first let six novel questions hide in
@@ -400,16 +400,24 @@ fn no_question_in_the_bank_depends_on_a_novel_we_hold() {
         if served < 50 {
             continue;
         }
+        // Character names are proper nouns. Match them case-sensitively as whole
+        // words: Lekki Headmaster has a character named "Favour", and an
+        // equilibrium question whose option is "favour forward reaction" is a
+        // chemistry question, not a novel question. The original case-insensitive
+        // substring scan failed on exactly that collision (2026-10-11,
+        // q_claim_2025_chemistry_74204). A genuine novel question capitalises
+        // the name; that residual edge (a question starting a sentence with the
+        // name) is accepted and recorded here.
         let mut markers: Vec<String> =
-            vec![novel["title"].as_str().unwrap_or_default().to_lowercase()];
+            vec![novel["title"].as_str().unwrap_or_default().to_owned()];
         if let Some(characters) = novel["characters"].as_array() {
             for character in characters {
                 let name = character["name"].as_str().unwrap_or_default();
                 if !name.is_empty() {
-                    markers.push(name.to_lowercase());
+                    markers.push(name.to_owned());
                     if let Some(last) = name.split_whitespace().last() {
                         if last.len() > 3 {
-                            markers.push(last.to_lowercase());
+                            markers.push(last.to_owned());
                         }
                     }
                 }
@@ -417,18 +425,24 @@ fn no_question_in_the_bank_depends_on_a_novel_we_hold() {
         }
 
         for question in &all {
+            // A novel question can only live in an English/Literature row.
+            // "favour" in a chemistry option or "Amos" in a CRK question is
+            // the subject's own vocabulary, not a dependency on the novel.
+            if !NOVEL_SUBJECTS.contains(&question.subject.as_str()) {
+                continue;
+            }
             let blob = format!(
                 "{} {}",
-                question.text.to_lowercase(),
+                question.text,
                 question
                     .options
                     .iter()
-                    .map(|o| o.text.to_lowercase())
+                    .map(|o| o.text.as_str())
                     .collect::<Vec<_>>()
                     .join(" ")
             );
             for marker in &markers {
-                if marker.len() > 3 && regex_lite::is_match(&blob, marker) {
+                if marker.len() > 3 && mentions_word(&blob, marker) {
                     panic!(
                         "{} names {:?} from {} — novel questions live in the novel document (D35)",
                         question.id,
