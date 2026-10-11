@@ -73,7 +73,11 @@ OPTION = re.compile(r"^\s*([a-e])\s*$")
 # option — a signal in the markup rather than in prose, which is far steadier
 # than scraping the rendered text. An earlier text-stripping version absorbed
 # the entire page footer into option B; structural parsing cannot do that.
-STEM = re.compile(r"<h1[^>]*>\s*<p>(.*?)</p>", re.S)
+# The heading pads the stem with `&nbsp;` paragraphs around it, so a single
+# `<p>` capture takes the padding and yields an empty question. Take the whole
+# heading and pick the paragraphs that carry text.
+STEM = re.compile(r"<h1[^>]*>(.*?)</h1>", re.S)
+STEM_P = re.compile(r"<p[^>]*>(.*?)</p>", re.S)
 ROW = re.compile(
     r'<div class="(flex gap-6 items-center rounded-lg[^"]*)">\s*'
     r'<div class="flex items-center gap-6">\s*'
@@ -82,6 +86,39 @@ ROW = re.compile(
     re.S,
 )
 CORRECT_MARK = "DFFFEC"
+
+# A diagram lives in the question body, between the heading and the first
+# option. Ads and avatars are <img> tags too — `/storage/serve/` is a campaign
+# banner and `/members/cache/` an avatar — so the question body is bounded by
+# the markup around it and ads excluded by path.
+OPTION_ROW_START = 'class="flex gap-6 items-center rounded-lg'
+IMAGE_SRC = re.compile(r'<img[^>]+src="([^"]+)"')
+AD_ASSET = re.compile(r"/storage/serve/|no_image_placeholder|/members/cache/|/ads?/|logo", re.I)
+
+# A question that points at a picture we cannot supply is worse than no
+# question: the student reads "in the diagram below" and finds nothing. These
+# are refused rather than imported broken.
+FIGURE_HINT = re.compile(
+    r"\b(diagram|figure|graph|illustrat\w*|shown below|sketch|as shown|"
+    r"the graph|fig\.|figure below)\b",
+    re.I,
+)
+
+
+def question_images(html: str) -> list[str]:
+    """Image URLs that belong to the question itself, in document order."""
+    start = html.find("<h1")
+    if start < 0:
+        return []
+    stop = html.find(OPTION_ROW_START, start)
+    region = html[start : stop if stop > 0 else start + 8000]
+    found = []
+    for src in IMAGE_SRC.findall(region):
+        if AD_ASSET.search(src):
+            continue
+        if src not in found:
+            found.append(src)
+    return found
 
 
 def clean(fragment: str) -> str:
@@ -131,7 +168,11 @@ def parse_detail(html: str) -> dict | None:
     stem_match = STEM.search(html)
     if stem_match is None:
         return None
-    stem = clean(stem_match.group(1))
+    stem = " ".join(
+        part
+        for part in (clean(p) for p in STEM_P.findall(stem_match.group(1)))
+        if part
+    )
 
     options: dict[str, str] = {}
     answer: str | None = None
@@ -148,6 +189,7 @@ def parse_detail(html: str) -> dict | None:
         "text": stem,
         "options": [{"id": letter, "text": options[letter]} for letter in sorted(options)],
         "answer": answer,
+        "images": question_images(html),
     }
 
 
@@ -158,6 +200,12 @@ def to_question(parsed: dict, subject: str, year: int, qid: str) -> dict | None:
         # A key that points outside the option set is a broken row. Refusing it
         # is the whole point: importing it would put a wrong answer in the bank.
         return None
+
+    images = parsed.get("images") or []
+    if not images and FIGURE_HINT.search(parsed["text"]):
+        # "In the diagram below…" with no diagram. Refused, not imported.
+        return None
+
     return {
         "id": f"q_claim_{year}_{subject}_{qid}",
         "exam": "JAMB",
@@ -171,7 +219,8 @@ def to_question(parsed: dict, subject: str, year: int, qid: str) -> dict | None:
         "subtopic_id": None,
         "section": None,
         "passage_id": None,
-        "image": None,
+        # An absolute URL on the source's own CDN; we do not mirror binaries.
+        "image": images[0] if images else None,
         # Never verified on arrival — see the module docstring.
         "explanation": None,
         "marks": 2.5,
