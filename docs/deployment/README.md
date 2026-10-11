@@ -1,20 +1,25 @@
-# Deploying utmelab-api — write once, then push-to-deploy
+# Deploying utmelab-api — set up once, then deploy on demand
 
-**You do not SSH per release.** The VPS config is one-time; after that,
-`git push` builds and ships automatically, and a bad push self-heals. This is
-the same proven pattern the parent UTME-Lab app already runs on this host
+**You do not SSH per release.** The VPS config is one-time; after that you
+trigger a deploy from the Actions tab (or push a tag) and it builds and ships.
+This is the same proven pattern the parent UTME-Lab app already runs on this host
 (`docs/deployment/` in the parent repo, verified 2026-09-14).
 
 ## The loop (what you'll actually do)
 
 | Action | What you type | What happens |
 |---|---|---|
-| **Prerelease** (iterate, no "release") | `git push` to `main` | CI builds API + docs → ships → gate activates → health-checked. Version `v0.0.0-pre.<sha>`. |
+| **Work** | `git push` to `main` | **Nothing ships.** `main` is for working. |
+| **Prerelease** | Actions → `deploy-api` → **Run workflow** | CI builds API + docs → ships → gate activates → health-checks. Version `v0.0.0-pre.<sha>`. |
 | **Release** (v0.1.0, when solid) | `git tag v0.1.0 && git push origin v0.1.0` | identical machinery, stable version, same host. |
-| **Roll back** | (automatic) | gate keeps the previous release if health fails. Manual: re-run gate with the older version. |
+| **A deploy failed** | nothing | the run goes **red**, `/health` never answered, nothing was deleted. Fix and run it again. |
 
 No SSH. No manual Caddy/systemd edits after the one-time setup. The docs ship
 in the same tarball as the binary (D32: Caddy serves `web/`, proxies `/api/*`).
+
+**Deploys are serialized.** Only one runs at a time and none is cancelled
+mid-flight, because the gate deletes old release directories — two overlapping
+runs could delete the release the other was activating.
 
 ## What's already done on the host (from the parent)
 
@@ -68,8 +73,30 @@ sudo install -m 0644 docs/deployment/Caddyfile.api /etc/caddy/Caddyfile.api
 sudo caddy validate && sudo systemctl reload caddy
 ```
 
-Then push. The workflow builds, ships, runs `utmelab-api-deploy <v>`, and prints
-health. First run activates; `api.utmelab.com` serves docs + `/api/v1/*`.
+Then trigger a deploy (Actions → `deploy-api` → **Run workflow**). The workflow
+builds, ships, runs `utmelab-api-deploy <v>`, and prints health. First run
+activates; `api.utmelab.com` serves docs + `/api/v1/*`.
+
+## First run, in this order
+
+Do these in sequence. Steps 1 and 2 are the only ones that can bite.
+
+1. **DNS first** — add an A record `api.utmelab.com` → `209.74.85.163`, then
+   wait for it to resolve (`getent hosts api.utmelab.com`). Nothing TLS works
+   until it does, so start it early. Until then `api.utmelab.com` is NXDOMAIN.
+2. **Repo secrets** — set `VPS_HOST`, `VPS_PORT`, `VPS_USER`, `VPS_SSH_KEY`,
+   `VPS_KNOWN_HOSTS` **on this repo**. GitHub does not share secrets between
+   repositories; copying the parent's values into `utmelab-api` is a manual step.
+3. **One-time VPS setup** (needs root) — run `vps-onetime-setup.sh`, then edit
+   `/etc/utmelab-api/environment` and set the real `TURSO_DB_TOKEN`. The script
+   writes the literal placeholder `REPLACE_WITH_WRITE_TOKEN`; the API will not
+   boot without it (keys live in Turso, there is no file fallback).
+4. **Smoke-test before deploying anything** — with the service enabled but no
+   release, `systemctl start utmelab-api` fails by design. So instead: trigger
+   the workflow and read the run. It fails safely at the health check if step 3
+   was wrong, and nothing is deleted.
+5. **Confirm** — `curl -s http://127.0.0.1:8081/health` and, once DNS has
+   propagated, `curl -s https://api.utmelab.com/health`.
 
 ## Files in this folder
 
@@ -84,9 +111,14 @@ health. First run activates; `api.utmelab.com` serves docs + `/api/v1/*`.
 
 - **Config is one-time** and lives on the host (env file, service, Caddy) — not
   re-done per deploy.
-- **Deploys are `git push`** — CI does build+ship+activate; you never log in.
-- **Failures are safe** — the gate health-checks `/health` and keeps the previous
-  release; a broken prerelease can't take the API down.
+- **Deploys are one click** — you choose to ship; `main` never ships itself.
+- **Failures are loud, not hidden** — the gate health-checks `/health` and exits
+  red with `systemctl status` + the journal in the run log. No auto-rollback, so
+  a broken build can never quietly sit behind a healthy-looking symlink.
+- **The VPS stays small** — on a healthy deploy the gate deletes every release
+  except the active one, so one prerelease (~45 MB binary + bank) is all the
+  disk ever carries. Raise `UTMELAB_API_KEEP_RELEASES=N` once real releases land
+  and history is worth keeping.
 - **It's reusable** — the parent app runs the identical pattern on the same box;
   the next project copies these four files and changes names + ports.
 - **Docs stay grouped** — `web/` builds in the same tarball; no separate deploy.

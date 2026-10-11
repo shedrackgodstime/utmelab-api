@@ -24,6 +24,15 @@ id utmelab  >/dev/null && echo "  user utmelab: ok"  || { echo "  MISSING utmela
 systemctl is-active --quiet caddy && echo "  caddy: active" || { echo "  caddy not active"; exit 1; }
 ss -lntp | grep -q ":${PORT} " && { echo "  port ${PORT} already in use — pick another"; exit 1; } || echo "  port ${PORT}: free"
 
+# DNS gates the TLS half of step 6. Caddy will not reload a site it cannot issue
+# a certificate for, so check now rather than after step 6 has half-applied.
+if getent hosts api.utmelab.com >/dev/null 2>&1; then
+  echo "  api.utmelab.com: resolves ($(getent hosts api.utmelab.com | head -1 | awk '{print $1}'))"
+else
+  echo "  WARNING api.utmelab.com does NOT resolve. Add the A record -> this host"
+  echo "          before step 6, or Caddy cannot obtain a certificate."
+fi
+
 say "1. Directories (parent layout under /opt/apps/${APP})"
 # /opt/apps/<app>         root:deploy 0755  — parents traversable by all (o+rx)
 install -d -o root   -g deploy -m 0755 "/opt/apps/${APP}"
@@ -77,7 +86,9 @@ fi
 caddy validate && systemctl reload caddy
 echo "  api.utmelab.com -> proxies /api/*,/health,/openapi.json to 127.0.0.1:${PORT}; serves static docs"
 
-say "DONE — now: git push (workflow builds+ships+activates), then:"
+say "DONE — nothing is live yet. Set the real TURSO_DB_TOKEN above, then trigger"
+say "     a deploy: Actions -> deploy-api -> Run workflow. It builds, ships and"
+say "     health-checks; then:"
 cat <<EOF
   systemctl status ${APP}
   journalctl -u ${APP} -n 50

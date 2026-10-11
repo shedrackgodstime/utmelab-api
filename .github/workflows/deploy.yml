@@ -1,25 +1,31 @@
-# Deploy utmelab-api — push-to-deploy, no SSH per release.
+# Deploy utmelab-api — manual trigger, no SSH per release.
 #
-# Prerelease loop: every push to `main` builds and ships. The gate health-checks
-# and keeps the PREVIOUS release on failure, so a bad push self-heals. No tags,
-# no VPS login. That is the whole point: iterate freely; cut `v0.1.0` only when
-# the API is solid (same machinery, stable trigger).
+# Nothing deploys on a plain push. `main` is for working; the API ships only when
+# you ask for it:
+#   - Actions -> deploy-api -> "Run workflow"  -> prerelease (v0.0.0-pre.<sha>)
+#   - git push origin v0.1.0                   -> the first real release
+# Same machinery either way; only the version differs.
 #
-# One-time VPS prep is in docs/deployment/README.md. GitHub secrets needed:
+# A failed release has NO fallback. It is never made to stick, nothing is
+# pruned on failure, and you wait for the next deploy. Old releases are deleted
+# on success so the 25 GB VPS stays clean.
+#
+# One-time VPS prep is in docs/deployment/README.md. GitHub secrets needed —
+# set on THIS repo, they are not inherited from UTME-Lab:
 #   VPS_HOST, VPS_PORT, VPS_USER (=deploy), VPS_SSH_KEY, VPS_KNOWN_HOSTS
-# (the same secrets the parent UTME-Lab workflow already uses).
 
 name: deploy-api
 
 on:
-  push:
-    branches: [main]
-    tags: ["v*"]
   workflow_dispatch: {}
+  push:
+    tags: ["v*"]
 
-# Serialize deploys; never cancel one mid-flight.
+# Serialize EVERY deploy, not per-ref. The gate prunes release directories, so
+# two overlapping runs could delete the release the other is activating. One
+# deploy at a time, never cancelled mid-flight.
 concurrency:
-  group: deploy-api-${{ github.ref }}
+  group: deploy-api
   cancel-in-progress: false
 
 permissions:

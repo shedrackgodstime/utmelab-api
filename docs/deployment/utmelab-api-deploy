@@ -12,9 +12,15 @@
 #   releases/<v>/web/               the built static docs (index.html present)
 #
 # Activation = atomically re-point the `current` symlink, restart the service,
-# poll /health. On any failure the PREVIOUS release stays active — a bad push
-# self-heals instead of taking the API down. Rollback = this script with the
-# previous version.
+# poll /health.
+#
+# There is NO fallback. If a release fails its health check the deploy stops
+# there and exits non-zero; you fix the code and ship the next release. Nothing
+# is auto-rolled-back and no old version is kept as insurance.
+#
+# On success every release except the active one is deleted, so the 25 GB VPS
+# carries one prerelease at a time. Revisit that once v0.1.0 lands and there is
+# a real release history worth keeping.
 set -euo pipefail
 
 APP=utmelab-api
@@ -44,11 +50,25 @@ SRC="$REL/$V"
 chmod -R o+rX "$SRC" 2>/dev/null || true
 chmod 0755 "$SRC/$APP" 2>/dev/null || true
 
-# Remember the current target so a failed activation can be undone.
-PREV=""
-if [[ -L "$CUR" ]]; then PREV="$(readlink "$CUR" || true)"; fi
+# Keep the active release and delete the rest. A release is a ~45 MB binary plus
+# the bank, so a month of prereleases would eat the 25 GB disk. Called ONLY
+# after a healthy activation, so a failed deploy can never delete anything.
+# Default 0 = the VPS carries exactly one release. Raise with
+# UTMELAB_API_KEEP_RELEASES=N when real releases land and history is worth
+# keeping (e.g. 3 keeps the active one plus the two before it).
+prune() {
+  local keep="${UTMELAB_API_KEEP_RELEASES:-0}" d n=0
+  [[ "$keep" =~ ^[0-9]+$ ]] || keep=0
+  while IFS= read -r d; do
+    [[ "$d" == "$SRC" ]] && continue   # never delete what we just activated
+    n=$((n + 1))
+    (( n > keep )) || continue
+    rm -rf -- "$d"
+    log "pruned ${d##*/}"
+  done < <(find "$REL" -mindepth 1 -maxdepth 1 -type d -name 'v*' | sort)
+}
 
-log "activating $V (previous: ${PREV:-none})"
+log "activating $V"
 ln -sfn "$SRC" "$CUR"
 
 restart_and_wait() {
@@ -65,16 +85,14 @@ restart_and_wait() {
 
 if restart_and_wait; then
   log "release $V is live"
+  prune
   exit 0
 fi
 
-# Activation failed. Put the previous release back if there was one.
+# Activation failed. No fallback by policy: dump the diagnosis and stop.
+# `current` still points at $V (the service is down or unhealthy) and nothing
+# was pruned, so the next deploy still has room to land. Fix and re-ship.
 log "activation FAILED — $V did not answer $HEALTH"
 systemctl status "$SVC" --no-pager -l >&2 || true
 journalctl -u "$SVC" -n 40 --no-pager >&2 || true
-if [[ -n "$PREV" && -d "$PREV" ]]; then
-  log "rolling back to $PREV"
-  ln -sfn "$PREV" "$CUR"
-  systemctl restart "$SVC" || true
-fi
-die "release $V failed health check; previous release retained" 7
+die "release $V failed health check; not serving — fix and deploy again" 7
