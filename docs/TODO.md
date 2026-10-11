@@ -5,9 +5,10 @@
 
 ## Now (build in this order)
 
-- [ ] **`GET /papers`** — mock assembly. JAMB structure (60 English + 40×3), shuffle default, `?seed=` for reproducibility. The product, not a convenience.
+- [ ] **Assemble a paper** (`POST /exams/{exam}/papers`) — **gated on content, not on code** (D41). Scheme + readiness are live. Assembly (shuffle, `?seed=`, answers withheld, score) waits until a subject can fill its full count: JAMB needs 180 verified rows, we hold 103.
 - [ ] **Search** — substring over `text`, case-insensitive, no ranking. Primarily our authoring/dedupe tool; consumers get a search UI free.
 - [ ] **`Retry-After` on every 429** — two lines. Our status code invokes a standard our response doesn't honour.
+- [ ] **CORS `*`** (D39) — one header via tower-http. Unblocks browser-app consumers; no new risk past D26.
 - [ ] **`bank_version` in `/health`** — content hash or timestamp. Cheap invalidation so consumers poll one tiny endpoint instead of the bank. (Replaces webhooks for now.)
 
 ## Content (English-first, D34)
@@ -35,6 +36,8 @@
 
 ## Done
 
+- [x] `GET /exams/{exam}/papers` — scheme + honest readiness (D41); 16 paths
+- [x] Report endpoint `POST /questions/{id}/report` (D38): closed reasons, no PII, 10/day, dedupe, queue-not-action
 - [x] Constant closed (D11): Question, Option, Explanation, 5 tables + notes deferred
 - [x] Exam-scoped subjects (D21), answer-by-id (D15), `verified` (D17)
 - [x] Key auth, per-key rate limits, RFC 9457 errors, derived OpenAPI (D25–D28, D31)

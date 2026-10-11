@@ -21,7 +21,7 @@ use utoipa::openapi::security::{ApiKey, ApiKeyValue, SecurityScheme};
 use utoipa::{Modify, OpenApi};
 
 use crate::AppState;
-use crate::api::v1::{exams, keys, novels, passages, questions, reports, subjects, topics};
+use crate::api::v1::{exams, keys, novels, papers, passages, questions, reports, subjects, topics};
 
 pub fn router() -> Router<AppState> {
     Router::new().route("/openapi.json", get(spec))
@@ -102,6 +102,7 @@ are Markdown and carry the trap that catches people.",
         novels::detail,
         novels::questions,
         reports::report,
+        papers::readiness,
         passages::passage,
         topics::topic,
         subjects::coverage,
@@ -120,6 +121,8 @@ are Markdown and carry the trap that catches people.",
         subjects::Coverage,
         reports::ReportBody,
         reports::ReportReceipt,
+        papers::PaperReadiness,
+        crate::bank::scheme::SubjectSlot,
     )),
     modifiers(&AuthScheme),
     tags(

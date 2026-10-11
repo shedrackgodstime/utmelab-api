@@ -34,6 +34,39 @@
         }
       }
     },
+    "/api/v1/exams/{exam}/papers": {
+      "get": {
+        "tags": [
+          "papers"
+        ],
+        "operationId": "getExamScheme",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "path",
+            "description": "Exam code, as listed by GET /exams.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaperReadiness"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No subject carried for that exam"
+          }
+        }
+      }
+    },
     "/api/v1/exams/{exam}/subjects": {
       "get": {
         "tags": [
@@ -407,6 +440,64 @@
           },
           "429": {
             "description": "Over the key's per-minute limit"
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/questions/{id}/report": {
+      "post": {
+        "tags": [
+          "questions"
+        ],
+        "description": "Flag a broken question. Reasons are a closed set so reports aggregate; free-text detail is optional and capped. Reports never change the bank — they join a review queue, and a question with many flags gets human eyes.",
+        "operationId": "reportQuestion",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Question id.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportBody"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportReceipt"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Unknown reason, or detail over 500 characters"
+          },
+          "401": {
+            "description": "Missing or invalid API key"
+          },
+          "404": {
+            "description": "No such question"
+          },
+          "429": {
+            "description": "Over a limit — per-minute or the daily report cap"
           }
         },
         "security": [
@@ -1055,6 +1146,27 @@
           }
         }
       },
+      "PaperReadiness": {
+        "type": "object",
+        "description": "The scheme plus whether the bank can fill it. Readiness is kept beside the\nscheme rather than inside it, so the shape a consumer validates does not\nmove when our content grows.",
+        "required": [
+          "exam",
+          "scheme",
+          "complete"
+        ],
+        "properties": {
+          "complete": {
+            "type": "boolean",
+            "description": "True when every compulsory subject plus three electives can fill their\nfull question count with verified questions."
+          },
+          "exam": {
+            "type": "string"
+          },
+          "scheme": {
+            "$ref": "#/components/schemas/Scheme"
+          }
+        }
+      },
       "Passage": {
         "type": "object",
         "description": "A stimulus shared by many questions — one comprehension passage serving five\nquestions, one cloze serving ten.",
@@ -1290,6 +1402,100 @@
           }
         }
       },
+      "ReportBody": {
+        "type": "object",
+        "required": [
+          "reason"
+        ],
+        "properties": {
+          "detail": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Optional context, max 500 characters. No PII — never send names or emails."
+          },
+          "reason": {
+            "type": "string",
+            "description": "One of: wrong_answer, unclear_stem, broken_option, wrong_explanation, other."
+          }
+        }
+      },
+      "ReportReceipt": {
+        "type": "object",
+        "required": [
+          "id",
+          "question_id",
+          "reason",
+          "duplicate"
+        ],
+        "properties": {
+          "duplicate": {
+            "type": "boolean",
+            "description": "True when this exact flag was already filed — POST is idempotent here."
+          },
+          "id": {
+            "type": "string"
+          },
+          "question_id": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      },
+      "Scheme": {
+        "type": "object",
+        "description": "The exam's shape, derived from the subjects we actually carry.",
+        "required": [
+          "exam",
+          "subjects",
+          "rules",
+          "questions_available",
+          "subjects_ready"
+        ],
+        "properties": {
+          "duration_minutes": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int32",
+            "description": "`None` where unverified — absent, not zero (same rule as `year_published`).",
+            "minimum": 0
+          },
+          "exam": {
+            "type": "string"
+          },
+          "questions_available": {
+            "type": "integer",
+            "format": "int32",
+            "description": "How many questions a full paper contains, summed from what we carry.\nThis is a lower bound for any exam whose bank is incomplete — an English\npaper only counts if `use-of-english` has 60 real questions.",
+            "minimum": 0
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Human-readable caveats a candidate or consumer must know. The WAEC\n\"answer 10 of 13\" problem (recorded, not solved) lives here."
+          },
+          "subjects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubjectSlot"
+            }
+          },
+          "subjects_ready": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Which subjects can actually fill a slot today."
+          }
+        }
+      },
       "Subject": {
         "type": "object",
         "description": "One exam's offering of a subject (D21). The same concept can appear once per\nexam, carrying that board's own name — `Use of English` and\n`English Language` are two true rows, not one row with an alias.",
@@ -1329,6 +1535,41 @@
         "properties": {
           "subject": {
             "$ref": "#/components/schemas/Subject"
+          }
+        }
+      },
+      "SubjectSlot": {
+        "type": "object",
+        "description": "One subject's slot in an exam.",
+        "required": [
+          "slug",
+          "name",
+          "compulsory",
+          "questions"
+        ],
+        "properties": {
+          "compulsory": {
+            "type": "boolean"
+          },
+          "marks_per_question": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "format": "float",
+            "description": "`None` where the per-question mark is not uniform (English carries\n1–3 depending on section), so a consumer must use each row's `marks`."
+          },
+          "name": {
+            "type": "string"
+          },
+          "questions": {
+            "type": "integer",
+            "format": "int32",
+            "description": "How many questions this subject contributes (from `full_exam_questions`).",
+            "minimum": 0
+          },
+          "slug": {
+            "type": "string"
           }
         }
       },
