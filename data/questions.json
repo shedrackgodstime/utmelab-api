@@ -48233,10 +48233,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Solve the two equations together.",
+      "body": "From x/2 - y/5 = 1 multiply by 10: 5x - 2y = 10. From y - x/3 = 8 multiply by 3: 3y - x = 24. Eliminating gives x = 6 and y = 10.",
+      "trap": "Eliminating the wrong variable first, or dividing through by a coefficient and losing the constant on the right."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74093",
@@ -48580,10 +48584,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Removing the heaviest bar removes one value from the sum.",
+      "body": "15 bars at 1000 kg gives 15,000 kg. A 5 kg drop over the remaining 14 bars gives 14 x 995 = 13,930, so the heaviest bar is 15,000 - 13,930 = 1070 kg.",
+      "trap": "Applying the 5 kg reduction to the original 15 bars instead of the remaining 14, which changes the answer by 75 kg."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74102",
@@ -48615,10 +48623,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Invert by the adjugate over the determinant.",
+      "body": "The determinant is 1x5 - 2x3 = -1, so the inverse is (1/-1) x [[5,-2],[-3,1]] = [[-5,2],[3,-1]]. The entries sum to -5 + 2 + 3 - 1 = -1.",
+      "trap": "Dividing the adjugate by the matrix instead of by the determinant, or forgetting that 1/-1 = -1."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74151",
@@ -48728,10 +48740,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Expand along the first row; the top-left minor vanishes.",
+      "body": "det = -2(2x2 - 1x4) - 3(px2 - 1x1) + 1(px4 - 2x1) = 0 - 6p + 3 + 4p - 2 = -2p + 1. Setting -2p + 1 = -5 gives p = 3.",
+      "trap": "Dropping the sign that flips on every other entry of the expansion, which is what turns -2p + 1 into +2p + 1."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74154",
@@ -49660,7 +49676,11 @@
     "section": null,
     "passage_id": null,
     "image": "https://myschool.ng/storage/classroom/G64aNMf7HmJVH7IAlEnlXCQClu9XRNk07B3f1UdQ.png",
-    "explanation": null,
+    "explanation": {
+      "key_point": "Not yet verifiable from the published figure.",
+      "body": "The mode of a grouped distribution is L + ((f1 - f0) / (2f1 - f0 - f2)) x h, which needs every frequency read exactly. The figure is low-resolution and the frequencies either side of the modal class are not legible with confidence; on the readings we can make, the stored answer does not follow, and on a plausible alternative reading it does. A wrong figure and a wrong answer look identical from here, so we will not guess.",
+      "trap": "Treating a blurred table as a readable one. The modal frequency is easy to spot; the two frequencies beside it are what decide the answer, and those are exactly what the scan loses."
+    },
     "marks": 2.5,
     "difficulty": 3,
     "verified": false
@@ -50007,10 +50027,14 @@
     "section": null,
     "passage_id": null,
     "image": "https://myschool.ng/storage/classroom/BrleVCCTR9vyYWrymiwk2FVS1vSuSdD4QKHv5SkC.png",
-    "explanation": null,
+    "explanation": {
+      "key_point": "Angle = share of the total x 360.",
+      "body": "The sectors total 16 + 24 + 27 + 21 + 8 = 96. Doctors are 16 of those, so 16/96 x 360 = **60 degrees**.",
+      "trap": "Assuming the sectors total 100 and computing 16 x 3.6 = 57.6, which is offered as 72 only to catch a different slip; the total is 96, not 100."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74198",
@@ -50042,10 +50066,14 @@
     "section": null,
     "passage_id": null,
     "image": "https://myschool.ng/storage/classroom/5AgSVvT4PuTana3HC7zIlLbmk8VFKK7q6k3JQJye.png",
-    "explanation": null,
+    "explanation": {
+      "key_point": "Read the shading as: inside Q, outside both P and R.",
+      "body": "The shaded part is what belongs to Q alone. Everything inside P or R is excluded, so it is the complement of P u R, taken within Q: **(P u R)' n Q**.",
+      "trap": "(P n Q)' n R reads as the complement of the P-Q overlap, which shades a different region entirely."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74199",
@@ -50078,9 +50106,9 @@
     "passage_id": null,
     "image": "https://myschool.ng/storage/classroom/AVG3qECzMkFkQxAioIjOwxrcB2S2eV3g5vE75Zd1.png",
     "explanation": {
-      "key_point": "The answer key cannot be verified from the figure as published.",
-      "body": "The table in the image gives weights 54, 56, 58, 60, 62 with frequencies 3, 1, 2, 2, 3. Those sum to **11, not the twelve students the question names**, and the highest frequency (3) is shared by 54 and 62 — so the mode is ambiguous even before the stored answer, 58, which has a frequency of only 2.",
-      "trap": "A modal weight of 58 does not follow from any reading of the table. The figure needs replacing before this question can be verified; we will not silently redraw a table that came from a source we do not control."
+      "key_point": "Not yet verifiable from the published figure.",
+      "body": "The modal weight depends on the frequencies in the table, and the scan is too low-resolution to read them with confidence. On our reading the frequencies do not support the stored answer; on a different reading they might. We will not publish a claim about the arithmetic of a figure we cannot read, and we will not redraw a table that came from a source we do not control.",
+      "trap": "Verifying a statistics question from a table you cannot actually resolve. Both the answer and the criticism of it depend on digits nobody has read properly."
     },
     "marks": 2.5,
     "difficulty": 3,
@@ -50155,10 +50183,14 @@
     "section": null,
     "passage_id": null,
     "image": "https://myschool.ng/storage/classroom/3f4aqwkQxGSVvLlHEfLyqsxrt01I8QWoGA5ZUfBV.png",
-    "explanation": null,
+    "explanation": {
+      "key_point": "The modal class is the one with the highest frequency; its upper class boundary is half a unit above the class limit.",
+      "body": "The highest frequency is 10, in the class 21-30. In a grouped distribution the classes run 20.5-30.5, so the **upper class boundary is 30.5**.",
+      "trap": "Answering 30, the class limit rather than the class boundary - the half-unit correction exists precisely because the data are continuous."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74202",
