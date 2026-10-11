@@ -62,6 +62,24 @@ const SUBJECT_MAP: &[(&str, &str, &str)] = &[
         "literature-in-english",
         "Literature-in-English",
     ),
+    ("arabic", "arabic", "Arabic"),
+    ("computer-studies", "computer-studies", "Computer Studies"),
+    ("french", "french", "French"),
+    ("hausa", "hausa", "Hausa"),
+    ("igbo", "igbo", "Igbo"),
+    ("yoruba", "yoruba", "Yoruba"),
+    ("home-economics", "home-economics", "Home Economics"),
+    (
+        "islamic-religious-knowledge-irk",
+        "islamic-religious-studies",
+        "Islamic Religious Studies",
+    ),
+    (
+        "physical-education",
+        "physical-education",
+        "Physical and Health Education",
+    ),
+    ("fine-arts", "art", "Art"),
     (
         // The source spells this one "Accounts - Principles of Accounts", so
         // asking for `principles-of-accounts` returns HTTP 200 and zero rows —

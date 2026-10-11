@@ -14,6 +14,13 @@
     "full_exam_questions": 40
   },
   {
+    "slug": "art",
+    "exam": "JAMB",
+    "name": "Art",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
     "slug": "biology",
     "exam": "JAMB",
     "name": "Biology",
@@ -52,13 +59,6 @@
     "slug": "economics",
     "exam": "JAMB",
     "name": "Economics",
-    "is_compulsory": false,
-    "full_exam_questions": 40
-  },
-  {
-    "slug": "fine-arts",
-    "exam": "JAMB",
-    "name": "Fine Arts",
     "is_compulsory": false,
     "full_exam_questions": 40
   },
@@ -142,7 +142,7 @@
   {
     "slug": "physical-education",
     "exam": "JAMB",
-    "name": "Physical Education",
+    "name": "Physical and Health Education",
     "is_compulsory": false,
     "full_exam_questions": 40
   },
