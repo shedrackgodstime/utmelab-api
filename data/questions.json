@@ -35,7 +35,7 @@
     "explanation": {
       "key_point": "To rationalise, multiply numerator and denominator by the surd itself.",
       "body": "## Working\n\nMultiply top and bottom by \\(\\sqrt{3}\\):\n\n$$\\frac{6}{\\sqrt{3}} \\times \\frac{\\sqrt{3}}{\\sqrt{3}} = \\frac{6\\sqrt{3}}{3} = 2\\sqrt{3}$$",
-      "trap": "\\(2\\) comes from dividing 6 by 3 without carrying the surd down \u2014 rationalising removes the surd from the *denominator*, not from the answer."
+      "trap": "\\(2\\) comes from dividing 6 by 3 without carrying the surd down — rationalising removes the surd from the *denominator*, not from the answer."
     },
     "marks": 2.5,
     "difficulty": 2,
@@ -111,7 +111,7 @@
     "explanation": {
       "key_point": "Write 32 as a power of 2, then read off the exponent.",
       "body": "$$32 = 2^5 \\Rightarrow x = 5$$",
-      "trap": "16 is \\(2^4\\) \u2014 the correct exponent for a base of 2 giving 16, not 32."
+      "trap": "16 is \\(2^4\\) — the correct exponent for a base of 2 giving 16, not 32."
     },
     "marks": 2.5,
     "difficulty": 1,
@@ -176,7 +176,11 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Points with the same x-coordinate lie on a vertical line, so the distance is the difference of the y-values.",
+      "body": "Between \\((2, 3)\\) and \\((2, 8)\\) the x-values are equal, so \\(|x_2 - x_1| = 0\\) and only \\(|y_2 - y_1| = 8 - 3 = 5\\) remains. The distance is 5 units.",
+      "trap": "Squaring both differences and stopping — \\(0^2 + 5^2 = 25\\) — gives the squared distance, not the distance."
+    },
     "marks": 2.5,
     "difficulty": 1,
     "verified": false
@@ -250,7 +254,7 @@
     "image": null,
     "explanation": {
       "key_point": "The final sentence states her suspicion outright.",
-      "body": "The closing line \u2014 *\"the suspicion that adults were accustomed to a version of events that did not survive being examined too closely\"* \u2014 restates option (a) almost verbatim.",
+      "body": "The closing line — *\"the suspicion that adults were accustomed to a version of events that did not survive being examined too closely\"* — restates option (a) almost verbatim.",
       "trap": "Option (d) describes her *behaviour* (she stopped asking), not the *suspicion* the question asks for."
     },
     "marks": 3,
@@ -288,7 +292,7 @@
     "image": null,
     "explanation": {
       "key_point": "\"had already decided\" frames maturity as something she chose.",
-      "body": "The verb *decided* and the past perfect place the acquisition before the point described, which is what separates (b) from (a) \u2014 the passage attributes it to choice, not temperament.",
+      "body": "The verb *decided* and the past perfect place the acquisition before the point described, which is what separates (b) from (a) — the passage attributes it to choice, not temperament.",
       "trap": "Option (a) reads *rebellious*, which is a temperamental claim the passage never makes."
     },
     "marks": 3,
@@ -384,19 +388,19 @@
     "options": [
       {
         "id": "a",
-        "text": "\\(/a\u026a/\\)"
+        "text": "\\(/aɪ/\\)"
       },
       {
         "id": "b",
-        "text": "\\(/a\u028a/\\)"
+        "text": "\\(/aʊ/\\)"
       },
       {
         "id": "c",
-        "text": "\\(/i\u02d0/\\)"
+        "text": "\\(/iː/\\)"
       },
       {
         "id": "d",
-        "text": "\\(/\u0254\u026a/\\)"
+        "text": "\\(/ɔɪ/\\)"
       }
     ],
     "answer": "c",
@@ -406,8 +410,8 @@
     "image": null,
     "explanation": {
       "key_point": "A pure vowel is one sound; a diphthong glides between two.",
-      "body": "\\(/i\u02d0/\\) is a single sustained quality. The other three are diphthongs \u2014 the mouth moves from one position to another within the one vowel.",
-      "trap": "\\(/a\u026a/\\), \\(/a\u028a/\\) and \\(/\u0254\u026a/\\) are the commonest diphthongs in English and are the usual distractors in this item."
+      "body": "\\(/iː/\\) is a single sustained quality. The other three are diphthongs — the mouth moves from one position to another within the one vowel.",
+      "trap": "\\(/aɪ/\\), \\(/aʊ/\\) and \\(/ɔɪ/\\) are the commonest diphthongs in English and are the usual distractors in this item."
     },
     "marks": 1,
     "difficulty": 2,
@@ -482,7 +486,7 @@
     "image": null,
     "explanation": {
       "key_point": "Groundnut cake is a high-protein oil-seed residue.",
-      "body": "Groundnut cake typically runs 40\u201350% crude protein, well above the cereals and hulls listed.",
+      "body": "Groundnut cake typically runs 40–50% crude protein, well above the cereals and hulls listed.",
       "trap": null
     },
     "marks": 1,
@@ -519,7 +523,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "Jus soli \u2014 the law of the place \u2014 is the rule.",
+      "key_point": "Jus soli — the law of the place — is the rule.",
       "body": "Birthright citizenship follows territorial boundaries, subject to constitutional exceptions.",
       "trap": null
     },
@@ -559,7 +563,7 @@
     "explanation": {
       "key_point": "Acceleration is greatest at the extremes and zero at the centre.",
       "body": "$a = -\\omega^2 x$, so at maximum \\(|x|\\) the acceleration is at its peak, while velocity is zero because the graph has flattened.",
-      "trap": "Velocity and acceleration are 90\u00b0 out of phase \u2014 reading them as moving together is the usual error."
+      "trap": "Velocity and acceleration are 90° out of phase — reading them as moving together is the usual error."
     },
     "marks": 2.5,
     "difficulty": 3,
@@ -596,7 +600,7 @@
     "image": null,
     "explanation": {
       "key_point": "'Not add up' means inconsistent, especially of figures or a story.",
-      "body": "The idiom *not add up* is used when numbers \u2014 or an account of events \u2014 fail to agree with one another.",
+      "body": "The idiom *not add up* is used when numbers — or an account of events — fail to agree with one another.",
       "trap": "'Correct' inverts the idiom; *add up* without the negative would mean the opposite."
     },
     "marks": 2,
@@ -635,7 +639,7 @@
     "explanation": {
       "key_point": "To call someone's bluff is to challenge them to act on a threat.",
       "body": "A *bluff* is a threat made in the hope it will not be tested. Calling it forces the test.",
-      "trap": "'Ignored' misses the confrontation \u2014 calling a bluff is active, not passive."
+      "trap": "'Ignored' misses the confrontation — calling a bluff is active, not passive."
     },
     "marks": 2,
     "difficulty": 3,
@@ -673,7 +677,7 @@
     "explanation": {
       "key_point": "*Cogent* means forceful and convincing; its opposite is weak.",
       "body": "A *cogent* submission carries weight. Of the options, only *feeble* reverses that quality.",
-      "trap": "'Lengthy' describes size, not force \u2014 a long submission can still be cogent."
+      "trap": "'Lengthy' describes size, not force — a long submission can still be cogent."
     },
     "marks": 2,
     "difficulty": 2,
@@ -749,7 +753,7 @@
     "explanation": {
       "key_point": "*Arbitrary* and *capricious* both mean decided by whim, not reason.",
       "body": "An *arbitrary* decision follows no principle; a *capricious* one follows mood. Same defect.",
-      "trap": "'Collective' is the administrative opposite \u2014 a decision taken *together*, hence by a process."
+      "trap": "'Collective' is the administrative opposite — a decision taken *together*, hence by a process."
     },
     "marks": 1,
     "difficulty": 2,
@@ -786,7 +790,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Meticulous* means showing great attention to detail.",
-      "body": "*Thorough* is the plain-English equivalent \u2014 nothing missed, nothing glossed.",
+      "body": "*Thorough* is the plain-English equivalent — nothing missed, nothing glossed.",
       "trap": "'Lengthy' confuses duration with care; a long preparation can still be slapdash."
     },
     "marks": 1,
@@ -823,9 +827,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "With *neither\u2026nor*, the verb agrees with the nearer subject.",
+      "key_point": "With *neither…nor*, the verb agrees with the nearer subject.",
       "body": "The nearer subject is *the students* (plural), so the verb is plural: *were*.",
-      "trap": "'Was' agrees with *the teacher* \u2014 the farther subject, which the rule ignores."
+      "trap": "'Was' agrees with *the teacher* — the farther subject, which the rule ignores."
     },
     "marks": 2,
     "difficulty": 2,
@@ -863,7 +867,7 @@
     "explanation": {
       "key_point": "*Insist* takes the subjunctive: the bare infinitive, no agreement.",
       "body": "After verbs of demand (*insist, require, demand*), English uses the base form for all persons: *be*, not *is*.",
-      "trap": "'Is' applies normal third-person agreement \u2014 exactly what the subjunctive suspends."
+      "trap": "'Is' applies normal third-person agreement — exactly what the subjunctive suspends."
     },
     "marks": 2,
     "difficulty": 3,
@@ -900,7 +904,7 @@
     "image": null,
     "explanation": {
       "key_point": "'Loudly, without apology, and impossible to ignore' describes manner, not damage.",
-      "body": "The simile turns on *how* it arrives \u2014 the noise and presumption of it \u2014 not on what it destroys.",
+      "body": "The simile turns on *how* it arrives — the noise and presumption of it — not on what it destroys.",
       "trap": "'Annual regularity' is true of the harmattan but is not what the *comparison* stresses."
     },
     "marks": 3,
@@ -938,7 +942,7 @@
     "image": null,
     "explanation": {
       "key_point": "'With the authority of long experience' frames it as ritual, not measurement.",
-      "body": "The passage pairs the claim with *as they complain every year* \u2014 the point is the performance of experience, not the data.",
+      "body": "The passage pairs the claim with *as they complain every year* — the point is the performance of experience, not the data.",
       "trap": "'Climate change' imports a modern frame the passage never invokes."
     },
     "marks": 3,
@@ -975,7 +979,7 @@
     "passage_id": "psg_jamb_2025_eng_comprehension_2",
     "image": null,
     "explanation": {
-      "key_point": "*Stubborn* modifies *festivity* \u2014 pleasure that persists against the odds.",
+      "key_point": "*Stubborn* modifies *festivity* — pleasure that persists against the odds.",
       "body": "Children shrieking through the haze and grandmothers holding court in doorways are both enjoying something the dust should have spoiled.",
       "trap": "'Formal ceremonies' literalises *festivity*, which here means atmosphere, not events."
     },
@@ -1013,9 +1017,9 @@
     "passage_id": "psg_jamb_2025_eng_cloze_2",
     "image": null,
     "explanation": {
-      "key_point": "*Assemble* \u2014 piece together from what is freely available.",
+      "key_point": "*Assemble* — piece together from what is freely available.",
       "body": "The sentence turns on having *no money*: the education is built, not bought. *Borrow* fails because library books return; the education stays.",
-      "trap": "'Borrow' is the library word, but you borrow *books* \u2014 an education assembled over years is not returned."
+      "trap": "'Borrow' is the library word, but you borrow *books* — an education assembled over years is not returned."
     },
     "marks": 2,
     "difficulty": 2,
@@ -1052,7 +1056,7 @@
     "image": null,
     "explanation": {
       "key_point": "Outdated collections and leaking roofs describe abandonment, not use.",
-      "body": "*Renovated*, *crowded* and *guarded* all imply attention; the passage's evidence \u2014 decay \u2014 points the other way.",
+      "body": "*Renovated*, *crowded* and *guarded* all imply attention; the passage's evidence — decay — points the other way.",
       "trap": "'Guarded' is tempting because valuable things are guarded, but nothing here suggests the buildings are valued."
     },
     "marks": 2,
@@ -1089,7 +1093,7 @@
     "passage_id": "psg_jamb_2025_eng_cloze_2",
     "image": null,
     "explanation": {
-      "key_point": "The parallel structure demands it: *not only the decay\u2026 but the loss*.",
+      "key_point": "The parallel structure demands it: *not only the decay… but the loss*.",
       "body": "'Not only X but Y' pairs two bads. Only *loss* continues the lament; the others break the parallelism.",
       "trap": "'Cost' is adjacent in meaning to decay-as-expense, but the grammar wants the noun the habit suffers."
     },
@@ -1127,9 +1131,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Think* begins with the voiceless dental fricative /\u03b8/.",
-      "body": "/\u03b8/ is voiceless \u2014 no vibration of the vocal cords. Only *thick* shares it; *this*, *though* and *father* all carry the voiced /\u00f0/.",
-      "trap": "'Though' looks closest in spelling, but spelling is not sound \u2014 it carries /\u00f0/."
+      "key_point": "*Think* begins with the voiceless dental fricative /θ/.",
+      "body": "/θ/ is voiceless — no vibration of the vocal cords. Only *thick* shares it; *this*, *though* and *father* all carry the voiced /ð/.",
+      "trap": "'Though' looks closest in spelling, but spelling is not sound — it carries /ð/."
     },
     "marks": 1,
     "difficulty": 2,
@@ -1165,9 +1169,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Measure* centres on /\u0292/, the voiced postalveolar fricative.",
-      "body": "/\u0292/ is the 'zh' sound. *Pleasure* carries it; *mission* and *machine* carry the voiceless /\u0283/, and *manner* has no fricative at all.",
-      "trap": "'Mission' is the spelling trap \u2014 *ss* suggests /\u0283/, not /\u0292/."
+      "key_point": "*Measure* centres on /ʒ/, the voiced postalveolar fricative.",
+      "body": "/ʒ/ is the 'zh' sound. *Pleasure* carries it; *mission* and *machine* carry the voiceless /ʃ/, and *manner* has no fricative at all.",
+      "trap": "'Mission' is the spelling trap — *ss* suggests /ʃ/, not /ʒ/."
     },
     "marks": 1,
     "difficulty": 3,
@@ -1203,9 +1207,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "A rhyme matches from the stressed vowel to the end: /e\u026ak/.",
-      "body": "*Bake* /be\u026ak/ and *break* /bre\u026ak/ share the rime exactly. *Back*, *bracket* and *beak* all diverge after the onset.",
-      "trap": "'Beak' shares three letters but a different vowel \u2014 rhyme is sound, not spelling."
+      "key_point": "A rhyme matches from the stressed vowel to the end: /eɪk/.",
+      "body": "*Bake* /beɪk/ and *break* /breɪk/ share the rime exactly. *Back*, *bracket* and *beak* all diverge after the onset.",
+      "trap": "'Beak' shares three letters but a different vowel — rhyme is sound, not spelling."
     },
     "marks": 1,
     "difficulty": 1,
@@ -1241,9 +1245,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Though* is /\u00f0\u0259\u028a/ \u2014 the rime is /\u0259\u028a/.",
-      "body": "Only *throw* /\u03b8r\u0259\u028a/ matches. *Thought* (/\u0254\u02d0t/), *tough* (/\u028cf/) and *through* (/u\u02d0/) are the classic *-ough* spelling traps.",
-      "trap": "All four share *-ough*; English spelling is famously no guide here \u2014 only the sound counts."
+      "key_point": "*Though* is /ðəʊ/ — the rime is /əʊ/.",
+      "body": "Only *throw* /θrəʊ/ matches. *Thought* (/ɔːt/), *tough* (/ʌf/) and *through* (/uː/) are the classic *-ough* spelling traps.",
+      "trap": "All four share *-ough*; English spelling is famously no guide here — only the sound counts."
     },
     "marks": 1,
     "difficulty": 3,
@@ -1254,7 +1258,7 @@
     "exam": "JAMB",
     "subject": "use-of-english",
     "year": 2025,
-    "text": "Choose the word with a different stress pattern: commit \u00b7 begin \u00b7 record (verb) \u00b7 table.",
+    "text": "Choose the word with a different stress pattern: commit · begin · record (verb) · table.",
     "options": [
       {
         "id": "a",
@@ -1280,8 +1284,8 @@
     "image": null,
     "explanation": {
       "key_point": "Two-syllable verbs stress the second syllable; *table* is a noun stressed on the first.",
-      "body": "*Com-MIT*, *be-GIN*, *re-CORD* \u2014 all second-syllable. *TA-ble* breaks the pattern on the first.",
-      "trap": "'Record' as a *noun* (RE-cord) would match *table* \u2014 the (verb) tag is doing real work."
+      "body": "*Com-MIT*, *be-GIN*, *re-CORD* — all second-syllable. *TA-ble* breaks the pattern on the first.",
+      "trap": "'Record' as a *noun* (RE-cord) would match *table* — the (verb) tag is doing real work."
     },
     "marks": 1,
     "difficulty": 2,
@@ -1292,7 +1296,7 @@
     "exam": "JAMB",
     "subject": "use-of-english",
     "year": 2025,
-    "text": "Choose the word with a different stress pattern: eleven \u00b7 October \u00b7 banana \u00b7 record (noun).",
+    "text": "Choose the word with a different stress pattern: eleven · October · banana · record (noun).",
     "options": [
       {
         "id": "a",
@@ -1318,7 +1322,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Eleven*, *October* and *banana* all stress the second of three syllables.",
-      "body": "E-LEV-en, Oc-TO-ber, ba-NA-na. *RE-cord* (noun) stresses the first of two \u2014 the odd pattern out.",
+      "body": "E-LEV-en, Oc-TO-ber, ba-NA-na. *RE-cord* (noun) stresses the first of two — the odd pattern out.",
       "trap": "Pair it with the previous item: *record* flips stress by word class, which is exactly what JAMB tests."
     },
     "marks": 1,
@@ -1355,9 +1359,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "Emphasis on *new* contrasts it with the alternative \u2014 *not* new.",
-      "body": "The question that *new* answers is 'a new what?' \u2014 (c) supplies the contrast (bicycle), which is what emphasis does.",
-      "trap": "(b) emphasises *Ada*, not *new* \u2014 it answers 'who', and the underlined word is not the subject."
+      "key_point": "Emphasis on *new* contrasts it with the alternative — *not* new.",
+      "body": "The question that *new* answers is 'a new what?' — (c) supplies the contrast (bicycle), which is what emphasis does.",
+      "trap": "(b) emphasises *Ada*, not *new* — it answers 'who', and the underlined word is not the subject."
     },
     "marks": 1,
     "difficulty": 2,
@@ -1393,9 +1397,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "Emphasis on *yesterday* contrasts the time \u2014 *not* today.",
+      "key_point": "Emphasis on *yesterday* contrasts the time — *not* today.",
       "body": "(b) is the only option that puts *yesterday* against its alternative. The others question the subject, the place, or the future.",
-      "trap": "(d) is about time too, but it questions *tomorrow* \u2014 the wrong day entirely."
+      "trap": "(d) is about time too, but it questions *tomorrow* — the wrong day entirely."
     },
     "marks": 1,
     "difficulty": 1,
@@ -1432,7 +1436,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Below par* means below the expected standard.",
-      "body": "*Par* is the standard. Falling below it is underperformance \u2014 not defeat, which is a separate outcome.",
+      "body": "*Par* is the standard. Falling below it is underperformance — not defeat, which is a separate outcome.",
       "trap": "'Lost as expected' adds a result the idiom never states; a team can play below par and still win."
     },
     "marks": 2,
@@ -1470,7 +1474,7 @@
     "image": null,
     "explanation": {
       "key_point": "A *red herring* is something that misleads by diverting attention.",
-      "body": "The letter's function was diversion \u2014 drawing eyes away from whatever actually mattered.",
+      "body": "The letter's function was diversion — drawing eyes away from whatever actually mattered.",
       "trap": "'Formal protest' takes the *letter* at face value, which is exactly what a red herring invites."
     },
     "marks": 2,
@@ -1545,7 +1549,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Separate the wheat from the chaff* is winnowing \u2014 keeping value, discarding waste.",
+      "key_point": "*Separate the wheat from the chaff* is winnowing — keeping value, discarding waste.",
       "body": "Wheat is kept, chaff is blown away. The policy sorts contractors by worth, keeping the good.",
       "trap": "'Punish the worst' reads only the chaff half; winnowing keeps the wheat too."
     },
@@ -1584,7 +1588,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Explicit* means stated plainly; its opposite leaves room for doubt.",
-      "body": "*Vague* is the direct reversal \u2014 an instruction you cannot pin down.",
+      "body": "*Vague* is the direct reversal — an instruction you cannot pin down.",
       "trap": "'Strict' describes severity, not clarity; a strict instruction can still be perfectly explicit."
     },
     "marks": 2,
@@ -1622,7 +1626,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Transient* means passing quickly; *prolonged* means stretched out.",
-      "body": "The opposition is purely temporal \u2014 short stay against long one.",
+      "body": "The opposition is purely temporal — short stay against long one.",
       "trap": "'Memorable' is about impression, not duration; a week can be both transient and memorable."
     },
     "marks": 2,
@@ -1660,7 +1664,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Diligent* means showing care in one's work; *negligent* means failing to show it.",
-      "body": "The legal pairing is exact \u2014 diligence against negligence is the standard opposition.",
+      "body": "The legal pairing is exact — diligence against negligence is the standard opposition.",
       "trap": "'Speedy' confuses pace with care; diligent work is not necessarily fast."
     },
     "marks": 2,
@@ -1698,7 +1702,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Remorse* is contrition; *defiance* is its refusal.",
-      "body": "Regret and sorrow are synonyms of remorse, which is why they sit in the options \u2014 the opposite is the *absence* of contrition.",
+      "body": "Regret and sorrow are synonyms of remorse, which is why they sit in the options — the opposite is the *absence* of contrition.",
       "trap": "Both 'regret' and 'sorrow' are synonyms; JAMB routinely plants two of them to punish skimming."
     },
     "marks": 2,
@@ -1736,7 +1740,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Lucid* means easy to understand.",
-      "body": "A *lucid* account is one you can follow without effort \u2014 *clear* in plain English.",
+      "body": "A *lucid* account is one you can follow without effort — *clear* in plain English.",
       "trap": "'Brief' confuses brevity with clarity; a lucid account can run long."
     },
     "marks": 1,
@@ -1773,7 +1777,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Replete* means abundantly supplied \u2014 full to completion.",
+      "key_point": "*Replete* means abundantly supplied — full to completion.",
       "body": "*Full of* is the plain equivalent; the speech overflowed with promises.",
       "trap": "'Devoid of' is the exact antonym, planted for readers who know the word is about quantity but misjudge the direction."
     },
@@ -1812,7 +1816,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Exploit* here means turn to unfair advantage.",
-      "body": "The traders did not merely *use* the scarcity \u2014 they used it *unfairly*. The phrase carries the abuse inside it.",
+      "body": "The traders did not merely *use* the scarcity — they used it *unfairly*. The phrase carries the abuse inside it.",
       "trap": "'Used' alone is too neutral; it drops the unfairness that makes *exploit* what it is."
     },
     "marks": 1,
@@ -1850,7 +1854,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Poignant* means painfully moving.",
-      "body": "A *poignant* tale stirs feeling \u2014 *moving* is its plain equivalent.",
+      "body": "A *poignant* tale stirs feeling — *moving* is its plain equivalent.",
       "trap": "'Amusing' mistakes feeling for fun; poignancy hurts."
     },
     "marks": 1,
@@ -1888,7 +1892,7 @@
     "image": null,
     "explanation": {
       "key_point": "*By the time* with a past reference point demands the past perfect.",
-      "body": "The accepting happened *before* the release \u2014 earlier of two pasts takes *had*.",
+      "body": "The accepting happened *before* the release — earlier of two pasts takes *had*.",
       "trap": "'Have accepted' is present perfect; it anchors to now, not to the past release."
     },
     "marks": 2,
@@ -1925,7 +1929,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Committee* is a collective noun acting as one body \u2014 singular verb.",
+      "key_point": "*Committee* is a collective noun acting as one body — singular verb.",
       "body": "The committee acted together in submitting one report, so *has*.",
       "trap": "'Have' treats the members as individuals; that reading needs a plural action, which submitting one report is not."
     },
@@ -1964,8 +1968,8 @@
     "image": null,
     "explanation": {
       "key_point": "*Each* is always singular, whatever follows *of*.",
-      "body": "*Each of the students* \u2014 the subject is *each*, singular, so *is*.",
-      "trap": "'Are' agrees with *students*, the nearest noun \u2014 exactly the agreement error JAMB sets."
+      "body": "*Each of the students* — the subject is *each*, singular, so *is*.",
+      "trap": "'Are' agrees with *students*, the nearest noun — exactly the agreement error JAMB sets."
     },
     "marks": 2,
     "difficulty": 2,
@@ -2002,8 +2006,8 @@
     "image": null,
     "explanation": {
       "key_point": "*Hardly/scarcely* pairs with *when*; *no sooner* pairs with *than*.",
-      "body": "The correlative is fixed: hardly\u2026when, no sooner\u2026than. Mixing them is the tested error.",
-      "trap": "'Than' belongs to *no sooner* \u2014 know which opener you have before choosing the closer."
+      "body": "The correlative is fixed: hardly…when, no sooner…than. Mixing them is the tested error.",
+      "trap": "'Than' belongs to *no sooner* — know which opener you have before choosing the closer."
     },
     "marks": 2,
     "difficulty": 4,
@@ -2040,7 +2044,7 @@
     "image": null,
     "explanation": {
       "key_point": "The opening sentence establishes her gift: reading people.",
-      "body": "*Learned to read the room before she learned to read words* \u2014 observation precedes literacy, and the shoulders are her first text.",
+      "body": "*Learned to read the room before she learned to read words* — observation precedes literacy, and the shoulders are her first text.",
       "trap": "'Feared' imports an emotion the passage never gives her; she watches to *know*, not out of fear."
     },
     "marks": 3,
@@ -2077,7 +2081,7 @@
     "passage_id": "psg_jamb_2025_eng_comprehension_1",
     "image": null,
     "explanation": {
-      "key_point": "*Becoming the person who asked* \u2014 maturity as something done, not reached.",
+      "key_point": "*Becoming the person who asked* — maturity as something done, not reached.",
       "body": "The verb *becoming* plus the relative clause makes growing up an activity (asking) rather than a threshold (an age).",
       "trap": "'A matter of age' is the conventional view the sentence quietly replaces."
     },
@@ -2117,7 +2121,7 @@
     "explanation": {
       "key_point": "What cannot *survive* examination is fragile by definition.",
       "body": "*Survive* selects for sturdiness; its negation selects for fragility. The version collapses under scrutiny.",
-      "trap": "'Secret' is adjacent \u2014 secrets also fear examination \u2014 but the verb is about *endurance*, not concealment."
+      "trap": "'Secret' is adjacent — secrets also fear examination — but the verb is about *endurance*, not concealment."
     },
     "marks": 3,
     "difficulty": 3,
@@ -2153,9 +2157,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Seat* is /si\u02d0t/ \u2014 long high front vowel.",
-      "body": "Only *seed* /si\u02d0d/ shares it. *Sit* (/\u026a/), *site* (/a\u026a/) and *said* (/\u025b/) are the three classic near-miss qualities.",
-      "trap": "'Site' shares four letters and almost no sound \u2014 spelling misleads, the vowel decides."
+      "key_point": "*Seat* is /siːt/ — long high front vowel.",
+      "body": "Only *seed* /siːd/ shares it. *Sit* (/ɪ/), *site* (/aɪ/) and *said* (/ɛ/) are the three classic near-miss qualities.",
+      "trap": "'Site' shares four letters and almost no sound — spelling misleads, the vowel decides."
     },
     "marks": 1,
     "difficulty": 2,
@@ -2191,8 +2195,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Blood* is /bl\u028cd/ \u2014 the short central vowel, not the long /u\u02d0/ the spelling suggests.",
-      "body": "*Flood* /fl\u028cd/ matches. *Food*, *mood* and *boot* all carry /u\u02d0/ \u2014 the sound the *oo* usually spells, and the trap.",
+      "key_point": "*Blood* is /blʌd/ — the short central vowel, not the long /uː/ the spelling suggests.",
+      "body": "*Flood* /flʌd/ matches. *Food*, *mood* and *boot* all carry /uː/ — the sound the *oo* usually spells, and the trap.",
       "trap": "Three options share the *oo* spelling with the long vowel; only the sound counts."
     },
     "marks": 1,
@@ -2268,7 +2272,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Arduous* means requiring great effort.",
-      "body": "*Strenuous* carries the same weight of effort. The other three describe difficulty of different kinds \u2014 trouble, busyness, harshness \u2014 but not effort itself.",
+      "body": "*Strenuous* carries the same weight of effort. The other three describe difficulty of different kinds — trouble, busyness, harshness — but not effort itself.",
       "trap": "'Troublesome' is about causing problems, not about the effort something demands."
     },
     "marks": 1,
@@ -2306,8 +2310,8 @@
     "image": null,
     "explanation": {
       "key_point": "*Scurrilous* means coarsely abusive in language.",
-      "body": "The word is specifically about *abusive* speech \u2014 not merely false speech. *Fake* and *false* miss the abusiveness that defines it.",
-      "trap": "'False' is adjacent \u2014 a scurrilous remark may well be false \u2014 but falsity is incidental to the abuse."
+      "body": "The word is specifically about *abusive* speech — not merely false speech. *Fake* and *false* miss the abusiveness that defines it.",
+      "trap": "'False' is adjacent — a scurrilous remark may well be false — but falsity is incidental to the abuse."
     },
     "marks": 1,
     "difficulty": 3,
@@ -2343,7 +2347,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Odious* means deserving hatred \u2014 horrible.",
+      "key_point": "*Odious* means deserving hatred — horrible.",
       "body": "*Horrible* is the plain equivalent. *Great* and *pleasant* are opposites; *strange* is unrelated.",
       "trap": "'Strange' catches readers who confuse unfamiliarity with offensiveness."
     },
@@ -2381,8 +2385,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Pernicious* means harmful in a gradual, insidious way \u2014 *noxious*.",
-      "body": "*Noxious* carries the same poisonous quality. **Note: the source key gives D (benign), which is the antonym \u2014 corrected here.** *Benign* means harmless and kind, the exact opposite of *pernicious*.",
+      "key_point": "*Pernicious* means harmful in a gradual, insidious way — *noxious*.",
+      "body": "*Noxious* carries the same poisonous quality. **Note: the source key gives D (benign), which is the antonym — corrected here.** *Benign* means harmless and kind, the exact opposite of *pernicious*.",
       "trap": "The source itself planted the trap: *benign* sits in the options as the antonym, and the original key fell for it."
     },
     "marks": 1,
@@ -2457,7 +2461,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Astonishing* means causing great surprise \u2014 amazing.",
+      "key_point": "*Astonishing* means causing great surprise — amazing.",
       "body": "*Amazing* is the direct equivalent. *Common*, *expected* and *ordinary* all deny the surprise.",
       "trap": "None of the distractors are close; this tests whether the word is known at all."
     },
@@ -2495,7 +2499,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Enigmatic* means mysterious, hard to interpret \u2014 *inscrutable*.",
+      "key_point": "*Enigmatic* means mysterious, hard to interpret — *inscrutable*.",
       "body": "Both words describe what resists being read. *Flamboyant* is showy (the opposite problem), *talented* is unrelated to mystery.",
       "trap": "'Talented' is true of both writers and therefore tempting, but it answers a different question."
     },
@@ -2572,7 +2576,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Vehemently* means with passionate force; its opposite acts without passion.",
-      "body": "*Coldly* reverses the heat. *Emphatically* and *strongly* are synonyms \u2014 force by other names.",
+      "body": "*Coldly* reverses the heat. *Emphatically* and *strongly* are synonyms — force by other names.",
       "trap": "'Strongly' is the near-miss: it shares the force but not the reversal."
     },
     "marks": 2,
@@ -2611,7 +2615,7 @@
     "explanation": {
       "key_point": "*Natives* belong by origin; *foreigners* belong elsewhere.",
       "body": "The opposition is origin against foreignness. *Indigenes* is a synonym of natives.",
-      "trap": "'Immigrants' describes movement, not origin \u2014 an immigrant can become a native's neighbour without ceasing to be one."
+      "trap": "'Immigrants' describes movement, not origin — an immigrant can become a native's neighbour without ceasing to be one."
     },
     "marks": 2,
     "difficulty": 1,
@@ -2648,7 +2652,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Meticulous* is care taken to the fullest; *careless* is its absence.",
-      "body": "Three options \u2014 *detailed*, *thorough*, *careful* \u2014 are all synonyms. Only one reverses.",
+      "body": "Three options — *detailed*, *thorough*, *careful* — are all synonyms. Only one reverses.",
       "trap": "Three synonyms planted together punish anyone who reads for similarity instead of opposition."
     },
     "marks": 2,
@@ -2686,7 +2690,7 @@
     "image": null,
     "explanation": {
       "key_point": "To *anger* is to provoke; to *appease* is to pacify what was provoked.",
-      "body": "*Appeased* reverses the specific act \u2014 calming anger \u2014 where *pleased* merely describes a good mood.",
+      "body": "*Appeased* reverses the specific act — calming anger — where *pleased* merely describes a good mood.",
       "trap": "'Pleased' is the loose opposite; *appeased* is the precise one, and precision is what is tested."
     },
     "marks": 2,
@@ -2725,7 +2729,7 @@
     "explanation": {
       "key_point": "*Chastised* is punished by words; *honoured* is rewarded by them.",
       "body": "*Rebuked* and *denounced* are synonyms of chastised. Only *honoured* reverses the judgment.",
-      "trap": "Two synonyms in the options again \u2014 the question tests whether you read for opposition."
+      "trap": "Two synonyms in the options again — the question tests whether you read for opposition."
     },
     "marks": 2,
     "difficulty": 2,
@@ -2761,9 +2765,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Facile* means oversimplified \u2014 arrived at too easily.",
+      "key_point": "*Facile* means oversimplified — arrived at too easily.",
       "body": "*Complex* reverses the simplicity. *Careful* is adjacent (facile things lack care) but not opposite.",
-      "trap": "'Careful' describes the *attitude* behind the claim; *complex* describes the *claim* \u2014 and the claim is what is tested."
+      "trap": "'Careful' describes the *attitude* behind the claim; *complex* describes the *claim* — and the claim is what is tested."
     },
     "marks": 2,
     "difficulty": 3,
@@ -2800,7 +2804,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Flexible* bends; *rigid* does not.",
-      "body": "A direct pairing. Note *unbendable* sitting in the options as a synonym of the answer \u2014 two words for the same thing, only one of them lettered right.",
+      "body": "A direct pairing. Note *unbendable* sitting in the options as a synonym of the answer — two words for the same thing, only one of them lettered right.",
       "trap": "'Unbendable' *means* rigid. JAMB plants synonyms of the answer to catch anyone matching by meaning instead of by letter."
     },
     "marks": 2,
@@ -2838,7 +2842,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Immanent* means present within; *transcendent* means beyond.",
-      "body": "The philosophical pairing is exact \u2014 inherent against exceeding.",
+      "body": "The philosophical pairing is exact — inherent against exceeding.",
       "trap": "'Functional' and 'necessary' both describe the gear truly, but neither opposes *immanent*."
     },
     "marks": 2,
@@ -2877,7 +2881,7 @@
     "explanation": {
       "key_point": "*Protagonist* and *antagonist* are the paired terms for chief character and chief opposer.",
       "body": "An *enemy* or *opponent* may oppose, but only *antagonist* is the structural opposite in drama.",
-      "trap": "'Enemy' and 'opponent' are true in life but imprecise in theatre \u2014 the term of art is what counts."
+      "trap": "'Enemy' and 'opponent' are true in life but imprecise in theatre — the term of art is what counts."
     },
     "marks": 2,
     "difficulty": 1,
@@ -2914,7 +2918,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Porous* lets things through; *impermeable* lets nothing through.",
-      "body": "The opposition is permeability itself. *Pervious* is a synonym of porous \u2014 permeable by another spelling.",
+      "body": "The opposition is permeability itself. *Pervious* is a synonym of porous — permeable by another spelling.",
       "trap": "'Pervious' looks technical enough to be the answer, but it means the same as the question word."
     },
     "marks": 2,
@@ -2951,9 +2955,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Boot* is /bu\u02d0t/ \u2014 long high back vowel.",
-      "body": "Only *food* /fu\u02d0d/ shares it. *Book* /b\u028ak/ is the short version of the same quality \u2014 near, not same.",
-      "trap": "'Book' shares three letters and a related vowel, but /\u028a/ against /u\u02d0/ is exactly the distinction tested."
+      "key_point": "*Boot* is /buːt/ — long high back vowel.",
+      "body": "Only *food* /fuːd/ shares it. *Book* /bʊk/ is the short version of the same quality — near, not same.",
+      "trap": "'Book' shares three letters and a related vowel, but /ʊ/ against /uː/ is exactly the distinction tested."
     },
     "marks": 1,
     "difficulty": 2,
@@ -2989,8 +2993,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Money* is /\u02c8m\u028cni/ \u2014 the short central /\u028c/.",
-      "body": "*Love* /l\u028cv/ matches. *Lord* and *bought* carry /\u0254\u02d0/, *donkey* carries /\u0252/ \u2014 three different vowels hiding behind the letter *o*.",
+      "key_point": "*Money* is /ˈmʌni/ — the short central /ʌ/.",
+      "body": "*Love* /lʌv/ matches. *Lord* and *bought* carry /ɔː/, *donkey* carries /ɒ/ — three different vowels hiding behind the letter *o*.",
       "trap": "The letter *o* spells at least four vowels in these options; only the sound counts."
     },
     "marks": 1,
@@ -3027,8 +3031,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Beer* is /b\u026a\u0259/ \u2014 centring diphthong.",
-      "body": "*Serious* /\u02c8s\u026a\u0259ri\u0259s/ carries it in its first syllable. *Bare*, *their* and *swear* all carry /e\u0259/ \u2014 the near-miss that shares the spelling pattern.",
+      "key_point": "*Beer* is /bɪə/ — centring diphthong.",
+      "body": "*Serious* /ˈsɪəriəs/ carries it in its first syllable. *Bare*, *their* and *swear* all carry /eə/ — the near-miss that shares the spelling pattern.",
       "trap": "Three options share *-ear* spellings with three different vowels; *beer* against *bare* is the classic minimal pair."
     },
     "marks": 1,
@@ -3065,8 +3069,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "On the *injury* reading, *wound* is /wu\u02d0nd/, matching *moon* /mu\u02d0n/.",
-      "body": "**Note: *wound* is ambiguous without context** \u2014 as a verb (wind up) it is /wa\u028and/. The key assumes the noun, which pairs with *moon*. *Foot*, *book* (/\u028a/) and *blood* (/\u028c/) are all short vowels against the long /u\u02d0/.",
+      "key_point": "On the *injury* reading, *wound* is /wuːnd/, matching *moon* /muːn/.",
+      "body": "**Note: *wound* is ambiguous without context** — as a verb (wind up) it is /waʊnd/. The key assumes the noun, which pairs with *moon*. *Foot*, *book* (/ʊ/) and *blood* (/ʌ/) are all short vowels against the long /uː/.",
       "trap": "The question is answerable only on one reading; a strict marker would discard it."
     },
     "marks": 1,
@@ -3078,7 +3082,7 @@
     "exam": "JAMB",
     "subject": "use-of-english",
     "year": 2025,
-    "text": "Choose the word with the same vowel sound as the underlined letters in: Money.",
+    "text": "Choose the word with the same vowel sound as the underlined letters in: bought.",
     "options": [
       {
         "id": "a",
@@ -3103,13 +3107,13 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Money* is /\u02c8m\u028cni/ \u2014 short central /\u028c/.",
-      "body": "*Son* /s\u028cn/ matches. *Port* (/\u0254\u02d0/), *coney* (/\u0259\u028a/) and *bottle* (/\u0252/) are three other vowels the letter *o* can spell.",
-      "trap": "Same lesson as ever: the letter tells you nothing, the sound everything."
+      "key_point": "*Port* /pɔːt/ matches.",
+      "body": "*Bought* is /bɔːt/. *Port* shares that vowel; *son* carries /ʌ/, *coney* /əʊ/ and *bottle* /ɒ/ — three more vowels hiding behind the letter *o*.",
+      "trap": "Matching on the letter rather than the sound: *port* and *bottle* both end in -t and neither shares the vowel."
     },
     "marks": 1,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76546",
@@ -3141,9 +3145,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Pour* is /p\u0254\u02d0/ \u2014 long open-mid back vowel.",
-      "body": "*Ore* /\u0254\u02d0/ matches. *Hour* (/a\u028a\u0259/), *how* (/a\u028a/) and *favour* (/e\u026a/) are the *our*-spelling traps.",
-      "trap": "Four *our* spellings, four different vowels \u2014 the set is designed to punish reading over listening."
+      "key_point": "*Pour* is /pɔː/ — long open-mid back vowel.",
+      "body": "*Ore* /ɔː/ matches. *Hour* (/aʊə/), *how* (/aʊ/) and *favour* (/eɪ/) are the *our*-spelling traps.",
+      "trap": "Four *our* spellings, four different vowels — the set is designed to punish reading over listening."
     },
     "marks": 1,
     "difficulty": 2,
@@ -3179,8 +3183,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Chess* begins with /t\u0283/, the voiceless postalveolar affricate.",
-      "body": "Only *chain* /t\u0283e\u026an/ shares it. *Soak* and *set* carry /s/, *jazz* carries /z/ \u2014 the two fricatives either side of the affricate.",
+      "key_point": "*Chess* begins with /tʃ/, the voiceless postalveolar affricate.",
+      "body": "Only *chain* /tʃeɪn/ shares it. *Soak* and *set* carry /s/, *jazz* carries /z/ — the two fricatives either side of the affricate.",
       "trap": "'Set' shares three letters and the final /s/ environment, but the initial is what is tested."
     },
     "marks": 1,
@@ -3217,8 +3221,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "Initial *h* in *house* is pronounced /h/ \u2014 and only *happy* pronounces it too.",
-      "body": "*Ghost* (/g/), *rhythm* (/r/) and *honour* (silent h, /\u0252/) all drop or replace it. The test is whether the letter sounds at all.",
+      "key_point": "Initial *h* in *house* is pronounced /h/ — and only *happy* pronounces it too.",
+      "body": "*Ghost* (/g/), *rhythm* (/r/) and *honour* (silent h, /ɒ/) all drop or replace it. The test is whether the letter sounds at all.",
       "trap": "Three options contain the letter *h*; only one *sounds* it. The letter tells you nothing."
     },
     "marks": 1,
@@ -3255,9 +3259,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Shadow* begins with /\u0283/.",
-      "body": "*Sure* /\u0283\u028a\u0259/ matches. *Match* carries /t\u0283/, *chemistry* carries /k/, *scheme* carries /sk/ \u2014 the *sh*-spelling family in full.",
-      "trap": "All four contain *sh*, *ch* or *sch*; English spells /\u0283/ four ways here and only the sound decides."
+      "key_point": "*Shadow* begins with /ʃ/.",
+      "body": "*Sure* /ʃʊə/ matches. *Match* carries /tʃ/, *chemistry* carries /k/, *scheme* carries /sk/ — the *sh*-spelling family in full.",
+      "trap": "All four contain *sh*, *ch* or *sch*; English spells /ʃ/ four ways here and only the sound decides."
     },
     "marks": 1,
     "difficulty": 2,
@@ -3293,8 +3297,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "The *k* in *knot* is silent \u2014 the word begins /n/.",
-      "body": "*Norm* /n\u0254\u02d0m/ matches. *Keep* pronounces its *k*, *church* and *cease* begin elsewhere entirely.",
+      "key_point": "The *k* in *knot* is silent — the word begins /n/.",
+      "body": "*Norm* /nɔːm/ matches. *Keep* pronounces its *k*, *church* and *cease* begin elsewhere entirely.",
       "trap": "'Keep' is the spelling trap: same initial letter, sounded where *knot* silences it."
     },
     "marks": 1,
@@ -3331,8 +3335,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Orchid* is /\u02c8\u0254\u02d0k\u026ad/ \u2014 the *ch* spells /k/.",
-      "body": "*Skewer* /\u02c8skju\u02d0\u0259/ carries the /k/. *Sceptre* (/s/), *sham* (/\u0283/) and *chagrin* (/\u0283/) are the three other things *ch* can spell.",
+      "key_point": "*Orchid* is /ˈɔːkɪd/ — the *ch* spells /k/.",
+      "body": "*Skewer* /ˈskjuːə/ carries the /k/. *Sceptre* (/s/), *sham* (/ʃ/) and *chagrin* (/ʃ/) are the three other things *ch* can spell.",
       "trap": "The set is a catalogue of *ch* spellings; only the sound, never the letters, selects."
     },
     "marks": 1,
@@ -3369,8 +3373,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Picture* centres on /t\u0283/.",
-      "body": "*Lurch* /l\u025c\u02d0t\u0283/ matches. *Passion* and *nation* carry /\u0283/, *castor* carries /st/ \u2014 the *-tion/-ssion* family against the *-ture* one.",
+      "key_point": "*Picture* centres on /tʃ/.",
+      "body": "*Lurch* /lɜːtʃ/ matches. *Passion* and *nation* carry /ʃ/, *castor* carries /st/ — the *-tion/-ssion* family against the *-ture* one.",
       "trap": "'Nation' shares the *-tion* ending but a different consonant; endings mislead, middles decide."
     },
     "marks": 1,
@@ -3407,8 +3411,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Similarly* stresses the first syllable: /\u02c8s\u026am\u026al\u0259li/.",
-      "body": "Four-syllable adverbs in *-ly* keep the stress of their adjective \u2014 *SImilar* gives *SImilarly*.",
+      "key_point": "*Similarly* stresses the first syllable: /ˈsɪmɪləli/.",
+      "body": "Four-syllable adverbs in *-ly* keep the stress of their adjective — *SImilar* gives *SImilarly*.",
       "trap": "'siMIlarly' places it where the spelling's middle weight sits, not where the word says it."
     },
     "marks": 1,
@@ -3439,19 +3443,19 @@
         "text": "convaLEscent"
       }
     ],
-    "answer": "d",
+    "answer": "b",
     "subtopic_id": "word-stress",
     "section": "Word Stress",
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Convalescent* stresses the third syllable: /\u02cck\u0252nv\u0259\u02c8lesnt/.",
-      "body": "The primary stress falls on *-les-*, with a secondary on *con-*. Long Latinate words push stress right.",
-      "trap": "'CONvalescent' stresses the prefix, which carries only secondary weight."
+      "key_point": "*Convalescent* stresses the second syllable: /kənˈvælɪsənt/.",
+      "body": "The stress falls on *-val-* — con-VAL-es-cent. Latinate words place primary stress before the *-es-* ending rather than on it.",
+      "trap": "'convaLEscent' sounds fluent but moves the stress onto *-les-*, which the word does not use."
     },
     "marks": 1,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t74864",
@@ -3477,19 +3481,19 @@
         "text": "grammariAN"
       }
     ],
-    "answer": "b",
+    "answer": "a",
     "subtopic_id": "word-stress",
     "section": "Word Stress",
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Grammarian* is /\u0261r\u0259\u02c8me\u0259ri\u0259n/ \u2014 stress on the second syllable.",
-      "body": "The *-arian* suffix pulls stress to the syllable before it, as in *librarian* and *vegetarian*.",
-      "trap": "'GRAmmarian' stresses the root as if the suffix added nothing \u2014 but *-arian* always shifts it."
+      "key_point": "*Grammarian* is /ˈɡræməriən/ — the stress stays on the root, *gram-*.",
+      "body": "The *-arian* suffix is unstressed here. Suffixes do not move stress by a fixed rule: *librarian* (li-BRA-ri-an) and *vegetarian* (ve-ge-TA-ri-an) both move it, *grammarian* does not.",
+      "trap": "'graMMArian' looks balanced, but the -arian ending adds no weight — and the real trap is assuming every -arian word behaves like *librarian*."
     },
     "marks": 1,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t74865",
@@ -3521,9 +3525,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Hospitality* is /\u02cch\u0252sp\u026a\u02c8t\u00e6l\u0259ti/ \u2014 primary stress on the third syllable.",
+      "key_point": "*Hospitality* is /ˌhɒspɪˈtæləti/ — primary stress on the third syllable.",
       "body": "The *-ity* suffix draws primary stress to the syllable before it, with secondary on the first.",
-      "trap": "'HOSpitality' keeps the stress of *hospital*, but the suffix moves it \u2014 suffixes govern, roots yield."
+      "trap": "'HOSpitality' keeps the stress of *hospital*, but the suffix moves it — suffixes govern, roots yield."
     },
     "marks": 1,
     "difficulty": 3,
@@ -3559,9 +3563,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Fright* is /fra\u026at/; *height* is /ha\u026at/ \u2014 same rime.",
-      "body": "Only the onset differs. *Freight* (/fre\u026at/), *plait* (/pl\u00e6t/) and *hate* (/he\u026at/) all carry different vowels.",
-      "trap": "'Freight' shares five letters and almost no sound \u2014 the set is built to punish spelling readers."
+      "key_point": "*Fright* is /fraɪt/; *height* is /haɪt/ — same rime.",
+      "body": "Only the onset differs. *Freight* (/freɪt/), *plait* (/plæt/) and *hate* (/heɪt/) all carry different vowels.",
+      "trap": "'Freight' shares five letters and almost no sound — the set is built to punish spelling readers."
     },
     "marks": 1,
     "difficulty": 2,
@@ -3597,7 +3601,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Tie* is /ta\u026a/; *high* is /ha\u026a/.",
+      "key_point": "*Tie* is /taɪ/; *high* is /haɪ/.",
       "body": "Same diphthong, same final silence. The others diverge in vowel or coda.",
       "trap": "'Hay' shares the two-letter shape but not the sound."
     },
@@ -3635,8 +3639,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Tern* is /t\u025c\u02d0n/; *earn* is /\u025c\u02d0n/ \u2014 rime identical.",
-      "body": "*Birth* /b\u025c\u02d0\u03b8/ shares the vowel but not the final consonant \u2014 near, not same.",
+      "key_point": "*Tern* is /tɜːn/; *earn* is /ɜːn/ — rime identical.",
+      "body": "*Birth* /bɜːθ/ shares the vowel but not the final consonant — near, not same.",
       "trap": "'Birth' is the designed near-miss: same vowel, different coda. Rhyme needs both."
     },
     "marks": 1,
@@ -3673,8 +3677,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Fear* is /f\u026a\u0259/; *deer* is /d\u026a\u0259/.",
-      "body": "The centring diphthong matches. *Wore* (/\u0254\u02d0/), *there* and *care* (/e\u0259/) are the three near vowels.",
+      "key_point": "*Fear* is /fɪə/; *deer* is /dɪə/.",
+      "body": "The centring diphthong matches. *Wore* (/ɔː/), *there* and *care* (/eə/) are the three near vowels.",
       "trap": "Three *-are/-ore* spellings against one *-eer*; the ear misleads, the vowel decides."
     },
     "marks": 1,
@@ -3711,8 +3715,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Mother* is /\u02c8m\u028c\u00f0\u0259/; *other* is /\u02c8\u028c\u00f0\u0259/.",
-      "body": "Same stressed vowel, same ending. The rest carry /u\u02d0/, /\u0259\u028a/ and /\u025c\u02d0/ respectively.",
+      "key_point": "*Mother* is /ˈmʌðə/; *other* is /ˈʌðə/.",
+      "body": "Same stressed vowel, same ending. The rest carry /uː/, /əʊ/ and /ɜː/ respectively.",
       "trap": "'Murder' shares the *-urder/-other* shape most closely and the vowel least."
     },
     "marks": 1,
@@ -3751,7 +3755,7 @@
     "explanation": {
       "key_point": "*Cut the ground from under* someone's feet is to destroy their position.",
       "body": "The ground is what you stand on; cutting it away ruins, not merely exposes.",
-      "trap": "'Expose' is what *revealing* does \u2014 the idiom describes the *consequence*, not the act."
+      "trap": "'Expose' is what *revealing* does — the idiom describes the *consequence*, not the act."
     },
     "marks": 2,
     "difficulty": 2,
@@ -3788,7 +3792,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Keep your nose clean* means stay out of trouble.",
-      "body": "A fixed idiom for avoiding wrongdoing \u2014 nothing to do with hygiene or focus.",
+      "body": "A fixed idiom for avoiding wrongdoing — nothing to do with hygiene or focus.",
       "trap": "'Stay healthy' reads the *nose* literally, which the idiom never intends."
     },
     "marks": 2,
@@ -3825,7 +3829,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Put the mockers on* something is to jinx it \u2014 to ruin its chances.",
+      "key_point": "*Put the mockers on* something is to jinx it — to ruin its chances.",
       "body": "The action kills the project outright, not merely delays it.",
       "trap": "'Be delayed' softens a killing into a postponement."
     },
@@ -3863,7 +3867,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Surpassed in numerical strength* is strictly about numbers \u2014 fewer.",
+      "key_point": "*Surpassed in numerical strength* is strictly about numbers — fewer.",
       "body": "*Numerical* restricts the claim to count. Weakness in general is a different, broader claim the sentence never makes.",
       "trap": "'Much weaker' imports strength where only numbers were compared."
     },
@@ -3902,7 +3906,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Jump the gun* means start before the signal.",
-      "body": "Too soon is the whole idiom \u2014 haste or permission are incidental to the timing.",
+      "body": "Too soon is the whole idiom — haste or permission are incidental to the timing.",
       "trap": "'Hurriedly' describes manner; the idiom is about *when*, not how."
     },
     "marks": 2,
@@ -3939,7 +3943,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*No flies on* someone means they are sharp \u2014 not easily fooled.",
+      "key_point": "*No flies on* someone means they are sharp — not easily fooled.",
       "body": "Flies settle on the slow and the still; their absence marks alertness.",
       "trap": "'Gullible' is the exact antonym, planted for readers who invert the idiom."
     },
@@ -3978,7 +3982,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Cock one's ears* is to listen with full, strained attention.",
-      "body": "Like an animal pricking its ears \u2014 every sense directed at the sound.",
+      "body": "Like an animal pricking its ears — every sense directed at the sound.",
       "trap": "The three distractors form a gradient of inattention; the idiom sits at the opposite pole."
     },
     "marks": 2,
@@ -4017,7 +4021,7 @@
     "explanation": {
       "key_point": "A *good head on one's shoulders* is sound judgment.",
       "body": "*Sensible* is the plain term. Speed (*thinks fast*), beauty and diligence are all different virtues.",
-      "trap": "'Thinks fast' confuses quickness with soundness \u2014 a quick fool is still a fool."
+      "trap": "'Thinks fast' confuses quickness with soundness — a quick fool is still a fool."
     },
     "marks": 2,
     "difficulty": 1,
@@ -4054,7 +4058,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Under a cloud* means under suspicion of wrongdoing.",
-      "body": "The cloud is disrepute \u2014 specifically the shadow a scandal casts on those near it.",
+      "body": "The cloud is disrepute — specifically the shadow a scandal casts on those near it.",
       "trap": "'Under supervision' shares the *under* but means watched, not suspected."
     },
     "marks": 2,
@@ -4093,7 +4097,7 @@
     "explanation": {
       "key_point": "*Fly into a rage* is sudden, violent anger.",
       "body": "*Flew* carries the suddenness; *rage* carries the anger. Both elements must be present.",
-      "trap": "'Ran away' takes *flew* literally \u2014 the verb here is metaphorical, not physical."
+      "trap": "'Ran away' takes *flew* literally — the verb here is metaphorical, not physical."
     },
     "marks": 2,
     "difficulty": 1,
@@ -4131,7 +4135,7 @@
     "explanation": {
       "key_point": "*Posh* means luxurious; *modest* in this sense means unpretentious.",
       "body": "The opposition is luxury against modesty. *Rickety*, *rugged* and *dented* are all merely 'not posh' in other ways.",
-      "trap": "'Rugged' and 'dented' describe condition, not status \u2014 a dented Rolls is still posh."
+      "trap": "'Rugged' and 'dented' describe condition, not status — a dented Rolls is still posh."
     },
     "marks": 2,
     "difficulty": 2,
@@ -4168,7 +4172,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Trivial* means of little importance; *serious* means of much.",
-      "body": "A direct scale reversal. *Unbearable* is about tolerance, *ordinary* about commonness \u2014 neither opposes triviality.",
+      "body": "A direct scale reversal. *Unbearable* is about tolerance, *ordinary* about commonness — neither opposes triviality.",
       "trap": "'Ordinary' feels close to trivial, but ordinary things can still matter."
     },
     "marks": 2,
@@ -4245,7 +4249,7 @@
     "explanation": {
       "key_point": "*Sanctioned* here means punished; *pardoned* means forgiven the punishment.",
       "body": "The sentence pairs punishment against its reversal. *Exempted* frees from an obligation, not from a penalty already imposed.",
-      "trap": "'Exempted' is the near-miss \u2014 freedom *before* versus forgiveness *after*."
+      "trap": "'Exempted' is the near-miss — freedom *before* versus forgiveness *after*."
     },
     "marks": 2,
     "difficulty": 2,
@@ -4283,7 +4287,7 @@
     "explanation": {
       "key_point": "*Dogged* means persistent; *wavering* means unsteady.",
       "body": "The *while* sets up the contrast: steadfastness against unsteadiness.",
-      "trap": "'Declining' is about lessening, not unsteadiness \u2014 support can decline without wavering."
+      "trap": "'Declining' is about lessening, not unsteadiness — support can decline without wavering."
     },
     "marks": 2,
     "difficulty": 3,
@@ -4358,7 +4362,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Precarious* means dangerously unstable; *secure* means safe.",
-      "body": "The transformation is from danger to safety. *Durable* is adjacent \u2014 lasting \u2014 but a durable terrace can still be precarious.",
+      "body": "The transformation is from danger to safety. *Durable* is adjacent — lasting — but a durable terrace can still be precarious.",
       "trap": "'Durable' answers longevity where the question asks safety."
     },
     "marks": 2,
@@ -4397,7 +4401,7 @@
     "explanation": {
       "key_point": "*Irritate* vexes; *delight* pleases.",
       "body": "Direct affective reversal. *Bother* is a synonym of irritate, planted as the trap.",
-      "trap": "'Bother' *means* irritate \u2014 it sits in the options precisely to catch skimmers."
+      "trap": "'Bother' *means* irritate — it sits in the options precisely to catch skimmers."
     },
     "marks": 2,
     "difficulty": 1,
@@ -4435,7 +4439,7 @@
     "explanation": {
       "key_point": "*Loud* in demeanour opposes *reserved* in demeanour.",
       "body": "The contrast is social volume. *Peaceful*, *respectful* and *humble* are all quiet-adjacent virtues, but only *reserved* reverses loudness itself.",
-      "trap": "Three gentle virtues against one precise opposite \u2014 the question tests opposition, not niceness."
+      "trap": "Three gentle virtues against one precise opposite — the question tests opposition, not niceness."
     },
     "marks": 2,
     "difficulty": 2,
@@ -4473,7 +4477,7 @@
     "explanation": {
       "key_point": "*Reprimand* rebukes; *compliment* praises.",
       "body": "Scold against praise is the direct reversal. *Forgive* follows wrongdoing without praising; *advise* neither scolds nor praises.",
-      "trap": "'Forgive' is the near-miss \u2014 clemency is adjacent to praise but is not praise."
+      "trap": "'Forgive' is the near-miss — clemency is adjacent to praise but is not praise."
     },
     "marks": 2,
     "difficulty": 2,
@@ -4510,7 +4514,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Prudence* in money matters is caution.",
-      "body": "Financial prudence is carefulness with money \u2014 *caution* in plain terms.",
+      "body": "Financial prudence is carefulness with money — *caution* in plain terms.",
       "trap": "'Precision' is exactness, a different virtue; prudence is about care, not accuracy."
     },
     "marks": 1,
@@ -4585,7 +4589,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "A *claim* proved false was an *allegation* \u2014 asserted, never established.",
+      "key_point": "A *claim* proved false was an *allegation* — asserted, never established.",
       "body": "*Allegation* carries exactly the unproven-assertion sense that 'turned out false' requires.",
       "trap": "'Contention' is an argument between parties; a claim can stand alone."
     },
@@ -4701,7 +4705,7 @@
     "explanation": {
       "key_point": "To *impound* is to seize officially.",
       "body": "*Seized* carries the authority. *Collected* is too neutral; *damaged* is unrelated.",
-      "trap": "'Banned' confuses the car with its use \u2014 you ban driving, you impound cars."
+      "trap": "'Banned' confuses the car with its use — you ban driving, you impound cars."
     },
     "marks": 1,
     "difficulty": 2,
@@ -4737,7 +4741,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Cheerful* is visibly, actively glad \u2014 *gleeful*.",
+      "key_point": "*Cheerful* is visibly, actively glad — *gleeful*.",
       "body": "Both describe gladness shown. *Satisfied* is contentment kept in; *zealous* is fervour about something else.",
       "trap": "'Satisfied' is the quiet version; cheerfulness announces itself."
     },
@@ -4775,9 +4779,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Pernicious* means harmful \u2014 confirmed twice in this paper.",
+      "key_point": "*Pernicious* means harmful — confirmed twice in this paper.",
       "body": "*Harmful* is the plain term. This entry corroborates t74826: there, the key gave *benign* (the antonym) and was corrected here to *noxious*.",
-      "trap": "The paper itself contains both the error and its correction \u2014 read across questions, not in isolation."
+      "trap": "The paper itself contains both the error and its correction — read across questions, not in isolation."
     },
     "marks": 1,
     "difficulty": 2,
@@ -4815,7 +4819,7 @@
     "explanation": {
       "key_point": "To *command* is to order with authority.",
       "body": "*Ordered* is the direct equivalent. *Persuaded*, *induced* and *encouraged* all work by influence, not authority.",
-      "trap": "Three synonyms of *influence* against one of *authority* \u2014 the sentence tests which kind of power."
+      "trap": "Three synonyms of *influence* against one of *authority* — the sentence tests which kind of power."
     },
     "marks": 1,
     "difficulty": 1,
@@ -4851,7 +4855,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Perseverance* is persistence \u2014 *tenacity*, holding on.",
+      "key_point": "*Perseverance* is persistence — *tenacity*, holding on.",
       "body": "Both describe refusing to let go. *Patience* waits; *tenacity* pushes.",
       "trap": "'Patience' is the quiet virtue; perseverance acts."
     },
@@ -4889,7 +4893,7 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Tie* is /ta\u026a/; *bile* is /ba\u026al/.",
+      "key_point": "*Tie* is /taɪ/; *bile* is /baɪl/.",
       "body": "Same diphthong, same silence after it. *Hey*, *farce* and *hail* all carry different vowels behind similar spellings.",
       "trap": "'Hail' shares the *-ail* shape and almost no sound."
     },
@@ -4927,9 +4931,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Put* is /p\u028at/ \u2014 short /\u028a/, not long /u\u02d0/.",
-      "body": "Only *wool* /w\u028al/ shares it. *Fool*, *school* and *cool* all carry the long /u\u02d0/ that the *oo* spelling usually signals.",
-      "trap": "Three long vowels against one short \u2014 the spelling promises /u\u02d0/ and only one option breaks the promise correctly."
+      "key_point": "*Put* is /pʊt/ — short /ʊ/, not long /uː/.",
+      "body": "Only *wool* /wʊl/ shares it. *Fool*, *school* and *cool* all carry the long /uː/ that the *oo* spelling usually signals.",
+      "trap": "Three long vowels against one short — the spelling promises /uː/ and only one option breaks the promise correctly."
     },
     "marks": 1,
     "difficulty": 2,
@@ -4965,8 +4969,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Tailor* is /\u02c8te\u026al\u0259/ \u2014 the *ai* spells /e\u026a/.",
-      "body": "*Partake* /p\u0251\u02d0\u02c8te\u026ak/ carries it. *Torn* (/\u0254\u02d0/), *dent* (/e/) and *orchard* (/\u0254\u02d0/) are three other vowels *a*-spellings can hide.",
+      "key_point": "*Tailor* is /ˈteɪlə/ — the *ai* spells /eɪ/.",
+      "body": "*Partake* /pɑːˈteɪk/ carries it. *Torn* (/ɔː/), *dent* (/e/) and *orchard* (/ɔː/) are three other vowels *a*-spellings can hide.",
       "trap": "'Torn' shares the initial *t* and nothing else."
     },
     "marks": 1,
@@ -5003,9 +5007,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Fate* is /fe\u026at/; *weight* is /we\u026at/.",
-      "body": "The *eigh* spelling reliably spells /e\u026a/. *Share* (/e\u0259/), *flat* (/\u00e6/) and *said* (/e/) are the three common impostors.",
-      "trap": "'Said' is the cruellest \u2014 the *ai* spelling that breaks its own rule."
+      "key_point": "*Fate* is /feɪt/; *weight* is /weɪt/.",
+      "body": "The *eigh* spelling reliably spells /eɪ/. *Share* (/eə/), *flat* (/æ/) and *said* (/e/) are the three common impostors.",
+      "trap": "'Said' is the cruellest — the *ai* spelling that breaks its own rule."
     },
     "marks": 1,
     "difficulty": 1,
@@ -5041,8 +5045,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Fern* is /f\u025c\u02d0n/; *merge* is /m\u025c\u02d0d\u0292/.",
-      "body": "The *er* spelling reliably spells /\u025c\u02d0/ here. *Heart* (/\u0251\u02d0/), *eureka* (/i\u02d0/) and *beryl* (/e/) are three other vowels *er*-spellings can hide.",
+      "key_point": "*Fern* is /fɜːn/; *merge* is /mɜːdʒ/.",
+      "body": "The *er* spelling reliably spells /ɜː/ here. *Heart* (/ɑː/), *eureka* (/iː/) and *beryl* (/e/) are three other vowels *er*-spellings can hide.",
       "trap": "'Beryl' shares the *er* shape most closely and the vowel least."
     },
     "marks": 1,
@@ -5079,8 +5083,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Powder* is /\u02c8pa\u028ad\u0259/ \u2014 the *ow* spells /a\u028a/.",
-      "body": "*Lout* /la\u028at/ matches. *Tour* (/\u028a\u0259/), *low* (/\u0259\u028a/) and *potty* (/\u0252/) are the three other vowels *o*-spellings can hide.",
+      "key_point": "*Powder* is /ˈpaʊdə/ — the *ow* spells /aʊ/.",
+      "body": "*Lout* /laʊt/ matches. *Tour* (/ʊə/), *low* (/əʊ/) and *potty* (/ɒ/) are the three other vowels *o*-spellings can hide.",
       "trap": "'Low' and 'tour' share the *o* shapes; only the sound selects."
     },
     "marks": 1,
@@ -5117,9 +5121,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Cruise* is /kru\u02d0z/; *move* is /mu\u02d0v/.",
-      "body": "Long /u\u02d0/ in both. *Hood* (/\u028a/) is the short version; *quite* (/a\u026a/) and *suite* (/i\u02d0/) are unrelated.",
-      "trap": "'Suite' shares the *ui* spelling and almost no sound \u2014 the *u* spellings mislead systematically here."
+      "key_point": "*Cruise* is /kruːz/; *move* is /muːv/.",
+      "body": "Long /uː/ in both. *Hood* (/ʊ/) is the short version; *quite* (/aɪ/) and *suite* (/iː/) are unrelated.",
+      "trap": "'Suite' shares the *ui* spelling and almost no sound — the *u* spellings mislead systematically here."
     },
     "marks": 1,
     "difficulty": 2,
@@ -5155,8 +5159,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Spot* is /sp\u0252t/; *slot* is /sl\u0252t/.",
-      "body": "Short /\u0252/ in both. *Sport* (/\u0254\u02d0/), *glut* (/\u028c/) and *hurt* (/\u025c\u02d0/) are three other vowels *o*-spellings can hide.",
+      "key_point": "*Spot* is /spɒt/; *slot* is /slɒt/.",
+      "body": "Short /ɒ/ in both. *Sport* (/ɔː/), *glut* (/ʌ/) and *hurt* (/ɜː/) are three other vowels *o*-spellings can hide.",
       "trap": "'Sport' shares four letters and almost no vowel."
     },
     "marks": 1,
@@ -5193,9 +5197,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*There* and *their* are homophones: /\u00f0e\u0259/.",
-      "body": "Identical in sound, different in spelling and meaning. *Ear*, *fear* and *peer* all carry /\u026a\u0259/.",
-      "trap": "The three distractors share the *-ear* shape and a different vowel \u2014 spelling misleads, sound decides."
+      "key_point": "*There* and *their* are homophones: /ðeə/.",
+      "body": "Identical in sound, different in spelling and meaning. *Ear*, *fear* and *peer* all carry /ɪə/.",
+      "trap": "The three distractors share the *-ear* shape and a different vowel — spelling misleads, sound decides."
     },
     "marks": 1,
     "difficulty": 1,
@@ -5231,9 +5235,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Fissure* centres on /\u0283/.",
-      "body": "*Unsure* /\u028cn\u02c8\u0283\u028a\u0259/ matches. *Erase* (/s/), *vision* (/\u0292/) and *feature* (/t\u0283/) are the three neighbouring fricatives.",
-      "trap": "'Vision' shares the *-sion* ending and almost no consonant \u2014 endings mislead."
+      "key_point": "*Fissure* centres on /ʃ/.",
+      "body": "*Unsure* /ʌnˈʃʊə/ matches. *Erase* (/s/), *vision* (/ʒ/) and *feature* (/tʃ/) are the three neighbouring fricatives.",
+      "trap": "'Vision' shares the *-sion* ending and almost no consonant — endings mislead."
     },
     "marks": 1,
     "difficulty": 2,
@@ -5270,7 +5274,7 @@
     "image": null,
     "explanation": {
       "key_point": "The *s* in *visit* is voiced: /z/.",
-      "body": "*Easy* /\u02c8i\u02d0zi/ matches. *Peace*, *face* and *mouse* all carry the voiceless /s/ \u2014 the letter's usual value.",
+      "body": "*Easy* /ˈiːzi/ matches. *Peace*, *face* and *mouse* all carry the voiceless /s/ — the letter's usual value.",
       "trap": "Three voiceless against one voiced; the letter *s* defaults to /s/ everywhere except here."
     },
     "marks": 1,
@@ -5308,8 +5312,8 @@
     "image": null,
     "explanation": {
       "key_point": "*Hack* begins with /h/; *behaviour* carries it mid-word.",
-      "body": "Position differs, sound matches. *Schedule* (/sk/ or /\u0283/), *honourable* (silent h) and *exhibit* (no /h/) all lack it.",
-      "trap": "'Honourable' contains the letter and not the sound \u2014 the recurring lesson of this set."
+      "body": "Position differs, sound matches. *Schedule* (/sk/ or /ʃ/), *honourable* (silent h) and *exhibit* (no /h/) all lack it.",
+      "trap": "'Honourable' contains the letter and not the sound — the recurring lesson of this set."
     },
     "marks": 1,
     "difficulty": 2,
@@ -5346,7 +5350,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Left* and *bulk* both pronounce their *l*.",
-      "body": "*Half*, *could* (no l at all) and *yolk* silence or drop it. Only *bulk* /b\u028clk/ sounds the letter.",
+      "body": "*Half*, *could* (no l at all) and *yolk* silence or drop it. Only *bulk* /bʌlk/ sounds the letter.",
       "trap": "Three options contain *l*; one pronounces it. The letter, again, tells you nothing."
     },
     "marks": 1,
@@ -5384,7 +5388,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Fly* begins with /f/; *tough* ends with it.",
-      "body": "Position differs, sound matches. *Though* (/\u00f0/), *dough* (silent *gh*) and *revive* (/v/) are the three things *gh*-spellings can hide.",
+      "body": "Position differs, sound matches. *Though* (/ð/), *dough* (silent *gh*) and *revive* (/v/) are the three things *gh*-spellings can hide.",
       "trap": "The set is a catalogue of *ough* spellings; only the sound selects."
     },
     "marks": 1,
@@ -5422,7 +5426,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Text* ends /kst/; *fixed* ends /kst/.",
-      "body": "The cluster matches exactly. *Kissed* and *west* end /st/, *risked* ends /skt/ \u2014 near, not same.",
+      "body": "The cluster matches exactly. *Kissed* and *west* end /st/, *risked* ends /skt/ — near, not same.",
       "trap": "'Risked' shares three of four sounds; clusters must match whole, not mostly."
     },
     "marks": 1,
@@ -5459,9 +5463,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Uncle* and *ankle* share the full rime /\u014bk\u0259l/.",
-      "body": "*Knuckle* shares the consonants but not the ending; *singe* (/nd\u0292/) and *bangle* (/\u014b\u0261/) diverge earlier.",
-      "trap": "'Knuckle' is the near-miss \u2014 same sounds, different rime. Rhyme needs the ending too."
+      "key_point": "*Uncle* and *ankle* share the full rime /ŋkəl/.",
+      "body": "*Knuckle* shares the consonants but not the ending; *singe* (/ndʒ/) and *bangle* (/ŋɡ/) diverge earlier.",
+      "trap": "'Knuckle' is the near-miss — same sounds, different rime. Rhyme needs the ending too."
     },
     "marks": 1,
     "difficulty": 2,
@@ -5498,7 +5502,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Drive* begins with voiced /d/; only *wounded* contains it.",
-      "body": "*Kicked*, *jumped* and *risked* end in voiceless /t/ \u2014 the regular past-tense sound after voiceless consonants.",
+      "body": "*Kicked*, *jumped* and *risked* end in voiceless /t/ — the regular past-tense sound after voiceless consonants.",
       "trap": "Three *-ed* spellings against one; the spelling is identical, the voicing is not."
     },
     "marks": 1,
@@ -5536,8 +5540,8 @@
     "image": null,
     "explanation": {
       "key_point": "The *b* in *laboratory* is pronounced; only *dabble* pronounces its *b* too.",
-      "body": "*Thumb* (/\u03b8/), *subtle* and *debtor* (both silent b) all drop it.",
-      "trap": "Three silent *b*s against one sounded \u2014 the set tests whether the letter sounds at all."
+      "body": "*Thumb* (/θ/), *subtle* and *debtor* (both silent b) all drop it.",
+      "trap": "Three silent *b*s against one sounded — the set tests whether the letter sounds at all."
     },
     "marks": 1,
     "difficulty": 2,
@@ -5573,9 +5577,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Upholstery* splits as *up-holstery* \u2014 /p/ then /h/ across the boundary.",
+      "key_point": "*Upholstery* splits as *up-holstery* — /p/ then /h/ across the boundary.",
       "body": "*Upheaval* shares the structure exactly. *Phonetics* merges them to /f/; the others drop one.",
-      "trap": "'Phonetics' is the *ph*-spelling trap \u2014 same letters, fused to a different sound."
+      "trap": "'Phonetics' is the *ph*-spelling trap — same letters, fused to a different sound."
     },
     "marks": 1,
     "difficulty": 3,
@@ -5611,9 +5615,9 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Rouge* ends /\u0292/; *leisure* centres on it.",
-      "body": "The French borrowing keeps its French consonant. *Jest*, *gem* and *rage* all carry /d\u0292/ \u2014 the English hardening of the same spelling.",
-      "trap": "Three /d\u0292/ against one /\u0292/; the spelling *ge* defaults English and only *rouge* keeps French."
+      "key_point": "*Rouge* ends /ʒ/; *leisure* centres on it.",
+      "body": "The French borrowing keeps its French consonant. *Jest*, *gem* and *rage* all carry /dʒ/ — the English hardening of the same spelling.",
+      "trap": "Three /dʒ/ against one /ʒ/; the spelling *ge* defaults English and only *rouge* keeps French."
     },
     "marks": 1,
     "difficulty": 3,
@@ -5689,7 +5693,7 @@
     "explanation": {
       "key_point": "*Caution*, *mountain* and *creature* are trochees (stressed-unstressed); *extrude* is an iamb.",
       "body": "CAU-tion, MOUN-tain, CREA-ture against ex-TRUDE. The verb stands apart from the nouns.",
-      "trap": "Word class predicts it \u2014 verbs stress late, nouns stress early \u2014 which is the pattern to learn, not just this set."
+      "trap": "Word class predicts it — verbs stress late, nouns stress early — which is the pattern to learn, not just this set."
     },
     "marks": 1,
     "difficulty": 2,
@@ -5765,7 +5769,7 @@
     "explanation": {
       "key_point": "*Pertinent*, *retrospect* and *penitence* stress the first syllable; *discover* stresses the second.",
       "body": "PER-ti-nent, RET-ro-spect, PEN-i-tence against dis-COV-er. The verb stands apart.",
-      "trap": "'Retrospect' as a *verb* (ret-ro-SPECT) would match *discover* \u2014 the noun reading is what is tested."
+      "trap": "'Retrospect' as a *verb* (ret-ro-SPECT) would match *discover* — the noun reading is what is tested."
     },
     "marks": 1,
     "difficulty": 3,
@@ -5839,8 +5843,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Crest* is /krest/ \u2014 short /e/.",
-      "body": "*Breakfast* /\u02c8brekf\u0259st/ carries it in its first syllable. *Goitre* (/\u0254\u026a/), *firm* (/\u025c\u02d0/) and *wheat* (/i\u02d0/) are three other vowels *e*-spellings can hide.",
+      "key_point": "*Crest* is /krest/ — short /e/.",
+      "body": "*Breakfast* /ˈbrekfəst/ carries it in its first syllable. *Goitre* (/ɔɪ/), *firm* (/ɜː/) and *wheat* (/iː/) are three other vowels *e*-spellings can hide.",
       "trap": "'Wheat' shares the *ea* spelling and almost no sound."
     },
     "marks": 1,
@@ -5877,8 +5881,8 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "*Sheath* is /\u0283i\u02d0\u03b8/; *beach* is /bi\u02d0t\u0283/.",
-      "body": "Long /i\u02d0/ in both. *Meadow* and *weather* carry /e/, *heart* carries /\u0251\u02d0/ \u2014 three vowels the *ea* spelling can hide.",
+      "key_point": "*Sheath* is /ʃiːθ/; *beach* is /biːtʃ/.",
+      "body": "Long /iː/ in both. *Meadow* and *weather* carry /e/, *heart* carries /ɑː/ — three vowels the *ea* spelling can hide.",
       "trap": "The *ea* spelling is the least trustworthy in English; only the sound selects."
     },
     "marks": 1,
