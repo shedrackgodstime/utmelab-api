@@ -1,0 +1,2705 @@
+{
+  "note": "Novel-reference questions harvested with the English bank. These do not belong in data/questions.json (D35: a novel document carries its own questions) and are not served from here. Candidates for folding into data/novels/lekki-headmaster.json.",
+  "novel": "lekki-headmaster",
+  "questions": [
+    {
+      "id": "t76546",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "imported",
+      "text": "Choose the word with the same vowel sound as the underlined letters in: pour.",
+      "options": [
+        {
+          "id": "a",
+          "text": "hour"
+        },
+        {
+          "id": "b",
+          "text": "how"
+        },
+        {
+          "id": "c",
+          "text": "favour"
+        },
+        {
+          "id": "d",
+          "text": "ore"
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": "vowels",
+      "section": "Vowels",
+      "passage_id": null,
+      "image": null,
+      "explanation": {
+        "key_point": "*Pour* is /pɔː/ — long open-mid back vowel.",
+        "body": "*Ore* /ɔː/ matches. *Hour* (/aʊə/), *how* (/aʊ/) and *favour* (/eɪ/) are the *our*-spelling traps.",
+        "trap": "Four *our* spellings, four different vowels — the set is designed to punish reading over listening."
+      },
+      "marks": 1.0,
+      "difficulty": 2,
+      "verified": true
+    },
+    {
+      "id": "q_claim_2025_christian-religious-knowledge-crk_74742",
+      "exam": "JAMB",
+      "subject": "christian-religious-studies",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "I will faithfully give them their recompense, and I will make an everlasting covenant with them.",
+      "options": [
+        {
+          "id": "a",
+          "text": "doom"
+        },
+        {
+          "id": "b",
+          "text": "danger"
+        },
+        {
+          "id": "c",
+          "text": "call to repentance"
+        },
+        {
+          "id": "d",
+          "text": "hope"
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_christian-religious-knowledge-crk_74756",
+      "exam": "JAMB",
+      "subject": "christian-religious-studies",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Jesus spoke to them, saying: \" I am the light of the world, whoever follows me will not walk in darkness, but will have the light of life \".",
+      "options": [
+        {
+          "id": "a",
+          "text": "holiness and cleanness"
+        },
+        {
+          "id": "b",
+          "text": "faith and hope"
+        },
+        {
+          "id": "c",
+          "text": "the knowledge of God, leading to salvation"
+        },
+        {
+          "id": "d",
+          "text": "that darkness leads to death"
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_christian-religious-knowledge-crk_74763",
+      "exam": "JAMB",
+      "subject": "christian-religious-studies",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "The women of Samaria were described by Amos as",
+      "options": [
+        {
+          "id": "a",
+          "text": "cows of Bashan"
+        },
+        {
+          "id": "b",
+          "text": "idol worshippers"
+        },
+        {
+          "id": "c",
+          "text": "pagans"
+        },
+        {
+          "id": "d",
+          "text": "Camels"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_christian-religious-knowledge-crk_75649",
+      "exam": "JAMB",
+      "subject": "christian-religious-studies",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Who prophesied the coming of Elijah before the great day of the Lord?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Amos"
+        },
+        {
+          "id": "b",
+          "text": "Malachi"
+        },
+        {
+          "id": "c",
+          "text": "Joel"
+        },
+        {
+          "id": "d",
+          "text": "Micah"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_government_74632",
+      "exam": "JAMB",
+      "subject": "government",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "A sovereign state is one",
+      "options": [
+        {
+          "id": "a",
+          "text": "which sovereignty is vested in the military"
+        },
+        {
+          "id": "b",
+          "text": "whose government decisions are made independent"
+        },
+        {
+          "id": "c",
+          "text": "where its citizens can speak without fear or favour"
+        },
+        {
+          "id": "d",
+          "text": "whose constitution could only be changed by the military government"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_literature-in-english_74705",
+      "exam": "JAMB",
+      "subject": "literature-in-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Emily Bronte's Wuthering Heights. I'm trying to settle how I shall pay Hindley back. I don't care how long I will wait, if I can only do it at last. I hope he will not die before I do! Who made the statement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Heathcliff"
+        },
+        {
+          "id": "b",
+          "text": "Edgar"
+        },
+        {
+          "id": "c",
+          "text": "Lockwood"
+        },
+        {
+          "id": "d",
+          "text": "Isabella"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_chemistry_74089",
+      "exam": "JAMB",
+      "subject": "chemistry",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "When ΔH is positive and small, and ΔS is positive and large, the reaction will be",
+      "options": [
+        {
+          "id": "a",
+          "text": "Non-spontaneous"
+        },
+        {
+          "id": "b",
+          "text": "favour forward reaction only"
+        },
+        {
+          "id": "c",
+          "text": "favour backward reaction only"
+        },
+        {
+          "id": "d",
+          "text": "spontaneous"
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_chemistry_74105",
+      "exam": "JAMB",
+      "subject": "chemistry",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "NH\\(_3\\) \\((_g\\)) + HCl\\((_g\\)) → NH\\(_4\\)Cl \\(_(g)\\) In the reaction above, increase in pressure will",
+      "options": [
+        {
+          "id": "a",
+          "text": "lower the equilibrium constant"
+        },
+        {
+          "id": "b",
+          "text": "favour the product"
+        },
+        {
+          "id": "c",
+          "text": "favour the reactant"
+        },
+        {
+          "id": "d",
+          "text": "increase the equilibrium constant"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_chemistry_74204",
+      "exam": "JAMB",
+      "subject": "chemistry",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "If there is no change in volume in a gaseous reaction, the pressure will",
+      "options": [
+        {
+          "id": "a",
+          "text": "favour forward reaction"
+        },
+        {
+          "id": "b",
+          "text": "favour backward reaction"
+        },
+        {
+          "id": "c",
+          "text": "have no effect on equilibrium position"
+        },
+        {
+          "id": "d",
+          "text": "have effect on equilibrium position"
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71535",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "The principal was nicknamed \"The Lekki Headmaster\" because...",
+      "options": [
+        {
+          "id": "a",
+          "text": "He lived in Lekki during his time as a headmaster."
+        },
+        {
+          "id": "b",
+          "text": "He humorously imitated characters from the Village Headmaster."
+        },
+        {
+          "id": "c",
+          "text": "He introduced a new curriculum in the school."
+        },
+        {
+          "id": "d",
+          "text": "He founded Stardom Kiddies School."
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71536",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Which teachers were reprimanded because two of their candidates had Ds in their subjects?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mr. Ope Wande and Mrs. Grace Apeh."
+        },
+        {
+          "id": "b",
+          "text": "Mr. Audu and Mr. Justus Anabel."
+        },
+        {
+          "id": "c",
+          "text": "Mr. Obong Ukake and Miss Taye Kareem."
+        },
+        {
+          "id": "d",
+          "text": "Mr. Bepo and Mr. Ope Wande."
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71537",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Who among the staff at Stardom School is also a pastor?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mr. Justus Anabel."
+        },
+        {
+          "id": "b",
+          "text": "Mr. Ope Wande."
+        },
+        {
+          "id": "c",
+          "text": "Mr. Audu."
+        },
+        {
+          "id": "d",
+          "text": "Mr. Obong Ukake."
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71540",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Who accompanied the principal to his home on the day of the crying incident?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The MD herself."
+        },
+        {
+          "id": "b",
+          "text": "The guidance counsellor."
+        },
+        {
+          "id": "c",
+          "text": "Pastor Wande."
+        },
+        {
+          "id": "d",
+          "text": "The school nurse."
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71541",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What was the student Ikenna Egbu’s speech about?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The “Japa” trend in our modern society."
+        },
+        {
+          "id": "b",
+          "text": "The principal’s contributions to the school."
+        },
+        {
+          "id": "c",
+          "text": "The importance of punctuality."
+        },
+        {
+          "id": "d",
+          "text": "A recent excursion to Jos."
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71543",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What trait earned Mr. Bepo the nickname “The Lekki Headmaster”?",
+      "options": [
+        {
+          "id": "a",
+          "text": "His strictness with students"
+        },
+        {
+          "id": "b",
+          "text": "His excellent teaching skills"
+        },
+        {
+          "id": "c",
+          "text": "His ability to resolve conflicts amicably"
+        },
+        {
+          "id": "d",
+          "text": "His innovative teaching methods"
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71544",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Who coined the nickname “The Lekki Headmaster”?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mr. Audu"
+        },
+        {
+          "id": "b",
+          "text": "Mr. Bepo’s wife"
+        },
+        {
+          "id": "c",
+          "text": "Nike and Kike"
+        },
+        {
+          "id": "d",
+          "text": "The students at Stardom Kiddies"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71545",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "How much does Seri earn monthly as a nurse in the United Kingdom?",
+      "options": [
+        {
+          "id": "a",
+          "text": "£3,600"
+        },
+        {
+          "id": "b",
+          "text": "£6,000"
+        },
+        {
+          "id": "c",
+          "text": "£10,000"
+        },
+        {
+          "id": "d",
+          "text": "£1,000"
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71550",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What does the term roforofos that Mr Audu used when talking about Mr Bepo most likely refer to?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Friendly greetings"
+        },
+        {
+          "id": "b",
+          "text": "Petty disagreements and conflicts"
+        },
+        {
+          "id": "c",
+          "text": "School projects"
+        },
+        {
+          "id": "d",
+          "text": "Mismanagement issues"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71554",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What unethical act did Mr. Nku engage in before relocating abroad?",
+      "options": [
+        {
+          "id": "a",
+          "text": "He sold the school’s property"
+        },
+        {
+          "id": "b",
+          "text": "He borrowed N2 million from the school’s cooperative"
+        },
+        {
+          "id": "c",
+          "text": "He falsified documents to gain a visa."
+        },
+        {
+          "id": "d",
+          "text": "He stole money from the school’s treasury."
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71558",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What lesson does Hope’s story about relocating to the UK teach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Financial independence is critical when relocating."
+        },
+        {
+          "id": "b",
+          "text": "Working while studying guarantees success."
+        },
+        {
+          "id": "c",
+          "text": "Couples always succeed when they share responsibilities."
+        },
+        {
+          "id": "d",
+          "text": "Relocation is a foolproof plan for success."
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71559",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "How much did Sola and her husband borrow to fund their relocation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "N2 million"
+        },
+        {
+          "id": "b",
+          "text": "N4 million"
+        },
+        {
+          "id": "c",
+          "text": "N3 million"
+        },
+        {
+          "id": "d",
+          "text": "N5 million"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71561",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Why does Mr Ignatius want to relocate with his family?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To find better jobs abroad."
+        },
+        {
+          "id": "b",
+          "text": "To secure a better future for his children."
+        },
+        {
+          "id": "c",
+          "text": "To reunite with his extended family abroad."
+        },
+        {
+          "id": "d",
+          "text": "To enrol his children in Stardom schools abroad."
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71562",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What skill did Mrs Ignatius begin learning to support her family abroad?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Accounting and clerical work"
+        },
+        {
+          "id": "b",
+          "text": "Cloth weaving and Adire"
+        },
+        {
+          "id": "c",
+          "text": "Tailoring and hairdressing"
+        },
+        {
+          "id": "d",
+          "text": "Photography"
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71563",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What disrupted the Ignatius family's relocation plans?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mr Ignatius lost his job."
+        },
+        {
+          "id": "b",
+          "text": "Mrs Ignatius changed her mind about relocating."
+        },
+        {
+          "id": "c",
+          "text": "A DNA test revealed Mr Ignatius was not Favour's biological father."
+        },
+        {
+          "id": "d",
+          "text": "Their visa application was denied."
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71564",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Why was Mr Ayesoro transferred from his teaching role?",
+      "options": [
+        {
+          "id": "a",
+          "text": "He had poor teaching performance."
+        },
+        {
+          "id": "b",
+          "text": "A student had recurring nightmares about him."
+        },
+        {
+          "id": "c",
+          "text": "He requested a transfer for personal reasons."
+        },
+        {
+          "id": "d",
+          "text": "The school wanted him to work in their property division."
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71565",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What nickname did students give to Mr Ayesoro because of his tribal marks?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mr Owala"
+        },
+        {
+          "id": "b",
+          "text": "Mr Ologbo"
+        },
+        {
+          "id": "c",
+          "text": "Mr Egun"
+        },
+        {
+          "id": "d",
+          "text": "Mr Omole"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71566",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Why did the school transfer Mr Ayesoro to Stardom Hub?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To punish him for misconduct."
+        },
+        {
+          "id": "b",
+          "text": "To provide him with a better job opportunity."
+        },
+        {
+          "id": "c",
+          "text": "To reward him for his dedication."
+        },
+        {
+          "id": "d",
+          "text": "To retain Mrs Ladele’s children in the school."
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71573",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What did Mr Guta demand in the MD’s office regarding Mr Fafore?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A salary increase for Mr Fafore"
+        },
+        {
+          "id": "b",
+          "text": "The immediate dismissal of Mr Fafore"
+        },
+        {
+          "id": "c",
+          "text": "A change in his son’s class teacher."
+        },
+        {
+          "id": "d",
+          "text": "A public apology from Mr Fafore."
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71575",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What reason did Mr Guta give for being angry with Mr Fafore?",
+      "options": [
+        {
+          "id": "a",
+          "text": "He found a grammatical error in his son's note"
+        },
+        {
+          "id": "b",
+          "text": "He felt Mr Fafore was not teaching effectively"
+        },
+        {
+          "id": "c",
+          "text": "He was unhappy with Mr Fafore's attitude"
+        },
+        {
+          "id": "d",
+          "text": "His son complained about being treated unfairly"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71577",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What did Mr Audu do after the MD felt deflated that she had wrongly sacked Mr Fafore?",
+      "options": [
+        {
+          "id": "a",
+          "text": "He defended Mr Fafore's teaching methods"
+        },
+        {
+          "id": "b",
+          "text": "He proposed new rules for grammar checks"
+        },
+        {
+          "id": "c",
+          "text": "He suggested a training session for the staff"
+        },
+        {
+          "id": "d",
+          "text": "He cracked a joke to lighten the mood"
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71578",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What conclusion did the teachers draw from Mr Fafore's sack incident?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Open Day is a stressful event"
+        },
+        {
+          "id": "b",
+          "text": "There is no job security in the establishment"
+        },
+        {
+          "id": "c",
+          "text": "Parents should not interfere with teaching methods"
+        },
+        {
+          "id": "d",
+          "text": "The MD is always fair in her decisions"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71584",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What inappropriate remark did Banky make during Speech Day?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tosh was unqualified for the position"
+        },
+        {
+          "id": "b",
+          "text": "Tosh was the son of an ex-convict"
+        },
+        {
+          "id": "c",
+          "text": "Tosh bribed his way into the election"
+        },
+        {
+          "id": "d",
+          "text": "Tosh lacked the required skill for the role"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71585",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Why was Tosh's father, Chief Ogba, detained for 36 months?",
+      "options": [
+        {
+          "id": "a",
+          "text": "He was convicted of theft"
+        },
+        {
+          "id": "b",
+          "text": "He failed to pay a school debt"
+        },
+        {
+          "id": "c",
+          "text": "He was accused of fraud but acquitted later"
+        },
+        {
+          "id": "d",
+          "text": "He faced trial for alleged misappropriation"
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71605",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Who offers to drive Mr Bepo to the airport?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mrs Grace Apeh"
+        },
+        {
+          "id": "b",
+          "text": "Mr Oyelana"
+        },
+        {
+          "id": "c",
+          "text": "Mr Ogunwale"
+        },
+        {
+          "id": "d",
+          "text": "The Stardom accountant"
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71607",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What is the primary setting of The Lekki Headmaster ​​​​​​?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Beesway Group of School"
+        },
+        {
+          "id": "b",
+          "text": "Stardom Schools"
+        },
+        {
+          "id": "c",
+          "text": "The Black Heritage Museum, Badagry"
+        },
+        {
+          "id": "d",
+          "text": "Mushin, Lagos"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71608",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Who is the protagonist of the novel?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mr Alabi"
+        },
+        {
+          "id": "b",
+          "text": "Mrs Grace Apeh"
+        },
+        {
+          "id": "c",
+          "text": "Mrs Ibidun Gloss"
+        },
+        {
+          "id": "d",
+          "text": "Mr Adewale Adebepo"
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71612",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Which teacher is known for the use of witty remarks in the novel?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mrs Ibidun Gloss"
+        },
+        {
+          "id": "b",
+          "text": "Mrs Grace Apeh"
+        },
+        {
+          "id": "c",
+          "text": "Mr Audu"
+        },
+        {
+          "id": "d",
+          "text": "Mr Amos"
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71613",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Which two students have a rivalry that dates back to JSS 3?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Banky and Tosh"
+        },
+        {
+          "id": "b",
+          "text": "Seri and Kemi"
+        },
+        {
+          "id": "c",
+          "text": "Ogba and Banky"
+        },
+        {
+          "id": "d",
+          "text": "Ogba and Tosh"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71615",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What led to the conflict during the prefect election speech?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Banky insulted Tosh's father"
+        },
+        {
+          "id": "b",
+          "text": "Banky attempted to bribe the judges"
+        },
+        {
+          "id": "c",
+          "text": "Tosh's mom accused the school of favouritism"
+        },
+        {
+          "id": "d",
+          "text": "Bepo intervened in the voting process"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71624",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What was Bepo's relationship with Mrs Ibidun Gloss?",
+      "options": [
+        {
+          "id": "a",
+          "text": "She was his supervisor"
+        },
+        {
+          "id": "b",
+          "text": "She was his rival"
+        },
+        {
+          "id": "c",
+          "text": "She deeply respected and appreciated his contributions"
+        },
+        {
+          "id": "d",
+          "text": "She criticised his decisions frequently"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71629",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "How does The Lekki Headmaster portray the issue of \"Japa\"?",
+      "options": [
+        {
+          "id": "a",
+          "text": "As a necessary step for career growth"
+        },
+        {
+          "id": "b",
+          "text": "As a personal and moral dilemma"
+        },
+        {
+          "id": "c",
+          "text": "As a privilege for the wealthy"
+        },
+        {
+          "id": "d",
+          "text": "As an easy decision for most Nigerians"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_71632",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What narrative technique is commonly used in The Lekki Headmaster?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Flashback"
+        },
+        {
+          "id": "b",
+          "text": "Myth"
+        },
+        {
+          "id": "c",
+          "text": "Foreshadowing"
+        },
+        {
+          "id": "d",
+          "text": "First-person narration"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_72224",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What does Chief Ogba demand after his son, Tosh, is publicly insulted?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A formal apology and publication in the school magazine"
+        },
+        {
+          "id": "b",
+          "text": "The immediate suspension of the student who insulted his son"
+        },
+        {
+          "id": "c",
+          "text": "Financial compensation from the school"
+        },
+        {
+          "id": "d",
+          "text": "Immediate expulsion of the guilty student"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_72234",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What was Mr. Fafore’s strategy to ensure that he came early to school even though he lives far away?",
+      "options": [
+        {
+          "id": "a",
+          "text": "He slept in his car overnight"
+        },
+        {
+          "id": "b",
+          "text": "He woke up very early"
+        },
+        {
+          "id": "c",
+          "text": "He rented an apartment near the school"
+        },
+        {
+          "id": "d",
+          "text": "He set multiple alarms on his phone"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_72239",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "The following were hairstyles that Mrs Ignatius learnt in preparation for her migration abroad except",
+      "options": [
+        {
+          "id": "a",
+          "text": "Agbadarigi"
+        },
+        {
+          "id": "b",
+          "text": "Kojusoko"
+        },
+        {
+          "id": "c",
+          "text": "Onilegogoro"
+        },
+        {
+          "id": "d",
+          "text": "Suku"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_72254",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Who did Bepo sell his car to as he planned to relocate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "His best friend"
+        },
+        {
+          "id": "b",
+          "text": "His landlord"
+        },
+        {
+          "id": "c",
+          "text": "The school's accountant"
+        },
+        {
+          "id": "d",
+          "text": "Mrs Grace Apeh"
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_72257",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What subject was Sola teaching at Stardom Schools before she relocated to the UK?",
+      "options": [
+        {
+          "id": "a",
+          "text": "English Language"
+        },
+        {
+          "id": "b",
+          "text": "Home Economics"
+        },
+        {
+          "id": "c",
+          "text": "Government"
+        },
+        {
+          "id": "d",
+          "text": "Biology"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_72297",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What is the name of the director of Beesway Group of School?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mr Ogo"
+        },
+        {
+          "id": "b",
+          "text": "Mr Meko"
+        },
+        {
+          "id": "c",
+          "text": "Mr Oyelana"
+        },
+        {
+          "id": "d",
+          "text": "Mr Komaiko"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_72299",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What gesture impressed Sola when her daughter Betty was hospitalised in the UK?",
+      "options": [
+        {
+          "id": "a",
+          "text": "She was given free medication"
+        },
+        {
+          "id": "b",
+          "text": "Her husband was offered a job"
+        },
+        {
+          "id": "c",
+          "text": "Emergency care arrived in under 5 minutes"
+        },
+        {
+          "id": "d",
+          "text": "They were moved to a private hospital"
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_72302",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What city did Sola and her husband settle in within the UK?",
+      "options": [
+        {
+          "id": "a",
+          "text": "London"
+        },
+        {
+          "id": "b",
+          "text": "Birmingham"
+        },
+        {
+          "id": "c",
+          "text": "Manchester"
+        },
+        {
+          "id": "d",
+          "text": "Aberdeen"
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_72303",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "What career did Bepo's wife Seri practice abroad?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nurse"
+        },
+        {
+          "id": "b",
+          "text": "Pharmacist"
+        },
+        {
+          "id": "c",
+          "text": "Lawyer"
+        },
+        {
+          "id": "d",
+          "text": "Teacher"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_72319",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "“Mr. Audu, the Fine Arts teacher, who was a bunch of biting humour…” What does this description of Mr Audu mean?",
+      "options": [
+        {
+          "id": "a",
+          "text": "He always made friendly remarks"
+        },
+        {
+          "id": "b",
+          "text": "He is sarcastic and has sharp, critical wit"
+        },
+        {
+          "id": "c",
+          "text": "He is known for his apt innuendos"
+        },
+        {
+          "id": "d",
+          "text": "He often made unintelligible remarks"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_72321",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Mrs. Ibidun Gloss expressed deep appreciation to Bepo for contributing what she called an \"unrivalled quota\" to the growth of Stardom. What does \"unrivalled quota\" as used in the novel mean?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bepo's incomparable and exceptional contribution to the growth of the school"
+        },
+        {
+          "id": "b",
+          "text": "His savings over the years which is not comparable to the contributions of others"
+        },
+        {
+          "id": "c",
+          "text": "His impactful contribution to the development of the school's building"
+        },
+        {
+          "id": "d",
+          "text": "His buying of a large chunk of the school's shares"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_72323",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabia Alabi Garba's The Lekki Headmaster. The following are current socio-economic realities depicted in the novel except",
+      "options": [
+        {
+          "id": "a",
+          "text": "The declining condition of Nigerian universities"
+        },
+        {
+          "id": "b",
+          "text": "The Japa trend"
+        },
+        {
+          "id": "c",
+          "text": "Bureaucracy"
+        },
+        {
+          "id": "d",
+          "text": "The struggles of middle-class professionals"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74784",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Alabi Garba's The Lekki Headmaster The school nurse, Mrs Titi, fetched a handkerchief and offered it to him because",
+      "options": [
+        {
+          "id": "a",
+          "text": "she always went about with an extra handkerchief"
+        },
+        {
+          "id": "b",
+          "text": "the Physics teacher, Pastor Ope Wande, had prayed over it"
+        },
+        {
+          "id": "c",
+          "text": "it was all she could do at the moment"
+        },
+        {
+          "id": "d",
+          "text": "she didn't have any drug immediately available"
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74785",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Alabi Garba's The Lekki Headmaster. \"Red-tapism is found everywhere\" means",
+      "options": [
+        {
+          "id": "a",
+          "text": "Excessive official formality is everywhere"
+        },
+        {
+          "id": "b",
+          "text": "Red tape worm is found everywhere"
+        },
+        {
+          "id": "c",
+          "text": "Red tapes are everywhere"
+        },
+        {
+          "id": "d",
+          "text": "Official formality is everywhere"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74786",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster 'If you beat my height, you can't beat my eyes' is a statement by",
+      "options": [
+        {
+          "id": "a",
+          "text": "Audu"
+        },
+        {
+          "id": "b",
+          "text": "Ayesoro"
+        },
+        {
+          "id": "c",
+          "text": "Grace"
+        },
+        {
+          "id": "d",
+          "text": "Bepo"
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74787",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster. How did Sola and her husband travel to London from Manchester every day?",
+      "options": [
+        {
+          "id": "a",
+          "text": "by rail"
+        },
+        {
+          "id": "b",
+          "text": "by road"
+        },
+        {
+          "id": "c",
+          "text": "by sea"
+        },
+        {
+          "id": "d",
+          "text": "by air"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74788",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster \"Yes....That is what you paid the extra amount for. If you had followed the normal channel, you would still be there with them.\" To whom was this said?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Bepo"
+        },
+        {
+          "id": "b",
+          "text": "Mrs Ladele"
+        },
+        {
+          "id": "c",
+          "text": "Tai"
+        },
+        {
+          "id": "d",
+          "text": "Mr Ogo"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74789",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster. \"So, you have taken your madness to this level?\" Where was the statement made?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In Bepo's house"
+        },
+        {
+          "id": "b",
+          "text": "At the airport"
+        },
+        {
+          "id": "c",
+          "text": "At Stardom School"
+        },
+        {
+          "id": "d",
+          "text": "At Beesway School"
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74790",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster. Bepo considered establishing a school because",
+      "options": [
+        {
+          "id": "a",
+          "text": "he considers it lucrative"
+        },
+        {
+          "id": "b",
+          "text": "his friends advised him to"
+        },
+        {
+          "id": "c",
+          "text": "his father was a headmaster"
+        },
+        {
+          "id": "d",
+          "text": "of his passion for education"
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74791",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster. Bibi's scream diverted Mrs Ladele's attention from a movie on",
+      "options": [
+        {
+          "id": "a",
+          "text": "socio-economic problems"
+        },
+        {
+          "id": "b",
+          "text": "politics"
+        },
+        {
+          "id": "c",
+          "text": "money ritual"
+        },
+        {
+          "id": "d",
+          "text": "infidelity in marriage"
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74792",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster. Bepo's retirement plan suggests that he was",
+      "options": [
+        {
+          "id": "a",
+          "text": "an unambitious man"
+        },
+        {
+          "id": "b",
+          "text": "an unreasonable man"
+        },
+        {
+          "id": "c",
+          "text": "a vain fellow"
+        },
+        {
+          "id": "d",
+          "text": "a thoughtful man"
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74793",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster. What did Bepo believe was crucial for success in the transportation business?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Finding trustworthy drivers"
+        },
+        {
+          "id": "b",
+          "text": "Having money to bribe policemen"
+        },
+        {
+          "id": "c",
+          "text": "Finding expert drivers"
+        },
+        {
+          "id": "d",
+          "text": "Getting a quality vehicle"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74794",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster. What was the essence of open days at Stardom Schools?",
+      "options": [
+        {
+          "id": "a",
+          "text": "to allow students to rest"
+        },
+        {
+          "id": "b",
+          "text": "to subject teachers to tests"
+        },
+        {
+          "id": "c",
+          "text": "to update parents on academic activities"
+        },
+        {
+          "id": "d",
+          "text": "to give teachers an opportunity to relax"
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74795",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster. One of the challenges faced in General Hospitals cited in the novel is",
+      "options": [
+        {
+          "id": "a",
+          "text": "large crowds"
+        },
+        {
+          "id": "b",
+          "text": "bad smell"
+        },
+        {
+          "id": "c",
+          "text": "theft"
+        },
+        {
+          "id": "d",
+          "text": "high costs"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74796",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster The contestant for the position of a prefect must have spent ... in the school.",
+      "options": [
+        {
+          "id": "a",
+          "text": "a session"
+        },
+        {
+          "id": "b",
+          "text": "three sessions"
+        },
+        {
+          "id": "c",
+          "text": "four sessions"
+        },
+        {
+          "id": "d",
+          "text": "two sessions"
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74797",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster. Bibi is always scared of Mr Ayesoro because of his",
+      "options": [
+        {
+          "id": "a",
+          "text": "stern look"
+        },
+        {
+          "id": "b",
+          "text": "maltreatment"
+        },
+        {
+          "id": "c",
+          "text": "constant abuse"
+        },
+        {
+          "id": "d",
+          "text": "tribal marks"
+        }
+      ],
+      "answer": "d",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74798",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster. The stories of Nigerian migrants such as Sola, Hope, Riike and Akindele showed that, for thos who have 'ja pa'",
+      "options": [
+        {
+          "id": "a",
+          "text": "it is the final goodbye to Nigeria"
+        },
+        {
+          "id": "b",
+          "text": "those still in Nigeria are wasting their time"
+        },
+        {
+          "id": "c",
+          "text": "life is not a bed of roses"
+        },
+        {
+          "id": "d",
+          "text": "there is no cause for alarm"
+        }
+      ],
+      "answer": "c",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74799",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster. Why was the Government teacher named 'Owala'?",
+      "options": [
+        {
+          "id": "a",
+          "text": "he loved to sing"
+        },
+        {
+          "id": "b",
+          "text": "he had wild face marks"
+        },
+        {
+          "id": "c",
+          "text": "he was abusive"
+        },
+        {
+          "id": "d",
+          "text": "he had a compelling voice"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74800",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster How did Stardom Schools curb late-coming?",
+      "options": [
+        {
+          "id": "a",
+          "text": "By reducing boarding fees"
+        },
+        {
+          "id": "b",
+          "text": "By publishing names of latecomers in the school magazine"
+        },
+        {
+          "id": "c",
+          "text": "Through severe punishment for latecomers"
+        },
+        {
+          "id": "d",
+          "text": "Through repeated meetings with parents"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74801",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster. Bepo worked in Stardom for over",
+      "options": [
+        {
+          "id": "a",
+          "text": "two decades"
+        },
+        {
+          "id": "b",
+          "text": "three decades"
+        },
+        {
+          "id": "c",
+          "text": "five decades"
+        },
+        {
+          "id": "d",
+          "text": "one decade"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74802",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "The question is based on Kabir Garba's The Lekki Headmaster. What joke did Bepo tell his students concerning his big eyes?",
+      "options": [
+        {
+          "id": "a",
+          "text": "his big eyes will always catch whoever was cheating"
+        },
+        {
+          "id": "b",
+          "text": "he said the eyes were always open even when he slept"
+        },
+        {
+          "id": "c",
+          "text": "Bepo said he was also an eye-master"
+        },
+        {
+          "id": "d",
+          "text": "he said his mum ate an owl when she carried his pregnancy"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_english-language_74803",
+      "exam": "JAMB",
+      "subject": "use-of-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on Kabir Garba's The Lekki Headmaster. \"It's like hanging a snake in the roof and going to bed\". Who made this statement in The Lekki Headmaster ?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The chairman"
+        },
+        {
+          "id": "b",
+          "text": "MD"
+        },
+        {
+          "id": "c",
+          "text": "Nurse"
+        },
+        {
+          "id": "d",
+          "text": "Principal"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_literature-in-english_75267",
+      "exam": "JAMB",
+      "subject": "literature-in-english",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "This question is based on PATH OF LUCAS . What does Lucy's awakening at the novel's end most strongly symbolise?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rebirth of hope and emotional reconnection"
+        },
+        {
+          "id": "b",
+          "text": "Reversal of time"
+        },
+        {
+          "id": "c",
+          "text": "A reward for Lucas's storytelling"
+        },
+        {
+          "id": "d",
+          "text": "Scientific success"
+        }
+      ],
+      "answer": "a",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    },
+    {
+      "id": "q_claim_2025_igbo_75701",
+      "exam": "JAMB",
+      "subject": "igbo",
+      "year": 2025,
+      "source": "claimed_paper",
+      "text": "Obidiya choputara na ...",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ya bụ nwunye nke abụọ"
+        },
+        {
+          "id": "b",
+          "text": "Ezinulo di ya anaghi anabata ya"
+        },
+        {
+          "id": "c",
+          "text": "Di ya na-egbu ya"
+        },
+        {
+          "id": "d",
+          "text": "Ọ bụ nwaanyị ndọcha"
+        }
+      ],
+      "answer": "b",
+      "subtopic_id": null,
+      "section": null,
+      "passage_id": null,
+      "image": null,
+      "explanation": null,
+      "marks": 2.5,
+      "difficulty": 3,
+      "verified": false
+    }
+  ]
+}

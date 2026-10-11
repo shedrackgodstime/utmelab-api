@@ -348,6 +348,90 @@ fn novels_are_newest_first() {
 
 // ── provenance (D48) ────────────────────────────────────────────────────────
 
+/// Minimal word-boundary search: the markers are plain names, and a full regex
+/// crate for this would be a dependency we do not otherwise need.
+mod regex_lite {
+    pub fn is_match(haystack: &str, needle: &str) -> bool {
+        let hay: Vec<char> = haystack.chars().collect();
+        let pat: Vec<char> = needle.chars().collect();
+        if pat.is_empty() || pat.len() > hay.len() {
+            return false;
+        }
+        let bounded = |i: usize| {
+            let before_ok = i == 0 || !hay[i - 1].is_alphanumeric();
+            let after = i + pat.len();
+            let after_ok = after >= hay.len() || !hay[after].is_alphanumeric();
+            before_ok && after_ok
+        };
+        (0..=hay.len() - pat.len()).any(|i| bounded(i) && hay[i..i + pat.len()] == pat[..])
+    }
+}
+
+/// D35: a novel carries its own questions inside its own document. A question
+/// in the main bank that names a servable novel's characters cannot be answered
+/// from anything we serve — the student would need the book — and 78 of them
+/// arrived exactly that way.
+#[test]
+fn no_question_in_the_bank_depends_on_a_novel_we_hold() {
+    let data = repo_root();
+    let bank = JsonStore::load(&data).expect("load");
+    let page = bank.questions_page(QuestionFilter::default(), 1, utmelab_api::MAX_PER_PAGE);
+
+    for entry in std::fs::read_dir(data.join("novels")).expect("novels dir") {
+        let path = entry.expect("readable entry").path();
+        if path.extension().and_then(|e| e.to_str()) != Some("json") {
+            continue;
+        }
+        let novel: serde_json::Value =
+            serde_json::from_str(&std::fs::read_to_string(&path).expect("read")).expect("parse");
+
+        // Only a novel we actually serve is a problem: a stub with no questions
+        // cannot make a question unanswerable.
+        let served = novel["questions"].as_array().map_or(0, Vec::len);
+        if served < 50 {
+            continue;
+        }
+        let mut markers: Vec<String> =
+            vec![novel["title"].as_str().unwrap_or_default().to_lowercase()];
+        if let Some(characters) = novel["characters"].as_array() {
+            for character in characters {
+                let name = character["name"].as_str().unwrap_or_default();
+                if !name.is_empty() {
+                    markers.push(name.to_lowercase());
+                    if let Some(last) = name.split_whitespace().last() {
+                        if last.len() > 3 {
+                            markers.push(last.to_lowercase());
+                        }
+                    }
+                }
+            }
+        }
+
+        for question in &page.questions {
+            let blob = format!(
+                "{} {}",
+                question.text.to_lowercase(),
+                question
+                    .options
+                    .iter()
+                    .map(|o| o.text.to_lowercase())
+                    .collect::<Vec<_>>()
+                    .join(" ")
+            );
+            for marker in &markers {
+                if marker.len() > 3 && regex_lite::is_match(&blob, marker) {
+                    panic!(
+                        "{} names {:?} from {} — novel questions live in the novel document (D35)",
+                        question.id,
+                        marker,
+                        path.file_name().unwrap().to_string_lossy()
+                    );
+                }
+            }
+        }
+    }
+}
+
 #[test]
 fn every_question_carries_a_usable_year() {
     // D52: `year` is the cohort a question is prepared for, required on every

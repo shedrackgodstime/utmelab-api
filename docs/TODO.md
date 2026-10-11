@@ -5,6 +5,8 @@
 
 ## Now
 
+- [ ] **77 novel-comprehension questions** are staged in `data/inbox/lekki-headmaster-candidates.json`. They were harvested into the English bank but belong to the novel (D35). Decide: fold into `data/novels/lekki-headmaster.json` (50 -> 127) or discard. They are unanswerable from the bank, which is why they moved.
+
 **Build-now list is empty.** CORS, `bank_version`, `Retry-After`, search, scheme
 and the report endpoint are all shipped. What remains is content, not code:
 
