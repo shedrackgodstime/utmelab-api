@@ -39,6 +39,11 @@ jobs:
   build:
     name: Build API + docs
     runs-on: ubuntu-latest
+    # The deploy job never checks out the repo, so it cannot run
+    # `git rev-parse --short HEAD` itself. Hand it the resolved version
+    # instead of cloning a second time just to compute a sha.
+    outputs:
+      version: ${{ steps.v.outputs.version }}
     steps:
       - uses: actions/checkout@v4
 
@@ -94,12 +99,9 @@ jobs:
     steps:
       - name: Resolve version
         id: v
-        run: |
-          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
-            echo "version=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
-          else
-            echo "version=v0.0.0-pre.$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
-          fi
+        env:
+          BUILD_VERSION: ${{ needs.build.outputs.version }}
+        run: echo "version=${BUILD_VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Download release artifact
         uses: actions/download-artifact@v4
