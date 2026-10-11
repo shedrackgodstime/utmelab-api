@@ -126,8 +126,19 @@ jobs:
           VERSION: ${{ steps.v.outputs.version }}
         run: |
           set -euo pipefail
+          echo "workspace contents after download:"
+          ls -la
+          # upload-artifact v4 re-roots what it stores, so the tarball is not
+          # guaranteed to land at the exact name we uploaded it under. Resolve
+          # it from disk instead of assuming, and fail loudly if absent.
+          TARBALL="$(ls -1 ./*.tar.gz 2>/dev/null | head -n1)"
+          if [ -z "$TARBALL" ]; then
+            echo "::error::no .tar.gz in the workspace after downloading the artifact"
+            exit 1
+          fi
+          echo "shipping: $TARBALL"
           SSH="-o StrictHostKeyChecking=yes -i ~/.ssh/deploy -p ${VPS_PORT}"
-          scp $SSH "${APP}-${VERSION}.tar.gz" "${VPS_USER}@${VPS_HOST}:/tmp/${APP}-${VERSION}.tar.gz"
+          scp $SSH "$TARBALL" "${VPS_USER}@${VPS_HOST}:/tmp/${APP}-${VERSION}.tar.gz"
           ssh $SSH "${VPS_USER}@${VPS_HOST}" "set -e
             mkdir -p /opt/apps/${APP}/releases/${VERSION}
             tar -xzf /tmp/${APP}-${VERSION}.tar.gz -C /opt/apps/${APP}/releases/${VERSION}
