@@ -391,6 +391,17 @@
             }
           },
           {
+            "name": "year",
+            "in": "query",
+            "description": "Only questions prepared for this exam year. Default: no filter.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          },
+          {
             "name": "source",
             "in": "query",
             "description": "Provenance: `past_paper`, `authored` or `imported`. Default: no filter.",
@@ -1393,6 +1404,7 @@
           "id",
           "exam",
           "subject",
+          "year",
           "source",
           "text",
           "options",
@@ -1464,10 +1476,7 @@
             "type": "boolean"
           },
           "year": {
-            "type": [
-              "integer",
-              "null"
-            ],
+            "type": "integer",
             "format": "int32",
             "minimum": 0
           }

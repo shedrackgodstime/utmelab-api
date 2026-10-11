@@ -246,13 +246,12 @@ impl JsonStore {
                     q.id, q.source
                 ));
             }
-            // Only a row attributed to a named paper may claim a year (D47/D48/D49).
-            // `claimed_paper` carries one because a third party attributed it, not
-            // because we verified it — which is the whole difference between the two.
-            if !matches!(q.source.as_str(), "past_paper" | "claimed_paper") && q.year.is_some() {
+            // Year is the cohort the question is prepared for (D52), required
+            // on every row. `source`, not `year`, carries provenance.
+            if !(1900..=2100).contains(&q.year) {
                 c.problems.push(format!(
-                    "questions.json: '{}' is {} but claims year {:?} — no paper of that year to point at",
-                    q.id, q.source, q.year
+                    "questions.json: '{}' has year {} — outside any plausible exam year",
+                    q.id, q.year
                 ));
             }
 
@@ -532,6 +531,7 @@ impl Store for JsonStore {
         let matched: Vec<&Question> = matched
             .into_iter()
             .filter(|q| filter.source.is_none_or(|want| q.source == want))
+            .filter(|q| filter.year.is_none_or(|y| q.year == y))
             .filter(|q| {
                 filter
                     .text

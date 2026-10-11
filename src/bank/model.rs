@@ -78,11 +78,15 @@ pub struct Question {
     pub id: String,
     pub exam: String,
     pub subject: String,
-    /// The exam year this item came from — **absent for questions we wrote**.
-    /// We author against the current syllabus; we did not sit the paper, so
-    /// claiming a year would be a claim we cannot stand behind (D47).
-    #[serde(default)]
-    pub year: Option<u16>,
+    /// The exam cohort this question is **prepared for** (D52).
+    ///
+    /// This is not "the year of the paper it was lifted from" — `source` says
+    /// that. A row with `year: 2025, source: "authored"` means *written against
+    /// the 2025 syllabus*; `claimed_paper` means *a third party attributes it to
+    /// a 2025 paper, unverified*. Required on every row, because a consumer
+    /// filtering by year cannot use a field that is empty for a fifth of the
+    /// bank.
+    pub year: u16,
     /// Where the row came from: `past_paper` or `authored`. Consumers can
     /// therefore tell an exam item from one we wrote, and never assume.
     pub source: String,

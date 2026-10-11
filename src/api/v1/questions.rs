@@ -40,8 +40,12 @@ pub struct Filter {
     pub subject: Option<String>,
     pub subtopic: Option<String>,
     pub verified: Option<bool>,
-    /// Provenance filter: `past_paper`, `authored` or `imported` (D48).
+    /// Provenance filter: `past_paper`, `claimed_paper`, `authored` or
+    /// `imported`. Says where the question came from; `year` says which exam
+    /// cohort it is prepared for.
     pub source: Option<String>,
+    /// Only questions prepared for this exam year, e.g. `2025`.
+    pub year: Option<u16>,
     /// Substring of the question text, case-insensitive. No ranking: results
     /// stay in id order, so paging means the same thing it means everywhere
     /// else (D44).
@@ -122,6 +126,8 @@ display.",
         ("subject" = Option<String>, Query, description = "Scope to a subject within that exam."),
         ("verified" = Option<bool>, Query,
          description = "Only human-checked questions. Default: no filter."),
+        ("year" = Option<u16>, Query,
+         description = "Only questions prepared for this exam year. Default: no filter."),
         ("source" = Option<String>, Query,
          description = "Provenance: `past_paper`, `authored` or `imported`. Default: no filter."),
         ("q" = Option<String>, Query,
@@ -167,6 +173,7 @@ pub async fn questions(
             verified: f.verified,
             text: f.q.as_deref(),
             source: f.source.as_deref(),
+            year: f.year,
         },
         f.page.unwrap_or(1),
         f.per_page.unwrap_or(DEFAULT_PER_PAGE),

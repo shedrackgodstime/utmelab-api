@@ -15,7 +15,7 @@ pub struct RenderedQuestion {
     pub id: String,
     pub exam: String,
     pub subject: String,
-    pub year: Option<u16>,
+    pub year: u16,
     pub source: String,
     pub text: String,
     pub options: Vec<Choice>,

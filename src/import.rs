@@ -131,11 +131,17 @@ pub fn run(inbox: &Path, data: &Path, dry_run: bool) -> anyhow_lite::Result<()> 
     files.sort();
 
     for file in &files {
-        let source_slug = file
+        // `<subject>-<year>.json` — the year is also the cohort a row with no
+        // stated year belongs to (D52).
+        let (source_slug, file_year) = match file
             .file_stem()
             .and_then(|s| s.to_str())
-            .and_then(|s| s.rsplit_once('-').map(|(slug, _)| slug))
-            .unwrap_or_default();
+            .and_then(|s| s.rsplit_once('-'))
+        {
+            Some((slug, year)) => (slug.to_owned(), year.parse::<u16>().unwrap_or(2025)),
+            None => (String::new(), 2025),
+        };
+        let source_slug = source_slug.as_str();
 
         let Some((_, slug, name)) = SUBJECT_MAP
             .iter()
@@ -185,7 +191,9 @@ pub fn run(inbox: &Path, data: &Path, dry_run: bool) -> anyhow_lite::Result<()> 
                     id: row["id"].as_str()?.to_owned(),
                     exam: "JAMB".to_owned(),
                     subject: (*slug).to_owned(),
-                    year: row["year"].as_u64().map(|y| y as u16),
+                    // The source states the year it attributes the paper to; if
+                    // it states none, the cohort is the year being harvested (D52).
+                    year: row["year"].as_u64().map(|y| y as u16).unwrap_or(file_year),
                     source: row["source"].as_str().unwrap_or("imported").to_owned(),
                     text,
                     options: choices,

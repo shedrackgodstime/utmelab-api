@@ -328,42 +328,38 @@ fn novels_are_newest_first() {
 // ── provenance (D48) ────────────────────────────────────────────────────────
 
 #[test]
-fn only_a_named_paper_may_claim_a_year() {
+fn every_question_carries_a_usable_year() {
+    // D52: `year` is the cohort a question is prepared for, required on every
+    // row. A consumer filtering by year cannot use a field that is empty for a
+    // fifth of the bank, so emptiness itself is now a defect.
     let bank = JsonStore::load(repo_root()).expect("load");
-    // D49 added `claimed_paper`: a third party attributes it to a named year,
-    // which we have not verified — so it may carry one, unlike `authored` and
-    // `imported`. This test predates that and asserted the stricter rule.
-    for page in [
-        bank.questions_page(QuestionFilter::default(), 1, 200),
-        bank.questions_page(
-            QuestionFilter {
-                source: Some("authored"),
-                ..Default::default()
-            },
-            1,
-            200,
-        ),
-        bank.questions_page(
-            QuestionFilter {
-                source: Some("imported"),
-                ..Default::default()
-            },
-            1,
-            200,
-        ),
-    ] {
-        for q in page.questions {
-            if !matches!(q.source.as_str(), "past_paper" | "claimed_paper") {
-                assert!(
-                    q.year.is_none(),
-                    "{} is {} yet claims year {:?} — there is no paper to point at",
-                    q.id,
-                    q.source,
-                    q.year
-                );
-            }
-        }
+    let page = bank.questions_page(QuestionFilter::default(), 1, 200);
+    assert!(!page.questions.is_empty());
+    let total = page.total_records;
+    let this_year = page.questions.first().expect("at least one").year;
+    for q in &page.questions {
+        assert!(
+            (1900..=2100).contains(&q.year),
+            "{} has no usable year ({})",
+            q.id,
+            q.year
+        );
     }
+
+    // And the year filter must actually separate cohorts.
+    let filtered = bank.questions_page(
+        QuestionFilter {
+            year: Some(this_year),
+            ..Default::default()
+        },
+        1,
+        200,
+    );
+    assert!(filtered.questions.iter().all(|q| q.year == this_year));
+    assert!(
+        filtered.total_records >= total.min(200),
+        "every question is in this cohort, so filtering must not lose any"
+    );
 }
 
 #[test]
