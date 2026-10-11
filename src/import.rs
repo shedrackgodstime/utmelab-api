@@ -226,6 +226,16 @@ pub fn run(
                 continue;
             }
 
+            // An id already in the bank is a no-op, not a second copy. The
+            // content fingerprint below cannot catch it on its own: cleaning
+            // entities out of the bank made its text differ from the raw inbox
+            // text, so the row looked new while its id was taken — and the
+            // loader then refused the whole file.
+            if existing.iter().any(|q| q.id == question.id) {
+                refusals.note("id already in the bank", question.id.clone());
+                continue;
+            }
+
             let print = fingerprint(
                 &question.text,
                 &question
