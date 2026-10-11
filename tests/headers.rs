@@ -95,10 +95,7 @@ async fn a_matching_if_none_match_is_a_304_without_a_body() {
     )
     .await;
     assert_eq!(second.status(), StatusCode::NOT_MODIFIED);
-    assert_eq!(
-        header(second.headers(), "etag"),
-        Some(etag.as_str())
-    );
+    assert_eq!(header(second.headers(), "etag"), Some(etag.as_str()));
 
     let bytes = axum::body::to_bytes(second.into_body(), 64 * 1024)
         .await
