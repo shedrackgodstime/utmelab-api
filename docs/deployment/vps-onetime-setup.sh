@@ -43,6 +43,7 @@ install -d -o utmelab -g utmelab -m 0750 "/var/lib/${APP}"
 echo "  /opt/apps/${APP}{,/releases}  /var/lib/${APP} ready"
 
 say "2. Secrets — /etc/${APP}/environment (root:utmelab 0640)"
+install -d -o root -g utmelab -m 0750 "/etc/${APP}"
 # Never put the token in this script or the repo. Placeholder; you fill it once.
 if [ ! -f "/etc/${APP}/environment" ]; then
   cat > "/etc/${APP}/environment" <<EOF
