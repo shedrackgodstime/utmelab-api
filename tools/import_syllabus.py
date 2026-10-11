@@ -191,6 +191,11 @@ def main() -> int:
     parser.add_argument("--display", required=True, help="official subject name, e.g. Government")
     parser.add_argument("--compulsory", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--accept-empty",
+        action="store_true",
+        help="write the subject row even when the syllabus yields no topics",
+    )
     args = parser.parse_args()
 
     print(f"fetching syllabus for {args.display}…", file=sys.stderr)
@@ -233,6 +238,17 @@ def main() -> int:
     subjects = sorted(kept_subjects, key=lambda s: (s["exam"], s["slug"]))
     topics_all = sorted(kept_topics + topic_rows, key=lambda t: (t["subject"], t["order"]))
     subtopics_all = sorted(kept_subtopics + subtopic_rows, key=lambda s: (s["topic"], s["order"]))
+
+    if not topic_rows and not args.accept_empty:
+        # Adding a subject row with no topics makes every harvested question for
+        # it admissible while its syllabus endpoint returns an empty tree. That
+        # is a decision, not a default.
+        print(
+            f"\nno topics parsed for {args.display} — nothing written. "
+            f"Re-run with --accept-empty if a subject with an empty syllabus "
+            f"is really what you want."
+        )
+        return 1
 
     if args.dry_run:
         print(f"\nwould write {len(topic_rows)} topics and {len(subtopic_rows)} subtopics")

@@ -47,7 +47,7 @@ SUBJECTS = [
     "geography",
     "agricultural-science",
     "literature-in-english",
-    "principles-of-accounts",
+    "accounts-principles-of-accounts",
     "mathematics",
     "physics",
     "chemistry",
@@ -175,6 +175,17 @@ def main() -> int:
         # Local helper, not part of the harvest module — calling it as
         # `harvest.to_question_rows` raised AttributeError on the first subject.
         with_image = len(to_question_rows(out / f"{subject}-{args.year}.json"))
+        if got == 0:
+            # An empty file reads as "this subject has no 2025 paper", which is
+            # not what an empty file means — it means we asked the wrong door.
+            # `principles-of-accounts` returned HTTP 200 with zero questions;
+            # the source spells it `accounts-principles-of-accounts`.
+            print(
+                f"      {subject}: NOTHING FOUND — check the slug against the "
+                f"subject list on the source; an empty file would read as "
+                f"'no paper exists'",
+                flush=True,
+            )
         print(
             f"      {subject}: {got} questions on disk, {skipped} refused, "
             f"{with_image} with diagrams · {clock()} · running total: {total}",
