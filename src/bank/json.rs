@@ -26,6 +26,49 @@ const FILES: [&str; 5] = [
     "questions.json",
 ];
 
+// ── embedded catalog (slow-moving, baked into the binary) ────────────────────
+//
+// Subjects/topics/subtopics/passages/novels change monthly and total ~750 KiB.
+// They are compiled in so a release is `binary + web/` plus the fast-moving
+// `questions.json` — and, once questions move to Turso, `binary + web/` alone.
+// Questions stay file-based until that cutover (transitional): review churn is
+// daily and must not require a rebuild.
+//
+// Adding a novel means adding one line to EMBEDDED_NOVELS below — deliberate,
+// reviewable, and impossible to forget at deploy time (the file list *is* the
+// index, same rule as `data/novels/`).
+const EMBEDDED_SUBJECTS: &str = include_str!("../../data/subjects.json");
+const EMBEDDED_TOPICS: &str = include_str!("../../data/topics.json");
+const EMBEDDED_SUBTOPICS: &str = include_str!("../../data/subtopics.json");
+const EMBEDDED_PASSAGES: &str = include_str!("../../data/passages.json");
+
+const EMBEDDED_NOVELS: &[(&str, &str)] = &[
+    (
+        "lekki-headmaster.json",
+        include_str!("../../data/novels/lekki-headmaster.json"),
+    ),
+    (
+        "life-changer.json",
+        include_str!("../../data/novels/life-changer.json"),
+    ),
+    (
+        "second-class-citizen.json",
+        include_str!("../../data/novels/second-class-citizen.json"),
+    ),
+    (
+        "sweet-sixteen.json",
+        include_str!("../../data/novels/sweet-sixteen.json"),
+    ),
+    (
+        "unexpected-joy-at-dawn.json",
+        include_str!("../../data/novels/unexpected-joy-at-dawn.json"),
+    ),
+    (
+        "wuthering-heights.json",
+        include_str!("../../data/novels/wuthering-heights.json"),
+    ),
+];
+
 #[derive(Debug)]
 pub struct StoreError {
     pub problems: Vec<String>,
@@ -118,6 +161,63 @@ impl JsonStore {
 
         // Only fully-assigned questions are servable (D21), and only novels
         // that meet the 50-question minimum (D36).
+        store.questions.retain(|q| !q.exam.is_empty());
+        store.novels.retain(|n| n.questions.len() >= 50);
+        for note in &c.withheld {
+            tracing::warn!("withheld from serving: {note}");
+        }
+        store.withheld = c.withheld.len();
+        store.index();
+        Ok(store)
+    }
+
+    /// Transitional loader: catalog + novels from the binary, questions from
+    /// `dir/questions.json`.
+    ///
+    /// This is what `serve` and `import` run on until questions move to Turso.
+    /// `dir` needs exactly one file — `questions.json` — so the VPS carries no
+    /// catalog to go stale and `data/` shrinks to the one fast-moving table.
+    /// Once the Turso question store lands, this method retires with it: the
+    /// catalog stays embedded, questions come from the wire, and `dir` goes
+    /// away entirely.
+    pub fn load_embedded(dir: impl AsRef<Path>) -> Result<Self, StoreError> {
+        let dir = dir.as_ref();
+        let mut c = Checker::default();
+
+        let subjects: Vec<Subject> = parse_embedded("subjects.json", EMBEDDED_SUBJECTS, &mut c);
+        let topics: Vec<Topic> = parse_embedded("topics.json", EMBEDDED_TOPICS, &mut c);
+        let subtopics: Vec<Subtopic> = parse_embedded("subtopics.json", EMBEDDED_SUBTOPICS, &mut c);
+        let mut store_passages: Vec<Passage> =
+            parse_embedded("passages.json", EMBEDDED_PASSAGES, &mut c);
+        let questions: Vec<Question> = read(dir, FILES[4], &mut c);
+
+        let mut store = Self {
+            subjects,
+            topics,
+            subtopics,
+            questions,
+            subject_by_key: HashMap::new(),
+            subjects_by_exam: HashMap::new(),
+            topics_by_subject: HashMap::new(),
+            subtopics_by_topic: HashMap::new(),
+            questions_by_subtopic: HashMap::new(),
+            withheld: 0,
+            novels: Vec::new(),
+            novel_by_id: HashMap::new(),
+            passages: std::mem::take(&mut store_passages),
+            passage_by_id: HashMap::new(),
+            version: String::new(),
+        };
+        store.novels = load_novels_embedded(&mut c);
+        store.version = fingerprint_embedded(dir);
+        store.validate(&mut c);
+
+        if !c.problems.is_empty() {
+            return Err(StoreError {
+                problems: c.problems,
+            });
+        }
+
         store.questions.retain(|q| !q.exam.is_empty());
         store.novels.retain(|n| n.questions.len() >= 50);
         for note in &c.withheld {
@@ -668,6 +768,81 @@ fn read<T: for<'de> serde::Deserialize<'de>>(dir: &Path, file: &str, c: &mut Che
             Vec::new()
         }
     }
+}
+
+/// Parse one embedded catalog file. A build-time typo fails the boot with the
+/// filename attached — same contract as `read`, minus the filesystem.
+fn parse_embedded<T: for<'de> serde::Deserialize<'de>>(
+    file: &str,
+    content: &str,
+    c: &mut Checker,
+) -> Vec<T> {
+    match serde_json::from_str(content) {
+        Ok(v) => v,
+        Err(e) => {
+            c.problems.push(format!("embedded {file}: {e}"));
+            Vec::new()
+        }
+    }
+}
+
+/// Fingerprint of what `load_embedded` serves: embedded catalog bytes plus the
+/// `questions.json` file on disk (D42). Equal string means equal content; a
+/// question edit moves the version without a rebuild, a catalog edit moves it
+/// on the next build — both are supposed to.
+fn fingerprint_embedded(dir: &Path) -> String {
+    use sha2::{Digest, Sha256};
+
+    let mut hasher = Sha256::new();
+    for (name, content) in [
+        ("subjects.json", EMBEDDED_SUBJECTS),
+        ("topics.json", EMBEDDED_TOPICS),
+        ("subtopics.json", EMBEDDED_SUBTOPICS),
+        ("passages.json", EMBEDDED_PASSAGES),
+    ] {
+        hasher.update(name.as_bytes());
+        hasher.update(content.as_bytes());
+    }
+    let mut novels: Vec<(&str, &str)> = EMBEDDED_NOVELS.to_vec();
+    novels.sort_by_key(|(name, _)| *name);
+    for (name, content) in novels {
+        hasher.update(name.as_bytes());
+        hasher.update(content.as_bytes());
+    }
+    hasher.update(b"questions.json");
+    hasher.update(std::fs::read(dir.join("questions.json")).unwrap_or_default());
+    let digest = hasher.finalize();
+    digest[..8].iter().map(|b| format!("{b:02x}")).collect()
+}
+
+/// Embedded novels: the `EMBEDDED_NOVELS` list is the index — same rule as the
+/// `data/novels/` directory it replaces, minus the directory listing.
+fn load_novels_embedded(c: &mut Checker) -> Vec<NovelDoc> {
+    let mut out = Vec::new();
+    let mut files: Vec<(&str, &str)> = EMBEDDED_NOVELS.to_vec();
+    files.sort_by_key(|(name, _)| *name);
+    for (name, content) in files {
+        match serde_json::from_str::<NovelDoc>(content) {
+            Ok(mut doc) => {
+                if doc.novel.id.is_empty() {
+                    doc.novel.id = name.strip_suffix(".json").unwrap_or(name).to_owned();
+                }
+                out.push(doc);
+            }
+            Err(e) => c.problems.push(format!("embedded novels/{name}: {e}")),
+        }
+    }
+    let mut seen = std::collections::HashSet::new();
+    out.retain(|doc| {
+        if !seen.insert(doc.novel.id.clone()) {
+            c.problems
+                .push(format!("novels/: duplicate novel id '{}'", doc.novel.id));
+            false
+        } else {
+            true
+        }
+    });
+    out
 }
 
 /// Read every `*.json` under `dir`. The directory is the index — no list file

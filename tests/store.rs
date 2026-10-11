@@ -39,6 +39,55 @@ fn the_real_bank_loads_clean() {
     assert!(bank.subject_count() > 0);
 }
 
+// ── embedded catalog (transitional: catalog in binary, questions on disk) ──
+
+#[test]
+fn the_embedded_catalog_matches_the_file_catalog() {
+    let file = JsonStore::load(repo_root()).expect("file bank loads");
+    let embedded = JsonStore::load_embedded(repo_root()).expect("embedded bank loads");
+
+    assert_eq!(embedded.subject_count(), file.subject_count());
+    assert_eq!(embedded.question_count(), file.question_count());
+    assert_eq!(embedded.withheld_count(), file.withheld_count());
+    assert_eq!(embedded.version().len(), 16);
+    // Same content served both ways: spot-check the catalog and the novel.
+    assert!(embedded.subject("JAMB", "use-of-english").is_some());
+    assert!(embedded.novel("lekki-headmaster").is_some());
+    assert_eq!(
+        embedded
+            .syllabus("JAMB", "use-of-english")
+            .expect("syllabus")
+            .summary
+            .questions,
+        file.syllabus("JAMB", "use-of-english")
+            .expect("syllabus")
+            .summary
+            .questions,
+    );
+}
+
+#[test]
+fn the_embedded_loader_needs_only_questions_json() {
+    // The VPS-clean case: a dir with exactly one file. The old loader fails
+    // here (no catalog); the embedded loader must not.
+    let dir = std::env::temp_dir().join(format!("utmelab-qonly-{}", std::process::id()));
+    let _ = std::fs::remove_dir_all(&dir);
+    std::fs::create_dir_all(&dir).expect("scratch dir");
+    std::fs::copy(
+        repo_root().join("questions.json"),
+        dir.join("questions.json"),
+    )
+    .expect("copy questions");
+    assert!(
+        JsonStore::load(&dir).is_err(),
+        "file loader needs catalog files"
+    );
+    let bank = JsonStore::load_embedded(&dir).expect("embedded loader needs only questions.json");
+    assert!(bank.question_count() > 0);
+    assert!(bank.subject_count() > 0);
+    let _ = std::fs::remove_dir_all(&dir);
+}
+
 #[test]
 fn exams_and_subjects_resolve() {
     let bank = JsonStore::load(repo_root()).expect("load");

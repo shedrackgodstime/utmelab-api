@@ -159,7 +159,12 @@ async fn serve(config: &Config) -> Result<(), ApiError> {
     // A bad bank must not become a running server (D23). This is a startup
     // failure, not an HTTP one — its message lists every problem found and is
     // printed to stderr, never served.
-    let bank = JsonStore::load(config.data_dir()).map_err(|e| ApiError::config(e.to_string()))?;
+    //
+    // Transitional: catalog + novels are embedded in the binary, questions come
+    // from `dir/questions.json` until the Turso question store lands. `dir`
+    // needs exactly that one file — no catalog to go stale on the VPS.
+    let bank =
+        JsonStore::load_embedded(config.data_dir()).map_err(|e| ApiError::config(e.to_string()))?;
     let keys = open_backend(config).await?;
     let keys_desc = keys.describe();
     let key_count = keys.count().await.unwrap_or(0);

@@ -118,7 +118,11 @@ pub fn run(
     config: Option<&Path>,
 ) -> anyhow_lite::Result<()> {
     let subjects = subject_map(config)?;
-    let mut store = JsonStore::load(data).map_err(|e| format!("bank does not load: {e}"))?;
+    // Same transitional split as `serve`: catalog embedded, questions from
+    // `data/questions.json`. Import stays local-only — it never touches the
+    // VPS; the file it writes becomes the Turso seed.
+    let mut store =
+        JsonStore::load_embedded(data).map_err(|e| format!("bank does not load: {e}"))?;
 
     let mut existing: Vec<Question> = store.questions().to_vec();
     let mut seen: HashSet<String> = existing

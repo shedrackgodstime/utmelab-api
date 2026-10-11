@@ -80,15 +80,16 @@ jobs:
           mkdir -p release
           cp target/release/${APP} release/${APP}
           cp -r web/dist release/web
-          cp -r data release/data
-          # data/inbox/ is import staging read only by the `import` CLI, never
-          # by `serve` — 2 MB of unverified harvested rows in every release for
-          # nothing. data/novels/ IS loaded at runtime and must stay.
-          rm -rf release/data/inbox
+          # Transitional: catalog + novels are embedded in the binary
+          # (`JsonStore::load_embedded`); the release carries exactly one data
+          # file — questions.json. data/inbox/ never ships (import staging,
+          # local-only). Once questions move to Turso, this block ships no
+          # data at all: binary + web/.
+          mkdir -p release/data
+          cp data/questions.json release/data/questions.json
           test -x release/${APP}
           test -f release/web/index.html
           test -f release/data/questions.json
-          test -d release/data/novels
           tar -czf "${APP}-${{ steps.v.outputs.version }}.tar.gz" -C release .
 
       - name: Upload release artifact

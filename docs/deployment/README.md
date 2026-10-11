@@ -190,6 +190,10 @@ file rather than a flag error.
   `KeyBackend::File` is test/import-only; the value is still read from the env
   file but its only consumer is `key import`'s default source path. Harmless,
   mildly misleading.
-- `data/inbox/` (~2 MB of unverified harvested questions) ships inside every
-  release. Nothing in production reads it — it is import staging. Excluded to
-  keep releases honest about what ships.
+- `UTMELAB_API_DATA_DIR` is transitional: it must hold exactly
+  `questions.json` — catalog + novels are embedded in the binary
+  (`JsonStore::load_embedded`). Releases ship only that one file. Once
+  questions move to Turso, the env var and the `data/` dir go away entirely:
+  the release is `binary + web/`.
+- `data/inbox/` (~2 MB of unverified harvested questions) never ships. Nothing
+  in production reads it — it is import staging, local-only.
