@@ -81,8 +81,14 @@ jobs:
           cp target/release/${APP} release/${APP}
           cp -r web/dist release/web
           cp -r data release/data
+          # data/inbox/ is import staging read only by the `import` CLI, never
+          # by `serve` — 2 MB of unverified harvested rows in every release for
+          # nothing. data/novels/ IS loaded at runtime and must stay.
+          rm -rf release/data/inbox
           test -x release/${APP}
           test -f release/web/index.html
+          test -f release/data/questions.json
+          test -d release/data/novels
           tar -czf "${APP}-${{ steps.v.outputs.version }}.tar.gz" -C release .
 
       - name: Upload release artifact
