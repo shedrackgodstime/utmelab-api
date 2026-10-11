@@ -111,7 +111,8 @@ disagree. Two lists is how subjects drift.
    underlined word" and we store no target, so a student cannot answer them.
    Needs a D11 decision — `emphasis: Option<String>` is recommended — then a
    backfill: semi-automatic for synonyms/antonyms, read by hand for stress and
-   sound items. **No `verified: true` on any of the 78 until this lands.**2. **Verification and explanations** — 2,200 rows untouched. Mathematics came
+   sound items. **No `verified: true` on any of the 78 until this lands.**
+2. **Verification and explanations** — 2,200 rows untouched. Mathematics came
    out clean (58/60 verified); objective subjects verify well, languages and
    statistics need judgement. Review in batches of ~50, checking the answer by
    computing it, not by trusting the key.
