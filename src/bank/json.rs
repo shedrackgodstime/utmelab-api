@@ -111,6 +111,11 @@ pub struct JsonStore {
     subtopics_by_topic: HashMap<String, Vec<usize>>,
     questions_by_subtopic: HashMap<String, Vec<usize>>,
     withheld: usize,
+    /// Valid rows that are not servable (unassigned exam, D21). Kept beside
+    /// the servable bank — never served, never dropped. `load` used to
+    /// `retain()` them away, which made the next `import` rewrite delete them
+    /// silently (D58: the civic fixture vanished exactly that way).
+    withheld_questions: Vec<Question>,
     novels: Vec<NovelDoc>,
     novel_by_id: HashMap<String, usize>,
     passages: Vec<Passage>,
@@ -142,6 +147,7 @@ impl JsonStore {
             subtopics_by_topic: HashMap::new(),
             questions_by_subtopic: HashMap::new(),
             withheld: 0,
+            withheld_questions: Vec::new(),
             novels: Vec::new(),
             novel_by_id: HashMap::new(),
             passages: std::mem::take(&mut store_passages),
@@ -160,8 +166,9 @@ impl JsonStore {
         }
 
         // Only fully-assigned questions are servable (D21), and only novels
-        // that meet the 50-question minimum (D36).
-        store.questions.retain(|q| !q.exam.is_empty());
+        // that meet the 50-question minimum (D36). Withheld questions are
+        // partitioned aside, never dropped (D58).
+        store.partition();
         store.novels.retain(|n| n.questions.len() >= 50);
         for note in &c.withheld {
             tracing::warn!("withheld from serving: {note}");
@@ -202,6 +209,7 @@ impl JsonStore {
             subtopics_by_topic: HashMap::new(),
             questions_by_subtopic: HashMap::new(),
             withheld: 0,
+            withheld_questions: Vec::new(),
             novels: Vec::new(),
             novel_by_id: HashMap::new(),
             passages: std::mem::take(&mut store_passages),
@@ -218,7 +226,7 @@ impl JsonStore {
             });
         }
 
-        store.questions.retain(|q| !q.exam.is_empty());
+        store.partition();
         store.novels.retain(|n| n.questions.len() >= 50);
         for note in &c.withheld {
             tracing::warn!("withheld from serving: {note}");
@@ -461,6 +469,27 @@ impl JsonStore {
         &self.questions
     }
 
+    /// Valid rows that are not servable (D21). The import path must carry
+    /// these through its rewrite — dropping them is silent data loss (D58).
+    pub fn withheld_questions(&self) -> &[Question] {
+        &self.withheld_questions
+    }
+
+    /// Split servable from withheld after a clean validation.
+    fn partition(&mut self) {
+        let mut kept = Vec::with_capacity(self.questions.len());
+        let mut held = Vec::new();
+        for q in std::mem::take(&mut self.questions) {
+            if q.exam.is_empty() {
+                held.push(q);
+            } else {
+                kept.push(q);
+            }
+        }
+        self.questions = kept;
+        self.withheld_questions = held;
+    }
+
     /// Replace the loaded questions wholesale — the import path only (D51).
     /// Nothing else may call this: bulk edits to the bank go through review.
     ///
@@ -471,13 +500,24 @@ impl JsonStore {
         self.questions = questions;
         let mut checker = Checker::default();
         self.validate(&mut checker);
+        if checker.problems.is_empty() {
+            self.partition();
+        }
         self.index();
         checker.problems
     }
 
-    /// Write the current questions back to `dir/questions.json`.
+    /// Write every question — servable first, withheld after — back to
+    /// `dir/questions.json`. Withheld rows round-trip byte-identically apart
+    /// from position; moving one row to the file's end once is the cost of
+    /// never losing it again.
     pub fn write_questions(&self, dir: &Path) -> Result<(), StoreError> {
-        let body = serde_json::to_string_pretty(&self.questions).map_err(|e| StoreError {
+        let all: Vec<&Question> = self
+            .questions
+            .iter()
+            .chain(self.withheld_questions.iter())
+            .collect();
+        let body = serde_json::to_string_pretty(&all).map_err(|e| StoreError {
             problems: vec![e.to_string()],
         })?;
         std::fs::write(dir.join("questions.json"), format!("{body}\n")).map_err(|e| StoreError {
@@ -711,6 +751,15 @@ impl Store for JsonStore {
 
     fn subject_count(&self) -> usize {
         self.subjects.len()
+    }
+
+    fn subtopic_counts(&self) -> HashMap<String, usize> {
+        // Same index `questions_page` reads for its subtopic filter, so the
+        // totals are identical by construction (D23 requirement 3).
+        self.questions_by_subtopic
+            .iter()
+            .map(|(slug, ix)| (slug.clone(), ix.len()))
+            .collect()
     }
 
     fn question_count(&self) -> usize {

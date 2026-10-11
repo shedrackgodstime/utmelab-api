@@ -81119,5 +81119,44 @@
     "marks": 2.5,
     "difficulty": 3,
     "verified": false
+  },
+  {
+    "id": "q_unassigned_civic_001",
+    "exam": "",
+    "subject": "civic-education",
+    "year": 2025,
+    "source": "authored",
+    "text": "Citizenship by birth is normally conferred on persons born within a country's:",
+    "options": [
+      {
+        "id": "a",
+        "text": "territorial boundaries"
+      },
+      {
+        "id": "b",
+        "text": "capital city"
+      },
+      {
+        "id": "c",
+        "text": "federal region only"
+      },
+      {
+        "id": "d",
+        "text": "recognized coastal states"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": null,
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "Jus soli — the law of the place — is the rule.",
+      "body": "Birthright citizenship follows territorial boundaries, subject to constitutional exceptions.",
+      "trap": null
+    },
+    "marks": 1,
+    "difficulty": 1,
+    "verified": false
   }
 ]

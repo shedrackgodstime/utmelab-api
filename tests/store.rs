@@ -254,6 +254,78 @@ fn a_tag_in_an_option_is_rejected_but_a_comparison_is_not() {
 }
 
 #[test]
+fn batched_subtopic_counts_agree_with_paged_totals() {
+    // R5: the topic route reads this map instead of one `questions_page` per
+    // child. Same index underneath, so every entry must equal the total the
+    // page query reports — checked across the whole bank, not a sample.
+    let bank = JsonStore::load(repo_root()).expect("load");
+    let counts = bank.subtopic_counts();
+    let mut checked = 0;
+    for (slug, want) in &counts {
+        let page = bank.questions_page(
+            QuestionFilter {
+                subtopic: Some(slug.as_str()),
+                ..Default::default()
+            },
+            1,
+            1,
+        );
+        assert_eq!(page.total_records, *want, "subtopic {slug}");
+        checked += 1;
+    }
+    assert!(
+        checked > 0,
+        "the bank tags subtopics, so the map is non-empty"
+    );
+}
+
+#[test]
+fn withheld_rows_survive_a_rewrite_round_trip() {
+    // D58: the bank keeps one deliberately unassigned row (D21). Load must
+    // partition it aside, and a replace+write+reload cycle — the import path
+    // — must carry it back instead of deleting it.
+    let dir = scratch("withheld-roundtrip");
+    let bank = JsonStore::load(&dir).expect("loads");
+    assert!(
+        bank.withheld_questions()
+            .iter()
+            .any(|q| q.id == "q_unassigned_civic_001"),
+        "the civic fixture rides along, unassigned"
+    );
+    assert!(
+        bank.questions()
+            .iter()
+            .all(|q| q.id != "q_unassigned_civic_001"),
+        "withheld rows are never servable"
+    );
+    let servable = bank.question_count();
+
+    let mut rewritten = bank.clone();
+    let all: Vec<utmelab_api::Question> = rewritten
+        .questions()
+        .iter()
+        .chain(rewritten.withheld_questions().iter())
+        .cloned()
+        .collect();
+    let problems = rewritten.replace_questions(all);
+    assert!(
+        problems.is_empty(),
+        "round-trip input is valid: {problems:?}"
+    );
+    rewritten.write_questions(&dir).expect("writes");
+
+    let reloaded = JsonStore::load(&dir).expect("reloads");
+    assert_eq!(reloaded.question_count(), servable);
+    assert!(
+        reloaded
+            .withheld_questions()
+            .iter()
+            .any(|q| q.id == "q_unassigned_civic_001"),
+        "the fixture survived the rewrite"
+    );
+}
+
+#[test]
 fn a_question_pointing_at_no_passage_is_rejected() {
     let dir = scratch("bad-passage");
     let f = dir.join("questions.json");

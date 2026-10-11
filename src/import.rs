@@ -124,7 +124,15 @@ pub fn run(
     let mut store =
         JsonStore::load_embedded(data).map_err(|e| format!("bank does not load: {e}"))?;
 
-    let mut existing: Vec<Question> = store.questions().to_vec();
+    // Servable plus withheld: the rewrite must carry every valid row back,
+    // or the next import silently deletes what review has not assigned yet
+    // (D58 — this exact path ate q_unassigned_civic_001).
+    let mut existing: Vec<Question> = store
+        .questions()
+        .iter()
+        .chain(store.withheld_questions().iter())
+        .cloned()
+        .collect();
     let mut seen: HashSet<String> = existing
         .iter()
         .map(|q| {

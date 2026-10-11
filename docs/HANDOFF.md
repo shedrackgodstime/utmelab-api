@@ -44,6 +44,7 @@ note was written from a pre-merge view and is resolved.
 ```
 2,288 questions · 25/25 JAMB subjects clear 40 · all year 2025
 134 verified (6%) · 215 explained
+withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics
 novel:   the featured set text has 54 verified questions (+124 honest unverified)
 bank_version in /health changes only when content changes

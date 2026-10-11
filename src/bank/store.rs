@@ -91,6 +91,13 @@ pub trait Store: Send + Sync {
     fn subject_count(&self) -> usize;
     fn question_count(&self) -> usize;
 
+    /// Servable questions per subtopic slug, in one call. The topic route
+    /// needs every child's count; one batched map beats one `questions_page`
+    /// per subtopic (which scans and sorts just to read a total). A Turso
+    /// impl answers with a single `GROUP BY` — the seam, not the route, owns
+    /// the query (D23/D30).
+    fn subtopic_counts(&self) -> std::collections::HashMap<String, usize>;
+
     /// Records present but not servable (e.g. an unassigned exam, D21). Exposed
     /// on `/health` so a withheld record is never silent.
     fn withheld_count(&self) -> usize;

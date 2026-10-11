@@ -60,29 +60,20 @@ pub async fn topic(
         )
     })?;
 
+    // One batched count map, not one `questions_page` per child: the page
+    // query scans and sorts only to read a total (R5).
+    let counts = state.bank.subtopic_counts();
+
     Ok(Json(TopicDetail {
         topic: topic.clone(),
         subtopics: subtopics
             .into_iter()
-            .map(|st| {
-                let count = state
-                    .bank
-                    .questions_page(
-                        crate::bank::QuestionFilter {
-                            subtopic: Some(&st.slug),
-                            ..Default::default()
-                        },
-                        1,
-                        1,
-                    )
-                    .total_records;
-                TopicSubtopic {
-                    slug: st.slug.clone(),
-                    name: st.name.clone(),
-                    order: st.order,
-                    question_count: count,
-                    objectives: st.objectives.clone(),
-                }
+            .map(|st| TopicSubtopic {
+                slug: st.slug.clone(),
+                name: st.name.clone(),
+                order: st.order,
+                question_count: counts.get(&st.slug).copied().unwrap_or(0),
+                objectives: st.objectives.clone(),
             })
             .collect(),
     }))
