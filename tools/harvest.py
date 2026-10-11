@@ -41,6 +41,7 @@ Usage
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import re
 import sys
@@ -122,17 +123,24 @@ def question_images(html: str) -> list[str]:
 
 
 def clean(fragment: str) -> str:
-    """Unescape entities and drop any markup a fragment carries."""
+    """Unescape entities and drop any markup a fragment carries.
+
+    Enumerating entities by hand is a losing game: this source alone uses
+    `&rsquo;`, `&deg;`, `&agrave;`, `&ordm;`, `&rarr;`, `&equiv;`, `&epsilon;`
+    and the entire upper- and lower-case accented Latin set. A 139-question
+    payload shipped with raw entities because the table was incomplete, and
+    extending it by hand simply moved the failure. `html.unescape` knows them
+    all.
+
+    The double-escape pass stays explicit: `&amp;rsquo;` arrives already
+    escaped once, and unescaping in the wrong order leaves `&rsquo;` behind.
+    """
     text = re.sub(r"<[^>]+>", " ", fragment)
-    for entity, char in (
-        ("&#39;", "'"),
-        ("&quot;", '"'),
-        ("&amp;", "&"),
-        ("&lt;", "<"),
-        ("&gt;", ">"),
-        ("&nbsp;", " "),
-    ):
-        text = text.replace(entity, char)
+    # Ampersands are the one entity that must be handled by hand, because
+    # unescaping it first would turn `&amp;rsquo;` into `&rsquo;` for good.
+    text = text.replace("&amp;amp;", "\x00AMP\x00")
+    text = html.unescape(text)
+    text = text.replace("\x00AMP\x00", "&")
     return re.sub(r"\s+", " ", text).strip()
 
 
