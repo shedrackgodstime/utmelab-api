@@ -111,7 +111,12 @@ jobs:
       - name: Commit what we harvested
         run: |
           set -euo pipefail
-          if git diff --quiet -- data/inbox; then
+          # `git diff` only sees changes to TRACKED files. A subject harvested
+          # for the first time produces a new untracked file, which `git diff`
+          # reports as nothing — so the first harvest of every new subject was
+          # silently discarded and the run reported "nothing new harvested".
+          # `git status --porcelain` sees untracked files too.
+          if [ -z "$(git status --porcelain -- data/inbox)" ]; then
             echo "nothing new harvested — every subject already on disk"
             exit 0
           fi
