@@ -1,0 +1,136 @@
+# Deploy utmelab-api — push-to-deploy, no SSH per release.
+#
+# Prerelease loop: every push to `main` builds and ships. The gate health-checks
+# and keeps the PREVIOUS release on failure, so a bad push self-heals. No tags,
+# no VPS login. That is the whole point: iterate freely; cut `v0.1.0` only when
+# the API is solid (same machinery, stable trigger).
+#
+# One-time VPS prep is in docs/deployment/README.md. GitHub secrets needed:
+#   VPS_HOST, VPS_PORT, VPS_USER (=deploy), VPS_SSH_KEY, VPS_KNOWN_HOSTS
+# (the same secrets the parent UTME-Lab workflow already uses).
+
+name: deploy-api
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  workflow_dispatch: {}
+
+# Serialize deploys; never cancel one mid-flight.
+concurrency:
+  group: deploy-api-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  APP: utmelab-api
+  API_PORT: "8081"
+
+jobs:
+  build:
+    name: Build API + docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Rust cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Resolve version
+        id: v
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            echo "version=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=v0.0.0-pre.$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build API (release)
+        run: cargo build --release
+
+      - name: Build docs (static, D32)
+        run: |
+          cd web
+          bun install --frozen-lockfile
+          bun run build
+          test -f dist/index.html
+
+      - name: Package release
+        run: |
+          set -euo pipefail
+          mkdir -p release
+          cp target/release/${APP} release/${APP}
+          cp -r web/dist release/web
+          cp -r data release/data
+          test -x release/${APP}
+          test -f release/web/index.html
+          tar -czf "${APP}-${{ steps.v.outputs.version }}.tar.gz" -C release .
+
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${APP}-${{ steps.v.outputs.version }}
+          path: ${APP}-${{ steps.v.outputs.version }}.tar.gz
+          if-no-files-found: error
+
+  deploy:
+    name: Ship to VPS
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve version
+        id: v
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            echo "version=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=v0.0.0-pre.$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Download release artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.APP }}-${{ steps.v.outputs.version }}
+          path: .
+
+      - name: Prepare SSH
+        env:
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/deploy && chmod 600 ~/.ssh/deploy
+          printf '%s\n' "$VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
+
+      - name: Upload + activate
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VERSION: ${{ steps.v.outputs.version }}
+        run: |
+          set -euo pipefail
+          SSH="-o StrictHostKeyChecking=yes -i ~/.ssh/deploy -p ${VPS_PORT}"
+          scp $SSH "${APP}-${VERSION}.tar.gz" "${VPS_USER}@${VPS_HOST}:/tmp/${APP}-${VERSION}.tar.gz"
+          ssh $SSH "${VPS_USER}@${VPS_HOST}" "set -e
+            mkdir -p /opt/apps/${APP}/releases/${VERSION}
+            tar -xzf /tmp/${APP}-${VERSION}.tar.gz -C /opt/apps/${APP}/releases/${VERSION}
+            rm -f /tmp/${APP}-${VERSION}.tar.gz
+            sudo /usr/local/bin/${APP}-deploy ${VERSION}"
+
+      - name: Show health
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          SSH="-o StrictHostKeyChecking=yes -i ~/.ssh/deploy -p ${VPS_PORT}"
+          ssh $SSH "${VPS_USER}@${VPS_HOST}" "systemctl is-active ${APP}; curl -s http://127.0.0.1:${API_PORT}/health || true"

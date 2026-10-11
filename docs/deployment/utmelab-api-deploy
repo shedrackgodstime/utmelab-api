@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+# utmelab-api-deploy — the ONE privileged deploy step (mirrors the parent
+# UTME-Lab `utmelab-deploy` gate, proven on this host 2026-09-14).
+#
+# The `deploy` user may run exactly this script via NOPASSWD sudo and nothing
+# else. It activates a release that CI already extracted into
+# /opt/apps/utmelab-api/releases/<v>. It never builds, never fetches, never
+# edits config — config lives in /etc/utmelab-api/environment (systemd reads it).
+#
+# A release is:
+#   releases/<v>/utmelab-api        the Rust binary (executable)
+#   releases/<v>/web/               the built static docs (index.html present)
+#
+# Activation = atomically re-point the `current` symlink, restart the service,
+# poll /health. On any failure the PREVIOUS release stays active — a bad push
+# self-heals instead of taking the API down. Rollback = this script with the
+# previous version.
+set -euo pipefail
+
+APP=utmelab-api
+BASE=/opt/apps/utmelab-api
+REL="$BASE/releases"
+CUR="$BASE/current"
+SVC=utmelab-api.service
+PORT="${UTMELAB_API_PORT:-8081}"
+HEALTH="http://127.0.0.1:${PORT}/health"
+
+log() { printf '[utmelab-api-deploy] %s\n' "$*"; }
+die() { printf '[utmelab-api-deploy] ERROR: %s\n' "$*" >&2; exit "${2:-1}"; }
+
+V="${1:-}"
+# Strict semver only. Rejects "../../etc/passwd", "v1; rm", empty, etc.
+[[ "$V" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([-.][0-9A-Za-z.]+)?$ ]] \
+  || die "invalid version '$V' (expected vMAJOR.MINOR.PATCH[-pre])" 2
+
+SRC="$REL/$V"
+[[ -d "$SRC" ]] || die "release '$V' does not exist under $REL" 3
+[[ -x "$SRC/$APP" ]] || die "release '$V' has no executable $APP" 4
+[[ -f "$SRC/web/index.html" ]] || die "release '$V' has no web/index.html (docs build missing)" 5
+
+# Make the release readable/executable by the runtime user (service runs as
+# utmelab, a system user with no login). releases/ is deploy-owned; the service
+# reads via the "others" bits.
+chmod -R o+rX "$SRC" 2>/dev/null || true
+chmod 0755 "$SRC/$APP" 2>/dev/null || true
+
+# Remember the current target so a failed activation can be undone.
+PREV=""
+if [[ -L "$CUR" ]]; then PREV="$(readlink "$CUR" || true)"; fi
+
+log "activating $V (previous: ${PREV:-none})"
+ln -sfn "$SRC" "$CUR"
+
+restart_and_wait() {
+  systemctl restart "$SVC"
+  # Poll /health for a real HTTP response, not just "active". A binary that
+  # binds but 500s, or a boot that crash-loops, must fail the deploy.
+  for _ in $(seq 1 30); do
+    code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 2 "$HEALTH" || echo 000)"
+    [[ "$code" != "000" ]] && { log "health OK (HTTP $code)"; return 0; }
+    sleep 1
+  done
+  return 1
+}
+
+if restart_and_wait; then
+  log "release $V is live"
+  exit 0
+fi
+
+# Activation failed. Put the previous release back if there was one.
+log "activation FAILED — $V did not answer $HEALTH"
+systemctl status "$SVC" --no-pager -l >&2 || true
+journalctl -u "$SVC" -n 40 --no-pager >&2 || true
+if [[ -n "$PREV" && -d "$PREV" ]]; then
+  log "rolling back to $PREV"
+  ln -sfn "$PREV" "$CUR"
+  systemctl restart "$SVC" || true
+fi
+die "release $V failed health check; previous release retained" 7

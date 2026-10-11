@@ -1,0 +1,22 @@
+# Caddy site for the API + grouped docs (D32: Caddy path-routes).
+# Install as /etc/caddy/Caddyfile.api and `import` it, or merge into the main
+# Caddyfile. Requires DNS api.utmelab.com -> this host, then Caddy gets a real
+# Let's Encrypt cert automatically (no `tls internal`).
+#
+# Routing:
+#   /api/*  /health  /openapi.json  -> the Rust binary on 127.0.0.1:8081
+#   everything else                  -> the static docs built from web/ (dist)
+# The binary never serves HTML; Caddy serves the docs and proxies the API.
+
+api.utmelab.com {
+	encode gzip zstd
+
+	# The metered contract + health + spec.
+	@api path /api/* /health /openapi.json
+	reverse_proxy @api 127.0.0.1:8081
+
+	# Static docs tier (Astro build output ships as web/ in the release).
+	root * /opt/apps/utmelab-api/current/web
+	try_files {path} /index.html
+	file_server
+}
