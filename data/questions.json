@@ -48155,10 +48155,14 @@
     "section": null,
     "passage_id": null,
     "image": "https://myschool.ng/storage/classroom/CuhSVieJX6M1U3Jw4MguxYo9MR76CQV8fWppnyLI.png",
-    "explanation": null,
+    "explanation": {
+      "key_point": "Split the triangle along the perpendicular.",
+      "body": "The 20 cm side is cut into 11 and 9 by the 13 cm perpendicular, so the area is (1/2)(11)(13) + (1/2)(9)(13) = 71.5 + 58.5 = 130 cm^2.",
+      "trap": "Using the whole 20 cm with the perpendicular once, which reaches 130 by a different route and looks like luck."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74091",
@@ -48174,7 +48178,7 @@
       },
       {
         "id": "b",
-        "text": "{1,2,3,4,5,5}"
+        "text": "{1,2,3,4}"
       },
       {
         "id": "c",
@@ -48190,10 +48194,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "A set is unordered, so any rearrangement of the same elements is the same set.",
+      "body": "{4,3,1,5,2} lists exactly the elements 1–5 in a different order, which changes nothing about the set.",
+      "trap": "{1,2,3,4} is missing 5, and listing 5 twice does not add an element — but a well-formed set never repeats."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74092",
@@ -48260,10 +48268,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Move the unknowns to one side, remembering the sign flip.",
+      "body": "2x + 3 > 5x + 8 gives -3x > 5, and dividing by a negative reverses the inequality, so x < -5/3, that is x < -1 2/3.",
+      "trap": "Dividing by -3 and keeping the '<' - the most common inequality slip there is."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74094",
@@ -48295,10 +48307,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Apply the definition to the pair.",
+      "body": "a*b = (a+b)/(ab) + (a-b), so 3*2 = (3+2)/6 + (3-2) = 5/6 + 1 = 11/6.",
+      "trap": "Reading ab as a single symbol rather than the product, which turns the first fraction into 5/32."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74095",
@@ -48330,10 +48346,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Simplify the fractions before combining.",
+      "body": "125^(-1/3) = 1/5, 49^(-1/2) = 1/7 and 10^0 = 1, so the product is 1/35.",
+      "trap": "Taking 125^(-1/3) as 125/3 or forgetting that any non-zero number to the power 0 is 1."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74096",
@@ -48365,10 +48385,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Average the two coordinates separately.",
+      "body": "Midpoint = ((-3+5)/2, (4+6)/2) = (1, 5).",
+      "trap": "Averaging the whole pair as one number, or subtracting instead of adding."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74097",
@@ -48400,10 +48424,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Use the triangle, not a formula.",
+      "body": "cos A = 12/13 gives a 5-12-13 triangle, so sin A = 5/13 and tan A = (5/13)/(12/13) = 5/12.",
+      "trap": "Answering 5/13, which is the sine - the hypotenuse cancels only in the ratio."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74098",
@@ -48435,10 +48463,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Constructible angles come from the standard set.",
+      "body": "90, 135 and 60 are all standard constructions; 145 is not.",
+      "trap": "Assuming every angle that is a multiple of 5 degrees can be built with a protractor and compass - the protractor is not what is being tested."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74099",
@@ -48470,10 +48502,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Count the repeated letter.",
+      "body": "SCHOOL has six letters with O twice, so 6!/2! = 720/2 = 360.",
+      "trap": "Dividing by 2! twice, once per repeated-looking letter, which halves it again."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74100",
@@ -48505,10 +48541,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Fit the two-point form.",
+      "body": "y = a + bx gives b = (11-7)/(5-3) = 2 and a = 7 - 2(3) = 1, so the constants are 1 and 2.",
+      "trap": "Swapping the constants, or taking a as the gradient because 'partly varies' comes first in the sentence."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74101",
@@ -48610,10 +48650,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Direct variation means the constant is A/b^2.",
+      "body": "A/b^2 = 4/1 = 4, so A = 4 x 2^2 = 16.",
+      "trap": "Doubling rather than quadrupling, because b doubles - but the square makes it four times."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74152",
@@ -48645,10 +48689,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "The identity's diagonal is all ones.",
+      "body": "det(I) = 1 x 1 - 0 x 0 = 1.",
+      "trap": "Answering 0, which is the determinant of the zero matrix and the most common guess when the matrix looks too simple."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74153",
@@ -48715,10 +48763,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "The mean is 4, so the sum is 4 x 4 = 16.",
+      "body": "The four numbers sum to 0 + (x+2) + (3x+6) + (4x+8) = 8x + 16. Setting 8x + 16 = 16 gives x = 0.",
+      "trap": "Adding the constants before the coefficients, so x = 0 falls out - and 0 is among the options precisely because it is easy to miss."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74155",
@@ -48750,10 +48802,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Use point-slope, then clear the fraction.",
+      "body": "Slope 3 1/5 = 16/5, so y - 15 = (16/5)(x - 3). Multiplying by 5 and collecting gives 5y - 16x - 27 = 0.",
+      "trap": "Dropping the -3 when clearing the bracket shifts the constant and gives a line through a different point."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74156",
@@ -48761,7 +48817,7 @@
     "subject": "mathematics",
     "year": 2025,
     "source": "claimed_paper",
-    "text": "A car dealer bought a used car for ₦270,000 and spent ₦70,000 to refurbish it. He later sold the car for ₦490,000. What was the percentage profit?",
+    "text": "A car dealer bought a used car for ₦270,000 and spent ₦70,000 to refurbish it. He later sold the car for ₦493,000. What was the percentage profit?",
     "options": [
       {
         "id": "a",
@@ -48785,10 +48841,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Cost = 270,000 + 70,000 = ₦340,000; profit = 493,000 − 340,000 = ₦153,000.",
+      "body": "Percentage profit is measured against the **total cost**, which includes the refurbishment: 340,000. 153,000 / 340,000 = 0.45 = 45%.",
+      "trap": "Measuring against the ₦270,000 purchase price alone gives 56.7%, and leaving the refurbishment out of the cost base is the common slip."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74157",
@@ -48820,10 +48880,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Convert every mixed number before touching the expression.",
+      "body": "3/4 div 9/4 = 1/3, and 3 2/3 - 15/6 = 11/3 - 5/2 = 7/6. So (1/3) x (18/11) x (7/6) = 7/11.",
+      "trap": "Leaving the mixed numbers unconverted is where the fraction usually goes wrong."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74158",
@@ -48855,10 +48919,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Favourable outcomes are grapes plus bananas.",
+      "body": "6 + 11 = 17 favourable out of 6 + 11 + 13 = 30 total, giving 17/30.",
+      "trap": "Adding the oranges into the favourable total, or reading 'either' as exclusive-or."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74159",
@@ -48890,10 +48958,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Interior angle = (n-2) x 180 / n.",
+      "body": "For n = 5: (5 - 2) x 180 / 5 = 108.",
+      "trap": "120 is the regular hexagon's angle and 90 the square's - both familiar, neither is the pentagon's."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74160",
@@ -48925,10 +48997,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Each fraction is taken of what is left, not of the salary.",
+      "body": "Shirts take 1/5, leaving 4/5. Transport takes 1/3 of that, 4/15. Left = 4/5 - 4/15 = 8/15.",
+      "trap": "Taking 1/3 of the original salary instead of the remainder gives 7/15."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74161",
@@ -48960,10 +49036,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "List the favourable faces.",
+      "body": "2, 4 and 6 out of six equally likely faces give 3/6 = 1/2.",
+      "trap": "Counting 1, 3 and 5 reaches the same answer by the wrong route, which is fine here but not in general."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74162",
@@ -48995,10 +49075,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Integrate each term separately.",
+      "body": "x^4 + x^2 + sin x + C, since the integral of 4x^3 is x^4, of 2x is x^2, and of cos x is sin x.",
+      "trap": "The minus on x^2 is the classic slip: it is 2x being integrated, not 2x^2."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74163",
@@ -49030,10 +49114,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "A leading minus outside the log flips the whole value.",
+      "body": "log 0.00001 = log 10^-5 = -5, so -(-5) = 5.",
+      "trap": "Reading it as log(-0.00001), or dropping the outer minus and answering -5."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74167",
@@ -49065,10 +49153,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "The perpendicular from the centre bisects the chord.",
+      "body": "Half the chord is 15, so the distance is the other side of a right triangle: (17^2 - 15^2)^(1/2) = 64^(1/2) = 8.",
+      "trap": "Subtracting 17 - 15 = 2, or forgetting to halve the chord first."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74168",
@@ -49100,10 +49192,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Factorise before substituting.",
+      "body": "x^3 - 2x^2 + 6x - 12 = x^2(x-2) + 6(x-2) = (x-2)(x^2 + 6). The limit as x approaches 2 is therefore 4 + 6 = 10.",
+      "trap": "Direct substitution gives 0/0, which invites the 'Infinity' option - the classic wrong turn on every question of this shape."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74169",
@@ -49135,10 +49231,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Divide the fifth term by the second.",
+      "body": "a r^4 / (a r) = r^3 = 1/8, so r = 1/2.",
+      "trap": "Taking r^3 = 1/8 and answering r = 1/8 - the cube root is the step being skipped."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74170",
@@ -49170,10 +49270,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Simple interest totals in one multiplication.",
+      "body": "A = P(1 + rt/100) = P(1 + 5 x 4/100) = 1.2P. Since 1.2P = 600,000, P = 500,000.",
+      "trap": "Treating the 5% as compound interest, or dividing by 1.2 in the wrong direction to get the amount rather than the principal."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74172",
@@ -49205,10 +49309,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Find the nth term, then substitute n-2.",
+      "body": "The progression is 3, 5, 7, 9 with common difference 2, so T_n = 2n + 1. Putting n - 2: 2(n-2) + 1 = 2n - 3.",
+      "trap": "Substituting n-2 into 2n - 1, which is the term before, not this one."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74173",
@@ -49240,10 +49348,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "The chain rule multiplies by the derivative of the inside.",
+      "body": "d/dx sin 4x = cos 4x x 4 = 4cos 4x.",
+      "trap": "Giving -4cos x, which drops the 4 from inside the bracket entirely."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74174",
@@ -49275,10 +49387,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Make the angle the subject.",
+      "body": "From A = (theta/360) pi r^2, multiplying both sides by 360/(pi r^2) gives theta = 360A/(pi r^2).",
+      "trap": "Leaving theta in the denominator as well as the numerator, which never isolates it."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74175",
@@ -49310,10 +49426,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Complete the square, or differentiate.",
+      "body": "dy/dx = -4 - 4x = 0 gives x = -1. Substituting: 2 + 4 - 2 = 4.",
+      "trap": "Stopping at the stationary point without evaluating y, or checking only the endpoints and missing the interior minimum."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74176",
@@ -49329,7 +49449,7 @@
       },
       {
         "id": "b",
-        "text": "pq"
+        "text": "2pq"
       },
       {
         "id": "c",
@@ -49340,15 +49460,19 @@
         "text": "p + q"
       }
     ],
-    "answer": "b",
+    "answer": "c",
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "One death and one survival can happen in two orders, so the probability is 2pq.",
+      "body": "P(death then survival) = q × p, and P(survival then death) = p × q. Adding the two mutually exclusive cases gives **2pq**.",
+      "trap": "Answering pq counts only one of the two orders and so halves the probability."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74177",
@@ -49380,10 +49504,14 @@
     "section": null,
     "passage_id": null,
     "image": "https://myschool.ng/storage/classroom/0HqeHTW1CKqpKSjDtSl6Ie1M6qopMjuONhioBHwp.png",
-    "explanation": null,
+    "explanation": {
+      "key_point": "This is the standard 60 degree construction.",
+      "body": "The arc struck from Y that cuts both arms at the same distance is the first step of constructing an equilateral triangle, whose angles are 60 degrees.",
+      "trap": "Reading the arc as evidence of the angle rather than of the radius - the arc shows equal arms, and the angle follows from the triangle."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74185",
@@ -49415,10 +49543,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Divide by 5 repeatedly, reading the remainders upward.",
+      "body": "137 = 5(27) + 2; 27 = 5(5) + 2; 5 = 5(1) + 0; 1 = 5(0) + 1. Reading up gives 1022 in base 5.",
+      "trap": "Reading the remainders downward, or forgetting the final quotient of 1 that leads the numeral."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74186",
@@ -49450,10 +49582,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "The form is P = a + bQ, whatever 'partly' sounds like.",
+      "body": "b = (32 - 20)/(16 - 12) = 3 and a = 32 - 3(16) = -16, so P = -16 + 3(28) = 68.",
+      "trap": "Assuming direct proportionality and scaling 32 by 28/16, which ignores the constant term entirely."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74187",
@@ -49485,10 +49621,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Count the distinct letters.",
+      "body": "HANDIER has seven letters, none repeated, so 7! = 5040.",
+      "trap": "Assuming a repeat exists and halving the factorial for no reason."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74188",
@@ -49555,10 +49695,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Write 64 as a power of one half.",
+      "body": "64 = 2^6 = (1/2)^-6, so t - 1 = -6 and t = -5.",
+      "trap": "Taking 64 as 2^6 and writing t - 1 = 6, which inverts the ratio."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74190",
@@ -49590,10 +49734,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Convert by repeated division by 4.",
+      "body": "54 / 4 = 13 r 2; 13 / 4 = 3 r 1; 3 / 4 = 0 r 3. Reading up: 312 in base 4.",
+      "trap": "Reading the remainders downward, which yields 213 - the digits in the wrong order."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74191",
@@ -49625,10 +49773,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Integrate term by term.",
+      "body": "x^3 + x^2 - 5x + C, since 3x^2 gives x^3, 2x gives x^2, and -5 stays -5x.",
+      "trap": "Integrating the constant -5 as if it were -5x, or forgetting the constant of integration."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74192",
@@ -49660,10 +49812,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Write the number in standard form, then take the fourth root.",
+      "body": "0.16 = 1.6 x 10^-1, and (2 x 10^-1/2)^4 = 16 x 10^-2 = 0.16, so the root is 2 x 10^-1/2.",
+      "trap": "Squaring instead of taking the fourth root, which gives 2 x 10^-2 and still looks plausible."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74193",
@@ -49695,10 +49851,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Solve the equation, then read the inequality off it.",
+      "body": "x^2 + 3x - 4 = (x + 4)(x - 1) = 0, so x = -4 or x = 1. The upward parabola lies at or below the axis between them: -4 <= x <= 1.",
+      "trap": "Reversing the interval, or giving the roots as the answer without considering which side the parabola is on."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74194",
@@ -49730,10 +49890,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Simplify each radical to the same surd.",
+      "body": "sqrt 75 = 5sqrt 3, sqrt 12 = 2sqrt 3, sqrt 27 = 3sqrt 3, so the result is (5 - 2 + 3)sqrt 3 = 6sqrt 3.",
+      "trap": "Mis-simplifying sqrt 27 as 2sqrt 3 or 9, either of which changes the total."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74195",
@@ -49765,10 +49929,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Build sin theta from cos theta.",
+      "body": "sin theta = sqrt(1 - x^2/y^2) = sqrt(y^2 - x^2)/y. Then tan = sin/cos = [sqrt(y^2-x^2)/y] / (x/y) = sqrt(y^2 - x^2)/x.",
+      "trap": "Putting y^2 + x^2 under the root, or dividing by cos twice - the cancellation of y is the step that has to happen."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74196",
@@ -49800,10 +49968,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Scale Q first, then add entry by entry.",
+      "body": "2Q = [[6,-14],[2,4]]. Adding P = [[1,3],[2,-5]] gives [[7,-11],[4,-1]].",
+      "trap": "Adding P and Q first and doubling the sum, which agrees only when P is zero."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74197",
@@ -49905,7 +50077,11 @@
     "section": null,
     "passage_id": null,
     "image": "https://myschool.ng/storage/classroom/AVG3qECzMkFkQxAioIjOwxrcB2S2eV3g5vE75Zd1.png",
-    "explanation": null,
+    "explanation": {
+      "key_point": "The answer key cannot be verified from the figure as published.",
+      "body": "The table in the image gives weights 54, 56, 58, 60, 62 with frequencies 3, 1, 2, 2, 3. Those sum to **11, not the twelve students the question names**, and the highest frequency (3) is shared by 54 and 62 — so the mode is ambiguous even before the stored answer, 58, which has a frequency of only 2.",
+      "trap": "A modal weight of 58 does not follow from any reading of the table. The figure needs replacing before this question can be verified; we will not silently redraw a table that came from a source we do not control."
+    },
     "marks": 2.5,
     "difficulty": 3,
     "verified": false
@@ -49940,10 +50116,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Substitute straight into the definition.",
+      "body": "a*b = ab + a + b, so 1*3 = (1 x 3) + 1 + 3 = 7.",
+      "trap": "Multiplying only the two arguments and forgetting the two extra terms, which gives 3."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74201",
@@ -50010,10 +50190,14 @@
     "section": null,
     "passage_id": null,
     "image": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": "Resolve both bearings into components.",
+      "body": "P to Q on N60E puts Q at (200 sin 60, 200 cos 60) = (173.2, 100). From Q on S30E the drop of 100 needs d cos 60 = 100, giving d = 200.",
+      "trap": "Reading S30E as 30 east of south when the perpendicular is required, which changes the value."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_mathematics_74203",
@@ -50045,10 +50229,14 @@
     "section": null,
     "passage_id": null,
     "image": "https://myschool.ng/storage/classroom/d386De6qPvenFwyL7qZkCNWDhaHClwnS8tWfWOkK.png",
-    "explanation": null,
+    "explanation": {
+      "key_point": "Pythagoras first, then the ratio.",
+      "body": "XY = sqrt(13^2 - 11^2) = sqrt 48. At X, cot theta is adjacent over opposite = XY/YZ = sqrt 48 / 11.",
+      "trap": "Taking cot as opposite over adjacent, or reading the 11 cm as the hypotenuse when the 13 cm already is."
+    },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_claim_2025_physics_74347",
