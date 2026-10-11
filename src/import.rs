@@ -35,61 +35,45 @@ use crate::JsonStore;
 use crate::bank::Store as _;
 use crate::bank::{Choice, Question};
 
-/// Source slug → (our slug, JAMB's own name). No fallback: an unknown slug is
-/// a decision for a person, not a default.
-const SUBJECT_MAP: &[(&str, &str, &str)] = &[
-    ("government", "government", "Government"),
-    ("economics", "economics", "Economics"),
-    ("commerce", "commerce", "Commerce"),
-    ("history", "history", "History"),
-    ("geography", "geography", "Geography"),
-    ("mathematics", "mathematics", "Mathematics"),
-    ("physics", "physics", "Physics"),
-    ("chemistry", "chemistry", "Chemistry"),
-    ("biology", "biology", "Biology"),
-    (
-        "agricultural-science",
-        "agricultural-science",
-        "Agricultural Science",
-    ),
-    (
-        "christian-religious-knowledge-crk",
-        "christian-religious-studies",
-        "Christian Religious Studies",
-    ),
-    (
-        "literature-in-english",
-        "literature-in-english",
-        "Literature-in-English",
-    ),
-    ("arabic", "arabic", "Arabic"),
-    ("computer-studies", "computer-studies", "Computer Studies"),
-    ("french", "french", "French"),
-    ("hausa", "hausa", "Hausa"),
-    ("igbo", "igbo", "Igbo"),
-    ("yoruba", "yoruba", "Yoruba"),
-    ("home-economics", "home-economics", "Home Economics"),
-    (
-        "islamic-religious-knowledge-irk",
-        "islamic-religious-studies",
-        "Islamic Religious Studies",
-    ),
-    (
-        "physical-education",
-        "physical-education",
-        "Physical and Health Education",
-    ),
-    ("fine-arts", "art", "Art"),
-    (
-        // The source spells this one "Accounts - Principles of Accounts", so
-        // asking for `principles-of-accounts` returns HTTP 200 and zero rows —
-        // the silent failure this map exists to make impossible.
-        "accounts-principles-of-accounts",
-        "principles-of-accounts",
-        "Principles of Accounts",
-    ),
-    ("english-language", "use-of-english", "Use of English"),
-];
+/// The subject map lives in `config/harvest.json`, not here.
+///
+/// It used to be a `const` in this file, with the harvester holding a second
+/// copy in Python. Two lists is how a subject gets crawled under one slug and
+/// merged under another — which is exactly how `art`/`fine-arts` and
+/// `accounts-principles-of-accounts`/`principles-of-accounts` drifted apart.
+/// One file, read by both.
+///
+/// A missing entry is a refusal, never a fallback: an unmapped slug is a
+/// decision for a person.
+#[derive(serde::Deserialize)]
+struct HarvestConfig {
+    subjects: Vec<HarvestSubject>,
+}
+
+#[derive(serde::Deserialize)]
+struct HarvestSubject {
+    source: String,
+    slug: String,
+    #[allow(dead_code)] // present so the file is self-describing; validated on load
+    name: String,
+}
+
+/// Read the config, defaulting to `config/harvest.json` beside the manifest.
+fn subject_map(config_path: Option<&Path>) -> anyhow_lite::Result<Vec<(String, String)>> {
+    let path = match config_path {
+        Some(p) => p.to_path_buf(),
+        None => Path::new(env!("CARGO_MANIFEST_DIR")).join("config/harvest.json"),
+    };
+    let text = std::fs::read_to_string(&path)
+        .map_err(|e| format!("harvest config {}: {e}", path.display()))?;
+    let config: HarvestConfig =
+        serde_json::from_str(&text).map_err(|e| format!("parse {}: {e}", path.display()))?;
+    Ok(config
+        .subjects
+        .into_iter()
+        .map(|s| (s.source, s.slug))
+        .collect())
+}
 
 /// What we refused, and why. Every refusal is counted and printed: a silent
 /// drop is indistinguishable from a bug, and we have lost questions to silence
@@ -127,7 +111,13 @@ mod anyhow_lite {
     pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 }
 
-pub fn run(inbox: &Path, data: &Path, dry_run: bool) -> anyhow_lite::Result<()> {
+pub fn run(
+    inbox: &Path,
+    data: &Path,
+    dry_run: bool,
+    config: Option<&Path>,
+) -> anyhow_lite::Result<()> {
+    let subjects = subject_map(config)?;
     let mut store = JsonStore::load(data).map_err(|e| format!("bank does not load: {e}"))?;
 
     let mut existing: Vec<Question> = store.questions().to_vec();
@@ -164,13 +154,11 @@ pub fn run(inbox: &Path, data: &Path, dry_run: bool) -> anyhow_lite::Result<()> 
         };
         let source_slug = source_slug.as_str();
 
-        let Some((_, slug, name)) = SUBJECT_MAP
-            .iter()
-            .find(|(source, _, _)| *source == source_slug)
-        else {
+        let Some((_, slug)) = subjects.iter().find(|(source, _)| source == source_slug) else {
             refusals.note("unknown subject slug", source_slug.to_owned());
             continue;
         };
+        let slug = slug.as_str();
 
         for row in read_inbox(file)? {
             // Structure first: we cannot judge a row we cannot read.
@@ -234,7 +222,7 @@ pub fn run(inbox: &Path, data: &Path, dry_run: bool) -> anyhow_lite::Result<()> 
             };
 
             if store.subject("JAMB", slug).is_none() {
-                refusals.note("subject missing from the catalog", name.to_owned());
+                refusals.note("subject missing from the catalog", slug.to_owned());
                 continue;
             }
 
@@ -344,8 +332,27 @@ mod tests {
 
     #[test]
     fn every_source_slug_maps_to_a_jamb_slug() {
-        for (source, slug, name) in SUBJECT_MAP {
-            assert!(!source.is_empty() && !slug.is_empty() && !name.is_empty());
+        for (source, slug) in subject_map(None).expect("config parses") {
+            assert!(!source.is_empty() && !slug.is_empty());
+        }
+    }
+
+    /// The config and the catalog must agree, or a question is harvested under a
+    /// subject that does not exist and is silently refused at merge time.
+    #[test]
+    fn the_harvest_config_and_the_catalog_agree_on_subjects() {
+        let bank = JsonStore::load(Path::new("data")).expect("bank loads");
+        let config: HarvestConfig =
+            serde_json::from_str(&std::fs::read_to_string("config/harvest.json").expect("config"))
+                .expect("config parses");
+
+        for entry in &config.subjects {
+            assert!(
+                bank.subject("JAMB", &entry.slug).is_some(),
+                "config lists {:?} but the catalog has no JAMB subject {:?}",
+                entry.source,
+                entry.slug
+            );
         }
     }
 }

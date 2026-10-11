@@ -45,6 +45,9 @@ enum Command {
         /// Report what would happen; write nothing.
         #[arg(long)]
         dry_run: bool,
+        /// Subject map. Defaults to `config/harvest.json`.
+        #[arg(long)]
+        harvest_config: Option<PathBuf>,
     },
     /// Write the OpenAPI document to a file (or stdout) for the docs build.
     ///
@@ -105,9 +108,10 @@ async fn run() -> Result<(), ApiError> {
             inbox,
             data,
             dry_run,
+            harvest_config,
         } => {
             let data_dir = data.unwrap_or_else(|| PathBuf::from(&config.data_dir));
-            utmelab_api::import::run(&inbox, &data_dir, dry_run)
+            utmelab_api::import::run(&inbox, &data_dir, dry_run, harvest_config.as_deref())
                 .map_err(|e| ApiError::config(e.to_string()))?;
             Ok(())
         }
