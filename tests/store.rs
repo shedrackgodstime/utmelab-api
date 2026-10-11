@@ -250,15 +250,41 @@ fn page_zero_is_treated_as_page_one() {
 }
 
 #[test]
-fn verified_filter_narrows_the_total() {
+fn the_verified_flag_partitions_the_bank() {
     let bank = JsonStore::load(repo_root()).expect("load");
-    let f = QuestionFilter {
-        verified: Some(true),
-        ..Default::default()
-    };
-    let page = bank.questions_page(f, 1, 200);
-    assert!(page.questions.iter().all(|q| q.verified));
-    assert!(page.total_records < bank.question_count());
+
+    let verified = bank.questions_page(
+        QuestionFilter {
+            verified: Some(true),
+            ..Default::default()
+        },
+        1,
+        200,
+    );
+    let unverified = bank.questions_page(
+        QuestionFilter {
+            verified: Some(false),
+            ..Default::default()
+        },
+        1,
+        200,
+    );
+    let all = bank.questions_page(QuestionFilter::default(), 1, 200);
+
+    assert!(verified.questions.iter().all(|q| q.verified));
+    assert!(unverified.questions.iter().all(|q| !q.verified));
+
+    // True whatever the content holds: the flag splits the servable bank in
+    // two, with nothing counted twice and nothing dropped. An earlier version
+    // asserted `verified < all`, which only held while an unverified backlog
+    // existed — it failed the day the audit cleared it, which says nothing
+    // about the filter.
+    assert_eq!(
+        verified.total_records + unverified.total_records,
+        all.total_records,
+        "every servable row is either verified or not"
+    );
+    assert_eq!(all.total_records, bank.question_count());
 }
 
 // ── novels (D35) ────────────────────────────────────────────────────────────

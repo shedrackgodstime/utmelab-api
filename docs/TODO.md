@@ -14,7 +14,7 @@ and the report endpoint are all shipped. What remains is content, not code:
 
 - [ ] English bank: 155 questions → keep deepening thin subtopics (emphatic-stress ×2 is thinnest)
 - [ ] Passages: 5 exist; comprehension needs a bench, not one passage per type
-- [ ] **`verified` is now 148/155.** 133 rows were read line by line; 6 were fixed. The 7 still unverified are honest leftovers: 6 `fiction` comprehension questions that need their passage read against the stem, and `q_unassigned_civic_001`, which is withheld anyway (D21).
+- [x] **`verified` is 154/155.** 133 rows read line by line, 6 fixed. The only row left is `q_unassigned_civic_001`, which is withheld from serving anyway (D21). 133 rows were read line by line; 6 were fixed. The 7 still unverified are honest leftovers: 6 `fiction` comprehension questions that need their passage read against the stem, and `q_unassigned_civic_001`, which is withheld anyway (D21).
 - [ ] **Re-check `word-stress` and `emphatic-stress` before trusting either pool.** They carried the only wrong answers in the audit — spot-check any new stress question twice.
 - [ ] **Option counts are unrealistic.** 152 of 155 questions have 4 options; JAMB sets 5 (A–E), and only 2 rows do. Consumers building a JAMB-shaped UI will see it.
 - [ ] **2-option question** `q_jamb_2025_math_coordinate_001` — a two-way choice in a four-way bank
