@@ -30,6 +30,7 @@ pub use api::auth::Caller;
 pub use api::limit::RateLimiter;
 pub use api::openapi::document as openapi_document;
 
+pub use bank::model::Question;
 pub use bank::{DEFAULT_PER_PAGE, JsonStore, MAX_PER_PAGE, QuestionFilter, Store, StoreError};
 pub use config::Config;
 pub use error::ApiError;

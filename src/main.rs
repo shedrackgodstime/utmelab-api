@@ -212,18 +212,16 @@ fn admin(config: &Config, keys: &mut KeyStore, action: KeyAction) -> Result<(), 
                 }
             }
         }
-        KeyAction::Rotate { id, grace_hours } => {
-            match keys.rotate(&id, grace_hours)? {
-                Some((record, plaintext)) => {
-                    println!("\n  API KEY ROTATED — copy the new key now, it is never shown again\n");
-                    println!("    {plaintext}\n");
-                    println!("    new id      {}", record.id);
-                    println!("    label       {}", record.label);
-                    println!("    old id      {id} (expires in {grace_hours}h)");
-                }
-                None => println!("no live key with id {id}"),
+        KeyAction::Rotate { id, grace_hours } => match keys.rotate(&id, grace_hours)? {
+            Some((record, plaintext)) => {
+                println!("\n  API KEY ROTATED — copy the new key now, it is never shown again\n");
+                println!("    {plaintext}\n");
+                println!("    new id      {}", record.id);
+                println!("    label       {}", record.label);
+                println!("    old id      {id} (expires in {grace_hours}h)");
             }
-        }
+            None => println!("no live key with id {id}"),
+        },
     }
     Ok(())
 }

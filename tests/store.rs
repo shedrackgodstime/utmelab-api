@@ -375,7 +375,16 @@ mod regex_lite {
 fn no_question_in_the_bank_depends_on_a_novel_we_hold() {
     let data = repo_root();
     let bank = JsonStore::load(&data).expect("load");
-    let page = bank.questions_page(QuestionFilter::default(), 1, utmelab_api::MAX_PER_PAGE);
+    // Every page. Checking only the first let six novel questions hide in
+    // English rows 201-282, which is exactly where they were.
+    let first = bank.questions_page(QuestionFilter::default(), 1, utmelab_api::MAX_PER_PAGE);
+    let mut all: Vec<utmelab_api::Question> = first.questions.clone();
+    for page in 2..=first.total_pages().max(1) {
+        all.extend(
+            bank.questions_page(QuestionFilter::default(), page, utmelab_api::MAX_PER_PAGE)
+                .questions,
+        );
+    }
 
     for entry in std::fs::read_dir(data.join("novels")).expect("novels dir") {
         let path = entry.expect("readable entry").path();
@@ -407,7 +416,7 @@ fn no_question_in_the_bank_depends_on_a_novel_we_hold() {
             }
         }
 
-        for question in &page.questions {
+        for question in &all {
             let blob = format!(
                 "{} {}",
                 question.text.to_lowercase(),

@@ -4,7 +4,7 @@
 //! depends on neither.
 
 mod json;
-mod model;
+pub mod model;
 pub mod scheme;
 mod store;
 mod view;

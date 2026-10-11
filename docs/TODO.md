@@ -5,6 +5,10 @@
 
 ## Now
 
+- [ ] **78 English questions are unanswerable as served** — they say "the underlined word" and we do not store which word. Full analysis and options in [`UNDERLINE_PROBLEM.md`](UNDERLINE_PROBLEM.md); recommended fix is `emphasis: Option<String>` on `Question`. **No `verified: true` on any of the 78 until this lands.**
+- [ ] **6 novel questions still in the English bank** (stems begin "This question is based on Kabir Alabi Garba's The Lekki Headmaster") — move to the novel document (D35).
+- [ ] **Merged key work (D53) has a failing test**: `ApiKey` serialises a `key_prefix` containing `sk_`, and `created_key_resolves_and_carries_no_secret` forbids it. Needs a decision: is a visible prefix intended?
+
 - [ ] **39 Lekki Headmaster questions still staged** in `data/inbox/lekki-headmaster-candidates.json`. Of 77 harvested, 9 were not novel questions (returned to the bank), 15 had truncated stems carrying no question at all, 1 duplicated an existing question with a garbled name, and only 4 could be verified against our own chapter summaries — those 4 joined the novel document (50 -> 54). The rest stay staged: their keys are third-party and our summaries cannot check their detail, so adding them would raise the count without raising trust.
 - [ ] **v1 key seam (D53, Phase 0)** — `KeyStore::{list,rotate,reload_if_changed}`, extended `ApiKey` (`account_id/plan/prefix/expires_at`, defaulted), `AppState.keys: Arc<RwLock<KeyStore>>`, `key list/rotate` CLI. Verdict: `cargo build` + `cargo test` + live `serve → create → keys/me → revoke → 401` with no restart. No sessions, no `/internal/*`, no web.
 - [ ] **Assemble a paper** (`POST /exams/{exam}/papers`) — **gated on content, not on code** (D41). Scheme + readiness are live. Assembly (shuffle, `?seed=`, answers withheld, score) waits until a subject can fill its full count: JAMB needs 180 verified rows, we hold 103.

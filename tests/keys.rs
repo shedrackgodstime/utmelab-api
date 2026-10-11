@@ -97,7 +97,11 @@ fn list_shows_every_key_with_status_and_no_secrets() {
     for row in &rows {
         assert_eq!(row.account_id, "local");
         assert_eq!(row.plan, "free");
-        assert!(row.key_prefix.as_deref().is_some_and(|p| p.starts_with("sk_")));
+        assert!(
+            row.key_prefix
+                .as_deref()
+                .is_some_and(|p| p.starts_with("sk_"))
+        );
         let serialised = serde_json::to_string(row).unwrap();
         assert!(!serialised.contains(&a_plain));
         assert!(!serialised.contains("key_hash"));

@@ -116,7 +116,10 @@ fn first_of(names: &[&str]) -> Option<String> {
         if let Ok(v) = env::var(name) {
             if !v.trim().is_empty() {
                 if i > 0 {
-                    eprintln!("warning: {name} is a deprecated alias; use {} instead", names[0]);
+                    eprintln!(
+                        "warning: {name} is a deprecated alias; use {} instead",
+                        names[0]
+                    );
                 }
                 return Some(v);
             }
