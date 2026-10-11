@@ -25,6 +25,14 @@ import sys
 import time
 from pathlib import Path
 
+START = time.monotonic()
+
+
+def clock() -> str:
+    """Elapsed time, so a quiet run still looks alive."""
+    seconds = int(time.monotonic() - START)
+    return f"{seconds // 60}m {seconds % 60:02d}s"
+
 spec = importlib.util.spec_from_file_location("harvest", Path(__file__).parent / "harvest.py")
 harvest = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(harvest)
@@ -81,11 +89,18 @@ def run(subject: str, year: int, delay: float, limit: int, pages: int, out: Path
             + "\n"
         )
 
+    subject_start = time.monotonic()
     ids = harvest.question_ids(subject, year, pages, delay)
+    todo = [q for q in ids[:limit] if q not in done_ids]
+    if not todo:
+        print(
+            f"      nothing to fetch — {len(harvested)} already on disk "
+            f"(listing took {int(time.monotonic() - subject_start)}s)",
+            flush=True,
+        )
 
-    for qid in ids[:limit]:
-        if qid in done_ids:
-            continue
+    processed = 0
+    for qid in todo:
         url = f"{harvest.BASE}/classroom/{subject}/{qid}?exam_type=jamb&exam_year={year}"
         try:
             html = harvest.fetch(url)
@@ -97,13 +112,24 @@ def run(subject: str, year: int, delay: float, limit: int, pages: int, out: Path
         question = harvest.to_question(parsed, subject, year, qid) if parsed else None
         if question:
             harvested.append(question)
-            # Flush every few: connectivity here drops without warning, and a
-            # subject that dies at question 60 must not lose the first 59.
-            if len(harvested) % 10 == 0:
-                flush()
-                print(f"    {len(harvested)} so far", flush=True)
         else:
             skipped += 1
+
+        # Progress tracks *position in the loop*, not successes: counting only
+        # successes means a run whose last item is refused never prints its
+        # final line, which is exactly when you most want one.
+        processed += 1
+        if processed % 5 == 0 or processed == len(todo):
+            # Flush every 10: connectivity here drops without warning, and a
+            # subject that dies at question 60 must not lose the first 59.
+            if processed % 10 == 0:
+                flush()
+            rate = processed / max(time.monotonic() - subject_start, 1e-9)
+            print(
+                f"      {processed}/{len(todo)} fetched · {clock()} · "
+                f"{rate * 60:.0f}/min · {len(harvested)} on disk",
+                flush=True,
+            )
         time.sleep(delay)
 
     flush()
@@ -136,7 +162,7 @@ def main() -> int:
     print(f"harvesting {len(subjects)} subjects for {args.year}", flush=True)
     total = skipped_total = 0
     for index, subject in enumerate(subjects, start=1):
-        print(f"\n[{index}/{len(subjects)}] {subject}", flush=True)
+        print(f"\n[{index}/{len(subjects)}] {subject}  ({clock()} elapsed)", flush=True)
         try:
             got, skipped = run(
                 subject, args.year, args.delay, args.limit, args.pages, out, args.resume
@@ -150,12 +176,16 @@ def main() -> int:
         # `harvest.to_question_rows` raised AttributeError on the first subject.
         with_image = len(to_question_rows(out / f"{subject}-{args.year}.json"))
         print(
-            f"    {subject}: {got} questions on disk, {skipped} refused, "
-            f"{with_image} with diagrams   [running total: {total}]",
+            f"      {subject}: {got} questions on disk, {skipped} refused, "
+            f"{with_image} with diagrams · {clock()} · running total: {total}",
             flush=True,
         )
 
-    print(f"\nDONE: {total} questions across {len(subjects)} subjects, {skipped_total} skipped", flush=True)
+    print(
+        f"\nDONE in {clock()}: {total} questions across {len(subjects)} subjects, "
+        f"{skipped_total} refused",
+        flush=True,
+    )
     return 0
 
 
