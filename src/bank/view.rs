@@ -8,7 +8,7 @@
 use serde::Serialize;
 use utoipa::ToSchema;
 
-use super::model::{Choice, Explanation, Question};
+use super::model::{Choice, Explanation, ImageRef, Question};
 
 #[derive(Serialize, ToSchema)]
 pub struct RenderedQuestion {
@@ -18,9 +18,13 @@ pub struct RenderedQuestion {
     pub year: u16,
     pub source: String,
     pub text: String,
+    /// The substring to underline when rendering, if the stem names one.
+    /// Always present in the payload (null when the question needs none), so a
+    /// consumer never has to guess whether the field was omitted or empty.
+    pub emphasis: Option<String>,
     pub options: Vec<Choice>,
     pub section: Option<String>,
-    pub image: Option<String>,
+    pub image: Option<ImageRef>,
     pub marks: f32,
     pub difficulty: u8,
     pub verified: bool,
@@ -40,6 +44,7 @@ pub fn render(q: &Question, include_explanation: bool) -> RenderedQuestion {
         year: q.year,
         source: q.source.clone(),
         text: q.text.clone(),
+        emphasis: q.emphasis.clone(),
         options: q.options.clone(),
         section: q.section.clone(),
         image: q.image.clone(),

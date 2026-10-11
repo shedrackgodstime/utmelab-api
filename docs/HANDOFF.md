@@ -42,12 +42,18 @@ note was written from a pre-merge view and is resolved.
 ## 4. Current state
 
 ```
-2,416 questions · 25/25 JAMB subjects clear 40 · all year 2025
-213 verified (9%) · 215 explained
+2,288 questions · 25/25 JAMB subjects clear 40 · all year 2025
+134 verified (6%) · 215 explained
 catalog: 566 topics, 2,092 subtopics
-novel:   the featured set text has 54 verified questions
+novel:   the featured set text has 54 verified questions (+124 honest unverified)
 bank_version in /health changes only when content changes
 ```
+
+2026-10-11 evening: 83 more Lekki/Bepo/Stardom rows found in the English bank
+(the D35 guard only scanned character names — multi-word titles and setting
+names slipped through) and moved verbatim into the novel doc (original ids,
+`verified:false`). Bank 2,371 → 2,288; novel doc 95 → 178. `image` is now
+`{url, position}` (D55); `emphasis` is live (D54).
 
 Per-subject question counts and the catalogue are in `data/subjects.json`,
 `data/topics.json`, `data/subtopics.json`, `data/questions.json`.
@@ -119,7 +125,7 @@ disagree. Two lists is how subjects drift.
 3. **Subtopic tagging** — 2,175 questions belong to no drill path despite 2,092
    subtopics existing.
 4. ~~**6 novel questions still in the English bank**~~ — **resolved 2026-10-11**: the subject-scoped D35 guard caught **45** misfiled Lekki Headmaster questions (the "This question is based on…" rows plus the Bepo/Stardom/relocation set that named characters). 41 moved into the novel document verbatim (their rescue convention: original ids, `verified:false`), 4 exact duplicates of rows already in the novel doc dropped from the bank. Bank 2,416 → 2,371; novel doc 54 → 95 questions. All `verified:false`, `explanation:null` — honest.
-5. **59 images** still on the source's CDN; the user deferred the mirror to a
+5. **71 images** still on the source's CDN (absolute URLs, all `above`); the user deferred the mirror to a
    future CI job plus an asset repo.
 
 ## 8. Traps we have already hit — do not walk into them again

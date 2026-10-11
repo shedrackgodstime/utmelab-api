@@ -1,7 +1,7 @@
 # The underline problem — 78 unanswerable English questions
 
-**Status:** open. **Found:** 2026-10-11, during the English correctness audit.
-**Affects:** 78 of 282 Use of English questions (28%).
+**Status:** field decided and shipped (D54); backfill open. **Found:** 2026-10-11, during the English correctness audit.
+**Affects:** 78 of 210 Use of English questions (37%, after the 83 novel rows left the bank).
 
 ---
 
@@ -107,7 +107,7 @@ questions but not the emphasis, and the emphasis is part of the question.
 
 ## What "correct English" therefore requires, in order
 
-1. **Decide the emphasis representation** (option 1 recommended).
+1. **Decide the emphasis representation** (option 1 recommended). — **decided 2026-10-11 (D54): `emphasis: Option<String>`, substring of the stem, served on the question payload, loader rejects non-substrings.**
 2. **Backfill 78 targets** — semi-automatic for synonyms/antonyms, read by hand
    for stress and sound items.
 3. **Move the 6 novel questions out** into the novel document.

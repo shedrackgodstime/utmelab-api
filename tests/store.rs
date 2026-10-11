@@ -170,6 +170,105 @@ fn an_answer_pointing_at_nothing_is_rejected() {
 }
 
 #[test]
+fn an_emphasis_pointing_at_words_that_are_not_there_is_rejected() {
+    let dir = scratch("bad-emphasis");
+    let f = dir.join("questions.json");
+    let mut v: serde_json::Value = serde_json::from_slice(&std::fs::read(&f).unwrap()).unwrap();
+    v[0]["emphasis"] = serde_json::json!("a word that appears nowhere in this stem");
+    std::fs::write(&f, serde_json::to_vec_pretty(&v).unwrap()).unwrap();
+
+    let err = load(&dir).expect_err("must refuse to load");
+    assert!(
+        err.problems
+            .iter()
+            .any(|p| p.contains("not a substring of its text")),
+        "got: {err}"
+    );
+}
+
+#[test]
+fn an_image_that_is_not_an_absolute_url_is_rejected() {
+    let dir = scratch("bad-image");
+    let f = dir.join("questions.json");
+    let mut v: serde_json::Value = serde_json::from_slice(&std::fs::read(&f).unwrap()).unwrap();
+    v[0]["image"] = serde_json::json!({"url": "diagrams/x.svg", "position": "above"});
+    std::fs::write(&f, serde_json::to_vec_pretty(&v).unwrap()).unwrap();
+
+    let err = load(&dir).expect_err("must refuse to load");
+    assert!(
+        err.problems
+            .iter()
+            .any(|p| p.contains("must be absolute https")),
+        "got: {err}"
+    );
+}
+
+#[test]
+fn a_structured_image_with_placement_loads_and_serves() {
+    let bank = JsonStore::load(repo_root()).expect("load");
+    let with_image: Vec<_> = bank
+        .questions_page(QuestionFilter::default(), 1, utmelab_api::MAX_PER_PAGE)
+        .questions
+        .into_iter()
+        .filter(|q| q.image.is_some())
+        .collect();
+    assert!(!with_image.is_empty(), "the bank carries figures");
+    for q in &with_image {
+        let img = q.image.as_ref().expect("filtered");
+        assert!(img.url.starts_with("https://"), "{}: {}", q.id, img.url);
+    }
+}
+
+#[test]
+fn an_html_entity_in_a_stem_is_rejected() {
+    let dir = scratch("bad-entity");
+    let f = dir.join("questions.json");
+    let mut v: serde_json::Value = serde_json::from_slice(&std::fs::read(&f).unwrap()).unwrap();
+    v[0]["text"] = serde_json::json!("Which is &rsquo;correct&rsquo;?");
+    std::fs::write(&f, serde_json::to_vec_pretty(&v).unwrap()).unwrap();
+
+    let err = load(&dir).expect_err("must refuse to load");
+    assert!(
+        err.problems.iter().any(|p| p.contains("HTML entity")),
+        "got: {err}"
+    );
+}
+
+#[test]
+fn a_tag_in_an_option_is_rejected_but_a_comparison_is_not() {
+    let dir = scratch("bad-tag");
+    let f = dir.join("questions.json");
+    let mut v: serde_json::Value = serde_json::from_slice(&std::fs::read(&f).unwrap()).unwrap();
+    v[0]["options"][0]["text"] = serde_json::json!("a<u>bad</u> option");
+    v[1]["options"][0]["text"] = serde_json::json!("x < 2");
+    v[1]["text"] = serde_json::json!("Solve x < 2 for whole x.");
+    std::fs::write(&f, serde_json::to_vec_pretty(&v).unwrap()).unwrap();
+
+    let err = load(&dir).expect_err("must refuse to load");
+    assert_eq!(
+        err.problems.len(),
+        1,
+        "only the tag must fail, never the comparison: {err}"
+    );
+    assert!(err.problems[0].contains("markup"), "got: {err}");
+}
+
+#[test]
+fn a_question_pointing_at_no_passage_is_rejected() {
+    let dir = scratch("bad-passage");
+    let f = dir.join("questions.json");
+    let mut v: serde_json::Value = serde_json::from_slice(&std::fs::read(&f).unwrap()).unwrap();
+    v[0]["passage_id"] = serde_json::json!("psg-does-not-exist");
+    std::fs::write(&f, serde_json::to_vec_pretty(&v).unwrap()).unwrap();
+
+    let err = load(&dir).expect_err("must refuse to load");
+    assert!(
+        err.problems.iter().any(|p| p.contains("unknown passage")),
+        "got: {err}"
+    );
+}
+
+#[test]
 fn a_topic_pointing_at_no_subject_is_rejected() {
     let dir = scratch("bad-topic");
     let f = dir.join("topics.json");

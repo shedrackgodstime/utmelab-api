@@ -984,6 +984,30 @@
           }
         }
       },
+      "ImagePosition": {
+        "type": "string",
+        "description": "Where the figure renders relative to the stem. Data, never inferred: the\nparent DB carries both (\"the diagram above\" ×1400, \"the diagram below\"\n×144), so assuming one placement misrenders one row in eleven. A question\nwith an image always knows its placement; a question without one carries\nnone — the struct makes the nonsense state (placement without a figure)\nunrepresentable.",
+        "enum": [
+          "above",
+          "below"
+        ]
+      },
+      "ImageRef": {
+        "type": "object",
+        "description": "A referenced figure. `url` is absolute `https` — enforced at load, because\na relative path is served by nothing and fails loudly at the only gate we\nhave rather than as a blank box on a student's screen. The mirror job\nreplaces hotlinked URLs; the shape does not move when it does.",
+        "required": [
+          "url",
+          "position"
+        ],
+        "properties": {
+          "position": {
+            "$ref": "#/components/schemas/ImagePosition"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      },
       "Novel": {
         "type": "object",
         "description": "A prescribed text. One row per (exam, cycle) — the novel rotates yearly, so\n`year_prescribed` is load-bearing, not decorative.",
@@ -1472,6 +1496,13 @@
             "format": "int32",
             "minimum": 0
           },
+          "emphasis": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The substring to underline when rendering, if the stem names one.\nAlways present in the payload (null when the question needs none), so a\nconsumer never has to guess whether the field was omitted or empty."
+          },
           "exam": {
             "type": "string"
           },
@@ -1489,9 +1520,13 @@
             "type": "string"
           },
           "image": {
-            "type": [
-              "string",
-              "null"
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ImageRef"
+              },
+              {
+                "type": "null"
+              }
             ]
           },
           "marks": {

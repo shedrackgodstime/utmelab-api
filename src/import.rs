@@ -33,7 +33,7 @@ use serde_json::Value;
 
 use crate::JsonStore;
 use crate::bank::Store as _;
-use crate::bank::{Choice, Question};
+use crate::bank::{Choice, ImagePosition, ImageRef, Question};
 
 /// The subject map lives in `config/harvest.json`, not here.
 ///
@@ -194,7 +194,20 @@ pub fn run(
                         })
                     })
                     .collect::<Option<Vec<_>>>()?;
-                let image = row["image"].as_str().map(str::to_owned);
+                let image = match row["image"].as_str() {
+                    None => None,
+                    Some(src) if !src.starts_with("https://") => {
+                        refusals.note("image is not an absolute URL", text.clone());
+                        return None;
+                    }
+                    // Placement is read off the stem's own prose ("the diagram
+                    // below") — mechanical, no judgment. Anything else renders
+                    // above, the observed 90% case on both stores.
+                    Some(src) => Some(ImageRef {
+                        url: src.to_owned(),
+                        position: image_position(&text),
+                    }),
+                };
                 if image.is_none() && mentions_figure(&text) {
                     refusals.note("needs a figure we do not have", text.clone());
                     return None;
@@ -216,6 +229,9 @@ pub fn run(
                     passage_id: None,
                     image,
                     explanation: None,
+                    // The harvester strips markup and carries no emphasis —
+                    // quarantine flags the underlined rows, review fills this.
+                    emphasis: None,
                     marks: 2.5,
                     difficulty: 3,
                     // Never set here. Review sets this, not a bulk import (D45).
@@ -309,6 +325,17 @@ fn mentions_figure(text: &str) -> bool {
     ]
     .iter()
     .any(|h| text.to_lowercase().contains(h))
+}
+
+/// Placement off the stem's prose: only "below" is ever stated, and only for
+/// the figure ("use the diagram below"). Everything else — "above" or nothing
+/// said — renders above, the observed case on both stores.
+fn image_position(text: &str) -> ImagePosition {
+    if text.to_lowercase().contains("below") {
+        ImagePosition::Below
+    } else {
+        ImagePosition::Above
+    }
 }
 
 fn truncate(text: &str, max: usize) -> String {

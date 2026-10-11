@@ -10,7 +10,9 @@ mod store;
 mod view;
 
 pub use json::{JsonStore, StoreError};
-pub use model::{Choice, Novel, NovelDoc, Passage, Question, Subject, Subtopic, Topic};
+pub use model::{
+    Choice, ImagePosition, ImageRef, Novel, NovelDoc, Passage, Question, Subject, Subtopic, Topic,
+};
 
 pub use scheme::Scheme;
 pub use store::{DEFAULT_PER_PAGE, MAX_PER_PAGE, QuestionFilter, Store};

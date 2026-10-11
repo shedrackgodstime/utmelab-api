@@ -535,7 +535,7 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "diagrams/shm_displacement_time.svg",
+    "image": null,
     "explanation": {
       "key_point": "Acceleration is greatest at the extremes and zero at the centre.",
       "body": "$a = -\\omega^2 x$, so at maximum \\(|x|\\) the acceleration is at its peak, while velocity is zero because the graph has flattened.",
@@ -543,7 +543,7 @@
     },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_sentinterp_001",
@@ -582,7 +582,7 @@
     },
     "marks": 2.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_sentinterp_002",
@@ -621,7 +621,7 @@
     },
     "marks": 2.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_antonym_001",
@@ -660,7 +660,7 @@
     },
     "marks": 2.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_antonym_002",
@@ -699,7 +699,7 @@
     },
     "marks": 2.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_synonym_001",
@@ -738,7 +738,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_synonym_002",
@@ -777,7 +777,7 @@
     },
     "marks": 1.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_grammar_001",
@@ -1128,7 +1128,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_consonant_002",
@@ -1167,7 +1167,7 @@
     },
     "marks": 1.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_rhyme_001",
@@ -1362,7 +1362,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_emphatic_002",
@@ -1401,7 +1401,7 @@
     },
     "marks": 1.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_sentinterp_003",
@@ -1440,7 +1440,7 @@
     },
     "marks": 2.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_sentinterp_004",
@@ -1479,7 +1479,7 @@
     },
     "marks": 2.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_sentinterp_005",
@@ -1518,7 +1518,7 @@
     },
     "marks": 2.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_sentinterp_006",
@@ -1557,7 +1557,7 @@
     },
     "marks": 2.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_antonym_003",
@@ -1596,7 +1596,7 @@
     },
     "marks": 2.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_antonym_004",
@@ -1635,7 +1635,7 @@
     },
     "marks": 2.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_antonym_005",
@@ -1674,7 +1674,7 @@
     },
     "marks": 2.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_antonym_006",
@@ -1713,7 +1713,7 @@
     },
     "marks": 2.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_synonym_003",
@@ -1752,7 +1752,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_synonym_004",
@@ -1791,7 +1791,7 @@
     },
     "marks": 1.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_synonym_005",
@@ -1830,7 +1830,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_synonym_006",
@@ -1869,7 +1869,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_grammar_003",
@@ -2181,7 +2181,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_authored_eng_vowel_003",
@@ -2220,7 +2220,7 @@
     },
     "marks": 1.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t74822",
@@ -3000,7 +3000,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t74851",
@@ -3039,7 +3039,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t74852",
@@ -3078,7 +3078,7 @@
     },
     "marks": 1.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t74853",
@@ -3117,7 +3117,7 @@
     },
     "marks": 1.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76545",
@@ -3156,7 +3156,7 @@
     },
     "marks": 1.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t74854",
@@ -3195,7 +3195,7 @@
     },
     "marks": 1.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t74855",
@@ -3234,7 +3234,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t74856",
@@ -3273,7 +3273,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t74857",
@@ -3312,7 +3312,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76560",
@@ -3351,7 +3351,7 @@
     },
     "marks": 1.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76561",
@@ -3390,7 +3390,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t74861",
@@ -4170,7 +4170,7 @@
     },
     "marks": 2.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76421",
@@ -4209,7 +4209,7 @@
     },
     "marks": 2.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76422",
@@ -4248,7 +4248,7 @@
     },
     "marks": 2.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76423",
@@ -4287,7 +4287,7 @@
     },
     "marks": 2.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76424",
@@ -4326,7 +4326,7 @@
     },
     "marks": 2.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76425",
@@ -4365,7 +4365,7 @@
     },
     "marks": 2.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76426",
@@ -4404,7 +4404,7 @@
     },
     "marks": 2.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76427",
@@ -4443,7 +4443,7 @@
     },
     "marks": 2.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76428",
@@ -4482,7 +4482,7 @@
     },
     "marks": 2.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76429",
@@ -4521,7 +4521,7 @@
     },
     "marks": 2.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76451",
@@ -4560,7 +4560,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76452",
@@ -4599,7 +4599,7 @@
     },
     "marks": 1.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76453",
@@ -4638,7 +4638,7 @@
     },
     "marks": 1.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76454",
@@ -4677,7 +4677,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76455",
@@ -4716,7 +4716,7 @@
     },
     "marks": 1.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76456",
@@ -4755,7 +4755,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76458",
@@ -4794,7 +4794,7 @@
     },
     "marks": 1.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76459",
@@ -4833,7 +4833,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76461",
@@ -4872,7 +4872,7 @@
     },
     "marks": 1.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76462",
@@ -4911,7 +4911,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76547",
@@ -4950,7 +4950,7 @@
     },
     "marks": 1.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76548",
@@ -4989,7 +4989,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76549",
@@ -5028,7 +5028,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76550",
@@ -5067,7 +5067,7 @@
     },
     "marks": 1.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76551",
@@ -5106,7 +5106,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76552",
@@ -5145,7 +5145,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76553",
@@ -5184,7 +5184,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76555",
@@ -5223,7 +5223,7 @@
     },
     "marks": 1.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76556",
@@ -5262,7 +5262,7 @@
     },
     "marks": 1.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76562",
@@ -5301,7 +5301,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76563",
@@ -5340,7 +5340,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76564",
@@ -5379,7 +5379,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76566",
@@ -5418,7 +5418,7 @@
     },
     "marks": 1.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76567",
@@ -5457,7 +5457,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76568",
@@ -5496,7 +5496,7 @@
     },
     "marks": 1.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76569",
@@ -5535,7 +5535,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76570",
@@ -5574,7 +5574,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76571",
@@ -5613,7 +5613,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76572",
@@ -5652,7 +5652,7 @@
     },
     "marks": 1.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76573",
@@ -5691,7 +5691,7 @@
     },
     "marks": 1.0,
     "difficulty": 3,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76587",
@@ -5925,7 +5925,7 @@
     },
     "marks": 1.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "t76558",
@@ -5964,7 +5964,7 @@
     },
     "marks": 1.0,
     "difficulty": 1,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_claim_2025_agricultural-science_75899",
@@ -17471,7 +17471,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/tzZCvA5EI0BAvOS0qdtp1cius4OlVxB3brjAOIqD.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/tzZCvA5EI0BAvOS0qdtp1cius4OlVxB3brjAOIqD.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -20127,7 +20130,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/nUjMYKSBLMNfBkKQlUmPqQlPdeOcuUA2bUtMMIPj.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/nUjMYKSBLMNfBkKQlUmPqQlPdeOcuUA2bUtMMIPj.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -20162,7 +20168,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/q639VlHDpy5YQ6chohTVjM259DVF8DdygUFGlufp.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/q639VlHDpy5YQ6chohTVjM259DVF8DdygUFGlufp.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -20197,7 +20206,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/p8Nlf37fEwrn8AGT2sUQnl8e4S80s7ApkhQuckqv.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/p8Nlf37fEwrn8AGT2sUQnl8e4S80s7ApkhQuckqv.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -20232,7 +20244,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/g7dvnPa01WFXr7m16uPDVpuRt5lPWe7gHAdF52wr.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/g7dvnPa01WFXr7m16uPDVpuRt5lPWe7gHAdF52wr.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -29740,7 +29755,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/kcofwrg02uh6ocsAfB5Bv4X3wmZirTmI9dttOMrG.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/kcofwrg02uh6ocsAfB5Bv4X3wmZirTmI9dttOMrG.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -29775,7 +29793,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/E783MJIN033GeTWVzgqyQHT7SmJe8th882LD0zGO.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/E783MJIN033GeTWVzgqyQHT7SmJe8th882LD0zGO.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -30230,7 +30251,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/85rAb72GIJ0L5fnF4VoJiAOHDfIcNy2glkvsuuUB.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/85rAb72GIJ0L5fnF4VoJiAOHDfIcNy2glkvsuuUB.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -30300,7 +30324,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/BNH6ec8I0BRy3WE82xjaWTl5pOelu3fruqTjqL2m.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/BNH6ec8I0BRy3WE82xjaWTl5pOelu3fruqTjqL2m.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -30335,7 +30362,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/4tlJWt8pAU6Ijy9wutqNbjHubEBbEAzIM2F3M9Ag.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/4tlJWt8pAU6Ijy9wutqNbjHubEBbEAzIM2F3M9Ag.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -30370,7 +30400,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/tdpGrZXImWMAb9lqz7MK87gp75TgovHnu1Yf18E8.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/tdpGrZXImWMAb9lqz7MK87gp75TgovHnu1Yf18E8.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -31035,7 +31068,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/ttO1JqV5h6aLKRTxARNyzQRTK6x3p3CJhLA6RNJp.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/ttO1JqV5h6aLKRTxARNyzQRTK6x3p3CJhLA6RNJp.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -31070,7 +31106,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/GpfPiQtI900YDIJyuICaCPpwf2EegceAbt0HeD9z.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/GpfPiQtI900YDIJyuICaCPpwf2EegceAbt0HeD9z.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -31105,7 +31144,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/16b2RocX0KMao6ojZdltT3kBGygj5kx5fKcQIKsv.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/16b2RocX0KMao6ojZdltT3kBGygj5kx5fKcQIKsv.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -31140,7 +31182,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/KxaIT5zhLZwqsQLSDLbxC1ERGsnDxo0JKpBuiiV8.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/KxaIT5zhLZwqsQLSDLbxC1ERGsnDxo0JKpBuiiV8.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -31875,7 +31920,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/LaCeWRJYnQBX82aXXlOnTDziya6OnPH7ABRVozWB.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/LaCeWRJYnQBX82aXXlOnTDziya6OnPH7ABRVozWB.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -31980,7 +32028,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/v3l2962Se6vSXOAmd5BDAh0Ga05ymYzMVVU46Kof.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/v3l2962Se6vSXOAmd5BDAh0Ga05ymYzMVVU46Kof.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -32260,7 +32311,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/WFUlwyLwHojXbgTNxDzlvCh2XoUZYuWJVOAE8xPj.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/WFUlwyLwHojXbgTNxDzlvCh2XoUZYuWJVOAE8xPj.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -32435,7 +32489,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/aAx8n6dU1Jj6ddpLidKHlnogSGZaPTqoSqXzzTIR.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/aAx8n6dU1Jj6ddpLidKHlnogSGZaPTqoSqXzzTIR.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -32540,7 +32597,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/buDwD21gYIUOadmxiyzGtaaTbOLb28ra4pCCigsm.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/buDwD21gYIUOadmxiyzGtaaTbOLb28ra4pCCigsm.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -33030,7 +33090,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/31e6T5VbOGQMcD0kI5ij4gGiCi0pRWvctsG4fH35.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/31e6T5VbOGQMcD0kI5ij4gGiCi0pRWvctsG4fH35.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -33940,7 +34003,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/5QwKU2MEhUS9OCo6In4pbpaR1cBVz2x8wfPUy6c4.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/5QwKU2MEhUS9OCo6In4pbpaR1cBVz2x8wfPUy6c4.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -34045,7 +34111,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/7ru4aK84g72oRiot5mjFNDUVc8LXsdgMYlK0e26x.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/7ru4aK84g72oRiot5mjFNDUVc8LXsdgMYlK0e26x.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -34080,7 +34149,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/Yt34h0jeQ9T7YKh4e9cKwA9gcYO9RS4k10boXcbW.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/Yt34h0jeQ9T7YKh4e9cKwA9gcYO9RS4k10boXcbW.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -34360,7 +34432,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/DTcIaSq7iXL1Dsa1aanT8L7rGzDhAX6SLe8ioWnA.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/DTcIaSq7iXL1Dsa1aanT8L7rGzDhAX6SLe8ioWnA.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -34850,7 +34925,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/KWpabYKTAxvSiXIcMmdE6VLJ2LnCMUtOHCPiT2kj.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/KWpabYKTAxvSiXIcMmdE6VLJ2LnCMUtOHCPiT2kj.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -35830,7 +35908,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/opWHC0fyVyZoSNe2uWmtLSW76f2VyiS9xKei85cF.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/opWHC0fyVyZoSNe2uWmtLSW76f2VyiS9xKei85cF.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -36250,7 +36331,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/EkKLa5byYBjsBtkCgYo1cgfY3MY8sSfkDNE7NlZr.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/EkKLa5byYBjsBtkCgYo1cgfY3MY8sSfkDNE7NlZr.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -37230,7 +37314,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/yOdV6fFyEDBzwuVtNTTyln09dertXFLSHkFT5YeI.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/yOdV6fFyEDBzwuVtNTTyln09dertXFLSHkFT5YeI.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -37860,7 +37947,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/0XqAEEUjDI7GFXbv8Ut2MsBHn9BbMBcQAD72XcFb.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/0XqAEEUjDI7GFXbv8Ut2MsBHn9BbMBcQAD72XcFb.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -38210,7 +38300,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/SOXaPxz8DE9Ycpy8M6IBI6QeL9bO9SbLdxomqLph.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/SOXaPxz8DE9Ycpy8M6IBI6QeL9bO9SbLdxomqLph.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -38350,7 +38443,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/kc42GvqdISt79g8QkArVnnKSQI4YeeUtjfCjE4DD.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/kc42GvqdISt79g8QkArVnnKSQI4YeeUtjfCjE4DD.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -38630,7 +38726,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/fHaGhE4qLwF3p2C0pwdQgqPc6ny1TFLUslamOXUK.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/fHaGhE4qLwF3p2C0pwdQgqPc6ny1TFLUslamOXUK.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -39330,7 +39429,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/RYzF1W3iJxiuHMNIGLcwcLEgfwkMVo2jGHo7ehcl.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/RYzF1W3iJxiuHMNIGLcwcLEgfwkMVo2jGHo7ehcl.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -39400,7 +39502,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/M5MmrjUbwUKQyO8g11iUx9yVUx0qHESCYXUSQSt1.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/M5MmrjUbwUKQyO8g11iUx9yVUx0qHESCYXUSQSt1.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -39645,7 +39750,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/gWWvArxW5l6sxoKgUaCKK9EmwitMFsbamOA2oRiI.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/gWWvArxW5l6sxoKgUaCKK9EmwitMFsbamOA2oRiI.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -43250,7 +43358,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/CuhSVieJX6M1U3Jw4MguxYo9MR76CQV8fWppnyLI.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/CuhSVieJX6M1U3Jw4MguxYo9MR76CQV8fWppnyLI.png",
+      "position": "above"
+    },
     "explanation": {
       "key_point": "Split the triangle along the perpendicular.",
       "body": "The 20 cm side is cut into 11 and 9 by the 13 cm perpendicular, so the area is (1/2)(11)(13) + (1/2)(9)(13) = 71.5 + 58.5 = 130 cm^2.",
@@ -44615,7 +44726,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/0HqeHTW1CKqpKSjDtSl6Ie1M6qopMjuONhioBHwp.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/0HqeHTW1CKqpKSjDtSl6Ie1M6qopMjuONhioBHwp.png",
+      "position": "above"
+    },
     "explanation": {
       "key_point": "This is the standard 60 degree construction.",
       "body": "The arc struck from Y that cuts both arms at the same distance is the first step of constructing an equilateral triangle, whose angles are 60 degrees.",
@@ -44771,7 +44885,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/G64aNMf7HmJVH7IAlEnlXCQClu9XRNk07B3f1UdQ.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/G64aNMf7HmJVH7IAlEnlXCQClu9XRNk07B3f1UdQ.png",
+      "position": "above"
+    },
     "explanation": {
       "key_point": "Not yet verifiable from the published figure.",
       "body": "The mode of a grouped distribution is L + ((f1 - f0) / (2f1 - f0 - f2)) x h, which needs every frequency read exactly. The figure is low-resolution and the frequencies either side of the modal class are not legible with confidence; on the readings we can make, the stored answer does not follow, and on a plausible alternative reading it does. A wrong figure and a wrong answer look identical from here, so we will not guess.",
@@ -45122,7 +45239,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/BrleVCCTR9vyYWrymiwk2FVS1vSuSdD4QKHv5SkC.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/BrleVCCTR9vyYWrymiwk2FVS1vSuSdD4QKHv5SkC.png",
+      "position": "above"
+    },
     "explanation": {
       "key_point": "Angle = share of the total x 360.",
       "body": "The sectors total 16 + 24 + 27 + 21 + 8 = 96. Doctors are 16 of those, so 16/96 x 360 = **60 degrees**.",
@@ -45161,7 +45281,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/5AgSVvT4PuTana3HC7zIlLbmk8VFKK7q6k3JQJye.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/5AgSVvT4PuTana3HC7zIlLbmk8VFKK7q6k3JQJye.png",
+      "position": "above"
+    },
     "explanation": {
       "key_point": "Read the shading as: inside Q, outside both P and R.",
       "body": "The shaded part is what belongs to Q alone. Everything inside P or R is excluded, so it is the complement of P u R, taken within Q: **(P u R)' n Q**.",
@@ -45200,7 +45323,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/AVG3qECzMkFkQxAioIjOwxrcB2S2eV3g5vE75Zd1.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/AVG3qECzMkFkQxAioIjOwxrcB2S2eV3g5vE75Zd1.png",
+      "position": "above"
+    },
     "explanation": {
       "key_point": "Not yet verifiable from the published figure.",
       "body": "The modal weight depends on the frequencies in the table, and the scan is too low-resolution to read them with confidence. On our reading the frequencies do not support the stored answer; on a different reading they might. We will not publish a claim about the arithmetic of a figure we cannot read, and we will not redraw a table that came from a source we do not control.",
@@ -45278,7 +45404,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/3f4aqwkQxGSVvLlHEfLyqsxrt01I8QWoGA5ZUfBV.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/3f4aqwkQxGSVvLlHEfLyqsxrt01I8QWoGA5ZUfBV.png",
+      "position": "above"
+    },
     "explanation": {
       "key_point": "The modal class is the one with the highest frequency; its upper class boundary is half a unit above the class limit.",
       "body": "The highest frequency is 10, in the class 21-30. In a grouped distribution the classes run 20.5-30.5, so the **upper class boundary is 30.5**.",
@@ -45356,7 +45485,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/d386De6qPvenFwyL7qZkCNWDhaHClwnS8tWfWOkK.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/d386De6qPvenFwyL7qZkCNWDhaHClwnS8tWfWOkK.png",
+      "position": "above"
+    },
     "explanation": {
       "key_point": "Pythagoras first, then the ratio.",
       "body": "XY = sqrt(13^2 - 11^2) = sqrt 48. At X, cot theta is adjacent over opposite = XY/YZ = sqrt 48 / 11.",
@@ -45745,7 +45877,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/kCAj5lyerKxkM0wrEDCZXyRYbzn595Sj6UldCwwa.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/kCAj5lyerKxkM0wrEDCZXyRYbzn595Sj6UldCwwa.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -46375,7 +46510,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/KP7II0T9r2TqCnieMlyW8IodEdEQW4aN5ai6nJ3W.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/KP7II0T9r2TqCnieMlyW8IodEdEQW4aN5ai6nJ3W.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -47250,7 +47388,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/0CfjaNms40h8oE6oAhz3rzIyXO6ZOesEyTj4DhEV.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/0CfjaNms40h8oE6oAhz3rzIyXO6ZOesEyTj4DhEV.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -47355,7 +47496,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/ALLS30zImJqRTKDyBKGQXxHujBZAoVA75LVPwVmI.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/ALLS30zImJqRTKDyBKGQXxHujBZAoVA75LVPwVmI.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -47390,7 +47534,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/Dm73PEAaqoQpYVpCymu0j4ahvEFYHBiJJPrIIlro.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/Dm73PEAaqoQpYVpCymu0j4ahvEFYHBiJJPrIIlro.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -47530,7 +47677,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/iPbQhzl7l8BqnnJ1gENKIQutSBOsvylFMgRtP548.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/iPbQhzl7l8BqnnJ1gENKIQutSBOsvylFMgRtP548.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -47810,7 +47960,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/ILylAYxBEBJR8DgPu3zDC6yH21sDZ83rXyyhrMby.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/ILylAYxBEBJR8DgPu3zDC6yH21sDZ83rXyyhrMby.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -48195,7 +48348,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/8QoaAoSISXmCzVjRzamSVgtOBSJbUQVExvnwrnx0.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/8QoaAoSISXmCzVjRzamSVgtOBSJbUQVExvnwrnx0.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -48475,7 +48631,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/eSWtIuLKoNrAY8XLP45mkQ1vAKnA6UBHAo2nII4E.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/eSWtIuLKoNrAY8XLP45mkQ1vAKnA6UBHAo2nII4E.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -48685,7 +48844,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/847zMAKl6AfRLfsxwMH2sg2mP1KSz7uU3x7RVQnd.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/847zMAKl6AfRLfsxwMH2sg2mP1KSz7uU3x7RVQnd.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -48720,7 +48882,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/s6QlNZAcojjpkIgzWkxg8HpY8iqZYxDGGFmlL8IA.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/s6QlNZAcojjpkIgzWkxg8HpY8iqZYxDGGFmlL8IA.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -48755,7 +48920,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/JtxuAkHioPrWOAIn44Z4kShSjjK3uiDNpFaB8EHH.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/JtxuAkHioPrWOAIn44Z4kShSjjK3uiDNpFaB8EHH.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -48860,7 +49028,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/ZuIPdgCCbR09xB62LSh7F0wzPPTTrFCRBxHH3snA.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/ZuIPdgCCbR09xB62LSh7F0wzPPTTrFCRBxHH3snA.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -57634,7 +57805,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/L2YW2MNduRzWVRVeR0JdexOiqtYrjDhbKWvpH88v.jpeg",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/L2YW2MNduRzWVRVeR0JdexOiqtYrjDhbKWvpH88v.jpeg",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -79190,7 +79364,7 @@
     },
     "marks": 1.0,
     "difficulty": 2,
-    "verified": true
+    "verified": false
   },
   {
     "id": "q_claim_2025_christian-religious-knowledge-crk_74742",
@@ -79711,7 +79885,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/akUWrUQLbLsWZRrFuunWfs4BaqaDlblT9G3QJEfb.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/akUWrUQLbLsWZRrFuunWfs4BaqaDlblT9G3QJEfb.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -79886,7 +80063,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/DOk23R78OLAy7LjZSVAlH0Rak9wUatTU4iABf3s3.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/DOk23R78OLAy7LjZSVAlH0Rak9wUatTU4iABf3s3.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -79956,7 +80136,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/dMP9xN5X5y2PWfPEz0NE8p5tNo9S6MnbwiUzsfqy.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/dMP9xN5X5y2PWfPEz0NE8p5tNo9S6MnbwiUzsfqy.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -79991,7 +80174,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/vq3bnf0EMAwIWXKg6LFsotRZ5cfgWsD397rkvvNt.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/vq3bnf0EMAwIWXKg6LFsotRZ5cfgWsD397rkvvNt.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -80026,7 +80212,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/s4LOpCd0Oy42wbinKjRb4WySN4R6UQe2ofrDiOZE.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/s4LOpCd0Oy42wbinKjRb4WySN4R6UQe2ofrDiOZE.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -80061,7 +80250,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/mY0UzXWPsAhdE8mgUvZfDc0ceQS4FHeUPa0uVGTe.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/mY0UzXWPsAhdE8mgUvZfDc0ceQS4FHeUPa0uVGTe.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -80131,7 +80323,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/QH2PlnawKhuOuSNMauf2bVGzRCni1JBrk8gUilTp.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/QH2PlnawKhuOuSNMauf2bVGzRCni1JBrk8gUilTp.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -80166,7 +80361,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/MjuWSz5ImzxjsV5gZ26Eb9HiIWb9rne17gbaavYd.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/MjuWSz5ImzxjsV5gZ26Eb9HiIWb9rne17gbaavYd.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -80201,7 +80399,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/mVXylY8SsNc6Bo6WNbXLv2TeRehDLOweYaABe6FU.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/mVXylY8SsNc6Bo6WNbXLv2TeRehDLOweYaABe6FU.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -80271,7 +80472,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/ErLNjQwPIylGyjPWbyN5Z4KLkee2dtSq3wtGszI1.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/ErLNjQwPIylGyjPWbyN5Z4KLkee2dtSq3wtGszI1.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -80621,7 +80825,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/na941R6swipFyX2SmhGcShjbNyPlNP3uLuCgZ2NM.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/na941R6swipFyX2SmhGcShjbNyPlNP3uLuCgZ2NM.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -80656,7 +80863,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/AAFnr2sfNjfH1NYygzdj2oMvY2vh8rj65T6cYF7O.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/AAFnr2sfNjfH1NYygzdj2oMvY2vh8rj65T6cYF7O.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,
@@ -80726,7 +80936,10 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "image": "https://myschool.ng/storage/classroom/qss5SgLieLM9NIN33uaE3TxBZGXtr9XkklvlWtSb.png",
+    "image": {
+      "url": "https://myschool.ng/storage/classroom/qss5SgLieLM9NIN33uaE3TxBZGXtr9XkklvlWtSb.png",
+      "position": "above"
+    },
     "explanation": null,
     "marks": 2.5,
     "difficulty": 3,

@@ -56,6 +56,14 @@ enum Command {
         #[arg(long, short)]
         out: Option<PathBuf>,
     },
+    /// List every mechanically-defective row (underline without emphasis,
+    /// missing figures, duplicate stems, option counts, novel leaks).
+    /// Read-only: prints and exits.
+    Quarantine {
+        /// Directory holding questions.json. Defaults to the configured data dir.
+        #[arg(long)]
+        data: Option<PathBuf>,
+    },
 }
 
 #[derive(Subcommand)]
@@ -134,6 +142,14 @@ async fn run() -> Result<(), ApiError> {
             Ok(())
         }
         Command::Openapi { out } => write_openapi(out),
+        Command::Quarantine { data } => {
+            let data_dir = data.unwrap_or_else(|| PathBuf::from(&config.data_dir));
+            let mut out = String::new();
+            utmelab_api::quarantine::run(&data_dir, &mut out)
+                .map_err(|e| ApiError::config(e.to_string()))?;
+            print!("{out}");
+            Ok(())
+        }
     }
 }
 

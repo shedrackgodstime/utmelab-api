@@ -355,6 +355,46 @@ impl JsonStore {
                 ));
             }
 
+            // The underlined target must be quoted verbatim from the stem: a
+            // value pointing at words that are not there is the same defect as
+            // having none, with more confidence attached.
+            if let Some(e) = &q.emphasis {
+                if e.is_empty() || !q.text.contains(e.as_str()) {
+                    c.problems.push(format!(
+                        "questions.json: '{}' has emphasis {e:?}, which is not a substring of its text",
+                        q.id
+                    ));
+                }
+            }
+
+            // A figure is fetched by the client, so its URL must be fetchable:
+            // absolute https, or the stem's "see the diagram" points at a blank
+            // box. Relative paths are served by nothing (D55).
+            if let Some(img) = &q.image {
+                if !img.url.starts_with("https://") {
+                    c.problems.push(format!(
+                        "questions.json: '{}' has image URL {:?} — must be absolute https",
+                        q.id, img.url
+                    ));
+                }
+            }
+
+            // Stems and options are plain text plus \(...\) LaTeX (D56). An
+            // HTML entity or tag here is harvest residue — the 139-entity
+            // scrub proved it arrives silently — so the loader rejects it
+            // rather than serving mojibake to a student.
+            check_plain(&q.id, "text", &q.text, c);
+            for o in &q.options {
+                check_plain(&q.id, &format!("option '{}'", o.id), &o.text, c);
+            }
+            if let Some(e) = &q.explanation {
+                check_plain(&q.id, "key_point", &e.key_point, c);
+                check_plain(&q.id, "body", &e.body, c);
+                if let Some(t) = &e.trap {
+                    check_plain(&q.id, "trap", t, c);
+                }
+            }
+
             // Valid record, not yet servable: withheld, not fatal.
             if q.exam.is_empty() {
                 c.withheld
@@ -371,6 +411,19 @@ impl JsonStore {
                     c.problems.push(format!(
                         "questions.json: '{}' references unknown subtopic '{}'",
                         q.id, s
+                    ));
+                }
+            }
+
+            // A passage link must resolve: a stem pointing at a passage the
+            // bank does not hold is unanswerable as served. Inline-passage
+            // rows (Arabic/French carry their text in the stem) need no link
+            // and are unaffected — only a dangling pointer fails.
+            if let Some(p) = &q.passage_id {
+                if !self.passages.iter().any(|pp| &pp.id == p) {
+                    c.problems.push(format!(
+                        "questions.json: '{}' references unknown passage '{}'",
+                        q.id, p
                     ));
                 }
             }
@@ -767,6 +820,40 @@ fn read<T: for<'de> serde::Deserialize<'de>>(dir: &Path, file: &str, c: &mut Che
             c.problems.push(format!("{file}: {e}"));
             Vec::new()
         }
+    }
+}
+
+/// Plain-text gate (D56): `&entity;` and `<tag>` are harvest residue, never
+/// content. Scans byte-wise — no regex crate for two patterns. `x < 2` is
+/// fine (a `<` followed by a space or digit is comparison, not markup); `a<b`
+/// is flagged, and rightly so: ambiguous bytes must fail loudly, not render.
+fn check_plain(id: &str, field: &str, text: &str, c: &mut Checker) {
+    let b = text.as_bytes();
+    let mut i = 0;
+    while i < b.len() {
+        if b[i] == b'&' {
+            let mut j = i + 1;
+            while j < b.len() && b[j].is_ascii_alphabetic() {
+                j += 1;
+            }
+            if j > i + 1 && j < b.len() && b[j] == b';' {
+                c.problems.push(format!(
+                    "questions.json: '{id}' {field} carries HTML entity {:?} — unescape at the source",
+                    &text[i..=j.min(i + 24)],
+                ));
+                return;
+            }
+        }
+        if b[i] == b'<'
+            && i + 1 < b.len()
+            && (b[i + 1].is_ascii_alphabetic() || b[i + 1] == b'/' || b[i + 1] == b'!')
+        {
+            c.problems.push(format!(
+                "questions.json: '{id}' {field} carries markup — strip tags at the source",
+            ));
+            return;
+        }
+        i += 1;
     }
 }
 

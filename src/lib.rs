@@ -24,6 +24,7 @@ mod config;
 mod error;
 pub mod import;
 mod keys;
+pub mod quarantine;
 mod reports;
 
 pub use api::auth::Caller;

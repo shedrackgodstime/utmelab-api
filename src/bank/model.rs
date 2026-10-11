@@ -63,6 +63,29 @@ pub struct Choice {
     pub text: String,
 }
 
+/// Where the figure renders relative to the stem. Data, never inferred: the
+/// parent DB carries both ("the diagram above" ×1400, "the diagram below"
+/// ×144), so assuming one placement misrenders one row in eleven. A question
+/// with an image always knows its placement; a question without one carries
+/// none — the struct makes the nonsense state (placement without a figure)
+/// unrepresentable.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, ToSchema)]
+#[serde(rename_all = "lowercase")]
+pub enum ImagePosition {
+    Above,
+    Below,
+}
+
+/// A referenced figure. `url` is absolute `https` — enforced at load, because
+/// a relative path is served by nothing and fails loudly at the only gate we
+/// have rather than as a blank box on a student's screen. The mirror job
+/// replaces hotlinked URLs; the shape does not move when it does.
+#[derive(Clone, Debug, Serialize, Deserialize, ToSchema)]
+pub struct ImageRef {
+    pub url: String,
+    pub position: ImagePosition,
+}
+
 /// Why the answer is what it is (D17). `key_point` is the flashcard teaser,
 /// `body` the working, `trap` the distractor that catches people.
 #[derive(Clone, Debug, Serialize, Deserialize, ToSchema)]
@@ -91,6 +114,15 @@ pub struct Question {
     /// therefore tell an exam item from one we wrote, and never assume.
     pub source: String,
     pub text: String,
+    /// The exact substring of `text` the stem points at ("the underlined
+    /// word"). `None` everywhere except the English items whose stem names an
+    /// underlined word or portion — those are unanswerable without it, so the
+    /// loader refuses a value that is not a substring of `text`, and review
+    /// must fill it before `verified` may be set. Plain substring, not a span:
+    /// human-reviewable, grep-able, and it survives reflow that would silently
+    /// invalidate offsets.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub emphasis: Option<String>,
     pub options: Vec<Choice>,
     /// An **option id**, never a label or an index (D15).
     pub answer: String,
@@ -100,8 +132,10 @@ pub struct Question {
     pub section: Option<String>,
     #[serde(default)]
     pub passage_id: Option<String>,
+    /// The figure, if the stem needs one. `None` means text-only; `Some`
+    /// always carries both the URL and where it renders (D55).
     #[serde(default)]
-    pub image: Option<String>,
+    pub image: Option<ImageRef>,
     #[serde(default)]
     pub explanation: Option<Explanation>,
     pub marks: f32,
