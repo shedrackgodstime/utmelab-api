@@ -115,14 +115,14 @@
     },
     "marks": 2.5,
     "difficulty": 1,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_math_logarithm_001",
     "exam": "JAMB",
     "subject": "mathematics",
     "year": 2025,
-    "text": "Given \\(\\log_a x = 2\\) and \\(\\log_a 8 = 3\\), find \\(x\\).",
+    "text": "Given \\(\\log_a x = 2\\) and \\(\\log_a 27 = 3\\), find \\(x\\).",
     "options": [
       {
         "id": "a",
@@ -147,13 +147,13 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "Subtract the logarithms to divide the arguments.",
-      "body": "$$\\log_a \\frac{x}{8} = 2 - 3 = -1 \\Rightarrow \\frac{x}{8} = a^{-1}$$",
-      "trap": "27 comes from multiplying the exponents instead of subtracting them."
+      "key_point": "From \\(\\log_a 27 = 3\\): \\(a^3 = 27\\), so \\(a = 3\\). Then \\(\\log_3 x = 2\\) gives \\(x = 3^2 = 9\\).",
+      "body": "Solve the known logarithm for the base first, then substitute. \\(a = 3\\), so \\(x = 3^2 = 9\\).",
+      "trap": "Reading *27* as the answer — it is the argument of the logarithm you are given, not \\(x\\)."
     },
     "marks": 2.5,
     "difficulty": 4,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_math_coordinate_001",
@@ -183,7 +183,7 @@
     },
     "marks": 2.5,
     "difficulty": 1,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_physics_shm_001",
@@ -194,7 +194,7 @@
     "options": [
       {
         "id": "a",
-        "text": "\\(0.5\\,\\text{m/s}\\)"
+        "text": "\\(\\frac{\\pi}{2}\\,\\text{m/s}\\)"
       },
       {
         "id": "b",
@@ -215,13 +215,13 @@
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "\\(v_{max} = 2\\pi A / T\\).",
-      "body": "$$v_{max} = \\frac{2\\pi A}{T} = \\frac{2\\pi (0.5)}{2} = \\pi\\,\\text{m/s}$$",
-      "trap": "\\(2\\pi\\,\\text{m/s}\\) forgets to divide by the period."
+      "key_point": "Maximum speed is \\(v = \\omega A\\), and \\(\\omega = 2\\pi/T\\).",
+      "body": "\\(v_{max} = \\dfrac{2\\pi A}{T} = \\dfrac{2\\pi (0.5)}{2} = \\dfrac{\\pi}{2}\\,\\text{m/s}\\).",
+      "trap": "Using \\(A = 0.5\\) alone without the \\(2\\pi/T\\) factor gives \\(0.5\\,\\text{m/s}\\), and using \\(A = 1\\) gives \\(\\pi\\) — neither is the speed here."
     },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_comprehension_001",
@@ -415,7 +415,7 @@
     },
     "marks": 1,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_fine_arts_colour_001",
@@ -453,7 +453,7 @@
     },
     "marks": 2.5,
     "difficulty": 1,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_waec_2025_animal_husbandry_001",
@@ -491,7 +491,7 @@
     },
     "marks": 1,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_unassigned_civic_001",
@@ -567,7 +567,7 @@
     },
     "marks": 2.5,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_sentinterp_001",
@@ -605,7 +605,7 @@
     },
     "marks": 2,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_sentinterp_002",
@@ -643,7 +643,7 @@
     },
     "marks": 2,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_antonym_001",
@@ -681,7 +681,7 @@
     },
     "marks": 2,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_antonym_002",
@@ -719,7 +719,7 @@
     },
     "marks": 2,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_synonym_001",
@@ -757,7 +757,7 @@
     },
     "marks": 1,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_synonym_002",
@@ -795,7 +795,7 @@
     },
     "marks": 1,
     "difficulty": 1,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_grammar_001",
@@ -833,7 +833,7 @@
     },
     "marks": 2,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_grammar_002",
@@ -871,7 +871,7 @@
     },
     "marks": 2,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_comprehension_003",
@@ -1023,7 +1023,7 @@
     },
     "marks": 2,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_cloze_003",
@@ -1061,7 +1061,7 @@
     },
     "marks": 2,
     "difficulty": 1,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_cloze_004",
@@ -1099,7 +1099,7 @@
     },
     "marks": 2,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_consonant_001",
@@ -1137,7 +1137,7 @@
     },
     "marks": 1,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_consonant_002",
@@ -1175,7 +1175,7 @@
     },
     "marks": 1,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_rhyme_001",
@@ -1213,7 +1213,7 @@
     },
     "marks": 1,
     "difficulty": 1,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_rhyme_002",
@@ -1251,7 +1251,7 @@
     },
     "marks": 1,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_stress_001",
@@ -1289,7 +1289,7 @@
     },
     "marks": 1,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_stress_002",
@@ -1327,7 +1327,7 @@
     },
     "marks": 1,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_emphatic_001",
@@ -1353,19 +1353,19 @@
         "text": "Did Ada sell a new car?"
       }
     ],
-    "answer": "c",
+    "answer": "a",
     "subtopic_id": "emphatic-stress",
     "section": "Emphatic Stress",
     "passage_id": null,
     "image": null,
     "explanation": {
-      "key_point": "Emphasis on *new* contrasts it with the alternative — *not* new.",
-      "body": "The question that *new* answers is 'a new what?' — (c) supplies the contrast (bicycle), which is what emphasis does.",
-      "trap": "(b) emphasises *Ada*, not *new* — it answers 'who', and the underlined word is not the subject."
+      "key_point": "Emphasised *new* turns the sentence into a yes/no question about the car being new — not about Ada, and not about a bicycle.",
+      "body": "The emphasis falls on *new*, so the echo of the question must fall there too: *Did Ada buy a NEW car?*",
+      "trap": "'*a new bicycle*' keeps the emphasis shape but swaps the noun — a question about a different car asks about something the sentence never mentions."
     },
     "marks": 1,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_emphatic_002",
@@ -1403,7 +1403,7 @@
     },
     "marks": 1,
     "difficulty": 1,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_sentinterp_003",
@@ -1441,7 +1441,7 @@
     },
     "marks": 2,
     "difficulty": 1,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_sentinterp_004",
@@ -1479,7 +1479,7 @@
     },
     "marks": 2,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_sentinterp_005",
@@ -1517,7 +1517,7 @@
     },
     "marks": 2,
     "difficulty": 1,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_sentinterp_006",
@@ -1555,7 +1555,7 @@
     },
     "marks": 2,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_antonym_003",
@@ -1593,7 +1593,7 @@
     },
     "marks": 2,
     "difficulty": 1,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_antonym_004",
@@ -1631,7 +1631,7 @@
     },
     "marks": 2,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_antonym_005",
@@ -1669,7 +1669,7 @@
     },
     "marks": 2,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_antonym_006",
@@ -1707,7 +1707,7 @@
     },
     "marks": 2,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_synonym_003",
@@ -1745,7 +1745,7 @@
     },
     "marks": 1,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_synonym_004",
@@ -1783,7 +1783,7 @@
     },
     "marks": 1,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_synonym_005",
@@ -1821,7 +1821,7 @@
     },
     "marks": 1,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_synonym_006",
@@ -1859,7 +1859,7 @@
     },
     "marks": 1,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_grammar_003",
@@ -1897,7 +1897,7 @@
     },
     "marks": 2,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_grammar_004",
@@ -1935,7 +1935,7 @@
     },
     "marks": 2,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_grammar_005",
@@ -1973,7 +1973,7 @@
     },
     "marks": 2,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_grammar_006",
@@ -2011,7 +2011,7 @@
     },
     "marks": 2,
     "difficulty": 4,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_comprehension_006",
@@ -2163,7 +2163,7 @@
     },
     "marks": 1,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "q_jamb_2025_eng_vowel_003",
@@ -2201,7 +2201,7 @@
     },
     "marks": 1,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "t74822",
@@ -2592,7 +2592,7 @@
     "options": [
       {
         "id": "a",
-        "text": "immigrants"
+        "text": "tourists"
       },
       {
         "id": "b",
@@ -2614,7 +2614,7 @@
     "image": null,
     "explanation": {
       "key_point": "*Natives* belong by origin; *foreigners* belong elsewhere.",
-      "body": "The opposition is origin against foreignness. *Indigenes* is a synonym of natives.",
+      "body": "The sentence marks *indigenes* — natives. *Foreigners* are the opposite of natives; *visitors* and *tourists* are simply people present, not people from elsewhere in the opposite sense.",
       "trap": "'Immigrants' describes movement, not origin — an immigrant can become a native's neighbour without ceasing to be one."
     },
     "marks": 2,
@@ -2668,7 +2668,7 @@
     "options": [
       {
         "id": "a",
-        "text": "pleased"
+        "text": "feared"
       },
       {
         "id": "b",
@@ -2690,7 +2690,7 @@
     "image": null,
     "explanation": {
       "key_point": "To *anger* is to provoke; to *appease* is to pacify what was provoked.",
-      "body": "*Appeased* reverses the specific act — calming anger — where *pleased* merely describes a good mood.",
+      "body": "*Angered* means *offended*. *Appeased* is to calm that anger — *appease* is its opposite. *Feared* is not the opposite of *angered*; it is a different relationship entirely.",
       "trap": "'Pleased' is the loose opposite; *appeased* is the precise one, and precision is what is tested."
     },
     "marks": 2,
@@ -3113,7 +3113,7 @@
     },
     "marks": 1,
     "difficulty": 1,
-    "verified": false
+    "verified": true
   },
   {
     "id": "t76546",
@@ -3455,7 +3455,7 @@
     },
     "marks": 1,
     "difficulty": 3,
-    "verified": false
+    "verified": true
   },
   {
     "id": "t74864",
@@ -3493,7 +3493,7 @@
     },
     "marks": 1,
     "difficulty": 2,
-    "verified": false
+    "verified": true
   },
   {
     "id": "t74865",

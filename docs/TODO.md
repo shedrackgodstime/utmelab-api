@@ -14,7 +14,8 @@ and the report endpoint are all shipped. What remains is content, not code:
 
 - [ ] English bank: 155 questions → keep deepening thin subtopics (emphatic-stress ×2 is thinnest)
 - [ ] Passages: 5 exist; comprehension needs a bench, not one passage per type
-- [ ] **`verified` backlog — now an audit, not a tally.** 100/155 after D45. Every remaining ported row marked verified is *unreviewed*: spot-checks found errors, so the label must be re-earned row by row (antonyms 20, synonyms 19, vowels 17, consonants 17 are the biggest pools).
+- [ ] **`verified` is now 148/155.** 133 rows were read line by line; 6 were fixed. The 7 still unverified are honest leftovers: 6 `fiction` comprehension questions that need their passage read against the stem, and `q_unassigned_civic_001`, which is withheld anyway (D21).
+- [ ] **Re-check `word-stress` and `emphatic-stress` before trusting either pool.** They carried the only wrong answers in the audit — spot-check any new stress question twice.
 - [ ] **Option counts are unrealistic.** 152 of 155 questions have 4 options; JAMB sets 5 (A–E), and only 2 rows do. Consumers building a JAMB-shaped UI will see it.
 - [ ] **2-option question** `q_jamb_2025_math_coordinate_001` — a two-way choice in a four-way bank
 - [ ] Port 2025 English remainder by hand (101 non-novel done; 296 novel rows parked — stale, not ours)
