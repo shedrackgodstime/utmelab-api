@@ -26,6 +26,16 @@ cargo run -- import --dry-run             # merge data/inbox into the bank
 cargo run -- quarantine                   # mechanical-defect report, read-only
 ```
 
+Review is Python (no toolchain needed — works on any machine, human or agent):
+
+```bash
+python3 tools/review.py show <id> [--json]  # one question + everything related
+python3 tools/review.py next [--subject s]  # lowest-id unverified, deterministic
+python3 tools/review.py verify <id>         # refuses quarantined/explanationless
+python3 tools/review.py set <id> [--subtopic S] [--emphasis E] [...]
+python3 tools/review.py stats               # progress per subject
+```
+
 Config is environment only (`UTMELAB_API_BIND`, `UTMELAB_API_DATA_DIR`,
 `TURSO_DB_URL`, `TURSO_DB_TOKEN`, … — see `src/config.rs`). The catalog and
 novels are embedded in the binary; `UTMELAB_API_DATA_DIR` holds exactly
@@ -43,7 +53,7 @@ novels are embedded in the binary; `UTMELAB_API_DATA_DIR` holds exactly
 | `src/quarantine.rs` | mechanical-defect scan: underline/image/dupes/leaks |
 | `data/` | working copy: `questions.json` + catalog + `novels/` + `inbox/` staging |
 | `web/` | static docs tier (Astro), built to `dist/` and shipped with the binary |
-| `tools/` | harvester, syllabus importer, emphasis worksheet |
+| `tools/` | harvester, syllabus importer, emphasis worksheet, review workbench |
 
 ## Decisions first
 

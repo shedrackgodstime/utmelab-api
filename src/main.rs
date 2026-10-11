@@ -107,6 +107,10 @@ enum KeyAction {
 #[tokio::main]
 async fn main() {
     tracing_subscriber::fmt()
+        // Logs go to stderr, always: machine-readable documents go to stdout
+        // (`openapi` file output aside, agents parse command output), and a
+        // log line in the middle is a corrupted document.
+        .with_writer(std::io::stderr)
         .with_env_filter(
             tracing_subscriber::EnvFilter::try_from_default_env()
                 .unwrap_or_else(|_| "utmelab_api=info".into()),
