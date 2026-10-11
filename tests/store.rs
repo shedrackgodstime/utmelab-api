@@ -330,6 +330,9 @@ fn novels_are_newest_first() {
 #[test]
 fn only_a_named_paper_may_claim_a_year() {
     let bank = JsonStore::load(repo_root()).expect("load");
+    // D49 added `claimed_paper`: a third party attributes it to a named year,
+    // which we have not verified — so it may carry one, unlike `authored` and
+    // `imported`. This test predates that and asserted the stricter rule.
     for page in [
         bank.questions_page(QuestionFilter::default(), 1, 200),
         bank.questions_page(
@@ -350,7 +353,7 @@ fn only_a_named_paper_may_claim_a_year() {
         ),
     ] {
         for q in page.questions {
-            if q.source != "past_paper" {
+            if !matches!(q.source.as_str(), "past_paper" | "claimed_paper") {
                 assert!(
                     q.year.is_none(),
                     "{} is {} yet claims year {:?} — there is no paper to point at",
@@ -371,7 +374,7 @@ fn the_source_filter_partitions_by_provenance() {
         .total_records;
 
     let mut split = 0;
-    for source in ["authored", "imported"] {
+    for source in ["authored", "imported", "claimed_paper"] {
         let page = bank.questions_page(
             QuestionFilter {
                 source: Some(source),
@@ -383,5 +386,8 @@ fn the_source_filter_partitions_by_provenance() {
         assert!(page.questions.iter().all(|q| q.source == source));
         split += page.total_records;
     }
-    assert_eq!(split, all, "every row is either authored or imported today");
+    assert_eq!(
+        split, all,
+        "every row has exactly one provenance, and the three partition it"
+    );
 }

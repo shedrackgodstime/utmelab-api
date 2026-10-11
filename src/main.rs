@@ -34,6 +34,18 @@ enum Command {
         #[command(subcommand)]
         action: KeyAction,
     },
+    /// Move harvested questions from the inbox into the bank (D51).
+    Import {
+        /// Directory holding harvested subject files.
+        #[arg(long, default_value = "data/inbox")]
+        inbox: PathBuf,
+        /// Directory holding the catalog and questions.json.
+        #[arg(long)]
+        data: Option<PathBuf>,
+        /// Report what would happen; write nothing.
+        #[arg(long)]
+        dry_run: bool,
+    },
     /// Write the OpenAPI document to a file (or stdout) for the docs build.
     ///
     /// The web tier reads a *file*, not the live URL, so the docs build is
@@ -88,6 +100,16 @@ async fn run() -> Result<(), ApiError> {
         Command::Key { action } => {
             let mut keys = KeyStore::open_json(&config.keys_file)?;
             admin(&config, &mut keys, action)
+        }
+        Command::Import {
+            inbox,
+            data,
+            dry_run,
+        } => {
+            let data_dir = data.unwrap_or_else(|| PathBuf::from(&config.data_dir));
+            utmelab_api::import::run(&inbox, &data_dir, dry_run)
+                .map_err(|e| ApiError::config(e.to_string()))?;
+            Ok(())
         }
         Command::Openapi { out } => write_openapi(out),
     }

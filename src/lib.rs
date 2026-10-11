@@ -22,6 +22,7 @@ pub mod api;
 mod bank;
 mod config;
 mod error;
+pub mod import;
 mod keys;
 mod reports;
 

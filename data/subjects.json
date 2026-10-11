@@ -1,5 +1,12 @@
 [
   {
+    "slug": "agricultural-science",
+    "exam": "JAMB",
+    "name": "Agricultural Science",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
     "slug": "art",
     "exam": "JAMB",
     "name": "Art",
@@ -7,9 +14,65 @@
     "full_exam_questions": 40
   },
   {
+    "slug": "biology",
+    "exam": "JAMB",
+    "name": "Biology",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
+    "slug": "chemistry",
+    "exam": "JAMB",
+    "name": "Chemistry",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
+    "slug": "christian-religious-studies",
+    "exam": "JAMB",
+    "name": "Christian Religious Studies",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
+    "slug": "commerce",
+    "exam": "JAMB",
+    "name": "Commerce",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
+    "slug": "economics",
+    "exam": "JAMB",
+    "name": "Economics",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
+    "slug": "geography",
+    "exam": "JAMB",
+    "name": "Geography",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
     "slug": "government",
     "exam": "JAMB",
     "name": "Government",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
+    "slug": "history",
+    "exam": "JAMB",
+    "name": "History",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
+    "slug": "literature-in-english",
+    "exam": "JAMB",
+    "name": "Literature-in-English",
     "is_compulsory": false,
     "full_exam_questions": 40
   },

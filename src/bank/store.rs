@@ -62,6 +62,10 @@ impl QuestionPage {
 ///    fingerprints the rows it would serve, so a consumer's cached copy is
 ///    invalidated by a content change rather than by a deploy.
 pub trait Store: Send + Sync {
+    /// Every servable question, in file order. Used by the importer to spot
+    /// duplicates before writing (D51); routes never need it.
+    fn questions(&self) -> &[Question];
+
     /// Fingerprint of the content being served. Equal string means equal
     /// content; anything else means a consumer should refresh (D42).
     fn version(&self) -> &str;

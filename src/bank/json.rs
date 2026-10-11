@@ -309,6 +309,30 @@ impl JsonStore {
         &self.questions
     }
 
+    /// Replace the loaded questions wholesale — the import path only (D51).
+    /// Nothing else may call this: bulk edits to the bank go through review.
+    ///
+    /// Returns the validation problems rather than swallowing them. A write
+    /// that produces a file the loader would reject turns a good bank into an
+    /// unbootable one, so the caller must see them and refuse.
+    pub fn replace_questions(&mut self, questions: Vec<Question>) -> Vec<String> {
+        self.questions = questions;
+        let mut checker = Checker::default();
+        self.validate(&mut checker);
+        self.index();
+        checker.problems
+    }
+
+    /// Write the current questions back to `dir/questions.json`.
+    pub fn write_questions(&self, dir: &Path) -> Result<(), StoreError> {
+        let body = serde_json::to_string_pretty(&self.questions).map_err(|e| StoreError {
+            problems: vec![e.to_string()],
+        })?;
+        std::fs::write(dir.join("questions.json"), format!("{body}\n")).map_err(|e| StoreError {
+            problems: vec![format!("write questions.json: {e}")],
+        })
+    }
+
     fn questions_for_subtopic(&self, subtopic: &str) -> Vec<&Question> {
         let mut out: Vec<&Question> = self
             .questions_by_subtopic
@@ -471,6 +495,12 @@ impl Store for JsonStore {
 
     fn version(&self) -> &str {
         &self.version
+    }
+
+    /// The loaded questions, in file order. Used by the import path to detect
+    /// duplicates before anything is written (D51).
+    fn questions(&self) -> &[Question] {
+        &self.questions
     }
 
     fn questions_page(&self, filter: QuestionFilter<'_>, page: u32, per_page: u32) -> QuestionPage {
