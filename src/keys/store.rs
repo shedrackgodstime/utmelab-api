@@ -17,6 +17,7 @@ use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 
 use super::ApiKey;
+use super::{default_account, default_plan, default_scopes};
 use crate::error::ApiError;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -24,8 +25,31 @@ struct StoredKey {
     id: String,
     key_hash: String,
     label: String,
+    /// Owner. Always `"local"` in v1 (no accounts) — the column exists so
+    /// Phase 2 is additive, not a migration.
+    #[serde(default = "default_account")]
+    account_id: String,
+    #[serde(default = "default_plan")]
+    plan: String,
+    #[serde(default = "default_scopes")]
+    scopes: String,
     rate_limit: u32,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    quota_monthly: Option<u32>,
+    /// First 11 chars of the plaintext (`sk_` + 8 hex). Support lookup only —
+    /// never authenticates.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    key_prefix: Option<String>,
     created_at: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    last_used_at: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    expires_at: Option<String>,
+    /// Reserved for Phase 2 (abuse/billing). No v1 writer.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    suspended_at: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    suspend_reason: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     revoked_at: Option<String>,
 }
@@ -35,8 +59,17 @@ impl StoredKey {
         ApiKey {
             id: self.id.clone(),
             label: self.label.clone(),
+            account_id: self.account_id.clone(),
+            plan: self.plan.clone(),
+            scopes: self.scopes.clone(),
             rate_limit: self.rate_limit,
+            quota_monthly: self.quota_monthly,
+            key_prefix: self.key_prefix.clone(),
             created_at: self.created_at.clone(),
+            last_used_at: self.last_used_at.clone(),
+            expires_at: self.expires_at.clone(),
+            suspended_at: self.suspended_at.clone(),
+            suspend_reason: self.suspend_reason.clone(),
             revoked_at: self.revoked_at.clone(),
         }
     }
@@ -60,6 +93,10 @@ pub struct KeyStore {
     file: KeyFile,
     /// Index by digest so resolution is a lookup, not a scan.
     index: HashMap<String, StoredKey>,
+    /// mtime at last load — backing for [`KeyStore::reload_if_changed`] (R1).
+    /// The CLI rewrites this file from another process; the server must see it
+    /// without a restart.
+    loaded_mtime: Option<std::time::SystemTime>,
 }
 
 impl KeyStore {
@@ -85,7 +122,42 @@ impl KeyStore {
             .map(|k| (k.key_hash.clone(), k.clone()))
             .collect();
 
-        Ok(Self { path, file, index })
+        Ok(Self {
+            path: path.clone(),
+            file,
+            index,
+            loaded_mtime: mtime_of(&path),
+        })
+    }
+
+    /// Re-read the file if another process (the CLI) changed it since we
+    /// loaded. Returns true when state was refreshed. A missing file keeps the
+    /// last known keys — cached live keys fail open, unknown keys fail closed.
+    pub fn reload_if_changed(&mut self) -> Result<bool, ApiError> {
+        let current = mtime_of(&self.path);
+        if current == self.loaded_mtime {
+            return Ok(false);
+        }
+        let bytes = match std::fs::read(&self.path) {
+            Ok(b) => b,
+            Err(e) if e.kind() == std::io::ErrorKind::NotFound => return Ok(false),
+            Err(e) => {
+                return Err(ApiError::Internal(format!(
+                    "read {}: {e}",
+                    self.path.display()
+                )));
+            }
+        };
+        let file: KeyFile = serde_json::from_slice(&bytes)
+            .map_err(|e| ApiError::Internal(format!("{} is corrupt: {e}", self.path.display())))?;
+        self.index = file
+            .keys
+            .iter()
+            .map(|k| (k.key_hash.clone(), k.clone()))
+            .collect();
+        self.file = file;
+        self.loaded_mtime = current;
+        Ok(true)
     }
 
     pub fn count(&self) -> usize {
@@ -101,28 +173,89 @@ impl KeyStore {
     /// caller must display once and must never log.
     pub fn create(&mut self, label: &str, rate_limit: u32) -> Result<(ApiKey, String), ApiError> {
         let plaintext = generate_key();
-        let hash = hash_key(&plaintext);
 
         let record = StoredKey {
             id: new_id(),
-            key_hash: hash.clone(),
+            key_hash: hash_key(&plaintext),
             label: label.to_owned(),
+            account_id: "local".to_owned(),
+            plan: "free".to_owned(),
+            scopes: "questions:read reports:write".to_owned(),
             rate_limit,
+            quota_monthly: None,
+            key_prefix: Some(prefix_of(&plaintext)),
             created_at: now_iso(),
+            last_used_at: None,
+            expires_at: None,
+            suspended_at: None,
+            suspend_reason: None,
             revoked_at: None,
         };
 
-        self.persist(record.clone())?;
+        self.upsert(record.clone());
+        self.save()?;
         Ok((record.to_api_key(), plaintext))
     }
 
-    /// Resolve a presented key. `None` for unknown **or** revoked.
+    /// Every key, insertion order, including revoked and expired — owner
+    /// visibility for the CLI. Never carries secret material by construction
+    /// (see `ApiKey`: no plaintext, no hash).
+    pub fn list(&self) -> Vec<ApiKey> {
+        self.file.keys.iter().map(StoredKey::to_api_key).collect()
+    }
+
+    /// Resolve a presented key. `None` for unknown, revoked, suspended **or**
+    /// expired — callers must never distinguish them.
     pub fn resolve(&self, presented: &str) -> Option<ApiKey> {
         let hash = hash_key(presented);
         self.index
             .get(&hash)
-            .filter(|k| k.revoked_at.is_none())
             .map(StoredKey::to_api_key)
+            .filter(|k| k.is_live())
+    }
+
+    /// Rotate a key: a successor is issued with the same label and rate limit,
+    /// and the old key expires after `grace_hours`. Returns `None` when no
+    /// live key carries `id`. The old plaintext is untouched — only the new
+    /// one is ever shown.
+    pub fn rotate(
+        &mut self,
+        id: &str,
+        grace_hours: u64,
+    ) -> Result<Option<(ApiKey, String)>, ApiError> {
+        let Some(existing) = self.index.values().find(|k| k.id == id).cloned() else {
+            return Ok(None);
+        };
+        if existing.revoked_at.is_some() {
+            return Ok(None);
+        }
+
+        let plaintext = generate_key();
+        let successor = StoredKey {
+            id: new_id(),
+            key_hash: hash_key(&plaintext),
+            label: existing.label.clone(),
+            account_id: existing.account_id.clone(),
+            plan: existing.plan.clone(),
+            scopes: existing.scopes.clone(),
+            rate_limit: existing.rate_limit,
+            quota_monthly: existing.quota_monthly,
+            key_prefix: Some(prefix_of(&plaintext)),
+            created_at: now_iso(),
+            last_used_at: None,
+            expires_at: None,
+            suspended_at: None,
+            suspend_reason: None,
+            revoked_at: None,
+        };
+
+        let mut old = existing;
+        old.expires_at = Some((now_secs() + grace_hours.saturating_mul(3600)).to_string());
+
+        self.upsert(old);
+        self.upsert(successor.clone());
+        self.save()?;
+        Ok(Some((successor.to_api_key(), plaintext)))
     }
 
     pub fn revoke(&mut self, id: &str) -> Result<bool, ApiError> {
@@ -135,16 +268,20 @@ impl KeyStore {
 
         let mut record = existing;
         record.revoked_at = Some(now_iso());
-        self.persist(record)?;
+        self.upsert(record);
+        self.save()?;
         Ok(true)
     }
 
-    fn persist(&mut self, record: StoredKey) -> Result<(), ApiError> {
+    fn upsert(&mut self, record: StoredKey) {
         match self.file.keys.iter_mut().find(|k| k.id == record.id) {
             Some(existing) => *existing = record.clone(),
             None => self.file.keys.push(record.clone()),
         }
+        self.index.insert(record.key_hash.clone(), record);
+    }
 
+    fn save(&mut self) -> Result<(), ApiError> {
         // Write-then-rename: a crash mid-write must not truncate the only copy
         // of the credentials.
         let bytes = serde_json::to_vec_pretty(&self.file)
@@ -157,9 +294,15 @@ impl KeyStore {
         std::fs::rename(&tmp, &self.path)
             .map_err(|e| ApiError::Internal(format!("rename into {}: {e}", self.path.display())))?;
 
-        self.index.insert(record.key_hash.clone(), record);
+        self.loaded_mtime = mtime_of(&self.path);
         Ok(())
     }
+}
+
+/// mtime of a path, or None when it has none (missing file, coarse FS).
+/// Equality is all we need: changed or not.
+fn mtime_of(path: &Path) -> Option<std::time::SystemTime> {
+    std::fs::metadata(path).and_then(|m| m.modified()).ok()
 }
 
 /// Best effort: the file holds credential digests, so keep it owner-only.
@@ -188,6 +331,12 @@ fn hash_key(key: &str) -> String {
     hex(&Sha256::digest(key.as_bytes()))
 }
 
+/// First 11 chars of the plaintext (`sk_` + 8 hex) for support lookup.
+/// Never authenticates — the hash does that.
+fn prefix_of(plaintext: &str) -> String {
+    plaintext.chars().take(11).collect()
+}
+
 fn new_id() -> String {
     let mut bytes = [0u8; 16];
     rand::rng().fill(&mut bytes);
@@ -199,11 +348,15 @@ fn hex(bytes: &[u8]) -> String {
 }
 
 /// Seconds-resolution UTC. Good enough for a credential lifecycle timestamp and
-/// keeps the dependency list short.
-fn now_iso() -> String {
-    let secs = std::time::SystemTime::now()
+/// keeps the dependency list short. Also the unit of `expires_at`, so
+/// [`ApiKey::status`] can compare without parsing dates.
+fn now_secs() -> u64 {
+    std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)
         .map(|d| d.as_secs())
-        .unwrap_or(0);
-    secs.to_string()
+        .unwrap_or(0)
+}
+
+fn now_iso() -> String {
+    now_secs().to_string()
 }

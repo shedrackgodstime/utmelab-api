@@ -8,7 +8,7 @@
 //! These assert the contract that makes it interchangeable with a list item:
 //! same shape, same answer-withholding rule, same 401.
 
-use std::sync::{Arc, Mutex, OnceLock};
+use std::sync::{Arc, Mutex, OnceLock, RwLock};
 
 use axum::body::Body;
 use axum::http::{Request, StatusCode};
@@ -43,7 +43,9 @@ fn state() -> AppState {
     let _ = std::fs::remove_file(&reports_path);
     AppState {
         bank: Arc::new(JsonStore::load(&data).expect("bank loads")),
-        keys: KeyStore::open_json(&keys_path).expect("key store"),
+        keys: Arc::new(RwLock::new(
+            KeyStore::open_json(&keys_path).expect("key store"),
+        )),
         limiter: Arc::new(Mutex::new(RateLimiter::new())),
         reports: Arc::new(Mutex::new(
             ReportStore::open(&reports_path).expect("report store"),
@@ -75,8 +77,8 @@ fn key() -> &'static str {
     KEY.get_or_init(|| {
         let path = keys_path();
         let _ = std::fs::remove_file(&path);
-        let mut state = state();
-        state.keys.create("test", 60).expect("key is issued").1
+        let mut keys = KeyStore::open_json(&path).expect("key store");
+        keys.create("test", 60).expect("key is issued").1
     })
 }
 

@@ -8,7 +8,7 @@
 //! So these assert the preflight a browser actually performs, and the header on
 //! the response the browser then reads.
 
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, Mutex, RwLock};
 
 use axum::body::Body;
 use axum::http::{HeaderMap, Method, Request, StatusCode};
@@ -24,7 +24,9 @@ fn state() -> AppState {
     let _ = std::fs::remove_file(&reports_path);
     AppState {
         bank: Arc::new(JsonStore::load(&data).expect("bank loads")),
-        keys: KeyStore::open_json(&keys_path).expect("key store"),
+        keys: Arc::new(RwLock::new(
+            KeyStore::open_json(&keys_path).expect("key store"),
+        )),
         limiter: Arc::new(Mutex::new(RateLimiter::new())),
         reports: Arc::new(Mutex::new(
             ReportStore::open(&reports_path).expect("report store"),

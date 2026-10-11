@@ -1,15 +1,12 @@
 # TODO — utmelab-api
 
-> Last updated: 2026-10-10. Items move here from `QUESTION_BANK_DECISIONS.md`
+> Last updated: 2026-10-11. Items move here from `QUESTION_BANK_DECISIONS.md`
 > when they become work. Done items stay for the record; delete nothing.
 
 ## Now
 
 - [ ] **39 Lekki Headmaster questions still staged** in `data/inbox/lekki-headmaster-candidates.json`. Of 77 harvested, 9 were not novel questions (returned to the bank), 15 had truncated stems carrying no question at all, 1 duplicated an existing question with a garbled name, and only 4 could be verified against our own chapter summaries — those 4 joined the novel document (50 -> 54). The rest stay staged: their keys are third-party and our summaries cannot check their detail, so adding them would raise the count without raising trust.
-
-**Build-now list is empty.** CORS, `bank_version`, `Retry-After`, search, scheme
-and the report endpoint are all shipped. What remains is content, not code:
-
+- [ ] **v1 key seam (D53, Phase 0)** — `KeyStore::{list,rotate,reload_if_changed}`, extended `ApiKey` (`account_id/plan/prefix/expires_at`, defaulted), `AppState.keys: Arc<RwLock<KeyStore>>`, `key list/rotate` CLI. Verdict: `cargo build` + `cargo test` + live `serve → create → keys/me → revoke → 401` with no restart. No sessions, no `/internal/*`, no web.
 - [ ] **Assemble a paper** (`POST /exams/{exam}/papers`) — **gated on content, not on code** (D41). Scheme + readiness are live. Assembly (shuffle, `?seed=`, answers withheld, score) waits until a subject can fill its full count: JAMB needs 180 verified rows, we hold 103.
 
 ## Content (English-first, D34)

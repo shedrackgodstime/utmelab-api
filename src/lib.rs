@@ -33,7 +33,7 @@ pub use api::openapi::document as openapi_document;
 pub use bank::{DEFAULT_PER_PAGE, JsonStore, MAX_PER_PAGE, QuestionFilter, Store, StoreError};
 pub use config::Config;
 pub use error::ApiError;
-pub use keys::{ApiKey, KeyStore};
+pub use keys::{ApiKey, KeyStatus, KeyStore};
 pub use reports::{QuestionReport, ReportReason, ReportStore};
 
 use axum::Json;
@@ -42,14 +42,18 @@ use axum::extract::State;
 use axum::http;
 use axum::routing::get;
 use serde::Serialize;
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, Mutex, RwLock};
 
 /// Everything a handler may read. The bank is behind `dyn Store` so swapping
 /// the backing store never reaches the routes.
 #[derive(Clone)]
 pub struct AppState {
     pub bank: Arc<dyn Store>,
-    pub keys: KeyStore,
+    /// Behind `Arc<RwLock<…>>` (R1): the CLI rewrites the key file from
+    /// another process, so the server must see changes without a restart.
+    /// Readers take the write lock only because resolve reloads-on-change;
+    /// the common case is one stat() and no parse.
+    pub keys: Arc<RwLock<KeyStore>>,
     /// Behind an `Arc<Mutex<…>>` because axum requires `Clone` state but the
     /// limiter is mutable — one lock held for a few arithmetic operations.
     pub limiter: Arc<Mutex<RateLimiter>>,

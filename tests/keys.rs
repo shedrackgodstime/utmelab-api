@@ -48,6 +48,85 @@ fn unknown_and_revoked_keys_are_indistinguishable() {
 }
 
 #[test]
+fn expired_keys_do_not_resolve_but_stay_listed() {
+    use utmelab_api::KeyStatus;
+
+    let (mut s, _) = store("expiry");
+    let (record, plaintext) = s.create("old", 10).expect("create");
+    assert!(s.resolve(&plaintext).is_some());
+
+    // Rotate with zero grace: old key expires immediately.
+    let (successor, new_plaintext) = s
+        .rotate(&record.id, 0)
+        .expect("rotate")
+        .expect("old key was live");
+    assert_ne!(successor.id, record.id);
+    assert!(s.resolve(&new_plaintext).is_some());
+
+    let rows = s.list();
+    let old = rows.iter().find(|k| k.id == record.id).expect("old listed");
+    assert_eq!(old.status(), KeyStatus::Expired);
+    assert!(!old.is_live());
+    assert!(
+        s.resolve(&plaintext).is_none(),
+        "expired key must not resolve"
+    );
+}
+
+#[test]
+fn rotation_returns_none_for_unknown_or_dead_keys() {
+    let (mut s, _) = store("rotate-none");
+    assert!(s.rotate("key_nope", 24).expect("rotate").is_none());
+
+    let (record, _) = s.create("gone", 10).expect("create");
+    assert!(s.revoke(&record.id).expect("revoke"));
+    assert!(s.rotate(&record.id, 24).expect("rotate").is_none());
+}
+
+#[test]
+fn list_shows_every_key_with_status_and_no_secrets() {
+    let (mut s, _) = store("list");
+    let (a, a_plain) = s.create("first", 10).expect("create");
+    let (b, _) = s.create("second", 20).expect("create");
+    assert!(s.revoke(&b.id).expect("revoke"));
+
+    let rows = s.list();
+    assert_eq!(rows.len(), 2);
+    assert_eq!(rows[0].id, a.id);
+    assert_eq!(rows[1].id, b.id);
+    for row in &rows {
+        assert_eq!(row.account_id, "local");
+        assert_eq!(row.plan, "free");
+        assert!(row.key_prefix.as_deref().is_some_and(|p| p.starts_with("sk_")));
+        let serialised = serde_json::to_string(row).unwrap();
+        assert!(!serialised.contains(&a_plain));
+        assert!(!serialised.contains("key_hash"));
+    }
+    assert!(rows[0].is_live());
+    assert!(!rows[1].is_live());
+}
+
+#[test]
+fn a_cli_change_is_visible_after_reload() {
+    let (mut s, path) = store("reload");
+    let (record, plaintext) = s.create("live", 10).expect("create");
+    assert!(s.resolve(&plaintext).is_some());
+
+    // Another process (the CLI) revokes behind our back.
+    let mut other = KeyStore::open_json(&path).expect("reopen");
+    assert!(other.revoke(&record.id).expect("revoke"));
+
+    // We still see the stale state until we reload — then it lands.
+    assert!(s.resolve(&plaintext).is_some(), "stale until reload");
+    assert!(s.reload_if_changed().expect("reload"));
+    assert!(
+        s.resolve(&plaintext).is_none(),
+        "revoke visible without restart"
+    );
+    assert!(!s.reload_if_changed().expect("second reload is a no-op"));
+}
+
+#[test]
 fn distinct_keys_get_distinct_digests() {
     let (mut s, _) = store("distinct");
     let (_, a) = s.create("a", 10).expect("create");

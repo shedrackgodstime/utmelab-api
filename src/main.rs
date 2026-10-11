@@ -12,7 +12,7 @@
 
 use clap::{Parser, Subcommand};
 use std::path::PathBuf;
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, Mutex, RwLock};
 
 use utmelab_api::{
     ApiError, AppState, Config, JsonStore, KeyStore, RateLimiter, ReportStore, Store,
@@ -75,6 +75,17 @@ enum KeyAction {
     Revoke {
         #[arg(long)]
         id: String,
+    },
+    /// List keys. Safe columns only — never secrets.
+    List,
+    /// Rotate a key: successor issued, old key expires after a grace period.
+    Rotate {
+        /// Id of the key being replaced.
+        #[arg(long)]
+        id: String,
+        /// Hours the old key stays valid. Defaults to 24.
+        #[arg(long, default_value_t = 24)]
+        grace_hours: u64,
     },
 }
 
@@ -139,7 +150,7 @@ async fn serve(config: &Config) -> Result<(), ApiError> {
 
     let reports_path = config.reports_file.clone();
     let state = AppState {
-        keys,
+        keys: Arc::new(RwLock::new(keys)),
         bank: Arc::new(bank),
         limiter: Arc::new(Mutex::new(RateLimiter::new())),
         reports: Arc::new(Mutex::new(
@@ -177,8 +188,53 @@ fn admin(config: &Config, keys: &mut KeyStore, action: KeyAction) -> Result<(), 
                 println!("no live key with id {id}");
             }
         }
+        KeyAction::List => {
+            let rows = keys.list();
+            if rows.is_empty() {
+                println!("no keys");
+            } else {
+                // Safe columns only: id, prefix, label, plan, rate, status.
+                // No hashes, no plaintext — ever.
+                println!(
+                    "{:<36} {:<11} {:<24} {:<6} {:>8}  {}",
+                    "ID", "PREFIX", "LABEL", "PLAN", "RATE/MIN", "STATUS"
+                );
+                for k in &rows {
+                    println!(
+                        "{:<36} {:<11} {:<24} {:<6} {:>8}  {}",
+                        k.id,
+                        k.key_prefix.as_deref().unwrap_or("-"),
+                        truncate(&k.label, 24),
+                        k.plan,
+                        k.rate_limit,
+                        k.status().as_str(),
+                    );
+                }
+            }
+        }
+        KeyAction::Rotate { id, grace_hours } => {
+            match keys.rotate(&id, grace_hours)? {
+                Some((record, plaintext)) => {
+                    println!("\n  API KEY ROTATED — copy the new key now, it is never shown again\n");
+                    println!("    {plaintext}\n");
+                    println!("    new id      {}", record.id);
+                    println!("    label       {}", record.label);
+                    println!("    old id      {id} (expires in {grace_hours}h)");
+                }
+                None => println!("no live key with id {id}"),
+            }
+        }
     }
     Ok(())
+}
+
+fn truncate(text: &str, max: usize) -> String {
+    if text.chars().count() <= max {
+        return text.to_owned();
+    }
+    let mut out: String = text.chars().take(max.saturating_sub(1)).collect();
+    out.push('…');
+    out
 }
 
 fn write_openapi(out: Option<PathBuf>) -> Result<(), ApiError> {

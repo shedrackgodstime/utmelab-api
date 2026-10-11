@@ -34,10 +34,19 @@ impl FromRequestParts<AppState> for Caller {
             .filter(|v| !v.is_empty())
             .ok_or(ApiError::Unauthorized)?;
 
-        let key = state
-            .keys
-            .resolve(presented)
-            .ok_or(ApiError::Unauthorized)?;
+        // R1: the key file is rewritten by the CLI in another process, so
+        // reload-on-resolve. mtime equality short-circuits the common case to
+        // one stat() — no parse, no IO — and revoke/create take effect on the
+        // next request without a restart.
+        let key = {
+            let mut keys = state
+                .keys
+                .write()
+                .map_err(|_| ApiError::internal("key store poisoned"))?;
+            let _ = keys.reload_if_changed();
+            keys.resolve(presented)
+        }
+        .ok_or(ApiError::Unauthorized)?;
 
         // Every authenticated request spends a token (D27). A shared budget per
         // key — not per IP — so one busy integrator cannot exhaust another's.
