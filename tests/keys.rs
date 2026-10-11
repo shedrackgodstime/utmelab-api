@@ -27,10 +27,15 @@ fn created_key_resolves_and_carries_no_secret() {
     assert_eq!(resolved.label, "test");
     assert_eq!(resolved.rate_limit, 10);
 
-    // The stored record must not carry the plaintext anywhere.
+    // The stored record must not carry the plaintext anywhere. `key_prefix`
+    // (first 11 chars) IS a fragment of it by design — support lookup only,
+    // it never authenticates (D53) — so the blanket "no sk_" check from
+    // before the prefix existed is now: full plaintext absent, prefix short.
     let serialised = serde_json::to_string(&resolved).unwrap();
-    assert!(!serialised.contains(&plaintext));
-    assert!(!serialised.contains("sk_"));
+    assert!(!serialised.contains(&plaintext), "full plaintext must never appear");
+    for fragment in serialised.split('"').filter(|s| s.starts_with("sk_")) {
+        assert!(fragment.len() <= 11, "only the 11-char prefix may appear: {fragment}");
+    }
 }
 
 #[test]

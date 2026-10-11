@@ -9,11 +9,131 @@
 //! defaulted to `"local"` so Phase 2 (accounts/dashboard) is additive.
 
 mod store;
+mod turso;
 
 pub use store::KeyStore;
+pub use turso::{ImportReport, TursoKeyStore};
+
+use std::path::Path;
+use std::sync::RwLock;
 
 use serde::{Deserialize, Serialize};
 use utoipa::ToSchema;
+
+use crate::error::ApiError;
+
+/// Which key store the process runs on. Selected once at boot from config:
+/// Turso when `TURSO_DB_URL` + `TURSO_DB_TOKEN` are both set, the gitignored
+/// file otherwise (dev, and recovery when Turso is down).
+///
+/// One backend, one shape for every caller — `auth.rs` and the CLI never know
+/// which they got. This is the D23 discipline applied to keys (D53): a Turso
+/// impl behind the same seam, file stays fallback forever.
+pub enum KeyBackend {
+    /// Reload-on-resolve behind the lock: the CLI rewrites the file from
+    /// another process, so R1 applies per request (one stat, common case).
+    File(RwLock<KeyStore>),
+    Remote(Box<TursoKeyStore>),
+}
+
+impl KeyBackend {
+    pub fn file(store: KeyStore) -> Self {
+        Self::File(RwLock::new(store))
+    }
+
+    pub async fn open_remote(url: &str, token: &str, ttl_secs: u64) -> Result<Self, ApiError> {
+        Ok(Self::Remote(Box::new(
+            TursoKeyStore::open(url, token, ttl_secs).await?,
+        )))
+    }
+
+    /// Human-readable backend for boot logs: `file:var/api_keys.json` or
+    /// `turso:<url host>`. Never the token.
+    pub fn describe(&self) -> String {
+        match self {
+            Self::File(lock) => {
+                let path = lock
+                    .read()
+                    .map(|s| s.path().display().to_string())
+                    .unwrap_or_else(|_| "<locked>".into());
+                format!("file:{path}")
+            }
+            Self::Remote(_) => "turso".to_owned(),
+        }
+    }
+
+    pub async fn resolve(&self, presented: &str) -> Option<ApiKey> {
+        match self {
+            Self::File(lock) => {
+                let mut store = lock.write().ok()?;
+                // R1: CLI changes land without a restart; mtime equality is
+                // one stat in the common case.
+                let _ = store.reload_if_changed();
+                store.resolve(presented)
+            }
+            Self::Remote(r) => r.resolve(presented).await,
+        }
+    }
+
+    pub async fn count(&self) -> Result<usize, ApiError> {
+        match self {
+            Self::File(lock) => Ok(lock.read().map_err(|_| poisoned())?.count()),
+            Self::Remote(r) => r.count().await,
+        }
+    }
+
+    pub async fn create(&self, label: &str, rate_limit: u32) -> Result<(ApiKey, String), ApiError> {
+        match self {
+            Self::File(lock) => lock.write().map_err(|_| poisoned())?.create(label, rate_limit),
+            Self::Remote(r) => r.create(label, rate_limit).await,
+        }
+    }
+
+    pub async fn list(&self) -> Result<Vec<ApiKey>, ApiError> {
+        match self {
+            Self::File(lock) => Ok(lock.read().map_err(|_| poisoned())?.list()),
+            Self::Remote(r) => r.list().await,
+        }
+    }
+
+    pub async fn revoke(&self, id: &str) -> Result<bool, ApiError> {
+        match self {
+            Self::File(lock) => lock.write().map_err(|_| poisoned())?.revoke(id),
+            Self::Remote(r) => r.revoke(id).await,
+        }
+    }
+
+    pub async fn rotate(
+        &self,
+        id: &str,
+        grace_hours: u64,
+    ) -> Result<Option<(ApiKey, String)>, ApiError> {
+        match self {
+            Self::File(lock) => lock
+                .write()
+                .map_err(|_| poisoned())?
+                .rotate(id, grace_hours),
+            Self::Remote(r) => r.rotate(id, grace_hours).await,
+        }
+    }
+
+    /// `key import` — only meaningful file -> Turso; refused otherwise.
+    pub async fn import_file(&self, path: &Path, dry_run: bool) -> Result<ImportReport, ApiError> {
+        match self {
+            Self::File(_) => Err(ApiError::config(
+                "key import requires the Turso backend (TURSO_DB_URL + TURSO_DB_TOKEN set)",
+            )),
+            Self::Remote(r) => {
+                let source = KeyStore::open_json(path)?;
+                r.import(&source, dry_run).await
+            }
+        }
+    }
+}
+
+fn poisoned() -> ApiError {
+    ApiError::Internal("key store poisoned".into())
+}
 
 fn default_account() -> String {
     "local".to_owned()

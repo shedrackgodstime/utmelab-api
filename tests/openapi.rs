@@ -7,7 +7,7 @@
 //! The reverse (a route added but never documented) cannot be asserted here:
 //! axum exposes no route introspection. It is caught in review.
 
-use std::sync::{Arc, Mutex, RwLock};
+use std::sync::{Arc, Mutex};
 
 use axum::body::Body;
 use axum::http::{Request, StatusCode};
@@ -15,7 +15,7 @@ use http_body_util::BodyExt;
 use tower::ServiceExt;
 use utmelab_api::Store as _;
 use utmelab_api::openapi_document;
-use utmelab_api::{AppState, JsonStore, KeyStore, RateLimiter, ReportStore, router};
+use utmelab_api::{AppState, JsonStore, KeyBackend, KeyStore, RateLimiter, ReportStore, router};
 
 fn state() -> AppState {
     let data = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
@@ -28,7 +28,7 @@ fn state() -> AppState {
     let _ = std::fs::remove_file(&reports_path);
     AppState {
         bank: Arc::new(JsonStore::load(&data).expect("bank loads")),
-        keys: Arc::new(RwLock::new(
+        keys: Arc::new(KeyBackend::file(
             KeyStore::open_json(&keys_path).expect("key store"),
         )),
         limiter: Arc::new(Mutex::new(RateLimiter::new())),

@@ -20,42 +20,44 @@ use super::ApiKey;
 use super::{default_account, default_plan, default_scopes};
 use crate::error::ApiError;
 
+/// One row of the single `api_keys` table — file and Turso both store exactly
+/// this shape, so migration is column-for-column with no mapping layer.
 #[derive(Clone, Debug, Serialize, Deserialize)]
-struct StoredKey {
-    id: String,
-    key_hash: String,
-    label: String,
+pub(super) struct StoredKey {
+    pub(super) id: String,
+    pub(super) key_hash: String,
+    pub(super) label: String,
     /// Owner. Always `"local"` in v1 (no accounts) — the column exists so
     /// Phase 2 is additive, not a migration.
     #[serde(default = "default_account")]
-    account_id: String,
+    pub(super) account_id: String,
     #[serde(default = "default_plan")]
-    plan: String,
+    pub(super) plan: String,
     #[serde(default = "default_scopes")]
-    scopes: String,
-    rate_limit: u32,
+    pub(super) scopes: String,
+    pub(super) rate_limit: u32,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    quota_monthly: Option<u32>,
+    pub(super) quota_monthly: Option<u32>,
     /// First 11 chars of the plaintext (`sk_` + 8 hex). Support lookup only —
     /// never authenticates.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    key_prefix: Option<String>,
-    created_at: String,
+    pub(super) key_prefix: Option<String>,
+    pub(super) created_at: String,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    last_used_at: Option<String>,
+    pub(super) last_used_at: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    expires_at: Option<String>,
+    pub(super) expires_at: Option<String>,
     /// Reserved for Phase 2 (abuse/billing). No v1 writer.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    suspended_at: Option<String>,
+    pub(super) suspended_at: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    suspend_reason: Option<String>,
+    pub(super) suspend_reason: Option<String>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    revoked_at: Option<String>,
+    pub(super) revoked_at: Option<String>,
 }
 
 impl StoredKey {
-    fn to_api_key(&self) -> ApiKey {
+    pub(super) fn to_api_key(&self) -> ApiKey {
         ApiKey {
             id: self.id.clone(),
             label: self.label.clone(),
@@ -204,6 +206,13 @@ impl KeyStore {
         self.file.keys.iter().map(StoredKey::to_api_key).collect()
     }
 
+    /// Raw rows, for `key import` (file -> Turso). Same shape the table holds,
+    /// so migration copies columns verbatim — hashes included, plaintext never
+    /// existed here to copy.
+    pub(super) fn stored(&self) -> &[StoredKey] {
+        &self.file.keys
+    }
+
     /// Resolve a presented key. `None` for unknown, revoked, suspended **or**
     /// expired — callers must never distinguish them.
     pub fn resolve(&self, presented: &str) -> Option<ApiKey> {
@@ -321,23 +330,23 @@ fn restrict_permissions(path: &Path) -> Result<(), ApiError> {
 }
 
 /// `sk_` + 32 random bytes as hex — 256 bits of entropy.
-fn generate_key() -> String {
+pub(super) fn generate_key() -> String {
     let mut bytes = [0u8; 32];
     rand::rng().fill(&mut bytes);
     format!("sk_{}", hex(&bytes))
 }
 
-fn hash_key(key: &str) -> String {
+pub(super) fn hash_key(key: &str) -> String {
     hex(&Sha256::digest(key.as_bytes()))
 }
 
 /// First 11 chars of the plaintext (`sk_` + 8 hex) for support lookup.
 /// Never authenticates — the hash does that.
-fn prefix_of(plaintext: &str) -> String {
+pub(super) fn prefix_of(plaintext: &str) -> String {
     plaintext.chars().take(11).collect()
 }
 
-fn new_id() -> String {
+pub(super) fn new_id() -> String {
     let mut bytes = [0u8; 16];
     rand::rng().fill(&mut bytes);
     format!("key_{}", hex(&bytes))
@@ -350,13 +359,13 @@ fn hex(bytes: &[u8]) -> String {
 /// Seconds-resolution UTC. Good enough for a credential lifecycle timestamp and
 /// keeps the dependency list short. Also the unit of `expires_at`, so
 /// [`ApiKey::status`] can compare without parsing dates.
-fn now_secs() -> u64 {
+pub(super) fn now_secs() -> u64 {
     std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)
         .map(|d| d.as_secs())
         .unwrap_or(0)
 }
 
-fn now_iso() -> String {
+pub(super) fn now_iso() -> String {
     now_secs().to_string()
 }

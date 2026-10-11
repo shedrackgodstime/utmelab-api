@@ -8,13 +8,13 @@
 //! These assert the contract that makes it interchangeable with a list item:
 //! same shape, same answer-withholding rule, same 401.
 
-use std::sync::{Arc, Mutex, OnceLock, RwLock};
+use std::sync::{Arc, Mutex, OnceLock};
 
 use axum::body::Body;
 use axum::http::{Request, StatusCode};
 use tower::ServiceExt;
 use utmelab_api::Store as _;
-use utmelab_api::{AppState, JsonStore, KeyStore, RateLimiter, ReportStore, router};
+use utmelab_api::{AppState, JsonStore, KeyBackend, KeyStore, RateLimiter, ReportStore, router};
 
 /// A real id, discovered from the bank rather than hardcoded — Ids get renamed
 /// (D47 stripped a false claim out of 56 of them), and a test that pins an id
@@ -43,7 +43,7 @@ fn state() -> AppState {
     let _ = std::fs::remove_file(&reports_path);
     AppState {
         bank: Arc::new(JsonStore::load(&data).expect("bank loads")),
-        keys: Arc::new(RwLock::new(
+        keys: Arc::new(KeyBackend::file(
             KeyStore::open_json(&keys_path).expect("key store"),
         )),
         limiter: Arc::new(Mutex::new(RateLimiter::new())),

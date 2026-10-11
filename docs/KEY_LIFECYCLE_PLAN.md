@@ -170,4 +170,14 @@ Source: `https://docs.turso.tech/sdk/rust/quickstart.md` + `/connect/rust.md` + 
 - API shape we will use (Phase 1): `turso_serverless::Builder::new_remote(url).with_auth_token(token).build().await?`, `db.connect()?`, `conn.execute(sql, params).await?` with `?`/`?1` positional or `:name` named bindings, `conn.query(sql, params).await?` → `rows.next().await?` → `row.get(i)?`, plus `prepare`, `transaction` (`tx.commit().await?`), `execute_batch` for DDL.
 - **Decision for Phase 1 (keys): use `turso_serverless` (authoritative remote reads) + `CachedKeyStore` TTL ~30s, NOT local+sync.** Rationale: revocation must be globally visible on next request; `turso::sync` local-first would need CLI `push` + server `pull` choreography per revoke — extra moving parts for zero benefit at one instance. Serverless read-per-miss is fine behind the cache (p99 <5ms cached); usage writes batch async.
 
+### 11.1 Verified live (2026-10-11)
+
+Phase 1 shipped and smoke-tested end-to-end against the **real Turso database** (`TURSO_DB_URL`/`TURSO_DB_TOKEN` were exported in the dev shell, so `serve` auto-selected the remote backend):
+
+1. `key create` (CLI process) → row + `api_keys` DDL landed in Turso.
+2. `GET /api/v1/keys/me` with the new key → **200**, full D53 shape (`account_id=local, plan=free, key_prefix, scopes`).
+3. `key revoke` (CLI, second process, server not restarted) → next probe **200** (server's cache still fresh — see caveat), probe after 35s → **401**. Cache TTL expiry confirmed.
+
+**Caveat recorded, honest not hidden:** cross-process revoke (CLI today) is visible to a running server **within `KEY_CACHE_TTL_SECS` (default 30s)**, not instantly — a separate process cannot invalidate the server's in-memory cache. Same-process revokes (Phase 2 dashboard → `/internal/*` on the server itself) are immediate via cache invalidation. The file backend is unaffected (mtime reload = immediate). TTL is configurable for tighter windows.
+
 > Next: promote Phase 0 to D-ID + TODO Now and build the trait + `Arc<dyn KeyStore>` + `key list/rotate` CLI. No sessions, no `/internal/*`, no web until v1 API is solid.
