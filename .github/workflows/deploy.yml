@@ -137,13 +137,25 @@ jobs:
             exit 1
           fi
           echo "shipping: $TARBALL"
-          SSH="-o StrictHostKeyChecking=yes -i ~/.ssh/deploy -p ${VPS_PORT}"
-          scp $SSH "$TARBALL" "${VPS_USER}@${VPS_HOST}:/tmp/${APP}-${VERSION}.tar.gz"
-          ssh $SSH "${VPS_USER}@${VPS_HOST}" "set -e
-            mkdir -p /opt/apps/${APP}/releases/${VERSION}
-            tar -xzf /tmp/${APP}-${VERSION}.tar.gz -C /opt/apps/${APP}/releases/${VERSION}
-            rm -f /tmp/${APP}-${VERSION}.tar.gz
-            sudo /usr/local/bin/${APP}-deploy ${VERSION}"
+          # Args are written inline, not stuffed into a variable and expanded
+          # unquoted: `scp $SSH` would not tilde-expand ~/.ssh/deploy, and
+          # scp's port flag is -P (lowercase -p means preserve-attributes,
+          # which silently made VPS_PORT look like the source path).
+          scp \
+            -o StrictHostKeyChecking=yes \
+            -i ~/.ssh/deploy \
+            -P "${VPS_PORT}" \
+            "$TARBALL" \
+            "${VPS_USER}@${VPS_HOST}:/tmp/${APP}-${VERSION}.tar.gz"
+          ssh \
+            -o StrictHostKeyChecking=yes \
+            -i ~/.ssh/deploy \
+            -p "${VPS_PORT}" \
+            "${VPS_USER}@${VPS_HOST}" "set -e
+              mkdir -p /opt/apps/${APP}/releases/${VERSION}
+              tar -xzf /tmp/${APP}-${VERSION}.tar.gz -C /opt/apps/${APP}/releases/${VERSION}
+              rm -f /tmp/${APP}-${VERSION}.tar.gz
+              sudo /usr/local/bin/${APP}-deploy ${VERSION}"
 
       - name: Show health
         env:
@@ -151,5 +163,9 @@ jobs:
           VPS_PORT: ${{ secrets.VPS_PORT }}
           VPS_USER: ${{ secrets.VPS_USER }}
         run: |
-          SSH="-o StrictHostKeyChecking=yes -i ~/.ssh/deploy -p ${VPS_PORT}"
-          ssh $SSH "${VPS_USER}@${VPS_HOST}" "systemctl is-active ${APP}; curl -s http://127.0.0.1:${API_PORT}/health || true"
+          ssh \
+            -o StrictHostKeyChecking=yes \
+            -i ~/.ssh/deploy \
+            -p "${VPS_PORT}" \
+            "${VPS_USER}@${VPS_HOST}" \
+            "systemctl is-active ${APP}; curl -s http://127.0.0.1:${API_PORT}/health || true"
