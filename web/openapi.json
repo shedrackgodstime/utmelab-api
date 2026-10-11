@@ -458,6 +458,53 @@
         ]
       }
     },
+    "/api/v1/questions/{id}": {
+      "get": {
+        "tags": [
+          "questions"
+        ],
+        "summary": "One question, addressed by the id we handed out.",
+        "description": "One question by id, shaped exactly like an item from `/questions`.\n\nThe answer is withheld unless `include_explanation=true`, the same rule the list follows.",
+        "operationId": "getQuestion",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "A question id, exactly as returned by `/questions`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include_explanation",
+            "in": "query",
+            "description": "Include the answer and the working. Default: false.",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RenderedQuestion"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing or invalid API key"
+          },
+          "404": {
+            "description": "No question with that id"
+          }
+        }
+      }
+    },
     "/api/v1/questions/{id}/report": {
       "post": {
         "tags": [

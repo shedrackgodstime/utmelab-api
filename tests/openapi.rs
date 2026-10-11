@@ -42,6 +42,9 @@ fn concrete(path: &str) -> String {
     if path.starts_with("/api/v1/passages/") {
         return path.replace("{id}", "psg_jamb_2025_eng_comprehension_1");
     }
+    if path.starts_with("/api/v1/questions/{id}") {
+        return path.replace("{id}", "q_jamb_2025_math_surds_001");
+    }
     if path.starts_with("/api/v1/topics/") {
         return path
             .replace("{exam}", "JAMB")

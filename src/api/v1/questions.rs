@@ -10,7 +10,7 @@
 
 use axum::Json;
 use axum::Router;
-use axum::extract::{Query, State};
+use axum::extract::{Path, Query, State};
 use axum::routing::get;
 use serde::{Deserialize, Serialize};
 use utoipa::ToSchema;
@@ -52,7 +52,56 @@ pub struct Filter {
 }
 
 pub fn router() -> Router<AppState> {
-    Router::new().route("/v1/questions", get(questions))
+    Router::new()
+        .route("/v1/questions", get(questions))
+        .route("/v1/questions/{id}", get(question_by_id))
+}
+
+/// The query a single-row fetch accepts. Same opt-in as the list, so a consumer
+/// can resolve a saved id with the same call it already uses to page.
+#[derive(Deserialize)]
+pub struct Detail {
+    pub include_explanation: Option<bool>,
+}
+
+/// One question, addressed by the id we handed out.
+///
+/// Exists because every consumer that stores an id — a saved question, a report
+/// receipt, a deep link — otherwise has no way back to the row. Same route
+/// shape as `/novels/{id}` and `/passages/{id}`; the store seam already had
+/// `Store::question()` for it.
+#[utoipa::path(
+    get,
+    path = "/api/v1/questions/{id}",
+    tag = "questions",
+    operation_id = "getQuestion",
+    description = "One question by id, shaped exactly like an item from `/questions`.\n\nThe answer \
+is withheld unless `include_explanation=true`, the same rule the list follows.",
+    params(
+        ("id" = String, Path, description = "A question id, exactly as returned by `/questions`."),
+        ("include_explanation" = Option<bool>, Query,
+         description = "Include the answer and the working. Default: false."),
+    ),
+    responses(
+        (status = 200, body = RenderedQuestion),
+        (status = 401, description = "Missing or invalid API key"),
+        (status = 404, description = "No question with that id"),
+    ),
+)]
+pub async fn question_by_id(
+    State(state): State<AppState>,
+    _caller: Caller,
+    Path(id): Path<String>,
+    Query(f): Query<Detail>,
+) -> Result<Json<RenderedQuestion>, ApiError> {
+    let question = state.bank.question(&id).ok_or_else(|| {
+        ApiError::not_found("question_not_found", format!("No question with id '{id}'."))
+    })?;
+
+    Ok(Json(render(
+        question,
+        f.include_explanation.unwrap_or(false),
+    )))
 }
 
 #[utoipa::path(

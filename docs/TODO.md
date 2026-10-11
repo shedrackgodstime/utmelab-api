@@ -35,6 +35,7 @@ and the report endpoint are all shipped. What remains is content, not code:
 
 ## Done
 
+- [x] `GET /questions/{id}` — resolve a stored id; same shape and withholding rule as a list item
 - [x] CORS `*` (D39) — preflight answered, `x-api-key` permitted, `Retry-After` exposed to JS
 - [x] `?q=` search on `/questions` — substring, unranked, through the store seam (D44)
 - [x] `Retry-After` on every 429, and only on 429s (D43)
