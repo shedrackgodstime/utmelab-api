@@ -1,0 +1,158 @@
+# HANDOFF — utmelab-api
+
+**Read this first if you are a fresh session.** It is the map; the decision log
+is the law; this is what you need to not repeat our mistakes.
+
+Repo: `/data/data/com.termux/files/home/projects/UTME-Lab/utmelab-api`
+Remote: `github-shedrackgodstime:utmelab-api` · branch `main`
+Parent repo `UTME-Lab` **ignores this directory** — it is a separate product.
+
+---
+
+## 1. What this is
+
+A commercial question-bank API for JAMB/WAEC/NECO. Five surfaces: the bank
+(questions), the catalog (subjects/topics/subtopics/syllabus), keys and rate
+limiting, the report intake, and a static docs tier. It is also the eventual
+backend for the user's own UTME-Lab app.
+
+## 2. Build and test
+
+```bash
+cargo build
+cargo test                 # must be green before any push
+cargo clippy --all-targets # must be clean
+cargo fmt
+cargo run -- openapi --out web/openapi.json   # regenerate the spec after route changes
+```
+
+**One test is currently red** and is not ours: `created_key_resolves_and_carries_no_secret`
+in `tests/keys.rs`. The merged D53 key work serialises a `key_prefix` containing
+`sk_`, which that test forbids. **Open question for the user:** is a visible key
+prefix intended? Do not "fix" it without that answer.
+
+## 3. Where the decisions live
+
+| file | what it is |
+|---|---|
+| `docs/QUESTION_BANK_DECISIONS.md` | D1–D53. The law. Each row states the rule, its status (PINNED/DEFERRED/REJECTED/SUPERSEDED) and its grounds. |
+| `docs/TODO.md` | what is next, and why something is not |
+| `docs/UNDERLINE_PROBLEM.md` | the largest open defect; read before touching English |
+| `docs/API_REVIEW.md`, `docs/KEY_LIFECYCLE_PLAN.md` | from the D53 key work |
+
+## 4. Current state
+
+```
+2,416 questions · 25/25 JAMB subjects clear 40 · all year 2025
+213 verified (9%) · 215 explained
+catalog: 566 topics, 2,092 subtopics
+novel:   the featured set text has 54 verified questions
+bank_version in /health changes only when content changes
+```
+
+Per-subject question counts and the catalogue are in `data/subjects.json`,
+`data/topics.json`, `data/subtopics.json`, `data/questions.json`.
+
+## 5. The rules that are easiest to break
+
+These are the ones that have actually been broken this week. They are not
+obvious from the code.
+
+1. **D35 — a novel is its own domain.** Novel questions live in
+   `data/novels/<slug>.json`, never in `data/questions.json`. 77 leaked into the
+   English bank before we caught it. `tests/store.rs::no_question_in_the_bank_depends_on_a_novel_we_hold`
+   now guards it. **The lesson: read the decision log before touching content.**
+2. **D45 — `verified` means *reviewed*, not *sourced*.** Never set it in an
+   import or a harvest. 97 rows once carried it purely because they came from
+   the old bank; a hand-check found two with wrong answers and explanations
+   written to justify them.
+3. **D47–D49, D52 — provenance.** `source` is `past_paper`, `claimed_paper`,
+   `authored` or `imported`. `year` means **the cohort the question is prepared
+   for**, not the paper it was lifted from, and is required on every row.
+4. **D51 — three gates.** Admissible (mechanical, the only gate that blocks
+   entry), explainable (not a gate), sellable (`verified`). A question with no
+   explanation is honest; a question with a *fabricated* explanation is poison.
+5. **D15/D46 — `Option { id, text }`, answer by id, label never stored; JAMB is
+   four options.** Never store a label or an index.
+6. **D50 — objectives live on the topic, not the subtopic**, because that is the
+   level JAMB states them. `weight: 0` means *not published*, never *worth
+   nothing*.
+7. **D23 — routes never touch storage.** `JsonStore` is a dev store; Turso
+   arrives behind the same trait.
+
+## 6. Tooling
+
+```bash
+# harvest (on GitHub Actions — the phone is slow and hot)
+gh workflow run harvest -f subjects=<slug|all> -f year=2025 -f delay=2
+gh run list --workflow=harvest --limit 5
+gh run view <id> --log | tail -40
+
+# merge harvested rows into the bank (never sets verified)
+cargo run -- import --dry-run     # report first, always
+cargo run -- import
+
+# syllabus trees — one command per subject
+python3 tools/import_syllabus.py --subject <site-slug> --display "<JAMB name>" \
+        [--catalog-slug <our-slug>]
+```
+
+The crawl runs in CI because it is a multi-hour job on a bad phone network:
+**CI does ~19 questions/min, the phone managed 2–6.** Politeness (single
+worker, 2s spacing, identified user agent) lives in `tools/harvest_all.py` and
+holds wherever it runs.
+
+**One subject map**: `config/harvest.json`, read by both the Python crawler and
+the Rust importer, with a test that fails if it and `data/subjects.json`
+disagree. Two lists is how subjects drift.
+
+## 7. Open work, in the order it should be done
+
+1. **The 78 underline questions** (`docs/UNDERLINE_PROBLEM.md`). They say "the
+   underlined word" and we store no target, so a student cannot answer them.
+   Needs a D11 decision — `emphasis: Option<String>` is recommended — then a
+   backfill: semi-automatic for synonyms/antonyms, read by hand for stress and
+   sound items. **No `verified: true` on any of the 78 until this lands.**
+2. **Verification and explanations** — 2,200 rows untouched. Mathematics came
+   out clean (58/60 verified); objective subjects verify well, languages and
+   statistics need judgement. Review in batches of ~50, checking the answer by
+   computing it, not by trusting the key.
+3. **Subtopic tagging** — 2,175 questions belong to no drill path despite 2,092
+   subtopics existing.
+4. **6 novel questions still in the English bank** (stems begin "This question is
+   based on Kabir Alabi Garba's The Lekki Headmaster") — they name the novel
+   rather than a character, which is why the D35 sweep missed them.
+5. **59 images** still on the source's CDN; the user deferred the mirror to a
+   future CI job plus an asset repo.
+
+## 8. Traps we have already hit — do not walk into them again
+
+- **`git diff` ignores untracked files.** The harvest workflow used
+  `git diff --quiet -- data/inbox`, so the *first* harvest of every new subject
+  was discarded. Use `git status --porcelain`.
+- **`which gh && gh auth status || echo "missing"`** prints "missing" whenever
+  *auth* fails, not only when gh is absent. Check the tool and the auth
+  separately.
+- **HTML entities.** The harvester must call `html.unescape`, not a
+  hand-written table; 139 questions shipped with `&rsquo;` and `&eacute;` in
+  their stems. Hand-enumerating just moves the failure.
+- **Deduping is by content fingerprint, not id.** Two ids can hold the same
+  question, and a re-harvested row can have a *new* fingerprint and an *old* id
+  once the bank has been cleaned. The importer guards both.
+- **Tests must assert invariants, not snapshots.** Three tests broke on content
+  growth because they quoted a number ("five maths questions"). If a test names a
+  count from the bank, it is wrong.
+- **Scan every page in a test.** A guard that read only page 1 (200 rows) missed
+  six novel questions hiding at rows 201–282.
+- **A check that fires wrongly is a bug in the check**, not in the data — three
+  times this week (a subtopic deletion, a "subject missing" report, and a novel
+  match on the name "Sola").
+
+## 9. How we got here, in one paragraph
+
+The bank started at 155 questions with `verified` meaning "came from a scrape".
+An audit of 133 rows by hand found six wrong or broken questions and two where
+no correct answer was offered; provenance was rebuilt (`source`, `year`,
+`claimed_paper`); a harvester and an importer were written; the catalogue went
+from 6 subjects to all 25 with 566 topics; and Mathematics was reviewed and
+explained end to end. The remaining gap is not volume — it is review.
