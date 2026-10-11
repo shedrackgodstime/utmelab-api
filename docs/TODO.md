@@ -6,7 +6,7 @@
 ## Now
 
 - [ ] **78 English questions are unanswerable as served** — they say "the underlined word" and we do not store which word. Full analysis and options in [`UNDERLINE_PROBLEM.md`](UNDERLINE_PROBLEM.md); recommended fix is `emphasis: Option<String>` on `Question`. **No `verified: true` on any of the 78 until this lands.**
-- [ ] **6 novel questions still in the English bank** (stems begin "This question is based on Kabir Alabi Garba's The Lekki Headmaster") — move to the novel document (D35).
+- [x] ~~**6 novel questions still in the English bank**~~ — **resolved 2026-10-11**: the subject-scoped D35 guard (whole-word, case-sensitive, English/Literature only) caught **45** misfiled Lekki Headmaster questions. 41 moved into the novel document verbatim (original ids, `verified:false`), 4 exact duplicates dropped from the bank. Bank 2,416 → 2,371; novel doc 54 → 95.
 - [x] ~~**Merged key work (D53) has a failing test**~~ — **resolved 2026-10-11**: the prefix is intended (support lookup, never authenticates); the test now asserts the full plaintext is absent and any `sk_`-prefixed string is ≤11 chars. Suite is 72/72 green.
 
 - [ ] **39 Lekki Headmaster questions still staged** in `data/inbox/lekki-headmaster-candidates.json`. Of 77 harvested, 9 were not novel questions (returned to the bank), 15 had truncated stems carrying no question at all, 1 duplicated an existing question with a garbled name, and only 4 could be verified against our own chapter summaries — those 4 joined the novel document (50 -> 54). The rest stay staged: their keys are third-party and our summaries cannot check their detail, so adding them would raise the count without raising trust.

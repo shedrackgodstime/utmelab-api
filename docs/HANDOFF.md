@@ -111,16 +111,13 @@ disagree. Two lists is how subjects drift.
    underlined word" and we store no target, so a student cannot answer them.
    Needs a D11 decision — `emphasis: Option<String>` is recommended — then a
    backfill: semi-automatic for synonyms/antonyms, read by hand for stress and
-   sound items. **No `verified: true` on any of the 78 until this lands.**
-2. **Verification and explanations** — 2,200 rows untouched. Mathematics came
+   sound items. **No `verified: true` on any of the 78 until this lands.**2. **Verification and explanations** — 2,200 rows untouched. Mathematics came
    out clean (58/60 verified); objective subjects verify well, languages and
    statistics need judgement. Review in batches of ~50, checking the answer by
    computing it, not by trusting the key.
 3. **Subtopic tagging** — 2,175 questions belong to no drill path despite 2,092
    subtopics existing.
-4. **6 novel questions still in the English bank** (stems begin "This question is
-   based on Kabir Alabi Garba's The Lekki Headmaster") — they name the novel
-   rather than a character, which is why the D35 sweep missed them.
+4. ~~**6 novel questions still in the English bank**~~ — **resolved 2026-10-11**: the subject-scoped D35 guard caught **45** misfiled Lekki Headmaster questions (the "This question is based on…" rows plus the Bepo/Stardom/relocation set that named characters). 41 moved into the novel document verbatim (their rescue convention: original ids, `verified:false`), 4 exact duplicates of rows already in the novel doc dropped from the bank. Bank 2,416 → 2,371; novel doc 54 → 95 questions. All `verified:false`, `explanation:null` — honest.
 5. **59 images** still on the source's CDN; the user deferred the mirror to a
    future CI job plus an asset repo.
 
