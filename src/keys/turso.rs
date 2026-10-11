@@ -13,7 +13,7 @@ use std::time::{Duration, Instant};
 
 use turso_serverless::{Builder, Connection};
 
-use super::store::{generate_key, hash_key, new_id, now_iso, now_secs, prefix_of, StoredKey};
+use super::store::{StoredKey, generate_key, hash_key, new_id, now_iso, now_secs, prefix_of};
 use super::{ApiKey, KeyStore};
 use crate::error::ApiError;
 
@@ -277,11 +277,7 @@ impl TursoKeyStore {
     /// One-time file -> Turso migration. Rows already present (by id) are
     /// skipped and counted, never overwritten; malformed rows refused with a
     /// reason. Every refusal counted — a silent drop reads as a bug (D51 rule).
-    pub async fn import(
-        &self,
-        source: &KeyStore,
-        dry_run: bool,
-    ) -> Result<ImportReport, ApiError> {
+    pub async fn import(&self, source: &KeyStore, dry_run: bool) -> Result<ImportReport, ApiError> {
         let mut report = ImportReport::default();
         for row in source.stored() {
             report.total += 1;

@@ -84,7 +84,10 @@ impl KeyBackend {
 
     pub async fn create(&self, label: &str, rate_limit: u32) -> Result<(ApiKey, String), ApiError> {
         match self {
-            Self::File(lock) => lock.write().map_err(|_| poisoned())?.create(label, rate_limit),
+            Self::File(lock) => lock
+                .write()
+                .map_err(|_| poisoned())?
+                .create(label, rate_limit),
             Self::Remote(r) => r.create(label, rate_limit).await,
         }
     }

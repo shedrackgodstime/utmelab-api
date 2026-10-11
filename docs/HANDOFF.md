@@ -26,11 +26,10 @@ cargo fmt
 cargo run -- openapi --out web/openapi.json   # regenerate the spec after route changes
 ```
 
-**One test is currently red** and is not ours: `created_key_resolves_and_carries_no_secret`
-in `tests/keys.rs`. The merged D53 key work serialises a `key_prefix` containing
-`sk_`, which that test forbids. **Open question for the user:** is a visible key
-prefix intended? Do not "fix" it without that answer.
-
+**All tests are green** (72/72) and clippy is clean as of 2026-10-11. The D53
+key work's `key_prefix` (first 11 chars of `sk_…`, support lookup only, never
+authenticates) is intended and covered by tests — the earlier "one test is red"
+note was written from a pre-merge view and is resolved.
 ## 3. Where the decisions live
 
 | file | what it is |

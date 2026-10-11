@@ -798,7 +798,7 @@
     "schemas": {
       "ApiKey": {
         "type": "object",
-        "description": "A key as stored. Deliberately carries no secret material.",
+        "description": "A key as stored. Deliberately carries no secret material — no plaintext,\nno hash. `key_prefix` (first 8 chars of `sk_…`) is for support lookup only\nand never authenticates.",
         "required": [
           "id",
           "label",
@@ -806,14 +806,46 @@
           "created_at"
         ],
         "properties": {
+          "account_id": {
+            "type": "string"
+          },
           "created_at": {
             "type": "string"
+          },
+          "expires_at": {
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "id": {
             "type": "string"
           },
+          "key_prefix": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "label": {
             "type": "string"
+          },
+          "last_used_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "plan": {
+            "type": "string"
+          },
+          "quota_monthly": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int32",
+            "minimum": 0
           },
           "rate_limit": {
             "type": "integer",
@@ -822,6 +854,21 @@
             "minimum": 0
           },
           "revoked_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "scopes": {
+            "type": "string"
+          },
+          "suspend_reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "suspended_at": {
             "type": [
               "string",
               "null"

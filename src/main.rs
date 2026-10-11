@@ -241,18 +241,16 @@ async fn admin(
                 }
             }
         }
-        KeyAction::Rotate { id, grace_hours } => {
-            match keys.rotate(&id, grace_hours).await? {
-                Some((record, plaintext)) => {
-                    println!("\n  API KEY ROTATED — copy the new key now, it is never shown again\n");
-                    println!("    {plaintext}\n");
-                    println!("    new id      {}", record.id);
-                    println!("    label       {}", record.label);
-                    println!("    old id      {id} (expires in {grace_hours}h)");
-                }
-                None => println!("no live key with id {id}"),
+        KeyAction::Rotate { id, grace_hours } => match keys.rotate(&id, grace_hours).await? {
+            Some((record, plaintext)) => {
+                println!("\n  API KEY ROTATED — copy the new key now, it is never shown again\n");
+                println!("    {plaintext}\n");
+                println!("    new id      {}", record.id);
+                println!("    label       {}", record.label);
+                println!("    old id      {id} (expires in {grace_hours}h)");
             }
-        }
+            None => println!("no live key with id {id}"),
+        },
         KeyAction::Import { from, dry_run } => {
             let source = from.unwrap_or_else(|| config.keys_file.clone());
             let report = keys.import_file(&source, dry_run).await?;

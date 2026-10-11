@@ -408,8 +408,7 @@ fn no_question_in_the_bank_depends_on_a_novel_we_hold() {
         // q_claim_2025_chemistry_74204). A genuine novel question capitalises
         // the name; that residual edge (a question starting a sentence with the
         // name) is accepted and recorded here.
-        let mut markers: Vec<String> =
-            vec![novel["title"].as_str().unwrap_or_default().to_owned()];
+        let mut markers: Vec<String> = vec![novel["title"].as_str().unwrap_or_default().to_owned()];
         if let Some(characters) = novel["characters"].as_array() {
             for character in characters {
                 let name = character["name"].as_str().unwrap_or_default();
