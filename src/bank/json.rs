@@ -237,6 +237,20 @@ impl JsonStore {
                 continue;
             }
 
+            if !matches!(q.source.as_str(), "past_paper" | "authored") {
+                c.problems.push(format!(
+                    "questions.json: '{}' has source '{}' — expected past_paper or authored",
+                    q.id, q.source
+                ));
+            }
+            // An authored row must not claim an exam year (D47).
+            if q.source == "authored" && q.year.is_some() {
+                c.problems.push(format!(
+                    "questions.json: '{}' is authored but claims year {:?} — we did not sit that paper",
+                    q.id, q.year
+                ));
+            }
+
             // Valid record, not yet servable: withheld, not fatal.
             if q.exam.is_empty() {
                 c.withheld

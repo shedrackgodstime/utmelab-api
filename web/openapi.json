@@ -1384,7 +1384,7 @@
           "id",
           "exam",
           "subject",
-          "year",
+          "source",
           "text",
           "options",
           "marks",
@@ -1442,6 +1442,9 @@
               "null"
             ]
           },
+          "source": {
+            "type": "string"
+          },
           "subject": {
             "type": "string"
           },
@@ -1452,7 +1455,10 @@
             "type": "boolean"
           },
           "year": {
-            "type": "integer",
+            "type": [
+              "integer",
+              "null"
+            ],
             "format": "int32",
             "minimum": 0
           }

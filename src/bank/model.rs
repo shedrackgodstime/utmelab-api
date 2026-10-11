@@ -70,7 +70,14 @@ pub struct Question {
     pub id: String,
     pub exam: String,
     pub subject: String,
-    pub year: u16,
+    /// The exam year this item came from — **absent for questions we wrote**.
+    /// We author against the current syllabus; we did not sit the paper, so
+    /// claiming a year would be a claim we cannot stand behind (D47).
+    #[serde(default)]
+    pub year: Option<u16>,
+    /// Where the row came from: `past_paper` or `authored`. Consumers can
+    /// therefore tell an exam item from one we wrote, and never assume.
+    pub source: String,
     pub text: String,
     pub options: Vec<Choice>,
     /// An **option id**, never a label or an index (D15).

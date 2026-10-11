@@ -13,6 +13,7 @@ use axum::body::Body;
 use axum::http::{Request, StatusCode};
 use http_body_util::BodyExt;
 use tower::ServiceExt;
+use utmelab_api::Store as _;
 use utmelab_api::openapi_document;
 use utmelab_api::{AppState, JsonStore, KeyStore, RateLimiter, ReportStore, router};
 
@@ -35,6 +36,15 @@ fn state() -> AppState {
     }
 }
 
+/// Any real question id, read from the bank so a rename cannot break the
+/// documented-path check.
+fn first_question_id() -> String {
+    let data = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
+    let bank = JsonStore::load(&data).expect("bank loads");
+    let page = bank.questions_page(utmelab_api::QuestionFilter::default(), 1, 1);
+    page.questions[0].id.clone()
+}
+
 /// Substitute real values for path parameters, so the router matches.
 fn concrete(path: &str) -> String {
     // `{id}` and `{slug}` name different resources on different paths, so
@@ -43,7 +53,7 @@ fn concrete(path: &str) -> String {
         return path.replace("{id}", "psg_jamb_2025_eng_comprehension_1");
     }
     if path.starts_with("/api/v1/questions/{id}") {
-        return path.replace("{id}", "q_jamb_2025_math_surds_001");
+        return path.replace("{id}", &first_question_id());
     }
     if path.starts_with("/api/v1/topics/") {
         return path

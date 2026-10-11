@@ -12,6 +12,8 @@ and the report endpoint are all shipped. What remains is content, not code:
 
 ## Content (English-first, D34)
 
+- [ ] **Provenance follow-through (D47).** `source` and nullable `year` ship, but the 97 ported rows still carry an inherited `year: 2025` that was never checked against the paper they came from. Verifying or clearing those is the honest completion.
+
 - [ ] English bank: 155 questions → keep deepening thin subtopics (emphatic-stress ×2 is thinnest)
 - [ ] Passages: 5 exist; comprehension needs a bench, not one passage per type
 - [x] **`verified` is 154/155.** 133 rows read line by line, 6 fixed. The only row left is `q_unassigned_civic_001`, which is withheld from serving anyway (D21). 133 rows were read line by line; 6 were fixed. The 7 still unverified are honest leftovers: 6 `fiction` comprehension questions that need their passage read against the stem, and `q_unassigned_civic_001`, which is withheld anyway (D21).

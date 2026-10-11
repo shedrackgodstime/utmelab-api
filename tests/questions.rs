@@ -13,11 +13,18 @@ use std::sync::{Arc, Mutex, OnceLock};
 use axum::body::Body;
 use axum::http::{Request, StatusCode};
 use tower::ServiceExt;
+use utmelab_api::Store as _;
 use utmelab_api::{AppState, JsonStore, KeyStore, RateLimiter, ReportStore, router};
 
-/// A real id, discovered from the bank rather than hardcoded — so this file
-/// cannot rot when content is renumbered.
-const KNOWN: &str = "q_jamb_2025_math_surds_001";
+/// A real id, discovered from the bank rather than hardcoded — Ids get renamed
+/// (D47 stripped a false claim out of 56 of them), and a test that pins an id
+/// fails for a reason that has nothing to do with what it is testing.
+fn known() -> String {
+    let data = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
+    let bank = JsonStore::load(&data).expect("bank loads");
+    let page = bank.questions_page(utmelab_api::QuestionFilter::default(), 1, 1);
+    page.questions[0].id.clone()
+}
 
 fn keys_path() -> std::path::PathBuf {
     std::env::temp_dir().join(format!("utmelab-question-{}-keys.json", std::process::id()))
@@ -76,9 +83,9 @@ fn key() -> &'static str {
 #[tokio::test]
 async fn a_known_id_resolves_to_that_exact_question() {
     let key = key();
-    let (status, body) = json(&format!("/api/v1/questions/{KNOWN}"), Some(key)).await;
+    let (status, body) = json(&format!("/api/v1/questions/{}", known()), Some(key)).await;
     assert_eq!(status, StatusCode::OK);
-    assert_eq!(body["id"], KNOWN);
+    assert_eq!(body["id"], known());
     assert!(body["text"].as_str().is_some_and(|t| !t.is_empty()));
 }
 
@@ -86,7 +93,7 @@ async fn a_known_id_resolves_to_that_exact_question() {
 async fn it_still_requires_a_key() {
     // It sits on the metered surface, so it must not become a free side door
     // around the rate limit on `/questions`.
-    let (status, _) = json(&format!("/api/v1/questions/{KNOWN}"), None).await;
+    let (status, _) = json(&format!("/api/v1/questions/{}", known()), None).await;
     assert_eq!(status, StatusCode::UNAUTHORIZED);
 }
 
@@ -102,14 +109,14 @@ async fn an_unknown_id_is_a_404_not_an_empty_question() {
 async fn the_answer_is_withheld_by_default_and_present_on_request() {
     let key = key();
 
-    let (_, bare) = json(&format!("/api/v1/questions/{KNOWN}"), Some(key)).await;
+    let (_, bare) = json(&format!("/api/v1/questions/{}", known()), Some(key)).await;
     assert!(
         bare.get("answer").is_none(),
         "an answer in a default payload gets rendered by somebody, eventually, by accident"
     );
 
     let (_, opened) = json(
-        &format!("/api/v1/questions/{KNOWN}?include_explanation=true"),
+        &format!("/api/v1/questions/{}?include_explanation=true", known()),
         Some(key),
     )
     .await;
@@ -124,7 +131,7 @@ async fn it_returns_the_same_shape_as_a_list_item() {
     // The whole point is that a consumer can swap one call for the other
     // without reshaping their code.
     let key = key();
-    let (_, single) = json(&format!("/api/v1/questions/{KNOWN}"), Some(key)).await;
+    let (_, single) = json(&format!("/api/v1/questions/{}", known()), Some(key)).await;
     let (_, page) = json("/api/v1/questions?per_page=200", Some(key)).await;
 
     let listed = page["questions"]
