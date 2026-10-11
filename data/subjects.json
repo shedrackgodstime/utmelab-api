@@ -7,9 +7,9 @@
     "full_exam_questions": 40
   },
   {
-    "slug": "art",
+    "slug": "arabic",
     "exam": "JAMB",
-    "name": "Art",
+    "name": "Arabic",
     "is_compulsory": false,
     "full_exam_questions": 40
   },
@@ -42,9 +42,30 @@
     "full_exam_questions": 40
   },
   {
+    "slug": "computer-studies",
+    "exam": "JAMB",
+    "name": "Computer Studies",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
     "slug": "economics",
     "exam": "JAMB",
     "name": "Economics",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
+    "slug": "fine-arts",
+    "exam": "JAMB",
+    "name": "Fine Arts",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
+    "slug": "french",
+    "exam": "JAMB",
+    "name": "French",
     "is_compulsory": false,
     "full_exam_questions": 40
   },
@@ -63,9 +84,37 @@
     "full_exam_questions": 40
   },
   {
+    "slug": "hausa",
+    "exam": "JAMB",
+    "name": "Hausa",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
     "slug": "history",
     "exam": "JAMB",
     "name": "History",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
+    "slug": "home-economics",
+    "exam": "JAMB",
+    "name": "Home Economics",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
+    "slug": "igbo",
+    "exam": "JAMB",
+    "name": "Igbo",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
+    "slug": "islamic-religious-studies",
+    "exam": "JAMB",
+    "name": "Islamic Religious Studies",
     "is_compulsory": false,
     "full_exam_questions": 40
   },
@@ -80,6 +129,20 @@
     "slug": "mathematics",
     "exam": "JAMB",
     "name": "Mathematics",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
+    "slug": "music",
+    "exam": "JAMB",
+    "name": "Music",
+    "is_compulsory": false,
+    "full_exam_questions": 40
+  },
+  {
+    "slug": "physical-education",
+    "exam": "JAMB",
+    "name": "Physical Education",
     "is_compulsory": false,
     "full_exam_questions": 40
   },
@@ -103,6 +166,13 @@
     "name": "Use of English",
     "is_compulsory": true,
     "full_exam_questions": 60
+  },
+  {
+    "slug": "yoruba",
+    "exam": "JAMB",
+    "name": "Yoruba",
+    "is_compulsory": false,
+    "full_exam_questions": 40
   },
   {
     "slug": "animal-husbandry",

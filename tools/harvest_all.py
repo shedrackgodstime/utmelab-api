@@ -39,6 +39,7 @@ spec.loader.exec_module(harvest)
 
 # Slugs as the source spells them.
 SUBJECTS = [
+    # Already harvested.
     "government",
     "economics",
     "commerce",
@@ -53,6 +54,25 @@ SUBJECTS = [
     "chemistry",
     "biology",
     "english-language",
+    # JAMB's remaining subjects. Every one of these was probed first: each
+    # returned 79-150 questions for 2025. Subjects that returned zero
+    # (animal-husbandry, civic-education, data-processing, book-keeping,
+    # catering-craft, food-and-nutrition, further-mathematics, insurance,
+    # marketing, office-practice, technical-drawing, home-management) are NOT
+    # here — they are NECO/WAEC subjects, and harvesting them under `jamb`
+    # would file the wrong exam's content in the JAMB bank.
+    "arabic",
+    "computer-studies",
+    "fine-arts",
+    "french",
+    "hausa",
+    "home-economics",
+    "igbo",
+    "islamic-religious-knowledge-irk",
+    "physical-education",
+    "yoruba",
+    # Music offers 38 — under a paper. Left out rather than shipped as the
+    # one subject that can never fill a mock.
 ]
 
 
