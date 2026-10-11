@@ -146,7 +146,9 @@ def main() -> int:
             continue
         total += got
         skipped_total += skipped
-        with_image = sum(1 for q in harvest.to_question_rows(path=out / f"{subject}-{year}.json"))
+        # Local helper, not part of the harvest module — calling it as
+        # `harvest.to_question_rows` raised AttributeError on the first subject.
+        with_image = len(to_question_rows(out / f"{subject}-{args.year}.json"))
         print(
             f"    {subject}: {got} questions on disk, {skipped} refused, "
             f"{with_image} with diagrams   [running total: {total}]",
