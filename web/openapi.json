@@ -391,6 +391,15 @@
             }
           },
           {
+            "name": "source",
+            "in": "query",
+            "description": "Provenance: `past_paper`, `authored` or `imported`. Default: no filter.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "q",
             "in": "query",
             "description": "Substring of the question text, case-insensitive. Unranked — results stay in id order. Default: no filter.",

@@ -237,17 +237,17 @@ impl JsonStore {
                 continue;
             }
 
-            if !matches!(q.source.as_str(), "past_paper" | "authored") {
+            if !matches!(q.source.as_str(), "past_paper" | "authored" | "imported") {
                 c.problems.push(format!(
-                    "questions.json: '{}' has source '{}' — expected past_paper or authored",
+                    "questions.json: '{}' has source '{}' — expected past_paper, authored or imported",
                     q.id, q.source
                 ));
             }
-            // An authored row must not claim an exam year (D47).
-            if q.source == "authored" && q.year.is_some() {
+            // Only a row we can name the paper for may claim a year (D47/D48).
+            if q.source != "past_paper" && q.year.is_some() {
                 c.problems.push(format!(
-                    "questions.json: '{}' is authored but claims year {:?} — we did not sit that paper",
-                    q.id, q.year
+                    "questions.json: '{}' is {} but claims year {:?} — no paper of that year to point at",
+                    q.id, q.source, q.year
                 ));
             }
 
@@ -495,6 +495,7 @@ impl Store for JsonStore {
 
         let matched: Vec<&Question> = matched
             .into_iter()
+            .filter(|q| filter.source.is_none_or(|want| q.source == want))
             .filter(|q| {
                 filter
                     .text

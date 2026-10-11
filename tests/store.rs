@@ -324,3 +324,64 @@ fn novels_are_newest_first() {
     sorted.sort_unstable_by(|a, b| b.cmp(a));
     assert_eq!(years, sorted, "newest prescription first");
 }
+
+// ── provenance (D48) ────────────────────────────────────────────────────────
+
+#[test]
+fn only_a_named_paper_may_claim_a_year() {
+    let bank = JsonStore::load(repo_root()).expect("load");
+    for page in [
+        bank.questions_page(QuestionFilter::default(), 1, 200),
+        bank.questions_page(
+            QuestionFilter {
+                source: Some("authored"),
+                ..Default::default()
+            },
+            1,
+            200,
+        ),
+        bank.questions_page(
+            QuestionFilter {
+                source: Some("imported"),
+                ..Default::default()
+            },
+            1,
+            200,
+        ),
+    ] {
+        for q in page.questions {
+            if q.source != "past_paper" {
+                assert!(
+                    q.year.is_none(),
+                    "{} is {} yet claims year {:?} — there is no paper to point at",
+                    q.id,
+                    q.source,
+                    q.year
+                );
+            }
+        }
+    }
+}
+
+#[test]
+fn the_source_filter_partitions_by_provenance() {
+    let bank = JsonStore::load(repo_root()).expect("load");
+    let all = bank
+        .questions_page(QuestionFilter::default(), 1, 200)
+        .total_records;
+
+    let mut split = 0;
+    for source in ["authored", "imported"] {
+        let page = bank.questions_page(
+            QuestionFilter {
+                source: Some(source),
+                ..Default::default()
+            },
+            1,
+            200,
+        );
+        assert!(page.questions.iter().all(|q| q.source == source));
+        split += page.total_records;
+    }
+    assert_eq!(split, all, "every row is either authored or imported today");
+}

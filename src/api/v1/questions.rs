@@ -40,6 +40,8 @@ pub struct Filter {
     pub subject: Option<String>,
     pub subtopic: Option<String>,
     pub verified: Option<bool>,
+    /// Provenance filter: `past_paper`, `authored` or `imported` (D48).
+    pub source: Option<String>,
     /// Substring of the question text, case-insensitive. No ranking: results
     /// stay in id order, so paging means the same thing it means everywhere
     /// else (D44).
@@ -120,6 +122,8 @@ display.",
         ("subject" = Option<String>, Query, description = "Scope to a subject within that exam."),
         ("verified" = Option<bool>, Query,
          description = "Only human-checked questions. Default: no filter."),
+        ("source" = Option<String>, Query,
+         description = "Provenance: `past_paper`, `authored` or `imported`. Default: no filter."),
         ("q" = Option<String>, Query,
          description = "Substring of the question text, case-insensitive. Unranked — results stay \
 in id order. Default: no filter."),
@@ -162,6 +166,7 @@ pub async fn questions(
             subtopic: f.subtopic.as_deref(),
             verified: f.verified,
             text: f.q.as_deref(),
+            source: f.source.as_deref(),
         },
         f.page.unwrap_or(1),
         f.per_page.unwrap_or(DEFAULT_PER_PAGE),

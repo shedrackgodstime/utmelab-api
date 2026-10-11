@@ -26,6 +26,9 @@ pub struct QuestionFilter<'a> {
     /// Substring of `text`, matched case-insensitively (D44). A Turso impl
     /// pushes this down as `LIKE '%q%'` — the seam, not the route, owns it.
     pub text: Option<&'a str>,
+    /// Provenance: `past_paper`, `authored` or `imported` (D48). Lets a
+    /// consumer ask for only the questions whose origin they can stand behind.
+    pub source: Option<&'a str>,
 }
 
 /// One page plus the totals (D3). Every implementation must produce identical
