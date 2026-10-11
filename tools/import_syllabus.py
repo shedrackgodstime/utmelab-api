@@ -206,6 +206,13 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--subject", required=True, help="slug, e.g. government")
     parser.add_argument("--display", required=True, help="official subject name, e.g. Government")
+    parser.add_argument(
+        "--catalog-slug",
+        help="Our slug for this subject, when it differs from the site's. Without "
+        "this the importer appends a second subject row instead of replacing the "
+        "first — which is how 'islamic-studies' and 'physical-and-health-education' "
+        "ended up beside the real ones.",
+    )
     parser.add_argument("--compulsory", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument(
@@ -241,8 +248,9 @@ def main() -> int:
 
     # Replace this subject's rows rather than appending, so re-running after a
     # syllabus correction is idempotent instead of duplicating the tree.
-    kept_subjects = [s for s in subjects if not (s["exam"] == "JAMB" and s["slug"] == args.subject)]
-    kept_topics = [t for t in existing_topics if not (t["exam"] == "JAMB" and t["subject"] == args.subject)]
+    catalog_slug = args.catalog_slug or args.subject
+    kept_subjects = [s for s in subjects if not (s["exam"] == "JAMB" and s["slug"] == catalog_slug)]
+    kept_topics = [t for t in existing_topics if not (t["exam"] == "JAMB" and t["subject"] == catalog_slug)]
     # Drop the subtopics of the topics we are about to replace — keyed on the
     # NEW topic slugs, not the kept ones. Keying on `kept_topics` reads as if it
     # deletes the other subjects' subtopics; it does, and it silently did.
@@ -251,7 +259,7 @@ def main() -> int:
 
     kept_subjects.append(
         {
-            "slug": args.subject,
+            "slug": catalog_slug,
             "exam": "JAMB",
             "name": args.display,
             "is_compulsory": args.compulsory,
