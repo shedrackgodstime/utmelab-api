@@ -139,17 +139,35 @@ async fn run() -> Result<(), ApiError> {
     }
 }
 
-/// Which store this process talks to: Turso when URL **and** token are set,
-/// file otherwise (dev, and recovery when Turso is down). Same selection for
-/// serve and CLI, so `key create` lands in the store the server reads (D53).
+/// Which store this process talks to. Turso is the live store (D53); the file
+/// backend is a **dev-only escape hatch**, never a silent default.
+///
+/// Why opt-in and not a fallback: if Turso env is missing, silently dropping to
+/// a local file forks the keys — `key create` would write a key the Turso-backed
+/// server can never see, and every auth would 401 with nothing explaining why.
+/// So a missing Turso config is a hard error unless the operator explicitly
+/// asks for the file backend (`UTMELAB_API_KEY_BACKEND=file`, or by setting
+/// `UTMELAB_API_KEYS_FILE`). Same selection for serve and CLI, so a created key
+/// always lands in the store the server reads.
 async fn open_backend(config: &Config) -> Result<utmelab_api::KeyBackend, ApiError> {
     match (&config.turso_url, &config.turso_token) {
         (Some(url), Some(token)) => {
             utmelab_api::KeyBackend::open_remote(url, token, config.key_cache_ttl_secs).await
         }
-        _ => Ok(utmelab_api::KeyBackend::file(KeyStore::open_json(
-            &config.keys_file,
-        )?)),
+        _ => {
+            let wants_file = std::env::var("UTMELAB_API_KEY_BACKEND").as_deref() == Ok("file")
+                || std::env::var("UTMELAB_API_KEYS_FILE").is_ok();
+            if wants_file {
+                Ok(utmelab_api::KeyBackend::file(KeyStore::open_json(
+                    &config.keys_file,
+                )?))
+            } else {
+                Err(ApiError::config(
+                    "no key backend: set TURSO_DB_URL + TURSO_DB_TOKEN (keys live in Turso), \
+                     or UTMELAB_API_KEY_BACKEND=file for local dev",
+                ))
+            }
+        }
     }
 }
 
