@@ -124,10 +124,14 @@ def parse_topics(html: str) -> list[dict]:
     return [t for t in topics if t["contents"]]
 
 
-def unique(slug: str, taken: set[str]) -> str:
-    """Keep slugs unique inside a subject without silently dropping a topic."""
+def unique(slug: str, taken: set[str], hint: str = "") -> str:
+    """Keep slugs unique across the catalog without silently dropping a topic."""
     if slug not in taken:
         return slug
+    if hint:
+        candidate = f"{slug}-{hint}"
+        if candidate not in taken:
+            return candidate
     for suffix in range(2, 100):
         candidate = f"{slug}-{suffix}"
         if candidate not in taken:
@@ -135,14 +139,27 @@ def unique(slug: str, taken: set[str]) -> str:
     raise RuntimeError(f"cannot make a unique slug from {slug!r}")
 
 
-def build(subject: str, display: str, topics: list[dict]) -> tuple[list[dict], list[dict]]:
-    """Turn parsed topics into our Topic and Subtopic rows."""
+def build(
+    subject: str,
+    display: str,
+    topics: list[dict],
+    other_topics: set[str] | None = None,
+    other_subtopics: set[str] | None = None,
+) -> tuple[list[dict], list[dict]]:
+    """Turn parsed topics into our Topic and Subtopic rows.
+
+    Slugs must be unique across the whole catalog, not just within a subject:
+    two subjects both offering "Population" collide, and the loader then refuses
+    the file outright. A colliding slug takes the subject as a suffix rather
+    than being shipped — `population-geography` reads better than a file that
+    will not load.
+    """
     topic_rows, subtopic_rows = [], []
-    taken_topics: set[str] = set()
-    taken_subs: set[str] = set()
+    taken_topics: set[str] = set(other_topics or ())
+    taken_subs: set[str] = set(other_subtopics or ())
 
     for index, topic in enumerate(topics, start=1):
-        slug = unique(slugify(topic["name"]), taken_topics)
+        slug = unique(slugify(topic["name"]), taken_topics, subject)
         taken_topics.add(slug)
         topic_rows.append(
             {
@@ -159,7 +176,7 @@ def build(subject: str, display: str, topics: list[dict]) -> tuple[list[dict], l
         )
         for order, content in enumerate(topic["contents"], start=1):
             name = content.rstrip(".")
-            sub_slug = unique(slugify(name), taken_subs)
+            sub_slug = unique(slugify(name), taken_subs, subject)
             taken_subs.add(sub_slug)
             subtopic_rows.append(
                 {
@@ -206,8 +223,6 @@ def main() -> int:
         return 1
     print(f"parsed {len(topics)} topics", file=sys.stderr)
 
-    topic_rows, subtopic_rows = build(args.subject, args.display, topics)
-
     subjects_path = Path("data/subjects.json")
     topics_path = Path("data/topics.json")
     subtopics_path = Path("data/subtopics.json")
@@ -215,6 +230,14 @@ def main() -> int:
     subjects = load(subjects_path)
     existing_topics = load(topics_path)
     existing_subtopics = load(subtopics_path)
+
+    # Slugs already in use elsewhere, so a collision can be renamed rather than
+    # shipped. Read after loading, before building.
+    other_topic_slugs = {t["slug"] for t in existing_topics if t["subject"] != args.subject}
+    other_subtopic_slugs = {s["slug"] for s in existing_subtopics}
+    topic_rows, subtopic_rows = build(
+        args.subject, args.display, topics, other_topic_slugs, other_subtopic_slugs
+    )
 
     # Replace this subject's rows rather than appending, so re-running after a
     # syllabus correction is idempotent instead of duplicating the tree.

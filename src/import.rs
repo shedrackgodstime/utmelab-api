@@ -347,11 +347,19 @@ mod tests {
                 .expect("config parses");
 
         for entry in &config.subjects {
-            assert!(
-                bank.subject("JAMB", &entry.slug).is_some(),
-                "config lists {:?} but the catalog has no JAMB subject {:?}",
-                entry.source,
-                entry.slug
+            let subject = bank.subject("JAMB", &entry.slug).unwrap_or_else(|| {
+                panic!(
+                    "config lists {:?} but the catalog has no JAMB subject {:?}",
+                    entry.source, entry.slug
+                )
+            });
+            // Names too: importing a syllabus with a slug as its display name
+            // lowercased half the catalog, and D21 says these carry JAMB's own
+            // spelling. Slug present but name wrong is the same drift.
+            assert_eq!(
+                subject.name, entry.name,
+                "{:?} is named {:?} in the catalog but {:?} in the config",
+                entry.slug, subject.name, entry.name
             );
         }
     }

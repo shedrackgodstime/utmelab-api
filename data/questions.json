@@ -53654,5 +53654,239 @@
     "marks": 2.5,
     "difficulty": 3,
     "verified": false
+  },
+  {
+    "id": "q_authored_music_001",
+    "exam": "JAMB",
+    "subject": "music",
+    "year": 2025,
+    "source": "authored",
+    "text": "A note written on the second line of the treble staff is:",
+    "options": [
+      {
+        "id": "a",
+        "text": "E"
+      },
+      {
+        "id": "b",
+        "text": "G"
+      },
+      {
+        "id": "c",
+        "text": "B"
+      },
+      {
+        "id": "d",
+        "text": "D"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": null,
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "The treble staff lines, bottom to top, are E G B D F.",
+      "body": "The second line from the bottom carries **G** — the G above middle C. Lines are E, G, B, D, F; spaces are F, A, C, E.",
+      "trap": "Counting from the top gives the fourth line, D — a reliable way to be sure of the wrong answer."
+    },
+    "marks": 2.5,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "q_authored_music_002",
+    "exam": "JAMB",
+    "subject": "music",
+    "year": 2025,
+    "source": "authored",
+    "text": "How many sharps are there in the key signature of E major?",
+    "options": [
+      {
+        "id": "a",
+        "text": "3"
+      },
+      {
+        "id": "b",
+        "text": "4"
+      },
+      {
+        "id": "c",
+        "text": "5"
+      },
+      {
+        "id": "d",
+        "text": "2"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": null,
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "E major has four sharps: F#, C#, G#, D#.",
+      "body": "Every major key adds one sharp to the previous: G has one, D two, A three, **E four**. The last sharp added is always the leading note, D#.",
+      "trap": "E major is often confused with its relative minor, C# minor, which shares the same four sharps — the count is the same either way."
+    },
+    "marks": 2.5,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "q_authored_music_003",
+    "exam": "JAMB",
+    "subject": "music",
+    "year": 2025,
+    "source": "authored",
+    "text": "The ascending interval from C to G is a:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Perfect fourth"
+      },
+      {
+        "id": "b",
+        "text": "Perfect fifth"
+      },
+      {
+        "id": "c",
+        "text": "Major sixth"
+      },
+      {
+        "id": "d",
+        "text": "Perfect third"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": null,
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "C up to G spans five letter names and 7 semitones: a perfect fifth.",
+      "body": "Count C-D-E-F-G = five, and the distance is 7 semitones, which makes it a **perfect fifth**. Intervals spanning two octaves start again from one.",
+      "trap": "C to F is the fourth — a semitone short of C up to G's seven."
+    },
+    "marks": 2.5,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "q_authored_music_004",
+    "exam": "JAMB",
+    "subject": "music",
+    "year": 2025,
+    "source": "authored",
+    "text": "In a 3/4 time signature, one complete bar contains:",
+    "options": [
+      {
+        "id": "a",
+        "text": "Three crotchet beats"
+      },
+      {
+        "id": "b",
+        "text": "Four crotchet beats"
+      },
+      {
+        "id": "c",
+        "text": "Six quaver beats"
+      },
+      {
+        "id": "d",
+        "text": "Two dotted-minim beats"
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": null,
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "The lower number names the beat: 3/4 means three crotchet (quarter-note) beats to the bar.",
+      "body": "The top number counts beats and the bottom names the note value, so 3/4 is **three crotchets** — the waltz. The top number is not the same as the bottom.",
+      "trap": "Reading the *top* number as a count of four is the standard slip; that would be 4/4."
+    },
+    "marks": 2.5,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "q_authored_music_005",
+    "exam": "JAMB",
+    "subject": "music",
+    "year": 2025,
+    "source": "authored",
+    "text": "The descending form of the major scale from do is:",
+    "options": [
+      {
+        "id": "a",
+        "text": "do re mi fa sol la ti do"
+      },
+      {
+        "id": "b",
+        "text": "do ti la sol fa mi re do"
+      },
+      {
+        "id": "c",
+        "text": "sol la ti do re mi fa sol"
+      },
+      {
+        "id": "d",
+        "text": "mi re do ti la sol fa mi"
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": null,
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "Going down, the syllables run backwards: do ti la sol fa mi re do.",
+      "body": "The major scale rises do-re-mi-fa-sol-la-ti-do; reversing it gives **do-ti-la-sol-fa-mi-re-do**, which is what you sing descending.",
+      "trap": "Option (a) is the ascending form and looks right until you try to sing it downwards."
+    },
+    "marks": 2.5,
+    "difficulty": 2,
+    "verified": true
+  },
+  {
+    "id": "q_authored_music_006",
+    "exam": "JAMB",
+    "subject": "music",
+    "year": 2025,
+    "source": "authored",
+    "text": "Which of the following is a percussion instrument?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Violin"
+      },
+      {
+        "id": "b",
+        "text": "Flute"
+      },
+      {
+        "id": "c",
+        "text": "Trumpet"
+      },
+      {
+        "id": "d",
+        "text": "Xylophone"
+      }
+    ],
+    "answer": "d",
+    "subtopic_id": null,
+    "section": null,
+    "passage_id": null,
+    "image": null,
+    "explanation": {
+      "key_point": "A xylophone sounds when its bars are struck, so it is a percussion instrument.",
+      "body": "Percussion instruments make sound by being **struck**. The xylophone's tuned bars are struck with mallets; the violin, flute and trumpet are all blown or bowed.",
+      "trap": "The piano is also struck in the wider sense, but in school classification it is a keyboard — the xylophone is unambiguous."
+    },
+    "marks": 2.5,
+    "difficulty": 2,
+    "verified": true
   }
 ]

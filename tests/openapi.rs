@@ -36,6 +36,22 @@ fn state() -> AppState {
     }
 }
 
+/// A real topic slug for `subject`, read from the catalog. Hardcoding one broke
+/// this check the moment JAMB's own title for it gained an "and" — the point of
+/// the test is that the *router* works, not that we memorised a slug.
+fn first_topic_slug(subject: &str) -> String {
+    let data = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
+    let topics: Vec<serde_json::Value> =
+        serde_json::from_str(&std::fs::read_to_string(data.join("topics.json")).unwrap()).unwrap();
+    topics
+        .iter()
+        .find(|t| t["subject"] == subject)
+        .expect("subject has a topic")["slug"]
+        .as_str()
+        .unwrap()
+        .to_owned()
+}
+
 /// Any real question id, read from the bank so a rename cannot break the
 /// documented-path check.
 fn first_question_id() -> String {
@@ -59,7 +75,7 @@ fn concrete(path: &str) -> String {
         return path
             .replace("{exam}", "JAMB")
             .replace("{subject}", "mathematics")
-            .replace("{slug}", "indices-logarithms-surds");
+            .replace("{slug}", &first_topic_slug("mathematics"));
     }
     path.replace("{exam}", "JAMB")
         .replace("{slug}", "use-of-english")
