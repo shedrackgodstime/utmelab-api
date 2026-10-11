@@ -1,0 +1,8 @@
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.19s
+     Running `target/debug/utmelab-api serve`
+[2m2026-10-11T17:36:09.488219Z[0m [33m WARN[0m [2mutmelab_api::bank::json[0m[2m:[0m withheld from serving: novels/life-changer.json: only 0 questions — withheld until it reaches 50
+[2m2026-10-11T17:36:09.488296Z[0m [33m WARN[0m [2mutmelab_api::bank::json[0m[2m:[0m withheld from serving: novels/second-class-citizen.json: only 0 questions — withheld until it reaches 50
+[2m2026-10-11T17:36:09.488314Z[0m [33m WARN[0m [2mutmelab_api::bank::json[0m[2m:[0m withheld from serving: novels/sweet-sixteen.json: only 0 questions — withheld until it reaches 50
+[2m2026-10-11T17:36:09.488329Z[0m [33m WARN[0m [2mutmelab_api::bank::json[0m[2m:[0m withheld from serving: novels/unexpected-joy-at-dawn.json: only 0 questions — withheld until it reaches 50
+[2m2026-10-11T17:36:09.488345Z[0m [33m WARN[0m [2mutmelab_api::bank::json[0m[2m:[0m withheld from serving: novels/wuthering-heights.json: only 0 questions — withheld until it reaches 50
+[2m2026-10-11T17:36:09.491359Z[0m [32m INFO[0m [2mutmelab_api[0m[2m:[0m utmelab-api listening [3mbind[0m[2m=[0m127.0.0.1:8080 [3mdata[0m[2m=[0mdata [3mkey_backend[0m[2m=[0mfile:var/api_keys.json [3mkeys[0m[2m=[0m1 [3msubjects[0m[2m=[0m34 [3mquestions[0m[2m=[0m2371 [3mdefault_rate_limit[0m[2m=[0m60

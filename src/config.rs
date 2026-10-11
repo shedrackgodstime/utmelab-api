@@ -21,9 +21,9 @@ use crate::error::ApiError;
 pub struct Config {
     /// Address the HTTP server binds to.
     pub bind: String,
-    /// Where the file key store persists when the file backend is explicitly
-    /// opted into. Gitignored, 0600. **Not the live store** — keys live in
-    /// Turso (D53); this is the dev/recovery escape hatch only.
+    /// Default source file for `key import` (a one-time file -> Turso
+    /// migration). Gitignored, 0600. Not a runtime backend — keys live in
+    /// Turso (D53).
     pub keys_file: PathBuf,
     /// Where question reports are persisted. Same treatment: operational data,
     /// never the committed constant.

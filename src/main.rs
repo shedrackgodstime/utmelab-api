@@ -14,9 +14,7 @@ use clap::{Parser, Subcommand};
 use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
 
-use utmelab_api::{
-    ApiError, AppState, Config, JsonStore, KeyStore, RateLimiter, ReportStore, Store,
-};
+use utmelab_api::{ApiError, AppState, Config, JsonStore, RateLimiter, ReportStore, Store};
 
 #[derive(Parser)]
 #[command(name = "utmelab-api", version, about = "UTME Lab question bank API")]
@@ -139,35 +137,21 @@ async fn run() -> Result<(), ApiError> {
     }
 }
 
-/// Which store this process talks to. Turso is the live store (D53); the file
-/// backend is a **dev-only escape hatch**, never a silent default.
-///
-/// Why opt-in and not a fallback: if Turso env is missing, silently dropping to
-/// a local file forks the keys — `key create` would write a key the Turso-backed
-/// server can never see, and every auth would 401 with nothing explaining why.
-/// So a missing Turso config is a hard error unless the operator explicitly
-/// asks for the file backend (`UTMELAB_API_KEY_BACKEND=file`, or by setting
-/// `UTMELAB_API_KEYS_FILE`). Same selection for serve and CLI, so a created key
-/// always lands in the store the server reads.
+/// Which store this process talks to. **Turso is the only runtime backend**
+/// (D53): keys live there. No file fallback — a missing Turso config is a hard
+/// error, because silently dropping to a local file would fork keys into a store
+/// the server can never see, and every auth would 401 with nothing explaining
+/// why. Same selection for `serve` and the `key` CLI, so a created key always
+/// lands where the server reads. (Tests construct `KeyBackend::file` directly;
+/// `key import` reads a file as a migration *source* into Turso.)
 async fn open_backend(config: &Config) -> Result<utmelab_api::KeyBackend, ApiError> {
     match (&config.turso_url, &config.turso_token) {
         (Some(url), Some(token)) => {
             utmelab_api::KeyBackend::open_remote(url, token, config.key_cache_ttl_secs).await
         }
-        _ => {
-            let wants_file = std::env::var("UTMELAB_API_KEY_BACKEND").as_deref() == Ok("file")
-                || std::env::var("UTMELAB_API_KEYS_FILE").is_ok();
-            if wants_file {
-                Ok(utmelab_api::KeyBackend::file(KeyStore::open_json(
-                    &config.keys_file,
-                )?))
-            } else {
-                Err(ApiError::config(
-                    "no key backend: set TURSO_DB_URL + TURSO_DB_TOKEN (keys live in Turso), \
-                     or UTMELAB_API_KEY_BACKEND=file for local dev",
-                ))
-            }
-        }
+        _ => Err(ApiError::config(
+            "no key backend: set TURSO_DB_URL + TURSO_DB_TOKEN (keys live in Turso)",
+        )),
     }
 }
 

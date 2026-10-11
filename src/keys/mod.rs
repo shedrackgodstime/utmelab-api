@@ -30,9 +30,12 @@ use crate::error::ApiError;
 /// which they got. This is the D23 discipline applied to keys (D53): a Turso
 /// impl behind the same seam, file stays fallback forever.
 pub enum KeyBackend {
-    /// Reload-on-resolve behind the lock: the CLI rewrites the file from
-    /// another process, so R1 applies per request (one stat, common case).
+    /// **Test / import-source only — never selected at runtime** (`open_backend`
+    /// is Turso-or-error, D53). Kept so tests run without the network and
+    /// `key import` has a file to read. Reload-on-resolve behind the lock keeps
+    /// the two-process CLI write / test read coherent.
     File(RwLock<KeyStore>),
+    /// The live backend. Keys live in Turso.
     Remote(Box<TursoKeyStore>),
 }
 
@@ -47,8 +50,7 @@ impl KeyBackend {
         )))
     }
 
-    /// Human-readable backend for boot logs: `file:var/api_keys.json` or
-    /// `turso:<url host>`. Never the token.
+    /// Human-readable backend for boot logs: `turso`, or `file:<path>` in tests.
     pub fn describe(&self) -> String {
         match self {
             Self::File(lock) => {

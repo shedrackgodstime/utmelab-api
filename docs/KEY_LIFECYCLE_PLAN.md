@@ -106,7 +106,7 @@ Budget: p99 auth < 5ms cached, < 80ms uncached.
 - Phase 2 maps 1:1 to `/internal/*` (`POST /internal/keys`, `/revoke`, `/rotate`, `/suspend`) — same semantics, different transport (session cookie). No redesign.
 
 ### 4.4 No bootstrap problem — CLI IS the path
-No migration, no recovery split: file works today, Turso later via `key import --from var/api_keys.json` (one-time, dry-run counts, refuses overwrite, prints skips — D51 honesty rule). CLI talks to Turso when configured, file when `TURSO_DB_URL` unset (dev).
+No migration, no recovery split: file works today, Turso later via `key import --from var/api_keys.json` (one-time, dry-run counts, refuses overwrite, prints skips — D51 honesty rule). CLI talks to Turso only; `KeyBackend::File` exists for tests and as the `key import` source, never a runtime fallback.
 
 ## 5. Code shape to build NOW (v1: no accounts, no sessions, no web)
 
