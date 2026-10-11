@@ -87,18 +87,47 @@ jobs:
           print(f"\n**Total: {sum(c for _, c in rows)}** across {len(rows)} subjects.")
           PY
 
+      # Uploaded before the commit so the data is downloadable even when the
+      # push fails — a failed push with no artifact means the run's hours are
+      # only visible in a log nobody reads.
+      - name: Upload harvested data
+        uses: actions/upload-artifact@v4
+        with:
+          name: harvested-questions
+          path: |
+            data/inbox/*.json
+            var/harvest-probe.json
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Upload the run log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: harvest-log
+          path: data/inbox
+          retention-days: 7
+
       - name: Commit what we harvested
         run: |
           set -euo pipefail
           if git diff --quiet -- data/inbox; then
-            echo "nothing new harvested"
+            echo "nothing new harvested — every subject already on disk"
             exit 0
           fi
           git config user.name "utmelab-bot"
           git config user.email "bot@utmelab.com"
           git add data/inbox
           git commit -m "Harvest $(date -u +%Y-%m-%d): $(ls data/inbox/*.json | wc -l) subject files"
-          git push
+          # Rebase rather than push straight: a scheduled run and a manual one
+          # can overlap, and a plain push fails on a moved branch.
+          for attempt in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "push failed (attempt $attempt) — rebasing onto origin"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          done
+          echo "could not push after 3 attempts; the artifact above still has the data"
+          exit 1
 
   verify:
     name: Verify (${{ matrix.subject }})
