@@ -12,7 +12,8 @@ and the report endpoint are all shipped. What remains is content, not code:
 
 ## Content (English-first, D34)
 
-- [ ] **Acquire a real past-paper source.** D48 retired the claim: our 97 imported rows are good syllabus-aligned practice, but nothing in the bank can be sold as a *2025 JAMB past question*. This is now the main content constraint.
+- [ ] **Harvest 2025 UTME questions (D49).** `tools/harvest.py` works — pilot batch in `data/inbox/government-2025.json`. Blocked on the **catalog, not the harvester**: we carry 5 JAMB subjects and the papers span 25, so importing Government/Commerce/CRS means adding subjects, topics and subtopics first. `claimed_paper` rows land unverified and unexplained by design.
+- [ ] **A merge step.** `data/inbox/` is not loaded by the service. Nothing moves into `data/questions.json` until a reviewable import exists.
 - [x] **Provenance follow-through (D47).** `source` and nullable `year` ship, but the 97 ported rows still carry an inherited `year: 2025` that was never checked against the paper they came from. Verifying or clearing those is the honest completion.
 
 - [ ] English bank: 155 questions → keep deepening thin subtopics (emphatic-stress ×2 is thinnest)

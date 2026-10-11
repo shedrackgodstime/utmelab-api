@@ -4,3 +4,5 @@ target/
 node_modules/
 dist/
 .env
+
+# raw harvest staging — committed so nothing is lost, consumed by the merge step

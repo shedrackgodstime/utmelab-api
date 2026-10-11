@@ -237,14 +237,19 @@ impl JsonStore {
                 continue;
             }
 
-            if !matches!(q.source.as_str(), "past_paper" | "authored" | "imported") {
+            if !matches!(
+                q.source.as_str(),
+                "past_paper" | "claimed_paper" | "authored" | "imported"
+            ) {
                 c.problems.push(format!(
-                    "questions.json: '{}' has source '{}' — expected past_paper, authored or imported",
+                    "questions.json: '{}' has source '{}' — expected past_paper, claimed_paper, authored or imported",
                     q.id, q.source
                 ));
             }
-            // Only a row we can name the paper for may claim a year (D47/D48).
-            if q.source != "past_paper" && q.year.is_some() {
+            // Only a row attributed to a named paper may claim a year (D47/D48/D49).
+            // `claimed_paper` carries one because a third party attributed it, not
+            // because we verified it — which is the whole difference between the two.
+            if !matches!(q.source.as_str(), "past_paper" | "claimed_paper") && q.year.is_some() {
                 c.problems.push(format!(
                     "questions.json: '{}' is {} but claims year {:?} — no paper of that year to point at",
                     q.id, q.source, q.year
