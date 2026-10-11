@@ -40,6 +40,10 @@ pub struct Filter {
     pub subject: Option<String>,
     pub subtopic: Option<String>,
     pub verified: Option<bool>,
+    /// Substring of the question text, case-insensitive. No ranking: results
+    /// stay in id order, so paging means the same thing it means everywhere
+    /// else (D44).
+    pub q: Option<String>,
     /// Opt in to the answer and the working.
     pub include_explanation: Option<bool>,
     /// 1-based.
@@ -67,6 +71,9 @@ display.",
         ("subject" = Option<String>, Query, description = "Scope to a subject within that exam."),
         ("verified" = Option<bool>, Query,
          description = "Only human-checked questions. Default: no filter."),
+        ("q" = Option<String>, Query,
+         description = "Substring of the question text, case-insensitive. Unranked — results stay \
+in id order. Default: no filter."),
         // utoipa cannot emit a `default` on a query parameter, so the defaults
         // are stated in the description — a client reads them there anyway.
         ("include_explanation" = Option<bool>, Query,
@@ -105,6 +112,7 @@ pub async fn questions(
             subject: f.subject.as_deref(),
             subtopic: f.subtopic.as_deref(),
             verified: f.verified,
+            text: f.q.as_deref(),
         },
         f.page.unwrap_or(1),
         f.per_page.unwrap_or(DEFAULT_PER_PAGE),

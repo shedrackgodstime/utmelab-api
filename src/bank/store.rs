@@ -23,6 +23,9 @@ pub struct QuestionFilter<'a> {
     pub subject: Option<&'a str>,
     pub subtopic: Option<&'a str>,
     pub verified: Option<bool>,
+    /// Substring of `text`, matched case-insensitively (D44). A Turso impl
+    /// pushes this down as `LIKE '%q%'` — the seam, not the route, owns it.
+    pub text: Option<&'a str>,
 }
 
 /// One page plus the totals (D3). Every implementation must produce identical
@@ -46,13 +49,20 @@ impl QuestionPage {
 
 /// Read-only access to the bank.
 ///
-/// **Every implementation must agree on all five** or the swap is not free:
+/// **Every implementation must agree on all six** or the swap is not free:
 /// 1. identical types (the D11 constant);
 /// 2. identical ordering (stable, by id);
 /// 3. identical paging totals;
 /// 4. identical *absence* — a topic with no questions does not appear (D16);
-/// 5. identical validation — invalid data fails to load, not to serve.
+/// 5. identical validation — invalid data fails to load, not to serve;
+/// 6. an identical `version()` for identical content (D42). A Turso impl
+///    fingerprints the rows it would serve, so a consumer's cached copy is
+///    invalidated by a content change rather than by a deploy.
 pub trait Store: Send + Sync {
+    /// Fingerprint of the content being served. Equal string means equal
+    /// content; anything else means a consumer should refresh (D42).
+    fn version(&self) -> &str;
+
     /// Distinct exams that have at least one subject, sorted.
     fn exams(&self) -> Vec<&str>;
 

@@ -59,7 +59,12 @@ pub struct AppState {
 struct Health {
     status: &'static str,
     service: &'static str,
+    /// The binary's version. Changes on deploy.
     version: &'static str,
+    /// Fingerprint of the **content** (D42). Changes when a question is added,
+    /// edited or withdrawn — never on a deploy that touched no content. A
+    /// consumer polls this one endpoint instead of diffing the bank.
+    bank_version: String,
     subjects: usize,
     questions: usize,
     /// Records present but not servable. Never silent.
@@ -81,6 +86,7 @@ async fn health(State(state): State<AppState>) -> Json<Health> {
         status: "ok",
         service: "utmelab-api",
         version: env!("CARGO_PKG_VERSION"),
+        bank_version: state.bank.version().to_owned(),
         subjects: state.bank.subject_count(),
         questions: state.bank.question_count(),
         withheld: state.bank.withheld_count(),

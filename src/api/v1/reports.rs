@@ -89,7 +89,9 @@ pub async fn report(
         .lock()
         .map_err(|_| ApiError::internal("report store poisoned"))?;
     if reports.recent_count(&key.id) >= DEFAULT_REPORTS_PER_DAY as usize {
-        return Err(ApiError::rate_limited(u32::MAX));
+        return Err(ApiError::daily_limit(
+            "This key has filed its reports for today; the cap resets at midnight UTC.",
+        ));
     }
 
     let (record, duplicate) = reports.file(&key.id, &id, reason, body.detail)?;

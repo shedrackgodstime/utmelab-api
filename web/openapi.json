@@ -391,6 +391,15 @@
             }
           },
           {
+            "name": "q",
+            "in": "query",
+            "description": "Substring of the question text, case-insensitive. Unranked — results stay in id order. Default: no filter.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "include_explanation",
             "in": "query",
             "description": "Include the answer and the working. Default: false.",

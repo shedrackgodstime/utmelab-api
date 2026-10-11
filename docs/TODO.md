@@ -6,10 +6,6 @@
 ## Now (build in this order)
 
 - [ ] **Assemble a paper** (`POST /exams/{exam}/papers`) — **gated on content, not on code** (D41). Scheme + readiness are live. Assembly (shuffle, `?seed=`, answers withheld, score) waits until a subject can fill its full count: JAMB needs 180 verified rows, we hold 103.
-- [ ] **Search** — substring over `text`, case-insensitive, no ranking. Primarily our authoring/dedupe tool; consumers get a search UI free.
-- [ ] **`Retry-After` on every 429** — two lines. Our status code invokes a standard our response doesn't honour.
-- [ ] **CORS `*`** (D39) — one header via tower-http. Unblocks browser-app consumers; no new risk past D26.
-- [ ] **`bank_version` in `/health`** — content hash or timestamp. Cheap invalidation so consumers poll one tiny endpoint instead of the bank. (Replaces webhooks for now.)
 
 ## Content (English-first, D34)
 
@@ -36,6 +32,9 @@
 
 ## Done
 
+- [x] `?q=` search on `/questions` — substring, unranked, through the store seam (D44)
+- [x] `Retry-After` on every 429, and only on 429s (D43)
+- [x] `bank_version` in `/health` — content hash, not deployment hash (D42)
 - [x] `GET /exams/{exam}/papers` — scheme + honest readiness (D41); 16 paths
 - [x] Report endpoint `POST /questions/{id}/report` (D38): closed reasons, no PII, 10/day, dedupe, queue-not-action
 - [x] Constant closed (D11): Question, Option, Explanation, 5 tables + notes deferred

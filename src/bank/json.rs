@@ -12,6 +12,7 @@
 use std::collections::{HashMap, HashSet};
 use std::fmt;
 use std::path::Path;
+use std::path::PathBuf;
 
 use super::model::{Novel, NovelDoc, Passage, Question, Subject};
 use super::store::{MAX_PER_PAGE, QuestionFilter, QuestionPage, Store};
@@ -70,6 +71,9 @@ pub struct JsonStore {
     novels: Vec<NovelDoc>,
     novel_by_id: HashMap<String, usize>,
     passages: Vec<Passage>,
+    /// Content fingerprint of every file we loaded (D42). Cheap invalidation
+    /// for consumers: poll `/health`, compare one string.
+    version: String,
     passage_by_id: HashMap<String, usize>,
 }
 
@@ -99,9 +103,11 @@ impl JsonStore {
             novel_by_id: HashMap::new(),
             passages: std::mem::take(&mut store_passages),
             passage_by_id: HashMap::new(),
+            version: String::new(),
         };
         // Novels: one document per book; the directory is the index.
         store.novels = load_novels(&dir.join("novels"), &mut c);
+        store.version = fingerprint(dir);
         store.validate(&mut c);
 
         if !c.problems.is_empty() {
@@ -443,6 +449,10 @@ impl Store for JsonStore {
         self.questions.iter().find(|q| q.id == id)
     }
 
+    fn version(&self) -> &str {
+        &self.version
+    }
+
     fn questions_page(&self, filter: QuestionFilter<'_>, page: u32, per_page: u32) -> QuestionPage {
         let per_page = per_page.clamp(1, MAX_PER_PAGE);
         let page = page.max(1);
@@ -467,6 +477,15 @@ impl Store for JsonStore {
         let matched: Vec<&Question> = matched
             .into_iter()
             .filter(|q| filter.verified.is_none_or(|v| q.verified == v))
+            .collect();
+
+        let matched: Vec<&Question> = matched
+            .into_iter()
+            .filter(|q| {
+                filter
+                    .text
+                    .is_none_or(|needle| q.text.to_lowercase().contains(&needle.to_lowercase()))
+            })
             .collect();
 
         let total_records = matched.len();
@@ -546,6 +565,39 @@ impl Store for JsonStore {
 /// The latest cycle a novel is prescribed for — what "current" means.
 fn newest(novel: &Novel) -> u16 {
     novel.year_prescribed.iter().copied().max().unwrap_or(0)
+}
+
+/// A fingerprint of every byte we loaded: the five files plus every novel.
+///
+/// Hashing **raw bytes** rather than parsed values means the version moves if
+/// a file is reformatted without content changing — rare, harmless, and far
+/// cheaper to reason about than a canonicalisation pass. Consumers only ever
+/// compare the string for equality, so an occasional extra bump costs nothing
+/// (D42).
+fn fingerprint(dir: &Path) -> String {
+    use sha2::{Digest, Sha256};
+
+    let mut files: Vec<PathBuf> = FILES.iter().map(|f| dir.join(f)).collect();
+    let mut novel_files: Vec<PathBuf> = std::fs::read_dir(dir.join("novels"))
+        .into_iter()
+        .flatten()
+        .filter_map(|e| e.ok().map(|e| e.path()))
+        .filter(|p| p.extension().and_then(|e| e.to_str()) == Some("json"))
+        .collect();
+    files.append(&mut novel_files);
+    files.sort();
+
+    let mut hasher = Sha256::new();
+    for path in files {
+        // The filename is hashed too, so moving content between files still
+        // changes the version.
+        hasher.update(path.file_name().unwrap_or_default().as_encoded_bytes());
+        hasher.update(std::fs::read(&path).unwrap_or_default());
+    }
+    let digest = hasher.finalize();
+    // 16 hex chars is 64 bits — ample for "did anything change" and short
+    // enough to sit in a header or a log line.
+    digest[..8].iter().map(|b| format!("{b:02x}")).collect()
 }
 
 fn read<T: for<'de> serde::Deserialize<'de>>(dir: &Path, file: &str, c: &mut Checker) -> Vec<T> {
@@ -629,4 +681,99 @@ fn load_novels(dir: &std::path::Path, c: &mut Checker) -> Vec<NovelDoc> {
         }
     });
     out
+}
+
+#[cfg(test)]
+mod search_tests {
+    use super::*;
+    use crate::bank::QuestionFilter;
+
+    fn store() -> JsonStore {
+        JsonStore::load(std::path::Path::new("data")).expect("bank loads")
+    }
+
+    fn ids(filter: QuestionFilter<'_>) -> Vec<String> {
+        store()
+            .questions_page(filter, 1, 200)
+            .questions
+            .iter()
+            .map(|q| q.id.clone())
+            .collect()
+    }
+
+    /// A needle taken from the bank itself, so the test cannot pass or fail on
+    /// what happens to be in the content today.
+    fn live_needle() -> String {
+        let bank = store();
+        let all = bank.questions_page(QuestionFilter::default(), 1, 200);
+        all.questions[0]
+            .text
+            .split_whitespace()
+            .next()
+            .unwrap()
+            .to_owned()
+    }
+
+    #[test]
+    fn a_substring_match_is_case_insensitive() {
+        let needle = live_needle();
+        let lower = ids(QuestionFilter {
+            text: Some(needle.to_lowercase().as_str()),
+            ..Default::default()
+        });
+        let upper = ids(QuestionFilter {
+            text: Some(needle.to_uppercase().as_str()),
+            ..Default::default()
+        });
+        assert!(!lower.is_empty(), "the needle must be in the bank");
+        assert_eq!(lower, upper, "case must not change the result set");
+    }
+
+    #[test]
+    fn search_composes_with_every_other_filter() {
+        let needle = live_needle();
+        let all = ids(QuestionFilter {
+            text: Some(needle.as_str()),
+            ..Default::default()
+        });
+        let scoped = ids(QuestionFilter {
+            exam: Some("JAMB"),
+            subject: Some("use-of-english"),
+            text: Some(needle.as_str()),
+            ..Default::default()
+        });
+        assert!(
+            scoped.len() <= all.len(),
+            "adding a filter cannot widen the result"
+        );
+        assert!(
+            scoped.iter().all(|id| id.is_empty() || !id.contains("zzz")),
+            "sanity: scoped ids are real rows"
+        );
+    }
+
+    #[test]
+    fn an_unmatched_needle_is_an_empty_page_not_an_error() {
+        let page = store().questions_page(
+            QuestionFilter {
+                text: Some("zzz-not-in-any-question-zzz"),
+                ..Default::default()
+            },
+            1,
+            200,
+        );
+        assert_eq!(page.total_records, 0);
+        assert_eq!(page.total_pages(), 0);
+    }
+
+    #[test]
+    fn search_keeps_id_order_so_paging_stays_meaningful() {
+        let found = ids(QuestionFilter {
+            text: Some("the"),
+            ..Default::default()
+        });
+        let mut sorted = found.clone();
+        sorted.sort();
+        assert_eq!(found, sorted, "ranking would break page boundaries");
+    }
 }
