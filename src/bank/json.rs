@@ -445,6 +445,7 @@ impl Store for JsonStore {
                     question_count: count,
                     // Notes are shape-only until D18 is activated.
                     note_available: false,
+                    objectives: t.objectives.clone(),
                     subtopics,
                 }
             })

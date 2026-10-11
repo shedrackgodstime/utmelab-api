@@ -12,7 +12,8 @@ and the report endpoint are all shipped. What remains is content, not code:
 
 ## Content (English-first, D34)
 
-- [ ] **Harvest 2025 UTME questions (D49).** `tools/harvest.py` works — pilot batch in `data/inbox/government-2025.json`. Blocked on the **catalog, not the harvester**: we carry 5 JAMB subjects and the papers span 25, so importing Government/Commerce/CRS means adding subjects, topics and subtopics first. `claimed_paper` rows land unverified and unexplained by design.
+- [ ] **Grow the catalog (D50).** Government is in: 32 topics / 101 subtopics. Every remaining subject is one command: `python3 tools/import_syllabus.py --subject economics --display Economics`. Do Economics, Commerce, CRS, History, Geography next — then harvest.
+- [ ] **Harvest 2025 UTME questions (D49).** `tools/harvest.py` works; the catalog blocker is now clearing. `claimed_paper` rows land unverified and unexplained, by design.
 - [ ] **A merge step.** `data/inbox/` is not loaded by the service. Nothing moves into `data/questions.json` until a reviewable import exists.
 - [x] **Provenance follow-through (D47).** `source` and nullable `year` ship, but the 97 ported rows still carry an inherited `year: 2025` that was never checked against the paper they came from. Verifying or clearing those is the honest completion.
 

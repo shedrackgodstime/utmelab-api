@@ -1,5 +1,89 @@
 [
   {
+    "slug": "the-legislature-types-structure-functions-and-powers",
+    "topic": "arms-of-government",
+    "name": "The legislature: types, structure, functions and powers",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "the-executive-types-functions-and-powers",
+    "topic": "arms-of-government",
+    "name": "The executive: types, functions and powers",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "the-judiciary-functions-powers-and-components",
+    "topic": "arms-of-government",
+    "name": "The judiciary: functions, powers and components",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "the-relationship-among-the-arms-of-government",
+    "topic": "arms-of-government",
+    "name": "The relationship among the arms of government",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "power-authority-legitimacy-and-sovereignty",
+    "topic": "basic-concepts-in-government",
+    "name": "Power, authority, legitimacy and sovereignty",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "society-state-nation-and-nation-state",
+    "topic": "basic-concepts-in-government",
+    "name": "Society, state, nation and nation-state",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "political-processes-political-socialisation-political-partic",
+    "topic": "basic-concepts-in-government",
+    "name": "Political processes: political socialisation, political participation and political culture",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-and-types-of-citizenship",
+    "topic": "citizenship",
+    "name": "Meaning and types of citizenship",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "citizenship-rights",
+    "topic": "citizenship",
+    "name": "Citizenship rights",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "dual-citizenship-renunciation-and-deprivation",
+    "topic": "citizenship",
+    "name": "Dual citizenship, renunciation and deprivation",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "duties-and-obligations-of-citizens",
+    "topic": "citizenship",
+    "name": "Duties and obligations of citizens",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "duties-and-obligations-of-the-state",
+    "topic": "citizenship",
+    "name": "Duties and obligations of the state",
+    "order": 5,
+    "objectives": []
+  },
+  {
     "slug": "fiction",
     "topic": "comprehension",
     "name": "Fiction",
@@ -10,13 +94,102 @@
     ]
   },
   {
-    "slug": "vowels",
-    "topic": "oral-forms",
-    "name": "Vowels",
+    "slug": "meaning-sources-and-functions-of-a-constitution",
+    "topic": "constitution",
+    "name": "Meaning, sources and functions of a constitution",
     "order": 1,
-    "objectives": [
-      "Distinguish between pure vowels and diphthongs"
-    ]
+    "objectives": []
+  },
+  {
+    "slug": "types-written-unwritten-rigid-and-flexible",
+    "topic": "constitution",
+    "name": "Types: written, unwritten, rigid and flexible",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "hugh-clifford-constitution-1922",
+    "topic": "constitutional-development-in-nigeria",
+    "name": "Hugh Clifford Constitution (1922)",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "arthur-richards-constitution-1946",
+    "topic": "constitutional-development-in-nigeria",
+    "name": "Arthur Richards Constitution (1946)",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "john-macpherson-constitution-1951",
+    "topic": "constitutional-development-in-nigeria",
+    "name": "John Macpherson Constitution (1951)",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "oliver-lyttleton-constitution-1954",
+    "topic": "constitutional-development-in-nigeria",
+    "name": "Oliver Lyttleton Constitution (1954)",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "independence-constitution-1960-all-with-features-merits-and",
+    "topic": "constitutional-development-in-nigeria",
+    "name": "Independence Constitution (1960) — all with features, merits and demerits",
+    "order": 5,
+    "objectives": []
+  },
+  {
+    "slug": "definition-purpose-determining-factors-formulation-and-imple",
+    "topic": "foreign-policy",
+    "name": "Definition, purpose, determining factors, formulation and implementation",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "monarchy-aristocracy-oligarchy-autocracy-republicanism-and-d",
+    "topic": "forms-of-government",
+    "name": "Monarchy, aristocracy, oligarchy, autocracy, republicanism and democracy: definitions, features, merits and demerits",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "british-process-of-acquisition-trade-missionary-activities-c",
+    "topic": "imperialist-penetration",
+    "name": "British process of acquisition: trade, missionary activities, company rule, crown colony, protectorate",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "british-colonial-administrative-policy-direct-and-indirect-r",
+    "topic": "imperialist-penetration",
+    "name": "British colonial administrative policy: direct and indirect rule",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "french-colonial-administrative-policy-assimilation-and-assoc",
+    "topic": "imperialist-penetration",
+    "name": "French colonial administrative policy: assimilation and association",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "impact-of-british-colonial-rule-economic-political-and-socio",
+    "topic": "imperialist-penetration",
+    "name": "Impact of British colonial rule: economic, political and socio-cultural",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "comparison-of-british-and-french-colonial-administration",
+    "topic": "imperialist-penetration",
+    "name": "Comparison of British and French colonial administration",
+    "order": 5,
+    "objectives": []
   },
   {
     "slug": "laws-of-indices",
@@ -57,6 +230,69 @@
     ]
   },
   {
+    "slug": "the-legislature-structure-functions-and-working",
+    "topic": "institutions-of-government-in-post-independence-nigeria",
+    "name": "The legislature: structure, functions and working",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "the-executive-structure-functions-and-working",
+    "topic": "institutions-of-government-in-post-independence-nigeria",
+    "name": "The executive: structure, functions and working",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "the-judiciary-structure-functions-and-working",
+    "topic": "institutions-of-government-in-post-independence-nigeria",
+    "name": "The judiciary: structure, functions and working",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "ecowas",
+    "topic": "international-organisations",
+    "name": "ECOWAS",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "oau-au",
+    "topic": "international-organisations",
+    "name": "OAU / AU",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "the-commonwealth-2",
+    "topic": "international-organisations",
+    "name": "The Commonwealth",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "opec",
+    "topic": "international-organisations",
+    "name": "OPEC",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "the-united-nations-organisation-uno",
+    "topic": "international-organisations",
+    "name": "The United Nations Organisation (UNO)",
+    "order": 5,
+    "objectives": []
+  },
+  {
+    "slug": "african-petroleum-producers-association-for-each-origin-obje",
+    "topic": "international-organisations",
+    "name": "African Petroleum Producers Association — for each: origin, objectives, structure, functions, achievements, problems and prospects",
+    "order": 6,
+    "objectives": []
+  },
+  {
     "slug": "sentence-interpretation",
     "topic": "lexis-and-structure",
     "name": "Sentence Interpretation",
@@ -90,6 +326,99 @@
     "order": 4,
     "objectives": [
       "Choose the option that most suitably fills a gap in a sentence"
+    ]
+  },
+  {
+    "slug": "local-government-administration-prior-to-1976",
+    "topic": "local-government",
+    "name": "Local government administration prior to 1976",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "features-of-the-local-government-reforms-1976-1989-structure",
+    "topic": "local-government",
+    "name": "Features of the local government reforms (1976, 1989): structure, functions, finance and inter-governmental relations",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "traditional-rulers-and-local-governments",
+    "topic": "local-government",
+    "name": "Traditional rulers and local governments",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "problems-of-local-government-administration-in-nigeria",
+    "topic": "local-government",
+    "name": "Problems of local government administration in Nigeria",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "the-united-nations",
+    "topic": "nigeria-in-international-organisations",
+    "name": "The United Nations",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "the-commonwealth",
+    "topic": "nigeria-in-international-organisations",
+    "name": "The Commonwealth",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "the-organisation-of-african-unity-oau-and-the-african-union",
+    "topic": "nigeria-in-international-organisations",
+    "name": "The Organisation of African Unity (OAU) and the African Union (AU)",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "the-economic-community-of-west-african-states-ecowas",
+    "topic": "nigeria-in-international-organisations",
+    "name": "The Economic Community of West African States (ECOWAS)",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "the-organisation-of-petroleum-exporting-countries-opec",
+    "topic": "nigeria-in-international-organisations",
+    "name": "The Organisation of Petroleum Exporting Countries (OPEC)",
+    "order": 5,
+    "objectives": []
+  },
+  {
+    "slug": "relations-with-major-powers",
+    "topic": "nigeria-s-foreign-policy",
+    "name": "Relations with major powers",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "relations-with-developing-countries-e-g-the-technical-aid-co",
+    "topic": "nigeria-s-foreign-policy",
+    "name": "Relations with developing countries (e.g. the Technical Aid Corps / TAC)",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "nigeria-s-non-alignment-policy",
+    "topic": "nigeria-s-foreign-policy",
+    "name": "Nigeria's non-alignment policy",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "vowels",
+    "topic": "oral-forms",
+    "name": "Vowels",
+    "order": 1,
+    "objectives": [
+      "Distinguish between pure vowels and diphthongs"
     ]
   },
   {
@@ -127,5 +456,383 @@
     "objectives": [
       "Choose the option that correctly emphasises the underlined word"
     ]
+  },
+  {
+    "slug": "communalism-feudalism-capitalism-socialism-communism-totalit",
+    "topic": "political-ideologies",
+    "name": "Communalism, feudalism, capitalism, socialism, communism, totalitarianism, fascism and Nazism",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "first-republic",
+    "topic": "political-parties-and-party-politics-in-post-independence-ni",
+    "name": "First Republic",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "second-republic",
+    "topic": "political-parties-and-party-politics-in-post-independence-ni",
+    "name": "Second Republic",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "third-republic",
+    "topic": "political-parties-and-party-politics-in-post-independence-ni",
+    "name": "Third Republic",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "fourth-republic-evolution-membership-spread-structure-and-id",
+    "topic": "political-parties-and-party-politics-in-post-independence-ni",
+    "name": "Fourth Republic — evolution, membership spread, structure and ideologies",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "political-parties-definition-organisation-and-functions",
+    "topic": "political-parties-and-party-systems",
+    "name": "Political parties: definition, organisation and functions",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "party-systems-definition-organisation-and-functions",
+    "topic": "political-parties-and-party-systems",
+    "name": "Party systems: definition, organisation and functions",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "the-1963-1979-1989-and-1999-constitutions-characteristics-an",
+    "topic": "post-independence-constitutions",
+    "name": "The 1963, 1979, 1989 and 1999 Constitutions: characteristics and shortcomings",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "pre-jihad-hausa-emirate-tiv-igbo-and-yoruba-polities",
+    "topic": "pre-colonial-polities-nigeria",
+    "name": "Pre-jihad Hausa, Emirate, Tiv, Igbo and Yoruba polities",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "their-structural-organisation",
+    "topic": "pre-colonial-polities-nigeria",
+    "name": "Their structural organisation",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "functions-of-their-various-political-institutions",
+    "topic": "pre-colonial-polities-nigeria",
+    "name": "Functions of their various political institutions",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "definition-types-functions-and-modes-of-operation",
+    "topic": "pressure-groups",
+    "name": "Definition, types, functions and modes of operation",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "differences-between-pressure-groups-and-political-parties",
+    "topic": "pressure-groups",
+    "name": "Differences between pressure groups and political parties",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "ethics-and-accountability-in-public-office",
+    "topic": "principles-of-democratic-government",
+    "name": "Ethics and accountability in public office",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "separation-of-powers",
+    "topic": "principles-of-democratic-government",
+    "name": "Separation of powers",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "checks-and-balances",
+    "topic": "principles-of-democratic-government",
+    "name": "Checks and balances",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "individual-and-collective-responsibility",
+    "topic": "principles-of-democratic-government",
+    "name": "Individual and collective responsibility",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "constitutionalism",
+    "topic": "principles-of-democratic-government",
+    "name": "Constitutionalism",
+    "order": 5,
+    "objectives": []
+  },
+  {
+    "slug": "rule-of-law",
+    "topic": "principles-of-democratic-government",
+    "name": "Rule of law",
+    "order": 6,
+    "objectives": []
+  },
+  {
+    "slug": "representative-government",
+    "topic": "principles-of-democratic-government",
+    "name": "Representative government",
+    "order": 7,
+    "objectives": []
+  },
+  {
+    "slug": "nationalism-meaning-and-types",
+    "topic": "process-of-decolonisation",
+    "name": "Nationalism: meaning and types",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "nationalist-movements-emergence-goals-and-strategies",
+    "topic": "process-of-decolonisation",
+    "name": "Nationalist movements: emergence, goals and strategies",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "nationalist-leaders-e-g-herbert-macaulay-nnamdi-azikiwe-obaf",
+    "topic": "process-of-decolonisation",
+    "name": "Nationalist leaders (e.g. Herbert Macaulay, Nnamdi Azikiwe, Obafemi Awolowo, Ahmadu Bello, Ladipo Solanke, Aminu Kano, J. S. Tarka, Tafawa Balewa)",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "emergence-of-nationalist-parties",
+    "topic": "process-of-decolonisation",
+    "name": "Emergence of nationalist parties",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "influence-of-external-factors-e-g-pan-africanism-back-to-afr",
+    "topic": "process-of-decolonisation",
+    "name": "Influence of external factors (e.g. Pan-Africanism, Back-to-Africa Movements, the Second World War)",
+    "order": 5,
+    "objectives": []
+  },
+  {
+    "slug": "legislative-enactments-acts-edicts-bye-laws-delegated-legisl",
+    "topic": "process-of-legislation",
+    "name": "Legislative enactments: acts, edicts, bye-laws, delegated legislation and decrees",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "public-commissions-established-by-the-1979-and-subsequent-co",
+    "topic": "public-commissions",
+    "name": "Public commissions established by the 1979 and subsequent constitutions: Civil Service Commission, Public Complaints Commission, Electoral Commissions, National Boundary Commission and others — objectives, functions and problems",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "definition-types-purpose-and-functions",
+    "topic": "public-corporations-and-parastatals",
+    "name": "Definition, types, purpose and functions",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "finance-control-and-problems",
+    "topic": "public-corporations-and-parastatals",
+    "name": "Finance, control and problems",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "deregulation-privatisation-and-commercialisation-objectives",
+    "topic": "public-corporations-and-parastatals",
+    "name": "Deregulation, privatisation and commercialisation: objectives, features, merits and demerits",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "comparison-between-public-corporations-and-parastatals",
+    "topic": "public-corporations-and-parastatals",
+    "name": "Comparison between public corporations and parastatals",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-formation-and-measurement",
+    "topic": "public-opinion",
+    "name": "Meaning, formation and measurement",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "functions-and-limitations",
+    "topic": "public-opinion",
+    "name": "Functions and limitations",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "africa-as-the-centrepiece-of-nigeria-s-foreign-policy-guidin",
+    "topic": "relations-with-african-countries",
+    "name": "Africa as the centrepiece of Nigeria's foreign policy: guiding principles, implementation and implications",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "nepad-origin-objectives-and-implications",
+    "topic": "relations-with-african-countries",
+    "name": "NEPAD: origin, objectives and implications",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "unitary-system-features-reasons-for-adoption-merits-and-deme",
+    "topic": "structures-of-governance",
+    "name": "Unitary system: features, reasons for adoption, merits and demerits",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "federal-system-features-reasons-for-adoption-merits-and-deme",
+    "topic": "structures-of-governance",
+    "name": "Federal system: features, reasons for adoption, merits and demerits",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "confederal-system-features-reasons-for-adoption-merits-and-d",
+    "topic": "structures-of-governance",
+    "name": "Confederal system: features, reasons for adoption, merits and demerits",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "presidential-system",
+    "topic": "systems-of-governance",
+    "name": "Presidential system",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "parliamentary-system",
+    "topic": "systems-of-governance",
+    "name": "Parliamentary system",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "monarchical-system",
+    "topic": "systems-of-governance",
+    "name": "Monarchical system",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "definition-characteristics-functions-structure-control-and-p",
+    "topic": "the-civil-service",
+    "name": "Definition, characteristics, functions, structure, control and problems",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "suffrage-evolution-and-types",
+    "topic": "the-electoral-process",
+    "name": "Suffrage: evolution and types",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "election-types-and-ingredients-of-free-and-fair-elections",
+    "topic": "the-electoral-process",
+    "name": "Election: types and ingredients of free and fair elections",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "electoral-systems-types-advantages-and-disadvantages",
+    "topic": "the-electoral-process",
+    "name": "Electoral systems: types, advantages and disadvantages",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "electoral-commissions-functions-and-problems",
+    "topic": "the-electoral-process",
+    "name": "Electoral commissions: functions and problems",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "factors-that-led-to-military-intervention",
+    "topic": "the-military-in-nigerian-politics",
+    "name": "Factors that led to military intervention",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "structure-of-military-regimes",
+    "topic": "the-military-in-nigerian-politics",
+    "name": "Structure of military regimes",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "impact-of-military-rule-political-e-g-creation-of-states-int",
+    "topic": "the-military-in-nigerian-politics",
+    "name": "Impact of military rule: political (e.g. creation of states, introduction of the unitary system / Unification Decree No. 34) and economic (e.g. SAP)",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "processes-of-military-disengagement",
+    "topic": "the-military-in-nigerian-politics",
+    "name": "Processes of military disengagement",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "rationale-for-a-federal-system",
+    "topic": "the-structure-and-workings-of-nigerian-federalism",
+    "name": "Rationale for a federal system",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "tiers-of-government-and-their-relationship",
+    "topic": "the-structure-and-workings-of-nigerian-federalism",
+    "name": "Tiers of government and their relationship",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "creation-of-states-1963-1967-1976-1987-1991-and-1996",
+    "topic": "the-structure-and-workings-of-nigerian-federalism",
+    "name": "Creation of states: 1963, 1967, 1976, 1987, 1991 and 1996",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "problems-of-nigerian-federalism-census-revenue-allocation-co",
+    "topic": "the-structure-and-workings-of-nigerian-federalism",
+    "name": "Problems of Nigerian federalism: census, revenue allocation, conflicts and solutions (e.g. federal character)",
+    "order": 4,
+    "objectives": []
   }
 ]

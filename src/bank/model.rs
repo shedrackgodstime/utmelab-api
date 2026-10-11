@@ -28,7 +28,15 @@ pub struct Topic {
     pub exam: String,
     pub name: String,
     pub order: u32,
+    /// Marks JAMB gives this topic. **0 means "not published"**, never "worth
+    /// nothing" — JAMB states weights for some subjects and not others, and a
+    /// fabricated weight would reach consumers as a fact.
     pub weight: u32,
+    /// The examinable statements JAMB attaches to this topic. Objectives sit
+    /// here because that is the level JAMB states them at; subtopics inherit
+    /// none of their own rather than being given invented ones.
+    #[serde(default)]
+    pub objectives: Vec<String>,
 }
 
 /// A drill-granular unit. Only exists for topics that hold enough questions to

@@ -8,6 +8,392 @@
     "weight": 7
   },
   {
+    "slug": "basic-concepts-in-government",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Basic Concepts in Government",
+    "order": 1,
+    "weight": 0,
+    "objectives": [
+      "Identify the fundamental concepts in government and governance",
+      "Analyse the various political processes"
+    ]
+  },
+  {
+    "slug": "forms-of-government",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Forms of Government",
+    "order": 2,
+    "weight": 0,
+    "objectives": [
+      "Distinguish between the different forms of government"
+    ]
+  },
+  {
+    "slug": "arms-of-government",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Arms of Government",
+    "order": 3,
+    "weight": 0,
+    "objectives": [
+      "Identify the duties and obligations of the various arms of government and their agencies",
+      "Relate each arm of government to its functions",
+      "Appreciate how these arms interrelate"
+    ]
+  },
+  {
+    "slug": "structures-of-governance",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Structures of Governance",
+    "order": 4,
+    "weight": 0,
+    "objectives": [
+      "Compare the various political structures of governance"
+    ]
+  },
+  {
+    "slug": "systems-of-governance",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Systems of Governance",
+    "order": 5,
+    "weight": 0,
+    "objectives": [
+      "Distinguish between the different systems of governance"
+    ]
+  },
+  {
+    "slug": "political-ideologies",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Political Ideologies",
+    "order": 6,
+    "weight": 0,
+    "objectives": [
+      "Differentiate between the major political ideologies",
+      "Contrast the modes of production"
+    ]
+  },
+  {
+    "slug": "constitution",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Constitution",
+    "order": 7,
+    "weight": 0,
+    "objectives": [
+      "Define constitutions and identify their sources and functions",
+      "Compare the nature of the various types of constitutions"
+    ]
+  },
+  {
+    "slug": "principles-of-democratic-government",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Principles of Democratic Government",
+    "order": 8,
+    "weight": 0,
+    "objectives": [
+      "Identify the principles of democratic government",
+      "Determine the application of these principles"
+    ]
+  },
+  {
+    "slug": "process-of-legislation",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Process of Legislation",
+    "order": 9,
+    "weight": 0,
+    "objectives": [
+      "Analyse the processes involved in making laws"
+    ]
+  },
+  {
+    "slug": "citizenship",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Citizenship",
+    "order": 10,
+    "weight": 0,
+    "objectives": [
+      "Differentiate between the various methods of acquiring citizenship",
+      "Specify the rights and responsibilities of citizens",
+      "Assess the obligations of the state"
+    ]
+  },
+  {
+    "slug": "the-electoral-process",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "The Electoral Process",
+    "order": 11,
+    "weight": 0,
+    "objectives": [
+      "Distinguish between the different types of franchise",
+      "Identify and explain the types of electoral systems",
+      "Analyse the various electoral processes"
+    ]
+  },
+  {
+    "slug": "political-parties-and-party-systems",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Political Parties and Party Systems",
+    "order": 12,
+    "weight": 0,
+    "objectives": [
+      "Assess the role of political parties",
+      "Distinguish between the types of party systems"
+    ]
+  },
+  {
+    "slug": "pressure-groups",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Pressure Groups",
+    "order": 13,
+    "weight": 0,
+    "objectives": [
+      "Evaluate the functions and modus operandi of pressure groups",
+      "Distinguish between pressure groups and political parties"
+    ]
+  },
+  {
+    "slug": "public-opinion",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Public Opinion",
+    "order": 14,
+    "weight": 0,
+    "objectives": [
+      "Compare the methods of assessing public opinion",
+      "Assess the functions of public opinion",
+      "Analyse the limitations of public opinion"
+    ]
+  },
+  {
+    "slug": "the-civil-service",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "The Civil Service",
+    "order": 15,
+    "weight": 0,
+    "objectives": [
+      "Analyse the significance of the civil service in governance"
+    ]
+  },
+  {
+    "slug": "pre-colonial-polities-nigeria",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Pre-Colonial Polities (Nigeria)",
+    "order": 16,
+    "weight": 0,
+    "objectives": [
+      "Appreciate the effectiveness of pre-colonial political systems",
+      "Compare the pre-colonial systems of governance"
+    ]
+  },
+  {
+    "slug": "imperialist-penetration",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Imperialist Penetration",
+    "order": 17,
+    "weight": 0,
+    "objectives": [
+      "Trace the processes of imperialist penetration",
+      "Assess the impact of British and French colonial policies",
+      "Distinguish between British and French colonial practices"
+    ]
+  },
+  {
+    "slug": "process-of-decolonisation",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Process of Decolonisation",
+    "order": 18,
+    "weight": 0,
+    "objectives": [
+      "Evaluate the process of decolonisation",
+      "Assess the roles of nationalist leaders and parties",
+      "Assess the impact of external forces and ideas"
+    ]
+  },
+  {
+    "slug": "constitutional-development-in-nigeria",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Constitutional Development in Nigeria",
+    "order": 19,
+    "weight": 0,
+    "objectives": [
+      "Compare the various constitutional developments"
+    ]
+  },
+  {
+    "slug": "post-independence-constitutions",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Post-Independence Constitutions",
+    "order": 20,
+    "weight": 0,
+    "objectives": [
+      "Assess the workings of the various constitutions"
+    ]
+  },
+  {
+    "slug": "institutions-of-government-in-post-independence-nigeria",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Institutions of Government in Post-Independence Nigeria",
+    "order": 21,
+    "weight": 0,
+    "objectives": [
+      "Evaluate the operations of the arms of government and their agencies (civil service, armed forces, police, courts, etc.)"
+    ]
+  },
+  {
+    "slug": "public-commissions",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Public Commissions",
+    "order": 22,
+    "weight": 0,
+    "objectives": [
+      "Evaluate the operations of the public commissions",
+      "Assess the problems of the public commissions and their constraints"
+    ]
+  },
+  {
+    "slug": "political-parties-and-party-politics-in-post-independence-ni",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Political Parties and Party Politics in Post-Independence Nigeria",
+    "order": 23,
+    "weight": 0,
+    "objectives": [
+      "Contrast the political processes in the various republics",
+      "Evaluate the ideologies, structure and composition of the political parties"
+    ]
+  },
+  {
+    "slug": "the-structure-and-workings-of-nigerian-federalism",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "The Structure and Workings of Nigerian Federalism",
+    "order": 24,
+    "weight": 0,
+    "objectives": [
+      "Examine the workings of Nigerian federalism",
+      "Identify the problems of Nigerian federalism",
+      "Evaluate the corrective measures adopted"
+    ]
+  },
+  {
+    "slug": "public-corporations-and-parastatals",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Public Corporations and Parastatals",
+    "order": 25,
+    "weight": 0,
+    "objectives": [
+      "Examine the operations of public corporations and parastatals",
+      "Identify the processes involved in privatisation and commercialisation",
+      "Assess the economic importance of privatisation and commercialisation"
+    ]
+  },
+  {
+    "slug": "local-government",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Local Government",
+    "order": 26,
+    "weight": 0,
+    "objectives": [
+      "Trace the evolution and structure of local government",
+      "Identify the major problems faced by local governments"
+    ]
+  },
+  {
+    "slug": "the-military-in-nigerian-politics",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "The Military in Nigerian Politics",
+    "order": 27,
+    "weight": 0,
+    "objectives": [
+      "Evaluate the reasons given for military intervention",
+      "Assess the achievements of military rule",
+      "Determine the conditions that necessitated withdrawal from governance"
+    ]
+  },
+  {
+    "slug": "foreign-policy",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Foreign Policy",
+    "order": 28,
+    "weight": 0,
+    "objectives": [
+      "Define foreign policy",
+      "Identify and explain the determinants of foreign policy"
+    ]
+  },
+  {
+    "slug": "nigeria-s-foreign-policy",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Nigeria's Foreign Policy",
+    "order": 29,
+    "weight": 0,
+    "objectives": [
+      "Identify the major objectives of Nigeria's foreign policy",
+      "Analyse Nigeria's non-aligned posture"
+    ]
+  },
+  {
+    "slug": "relations-with-african-countries",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Relations with African Countries",
+    "order": 30,
+    "weight": 0,
+    "objectives": [
+      "Evaluate the role of Nigeria in continental affairs",
+      "Assess the role of NEPAD in developing Africa"
+    ]
+  },
+  {
+    "slug": "nigeria-in-international-organisations",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "Nigeria in International Organisations",
+    "order": 31,
+    "weight": 0,
+    "objectives": [
+      "Analyse the dynamics of Nigeria's involvement in international organisations",
+      "Assess the contributions of these organisations to the development of Nigeria"
+    ]
+  },
+  {
+    "slug": "international-organisations",
+    "subject": "government",
+    "exam": "JAMB",
+    "name": "International Organisations",
+    "order": 32,
+    "weight": 0,
+    "objectives": [
+      "Evaluate the operations of these international organisations",
+      "Assess the role of these organisations in world affairs",
+      "Appreciate the challenges of these organisations and how they can be overcome"
+    ]
+  },
+  {
     "slug": "indices-logarithms-surds",
     "subject": "mathematics",
     "exam": "JAMB",

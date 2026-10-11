@@ -1745,6 +1745,7 @@
           "weight",
           "question_count",
           "note_available",
+          "objectives",
           "subtopics"
         ],
         "properties": {
@@ -1754,6 +1755,13 @@
           "note_available": {
             "type": "boolean",
             "description": "Notes are shape-only until D18 is activated."
+          },
+          "objectives": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "JAMB states objectives at topic level, so that is where they live\n(D50). Subtopics carry none rather than being given invented ones."
           },
           "order": {
             "type": "integer",
@@ -1798,6 +1806,13 @@
           "name": {
             "type": "string"
           },
+          "objectives": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The examinable statements JAMB attaches to this topic. Objectives sit\nhere because that is the level JAMB states them at; subtopics inherit\nnone of their own rather than being given invented ones."
+          },
           "order": {
             "type": "integer",
             "format": "int32",
@@ -1812,6 +1827,7 @@
           "weight": {
             "type": "integer",
             "format": "int32",
+            "description": "Marks JAMB gives this topic. **0 means \"not published\"**, never \"worth\nnothing\" — JAMB states weights for some subjects and not others, and a\nfabricated weight would reach consumers as a fact.",
             "minimum": 0
           }
         }

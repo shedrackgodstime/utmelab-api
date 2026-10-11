@@ -37,6 +37,9 @@ pub struct SyllabusTopic {
     pub question_count: usize,
     /// Notes are shape-only until D18 is activated.
     pub note_available: bool,
+    /// JAMB states objectives at topic level, so that is where they live
+    /// (D50). Subtopics carry none rather than being given invented ones.
+    pub objectives: Vec<String>,
     pub subtopics: Vec<SyllabusSubtopic>,
 }
 
