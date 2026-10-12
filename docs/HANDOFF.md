@@ -45,9 +45,10 @@ note was written from a pre-merge view and is resolved.
 
 | file | what it is |
 |---|---|
-| `docs/QUESTION_BANK_DECISIONS.md` | D1–D53. The law. Each row states the rule, its status (PINNED/DEFERRED/REJECTED/SUPERSEDED) and its grounds. |
+| `docs/QUESTION_BANK_DECISIONS.md` | D1–D61. The law. Each row states the rule, its status (PINNED/DEFERRED/REJECTED/SUPERSEDED) and its grounds. |
 | `docs/TODO.md` | what is next, and why something is not |
 | `docs/UNDERLINE_PROBLEM.md` | the largest open defect; read before touching English |
+| `docs/RICH_TEXT_HANDOFF.md` | **D60/D61 `RichText` — decided, not started.** Why `emphasis`/`image` become one mark array on every text field; implementation surface and open questions |
 | `docs/API_REVIEW.md`, `docs/KEY_LIFECYCLE_PLAN.md` | from the D53 key work |
 
 ## 4. Current state
@@ -127,9 +128,12 @@ disagree. Two lists is how subjects drift.
 
 1. **The 78 underline questions** (`docs/UNDERLINE_PROBLEM.md`). They say "the
    underlined word" and we store no target, so a student cannot answer them.
-   Needs a D11 decision — `emphasis: Option<String>` is recommended — then a
-   backfill: semi-automatic for synonyms/antonyms, read by hand for stress and
-   sound items. **No `verified: true` on any of the 78 until this lands.**
+   **The field shipped under D54; D60 then superseded that field shape** — the
+   underline is now an `Underline` mark inside `RichText.inline`, applied to every
+   text field rather than `Question` alone. Read
+   [`RICH_TEXT_HANDOFF.md`](RICH_TEXT_HANDOFF.md) before starting either: the
+   backfill cannot be stored until the shape it writes into exists. **No
+   `verified: true` on any of the 78 until it lands.**
 2. **Verification and explanations** — 2,200 rows untouched. Mathematics came
    out clean (58/60 verified); objective subjects verify well, languages and
    statistics need judgement. Review in batches of ~50, checking the answer by
