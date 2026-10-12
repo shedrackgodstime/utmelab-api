@@ -7,6 +7,17 @@ Repo: `/data/data/com.termux/files/home/projects/UTME-Lab/utmelab-api`
 Remote: `github-shedrackgodstime:utmelab-api` · branch `main`
 Parent repo `UTME-Lab` **ignores this directory** — it is a separate product.
 
+> **Renamed `web/` → `site/` (2026-10-12).** The docs/dashboard project was
+> `web/`; it is now `site/`, and it is an **npm** project (`npm ci`), not bun.
+> It ships in the release as `release/site/` and Caddy serves it from
+> `/opt/apps/utmelab-api/current/site`. The deploy gate and Caddyfile on the VPS
+> are *installed copies* that still hold the old name — re-run
+> `bash docs/deployment/vps-onetime-setup.sh` there before the next deploy, or
+> the gate rejects the release. Full note in
+> [`deployment/README.md`](deployment/README.md). Dated records
+> (`API_REVIEW.md`, `QUESTION_BANK_DECISIONS.md` D32, `KEY_LIFECYCLE_PLAN.md`)
+> still say `web/` on purpose — they describe the tree as it was at the time.
+
 ---
 
 ## 1. What this is
@@ -23,7 +34,7 @@ cargo build
 cargo test                 # must be green before any push
 cargo clippy --all-targets # must be clean
 cargo fmt
-cargo run -- openapi --out web/openapi.json   # regenerate the spec after route changes
+cargo run -- openapi --out site/openapi.json  # regenerate the spec after route changes
 ```
 
 **All tests are green** (72/72) and clippy is clean as of 2026-10-11. The D53

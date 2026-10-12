@@ -14,7 +14,7 @@ Group=utmelab
 #   UTMELAB_API_KEYS_FILE=/var/lib/utmelab-api/api_keys.json
 #   UTMELAB_API_REPORTS_FILE=/var/lib/utmelab-api/reports.json
 #   TURSO_DB_URL=turso://...
-#   TURSO_DB_TOKEN=...        (write token — server only, never in web/ or CI)
+#   TURSO_DB_TOKEN=...        (write token — server only, never in site/ or CI)
 #   KEY_CACHE_TTL_SECS=30
 EnvironmentFile=/etc/utmelab-api/environment
 
@@ -24,7 +24,7 @@ Restart=on-failure
 RestartSec=3
 
 # The API must write its operational files (keys/reports when file-backed) and
-# read data/ + web/. Everything else stays read-only.
+# read data/ + site/. Everything else stays read-only.
 ReadWritePaths=/var/lib/utmelab-api
 
 # Hardening (matches the parent utmelab.service; systemd-analyze security ~3.x).

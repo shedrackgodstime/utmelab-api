@@ -5,8 +5,15 @@
 #
 # Routing:
 #   /api/*  /health  /openapi.json  -> the Rust binary on 127.0.0.1:8081
-#   everything else                  -> the static docs built from web/ (dist)
+#   everything else                  -> the static docs built from site/ (dist)
 # The binary never serves HTML; Caddy serves the docs and proxies the API.
+#
+# RENAMED: this directory was `web/` until 2026-10-12 and is now `site/`. The
+# built site ships in the release as release/site and is served from
+# /opt/apps/utmelab-api/current/site. An already-provisioned host still has the
+# old Caddyfile and gate installed under the old name — re-run
+# `bash docs/deployment/vps-onetime-setup.sh` on the VPS before the next deploy,
+# otherwise the gate rejects the release and this root 404s.
 
 api.utmelab.com {
 	encode gzip zstd
@@ -26,9 +33,9 @@ api.utmelab.com {
 		reverse_proxy 127.0.0.1:8081
 	}
 
-	# Static docs tier (Astro build output ships as web/ in the release).
+	# Static docs tier (Astro build output ships as site/ in the release).
 	handle {
-		root * /opt/apps/utmelab-api/current/web
+		root * /opt/apps/utmelab-api/current/site
 		try_files {path} /index.html
 		file_server
 	}

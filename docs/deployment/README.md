@@ -15,11 +15,36 @@ This is the same proven pattern the parent UTME-Lab app already runs on this hos
 | **A deploy failed** | nothing | the run goes **red**, `/health` never answered, nothing was deleted. Fix and run it again. |
 
 No SSH. No manual Caddy/systemd edits after the one-time setup. The docs ship
-in the same tarball as the binary (D32: Caddy serves `web/`, proxies `/api/*`).
+in the same tarball as the binary (D32: Caddy serves `site/`, proxies `/api/*`).
 
 **Deploys are serialized.** Only one runs at a time and none is cancelled
 mid-flight, because the gate deletes old release directories — two overlapping
 runs could delete the release the other was activating.
+
+## ⚠ Renamed `web/` → `site/` (2026-10-12) — re-run the host setup first
+
+The docs project was `web/` and is now `site/`. The built site ships in the
+tarball as `release/site/` and Caddy serves it from
+`/opt/apps/utmelab-api/current/site`.
+
+Two things on the VPS are **installed copies** of repo files, so they still hold
+the old name and will not pick this up from a push:
+
+| On the host | Old path it hardcodes | Effect if not updated |
+|---|---|---|
+| `/usr/local/bin/utmelab-api-deploy` | `releases/<v>/web/index.html` | gate dies: *"has no web/index.html"* |
+| `/etc/caddy/Caddyfile.api` | `root * …/current/web` | docs 404 after activation |
+
+Before the next deploy, on the VPS as a sudoer:
+
+```bash
+sudo bash docs/deployment/vps-onetime-setup.sh    # idempotent; re-installs both
+sudo caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile \
+  && sudo systemctl reload caddy
+```
+
+The script only rewrites config and re-installs the gate — it does not touch
+releases, so it is safe to run against a live deployment.
 
 ## What's already done on the host (from the parent)
 
@@ -43,7 +68,7 @@ sudo chmod 0775 /opt/apps/utmelab-api/releases
 sudo mkdir -p /var/lib/utmelab-api && sudo chown utmelab:utmelab /var/lib/utmelab-api
 
 # 2. Secrets (0640 root:utmelab). Turso values you already have; rw token
-#    stays server-only — never in web/ or CI.
+#    stays server-only — never in site/ or CI.
 sudo tee /etc/utmelab-api/environment >/dev/null <<'EOF'
 UTMELAB_API_BIND=127.0.0.1:8081
 UTMELAB_API_DATA_DIR=/opt/apps/utmelab-api/current/data
@@ -171,7 +196,7 @@ file rather than a flag error.
   real releases land and history is worth keeping.
 - **It's reusable** — the parent app runs the identical pattern on the same box;
   the next project copies these files and changes names + ports.
-- **Docs stay grouped** — `web/` builds in the same tarball; no separate deploy.
+- **Docs stay grouped** — `site/` builds in the same tarball; no separate deploy.
 
 ## Notes / watch-items
 
@@ -194,6 +219,6 @@ file rather than a flag error.
   `questions.json` — catalog + novels are embedded in the binary
   (`JsonStore::load_embedded`). Releases ship only that one file. Once
   questions move to Turso, the env var and the `data/` dir go away entirely:
-  the release is `binary + web/`.
+  the release is `binary + site/`.
 - `data/inbox/` (~2 MB of unverified harvested questions) never ships. Nothing
   in production reads it — it is import staging, local-only.

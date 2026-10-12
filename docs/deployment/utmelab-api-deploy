@@ -9,7 +9,13 @@
 #
 # A release is:
 #   releases/<v>/utmelab-api        the Rust binary (executable)
-#   releases/<v>/web/               the built static docs (index.html present)
+#   releases/<v>/site/              the built static docs (index.html present)
+#
+# RENAMED: the docs directory was `web/` until 2026-10-12 and is now `site/`.
+# This script is installed on the host as /usr/local/bin/utmelab-api-deploy, so
+# a host provisioned before the rename still runs the old copy and will reject a
+# release with "has no web/index.html". Re-install it (step 3 of
+# docs/deployment/README.md) before deploying.
 #
 # Activation = atomically re-point the `current` symlink, restart the service,
 # poll /health.
@@ -42,7 +48,7 @@ V="${1:-}"
 SRC="$REL/$V"
 [[ -d "$SRC" ]] || die "release '$V' does not exist under $REL" 3
 [[ -x "$SRC/$APP" ]] || die "release '$V' has no executable $APP" 4
-[[ -f "$SRC/web/index.html" ]] || die "release '$V' has no web/index.html (docs build missing)" 5
+[[ -f "$SRC/site/index.html" ]] || die "release '$V' has no site/index.html (docs build missing)" 5
 
 # Make the release readable/executable by the runtime user (service runs as
 # utmelab, a system user with no login). releases/ is deploy-owned; the service

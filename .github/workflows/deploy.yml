@@ -69,9 +69,9 @@ jobs:
 
       - name: Build docs (static, D32)
         run: |
-          cd web
-          bun install --frozen-lockfile
-          bun run build
+          cd site
+          npm ci
+          npm run build
           test -f dist/index.html
 
       - name: Package release
@@ -79,16 +79,16 @@ jobs:
           set -euo pipefail
           mkdir -p release
           cp target/release/${APP} release/${APP}
-          cp -r web/dist release/web
+          cp -r site/dist release/site
           # Transitional: catalog + novels are embedded in the binary
           # (`JsonStore::load_embedded`); the release carries exactly one data
           # file — questions.json. data/inbox/ never ships (import staging,
           # local-only). Once questions move to Turso, this block ships no
-          # data at all: binary + web/.
+          # data at all: binary + site/.
           mkdir -p release/data
           cp data/questions.json release/data/questions.json
           test -x release/${APP}
-          test -f release/web/index.html
+          test -f release/site/index.html
           test -f release/data/questions.json
           tar -czf "${APP}-${{ steps.v.outputs.version }}.tar.gz" -C release .
 

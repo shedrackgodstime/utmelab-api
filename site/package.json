@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "site",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@astrojs/starlight": "^0.42.6",
-    "astro": "^7.3.8",
+    "astro": "^7.2.10",
     "sharp": "^0.35.3",
     "starlight-openapi": "^0.27.0"
   }

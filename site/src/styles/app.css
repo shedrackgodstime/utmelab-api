@@ -1,0 +1,79 @@
+/* Design tokens. Deliberately minimal — the docs must not outshine the
+   product. The landing page and dashboard declare the same values inline;
+   this file is loaded by Starlight only. */
+:root {
+	--utmelab-accent: #0f766e;
+	--utmelab-accent-highlight: #115e59;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--utmelab-accent: #2dd4bf;
+		--utmelab-accent-highlight: #5eead4;
+	}
+}
+
+/* Starlight reads its accent from these two. Setting them here is what makes
+   links, the active sidebar item and focus rings the brand teal instead of
+   Starlight's default blue.
+   `:root:root` rather than `:root`: Starlight declares its own defaults at the
+   same specificity but *later* in the bundle, so a single class of specificity
+   would lose the cascade and the blue would win. */
+:root:root {
+	--sl-color-accent-low: #0b3f3b;
+	--sl-color-accent: var(--utmelab-accent);
+	--sl-color-accent-high: var(--utmelab-accent-highlight);
+}
+
+:root:root[data-theme='light'] {
+	--sl-color-accent-low: #ccfbf1;
+	--sl-color-accent: #0f766e;
+	--sl-color-accent-high: #115e59;
+}
+
+/* The docs root keeps the sidebar, so it is a content page rather than a
+   splash page. Starlight's Hero is built for splash layouts: the copy is
+   centred (`text-align: center`, `align-items: center`) and above 50rem the
+   hero is a `7fr 4fr` grid whose second column is reserved for an image. With
+   no image set, that column is dead space, so the headline ends up floating in
+   the middle of the content column instead of aligning with the text below it.
+
+   Left-align it and collapse the phantom column. Scoped with `:not(:has(> img))`
+   so that if an image is ever added, the two-column splash layout still applies.
+
+   These rules are unlayered, so they beat Starlight's `@layer starlight.core`
+   hero rules without needing !important or a specificity hack. */
+.hero:not(:has(> img)) {
+	grid-template-columns: minmax(0, 1fr);
+	padding-block: 0.5rem;
+}
+
+.hero:not(:has(> img)) .stack {
+	text-align: start;
+}
+
+.hero:not(:has(> img)) .copy {
+	align-items: flex-start;
+}
+
+.hero:not(:has(> img)) .copy > * {
+	max-width: 100%;
+}
+
+.hero:not(:has(> img)) .actions {
+	justify-content: flex-start;
+}
+
+/* The generated API reference ships its own palette: saturated blue for GET,
+   green for POST, and so on. That is the single loudest reason the reference
+   reads as a different product from the guides beside it. Re-hue the methods
+   onto one brand ramp, keeping POST visibly distinct as the only write verb. */
+:root:root {
+	--sl-openapi-method-hue-get: 174;
+	--sl-openapi-method-hue-post: 160;
+	--sl-openapi-method-hue-options: 174;
+	--sl-openapi-method-hue-head: 174;
+	--sl-openapi-method-hue-patch: 168;
+	--sl-openapi-method-hue-trace: 174;
+	--sl-openapi-method-hue-put: 160;
+}
