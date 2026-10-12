@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import starlightOpenAPI, { openAPISidebarGroups } from 'starlight-openapi';
+import tailwindcss from '@tailwindcss/vite';
 
 // One Astro project, three surfaces:
 //
@@ -20,6 +21,11 @@ import starlightOpenAPI, { openAPISidebarGroups } from 'starlight-openapi';
 export default defineConfig({
 	site: 'https://api.utmelab.com',
 	trailingSlash: 'always',
+	// Tailwind drives the dashboard's daisyUI blocks only. The generated CSS is
+	// imported by src/layouts/Dashboard.astro, never globally, and Tailwind's
+	// preflight is deliberately excluded (see src/styles/dashboard.css) so it
+	// cannot reset Starlight.
+	vite: { plugins: [tailwindcss()] },
 	integrations: [
 		starlight({
 			title: 'UTME Lab',

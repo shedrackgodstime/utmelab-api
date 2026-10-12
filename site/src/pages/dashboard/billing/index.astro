@@ -1,0 +1,55 @@
+---
+import Dashboard from '../../../layouts/Dashboard.astro';
+---
+
+<Dashboard title="Billing & account" active="billing">
+	<div class="alert alert-info mt-6">
+		<span>Scaffold only. Billing is parked until the first key is issued.</span>
+	</div>
+
+	<div class="card mt-6 bg-base-100 shadow-sm">
+		<div class="card-body">
+			<h2 class="card-title">Plan</h2>
+			<div class="flex items-baseline gap-2">
+				<span class="text-3xl font-semibold">Free</span>
+				<span class="badge badge-ghost">catalog only</span>
+			</div>
+			<p class="text-sm text-base-content/70">
+				The catalog — exams, subjects, syllabi — never needs a key. Questions do.
+			</p>
+		</div>
+	</div>
+
+	<div class="card mt-6 bg-base-100 shadow-sm">
+		<div class="card-body">
+			<h2 class="card-title">Invoices</h2>
+			<div class="overflow-x-auto">
+				<table class="table table-sm">
+					<thead>
+						<tr>
+							<th>Date</th>
+							<th>Reference</th>
+							<th class="text-right">Amount</th>
+							<th class="text-right">Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="text-base-content/50">
+							<td colspan="4" class="py-6 text-center">No invoices yet.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<div class="card mt-6 bg-base-100 shadow-sm">
+		<div class="card-body">
+			<h2 class="card-title">Account</h2>
+			<ul class="list-inside list-disc text-sm text-base-content/70">
+				<li>Email and sign-in are not built; there is no account model yet.</li>
+				<li>Billing ships with the dashboard, deliberately — not before.</li>
+			</ul>
+		</div>
+	</div>
+</Dashboard>

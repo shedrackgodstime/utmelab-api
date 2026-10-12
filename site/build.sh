@@ -29,6 +29,33 @@ if [ "$missing" = 1 ]; then
 	npm install --no-save --force "${WASMI[@]}" >&2
 fi
 
+# satteri's WASI shim preopens the filesystem root as its sandbox root. Termux's
+# sandbox refuses that (UVWASI_EACCES), so point it at the project instead. Any
+# `npm install` restores the pristine file, so this is re-applied every build
+# rather than checked for existence — a stale check here silently breaks the
+# build with a confusing WASI error rather than a missing-module one.
+WASI_SHIM=node_modules/@bruits/satteri-wasm32-wasi/satteri_napi.wasi.cjs
+if [ -f "$WASI_SHIM" ]; then
+	python3 - "$WASI_SHIM" <<'PY' >&2
+import re, sys
+p = sys.argv[1]
+s = open(p, encoding='utf8').read()
+patched = 'process.env.SATTERI_WASI_PREOPEN'
+if patched in s:
+    sys.exit(0)
+# Only ever replace the real declaration, never a comment mentioning it.
+new, n = re.subn(
+    r"const __rootDir = __nodePath\.parse\(process\.cwd\(\)\)\.root",
+    "const __rootDir = process.env.SATTERI_WASI_PREOPEN || process.cwd()",
+    s,
+)
+if n != 1:
+    sys.exit(f"build.sh: expected one __rootDir declaration in {p}, found {n}")
+open(p, 'w', encoding='utf8').write(new)
+print(f"build.sh: patched WASI preopen in {p}")
+PY
+fi
+
 export NAPI_RS_FORCE_WASI=true
 export PAGEFIND_BINARY_PATH=${PAGEFIND_BINARY_PATH:-$PWD/../pf/pagefind}
 exec node ./node_modules/astro/bin/astro.mjs build "$@"

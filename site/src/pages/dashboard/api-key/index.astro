@@ -1,0 +1,50 @@
+---
+import Dashboard from '../../../layouts/Dashboard.astro';
+---
+
+<Dashboard title="API key" active="api-key">
+	<div class="alert alert-info mt-6">
+		<span>
+			Scaffold only. Rotation and revocation are CLI operations until the dashboard has an
+			endpoint for them.
+		</span>
+	</div>
+
+	<div class="card mt-6 bg-base-100 shadow-sm">
+		<div class="card-body">
+			<h2 class="card-title">Your key</h2>
+			<p class="text-sm text-base-content/70">
+				One key type, sent in the <code class="font-mono">X-API-Key</code> header.
+			</p>
+			<div class="join mt-2 w-full">
+				<input
+					type="password"
+					value="sk_live_0000000000000000"
+					readonly
+					aria-label="API key"
+					class="input join-item input-bordered w-full font-mono"
+				/>
+				<button type="button" class="btn btn-primary join-item">Reveal</button>
+			</div>
+			<div class="card-actions mt-4">
+				<button type="button" class="btn btn-outline btn-sm">Rotate</button>
+				<button type="button" class="btn btn-ghost btn-sm text-error">Revoke</button>
+			</div>
+			<p class="mt-2 text-xs text-base-content/60">
+				Revocation is immediate and total, and a revoked key returns the same 401 as an
+				unknown one.
+			</p>
+		</div>
+	</div>
+
+	<div class="card mt-6 bg-base-100 shadow-sm">
+		<div class="card-body">
+			<h2 class="card-title">Key properties</h2>
+			<ul class="list-inside list-disc text-sm text-base-content/70">
+				<li>Per-key rate limit, so one integrator cannot exhaust another's.</li>
+				<li>Embedding the key in a client app means it can be extracted — that trade is deliberate.</li>
+				<li>Ask for a higher limit and we set it on the key.</li>
+			</ul>
+		</div>
+	</div>
+</Dashboard>

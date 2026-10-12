@@ -1,49 +1,47 @@
-# Starlight Starter Kit: Basics
+# site — the UTME Lab API website
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+One Astro project, three surfaces:
 
-```
-npm create astro@latest -- --template starlight
-```
+| Route | Built from | Serves |
+|---|---|---|
+| `/` | `src/pages/index.astro` | landing + first call |
+| `/docs/…` | `src/content/docs/docs/` | Starlight (guides + generated OpenAPI reference) |
+| `/dashboard/…` | `src/pages/dashboard/` | daisyUI shell — **scaffolded, not built** |
+| `/signin/`, `/signup/`, `/reset-password/` | `src/pages/*` | daisyUI auth cards — **scaffolded, not built** |
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Working on it
 
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
-├── src/
-│   ├── assets/
-│   ├── content/
-│   │   └── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+```bash
+npm ci
+npm run dev            # or: ./serve.sh to preview a build
+npm run build
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+### Termux only
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+Three upstream packages ship no Android build, so `./build.sh` works around them
+and `npm run build` does not:
 
-Static assets, like favicons, can be placed in the `public/` directory.
+- `satteri` → WASI build (`@bruits/satteri-android-arm64` is a 404 on npm)
+- `sharp` → WASI build (`@img/sharp-android-arm64` is a 404 on npm)
+- `pagefind` → static musl binary (no android-arm64 npm package)
 
-## 🧞 Commands
+`build.sh` also re-applies a WASI preopen patch that any `npm install` reverts.
+CI and the VPS have native linux bindings and run plain `npm ci && npm run build`.
 
-All commands are run from the root of the project, from a terminal:
+## Before you start
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| file | what it tells you |
+|---|---|
+| `docs/DASHBOARD.md` | the dashboard is scaffolded; what is decided, what is not, what is next |
+| `openapi.json` | generated — `cargo run -- openapi --out site/openapi.json`. Never hand-edit |
 
-## 👀 Want to learn more?
+## Conventions
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+- **Docs live one level deep.** `src/content/docs/docs/` is what makes Starlight
+  serve from `/docs`. Every sidebar `slug` and the OpenAPI plugin's `base` carry
+  the `docs/` prefix. Astro's global `base` is deliberately **not** used.
+- **`dashboard.css` is imported by the two layouts only** (`Dashboard.astro`, `Auth.astro`). daisyUI themes
+  `:root`, and Tailwind preflight is excluded, so the docs are never repainted.
+- **Design tokens are not yet unified** — three systems exist. Fixing that is
+  item 1 in `docs/DASHBOARD.md`.
