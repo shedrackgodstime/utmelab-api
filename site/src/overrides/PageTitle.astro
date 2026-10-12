@@ -1,0 +1,12 @@
+---
+// Title switch. Docs keep the large docs heading; dashboard gets its own
+// compact app title — small, semibold, tight, no docs grandeur.
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+
+const id = Astro.locals.starlightRoute?.id ?? '';
+const isDashboard = id === 'dashboard' || id.startsWith('dashboard/');
+const isAuth = id === 'signin' || id === 'signup' || id === 'reset-password' || id === 'verify-email';
+const { title } = Astro.locals.starlightRoute.entry.data;
+---
+
+{isDashboard ? <h1 class="dash-title">{title}</h1> : isAuth ? null : <Default />}

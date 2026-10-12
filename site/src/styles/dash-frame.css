@@ -1,0 +1,160 @@
+/* Dashboard frame geometry. Scoped under .dash-frame — docs and landing
+   are untouched. Reuses Starlight's own machinery (fixed header, popover
+   drawer, focus trap, theme); only the geometry differs, which is what
+   makes the dashboard read as a different category:
+   full-height sidebar, header starting after it, menu button on the left.
+   Themed via --sl-* vars only — no raw colors. Unlayered so these beat
+   Starlight's @layer starlight.core frame rules. */
+
+/* Dashboard nav + brand. Same voice as docs sidebar, own items. */
+.dash-frame .dash-brand {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 1rem 0 0.5rem;
+	border-bottom: 1px solid var(--sl-color-hairline-shade);
+	padding-bottom: 1rem;
+}
+
+.dash-frame .dash-brand a {
+	color: var(--sl-color-white);
+	font-weight: 600;
+	text-decoration: none;
+	letter-spacing: -0.01em;
+}
+
+.dash-frame .dash-brand span {
+	color: var(--sl-color-gray-2);
+	font-size: var(--sl-text-xs);
+	border: 1px solid var(--sl-color-hairline);
+	border-radius: 0.375rem;
+	padding: 0.125rem 0.375rem;
+}
+
+.dash-frame .dash-group-label {
+	margin: 0;
+	padding: 0 0.625rem;
+	font-size: var(--sl-text-xs);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--sl-color-gray-3);
+}
+
+.dash-frame .dash-nav {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.dash-frame .dash-nav a {
+	display: block;
+	color: var(--sl-color-gray-2);
+	font-size: var(--sl-text-sm);
+	font-weight: 500;
+	text-decoration: none;
+	padding: 0.375rem 0.625rem;
+	border-radius: 0.375rem;
+	white-space: nowrap;
+}
+
+.dash-frame .dash-nav a:hover {
+	color: var(--sl-color-white);
+	background: var(--sl-color-gray-5);
+}
+
+.dash-frame .dash-nav a[aria-current='page'] {
+	color: var(--sl-color-text-accent);
+	background: var(--sl-color-accent-low);
+	font-weight: 600;
+}
+
+/* Dashboard content docks left and runs full width — never the centered
+   docs prose column Starlight uses past 72rem. Tighter app rhythm. */
+.dash-frame .sl-container {
+	max-width: none;
+	margin-inline: 0;
+}
+
+.dash-frame .content-panel {
+	padding: 1rem var(--sl-content-pad-x);
+}
+
+.dash-frame .sl-container > * + * {
+	margin-top: 1rem;
+}
+
+/* Compact app title — docs grandeur stays on docs pages. */
+.dash-frame .dash-title {
+	margin: 0;
+	font-size: 1.25rem;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	line-height: 1.4;
+	color: var(--sl-color-white);
+}
+
+/* Desktop: sidebar runs viewport top to bottom; the fixed header starts
+   after it instead of spanning over it. */
+@media (min-width: 50rem) {
+	.dash-frame .sidebar-pane {
+		inset-block-start: 0;
+	}
+
+	.dash-frame header.header {
+		inset-inline-start: var(--sl-sidebar-width);
+		inset-inline-end: 0;
+		width: auto;
+	}
+
+	/* The header is narrower now (offset by the sidebar), so its inner
+	   grid — computed for full width — gives way to a simple row that
+	   cannot overflow: title, search filling, icons right. Padded at the
+	   start so the fixed menu button never laps the site title. */
+	.dash-frame header.header > div.header {
+		display: flex;
+		align-items: center;
+		gap: var(--sl-nav-gap);
+		padding-inline-start: calc(2rem + var(--sl-nav-gap));
+	}
+
+	.dash-frame header.header > div.header > div:not(.title-wrapper):not(.right-group) {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+
+	/* Collapsed sidebar (toggled by the dashboard menu button on desktop):
+	   pane hides, header and content reclaim the full width. */
+	html.dash-collapsed .dash-frame .sidebar-pane {
+		display: none;
+	}
+
+	html.dash-collapsed .dash-frame header.header {
+		inset-inline-start: 0;
+	}
+
+	html.dash-collapsed .dash-frame .main-frame {
+		padding-inline-start: 0;
+	}
+}
+
+/* Mobile: menu button moves to the left; the drawer hangs from the very
+   top, above the header, as a left drawer. Popover open/close, focus trap
+   and scroll lock stay Starlight's. */
+@media (max-width: 49.9375rem) {
+	.dash-frame header.header {
+		padding-inline-start: calc(2rem + 2 * var(--sl-nav-pad-x));
+		padding-inline-end: var(--sl-nav-pad-x);
+	}
+
+	.dash-frame .sidebar-pane {
+		inset-block-start: 0;
+		z-index: calc(var(--sl-z-index-navbar) + 1);
+		width: min(var(--sl-sidebar-width), 85vw);
+		background-color: var(--sl-color-bg-sidebar);
+		border-inline-end: 1px solid var(--sl-color-hairline-shade);
+	}
+}

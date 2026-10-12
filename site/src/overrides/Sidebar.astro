@@ -1,0 +1,42 @@
+---
+// Sidebar switch. Docs keep Starlight's sidebar; dashboard routes get the
+// dashboard's own nav. Starlight's popover/drawer machinery, persister and
+// mobile footer are reused — only the items differ.
+import Default from '@astrojs/starlight/components/Sidebar.astro';
+import MobileMenuFooter from '@astrojs/starlight/components/MobileMenuFooter.astro';
+
+const id = Astro.locals.starlightRoute?.id ?? '';
+const isDashboard = id === 'dashboard' || id.startsWith('dashboard/');
+
+const links = [
+	{ href: '/dashboard/', label: 'Overview', active: id === 'dashboard' },
+	{ href: '/dashboard/api-key/', label: 'API key', active: id === 'dashboard/api-key' },
+	{ href: '/dashboard/billing/', label: 'Billing & account', active: id === 'dashboard/billing' },
+];
+---
+
+{
+	isDashboard ? (
+		<>
+			<div class="dash-brand">
+				<a href="/">UTME Lab</a>
+				<span>dashboard</span>
+			</div>
+			<p class="dash-group-label">Menu</p>
+			<ul class="dash-nav">
+				{links.map((l) => (
+					<li>
+						<a href={l.href} aria-current={l.active ? 'page' : undefined}>
+							{l.label}
+						</a>
+					</li>
+				))}
+			</ul>
+			<div class="md:sl-hidden">
+				<MobileMenuFooter />
+			</div>
+		</>
+	) : (
+		<Default />
+	)
+}

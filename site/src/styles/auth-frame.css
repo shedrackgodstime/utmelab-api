@@ -1,0 +1,16 @@
+/* Auth frame. Scoped under .auth-frame — everything else untouched.
+   Auth pages render no header, so the frame's nav clearance and the
+   (empty) footer scaffolding go too. The card is the whole page. */
+.auth-frame .main-frame {
+	padding-top: 0;
+}
+
+.auth-frame footer {
+	display: none;
+}
+
+/* Auth pages carry their own card title, so Starlight's docs title panel
+   (emptied by the PageTitle override on auth routes) is collapsed away. */
+.auth-frame main > div.content-panel:first-of-type {
+	display: none;
+}

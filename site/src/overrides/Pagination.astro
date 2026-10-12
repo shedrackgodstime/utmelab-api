@@ -1,0 +1,10 @@
+---
+// Pagination switch. Prev/next belongs to docs; dashboard pages render
+// none. Docs delegate untouched.
+import Default from '@astrojs/starlight/components/Pagination.astro';
+
+const id = Astro.locals.starlightRoute?.id ?? '';
+const isDashboard = id === 'dashboard' || id.startsWith('dashboard/');
+---
+
+{isDashboard ? null : <Default />}

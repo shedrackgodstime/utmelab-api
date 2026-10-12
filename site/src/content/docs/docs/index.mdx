@@ -1,42 +1,6 @@
 ---
-title: UTME Lab API
-description: Past questions for JAMB, WAEC and NECO, keyed to subtopics.
-hero:
-  tagline: Past questions, keyed to subtopics. A weak spot is a twenty-question sitting, not a paper.
-  actions:
-    - text: Get an API key
-      link: /docs/guides/authentication/
-      icon: right-arrow
-    - text: Browse the reference
-      link: /docs/api/
-      variant: minimal
+title: Introduction
+description: The UTME Lab question bank API.
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
-
-## What this is
-
-Every UTME candidate writes **Use of English plus three other subjects**, in two hours.
-This API serves the past questions behind that, along with the syllabus they are drawn
-from.
-
-Two things make it different from a pile of PDFs:
-
-- **Questions are keyed to subtopics.** A topic like *Equilibrium of forces* is too coarse
-  to act on — is it the principle of moments you keep missing? Subtopics are small enough
-  that "you are weak at *Change of Bases*" is a two-minute job, not a forty-question paper.
-- **Explanations name the trap.** Every explanation carries the distractor that catches
-  people. "You chose C because you confused the *declared* dividend with the *paid* one" is
-  worth more than the correct answer alone.
-
-<CardGrid stagger>
-	<Card title="Authentication" icon="setting">
-		One key type. Send it in `X-API-Key`. [Read more](/docs/guides/authentication/).
-	</Card>
-	<Card title="Finding questions" icon="magnifier">
-		Drill a subtopic, or take a whole subject. [Read more](/docs/guides/finding-questions/).
-	</Card>
-	<Card title="Pagination" icon="list-format">
-		`page`, `per_page`, and totals that do not lie. [Read more](/docs/guides/pagination/).
-	</Card>
-</CardGrid>
+Empty page.

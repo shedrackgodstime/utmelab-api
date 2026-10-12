@@ -1,0 +1,13 @@
+---
+title: Verify email
+description: Enter the six-digit code sent to your email.
+template: splash
+pagefind: false
+---
+
+import AuthCard from '../../components/auth/AuthCard.astro';
+import VerifyEmailForm from '../../components/auth/VerifyEmailForm.astro';
+
+<AuthCard title="Check your email" subtitle="Enter the six-digit code we just sent you." hideBack>
+	<VerifyEmailForm />
+</AuthCard>

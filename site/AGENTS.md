@@ -8,6 +8,32 @@ astro dev --background
 
 Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
 
+## Shell rules (one Starlight shell, three surfaces)
+
+- Precedence for any change: Starlight config first, scoped CSS second,
+  content components third, new component override last. A new override
+  needs justification and must delegate to `<Default />` everywhere but
+  its own routes. Current overrides (hold at five): PageFrame, Sidebar,
+  Pagination, MobileMenuToggle, PageTitle.
+- `@astrojs/starlight` is pinned exact in package.json. Review its
+  changelog before any bump; overrides copy its internals and can stale.
+  Current overrides (six): PageFrame, Sidebar, Pagination,
+  MobileMenuToggle, PageTitle, Search (verbatim upstream copy + section
+  scoping only).
+- Dashboard geometry lives under `.dash-frame` in
+  `src/styles/dash-frame.css` only. Nothing global, ever.
+- New-page frontmatter checklist:
+  - docs pages: nothing extra.
+  - dashboard pages (`dashboard/*`): `tableOfContents: false`.
+    They are search-indexed under the `dashboard` section filter.
+  - auth pages (`signin`, `signup`, `reset-password`, `verify-email`):
+    `template: splash` + `pagefind: false`.
+- Search sections come from `data-pagefind-filter` spans in
+  `src/overrides/PageFrame.astro` (`docs` vs `dashboard`). Pagefind
+  shows them as result filters automatically.
+- Dashboard nav has one source: `src/overrides/Sidebar.astro`. The
+  sidebar config in `astro.config.mjs` is docs-only.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build
