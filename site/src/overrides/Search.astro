@@ -14,6 +14,9 @@ const id = Astro.locals.starlightRoute?.id ?? '';
 // Dashboard searches everything (docs included); docs and landing search
 // docs only, so app pages never surface in documentation results.
 const section = id === 'dashboard' || id.startsWith('dashboard/') ? null : 'docs';
+const hideMobileSearch = id === '' || id === 'pricing';
+// Marketing splashes (landing, pricing) keep desktop search but drop the
+// mobile button — search matters little there and crowds the header.
 
 const pagefindTranslations = {
 	placeholder: Astro.locals.t('search.label'),
@@ -27,6 +30,7 @@ const pagefindTranslations = {
 const dataAttributes: DOMStringMap = {
 	'data-translations': JSON.stringify(pagefindTranslations),
 	...(section ? { 'data-section': section } : {}),
+	...(hideMobileSearch ? { 'data-hide-mobile-search': '' } : {}),
 };
 if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash'] = '';
 ---
@@ -186,6 +190,11 @@ if (project.trailingSlash === 'never') dataAttributes['data-strip-trailing-slash
 	@layer starlight.core {
 		site-search {
 			display: contents;
+		}
+		@media (max-width: 49.9375rem) {
+			site-search[data-hide-mobile-search] {
+				display: none;
+			}
 		}
 		button[data-open-modal] {
 			display: flex;

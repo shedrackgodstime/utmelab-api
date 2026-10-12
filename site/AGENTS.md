@@ -17,9 +17,10 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
   Pagination, MobileMenuToggle, PageTitle.
 - `@astrojs/starlight` is pinned exact in package.json. Review its
   changelog before any bump; overrides copy its internals and can stale.
-  Current overrides (six): PageFrame, Sidebar, Pagination,
+  Current overrides (seven): PageFrame, Sidebar, Pagination,
   MobileMenuToggle, PageTitle, Search (verbatim upstream copy + section
-  scoping only).
+  scoping only), Header (verbatim upstream copy + site nav + auth
+  placeholder only).
 - Dashboard geometry lives under `.dash-frame` in
   `src/styles/dash-frame.css` only. Nothing global, ever.
 - New-page frontmatter checklist:

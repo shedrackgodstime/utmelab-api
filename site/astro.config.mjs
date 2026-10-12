@@ -10,6 +10,7 @@ export default defineConfig({
 			title: 'UTME Lab',
 			customCss: ['./src/styles/dash-frame.css', './src/styles/auth-frame.css'],
 			components: {
+				Header: './src/overrides/Header.astro',
 				PageFrame: './src/overrides/PageFrame.astro',
 				Sidebar: './src/overrides/Sidebar.astro',
 				Pagination: './src/overrides/Pagination.astro',

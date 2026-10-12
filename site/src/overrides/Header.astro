@@ -1,0 +1,288 @@
+---
+/**
+ * Verbatim copy of @astrojs/starlight@0.42.6 dist/components/Header.astro
+ * with two additions: a site nav (Documentation, Dashboard) and an auth
+ * action. Review on bump.
+ */
+import config from 'virtual:starlight/user-config';
+
+import LanguageSelect from 'virtual:starlight/components/LanguageSelect';
+import Search from 'virtual:starlight/components/Search';
+import SiteTitle from 'virtual:starlight/components/SiteTitle';
+import SocialIcons from 'virtual:starlight/components/SocialIcons';
+import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
+
+/**
+ * Render the `Search` component if Pagefind is enabled or the default search component has been overridden.
+ */
+const shouldRenderSearch =
+	config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
+
+const id = Astro.locals.starlightRoute?.id ?? '';
+const inDocs = id === 'docs' || id.startsWith('docs/');
+const inDashboard = id === 'dashboard' || id.startsWith('dashboard/');
+const inPricing = id === 'pricing';
+const hasSidebar = Astro.locals.starlightRoute.hasSidebar;
+---
+
+<div class="header">
+	<div class="title-wrapper sl-flex">
+		<SiteTitle />
+	</div>
+	<div class="sl-flex print:hidden">
+		{shouldRenderSearch && <Search />}
+	</div>
+	<nav class="site-nav sl-flex print:hidden" aria-label="Site">
+		<a href="/docs/" aria-current={inDocs ? 'page' : undefined}>
+			<span class="sl-hidden md:sl-block">Documentation</span>
+			<span class="md:sl-hidden">Docs</span>
+		</a>
+		{/* Pricing is marketing: landing and pricing surfaces only. */}
+		{!inDocs && !inDashboard && (
+			<a href="/pricing/" aria-current={inPricing ? 'page' : undefined}>
+				Pricing
+			</a>
+		)}
+		{/* AUTH PLACEHOLDER: no session yet. Public surfaces render Sign in;
+		    the dashboard is authenticated, so no sign-in action belongs
+		    there — a user menu will take this slot when auth lands. */}
+		{!inDashboard && (
+			<a class="auth-button print:hidden" href="/signin/">
+				Sign in
+			</a>
+		)}
+	</nav>
+	{/* Sidebar-less pages (landing) have no drawer, and the drawer is what
+	    carries the theme picker on mobile — so they get one icon button
+	    that flips Starlight's own theme (same storage key, same provider
+	    sync — no parallel system). Desktop keeps the header select. */}
+	{!hasSidebar && (
+		<div class="theme-mobile print:hidden">
+			<button
+				type="button"
+				class="theme-mobile-button"
+				aria-label={Astro.locals.t('themeSelect.accessibleLabel')}
+			>
+				<svg
+					class="icon-moon"
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+				</svg>
+				<svg
+					class="icon-sun"
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<circle cx="12" cy="12" r="4" />
+					<path d="M12 2v2" />
+					<path d="M12 20v2" />
+					<path d="m4.93 4.93 1.41 1.41" />
+					<path d="m17.66 17.66 1.41 1.41" />
+					<path d="M2 12h2" />
+					<path d="M20 12h2" />
+					<path d="m6.34 17.66-1.41 1.41" />
+					<path d="m19.07 4.93-1.41 1.41" />
+				</svg>
+			</button>
+			<script>
+				document
+					.querySelector('.theme-mobile-button')
+					?.addEventListener('click', () => {
+						const next =
+							document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+						document.documentElement.dataset.theme = next;
+						try {
+							localStorage.setItem('starlight-theme', next);
+						} catch {}
+						window.StarlightThemeProvider?.updatePickers(next);
+					});
+			</script>
+		</div>
+	)}
+	<div class="sl-hidden md:sl-flex print:hidden right-group">
+		<div class="sl-flex social-icons">
+			<SocialIcons />
+		</div>
+		<ThemeSelect />
+		<LanguageSelect />
+	</div>
+</div>
+
+<style>
+	@layer starlight.core {
+		.header {
+			display: flex;
+			gap: var(--sl-nav-gap);
+			justify-content: space-between;
+			align-items: center;
+			height: 100%;
+		}
+
+		.title-wrapper {
+			/* Prevent long titles overflowing and covering the search and menu buttons on narrow viewports. */
+			overflow: clip;
+			/* Avoid clipping focus ring around link inside title wrapper. */
+			padding: 0.25rem;
+			margin: -0.25rem;
+			min-width: 0;
+			/* One flow on mobile: the title absorbs free space so search
+			   and nav cluster right instead of stranding search center. */
+			flex: 1 1 auto;
+		}
+
+		.site-nav {
+			display: flex;
+			gap: 0;
+			align-items: center;
+		}
+
+		@media (min-width: 50rem) {
+			.site-nav {
+				gap: 0.25rem;
+			}
+		}
+
+		.site-nav a {
+			color: var(--sl-color-gray-2);
+			font-size: var(--sl-text-sm);
+			font-weight: 500;
+			text-decoration: none;
+			padding: 0.25rem 0.5rem;
+			border-radius: 0.375rem;
+			white-space: nowrap;
+		}
+
+		.site-nav a:hover {
+			color: var(--sl-color-white);
+			background: var(--sl-color-gray-5);
+		}
+
+		.site-nav a[aria-current] {
+			color: var(--sl-color-white);
+			background: var(--sl-color-gray-6);
+		}
+
+		/* Same recipe as Starlight's primary buttons (hero included):
+		   text-accent bg with black text. NOTE: black/white swap per
+		   theme here (white IS ink in light mode), so literal white
+		   text goes invisible — do not "fix" this to white. */
+		.auth-button {
+			font-size: var(--sl-text-sm);
+			font-weight: 600;
+			text-decoration: none;
+			white-space: nowrap;
+			padding: 0.375rem 0.75rem;
+			border-radius: 0.5rem;
+			background: var(--sl-color-text-accent);
+			color: var(--sl-color-black);
+		}
+
+		.auth-button:hover {
+			filter: brightness(1.1);
+		}
+
+		.theme-mobile {
+			display: inline-flex;
+			align-items: center;
+		}
+
+		.theme-mobile-button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 2rem;
+			height: 2rem;
+			border: 0;
+			border-radius: 0.375rem;
+			background: transparent;
+			color: inherit;
+			cursor: pointer;
+		}
+
+		.theme-mobile-button:hover {
+			background-color: var(--sl-color-hairline-shade);
+		}
+
+		.theme-mobile .icon-sun {
+			display: none;
+		}
+
+		:global(:root[data-theme='light']) .theme-mobile .icon-sun {
+			display: block;
+		}
+
+		:global(:root[data-theme='light']) .theme-mobile .icon-moon {
+			display: none;
+		}
+
+		@media (min-width: 50rem) {
+			.auth-button {
+				padding: 0.5rem 1rem;
+			}
+
+			.theme-mobile {
+				display: none;
+			}
+		}
+
+		.right-group,
+		.social-icons {
+			gap: 1rem;
+			align-items: center;
+		}
+		.social-icons::after {
+			content: '';
+			height: 2rem;
+			border-inline-end: 1px solid var(--sl-color-gray-5);
+		}
+
+		@media (min-width: 50rem) {
+			:global(:root[data-has-sidebar]) {
+				--__sidebar-pad: calc(2 * var(--sl-nav-pad-x));
+			}
+			:global(:root:not([data-has-toc])) {
+				--__toc-width: 0rem;
+			}
+			.header {
+				--__sidebar-width: max(0rem, var(--sl-content-inline-start, 0rem) - var(--sl-nav-pad-x));
+				--__main-column-fr: calc(
+					(
+							100% + var(--__sidebar-pad, 0rem) - var(--__toc-width, var(--sl-sidebar-width)) -
+								(2 * var(--__toc-width, var(--sl-nav-pad-x))) - var(--sl-content-inline-start, 0rem) -
+								var(--sl-content-width)
+						) / 2
+				);
+				display: grid;
+				grid-template-columns:
+        /* 1 (site title): runs up until the main content column’s left edge or the width of the title, whichever is the largest  */
+					minmax(
+						calc(var(--__sidebar-width) + max(0rem, var(--__main-column-fr) - var(--sl-nav-gap))),
+						auto
+					)
+					/* 2 (search box): all free space that is available. */
+					1fr
+					/* 3 (site nav + account action): use the space that they need. */
+					auto
+					/* 4 (appearance): use the space that these need. */
+					auto;
+				align-content: center;
+			}
+		}
+	}
+</style>
