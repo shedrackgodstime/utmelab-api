@@ -1,9 +1,17 @@
 # `src/mcp/` — MCP surface (prototype scaffold)
 
-The MCP surface lets assistants and agents work with the question bank
-through the same rules as the API: read the catalog and questions, search
-and page them, never bypassing auth, rate limits, or answer-withholding.
-Commercial callers use the API key; admins get a separate dev credential.
+Two separate things, not one surface with two logins:
+
+- **Commercial.** Same access the API key allows — catalog, questions,
+  search, paging — under the exact `Caller` rules (resolve → live-check →
+  token spend, answers withheld unless opted in). Nothing more.
+- **Admin.** Beyond the API: list, manage, update, and alter the full bank
+  over the wire — pull unverified questions with their topic and relations,
+  review, retag, edit, attach explanations, mark verified — so reviewers
+  (human or AI) can work the bank without touching the codebase or the
+  JSON files. This is the ingest/review pipeline for 100k+ questions, where
+  the work is split across many reviewers and no single human or AI can do
+  it alone.
 
 No behaviour yet. This directory reserves the shape so the **auth decision
 lands first** and every later tool/resource has one place to live.
