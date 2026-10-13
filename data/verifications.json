@@ -3582,5 +3582,383 @@
     "detail": null,
     "content_hash": "8669a48c36aa44efe8c02933fc28cf430f5cc502e29c7a6c3596b353a3332429",
     "created_at": "2026-10-13T10:00:55Z"
+  },
+  {
+    "id": "v_t76462_0257",
+    "question_id": "t76462",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "cb677193ffd5dd41db38d955a7457314358be3719af5370f3c04890405f92762",
+    "created_at": "2026-10-13T10:03:52Z"
+  },
+  {
+    "id": "v_t76545_0258",
+    "question_id": "t76545",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "4505e247f8954ecf729ea04df8f0bde7804c6a72abc975c5b59ab811996eb92d",
+    "created_at": "2026-10-13T10:03:52Z"
+  },
+  {
+    "id": "v_t76546_0259",
+    "question_id": "t76546",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "4c0388ee54b9520b76cc9599082efd8469977e29099a0e0d653d8b3732a56c19",
+    "created_at": "2026-10-13T10:03:52Z"
+  },
+  {
+    "id": "v_t76547_0260",
+    "question_id": "t76547",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "d392d22e8dbc42792488ee3ccd9a6f68e043247c0a2364f94a28de177784fb9f",
+    "created_at": "2026-10-13T10:03:53Z"
+  },
+  {
+    "id": "v_t76548_0261",
+    "question_id": "t76548",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "56a5521d9265bb636ba8f598cc7447a8529349ae10f76642f62d1f506bca0abf",
+    "created_at": "2026-10-13T10:03:53Z"
+  },
+  {
+    "id": "v_t76549_0262",
+    "question_id": "t76549",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "d1b8691c124711580e9e7398967ade7bd7394279988c7d484758e386181d79ff",
+    "created_at": "2026-10-13T10:03:53Z"
+  },
+  {
+    "id": "v_t76550_0263",
+    "question_id": "t76550",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "5c478dd82923de74122b4ac0527f616fcb4268e5b27eefd13300fb9fe3de8403",
+    "created_at": "2026-10-13T10:03:53Z"
+  },
+  {
+    "id": "v_t76551_0264",
+    "question_id": "t76551",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "3b204fd87dbb661644935de5ebd857d7045bbb6dec38faaf450004b6b514658b",
+    "created_at": "2026-10-13T10:03:53Z"
+  },
+  {
+    "id": "v_t76552_0265",
+    "question_id": "t76552",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "85175e163bd6e3b71029f8282497d983a4f6fc7c2f1c8640b0348fdaa6e15275",
+    "created_at": "2026-10-13T10:03:54Z"
+  },
+  {
+    "id": "v_t76553_0266",
+    "question_id": "t76553",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "de5979c0cd682de3690cd031d643665a1fe92d134340a65328bc4bfb124d38e3",
+    "created_at": "2026-10-13T10:03:54Z"
+  },
+  {
+    "id": "v_t76555_0267",
+    "question_id": "t76555",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "90db20aea963c61b9d9195aeb45088847ba7e540f12a258d0fb4dfe917da4f12",
+    "created_at": "2026-10-13T10:03:54Z"
+  },
+  {
+    "id": "v_t76556_0268",
+    "question_id": "t76556",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "ab0678aac6ba2135233b899defab394501e8f9aafbda18f87a83b77c9ce02f81",
+    "created_at": "2026-10-13T10:03:54Z"
+  },
+  {
+    "id": "v_t76557_0269",
+    "question_id": "t76557",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "7f17ad84722ff587756a9aaa60f5cc6507f284c02235d64af5b21fc39f57ea43",
+    "created_at": "2026-10-13T10:03:55Z"
+  },
+  {
+    "id": "v_t76558_0270",
+    "question_id": "t76558",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "40475573308d176abb31612edf31144f5e6086470309394e94f941fa9bfb845b",
+    "created_at": "2026-10-13T10:03:55Z"
+  },
+  {
+    "id": "v_t76560_0271",
+    "question_id": "t76560",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "9aa6f8e0bd1ea8eecc8bcb97c02e616c8207d3cddf7af25d091e9e0805da63c7",
+    "created_at": "2026-10-13T10:03:55Z"
+  },
+  {
+    "id": "v_t76561_0272",
+    "question_id": "t76561",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "d1d3ef3b56048c2c5ccbea87fffcc254bcb45771c05e64ce51916a575d705641",
+    "created_at": "2026-10-13T10:03:55Z"
+  },
+  {
+    "id": "v_t76562_0273",
+    "question_id": "t76562",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "bc7a3536562a02e07c0328d358329094a5aecc515a8f42a14709ea06deb25851",
+    "created_at": "2026-10-13T10:03:55Z"
+  },
+  {
+    "id": "v_t76563_0274",
+    "question_id": "t76563",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "2587f1970f716a43d3bc4f6cdafa17dc4894dfaf2bc1848216b8f9f6821b2710",
+    "created_at": "2026-10-13T10:03:56Z"
+  },
+  {
+    "id": "v_t76564_0275",
+    "question_id": "t76564",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "2e743e60eee289abe29ce4bb6052ab54433bc554332c70ec6b53fcd0d99c7422",
+    "created_at": "2026-10-13T10:03:56Z"
+  },
+  {
+    "id": "v_t76566_0276",
+    "question_id": "t76566",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "733d9ff38510151cd003447748d6c40fddeedde01181fd903bbf2c0379b381e2",
+    "created_at": "2026-10-13T10:03:56Z"
+  },
+  {
+    "id": "v_t76567_0277",
+    "question_id": "t76567",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "de9734f2c2997e17d144d9e19fd9a85f5be02b1310b49ff9d87a0c41639fcd64",
+    "created_at": "2026-10-13T10:03:56Z"
+  },
+  {
+    "id": "v_t76568_0278",
+    "question_id": "t76568",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "99f1a51dce399b9901f005f21d8aa2ef6923ec1d69a6e0f0852949abecadd9d1",
+    "created_at": "2026-10-13T10:03:56Z"
+  },
+  {
+    "id": "v_t76569_0279",
+    "question_id": "t76569",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "72d7bf48b9d945b094f87543df6183b530d6489c6a5f57c43ecf9d87c22bd7b5",
+    "created_at": "2026-10-13T10:03:57Z"
+  },
+  {
+    "id": "v_t76570_0280",
+    "question_id": "t76570",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "6511f1eac4fad70b2c8e90cb953c387564a2357035691d9867dfc1c805665547",
+    "created_at": "2026-10-13T10:03:57Z"
+  },
+  {
+    "id": "v_t76571_0281",
+    "question_id": "t76571",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "5c1c2cc84d054fd21c1cfcfe6f22ab7640e438c1c8d589da7a84e234487c9b4b",
+    "created_at": "2026-10-13T10:03:57Z"
+  },
+  {
+    "id": "v_t76572_0282",
+    "question_id": "t76572",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "f9a6033262dd4d9afa0daf01a8b7d6fe7e588b84676b35fdee354f85a35c7480",
+    "created_at": "2026-10-13T10:03:57Z"
+  },
+  {
+    "id": "v_t76573_0283",
+    "question_id": "t76573",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch2-review",
+    "detail": null,
+    "content_hash": "7acf541eaa816f96bdfc837f91c3b1fca7596aaf8b6bf164b3c3819418a5da4f",
+    "created_at": "2026-10-13T10:03:57Z"
   }
 ]
