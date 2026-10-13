@@ -62915,7 +62915,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Red sits at the long-wavelength end of the visible spectrum (~700 nm).",
+        "inline": []
+      },
+      "body": {
+        "text": "Wavelength grows violet to red across VIBGYOR; red is the last colour before infrared. Violet is shortest, not longest.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Violet is the highest-frequency colour — frequency and wavelength run opposite, and the question asks wavelength.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -62963,7 +62976,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Lens power in diopters is the reciprocal of focal length in metres.",
+        "inline": []
+      },
+      "body": {
+        "text": "P = \\(\\frac{1}{\\text{f}}\\). A 1 m focal length is 1 diopter; shorter focus means a stronger lens.",
+        "inline": []
+      },
+      "trap": {
+        "text": "3f and 2f read like formulas, but power is an inverse, not a multiple.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63011,7 +63037,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Resolve N30°E into components, then recombine.",
+        "inline": []
+      },
+      "body": {
+        "text": "East: 6.0 + 10.0·sin30° = 6.0 + 5.0 = 11.0 m. North: 10.0·cos30° ≈ 8.66 m. Resultant \\(\\sqrt{11.0^2 + 8.66^2} = \\sqrt{196} = 14.0\\) m.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Adding 6.0 and 10.0 directly ignores direction — displacement is the vector sum of components, not the arithmetic sum of legs.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63059,7 +63098,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Mass is conserved; volume follows density on each side.",
+        "inline": []
+      },
+      "body": {
+        "text": "V_ice = 90/0.9 = 100 cm\\(^3\\); V_water = 90/1.0 = 90 cm\\(^3\\). Change = 100 − 90 = 10 cm\\(^3\\) — the melt contracts.",
+        "inline": []
+      },
+      "trap": {
+        "text": "90 cm\\(^3\\) answers the water's volume, not the change — read what shrinks.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63107,7 +63159,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Pressure is force per area; force is rate of change of momentum.",
+        "inline": []
+      },
+      "body": {
+        "text": "Gas pressure on a wall is the momentum the molecules hand over per second, per unit area — dp/dt per area.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Change of momentum without the rate (per second) is impulse, not pressure.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63155,7 +63220,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "A plucked string vibrates across its length — transverse.",
+        "inline": []
+      },
+      "body": {
+        "text": "Mechanical (needs the string) ✓, crest ✓, transverse ✓. Longitudinal oscillation along the string is what a plucked string never does.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Sound waves are longitudinal — but the wave asked about is in the string, not the air.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63203,7 +63281,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Emf is the terminal p.d. with no current flowing.",
+        "inline": []
+      },
+      "body": {
+        "text": "A cell shows its full emf only in an open circuit; any closed loop drops volts across internal resistance.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Closed circuit reads terminal p.d. under load — always less than emf.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63251,7 +63342,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "A mercury thermometer reads the liquid's volume change.",
+        "inline": []
+      },
+      "body": {
+        "text": "Mercury expands uniformly with temperature; the thread length tracks volume. Density, pressure and resistance belong to other thermometers.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Resistance belongs to platinum thermometers, not mercury.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63299,7 +63403,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The cornea does most of the bending; the lens fine-tunes.",
+        "inline": []
+      },
+      "body": {
+        "text": "Both refract. The aqueous and vitreous humors transmit and support — they are not the refracting elements.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Every option pairs two real eye parts; only cornea and lens both refract.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63347,7 +63464,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Parallax vanishes when object and image share the motion.",
+        "inline": []
+      },
+      "body": {
+        "text": "Parallax error is relative shift against a background. Moving together, object and image keep station — no error.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Blurred image is an optics failure, not a parallax outcome.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63404,7 +63534,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Concentric circles around a straight wire: current-carrying straight conductor.",
+        "inline": []
+      },
+      "body": {
+        "text": "The figure shows circular field lines centred on the straight conductor with current out of the page — the textbook straight-wire pattern. Solenoid and coil fields run through loops, not around a bare wire.",
+        "inline": []
+      },
+      "trap": {
+        "text": "A circular coil also makes circles — but centred on the loop's axis through rings, not on a straight wire.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63452,7 +63595,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Colour follows frequency; deviation grows with it.",
+        "inline": []
+      },
+      "body": {
+        "text": "I holds (colour↔frequency). II reverses the prism: green outranks yellow in frequency, so green deviates more. III invents meteorology — rainbows need sun behind rain at 42°, not heavy rain.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Yellow-deviated-more sounds plausible until frequency order is written out: red, then yellow, then green, then blue.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63500,7 +63656,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Friction is what remains after ma is accounted for.",
+        "inline": []
+      },
+      "body": {
+        "text": "ma = 40×0.3 = 12 N of the 18 N accelerates; 6 N fights friction. μ = 6/(40×10) = 0.015.",
+        "inline": []
+      },
+      "trap": {
+        "text": "0.300 copies the acceleration straight across — μ is a ratio, never an acceleration.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63548,7 +63717,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Current is power over voltage.",
+        "inline": []
+      },
+      "body": {
+        "text": "I = P/V = 500/220 ≈ 2.27 A.",
+        "inline": []
+      },
+      "trap": {
+        "text": "220/500 inverts the ratio — current comes from dividing power by the supply, not the reverse.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63596,7 +63778,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Force ratio is area ratio is radius-squared ratio.",
+        "inline": []
+      },
+      "body": {
+        "text": "F∝A∝r², so (r₁/r₂)² = 200/3200 = 1/16 and r₁:r₂ = 1:4.",
+        "inline": []
+      },
+      "trap": {
+        "text": "1:16 answers the area ratio — radii need the square root.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63644,7 +63839,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Gravity falls as the square of distance.",
+        "inline": []
+      },
+      "body": {
+        "text": "Doubling r quarters F: 20/4 = 5 N.",
+        "inline": []
+      },
+      "trap": {
+        "text": "10 N halves instead of quartering — inverse square, not inverse.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63692,7 +63900,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Volume expansivity is three times linear.",
+        "inline": []
+      },
+      "body": {
+        "text": "β = 3α = 6.0×10\\(^{-5}\\) K\\(^{-1}\\). θ = ΔV/(Vβ) = 0.0018/(1×6.0×10\\(^{-5}\\)) = 30 K, a 30°C rise.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Using α un-tripled gives 90 — volume needs β, three times α.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63740,7 +63961,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Boyle's law: pressure trades against volume at fixed temperature.",
+        "inline": []
+      },
+      "body": {
+        "text": "P∝1/V with T constant. The other pairs rise together or need more held constant.",
+        "inline": []
+      },
+      "trap": {
+        "text": "P,T rise together (pressure law) — the inverse pair is Boyle's.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63788,7 +64022,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Power is force times velocity; the force here is weight.",
+        "inline": []
+      },
+      "body": {
+        "text": "F = 20×10 = 200 N; P = 200×5 = 1000 W.",
+        "inline": []
+      },
+      "trap": {
+        "text": "100 W divides by g twice — weight already contains g.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63836,7 +64083,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Heat lost equals heat gained; boiled means 100°C.",
+        "inline": []
+      },
+      "body": {
+        "text": "m×c×(100−60) = 8×c×(60−25) → 40m = 280 → m = 7 kg. c cancels throughout.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Mixing from 25 needs the cold side's rise (35), not 60 — gains and losses anchor on different ends.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63884,7 +64144,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Gases conduct worst; still air is the insulator everything copies.",
+        "inline": []
+      },
+      "body": {
+        "text": "Air ≈ 0.026 W/m·K — far below glass, water and ash. Double glazing works by trapping it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Water feels cold to touch, but touch measures heat flow from skin, not the conductivity ranking.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63932,7 +64205,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Condensing steam pays latent heat, then the water cools.",
+        "inline": []
+      },
+      "body": {
+        "text": "m·Lf + m·c·(100−15) = 5.4×10\\(^6\\) → m(2.26×10\\(^6\\) + 4200×85) = m×2.617×10\\(^6\\) → m ≈ 2.06 kg.",
+        "inline": []
+      },
+      "trap": {
+        "text": "1.84 kg counts only the latent heat and forgets the cooling from 100 to 15.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -63980,7 +64266,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Doping donates electrons or accepts them, leaving holes.",
+        "inline": []
+      },
+      "body": {
+        "text": "n-type carries extra electrons, p-type carries holes. Protons and neutrons never leave the nucleus; ions belong to chemistry.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Anions and cations are chemistry's carriers — semiconductors speak electrons and holes.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -64028,7 +64327,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Refractive index is one over sine of the critical angle.",
+        "inline": []
+      },
+      "body": {
+        "text": "n = 1/sin45° = 1/(√2/2) = √2.",
+        "inline": []
+      },
+      "trap": {
+        "text": "2√2 doubles instead of inverting — the reciprocal is the whole formula.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -64076,7 +64388,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Charles's law needs kelvin, and 0°C is 273 K.",
+        "inline": []
+      },
+      "body": {
+        "text": "V₂ = 200×546/273 = 400 m\\(^3\\). Celsius ratios would divide by zero — the law runs on absolute temperature.",
+        "inline": []
+      },
+      "trap": {
+        "text": "800 doubles by doubling Celsius — temperature ratios only work in kelvin.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -64124,7 +64449,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The bell's hammer is thrown by an electromagnet.",
+        "inline": []
+      },
+      "body": {
+        "text": "Current magnetises the core, the armature snaps across, the circuit breaks, the spring returns it — buzz. Rheostats vary resistance; thermostats sense heat; microphones sense sound.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Thermostat has thermo in the name but works by expansion, not magnetism.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -64172,7 +64510,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Decay constant is ln2 over half-life.",
+        "inline": []
+      },
+      "body": {
+        "text": "λ = 0.693/138.5 ≈ 5.0×10\\(^{-3}\\) s\\(^{-1}\\).",
+        "inline": []
+      },
+      "trap": {
+        "text": "Using log₁₀ instead of ln, or plain 1/138.5, lands among the distractors.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -64220,7 +64571,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Electrical energy in equals heat gained.",
+        "inline": []
+      },
+      "body": {
+        "text": "Q = 4×4200×35 = 588,000 J; P = 5×240 = 1200 W; t = 588000/1200 = 490 s.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Halving ΔT or doubling power gives 245 — energy bookkeeping has one answer.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -64277,7 +64641,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Moments about the pivot balance; the weight acts at the rule's midpoint.",
+        "inline": []
+      },
+      "body": {
+        "text": "100 N at 50 cm pulls 40 cm right of the 10 cm pivot: 4000 N·cm clockwise. The cord at 85 cm pulls 75 cm right: T = 4000/75 ≈ 53.33 N. The figure confirms the layout; the numbers decide it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Moments about the rule's end give the wrong fulcrum — the pivot, not the end, balances.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },

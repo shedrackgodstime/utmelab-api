@@ -4086,5 +4086,411 @@
     "detail": null,
     "content_hash": "d78dcf49ffb99f07fa7bfc3925c894a5ccd234af08076c2655d38ea0e9d0c9d4",
     "created_at": "2026-10-13T10:14:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74347_0293",
+    "question_id": "q_claim_2025_physics_74347",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "2796e868d1931aa192dd4fef9535e89a92c74df162327f32d8a165494e518a80",
+    "created_at": "2026-10-13T10:31:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74348_0294",
+    "question_id": "q_claim_2025_physics_74348",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "3312ec781954c128304ee4bbcf72aa2020fce77ce1bb4606c0825473ecb1b36b",
+    "created_at": "2026-10-13T10:31:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74349_0295",
+    "question_id": "q_claim_2025_physics_74349",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "e5ad4bb1a3fca520874ebbfb97ab0f6394e11a05aace5b2ac4000ff1cef0b0be",
+    "created_at": "2026-10-13T10:31:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74350_0296",
+    "question_id": "q_claim_2025_physics_74350",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "60f2c97a325e1aaaed2ccb614f1e5b25fdd83d26975bd2f6145d70db52bdcfe0",
+    "created_at": "2026-10-13T10:31:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74352_0297",
+    "question_id": "q_claim_2025_physics_74352",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "ad0e90a7c791bbf61f505afb6c187b549bbdf5d50abd11182c9514938e1b8dae",
+    "created_at": "2026-10-13T10:31:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74353_0298",
+    "question_id": "q_claim_2025_physics_74353",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "d9a69686973f3fe2bbec08234bad2e076c23ccecd43c6e7025296f07c87d878e",
+    "created_at": "2026-10-13T10:31:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74354_0299",
+    "question_id": "q_claim_2025_physics_74354",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "76881d9612b6595ed87a5c869de5457d7f9f75923c35b710ba07e2767a46bb8a",
+    "created_at": "2026-10-13T10:31:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74355_0300",
+    "question_id": "q_claim_2025_physics_74355",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "4d89eda9abc25e5a862f04757478893fe9fd7435602676f7f8db8643225816a3",
+    "created_at": "2026-10-13T10:31:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74356_0301",
+    "question_id": "q_claim_2025_physics_74356",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "734d23a3ee2161c0c326e64f3e40d36aa71e8c9f61cdc9c50c5feca54fa4fdba",
+    "created_at": "2026-10-13T10:31:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74357_0302",
+    "question_id": "q_claim_2025_physics_74357",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "7030ce1bd5ad31c0f9c1e4a1804350de7b515949ea77ed113a6ae61d75687498",
+    "created_at": "2026-10-13T10:31:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74358_0303",
+    "question_id": "q_claim_2025_physics_74358",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "919669764517e8a2ffc3d5361d6291d40917ba71ff10190c788993225f189444",
+    "created_at": "2026-10-13T10:31:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74359_0304",
+    "question_id": "q_claim_2025_physics_74359",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "5f10848ba9a4ab122983d4de7d6c40c595d51aa2a0cd206e31b163fa10208318",
+    "created_at": "2026-10-13T10:31:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74360_0305",
+    "question_id": "q_claim_2025_physics_74360",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "1ccf56970a5a03f9ec9eba150b644498b10eb85500ed818c04c371f436604ff7",
+    "created_at": "2026-10-13T10:31:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74361_0306",
+    "question_id": "q_claim_2025_physics_74361",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "72fa511b4c4f6f2546ee9c190ded768ed7235d60ed17125f8571de15eabca131",
+    "created_at": "2026-10-13T10:31:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74362_0307",
+    "question_id": "q_claim_2025_physics_74362",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "02635f4867f6d5e53f672326e02ce1d4d25aeea79f1c0470b55e2e82c0bca89c",
+    "created_at": "2026-10-13T10:31:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74363_0308",
+    "question_id": "q_claim_2025_physics_74363",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "ea449fb686c8072428409c8dce1ce406e6bf65234a2d5baf26331bf51e6e96cb",
+    "created_at": "2026-10-13T10:31:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74364_0309",
+    "question_id": "q_claim_2025_physics_74364",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "f700c6c21d9404d6dfb35e4b5b589507eba42a41a3a9e627f8a87aed8d82648c",
+    "created_at": "2026-10-13T10:31:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74365_0310",
+    "question_id": "q_claim_2025_physics_74365",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "1713932ebca0622e8d8df32efb62b6ced0b4bf995d61c404d019e1cfcbf86d5a",
+    "created_at": "2026-10-13T10:31:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74366_0311",
+    "question_id": "q_claim_2025_physics_74366",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "0e8ae34d5dd43bf4a26448270c91e6a9a016e3ce6d5e534e114cc23268811d93",
+    "created_at": "2026-10-13T10:31:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74367_0312",
+    "question_id": "q_claim_2025_physics_74367",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "41c852dbc762d00353d666e1cfbea2e5e9f1be4fd5ff6e185b4e4a99f34ebc13",
+    "created_at": "2026-10-13T10:31:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74368_0313",
+    "question_id": "q_claim_2025_physics_74368",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "57d451c48f685cea53aded8642c087d306ac5f2807da03ec535fb4c87ac3362a",
+    "created_at": "2026-10-13T10:31:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74369_0314",
+    "question_id": "q_claim_2025_physics_74369",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "d5ce3d5bfc259007babc3771cada7f951ed5712ff8094dbd0030895d5aba808a",
+    "created_at": "2026-10-13T10:31:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74370_0315",
+    "question_id": "q_claim_2025_physics_74370",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "ba359ae0567ea10b791bb8d53ed9150e9cd90d37a8d5262a7879f5b13d16bd5f",
+    "created_at": "2026-10-13T10:31:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74371_0316",
+    "question_id": "q_claim_2025_physics_74371",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "fef6c8beb130d3fc045aa34ada1e64f3d978096da71d0a7ba5d1ba343817bf01",
+    "created_at": "2026-10-13T10:31:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74372_0317",
+    "question_id": "q_claim_2025_physics_74372",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "40bbb6b053234766c979c02d4bbc728c2a103caad26aca529ea0c4fa1aacc3d3",
+    "created_at": "2026-10-13T10:31:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74373_0318",
+    "question_id": "q_claim_2025_physics_74373",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "a77f561b493511d760cba990f294c8b6b7a674b9c99b816bdfa5c368dc437eb3",
+    "created_at": "2026-10-13T10:31:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74374_0319",
+    "question_id": "q_claim_2025_physics_74374",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "8378f384769f4d5bf8153c5bf0bcd46136ac8e34739702e1910a991ef6d81e87",
+    "created_at": "2026-10-13T10:31:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74376_0320",
+    "question_id": "q_claim_2025_physics_74376",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "149fb6651c2ab12af979542423f257ccbd9d24998ef086eca27bb83c3aa5a35f",
+    "created_at": "2026-10-13T10:31:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_physics_74377_0321",
+    "question_id": "q_claim_2025_physics_74377",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "phys1-review",
+    "detail": null,
+    "content_hash": "1697bdf44adc003db61b2c3b08f9eeeaeb9c3f2464a374488a555ab282bb3f38",
+    "created_at": "2026-10-13T10:31:28Z"
   }
 ]

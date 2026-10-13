@@ -125,9 +125,7 @@ fn mentions_figure_hint(text: &str) -> bool {
             let end = start + hint.len();
             let before_ok = start == 0 || !is_word(bytes[start - 1]);
             let run = bytes[end..].iter().take_while(|&&b| is_word(b)).count();
-            let after_ok = if prefix {
-                true
-            } else if run == 0 {
+            let after_ok = if prefix || run == 0 {
                 true
             } else {
                 plural && run == 1 && bytes[end] == b's'
