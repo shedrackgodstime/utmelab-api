@@ -130,6 +130,17 @@ CREATE TABLE blueprints(
   source TEXT, sample TEXT, method TEXT NOT NULL, confidence TEXT,
   status TEXT NOT NULL, note TEXT NOT NULL DEFAULT ''
 );
+CREATE TABLE countries(
+  code TEXT PRIMARY KEY, name TEXT NOT NULL
+);
+CREATE TABLE topic_countries(
+  topic TEXT NOT NULL, country TEXT NOT NULL,
+  PRIMARY KEY (topic, country)
+);
+CREATE TABLE exam_requirements(
+  exam TEXT NOT NULL, country TEXT NOT NULL, "group" TEXT NOT NULL,
+  min_select INTEGER NOT NULL, subjects TEXT NOT NULL DEFAULT '[]'
+);
 ```
 
 (`"order"` is quoted: bare `order` collides with `ORDER BY`.)

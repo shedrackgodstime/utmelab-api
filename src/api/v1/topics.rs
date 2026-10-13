@@ -5,9 +5,9 @@
 
 use axum::Json;
 use axum::Router;
-use axum::extract::{Path, State};
+use axum::extract::{Path, Query, State};
 use axum::routing::get;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use utoipa::ToSchema;
 
 use crate::AppState;
@@ -27,6 +27,13 @@ pub struct TopicSubtopic {
     pub order: u32,
     pub question_count: usize,
     pub objectives: Vec<String>,
+    /// Inherited from the parent topic — empty means every member country.
+    pub countries: Vec<String>,
+}
+
+#[derive(Deserialize)]
+pub struct TopicQuery {
+    pub country: Option<String>,
 }
 
 pub fn router() -> Router<AppState> {
@@ -43,6 +50,7 @@ pub fn router() -> Router<AppState> {
         ("exam" = String, Path, description = "Exam code."),
         ("subject" = String, Path, description = "Subject slug within that exam."),
         ("slug" = String, Path, description = "Topic slug."),
+        ("country" = Option<String>, Query, description = "Country code filter, e.g. GH. Absent means the full tree."),
     ),
     responses(
         (status = 200, body = TopicDetail),
@@ -52,6 +60,7 @@ pub fn router() -> Router<AppState> {
 pub async fn topic(
     State(state): State<AppState>,
     Path((exam, subject, slug)): Path<(String, String, String)>,
+    Query(f): Query<TopicQuery>,
 ) -> Result<Json<TopicDetail>, ApiError> {
     let (topic, subtopics) = state.bank.topic(&exam, &subject, &slug).ok_or_else(|| {
         ApiError::not_found(
@@ -63,17 +72,25 @@ pub async fn topic(
     // One batched count map, not one `questions_page` per child: the page
     // query scans and sorts only to read a total (R5).
     let counts = state.bank.subtopic_counts();
+    let country = f.country.as_deref();
 
     Ok(Json(TopicDetail {
         topic: topic.clone(),
         subtopics: subtopics
             .into_iter()
+            .filter(|st| {
+                country.is_none_or(|cc| {
+                    let scope = state.bank.topic_scope(&st.topic);
+                    scope.is_empty() || scope.iter().any(|m| m == cc)
+                })
+            })
             .map(|st| TopicSubtopic {
                 slug: st.slug.clone(),
                 name: st.name.clone(),
                 order: st.order,
                 question_count: counts.get(&st.slug).copied().unwrap_or(0),
                 objectives: st.objectives.clone(),
+                countries: state.bank.topic_scope(&st.topic),
             })
             .collect(),
     }))

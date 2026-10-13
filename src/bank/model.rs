@@ -46,6 +46,30 @@ pub enum ExamStatus {
     Retired,
 }
 
+/// One member country of an exam's jurisdiction (D66-scope).
+/// Data, not code: boards change membership rarely, but rarely is not never.
+#[derive(Clone, Debug, Serialize, Deserialize, ToSchema)]
+pub struct Country {
+    /// ISO code, e.g. `NG`.
+    pub code: String,
+    pub name: String,
+}
+
+/// One paper-assembly rule for an exam in a country (D66-scope).
+/// Generalizes both `is_compulsory` (which cannot say "one of a group") and
+/// `subjects_required` (which cannot vary by country): a named group, how
+/// many of it must be ready, and which subjects belong — empty `subjects`
+/// means any subject of the exam.
+#[derive(Clone, Debug, Serialize, Deserialize, ToSchema)]
+pub struct Requirement {
+    pub exam: String,
+    pub country: String,
+    pub group: String,
+    pub min_select: u32,
+    #[serde(default)]
+    pub subjects: Vec<String>,
+}
+
 /// One exam's offering of a subject (D21). The same concept can appear once per
 /// exam, carrying that board's own name — `Use of English` and
 /// `English Language` are two true rows, not one row with an alias.

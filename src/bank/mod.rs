@@ -12,7 +12,7 @@ mod view;
 pub use json::{JsonStore, StoreError};
 pub use model::{
     Choice, Exam, ExamStatus, ImagePosition, Inline, InlineKind, Novel, NovelDoc, Passage,
-    Question, RichText, Subject, Subtopic, Topic,
+    Question, Requirement, RichText, Subject, Subtopic, Topic,
 };
 
 pub use scheme::Scheme;
@@ -43,6 +43,9 @@ pub struct SyllabusTopic {
     /// JAMB states objectives at topic level, so that is where they live
     /// (D50). Subtopics carry none rather than being given invented ones.
     pub objectives: Vec<String>,
+    /// Member countries this topic belongs to, sorted. Empty means every
+    /// member country of the exam (D66-scope).
+    pub countries: Vec<String>,
     pub subtopics: Vec<SyllabusSubtopic>,
 }
 
@@ -53,6 +56,8 @@ pub struct SyllabusSubtopic {
     pub order: u32,
     pub question_count: usize,
     pub objectives: Vec<String>,
+    /// Inherited from the parent topic — subtopics carry no scope of their own.
+    pub countries: Vec<String>,
 }
 
 #[derive(Clone, Debug, Serialize, ToSchema)]

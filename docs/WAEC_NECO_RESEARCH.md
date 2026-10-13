@@ -205,6 +205,12 @@ worth doing unless 4–6 will follow.
 
 ## 9. Open, needs a primary source
 
+- Pan-African scope (noted 2026-10-13, explicitly later): beyond Nigeria, the
+  neighbouring countries — and eventually non-WAEC boards (KCSE, UNEB, NSC).
+  No action now; recorded so the door stays visibly open. The set-based scope
+  model (§10 design direction) already covers WAEC's four neighbours with no
+  extra machinery — each new country/board is content work (topics, questions,
+  verification), not engineering work. JAMB pays first (D1); this follows.
 - NECO's exact subject count and the compulsory list (76? which four?)
 - NECO objective-paper question count per subject — 60 uniform or not?
 - WAEC `civic-education` and the three electives: real objective counts
@@ -215,9 +221,11 @@ worth doing unless 4–6 will follow.
 
 Written after the research above showed that a subject cannot honestly carry
 the facts the current model asks of it. **Scoped pin (D66, 2026-10-13):**
-exam record + nullable count implemented; `Topic.country` and the
-`is_compulsory` rewrite deferred below. Three `null`s and one `planned` row
-are load-bearing: each is a value we cannot state.
+exam record + nullable count implemented; scope as join tables
+(`topic_countries`, `exam_requirements`) with `?country=` filters
+implemented — the nullable-`Topic.country` sketch here is superseded by sets,
+which alone can hold a four-country section. The `is_compulsory` rewrite
+stays deferred.
 
 ```json
 [

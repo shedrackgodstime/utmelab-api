@@ -5,7 +5,7 @@
 //! is a constructor change — no route, no domain type and no response shape
 //! moves.
 
-use crate::bank::model::{Exam, Question, Subject, Subtopic, Topic};
+use crate::bank::model::{Exam, Question, Requirement, Subject, Subtopic, Topic};
 use crate::bank::{Novel, NovelDoc, Passage, Syllabus};
 
 /// Default page size when a caller does not ask for one (D30).
@@ -32,6 +32,10 @@ pub struct QuestionFilter<'a> {
     pub source: Option<&'a str>,
     /// The exam cohort the question is prepared for (D52).
     pub year: Option<u16>,
+    /// Country code, e.g. `GH`. Filters through subtopic → topic scope;
+    /// untagged questions are unscoped and always included. Absent means
+    /// the full honest view, never an assumed country.
+    pub country: Option<&'a str>,
 }
 
 /// One page plus the totals (D3). Every implementation must produce identical
@@ -79,10 +83,18 @@ pub trait Store: Send + Sync {
     /// One exam's record (D66) — name, countries, paper shape, rules.
     fn exam(&self, code: &str) -> Option<&Exam>;
 
+    /// Countries a topic is scoped to, sorted. Empty means universal — the
+    /// topic belongs to every member country of its exam (D66-scope). The
+    /// common case (all 582 JAMB topics today) carries no rows at all.
+    fn topic_scope(&self, topic: &str) -> Vec<String>;
+
+    /// Paper-assembly rules for an exam in a country, in file order.
+    fn requirements(&self, exam: &str, country: &str) -> Vec<&Requirement>;
+
     fn subjects(&self, exam: &str) -> Vec<&Subject>;
     fn subject(&self, exam: &str, slug: &str) -> Option<&Subject>;
 
-    fn syllabus(&self, exam: &str, subject_slug: &str) -> Option<Syllabus>;
+    fn syllabus(&self, exam: &str, subject_slug: &str, country: Option<&str>) -> Option<Syllabus>;
 
     /// Select and page in one call. Implementations must clamp `per_page` to
     /// [`MAX_PER_PAGE`] and treat `page < 1` as page 1.

@@ -25,6 +25,9 @@ fn scratch(name: &str) -> PathBuf {
         "passages",
         "questions",
         "exams",
+        "countries",
+        "topic_countries",
+        "exam_requirements",
     ] {
         std::fs::copy(
             repo_root().join(format!("{f}.json")),
@@ -62,11 +65,11 @@ fn the_embedded_catalog_matches_the_file_catalog() {
     assert!(embedded.novel("lekki-headmaster").is_some());
     assert_eq!(
         embedded
-            .syllabus("JAMB", "use-of-english")
+            .syllabus("JAMB", "use-of-english", None)
             .expect("syllabus")
             .summary
             .questions,
-        file.syllabus("JAMB", "use-of-english")
+        file.syllabus("JAMB", "use-of-english", None)
             .expect("syllabus")
             .summary
             .questions,
@@ -112,7 +115,9 @@ fn exams_and_subjects_resolve() {
 #[test]
 fn syllabus_carries_coverage_and_objectives() {
     let bank = JsonStore::load(repo_root()).expect("load");
-    let s = bank.syllabus("JAMB", "use-of-english").expect("syllabus");
+    let s = bank
+        .syllabus("JAMB", "use-of-english", None)
+        .expect("syllabus");
 
     assert_eq!(s.exam, "JAMB");
     assert_eq!(s.subject.name, "Use of English");
@@ -145,6 +150,79 @@ fn a_subject_pointing_at_no_exam_is_rejected() {
             .any(|p| p.contains("references unknown exam")),
         "got: {err}"
     );
+}
+
+#[test]
+fn scope_rows_must_name_a_real_topic_and_real_countries() {
+    let dir = scratch("bad-scope");
+    let f = dir.join("topic_countries.json");
+    let rows = serde_json::json!([
+        {"topic": "no-such-topic", "countries": ["NG"]},
+        {"topic": "indices-logarithms-and-surds", "countries": ["XX"]},
+    ]);
+    std::fs::write(&f, serde_json::to_vec_pretty(&rows).unwrap()).unwrap();
+
+    let err = load(&dir).expect_err("must refuse to load");
+    assert!(
+        err.problems.iter().any(|p| p.contains("unknown topic")),
+        "got: {err}"
+    );
+    assert!(
+        err.problems.iter().any(|p| p.contains("unknown country")),
+        "got: {err}"
+    );
+}
+
+#[test]
+fn a_requirement_must_name_a_member_country_and_real_subjects() {
+    let dir = scratch("bad-requirement");
+    let f = dir.join("exam_requirements.json");
+    let rows = serde_json::json!([
+        {"exam": "JAMB", "country": "GH", "group": "core", "min_select": 1,
+         "subjects": ["use-of-english"]},
+        {"exam": "JAMB", "country": "NG", "group": "core", "min_select": 1,
+         "subjects": ["no-such-subject"]},
+    ]);
+    std::fs::write(&f, serde_json::to_vec_pretty(&rows).unwrap()).unwrap();
+
+    let err = load(&dir).expect_err("must refuse to load");
+    assert!(
+        err.problems
+            .iter()
+            .any(|p| p.contains("not a member country")),
+        "got: {err}"
+    );
+    assert!(
+        err.problems.iter().any(|p| p.contains("unknown subject")),
+        "got: {err}"
+    );
+}
+
+#[test]
+fn an_unscoped_bank_answers_every_country_identically() {
+    // D66-scope: no scope rows means universal. Filtering by any country
+    // must return exactly what no filter returns — the day a scope row
+    // lands, this test earns its keep.
+    let bank = JsonStore::load(repo_root()).expect("load");
+    assert!(bank.topic_scope("indices-logarithms-and-surds").is_empty());
+    let all = bank.questions_page(QuestionFilter::default(), 1, 200);
+    let scoped = bank.questions_page(
+        QuestionFilter {
+            country: Some("GH"),
+            ..Default::default()
+        },
+        1,
+        200,
+    );
+    assert_eq!(all.total_records, scoped.total_records);
+    let tree = bank
+        .syllabus("JAMB", "mathematics", None)
+        .expect("syllabus");
+    let filtered = bank
+        .syllabus("JAMB", "mathematics", Some("GH"))
+        .expect("syllabus");
+    assert_eq!(tree.summary.questions, filtered.summary.questions);
+    assert_eq!(tree.topics.len(), filtered.topics.len());
 }
 
 #[test]

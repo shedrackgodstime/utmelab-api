@@ -42,31 +42,45 @@ pub struct Scheme {
     pub questions_available: u32,
     /// Which subjects can actually fill a slot today.
     pub subjects_ready: Vec<String>,
-    /// Subjects in a full paper, from the exam record. `None` where unstated
-    /// — and an unstated paper shape is never complete.
-    pub subjects_required: Option<u32>,
+    /// Country scope this scheme was computed for, if any. Absent means the
+    /// full honest view — and completeness is only ever claimed for a scope.
+    pub country: Option<String>,
+    /// The paper-assembly rules evaluated here, copied from the exam's
+    /// requirement rows so a consumer sees what completeness meant.
+    pub requirements: Vec<crate::bank::Requirement>,
 }
 
 impl Scheme {
-    /// Can this exam be assembled as a full mock right now? Requires every
-    /// compulsory subject plus enough electives to reach the record's
-    /// `subjects_required` (D41; D66 moved the shape out of the call site).
+    /// Can this exam be assembled as a full mock right now, in this scheme's
+    /// country scope? Every requirement group must hold at least its
+    /// `min_select` ready subjects. A group with an empty subject list draws
+    /// from every exam subject outside explicitly listed groups; no groups at
+    /// all means the shape cannot be stated, and an unstated paper is never
+    /// complete (D41).
     pub fn is_complete(&self) -> bool {
-        let required = match self.subjects_required {
-            Some(n) => n as usize,
-            // A paper whose shape cannot be stated is never complete.
-            None => return false,
-        };
-        let ready = |slug: &str| self.subjects_ready.iter().any(|s| s == slug);
-        let compulsory: Vec<&SubjectSlot> = self.subjects.iter().filter(|s| s.compulsory).collect();
-        let compulsory_ready = compulsory.iter().all(|s| ready(&s.slug));
-        let electives_ready = self
-            .subjects
+        if self.requirements.is_empty() {
+            return false;
+        }
+        let claimed: std::collections::HashSet<&str> = self
+            .requirements
             .iter()
-            .filter(|s| !s.compulsory && ready(&s.slug))
-            .count();
-        let electives_needed = required.saturating_sub(compulsory.len());
-        compulsory_ready && electives_ready >= electives_needed
+            .flat_map(|r| r.subjects.iter().map(String::as_str))
+            .collect();
+        let all: Vec<&str> = self.subjects.iter().map(|s| s.slug.as_str()).collect();
+        self.requirements.iter().all(|r| {
+            let pool: Vec<&str> = if r.subjects.is_empty() {
+                all.iter()
+                    .filter(|s| !claimed.contains(*s))
+                    .copied()
+                    .collect()
+            } else {
+                r.subjects.iter().map(String::as_str).collect()
+            };
+            pool.iter()
+                .filter(|s| self.subjects_ready.iter().any(|x| x == *s))
+                .count()
+                >= r.min_select as usize
+        })
     }
 }
 
@@ -93,7 +107,12 @@ fn rules_for(exam: &crate::bank::Exam) -> Vec<String> {
 
 /// Build the scheme for an exam from the bank, or `None` if we carry no
 /// subject for it.
-pub fn scheme_for(store: &dyn Store, exam: &str) -> Option<Scheme> {
+///
+/// `country` scopes readiness and completeness: a single-country exam
+/// defaults to its only country, anything else needs the parameter said out
+/// loud — an unstated scope is never complete, and readiness counts only
+/// in-scope rows.
+pub fn scheme_for(store: &dyn Store, exam: &str, country: Option<&str>) -> Option<Scheme> {
     let subjects = store.subjects(exam);
     if subjects.is_empty() {
         return None;
@@ -101,6 +120,13 @@ pub fn scheme_for(store: &dyn Store, exam: &str) -> Option<Scheme> {
     // Validation guarantees every carried subject names a known exam, so a
     // missing record here is unreachable in a loaded bank.
     let record = store.exam(exam)?;
+
+    // No silent defaults: only a one-country exam may imply its scope.
+    let effective: Option<String> = match country {
+        Some(cc) => Some(cc.to_owned()),
+        None if record.countries.len() == 1 => Some(record.countries[0].clone()),
+        None => None,
+    };
 
     let slots: Vec<SubjectSlot> = subjects
         .iter()
@@ -127,6 +153,7 @@ pub fn scheme_for(store: &dyn Store, exam: &str) -> Option<Scheme> {
                     exam: Some(exam),
                     subject: Some(&s.slug),
                     verified: Some(true),
+                    country: effective.as_deref(),
                     ..Default::default()
                 },
                 1,
@@ -136,6 +163,11 @@ pub fn scheme_for(store: &dyn Store, exam: &str) -> Option<Scheme> {
         })
         .map(|s| s.slug.clone())
         .collect();
+
+    let requirements: Vec<crate::bank::Requirement> = match effective.as_deref() {
+        Some(cc) => store.requirements(exam, cc).into_iter().cloned().collect(),
+        None => Vec::new(),
+    };
 
     Some(Scheme {
         exam: exam.to_owned(),
@@ -147,7 +179,8 @@ pub fn scheme_for(store: &dyn Store, exam: &str) -> Option<Scheme> {
             .sum(),
         subjects_ready,
         subjects: slots,
-        subjects_required: record.subjects_required,
+        country: effective,
+        requirements,
         rules: rules_for(record),
     })
 }
@@ -164,7 +197,7 @@ mod tests {
     #[test]
     fn scheme_reads_the_question_counts_out_of_the_subjects() {
         let bank = store();
-        let scheme = scheme_for(&bank, "JAMB").expect("JAMB is carried");
+        let scheme = scheme_for(&bank, "JAMB", None).expect("JAMB is carried");
         let english = scheme
             .subjects
             .iter()
@@ -188,18 +221,22 @@ mod tests {
     #[test]
     fn an_unknown_exam_has_no_scheme() {
         let bank = store();
-        assert!(scheme_for(&bank, "WASSCE-2099").is_none());
+        assert!(scheme_for(&bank, "WASSCE-2099", None).is_none());
     }
 
     #[test]
     fn unverified_duration_is_absent_rather_than_guessed() {
         let bank = store();
         assert_eq!(
-            scheme_for(&bank, "JAMB").expect("JAMB").duration_minutes,
+            scheme_for(&bank, "JAMB", None)
+                .expect("JAMB")
+                .duration_minutes,
             Some(120)
         );
         assert_eq!(
-            scheme_for(&bank, "WAEC").expect("WAEC").duration_minutes,
+            scheme_for(&bank, "WAEC", None)
+                .expect("WAEC")
+                .duration_minutes,
             None,
             "we have not verified WAEC's duration, so we do not publish one"
         );
@@ -208,7 +245,7 @@ mod tests {
     #[test]
     fn waec_scheme_carries_the_attempt_a_subset_warning() {
         let bank = store();
-        let scheme = scheme_for(&bank, "WAEC").expect("WAEC is carried");
+        let scheme = scheme_for(&bank, "WAEC", None).expect("WAEC is carried");
         assert!(
             scheme.rules.iter().any(|r| r.contains("answer N of M")),
             "the recorded WAEC Paper 2 problem must reach the consumer"
@@ -218,8 +255,9 @@ mod tests {
     #[test]
     fn readiness_never_overstates_what_we_hold() {
         let bank = store();
-        let scheme = scheme_for(&bank, "JAMB").expect("JAMB is carried");
-        assert_eq!(scheme.subjects_required, Some(4));
+        let scheme = scheme_for(&bank, "JAMB", None).expect("JAMB is carried");
+        assert_eq!(scheme.country, Some("NG".to_owned()));
+        assert_eq!(scheme.requirements.len(), 2);
         assert!(
             !scheme.is_complete(),
             "155 questions cannot fill 4 JAMB subjects — readiness must say so"
@@ -254,7 +292,7 @@ mod tests {
         // D66: a null count is carried on the scheme and can never be ready —
         // holding rows means nothing against a number never stated.
         let bank = store();
-        let scheme = scheme_for(&bank, "WAEC").expect("WAEC is carried");
+        let scheme = scheme_for(&bank, "WAEC", None).expect("WAEC is carried");
         assert!(
             scheme.subjects.iter().all(|s| s.questions.is_none()),
             "no WAEC count is verified, so every slot is uncounted"
@@ -267,5 +305,29 @@ mod tests {
             !scheme.is_complete(),
             "an unstated paper shape is never complete"
         );
+    }
+
+    #[test]
+    fn a_single_country_exam_implies_its_scope() {
+        // JAMB runs in NG only: no country param needed, and the record's
+        // requirement rows drive completeness.
+        let bank = store();
+        let scheme = scheme_for(&bank, "JAMB", None).expect("JAMB is carried");
+        assert_eq!(scheme.country, Some("NG".to_owned()));
+        assert_eq!(scheme.requirements.len(), 2);
+        let explicit = scheme_for(&bank, "JAMB", Some("NG")).expect("JAMB is carried");
+        assert_eq!(explicit.country, Some("NG".to_owned()));
+        assert_eq!(explicit.subjects_ready, scheme.subjects_ready);
+    }
+
+    #[test]
+    fn a_multi_country_exam_without_a_scope_is_never_complete() {
+        // WAEC runs in five countries: without ?country= there is no scope,
+        // no requirements, and no completeness — but the tree still serves.
+        let bank = store();
+        let scheme = scheme_for(&bank, "WAEC", None).expect("WAEC is carried");
+        assert_eq!(scheme.country, None);
+        assert!(scheme.requirements.is_empty());
+        assert!(!scheme.is_complete());
     }
 }

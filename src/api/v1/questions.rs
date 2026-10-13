@@ -50,6 +50,10 @@ pub struct Filter {
     /// stay in id order, so paging means the same thing it means everywhere
     /// else (D44).
     pub q: Option<String>,
+    /// Country code filter through subtopic → topic scope, e.g. `GH`.
+    /// Untagged questions are unscoped and always included. Absent means
+    /// the full honest view, never an assumed country.
+    pub country: Option<String>,
     /// Opt in to the answer and the working.
     pub include_explanation: Option<bool>,
     /// 1-based.
@@ -133,6 +137,8 @@ display.",
         ("q" = Option<String>, Query,
          description = "Substring of the question text, case-insensitive. Unranked — results stay \
 in id order. Default: no filter."),
+        ("country" = Option<String>, Query,
+         description = "Country code filter through subtopic scope, e.g. GH. Default: no filter."),
         // utoipa cannot emit a `default` on a query parameter, so the defaults
         // are stated in the description — a client reads them there anyway.
         ("include_explanation" = Option<bool>, Query,
@@ -174,6 +180,7 @@ pub async fn questions(
             text: f.q.as_deref(),
             source: f.source.as_deref(),
             year: f.year,
+            country: f.country.as_deref(),
         },
         f.page.unwrap_or(1),
         f.per_page.unwrap_or(DEFAULT_PER_PAGE),

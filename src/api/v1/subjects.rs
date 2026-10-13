@@ -6,14 +6,14 @@
 
 use axum::Json;
 use axum::Router;
-use axum::extract::{Path, State};
+use axum::extract::{Path, Query, State};
 use axum::routing::get;
 
 use super::exams::SubjectEnvelope;
 use crate::AppState;
 use crate::bank::{Subject, Syllabus, SyllabusSummary};
 use crate::error::ApiError;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use utoipa::ToSchema;
 
 pub fn router() -> Router<AppState> {
@@ -52,6 +52,13 @@ pub async fn subject(
         .ok_or_else(|| not_found(&exam, &slug))
 }
 
+#[derive(Deserialize)]
+pub struct SyllabusQuery {
+    /// Country code filter, e.g. `GH`. Absent means the full tree with
+    /// every node's scope labels.
+    pub country: Option<String>,
+}
+
 #[utoipa::path(
     get,
     path = "/api/v1/subjects/{exam}/{slug}/syllabus",
@@ -63,6 +70,7 @@ with no questions does not appear.",
     params(
         ("exam" = String, Path, description = "Exam code."),
         ("slug" = String, Path, description = "Subject slug within that exam."),
+        ("country" = Option<String>, Query, description = "Country code filter, e.g. GH."),
     ),
     responses(
         (status = 200, body = Syllabus),
@@ -72,10 +80,11 @@ with no questions does not appear.",
 pub async fn syllabus(
     State(state): State<AppState>,
     Path((exam, slug)): Path<(String, String)>,
+    Query(f): Query<SyllabusQuery>,
 ) -> Result<Json<Syllabus>, ApiError> {
     state
         .bank
-        .syllabus(&exam, &slug)
+        .syllabus(&exam, &slug, f.country.as_deref())
         .map(Json)
         .ok_or_else(|| not_found(&exam, &slug))
 }
@@ -105,6 +114,7 @@ fn not_found(exam: &str, slug: &str) -> ApiError {
     params(
         ("exam" = String, Path, description = "Exam code."),
         ("slug" = String, Path, description = "Subject slug within that exam."),
+        ("country" = Option<String>, Query, description = "Country code filter, e.g. GH."),
     ),
     responses(
         (status = 200, body = Coverage),
@@ -114,10 +124,11 @@ fn not_found(exam: &str, slug: &str) -> ApiError {
 pub async fn coverage(
     State(state): State<AppState>,
     Path((exam, slug)): Path<(String, String)>,
+    Query(f): Query<SyllabusQuery>,
 ) -> Result<Json<Coverage>, ApiError> {
     state
         .bank
-        .syllabus(&exam, &slug)
+        .syllabus(&exam, &slug, f.country.as_deref())
         .map(|s| {
             Json(Coverage {
                 exam: s.exam,

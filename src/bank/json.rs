@@ -15,19 +15,32 @@ use std::path::Path;
 use std::path::PathBuf;
 
 use super::model::{
-    Exam, Novel, NovelDoc, Passage, Question, Subject, Verification, human_verified,
+    Country, Exam, Novel, NovelDoc, Passage, Question, Requirement, Subject, Verification,
+    human_verified,
 };
 use super::store::{MAX_PER_PAGE, QuestionFilter, QuestionPage, Store};
 use super::{Subtopic, Syllabus, SyllabusSubtopic, SyllabusSummary, SyllabusTopic, Topic};
 
-const FILES: [&str; 6] = [
+const FILES: [&str; 9] = [
     "subjects.json",
     "topics.json",
     "subtopics.json",
     "passages.json",
     "questions.json",
     "exams.json",
+    "countries.json",
+    "topic_countries.json",
+    "exam_requirements.json",
 ];
+
+/// One row of `topic_countries.json`: the member countries a topic belongs
+/// to. No row means universal (D66-scope).
+#[derive(Clone, Debug, serde::Deserialize)]
+struct TopicScopeRow {
+    topic: String,
+    #[serde(default)]
+    countries: Vec<String>,
+}
 
 // ── embedded catalog (slow-moving, baked into the binary) ────────────────────
 //
@@ -45,6 +58,9 @@ const EMBEDDED_TOPICS: &str = include_str!("../../data/topics.json");
 const EMBEDDED_SUBTOPICS: &str = include_str!("../../data/subtopics.json");
 const EMBEDDED_PASSAGES: &str = include_str!("../../data/passages.json");
 const EMBEDDED_EXAMS: &str = include_str!("../../data/exams.json");
+const EMBEDDED_COUNTRIES: &str = include_str!("../../data/countries.json");
+const EMBEDDED_TOPIC_COUNTRIES: &str = include_str!("../../data/topic_countries.json");
+const EMBEDDED_REQUIREMENTS: &str = include_str!("../../data/exam_requirements.json");
 
 const EMBEDDED_NOVELS: &[(&str, &str)] = &[
     (
@@ -94,6 +110,27 @@ impl fmt::Display for StoreError {
 
 impl std::error::Error for StoreError {}
 
+/// Build the topic → countries map, normalizing each list (sorted,
+/// deduplicated — order-insensitive set semantics). A duplicated topic row
+/// is refused: two scopes for one topic is ambiguous, not additive.
+fn scope_map(rows: Vec<TopicScopeRow>, c: &mut Checker) -> HashMap<String, Vec<String>> {
+    let mut map: HashMap<String, Vec<String>> = HashMap::new();
+    for row in rows {
+        if map.contains_key(&row.topic) {
+            c.problems.push(format!(
+                "topic_countries.json: duplicate row for topic '{}'",
+                row.topic
+            ));
+            continue;
+        }
+        let mut countries = row.countries;
+        countries.sort();
+        countries.dedup();
+        map.insert(row.topic, countries);
+    }
+    map
+}
+
 #[derive(Debug, Default)]
 struct Checker {
     /// Fatal — the bank is wrong and must not boot.
@@ -105,17 +142,23 @@ struct Checker {
 #[derive(Clone, Debug)]
 pub struct JsonStore {
     exams: Vec<Exam>,
+    countries: Vec<Country>,
     subjects: Vec<Subject>,
     topics: Vec<Topic>,
     subtopics: Vec<Subtopic>,
     questions: Vec<Question>,
+    requirements: Vec<Requirement>,
 
     exam_by_code: HashMap<String, usize>,
+    country_by_code: HashMap<String, usize>,
     subject_by_key: HashMap<(String, String), usize>,
     subjects_by_exam: HashMap<String, Vec<usize>>,
     topics_by_subject: HashMap<(String, String), Vec<usize>>,
     subtopics_by_topic: HashMap<String, Vec<usize>>,
+    subtopic_topic: HashMap<String, String>,
     questions_by_subtopic: HashMap<String, Vec<usize>>,
+    /// Topic slug → sorted member countries. Absent means universal.
+    topic_scope: HashMap<String, Vec<String>>,
     withheld: usize,
     /// Valid rows that are not servable (unassigned exam, D21). Kept beside
     /// the servable bank — never served, never dropped. `load` used to
@@ -145,18 +188,26 @@ impl JsonStore {
         let mut store_passages: Vec<Passage> = read(dir, FILES[3], &mut c);
         let questions: Vec<Question> = read(dir, FILES[4], &mut c);
         let exams: Vec<Exam> = read(dir, FILES[5], &mut c);
+        let countries: Vec<Country> = read(dir, FILES[6], &mut c);
+        let scope_rows: Vec<TopicScopeRow> = read(dir, FILES[7], &mut c);
+        let requirements: Vec<Requirement> = read(dir, FILES[8], &mut c);
 
         let mut store = Self {
             exams,
+            countries,
             subjects,
             topics,
             subtopics,
             questions,
+            requirements,
             exam_by_code: HashMap::new(),
+            country_by_code: HashMap::new(),
+            topic_scope: scope_map(scope_rows, &mut c),
             subject_by_key: HashMap::new(),
             subjects_by_exam: HashMap::new(),
             topics_by_subject: HashMap::new(),
             subtopics_by_topic: HashMap::new(),
+            subtopic_topic: HashMap::new(),
             questions_by_subtopic: HashMap::new(),
             withheld: 0,
             withheld_questions: Vec::new(),
@@ -212,19 +263,29 @@ impl JsonStore {
         let mut store_passages: Vec<Passage> =
             parse_embedded("passages.json", EMBEDDED_PASSAGES, &mut c);
         let exams: Vec<Exam> = parse_embedded("exams.json", EMBEDDED_EXAMS, &mut c);
+        let countries: Vec<Country> = parse_embedded("countries.json", EMBEDDED_COUNTRIES, &mut c);
+        let scope_rows: Vec<TopicScopeRow> =
+            parse_embedded("topic_countries.json", EMBEDDED_TOPIC_COUNTRIES, &mut c);
+        let requirements: Vec<Requirement> =
+            parse_embedded("exam_requirements.json", EMBEDDED_REQUIREMENTS, &mut c);
         let questions: Vec<Question> = read(dir, FILES[4], &mut c);
 
         let mut store = Self {
             exams,
+            countries,
             subjects,
             topics,
             subtopics,
             questions,
+            requirements,
             exam_by_code: HashMap::new(),
+            country_by_code: HashMap::new(),
+            topic_scope: scope_map(scope_rows, &mut c),
             subject_by_key: HashMap::new(),
             subjects_by_exam: HashMap::new(),
             topics_by_subject: HashMap::new(),
             subtopics_by_topic: HashMap::new(),
+            subtopic_topic: HashMap::new(),
             questions_by_subtopic: HashMap::new(),
             withheld: 0,
             withheld_questions: Vec::new(),
@@ -263,6 +324,59 @@ impl JsonStore {
             if !seen_exams.insert(e.code.as_str()) {
                 c.problems
                     .push(format!("exams.json: duplicate code '{}'", e.code));
+            }
+        }
+
+        let mut seen_countries = HashSet::new();
+        for country in &self.countries {
+            if !seen_countries.insert(country.code.as_str()) {
+                c.problems
+                    .push(format!("countries.json: duplicate code '{}'", country.code));
+            }
+        }
+
+        let known_topics: HashSet<&str> = self.topics.iter().map(|t| t.slug.as_str()).collect();
+        for (topic, members) in &self.topic_scope {
+            if !known_topics.contains(topic.as_str()) {
+                c.problems
+                    .push(format!("topic_countries.json: unknown topic '{topic}'"));
+            }
+            for m in members {
+                if !seen_countries.contains(m.as_str()) {
+                    c.problems.push(format!(
+                        "topic_countries.json: '{topic}' names unknown country '{m}'"
+                    ));
+                }
+            }
+        }
+
+        for r in &self.requirements {
+            if !seen_exams.contains(r.exam.as_str()) {
+                c.problems.push(format!(
+                    "exam_requirements.json: ({}, {}) references unknown exam '{}'",
+                    r.exam, r.country, r.exam
+                ));
+                continue;
+            }
+            let member = self
+                .exams
+                .iter()
+                .find(|e| e.code == r.exam)
+                .map(|e| e.countries.iter().any(|cc| cc == &r.country))
+                .unwrap_or(false);
+            if !member {
+                c.problems.push(format!(
+                    "exam_requirements.json: '{}' is not a member country of '{}'",
+                    r.country, r.exam
+                ));
+            }
+            for s in &r.subjects {
+                if !self.has_subject(&r.exam, s) {
+                    c.problems.push(format!(
+                        "exam_requirements.json: ({}, {}) references unknown subject '{s}'",
+                        r.exam, r.country
+                    ));
+                }
             }
         }
 
@@ -629,6 +743,9 @@ impl JsonStore {
         for (i, e) in self.exams.iter().enumerate() {
             self.exam_by_code.insert(e.code.clone(), i);
         }
+        for (i, cc) in self.countries.iter().enumerate() {
+            self.country_by_code.insert(cc.code.clone(), i);
+        }
         for (i, s) in self.subjects.iter().enumerate() {
             self.subject_by_key
                 .insert((s.exam.clone(), s.slug.clone()), i);
@@ -648,6 +765,7 @@ impl JsonStore {
                 .entry(s.topic.clone())
                 .or_default()
                 .push(i);
+            self.subtopic_topic.insert(s.slug.clone(), s.topic.clone());
         }
         for (i, q) in self.questions.iter().enumerate() {
             if let Some(s) = &q.subtopic_id {
@@ -664,6 +782,35 @@ impl JsonStore {
             self.passage_by_id.insert(p.id.clone(), i);
         }
     }
+
+    /// A topic is in scope for a country filter when it carries no scope
+    /// rows (universal) or names the country. No filter means everything.
+    fn topic_in_scope(&self, topic: &str, country: Option<&str>) -> bool {
+        match country {
+            None => true,
+            Some(cc) => {
+                let scope = self.topic_scope.get(topic);
+                scope.is_none_or(|members| members.iter().any(|m| m == cc))
+            }
+        }
+    }
+
+    /// A question is in scope when it is untagged (unscoped, always
+    /// included — absence of a tag cannot exclude) or its subtopic's topic
+    /// is in scope.
+    fn question_in_scope(&self, q: &Question, country: Option<&str>) -> bool {
+        match country {
+            None => true,
+            Some(_) => match q
+                .subtopic_id
+                .as_deref()
+                .and_then(|s| self.subtopic_topic.get(s))
+            {
+                None => true,
+                Some(t) => self.topic_in_scope(t, country),
+            },
+        }
+    }
 }
 
 impl Store for JsonStore {
@@ -675,6 +822,17 @@ impl Store for JsonStore {
 
     fn exam(&self, code: &str) -> Option<&Exam> {
         self.exam_by_code.get(code).map(|i| &self.exams[*i])
+    }
+
+    fn topic_scope(&self, topic: &str) -> Vec<String> {
+        self.topic_scope.get(topic).cloned().unwrap_or_default()
+    }
+
+    fn requirements(&self, exam: &str, country: &str) -> Vec<&Requirement> {
+        self.requirements
+            .iter()
+            .filter(|r| r.exam == exam && r.country == country)
+            .collect()
     }
 
     fn subjects(&self, exam: &str) -> Vec<&Subject> {
@@ -690,7 +848,7 @@ impl Store for JsonStore {
             .map(|i| &self.subjects[*i])
     }
 
-    fn syllabus(&self, exam: &str, subject_slug: &str) -> Option<Syllabus> {
+    fn syllabus(&self, exam: &str, subject_slug: &str, country: Option<&str>) -> Option<Syllabus> {
         let subject = self.subject(exam, subject_slug)?;
 
         let mut topic_ix = self
@@ -699,6 +857,9 @@ impl Store for JsonStore {
             .cloned()
             .unwrap_or_default();
         topic_ix.sort_by_key(|i| self.topics[*i].order);
+        // A country filter narrows to in-scope topics; without one the tree
+        // is the full honest view, scope labels and all.
+        topic_ix.retain(|i| self.topic_in_scope(&self.topics[*i].slug, country));
 
         let mut n_topics = 0;
         let mut topics_with = 0;
@@ -735,6 +896,7 @@ impl Store for JsonStore {
                             order: st.order,
                             question_count: count,
                             objectives: st.objectives.clone(),
+                            countries: self.topic_scope(&t.slug),
                         }
                     })
                     .collect();
@@ -753,6 +915,7 @@ impl Store for JsonStore {
                     // Notes are shape-only until D18 is activated.
                     note_available: false,
                     objectives: t.objectives.clone(),
+                    countries: self.topic_scope(&t.slug),
                     subtopics,
                 }
             })
@@ -821,6 +984,7 @@ impl Store for JsonStore {
                     q.text.text.to_lowercase().contains(&needle.to_lowercase())
                 })
             })
+            .filter(|q| self.question_in_scope(q, filter.country))
             .collect();
 
         let total_records = matched.len();
@@ -1062,6 +1226,9 @@ fn fingerprint_embedded(dir: &Path) -> String {
         ("subtopics.json", EMBEDDED_SUBTOPICS),
         ("passages.json", EMBEDDED_PASSAGES),
         ("exams.json", EMBEDDED_EXAMS),
+        ("countries.json", EMBEDDED_COUNTRIES),
+        ("topic_countries.json", EMBEDDED_TOPIC_COUNTRIES),
+        ("exam_requirements.json", EMBEDDED_REQUIREMENTS),
     ] {
         hasher.update(name.as_bytes());
         hasher.update(content.as_bytes());
