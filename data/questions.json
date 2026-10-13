@@ -56920,10 +56920,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "atomic-structure-concept-of-atoms-molecules-and-ions-the-wor",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Chlorine is 2,8,7.",
+        "inline": []
+      },
+      "body": {
+        "text": "17 electrons fill to 3s2 3p5. Option d scrambles shells; b and c shortchange p.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Shell-scrambled options test whether filling order is known, not just totals.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -56968,10 +56981,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "unsaturated-saturated-and-supersaturated-solutions-solubilit",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Solubility measures how much dissolves.",
+        "inline": []
+      },
+      "body": {
+        "text": "Grams per solvent at saturation — the definition. Vapour, boiling and reaction claims belong elsewhere.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Colligative effects tempt, but the importance asked is capacity.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -57016,10 +57042,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "nuclear-chemistry-radioactivity-types-and-properties-of-radi",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Half-life is ln2 over k.",
+        "inline": []
+      },
+      "body": {
+        "text": "t = 0.693/3.85e-3 = 180 s. First order keeps the same half-life throughout.",
+        "inline": []
+      },
+      "trap": {
+        "text": "80 s halves wrong — ln2 is 0.693, not 0.31.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -57073,10 +57112,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "amines-alkanamines-primary-secondary-and-tertiary-amines",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Carbonyl bound to nitrogen is an amide.",
+        "inline": []
+      },
+      "body": {
+        "text": "The figure shows R-C(=O)-NH2: alkanamide. Ketones lack N, amines lack the carbonyl, acids lack N.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Amine tempts on nitrogen, but carbonyl-plus-nitrogen is amide.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -57121,10 +57173,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "separation-processes-evaporation-simple-and-fractional-disti",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Close boiling points need fractionation.",
+        "inline": []
+      },
+      "body": {
+        "text": "Crude fractions separate on a column by boiling range. Steam distillation suits immiscibles; crystallisation and precipitation are not for oils.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Steam distillation tempts as distillation, but crude needs fractions.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -57178,10 +57243,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "le-chatelier-s-principle-and-the-equilibrium-constant",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Kc is products over reactants with powers: [X2][Y2]3/[XY3]2.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure 2XY3 gives X2 + 3Y2: products up, each raised to its coefficient.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Option c drops the cubes — coefficients become powers, always.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -57226,10 +57304,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "the-mole-concept-and-avogadro-s-number",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Molecules are moles times Avogadro.",
+        "inline": []
+      },
+      "body": {
+        "text": "4.0 x 6.02e23 = 24.08e23 = 2.41e24.",
+        "inline": []
+      },
+      "trap": {
+        "text": "1.51e23 divides by four instead of multiplying — times, not over.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -57274,10 +57365,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "air-pollution-hydrogen-sulphide-carbon-ii-oxide-sulphur-iv-o",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "CFCs escaped from spray cans.",
+        "inline": []
+      },
+      "body": {
+        "text": "Aerosol propellants were the dispersive CFC use. Fossil fuel, photosynthesis and decay release other gases.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Fossil fuel tempts as pollution, but freons specifically rode aerosols.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -57322,10 +57426,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "aliphatic-hydrocarbons-alkynes-ethyne-produced-from-action-o",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Oxyacetylene welds: ethyne.",
+        "inline": []
+      },
+      "body": {
+        "text": "C2H2 burns hot enough to cut steel. Methane, propene and butane burn cooler.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Methane tempts as fuel gas, but welding heat needs acetylene.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -57370,10 +57487,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "alloys-steel-stainless-steel-brass-bronze-type-metal-duralum",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Bronze sings: bells, instruments, ornaments.",
+        "inline": []
+      },
+      "body": {
+        "text": "Copper-tin resonance suits music and display. Coins want harder alloys, magnets want iron, aircraft want aluminium.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Coins tempts on metal-use, but bronze's voice is musical.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -57418,10 +57548,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "ph-and-poh-scale-ph-defined-as-log-h3o-related-calculations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Diprotic acid doubles H+, water fixes OH-.",
+        "inline": []
+      },
+      "body": {
+        "text": "[H+] = 2 x 0.06 = 1.2e-1; [OH-] = 1e-14/1.2e-1 = 8.3e-14.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Halved H+ forgets the second proton — sulphuric gives two.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -57466,10 +57609,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "tests-for-oxidizing-and-reducing-agents",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Orange to green dichromate means alcohol oxidised.",
+        "inline": []
+      },
+      "body": {
+        "text": "The breathalyser reaction: ethanol reduces Cr(VI) to Cr(III). Acids, aldehydes and ketones do not flip it this way.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Alkanal tempts as oxidisable, but the classic positive is the alcohol.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -57523,10 +57679,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "energy-changes-delta-h-accompanying-physical-and-chemical-ch",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Products above reactants is endothermic.",
+        "inline": []
+      },
+      "body": {
+        "text": "The figure lifts A+B at 20 to C+D at 50 over an 80 barrier — heat in. Spontaneous and reversible describe other axes.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Reversible tempts on the double hump shape, but energy direction is up.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -57571,10 +57740,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "introduction-tetravalency-of-carbon-general-formulae-iupac-n",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Alkynes start at C2, so 5th is C6H10.",
+        "inline": []
+      },
+      "body": {
+        "text": "Ethyne C2 is first; fifth is hexyne C6H10 by CnH2n-2. Counting from C1 overshoots into nonexistence.",
+        "inline": []
+      },
+      "trap": {
+        "text": "C5H8 counts methane as an alkyne — series starts at ethyne.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
