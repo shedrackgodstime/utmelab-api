@@ -159,3 +159,12 @@ CREATE TABLE blueprints(
 keys ✅ (D53, live) → verifications → questions → passages + novels →
 catalog + blueprints → binary is code only. One phase per commit; a phase
 lands only with parity proof in its message.
+
+## Phase 1 record (2026-10-13)
+
+`verifications` seeded: 393/393 rows, per-row `content_hash` equal both
+sides (PARITY OK). Rule until the TursoStore read path lands: **the file
+stays source of truth; the table is a warm standby re-seeded idempotently
+(upsert by id) whenever the file moves** — never dual-written, never
+diverged. Seed procedure: one-off Rust example over `turso_serverless`
+(read file → upsert → count + hash parity); the DDL stays pinned above.
