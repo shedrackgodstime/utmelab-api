@@ -9210,5 +9210,845 @@
     "detail": null,
     "content_hash": "993ba3f717895d3f0411550373678c9499865b0aac6bc5e79d1d0cb3c55c3e66",
     "created_at": "2026-10-13T17:05:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74610_0659",
+    "question_id": "q_claim_2025_government_74610",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "1d20639b8388ece88188b2148689af5dc2f7c885acb1c1f3cb06cacf73761885",
+    "created_at": "2026-10-13T17:16:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74611_0660",
+    "question_id": "q_claim_2025_government_74611",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "9eb64c270c04c46496f827de24255a17310b3c37bb0e715147648be9c4588a51",
+    "created_at": "2026-10-13T17:16:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74612_0661",
+    "question_id": "q_claim_2025_government_74612",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "19180a075b7ba371434580b444d77f0509191be8e34025036b22146309e69f65",
+    "created_at": "2026-10-13T17:16:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74613_0662",
+    "question_id": "q_claim_2025_government_74613",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "4b46d1c64eca1e7932137252c331a9f893a3ab17ac137deebc13ac3ac66bfacb",
+    "created_at": "2026-10-13T17:16:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74614_0663",
+    "question_id": "q_claim_2025_government_74614",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "59fd1674001605c84865e7eff36126f7e9eee037b862eb3dfbe63dd802741573",
+    "created_at": "2026-10-13T17:16:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74615_0664",
+    "question_id": "q_claim_2025_government_74615",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "9440018c48b567c346e545d2a658a25f77f3c1c3045eb4a8b7dd3c4da1af0ff5",
+    "created_at": "2026-10-13T17:16:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74616_0665",
+    "question_id": "q_claim_2025_government_74616",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "2211129f589a3e5bea6b665acedec1b128240655e85bf9d0497bef853bfa2b2b",
+    "created_at": "2026-10-13T17:16:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74617_0666",
+    "question_id": "q_claim_2025_government_74617",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "6213f597058ce58209128bc930ad0167c8d2492d01a03155cb16ad0b9e2c0aea",
+    "created_at": "2026-10-13T17:16:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74618_0667",
+    "question_id": "q_claim_2025_government_74618",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "f26f5daba013a969d53338df80be02843f2bd252c5010608384cf28194b94cc2",
+    "created_at": "2026-10-13T17:16:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74619_0668",
+    "question_id": "q_claim_2025_government_74619",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "f620707fdd78e1c682263ea0865a106d0fc6728223a5c82a1f14e4834b400076",
+    "created_at": "2026-10-13T17:16:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74620_0669",
+    "question_id": "q_claim_2025_government_74620",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "e9f8d5a9bfe9b73558a8178c8b4a3b96a7a884aed28d99f9cc7e3d462f108041",
+    "created_at": "2026-10-13T17:16:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74621_0670",
+    "question_id": "q_claim_2025_government_74621",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "14b524450fa936c006b85c027476cd60f1e36648af9ac672300e06989498dd4c",
+    "created_at": "2026-10-13T17:16:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74622_0671",
+    "question_id": "q_claim_2025_government_74622",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "aa2bda359902db90106f86bc5f2d2b084297b70f837b2b4a226552d192d3a4f0",
+    "created_at": "2026-10-13T17:16:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74623_0672",
+    "question_id": "q_claim_2025_government_74623",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "e36b94bf915149d9f16b291ff41ba371650731e78e9d4e1301220a54c9273ddd",
+    "created_at": "2026-10-13T17:16:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74625_0673",
+    "question_id": "q_claim_2025_government_74625",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "697ef1d7b03f5db2574280f618b8289c4624d45557e16358717809e0fc41b1c4",
+    "created_at": "2026-10-13T17:16:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74626_0674",
+    "question_id": "q_claim_2025_government_74626",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "15e197195b9203e379185ba35ae8248314ee23c370eda31647aebf1b0d77c459",
+    "created_at": "2026-10-13T17:16:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74627_0675",
+    "question_id": "q_claim_2025_government_74627",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "6c7f534a013e1fd26ba162a7833d882681d2be638005ca98d38be1afbec95d32",
+    "created_at": "2026-10-13T17:16:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74628_0676",
+    "question_id": "q_claim_2025_government_74628",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "ffa2709834fccda90905b265efa3d8b2fe92903fb308af4bd777026383559ac3",
+    "created_at": "2026-10-13T17:16:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74629_0677",
+    "question_id": "q_claim_2025_government_74629",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "2674c75d4f3fc26e5817ef3534777c645376c57517aeab8ad50c81e3c3f0b97d",
+    "created_at": "2026-10-13T17:16:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74630_0678",
+    "question_id": "q_claim_2025_government_74630",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "a416662915da9408dd20a8db3f893d51980f0f6c846ffb349b6e608337b5f240",
+    "created_at": "2026-10-13T17:16:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74631_0679",
+    "question_id": "q_claim_2025_government_74631",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "e427259d347201b11ba3fd3634ba46bb80af85dce6f8465266322b081ded984a",
+    "created_at": "2026-10-13T17:16:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74632_0680",
+    "question_id": "q_claim_2025_government_74632",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "4d9cedd8fda153eb50c2f9df80aa020e0fdb95fe4ba0a62f720a157f6246932f",
+    "created_at": "2026-10-13T17:16:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74633_0681",
+    "question_id": "q_claim_2025_government_74633",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "cba9ca08f988634795a1c2a4c94b37337a6292d7260450d32f6d11eb8688674f",
+    "created_at": "2026-10-13T17:16:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74634_0682",
+    "question_id": "q_claim_2025_government_74634",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "03cd3fcbdff5c182ddfc049733b9ebca1a4d92df4cf669ea09da42a912729d52",
+    "created_at": "2026-10-13T17:16:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74635_0683",
+    "question_id": "q_claim_2025_government_74635",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "e6bddb985c9cea22a61d0a3f04b6e96a0f47f2f980931871e3d92cc729539dc7",
+    "created_at": "2026-10-13T17:16:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74636_0684",
+    "question_id": "q_claim_2025_government_74636",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "f2108cd7f634f9a347070eb045f71edb04211644beb5adb0e801f204464a6ba5",
+    "created_at": "2026-10-13T17:16:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74637_0685",
+    "question_id": "q_claim_2025_government_74637",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "503c94370200658d97039f3002954f11e6571e0fff8d97123664a64741a65052",
+    "created_at": "2026-10-13T17:16:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74638_0686",
+    "question_id": "q_claim_2025_government_74638",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "8d3443cc470ee68ad3fa9bb9e64925a9926bde9f80ff44b0f4981f62dc2b2355",
+    "created_at": "2026-10-13T17:16:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74639_0687",
+    "question_id": "q_claim_2025_government_74639",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "f5b4be43943988a75aed3477e921f102647523779a46fa8331ac6df2adcacea9",
+    "created_at": "2026-10-13T17:16:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74640_0688",
+    "question_id": "q_claim_2025_government_74640",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "58741c96e5952b808fead8c71a1af804dbcd8eb8989e662a06f6242f10412adf",
+    "created_at": "2026-10-13T17:16:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74641_0689",
+    "question_id": "q_claim_2025_government_74641",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "570335db922b9719020155ded25cccfa02b2e745579795e9057f313287897a24",
+    "created_at": "2026-10-13T17:16:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74642_0690",
+    "question_id": "q_claim_2025_government_74642",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "89024274911e6fa4848ea2116a898c70700740f440143482d9dc840b3a0bbed4",
+    "created_at": "2026-10-13T17:16:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74643_0691",
+    "question_id": "q_claim_2025_government_74643",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "c602074f911f4038ac7e1192570d7f31e6916ecbf0314137cac623ccadac7c31",
+    "created_at": "2026-10-13T17:16:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74644_0692",
+    "question_id": "q_claim_2025_government_74644",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "1bcf4f277d72675afd66ba4bf97d4bceab7701ea2b0e0c29a4b7abf0a9f65850",
+    "created_at": "2026-10-13T17:16:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74663_0693",
+    "question_id": "q_claim_2025_government_74663",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "06dfb9d77023b956228986038a0b571cf1f400f5695850383b25d000e58eaba2",
+    "created_at": "2026-10-13T17:16:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74664_0694",
+    "question_id": "q_claim_2025_government_74664",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "92a69b84c86e571446b47846d771d84bd43bbafaf6dec58a199239b1893e46d6",
+    "created_at": "2026-10-13T17:16:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74665_0695",
+    "question_id": "q_claim_2025_government_74665",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "52be31302d0134a3265e785aba77940d804c8dd8165f9ad0f80888f476155d1f",
+    "created_at": "2026-10-13T17:16:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74666_0696",
+    "question_id": "q_claim_2025_government_74666",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "d6dc2b31eadc9cc53b6f36df7360d6585dc33cea424ef3c77f54b6e3e579fccf",
+    "created_at": "2026-10-13T17:16:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74667_0697",
+    "question_id": "q_claim_2025_government_74667",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "75940aecd26321a2175f6807ebf3c9196d91fffa54af8efbe7d8db3e60af7c6a",
+    "created_at": "2026-10-13T17:16:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74668_0698",
+    "question_id": "q_claim_2025_government_74668",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "58fc494cbc6b547d957dd994cdd4321d7b8f136f7ccff45c62772b8323013236",
+    "created_at": "2026-10-13T17:17:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74669_0699",
+    "question_id": "q_claim_2025_government_74669",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "8110d0c7f926e2537e348f9aa43285a05c3cbcb6a97d1595d1135e952322e811",
+    "created_at": "2026-10-13T17:17:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74670_0700",
+    "question_id": "q_claim_2025_government_74670",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "e5e62e9de099e470268362451af15f5171ce73fb1c3736f51238a7a656346ceb",
+    "created_at": "2026-10-13T17:17:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74671_0701",
+    "question_id": "q_claim_2025_government_74671",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "3479cbecec4fefa1048530eb1fb4578a5c8b388593f25869902f27290be061e8",
+    "created_at": "2026-10-13T17:17:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74672_0702",
+    "question_id": "q_claim_2025_government_74672",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "1a5a254fa7eacaba05089c2cf91413c59a1074874e404c0da3e38dae80e86a19",
+    "created_at": "2026-10-13T17:17:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74673_0703",
+    "question_id": "q_claim_2025_government_74673",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "ecae3d5f4b5d00a044f898a863a058130fa44ea269bb93eef37bd021725569ec",
+    "created_at": "2026-10-13T17:17:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74674_0704",
+    "question_id": "q_claim_2025_government_74674",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "aba12a6ab543e70417d8232f1db67da51fdee5b4d5a696329726c3f31e1db695",
+    "created_at": "2026-10-13T17:17:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74675_0705",
+    "question_id": "q_claim_2025_government_74675",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "c9440fd496a37395bd342c0cecd962d2243a8018d6bb5961f35d420619b21e79",
+    "created_at": "2026-10-13T17:17:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74676_0706",
+    "question_id": "q_claim_2025_government_74676",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "52c2acf69cf310365ea656baa8894e3beb9881a485b7c5fff07122dc58159790",
+    "created_at": "2026-10-13T17:17:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74677_0707",
+    "question_id": "q_claim_2025_government_74677",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "005f85eec6a9edae25b007f1e1fe782f7260795f802638baeb24e59d9f835a23",
+    "created_at": "2026-10-13T17:17:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74678_0708",
+    "question_id": "q_claim_2025_government_74678",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "08a5b16d3db4190820d6665c8d4ca27749644db9f8e718f9ffe5e9d783ce2ffb",
+    "created_at": "2026-10-13T17:17:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74680_0709",
+    "question_id": "q_claim_2025_government_74680",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "f3bac0b95cb7cb81761530da9d8cf24214b6df6f2aa70454166946c7a56cf985",
+    "created_at": "2026-10-13T17:17:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74681_0710",
+    "question_id": "q_claim_2025_government_74681",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "eb0099e614670d294e62088fda1094622c188b2b433c081c0fa07b6b4a44ceee",
+    "created_at": "2026-10-13T17:17:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74684_0711",
+    "question_id": "q_claim_2025_government_74684",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "d5c19c0eb93c2ac0b96297866897824aad873fe7e86b80649af384b128db1925",
+    "created_at": "2026-10-13T17:17:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74685_0712",
+    "question_id": "q_claim_2025_government_74685",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "c172b9070cd32c904ae537b240cd79b31f03f5a988a479e9a412f7241a9a25cd",
+    "created_at": "2026-10-13T17:17:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74687_0713",
+    "question_id": "q_claim_2025_government_74687",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "936feaf5f920048d6fe947dbb7077758d5bc21a67ee4a8e55ac33355bc7dc22e",
+    "created_at": "2026-10-13T17:17:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74688_0714",
+    "question_id": "q_claim_2025_government_74688",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "bef1a280e20d73d9c8bb710d93bb726982965b531c7c41945b7866ddfcc670ca",
+    "created_at": "2026-10-13T17:17:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74689_0715",
+    "question_id": "q_claim_2025_government_74689",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "f67036bf3f81594734209c5dcf9d41583054a38ef68ea765b6eb863e5c1e95be",
+    "created_at": "2026-10-13T17:17:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74690_0716",
+    "question_id": "q_claim_2025_government_74690",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "f8fc0f64032a67fbc94ce639febee9f67af3667587dbda34d9b43b4223e8f025",
+    "created_at": "2026-10-13T17:17:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74691_0717",
+    "question_id": "q_claim_2025_government_74691",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "93c5fd0a453f3efea87746b9fef8ac9044f2ad5033ca4f87daff55de74b3e4a2",
+    "created_at": "2026-10-13T17:17:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_government_74692_0718",
+    "question_id": "q_claim_2025_government_74692",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "gov2-review",
+    "detail": null,
+    "content_hash": "9935aa683ff57526a1e65c1106b68a47410005d0487094e25b3edb736ab7819f",
+    "created_at": "2026-10-13T17:17:04Z"
   }
 ]

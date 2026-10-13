@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-585 verified (26%, derived from data/verifications.json, D62) · 590 explained
+645 verified (29%, derived from data/verifications.json, D62) · 650 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -211,6 +211,11 @@ disagree. Two lists is how subjects drift.
 14. **Government batch 1 done 2026-10-13** — 50 explanations authored (keys
     checked against board facts) + tags + verified; government 0 → 50. No
     figures in batch. Wide-batch pace holds: same triage, same gates.
+15. **Government batch 2 (final) done 2026-10-13** — 60 explanations
+    authored + tags + verified; government 50 → 110 of 111. **74624 parked**:
+    1979 House age disputed (IPU election archive says 21, textbooks say 30,
+    no 35/21 option exists) — needs the constitution text, never a verdict.
+    Subject complete except parked.
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),
