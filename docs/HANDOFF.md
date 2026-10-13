@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-1,173 verified (52%, derived from data/verifications.json, D62) · 1,178 explained
+1,248 verified (56%, derived from data/verifications.json, D62) · 1,253 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -268,6 +268,14 @@ disagree. Two lists is how subjects drift.
     **75442 parked**: dangling `information below` with no table.
     Computations checked: 75153 profit 5,000; 75156 25%; 75159 COGS 25,000;
     75388 avg stock 2,500; 75469 N6,000,000 (50 kobo).
+23. **Geography proper rewrite done 2026-10-14** — 71 authored + 4 key
+    fixes + tags + verified; geography 0 → 75 of 79. **Keys corrected**
+    75480 c → a (1-in-134 steepest), 75484 b → a (halving doubles RF),
+    75488 d → b (Kainji generates power; nationwide tap water unserved),
+    75464 c → a (female schooling curbs fertility) — D45 pattern, all in
+    traps. **Parked**: 75447 (3 options), 75434/75535 (map asked, none
+    served), 75485 (recorded d wrong; b+c both read corrosion). Station
+    figures 75537–40 read by eye (Oct 230mm max; range 14; double maximum).
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),

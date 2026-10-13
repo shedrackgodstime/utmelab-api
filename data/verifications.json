@@ -17442,5 +17442,1055 @@
     "detail": null,
     "content_hash": "46177c892273e657de827d93b6dba0962a7b1fa0486f9677a21c0ae336d6f7ef",
     "created_at": "2026-10-13T23:43:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75440_1247",
+    "question_id": "q_claim_2025_geography_75440",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "4d4a1ddddbda4b10113ee34d091fd4607b6ae48173ca8f14054d9f505db35ac3",
+    "created_at": "2026-10-13T23:50:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75441_1248",
+    "question_id": "q_claim_2025_geography_75441",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "98ac19debc054c1ed7c2412616b404b6efbc7d187a25017299789ec8034504b8",
+    "created_at": "2026-10-13T23:50:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75443_1249",
+    "question_id": "q_claim_2025_geography_75443",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "5c6fe50e7b20d02f19952814730d03217406507ebb89c9253f4812ab800a57d9",
+    "created_at": "2026-10-13T23:50:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75444_1250",
+    "question_id": "q_claim_2025_geography_75444",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "55ac7d55bd2e55c8a781a57dde033d7e5a533ca3d187eff686324c34bc9f03a9",
+    "created_at": "2026-10-13T23:50:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75446_1251",
+    "question_id": "q_claim_2025_geography_75446",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "00ab02c9e719fbd9f6ab10984565726c257a439191aaafd666bfab66e295bce5",
+    "created_at": "2026-10-13T23:50:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75449_1252",
+    "question_id": "q_claim_2025_geography_75449",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "4614fadf80e3c4ba094823877ee2d95a5c7a4394a44d156cc937e43ed8e1577a",
+    "created_at": "2026-10-13T23:50:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75450_1253",
+    "question_id": "q_claim_2025_geography_75450",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "260c6f52aaeb43990315f368c64351eba33444639a5dff48e3f6fbaebad5bdc5",
+    "created_at": "2026-10-13T23:50:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75452_1254",
+    "question_id": "q_claim_2025_geography_75452",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "25b08728b3eb93d8c35e6e18c37f52bc247664bf2ff2fa992dfe6c23e48976ed",
+    "created_at": "2026-10-13T23:50:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75453_1255",
+    "question_id": "q_claim_2025_geography_75453",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "22bbabe10c86f3ede6e029d97ec40211ee7fdc17290fb2049ca14fc441133f07",
+    "created_at": "2026-10-13T23:50:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75454_1256",
+    "question_id": "q_claim_2025_geography_75454",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "3aef1478791a244be34f7a8d1e8dd93da8d2d4ac45a009e5d607e7445f60b7b5",
+    "created_at": "2026-10-13T23:50:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75456_1257",
+    "question_id": "q_claim_2025_geography_75456",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "3edb676151fd83609b4f69d2c0abcd963f67b18ea49df582ee374783ddfd6916",
+    "created_at": "2026-10-13T23:50:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75458_1258",
+    "question_id": "q_claim_2025_geography_75458",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "461c5db8b9a7118da25c993ac9a873680278c0ee8579b3004f168ad64cac533a",
+    "created_at": "2026-10-13T23:50:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75459_1259",
+    "question_id": "q_claim_2025_geography_75459",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "41e7f7ba2cafd6708dd3ebf78d6fee745448c0f2fb2131cd45a8115ad97598b5",
+    "created_at": "2026-10-13T23:50:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75461_1260",
+    "question_id": "q_claim_2025_geography_75461",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "c787d8ebb970e2aaaf05c16407e502b3dcac5c37efdc853ab4bfed380d7b248a",
+    "created_at": "2026-10-13T23:50:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75463_1261",
+    "question_id": "q_claim_2025_geography_75463",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "10ec867ea5fc0af6fe92ecf4cbdd8fb9abce4be4dd7d9ecbaa4640ee35c22c40",
+    "created_at": "2026-10-13T23:50:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75464_1262",
+    "question_id": "q_claim_2025_geography_75464",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "9f5e957937a947b4556ebad0a35f59142c844896abb7912e4e59276987c6cfa6",
+    "created_at": "2026-10-13T23:50:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75465_1263",
+    "question_id": "q_claim_2025_geography_75465",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "6f85bc8ae0785641300cbf06291ba3342e13e8c708202bab1793c4c3f0fd44ce",
+    "created_at": "2026-10-13T23:50:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75467_1264",
+    "question_id": "q_claim_2025_geography_75467",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "4976f2bc1530af87b897dbd02e03cf82a63d123c77c0ea0daf2bed8b6cca01e5",
+    "created_at": "2026-10-13T23:50:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75468_1265",
+    "question_id": "q_claim_2025_geography_75468",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "66b13f4d97bde3393794d090d42288e1ca8389fa3ab5742909e6af6a67c4a93d",
+    "created_at": "2026-10-13T23:50:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75470_1266",
+    "question_id": "q_claim_2025_geography_75470",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "51741f291b18f07f8e918e42d10a3a8a3f96bd8b834510e6d28fa57602106776",
+    "created_at": "2026-10-13T23:50:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75471_1267",
+    "question_id": "q_claim_2025_geography_75471",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "1f3a8055b705477822dc59fb1f9c38ebc18ec89544c573a412399a9b27152b8d",
+    "created_at": "2026-10-13T23:50:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75472_1268",
+    "question_id": "q_claim_2025_geography_75472",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "e5641ea281481931c831666e061b1441093c304fe16a89a8f8917ee6dbc238fa",
+    "created_at": "2026-10-13T23:50:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75473_1269",
+    "question_id": "q_claim_2025_geography_75473",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "44ea27a3bdeb692d869dac7cd2eaa5e2a253339b5d115615445a09207b566661",
+    "created_at": "2026-10-13T23:50:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75474_1270",
+    "question_id": "q_claim_2025_geography_75474",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "d8a141f39574abaf557957d457bd8a7efcaaf6f8e36391d7fe1d0498e86f05c8",
+    "created_at": "2026-10-13T23:50:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75475_1271",
+    "question_id": "q_claim_2025_geography_75475",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "d2d9f146622c1cf010b7408c41ccaa6099752c9af3f7d8c8d6499056e0875baa",
+    "created_at": "2026-10-13T23:50:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75476_1272",
+    "question_id": "q_claim_2025_geography_75476",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "59d35853c89651c9606017656d0ef4e708a4cf226e1f66c4b3b384e16f81c2f7",
+    "created_at": "2026-10-13T23:50:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75477_1273",
+    "question_id": "q_claim_2025_geography_75477",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "4634dfbbf624011b930eeb01b68c6d289f4b60b59e5f8c7d7f15996012264f2f",
+    "created_at": "2026-10-13T23:50:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75478_1274",
+    "question_id": "q_claim_2025_geography_75478",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "cb1b44e872c8b181d58a34d14c05509dbc0718754cfdebcb2d359dda5102414f",
+    "created_at": "2026-10-13T23:50:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75479_1275",
+    "question_id": "q_claim_2025_geography_75479",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "a7b00ecc1d4d0766abaf5d88a7147a0a9073239d3589f09d22646366628418a5",
+    "created_at": "2026-10-13T23:50:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75480_1276",
+    "question_id": "q_claim_2025_geography_75480",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "efe9b948b55d60293bc7f7e58ccd9cfcd00022e413e12efec71e173e05c0f532",
+    "created_at": "2026-10-13T23:50:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75481_1277",
+    "question_id": "q_claim_2025_geography_75481",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "e65beb7eef0743924d68c9c69c941501afed6cb698eac92fd4bbc14cf077f856",
+    "created_at": "2026-10-13T23:50:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75482_1278",
+    "question_id": "q_claim_2025_geography_75482",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "4d6d161823ef27a4cc62348c0c44b6707cd49f582542fcb1ccb09c96fcccf882",
+    "created_at": "2026-10-13T23:50:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75483_1279",
+    "question_id": "q_claim_2025_geography_75483",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "454be8ac904326b9ce838ea2082a0093693d0706c20472def8f7e23a9b56d46a",
+    "created_at": "2026-10-13T23:50:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75484_1280",
+    "question_id": "q_claim_2025_geography_75484",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "c5ffa8524c075d90ee62e14810c86f9f9a838ac1ec14d02cc4f646574800d56c",
+    "created_at": "2026-10-13T23:50:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75486_1281",
+    "question_id": "q_claim_2025_geography_75486",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "be196e4539495e44ef619dfa6e6d5624808a9bc27706667246601836a759af6f",
+    "created_at": "2026-10-13T23:50:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75487_1282",
+    "question_id": "q_claim_2025_geography_75487",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "6ee547f9e36126da2269e70b9e4def860612376bbfb258c1f1d77fa343b1d0f0",
+    "created_at": "2026-10-13T23:50:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75488_1283",
+    "question_id": "q_claim_2025_geography_75488",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "5b0de1d503ca4d927f597feed8aa9595824460a4043fb3d76644649b165f6333",
+    "created_at": "2026-10-13T23:50:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75498_1284",
+    "question_id": "q_claim_2025_geography_75498",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "313541e79d079e102e55c733fea91b05b7f328afca63b4995c62e55e27fcf263",
+    "created_at": "2026-10-13T23:50:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75499_1285",
+    "question_id": "q_claim_2025_geography_75499",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "06f03916ba812335421ef86ac9ca32f2084de21a0c4c18c1274b98636039a55a",
+    "created_at": "2026-10-13T23:50:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75500_1286",
+    "question_id": "q_claim_2025_geography_75500",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "c0b7b0c3c23fcf1b2beef23b9e444d359f10e88ff448d437fad40ae61e0460d4",
+    "created_at": "2026-10-13T23:50:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75503_1287",
+    "question_id": "q_claim_2025_geography_75503",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "7c6a73c7eccd824e796ba67e0e3a8e7de57e3ce1e2092ac777408944d7b9c761",
+    "created_at": "2026-10-13T23:50:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75505_1288",
+    "question_id": "q_claim_2025_geography_75505",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "390879a6de3c0384955d09c86eda43d516692aa6728e593924cbf5f593e3c194",
+    "created_at": "2026-10-13T23:50:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75506_1289",
+    "question_id": "q_claim_2025_geography_75506",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "85056e2910ce8894391d22e1b412b42610c7537621c89634bccd7c81758acaa0",
+    "created_at": "2026-10-13T23:50:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75508_1290",
+    "question_id": "q_claim_2025_geography_75508",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "7744eed25f4e33e46bb4e29eaf34117e0890075267c073f919265f81d89e061b",
+    "created_at": "2026-10-13T23:50:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75509_1291",
+    "question_id": "q_claim_2025_geography_75509",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "a3462b31e8cdf3180323c1c22ebe42c362ae6dba2f64fcd391e502707c91364e",
+    "created_at": "2026-10-13T23:50:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75511_1292",
+    "question_id": "q_claim_2025_geography_75511",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "278c9762b3bbf7ec212e38fdc7dc6dd907b3eeedb71620f3a7bfeb3c357327d9",
+    "created_at": "2026-10-13T23:50:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75512_1293",
+    "question_id": "q_claim_2025_geography_75512",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "dc89a8e5c86c84e0455fa374a4001c0980558acdf2f25a261ef2689c8bfa3cec",
+    "created_at": "2026-10-13T23:50:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75514_1294",
+    "question_id": "q_claim_2025_geography_75514",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "82ea5cc0f4f539b0f81f530c26452657cf998785504747cc45cef280f0f099c2",
+    "created_at": "2026-10-13T23:50:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75515_1295",
+    "question_id": "q_claim_2025_geography_75515",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "52d7678dff1258a54e19b5cf00acf6ef8e5b5a1d5bbe0b08259a3b6a4131f38e",
+    "created_at": "2026-10-13T23:50:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75516_1296",
+    "question_id": "q_claim_2025_geography_75516",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "9d731e365528415cf49c5dffe53c4f4924337f384ec6dc7a18068d75ebaa658d",
+    "created_at": "2026-10-13T23:50:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75517_1297",
+    "question_id": "q_claim_2025_geography_75517",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "1930cf0ab2ddc21a5f7e6e000a54251829735f268ccb201948e26968c35e83a7",
+    "created_at": "2026-10-13T23:50:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75518_1298",
+    "question_id": "q_claim_2025_geography_75518",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "bfc3d719e213164cd8b125810e3fc0ce5477a09dffca8b312cd39596dd9592d0",
+    "created_at": "2026-10-13T23:50:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75519_1299",
+    "question_id": "q_claim_2025_geography_75519",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "51ceeeaadacd2ef3f7438bcda8ef24c678c4042de923e89ee3ac46722afb2b89",
+    "created_at": "2026-10-13T23:50:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75520_1300",
+    "question_id": "q_claim_2025_geography_75520",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "4ed863179543f8416e9eef434b178b95b77c0597b2449c6d0a37783626ebb33a",
+    "created_at": "2026-10-13T23:50:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75521_1301",
+    "question_id": "q_claim_2025_geography_75521",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "2c40a0f864ee21d1100a9be2009612fff5250bf7d0d07485bf42b63fac82f61b",
+    "created_at": "2026-10-13T23:50:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75522_1302",
+    "question_id": "q_claim_2025_geography_75522",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "fdd0a5b25821c3b2b4446ec1224ad3c0c80ddf10bb474aba02af74a8b7148f03",
+    "created_at": "2026-10-13T23:50:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75523_1303",
+    "question_id": "q_claim_2025_geography_75523",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "c59b5615e35628e5ca2481250b7142a34c95d76daabd3766acdcb0bfbe81eba0",
+    "created_at": "2026-10-13T23:50:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75524_1304",
+    "question_id": "q_claim_2025_geography_75524",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "8ff71a99ddbb1a8904efb13f5377012c39f9d61a458ec1132ca6eee766f70fdc",
+    "created_at": "2026-10-13T23:50:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75525_1305",
+    "question_id": "q_claim_2025_geography_75525",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "7e044ef466f4544d7857bf5abff3c57201528ba350f4a5bb0f6d518d74cf539a",
+    "created_at": "2026-10-13T23:50:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75526_1306",
+    "question_id": "q_claim_2025_geography_75526",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "93841b053a17e84260ab0372d000f9dfe4c804032b8a90ac80848c266c01e459",
+    "created_at": "2026-10-13T23:50:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75527_1307",
+    "question_id": "q_claim_2025_geography_75527",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "a8990cc102d0461e5c2a32e0796a1ff67793efd9167c825d751c108d19a180d8",
+    "created_at": "2026-10-13T23:50:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75528_1308",
+    "question_id": "q_claim_2025_geography_75528",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "0581024dffc360e27826d932383dc98832cc158779d8a419db5f1a493bdee37c",
+    "created_at": "2026-10-13T23:50:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75529_1309",
+    "question_id": "q_claim_2025_geography_75529",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "f299c4841509c91a6b8e6d0da63f441cd4284e864c83197629d7099755753056",
+    "created_at": "2026-10-13T23:50:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75530_1310",
+    "question_id": "q_claim_2025_geography_75530",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "a3fd6f22ec27473455e827d8f6a96e4d2fc308f0c8256fb6bf016d3fca87d879",
+    "created_at": "2026-10-13T23:50:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75531_1311",
+    "question_id": "q_claim_2025_geography_75531",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "583a35e389ec0cb9e42632b853c060cd8437e64e8bdcf4ef79b0d5feeb86c3e7",
+    "created_at": "2026-10-13T23:50:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75532_1312",
+    "question_id": "q_claim_2025_geography_75532",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "3ef942a33246be1fe76bff0bdebb72b36bdd355ce93cef95c752afba95d54ae2",
+    "created_at": "2026-10-13T23:50:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75533_1313",
+    "question_id": "q_claim_2025_geography_75533",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "79e467063816a5acbd24601395f55cdba3393e0d95cd26b7984bb3836bef4ed3",
+    "created_at": "2026-10-13T23:50:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75536_1314",
+    "question_id": "q_claim_2025_geography_75536",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "3b4f4749a8f1de4afec29c30d3a80fb930a9993759723a0df6f18a699670f867",
+    "created_at": "2026-10-13T23:50:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75537_1315",
+    "question_id": "q_claim_2025_geography_75537",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "b301e58a136acff61d69566a2d447e0aecbdef5c0f237eddb84f1cd829f5e425",
+    "created_at": "2026-10-13T23:50:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75538_1316",
+    "question_id": "q_claim_2025_geography_75538",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "75edfb80c119815ce7e0407745603e4a33e4cba9cb881c4c52212d4f2e8264b6",
+    "created_at": "2026-10-13T23:50:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75539_1317",
+    "question_id": "q_claim_2025_geography_75539",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "4b2af12b4e6395cd75d2cfd79d75df16c168d8cf40f684f9625ae7629c55a238",
+    "created_at": "2026-10-13T23:50:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75540_1318",
+    "question_id": "q_claim_2025_geography_75540",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "c1b1b4b5503265f6802fb294cdd10c84f9daedec35f5d9fef1f9db0893a47f42",
+    "created_at": "2026-10-13T23:50:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75541_1319",
+    "question_id": "q_claim_2025_geography_75541",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "9849148a39040c584a6dd21f6cc6b4ad1e50334ee6bda75c2c5ee5aa244c3659",
+    "created_at": "2026-10-13T23:50:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75542_1320",
+    "question_id": "q_claim_2025_geography_75542",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "25bfeb7f8629755a5795d851714ca1ea6c521a0d03406ddf21076cc00e723403",
+    "created_at": "2026-10-13T23:50:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_geography_75543_1321",
+    "question_id": "q_claim_2025_geography_75543",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "geography-rewrite1",
+    "detail": null,
+    "content_hash": "987218109ddc008565e986c02fb7a1281edbe2a8c454b4107510abd44cb4a4ad",
+    "created_at": "2026-10-13T23:50:35Z"
   }
 ]
