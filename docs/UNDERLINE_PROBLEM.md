@@ -1,6 +1,9 @@
 # The underline problem — 78 unanswerable English questions
 
-**Status:** shape landed (D60: `Underline` mark in `RichText.inline`); backfill open. **Found:** 2026-10-11, during the English correctness audit.
+**Status:** **backfilled 2026-10-13** — all 78 carry `Underline` marks
+(quarantine `underline_missing`: 78 → 0). Rows are answerable as served;
+`verified` still requires a human review pass each (D62), which is the
+remaining work. **Found:** 2026-10-11, during the English correctness audit.
 **Affects:** 78 of 210 Use of English questions (37%, after the 83 novel rows left the bank).
 
 ---
@@ -79,7 +82,26 @@ concerns to keep them in sync.
 less to reason about. A field is actionable; markup is a parsing obligation on
 every caller, forever.
 
-## Backfill difficulty is not uniform
+## Backfill record (2026-10-13)
+
+All 78 filled by worksheet (`propose` → human read → `apply`), each target
+occurring exactly once in its stem (checked programmatically — no
+first-occurrence ambiguity anywhere). Groups: 16 antonyms + 16 synonyms
+(answer-matched back to the sentence), 6 idiom portions, 38 sound items, 2
+emphatic-stress (caps words NEW/YESTERDAY, answer-confirmed), 10 gap-antonyms
+(the contrast anchor, e.g. *dogged* — not the gap).
+
+Two recorded limitations, not defects in the marks:
+
+1. **Sound items mark whole words, not letters.** Stems say "the underlined
+   *letters* in: boot" — the letter-level target died in the harvest. The
+   recoverable, reviewable unit is the word; claiming `oo` would be guessing.
+2. **`t76545` has a suspect key.** "Same vowel sound as in: bought" with answer
+   *son* (/bɔːt/ vs /sʌn/ share nothing; *port* does). The mark (`bought`) is
+   independent of the key and stands; the answer needs a review pass — flagged
+   here, not changed.
+
+## Backfill method (as applied — difficulty was not uniform)
 
 | group | how the target is recovered | effort |
 |---|---|---|

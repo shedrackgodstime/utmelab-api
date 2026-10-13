@@ -139,13 +139,11 @@ disagree. Two lists is how subjects drift.
 
 ## 7. Open work, in the order it should be done
 
-1. **The 78 underline questions** (`docs/UNDERLINE_PROBLEM.md`). They say "the
-   underlined word" and we store no mark for it, so a student cannot answer
-   them. **The shape landed in P1** — the underline is an `Underline` mark
-   inside `RichText.inline`, written by `python3 tools/propose_emphasis.py
-   apply` or `review.py set --underline` (both validate the substring and
-   replace, never stack). Backfill directly; no migration stands in the way.
-   **No `verified` on any of the 78 until it lands (loader-enforced via D62).**
+1. **The 78 underline questions** (`docs/UNDERLINE_PROBLEM.md`) — **backfilled
+   2026-10-13**, all carrying `Underline` marks (quarantine clean on the
+   kind). Answerable as served; `verified` needs a human pass each — review
+   work, in batches of ~50 via `review.py`, checking the answer by computing
+   it. Known suspect: `t76545`'s key (`bought`→*son*).
 2. **Verification and explanations** — 2,200 rows untouched. Mathematics came
    out clean (58/60 verified); objective subjects verify well, languages and
    statistics need judgement. Review in batches of ~50, checking the answer by
