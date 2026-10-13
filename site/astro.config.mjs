@@ -37,6 +37,7 @@ export default defineConfig({
 				},
 				{
 					label: 'Guides',
+					collapsed: true,
 					items: [
 						{ label: 'Browsing the catalog', slug: 'guides/catalog' },
 						{ label: 'Finding questions', slug: 'guides/finding-questions' },
@@ -48,6 +49,7 @@ export default defineConfig({
 				},
 				{
 					label: 'Legal',
+					collapsed: true,
 					items: [
 						{ label: 'Terms of Service', slug: 'terms' },
 						{ label: 'Privacy Policy', slug: 'privacy' },

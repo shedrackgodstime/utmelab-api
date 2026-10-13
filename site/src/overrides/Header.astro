@@ -21,11 +21,23 @@ const shouldRenderSearch =
 
 const id = Astro.locals.starlightRoute?.id ?? '';
 const inDashboard = id === 'dashboard' || id.startsWith('dashboard/');
+const dashboardSection =
+	id === 'dashboard'
+		? 'Overview'
+		: id === 'dashboard/api-key'
+			? 'API key'
+			: id === 'dashboard/billing'
+				? 'Billing & account'
+				: '';
 ---
 
 <div class="header">
 	<div class="title-wrapper sl-flex">
-		<SiteTitle />
+		{inDashboard ? (
+			<h1 class="dash-section-title">{dashboardSection}</h1>
+		) : (
+			<SiteTitle />
+		)}
 	</div>
 	<div class="sl-flex print:hidden">
 		{shouldRenderSearch && <Search />}
@@ -69,6 +81,15 @@ const inDashboard = id === 'dashboard' || id.startsWith('dashboard/');
 			/* One flow on mobile: the title absorbs free space so search
 			   and nav cluster right instead of stranding search center. */
 			flex: 1 1 auto;
+		}
+
+		/* Dashboard section title: the header's own voice on dashboard
+		   routes — brand stays in the sidebar. */
+		.dash-section-title {
+			margin: 0;
+			font-size: 1rem;
+			font-weight: 500;
+			white-space: nowrap;
 		}
 
 		.site-nav {
@@ -118,6 +139,25 @@ const inDashboard = id === 'dashboard' || id.startsWith('dashboard/');
 					auto;
 				align-content: center;
 			}
+		}
+	}
+</style>
+
+<style>
+	/* Header sign-in: LinkButton metrics are built for heroes (pill, roomy).
+	   In the header it goes compact and less round. Unlayered so it beats
+	   Starlight's components-layer button rules; scoped to the nav so
+	   content LinkButtons are untouched. */
+	.site-nav .sl-link-button {
+		font-size: var(--sl-text-sm);
+		padding: 0.375rem 0.875rem;
+		border-radius: 0.5rem;
+	}
+
+	@media (min-width: 50rem) {
+		.site-nav .sl-link-button {
+			font-size: var(--sl-text-sm);
+			padding: 0.375rem 0.875rem;
 		}
 	}
 </style>
