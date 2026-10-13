@@ -1,0 +1,8 @@
+/* Full width for TOC-less pages. Starlight marks pages carrying a table
+   of contents with data-has-toc on <html> — everything without it is not
+   docs-prose (landing, pricing, dashboard, auth) and should not sit in
+   the centered 45rem column. Unlayered so it beats the layered default. */
+html:not([data-has-toc]) .sl-container {
+	max-width: none;
+	margin-inline: 0;
+}

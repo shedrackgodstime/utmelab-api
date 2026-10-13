@@ -34,6 +34,9 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
   shows them as result filters automatically.
 - Dashboard nav has one source: `src/overrides/Sidebar.astro`. The
   sidebar config in `astro.config.mjs` is docs-only.
+- Content truth (v1): keys are CLI-issued, no self-serve accounts until
+  Phase 2 — docs must never promise self-serve keys. `/health` belongs
+  as a monitoring section inside Errors, not its own page.
 
 ## Documentation
 

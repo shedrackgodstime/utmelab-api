@@ -8,7 +8,11 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'UTME Lab',
-			customCss: ['./src/styles/dash-frame.css', './src/styles/auth-frame.css'],
+			customCss: [
+				'./src/styles/dash-frame.css',
+				'./src/styles/auth-frame.css',
+				'./src/styles/no-toc.css',
+			],
 			components: {
 				Header: './src/overrides/Header.astro',
 				PageFrame: './src/overrides/PageFrame.astro',
@@ -19,20 +23,34 @@ export default defineConfig({
 				Search: './src/overrides/Search.astro',
 			},
 			sidebar: [
+				{ label: 'Introduction', link: '/' },
+				{ label: 'Pricing', slug: 'pricing' },
 				{
-					label: 'Start',
+					label: 'Getting started',
 					items: [
-						{ label: 'Introduction', slug: 'docs' },
-						{ label: 'Authentication', slug: 'docs/guides/authentication' },
-						{ label: 'Pagination', slug: 'docs/guides/pagination' },
-						{ label: 'Errors', slug: 'docs/guides/errors' },
-					],
+						{ label: 'Quickstart', slug: 'guides/quickstart' },
+						{ label: 'Authentication', slug: 'guides/authentication' },
+						{ label: 'Rate limits', slug: 'guides/rate-limits' },
+						{ label: 'Pagination', slug: 'guides/pagination' },
+						{ label: 'Errors', slug: 'guides/errors' },
+					]
 				},
 				{
 					label: 'Guides',
 					items: [
-						{ label: 'Finding questions', slug: 'docs/guides/finding-questions' },
-						{ label: 'Syllabus and coverage', slug: 'docs/guides/syllabus' },
+						{ label: 'Browsing the catalog', slug: 'guides/catalog' },
+						{ label: 'Finding questions', slug: 'guides/finding-questions' },
+						{ label: 'Syllabus and coverage', slug: 'guides/syllabus' },
+						{ label: 'Passages and novels', slug: 'guides/passages-novels' },
+						{ label: 'Reporting issues', slug: 'guides/reporting-issues' },
+						{ label: 'Managing your key', slug: 'guides/managing-your-key' },
+					],
+				},
+				{
+					label: 'Legal',
+					items: [
+						{ label: 'Terms of Service', slug: 'terms' },
+						{ label: 'Privacy Policy', slug: 'privacy' },
 					],
 				},
 			],

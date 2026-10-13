@@ -72,12 +72,9 @@
 	font-weight: 600;
 }
 
-/* Dashboard content docks left and runs full width — never the centered
-   docs prose column Starlight uses past 72rem. Tighter app rhythm. */
-.dash-frame .sl-container {
-	max-width: none;
-	margin-inline: 0;
-}
+/* Dashboard content width is handled globally (no-toc.css): dashboard
+   pages carry no table of contents, so they run full width. Tighter app
+   rhythm below. */
 
 .dash-frame .content-panel {
 	padding: 1rem var(--sl-content-pad-x);
