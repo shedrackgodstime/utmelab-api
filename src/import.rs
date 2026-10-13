@@ -91,6 +91,44 @@ impl Refusals {
     }
 }
 
+/// Read a RichText value from an inbox row. Accepts the harvester's
+/// `{"text", "inline"}` shape; a bare string means unmarked prose (old
+/// inbox files predate marks). Anything else is a refusal, counted.
+fn inbox_text(value: &Value) -> Option<RichText> {
+    match value {
+        Value::String(s) => Some(RichText::plain(s.trim().to_owned())),
+        Value::Object(_) => {
+            let text: String = value.get("text")?.as_str()?.trim().to_owned();
+            let mut rt = RichText::plain(text);
+            for m in value.get("inline")?.as_array()? {
+                rt.inline.push(Inline {
+                    start: m.get("start")?.as_u64()? as u32,
+                    len: m.get("len")?.as_u64()? as u32,
+                    kind: match m.get("kind")?.as_str()? {
+                        "bold" => InlineKind::Bold,
+                        "italic" => InlineKind::Italic,
+                        "underline" => InlineKind::Underline,
+                        "strike" => InlineKind::Strike,
+                        "subscript" => InlineKind::Subscript,
+                        "superscript" => InlineKind::Superscript,
+                        "image" => InlineKind::Image {
+                            url: m.get("url")?.as_str()?.to_owned(),
+                            position: match m.get("position")?.as_str()? {
+                                "below" => ImagePosition::Below,
+                                _ => ImagePosition::Above,
+                            },
+                            alt: m.get("alt").and_then(|a| a.as_str()).map(str::to_owned),
+                        },
+                        _ => return None,
+                    },
+                });
+            }
+            Some(rt)
+        }
+        _ => None,
+    }
+}
+
 /// A stable fingerprint of a question's *content*, used to spot duplicates.
 /// Ids are useless here: the same question legitimately arrives under two ids.
 fn fingerprint(text: &str, options: &[String]) -> String {
@@ -178,9 +216,21 @@ pub fn run(
         for row in read_inbox(file)? {
             // Structure first: we cannot judge a row we cannot read.
             let Some(question) = (|| -> Option<Question> {
-                let text = row["text"].as_str()?.trim().to_owned();
+                let mut stem = inbox_text(&row["text"])?;
+                let text = stem.text.clone();
                 if text.is_empty() {
                     refusals.note("empty stem", file.display().to_string());
+                    return None;
+                }
+                // Marks arriving in the inbox are validated at the gate like
+                // every other mechanical rule — a bad offset must be a
+                // counted refusal, not a whole-file boot failure later.
+                let mark_problems = stem.validate(row["id"].as_str().unwrap_or("?"), "inbox text");
+                if !mark_problems.is_empty() {
+                    refusals.note(
+                        "invalid marks",
+                        mark_problems.first().cloned().unwrap_or_default(),
+                    );
                     return None;
                 }
                 let options: Vec<Value> = row["options"].as_array()?.clone();
@@ -201,17 +251,29 @@ pub fn run(
                     .map(|o| {
                         Some(Choice {
                             id: o["id"].as_str()?.to_owned(),
-                            text: RichText::plain(o["text"].as_str()?.to_owned()),
+                            text: inbox_text(&o["text"])?,
                         })
                     })
                     .collect::<Option<Vec<_>>>()?;
+                for c in &choices {
+                    let problems = c.text.validate(
+                        row["id"].as_str().unwrap_or("?"),
+                        &format!("inbox option '{}'", c.id),
+                    );
+                    if !problems.is_empty() {
+                        refusals.note(
+                            "invalid marks",
+                            problems.first().cloned().unwrap_or_default(),
+                        );
+                        return None;
+                    }
+                }
                 // A figure becomes an `Image` anchor mark on the stem (D60):
                 // zero-length, attached at the start for `above` and the end
                 // for `below`. Placement is read off the stem's own prose
                 // ("the diagram below") — mechanical, no judgment. Anything
                 // else renders above, the observed 90% case on both stores.
-                let mut stem = RichText::plain(text.clone());
-                let mut carried_image = false;
+                // Marks the harvester already mapped ride through untouched.
                 match row["image"].as_str() {
                     None => {}
                     Some(src) if !src.starts_with("https://") => {
@@ -233,9 +295,9 @@ pub fn run(
                                 alt: None,
                             },
                         });
-                        carried_image = true;
                     }
                 };
+                let carried_image = stem.has_mark(|k| matches!(k, InlineKind::Image { .. }));
                 if !carried_image && mentions_figure(&text) {
                     refusals.note("needs a figure we do not have", text.clone());
                     return None;
@@ -380,6 +442,27 @@ fn truncate(text: &str, max: usize) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn inbox_text_accepts_marks_and_plain_strings() {
+        // Harvester shape: marks ride through with exact offsets.
+        let marked = serde_json::json!({
+            "text": "The plaintiff made very cogent submissions.",
+            "inline": [{"start": 24, "len": 6, "kind": "underline"}],
+        });
+        let rt = inbox_text(&marked).expect("marked shape parses");
+        assert_eq!(rt.text, "The plaintiff made very cogent submissions.");
+        assert_eq!(rt.inline.len(), 1);
+        // Pre-marks inbox files: a bare string means unmarked prose.
+        let plain = inbox_text(&serde_json::json!("Just words.")).expect("string parses");
+        assert_eq!(plain.inline.len(), 0);
+        // Unknown mark kinds refuse rather than smuggle through.
+        let bogus = serde_json::json!({
+            "text": "Words.",
+            "inline": [{"start": 0, "len": 5, "kind": "sparkle"}],
+        });
+        assert!(inbox_text(&bogus).is_none());
+    }
 
     #[test]
     fn a_figure_reference_is_spotted() {
