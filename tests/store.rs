@@ -18,7 +18,14 @@ fn scratch(name: &str) -> PathBuf {
     let dir = std::env::temp_dir().join(format!("utmelab-store-{}-{name}", std::process::id()));
     let _ = std::fs::remove_dir_all(&dir);
     std::fs::create_dir_all(&dir).expect("scratch dir");
-    for f in ["subjects", "topics", "subtopics", "passages", "questions"] {
+    for f in [
+        "subjects",
+        "topics",
+        "subtopics",
+        "passages",
+        "questions",
+        "exams",
+    ] {
         std::fs::copy(
             repo_root().join(format!("{f}.json")),
             dir.join(format!("{f}.json")),
@@ -121,6 +128,23 @@ fn syllabus_carries_coverage_and_objectives() {
         .find(|st| !st.objectives.is_empty())
         .expect("at least one subtopic carries objectives");
     assert!(!with_objects.objectives.is_empty());
+}
+
+#[test]
+fn a_subject_pointing_at_no_exam_is_rejected() {
+    let dir = scratch("bad-exam");
+    let f = dir.join("subjects.json");
+    let mut v: serde_json::Value = serde_json::from_slice(&std::fs::read(&f).unwrap()).unwrap();
+    v[0]["exam"] = serde_json::json!("WASSCE-2099");
+    std::fs::write(&f, serde_json::to_vec_pretty(&v).unwrap()).unwrap();
+
+    let err = load(&dir).expect_err("must refuse to load");
+    assert!(
+        err.problems
+            .iter()
+            .any(|p| p.contains("references unknown exam")),
+        "got: {err}"
+    );
 }
 
 #[test]

@@ -287,7 +287,8 @@ def render_human(b):
              + (f"  queue=#{b['queue_position']}" if b["queue_position"] else ""))
     if b["subject"]:
         s = b["subject"]
-        L.append(f"subject: {s['name']} (full paper: {s['full_exam_questions']}, compulsory: {s['is_compulsory']})")
+        count = s.get('objective_paper_questions')
+        L.append(f"subject: {s['name']} (objective paper: {count if count is not None else 'uncounted'}, compulsory: {s['is_compulsory']})")
     L.append("")
     L.append(q["text"]["text"])
     if q["text"]["inline"]:

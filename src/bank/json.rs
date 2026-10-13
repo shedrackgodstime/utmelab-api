@@ -14,16 +14,19 @@ use std::fmt;
 use std::path::Path;
 use std::path::PathBuf;
 
-use super::model::{Novel, NovelDoc, Passage, Question, Subject, Verification, human_verified};
+use super::model::{
+    Exam, Novel, NovelDoc, Passage, Question, Subject, Verification, human_verified,
+};
 use super::store::{MAX_PER_PAGE, QuestionFilter, QuestionPage, Store};
 use super::{Subtopic, Syllabus, SyllabusSubtopic, SyllabusSummary, SyllabusTopic, Topic};
 
-const FILES: [&str; 5] = [
+const FILES: [&str; 6] = [
     "subjects.json",
     "topics.json",
     "subtopics.json",
     "passages.json",
     "questions.json",
+    "exams.json",
 ];
 
 // ── embedded catalog (slow-moving, baked into the binary) ────────────────────
@@ -41,6 +44,7 @@ const EMBEDDED_SUBJECTS: &str = include_str!("../../data/subjects.json");
 const EMBEDDED_TOPICS: &str = include_str!("../../data/topics.json");
 const EMBEDDED_SUBTOPICS: &str = include_str!("../../data/subtopics.json");
 const EMBEDDED_PASSAGES: &str = include_str!("../../data/passages.json");
+const EMBEDDED_EXAMS: &str = include_str!("../../data/exams.json");
 
 const EMBEDDED_NOVELS: &[(&str, &str)] = &[
     (
@@ -100,11 +104,13 @@ struct Checker {
 
 #[derive(Clone, Debug)]
 pub struct JsonStore {
+    exams: Vec<Exam>,
     subjects: Vec<Subject>,
     topics: Vec<Topic>,
     subtopics: Vec<Subtopic>,
     questions: Vec<Question>,
 
+    exam_by_code: HashMap<String, usize>,
     subject_by_key: HashMap<(String, String), usize>,
     subjects_by_exam: HashMap<String, Vec<usize>>,
     topics_by_subject: HashMap<(String, String), Vec<usize>>,
@@ -138,12 +144,15 @@ impl JsonStore {
         let subtopics: Vec<Subtopic> = read(dir, FILES[2], &mut c);
         let mut store_passages: Vec<Passage> = read(dir, FILES[3], &mut c);
         let questions: Vec<Question> = read(dir, FILES[4], &mut c);
+        let exams: Vec<Exam> = read(dir, FILES[5], &mut c);
 
         let mut store = Self {
+            exams,
             subjects,
             topics,
             subtopics,
             questions,
+            exam_by_code: HashMap::new(),
             subject_by_key: HashMap::new(),
             subjects_by_exam: HashMap::new(),
             topics_by_subject: HashMap::new(),
@@ -202,13 +211,16 @@ impl JsonStore {
         let subtopics: Vec<Subtopic> = parse_embedded("subtopics.json", EMBEDDED_SUBTOPICS, &mut c);
         let mut store_passages: Vec<Passage> =
             parse_embedded("passages.json", EMBEDDED_PASSAGES, &mut c);
+        let exams: Vec<Exam> = parse_embedded("exams.json", EMBEDDED_EXAMS, &mut c);
         let questions: Vec<Question> = read(dir, FILES[4], &mut c);
 
         let mut store = Self {
+            exams,
             subjects,
             topics,
             subtopics,
             questions,
+            exam_by_code: HashMap::new(),
             subject_by_key: HashMap::new(),
             subjects_by_exam: HashMap::new(),
             topics_by_subject: HashMap::new(),
@@ -246,11 +258,27 @@ impl JsonStore {
     }
 
     fn validate(&self, c: &mut Checker) {
+        let mut seen_exams = HashSet::new();
+        for e in &self.exams {
+            if !seen_exams.insert(e.code.as_str()) {
+                c.problems
+                    .push(format!("exams.json: duplicate code '{}'", e.code));
+            }
+        }
+
         let mut seen = HashSet::new();
         for s in &self.subjects {
             if !seen.insert((s.exam.clone(), s.slug.clone())) {
                 c.problems
                     .push(format!("subjects.json: duplicate ({}, {})", s.exam, s.slug));
+            }
+            // A subject cannot belong to an exam we do not carry (D66): an
+            // exam code with no record is a dangling pointer, not a subject.
+            if !seen_exams.contains(s.exam.as_str()) {
+                c.problems.push(format!(
+                    "subjects.json: '{}' references unknown exam '{}'",
+                    s.slug, s.exam
+                ));
             }
         }
 
@@ -598,6 +626,9 @@ impl JsonStore {
     }
 
     fn index(&mut self) {
+        for (i, e) in self.exams.iter().enumerate() {
+            self.exam_by_code.insert(e.code.clone(), i);
+        }
         for (i, s) in self.subjects.iter().enumerate() {
             self.subject_by_key
                 .insert((s.exam.clone(), s.slug.clone()), i);
@@ -640,6 +671,10 @@ impl Store for JsonStore {
         let mut out: Vec<&str> = self.subjects_by_exam.keys().map(String::as_str).collect();
         out.sort_unstable();
         out
+    }
+
+    fn exam(&self, code: &str) -> Option<&Exam> {
+        self.exam_by_code.get(code).map(|i| &self.exams[*i])
     }
 
     fn subjects(&self, exam: &str) -> Vec<&Subject> {
@@ -1026,6 +1061,7 @@ fn fingerprint_embedded(dir: &Path) -> String {
         ("topics.json", EMBEDDED_TOPICS),
         ("subtopics.json", EMBEDDED_SUBTOPICS),
         ("passages.json", EMBEDDED_PASSAGES),
+        ("exams.json", EMBEDDED_EXAMS),
     ] {
         hasher.update(name.as_bytes());
         hasher.update(content.as_bytes());

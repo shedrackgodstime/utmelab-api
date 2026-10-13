@@ -11,8 +11,8 @@ mod view;
 
 pub use json::{JsonStore, StoreError};
 pub use model::{
-    Choice, ImagePosition, Inline, InlineKind, Novel, NovelDoc, Passage, Question, RichText,
-    Subject, Subtopic, Topic,
+    Choice, Exam, ExamStatus, ImagePosition, Inline, InlineKind, Novel, NovelDoc, Passage,
+    Question, RichText, Subject, Subtopic, Topic,
 };
 
 pub use scheme::Scheme;

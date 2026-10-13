@@ -81,9 +81,9 @@ D-row (D7).
 
 ## P4 — Expose (naming + vertical slice)
 
-* Count naming (review point 2): `full_exam_questions` (scheme requirement) vs
-  `summary.questions` (held) vs `questions_available` (fillable) — rename in
-  docs/spec, no new fields. Readiness = blueprint × coverage (verified,
+* Count naming (review point 2, landed small-D66): `objective_paper_questions`
+  (scheme requirement, null where unverified) vs `summary.questions` (held)
+  vs `questions_available` (fillable) — distinct names, no new fields. Readiness = blueprint × coverage (verified,
   deduped), never raw totals.
 * Readiness per topic once blueprints + tagging meet; until then
   `complete:false` is the honest answer.

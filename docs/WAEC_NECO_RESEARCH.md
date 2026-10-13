@@ -214,9 +214,10 @@ worth doing unless 4–6 will follow.
 ## 10. Proposed shape — `data/exams.json` (D66, PROPOSED)
 
 Written after the research above showed that a subject cannot honestly carry
-the facts the current model asks of it. **Proposed, not implemented, not
-pinned.** Three `null`s and one `planned` row are load-bearing: each is a value
-we cannot state.
+the facts the current model asks of it. **Scoped pin (D66, 2026-10-13):**
+exam record + nullable count implemented; `Topic.country` and the
+`is_compulsory` rewrite deferred below. Three `null`s and one `planned` row
+are load-bearing: each is a value we cannot state.
 
 ```json
 [

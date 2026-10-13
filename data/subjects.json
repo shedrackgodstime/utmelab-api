@@ -4,237 +4,237 @@
     "exam": "JAMB",
     "name": "Agricultural Science",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "arabic",
     "exam": "JAMB",
     "name": "Arabic",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "art",
     "exam": "JAMB",
     "name": "Art",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "biology",
     "exam": "JAMB",
     "name": "Biology",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "chemistry",
     "exam": "JAMB",
     "name": "Chemistry",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "christian-religious-studies",
     "exam": "JAMB",
     "name": "Christian Religious Studies",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "commerce",
     "exam": "JAMB",
     "name": "Commerce",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "computer-studies",
     "exam": "JAMB",
     "name": "Computer Studies",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "economics",
     "exam": "JAMB",
     "name": "Economics",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "french",
     "exam": "JAMB",
     "name": "French",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "geography",
     "exam": "JAMB",
     "name": "Geography",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "government",
     "exam": "JAMB",
     "name": "Government",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "hausa",
     "exam": "JAMB",
     "name": "Hausa",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "history",
     "exam": "JAMB",
     "name": "History",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "home-economics",
     "exam": "JAMB",
     "name": "Home Economics",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "igbo",
     "exam": "JAMB",
     "name": "Igbo",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "islamic-religious-studies",
     "exam": "JAMB",
     "name": "Islamic Religious Studies",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "literature-in-english",
     "exam": "JAMB",
     "name": "Literature-in-English",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "mathematics",
     "exam": "JAMB",
     "name": "Mathematics",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "music",
     "exam": "JAMB",
     "name": "Music",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "physical-education",
     "exam": "JAMB",
     "name": "Physical and Health Education",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "physics",
     "exam": "JAMB",
     "name": "Physics",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "principles-of-accounts",
     "exam": "JAMB",
     "name": "Principles of Accounts",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "use-of-english",
     "exam": "JAMB",
     "name": "Use of English",
     "is_compulsory": true,
-    "full_exam_questions": 60
+    "objective_paper_questions": 60
   },
   {
     "slug": "yoruba",
     "exam": "JAMB",
     "name": "Yoruba",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": 40
   },
   {
     "slug": "animal-husbandry",
     "exam": "NECO",
     "name": "Animal Husbandry",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": null
   },
   {
     "slug": "civic-education",
     "exam": "NECO",
     "name": "Civic Education",
     "is_compulsory": true,
-    "full_exam_questions": 40
+    "objective_paper_questions": null
   },
   {
     "slug": "english-language",
     "exam": "NECO",
     "name": "English Language",
     "is_compulsory": true,
-    "full_exam_questions": 40
+    "objective_paper_questions": null
   },
   {
     "slug": "animal-husbandry",
     "exam": "WAEC",
     "name": "Animal Husbandry",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": null
   },
   {
     "slug": "civic-education",
     "exam": "WAEC",
     "name": "Civic Education",
     "is_compulsory": true,
-    "full_exam_questions": 40
+    "objective_paper_questions": null
   },
   {
     "slug": "english-language",
     "exam": "WAEC",
     "name": "English Language",
     "is_compulsory": true,
-    "full_exam_questions": 80
+    "objective_paper_questions": null
   },
   {
     "slug": "financial-accounting",
     "exam": "WAEC",
     "name": "Financial Accounting",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": null
   },
   {
     "slug": "general-mathematics",
     "exam": "WAEC",
     "name": "General Mathematics",
     "is_compulsory": true,
-    "full_exam_questions": 75
+    "objective_paper_questions": null
   },
   {
     "slug": "visual-arts",
     "exam": "WAEC",
     "name": "Visual Arts",
     "is_compulsory": false,
-    "full_exam_questions": 40
+    "objective_paper_questions": null
   }
 ]

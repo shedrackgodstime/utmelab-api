@@ -5,7 +5,7 @@
 //! is a constructor change — no route, no domain type and no response shape
 //! moves.
 
-use crate::bank::model::{Question, Subject, Subtopic, Topic};
+use crate::bank::model::{Exam, Question, Subject, Subtopic, Topic};
 use crate::bank::{Novel, NovelDoc, Passage, Syllabus};
 
 /// Default page size when a caller does not ask for one (D30).
@@ -75,6 +75,9 @@ pub trait Store: Send + Sync {
 
     /// Distinct exams that have at least one subject, sorted.
     fn exams(&self) -> Vec<&str>;
+
+    /// One exam's record (D66) — name, countries, paper shape, rules.
+    fn exam(&self, code: &str) -> Option<&Exam>;
 
     fn subjects(&self, exam: &str) -> Vec<&Subject>;
     fn subject(&self, exam: &str, slug: &str) -> Option<&Subject>;

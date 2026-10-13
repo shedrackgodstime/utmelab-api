@@ -249,6 +249,7 @@ def main() -> int:
     # Replace this subject's rows rather than appending, so re-running after a
     # syllabus correction is idempotent instead of duplicating the tree.
     catalog_slug = args.catalog_slug or args.subject
+    dropped = [s for s in subjects if s["exam"] == "JAMB" and s["slug"] == catalog_slug]
     kept_subjects = [s for s in subjects if not (s["exam"] == "JAMB" and s["slug"] == catalog_slug)]
     kept_topics = [t for t in existing_topics if not (t["exam"] == "JAMB" and t["subject"] == catalog_slug)]
     # Drop the subtopics of the topics we are about to replace — keyed on the
@@ -257,13 +258,28 @@ def main() -> int:
     replaced = {t["slug"] for t in topic_rows}
     kept_subtopics = [s for s in existing_subtopics if s["topic"] not in replaced]
 
+    # A re-import must not clobber a verified count with a default: the
+    # dropped row's number (English's 60 included) rides along when one
+    # exists. A genuinely new JAMB row takes 40 — every non-English JAMB
+    # paper is uniformly 40 — and stays uncounted only where nothing is
+    # verified yet (D66: absent, not guessed).
+    carried = next(
+        (s.get("objective_paper_questions", s.get("full_exam_questions"))
+         for s in dropped),
+        None,
+    )
+    if carried is None:
+        # No row to inherit from. This tool writes JAMB rows only, where
+        # non-English papers are uniformly 40 and English is 60 — both
+        # verified (D19). Anything else stays uncounted (D66).
+        carried = 60 if args.display == "Use of English" else 40
     kept_subjects.append(
         {
             "slug": catalog_slug,
             "exam": "JAMB",
             "name": args.display,
             "is_compulsory": args.compulsory,
-            "full_exam_questions": 40,
+            "objective_paper_questions": carried,
         }
     )
     subjects = sorted(kept_subjects, key=lambda s: (s["exam"], s["slug"]))

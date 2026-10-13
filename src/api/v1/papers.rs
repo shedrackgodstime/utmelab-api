@@ -52,7 +52,7 @@ pub async fn readiness(
 ) -> Result<Json<PaperReadiness>, ApiError> {
     let scheme = scheme::scheme_for(state.bank.as_ref(), &exam)
         .ok_or_else(|| ApiError::not_found("exam_not_found", &exam))?;
-    let complete = scheme.is_complete(3);
+    let complete = scheme.is_complete();
     Ok(Json(PaperReadiness {
         exam,
         scheme,

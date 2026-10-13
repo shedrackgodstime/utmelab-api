@@ -102,8 +102,14 @@ CREATE TABLE novel_questions(
 -- include_str! lines delete and the binary shrinks to code)
 CREATE TABLE subjects(
   slug TEXT NOT NULL, exam TEXT NOT NULL, name TEXT NOT NULL,
-  is_compulsory INTEGER NOT NULL, full_exam_questions INTEGER NOT NULL,
+  is_compulsory INTEGER NOT NULL, objective_paper_questions INTEGER,
   PRIMARY KEY (slug, exam)
+);
+CREATE TABLE exams(
+  code TEXT PRIMARY KEY, name TEXT NOT NULL,
+  countries TEXT NOT NULL DEFAULT '[]', status TEXT NOT NULL,
+  has_full_paper INTEGER, subjects_required INTEGER,
+  duration_minutes INTEGER, rules TEXT NOT NULL DEFAULT '[]'
 );
 CREATE TABLE topics(
   slug TEXT PRIMARY KEY, subject TEXT NOT NULL, exam TEXT NOT NULL,

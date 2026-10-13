@@ -19,10 +19,19 @@ pub struct ExamList {
     pub exams: Vec<Exam>,
 }
 
+/// One exam, as recorded (D66) plus its live subject count. Nulls are
+/// load-bearing: a null the API states is a fact it cannot state.
 #[derive(Serialize, ToSchema)]
 pub struct Exam {
     /// Exam code, e.g. `JAMB`.
     pub code: String,
+    pub name: String,
+    pub countries: Vec<String>,
+    pub status: crate::bank::ExamStatus,
+    pub has_full_paper: Option<bool>,
+    pub subjects_required: Option<u32>,
+    pub duration_minutes: Option<u32>,
+    pub rules: Vec<String>,
     pub subject_count: usize,
 }
 
@@ -59,9 +68,19 @@ pub async fn list(State(state): State<AppState>) -> Json<ExamList> {
             .bank
             .exams()
             .into_iter()
-            .map(|code| Exam {
-                code: code.to_owned(),
-                subject_count: state.bank.subjects(code).len(),
+            .filter_map(|code| {
+                let rec = state.bank.exam(code)?;
+                Some(Exam {
+                    code: rec.code.clone(),
+                    name: rec.name.clone(),
+                    countries: rec.countries.clone(),
+                    status: rec.status,
+                    has_full_paper: rec.has_full_paper,
+                    subjects_required: rec.subjects_required,
+                    duration_minutes: rec.duration_minutes,
+                    rules: rec.rules.clone(),
+                    subject_count: state.bank.subjects(code).len(),
+                })
             })
             .collect(),
     })

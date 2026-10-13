@@ -8,6 +8,44 @@ use utoipa::ToSchema;
 
 // ── catalog ──────────────────────────────────────────────────────────────────
 
+/// One exam as a data record (D66). Facts about an exam live here, not
+/// scattered across subject rows and hardcoded comparisons — `duration` was
+/// `(exam == "JAMB").then_some(120)` and the paper shape rode in a function
+/// argument until this record existed.
+#[derive(Clone, Debug, Serialize, Deserialize, ToSchema)]
+pub struct Exam {
+    /// Exam code, e.g. `JAMB`.
+    pub code: String,
+    pub name: String,
+    /// Member countries running this exam, e.g. WAEC's five.
+    #[serde(default)]
+    pub countries: Vec<String>,
+    /// `live` serves, `planned` is announced, `retired` is history.
+    pub status: ExamStatus,
+    /// Whether a full paper can be assembled at all. Null where it cannot
+    /// be stated — same honesty rule as every other Option here.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub has_full_paper: Option<bool>,
+    /// Subjects in a full paper (JAMB: 4). Null where unstated.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub subjects_required: Option<u32>,
+    /// Minutes for a full sitting, verified only. Null where unverified.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub duration_minutes: Option<u32>,
+    /// Board-stated rules a consumer must know (N-of-M, paper numbering).
+    /// Un-hardcodes the literals that used to live in `scheme::rules_for`.
+    #[serde(default)]
+    pub rules: Vec<String>,
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize, ToSchema)]
+#[serde(rename_all = "lowercase")]
+pub enum ExamStatus {
+    Live,
+    Planned,
+    Retired,
+}
+
 /// One exam's offering of a subject (D21). The same concept can appear once per
 /// exam, carrying that board's own name — `Use of English` and
 /// `English Language` are two true rows, not one row with an alias.
@@ -17,7 +55,13 @@ pub struct Subject {
     pub exam: String,
     pub name: String,
     pub is_compulsory: bool,
-    pub full_exam_questions: u32,
+    /// MCQs the objective paper holds — or null where unverified (D66).
+    /// A bare integer here once asserted board fact for nine rows that had
+    /// no source; D50's rule is absence, and absence is what null carries.
+    /// (It also covers "three papers, one count" — in both cases no single
+    /// number can be stated, so one value serves honestly.)
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub objective_paper_questions: Option<u32>,
 }
 
 /// A topic within one exam's syllabus.
