@@ -201,7 +201,6 @@ disagree. Two lists is how subjects drift.
     too rough to confirm liver (parked), 74519 uterus ✓. 74449 option typo
     fixed (lumber → lumbar). 74512 left untagged (no fitting drill path).
     74417 stays parked.
-13. **Biology batch 3 (final) done 2026-10-13** — (see §7 item 13).
 13. **Biology batch 3 (final) done 2026-10-13** — 25 authored (24 + 1 key
     fix) + tags + verified; biology 87 → 112 of 114. 74648 figure read by
     eye (1:2:1 ✓). **74536 key corrected** rhizome → roots (ferns drink
