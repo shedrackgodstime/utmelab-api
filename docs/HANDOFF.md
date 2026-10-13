@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-535 verified (24%, derived from data/verifications.json, D62) · 540 explained
+585 verified (26%, derived from data/verifications.json, D62) · 590 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -201,6 +201,7 @@ disagree. Two lists is how subjects drift.
     too rough to confirm liver (parked), 74519 uterus ✓. 74449 option typo
     fixed (lumber → lumbar). 74512 left untagged (no fitting drill path).
     74417 stays parked.
+13. **Biology batch 3 (final) done 2026-10-13** — (see §7 item 13).
 13. **Biology batch 3 (final) done 2026-10-13** — 25 authored (24 + 1 key
     fix) + tags + verified; biology 87 → 112 of 114. 74648 figure read by
     eye (1:2:1 ✓). **74536 key corrected** rhizome → roots (ferns drink
@@ -208,6 +209,9 @@ disagree. Two lists is how subjects drift.
     trap). Caught pre-push: triage misread 7465x ids as 7455x; fixed before
     any write. Subject complete except parked 74417 (no cross) + 74505
     (rough figure).
+14. **Government batch 1 done 2026-10-13** — 50 explanations authored (keys
+    checked against board facts) + tags + verified; government 0 → 50. No
+    figures in batch. Wide-batch pace holds: same triage, same gates.
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),
