@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-1,026 verified (46%, derived from data/verifications.json, D62) · 1,031 explained
+1,095 verified (49%, derived from data/verifications.json, D62) · 1,100 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -253,6 +253,14 @@ disagree. Two lists is how subjects drift.
     All-of-the-above — D45 pattern, documented in trap). **74957 parked**:
     cotton AND rayon both fit soft/breathable/absorbent — two correct
     options. 74935 option text deduped.
+21. **Art proper rewrite done 2026-10-14** — 67 authored + 2 key fixes +
+    tags + verified; art 1 → 70 of 71. **Keys corrected** 75240 a → d
+    (vanishing point builds depth, not pattern), 75326 c → a (composition
+    arranges elements, not its subject) — D45 pattern, documented in traps.
+    **75382 parked**: options a/b both read `Additive`. No fitting subtopic
+    path for wall-painting/Uli rows (75228/75242/75247) — left null per
+    74512 pattern, never forced. Loader gate caught 2 topic-slugs-as-
+    subtopics pre-apply.
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),

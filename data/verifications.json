@@ -15384,5 +15384,971 @@
     "detail": null,
     "content_hash": "d004d5e3a0409cae1f58ba0538ca8cbfb6c6d9e8466879061949f76742f881be",
     "created_at": "2026-10-13T23:36:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75224_1100",
+    "question_id": "q_claim_2025_fine-arts_75224",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "3e3f4eabc7bd40b0d0782f3818ca5be6b6627fc5921307ab1ee56d5953e16ddc",
+    "created_at": "2026-10-13T23:40:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75226_1101",
+    "question_id": "q_claim_2025_fine-arts_75226",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "6cc1287031373beb3061d02cbb83ef3f707920ea5a4a56862928b1452f8acd3b",
+    "created_at": "2026-10-13T23:40:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75228_1102",
+    "question_id": "q_claim_2025_fine-arts_75228",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "b348bddaf8ec781d8c18e87ece4cd3a2ab5187ab3b74c92f838e0944c20b1901",
+    "created_at": "2026-10-13T23:40:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75230_1103",
+    "question_id": "q_claim_2025_fine-arts_75230",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "175a4fe52d85c14df32e7d0fef470a8cb58d197523fad4c5dc74e84b2585c2b5",
+    "created_at": "2026-10-13T23:40:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75232_1104",
+    "question_id": "q_claim_2025_fine-arts_75232",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "3ed0b7aadc80e84faabedbc9390eca4d8312e72550b9273d4a4c7090d38d5d40",
+    "created_at": "2026-10-13T23:40:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75233_1105",
+    "question_id": "q_claim_2025_fine-arts_75233",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "2fff7c2a9e1f3b8df67d09608a4e1afbb6fd59c28d24c052a9c2d365fc3e4c81",
+    "created_at": "2026-10-13T23:40:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75235_1106",
+    "question_id": "q_claim_2025_fine-arts_75235",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "4327e223332df5fc8b3e0075f819e77c4628d1ed71f4fffb27d31cfef31e2c07",
+    "created_at": "2026-10-13T23:40:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75238_1107",
+    "question_id": "q_claim_2025_fine-arts_75238",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "c3e09887c5a286de1748beba7ee9e6db11ea847f4b9818b6f2a8e8bf0a4f72f7",
+    "created_at": "2026-10-13T23:40:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75240_1108",
+    "question_id": "q_claim_2025_fine-arts_75240",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "7cbbd3fccea1d1a3a8d2aec8f6b30e441eeeb8ec8db6ca0643e662f3d18f0b7b",
+    "created_at": "2026-10-13T23:40:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75242_1109",
+    "question_id": "q_claim_2025_fine-arts_75242",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "864a1bc27fc361d5bd27ebf80bde4526ed5cb5b077d4564e05f660603d27104c",
+    "created_at": "2026-10-13T23:40:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75245_1110",
+    "question_id": "q_claim_2025_fine-arts_75245",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "38429b802ac6b8b03ef45e1cf7a1159ddfc38281391d0e019e3d9be425da7de7",
+    "created_at": "2026-10-13T23:40:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75247_1111",
+    "question_id": "q_claim_2025_fine-arts_75247",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "0af7b57a8118484b8185eda9c0753ef93b5fde49701b12ec7b0e0a9d44d07240",
+    "created_at": "2026-10-13T23:40:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75250_1112",
+    "question_id": "q_claim_2025_fine-arts_75250",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "6ff9898e387e4f0a68823d9eb98da3347ec74ef90fee69ae61de46304ec30442",
+    "created_at": "2026-10-13T23:40:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75252_1113",
+    "question_id": "q_claim_2025_fine-arts_75252",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "b921fa37c46eb5c6c9996030138c6ca937fb94e304c565799ef5f9d7dec66dbd",
+    "created_at": "2026-10-13T23:40:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75254_1114",
+    "question_id": "q_claim_2025_fine-arts_75254",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "9649a4e010e06597f29013d1c76fe7be03c47a28fb3cba2d86b262fd7f1aa08e",
+    "created_at": "2026-10-13T23:40:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75261_1115",
+    "question_id": "q_claim_2025_fine-arts_75261",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "10d88e40c676fa12b8f8ea833015404746bb3a644d5cf37b9a9e72095e57b2c5",
+    "created_at": "2026-10-13T23:40:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75265_1116",
+    "question_id": "q_claim_2025_fine-arts_75265",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "1cae125df08ca8a735a2acb898f53f34e990ed165b742068bf065a01dadfdc46",
+    "created_at": "2026-10-13T23:40:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75268_1117",
+    "question_id": "q_claim_2025_fine-arts_75268",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "9e85440e4912c7feda26067ebdbb288de4520cca572c47ebb2a571fcd7371abf",
+    "created_at": "2026-10-13T23:40:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75270_1118",
+    "question_id": "q_claim_2025_fine-arts_75270",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "1971a2238f7fce4d15e9c800184b486624b6cb506bac7d81240f80dbcb3fdc61",
+    "created_at": "2026-10-13T23:40:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75286_1119",
+    "question_id": "q_claim_2025_fine-arts_75286",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "bf0216b24b9498a17291b7f7851fc19b093135ec014f21a89716f4560a59c78f",
+    "created_at": "2026-10-13T23:40:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75288_1120",
+    "question_id": "q_claim_2025_fine-arts_75288",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "afe26c914739729296bb27fbec6dd79b5a522ae68e8e237dd6dfa2f190607b61",
+    "created_at": "2026-10-13T23:40:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75289_1121",
+    "question_id": "q_claim_2025_fine-arts_75289",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "1b094c58052c00f7435c63923b106cbd50052250c015d86ed008467dbc0dadf7",
+    "created_at": "2026-10-13T23:40:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75290_1122",
+    "question_id": "q_claim_2025_fine-arts_75290",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "2adfd08963a3b37e97fb24d0f2b14339b337bc6441833e1d02819520feff56d6",
+    "created_at": "2026-10-13T23:40:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75293_1123",
+    "question_id": "q_claim_2025_fine-arts_75293",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "cf578b0e3cc58f5b6a0ea5c85c22b1233b7b6dc688c64888c3db971eabf0a572",
+    "created_at": "2026-10-13T23:40:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75295_1124",
+    "question_id": "q_claim_2025_fine-arts_75295",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "821dddafe8912ba6cb9ac4609c3d35d47e569e670858f81db8a0d0a1b0605b6a",
+    "created_at": "2026-10-13T23:40:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75299_1125",
+    "question_id": "q_claim_2025_fine-arts_75299",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "6856a297b00a39d070eb888beca0e624dc1ac0bf461950eda91c7e4626b4a8d3",
+    "created_at": "2026-10-13T23:40:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75301_1126",
+    "question_id": "q_claim_2025_fine-arts_75301",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "d6d2dae198e77df9dc85e8340bd822788e745d535c2b17730e14b53bf8c9ef27",
+    "created_at": "2026-10-13T23:40:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75303_1127",
+    "question_id": "q_claim_2025_fine-arts_75303",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "1a64c00d877f6c8ba6bfa5981e826dd7e2846ce244b849c958e685d8f1ce3100",
+    "created_at": "2026-10-13T23:40:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75306_1128",
+    "question_id": "q_claim_2025_fine-arts_75306",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "6db74ac8592ddc06f339d914740eb8a1eef5e751c2dadc4101288abb2c0202f1",
+    "created_at": "2026-10-13T23:40:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75313_1129",
+    "question_id": "q_claim_2025_fine-arts_75313",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "b1b1564a3b37ba0690e8df26fa09ba03f612ccbcf766bba23fa69c10d208830e",
+    "created_at": "2026-10-13T23:40:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75315_1130",
+    "question_id": "q_claim_2025_fine-arts_75315",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "642cd6643924c46da1cafc170b0eeebb19408de5b5ded9fa88ed8572c77a298f",
+    "created_at": "2026-10-13T23:40:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75324_1131",
+    "question_id": "q_claim_2025_fine-arts_75324",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "96952c900df01a0977217864caf8d25821fee958efed2c8de48b9fe0eeab9ee1",
+    "created_at": "2026-10-13T23:40:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75326_1132",
+    "question_id": "q_claim_2025_fine-arts_75326",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "4ada1a3635a5b41997bd1fb2d34ef321b7aeddc920b19199971d0f7a6ad8ab1e",
+    "created_at": "2026-10-13T23:40:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75331_1133",
+    "question_id": "q_claim_2025_fine-arts_75331",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "4e849dfbc54d2f2c45e39a991ee725f22f1674dc31651ab984da00bda84955e3",
+    "created_at": "2026-10-13T23:40:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75355_1134",
+    "question_id": "q_claim_2025_fine-arts_75355",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "9b5779974bdad380a8e6f0a5f81466afc9cde755de02d80f95f8c63120717776",
+    "created_at": "2026-10-13T23:40:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75356_1135",
+    "question_id": "q_claim_2025_fine-arts_75356",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "5ea6386153dffae9b16ec08f279e8f892b88a503d8b57c424b48c0e9f1f77d65",
+    "created_at": "2026-10-13T23:40:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75357_1136",
+    "question_id": "q_claim_2025_fine-arts_75357",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "a9ffec004f3021094bce501b4cd825f571d96cfa323360ca7bc2e4bb4f04407a",
+    "created_at": "2026-10-13T23:40:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75358_1137",
+    "question_id": "q_claim_2025_fine-arts_75358",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "1a1a8752331279009b9b55e8ce36b2ad46ae1295f9f0b0ff76051b23fe0954f3",
+    "created_at": "2026-10-13T23:40:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75359_1138",
+    "question_id": "q_claim_2025_fine-arts_75359",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "a1a517da7be9db1ba23b0ba05e5e90581003da5af8b8942a9de563c13993d803",
+    "created_at": "2026-10-13T23:40:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75360_1139",
+    "question_id": "q_claim_2025_fine-arts_75360",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "c928b8a2cc6394648df9d4bc416f02f15a914d3977275cef622a47ea226ec237",
+    "created_at": "2026-10-13T23:40:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75361_1140",
+    "question_id": "q_claim_2025_fine-arts_75361",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "11b9b933fc4fbc4d3a239a9f5944fe120d6cc0d9759c90e70e77c552adebc7e1",
+    "created_at": "2026-10-13T23:40:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75364_1141",
+    "question_id": "q_claim_2025_fine-arts_75364",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "cbab5c6c77b09bf5b4e5d711f9f34c2f81436b093c9b21d9774e1e0494d7a2da",
+    "created_at": "2026-10-13T23:40:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75366_1142",
+    "question_id": "q_claim_2025_fine-arts_75366",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "d393e91a4f29cca718e528150cf33f430fdf2129f6a3e04ba73d7fca1f42d820",
+    "created_at": "2026-10-13T23:40:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75367_1143",
+    "question_id": "q_claim_2025_fine-arts_75367",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "9692b1db11bdd25715a6a482d66e1e602eeec49c0030ce0960ed70aa4a3b9116",
+    "created_at": "2026-10-13T23:40:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75368_1144",
+    "question_id": "q_claim_2025_fine-arts_75368",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "89dba6def5c99e4c474914ecd2c2bfefb365ed682ef892aa4831ed7cad5c6094",
+    "created_at": "2026-10-13T23:40:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75369_1145",
+    "question_id": "q_claim_2025_fine-arts_75369",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "4f69020d7be8c4a34a3bdb39fe29a76bc7b613933c1839083689cef926574f03",
+    "created_at": "2026-10-13T23:40:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75370_1146",
+    "question_id": "q_claim_2025_fine-arts_75370",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "9e92dc39163f7fa02d467cac3ae6c5cb1d9fb87bc60e0de05eed8ed13e989b9e",
+    "created_at": "2026-10-13T23:40:49Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75371_1147",
+    "question_id": "q_claim_2025_fine-arts_75371",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "d705105addf6748c03c37ebabf20e32c73f3286fb038e7019a2b71b057b84a4e",
+    "created_at": "2026-10-13T23:40:49Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75372_1148",
+    "question_id": "q_claim_2025_fine-arts_75372",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "b62908a4430be48f9e7e40b1b5b6e6a947818e3b5cc77da5a2d045bdd408972b",
+    "created_at": "2026-10-13T23:40:49Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75373_1149",
+    "question_id": "q_claim_2025_fine-arts_75373",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "7ce2ac6b9a607b066f3bd18c0a5250d123677877d8e455e947139b2a4bcc8e7a",
+    "created_at": "2026-10-13T23:40:49Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75374_1150",
+    "question_id": "q_claim_2025_fine-arts_75374",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "b577155e04f4c9b88802fcbffff4ad9c0feab021884b0066b81250c82927f303",
+    "created_at": "2026-10-13T23:40:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75375_1151",
+    "question_id": "q_claim_2025_fine-arts_75375",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "0038094dedfbbfe49001eb1c3d82f58c2a7da3f217da7a448b59db91f284da28",
+    "created_at": "2026-10-13T23:40:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75376_1152",
+    "question_id": "q_claim_2025_fine-arts_75376",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "a1ddc3e84d0f9afaefcc5107784a6605f381e2473d66a1bc74ff599816d4c982",
+    "created_at": "2026-10-13T23:40:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75377_1153",
+    "question_id": "q_claim_2025_fine-arts_75377",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "efe7fd3c435fd9448731ecd80792611ad12d2cee38c5434d13f1bd0a47f2eb48",
+    "created_at": "2026-10-13T23:40:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75379_1154",
+    "question_id": "q_claim_2025_fine-arts_75379",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "7cf3ae522b084c69acc98ab2ba19c7a482df3a263ea7ed5e9da9e5612f35821d",
+    "created_at": "2026-10-13T23:40:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75380_1155",
+    "question_id": "q_claim_2025_fine-arts_75380",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "e232a4fbd40b6c9a93660245d875e56e69ac5532cb92979ef512d8bab7790ae3",
+    "created_at": "2026-10-13T23:40:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75381_1156",
+    "question_id": "q_claim_2025_fine-arts_75381",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "d6a7e17b1a39dd31be7a22966770e9b85a338148c92c907daba1ef226c431b64",
+    "created_at": "2026-10-13T23:40:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75384_1157",
+    "question_id": "q_claim_2025_fine-arts_75384",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "6fb710460cac40166c0ad2f1d19ba788fdec50338c898c0d1dc48a5177314332",
+    "created_at": "2026-10-13T23:40:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75387_1158",
+    "question_id": "q_claim_2025_fine-arts_75387",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "914d370bfb51fbbcd49c3ff252358e8c244ac0b41570173d6a61eba3976c7508",
+    "created_at": "2026-10-13T23:40:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75389_1159",
+    "question_id": "q_claim_2025_fine-arts_75389",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "f88259e98a99159fa5c0c4c393541c5afcba39ac58f635a714a4615392d398be",
+    "created_at": "2026-10-13T23:40:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75390_1160",
+    "question_id": "q_claim_2025_fine-arts_75390",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "d476c8a25a83cc0d0e79dabee076dbe030e1487a27cc2a86c74a2ff589b6e2c3",
+    "created_at": "2026-10-13T23:40:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75392_1161",
+    "question_id": "q_claim_2025_fine-arts_75392",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "997fedcf6f28f210e099b3bc3232c93fa060e834c09319662f6642e0c5c37d51",
+    "created_at": "2026-10-13T23:40:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75394_1162",
+    "question_id": "q_claim_2025_fine-arts_75394",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "4663a1308e65d3a9889cd6c8918ef7602b78389e8f1dbe493b47396319371a38",
+    "created_at": "2026-10-13T23:40:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75396_1163",
+    "question_id": "q_claim_2025_fine-arts_75396",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "b8a3c0df471c883403ac12da91cfe7c86b739ce9b11927b20ccd3f161bf60483",
+    "created_at": "2026-10-13T23:40:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75397_1164",
+    "question_id": "q_claim_2025_fine-arts_75397",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "ee552c01735e4d6babc6f88c611a872df5e39737a2e5135f842e484aa37532a8",
+    "created_at": "2026-10-13T23:40:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75399_1165",
+    "question_id": "q_claim_2025_fine-arts_75399",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "224a22721787a3e954d594e08b21a112ec27cb4253a3225a004b09b818a29ab7",
+    "created_at": "2026-10-13T23:40:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75400_1166",
+    "question_id": "q_claim_2025_fine-arts_75400",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "170823557319ae6a05cc4010624e326ac8088d1e40364ac9a5d6b6d7229eb21c",
+    "created_at": "2026-10-13T23:40:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75401_1167",
+    "question_id": "q_claim_2025_fine-arts_75401",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "ad0fd8c5a154b0bf3fba744b93effa991d2313387d0edd35fb55081e743bd411",
+    "created_at": "2026-10-13T23:40:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_fine-arts_75403_1168",
+    "question_id": "q_claim_2025_fine-arts_75403",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "art-rewrite1",
+    "detail": null,
+    "content_hash": "3b3ccfd1390fb0fce66472d9061adfee3b864621bc13ab2ed9c1a66d82d3e338",
+    "created_at": "2026-10-13T23:40:54Z"
   }
 ]
