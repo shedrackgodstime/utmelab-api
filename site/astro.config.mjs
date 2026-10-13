@@ -28,6 +28,7 @@ export default defineConfig({
 				{ label: 'Pricing', slug: 'pricing' },
 				{
 					label: 'Getting started',
+					collapsed: true,
 					items: [
 						{ label: 'Quickstart', slug: 'guides/quickstart' },
 						{ label: 'Authentication', slug: 'guides/authentication' },
