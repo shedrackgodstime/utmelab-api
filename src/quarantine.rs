@@ -6,9 +6,9 @@
 //! boot validation in `bank::JsonStore` stays the only gate.
 //!
 //! Kinds, and what resolves each:
-//! * `underline_missing` — stem names an underlined word but `emphasis` is
-//!   empty. Resolve by backfilling `emphasis` (the proposal script covers
-//!   synonyms/antonyms; stress and sound items need hand-reading).
+//! * `underline_missing` — stem names an underlined word but carries no
+//!   `Underline` mark. Resolve by backfilling the mark (the proposal script
+//!   covers synonyms/antonyms; stress and sound items need hand-reading).
 //! * `missing_figure` — stem mentions a diagram/figure/graph the row does not
 //!   carry. Resolve with the image-mirror job, or withhold.
 //! * `duplicate_stem` — content fingerprint already held under another id.
@@ -30,6 +30,7 @@ use std::path::Path;
 use sha2::Digest;
 
 use crate::JsonStore;
+use crate::bank::InlineKind;
 use crate::bank::Store as _;
 
 /// One mechanical defect on one row.
@@ -51,21 +52,33 @@ pub fn scan(store: &JsonStore) -> Vec<Finding> {
     out
 }
 
-/// Stems that point at an underlined word without saying which one.
+/// Stems that point at an underlined word without marking one.
 fn underline_missing(store: &JsonStore) -> Vec<Finding> {
     store
         .questions()
         .iter()
-        .filter(|q| q.emphasis.is_none() && q.text.to_lowercase().contains("underlin"))
+        .filter(|q| {
+            q.text.names_underline() && !q.text.has_mark(|k| matches!(k, InlineKind::Underline))
+        })
         .map(|q| Finding {
             kind: "underline_missing",
             id: q.id.clone(),
-            detail: truncate(&q.text, 80),
+            detail: truncate(&q.text.text, 80),
         })
         .collect()
 }
 
 /// Stems that mention a figure the row does not carry.
+/// Stems that mention a figure the row does not carry.
+///
+/// Word-boundary matching, not substring. The old scan fired on real English:
+/// "debatable" contains "table", and a word-stress item legitimately lists
+/// "table" as vocabulary. A check that fires wrongly is a bug in the check
+/// (HANDOFF §8), so a hint only counts when it stands as a word — with a
+/// plural `s` allowed, since "diagrams" is as much a figure as "diagram".
+/// Residual edges (a stem genuinely using one of these words as vocabulary)
+/// survive on purpose: quarantine is a report for a human to judge, not a
+/// verdict.
 fn missing_figures(store: &JsonStore) -> Vec<Finding> {
     const HINTS: [&str; 7] = [
         "diagram",
@@ -79,13 +92,40 @@ fn missing_figures(store: &JsonStore) -> Vec<Finding> {
     store
         .questions()
         .iter()
-        .filter(|q| q.image.is_none() && HINTS.iter().any(|h| q.text.to_lowercase().contains(h)))
+        .filter(|q| {
+            !q.text.has_mark(|k| matches!(k, InlineKind::Image { .. }))
+                && mentions_figure_hint(&q.text.text, &HINTS)
+        })
         .map(|q| Finding {
             kind: "missing_figure",
             id: q.id.clone(),
-            detail: truncate(&q.text, 80),
+            detail: truncate(&q.text.text, 80),
         })
         .collect()
+}
+
+/// Does `text` contain any of `hints` as a word (plural `s` tolerated)?
+fn mentions_figure_hint(text: &str, hints: &[&str]) -> bool {
+    let lower = text.to_lowercase();
+    let bytes = lower.as_bytes();
+    let is_word = |b: u8| b.is_ascii_alphabetic() || b == b'-';
+    for hint in hints {
+        let mut from = 0usize;
+        while let Some(pos) = lower[from..].find(hint) {
+            let start = from + pos;
+            let end = start + hint.len();
+            let before_ok = start == 0 || !is_word(bytes[start - 1]);
+            // "diagram" / "diagrams" count; "diagrammatic" does not — the
+            // trailing run must be a lone 's' or nothing at all.
+            let after_len = bytes[end..].iter().take_while(|&&b| is_word(b)).count();
+            let after_ok = after_len == 0 || (after_len == 1 && bytes[end] == b's');
+            if before_ok && after_ok {
+                return true;
+            }
+            from = start + 1;
+        }
+    }
+    false
 }
 
 fn fingerprint(text: &str, options: &[String]) -> String {
@@ -104,14 +144,17 @@ fn duplicate_stems(store: &JsonStore) -> Vec<Finding> {
     questions.sort_by(|a, b| a.id.cmp(&b.id));
     for q in questions {
         let print = fingerprint(
-            &q.text,
-            &q.options.iter().map(|o| o.text.clone()).collect::<Vec<_>>(),
+            &q.text.text,
+            &q.options
+                .iter()
+                .map(|o| o.text.text.clone())
+                .collect::<Vec<_>>(),
         );
         if !seen.insert(print) {
             out.push(Finding {
                 kind: "duplicate_stem",
                 id: q.id.clone(),
-                detail: truncate(&q.text, 80),
+                detail: truncate(&q.text.text, 80),
             });
         }
     }
@@ -137,11 +180,11 @@ fn cloze_without_passage(store: &JsonStore) -> Vec<Finding> {
     store
         .questions()
         .iter()
-        .filter(|q| q.passage_id.is_none() && has_numbered_gap(&q.text))
+        .filter(|q| q.passage_id.is_none() && has_numbered_gap(&q.text.text))
         .map(|q| Finding {
             kind: "cloze_without_passage",
             id: q.id.clone(),
-            detail: truncate(&q.text, 80),
+            detail: truncate(&q.text.text, 80),
         })
         .collect()
 }
@@ -180,10 +223,10 @@ fn novel_leaks(store: &JsonStore) -> Vec<Finding> {
         .filter(|q| {
             let blob = format!(
                 "{} {}",
-                q.text,
+                q.text.text,
                 q.options
                     .iter()
-                    .map(|o| o.text.as_str())
+                    .map(|o| o.text.text.as_str())
                     .collect::<Vec<_>>()
                     .join(" ")
             )
@@ -193,7 +236,7 @@ fn novel_leaks(store: &JsonStore) -> Vec<Finding> {
         .map(|q| Finding {
             kind: "novel_leak",
             id: q.id.clone(),
-            detail: truncate(&q.text, 80),
+            detail: truncate(&q.text.text, 80),
         })
         .collect()
 }
@@ -245,7 +288,7 @@ pub fn run(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::bank::{Choice, Question};
+    use crate::bank::{Choice, Inline, Question, RichText};
 
     fn row(id: &str, text: &str) -> Question {
         Question {
@@ -254,31 +297,29 @@ mod tests {
             subject: "use-of-english".to_owned(),
             year: 2025,
             source: "authored".to_owned(),
-            text: text.to_owned(),
+            text: RichText::plain(text),
             options: vec![
                 Choice {
                     id: "a".into(),
-                    text: "one".into(),
+                    text: RichText::plain("one"),
                 },
                 Choice {
                     id: "b".into(),
-                    text: "two".into(),
+                    text: RichText::plain("two"),
                 },
                 Choice {
                     id: "c".into(),
-                    text: "three".into(),
+                    text: RichText::plain("three"),
                 },
                 Choice {
                     id: "d".into(),
-                    text: "four".into(),
+                    text: RichText::plain("four"),
                 },
             ],
             answer: "a".into(),
             subtopic_id: None,
             section: None,
             passage_id: None,
-            image: None,
-            emphasis: None,
             explanation: None,
             marks: 2.0,
             difficulty: 3,
@@ -299,8 +340,8 @@ mod tests {
     }
 
     #[test]
-    fn an_underlined_stem_without_emphasis_is_listed_and_one_with_is_not() {
-        let mut missing = row(
+    fn an_underlined_stem_without_a_mark_is_listed_and_one_with_is_not() {
+        let missing = row(
             "q1",
             "Pick the option opposite to the underlined word: cogent matters.",
         );
@@ -308,10 +349,13 @@ mod tests {
             "q2",
             "Pick the option opposite to the underlined word: taciturn kept to himself.",
         );
-        filled.emphasis = Some("taciturn".into());
+        filled.text.inline.push(Inline {
+            start: 49,
+            len: 8,
+            kind: InlineKind::Underline,
+        });
         let plain = row("q3", "Pick the closest in meaning to: cogent matters.");
-        let store = store_of("underline", vec![missing.clone(), filled, plain]);
-        missing.emphasis = None;
+        let store = store_of("underline", vec![missing, filled, plain]);
         let findings = scan(&store);
         let kinds: Vec<(&str, &str)> = findings.iter().map(|f| (f.kind, f.id.as_str())).collect();
         assert!(kinds.contains(&("underline_missing", "q1")));
@@ -319,14 +363,19 @@ mod tests {
     }
 
     #[test]
-    fn a_figure_mention_without_an_image_is_listed_and_one_with_is_not() {
-        use crate::bank::{ImagePosition, ImageRef};
+    fn a_figure_mention_without_an_image_mark_is_listed_and_one_with_is_not() {
+        use crate::bank::{ImagePosition, InlineKind};
 
         let bare = row("q1", "From the graph above, find x.");
         let mut carried = row("q2", "From the graph above, find y.");
-        carried.image = Some(ImageRef {
-            url: "https://cdn.example/y.png".into(),
-            position: ImagePosition::Above,
+        carried.text.inline.push(Inline {
+            start: 27,
+            len: 0,
+            kind: InlineKind::Image {
+                url: "https://cdn.example/y.png".into(),
+                position: ImagePosition::Above,
+                alt: None,
+            },
         });
         let store = store_of("images", vec![bare, carried]);
         let findings = scan(&store);
@@ -336,6 +385,56 @@ mod tests {
             .map(|f| f.id.as_str())
             .collect();
         assert_eq!(missing, vec!["q1"]);
+    }
+
+    #[test]
+    fn a_figure_word_inside_real_english_does_not_count() {
+        // "debatable" held "table" and fired under the old substring scan.
+        // Word-boundary matching fixes that one; `q1` is now clean.
+        let debate = row(
+            "q1",
+            "Between Achebe and Soyinka it is debatable who is more enigmatic.",
+        );
+        let store = store_of("english", vec![debate]);
+        let findings = scan(&store);
+        assert!(
+            !findings.iter().any(|f| f.kind == "missing_figure"),
+            "\"debatable\" is prose, not a figure: {:?}",
+            findings.iter().map(|f| f.id.as_str()).collect::<Vec<_>>()
+        );
+    }
+
+    #[test]
+    fn a_vocabulary_word_that_names_a_figure_still_gets_reported() {
+        // The honest residual. A word-stress item listing "table" as one of
+        // its words is indistinguishable from a figure reference by any
+        // heuristic — so quarantine *reports* it (a human judges it) and,
+        // crucially, the finding never voids `verified` (see `derive_verified`).
+        // A report a human can dismiss beats a silent false positive.
+        let stress = row(
+            "q2",
+            "Choose the word with a different stress pattern: commit · begin · record · table.",
+        );
+        let store = store_of("stress", vec![stress]);
+        let findings = scan(&store);
+        let missing: Vec<&str> = findings
+            .iter()
+            .filter(|f| f.kind == "missing_figure")
+            .map(|f| f.id.as_str())
+            .collect();
+        assert_eq!(
+            missing,
+            vec!["q2"],
+            "reported for a human, never auto-voided"
+        );
+    }
+
+    #[test]
+    fn plurals_still_count_as_figures() {
+        // "diagrams" is as much a figure as "diagram".
+        assert!(mentions_figure_hint("use the diagrams below", &["diagram"]));
+        // "diagrammatic" is prose, not a figure.
+        assert!(!mentions_figure_hint("a diagrammatic sketch", &["diagram"]));
     }
 
     #[test]

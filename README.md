@@ -8,7 +8,7 @@ no SSR — see D32.
 
 ```bash
 cargo build
-cargo test                 # must be green before any push (94 tests)
+cargo test                 # must be green before any push (105 tests)
 cargo clippy --all-targets # must be clean
 cargo fmt
 cargo run -- openapi --out site/openapi.json  # after route/shape changes

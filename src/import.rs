@@ -33,7 +33,7 @@ use serde_json::Value;
 
 use crate::JsonStore;
 use crate::bank::Store as _;
-use crate::bank::{Choice, ImagePosition, ImageRef, Question};
+use crate::bank::{Choice, ImagePosition, Inline, InlineKind, Question, RichText};
 
 /// The subject map lives in `config/harvest.json`, not here.
 ///
@@ -137,8 +137,11 @@ pub fn run(
         .iter()
         .map(|q| {
             fingerprint(
-                &q.text,
-                &q.options.iter().map(|o| o.text.clone()).collect::<Vec<_>>(),
+                &q.text.text,
+                &q.options
+                    .iter()
+                    .map(|o| o.text.text.clone())
+                    .collect::<Vec<_>>(),
             )
         })
         .collect();
@@ -198,25 +201,42 @@ pub fn run(
                     .map(|o| {
                         Some(Choice {
                             id: o["id"].as_str()?.to_owned(),
-                            text: o["text"].as_str()?.to_owned(),
+                            text: RichText::plain(o["text"].as_str()?.to_owned()),
                         })
                     })
                     .collect::<Option<Vec<_>>>()?;
-                let image = match row["image"].as_str() {
-                    None => None,
+                // A figure becomes an `Image` anchor mark on the stem (D60):
+                // zero-length, attached at the start for `above` and the end
+                // for `below`. Placement is read off the stem's own prose
+                // ("the diagram below") — mechanical, no judgment. Anything
+                // else renders above, the observed 90% case on both stores.
+                let mut stem = RichText::plain(text.clone());
+                let mut carried_image = false;
+                match row["image"].as_str() {
+                    None => {}
                     Some(src) if !src.starts_with("https://") => {
                         refusals.note("image is not an absolute URL", text.clone());
                         return None;
                     }
-                    // Placement is read off the stem's own prose ("the diagram
-                    // below") — mechanical, no judgment. Anything else renders
-                    // above, the observed 90% case on both stores.
-                    Some(src) => Some(ImageRef {
-                        url: src.to_owned(),
-                        position: image_position(&text),
-                    }),
+                    Some(src) => {
+                        let position = image_position(&text);
+                        let anchor = match position {
+                            ImagePosition::Above => 0,
+                            ImagePosition::Below => text.chars().count() as u32,
+                        };
+                        stem.inline.push(Inline {
+                            start: anchor,
+                            len: 0,
+                            kind: InlineKind::Image {
+                                url: src.to_owned(),
+                                position,
+                                alt: None,
+                            },
+                        });
+                        carried_image = true;
+                    }
                 };
-                if image.is_none() && mentions_figure(&text) {
+                if !carried_image && mentions_figure(&text) {
                     refusals.note("needs a figure we do not have", text.clone());
                     return None;
                 }
@@ -229,20 +249,19 @@ pub fn run(
                     // it states none, the cohort is the year being harvested (D52).
                     year: row["year"].as_u64().map(|y| y as u16).unwrap_or(file_year),
                     source: row["source"].as_str().unwrap_or("imported").to_owned(),
-                    text,
+                    text: stem,
                     options: choices,
                     answer,
                     subtopic_id: None,
                     section: None,
                     passage_id: None,
-                    image,
                     explanation: None,
-                    // The harvester strips markup and carries no emphasis —
-                    // quarantine flags the underlined rows, review fills this.
-                    emphasis: None,
+                    // The harvester strips markup and carries no marks —
+                    // quarantine flags the underlined rows, review fills them.
                     marks: 2.5,
                     difficulty: 3,
                     // Never set here. Review sets this, not a bulk import (D45).
+                    // (Derived at load from the verification log, D62.)
                     verified: false,
                 })
             })() else {
@@ -265,22 +284,25 @@ pub fn run(
             }
 
             let print = fingerprint(
-                &question.text,
+                &question.text.text,
                 &question
                     .options
                     .iter()
-                    .map(|o| o.text.clone())
+                    .map(|o| o.text.text.clone())
                     .collect::<Vec<_>>(),
             );
             if !seen.insert(print) {
                 refusals.note(
                     "duplicate of a question we already hold",
-                    question.text.clone(),
+                    question.text.text.clone(),
                 );
                 continue;
             }
 
-            if question.image.is_some() {
+            if question
+                .text
+                .has_mark(|k| matches!(k, InlineKind::Image { .. }))
+            {
                 with_image += 1;
             }
             admitted += 1;

@@ -56,7 +56,7 @@ enum Command {
         #[arg(long, short)]
         out: Option<PathBuf>,
     },
-    /// List every mechanically-defective row (underline without emphasis,
+    /// List every mechanically-defective row (underline without a mark,
     /// missing figures, duplicate stems, option counts, novel leaks).
     /// Read-only: prints and exits.
     Quarantine {

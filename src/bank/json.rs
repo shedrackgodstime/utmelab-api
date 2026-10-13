@@ -14,7 +14,7 @@ use std::fmt;
 use std::path::Path;
 use std::path::PathBuf;
 
-use super::model::{Novel, NovelDoc, Passage, Question, Subject};
+use super::model::{Novel, NovelDoc, Passage, Question, Subject, Verification, human_verified};
 use super::store::{MAX_PER_PAGE, QuestionFilter, QuestionPage, Store};
 use super::{Subtopic, Syllabus, SyllabusSubtopic, SyllabusSummary, SyllabusTopic, Topic};
 
@@ -116,6 +116,9 @@ pub struct JsonStore {
     /// `retain()` them away, which made the next `import` rewrite delete them
     /// silently (D58: the civic fixture vanished exactly that way).
     withheld_questions: Vec<Question>,
+    /// The verification log (D62). `Question.verified` is derived from this
+    /// at load — never authored, never stored on the row.
+    verifications: Vec<Verification>,
     novels: Vec<NovelDoc>,
     novel_by_id: HashMap<String, usize>,
     passages: Vec<Passage>,
@@ -148,6 +151,7 @@ impl JsonStore {
             questions_by_subtopic: HashMap::new(),
             withheld: 0,
             withheld_questions: Vec::new(),
+            verifications: Vec::new(),
             novels: Vec::new(),
             novel_by_id: HashMap::new(),
             passages: std::mem::take(&mut store_passages),
@@ -156,6 +160,7 @@ impl JsonStore {
         };
         // Novels: one document per book; the directory is the index.
         store.novels = load_novels(&dir.join("novels"), &mut c);
+        store.verifications = read_verifications(&dir.join("verifications.json"), &mut c);
         store.version = fingerprint(dir);
         store.validate(&mut c);
 
@@ -169,6 +174,7 @@ impl JsonStore {
         // that meet the 50-question minimum (D36). Withheld questions are
         // partitioned aside, never dropped (D58).
         store.partition();
+        store.derive_verified();
         store.novels.retain(|n| n.questions.len() >= 50);
         for note in &c.withheld {
             tracing::warn!("withheld from serving: {note}");
@@ -210,6 +216,7 @@ impl JsonStore {
             questions_by_subtopic: HashMap::new(),
             withheld: 0,
             withheld_questions: Vec::new(),
+            verifications: Vec::new(),
             novels: Vec::new(),
             novel_by_id: HashMap::new(),
             passages: std::mem::take(&mut store_passages),
@@ -217,6 +224,7 @@ impl JsonStore {
             version: String::new(),
         };
         store.novels = load_novels_embedded(&mut c);
+        store.verifications = read_verifications(&dir.join("verifications.json"), &mut c);
         store.version = fingerprint_embedded(dir);
         store.validate(&mut c);
 
@@ -227,6 +235,7 @@ impl JsonStore {
         }
 
         store.partition();
+        store.derive_verified();
         store.novels.retain(|n| n.questions.len() >= 50);
         for note in &c.withheld {
             tracing::warn!("withheld from serving: {note}");
@@ -262,6 +271,14 @@ impl JsonStore {
 
         let subtopic_slugs: HashSet<&str> =
             self.subtopics.iter().map(|s| s.slug.as_str()).collect();
+
+        // Passages are the one field that may carry paragraph breaks (D56) —
+        // `\n\n` is legal here and nowhere else. Entities and tags are refused
+        // like everywhere else.
+        for p in &self.passages {
+            c.problems.extend(p.text.validate(&p.id, "passage"));
+            check_plain(&p.id, "passage", &p.text.text, c);
+        }
         let mut unique_subtopics = HashSet::new();
         for s in &self.subtopics {
             if !unique_subtopics.insert(s.slug.as_str()) {
@@ -333,6 +350,22 @@ impl JsonStore {
                             n.novel.id, q.id, q.answer
                         ));
                     }
+                    let scope = format!("novels/{}.json", n.novel.id);
+                    c.problems
+                        .extend(q.text.validate(&q.id, &format!("{scope} text")));
+                    for o in &q.options {
+                        c.problems.extend(
+                            o.text
+                                .validate(&q.id, &format!("{scope} option '{}'", o.id)),
+                        );
+                    }
+                    if let Some(e) = &q.explanation {
+                        c.problems
+                            .extend(e.key_point.validate(&q.id, &format!("{scope} key_point")));
+                        c.problems
+                            .extend(e.body.validate(&q.id, &format!("{scope} body")));
+                    }
+                    check_plain(&q.id, &format!("{scope} text"), &q.text.text, c);
                 }
             }
         }
@@ -363,43 +396,34 @@ impl JsonStore {
                 ));
             }
 
-            // The underlined target must be quoted verbatim from the stem: a
-            // value pointing at words that are not there is the same defect as
-            // having none, with more confidence attached.
-            if let Some(e) = &q.emphasis {
-                if e.is_empty() || !q.text.contains(e.as_str()) {
-                    c.problems.push(format!(
-                        "questions.json: '{}' has emphasis {e:?}, which is not a substring of its text",
-                        q.id
-                    ));
-                }
-            }
-
-            // A figure is fetched by the client, so its URL must be fetchable:
-            // absolute https, or the stem's "see the diagram" points at a blank
-            // box. Relative paths are served by nothing (D55).
-            if let Some(img) = &q.image {
-                if !img.url.starts_with("https://") {
-                    c.problems.push(format!(
-                        "questions.json: '{}' has image URL {:?} — must be absolute https",
-                        q.id, img.url
-                    ));
-                }
+            // Marks are load-validated where they live (D60): bounds are
+            // Unicode scalars, partial overlaps are refused, image URLs must
+            // be absolute https. One bad mark fails the boot like any other
+            // corrupt content — a wrong offset renders a lie.
+            c.problems.extend(q.text.validate(&q.id, "text"));
+            for o in &q.options {
+                c.problems
+                    .extend(o.text.validate(&q.id, &format!("option '{}'", o.id)));
             }
 
             // Stems and options are plain text plus \(...\) LaTeX (D56). An
             // HTML entity or tag here is harvest residue — the 139-entity
             // scrub proved it arrives silently — so the loader rejects it
             // rather than serving mojibake to a student.
-            check_plain(&q.id, "text", &q.text, c);
+            check_plain(&q.id, "text", &q.text.text, c);
             for o in &q.options {
-                check_plain(&q.id, &format!("option '{}'", o.id), &o.text, c);
+                check_plain(&q.id, &format!("option '{}'", o.id), &o.text.text, c);
             }
             if let Some(e) = &q.explanation {
-                check_plain(&q.id, "key_point", &e.key_point, c);
-                check_plain(&q.id, "body", &e.body, c);
+                c.problems.extend(e.key_point.validate(&q.id, "key_point"));
+                c.problems.extend(e.body.validate(&q.id, "body"));
                 if let Some(t) = &e.trap {
-                    check_plain(&q.id, "trap", t, c);
+                    c.problems.extend(t.validate(&q.id, "trap"));
+                }
+                check_plain(&q.id, "key_point", &e.key_point.text, c);
+                check_plain(&q.id, "body", &e.body.text, c);
+                if let Some(t) = &e.trap {
+                    check_plain(&q.id, "trap", &t.text, c);
                 }
             }
 
@@ -490,6 +514,37 @@ impl JsonStore {
         self.withheld_questions = held;
     }
 
+    /// Derive every `verified` flag from the log (D62). A row is verified
+    /// only while a human pass covering answer+explanation matches its
+    /// current content hash — and only while it is answerable as served: a
+    /// stem naming an underlined word with no `Underline` mark cannot be
+    /// verified no matter what the log says (D57).
+    ///
+    /// A missing **figure** deliberately does *not* void the flag. The
+    /// quarantine figure scan is substring-based and fires on real English
+    /// ("debatable" contains "table"; a word-stress item lists "table" as
+    /// vocabulary), and a noisy predicate stripping trust from a good row is
+    /// worse than a report a human can dismiss. Figure findings stay a
+    /// quarantine report for review to judge.
+    fn derive_verified(&mut self) {
+        for q in self
+            .questions
+            .iter_mut()
+            .chain(self.withheld_questions.iter_mut())
+        {
+            let ok = human_verified(&self.verifications, &q.id, &q.content_fingerprint())
+                && !underline_missing(&q.text);
+            q.verified = ok;
+        }
+        for doc in &mut self.novels {
+            for q in &mut doc.questions {
+                let ok = human_verified(&self.verifications, &q.id, &q.content_fingerprint())
+                    && !underline_missing(&q.text);
+                q.verified = ok;
+            }
+        }
+    }
+
     /// Replace the loaded questions wholesale — the import path only (D51).
     /// Nothing else may call this: bulk edits to the bank go through review.
     ///
@@ -502,6 +557,7 @@ impl JsonStore {
         self.validate(&mut checker);
         if checker.problems.is_empty() {
             self.partition();
+            self.derive_verified();
         }
         self.index();
         checker.problems
@@ -726,9 +782,9 @@ impl Store for JsonStore {
             .filter(|q| filter.source.is_none_or(|want| q.source == want))
             .filter(|q| filter.year.is_none_or(|y| q.year == y))
             .filter(|q| {
-                filter
-                    .text
-                    .is_none_or(|needle| q.text.to_lowercase().contains(&needle.to_lowercase()))
+                filter.text.is_none_or(|needle| {
+                    q.text.text.to_lowercase().contains(&needle.to_lowercase())
+                })
             })
             .collect();
 
@@ -831,6 +887,9 @@ fn fingerprint(dir: &Path) -> String {
     use sha2::{Digest, Sha256};
 
     let mut files: Vec<PathBuf> = FILES.iter().map(|f| dir.join(f)).collect();
+    // The verification log moves served `verified` flags, so it moves the
+    // version too — a consumer polling /health must refresh on review.
+    files.push(dir.join("verifications.json"));
     let mut novel_files: Vec<PathBuf> = std::fs::read_dir(dir.join("novels"))
         .into_iter()
         .flatten()
@@ -870,6 +929,38 @@ fn read<T: for<'de> serde::Deserialize<'de>>(dir: &Path, file: &str, c: &mut Che
             Vec::new()
         }
     }
+}
+
+/// Read the verification log (D62). A missing file means no review has
+/// happened yet — empty, not fatal. A malformed file fails the boot: a log
+/// we cannot parse is worse than no log, because derivation would silently
+/// un-verify the bank.
+fn read_verifications(path: &Path, c: &mut Checker) -> Vec<Verification> {
+    let bytes = match std::fs::read(path) {
+        Ok(b) => b,
+        Err(e) if e.kind() == std::io::ErrorKind::NotFound => return Vec::new(),
+        Err(e) => {
+            c.problems.push(format!(
+                "verifications.json: cannot read ({}): {e}",
+                path.display()
+            ));
+            return Vec::new();
+        }
+    };
+    match serde_json::from_slice(&bytes) {
+        Ok(v) => v,
+        Err(e) => {
+            c.problems.push(format!("verifications.json: {e}"));
+            Vec::new()
+        }
+    }
+}
+
+/// Answerability predicate behind derivation (D57). A stem naming an
+/// underlined word with no `Underline` mark is unanswerable as served.
+fn underline_missing(text: &crate::bank::RichText) -> bool {
+    use crate::bank::InlineKind;
+    text.names_underline() && !text.has_mark(|k| matches!(k, InlineKind::Underline))
 }
 
 /// Plain-text gate (D56): `&entity;` and `<tag>` are harvest residue, never
@@ -947,6 +1038,8 @@ fn fingerprint_embedded(dir: &Path) -> String {
     }
     hasher.update(b"questions.json");
     hasher.update(std::fs::read(dir.join("questions.json")).unwrap_or_default());
+    hasher.update(b"verifications.json");
+    hasher.update(std::fs::read(dir.join("verifications.json")).unwrap_or_default());
     let digest = hasher.finalize();
     digest[..8].iter().map(|b| format!("{b:02x}")).collect()
 }
@@ -1069,6 +1162,7 @@ mod search_tests {
         let bank = store();
         let all = bank.questions_page(QuestionFilter::default(), 1, 200);
         all.questions[0]
+            .text
             .text
             .split_whitespace()
             .next()

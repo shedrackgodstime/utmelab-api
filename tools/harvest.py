@@ -9,10 +9,11 @@ a source and writes rows we can actually import.
 
 What it deliberately does NOT do
 --------------------------------
-* **It never sets `verified`.** Everything lands `false`. Third-party answer
-  keys contain errors — we proved it during the D45 audit, where two
-  "verified" questions had wrong answers *and* explanations written to justify
-  them. A key is not a review.
+* **It never sets `verified`.** Harvested rows carry no verified key at all —
+  the flag is derived at load from the verification log (D62), so everything
+  lands unverified. Third-party answer keys contain errors — we proved it
+  during the D45 audit, where two "verified" questions had wrong answers *and*
+  explanations written to justify them. A key is not a review.
 * **It never invents an explanation.** Our `Explanation` (key_point / body /
   trap) is the product; a scraped one would be worse than none. Those get
   written by hand, or by us, later.
@@ -123,7 +124,16 @@ def question_images(html: str) -> list[str]:
 
 
 def clean(fragment: str) -> str:
-    """Unescape entities and drop any markup a fragment carries.
+    """Backwards-compatible plain-text cleaning: `clean_inline` then drop marks.
+
+    Kept for callers that need a string (logging, filenames). The harvest
+    path itself uses `clean_inline` so markup survives as marks (D61).
+    """
+    return clean_inline(fragment)["text"]
+
+
+def unescape_segment(segment: str) -> str:
+    """Unescape entities in one tag-free run of text.
 
     Enumerating entities by hand is a losing game: this source alone uses
     `&rsquo;`, `&deg;`, `&agrave;`, `&ordm;`, `&rarr;`, `&equiv;`, `&epsilon;`
@@ -135,13 +145,131 @@ def clean(fragment: str) -> str:
     The double-escape pass stays explicit: `&amp;rsquo;` arrives already
     escaped once, and unescaping in the wrong order leaves `&rsquo;` behind.
     """
-    text = re.sub(r"<[^>]+>", " ", fragment)
-    # Ampersands are the one entity that must be handled by hand, because
-    # unescaping it first would turn `&amp;rsquo;` into `&rsquo;` for good.
-    text = text.replace("&amp;amp;", "\x00AMP\x00")
+    text = segment.replace("&amp;amp;", "\x00AMP\x00")
     text = html.unescape(text)
-    text = text.replace("\x00AMP\x00", "&")
-    return re.sub(r"\s+", " ", text).strip()
+    return text.replace("\x00AMP\x00", "&")
+
+
+# Inline tags the source uses for emphasis and scripts, mapped to D60 marks.
+# Anything else (`<span>`, `<font>`, classes) is dropped but its text kept.
+INLINE_TAGS = {
+    "u": "underline",
+    "em": "italic",
+    "i": "italic",
+    "strong": "bold",
+    "b": "bold",
+    "s": "strike",
+    "strike": "strike",
+    "sub": "subscript",
+    "sup": "superscript",
+}
+
+TAG_RE = re.compile(r"<(/?)([A-Za-z][A-Za-z0-9]*)\b([^>]*)>", re.S)
+IMG_SRC = re.compile(r'src="([^"]+)"')
+
+
+def clean_inline(fragment: str) -> dict:
+    """One run of prose -> RichText `{"text", "inline"}` (D61).
+
+    Entities are unescaped *per text run* (never before tag-splitting, or
+    `&lt;` would become a fake tag), inline tags become marks with Unicode
+    scalar offsets, and every other tag dies while its text lives. `<br>`
+    becomes a space: stems and options stay single-line (D56) — paragraph
+    breaks (`\\n\\n`) belong to passages via `clean_blocks`, never here.
+    Offsets are computed on the final text, so the loader's bounds check
+    sees exactly what we emit.
+    """
+    text_parts: list[str] = []
+    marks: list[dict] = []
+    stack: list[tuple[str, int]] = []  # (kind, start)
+    out_len = 0
+
+    def push_text(run: str) -> None:
+        nonlocal out_len
+        run = unescape_segment(run)
+        run = re.sub(r"\s+", " ", run)
+        if not run:
+            return
+        if not text_parts or text_parts[-1].endswith(" "):
+            run = run.lstrip(" ")
+        if not run:
+            return
+        text_parts.append(run)
+        out_len += len(run)
+
+    def push_space() -> None:
+        nonlocal out_len
+        if text_parts and not text_parts[-1].endswith(" "):
+            text_parts.append(" ")
+            out_len += 1
+
+    pos = 0
+    for match in TAG_RE.finditer(fragment):
+        push_text(fragment[pos:match.start()])
+        closing, tag, attrs = match.group(1), match.group(2).lower(), match.group(3)
+        if tag == "br":
+            push_space()
+        elif tag == "img" and not closing:
+            src = IMG_SRC.search(attrs)
+            url = src.group(1) if src else ""
+            if url.startswith("https://") and not AD_ASSET.search(url):
+                marks.append({
+                    "start": out_len, "len": 0, "kind": "image",
+                    "url": url, "position": "above", "alt": None,
+                })
+        elif tag in INLINE_TAGS and not closing:
+            stack.append((INLINE_TAGS[tag], out_len))
+        elif closing and tag in INLINE_TAGS:
+            for i in range(len(stack) - 1, -1, -1):
+                if stack[i][0] == INLINE_TAGS[tag]:
+                    _, start = stack.pop(i)
+                    marks.append({"start": start, "len": out_len - start,
+                                  "kind": INLINE_TAGS[tag]})
+                    break
+        pos = match.end()
+    push_text(fragment[pos:])
+    # Forgiving close: an unclosed mark runs to the end, never past it.
+    for kind, start in stack:
+        marks.append({"start": start, "len": out_len - start, "kind": kind})
+
+    text = "".join(text_parts).rstrip(" ")
+    dropped = len("".join(text_parts)) - len(text)
+    if dropped:
+        fixed = []
+        for m in marks:
+            end = min(m["start"] + m["len"], len(text))
+            if end > m["start"]:
+                fixed.append({**m, "len": end - m["start"]})
+        marks = fixed
+    marks.sort(key=lambda m: (m["start"], m["len"]))
+    return {"text": text, "inline": marks}
+
+
+def merge_texts(parts: list[dict], sep: str) -> dict:
+    """Join RichText fragments, shifting mark offsets (D61)."""
+    texts, marks, pos = [], [], 0
+    for part in parts:
+        if not part["text"]:
+            continue
+        if texts:
+            texts.append(sep)
+            pos += len(sep)
+        texts.append(part["text"])
+        for m in part["inline"]:
+            marks.append({**m, "start": m["start"] + pos})
+        pos += len(part["text"])
+    marks.sort(key=lambda m: (m["start"], m["len"]))
+    return {"text": "".join(texts), "inline": marks}
+
+
+def clean_blocks(fragments: list[str]) -> dict:
+    """Block-level fragments -> one RichText with `\\n\\n` breaks (D61).
+
+    Reserved for passage-shaped content: a passage that is really four
+    paragraphs keeps its breaks. Stems and options never come through here —
+    they stay single-line via `merge_texts(..., " ")` (D56).
+    """
+    return merge_texts([clean_inline(f) for f in fragments], "\n\n")
 
 
 def fetch(url: str, timeout: int = 30) -> str:
@@ -174,25 +302,27 @@ def question_ids(subject: str, year: int, pages: int, delay: float) -> list[str]
 
 
 def parse_detail(html: str) -> dict | None:
-    """Pull stem, options and the correct option out of one detail page."""
+    """Pull stem, options and the correct option out of one detail page.
+
+    Stems keep D60 marks (underline, scripts) via `clean_inline`; multiple
+    `<p>` fragments join with a space so stems stay single-line (D56).
+    """
     stem_match = STEM.search(html)
     if stem_match is None:
         return None
-    stem = " ".join(
-        part
-        for part in (clean(p) for p in STEM_P.findall(stem_match.group(1)))
-        if part
+    stem = merge_texts(
+        [clean_inline(p) for p in STEM_P.findall(stem_match.group(1))], " "
     )
 
-    options: dict[str, str] = {}
+    options: dict[str, dict] = {}
     answer: str | None = None
     for classes, letter, text in ROW.findall(html):
         letter = letter.lower()
-        options[letter] = clean(text)
+        options[letter] = clean_inline(text)
         if CORRECT_MARK in classes:
             answer = letter
 
-    if not stem or len(options) < 2 or answer is None:
+    if not stem["text"] or len(options) < 2 or answer is None:
         return None
 
     return {
@@ -212,9 +342,19 @@ def to_question(parsed: dict, subject: str, year: int, qid: str) -> dict | None:
         return None
 
     images = parsed.get("images") or []
-    if not images and FIGURE_HINT.search(parsed["text"]):
+    if not images and FIGURE_HINT.search(parsed["text"]["text"]):
         # "In the diagram below…" with no diagram. Refused, not imported.
         return None
+
+    def has_image_mark(rt):
+        return any(m.get("kind") == "image" for m in rt.get("inline", []))
+
+    # An inline <img> already mapped to a mark must not also ride along as a
+    # string — import would anchor it twice.
+    image_str = images[0] if images else None
+    if image_str and (has_image_mark(parsed["text"])
+                      or any(has_image_mark(o["text"]) for o in parsed["options"])):
+        image_str = None
 
     return {
         "id": f"q_claim_{year}_{subject}_{qid}",
@@ -230,12 +370,12 @@ def to_question(parsed: dict, subject: str, year: int, qid: str) -> dict | None:
         "section": None,
         "passage_id": None,
         # An absolute URL on the source's own CDN; we do not mirror binaries.
-        "image": images[0] if images else None,
+        # Import converts it to an Image anchor mark (D60).
+        "image": image_str,
         # Never verified on arrival — see the module docstring.
         "explanation": None,
         "marks": 2.5,
         "difficulty": 3,
-        "verified": False,
     }
 
 

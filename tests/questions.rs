@@ -88,7 +88,16 @@ async fn a_known_id_resolves_to_that_exact_question() {
     let (status, body) = json(&format!("/api/v1/questions/{}", known()), Some(key)).await;
     assert_eq!(status, StatusCode::OK);
     assert_eq!(body["id"], known());
-    assert!(body["text"].as_str().is_some_and(|t| !t.is_empty()));
+    // D60: `text` is a RichText object — plain prose plus offset marks —
+    // never a bare string.
+    assert!(
+        body["text"]["text"].as_str().is_some_and(|t| !t.is_empty()),
+        "stem text must survive the RichText migration"
+    );
+    assert!(
+        body["text"]["inline"].is_array(),
+        "every text field carries its inline marks array"
+    );
 }
 
 #[tokio::test]

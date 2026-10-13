@@ -1,6 +1,6 @@
 # The underline problem — 78 unanswerable English questions
 
-**Status:** field decided and shipped (D54); backfill open. **Found:** 2026-10-11, during the English correctness audit.
+**Status:** shape landed (D60: `Underline` mark in `RichText.inline`); backfill open. **Found:** 2026-10-11, during the English correctness audit.
 **Affects:** 78 of 210 Use of English questions (37%, after the 83 novel rows left the bank).
 
 ---
@@ -107,9 +107,9 @@ questions but not the emphasis, and the emphasis is part of the question.
 
 ## What "correct English" therefore requires, in order
 
-1. **Decide the emphasis representation** (option 1 recommended). — **decided 2026-10-11 (D54): `emphasis: Option<String>`, substring of the stem, served on the question payload, loader rejects non-substrings.**
-2. **Backfill 78 targets** — semi-automatic for synonyms/antonyms, read by hand
-   for stress and sound items.
+1. **Decide the emphasis representation** (option 1 recommended). — **decided 2026-10-11 (D54) as `emphasis: Option<String>`, superseded 2026-10-12 (D60) by an `Underline` mark in `RichText.inline`, implemented 2026-10-13 (P1).**
+2. **Backfill 78 targets as `Underline` marks** — semi-automatic for synonyms/antonyms, read by hand
+   for stress and sound items (`python3 tools/propose_emphasis.py propose/apply`).
 3. **Move the 6 novel questions out** into the novel document.
 4. **Resolve the 5 duplicate stems and the 5-option question.**
 5. **Then verify and explain** — which is the ordinary work, and which is

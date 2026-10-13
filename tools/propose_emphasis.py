@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Emphasis backfill worksheet — propose and apply, never guess.
+"""Underline backfill worksheet — propose and apply, never guess.
 
-The 78 underline rows need `emphasis` (the exact substring to underline) and
-only a human knows which word it is. This script does the machine half:
+The 78 underline rows need an `Underline` mark (D60: {start, len} over the
+stem in Unicode scalars) and only a human knows which word it is. This script
+does the machine half:
 
   propose   read data/questions.json, print a TSV worksheet to stdout:
             id | sentence | candidates | options | answer
@@ -11,8 +12,11 @@ only a human knows which word it is. This script does the machine half:
             and writes the chosen word/phrase into the `emphasis` column.
 
   apply     read a filled worksheet (id<TAB>emphasis per line, header
-            allowed), verify every value is a non-empty substring of its stem
-            (the same rule the loader enforces), write data/questions.json.
+            allowed), verify every value is a non-empty substring of its stem,
+            write an `Underline` mark {start, len} (first occurrence, Unicode
+            scalars — the same rule the loader enforces), write
+            data/questions.json. Existing Underline marks on the stem are
+            replaced, never stacked.
 
 Usage:
   python3 tools/propose_emphasis.py propose > /tmp/emphasis.tsv
@@ -66,17 +70,21 @@ def candidates(sentence):
     return sorted(out, key=lambda w: (-len(w), w.lower()))[:8]
 
 
+def has_underline(q):
+    return any(m["kind"] == "underline" for m in q["text"]["inline"])
+
+
 def propose():
     bank = json.load(open(BANK))
     rows = [
         q for q in bank
-        if q.get("emphasis") is None and "underlin" in q["text"].lower()
+        if not has_underline(q) and "underlin" in q["text"]["text"].lower()
     ]
     print("id\tsentence\tcandidates\toptions\tanswer\temphasis")
     for q in rows:
-        s = sentence_of(q["text"])
+        s = sentence_of(q["text"]["text"])
         opts = " / ".join(
-            f"{o['id']}:{o['text'][:40]}" for o in q["options"]
+            f"{o['id']}:{o['text']['text'][:40]}" for o in q["options"]
         )
         print("\t".join([
             q["id"],
@@ -110,7 +118,7 @@ def apply(path):
         q = by_id.get(qid)
         if q is None:
             problems.append(f"{qid}: no such question")
-        elif not value or value not in q["text"]:
+        elif not value or value not in q["text"]["text"]:
             problems.append(f"{qid}: {value!r} is not a substring of its stem")
     if problems:
         print("refusing to write:", file=sys.stderr)
@@ -118,10 +126,14 @@ def apply(path):
             print(f"  {p}", file=sys.stderr)
         sys.exit(1)
     for qid, value in wanted.items():
-        by_id[qid]["emphasis"] = value
+        stem = by_id[qid]["text"]
+        start = stem["text"].find(value)
+        stem["inline"] = [m for m in stem["inline"] if m["kind"] != "underline"]
+        stem["inline"].append({"start": start, "len": len(value), "kind": "underline"})
+        stem["inline"].sort(key=lambda m: (m["start"], m["len"]))
     json.dump(bank, open(BANK, "w"), indent=2, ensure_ascii=False)
     open(BANK, "a").write("\n")
-    print(f"applied emphasis to {len(wanted)} rows", file=sys.stderr)
+    print(f"applied underline marks to {len(wanted)} rows", file=sys.stderr)
 
 
 if __name__ == "__main__":

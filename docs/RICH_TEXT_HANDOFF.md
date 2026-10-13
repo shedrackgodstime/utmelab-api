@@ -1,7 +1,13 @@
 # Rich text — one `RichText` type for every text field
 
-**Status:** decided and recorded (**D60**, **D61**), **not implemented**. Nothing in
-`src/`, `data/` or `tools/` has changed.
+**Status:** **implemented 2026-10-13 (P1).** `src/bank/model.rs` carries
+`RichText { text, inline }` on stems, options, explanations, passages and
+novel questions; `emphasis`/`image` fields are deleted; the loader enforces
+bounds/overlap/https; `data/` migrated (2,288 rows + 6 novel docs + 5
+passages); `tools/` map markup to marks. `verified` derives from
+`data/verifications.json` (D62). What remains is content, not schema: the 78
+underline backfill (as `Underline` marks, P3) and review batches.
+**Decided:** 2026-10-12 (D60, D61).
 **Found:** 2026-10-12, while discussing whether `emphasis` belonged on explanations
 and passages. **Affects:** the whole schema — every text-bearing field, both
 loaders, the OpenAPI, all three Python tools, and the docs.

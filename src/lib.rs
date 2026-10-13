@@ -32,7 +32,11 @@ pub use api::limit::RateLimiter;
 pub use api::openapi::document as openapi_document;
 
 pub use bank::model::Question;
-pub use bank::{DEFAULT_PER_PAGE, JsonStore, MAX_PER_PAGE, QuestionFilter, Store, StoreError};
+pub use bank::model::{Verdict, Verification, VerifyCheck, VerifyKind, human_verified};
+pub use bank::{
+    DEFAULT_PER_PAGE, ImagePosition, Inline, InlineKind, JsonStore, MAX_PER_PAGE, QuestionFilter,
+    RichText, Store, StoreError,
+};
 pub use config::Config;
 pub use error::ApiError;
 pub use keys::{ApiKey, KeyBackend, KeyStatus, KeyStore};

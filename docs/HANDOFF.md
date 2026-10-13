@@ -37,7 +37,7 @@ cargo fmt
 cargo run -- openapi --out site/openapi.json  # regenerate the spec after route changes
 ```
 
-**All tests are green** (94) and clippy is clean as of 2026-10-13. The D53
+**All tests are green** (105) and clippy is clean as of 2026-10-13. The D53
 key work's `key_prefix` (first 11 chars of `sk_…`, support lookup only, never
 authenticates) is intended and covered by tests — the earlier "one test is red"
 note was written from a pre-merge view and is resolved.
@@ -55,12 +55,18 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-134 verified (6%) · 216 explained
+134 verified (6%, derived from data/verifications.json, D62) · 216 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
 bank_version in /health changes only when content changes
 ```
+
+2026-10-13 (P1): RichText landed (D60/D61) — every text field is
+`{text, inline}`, `emphasis`/`image` fields deleted, loader enforces
+bounds/overlap/https, `tools/` map markup to marks, `verified` derives from
+the log (D62, 188 legacy seeds). Quarantine 102 (the `debatable` false
+positive fixed; figure findings never void verification).
 
 2026-10-13 (P0): inbox import admitted 128 — all 128 were Lekki Headmaster
 novel dupes already held (zero key conflicts), dropped from the bank; 1
@@ -134,13 +140,12 @@ disagree. Two lists is how subjects drift.
 ## 7. Open work, in the order it should be done
 
 1. **The 78 underline questions** (`docs/UNDERLINE_PROBLEM.md`). They say "the
-   underlined word" and we store no target, so a student cannot answer them.
-   **The field shipped under D54; D60 then superseded that field shape** — the
-   underline is now an `Underline` mark inside `RichText.inline`, applied to every
-   text field rather than `Question` alone. Read
-   [`RICH_TEXT_HANDOFF.md`](RICH_TEXT_HANDOFF.md) before starting either: the
-   backfill cannot be stored until the shape it writes into exists. **No
-   `verified: true` on any of the 78 until it lands.**
+   underlined word" and we store no mark for it, so a student cannot answer
+   them. **The shape landed in P1** — the underline is an `Underline` mark
+   inside `RichText.inline`, written by `python3 tools/propose_emphasis.py
+   apply` or `review.py set --underline` (both validate the substring and
+   replace, never stack). Backfill directly; no migration stands in the way.
+   **No `verified` on any of the 78 until it lands (loader-enforced via D62).**
 2. **Verification and explanations** — 2,200 rows untouched. Mathematics came
    out clean (58/60 verified); objective subjects verify well, languages and
    statistics need judgement. Review in batches of ~50, checking the answer by

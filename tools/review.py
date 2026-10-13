@@ -7,8 +7,8 @@ toolchain needed: plain Python 3, standard library only.
 
     python3 tools/review.py show <id> [--json]
     python3 tools/review.py next [--subject <slug>] [--json]
-    python3 tools/review.py verify <id>
-    python3 tools/review.py set <id> [--subtopic S] [--emphasis E]
+    python3 tools/review.py verify <id> [--by <reviewer>]
+    python3 tools/review.py set <id> [--subtopic S] [--underline W]
         [--section S] [--marks M] [--difficulty D] [--passage P]
     python3 tools/review.py stats
 
@@ -19,6 +19,11 @@ several machines — shared mutable state would be the next bug):
    scope. No cursor, nothing to sync, resume anywhere.
 2. Mechanical half enforced: `verify` refuses quarantined rows and rows with
    no explanation — the machine checks what it can (D45).
+
+`verified` is derived at load from `data/verifications.json` (D62), never
+stored on the row — so `verify` appends a Human/Pass log row (with the
+content hash it covered) instead of flipping a flag, and any later edit
+voids it. `set --underline` writes an Underline mark, not a string.
 
 Writes back up questions.json to tmp/ first, refuse bad values before
 anything writes, and re-read the file after writing. The Rust loader stays
@@ -47,13 +52,73 @@ def load(data):
         with open(os.path.join(data, name)) as f:
             return json.load(f)
 
+    try:
+        with open(os.path.join(data, "verifications.json")) as f:
+            verifications = json.load(f)
+    except FileNotFoundError:
+        verifications = []
     return {
         "questions": read("questions.json"),
         "subjects": read("subjects.json"),
         "topics": read("topics.json"),
         "subtopics": read("subtopics.json"),
         "passages": read("passages.json"),
+        "verifications": verifications,
     }
+
+
+US = "\x1f"  # U+001F field separator (mirrors model.rs)
+RS = "\x1e"  # U+001E option-id separator (mirrors model.rs)
+
+
+def mark_key(m):
+    if m["kind"] == "image":
+        return f"{m['start']},{m['len']},image:{m['url']}:{m['position']}:{m.get('alt') or ''}"
+    return f"{m['start']},{m['len']},{m['kind']}"
+
+
+def content_fingerprint(q):
+    """Mirror of Question::content_fingerprint (src/bank/model.rs) — the
+    authority is the Rust construction; U+001F separates fields, U+001E
+    separates option ids from their text."""
+    parts = [q["text"]["text"]]
+    for o in q["options"]:
+        parts.append(f"{o['id']}{RS}{o['text']['text']}")
+    parts.append(q["answer"])
+    marks = [mark_key(m) for m in q["text"]["inline"]]
+    for o in q["options"]:
+        marks.extend(mark_key(m) for m in o["text"]["inline"])
+    parts.append("|".join(marks))
+    e = q.get("explanation")
+    if e is None:
+        parts.append("")
+    else:
+        parts.append(e["key_point"]["text"])
+        parts.append("|".join(mark_key(m) for m in e["key_point"]["inline"]))
+        parts.append(e["body"]["text"])
+        parts.append("|".join(mark_key(m) for m in e["body"]["inline"]))
+        t = e.get("trap")
+        if t is None:
+            parts.append("")
+        else:
+            parts.append(t["text"])
+            parts.append("|".join(mark_key(m) for m in t["inline"]))
+    return hashlib.sha256(US.join(parts).encode("utf-8")).hexdigest()
+
+
+def derived_verified(bank, q):
+    """D62: the latest human row covering answer+explanation decides, and
+    only while its hash matches current content."""
+    rows = [
+        v for v in bank["verifications"]
+        if v["question_id"] == q["id"] and v["kind"] == "human"
+        and "answer" in v.get("scope", []) and "explanation" in v.get("scope", [])
+    ]
+    rows.sort(key=lambda v: (v["created_at"], v["id"]))
+    if not rows:
+        return False
+    last = rows[-1]
+    return last["verdict"] == "pass" and last["content_hash"] == content_fingerprint(q)
 
 
 def fingerprint(text, options):
@@ -68,18 +133,19 @@ FIGURE_HINTS = ("diagram", "figure", "graph", "illustrat", "shown", "sketch", "t
 def flags_for(bank, q):
     """Quarantine kinds for one row — same rules as src/quarantine.rs."""
     flags = []
-    text = q["text"]
-    lower = text.lower()
-    if q.get("emphasis") is None and "underlin" in lower:
+    stem = q["text"]["text"]
+    lower = stem.lower()
+    if "underlin" in lower and not any(m["kind"] == "underline" for m in q["text"]["inline"]):
         flags.append("underline_missing")
-    if q.get("image") is None and any(h in lower for h in FIGURE_HINTS):
+    if (any(h in lower for h in FIGURE_HINTS)
+            and not any(m["kind"] == "image" for m in q["text"]["inline"])):
         flags.append("missing_figure")
     if len(q["options"]) != 4:
         flags.append("option_count")
-    blob = (text + " " + " ".join(o["text"] for o in q["options"])).lower()
+    blob = (stem + " " + " ".join(o["text"]["text"] for o in q["options"])).lower()
     if "bepo" in blob or "stardom" in blob or "lekki" in blob:
         flags.append("novel_leak")
-    if q.get("passage_id") is None and has_numbered_gap(text):
+    if q.get("passage_id") is None and has_numbered_gap(stem):
         flags.append("cloze_without_passage")
     return flags
 
@@ -106,7 +172,7 @@ def all_flags(bank):
     for q in sorted(bank["questions"], key=lambda r: r["id"]):
         for kind in flags_for(bank, q):
             out.append((kind, q["id"]))
-        fp = fingerprint(q["text"], [o["text"] for o in q["options"]])
+        fp = fingerprint(q["text"]["text"], [o["text"]["text"] for o in q["options"]])
         if fp in seen:
             out.append(("duplicate_stem", q["id"]))
         else:
@@ -143,13 +209,16 @@ def bundle(bank, qid):
         return o["exam"] == q["exam"] and o["subject"] == q["subject"]
 
     sibs = sorted(
-        ({"id": o["id"], "verified": o["verified"], "text": trunc(o["text"], 90)}
+        ({"id": o["id"], "verified": derived_verified(bank, o),
+          "text": trunc(o["text"]["text"], 90)}
          for o in bank["questions"] if o["id"] != qid and sibling_of(o)),
         key=lambda s: s["id"],
     )[:SIBLING_CAP]
-    queue = sorted(o["id"] for o in bank["questions"] if not o["verified"])
+    queue = sorted(o["id"] for o in bank["questions"] if not derived_verified(bank, o))
+    shown = dict(q)
+    shown["verified"] = derived_verified(bank, q)
     return {
-        "question": q,
+        "question": shown,
         "subject": subject,
         "topic_chain": chain,
         "passage": passage,
@@ -163,6 +232,16 @@ def trunc(text, maxn):
     return text if len(text) <= maxn else text[:maxn] + "…"
 
 
+def render_marks(inline):
+    out = []
+    for m in inline:
+        if m["kind"] == "image":
+            out.append(f"[image {m.get('url', '')} ({m.get('position', 'above')}) @ {m['start']}]")
+        else:
+            out.append(f"[{m['kind']} {m['start']}:{m['len']}]")
+    return " ".join(out)
+
+
 def render_human(b):
     q = b["question"]
     L = []
@@ -173,27 +252,27 @@ def render_human(b):
         s = b["subject"]
         L.append(f"subject: {s['name']} (full paper: {s['full_exam_questions']}, compulsory: {s['is_compulsory']})")
     L.append("")
-    L.append(q["text"])
-    if q.get("emphasis"):
-        L.append(f">>> underline: {q['emphasis']}")
+    L.append(q["text"]["text"])
+    if q["text"]["inline"]:
+        L.append(f">>> marks: {render_marks(q['text']['inline'])}")
     for i, o in enumerate(q["options"]):
-        L.append(f"  {chr(ord('A') + i)}) {o['text']}")
+        L.append(f"  {chr(ord('A') + i)}) {o['text']['text']}")
+        if o["text"]["inline"]:
+            L.append(f"      marks: {render_marks(o['text']['inline'])}")
     L.append(f"answer: {q['answer']}")
     e = q.get("explanation")
     if e:
-        L.append(f"key point: {e['key_point']}\nbody:\n{e['body']}")
+        L.append(f"key point: {e['key_point']['text']}\nbody:\n{e['body']['text']}")
         if e.get("trap"):
-            L.append(f"trap: {e['trap']}")
+            L.append(f"trap: {e['trap']['text']}")
     else:
         L.append("explanation: — none —")
-    if q.get("image"):
-        L.append(f"image: {q['image']['url']} ({q['image']['position']})")
     for n in b["topic_chain"]:
         L.append(f"{n['level']}: {n['slug']} — {n['name']}")
         for o in n["objectives"]:
             L.append(f"    • {o}")
     if b["passage"]:
-        L.append(f"--- passage {b['passage']['id']} ---\n{b['passage']['text']}\n--- end ---")
+        L.append(f"--- passage {b['passage']['id']} ---\n{b['passage']['text']['text']}\n--- end ---")
     if b["flags"]:
         L.append(f"FLAGS (verify refuses): {', '.join(b['flags'])}")
     if b["siblings"]:
@@ -231,7 +310,8 @@ def cmd_show(args):
 def cmd_next(args):
     bank = load(args.data)
     ids = sorted(q["id"] for q in bank["questions"]
-                 if not q["verified"] and (args.subject is None or q["subject"] == args.subject))
+                 if not derived_verified(bank, q)
+                 and (args.subject is None or q["subject"] == args.subject))
     if not ids:
         die("No unverified questions in scope.")
     b = bundle(bank, ids[0])
@@ -239,6 +319,25 @@ def cmd_next(args):
         print(json.dumps(b, indent=2, ensure_ascii=False))
     else:
         print(render_human(b), end="")
+
+
+def write_log(data, bank):
+    """Append-safe write of verifications.json with the same backup discipline."""
+    tmp = os.path.join(REPO, "tmp")
+    os.makedirs(tmp, exist_ok=True)
+    path = os.path.join(data, "verifications.json")
+    if os.path.exists(path):
+        shutil.copy(path, os.path.join(tmp, "verifications.backup.json"))
+    with open(path, "w") as f:
+        json.dump(bank["verifications"], f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    try:
+        json.load(open(path))
+    except Exception as exc:
+        backup = os.path.join(tmp, "verifications.backup.json")
+        if os.path.exists(backup):
+            shutil.copy(backup, path)
+        die(f"write failed validation ({exc}) — restored backup")
 
 
 def cmd_verify(args):
@@ -251,8 +350,22 @@ def cmd_verify(args):
         die(f"Resolve first: {', '.join(b['flags'])}")
     if not b["question"].get("explanation"):
         die("Verified claims the working was checked — write the explanation first.")
-    b["question"]["verified"] = True
-    write_bank(args.data, bank)
+    # D62: review appends a Human/Pass row covering answer+explanation; the
+    # loader derives the flag, and any later edit voids it via the hash.
+    import datetime
+    row = next(q for q in bank["questions"] if q["id"] == args.id)
+    bank["verifications"].append({
+        "id": f"v_{args.id}_{len(bank['verifications']) + 1:04d}",
+        "question_id": args.id,
+        "kind": "human",
+        "verdict": "pass",
+        "scope": ["answer", "explanation"],
+        "verifier": args.by,
+        "detail": None,
+        "content_hash": content_fingerprint(row),
+        "created_at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+    })
+    write_log(args.data, bank)
     print(f"verified {args.id}")
 
 
@@ -268,10 +381,18 @@ def cmd_set(args):
         if st is None or (q["exam"], q["subject"], st["topic"]) not in tops:
             die(f"No subtopic '{args.subtopic}' under {q['exam']}/{q['subject']} — tag what exists.")
         q["subtopic_id"] = args.subtopic
-    if args.emphasis is not None:
-        if not args.emphasis or args.emphasis not in q["text"]:
-            die("Emphasis must be a non-empty substring of the stem.")
-        q["emphasis"] = args.emphasis
+    if args.underline is not None:
+        stem = q["text"]["text"]
+        if not args.underline or args.underline not in stem:
+            die("Underline must be a non-empty substring of the stem.")
+        start = stem.find(args.underline)
+        length = len(args.underline)
+        # One underline per stem is the observed shape: replace any existing
+        # Underline marks rather than stacking them.
+        q["text"]["inline"] = [
+            m for m in q["text"]["inline"] if m["kind"] != "underline"
+        ] + [{"start": start, "len": length, "kind": "underline"}]
+        q["text"]["inline"].sort(key=lambda m: (m["start"], m["len"]))
     if args.section is not None:
         q["section"] = args.section
     if args.marks is not None:
@@ -300,7 +421,7 @@ def cmd_stats(args):
     for subject in sorted(rows):
         rs = rows[subject]
         print(f"{subject:32} {len(rs):>6} "
-              f"{sum(1 for q in rs if q['verified']):>8} "
+              f"{sum(1 for q in rs if derived_verified(bank, q)):>8} "
               f"{sum(1 for q in rs if q['id'] in flagged):>11}")
 
 
@@ -319,14 +440,16 @@ def main():
     p.add_argument("--json", action="store_true")
     p.set_defaults(fn=cmd_next)
 
-    p = sub.add_parser("verify", help="mark verified (refuses quarantined/explanationless)")
+    p = sub.add_parser("verify", help="append a Human/Pass log row (refuses quarantined/explanationless)")
     p.add_argument("id")
+    p.add_argument("--by", default="human-review", help="reviewer label recorded on the log row")
     p.set_defaults(fn=cmd_verify)
 
     p = sub.add_parser("set", help="scalar edits, validated before writing")
     p.add_argument("id")
     p.add_argument("--subtopic", default=None)
-    p.add_argument("--emphasis", default=None)
+    p.add_argument("--underline", default=None,
+                   help="word/phrase in the stem to mark underlined (replaces any existing underline)")
     p.add_argument("--section", default=None)
     p.add_argument("--marks", type=float, default=None)
     p.add_argument("--difficulty", type=int, default=None)
