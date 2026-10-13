@@ -751,6 +751,17 @@ Computer Studies · Physical Education
 Animal Husbandry · Book Keeping · Catering Craft Practice · Civic Education ·
 Data Processing · Further Mathematics · Insurance · Marketing · Office Practice
 
+> **Superseded in mechanism by D21 (recorded D65, 2026-10-13).** D21's
+> exam-scoped subject rows now carry exam ownership, so the catalog no
+> longer needs `""` — and the six WAEC/NECO rows in `subjects.json`
+> (`english-language`, `animal-husbandry`, `civic-education`,
+> `financial-accounting`, `general-mathematics`, `visual-arts`) are the
+> boards' own names from D21's §3.1.14 table, not guesses. The `""` rule
+> survives only for *question* rows (`q_unassigned_civic_001`), where an
+> unassigned exam still means an incomplete record. D8's nine names were
+> the old bank's spellings; seven of them hold no rows and no catalog
+> entry anywhere — absent, not mislabeled.
+
 Rationale for leaving the 9 empty rather than labelling them `WAEC`: we have not
 verified which of them are WAEC vs NECO, and per D7 we do not guess. `""` means
 **"not JAMB, exam not yet decided"** — the honest value until O1b closes.
@@ -849,6 +860,14 @@ questions**. These are **not waste**: they are WAEC/NECO inventory already paid 
 directly relevant to the paid-API intent (D1/D2). They are correctly excluded from
 the JAMB picker — by data, per D1, not by omission.
 
+> **Scope correction (2026-10-13):** the 831 counts the *parent working copy*
+> measured in §2 (the 3,442-row `data/bank/questions.json` era), **not**
+> `data/questions.json` in this repo — which never held more than 2 non-JAMB
+> rows at any commit (1 animal-husbandry + the withheld civic fixture). Read
+> as "this bank holds WAEC inventory" it is false, and it must not decide
+> resourcing. The inventory worth keeping is real but lives in the parent DB
+> (§3.0b: 3,315 non-JAMB rows), not here.
+
 **Therefore the registry must split into two questions:**
 1. Which subjects are JAMB? → the 25 above (data answer: known).
 2. What is each subject's `exam` membership? → JAMB / WAEC / NECO / POST-UTME.
@@ -905,6 +924,7 @@ the JAMB picker — by data, per D1, not by omission.
 | **D62** | **`verified` is output, `verifications` is the store.** The wire keeps one bool — *a human checked answer + explanation against the question since its last content change, and it passed* (D45's meaning, unchanged). The store keeps a `Verification` log: `{question_id, kind: AutoRule\|AiBulk\|AiSingle\|Human, verdict: Pass\|Fail, scope: [Answer, Explanation, TopicLink, Marks, Bounds, Dupe], verifier, detail?, content_hash, created_at}`. Only `Human/Pass` covering `{Answer, Explanation}` sets `verified=true`; `AutoRule` (quarantine, bounds, dupe) can only block it — a quarantined row is never verified whoever passed it. `AiBulk`/`AiSingle` write signal rows, never flip the bool. Any edit where the hash differs from the last human-pass hash resets `verified=false` at load. Current `verified:true` rows seed one `Human/Pass {verifier:"legacy-import"}` each. | **PINNED** (user, 2026-10-13) | One bool cannot hold four processes plus an edit history; automation that can sell content will sell a wrong answer with confidence — D45's exact failure. Servability stays orthogonal (withheld → servable → verified, D21/D36/D51). Implements the review's point 1 without adding a lifecycle enum to the wire (D22). |
 | **D63** | **Per-topic expectations live in `data/blueprints.json`, provisional, opt-in only.** JAMB publishes no per-topic counts, so `Topic.weight` stays "not published" (D50) and is never fabricated. The blueprint is empirical: TestDriller 17yr topic-level maths (S1), Examkits section shares for 8 subjects (S2, section rows with member slugs, never even-split to topics), everything else explicitly `unmapped`. Every catalog topic appears exactly once (own row, section member, or unmapped member). Sources + sample + method + confidence ride on every row (provenance in `docs/BLUEPRINT_SOURCES.md`); S5 (our own ~65k Turso rows once tagged) replaces S1/S2 topic by topic. Never in the default syllabus response — `?include=blueprint` or `/blueprints/{exam}/{subject}` only. | **PINNED** (user, 2026-10-13) | Students revise by priority and paper assembly needs blueprint × coverage — but a fabricated `weight` would reach consumers as JAMB fact, the same failure as the 2025 stamp (D47). Section-to-topic even-splitting would be fabrication with a source attached. Unmapped-with-members keeps all 566 topics visible without inventing numbers. |
 | **D64** | **Pinned Turso schema for the JSON clearing (`docs/DB_SCHEMA.md`), not implemented.** Every file has a target table; scalars carry what is filtered/sorted/counted, JSON columns carry the API structs byte-for-byte (same serde — identical types by construction). Verified derives at read in Rust via shared `human_verified()` over a batched query, never a stored flag; `content_hash` maintained on write; validation moves to write-time + `audit-db`. Clearing order: keys ✅ → verifications → questions → passages+novels → catalog+blueprints, dual-run with parity per phase. Supersedes the "novels never move to a database / directory is the index" comments when each table lands. | **PINNED** (user, 2026-10-13) | The DB must be designed before the first table, or each phase invents its own shape and D23's seam breaks five times instead of once. Normalizing options/marks into tables was rejected per D22 (a join per read for nothing). |
+| **D65** | **D8's `exam=""` mechanism is retired for subject rows, kept for question rows.** D21's exam-scoped catalog now owns exam membership, and the six WAEC/NECO subject rows carry the boards' own names (D21 §3.1.14) — no guess involved. A question row with `exam:""` remains an incomplete, unservable record (D21/D58). No data changed: the catalog was already correct; only the rulebook caught up. | **PINNED** (user, 2026-10-13) | D8 said "we do not guess" while the catalog went ahead and assigned — silent supersession is how D8-style drift starts. The WAEC/NECO assignments needed a ruling that they are board names, not guesses, before anyone builds on them. |
 | **O2** | Does the **public API** expose the bank as-is, or a sanitized/derived shape? | Affects whether `answer`/`explanation` are public fields (free tier?) and drives D6 later. |
 | **O3** | Is the **64k Turso table** real, usable, and in scope — or is it dead weight to be dropped? | §2.5: orphan table, no migration, unvalidated per audit. |
 | **O4** | Topic model: keep one flat `topic`, or add `subtopic`? | 542 syllabus topics vs 317 bank topics — is syllabus the authority? |
