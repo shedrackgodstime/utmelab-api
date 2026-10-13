@@ -1,0 +1,51 @@
+/* Brand theme. Shared craft from the parent (cool gray surfaces, Segoe
+   type) plus this product's own identity (deep teal accent) — sibling
+   brands, not parent livery. Maps onto Starlight's --sl-* API only;
+   no component CSS lives here.
+   Specificity note: Starlight declares the same vars later in the bundle
+   at :root specificity, so these use :root:root to win the cascade. */
+
+:root:root,
+:root:root[data-theme='light'] {
+	color-scheme: light;
+
+	/* Identity: deep teal. */
+	--sl-color-accent-low: #ccfbf1;
+	--sl-color-accent: #0f766e;
+	--sl-color-accent-high: #115e59;
+
+	/* Craft: gray-white surfaces. */
+	--sl-color-bg: #f9fafb;
+	--sl-color-bg-nav: #ffffff;
+	--sl-color-bg-sidebar: #f3f4f6;
+	--sl-color-hairline: #e5e7eb;
+	--sl-color-hairline-light: #f3f4f6;
+	--sl-color-hairline-shade: #d1d5db;
+	--sl-color-text: #111827;
+
+	--sl-font-system:
+		'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+	--sl-font-system-mono:
+		ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+:root:root[data-theme='dark'] {
+	color-scheme: dark;
+
+	--sl-color-accent-low: #0b3f3b;
+	--sl-color-accent: #2dd4bf;
+	--sl-color-accent-high: #5eead4;
+
+	--sl-color-bg: #111827;
+	--sl-color-bg-nav: #1f2937;
+	--sl-color-bg-sidebar: #0d131c;
+	--sl-color-hairline: #374151;
+	--sl-color-hairline-light: #1f2937;
+	--sl-color-hairline-shade: #4b5563;
+	--sl-color-text: #f3f4f6;
+
+	--sl-font-system:
+		'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+	--sl-font-system-mono:
+		ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}

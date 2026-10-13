@@ -9,6 +9,7 @@ export default defineConfig({
 		starlight({
 			title: 'UTME Lab',
 			customCss: [
+				'./src/styles/theme.css',
 				'./src/styles/dash-frame.css',
 				'./src/styles/auth-frame.css',
 				'./src/styles/no-toc.css',
