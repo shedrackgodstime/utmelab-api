@@ -210,3 +210,108 @@ worth doing unless 4–6 will follow.
 - WAEC `civic-education` and the three electives: real objective counts
 - Whether "WAEC" in our catalog means Nigeria by default, or must be
   country-qualified everywhere (a product decision with a schema cost)
+
+## 10. Proposed shape — `data/exams.json` (D66, PROPOSED)
+
+Written after the research above showed that a subject cannot honestly carry
+the facts the current model asks of it. **Proposed, not implemented, not
+pinned.** Three `null`s and one `planned` row are load-bearing: each is a value
+we cannot state.
+
+```json
+[
+  {
+    "code": "JAMB",
+    "name": "Joint Admissions and Matriculation Board — UTME",
+    "countries": ["NG"],
+    "status": "live",
+    "has_full_paper": true,
+    "subjects_required": 4,
+    "duration_minutes": 120,
+    "rules": ["Use of English plus three electives; all four subjects attempted."]
+  },
+  {
+    "code": "WAEC",
+    "name": "West African Examinations Council — WASSCE",
+    "countries": ["NG", "GH", "SL", "GM", "LR"],
+    "status": "live",
+    "has_full_paper": false,
+    "subjects_required": null,
+    "duration_minutes": null,
+    "rules": [
+      "WAEC syllabi are country-partitioned; a topic may be Nigeria-only, Ghana-only, or shared. Pass a country to filter.",
+      "Each subject is up to three papers (objective, essay, practical). We serve the objective paper only.",
+      "Some papers are 'answer N of M'. Objective papers are all-answered, so this does not affect objective mocks."
+    ]
+  },
+  {
+    "code": "NECO",
+    "name": "National Examinations Council — SSCE",
+    "countries": ["NG"],
+    "status": "live",
+    "has_full_paper": false,
+    "subjects_required": null,
+    "duration_minutes": null,
+    "rules": ["Objective paper is numbered III, not I."]
+  },
+  {
+    "code": "POST-UTME",
+    "name": "JAMB Post-UTME Screening",
+    "countries": ["NG"],
+    "status": "planned",
+    "has_full_paper": null,
+    "subjects_required": null,
+    "duration_minutes": null,
+    "rules": []
+  }
+]
+```
+
+### The four changes, in dependency order
+
+| # | change | what it fixes |
+|---|---|---|
+| 1 | `Subject.full_exam_questions: u32` → `objective_paper_questions: Option<u32>` | §4. `None` covers both "unverified" and "this subject is three papers" — same value honestly, because in both cases we cannot state a single count. |
+| 2 | `data/exams.json`, `Exam` as a real record | The hardcode `(exam == "JAMB").then_some(120)` at `scheme.rs:136`, and `is_complete(min_electives)` taking the paper shape from a **query parameter** — the exam's fact, sitting in the caller's hands. |
+| 3 | `Topic.country: Option<String>`, null = all member countries | §1. Ghana becomes a data addition, not a rebuild. |
+| 4 | `Subject.is_compulsory: bool` → an exam-level requirement rule | Already wrong: NECO has 2 subjects flagged compulsory while its rule is 4, one of which is *one of* a group. A boolean cannot say that. **Deferred** — record why, build later. |
+
+### What this buys
+
+- Full-paper features become **data** (`has_full_paper`), not an exam-name comparison. POST-UTME arrives as a row.
+- `/exams` can finally say "WAEC requires a country", which is the precondition for §1 being fixable.
+- `duration_minutes` gains a home and a path to per-country values.
+- `rules[]` un-hardcodes the WAEC N-of-M warning currently a Rust literal in `rules_for()`.
+- `exams` is already phase 5 of D64's clearing order — this is the same row as a table later, which is D64's "same structs" rule satisfied by construction.
+- `subjects_required` moves the paper shape out of a query string.
+
+### The product split this makes explicit
+
+| product | where it works | gate |
+|---|---|---|
+| **objective mock** | **every exam, every subject, today** | objective count known + enough verified rows |
+| **full paper** | JAMB now, POST-UTME later | `has_full_paper: true` |
+
+The WAEC ask is an **objective mock** question and becomes answerable with a topic
+tree, some rows and no exam modelling at all.
+
+### Explicitly NOT proposed
+
+- **No `Paper` table.** Not caution — a proof. `Option { id, text }` + `answer`
+  can only express single-choice with one right answer. Objective papers *are*
+  MCQ; essay and practical are not. The model can only ever represent the
+  objective paper, so one nullable column named for it is the complete story. A
+  `Paper` entity would model a shape the model cannot hold.
+- **No N-of-M scoring.** Objective papers are all-answered; the recorded WAEC
+  problem never reaches this bank.
+- **No country-qualified exam codes** (`WAEC-NG`). The 5× cost is only paid when
+  Ghana is built, but the exam namespace should not fork to solve what one
+  nullable field solves.
+- **`is_compulsory` → rule is not proposed for now.** Recorded as known-wrong.
+
+### The honest caveat
+
+If the product is Nigeria-only forever, changes 3 and 4 are speculative
+generality and should be dropped, and this collapses to something much smaller.
+Smaller is right. Decide that before opening the schema window — the whole
+proposal is one breaking window, not four.
