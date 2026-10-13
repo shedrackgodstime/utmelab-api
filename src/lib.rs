@@ -24,6 +24,7 @@ mod config;
 mod error;
 pub mod import;
 mod keys;
+pub mod mcp;
 pub mod quarantine;
 mod reports;
 
@@ -121,6 +122,7 @@ pub fn router(state: AppState) -> Router {
     Router::new()
         .route("/health", get(health))
         .merge(api::router())
+        .merge(mcp::router())
         .fallback(not_found)
         // 64 KiB: the largest body we accept is a report (a 500-char detail).
         // A multi-megabyte JSON bomb must die at the edge, not at serde.
