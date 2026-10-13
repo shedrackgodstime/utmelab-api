@@ -6352,13 +6352,6 @@
     "objectives": []
   },
   {
-    "slug": "laws-of-indices-mathematics",
-    "topic": "indices-logarithms-and-surds",
-    "name": "Laws of indices",
-    "order": 1,
-    "objectives": []
-  },
-  {
     "slug": "laws-of-indices",
     "topic": "indices-logarithms-and-surds",
     "name": "Laws of Indices",
@@ -6372,7 +6365,7 @@
     "slug": "standard-form",
     "topic": "indices-logarithms-and-surds",
     "name": "Standard form",
-    "order": 2,
+    "order": 3,
     "objectives": []
   },
   {
@@ -6385,17 +6378,10 @@
     ]
   },
   {
-    "slug": "laws-of-logarithm-mathematics",
-    "topic": "indices-logarithms-and-surds",
-    "name": "Laws of logarithm",
-    "order": 3,
-    "objectives": []
-  },
-  {
     "slug": "change-of-bases",
     "topic": "indices-logarithms-and-surds",
     "name": "Change of Bases",
-    "order": 3,
+    "order": 4,
     "objectives": [
       "Convert a logarithm from one base to another",
       "Evaluate numerical logarithms using change of base"
@@ -6405,36 +6391,22 @@
     "slug": "logarithm-of-any-positive-number-to-a-given-base",
     "topic": "indices-logarithms-and-surds",
     "name": "Logarithm of any positive number to a given base",
-    "order": 4,
+    "order": 5,
     "objectives": []
   },
   {
     "slug": "surds",
     "topic": "indices-logarithms-and-surds",
     "name": "Surds",
-    "order": 4,
+    "order": 6,
     "objectives": [
       "Rationalise the denominator of expressions containing surds"
     ]
   },
   {
-    "slug": "change-of-bases-in-logarithm-and-application",
-    "topic": "indices-logarithms-and-surds",
-    "name": "Change of bases in logarithm and application",
-    "order": 5,
-    "objectives": []
-  },
-  {
     "slug": "relationship-between-indices-and-logarithm",
     "topic": "indices-logarithms-and-surds",
     "name": "Relationship between indices and logarithm",
-    "order": 6,
-    "objectives": []
-  },
-  {
-    "slug": "surds-mathematics",
-    "topic": "indices-logarithms-and-surds",
-    "name": "Surds",
     "order": 7,
     "objectives": []
   },
