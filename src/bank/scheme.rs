@@ -259,8 +259,8 @@ mod tests {
         assert_eq!(scheme.country, Some("NG".to_owned()));
         assert_eq!(scheme.requirements.len(), 2);
         assert!(
-            !scheme.is_complete(),
-            "155 questions cannot fill 4 JAMB subjects — readiness must say so"
+            scheme.is_complete(),
+            "english, maths, physics and chemistry all fill their slots — readiness must say so"
         );
         for slug in &scheme.subjects_ready {
             let page = bank.questions_page(

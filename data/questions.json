@@ -53289,10 +53289,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "general-properties-of-metals",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Unreactive metals occur native; silver is the textbook case here.",
+        "inline": []
+      },
+      "body": {
+        "text": "Of the four, silver sits lowest on the reactivity series and is found free. Zinc and iron never are.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Copper also occurs native in places — but silver is the least reactive option and the expected answer.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -53337,10 +53350,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "alkanols-primary-secondary-and-tertiary-production-of-ethano",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Hydrogen bonding plus chain length wins boiling points.",
+        "inline": []
+      },
+      "body": {
+        "text": "Both alcohols H-bond, but propanol's longer chain adds van der Waals over ethanol. Chloride and hexane cannot H-bond.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Hexane tempts as biggest, but H-bonding beats size here.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -53394,10 +53420,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "unsaturated-saturated-and-supersaturated-solutions-solubilit",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Y is the only steadily rising line on the graph.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: Y climbs straight with temperature; X curves steeply, Z is flat at 40, Q humps and falls. Same-at-all-temperatures is false everywhere.",
+        "inline": []
+      },
+      "trap": {
+        "text": "X tempts as the steepest riser, but the question asks steady increase, which is Y.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -53442,10 +53481,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "halogens-chlorine-as-representative-laboratory-and-industria",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The fountain needs extreme solubility: hydrogen chloride.",
+        "inline": []
+      },
+      "body": {
+        "text": "HCl dissolves so fast it collapses the pressure and the water fountains up. The other gases are far less soluble.",
+        "inline": []
+      },
+      "trap": {
+        "text": "H2S dissolves, but nowhere near enough to drive the fountain.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -53490,10 +53542,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "hard-and-soft-water-temporary-and-permanent-hardness-and-met",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Hard water CAN run in lead pipes — the scale protects them.",
+        "inline": []
+      },
+      "body": {
+        "text": "Dissolved calcium coats lead with scale, blocking dissolution; soft water attacks lead instead. Teeth, bones and taste claims for hard water stand.",
+        "inline": []
+      },
+      "trap": {
+        "text": "It reads backwards precisely because soft water is the lead risk, not hard.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -53538,10 +53603,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "the-mole-concept-and-avogadro-s-number",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Empirical means simplest ratio: CH2O = 30.",
+        "inline": []
+      },
+      "body": {
+        "text": "C6H12O6 divides by 6 to CH2O: 12 + 2 + 16 = 30. 180 is the molecular mass.",
+        "inline": []
+      },
+      "trap": {
+        "text": "180 answers the molecular mass, not the empirical one.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -53586,10 +53664,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "nitrogen-laboratory-preparation-and-production-from-liquid-a",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Decay starts with ammonification: ammonia.",
+        "inline": []
+      },
+      "body": {
+        "text": "Dead protein breaks down to NH3 first; nitrates come later via nitrifiers.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Trioxonitrate(V) is two bacterial steps downstream, not the first product.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -53634,10 +53725,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "aliphatic-hydrocarbons-alkynes-ethyne-produced-from-action-o",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Longest chain five, triple bond at 2: 4-methylpent-2-yne.",
+        "inline": []
+      },
+      "body": {
+        "text": "CH3C.tbd.CCH(CH3)2 numbers to give the triple bond lowest locants; methyl sits on carbon 4.",
+        "inline": []
+      },
+      "trap": {
+        "text": "3-ethyl but-2-yne miscounts the parent chain — five carbons, not four.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -53682,10 +53786,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "halogens-chlorine-as-representative-laboratory-and-industria",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Chlorate with carbonaceous matter detonates.",
+        "inline": []
+      },
+      "body": {
+        "text": "Potassium trioxochlorate(V) mixtures with fuels or MnO4 residues go off violently — the modern lab avoids the combination.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Explosive alone is vague; the carbonaceous-mixture hazard is the specific ban.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -53730,10 +53847,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "chemical-bonding-electrovalency-and-covalency-electron-confi",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Complex cation to anion is ionic.",
+        "inline": []
+      },
+      "body": {
+        "text": "[Cu(NH3)4]2+ is internally coordinate, but its bond to 2Cl- is electrostatic — ionic.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Dative tempts because the complex contains coordinate bonds, but the asked bond is outside the brackets.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -53778,10 +53908,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "oxidation-and-reduction-in-terms-of-electron-transfer",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The reducer is the species oxidised.",
+        "inline": []
+      },
+      "body": {
+        "text": "Mg 0 to +2 loses electrons — oxidised, so it reduces HCl. Being a metal or solid is incidental.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Reduced is the reverse: Mg gains nothing here.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -53826,10 +53969,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "chemical-and-physical-changes",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Dissolving salt is physical — no new substance.",
+        "inline": []
+      },
+      "body": {
+        "text": "NaCl in water separates and recrystallises unchanged. Burning, corrosion and CaO hydration all make new compounds.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Corrosion tempts as slow, but slow chemistry is still chemistry.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -53874,10 +54030,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "measurement-of-the-proportion-of-oxygen-in-air-e-g-burning-o",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Pyrogalol takes O2, potash takes CO2, CaCl2 takes water.",
+        "inline": []
+      },
+      "body": {
+        "text": "Left behind: nitrogen and the noble gases. Each absorber removes exactly one component.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Any option keeping CO2 forgets the potash stage.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -53922,10 +54091,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "periodic-table-and-periodicity-of-elements-families-such-as",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Seven outer electrons is group 7.",
+        "inline": []
+      },
+      "body": {
+        "text": "3s2 3p5 totals 7 valence electrons — halogens. Group counts valence, not shells.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Group 5 counts only p electrons and forgets the s pair.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -53970,10 +54152,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "chemical-bonding-electrovalency-and-covalency-electron-confi",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Polar means unequal sharing.",
+        "inline": []
+      },
+      "body": {
+        "text": "Different electronegativities pull the pair off-centre. Equal sharing is non-polar by definition.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Lone pairs are uninvolved — polarity is about the bond pair.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54018,10 +54213,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "electrochemical-cells-redox-series-k-ca-na-mg-al-zn-fe-sn-pb",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Anode left oxidised, cathode right reduced: Mg|Mg2+||Pb2+|Pb.",
+        "inline": []
+      },
+      "body": {
+        "text": "Mg oxidises at the anode, Pb2+ reduces at the cathode, salt bridge between. Reversed ion orders break the convention.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Option b writes Pb|Pb2+ backwards — oxidised form always trails the bridge.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54066,10 +54274,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "boyle-s-law-charles-s-law-graham-s-law-dalton-s-law-of-parti",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Graham: lightest diffuses fastest, so heaviest leads the slow order.",
+        "inline": []
+      },
+      "body": {
+        "text": "M: SO2 64, O2 32, NH3 17, H2 2 — increasing rate is heaviest first: SO2, O2, NH3, H2.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Any option leading with CO2 misplaces 44 against 64.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54114,10 +54335,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "ph-and-poh-scale-ph-defined-as-log-h3o-related-calculations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Only base turns red litmus blue: pH 8.",
+        "inline": []
+      },
+      "body": {
+        "text": "2.5 and 3.5 are acidic, 7.0 neutral. Of the four only 8.0 is alkaline.",
+        "inline": []
+      },
+      "trap": {
+        "text": "7.0 tempts as safe middle, but neutral changes nothing.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54162,10 +54396,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "corrosion-as-an-electrolytic-process-cathodic-protection-pai",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Iron corrosion is rusting.",
+        "inline": []
+      },
+      "body": {
+        "text": "Hydrated iron(III) oxide formation is rust, specific to iron. Burning, galvanizing and alloying are different processes.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Burning is fast oxidation; rusting is the slow aqueous one.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54210,10 +54457,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "unsaturated-saturated-and-supersaturated-solutions-solubilit",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Solubility is salt per 100 g of water, not solution.",
+        "inline": []
+      },
+      "body": {
+        "text": "Water = 12.5 - 2 = 10.5 g; 2/10.5 x 100 ≈ 19, nearest 20.0.",
+        "inline": []
+      },
+      "trap": {
+        "text": "16.0 divides by 12.5 — solution mass instead of water mass.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54267,10 +54527,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "effect-of-light-on-some-reactions-e-g-halogenation-of-alkane",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Alkane plus chlorine in UV light is substitution.",
+        "inline": []
+      },
+      "body": {
+        "text": "The figure shows C3H8 + Cl2 giving C3H7Cl + HCl under light — H swapped for Cl. No acid-base, polymer or redox change defines it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Oxidation tempts on Cl2, but the carbon skeleton keeps its oxidation pattern minus one H.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54315,10 +54588,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "electrolysis-of-dilute-h2so4-aqueous-cuso4-cucl2-dilute-and",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Cathode reduces cations: brine gives hydrogen.",
+        "inline": []
+      },
+      "body": {
+        "text": "H+ discharges over Na+; Cl- goes to the anode. Steam, chlorine and oxygen form elsewhere or never.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Chlorine is the anode gas — cathode and anode must not be swapped.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54363,10 +54649,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "salt-hydrolysis-with-examples-such-as-nh4cl-alcl3-na2co3-and",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Neutral salt from strong acid plus strong base: NaCl.",
+        "inline": []
+      },
+      "body": {
+        "text": "NH4Cl and (NH4)2SO4 hydrolyse acidic, Na2CO3 alkaline. Only NaCl holds pH 7.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Sodium trioxocarbonate tempts on sodium, but carbonate hydrolyses basic.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54411,10 +54710,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "spontaneity-of-reactions-delta-g0-0-as-the-criterion-for-equ",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Dissociation grows with heat when Delta H is positive — but of the options, negative Delta H drives spontaneity.",
+        "inline": []
+      },
+      "body": {
+        "text": "PCl5 breakdown is endothermic; it runs when entropy wins at high T. Among bare Delta H options, negative is the spontaneity direction.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Constant or zero Delta H says nothing about driving force.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54459,10 +54771,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "alkanoates-formation-from-alkanoic-acids-and-alkanols-fats-a",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Acid plus alcohol reversibly is esterification.",
+        "inline": []
+      },
+      "body": {
+        "text": "Ethanoic acid + ethanol gives ethyl ethanoate + water. Condensation names the class; esterification names this one.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Hydrolysis runs the reverse — ester plus water back to acid and alcohol.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54507,10 +54832,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "alkanoates-formation-from-alkanoic-acids-and-alkanols-fats-a",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Split the ester at the acyl-oxygen bond: propanoic acid + ethanol.",
+        "inline": []
+      },
+      "body": {
+        "text": "CH3CH2-COO-CH2CH3 comes from propanoic acid and ethanol. Other pairings misassign carbons to each half.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Propanol tempts on three carbons, but the alcohol half here is two.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54555,10 +54893,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "alloys-steel-stainless-steel-brass-bronze-type-metal-duralum",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Stainless cutlery is the everyday alloy use.",
+        "inline": []
+      },
+      "body": {
+        "text": "Chromium steel resists rust at the table. Magnets, crushers and bridges use other steels.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Bridges use structural steel, not stainless.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54603,10 +54954,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "carbon-allotropes-their-properties-and-uses-carbon-iv-oxide",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Ammoniacal CuCl2 scrubs carbon monoxide.",
+        "inline": []
+      },
+      "body": {
+        "text": "CO complexes with Cu(I) in ammonia — the classic water-gas cleanup. H2, N2 and CO2 pass through.",
+        "inline": []
+      },
+      "trap": {
+        "text": "CO2 tempts as acidic gas, but this absorber is CO-specific.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54651,10 +55015,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "water-as-a-solvent-atmospheric-gases-dissolved-in-water-and",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Liquid water at room temperature needs hydrogen bonding.",
+        "inline": []
+      },
+      "body": {
+        "text": "H-bonds between molecules hold water condensed far above its group trend. Covalent and electrovalent bonds are within molecules.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Covalent tempts as water's bond, but boiling answers between molecules, not within.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -54699,10 +55076,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "air-pollution-hydrogen-sulphide-carbon-ii-oxide-sulphur-iv-o",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Fuel combustion is the CO source that pollutes.",
+        "inline": []
+      },
+      "body": {
+        "text": "Incomplete burning puts CO in exhaust and flue gas. Respiration gives CO2, smog is secondary chemistry, sewage gives methane.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Respiration tempts on breathing, but lungs emit CO2, not CO.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },

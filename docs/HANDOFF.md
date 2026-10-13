@@ -56,7 +56,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-350 verified (16%, derived from data/verifications.json, D62) · 355 explained
+380 verified (17%, derived from data/verifications.json, D62) · 385 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -171,8 +171,13 @@ disagree. Two lists is how subjects drift.
 7. **Chemistry batch 1 done 2026-10-13** — 30 explanations authored (keys
    computed) + subtopic tags attached + verified; chemistry 0 → 30. 74085
    figure read by eye (ester table I+IV → V, key confirmed). 74083 option
-   typo fixed (C0 → CO). Tagging now rides review: 174 tagged bank-wide,
-   drill paths filling as a side effect.
+   typo fixed (C0 → CO). Tagging now rides review: drill paths filling as
+   a side effect.
+8. **Chemistry batch 2 done 2026-10-13** — 30 explanations authored (keys
+   computed) + tags + verified; chemistry 30 → 60. Both figures read by eye:
+   74130 solubility graph (Y steady rise ✓), 74148 chlorination (substitution
+   ✓). **Milestone: JAMB paper complete** — english, maths, physics and
+   chemistry fill their slots; the readiness test now asserts `is_complete`.
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),
