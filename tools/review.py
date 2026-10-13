@@ -130,14 +130,20 @@ def fingerprint(text, options):
 FIGURE_HINTS = ("diagram", "figure", "graph", "illustrat", "shown", "sketch", "table")
 
 
-def mentions_figure_hint(text, hints=FIGURE_HINTS):
+def mentions_figure_hint(text):
     """Word-boundary figure matching — same rule as src/quarantine.rs.
 
-    Substring matching fired on real English ("debatable" holds "table"), so
-    a hint only counts standing as a word (plural s tolerated).
+    Per-hint strictness: figure/table are exact-word only (both double as
+    ordinary words — "figures" as numbers, "table" as vocabulary);
+    diagram/graph/sketch tolerate a plural s; illustrat is a prefix stem;
+    shown is exact.
     """
+    hints = (("diagram", True, False), ("figure", False, False),
+             ("graph", True, False), ("illustrat", False, True),
+             ("shown", False, False), ("sketch", True, False),
+             ("table", False, False))
     lower = text.lower()
-    for hint in hints:
+    for hint, plural, prefix in hints:
         start = 0
         while True:
             pos = lower.find(hint, start)
@@ -149,7 +155,12 @@ def mentions_figure_hint(text, hints=FIGURE_HINTS):
             while i < len(lower) and (lower[i].isalpha() or lower[i] == "-"):
                 run += 1
                 i += 1
-            after_ok = run == 0 or (run == 1 and lower[pos + len(hint)] == "s")
+            if prefix:
+                after_ok = True
+            elif run == 0:
+                after_ok = True
+            else:
+                after_ok = plural and run == 1 and lower[pos + len(hint)] == "s"
             if before_ok and after_ok:
                 return True
             start = pos + 1

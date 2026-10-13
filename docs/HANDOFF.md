@@ -55,7 +55,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-210 verified (9%, derived from data/verifications.json, D62) · 216 explained
+219 verified (10%, derived from data/verifications.json, D62) · 224 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -144,13 +144,15 @@ disagree. Two lists is how subjects drift.
    kind). Answerable as served; `verified` needs a human pass each — review
    work, in batches of ~50 via `review.py`, checking the answer by computing
    it. Known suspect: `t76545`'s key (`bought`→*son*).
-2. **Verification and explanations** — English batches 1–2 done 2026-10-13
-   (76 rows verified + 19 italic-marked rows re-verified; English 67 → 143).
-   Caught and fixed in review: `t76545` wrong key (son→port, explanation
-   rewritten), `t76459` confused body sentence (removed), `t76569` loose
-   clause (alveolar /n/ vs velar /ŋ/, corrected). Review in batches of ~50
-   via `review.py`, checking the answer by computing it, not by trusting
-   the key. Parked: `t74853` (`wound` noun/verb ambiguous with no context —
+2. **Verification and explanations** — English batches 1–3 done 2026-10-13
+   (85 rows verified + 19 italic-marked rows re-verified; English 67 → 152).
+   Figure-hint scan refined per-hint (figure/table exact-only — `figures` as
+   numbers no longer fires), which unblocked `sentinterp_001`. Caught and
+   fixed in review: `t76545` wrong key (son→port, explanation rewritten),
+   `t76459` confused body sentence (removed), `t76569` loose clause
+   (alveolar /n/ vs velar /ŋ/, corrected). Review in batches of ~50 via
+   `review.py`, checking the answer by computing it, not by trusting the
+   key. Parked: `t74853` (`wound` noun/verb ambiguous with no context —
    needs an authoring fix, not a verdict).
 3. **Subtopic tagging** — 2,175 questions belong to no drill path despite 2,092
    subtopics existing.

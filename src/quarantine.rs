@@ -69,32 +69,20 @@ fn underline_missing(store: &JsonStore) -> Vec<Finding> {
 }
 
 /// Stems that mention a figure the row does not carry.
-/// Stems that mention a figure the row does not carry.
 ///
 /// Word-boundary matching, not substring. The old scan fired on real English:
-/// "debatable" contains "table", and a word-stress item legitimately lists
-/// "table" as vocabulary. A check that fires wrongly is a bug in the check
-/// (HANDOFF §8), so a hint only counts when it stands as a word — with a
-/// plural `s` allowed, since "diagrams" is as much a figure as "diagram".
-/// Residual edges (a stem genuinely using one of these words as vocabulary)
-/// survive on purpose: quarantine is a report for a human to judge, not a
-/// verdict.
+/// "debatable" contains "table". Per-hint strictness below: `figure` and
+/// `table` double as ordinary words, so only the exact word counts. A check
+/// that fires wrongly is a bug in the check (HANDOFF §8). Residual edges (a
+/// stem genuinely using one of these words as vocabulary) survive on
+/// purpose: quarantine is a report for a human to judge, not a verdict.
 fn missing_figures(store: &JsonStore) -> Vec<Finding> {
-    const HINTS: [&str; 7] = [
-        "diagram",
-        "figure",
-        "graph",
-        "illustrat",
-        "shown",
-        "sketch",
-        "table",
-    ];
     store
         .questions()
         .iter()
         .filter(|q| {
             !q.text.has_mark(|k| matches!(k, InlineKind::Image { .. }))
-                && mentions_figure_hint(&q.text.text, &HINTS)
+                && mentions_figure_hint(&q.text.text)
         })
         .map(|q| Finding {
             kind: "missing_figure",
@@ -104,21 +92,46 @@ fn missing_figures(store: &JsonStore) -> Vec<Finding> {
         .collect()
 }
 
-/// Does `text` contain any of `hints` as a word (plural `s` tolerated)?
-fn mentions_figure_hint(text: &str, hints: &[&str]) -> bool {
+/// Does `text` mention a figure? Word-boundary matching, not substring.
+/// The old scan fired on real English: "debatable" holds "table".
+///
+/// Per-hint strictness is deliberate linguistics, not tuning: `figure`
+/// (calculations) and `table` (furniture, vocabulary, data) double as
+/// ordinary words constantly, so only the exact word counts. `diagram`,
+/// `graph` and `sketch` tolerate a plural `s` ("the diagrams below" is as
+/// much a figure); `illustrat` is a prefix stem (every continuation is
+/// figure-related); `shown` is exact. Residual edges (a stem genuinely
+/// using one of these words as vocabulary, like the word-stress item
+/// listing "table") survive on purpose: quarantine is a report for a human
+/// to judge, not a verdict.
+fn mentions_figure_hint(text: &str) -> bool {
+    // (hint, plural_s_allowed, prefix_match)
+    const HINTS: [(&str, bool, bool); 7] = [
+        ("diagram", true, false),
+        ("figure", false, false),
+        ("graph", true, false),
+        ("illustrat", false, true),
+        ("shown", false, false),
+        ("sketch", true, false),
+        ("table", false, false),
+    ];
     let lower = text.to_lowercase();
     let bytes = lower.as_bytes();
     let is_word = |b: u8| b.is_ascii_alphabetic() || b == b'-';
-    for hint in hints {
+    for (hint, plural, prefix) in HINTS {
         let mut from = 0usize;
         while let Some(pos) = lower[from..].find(hint) {
             let start = from + pos;
             let end = start + hint.len();
             let before_ok = start == 0 || !is_word(bytes[start - 1]);
-            // "diagram" / "diagrams" count; "diagrammatic" does not — the
-            // trailing run must be a lone 's' or nothing at all.
-            let after_len = bytes[end..].iter().take_while(|&&b| is_word(b)).count();
-            let after_ok = after_len == 0 || (after_len == 1 && bytes[end] == b's');
+            let run = bytes[end..].iter().take_while(|&&b| is_word(b)).count();
+            let after_ok = if prefix {
+                true
+            } else if run == 0 {
+                true
+            } else {
+                plural && run == 1 && bytes[end] == b's'
+            };
             if before_ok && after_ok {
                 return true;
             }
@@ -430,11 +443,19 @@ mod tests {
     }
 
     #[test]
-    fn plurals_still_count_as_figures() {
+    fn plurals_still_count_as_figures_but_numbers_do_not() {
         // "diagrams" is as much a figure as "diagram".
-        assert!(mentions_figure_hint("use the diagrams below", &["diagram"]));
+        assert!(mentions_figure_hint("use the diagrams below"));
         // "diagrammatic" is prose, not a figure.
-        assert!(!mentions_figure_hint("a diagrammatic sketch", &["diagram"]));
+        assert!(!mentions_figure_hint("a diagrammatic explanation"));
+        // "figures" here means numbers, not diagrams — figure/table are
+        // exact-word only because they double as ordinary words.
+        assert!(!mentions_figure_hint(
+            "the manager knew the figures would not add up"
+        ));
+        assert!(mentions_figure_hint("see the figure below"));
+        // Prefix stem: every continuation of illustrat is figure-related.
+        assert!(mentions_figure_hint("as illustrated in the passage"));
     }
 
     #[test]

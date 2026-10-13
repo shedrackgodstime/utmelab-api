@@ -3960,5 +3960,131 @@
     "detail": null,
     "content_hash": "7acf541eaa816f96bdfc837f91c3b1fca7596aaf8b6bf164b3c3819418a5da4f",
     "created_at": "2026-10-13T10:03:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74804_0284",
+    "question_id": "q_claim_2025_english-language_74804",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch3-lexis",
+    "detail": null,
+    "content_hash": "c8040914d178ab084802bc3ae5c15510093013042804ec09de1ab709bc2032ff",
+    "created_at": "2026-10-13T10:11:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74805_0285",
+    "question_id": "q_claim_2025_english-language_74805",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch3-lexis",
+    "detail": null,
+    "content_hash": "bba807a580c13dd592d0bdef16a555ecb268ccb72a78f157620b8fdb9d14fd00",
+    "created_at": "2026-10-13T10:11:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74806_0286",
+    "question_id": "q_claim_2025_english-language_74806",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch3-lexis",
+    "detail": null,
+    "content_hash": "93274d067d611fb7a24fff2f6ac2822173109c7bee56133a4515379328fe1839",
+    "created_at": "2026-10-13T10:11:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74807_0287",
+    "question_id": "q_claim_2025_english-language_74807",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch3-lexis",
+    "detail": null,
+    "content_hash": "dd81c250a0301cb3ca7c3f518e50623f2502146adb582c1080e1f16a24b567ea",
+    "created_at": "2026-10-13T10:11:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74808_0288",
+    "question_id": "q_claim_2025_english-language_74808",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch3-lexis",
+    "detail": null,
+    "content_hash": "66903b6d8be776f03982ae8fdfca87f10e78c78650a61db5d27da8159dde91ea",
+    "created_at": "2026-10-13T10:11:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74809_0289",
+    "question_id": "q_claim_2025_english-language_74809",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch3-lexis",
+    "detail": null,
+    "content_hash": "7ac31e6decb0d3dd14064c184f156a3ca19722737b430218fc4678af54875ebe",
+    "created_at": "2026-10-13T10:11:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74810_0290",
+    "question_id": "q_claim_2025_english-language_74810",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch3-lexis",
+    "detail": null,
+    "content_hash": "0f42b163bfb14ecad7973eaffed71f7e1d614b158a7c424a52a4babe8fb319ab",
+    "created_at": "2026-10-13T10:11:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74811_0291",
+    "question_id": "q_claim_2025_english-language_74811",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch3-lexis",
+    "detail": null,
+    "content_hash": "15e706392b236925929c7fc548d884647b1128d00d8ad8f3eca171e28cfbfaa0",
+    "created_at": "2026-10-13T10:11:02Z"
+  },
+  {
+    "id": "v_q_authored_eng_sentinterp_001_0292",
+    "question_id": "q_authored_eng_sentinterp_001",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "batch3-review",
+    "detail": null,
+    "content_hash": "d78dcf49ffb99f07fa7bfc3925c894a5ccd234af08076c2655d38ea0e9d0c9d4",
+    "created_at": "2026-10-13T10:14:31Z"
   }
 ]
