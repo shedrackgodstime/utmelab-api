@@ -14348,5 +14348,1041 @@
     "detail": null,
     "content_hash": "a4d22478d1b6b1fbe8627c4c348397caa06339f6f638738e079feb8946c52874",
     "created_at": "2026-10-13T23:34:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74909_1026",
+    "question_id": "q_claim_2025_home-economics_74909",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "a90f43e10d7ae3ed90cc0808f01e00fc85091cce6fec21a5126f4d48188e6906",
+    "created_at": "2026-10-13T23:36:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74910_1027",
+    "question_id": "q_claim_2025_home-economics_74910",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "b7789dea2837ed7d3ace34fe559f03a286469dd66c8a801bf34cc6220a6397d4",
+    "created_at": "2026-10-13T23:36:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74911_1028",
+    "question_id": "q_claim_2025_home-economics_74911",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "a77874d20aebd34f186651d5bcc0ce8f4b6fb22a28fa0195b4b91c089dc0bf98",
+    "created_at": "2026-10-13T23:36:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74912_1029",
+    "question_id": "q_claim_2025_home-economics_74912",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "10480e73f339b37427f5b0bb6e92c982a9ad2abdc94caf00e83ed59a088ab993",
+    "created_at": "2026-10-13T23:36:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74913_1030",
+    "question_id": "q_claim_2025_home-economics_74913",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "dadfa27a97c483445879324d942af1501989ce596baaae35be2e303b7f678762",
+    "created_at": "2026-10-13T23:36:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74915_1031",
+    "question_id": "q_claim_2025_home-economics_74915",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "178a8629fafc5d3cb0b0c04faa23d7a07846a9b64d1930008b2fff3d9ea01c09",
+    "created_at": "2026-10-13T23:36:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74916_1032",
+    "question_id": "q_claim_2025_home-economics_74916",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "f4b7eae8dcf4fa3fae0dcc5f9ae4f74de25058b3f0837b14fdb40d4e5dbfa271",
+    "created_at": "2026-10-13T23:36:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74917_1033",
+    "question_id": "q_claim_2025_home-economics_74917",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "463e0437ea3b078a3ee4a9769a1407bf7892a12373dce2edf75d568eca3f2130",
+    "created_at": "2026-10-13T23:36:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74918_1034",
+    "question_id": "q_claim_2025_home-economics_74918",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "6a48eb238c0b07f46f6e847d02320966eecc9743c426f2273f5ed896e247302f",
+    "created_at": "2026-10-13T23:36:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74919_1035",
+    "question_id": "q_claim_2025_home-economics_74919",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "99e9f662562942b11500f0e304732177502eb0cd2d92409bc74991c6a01dda60",
+    "created_at": "2026-10-13T23:36:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74920_1036",
+    "question_id": "q_claim_2025_home-economics_74920",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "46b943e82b9c95f3b048edcedabeb3c9b902fdfb7d0c345f468dc217ce9956cd",
+    "created_at": "2026-10-13T23:36:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74921_1037",
+    "question_id": "q_claim_2025_home-economics_74921",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "1862e3800380988ff89505173d6232a2d5435488bea0badf0d0fcc26930367e1",
+    "created_at": "2026-10-13T23:36:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74922_1038",
+    "question_id": "q_claim_2025_home-economics_74922",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "eec80619a89986761955ad42d78a14fe348469ad32d6c137751310c7b5b05981",
+    "created_at": "2026-10-13T23:36:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74923_1039",
+    "question_id": "q_claim_2025_home-economics_74923",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "8abecfd7c713aae6c2170f8f8603597eeb0a5beb1f9488d4688a5216229c9fe7",
+    "created_at": "2026-10-13T23:36:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74924_1040",
+    "question_id": "q_claim_2025_home-economics_74924",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "4ac73419c49aff82dee278f54e0c8fc740a0176f6d8d1da29f777bf58a8b935b",
+    "created_at": "2026-10-13T23:36:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74925_1041",
+    "question_id": "q_claim_2025_home-economics_74925",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "2c0f472b4095217b211288c5059dbe6e187a428dfeaf2b48e5e7215648f20df9",
+    "created_at": "2026-10-13T23:36:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74926_1042",
+    "question_id": "q_claim_2025_home-economics_74926",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "9f873822175c8055bf1332ce4cd64742ddd30156d600e557ac8f6b6848f5e491",
+    "created_at": "2026-10-13T23:36:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74927_1043",
+    "question_id": "q_claim_2025_home-economics_74927",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "de4960ecf23503afb757c7a7e9a17ffcbef7aa817d2f906df92a3ccdcde6aa3e",
+    "created_at": "2026-10-13T23:36:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74929_1044",
+    "question_id": "q_claim_2025_home-economics_74929",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "89436f1464637afd7761642cbc16ee10b24f401fb441b03090141703f1ee5b7f",
+    "created_at": "2026-10-13T23:36:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74930_1045",
+    "question_id": "q_claim_2025_home-economics_74930",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "46e67f54bfb1536f920b2ed9d3bf2f4815e0cd2722ed9e92ee1c625cc38f8582",
+    "created_at": "2026-10-13T23:36:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74931_1046",
+    "question_id": "q_claim_2025_home-economics_74931",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "53fb6ee3e52a67c8ad94c5d9e63e8a89d4279414feb8b6961d1d82cf6a3b1990",
+    "created_at": "2026-10-13T23:36:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74932_1047",
+    "question_id": "q_claim_2025_home-economics_74932",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "a312045e8f22892859ea058524bdf8cafebf3eba9d4ccc756c2d35f4b8fd7f47",
+    "created_at": "2026-10-13T23:36:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74933_1048",
+    "question_id": "q_claim_2025_home-economics_74933",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "6d86229b7b4315d3eab5ae133e5cf408d22afdf3a19183c27abb756c7591431f",
+    "created_at": "2026-10-13T23:36:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74934_1049",
+    "question_id": "q_claim_2025_home-economics_74934",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "f9bc267d415ab8dbf873281c293210bfac3aea7ec02ca446a340d3b76cdb2227",
+    "created_at": "2026-10-13T23:36:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74935_1050",
+    "question_id": "q_claim_2025_home-economics_74935",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "cab7af2b9f9be22692c125ba668a739feba8aa6c36f782f6dab70d2f7137a91a",
+    "created_at": "2026-10-13T23:36:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74936_1051",
+    "question_id": "q_claim_2025_home-economics_74936",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "816e772abd53343e1d26c20282f1742ccad3cac3627e094b2a58b2c84a188b38",
+    "created_at": "2026-10-13T23:36:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74937_1052",
+    "question_id": "q_claim_2025_home-economics_74937",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "2f346f1fddb645e365976983a51b6f19f6202a982d7eac9ab933559d70884bbb",
+    "created_at": "2026-10-13T23:36:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74938_1053",
+    "question_id": "q_claim_2025_home-economics_74938",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "480007d775bebc6bbb99468344d3f37bc6760ab2435f6d56870af805e83212c1",
+    "created_at": "2026-10-13T23:36:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74939_1054",
+    "question_id": "q_claim_2025_home-economics_74939",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "555c7c8788f0fb051d02a08111cbb39024acbe4883a583caa3505ccef35ee5bd",
+    "created_at": "2026-10-13T23:36:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74940_1055",
+    "question_id": "q_claim_2025_home-economics_74940",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "2772d7497af8cc159289bbafd8ce1c2a4aa3d703afdafefaf648b8b27bd551f8",
+    "created_at": "2026-10-13T23:36:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74941_1056",
+    "question_id": "q_claim_2025_home-economics_74941",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "1a9d0032277f9ebad4b38084fd443a3a7d3750f9b65e2a9a29d74a99cf6000be",
+    "created_at": "2026-10-13T23:36:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74942_1057",
+    "question_id": "q_claim_2025_home-economics_74942",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "ca3adede7ce5f3cb7460b9a4050f09897010af6060066b97e3ba9dc42aceca2b",
+    "created_at": "2026-10-13T23:36:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74943_1058",
+    "question_id": "q_claim_2025_home-economics_74943",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "0f34ee31bbe71a9536e80f7313d2a45290d8bf607a9c5682d4caf84e5b070989",
+    "created_at": "2026-10-13T23:36:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74944_1059",
+    "question_id": "q_claim_2025_home-economics_74944",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "0a91a02326bf8060603754aff82c69fb75a9d582676cad08fc52771351f23a9c",
+    "created_at": "2026-10-13T23:36:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74945_1060",
+    "question_id": "q_claim_2025_home-economics_74945",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "6e9f072de7e0857f18d0c6617f881df3730813755a0a8363710fee4f31d8bb35",
+    "created_at": "2026-10-13T23:36:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74946_1061",
+    "question_id": "q_claim_2025_home-economics_74946",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "2cc169c7cdce86859c9d190d653ad7d2f56a7a228bc71e9693fccde9aa3999d9",
+    "created_at": "2026-10-13T23:36:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74947_1062",
+    "question_id": "q_claim_2025_home-economics_74947",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "fcb52c272fa86ae637da4625b028e6f5c4e0f096ba246c4e77bbca3a20fff710",
+    "created_at": "2026-10-13T23:36:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74948_1063",
+    "question_id": "q_claim_2025_home-economics_74948",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "3f71b90fba8c5d42f94cf2f0c3545037d8a63f90adfb0614f8fec9f7073c6cc6",
+    "created_at": "2026-10-13T23:36:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74949_1064",
+    "question_id": "q_claim_2025_home-economics_74949",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "f42039b351d2e943af59fa490b08373f58799a1a717f936e3b7325771da534b7",
+    "created_at": "2026-10-13T23:36:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74950_1065",
+    "question_id": "q_claim_2025_home-economics_74950",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "89a52f64eadc056332241b1b645a8ac94cce9a030093ad3917b1ca3ded398cae",
+    "created_at": "2026-10-13T23:36:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74951_1066",
+    "question_id": "q_claim_2025_home-economics_74951",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "4261f40435c0046f88abd0e8987350a453352f0a16d9d6da739b2346b164712e",
+    "created_at": "2026-10-13T23:36:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74953_1067",
+    "question_id": "q_claim_2025_home-economics_74953",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "6c433b64ab6a97ed3800e27bc6dadcaaba6262095f6ae016e8d3f65750dd4f4a",
+    "created_at": "2026-10-13T23:36:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74954_1068",
+    "question_id": "q_claim_2025_home-economics_74954",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "b7f92bfb1f230a372aee9ba969dc1e4adc5021a6d856e89ad11d816aa4d30e6c",
+    "created_at": "2026-10-13T23:36:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74955_1069",
+    "question_id": "q_claim_2025_home-economics_74955",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "ad221da47585ae4c7fc5f229692c436ba99293c831593e9c5eae7836d4b8f229",
+    "created_at": "2026-10-13T23:36:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74956_1070",
+    "question_id": "q_claim_2025_home-economics_74956",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "4c606f5688ff31d5aed98f4c6ed194ab5846088b982a1f2ba7a20a47f0945c70",
+    "created_at": "2026-10-13T23:36:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74958_1071",
+    "question_id": "q_claim_2025_home-economics_74958",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "503b514fa127271fd90e18630ae8645e4de465189aaf01af81d145f3d840f495",
+    "created_at": "2026-10-13T23:36:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74959_1072",
+    "question_id": "q_claim_2025_home-economics_74959",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "9e15bc6de92a6ce646588f30c4e4941b3bd65a6961e500b86615f22829baf925",
+    "created_at": "2026-10-13T23:36:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74960_1073",
+    "question_id": "q_claim_2025_home-economics_74960",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "8f53d54039937d251c261f60071cf2252165d8300cd098f6cd2cc69cbf59aad8",
+    "created_at": "2026-10-13T23:36:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74961_1074",
+    "question_id": "q_claim_2025_home-economics_74961",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "b33521fe4ffc20da5111e615bda9d8997eac095d78b0cd06b4ccbcf81f6e1e0f",
+    "created_at": "2026-10-13T23:36:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74963_1075",
+    "question_id": "q_claim_2025_home-economics_74963",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "baf588ce4052d1526de572d3c6ba11275ec45d2133b0946071f65ea61ff6a4ea",
+    "created_at": "2026-10-13T23:36:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74964_1076",
+    "question_id": "q_claim_2025_home-economics_74964",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "18658ea8c13220726dbd5719f73d84c32a220e86faaf80dc257dd18c98d7de76",
+    "created_at": "2026-10-13T23:36:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74965_1077",
+    "question_id": "q_claim_2025_home-economics_74965",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "ce7277ad55086096fad4229b9767615a869bd1386dcea7302c6567d710d01108",
+    "created_at": "2026-10-13T23:36:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74966_1078",
+    "question_id": "q_claim_2025_home-economics_74966",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "48655dc68f3f74c2fb40aa6a6f737ca32b03e03767149314e3cc9cefdd0c15f6",
+    "created_at": "2026-10-13T23:36:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74967_1079",
+    "question_id": "q_claim_2025_home-economics_74967",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "4a9922d0aeff5cc02351747bd994de83518c94a0cde8a0d9ba2c81e087f241ed",
+    "created_at": "2026-10-13T23:36:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74968_1080",
+    "question_id": "q_claim_2025_home-economics_74968",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "fdfabf6006a26ca45ea69308427f3df06f4de032d76d92a6283c45c1304e82b3",
+    "created_at": "2026-10-13T23:36:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74969_1081",
+    "question_id": "q_claim_2025_home-economics_74969",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "c6d498325a388663fbb301d7241c33dc21c6a71e4524f2f6003405d98f33d5a6",
+    "created_at": "2026-10-13T23:36:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74970_1082",
+    "question_id": "q_claim_2025_home-economics_74970",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "e3e2fb40983d35b180ec138ddf7209a45277f0bd49067de448dbe800f7ce2737",
+    "created_at": "2026-10-13T23:36:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74971_1083",
+    "question_id": "q_claim_2025_home-economics_74971",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "bce3376c8ccac13e90b7d622596f0428eba32c5b2fe7816cc494197a4294530b",
+    "created_at": "2026-10-13T23:36:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74972_1084",
+    "question_id": "q_claim_2025_home-economics_74972",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "a1771e44ba6f3ff73c57a98817d06ddc6450121beb75b4cc9ae05fbed4696c21",
+    "created_at": "2026-10-13T23:36:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74973_1085",
+    "question_id": "q_claim_2025_home-economics_74973",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "4df06a7acc33baf8c638c9e23152516a14f5e89ba61dd53aaa654e08009de562",
+    "created_at": "2026-10-13T23:36:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74974_1086",
+    "question_id": "q_claim_2025_home-economics_74974",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "dd1b2918dd892995fc6f7968dbbd854c66d630ff682cb457852a6aed75f3dae5",
+    "created_at": "2026-10-13T23:36:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74975_1087",
+    "question_id": "q_claim_2025_home-economics_74975",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "249236fa119a754d1b6fa0de628b786a962fba36372b4fb76dc2c89402c8fa95",
+    "created_at": "2026-10-13T23:36:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74977_1088",
+    "question_id": "q_claim_2025_home-economics_74977",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "a1988edc31195f3daadd3684f945f88749522bd0155506f5c782d117b7ca569f",
+    "created_at": "2026-10-13T23:36:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74978_1089",
+    "question_id": "q_claim_2025_home-economics_74978",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "7c433b95ad7e546cb3e3ba5ac781858c5779b9dce7b3abe0e6d3c20abbf7afaa",
+    "created_at": "2026-10-13T23:36:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74979_1090",
+    "question_id": "q_claim_2025_home-economics_74979",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "c1d11a2142b2043d31a6edeabc4890734d901b18f3bd662ad2b0231858f8ac27",
+    "created_at": "2026-10-13T23:36:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74980_1091",
+    "question_id": "q_claim_2025_home-economics_74980",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "f5292ad8170ce197d30dfc32da63a008534e3d9bfc161240d1cb33645f1c5c4b",
+    "created_at": "2026-10-13T23:36:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74981_1092",
+    "question_id": "q_claim_2025_home-economics_74981",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "cf955d19a2aa14c6f11df65aeabd9d22562fb4f8a51d2baca4fbfb09efb61a68",
+    "created_at": "2026-10-13T23:36:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74982_1093",
+    "question_id": "q_claim_2025_home-economics_74982",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "2b3fffb51a79a477e88f2152029a3b742a364f1099a555317c74208f7e1bc964",
+    "created_at": "2026-10-13T23:36:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74983_1094",
+    "question_id": "q_claim_2025_home-economics_74983",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "1d548de6b1ced9d91a216e3f3ea959b11b5d3fd27c29a035c53f8500e875b624",
+    "created_at": "2026-10-13T23:36:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74984_1095",
+    "question_id": "q_claim_2025_home-economics_74984",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "5e2ccef9358439d3e4768bc31da01f2a44f9d8bf2be5c2c863fd97f3cc148ba9",
+    "created_at": "2026-10-13T23:36:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74985_1096",
+    "question_id": "q_claim_2025_home-economics_74985",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "88dc7671dbfdb3bc85b7f72c2b7f07f758b74aa823c68387f0f08aa1495a509f",
+    "created_at": "2026-10-13T23:36:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74986_1097",
+    "question_id": "q_claim_2025_home-economics_74986",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "7cb53c930fb07c24790d8c16708beee0f06053b177d6da4c76c8838bcef7f83d",
+    "created_at": "2026-10-13T23:36:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74987_1098",
+    "question_id": "q_claim_2025_home-economics_74987",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "c25650f47ca4f2cd2c991b7ca2eacf5df847a0d14a889de0a670661e6de1d18e",
+    "created_at": "2026-10-13T23:36:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_home-economics_74988_1099",
+    "question_id": "q_claim_2025_home-economics_74988",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "home-ec-rewrite1",
+    "detail": null,
+    "content_hash": "d004d5e3a0409cae1f58ba0538ca8cbfb6c6d9e8466879061949f76742f881be",
+    "created_at": "2026-10-13T23:36:47Z"
   }
 ]

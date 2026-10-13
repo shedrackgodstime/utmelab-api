@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-912 verified (41%, derived from data/verifications.json, D62) · 952 explained
+1,026 verified (46%, derived from data/verifications.json, D62) · 1,031 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -247,6 +247,12 @@ disagree. Two lists is how subjects drift.
     inspection: comprehension answers match passage; Fagunwa authorship
     factual) + correct tags + verified; yoruba 0 → 40 of 40. First subject
     of the post-audit rewrite.
+20. **Home-economics proper rewrite done 2026-10-14** — 73 authored + 1 key
+    fix + tags + verified; home-economics 0 → 74 of 75. **74971 key
+    corrected** a → c (zigzag, binding and overlock ALL prevent fraying, so
+    All-of-the-above — D45 pattern, documented in trap). **74957 parked**:
+    cotton AND rayon both fit soft/breathable/absorbent — two correct
+    options. 74935 option text deduped.
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),
