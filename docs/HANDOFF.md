@@ -216,7 +216,6 @@ disagree. Two lists is how subjects drift.
     1979 House age disputed (IPU election archive says 21, textbooks say 30,
     no 35/21 option exists) — needs the constitution text, never a verdict.
     Subject complete except parked.
-16. **Economics batch 1 (whole subject) done 2026-10-13** — (see §7 item 16).
 16. **Economics batch 1 (whole subject) done 2026-10-13** — 76 authored +
     1 key fix + tags + verified; economics 0 → 77 of 78. 76919 figure read
     by eye (DMU table ✓). **76617 key corrected** d → c (save-time-produce-
