@@ -1,6 +1,9 @@
 # WAEC / NECO — what the boards actually publish
 
-**Status:** research note, 2026-10-13. **No D-row yet, no data changed.**
+**Status:** research note, 2026-10-13. **Landed since:** §4 fixed by small-D66
+(counts nulled); §10 rows 1–2 implemented, row 3 superseded by set-membership
+joins; pan-African direction noted in §9. **No D-row yet for WAEC content
+itself, no WAEC/NECO data changed.**
 This is the provenance record for the claims below; the decision log is the law.
 Read before touching `subjects.json`, `topics.json` or `scheme.rs` for a
 non-JAMB exam.
@@ -282,7 +285,7 @@ stays deferred.
 |---|---|---|
 | 1 | `Subject.full_exam_questions: u32` → `objective_paper_questions: Option<u32>` | §4. `None` covers both "unverified" and "this subject is three papers" — same value honestly, because in both cases we cannot state a single count. |
 | 2 | `data/exams.json`, `Exam` as a real record | The hardcode `(exam == "JAMB").then_some(120)` at `scheme.rs:136`, and `is_complete(min_electives)` taking the paper shape from a **query parameter** — the exam's fact, sitting in the caller's hands. |
-| 3 | `Topic.country: Option<String>`, null = all member countries | §1. Ghana becomes a data addition, not a rebuild. |
+| 3 | ~~`Topic.country: Option<String>`, null = all member countries~~ → `topic_countries` join (set membership; absence = universal) | §1. Single scalar cannot hold Section C's four countries — sets shipped instead. |
 | 4 | `Subject.is_compulsory: bool` → an exam-level requirement rule | Already wrong: NECO has 2 subjects flagged compulsory while its rule is 4, one of which is *one of* a group. A boolean cannot say that. **Deferred** — record why, build later. |
 
 ### What this buys

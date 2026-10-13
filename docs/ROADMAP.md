@@ -2,11 +2,13 @@
 
 **The single plan.** Phases P0→P4. Status 2026-10-13: **P0 done** (`43f1115`),
 **P1 done** (`bf4295f`), **D61 proven** (`97f18bd`), **78-backfill done**
-(`e76d61a`). Next: English review batches, then P4.
+(`e76d61a`), English + physics review batches ongoing, **small-D66 done**
+(exam record + nullable counts), **country scope as sets done** (`09e8536`).
+Next: content batches, then P4.
 
 Each phase below carries goal / decisions / touches / acceptance / DO NOT.
 `TODO.md` holds work items moved out of here; the decision log
-(`QUESTION_BANK_DECISIONS.md`, now D1–D64) is the law. No code without a
+(`QUESTION_BANK_DECISIONS.md`, now D1–D66) is the law. No code without a
 D-row (D7).
 
 > External review (`site/temp-chatgpt-review.md`) was read, its takes folded

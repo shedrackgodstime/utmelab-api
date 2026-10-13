@@ -37,7 +37,7 @@ cargo fmt
 cargo run -- openapi --out site/openapi.json  # regenerate the spec after route changes
 ```
 
-**All tests are green** (105) and clippy is clean as of 2026-10-13. The D53
+**All tests are green** (113) and clippy is clean as of 2026-10-13. The D53
 key work's `key_prefix` (first 11 chars of `sk_…`, support lookup only, never
 authenticates) is intended and covered by tests — the earlier "one test is red"
 note was written from a pre-merge view and is resolved.
