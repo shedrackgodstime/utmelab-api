@@ -97,7 +97,7 @@ through. 100 stems, 251 options carry it today.
 **Markdown is a trap, not the answer** — CommonMark has no underline at all, so
 emphasis would have to mean something it does not mean.
 
-## 5. Implementation surface (not yet touched)
+## 5. Implementation surface (landed P1 2026-10-13 — record kept)
 
 - `src/bank/model.rs` — `Question.text`, `Choice.text`, `Explanation.{key_point,body,trap}`,
   `Passage.text`; **delete** `emphasis: Option<String>` (:125) and `ImageRef` (:84)
@@ -122,15 +122,14 @@ emphasis would have to mean something it does not mean.
 3. **Do marks belong on novel-question explanations too?** `RenderedNovelQuestion`
    embeds an `Explanation`, so yes by construction — confirm that is intended.
 
-## 7. Suggested order
+## 7. Suggested order (all done P1 2026-10-13 — record kept)
 
-1. Rust types + load-time bounds/overlap validation, with tests **before** any data moves
-2. Migration script for the 2,289 rows; run it; verify counts and a spot-check
-3. `tools/` updates, then a full clean harvest to prove D61 end to end
-4. Regenerate `site/openapi.json`, confirm the reference builds
-5. **Only then** rewrite the docs — `emphasis` is undocumented in the guides today,
-   and the LaTeX sentence under-describes which fields may carry math
-6. `cargo test` green, clippy clean, then commit
+1. ~~Rust types + load-time bounds/overlap validation, with tests **before** any data moves~~ — done (9 model tests green pre-migration)
+2. ~~Migration script for the 2,289 rows; run it; verify counts and a spot-check~~ — done (2,288 rows + novels + passages; 134/54 verified reproduced; Python replica cross-checked)
+3. ~~`tools/` updates, then a full clean harvest to prove D61 end to end~~ — done (live 3-row harvest → counted import refusals; caught + fixed import's silent-drop gap)
+4. ~~Regenerate `site/openapi.json`, confirm the reference builds~~ — done (utoipa handles flatten + adjacent tags; `site/openapi.json` is an untracked build artifact)
+5. ~~**Only then** rewrite the docs~~ — done (this file, HANDOFF, TODO, UNDERLINE)
+6. ~~`cargo test` green, clippy clean, then commit~~ — done (105/106 green through P1–P3, `bf4295f`)
 
 ## 8. Do not
 

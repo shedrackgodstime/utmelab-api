@@ -29,8 +29,8 @@ const FILES: [&str; 5] = [
 // ── embedded catalog (slow-moving, baked into the binary) ────────────────────
 //
 // Subjects/topics/subtopics/passages/novels change monthly and total ~750 KiB.
-// They are compiled in so a release is `binary + web/` plus the fast-moving
-// `questions.json` — and, once questions move to Turso, `binary + web/` alone.
+// They are compiled in so a release is `binary + site/` plus the fast-moving
+// `questions.json` — and, once questions move to Turso, `binary + site/` alone.
 // Questions stay file-based until that cutover (transitional): review churn is
 // daily and must not require a rebuild.
 //

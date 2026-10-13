@@ -48,7 +48,7 @@ note was written from a pre-merge view and is resolved.
 | `docs/QUESTION_BANK_DECISIONS.md` | D1–D63. The law. Each row states the rule, its status (PINNED/DEFERRED/REJECTED/SUPERSEDED) and its grounds. |
 | `docs/TODO.md` | what is next, and why something is not |
 | `docs/UNDERLINE_PROBLEM.md` | the largest open defect; read before touching English |
-| `docs/RICH_TEXT_HANDOFF.md` | **D60/D61 `RichText` — decided, not started.** Why `emphasis`/`image` become one mark array on every text field; implementation surface and open questions |
+| `docs/RICH_TEXT_HANDOFF.md` | **D60/D61 `RichText` — implemented P1.** Why `emphasis`/`image` became one mark array on every text field; open questions it answered |
 | `docs/API_REVIEW.md`, `docs/KEY_LIFECYCLE_PLAN.md` | from the D53 key work |
 
 ## 4. Current state

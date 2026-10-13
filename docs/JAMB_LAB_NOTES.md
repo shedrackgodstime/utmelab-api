@@ -2,11 +2,12 @@
 
 > Filed 2026-10-11 while wiring Jamb-Lab (Vite client) to this API.
 > Nothing here changes behavior — open items for the API owner, plus
-> context the client already handles. Safe to delete once resolved.
+> context the client already handles. §1 resolved (see below); §§2–3 stay
+> open client context — do not delete this file while they do.
 
-## 1. Broken image on a verified row (needs owner fix)
+## 1. Broken image on a verified row (resolved 2026-10-11, D55)
 
-- Row: `q_authored_physics_shm_002` (physics, JAMB 2025, authored, `verified: true`)
+- Row: `q_authored_physics_shm_002` (physics, JAMB 2025, authored)
 - It asks about a displacement-time graph but points at the relative path
   `diagrams/shm_displacement_time.svg`, which is served by nothing —
   this API serves JSON only, and no static host carries that path.
@@ -14,13 +15,9 @@
   the single outlier (`non-absolute: 1` across the whole bank).
 - Without the graph the question is unanswerable, same class as the
   78 underline questions already tracked in `TODO.md`.
-- Suggested fix: mirror the SVG into the planned asset repo and backfill
-  the row with the absolute URL (same treatment as the deferred image
-  mirror job in `TODO.md`).
-- Client-side status: Jamb-Lab drops the dead `<img>` via its error
-  handler and renders the stem text-only. No client change wanted —
-  hiding the row locally would second-guess the API's `verified` flag
-  at the wrong layer.
+- Resolved as: dead path stripped, image gone, `verified:false` (D55) — the
+  mirror job restores both when the asset repo exists. Client note stands:
+  Jamb-Lab drops dead `<img>` via its error handler and renders text-only.
 
 ## 2. Client context (for orientation, not action)
 

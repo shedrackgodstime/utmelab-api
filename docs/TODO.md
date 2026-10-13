@@ -11,25 +11,26 @@
 - [x] ~~**Merged key work (D53) has a failing test**~~ — **resolved 2026-10-11**: the prefix is intended (support lookup, never authenticates); the test now asserts the full plaintext is absent and any `sk_`-prefixed string is ≤11 chars. Suite is 105 green (2026-10-13).
 
 - [ ] **39 Lekki Headmaster questions still staged** in `data/inbox/lekki-headmaster-candidates.json`. Of 77 harvested, 9 were not novel questions (returned to the bank), 15 had truncated stems carrying no question at all, 1 duplicated an existing question with a garbled name, and only 4 could be verified against our own chapter summaries — those 4 joined the novel document (50 -> 54). The rest stay staged: their keys are third-party and our summaries cannot check their detail, so adding them would raise the count without raising trust.
-- [x] **v1 key seam (D53, Phase 0+1)** — shipped 2026-10-11: `KeyStore::{list,rotate,reload_if_changed}`, extended `ApiKey` (`account_id/plan/prefix/expires_at`, defaulted), `KeyBackend::{File,Remote}` (async, one shape), `TursoKeyStore` (`turso_serverless`, DDL auto-create, 30s TTL cache, cache invalidation on revoke/rotate), `key list/rotate/import` CLI, config accepts `TURSO_DB_URL`/`TURSO_DB_TOKEN` (+alias warnings, half-creds fall back to file with warning). Verdict met: `cargo build` green, `cargo test` 72/72, clippy clean, live smoke vs **real Turso**: create→`/keys/me` 200→CLI revoke (no restart)→200 within TTL→**401 after TTL**. Known trade-off: cross-process CLI revoke visible within `KEY_CACHE_TTL_SECS` (30s), same-process revokes immediate — plan §11.1. File backend unchanged and still the dev default.
-- [ ] **Assemble a paper** (`POST /exams/{exam}/papers`) — **gated on content, not on code** (D41). Scheme + readiness are live. Assembly (shuffle, `?seed=`, answers withheld, score) waits until a subject can fill its full count: JAMB needs 180 verified rows, we hold 103.
+- [x] **v1 key seam (D53, Phase 0+1)** — shipped 2026-10-11 (note: the trailing "file backend still the dev default" was retired by D53-final — runtime is Turso-or-error; file is tests + import-source only). `KeyStore::{list,rotate,reload_if_changed}`, extended `ApiKey` (`account_id/plan/prefix/expires_at`, defaulted), `KeyBackend::{File,Remote}` (async, one shape), `TursoKeyStore` (`turso_serverless`, DDL auto-create, 30s TTL cache, cache invalidation on revoke/rotate), `key list/rotate/import` CLI, config accepts `TURSO_DB_URL`/`TURSO_DB_TOKEN` (+alias warnings, half-creds fall back to file with warning). Verdict met: `cargo build` green, `cargo test` 72/72, clippy clean, live smoke vs **real Turso**: create→`/keys/me` 200→CLI revoke (no restart)→200 within TTL→**401 after TTL**. Known trade-off: cross-process CLI revoke visible within `KEY_CACHE_TTL_SECS` (30s), same-process revokes immediate — plan §11.1.
+- [ ] **Assemble a paper** (`POST /exams/{exam}/papers`) — **gated on content, not on code** (D41). Scheme + readiness are live. Assembly (shuffle, `?seed=`, answers withheld, score) waits until a subject can fill its full count: JAMB needs 180 verified rows, we hold 134.
+- [ ] **`Cache-Control: public` on metered `/questions`** — flagged by the Jamb-Lab consumer notes (`docs/JAMB_LAB_NOTES.md` §3): a shared cache could serve paid-tier rows to URL-holders with no key. `private` may match the D27 metering intent. Review the middleware, decide, record.
 
 ## Content (English-first, D34)
 
-- [ ] **Grow the catalog (D50).** Government is in: 32 topics / 101 subtopics. Every remaining subject is one command: `python3 tools/import_syllabus.py --subject economics --display Economics`. Do Economics, Commerce, CRS, History, Geography next — then harvest.
+- [ ] **Grow the catalog (D50).** Catalog stands at 566 topics across 24 JAMB subjects (Government landed first: 32 topics / 101 subtopics). Remaining: subtopic coverage where thin, then questions — not more subjects.
 - [ ] **Harvest 2025 UTME questions (D49).** `tools/harvest.py` works; the catalog blocker is now clearing. `claimed_paper` rows land unverified and unexplained, by design.
 - [x] **A merge step** — `cargo run -- import [--dry-run]`, three gates, every refusal counted (D51). 675 rows in; 3 duplicates and 1 figure-less row refused.
-- [ ] **Review the 675 `claimed_paper` rows into `verified`.** They are servable now and honest about origin. Verification is the paid tier, and it is the only thing standing between this bank and being sellable.
+- [ ] **Review the `claimed_paper` backlog into `verified`.** Harvested rows land servable, unverified and unexplained, by design. Verification is the paid tier, and it is the only thing standing between this bank and being sellable.
 - [x] **Provenance follow-through (D47).** `source` and nullable `year` ship, but the 97 ported rows still carry an inherited `year: 2025` that was never checked against the paper they came from. Verifying or clearing those is the honest completion.
 
-- [ ] English bank: 155 questions → keep deepening thin subtopics (emphatic-stress ×2 is thinnest)
+- [ ] English bank: 209 questions → keep deepening thin subtopics (emphatic-stress ×2 is thinnest)
 - [ ] Passages: 5 exist; comprehension needs a bench, not one passage per type
 - [x] **`verified` is 154/155.** 133 rows read line by line, 6 fixed. The only row left is `q_unassigned_civic_001`, which is withheld from serving anyway (D21). 133 rows were read line by line; 6 were fixed. The 7 still unverified are honest leftovers: 6 `fiction` comprehension questions that need their passage read against the stem, and `q_unassigned_civic_001`, which is withheld anyway (D21).
 - [ ] **Re-check `word-stress` and `emphatic-stress` before trusting either pool.** They carried the only wrong answers in the audit — spot-check any new stress question twice.
 - [x] **Option counts are correct** (D46): JAMB is 4 options @ 2.5 marks, verified against real papers. Five only in pre-CBT-era papers (1978). No work needed.
-- [ ] **2-option question** `q_jamb_2025_math_coordinate_001` — a two-way choice in a four-way bank (the only one)
-- [ ] Port 2025 English remainder by hand (101 non-novel done; 296 novel rows parked — stale, not ours)
-- [ ] Novel `lekki-headmaster`: complete (12 ch, 35 chars, 50 Qs). Others are stubs.
+- [ ] **2-option question** `q_authored_math_coordinate_001` — a two-way choice in a four-way bank (the only one)
+- [ ] Port 2025 English remainder by hand; 296 novel rows parked — not ours, not ported.
+- [ ] Novel `lekki-headmaster`: complete (12 ch, 35 chars, 179 Qs). Others are stubs.
 
 ## Parked (do not build — reason recorded)
 
@@ -39,8 +40,7 @@
 - [ ] **Sandbox** — the public catalog already is one.
 - [ ] **Aggregate endpoint** — docs snippet instead; consumers need it client-side.
 - [ ] **Changelog endpoint** — docs page instead.
-- [ ] **Turso migration** — seam ready (`dyn Store`), trigger is volume + billing need, not curiosity.
-- [ ] **Turso for keys** — file works for one key; research the documented client before touching it.
+- [ ] **Turso migration (content)** — schema pinned (D64, `docs/DB_SCHEMA.md`); seam ready (`dyn Store`). Clearing order: verifications → questions → passages+novels → catalog+blueprints, dual-run with parity per phase. Trigger is volume + billing need, not curiosity.
 - [ ] **Billing/accounts** — with the dashboard, not before.
 - [ ] **`/internal/*` routes** — stub exists; first endpoint lands when the dashboard needs it.
 - [ ] **D10** — normalize the JSON's 5 subject names to JAMB's. Decided, trigger not pulled.
@@ -62,4 +62,5 @@
 - [x] Syllabus surface with coverage + objectives (D19)
 - [x] Novel domain with rotation + 50-minimum enforcement (D35, D36)
 - [x] Static web tier, no JS runtime (D32); browser-reachable `/internal/*` (D33)
+- [x] Keys on Turso (was: "Turso for keys" parked) — shipped D53: Turso-or-error at runtime, file tests + import-source only
 - [x] Pushed: `utmelab-api` @ `2c5b451`, `UTME-Lab` @ `6a1a016`

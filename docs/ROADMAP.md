@@ -1,9 +1,13 @@
 # ROADMAP — utmelab-api implementation plan
 
-**The single plan.** Phases P0→P4, each with goal / decisions / touches /
-acceptance / DO NOT. `TODO.md` holds work items moved out of here; the decision
-log (`QUESTION_BANK_DECISIONS.md`, now D1–D63) is the law. No code without a
-D-row (D7). No users yet — code may break, bank may be rewritten.
+**The single plan.** Phases P0→P4. Status 2026-10-13: **P0 done** (`43f1115`),
+**P1 done** (`bf4295f`), **D61 proven** (`97f18bd`), **78-backfill done**
+(`e76d61a`). Next: English review batches, then P4.
+
+Each phase below carries goal / decisions / touches / acceptance / DO NOT.
+`TODO.md` holds work items moved out of here; the decision log
+(`QUESTION_BANK_DECISIONS.md`, now D1–D64) is the law. No code without a
+D-row (D7).
 
 > External review (`site/temp-chatgpt-review.md`) was read, its takes folded
 > into this plan below (see §6), and the file deleted. Nothing lives in chat.
@@ -29,14 +33,14 @@ D-row (D7). No users yet — code may break, bank may be rewritten.
 
 ---
 
-## P0 — Baseline (half session, no breakage)
+## P0 — Baseline ✅ done (`43f1115`)
 
 * Goal: clean slate, inbox resolved, docs synced.
 * `cargo run -- import` (admits ~128, refuses counted), archive `data/inbox/`.
 * Record quarantine baseline (~103). Sync `README.md` (`site/`, D1–D63).
 * Acceptance: gates green, inbox empty-or-archived.
 
-## P1 — The one schema break (D60/D61 + D62)
+## P1 — The one schema break ✅ done (`bf4295f`; D61 proven `97f18bd`)
 
 * Goal: land RichText everywhere + verification log in one breaking window.
 * Answer `RICH_TEXT_HANDOFF.md` §6 first: `<p>`→`\n\n` / `<br>`→`\n`; keep
@@ -62,7 +66,7 @@ D-row (D7). No users yet — code may break, bank may be rewritten.
 * Quarantine on new predicates (missing `Underline` mark, bad `Image` mark,
   dupes on plain `text`, cloze gaps, counts, novel leaks).
 
-## P3 — Content moat (D17/D45 + D63)
+## P3 — Content moat (in progress; 78-backfill done `e76d61a`, review batches next)
 
 * 78 underlines → `Underline` marks (syn/antonym semi-auto, stress/sound by
   hand). Image-mirror decision (hotlink dies = broken stems). Passage bench.

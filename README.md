@@ -32,7 +32,7 @@ Review is Python (no toolchain needed — works on any machine, human or agent):
 python3 tools/review.py show <id> [--json]  # one question + everything related
 python3 tools/review.py next [--subject s]  # lowest-id unverified, deterministic
 python3 tools/review.py verify <id>         # refuses quarantined/explanationless
-python3 tools/review.py set <id> [--subtopic S] [--emphasis E] [...]
+python3 tools/review.py set <id> [--subtopic S] [--underline W] [...]
 python3 tools/review.py stats               # progress per subject
 ```
 
@@ -53,7 +53,7 @@ novels are embedded in the binary; `UTMELAB_API_DATA_DIR` holds exactly
 | `src/quarantine.rs` | mechanical-defect scan: underline/image/dupes/leaks |
 | `data/` | working copy: `questions.json` + catalog + `novels/` + `inbox/` staging |
 | `site/` | static docs tier (Astro), built to `dist/` and shipped with the binary |
-| `tools/` | harvester, syllabus importer, emphasis worksheet, review workbench |
+| `tools/` | harvester, syllabus importer, underline worksheet, review workbench |
 
 ## Decisions first
 

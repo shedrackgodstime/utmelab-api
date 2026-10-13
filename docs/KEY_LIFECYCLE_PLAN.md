@@ -1,6 +1,11 @@
 # API Key Lifecycle Plan — dashboard + `/internal/*` + Turso
 
-> **Date:** 2026-10-11. **Status:** plan, not built. Nothing here changes code until promoted to `QUESTION_BANK_DECISIONS.md` (D-ID) + `TODO.md`.
+> **Date:** 2026-10-11. **Status 2026-10-13: §§1–5, 7, 8, 11 LANDED via D53**
+> (CLI issue/list/revoke/rotate/import, Turso-or-error runtime, 30s TTL,
+> live-verified §11.1). **PARKED for Phase 2:** §3.2 accounts+sessions,
+> §3.3 usage metering, §6 `/internal/*`, §9 phasing tail, §10 open
+> questions. Nothing below changes code until promoted to
+> `QUESTION_BANK_DECISIONS.md` (D-ID) + `TODO.md`.
 > **Scope decision (2026-10-11): NO auth, NO accounts, NO web work now.** v1 `/api/*` must be ready and solid first. Keys are issued by CLI, tested by key alone, and the code is shaped so accounts/dashboard slot in later without a rewrite. Account-shaped fields exist in the model but stay defaulted/unused until Phase 2.
 > **Goal:** define how an API key is born, used, and killed with CLI-only issuance — testable today with zero accounts — while keeping every seam accounts will need later.
 > **Context:** today keys are CLI-issued into `var/api_keys.json` (`KeyStore::open_json`), held by value in `AppState`, resolved by `sha256` in `api/auth.rs:Caller`. `GET /api/v1/keys/me` is the probe. `src/api/internal/` is an empty stub (D33: unversioned, session-cookie, never in spec). `web/src/pages/dashboard/index.astro` is a static shell. Turso env exists (`.env`: `TURSO_DB_URL`, `TURSO_DB_TOKEN` rw, `TURSO_DB_TOKEN_READONLY`, `TURSO_API_KEY`) but the `turso = 0.8.2` dep is **unused** — no client code yet. Note the `TURSO_` prefix typo in `.env` vs the `TURSO_` the code/docs will expect — normalise to `TURSO_` and accept `TURSO_` as deprecated alias with a boot warning.

@@ -34,7 +34,7 @@ pub struct Config {
     pub data_dir: PathBuf,
     /// Remote key store. `None` = file store (v1 default, dev).
     pub turso_url: Option<String>,
-    /// Write-capable token, server env only — never baked into `web/dist`.
+    /// Write-capable token, server env only — never baked into `site/dist`.
     pub turso_token: Option<String>,
     /// Seconds a resolved key stays cached before re-read. Default 30.
     pub key_cache_ttl_secs: u64,

@@ -114,15 +114,16 @@ So roughly half backfill semi-automatically and half need reading. None of it
 can be done by guessing, which is the point — the harvest brought us the
 questions but not the emphasis, and the emphasis is part of the question.
 
-## Related defects found in the same pass
+## Related defects found in the same pass (all resolved — record kept)
 
-- **6 novel questions still sit in the English bank** — their stems begin
-  "This question is based on Kabir Alabi Garba's The Lekki Headmaster…". They
-  escaped the D35 sweep because they name the *novel*, not a character.
-  (The guard test that should have caught them only scanned page 1 of the
-  bank; that is fixed.)
-- **5 duplicate stems** within the English bank.
-- **1 question with 5 options** where JAMB sets 4 (D46).
+- **6 novel questions sat in the English bank** — stems beginning "This question
+  is based on …The Lekki Headmaster…", missed by the D35 sweep (they named the
+  *novel*, not a character). Moved out 2026-10-11 with the 45-row rescue; the
+  guard test now scans every page.
+- **5 duplicate stems** within the English bank — resolved (quarantine
+  `duplicate_stem` is clean today).
+- **1 question with 5 options** where JAMB sets 4 (D46) — reviewed, kept with
+  its era note; JAMB is 4 × 2.5.
 - **4 questions where two options differ only in capitalisation** — the
   word-stress items. Harmless in rendering, a trap for any consumer that
   case-folds.
@@ -132,10 +133,13 @@ questions but not the emphasis, and the emphasis is part of the question.
 1. **Decide the emphasis representation** (option 1 recommended). — **decided 2026-10-11 (D54) as `emphasis: Option<String>`, superseded 2026-10-12 (D60) by an `Underline` mark in `RichText.inline`, implemented 2026-10-13 (P1).**
 2. **Backfill 78 targets as `Underline` marks** — semi-automatic for synonyms/antonyms, read by hand
    for stress and sound items (`python3 tools/propose_emphasis.py propose/apply`).
-3. **Move the 6 novel questions out** into the novel document.
-4. **Resolve the 5 duplicate stems and the 5-option question.**
-5. **Then verify and explain** — which is the ordinary work, and which is
-   currently blocked on step 1.
+3. **Move the 6 novel questions out** into the novel document. — **done
+   2026-10-11** (45-row rescue + guard fix).
+4. **Resolve the 5 duplicate stems and the 5-option question.** — **done**
+   (quarantine clean on dupes; the 5-option row keeps its era note per D46).
+5. **Then verify and explain** — which is the ordinary work. Unblocked now:
+   review batches via `review.py`, one Human/Pass log row at a time (D62).
 
-Until step 2 lands, **`verified: true` on any of these 78 would be a lie**,
-because a reviewer cannot answer the question as served.
+`verified` on any of the 78 before its mark landed would have been a lie;
+the loader enforced it (D57, now D62 derivation). Marks are in since
+2026-10-13 — what remains is review, not repair.

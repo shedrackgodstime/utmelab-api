@@ -16,7 +16,7 @@
 //! nothing about storage. That is what makes D23's promise keepable — when Turso
 //! arrives, `bank::JsonStore` gains a sibling and no route moves.
 //!
-//! **Deployment is two artifacts:** this binary, and `web/dist` served as files.
+//! **Deployment is two artifacts:** this binary, and `site/dist` served as files.
 
 pub mod api;
 mod bank;
