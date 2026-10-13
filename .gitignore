@@ -10,3 +10,5 @@ dist/
 # review workbench backups + python caches
 tmp/*.backup.json
 __pycache__/
+
+tmp/study/
