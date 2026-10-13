@@ -78666,10 +78666,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "general-concept-of-word-processing",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Word processors write, edit and print.",
+        "inline": []
+      },
+      "body": {
+        "text": "All three listed uses hold, so all-of-these. Each single use alone undercounts.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Print-only tempts as output, but processors do all three.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -78714,10 +78727,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "general-concept-of-word-processing",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Word leads general use.",
+        "inline": []
+      },
+      "body": {
+        "text": "Most users write documents daily; graphics, databases and sheets serve fewer. The question asks mostly-used.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Excel tempts as popular, but Word leads.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -78762,10 +78788,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "definition-and-classification-of-programming-languages",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Assemblers translate assembly to machine.",
+        "inline": []
+      },
+      "body": {
+        "text": "One-to-one mnemonic mapping downward. High-level, BASIC and upward readings invert it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "High-level tempts as translation-talk, but assemblers start at assembly.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -78810,10 +78849,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "definition-of-booting",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "No OS means no boot.",
+        "inline": []
+      },
+      "body": {
+        "text": "Booting loads the operating system; compilers, loaders and assemblers serve later stages.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Loader tempts as boot-adjacent, but the missing piece is the OS.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -78858,10 +78910,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "internet-browsers",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Firefox is application software.",
+        "inline": []
+      },
+      "body": {
+        "text": "End-user browser, not system code. System, package and tools readings misplace it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Application-package tempts as suite-talk, but Firefox is plain application software.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -78906,10 +78971,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Caps Lock toggles letter case.",
+        "inline": []
+      },
+      "body": {
+        "text": "Upper versus lower for alphabets. Pages, files and spacing belong to other keys.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Delete-files tempts as key-action, but Caps Lock cases letters.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -78954,10 +79032,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Backspace deletes text.",
+        "inline": []
+      },
+      "body": {
+        "text": "The deletion key by name and function. Arrows move, Enter confirms, Esc cancels.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Enter tempts as active, but deletion is Backspace.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79002,10 +79093,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "computer-files-versus-manual-files",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Accounts rename in Control Panel.",
+        "inline": []
+      },
+      "body": {
+        "text": "User-account settings live there. Settings, computer-name and code-panel readings miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Settings tempts as modern, but the classic path is Control Panel.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79050,10 +79154,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "definition-of-networking",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "WAN is Wide Area Network.",
+        "inline": []
+      },
+      "body": {
+        "text": "Long-haul networks spanning regions. World-application, acreage and arrangement variants misname it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "World-application tempts as WAN-words, but the A is Area.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79098,10 +79215,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "internet-term-definitions",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "IP means Internet Protocol.",
+        "inline": []
+      },
+      "body": {
+        "text": "The addressing rule of the net. Password, processing and international readings miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Password tempts as credential-talk, but IP is Protocol.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79146,10 +79276,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "External memory stands apart.",
+        "inline": []
+      },
+      "body": {
+        "text": "Primary, main and internal all name inside memory; external sits outside. The odd one out is external.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Internal tempts as similar-word, but it belongs with primary and main.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79194,10 +79337,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Keeping data without power is non-volatile.",
+        "inline": []
+      },
+      "body": {
+        "text": "ROM and flash persist; volatile forgets. Sequential and direct describe access, not persistence.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Direct tempts as storage-talk, but persistence is non-volatile.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79242,10 +79398,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "ict-application-areas",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Inventory tools cover distribution, purchasing and planning.",
+        "inline": []
+      },
+      "body": {
+        "text": "All listed phases, so all-of-the-above. Any single phase undercounts.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Planning-only tempts as management, but the tool spans all three.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79290,10 +79459,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "program-development-steps",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Major versions jump whole numbers: 2.0.",
+        "inline": []
+      },
+      "body": {
+        "text": "A leading-digit change signals major improvement. Minor bumps and first releases differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "2.5 tempts as bigger-number, but major means the leading digit.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79338,10 +79520,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "data-security",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Encryption seals delivery from third parties.",
+        "inline": []
+      },
+      "body": {
+        "text": "Ciphered transit defeats interception. Spam, source-ID and interpretation miss the seal.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Source-ID tempts as message-talk, but sealing is encryption.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79386,10 +79581,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "computer-related-crime",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Cracking is computer crime.",
+        "inline": []
+      },
+      "body": {
+        "text": "Unauthorised breaking-in by definition. Services, transcription and security miss the crime.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Security tempts as topic, but cracking offends it.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79434,10 +79642,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "file-organizations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Same-order file work runs sequentially.",
+        "inline": []
+      },
+      "body": {
+        "text": "Matching operation order means sequential processing. Complex, simple and combinational miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Simple tempts as easy, but the pattern is sequential.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79482,10 +79703,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "basic-terms-definitions",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "A file is packaged stored information.",
+        "inline": []
+      },
+      "body": {
+        "text": "A named store of information on the machine. Programs, text-bunches and paper miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Program tempts as computer-thing, but files store, not run.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79530,10 +79764,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "logic-circuits-and-gates",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "NAND is 1 whenever any input is 0.",
+        "inline": []
+      },
+      "body": {
+        "text": "Only all-1s force 0. All-0-only and 1-presence readings invert it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "All-input-1 tempts as gate-talk, but that case outputs 0.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79578,10 +79825,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "logic-circuits-and-gates",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "XOR gates or blocks a waveform by control.",
+        "inline": []
+      },
+      "body": {
+        "text": "One input passes or inverts the other by control level. AND, OR and NAND lack the controlled flip.",
+        "inline": []
+      },
+      "trap": {
+        "text": "NAND tempts as versatile, but the described gate is XOR.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79626,10 +79886,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "database-organizations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Users live at the presentation tier.",
+        "inline": []
+      },
+      "body": {
+        "text": "The visible layer faces end users. Model, application and data tiers sit beneath.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Application tempts as user-facing, but the tier is presentation.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79674,10 +79947,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "database-organizations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Data plus query language lives at the data tier.",
+        "inline": []
+      },
+      "body": {
+        "text": "Storage and its language share the bottom tier. Application, presentation and model tiers differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Application tempts as data-adjacent, but residence is the data tier.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79722,10 +80008,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "hll-classifications",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Java is high level.",
+        "inline": []
+      },
+      "body": {
+        "text": "Human-readable, machine-independent. Low, machine and algorithm readings demote it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Algorithm tempts as abstract, but Java is a high-level language.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79770,10 +80069,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "A bit holds two values.",
+        "inline": []
+      },
+      "body": {
+        "text": "0 or 1, nothing else. 4, 10 and 256 count larger units.",
+        "inline": []
+      },
+      "trap": {
+        "text": "256 tempts as byte-talk, but a bit is two-valued.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79818,10 +80130,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Binary radix is 2.",
+        "inline": []
+      },
+      "body": {
+        "text": "Two symbols define base two. 0, 1 and half miss the base.",
+        "inline": []
+      },
+      "trap": {
+        "text": "1 tempts as minimal, but radix counts symbols: two.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79866,10 +80191,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Gray code changes one bit per step: minimum error.",
+        "inline": []
+      },
+      "body": {
+        "text": "Single-bit transitions minimise misreads. Binary, excess-3 and octal change more.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Binary tempts as basic, but gray minimises error.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79914,10 +80252,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "basic-statements",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Structure rules are syntax.",
+        "inline": []
+      },
+      "body": {
+        "text": "Grammar of correct statements. Instructions, programs and domains are other things.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Program tempts as language-thing, but rules are syntax.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -79962,10 +80313,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The OS controls and interfaces.",
+        "inline": []
+      },
+      "body": {
+        "text": "It runs the system and faces the user. Applications, internet and control-unit readings split its job.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Control-unit tempts as controller, but system control is the OS.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80010,10 +80374,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Scanners digitise images.",
+        "inline": []
+      },
+      "body": {
+        "text": "Light-sensing conversion to digital. Keyboards, plotters and OMR differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "OMR tempts as reader, but image conversion is scanning.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80058,10 +80435,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Printers make hardcopy.",
+        "inline": []
+      },
+      "body": {
+        "text": "Paper output by definition. Readers, consoles and CRTs display or read.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Console tempts as output-ish, but hardcopy is print.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80106,10 +80496,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Joystick buttons sit on top.",
+        "inline": []
+      },
+      "body": {
+        "text": "Thumb-operated selection from above. Bottom, left and right miss the thumb.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Left tempts as handed, but the button crowns the stick.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80154,10 +80557,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "ict-application-areas",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Computers serve all listed uses.",
+        "inline": []
+      },
+      "body": {
+        "text": "Entertainment, information and social media all run on computers, so none-of-the-above.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Social-media tempts as phone-only, but computers serve it too.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80202,10 +80618,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "the-two-main-constituents-of-a-computer-system-hardware-and",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "ALU plus control makes the CPU.",
+        "inline": []
+      },
+      "body": {
+        "text": "Arithmetic-logic with control direction. Input, memory and I/O complete the system around it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Memory tempts as central, but CPU is ALU plus control.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80250,10 +80679,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "stages-of-the-sdlc",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "SDLC stages run sequentially without overlap.",
+        "inline": []
+      },
+      "body": {
+        "text": "Ordered waterfall phases, one after another. Random and overlapping readings break the model.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Overlapping tempts as modern, but classic SDLC is sequential.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80298,10 +80740,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "methods-of-digitization",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Format-to-format change is data conversion.",
+        "inline": []
+      },
+      "body": {
+        "text": "Same content, new format. Implementation, transmission and transfer move or build instead.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Transfer tempts as change-talk, but conversion reformats.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80346,10 +80801,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "file-access-methods",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Delete permission removes files and directories.",
+        "inline": []
+      },
+      "body": {
+        "text": "Exactly what it grants. Sharing, reading and modifying are other permissions.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Modify tempts as destructive-adjacent, but deletion is its own grant.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80442,10 +80910,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "basic-file-operations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Explorer bars split three ways.",
+        "inline": []
+      },
+      "body": {
+        "text": "The classic three-pane layout. Two, five and seven miscount it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Two tempts as split-minimal, but the bar shows three.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80490,10 +80971,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "System software controls the machine.",
+        "inline": []
+      },
+      "body": {
+        "text": "Its major function is control. Utility, navigation and maintenance are subsets.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Maintenance tempts as care, but control is the major function.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80538,10 +81032,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "classification-by-generation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Valve machines cost most to run: first generation.",
+        "inline": []
+      },
+      "body": {
+        "text": "Power-hungry tubes beat transistors, ICs and chips on cost. Later generations cheapen.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Second tempts as early, but valves top the cost.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80586,10 +81093,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The OS tells components what to do.",
+        "inline": []
+      },
+      "body": {
+        "text": "Resource direction is operating-system work. Utilities, applications and networks serve other roles.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Application tempts as instructor, but direction is the OS.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80634,10 +81154,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "hll-classifications",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "COBOL's CO is Common.",
+        "inline": []
+      },
+      "body": {
+        "text": "Common Business-Oriented Language. Object, oriented and operating mis-expand it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Oriented tempts as O-word, but the O of CO is part of Common.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80682,10 +81215,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "translators",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Linkers join programs needing each other.",
+        "inline": []
+      },
+      "body": {
+        "text": "They bind modules for execution. Placing, relocating and interfacing belong to loaders and I/O.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Placing-in-memory tempts as linking-adjacent, but joining is the linker's job.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80730,10 +81276,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "booting-and-shutdown-steps",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Switched users keep apps alive.",
+        "inline": []
+      },
+      "body": {
+        "text": "Session persists across user switch. Logoff, shutdown and reboot kill it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Logoff tempts as switch-adjacent, but only switching preserves.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80778,10 +81337,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "internet-browsers",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Explorer views web pages.",
+        "inline": []
+      },
+      "body": {
+        "text": "The browser's defining job. Movies, music and drawing run elsewhere.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Movies tempts as viewed, but Explorer views pages.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80826,10 +81398,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "definition-of-networking",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "LAN is Local Area Network.",
+        "inline": []
+      },
+      "body": {
+        "text": "Single-site networks. Land-area, arrangement and alternative mis-expand it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Arrangement tempts as A-word, but the A is Area.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80874,10 +81459,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "network-types",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The Internet spans wide: WAN.",
+        "inline": []
+      },
+      "body": {
+        "text": "Global reach exceeds LAN, MAN and CAN scales.",
+        "inline": []
+      },
+      "trap": {
+        "text": "MAN tempts as large, but global is WAN.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80922,10 +81520,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Startup firmware lives in ROM.",
+        "inline": []
+      },
+      "body": {
+        "text": "Permanent boot instructions survive power-off. NICs, CPUs and RAM forget or compute.",
+        "inline": []
+      },
+      "trap": {
+        "text": "RAM tempts as memory, but permanence is ROM.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -80970,10 +81581,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "definitions-and-examples-of-graphics-packages",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Choosable option lists are menus.",
+        "inline": []
+      },
+      "body": {
+        "text": "Displayed selections by definition. Icons, options and selection name parts.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Icons tempts as clickable, but the list is a menu.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81018,10 +81642,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "computer-related-crime",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Breaking in is cracking.",
+        "inline": []
+      },
+      "body": {
+        "text": "Illegal access by definition. Security, virus and piracy name other things.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Piracy tempts as illicit, but access-breaking is cracking.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81065,11 +81702,24 @@
         }
       }
     ],
-    "answer": "c",
-    "subtopic_id": null,
+    "answer": "b",
+    "subtopic_id": "file-access-methods",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Remote access names off-machine file use.",
+        "inline": []
+      },
+      "body": {
+        "text": "Reaching files where they live from elsewhere is remote access. Local and special access stay put; cloud names one venue for it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Cloud tempts as off-machine, but the general term is remote. Recorded c; corrected to b.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81114,10 +81764,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "basic-file-operations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Explorer shows two categories.",
+        "inline": []
+      },
+      "body": {
+        "text": "The classic two-pane split. Three, five and seven belong to other bars.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Three tempts as explorer-talk, but this split is two.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81162,10 +81825,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "general-concept-of-spreadsheets",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Excel crunches numbers.",
+        "inline": []
+      },
+      "body": {
+        "text": "Number problems are its purpose. Essays, slides and updates belong elsewhere.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Slides tempts as Office, but Excel is numbers.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81210,10 +81886,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "ms-excel-features-launching-and-basic-operations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Rename tabs by double-clicking the tab.",
+        "inline": []
+      },
+      "body": {
+        "text": "Click tab, type name. Columns, rows and Save-As miss the tab.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Column tempts as clickable, but tabs rename at the tab.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81258,10 +81947,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "editing-formatting-and-insertion",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Undo is Ctrl+Z.",
+        "inline": []
+      },
+      "body": {
+        "text": "The universal undo chord. Select-all, underline and cut differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Cut tempts as Z-adjacent, but undo is Z.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81293,7 +81995,7 @@
       {
         "id": "c",
         "text": {
-          "text": "Crashinng",
+          "text": "Crashing",
           "inline": []
         }
       },
@@ -81306,10 +82008,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "basic-file-operations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Tracks and sectors come from formatting.",
+        "inline": []
+      },
+      "body": {
+        "text": "Low-level layout by definition. Tracking, crashing and allotting miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Tracking tempts as track-word, but the process is formatting.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81354,10 +82069,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Feeding instructions is inputting.",
+        "inline": []
+      },
+      "body": {
+        "text": "Entry into the system defines input. Processing, accessing and outputting follow or differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Processing tempts as first-step, but entry is input.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81402,10 +82130,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "definition-of-ai",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Machine thought is tested by Turing.",
+        "inline": []
+      },
+      "body": {
+        "text": "The imitation game judges thinking. Computation, teletype and interrogator names miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Interrogator tempts as role, but the test is Turing's.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81450,10 +82191,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "definition-of-networking",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Word processes words; it distributes nothing.",
+        "inline": []
+      },
+      "body": {
+        "text": "No network role. Storage, printer-sharing and mail all distribute.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Mail tempts as distribution, but Word is not a network.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81498,10 +82252,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "protocols",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "TCP is Transmission Control Protocol.",
+        "inline": []
+      },
+      "body": {
+        "text": "Reliable byte streams by name. Communication, transformation and central-pass variants misname it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Communication tempts as C-word, but the C is Control.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81546,10 +82313,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "protocols",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "UDP is User Datagram Protocol.",
+        "inline": []
+      },
+      "body": {
+        "text": "Connectionless datagrams by name. Packet, data and unique variants misname it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Packet tempts as P-word, but the P is Protocol.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81594,10 +82374,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "RAM and ROM share memory-ness.",
+        "inline": []
+      },
+      "body": {
+        "text": "Both are memory kinds. Gates, nothing-in-common and initials miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Initials tempts as shared, but memory is the substance.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81642,10 +82435,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Built-in permanence is ROM.",
+        "inline": []
+      },
+      "body": {
+        "text": "Burned-in startup memory. RAM forgets, CPUs compute, CD-ROMs carry.",
+        "inline": []
+      },
+      "trap": {
+        "text": "CD-ROM tempts as ROM-word, but built-in is plain ROM.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81690,10 +82496,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Operating systems do all listed jobs.",
+        "inline": []
+      },
+      "body": {
+        "text": "Memory, files and applications together, so all-of-the-above.",
+        "inline": []
+      },
+      "trap": {
+        "text": "File-only tempts as OS-work, but the OS does all three.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81738,10 +82557,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Operating systems are system software.",
+        "inline": []
+      },
+      "body": {
+        "text": "The flagship category. Application, utility and none-of-these miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Utility tempts as helper, but OS is system software.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81786,10 +82618,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "ethical-issues-in-computing",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Online manners are netiquette.",
+        "inline": []
+      },
+      "body": {
+        "text": "Network etiquette by portmanteau. Anything-goes, Netflix and piracy invert or miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Netflix tempts as net-word, but manners are netiquette.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81834,10 +82679,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "computer-related-crime",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Stolen identity is identity theft.",
+        "inline": []
+      },
+      "body": {
+        "text": "The crime by name. Bullying, phases and know-how miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Bullying tempts as cyber-crime, but identity-taking is theft.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81882,10 +82740,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "computer-related-crime",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Malicious destruction is unauthorised access.",
+        "inline": []
+      },
+      "body": {
+        "text": "Fraudulent-entry framing defines the class here. Modified, accessed and destroyed name states, not the crime.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Destroyed tempts as outcome, but the classification is access.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81930,10 +82801,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "logic-circuits-and-gates",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "NOT flips 1 to 0.",
+        "inline": []
+      },
+      "body": {
+        "text": "Inversion by definition. 1-stays, either and none invert nothing.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Either tempts as gate-talk, but NOT always flips.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -81978,10 +82862,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "logic-circuits-and-gates",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The bar means NOT.",
+        "inline": []
+      },
+      "body": {
+        "text": "Overbar negates in Boolean algebra. OR, AND and none miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "AND tempts as operation, but the bar negates.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82026,10 +82923,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "operations-on-existing-databases",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Functions drop with DROP.",
+        "inline": []
+      },
+      "body": {
+        "text": "DROP FUNCTION removes stored routines. REMOVE, DELETE and ERASE are not the SQL verb.",
+        "inline": []
+      },
+      "trap": {
+        "text": "DELETE tempts as removal, but routines drop with DROP.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82074,10 +82984,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "database-definition-and-examples",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "DBMS cures redundancy, inconsistency, dependence and access.",
+        "inline": []
+      },
+      "body": {
+        "text": "The total solution named. Tables, passwords and bare databases are parts.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Database tempts as answer, but the manager (DBMS) delivers it.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82122,10 +83045,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "hll-classifications",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "COBOL serves commerce.",
+        "inline": []
+      },
+      "body": {
+        "text": "Business data processing by design. Siemens, student and social uses miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Student tempts as learner, but COBOL is commercial.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82170,10 +83106,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Hex mixes letters and digits.",
+        "inline": []
+      },
+      "body": {
+        "text": "0-9 plus A-F. Octal, binary and decimal pairings miss the mix.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Binary-decimal tempts as mix-talk, but hex is letters-plus-digits.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82218,10 +83167,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The CPU is the brain.",
+        "inline": []
+      },
+      "body": {
+        "text": "Processing centre by analogy. Screens, mice and printers serve around it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Monitor tempts as face, but the brain computes.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82266,10 +83228,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "internet-services",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Wires plus satellites worldwide is the Internet.",
+        "inline": []
+      },
+      "body": {
+        "text": "The physical global net by definition. Web, commerce and social ride on it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Web tempts as net-word, but the wires are the Internet.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82314,10 +83289,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "CPU is Central Processing Unit.",
+        "inline": []
+      },
+      "body": {
+        "text": "Processing, not process or personal. Control and computer variants mis-expand it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Control tempts as C-word, but the C is Central.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82362,10 +83350,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Touch screens take and show.",
+        "inline": []
+      },
+      "body": {
+        "text": "Display plus input in one surface. Scanners, speakers and digitizers do one direction or other jobs.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Digitizer tempts as pen-input, but two-way is the touch screen.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82410,10 +83411,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Monitors are VDUs.",
+        "inline": []
+      },
+      "body": {
+        "text": "Visual Display Unit by name. DVU, UVD and CCTV misname it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "CCTV tempts as screen-talk, but monitor is VDU.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82506,10 +83520,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "ict-application-areas",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "ATMs dispense cash, typically.",
+        "inline": []
+      },
+      "body": {
+        "text": "Withdrawals define them. Records, budgets and movies miss the till.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Records tempts as machine-work, but ATMs pay cash.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82554,10 +83581,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "CU is Control Unit.",
+        "inline": []
+      },
+      "body": {
+        "text": "Directing traffic inside the CPU. Compound, communication and computer variants mis-expand it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Computer-unit tempts as CU-words, but the U is Unit of Control.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82602,10 +83642,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "basic-statements",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Command grammar is syntax.",
+        "inline": []
+      },
+      "body": {
+        "text": "Same rule as 64114: structure rules. Algorithm, logic and password miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Logic tempts as language-talk, but grammar is syntax.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82650,10 +83703,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "basic-terms-definitions",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Files gather related records.",
+        "inline": []
+      },
+      "body": {
+        "text": "Record collections by definition. Rows, fields and databases name parts or wholes.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Database tempts as collection, but files hold records.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82698,10 +83764,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "file-organizations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Directories keep the tree.",
+        "inline": []
+      },
+      "body": {
+        "text": "Hierarchical folders by definition. Descriptors, modifiers and relative files miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Relative-files tempts as structure-talk, but the tree is directories.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82746,10 +83825,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "definition-of-booting",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Booting is starting.",
+        "inline": []
+      },
+      "body": {
+        "text": "Power-on start by synonym. Restarting, loading and running name other phases.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Restarting tempts as boot-talk, but first start is booting.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82794,10 +83886,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "computer-related-crime",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Protection never motivates viruses.",
+        "inline": []
+      },
+      "body": {
+        "text": "Theft, pranks and research do; defence does not. The NOT here is protection.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Research tempts as benign, but listed motives include it — protection is the odd one.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82842,10 +83947,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Readers read all listed marks.",
+        "inline": []
+      },
+      "body": {
+        "text": "Handwritten, printed and lines together, so all-of-the-above.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Lines-only tempts as reader-work, but readers take all three.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82890,10 +84008,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "classification-by-purpose",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Supercomputers do heavy maths.",
+        "inline": []
+      },
+      "body": {
+        "text": "Scientific number-crunching defines them. Retrieval, I/O and records miss the muscle.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Records tempts as data-talk, but supers crunch maths.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82938,10 +84069,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Joysticks are hardware, not applications.",
+        "inline": []
+      },
+      "body": {
+        "text": "A stick is no program. Word, Firefox and VLC all run code.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Firefox tempts as non-Office, but it is still an application.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -82986,10 +84130,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "internet-browsers",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Firefox is application software, again.",
+        "inline": []
+      },
+      "body": {
+        "text": "Same classification as 64092: end-user browser. System, package and tools miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Package tempts as suite-talk, but Firefox is plain application software.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83034,10 +84191,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "general-concept-of-word-processing",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Word creates documents.",
+        "inline": []
+      },
+      "body": {
+        "text": "Authoring by definition. Developing, storing and browsing belong elsewhere.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Storing tempts as document-talk, but purpose is creating.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83082,10 +84252,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Applications are software.",
+        "inline": []
+      },
+      "body": {
+        "text": "End-user programs by category. Hardware, utilities and packages miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Utilities tempts as software-talk, but applications are the category.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83130,10 +84313,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "iOS, Ubuntu and ChromeOS are system software.",
+        "inline": []
+      },
+      "body": {
+        "text": "Platforms that run machines. Utilities, applications and packages miss the layer.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Application tempts as software-talk, but platforms are system.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83178,10 +84374,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Touchpads stand in for mice.",
+        "inline": []
+      },
+      "body": {
+        "text": "Laptop pointing by definition. Arrows, bars and keyboards move or type otherwise.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Arrow-keys tempts as navigation, but mouse-function is the touchpad.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83226,10 +84435,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "definitions-and-examples-of-graphics-packages",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The on-screen arrow is a cursor.",
+        "inline": []
+      },
+      "body": {
+        "text": "Pointing glyph by name. Pointer, arrow and indicator miss the term.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Pointer tempts as synonym, but the term is cursor.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83274,10 +84496,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "network-types",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Smallest scope is PAN.",
+        "inline": []
+      },
+      "body": {
+        "text": "Personal-area networks undercut LAN, MAN and WAN. SAN is storage, not scope.",
+        "inline": []
+      },
+      "trap": {
+        "text": "SAN tempts as acronym, but smallest scope is PAN.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83322,10 +84557,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "definitions-and-acronym-meanings",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Domain names resolve to IP addresses.",
+        "inline": []
+      },
+      "body": {
+        "text": "Names stand for numeric addresses. TCP, database and server readings miss the mapping.",
+        "inline": []
+      },
+      "trap": {
+        "text": "TCP-address tempts as net-talk, but names map to IP.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83370,10 +84618,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Results land in memory from the ALU.",
+        "inline": []
+      },
+      "body": {
+        "text": "Processed output writes back from arithmetic-logic. Input, output and control units play other legs.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Input-unit tempts as source, but results come from the ALU.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83418,10 +84679,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Software splits in two.",
+        "inline": []
+      },
+      "body": {
+        "text": "System and application by classic division. Three, five and four overcount.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Three tempts as layered, but the split is two.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83466,10 +84740,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Operating systems exemplify software.",
+        "inline": []
+      },
+      "body": {
+        "text": "The flagship example against joystick, keyboard and mouse hardware.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Keyboard tempts as computer-thing, but software here is the OS.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83514,10 +84801,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "cyber-risks-and-protection",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Firewalls guard cyber security.",
+        "inline": []
+      },
+      "body": {
+        "text": "Filtering barrier by function. Providers, browsers and storage miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Browser tempts as net-tool, but guarding is the firewall.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83562,10 +84862,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "file-organizations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "File collections live in folders.",
+        "inline": []
+      },
+      "body": {
+        "text": "Grouping by definition. Files, memos and drafts name contents.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Files tempts as plural, but the container is the folder.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83610,10 +84923,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "file-organizations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Location is extrinsic to file identity.",
+        "inline": []
+      },
+      "body": {
+        "text": "Title, access and modifiability characterise files; where it sits does not define it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Location tempts as metadata, but character comes from content and rights.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83658,10 +84984,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "logic-circuits-and-gates",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Logic circuits process and control.",
+        "inline": []
+      },
+      "body": {
+        "text": "Interpretation, storage and security belong to other blocks.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Storage tempts as circuit-work, but logic processes and controls.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83706,10 +85045,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "logic-circuits-and-gates",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "DOR is no gate.",
+        "inline": []
+      },
+      "body": {
+        "text": "XOR, OR and AND all exist; DOR is invented.",
+        "inline": []
+      },
+      "trap": {
+        "text": "OR tempts as near-spelling, but DOR exists nowhere.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83754,10 +85106,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "database-definition-and-examples",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "DBMS initials name it.",
+        "inline": []
+      },
+      "body": {
+        "text": "Database Management System contracts to DBMS. DMS, DMGS and DMSM scramble it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "DMS tempts as close, but the B of Management stays.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83802,10 +85167,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "database-definition-and-examples",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "DBMS manipulates database data.",
+        "inline": []
+      },
+      "body": {
+        "text": "Its major function is data manipulation. Virus, security and bulk-store readings miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Store-large tempts as database-talk, but manipulation is the function.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83850,10 +85228,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "program-development-steps",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Debugging removes program errors.",
+        "inline": []
+      },
+      "body": {
+        "text": "Find-and-fix in code by definition. Prevention, insertion and computer-wide readings miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Computer-wide tempts as scope, but debugging targets the program.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83898,10 +85289,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "precautions-in-program-development",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Impossible tasks crash at run time.",
+        "inline": []
+      },
+      "body": {
+        "text": "Divide-by-zero explodes during execution. Syntax, logic and arithmetic errors strike elsewhere.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Arithmetic tempts as number-talk, but timing makes it runtime.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83946,10 +85350,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "definition-and-classification-of-programming-languages",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Low levels speak binary.",
+        "inline": []
+      },
+      "body": {
+        "text": "Machine-near code is base two. Duodecimal, hex and decimal sit higher.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Hex tempts as low-level, but lowest is binary.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -83994,10 +85411,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Base ten follows ten fingers.",
+        "inline": []
+      },
+      "body": {
+        "text": "Counting anatomy explains decimal. Digit counts, factors and no-reason miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Ten-digits tempts as circular, but fingers ground it.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84042,10 +85472,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "translators",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Compilers translate to executable simplicity.",
+        "inline": []
+      },
+      "body": {
+        "text": "High-to-machine by definition. Interpreters, processors and algorithms differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Interpreter tempts as translator, but the simpler-language claim here is compiler.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84090,10 +85533,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "website-navigation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Sites open on home pages.",
+        "inline": []
+      },
+      "body": {
+        "text": "The main page by name. Bookmarks, search and task pages differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Search tempts as entry, but the main page is home.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84138,10 +85594,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "definition-and-classification-of-programming-languages",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "First programs were machine code.",
+        "inline": []
+      },
+      "body": {
+        "text": "Ones and zeros before assemblers. Assembly, source and object came later.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Assembly tempts as early, but machine came first.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84186,10 +85655,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "network-devices",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Network cards talk both ways.",
+        "inline": []
+      },
+      "body": {
+        "text": "NICs send and receive. Monitors, printers and scanners go one way here.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Monitor tempts as two-way, but display-only here.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84234,10 +85716,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Memory units differ from drives.",
+        "inline": []
+      },
+      "body": {
+        "text": "Flash, floppy and CD are storage media; memory unit is the odd category.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Compact-disk tempts as odd-one, but memory-unit stands apart.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84282,10 +85777,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "ict-application-areas",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Offices store on computers, mostly.",
+        "inline": []
+      },
+      "body": {
+        "text": "Storage leads office use. Recreation, research and security trail.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Research tempts as office-work, but storage leads.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84330,10 +85838,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Data paths do the operations.",
+        "inline": []
+      },
+      "body": {
+        "text": "ALU plus registers move and transform. Controllers, registers-alone and caches play other roles.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Controller tempts as doer, but doing is the data path.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84378,10 +85899,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "stages-of-the-sdlc",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Observation is no SDLC stage.",
+        "inline": []
+      },
+      "body": {
+        "text": "Design, testing and implementation all belong; observation does not.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Test-running tempts as informal, but it belongs — observation does not.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84426,10 +85960,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "operations-on-existing-databases",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Retailers mine trends from data.",
+        "inline": []
+      },
+      "body": {
+        "text": "Data mining finds patterns for decisions. Selection, conversion and POS miss the analysis.",
+        "inline": []
+      },
+      "trap": {
+        "text": "POS tempts as retail-tech, but trend-study is mining.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84473,11 +86020,24 @@
         }
       }
     ],
-    "answer": "d",
-    "subtopic_id": null,
+    "answer": "a",
+    "subtopic_id": "file-classification-criteria",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Random is no filing method.",
+        "inline": []
+      },
+      "body": {
+        "text": "Alphabetical, numerical, chronological, geographical and subject methods file; random orders nothing. Sequential and serial both file systematically.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Geographical was recorded, yet it is a standard method — random is the true exception. Recorded d; corrected to a.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84522,10 +86082,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Scanners navigate nothing.",
+        "inline": []
+      },
+      "body": {
+        "text": "Cursors, keyboards and mice move about; scanners capture.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Keyboard tempts as input-only, but it navigates too.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84570,10 +86143,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "types-of-booting",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Booting comes in two: cold and warm.",
+        "inline": []
+      },
+      "body": {
+        "text": "Off-state versus restart. Five, three and four overcount.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Three tempts as types-talk, but booting is two.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84618,10 +86204,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "System software splits into OS and utility.",
+        "inline": []
+      },
+      "body": {
+        "text": "The classic pair. Storage, antivirus and file-management sit beneath utility.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Antivirus tempts as category, but the pair is OS-plus-utility.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84666,10 +86265,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Loaders stay resident.",
+        "inline": []
+      },
+      "body": {
+        "text": "They place programs for execution and remain. Editors, assemblers and linkers come and go.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Linker tempts as execution-adjacent, but residence is the loader.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84714,10 +86326,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "definitions-and-examples-of-graphics-packages",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Screen apps show as icons.",
+        "inline": []
+      },
+      "body": {
+        "text": "Clickable pictures by definition. Cursors, home screens and drawers differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Home-screen tempts as display, but app marks are icons.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84762,10 +86387,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "presentation-package-definition-and-examples",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "PowerPoint presents.",
+        "inline": []
+      },
+      "body": {
+        "text": "Presentation software by category. Graphing, productivity and gaming miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Productivity tempts as Office, but PowerPoint presents.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84810,10 +86448,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Speakers output sound.",
+        "inline": []
+      },
+      "body": {
+        "text": "Audio out by definition. Keyboards, mice and microphones input.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Microphone tempts as audio, but it inputs.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84858,10 +86509,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Keyboards start at 101 keys.",
+        "inline": []
+      },
+      "body": {
+        "text": "The classic full layout count. 105, 107 and 103 are variants.",
+        "inline": []
+      },
+      "trap": {
+        "text": "105 tempts as standard, but the baseline asked is 101.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84906,10 +86570,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "network-types",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "One building is a LAN.",
+        "inline": []
+      },
+      "body": {
+        "text": "Office-scale networks by definition. CAN, MAN and WAN span wider.",
+        "inline": []
+      },
+      "trap": {
+        "text": "CAN tempts as small, but one building is LAN.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -84954,10 +86631,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "network-types",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Campus scale is CAN.",
+        "inline": []
+      },
+      "body": {
+        "text": "Several buildings under campus scope. LAN is one building, MAN a city, WAN the world.",
+        "inline": []
+      },
+      "trap": {
+        "text": "MAN tempts as multi-building, but campus is CAN.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85002,10 +86692,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "network-types",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "DAN is no network.",
+        "inline": []
+      },
+      "body": {
+        "text": "VPN, CAN and WLAN all exist; DAN is invented.",
+        "inline": []
+      },
+      "trap": {
+        "text": "WLAN tempts as exotic, but it exists — DAN does not.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85050,10 +86753,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "DRAM needs constant refresh.",
+        "inline": []
+      },
+      "body": {
+        "text": "Capacitor charge leaks; EPROM, ROM and SRAM hold still.",
+        "inline": []
+      },
+      "trap": {
+        "text": "SRAM tempts as RAM, but static holds without refresh.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85098,10 +86814,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Half a byte is a nibble.",
+        "inline": []
+      },
+      "body": {
+        "text": "Four bits by definition. Data, bit and half-byte miss the term.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Half-byte tempts as literal, but the term is nibble.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85146,10 +86875,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "MS-DOS is no application.",
+        "inline": []
+      },
+      "body": {
+        "text": "Operating system, not end-user program. DBM, sheets and word processors all apply.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Spreadsheet tempts as system-ish, but DOS is the OS here.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85194,10 +86936,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "computer-related-crime",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Idle cycles stolen are computer time.",
+        "inline": []
+      },
+      "body": {
+        "text": "Unauthorised use of machine time by definition. Software, computer and use miss the metered thing.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Software tempts as stolen-thing, but time is metered.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85241,11 +86996,24 @@
         }
       }
     ],
-    "answer": "a",
-    "subtopic_id": null,
+    "answer": "d",
+    "subtopic_id": "data-security",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Encryption hides data from prying eyes.",
+        "inline": []
+      },
+      "body": {
+        "text": "Ciphered content resists reading. Permissions, locks and passwords gate access without hiding content.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Permissions tempt as protection, but hiding from eyes is encryption. Recorded a; corrected to d.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85290,10 +87058,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "logic-circuits-and-gates",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Four inputs address sixteen combos.",
+        "inline": []
+      },
+      "body": {
+        "text": "2^4 by counting. 9, 8 and 15 miscount.",
+        "inline": []
+      },
+      "trap": {
+        "text": "15 tempts as all-but-one, but the count is sixteen.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85338,10 +87119,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "logic-circuits-and-gates",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "NOR is 0 on any 1.",
+        "inline": []
+      },
+      "body": {
+        "text": "OR-then-invert: any high input forces low. All-0-only and all-1-only readings invert it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "All-1-only tempts as gate-talk, but any 1 zeroes NOR.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85386,10 +87180,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "database-definition-and-examples",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Data models picture database logic.",
+        "inline": []
+      },
+      "body": {
+        "text": "Structure depiction by definition. Domains, architectures and schemas name parts.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Schemas tempts as structure, but the depiction is the model.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85434,10 +87241,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "hll-classifications",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Java runs as bytecode first.",
+        "inline": []
+      },
+      "body": {
+        "text": "Interpreter turns bytecode to machine. Nibble, bit and high-level miss the stage.",
+        "inline": []
+      },
+      "trap": {
+        "text": "High-level tempts as source, but the interpreter stage is bytecode.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85482,10 +87302,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "internet-browsers",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Web-travelling programs are applets.",
+        "inline": []
+      },
+      "body": {
+        "text": "Small Java programs ride pages. Mail, algorithms and packages differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Mail tempts as travelling, but program-travel is applet.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85530,10 +87363,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Hex runs 0-9 then A-F.",
+        "inline": []
+      },
+      "body": {
+        "text": "F closes the sixteen. E, G and D misclose it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "E tempts as near-end, but hex ends at F.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85578,10 +87424,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "BCD packs digits into nibbles.",
+        "inline": []
+      },
+      "body": {
+        "text": "Four bits per decimal digit. Bytes, bits and all-of-above miss the packing.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Byte tempts as container, but BCD uses nibbles.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85674,10 +87533,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "definition-of-booting",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "First power-on is cold boot.",
+        "inline": []
+      },
+      "body": {
+        "text": "From powered-down by definition. Hot, spicy and cool miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Cool tempts as temperature-talk, but the term is cold.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85722,10 +87594,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Creator-installed runners separate system from app.",
+        "inline": []
+      },
+      "body": {
+        "text": "System software arrives to run the machine. Multitask, size and cache miss the distinction.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Multitask tempts as capability, but origin distinguishes.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85770,10 +87655,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Processed data is information.",
+        "inline": []
+      },
+      "body": {
+        "text": "The combination named. Data-information reversed and instruction variants miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Data-information tempts as pair, but order matters: information from data.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85866,10 +87764,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "classification-by-type",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Analog varies continuously.",
+        "inline": []
+      },
+      "body": {
+        "text": "Smooth signals by definition. Discrete, intermittent and stepped miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Intermittent tempts as varying, but analog is continuous.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85914,10 +87825,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "ict-definitions-and-acronym",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "ICT is information and communication technology.",
+        "inline": []
+      },
+      "body": {
+        "text": "The standard expansion. Community, internet-first and access variants mis-expand it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Internet-first tempts as tech-talk, but the I is information.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -85962,10 +87886,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "computer-related-crime",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Viruses degrade effectiveness.",
+        "inline": []
+      },
+      "body": {
+        "text": "Malware harms system performance. Bugs, antivirus and none-above miss the agent.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Bugs tempts as synonymous, but the program is virus.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86010,10 +87947,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Serving web pages is no OS job.",
+        "inline": []
+      },
+      "body": {
+        "text": "HTTP belongs to servers. Stopping intruders, allocating memory and none-above fit the OS — except serving pages.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Memory tempts as OS-work (it is), but the NOT here is HTTP.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86058,10 +88008,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "program-development-steps",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Error-fixing is debugging.",
+        "inline": []
+      },
+      "body": {
+        "text": "Find-and-fix by definition. Compiling, executing and scanning differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Testing tempts as near, but fixing is debugging.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86106,10 +88069,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "classification-by-type",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Remote is no operation class.",
+        "inline": []
+      },
+      "body": {
+        "text": "Analog, hybrid and digital classify by operation; remote classifies by place.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Hybrid tempts as odd, but it belongs — remote does not.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86154,10 +88130,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "network-devices",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Modems modulate and demodulate.",
+        "inline": []
+      },
+      "body": {
+        "text": "The name contracts the job. Gateways, protocols and multiplexes differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Multiplex tempts as signal-talk, but the device is modem.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86202,10 +88191,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "operations-on-existing-databases",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "New values mean updation.",
+        "inline": []
+      },
+      "body": {
+        "text": "Record refresh by term. Insertion, deletion and retrieval differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Insertion tempts as new-talk, but new values update.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86250,10 +88252,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Heavy maths wants supercomputers.",
+        "inline": []
+      },
+      "body": {
+        "text": "Extreme rapid calculation by definition. Micros, laptops and mainframes trail.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Mainframe tempts as big, but super leads maths.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86298,10 +88313,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "ethical-issues-in-computing",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Computer morals are ethics.",
+        "inline": []
+      },
+      "body": {
+        "text": "Regulating principles by definition. Guidelines, laws and rules approximate it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Laws tempts as binding, but the term is ethics.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86355,10 +88383,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "logic-circuits-and-gates",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Curved-input OR is XOR.",
+        "inline": []
+      },
+      "body": {
+        "text": "The figure's double-curved gate is XOR by symbol. XNOR, NOT and OR symbols differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "OR tempts as shape-near, but the extra curve marks exclusive.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86403,10 +88444,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "computer-related-crime",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Self-spreading net code is a worm.",
+        "inline": []
+      },
+      "body": {
+        "text": "No-click propagation defines it. Trojans, spyware and viruses need rides or hosts.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Virus tempts as spreading, but worms need no user.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86451,10 +88505,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Monitors show; they take nothing.",
+        "inline": []
+      },
+      "body": {
+        "text": "Display-only among inputs. Mice, keyboards and joysticks all send.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Joystick tempts as exotic, but it inputs — monitor does not.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86499,10 +88566,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "general-concept-of-spreadsheets",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Excel is spreadsheet software.",
+        "inline": []
+      },
+      "body": {
+        "text": "Grid calculation by category. Word, graphics and database packages differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Database tempts as grid-ish, but Excel is spreadsheet.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86547,10 +88627,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Combined suites are integrated packages.",
+        "inline": []
+      },
+      "body": {
+        "text": "Several general apps in one program. Graphics, multipurpose and database names miss the suite.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Multipurpose tempts as combined, but the term is integrated.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86595,10 +88688,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Esc cancels the running process.",
+        "inline": []
+      },
+      "body": {
+        "text": "Interrupt-or-cancel by definition. Shutdown, start and delete miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Delete tempts as key-action, but Esc cancels.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86643,10 +88749,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "End-user processing programs are application software.",
+        "inline": []
+      },
+      "body": {
+        "text": "Task-doing code by category. System, OS and translators serve beneath.",
+        "inline": []
+      },
+      "trap": {
+        "text": "OS tempts as software, but end-user means application.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86691,10 +88810,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "definition-of-electronic-mail",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Mail servers speak SMTP.",
+        "inline": []
+      },
+      "body": {
+        "text": "Server-to-server mail transfer by protocol. SNMP, FTP and POP do other legs.",
+        "inline": []
+      },
+      "trap": {
+        "text": "POP tempts as mail-talk, but server-to-server is SMTP.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86739,10 +88871,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "data-security",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Hacking guards nothing.",
+        "inline": []
+      },
+      "body": {
+        "text": "It attacks; passwords, backups and antivirus defend. The NOT here is hacking.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Backup tempts as method, but hacking is the exception.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86787,10 +88932,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Cycles start with fetch.",
+        "inline": []
+      },
+      "body": {
+        "text": "Get the instruction first. Decode, get-named and execute follow.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Decode tempts as first-thinking, but fetch leads.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86835,10 +88993,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "program-development-steps",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Code errors get debugged.",
+        "inline": []
+      },
+      "body": {
+        "text": "Find-and-correct by synonym. Testing, editing and coding differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Testing tempts as near, but correction is debugging.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86883,10 +89054,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The CPU administers the machine.",
+        "inline": []
+      },
+      "body": {
+        "text": "Central direction by analogy. Output, input and memory units serve parts.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Memory tempts as storehouse, but administration is the CPU.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86931,10 +89115,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "hll-classifications",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Assembly is not third generation.",
+        "inline": []
+      },
+      "body": {
+        "text": "Second-generation language among 3GLs. FORTRAN, COBOL and BASIC all rank third.",
+        "inline": []
+      },
+      "trap": {
+        "text": "BASIC tempts as simple, but it is 3GL — assembly is not.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -86979,10 +89176,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "booting-and-shutdown-steps",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Three-finger salute reboots: Ctrl+Alt+Del.",
+        "inline": []
+      },
+      "body": {
+        "text": "The classic chord. Partial chords miss keys.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Ctrl-Del tempts as near, but reboot needs all three.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87027,10 +89237,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "database-definition-and-examples",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Key-linked files mean relational.",
+        "inline": []
+      },
+      "body": {
+        "text": "Common-field joins define it. Network, hierarchical and object models differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Network tempts as linked, but key-joins are relational.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87075,10 +89298,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Antivirus is a utility.",
+        "inline": []
+      },
+      "body": {
+        "text": "Helper-program category. OS, application and translator miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Application tempts as program, but antivirus is utility.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87123,10 +89359,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "ms-excel-features-launching-and-basic-operations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "New documents open with Ctrl+N.",
+        "inline": []
+      },
+      "body": {
+        "text": "The creation chord. Open, quit and margin chords differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Open tempts as document-talk, but new is N.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87171,10 +89420,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "file-organizations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Storage medium never classifies files.",
+        "inline": []
+      },
+      "body": {
+        "text": "Method, content and size do; medium is where, not what.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Size tempts as physical, but it classifies — medium does not.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87219,10 +89481,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "definition-and-classification-of-programming-languages",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Python names take letters, digits and underscores, never leading digits or symbols.",
+        "inline": []
+      },
+      "body": {
+        "text": "my_variable alone is legal; $, hyphens and leading digits break it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Hyphenated tempts as name-like, but hyphens are illegal.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87267,10 +89542,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Nibbles hold four bits.",
+        "inline": []
+      },
+      "body": {
+        "text": "Half-byte by definition. 2, 8 and 16 count other units.",
+        "inline": []
+      },
+      "trap": {
+        "text": "8 tempts as byte, but nibble is four.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87315,10 +89603,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "235 needs base above 5: 6.",
+        "inline": []
+      },
+      "body": {
+        "text": "Digits cap the base below; 6 is the only option above 5.",
+        "inline": []
+      },
+      "trap": {
+        "text": "5 tempts as near, but base must exceed every digit.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87363,10 +89664,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "translators",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Translators are system software.",
+        "inline": []
+      },
+      "body": {
+        "text": "Language processors serve the machine. OS, utility and application readings misplace them.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Utility tempts as helper, but translators are system software.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87411,10 +89725,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "translators",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Assemblers map mnemonics; compilers map high-level code.",
+        "inline": []
+      },
+      "body": {
+        "text": "Direction and level both stated correctly only in B. Reversed and same-level readings fail.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Both-convert-assembly tempts as sameness, but levels differ.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87459,10 +89786,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Cache buffers CPU and memory.",
+        "inline": []
+      },
+      "body": {
+        "text": "Fast staging store by definition. Disks and flash are bulk storage.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Flash tempts as fast, but the buffer is cache.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87507,10 +89847,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "data-representation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "1011 base2 is 11; 122 base4 is 26; sum 37.",
+        "inline": []
+      },
+      "body": {
+        "text": "11 + 26 = 37 in decimal. Other totals misconvert a term.",
+        "inline": []
+      },
+      "trap": {
+        "text": "51 tempts as near-miss, but the sum is 37.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87555,10 +89908,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Control units coordinate and manage.",
+        "inline": []
+      },
+      "body": {
+        "text": "Direction plus resource management by definition. Coordinating-named, memory and ALU options split the job.",
+        "inline": []
+      },
+      "trap": {
+        "text": "ALU tempts as doer, but coordination is control.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87603,10 +89969,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "operations-on-existing-databases",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "CRUD reads with Read.",
+        "inline": []
+      },
+      "body": {
+        "text": "Create, Read, Update, Delete — R is Read. Retrieve, redirect and relate miss the letter.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Retrieve tempts as R-word, but CRUD's R is Read.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87651,10 +90030,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "network-types",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Peer nets lack strong security.",
+        "inline": []
+      },
+      "body": {
+        "text": "No servers, no hierarchy, all peers — and weak security. Strong-security claims invert it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "No-servers tempts as defining, but the NOT here is security.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87699,10 +90091,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "logic-circuits-and-gates",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Any-high-input means OR output high.",
+        "inline": []
+      },
+      "body": {
+        "text": "OR logic by definition. AND, NOR and NOT differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "NOR tempts as OR-family, but it inverts.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87747,10 +90152,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "definition-of-booting",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Powered-down starts are cold boots.",
+        "inline": []
+      },
+      "body": {
+        "text": "From off by definition. Soft, warm and reboot start from on.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Warm tempts as start-talk, but off-start is cold.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87795,10 +90213,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "definition-of-networking",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Linked sharing machines form a network.",
+        "inline": []
+      },
+      "body": {
+        "text": "Resource-sharing connection by definition. Connection, communication and transfer name parts.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Communication tempts as purpose, but the thing is a network.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87843,10 +90274,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "hardware-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Standard layout is QWERTY.",
+        "inline": []
+      },
+      "body": {
+        "text": "The default keyboard order. Dvorak, AZERTY and ABCD differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "AZERTY tempts as real-layout, but standard is QWERTY.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87891,10 +90335,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "classification-by-type",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Analog-digital-hybrid splits by data handling.",
+        "inline": []
+      },
+      "body": {
+        "text": "Signal technique classifies. Purpose, size and functionality classify otherwise.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Purpose tempts as taxonomy, but the split here is handling.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -87939,10 +90396,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Linux is no application.",
+        "inline": []
+      },
+      "body": {
+        "text": "Operating system among app names. Word, Corel and MacWrite all apply.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Corel tempts as system-ish, but Linux is the OS here.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },

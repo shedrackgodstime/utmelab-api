@@ -11128,5 +11128,2665 @@
     "detail": null,
     "content_hash": "d3fbd0590bf609c5141182b7a1fadd82133d9b33f13ffcf87806f30ae7753c59",
     "created_at": "2026-10-13T17:32:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64363_0796",
+    "question_id": "q_claim_2025_computer-studies_64363",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "e2461794ddd48b34abc150c833a95de19bb4f67a78a5fbd0cf8be4c5259e4949",
+    "created_at": "2026-10-13T18:03:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64364_0797",
+    "question_id": "q_claim_2025_computer-studies_64364",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "b66d5a6e2b02ade68996a1ac67adcf2f5c163f86ecad3b3cef3e2b301772b8b9",
+    "created_at": "2026-10-13T18:03:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64365_0798",
+    "question_id": "q_claim_2025_computer-studies_64365",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "3c5bfed1fb1abfe50bc9dd193d83dcc6d35690f99d1ecc10fdcb366974372441",
+    "created_at": "2026-10-13T18:03:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64367_0799",
+    "question_id": "q_claim_2025_computer-studies_64367",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "9070a8f4bf04f15dce414c8d4ea116309d0a1241406db032f58dbc2b5dae7ddd",
+    "created_at": "2026-10-13T18:03:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64369_0800",
+    "question_id": "q_claim_2025_computer-studies_64369",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "da577a71d1882d57df27940ba1ce561f9c15a16d3291184fa4216f0b774c4d57",
+    "created_at": "2026-10-13T18:03:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64370_0801",
+    "question_id": "q_claim_2025_computer-studies_64370",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "cc0576866c80746c7f0b60e6a594e005ae19c2fb6032127aa8bcc94b8b978941",
+    "created_at": "2026-10-13T18:03:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64371_0802",
+    "question_id": "q_claim_2025_computer-studies_64371",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "272e572cf01c1a08b50ac69819805bf99e9fd1099742a1b1fce02ae0c93b660d",
+    "created_at": "2026-10-13T18:03:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64372_0803",
+    "question_id": "q_claim_2025_computer-studies_64372",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "bb19ddadc1e8095bf9b4b71e8e28d4cf4190035f4de1ac1d6b8dfc2289fe1762",
+    "created_at": "2026-10-13T18:03:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64374_0804",
+    "question_id": "q_claim_2025_computer-studies_64374",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "0a6f76311f61763cf8829fac108f56c1d73549ae487dc1037583026cd27ae7e2",
+    "created_at": "2026-10-13T18:03:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64375_0805",
+    "question_id": "q_claim_2025_computer-studies_64375",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "ebe678811798c87836a8f0efcd578b41cb6239c9d2fb0ad6eb87dd7cef104cfa",
+    "created_at": "2026-10-13T18:03:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64376_0806",
+    "question_id": "q_claim_2025_computer-studies_64376",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "bddae4b43ffdf2a771a58cf7e433d54835b82747569805adeb30b4323fe90395",
+    "created_at": "2026-10-13T18:03:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64377_0807",
+    "question_id": "q_claim_2025_computer-studies_64377",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "9a562b14821a1cd1db1fdb70e310fa40f003620ab738133010a1913fb75c65e3",
+    "created_at": "2026-10-13T18:03:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64378_0808",
+    "question_id": "q_claim_2025_computer-studies_64378",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "ef4721176b2f5bc1ddacde62f2e7b9d7a1131ad8566d6c4f20060634e4a0bf91",
+    "created_at": "2026-10-13T18:03:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64379_0809",
+    "question_id": "q_claim_2025_computer-studies_64379",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "5a5d77246700954f9d9500c3ba9299e5c1343edbcb5ee728a6d509dfc013a175",
+    "created_at": "2026-10-13T18:03:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64381_0810",
+    "question_id": "q_claim_2025_computer-studies_64381",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "ed32a3ad77dd209e796815be80205ec9416eca525b25528b73784985bf5124e0",
+    "created_at": "2026-10-13T18:03:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64382_0811",
+    "question_id": "q_claim_2025_computer-studies_64382",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "a8f8511adb873b0c21c184de7f80deb2bf08fd2c375c424c7ef0fe5627d68d88",
+    "created_at": "2026-10-13T18:03:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64383_0812",
+    "question_id": "q_claim_2025_computer-studies_64383",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "f882008adbf8d0a259d2d7b941263e9637e3e99f63d849ac404cdeb533fdba76",
+    "created_at": "2026-10-13T18:03:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64384_0813",
+    "question_id": "q_claim_2025_computer-studies_64384",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "09d91701a81506a4c973263e75189583e55d3be9e898846fa35c2c6216b18ff3",
+    "created_at": "2026-10-13T18:03:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64386_0814",
+    "question_id": "q_claim_2025_computer-studies_64386",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "4f911b1bf61f32a9f4eb7a032b2027bc4ddbda6ff4fdcb5e87a8cd1aa609eacb",
+    "created_at": "2026-10-13T18:03:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64387_0815",
+    "question_id": "q_claim_2025_computer-studies_64387",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "c2fcf570487cd9679cd7ba1afa076943f6c2a50e6039c41945ce163fe504da8f",
+    "created_at": "2026-10-13T18:04:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64388_0816",
+    "question_id": "q_claim_2025_computer-studies_64388",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "b824e708c1679d5f754b42c8a03ce459830647c1c66a63a976f06444112c7686",
+    "created_at": "2026-10-13T18:04:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64389_0817",
+    "question_id": "q_claim_2025_computer-studies_64389",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "9fbf640bbaac32d35fa928c688ac6d0b306f0560facf76bb01be3b66d8994f45",
+    "created_at": "2026-10-13T18:04:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64396_0818",
+    "question_id": "q_claim_2025_computer-studies_64396",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "1713a29c541b58652375978082a16d952b78d6b831aa277e3f2c9dd86deec742",
+    "created_at": "2026-10-13T18:04:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64398_0819",
+    "question_id": "q_claim_2025_computer-studies_64398",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "4407d20f1868b8959d6c87aae50016cb6af30043bc56a86a566c7a6e410fc0ad",
+    "created_at": "2026-10-13T18:04:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64399_0820",
+    "question_id": "q_claim_2025_computer-studies_64399",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "a425bfe7a7e50b6f2333b1a8637d81f0b0037b66595ef4fa769667bc948e8b0d",
+    "created_at": "2026-10-13T18:04:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64400_0821",
+    "question_id": "q_claim_2025_computer-studies_64400",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "9442bbc395b01d1f02d38fd735c06fcea50f8f6f7989717029e407238ff9a485",
+    "created_at": "2026-10-13T18:04:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64401_0822",
+    "question_id": "q_claim_2025_computer-studies_64401",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "9bb26500826275e6fe533833f88a98185294b340a1cbd1c9dca0eade192dceb8",
+    "created_at": "2026-10-13T18:04:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64403_0823",
+    "question_id": "q_claim_2025_computer-studies_64403",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "b2b9a48cf569dc4df05b1f867cc462939ac8b297f24c772cd2404aee70d9b97d",
+    "created_at": "2026-10-13T18:04:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64405_0824",
+    "question_id": "q_claim_2025_computer-studies_64405",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "b6bd449e25741a2a8a39b20a4d126835aa922efec6ff95e251d04177c5070525",
+    "created_at": "2026-10-13T18:04:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64406_0825",
+    "question_id": "q_claim_2025_computer-studies_64406",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "b3c93bab3f0186cd5db9b6d464f30f7da8519a08e6f7a65b50c354bff182fb25",
+    "created_at": "2026-10-13T18:04:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64407_0826",
+    "question_id": "q_claim_2025_computer-studies_64407",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "6e7b7ef2515d05912a91524e95d04cc17840cca3f6d5eea30e32f1781732aba9",
+    "created_at": "2026-10-13T18:04:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64408_0827",
+    "question_id": "q_claim_2025_computer-studies_64408",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "d4dd430dff265dc3d165a7d023f774b05a4e7a803e3ab3240d4ca5dbcb4aacf0",
+    "created_at": "2026-10-13T18:04:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64411_0828",
+    "question_id": "q_claim_2025_computer-studies_64411",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "e2ff3ac04a22ed3beb1b1dcb567ec16573343ed14154242d97a6826311f06a9f",
+    "created_at": "2026-10-13T18:04:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64414_0829",
+    "question_id": "q_claim_2025_computer-studies_64414",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "9f6f9e374c64d362e0664aa78a3e1f142e5283e96a4e0c9d3c8175bec2a36f60",
+    "created_at": "2026-10-13T18:04:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64415_0830",
+    "question_id": "q_claim_2025_computer-studies_64415",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "2eeda028c46917e738b681ff6a9bafdd98c06d38a7776e6c90c91097ce400343",
+    "created_at": "2026-10-13T18:04:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64417_0831",
+    "question_id": "q_claim_2025_computer-studies_64417",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "e6d68b899ff0cc52911b151805240ca69e48ac1f76d87819871a6a2710ce5bcd",
+    "created_at": "2026-10-13T18:04:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64418_0832",
+    "question_id": "q_claim_2025_computer-studies_64418",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "0501794529eb35394a24c9473babeb43cc47b2c6a361cffaf5719414ac2d4516",
+    "created_at": "2026-10-13T18:04:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64419_0833",
+    "question_id": "q_claim_2025_computer-studies_64419",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "89501cd26926d7efd02a9e05255412f43c3ca14b29321e8272b50f39526ebc6b",
+    "created_at": "2026-10-13T18:04:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64422_0834",
+    "question_id": "q_claim_2025_computer-studies_64422",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "fc2ceb4d163b2d7b5f2a6403d7ab4b09c39f9ad5bd6f4185ba64f2f9bff3e343",
+    "created_at": "2026-10-13T18:04:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64423_0835",
+    "question_id": "q_claim_2025_computer-studies_64423",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "c22b8536ae68249f306d479e116c46e98710a96bb80ceaccef8735d6170447c7",
+    "created_at": "2026-10-13T18:04:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64426_0836",
+    "question_id": "q_claim_2025_computer-studies_64426",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "fb65c4a64917f665b4b12722f99515a1bcd787b3e8846d2278501b40396643fa",
+    "created_at": "2026-10-13T18:04:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64427_0837",
+    "question_id": "q_claim_2025_computer-studies_64427",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "502b6dadf91140952f821fd4d927903113d9e923877568786510f7b6e0477ecd",
+    "created_at": "2026-10-13T18:04:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64428_0838",
+    "question_id": "q_claim_2025_computer-studies_64428",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "ae324acc347c14ed475f021b7643f6354bbac3e35489a8dc3c52a8ad1571a418",
+    "created_at": "2026-10-13T18:04:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64430_0839",
+    "question_id": "q_claim_2025_computer-studies_64430",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "efbc6f564249975bf901a07e4e4cb674dc10dbd0f43e75066e487b52c5efa419",
+    "created_at": "2026-10-13T18:04:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64433_0840",
+    "question_id": "q_claim_2025_computer-studies_64433",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "beefca085abeb6efebac2204a1641f73599b97b816fcfeb785f245cb525ffea1",
+    "created_at": "2026-10-13T18:04:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64434_0841",
+    "question_id": "q_claim_2025_computer-studies_64434",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "09556d3de7c503ec2c1021d6937da967f5d116dfae97c7cd0e0db7bc68335024",
+    "created_at": "2026-10-13T18:04:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64435_0842",
+    "question_id": "q_claim_2025_computer-studies_64435",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "a8290e826b946f3048b239fd77b9b32b92231ffa92eb2760d539c55c71302820",
+    "created_at": "2026-10-13T18:04:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64436_0843",
+    "question_id": "q_claim_2025_computer-studies_64436",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "696bf30444404557dad635cac5f0082fba8d7bc5e064c178b6c8d2a3d2c00d2f",
+    "created_at": "2026-10-13T18:04:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64437_0844",
+    "question_id": "q_claim_2025_computer-studies_64437",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "2154f26ce4a1e329574d632869c1247d5eecd023da6415026fdcfc882721b28e",
+    "created_at": "2026-10-13T18:04:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67757_0845",
+    "question_id": "q_claim_2025_computer-studies_67757",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "9458f23248a04eee87de815127fd9915c83b3595f31dc661cc5082d7f00cc0a4",
+    "created_at": "2026-10-13T18:04:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67758_0846",
+    "question_id": "q_claim_2025_computer-studies_67758",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "c709b30a2bd57ac5ba08cbf76025136dd7d927fa479f4ddcdfe537c06b79ed67",
+    "created_at": "2026-10-13T18:04:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67759_0847",
+    "question_id": "q_claim_2025_computer-studies_67759",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "caf37dbaa7d7651f2a25ec666829b07f0722d185d3b8aca1dc954ce389459e72",
+    "created_at": "2026-10-13T18:04:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67761_0848",
+    "question_id": "q_claim_2025_computer-studies_67761",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "347391d9abc0c9233c58e6f5acf4188c0eb9ae5ba1033e2f7a4bb40b8a375e07",
+    "created_at": "2026-10-13T18:04:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67763_0849",
+    "question_id": "q_claim_2025_computer-studies_67763",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "8e1a57b8d39b34f9018099f93885ae35b9cabb4f22d961c3f7512b2801309380",
+    "created_at": "2026-10-13T18:04:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67767_0850",
+    "question_id": "q_claim_2025_computer-studies_67767",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "120f8fa02e217908b57ae7490a8b2c22b684ea2ff4a2bfd31197ef85d89c320c",
+    "created_at": "2026-10-13T18:04:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67768_0851",
+    "question_id": "q_claim_2025_computer-studies_67768",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "36197c5a62c7179a8f2611e7527d630646b362a66115e2df3e7c783ce18d456d",
+    "created_at": "2026-10-13T18:04:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67769_0852",
+    "question_id": "q_claim_2025_computer-studies_67769",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "2ba1af3ca706e9ede691d6a7fe11d0ad22c64aa27283c08771e80a5e3b40d4f1",
+    "created_at": "2026-10-13T18:04:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67770_0853",
+    "question_id": "q_claim_2025_computer-studies_67770",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "5d38c831d677df3956eb9ba0bf18ebae20952c3337f071e71f39da6683520273",
+    "created_at": "2026-10-13T18:04:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67771_0854",
+    "question_id": "q_claim_2025_computer-studies_67771",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "96d3f6bbc7e993326d90a67b33edb3baae029d2fb59b9da89f51c2e362122a7e",
+    "created_at": "2026-10-13T18:04:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67772_0855",
+    "question_id": "q_claim_2025_computer-studies_67772",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "f77aa4de37fb5da8539f26b50a1b6d02010b1bfd9bda164feacbc72ecd9f1c7a",
+    "created_at": "2026-10-13T18:04:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67773_0856",
+    "question_id": "q_claim_2025_computer-studies_67773",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "bd07dd8a6bfc5371cf8551e0c013dfbdd5ffd0971b830e7afd5823b711fbf159",
+    "created_at": "2026-10-13T18:04:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67774_0857",
+    "question_id": "q_claim_2025_computer-studies_67774",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "63e099726707fca15222c5db82f389e89db4fe306bb20e9d39e71a9f13cb3223",
+    "created_at": "2026-10-13T18:04:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67775_0858",
+    "question_id": "q_claim_2025_computer-studies_67775",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "47f1d508d3ba8ccbd30bdf2cf3abbaaa19488e2a9bc428caea726e10531023a8",
+    "created_at": "2026-10-13T18:04:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67777_0859",
+    "question_id": "q_claim_2025_computer-studies_67777",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "a419f87173185eac5ff6b405a60191173d5dac32beeb83fb05a14448d45a5f75",
+    "created_at": "2026-10-13T18:04:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67778_0860",
+    "question_id": "q_claim_2025_computer-studies_67778",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "178198d78a69c4fbdef8a55ae06ea44491f22cab2734db302a0d0360ee5fe52c",
+    "created_at": "2026-10-13T18:04:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67779_0861",
+    "question_id": "q_claim_2025_computer-studies_67779",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "78fafd59a842ffe2f9b96d242c1cd68bb7cd5f0b70766dd593c0b2a08e1f851b",
+    "created_at": "2026-10-13T18:04:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67780_0862",
+    "question_id": "q_claim_2025_computer-studies_67780",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "31d675234605f9018710ac9bf76daf0ef307adc49d8d35c77c87660559c312c5",
+    "created_at": "2026-10-13T18:04:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67781_0863",
+    "question_id": "q_claim_2025_computer-studies_67781",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "36e822790f4a12a3a819027243b07bd3b87c767977ef586d07880472372793a5",
+    "created_at": "2026-10-13T18:04:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67782_0864",
+    "question_id": "q_claim_2025_computer-studies_67782",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "f5286a05e53d961fc6ebb01bf7bb3494d0fd397b3cb2e33a7c10274738c5d8bd",
+    "created_at": "2026-10-13T18:04:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67783_0865",
+    "question_id": "q_claim_2025_computer-studies_67783",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "fb1df27357a041e37004d0d7e7bc0b396b0fa7443c685df813dfd85074a74717",
+    "created_at": "2026-10-13T18:04:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67784_0866",
+    "question_id": "q_claim_2025_computer-studies_67784",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "fe746e275a7f4a693dc31668e240f0f0e2347bfa2dc2bd8830201d9d5078e03e",
+    "created_at": "2026-10-13T18:04:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67785_0867",
+    "question_id": "q_claim_2025_computer-studies_67785",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "424b8f3bf7ccdb1f8d500e9033e15b59da6d7c63415a3bbc28f0d1e16736b168",
+    "created_at": "2026-10-13T18:04:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67786_0868",
+    "question_id": "q_claim_2025_computer-studies_67786",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "2182487c7077a01ab968c74b938437a25a1cf218f8aa9f2c58641d622eac1e10",
+    "created_at": "2026-10-13T18:04:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67787_0869",
+    "question_id": "q_claim_2025_computer-studies_67787",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "e2f913c78815b29d0fb3b236986d8a10a8356a3e47d2e8a261a8dff017fa6fca",
+    "created_at": "2026-10-13T18:04:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67789_0870",
+    "question_id": "q_claim_2025_computer-studies_67789",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "12ed1ecadfcac14f968b3fe45f0a928226aefea5851b79c440a616385065eb46",
+    "created_at": "2026-10-13T18:04:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67790_0871",
+    "question_id": "q_claim_2025_computer-studies_67790",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "bb6e8840a476276fd0b677665864519940582e9d0508b64277c3c0ddec60a4e7",
+    "created_at": "2026-10-13T18:04:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67791_0872",
+    "question_id": "q_claim_2025_computer-studies_67791",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "c612784be021906f1d2811967f233c743ee4bead9b2ff0e295e15618ef498caf",
+    "created_at": "2026-10-13T18:04:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67792_0873",
+    "question_id": "q_claim_2025_computer-studies_67792",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "64e94fa9db2604bab67b99dee5f9bfd956e93c3c18898a76fa419f79c710977b",
+    "created_at": "2026-10-13T18:04:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67793_0874",
+    "question_id": "q_claim_2025_computer-studies_67793",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "8870758cd8ea33c438d51c79ee596d19236e3876eba7331a272f9321418d9a54",
+    "created_at": "2026-10-13T18:04:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67794_0875",
+    "question_id": "q_claim_2025_computer-studies_67794",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "589ed14b058f31f7031ea11851cf5699648092441f805fa98c26a99f33e83f8c",
+    "created_at": "2026-10-13T18:04:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67796_0876",
+    "question_id": "q_claim_2025_computer-studies_67796",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "3fe1136346e101a7b618f2c3d934767cfdcd04600589de77aca0c7b43f14b3d3",
+    "created_at": "2026-10-13T18:04:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67799_0877",
+    "question_id": "q_claim_2025_computer-studies_67799",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "304f35e76bd508b9cdc503d0fee0479945308d702f9c9e2dab381732534b4ce9",
+    "created_at": "2026-10-13T18:04:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67801_0878",
+    "question_id": "q_claim_2025_computer-studies_67801",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "1037f1505cd757aa82c988ae1ada390ff02c844365910e800821301a71fbe340",
+    "created_at": "2026-10-13T18:04:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67803_0879",
+    "question_id": "q_claim_2025_computer-studies_67803",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "452c7d30c7353bfcc14551eec275f52b0319916ff5eacd4616e412b2f3d5486a",
+    "created_at": "2026-10-13T18:04:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67804_0880",
+    "question_id": "q_claim_2025_computer-studies_67804",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "5e3c3d1be5d137af85636cc129961b276bfc50a82252f6c318b4b763d461ec41",
+    "created_at": "2026-10-13T18:04:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67805_0881",
+    "question_id": "q_claim_2025_computer-studies_67805",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "440ffaa29f4f3735515bcc81466f217fa282c2271262d84a70ba3f2e1bed2bf7",
+    "created_at": "2026-10-13T18:04:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_67807_0882",
+    "question_id": "q_claim_2025_computer-studies_67807",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1b-review",
+    "detail": null,
+    "content_hash": "f744ede765afcbb5fd99f9c74bcc52b20f57a94f5a4cd514e047b09cacbedb86",
+    "created_at": "2026-10-13T18:04:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64088_0883",
+    "question_id": "q_claim_2025_computer-studies_64088",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "bdb597d686496bf9eed90974317de30c21262b05ee0fd1507b6a63cde485b66e",
+    "created_at": "2026-10-13T18:04:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64089_0884",
+    "question_id": "q_claim_2025_computer-studies_64089",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "ecf360df08449191fc82c727528588d89e00fcf450b8a9e40a72ae31d98820f2",
+    "created_at": "2026-10-13T18:04:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64090_0885",
+    "question_id": "q_claim_2025_computer-studies_64090",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "1122f466500016aeff3d3a190e6880aedc991d8e3b8b7f75cbbc8a017dccffdf",
+    "created_at": "2026-10-13T18:04:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64091_0886",
+    "question_id": "q_claim_2025_computer-studies_64091",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "9f8f7701d0d4868e1facdeba0db262b05fe64b9c6b60e5d2b99e492570028e7b",
+    "created_at": "2026-10-13T18:04:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64092_0887",
+    "question_id": "q_claim_2025_computer-studies_64092",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "ad2ec44a7f6a2660408107bbc3f02d90ed6eee25380232e9bd5e4445e713f410",
+    "created_at": "2026-10-13T18:04:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64093_0888",
+    "question_id": "q_claim_2025_computer-studies_64093",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "a7c92d65971f1f8f883c7af0ed3ac6c0abf04cca505f37b5cd88e68acbaad000",
+    "created_at": "2026-10-13T18:04:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64094_0889",
+    "question_id": "q_claim_2025_computer-studies_64094",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "5c2f98712dd18183da212e35aaaea760e42db89f90281ac8d432317b6cd40467",
+    "created_at": "2026-10-13T18:04:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64095_0890",
+    "question_id": "q_claim_2025_computer-studies_64095",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "9375ce1220fd0777a0951a32b435886438a8dd95ef95a75cf1863954d46c4b37",
+    "created_at": "2026-10-13T18:04:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64096_0891",
+    "question_id": "q_claim_2025_computer-studies_64096",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "a781098a27aab7d7e6626156677898accce11d9a6f908d80646d075ebb23b6df",
+    "created_at": "2026-10-13T18:04:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64097_0892",
+    "question_id": "q_claim_2025_computer-studies_64097",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "6fcc10e5c5e0108713f20f4b8cf9904e3882482a5171ff9794d64e274ee5d03f",
+    "created_at": "2026-10-13T18:04:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64098_0893",
+    "question_id": "q_claim_2025_computer-studies_64098",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "d2d4082db92cc56b31c34043d0cfb9440e1c3902d95bf26e98daf8f5af80998e",
+    "created_at": "2026-10-13T18:04:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64099_0894",
+    "question_id": "q_claim_2025_computer-studies_64099",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "879d1276073db29bd142b34b350e46da8a46daeaaa571d2758b7f77cdc0893f5",
+    "created_at": "2026-10-13T18:04:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64100_0895",
+    "question_id": "q_claim_2025_computer-studies_64100",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "b64adcd375013435606676c96196fe2c5de2b57471c03b31f3831823b385dae6",
+    "created_at": "2026-10-13T18:04:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64101_0896",
+    "question_id": "q_claim_2025_computer-studies_64101",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "07f917f1e8e68f51ace005c2fd96b5adc98b30b8056e53652f80bfd2537eae08",
+    "created_at": "2026-10-13T18:04:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64102_0897",
+    "question_id": "q_claim_2025_computer-studies_64102",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "eb7a829383ec25c7a9308a0cc139d13fd7673859d57f5235346cf653eb1d66b3",
+    "created_at": "2026-10-13T18:04:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64103_0898",
+    "question_id": "q_claim_2025_computer-studies_64103",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "25ec3e9cee506d0c32292ad955d8f8d2610ac57af359d07e3221d6d1971fb8ca",
+    "created_at": "2026-10-13T18:04:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64104_0899",
+    "question_id": "q_claim_2025_computer-studies_64104",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "749777aa20554bf70305cde21ac7703cc2301ad4adb3e6746637a8429c407d3b",
+    "created_at": "2026-10-13T18:04:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64105_0900",
+    "question_id": "q_claim_2025_computer-studies_64105",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "1ee80b9f93874499de7afc6ac2efafc4391f85dd7afd20e7fd42a4ec8c8a793c",
+    "created_at": "2026-10-13T18:04:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64106_0901",
+    "question_id": "q_claim_2025_computer-studies_64106",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "a887664511eda5fd35d04a4128e8f1db5061c8bfe20132b265a47be828689341",
+    "created_at": "2026-10-13T18:04:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64107_0902",
+    "question_id": "q_claim_2025_computer-studies_64107",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "9dcbd75aa12854529a3f36d0c4584a2edf8195d6ae4ffa10f9ba430534d2ff77",
+    "created_at": "2026-10-13T18:04:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64108_0903",
+    "question_id": "q_claim_2025_computer-studies_64108",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "23e250f3651630fb43217b25d9455ff7c5c0ca5d2983d3efa65bb3712740b62c",
+    "created_at": "2026-10-13T18:05:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64109_0904",
+    "question_id": "q_claim_2025_computer-studies_64109",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "57fa9e3bdaccbc64c569355dd74b0cbb95dfe1af43657f7b900a3964d6fef634",
+    "created_at": "2026-10-13T18:05:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64110_0905",
+    "question_id": "q_claim_2025_computer-studies_64110",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "9de5631b9d921cd9c87d1f7d5539a27af447022207e58cbdb5b8041ecc4acfa5",
+    "created_at": "2026-10-13T18:05:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64111_0906",
+    "question_id": "q_claim_2025_computer-studies_64111",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "d183b0f1ae59054e163225bcc040f17ab9e6a70d60da4c32939ad6f80ce7ae82",
+    "created_at": "2026-10-13T18:05:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64112_0907",
+    "question_id": "q_claim_2025_computer-studies_64112",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "f23cf9cd1468582c800d49d4ae6390e9f9ab5ca6366f74bd875dcac62bd12f24",
+    "created_at": "2026-10-13T18:05:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64113_0908",
+    "question_id": "q_claim_2025_computer-studies_64113",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "05e8776f31840e0e248f362d84d4072025263ed73aea7439544ed89ad0fae0a2",
+    "created_at": "2026-10-13T18:05:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64114_0909",
+    "question_id": "q_claim_2025_computer-studies_64114",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "bbae8b3420a18081c8fcca8203ae4121f12166f7b1233f22abc7d42fef9c4473",
+    "created_at": "2026-10-13T18:05:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64115_0910",
+    "question_id": "q_claim_2025_computer-studies_64115",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "f58a812474c3f46c84d88c38ca5261fb93182e8fbc3325113ee7ec15578d45dd",
+    "created_at": "2026-10-13T18:05:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64116_0911",
+    "question_id": "q_claim_2025_computer-studies_64116",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "b2d4764ca266a1e9f946534db1b1e90872b04002065a500521145107eecd083a",
+    "created_at": "2026-10-13T18:05:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64117_0912",
+    "question_id": "q_claim_2025_computer-studies_64117",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "23a52b7d87e7e4d703b22b047c929d1f4e68d4c3ff2390b8046b9a3409f8fcf2",
+    "created_at": "2026-10-13T18:05:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64118_0913",
+    "question_id": "q_claim_2025_computer-studies_64118",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "4875e4c8c1a98d07bb4c64dd75eb6e911ff74864febb36c6dc38793fcfac8911",
+    "created_at": "2026-10-13T18:05:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64119_0914",
+    "question_id": "q_claim_2025_computer-studies_64119",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "0c0938b35287036002c4555ab7d9c790999c44f3f3521b92ec336bc75043deac",
+    "created_at": "2026-10-13T18:05:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64120_0915",
+    "question_id": "q_claim_2025_computer-studies_64120",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "df6c9cbaeb42e4b2370cb68ec17c0d8347789e31e83706109950e44754c11637",
+    "created_at": "2026-10-13T18:05:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64121_0916",
+    "question_id": "q_claim_2025_computer-studies_64121",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "305674434800fcf2333d9213b43a337880d56f5faecc33424d49dbe2548a996c",
+    "created_at": "2026-10-13T18:05:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64122_0917",
+    "question_id": "q_claim_2025_computer-studies_64122",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "b6d25ac9252f41969eb8e20a576ead670e4ddd65bfabb8aa8b40475e45cac7d9",
+    "created_at": "2026-10-13T18:05:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64123_0918",
+    "question_id": "q_claim_2025_computer-studies_64123",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "ac0679aabe2120bf7969fb72aed937513fda933dddaae72e189cb4433c712824",
+    "created_at": "2026-10-13T18:05:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64125_0919",
+    "question_id": "q_claim_2025_computer-studies_64125",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "8e9e4a6730f0d417afceb5c444fe6f5c5d1feb00e6556a2ba1ae086917c98cd3",
+    "created_at": "2026-10-13T18:05:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64126_0920",
+    "question_id": "q_claim_2025_computer-studies_64126",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "74c6a1b2a18796a9ad9d8f45a66f35f3c904ca8235b7d8bc6ebd9e1f3bacbc0b",
+    "created_at": "2026-10-13T18:05:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64127_0921",
+    "question_id": "q_claim_2025_computer-studies_64127",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "6446b65fa5decd9f8435d4e4166a0d76b320aee3fba0f2bbee41966b28dd3449",
+    "created_at": "2026-10-13T18:05:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64128_0922",
+    "question_id": "q_claim_2025_computer-studies_64128",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "de7a74f9f9d597cda3b2b17edb75e4922e77646c84192d14fc1b444bde2cc372",
+    "created_at": "2026-10-13T18:05:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64129_0923",
+    "question_id": "q_claim_2025_computer-studies_64129",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "0ff8f3653cba5acc304b758fada089d11d1369e4e6c8716bcb96e92c3074c6eb",
+    "created_at": "2026-10-13T18:05:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64130_0924",
+    "question_id": "q_claim_2025_computer-studies_64130",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "3e27ffc1ee9e6961db09a6a545ab1afb1680ccb36e5152971a49877c871028ae",
+    "created_at": "2026-10-13T18:05:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64131_0925",
+    "question_id": "q_claim_2025_computer-studies_64131",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "fe9f3d458de62070c5f7c4edb95f03455c92081b39c25ee42ffdd32dea4d1593",
+    "created_at": "2026-10-13T18:05:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64132_0926",
+    "question_id": "q_claim_2025_computer-studies_64132",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "12a0e3279b0f62de7903e8156fbca1447138e18951868ceb0bbf4c41143c4f48",
+    "created_at": "2026-10-13T18:05:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64133_0927",
+    "question_id": "q_claim_2025_computer-studies_64133",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "0e8933d688ddfa83963c79c0cfee802477da07765ecd4fafe271fb116c2b473d",
+    "created_at": "2026-10-13T18:05:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64134_0928",
+    "question_id": "q_claim_2025_computer-studies_64134",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "b03fbfc75172a1d666807caa3ab6c7b14735df8b90fd93bde8de14d399635bdd",
+    "created_at": "2026-10-13T18:05:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64135_0929",
+    "question_id": "q_claim_2025_computer-studies_64135",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "56c35cad9c98fb97637d5773537b47a6d76fac62565f5d873fb68ed396c37ea5",
+    "created_at": "2026-10-13T18:05:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64136_0930",
+    "question_id": "q_claim_2025_computer-studies_64136",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "01d85dd30426f3c98521b4d3254e1eb27d964ee9f7b418e4ee87a0c08dd6f7b2",
+    "created_at": "2026-10-13T18:05:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64137_0931",
+    "question_id": "q_claim_2025_computer-studies_64137",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "b2694984e1b92363a94c93df24d881fb755f49767b82eec5f22aeb766b20755e",
+    "created_at": "2026-10-13T18:05:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64139_0932",
+    "question_id": "q_claim_2025_computer-studies_64139",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "2b6ee1919f8ef7983a56c0adfa3a4bfd7338d45d9549876991a0b00ef133ab13",
+    "created_at": "2026-10-13T18:05:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64306_0933",
+    "question_id": "q_claim_2025_computer-studies_64306",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "c64f4225013075b25e88724e8d45eac54758a41a895ac7f5ccb010d8dbd25133",
+    "created_at": "2026-10-13T18:05:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64308_0934",
+    "question_id": "q_claim_2025_computer-studies_64308",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "14feee33664c26342ebeec0e8faa0f6596d6fbad691d532c020847d7fe5774c6",
+    "created_at": "2026-10-13T18:05:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64309_0935",
+    "question_id": "q_claim_2025_computer-studies_64309",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "b2312098ec1f70e852cb0ba0d832f479e709c0af56880fe97691693a061813da",
+    "created_at": "2026-10-13T18:05:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64310_0936",
+    "question_id": "q_claim_2025_computer-studies_64310",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "f6491ea0a6ee4531aac4d622cc84e0facdecace133251a5f713b2278ac8afbea",
+    "created_at": "2026-10-13T18:05:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64311_0937",
+    "question_id": "q_claim_2025_computer-studies_64311",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "84fd3d54601e545e12b9a431a32e4003b87013d1a39845b3e740efb9706f4294",
+    "created_at": "2026-10-13T18:05:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64312_0938",
+    "question_id": "q_claim_2025_computer-studies_64312",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "180037dd0f8f47ffbea9582deacb061b5e3b5a9d7f0efc390c809544817efa9b",
+    "created_at": "2026-10-13T18:05:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64313_0939",
+    "question_id": "q_claim_2025_computer-studies_64313",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "fad43bc75363b558bc5f6fae8adc1ef73e94177a40d4f6a1b4216a310bd0674a",
+    "created_at": "2026-10-13T18:05:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64314_0940",
+    "question_id": "q_claim_2025_computer-studies_64314",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "a1b2982e390b873eb592fb31b2a1c014a9be0b20548169a175b803d5d371478f",
+    "created_at": "2026-10-13T18:05:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64315_0941",
+    "question_id": "q_claim_2025_computer-studies_64315",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "5361d5a484a213ca151de97550421dabc0125d49b1d5493a46291fc9d21296c3",
+    "created_at": "2026-10-13T18:05:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64316_0942",
+    "question_id": "q_claim_2025_computer-studies_64316",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "c7c9f858aa384fbc86349a155d8a31d2831ad84b1202049af8e969880b498267",
+    "created_at": "2026-10-13T18:05:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64317_0943",
+    "question_id": "q_claim_2025_computer-studies_64317",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "86440d0328405ecf5f1117cf2a6bfc3c607d175232ac2380ed741a9bd7099aef",
+    "created_at": "2026-10-13T18:05:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64318_0944",
+    "question_id": "q_claim_2025_computer-studies_64318",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "3b5ed3c216b37cf5174f588fd8a6ec8d4fbdaa9026dce148a88bf9566082f6ff",
+    "created_at": "2026-10-13T18:05:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64319_0945",
+    "question_id": "q_claim_2025_computer-studies_64319",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "62c79cfd6b080f07efa975864ec34c262cd8c5d37e5c8c99893461c2c059218d",
+    "created_at": "2026-10-13T18:05:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64320_0946",
+    "question_id": "q_claim_2025_computer-studies_64320",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "0b85df5c73a5924c48d246cc172998a8a47f0212aa5efc0d4105fdcc95dd0704",
+    "created_at": "2026-10-13T18:05:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64321_0947",
+    "question_id": "q_claim_2025_computer-studies_64321",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "048bc507af00f9f3ebfcbc3069f06c076e51db8de8052d929d2dbedd5add1674",
+    "created_at": "2026-10-13T18:05:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64322_0948",
+    "question_id": "q_claim_2025_computer-studies_64322",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "e6f6fae8e2fbc52171743b5c592ecc183dc23b3eab605012e76224911c281243",
+    "created_at": "2026-10-13T18:05:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64323_0949",
+    "question_id": "q_claim_2025_computer-studies_64323",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "5f6ffd8eae578cd08e28fcf60cbff927c1cf9526e47142bd197c35d7d981db20",
+    "created_at": "2026-10-13T18:05:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64324_0950",
+    "question_id": "q_claim_2025_computer-studies_64324",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "ca61361293e5438dfcfdb49e3b78efae43765e622a7e8f5c4d95d3d8a66ab8b9",
+    "created_at": "2026-10-13T18:05:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64325_0951",
+    "question_id": "q_claim_2025_computer-studies_64325",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "720590c94d33aa8238e3a3fb786dd82fba86c7f3b36696600e3fbd40a6541117",
+    "created_at": "2026-10-13T18:05:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64326_0952",
+    "question_id": "q_claim_2025_computer-studies_64326",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "232e3edb04a24fc16271e49223b05a230c9cdcae4c1f3491cba98f316a6a6648",
+    "created_at": "2026-10-13T18:05:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64327_0953",
+    "question_id": "q_claim_2025_computer-studies_64327",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "7395b6eb1b02585b049861fdff02ee62872f3ae0829a6fa8c98d89194ee42bda",
+    "created_at": "2026-10-13T18:05:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64328_0954",
+    "question_id": "q_claim_2025_computer-studies_64328",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "eba13165db8d8b4fd3764078dd2795e3fe0c8fa1a4b07566df22cb0e0670fbe3",
+    "created_at": "2026-10-13T18:05:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64329_0955",
+    "question_id": "q_claim_2025_computer-studies_64329",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "75aead65bbf9b0aa817902dbe1be7f336e5cfbec53f0e8c320d1f43fa411daff",
+    "created_at": "2026-10-13T18:05:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64330_0956",
+    "question_id": "q_claim_2025_computer-studies_64330",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "49c4d1044d43328ebd9c0626ce1290f95ddbca838cedc941fac8fcb70adeb15e",
+    "created_at": "2026-10-13T18:05:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64331_0957",
+    "question_id": "q_claim_2025_computer-studies_64331",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "c49c91e17d13948130f7afeb650ae39a454604691609336a1557224c85f83e3e",
+    "created_at": "2026-10-13T18:05:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64332_0958",
+    "question_id": "q_claim_2025_computer-studies_64332",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "fbe5b88e88c7c65ad64365bec1f0b925884b1f8971b6011a3588f94e2dcdf81c",
+    "created_at": "2026-10-13T18:05:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64333_0959",
+    "question_id": "q_claim_2025_computer-studies_64333",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "47e388df4f2ad382fe531e4d67806d32572f10208bf141bbefade43bb5c72ac7",
+    "created_at": "2026-10-13T18:05:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64335_0960",
+    "question_id": "q_claim_2025_computer-studies_64335",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "a3af29162cf5a4eee4e1e318e1660c9153d0320cac94a07816c33febd1ba20d7",
+    "created_at": "2026-10-13T18:05:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64336_0961",
+    "question_id": "q_claim_2025_computer-studies_64336",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "621a885199b5a068494a06c643b810273184a9ebbd7f42ea9c2607a333f2513a",
+    "created_at": "2026-10-13T18:05:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64337_0962",
+    "question_id": "q_claim_2025_computer-studies_64337",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "4c4a23d0844b36994776217f27ab40e46186a2c853d0c78f9b7eb352c28f1e21",
+    "created_at": "2026-10-13T18:05:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64338_0963",
+    "question_id": "q_claim_2025_computer-studies_64338",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "df6f58a1e0dd4a9a43e6d97f8d528a860d90130824b1a11d74fbf67d9a2be196",
+    "created_at": "2026-10-13T18:05:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64339_0964",
+    "question_id": "q_claim_2025_computer-studies_64339",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "37ab266cf78568a263acb27f6da8803fd71c744c010311c686897ac9d80c2358",
+    "created_at": "2026-10-13T18:05:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64340_0965",
+    "question_id": "q_claim_2025_computer-studies_64340",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "8fd9690da4fb5099886011f9bc6f9dd88f7ae268bfe6d933ab1660bff8491064",
+    "created_at": "2026-10-13T18:05:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64341_0966",
+    "question_id": "q_claim_2025_computer-studies_64341",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "0035a364c7dc70c06b1231f68f81e4c31ad7a360ffddeac72c13ecd85d77a8bd",
+    "created_at": "2026-10-13T18:05:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64342_0967",
+    "question_id": "q_claim_2025_computer-studies_64342",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "9f1c2fd6056d0c1ed6a238098c86ad27b9347606990d2d5439e5b8e0a5a98750",
+    "created_at": "2026-10-13T18:05:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64343_0968",
+    "question_id": "q_claim_2025_computer-studies_64343",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "fc8ac9f26e6f19f1d64b878b0d91ca09bdc40a93451b06b8eabca5cd605d6080",
+    "created_at": "2026-10-13T18:05:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64344_0969",
+    "question_id": "q_claim_2025_computer-studies_64344",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "1bde8891881d55d9051cba3089fc572f91ed397071180c7991ba68859479e841",
+    "created_at": "2026-10-13T18:05:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64345_0970",
+    "question_id": "q_claim_2025_computer-studies_64345",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "0e3d434f8ae8d5e02f724ec172ee44f61ee3cdeb61ee090d7890a085c2171c37",
+    "created_at": "2026-10-13T18:05:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64346_0971",
+    "question_id": "q_claim_2025_computer-studies_64346",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "30799f4899e1dcdb0ccbcc3d7cae9c43b3744ab3e8abfbdea314a715f23649c8",
+    "created_at": "2026-10-13T18:05:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64347_0972",
+    "question_id": "q_claim_2025_computer-studies_64347",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "1bebce6b48b16f189e964bd56406bbf87b35e0f89849c5410e7d8cdd77ae2047",
+    "created_at": "2026-10-13T18:05:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64348_0973",
+    "question_id": "q_claim_2025_computer-studies_64348",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "f5611080e309adef99a0934ab99d6cf9f6818517edfd833c0a42378e02d5827a",
+    "created_at": "2026-10-13T18:05:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64349_0974",
+    "question_id": "q_claim_2025_computer-studies_64349",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "53009b996c2952c6d0295230c93291c760b2d23d5f0896e91a2ace62515281d8",
+    "created_at": "2026-10-13T18:05:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64352_0975",
+    "question_id": "q_claim_2025_computer-studies_64352",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "8937a11c4c7a2222534802b2d7ab2e814538340e7681b0b8c7256e5482fef030",
+    "created_at": "2026-10-13T18:05:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64353_0976",
+    "question_id": "q_claim_2025_computer-studies_64353",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "c29baa165b8e4f8563e645dc3740f23a72a502a658af9551dda9bddd999e4845",
+    "created_at": "2026-10-13T18:05:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64355_0977",
+    "question_id": "q_claim_2025_computer-studies_64355",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "8bf96ac38f74ed1639d0e6f704be6d369c183a62dd5fd7f64a5bdccebf712ccd",
+    "created_at": "2026-10-13T18:05:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64356_0978",
+    "question_id": "q_claim_2025_computer-studies_64356",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "1bce28380d296213632964492f98587b567b29bd0a9c52bd5a1a0bb3ad5c2867",
+    "created_at": "2026-10-13T18:05:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64358_0979",
+    "question_id": "q_claim_2025_computer-studies_64358",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "400175ef0038a9a6068acca3bd9f88c166a5772deb297be32c833d0f360e6bb5",
+    "created_at": "2026-10-13T18:05:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64360_0980",
+    "question_id": "q_claim_2025_computer-studies_64360",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "4b0d0215688f281260801a07749bc54a91b641ce33f0e57931a89514a426ff41",
+    "created_at": "2026-10-13T18:05:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64361_0981",
+    "question_id": "q_claim_2025_computer-studies_64361",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "54c235ed52dda4afeaec588234c46d2d1d2423a9813e7ea2c5086f4ca59a83dd",
+    "created_at": "2026-10-13T18:05:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64362_0982",
+    "question_id": "q_claim_2025_computer-studies_64362",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "5bc10993af7ff9864655ea0f31e657e56f5e475458ee26c47e2f101c7e923fc1",
+    "created_at": "2026-10-13T18:05:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64138_0983",
+    "question_id": "q_claim_2025_computer-studies_64138",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "0549b44d60b86a16c1ea993658ece8909ea252a847277812043e0b3306b3b74e",
+    "created_at": "2026-10-13T18:05:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64385_0984",
+    "question_id": "q_claim_2025_computer-studies_64385",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "9c0737ba8e8cbdf0e67832312623085550802a7e43e75fc062f1e33d230924af",
+    "created_at": "2026-10-13T18:05:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64413_0985",
+    "question_id": "q_claim_2025_computer-studies_64413",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "content_hash": "a7858ecf823b3200c13c211fb962674fcff650618e851e9d8a06624c6dad9aa1",
+    "created_at": "2026-10-13T18:05:19Z"
   }
 ]
