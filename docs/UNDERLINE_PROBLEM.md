@@ -96,10 +96,12 @@ Two recorded limitations, not defects in the marks:
 1. **Sound items mark whole words, not letters.** Stems say "the underlined
    *letters* in: boot" — the letter-level target died in the harvest. The
    recoverable, reviewable unit is the word; claiming `oo` would be guessing.
-2. **`t76545` has a suspect key.** "Same vowel sound as in: bought" with answer
-   *son* (/bɔːt/ vs /sʌn/ share nothing; *port* does). The mark (`bought`) is
-   independent of the key and stands; the answer needs a review pass — flagged
-   here, not changed.
+2. **`t76545` had a wrong key, now corrected.** "Same vowel sound as in:
+   bought" keyed *son* (/bɔːt/ vs /sʌn/ share nothing); corrected to *port*
+   with a rewritten explanation, old key documented in its trap. The mark
+   (`bought`) stood throughout. Lesson kept: check the answer by computing
+   it — the batch also parked `t74853` (`wound` noun/verb ambiguous, no
+   context) rather than verdict it.
 
 ## Backfill method (as applied — difficulty was not uniform)
 

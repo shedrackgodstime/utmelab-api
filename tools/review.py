@@ -130,6 +130,32 @@ def fingerprint(text, options):
 FIGURE_HINTS = ("diagram", "figure", "graph", "illustrat", "shown", "sketch", "table")
 
 
+def mentions_figure_hint(text, hints=FIGURE_HINTS):
+    """Word-boundary figure matching — same rule as src/quarantine.rs.
+
+    Substring matching fired on real English ("debatable" holds "table"), so
+    a hint only counts standing as a word (plural s tolerated).
+    """
+    lower = text.lower()
+    for hint in hints:
+        start = 0
+        while True:
+            pos = lower.find(hint, start)
+            if pos < 0:
+                break
+            before_ok = pos == 0 or not (lower[pos - 1].isalpha() or lower[pos - 1] == "-")
+            run = 0
+            i = pos + len(hint)
+            while i < len(lower) and (lower[i].isalpha() or lower[i] == "-"):
+                run += 1
+                i += 1
+            after_ok = run == 0 or (run == 1 and lower[pos + len(hint)] == "s")
+            if before_ok and after_ok:
+                return True
+            start = pos + 1
+    return False
+
+
 def flags_for(bank, q):
     """Quarantine kinds for one row — same rules as src/quarantine.rs."""
     flags = []
@@ -137,7 +163,7 @@ def flags_for(bank, q):
     lower = stem.lower()
     if "underlin" in lower and not any(m["kind"] == "underline" for m in q["text"]["inline"]):
         flags.append("underline_missing")
-    if (any(h in lower for h in FIGURE_HINTS)
+    if (mentions_figure_hint(stem)
             and not any(m["kind"] == "image" for m in q["text"]["inline"])):
         flags.append("missing_figure")
     if len(q["options"]) != 4:

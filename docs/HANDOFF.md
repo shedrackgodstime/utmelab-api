@@ -55,7 +55,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-134 verified (6%, derived from data/verifications.json, D62) · 216 explained
+183 verified (8%, derived from data/verifications.json, D62) · 216 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -144,10 +144,12 @@ disagree. Two lists is how subjects drift.
    kind). Answerable as served; `verified` needs a human pass each — review
    work, in batches of ~50 via `review.py`, checking the answer by computing
    it. Known suspect: `t76545`'s key (`bought`→*son*).
-2. **Verification and explanations** — 2,200 rows untouched. Mathematics came
-   out clean (58/60 verified); objective subjects verify well, languages and
-   statistics need judgement. Review in batches of ~50, checking the answer by
-   computing it, not by trusting the key.
+2. **Verification and explanations** — English batch 1 done 2026-10-13 (49
+   rows verified + 19 italic-marked rows re-verified after their marks voided
+   the legacy pass; English 67 → 116). Review in batches of ~50 via
+   `review.py`, checking the answer by computing it, not by trusting the key.
+   Parked: `t74853` (`wound` noun/verb ambiguous with no context — needs an
+   authoring fix, not a verdict).
 3. **Subtopic tagging** — 2,175 questions belong to no drill path despite 2,092
    subtopics existing.
 4. ~~**6 novel questions still in the English bank**~~ — **resolved 2026-10-11**: the subject-scoped D35 guard caught **45** misfiled Lekki Headmaster questions (the "This question is based on…" rows plus the Bepo/Stardom/relocation set that named characters). 41 moved into the novel document verbatim (their rescue convention: original ids, `verified:false`), 4 exact duplicates of rows already in the novel doc dropped from the bank. Bank 2,416 → 2,371; novel doc 54 → 95 questions. All `verified:false`, `explanation:null` — honest.
