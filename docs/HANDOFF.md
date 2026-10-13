@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-452 verified (20%, derived from data/verifications.json, D62) · 457 explained
+510 verified (23%, derived from data/verifications.json, D62) · 515 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -188,6 +188,12 @@ disagree. Two lists is how subjects drift.
     verified; chemistry 89 → 103 of 104. Three figures read by eye: 74289
     amide ✓, 74296 Kc expression ✓, 74881 endothermic profile ✓. Subject
     complete except parked 74216.
+12. **Biology batch 2 (wide) done 2026-10-13** — 58 explanations authored
+    (keys computed) + tags + verified; biology 29 → 87. Five figures read by
+    eye: 74473 petal III ✓, 74496 snail shell ✓, 74497 nerve centre ✓, 74505
+    too rough to confirm liver (parked), 74519 uterus ✓. 74449 option typo
+    fixed (lumber → lumbar). 74512 left untagged (no fitting drill path).
+    74417 stays parked.
 11. **Biology batch 1 done 2026-10-13** — 29 explanations authored (keys
     computed) + tags + verified; biology 0 → 29. Four figures read by eye:
     74398 sunbird bill (sucking ✓), 74403 pituitary at head ✓, 74406 canines

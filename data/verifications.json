@@ -7348,5 +7348,817 @@
     "detail": null,
     "content_hash": "387d14e7f3b1efb032c8daeba00aab9c333ddd6709a83c2fc1281eb099ecad92",
     "created_at": "2026-10-13T16:08:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74448_0526",
+    "question_id": "q_claim_2025_biology_74448",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "d4a369ec47dba2468a1beecc10b80c2f54fb3f4d70116723f6a6d22e72cbb132",
+    "created_at": "2026-10-13T16:23:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74449_0527",
+    "question_id": "q_claim_2025_biology_74449",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "bd94b178d1251d9d70eb7ab1866410e1719f04a0823d87b8f087267ffcd8c19e",
+    "created_at": "2026-10-13T16:23:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74450_0528",
+    "question_id": "q_claim_2025_biology_74450",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "b3fe73cdba27e220db0759630ca515535ec206d8d0e34f49f8ddad71bcfba1fa",
+    "created_at": "2026-10-13T16:23:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74452_0529",
+    "question_id": "q_claim_2025_biology_74452",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "3892f6ddcc0a69386c42462a683260e819258ed30980bc4767d238e7619d056f",
+    "created_at": "2026-10-13T16:23:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74453_0530",
+    "question_id": "q_claim_2025_biology_74453",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "c0dc8a837cc0dd6cd8415c4563a100a800ff18df8a2231aa194d580b43255d4e",
+    "created_at": "2026-10-13T16:23:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74454_0531",
+    "question_id": "q_claim_2025_biology_74454",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "6be067d3590daafdef4fabffb11aeab48a0e81eee43e13094f05a7a96e7dbaf8",
+    "created_at": "2026-10-13T16:23:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74455_0532",
+    "question_id": "q_claim_2025_biology_74455",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "b3a5b214db604ff2770092048546afd5b5c83d7dffd08154339ea7155cbd8cff",
+    "created_at": "2026-10-13T16:23:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74456_0533",
+    "question_id": "q_claim_2025_biology_74456",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "9d75efd82e5de006a012c88e6f45a469004340b00ec8eeb40f6a1baed85b40e5",
+    "created_at": "2026-10-13T16:23:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74457_0534",
+    "question_id": "q_claim_2025_biology_74457",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "7311e6814a8246aec1e3729eaa481f4d60de3fc50edd560b8ba01a9b1a945615",
+    "created_at": "2026-10-13T16:23:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74458_0535",
+    "question_id": "q_claim_2025_biology_74458",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "41b67c2d54c7d031620547e4937438f905e1dfd954997f6175a25a1de955add7",
+    "created_at": "2026-10-13T16:23:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74459_0536",
+    "question_id": "q_claim_2025_biology_74459",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "2a4950806431f8353b8717b070a89b38b66600b9a3bde75e5925237ffdf27355",
+    "created_at": "2026-10-13T16:23:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74460_0537",
+    "question_id": "q_claim_2025_biology_74460",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "1cc01d5101d2bf49cd4e39919dfed0ac4389fa615fb4bb90026bd41bb1ad8791",
+    "created_at": "2026-10-13T16:23:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74461_0538",
+    "question_id": "q_claim_2025_biology_74461",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "471f9596dee869a3a93aa0487fef64c9e295e2b2684884002d4754bb90c851d5",
+    "created_at": "2026-10-13T16:23:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74462_0539",
+    "question_id": "q_claim_2025_biology_74462",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "bde2200f1c7a7a3cc59087fa04c7cdf43b81f84e824d4dad2f012b7b6e39f547",
+    "created_at": "2026-10-13T16:23:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74465_0540",
+    "question_id": "q_claim_2025_biology_74465",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "4d805dfb3296b73c866f2b75c16dce8443e09965d5fb765be18bd78e287346cd",
+    "created_at": "2026-10-13T16:23:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74466_0541",
+    "question_id": "q_claim_2025_biology_74466",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "519ba427c2abe47a6eed2a58d79d787b6938931eaee669d3381b63bcf7ac83a0",
+    "created_at": "2026-10-13T16:23:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74467_0542",
+    "question_id": "q_claim_2025_biology_74467",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "f25361bfe1f89c98c499340d856a5cd63d0bdf8da1bfde0394aa2f94b1332450",
+    "created_at": "2026-10-13T16:23:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74469_0543",
+    "question_id": "q_claim_2025_biology_74469",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "b8646a4782020926ff39999692bd6c3cba9f71a40702e5788f2ce0cf9111be4f",
+    "created_at": "2026-10-13T16:23:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74470_0544",
+    "question_id": "q_claim_2025_biology_74470",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "73ca8dcdb7b59acbdac32bf4d7db414b2d12dc298ed7d77cf7181e59b75a5381",
+    "created_at": "2026-10-13T16:23:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74471_0545",
+    "question_id": "q_claim_2025_biology_74471",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "415d478ee79e17031556a7d1b2ed3face973c4c897c3e5ba8b655bc8b32c1a75",
+    "created_at": "2026-10-13T16:23:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74473_0546",
+    "question_id": "q_claim_2025_biology_74473",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "bef5351bc98bcd07b950e4ff3fe600e46c49ecbeb89160e9c25061c16d2a60fe",
+    "created_at": "2026-10-13T16:23:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74474_0547",
+    "question_id": "q_claim_2025_biology_74474",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "a9d7fcd6c4b2df45a37f9bb9dd0962603de563fbc5a5e89043b836a9f4012186",
+    "created_at": "2026-10-13T16:23:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74475_0548",
+    "question_id": "q_claim_2025_biology_74475",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "1968472a07e82d03f6628f55bd9853e7039dff77cfff5ff474f3326b369804f8",
+    "created_at": "2026-10-13T16:23:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74496_0549",
+    "question_id": "q_claim_2025_biology_74496",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "4e546ccfdd32671b706cd4c4a8d1fd5807a2dddf84499fc62a2ca5ffd6ae10d4",
+    "created_at": "2026-10-13T16:23:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74497_0550",
+    "question_id": "q_claim_2025_biology_74497",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "659118c3c4bc46b7c8656af649fb37289c2afbbf479da16af54e8e7389e81fd2",
+    "created_at": "2026-10-13T16:23:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74498_0551",
+    "question_id": "q_claim_2025_biology_74498",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "3a58e09db6fd077408ce6d39c65751b28d3ee3265d4a049744ce24dabeb488b2",
+    "created_at": "2026-10-13T16:23:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74499_0552",
+    "question_id": "q_claim_2025_biology_74499",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "94a0d3188fc57389c988b134d91dd44a9a4960ed499e6c9ff8b4fc49db420f9b",
+    "created_at": "2026-10-13T16:23:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74500_0553",
+    "question_id": "q_claim_2025_biology_74500",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "2d5cae44cfb94255201add5e8c52b53e0721a530e60874ef45a02a738be1e2cb",
+    "created_at": "2026-10-13T16:23:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74501_0554",
+    "question_id": "q_claim_2025_biology_74501",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "ee0c195cf6b1c7f124423745376707566ac5903305174329a3179c05276659f8",
+    "created_at": "2026-10-13T16:23:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74502_0555",
+    "question_id": "q_claim_2025_biology_74502",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "413c8c147d6105d737a36976f69c044cbb9fd98e9b14f76da1b5735b8c4da9da",
+    "created_at": "2026-10-13T16:23:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74503_0556",
+    "question_id": "q_claim_2025_biology_74503",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "f9501656932a4ddef7b458f18088351c952848954706d588c605144f01daed39",
+    "created_at": "2026-10-13T16:23:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74504_0557",
+    "question_id": "q_claim_2025_biology_74504",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "1e1fffb2833a3de75c3f6bb06e722cf1d725f7230fec36b2d348bf8bef9de848",
+    "created_at": "2026-10-13T16:23:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74506_0558",
+    "question_id": "q_claim_2025_biology_74506",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "a1523f415a2d300a30342065e6803a4df35acfaef8f8ff6393230dc81e310db1",
+    "created_at": "2026-10-13T16:23:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74507_0559",
+    "question_id": "q_claim_2025_biology_74507",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "3358397047c58888f981d8c48a3b37393f33b3a270ad84dc46ffc6be510f7498",
+    "created_at": "2026-10-13T16:23:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74508_0560",
+    "question_id": "q_claim_2025_biology_74508",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "b4a0972ca0d105946d2e48c6064dabda6e1a65ddab9e120d2bf95de61745405f",
+    "created_at": "2026-10-13T16:23:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74509_0561",
+    "question_id": "q_claim_2025_biology_74509",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "b5fef964f781725bfca5c7eff7d0da67cd5832164b70c1c4e45f3e80c360d060",
+    "created_at": "2026-10-13T16:23:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74510_0562",
+    "question_id": "q_claim_2025_biology_74510",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "0e3eb479533eebaabd6ce6e29843fcd2f0f5ded0dfd1299c035c06d483d20376",
+    "created_at": "2026-10-13T16:23:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74511_0563",
+    "question_id": "q_claim_2025_biology_74511",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "86cccfeaa41566dcf984abfc87ec307b9ed83af3a11b425d5329652926a31643",
+    "created_at": "2026-10-13T16:23:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74512_0564",
+    "question_id": "q_claim_2025_biology_74512",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "9ba349169f915eed864fe59363df3d75a4da15ecc73236e1f05a1876157fb80e",
+    "created_at": "2026-10-13T16:23:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74513_0565",
+    "question_id": "q_claim_2025_biology_74513",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "b450d38b42879e836946e8275361917ef9926a8f4d63113aa471824740cbe981",
+    "created_at": "2026-10-13T16:23:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74514_0566",
+    "question_id": "q_claim_2025_biology_74514",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "1f6460cfd3b07d11b8b9a26acb83cf6b1e3adb37756a0d61ea16fbc5d1bd7def",
+    "created_at": "2026-10-13T16:23:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74515_0567",
+    "question_id": "q_claim_2025_biology_74515",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "25e1f5145d797685044d44ea301f601a36e2b28969c8cb7a915a41ac6da8a622",
+    "created_at": "2026-10-13T16:23:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74516_0568",
+    "question_id": "q_claim_2025_biology_74516",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "4adb8c6b3dd498c13fe11433230f8e36e6ae882c6e781ef4355a363444d85f51",
+    "created_at": "2026-10-13T16:23:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74517_0569",
+    "question_id": "q_claim_2025_biology_74517",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "a21d19170a29e21078cd18850d7c7cad598c201e61c460a59ee2b45c1b28fe42",
+    "created_at": "2026-10-13T16:23:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74518_0570",
+    "question_id": "q_claim_2025_biology_74518",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "5ba1e9bee967fe59046acc10ae3137dc523d1fa6c0ed34ee8cb3bf971a7ffd85",
+    "created_at": "2026-10-13T16:23:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74519_0571",
+    "question_id": "q_claim_2025_biology_74519",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "2e738c0189765b75c904a24b9b62b4848e715eec381d5523aecb51e940ccdb44",
+    "created_at": "2026-10-13T16:23:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74520_0572",
+    "question_id": "q_claim_2025_biology_74520",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "00b2a05231cc91e8e3ee1990335d3f1cbaf63ca511c64289168c577d10a1e3a9",
+    "created_at": "2026-10-13T16:23:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74521_0573",
+    "question_id": "q_claim_2025_biology_74521",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "05801e7e72253f6d0c7f7814095f8b6d5c32dc79d5ece146f5b2ee5d51cdd50c",
+    "created_at": "2026-10-13T16:23:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74523_0574",
+    "question_id": "q_claim_2025_biology_74523",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "ff83924a9f68b1de3c406fa31aba4b32e931da37c881980e7e0025202256f9c1",
+    "created_at": "2026-10-13T16:23:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74524_0575",
+    "question_id": "q_claim_2025_biology_74524",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "fe2cdf039e3a1f832d3fb20b5854cf9f25e4def909c42d36c6a1470cb718bef5",
+    "created_at": "2026-10-13T16:23:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74525_0576",
+    "question_id": "q_claim_2025_biology_74525",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "726053531e731f643126e8fda0ddd76f7ea937a2951637add854d4f8779e3627",
+    "created_at": "2026-10-13T16:23:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74526_0577",
+    "question_id": "q_claim_2025_biology_74526",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "8b9ef08e0672652330fcabff837c5ebc034cceb978e4c07c76116ac69bbd00fa",
+    "created_at": "2026-10-13T16:23:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74527_0578",
+    "question_id": "q_claim_2025_biology_74527",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "b5c41a67632cfa013463ed0df49ec919c656831784560135fc2e8a22e4e1a626",
+    "created_at": "2026-10-13T16:23:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74528_0579",
+    "question_id": "q_claim_2025_biology_74528",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "0e8b81b7813be67b7ebbfef7b52cb4bf756c82c7d4b0fd53188451e2ed9f0432",
+    "created_at": "2026-10-13T16:23:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74529_0580",
+    "question_id": "q_claim_2025_biology_74529",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "b2ea3919da1b8fe30da952f8bd7d1668b850550ae847fff076b1cebc61a44b17",
+    "created_at": "2026-10-13T16:23:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74530_0581",
+    "question_id": "q_claim_2025_biology_74530",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "317690d4b5ea9728aeb5a746c9975b8ab6b8c1618423d4d408b9ab062d0e48ab",
+    "created_at": "2026-10-13T16:23:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74531_0582",
+    "question_id": "q_claim_2025_biology_74531",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "3334b239ad1cfb916ccec368fba325865d2959126bd974fa85165608c108f4d5",
+    "created_at": "2026-10-13T16:23:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_biology_74532_0583",
+    "question_id": "q_claim_2025_biology_74532",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "bio2-review",
+    "detail": null,
+    "content_hash": "ea50a19d583b14a7b9b0cff836cc5835b1a9bbebda9924c807bd0c2d8250dcc6",
+    "created_at": "2026-10-13T16:23:34Z"
   }
 ]
