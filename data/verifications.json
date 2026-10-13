@@ -16350,5 +16350,1097 @@
     "detail": null,
     "content_hash": "3b3ccfd1390fb0fce66472d9061adfee3b864621bc13ab2ed9c1a66d82d3e338",
     "created_at": "2026-10-13T23:40:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_74904_1169",
+    "question_id": "q_claim_2025_commerce_74904",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "b32d78a3595b818c6c551d8085d28e4463e6cf87077d59f6f5d251947ce5c2c7",
+    "created_at": "2026-10-13T23:43:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_74906_1170",
+    "question_id": "q_claim_2025_commerce_74906",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "ff32e80f8c209d740211572e7902d6b610a1753b9af06b9a604ac2ca8d2d3b71",
+    "created_at": "2026-10-13T23:43:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_74907_1171",
+    "question_id": "q_claim_2025_commerce_74907",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "d108933d93a6aa4e6f652c3c250c8620dea831d4f2f51c17790fb7cccdd1223b",
+    "created_at": "2026-10-13T23:43:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_74908_1172",
+    "question_id": "q_claim_2025_commerce_74908",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "70777f3c9cc714742e6acbbd67c7c2b137cfe9fe98975516cfae2ee44c86d18d",
+    "created_at": "2026-10-13T23:43:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_74999_1173",
+    "question_id": "q_claim_2025_commerce_74999",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "7654a196b7b757a577a2df1493bcf468711672aeb4c3ad16c9f77c44b08e9b0e",
+    "created_at": "2026-10-13T23:43:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75000_1174",
+    "question_id": "q_claim_2025_commerce_75000",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "28c777e1455574d722d69da4a9380163b73b49f304de5da954a5c59945465660",
+    "created_at": "2026-10-13T23:43:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75002_1175",
+    "question_id": "q_claim_2025_commerce_75002",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "c29c733db56c9c38b830fd1d415fc6ee9978b1332aef13f8ddb56ca8dabe01a8",
+    "created_at": "2026-10-13T23:43:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75007_1176",
+    "question_id": "q_claim_2025_commerce_75007",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "ce97104ff5b8ba4eaf7683f35c0e355be0734e2c7caea8bfa69bf5ededdf65fb",
+    "created_at": "2026-10-13T23:43:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75011_1177",
+    "question_id": "q_claim_2025_commerce_75011",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "e1609d2d39e043b731fb54c80e0f5619d3fe08a02def0359f0f635a89a5a9165",
+    "created_at": "2026-10-13T23:43:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75012_1178",
+    "question_id": "q_claim_2025_commerce_75012",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "ce3a1dea70d3cbcfba3b3b0bc87a914338c7342d3243636748d73b40d69d23f0",
+    "created_at": "2026-10-13T23:43:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75026_1179",
+    "question_id": "q_claim_2025_commerce_75026",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "440a8056edc7a93185390f2adf4ebdf815565b9a301c09073cf53ad2a8330958",
+    "created_at": "2026-10-13T23:43:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75029_1180",
+    "question_id": "q_claim_2025_commerce_75029",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "5019b2aa797e8ffeef46048d253653e8b2e10ed79834529c6729f958c9e676d5",
+    "created_at": "2026-10-13T23:43:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75041_1181",
+    "question_id": "q_claim_2025_commerce_75041",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "9d94800c75252e64239334910344c3c18c81303c27e02d4eb38b7025df9e6854",
+    "created_at": "2026-10-13T23:43:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75045_1182",
+    "question_id": "q_claim_2025_commerce_75045",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "0f3f2e75d44e7ace2306b6a1d61679d379df8e04edfb75582b6011f36081a9fe",
+    "created_at": "2026-10-13T23:43:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75049_1183",
+    "question_id": "q_claim_2025_commerce_75049",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "8c14012f4ffd8abe36a63d5deec45f07f33aed101577ce33c6e6bf1ba6bcb1a0",
+    "created_at": "2026-10-13T23:43:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75052_1184",
+    "question_id": "q_claim_2025_commerce_75052",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "941e2273ee7cbf33ca37b4e2f5df520b2327565cb73abc1b252877625b181b48",
+    "created_at": "2026-10-13T23:43:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75057_1185",
+    "question_id": "q_claim_2025_commerce_75057",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "e12bcf9b291b2522228a986e1a52d293c7017899ea0a3867574e551c212b130a",
+    "created_at": "2026-10-13T23:43:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75059_1186",
+    "question_id": "q_claim_2025_commerce_75059",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "95d8ea308081f1bfde4c6503a54cfa6fc40a54dcdd1077a14bc3e6238c29889a",
+    "created_at": "2026-10-13T23:43:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75064_1187",
+    "question_id": "q_claim_2025_commerce_75064",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "3a1587acffa0348e2a42dd956aa358ecf6c2aed896d2244e04e1760b8b1fbb1c",
+    "created_at": "2026-10-13T23:43:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75066_1188",
+    "question_id": "q_claim_2025_commerce_75066",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "01e9a827157b9485f41452eebb0265c0f326e7696553960fb3d02889ff54ab83",
+    "created_at": "2026-10-13T23:43:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75070_1189",
+    "question_id": "q_claim_2025_commerce_75070",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "6d339e87580e7b92de837c029b90fb7ef83c4288519bf5ce9ae6e00ef400229a",
+    "created_at": "2026-10-13T23:43:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75072_1190",
+    "question_id": "q_claim_2025_commerce_75072",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "331a25d0222c8ec11bae2a1ea3944c7213066e59449e356679fa334402c76221",
+    "created_at": "2026-10-13T23:43:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75082_1191",
+    "question_id": "q_claim_2025_commerce_75082",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "7431c13bca89ca563b0e8f656b2195397c619feccbfd012774ff234d7a7b081c",
+    "created_at": "2026-10-13T23:43:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75087_1192",
+    "question_id": "q_claim_2025_commerce_75087",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "37fe51b3f30cdb5c3a14c98f34fd7fc94675ff177e507d2f72b1134cade7ce2f",
+    "created_at": "2026-10-13T23:43:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75090_1193",
+    "question_id": "q_claim_2025_commerce_75090",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "3895635a17878971e9c159aaec6bb90f16cf830138e38101c4083478dfca52ef",
+    "created_at": "2026-10-13T23:43:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75096_1194",
+    "question_id": "q_claim_2025_commerce_75096",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "24bbb9d465b47d2a42b8b995869f11827b8f0f19cc054deb18b96d6f221b682e",
+    "created_at": "2026-10-13T23:43:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75101_1195",
+    "question_id": "q_claim_2025_commerce_75101",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "e7da8483393e84038ee7167b42eb737ad6ba8dbc86b9cca0712676b82f8dd5ec",
+    "created_at": "2026-10-13T23:43:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75111_1196",
+    "question_id": "q_claim_2025_commerce_75111",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "83535cea80651738c37ca606cd7e6224f92943d9dd60e8247c4c657d65348794",
+    "created_at": "2026-10-13T23:43:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75119_1197",
+    "question_id": "q_claim_2025_commerce_75119",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "e3e0340187d88f7f2bb3246396a2eb45ac178b0217a5e1eaa329af526232f684",
+    "created_at": "2026-10-13T23:43:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75123_1198",
+    "question_id": "q_claim_2025_commerce_75123",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "ebc2cff5cfd422db3e5d4506077e9eaa3f1b7553757563b213466209e060326a",
+    "created_at": "2026-10-13T23:43:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75127_1199",
+    "question_id": "q_claim_2025_commerce_75127",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "413b5da44ebc726c4eb075aa82ed1757bf99ef4428c012d4e0c296d91e67113d",
+    "created_at": "2026-10-13T23:43:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75132_1200",
+    "question_id": "q_claim_2025_commerce_75132",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "be7def573b612385265ba5114f40b370ea321cc9b77f8c7ddecdc578e6c1a461",
+    "created_at": "2026-10-13T23:43:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75138_1201",
+    "question_id": "q_claim_2025_commerce_75138",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "5a3e84d71c09efc70caffe139a507c60c0da41d90c2a5733a81dc3977f0387f2",
+    "created_at": "2026-10-13T23:43:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75142_1202",
+    "question_id": "q_claim_2025_commerce_75142",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "4b192a69629966f6191708da1c8434c1a0af4aee8912a60d07d47bdcac313fb4",
+    "created_at": "2026-10-13T23:43:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75146_1203",
+    "question_id": "q_claim_2025_commerce_75146",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "2e1344bb7ac5be5fb1c12d7a9970b567e9b91bfc0b5951c5d02d7f19837e6f6d",
+    "created_at": "2026-10-13T23:43:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75148_1204",
+    "question_id": "q_claim_2025_commerce_75148",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "4f1449b5e1487a3f11ce8019139af2d88cb29884a7ac36d733abe3ebf0fc8c35",
+    "created_at": "2026-10-13T23:43:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75150_1205",
+    "question_id": "q_claim_2025_commerce_75150",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "4c483006972f742599249fc7a6088e1ebf4310e2bf2486307d5081c7acd8d508",
+    "created_at": "2026-10-13T23:43:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75153_1206",
+    "question_id": "q_claim_2025_commerce_75153",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "05bce3f8b5d10b6d956a3015aa3db64adca936c13a02b9a3525206239be38caf",
+    "created_at": "2026-10-13T23:43:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75156_1207",
+    "question_id": "q_claim_2025_commerce_75156",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "92959baa4bc754d627a28e9073b7ce68955cd45caa7c5ff2dfafa158fd789813",
+    "created_at": "2026-10-13T23:43:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75159_1208",
+    "question_id": "q_claim_2025_commerce_75159",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "54a392ad3d50f1730a8c8d4d8153745f1e3670ed457961b0f7fb09fce9acc2ce",
+    "created_at": "2026-10-13T23:43:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75383_1209",
+    "question_id": "q_claim_2025_commerce_75383",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "630adca549abc948f3da432bc318f1a2cf29badc6669cc21ec6ff8a2de108844",
+    "created_at": "2026-10-13T23:43:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75386_1210",
+    "question_id": "q_claim_2025_commerce_75386",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "6bb4bf5300962fb1280c20f3ade4962efb50487ee044197946fb22a6d4eeb82d",
+    "created_at": "2026-10-13T23:43:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75388_1211",
+    "question_id": "q_claim_2025_commerce_75388",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "a044a2bb4815556e73198a98723e92049a5ecc7bb123b52c721749c0ce6c24ab",
+    "created_at": "2026-10-13T23:43:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75391_1212",
+    "question_id": "q_claim_2025_commerce_75391",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "7e00a31041434d44ba1a309a8f5a69a2b4b04c673857b8897a47d19a225d48ed",
+    "created_at": "2026-10-13T23:43:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75393_1213",
+    "question_id": "q_claim_2025_commerce_75393",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "de0db7c382f78fae5b6a9ddd098b79c0d25e64c5fae428b04cd275c7511e9394",
+    "created_at": "2026-10-13T23:43:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75395_1214",
+    "question_id": "q_claim_2025_commerce_75395",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "aa1234c2794031a74700f4f0a2782ac47897220b38d565aa1d00c5730f64f044",
+    "created_at": "2026-10-13T23:43:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75398_1215",
+    "question_id": "q_claim_2025_commerce_75398",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "fa6b748b7eeb2171ae909406d12a4d5791c5c09c029d1ff46a56ee87db19d0dd",
+    "created_at": "2026-10-13T23:43:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75402_1216",
+    "question_id": "q_claim_2025_commerce_75402",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "c8932d58544d6ddb663ab024f9f40a4d76b0a4c0ce275cdf9e016969db22cf65",
+    "created_at": "2026-10-13T23:43:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75426_1217",
+    "question_id": "q_claim_2025_commerce_75426",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "5849aa381559aa945a7b9a56fc1cb29d21b364b09ca2bf63ad780ccaf275f80e",
+    "created_at": "2026-10-13T23:43:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75427_1218",
+    "question_id": "q_claim_2025_commerce_75427",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "b3ca736d70fa321000c5cc0bca8c76414478ff14374a917aef8cf6a431d9bda2",
+    "created_at": "2026-10-13T23:43:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75428_1219",
+    "question_id": "q_claim_2025_commerce_75428",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "0cdccdb02d25cd80b4a5e3748c8a7a049cd09f018eaf776c3e0bdc5a0edcd92e",
+    "created_at": "2026-10-13T23:43:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75430_1220",
+    "question_id": "q_claim_2025_commerce_75430",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "4f4fc28e340d0b08068d28becdbb8788407cbcd0a20505acb0822fab629336dc",
+    "created_at": "2026-10-13T23:43:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75434_1221",
+    "question_id": "q_claim_2025_commerce_75434",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "dac54bf24aa5f83730170d8ce0a96afc36d2b23653c96ee204b7536cc1796488",
+    "created_at": "2026-10-13T23:43:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75435_1222",
+    "question_id": "q_claim_2025_commerce_75435",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "aa4afb79b07ac0a69bfd6e4ba96511141524c44ddc6198a56504af198387c652",
+    "created_at": "2026-10-13T23:43:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75436_1223",
+    "question_id": "q_claim_2025_commerce_75436",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "12aa2ae9cde8d4c75f4abe1919a98751b0801058e2fe402361fa5308fbb377dd",
+    "created_at": "2026-10-13T23:43:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75437_1224",
+    "question_id": "q_claim_2025_commerce_75437",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "0cc5713000ed9af218f4ace93e935b51defe931d04c6bcbbf04475a73505857f",
+    "created_at": "2026-10-13T23:43:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75438_1225",
+    "question_id": "q_claim_2025_commerce_75438",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "3a6e89673bf6cef46c8999508331bb46891df07280271a9e0c19c778dca0bedb",
+    "created_at": "2026-10-13T23:43:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75439_1226",
+    "question_id": "q_claim_2025_commerce_75439",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "051c121cd02aeb65d28a1fb05b3bea8509b04082ca5d2bb19744af83ccef0355",
+    "created_at": "2026-10-13T23:43:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75445_1227",
+    "question_id": "q_claim_2025_commerce_75445",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "f33ecacf5e36c3409cf7510f1b4fd7adc5c6f132c1849aea6c384e636eb567c5",
+    "created_at": "2026-10-13T23:43:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75448_1228",
+    "question_id": "q_claim_2025_commerce_75448",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "201896f972449e3328989f69abb89a55c82c42ab3b6a36912bdd07979e05c72f",
+    "created_at": "2026-10-13T23:43:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75451_1229",
+    "question_id": "q_claim_2025_commerce_75451",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "59fd29108d566abf3c156db4336533cd8969c27ebf2ef027e2aadb9ae7e91fe4",
+    "created_at": "2026-10-13T23:43:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75455_1230",
+    "question_id": "q_claim_2025_commerce_75455",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "d0e79e7d2f07d6d58e82145e6887d0d4037a1501f65b79263d1d0d35629f9f02",
+    "created_at": "2026-10-13T23:43:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75457_1231",
+    "question_id": "q_claim_2025_commerce_75457",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "43a75a468a1f6b7e1a77b5d2c02b1bc0491d659c44aa1e6583aafe740a0fbdf4",
+    "created_at": "2026-10-13T23:43:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75460_1232",
+    "question_id": "q_claim_2025_commerce_75460",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "323957b383d370f1b6b4dacc98aaeef9e40b67b04e01e94d97ef63af5af5e066",
+    "created_at": "2026-10-13T23:43:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75466_1233",
+    "question_id": "q_claim_2025_commerce_75466",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "7abe021c76d3b680f059333bb4f8ad4b4af2aa4c04ad727733cb899b5fca9e1e",
+    "created_at": "2026-10-13T23:43:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75469_1234",
+    "question_id": "q_claim_2025_commerce_75469",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "f705ee82cbc17b56664baedb9b7fe781814d06fa232a9273472a825fd862bcd4",
+    "created_at": "2026-10-13T23:43:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75490_1235",
+    "question_id": "q_claim_2025_commerce_75490",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "eff072f56a2f59f19cb18a1ed013bacbfdd36a86414cac5c5c44c92787c38b2a",
+    "created_at": "2026-10-13T23:43:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75491_1236",
+    "question_id": "q_claim_2025_commerce_75491",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "6a739b4c97c459cba8e78c5503cb5afdab407cf9e438191dadaf214045bc41cf",
+    "created_at": "2026-10-13T23:43:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75492_1237",
+    "question_id": "q_claim_2025_commerce_75492",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "2a5167767fe3a8af39f203b033c88f7bbe64d142159d97731ac941dbf226495d",
+    "created_at": "2026-10-13T23:43:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75493_1238",
+    "question_id": "q_claim_2025_commerce_75493",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "61ec97006775247195f5a5d7fad15b24a7c0f278ea825de528ee8fc140cd6eb8",
+    "created_at": "2026-10-13T23:43:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75494_1239",
+    "question_id": "q_claim_2025_commerce_75494",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "5fc1c7a8f1ba0415f0c284be54b2dd9004c1c028243be590d11d37359b2a9c97",
+    "created_at": "2026-10-13T23:43:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75495_1240",
+    "question_id": "q_claim_2025_commerce_75495",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "27887ea0268a6fe86092d87837c03d34a28627cedbf7f3badc30e4113d79dc6f",
+    "created_at": "2026-10-13T23:43:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75496_1241",
+    "question_id": "q_claim_2025_commerce_75496",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "937cb02cb5d897072c7da05adec8e3bc55646a46ea19a173eca439994ecdd89a",
+    "created_at": "2026-10-13T23:43:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75497_1242",
+    "question_id": "q_claim_2025_commerce_75497",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "74501b8307d12f556769cf2e5678055bfd494836dd5692ee6d539f5609504615",
+    "created_at": "2026-10-13T23:43:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75502_1243",
+    "question_id": "q_claim_2025_commerce_75502",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "b24855633ea89a9939299f5cc97272f01d3c64b8c5bcb32fed6968cec19f5e5d",
+    "created_at": "2026-10-13T23:43:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75507_1244",
+    "question_id": "q_claim_2025_commerce_75507",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "1bdaf90fd0dabd1d7b458891c6bcfc913dbabf11fa921ce16db017c2a0d40ebb",
+    "created_at": "2026-10-13T23:43:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75510_1245",
+    "question_id": "q_claim_2025_commerce_75510",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "d2daf2e08491c6ff20826d9d35feac60bcadf4fb90ad96df34c581446ccbedac",
+    "created_at": "2026-10-13T23:43:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75513_1246",
+    "question_id": "q_claim_2025_commerce_75513",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "commerce-rewrite1",
+    "detail": null,
+    "content_hash": "46177c892273e657de827d93b6dba0962a7b1fa0486f9677a21c0ae336d6f7ef",
+    "created_at": "2026-10-13T23:43:46Z"
   }
 ]

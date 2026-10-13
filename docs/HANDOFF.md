@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-1,095 verified (49%, derived from data/verifications.json, D62) · 1,100 explained
+1,173 verified (52%, derived from data/verifications.json, D62) · 1,178 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -261,6 +261,13 @@ disagree. Two lists is how subjects drift.
     path for wall-painting/Uli rows (75228/75242/75247) — left null per
     74512 pattern, never forced. Loader gate caught 2 topic-slugs-as-
     subtopics pre-apply.
+22. **Commerce proper rewrite done 2026-10-14** — 77 authored + 1 key fix +
+    tags + verified; commerce 0 → 78 of 79. **75064 key corrected** d → a
+    (incorporation confers separate personality; commencement needs the
+    trading certificate per 75513 — D45 pattern, documented in trap).
+    **75442 parked**: dangling `information below` with no table.
+    Computations checked: 75153 profit 5,000; 75156 25%; 75159 COGS 25,000;
+    75388 avg stock 2,500; 75469 N6,000,000 (50 kobo).
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),
