@@ -1,5 +1,10 @@
 # `src/mcp/` — MCP surface (prototype scaffold)
 
+The MCP surface lets assistants and agents work with the question bank
+through the same rules as the API: read the catalog and questions, search
+and page them, never bypassing auth, rate limits, or answer-withholding.
+Commercial callers use the API key; admins get a separate dev credential.
+
 No behaviour yet. This directory reserves the shape so the **auth decision
 lands first** and every later tool/resource has one place to live.
 
