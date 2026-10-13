@@ -13788,5 +13788,565 @@
     "detail": null,
     "content_hash": "a7858ecf823b3200c13c211fb962674fcff650618e851e9d8a06624c6dad9aa1",
     "created_at": "2026-10-13T18:05:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76022_0986",
+    "question_id": "q_claim_2025_yoruba_76022",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "f705c6d10ba11d66a4a098902d16da21876bda2a79636d2d5c2629eec2ed8bda",
+    "created_at": "2026-10-13T23:34:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76023_0987",
+    "question_id": "q_claim_2025_yoruba_76023",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "6953227425f794d35eb9e38bb7516b0f9e2a4d220e26aa86bd46e09f5e95585e",
+    "created_at": "2026-10-13T23:34:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76024_0988",
+    "question_id": "q_claim_2025_yoruba_76024",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "d59cc2e1cc83a991f5663e61079ee5741810a60ee850a7029ea73cd05803cefe",
+    "created_at": "2026-10-13T23:34:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76025_0989",
+    "question_id": "q_claim_2025_yoruba_76025",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "c839fbdaba6390af3848432e050200b72432c049a4f575d7b13112b794b0c184",
+    "created_at": "2026-10-13T23:34:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76026_0990",
+    "question_id": "q_claim_2025_yoruba_76026",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "a14ada2abb2c413c73d46b79a934ae1cf0243166033bed88a1f0e17b669a4e8d",
+    "created_at": "2026-10-13T23:34:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76027_0991",
+    "question_id": "q_claim_2025_yoruba_76027",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "544ea54485a36fb9ccf126ed165651dbc9090a018d78213d53459fbf55e80032",
+    "created_at": "2026-10-13T23:34:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76028_0992",
+    "question_id": "q_claim_2025_yoruba_76028",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "8b4b8289b25453070ef6f70741a49794604c7caa62dc2cfb3151be2c5ba839d8",
+    "created_at": "2026-10-13T23:34:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76029_0993",
+    "question_id": "q_claim_2025_yoruba_76029",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "b2a4bd167c24c20f61d31fd24c0e9f4533ce5954d7feb841311c50fd719c1e02",
+    "created_at": "2026-10-13T23:34:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76030_0994",
+    "question_id": "q_claim_2025_yoruba_76030",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "917717d933c39cf9c2f7d2c5423a49c581e3413a197a24b40ae96c3a1fd10fc8",
+    "created_at": "2026-10-13T23:34:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76031_0995",
+    "question_id": "q_claim_2025_yoruba_76031",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "65f5764f2854e4fafa1dc476d13d2ccaab19010b1f1ceb8eca40cd80b86ba592",
+    "created_at": "2026-10-13T23:34:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76032_0996",
+    "question_id": "q_claim_2025_yoruba_76032",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "132a4653a9d05f5a5338e853f2f49834dc839b836c582ac3638f74a0e26ac644",
+    "created_at": "2026-10-13T23:34:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76033_0997",
+    "question_id": "q_claim_2025_yoruba_76033",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "c7658ece1e660cc343a45e3f781c83857d7d97a13b68cbfeddd559fb37ad5110",
+    "created_at": "2026-10-13T23:34:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76034_0998",
+    "question_id": "q_claim_2025_yoruba_76034",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "32d4ebfe51d143cd5ec5982d48e546483aa4395a1908d480c203ca4ae43b2c58",
+    "created_at": "2026-10-13T23:34:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76035_0999",
+    "question_id": "q_claim_2025_yoruba_76035",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "d88c9b0ece8337bb9fbe2b31016b26b3a6733aac050a0e1443fd02ae90cde662",
+    "created_at": "2026-10-13T23:34:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76036_1000",
+    "question_id": "q_claim_2025_yoruba_76036",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "537a2c71c8c6979e03612821d69024f9ec62d6b9d3ce941e1b9f10328a7ddaf9",
+    "created_at": "2026-10-13T23:34:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76037_1001",
+    "question_id": "q_claim_2025_yoruba_76037",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "f8a97807621e816b7011688797c0137cd2569f930b840fc4b083db11e5a429a4",
+    "created_at": "2026-10-13T23:34:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76038_1002",
+    "question_id": "q_claim_2025_yoruba_76038",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "a747d321f1303b67cacf46aee7ab63627877fd4770cdc6bf73ebfd38d1ee1ff8",
+    "created_at": "2026-10-13T23:34:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76039_1003",
+    "question_id": "q_claim_2025_yoruba_76039",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "8e56a5af4fbfc80fcaaf07f90c4ace9f1d6efc603878e27d850d66b462d0311e",
+    "created_at": "2026-10-13T23:34:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76040_1004",
+    "question_id": "q_claim_2025_yoruba_76040",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "d78fc82e457cecab3e0f9cb4724a39bdb22f3d00592ba303c718c6d66ee0a6a9",
+    "created_at": "2026-10-13T23:34:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76041_1005",
+    "question_id": "q_claim_2025_yoruba_76041",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "91c34efa620769d7cedaa4c2ffe0529f12d36a71eaaea4ca60c51748475d4728",
+    "created_at": "2026-10-13T23:34:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76042_1006",
+    "question_id": "q_claim_2025_yoruba_76042",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "a82158c168369d785e4462b405e2c12c69aa9d7e4f9fdbe6613347759c570e78",
+    "created_at": "2026-10-13T23:34:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76043_1007",
+    "question_id": "q_claim_2025_yoruba_76043",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "16230c0399fa8af5e4956dfcab9b017edca79760313161d1bbe662a2ce8d7aa7",
+    "created_at": "2026-10-13T23:34:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76044_1008",
+    "question_id": "q_claim_2025_yoruba_76044",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "d95fd407b79ac8628451e0e196b39b5ca4349da765110d9a3531c37837d2d99b",
+    "created_at": "2026-10-13T23:34:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76045_1009",
+    "question_id": "q_claim_2025_yoruba_76045",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "8817699bd6883eeef84a419bce658056c423bbcb4b7fcffef425620ebc23e975",
+    "created_at": "2026-10-13T23:34:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76046_1010",
+    "question_id": "q_claim_2025_yoruba_76046",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "149dfa7076821ecee61f311890189aea19cb6372207022909ea210f883946f46",
+    "created_at": "2026-10-13T23:34:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76047_1011",
+    "question_id": "q_claim_2025_yoruba_76047",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "4c3cfb38bcfe701e5391479b8f1dcd132c99154cdfc1d180d0ddd5104c67ea73",
+    "created_at": "2026-10-13T23:34:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76048_1012",
+    "question_id": "q_claim_2025_yoruba_76048",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "6345dfd6b12a708a169b5441d80a57d6b18d3c855040d1cf0f4b44a42adce9df",
+    "created_at": "2026-10-13T23:34:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76049_1013",
+    "question_id": "q_claim_2025_yoruba_76049",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "c0134b220a58e2ee8063d7e88cb855d37d2cd85bb554b21a3f43e587bd4506c4",
+    "created_at": "2026-10-13T23:34:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76050_1014",
+    "question_id": "q_claim_2025_yoruba_76050",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "6ff73ed7c7163c2e0f7c97957488581911bcaea941762c6a34f6420a9c803ecf",
+    "created_at": "2026-10-13T23:34:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76051_1015",
+    "question_id": "q_claim_2025_yoruba_76051",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "30531d8637002ebf9682d64487591683ff96b8c8718e49fccada9e4b28e4bb32",
+    "created_at": "2026-10-13T23:34:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76052_1016",
+    "question_id": "q_claim_2025_yoruba_76052",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "3794d03327ccf5c4f23cbec4d68f814f08260a28114f946a0bddbb5c0a2400e5",
+    "created_at": "2026-10-13T23:34:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76053_1017",
+    "question_id": "q_claim_2025_yoruba_76053",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "1d5a898558339df8eb8b406520183e256e391a5216afcd94201b5e176cd9d0a4",
+    "created_at": "2026-10-13T23:34:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76054_1018",
+    "question_id": "q_claim_2025_yoruba_76054",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "eb65342fa23a45f0cbde5a3d905ab9a0694013b8850a5a7efc3182426eb38014",
+    "created_at": "2026-10-13T23:34:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76055_1019",
+    "question_id": "q_claim_2025_yoruba_76055",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "31f956b0aca3134d2168fee6e5f317ef31b4af9a583c5e9acc86c40c7bdf5fd2",
+    "created_at": "2026-10-13T23:34:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76056_1020",
+    "question_id": "q_claim_2025_yoruba_76056",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "716a5d9cb72d17b89f4f4ad9330978a2c50052f201beee6787652c24a1dd89fc",
+    "created_at": "2026-10-13T23:34:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76057_1021",
+    "question_id": "q_claim_2025_yoruba_76057",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "f7fcb269974eda22aaaf3edf09d9138ee9f4b4bc26a3155a4bfbc88880fa2946",
+    "created_at": "2026-10-13T23:34:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76058_1022",
+    "question_id": "q_claim_2025_yoruba_76058",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "40f9a6efa8986665d156de48596fa01ec358d54bbcb309aa21bcaeaa1b01633f",
+    "created_at": "2026-10-13T23:34:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76059_1023",
+    "question_id": "q_claim_2025_yoruba_76059",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "4b215985355ea24b4cdafee4dfc6ac3179683eaa9f528bfd8f4e1cc085c91582",
+    "created_at": "2026-10-13T23:34:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76060_1024",
+    "question_id": "q_claim_2025_yoruba_76060",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "0be170997647d159e1972eb42b52a64d20c5c8ec0e37d750e2ca3dea8c55da2d",
+    "created_at": "2026-10-13T23:34:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_yoruba_76061_1025",
+    "question_id": "q_claim_2025_yoruba_76061",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "yoruba-rewrite1",
+    "detail": null,
+    "content_hash": "a4d22478d1b6b1fbe8627c4c348397caa06339f6f638738e079feb8946c52874",
+    "created_at": "2026-10-13T23:34:19Z"
   }
 ]

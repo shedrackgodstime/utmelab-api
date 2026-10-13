@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-912 verified (41%, derived from data/verifications.json, D62) · 917 explained
+912 verified (41%, derived from data/verifications.json, D62) · 952 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -231,6 +231,22 @@ disagree. Two lists is how subjects drift.
     64334 (incoherent options), 64424 (HTML and ios both valid answers),
     64429 (no correct option among four). 64310 typo fixed (Crashinng →
     Crashing).
+18. **AUDIT 2026-10-14 — placeholder batches STRUCK, proper rewrite begins.**
+    Full-bank audit (2,247 questions, §7 item 19) found 1,262 templated
+    placeholder explanations (`Answer: X / Based on the stem / Distractors
+    offer…`) across 16 subjects plus cyclically-assigned mistags (e.g. Aba
+    Women's Riot → Mahdiyya-Sudan topic; Eli's sons → Corruption) and keys
+    never recomputed. Those rows were mechanically "verified" but never
+    reviewed — the counts claimed for them were wrong and are retracted.
+    All placeholder work stashed uncommitted
+    (`generic placeholder batches superseded by proper rewrite`) and the
+    bank restored to the honest 912-verified baseline. Remediation: proper
+    rewrite, subject by subject per REVIEW_METHOD (user-directed). CRS keeps
+    its 1 good row (75643 key fix c → d) to be re-applied in its rewrite.
+19. **Yoruba proper rewrite done 2026-10-14** — 40 authored (keys stand on
+    inspection: comprehension answers match passage; Fagunwa authorship
+    factual) + correct tags + verified; yoruba 0 → 40 of 40. First subject
+    of the post-audit rewrite.
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),
