@@ -1,14 +1,19 @@
 # The cloze problem — 10 unanswerable English questions
 
-**Status:** found 2026-10-13. **No D-row yet, no data changed.** The 10 rows
-are still servable. Read before touching Use of English.
+**Status: RESOLVED 2026-10-13. Option C succeeded — the passage was recovered.**
+The 10 rows are now linked to `psg_jamb_2025_eng_cloze_3`, tagged to a new
+`cloze` subtopic, and answerable. Option D (the missing refusal rule) shipped
+in `tools/harvest.py` as `CLOZE_HINT`. Options A and B were not needed and B
+was never acceptable.
 
-**Affects:** 10 of 2,247 questions (0.4%). All `source: claimed_paper`,
-all `verified: false`, all `exam: JAMB`, all year 2025.
+**They remain `verified: false`.** D62 lets only a `Human/Pass` flip that flag,
+and the recovered passage makes them checkable for the first time — they
+belong in the next English review batch, not in an agent's hands. See §9.
 
-Discovered while deepening the English catalog — the candidate `cloze`
-subtopic failed a row-count check, and the reason turned out to be that
-most of its rows cannot be attempted at all.
+**Affects:** 10 of 2,247 questions, `source: claimed_paper`, `verified: false`,
+`exam: JAMB`, year 2025. Originally found 2026-10-13 while deepening the
+English catalog — the candidate `cloze` subtopic failed a row-count check, and
+the reason turned out to be that most of its rows could not be attempted.
 
 ---
 
@@ -130,3 +135,57 @@ cheap option and it is the wrong one.
   answer is not checkable without the stimulus. `verified` stays false, and
   `review.py verify` should refuse them the way it refuses quarantined rows
   (D57).
+
+---
+
+## 9. Resolution
+
+**The passage was on the source page the whole time.** `harvest.py` never read
+it. Each question page carries a `ref` object in the Nuxt payload holding the
+passage text; the harvester only ever read the question and its options, so
+`passage_id` was emitted as `null` for all ten.
+
+Recovered from `myschool.ng/classroom/english-language/74774…74783` — all ten
+pages carry a **byte-identical** passage of 1,399 characters, containing gaps
+6–15 with their options inline.
+
+**Gaps 1–5 never existed.** The earlier worry in §4 was wrong. JAMB's Use of
+English Paper 1 sets one cloze passage of 10 items; the source numbers them
+6–15. We hold all ten, so this is a complete cloze, not a fragment.
+
+**Stored as** `psg_jamb_2025_eng_cloze_3`, title `Passage C`, with each gap
+reduced to the house `....` marker. The option lists are stripped — leaving
+them in would print every answer inside the stimulus, which is why the passage
+could never have been stored raw.
+
+**All ten keys check out against the recovered stimulus.** Each is forced by
+its context rather than chosen from among four:
+
+| gap | context | key |
+|---|---|---|
+| 6 | "The Security …" | **Council** |
+| 7 | "maintenance of international … and" | **peace** |
+| 8 | "… and …" (completing "peace and ___") | **security** |
+| 9 | "It has fifteen …" | **members** |
+| 10 | "Each Member has one …" | **vote** |
+| 11 | "Under the … , all Member States" | **charter** |
+| 12 | "existence of a … to the peace" | **threat** |
+| 13 | "It calls upon the … to a dispute" | **parties** |
+| 14 | "terms of …" | **settlement** |
+| 15 | "resort to imposing …" | **sanctions** |
+
+10/10 of our recorded keys match the source's own option list for the same
+gap. That is the first time these rows have been checkable at all.
+
+**`CLOZE_HINT` shipped** in `tools/harvest.py`, refusing at the harvest gate
+any row whose stem asks the reader to fill a gap when no passage was captured —
+the exact counterpart of `FIGURE_HINT`. Verified against eight stem shapes:
+fires on "Fill the gap labelled 6", "Fill in the gap labelled 11", "Choose the
+option that fills the blank", "complete the passage"; stays silent on
+"Rationalise the denominator", "Find the sum of the first n terms", "Choose
+the word opposite in meaning to the underlined word".
+
+**Still open:** the `cloze` subtopic exists and holds 10 answerable rows, so
+the §6 warning no longer applies — but the ten carry no explanations. They
+should pick them up with the next English review batch, which is also when a
+human can set `verified`.

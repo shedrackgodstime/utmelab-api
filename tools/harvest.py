@@ -106,6 +106,16 @@ FIGURE_HINT = re.compile(
     re.I,
 )
 
+# The same argument for a passage. A cloze question is not the gap — the gap
+# is a pointer into a stimulus we may not hold, and "Fill the gap labelled 9"
+# over four options is a coin flip without it. Ten JAMB rows entered the bank
+# this way in 2025 (docs/CLOZE_PROBLEM.md); the passage was on the source page
+# the whole time, in a `ref` field nothing read.
+CLOZE_HINT = re.compile(
+    r"\b(fill|complete|supply|choose)[a-z ]{0,12}\b(gap|blank|space|passage)\b",
+    re.I,
+)
+
 
 def question_images(html: str) -> list[str]:
     """Image URLs that belong to the question itself, in document order."""
@@ -344,6 +354,11 @@ def to_question(parsed: dict, subject: str, year: int, qid: str) -> dict | None:
     images = parsed.get("images") or []
     if not images and FIGURE_HINT.search(parsed["text"]["text"]):
         # "In the diagram below…" with no diagram. Refused, not imported.
+        return None
+
+    if not parsed.get("passage") and CLOZE_HINT.search(parsed["text"]["text"]):
+        # "Fill the gap labelled 6" with no passage. The gap is a pointer into
+        # a stimulus we do not hold, so the row is unanswerable as served.
         return None
 
     def has_image_mark(rt):

@@ -48,7 +48,7 @@ note was written from a pre-merge view and is resolved.
 | `docs/QUESTION_BANK_DECISIONS.md` | D1–D66. The law. Each row states the rule, its status (PINNED/DEFERRED/REJECTED/SUPERSEDED/PROPOSED) and its grounds. |
 | `docs/TODO.md` | what is next, and why something is not |
 | `docs/UNDERLINE_PROBLEM.md` | the largest open defect; read before touching English |
-| `docs/CLOZE_PROBLEM.md` | **10 unanswerable cloze rows** — stems point at gaps in a passage the harvest never captured. Servable today. Options + recommendation in §6 |
+| `docs/CLOZE_PROBLEM.md` | **resolved 2026-10-13.** The 10 cloze rows pointed at gaps in a passage sitting unread in the source's Nuxt payload; recovered, linked, tagged, and `CLOZE_HINT` now refuses the shape at the gate |
 | `docs/WAEC_NECO_RESEARCH.md` | **what WAEC and NECO actually publish.** Country-partitioned syllabi, 3 papers per subject, 8–9 subject papers, and two stored question counts that sources contradict. Backs **D66** |
 | `docs/RICH_TEXT_HANDOFF.md` | **D60/D61 `RichText` — implemented P1.** Why `emphasis`/`image` became one mark array on every text field; open questions it answered |
 | `docs/API_REVIEW.md`, `docs/KEY_LIFECYCLE_PLAN.md` | from the D53 key work |

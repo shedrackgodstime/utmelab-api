@@ -15114,5 +15114,14 @@
     "name": "Story types (folktales, legends, narratives, tales, history)",
     "order": 1,
     "objectives": []
+  },
+  {
+    "slug": "cloze",
+    "topic": "comprehension",
+    "name": "Cloze",
+    "order": 4,
+    "objectives": [
+      "Choose the option that best fills a numbered gap in a passage"
+    ]
   }
 ]
