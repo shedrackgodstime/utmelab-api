@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-1,248 verified (56%, derived from data/verifications.json, D62) · 1,253 explained
+1,324 verified (59%, derived from data/verifications.json, D62) · 1,329 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -276,6 +276,13 @@ disagree. Two lists is how subjects drift.
     traps. **Parked**: 75447 (3 options), 75434/75535 (map asked, none
     served), 75485 (recorded d wrong; b+c both read corrosion). Station
     figures 75537–40 read by eye (Oct 230mm max; range 14; double maximum).
+24. **History proper rewrite done 2026-10-14** — 75 authored + 1 key fix +
+    tags + verified; history 0 → 76 of 79. **75853 key corrected** c → d
+    (sources classify primary/secondary, not political/economic — D45
+    pattern, documented in trap). **Parked**: 75725/75788/75850
+    (option_count, unverifiable). World-history rows with no syllabus path
+    left untagged (74512 pattern). 75731 stands on bank convention (Balewa);
+    75780 stands on exam convention (Lagos) with Abuja noted in trap.
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),
