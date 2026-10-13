@@ -37,7 +37,7 @@ cargo fmt
 cargo run -- openapi --out site/openapi.json  # regenerate the spec after route changes
 ```
 
-**All tests are green** (72/72) and clippy is clean as of 2026-10-11. The D53
+**All tests are green** (94) and clippy is clean as of 2026-10-13. The D53
 key work's `key_prefix` (first 11 chars of `sk_…`, support lookup only, never
 authenticates) is intended and covered by tests — the earlier "one test is red"
 note was written from a pre-merge view and is resolved.
@@ -45,7 +45,7 @@ note was written from a pre-merge view and is resolved.
 
 | file | what it is |
 |---|---|
-| `docs/QUESTION_BANK_DECISIONS.md` | D1–D61. The law. Each row states the rule, its status (PINNED/DEFERRED/REJECTED/SUPERSEDED) and its grounds. |
+| `docs/QUESTION_BANK_DECISIONS.md` | D1–D63. The law. Each row states the rule, its status (PINNED/DEFERRED/REJECTED/SUPERSEDED) and its grounds. |
 | `docs/TODO.md` | what is next, and why something is not |
 | `docs/UNDERLINE_PROBLEM.md` | the largest open defect; read before touching English |
 | `docs/RICH_TEXT_HANDOFF.md` | **D60/D61 `RichText` — decided, not started.** Why `emphasis`/`image` become one mark array on every text field; implementation surface and open questions |
@@ -54,13 +54,20 @@ note was written from a pre-merge view and is resolved.
 ## 4. Current state
 
 ```
-2,288 questions · 25/25 JAMB subjects clear 40 · all year 2025
-134 verified (6%) · 215 explained
+2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
+134 verified (6%) · 216 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
-catalog: 566 topics, 2,092 subtopics
-novel:   the featured set text has 54 verified questions (+124 honest unverified)
+catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
+novel:   the featured set text has 54 verified questions (+125 honest unverified)
 bank_version in /health changes only when content changes
 ```
+
+2026-10-13 (P0): inbox import admitted 128 — all 128 were Lekki Headmaster
+novel dupes already held (zero key conflicts), dropped from the bank; 1
+pre-existing bank row (Mr. Nku) moved verbatim into the novel doc
+(`verified:false`); 25 inbox files archived to `data/inbox/archive/`, the
+staged `lekki-headmaster-candidates.json` stays. Bank 2,289 → 2,288; novel
+doc 178 → 179. Quarantine steady at 103 (78/11/10/4).
 
 2026-10-11 evening: 83 more Lekki/Bepo/Stardom rows found in the English bank
 (the D35 guard only scanned character names — multi-word titles and setting

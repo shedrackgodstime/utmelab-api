@@ -8,10 +8,10 @@ no SSR — see D32.
 
 ```bash
 cargo build
-cargo test                 # must be green before any push (93 tests)
+cargo test                 # must be green before any push (94 tests)
 cargo clippy --all-targets # must be clean
 cargo fmt
-cargo run -- openapi --out web/openapi.json   # after route/shape changes
+cargo run -- openapi --out site/openapi.json  # after route/shape changes
 ```
 
 ## Run
@@ -52,13 +52,13 @@ novels are embedded in the binary; `UTMELAB_API_DATA_DIR` holds exactly
 | `src/import.rs` | inbox → bank merge, three gates, every refusal counted (D51) |
 | `src/quarantine.rs` | mechanical-defect scan: underline/image/dupes/leaks |
 | `data/` | working copy: `questions.json` + catalog + `novels/` + `inbox/` staging |
-| `web/` | static docs tier (Astro), built to `dist/` and shipped with the binary |
+| `site/` | static docs tier (Astro), built to `dist/` and shipped with the binary |
 | `tools/` | harvester, syllabus importer, emphasis worksheet, review workbench |
 
 ## Decisions first
 
 Nothing in `data/` changes until it is recorded in
-`docs/QUESTION_BANK_DECISIONS.md` (D1–D57, PINNED/DEFERRED/REJECTED + grounds).
+`docs/QUESTION_BANK_DECISIONS.md` (D1–D63, PINNED/DEFERRED/REJECTED + grounds).
 Start with `docs/HANDOFF.md` (the map), then the decision log (the law), then
 `docs/TODO.md` (the work order). Open content defects live in
 `docs/UNDERLINE_PROBLEM.md`.
