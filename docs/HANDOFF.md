@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-645 verified (29%, derived from data/verifications.json, D62) · 650 explained
+722 verified (32%, derived from data/verifications.json, D62) · 727 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -216,6 +216,12 @@ disagree. Two lists is how subjects drift.
     1979 House age disputed (IPU election archive says 21, textbooks say 30,
     no 35/21 option exists) — needs the constitution text, never a verdict.
     Subject complete except parked.
+16. **Economics batch 1 (whole subject) done 2026-10-13** — 76 authored +
+    1 key fix + tags + verified; economics 0 → 77 of 78. 76919 figure read
+    by eye (DMU table ✓). **76617 key corrected** d → c (save-time-produce-
+    more is the textbook answer; concentrate-on-ALL-goods contradicts
+    specialisation — D45 pattern, documented in trap). **76928 parked**: no
+    wage data in stem — unanswerable as served.
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),
