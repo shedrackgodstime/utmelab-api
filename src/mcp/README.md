@@ -22,8 +22,8 @@ lands first** and every later tool/resource has one place to live.
 |---|---|
 | `mod.rs` | Module root + empty `router()` (merges `tools` + `resources`) |
 | `auth.rs` | Reserved header names (`x-api-key` commercial, `x-admin-key` provisional). No enforcement. |
-| `tools.rs` | Reserved. Callable operations land here, after auth. |
-| `resources.rs` | Reserved. Read-only URI views land here, after auth. |
+| `tools.rs` | Reserved. Commercial tools (read-only) and admin tools (bank writes) land here, after auth. |
+| `resources.rs` | Reserved. Commercial resources (read-only views) and admin resources (review queues, unverified sets) land here, after auth. |
 
 ## Rules for what lands here
 
@@ -31,11 +31,13 @@ lands first** and every later tool/resource has one place to live.
    `Caller` rules as `/api/v1`: resolve → live-check → token spend) and an
    admin/dev credential — but names, storage, and failure modes are
    **undecided**. Nothing enforces anything until the decision row exists.
-2. **Thin projections only.** Tools/resources read through `AppState`
-   (the same `Store` methods the routes call). No new storage, no new key
-   type, no changes to `bank/`/`keys/`.
-3. **Same commercial rules.** Paged (≤200), answers withheld unless opted
-   in, 401/429 shapes identical to `/api/v1`.
+2. **Commercial = thin read-only projections.** Same `Store` reads the
+   routes call, paged (≤200), answers withheld unless opted in, 401/429
+   shapes identical to `/api/v1`. No new storage, no new key type.
+3. **Admin = managed bank writes.** Retag, edit, explanations, verify —
+   these need write paths the API never had, so they will touch `bank/` /
+   verification storage by design, behind the admin credential only.
+   Commercial keys can never reach them.
 4. **No `crates/`.** MCP lives in this binary (one deploy, one process —
    D29/D32). The empty `crates/mcp/` directory is retired.
 
