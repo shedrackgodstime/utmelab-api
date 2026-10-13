@@ -55,7 +55,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-305 verified (14%, derived from data/verifications.json, D62) · 310 explained
+320 verified (14%, derived from data/verifications.json, D62) · 325 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -166,7 +166,14 @@ disagree. Two lists is how subjects drift.
    (sin r = 0.5/1.5 ≈ 0.3, key confirmed). **74492 parked**: figure states
    no weight, yet statics from the readable figure gives T = 20 N against
    recorded 19.24 — underdetermined, needs authoring fix or better scan,
-   never a verdict. `shm_002` stays parked (mirror job).
+   never a verdict.
+6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
+   recomputed) + verified; physics 87 → 102 of 105. Two more figures read
+   by eye: 74569 electroscope (more like charge → wider divergence),
+   74679 resistor (zoomed: 2 Ω, P = 128 W — an initial 3 Ω misread would
+   have landed at 85 W, present in no option). Subject complete except
+   parked: `shm_002` (mirror), 74492 (underdetermined T), 74548
+   (defective stem). `shm_002` stays parked (mirror job).
 5. **Physics batch 3 done 2026-10-13** — 28 explanations authored (keys
    recomputed) + verified; physics 59 → 87. Three more figures read by eye:
    74542 force cross (3-4-5 → 5 N), 74550 pendulum (max KE at Q), 74561

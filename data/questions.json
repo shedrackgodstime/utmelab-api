@@ -68338,7 +68338,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "A positive rod near the cap drives more positive charge onto the leaves.",
+        "inline": []
+      },
+      "body": {
+        "text": "The figure shows diverged, positively charged leaves. The approaching positive rod repels more positive charge down onto them — divergence increases.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Collapse needs charge neutralised or removed; adding like charge spreads the leaves wider.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -68386,7 +68399,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Moon weight is one-sixth of Earth weight.",
+        "inline": []
+      },
+      "body": {
+        "text": "2500/6 ≈ 416.67 N.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Multiplying by 6 answers the reverse trip — the Moon pulls less, not more.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -68434,7 +68460,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Streamlining cuts fluid drag.",
+        "inline": []
+      },
+      "body": {
+        "text": "A pointed head parts the fluid smoothly instead of pushing it — less friction, less drag. Stopping, looks, and more friction are not its job.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Increased friction is the opposite of every streamlined shape ever built.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -68482,7 +68521,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Charles's law in kelvin — and the gas shrinks TO one-fifth.",
+        "inline": []
+      },
+      "body": {
+        "text": "V₂ = 2.00/5 = 0.40 cm³. T₂ = 330 × 0.4/2.0 = 66 K = −207°C. (The key forces the TO-one-fifth reading: losing one-fifth would give −9°C, absent from the options.)",
+        "inline": []
+      },
+      "trap": {
+        "text": "Reading shrink-one-fifth as lose-one-fifth gives −9°C — present in no option; the key pins the TO reading.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -68530,7 +68582,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Doubling both masses quadruples the pull.",
+        "inline": []
+      },
+      "body": {
+        "text": "F ∝ m₁m₂: 2×2 = 4, so 10×4 = 40 N.",
+        "inline": []
+      },
+      "trap": {
+        "text": "20 N doubles once — both masses double, so the factor squares.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -68578,7 +68643,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Pendulum frequency from length — computed 0.46 Hz against option 0.5.",
+        "inline": []
+      },
+      "body": {
+        "text": "f = (1/2π)√(g/L) = (7/44)×√(10/1.2) ≈ 0.46 Hz, nearest option 0.5 Hz. The alternatives miss by multiples.",
+        "inline": []
+      },
+      "trap": {
+        "text": "2.8 Hz and 1.2 Hz would need a centimetre-scale pendulum, not 120 cm.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -68635,7 +68713,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Last stage is the triangle: half base times height.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: 12 m/s flat to 10 s, then linear to zero at 14 s. Last stage 10→14 s: ½×4×12 = 24 m.",
+        "inline": []
+      },
+      "trap": {
+        "text": "56 m reads the whole graph — the question asks the last stage only.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -68692,7 +68783,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Equal emfs in parallel stay one emf.",
+        "inline": []
+      },
+      "body": {
+        "text": "The figure puts E₁, E₂, E₃ across the same two nodes: parallel, so E = E₁ = E₂ = E₃.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Adding them wires in series — parallel branches share voltage.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -68749,7 +68853,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Index is SQ over SR — the critical-angle reciprocal.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure the ray geometry gives SQ/SR = 10/6 ≈ 1.67. 0.60 stops at the sine without reciprocating.",
+        "inline": []
+      },
+      "trap": {
+        "text": "0.60 is the sine itself — index is its reciprocal.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -68797,7 +68914,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Only mechanical waves need a medium.",
+        "inline": []
+      },
+      "body": {
+        "text": "Water waves ride water; light rides nothing. Diffraction, reflection and vibration direction are shared behaviours.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Both diffract and reflect — shared behaviours never distinguish.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -68845,7 +68975,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Heat past the Curie point kills magnetism; cooling east-west keeps it dead.",
+        "inline": []
+      },
+      "body": {
+        "text": "Red-hot randomises domains; cooling in the neutral orientation freezes them disordered. Solenoids magnetise; stroking and hammering N-S align.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Hammering N-S aligns domains — it magnetises, the reverse of the question.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -68902,7 +69045,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Power is voltage squared over resistance — 2 Ω on the figure, read close.",
+        "inline": []
+      },
+      "body": {
+        "text": "The resistor reads 2 Ω (zoomed against a 3 Ω misread): P = 16²/2 = 128 W.",
+        "inline": []
+      },
+      "trap": {
+        "text": "3 Ω misreads the label and lands at 85 W, present in no option — the figure, zoomed, says 2 Ω.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -68950,7 +69106,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Spring energy scales with force squared.",
+        "inline": []
+      },
+      "body": {
+        "text": "E = F²/2k: (700/200)² × 0.16 = 12.25 × 0.16 = 1.96 J.",
+        "inline": []
+      },
+      "trap": {
+        "text": "1.12 J scales linearly (×7) — energy goes as the square.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -68998,7 +69167,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Friction work eats the kinetic energy: μ = v²/2gs.",
+        "inline": []
+      },
+      "body": {
+        "text": "0 = 100 − 2μ×9.8×25 → μ = 100/490 ≈ 0.2.",
+        "inline": []
+      },
+      "trap": {
+        "text": "0.5 stops the arithmetic halfway — the full stopping distance sets the scale.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -69046,7 +69228,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Stimulated emission spells laser.",
+        "inline": []
+      },
+      "body": {
+        "text": "Laser is light amplification by stimulated emission of radiation. Fluorescent, LED and incandescent emit spontaneously or thermally.",
+        "inline": []
+      },
+      "trap": {
+        "text": "LED tempts as modern light tech, but its emission is spontaneous, not stimulated.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
