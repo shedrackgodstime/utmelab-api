@@ -64702,7 +64702,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Food stores chemical energy.",
+        "inline": []
+      },
+      "body": {
+        "text": "The body runs on chemistry: bonds broken and remade release energy. Kinetic, mechanical and potential describe motion and position, not what food holds.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Mechanical sounds physical, but food's energy is locked in molecules until digestion frees it.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -64750,7 +64763,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Coil energy is half L I squared — solve for current.",
+        "inline": []
+      },
+      "body": {
+        "text": "E = ½LI² gives I = √(2E/L) = √(2×2.5/3) = √(5/3) ≈ 1.29 A.",
+        "inline": []
+      },
+      "trap": {
+        "text": "5.00 A forgets the half; energy scales with current squared, not linearly.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -64798,7 +64824,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Efficiency is output over input — output is always less.",
+        "inline": []
+      },
+      "body": {
+        "text": "Output = 0.80 × 200 = 160 J. No machine returns more than it takes.",
+        "inline": []
+      },
+      "trap": {
+        "text": "250 J inverts the ratio (200/0.8) — efficiency below 100% shrinks, never grows.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -64846,7 +64885,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Fraction immersed equals relative density over fluid density.",
+        "inline": []
+      },
+      "body": {
+        "text": "Body density = 0.4 × 1000 = 400 kg m\\(^{-3}\\). Fraction = 400/1600 = 0.25.",
+        "inline": []
+      },
+      "trap": {
+        "text": "0.15 and 0.10 invent densities the stem never states — one ratio decides it.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -64894,7 +64946,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Soft perforated linings kill echoes — reverberation.",
+        "inline": []
+      },
+      "body": {
+        "text": "Reverberation is sound lingering by reflection; absorbent walls shorten it. Diffraction bends, refraction transmits, and auditorium pulse is not a phenomenon.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Diffraction tempts because perforations look wave-like, but the linings absorb rather than bend.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -64942,7 +65007,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Sinking means denser than the fluid.",
+        "inline": []
+      },
+      "body": {
+        "text": "Weight beats upthrust exactly when body density exceeds fluid density. Equal means floating at the surface, not sinking.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Upthrust-equals-weight describes floating equilibrium — the opposite outcome.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -64990,7 +65068,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Temperature drop is gradient times length.",
+        "inline": []
+      },
+      "body": {
+        "text": "ΔT = 416 × 0.2 = 83.2 K, so the far end sits near 233 + 83.2 ≈ 316.2°C against option 316.28°C (source rounding).",
+        "inline": []
+      },
+      "trap": {
+        "text": "141.20°C subtracts a gradient ten times too large — length is 0.2 m, not 2 m.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65038,7 +65129,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Random particle motion in fluids is Brownian motion.",
+        "inline": []
+      },
+      "body": {
+        "text": "Liquids and gases show the jitter Brown saw in pollen grains. Translational and vibrational describe how molecules move in principle; Brownian names the observed random walk.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Vibrational belongs to solids locked in lattices, not to fluids.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65086,7 +65190,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Faraday's law: mass equals electrochemical equivalent times charge.",
+        "inline": []
+      },
+      "body": {
+        "text": "Z(Ag) = 108/96500 ≈ 0.00112 gC\\(^{-1}\\). Q = 0.8 × 25 × 60 = 1200 C. m ≈ 0.00112 × 1200 ≈ 1.34 g.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Forgetting minutes-to-seconds (×60) collapses the charge and the mass with it.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65134,7 +65251,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Thermal capacity is mass times specific capacity — nature and mass.",
+        "inline": []
+      },
+      "body": {
+        "text": "C = mc: it scales with how much stuff and what stuff. Heat quantity is what it stores, not what fixes it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Quantity of heat confuses the content with the container — capacity is per-degree by definition.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65182,7 +65312,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Ideal gas law in kelvin: temperature is 290 K, not 17.",
+        "inline": []
+      },
+      "body": {
+        "text": "P = nRT/V = 8.3 × 8.31 × 290/4.5 ≈ 4445 Pa.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Using 17°C raw gives a pressure thirty times too small — gas laws run on absolute temperature.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65230,7 +65373,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The tangential resistance to sliding is frictional force.",
+        "inline": []
+      },
+      "body": {
+        "text": "It acts along the surfaces, opposing relative motion. Weight pulls down, upthrust pushes up, normal pushes across — none acts tangentially against sliding.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Normal force is perpendicular to the surfaces; friction is the parallel one.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65278,7 +65434,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Field lines never cross there — the neutral point.",
+        "inline": []
+      },
+      "body": {
+        "text": "Where a magnet's field cancels (against Earth's, typically), a compass feels nothing. Near, far and infinite points all still sit in the field.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Far point weakens the field but never zeroes it — only cancellation does that.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65326,7 +65495,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Specific gravity times water's density, units carried along.",
+        "inline": []
+      },
+      "body": {
+        "text": "ρ = 0.76 × 1000 = 760 kgm\\(^{-3}\\).",
+        "inline": []
+      },
+      "trap": {
+        "text": "76 and 7.6 drop factors of ten — specific gravity multiplies, and the units ride with the thousand.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65374,7 +65556,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Faraday's second law: same charge, masses in electrochemical ratio.",
+        "inline": []
+      },
+      "body": {
+        "text": "Z(Ag) = Z(Cu) × m(Ag)/m(Cu) = 0.00028 × 1.2/0.2 = 1.68×10\\(^{-3}\\) gC\\(^{-1}\\).",
+        "inline": []
+      },
+      "trap": {
+        "text": "Dividing the masses the wrong way inverts six into a sixth.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65422,7 +65617,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Heat capacity is heat over temperature change.",
+        "inline": []
+      },
+      "body": {
+        "text": "C = 48000/53 ≈ 905.7 JK\\(^{-1}\\).",
+        "inline": []
+      },
+      "trap": {
+        "text": "Dividing by 53°C needs the differential as stated — 48 kJ is 48,000 J, not 48.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65470,7 +65678,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "X-rays sit below ultraviolet — shorter wavelength, higher energy.",
+        "inline": []
+      },
+      "body": {
+        "text": "Order runs radio, micro, infrared, visible, ultraviolet, X-rays, gamma. Of the four listed, X-rays are shortest.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Ultraviolet tempts as exotic, but X sits a full band beyond it.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65518,7 +65739,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Stress is force over true area — radius in metres first.",
+        "inline": []
+      },
+      "body": {
+        "text": "A = π(0.003)² ≈ 2.83×10\\(^{-5}\\) m². σ = 15/A ≈ 5.3×10\\(^5\\) = 53×10\\(^4\\) N m\\(^{-2}\\).",
+        "inline": []
+      },
+      "trap": {
+        "text": "Centimetres unconverted inflate the area ten-thousandfold — 0.3 cm is 0.003 m before anything else.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65566,7 +65800,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Melting at constant temperature is latent heat of fusion.",
+        "inline": []
+      },
+      "body": {
+        "text": "The 5 kg is already liquid-bound; the named quantity is latent heat. Specific latent heat is per kilogram — the question asks for the quantity itself.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Specific heat capacity warms without change of state; nothing here changes temperature.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65614,7 +65861,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Null methods measure small resistances — Wheatstone bridge.",
+        "inline": []
+      },
+      "body": {
+        "text": "The bridge balances to zero, so lead and contact resistances drop out. Voltmeters read p.d., rheostats vary it, potentiometers compare emfs.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Potentiometer tempts on precision reputation, but its job is emf comparison, not resistance.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65662,7 +65922,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Rms is peak over root two — 7 A here is the maximum.",
+        "inline": []
+      },
+      "body": {
+        "text": "Irms = 7/√2 ≈ 4.95 ≈ 5 A. (Instantaneous strictly varies; the JAMB reading takes 7 A as the peak.)",
+        "inline": []
+      },
+      "trap": {
+        "text": "Treating 7 A as already-rms answers the question it did not ask.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65710,7 +65983,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Real depth is index times apparent depth.",
+        "inline": []
+      },
+      "body": {
+        "text": "n = real/apparent, so real = 1.33 × 10 = 13.3 cm. The pool is deeper than it looks.",
+        "inline": []
+      },
+      "trap": {
+        "text": "7.5 cm divides instead of multiplying — the real thing exceeds the appearance, never the reverse.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65758,7 +66044,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Magnetic force is qvB sinθ — solve for B.",
+        "inline": []
+      },
+      "body": {
+        "text": "B = 6/(5×10\\(^{-6}\\) × 3×10\\(^4\\) × sin45°) = 6/0.106 ≈ 56.57 T. (5 μC, the standard reading.)",
+        "inline": []
+      },
+      "trap": {
+        "text": "Dropping sin45° answers a perpendicular entry the stem never states.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65806,7 +66105,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Tension is a force: mass, length, inverse time squared.",
+        "inline": []
+      },
+      "body": {
+        "text": "[T] = MLT\\(^{-2}\\). Forces always carry M¹L¹T⁻² regardless of the string.",
+        "inline": []
+      },
+      "trap": {
+        "text": "MLT² forgets the inverse square — dimensions of force never carry positive time.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65863,7 +66175,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Series impedance adds resistance and reactance in quadrature.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: R = 45 Ω, L = 0.5 H, V₀ = 220 V at 50 Hz. X_L = 2πfL = 2×(22/7)×50×0.5 ≈ 157.1 Ω. Z = √(45² + 157.1²) ≈ 163.5 Ω.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Adding 45 and 157 directly forgets quadrature — resistance and reactance are perpendicular, combined by Pythagoras.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65911,7 +66236,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Pressure is weight over base area.",
+        "inline": []
+      },
+      "body": {
+        "text": "P = 5000/(10×5) = 100 Pa. Depth and volume never enter — the weight and footprint decide it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Bringing in depth confuses hydrostatic ρgh with a straight weight-over-area.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -65959,7 +66297,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Standing waves are interference with their own reflection.",
+        "inline": []
+      },
+      "body": {
+        "text": "A wave bouncing off a boundary superposes on itself — nodes and antinodes, no travel. Source motion makes Doppler shifts, not standing waves.",
+        "inline": []
+      },
+      "trap": {
+        "text": "A vertically vibrating source still launches travelling waves; standing needs the return trip.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -66073,7 +66424,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Snell from the normal: sine of r is sine of i over n.",
+        "inline": []
+      },
+      "body": {
+        "text": "The figure gives i = 30° from the normal into n = 1.5 glass. sin r = sin30°/1.5 = 0.5/1.5 ≈ 0.33 → 0.3.",
+        "inline": []
+      },
+      "trap": {
+        "text": "0.4 inverts the ratio the wrong way — refraction into denser glass shrinks the sine, and 0.5/1.5 is one third.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -66121,7 +66485,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Sound speed in a gas depends on temperature, not pressure.",
+        "inline": []
+      },
+      "body": {
+        "text": "v = √(γRT/M): at constant T every term is fixed, so pressure changes nothing. Squeeze the air and the wave keeps its pace.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Increase feels right because pressure sounds like pushing — but the formula has no P in it at fixed T.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
