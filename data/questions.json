@@ -55146,10 +55146,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "alkanoates-formation-from-alkanoic-acids-and-alkanols-fats-a",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The figure is CH3CH2COO CH2CH3: ethyl propanoate.",
+        "inline": []
+      },
+      "body": {
+        "text": "Acid half propanoic (3 C), alcohol half ethyl (2 C): ethyl propanoate. Propyl ethanoate reverses the halves.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Propyl ethanoate swaps acid and alcohol halves — count carbons each side of the oxygen.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55194,10 +55207,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "factors-affecting-reaction-rates-temperature-e-g-hcl-and-na2",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Rate is mass over time, scaled to the hour.",
+        "inline": []
+      },
+      "body": {
+        "text": "5 g in 10 min = 0.5 g/min = 30 g/hr.",
+        "inline": []
+      },
+      "trap": {
+        "text": "5 answers grams, not grams per hour — rate needs the time unit.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55242,10 +55268,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "aliphatic-hydrocarbons-alkanes-homologous-series-in-relation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Petrol is graded against knock: pinking.",
+        "inline": []
+      },
+      "body": {
+        "text": "Octane rating measures anti-knock quality before sale. Reforming, cracking and pyrolysis make petrol; grading prevents pinking.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Cracking tempts as refinery work, but evaluation grades, not makes.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55290,10 +55329,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "aluminium-purification-of-bauxite-electrolytic-extraction-pr",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Foil packaging is aluminium.",
+        "inline": []
+      },
+      "body": {
+        "text": "Light, non-toxic, corrosion-resistant foil. Copper and iron are heavy and reactive; sodium explodes in air.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Iron tempts as common metal, but packaging wants lightness plus safety.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55347,10 +55399,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "boyle-s-law-charles-s-law-graham-s-law-dalton-s-law-of-parti",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "V against nT/P is the combined gas law.",
+        "inline": []
+      },
+      "body": {
+        "text": "The figure shows volume tracking amount times temperature over pressure — Boyle plus Charles plus Avogadro in one.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Boyle alone forgets temperature; Charles alone forgets pressure.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55395,10 +55460,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "alkanoic-acids-chemical-reactions-neutralization-and-esterif",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Oxalic acid gives two protons: basicity 2.",
+        "inline": []
+      },
+      "body": {
+        "text": "C2H2O4 has two ionisable H. The count is replaceable H, not total atoms.",
+        "inline": []
+      },
+      "trap": {
+        "text": "4 counts every H including non-acidic ones — basicity counts donors only.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55443,10 +55521,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "alkanols-primary-secondary-and-tertiary-production-of-ethano",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Glucose to ethanol by enzyme is fermentation.",
+        "inline": []
+      },
+      "body": {
+        "text": "Zymase converts sugar to alcohol plus CO2. Polymerisation joins, hydrogenation adds H2, saponification makes soap.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Hydrogenation tempts on -ation endings, but no hydrogen is added here.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55491,10 +55582,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "general-properties-of-metals",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Gold needs no extraction: free in nature.",
+        "inline": []
+      },
+      "body": {
+        "text": "Too unreactive to combine, it sits native. Preciousness is price, not chemistry.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Inert is nearly right but vague — free in nature is the extractive fact.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55539,10 +55643,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "types-of-chemical-industries-their-raw-materials-and-relevan",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Sulphuric acid industrially is Contact.",
+        "inline": []
+      },
+      "body": {
+        "text": "V2O5 over SO2 then absorption — the Contact process. Bosch makes ammonia feed, Frasch sulphur, Haber ammonia.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Haber tempts as famous-industrial, but Haber is ammonia.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55587,10 +55704,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "aromatic-hydrocarbons-benzene-structure-properties-and-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Benzene fully hydrogenated is cyclohexane.",
+        "inline": []
+      },
+      "body": {
+        "text": "Three H2 across three double bonds keeps the ring saturated. Hexane opens the ring; hexene stops halfway.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Hexane tempts as saturated, but the ring survives — cyclo stays.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55635,10 +55765,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "alkanoates-formation-from-alkanoic-acids-and-alkanols-fats-a",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Tristearin hydrolysis frees glycerol: trihydric.",
+        "inline": []
+      },
+      "body": {
+        "text": "Three fatty acids off, propane-1,2,3-triol left — three OH groups. Mono, di, secondary and tertiary misname it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Dihydric counts two where three stand.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55740,10 +55883,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "electrolysis-of-dilute-h2so4-aqueous-cuso4-cucl2-dilute-and",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Fused NaCl electrolysed is the Downs process.",
+        "inline": []
+      },
+      "body": {
+        "text": "The figure shows NaCl(l) splitting to Na and Cl2 by electricity — Downs cells. Chlor and Bosch are ammonia; Browning is not a sodium process.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Chlor tempts on chlorine product, but the named sodium process is Downs.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55788,10 +55944,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "air-pollution-hydrogen-sulphide-carbon-ii-oxide-sulphur-iv-o",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "CFC-blown foam is the foam industry.",
+        "inline": []
+      },
+      "body": {
+        "text": "Blowing agent expands polymer into foam. Refrigerant and propellant are other CFC uses, not this one.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Refrigerant tempts as best-known CFC use, but blowing means foam.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55836,10 +56005,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "alkali-metals-e-g-sodium-sodium-hydroxide-production-by-elec",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Magnesium frees H2 from dilute nitric acid.",
+        "inline": []
+      },
+      "body": {
+        "text": "Mg displaces H+ before HNO3 oxidises further; Cu gives nitrogen oxides instead. Ca is too vigorous, Zn passivates here.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Copper tempts as displacer, but nitric acid oxidises copper to NOx, not H2.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55884,10 +56066,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "periodic-table-and-periodicity-of-elements-families-such-as",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "2,8,2 fills to period 3, group 2.",
+        "inline": []
+      },
+      "body": {
+        "text": "Two outer electrons is group II; three shells is period 3 — magnesium. Group counts valence, period counts shells.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Group 3 mistakes shell count for valence.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55932,10 +56127,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "alkanoic-acids-chemical-reactions-neutralization-and-esterif",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Simplest alkanoic fitting CH2O past methanoic is ethanoic: 60.",
+        "inline": []
+      },
+      "body": {
+        "text": "HCOOH is 46; CH3COOH is 60. Of the options the intended acid is ethanoic.",
+        "inline": []
+      },
+      "trap": {
+        "text": "46 answers methanoic — the question aims at the two-carbon acid.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -55980,10 +56188,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "false-solutions-suspensions-and-colloids-properties-and-exam",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Spray cans are aerosols.",
+        "inline": []
+      },
+      "body": {
+        "text": "Liquid droplets in gas is the aerosol colloid. Sols are solid-in-liquid, foams gas-in-liquid, emulsions liquid-in-liquid.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Foam tempts on spray texture, but deodorant mist is droplets in air.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -56028,10 +56249,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "electrolytes-and-non-electrolytes-faraday-s-laws-of-electrol",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Faraday with time in minutes: Al needs three faradays.",
+        "inline": []
+      },
+      "body": {
+        "text": "Q = 9 x 3 x 96500 / 27 = 96500 C; t = 96500/18 = 5361 s ≈ 89.34 min.",
+        "inline": []
+      },
+      "trap": {
+        "text": "29.48 minutes forgets the factor of three — Al3+ takes three moles of electrons.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -56076,10 +56310,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "general-characteristics-and-properties-indicators-basicity-o",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Concentrated sulphuric acid dehydrates.",
+        "inline": []
+      },
+      "body": {
+        "text": "It strips water from compounds (sugar to carbon). Salt-plus-hydrogen is dilute-acid behaviour; neutralisation and cryolite are other reagents' jobs.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Neutralises alkali is true of any acid — dehydrating is its signature.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -56124,10 +56371,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "oxidation-and-reduction-in-terms-of-electron-transfer",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Oxidation is electron loss.",
+        "inline": []
+      },
+      "body": {
+        "text": "OILRIG: oxidation is loss, reduction is gain. Added, hydrated and hydrolysed describe other processes.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Added is reduction — the exact reverse.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -56172,10 +56432,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "alkanols-primary-secondary-and-tertiary-production-of-ethano",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Longest chain six with OH lowest: 2,5,5-trimethylhexan-3-ol.",
+        "inline": []
+      },
+      "body": {
+        "text": "(CH3)2CHCH(OH)CH2C(CH3)3 spans six with OH at 3 and methyls at 2,5,5. Shorter parents miscount.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Pentamethylbutanol parents four carbons — the chain is six.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -56220,10 +56493,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "alkanols-primary-secondary-and-tertiary-production-of-ethano",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Radiator antifreeze is glycerol: propanetriol.",
+        "inline": []
+      },
+      "body": {
+        "text": "Propane-1,2,3-triol lowers freezing point. Propanol, propanone and propanal lack the triple-OH colligative punch.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Propanol tempts as alcohol, but antifreeze is the triol.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -56268,10 +56554,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "hard-and-soft-water-temporary-and-permanent-hardness-and-met",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Epsom salt purges: laxative.",
+        "inline": []
+      },
+      "body": {
+        "text": "MgSO4 draws water into the bowel. Fertilisers feed plants, disinfectants kill germs, plasticizers soften.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Fertiliser tempts on magnesium content, but the medical use is purging.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -56316,10 +56615,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "alloys-steel-stainless-steel-brass-bronze-type-metal-duralum",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Permalloy is iron plus nickel.",
+        "inline": []
+      },
+      "body": {
+        "text": "High-permeability Fe-Ni for shielding and transformers. Tin, chromium and copper pair elsewhere.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Chromium tempts as stainless partner, but permalloy is Ni.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -56364,10 +56676,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "outline-of-the-kinetic-theory-of-matter-melting-vapourizatio",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Cold slows molecules: less pressure, smaller balloon.",
+        "inline": []
+      },
+      "body": {
+        "text": "Kinetic energy falls, collisions soften, volume follows at constant pressure. Molecules neither vanish nor freeze still.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Completely stop moving claims absolute zero — a freezer is merely cold.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -56412,10 +56737,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "use-of-oxidation-numbers-oxidation-and-reduction-treated-as",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "N2O3 splits +6 over two nitrogens: +3 each.",
+        "inline": []
+      },
+      "body": {
+        "text": "O5 gives +5, O4 gives +4, N2O gives +1. Only N2O3 averages +3.",
+        "inline": []
+      },
+      "trap": {
+        "text": "N2O4 tempts on even numbers, but its average is +4.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -56460,10 +56798,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "chemical-bonding-electrovalency-and-covalency-electron-confi",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Na to anion is ionic.",
+        "inline": []
+      },
+      "body": {
+        "text": "Metal plus non-metal with full transfer — classic electrovalent. Dative shares, metallic pools, covalent shares equally.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Dative tempts on electron-pair talk, but transfer is ionic.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -56508,10 +56859,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "alkanoates-formation-from-alkanoic-acids-and-alkanols-fats-a",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Sweet smells are esters: alkanoates.",
+        "inline": []
+      },
+      "body": {
+        "text": "Fruit and perfume scents are volatile esters. Amides, ketones and aldehydes scent differently or not at all.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Alkanone tempts on -one endings, but fragrance chemistry is ester chemistry.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -111741,10 +112105,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "le-chatelier-s-principle-and-the-equilibrium-constant",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Equal gas moles means pressure is blind.",
+        "inline": []
+      },
+      "body": {
+        "text": "Pressure shifts equilibrium only when gas volume changes; Δn = 0 leaves position untouched.",
+        "inline": []
+      },
+      "trap": {
+        "text": "It still speeds collisions — rate is not position.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },

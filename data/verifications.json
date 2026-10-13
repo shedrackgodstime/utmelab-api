@@ -6340,5 +6340,411 @@
     "detail": null,
     "content_hash": "a6d06835f8a7e175c370d90bf60e76040c4f643e0bc929eb2810f28d922ccf29",
     "created_at": "2026-10-13T15:36:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74204_0454",
+    "question_id": "q_claim_2025_chemistry_74204",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "71330b1a4c3898edf19dcddd92bcc50c8b72c3ef9ad6f1d1c2669d2eb9131bd0",
+    "created_at": "2026-10-13T15:50:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74205_0455",
+    "question_id": "q_claim_2025_chemistry_74205",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "f7fe63c17444126ed64b9c8ac4a7d33640800fcb9cfc95e36481b1e2789603b7",
+    "created_at": "2026-10-13T15:50:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74206_0456",
+    "question_id": "q_claim_2025_chemistry_74206",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "8afdedd8b600752592046d3c67863d431b79815a7b8a5a069c1a3e611ba9617e",
+    "created_at": "2026-10-13T15:50:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74207_0457",
+    "question_id": "q_claim_2025_chemistry_74207",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "2759f8c006c22586396828f725d586277b5bc7d651505f4b58b327370a15be86",
+    "created_at": "2026-10-13T15:50:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74208_0458",
+    "question_id": "q_claim_2025_chemistry_74208",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "95fcff3cac814c821048cc2b6902b741f53e27d69b2519f9a8e19a5ff0fd372f",
+    "created_at": "2026-10-13T15:50:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74209_0459",
+    "question_id": "q_claim_2025_chemistry_74209",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "bb516aafa0a53722fcb009c5687bd571a1a88240d075adcf767d2fdfe813b608",
+    "created_at": "2026-10-13T15:50:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74210_0460",
+    "question_id": "q_claim_2025_chemistry_74210",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "0dbe41ea05c4f64122f1cd8689ae91c2b2917b06537f41d05bc0a9b0896720da",
+    "created_at": "2026-10-13T15:50:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74211_0461",
+    "question_id": "q_claim_2025_chemistry_74211",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "7ac00c5a148666700a791a3942ef17443991d6e87c36839f4d876b68e5f4b970",
+    "created_at": "2026-10-13T15:50:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74212_0462",
+    "question_id": "q_claim_2025_chemistry_74212",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "e4d21f3891171c3321d37e84204d2f0194dc4138169afb40a5681e280f587a42",
+    "created_at": "2026-10-13T15:50:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74213_0463",
+    "question_id": "q_claim_2025_chemistry_74213",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "319f45816f3ec64e9be055ed8b406c8d86141dcefbad05281af173ffe4268930",
+    "created_at": "2026-10-13T15:50:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74214_0464",
+    "question_id": "q_claim_2025_chemistry_74214",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "7f9be68fa98310e26ed3730b0f129118aa1c9d0a48272a7e4fb526f90d6a28f0",
+    "created_at": "2026-10-13T15:50:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74215_0465",
+    "question_id": "q_claim_2025_chemistry_74215",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "89e4785130456a67d03549c80798a9a9fa2fe7fec347c715d3952f559b650024",
+    "created_at": "2026-10-13T15:50:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74217_0466",
+    "question_id": "q_claim_2025_chemistry_74217",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "849451088e8f920f5cb7190f2162516bf558d19b91f241205cbdfe9e364a574a",
+    "created_at": "2026-10-13T15:50:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74218_0467",
+    "question_id": "q_claim_2025_chemistry_74218",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "ce8106c08299339b80f91397b08adb496874f5b404f20667666e4f86bb2286d3",
+    "created_at": "2026-10-13T15:50:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74219_0468",
+    "question_id": "q_claim_2025_chemistry_74219",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "d7420fcbd2f5e5d09fa04e6cccf39d40172cb12e6d07545ef74ebd57b1044900",
+    "created_at": "2026-10-13T15:50:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74220_0469",
+    "question_id": "q_claim_2025_chemistry_74220",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "97c27bd6d9e498a8413eacce6491935f82ad4fd477c6b3583e531c5af82a18dd",
+    "created_at": "2026-10-13T15:50:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74221_0470",
+    "question_id": "q_claim_2025_chemistry_74221",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "fc6ec2c394b2df0cdfa8a0b9d3c31e42863a0cbe625a625dd699e4285beae0d2",
+    "created_at": "2026-10-13T15:50:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74248_0471",
+    "question_id": "q_claim_2025_chemistry_74248",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "49180efa7ce360604c64571eb9622259033bcf371ff0c7a5441fe1cbdc625565",
+    "created_at": "2026-10-13T15:50:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74249_0472",
+    "question_id": "q_claim_2025_chemistry_74249",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "b5ef0ce0db504e9be7fee8790015fac81fd04ae7180606932594e1b2dbb71082",
+    "created_at": "2026-10-13T15:50:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74250_0473",
+    "question_id": "q_claim_2025_chemistry_74250",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "e61fab0d0dc23a3604fa4c376f54f98932c4804ee0beb7b987002e454e295eb2",
+    "created_at": "2026-10-13T15:50:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74252_0474",
+    "question_id": "q_claim_2025_chemistry_74252",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "476fcfaf5e126735a2cffcf36b65bca108d7290938d63fc00c99667da5331f55",
+    "created_at": "2026-10-13T15:50:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74255_0475",
+    "question_id": "q_claim_2025_chemistry_74255",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "777cd221d340531696f7d21d301b940ef9a44b9e4042dfff6210f4c687bca525",
+    "created_at": "2026-10-13T15:50:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74270_0476",
+    "question_id": "q_claim_2025_chemistry_74270",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "802773bf4094d9236c1e08bad89e68988be8b1abff6ef604678e6e71ec5cc323",
+    "created_at": "2026-10-13T15:50:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74271_0477",
+    "question_id": "q_claim_2025_chemistry_74271",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "d48cba396741f86ef882485ea5c965e88b95a57ca33445e7ddcd45a4af4692a6",
+    "created_at": "2026-10-13T15:50:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74272_0478",
+    "question_id": "q_claim_2025_chemistry_74272",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "ef365c4f396c8f3919c505f1cc7e0615230229476f75177e1efff5815f64f31e",
+    "created_at": "2026-10-13T15:50:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74273_0479",
+    "question_id": "q_claim_2025_chemistry_74273",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "bc8737116b81ad3725bf8a7df08a83a821e54bcb58da4ad0062699261dd7a4a5",
+    "created_at": "2026-10-13T15:50:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74274_0480",
+    "question_id": "q_claim_2025_chemistry_74274",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "2fd94b33b2461cc6b654a5843d7f92f257ea85b77094902bec1f89a2302b1041",
+    "created_at": "2026-10-13T15:50:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74275_0481",
+    "question_id": "q_claim_2025_chemistry_74275",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "bf964f7911ade973109e1542daa641656e6085a09108fdc517e35b9dca3d37c2",
+    "created_at": "2026-10-13T15:50:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_chemistry_74277_0482",
+    "question_id": "q_claim_2025_chemistry_74277",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "chem3-review",
+    "detail": null,
+    "content_hash": "ea4d9bdae55c7a7ef4b230ad898ba913fc11ce9dd848f9b43555acef0841b599",
+    "created_at": "2026-10-13T15:50:47Z"
   }
 ]
