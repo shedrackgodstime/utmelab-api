@@ -56,7 +56,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-320 verified (14%, derived from data/verifications.json, D62) · 325 explained
+350 verified (16%, derived from data/verifications.json, D62) · 355 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -168,6 +168,11 @@ disagree. Two lists is how subjects drift.
    no weight, yet statics from the readable figure gives T = 20 N against
    recorded 19.24 — underdetermined, needs authoring fix or better scan,
    never a verdict.
+7. **Chemistry batch 1 done 2026-10-13** — 30 explanations authored (keys
+   computed) + subtopic tags attached + verified; chemistry 0 → 30. 74085
+   figure read by eye (ester table I+IV → V, key confirmed). 74083 option
+   typo fixed (C0 → CO). Tagging now rides review: 174 tagged bank-wide,
+   drill paths filling as a side effect.
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),

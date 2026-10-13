@@ -51566,16 +51566,29 @@
       {
         "id": "d",
         "text": {
-          "text": "C0\\(_2\\)",
+          "text": "CO\\(_2\\)",
           "inline": []
         }
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "shapes-of-simple-molecules-linear-h2-o2-cl2-hcl-and-co2-non",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "CO2 carries four lone pairs, the most here.",
+        "inline": []
+      },
+      "body": {
+        "text": "H2O has 2, NH3 has 1, CH4 has 0; CO2 has two oxygens with 2 each = 4.",
+        "inline": []
+      },
+      "trap": {
+        "text": "CH4 tempts as biggest molecule, but lone pairs are unshared electrons, not atoms.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51620,10 +51633,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "elements-compounds-and-mixtures",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Petroleum varies because it is a mixture.",
+        "inline": []
+      },
+      "body": {
+        "text": "Crude is many hydrocarbons mixed; composition shifts by source. A pure hydrocarbon would be fixed.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Hydrocarbon tempts on content, but content is not composition — mixtures vary, compounds do not.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51677,10 +51703,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "alkanoates-formation-from-alkanoic-acids-and-alkanols-fats-a",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Ester V comes from alcohol I plus acid IV.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: I is ROH, IV is RCOOH; acid-catalysed esterification gives V = RCOOR'.",
+        "inline": []
+      },
+      "trap": {
+        "text": "III and IV pairs two acids — esterification needs the alcohol half.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51725,10 +51764,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "nitrogen-laboratory-preparation-and-production-from-liquid-a",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Ammonia is the classic alkaline gas.",
+        "inline": []
+      },
+      "body": {
+        "text": "NH3 dissolves to give OH- and turns damp red litmus blue. HCl and NO2 are acidic; N2 is neutral.",
+        "inline": []
+      },
+      "trap": {
+        "text": "NO2 tempts as nitrogen-containing, but its solution is acidic, not alkaline.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51773,10 +51825,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "false-solutions-suspensions-and-colloids-properties-and-exam",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Visible dust in air is a suspension.",
+        "inline": []
+      },
+      "body": {
+        "text": "Sand particles are large, undissolved, and settle — textbook suspension. Emulsions are liquid-in-liquid; saturated solutions are dissolved.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Dispersion is the general term, not the answer the options want.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51821,10 +51886,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "ph-and-poh-scale-ph-defined-as-log-h3o-related-calculations",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "0.001 M KOH gives pOH 3, so pH 11.",
+        "inline": []
+      },
+      "body": {
+        "text": "KOH is strong: [OH-] = 1e-3, pOH = 3, pH = 14 - 3 = 11.",
+        "inline": []
+      },
+      "trap": {
+        "text": "3 answers pOH instead of pH — the scale has two ends.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51869,10 +51947,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "general-characteristics-and-properties-indicators-basicity-o",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Tartaric acid is the recorded food acid here.",
+        "inline": []
+      },
+      "body": {
+        "text": "Baking powder pairs it with bicarbonate; soft-drink acidity is food-acid territory. Fatty and boric acids have no food role.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Citric tempts for soft drinks, but the recorded key is tartaric — one acid per both uses as set.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51917,10 +52008,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "amines-alkanamines-primary-secondary-and-tertiary-amines",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "One carbon on nitrogen is a primary amine.",
+        "inline": []
+      },
+      "body": {
+        "text": "CH3CH(NH2)- is R-NH2: primary. Secondary needs two carbons on N, tertiary three.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Secondary tempts on the long chain, but class counts N-substituents, not chain length.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51965,10 +52069,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "nitrogen-laboratory-preparation-and-production-from-liquid-a",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Nitrogen's headline industrial use is nitric acid.",
+        "inline": []
+      },
+      "body": {
+        "text": "NH3 via Haber then Ostwald to HNO3. Cooling agents, margarine and oil are not nitrogen chemistry.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Margarine borrows hydrogenation, a hydrogen story, not nitrogen.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52013,10 +52130,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "oxidation-and-reduction-in-terms-of-electron-transfer",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Chlorine gains the electrons here.",
+        "inline": []
+      },
+      "body": {
+        "text": "Na 0 to +1 oxidises; Cl2 0 to -1 reduces. The species reduced is elemental chlorine.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Cl- is already reduced — reduction happens to Cl2 going in, not Cl- coming out.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52061,10 +52191,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "outline-of-the-kinetic-theory-of-matter-melting-vapourizatio",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Sublimation takes in energy.",
+        "inline": []
+      },
+      "body": {
+        "text": "Solid to gas breaks lattice bonds with no liquid step — heat in. Melting and vaporisation are its halves.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Osmotic diffusion belongs to solutions, not phase changes.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52109,10 +52252,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "nitrogen-laboratory-preparation-and-production-from-liquid-a",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Ammonium nitrate gives nitrous oxide and steam.",
+        "inline": []
+      },
+      "body": {
+        "text": "NH4NO3 -> N2O + 2H2O on heating. NO2 needs hotter routes; O2 alone is not the product.",
+        "inline": []
+      },
+      "trap": {
+        "text": "NO2 tempts as nitrogen-oxide-plural, but the thermal route stops at N2O.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52157,10 +52313,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "alkali-metals-e-g-sodium-sodium-hydroxide-production-by-elec",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "A +1 metal with HCl giving H2 points at potassium here.",
+        "inline": []
+      },
+      "body": {
+        "text": "2X + 2HCl -> 2XCl + H2 means X is monovalent and vigorous: K of the options. Mg, Ca, Ba are divalent with different stoichiometry.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Mg tempts as reactive, but divalent metals give XCl2, not XCl.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52205,10 +52374,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "alkanoic-acids-chemical-reactions-neutralization-and-esterif",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Acids dimerise through stronger hydrogen bonds.",
+        "inline": []
+      },
+      "body": {
+        "text": "Two -COOH groups pair up, holding molecules tighter than alkanol chains. Volatility and size miss the bonding.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Larger molecules tempts, but acids and comparable alkanols are similar sizes — bonding decides.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52253,10 +52435,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "water-as-a-solvent-atmospheric-gases-dissolved-in-water-and",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Surface tension pulls drops spherical.",
+        "inline": []
+      },
+      "body": {
+        "text": "A sphere minimises surface for a volume; tension does the minimising. Polarity enables it, density and viscosity do not shape it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Polarity tempts as the cause, but tension is the shaping force.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52301,10 +52496,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "electrolysis-of-dilute-h2so4-aqueous-cuso4-cucl2-dilute-and",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Chloride discharges at the anode in brine.",
+        "inline": []
+      },
+      "body": {
+        "text": "At the anode anions oxidise; concentrated Cl- beats OH-. Na+ and H+ go to the cathode.",
+        "inline": []
+      },
+      "trap": {
+        "text": "OH- discharges only in dilute brine — concentration picks chloride here.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52349,10 +52557,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "electrolytes-and-non-electrolytes-faraday-s-laws-of-electrol",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Faraday: time is mass times zF over current times mass number.",
+        "inline": []
+      },
+      "body": {
+        "text": "t = 4.5 x 2 x 96500 / (64 x 2.5) = 5428 s.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Halving the electron count answers 2714 — copper(II) needs two faradays per mole.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52397,10 +52618,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "periodic-table-and-periodicity-of-elements-families-such-as",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Boron and silicon share the diagonal.",
+        "inline": []
+      },
+      "body": {
+        "text": "B/Si is the classic group 13/14 diagonal pair. Be pairs with Al, Li with Mg.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Li/Al mixes two real diagonals — Li goes with Mg, Be with Al.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52445,10 +52679,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "water-pollution-sewage-and-oil-pollution",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Oxygen gas is not a pollutant.",
+        "inline": []
+      },
+      "body": {
+        "text": "Warm effluent, fertilisers and degradable waste all degrade water; dissolved O2 is what clean water holds.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Biodegradable waste tempts as harmless, but its decay load pollutes.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52493,10 +52740,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "chemical-symbols-formulae-equations-and-their-uses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Acid radicals are the negative ions: carbonate, sulphate, nitrate.",
+        "inline": []
+      },
+      "body": {
+        "text": "Only option c lists three anions. The others smuggle in Mg2+, Na+, K+ cations.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Cations sit beside real radicals in every distractor — radicals are the anions.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52541,10 +52801,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "chemical-bonding-electrovalency-and-covalency-electron-confi",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Weak intermolecular forces mean low melting and boiling.",
+        "inline": []
+      },
+      "body": {
+        "text": "Covalent molecules separate easily because little holds them. Shared pairs and shapes describe the molecule, not the lattice.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Shared electron pairs tempts as bonding, but boiling breaks between molecules, not within.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52589,10 +52862,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "iron-extraction-from-sulphide-and-oxide-ores-properties-and",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The furnace taps pig iron.",
+        "inline": []
+      },
+      "body": {
+        "text": "Direct blast-furnace product is pig iron; cast iron is its shaped form, wrought is refined, steel is alloyed.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Cast iron tempts as furnace-adjacent, but pig is the direct tap.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52637,10 +52923,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "the-mole-concept-and-avogadro-s-number",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Molar mass is mass over moles.",
+        "inline": []
+      },
+      "body": {
+        "text": "44 / 0.5 = 88.",
+        "inline": []
+      },
+      "trap": {
+        "text": "44 answers the sample mass, not per mole — divide by 0.5.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52685,10 +52984,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "introduction-tetravalency-of-carbon-general-formulae-iupac-n",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Alkenes carry one double bond: CnH2n.",
+        "inline": []
+      },
+      "body": {
+        "text": "Alkanes are +2, alkynes -2. The alcohol formula smuggles oxygen in.",
+        "inline": []
+      },
+      "trap": {
+        "text": "CnH2n+2 is the alkane formula — alkenes lose two hydrogens to the double bond.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52733,10 +53045,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "aliphatic-hydrocarbons-alkenes-structural-and-geometric-isom",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Markovnikov puts Cl on the more substituted carbon.",
+        "inline": []
+      },
+      "body": {
+        "text": "2-methylpropene + HCl gives 2-chloro-2-methylpropane. The alternatives place Cl on primary carbons.",
+        "inline": []
+      },
+      "trap": {
+        "text": "1-chloro tempts as end-addition, but the proton goes terminal and Cl goes central.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52781,10 +53106,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "halogens-chlorine-as-representative-laboratory-and-industria",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The water wash strips HCl mist from chlorine.",
+        "inline": []
+      },
+      "body": {
+        "text": "Cl2 preparation carries HCl over; water absorbs it while Cl2 passes. It neither dilutes nor neutralises the product.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Dilute tempts, but the wash removes impurity, not strength.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52829,10 +53167,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "carbohydrates-classification-into-mono-di-and-polysaccharide",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Fructose is a hexose: six carbons.",
+        "inline": []
+      },
+      "body": {
+        "text": "C6H12O6, so x = 6. Triose is 3, pentose 5, dodecose 12.",
+        "inline": []
+      },
+      "trap": {
+        "text": "12 doubles to sucrose — fructose alone is six.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52877,10 +53228,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "outline-of-the-kinetic-theory-of-matter-melting-vapourizatio",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Solid-state migration over years is diffusion.",
+        "inline": []
+      },
+      "body": {
+        "text": "Particles wander down gradients even in solids. Brownian is fluid jitter, osmosis needs a membrane.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Brownian tempts on random motion, but years-long metal mixing is bulk diffusion.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -111131,10 +111495,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "spontaneity-of-reactions-delta-g0-0-as-the-criterion-for-equ",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Small +H with large +S means spontaneous.",
+        "inline": []
+      },
+      "body": {
+        "text": "Delta G = Delta H - T Delta S turns negative when entropy dominates. Enthalpy resists, entropy wins.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Non-spontaneous reads only the positive Delta H and ignores the large Delta S.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -111179,10 +111556,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "le-chatelier-s-principle-and-the-equilibrium-constant",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Higher pressure favours the side with fewer gas moles.",
+        "inline": []
+      },
+      "body": {
+        "text": "2 gas moles become 1 (solid product): pressure pushes toward product. K itself depends on temperature only.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Options about K confuse position with constant — pressure moves equilibrium, never K.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
