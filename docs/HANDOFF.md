@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-510 verified (23%, derived from data/verifications.json, D62) · 515 explained
+535 verified (24%, derived from data/verifications.json, D62) · 540 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -188,12 +188,6 @@ disagree. Two lists is how subjects drift.
     verified; chemistry 89 → 103 of 104. Three figures read by eye: 74289
     amide ✓, 74296 Kc expression ✓, 74881 endothermic profile ✓. Subject
     complete except parked 74216.
-12. **Biology batch 2 (wide) done 2026-10-13** — 58 explanations authored
-    (keys computed) + tags + verified; biology 29 → 87. Five figures read by
-    eye: 74473 petal III ✓, 74496 snail shell ✓, 74497 nerve centre ✓, 74505
-    too rough to confirm liver (parked), 74519 uterus ✓. 74449 option typo
-    fixed (lumber → lumbar). 74512 left untagged (no fitting drill path).
-    74417 stays parked.
 11. **Biology batch 1 done 2026-10-13** — 29 explanations authored (keys
     computed) + tags + verified; biology 0 → 29. Four figures read by eye:
     74398 sunbird bill (sucking ✓), 74403 pituitary at head ✓, 74406 canines
@@ -201,6 +195,19 @@ disagree. Two lists is how subjects drift.
     F1 cross never stated — unanswerable as served. Caught pre-commit: 8
     topic slugs used as subtopic_ids (loader refused); retagged to real
     subtopics.
+12. **Biology batch 2 (wide) done 2026-10-13** — 58 explanations authored
+    (keys computed) + tags + verified; biology 29 → 87. Five figures read by
+    eye: 74473 petal III ✓, 74496 snail shell ✓, 74497 nerve centre ✓, 74505
+    too rough to confirm liver (parked), 74519 uterus ✓. 74449 option typo
+    fixed (lumber → lumbar). 74512 left untagged (no fitting drill path).
+    74417 stays parked.
+13. **Biology batch 3 (final) done 2026-10-13** — 25 authored (24 + 1 key
+    fix) + tags + verified; biology 87 → 112 of 114. 74648 figure read by
+    eye (1:2:1 ✓). **74536 key corrected** rhizome → roots (ferns drink
+    through true roots; rhizome is a stem — D45 pattern, documented in
+    trap). Caught pre-push: triage misread 7465x ids as 7455x; fixed before
+    any write. Subject complete except parked 74417 (no cross) + 74505
+    (rough figure).
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),
