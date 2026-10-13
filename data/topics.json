@@ -7962,7 +7962,13 @@
     "exam": "JAMB",
     "name": "Comprehension and Summary",
     "order": 1,
-    "weight": 25
+    "weight": 25,
+    "objectives": [
+      "Identify main points and topic sentences in passages",
+      "Determine implied meanings",
+      "Identify the grammatical functions of words, phrases, clauses and figurative/idiomatic expressions",
+      "Deduce or infer the writer's intentions, including mood, attitude to the subject matter and opinion"
+    ]
   },
   {
     "slug": "lexis-and-structure",
@@ -7970,7 +7976,14 @@
     "exam": "JAMB",
     "name": "Lexis and Structure",
     "order": 2,
-    "weight": 25
+    "weight": 25,
+    "objectives": [
+      "Identify words and expressions in their ordinary, figurative and idiomatic contexts",
+      "Determine similar and opposite meanings of words",
+      "Differentiate between correct and incorrect punctuation and spelling",
+      "Identify various grammatical patterns in use",
+      "Interpret information conveyed in sentences"
+    ]
   },
   {
     "slug": "oral-forms",
@@ -7978,7 +7991,12 @@
     "exam": "JAMB",
     "name": "Oral Forms",
     "order": 3,
-    "weight": 10
+    "weight": 10,
+    "objectives": [
+      "Make distinctions among vowel types",
+      "Differentiate among consonant types",
+      "Identify correct pronunciation of individual words and articulation of connected speech"
+    ]
   },
   {
     "slug": "comprehension-language",
