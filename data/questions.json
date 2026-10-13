@@ -66546,7 +66546,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Photovoltaic action is a semiconductor effect.",
+        "inline": []
+      },
+      "body": {
+        "text": "Light frees charge carriers across a band gap — a semiconductor property. Conductors have no gap to cross, insulators too wide a one, chemistry describes batteries, not photocells.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Chemical tempts because batteries are chemical — but a photocell converts light, not reagents.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -66594,7 +66607,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Erect and magnified in a concave mirror means inside the focus.",
+        "inline": []
+      },
+      "body": {
+        "text": "A concave mirror magnifies erect only for objects within F: u < 20 cm (indeed u = 15 cm for m = 4). Beyond F the image inverts.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Beyond-20 cm options describe real inverted images — erect rules them all out at once.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -66651,7 +66677,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Resultant is the vector sum: 3 N up against 4 N across.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: vertical 15 − 12 = 3 N up; horizontal 8 − 4 = 4 N right. R = √(9 + 16) = 5 N.",
+        "inline": []
+      },
+      "trap": {
+        "text": "18.00 N adds magnitudes ignoring direction — vectors add by components, never by arithmetic.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -66699,7 +66738,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Capacitance scales with area over separation.",
+        "inline": []
+      },
+      "body": {
+        "text": "C = ε₀A/d = 8.85×10\\(^{-12}\\) × π(0.06)²/0.0012 ≈ 8.3×10\\(^{-11}\\) F.",
+        "inline": []
+      },
+      "trap": {
+        "text": "5.1×10\\(^{11}\\) F inverts the tiny scale — a centimetre capacitor stores picofarads, never hundreds of farads.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -66747,7 +66799,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Specific capacity is heat over mass times rise.",
+        "inline": []
+      },
+      "body": {
+        "text": "c = 1000/(0.025×15) = 1000/0.375 ≈ 2666.7 J kg\\(^{-1}\\) K\\(^{-1}\\).",
+        "inline": []
+      },
+      "trap": {
+        "text": "Forgetting kilograms (0.025, not 25) inflates the answer a thousandfold.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -66795,7 +66860,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Distance is speed times delay — at the stipulated speed.",
+        "inline": []
+      },
+      "body": {
+        "text": "d = 60 × 4 = 240 m. (Real thunder runs ~340 m/s; the stem stipulates 60 and the key follows the stipulation.)",
+        "inline": []
+      },
+      "trap": {
+        "text": "340 m answers the real world instead of the question asked — follow the stem's number.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -66843,7 +66921,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Resistance thermometers respond fastest and most steadily.",
+        "inline": []
+      },
+      "body": {
+        "text": "Platinum resistance tracks temperature with barely any lag. Liquid-in-glass (mercury, alcohol) is slow; gas thermometers are bulky standards.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Gas thermometer tempts on accuracy reputation, but best response means speed plus steadiness.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -66891,7 +66982,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Magnification is image distance over object distance.",
+        "inline": []
+      },
+      "body": {
+        "text": "1/5 = 0.25/u gives u = 1.25 m. The 25 cm camera length is the image distance.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Inverting the ratio (5 × 0.25) answers a five-times enlargement — the image is one fifth, not five times.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -66987,7 +67091,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Field falls as distance squared — solve the square root.",
+        "inline": []
+      },
+      "body": {
+        "text": "r = √(kQ/E) = √(9.0×10\\(^9\\) × 1.2×10\\(^{-7}\\)/4.8×10\\(^{-4}\\)) = √2,250,000 = 1500 m = 1.5 km.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Forgetting the root answers millions of metres — field laws need the square root undone.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67044,7 +67161,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Kinetic energy peaks where speed peaks: the lowest point.",
+        "inline": []
+      },
+      "body": {
+        "text": "The figure labels the bottom Q (control point) between extremes P and S. Maximum speed — hence maximum KE — is at Q.",
+        "inline": []
+      },
+      "trap": {
+        "text": "P and S are the turning points: momentarily at rest, all energy potential.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67092,7 +67222,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Suspended dust thick enough to see through is fog.",
+        "inline": []
+      },
+      "body": {
+        "text": "Fog is cloud at ground level. Mist is thinner, cloud is aloft, rain falls.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Cloud tempts on composition, but suspended dust at breathing height is fog by definition.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67140,7 +67283,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Impulse is the change in momentum — solve for mass.",
+        "inline": []
+      },
+      "body": {
+        "text": "v = 4 + 5×2 = 14 m/s. J = m(14 − 4) = 10m = 60 → m = 6 kg.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Using final momentum alone (14m = 60) forgets the 4 m/s head start — impulse is the change.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67188,7 +67344,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "A hole expands as if filled with the same material.",
+        "inline": []
+      },
+      "body": {
+        "text": "β = 3α = 72×10\\(^{-6}\\) K\\(^{-1}\\); ΔT = 306 K. V = 3.48(1 + 72×10\\(^{-6}\\)×306) ≈ 3.56 cm\\(^3\\).",
+        "inline": []
+      },
+      "trap": {
+        "text": "Using α un-tripled answers two-thirds of the growth — cavities need volume expansivity.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67236,7 +67405,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Short sight needs a diverging lens of the far-point focal length.",
+        "inline": []
+      },
+      "body": {
+        "text": "A 95 cm far point wants a concave lens of f = 95 cm spreading parallel light as if from 95 cm. Mirrors never correct refraction errors; converging lenses fix long sight.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Diverging mirror borrows the right word for the wrong device — correction is lenses, not mirrors.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67284,7 +67466,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Kilowatt-hours are kilowatts times hours.",
+        "inline": []
+      },
+      "body": {
+        "text": "0.150 kW × 336 h = 50.40 kWh.",
+        "inline": []
+      },
+      "trap": {
+        "text": "150 × 336 in watts gives watt-hours — the kilo prefix must divide by a thousand.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67332,7 +67527,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "High-permeability soft iron channels field lines away.",
+        "inline": []
+      },
+      "body": {
+        "text": "Shielding works by giving flux an easy path around the region. Aluminium, brass and copper are near-air magnetically.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Copper tempts on conductivity, but shielding is about permeability, not conduction.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67380,7 +67588,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The odd one out produces charge instead of detecting radiation.",
+        "inline": []
+      },
+      "body": {
+        "text": "Scintillation chambers, Geiger–Muller counters and film badges all register radiation. The electrophorus generates charge by induction.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Film badge tempts as passive, but passive recording is still detection.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67428,7 +67649,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "The wet Leclanché cell breathes ammonium chloride.",
+        "inline": []
+      },
+      "body": {
+        "text": "NH₄Cl paste is the classic depolariser-electrolyte. Lead dioxide belongs to accumulators, nickel hydroxide to NiCd.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Lead dioxide borrows from the car battery — a different chemistry entirely.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67476,7 +67710,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Generated voltage has one name: induced emf.",
+        "inline": []
+      },
+      "body": {
+        "text": "Faraday's product is an emf whether it drives current or not. Eddy currents are a special case; watts are power.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Eddy current names currents in bulk metal — the voltage itself is emf.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67524,7 +67771,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "SI base quantities are seven — current among them.",
+        "inline": []
+      },
+      "body": {
+        "text": "Ampere is base; joule, volt and ohm all derive from it (with kg, m, s).",
+        "inline": []
+      },
+      "trap": {
+        "text": "Volt tempts as fundamental because it feels basic — it is kg·m²·s⁻³·A⁻¹, fully derived.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67581,7 +67841,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Net force is weight minus the two upward pulls.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: weight 10×10 = 100 N down; upthrust 10 N and drag 15 N up. F = 100 − 25 = 75 N down; a = 75/10 = 7.5 m/s².",
+        "inline": []
+      },
+      "trap": {
+        "text": "Counting only upthrust forgets the drag arrow — every upward pull comes off the weight.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67629,7 +67902,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Trough to trough is one full cycle — one wavelength.",
+        "inline": []
+      },
+      "body": {
+        "text": "Periodicity defines it: the pattern repeats every λ, troughs included.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Half wavelength separates trough from crest — same-side points take the whole.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67677,7 +67963,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Lowest frequency is the reddest light.",
+        "inline": []
+      },
+      "body": {
+        "text": "Frequency climbs violet-ward; red sits lowest. Yellow, indigo and blue all oscillate faster.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Blue tempts as calm-looking, but frequency is physics, not mood.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67725,7 +68024,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Each object makes 360/θ − 1 images; ten objects make ten times that.",
+        "inline": []
+      },
+      "body": {
+        "text": "360/30 − 1 = 11 per object; 10 × 11 = 110. Tinsels just multiply the count.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Forgetting the minus one counts the object itself as its own image.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67773,7 +68085,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Series connection shrinks total capacitance — and stored energy with it.",
+        "inline": []
+      },
+      "body": {
+        "text": "1/C falls below every member, so ½CV² at the same V falls too. Charge is equalised, not lost between plates.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Charge flowing between capacitors sounds like loss, but series charge equalises by induction without leaving.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67821,7 +68146,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Parallel cells share voltage and halve resistance.",
+        "inline": []
+      },
+      "body": {
+        "text": "Equivalent: 1.5 V with 0.5 Ω internal. Total 2.5 Ω against 2 Ω load: I = 1.5/2.5 = 0.6 A.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Adding the emfs (3 V) wires them in series — parallel keeps 1.5 V.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67869,7 +68207,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Accommodation is muscular — the ciliary muscle reshapes the lens.",
+        "inline": []
+      },
+      "body": {
+        "text": "Fluids fill and nourish; nerves report. Only muscle does mechanical work on the lens.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Vitreous humor fills most of the eye but focuses nothing.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -67917,7 +68268,20 @@
     "subtopic_id": null,
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Annular means ring — syzygy with the moon too far for totality.",
+        "inline": []
+      },
+      "body": {
+        "text": "Sun, moon and earth aligned with the moon distant leaves a ring of fire. Earth-between-moon-and-sun is a lunar eclipse.",
+        "inline": []
+      },
+      "trap": {
+        "text": "The earth-between option describes a lunar eclipse — the wrong body in the middle for a solar ring.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },

@@ -55,7 +55,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-277 verified (12%, derived from data/verifications.json, D62) · 282 explained
+305 verified (14%, derived from data/verifications.json, D62) · 310 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -167,6 +167,13 @@ disagree. Two lists is how subjects drift.
    no weight, yet statics from the readable figure gives T = 20 N against
    recorded 19.24 — underdetermined, needs authoring fix or better scan,
    never a verdict. `shm_002` stays parked (mirror job).
+5. **Physics batch 3 done 2026-10-13** — 28 explanations authored (keys
+   recomputed) + verified; physics 59 → 87. Three more figures read by eye:
+   74542 force cross (3-4-5 → 5 N), 74550 pendulum (max KE at Q), 74561
+   beaker (100−10−15 → 7.5 m/s²) — all keys confirmed. **74548 parked**:
+   stem gives v = 2.7×10⁸ with λ = 4.0×10⁻⁷ mm, which yields m ≈ 6.1×10⁻³³
+   against recorded 6.1×10⁻³¹ (likely e8/e6 typo) — needs authoring fix,
+   never a verdict.
 3. **Subtopic tagging** — 2,175 questions belong to no drill path despite 2,092
    subtopics existing.
 4. ~~**6 novel questions still in the English bank**~~ — **resolved 2026-10-11**: the subject-scoped D35 guard caught **45** misfiled Lekki Headmaster questions (the "This question is based on…" rows plus the Bepo/Stardom/relocation set that named characters). 41 moved into the novel document verbatim (their rescue convention: original ids, `verified:false`), 4 exact duplicates of rows already in the novel doc dropped from the bank. Bank 2,416 → 2,371; novel doc 54 → 95 questions. All `verified:false`, `explanation:null` — honest.
