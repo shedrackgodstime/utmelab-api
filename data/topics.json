@@ -2371,6 +2371,259 @@
     ]
   },
   {
+    "slug": "commerce",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Commerce",
+    "order": 1,
+    "weight": 0,
+    "objectives": [
+      "differentiate between Commerce and other related subjects",
+      "describe the characteristics of Commerce",
+      "identify the functions of Commerce"
+    ]
+  },
+  {
+    "slug": "occupation",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Occupation",
+    "order": 2,
+    "weight": 0,
+    "objectives": [
+      "state the importance of occupation",
+      "compare the different types of occupation",
+      "identify the factors determining the choice of occupation"
+    ]
+  },
+  {
+    "slug": "production",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Production",
+    "order": 3,
+    "weight": 0,
+    "objectives": [
+      "identify the Factors of Production and their rewards",
+      "distinguish between Division of Labour and Specialization",
+      "classify the types of production"
+    ]
+  },
+  {
+    "slug": "trade",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Trade",
+    "order": 4,
+    "weight": 0,
+    "objectives": [
+      "compare the various types of retailers",
+      "identify the functions of retailers",
+      "highlight the factors in setting up retail trade",
+      "classify modern retailing practices",
+      "identify the advantages and disadvantages of retail business",
+      "classify the types of wholesalers",
+      "discuss the functions of wholesalers",
+      "outline the merits and demerits of the middleman",
+      "analyse the basic issues in foreign trade",
+      "explain the procedures and documents used in foreign trade",
+      "identify the barriers to international trade",
+      "appraise the role of government agencies in foreign trade"
+    ]
+  },
+  {
+    "slug": "purchase-and-sale-of-goods",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Purchase and Sale of Goods",
+    "order": 5,
+    "weight": 0,
+    "objectives": [
+      "examine the procedures and documents used in the purchase and sale of goods",
+      "determine the terms of trade",
+      "distinguish between cash and credit forms of payment",
+      "identify the types of credit",
+      "analyse the merits and demerits of credit transactions"
+    ]
+  },
+  {
+    "slug": "aids-to-trade",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Aids-to-Trade",
+    "order": 6,
+    "weight": 0,
+    "objectives": [
+      "identify the different types of advertising and its media",
+      "analyse the advantages and disadvantages of advertising",
+      "categorize the different types of bank",
+      "assess the services rendered by banks",
+      "identify the challenges facing banks",
+      "assess the different stages in the communication process",
+      "analyse the types of communication",
+      "appraise the contributions of courier services and GSM to businesses",
+      "state the merits and demerits of communication",
+      "outline the barriers to communication",
+      "describe the types of insurance",
+      "apply the principles of insurance to life situations",
+      "explain the terms in insurance",
+      "state the importance of insurance",
+      "examine the importance of tourism",
+      "identify the agencies that promote tourism in Nigeria",
+      "analyse the challenges facing tourism in Nigeria",
+      "appraise the relevance of the various modes of transportation",
+      "list the importance of transportation",
+      "discuss the advantages and disadvantages of transportation",
+      "highlight the importance of warehousing",
+      "appraise the contributions of warehouses to businesses",
+      "evaluate the factors that determine the siting of warehouses"
+    ]
+  },
+  {
+    "slug": "business-units",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Business Units",
+    "order": 7,
+    "weight": 0,
+    "objectives": [
+      "identify the forms and features of business units",
+      "analyse the procedures for registering businesses",
+      "appraise the different forms of business mergers and the reasons for merging",
+      "examine the factors which determine the choice of business units",
+      "differentiate between dissolution and liquidation of business",
+      "state the merits and demerits of business units"
+    ]
+  },
+  {
+    "slug": "financing-business",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Financing Business",
+    "order": 8,
+    "weight": 0,
+    "objectives": [
+      "identify the various ways of financing a business",
+      "discuss the different types of capital",
+      "compute the different forms of capital, profits, and turnover",
+      "appraise the problems associated with sourcing finances for business",
+      "assess the role of bureaux de change in an economy"
+    ]
+  },
+  {
+    "slug": "trade-associations",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Trade Associations",
+    "order": 9,
+    "weight": 0,
+    "objectives": [
+      "discuss the objectives and functions of trade and manufacturer's associations",
+      "list the objectives and functions of Chambers of Commerce"
+    ]
+  },
+  {
+    "slug": "money",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Money",
+    "order": 10,
+    "weight": 0,
+    "objectives": [
+      "discuss the origin of money",
+      "analyse the forms and qualities of money",
+      "appraise the functions of money"
+    ]
+  },
+  {
+    "slug": "stock-exchange",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Stock Exchange",
+    "order": 11,
+    "weight": 0,
+    "objectives": [
+      "state the importance and functions of the Stock Exchange",
+      "identify the different securities traded on the Stock Exchange",
+      "analyse the procedure of transactions and speculations on the Stock Exchange",
+      "appraise the advantages and operating regulations of the market"
+    ]
+  },
+  {
+    "slug": "elements-of-business-management",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Elements of Business Management",
+    "order": 12,
+    "weight": 0,
+    "objectives": [
+      "appraise the functions of management",
+      "analyse the principles of management",
+      "identify organizational structures",
+      "assess the functional areas of business",
+      "examine the business resources"
+    ]
+  },
+  {
+    "slug": "elements-of-marketing",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Elements of Marketing",
+    "order": 13,
+    "weight": 0,
+    "objectives": [
+      "highlight the importance and functions of marketing",
+      "discuss the marketing concept",
+      "assess the elements of marketing mix",
+      "explain market segmentation",
+      "examine public relations and customer service"
+    ]
+  },
+  {
+    "slug": "legal-aspects-of-business",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Legal Aspects of Business",
+    "order": 14,
+    "weight": 0,
+    "objectives": [
+      "analyse the elements and validity of a simple contract",
+      "examine Agency, Sale of Goods Act and Hire Purchase Act",
+      "assess the rights and obligations of employers and employees",
+      "distinguish between patents, trademarks, and copyrights",
+      "identify the functions of consumerism"
+    ]
+  },
+  {
+    "slug": "information-and-communication-technology-ict",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Information and Communication Technology (ICT)",
+    "order": 15,
+    "weight": 0,
+    "objectives": [
+      "discuss computer appreciation and application",
+      "enumerate the types and functions of computer",
+      "analyse the merits and demerits of ICT",
+      "appraise the challenges of using the computer",
+      "identify the different terms used in ICT",
+      "evaluate the trends in ICT"
+    ]
+  },
+  {
+    "slug": "business-environment-and-social-responsibility",
+    "subject": "commerce",
+    "exam": "JAMB",
+    "name": "Business Environment and Social Responsibility",
+    "order": 16,
+    "weight": 0,
+    "objectives": [
+      "discuss the types of business environment",
+      "assess the role of social environment in the provision of safe products",
+      "identify the different types of pollution and their implications on businesses"
+    ]
+  },
+  {
     "slug": "history-of-computing",
     "subject": "computer-studies",
     "exam": "JAMB",
