@@ -9,6 +9,7 @@ pub mod model;
 pub mod scheme;
 mod store;
 pub mod turso_store;
+pub mod verify;
 mod view;
 
 pub(crate) use json::StoreParts;

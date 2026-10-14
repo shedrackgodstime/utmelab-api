@@ -67,6 +67,17 @@ enum Command {
     /// Audit the Turso tables (R4). Read-only: connects, counts every known
     /// table, prints the report. Never writes, migrates, or repairs.
     AuditDb,
+    /// Record a human verification row (review writes here, not to files).
+    /// Same gates as review: flags clear, explanation present. Writes the
+    /// file row first (heals via re-seed), then the Turso row.
+    Verify {
+        /// Question id, e.g. q_claim_2025_physics_74489.
+        #[arg(long)]
+        id: String,
+        /// Who checked, e.g. a batch label. Stored as the verifier.
+        #[arg(long)]
+        by: String,
+    },
 }
 
 #[derive(Subcommand)]
@@ -158,6 +169,22 @@ async fn run() -> Result<(), ApiError> {
             Ok(())
         }
         Command::AuditDb => audit_db(&config).await,
+        Command::Verify { id, by } => {
+            let (url, token) = match (&config.turso_url, &config.turso_token) {
+                (Some(url), Some(token)) => (url.clone(), token.clone()),
+                _ => {
+                    return Err(ApiError::config(
+                        "verify needs TURSO_DB_URL + TURSO_DB_TOKEN",
+                    ));
+                }
+            };
+            let db = Db::connect(&url, &token).await?;
+            let line =
+                utmelab_api::verify_row(&db, &config.bank_cache_file, &config.data_dir, &id, &by)
+                    .await?;
+            println!("{line}");
+            Ok(())
+        }
     }
 }
 

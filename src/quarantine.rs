@@ -31,7 +31,7 @@ use sha2::Digest;
 
 use crate::JsonStore;
 use crate::bank::InlineKind;
-use crate::bank::Store as _;
+use crate::bank::Store;
 
 /// One mechanical defect on one row.
 #[derive(Debug)]
@@ -41,7 +41,7 @@ pub struct Finding {
     pub detail: String,
 }
 
-pub fn scan(store: &JsonStore) -> Vec<Finding> {
+pub fn scan(store: &dyn Store) -> Vec<Finding> {
     let mut out = Vec::new();
     out.extend(underline_missing(store));
     out.extend(missing_figures(store));
@@ -53,7 +53,7 @@ pub fn scan(store: &JsonStore) -> Vec<Finding> {
 }
 
 /// Stems that point at an underlined word without marking one.
-fn underline_missing(store: &JsonStore) -> Vec<Finding> {
+fn underline_missing(store: &dyn Store) -> Vec<Finding> {
     store
         .questions()
         .iter()
@@ -76,7 +76,7 @@ fn underline_missing(store: &JsonStore) -> Vec<Finding> {
 /// that fires wrongly is a bug in the check (HANDOFF §8). Residual edges (a
 /// stem genuinely using one of these words as vocabulary) survive on
 /// purpose: quarantine is a report for a human to judge, not a verdict.
-fn missing_figures(store: &JsonStore) -> Vec<Finding> {
+fn missing_figures(store: &dyn Store) -> Vec<Finding> {
     store
         .questions()
         .iter()
@@ -148,7 +148,7 @@ fn fingerprint(text: &str, options: &[String]) -> String {
 }
 
 /// Second and later holders of one content fingerprint.
-fn duplicate_stems(store: &JsonStore) -> Vec<Finding> {
+fn duplicate_stems(store: &dyn Store) -> Vec<Finding> {
     let mut seen: HashSet<String> = HashSet::new();
     let mut out = Vec::new();
     let mut questions: Vec<_> = store.questions().iter().collect();
@@ -173,7 +173,7 @@ fn duplicate_stems(store: &JsonStore) -> Vec<Finding> {
 }
 
 /// Option counts outside the four JAMB sets.
-fn option_counts(store: &JsonStore) -> Vec<Finding> {
+fn option_counts(store: &dyn Store) -> Vec<Finding> {
     store
         .questions()
         .iter()
@@ -187,7 +187,7 @@ fn option_counts(store: &JsonStore) -> Vec<Finding> {
 }
 
 /// "Fill the gap labelled N" with nowhere to look the gap up.
-fn cloze_without_passage(store: &JsonStore) -> Vec<Finding> {
+fn cloze_without_passage(store: &dyn Store) -> Vec<Finding> {
     store
         .questions()
         .iter()
@@ -227,7 +227,7 @@ fn has_numbered_gap(text: &str) -> bool {
 }
 
 /// Novel vocabulary sitting in the subject bank (D35).
-fn novel_leaks(store: &JsonStore) -> Vec<Finding> {
+fn novel_leaks(store: &dyn Store) -> Vec<Finding> {
     store
         .questions()
         .iter()

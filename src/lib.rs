@@ -39,6 +39,7 @@ pub use bank::model::{
     Novel, NovelChapter, NovelCharacter, NovelDoc, NovelQuestion, NovelTheme, Passage,
 };
 pub use bank::model::{Verdict, Verification, VerifyCheck, VerifyKind, human_verified};
+pub use bank::verify::verify_row;
 pub use bank::{
     DEFAULT_PER_PAGE, ImagePosition, Inline, InlineKind, JsonStore, MAX_PER_PAGE, QuestionFilter,
     RichText, Store, StoreError, TursoStore,

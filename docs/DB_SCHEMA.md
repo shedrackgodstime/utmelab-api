@@ -248,7 +248,6 @@ novels, passage — identical. Known gaps: withheld fixture file-side
 (R7 row-hash lands with cutover).
 
 ## Serving record (2026-10-14) — Turso-only, hot reload, disk cache
-
 Turso is the only source; JSON is dev-only; there is no fallback (a
 future Turso mirror is the fallback, not now). `serve` boots
 `TursoStore::open_cached`: cheap count-hash version first, `var/`
@@ -277,3 +276,19 @@ still not claimed — consumers compare within a source. Retries hardened
 in the same pass: `all()` retries idempotent reads, `current_version`
 retries, boot retries `open_cached` (validation still fails closed, so
 retries can only boot a good bank).
+
+## Writer record W1 (2026-10-14) — `verify` CLI writes Turso
+
+Production verifications go through `cargo run -- verify --id <qid>
+--by <who>`, not file appends: same gates as review (flags clear via
+`quarantine::scan` generalized to `&dyn Store`, explanation present,
+already-verified short-circuit), ISO-UTC timestamps matching the file
+convention (civil-date math, unit-tested vectors), collision-free row
+ids (count + bump-while-taken; upsert deliberately NOT used — a clash
+retries, never silently overwrites). Write order is **file first, Turso
+second**: any gap heals on the next idempotent re-seed; the reverse
+would leave twins nothing heals. `review.py` is untouched (dev/scratch
+triage; its file appends converge via re-seed). Live-proven gates:
+already-verified short-circuit + option_count refusal; the full write
+path awaits its first real (non-parked, eligible) row — the bank is
+complete, so none exists today.

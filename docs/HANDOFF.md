@@ -334,6 +334,10 @@ disagree. Two lists is how subjects drift.
 37. **R7 version done 2026-10-14** — `version()` hashes ordered row content
     (stored fingerprints where carried, full rows elsewhere). Count-preserving
     edits now trip refresh. Retries hardened: reads, version checks, boot.
+38. **Verify CLI done 2026-10-14 (W1)** — production verifications write
+    through `cargo run -- verify` (same gates, ISO timestamps, file-first
+    dual-write). `quarantine::scan` generalized to `&dyn Store`. Gates
+    proven live; write path awaits first eligible row.
 34. **Maths P4 groundwork done 2026-10-14** — 74199 verified (figure read:
     x = 2, modal weight 58; honest legacy note replaced with the working).
     **74188 parked**: modal class 30–39 gives 29.5 + 6/10×10 = 35.5, no
