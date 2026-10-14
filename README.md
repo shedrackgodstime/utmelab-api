@@ -24,6 +24,7 @@ cargo run -- key revoke --id <id>
 cargo run -- key rotate --id <id>
 cargo run -- import --dry-run             # merge data/inbox into the bank
 cargo run -- quarantine                   # mechanical-defect report, read-only
+cargo run -- audit-db                     # Turso table counts, read-only (R4)
 ```
 
 Review is Python (no toolchain needed — works on any machine, human or agent):
@@ -48,6 +49,7 @@ novels are embedded in the binary; `UTMELAB_API_DATA_DIR` holds exactly
 | `src/api/` | `/api/v1/*` (sold, key auth, in the spec) + `/internal/v1/*` (dashboard-only, never in the spec) |
 | `src/bank/` | content core behind the `Store` trait — no HTTP, so routes never touch storage (D23) |
 | `src/keys/` | API keys in Turso, CLI-administered, hash-only |
+| `src/db/` | shared Turso handle + read-only `audit-db` (scaffolding, no migrations yet) |
 | `src/reports/` | question-report intake (queue, not action) |
 | `src/import.rs` | inbox → bank merge, three gates, every refusal counted (D51) |
 | `src/quarantine.rs` | mechanical-defect scan: underline/image/dupes/leaks |

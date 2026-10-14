@@ -14,7 +14,7 @@ use clap::{Parser, Subcommand};
 use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
 
-use utmelab_api::{ApiError, AppState, Config, JsonStore, RateLimiter, ReportStore, Store};
+use utmelab_api::{ApiError, AppState, Config, Db, JsonStore, RateLimiter, ReportStore, Store};
 
 #[derive(Parser)]
 #[command(name = "utmelab-api", version, about = "UTME Lab question bank API")]
@@ -64,6 +64,9 @@ enum Command {
         #[arg(long)]
         data: Option<PathBuf>,
     },
+    /// Audit the Turso tables (R4). Read-only: connects, counts every known
+    /// table, prints the report. Never writes, migrates, or repairs.
+    AuditDb,
 }
 
 #[derive(Subcommand)]
@@ -154,6 +157,7 @@ async fn run() -> Result<(), ApiError> {
             print!("{out}");
             Ok(())
         }
+        Command::AuditDb => audit_db(&config).await,
     }
 }
 
@@ -165,14 +169,35 @@ async fn run() -> Result<(), ApiError> {
 /// lands where the server reads. (Tests construct `KeyBackend::file` directly;
 /// `key import` reads a file as a migration *source* into Turso.)
 async fn open_backend(config: &Config) -> Result<utmelab_api::KeyBackend, ApiError> {
+    // Runtime path is exactly today: one connect + store-owned DDL. The
+    // shared-`Db` scaffolding (`Db::connect`/`TursoKeyStore::new`/`open_shared`)
+    // is proven by `audit-db` + the scaffolding test, not used by serve until
+    // migrations land.
     match (&config.turso_url, &config.turso_token) {
         (Some(url), Some(token)) => {
             utmelab_api::KeyBackend::open_remote(url, token, config.key_cache_ttl_secs).await
         }
         _ => Err(ApiError::config(
-            "no key backend: set TURSO_DB_URL + TURSO_DB_TOKEN (keys live in Turso)",
+            "no Turso backend: set TURSO_DB_URL + TURSO_DB_TOKEN",
         )),
     }
+}
+
+/// `audit-db`: connect (no migrate — audit never writes), count every known
+/// table, print. Read-only by construction.
+async fn audit_db(config: &Config) -> Result<(), ApiError> {
+    let (url, token) = match (&config.turso_url, &config.turso_token) {
+        (Some(url), Some(token)) => (url, token),
+        _ => {
+            return Err(ApiError::config(
+                "no Turso backend: set TURSO_DB_URL + TURSO_DB_TOKEN",
+            ));
+        }
+    };
+    let db = Db::connect(url, token).await?;
+    let report = utmelab_api::db::audit(&db).await?;
+    print!("{}", report.render());
+    Ok(())
 }
 
 async fn serve(config: &Config) -> Result<(), ApiError> {

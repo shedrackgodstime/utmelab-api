@@ -1,9 +1,10 @@
 //! API key store — behind a trait so the backing store can change without
 //! touching routes or auth (D23 discipline, applied to keys).
 //!
-//! Today: `JsonKeyStore`, a local file **outside** the committed constant.
-//! Later: a Turso-backed impl. That is not written yet, deliberately — it will be
-//! built against the documented client, not reverse-engineered.
+//! Today: `KeyStore`, a local file **outside** the committed constant.
+//! The live backend is `TursoKeyStore` (`turso.rs`), sharing the process `Db`
+//! (Phase 0). The file remains for tests (no network) and as the one-time
+//! `key import` migration source — never selected at runtime (D53).
 //!
 //! The plaintext key is generated, returned **once**, and never stored. Only its
 //! SHA-256 digest is persisted (D27), so reading the file does not hand over

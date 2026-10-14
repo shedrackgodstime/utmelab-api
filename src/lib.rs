@@ -21,6 +21,7 @@
 pub mod api;
 mod bank;
 mod config;
+pub mod db;
 mod error;
 pub mod import;
 mod keys;
@@ -39,6 +40,7 @@ pub use bank::{
     RichText, Store, StoreError,
 };
 pub use config::Config;
+pub use db::Db;
 pub use error::ApiError;
 pub use keys::{ApiKey, KeyBackend, KeyStatus, KeyStore};
 pub use reports::{QuestionReport, ReportReason, ReportStore};

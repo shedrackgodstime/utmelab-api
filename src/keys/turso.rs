@@ -6,20 +6,26 @@
 //! Revoke is globally visible on the next request — cache miss reads the wire;
 //! revoke invalidates the cache immediately. Rows are the file's `StoredKey`
 //! shape, so `key import` copies columns verbatim.
+//!
+//! `new(&Db)` borrows the shared connection for scaffolding; `open()` is the
+//! runtime path and runs the store-owned `DDL` (no migrations yet).
 
 use std::collections::HashMap;
 use std::sync::Mutex;
 use std::time::{Duration, Instant};
 
-use turso_serverless::{Builder, Connection};
+use turso_serverless::Connection;
 
 use super::store::{StoredKey, generate_key, hash_key, new_id, now_iso, now_secs, prefix_of};
 use super::{ApiKey, KeyStore};
+use crate::db::Db;
 use crate::error::ApiError;
 
 /// Columns in `StoredKey` field order. One place: SELECT, INSERT, row mapping.
 const COLUMNS: &str = "id, key_hash, key_prefix, label, account_id, plan, scopes, rate_limit, quota_monthly, created_at, last_used_at, expires_at, suspended_at, suspend_reason, revoked_at";
 
+/// Owned by this store until its migration phase lands. Runs on `open()` via
+/// `execute_batch` — idempotent (`IF NOT EXISTS`), so restarts re-apply safely.
 const DDL: &str = "CREATE TABLE IF NOT EXISTS api_keys (
     id            TEXT PRIMARY KEY,
     key_hash      TEXT NOT NULL UNIQUE,
@@ -55,22 +61,25 @@ fn internal(context: &str, e: impl std::fmt::Display) -> ApiError {
 }
 
 impl TursoKeyStore {
-    /// Connect, create the table if absent, return ready store.
-    pub async fn open(url: &str, token: &str, ttl_secs: u64) -> Result<Self, ApiError> {
-        let db = Builder::new_remote(url)
-            .with_auth_token(token)
-            .build()
-            .await
-            .map_err(|e| internal("turso build", e))?;
-        let conn = db.connect().map_err(|e| internal("turso connect", e))?;
-        conn.execute_batch(DDL)
-            .await
-            .map_err(|e| internal("turso ddl", e))?;
-        Ok(Self {
-            conn,
+    /// Wrap the shared connection. The table is created on `open()` from the
+    /// store-owned `DDL` above — never by `Db`, until migrations land.
+    pub fn new(db: &Db, ttl_secs: u64) -> Self {
+        Self {
+            conn: db.conn(),
             ttl: Duration::from_secs(ttl_secs),
             cache: Mutex::new(HashMap::new()),
-        })
+        }
+    }
+
+    /// Connect + create table if absent + wrap. The runtime path today;
+    /// `serve` builds one `Db` and this runs the store's own DDL over it.
+    pub async fn open(url: &str, token: &str, ttl_secs: u64) -> Result<Self, ApiError> {
+        let db = Db::connect(url, token).await?;
+        db.conn()
+            .execute_batch(DDL)
+            .await
+            .map_err(|e| internal("turso ddl", e))?;
+        Ok(Self::new(&db, ttl_secs))
     }
 
     fn invalidate(&self) {

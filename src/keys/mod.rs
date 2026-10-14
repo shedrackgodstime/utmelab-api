@@ -50,6 +50,12 @@ impl KeyBackend {
         )))
     }
 
+    /// Wrap the process-shared [`crate::db::Db`]. `serve` builds one `Db`
+    /// (connect + migrate once) and every store borrows it.
+    pub fn open_shared(db: &crate::db::Db, ttl_secs: u64) -> Self {
+        Self::Remote(Box::new(TursoKeyStore::new(db, ttl_secs)))
+    }
+
     /// Human-readable backend for boot logs: `turso`, or `file:<path>` in tests.
     pub fn describe(&self) -> String {
         match self {
