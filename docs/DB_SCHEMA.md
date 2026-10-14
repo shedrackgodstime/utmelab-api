@@ -204,3 +204,16 @@ The 1 withheld fixture (`exam=""`) is excluded by construction
 (`store.questions()` is the servable view); it stays file-side until the
 TursoStore read path implements partition itself. File stays source;
 table warm standby. `questions` registered in `audit-db`.
+
+## Phase 3 record (2026-10-14)
+
+`passages` seeded: 6/6 rows, all fields equal (PARITY OK) via
+`examples/seed_passages.rs`. Novels seeded via `examples/seed_novels.rs`:
+6 docs (5 stubs migrate as ordinary rows; the ≥50q serving rule moves to
+the read path), 12 chapters, 35 characters, 6 themes, 220 questions —
+counts equal all tables, per-row `content_hash` recomputed from table
+columns equal (PARITY OK 220/220). Both examples load via `JsonStore`
+first so the fail-closed validation is the write gate (R4); the novel
+docs are read from disk because `load()` retains only ≥50q novels for
+serving while validation covers all 6. All six tables registered in
+`audit-db`. Files stay source; tables warm standby.

@@ -35,6 +35,9 @@ pub use api::openapi::document as openapi_document;
 
 pub use bank::model::Question;
 pub use bank::model::{Choice, Explanation};
+pub use bank::model::{
+    Novel, NovelChapter, NovelCharacter, NovelDoc, NovelQuestion, NovelTheme, Passage,
+};
 pub use bank::model::{Verdict, Verification, VerifyCheck, VerifyKind, human_verified};
 pub use bank::{
     DEFAULT_PER_PAGE, ImagePosition, Inline, InlineKind, JsonStore, MAX_PER_PAGE, QuestionFilter,

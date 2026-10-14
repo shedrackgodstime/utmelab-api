@@ -635,6 +635,11 @@ impl JsonStore {
         &self.questions
     }
 
+    /// Validated passages. Used by bulk jobs (Phase 3 seed).
+    pub fn passages(&self) -> &[Passage] {
+        &self.passages
+    }
+
     /// Valid rows that are not servable (D21). The import path must carry
     /// these through its rewrite — dropping them is silent data loss (D58).
     pub fn withheld_questions(&self) -> &[Question] {

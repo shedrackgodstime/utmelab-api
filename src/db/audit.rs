@@ -62,22 +62,38 @@ pub async fn run(db: &Db) -> Result<AuditReport, ApiError> {
     // withheld fixture stays file-side until the read path implements
     // partition itself).
     let questions = count(db, "questions").await.unwrap_or(0);
-    Ok(AuditReport {
-        tables: vec![
-            TableAudit {
-                name: "api_keys",
-                rows: keys,
-            },
-            TableAudit {
-                name: "verifications",
-                rows: verifications,
-            },
-            TableAudit {
-                name: "questions",
-                rows: questions,
-            },
-        ],
-    })
+    // Phase 3: passages + novels warm standby (same rule; stubs migrate as
+    // ordinary rows, the ≥50q serving rule moves to the read path).
+    let mut extra = Vec::new();
+    for table in [
+        "passages",
+        "novels",
+        "novel_chapters",
+        "novel_characters",
+        "novel_themes",
+        "novel_questions",
+    ] {
+        extra.push(TableAudit {
+            name: table,
+            rows: count(db, table).await.unwrap_or(0),
+        });
+    }
+    let mut tables = vec![
+        TableAudit {
+            name: "api_keys",
+            rows: keys,
+        },
+        TableAudit {
+            name: "verifications",
+            rows: verifications,
+        },
+        TableAudit {
+            name: "questions",
+            rows: questions,
+        },
+    ];
+    tables.extend(extra);
+    Ok(AuditReport { tables })
 }
 
 #[cfg(test)]
