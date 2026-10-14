@@ -6,6 +6,7 @@
 pub(crate) mod cache;
 mod json;
 pub mod model;
+pub mod readiness;
 pub mod scheme;
 mod store;
 pub mod turso_store;
@@ -19,6 +20,7 @@ pub use model::{
     Choice, Exam, ExamStatus, ImagePosition, Inline, InlineKind, Novel, NovelDoc, Passage,
     Question, Requirement, RichText, Subject, Subtopic, Topic,
 };
+pub use readiness::{Blueprint, SubjectReadiness, TopicReadiness, load_blueprints, per_topic};
 pub use turso_store::TursoStore;
 
 pub use scheme::Scheme;

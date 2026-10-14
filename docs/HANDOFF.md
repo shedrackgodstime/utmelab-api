@@ -345,6 +345,14 @@ disagree. Two lists is how subjects drift.
 40. **Withheld moved 2026-10-14** — last file-side row seeded; read path
     partitions identically; parity asserts equality. Turso holds the
     whole bank.
+41. **Per-topic readiness done 2026-10-14 (P4-1, D68 PROPOSED)** — new
+    `bank::readiness` (Blueprint struct, file loader, `per_topic` over
+    `&dyn Store`): need = ceil(expected), have = distinct fingerprints
+    over verified/in-scope rows, untagged counted never assigned. Maths:
+    **17/23 ready, complete=false**; gaps are binary-operations, loci,
+    measures-of-dispersion, mensuration, polynomials,
+    representation-of-data. Caught in-test: same-topic buckets overwrote
+    each other (conservation assert fired, fixed to extend).
 34. **Maths P4 groundwork done 2026-10-14** — 74199 verified (figure read:
     x = 2, modal weight 58; honest legacy note replaced with the working).
     **74188 parked**: modal class 30–39 gives 29.5 + 6/10×10 = 35.5, no
