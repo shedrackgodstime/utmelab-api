@@ -48445,10 +48445,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "final-accounts-of-companies",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Ten percent of two million: 200,000.",
+        "inline": []
+      },
+      "body": {
+        "text": "1,000,000 shares at GH2 = 2,000,000 capital; 10% declares 200,000. 10k, 100k and 20k misplace decimals.",
+        "inline": []
+      },
+      "trap": {
+        "text": "20,000 tempts as percent-slip, but the dividend is 200,000.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -48492,11 +48505,24 @@
         }
       }
     ],
-    "answer": "c",
-    "subtopic_id": null,
+    "answer": "a",
+    "subtopic_id": "provision-for-depreciation-straight-line-and-reducing-balanc",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Book 37,500 leaves 112,500 depreciated.",
+        "inline": []
+      },
+      "body": {
+        "text": "Proceeds 45,000 less 7,500 profit gives NBV 37,500; cost 150,000 less NBV gives 112,500 accumulated. The recorded key mis-subtracted. Recorded c; corrected to a.",
+        "inline": []
+      },
+      "trap": {
+        "text": "37,500 tempts as NBV-answer, but asked is accumulated.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -48541,10 +48567,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "formation-and-classification-of-companies",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Issued capital escapes the memorandum.",
+        "inline": []
+      },
+      "body": {
+        "text": "Registered, authorised and nominal all name the memorandum total; issued is what goes out.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Authorised tempts as memorandum-word (it is), but the NOT is issued.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -48589,10 +48628,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "issue-of-shares-and-debentures",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Below par sells at discount.",
+        "inline": []
+      },
+      "body": {
+        "text": "Shares below nominal value: discount. Face, cumulative and premium miss the markdown.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Premium tempts as share-price, but below-par is discount.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -48637,10 +48689,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "income-statement-trading-and-profit-and-loss-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Home-taken stock: drawings.",
+        "inline": []
+      },
+      "body": {
+        "text": "Private use of business goods stated. Loans, stock and sales miss the proprietor.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Sales tempts as goods-out, but home-taken is drawings.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -48685,10 +48750,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "income-statement-trading-and-profit-and-loss-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Discounts received credit P&L.",
+        "inline": []
+      },
+      "body": {
+        "text": "Gains credit profit and loss. Trading, appropriation and debit readings miss the gain.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Trading tempts as discount-home, but received credits P&L.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -48733,10 +48811,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "capital-and-recurrent-expenditure",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Below-line waits unbargained.",
+        "inline": []
+      },
+      "body": {
+        "text": "Not budgeted this year stated. Under-spends, carry-forwards and budgeted miss the line.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Carry-forward tempts as below-line, but meaning is unbudgeted.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -48781,10 +48872,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "cost-classification",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Depreciation never primes.",
+        "inline": []
+      },
+      "body": {
+        "text": "NOT prime cost: factory equipment depreciation is overhead. Direct expenses, materials and carriage all prime.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Carriage tempts as cost (it primes), but the NOT is depreciation.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -48829,10 +48933,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "comparison-of-cash-and-accrual-basis-of-accounting",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Governments count cash.",
+        "inline": []
+      },
+      "body": {
+        "text": "Feature: cash basis. Accrual, depreciation and profit motives miss the state.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Accrual tempts as accounting-word, but government counts cash.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -48877,10 +48994,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "bank-reconciliation-statement",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Overdrafts climb with debtors: 210,000.",
+        "inline": []
+      },
+      "body": {
+        "text": "Minus 190,000 plus 400,000 leaves +210,000. Overdrawn readings and 590,000 mis-sign it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "590,000 tempts as sum-blind, but the balance is +210,000.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -48934,10 +49064,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "receipts-and-payments-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Receipts sum 2,640.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: 460+520+500+490+670. 1,980, 1,690 and 2,180 misadd.",
+        "inline": []
+      },
+      "trap": {
+        "text": "2,180 tempts as near-miss, but the total is 2,640.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -48991,10 +49134,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "income-and-expenditure-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Takings less pay-outs: 1,650.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: 2,640 receipts against 990 payments. 1,970, 1,330 and 1,890 misadd.",
+        "inline": []
+      },
+      "trap": {
+        "text": "1,890 tempts as near, but the surplus is 1,650.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49039,10 +49195,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "distinction-between-capital-and-revenue-reserves",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Motor sales capitalise.",
+        "inline": []
+      },
+      "body": {
+        "text": "Capital receipt: motor vehicles (fixed assets). Debtors, stock and trading all revenue.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Stock tempts as sales-word, but capital is motors.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49087,10 +49256,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "cost-classification",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Royalties prime directly.",
+        "inline": []
+      },
+      "body": {
+        "text": "Component of prime: per-unit royalty is direct expense. Rent, depreciation and power overhead.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Power tempts as factory-cost, but prime is royalty.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49135,10 +49317,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "principles-concepts-and-conventions-of-accounting",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Passed goods realise revenue.",
+        "inline": []
+      },
+      "body": {
+        "text": "Realization concept stated. Matching, materiality and consistency differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Matching tempts as revenue-word, but passing realises.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49183,10 +49378,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "apportionment-of-expenses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Rents follow floor space.",
+        "inline": []
+      },
+      "body": {
+        "text": "Apportioned by floor area. Sales, purchases and headcount suit other costs.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Sales tempts as apportion-base, but rent follows floors.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49231,10 +49439,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "comparison-of-cash-and-accrual-basis-of-accounting",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "State books keep public sector.",
+        "inline": []
+      },
+      "body": {
+        "text": "Recording government finance stated. Cost, management and financial accounting serve firms.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Financial tempts as accounting-word, but state is public sector.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49278,11 +49499,24 @@
         }
       }
     ],
-    "answer": "c",
-    "subtopic_id": null,
+    "answer": "a",
+    "subtopic_id": "principles-concepts-and-conventions-of-accounting",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Unearned profits bow to prudence.",
+        "inline": []
+      },
+      "body": {
+        "text": "Never claiming profit before earning is the prudence (conservatism) concept; consistency keeps methods stable period to period. The recorded key mistook the virtue. Recorded c; corrected to a.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Consistency tempts as concept-word, but unearned bows to prudence.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49327,10 +49561,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "types-and-treatment-of-errors-and-uses-of-suspense-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Wrong casts break agreement.",
+        "inline": []
+      },
+      "body": {
+        "text": "Affects trial balance: bad addition. Misposts, omissions and wrong names still balance.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Misposts tempt as errors (they balance), but casts break.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49375,10 +49622,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "petty-cashbook-and-the-imprest-system",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Imprest feeds small spends.",
+        "inline": []
+      },
+      "body": {
+        "text": "Advantage: meeting petty expenditure. Profits, rewards and final accounts miss the tin.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Final-accounts tempts as accounting-good, but imprest feeds small.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49423,10 +49683,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "formation-and-classification-of-companies",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Houses rule by articles.",
+        "inline": []
+      },
+      "body": {
+        "text": "Internal management document: articles of association. Memoranda, prospectuses and certificates differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Memorandum tempts as company-paper (external), but internal is articles.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49471,10 +49744,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "comparison-of-cash-and-accrual-basis-of-accounting",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Public service counts cash.",
+        "inline": []
+      },
+      "body": {
+        "text": "Basis: cash (same as 74997). Expenditure, accrual and profit miss the base.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Accrual tempts as basis-word, but public is cash.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49519,10 +49805,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "the-ledger-and-its-classifications",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Statements stand outside double entry.",
+        "inline": []
+      },
+      "body": {
+        "text": "NOT part: balance sheet is a statement, not an account. P&L, appropriation and trading all post.",
+        "inline": []
+      },
+      "trap": {
+        "text": "P&L tempts as statement-like (it posts), but outside is balance sheet.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49567,10 +49866,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "objectives-of-branch-accounts",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Branches take at cost.",
+        "inline": []
+      },
+      "body": {
+        "text": "Head office issues at cost price. Prime, realisable and production costs differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Production-cost tempts as goods-value, but branches take cost.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49623,11 +49935,24 @@
         }
       }
     ],
-    "answer": "a",
-    "subtopic_id": null,
+    "answer": "d",
+    "subtopic_id": "income-and-expenditure-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Full income less full expense: 7,535,000.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: subscriptions 9,660,000 less 180,000 arrears less 150,000 advance plus tickets 1,500,000 plus donations 800,000 gives 11,630,000; revenue expenses 4,095,000; surplus 7,535,000. The recorded key dropped tickets and donations. Recorded a; corrected to d.",
+        "inline": []
+      },
+      "trap": {
+        "text": "5,235,000 tempts as subs-only, but income counts all.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49672,10 +49997,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "formation-of-partnership",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Silent partners earn five percent.",
+        "inline": []
+      },
+      "body": {
+        "text": "No agreement: advances attract 5%. 10, 12 and 15 miss the Act.",
+        "inline": []
+      },
+      "trap": {
+        "text": "10 tempts as round-rate, but the Act says five.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49728,11 +50066,24 @@
         }
       }
     ],
-    "answer": "a",
-    "subtopic_id": null,
+    "answer": "b",
+    "subtopic_id": "income-and-expenditure-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Revenue only: 4,095,000.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: wages, rent, anniversary and travelling sum so; kitchen equipment capitalises out. The recorded key expensed everything. Recorded a; corrected to b.",
+        "inline": []
+      },
+      "trap": {
+        "text": "8,095,000 tempts as payments-minus-balance, but capital excludes.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49786,10 +50137,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "columnar-cashbooks",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Month income: 278,000.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: commission 180,000 plus Ojah 98,000 (balance b/f excluded). Other totals misadd.",
+        "inline": []
+      },
+      "trap": {
+        "text": "478,300 tempts as receipts-side, but income is 278,000.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49891,10 +50255,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "principles-concepts-and-conventions-of-accounting",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Entities split owners off.",
+        "inline": []
+      },
+      "body": {
+        "text": "Entity concept: ownership separated. Management, unseparated and boards miss the split.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Management tempts as owner-face, but entities split.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49938,11 +50315,24 @@
         }
       }
     ],
-    "answer": "a",
-    "subtopic_id": null,
+    "answer": "b",
+    "subtopic_id": "income-statement-trading-and-profit-and-loss-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Quarter markup divides by five quarters.",
+        "inline": []
+      },
+      "body": {
+        "text": "Markup on cost: 12,000 equals 125%, so cost is 9,600. 9,000 prices a 25% margin instead. Recorded a; corrected to b.",
+        "inline": []
+      },
+      "trap": {
+        "text": "9,000 tempts as margin-maths, but markup divides 1.25.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -49987,10 +50377,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "types-and-treatment-of-errors-and-uses-of-suspense-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Suspense forces agreement.",
+        "inline": []
+      },
+      "body": {
+        "text": "Used to agree the trial balance pending correction. Sales, sheets and purchases miss the plug.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Balance-sheet tempts as agreement-place, but suspense plugs.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50035,10 +50438,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "apportionment-of-expenses",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Purchase-based costs follow purchases.",
+        "inline": []
+      },
+      "body": {
+        "text": "Apportioned so: discounts received. Carriage out, commission and bad debts follow sales.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Bad-debts tempt as department-cost, but purchase-based is discounts.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50083,10 +50499,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "objectives-of-departmental-accounts",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Receivers debit, givers credit.",
+        "inline": []
+      },
+      "body": {
+        "text": "Transfer stated. Stock-trading, trading-purchases and reversed readings miss the departments.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Reversed tempts as double-entry-mirror, but receivers debit.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50131,10 +50560,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "responsibilities-and-powers-of-the-accountant-general-the-au",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Federation accounts crown Accountant General.",
+        "inline": []
+      },
+      "body": {
+        "text": "Chief officer stated. Auditors, ministers and chief accountants differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Auditor tempts as accounts-chief, but crown is Accountant General.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50179,10 +50621,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "trial-balance",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Control checks escape trial balances.",
+        "inline": []
+      },
+      "body": {
+        "text": "NOT true: TB never proves control agreement. Ledger lists, accuracy proofs and summaries all hold.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Accuracy-proof tempts as TB-truth (it is), but the NOT is control checks.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50227,10 +50682,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "provision-for-depreciation-straight-line-and-reducing-balanc",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Sold below book: 17,000 loss.",
+        "inline": []
+      },
+      "body": {
+        "text": "NBV 33,000 (see 75053) against 16,000 proceeds. 16k readings and profit invert the sale.",
+        "inline": []
+      },
+      "trap": {
+        "text": "16,000-loss tempts as proceeds-mirror, but loss is 17,000.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50275,10 +50743,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "provision-for-depreciation-straight-line-and-reducing-balanc",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Four years plus half: NBV 33,000.",
+        "inline": []
+      },
+      "body": {
+        "text": "27,000 depreciation (4 full plus half-year) off 60,000. 17k, 16k and 30k mistime it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "30,000 tempts as half-depreciated, but NBV is 33,000.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50323,10 +50804,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "receipts-and-payments-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Receipts-payments bare capital.",
+        "inline": []
+      },
+      "body": {
+        "text": "Discloses capital items. Creditors, debtors and prepayments hide.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Debtors tempt as account-party, but disclosed is capital.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50371,10 +50865,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "dissolution-of-partnership",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Partners taking assets debit capital.",
+        "inline": []
+      },
+      "body": {
+        "text": "Dissolution stated: debit capital, credit realization. Reversed and asset-account readings miss it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Reversed tempts as mirror-entry, but takers debit capital.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50419,10 +50926,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "objectives-of-departmental-accounts",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Departments audit performance.",
+        "inline": []
+      },
+      "body": {
+        "text": "Objective: departmental performance. Turnover, stocks and headcount miss the verdict.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Stocks tempt as department-thing, but objective is performance.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50467,10 +50987,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "trial-balance",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Trial balances list balances.",
+        "inline": []
+      },
+      "body": {
+        "text": "Described as list of book balances. Special accounts, positions and full entries miss the list.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Position tempts as statement-talk, but TB lists.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50515,10 +51048,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "causes-of-discrepancies-between-cashbook-and-bank-statement",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Overdrawn books deduct, banks add.",
+        "inline": []
+      },
+      "body": {
+        "text": "Uncredited cheques: deduct cash-book (I), add bank (II). III-only, II-III and all-three miss the sides.",
+        "inline": []
+      },
+      "trap": {
+        "text": "All-three tempts as completeness, but correct is I-plus-II.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50563,10 +51109,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "computer-hardware-and-software",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Sheets calculate Excel.",
+        "inline": []
+      },
+      "body": {
+        "text": "Spreadsheet stated. Internet, Windows and Word differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Word tempts as Office, but sheets are Excel.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50611,10 +51170,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "computer-hardware-and-software",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Machines sort three ways.",
+        "inline": []
+      },
+      "body": {
+        "text": "Analog, digital, hybrid stated. Four, six and five overcount purpose.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Four tempts as micro-mini-main-super, but purpose is three.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50659,10 +51231,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "columnar-cashbooks",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Discounted cash trebles columns.",
+        "inline": []
+      },
+      "body": {
+        "text": "Entered in three-column cash book. Two-column, analytical and petty miss the discount.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Two-column tempts as cash-book, but discounts treble.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50707,10 +51292,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "instruments-of-financial-regulation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Pre-budget spends provisionally.",
+        "inline": []
+      },
+      "body": {
+        "text": "Used before approval: provisional general warrant. Supplementary, transfer and reserved miss the before.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Supplementary tempts as extra-money, but before is provisional.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50764,10 +51362,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "preparation-of-manufacturing-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Consumed: 8,000+45,000-9,500 = 43,500.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure stated. 45,500, 45,000 and 53,000 misstock it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "45,000 tempts as purchases-alone, but consumed is 43,500.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50821,10 +51432,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "preparation-of-manufacturing-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Prime adds direct wages: 49,950.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: 43,500 plus 6,450. 53,000, 46,300 and 52,750 misadd.",
+        "inline": []
+      },
+      "trap": {
+        "text": "52,750 tempts as near-miss, but prime is 49,950.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50878,10 +51502,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "preparation-of-manufacturing-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Factory gates at 56,300.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: prime plus factory overheads before WIP. 52,750, 53,300 and 45,500 miswork it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "53,300 tempts as near, but factory is 56,300.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50935,10 +51572,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "preparation-of-manufacturing-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "WIP turns 56,300 to 55,800.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: factory plus opening less closing WIP. 56,300, 53,000 and 57,300 miss the turn.",
+        "inline": []
+      },
+      "trap": {
+        "text": "56,300 tempts as factory-gate (it is), but production is 55,800.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -50983,10 +51633,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "petty-cashbook-and-the-imprest-system",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Petty reimburses 3,728.",
+        "inline": []
+      },
+      "body": {
+        "text": "Expenses sum stated (328+914+375+536+928+437+210). 4,000, 1,842 and 3,483 misadd.",
+        "inline": []
+      },
+      "trap": {
+        "text": "3,483 tempts as top-up (it topped), but spent is 3,728.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51031,10 +51694,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "petty-cashbook-and-the-imprest-system",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Stationery: notebooks plus envelopes, 765.",
+        "inline": []
+      },
+      "body": {
+        "text": "328 plus 437 stated (stamps post elsewhere). 585, 437 and 538 miss the drawer.",
+        "inline": []
+      },
+      "trap": {
+        "text": "437 tempts as envelopes-alone, but stationery is 765.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51079,10 +51755,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "purchases-ledger-control-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Creditors post personally: 536.",
+        "inline": []
+      },
+      "body": {
+        "text": "J. Thomas to personal ledger stated. Stationery, balances and stamps miss the man.",
+        "inline": []
+      },
+      "trap": {
+        "text": "765 tempts as stationery-total, but personal is 536.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51127,10 +51816,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "formation-and-classification-of-companies",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Profits decide ordinary dividends.",
+        "inline": []
+      },
+      "body": {
+        "text": "Depend on profit: ordinary shares. Preference, bonus and forfeited differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Preference tempts as dividend-share, but profit decides ordinary.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51175,10 +51877,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "sales-ledger-control-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Bounced cheques debit debtors.",
+        "inline": []
+      },
+      "body": {
+        "text": "NOT a sales-ledger credit: dishonoured cheques debit. Discounts, cash and returns all credit.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Cash tempts as credit (it is), but the NOT is dishonoured.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51223,10 +51938,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "income-statement-trading-and-profit-and-loss-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Trading prices cost of sales.",
+        "inline": []
+      },
+      "body": {
+        "text": "Determined there stated. Net profit, prime and overheads belong elsewhere.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Net-profit tempts as account-result, but trading prices COGS.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51271,10 +51999,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "importance-of-control-accounts",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Controls balance themselves.",
+        "inline": []
+      },
+      "body": {
+        "text": "Self-balancing: control accounts. Creditors, suspense and debtors lean on them.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Suspense tempts as balancing-plug, but self-balancing is control.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51319,10 +52060,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "distinction-between-capital-and-revenue-reserves",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Fuel burns revenue.",
+        "inline": []
+      },
+      "body": {
+        "text": "Revenue expenditure: vehicle fuel. Engines, walls and plants capitalise.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Engines tempt as vehicle-spend, but fuel burns revenue.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51367,10 +52121,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "types-and-treatment-of-errors-and-uses-of-suspense-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Suspense mends breaking errors.",
+        "inline": []
+      },
+      "body": {
+        "text": "Corrects agreement-affecting errors. Profit-accuracy, non-breaking and all-errors miss the plug.",
+        "inline": []
+      },
+      "trap": {
+        "text": "All-errors tempts as correction-hope, but suspense mends breakers.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51415,10 +52182,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "issue-of-shares-and-debentures",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Under par sells discount.",
+        "inline": []
+      },
+      "body": {
+        "text": "Same as 74992: below nominal is discount. Premium, par and loss miss the markdown.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Par tempts as nominal-word, but under is discount.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51463,10 +52243,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "sales-ledger-control-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Provisions skip debtor controls.",
+        "inline": []
+      },
+      "body": {
+        "text": "NOT credited: provision for bad debt stays memorandum. Bad debts, discounts and bills all credit.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Bills tempts as credit-paper, but skipped is provision.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51511,10 +52304,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "income-statement-trading-and-profit-and-loss-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Drawings shrink capital.",
+        "inline": []
+      },
+      "body": {
+        "text": "Sole-trader capital changes via drawings. Equipment, wages and purchases merely move assets.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Wages tempt as expense-shrink, but capital shrinks on drawings.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51559,10 +52365,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "sales-ledger-control-account",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Control balances debtors owe.",
+        "inline": []
+      },
+      "body": {
+        "text": "Year-end balance represents trade debtors. Credit sales, cash sales and day books miss the owing.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Credit-sales tempts as debtor-source, but balance is owing.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51607,10 +52426,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "functions-of-source-documents",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Banknotes never source.",
+        "inline": []
+      },
+      "body": {
+        "text": "NOT a source document: bank notes are currency. Invoices and notes all evidence.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Invoices tempt as document (they are), but the NOT is banknotes.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51655,10 +52487,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "provision-for-depreciation-straight-line-and-reducing-balanc",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Van wear charges P&L.",
+        "inline": []
+      },
+      "body": {
+        "text": "Delivery-van depreciation: profit and loss. Manufacturing, trading and appropriation miss the wheels.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Trading tempts as vehicle-use, but wear charges P&L.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51703,10 +52548,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "books-of-original-entry",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Daybooks day credit sales.",
+        "inline": []
+      },
+      "body": {
+        "text": "Record credit sales of stock. Cash, fixed assets and full mixes miss the book.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Cash-sales tempt as sales-word, but daybooks credit.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51751,10 +52609,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "distinction-between-capital-and-revenue-reserves",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Capital buys lasting.",
+        "inline": []
+      },
+      "body": {
+        "text": "Capital expenditure: fixed assets. Extra capital, resale goods and running costs differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Running-costs tempt as business-spend, but capital lasts.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51847,10 +52718,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "adjustments-provision-for-bad-and-doubtful-debts",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Falling provisions pay income.",
+        "inline": []
+      },
+      "body": {
+        "text": "Decrease credited to P&L as income. Assets, expenses and liabilities miss the credit.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Expenses tempts as provision-home, but falling pays.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51895,10 +52779,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "functions-of-source-documents",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Journals never source.",
+        "inline": []
+      },
+      "body": {
+        "text": "NOT a source: journal proper books, not evidences. Debit notes and invoices all source.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Invoices tempt as document (they are), but the NOT is journals.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -51952,10 +52849,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "statement-of-financial-position-balance-sheet-2",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Sheets show prepaid 400 current.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure: rent prepaid 31/12 is a current asset. Liability and 600 readings miss the date.",
+        "inline": []
+      },
+      "trap": {
+        "text": "600 tempts as prepaid-number (opening), but shown is 400.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52000,10 +52910,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "capital-and-recurrent-expenditure",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Money plans budget.",
+        "inline": []
+      },
+      "body": {
+        "text": "Financial plan in money stated. Warrants, funds and imprests differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Imprest tempts as money-plan, but plans budget.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52048,10 +52971,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "principles-concepts-and-conventions-of-accounting",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Dead concerns sell realisable.",
+        "inline": []
+      },
+      "body": {
+        "text": "No going concern: assets at realisable value. Revalued, gross and book miss the auction.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Book tempts as asset-value, but dead sells realisable.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52105,10 +53041,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "accruals-and-prepayments",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Rent burns 600+3,200-400: 3,400.",
+        "inline": []
+      },
+      "body": {
+        "text": "From the figure stated. 3,000, 4,000 and 2,800 misadjust it.",
+        "inline": []
+      },
+      "trap": {
+        "text": "3,000 tempts as paid-round, but charge is 3,400.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52153,10 +53102,23 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "issue-of-shares-and-debentures",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Shares reach allotment.",
+        "inline": []
+      },
+      "body": {
+        "text": "Distributing to applicants stated. Allocation, application and apportionment differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Application tempts as share-paper, but reaching is allotment.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52201,10 +53163,23 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "cost-apportionment",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Overheads wear plants.",
+        "inline": []
+      },
+      "body": {
+        "text": "Factory overhead component: plant depreciation. Materials, wages and carriage prime.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Wages tempts as factory-cost, but overhead wears.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52249,10 +53224,23 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "functions-of-source-documents",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Debtors open on sale invoices.",
+        "inline": []
+      },
+      "body": {
+        "text": "Primary source: sales invoices. Supplier invoices, vouchers and outward notes differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Supplier-invoices tempt as invoice-word, but debtors open sales.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52297,10 +53285,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "accounting-equation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Owned riches asset.",
+        "inline": []
+      },
+      "body": {
+        "text": "Owned and controlled: assets. Capital, liabilities and drawings differ.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Capital tempts as owned-money, but owned riches asset.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },
@@ -52345,10 +53346,23 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "instruments-of-financial-regulation",
     "section": null,
     "passage_id": null,
-    "explanation": null,
+    "explanation": {
+      "key_point": {
+        "text": "Pre-budget spends provisionally again.",
+        "inline": []
+      },
+      "body": {
+        "text": "Same as 75116: provisional general warrant. Reserved, virement and supplementary miss the before.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Supplementary tempts as extra-money, but before is provisional.",
+        "inline": []
+      }
+    },
     "marks": 2.5,
     "difficulty": 3
   },

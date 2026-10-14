@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-1,784 verified (79%, derived from data/verifications.json, D62) · 1,789 explained
+1,862 verified (83%, derived from data/verifications.json, D62) · 1,867 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -310,6 +310,16 @@ disagree. Two lists is how subjects drift.
     ungrammatical; na/ke both fit), 76187 (options a/b/d, option_count),
     76195 (no Aliyu text served), 76208 (no Amina text served). SU-caps
     typo noted, answerability intact.
+29. **POA rewrite done 2026-10-14** — 73 authored + 5 key fixes + tags +
+    verified; principles-of-accounts 0 → 78 of 80. **Keys corrected**
+    74990 c → a (NBV 37,500; accum dep 112,500), 75010 c → a (unearned
+    profit bows to prudence, not consistency), 75034 a → b (25% markup:
+    12,000/1.25 = 9,600), 75021 a → d (full income 11,630,000 less
+    expenses 4,095,000 = 7,535,000), 75024 a → b (revenue expenses only;
+    capital excluded) — D45 pattern, all in traps. **Parked**: 75030
+    (true balance 323,200, no option), 75171 (all four accounts real, no
+    true NOT). All 12 figures read by eye with full arithmetic. Abalure
+    R&P payments side internally inconsistent (noted, I&E unaffected).
 28. **Igbo rewrite done 2026-10-14** — 76 authored + 1 key fix + tags +
     verified; igbo 0 → 77 of 80. **75025 key corrected** d → c (Omenuko is
     an autobiographical novel = akuko ndu, not egwu — D45 pattern,
