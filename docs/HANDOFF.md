@@ -507,6 +507,32 @@ disagree. Two lists is how subjects drift.
     its own parity check caught the four orphans, and
     `examples/prune_questions.rs` (delete only ids absent from the file,
     print each, assert the count) is the mirror's other half.
+49. **Tagging batch 2 + option audit 2026-10-14** — english 12, art 3,
+    french 5, geography 4, computer-studies 4 tagged (same discipline as
+    physics: every slug verified against the catalog and its owning subject,
+    already-tagged rows untouched). Untagged falls 95 → **64**.
+    **Six english rows stay null on purpose**: five bird-passage questions
+    point at a stimulus the row does not carry, and the english catalog has no
+    "comprehension" subtopic — `fiction` and `cloze` are the only two, and
+    filing a passage question under "fiction" would be a lie about what it is.
+    The headmaster row belongs to the novel document, not the bank.
+    **Option audit (new invariant, D72):** a repeated *keyed* option means two
+    letters are correct. Two rows had it and both were dropped — arabic_75216
+    (options a and d both "معلمون", key a) and fine-arts_75382 (a and b both
+    "Additive", key b); neither can be repaired without inventing an option.
+    Three rows carry a repeated *wrong* option (geography_75506,
+    mathematics_74091, 74092) — key still unique, so scoring is honest; they
+    are pinned in the test rather than "fixed" by invention.
+    Getting there took two false alarms worth remembering: the option
+    comparison first stripped punctuation, which collapsed `x = 10, y = 6`
+    into twenty-odd phantom maths duplicates, then folded case, which erased
+    the capitals that *are* the answer in a word-stress row.
+    **Catalog gap found:** the history catalog is Nigeria/Africa only —
+    jambsyllabus.com parses 43 topics and they are exactly ours — yet 24 of
+    the 79 history rows in the 2025 paper are world history (Versailles,
+    Bretton Woods, NATO, Cold War, French Revolution…). Those stay null; the
+    catalog needs the official JAMB brochure's world-history section, which we
+    do not have and must not write ourselves (D16/D50).
 34. **Maths P4 groundwork done 2026-10-14** — 74199 verified (figure read:
     x = 2, modal weight 58; honest legacy note replaced with the working).
     **74188 parked**: modal class 30–39 gives 29.5 + 6/10×10 = 35.5, no

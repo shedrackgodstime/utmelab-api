@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Drop the four duplicate/contested rows found by tools/dup_audit.py (D72).
+"""Drop the rows found broken or duplicated by the D72 audits.
 
 Every row below is named with the row it duplicates and the reason. The bank
 keeps one copy of a question; the docs keep the record, because the bank is a
@@ -19,6 +19,14 @@ be stood behind, and their good twin already holds the question:
   q_claim_2025_hausa_76200                      twin 75986  (same proverb, but
       its options hold no reading of "one hand cannot lift a corpse"; option a
       "A taimaka wa juna" is the meaning of a different proverb)
+
+A second group, found by the option audit the same day: the **keyed** option
+repeated, so two letters are correct and the row cannot be scored honestly.
+Both were already unverified, and neither can be repaired without inventing an
+option the paper did not carry:
+
+  q_claim_2025_arabic_75216       options a and d both "معلمون", key a
+  q_claim_2025_fine-arts_75382    options a and b both "Additive", key b
 
 Run from the repo root. Writes data/questions.json and data/verifications.json
 (file first, Turso second — the deletions in Turso are the follow-up step, and
@@ -51,6 +59,9 @@ DROPS = {
         "q_claim_2025_hausa_75986",
         "same proverb; its options hold no reading of it",
     ),
+    # keyed option repeated: two correct letters, no honest score
+    "q_claim_2025_arabic_75216": ("", 'options a and d are both "معلمون" and the key is a'),
+    "q_claim_2025_fine-arts_75382": ("", 'options a and b are both "Additive" and the key is b'),
 }
 
 
@@ -59,9 +70,13 @@ def main() -> int:
     ids = {q["id"] for q in questions}
     for drop, (twin, _) in DROPS.items():
         if drop not in ids:
-            print(f"ABORT: {drop} is not in the bank")
-            return 1
-        if twin not in ids:
+            # Already gone: the script is safe to re-run, and a row that is
+            # absent is the state it was asked for.
+            print(f"{drop}: already dropped")
+            continue
+        # An empty twin means the row is broken rather than duplicated: it is
+        # dropped for that reason alone, with no good copy to fall back on.
+        if twin and twin not in ids:
             print(f"ABORT: twin {twin} is missing — dropping {drop} would lose the question")
             return 1
 
@@ -73,7 +88,8 @@ def main() -> int:
     VERIFICATIONS.write_text(json.dumps(kept_v, indent=2, ensure_ascii=False) + "\n")
 
     for drop, (twin, why) in DROPS.items():
-        print(f"dropped {drop} — kept {twin} ({why})")
+        target = f"kept {twin}" if twin else "no good copy"
+        print(f"dropped {drop} — {target} ({why})")
     print(f"questions {len(questions)} -> {len(kept)}")
     print(f"verifications {len(verifications)} -> {len(kept_v)}")
     return 0

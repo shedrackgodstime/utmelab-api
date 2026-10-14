@@ -19,7 +19,7 @@
 
 use std::collections::HashMap;
 
-use utmelab_api::{JsonStore, Question};
+use utmelab_api::{Choice, JsonStore, Question};
 
 /// Shared stems a person has checked and kept, with the reason. Add a row here
 /// only after reading both questions and confirming they ask different things.
@@ -41,12 +41,24 @@ fn bank() -> JsonStore {
     JsonStore::load(&dir).expect("bank loads")
 }
 
-/// Lowercased letters and digits, nothing else — every script survives.
+/// Lowercased letters and digits, nothing else — every script survives. Right
+/// for "are these two rows the same question": tolerant of markup noise, and it
+/// is the normalizer whose `[^a-z0-9]` ancestor once called 66 Arabic and Hausa
+/// rows one duplicate.
 fn norm(text: &str) -> String {
     text.chars()
         .filter(|c| c.is_alphanumeric())
         .flat_map(|c| c.to_lowercase())
         .collect()
+}
+
+/// What a reader sees: spacing collapsed, **every character kept — including
+/// case**. Options are compared with this, not with `norm`: dropping
+/// punctuation collapses `x = 10, y = 6` into `x = 10 y = 6` and invents a
+/// score of mathematics phantoms, while folding case erases the capitals that
+/// *are* the answer in a word-stress row (`SImilarly` vs `simiLARly`).
+fn display_norm(text: &str) -> String {
+    text.split_whitespace().collect::<Vec<_>>().join(" ")
 }
 
 /// What makes two rows the same question.
@@ -168,5 +180,77 @@ fn shared_stems_are_all_reviewed() {
         unpaired.is_empty(),
         "unreviewed shared stems: {unpaired:?} — read both rows, then add the pair \
          to REVIEWED_SHARED_STEMS with its reason"
+    );
+}
+
+/// The keyed option must be the **only** option carrying its text. A repeated
+/// keyed option means two letters are correct, so the row cannot be scored
+/// honestly — the defect the option audit found in two rows on 2026-10-14,
+/// where "معلمون" and "Additive" each appeared twice and the key sat on one of
+/// the copies.
+#[test]
+fn the_keyed_option_is_unique_among_its_options() {
+    let store = bank();
+    let mut broken: Vec<String> = Vec::new();
+    for q in store.questions() {
+        let keyed: Vec<&Choice> = q.options.iter().filter(|o| o.id == q.answer).collect();
+        if keyed.is_empty() {
+            continue; // the loader already refuses a key outside the options
+        }
+        let answer_text = &keyed[0].text.text;
+        let twins: Vec<&str> = q
+            .options
+            .iter()
+            .filter(|o| display_norm(&o.text.text) == display_norm(answer_text))
+            .map(|o| o.id.as_str())
+            .collect();
+        if twins.len() > 1 {
+            broken.push(format!(
+                "{} [{}]: key {} shares its text with {:?}",
+                q.id, q.subject, q.answer, twins
+            ));
+        }
+    }
+    assert!(
+        broken.is_empty(),
+        "a keyed option repeated makes two letters correct: {broken:?}"
+    );
+}
+
+/// Repeated *wrong* options are a sloppiness, not a scoring defect: the key is
+/// still unique, so every candidate gets the same verdict. Three rows carry
+/// one today (geography_75506, mathematics_74091, mathematics_74092) and are
+/// recorded here rather than fixed, because repairing them means inventing an
+/// option the paper never carried. A new one fails the test so the count stays
+/// deliberate.
+#[test]
+fn repeated_wrong_options_stay_at_the_reviewed_count() {
+    const REVIEWED: &[&str] = &[
+        "q_claim_2025_geography_75506",
+        "q_claim_2025_mathematics_74091",
+        "q_claim_2025_mathematics_74092",
+    ];
+    let store = bank();
+    let mut cosmetic: Vec<&str> = Vec::new();
+    for q in store.questions() {
+        let mut seen: HashMap<String, usize> = HashMap::new();
+        for o in &q.options {
+            *seen.entry(display_norm(&o.text.text)).or_default() += 1;
+        }
+        let repeats = seen.values().filter(|n| **n > 1).count();
+        let keyed_repeats = q
+            .options
+            .iter()
+            .filter(|o| o.id == q.answer)
+            .filter(|o| seen[&display_norm(&o.text.text)] > 1)
+            .count();
+        if repeats > 0 && keyed_repeats == 0 {
+            cosmetic.push(q.id.as_str());
+        }
+    }
+    cosmetic.sort();
+    assert_eq!(
+        cosmetic, REVIEWED,
+        "rows with a repeated wrong option changed — review the new ones and update the list"
     );
 }

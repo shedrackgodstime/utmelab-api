@@ -4,6 +4,101 @@
 > when they become work. Done items stay for the record; delete nothing. The
 > full plan lives in [`ROADMAP.md`](ROADMAP.md) (P0 done, P1 done).
 
+## Pre-release checklist (first launch, audited 2026-10-14)
+
+Everything between here and the first tag, in the order it should be done. Each
+item names the gate that proves it, so "done" is a measurement and not a feeling.
+
+### A. Content that is still missing
+
+1. **64 rows have no subtopic**, so they serve but sit in no drill path. Physics
+   (105) and the english/art/french/geography/computer-studies batch (28) are
+   done; what is left is **history 24**, use-of-english 6 (deliberate, see
+   below), hausa 4, igbo 4, and 1-3 each in thirteen subjects.
+   *Gate:* every assignment reviewed against its question; `unattributed = 0`
+   on the readiness endpoint.
+1b. **History needs a world-history catalog.** 24 of its 79 rows are world
+   history and the catalog holds none: jambsyllabus.com — the source we import
+   from — parses 43 history topics, all Nigeria/Africa, and they are exactly
+   the ones we carry. Versailles, Bretton Woods, NATO, the Cold War, the French
+   Revolution have nowhere to live. The fix is the official JAMB brochure's
+   world-history section, imported like every other subject.
+   *Gate:* those 24 rows tagged; not a hand-written syllabus (D16/D50).
+1c. **English has no "comprehension" subtopic** — only `fiction` and `cloze`.
+   Five passage questions that carry no passage stay null rather than being
+   filed under "fiction". *Gate:* a comprehension subtopic exists in the
+   syllabus source, or the rows are dropped.
+2. **61 rows are unverified** (not `pass`): use-of-english 5, french 5,
+   music 5, geography 4, computer-studies 4, hausa 4, physics 3,
+   agricultural-science 3, CRS 3, history 3, igbo 3, literature 2, and the
+   tail. *Gate:* `python3 tools/review.py stats` — every row either passes or
+   carries a documented park reason.
+3. **13 rows sit in quarantine** (history 3, mathematics 2, use-of-english 2,
+   physics 1, geography 1, hausa 1, igbo 1, CRS 1, physical-education 1).
+   Each is either fixed or dropped — a quarantined row is neither content nor
+   a decision. *Gate:* quarantine count 0, or a row-per-row reason list.
+4. **Music's 5 parked rows need a music teacher** (76294, 76300, 76303,
+   76320 figures; 76313 unanswerable as served). Their figures are attached and
+   the readings are recorded — this is a human job, not a code job.
+
+### B. Truth we are still carrying
+
+5. **Two subjects have no headroom.** Yoruba sits at exactly 40/40 verified
+   against a 40-question paper, music at 42/47. Any park, any quarantine, one
+   bad key fix, and that subject's paper gate closes. *Gate:* deliberate —
+   either build margin into those two, or record the zero-slack position as
+   the reason a regression there is expected, not surprising.
+6. **Seven D-rows are still PROPOSED** (D53, D67, D68, D69, D70, D71, D72).
+   D68-D72 are load-bearing for everything shipped today. *Gate:* each
+   accepted or rejected by a person, with the status flipped in the table.
+7. **One cohort.** The bank is 2025 only, so every paper is served by the count
+   gate and `blueprint` mode is dormant (D71). That is honest and intended;
+   the consumer-facing copy must not claim balanced papers.
+
+### C. Product decisions the release forces
+
+8. **Paper endpoints are unauthenticated.** `/api/v1/papers/...` and
+   `/blueprints/...` take no `Caller`, while `/questions` is key-metered — so
+   the sellable payload is reachable without a key. *Gate:* a decision (meter
+   the papers, or record them as public catalogue output) and, if metered, a
+   test that an unkeyed call 401s.
+9. **`Cache-Control: public` on metered `/questions`** — flagged by the
+   Jamb-Lab consumer notes; `private` is probably the right answer under D27.
+   *Gate:* a test pinning the header, so it cannot drift back.
+10. **Blueprint coverage story.** Literature measures 34 of 40 seats,
+    use-of-english states ranges, six subjects are section-level, fifteen are
+    unmapped. Launch ships them all on the count gate; each needs blueprint
+    rows to flip to the premium path. *Gate:* per-subject `governed` visible
+    on the endpoint (done, D70/D71) and the launch copy says which mode each
+    subject is in.
+
+### D. Ops and release
+
+11. **Turso is the source of truth for the binary and has no backup job.**
+    Files can re-seed the content tables, so recovery is real but manual; the
+    verification log and key store have no export at all. *Gate:* a runnable
+    export (questions, verifications, keys) and a restore rehearsed once.
+12. **Deploy secrets** (`VPS_HOST`, `VPS_PORT`, `VPS_USER`, `VPS_SSH_KEY`,
+    `VPS_KNOWN_HOSTS`) must exist on this repo, and the first real release is
+    a tag, not a workflow dispatch. *Gate:* a `v0.1.0` deploy that serves
+    `/health` from the VPS.
+13. **Rate limits and daily caps** are set to dev defaults (60/min). Launch
+    values are a pricing decision (O5 is still open). *Gate:* values chosen
+    and pinned in config, not left to the environment.
+14. **An uptime check on `/health`** — it reports bank version, subjects,
+    questions and withheld count, so it is the one signal worth watching, and
+    nothing watches it yet.
+15. **Consumer docs** (`site/`, README) must state the launch position:
+    25/25 JAMB subjects serve a full-length paper, answers withheld, mode
+    disclosed, per-subject year 2025.
+
+### E. Standing (not launch blockers)
+
+16. Harvest for 2025 is exhausted; more content means older cohorts or
+    authoring, and older cohorts re-activate `blueprint` mode by themselves.
+17. Duplicate audit runs on every content change (`tools/dup_audit.py
+    --strict`, `tests/dedup.rs`).
+
 ## Now
 
 - [x] ~~**78 English questions were unanswerable as served**~~ — **backfilled 2026-10-13**: all 78 carry `Underline` marks (worksheet → read → apply; each target verified single-occurrence in its stem). Quarantine `underline_missing`: 78 → 0. Rows are answerable; `verified` still needs a human pass each (D62) — that is review work now, not backfill. Recorded limits: sound items mark whole words (letter-level died in the harvest); `t76545` has a suspect key (`bought`→*son*; mark stands, answer needs review).

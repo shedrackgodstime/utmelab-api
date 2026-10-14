@@ -586,7 +586,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "cloze",
     "section": "Cloze",
     "passage_id": "psg_jamb_2025_eng_cloze_1",
     "explanation": {
@@ -708,7 +708,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "elements-of-design-line-colour-shape-form-texture-tone-value",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -1592,7 +1592,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "cloze",
     "section": "Cloze",
     "passage_id": "psg_jamb_2025_eng_cloze_2",
     "explanation": {
@@ -1653,7 +1653,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "cloze",
     "section": "Cloze",
     "passage_id": "psg_jamb_2025_eng_cloze_2",
     "explanation": {
@@ -1714,7 +1714,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "cloze",
     "section": "Cloze",
     "passage_id": "psg_jamb_2025_eng_cloze_2",
     "explanation": {
@@ -30388,7 +30388,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "natural-resources-types-minerals-soils-water-vegetation-etc-geography",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -32205,7 +32205,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "erosion-geography",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -34266,7 +34266,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "recognition-and-description-of-physical-and-human-features-a-geography",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -34314,7 +34314,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "distances-areas-reduction-and-enlargement-geography",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -69462,7 +69462,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "cloze",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -69523,7 +69523,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "cloze",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -69584,7 +69584,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "cloze",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -69645,7 +69645,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "cloze",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -69706,7 +69706,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "cloze",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -69767,7 +69767,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "cloze",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -69828,7 +69828,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "cloze",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -69889,7 +69889,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "cloze",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -84408,54 +84408,6 @@
     "difficulty": 3
   },
   {
-    "id": "q_claim_2025_arabic_75216",
-    "exam": "JAMB",
-    "subject": "arabic",
-    "year": 2025,
-    "source": "claimed_paper",
-    "text": {
-      "text": "الجمع السالم من \"معلم\" هو؟",
-      "inline": []
-    },
-    "options": [
-      {
-        "id": "a",
-        "text": {
-          "text": "معلمون",
-          "inline": []
-        }
-      },
-      {
-        "id": "b",
-        "text": {
-          "text": "أعلام",
-          "inline": []
-        }
-      },
-      {
-        "id": "c",
-        "text": {
-          "text": "مُعلِّمین",
-          "inline": []
-        }
-      },
-      {
-        "id": "d",
-        "text": {
-          "text": "معلمون",
-          "inline": []
-        }
-      }
-    ],
-    "answer": "a",
-    "subtopic_id": null,
-    "section": null,
-    "passage_id": null,
-    "explanation": null,
-    "marks": 2.5,
-    "difficulty": 3
-  },
-  {
     "id": "q_claim_2025_arabic_75217",
     "exam": "JAMB",
     "subject": "arabic",
@@ -89363,7 +89315,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "definitions-of-algorithm-and-flowchart",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -91973,7 +91925,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -95986,7 +95938,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "definition-and-classification-of-programming-languages",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -96217,7 +96169,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "software-types-examples-and-uses",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -99080,7 +99032,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "nok-igbo-ukwu-ife-benin-esie-igala-jukun-akwashi-mbari",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -99507,7 +99459,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "nok-igbo-ukwu-ife-benin-esie-igala-jukun-akwashi-mbari",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -99629,7 +99581,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "nok-igbo-ukwu-ife-benin-esie-igala-jukun-akwashi-mbari",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -102395,54 +102347,6 @@
     "difficulty": 3
   },
   {
-    "id": "q_claim_2025_fine-arts_75382",
-    "exam": "JAMB",
-    "subject": "art",
-    "year": 2025,
-    "source": "claimed_paper",
-    "text": {
-      "text": "The process of adding materials onto a surface in art is called:",
-      "inline": []
-    },
-    "options": [
-      {
-        "id": "a",
-        "text": {
-          "text": "Additive",
-          "inline": []
-        }
-      },
-      {
-        "id": "b",
-        "text": {
-          "text": "Additive",
-          "inline": []
-        }
-      },
-      {
-        "id": "c",
-        "text": {
-          "text": "Collage",
-          "inline": []
-        }
-      },
-      {
-        "id": "d",
-        "text": {
-          "text": "Subtractive",
-          "inline": []
-        }
-      }
-    ],
-    "answer": "b",
-    "subtopic_id": null,
-    "section": null,
-    "passage_id": null,
-    "explanation": null,
-    "marks": 2.5,
-    "difficulty": 3
-  },
-  {
     "id": "q_claim_2025_fine-arts_75384",
     "exam": "JAMB",
     "subject": "art",
@@ -103337,7 +103241,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "liaison-e-g-trois-animaux-des-enfants",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -103507,7 +103411,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "identification-and-application-of-basic-processes-conjugatio",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -105019,7 +104923,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "reading-and-interpreting-texts-on-topics-of-general-and-emer",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -106775,7 +106679,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "identification-of-basic-form-classes-pr-positions-simple-e-g",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -106823,7 +106727,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "assessment-of-vocabulary-span-words-in-contemporary-contexts",
     "section": null,
     "passage_id": null,
     "explanation": null,
