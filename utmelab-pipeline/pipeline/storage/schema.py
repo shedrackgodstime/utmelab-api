@@ -35,6 +35,8 @@ PIPELINE_DDL: List[str] = [
         answer_raw TEXT NOT NULL,
         explanation_raw TEXT,
         media_url TEXT,
+        passage_raw TEXT,
+        passage_id TEXT,
         fingerprint TEXT NOT NULL UNIQUE,
         gate0_status TEXT NOT NULL,
         gate0_rejection_reason TEXT,
@@ -112,7 +114,22 @@ PIPELINE_DDL: List[str] = [
         FOREIGN KEY(question_id) REFERENCES approved_questions(id)
     );
     """,
-    "CREATE INDEX IF NOT EXISTS idx_appr_ver_q ON approved_verifications(question_id);"
+    "CREATE INDEX IF NOT EXISTS idx_appr_ver_q ON approved_verifications(question_id);",
+    """
+    CREATE TABLE IF NOT EXISTS approved_passages (
+        id TEXT PRIMARY KEY,
+        exam TEXT NOT NULL,
+        subject TEXT NOT NULL,
+        year INTEGER NOT NULL,
+        kind TEXT NOT NULL,
+        title TEXT,
+        author TEXT,
+        text TEXT NOT NULL,
+        inline TEXT NOT NULL DEFAULT '[]',
+        approved_at TEXT NOT NULL
+    );
+    """,
+    "CREATE INDEX IF NOT EXISTS idx_approved_passages_lookup ON approved_passages(exam, subject, year);"
 ]
 
 
@@ -126,6 +143,8 @@ async def init_pipeline_schema(client: TursoClient) -> None:
     # Migrations for existing schemas
     migrations = [
         "ALTER TABLE harvest_staging ADD COLUMN audit_report TEXT;",
+        "ALTER TABLE harvest_staging ADD COLUMN passage_raw TEXT;",
+        "ALTER TABLE harvest_staging ADD COLUMN passage_id TEXT;",
         "ALTER TABLE approved_questions ADD COLUMN audit_report TEXT;",
     ]
     for mig in migrations:
@@ -133,4 +152,5 @@ async def init_pipeline_schema(client: TursoClient) -> None:
             await client.execute(mig)
         except Exception:
             pass
+
 

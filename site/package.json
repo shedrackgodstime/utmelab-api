@@ -1,25 +1,17 @@
 {
-  "name": "site",
+  "name": "utmelab-site",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
-  "version": "0.0.1",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "lint": "eslint \"src/**/*.{astro,js,mjs,ts}\" \"astro.config.mjs\" \"eslint.config.mjs\""
-  },
-  "dependencies": {
-    "@astrojs/starlight": "0.42.6",
-    "astro": "^7.2.10",
-    "sharp": "^0.35.3"
-  },
-  "devDependencies": {
-    "@astrojs/check": "^0.9.10",
-    "@typescript-eslint/parser": "^8.71.2",
-    "eslint": "^10.12.0",
-    "eslint-plugin-astro": "^3.2.1",
-    "typescript": "^6.0.3"
+    "build": "npm run build --workspaces && node scripts/merge.mjs",
+    "dev:web": "npm run dev --workspace @utmelab/web",
+    "dev:docs": "npm run dev --workspace @utmelab/docs",
+    "dev:app": "npm run dev --workspace @utmelab/app",
+    "preview": "node scripts/preview.mjs"
   }
 }

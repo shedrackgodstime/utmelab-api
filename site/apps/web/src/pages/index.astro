@@ -1,0 +1,35 @@
+---
+import MarketingLayout from '../layouts/MarketingLayout.astro';
+---
+
+<MarketingLayout title="UTME Lab — engineering-first exam API">
+  <section class="mx-auto max-w-6xl px-6 pt-24 pb-16">
+    <h1 class="text-display-xl font-semibold text-ink max-w-[18ch]">Question banks, as a clean API.</h1>
+    <p class="mt-6 text-xl text-body max-w-[44ch] leading-relaxed">
+      Pull structured UTME questions, answers, and explanations over a fast,
+      documented REST API. Built for Nigerian exam prep.
+    </p>
+    <div class="mt-8 flex gap-3">
+      <a href="/docs/guides/quickstart/"
+         class="rounded-brand bg-brand-700 px-4 py-2.5 text-sm font-medium text-white hover:bg-brand-800">Get your API key</a>
+      <a href="/docs/"
+         class="rounded-brand border border-hairline bg-surface px-4 py-2.5 text-sm font-medium text-ink hover:border-muted">Read the docs</a>
+    </div>
+  </section>
+
+  <!-- Same brand Card pattern the dashboard uses — different shell around it. -->
+  <section class="mx-auto max-w-6xl px-6 pb-24 grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="rounded-brand border border-hairline bg-surface p-6">
+      <h3 class="font-medium text-ink">Fast</h3>
+      <p class="mt-2 text-body">Sub-100ms question lookups. Cached, indexed, boring-fast.</p>
+    </div>
+    <div class="rounded-brand border border-hairline bg-surface p-6">
+      <h3 class="font-medium text-ink">Documented</h3>
+      <p class="mt-2 text-body">Guides plus a generated reference straight from <code class="font-mono text-sm text-brand-700">openapi.json</code>.</p>
+    </div>
+    <div class="rounded-brand border border-hairline bg-surface p-6">
+      <h3 class="font-medium text-ink">Fair pricing</h3>
+      <p class="mt-2 text-body">Pay per question, not per seat. Scales with your students.</p>
+    </div>
+  </section>
+</MarketingLayout>

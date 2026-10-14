@@ -1,0 +1,20 @@
+{
+  "name": "@utmelab/docs",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build"
+  },
+  "dependencies": {
+    "@astrojs/starlight-tailwind": "^5.0.0",
+    "@utmelab/ui": "*"
+  },
+  "devDependencies": {
+    "@astrojs/starlight": "^0.42.6",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.8",
+    "tailwindcss": "^4.3.3"
+  }
+}

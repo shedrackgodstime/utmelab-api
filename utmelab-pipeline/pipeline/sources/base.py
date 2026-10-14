@@ -24,6 +24,7 @@ class RawQuestionPayload(BaseModel):
     media_url: Optional[str] = None
     section: Optional[str] = None
     passage_text: Optional[str] = None
+    passage_id: Optional[str] = None
 
 
 class BaseHarvester(ABC):

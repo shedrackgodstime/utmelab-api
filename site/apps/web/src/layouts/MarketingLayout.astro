@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import ThemeScript from '@utmelab/ui/components/ThemeScript.astro';
+import ThemeToggle from '@utmelab/ui/components/ThemeToggle.astro';
+
+interface Props { title: string; description?: string; }
+const { title, description = 'UTME Lab — engineering-first API for Nigerian exam prep.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <ThemeScript />
+  </head>
+  <!-- MARKETING SHELL — lives ONLY in apps/web. Never shared. -->
+  <body class="min-h-screen flex flex-col">
+    <header class="sticky top-0 z-10 border-b border-hairline bg-surface/80 backdrop-blur">
+      <div class="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+        <a href="/" class="font-semibold text-ink">UTME<span class="text-brand-700">Lab</span></a>
+        <nav class="flex items-center gap-4 text-sm text-body">
+          <a href="/docs/" class="hover:text-ink">Docs</a>
+          <a href="/dashboard/" class="hover:text-ink">Dashboard</a>
+          <ThemeToggle client:load />
+          <a href="/dashboard/signin/"
+             class="rounded-brand bg-accent px-4 py-2 font-medium text-accent-ink hover:bg-accent-hover">Sign in</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-1"><slot /></main>
+
+    <footer class="border-t border-hairline">
+      <div class="mx-auto max-w-6xl px-6 py-6 flex items-center justify-between text-sm text-muted">
+        <span>© 2026 UTME Lab</span>
+        <nav class="flex gap-6"><a href="/docs/terms/" class="hover:text-ink">Terms</a><a href="/docs/guides/quickstart/" class="hover:text-ink">Quickstart</a></nav>
+      </div>
+    </footer>
+  </body>
+</html>

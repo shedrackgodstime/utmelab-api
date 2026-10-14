@@ -16,12 +16,25 @@ FIGURE_HINT_PATTERNS = [
 
 COMPILED_FIGURE_HINTS = [re.compile(p, re.IGNORECASE) for p in FIGURE_HINT_PATTERNS]
 
+PROMISED_STIMULUS_PATTERNS = [
+    r"\b(passage\s+(below|above))\b",
+    r"\b(the\s+(passage|text|information|data|table)\s+(below|above))\b",
+    r"\b(following\s+(the\s+)?passage)\b",
+    r"\b(read\s+the\s+passage)\b",
+    r"\b(use\s+the\s+information\s+below)\b",
+    r"\b(according\s+to\s+the\s+(passage|text|information))\b",
+    r"\b(gap\s+labelled\s+\d+)\b",
+]
+
+COMPILED_STIMULUS_HINTS = [re.compile(p, re.IGNORECASE) for p in PROMISED_STIMULUS_PATTERNS]
+
 
 class Gate0Result(BaseModel):
     is_valid: bool
     rejection_reason: Optional[str] = None
     fingerprint: str
     requires_media: bool = False
+    requires_passage: bool = False
 
 
 def validate_gate0(
@@ -30,6 +43,8 @@ def validate_gate0(
     reported_answer: str,
     exam: str = "JAMB",
     media_url: Optional[str] = None,
+    passage_text: Optional[str] = None,
+    passage_id: Optional[str] = None,
 ) -> Gate0Result:
     """Performs zero-cost mechanical validation on a raw question payload."""
     fp = compute_fingerprint(stem)
@@ -107,8 +122,25 @@ def validate_gate0(
             requires_media=True,
         )
 
+    # 5. Passage stimulus hint check (R7 parity)
+    requires_passage = False
+    for pat in COMPILED_STIMULUS_HINTS:
+        if pat.search(stem):
+            requires_passage = True
+            break
+
+    # If stem promises a passage, it must carry one unless the stem itself carries an inline stimulus (>200 chars)
+    if requires_passage and not passage_text and not passage_id and len(stem) < 200:
+        return Gate0Result(
+            is_valid=False,
+            rejection_reason="missing_referenced_passage_in_stem",
+            fingerprint=fp,
+            requires_passage=True,
+        )
+
     return Gate0Result(
         is_valid=True,
         fingerprint=fp,
         requires_media=requires_media,
+        requires_passage=requires_passage,
     )

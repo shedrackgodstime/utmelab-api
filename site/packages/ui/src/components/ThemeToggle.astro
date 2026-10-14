@@ -1,0 +1,28 @@
+---
+import { Sun, Moon } from 'lucide-react';
+---
+
+{/*
+  Shared ThemeToggle. One consistent button across landing + dashboard.
+  Self-initializes: binds click on [data-theme-toggle] and syncs state.
+  Uses the SAME data-theme attribute + 'starlight-theme' storage key as
+  Starlight, so toggling anywhere carries across the whole domain.
+  In docs, Starlight's own toggle is used (already in sync).
+*/}
+<button
+  type="button"
+  data-theme-toggle
+  aria-label="Toggle theme"
+  title="Toggle theme"
+  class="inline-grid size-9 place-items-center rounded-md border border-hairline bg-surface text-ink transition-colors hover:border-muted hover:bg-surface-2"
+>
+  <svg class="size-4 dark:hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+  <svg class="hidden size-4 dark:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+</button>
+
+<script>
+  // Astro module script: runs on hydration (client:load). Idempotent.
+  import { initTheme } from '../theme';
+  initTheme();
+</script>
+

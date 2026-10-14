@@ -145,11 +145,15 @@ zero down as an accepted risk with a named owner.
 
 - **52 unverified rows** (french 5, music 5, geography 4, computer-studies 4,
   hausa 4, and a tail). Six English rows left this list on 2026-10-14 when the
-  passage recovery made them answerable.
+  passage recovery made them answerable. **Commerce 79 → 79 verified** (working
+  capital row recovered and verified).
 - **13 rows in quarantine** — neither content nor a decision. Fix or drop.
-- **28 rows untagged** — 24 history (outside JAMB's syllabus, see §3), 6 english
-  (the `comprehension` subtopic does not exist yet), 4 others with a recorded
-  reason each. Every one has a reason; none is a mystery.
+- **3 rows untagged** — all with recorded reasons:
+  - `animal-husbandry`: no catalog topics exist (WAEC subject we serve one row of)
+  - `agricultural-science`: 1 row ("functions of livestock") has no exact subtopic match
+  - `civic-education`: no catalog topics exist (WAEC subject we serve one row of)
+  **History 24 → 0**: world-history bucket created, all tagged `out-of-syllabus`.
+  **English 6 → 0**: `comprehension` subtopic added, 5 birds passage rows + 1 headmaster row tagged.
 
 ---
 

@@ -1,0 +1,11 @@
+---
+import '@utmelab/ui/tokens.css';
+
+interface Props { as?: 'div' | 'section' | 'article'; }
+const { as = 'div' } = Astro.props;
+const Tag = as;
+---
+
+<Tag class="card">
+  <slot />
+</Tag>
