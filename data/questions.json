@@ -82130,7 +82130,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "ledger-lines-and-spaces",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -82191,7 +82191,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "determination-of-the-key-of-a-piece-of-music-with-or-without",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -82252,7 +82252,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "perfect-unison-4th-5th-and-octave",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -82313,7 +82313,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "simple-and-compound-time-signatures",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -82374,7 +82374,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "transcription-of-music-from-staff-to-tonic-solfa-notation-an",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -82435,7 +82435,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "idiophones-struck-percussion-instruments",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -135715,7 +135715,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "basic-chord-progressions-in-four-part-vocal-style-satb-in-ma",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -136113,7 +136113,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "transcription-of-music-from-staff-to-tonic-solfa-notation-an",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -136301,7 +136301,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "simple-and-compound-time-signatures",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -136776,7 +136776,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "setting-words-to-a-written-melody",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -137095,7 +137095,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "accidentals",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -137464,5 +137464,188 @@
     },
     "marks": 1.0,
     "difficulty": 1
+  },
+  {
+    "id": "q_authored_music_007",
+    "exam": "JAMB",
+    "subject": "music",
+    "year": 2025,
+    "source": "authored",
+    "text": {
+      "text": "A transposing instrument in B flat sounds a major 2nd lower than its written pitch. A note written as C sounds as:",
+      "inline": []
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "text": "B flat",
+          "inline": []
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "text": "B natural",
+          "inline": []
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "text": "C flat",
+          "inline": []
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "text": "E flat",
+          "inline": []
+        }
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "accidentals",
+    "section": null,
+    "passage_id": null,
+    "explanation": {
+      "key_point": {
+        "text": "Instruments in B flat sound a major 2nd (a whole tone) below the written note.",
+        "inline": []
+      },
+      "body": {
+        "text": "A major 2nd below C is **B flat** — two semitones down. Written C sounds as B flat.",
+        "inline": []
+      },
+      "trap": {
+        "text": "B natural sits only a semitone below C, so that is a **minor** 2nd: the natural scale step, and the wrong answer for an instrument in B flat.",
+        "inline": []
+      }
+    },
+    "marks": 2.5,
+    "difficulty": 2
+  },
+  {
+    "id": "q_authored_music_008",
+    "exam": "JAMB",
+    "subject": "music",
+    "year": 2025,
+    "source": "authored",
+    "text": {
+      "text": "The dominant seventh chord in the key of C major is made up of:",
+      "inline": []
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "text": "E, G sharp, B, D",
+          "inline": []
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "text": "E, G, B, D",
+          "inline": []
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "text": "D, F sharp, A, C",
+          "inline": []
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "text": "G, B flat, D, F",
+          "inline": []
+        }
+      }
+    ],
+    "answer": "a",
+    "subtopic_id": "the-dominant-7th-chord-in-root-position",
+    "section": null,
+    "passage_id": null,
+    "explanation": {
+      "key_point": {
+        "text": "V7 is the major triad on the fifth degree plus a minor 7th above its root.",
+        "inline": []
+      },
+      "body": {
+        "text": "In C major the fifth degree is E, so V7 = E, G sharp, B, D — the E major triad with D a minor 7th above the E. A dominant seventh always carries the **leading note** (G sharp here).",
+        "inline": []
+      },
+      "trap": {
+        "text": "E, G, B, D looks like the answer if the G is left natural, but then the chord is a minor seventh on E — the ii7 of C major, not the dominant.",
+        "inline": []
+      }
+    },
+    "marks": 2.5,
+    "difficulty": 3
+  },
+  {
+    "id": "q_authored_music_009",
+    "exam": "JAMB",
+    "subject": "music",
+    "year": 2025,
+    "source": "authored",
+    "text": {
+      "text": "A melody ends on the dominant (fifth degree) of its key. The cadence is:",
+      "inline": []
+    },
+    "options": [
+      {
+        "id": "a",
+        "text": {
+          "text": "perfect",
+          "inline": []
+        }
+      },
+      {
+        "id": "b",
+        "text": {
+          "text": "imperfect",
+          "inline": []
+        }
+      },
+      {
+        "id": "c",
+        "text": {
+          "text": "plagal",
+          "inline": []
+        }
+      },
+      {
+        "id": "d",
+        "text": {
+          "text": "interrupted",
+          "inline": []
+        }
+      }
+    ],
+    "answer": "b",
+    "subtopic_id": "imperfect-half-close-semi-cadence",
+    "section": null,
+    "passage_id": null,
+    "explanation": {
+      "key_point": {
+        "text": "A cadence is named by where it ends: tonic = perfect, dominant = imperfect.",
+        "inline": []
+      },
+      "body": {
+        "text": "Ending on the dominant gives an **imperfect** cadence (half close). A perfect cadence needs V-I, plagal needs IV-I, and an interrupted cadence deflects V to VI.",
+        "inline": []
+      },
+      "trap": {
+        "text": "Plagal is the favourite wrong answer because it too is a two-chord close — but it ends on the **tonic**, arriving from the subdominant.",
+        "inline": []
+      }
+    },
+    "marks": 2.5,
+    "difficulty": 2
   }
 ]

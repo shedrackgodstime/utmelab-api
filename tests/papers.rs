@@ -25,15 +25,20 @@ fn data_dir() -> std::path::PathBuf {
 }
 
 fn state() -> AppState {
-    let data = data_dir();
+    state_from(&data_dir(), "papers")
+}
+
+/// The router over some bank directory. `tag` keeps the temp key/report files
+/// of concurrent tests apart.
+fn state_from(dir: &std::path::Path, tag: &str) -> AppState {
     let keys_path =
-        std::env::temp_dir().join(format!("utmelab-papers-{}.json", std::process::id()));
+        std::env::temp_dir().join(format!("utmelab-{tag}-keys-{}.json", std::process::id()));
     let _ = std::fs::remove_file(&keys_path);
     let reports_path =
-        std::env::temp_dir().join(format!("utmelab-reports-{}.json", std::process::id()));
+        std::env::temp_dir().join(format!("utmelab-{tag}-reports-{}.json", std::process::id()));
     let _ = std::fs::remove_file(&reports_path);
     let (bank_tx, bank_rx) = tokio::sync::watch::channel(Arc::new(
-        JsonStore::load(&data).expect("bank loads"),
+        JsonStore::load(dir).expect("bank loads"),
     ) as Arc<dyn utmelab_api::Store>);
     let _bank_sender = bank_tx;
     AppState {
@@ -48,14 +53,60 @@ fn state() -> AppState {
     }
 }
 
+/// A copy of the real bank holding only `keep` (plus the whole catalog), so a
+/// gate can be driven into a state the real bank is not in today.
+fn scratch_bank(tag: &str, keep: &[&str]) -> std::path::PathBuf {
+    let dir = std::env::temp_dir().join(format!("utmelab-{tag}-bank-{}", std::process::id()));
+    let _ = std::fs::remove_dir_all(&dir);
+    std::fs::create_dir_all(&dir).expect("scratch dir");
+    for f in [
+        "subjects",
+        "topics",
+        "subtopics",
+        "passages",
+        "questions",
+        "exams",
+        "countries",
+        "topic_countries",
+        "exam_requirements",
+        "verifications",
+        "blueprints",
+    ] {
+        let src = data_dir().join(format!("{f}.json"));
+        if src.exists() {
+            std::fs::copy(&src, dir.join(format!("{f}.json"))).expect("copy fixture");
+        }
+    }
+    let raw = std::fs::read_to_string(data_dir().join("questions.json")).expect("questions");
+    let all: Vec<serde_json::Value> = serde_json::from_str(&raw).expect("parse questions");
+    let kept: Vec<serde_json::Value> = all
+        .into_iter()
+        .filter(|q| q["id"].as_str().is_some_and(|id| keep.contains(&id)))
+        .collect();
+    std::fs::write(
+        dir.join("questions.json"),
+        serde_json::to_string_pretty(&kept).expect("write fixture"),
+    )
+    .expect("write fixture");
+    dir
+}
+
 async fn post(path: &str, body: serde_json::Value) -> (StatusCode, serde_json::Value) {
+    post_with(state(), path, body).await
+}
+
+async fn post_with(
+    state: AppState,
+    path: &str,
+    body: serde_json::Value,
+) -> (StatusCode, serde_json::Value) {
     let req = Request::builder()
         .uri(path)
         .method("POST")
         .header("content-type", "application/json")
         .body(Body::from(serde_json::to_vec(&body).unwrap()))
         .expect("request");
-    let resp = router(state()).oneshot(req).await.expect("router responds");
+    let resp = router(state).oneshot(req).await.expect("router responds");
     let status = resp.status();
     let bytes = resp.into_body().collect().await.expect("body").to_bytes();
     let json: serde_json::Value = serde_json::from_slice(&bytes).unwrap_or(serde_json::Value::Null);
@@ -205,11 +256,12 @@ async fn marking_counts_only_what_was_submitted() {
     assert!(!marked[0].correct);
 }
 
-/// Every subject the count gate can serve today, and the one it cannot.
+/// Every JAMB subject the bank can fill a full-length paper for today.
 /// Pinned from the real bank so a content change that breaks a launch paper
-/// fails here rather than in a consumer's hands.
+/// fails here rather than in a consumer's hands — it fired for real on
+/// 2026-10-14, when music reached 42 verified and its gate opened.
 #[test]
-fn count_gate_serves_every_subject_but_music_today() {
+fn count_gate_serves_every_subject_today() {
     let bank = JsonStore::load(data_dir()).expect("bank loads");
     let blueprints = utmelab_api::load_blueprints(&data_dir()).expect("blueprints load");
     let mut served = Vec::new();
@@ -229,12 +281,13 @@ fn count_gate_serves_every_subject_but_music_today() {
             Err(_) => refused.push(s.slug.clone()),
         }
     }
-    // Music is one verified row short of 40; every other JAMB subject
-    // assembles today (D71 put mathematics on the count gate).
-    assert_eq!(refused, vec!["music"]);
-    assert_eq!(served.len(), 24);
-    assert!(served.contains(&"commerce".to_string()));
-    assert!(served.contains(&"use-of-english".to_string()));
+    // All 25 JAMB subjects assemble a full-length paper today: D71 put
+    // mathematics on the count gate, and music cleared 40 on 2026-10-14.
+    assert!(refused.is_empty(), "no subject refuses: {refused:?}");
+    assert_eq!(served.len(), 25);
+    for slug in ["commerce", "use-of-english", "music", "mathematics"] {
+        assert!(served.contains(&slug.to_string()), "{slug} serves");
+    }
 }
 
 #[tokio::test]
@@ -301,14 +354,31 @@ async fn same_seed_same_count_paper_different_seed_differs() {
     assert_eq!(ids(&three.1).len(), 40);
 }
 
+/// The refusal the launch position no longer has a live example of: a subject
+/// holding fewer verified, distinct rows than its stated paper size. Driven
+/// with a scratch bank holding three music rows, so the gate is proven rather
+/// than assumed.
 #[tokio::test]
-async fn short_subject_refuses_naming_the_shortfall() {
-    // Music holds 39 verified, distinct rows against a 40-question paper.
-    let (status, doc) = post("/api/v1/papers/JAMB/music?seed=1", serde_json::json!({})).await;
+async fn a_subject_below_its_paper_size_refuses_naming_the_shortfall() {
+    let dir = scratch_bank(
+        "shortfall",
+        &[
+            "q_authored_music_001",
+            "q_authored_music_002",
+            "q_authored_music_003",
+        ],
+    );
+    let state = state_from(&dir, "shortfall");
+    let (status, doc) = post_with(
+        state,
+        "/api/v1/papers/JAMB/music?seed=1",
+        serde_json::json!({}),
+    )
+    .await;
     assert_eq!(status, StatusCode::CONFLICT);
     assert_eq!(doc["code"], "paper_not_ready");
     let detail = doc["detail"].as_str().unwrap_or_default();
-    assert!(detail.contains("39"), "says what we hold: {detail}");
+    assert!(detail.contains("3"), "says what we hold: {detail}");
     assert!(detail.contains("40"), "says what a paper needs: {detail}");
 }
 
@@ -361,8 +431,10 @@ async fn count_paper_scores_statelessly_and_reveals_no_key() {
         assert_eq!(r["submitted"], "zzz-not-an-option");
         assert!(r.get("answer").is_none(), "scoring never returns the key");
     }
-    // Scoring an unassemblable subject refuses like assembly does.
-    let (status, doc) = post(
+    // Scoring an unassemblable subject refuses exactly as assembly does.
+    let dir = scratch_bank("scoreshort", &["q_authored_music_001"]);
+    let (status, doc) = post_with(
+        state_from(&dir, "scoreshort"),
         "/api/v1/papers/JAMB/music/score",
         serde_json::json!({"seed": 1, "answers": {}}),
     )
