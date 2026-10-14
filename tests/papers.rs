@@ -16,11 +16,16 @@ use axum::http::{Request, StatusCode};
 use http_body_util::BodyExt;
 use tower::ServiceExt;
 use utmelab_api::{
-    AppState, JsonStore, KeyBackend, KeyStore, PaperMode, RateLimiter, ReportStore, Store, router,
+    AppState, JsonStore, KeyBackend, KeyStore, PaperMode, RateLimiter, ReportStore, Store,
+    assemble_blueprint, blueprint_governs, cohorts, router,
 };
 
+fn data_dir() -> std::path::PathBuf {
+    std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data")
+}
+
 fn state() -> AppState {
-    let data = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
+    let data = data_dir();
     let keys_path =
         std::env::temp_dir().join(format!("utmelab-papers-{}.json", std::process::id()));
     let _ = std::fs::remove_file(&keys_path);
@@ -83,16 +88,44 @@ fn bp(topic: &str, paper_size: u32) -> utmelab_api::Blueprint {
     }
 }
 
+/// D71: a single-cohort bank cannot satisfy a 17-year topic expectation, so
+/// the count gate serves mathematics and the blueprint predicate stands down.
 #[tokio::test]
-async fn incomplete_subject_refuses_with_named_gaps() {
+async fn single_cohort_subject_serves_a_count_paper_not_an_impossible_blueprint() {
     let (status, doc) = post(
         "/api/v1/papers/JAMB/mathematics?seed=7",
         serde_json::json!({}),
     )
     .await;
-    assert_eq!(status, StatusCode::CONFLICT);
-    let detail = doc["detail"].as_str().unwrap_or("");
-    // All six unready topics named (D69: the response says what's short).
+    assert_eq!(status, StatusCode::OK);
+    assert_eq!(
+        doc["mode"], "count",
+        "one cohort cannot balance a 17-year mix"
+    );
+    assert_eq!(doc["total"], 40);
+
+    // The refusal it would have been is still computed and still reported —
+    // the topics the 2025 paper never tested.
+    let bank = JsonStore::load(data_dir()).expect("bank loads");
+    let blueprints = utmelab_api::load_blueprints(&data_dir()).expect("blueprints load");
+    let years = cohorts(&bank, "JAMB", "mathematics", None);
+    assert_eq!(years, vec![2025], "the bank holds one cohort");
+    let account = utmelab_api::per_topic(&bank, &blueprints, "JAMB", "mathematics", None);
+    assert!(!account.governed, "D71: predicate inactive on one cohort");
+    assert!(!account.complete, "coverage is 17/23, and it says so");
+    assert_eq!(account.ready, 17);
+    assert!(
+        !blueprint_governs(&blueprints, "JAMB", "mathematics", years.len()),
+        "one cohort: not governed"
+    );
+    assert!(
+        blueprint_governs(&blueprints, "JAMB", "mathematics", 2),
+        "the same measurement governs the moment a second cohort lands"
+    );
+    // Governed, the same bank refuses and names all six gaps (D69).
+    let refusal = assemble_blueprint(&bank, &blueprints, "JAMB", "mathematics", None, 7)
+        .expect_err("governed maths is short");
+    let detail = refusal.detail();
     for slug in [
         "binary-operations",
         "loci",
@@ -109,13 +142,13 @@ async fn incomplete_subject_refuses_with_named_gaps() {
 async fn syntheticmaths_assembles_deterministically_and_scores() {
     // A complete two-topic slice of the real bank, via synthetic
     // expectations — tests the machinery, invents no content.
-    let data = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
-    let bank = JsonStore::load(&data).expect("bank loads");
+    let bank = JsonStore::load(data_dir()).expect("bank loads");
     let bps = vec![bp("trigonometry", 1), bp("sets", 1)];
-    let a = utmelab_api::assemble(&bank, &bps, "JAMB", "mathematics", None, 11)
+    let a = assemble_blueprint(&bank, &bps, "JAMB", "mathematics", None, 11)
         .expect("synthetic slice is complete");
-    let b = utmelab_api::assemble(&bank, &bps, "JAMB", "mathematics", None, 11)
+    let b = assemble_blueprint(&bank, &bps, "JAMB", "mathematics", None, 11)
         .expect("same seed rebuilds");
+    assert_eq!(a.mode, PaperMode::Blueprint);
     let ids = |p: &utmelab_api::AssembledPaper| {
         p.sections
             .iter()
@@ -134,10 +167,9 @@ async fn syntheticmaths_assembles_deterministically_and_scores() {
 
 #[tokio::test]
 async fn marking_counts_only_what_was_submitted() {
-    let data = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
-    let bank = JsonStore::load(&data).expect("bank loads");
+    let bank = JsonStore::load(data_dir()).expect("bank loads");
     let bps = vec![bp("sets", 1)];
-    let paper = utmelab_api::assemble(&bank, &bps, "JAMB", "mathematics", None, 3)
+    let paper = assemble_blueprint(&bank, &bps, "JAMB", "mathematics", None, 3)
         .expect("single-topic slice is complete");
     assert_eq!(paper.total(), 1);
     let qid = paper.sections[0].questions[0].id.clone();
@@ -178,9 +210,8 @@ async fn marking_counts_only_what_was_submitted() {
 /// fails here rather than in a consumer's hands.
 #[test]
 fn count_gate_serves_every_subject_but_music_today() {
-    let data = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
-    let bank = JsonStore::load(&data).expect("bank loads");
-    let blueprints = utmelab_api::load_blueprints(&data).expect("blueprints load");
+    let bank = JsonStore::load(data_dir()).expect("bank loads");
+    let blueprints = utmelab_api::load_blueprints(&data_dir()).expect("blueprints load");
     let mut served = Vec::new();
     let mut refused = Vec::new();
     for s in bank.subjects("JAMB") {
@@ -198,10 +229,10 @@ fn count_gate_serves_every_subject_but_music_today() {
             Err(_) => refused.push(s.slug.clone()),
         }
     }
-    // Mathematics is blueprint-gated and short; music is one verified row
-    // short of 40. Everything else JAMB asks for assembles today.
-    assert_eq!(refused, vec!["mathematics", "music"]);
-    assert_eq!(served.len(), 23);
+    // Music is one verified row short of 40; every other JAMB subject
+    // assembles today (D71 put mathematics on the count gate).
+    assert_eq!(refused, vec!["music"]);
+    assert_eq!(served.len(), 24);
     assert!(served.contains(&"commerce".to_string()));
     assert!(served.contains(&"use-of-english".to_string()));
 }
@@ -352,60 +383,52 @@ async fn unknown_subject_is_404_not_a_refusal() {
 }
 
 #[test]
-fn the_gate_switches_on_measurement_that_covers_the_paper() {
-    // Same bank, same expectations — only the blueprint's own paper claim
-    // differs. A measurement that covers the paper balances it (D69); a
-    // partial one does not govern, and the paper says `count` (D70).
-    let data = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
+fn the_gate_needs_both_coverage_and_a_second_cohort() {
+    let data = data_dir();
+    let blueprints = utmelab_api::load_blueprints(&data_dir()).expect("blueprints load");
     let bank = JsonStore::load(&data).expect("bank loads");
 
-    let covering = utmelab_api::assemble(
-        &bank,
-        &[bp("sets", 1), bp("trigonometry", 1)],
-        "JAMB",
-        "mathematics",
-        None,
-        2,
-    )
-    .expect("covering blueprint governs");
-    assert_eq!(covering.mode, PaperMode::Blueprint);
-    assert_eq!(covering.total(), 2);
-
-    let partial = utmelab_api::assemble(
-        &bank,
-        &[bp("sets", 40), bp("trigonometry", 40)],
-        "JAMB",
-        "mathematics",
-        None,
-        2,
-    )
-    .expect("count gate serves mathematics too");
-    assert_eq!(
-        partial.mode,
-        PaperMode::Count,
-        "2 of 40 seats is not a paper"
+    // Coverage alone is not enough: mathematics' measurement is whole (23
+    // topics summing past 40) but its bank holds one cohort.
+    let maths_rows: Vec<_> = blueprints
+        .iter()
+        .filter(|b| b.subject == "mathematics")
+        .cloned()
+        .collect();
+    assert!(
+        !blueprint_governs(&maths_rows, "JAMB", "mathematics", 1),
+        "whole measurement, single cohort: not governed (D71)"
     );
-    assert_eq!(partial.total(), 40);
+    assert!(
+        blueprint_governs(&maths_rows, "JAMB", "mathematics", 2),
+        "whole measurement, two cohorts: governed"
+    );
 
-    // Real-bank positions: only mathematics' own blueprint covers its paper.
-    let all = utmelab_api::load_blueprints(&data).expect("blueprints load");
-    for slug in [
-        "literature-in-english",
-        "use-of-english",
-        "commerce",
-        "physics",
-        "biology",
-    ] {
-        let paper = utmelab_api::assemble(&bank, &all, "JAMB", slug, None, 2)
-            .unwrap_or_else(|e| panic!("{slug} should serve today: {}", e.detail()));
-        assert_eq!(
-            paper.mode,
-            PaperMode::Count,
-            "{slug} is not blueprint-governed"
+    // Two cohorts alone are not enough either: literature measures 34 of 40
+    // seats, so no cohort count makes it govern (D70's coverage condition).
+    for cohorts in [2usize, 9] {
+        assert!(
+            !blueprint_governs(&blueprints, "JAMB", "literature-in-english", cohorts),
+            "34 of 40 seats is not a paper at {cohorts} cohorts"
+        );
+        assert!(
+            !blueprint_governs(&blueprints, "JAMB", "use-of-english", cohorts),
+            "ranges are not measurements at {cohorts} cohorts"
+        );
+        assert!(
+            !blueprint_governs(&blueprints, "JAMB", "commerce", cohorts),
+            "no blueprint rows at {cohorts} cohorts"
         );
     }
-    assert!(
-        utmelab_api::assemble(&bank, &all, "JAMB", "mathematics", None, 2).is_err(),
-        "mathematics is blueprint-governed, so the count gate never answers for it"
-    );
+
+    // And the switch is not a fiction: real subjects report one cohort each,
+    // so no JAMB subject is governed today.
+    for s in bank.subjects("JAMB") {
+        assert_eq!(
+            cohorts(&bank, "JAMB", &s.slug, None),
+            vec![2025],
+            "{} claims a cohort it does not hold",
+            s.slug
+        );
+    }
 }

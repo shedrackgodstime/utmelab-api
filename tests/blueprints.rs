@@ -63,6 +63,10 @@ async fn maths_blueprint_serves_the_readiness_account() {
     assert_eq!(doc["total"], 23);
     assert_eq!(doc["complete"], false);
     assert_eq!(doc["unattributed"], 2);
+    // D71: one cohort, so the predicate stands down and `complete` is coverage
+    // arithmetic rather than a promise. Both facts ride the response.
+    assert_eq!(doc["governed"], false);
+    assert_eq!(doc["cohorts"], serde_json::json!([2025]));
     // Provenance rides every row (D63): method + source + confidence.
     for t in topics {
         assert_eq!(t["method"], "measured-topic");

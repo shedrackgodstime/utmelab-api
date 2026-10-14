@@ -16,7 +16,8 @@ mod view;
 pub mod write;
 
 pub use assemble::{
-    AssembledPaper, MarkedQuestion, PaperMode, PaperSection, ReadinessGap, Unready, assemble, mark,
+    AssembledPaper, MarkedQuestion, PaperMode, PaperSection, ReadinessGap, Unready, assemble,
+    assemble_blueprint, mark,
 };
 pub(crate) use json::StoreParts;
 pub use json::{JsonStore, StoreError};
@@ -24,7 +25,10 @@ pub use model::{
     Choice, Exam, ExamStatus, ImagePosition, Inline, InlineKind, Novel, NovelDoc, Passage,
     Question, Requirement, RichText, Subject, Subtopic, Topic,
 };
-pub use readiness::{Blueprint, SubjectReadiness, TopicReadiness, load_blueprints, per_topic};
+pub use readiness::{
+    Blueprint, SubjectReadiness, TopicReadiness, blueprint_governs, cohorts, load_blueprints,
+    per_topic,
+};
 pub use turso_store::TursoStore;
 
 pub use scheme::Scheme;

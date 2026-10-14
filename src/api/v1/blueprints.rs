@@ -40,7 +40,16 @@ pub struct BlueprintResponse {
     pub topics: Vec<BlueprintTopic>,
     pub ready: usize,
     pub total: usize,
+    /// Every measured topic is ready. Only a **verdict** when `governed` —
+    /// otherwise this is coverage arithmetic, not a promise (D71).
     pub complete: bool,
+    /// Does the blueprint predicate govern this subject's papers? False means
+    /// papers are served by the count gate, and `complete` must not be read as
+    /// "we can build you a balanced mock" (D71).
+    pub governed: bool,
+    /// Exam cohorts the subject holds. The D71 input, shown so a consumer can
+    /// see why a single-cohort bank reports coverage rather than readiness.
+    pub cohorts: Vec<u16>,
     pub unattributed: usize,
 }
 
@@ -58,7 +67,7 @@ pub fn router() -> Router<AppState> {
     path = "/api/v1/blueprints/{exam}/{subject}",
     tag = "catalog",
     operation_id = "getBlueprint",
-    description = "Measured per-topic expectations against verified coverage (D63, provisional, opt-in). A topic is ready when deduped verified rows meet the measured expectation, rounded up.",
+    description = "Measured per-topic expectations against verified coverage (D63, provisional, opt-in). A topic is ready when deduped verified rows meet the measured expectation, rounded up. `governed` is false when the measurement does not cover the paper (D70) or the bank holds fewer than two cohorts (D71); then `complete` is coverage, not a promise, and papers come from the count gate.",
     params(
         ("exam" = String, Path, description = "Exam code."),
         ("subject" = String, Path, description = "Subject slug within that exam."),
@@ -128,6 +137,8 @@ pub async fn blueprints(
         ready: readiness.ready,
         total: readiness.total(),
         complete: readiness.complete,
+        governed: readiness.governed,
+        cohorts: readiness.cohorts.clone(),
         unattributed: readiness.unattributed,
     }))
 }

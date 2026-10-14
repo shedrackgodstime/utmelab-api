@@ -8,10 +8,11 @@
 //! revealed solely for guesses already made.
 //!
 //! Two gates, never mixed (D70):
-//! * **blueprint** — the subject's per-topic mix is measured *and covers the
-//!   paper* (D70's `blueprint_governs`), so each topic's `need =
-//!   ceil(expected)` rows are drawn and the paper is balanced by
-//!   construction. Refused until every measured topic is ready.
+//! * **blueprint** — the subject's per-topic mix is measured, covers the
+//!   paper, and the bank holds at least two cohorts (D70's coverage condition,
+//!   D71's cohort condition — a per-paper expectation needs a pool of papers).
+//!   Each topic's `need = ceil(expected)` rows are drawn, so the paper is
+//!   balanced by construction. Refused until every measured topic is ready.
 //! * **count** — no measurement exists, so a full-length shuffled draw of
 //!   deduped verified rows is what "mock" has always meant. Refused below the
 //!   subject's stated paper size; the paper says `mode: "count"` so no
@@ -23,7 +24,9 @@
 
 use crate::bank::Store;
 use crate::bank::model::Question;
-use crate::bank::readiness::{Blueprint, TopicPool, blueprint_governs, per_topic, topic_pools};
+use crate::bank::readiness::{
+    Blueprint, TopicPool, blueprint_governs, cohorts, per_topic, topic_pools,
+};
 use rand::SeedableRng;
 use rand::seq::SliceRandom;
 use std::collections::{HashMap, HashSet};
@@ -167,7 +170,8 @@ pub fn assemble(
     country: Option<&str>,
     seed: u64,
 ) -> Result<AssembledPaper, Unready> {
-    if blueprint_governs(blueprints, exam, subject) {
+    let years = cohorts(store, exam, subject, country);
+    if blueprint_governs(blueprints, exam, subject, years.len()) {
         assemble_blueprint(store, blueprints, exam, subject, country, seed)
     } else {
         assemble_count(store, exam, subject, country, seed)

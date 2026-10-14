@@ -71,7 +71,15 @@ pub struct SubjectReadiness {
     /// Verified rows no topic can claim (untagged).
     pub unattributed: usize,
     pub ready: usize,
+    /// Every measured topic is ready. Meaningful only when `governed` — an
+    /// ungoverned account reports coverage, never a verdict (D71).
     pub complete: bool,
+    /// Does the blueprint predicate govern this subject's papers (D70/D71)?
+    /// False means the paper is served by the count gate, and `complete` is
+    /// coverage arithmetic, not a promise.
+    pub governed: bool,
+    /// Exam cohorts (years) the subject holds rows for. The D71 input.
+    pub cohorts: Vec<u16>,
 }
 
 impl SubjectReadiness {
@@ -132,6 +140,7 @@ pub fn per_topic(
     topics.sort_by(|a, b| a.topic.cmp(&b.topic));
     let ready = topics.iter().filter(|t| t.ready).count();
     let complete = !topics.is_empty() && ready == topics.len();
+    let years = cohorts(store, exam, subject, country);
     SubjectReadiness {
         exam: exam.to_string(),
         subject: subject.to_string(),
@@ -140,25 +149,56 @@ pub fn per_topic(
         unattributed: pools.unattributed_verified(),
         ready,
         complete,
+        governed: blueprint_governs(blueprints, exam, subject, years.len()),
+        cohorts: years,
     }
 }
 
-/// Does the blueprint predicate govern this subject's papers (D70)?
+/// The cohorts (exam years) a subject holds rows for, ascending. Every
+/// servable row carries the cohort it was prepared for (D52), so this is the
+/// pool a per-paper expectation would be drawn from.
+pub fn cohorts(store: &dyn Store, exam: &str, subject: &str, country: Option<&str>) -> Vec<u16> {
+    let mut years: Vec<u16> = all_subject_rows(store, exam, subject, country)
+        .iter()
+        .map(|q| q.year)
+        .collect();
+    years.sort_unstable();
+    years.dedup();
+    years
+}
+
+/// Does the blueprint predicate govern this subject's papers (D70/D71)?
 ///
-/// Two conditions, both required:
+/// Three conditions, all required:
 /// 1. per-topic **measured** expectations exist (a `topic`-level row carrying
 ///    a value — a range-reported row with `expected: null` is not measured);
 /// 2. those rows **cover the paper** — their summed expectation reaches the
-///    stated `paper_size`.
+///    stated `paper_size`;
+/// 3. the bank holds **at least two cohorts** for the subject.
 ///
-/// Condition 2 is what stops a *partial* blueprint from being served as a
-/// balanced paper: literature-in-english measures 34 of 40 seats, so a
-/// blueprint paper would quietly be six questions short of a real one, while
-/// labelling itself measured. A partial blueprint is still reported in full by
-/// the readiness endpoint; it simply does not activate the gate until the
-/// missing rows land. Mathematics (23 topics, 100% of the paper) governs.
-/// Where the predicate does not govern, count assembly draws and says so.
-pub fn blueprint_governs(blueprints: &[Blueprint], exam: &str, subject: &str) -> bool {
+/// Condition 2 stops a *partial* blueprint from being served as a balanced
+/// paper: literature-in-english measures 34 of 40 seats, so a blueprint paper
+/// would quietly be six questions short of a real one while labelling itself
+/// measured. A partial blueprint is still reported in full by the readiness
+/// endpoint; it simply does not activate the gate until the missing rows land.
+///
+/// Condition 3 is D71's, and it is the honest one: a per-paper topic
+/// expectation is measured across years of papers (blueprint `sample`: 17 for
+/// JAMB mathematics), so one cohort can hold at most what that one paper
+/// contained. With a single cohort the predicate is either unmeetable (ask the
+/// 2025 bank for a topic the 2025 paper never tested) or self-fulfilling
+/// (measure the need from our own rows and call it complete). Mathematics holds
+/// 2025 only, and 2025 contains no binary-operations question at all, so today
+/// the count gate serves it and the readiness account says why.
+pub fn blueprint_governs(
+    blueprints: &[Blueprint],
+    exam: &str,
+    subject: &str,
+    cohorts: usize,
+) -> bool {
+    if cohorts < 2 {
+        return false;
+    }
     let rows: Vec<&Blueprint> = blueprints
         .iter()
         .filter(|b| b.exam == exam && b.subject == subject)
