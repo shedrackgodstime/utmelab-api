@@ -28152,5 +28152,1489 @@
     "detail": null,
     "content_hash": "dedc6923e2353d2c74794ce95f2999a59d8579ac702ac52e4cf18d66694c71f3",
     "created_at": "2026-10-14T00:57:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74693_2012",
+    "question_id": "q_claim_2025_literature-in-english_74693",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "ffc5528b88169a3a92bfb85fffeb2a16ea60a8daa01bb82ef2238a675861da32",
+    "created_at": "2026-10-14T01:04:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74694_2013",
+    "question_id": "q_claim_2025_literature-in-english_74694",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "a2854f0f6f0e9ec23d59e5c09e992a6ccae6369afafdad94ee87bf09d675e7ea",
+    "created_at": "2026-10-14T01:04:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74695_2014",
+    "question_id": "q_claim_2025_literature-in-english_74695",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "e62c1c778e0c6c2f38303ac249f75a4c8f3a2e018fba80befe23b785727f719f",
+    "created_at": "2026-10-14T01:04:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74696_2015",
+    "question_id": "q_claim_2025_literature-in-english_74696",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "815669760149ebb2e9d7c2af7b6ae0e8a5135deb75689d8f7b945bd42350aed6",
+    "created_at": "2026-10-14T01:04:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74697_2016",
+    "question_id": "q_claim_2025_literature-in-english_74697",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "80174b89376fd2997bb55d169a5a821dbbad5541b4ed2c1739ef75f9b5f2edea",
+    "created_at": "2026-10-14T01:04:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74698_2017",
+    "question_id": "q_claim_2025_literature-in-english_74698",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "d7694ebc7863d0f49aa868b358fb598a429d4e58185d43382f46a080d1b91539",
+    "created_at": "2026-10-14T01:04:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74699_2018",
+    "question_id": "q_claim_2025_literature-in-english_74699",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "46d758c01a84a73f7311488e39179484f297e296383ab3f391286f9dbc97b9fb",
+    "created_at": "2026-10-14T01:04:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74700_2019",
+    "question_id": "q_claim_2025_literature-in-english_74700",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "7de08f73dd3198f651a56fbc644885e9ed3d35d3d43c901aaeeca290ceac0559",
+    "created_at": "2026-10-14T01:04:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74701_2020",
+    "question_id": "q_claim_2025_literature-in-english_74701",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "5c0912b4d79eccabdb2699cf84856bac7ff680138c922e121f2f18e7adcb249d",
+    "created_at": "2026-10-14T01:04:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74702_2021",
+    "question_id": "q_claim_2025_literature-in-english_74702",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "d9b2b582c25c45beb9afe1dfc0009cd09bcea7cf1f2a1d1b18eca72e5af798e3",
+    "created_at": "2026-10-14T01:04:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74703_2022",
+    "question_id": "q_claim_2025_literature-in-english_74703",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "5ac195fdb6a344bbcac6f2925651d4fc996d54fac31dfc08e74249dc76dc5dd0",
+    "created_at": "2026-10-14T01:04:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74704_2023",
+    "question_id": "q_claim_2025_literature-in-english_74704",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "8db12bb767174260d81900703480d6eeea844d855d6984b4d93f127b5c5b9ef8",
+    "created_at": "2026-10-14T01:04:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74705_2024",
+    "question_id": "q_claim_2025_literature-in-english_74705",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "b678aa5031073749b77194088bb3b91fdfc592cd24e047bc9cdd2dac86a03d4d",
+    "created_at": "2026-10-14T01:04:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74706_2025",
+    "question_id": "q_claim_2025_literature-in-english_74706",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "b8e54fec74c66c2411197eeb125838caa3270056eebda40ba4af01aa3f6a83d0",
+    "created_at": "2026-10-14T01:04:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74707_2026",
+    "question_id": "q_claim_2025_literature-in-english_74707",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "fd0277ff4f5911f097c0b9f22c8071d1480ac4cb754757ebb70d1c41a1a1b3e2",
+    "created_at": "2026-10-14T01:04:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74708_2027",
+    "question_id": "q_claim_2025_literature-in-english_74708",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "d1c816191223ee0b34c782d5529204c55e322574fa45b135f8f9138d05d9ad0c",
+    "created_at": "2026-10-14T01:04:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74709_2028",
+    "question_id": "q_claim_2025_literature-in-english_74709",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "c9eec41ecdcacd4c5677766ef95785870ccffcc0034f59414080288dc66b2e3c",
+    "created_at": "2026-10-14T01:04:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74710_2029",
+    "question_id": "q_claim_2025_literature-in-english_74710",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "e6a6b202a01d5d3a95a374fef7cdb1d148a4907349dddf88392ee572f529b611",
+    "created_at": "2026-10-14T01:04:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74711_2030",
+    "question_id": "q_claim_2025_literature-in-english_74711",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "c33b9ba324c255393dcbae7380a66f602febfb95d117a631d4266e74ad58c6d1",
+    "created_at": "2026-10-14T01:04:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74712_2031",
+    "question_id": "q_claim_2025_literature-in-english_74712",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "5cb8c63dfa1a604fc7fc2a7c48be880ed3b6ab4bdc38aa096f1c1b1dcfec24d1",
+    "created_at": "2026-10-14T01:04:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74713_2032",
+    "question_id": "q_claim_2025_literature-in-english_74713",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "a9f9ae68f97cb1811549122b39b3d6dc4b79ba54313a943c9f7194239b2857b6",
+    "created_at": "2026-10-14T01:04:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74714_2033",
+    "question_id": "q_claim_2025_literature-in-english_74714",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "369fe1dcbaf4491402625f36ae7e30544ed0e75c2b57768a678af91e49f0e214",
+    "created_at": "2026-10-14T01:04:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74716_2034",
+    "question_id": "q_claim_2025_literature-in-english_74716",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "5f20a3483f19039248ee958be6f484c6ed7597d8823bfd92fd268b800c12fdf3",
+    "created_at": "2026-10-14T01:04:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74717_2035",
+    "question_id": "q_claim_2025_literature-in-english_74717",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "6d790b46d85f5389cd3c0370436c770e13fe105baa12298a030a0f2bbe8a7c99",
+    "created_at": "2026-10-14T01:04:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74718_2036",
+    "question_id": "q_claim_2025_literature-in-english_74718",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "f9846237c4cda597c4e503f1080936f0fcd39cc346d520cad584e15da73d6bf6",
+    "created_at": "2026-10-14T01:04:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74719_2037",
+    "question_id": "q_claim_2025_literature-in-english_74719",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "812a2bd4b53b54983335962beaf55e01792e2c31d213eca81608e3614c7107d7",
+    "created_at": "2026-10-14T01:04:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74720_2038",
+    "question_id": "q_claim_2025_literature-in-english_74720",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "49c977c1378c436c9213d10fac403376412bb59426684123ce61488abbb493ef",
+    "created_at": "2026-10-14T01:04:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74721_2039",
+    "question_id": "q_claim_2025_literature-in-english_74721",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "598458f26d8849f1644c8bbbaf5945cd6a3df2300e5ec8f9b4bee83a232c5c1c",
+    "created_at": "2026-10-14T01:04:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74722_2040",
+    "question_id": "q_claim_2025_literature-in-english_74722",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "6daebe65923d6efc5a970537a2065872978f2c12fb518877682a6a592acdd053",
+    "created_at": "2026-10-14T01:04:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74723_2041",
+    "question_id": "q_claim_2025_literature-in-english_74723",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "1a9e9d13cf875323c1248e2f2d64328071b1cf053f46ff0ab78a044ec0deb5d8",
+    "created_at": "2026-10-14T01:04:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74724_2042",
+    "question_id": "q_claim_2025_literature-in-english_74724",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "1090b145030b2fc5fee9e3d1e42361846ce9660979213c5c015977dfd67f039e",
+    "created_at": "2026-10-14T01:04:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74725_2043",
+    "question_id": "q_claim_2025_literature-in-english_74725",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "c4fcfac375b1a3084fcd39ea954995a9c6f79aca954253a8c2b428975cb2cb82",
+    "created_at": "2026-10-14T01:04:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74726_2044",
+    "question_id": "q_claim_2025_literature-in-english_74726",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "2fb30577e15df55e4fc895576e2eff190d46e4d99c6932e217566e901f39ecdf",
+    "created_at": "2026-10-14T01:04:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74727_2045",
+    "question_id": "q_claim_2025_literature-in-english_74727",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "6859dbbeb0c5edffa62ab73279fee2fb16297c8d91c1b3d5693a70f43ae9a5d6",
+    "created_at": "2026-10-14T01:04:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74728_2046",
+    "question_id": "q_claim_2025_literature-in-english_74728",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "92ed98d1c0afc15bba673fb1c248488200f8a2c86582674d32ca5ff8d04f038a",
+    "created_at": "2026-10-14T01:04:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74729_2047",
+    "question_id": "q_claim_2025_literature-in-english_74729",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "2abd7f3ac6cb723f9dab513c0fc067d42e0ada73e944d537393b8e89355fb59c",
+    "created_at": "2026-10-14T01:04:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_74730_2048",
+    "question_id": "q_claim_2025_literature-in-english_74730",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "c1f82a4bfb2191ee5dbc470b11e8e0c2836fa0bff33e39fa87e8181857607548",
+    "created_at": "2026-10-14T01:04:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75033_2049",
+    "question_id": "q_claim_2025_literature-in-english_75033",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "edfd02e6e4fdc35e3968d3bb3852dd28dc009f139636eff64b75960db5e7fe98",
+    "created_at": "2026-10-14T01:04:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75035_2050",
+    "question_id": "q_claim_2025_literature-in-english_75035",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "08c09523f90af9546fe9a26fdd041cfaa618ab0189f05f16046cf5aec39ef08c",
+    "created_at": "2026-10-14T01:04:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75038_2051",
+    "question_id": "q_claim_2025_literature-in-english_75038",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "e1b914ab3d44deba69ad505249a8415396dd8ea2301d0470f1995ffdaf7ca55e",
+    "created_at": "2026-10-14T01:04:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75042_2052",
+    "question_id": "q_claim_2025_literature-in-english_75042",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "ff0de5586b301084028918c20113b74229b0c33312f8dba758f49751b8dc0b31",
+    "created_at": "2026-10-14T01:04:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75044_2053",
+    "question_id": "q_claim_2025_literature-in-english_75044",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "3ca62362c7819d03d137dabe806b2d1fcf532fbde7152338f83153c548ab3a6a",
+    "created_at": "2026-10-14T01:04:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75046_2054",
+    "question_id": "q_claim_2025_literature-in-english_75046",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "ba4c45aa470e8ae27a6ad91ba740c6a89e3a9b86c0776e97bb3d3940633f0f7b",
+    "created_at": "2026-10-14T01:04:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75047_2055",
+    "question_id": "q_claim_2025_literature-in-english_75047",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "85a2df769e963a71dc3fc8b4b197f61c59f5989fcdd71e4bc1795be04066e3db",
+    "created_at": "2026-10-14T01:04:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75048_2056",
+    "question_id": "q_claim_2025_literature-in-english_75048",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "c5ab1b3fa71cabf4133d75c743f881129660b939e7e20179a79b067fc566769d",
+    "created_at": "2026-10-14T01:04:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75050_2057",
+    "question_id": "q_claim_2025_literature-in-english_75050",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "9421681d5ec4241a3fca29f12c78b2751615477b0d2b21d4f0d82aa2d83f204d",
+    "created_at": "2026-10-14T01:04:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75054_2058",
+    "question_id": "q_claim_2025_literature-in-english_75054",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "4294b17d811e8750235348c5c5a0564f5c5835dcb781d6ae8df4bc35e00acbf8",
+    "created_at": "2026-10-14T01:04:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75055_2059",
+    "question_id": "q_claim_2025_literature-in-english_75055",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "75a0b102a8713e9f6f55acedf961e6435f70681931606d1ca49da6fb8c6313e5",
+    "created_at": "2026-10-14T01:04:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75056_2060",
+    "question_id": "q_claim_2025_literature-in-english_75056",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "832b6d4cf31884e73d85e4f84bc81e4169e330374fccdd4e9fde2bcabb4f2801",
+    "created_at": "2026-10-14T01:04:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75058_2061",
+    "question_id": "q_claim_2025_literature-in-english_75058",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "228eaf1b339324de7de157b24eeb4ac63436ff6216a85d5d25a2f040f6de69ef",
+    "created_at": "2026-10-14T01:04:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75060_2062",
+    "question_id": "q_claim_2025_literature-in-english_75060",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "1a652a1ce4c99439bcbfd75f2b1505544fdea1bb2b2ac056bb4cd50f0a3fe072",
+    "created_at": "2026-10-14T01:04:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75061_2063",
+    "question_id": "q_claim_2025_literature-in-english_75061",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "b97eaee540c214c6ae6bcdd0b6114243a9d254ea5111f3a45cccc95e12e4f6e9",
+    "created_at": "2026-10-14T01:04:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75062_2064",
+    "question_id": "q_claim_2025_literature-in-english_75062",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "ffd66fcc9aa2578775b62884646e8a3e7d071d562d3fcfb3ff44ec5e82aee90f",
+    "created_at": "2026-10-14T01:04:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75063_2065",
+    "question_id": "q_claim_2025_literature-in-english_75063",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "faca7bc52f983d40e62e05601f9bb8625ae85857cac408aae8af773083d5e361",
+    "created_at": "2026-10-14T01:04:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75065_2066",
+    "question_id": "q_claim_2025_literature-in-english_75065",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "9822dad9163b115ac2cc6e49d570aa41f4bda490a74790ff71bbe189b72ad6fd",
+    "created_at": "2026-10-14T01:04:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75067_2067",
+    "question_id": "q_claim_2025_literature-in-english_75067",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "a1113c54fb3fd15b522b94cffe5738d102db330b0ca09c22a53547a1d487ebb0",
+    "created_at": "2026-10-14T01:04:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75068_2068",
+    "question_id": "q_claim_2025_literature-in-english_75068",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "71fbb8ec43d8a61f493dfca16d6da6ceb5aea4d8c42b51c893e016a5ba478194",
+    "created_at": "2026-10-14T01:04:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75069_2069",
+    "question_id": "q_claim_2025_literature-in-english_75069",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "3042c155f0b55d7c2e50d25eeef1a2c0903fb4930e5ffd315c48257bee517340",
+    "created_at": "2026-10-14T01:04:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75073_2070",
+    "question_id": "q_claim_2025_literature-in-english_75073",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "067364e43518c85fbe6b69ba02d79069152150d9d617836f845f3b3885b5c5f3",
+    "created_at": "2026-10-14T01:04:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75075_2071",
+    "question_id": "q_claim_2025_literature-in-english_75075",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "a2ef3b1d0dc0b004eefec380f16a69ec5b75f1b450eab5d1fe7c83638bb48e46",
+    "created_at": "2026-10-14T01:04:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75076_2072",
+    "question_id": "q_claim_2025_literature-in-english_75076",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "ec081954550522ba1889593aa8bf5b215818b98f5bc5d404e6b70b1a0f6556e5",
+    "created_at": "2026-10-14T01:04:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75077_2073",
+    "question_id": "q_claim_2025_literature-in-english_75077",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "3b2d9c6a97bfb4a593a02b22a23366b67474918094b6920e94b730c51f757af9",
+    "created_at": "2026-10-14T01:04:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75078_2074",
+    "question_id": "q_claim_2025_literature-in-english_75078",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "83ad1c7dad3efafe9571ff96d9577348ca8f3540d7e5c17818f266733c0a5619",
+    "created_at": "2026-10-14T01:04:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75080_2075",
+    "question_id": "q_claim_2025_literature-in-english_75080",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "b41697d2e2c89b6479ce0074455e27dbfa7568357a144463043de29b4364178e",
+    "created_at": "2026-10-14T01:04:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75081_2076",
+    "question_id": "q_claim_2025_literature-in-english_75081",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "725a39f202badcabbe5e94e531ebba9e5583f20880cdb82b02ff8fba952c00db",
+    "created_at": "2026-10-14T01:04:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75084_2077",
+    "question_id": "q_claim_2025_literature-in-english_75084",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "35350c4c646d907cad883d995f2353a2b945f0b334a0ae2bbe958602d97dc5f7",
+    "created_at": "2026-10-14T01:04:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75086_2078",
+    "question_id": "q_claim_2025_literature-in-english_75086",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "5535ff777670492777092c50240baa4d2b895b683ae970d07505d915f98cc877",
+    "created_at": "2026-10-14T01:04:49Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75091_2079",
+    "question_id": "q_claim_2025_literature-in-english_75091",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "8d215efd6d0d876db652eb8affd1600d6a1ed6a9a748d81dd8c129985ed8a6fc",
+    "created_at": "2026-10-14T01:04:49Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75093_2080",
+    "question_id": "q_claim_2025_literature-in-english_75093",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "0dd44ddb29e90f02343178162f3714e7f27d68e0f27b71311d180a80ff8915f6",
+    "created_at": "2026-10-14T01:04:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75227_2081",
+    "question_id": "q_claim_2025_literature-in-english_75227",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "f23b0a0470fe5ccb5822ab4d26af558238665c71540e3728a2d0f7cd5045613d",
+    "created_at": "2026-10-14T01:04:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75229_2082",
+    "question_id": "q_claim_2025_literature-in-english_75229",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "2f275e955dab5ac03d848bfdf1ca89bc3a4233ad09c549d6db93bc74fa55806d",
+    "created_at": "2026-10-14T01:04:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75236_2083",
+    "question_id": "q_claim_2025_literature-in-english_75236",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "7e7d2a2bfcbaee9fee5169816b5ebc9c36ec7372b8995e26d84a9606ebbe8d37",
+    "created_at": "2026-10-14T01:04:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75239_2084",
+    "question_id": "q_claim_2025_literature-in-english_75239",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "1092b919a82c1ba7cc6d4f708a0de7aaf5412683bbc02e400d089d572890d9ec",
+    "created_at": "2026-10-14T01:04:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75243_2085",
+    "question_id": "q_claim_2025_literature-in-english_75243",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "fe07f324be5e076d0f5aef562abce20ede0373ba7f97ffb1059d1e377be751ba",
+    "created_at": "2026-10-14T01:04:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75244_2086",
+    "question_id": "q_claim_2025_literature-in-english_75244",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "a5bb62e4b8f0860460c30dd18dfafc95cc376b19851cfbb1f94e50861257b297",
+    "created_at": "2026-10-14T01:04:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75246_2087",
+    "question_id": "q_claim_2025_literature-in-english_75246",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "073cc1bb7c38a595f8cd7d08f6f351515c94ca651a115ae727a626c7dea70eef",
+    "created_at": "2026-10-14T01:04:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75260_2088",
+    "question_id": "q_claim_2025_literature-in-english_75260",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "8a58eb4c732d70bead0e327533138b6550c1dc197c6675416c9db3085b80ae99",
+    "created_at": "2026-10-14T01:04:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75267_2089",
+    "question_id": "q_claim_2025_literature-in-english_75267",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "b6e4d131e23400aaf4f78430b936f192282cb64e1c59fdb1082e0711cbc8c1ae",
+    "created_at": "2026-10-14T01:04:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75274_2090",
+    "question_id": "q_claim_2025_literature-in-english_75274",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "fb02c927a35aa2c7000b3607b29956c4c8fa41f950ad39aa768013fda9ad2719",
+    "created_at": "2026-10-14T01:04:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75278_2091",
+    "question_id": "q_claim_2025_literature-in-english_75278",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "5d9c25e6559dcd8eb56c71595b54f47ee956c351a0e92f1e1f63845f24624085",
+    "created_at": "2026-10-14T01:04:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75282_2092",
+    "question_id": "q_claim_2025_literature-in-english_75282",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "11a886caec44a0def7a2a832f001b8d046cfd911c1c51979538cdaadb30225ba",
+    "created_at": "2026-10-14T01:04:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75285_2093",
+    "question_id": "q_claim_2025_literature-in-english_75285",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "4e14bb990fce8ebc8a438c1dd6a633ef7ee90087acce30a288c9d3ea95b9721f",
+    "created_at": "2026-10-14T01:04:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75292_2094",
+    "question_id": "q_claim_2025_literature-in-english_75292",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "4c52847d2392b81335d1f3fcfe41371c139c5a5725c8b189be3449b11d375584",
+    "created_at": "2026-10-14T01:04:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75297_2095",
+    "question_id": "q_claim_2025_literature-in-english_75297",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "e821537b4adc0b86b771af8f4b6110ab98336ccaa91bb5cae526b43a1ecb4275",
+    "created_at": "2026-10-14T01:04:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75300_2096",
+    "question_id": "q_claim_2025_literature-in-english_75300",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "6f587bac9d662729659a1eeb7a0cc58fe3dfc638f2336b426a8ee482de8c44dd",
+    "created_at": "2026-10-14T01:04:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75304_2097",
+    "question_id": "q_claim_2025_literature-in-english_75304",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "fca198833365826ec6d73406d9841cf3ce069e8cf2f990307c27dc35ee9877df",
+    "created_at": "2026-10-14T01:04:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75308_2098",
+    "question_id": "q_claim_2025_literature-in-english_75308",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "21f989d9dd8d9edbc74101d8c250b8913d21fc85bba7e41843cd7c3d89568b51",
+    "created_at": "2026-10-14T01:04:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75312_2099",
+    "question_id": "q_claim_2025_literature-in-english_75312",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "f107b1cd0c4dc94a0d3d0baf298734135cd7501f87c1ddd4d7594133f64cd302",
+    "created_at": "2026-10-14T01:04:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75314_2100",
+    "question_id": "q_claim_2025_literature-in-english_75314",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "3af0a0eb8a530f2d205cebdb421c034cf34f19b5d42056d8496825da2463d884",
+    "created_at": "2026-10-14T01:04:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75316_2101",
+    "question_id": "q_claim_2025_literature-in-english_75316",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "18ef91097de5faba03aba207946c740f9054287a52e2f30a6cbd03a89119ab22",
+    "created_at": "2026-10-14T01:04:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75320_2102",
+    "question_id": "q_claim_2025_literature-in-english_75320",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "7687c2e7d83076042bec3658b12fff4c370b8fcb4eca782f20e625bfdae7e924",
+    "created_at": "2026-10-14T01:04:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75321_2103",
+    "question_id": "q_claim_2025_literature-in-english_75321",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "1273eccce1ddf36328657f4591bbb6df99d81366e3b54de87bfb22ebdb7991d8",
+    "created_at": "2026-10-14T01:04:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75322_2104",
+    "question_id": "q_claim_2025_literature-in-english_75322",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "cdf905d82b97258bb338e85435385bca2ae4403890b95e03188a3bd794f092c4",
+    "created_at": "2026-10-14T01:04:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75323_2105",
+    "question_id": "q_claim_2025_literature-in-english_75323",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "0f040b83878bd85990234a924a2f8c20d0f8cd97f39d7e88ee73b0e979454923",
+    "created_at": "2026-10-14T01:05:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75325_2106",
+    "question_id": "q_claim_2025_literature-in-english_75325",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "bd7d5062c5271b986ca3e822c7de6e68f0eefafbbc579c71251bd486c2bb981c",
+    "created_at": "2026-10-14T01:05:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75328_2107",
+    "question_id": "q_claim_2025_literature-in-english_75328",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "962882f40cee89c53eaf2c84a9d6e903cf5cbc4c19f083a8921f45c55bc6ccfd",
+    "created_at": "2026-10-14T01:05:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75332_2108",
+    "question_id": "q_claim_2025_literature-in-english_75332",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "369ef71f48406faac1053c14fff70bb26e7b577edb9dde2b72f485ba5e53731d",
+    "created_at": "2026-10-14T01:05:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75334_2109",
+    "question_id": "q_claim_2025_literature-in-english_75334",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "193b2ed1de63a6a275614a0367ae39d52f2d6ecf769f28612f2f3a1a34b48097",
+    "created_at": "2026-10-14T01:05:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75336_2110",
+    "question_id": "q_claim_2025_literature-in-english_75336",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "1bfdb99ac9683936ac075513b2d95365424dbac6c39233637185f59c095fcdca",
+    "created_at": "2026-10-14T01:05:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75338_2111",
+    "question_id": "q_claim_2025_literature-in-english_75338",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "04929be76beb9c07d6d856e5febbe8853e041e2efa189e80b1e4d18f1b422cc7",
+    "created_at": "2026-10-14T01:05:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75341_2112",
+    "question_id": "q_claim_2025_literature-in-english_75341",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "de675714a9fec64735c7addbc8899b56cbc72fbf50a7dae95ab2adb938cf8b8f",
+    "created_at": "2026-10-14T01:05:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75343_2113",
+    "question_id": "q_claim_2025_literature-in-english_75343",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "76b2f4464787cea5b1aac8671b1fed4abb7a66f1a2dc77fce3a2f8ca000af157",
+    "created_at": "2026-10-14T01:05:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75344_2114",
+    "question_id": "q_claim_2025_literature-in-english_75344",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "88ba27328a5739111152fb423f810fd2d18557330018040043470dbf21ba0526",
+    "created_at": "2026-10-14T01:05:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75345_2115",
+    "question_id": "q_claim_2025_literature-in-english_75345",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "cb6d2d3b0082f077d00dcde148cd7d595f69c8bc54f87c27b6f3987672c76096",
+    "created_at": "2026-10-14T01:05:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75351_2116",
+    "question_id": "q_claim_2025_literature-in-english_75351",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "b171ab668870cf7b2498ccbbed1ff2a06c1076de8bbf0ba90ca146a58290ce75",
+    "created_at": "2026-10-14T01:05:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_literature-in-english_75353_2117",
+    "question_id": "q_claim_2025_literature-in-english_75353",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "literature-rewrite1",
+    "detail": null,
+    "content_hash": "cc93355cf7daaa2d3cc612c829ef5b911a56f87fc48fbd03b177063c178979db",
+    "created_at": "2026-10-14T01:05:05Z"
   }
 ]

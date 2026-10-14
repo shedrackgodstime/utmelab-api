@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-1,938 verified (86%, derived from data/verifications.json, D62) · 1,943 explained
+2,044 verified (91%, derived from data/verifications.json, D62) · 2,049 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -327,6 +327,15 @@ disagree. Two lists is how subjects drift.
     75701 (Obidiya question, no play text served), 75707 (protagonist
     asked, no book specified). 75088 left untagged (no fitting path).
     Loader gate caught 2 more topic-slugs-as-subtopics pre-apply.
+31. **Literature rewrite done 2026-10-14** — 105 authored + 1 key fix +
+    tags + verified; literature-in-english 0 → 106 of 108. **75084 key
+    corrected** d → a (Clark's Ibadan celebrated for metaphor, not
+    lyricism — D45 pattern, documented in trap). **Parked**: 74715 (all
+    options pre-20th c.; play is 1950s), 75031 (no referent poem served).
+    Set-text recall on unfamiliar WAEC novels held to cross-work coherence
+    + exam authority (stated, not hidden). Near-miss caught: 28 batch IDs
+    mistyped 747xx for 750xx — the assert gate refused the write; remapped
+    and content re-verified row by row before apply.
 30. **IRK rewrite done 2026-10-14** — 75 authored + 1 key fix + tags +
     verified; islamic-religious-studies 0 → 76 of 78. **75604 key
     corrected** c → b (Isa's mother is Maryam; Fatima is the Prophet's
