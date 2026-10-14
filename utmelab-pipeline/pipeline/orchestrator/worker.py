@@ -24,9 +24,7 @@ class BatchProcessor:
         self.repo = repository
         self.runner = runner or OpenCodeRunner()
         self.downloader = downloader or MediaDownloader()
-        self.promoter = promoter or (
-            ProductionPromoter(self.repo.prod_db) if self.repo.prod_db else None
-        )
+        self.promoter = promoter or PipelinePromoter(self.repo.db)
 
     async def process_subject(
         self,

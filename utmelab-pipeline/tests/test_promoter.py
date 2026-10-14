@@ -2,8 +2,9 @@
 
 import json
 import pytest
-from pipeline.orchestrator.promoter import ProductionPromoter, compute_content_hash, to_rich_text
+from pipeline.orchestrator.promoter import PipelinePromoter, compute_content_hash, to_rich_text
 from pipeline.storage.client import TursoClient
+from pipeline.storage.schema import init_pipeline_schema
 
 
 def test_compute_content_hash_deterministic():
@@ -21,28 +22,43 @@ def test_compute_content_hash_deterministic():
 
 
 @pytest.mark.asyncio
-async def test_promoter_writes_to_production():
-    # In-memory client representing production DB
-    prod_client = TursoClient(":memory:")
-    # Initialize basic schema matching production
-    await prod_client.execute("""
-    CREATE TABLE questions (
-        id TEXT PRIMARY KEY, exam TEXT NOT NULL, subject TEXT NOT NULL, year INTEGER NOT NULL,
-        source TEXT NOT NULL, text TEXT NOT NULL, inline TEXT NOT NULL, options TEXT NOT NULL,
-        answer TEXT NOT NULL, subtopic_id TEXT, section TEXT, passage_id TEXT,
-        explanation TEXT, marks REAL NOT NULL, difficulty INTEGER NOT NULL, content_hash TEXT NOT NULL
-    );
-    """)
-    await prod_client.execute("""
-    CREATE TABLE verifications (
-        id TEXT PRIMARY KEY, question_id TEXT NOT NULL, kind TEXT NOT NULL, verdict TEXT NOT NULL,
-        scope TEXT NOT NULL, verifier TEXT NOT NULL, detail TEXT, content_hash TEXT NOT NULL, created_at TEXT NOT NULL
-    );
-    """)
+async def test_promoter_writes_only_to_pipeline_approved_tables():
+    # In-memory client representing dedicated pipeline DB
+    pipe_client = TursoClient(":memory:")
+    await init_pipeline_schema(pipe_client)
 
-    promoter = ProductionPromoter(prod_client)
+    # Insert a dummy staging row
+    staging_id = "stage_q_12345"
+    await pipe_client.execute(
+        """
+        INSERT INTO scrape_runs (id, source_name, exam, subject, year, status, started_at)
+        VALUES ('run_1', 'jamb', 'JAMB', 'physics', 2025, 'running', '2026-10-14T00:00:00Z')
+        """
+    )
+    await pipe_client.execute(
+        """
+        INSERT INTO harvest_staging (
+            id, run_id, source_name, exam, subject, year, stem_raw, options_raw, answer_raw,
+            fingerprint, gate0_status, ai_status, pipeline_status, created_at, updated_at
+        ) VALUES (
+            ?, 'run_1', 'jamb', 'JAMB', 'physics', 2025, 'What is the unit of capacitance?',
+            ?, 'a', 'fp_123', 'valid', 'completed', 'auto_approved', '2026-10-14T00:00:00Z', '2026-10-14T00:00:00Z'
+        )
+        """,
+        [
+            staging_id,
+            json.dumps([
+                {"id": "a", "text": "Farad"},
+                {"id": "b", "text": "Henry"},
+                {"id": "c", "text": "Coulomb"},
+                {"id": "d", "text": "Ohm"},
+            ]),
+        ],
+    )
+
+    promoter = PipelinePromoter(pipe_client)
     staging_row = {
-        "id": "stage_q_12345",
+        "id": staging_id,
         "exam": "JAMB",
         "subject": "physics",
         "year": 2025,
@@ -68,15 +84,20 @@ async def test_promoter_writes_to_production():
 
     assert promoted_id == "q_12345"
 
-    # Verify row in questions table
-    q_res = await prod_client.execute("SELECT * FROM questions WHERE id = ?", [promoted_id])
+    # 1. Verify row in approved_questions in Pipeline DB
+    q_res = await pipe_client.execute("SELECT * FROM approved_questions WHERE id = ?", [promoted_id])
     assert len(q_res.rows) == 1
     assert q_res.rows[0]["answer"] == "a"
     assert q_res.rows[0]["subtopic_id"] == "capacitors-and-capacitance"
+    assert q_res.rows[0]["staging_id"] == staging_id
 
-    # Verify row in verifications table
-    v_res = await prod_client.execute("SELECT * FROM verifications WHERE question_id = ?", [promoted_id])
+    # 2. Verify row in approved_verifications in Pipeline DB
+    v_res = await pipe_client.execute("SELECT * FROM approved_verifications WHERE question_id = ?", [promoted_id])
     assert len(v_res.rows) == 1
     assert v_res.rows[0]["verdict"] == "pass"
 
-    prod_client.close()
+    # 3. Verify staging status updated to approved_for_prod
+    s_res = await pipe_client.execute("SELECT pipeline_status FROM harvest_staging WHERE id = ?", [staging_id])
+    assert s_res.rows[0]["pipeline_status"] == "approved_for_prod"
+
+    pipe_client.close()

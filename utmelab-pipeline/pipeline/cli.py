@@ -218,18 +218,14 @@ def list_review_cmd(status: str, limit: int):
 
 @main.command("promote")
 @click.option("--subject", default=None, help="Subject filter (optional)")
-@click.option("--limit", "-n", default=50, type=int, help="Maximum questions to promote")
-@click.option("--dry-run", is_flag=True, default=False, help="Preview promotion without writing to production")
+@click.option("--limit", "-n", default=50, type=int, help="Maximum questions to approve")
+@click.option("--dry-run", is_flag=True, default=False, help="Preview approval without writing to database")
 def promote_cmd(subject: Optional[str], limit: int, dry_run: bool):
-    """Promotes auto_approved staging questions into production Turso."""
-    from pipeline.orchestrator.promoter import ProductionPromoter
-    pipe_client, prod_client = get_clients()
+    """Promotes auto_approved staging questions into Pipeline DB approved tables (strictly writes to pipeline DB, never to production)."""
+    from pipeline.orchestrator.promoter import PipelinePromoter
+    pipe_client, _ = get_clients()
 
-    if not prod_client:
-        click.echo("Error: Production database URL/token not configured.", err=True)
-        raise SystemExit(1)
-
-    promoter = ProductionPromoter(prod_client)
+    promoter = PipelinePromoter(pipe_client)
 
     async def _promote():
         where_clauses = ["pipeline_status = 'auto_approved'"]
@@ -244,10 +240,10 @@ def promote_cmd(subject: Optional[str], limit: int, dry_run: bool):
         res = await pipe_client.execute(sql, params)
         rows = res.rows
         if not rows:
-            click.echo("No auto_approved questions found for promotion.")
+            click.echo("No auto_approved questions found for approval.")
             return
 
-        click.echo(f"Found {len(rows)} auto_approved questions ready for promotion.")
+        click.echo(f"Found {len(rows)} auto_approved questions ready for approval.")
         promoted_count = 0
 
         for r in rows:
@@ -257,7 +253,7 @@ def promote_cmd(subject: Optional[str], limit: int, dry_run: bool):
             marks = json.loads(marks_raw) if marks_raw else []
 
             if dry_run:
-                click.echo(f"  [DRY-RUN] Would promote {qid} -> subject: {r['subject']} | subtopic: {subtopic}")
+                click.echo(f"  [DRY-RUN] Would approve {qid} -> subject: {r['subject']} | subtopic: {subtopic}")
                 promoted_count += 1
             else:
                 promoted_id = await promoter.promote(
@@ -265,33 +261,30 @@ def promote_cmd(subject: Optional[str], limit: int, dry_run: bool):
                     subtopic_id=subtopic,
                     detected_marks=marks,
                 )
-                await pipe_client.execute(
-                    "UPDATE harvest_staging SET pipeline_status = 'promoted' WHERE id = ?",
-                    [qid],
-                )
-                click.echo(f"  [PROMOTED] {qid} -> {promoted_id} in production Turso")
+                click.echo(f"  [APPROVED] {qid} -> {promoted_id} in approved_questions (Pipeline DB)")
                 promoted_count += 1
 
-        click.echo(f"\nPromotion completed: {promoted_count} questions {'previewed' if dry_run else 'promoted'}.")
+        click.echo(f"\nApproval completed: {promoted_count} questions {'previewed' if dry_run else 'approved in Pipeline DB'}.")
         pipe_client.close()
-        prod_client.close()
 
     asyncio.run(_promote())
 
 
 @main.command("status")
 def status_cmd():
-    """Displays pipeline staging and queue statistics."""
+    """Displays pipeline staging, approved questions, and queue statistics."""
     pipe_client, _ = get_clients()
 
     async def _status():
         runs = await pipe_client.execute("SELECT COUNT(*) as cnt FROM scrape_runs")
         staging = await pipe_client.execute("SELECT pipeline_status, COUNT(*) as cnt FROM harvest_staging GROUP BY pipeline_status")
         review = await pipe_client.execute("SELECT COUNT(*) as cnt FROM review_queue WHERE review_status = 'open'")
+        approved = await pipe_client.execute("SELECT COUNT(*) as cnt FROM approved_questions")
 
         click.echo("=== Pipeline Status ===")
         click.echo(f"Scrape Runs: {runs.rows[0]['cnt'] if runs.rows else 0}")
-        click.echo(f"Open Review Queue: {review.rows[0]['cnt'] if review.rows else 0}")
+        click.echo(f"Approved for Production Review: {approved.rows[0]['cnt'] if approved.rows else 0}")
+        click.echo(f"Open Exception Review Queue: {review.rows[0]['cnt'] if review.rows else 0}")
         click.echo("\nStaging Breakdown:")
         for row in staging.rows:
             click.echo(f"  - {row['pipeline_status']}: {row['cnt']}")
