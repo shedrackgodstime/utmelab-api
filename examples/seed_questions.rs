@@ -69,8 +69,18 @@ async fn main() {
 
     // R4: the same fail-closed validation boot runs, here as the write gate.
     let store = JsonStore::load("data").unwrap_or_else(|e| fail("validate", format!("{e:?}")));
-    let questions = store.questions();
-    println!("validated questions: {}", questions.len());
+    // Servable plus withheld (D58): every valid row seeds, so the table
+    // holds the whole bank and the read path partitions identically.
+    let questions: Vec<_> = store
+        .questions()
+        .iter()
+        .chain(store.withheld_questions().iter())
+        .collect();
+    println!(
+        "validated questions: {} ({} withheld)",
+        questions.len(),
+        store.withheld_questions().len()
+    );
 
     let db = Db::connect(&url, &token)
         .await
@@ -134,7 +144,7 @@ async fn main() {
         );
     }
     let mut mismatch = 0usize;
-    for q in questions {
+    for q in questions.iter() {
         let mut r = retry!(
             "parity-read",
             6,

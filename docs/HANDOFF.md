@@ -342,6 +342,9 @@ disagree. Two lists is how subjects drift.
     admission core over `&dyn Store`; R4 gate on the merged bank, upserts
     with shared fingerprints. File path byte-identical. Dry-run proven
     live; R4 refusal unit-tested.
+40. **Withheld moved 2026-10-14** — last file-side row seeded; read path
+    partitions identically; parity asserts equality. Turso holds the
+    whole bank.
 34. **Maths P4 groundwork done 2026-10-14** — 74199 verified (figure read:
     x = 2, modal weight 58; honest legacy note replaced with the working).
     **74188 parked**: modal class 30–39 gives 29.5 + 6/10×10 = 35.5, no

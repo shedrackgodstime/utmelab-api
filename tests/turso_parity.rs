@@ -31,12 +31,12 @@ async fn turso_matches_json() {
         "question_count"
     );
     assert_eq!(turso.subject_count(), json.subject_count(), "subject_count");
-    // Withheld fixture stays file-side (Phase 2 record): Turso carries the
-    // same validation-warning notes minus the single partitioned-row note.
+    // Withheld fixture migrated (Phase 2 record): both stores partition
+    // identically through the shared pipeline.
     assert_eq!(
-        turso.withheld_count() + 1,
+        turso.withheld_count(),
         json.withheld_count(),
-        "withheld notes differ only by the file-side fixture row"
+        "withheld notes match"
     );
     assert_eq!(turso.exams(), json.exams(), "exams");
     assert_eq!(

@@ -305,3 +305,11 @@ D58 carry-through stays file-side (Turso holds servable rows only).
 Live-proven dry-run against prod Turso (staged lekki file correctly
 refused on subject slug); R4 refusal power unit-tested (unknown subject
 fails the gate). `review.py`/harvester untouched (inbox producers).
+
+## Withheld record (2026-10-14) — last file-side row moved
+
+`q_unassigned_civic_001` (`exam=""`) seeded like every other row; the
+read path partitions it through the shared pipeline, so
+`withheld_count` now matches file-side exactly (parity test asserts
+equality, fudge removed). No file holds live bank data that Turso
+lacks. `data/` remains for dev (inbox, drafts, backups) + export.
