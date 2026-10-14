@@ -5,6 +5,15 @@ description: v0.1.0 goes out with the content bank complete and the open decisio
 
 # Quick ship — v0.1.0
 
+> **Deployment note.** The first `v0.1.0` run reached the VPS and was refused by
+> the host gate, because two files on that host are *installed copies* of repo
+> files that still hardcode the old docs path `web/` — the rename to `site/`
+> happened on 2026-10-12 and the host was never re-provisioned. The release
+> now ships the docs under both names (a symlink inside the tarball), so a
+> host in that state activates and serves docs without anyone running sudo.
+> Drop that symlink from `.github/workflows/deploy.yml` once
+> `sudo bash docs/deployment/vps-onetime-setup.sh` has been run on the host.
+
 The brief was explicit: ship what exists, work on the rest of the API
 afterwards. This records what went out, what was deliberately left open, and
 what the first person to look at a problem should know.

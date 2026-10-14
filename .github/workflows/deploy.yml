@@ -88,8 +88,20 @@ jobs:
           # data at all: binary + site/.
           mkdir -p release/data
           cp data/questions.json release/data/questions.json
+          # Compatibility for the 2026-10-12 `web/` → `site/` rename.
+          # Two files on the host are *installed copies* of repo files and still
+          # hardcode the old name: /usr/local/bin/utmelab-api-deploy gates on
+          # `releases/<v>/web/index.html`, and /etc/caddy/Caddyfile.api roots at
+          # `…/current/web`. Shipping the docs under both names lets a host that
+          # has not re-run `vps-onetime-setup.sh` activate and serve docs at
+          # all — a symlink inside the tarball, so nothing on the host is
+          # mutated and no sudo is needed. DROP THIS LINE once the host setup
+          # has been re-run and both copies point at `site/` (see
+          # docs/deployment/README.md § "Renamed web/ → site/").
+          ln -s site release/web
           test -x release/${APP}
           test -f release/site/index.html
+          test -f release/web/index.html
           test -f release/data/questions.json
           tar -czf "${APP}-${{ steps.v.outputs.version }}.tar.gz" -C release .
 
