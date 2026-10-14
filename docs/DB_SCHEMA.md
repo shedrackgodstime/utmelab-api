@@ -177,7 +177,7 @@ keys ✅ (D53, live) → verifications → questions → passages + novels →
 catalog + blueprints → binary is code only. One phase per commit; a phase
 lands only with parity proof in its message.
 
-## Phase 1 record (2026-10-13)
+## Phase 1 record (2026-10-13, re-seeded 2026-10-14)
 
 `verifications` seeded: 393/393 rows, per-row `content_hash` equal both
 sides (PARITY OK). Rule until the TursoStore read path lands: **the file
@@ -185,3 +185,9 @@ stays source of truth; the table is a warm standby re-seeded idempotently
 (upsert by id) whenever the file moves** — never dual-written, never
 diverged. Seed procedure: one-off Rust example over `turso_serverless`
 (read file → upsert → count + hash parity); the DDL stays pinned above.
+
+Re-seed 2026-10-14 (`examples/seed_verifications.rs`, committed): file grew
+393 → 2,259 rows through the review rewrite; table re-seeded idempotently,
+PARITY OK 2259/2259 rows, 0 hash mismatches. Retry-with-backoff added after
+a transient wire drop mid-run (upserts idempotent, resumed cleanly).
+`verifications` also registered in `audit-db` (R4; missing table counts 0).

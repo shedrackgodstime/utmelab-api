@@ -54,11 +54,21 @@ async fn count(db: &Db, table: &str) -> Result<usize, ApiError> {
 pub async fn run(db: &Db) -> Result<AuditReport, ApiError> {
     // Phase 0: api_keys only. Later phases push their tables here.
     let keys = count(db, "api_keys").await?;
+    // Phase 1: verifications warm standby (DB_SCHEMA.md; file stays source).
+    // Missing table (pre-seed) counts as zero, never an error: audit is a
+    // checker, and the file-first rule means absence is a state, not a fault.
+    let verifications = count(db, "verifications").await.unwrap_or(0);
     Ok(AuditReport {
-        tables: vec![TableAudit {
-            name: "api_keys",
-            rows: keys,
-        }],
+        tables: vec![
+            TableAudit {
+                name: "api_keys",
+                rows: keys,
+            },
+            TableAudit {
+                name: "verifications",
+                rows: verifications,
+            },
+        ],
     })
 }
 
