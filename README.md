@@ -37,6 +37,13 @@ python3 tools/review.py set <id> [--subtopic S] [--underline W] [...]
 python3 tools/review.py stats               # progress per subject
 ```
 
+Auto-tagging (free, proposal-only) is the `tools/utmetag` SDK, dispatchable via
+the **Auto-tag Questions Prototype** workflow — see `docs/AUTO_TAGGING.md`:
+
+```bash
+python3 tools/auto_tag_questions.py --engine opencode --subject mathematics --limit 10
+```
+
 Config is environment only (`UTMELAB_API_BIND`, `UTMELAB_API_DATA_DIR`,
 `TURSO_DB_URL`, `TURSO_DB_TOKEN`, … — see `src/config.rs`). The catalog and
 novels are embedded in the binary; `UTMELAB_API_DATA_DIR` holds exactly
