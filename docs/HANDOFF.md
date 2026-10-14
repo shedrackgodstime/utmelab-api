@@ -366,6 +366,10 @@ disagree. Two lists is how subjects drift.
     `bank::assemble`, shared `topic_pools` with readiness. Refusal +
     determinism + scoring proven in tests. Caught: pools missed empty
     topics (names test fired, pre-seeded).
+44. **Production rehearsal done 2026-10-14** — `serve` booted live on
+    Turso (no JSON touched): /health 200, blueprints 17/23, assemble +
+    score both 409 with named gaps, 20 spec paths. Cached reboot serves
+    in ~2s at the same version hash. Full fetch ~40s stays the cold path.
 34. **Maths P4 groundwork done 2026-10-14** — 74199 verified (figure read:
     x = 2, modal weight 58; honest legacy note replaced with the working).
     **74188 parked**: modal class 30–39 gives 29.5 + 6/10×10 = 35.5, no
