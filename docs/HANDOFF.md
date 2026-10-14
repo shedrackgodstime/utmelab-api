@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-2,141 verified (95%, derived from data/verifications.json, D62) · 2,146 explained
+2,185 verified (97%, derived from data/verifications.json, D62) · 2,189 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -327,6 +327,17 @@ disagree. Two lists is how subjects drift.
     75701 (Obidiya question, no play text served), 75707 (protagonist
     asked, no book specified). 75088 left untagged (no fitting path).
     Loader gate caught 2 more topic-slugs-as-subtopics pre-apply.
+33. **Music + English-tail rewrite done 2026-10-14** — 41 authored (31
+    music + 10 cloze) + 2 key fixes + tags + verified; music 6 → 39 of
+    44, english 153 → 163 of 168. **Keys corrected** 76295 c → a (16
+    demis; single flag at 6x zoom), 76319 b → c (martellato = hammered).
+    **Parked**: 76294/76300/76303/76313/76320 (figures unresolvable as
+    served), 74769–73 (birds passage never served). Cloze gaps 6–15 all
+    verified against psg_jamb_2025_eng_cloze_3. Confirmed from figures:
+    first inversion, major 6th, transposed keys, alto-clef viola,
+    imperfect cadence, augmented triad. Bank now complete at review
+    level: every servable row explained + verified; only documented
+    parks remain explanationless.
 32. **CRS rewrite done 2026-10-14** — 96 authored + 1 key fix + tags +
     verified; christian-religious-studies 0 → 97 of 100. **75643 key
     corrected** c → d (Elisha raised the Shunammite boy; blindness never

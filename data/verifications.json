@@ -30994,5 +30994,621 @@
     "detail": null,
     "content_hash": "8ec14219f232bde9d633b1d37428b909873ea9b97ef6a37d07d9bf08e40c2f10",
     "created_at": "2026-10-14T01:11:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74774_2215",
+    "question_id": "q_claim_2025_english-language_74774",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "2f11dcac31a2991a7f21ce3c12f324fa9ee63d62542542cfc7869b6f0c053e2d",
+    "created_at": "2026-10-14T01:20:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74775_2216",
+    "question_id": "q_claim_2025_english-language_74775",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "65ee29c22cdbfeb3cc9a659b89e2db72698ecf43115e253cd2c44c1feacc3ab2",
+    "created_at": "2026-10-14T01:20:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74776_2217",
+    "question_id": "q_claim_2025_english-language_74776",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "f8ee2f4d3b1f9504295e9aaf39d59d6c1a373e449b8914c8800827c15e8966e5",
+    "created_at": "2026-10-14T01:20:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74777_2218",
+    "question_id": "q_claim_2025_english-language_74777",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "9ad2f99057ce82c3568cc5382ca302ba4da202ef7b88849f1a6014c8e8951d84",
+    "created_at": "2026-10-14T01:20:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74778_2219",
+    "question_id": "q_claim_2025_english-language_74778",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "df76674c9c4655a863cd22870e8380628a91ed70e43bddf3e9a95e00dfaf733b",
+    "created_at": "2026-10-14T01:20:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74779_2220",
+    "question_id": "q_claim_2025_english-language_74779",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "90875ffea1d8d062e4c3bf82deb6cd3278b0ea62e2431c0e1dc31c4376bc15fd",
+    "created_at": "2026-10-14T01:20:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74780_2221",
+    "question_id": "q_claim_2025_english-language_74780",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "e8aa7f351c4ae036897346a6b20850a34d8df003dc90c77b16fcdfed3e21e19f",
+    "created_at": "2026-10-14T01:20:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74781_2222",
+    "question_id": "q_claim_2025_english-language_74781",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "fff90b2656447f246e09ae4eb85e1ea7bf47e7ab8de00fc58beb84dbcb5aa40e",
+    "created_at": "2026-10-14T01:20:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74782_2223",
+    "question_id": "q_claim_2025_english-language_74782",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "c6e21c84bb383d0c7ea17809de77850d157a6dec0095aee938e85d645533b261",
+    "created_at": "2026-10-14T01:20:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74783_2224",
+    "question_id": "q_claim_2025_english-language_74783",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "0b87fe93bedeca414192c6c638012b5408db4ed65c7482f93294f74d0146e9b8",
+    "created_at": "2026-10-14T01:20:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76282_2225",
+    "question_id": "q_claim_2025_music_76282",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "f4f4a978f6c1cf3b192cb731edd264d9e7a50f2035125cc1351ea6328a0adaa6",
+    "created_at": "2026-10-14T01:20:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76283_2226",
+    "question_id": "q_claim_2025_music_76283",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "795a0d7485683be02ec5227c41b5f5f3404e3d1af0209b79b4a5ad9f97958032",
+    "created_at": "2026-10-14T01:20:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76284_2227",
+    "question_id": "q_claim_2025_music_76284",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "3d25e044e409dae705b93d853068e5a5cd91d176a39726321e6469b262741e9f",
+    "created_at": "2026-10-14T01:20:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76286_2228",
+    "question_id": "q_claim_2025_music_76286",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "34737d5b8c05027113c973ef94f08499e9f5942f154a2f6a3ae1e7ac812553e2",
+    "created_at": "2026-10-14T01:20:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76287_2229",
+    "question_id": "q_claim_2025_music_76287",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "1bf98ea3f601e0daa9687acb109ed6edd4e51ac6927b086b25ed65bc7f2373b4",
+    "created_at": "2026-10-14T01:20:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76288_2230",
+    "question_id": "q_claim_2025_music_76288",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "3638a2aa8ae132d5de8990240825a4155fb1d59e648fdc2f809ced3c1072f5c0",
+    "created_at": "2026-10-14T01:20:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76289_2231",
+    "question_id": "q_claim_2025_music_76289",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "eb12db26644b35ec8c95e1ecf00f5dd3103c5106628488c6cd449207cb7f3d50",
+    "created_at": "2026-10-14T01:20:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76290_2232",
+    "question_id": "q_claim_2025_music_76290",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "977159dced8cb8cd9b3c588c08355acc12b30a775249e876ca0d5ab95455e5f7",
+    "created_at": "2026-10-14T01:20:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76292_2233",
+    "question_id": "q_claim_2025_music_76292",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "1b8caec953d8f3dd405287dd116ff5549afbf5e19f6a768a4a57b1292e8ad048",
+    "created_at": "2026-10-14T01:20:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76293_2234",
+    "question_id": "q_claim_2025_music_76293",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "9f15eafbb0338e6029ce39b4ba09f147986af3984eb817ddf492a025890e742c",
+    "created_at": "2026-10-14T01:20:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76295_2235",
+    "question_id": "q_claim_2025_music_76295",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "da6dc0fbd8a9c5dec2fef407857914929481599d377b12a3640620af91900e8b",
+    "created_at": "2026-10-14T01:20:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76296_2236",
+    "question_id": "q_claim_2025_music_76296",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "2d2a6754554e0f9c5137fbd96582618336f2e9f42d75844e7ac24fd795a0b6fd",
+    "created_at": "2026-10-14T01:20:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76297_2237",
+    "question_id": "q_claim_2025_music_76297",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "232677d94103b76bfc81683474ef75914cabd146a3d26358e88898e8cdf1eee4",
+    "created_at": "2026-10-14T01:20:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76298_2238",
+    "question_id": "q_claim_2025_music_76298",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "6adac4c2145cedebcb6e45db472248313cc08f079cf93bb7256c81f953284894",
+    "created_at": "2026-10-14T01:20:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76299_2239",
+    "question_id": "q_claim_2025_music_76299",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "c197f604077706b6d85cbaf565350d50ad11b82631982b990df2b26785952bf3",
+    "created_at": "2026-10-14T01:20:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76301_2240",
+    "question_id": "q_claim_2025_music_76301",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "73cef27f978ecbe9e76751d220ca89afd6772f097c763293bd95d2281b972fdd",
+    "created_at": "2026-10-14T01:20:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76302_2241",
+    "question_id": "q_claim_2025_music_76302",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "58e99e2420685827cecc5b9d0331b32014c96f8fc42b1793c8b5a43b76ef7fe0",
+    "created_at": "2026-10-14T01:20:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76306_2242",
+    "question_id": "q_claim_2025_music_76306",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "328533e886a728d123d8b4ae778fe4f1629dd37e91757d80136e233c37efb76f",
+    "created_at": "2026-10-14T01:20:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76307_2243",
+    "question_id": "q_claim_2025_music_76307",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "dcd722e90dfd4c69f3a635b2100a13b98633426eedc5a6fa806869c3701bd52e",
+    "created_at": "2026-10-14T01:20:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76308_2244",
+    "question_id": "q_claim_2025_music_76308",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "fe7250f9ce2e966e5ea8206d646493ac78e488c203448119a67ad59738c49bfd",
+    "created_at": "2026-10-14T01:20:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76309_2245",
+    "question_id": "q_claim_2025_music_76309",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "4b5b67772ba1f0b1679a1408a4cd724b018263d254fbd1d6fc6638d394d312f6",
+    "created_at": "2026-10-14T01:20:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76310_2246",
+    "question_id": "q_claim_2025_music_76310",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "9429c0c0e708605c1dc03f515bc3abadd7c0e34ee44226761c456a3739d3f46f",
+    "created_at": "2026-10-14T01:20:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76311_2247",
+    "question_id": "q_claim_2025_music_76311",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "4c71652f745b2ed6758178f50142a237de62fc283878f90fdffa26003681faaf",
+    "created_at": "2026-10-14T01:20:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76312_2248",
+    "question_id": "q_claim_2025_music_76312",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "23ca73eb548de6f8bda6e990e88b990c1f531868439250ed9f2e229309f8e03b",
+    "created_at": "2026-10-14T01:20:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76314_2249",
+    "question_id": "q_claim_2025_music_76314",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "ea471bbccb42337fbe25dddc18330d5216bd6068d3920f2ae4d1f31919135938",
+    "created_at": "2026-10-14T01:20:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76315_2250",
+    "question_id": "q_claim_2025_music_76315",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "8e966d59358e4bcc8fc4ebfa6672bad5793528a4cde1b8c56e82525d523fd749",
+    "created_at": "2026-10-14T01:20:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76317_2251",
+    "question_id": "q_claim_2025_music_76317",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "525f93f93c3d99ab92a542b0d1ef4112307b1709adc68f654df44028d7d0aa06",
+    "created_at": "2026-10-14T01:20:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76319_2252",
+    "question_id": "q_claim_2025_music_76319",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "e3d3796004e60de3f1bb5c25b5abf8fcf908ef9829d5f0849e7aabeb6330a743",
+    "created_at": "2026-10-14T01:20:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76322_2253",
+    "question_id": "q_claim_2025_music_76322",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "5e2742271dc6514e217edd7d7914303b1629051fdbc0664fde42826be9dedf77",
+    "created_at": "2026-10-14T01:20:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76323_2254",
+    "question_id": "q_claim_2025_music_76323",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "1b74b22501ba839583d3422179eb943f0d7c8ac250e98a18fa738293431e5d5d",
+    "created_at": "2026-10-14T01:20:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76324_2255",
+    "question_id": "q_claim_2025_music_76324",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "40beb732ba4e4a726eed98614817a842985a01c738028e131fa98786174c37aa",
+    "created_at": "2026-10-14T01:20:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76325_2256",
+    "question_id": "q_claim_2025_music_76325",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "69e7fbfcf5a2f50e057be4f3636022660f05f55e6b168ff344e22a5d997f5c70",
+    "created_at": "2026-10-14T01:20:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_music_76326_2257",
+    "question_id": "q_claim_2025_music_76326",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "0e69749454cfc0dda09977760bba4828bbc95f702a18b6f134ecda2de17721f9",
+    "created_at": "2026-10-14T01:20:42Z"
+  },
+  {
+    "id": "v_t74853_2258",
+    "question_id": "t74853",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "content_hash": "cad19fae5819497d06bbb4fab2dec409d5335a85431c29c358d4662fa20b5960",
+    "created_at": "2026-10-14T01:20:52Z"
   }
 ]
