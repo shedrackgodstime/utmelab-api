@@ -217,3 +217,18 @@ first so the fail-closed validation is the write gate (R4); the novel
 docs are read from disk because `load()` retains only ≥50q novels for
 serving while validation covers all 6. All six tables registered in
 `audit-db`. Files stay source; tables warm standby.
+
+## Phase 4 record (2026-10-14, draft)
+
+Catalog + blueprints seeded via `examples/seed_catalog.rs`: subjects 34,
+exams 4, topics 582, subtopics 2156, countries 5, topic_countries 0,
+exam_requirements 2, blueprints 80 — counts equal all 8 tables (PARITY OK).
+`JsonStore::load` first as the R4 write gate; PK tables upsert by key,
+keyless tables rebuild wholesale (slow-moving, single writer — documented
+draft). Foundation fix in the same pass: a stale pre-pinned `subjects`
+table was found live (empty, carried `full_exam_questions` instead of the
+pinned `objective_paper_questions`); the seed drops + rebuilds all 8
+catalog tables, and the re-read DDL confirms the pinned shape. All 14
+content tables registered in `audit-db`. With this the pinned DDL is fully
+landed: every JSON file has its table. Files stay source until the
+TursoStore read path lands; JSON dumps remain as export/backup (R8).

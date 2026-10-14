@@ -72,6 +72,14 @@ pub async fn run(db: &Db) -> Result<AuditReport, ApiError> {
         "novel_characters",
         "novel_themes",
         "novel_questions",
+        "subjects",
+        "exams",
+        "topics",
+        "subtopics",
+        "countries",
+        "topic_countries",
+        "exam_requirements",
+        "blueprints",
     ] {
         extra.push(TableAudit {
             name: table,
