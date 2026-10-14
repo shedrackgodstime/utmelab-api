@@ -5,6 +5,7 @@ use axum::Router;
 
 use crate::AppState;
 
+pub mod blueprints;
 pub mod exams;
 pub mod keys;
 pub mod novels;
@@ -26,4 +27,5 @@ pub fn router() -> Router<AppState> {
         .merge(reports::router())
         .merge(passages::router())
         .merge(topics::router())
+        .merge(blueprints::router())
 }

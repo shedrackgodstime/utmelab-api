@@ -98,6 +98,7 @@ struct Fetched {
     verifications: Vec<crate::bank::model::Verification>,
     novels: Vec<NovelDoc>,
     passages: Vec<Passage>,
+    blueprints: Vec<crate::bank::readiness::Blueprint>,
 }
 
 impl Fetched {
@@ -115,6 +116,7 @@ impl Fetched {
             verifications: self.verifications.clone(),
             novels: self.novels.clone(),
             passages: self.passages.clone(),
+            blueprints: self.blueprints.clone(),
         }
     }
 }
@@ -183,6 +185,7 @@ impl TursoStore {
             verifications,
             novels,
             passages,
+            blueprints,
         } = fetched;
         Self::build_parts(StoreParts {
             exams,
@@ -196,6 +199,7 @@ impl TursoStore {
             verifications,
             novels,
             passages,
+            blueprints,
             withheld_questions: Vec::new(),
             withheld_notes: 0,
             version,
@@ -437,7 +441,40 @@ impl TursoStore {
             verifications,
             novels,
             passages,
+            blueprints: Self::load_blueprints(db).await?,
         })
+    }
+
+    async fn load_blueprints(db: &Db) -> Result<Vec<crate::bank::readiness::Blueprint>, ApiError> {
+        all(
+            db,
+            "SELECT exam,subject,level,topic,section,members,paper_size,pct,pct_low,pct_high,expected,expected_low,expected_high,source,sample,method,confidence,status,note FROM blueprints",
+            "blueprints",
+            |r| {
+                Ok(crate::bank::readiness::Blueprint {
+                    exam: get(r, 0, "bp.exam")?,
+                    subject: get(r, 1, "bp.subject")?,
+                    level: get(r, 2, "bp.level")?,
+                    topic: opt_string(r, 3, "bp.topic")?,
+                    section: opt_string(r, 4, "bp.section")?,
+                    members: json_col(r, 5, "bp.members")?,
+                    paper_size: get::<i64>(r, 6, "bp.size")? as u32,
+                    pct: get::<Option<f64>>(r, 7, "bp.pct")?,
+                    pct_low: get::<Option<f64>>(r, 8, "bp.pctl")?,
+                    pct_high: get::<Option<f64>>(r, 9, "bp.pcth")?,
+                    expected: get::<Option<f64>>(r, 10, "bp.exp")?,
+                    expected_low: get::<Option<f64>>(r, 11, "bp.expl")?,
+                    expected_high: get::<Option<f64>>(r, 12, "bp.exph")?,
+                    source: opt_string(r, 13, "bp.source")?,
+                    sample: opt_string(r, 14, "bp.sample")?,
+                    method: get(r, 15, "bp.method")?,
+                    confidence: opt_string(r, 16, "bp.conf")?,
+                    status: get(r, 17, "bp.status")?,
+                    note: get(r, 18, "bp.note").unwrap_or_default(),
+                })
+            },
+        )
+        .await
     }
 
     async fn load_novels(db: &Db) -> Result<Vec<crate::bank::model::NovelDoc>, ApiError> {
@@ -804,5 +841,9 @@ impl Store for TursoStore {
     }
     fn novel(&self, id: &str) -> Option<&NovelDoc> {
         self.inner.novel(id)
+    }
+
+    fn blueprints(&self, exam: &str, subject: &str) -> Vec<crate::bank::readiness::Blueprint> {
+        self.inner.blueprints(exam, subject)
     }
 }

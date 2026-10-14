@@ -18,6 +18,7 @@ use super::model::{
     Country, Exam, Novel, NovelDoc, Passage, Question, Requirement, Subject, Verification,
     human_verified,
 };
+use super::readiness::Blueprint;
 use super::store::{MAX_PER_PAGE, QuestionFilter, QuestionPage, Store};
 use super::{Subtopic, Syllabus, SyllabusSubtopic, SyllabusSummary, SyllabusTopic, Topic};
 
@@ -61,6 +62,7 @@ const EMBEDDED_EXAMS: &str = include_str!("../../data/exams.json");
 const EMBEDDED_COUNTRIES: &str = include_str!("../../data/countries.json");
 const EMBEDDED_TOPIC_COUNTRIES: &str = include_str!("../../data/topic_countries.json");
 const EMBEDDED_REQUIREMENTS: &str = include_str!("../../data/exam_requirements.json");
+const EMBEDDED_BLUEPRINTS: &str = include_str!("../../data/blueprints.json");
 
 const EMBEDDED_NOVELS: &[(&str, &str)] = &[
     (
@@ -170,6 +172,7 @@ pub struct JsonStore {
     verifications: Vec<Verification>,
     novels: Vec<NovelDoc>,
     novel_by_id: HashMap<String, usize>,
+    blueprints: Vec<Blueprint>,
     passages: Vec<Passage>,
     /// Content fingerprint of every file we loaded (D42). Cheap invalidation
     /// for consumers: poll `/health`, compare one string.
@@ -194,6 +197,7 @@ pub(crate) struct StoreParts {
     pub verifications: Vec<Verification>,
     pub novels: Vec<NovelDoc>,
     pub passages: Vec<Passage>,
+    pub blueprints: Vec<Blueprint>,
     /// Valid rows that are not servable. Turso passes an empty vec plus
     /// its own note count until withheld migrates (Phase 2 record).
     pub withheld_questions: Vec<Question>,
@@ -216,6 +220,9 @@ impl JsonStore {
         let countries: Vec<Country> = read(dir, FILES[6], &mut c);
         let scope_rows: Vec<TopicScopeRow> = read(dir, FILES[7], &mut c);
         let requirements: Vec<Requirement> = read(dir, FILES[8], &mut c);
+        // Provisional expectations (D63): a missing file means none, never
+        // a boot failure — same tolerance as a missing verifications log.
+        let blueprints: Vec<Blueprint> = read_optional(dir, "blueprints.json", &mut c);
 
         let mut store = Self {
             exams,
@@ -239,6 +246,7 @@ impl JsonStore {
             verifications: Vec::new(),
             novels: Vec::new(),
             novel_by_id: HashMap::new(),
+            blueprints,
             passages: std::mem::take(&mut store_passages),
             passage_by_id: HashMap::new(),
             version: String::new(),
@@ -293,6 +301,8 @@ impl JsonStore {
             parse_embedded("topic_countries.json", EMBEDDED_TOPIC_COUNTRIES, &mut c);
         let requirements: Vec<Requirement> =
             parse_embedded("exam_requirements.json", EMBEDDED_REQUIREMENTS, &mut c);
+        let blueprints: Vec<Blueprint> =
+            parse_embedded("blueprints.json", EMBEDDED_BLUEPRINTS, &mut c);
         let questions: Vec<Question> = read(dir, FILES[4], &mut c);
 
         let mut store = Self {
@@ -317,6 +327,7 @@ impl JsonStore {
             verifications: Vec::new(),
             novels: Vec::new(),
             novel_by_id: HashMap::new(),
+            blueprints,
             passages: std::mem::take(&mut store_passages),
             passage_by_id: HashMap::new(),
             version: String::new(),
@@ -689,6 +700,7 @@ impl JsonStore {
             verifications: p.verifications,
             novels: p.novels,
             novel_by_id: HashMap::new(),
+            blueprints: p.blueprints,
             passages: p.passages,
             passage_by_id: HashMap::new(),
             version: p.version,
@@ -1169,6 +1181,14 @@ impl Store for JsonStore {
     fn novel(&self, id: &str) -> Option<&NovelDoc> {
         self.novel_by_id.get(id).map(|i| &self.novels[*i])
     }
+
+    fn blueprints(&self, exam: &str, subject: &str) -> Vec<Blueprint> {
+        self.blueprints
+            .iter()
+            .filter(|b| b.exam == exam && b.subject == subject)
+            .cloned()
+            .collect()
+    }
 }
 
 /// The latest cycle a novel is prescribed for — what "current" means.
@@ -1235,6 +1255,32 @@ fn read<T: for<'de> serde::Deserialize<'de>>(dir: &Path, file: &str, c: &mut Che
 /// happened yet — empty, not fatal. A malformed file fails the boot: a log
 /// we cannot parse is worse than no log, because derivation would silently
 /// un-verify the bank.
+/// Optional table read: a missing file means an empty table, never a boot
+/// failure. Provisional data (D63 blueprints) must not gate serving.
+fn read_optional<T: for<'de> serde::Deserialize<'de>>(
+    dir: &Path,
+    file: &str,
+    c: &mut Checker,
+) -> Vec<T> {
+    let full = dir.join(file);
+    let bytes = match std::fs::read(&full) {
+        Ok(b) => b,
+        Err(e) if e.kind() == std::io::ErrorKind::NotFound => return Vec::new(),
+        Err(e) => {
+            c.problems
+                .push(format!("{file}: cannot read ({}): {e}", full.display()));
+            return Vec::new();
+        }
+    };
+    match serde_json::from_slice(&bytes) {
+        Ok(v) => v,
+        Err(e) => {
+            c.problems.push(format!("{file}: {e}"));
+            Vec::new()
+        }
+    }
+}
+
 fn read_verifications(path: &Path, c: &mut Checker) -> Vec<Verification> {
     let bytes = match std::fs::read(path) {
         Ok(b) => b,
@@ -1330,6 +1376,7 @@ fn fingerprint_embedded(dir: &Path) -> String {
         ("countries.json", EMBEDDED_COUNTRIES),
         ("topic_countries.json", EMBEDDED_TOPIC_COUNTRIES),
         ("exam_requirements.json", EMBEDDED_REQUIREMENTS),
+        ("blueprints.json", EMBEDDED_BLUEPRINTS),
     ] {
         hasher.update(name.as_bytes());
         hasher.update(content.as_bytes());

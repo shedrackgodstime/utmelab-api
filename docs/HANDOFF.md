@@ -353,6 +353,12 @@ disagree. Two lists is how subjects drift.
     measures-of-dispersion, mensuration, polynomials,
     representation-of-data. Caught in-test: same-topic buckets overwrote
     each other (conservation assert fired, fixed to extend).
+42. **Blueprint endpoint done 2026-10-14 (P4-2, opt-in D63)** — `GET
+    /api/v1/blueprints/{exam}/{subject}` serves the readiness account
+    with provenance per row; default syllabus untouched. Store trait
+    gains `blueprints()` (both stores; JsonStore reads optionally so
+    scratch banks still boot). Unmapped-only subjects 404 honestly.
+    Drift test covers the new path; endpoint test pins maths 17/23.
 34. **Maths P4 groundwork done 2026-10-14** — 74199 verified (figure read:
     x = 2, modal weight 58; honest legacy note replaced with the working).
     **74188 parked**: modal class 30–39 gives 29.5 + 6/10×10 = 35.5, no

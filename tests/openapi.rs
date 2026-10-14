@@ -87,6 +87,7 @@ fn concrete(path: &str) -> String {
     }
     path.replace("{exam}", "JAMB")
         .replace("{slug}", "use-of-english")
+        .replace("{subject}", "mathematics")
         .replace("{id}", "lekki-headmaster")
 }
 

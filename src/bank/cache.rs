@@ -34,6 +34,7 @@ pub(crate) struct Snapshot {
     pub(crate) verifications: Vec<Verification>,
     pub(crate) novels: Vec<NovelDoc>,
     pub(crate) passages: Vec<Passage>,
+    pub(crate) blueprints: Vec<crate::bank::readiness::Blueprint>,
 }
 
 impl Snapshot {
@@ -50,6 +51,7 @@ impl Snapshot {
             verifications: self.verifications,
             novels: self.novels,
             passages: self.passages,
+            blueprints: self.blueprints,
             withheld_questions: Vec::new(),
             withheld_notes: 0,
             version: self.version,

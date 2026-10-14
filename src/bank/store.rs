@@ -6,6 +6,7 @@
 //! moves.
 
 use crate::bank::model::{Exam, Question, Requirement, Subject, Subtopic, Topic};
+use crate::bank::readiness::Blueprint;
 use crate::bank::{Novel, NovelDoc, Passage, Syllabus};
 
 /// Default page size when a caller does not ask for one (D30).
@@ -134,4 +135,8 @@ pub trait Store: Send + Sync {
 
     /// A whole novel document: book, chapters, characters, themes.
     fn novel(&self, id: &str) -> Option<&NovelDoc>;
+
+    /// Measured expectations for one exam subject (D63, provisional,
+    /// opt-in). Empty where no blueprint rows exist — absence is honest.
+    fn blueprints(&self, exam: &str, subject: &str) -> Vec<Blueprint>;
 }
