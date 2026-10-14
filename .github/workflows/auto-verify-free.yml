@@ -1,0 +1,70 @@
+name: Auto-verify WAEC Questions (Free Models)
+
+on:
+  workflow_dispatch:
+    inputs:
+      subject:
+        description: 'Subject to verify'
+        required: true
+        type: choice
+        options:
+          - economics
+          - physics
+          - chemistry
+          - biology
+          - agriculture
+          - computer-studies
+          - data-processing
+      limit:
+        description: 'Max questions to verify'
+        required: false
+        default: '20'
+        type: string
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  auto-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install opencode
+        run: |
+          curl -fsSL https://opencode.ai/install | bash
+          echo "$HOME/.opencode/bin" >> $GITHUB_PATH
+
+      - name: Resolve free model
+        id: resolve-model
+        uses: 0xLLLLH/opencode-free-models@main
+        with:
+          providers: "opencode"
+          pick: "first"
+
+      - name: Install opencode
+        run: |
+          curl -fsSL https://opencode.ai/install | bash
+          echo "$HOME/.opencode/bin" >> $GITHUB_PATH
+
+      - name: Login to OpenCode Zen (free tier)
+        run: |
+          opencode auth login --provider zen
+        env:
+          OPENCODE_ZEN_API_KEY: ${{ secrets.OPENCODE_ZEN_API_KEY }}
+
+      - name: Run auto-verification with free model
+        run: |
+          python3 tools/auto_verify_opencode.py \
+            --subject ${{ github.event.inputs.subject }} \
+            --exam WAEC \
+            --limit ${{ github.event.inputs.limit }} \
+            --model ${{ steps.resolve-model.outputs.model_id }} \
+            --dry-run
+        env:
+          # No additional API keys needed if OPENCODE_ZEN_API_KEY is set!
