@@ -11706,19 +11706,6 @@
     "created_at": "2026-10-13T18:04:54Z"
   },
   {
-    "id": "v_q_claim_2025_computer-studies_64092_0887",
-    "question_id": "q_claim_2025_computer-studies_64092",
-    "kind": "human",
-    "verdict": "pass",
-    "scope": [
-      "answer",
-      "explanation"
-    ],
-    "verifier": "comp1a-review",
-    "content_hash": "ad2ec44a7f6a2660408107bbc3f02d90ed6eee25380232e9bd5e4445e713f410",
-    "created_at": "2026-10-13T18:04:55Z"
-  },
-  {
     "id": "v_q_claim_2025_computer-studies_64093_0888",
     "question_id": "q_claim_2025_computer-studies_64093",
     "kind": "human",
@@ -22990,19 +22977,6 @@
     "created_at": "2026-10-14T00:37:52Z"
   },
   {
-    "id": "v_q_claim_2025_hausa_76200_1755",
-    "question_id": "q_claim_2025_hausa_76200",
-    "kind": "human",
-    "verdict": "pass",
-    "scope": [
-      "answer",
-      "explanation"
-    ],
-    "verifier": "hausa-rewrite1",
-    "content_hash": "48214aee39ba94e97d9ec70b531fd2fb13c468f12a486110124561049d61cd6e",
-    "created_at": "2026-10-14T00:37:52Z"
-  },
-  {
     "id": "v_q_claim_2025_hausa_76201_1756",
     "question_id": "q_claim_2025_hausa_76201",
     "kind": "human",
@@ -25148,19 +25122,6 @@
     "created_at": "2026-10-14T00:51:30Z"
   },
   {
-    "id": "v_q_claim_2025_accounts-principles-of-accounts_75166_1921",
-    "question_id": "q_claim_2025_accounts-principles-of-accounts_75166",
-    "kind": "human",
-    "verdict": "pass",
-    "scope": [
-      "answer",
-      "explanation"
-    ],
-    "verifier": "poa-rewrite1",
-    "content_hash": "0518fb15c5d238ec0e0f5eb1e960b228c690e9d425e94ed6b12b90e1871337c3",
-    "created_at": "2026-10-14T00:51:30Z"
-  },
-  {
     "id": "v_q_claim_2025_accounts-principles-of-accounts_75167_1922",
     "question_id": "q_claim_2025_accounts-principles-of-accounts_75167",
     "kind": "human",
@@ -25328,19 +25289,6 @@
     "verifier": "poa-rewrite1",
     "content_hash": "b029e361ee38a853eb529ce48f2cc1fa3a634d2d62aaee2fab331c7a36c7fb9c",
     "created_at": "2026-10-14T00:51:35Z"
-  },
-  {
-    "id": "v_q_claim_2025_accounts-principles-of-accounts_75201_1935",
-    "question_id": "q_claim_2025_accounts-principles-of-accounts_75201",
-    "kind": "human",
-    "verdict": "pass",
-    "scope": [
-      "answer",
-      "explanation"
-    ],
-    "verifier": "poa-rewrite1",
-    "content_hash": "2ba0e9c47cdb188b9e775475af1d323e560da75b15bfb162d772153d3d0b9d7d",
-    "created_at": "2026-10-14T00:51:36Z"
   },
   {
     "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75544_1936",

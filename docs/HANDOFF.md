@@ -484,6 +484,29 @@ disagree. Two lists is how subjects drift.
     music crossed 40 — the inventory test now asserts all 25 serve, and the
     shortfall refusal moved to a scratch bank so the gate stays proven
     instead of going untested.
+48. **Physics tagged; duplicates audited and enforced 2026-10-14 (D72)** —
+    all 105 physics rows had `subtopic_id: null`, so they served but sat in no
+    drill path. Each is now tagged against a real syllabus slug (84 distinct
+    subtopics, physics-owned, nothing forced; `tools/physics_tag_2025_10_14.py`
+    refuses an unknown or non-physics slug and is idempotent). Live: **37 of
+    39 physics topics now carry questions, all 105 rows reachable through the
+    syllabus**, and all 25 JAMB subjects still assemble a full paper.
+    **Duplicate audit (`tools/dup_audit.py`, `tests/dedup.rs`)** found four
+    rows in verified content — two exact (`computer-studies_64092` "Fire fox"
+    typo of `64345`; `accounts_75201`, the same warrant question reordered) and
+    two same-stem rows whose keys cannot be stood behind (`accounts_75166`
+    keys "Bank note"; `hausa_76200` keys a reading its options do not contain).
+    All four dropped in favour of the twin that holds the question; bank
+    2,250 → 2,246, verifications 2,262 → 2,258. Two shared-stem pairs remain
+    and are **kept** after review: biology's two figures, computer-studies'
+    two item groups — genuinely different questions, listed in the test.
+    **The audit's first version was wrong** and that is the part worth
+    remembering: it normalized with `[^a-z0-9]`, which deletes Arabic and
+    Hausa text outright and reported 66 good rows as one duplicate.
+    `seed_questions` upserts by id, so drops cannot reach Turso through it —
+    its own parity check caught the four orphans, and
+    `examples/prune_questions.rs` (delete only ids absent from the file,
+    print each, assert the count) is the mirror's other half.
 34. **Maths P4 groundwork done 2026-10-14** — 74199 verified (figure read:
     x = 2, modal weight 58; honest legacy note replaced with the working).
     **74188 parked**: modal class 30–39 gives 29.5 + 6/10×10 = 35.5, no

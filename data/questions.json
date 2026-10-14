@@ -335,7 +335,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "simple-harmonic-motion-shm-period-frequency-amplitude-veloci",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -824,7 +824,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "simple-harmonic-motion-shm-period-frequency-amplitude-veloci",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -54466,67 +54466,6 @@
     "difficulty": 3
   },
   {
-    "id": "q_claim_2025_accounts-principles-of-accounts_75166",
-    "exam": "JAMB",
-    "subject": "principles-of-accounts",
-    "year": 2025,
-    "source": "claimed_paper",
-    "text": {
-      "text": "Which of the following is not a source document?",
-      "inline": []
-    },
-    "options": [
-      {
-        "id": "a",
-        "text": {
-          "text": "Invoice",
-          "inline": []
-        }
-      },
-      {
-        "id": "b",
-        "text": {
-          "text": "Credit note",
-          "inline": []
-        }
-      },
-      {
-        "id": "c",
-        "text": {
-          "text": "Debit note",
-          "inline": []
-        }
-      },
-      {
-        "id": "d",
-        "text": {
-          "text": "Bank note",
-          "inline": []
-        }
-      }
-    ],
-    "answer": "d",
-    "subtopic_id": "functions-of-source-documents",
-    "section": null,
-    "passage_id": null,
-    "explanation": {
-      "key_point": {
-        "text": "Banknotes never source.",
-        "inline": []
-      },
-      "body": {
-        "text": "NOT a source document: bank notes are currency. Invoices and notes all evidence.",
-        "inline": []
-      },
-      "trap": {
-        "text": "Invoices tempt as document (they are), but the NOT is banknotes.",
-        "inline": []
-      }
-    },
-    "marks": 2.5,
-    "difficulty": 3
-  },
-  {
     "id": "q_claim_2025_accounts-principles-of-accounts_75167",
     "exam": "JAMB",
     "subject": "principles-of-accounts",
@@ -55379,67 +55318,6 @@
       },
       "trap": {
         "text": "Capital tempts as owned-money, but owned riches asset.",
-        "inline": []
-      }
-    },
-    "marks": 2.5,
-    "difficulty": 3
-  },
-  {
-    "id": "q_claim_2025_accounts-principles-of-accounts_75201",
-    "exam": "JAMB",
-    "subject": "principles-of-accounts",
-    "year": 2025,
-    "source": "claimed_paper",
-    "text": {
-      "text": "Which of the following is used before the appropriation bill is approved?",
-      "inline": []
-    },
-    "options": [
-      {
-        "id": "a",
-        "text": {
-          "text": "reserved expenditure warrant",
-          "inline": []
-        }
-      },
-      {
-        "id": "b",
-        "text": {
-          "text": "virement warrant",
-          "inline": []
-        }
-      },
-      {
-        "id": "c",
-        "text": {
-          "text": "supplementary general warrant",
-          "inline": []
-        }
-      },
-      {
-        "id": "d",
-        "text": {
-          "text": "provisional general warrant",
-          "inline": []
-        }
-      }
-    ],
-    "answer": "d",
-    "subtopic_id": "instruments-of-financial-regulation",
-    "section": null,
-    "passage_id": null,
-    "explanation": {
-      "key_point": {
-        "text": "Pre-budget spends provisionally again.",
-        "inline": []
-      },
-      "body": {
-        "text": "Same as 75116: provisional general warrant. Reserved, virement and supplementary miss the before.",
-        "inline": []
-      },
-      "trap": {
-        "text": "Supplementary tempts as extra-money, but before is provisional.",
         "inline": []
       }
     },
@@ -75756,7 +75634,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "propagation-of-light-speed-frequency-and-wavelength",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -75817,7 +75695,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "power-of-a-lens-angular-magnification",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -75878,7 +75756,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "resolution-of-vectors-into-two-perpendicular-directions-incl",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -75939,7 +75817,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "anomalous-expansion-of-water",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76000,7 +75878,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "kinetic-theory-assumptions-and-use-to-explain-gas-pressure-b",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76061,7 +75939,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "production-and-propagation-wave-motion-vibrating-systems-as",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76122,7 +76000,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "electromotive-force-emf-potential-difference-p-d-current-int",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76183,7 +76061,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "thermometric-properties",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76244,7 +76122,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "principles-of-the-microscope-telescope-projector-camera-and",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76305,7 +76183,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "relative-motion-and-causes-of-motion",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76375,7 +76253,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "the-magnetic-field-fields-due-to-a-permanent-magnet-current",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76436,7 +76314,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "dispersion-of-white-light-by-a-triangular-prism",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76497,7 +76375,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "coefficient-of-limiting-friction-and-its-determination",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76558,7 +76436,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "concepts-of-electrical-energy-and-power",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76619,7 +76497,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "transmission-of-pressure-in-liquids-pascal-s-principle-and-a",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76680,7 +76558,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "newton-s-law-of-universal-gravitation",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76741,7 +76619,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "solids-linear-area-and-volume-expansivity-definition-and-det",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76802,7 +76680,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "general-gas-equation-pv-t-constant",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76863,7 +76741,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "definitions-of-work-energy-and-power-and-their-forms",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76924,7 +76802,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "determination-by-the-method-of-mixtures-and-electrical-metho",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -76985,7 +76863,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "conductivities-of-common-materials",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77046,7 +76924,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "latent-heat-specific-latent-heats-of-fusion-and-vaporisation",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77107,7 +76985,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "intrinsic-and-extrinsic-semiconductors-n-type-and-p-type-sem",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77168,7 +77046,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "critical-angle-and-total-internal-reflection",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77229,7 +77107,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "charles-law-isobaric-process",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77290,7 +77168,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "the-d-c-motor-electromagnets-the-carbon-microphone",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77351,7 +77229,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "radioactivity-properties-and-applications-of-alpha-beta-and",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77412,7 +77290,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "determination-by-the-method-of-mixtures-and-electrical-metho",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77482,7 +77360,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "principle-of-moments-moment-of-a-force-couple-and-torque-app",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77543,7 +77421,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "definitions-of-work-energy-and-power-and-their-forms",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77604,7 +77482,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "inductance-explanation-unit-and-energy-stored-in-an-inductor",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77665,7 +77543,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "mechanical-advantage-velocity-ratio-and-efficiency",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77726,7 +77604,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "archimedes-principle-and-the-law-of-flotation-and-their-appl",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77787,7 +77665,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "disadvantages-of-echoes-and-reverberation",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77848,7 +77726,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "upthrust-on-bodies-immersed-in-a-liquid",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77909,7 +77787,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "temperature-gradient-thermal-conductivity-and-heat-flux",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -77970,7 +77848,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "molecular-theory-brownian-motion-diffusion-surface-tension-c",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78031,7 +77909,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "faraday-s-laws-of-electrolysis-and-applications-electroplati",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78092,7 +77970,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "heat-capacity-and-specific-heat-capacity-of-solids-and-liqui",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78153,7 +78031,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "ideal-gas-equation-pv-nrt",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78214,7 +78092,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "static-and-dynamic-friction",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78275,7 +78153,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "the-magnetic-field-fields-due-to-a-permanent-magnet-current",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78336,7 +78214,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "definition-of-relative-density",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78397,7 +78275,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "faraday-s-laws-of-electrolysis-and-applications-electroplati",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78458,7 +78336,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "heat-capacity-and-specific-heat-capacity-of-solids-and-liqui",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78519,7 +78397,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "electromagnetic-spectrum-sources-detection-and-uses-of-the-v",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78580,7 +78458,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "hooke-s-law-and-young-s-modulus",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78641,7 +78519,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "latent-heat-specific-latent-heats-of-fusion-and-vaporisation",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78702,7 +78580,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "the-metre-bridge",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78763,7 +78641,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "explanation-of-a-c-current-and-voltage-peak-and-r-m-s-values",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78824,7 +78702,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "real-and-apparent-depth-lateral-displacement",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78885,7 +78763,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "force-on-a-moving-charge-in-a-magnetic-field",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -78946,7 +78824,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "dimensions-definition-and-examples",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -79016,7 +78894,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "resistance-and-impedance-effective-voltage-in-r-l-c-circuits",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -79077,7 +78955,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "pressure-in-liquids-relationship-between-pressure-depth-and",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -79138,7 +79016,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "superposition-of-waves-interference-beats-and-doppler-effect",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -79208,7 +79086,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "principle-of-moments-moment-of-a-force-couple-and-torque-app",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -79265,7 +79143,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "laws-of-refraction-and-refractive-index",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -79326,7 +79204,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "speed-of-sound-in-solids-liquids-and-air",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -79387,7 +79265,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "nuclear-energy-solar-energy-solar-collectors-and-solar-panel",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -79448,7 +79326,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "linear-magnification",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -79518,7 +79396,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "resolution-and-composition-of-forces-resultant-and-equilibra",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -79579,7 +79457,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "the-parallel-plate-capacitor-and-capacitance",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -79640,7 +79518,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "heat-capacity-and-specific-heat-capacity-of-solids-and-liqui",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -79701,7 +79579,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "speed-of-sound-in-solids-liquids-and-air",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -79762,7 +79640,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "types-of-thermometer-and-conversion-between-scales",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -79823,7 +79701,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "the-pin-hole-camera",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -79884,7 +79762,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "wave-particle-paradox-duality-of-matter-electron-diffraction",
     "section": null,
     "passage_id": null,
     "explanation": null,
@@ -79932,7 +79810,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "coulomb-s-inverse-square-law-electric-field-and-potential",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80002,7 +79880,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "conservation-of-energy-and-qualitative-transformations-betwe",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80063,7 +79941,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "molecular-theory-brownian-motion-diffusion-surface-tension-c",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80124,7 +80002,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "newton-s-laws-of-motion-inertia-mass-impulse-momentum-and-co",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80185,7 +80063,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "solids-linear-area-and-volume-expansivity-definition-and-det",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80246,7 +80124,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "sight-defects-and-their-corrections",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80307,7 +80185,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "commercial-units-of-energy-and-power",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80368,7 +80246,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "natural-and-artificial-magnets-magnetic-properties-of-soft-i",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80429,7 +80307,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "radioactivity-properties-and-applications-of-alpha-beta-and",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80490,7 +80368,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "daniell-cell-and-leclanch-cell-wet-and-dry",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80551,7 +80429,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "faraday-s-laws-of-electromagnetic-induction-and-factors-affe",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80612,7 +80490,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "fundamental-physical-quantities",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80682,7 +80560,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "newton-s-laws-of-motion-inertia-mass-impulse-momentum-and-co",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80743,7 +80621,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "relationship-between-frequency-wavelength-and-wave-velocity",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80804,7 +80682,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "propagation-of-light-speed-frequency-and-wavelength",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80865,7 +80743,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "laws-of-reflection-and-their-applications",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80926,7 +80804,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "capacitors-in-series-and-in-parallel",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -80987,7 +80865,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "arrangement-and-efficiency-of-cells",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81048,7 +80926,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "near-and-far-points",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81109,7 +80987,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "formation-of-shadows-and-eclipses",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81179,7 +81057,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "charging-a-body-by-friction-contact-and-induction",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81240,7 +81118,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "acceleration-due-to-gravity-g-gm-r-and-its-variation-on-the",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81301,7 +81179,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "qualitative-treatment-of-viscosity-and-terminal-velocity",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81362,7 +81240,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "charles-law-isobaric-process",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81423,7 +81301,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "newton-s-law-of-universal-gravitation",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81484,7 +81362,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "simple-harmonic-motion-shm-period-frequency-amplitude-veloci",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81554,7 +81432,7 @@
       }
     ],
     "answer": "b",
-    "subtopic_id": null,
+    "subtopic_id": "linear-motion-speed-velocity-acceleration-equations-of-unifo",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81624,7 +81502,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "arrangement-and-efficiency-of-cells",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81694,7 +81572,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "laws-of-refraction-and-refractive-index",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81755,7 +81633,7 @@
       }
     ],
     "answer": "d",
-    "subtopic_id": null,
+    "subtopic_id": "classification-mechanical-and-electromagnetic-longitudinal-a",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81816,7 +81694,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "methods-of-making-and-demagnetising-magnets",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81886,7 +81764,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "concepts-of-electrical-energy-and-power",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -81947,7 +81825,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "work-done-per-unit-volume-in-springs-and-elastic-strings",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -82008,7 +81886,7 @@
       }
     ],
     "answer": "c",
-    "subtopic_id": null,
+    "subtopic_id": "static-and-dynamic-friction",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -82069,7 +81947,7 @@
       }
     ],
     "answer": "a",
-    "subtopic_id": null,
+    "subtopic_id": "electromagnetic-spectrum-sources-detection-and-uses-of-the-v",
     "section": null,
     "passage_id": null,
     "explanation": {
@@ -87547,67 +87425,6 @@
       },
       "trap": {
         "text": "Loader tempts as boot-adjacent, but the missing piece is the OS.",
-        "inline": []
-      }
-    },
-    "marks": 2.5,
-    "difficulty": 3
-  },
-  {
-    "id": "q_claim_2025_computer-studies_64092",
-    "exam": "JAMB",
-    "subject": "computer-studies",
-    "year": 2025,
-    "source": "claimed_paper",
-    "text": {
-      "text": "Fire fox is an example of __________",
-      "inline": []
-    },
-    "options": [
-      {
-        "id": "a",
-        "text": {
-          "text": "System software",
-          "inline": []
-        }
-      },
-      {
-        "id": "b",
-        "text": {
-          "text": "Application package",
-          "inline": []
-        }
-      },
-      {
-        "id": "c",
-        "text": {
-          "text": "Application software",
-          "inline": []
-        }
-      },
-      {
-        "id": "d",
-        "text": {
-          "text": "Computer tools.",
-          "inline": []
-        }
-      }
-    ],
-    "answer": "c",
-    "subtopic_id": "internet-browsers",
-    "section": null,
-    "passage_id": null,
-    "explanation": {
-      "key_point": {
-        "text": "Firefox is application software.",
-        "inline": []
-      },
-      "body": {
-        "text": "End-user browser, not system code. System, package and tools readings misplace it.",
-        "inline": []
-      },
-      "trap": {
-        "text": "Application-package tempts as suite-talk, but Firefox is plain application software.",
         "inline": []
       }
     },
@@ -111353,67 +111170,6 @@
       },
       "trap": {
         "text": "Games-songs tempt as tale-types, but split is riddles-fantasy.",
-        "inline": []
-      }
-    },
-    "marks": 2.5,
-    "difficulty": 3
-  },
-  {
-    "id": "q_claim_2025_hausa_76200",
-    "exam": "JAMB",
-    "subject": "hausa",
-    "year": 2025,
-    "source": "claimed_paper",
-    "text": {
-      "text": "Ma'anar karin magana 'Hannu daya baya daukar jinka' ita ce -",
-      "inline": []
-    },
-    "options": [
-      {
-        "id": "a",
-        "text": {
-          "text": "A taimaka wa juna",
-          "inline": []
-        }
-      },
-      {
-        "id": "b",
-        "text": {
-          "text": "A zauna lafiya",
-          "inline": []
-        }
-      },
-      {
-        "id": "c",
-        "text": {
-          "text": "A yi sauri",
-          "inline": []
-        }
-      },
-      {
-        "id": "d",
-        "text": {
-          "text": "A ci gaba da karatu",
-          "inline": []
-        }
-      }
-    ],
-    "answer": "a",
-    "subtopic_id": "proverbs-praise-poetry-allusions-extended-sayings-riddling-l",
-    "section": null,
-    "passage_id": null,
-    "explanation": {
-      "key_point": {
-        "text": "Hands join helping.",
-        "inline": []
-      },
-      "body": {
-        "text": "Same proverb as 75986: help one another. Peace, hurry and study miss the grip.",
-        "inline": []
-      },
-      "trap": {
-        "text": "Peace tempts as moral (near), but the grip is mutual help.",
         "inline": []
       }
     },
