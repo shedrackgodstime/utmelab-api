@@ -58,6 +58,10 @@ pub async fn run(db: &Db) -> Result<AuditReport, ApiError> {
     // Missing table (pre-seed) counts as zero, never an error: audit is a
     // checker, and the file-first rule means absence is a state, not a fault.
     let verifications = count(db, "verifications").await.unwrap_or(0);
+    // Phase 2: questions warm standby (same rule; servable rows only — the
+    // withheld fixture stays file-side until the read path implements
+    // partition itself).
+    let questions = count(db, "questions").await.unwrap_or(0);
     Ok(AuditReport {
         tables: vec![
             TableAudit {
@@ -67,6 +71,10 @@ pub async fn run(db: &Db) -> Result<AuditReport, ApiError> {
             TableAudit {
                 name: "verifications",
                 rows: verifications,
+            },
+            TableAudit {
+                name: "questions",
+                rows: questions,
             },
         ],
     })

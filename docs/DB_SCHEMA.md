@@ -191,3 +191,16 @@ Re-seed 2026-10-14 (`examples/seed_verifications.rs`, committed): file grew
 PARITY OK 2259/2259 rows, 0 hash mismatches. Retry-with-backoff added after
 a transient wire drop mid-run (upserts idempotent, resumed cleanly).
 `verifications` also registered in `audit-db` (R4; missing table counts 0).
+
+## Phase 2 record (2026-10-14)
+
+`questions` seeded: 2246/2246 servable rows, per-row `content_hash`
+recomputed from table columns equal to the file fingerprint (PARITY OK).
+Seed: `examples/seed_questions.rs` (committed) — loads via `JsonStore`
+so the full fail-closed validation is the write gate (R4), upserts by id
+with `content_hash` from the shared `content_fingerprint` (R6), rebuilds
+each row from table columns into the same structs and recompares (R1).
+The 1 withheld fixture (`exam=""`) is excluded by construction
+(`store.questions()` is the servable view); it stays file-side until the
+TursoStore read path implements partition itself. File stays source;
+table warm standby. `questions` registered in `audit-db`.
