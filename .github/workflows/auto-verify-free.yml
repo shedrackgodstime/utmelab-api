@@ -20,6 +20,11 @@ on:
         required: false
         default: '20'
         type: string
+      dry_run:
+        description: 'Dry run (do not save verifications)'
+        required: false
+        default: 'false'
+        type: boolean
 
 permissions:
   contents: write
@@ -56,4 +61,4 @@ jobs:
             --subject ${{ github.event.inputs.subject }} \
             --exam WAEC \
             --limit ${{ github.event.inputs.limit }} \
-            --dry-run
+            ${{ github.event.inputs.dry_run && '--dry-run' || '' }}
