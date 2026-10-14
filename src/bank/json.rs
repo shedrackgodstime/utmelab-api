@@ -177,6 +177,31 @@ pub struct JsonStore {
     passage_by_id: HashMap<String, usize>,
 }
 
+/// Validated inputs for [`JsonStore::from_parts`]. Every clearing phase
+/// that introduces a new source (today: Turso rows) packs its reads into
+/// this and gets the whole pipeline — validation, partition, verified
+/// derivation, indices — for free.
+pub(crate) struct StoreParts {
+    pub exams: Vec<Exam>,
+    pub countries: Vec<Country>,
+    pub subjects: Vec<Subject>,
+    pub topics: Vec<Topic>,
+    pub subtopics: Vec<Subtopic>,
+    pub questions: Vec<Question>,
+    pub requirements: Vec<Requirement>,
+    /// Topic → member countries. Absent means universal (D66-scope).
+    pub scope: Vec<(String, Vec<String>)>,
+    pub verifications: Vec<Verification>,
+    pub novels: Vec<NovelDoc>,
+    pub passages: Vec<Passage>,
+    /// Valid rows that are not servable. Turso passes an empty vec plus
+    /// its own note count until withheld migrates (Phase 2 record).
+    pub withheld_questions: Vec<Question>,
+    pub withheld_notes: usize,
+    /// Fingerprint of the content being served (D42/R7).
+    pub version: String,
+}
+
 impl JsonStore {
     pub fn load(dir: impl AsRef<Path>) -> Result<Self, StoreError> {
         let dir = dir.as_ref();
@@ -628,6 +653,65 @@ impl JsonStore {
                 ));
             }
         }
+    }
+
+    /// Shared build pipeline: validate → partition → derive → retain → index.
+    /// `load()` parses files then calls this; `TursoStore::open()` loads rows
+    /// then calls this. One pipeline means the two stores cannot diverge in
+    /// behavior — only in where the bytes came from.
+    pub(crate) fn from_parts(p: StoreParts) -> Result<Self, StoreError> {
+        let mut c = Checker::default();
+        let mut store = Self {
+            exams: p.exams,
+            countries: p.countries,
+            subjects: p.subjects,
+            topics: p.topics,
+            subtopics: p.subtopics,
+            questions: p.questions,
+            requirements: p.requirements,
+            exam_by_code: HashMap::new(),
+            country_by_code: HashMap::new(),
+            topic_scope: scope_map(
+                p.scope
+                    .into_iter()
+                    .map(|(topic, countries)| TopicScopeRow { topic, countries })
+                    .collect(),
+                &mut c,
+            ),
+            subject_by_key: HashMap::new(),
+            subjects_by_exam: HashMap::new(),
+            topics_by_subject: HashMap::new(),
+            subtopics_by_topic: HashMap::new(),
+            subtopic_topic: HashMap::new(),
+            questions_by_subtopic: HashMap::new(),
+            withheld: 0,
+            withheld_questions: p.withheld_questions,
+            verifications: p.verifications,
+            novels: p.novels,
+            novel_by_id: HashMap::new(),
+            passages: p.passages,
+            passage_by_id: HashMap::new(),
+            version: p.version,
+        };
+        store.validate(&mut c);
+
+        if !c.problems.is_empty() {
+            return Err(StoreError {
+                problems: c.problems,
+            });
+        }
+
+        // Same serving behavior as `load()`: only fully-assigned questions
+        // and ≥50-question novels serve; withheld notes are warnings.
+        store.partition();
+        store.derive_verified();
+        store.novels.retain(|n| n.questions.len() >= 50);
+        for note in &c.withheld {
+            tracing::warn!("withheld from serving: {note}");
+        }
+        store.withheld = p.withheld_notes + c.withheld.len();
+        store.index();
+        Ok(store)
     }
 
     /// Every servable question. Used by integrity tests and bulk jobs.

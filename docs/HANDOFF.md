@@ -345,6 +345,12 @@ disagree. Two lists is how subjects drift.
     imperfect cadence, augmented triad. Bank now complete at review
     level: every servable row explained + verified; only documented
     parks remain explanationless.
+35. **TursoStore read path done 2026-10-14** — `TursoStore::open` loads all
+    14 tables through shared `JsonStore::from_parts` (new); every `Store`
+    method delegates, so serving semantics identical by construction.
+    Cutover: `UTMELAB_BANK_STORE=turso` (default `json`). R8 proof:
+    `tests/turso_parity.rs` green (counts, pages, syllabi, spot rows,
+    novels). Gaps: withheld fixture file-side; count-hash version.
 32. **CRS rewrite done 2026-10-14** — 96 authored + 1 key fix + tags +
     verified; christian-religious-studies 0 → 97 of 100. **75643 key
     corrected** c → d (Elisha raised the Shunammite boy; blindness never

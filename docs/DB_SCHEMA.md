@@ -232,3 +232,17 @@ catalog tables, and the re-read DDL confirms the pinned shape. All 14
 content tables registered in `audit-db`. With this the pinned DDL is fully
 landed: every JSON file has its table. Files stay source until the
 TursoStore read path lands; JSON dumps remain as export/backup (R8).
+
+## Read-path record (2026-10-14)
+
+`src/bank/turso_store.rs`: `TursoStore::open` loads all 14 tables and
+builds through the shared `JsonStore::from_parts` pipeline (new) — one
+pipeline, zero serving-logic duplication. Every `Store` method delegates
+to the inner store, so paging/absence/D16/D21/D57 semantics are identical
+by construction. Cutover switch: `UTMELAB_BANK_STORE=turso` (default
+`json`, current behavior); the Turso branch fails closed like files.
+`tests/turso_parity.rs` (env-gated) proves R8 dual-run: counts, pages
+(ids+verified+hashes), filtered pages, all syllabus summaries, spot rows,
+novels, passage — identical. Known gaps: withheld fixture file-side
+(`/health` differs by that 1 row, asserted); `version()` is a count-hash
+(R7 row-hash lands with cutover).

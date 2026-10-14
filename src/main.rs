@@ -14,7 +14,9 @@ use clap::{Parser, Subcommand};
 use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
 
-use utmelab_api::{ApiError, AppState, Config, Db, JsonStore, RateLimiter, ReportStore, Store};
+use utmelab_api::{
+    ApiError, AppState, Config, Db, JsonStore, RateLimiter, ReportStore, Store, TursoStore,
+};
 
 #[derive(Parser)]
 #[command(name = "utmelab-api", version, about = "UTME Lab question bank API")]
@@ -205,11 +207,36 @@ async fn serve(config: &Config) -> Result<(), ApiError> {
     // failure, not an HTTP one — its message lists every problem found and is
     // printed to stderr, never served.
     //
-    // Transitional: catalog + novels are embedded in the binary, questions come
-    // from `dir/questions.json` until the Turso question store lands. `dir`
-    // needs exactly that one file — no catalog to go stale on the VPS.
-    let bank =
-        JsonStore::load_embedded(config.data_dir()).map_err(|e| ApiError::config(e.to_string()))?;
+    // `UTMELAB_BANK_STORE=turso` serves from Turso (single source of truth;
+    // JSON is dev-only). Default `json` keeps current behavior: catalog +
+    // novels embedded, questions from `dir/questions.json`. The Turso branch
+    // runs the same fail-closed validation through the shared pipeline, so a
+    // bad bank refuses boot identically on either source (R8 dual-run).
+    let bank: Arc<dyn Store> = match config.bank_store.as_str() {
+        "turso" => {
+            let (url, token) = match (&config.turso_url, &config.turso_token) {
+                (Some(url), Some(token)) => (url.clone(), token.clone()),
+                _ => {
+                    return Err(ApiError::config(
+                        "UTMELAB_BANK_STORE=turso needs TURSO_DB_URL + TURSO_DB_TOKEN",
+                    ));
+                }
+            };
+            let db = Db::connect(&url, &token).await?;
+            let store = TursoStore::open(db).await?;
+            tracing::info!(
+                turso_version = %store.version(),
+                subjects = store.subject_count(),
+                questions = store.question_count(),
+                "bank loaded from Turso",
+            );
+            Arc::new(store)
+        }
+        _ => Arc::new(
+            JsonStore::load_embedded(config.data_dir())
+                .map_err(|e| ApiError::config(e.to_string()))?,
+        ),
+    };
     let keys = open_backend(config).await?;
     let keys_desc = keys.describe();
     let key_count = keys.count().await.unwrap_or(0);
@@ -228,7 +255,7 @@ async fn serve(config: &Config) -> Result<(), ApiError> {
     let reports_path = config.reports_file.clone();
     let state = AppState {
         keys: Arc::new(keys),
-        bank: Arc::new(bank),
+        bank,
         limiter: Arc::new(Mutex::new(RateLimiter::new())),
         reports: Arc::new(tokio::sync::Mutex::new(
             ReportStore::open(&reports_path)

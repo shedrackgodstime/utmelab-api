@@ -41,7 +41,7 @@ pub use bank::model::{
 pub use bank::model::{Verdict, Verification, VerifyCheck, VerifyKind, human_verified};
 pub use bank::{
     DEFAULT_PER_PAGE, ImagePosition, Inline, InlineKind, JsonStore, MAX_PER_PAGE, QuestionFilter,
-    RichText, Store, StoreError,
+    RichText, Store, StoreError, TursoStore,
 };
 pub use config::Config;
 pub use db::Db;

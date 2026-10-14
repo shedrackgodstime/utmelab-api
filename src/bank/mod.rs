@@ -7,13 +7,16 @@ mod json;
 pub mod model;
 pub mod scheme;
 mod store;
+pub mod turso_store;
 mod view;
 
+pub(crate) use json::StoreParts;
 pub use json::{JsonStore, StoreError};
 pub use model::{
     Choice, Exam, ExamStatus, ImagePosition, Inline, InlineKind, Novel, NovelDoc, Passage,
     Question, Requirement, RichText, Subject, Subtopic, Topic,
 };
+pub use turso_store::TursoStore;
 
 pub use scheme::Scheme;
 pub use store::{DEFAULT_PER_PAGE, MAX_PER_PAGE, QuestionFilter, Store};

@@ -38,6 +38,9 @@ pub struct Config {
     pub turso_token: Option<String>,
     /// Seconds a resolved key stays cached before re-read. Default 30.
     pub key_cache_ttl_secs: u64,
+    /// Bank source: `json` (default, current behavior) or `turso` (single
+    /// source of truth; JSON is dev-only). `UTMELAB_BANK_STORE`.
+    pub bank_store: String,
 }
 
 impl Config {
@@ -70,6 +73,7 @@ impl Config {
             .ok()
             .and_then(|v| v.parse().ok())
             .unwrap_or(30);
+        let bank_store = env::var("UTMELAB_BANK_STORE").unwrap_or_else(|_| "json".into());
 
         Ok(Self {
             bind,
@@ -80,6 +84,7 @@ impl Config {
             turso_url,
             turso_token,
             key_cache_ttl_secs,
+            bank_store,
         })
     }
 }
