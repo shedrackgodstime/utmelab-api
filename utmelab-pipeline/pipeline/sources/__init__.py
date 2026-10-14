@@ -3,6 +3,7 @@
 from typing import Dict, List, Type
 from pipeline.sources.base import BaseHarvester, RawOption, RawQuestionPayload
 from pipeline.sources.jamb import JambHarvester
+from pipeline.sources.neco import NecoHarvester
 from pipeline.sources.waec import WaecHarvester
 
 HARVESTER_REGISTRY: Dict[str, Type[BaseHarvester]] = {
@@ -10,6 +11,8 @@ HARVESTER_REGISTRY: Dict[str, Type[BaseHarvester]] = {
     "myschool_jamb": JambHarvester,
     "waec": WaecHarvester,
     "myschool_waec": WaecHarvester,
+    "neco": NecoHarvester,
+    "myschool_neco": NecoHarvester,
 }
 
 

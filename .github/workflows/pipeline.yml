@@ -11,10 +11,13 @@ on:
         options:
           - "harvest"
           - "process"
+          - "promote"
+          - "metrics"
           - "status"
+          - "sync-to-prod"
       subject:
         description: "Subject slug (e.g. physics, mathematics, chemistry)"
-        required: true
+        required: false
         default: "physics"
         type: string
       exam:
@@ -47,7 +50,12 @@ on:
         default: "4"
         type: string
       auto_promote:
-        description: "Auto-promote high-confidence verified rows to production"
+        description: "Auto-promote high-confidence verified rows to Pipeline DB"
+        required: false
+        default: false
+        type: boolean
+      confirm_prod_sync:
+        description: "Explicitly confirm live write for sync-to-prod (SAFETY)"
         required: false
         default: false
         type: boolean
@@ -78,6 +86,10 @@ jobs:
           python -m pip install --upgrade pip uv
           uv pip install -e "utmelab-pipeline/[dev]" --system
 
+      - name: Run Test Suite
+        run: |
+          cd utmelab-pipeline && pytest -v
+
       - name: Execute Pipeline Action
         env:
           TURSO_PIPELINE_DB_URL: ${{ secrets.TURSO_PIPELINE_DB_URL }}
@@ -104,6 +116,36 @@ jobs:
               --limit "${{ github.event.inputs.limit }}" \
               --concurrency "${{ github.event.inputs.concurrency }}" \
               $PROMOTE_FLAG
+          elif [ "$ACTION" = "promote" ]; then
+            SUBJ_ARG=""
+            if [ -n "${{ github.event.inputs.subject }}" ]; then
+              SUBJ_ARG="--subject ${{ github.event.inputs.subject }}"
+            fi
+            pipeline promote $SUBJ_ARG --limit "${{ github.event.inputs.limit }}"
+          elif [ "$ACTION" = "metrics" ]; then
+            pipeline metrics --summary-file "$GITHUB_STEP_SUMMARY"
           elif [ "$ACTION" = "status" ]; then
             pipeline status
+          elif [ "$ACTION" = "sync-to-prod" ]; then
+            CONFIRM_FLAG=""
+            if [ "${{ github.event.inputs.confirm_prod_sync }}" = "true" ]; then
+              CONFIRM_FLAG="--confirm"
+            fi
+            SUBJ_ARG=""
+            if [ -n "${{ github.event.inputs.subject }}" ]; then
+              SUBJ_ARG="--subject ${{ github.event.inputs.subject }}"
+            fi
+            pipeline sync-to-prod $SUBJ_ARG --exam "${{ github.event.inputs.exam }}" $CONFIRM_FLAG
+          fi
+
+      - name: Generate Pipeline Observability Telemetry
+        if: always()
+        env:
+          TURSO_PIPELINE_DB_URL: ${{ secrets.TURSO_PIPELINE_DB_URL }}
+          TURSO_PIPELINE_DB_TOKEN: ${{ secrets.TURSO_PIPELINE_DB_TOKEN }}
+          TURSO_PROD_DB_URL: ${{ secrets.TURSO_PROD_DB_URL }}
+          TURSO_PROD_DB_TOKEN: ${{ secrets.TURSO_PROD_DB_TOKEN }}
+        run: |
+          if [ -n "$TURSO_PIPELINE_DB_URL" ]; then
+            pipeline metrics --summary-file "$GITHUB_STEP_SUMMARY" || true
           fi

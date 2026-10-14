@@ -298,5 +298,92 @@ def status_cmd():
     asyncio.run(_status())
 
 
+# ── METRICS COMMAND ────────────────────────────────────────────────────────
+
+@main.command("metrics")
+@click.option("--subject", default=None, help="Subject filter (optional)")
+@click.option("--exam", default=None, help="Exam body filter (optional, e.g. JAMB, WAEC)")
+@click.option("--json", "as_json", is_flag=True, default=False, help="Output pure JSON telemetry")
+@click.option("--summary-file", default=None, help="Path to write GitHub Flavored Markdown summary (e.g. $GITHUB_STEP_SUMMARY)")
+def metrics_cmd(subject: Optional[str], exam: Optional[str], as_json: bool, summary_file: Optional[str]):
+    """Displays pipeline observability metrics, conversion funnel, and telemetry."""
+    from pipeline.metrics.collector import MetricsCollector
+    pipe_client, prod_client = get_clients()
+    collector = MetricsCollector(pipe_client, prod_client)
+
+    async def _metrics():
+        data = await collector.collect(subject=subject, exam=exam)
+        if as_json:
+            click.echo(json.dumps(data, indent=2))
+        else:
+            click.echo(collector.render_cli_dashboard(data))
+
+        if summary_file:
+            md = collector.render_markdown_summary(data)
+            with open(summary_file, "a", encoding="utf-8") as f:
+                f.write(md + "\n")
+            click.echo(f"\nMarkdown summary appended to {summary_file}")
+
+        pipe_client.close()
+        if prod_client:
+            prod_client.close()
+
+    asyncio.run(_metrics())
+
+
+# ── SYNC-TO-PROD COMMAND ───────────────────────────────────────────────────
+
+@main.command("sync-to-prod")
+@click.option("--subject", default=None, help="Filter by subject slug (optional)")
+@click.option("--exam", default=None, help="Filter by exam body (optional, e.g. JAMB, WAEC)")
+@click.option("--limit", "-n", default=None, type=int, help="Maximum questions to sync")
+@click.option("--confirm", is_flag=True, default=False, help="Confirm live write to Production Turso DB")
+@click.option("--dry-run", is_flag=True, default=False, help="Preview sync and run relational validations without writing")
+def sync_to_prod_cmd(subject: Optional[str], exam: Optional[str], limit: Optional[int], confirm: bool, dry_run: bool):
+    """Safely synchronizes audited questions from Pipeline DB to Production Turso DB.
+
+    SAFETY INVARIANT:
+    Defaults to DRY-RUN mode. Requires explicit --confirm to perform live writes to TURSO_PROD_DB.
+    """
+    from pipeline.orchestrator.sync_prod import ProductionSyncEngine
+    pipe_client, prod_client = get_clients()
+
+    if not prod_client:
+        click.echo("Error: TURSO_PROD_DB_URL is not configured. Cannot sync to production.", err=True)
+        raise SystemExit(1)
+
+    is_dry = dry_run or not confirm
+    if not confirm and not dry_run:
+        click.echo("NOTE: Executing in DRY-RUN mode. Pass --confirm to commit writes to Production Turso DB.\n")
+
+    engine = ProductionSyncEngine(pipe_client, prod_client)
+
+    async def _sync():
+        res = await engine.validate_and_sync(subject=subject, exam=exam, limit=limit, dry_run=is_dry)
+        click.echo("=== Production Sync Summary ===")
+        click.echo(f"Mode: {'DRY RUN (Preview Only)' if res['dry_run'] else 'LIVE COMMIT TO PRODUCTION'}")
+        click.echo(f"Total Candidates: {res['total_candidates']}")
+        click.echo(f"Passed Validation: {res['validated_pass']}")
+        click.echo(f"Validation Failures: {len(res['validation_failures'])}")
+
+        if res['validation_failures']:
+            click.echo("\nValidation Errors Encountered:")
+            for fail in res['validation_failures']:
+                click.echo(f"  • [{fail['question_id']}] {fail['subject']}: {'; '.join(fail['errors'])}")
+
+        click.echo(f"\nPassages to Sync: {len(res['passages_to_sync'])}")
+        click.echo(f"Questions to Sync: {len(res['questions_to_sync'])}")
+
+        if not res['dry_run']:
+            click.echo(f"Successfully Synced Passages: {res['passages_synced']}")
+            click.echo(f"Successfully Synced Questions: {res['questions_synced']}")
+
+        pipe_client.close()
+        prod_client.close()
+
+    asyncio.run(_sync())
+
+
 if __name__ == "__main__":
     main()
+

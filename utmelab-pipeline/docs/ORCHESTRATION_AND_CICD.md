@@ -12,28 +12,34 @@ Instead of sequentially running crawls or AI tasks on a local machine, the pipel
 
 ```mermaid
 flowchart TD
-    DISPATCH["workflow_dispatch (Select Exam & Subjects)"]
+    DISPATCH["workflow_dispatch (Select Action & Scope)"]
     
-    subgraph "GitHub Actions Matrix (Parallel Runners)"
-        R1["Runner 1: Mathematics (concurrency 4)"]
-        R2["Runner 2: Physics (concurrency 4)"]
-        R3["Runner 3: Chemistry (concurrency 4)"]
-        R4["Runner 4: Biology (concurrency 4)"]
+    subgraph "GitHub Actions Runners"
+        R1["Harvester & Gate 0"]
+        R2["OpenCode AI Verification"]
+        R3["Observability Metrics & SLA"]
     end
     
-    subgraph "Turso Dedicated Pipeline DB"
+    subgraph "Turso Dedicated Pipeline DB (Isolated Writes)"
         ST["harvest_staging"]
         RQ["review_queue"]
+        AQ["approved_questions"]
+        AP["approved_passages"]
+        AV["approved_verifications"]
     end
 
-    subgraph "Turso Production DB"
-        PROD["questions + verifications"]
+    subgraph "Turso Production DB (Read-Only Syllabus / Audited Sync)"
+        SYLL["topics & subtopics (Read-Only)"]
+        PROD["questions + passages (Explicit Sync Only)"]
     end
 
-    DISPATCH --> R1 & R2 & R3 & R4
-    R1 & R2 & R3 & R4 --> ST
-    R1 & R2 & R3 & R4 -->|Discrepancies| RQ
-    R1 & R2 & R3 & R4 -->|Auto-Approved Promoted| PROD
+    DISPATCH --> R1 & R2 & R3
+    R1 --> ST
+    R2 --> ST & RQ
+    R2 -->|promote| AQ & AP & AV
+    R2 -.->|Validate subtopics| SYLL
+    R3 -->|pipeline metrics| GITHUB_SUMMARY["$GITHUB_STEP_SUMMARY Dashboard"]
+    AQ & AP & AV -->|pipeline sync-to-prod --confirm| PROD
 ```
 
 ### GitHub Actions Workflow Specification (`.github/workflows/ai_process_staging.yml`)

@@ -6,6 +6,7 @@ import re
 from typing import AsyncIterator, List, Optional
 import httpx
 from pipeline.sources.base import BaseHarvester, RawOption, RawQuestionPayload
+from pipeline.sources.jamb import extract_passage_from_html
 
 BASE_URL = "https://myschool.ng"
 DEFAULT_UA = "utmelab-pipeline/2.0 (educational data factory; research project)"
@@ -134,6 +135,16 @@ class WaecHarvester(BaseHarvester):
                     media_url = img_src
                     break
 
+        if media_url:
+            if media_url.startswith("//"):
+                media_url = f"https:{media_url}"
+            elif media_url.startswith("/"):
+                media_url = f"{BASE_URL}{media_url}"
+            elif media_url.startswith("http://"):
+                media_url = f"https://{media_url[7:]}"
+
+        passage_text = extract_passage_from_html(html_text)
+
         return RawQuestionPayload(
             source_name=self.source_name,
             source_url=detail_url,
@@ -145,4 +156,5 @@ class WaecHarvester(BaseHarvester):
             options=options,
             reported_answer=correct_answer,
             media_url=media_url,
+            passage_text=passage_text,
         )
