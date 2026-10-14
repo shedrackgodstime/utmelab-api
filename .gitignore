@@ -11,5 +11,10 @@ site/ref/
 # review workbench backups + python caches
 tmp/*.backup.json
 __pycache__/
+.pytest_cache/
 
 tmp/study/
+
+# auto-tagging prototype outputs — downloaded as CI artifacts, never committed
+tagging_results.json
+tagging_*.json
