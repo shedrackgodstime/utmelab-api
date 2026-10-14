@@ -39,13 +39,17 @@ workflow_dispatch ─▶ install opencode CLI ─▶ tools/auto_tag_questions.py
 
 The design point is the **`Provider` seam** (`tools/utmetag/providers/base.py`):
 one method, `async complete(prompt) -> str`. The task and runner layers never
-import a concrete backend, so the model API is swappable:
+import a concrete backend, so the model backend is swappable. There are exactly
+two engines, and only one talks to a model:
 
 | Engine | Backend | Notes |
 |---|---|---|
-| `opencode` (default) | `opencode run` CLI | free Zen models; no key |
-| `http` | OpenAI-compatible endpoint | free no-key Pollinations default; OpenAI if `OPENAI_API_KEY` |
-| `mock` | in-process | no network; deterministic; used by tests |
+| `opencode` (default) | `opencode run` CLI | free Zen models; no key. **The only model backend.** |
+| `mock` | in-process | no network; deterministic; tests only |
+
+OpenCode is the sole model provider by design — the flow never falls back to a
+paid API (there is no OpenAI/Pollinations path). "Free" is a requirement, not a
+default.
 
 The prompt embeds the question stem, options, recorded answer, explanation, and
 the **syllabus** for that subject: `AVAILABLE SUBTOPICS` (`slug: name (topic: …)`
@@ -58,8 +62,8 @@ pydantic, and a wrong underline offset is snapped to the word's real position.
 
 **GitHub (preferred):** Actions → **Auto-tag Questions Prototype** → *Run workflow*.
 Inputs: `subject`, `data_dir` (`data` or `data/waec`), `exam` (`JAMB`/`WAEC`),
-`limit`, `engine`, `model`, `include_verified`, `rate_limit_sec`. Output is the
-artifact `auto-tag-results-<subject>-<run>` (7-day retention).
+`limit`, `engine`, `model`, `include_verified`. Output is the artifact
+`auto-tag-results-<subject>-<run>` (7-day retention).
 
 **Local:**
 

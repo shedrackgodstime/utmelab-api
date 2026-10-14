@@ -10,7 +10,7 @@ import time
 from pathlib import Path
 
 from .bank import filter_questions, get_subject_subtopics, get_subject_topics, load_bank
-from .providers import build_provider_with_cap
+from .providers import build_provider
 from .runner import run, summarize
 
 
@@ -24,22 +24,15 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--limit", type=int, default=10, help="Max questions to process")
     p.add_argument("--data-dir", default="data", help="Data directory")
     p.add_argument(
-        "--engine", default="opencode", choices=["opencode", "http", "mock"],
-        help="Provider backend: 'opencode' CLI free models (default); "
-             "'http' OpenAI-compatible endpoint; 'mock' no network I/O",
+        "--engine", default="opencode", choices=["opencode", "mock"],
+        help="Provider backend: 'opencode' CLI free models (default, the only model); "
+             "'mock' no network I/O (tests)",
     )
-    p.add_argument("--model", default=None, help="Model id (engine-specific default if omitted)")
-    p.add_argument("--base-url", default=None, help="HTTP engine: API base URL")
-    p.add_argument(
-        "--provider", default="auto", choices=["auto", "pollinations", "openai"],
-        help="HTTP engine provider; 'auto' prefers OPENAI_API_KEY, else free Pollinations",
-    )
+    p.add_argument("--model", default=None, help="Model id (default: opencode/space-bunny-free)")
     p.add_argument("--output", default="tagging_results.json", help="Output file path")
-    p.add_argument("--no-api-key", action="store_true", help="HTTP engine: force the no-key provider")
     p.add_argument("--all", action="store_true", help="Include already-verified questions")
     p.add_argument("--question-id", action="append", dest="question_ids", help="Only these id(s); repeatable")
     p.add_argument("--concurrency", type=int, default=3, help="Parallel requests")
-    p.add_argument("--rate-limit-sec", type=float, default=None, help="HTTP engine: min seconds between requests")
     p.add_argument("--opencode-bin", default="opencode", help="Path to the opencode CLI binary")
     p.add_argument("--opencode-timeout", type=float, default=180.0, help="Per-question opencode timeout (s)")
     p.add_argument("--mock", action="store_true", help="Alias for --engine mock")
@@ -49,26 +42,13 @@ def build_parser() -> argparse.ArgumentParser:
 async def _run(args: argparse.Namespace) -> int:
     engine = "mock" if args.mock else args.engine
 
-    try:
-        provider, cap = build_provider_with_cap(
-            engine,
-            model=args.model,
-            opencode_bin=args.opencode_bin,
-            opencode_timeout=args.opencode_timeout,
-            http_provider=args.provider,
-            base_url=args.base_url,
-            no_api_key=args.no_api_key,
-            rate_limit_sec=args.rate_limit_sec,
-        )
-    except SystemExit as e:
-        print(f"ERROR: {e}", file=sys.stderr)
-        return 1
-
+    provider = build_provider(
+        engine,
+        model=args.model,
+        opencode_bin=args.opencode_bin,
+        opencode_timeout=args.opencode_timeout,
+    )
     concurrency = args.concurrency
-    if cap is not None and concurrency > cap:
-        print(f"Provider is rate-limited: forcing concurrency={cap}")
-        concurrency = cap
-
     print(f"Engine: {engine} (provider={provider.name})")
 
     data_dir = Path(args.data_dir)

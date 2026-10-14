@@ -1,11 +1,7 @@
 import pytest
 from helpers import run
 
-from utmetag.providers import (
-    HTTP_PRESETS,
-    build_provider_with_cap,
-    resolve_http_provider,
-)
+from utmetag.providers import build_provider
 from utmetag.providers.mock import MockProvider
 from utmetag.providers.opencode import OpenCodeProvider
 
@@ -97,60 +93,26 @@ def test_mock_no_underline_when_absent():
     assert data["underline"] is None
 
 
-def test_resolve_http_provider_auto_no_key():
-    assert resolve_http_provider("auto", True) == "pollinations"
-
-
-def test_resolve_http_provider_auto_with_openai_key():
-    assert resolve_http_provider("auto", False, env={"OPENAI_API_KEY": "x"}) == "openai"
-
-
-def test_resolve_http_provider_auto_without_env():
-    assert resolve_http_provider("auto", False, env={}) == "pollinations"
-
-
-def test_resolve_http_provider_explicit_passthrough():
-    assert resolve_http_provider("pollinations", False) == "pollinations"
-    assert resolve_http_provider("openai", True) == "openai"
-
-
 def test_build_mock():
-    p, cap = build_provider_with_cap("mock")
+    p = build_provider("mock")
     assert p.name == "mock"
-    assert cap is None
 
 
 def test_build_opencode_default_model():
-    p, cap = build_provider_with_cap("opencode")
+    p = build_provider("opencode")
     assert p.name == "opencode:opencode/space-bunny-free"
-    assert cap is None
 
 
 def test_build_opencode_model_override():
-    p, _ = build_provider_with_cap("opencode", model="opencode/minimax-m2-free")
+    p = build_provider("opencode", model="opencode/minimax-m2-free")
     assert p.name == "opencode:opencode/minimax-m2-free"
-
-
-def test_build_http_rate_limited_imposes_cap_one():
-    p, cap = build_provider_with_cap("http", no_api_key=True)
-    assert cap == 1
-    assert p.min_interval == HTTP_PRESETS["pollinations"]["min_interval"]
-    run(p.aclose())
-
-
-def test_build_http_zero_interval_no_cap():
-    p, cap = build_provider_with_cap("http", no_api_key=True, rate_limit_sec=0)
-    assert cap is None
-    assert p.min_interval == 0
-    run(p.aclose())
-
-
-def test_build_http_missing_key_exits(monkeypatch):
-    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
-    with pytest.raises(SystemExit):
-        build_provider_with_cap("http", http_provider="openai")
 
 
 def test_build_unknown_engine_exits():
     with pytest.raises(SystemExit):
-        build_provider_with_cap("bogus")
+        build_provider("bogus")
+
+
+def test_no_http_engine_available():
+    with pytest.raises(SystemExit):
+        build_provider("http")

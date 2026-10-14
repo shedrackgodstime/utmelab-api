@@ -1,8 +1,9 @@
-"""Provider protocol: the single swap point of the SDK.
+"""Provider seam: the one interface a model backend must satisfy.
 
-Every backend implements ``complete(prompt) -> str``. The task layer never
-imports a concrete provider, so dropping in a new backend (a CLI harness, an
-HTTP endpoint, a mock) means adding one module and one registry entry.
+One method, ``async complete(prompt) -> str``. The task and runner layers never
+import a concrete backend, so the model backend is swappable by adding a module
+and a registry entry in ``providers/__init__.py``. Only the OpenCode CLI backend
+talks to a real model today (free); the mock is for tests.
 """
 
 from __future__ import annotations
@@ -20,5 +21,5 @@ class Provider(Protocol):
         ...
 
     async def aclose(self) -> None:
-        """Release any resources (subprocesses, HTTP clients)."""
+        """Release any resources (e.g. subprocesses, clients)."""
         ...

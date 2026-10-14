@@ -30,7 +30,6 @@ on:
         type: choice
         options:
           - opencode
-          - http
           - mock
       model:
         description: "Override model id (blank = engine default; opencode=opencode/space-bunny-free)"
@@ -42,11 +41,6 @@ on:
         required: false
         default: false
         type: boolean
-      rate_limit_sec:
-        description: "HTTP engine: seconds between requests (blank = provider default)"
-        required: false
-        default: ""
-        type: string
 
 permissions:
   contents: read
@@ -68,19 +62,14 @@ jobs:
         if: ${{ github.event.inputs.engine == 'opencode' }}
         run: npm install -g opencode-ai@1.19.0
 
-      - name: Install Python deps (pydantic always; httpx for http engine)
-        run: |
-          pip install pydantic
-          if [ "${{ github.event.inputs.engine }}" = "http" ]; then
-            pip install httpx
-          fi
+      - name: Install Python deps
+        run: pip install pydantic
 
       - name: Run auto-tagging
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USE_GITHUB_TOKEN: "true"
           SHARE: "false"
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           ARGS=(--subject "${{ github.event.inputs.subject }}"
                 --data-dir "${{ github.event.inputs.data_dir }}"
@@ -90,9 +79,6 @@ jobs:
                 --output tagging_results.json)
           if [ -n "${{ github.event.inputs.model }}" ]; then
             ARGS+=(--model "${{ github.event.inputs.model }}")
-          fi
-          if [ -n "${{ github.event.inputs.rate_limit_sec }}" ]; then
-            ARGS+=(--rate-limit-sec "${{ github.event.inputs.rate_limit_sec }}")
           fi
           if [ "${{ github.event.inputs.include_verified }}" = "true" ]; then
             ARGS+=(--all)
