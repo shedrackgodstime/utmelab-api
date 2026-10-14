@@ -260,6 +260,7 @@ def promote_cmd(subject: Optional[str], limit: int, dry_run: bool):
                     staging_row=r,
                     subtopic_id=subtopic,
                     detected_marks=marks,
+                    audit_report=r.get("audit_report"),
                 )
                 click.echo(f"  [APPROVED] {qid} -> {promoted_id} in approved_questions (Pipeline DB)")
                 promoted_count += 1

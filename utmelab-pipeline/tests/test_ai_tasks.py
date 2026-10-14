@@ -61,3 +61,20 @@ def test_parse_discards_hallucinated_underline_target():
     response, marks = parse_and_snap_response(raw_ai, stem)
     assert response.underline is None
     assert len(marks) == 0
+
+
+def test_parse_includes_audit_report():
+    stem = "Study the circuit diagram below and calculate the current flowing through R1."
+    raw_ai = """{
+  "subtopic_slug": "electric-circuits",
+  "answer_check": "VERIFIED",
+  "explanation_quality": "GOOD",
+  "confidence": 0.98,
+  "audit_report": "Diagram shows series-parallel network with 12V supply; verified current is 2.0A using Ohm's law.",
+  "reasoning": "Standard circuit analysis matching answer key B"
+}"""
+    response, marks = parse_and_snap_response(raw_ai, stem)
+    assert response.subtopic_slug == "electric-circuits"
+    assert response.confidence == 0.98
+    assert "series-parallel" in response.audit_report
+

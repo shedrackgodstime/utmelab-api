@@ -38,7 +38,7 @@ class PipelineConfig(BaseModel):
         default_factory=lambda: os.getenv("OPENCODE_TEXT_MODEL", "opencode/space-bunny-free")
     )
     opencode_vision_model: str = Field(
-        default_factory=lambda: os.getenv("OPENCODE_VISION_MODEL", "opencode/muse-spark-1.3-contributor-free")
+        default_factory=lambda: os.getenv("OPENCODE_VISION_MODEL", "openrouter/openrouter/free")
     )
 
     # Worker Settings

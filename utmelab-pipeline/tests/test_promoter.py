@@ -101,3 +101,84 @@ async def test_promoter_writes_only_to_pipeline_approved_tables():
     assert s_res.rows[0]["pipeline_status"] == "approved_for_prod"
 
     pipe_client.close()
+
+
+@pytest.mark.asyncio
+async def test_promoter_image_positions_and_audit_report():
+    pipe_client = TursoClient(":memory:")
+    await init_pipeline_schema(pipe_client)
+
+    promoter = PipelinePromoter(pipe_client)
+
+    # 1. Stem mentioning "below"
+    stem_below = "In the electric circuit shown below, determine the total resistance."
+    staging_row_below = {
+        "id": "stage_q_img_below",
+        "exam": "JAMB",
+        "subject": "physics",
+        "year": 2025,
+        "stem_raw": stem_below,
+        "options_raw": json.dumps([
+            {"id": "a", "text": "5 ohms"},
+            {"id": "b", "text": "10 ohms"},
+            {"id": "c", "text": "15 ohms"},
+            {"id": "d", "text": "20 ohms"},
+        ]),
+        "answer_raw": "b",
+        "media_url": "http://example.com/resistor_circuit.png",
+        "audit_report": "Diagram clearly displays two 20-ohm resistors in parallel; net resistance verified as 10 ohms.",
+    }
+
+    qid_below = await promoter.promote(
+        staging_row=staging_row_below,
+        subtopic_id="electric-circuits",
+    )
+
+    q_res = await pipe_client.execute("SELECT * FROM approved_questions WHERE id = ?", [qid_below])
+    assert len(q_res.rows) == 1
+    row = q_res.rows[0]
+    inline = json.loads(row["inline"])
+    assert len(inline) == 1
+    assert inline[0]["kind"] == "image"
+    assert inline[0]["position"] == "below"
+    assert inline[0]["start"] == len(stem_below)
+    assert inline[0]["len"] == 0
+    assert inline[0]["url"] == "https://example.com/resistor_circuit.png"
+    assert row["audit_report"] == staging_row_below["audit_report"]
+
+    # 2. Stem with "above" / default
+    stem_above = "Study the diagram above to find the focal length of the mirror."
+    staging_row_above = {
+        "id": "stage_q_img_above",
+        "exam": "JAMB",
+        "subject": "physics",
+        "year": 2025,
+        "stem_raw": stem_above,
+        "options_raw": json.dumps([
+            {"id": "a", "text": "10 cm"},
+            {"id": "b", "text": "20 cm"},
+            {"id": "c", "text": "30 cm"},
+            {"id": "d", "text": "40 cm"},
+        ]),
+        "answer_raw": "a",
+        "media_url": "https://example.com/concave_mirror.png",
+        "audit_report": "Mirror diagram shows center of curvature at 20 cm, yielding focal length f = R/2 = 10 cm.",
+    }
+
+    qid_above = await promoter.promote(
+        staging_row=staging_row_above,
+        subtopic_id="reflection-at-curved-surfaces",
+    )
+
+    q_res_above = await pipe_client.execute("SELECT * FROM approved_questions WHERE id = ?", [qid_above])
+    row_above = q_res_above.rows[0]
+    inline_above = json.loads(row_above["inline"])
+    assert len(inline_above) == 1
+    assert inline_above[0]["kind"] == "image"
+    assert inline_above[0]["position"] == "above"
+    assert inline_above[0]["start"] == 0
+    assert inline_above[0]["len"] == 0
+    assert row_above["audit_report"] == staging_row_above["audit_report"]
+
+    pipe_client.close()
+
