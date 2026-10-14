@@ -215,7 +215,7 @@ async def main():
         with open("data/waec/verifications.json") as f:
             verifications = json.load(f)
     
-    verified_ids = {v["question_id"] for v in verifications.values()}
+    verified_ids = {v["question_id"] for v in verifications}
     
     filtered = [
         q for q in questions
@@ -268,8 +268,8 @@ async def main():
                     "verifier": f"auto:opencode-free",
                     "detail": result.reasoning,
                     "content_hash": "",
-                    "created_at": __import__("datetime").datetime.now(
-                        __import__("datetime").timezone.utc
+                    "created_at": datetime.datetime.now(
+                        datetime.timezone.utc
                     ).strftime("%Y-%m-%dT%H:%M:%SZ"),
                 }
                 print("  → AUTO-VERIFIED")

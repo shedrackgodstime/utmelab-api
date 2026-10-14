@@ -24,47 +24,36 @@ on:
 permissions:
   contents: write
   id-token: write
+  issues: write
+  pull-requests: write
 
 jobs:
   auto-verify:
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: true
 
-      - name: Install opencode
-        run: |
-          curl -fsSL https://opencode.ai/install | bash
-          echo "$HOME/.opencode/bin" >> $GITHUB_PATH
-
-      - name: Resolve free model
-        id: resolve-model
-        uses: 0xLLLLH/opencode-free-models@main
-        with:
-          providers: "opencode"
-          pick: "first"
-
-      - name: Install opencode
-        run: |
-          curl -fsSL https://opencode.ai/install | bash
-          echo "$HOME/.opencode/bin" >> $GITHUB_PATH
-
-      - name: Login to OpenCode Zen (free tier)
-        run: |
-          opencode auth login --provider zen
-        env:
-          OPENCODE_ZEN_API_KEY: ${{ secrets.OPENCODE_ZEN_API_KEY }}
+      - name: Install pinned opencode
+        run: npm install -g opencode-ai@1.18.34
 
       - name: Run auto-verification with free model
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MODEL: opencode/space-bunny-free
+          USE_GITHUB_TOKEN: 'true'
+          SHARE: 'false'
         run: |
           python3 tools/auto_verify_opencode.py \
             --subject ${{ github.event.inputs.subject }} \
             --exam WAEC \
             --limit ${{ github.event.inputs.limit }} \
-            --model ${{ steps.resolve-model.outputs.model_id }} \
             --dry-run
-        env:
-          # No additional API keys needed if OPENCODE_ZEN_API_KEY is set!
