@@ -218,7 +218,7 @@ docs are read from disk because `load()` retains only ≥50q novels for
 serving while validation covers all 6. All six tables registered in
 `audit-db`. Files stay source; tables warm standby.
 
-## Phase 4 record (2026-10-14, draft)
+## Phase 4 record (2026-10-14)
 
 Catalog + blueprints seeded via `examples/seed_catalog.rs`: subjects 34,
 exams 4, topics 582, subtopics 2156, countries 5, topic_countries 0,
