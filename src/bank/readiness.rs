@@ -9,6 +9,7 @@
 //! Source-agnostic: works over `&dyn Store`, so file and Turso banks answer
 //! identically. No HTTP anywhere in it.
 
+use crate::bank::model::Question;
 use crate::bank::{QuestionFilter, Store};
 use std::collections::{HashMap, HashSet};
 
@@ -89,67 +90,7 @@ pub fn per_topic(
     subject: &str,
     country: Option<&str>,
 ) -> SubjectReadiness {
-    // Subtopic → topic from the syllabus tree (scope already applied).
-    let mut subtopic_topic: HashMap<String, String> = HashMap::new();
-    let mut names: HashMap<String, String> = HashMap::new();
-    if let Some(tree) = store.syllabus(exam, subject, country) {
-        for t in &tree.topics {
-            names.insert(t.slug.clone(), t.name.clone());
-            for st in &t.subtopics {
-                subtopic_topic.insert(st.slug.clone(), t.slug.clone());
-            }
-        }
-    }
-
-    // Bucket verified fingerprints by topic through subtopic tags, and
-    // count all held rows per topic, in as few passes as the public seam
-    // allows (one page per subtopic for verified, one full page for held —
-    // the tree is small and pages hold every row many times over).
-    let mut buckets: HashMap<String, Vec<String>> = HashMap::new();
-    for (subtopic, topic) in &subtopic_topic {
-        let page = store.questions_page(
-            QuestionFilter {
-                exam: Some(exam),
-                subject: Some(subject),
-                subtopic: Some(subtopic),
-                verified: Some(true),
-                country,
-                ..Default::default()
-            },
-            1,
-            crate::bank::MAX_PER_PAGE,
-        );
-        let fps: Vec<String> = page
-            .questions
-            .iter()
-            .filter(|q| q.verified)
-            .map(|q| q.content_fingerprint())
-            .collect();
-        buckets.entry(topic.clone()).or_default().extend(fps);
-    }
-    let full = store.questions_page(
-        QuestionFilter {
-            exam: Some(exam),
-            subject: Some(subject),
-            verified: None,
-            country,
-            ..Default::default()
-        },
-        1,
-        crate::bank::MAX_PER_PAGE,
-    );
-    let mut held_by_topic: HashMap<String, usize> = HashMap::new();
-    let mut unattributed = 0usize;
-    for q in &full.questions {
-        match q.subtopic_id.as_deref().and_then(|s| subtopic_topic.get(s)) {
-            Some(t) => *held_by_topic.entry(t.clone()).or_default() += 1,
-            None => {
-                if q.verified {
-                    unattributed += 1;
-                }
-            }
-        }
-    }
+    let pools = topic_pools(store, exam, subject, country);
 
     let mut topics = Vec::new();
     let mut unmeasured = 0usize;
@@ -164,15 +105,22 @@ pub fn per_topic(
                 continue;
             }
         };
-        let fps = buckets.remove(&slug).unwrap_or_default();
-        let held = held_by_topic.get(&slug).copied().unwrap_or(0);
-        let verified = fps.len();
-        let deduped: HashSet<&str> = fps.iter().map(String::as_str).collect();
-        let deduped = deduped.len();
+        let pool = pools.pools.get(&slug);
+        let (held, verified, deduped, name) = match pool {
+            Some(p) => {
+                let verified: Vec<&Question> = p.rows.iter().filter(|q| q.verified).collect();
+                let mut seen = HashSet::new();
+                for q in &verified {
+                    seen.insert(q.content_fingerprint());
+                }
+                (p.rows.len(), verified.len(), seen.len(), p.name.clone())
+            }
+            None => (0, 0, 0, String::new()),
+        };
         let need = expected.ceil() as u32;
         topics.push(TopicReadiness {
-            topic: slug.clone(),
-            name: names.get(&slug).cloned().unwrap_or_default(),
+            topic: slug,
+            name,
             expected,
             need,
             held,
@@ -189,8 +137,84 @@ pub fn per_topic(
         subject: subject.to_string(),
         topics,
         unmeasured,
-        unattributed,
+        unattributed: pools.unattributed_verified,
         ready,
         complete,
+    }
+}
+
+/// One topic's servable, in-scope, attributed rows.
+pub struct TopicPool {
+    pub name: String,
+    pub rows: Vec<Question>,
+}
+
+/// The attributed bank for one exam subject: every pool keyed by topic
+/// slug, plus the verified rows no topic can claim.
+pub struct PoolSet {
+    pub pools: HashMap<String, TopicPool>,
+    pub unattributed_verified: usize,
+}
+
+/// Attribute servable in-scope rows to topics through subtopic tags, once.
+/// Both readiness and assembly build from this — one bucketing, two uses.
+pub fn topic_pools(store: &dyn Store, exam: &str, subject: &str, country: Option<&str>) -> PoolSet {
+    // Subtopic → topic from the syllabus tree (scope already applied).
+    let mut subtopic_topic: HashMap<String, String> = HashMap::new();
+    let mut names: HashMap<String, String> = HashMap::new();
+    if let Some(tree) = store.syllabus(exam, subject, country) {
+        for t in &tree.topics {
+            names.insert(t.slug.clone(), t.name.clone());
+            for st in &t.subtopics {
+                subtopic_topic.insert(st.slug.clone(), t.slug.clone());
+            }
+        }
+    }
+    // One full page holds the whole subject many times over (largest
+    // today: <200 servable rows; page cap is MAX_PER_PAGE).
+    let full = store.questions_page(
+        QuestionFilter {
+            exam: Some(exam),
+            subject: Some(subject),
+            verified: None,
+            country,
+            ..Default::default()
+        },
+        1,
+        crate::bank::MAX_PER_PAGE,
+    );
+    let mut pools: HashMap<String, TopicPool> = HashMap::new();
+    // Every tree topic gets a pool, even empty — readiness names all
+    // measured topics, not just ones holding rows.
+    for (slug, name) in &names {
+        pools.insert(
+            slug.clone(),
+            TopicPool {
+                name: name.clone(),
+                rows: Vec::new(),
+            },
+        );
+    }
+    let mut unattributed_verified = 0usize;
+    for q in full.questions {
+        match q.subtopic_id.as_deref().and_then(|s| subtopic_topic.get(s)) {
+            Some(t) => pools
+                .entry(t.clone())
+                .or_insert_with(|| TopicPool {
+                    name: names.get(t).cloned().unwrap_or_default(),
+                    rows: Vec::new(),
+                })
+                .rows
+                .push(q),
+            None => {
+                if q.verified {
+                    unattributed_verified += 1;
+                }
+            }
+        }
+    }
+    PoolSet {
+        pools,
+        unattributed_verified,
     }
 }

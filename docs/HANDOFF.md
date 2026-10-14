@@ -359,6 +359,13 @@ disagree. Two lists is how subjects drift.
     gains `blueprints()` (both stores; JsonStore reads optionally so
     scratch banks still boot). Unmapped-only subjects 404 honestly.
     Drift test covers the new path; endpoint test pins maths 17/23.
+43. **Assembly done 2026-10-14 (P4-3, D69 PROPOSED)** — `POST
+    /api/v1/papers/{exam}/{subject}?seed=` (deterministic draw, answers
+    always withheld, 409 naming gaps until complete) + stateless scoring
+    endpoint (marks submitted ids only). Pure `assemble`/`mark` in
+    `bank::assemble`, shared `topic_pools` with readiness. Refusal +
+    determinism + scoring proven in tests. Caught: pools missed empty
+    topics (names test fired, pre-seeded).
 34. **Maths P4 groundwork done 2026-10-14** — 74199 verified (figure read:
     x = 2, modal weight 58; honest legacy note replaced with the working).
     **74188 parked**: modal class 30–39 gives 29.5 + 6/10×10 = 35.5, no

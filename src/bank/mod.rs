@@ -3,6 +3,7 @@
 //! Nothing in here knows about HTTP. Both `api/` and `app/` depend on it; it
 //! depends on neither.
 
+pub mod assemble;
 pub(crate) mod cache;
 mod json;
 pub mod model;
@@ -14,6 +15,9 @@ pub mod verify;
 mod view;
 pub mod write;
 
+pub use assemble::{
+    AssembledPaper, MarkedQuestion, PaperSection, ReadinessGap, Unready, assemble, mark,
+};
 pub(crate) use json::StoreParts;
 pub use json::{JsonStore, StoreError};
 pub use model::{

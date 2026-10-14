@@ -27,6 +27,12 @@ pub enum ApiError {
     #[error("{code}: {detail}")]
     BadRequest { code: &'static str, detail: String },
 
+    /// The request is well-formed but the bank cannot fill it today —
+    /// content not ready, never a client bug. Retrying later (after review
+    /// lands) is the fix, not reformatting the request.
+    #[error("{code}: {detail}")]
+    Conflict { code: &'static str, detail: String },
+
     #[error("rate limit exceeded")]
     RateLimited {
         /// The key's configured allowance, echoed so a client can adapt.
@@ -83,9 +89,17 @@ impl ApiError {
         }
     }
 
+    pub fn conflict(code: &'static str, detail: impl Into<String>) -> Self {
+        Self::Conflict {
+            code,
+            detail: detail.into(),
+        }
+    }
+
     fn status(&self) -> StatusCode {
         match self {
             Self::BadRequest { .. } => StatusCode::BAD_REQUEST,
+            Self::Conflict { .. } => StatusCode::CONFLICT,
             Self::NotFound { .. } => StatusCode::NOT_FOUND,
             Self::Unauthorized => StatusCode::UNAUTHORIZED,
             Self::RateLimited { .. } | Self::DailyLimited { .. } => StatusCode::TOO_MANY_REQUESTS,
@@ -98,6 +112,7 @@ impl ApiError {
         match self {
             Self::Config(_) => "configuration_error",
             Self::BadRequest { code, .. } => code,
+            Self::Conflict { code, .. } => code,
             Self::NotFound { code, .. } => code,
             Self::Unauthorized => "unauthorized",
             Self::RateLimited { .. } => "rate_limited",
@@ -110,6 +125,7 @@ impl ApiError {
         match self {
             Self::Config(_) => "Server configuration error",
             Self::BadRequest { .. } => "Bad request",
+            Self::Conflict { .. } => "Conflict",
             Self::NotFound { .. } => "Not found",
             Self::Unauthorized => "Missing or invalid API key",
             Self::RateLimited { .. } => "Rate limit exceeded",
@@ -122,6 +138,7 @@ impl ApiError {
     fn public_detail(&self) -> String {
         match self {
             Self::BadRequest { detail, .. } => detail.clone(),
+            Self::Conflict { detail, .. } => detail.clone(),
             Self::NotFound { detail, .. } => detail.clone(),
             Self::Unauthorized => "Provide a valid key in the X-API-Key header.".to_owned(),
             Self::RateLimited { per_minute } => {
