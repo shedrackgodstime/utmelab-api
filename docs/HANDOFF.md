@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-1,862 verified (83%, derived from data/verifications.json, D62) · 1,867 explained
+1,938 verified (86%, derived from data/verifications.json, D62) · 1,943 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -327,6 +327,13 @@ disagree. Two lists is how subjects drift.
     75701 (Obidiya question, no play text served), 75707 (protagonist
     asked, no book specified). 75088 left untagged (no fitting path).
     Loader gate caught 2 more topic-slugs-as-subtopics pre-apply.
+30. **IRK rewrite done 2026-10-14** — 75 authored + 1 key fix + tags +
+    verified; islamic-religious-studies 0 → 76 of 78. **75604 key
+    corrected** c → b (Isa's mother is Maryam; Fatima is the Prophet's
+    daughter — D45 pattern, documented in trap). **Parked**: 75550
+    (Musa's nation vs Dawud's era), 75568 (covenant in both Al-Imran 3:81
+    AND Al-Ahzab 33:7). 75593 stands (Imran clearly intended); 75681
+    stands on exam convention (Uthmanic codex).
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),

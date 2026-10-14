@@ -27088,5 +27088,1069 @@
     "detail": null,
     "content_hash": "2ba0e9c47cdb188b9e775475af1d323e560da75b15bfb162d772153d3d0b9d7d",
     "created_at": "2026-10-14T00:51:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75544_1936",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75544",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "d012de5769c0e4a0d1fb8bdb16658c62f2eb723c723483c7fba300f77e710bb7",
+    "created_at": "2026-10-14T00:57:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75545_1937",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75545",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "f92bb69071c8c40cbed68f11bcb5bae52e44803283a18f13659e0eb1af3b2321",
+    "created_at": "2026-10-14T00:57:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75548_1938",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75548",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "682d66e06348ba74d1f8446d722a2ebcd25ea30b7f104d449d289881874af6d7",
+    "created_at": "2026-10-14T00:57:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75549_1939",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75549",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "17385c5dba24f4ce6fb760fc913ca6dfb9d93f648c1e479909deb077743b13fa",
+    "created_at": "2026-10-14T00:57:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75552_1940",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75552",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "10a3a50f4b670d0d5283883d840db3cca3a808f9402e1fba920a485d1773bb67",
+    "created_at": "2026-10-14T00:57:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75554_1941",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75554",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "ee0ff488e80317345ef79e77eff13517e29f34c3434d622153fb9e923703665a",
+    "created_at": "2026-10-14T00:57:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75556_1942",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75556",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "ac097a6839d64432d1b9aecf769892ae51783b9cc6b85ed3ec98ebc15f49af27",
+    "created_at": "2026-10-14T00:57:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75557_1943",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75557",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "6939caeba2f66483c9c4afa20d06fabcedd51d28ab077f88495e054fd378bd9d",
+    "created_at": "2026-10-14T00:57:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75559_1944",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75559",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "8f16b8e8de0fe17d3fe05fe32b332f83620df42a85b766f0229667abc3382707",
+    "created_at": "2026-10-14T00:57:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75560_1945",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75560",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "7ff6ee444badc4acb19166b5af551b368c5b2a7b19c370514752ce532d160ab8",
+    "created_at": "2026-10-14T00:57:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75561_1946",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75561",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "02097034d7c48c1e6b6758dfc8a1d214cef6e3ce242cbed476ba97c0f097162d",
+    "created_at": "2026-10-14T00:57:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75562_1947",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75562",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "9f47482398ef80b8375cb0e52fe2e64edfc3d362ea681ff7580057bd87b157bf",
+    "created_at": "2026-10-14T00:57:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75563_1948",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75563",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "6678431eb6379ba421b43f3c495024a773f3d6169fb12380d16ee721c8ffda24",
+    "created_at": "2026-10-14T00:57:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75564_1949",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75564",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "0dd8eb657bc58922fbd2c069538c181937472e55bb01b4c48fce71b4dd05e036",
+    "created_at": "2026-10-14T00:57:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75565_1950",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75565",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "d81f733b3f9cb15085cfa429d906fe2e579e997a9ac9bfed7a90baad013bfcfc",
+    "created_at": "2026-10-14T00:57:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75567_1951",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75567",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "0ea99e9ed62b728694e9c0e6dc34a1cc0495be85b23cbc8ab9c2d2fff34e60c7",
+    "created_at": "2026-10-14T00:57:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75569_1952",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75569",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "6ca5478df028603308573ff37c06d0169bfc1b8826127f03a6ea25a076c1393a",
+    "created_at": "2026-10-14T00:57:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75575_1953",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75575",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "00d7bf3a6ad96c82711b488b6e15a99d4d4848b2cb1e668b7e5bc45b6069f691",
+    "created_at": "2026-10-14T00:57:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75576_1954",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75576",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "6815a77ac15746f8083ae351326ac18bdbe3d8b7042910717d89b152d8131473",
+    "created_at": "2026-10-14T00:57:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75577_1955",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75577",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "cb3def4e7d2e34e82a37439ce828ad75698d55a13b80ea06909fad73b419d0ae",
+    "created_at": "2026-10-14T00:57:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75578_1956",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75578",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "d4725c822ced2deb61bbde17eb5d8f389ba1d0e5a8fa9a4a91eca6bd09a75b48",
+    "created_at": "2026-10-14T00:57:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75579_1957",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75579",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "13eac4f41762214455b0f6e2e5cbc5dd74bf2967e6e97d718b6b739f5ad0a7b2",
+    "created_at": "2026-10-14T00:57:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75580_1958",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75580",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "7c9b19f2f724982896a77458046f040861b8d2782c18f610e7569bc849f5fe35",
+    "created_at": "2026-10-14T00:57:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75581_1959",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75581",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "3d158b5d192bba4fb4d0657c469f09750e2e2f325ae4cefe23ee6dc6388bb30f",
+    "created_at": "2026-10-14T00:57:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75582_1960",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75582",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "60a8f49b2472e0af51df2d4eb8ffa74cf1a398ab65a1e3bf3ef0697e478d8f89",
+    "created_at": "2026-10-14T00:57:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75583_1961",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75583",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "1f6732a6a69fae10f3b7afb64f9f0290342773d6bb636154f1b041df8ad8a46c",
+    "created_at": "2026-10-14T00:57:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75584_1962",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75584",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "471b414003c466d6891a9e3b8ff9112159ae2afecec5ed5e0ea330f22eef5ef1",
+    "created_at": "2026-10-14T00:57:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75585_1963",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75585",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "8d05a36135b811b2b441cb068817fafa4d78d6892a4dc6f6e1eec2e20e73d0ca",
+    "created_at": "2026-10-14T00:57:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75586_1964",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75586",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "7b00a652aae7e7b389b820a6af6a4584cd9d27c681296558f3e3d010b11b4818",
+    "created_at": "2026-10-14T00:57:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75587_1965",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75587",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "a0555368a630a82d7681d48f8a0b806f54bf17974bf0cb847c4f4ac93bad0daf",
+    "created_at": "2026-10-14T00:57:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75588_1966",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75588",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "434e04867b6a21063568953dacc4ba4d83b110a6d68a3b39c08cc0d46945e0d6",
+    "created_at": "2026-10-14T00:57:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75589_1967",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75589",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "e35463fa30bebd06455853b5c2118ba5226698a59d4854cac2b5333e9d394a07",
+    "created_at": "2026-10-14T00:57:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75590_1968",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75590",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "24f9b28a37956b196f8458f8855874e204836df4906379334d2b590aceb23d13",
+    "created_at": "2026-10-14T00:57:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75591_1969",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75591",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "a44dd3b84aa2c39ef05a1fe8769049ff34b4d6b92fb684790ead6471c71c5ff4",
+    "created_at": "2026-10-14T00:57:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75592_1970",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75592",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "342ecf84893c5f18fda684e464b80a7ba132f6a71f69118ec9feeeb8361304bd",
+    "created_at": "2026-10-14T00:57:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75593_1971",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75593",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "a2003c889df80b1becc49eb4d20d497aedf3eebabd34dcebe3459236c11781cf",
+    "created_at": "2026-10-14T00:57:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75594_1972",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75594",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "33302435617554f91892f5ee66a63af4a6fb76ab26c45ff34115f6f794564b4b",
+    "created_at": "2026-10-14T00:57:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75595_1973",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75595",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "7e594907f04aab18e5831540f7926b84212472631020d54c5bc8af8396b60d80",
+    "created_at": "2026-10-14T00:57:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75596_1974",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75596",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "137979d7177d97e39b860811dbc55c307ff13523fb0535a8ea35065d2112c50b",
+    "created_at": "2026-10-14T00:57:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75597_1975",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75597",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "9016cb621ef9f69e7c878b97a39aab0dfd89d2110fc17623108583dc69a6ef1a",
+    "created_at": "2026-10-14T00:57:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75598_1976",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75598",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "1b7dc19b0a2a9674accb9002252b035814543e0a1ac1e2d9510ae146da4d2e5b",
+    "created_at": "2026-10-14T00:57:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75599_1977",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75599",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "9ad41db993c81073c748a146d23af57b66aeb1f2f96d63421195ec11f11b88b4",
+    "created_at": "2026-10-14T00:57:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75600_1978",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75600",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "0a88d925dab6de4857f25098eb70fb7896b4e39fbafcb3f652897b7677e8e77a",
+    "created_at": "2026-10-14T00:57:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75601_1979",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75601",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "e80842fe3a0e31e9eec190953068e67d3e6b4fd3957a9751e8be95c95933ad7a",
+    "created_at": "2026-10-14T00:57:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75602_1980",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75602",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "f053956d19bcd793cb23f3c639eda0d17027832a9c7cc8e728dbec5cc07c82d0",
+    "created_at": "2026-10-14T00:57:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75603_1981",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75603",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "d1152135f9323353b25471a5aecf3143c7d0e67e47355c0e18d644e50672dac5",
+    "created_at": "2026-10-14T00:57:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75604_1982",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75604",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "ac7edefa39f8b0698052e88d4d0efb088f90f5ab88041ef11166596dd8addcf6",
+    "created_at": "2026-10-14T00:57:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75605_1983",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75605",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "377793c8740ff2ed00485a7af60b0fc767f25b62d0e474b26f37013f2eca815e",
+    "created_at": "2026-10-14T00:57:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75606_1984",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75606",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "af4ddf696fec3f6ae8406449c7103c2364b8957f7e3c258ca88c637f1194b514",
+    "created_at": "2026-10-14T00:57:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75608_1985",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75608",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "da118e394a0b0b680b2dde8b17e33edcb12b657b568eb51b7014fdccf645e771",
+    "created_at": "2026-10-14T00:57:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75610_1986",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75610",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "c637c0a096627a977029beebbc74c40fe23d9f909c0714c45ee9929453169d7c",
+    "created_at": "2026-10-14T00:57:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75613_1987",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75613",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "a31d1e572d6903ccdaf4414f0fc16614ab4250780268ab6a95a55cbb108ee70f",
+    "created_at": "2026-10-14T00:57:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75616_1988",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75616",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "8a7bb55d863729f8c6525df44b3078969a63f7d124fde18329ff98e7f282cd14",
+    "created_at": "2026-10-14T00:57:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75619_1989",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75619",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "a4a497429926c49f5200f3df63fe5a99cf1f47ef951df5bbcf341a2c29350d01",
+    "created_at": "2026-10-14T00:57:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75621_1990",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75621",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "d18de06c154456beb28c5795ba26315d3c7fc982c730208aee81c7300e1bd0ac",
+    "created_at": "2026-10-14T00:57:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75627_1991",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75627",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "7220db6b0362e6c45446ba8cc4253e1a1e6da76f27cec7680646615836e99a01",
+    "created_at": "2026-10-14T00:57:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75630_1992",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75630",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "79bc92d207813a92ffa41ef8f402a1fe73ae5bdc4444103ca2178038136e4330",
+    "created_at": "2026-10-14T00:57:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75632_1993",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75632",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "30aaa5b81f9f808fcbe9fd71b5241f435aca5dc175a824b9902c6dee281150fc",
+    "created_at": "2026-10-14T00:57:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75636_1994",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75636",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "08dfb4c4920b20cd8b44179bdd23a828a45d42e5023f39deacd9ca028c4d6e2b",
+    "created_at": "2026-10-14T00:57:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75681_1995",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75681",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "047e6493e53de0b961a0ccb024ba463ea18fc54cf7ab48a063250670037f9df0",
+    "created_at": "2026-10-14T00:57:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75682_1996",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75682",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "b97bff290a8111ee115d732a9cce19247f54162a03afa995b0d4894b8e127c94",
+    "created_at": "2026-10-14T00:57:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75683_1997",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75683",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "dbd6e680b765996be156cee3376942168987474e14217ffad3cbe187f773005c",
+    "created_at": "2026-10-14T00:57:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75684_1998",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75684",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "70f7a9f601e5ec98db367b90d37bfb633c7d2806ff48401d62cd1ff744b4e8bb",
+    "created_at": "2026-10-14T00:57:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75686_1999",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75686",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "5cbe6625fd13bdc28ddee2bb964ec03a46c2baf7335b87019b631d8456f259a2",
+    "created_at": "2026-10-14T00:57:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75687_2000",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75687",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "475f8143b5db75c0f6a02d1abc586e3c1d7550f7b536594af989ab6b6b0ae3ab",
+    "created_at": "2026-10-14T00:57:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75688_2001",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75688",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "203cafa6acd8683ec99a36019463d7bda1020ffad18e7dcfdac0bd23455323a6",
+    "created_at": "2026-10-14T00:57:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75689_2002",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75689",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "8c3cf55073fd104727496222681cd6c7a94e273ec9bc94d1bdd9d2902a801172",
+    "created_at": "2026-10-14T00:57:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75690_2003",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75690",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "43f20c365bcffe6b60e34393a093727eb0bce640ad544ae6631b526c53bd3d66",
+    "created_at": "2026-10-14T00:57:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75691_2004",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75691",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "3110f140cfe6846bc7b14c42c1831f10b90352f70178346658415c3594ef842f",
+    "created_at": "2026-10-14T00:57:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75692_2005",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75692",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "f88f71119f0c7430ed7287a15aaefd6b7dc1d7b6ef7fc54eef5c616d22587509",
+    "created_at": "2026-10-14T00:57:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75694_2006",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75694",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "15ceee87a24d019cac3ca2e9aec52e01f8b88322d7e944af1e1990346e7906d3",
+    "created_at": "2026-10-14T00:57:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75695_2007",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75695",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "0dbe942d0b032cc92221c072034db4d83ad52fb0f3cd993a5a5bda11488824f6",
+    "created_at": "2026-10-14T00:57:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75696_2008",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75696",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "a823cff2b22c579059876940f46d06454f9496ad95fce81e5dff0c2bea75fa13",
+    "created_at": "2026-10-14T00:57:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75697_2009",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75697",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "c8705b4964dfbf5c3ad979e2df2be6c52c50a8bf33baef1251fe3a20f32967a0",
+    "created_at": "2026-10-14T00:57:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75698_2010",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75698",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "f8aad3bba41f6fd40a21035394f38f28df2485c0352337e6512ddef2712941e2",
+    "created_at": "2026-10-14T00:57:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_islamic-religious-knowledge-irk_75711_2011",
+    "question_id": "q_claim_2025_islamic-religious-knowledge-irk_75711",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "irk-rewrite1",
+    "detail": null,
+    "content_hash": "dedc6923e2353d2c74794ce95f2999a59d8579ac702ac52e4cf18d66694c71f3",
+    "created_at": "2026-10-14T00:57:39Z"
   }
 ]
