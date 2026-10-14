@@ -24918,5 +24918,1083 @@
     "detail": null,
     "content_hash": "7b74035897cbcc762070bb090730b1f98cdd9912da6faf7a718f58b927d93fe7",
     "created_at": "2026-10-14T00:38:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75025_1781",
+    "question_id": "q_claim_2025_igbo_75025",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "1a01819e51e18d84ec6953ce7def13d3c96ccdfce25450d12a2270d66c02545a",
+    "created_at": "2026-10-14T00:42:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75027_1782",
+    "question_id": "q_claim_2025_igbo_75027",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "b207f2e869f7a16ba840e54054ddfad6153d1e2c5a7fa59e3036f2123493895c",
+    "created_at": "2026-10-14T00:42:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75083_1783",
+    "question_id": "q_claim_2025_igbo_75083",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "868a88db6747ea5787fcf446aa76e0041ee0ae5e0d4ed0807467c75bbb0bdb42",
+    "created_at": "2026-10-14T00:42:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75088_1784",
+    "question_id": "q_claim_2025_igbo_75088",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "a1b13986c70bf8628c767892cf18330f60dc2126187ad27d3f35f6f2706e26cc",
+    "created_at": "2026-10-14T00:42:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75089_1785",
+    "question_id": "q_claim_2025_igbo_75089",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "a48bc354f8e03a7e394c88f91f7c5d0a1d92403709db464147ff910836b5f3e8",
+    "created_at": "2026-10-14T00:42:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75092_1786",
+    "question_id": "q_claim_2025_igbo_75092",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "cec5fe5f8f8b895c5723f8ac3f892fc9ca2b078c2dd608feab19bab1a5736954",
+    "created_at": "2026-10-14T00:42:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75094_1787",
+    "question_id": "q_claim_2025_igbo_75094",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "1062ed43b24eaae20f4ed7a87f41d0df3c7dbfcaaff40f844074e8b40f1f339d",
+    "created_at": "2026-10-14T00:42:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75095_1788",
+    "question_id": "q_claim_2025_igbo_75095",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "b38c6f4b10935e5742ea74e13b444a6b53cf11dc81f5f4aaf216e1b2f6c1aa14",
+    "created_at": "2026-10-14T00:42:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75097_1789",
+    "question_id": "q_claim_2025_igbo_75097",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "a740e90f8cabd420e285882288c12811b56fee22d11c4f5af5274bb5c13dad03",
+    "created_at": "2026-10-14T00:42:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75098_1790",
+    "question_id": "q_claim_2025_igbo_75098",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "663cfc51e6c04000f3872a27d963b82b078e7705c101531107500a3de44d56f0",
+    "created_at": "2026-10-14T00:42:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75099_1791",
+    "question_id": "q_claim_2025_igbo_75099",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "bc91aeec52c8f22e04d4da41489db08f3426234932186d2be1e8b6b0124aa576",
+    "created_at": "2026-10-14T00:42:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75103_1792",
+    "question_id": "q_claim_2025_igbo_75103",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "ea59b6a2a027d123e261a38ce577a71688ebc881ff7fb3a605a264ae6988fd74",
+    "created_at": "2026-10-14T00:42:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75104_1793",
+    "question_id": "q_claim_2025_igbo_75104",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "343f312ea3e6046461aab13d24113ad1f50ac63d3aff9369181607629bee25ca",
+    "created_at": "2026-10-14T00:42:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75106_1794",
+    "question_id": "q_claim_2025_igbo_75106",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "d158dd7299c79949133f32e0de6076dac033b41ca30c1a7e6e67e260d2d2322c",
+    "created_at": "2026-10-14T00:42:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75108_1795",
+    "question_id": "q_claim_2025_igbo_75108",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "47956d9f6ab482612660d21521d5440433d67c9608dfe11ac34247e2f3ae2392",
+    "created_at": "2026-10-14T00:42:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75110_1796",
+    "question_id": "q_claim_2025_igbo_75110",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "31a32934409dde590526b160431b17f4dbdd291d4eb226ea3eb04bfddcb94d0e",
+    "created_at": "2026-10-14T00:42:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75112_1797",
+    "question_id": "q_claim_2025_igbo_75112",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "a7a7e40648ab7fc11909790359693087f56eb07076a8ce92e8ca513f5af8b4b8",
+    "created_at": "2026-10-14T00:42:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75114_1798",
+    "question_id": "q_claim_2025_igbo_75114",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "7ed08499cb002ef28c68402636b102a630e1f18db21fa884e76846fb6a36950e",
+    "created_at": "2026-10-14T00:42:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75115_1799",
+    "question_id": "q_claim_2025_igbo_75115",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "3dc461cb4d0a6476b846da98726c855c5a00df90bba5f4f9f74a08634d4a8b0f",
+    "created_at": "2026-10-14T00:42:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75117_1800",
+    "question_id": "q_claim_2025_igbo_75117",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "0ea2e884fc50abe8c7863c08452cece6fd28d4de321bda5b6bdf8459d62ce22a",
+    "created_at": "2026-10-14T00:42:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75118_1801",
+    "question_id": "q_claim_2025_igbo_75118",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "061512e2d33ffed0050c36802b53ffb0148b267841bc2a0e9e60f364941afb7c",
+    "created_at": "2026-10-14T00:42:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75121_1802",
+    "question_id": "q_claim_2025_igbo_75121",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "69a04b902d7dca8073c8027893c647a23949d463e0ab7bbb6dbd34e0c3f9bc82",
+    "created_at": "2026-10-14T00:42:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75122_1803",
+    "question_id": "q_claim_2025_igbo_75122",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "0d95d3b59b0089afa930acbf342589bd4061208eaea7ed1700dbfedae8670289",
+    "created_at": "2026-10-14T00:42:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75124_1804",
+    "question_id": "q_claim_2025_igbo_75124",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "3a2bc680304882bb11a26692384af25dc24d152976c2ae48522ae6b246948066",
+    "created_at": "2026-10-14T00:42:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75125_1805",
+    "question_id": "q_claim_2025_igbo_75125",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "ea485862bf8daed6c4822b4ca9f27bfd0d07e3ef82d3218771eaa4dfcf3baa2b",
+    "created_at": "2026-10-14T00:42:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75128_1806",
+    "question_id": "q_claim_2025_igbo_75128",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "3b2714040cec115b97780690d4b7d189c2ce5155e591a78fedfae27bf5509a0c",
+    "created_at": "2026-10-14T00:42:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75130_1807",
+    "question_id": "q_claim_2025_igbo_75130",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "5814de702f6e80ddc73ac1d228d95b2db2bbe8a9dcdea90fd874f395db98dca2",
+    "created_at": "2026-10-14T00:42:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75131_1808",
+    "question_id": "q_claim_2025_igbo_75131",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "a88a649e4369724834a894c9035b20c2ab2bc5a955b47695b3618d8773bd70d7",
+    "created_at": "2026-10-14T00:42:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75133_1809",
+    "question_id": "q_claim_2025_igbo_75133",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "6a8b90b1b5fc9e5502c3e8ec35588f23ff963ac9beab6d0a31fe5079456d5e5c",
+    "created_at": "2026-10-14T00:42:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75134_1810",
+    "question_id": "q_claim_2025_igbo_75134",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "758b82136f0386c90668361533dc96c383087a39b3e94253e4ade0e336167c62",
+    "created_at": "2026-10-14T00:42:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75135_1811",
+    "question_id": "q_claim_2025_igbo_75135",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "1ba42644818dca8e90689b1db56eec9daa3eff1b7ce23f17af2312fed77c919c",
+    "created_at": "2026-10-14T00:42:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75137_1812",
+    "question_id": "q_claim_2025_igbo_75137",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "596035296a68ef555fa534645e1d25cf079b4cd1ae15eddb8d4aaf8833f91b30",
+    "created_at": "2026-10-14T00:42:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75139_1813",
+    "question_id": "q_claim_2025_igbo_75139",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "528b0a9adf32bfbe86d9c915f5bd2310e0caf1cbf3278ceab878506282f6f5b2",
+    "created_at": "2026-10-14T00:42:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75140_1814",
+    "question_id": "q_claim_2025_igbo_75140",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "71011768440c57889470c2cf4a4b822ce080924013e3fb79f01e445f719686c1",
+    "created_at": "2026-10-14T00:42:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75141_1815",
+    "question_id": "q_claim_2025_igbo_75141",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "ca0e1866d375e3d3cc69de64ea5050e50c230e2a29d3568983b9b62363a8766b",
+    "created_at": "2026-10-14T00:42:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75143_1816",
+    "question_id": "q_claim_2025_igbo_75143",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "0808f6700e3ae53f62eca8068ff523a4d3eacbdb8e7180f34db935d2a0f07837",
+    "created_at": "2026-10-14T00:42:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75144_1817",
+    "question_id": "q_claim_2025_igbo_75144",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "f97156f1d23e6caf9ba021cba7ec954e2ad01b6db5244dddfe2a3c8cff3b75f8",
+    "created_at": "2026-10-14T00:42:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75145_1818",
+    "question_id": "q_claim_2025_igbo_75145",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "9677e8eaaf6bd136483bc9096d985c830e2f04f46a30ed3044d7169575bf7a8e",
+    "created_at": "2026-10-14T00:42:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75147_1819",
+    "question_id": "q_claim_2025_igbo_75147",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "3539f625999c78f2a8c915fccafbf98b0435addb4be1aff184e749210de81607",
+    "created_at": "2026-10-14T00:42:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75700_1820",
+    "question_id": "q_claim_2025_igbo_75700",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "01e0eb2b2ce1416db8c569de97028712e8653cdf5146bc8ffc41d376a872ff08",
+    "created_at": "2026-10-14T00:42:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75702_1821",
+    "question_id": "q_claim_2025_igbo_75702",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "a009985c32ab536fb8cf6c3301c22616db4f26ba08f0809a70c059e9abc28927",
+    "created_at": "2026-10-14T00:42:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75703_1822",
+    "question_id": "q_claim_2025_igbo_75703",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "066742c22d66b0904426c1655af52462ca097765113011cf09cbff433cbb286f",
+    "created_at": "2026-10-14T00:42:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75704_1823",
+    "question_id": "q_claim_2025_igbo_75704",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "817174a32a05b799cb85f5967a0af808e11751a36eacb60b1521e86cf57ebe63",
+    "created_at": "2026-10-14T00:42:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75705_1824",
+    "question_id": "q_claim_2025_igbo_75705",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "b78b39fcdc104adf7160cc012b90b97f798d961d74a085b72e6d3a70f7c144e0",
+    "created_at": "2026-10-14T00:42:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75706_1825",
+    "question_id": "q_claim_2025_igbo_75706",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "99ec847d3163e7c86f419c9512a3259c8b5a844f5593286ddbe4aabe32d4230d",
+    "created_at": "2026-10-14T00:42:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75708_1826",
+    "question_id": "q_claim_2025_igbo_75708",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "c7a5e9573f212246e7cd616a96e52fabe735256defe3fd2048caa8baeef8ebe8",
+    "created_at": "2026-10-14T00:42:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75709_1827",
+    "question_id": "q_claim_2025_igbo_75709",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "550d47b381b4ada5e909878aeec07f687f8bf17867212fa651df9dfc8a42ebae",
+    "created_at": "2026-10-14T00:42:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75710_1828",
+    "question_id": "q_claim_2025_igbo_75710",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "dc84620a05705327177c1a3b51ca54aee2454d5749d77e00c2d9c804523b3704",
+    "created_at": "2026-10-14T00:42:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75712_1829",
+    "question_id": "q_claim_2025_igbo_75712",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "2caa829c5fd483deb0cc96fb8c8ed2510a117b40917b5c1f21988030c4cb12bd",
+    "created_at": "2026-10-14T00:42:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75713_1830",
+    "question_id": "q_claim_2025_igbo_75713",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "3383b9c91ddc990223b5015c7426d0f089c150bb5b443a4a0f70a9b90e071b20",
+    "created_at": "2026-10-14T00:42:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75714_1831",
+    "question_id": "q_claim_2025_igbo_75714",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "e8c0909a709c6ad3b5efcbf41045e75c389c1708f66d279137475c15e68b755a",
+    "created_at": "2026-10-14T00:42:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75715_1832",
+    "question_id": "q_claim_2025_igbo_75715",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "790084b09733d423b3b7b18b47cb22ca07ef7f19eba0c9d75877eefc937126b3",
+    "created_at": "2026-10-14T00:42:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75716_1833",
+    "question_id": "q_claim_2025_igbo_75716",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "142ddf996cda697012c6493a8ef3f6b1d51cc14e445301833ca30b4018a3704d",
+    "created_at": "2026-10-14T00:42:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75717_1834",
+    "question_id": "q_claim_2025_igbo_75717",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "5316b4c9c4a76a51d197028ceb34657714be2256943613787a061b3b32ef2129",
+    "created_at": "2026-10-14T00:42:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75718_1835",
+    "question_id": "q_claim_2025_igbo_75718",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "ff467323a36475bfa4fda3dba11aa5e7329b6a490b26cf78e0c66e401fe5d336",
+    "created_at": "2026-10-14T00:42:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75719_1836",
+    "question_id": "q_claim_2025_igbo_75719",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "549f17bcffa9935f2fe7feab704dc9a7376b6ee7752787a9a24e9897b17bad83",
+    "created_at": "2026-10-14T00:42:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75720_1837",
+    "question_id": "q_claim_2025_igbo_75720",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "59b7a3bfbb195ac1524928e65d03c1b80f586864aeafd246b7972e2fb37189cd",
+    "created_at": "2026-10-14T00:42:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75741_1838",
+    "question_id": "q_claim_2025_igbo_75741",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "e6bc08d98fe024e7fb31725ac4401d0dad65ff1da8659f40627580751533de0b",
+    "created_at": "2026-10-14T00:42:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75742_1839",
+    "question_id": "q_claim_2025_igbo_75742",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "475d806976b763ef5b4b6ebe65399c3447b8f0b4f47d25d383090a583cf17acc",
+    "created_at": "2026-10-14T00:42:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75743_1840",
+    "question_id": "q_claim_2025_igbo_75743",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "0ce076d8052ce611e354106f80e0f8391934f9f30f76b7e4f81d9e1e36850bd4",
+    "created_at": "2026-10-14T00:42:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75745_1841",
+    "question_id": "q_claim_2025_igbo_75745",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "d60cad633bcc71b4bd7bb47a7e42b167b1db3803ee941668e866a6556a5b78ed",
+    "created_at": "2026-10-14T00:42:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75746_1842",
+    "question_id": "q_claim_2025_igbo_75746",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "23489b96c5d4f01d8250afc80960db9068cdb88932418681e46a221bd98a62b4",
+    "created_at": "2026-10-14T00:42:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75747_1843",
+    "question_id": "q_claim_2025_igbo_75747",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "53ef607a2f8e9121d531525250733c83678380b893cf52b619d90ec8b9672dbf",
+    "created_at": "2026-10-14T00:42:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75748_1844",
+    "question_id": "q_claim_2025_igbo_75748",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "10e56e7e3147241a71b519c95f2f0d5076d8ccb1ac6084f408958a675fb9dd22",
+    "created_at": "2026-10-14T00:42:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75749_1845",
+    "question_id": "q_claim_2025_igbo_75749",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "e941a39aa8fe44535e6a9bb4e41919d7145cadb21aecaea7d838cb83152bfd33",
+    "created_at": "2026-10-14T00:42:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75750_1846",
+    "question_id": "q_claim_2025_igbo_75750",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "aa649f940684e8c9e46fc9cb6909922f7a5cb307d7e8f06d752866325dfd29a8",
+    "created_at": "2026-10-14T00:42:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75751_1847",
+    "question_id": "q_claim_2025_igbo_75751",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "b2db9bd838f79b954574ee274082e1beebe76f00d0c2311ee2b4eb49a2626e9c",
+    "created_at": "2026-10-14T00:42:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75752_1848",
+    "question_id": "q_claim_2025_igbo_75752",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "6b0e31243157447fea722ef7faefc475156578a7ddf1787a26df7ab0f89acdbc",
+    "created_at": "2026-10-14T00:42:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75753_1849",
+    "question_id": "q_claim_2025_igbo_75753",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "d7ee5a877eb85c090f5feb321d57bbf5f7c6ab55ba0842333cc14f986b2dd61e",
+    "created_at": "2026-10-14T00:42:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75754_1850",
+    "question_id": "q_claim_2025_igbo_75754",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "cb7556a3548ea5ded5c0664d69f376c8b2ac985b8726a72d06265f83ee50e8c7",
+    "created_at": "2026-10-14T00:42:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75755_1851",
+    "question_id": "q_claim_2025_igbo_75755",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "eef40d155f829c11eb71544d1cf72f6dba897cd151645d50029a1ed60febefb2",
+    "created_at": "2026-10-14T00:42:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75756_1852",
+    "question_id": "q_claim_2025_igbo_75756",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "ba582ec3e6a2286bc14e450e97dd820c620e72d94d2fc9d02efa936948178110",
+    "created_at": "2026-10-14T00:42:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75757_1853",
+    "question_id": "q_claim_2025_igbo_75757",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "dd34301eec0f49bcb6f42b5adfe5ff76ce4e44ad6e5a9b9e68e5739a2941b462",
+    "created_at": "2026-10-14T00:42:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75758_1854",
+    "question_id": "q_claim_2025_igbo_75758",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "0973ad0a2ab7f9b9d9b115b32afed1c2e4012c8f05eaaadf3b73a3562ba9ba73",
+    "created_at": "2026-10-14T00:42:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75759_1855",
+    "question_id": "q_claim_2025_igbo_75759",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "f54256f61fa85c7ef8d0bdc845f2c0f4634b1968b1c47b9e8902824034b6e819",
+    "created_at": "2026-10-14T00:42:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75760_1856",
+    "question_id": "q_claim_2025_igbo_75760",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "24ce51922d4bf4b7f4f0ba05224eb7163dd36fa02d64cd608a1ff0606039a72e",
+    "created_at": "2026-10-14T00:42:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_igbo_75761_1857",
+    "question_id": "q_claim_2025_igbo_75761",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "igbo-rewrite1",
+    "detail": null,
+    "content_hash": "bac8ad995a6df6d1ddfeb53956db12a8ed3f5c376ef7f30c16332ae1b5788a19",
+    "created_at": "2026-10-14T00:42:32Z"
   }
 ]
