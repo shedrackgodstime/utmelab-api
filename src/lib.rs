@@ -41,8 +41,8 @@ pub use bank::model::{
 pub use bank::model::{Verdict, Verification, VerifyCheck, VerifyKind, human_verified};
 pub use bank::verify::verify_row;
 pub use bank::{
-    AssembledPaper, Blueprint, MarkedQuestion, PaperSection, ReadinessGap, SubjectReadiness,
-    TopicReadiness, Unready, assemble, load_blueprints, mark, per_topic,
+    AssembledPaper, Blueprint, MarkedQuestion, PaperMode, PaperSection, ReadinessGap,
+    SubjectReadiness, TopicReadiness, Unready, assemble, load_blueprints, mark, per_topic,
 };
 pub use bank::{
     DEFAULT_PER_PAGE, ImagePosition, Inline, InlineKind, JsonStore, MAX_PER_PAGE, QuestionFilter,

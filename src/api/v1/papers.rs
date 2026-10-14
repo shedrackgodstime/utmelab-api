@@ -85,6 +85,30 @@ pub async fn readiness(
     }))
 }
 
+/// Build the paper for a request, or say exactly why not. Shared by the paper
+/// and score endpoints so both refuse identically: one subject lookup, one
+/// gate decision, one sentence (D69/D70).
+fn build(
+    state: &AppState,
+    exam: &str,
+    subject: &str,
+    country: Option<&str>,
+    seed: u64,
+) -> Result<crate::bank::AssembledPaper, ApiError> {
+    let bank = state.bank.borrow().clone();
+    if bank.subject(exam, subject).is_none() {
+        return Err(ApiError::not_found(
+            "subject_not_found",
+            format!("No subject with slug '{subject}' for exam '{exam}'."),
+        ));
+    }
+    // Blueprint rows may legitimately be absent: count assembly (D70) needs no
+    // measurement, so an empty blueprint is not a 404 — it is a count paper.
+    let rows = bank.blueprints(exam, subject);
+    crate::bank::assemble(bank.as_ref(), &rows, exam, subject, country, seed)
+        .map_err(|unready| ApiError::conflict("paper_not_ready", unready.detail()))
+}
+
 #[derive(Serialize, ToSchema)]
 pub struct PaperSectionOut {
     pub topic: String,
@@ -97,6 +121,10 @@ pub struct AssembledPaperOut {
     pub exam: String,
     pub subject: String,
     pub seed: u64,
+    /// Which gate built this paper (D70): `blueprint` is balanced per
+    /// measured topic expectation; `count` is a full-length draw whose mix
+    /// is not measured. Consumers must read it before calling the paper fair.
+    pub mode: crate::bank::PaperMode,
     pub total: usize,
     pub sections: Vec<PaperSectionOut>,
 }
@@ -130,8 +158,8 @@ pub struct ReadinessGapOut {
     ),
     responses(
         (status = 200, body = AssembledPaperOut),
-        (status = 404, description = "No such subject, or no blueprint rows"),
-        (status = 409, description = "Subject not complete; gaps listed"),
+        (status = 404, description = "No such subject for this exam"),
+        (status = 409, description = "Bank cannot fill the paper; the detail names what is short"),
     ),
 )]
 pub async fn assemble_paper(
@@ -139,59 +167,29 @@ pub async fn assemble_paper(
     Path((exam, subject)): Path<(String, String)>,
     Query(f): Query<AssembleQuery>,
 ) -> Result<Json<AssembledPaperOut>, ApiError> {
-    let bank = state.bank.borrow().clone();
-    if bank.subject(&exam, &subject).is_none() {
-        return Err(ApiError::not_found(
-            "subject_not_found",
-            format!("No subject with slug '{subject}' for exam '{exam}'."),
-        ));
-    }
-    let rows = bank.blueprints(&exam, &subject);
-    if rows.is_empty() {
-        return Err(ApiError::not_found(
-            "blueprint_not_found",
-            format!("No blueprint rows for {exam}/{subject}."),
-        ));
-    }
-    let seed = f.seed.unwrap_or(1);
-    match crate::bank::assemble(
-        bank.as_ref(),
-        &rows,
+    let paper = build(
+        &state,
         &exam,
         &subject,
         f.country.as_deref(),
-        seed,
-    ) {
-        Ok(paper) => Ok(Json(AssembledPaperOut {
-            exam: paper.exam.clone(),
-            subject: paper.subject.clone(),
-            seed: paper.seed,
-            total: paper.total(),
-            sections: paper
-                .sections
-                .iter()
-                .map(|s| PaperSectionOut {
-                    topic: s.topic.clone(),
-                    name: s.name.clone(),
-                    questions: s.questions.iter().map(|q| render(q, false)).collect(),
-                })
-                .collect(),
-        })),
-        Err(unready) => Err(ApiError::conflict(
-            "paper_not_ready",
-            format!(
-                "Only {}/{} topics ready; short on: {}",
-                unready.ready,
-                unready.total,
-                unready
-                    .gaps
-                    .iter()
-                    .map(|g| format!("{} (need {}, have {})", g.topic, g.need, g.have))
-                    .collect::<Vec<_>>()
-                    .join(", ")
-            ),
-        )),
-    }
+        f.seed.unwrap_or(1),
+    )?;
+    Ok(Json(AssembledPaperOut {
+        exam: paper.exam.clone(),
+        subject: paper.subject.clone(),
+        seed: paper.seed,
+        mode: paper.mode,
+        total: paper.total(),
+        sections: paper
+            .sections
+            .iter()
+            .map(|s| PaperSectionOut {
+                topic: s.topic.clone(),
+                name: s.name.clone(),
+                questions: s.questions.iter().map(|q| render(q, false)).collect(),
+            })
+            .collect(),
+    }))
 }
 
 #[derive(Deserialize, ToSchema)]
@@ -234,8 +232,8 @@ pub struct ScoreResponse {
     request_body = ScoreRequest,
     responses(
         (status = 200, body = ScoreResponse),
-        (status = 404, description = "No such subject, or no blueprint rows"),
-        (status = 409, description = "Subject not complete; gaps listed"),
+        (status = 404, description = "No such subject for this exam"),
+        (status = 409, description = "Bank cannot fill the paper; the detail names what is short"),
     ),
 )]
 pub async fn score_paper(
@@ -243,34 +241,7 @@ pub async fn score_paper(
     Path((exam, subject)): Path<(String, String)>,
     Json(body): Json<ScoreRequest>,
 ) -> Result<Json<ScoreResponse>, ApiError> {
-    let bank = state.bank.borrow().clone();
-    if bank.subject(&exam, &subject).is_none() {
-        return Err(ApiError::not_found(
-            "subject_not_found",
-            format!("No subject with slug '{subject}' for exam '{exam}'."),
-        ));
-    }
-    let rows = bank.blueprints(&exam, &subject);
-    if rows.is_empty() {
-        return Err(ApiError::not_found(
-            "blueprint_not_found",
-            format!("No blueprint rows for {exam}/{subject}."),
-        ));
-    }
-    let paper = crate::bank::assemble(
-        bank.as_ref(),
-        &rows,
-        &exam,
-        &subject,
-        body.country.as_deref(),
-        body.seed,
-    )
-    .map_err(|unready| {
-        ApiError::conflict(
-            "paper_not_ready",
-            format!("Only {}/{} topics ready.", unready.ready, unready.total),
-        )
-    })?;
+    let paper = build(&state, &exam, &subject, body.country.as_deref(), body.seed)?;
     let (score, marked) = crate::bank::mark(&paper, &body.answers);
     let total = paper.total();
     Ok(Json(ScoreResponse {

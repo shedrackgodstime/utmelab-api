@@ -137,10 +137,49 @@ pub fn per_topic(
         subject: subject.to_string(),
         topics,
         unmeasured,
-        unattributed: pools.unattributed_verified,
+        unattributed: pools.unattributed_verified(),
         ready,
         complete,
     }
+}
+
+/// Does the blueprint predicate govern this subject's papers (D70)?
+///
+/// Two conditions, both required:
+/// 1. per-topic **measured** expectations exist (a `topic`-level row carrying
+///    a value — a range-reported row with `expected: null` is not measured);
+/// 2. those rows **cover the paper** — their summed expectation reaches the
+///    stated `paper_size`.
+///
+/// Condition 2 is what stops a *partial* blueprint from being served as a
+/// balanced paper: literature-in-english measures 34 of 40 seats, so a
+/// blueprint paper would quietly be six questions short of a real one, while
+/// labelling itself measured. A partial blueprint is still reported in full by
+/// the readiness endpoint; it simply does not activate the gate until the
+/// missing rows land. Mathematics (23 topics, 100% of the paper) governs.
+/// Where the predicate does not govern, count assembly draws and says so.
+pub fn blueprint_governs(blueprints: &[Blueprint], exam: &str, subject: &str) -> bool {
+    let rows: Vec<&Blueprint> = blueprints
+        .iter()
+        .filter(|b| b.exam == exam && b.subject == subject)
+        .collect();
+    let measured: Vec<&Blueprint> = rows
+        .iter()
+        .copied()
+        .filter(|b| b.level == "topic" && b.topic.is_some() && b.expected.is_some())
+        .collect();
+    if measured.is_empty() {
+        return false;
+    }
+    // The blueprint's own statement of the paper wins over the subject row:
+    // this gate asks whether the *measurement* is whole, not whether the
+    // bank holds enough rows.
+    let paper_size = rows.iter().map(|b| b.paper_size).max().unwrap_or(0);
+    measured
+        .iter()
+        .map(|b| b.expected.unwrap_or(0.0).ceil() as u32)
+        .sum::<u32>()
+        >= paper_size
 }
 
 /// One topic's servable, in-scope, attributed rows.
@@ -150,10 +189,48 @@ pub struct TopicPool {
 }
 
 /// The attributed bank for one exam subject: every pool keyed by topic
-/// slug, plus the verified rows no topic can claim.
+/// slug, plus the verified rows no topic can claim (kept, not just counted —
+/// count-gated assembly draws from them too, D70).
 pub struct PoolSet {
     pub pools: HashMap<String, TopicPool>,
-    pub unattributed_verified: usize,
+    pub unattributed: Vec<Question>,
+}
+
+impl PoolSet {
+    pub fn unattributed_verified(&self) -> usize {
+        self.unattributed.len()
+    }
+}
+
+/// Every servable, in-scope row for one exam subject — **all pages drained**.
+/// `questions_page` caps at [`MAX_PER_PAGE`] (200 today) and the launch plan
+/// fills subjects well past that: a single page would silently under-count a
+/// growing subject and report topics short that hold plenty (D68's `have` must
+/// be the whole pool, not the first page of it).
+pub fn all_subject_rows(
+    store: &dyn Store,
+    exam: &str,
+    subject: &str,
+    country: Option<&str>,
+) -> Vec<Question> {
+    let filter = QuestionFilter {
+        exam: Some(exam),
+        subject: Some(subject),
+        verified: None,
+        country,
+        ..Default::default()
+    };
+    let first = store.questions_page(filter, 1, crate::bank::MAX_PER_PAGE);
+    let total_pages = first.total_pages();
+    let mut rows = first.questions;
+    for page in 2..=total_pages {
+        rows.extend(
+            store
+                .questions_page(filter, page, crate::bank::MAX_PER_PAGE)
+                .questions,
+        );
+    }
+    rows
 }
 
 /// Attribute servable in-scope rows to topics through subtopic tags, once.
@@ -170,19 +247,7 @@ pub fn topic_pools(store: &dyn Store, exam: &str, subject: &str, country: Option
             }
         }
     }
-    // One full page holds the whole subject many times over (largest
-    // today: <200 servable rows; page cap is MAX_PER_PAGE).
-    let full = store.questions_page(
-        QuestionFilter {
-            exam: Some(exam),
-            subject: Some(subject),
-            verified: None,
-            country,
-            ..Default::default()
-        },
-        1,
-        crate::bank::MAX_PER_PAGE,
-    );
+    let full = all_subject_rows(store, exam, subject, country);
     let mut pools: HashMap<String, TopicPool> = HashMap::new();
     // Every tree topic gets a pool, even empty — readiness names all
     // measured topics, not just ones holding rows.
@@ -195,8 +260,8 @@ pub fn topic_pools(store: &dyn Store, exam: &str, subject: &str, country: Option
             },
         );
     }
-    let mut unattributed_verified = 0usize;
-    for q in full.questions {
+    let mut unattributed: Vec<Question> = Vec::new();
+    for q in full {
         match q.subtopic_id.as_deref().and_then(|s| subtopic_topic.get(s)) {
             Some(t) => pools
                 .entry(t.clone())
@@ -206,15 +271,17 @@ pub fn topic_pools(store: &dyn Store, exam: &str, subject: &str, country: Option
                 })
                 .rows
                 .push(q),
+            // Verified untagged rows are held, never assigned: a topic may
+            // not claim a row nothing attributes (D68).
             None => {
                 if q.verified {
-                    unattributed_verified += 1;
+                    unattributed.push(q);
                 }
             }
         }
     }
     PoolSet {
         pools,
-        unattributed_verified,
+        unattributed,
     }
 }

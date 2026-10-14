@@ -1,9 +1,13 @@
-//! `POST /papers` assembly + scoring (D69): refused until complete,
-//! deterministic per seed, answers always withheld, scoring stateless.
+//! `POST /papers` assembly + scoring (D69 blueprint gate, D70 count gate):
+//! refused until the bank can fill the paper, deterministic per seed, answers
+//! always withheld, scoring stateless.
 //!
-//! File-bank router, no network. The real bank's maths is incomplete, so
-//! refusal is tested against it; the happy path runs on a synthetic
-//! two-topic blueprint (expected 1.0 each) where readiness holds.
+//! File-bank router, no network, against the real bank. Two live subjects
+//! cover both gates: mathematics is blueprint-governed and short of complete,
+//! so it refuses naming topics; commerce holds no measurement and 78 verified
+//! rows, so it serves a labelled 40-question count paper. A synthetic
+//! two-topic blueprint covers the blueprint happy path maths cannot yet
+//! reach.
 
 use std::sync::{Arc, Mutex};
 
@@ -12,7 +16,7 @@ use axum::http::{Request, StatusCode};
 use http_body_util::BodyExt;
 use tower::ServiceExt;
 use utmelab_api::{
-    AppState, JsonStore, KeyBackend, KeyStore, RateLimiter, ReportStore, Store, router,
+    AppState, JsonStore, KeyBackend, KeyStore, PaperMode, RateLimiter, ReportStore, Store, router,
 };
 
 fn state() -> AppState {
@@ -53,6 +57,32 @@ async fn post(path: &str, body: serde_json::Value) -> (StatusCode, serde_json::V
     (status, json)
 }
 
+/// One synthetic measured-topic blueprint row. Test fixture only: it states
+/// an expectation so the gate can be exercised, never a bank fact.
+fn bp(topic: &str, paper_size: u32) -> utmelab_api::Blueprint {
+    utmelab_api::Blueprint {
+        exam: "JAMB".to_string(),
+        subject: "mathematics".to_string(),
+        level: "topic".to_string(),
+        topic: Some(topic.to_string()),
+        section: None,
+        members: vec![],
+        paper_size,
+        pct: None,
+        pct_low: None,
+        pct_high: None,
+        expected: Some(1.0),
+        expected_low: None,
+        expected_high: None,
+        source: Some("test".to_string()),
+        sample: None,
+        method: "measured-topic".to_string(),
+        confidence: Some("high".to_string()),
+        status: "provisional".to_string(),
+        note: String::new(),
+    }
+}
+
 #[tokio::test]
 async fn incomplete_subject_refuses_with_named_gaps() {
     let (status, doc) = post(
@@ -81,50 +111,7 @@ async fn syntheticmaths_assembles_deterministically_and_scores() {
     // expectations — tests the machinery, invents no content.
     let data = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
     let bank = JsonStore::load(&data).expect("bank loads");
-    let bps = vec![
-        utmelab_api::Blueprint {
-            exam: "JAMB".to_string(),
-            subject: "mathematics".to_string(),
-            level: "topic".to_string(),
-            topic: Some("trigonometry".to_string()),
-            section: None,
-            members: vec![],
-            paper_size: 40,
-            pct: None,
-            pct_low: None,
-            pct_high: None,
-            expected: Some(1.0),
-            expected_low: None,
-            expected_high: None,
-            source: Some("test".to_string()),
-            sample: None,
-            method: "measured-topic".to_string(),
-            confidence: Some("high".to_string()),
-            status: "provisional".to_string(),
-            note: String::new(),
-        },
-        utmelab_api::Blueprint {
-            exam: "JAMB".to_string(),
-            subject: "mathematics".to_string(),
-            level: "topic".to_string(),
-            topic: Some("sets".to_string()),
-            section: None,
-            members: vec![],
-            paper_size: 40,
-            pct: None,
-            pct_low: None,
-            pct_high: None,
-            expected: Some(1.0),
-            expected_low: None,
-            expected_high: None,
-            source: Some("test".to_string()),
-            sample: None,
-            method: "measured-topic".to_string(),
-            confidence: Some("high".to_string()),
-            status: "provisional".to_string(),
-            note: String::new(),
-        },
-    ];
+    let bps = vec![bp("trigonometry", 1), bp("sets", 1)];
     let a = utmelab_api::assemble(&bank, &bps, "JAMB", "mathematics", None, 11)
         .expect("synthetic slice is complete");
     let b = utmelab_api::assemble(&bank, &bps, "JAMB", "mathematics", None, 11)
@@ -149,27 +136,7 @@ async fn syntheticmaths_assembles_deterministically_and_scores() {
 async fn marking_counts_only_what_was_submitted() {
     let data = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
     let bank = JsonStore::load(&data).expect("bank loads");
-    let bps = vec![utmelab_api::Blueprint {
-        exam: "JAMB".to_string(),
-        subject: "mathematics".to_string(),
-        level: "topic".to_string(),
-        topic: Some("sets".to_string()),
-        section: None,
-        members: vec![],
-        paper_size: 40,
-        pct: None,
-        pct_low: None,
-        pct_high: None,
-        expected: Some(1.0),
-        expected_low: None,
-        expected_high: None,
-        source: Some("test".to_string()),
-        sample: None,
-        method: "measured-topic".to_string(),
-        confidence: Some("high".to_string()),
-        status: "provisional".to_string(),
-        note: String::new(),
-    }];
+    let bps = vec![bp("sets", 1)];
     let paper = utmelab_api::assemble(&bank, &bps, "JAMB", "mathematics", None, 3)
         .expect("single-topic slice is complete");
     assert_eq!(paper.total(), 1);
@@ -204,4 +171,241 @@ async fn marking_counts_only_what_was_submitted() {
     assert_eq!(score, 0);
     assert_eq!(marked[0].submitted, None);
     assert!(!marked[0].correct);
+}
+
+/// Every subject the count gate can serve today, and the one it cannot.
+/// Pinned from the real bank so a content change that breaks a launch paper
+/// fails here rather than in a consumer's hands.
+#[test]
+fn count_gate_serves_every_subject_but_music_today() {
+    let data = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
+    let bank = JsonStore::load(&data).expect("bank loads");
+    let blueprints = utmelab_api::load_blueprints(&data).expect("blueprints load");
+    let mut served = Vec::new();
+    let mut refused = Vec::new();
+    for s in bank.subjects("JAMB") {
+        match utmelab_api::assemble(&bank, &blueprints, "JAMB", &s.slug, None, 5) {
+            Ok(paper) => {
+                assert_eq!(
+                    paper.total(),
+                    s.objective_paper_questions
+                        .expect("JAMB states a paper size") as usize,
+                    "{} serves a full-length paper",
+                    s.slug
+                );
+                served.push(s.slug.clone());
+            }
+            Err(_) => refused.push(s.slug.clone()),
+        }
+    }
+    // Mathematics is blueprint-gated and short; music is one verified row
+    // short of 40. Everything else JAMB asks for assembles today.
+    assert_eq!(refused, vec!["mathematics", "music"]);
+    assert_eq!(served.len(), 23);
+    assert!(served.contains(&"commerce".to_string()));
+    assert!(served.contains(&"use-of-english".to_string()));
+}
+
+#[tokio::test]
+async fn count_paper_is_full_length_labelled_and_keyless() {
+    let (status, doc) = post("/api/v1/papers/JAMB/commerce?seed=7", serde_json::json!({})).await;
+    assert_eq!(status, StatusCode::OK);
+    assert_eq!(doc["mode"], "count", "no measurement, so the paper says so");
+    assert_eq!(doc["total"], 40);
+    assert_eq!(doc["seed"], 7);
+    let questions: Vec<&serde_json::Value> = doc["sections"]
+        .as_array()
+        .expect("sections")
+        .iter()
+        .flat_map(|s| s["questions"].as_array().expect("questions").iter())
+        .collect();
+    assert_eq!(questions.len(), 40);
+    let mut ids = std::collections::HashSet::new();
+    for q in &questions {
+        assert!(
+            ids.insert(q["id"].as_str().expect("id")),
+            "no duplicate rows"
+        );
+        assert_eq!(q["verified"], true, "only verified rows sell");
+        // The key never rides the paper (D69), on either gate.
+        assert!(q["answer"].is_null(), "answers withheld: {q}");
+        assert!(q["explanation"].is_null(), "explanations withheld: {q}");
+    }
+    // Sections are presentational only — grouped by topic, untagged last.
+    let sections = doc["sections"].as_array().expect("sections");
+    assert!(!sections.is_empty());
+    let topics: Vec<&str> = sections
+        .iter()
+        .filter_map(|s| s["topic"].as_str())
+        .collect();
+    if let Some(first_empty) = topics.iter().position(|t| t.is_empty()) {
+        assert!(
+            topics[first_empty..].iter().all(|t| t.is_empty()),
+            "untagged rows sort last, never interleaved: {topics:?}"
+        );
+    }
+}
+
+#[tokio::test]
+async fn same_seed_same_count_paper_different_seed_differs() {
+    let one = post("/api/v1/papers/JAMB/commerce?seed=1", serde_json::json!({})).await;
+    let two = post("/api/v1/papers/JAMB/commerce?seed=1", serde_json::json!({})).await;
+    let three = post(
+        "/api/v1/papers/JAMB/commerce?seed=99",
+        serde_json::json!({}),
+    )
+    .await;
+    let ids = |d: &serde_json::Value| -> Vec<String> {
+        d["sections"]
+            .as_array()
+            .expect("sections")
+            .iter()
+            .flat_map(|s| s["questions"].as_array().expect("questions").iter())
+            .map(|q| q["id"].as_str().unwrap_or_default().to_string())
+            .collect()
+    };
+    assert_eq!(ids(&one.1), ids(&two.1), "same seed, same paper");
+    assert_ne!(ids(&one.1), ids(&three.1), "a new seed reshuffles");
+    assert_eq!(ids(&one.1).len(), 40);
+    assert_eq!(ids(&three.1).len(), 40);
+}
+
+#[tokio::test]
+async fn short_subject_refuses_naming_the_shortfall() {
+    // Music holds 39 verified, distinct rows against a 40-question paper.
+    let (status, doc) = post("/api/v1/papers/JAMB/music?seed=1", serde_json::json!({})).await;
+    assert_eq!(status, StatusCode::CONFLICT);
+    assert_eq!(doc["code"], "paper_not_ready");
+    let detail = doc["detail"].as_str().unwrap_or_default();
+    assert!(detail.contains("39"), "says what we hold: {detail}");
+    assert!(detail.contains("40"), "says what a paper needs: {detail}");
+}
+
+#[tokio::test]
+async fn subject_without_a_stated_paper_size_refuses_to_invent_one() {
+    // WAEC rows state no objective paper size (D50), so no paper can be
+    // assembled without inventing a number.
+    let (status, doc) = post(
+        "/api/v1/papers/WAEC/animal-husbandry?seed=1",
+        serde_json::json!({}),
+    )
+    .await;
+    assert_eq!(status, StatusCode::CONFLICT);
+    let detail = doc["detail"].as_str().unwrap_or_default();
+    assert!(
+        detail.contains("no objective paper size"),
+        "absence is the answer: {detail}"
+    );
+}
+
+#[tokio::test]
+async fn count_paper_scores_statelessly_and_reveals_no_key() {
+    let (_, paper) = post("/api/v1/papers/JAMB/commerce?seed=4", serde_json::json!({})).await;
+    let ids: Vec<String> = paper["sections"]
+        .as_array()
+        .expect("sections")
+        .iter()
+        .flat_map(|s| s["questions"].as_array().expect("questions").iter())
+        .map(|q| q["id"].as_str().unwrap_or_default().to_string())
+        .collect();
+    // Answer every row with the id of nothing in particular: all wrong, and
+    // the response may not carry the key to explain why.
+    let answers: serde_json::Map<String, serde_json::Value> = ids
+        .iter()
+        .map(|id| (id.clone(), serde_json::json!("zzz-not-an-option")))
+        .collect();
+    let (status, doc) = post(
+        "/api/v1/papers/JAMB/commerce/score",
+        serde_json::json!({"seed": 4, "answers": answers}),
+    )
+    .await;
+    assert_eq!(status, StatusCode::OK);
+    assert_eq!(doc["score"], 0);
+    assert_eq!(doc["total"], 40);
+    assert_eq!(doc["seed"], 4);
+    let rows = doc["questions"].as_array().expect("scored rows");
+    assert_eq!(rows.len(), 40);
+    for r in rows {
+        assert_eq!(r["correct"], false);
+        assert_eq!(r["submitted"], "zzz-not-an-option");
+        assert!(r.get("answer").is_none(), "scoring never returns the key");
+    }
+    // Scoring an unassemblable subject refuses like assembly does.
+    let (status, doc) = post(
+        "/api/v1/papers/JAMB/music/score",
+        serde_json::json!({"seed": 1, "answers": {}}),
+    )
+    .await;
+    assert_eq!(status, StatusCode::CONFLICT);
+    assert_eq!(doc["code"], "paper_not_ready");
+}
+
+#[tokio::test]
+async fn unknown_subject_is_404_not_a_refusal() {
+    let (status, doc) = post(
+        "/api/v1/papers/JAMB/not-a-subject?seed=1",
+        serde_json::json!({}),
+    )
+    .await;
+    assert_eq!(status, StatusCode::NOT_FOUND);
+    assert_eq!(doc["code"], "subject_not_found");
+}
+
+#[test]
+fn the_gate_switches_on_measurement_that_covers_the_paper() {
+    // Same bank, same expectations — only the blueprint's own paper claim
+    // differs. A measurement that covers the paper balances it (D69); a
+    // partial one does not govern, and the paper says `count` (D70).
+    let data = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
+    let bank = JsonStore::load(&data).expect("bank loads");
+
+    let covering = utmelab_api::assemble(
+        &bank,
+        &[bp("sets", 1), bp("trigonometry", 1)],
+        "JAMB",
+        "mathematics",
+        None,
+        2,
+    )
+    .expect("covering blueprint governs");
+    assert_eq!(covering.mode, PaperMode::Blueprint);
+    assert_eq!(covering.total(), 2);
+
+    let partial = utmelab_api::assemble(
+        &bank,
+        &[bp("sets", 40), bp("trigonometry", 40)],
+        "JAMB",
+        "mathematics",
+        None,
+        2,
+    )
+    .expect("count gate serves mathematics too");
+    assert_eq!(
+        partial.mode,
+        PaperMode::Count,
+        "2 of 40 seats is not a paper"
+    );
+    assert_eq!(partial.total(), 40);
+
+    // Real-bank positions: only mathematics' own blueprint covers its paper.
+    let all = utmelab_api::load_blueprints(&data).expect("blueprints load");
+    for slug in [
+        "literature-in-english",
+        "use-of-english",
+        "commerce",
+        "physics",
+        "biology",
+    ] {
+        let paper = utmelab_api::assemble(&bank, &all, "JAMB", slug, None, 2)
+            .unwrap_or_else(|e| panic!("{slug} should serve today: {}", e.detail()));
+        assert_eq!(
+            paper.mode,
+            PaperMode::Count,
+            "{slug} is not blueprint-governed"
+        );
+    }
+    assert!(
+        utmelab_api::assemble(&bank, &all, "JAMB", "mathematics", None, 2).is_err(),
+        "mathematics is blueprint-governed, so the count gate never answers for it"
+    );
 }

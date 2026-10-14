@@ -16,7 +16,7 @@ mod view;
 pub mod write;
 
 pub use assemble::{
-    AssembledPaper, MarkedQuestion, PaperSection, ReadinessGap, Unready, assemble, mark,
+    AssembledPaper, MarkedQuestion, PaperMode, PaperSection, ReadinessGap, Unready, assemble, mark,
 };
 pub(crate) use json::StoreParts;
 pub use json::{JsonStore, StoreError};
