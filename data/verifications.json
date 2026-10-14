@@ -19556,5 +19556,2161 @@
     "detail": null,
     "content_hash": "a0546cf30391450b74ff90d1a9b092f5bd81767c92ef4a5e9e88f1b627e3c726",
     "created_at": "2026-10-13T23:54:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_75899_1398",
+    "question_id": "q_claim_2025_agricultural-science_75899",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "86917da4a7d1ae2b71c52dde09bf095c05d31733e3506edd19ef5479aecad41c",
+    "created_at": "2026-10-13T23:59:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_75900_1399",
+    "question_id": "q_claim_2025_agricultural-science_75900",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "f62bc4b6e7ba438bfff0fc424b0260366e097046e74c27a65313a9df4c4057c8",
+    "created_at": "2026-10-13T23:59:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76102_1400",
+    "question_id": "q_claim_2025_agricultural-science_76102",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "d4da62b47aaf1e4bbcd179b30973bf8b5fcec75b08fb41e3ce748f81bf7a6ef7",
+    "created_at": "2026-10-13T23:59:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76103_1401",
+    "question_id": "q_claim_2025_agricultural-science_76103",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "f0316231c6cbf1a415f5d7398fe46f72189eb5baccc04390bacedc96eedbdc47",
+    "created_at": "2026-10-13T23:59:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76104_1402",
+    "question_id": "q_claim_2025_agricultural-science_76104",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "112aae1d111bf7dde5fd9f860465126d2e390aaa717ea2521b3ee495a761854d",
+    "created_at": "2026-10-13T23:59:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76105_1403",
+    "question_id": "q_claim_2025_agricultural-science_76105",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "8afa2edf2d0554001071bd651bfc100c151a0a8c83f0b7a7ecaaf426648f4c49",
+    "created_at": "2026-10-13T23:59:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76106_1404",
+    "question_id": "q_claim_2025_agricultural-science_76106",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "342f8568036d61f2fa27275e4a18b0679bb5ea5a7e9080cda362797ef3b85ee8",
+    "created_at": "2026-10-13T23:59:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76107_1405",
+    "question_id": "q_claim_2025_agricultural-science_76107",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "f75a25c2283e55d75aafadc05813b287be9c36760c49fa6a32c60c1f9b7d74ad",
+    "created_at": "2026-10-13T23:59:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76108_1406",
+    "question_id": "q_claim_2025_agricultural-science_76108",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "0ca8ec0ce2975385261433da77db56b0dd46dc54ee8beeeffaf691d910b9f184",
+    "created_at": "2026-10-13T23:59:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76109_1407",
+    "question_id": "q_claim_2025_agricultural-science_76109",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "b5756674dedd9b18d971d34afb9eddca279ae34bbc532aca79b2a3c011fd6447",
+    "created_at": "2026-10-13T23:59:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76111_1408",
+    "question_id": "q_claim_2025_agricultural-science_76111",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "b10d244794bc63489a56318cb60209f5d3a49e38be2369ac96de7d6e42ad1d0c",
+    "created_at": "2026-10-13T23:59:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76112_1409",
+    "question_id": "q_claim_2025_agricultural-science_76112",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "43cfe63c6839e6106195cee0e5f43c0b98426675ba6c997171e3a620930ae8d7",
+    "created_at": "2026-10-13T23:59:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76114_1410",
+    "question_id": "q_claim_2025_agricultural-science_76114",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "808b79a1ce3e4c8177a0dcf09f9d02e3450fc7733db4800fe961f3a7f22f92d8",
+    "created_at": "2026-10-13T23:59:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76115_1411",
+    "question_id": "q_claim_2025_agricultural-science_76115",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "3b567b404f5ae8b2d8f5e72e9ca7aea5ca5c179497e413db7d3439f460a70ef3",
+    "created_at": "2026-10-13T23:59:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76116_1412",
+    "question_id": "q_claim_2025_agricultural-science_76116",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "8ca88d11226ad878ad20673451ff8001d3854aa29c75139cacf43c02b65b098d",
+    "created_at": "2026-10-13T23:59:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76145_1413",
+    "question_id": "q_claim_2025_agricultural-science_76145",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "4630414bc207929bea661e13a7af456ad46b462a284ebbd93d7e14e48dadd16d",
+    "created_at": "2026-10-13T23:59:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76146_1414",
+    "question_id": "q_claim_2025_agricultural-science_76146",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "a447b58fde09abeb4364bb8eedc5f361961f4526d1414b5a584b883fa17c7218",
+    "created_at": "2026-10-13T23:59:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76148_1415",
+    "question_id": "q_claim_2025_agricultural-science_76148",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "0c7c8288e868c7b3c037a8bce3508f0b39dff5b020ff50c72874b843cc5ebac9",
+    "created_at": "2026-10-13T23:59:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76149_1416",
+    "question_id": "q_claim_2025_agricultural-science_76149",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "a36ee615bfde104eab2dbfb9f8a1d931d7ce6004bebabb6a33df8d27652c2b4f",
+    "created_at": "2026-10-13T23:59:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76150_1417",
+    "question_id": "q_claim_2025_agricultural-science_76150",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "84543b4adc8012ea96eb8a51965dbc02e0c709080fd573851b959845a8fc1c4e",
+    "created_at": "2026-10-13T23:59:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76151_1418",
+    "question_id": "q_claim_2025_agricultural-science_76151",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "b3a0a7aec2428944fff8b12f3c7b2f27c49110c3665c115d1d7c71b83e38a199",
+    "created_at": "2026-10-13T23:59:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76152_1419",
+    "question_id": "q_claim_2025_agricultural-science_76152",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "0007bf8b0d7596c903474ff5b6758d6fc7f51a55f64bb6942baf04ac2857838d",
+    "created_at": "2026-10-13T23:59:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76153_1420",
+    "question_id": "q_claim_2025_agricultural-science_76153",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "9b49c0f0906c5931f348ff45793832ec9088f8864e24da39bbc4a4be9836f501",
+    "created_at": "2026-10-13T23:59:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76154_1421",
+    "question_id": "q_claim_2025_agricultural-science_76154",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "4ebfe6166aae4dee21b9bedddb76a4ba1f8f95f82223f700863a5c785384579f",
+    "created_at": "2026-10-13T23:59:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76155_1422",
+    "question_id": "q_claim_2025_agricultural-science_76155",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "f6c1c4d72c69d87596ca62a0dbe99c32b6365ecee9942b11c7aac1e5e70ef2de",
+    "created_at": "2026-10-13T23:59:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76156_1423",
+    "question_id": "q_claim_2025_agricultural-science_76156",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "cfbf4a4fac311c5ae1b378d974e42294893ad1ac4d93cc62547d77b622e6d191",
+    "created_at": "2026-10-13T23:59:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76157_1424",
+    "question_id": "q_claim_2025_agricultural-science_76157",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "45670e26fa68cb11c92202effc72eefed0b37ed5948341b4b7d0ce2b2a511fde",
+    "created_at": "2026-10-13T23:59:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76158_1425",
+    "question_id": "q_claim_2025_agricultural-science_76158",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "936a888d5f8425db21e274bd4d163a960ea11e56fba3b0a245cfe2317c038714",
+    "created_at": "2026-10-13T23:59:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76161_1426",
+    "question_id": "q_claim_2025_agricultural-science_76161",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "ebd506fa8f4b556991f9173826cb0d6e4a275a1fad2be78e6820102a9501132f",
+    "created_at": "2026-10-13T23:59:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76169_1427",
+    "question_id": "q_claim_2025_agricultural-science_76169",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "4d2d9f02db87fcd4997f7916fce5a462f6c5e5c2ac0d9e1f27282f71605b6577",
+    "created_at": "2026-10-13T23:59:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76171_1428",
+    "question_id": "q_claim_2025_agricultural-science_76171",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "8835f225519705103846478173b1de38e801794e457207e8d61d8352f86c732d",
+    "created_at": "2026-10-13T23:59:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76172_1429",
+    "question_id": "q_claim_2025_agricultural-science_76172",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "083caaa57c0c36521a78fe97f4ecfee0e478bbe1fb7e1df73e73510b60d3a1f6",
+    "created_at": "2026-10-13T23:59:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76173_1430",
+    "question_id": "q_claim_2025_agricultural-science_76173",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "2ce5b0294a3c13f45b4c585e3024e503f466639e3b7b82a297120a6b745b84a3",
+    "created_at": "2026-10-13T23:59:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76174_1431",
+    "question_id": "q_claim_2025_agricultural-science_76174",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "ca4502207fb4edcc7787c4cd0c7dff3b736423e5de0ee075bfa992002da02913",
+    "created_at": "2026-10-13T23:59:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76177_1432",
+    "question_id": "q_claim_2025_agricultural-science_76177",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "bdfb8bd522cbee1a5e7be1cd2829b85782c1d33853ba4d61c02a86a7e51c02eb",
+    "created_at": "2026-10-13T23:59:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76178_1433",
+    "question_id": "q_claim_2025_agricultural-science_76178",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "4400503fd4857f4b88f74b25f2b4e7e12db90f952fd90f057e19b71802c45673",
+    "created_at": "2026-10-13T23:59:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76180_1434",
+    "question_id": "q_claim_2025_agricultural-science_76180",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "3adee646491c9c3710fca0669f5eeb9304fd647cc9bec687f98de08867b2bf96",
+    "created_at": "2026-10-13T23:59:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76181_1435",
+    "question_id": "q_claim_2025_agricultural-science_76181",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "562c13572cff0afdd2e2a458587865ac1621fb3a2dcf82f72baaf749336f2de3",
+    "created_at": "2026-10-13T23:59:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76230_1436",
+    "question_id": "q_claim_2025_agricultural-science_76230",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "ddea9f4bd49c4cd64114e49d0023bdca34b580138dd8c7916a8f8b0a54ed8e3a",
+    "created_at": "2026-10-13T23:59:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76231_1437",
+    "question_id": "q_claim_2025_agricultural-science_76231",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "377ab49abcaca2018a55d2b8925f2ad6035220fa9744b317ca903290bacf3e26",
+    "created_at": "2026-10-13T23:59:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76232_1438",
+    "question_id": "q_claim_2025_agricultural-science_76232",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "1539a09f90fcf2af6c108ddf624e276ffe30fc4bbed6e7665c013b2cc18d68d6",
+    "created_at": "2026-10-13T23:59:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76233_1439",
+    "question_id": "q_claim_2025_agricultural-science_76233",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "34886ac6066826b071d5043df69db95d65e393541a9e0fd63586aa723b4a5294",
+    "created_at": "2026-10-13T23:59:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76235_1440",
+    "question_id": "q_claim_2025_agricultural-science_76235",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "16981a1f4218939d637c1f1654250ffa8a3847eb8f46d6f6d0ae3bbf0f6427ac",
+    "created_at": "2026-10-13T23:59:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76236_1441",
+    "question_id": "q_claim_2025_agricultural-science_76236",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "77b3f70aa7d1078d6882e1cd7898ff1cc0862854424173354066988476e6105a",
+    "created_at": "2026-10-13T23:59:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76237_1442",
+    "question_id": "q_claim_2025_agricultural-science_76237",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "b43661f55f091ecbdd5dd371314f83a8b828458a4dc517798775e844978ec88e",
+    "created_at": "2026-10-13T23:59:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76238_1443",
+    "question_id": "q_claim_2025_agricultural-science_76238",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "2708c0a2a87b4a8a4b9e519873fa101897f9d44f81d6c61933c7466e10b238cc",
+    "created_at": "2026-10-13T23:59:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76239_1444",
+    "question_id": "q_claim_2025_agricultural-science_76239",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "f8fc9142e6e67beac836fcf623c629c1927ab3ccf8034252099c4507f4f7563e",
+    "created_at": "2026-10-13T23:59:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76240_1445",
+    "question_id": "q_claim_2025_agricultural-science_76240",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "fed7818a24984e73c3bc0ef3944894d5ec8c68543ca7d8710da677beb12ac0f9",
+    "created_at": "2026-10-13T23:59:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76241_1446",
+    "question_id": "q_claim_2025_agricultural-science_76241",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "ef511783937b5d3813e676bd769cf501ca697695a058bee3c238c513efdaa138",
+    "created_at": "2026-10-13T23:59:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76242_1447",
+    "question_id": "q_claim_2025_agricultural-science_76242",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "e457cb0f6fde324d21fa0bd6f3c7a9db184407c6b32c573374802cf84ed05ba8",
+    "created_at": "2026-10-13T23:59:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76243_1448",
+    "question_id": "q_claim_2025_agricultural-science_76243",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "9ca2985600f5db1b8be415b642975409b6499dd2da529d6ff49549df2babaa2b",
+    "created_at": "2026-10-13T23:59:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76245_1449",
+    "question_id": "q_claim_2025_agricultural-science_76245",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "73bd252ccf2c002575097488e7428cf2e3f3542f37518fa21128e27ce552c1c3",
+    "created_at": "2026-10-13T23:59:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76246_1450",
+    "question_id": "q_claim_2025_agricultural-science_76246",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "86853896bb47fb0ea3d168029b9a6231c84b169abf7599880c44624dd98bbeca",
+    "created_at": "2026-10-13T23:59:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76247_1451",
+    "question_id": "q_claim_2025_agricultural-science_76247",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "1bbcc34c6e9eec58fab9ef493d48ba6a49cf159c0fb3d88760baddf0eedf964b",
+    "created_at": "2026-10-13T23:59:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76249_1452",
+    "question_id": "q_claim_2025_agricultural-science_76249",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "9673e4c1948d2f554257795e6a32adbda98ccf14cc171c75605880f531f5ad47",
+    "created_at": "2026-10-13T23:59:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76250_1453",
+    "question_id": "q_claim_2025_agricultural-science_76250",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "6cf8bcaf7ecd3f716ec5ba5f75c57a2d98015abef4e142cc3aae20560e8a3043",
+    "created_at": "2026-10-13T23:59:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76254_1454",
+    "question_id": "q_claim_2025_agricultural-science_76254",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "8cf8fe9cf79c819cfcf4312d1c81826d523567b4911d60f64f976d0026107e3b",
+    "created_at": "2026-10-13T23:59:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76255_1455",
+    "question_id": "q_claim_2025_agricultural-science_76255",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "fa10fb0f4812f10e9282db7f7d5dd6f4415cd360aff4024b9e4cab99fb92bb94",
+    "created_at": "2026-10-13T23:59:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76256_1456",
+    "question_id": "q_claim_2025_agricultural-science_76256",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "0bfe5891ad1af31a18c417bf42582488be09d609529235c6f1ecfeb18c0b06dd",
+    "created_at": "2026-10-13T23:59:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76257_1457",
+    "question_id": "q_claim_2025_agricultural-science_76257",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "c9916d3f4b1e9abd06880e7730faa7dec902593ca4d0071b0590377cf820250d",
+    "created_at": "2026-10-13T23:59:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76258_1458",
+    "question_id": "q_claim_2025_agricultural-science_76258",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "976232aba95f2428715b7f3bb3a4823d667ee0ac2ddc7fa36b1fd000ed455147",
+    "created_at": "2026-10-13T23:59:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76260_1459",
+    "question_id": "q_claim_2025_agricultural-science_76260",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "a49249471b43b7881c620dc8abf18b1feb06866b8287e670bba0648fb6a54fa5",
+    "created_at": "2026-10-13T23:59:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76262_1460",
+    "question_id": "q_claim_2025_agricultural-science_76262",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "719353bc44f21e7448a52e6ef15fea0396f94a3a9d05ab4ff1c26193edbd9446",
+    "created_at": "2026-10-13T23:59:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76263_1461",
+    "question_id": "q_claim_2025_agricultural-science_76263",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "73f5d11e3bb20a9258574a685ae07ff878bac88ed87141a6397ce5009ad0950c",
+    "created_at": "2026-10-13T23:59:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76264_1462",
+    "question_id": "q_claim_2025_agricultural-science_76264",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "c779e59346fe0b38477d0c8e3cbb969b67e0dbf6268f52ba85c7a7bd9fafa4c2",
+    "created_at": "2026-10-13T23:59:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76265_1463",
+    "question_id": "q_claim_2025_agricultural-science_76265",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "210a9b2036e6832ea4bc827c32718d92d6ca154f9a259f50593aaa44e1c96e8f",
+    "created_at": "2026-10-13T23:59:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76267_1464",
+    "question_id": "q_claim_2025_agricultural-science_76267",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "8e02568d38584f2a4e17f133d3fde9109ca4931466dc8d11a9bb6be96d0c5f1d",
+    "created_at": "2026-10-13T23:59:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76268_1465",
+    "question_id": "q_claim_2025_agricultural-science_76268",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "46fd8ccf1f2807808162905658bcdb0a60b6f630167350157b3270cb702f9c52",
+    "created_at": "2026-10-13T23:59:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76269_1466",
+    "question_id": "q_claim_2025_agricultural-science_76269",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "311e35644fe8c333afcb8ddd3fbb27ced166345118c09ae785b35915314e061a",
+    "created_at": "2026-10-13T23:59:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76270_1467",
+    "question_id": "q_claim_2025_agricultural-science_76270",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "bc99503ddc5314d53d866fb84b5d5797c8e232b515dc3f988bf725585081943d",
+    "created_at": "2026-10-13T23:59:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76271_1468",
+    "question_id": "q_claim_2025_agricultural-science_76271",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "3708361ae46031c66c7082b4c1bccec674fee841bffcec0d37d3934b7c1c3a3b",
+    "created_at": "2026-10-13T23:59:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76272_1469",
+    "question_id": "q_claim_2025_agricultural-science_76272",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "39724caa09fcb2ac348801da970200902aae5b14176699cc22845d99a1996e8c",
+    "created_at": "2026-10-13T23:59:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76273_1470",
+    "question_id": "q_claim_2025_agricultural-science_76273",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "22094dd00e8cdbb646d869c1bcf7eac08b0448b43bccac1dd6cc0ce752e78fc4",
+    "created_at": "2026-10-13T23:59:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76274_1471",
+    "question_id": "q_claim_2025_agricultural-science_76274",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "ba6a1468c65340b31b8db40f956c09e3e3d55b202b7eba1dfa007fa6dfa7f79e",
+    "created_at": "2026-10-13T23:59:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76275_1472",
+    "question_id": "q_claim_2025_agricultural-science_76275",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "e0ba73e88112695acbe190311092c3539567c7785231a05934a923bf6fab085e",
+    "created_at": "2026-10-13T23:59:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_agricultural-science_76276_1473",
+    "question_id": "q_claim_2025_agricultural-science_76276",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "65665d52a567888489575e3e0b46c19c0dac833ed98be858b51843b8fba1162e",
+    "created_at": "2026-10-13T23:59:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76280_1474",
+    "question_id": "q_claim_2025_physical-education_76280",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "ff5f1c70ca6c5d2f36a97c908984b34a9e4e4711836bfd000c8c17972eb331b2",
+    "created_at": "2026-10-13T23:59:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76281_1475",
+    "question_id": "q_claim_2025_physical-education_76281",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "7b9b67ba58605106c0b0636ce8c4080d78fe01d237484515aceda9d3b1ec8b9e",
+    "created_at": "2026-10-13T23:59:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76285_1476",
+    "question_id": "q_claim_2025_physical-education_76285",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "1d3878f6c222cfe00cad7ceb7581a31902d2e19e85afb3c50b9fc3d1da9ac691",
+    "created_at": "2026-10-13T23:59:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76291_1477",
+    "question_id": "q_claim_2025_physical-education_76291",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "0db15ea9a14ab2477ec37e3a0bf3d3252c53c77e6a98a086271bf87543a7302f",
+    "created_at": "2026-10-13T23:59:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76316_1478",
+    "question_id": "q_claim_2025_physical-education_76316",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "a182df9319ebd68140c0e88f1a05b065a43fd1f9f794b09adca79a7c32b02867",
+    "created_at": "2026-10-13T23:59:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76321_1479",
+    "question_id": "q_claim_2025_physical-education_76321",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "e6490f4222a6198b3d524578486fac9414ec3cfc655eeefc90c1fb0b3297db3e",
+    "created_at": "2026-10-13T23:59:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76341_1480",
+    "question_id": "q_claim_2025_physical-education_76341",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "788e8d8c34e7e00f41b937dc50a9e61b14faa6fb5e360adb252a2c5e7d3090f4",
+    "created_at": "2026-10-13T23:59:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76342_1481",
+    "question_id": "q_claim_2025_physical-education_76342",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "6b37d2a6069d93d3740b32e723e7c85da7f2b3ed9108331985513fae2b818086",
+    "created_at": "2026-10-13T23:59:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76343_1482",
+    "question_id": "q_claim_2025_physical-education_76343",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "0bd25a014796a1eabd6225f758004b2da442984ba8c3d257bfbe59ccee76ad42",
+    "created_at": "2026-10-13T23:59:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76344_1483",
+    "question_id": "q_claim_2025_physical-education_76344",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "13ef235eb355ae273b2061c29d8ace4ce940b3bbb2d1a8ebfe3bdaf7da45a95c",
+    "created_at": "2026-10-13T23:59:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76345_1484",
+    "question_id": "q_claim_2025_physical-education_76345",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "28392e1f1c9c3962ddaffab64650add65accc76fb9979c701cd5afc45f165352",
+    "created_at": "2026-10-13T23:59:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76346_1485",
+    "question_id": "q_claim_2025_physical-education_76346",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "315b748daeaff679de7eb51d720042d65d7ee695330407fb2300791e6e134410",
+    "created_at": "2026-10-13T23:59:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76347_1486",
+    "question_id": "q_claim_2025_physical-education_76347",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "79d1afe9e791e4856f4d3b001ddec8ee02183b6edd032094de682470468b7ece",
+    "created_at": "2026-10-13T23:59:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76348_1487",
+    "question_id": "q_claim_2025_physical-education_76348",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "50944c303363588d9132039344d95f977a5443387335dfbefa917dccbaab22e2",
+    "created_at": "2026-10-13T23:59:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76349_1488",
+    "question_id": "q_claim_2025_physical-education_76349",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "bf5e112d0a5080187d63f40b7bc24a753f1a761df30ca1c314bcdcaa2cd9c7ea",
+    "created_at": "2026-10-13T23:59:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76350_1489",
+    "question_id": "q_claim_2025_physical-education_76350",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "5414322e6a4979ec5d80644edbeaec7c971f5bd47c6009dee0f7645e0b6bf435",
+    "created_at": "2026-10-13T23:59:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76356_1490",
+    "question_id": "q_claim_2025_physical-education_76356",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "2fe0cb4d1e3adfadd12c0416b896efd4c065d63077fcfe25ae7d968f7a861114",
+    "created_at": "2026-10-13T23:59:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76359_1491",
+    "question_id": "q_claim_2025_physical-education_76359",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "bdbf8d5958fafffcc1d06bd4e07a8dbf9dc4d6f62ca2a656f67c855c97e4fe34",
+    "created_at": "2026-10-13T23:59:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76362_1492",
+    "question_id": "q_claim_2025_physical-education_76362",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "54f501f28e52162fd458da74917a1f35e230cb8f0ce3c3604f53b2148027b2dd",
+    "created_at": "2026-10-13T23:59:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76364_1493",
+    "question_id": "q_claim_2025_physical-education_76364",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "8e4d36e5a51f5d341c441a2c29abd1b84239864fb6a94c89d65a4a446369822a",
+    "created_at": "2026-10-13T23:59:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76372_1494",
+    "question_id": "q_claim_2025_physical-education_76372",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "0c59a6a8943f003cafee0e8402e1028044bb3032e5671d768140e4e7af327cf3",
+    "created_at": "2026-10-13T23:59:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76375_1495",
+    "question_id": "q_claim_2025_physical-education_76375",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "c895b21aaf402c5202b9341f1daba1404d8d862462711932ec6376fe7bb41451",
+    "created_at": "2026-10-13T23:59:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76379_1496",
+    "question_id": "q_claim_2025_physical-education_76379",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "3b64f96ac44bd5cd781c68d0459e4f95dba7433e2ef28481b5b952590875009d",
+    "created_at": "2026-10-13T23:59:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76382_1497",
+    "question_id": "q_claim_2025_physical-education_76382",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "d416eb0b2077e9e40af1e2b52a8a3d272652de2d3f3c90b0b89f07ae787f00f6",
+    "created_at": "2026-10-13T23:59:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76383_1498",
+    "question_id": "q_claim_2025_physical-education_76383",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "64a1b36fb726c78f91210f1b65a6ed8009feb1935c91ecb8bab066f6b2be3d23",
+    "created_at": "2026-10-13T23:59:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76390_1499",
+    "question_id": "q_claim_2025_physical-education_76390",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "f47b147a2286c2540ab5f607942d651843bf62a8b1a92001b1b990ef281c8e9a",
+    "created_at": "2026-10-13T23:59:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76391_1500",
+    "question_id": "q_claim_2025_physical-education_76391",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "414df26e397142aba18fe286f605f00b20d01562c0c456ae7c6ba19d16c6f9c3",
+    "created_at": "2026-10-13T23:59:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76392_1501",
+    "question_id": "q_claim_2025_physical-education_76392",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "8a2cfab00472c85463d9af5c5ea68e58b3c7e4ffb886830aa239d90b658e6a27",
+    "created_at": "2026-10-13T23:59:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76393_1502",
+    "question_id": "q_claim_2025_physical-education_76393",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "fdde90031e3d0d5915330558dc818b5822348015ef45207a23d084a82f6b81ef",
+    "created_at": "2026-10-13T23:59:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76407_1503",
+    "question_id": "q_claim_2025_physical-education_76407",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "083fed8da6537cd6c953818d9ff43411f66b60d3abce2db4187d92e6bcc58884",
+    "created_at": "2026-10-13T23:59:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76409_1504",
+    "question_id": "q_claim_2025_physical-education_76409",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "5ca1a2e2656c4e4ff923db1204ab91cc60aed4f4c86008cf1e429cebd5da6ea7",
+    "created_at": "2026-10-13T23:59:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76410_1505",
+    "question_id": "q_claim_2025_physical-education_76410",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "030c9c956bd1350d16ddef1fca29b4284e336e2d4d511466658d1f13b43345de",
+    "created_at": "2026-10-13T23:59:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76412_1506",
+    "question_id": "q_claim_2025_physical-education_76412",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "a5c12c7458611640fd9ba4dfaa203859eec22ca721e4eeeb6a1b17d25fe5f292",
+    "created_at": "2026-10-13T23:59:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76413_1507",
+    "question_id": "q_claim_2025_physical-education_76413",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "b0de73d8bd8d1bf74c1d3f3d25873a5566d46f1158dd0a45226e43a03843ad1f",
+    "created_at": "2026-10-13T23:59:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76414_1508",
+    "question_id": "q_claim_2025_physical-education_76414",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "2b12d8e0c195d08443eed17080e184641950112ace330735a8e5ab67468b8c6d",
+    "created_at": "2026-10-13T23:59:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76415_1509",
+    "question_id": "q_claim_2025_physical-education_76415",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "ea066b3d34b6e7e4cab5e81d7b9e6a3de1de5056edd38a4f00e8081e7c618eca",
+    "created_at": "2026-10-13T23:59:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76416_1510",
+    "question_id": "q_claim_2025_physical-education_76416",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "2abbed6b06de29548e55d463ca352f68cab3f3bcd3607a06e8f970f6d8ba215f",
+    "created_at": "2026-10-13T23:59:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76417_1511",
+    "question_id": "q_claim_2025_physical-education_76417",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "410bf730897b21b63508de5c3aec02d2b5758e73016faea544431f1710fe3eb6",
+    "created_at": "2026-10-13T23:59:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76418_1512",
+    "question_id": "q_claim_2025_physical-education_76418",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "ceadbc8f81205007c2305df4375f0613a47bb8df64bdd17f5acd3d4857fb10e0",
+    "created_at": "2026-10-13T23:59:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76457_1513",
+    "question_id": "q_claim_2025_physical-education_76457",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "0ae3e18234aacfb192a62358fc77bdbc6778044d30865fab603c63cdfe7bf2c1",
+    "created_at": "2026-10-13T23:59:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76460_1514",
+    "question_id": "q_claim_2025_physical-education_76460",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "5b385beaec76d28ce6a62b82122c4290b9ad0bcb530ef081d03c8d69e7f0d55f",
+    "created_at": "2026-10-13T23:59:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76468_1515",
+    "question_id": "q_claim_2025_physical-education_76468",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "e00fba2ddf426c202adab423e53df286cf1d6aedeb6d910377a4b12edc787efc",
+    "created_at": "2026-10-13T23:59:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76477_1516",
+    "question_id": "q_claim_2025_physical-education_76477",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "9a21a615a24e230aaaa7c1727ba30566de6e11cd883dad324caf1f0529055b36",
+    "created_at": "2026-10-13T23:59:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76480_1517",
+    "question_id": "q_claim_2025_physical-education_76480",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "b8ce545686b1c6dd0d9536fc6b3cc49e65db34e719bc442bab02659f8f576eca",
+    "created_at": "2026-10-13T23:59:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76482_1518",
+    "question_id": "q_claim_2025_physical-education_76482",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "32bb6fe9052d34517c2d1e49d3d4a966ae77c3b8f324e5673c461632aa7f41ed",
+    "created_at": "2026-10-13T23:59:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76483_1519",
+    "question_id": "q_claim_2025_physical-education_76483",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "c911acba526b8d679f1b266b07071a0a8d9f1a62a2577e10fd6d87ba14af7497",
+    "created_at": "2026-10-13T23:59:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76485_1520",
+    "question_id": "q_claim_2025_physical-education_76485",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "1be821e87f5d46c9815cdf53c887a96e4a1fc79ee245cccf831873d55bb6bdc4",
+    "created_at": "2026-10-13T23:59:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76486_1521",
+    "question_id": "q_claim_2025_physical-education_76486",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "ff93c8b04f72053c69a61d685f6e89dbf2c8b70aa707f953c659e43376ba8bd2",
+    "created_at": "2026-10-13T23:59:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76487_1522",
+    "question_id": "q_claim_2025_physical-education_76487",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "4196f884a5868c7ba67be76347708ecca8e1c6b50fef8de6016a78ba885d0561",
+    "created_at": "2026-10-13T23:59:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76488_1523",
+    "question_id": "q_claim_2025_physical-education_76488",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "91f4f8afbd72603d8f28fb51da8674ac174315e05743535a218bb15b98ba36e1",
+    "created_at": "2026-10-13T23:59:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76489_1524",
+    "question_id": "q_claim_2025_physical-education_76489",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "8511b5624d90c5e6b9850ef7a8adbb1563ebbf71a9702b2c129921d3e505ed43",
+    "created_at": "2026-10-13T23:59:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76490_1525",
+    "question_id": "q_claim_2025_physical-education_76490",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "2257694b8621e62ed565216caf2b0123ca34d33dcca853cd736263a2e5daecd3",
+    "created_at": "2026-10-13T23:59:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76491_1526",
+    "question_id": "q_claim_2025_physical-education_76491",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "3d5584ddadc3dc8f346210303382ffaea21d0015b1a35cbf8b27a6876d009ee8",
+    "created_at": "2026-10-13T23:59:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76492_1527",
+    "question_id": "q_claim_2025_physical-education_76492",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "c2a1c7af414a0418ef2b6399dff3d30ff4a7d983b5a090b8370a81c55c78000d",
+    "created_at": "2026-10-13T23:59:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76493_1528",
+    "question_id": "q_claim_2025_physical-education_76493",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "8df7e3b15cbd26ce904399d1a5570d42efe14ad90117a430f9668d09de43d0d9",
+    "created_at": "2026-10-13T23:59:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76495_1529",
+    "question_id": "q_claim_2025_physical-education_76495",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "ea495743f9bb8a3562363a9fa48ae6050e2e073d5dedfacec6b3d4f9463c1547",
+    "created_at": "2026-10-13T23:59:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76497_1530",
+    "question_id": "q_claim_2025_physical-education_76497",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "6ca13952b4a52bff1f7fb386112733bafd0c74502669a1935bb3852efa662217",
+    "created_at": "2026-10-13T23:59:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76498_1531",
+    "question_id": "q_claim_2025_physical-education_76498",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "b5c669d390526b52b0aba692ad9a92b47c224303d6f7d181a6af17c843809364",
+    "created_at": "2026-10-13T23:59:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76499_1532",
+    "question_id": "q_claim_2025_physical-education_76499",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "b00a0469c263bc08645843487e57b4ae6699c1b912126d9a56d47092ea950813",
+    "created_at": "2026-10-13T23:59:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76500_1533",
+    "question_id": "q_claim_2025_physical-education_76500",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "5c0a42f2a82e1c45c441c76d8b3de7147f43832f49cd9755d5577216660767d1",
+    "created_at": "2026-10-13T23:59:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76503_1534",
+    "question_id": "q_claim_2025_physical-education_76503",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "f8990e29db809c21f8f045f76996727c7f40e0a8c3905de18555066df0b86946",
+    "created_at": "2026-10-13T23:59:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76504_1535",
+    "question_id": "q_claim_2025_physical-education_76504",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "9b64827ec54a213b23ffb7e1a411020d16157de2577afbf45881842c1486d4ed",
+    "created_at": "2026-10-13T23:59:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76505_1536",
+    "question_id": "q_claim_2025_physical-education_76505",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "2472ad412b9457a8c115de1dd9fabbca9936495a61d043ad5b4b79bf8ab6e99a",
+    "created_at": "2026-10-13T23:59:49Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76506_1537",
+    "question_id": "q_claim_2025_physical-education_76506",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "0d0e469ba108e0082b8764c26371c1792c5206425aa673bd0bde6a7c6fc8565b",
+    "created_at": "2026-10-13T23:59:49Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76507_1538",
+    "question_id": "q_claim_2025_physical-education_76507",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "ef516efe6a23a8364aeaf8c5f54601f85233d8f350a8b838c30b1cf533848016",
+    "created_at": "2026-10-13T23:59:49Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76508_1539",
+    "question_id": "q_claim_2025_physical-education_76508",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "cf404796b773629f5c32cef7595b32f1e7d0d4a6105a0bcb11fc5835132943da",
+    "created_at": "2026-10-13T23:59:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76509_1540",
+    "question_id": "q_claim_2025_physical-education_76509",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "f568df59a54631263df0c1d7da52ca8ba932444cac9eae5c78f6bf22912a1894",
+    "created_at": "2026-10-13T23:59:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76510_1541",
+    "question_id": "q_claim_2025_physical-education_76510",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "851366ef0d2b52fbd9ab5d3cfae5685d0d48d58bf2b5650e62f3d69d61bf96d5",
+    "created_at": "2026-10-13T23:59:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76511_1542",
+    "question_id": "q_claim_2025_physical-education_76511",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "1323fe15b976e49a342890b9cdea637a971cf59136f0e9d3f53b4603a88563ce",
+    "created_at": "2026-10-13T23:59:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76512_1543",
+    "question_id": "q_claim_2025_physical-education_76512",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "e988c4e1634b233a6bd5e8d125b47dba13b10bd301f65219f8a215788d2b4466",
+    "created_at": "2026-10-13T23:59:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76513_1544",
+    "question_id": "q_claim_2025_physical-education_76513",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "58231547397ade92fab4c7e18ab0192cf50c3e1b10aef2ec510555ead1b630f4",
+    "created_at": "2026-10-13T23:59:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76514_1545",
+    "question_id": "q_claim_2025_physical-education_76514",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "1cb8c952d540c1a4636ab99218d9c13a1347affd3b4aa79e2df66eac791a1f1f",
+    "created_at": "2026-10-13T23:59:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76515_1546",
+    "question_id": "q_claim_2025_physical-education_76515",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "a95b66491385253a38ec8e34c8b4ead3f7d98303474bddafbe3b792aaadc10ad",
+    "created_at": "2026-10-13T23:59:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76516_1547",
+    "question_id": "q_claim_2025_physical-education_76516",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "9475fb8eb4010d22bbf540a92d10b20485fb96ffa49a2e377fc78d67eee8808e",
+    "created_at": "2026-10-13T23:59:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76517_1548",
+    "question_id": "q_claim_2025_physical-education_76517",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "3a5cd8baf9cf74ae9dbb2a2be1a79435703d1ac2e0253e618bd60350e5d20e02",
+    "created_at": "2026-10-13T23:59:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76518_1549",
+    "question_id": "q_claim_2025_physical-education_76518",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "1a881b0191795b2948cd6b9027d12e2336dc95c3af8b227e872aeba2393d9c97",
+    "created_at": "2026-10-13T23:59:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76519_1550",
+    "question_id": "q_claim_2025_physical-education_76519",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "1c52a43144456adaeb61cba38dde8d7f5def94b78c8b3813d02f3050655ab421",
+    "created_at": "2026-10-13T23:59:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_physical-education_76520_1551",
+    "question_id": "q_claim_2025_physical-education_76520",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "agri-pe-rewrite1",
+    "detail": null,
+    "content_hash": "edd79dff464162a6dc588ca040c5571e09df66ae2bd05650548bdaf3559326f5",
+    "created_at": "2026-10-13T23:59:53Z"
   }
 ]
