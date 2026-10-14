@@ -47,6 +47,7 @@ PIPELINE_DDL: List[str] = [
         ai_confidence REAL,
         detected_marks TEXT,
         ai_raw_response TEXT,
+        audit_report TEXT,
         pipeline_status TEXT NOT NULL,
         created_at TEXT NOT NULL,
         updated_at TEXT NOT NULL,
@@ -91,6 +92,7 @@ PIPELINE_DDL: List[str] = [
         marks REAL NOT NULL,
         difficulty INTEGER NOT NULL,
         content_hash TEXT NOT NULL,
+        audit_report TEXT,
         approved_at TEXT NOT NULL,
         FOREIGN KEY(staging_id) REFERENCES harvest_staging(id)
     );
@@ -120,3 +122,15 @@ async def init_pipeline_schema(client: TursoClient) -> None:
         clean_stmt = statement.strip()
         if clean_stmt:
             await client.execute(clean_stmt)
+
+    # Migrations for existing schemas
+    migrations = [
+        "ALTER TABLE harvest_staging ADD COLUMN audit_report TEXT;",
+        "ALTER TABLE approved_questions ADD COLUMN audit_report TEXT;",
+    ]
+    for mig in migrations:
+        try:
+            await client.execute(mig)
+        except Exception:
+            pass
+

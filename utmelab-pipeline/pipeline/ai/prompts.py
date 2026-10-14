@@ -70,6 +70,7 @@ You MUST select the single best subtopic slug from this official list:
    - body: Clear step-by-step reasoning or mathematical proof.
    - trap: Explanation of why distractors are tempting.
 5. Provide a confidence score between 0.0 and 1.0.
+6. Write a crisp 1-2 sentence "audit_report" summarizing: visual evidence inspected from diagram (if any), answer verification outcome, and final conclusion.
 
 Respond with ONLY valid JSON matching this schema:
 {{
@@ -77,6 +78,7 @@ Respond with ONLY valid JSON matching this schema:
   "answer_check": "VERIFIED" | "DISAGREEMENT" | "AMBIGUOUS",
   "explanation_quality": "GOOD" | "PARTIAL" | "POOR" | "MISSING",
   "confidence": 0.95,
+  "audit_report": "1-2 sentence executive audit summary for human review",
   "underline": {{
     "target_text": "word",
     "offset_in_stem": 12

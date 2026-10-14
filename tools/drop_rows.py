@@ -20,6 +20,17 @@ be stood behind, and their good twin already holds the question:
       its options hold no reading of "one hand cannot lift a corpse"; option a
       "A taimaka wa juna" is the meaning of a different proverb)
 
+A third group, found by the answerability audit the same day: rows that are
+**verified but unanswerable**.
+
+  q_claim_2025_english-language_74779 — "Fill in the gap labelled 11", marked
+    `pass`. Its stimulus exists on the source page, but only as the numbered
+    gap list with each item's options already printed — that is a key sheet,
+    not a passage, and attaching it would hand over the answer. Nothing we can
+    honestly hold answers the row, so it goes, and with it a verification
+    claim that was never true. (Its eight siblings in the same cloze set carry
+    their own sentence inline and stay: `74804`–`74811`.)
+
 A second group, found by the option audit the same day: the **keyed** option
 repeated, so two letters are correct and the row cannot be scored honestly.
 Both were already unverified, and neither can be repaired without inventing an
@@ -62,6 +73,11 @@ DROPS = {
     # keyed option repeated: two correct letters, no honest score
     "q_claim_2025_arabic_75216": ("", 'options a and d are both "معلمون" and the key is a'),
     "q_claim_2025_fine-arts_75382": ("", 'options a and b are both "Additive" and the key is b'),
+    # verified but unanswerable: the only stimulus on the source is a key sheet
+    "q_claim_2025_english-language_74779": (
+        "",
+        'gap-pointer row whose only stimulus is the numbered gap list with the options printed in it',
+    ),
 }
 
 

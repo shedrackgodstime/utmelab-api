@@ -282,6 +282,91 @@ def clean_blocks(fragments: list[str]) -> dict:
     return merge_texts([clean_inline(f) for f in fragments], "\n\n")
 
 
+
+# ── passages ─────────────────────────────────────────────────────────────────
+# A question that points at a stimulus we do not hold is a coin flip, not a
+# question. On this source the stimulus sits ABOVE the stem — in the page body
+# before the `<h1>`, ending in its source attribution. An earlier version of
+# this harvester read it into a `ref` field nothing consumed, so ten JAMB rows
+# entered the bank as pointers with no passage; `docs/CLOZE_PROBLEM.md` records
+# that, and `data/` still carried the damage for years.
+#
+# So: extract the passage, and when a stem announces a stimulus we did not
+# manage to extract, refuse the row rather than import a broken question.
+PASSAGE_BANNER = re.compile(
+    r"(?i)^(read (?:the )?passage|answer question[s]? (?:below|using)|"
+    r"use the information below|use the information|following (?:the )?(?:passage|data|table))"
+)
+ATTRIBUTION = re.compile(r"(?i)^\[?\s*(adapted from|source\s*:|from\b|quoted from)")
+# The page renders the credit as three separate elements — `[`, the citation,
+# `]` — so the bracket run has to be closed by hand rather than by one regex.
+NAV_NOISE = re.compile(
+    r"(?i)^(shop|dash|english language|jamb \d{4}|waec \d{4}|home|login|register|"
+    r"download offline app|add to bookmark|ask a question|report an error|share|"
+    r"copy link|post your contribution|post contribution|go back|prev question|"
+    r"next question|explanation|correct option|get myschool|video explanation)\b"
+)
+MIN_PASSAGE_CHARS = 200
+
+
+def visible_lines(html: str) -> list[str]:
+    """Readable text of a page fragment, one entry per line, whitespace folded."""
+    text = re.sub(r"(?s)<script.*?</script>|<style.*?</style>", " ", html)
+    text = re.sub(r"(?s)<[^>]+>", "\n", text)
+    lines = [re.sub(r"\s+", " ", line).strip() for line in html_unescape(text).split("\n")]
+    return [line for line in lines if line]
+
+
+def extract_passage(html: str) -> str | None:
+    """The stimulus that precedes this question, or None when there is none.
+
+    Read from the tail: find the attribution line (the stimulus's own credit),
+    then walk back to the banner that announced it ("Read the passage..."), and
+    take everything between. A fragment that never reaches its banner is not a
+    passage — it is the page's navigation, and returning it would attach an ad
+    menu to a question.
+    """
+    stem_at = html.find("<h1")
+    if stem_at < 0:
+        return None
+    lines = [line for line in visible_lines(html[:stem_at]) if not NAV_NOISE.match(line)]
+    tail = range(max(0, len(lines) - 12), len(lines))
+    citation = next((i for i in tail if ATTRIBUTION.match(lines[i])), None)
+    if citation is None:
+        return None
+    # Keep the credit with the passage: it is part of the provenance, and it
+    # ends the run so nothing after it (footer, nav) can leak in.
+    end = next(
+        (i for i in range(citation + 1, len(lines)) if lines[i].strip().startswith("]")),
+        citation,
+    )
+    start = next(
+        (i for i in range(citation, -1, -1) if PASSAGE_BANNER.match(lines[i])), None
+    )
+    if start is None:
+        return None
+    body = " ".join(lines[start + 1 : citation]).strip()
+    credit = " ".join(lines[citation : end + 1])
+    # the credit is rendered as three elements; strip the brackets wherever the
+    # whitespace put them, then re-add exactly one pair
+    credit = credit.strip().lstrip("[").rstrip("]").strip()
+    passage = f"{body} [{credit}]".strip() if body else f"[{credit}]"
+    return passage if len(passage) >= MIN_PASSAGE_CHARS else None
+
+
+def html_unescape(text: str) -> str:
+    """`html.unescape`, kept local so the passage reader cannot import the
+    module-level helper's entity-ordering assumptions (see `unescape_segment`)."""
+    return html.unescape(text)
+
+
+# A stem that promises a stimulus the row does not carry.
+PROMISED_STIMULUS = re.compile(
+    r"(?i)\b(passage (?:below|above)|the (?:passage|text|information|data|table) "
+    r"(?:below|above)|following (?:the )?passage|read the passage|"
+    r"use the information below|according to the (?:passage|text|information))\b"
+)
+
 def fetch(url: str, timeout: int = 30) -> str:
     """One polite request: identified user agent, real timeout, no retry storm."""
     request = urllib.request.Request(url, headers={"User-Agent": UA})
@@ -340,6 +425,8 @@ def parse_detail(html: str) -> dict | None:
         "options": [{"id": letter, "text": options[letter]} for letter in sorted(options)],
         "answer": answer,
         "images": question_images(html),
+        # The stimulus travels with the row, or the row is refused below.
+        "passage": extract_passage(html),
     }
 
 
@@ -359,6 +446,14 @@ def to_question(parsed: dict, subject: str, year: int, qid: str) -> dict | None:
     if not parsed.get("passage") and CLOZE_HINT.search(parsed["text"]["text"]):
         # "Fill the gap labelled 6" with no passage. The gap is a pointer into
         # a stimulus we do not hold, so the row is unanswerable as served.
+        return None
+
+    # Same argument, wider net: ANY stem that promises a passage, text, table
+    # or data block must arrive with one. Before this, `parse_detail` never set
+    # "passage", so the check above could never fire — the guard was written and
+    # inert, and five English comprehension rows plus one commerce row sit in
+    # the bank for exactly that reason.
+    if not parsed.get("passage") and PROMISED_STIMULUS.search(parsed["text"]["text"]):
         return None
 
     def has_image_mark(rt):

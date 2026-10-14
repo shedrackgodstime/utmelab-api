@@ -28,4 +28,5 @@ class QuestionAIResponse(BaseModel):
     )
     underline: Optional[UnderlineProposal] = None
     explanation: Optional[ExplanationProposal] = None
+    audit_report: str = Field(default="", description="A concise 1-2 sentence executive summary of verification checks, visual evidence, and conclusion")
     reasoning: str = Field(description="Concise audit rationale for the answer and subtopic choice")

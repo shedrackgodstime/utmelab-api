@@ -28983,19 +28983,6 @@
     "created_at": "2026-10-14T01:20:20Z"
   },
   {
-    "id": "v_q_claim_2025_english-language_74779_2220",
-    "question_id": "q_claim_2025_english-language_74779",
-    "kind": "human",
-    "verdict": "pass",
-    "scope": [
-      "answer",
-      "explanation"
-    ],
-    "verifier": "music-english-rewrite1",
-    "content_hash": "90875ffea1d8d062e4c3bf82deb6cd3278b0ea62e2431c0e1dc31c4376bc15fd",
-    "created_at": "2026-10-14T01:20:20Z"
-  },
-  {
     "id": "v_q_claim_2025_english-language_74780_2221",
     "question_id": "q_claim_2025_english-language_74780",
     "kind": "human",
@@ -29540,5 +29527,83 @@
     "verifier": "music-batch-2026-10-14",
     "content_hash": "2545bfbe4550d99a96d0d662bf8482b88ebf8f065b421a2afc545c4b1eebffbe",
     "created_at": "2026-10-14T20:12:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74769_0001",
+    "question_id": "q_claim_2025_english-language_74769",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "passage-recovery-2026-10-14",
+    "content_hash": "09af389469820594fd6997a9fe47e6fa38fa55490891218e07b4574361190bd1",
+    "created_at": "2026-10-14T22:50:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74770_0001",
+    "question_id": "q_claim_2025_english-language_74770",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "passage-recovery-2026-10-14",
+    "content_hash": "ae60711169ee9098e6ef095eb09e8b9f47052cd9e00621954b80cb1f753c9f0c",
+    "created_at": "2026-10-14T22:50:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74771_0001",
+    "question_id": "q_claim_2025_english-language_74771",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "passage-recovery-2026-10-14",
+    "content_hash": "d740f34a00759c27868abf565c8bbe9859d761b6538a10364ce1ac180a2e1392",
+    "created_at": "2026-10-14T22:51:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74772_0001",
+    "question_id": "q_claim_2025_english-language_74772",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "passage-recovery-2026-10-14",
+    "content_hash": "e7a833c75b8970ccb4b7efba68213280b9d193fbc92637090508684739572170",
+    "created_at": "2026-10-14T22:51:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74773_0001",
+    "question_id": "q_claim_2025_english-language_74773",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "passage-recovery-2026-10-14",
+    "content_hash": "ac9d77ec06cc444c3d5367a334f48d712c55c70cdbbc6b8622261ae4bad66b90",
+    "created_at": "2026-10-14T22:51:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_commerce_75442_0001",
+    "question_id": "q_claim_2025_commerce_75442",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "passage-recovery-2026-10-14",
+    "content_hash": "47c585bf8e83174b574fb692098167e5d45ebbe10200f5aa18fd58a0f6256048",
+    "created_at": "2026-10-14T22:52:04Z"
   }
 ]

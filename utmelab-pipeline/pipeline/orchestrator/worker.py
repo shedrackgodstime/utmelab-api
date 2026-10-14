@@ -7,7 +7,7 @@ from pipeline.ai.prompts import build_verification_prompt
 from pipeline.ai.runner import OpenCodeRunner
 from pipeline.ai.tasks import parse_and_snap_response
 from pipeline.media.downloader import MediaDownloader
-from pipeline.orchestrator.promoter import ProductionPromoter
+from pipeline.orchestrator.promoter import PipelinePromoter, ProductionPromoter
 from pipeline.storage.repository import PipelineRepository
 
 
@@ -19,7 +19,7 @@ class BatchProcessor:
         repository: PipelineRepository,
         runner: Optional[OpenCodeRunner] = None,
         downloader: Optional[MediaDownloader] = None,
-        promoter: Optional[ProductionPromoter] = None,
+        promoter: Optional[PipelinePromoter] = None,
     ):
         self.repo = repository
         self.runner = runner or OpenCodeRunner()
@@ -101,6 +101,7 @@ class BatchProcessor:
                         confidence=ai_resp.confidence,
                         detected_marks=detected_marks,
                         ai_raw_response=raw_ai_out,
+                        audit_report=ai_resp.audit_report,
                     )
 
                     stats["total_processed"] += 1
@@ -120,6 +121,7 @@ class BatchProcessor:
                                 staging_row=q_row,
                                 subtopic_id=ai_resp.subtopic_slug,
                                 detected_marks=detected_marks,
+                                audit_report=ai_resp.audit_report,
                             )
                             stats["promoted"] += 1
 

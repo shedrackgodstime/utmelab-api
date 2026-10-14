@@ -141,6 +141,7 @@ class PipelineRepository:
         confidence: float,
         detected_marks: Optional[List[Dict[str, Any]]] = None,
         ai_raw_response: Optional[str] = None,
+        audit_report: Optional[str] = None,
     ) -> None:
         now = self.now_iso()
         pipeline_status = (
@@ -159,6 +160,7 @@ class PipelineRepository:
             ai_confidence = ?,
             detected_marks = ?,
             ai_raw_response = ?,
+            audit_report = ?,
             pipeline_status = ?,
             updated_at = ?
         WHERE id = ?
@@ -174,6 +176,7 @@ class PipelineRepository:
                 confidence,
                 json.dumps(detected_marks) if detected_marks else None,
                 ai_raw_response,
+                audit_report,
                 pipeline_status,
                 now,
                 question_id,
