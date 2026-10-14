@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-2,185 verified (97%, derived from data/verifications.json, D62) · 2,189 explained
+2,186 verified (97%, derived from data/verifications.json, D62) · 2,189 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -327,6 +327,13 @@ disagree. Two lists is how subjects drift.
     75701 (Obidiya question, no play text served), 75707 (protagonist
     asked, no book specified). 75088 left untagged (no fitting path).
     Loader gate caught 2 more topic-slugs-as-subtopics pre-apply.
+34. **Maths P4 groundwork done 2026-10-14** — 74199 verified (figure read:
+    x = 2, modal weight 58; honest legacy note replaced with the working).
+    **74188 parked**: modal class 30–39 gives 29.5 + 6/10×10 = 35.5, no
+    option (recorded d wrong) — arithmetic shown, never bent. 74094/74200
+    stay untagged: binary-operations subtopics cover properties/identity
+    only, no evaluation slug — null per 74512, never forced. Maths now
+    59/60 verified; option_count seeds untouched (legacy, verified).
 33. **Music + English-tail rewrite done 2026-10-14** — 41 authored (31
     music + 10 cloze) + 2 key fixes + tags + verified; music 6 → 39 of
     44, english 153 → 163 of 168. **Keys corrected** 76295 c → a (16

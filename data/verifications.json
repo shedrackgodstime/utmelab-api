@@ -31610,5 +31610,19 @@
     "detail": null,
     "content_hash": "cad19fae5819497d06bbb4fab2dec409d5335a85431c29c358d4662fa20b5960",
     "created_at": "2026-10-14T01:20:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_mathematics_74199_2259",
+    "question_id": "q_claim_2025_mathematics_74199",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "maths-p4-groundwork",
+    "detail": null,
+    "content_hash": "610329886d465b6aff31d140c55f7b7cf8947ce7c63eaccd67aeb9b567495850",
+    "created_at": "2026-10-14T01:32:02Z"
   }
 ]

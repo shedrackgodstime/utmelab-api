@@ -75438,15 +75438,15 @@
     "passage_id": null,
     "explanation": {
       "key_point": {
-        "text": "Not yet verifiable from the published figure.",
+        "text": "Twelve pupils fix x at 2; 58 occurs four times.",
         "inline": []
       },
       "body": {
-        "text": "The modal weight depends on the frequencies in the table, and the scan is too low-resolution to read them with confidence. On our reading the frequencies do not support the stored answer; on a different reading they might. We will not publish a claim about the arithmetic of a figure we cannot read, and we will not redraw a table that came from a source we do not control.",
+        "text": "From the figure: frequencies x, 1, 2x, 2, 3 sum to 12 pupils, so 3x + 6 = 12 and x = 2. Weights run 54 twice, 56 once, 58 four times, 60 twice, 62 thrice: modal weight 58.",
         "inline": []
       },
       "trap": {
-        "text": "Verifying a statistics question from a table you cannot actually resolve. Both the answer and the criticism of it depend on digits nobody has read properly.",
+        "text": "62 tempts as highest weight, but mode is frequency, not size.",
         "inline": []
       }
     },
