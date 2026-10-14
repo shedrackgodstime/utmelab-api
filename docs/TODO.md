@@ -11,12 +11,14 @@ item names the gate that proves it, so "done" is a measurement and not a feeling
 
 ### A. Content that is still missing
 
-1. **64 rows have no subtopic**, so they serve but sit in no drill path. Physics
-   (105) and the english/art/french/geography/computer-studies batch (28) are
-   done; what is left is **history 24**, use-of-english 6 (deliberate, see
-   below), hausa 4, igbo 4, and 1-3 each in thirteen subjects.
-   *Gate:* every assignment reviewed against its question; `unattributed = 0`
-   on the readiness endpoint.
+1. **34 rows have no subtopic**, every one with a recorded reason: **history
+   24** (world-history catalog gap, item 1b), **use-of-english 6** (no passage
+   in the row and no comprehension subtopic, item 1c), **agricultural-science 1**
+   ("functions of livestock" has no subtopic), **commerce 1** (the row says
+   "use the information below" and carries none — unanswerable as served),
+   **animal-husbandry 1** and **civic-education 1** (no catalog topics for
+   those subjects). Physics (105) and the other 60 are done.
+   *Gate:* `unattributed = 0` on the readiness endpoint once 1b and 1c land.
 1b. **History needs a world-history catalog.** 24 of its 79 rows are world
    history and the catalog holds none: jambsyllabus.com — the source we import
    from — parses 43 history topics, all Nigeria/Africa, and they are exactly

@@ -16,7 +16,7 @@ use axum::http::{Request, StatusCode};
 use http_body_util::BodyExt;
 use tower::ServiceExt;
 use utmelab_api::{
-    AppState, JsonStore, KeyBackend, KeyStore, PaperMode, RateLimiter, ReportStore, Store,
+    AppState, JsonStore, KeyBackend, KeyStore, PaperMode, RateLimiter, ReportStore, Store, Unready,
     assemble_blueprint, blueprint_governs, cohorts, router,
 };
 
@@ -163,8 +163,27 @@ async fn single_cohort_subject_serves_a_count_paper_not_an_impossible_blueprint(
     assert_eq!(years, vec![2025], "the bank holds one cohort");
     let account = utmelab_api::per_topic(&bank, &blueprints, "JAMB", "mathematics", None);
     assert!(!account.governed, "D71: predicate inactive on one cohort");
-    assert!(!account.complete, "coverage is 17/23, and it says so");
-    assert_eq!(account.ready, 17);
+    assert!(
+        !account.complete,
+        "maths still has short topics, and it says so"
+    );
+    // The ready count moves as content is tagged — 18 once the two binary
+    // operations rows were filed (2026-10-14) — so the invariant is the shape
+    // of the account, not a number: every ready topic meets its need, and at
+    // least one topic does not.
+    for t in &account.topics {
+        assert_eq!(
+            t.ready,
+            t.deduped as u32 >= t.need,
+            "{} disagrees with itself",
+            t.topic
+        );
+    }
+    assert!(
+        account.ready < account.total(),
+        "at least one topic is short"
+    );
+    assert!(account.ready >= 15, "the account is not collapsing");
     assert!(
         !blueprint_governs(&blueprints, "JAMB", "mathematics", years.len()),
         "one cohort: not governed"
@@ -173,19 +192,35 @@ async fn single_cohort_subject_serves_a_count_paper_not_an_impossible_blueprint(
         blueprint_governs(&blueprints, "JAMB", "mathematics", 2),
         "the same measurement governs the moment a second cohort lands"
     );
-    // Governed, the same bank refuses and names all six gaps (D69).
+    // Governed, the same bank refuses and names every short topic with its two
+    // numbers (D69). Which topics are short moves as content is tagged —
+    // binary-operations closed on 2026-10-14 when its two rows were filed — so
+    // the assertion is the shape of the sentence, not a frozen list.
     let refusal = assemble_blueprint(&bank, &blueprints, "JAMB", "mathematics", None, 7)
         .expect_err("governed maths is short");
-    let detail = refusal.detail();
-    for slug in [
-        "binary-operations",
-        "loci",
-        "measures-of-dispersion",
-        "mensuration",
-        "polynomials",
-        "representation-of-data",
-    ] {
-        assert!(detail.contains(slug), "gap list names {slug}: {detail}");
+    let Unready::Blueprint { ready, total, gaps } = &refusal else {
+        panic!("a governed subject refuses with named topic gaps");
+    };
+    assert_eq!(
+        *ready + gaps.len(),
+        *total,
+        "ready plus gaps is every topic"
+    );
+    assert!(
+        !gaps.is_empty(),
+        "maths is still short of at least one topic"
+    );
+    for gap in gaps {
+        let sentence = format!("{} (need {}, have {})", gap.topic, gap.need, gap.have);
+        assert!(
+            refusal.detail().contains(&sentence),
+            "every gap names its topic and both numbers: {sentence}"
+        );
+        assert!(
+            gap.have < gap.need as usize,
+            "{} is short, by definition",
+            gap.topic
+        );
     }
 }
 

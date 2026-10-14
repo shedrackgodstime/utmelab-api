@@ -57,23 +57,50 @@ async fn maths_blueprint_serves_the_readiness_account() {
     assert_eq!(doc["subject"], "mathematics");
     let topics = doc["topics"].as_array().expect("topics array");
     assert_eq!(topics.len(), 23, "all measured topics served");
+    // The account must agree with itself (D68): `ready` is exactly `deduped >=
+    // need`, and `complete` is exactly "every topic ready". Asserting the
+    // *invariant* rather than a count is deliberate — this test once quoted "17
+    // topics" and broke the moment a maths row was tagged, which is content
+    // growth, not a regression. The count moves; the rule must not.
+    for t in topics {
+        let need = t["need"].as_u64().expect("need");
+        let deduped = t["deduped"].as_u64().expect("deduped");
+        let held = t["held"].as_u64().expect("held");
+        let verified = t["verified"].as_u64().expect("verified");
+        assert_eq!(
+            t["ready"] == true,
+            deduped >= need,
+            "{} reports ready={} with deduped {deduped} against need {need}",
+            t["topic"],
+            t["ready"]
+        );
+        assert!(
+            deduped <= verified && verified <= held,
+            "held/verified/deduped nest: {}",
+            t["topic"]
+        );
+        assert!(need >= 1, "need is positive: {}", t["topic"]);
+        assert_eq!(
+            t["method"], "measured-topic",
+            "provenance rides every row (D63)"
+        );
+        assert!(t["source"].is_string(), "source present");
+        assert!(t["confidence"].is_string(), "confidence present");
+    }
     let ready = topics.iter().filter(|t| t["ready"] == true).count();
-    assert_eq!(ready, 17, "seventeen topics meet expectation");
-    assert_eq!(doc["ready"], 17);
-    assert_eq!(doc["total"], 23);
-    assert_eq!(doc["complete"], false);
-    assert_eq!(doc["unattributed"], 2);
+    assert_eq!(doc["ready"].as_u64().expect("ready"), ready as u64);
+    assert_eq!(doc["total"].as_u64().expect("total"), topics.len() as u64);
+    assert_eq!(
+        doc["complete"] == true,
+        ready == topics.len(),
+        "complete means every measured topic is ready, nothing else"
+    );
+    // The launch-relevant fact: maths is *not* complete, and the bank says so.
+    assert_eq!(doc["complete"], false, "maths still has short topics");
     // D71: one cohort, so the predicate stands down and `complete` is coverage
     // arithmetic rather than a promise. Both facts ride the response.
     assert_eq!(doc["governed"], false);
     assert_eq!(doc["cohorts"], serde_json::json!([2025]));
-    // Provenance rides every row (D63): method + source + confidence.
-    for t in topics {
-        assert_eq!(t["method"], "measured-topic");
-        assert!(t["source"].is_string(), "source present");
-        assert!(t["confidence"].is_string(), "confidence present");
-        assert!(t["need"].as_u64().unwrap() >= 1, "need is positive");
-    }
 }
 
 #[tokio::test]

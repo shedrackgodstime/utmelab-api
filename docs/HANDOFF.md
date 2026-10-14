@@ -533,6 +533,24 @@ disagree. Two lists is how subjects drift.
     Bretton Woods, NATO, Cold War, French Revolution…). Those stay null; the
     catalog needs the official JAMB brochure's world-history section, which we
     do not have and must not write ourselves (D16/D50).
+50. **Tagging batch 3 — the last taggable rows (2026-10-14)** — 30 rows
+    across fourteen subjects (agricultural-science, CRS, commerce, economics,
+    government, literature, principles-of-accounts, biology, chemistry,
+    mathematics ×2, arabic, Islamic studies, hausa ×4, igbo ×4,
+    home-economics, physical-education), each checked against the catalog and
+    its owning subject by the same guard as the physics batch. **Untagged
+    bank-wide: 95 → 34**, and every one of the 34 has a recorded reason:
+    history 24 (world-history catalog gap), use-of-english 6 (no passage in the
+    row; no comprehension subtopic), animal-husbandry 1 and civic-education 1
+    (no topics for those subjects at all), agricultural-science 1 ("functions
+    of livestock" has no subtopic), commerce 1 (the row says "use the
+    information below" and carries none — unanswerable as served).
+    **Maths readiness moved 17 → 18 of 23**: filing 74094 and 74200 under
+    binary-operations closed that topic, which is exactly what the account is
+    for. Three tests quoted content counts and fired on the move; all three now
+    assert the *invariant* instead (ready ⇔ deduped ≥ need, ready + gaps =
+    total, unattributed = the verified rows no topic claims). A test that
+    breaks because the bank grew is a snapshot, not a check.
 34. **Maths P4 groundwork done 2026-10-14** — 74199 verified (figure read:
     x = 2, modal weight 58; honest legacy note replaced with the working).
     **74188 parked**: modal class 30–39 gives 29.5 + 6/10×10 = 35.5, no

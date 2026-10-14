@@ -18,8 +18,29 @@ fn maths_slice_is_fully_measured_and_internally_consistent() {
     // All 23 measured topics resolve; nothing unmeasured in the slice.
     assert_eq!(r.total(), 23, "maths has 23 measured topics");
     assert_eq!(r.unmeasured, 0, "no unmapped rows in the slice");
-    // The two verified-but-untagged rows are counted, never assigned.
-    assert_eq!(r.unattributed, 2, "74094 + 74200 stay unattributed");
+    // Untagged verified rows are counted, never assigned (D68). The count fell
+    // from 2 to 0 on 2026-10-14, when 74094 and 74200 were filed under
+    // binary-operations — which is also what closed that topic. What matters is
+    // that the number is *derived*, so it is pinned as "these rows are not in
+    // any pool", not as a constant: tagging a row must move it and nothing else.
+    let page = store.questions_page(
+        utmelab_api::QuestionFilter {
+            exam: Some("JAMB"),
+            subject: Some("mathematics"),
+            ..Default::default()
+        },
+        1,
+        utmelab_api::MAX_PER_PAGE,
+    );
+    let untagged_verified = page
+        .questions
+        .iter()
+        .filter(|q| q.verified && q.subtopic_id.is_none())
+        .count();
+    assert_eq!(
+        r.unattributed, untagged_verified,
+        "unattributed is exactly the verified rows no topic claims"
+    );
 
     for t in &r.topics {
         assert!(!t.name.is_empty(), "topic {} resolves", t.topic);
