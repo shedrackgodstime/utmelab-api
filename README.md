@@ -4,11 +4,19 @@ Commercial question-bank API for JAMB/WAEC/NECO. One Rust binary serves the
 metered API; Caddy serves the static docs tier alongside it. No Node process,
 no SSR — see D32.
 
+**As shipped in v0.1.0 (2026-10-14):** 2,244 questions, all 2025; **all 25 JAMB
+subjects assemble a full-length paper** through
+`POST /api/v1/papers/{exam}/{subject}?seed=` — deterministic per seed, answers
+never on the wire, scored by re-assembly. Per-subject drills, a syllabus tree
+with live counts, and per-topic readiness accounting with provenance. What is
+deliberately still open, and why, is in
+[`docs/RELEASE_v0.1.0.md`](docs/RELEASE_v0.1.0.md).
+
 ## Build and test
 
 ```bash
 cargo build
-cargo test                 # must be green before any push (113 tests)
+cargo test                 # must be green before any push (138 tests)
 cargo clippy --all-targets # must be clean
 cargo fmt
 cargo run -- openapi --out site/openapi.json  # after route/shape changes
@@ -63,11 +71,12 @@ novels are embedded in the binary; `UTMELAB_API_DATA_DIR` holds exactly
 | `data/` | working copy: `questions.json` + catalog + `novels/` + `inbox/` staging |
 | `site/` | static docs tier (Astro), built to `dist/` and shipped with the binary |
 | `tools/` | harvester, syllabus importer, underline worksheet, review workbench |
+| `tools/dup_audit.py` | one question, one row — run `--strict` after every content change (D72) |
 
 ## Decisions first
 
 Nothing in `data/` changes until it is recorded in
-`docs/QUESTION_BANK_DECISIONS.md` (D1–D63, PINNED/DEFERRED/REJECTED + grounds).
+`docs/QUESTION_BANK_DECISIONS.md` (D1–D72, ACCEPTED/DEFERRED/REJECTED + grounds).
 Start with `docs/HANDOFF.md` (the map), then the decision log (the law), then
 `docs/TODO.md` (the work order). Open content defects live in
 `docs/UNDERLINE_PROBLEM.md`.
