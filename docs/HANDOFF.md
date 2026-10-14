@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-2,044 verified (91%, derived from data/verifications.json, D62) · 2,049 explained
+2,141 verified (95%, derived from data/verifications.json, D62) · 2,146 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -327,6 +327,15 @@ disagree. Two lists is how subjects drift.
     75701 (Obidiya question, no play text served), 75707 (protagonist
     asked, no book specified). 75088 left untagged (no fitting path).
     Loader gate caught 2 more topic-slugs-as-subtopics pre-apply.
+32. **CRS rewrite done 2026-10-14** — 96 authored + 1 key fix + tags +
+    verified; christian-religious-studies 0 → 97 of 100. **75643 key
+    corrected** c → d (Elisha raised the Shunammite boy; blindness never
+    his ailment — D45 pattern, documented in trap). **Parked**: 74744
+    (near-synonym options), 74746 (no true reason among options), 74753
+    (options a/b/c, option_count). Typos fixed: 74761 adjoins→enjoins,
+    75680 Nathaniel→Nehemiah, 75678 She→He (stem+option), 75662
+    cary→carry. 74732 stands on exam convention; 74755 stands (to-whom
+    reading); 74768 stands (Matthew's wording).
 31. **Literature rewrite done 2026-10-14** — 105 authored + 1 key fix +
     tags + verified; literature-in-english 0 → 106 of 108. **75084 key
     corrected** d → a (Clark's Ibadan celebrated for metaphor, not

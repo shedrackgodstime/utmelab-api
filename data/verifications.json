@@ -29636,5 +29636,1363 @@
     "detail": null,
     "content_hash": "cc93355cf7daaa2d3cc612c829ef5b911a56f87fc48fbd03b177063c178979db",
     "created_at": "2026-10-14T01:05:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74731_2118",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74731",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "75d858b92ff6b78ddfbbe66192211ae41e0ff15ae4fd386ae18bdfa92da31efd",
+    "created_at": "2026-10-14T01:10:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74732_2119",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74732",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "730d334799fa11168e697c276658012d6483c5cfe081119ef80bdfd5426161f5",
+    "created_at": "2026-10-14T01:10:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74733_2120",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74733",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "d8ecc074269e25cc45873b0281017f3166558b236dc025a7c3ee35bfa397f496",
+    "created_at": "2026-10-14T01:10:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74734_2121",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74734",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "b99e5fb6961611a2181813fe6ccd66230a8651cce12560620f913d78e4761be9",
+    "created_at": "2026-10-14T01:10:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74735_2122",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74735",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "f1bcc2dbb022b85d70e5a4d47504bbe7509177fa4f890ba5a0ab994df605a996",
+    "created_at": "2026-10-14T01:10:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74736_2123",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74736",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "df079a62e73f452d0ca62d1c1ded13f21e29f25175b0c612f4af8b71e044eccf",
+    "created_at": "2026-10-14T01:10:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74737_2124",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74737",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "8883432d458abdd4c0c474272083b6c3e77543421c86c5640c9a6208e7687170",
+    "created_at": "2026-10-14T01:10:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74738_2125",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74738",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "cc5631bb780da6f2583aae47e38628f1270db09ebc1a2f23ef499a56d7f39eee",
+    "created_at": "2026-10-14T01:10:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74739_2126",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74739",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "b704455b69a38d42ef805e3d67c00c6910cd09193c84581b6ddfcb8b7e25c12c",
+    "created_at": "2026-10-14T01:10:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74740_2127",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74740",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "2d9c5959b43aaca14c419a04be0ee6d3a316dc1016dffd8231af35ec82257c32",
+    "created_at": "2026-10-14T01:10:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74741_2128",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74741",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "425587beed38c08dc45ee003a990e98b8125c284abfde6748aee001c10d02104",
+    "created_at": "2026-10-14T01:10:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74742_2129",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74742",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "391db2591dd70589c3c5eb73eee9fa3011480ccc9272c2b36447c9b83cf08d14",
+    "created_at": "2026-10-14T01:10:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74743_2130",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74743",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "d217cff15392499e6cdda5f771f8b6fea25d3316d4f8d56619c455ffbdb3844a",
+    "created_at": "2026-10-14T01:10:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74745_2131",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74745",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "2b25ecff72a0ec4a12949eb18797e75a4bfe42f2b3b2342e065b04e2249ff146",
+    "created_at": "2026-10-14T01:10:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74747_2132",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74747",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "2524d2dc100863e46f614d66d9783ab6b9ad96c5742bb62db55e12ea89417485",
+    "created_at": "2026-10-14T01:10:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74748_2133",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74748",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "033803efd7fb7ed73c30331eb25f87fa4477caeec83c060a13c754a2b48ece29",
+    "created_at": "2026-10-14T01:10:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74749_2134",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74749",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "8bdcce0d97f22f1a8b5762c769086e6e070055342493cbd2936f3adfe5ca0bf7",
+    "created_at": "2026-10-14T01:10:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74750_2135",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74750",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "69b20f7e276f925e54a212291d1e0ae7019c5f1ea0f1d64aec01fab713b71ae4",
+    "created_at": "2026-10-14T01:10:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74751_2136",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74751",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "5132d5195a3554ecc5d374234f81ff3bb4062ee6a3b00e36fb1a986178dae349",
+    "created_at": "2026-10-14T01:10:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74752_2137",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74752",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "11a55c722931d1a869997bd66fb3d563aecef882266f7ada04781954b7b06aef",
+    "created_at": "2026-10-14T01:10:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74754_2138",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74754",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "93578decaa19d12a96106a935d6516bcd2abc041b3ee253882d8a846801d436a",
+    "created_at": "2026-10-14T01:11:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74755_2139",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74755",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "c6af24cf51ce5ad0629271f711277389f1d9ec07e9c174dd5d34c8b504be8382",
+    "created_at": "2026-10-14T01:11:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74756_2140",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74756",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "922076525e78bf3b4d9f5c44c09a8e6b43d9ec8a4622ff05c2d46869e82720ee",
+    "created_at": "2026-10-14T01:11:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74757_2141",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74757",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "63a1153bafac5ebbaed6766b832919fc6e48ebff79de9d3a824fc0cea5c0fb2f",
+    "created_at": "2026-10-14T01:11:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74758_2142",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74758",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "9a9f06606f48295907decca712a159f91eb1c56803a47b290637026e0583db0d",
+    "created_at": "2026-10-14T01:11:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74759_2143",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74759",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "2dc814dfa843ae69e10dbc24d2aec4c80f6903341d7195032d30c9b81183dc0a",
+    "created_at": "2026-10-14T01:11:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74760_2144",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74760",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "fefd13751f186021e3d0326a8ba8d1c2fe28eda3eef16f0ffa4800269027d238",
+    "created_at": "2026-10-14T01:11:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74761_2145",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74761",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "5a8902bc3fd3122af2f80cac055623cd5cab6f8b8a52f66d386825a78e424af1",
+    "created_at": "2026-10-14T01:11:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74762_2146",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74762",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "d947668390ce22bd4726792f273c0c05298a0d35641614c5361dadf2490f6da4",
+    "created_at": "2026-10-14T01:11:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74763_2147",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74763",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "bee2fa7befbdf889e0ec8f0fe277f93c913438c4ae1b11ab3baef02bb9b01825",
+    "created_at": "2026-10-14T01:11:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74764_2148",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74764",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "ff6e22dd20a689264c6c5d46d6c1fa7e73e7fc5309d1bd0ded5471823da7d2f1",
+    "created_at": "2026-10-14T01:11:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74765_2149",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74765",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "fd3faa1130e8d22ada45f4499e7c661de60786141e41061d73eb678f92bd3088",
+    "created_at": "2026-10-14T01:11:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74766_2150",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74766",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "03f26c4b8d7e1ae518fbde3e2b2c4a4fe661be26e25e8d7e124de7b3d898cb8d",
+    "created_at": "2026-10-14T01:11:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74767_2151",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74767",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "abcce627b021f14d687023184ce4b205d83656c6658965ee10dcae88eb93d7e0",
+    "created_at": "2026-10-14T01:11:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_74768_2152",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_74768",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "c9ca8302d44371fd305d421d2e301da69decae3a33e910315d66540dc09eee3b",
+    "created_at": "2026-10-14T01:11:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75607_2153",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75607",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "63081e4cf353c32dd521f72e518a9677d1314330011c1773345b1bad2c8273b7",
+    "created_at": "2026-10-14T01:11:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75609_2154",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75609",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "47b8d839305579dcdd97a7fc954dfc9bbc642ccf706b18383b06ca1c44b4faf7",
+    "created_at": "2026-10-14T01:11:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75611_2155",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75611",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "88bbddcdb2a9a16ef3d99a4091de04bee2fbd49a033b48ed7a09c84c32ac42bf",
+    "created_at": "2026-10-14T01:11:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75612_2156",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75612",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "d351a97b3c6267debf6b0501c82ef3b12df5914a1e5cd28e7de0baf6127c8642",
+    "created_at": "2026-10-14T01:11:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75614_2157",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75614",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "158a2469c41b40168a79f9b780a9c750fdd749020c365f6f65e9a093049db6ac",
+    "created_at": "2026-10-14T01:11:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75615_2158",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75615",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "e3d1a4233b61455904ec62335eda68f2cffe977028c2abaf72c4dfcf51f92cdc",
+    "created_at": "2026-10-14T01:11:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75617_2159",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75617",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "89c12925bdbe27fb4b0e08727ef150407571684922dfa583146470ef7a8c8f01",
+    "created_at": "2026-10-14T01:11:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75618_2160",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75618",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "bfb17afc4c6877d2ddc93711f2a795200343b63bb9b58c3e796a8a4c75263730",
+    "created_at": "2026-10-14T01:11:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75620_2161",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75620",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "ffd34dbb9cdc2152430f0fa43ac7542876ca165e6d5d3eac5d911a46f175baf4",
+    "created_at": "2026-10-14T01:11:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75622_2162",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75622",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "cfedcb1a112df4ccbc70a2fb9150aba64b3565b2aafd8df5aea19f8c6139c081",
+    "created_at": "2026-10-14T01:11:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75623_2163",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75623",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "e5d2c9196c8c4a4718fc5aae75192d38153520f7995235183fe30b6394ca35e0",
+    "created_at": "2026-10-14T01:11:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75624_2164",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75624",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "8eb9307250e3d91a354d87f3ef7761cbedc1e6fe68d4a413abd1bdd7548c1e01",
+    "created_at": "2026-10-14T01:11:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75625_2165",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75625",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "6bf5746ae678586fdd10fa037272d70ab04df9e18fdddc8f8d994e6b04e1bb6d",
+    "created_at": "2026-10-14T01:11:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75626_2166",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75626",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "5c7b73b264382d920d5f8f2136e2d99b871a3826ab7573ee8c06b645caa56b65",
+    "created_at": "2026-10-14T01:11:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75628_2167",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75628",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "def6c7f6ad32729f43a26736c82d106f14657a83cdec13d984b6773f85b43ca0",
+    "created_at": "2026-10-14T01:11:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75629_2168",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75629",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "b48eb79f2e6d80263a388af496aa84793671073c6c3682b4df86576da2d700c9",
+    "created_at": "2026-10-14T01:11:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75633_2169",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75633",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "df78f0b18588e5f16ff59499a12e76b2060485d99888ef95fcac58babe0811f4",
+    "created_at": "2026-10-14T01:11:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75634_2170",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75634",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "32feae579accb62e881c3bfe928c17a888bcdfd0b25e75c58705f44e5aef965c",
+    "created_at": "2026-10-14T01:11:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75635_2171",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75635",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "9c3a492ece7a41232f2496b94d0d38ea2062065ea5e8f78187bcfec4a020fecc",
+    "created_at": "2026-10-14T01:11:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75637_2172",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75637",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "489c8567fd11b68d0ab68804996dc1ed766fa39ba6f2418d9b41e17cb86824d0",
+    "created_at": "2026-10-14T01:11:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75639_2173",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75639",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "4e4a308c877978751a1a9addd99708564095d71c3d74ef9d3fa279a514a7a4ac",
+    "created_at": "2026-10-14T01:11:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75640_2174",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75640",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "6c4e9f5362fe6dc1dbafa4a99ed56f3d355888c2d865682b4928204b627e630c",
+    "created_at": "2026-10-14T01:11:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75641_2175",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75641",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "e2f963a934c07bd71366ee793b4b04af5edf3a84743d1d00d113692f27269b7f",
+    "created_at": "2026-10-14T01:11:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75642_2176",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75642",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "ad31cba22fd0b591de5b88d9920e7b633385609778902b8eb7f8c15254112438",
+    "created_at": "2026-10-14T01:11:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75643_2177",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75643",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "14a73af8a13bed278670a72d1a7c5398ff1402877538e0dcd4975056fb0a94ce",
+    "created_at": "2026-10-14T01:11:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75644_2178",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75644",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "e063e4ad4c07684779d432b2a657edb2fbae334fd6c99be63480fd36f569ecd1",
+    "created_at": "2026-10-14T01:11:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75645_2179",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75645",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "d626832b6510b0ba50fedc414860fdd558ea0d3a21110523b02e7240205b56d4",
+    "created_at": "2026-10-14T01:11:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75646_2180",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75646",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "ea87750054fec2df022b0167398724a480cfb329883bf8f7e3c8b580490b4355",
+    "created_at": "2026-10-14T01:11:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75647_2181",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75647",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "6a7d380e01c91c0806d709383f9b0995fcef3fc9f2bbedc0f720cd7de7976c20",
+    "created_at": "2026-10-14T01:11:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75648_2182",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75648",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "9f9fefd9b139d6622f69f4522001a587269bfda17629b3f46dba789ba16c5ce6",
+    "created_at": "2026-10-14T01:11:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75649_2183",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75649",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "41e809d9c81f9f08687ec313eb05fbe6da129bd50bad2a47af1d28aa026323c1",
+    "created_at": "2026-10-14T01:11:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75650_2184",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75650",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "347e3e181fc3fee17bf41760222c15254905a2981054740d4d33b225270c7a85",
+    "created_at": "2026-10-14T01:11:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75651_2185",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75651",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "5a9ed1988e00a56edf4492e1bca951ad4bf69efc96265c549e26d1ef124673d0",
+    "created_at": "2026-10-14T01:11:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75652_2186",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75652",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "f96459def0686e3aaeec3b11914bc45cd22f61e7166349b9f05c3b6fecb646e5",
+    "created_at": "2026-10-14T01:11:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75653_2187",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75653",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "821b69774f94ce9a09b714d169db29fe6ac8b4942acfd4879a895603214cb2ef",
+    "created_at": "2026-10-14T01:11:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75654_2188",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75654",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "6d08cd8fb8474625170bf2d6927ca15de9e46312b293511143ec1c8452805a9c",
+    "created_at": "2026-10-14T01:11:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75655_2189",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75655",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "8fddea7437e2764f00a5f5631a1715461e6fd1d9cb7aafc174cbe4762fccabb4",
+    "created_at": "2026-10-14T01:11:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75656_2190",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75656",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "055ac857b99fb27c85da91ab0467c6a2d2b6dda1c0711142b21ca7a4cba3124f",
+    "created_at": "2026-10-14T01:11:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75657_2191",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75657",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "aac3e271f15cae8490ba7305b50d15ad0a64683c842bce28f501926cfb1a098e",
+    "created_at": "2026-10-14T01:11:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75658_2192",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75658",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "65788ec7ad16d2cdf616242f5c50dc14546f30f7cae57c8b981f69e94fe4d2f4",
+    "created_at": "2026-10-14T01:11:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75659_2193",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75659",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "53553aec6a350be6fc43bb1c257c34dd060099a5c8184104de9b96f6b071232c",
+    "created_at": "2026-10-14T01:11:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75660_2194",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75660",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "1e55a1ea93c08872f080e1d9c42421eb459e7c3e15a8ce582ab19311f9b78efe",
+    "created_at": "2026-10-14T01:11:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75661_2195",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75661",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "5c93a76e99bbaafdb9f215cf949b3fa0683a2a0fcf9ff1db123812f77a50e247",
+    "created_at": "2026-10-14T01:11:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75662_2196",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75662",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "368802326b9134ba72222e6a5bb1bfc1d9f4f128f6721e790bbdf8be3cdb556f",
+    "created_at": "2026-10-14T01:11:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75663_2197",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75663",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "79bdd3fa91139aac93b5986d8ee3a538b4a1143a23e75c743d328ffe78a9157f",
+    "created_at": "2026-10-14T01:11:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75664_2198",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75664",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "3f7e4d9a68a6367e9c5706a126a830ee74707d19a5019cf2459a74fc8bc5d418",
+    "created_at": "2026-10-14T01:11:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75665_2199",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75665",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "cdf4ebccfa75d06ac69f7e84784a43356467ed782b55c220e5fe25f383f99655",
+    "created_at": "2026-10-14T01:11:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75666_2200",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75666",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "a8827e8d4debc67bc3df9edef65f2ae523656329dd22d37fcf704a4c83fe7058",
+    "created_at": "2026-10-14T01:11:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75667_2201",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75667",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "52bf9853fd510cb2d1122c3e16c2f540340ed67b1651381569a210030c1bcabe",
+    "created_at": "2026-10-14T01:11:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75668_2202",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75668",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "408031887947cfa994de896f237ad2b6fff8bff5ff2853da1a4600f04f6c7b73",
+    "created_at": "2026-10-14T01:11:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75669_2203",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75669",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "f4870241a544ad3c74c7f8a75cb14748edf4542d274f0d53c7d029dc92b0d233",
+    "created_at": "2026-10-14T01:11:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75670_2204",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75670",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "d6204b27efb65e4a3683749630d26dd1afbb5c69ce603e70f66fddc6482b89a5",
+    "created_at": "2026-10-14T01:11:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75671_2205",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75671",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "a3abdd8b367241357f6a9a44eb91dc62277f29e6c0433ee7b84c0cbe41e7269a",
+    "created_at": "2026-10-14T01:11:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75672_2206",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75672",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "7f3e6ab05022794acf61c9b0e11cb7b76f0e0d27491006bcf0dbd5292b63d8a6",
+    "created_at": "2026-10-14T01:11:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75673_2207",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75673",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "ffc4e80435cd31e16413f600601a7f1809dc35be90a66fbe741bf04a3a33ec68",
+    "created_at": "2026-10-14T01:11:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75674_2208",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75674",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "ab5dfd6996627d1ea004588d3c56e3cb9d2ff4c37c4f54bfec7cc8144bb64d4d",
+    "created_at": "2026-10-14T01:11:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75675_2209",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75675",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "5bd816d58d923eab1b1ec0600606038eaffea8b979cff9b947c436549f7c0e70",
+    "created_at": "2026-10-14T01:11:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75676_2210",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75676",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "4db14ad17d1c45891149c3af2a9908e40f34ee297847866be1b26e05dd77c6b8",
+    "created_at": "2026-10-14T01:11:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75677_2211",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75677",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "c060f286b0f6684a7164b248f65f05fdcff11486c2594a02487e8dbe611d6575",
+    "created_at": "2026-10-14T01:11:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75678_2212",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75678",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "b9d2be2a32b87053545c0614dc578a403e5fac59d40b93dda0ad0bf84832c151",
+    "created_at": "2026-10-14T01:11:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75679_2213",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75679",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "1aebcb017260854cb4cff95e46971f909c364b1b0079b7513476ad66f036ae0b",
+    "created_at": "2026-10-14T01:11:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_christian-religious-knowledge-crk_75680_2214",
+    "question_id": "q_claim_2025_christian-religious-knowledge-crk_75680",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "crs-rewrite1",
+    "detail": null,
+    "content_hash": "8ec14219f232bde9d633b1d37428b909873ea9b97ef6a37d07d9bf08e40c2f10",
+    "created_at": "2026-10-14T01:11:33Z"
   }
 ]
