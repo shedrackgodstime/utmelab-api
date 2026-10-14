@@ -338,6 +338,10 @@ disagree. Two lists is how subjects drift.
     through `cargo run -- verify` (same gates, ISO timestamps, file-first
     dual-write). `quarantine::scan` generalized to `&dyn Store`. Gates
     proven live; write path awaits first eligible row.
+39. **Import sink done 2026-10-14 (W2)** — `import --turso` shares the
+    admission core over `&dyn Store`; R4 gate on the merged bank, upserts
+    with shared fingerprints. File path byte-identical. Dry-run proven
+    live; R4 refusal unit-tested.
 34. **Maths P4 groundwork done 2026-10-14** — 74199 verified (figure read:
     x = 2, modal weight 58; honest legacy note replaced with the working).
     **74188 parked**: modal class 30–39 gives 29.5 + 6/10×10 = 35.5, no

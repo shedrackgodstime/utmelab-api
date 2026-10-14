@@ -32,7 +32,7 @@ use std::path::{Path, PathBuf};
 use serde_json::Value;
 
 use crate::JsonStore;
-use crate::bank::Store as _;
+use crate::bank::Store;
 use crate::bank::{Choice, ImagePosition, Inline, InlineKind, Question, RichText};
 
 /// The subject map lives in `config/harvest.json`, not here.
@@ -184,6 +184,90 @@ pub fn run(
         })
         .collect();
 
+    let adm = admit(&store, &subjects, inbox, &mut existing, &mut seen)?;
+    if !dry_run {
+        let problems = store.replace_questions(existing);
+        if !problems.is_empty() {
+            // Refuse to write a file the loader would then reject on boot.
+            println!("\nRefusing to write — the merged bank would not load:");
+            for problem in problems.iter().take(10) {
+                println!("  {problem}");
+            }
+            return Ok(());
+        }
+        store.write_questions(data)?;
+        println!("\nWritten to {}", data.join("questions.json").display());
+    }
+    report(&adm, dry_run);
+    Ok(())
+}
+
+/// Turso sink for the same admission (W2). The file path above stays the
+/// dev behavior byte-for-byte; this writes validated rows straight to the
+/// source of truth. Withheld carry-through stays file-side (D58 lives in
+/// `run`): Turso holds servable rows only, and the R4 gate runs on the
+/// merged bank before a single row is written.
+pub async fn run_turso(
+    db: &crate::db::Db,
+    store: &crate::bank::TursoStore,
+    inbox: &Path,
+    dry_run: bool,
+    config: Option<&Path>,
+) -> anyhow_lite::Result<()> {
+    let subjects = subject_map(config)?;
+    let base = store.questions().len();
+    let mut existing: Vec<Question> = store.questions().to_vec();
+    let mut seen: HashSet<String> = existing
+        .iter()
+        .map(|q| {
+            fingerprint(
+                &q.text.text,
+                &q.options
+                    .iter()
+                    .map(|o| o.text.text.clone())
+                    .collect::<Vec<_>>(),
+            )
+        })
+        .collect();
+
+    let adm = admit(store, &subjects, inbox, &mut existing, &mut seen)?;
+    let new: &[Question] = &existing[base..];
+    let problems = store.check_new_questions(new);
+    if !problems.is_empty() {
+        // Same refusal contract as the file path: nothing is written.
+        println!("\nRefusing to write — the merged bank would not load:");
+        for problem in problems.iter().take(10) {
+            println!("  {problem}");
+        }
+        return Ok(());
+    }
+    if !dry_run {
+        let n = crate::bank::write::upsert_questions(db, new)
+            .await
+            .map_err(|e| format!("turso upsert: {e}"))?;
+        println!("\nUpserted {n} rows to Turso");
+    }
+    report(&adm, dry_run);
+    Ok(())
+}
+
+/// Shared admission core: files loop + per-row gates + catalog check +
+/// id/dup checks. Sink-agnostic: works against any `Store` (file or Turso).
+/// Appends admitted rows to `existing`; returns counts plus refusals for the
+/// shared summary. Review stays out — admission never judges quality (D51).
+struct Admitted {
+    admitted: usize,
+    with_image: usize,
+    refusals: Refusals,
+}
+
+fn admit(
+    store: &dyn Store,
+    subjects: &[(String, String)],
+    inbox: &Path,
+    existing: &mut Vec<Question>,
+    seen: &mut HashSet<String>,
+) -> anyhow_lite::Result<Admitted> {
     let mut refusals = Refusals::default();
     let mut admitted = 0usize;
     let mut with_image = 0usize;
@@ -372,27 +456,29 @@ pub fn run(
         }
     }
 
-    if !dry_run {
-        let problems = store.replace_questions(existing);
-        if !problems.is_empty() {
-            // Refuse to write a file the loader would then reject on boot.
-            println!("\nRefusing to write — the merged bank would not load:");
-            for problem in problems.iter().take(10) {
-                println!("  {problem}");
-            }
-            return Ok(());
-        }
-        store.write_questions(data)?;
-        println!("\nWritten to {}", data.join("questions.json").display());
-    }
+    Ok(Admitted {
+        admitted,
+        with_image,
+        refusals,
+    })
+}
 
-    println!("\nAdmitted: {admitted} ({with_image} carrying a diagram)");
-    if refusals.counts.is_empty() {
+fn report(adm: &Admitted, dry_run: bool) {
+    println!(
+        "\nAdmitted: {} ({} carrying a diagram)",
+        adm.admitted, adm.with_image
+    );
+    if adm.refusals.counts.is_empty() {
         println!("Refused: none");
     } else {
         println!("Refused:");
-        for (reason, count) in &refusals.counts {
-            let example = refusals.examples.get(reason).cloned().unwrap_or_default();
+        for (reason, count) in &adm.refusals.counts {
+            let example = adm
+                .refusals
+                .examples
+                .get(reason)
+                .cloned()
+                .unwrap_or_default();
             println!(
                 "  {count:>4}  {reason}\n         e.g. {}",
                 truncate(&example, 78)
@@ -402,7 +488,6 @@ pub fn run(
     if dry_run {
         println!("\n(dry run — nothing written)");
     }
-    Ok(())
 }
 
 fn mentions_figure(text: &str) -> bool {
@@ -516,5 +601,45 @@ mod tests {
                 entry.slug, subject.name, entry.name
             );
         }
+    }
+    #[test]
+    fn check_new_questions_gates_merged_bank() {
+        use crate::bank::{Choice, RichText};
+        let dir = std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data");
+        let store = crate::JsonStore::load(&dir).expect("real bank loads for gate test");
+        // Empty candidates: a clean bank stays clean.
+        assert!(store.check_new_questions(&[]).is_empty());
+        // Unknown subject: the merged bank would not boot.
+        let bad = Question {
+            id: "t_gate_probe".to_string(),
+            exam: "JAMB".to_string(),
+            subject: "No Such Subject".to_string(),
+            year: 2025,
+            source: "imported".to_string(),
+            text: RichText {
+                text: "Probe?".to_string(),
+                inline: Vec::new(),
+            },
+            options: vec![Choice {
+                id: "a".to_string(),
+                text: RichText {
+                    text: "Yes".to_string(),
+                    inline: Vec::new(),
+                },
+            }],
+            answer: "a".to_string(),
+            subtopic_id: None,
+            section: None,
+            passage_id: None,
+            explanation: None,
+            marks: 2.5,
+            difficulty: 3,
+            verified: false,
+        };
+        let problems = store.check_new_questions(std::slice::from_ref(&bad));
+        assert!(
+            !problems.is_empty(),
+            "unknown subject must fail the R4 gate"
+        );
     }
 }

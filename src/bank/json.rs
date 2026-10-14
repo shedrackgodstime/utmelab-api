@@ -794,6 +794,18 @@ impl JsonStore {
         checker.problems
     }
 
+    /// R4 write-time gate for non-file sinks (Turso import): what problems
+    /// would the merged bank (current rows plus `candidates`) boot with?
+    /// Empty means clean to write. Clones the bank — imports are rare and
+    /// correctness beats thrift here; the live store is never touched.
+    pub fn check_new_questions(&self, candidates: &[Question]) -> Vec<String> {
+        let mut probe = self.clone();
+        probe.questions.extend(candidates.iter().cloned());
+        let mut checker = Checker::default();
+        probe.validate(&mut checker);
+        checker.problems
+    }
+
     /// Write every question — servable first, withheld after — back to
     /// `dir/questions.json`. Withheld rows round-trip byte-identically apart
     /// from position; moving one row to the file's end once is the cost of

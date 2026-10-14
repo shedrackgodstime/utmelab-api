@@ -292,3 +292,16 @@ triage; its file appends converge via re-seed). Live-proven gates:
 already-verified short-circuit + option_count refusal; the full write
 path awaits its first real (non-parked, eligible) row — the bank is
 complete, so none exists today.
+
+## Writer record W2 (2026-10-14) — `import --turso` writes the source
+
+`cargo run -- import --turso [--dry-run]`: the admission core
+(`admit()`: files loop, per-row gates, catalog check, id/dup checks) is
+sink-agnostic over `&dyn Store`; the file path is byte-for-byte unchanged
+(dev default), the Turso path runs `check_new_questions` (full
+whole-bank validation on the merged bank) and refuses on any problem,
+then upserts admitted rows with shared fingerprints (`bank::write`).
+D58 carry-through stays file-side (Turso holds servable rows only).
+Live-proven dry-run against prod Turso (staged lekki file correctly
+refused on subject slug); R4 refusal power unit-tested (unknown subject
+fails the gate). `review.py`/harvester untouched (inbox producers).

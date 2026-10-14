@@ -144,6 +144,12 @@ impl TursoStore {
         Self::build(fetched, version)
     }
 
+    /// R4 write-time gate for the Turso import path: problems the merged
+    /// bank would boot with. Empty means clean to write.
+    pub fn check_new_questions(&self, candidates: &[Question]) -> Vec<String> {
+        self.inner.check_new_questions(candidates)
+    }
+
     /// Cheap count-hash version for change detection (boot check + refresh
     /// loop). Not served; [`Store::version`] comes from the built store.
     /// Retries internally: a transient wire drop must not fail boot.

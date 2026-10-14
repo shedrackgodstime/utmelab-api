@@ -11,6 +11,7 @@ mod store;
 pub mod turso_store;
 pub mod verify;
 mod view;
+pub mod write;
 
 pub(crate) use json::StoreParts;
 pub use json::{JsonStore, StoreError};

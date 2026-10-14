@@ -46,6 +46,11 @@ enum Command {
         /// Subject map. Defaults to `config/harvest.json`.
         #[arg(long)]
         harvest_config: Option<PathBuf>,
+        /// Write to Turso (the source of truth) instead of questions.json.
+        /// Same admission, same gates; the R4 check runs on the merged bank
+        /// before a single row is written. Dev default stays files.
+        #[arg(long)]
+        turso: bool,
     },
     /// Write the OpenAPI document to a file (or stdout) for the docs build.
     ///
@@ -153,9 +158,32 @@ async fn run() -> Result<(), ApiError> {
             data,
             dry_run,
             harvest_config,
+            turso: false,
         } => {
             let data_dir = data.unwrap_or_else(|| PathBuf::from(&config.data_dir));
             utmelab_api::import::run(&inbox, &data_dir, dry_run, harvest_config.as_deref())
+                .map_err(|e| ApiError::config(e.to_string()))?;
+            Ok(())
+        }
+        Command::Import {
+            inbox,
+            data: _,
+            dry_run,
+            harvest_config,
+            turso: true,
+        } => {
+            let (url, token) = match (&config.turso_url, &config.turso_token) {
+                (Some(url), Some(token)) => (url.clone(), token.clone()),
+                _ => {
+                    return Err(ApiError::config(
+                        "import --turso needs TURSO_DB_URL + TURSO_DB_TOKEN",
+                    ));
+                }
+            };
+            let db = Db::connect(&url, &token).await?;
+            let store = TursoStore::open_cached(&db, &config.bank_cache_file).await?;
+            utmelab_api::import::run_turso(&db, &store, &inbox, dry_run, harvest_config.as_deref())
+                .await
                 .map_err(|e| ApiError::config(e.to_string()))?;
             Ok(())
         }
