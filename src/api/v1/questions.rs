@@ -104,7 +104,8 @@ pub async fn question_by_id(
     Path(id): Path<String>,
     Query(f): Query<Detail>,
 ) -> Result<Json<RenderedQuestion>, ApiError> {
-    let question = state.bank.question(&id).ok_or_else(|| {
+    let bank = state.bank.borrow().clone();
+    let question = bank.question(&id).ok_or_else(|| {
         ApiError::not_found("question_not_found", format!("No question with id '{id}'."))
     })?;
 
@@ -160,10 +161,11 @@ pub async fn questions(
     _caller: Caller,
     Query(f): Query<Filter>,
 ) -> Result<Json<QuestionPage>, ApiError> {
+    let bank = state.bank.borrow().clone();
     // Reject a filter that names a subject this exam does not offer, rather
     // than returning a confident empty list.
     if let (Some(exam), Some(subject)) = (&f.exam, &f.subject) {
-        if f.subtopic.is_none() && state.bank.subject(exam, subject).is_none() {
+        if f.subtopic.is_none() && bank.subject(exam, subject).is_none() {
             return Err(ApiError::not_found(
                 "subject_not_found",
                 format!("No subject with slug '{subject}' for exam '{exam}'."),
@@ -171,7 +173,7 @@ pub async fn questions(
         }
     }
 
-    let page = state.bank.questions_page(
+    let page = bank.questions_page(
         QuestionFilter {
             exam: f.exam.as_deref(),
             subject: f.subject.as_deref(),

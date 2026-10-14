@@ -255,18 +255,23 @@ async fn main() {
             )
         );
     }
+    // topic_countries.json rows are {topic, countries:[...]} — one pair per
+    // member country. Empty file today, but the mapping must be right for
+    // the day rows exist.
     for r in &scopes {
-        retry!(
-            "upsert",
-            6,
-            db.conn().execute(
-                "INSERT INTO topic_countries(topic,country) VALUES(?1,?2) ON CONFLICT(topic,country) DO NOTHING",
-                (
-                    r["topic"].as_str().unwrap_or(""),
-                    r["country"].as_str().unwrap_or(""),
-                ),
-            )
-        );
+        let topic = r["topic"].as_str().unwrap_or("");
+        let members: Vec<String> =
+            serde_json::from_value(r["countries"].clone()).unwrap_or_default();
+        for country in &members {
+            retry!(
+                "upsert",
+                6,
+                db.conn().execute(
+                    "INSERT INTO topic_countries(topic,country) VALUES(?1,?2) ON CONFLICT(topic,country) DO NOTHING",
+                    (topic, country.as_str(),),
+                )
+            );
+        }
     }
     // Keyless tables rebuild wholesale (draft: slow-moving, single writer).
     retry!(

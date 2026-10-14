@@ -63,13 +63,13 @@ pub fn router() -> Router<AppState> {
     responses((status = 200, body = ExamList)),
 )]
 pub async fn list(State(state): State<AppState>) -> Json<ExamList> {
+    let bank = state.bank.borrow().clone();
     Json(ExamList {
-        exams: state
-            .bank
+        exams: bank
             .exams()
             .into_iter()
             .filter_map(|code| {
-                let rec = state.bank.exam(code)?;
+                let rec = bank.exam(code)?;
                 Some(Exam {
                     code: rec.code.clone(),
                     name: rec.name.clone(),
@@ -79,7 +79,7 @@ pub async fn list(State(state): State<AppState>) -> Json<ExamList> {
                     subjects_required: rec.subjects_required,
                     duration_minutes: rec.duration_minutes,
                     rules: rec.rules.clone(),
-                    subject_count: state.bank.subjects(code).len(),
+                    subject_count: bank.subjects(code).len(),
                 })
             })
             .collect(),
@@ -101,7 +101,8 @@ pub async fn subjects(
     State(state): State<AppState>,
     Path(exam): Path<String>,
 ) -> Result<Json<ExamSubjects>, ApiError> {
-    let subjects = state.bank.subjects(&exam);
+    let bank = state.bank.borrow().clone();
+    let subjects = bank.subjects(&exam);
     if subjects.is_empty() {
         return Err(ApiError::not_found(
             "exam_not_found",

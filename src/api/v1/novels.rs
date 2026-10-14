@@ -72,8 +72,8 @@ pub fn router() -> Router<AppState> {
     responses((status = 200, body = NovelList)),
 )]
 pub async fn list(State(state): State<AppState>, Query(f): Query<NovelFilter>) -> Json<NovelList> {
-    let mut novels: Vec<Novel> = state
-        .bank
+    let bank = state.bank.borrow().clone();
+    let mut novels: Vec<Novel> = bank
         .novels(f.exam.as_deref())
         .into_iter()
         .filter(|n| f.year.is_none_or(|y| n.year_prescribed.contains(&y)))
@@ -105,9 +105,8 @@ pub async fn detail(
     State(state): State<AppState>,
     Path(id): Path<String>,
 ) -> Result<Json<NovelDoc>, ApiError> {
-    state
-        .bank
-        .novel(&id)
+    let bank = state.bank.borrow().clone();
+    bank.novel(&id)
         .map(|n| Json(n.clone()))
         .ok_or_else(|| ApiError::not_found("novel_not_found", format!("No novel with id '{id}'.")))
 }
@@ -143,7 +142,8 @@ pub async fn questions(
 ) -> Result<Json<NovelQuestionPage>, ApiError> {
     use crate::bank::MAX_PER_PAGE;
 
-    let doc = state.bank.novel(&id).ok_or_else(|| {
+    let bank = state.bank.borrow().clone();
+    let doc = bank.novel(&id).ok_or_else(|| {
         ApiError::not_found("novel_not_found", format!("No novel with id '{id}'."))
     })?;
 

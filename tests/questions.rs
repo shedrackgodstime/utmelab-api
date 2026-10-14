@@ -41,8 +41,14 @@ fn state() -> AppState {
         std::process::id()
     ));
     let _ = std::fs::remove_file(&reports_path);
+    let (bank_tx, bank_rx) = tokio::sync::watch::channel(Arc::new(
+        JsonStore::load(&data).expect("bank loads"),
+    ) as Arc<dyn utmelab_api::Store>);
+    // The sender must outlive the test: dropping it closes the channel and
+    // every borrow() panics. Binding keeps it alive for the test body.
+    let _bank_sender = bank_tx;
     AppState {
-        bank: Arc::new(JsonStore::load(&data).expect("bank loads")),
+        bank: bank_rx,
         keys: Arc::new(KeyBackend::file(
             KeyStore::open_json(&keys_path).expect("key store"),
         )),

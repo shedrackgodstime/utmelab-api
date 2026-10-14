@@ -246,3 +246,19 @@ by construction. Cutover switch: `UTMELAB_BANK_STORE=turso` (default
 novels, passage — identical. Known gaps: withheld fixture file-side
 (`/health` differs by that 1 row, asserted); `version()` is a count-hash
 (R7 row-hash lands with cutover).
+
+## Serving record (2026-10-14) — Turso-only, hot reload, disk cache
+
+Turso is the only source; JSON is dev-only; there is no fallback (a
+future Turso mirror is the fallback, not now). `serve` boots
+`TursoStore::open_cached`: cheap count-hash version first, `var/`
+snapshot on hit, full fetch + cache rewrite on miss. Serving is from
+memory either way, so request speed equals the file era. A refresh task
+(`UTMELAB_BANK_REFRESH_SECS`, default 300) re-checks the version and
+atomically swaps the whole bank (`watch` channel — handlers snapshot an
+`Arc`, no locks across awaits), so content changes land with no rebuild
+and no restart. Cache failures fall through to fetch; refresh failures
+keep the old bank; validation failures never swap in. `AppState.bank` is
+a `watch::Receiver`; all route call sites snapshot at handler start.
+`tests/bank_cache.rs` (env-gated) proves miss-then-hit serve identical
+banks. `UTMELAB_BANK_STORE` switch removed with the JSON branch.

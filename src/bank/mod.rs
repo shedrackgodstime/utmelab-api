@@ -3,6 +3,7 @@
 //! Nothing in here knows about HTTP. Both `api/` and `app/` depend on it; it
 //! depends on neither.
 
+pub(crate) mod cache;
 mod json;
 pub mod model;
 pub mod scheme;

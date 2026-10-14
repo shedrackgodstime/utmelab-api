@@ -62,7 +62,8 @@ pub async fn topic(
     Path((exam, subject, slug)): Path<(String, String, String)>,
     Query(f): Query<TopicQuery>,
 ) -> Result<Json<TopicDetail>, ApiError> {
-    let (topic, subtopics) = state.bank.topic(&exam, &subject, &slug).ok_or_else(|| {
+    let bank = state.bank.borrow().clone();
+    let (topic, subtopics) = bank.topic(&exam, &subject, &slug).ok_or_else(|| {
         ApiError::not_found(
             "topic_not_found",
             format!("No topic '{slug}' for {exam}/{subject}."),
@@ -71,7 +72,7 @@ pub async fn topic(
 
     // One batched count map, not one `questions_page` per child: the page
     // query scans and sorts only to read a total (R5).
-    let counts = state.bank.subtopic_counts();
+    let counts = bank.subtopic_counts();
     let country = f.country.as_deref();
 
     Ok(Json(TopicDetail {
@@ -80,7 +81,7 @@ pub async fn topic(
             .into_iter()
             .filter(|st| {
                 country.is_none_or(|cc| {
-                    let scope = state.bank.topic_scope(&st.topic);
+                    let scope = bank.topic_scope(&st.topic);
                     scope.is_empty() || scope.iter().any(|m| m == cc)
                 })
             })
@@ -90,7 +91,7 @@ pub async fn topic(
                 order: st.order,
                 question_count: counts.get(&st.slug).copied().unwrap_or(0),
                 objectives: st.objectives.clone(),
-                countries: state.bank.topic_scope(&st.topic),
+                countries: bank.topic_scope(&st.topic),
             })
             .collect(),
     }))

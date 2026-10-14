@@ -37,11 +37,11 @@ pub async fn response_headers(
 
     // Content fingerprint + URI = the etag. bank_version alone would 304 a
     // client whose filter changed; the URI pins it to the exact request.
+    let bank = state.bank.borrow().clone();
     let etag = cacheable.then(|| {
-        let hash =
-            Sha256::digest(format!("{}\n{}?{}", state.bank.version(), path, query).as_bytes());
+        let hash = Sha256::digest(format!("{}\n{}?{}", bank.version(), path, query).as_bytes());
         let hex: String = hash.iter().take(8).map(|b| format!("{b:02x}")).collect();
-        format!("\"{}-{hex}\"", state.bank.version())
+        format!("\"{}-{hex}\"", bank.version())
     });
 
     if let Some(tag) = &etag {

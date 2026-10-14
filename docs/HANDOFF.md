@@ -327,6 +327,10 @@ disagree. Two lists is how subjects drift.
     75701 (Obidiya question, no play text served), 75707 (protagonist
     asked, no book specified). 75088 left untagged (no fitting path).
     Loader gate caught 2 more topic-slugs-as-subtopics pre-apply.
+36. **Turso-only serving done 2026-10-14** — `serve` boots Turso, no JSON
+    branch, no fallback. `var/` disk cache (version-gated, re-validated);
+    refresh task hot-swaps the bank on content change (watch channel).
+    `tests/bank_cache.rs` proves miss/hit identical. 116 green.
 34. **Maths P4 groundwork done 2026-10-14** — 74199 verified (figure read:
     x = 2, modal weight 58; honest legacy note replaced with the working).
     **74188 parked**: modal class 30–39 gives 29.5 + 6/10×10 = 35.5, no

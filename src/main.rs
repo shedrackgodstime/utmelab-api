@@ -14,9 +14,7 @@ use clap::{Parser, Subcommand};
 use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
 
-use utmelab_api::{
-    ApiError, AppState, Config, Db, JsonStore, RateLimiter, ReportStore, Store, TursoStore,
-};
+use utmelab_api::{ApiError, AppState, Config, Db, RateLimiter, ReportStore, Store, TursoStore};
 
 #[derive(Parser)]
 #[command(name = "utmelab-api", version, about = "UTME Lab question bank API")]
@@ -203,47 +201,35 @@ async fn audit_db(config: &Config) -> Result<(), ApiError> {
 }
 
 async fn serve(config: &Config) -> Result<(), ApiError> {
-    // A bad bank must not become a running server (D23). This is a startup
-    // failure, not an HTTP one — its message lists every problem found and is
-    // printed to stderr, never served.
-    //
-    // `UTMELAB_BANK_STORE=turso` serves from Turso (single source of truth;
-    // JSON is dev-only). Default `json` keeps current behavior: catalog +
-    // novels embedded, questions from `dir/questions.json`. The Turso branch
-    // runs the same fail-closed validation through the shared pipeline, so a
-    // bad bank refuses boot identically on either source (R8 dual-run).
-    let bank: Arc<dyn Store> = match config.bank_store.as_str() {
-        "turso" => {
-            let (url, token) = match (&config.turso_url, &config.turso_token) {
-                (Some(url), Some(token)) => (url.clone(), token.clone()),
-                _ => {
-                    return Err(ApiError::config(
-                        "UTMELAB_BANK_STORE=turso needs TURSO_DB_URL + TURSO_DB_TOKEN",
-                    ));
-                }
-            };
-            let db = Db::connect(&url, &token).await?;
-            let store = TursoStore::open(db).await?;
-            tracing::info!(
-                turso_version = %store.version(),
-                subjects = store.subject_count(),
-                questions = store.question_count(),
-                "bank loaded from Turso",
-            );
-            Arc::new(store)
+    // Turso is the only source of truth; JSON is dev-only. Boot loads the
+    // bank into memory once (disk cache on hit, full fetch on miss), serves
+    // from memory, and hot-swaps on content change — no rebuild, no restart.
+    // A bad bank must not become a running server (D23): validation runs
+    // through the shared pipeline, so a bad bank refuses boot here, never
+    // in a handler.
+    let (url, token) = match (&config.turso_url, &config.turso_token) {
+        (Some(url), Some(token)) => (url.clone(), token.clone()),
+        _ => {
+            return Err(ApiError::config(
+                "serving needs TURSO_DB_URL + TURSO_DB_TOKEN (Turso is the only source)",
+            ));
         }
-        _ => Arc::new(
-            JsonStore::load_embedded(config.data_dir())
-                .map_err(|e| ApiError::config(e.to_string()))?,
-        ),
     };
+    let db = Db::connect(&url, &token).await?;
+    let store = TursoStore::open_cached(&db, &config.bank_cache_file).await?;
+    tracing::info!(
+        bank_version = %store.version(),
+        subjects = store.subject_count(),
+        questions = store.question_count(),
+        "bank loaded",
+    );
+    let bank: Arc<dyn Store> = Arc::new(store);
     let keys = open_backend(config).await?;
     let keys_desc = keys.describe();
     let key_count = keys.count().await.unwrap_or(0);
 
     tracing::info!(
         bind = %config.bind,
-        data = %config.data_dir().display(),
         key_backend = %keys_desc,
         keys = key_count,
         subjects = bank.subject_count(),
@@ -253,15 +239,55 @@ async fn serve(config: &Config) -> Result<(), ApiError> {
     );
 
     let reports_path = config.reports_file.clone();
+    let (bank_tx, bank_rx) = tokio::sync::watch::channel(bank);
     let state = AppState {
         keys: Arc::new(keys),
-        bank,
+        bank: bank_rx,
         limiter: Arc::new(Mutex::new(RateLimiter::new())),
         reports: Arc::new(tokio::sync::Mutex::new(
             ReportStore::open(&reports_path)
                 .map_err(|e| ApiError::config(format!("reports store: {e}")))?,
         )),
     };
+
+    // Content refresh: when Turso moves (new questions, re-verification),
+    // reload and swap the whole bank — no rebuild, no restart. A failed
+    // reload keeps serving the old bank and retries next interval; a bad
+    // bank never swaps in (open_cached fails closed the same way boot does).
+    {
+        let refresh_secs = config.bank_refresh_secs;
+        let cache_file = config.bank_cache_file.clone();
+        tokio::spawn(async move {
+            let mut tick = tokio::time::interval(std::time::Duration::from_secs(refresh_secs));
+            tick.tick().await; // first tick fires immediately; skip it
+            loop {
+                tick.tick().await;
+                let current = bank_tx.borrow().version().to_owned();
+                match TursoStore::current_version(&db).await {
+                    Ok(v) if v == current => {}
+                    Ok(v) => {
+                        tracing::info!(old = %current, new = %v, "bank changed, reloading");
+                        match TursoStore::open_cached(&db, &cache_file).await {
+                            Ok(fresh) => {
+                                tracing::info!(
+                                    bank_version = %fresh.version(),
+                                    questions = fresh.question_count(),
+                                    "bank refreshed",
+                                );
+                                bank_tx.send_replace(Arc::new(fresh) as Arc<dyn Store>);
+                            }
+                            Err(e) => {
+                                tracing::warn!("bank refresh failed, keeping old bank: {e}");
+                            }
+                        }
+                    }
+                    Err(e) => {
+                        tracing::warn!("bank version check failed, keeping old bank: {e}");
+                    }
+                }
+            }
+        });
+    }
 
     // R3 follow-through: evict rate-limit buckets for keys that are no longer
     // live, so a long-running process does not grow one entry per key ever

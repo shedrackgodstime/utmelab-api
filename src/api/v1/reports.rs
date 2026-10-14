@@ -68,7 +68,8 @@ pub async fn report(
 ) -> Result<axum::response::Response<axum::body::Body>, ApiError> {
     // The question must exist — but a missing id is a 404 like any other, not a
     // special case. Question ids are public content.
-    if state.bank.question(&id).is_none() {
+    let bank = state.bank.borrow().clone();
+    if bank.question(&id).is_none() {
         return Err(ApiError::not_found(
             "question_not_found",
             format!("No question with id '{id}'."),

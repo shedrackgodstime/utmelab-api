@@ -38,9 +38,12 @@ pub struct Config {
     pub turso_token: Option<String>,
     /// Seconds a resolved key stays cached before re-read. Default 30.
     pub key_cache_ttl_secs: u64,
-    /// Bank source: `json` (default, current behavior) or `turso` (single
-    /// source of truth; JSON is dev-only). `UTMELAB_BANK_STORE`.
-    pub bank_store: String,
+    /// On-disk bank snapshot for fast boots (`var/`-side, gitignored).
+    /// `UTMELAB_BANK_CACHE_FILE`, default `var/bank_cache.json`.
+    pub bank_cache_file: PathBuf,
+    /// Seconds between content-change checks for hot reload. Default 300.
+    /// `UTMELAB_BANK_REFRESH_SECS`.
+    pub bank_refresh_secs: u64,
 }
 
 impl Config {
@@ -73,7 +76,13 @@ impl Config {
             .ok()
             .and_then(|v| v.parse().ok())
             .unwrap_or(30);
-        let bank_store = env::var("UTMELAB_BANK_STORE").unwrap_or_else(|_| "json".into());
+        let bank_cache_file = env::var("UTMELAB_BANK_CACHE_FILE")
+            .map(PathBuf::from)
+            .unwrap_or_else(|_| PathBuf::from("var/bank_cache.json"));
+        let bank_refresh_secs = env::var("UTMELAB_BANK_REFRESH_SECS")
+            .ok()
+            .and_then(|v| v.parse().ok())
+            .unwrap_or(300);
 
         Ok(Self {
             bind,
@@ -84,7 +93,8 @@ impl Config {
             turso_url,
             turso_token,
             key_cache_ttl_secs,
-            bank_store,
+            bank_cache_file,
+            bank_refresh_secs,
         })
     }
 }

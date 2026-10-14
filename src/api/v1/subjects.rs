@@ -41,9 +41,8 @@ pub async fn subject(
     State(state): State<AppState>,
     Path((exam, slug)): Path<(String, String)>,
 ) -> Result<Json<SubjectEnvelope>, ApiError> {
-    state
-        .bank
-        .subject(&exam, &slug)
+    let bank = state.bank.borrow().clone();
+    bank.subject(&exam, &slug)
         .map(|subject| {
             Json(SubjectEnvelope {
                 subject: subject.clone(),
@@ -82,9 +81,8 @@ pub async fn syllabus(
     Path((exam, slug)): Path<(String, String)>,
     Query(f): Query<SyllabusQuery>,
 ) -> Result<Json<Syllabus>, ApiError> {
-    state
-        .bank
-        .syllabus(&exam, &slug, f.country.as_deref())
+    let bank = state.bank.borrow().clone();
+    bank.syllabus(&exam, &slug, f.country.as_deref())
         .map(Json)
         .ok_or_else(|| not_found(&exam, &slug))
 }
@@ -126,9 +124,8 @@ pub async fn coverage(
     Path((exam, slug)): Path<(String, String)>,
     Query(f): Query<SyllabusQuery>,
 ) -> Result<Json<Coverage>, ApiError> {
-    state
-        .bank
-        .syllabus(&exam, &slug, f.country.as_deref())
+    let bank = state.bank.borrow().clone();
+    bank.syllabus(&exam, &slug, f.country.as_deref())
         .map(|s| {
             Json(Coverage {
                 exam: s.exam,

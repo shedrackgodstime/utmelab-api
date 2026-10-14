@@ -72,11 +72,127 @@ where
     serde_json::from_str(&s).map_err(|e| internal(ctx, e))
 }
 
+/// One full fetch of every table, unvalidated. [`TursoStore::open`] and
+/// [`TursoStore::open_cached`] both build from this; the cache only decides
+/// whether the fetch happens, never what validation runs.
+struct Fetched {
+    exams: Vec<Exam>,
+    countries: Vec<Country>,
+    subjects: Vec<Subject>,
+    topics: Vec<Topic>,
+    subtopics: Vec<Subtopic>,
+    questions: Vec<Question>,
+    requirements: Vec<Requirement>,
+    scope: Vec<(String, Vec<String>)>,
+    verifications: Vec<crate::bank::model::Verification>,
+    novels: Vec<NovelDoc>,
+    passages: Vec<Passage>,
+}
+
+impl Fetched {
+    fn snapshot(&self, version: String) -> super::cache::Snapshot {
+        super::cache::Snapshot {
+            version,
+            exams: self.exams.clone(),
+            countries: self.countries.clone(),
+            subjects: self.subjects.clone(),
+            topics: self.topics.clone(),
+            subtopics: self.subtopics.clone(),
+            questions: self.questions.clone(),
+            requirements: self.requirements.clone(),
+            scope: self.scope.clone(),
+            verifications: self.verifications.clone(),
+            novels: self.novels.clone(),
+            passages: self.passages.clone(),
+        }
+    }
+}
+
 impl TursoStore {
-    /// Load every table, validate through the shared pipeline, index.
-    /// Fail-closed: any validation problem aborts startup, same as files.
+    /// Full fetch from Turso, no cache. Tests and one-off tools use this;
+    /// `serve` uses [`TursoStore::open_cached`].
     pub async fn open(db: Db) -> Result<Self, ApiError> {
-        let exams = all(&db, "SELECT code,name,countries,status,has_full_paper,subjects_required,duration_minutes,rules FROM exams", "exams", |r| {
+        let fetched = Self::fetch(&db).await?;
+        let version = Self::current_version(&db).await?;
+        Self::build(fetched, version)
+    }
+
+    /// Boot path: cheap version check first, disk cache on hit, full fetch
+    /// and cache rewrite on miss.
+    ///
+    /// A bad bank refuses boot identically on either path — validation
+    /// always runs through `from_parts`.
+    pub async fn open_cached(db: &Db, path: &std::path::Path) -> Result<Self, ApiError> {
+        let version = Self::current_version(db).await?;
+        if let Some(parts) = super::cache::load(path, &version) {
+            tracing::info!("bank loaded from disk cache");
+            return Self::build_parts(parts);
+        }
+        let fetched = Self::fetch(db).await?;
+        super::cache::save(path, &fetched.snapshot(version.clone()));
+        Self::build(fetched, version)
+    }
+
+    /// Cheap count-hash version for change detection (boot check + refresh
+    /// loop). Not served; [`Store::version`] comes from the built store.
+    /// Retries internally: a transient wire drop must not fail boot.
+    pub async fn current_version(db: &Db) -> Result<String, ApiError> {
+        let mut attempt = 0u32;
+        loop {
+            attempt += 1;
+            match Self::compute_version(db).await {
+                Ok(v) => return Ok(v),
+                Err(e) => {
+                    if attempt >= 6 {
+                        return Err(e);
+                    }
+                    tracing::warn!("bank version check failed, retrying: {e}");
+                    std::thread::sleep(std::time::Duration::from_secs(1 << attempt.min(4)));
+                }
+            }
+        }
+    }
+
+    fn build(fetched: Fetched, version: String) -> Result<Self, ApiError> {
+        let Fetched {
+            exams,
+            countries,
+            subjects,
+            topics,
+            subtopics,
+            questions,
+            requirements,
+            scope,
+            verifications,
+            novels,
+            passages,
+        } = fetched;
+        Self::build_parts(StoreParts {
+            exams,
+            countries,
+            subjects,
+            topics,
+            subtopics,
+            questions,
+            requirements,
+            scope,
+            verifications,
+            novels,
+            passages,
+            withheld_questions: Vec::new(),
+            withheld_notes: 0,
+            version,
+        })
+    }
+
+    fn build_parts(parts: StoreParts) -> Result<Self, ApiError> {
+        let inner = JsonStore::from_parts(parts)
+            .map_err(|e| ApiError::Internal(format!("turso store validate: {e:?}")))?;
+        Ok(Self { inner })
+    }
+
+    async fn fetch(db: &Db) -> Result<Fetched, ApiError> {
+        let exams = all(db, "SELECT code,name,countries,status,has_full_paper,subjects_required,duration_minutes,rules FROM exams", "exams", |r| {
             let status: String = get(r, 3, "exam.status")?;
             Ok(Exam {
                 code: get(r, 0, "exam.code")?,
@@ -96,7 +212,7 @@ impl TursoStore {
         })
         .await?;
 
-        let countries = all(&db, "SELECT code,name FROM countries", "countries", |r| {
+        let countries = all(db, "SELECT code,name FROM countries", "countries", |r| {
             Ok(Country {
                 code: get(r, 0, "country.code")?,
                 name: get(r, 1, "country.name")?,
@@ -105,7 +221,7 @@ impl TursoStore {
         .await?;
 
         let subjects = all(
-            &db,
+            db,
             "SELECT slug,exam,name,is_compulsory,objective_paper_questions FROM subjects",
             "subjects",
             |r| {
@@ -122,7 +238,7 @@ impl TursoStore {
         .await?;
 
         let topics = all(
-            &db,
+            db,
             "SELECT slug,subject,exam,name,\"order\",weight,objectives FROM topics",
             "topics",
             |r| {
@@ -140,7 +256,7 @@ impl TursoStore {
         .await?;
 
         let subtopics = all(
-            &db,
+            db,
             "SELECT slug,topic,name,\"order\",objectives FROM subtopics",
             "subtopics",
             |r| {
@@ -156,7 +272,7 @@ impl TursoStore {
         .await?;
 
         let questions = all(
-            &db,
+            db,
             "SELECT id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty FROM questions ORDER BY id",
             "questions",
             |r| {
@@ -203,7 +319,7 @@ impl TursoStore {
         .await?;
 
         let requirements = all(
-            &db,
+            db,
             "SELECT exam,country,\"group\",min_select,subjects FROM exam_requirements",
             "requirements",
             |r| {
@@ -222,7 +338,7 @@ impl TursoStore {
         .await?;
 
         let scope_pairs = all(
-            &db,
+            db,
             "SELECT topic,country FROM topic_countries ORDER BY topic,country",
             "scope",
             |r| {
@@ -240,7 +356,7 @@ impl TursoStore {
         let scope: Vec<(String, Vec<String>)> = scope_map.into_iter().collect();
 
         let verifications = all(
-            &db,
+            db,
             "SELECT id,question_id,kind,verdict,scope,verifier,detail,content_hash,created_at FROM verifications",
             "verifications",
             |r| {
@@ -264,9 +380,9 @@ impl TursoStore {
         )
         .await?;
 
-        let novels = Self::load_novels(&db).await?;
+        let novels = Self::load_novels(db).await?;
         let passages = all(
-            &db,
+            db,
             "SELECT id,exam,subject,year,kind,title,author,text,inline FROM passages",
             "passages",
             |r| {
@@ -292,9 +408,7 @@ impl TursoStore {
         )
         .await?;
 
-        let version = Self::compute_version(&db).await?;
-
-        let inner = JsonStore::from_parts(StoreParts {
+        Ok(Fetched {
             exams,
             countries,
             subjects,
@@ -306,12 +420,7 @@ impl TursoStore {
             verifications,
             novels,
             passages,
-            withheld_questions: Vec::new(),
-            withheld_notes: 0,
-            version,
         })
-        .map_err(|e| ApiError::Internal(format!("turso store validate: {e:?}")))?;
-        Ok(Self { inner })
     }
 
     async fn load_novels(db: &Db) -> Result<Vec<crate::bank::model::NovelDoc>, ApiError> {

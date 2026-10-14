@@ -58,10 +58,13 @@ use serde::Serialize;
 use std::sync::{Arc, Mutex};
 
 /// Everything a handler may read. The bank is behind `dyn Store` so swapping
-/// the backing store never reaches the routes.
+/// the backing store never reaches the routes. It rides a `watch` channel:
+/// handlers snapshot with `bank.borrow().clone()` (an `Arc` bump, no locks,
+/// no guards across awaits) and the refresh task publishes a new bank on
+/// content change — hot reload, no restart, no rebuild.
 #[derive(Clone)]
 pub struct AppState {
-    pub bank: Arc<dyn Store>,
+    pub bank: tokio::sync::watch::Receiver<Arc<dyn Store>>,
     /// File or Turso, chosen at boot (D53). Async because Turso is over the
     /// wire; the file branch is one stat + a lock in the common case (R1:
     /// CLI-created/revoked keys land without a restart).
@@ -145,14 +148,15 @@ pub fn router(state: AppState) -> Router {
 }
 
 async fn health(State(state): State<AppState>) -> Json<Health> {
+    let bank = state.bank.borrow().clone();
     Json(Health {
         status: "ok",
         service: "utmelab-api",
         version: env!("CARGO_PKG_VERSION"),
-        bank_version: state.bank.version().to_owned(),
-        subjects: state.bank.subject_count(),
-        questions: state.bank.question_count(),
-        withheld: state.bank.withheld_count(),
+        bank_version: bank.version().to_owned(),
+        subjects: bank.subject_count(),
+        questions: bank.question_count(),
+        withheld: bank.withheld_count(),
     })
 }
 

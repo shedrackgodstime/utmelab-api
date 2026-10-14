@@ -39,9 +39,8 @@ pub async fn passage(
     State(state): State<AppState>,
     Path(id): Path<String>,
 ) -> Result<Json<PassageEnvelope>, ApiError> {
-    state
-        .bank
-        .passage(&id)
+    let bank = state.bank.borrow().clone();
+    bank.passage(&id)
         .map(|p| Json(PassageEnvelope { passage: p.clone() }))
         .ok_or_else(|| {
             ApiError::not_found("passage_not_found", format!("No passage with id '{id}'."))

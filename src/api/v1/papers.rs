@@ -63,7 +63,8 @@ pub async fn readiness(
     Path(exam): Path<String>,
     Query(f): Query<PapersQuery>,
 ) -> Result<Json<PaperReadiness>, ApiError> {
-    let scheme = scheme::scheme_for(state.bank.as_ref(), &exam, f.country.as_deref())
+    let bank = state.bank.borrow().clone();
+    let scheme = scheme::scheme_for(bank.as_ref(), &exam, f.country.as_deref())
         .ok_or_else(|| ApiError::not_found("exam_not_found", &exam))?;
     let complete = scheme.is_complete();
     Ok(Json(PaperReadiness {
