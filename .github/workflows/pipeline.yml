@@ -1,0 +1,109 @@
+name: UTME Lab Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "Pipeline action to execute"
+        required: true
+        default: "process"
+        type: choice
+        options:
+          - "harvest"
+          - "process"
+          - "status"
+      subject:
+        description: "Subject slug (e.g. physics, mathematics, chemistry)"
+        required: true
+        default: "physics"
+        type: string
+      exam:
+        description: "Exam code"
+        required: true
+        default: "JAMB"
+        type: choice
+        options:
+          - "JAMB"
+          - "WAEC"
+          - "NECO"
+      source:
+        description: "Harvester source (for harvest action)"
+        required: false
+        default: "jamb"
+        type: string
+      year:
+        description: "Cohort year"
+        required: false
+        default: "2025"
+        type: string
+      limit:
+        description: "Batch limit"
+        required: false
+        default: "50"
+        type: string
+      concurrency:
+        description: "AI Worker concurrency"
+        required: false
+        default: "4"
+        type: string
+      auto_promote:
+        description: "Auto-promote high-confidence verified rows to production"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  pipeline-job:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install OpenCode CLI
+        if: ${{ github.event.inputs.action == 'process' }}
+        run: |
+          npm install -g opencode-ai@1.19.0 || (curl -fsSL https://opencode.ai/install.sh | bash && echo "$HOME/.opencode/bin" >> $GITHUB_PATH)
+
+      - name: Install Pipeline Package
+        run: |
+          python -m pip install --upgrade pip uv
+          uv pip install -e "utmelab-pipeline/[dev]" --system
+
+      - name: Execute Pipeline Action
+        env:
+          TURSO_PIPELINE_DB_URL: ${{ secrets.TURSO_PIPELINE_DB_URL }}
+          TURSO_PIPELINE_DB_TOKEN: ${{ secrets.TURSO_PIPELINE_DB_TOKEN }}
+          TURSO_PROD_DB_URL: ${{ secrets.TURSO_PROD_DB_URL }}
+          TURSO_PROD_DB_TOKEN: ${{ secrets.TURSO_PROD_DB_TOKEN }}
+        run: |
+          ACTION="${{ github.event.inputs.action }}"
+          
+          if [ "$ACTION" = "harvest" ]; then
+            pipeline harvest \
+              --source "${{ github.event.inputs.source }}" \
+              --subject "${{ github.event.inputs.subject }}" \
+              --year "${{ github.event.inputs.year }}" \
+              --limit "${{ github.event.inputs.limit }}"
+          elif [ "$ACTION" = "process" ]; then
+            PROMOTE_FLAG=""
+            if [ "${{ github.event.inputs.auto_promote }}" = "true" ]; then
+              PROMOTE_FLAG="--auto-promote"
+            fi
+            pipeline process \
+              --subject "${{ github.event.inputs.subject }}" \
+              --exam "${{ github.event.inputs.exam }}" \
+              --limit "${{ github.event.inputs.limit }}" \
+              --concurrency "${{ github.event.inputs.concurrency }}" \
+              $PROMOTE_FLAG
+          elif [ "$ACTION" = "status" ]; then
+            pipeline status
+          fi
