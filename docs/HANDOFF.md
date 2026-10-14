@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-1,631 verified (73%, derived from data/verifications.json, D62) · 1,636 explained
+1,707 verified (76%, derived from data/verifications.json, D62) · 1,712 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -304,6 +304,12 @@ disagree. Two lists is how subjects drift.
     75873 (à/pour both grammatical), 75874 (no context fits all), 75216
     (a/d both mu'allimun), 75333 (tullaab AND talaba both valid). Loader
     gate caught topic-slug-as-subtopic (comprehension) pre-apply.
+27. **Hausa rewrite done 2026-10-14** — 76 authored + tags, all keys stand
+    (zube confirmed written prose by the syllabus topic itself); hausa 0 →
+    76 of 80. No fixes — careful driving. **Parked**: 75956 (recorded ci
+    ungrammatical; na/ke both fit), 76187 (options a/b/d, option_count),
+    76195 (no Aliyu text served), 76208 (no Amina text served). SU-caps
+    typo noted, answerability intact.
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),
