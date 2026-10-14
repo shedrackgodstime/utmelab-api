@@ -82,6 +82,7 @@ class BatchProcessor:
                         syllabus=syllabus,
                         recorded_explanation=explanation_raw,
                         has_image=bool(local_image),
+                        passage_text=q_row.get("passage_raw"),
                     )
 
                     # Execute OpenCode model

@@ -97,6 +97,8 @@ def harvest_cmd(source: str, subject: str, year: int, limit: int, delay: float):
                 reported_answer=q.reported_answer,
                 exam=q.exam,
                 media_url=q.media_url,
+                passage_text=q.passage_text,
+                passage_id=q.passage_id,
             )
 
             # Check deduplication
@@ -124,6 +126,8 @@ def harvest_cmd(source: str, subject: str, year: int, limit: int, delay: float):
                 gate0_rejection_reason=gate_res.rejection_reason,
                 explanation_raw=q.reported_explanation,
                 media_url=q.media_url,
+                passage_raw=q.passage_text,
+                passage_id=q.passage_id,
             )
 
             if gate_res.is_valid:

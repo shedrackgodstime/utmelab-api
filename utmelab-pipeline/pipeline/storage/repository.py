@@ -79,15 +79,17 @@ class PipelineRepository:
         gate0_rejection_reason: Optional[str] = None,
         explanation_raw: Optional[str] = None,
         media_url: Optional[str] = None,
+        passage_raw: Optional[str] = None,
+        passage_id: Optional[str] = None,
     ) -> None:
         now = self.now_iso()
         sql = """
         INSERT INTO harvest_staging (
             id, run_id, source_name, source_url, source_item_id, exam, subject, year,
-            stem_raw, options_raw, answer_raw, explanation_raw, media_url, fingerprint,
-            gate0_status, gate0_rejection_reason, ai_status, pipeline_status,
+            stem_raw, options_raw, answer_raw, explanation_raw, media_url, passage_raw, passage_id,
+            fingerprint, gate0_status, gate0_rejection_reason, ai_status, pipeline_status,
             created_at, updated_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'unprocessed', ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'unprocessed', ?, ?, ?)
         """
         pipeline_status = "validated" if gate0_status == "valid" else "gate0_rejected"
         await self.db.execute(
@@ -106,6 +108,8 @@ class PipelineRepository:
                 answer_raw,
                 explanation_raw,
                 media_url,
+                passage_raw,
+                passage_id,
                 fingerprint,
                 gate0_status,
                 gate0_rejection_reason,

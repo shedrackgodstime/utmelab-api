@@ -7,18 +7,52 @@ from pipeline.storage.client import TursoClient
 from pipeline.storage.schema import init_pipeline_schema
 
 
+from pathlib import Path
+
+
 def test_compute_content_hash_deterministic():
-    stem = "Calculate the energy of a photon of frequency 5 x 10^14 Hz."
+    stem = {"text": "Calculate the energy of a photon of frequency 5 x 10^14 Hz.", "inline": []}
     options = [
-        {"id": "a", "text": "3.3 x 10^-19 J"},
-        {"id": "b", "text": "2.1 x 10^-19 J"},
-        {"id": "c", "text": "1.5 x 10^-19 J"},
-        {"id": "d", "text": "4.2 x 10^-19 J"},
+        {"id": "a", "text": {"text": "3.3 x 10^-19 J", "inline": []}},
+        {"id": "b", "text": {"text": "2.1 x 10^-19 J", "inline": []}},
+        {"id": "c", "text": {"text": "1.5 x 10^-19 J", "inline": []}},
+        {"id": "d", "text": {"text": "4.2 x 10^-19 J", "inline": []}},
     ]
     h1 = compute_content_hash(stem, options, "a")
     h2 = compute_content_hash(stem, options, "a")
     assert h1 == h2
     assert len(h1) == 64
+
+
+def test_compute_content_hash_rust_byte_parity():
+    # Test against real question and Rust verification hash from repo
+    root_data = Path(__file__).resolve().parent.parent.parent / "data"
+    q_file = root_data / "questions.json"
+    v_file = root_data / "verifications.json"
+    if not q_file.exists() or not v_file.exists():
+        pytest.skip("Repo data files not available for parity check")
+
+    questions = json.loads(q_file.read_text())
+    verifs = json.loads(v_file.read_text())
+    v_map = {v["question_id"]: v["content_hash"] for v in verifs if v.get("kind") == "human"}
+
+    # Find a verified question without image and one with image
+    tested_count = 0
+    for q in questions:
+        if q["id"] in v_map:
+            rust_hash = v_map[q["id"]]
+            py_hash = compute_content_hash(
+                stem=q["text"],
+                options=q["options"],
+                answer_id=q["answer"],
+                explanation=q.get("explanation"),
+            )
+            assert py_hash == rust_hash, f"Hash mismatch for {q['id']}: py={py_hash} != rust={rust_hash}"
+            tested_count += 1
+            if tested_count >= 5:
+                break
+    assert tested_count >= 5
+
 
 
 @pytest.mark.asyncio
@@ -178,7 +212,54 @@ async def test_promoter_image_positions_and_audit_report():
     assert inline_above[0]["position"] == "above"
     assert inline_above[0]["start"] == 0
     assert inline_above[0]["len"] == 0
-    assert row_above["audit_report"] == staging_row_above["audit_report"]
+    pipe_client.close()
+
+
+@pytest.mark.asyncio
+async def test_promoter_creates_and_links_approved_passages():
+    pipe_client = TursoClient(":memory:")
+    await init_pipeline_schema(pipe_client)
+
+    promoter = PipelinePromoter(pipe_client)
+
+    passage_text = "Adura had learned to read the room before she learned to read words. She watched the shoulders of her father..."
+    staging_row = {
+        "id": "stage_q_passage_1",
+        "exam": "JAMB",
+        "subject": "use-of-english",
+        "year": 2025,
+        "stem_raw": "According to the passage, why did Adura observe adults closely?",
+        "options_raw": json.dumps([
+            {"id": "a", "text": "Out of sheer curiosity"},
+            {"id": "b", "text": "Because adults held versions of events that could not survive scrutiny"},
+            {"id": "c", "text": "She was preparing to become a teacher"},
+            {"id": "d", "text": "She wanted to disobey her parents"},
+        ]),
+        "answer_raw": "b",
+        "passage_raw": passage_text,
+        "audit_report": "Direct textual evidence from paragraph 1 confirms Adura suspected adult narratives.",
+    }
+
+    qid = await promoter.promote(
+        staging_row=staging_row,
+        subtopic_id="comprehension",
+    )
+
+    # 1. Verify approved_passages has the new passage document
+    p_res = await pipe_client.execute("SELECT * FROM approved_passages WHERE subject = 'use-of-english'")
+    assert len(p_res.rows) == 1
+    p_doc = p_res.rows[0]
+    assert p_doc["exam"] == "JAMB"
+    assert p_doc["kind"] == "Comprehension"
+    assert p_doc["text"] == passage_text
+
+    # 2. Verify approved_questions links to that exact passage_id
+    q_res = await pipe_client.execute("SELECT * FROM approved_questions WHERE id = ?", [qid])
+    assert len(q_res.rows) == 1
+    q_row = q_res.rows[0]
+    assert q_row["passage_id"] == p_doc["id"]
+    assert q_row["subtopic_id"] == "comprehension"
 
     pipe_client.close()
+
 

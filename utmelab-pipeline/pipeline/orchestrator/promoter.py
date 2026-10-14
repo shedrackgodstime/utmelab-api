@@ -13,20 +13,66 @@ from typing import Any, Dict, List, Optional
 from pipeline.storage.client import TursoClient
 
 
-def compute_content_hash(stem_text: str, options: List[Dict[str, Any]], answer_id: str) -> str:
-    """Computes content_hash matching utmelab-api Rust store invariant.
-    
-    Formula: SHA-256 of:
-      stem_text + '|' + sorted(option_id + ':' + option_text) + '|' + answer_id
-    """
-    sorted_opts = sorted(
-        [
-            f"{opt['id']}:{opt['text'].get('text', '') if isinstance(opt['text'], dict) else str(opt['text'])}"
-            for opt in options
-        ]
-    )
-    payload = f"{stem_text}|{'|'.join(sorted_opts)}|{answer_id}"
-    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+def mark_key(m: Dict[str, Any]) -> str:
+    kind = m.get("kind", "")
+    if kind == "image":
+        pos = m.get("position", "above")
+        alt = m.get("alt") or ""
+        url = m.get("url", "")
+        kind_str = f"image:{url}:{pos}:{alt}"
+    else:
+        kind_str = kind
+    s = m.get("start", 0)
+    l = m.get("len", 0)
+    return f"{s},{l},{kind_str}"
+
+
+def compute_content_hash(
+    stem: Dict[str, Any],
+    options: List[Dict[str, Any]],
+    answer_id: str,
+    explanation: Optional[Dict[str, Any]] = None,
+) -> str:
+    """Computes content_hash with 100% byte-for-byte parity to Rust Question::content_fingerprint (D62 / R6)."""
+    stem_text = stem.get("text", "") if isinstance(stem, dict) else str(stem)
+    parts = [stem_text]
+    for o in options:
+        opt_text = o["text"].get("text", "") if isinstance(o["text"], dict) else str(o["text"])
+        parts.append(f"{o['id']}\u001e{opt_text}")
+    parts.append(answer_id)
+
+    marks = [mark_key(m) for m in (stem.get("inline", []) if isinstance(stem, dict) else [])]
+    for o in options:
+        if isinstance(o["text"], dict):
+            marks.extend([mark_key(m) for m in o["text"].get("inline", [])])
+    parts.append("|".join(marks))
+
+    if explanation:
+        kp = explanation.get("key_point", {})
+        kp_text = kp.get("text", "") if isinstance(kp, dict) else str(kp)
+        kp_inline = [mark_key(m) for m in kp.get("inline", [])] if isinstance(kp, dict) else []
+        parts.append(kp_text)
+        parts.append("|".join(kp_inline))
+
+        b = explanation.get("body", {})
+        b_text = b.get("text", "") if isinstance(b, dict) else str(b)
+        b_inline = [mark_key(m) for m in b.get("inline", [])] if isinstance(b, dict) else []
+        parts.append(b_text)
+        parts.append("|".join(b_inline))
+
+        trap = explanation.get("trap")
+        if trap:
+            t_text = trap.get("text", "") if isinstance(trap, dict) else str(trap)
+            t_inline = [mark_key(m) for m in trap.get("inline", [])] if isinstance(trap, dict) else []
+            parts.append(t_text)
+            parts.append("|".join(t_inline))
+        else:
+            parts.append("")
+    else:
+        parts.append("")
+
+    joined = "\u001f".join(parts)
+    return hashlib.sha256(joined.encode("utf-8")).hexdigest()
 
 
 def to_rich_text(text: str, inline_marks: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
@@ -112,16 +158,43 @@ class PipelinePromoter:
         marks = 2.5 if exam.upper() == "JAMB" else 2.0
         difficulty = 2
 
-        content_hash = compute_content_hash(stem_text, formatted_options, answer)
         now_iso = datetime.now(timezone.utc).isoformat()
         report = audit_report or staging_row.get("audit_report")
+
+        # Handle passage stimulus creation & linking (R7 parity)
+        passage_id = staging_row.get("passage_id")
+        passage_raw = staging_row.get("passage_raw")
+        if passage_raw and not passage_id:
+            p_digest = hashlib.sha256(passage_raw.encode("utf-8")).hexdigest()[:8]
+            kind = "Data" if "information below" in passage_raw.lower() else "Comprehension"
+            passage_id = f"psg_{exam.lower()}_{year}_{subject.replace('-', '_')}_{kind.lower()}_{p_digest}"
+            p_sql = """
+            INSERT OR REPLACE INTO approved_passages (
+                id, exam, subject, year, kind, title, author, text, inline, approved_at
+            ) VALUES (?, ?, ?, ?, ?, ?, NULL, ?, '[]', ?)
+            """
+            await self.pipeline_db.execute(
+                p_sql,
+                [
+                    passage_id,
+                    exam,
+                    subject,
+                    year,
+                    kind,
+                    f"Recovered stimulus {p_digest}",
+                    passage_raw,
+                    now_iso,
+                ],
+            )
+
+        content_hash = compute_content_hash(stem_rich, formatted_options, answer, explanation_obj)
 
         # 1. Insert into Pipeline DB approved_questions table
         q_sql = """
         INSERT OR REPLACE INTO approved_questions (
             id, staging_id, exam, subject, year, source, text, inline, options, answer,
             subtopic_id, section, passage_id, explanation, marks, difficulty, content_hash, audit_report, approved_at
-        ) VALUES (?, ?, ?, ?, ?, 'claimed_paper', ?, ?, ?, ?, ?, NULL, NULL, ?, ?, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, 'claimed_paper', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """
         await self.pipeline_db.execute(
             q_sql,
@@ -136,6 +209,8 @@ class PipelinePromoter:
                 json.dumps(formatted_options),
                 answer,
                 subtopic_id,
+                staging_row.get("section"),
+                passage_id,
                 json.dumps(explanation_obj) if explanation_obj else None,
                 marks,
                 difficulty,

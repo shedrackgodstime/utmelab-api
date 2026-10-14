@@ -25,6 +25,51 @@ IMAGE_SRC_RE = re.compile(r'<img[^>]+src="([^"]+)"')
 AD_FILTER_RE = re.compile(r"/storage/serve/|no_image_placeholder|/members/cache/|/ads?/|logo", re.I)
 OPTION_ROW_START = 'class="flex gap-6 items-center rounded-lg'
 
+PASSAGE_BANNER = re.compile(
+    r"(?i)\b(read the passage|passage below|the passage below|carefully read|"
+    r"read the following|comprehension passage|use the passage below|instructions?:?\s*read)\b"
+)
+ATTRIBUTION = re.compile(r"(?i)^\[?\s*(adapted from|source\s*:|from\b|quoted from)")
+NAV_NOISE = re.compile(
+    r"(?i)^(shop|dash|english language|jamb \d{4}|waec \d{4}|home|login|register|"
+    r"download offline app|add to bookmark|ask a question|report an error|share|"
+    r"copy link|post your contribution|post contribution|go back|prev question|"
+    r"next question|explanation|correct option|get myschool|video explanation)\b"
+)
+
+
+def visible_lines(html_str: str) -> List[str]:
+    text = re.sub(r"(?s)<script.*?</script>|<style.*?</style>", " ", html_str)
+    text = re.sub(r"(?s)<[^>]+>", "\n", text)
+    lines = [re.sub(r"\s+", " ", line).strip() for line in html.unescape(text).split("\n")]
+    return [line for line in lines if line]
+
+
+def extract_passage_from_html(html_str: str) -> Optional[str]:
+    stem_at = html_str.find("<h1")
+    if stem_at < 0:
+        return None
+    lines = [line for line in visible_lines(html_str[:stem_at]) if not NAV_NOISE.match(line)]
+    tail = range(max(0, len(lines) - 12), len(lines))
+    citation = next((i for i in tail if ATTRIBUTION.match(lines[i])), None)
+    if citation is None:
+        banner = next((i for i in range(len(lines) - 1, -1, -1) if PASSAGE_BANNER.search(lines[i])), None)
+        if banner is not None:
+            body = " ".join(lines[banner + 1 :]).strip()
+            if len(body) >= 150:
+                return body
+        return None
+
+    end = next((i for i in range(citation + 1, len(lines)) if lines[i].strip().startswith("]")), citation)
+    start = next((i for i in range(citation, -1, -1) if PASSAGE_BANNER.search(lines[i])), None)
+    if start is None:
+        start = max(0, citation - 8)
+
+    body = " ".join(lines[start + 1 : citation]).strip()
+    credit = " ".join(lines[citation : end + 1]).strip().lstrip("[").rstrip("]").strip()
+    passage = f"{body} [{credit}]".strip() if body else f"[{credit}]"
+    return passage if len(passage) >= 150 else None
+
 
 class JambHarvester(BaseHarvester):
     """CBT archive harvester for JAMB UTME papers."""
@@ -157,6 +202,16 @@ class JambHarvester(BaseHarvester):
                     media_url = img_src
                     break
 
+        if media_url:
+            if media_url.startswith("//"):
+                media_url = f"https:{media_url}"
+            elif media_url.startswith("/"):
+                media_url = f"{BASE_URL}{media_url}"
+            elif media_url.startswith("http://"):
+                media_url = f"https://{media_url[7:]}"
+
+        passage_text = extract_passage_from_html(html_text)
+
         return RawQuestionPayload(
             source_name=self.source_name,
             source_url=detail_url,
@@ -168,4 +223,5 @@ class JambHarvester(BaseHarvester):
             options=options,
             reported_answer=correct_answer,
             media_url=media_url,
+            passage_text=passage_text,
         )

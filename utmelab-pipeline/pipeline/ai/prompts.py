@@ -12,8 +12,9 @@ def build_verification_prompt(
     syllabus: Dict[str, Any],
     recorded_explanation: Optional[str] = None,
     has_image: bool = False,
+    passage_text: Optional[str] = None,
 ) -> str:
-    """Builds the comprehensive verification prompt with syllabus context."""
+    """Builds the comprehensive verification prompt with syllabus context and passage stimulus."""
     options_text = "\n".join([f"  {opt['id']}) {opt['text']}" for opt in options])
 
     # Format syllabus subtopics
@@ -37,11 +38,17 @@ def build_verification_prompt(
         else ""
     )
 
+    passage_block = (
+        f"\n=== PASSAGE STIMULUS ===\n{passage_text}\n"
+        if passage_text
+        else ""
+    )
+
     prompt = f"""You are an expert academic examiner and curriculum specialist for Nigerian secondary education ({subject.upper()}).
 Your task is to independently verify this examination question, evaluate its answer key, select the exact syllabus subtopic, and review the explanation.
 
 {image_note}
-
+{passage_block}
 === QUESTION STEM ===
 {stem}
 

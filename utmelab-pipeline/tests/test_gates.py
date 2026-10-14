@@ -86,3 +86,25 @@ def test_gate0_rejects_missing_diagram_hint():
     res_ok = validate_gate0(stem, options, reported_answer="a", exam="JAMB", media_url="https://example.com/circuit.png")
     assert res_ok.is_valid is True
     assert res_ok.requires_media is True
+
+
+def test_gate0_rejects_missing_passage_stimulus():
+    stem = "According to the passage, what motivated the author's decision?"
+    options = [
+        {"id": "a", "text": "Ambition"},
+        {"id": "b", "text": "Fear"},
+        {"id": "c", "text": "Hope"},
+        {"id": "d", "text": "Duty"},
+    ]
+    # No passage provided and short stem -> rejected
+    res = validate_gate0(stem, options, reported_answer="a", exam="JAMB", passage_text=None)
+    assert res.is_valid is False
+    assert res.rejection_reason == "missing_referenced_passage_in_stem"
+    assert res.requires_passage is True
+
+    # With passage provided -> valid
+    passage = "A long historical passage describing the trials and motivations of early Nigerian pioneers..."
+    res_ok = validate_gate0(stem, options, reported_answer="a", exam="JAMB", passage_text=passage)
+    assert res_ok.is_valid is True
+    assert res_ok.requires_passage is True
+
