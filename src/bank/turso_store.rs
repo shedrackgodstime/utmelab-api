@@ -41,11 +41,22 @@ async fn all<T, F>(db: &Db, sql: &str, ctx: &str, mut f: F) -> Result<Vec<T>, Ap
 where
     F: FnMut(&turso_serverless::Row) -> Result<T, ApiError>,
 {
-    let mut q = db
-        .conn()
-        .query(sql, ())
-        .await
-        .map_err(|e| internal(ctx, e))?;
+    // Retried: the wire drops occasionally and every caller here is
+    // idempotent (read-only SELECT), so retrying is always safe.
+    let mut attempt = 0u32;
+    let mut q = loop {
+        attempt += 1;
+        match db.conn().query(sql, ()).await {
+            Ok(q) => break q,
+            Err(e) => {
+                if attempt >= 6 {
+                    return Err(internal(ctx, e));
+                }
+                tracing::warn!("turso fetch {ctx} failed, retrying: {e}");
+                std::thread::sleep(std::time::Duration::from_secs(1 << attempt.min(4)));
+            }
+        }
+    };
     let mut out = Vec::new();
     while let Some(r) = q.next().await.map_err(|e| internal(ctx, e))? {
         out.push(f(&r)?);
@@ -624,38 +635,104 @@ impl TursoStore {
     }
 
     async fn compute_version(db: &Db) -> Result<String, ApiError> {
-        // R7 draft: 16-hex SHA over per-table counts. The contract is string
-        // equality; the full row-hash version lands with the cutover.
+        // R7: 16-hex SHA over ordered row content across all 14 tables.
+        // Tables carrying `content_hash` (questions, verifications,
+        // novel_questions) hash id + stored hash — the same fingerprint the
+        // review trusts. All other tables hash their full row content, so
+        // any edit that changes what is served changes the version and the
+        // refresh loop picks it up. Column order is fixed per query;
+        // NULLs encode distinctly from empty strings.
         let mut hasher = Sha256::new();
-        for table in [
-            "verifications",
-            "questions",
-            "passages",
-            "novels",
-            "novel_questions",
-            "subjects",
-            "exams",
-            "topics",
-            "subtopics",
-            "countries",
-            "topic_countries",
-            "exam_requirements",
-            "blueprints",
-        ] {
-            let sql = format!("SELECT COUNT(*) FROM {table}");
+        // (table, columns, order-by): every served table, fixed order.
+        let tables = [
+            ("verifications", "id,content_hash", "id"),
+            ("questions", "id,content_hash", "id"),
+            (
+                "passages",
+                "id,exam,subject,year,kind,title,author,text,inline",
+                "id",
+            ),
+            (
+                "novels",
+                "id,title,author,year_published,exam,year_prescribed,category,featured,synopsis,setting_place,setting_period,cover_image",
+                "id",
+            ),
+            (
+                "novel_chapters",
+                "novel_id,number,title,summary,key_events",
+                "novel_id,number",
+            ),
+            (
+                "novel_characters",
+                "novel_id,name,role,character_type,description",
+                "novel_id,name",
+            ),
+            (
+                "novel_themes",
+                "novel_id,name,description,evidence",
+                "novel_id,name",
+            ),
+            ("novel_questions", "id,content_hash", "id"),
+            (
+                "subjects",
+                "slug,exam,name,is_compulsory,objective_paper_questions",
+                "slug,exam",
+            ),
+            (
+                "exams",
+                "code,name,countries,status,has_full_paper,subjects_required,duration_minutes,rules",
+                "code",
+            ),
+            (
+                "topics",
+                "slug,subject,exam,name,\"order\",weight,objectives",
+                "slug",
+            ),
+            ("subtopics", "slug,topic,name,\"order\",objectives", "slug"),
+            ("countries", "code,name", "code"),
+            ("topic_countries", "topic,country", "topic,country"),
+            (
+                "exam_requirements",
+                "exam,country,\"group\",min_select,subjects",
+                "exam,country,\"group\"",
+            ),
+            (
+                "blueprints",
+                "exam,subject,level,topic,section,members,paper_size,pct,pct_low,pct_high,expected,expected_low,expected_high,source,sample,method,confidence,status,note",
+                "exam,subject,level,topic,section,rowid",
+            ),
+        ];
+        for (table, cols, order) in tables {
+            hasher.update(table.as_bytes());
+            hasher.update(b"\x1f");
+            let sql = format!("SELECT {cols} FROM {table} ORDER BY {order}");
             let mut q = db
                 .conn()
                 .query(&sql, ())
                 .await
                 .map_err(|e| internal("version", e))?;
-            let n: i64 = q
-                .next()
-                .await
-                .map_err(|e| internal("version", e))?
-                .map(|r| r.get(0).unwrap_or(0))
-                .unwrap_or(0);
-            hasher.update(table.as_bytes());
-            hasher.update(n.to_le_bytes());
+            // Column count is known per query above; read every column as
+            // text-or-null through a typeless projection: integers and
+            // reals render canonically, NULLs mark distinctly.
+            let ncols = cols.split(',').count();
+            while let Some(r) = q.next().await.map_err(|e| internal("version", e))? {
+                for i in 0..ncols {
+                    if let Ok(v) = r.get::<String>(i) {
+                        hasher.update(b"\x01");
+                        hasher.update(v.as_bytes());
+                    } else if let Ok(v) = r.get::<i64>(i) {
+                        hasher.update(b"\x01");
+                        hasher.update(v.to_string().as_bytes());
+                    } else if let Ok(v) = r.get::<f64>(i) {
+                        hasher.update(b"\x01");
+                        hasher.update(format!("{v:?}").as_bytes());
+                    } else {
+                        hasher.update(b"\x00");
+                    }
+                    hasher.update(b"\x1f");
+                }
+                hasher.update(b"\x1e");
+            }
         }
         Ok(format!("{:x}", hasher.finalize())[..16].to_string())
     }

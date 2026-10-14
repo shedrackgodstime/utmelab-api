@@ -262,3 +262,18 @@ keep the old bank; validation failures never swap in. `AppState.bank` is
 a `watch::Receiver`; all route call sites snapshot at handler start.
 `tests/bank_cache.rs` (env-gated) proves miss-then-hit serve identical
 banks. `UTMELAB_BANK_STORE` switch removed with the JSON branch.
+
+## Version record (2026-10-14) — R7 row-hash landed
+
+`version()` is now a 16-hex SHA over ordered row content across all 14
+tables: id + stored `content_hash` where the table carries it (questions,
+verifications, novel_questions — the same fingerprint review trusts),
+full row content everywhere else, NULLs distinct from empty strings,
+fixed column order. Any edit that changes what is served changes the
+version, so the refresh loop can no longer miss a count-preserving edit
+(the count-hash draft could). Determinism proven by `bank_cache`
+(miss/hit identical); cross-source equality with the file fingerprint is
+still not claimed — consumers compare within a source. Retries hardened
+in the same pass: `all()` retries idempotent reads, `current_version`
+retries, boot retries `open_cached` (validation still fails closed, so
+retries can only boot a good bank).

@@ -216,7 +216,23 @@ async fn serve(config: &Config) -> Result<(), ApiError> {
         }
     };
     let db = Db::connect(&url, &token).await?;
-    let store = TursoStore::open_cached(&db, &config.bank_cache_file).await?;
+    // Boot retries the fetch: a transient wire drop must fail the deploy,
+    // never serve a partial bank — and open_cached itself fails closed on
+    // validation, so retries can only ever boot a good bank.
+    let mut attempt = 0u32;
+    let store = loop {
+        attempt += 1;
+        match TursoStore::open_cached(&db, &config.bank_cache_file).await {
+            Ok(store) => break store,
+            Err(e) => {
+                if attempt >= 5 {
+                    return Err(e);
+                }
+                tracing::warn!("bank boot fetch failed, retrying: {e}");
+                tokio::time::sleep(std::time::Duration::from_secs(1 << attempt.min(4))).await;
+            }
+        }
+    };
     tracing::info!(
         bank_version = %store.version(),
         subjects = store.subject_count(),
