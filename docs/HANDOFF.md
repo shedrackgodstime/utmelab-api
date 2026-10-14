@@ -57,7 +57,7 @@ note was written from a pre-merge view and is resolved.
 
 ```
 2,288 questions (2,287 servable + 1 withheld fixture) · 25/25 JAMB subjects clear 40 · all year 2025
-1,478 verified (66%, derived from data/verifications.json, D62) · 1,483 explained
+1,631 verified (73%, derived from data/verifications.json, D62) · 1,636 explained
 withheld: 6 (5 stub novels + the deliberate unassigned-exam fixture, D58)
 catalog: 566 topics, 2,092 subtopics + data/blueprints.json (D63, provisional)
 novel:   the featured set text has 54 verified questions (+125 honest unverified)
@@ -292,6 +292,18 @@ disagree. Two lists is how subjects drift.
     primary), 76234 (draught power IS a function; no true NOT), 76419
     (options a/b/d, option_count). Typos noted not fixed (mprovement,
     Dumping-off, Speedj): answerability intact, stems never rephrased.
+26. **French + Arabic double rewrite done 2026-10-14** — 147 authored (71
+    french + 76 arabic) + 6 key fixes + tags + verified; french 0 → 75 of
+    80, arabic 0 → 78 of 80. **Keys corrected** 75405 b → c (singular
+    adresse takes leur), 75415 d → a (or-di-na-teur is four), 75805 d → c
+    (monkeys are wild), 75863 d → b (bibliothèque lends; librairie sells),
+    75217 a → d (tadrusu stays bare trilateral), 75347 a → c (saree'
+    twins 'aajil; sreeh is no word) — D45 pattern, all in traps.
+    **Parked**: 75237 (misspelled key option + fully-correct d), 75225
+    (pronunciation stem, spelling options), 75420 (passage supports none),
+    75873 (à/pour both grammatical), 75874 (no context fits all), 75216
+    (a/d both mu'allimun), 75333 (tullaab AND talaba both valid). Loader
+    gate caught topic-slug-as-subtopic (comprehension) pre-apply.
 6. **Physics batch 4 done 2026-10-13** — 15 explanations authored (keys
    recomputed) + verified; physics 87 → 102 of 105. Two more figures read
    by eye: 74569 electroscope (more like charge → wider divergence),

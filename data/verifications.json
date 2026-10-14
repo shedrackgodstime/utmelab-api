@@ -21712,5 +21712,2147 @@
     "detail": null,
     "content_hash": "edd79dff464162a6dc588ca040c5571e09df66ae2bd05650548bdaf3559326f5",
     "created_at": "2026-10-13T23:59:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75170_1552",
+    "question_id": "q_claim_2025_arabic_75170",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "84ea5afc7a1b1f092b7d16a1d41d2bcbdfbfd2a8f13a75e3bb225265bd8a1e69",
+    "created_at": "2026-10-14T00:11:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75172_1553",
+    "question_id": "q_claim_2025_arabic_75172",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "d3ad654ff1a26f29c14182677fd5d8bc9867fc2d4d9323fe984433f4b26eb15a",
+    "created_at": "2026-10-14T00:11:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75174_1554",
+    "question_id": "q_claim_2025_arabic_75174",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "2608bb143c39d7507bcc32729ca183972ae35c84eb5a9a3a10c4d77280ea55c4",
+    "created_at": "2026-10-14T00:11:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75176_1555",
+    "question_id": "q_claim_2025_arabic_75176",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "58b97658be75ff2f46ab14bd806dd4a441f727b7551d9343874814c6944d4867",
+    "created_at": "2026-10-14T00:11:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75177_1556",
+    "question_id": "q_claim_2025_arabic_75177",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "9d6dbbf0ae6f55049cfcb7753af89e6320c8ad6116ad03aa95ceba4c35925f0d",
+    "created_at": "2026-10-14T00:11:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75178_1557",
+    "question_id": "q_claim_2025_arabic_75178",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "d03a6cbfe39425e266b205cdb4c3bdab75926fcbd3f3ef76fd2341278db9dfd5",
+    "created_at": "2026-10-14T00:11:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75179_1558",
+    "question_id": "q_claim_2025_arabic_75179",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "8058f901d5d2733a3e1caec8ff2edffd6f0a4ea4a1ea87df012c9a2474a6ba51",
+    "created_at": "2026-10-14T00:11:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75182_1559",
+    "question_id": "q_claim_2025_arabic_75182",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "5b9841b6f726395fbb9102735fad0db675e41183b3916ddf944cce1faaf4cb3d",
+    "created_at": "2026-10-14T00:11:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75184_1560",
+    "question_id": "q_claim_2025_arabic_75184",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "8a9b94b0358e27a7d0caa93f7239a9654c3a86b591ec63230594d0621d43f459",
+    "created_at": "2026-10-14T00:11:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75185_1561",
+    "question_id": "q_claim_2025_arabic_75185",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "f8f74017c34b3f0e6d625f8fc8b69e5795e6137492aa8cd64e26e42a5ad660c5",
+    "created_at": "2026-10-14T00:11:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75187_1562",
+    "question_id": "q_claim_2025_arabic_75187",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "266b3588b70b8a44d04cd26963ff7bb37e11fb0ee795eb8279414339ed2ade74",
+    "created_at": "2026-10-14T00:11:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75188_1563",
+    "question_id": "q_claim_2025_arabic_75188",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "be26521206623dc61012dce1604ab6b7147f545a39cd1957160ad68bea130919",
+    "created_at": "2026-10-14T00:11:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75190_1564",
+    "question_id": "q_claim_2025_arabic_75190",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "e9a8f7f6fa8814c9ae8e369ac3b8839fb89b684f8ddf8f9a8298631d0117a938",
+    "created_at": "2026-10-14T00:11:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75193_1565",
+    "question_id": "q_claim_2025_arabic_75193",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "520a02ab8b73f343fc61e9788585ddbfe7d6b0b7604470ca9194a1ddffeb4958",
+    "created_at": "2026-10-14T00:11:27Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75194_1566",
+    "question_id": "q_claim_2025_arabic_75194",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "4df2771568656840dec8ef080855251b1ab6949df679fa59e76acc0f1654af22",
+    "created_at": "2026-10-14T00:11:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75196_1567",
+    "question_id": "q_claim_2025_arabic_75196",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "79a89362ae2b59d67563f09c9bd094c79c86a340e215f161ae4f4fd1c3212685",
+    "created_at": "2026-10-14T00:11:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75197_1568",
+    "question_id": "q_claim_2025_arabic_75197",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "42b0294f69dc7b3e630117ed560904373ce1248bb3a36d0f2ccc16f997103992",
+    "created_at": "2026-10-14T00:11:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75198_1569",
+    "question_id": "q_claim_2025_arabic_75198",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "d9f9f11bfc17f77e0bb0a92a2ea62ab3290d9501875276041e7b30c21031c161",
+    "created_at": "2026-10-14T00:11:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75199_1570",
+    "question_id": "q_claim_2025_arabic_75199",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "8d740de9e3d401942db0b262afbacf611846e54f1753a08466386413f57e1552",
+    "created_at": "2026-10-14T00:11:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75200_1571",
+    "question_id": "q_claim_2025_arabic_75200",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "07870763a9261d3afd336de4c5d1153225c46a3f8f503fedc396dd0170ec5ce1",
+    "created_at": "2026-10-14T00:11:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75202_1572",
+    "question_id": "q_claim_2025_arabic_75202",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "d1af73aefe8dcb4458bfb9647a4875e804543ecdc558bbef7beef257a5ae117e",
+    "created_at": "2026-10-14T00:11:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75203_1573",
+    "question_id": "q_claim_2025_arabic_75203",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "bb0be10730be6f5de213b6c216d4d00bb040dc7ea3bad23d3985133a4dad163a",
+    "created_at": "2026-10-14T00:11:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75204_1574",
+    "question_id": "q_claim_2025_arabic_75204",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "a458bcf869f147b039159a065e5255f0ba4f05c9c196a39a4118b31f1f6a3e0f",
+    "created_at": "2026-10-14T00:11:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75205_1575",
+    "question_id": "q_claim_2025_arabic_75205",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "d7c923356cef9e04fb439b36a4eda1d124488a20aa6711025e603842c6515c5a",
+    "created_at": "2026-10-14T00:11:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75206_1576",
+    "question_id": "q_claim_2025_arabic_75206",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "b8f160ceaefb8228f6b8217307cc3ec8c4624ef26c7c8d4a68459be61a75f1db",
+    "created_at": "2026-10-14T00:11:31Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75207_1577",
+    "question_id": "q_claim_2025_arabic_75207",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "5af9ae9bbbeebc4d7f1366ff7261c573bb15eb1cab3b04f6c8be25daf1530cdf",
+    "created_at": "2026-10-14T00:11:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75208_1578",
+    "question_id": "q_claim_2025_arabic_75208",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "eda079698d74357f620d0767650934e603ec65ca24ffb89a5e072aea8145f841",
+    "created_at": "2026-10-14T00:11:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75209_1579",
+    "question_id": "q_claim_2025_arabic_75209",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "9c3d04304cab9b1b1466a2d22858c0433414302eef3ae71c2bcf3f9af7c44799",
+    "created_at": "2026-10-14T00:11:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75210_1580",
+    "question_id": "q_claim_2025_arabic_75210",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "a906ceb9914742dfda1d7a566ab4b82cc8e63fbdbb14340a0b37bbc4d9ebe6b1",
+    "created_at": "2026-10-14T00:11:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75211_1581",
+    "question_id": "q_claim_2025_arabic_75211",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "5343199f1536e7db2cf25981c8b859792c9af2178c50573e517978f6d393e480",
+    "created_at": "2026-10-14T00:11:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75212_1582",
+    "question_id": "q_claim_2025_arabic_75212",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "0cce2b4518b79d1ed463b9aeb5bd740c807897f85fb67be32c9381519a6cb459",
+    "created_at": "2026-10-14T00:11:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75213_1583",
+    "question_id": "q_claim_2025_arabic_75213",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "30c2e8715bac61b4c2b45f08efc5a05d560b067bff7e6424100d9725b5a73dfd",
+    "created_at": "2026-10-14T00:11:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75214_1584",
+    "question_id": "q_claim_2025_arabic_75214",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "ceacdb9e6d99314fb348260d23e9da50ae2116508cb4f792264d7980e89ea985",
+    "created_at": "2026-10-14T00:11:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75215_1585",
+    "question_id": "q_claim_2025_arabic_75215",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "12aa1df3bd01ceb8faf6b6852b38dcd828b21a2a38978898bcee7c9f52ddabef",
+    "created_at": "2026-10-14T00:11:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75217_1586",
+    "question_id": "q_claim_2025_arabic_75217",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "4eca6f076ad424ff4f97d1237f4f45ff4e85771d92078334100f1fe014926654",
+    "created_at": "2026-10-14T00:11:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75218_1587",
+    "question_id": "q_claim_2025_arabic_75218",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "64baf077e20c0c1f18ae386264d4910c1dcceafb10bd632576b276e44945b8c1",
+    "created_at": "2026-10-14T00:11:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75219_1588",
+    "question_id": "q_claim_2025_arabic_75219",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "b909b444f37e8a295568dc3d5c05ca8ab3a7ae92d2d26d728150005badb8e35a",
+    "created_at": "2026-10-14T00:11:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75220_1589",
+    "question_id": "q_claim_2025_arabic_75220",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "e3d3e15355a8be5d7c7e919809743d9d8e8722e4e7c19b39036980143a76d482",
+    "created_at": "2026-10-14T00:11:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75222_1590",
+    "question_id": "q_claim_2025_arabic_75222",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "cce48da585d4b6be98c6a2803ae8ce7ad4ba205101d14435283c640844b77b51",
+    "created_at": "2026-10-14T00:11:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75248_1591",
+    "question_id": "q_claim_2025_arabic_75248",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c48932f39928ce26df1b359f130859a52caa52ddc89c87f76f8fa35cbee86ad0",
+    "created_at": "2026-10-14T00:11:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75249_1592",
+    "question_id": "q_claim_2025_arabic_75249",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "6c6f0818d80363812d6b5cfb8afdd9b8182033f3067291d974be4e14e86d8d3a",
+    "created_at": "2026-10-14T00:11:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75253_1593",
+    "question_id": "q_claim_2025_arabic_75253",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "e93efe523a5aa032eca21e94c8dab918fad593cccbcc2903e5f4799a91941e5d",
+    "created_at": "2026-10-14T00:11:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75255_1594",
+    "question_id": "q_claim_2025_arabic_75255",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "8b48759f37be92a854f8acf34eab39a5984aa36452c3bccc6fc9205f9509f6b3",
+    "created_at": "2026-10-14T00:11:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75258_1595",
+    "question_id": "q_claim_2025_arabic_75258",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c7afd8ae13307ad103652757fa542f04607cb2d78f26c210e9f67b105b84ca55",
+    "created_at": "2026-10-14T00:11:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75259_1596",
+    "question_id": "q_claim_2025_arabic_75259",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "73fa2341cfd1a06f73965566a94b7a10099a26c68d3c521f92b3f21536a50de0",
+    "created_at": "2026-10-14T00:11:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75263_1597",
+    "question_id": "q_claim_2025_arabic_75263",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "38e64e1219c35d890cc512ed48155a8b8004f0a87596f2bb95c540c1eae1837e",
+    "created_at": "2026-10-14T00:11:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75264_1598",
+    "question_id": "q_claim_2025_arabic_75264",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "2951e0e0c47de38f4ed55338018a3e76af800fd6f5d0e54f46d13c9e5eda2b28",
+    "created_at": "2026-10-14T00:11:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75266_1599",
+    "question_id": "q_claim_2025_arabic_75266",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "02e26957f0d915d1e105f050c51610460f3eeaf29c123cb518c029dd589fd470",
+    "created_at": "2026-10-14T00:11:38Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75269_1600",
+    "question_id": "q_claim_2025_arabic_75269",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "9203c9d3987714ad5c09e0d12335fd86c20a177e95264ad3a0b5e91c11a0976a",
+    "created_at": "2026-10-14T00:11:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75271_1601",
+    "question_id": "q_claim_2025_arabic_75271",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "4f3a64a569bdf513b6ebec9095cfc84840edeb8276a3a9d937edc05d9d34f63d",
+    "created_at": "2026-10-14T00:11:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75273_1602",
+    "question_id": "q_claim_2025_arabic_75273",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "3a696f610cdd3a6c04eeb6525f0509183fe1cd5157b462f6decd0e904cb1456c",
+    "created_at": "2026-10-14T00:11:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75275_1603",
+    "question_id": "q_claim_2025_arabic_75275",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "6ee4be61a4e3aaa35f75d1940435dead46ee7486df408b42f7ae633b2a3d25e2",
+    "created_at": "2026-10-14T00:11:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75276_1604",
+    "question_id": "q_claim_2025_arabic_75276",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "a67e39e4527b9e1ad6c34712d559397a2aad8797cc662f825a60e860877ea749",
+    "created_at": "2026-10-14T00:11:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75279_1605",
+    "question_id": "q_claim_2025_arabic_75279",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "f1d5e87ff6a1b54300604eaeeee06f43174a4ca6c94215575c8db33f0d8fe440",
+    "created_at": "2026-10-14T00:11:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75280_1606",
+    "question_id": "q_claim_2025_arabic_75280",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "93c72601de8ba7905a58b95ce6167bd81a931874520096ecd286573adbd76755",
+    "created_at": "2026-10-14T00:11:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75283_1607",
+    "question_id": "q_claim_2025_arabic_75283",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "cef36db435c0b04ff7dc42332c1a5bc78a227f47ec9f86afdea6159f3165743e",
+    "created_at": "2026-10-14T00:11:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75284_1608",
+    "question_id": "q_claim_2025_arabic_75284",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "2cf94e8e6000aa2ac84893758d07204e628b3ae6bafc3a41686e7368b95aaebf",
+    "created_at": "2026-10-14T00:11:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75287_1609",
+    "question_id": "q_claim_2025_arabic_75287",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "1a5108288e01ef5dc08ba423dea8aed2214d4e48501539568b0530d29ee58864",
+    "created_at": "2026-10-14T00:11:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75291_1610",
+    "question_id": "q_claim_2025_arabic_75291",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c182ec2bb8f9e0d5825f60dfb9da3c087f8199ff6c158309a9778a02b52cf5cf",
+    "created_at": "2026-10-14T00:11:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75294_1611",
+    "question_id": "q_claim_2025_arabic_75294",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "fc921d653b8c682943590a06f87107f03899fe1b4069066320322c620c4a77d6",
+    "created_at": "2026-10-14T00:11:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75296_1612",
+    "question_id": "q_claim_2025_arabic_75296",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c9c9d1f1d0802a65f00a0bc524fc426b14b2acbe05028835c7c37a492680cced",
+    "created_at": "2026-10-14T00:11:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75298_1613",
+    "question_id": "q_claim_2025_arabic_75298",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "5d5c1243f65c60920754964d72148dd4cf9594645f24ce242a113b96b600e63a",
+    "created_at": "2026-10-14T00:11:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75302_1614",
+    "question_id": "q_claim_2025_arabic_75302",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "457d83984fa49e4f153922bbb2b1f2fa1844f18eb770aedb31dd2fed3fd8a91b",
+    "created_at": "2026-10-14T00:11:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75305_1615",
+    "question_id": "q_claim_2025_arabic_75305",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "4afd19bb14d284dde670858b49898ee98d45316087abf921b806093c23a5cbb4",
+    "created_at": "2026-10-14T00:11:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75307_1616",
+    "question_id": "q_claim_2025_arabic_75307",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "81ed08d673b40076f7f07d2edc38eb7e4bbecc1f2523b9b38b206afe67faf2d8",
+    "created_at": "2026-10-14T00:11:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75309_1617",
+    "question_id": "q_claim_2025_arabic_75309",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "2a1e04a83dcdfc08d39e20d42544c85ef9100d369b4c52c161e6921d040f4490",
+    "created_at": "2026-10-14T00:11:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75327_1618",
+    "question_id": "q_claim_2025_arabic_75327",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "e639229b4ba6de7de23722f545f777e43f6ec620ef2a9ccd2a43dd641e636410",
+    "created_at": "2026-10-14T00:11:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75329_1619",
+    "question_id": "q_claim_2025_arabic_75329",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "8f1676adf4d8fce8b20838909842b8372d3af1a25e952b24fad65e20ceaa5fdb",
+    "created_at": "2026-10-14T00:11:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75335_1620",
+    "question_id": "q_claim_2025_arabic_75335",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "b6633e67e3ace6ee766a97b444be670ff2a88292f8bcdfd59a862b11635e1a79",
+    "created_at": "2026-10-14T00:11:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75337_1621",
+    "question_id": "q_claim_2025_arabic_75337",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c35bdd52fc2bd3e8f19325f1a6bf6b635d948e947f7ea32935698d340db7a943",
+    "created_at": "2026-10-14T00:11:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75339_1622",
+    "question_id": "q_claim_2025_arabic_75339",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "ac80e31c5b01b1339fee359f16d112d676999ec7bd485b89d4c63fdb059de695",
+    "created_at": "2026-10-14T00:11:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75340_1623",
+    "question_id": "q_claim_2025_arabic_75340",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c7bde062d898f3102febac411484e6979be19fc97169d473f63fa50557c1719a",
+    "created_at": "2026-10-14T00:11:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75342_1624",
+    "question_id": "q_claim_2025_arabic_75342",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "0d53433af747c13353ae4605dc2a5ac8ba1de8caeee78847f3cf67a95feb3b8b",
+    "created_at": "2026-10-14T00:11:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75346_1625",
+    "question_id": "q_claim_2025_arabic_75346",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "8d84575f4b18f6ed482561c4fa3fe38e3e42243b554904f33ecb87a555b8defe",
+    "created_at": "2026-10-14T00:11:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75347_1626",
+    "question_id": "q_claim_2025_arabic_75347",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "a9baa5a364d15346a8f982f2ee7835f17d09c5132fe95f61a7e3ca0939cd663e",
+    "created_at": "2026-10-14T00:11:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75348_1627",
+    "question_id": "q_claim_2025_arabic_75348",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "76597f49a2dd53b963e26d9873cac9ee3908b2d5e3023459918e1148eb4dac54",
+    "created_at": "2026-10-14T00:11:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75349_1628",
+    "question_id": "q_claim_2025_arabic_75349",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "99579b243c914a45ce6f2e225d47483c1e7b9716ffc7097e3ebacd24d5891541",
+    "created_at": "2026-10-14T00:11:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_arabic_75350_1629",
+    "question_id": "q_claim_2025_arabic_75350",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "39a60b934faaaa475f54d05425c8a097807d2ff642760dd248c443e70d10ec03",
+    "created_at": "2026-10-14T00:11:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75221_1630",
+    "question_id": "q_claim_2025_french_75221",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "937f5a245a38e456a4114f1d33e4a4d1b56726cfbeff752fd5de8d52d8531d31",
+    "created_at": "2026-10-14T00:11:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75223_1631",
+    "question_id": "q_claim_2025_french_75223",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "f3d25999ddd53aa91ae7a9dcbfc03e78c8f256faf070c38c439803bb90f39da4",
+    "created_at": "2026-10-14T00:11:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75231_1632",
+    "question_id": "q_claim_2025_french_75231",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c5aa1f25123dac8d56ef3ddc6c2e7a17d313d0663d2d1fb8d4c3cd91e5dc6654",
+    "created_at": "2026-10-14T00:11:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75234_1633",
+    "question_id": "q_claim_2025_french_75234",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "5fdeaf163537b6a62dc9ca2c8978b77e0f1cd8ad05889db4811552ccbab0bae6",
+    "created_at": "2026-10-14T00:11:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75241_1634",
+    "question_id": "q_claim_2025_french_75241",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "fd281aebcdbd9ed7fc2287dc93bae4129f1d02adc1fd1b8decde710a2b9fdc64",
+    "created_at": "2026-10-14T00:11:49Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75251_1635",
+    "question_id": "q_claim_2025_french_75251",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "9557562833347b344ebdc20e3f0e1f0c6ae00ea9ed0abcc06d6d4029492e78a5",
+    "created_at": "2026-10-14T00:11:49Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75256_1636",
+    "question_id": "q_claim_2025_french_75256",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "6e14521849b58fb090a769a555f758b6519071305e7d2289fd24d81d493d0b12",
+    "created_at": "2026-10-14T00:11:49Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75262_1637",
+    "question_id": "q_claim_2025_french_75262",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "6d35cb6e6a3a816cbf0045142b776f9bda75db15d54bddff5d76458e5b07afbf",
+    "created_at": "2026-10-14T00:11:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75272_1638",
+    "question_id": "q_claim_2025_french_75272",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "ed02c7e976a6c6a19f745c0da2fb6ea588fe31a7859a172c20baad8a65715566",
+    "created_at": "2026-10-14T00:11:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75277_1639",
+    "question_id": "q_claim_2025_french_75277",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "caa36a4b1457c0e39788bee669cfd6396ffb509288a2aec331438e833bd8f308",
+    "created_at": "2026-10-14T00:11:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75281_1640",
+    "question_id": "q_claim_2025_french_75281",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c285a76eeb446a20ebe5b12720530d8bcfdb3e0a83466ca1ead3206453a62110",
+    "created_at": "2026-10-14T00:11:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75330_1641",
+    "question_id": "q_claim_2025_french_75330",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "8fd44c752acaced4a2a85efcb2d7a6c084d3b2fc208d81a8e589e4f8e4cecf53",
+    "created_at": "2026-10-14T00:11:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75404_1642",
+    "question_id": "q_claim_2025_french_75404",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c7a76fe8e52ea4d22e1212c03dcb1e29aacb88f6b6d9732e2d4bf4cbcfa040dc",
+    "created_at": "2026-10-14T00:11:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75405_1643",
+    "question_id": "q_claim_2025_french_75405",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "189a0acfab8aebdf0835b1efcf8f6498d5a88e1c9e26cea022d9f6c80b97e2f1",
+    "created_at": "2026-10-14T00:11:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75406_1644",
+    "question_id": "q_claim_2025_french_75406",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "e5e0a571d4d5b9ebd16f6e5133123b57857bfbc95140394c3d6faf309494c29f",
+    "created_at": "2026-10-14T00:11:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75407_1645",
+    "question_id": "q_claim_2025_french_75407",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "984976292173c9a2d52a03b016633f75bc67cf3900110cee097a34206d69ff4d",
+    "created_at": "2026-10-14T00:11:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75408_1646",
+    "question_id": "q_claim_2025_french_75408",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "aa26632a7e4ad2d8b324b5bf4dcf60c658d892ab0dc355ccd10f050031142ed7",
+    "created_at": "2026-10-14T00:11:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75409_1647",
+    "question_id": "q_claim_2025_french_75409",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "a6346ac701ee83eac9cd2a5fa710d2076ce3d45e7030865dae068fc5cf596629",
+    "created_at": "2026-10-14T00:11:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75410_1648",
+    "question_id": "q_claim_2025_french_75410",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "aed9e22c1361eb412423a3d18b70bd5e4afa72a84d0099f6dbffa8fda453cef3",
+    "created_at": "2026-10-14T00:11:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75411_1649",
+    "question_id": "q_claim_2025_french_75411",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "83463fa508dc2d6848d9da88f9ebe11ca1ba6d04e6bfb4911ac47d12265ccee9",
+    "created_at": "2026-10-14T00:11:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75412_1650",
+    "question_id": "q_claim_2025_french_75412",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "f9e09cf5fbdf592d3b41e3af44d67aeb6e3f2fd97dc804e2ee89c31cd2f7835f",
+    "created_at": "2026-10-14T00:11:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75413_1651",
+    "question_id": "q_claim_2025_french_75413",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "fdeb176e700fd0954f334a5e961724c74dd60e917db9548f4406a713faee8dd2",
+    "created_at": "2026-10-14T00:11:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75414_1652",
+    "question_id": "q_claim_2025_french_75414",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "6f1b5bb0b23667f423448b4c90c2368e8b26d4449f8c83d1391724c8481eec1f",
+    "created_at": "2026-10-14T00:11:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75415_1653",
+    "question_id": "q_claim_2025_french_75415",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "040fb3f5c7e77917ac3105c5d63c8c3f7de404e089011029f6d4cc6fc3b5699d",
+    "created_at": "2026-10-14T00:11:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75416_1654",
+    "question_id": "q_claim_2025_french_75416",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "8bfcd83c3bda01bb1e58c0816b3743b6fdb0bb2be3c65829ed7e2534a39f3888",
+    "created_at": "2026-10-14T00:11:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75417_1655",
+    "question_id": "q_claim_2025_french_75417",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "e4d82a27d781c488560da5c9ca01a37c75346388f7169e0b90056b9a5de8b8eb",
+    "created_at": "2026-10-14T00:11:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75418_1656",
+    "question_id": "q_claim_2025_french_75418",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "937092d6cbbd767ea45acaf02ab8c27ecc63b6cd7e490b3fd12e2c992a3ac512",
+    "created_at": "2026-10-14T00:11:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75419_1657",
+    "question_id": "q_claim_2025_french_75419",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "50b00d313bf78cddea8c9352f0f4b55694865e7758150735c398a9aebb5e9308",
+    "created_at": "2026-10-14T00:11:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75422_1658",
+    "question_id": "q_claim_2025_french_75422",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "de4bf94bff2fc732e8571ddb605aa58f8047e7246690aa0ddadfe087a1ecc772",
+    "created_at": "2026-10-14T00:11:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75423_1659",
+    "question_id": "q_claim_2025_french_75423",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "b56a7d630d4aab5ba69e649728d3ea4c222055f8bd7bf1cdc3a4dc9cc491ddd4",
+    "created_at": "2026-10-14T00:11:56Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75424_1660",
+    "question_id": "q_claim_2025_french_75424",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "d0775398ca4ee57c798302213619865910acc6a377d1bf90c6fba6903844ac67",
+    "created_at": "2026-10-14T00:11:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75425_1661",
+    "question_id": "q_claim_2025_french_75425",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "87e3a2f01d129306638acdc1fdd63fe355fd131ae79dc6c688ebfef617766f6e",
+    "created_at": "2026-10-14T00:11:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75570_1662",
+    "question_id": "q_claim_2025_french_75570",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "60e2d16a4516946db1f521ac7ee36947c41405ed391af9063b4f729753bec2ec",
+    "created_at": "2026-10-14T00:11:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75571_1663",
+    "question_id": "q_claim_2025_french_75571",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "5aef1bfa3e2bef479244ce6d4c0777397d28cdf5d4a47585c14c1158912119c1",
+    "created_at": "2026-10-14T00:11:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75572_1664",
+    "question_id": "q_claim_2025_french_75572",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "862d1fca6eb8bde9840829c739dede0a6c9037f279fce3bea665ab126af704e1",
+    "created_at": "2026-10-14T00:11:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75573_1665",
+    "question_id": "q_claim_2025_french_75573",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "18eacd977d5b9a12f2b33f2d731b886eebd39efea6c03926c96f4c48d823f574",
+    "created_at": "2026-10-14T00:11:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75574_1666",
+    "question_id": "q_claim_2025_french_75574",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "b2b1aa2b1fd522b00e3877bd38832c317606cc280e1f0e9deee1e9f911fd1c65",
+    "created_at": "2026-10-14T00:11:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75693_1667",
+    "question_id": "q_claim_2025_french_75693",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "547359e4285ae6fd30b4070aa3e2339469124464790fc36ea797157ba05b10bb",
+    "created_at": "2026-10-14T00:11:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75699_1668",
+    "question_id": "q_claim_2025_french_75699",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "e617f831fa5f4526776962b0c09a0b6256a38b1b97b12506fd905d8f74ac7b7b",
+    "created_at": "2026-10-14T00:11:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75801_1669",
+    "question_id": "q_claim_2025_french_75801",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "ed0abad9d257be294cf70a3f850686f121ba8668126d977a9e8f848c327e9ac9",
+    "created_at": "2026-10-14T00:11:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75805_1670",
+    "question_id": "q_claim_2025_french_75805",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "60e68a3832e869a6fc54d1f664f5ef21dd5fbedfb78802e4267ab5ee3cb83c14",
+    "created_at": "2026-10-14T00:12:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75806_1671",
+    "question_id": "q_claim_2025_french_75806",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "725a512e29b0d164f264da1c8d0a2e7f7afcc89cc4aeb6f07f90977e93d822cf",
+    "created_at": "2026-10-14T00:12:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75809_1672",
+    "question_id": "q_claim_2025_french_75809",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "180ff2fe8116021608084acc773aba01c8f860472061b73c5dab5c922edee556",
+    "created_at": "2026-10-14T00:12:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75812_1673",
+    "question_id": "q_claim_2025_french_75812",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "ef4220eae1f86baa866266eb60e9114d5c94d16ac59d1be098d8959b39859afc",
+    "created_at": "2026-10-14T00:12:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75815_1674",
+    "question_id": "q_claim_2025_french_75815",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c0472fa32fa8b0a4ba4a53222aec808d5fec3a2ae7a380ebd0da93dc7a246a99",
+    "created_at": "2026-10-14T00:12:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75816_1675",
+    "question_id": "q_claim_2025_french_75816",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "53dd673e3a7a552901fa841ca1e2b6b7517297adeebef0f7f1333457e80f2657",
+    "created_at": "2026-10-14T00:12:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75863_1676",
+    "question_id": "q_claim_2025_french_75863",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "5c37c8355a88bf77659e86faaeedd71d554ea4b8e84f42b6bdcf9e6d27950b0b",
+    "created_at": "2026-10-14T00:12:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75864_1677",
+    "question_id": "q_claim_2025_french_75864",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "1e13348aac9f8c0e91851844f8d3ace5b2a6dba1da1f2a6d51e74910560d4659",
+    "created_at": "2026-10-14T00:12:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75865_1678",
+    "question_id": "q_claim_2025_french_75865",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "6b2e3d3a33b7e823d7225f68353cf188626f03494d6da4cb34c38d7e028f0433",
+    "created_at": "2026-10-14T00:12:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75866_1679",
+    "question_id": "q_claim_2025_french_75866",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "8d7ed0ce28bc541139e738fedfbf7d81c8dda77eb474d11a84bcb32f549ca3f2",
+    "created_at": "2026-10-14T00:12:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75867_1680",
+    "question_id": "q_claim_2025_french_75867",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "f3186b8dfe38b3f48f2a1462310b70fc7b2371728a7a15da1a12a1fbd8c4a1dd",
+    "created_at": "2026-10-14T00:12:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75868_1681",
+    "question_id": "q_claim_2025_french_75868",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c8625446ee5c3e853953b28ca4f218048d5f47ded5af7eaa52395c1a80b00b7a",
+    "created_at": "2026-10-14T00:12:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75869_1682",
+    "question_id": "q_claim_2025_french_75869",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "a73f6147a7767045b6db0b5efe02410d60109c0a53c6f38aefd697f17890e395",
+    "created_at": "2026-10-14T00:12:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75870_1683",
+    "question_id": "q_claim_2025_french_75870",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "4ed77d8cfafa38a863b2563c1b5b8d8452c327d5f7851f90d65aa96d93a66e38",
+    "created_at": "2026-10-14T00:12:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75871_1684",
+    "question_id": "q_claim_2025_french_75871",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "a18836aeccc38de1627c6aff1f1a53645032ef67cba958b42bdfcfe5cac5e08a",
+    "created_at": "2026-10-14T00:12:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75872_1685",
+    "question_id": "q_claim_2025_french_75872",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c247751d30ac92f9d7b3ed382987e7bee118134fb57d04b2f989e1bd24064544",
+    "created_at": "2026-10-14T00:12:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75875_1686",
+    "question_id": "q_claim_2025_french_75875",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "07aa6ec0e6163251eaf80f5b9bf0629785939fa7310c74276cd7ba0192c7a3a1",
+    "created_at": "2026-10-14T00:12:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75876_1687",
+    "question_id": "q_claim_2025_french_75876",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "d342717c1c7480e453364bb4d30a6ac81f546f7360e6decc7cbe712c6a5f1536",
+    "created_at": "2026-10-14T00:12:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75877_1688",
+    "question_id": "q_claim_2025_french_75877",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "ba20c31d186b7af2e2fadc972ec99c799c881e27e52a21aa94a7271b58131e11",
+    "created_at": "2026-10-14T00:12:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75878_1689",
+    "question_id": "q_claim_2025_french_75878",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c05534c160c545fcb90477ab2b476097347654049dcc55fcc5a9d530b60797fe",
+    "created_at": "2026-10-14T00:12:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75879_1690",
+    "question_id": "q_claim_2025_french_75879",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "2e9048fe4f6bec1ad163203b4e0641fb5e94cc7a968649d7b257147cab094eae",
+    "created_at": "2026-10-14T00:12:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75880_1691",
+    "question_id": "q_claim_2025_french_75880",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "e2d049e59d581292a08fff2acd9efac3aaa011c92db7533533871c0a856b1668",
+    "created_at": "2026-10-14T00:12:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75886_1692",
+    "question_id": "q_claim_2025_french_75886",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "dbeacc91898274d2ba7765bb3eea843a3cd8e246401feecaf978c7764f1a8439",
+    "created_at": "2026-10-14T00:12:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75887_1693",
+    "question_id": "q_claim_2025_french_75887",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "8249013f526e07ee1b7c556e619caa50a8a26308fdc977548baba850a7701c12",
+    "created_at": "2026-10-14T00:12:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75888_1694",
+    "question_id": "q_claim_2025_french_75888",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "8bf996ba1223656aa077de83ca268ea407cec3b505064ab8fdae61d4797b27af",
+    "created_at": "2026-10-14T00:12:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75889_1695",
+    "question_id": "q_claim_2025_french_75889",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "5c667b0a3ab82332db0f205ecbf79d7f4763892a74812aa6c02205b0917909bc",
+    "created_at": "2026-10-14T00:12:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75890_1696",
+    "question_id": "q_claim_2025_french_75890",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "e4b39f855c0a08d39b7b61f76909454ddc71b17a0ee77cf560712a7bda294080",
+    "created_at": "2026-10-14T00:12:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75891_1697",
+    "question_id": "q_claim_2025_french_75891",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "752430fff0ac4b414e0aabaa4bff313ff75df7aba90b3acc5b2ae5a8e421ae89",
+    "created_at": "2026-10-14T00:12:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75892_1698",
+    "question_id": "q_claim_2025_french_75892",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c279c8154e9099a0e904a665fc1c30243deb4e925d8d5a78940ea1c52090cbb1",
+    "created_at": "2026-10-14T00:12:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75893_1699",
+    "question_id": "q_claim_2025_french_75893",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "c72eda55dc3db933c0342698a7301fe0f6f28a70147096e899f7ea00e08e62f2",
+    "created_at": "2026-10-14T00:12:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75894_1700",
+    "question_id": "q_claim_2025_french_75894",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "aaa895451f234bce2daf7b5548bd7aca969d02ba7d363465e85039174dc3697f",
+    "created_at": "2026-10-14T00:12:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75895_1701",
+    "question_id": "q_claim_2025_french_75895",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "55b907b8cd3d430318fe0bfac354348e50cb67df0bc03c73a4527ab0a74bad27",
+    "created_at": "2026-10-14T00:12:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75896_1702",
+    "question_id": "q_claim_2025_french_75896",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "ef23ce922492508e583bd36a8322966348129f63187130588bbedfbe5a8ad74b",
+    "created_at": "2026-10-14T00:12:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75897_1703",
+    "question_id": "q_claim_2025_french_75897",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "2397f8653960aabae163356d6b0153dfdd3fa2e5fe685f7d2118a02a8b1610c6",
+    "created_at": "2026-10-14T00:12:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_french_75898_1704",
+    "question_id": "q_claim_2025_french_75898",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "french-arabic-rewrite1",
+    "detail": null,
+    "content_hash": "867a7a387fe62e19f3a8070b23e487d3b063f39191e2789e98b37012366dda43",
+    "created_at": "2026-10-14T00:12:11Z"
   }
 ]
