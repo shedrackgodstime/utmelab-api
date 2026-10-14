@@ -54,3 +54,35 @@ def test_prompt_all_null_explanation_parts_is_missing():
     explanation = {"key_point": None, "body": None, "trap": None}
     prompt = build_tagging_prompt(_q(explanation=explanation), SUBS, TOPICS)
     assert "MISSING" in prompt
+
+
+def test_prompt_includes_topic_objectives():
+    topics = [TopicInfo(slug="algebra", name="Algebra", subject="mathematics",
+                        exam="JAMB", objectives=["solve quadratic equations", "factorize polynomials"])]
+    prompt = build_tagging_prompt(_q(), SUBS, topics)
+    assert "- algebra: Algebra" in prompt
+    assert "objectives: solve quadratic equations; factorize polynomials" in prompt
+
+
+def test_prompt_includes_subtopic_objectives():
+    subtopics = [SubtopicInfo(slug="surds", topic="algebra", name="Surds",
+                              objectives=["define a surd", "rationalise denominators"])]
+    prompt = build_tagging_prompt(_q(), subtopics, TOPICS)
+    assert "- surds: Surds (topic: algebra)" in prompt
+    assert "objectives: define a surd; rationalise denominators" in prompt
+
+
+def test_prompt_omits_objectives_line_when_empty():
+    prompt = build_tagging_prompt(_q(), SUBS, TOPICS)
+    assert "objectives:" not in prompt
+
+
+def test_prompt_objectives_do_not_break_subtopic_slug_lines():
+    subtopics = [
+        SubtopicInfo(slug="surds", topic="algebra", name="Surds", objectives=["define a surd"]),
+        SubtopicInfo(slug="indices", topic="algebra", name="Indices", objectives=[]),
+    ]
+    prompt = build_tagging_prompt(_q(), subtopics, TOPICS)
+    assert "\n  - surds: Surds (topic: algebra)\n" in prompt
+    assert "\n  - indices: Indices (topic: algebra)\n" in prompt
+

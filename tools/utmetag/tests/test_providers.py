@@ -57,6 +57,28 @@ def test_mock_picks_subtopic_from_available_list():
     assert data["subtopic_slug"] in {"surds", "indices"}
 
 
+def test_mock_picks_subtopic_when_objectives_interleaved():
+    import json
+
+    from utmetag.prompt import build_tagging_prompt
+    from utmetag.schema import QuestionInput, SubtopicInfo, TopicInfo
+    from helpers import make_question
+
+    d = make_question("q1")
+    question = QuestionInput(**{k: d[k] for k in (
+        "id", "exam", "subject", "year", "source", "text", "options", "answer",
+        "subtopic_id", "explanation", "marks", "difficulty",
+    )})
+    subtopics = [
+        SubtopicInfo(slug="surds", topic="algebra", name="Surds", objectives=["define a surd"]),
+        SubtopicInfo(slug="indices", topic="algebra", name="Indices", objectives=["apply index laws"]),
+    ]
+    topics = [TopicInfo(slug="algebra", name="Algebra", subject="mathematics", exam="JAMB", objectives=["x"])]
+    prompt = build_tagging_prompt(question, subtopics, topics)
+    data = json.loads(run(MockProvider().complete(prompt)))
+    assert data["subtopic_slug"] in {"surds", "indices"}
+
+
 def test_mock_detects_underline_in_stem():
     import json
 

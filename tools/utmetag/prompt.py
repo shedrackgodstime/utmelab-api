@@ -13,6 +13,14 @@ def _txt(part: Any) -> str:
     return part.get("text", "") or ""
 
 
+def _objectives_line(objectives: list[str]) -> str:
+    """Render a syllabus objectives list as one indented sub-line, or ''."""
+    items = [str(o).strip() for o in (objectives or []) if str(o or "").strip()]
+    if not items:
+        return ""
+    return f"\n      objectives: {'; '.join(items)}"
+
+
 def build_tagging_prompt(
     question: QuestionInput,
     subtopics: list[SubtopicInfo],
@@ -20,8 +28,14 @@ def build_tagging_prompt(
 ) -> str:
     options_text = "\n".join(f"  {opt['id']}) {opt['text']['text']}" for opt in question.options)
 
-    subtopic_list = "\n".join(f"  - {st.slug}: {st.name} (topic: {st.topic})" for st in subtopics)
-    topic_list = "\n".join(f"  - {t.slug}: {t.name}" for t in topics)
+    subtopic_list = "\n".join(
+        f"  - {st.slug}: {st.name} (topic: {st.topic}){_objectives_line(st.objectives)}"
+        for st in subtopics
+    )
+    topic_list = "\n".join(
+        f"  - {t.slug}: {t.name}{_objectives_line(t.objectives)}"
+        for t in topics
+    )
 
     explanation_text = "MISSING"
     if question.explanation:

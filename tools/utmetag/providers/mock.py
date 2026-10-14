@@ -20,10 +20,16 @@ class MockProvider(Provider):
         rng = random.Random(seed)
 
         # Pick a real subtopic slug from the prompt's AVAILABLE SUBTOPICS list.
+        # Objectives may be interleaved as indented sub-lines, so bound the
+        # section and collect every slug line regardless of interleaving.
         subtopic_slug = None
-        match = re.search(r"AVAILABLE SUBTOPICS.*?\n((?:  - .+\n)+)", prompt)
+        match = re.search(
+            r"AVAILABLE SUBTOPICS[^\n]*\n(.*?)(?:\n[ \t]*\nAVAILABLE TOPICS|\Z)",
+            prompt,
+            re.DOTALL,
+        )
         if match:
-            slugs = [m.group(1) for m in re.finditer(r"  - (\S+):", match.group(1))]
+            slugs = re.findall(r"^  - (\S+):", match.group(1), re.MULTILINE)
             if slugs:
                 subtopic_slug = rng.choice(slugs)
 
