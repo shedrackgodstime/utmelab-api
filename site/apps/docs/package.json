@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "@astrojs/starlight-tailwind": "^5.0.0",
-    "@utmelab/ui": "*"
+    "@utmelab/ui": "*",
+    "starlight-openapi": "0.27.0"
   },
   "devDependencies": {
     "@astrojs/starlight": "^0.42.6",

@@ -2,57 +2,20 @@
 import AuthShell from '../../layouts/AuthShell.astro';
 ---
 
-<AuthShell title="Verify email" description="Verify your email address.">
-  <div class="w-full max-w-md rounded-brand border border-hairline bg-surface p-8 shadow-sm space-y-6">
-    <div class="space-y-1.5 text-center">
-      <h1 class="text-xl font-semibold tracking-tight text-ink">Check your email</h1>
-      <p class="text-xs text-body">We sent a 6-digit confirmation code to your email address.</p>
+<AuthShell title="Verify email" description="Verification is not open yet.">
+  <div class="w-full max-w-md rounded-brand border border-hairline bg-surface p-8 shadow-sm space-y-6 text-center">
+    <p class="inline-flex items-center gap-2 rounded-full border border-hairline bg-surface-2 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+      <span class="size-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+      Coming soon
+    </p>
+    <div class="space-y-1.5">
+      <h1 class="text-xl font-semibold tracking-tight text-ink">Nothing to verify yet</h1>
+      <p class="text-xs leading-relaxed text-body">This page starts working when accounts open.</p>
     </div>
-
-    <form class="space-y-4" data-auth-form>
-      <div class="space-y-1.5">
-        <label for="code" class="text-xs font-medium text-ink">Verification code</label>
-        <input
-          id="code"
-          name="code"
-          type="text"
-          inputmode="numeric"
-          pattern="[0-9]{6}"
-          maxlength="6"
-          required
-          placeholder="123456"
-          class="w-full text-center tracking-[0.5em] font-mono text-lg rounded-brand-sm border border-hairline bg-surface px-3 py-2 text-ink placeholder:text-muted placeholder:tracking-normal focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
-        />
-      </div>
-
-      <button
-        type="submit"
-        class="w-full rounded-brand bg-accent py-2.5 text-sm font-medium text-accent-ink hover:bg-accent-hover transition-colors shadow-xs"
-      >
-        Verify and continue
-      </button>
-
-      <div class="text-center pt-2">
-        <button
-          type="button"
-          class="text-xs text-muted hover:text-ink transition-colors underline"
-          onclick="alert('A fresh verification code has been dispatched to your email.');"
-        >
-          Did not receive the email? Resend code
-        </button>
-      </div>
-    </form>
-
-    <div class="border-t border-hairline pt-4 text-center text-xs text-muted">
-      <a href="/auth/signin/" class="font-medium text-accent hover:underline">&larr; Back to sign in</a>
+    <div class="space-y-2.5">
+      <a href="/docs/" class="block w-full rounded-brand bg-accent py-2.5 text-sm font-medium text-accent-ink hover:bg-accent-hover transition-colors shadow-xs">Read the docs</a>
+      <a href="/" class="block w-full rounded-brand border border-hairline bg-surface py-2.5 text-sm font-medium text-ink hover:bg-surface-2 transition-colors">Back to home</a>
     </div>
+    <p class="text-xs text-muted">Need quick access? Email <a href="mailto:dev@utmelab.com" class="font-medium text-accent hover:underline">dev@utmelab.com</a>.</p>
   </div>
 </AuthShell>
-
-<script>
-  const form = document.querySelector('form[data-auth-form]');
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    window.location.href = '/dashboard/';
-  });
-</script>

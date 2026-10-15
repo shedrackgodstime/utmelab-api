@@ -60,6 +60,7 @@ pub fn router() -> Router<AppState> {
     path = "/api/v1/exams",
     tag = "catalog",
     operation_id = "listExams",
+    summary = "Exams the bank serves.",
     responses((status = 200, body = ExamList)),
 )]
 pub async fn list(State(state): State<AppState>) -> Json<ExamList> {
@@ -91,6 +92,7 @@ pub async fn list(State(state): State<AppState>) -> Json<ExamList> {
     path = "/api/v1/exams/{exam}/subjects",
     tag = "catalog",
     operation_id = "listSubjects",
+    summary = "One exam subject list.",
     params(("exam" = String, Path, description = "Exam code, e.g. JAMB")),
     responses(
         (status = 200, body = ExamSubjects),

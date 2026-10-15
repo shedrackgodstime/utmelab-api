@@ -45,6 +45,7 @@ pub fn router() -> Router<AppState> {
     path = "/api/v1/topics/{exam}/{subject}/{slug}",
     tag = "catalog",
     operation_id = "getTopic",
+    summary = "One syllabus topic with objectives and counts.",
     description = "One topic with its subtopics, each carrying its question count and objectives.",
     params(
         ("exam" = String, Path, description = "Exam code."),

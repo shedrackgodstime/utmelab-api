@@ -60,6 +60,7 @@ pub fn router() -> Router<AppState> {
     path = "/api/v1/exams/{exam}/papers",
     tag = "papers",
     operation_id = "getExamScheme",
+    summary = "Paper assembly readiness for an exam.",
     params(
         ("exam" = String, Path, description = "Exam code, as listed by GET /exams."),
         ("country" = Option<String>, Query, description = "Country scope, e.g. GH."),
@@ -149,6 +150,7 @@ pub struct ReadinessGapOut {
     path = "/api/v1/papers/{exam}/{subject}",
     tag = "papers",
     operation_id = "assemblePaper",
+    summary = "Assemble a seeded mock paper.",
     description = "Assemble one subject's mock from ready topics (D69): deterministic per seed, answers always withheld. 409 names the gap topics until the subject is complete.",
     params(
         ("exam" = String, Path, description = "Exam code."),
@@ -225,6 +227,7 @@ pub struct ScoreResponse {
     path = "/api/v1/papers/{exam}/{subject}/score",
     tag = "papers",
     operation_id = "scorePaper",
+    summary = "Score a paper assembled with the same seed.",
     description = "Mark a paper assembled with the same seed (D69): re-assembles statelessly and marks only submitted ids. Unsubmitted rows report unanswered, never the key.",
     params(
         ("exam" = String, Path, description = "Exam code."),

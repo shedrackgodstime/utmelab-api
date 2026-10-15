@@ -1,85 +1,76 @@
 # Docs IA Plan (pinned — do not drift)
 
 Decision: exam bodies are DATA, not sidebar sections. One stable endpoint
-surface; bodies + countries are enum filters. Growth = new catalog rows,
-never redesign.
+surface (`/api/v1/*`); bodies + countries are enum filters. Growth = new
+catalog rows, never redesign.
 
-## Why (evidence)
-- ALOC (aloc.com.ng, African exam API: WAEC/JAMB/NECO/POST-UTME) structures
-  docs as: GETTING STARTED (intro/auth/pagination/migration) / API REFERENCE
-  grouped by capability layers L1–L4, NOT by exam body / RESOURCES (errors,
-  changelog, Swagger link, MCP, starter kits) / TUTORIALS & COOKBOOK.
-  Exam coverage is one page + filter params. They do NOT dump openapi.json
-  as the reference — curated pages + one external Swagger.
-- Fern IA (multi-context): same API surface → one context + catalog; only
-  split into "products" if surfaces fundamentally differ. New country ≠ new
-  section unless its API differs. Additive URLs, reversible config.
-- Scalar Starlight plugin (@scalar/starlight): one playground entry via
-  scalarStarlight({ configuration: {url:'/openapi.json'}, pathname, label });
-  supports MULTIPLE references, theming, auth try-it. Confirmed working path.
+## The tree as shipped (v0.1.0)
 
-## Sidebar tree (intent-based, Diátaxis; slugs)
-GETTING STARTED
-  /docs                Introduction (what it is, who it's for)
-  /docs/quickstart     First call in ~2 min: fetch a WAEC maths question
-                       (curl + key; links to dashboard signin for the key)
-  /docs/authentication API keys (get/rotate in dashboard), headers, key types
-  /docs/environments   Base URLs, envs
-  /docs/response       Response envelope: data / pagination / meta
-  /docs/pagination     Cursors through banks
-  /docs/handling-errors How to handle failures: retries, backoff, timeouts
-                       (points to the full table at /docs/error-codes)
-  /docs/limits         Rate limits & quotas (amounts when pricing lands)
+Starlight, hand-listed top level only. Autogenerate is used for the Guides
+group alone — never for the whole tree, so top-level order stays deliberate:
 
-EXAM CATALOG  ← WAEC / NECO / JAMB-UTME / POST-UTME / WAEC-Ghana ALL LIVE HERE
-  /docs/catalog                 How coverage works; bodies are filters, not routes
-  /docs/catalog/nigeria         WAEC, NECO, JAMB/UTME, POST-UTME (subjects, year ranges,
-                                counts, codes)
-  /docs/catalog/ghana           WAEC Ghana (subjects, year ranges, counts, codes)
-  /docs/catalog/request         Coming soon / request coverage (future countries land here
-                                as rows first, own page only when coverage is real)
-  /docs/catalog/identifiers     Stable codes/slugs to pass as exam=/country= params
-API REFERENCE (curated groups + ONE playground + spec download — NOT a spec dump)
-  /docs/reference               How the reference is organized; auth for try-it
-  /docs/reference/questions     List/get + filters (exam, subject, year, topic, difficulty)
-  /docs/reference/catalog       Subjects, years, coverage counts
-  /docs/reference/explanations  Fetch explanations
-  /docs/reference/search        Full-text/topic search
-  /docs/playground              Scalar interactive reference (plugin; themed; try-it key)
-  /docs/spec                    Download OpenAPI 3.1 (Postman/Insomnia import)
-GUIDES (task-based; grow freely, never restructure the tree)
-  /docs/guides/filter           Filter by exam, subject, year
-  /docs/guides/paginate         Walk a whole question bank
-  /docs/guides/quiz             Build a timed quiz
-  /docs/guides/cache            Cache + offline
-RESOURCES
-  /docs/errors                  Full error-code table
-  /docs/changelog               Versioned changes
-  /docs/glossary                Exam codes & terms
+```
+Introduction   link /  (Starlight prepends the base; never write /docs/ here)
+Quickstart     slug guides/quickstart  (first call in ~2 min, JAMB-first)
+Guides         collapsed, autogenerate guides/catalog/
+  └── Request coverage                (boards/countries not yet served)
+```
 
-## Future-country extension rule (no redesign, ever)
-1. New country/body ships as: enum values (exam=, country=) + catalog row/page.
-2. NEVER new routes, sidebar sections, or version bumps for a coverage addition.
-3. Catalog entry documents: code, country, subjects, year range, counts, example filter.
-4. EXCEPTION: if a country needs a fundamentally different surface → add a
-   second product space with switcher (Fern tier-2). Anticipated: no; planned: no.
+Growth rule: new guides go under `guides/` and get a hand-listed top-level
+or Guides-group entry at write time — a slug in the config must be a file
+on disk. No phantom entries, ever.
 
-## API-shape rule the docs impose on the Rust side (keeps tree stable)
-- Routes stay body-agnostic: /questions, /questions/{id}, /subjects,
-  /explanations/{id}, /search. Variety lives in query enums, not paths.
-- Stable identifiers: exam codes (waec_ng, neco_ng, jamb, postutme, waec_gh),
-  country codes (ng, gh, …), subject slugs. Documented once in Catalog.
-- Spec hygiene = professional reference: every operation gets operationId,
-  one-line summary, and at least one example (request + 200 + error),
-  because Scalar renders those as the page. No summary → looks dumped.
+## API Reference (generated, not written)
 
-## OpenAPI professionalism plan (your instinct, confirmed)
-- Primary: hand-curated reference pages per capability group.
-- Single Scalar playground entry (pathname/label set; brand accent; dark-mode
-  aware; try-it sends the API-key header).
-- Raw spec stays downloadable (GET /openapi.json) — Postman import, not sidebar.
-- Later option: split Scalar into per-group references (multiple plugin
-  instances) if the surface grows; only if needed.
+`API Reference` in the sidebar is built at docs-build time by
+`starlight-openapi` from `site/openapi.json`. That file is emitted by
+`cargo run -- openapi --out site/openapi.json` and committed — the docs
+never hand-describe an endpoint. After any route/shape change:
 
-## Deferred
-- Pricing tiers/limits copy (until product exists); cookbooks/starter kits (later).
+1. Re-emit the spec, commit it.
+2. Every op needs `operation_id` + one-line `summary` (sidebar labels render
+   the summary; no summary looks dumped). Tags must exist in the `tags`
+   list in `src/api/openapi.rs`.
+3. `site` build regenerates the 20+ reference pages; `merge.mjs` also copies
+   the spec to `dist/openapi.json` for the download links.
+
+## Why this shape (evidence)
+
+- Bodies-as-filters matches the wire: `?exam=JAMB|WAEC|NECO`,
+  `?country=GH`, subject slugs per exam. A Ghana page would duplicate every
+  endpoint page with one filter changed — so coverage lives in rows + one
+  request page, never in sections.
+- Curated reference over spec dumps: the spec (`GET /openapi.json`) stays
+  downloadable for Postman/Insomnia; the docs explain, the spec declares.
+- Diátaxis in one axis: guides are task-based (`quickstart`, `request`);
+  the catalog request page is the single doorway for "is X covered?".
+
+## Identifiers (exactly as on the wire — never prettified)
+
+- Exam codes: `JAMB`, `WAEC`, `NECO` (uppercase). `POST-UTME` is planned and
+  returns `404` until it lands — documented as planned, never as served.
+- Country codes: `NG`, `GH`, `SL`, `GM`, `LR` (WAEC partition filter).
+- Subject slugs are per-exam (`use-of-english` for JAMB vs
+  `english-language` for WAEC). The catalog owns the table; guides link it.
+- Routes keep the `/api/v1` prefix in every example. Answers ride only
+  `?include_explanation=true`; there is no `/explanations/{id}` and no
+  `/search` (substring lives in `?q=`).
+
+## Rules for every docs edit
+
+1. No link to a page that doesn't exist. Relative links only to shipped
+   pages; everything else is plain text until the page lands.
+2. No exam-first examples outside JAMB: the bank is 2,241/2,243 JAMB.
+   WAEC/NECO examples wait for real depth.
+3. Numbers come from `data/` at write time (counts, pages, cohorts) and the
+   source is named. Never round a count into a claim.
+4. Auth copy matches reality: keys are issued manually today
+   (`dev@utmelab.com`); self-serve signup/rotation are coming soon and are
+   labeled so wherever mentioned.
+5. Future countries are requests, not roadmap: the request page takes them;
+   no page promises a board by name or date.
+
+## Deferred (no page until the thing exists)
+
+- Pricing/limits copy, authentication rotation guide, pagination/caching
+  cookbooks, Scalar playground, per-group reference pages, changelogs.

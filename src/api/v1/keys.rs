@@ -21,6 +21,7 @@ pub fn router() -> Router<AppState> {
     path = "/api/v1/keys/me",
     tag = "account",
     operation_id = "whoami",
+    summary = "The calling key: label, quota, and expiry.",
     description = "Returns the calling key exactly as stored. Use it to check a key works.",
     responses(
         (status = 200, body = ApiKey),

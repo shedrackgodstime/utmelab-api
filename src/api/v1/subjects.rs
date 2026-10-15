@@ -28,6 +28,7 @@ pub fn router() -> Router<AppState> {
     path = "/api/v1/subjects/{exam}/{slug}",
     tag = "catalog",
     operation_id = "getSubject",
+    summary = "One subject offering within an exam.",
     params(
         ("exam" = String, Path, description = "Exam code."),
         ("slug" = String, Path, description = "The exam's own name for this subject."),
@@ -63,6 +64,7 @@ pub struct SyllabusQuery {
     path = "/api/v1/subjects/{exam}/{slug}/syllabus",
     tag = "catalog",
     operation_id = "getSyllabus",
+    summary = "The whole topic tree with live counts.",
     description = "The whole topic tree for one subject, with a question count and objectives \
 on every node — what you must be able to do, beside what you can actually practise. A topic \
 with no questions does not appear.",
@@ -108,6 +110,7 @@ fn not_found(exam: &str, slug: &str) -> ApiError {
     path = "/api/v1/subjects/{exam}/{slug}/coverage",
     tag = "catalog",
     operation_id = "getCoverage",
+    summary = "Coverage counts without the tree.",
     description = "How much of this subject you can practise — counts only, no topic tree.",
     params(
         ("exam" = String, Path, description = "Exam code."),

@@ -64,6 +64,11 @@ jobs:
             echo "version=v0.0.0-pre.$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Test API (release gate)
+        run: |
+          cargo test
+          cargo clippy --all-targets -- -D warnings
+
       - name: Build API (release)
         run: cargo build --release
 
@@ -71,9 +76,9 @@ jobs:
         run: |
           cd site
           npm ci
-          npm run lint
           npm run build
           test -f dist/index.html
+          test -f dist/openapi.json
 
       - name: Package release
         run: |

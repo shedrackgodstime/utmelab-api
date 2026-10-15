@@ -45,6 +45,7 @@ pub fn document() -> utoipa::openapi::OpenApi {
     path = "/health",
     tag = "meta",
     operation_id = "health",
+    summary = "Service status and content counts.",
     description = "Unauthenticated. Reports question and withheld-record counts.",
     responses((status = 200, description = "Service is up")),
 )]
@@ -55,6 +56,7 @@ pub fn health_operation() {}
     path = "/openapi.json",
     tag = "meta",
     operation_id = "openapi",
+    summary = "This document, as JSON.",
     description = "This document.",
     responses((status = 200, description = "The OpenAPI description")),
 )]
@@ -143,6 +145,7 @@ are Markdown and carry the trap that catches people.",
     tags(
         (name = "catalog", description = "Exams, subjects and syllabi. No key required."),
         (name = "questions", description = "The metered surface. Requires a key."),
+        (name = "papers", description = "Seeded assembly and server-side scoring."),
         (name = "account", description = "The calling key."),
         (name = "novels", description = "Prescribed texts: book, chapters, characters, themes, quiz."),
         (name = "meta", description = "Service health and this document."),

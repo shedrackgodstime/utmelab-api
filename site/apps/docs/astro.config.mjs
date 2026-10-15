@@ -1,11 +1,16 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightOpenAPI, { openAPISidebarGroups } from 'starlight-openapi';
 import tailwindcss from '@tailwindcss/vite';
 
 // DOCS surface. Astro + Starlight + Tailwind v4 (Starlight compat layer).
 // We theme Starlight through Tailwind @theme → its accent/gray vars, so docs
 // share ONE brand with landing + dashboard. base '/docs' + static.
+//
+// Reference pages generate at build time from site/openapi.json, which is
+// emitted by `cargo run -- openapi --out site/openapi.json` (never hand
+// edited). Sidebar rule lives in site/docs/docs-IA-PLAN.md.
 export default defineConfig({
   site: 'https://api.utmelab.com',
   base: '/docs',
@@ -15,13 +20,31 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'UTME Lab',
-      description: 'Engineering-first exam API.',
+      description: 'Structured JAMB, WAEC and NECO content over one API.',
       customCss: ['./src/styles/theme.css'],
-      social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/Infisical' }],
+      plugins: [
+        starlightOpenAPI([
+          {
+            base: 'reference',
+            schema: '../../openapi.json',
+            sidebar: {
+              label: 'API Reference',
+              collapsed: true,
+              operations: { badges: true },
+            },
+          },
+        ]),
+      ],
       sidebar: [
-        { label: 'Guides', items: [{ autogenerate: { directory: 'guides' } }] },
+        { label: 'Introduction', link: '/' },
+        { label: 'Quickstart', slug: 'guides/quickstart' },
+        {
+          label: 'Guides',
+          collapsed: true,
+          items: [{ autogenerate: { directory: 'guides/catalog' } }],
+        },
+        ...openAPISidebarGroups,
       ],
     }),
   ],
 });
-

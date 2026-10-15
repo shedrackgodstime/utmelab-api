@@ -1,0 +1,63 @@
+---
+import AuthShell from '../../layouts/AuthShell.astro';
+---
+
+<AuthShell title="Sign in" description="Sign in to your UTME Lab developer account.">
+  <div class="w-full max-w-md rounded-brand border border-hairline bg-surface p-8 shadow-sm space-y-6">
+    <div class="space-y-1.5 text-center">
+      <h1 class="text-xl font-semibold tracking-tight text-ink">Welcome back</h1>
+      <p class="text-xs text-body">Enter your credentials to access your developer console.</p>
+    </div>
+
+    <form class="space-y-4" data-auth-form>
+      <div class="space-y-1.5">
+        <label for="email" class="text-xs font-medium text-ink">Email address</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder="developer@company.com"
+          class="w-full rounded-brand-sm border border-hairline bg-surface px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+        />
+      </div>
+
+      <div class="space-y-1.5">
+        <div class="flex items-center justify-between">
+          <label for="password" class="text-xs font-medium text-ink">Password</label>
+          <a href="/auth/reset-password/" class="text-xs text-accent hover:underline">Forgot password?</a>
+        </div>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          required
+          placeholder="••••••••"
+          class="w-full rounded-brand-sm border border-hairline bg-surface px-3 py-2 text-sm text-ink placeholder:text-muted focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors"
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="w-full rounded-brand bg-accent py-2.5 text-sm font-medium text-accent-ink hover:bg-accent-hover transition-colors shadow-xs"
+      >
+        Sign in
+      </button>
+    </form>
+
+    <div class="border-t border-hairline pt-4 text-center text-xs text-muted">
+      <span>Do not have an account yet?</span>
+      <a href="/auth/signup/" class="ml-1 font-medium text-accent hover:underline">Create an account</a>
+    </div>
+  </div>
+</AuthShell>
+
+<script>
+  const form = document.querySelector('form[data-auth-form]');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    window.location.href = '/dashboard/';
+  });
+</script>

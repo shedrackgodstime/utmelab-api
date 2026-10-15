@@ -28,6 +28,7 @@ pub fn router() -> Router<AppState> {
     path = "/api/v1/passages/{id}",
     tag = "catalog",
     operation_id = "getPassage",
+    summary = "One shared stimulus passage.",
     description = "One shared stimulus — a comprehension or cloze passage its questions point at.",
     params(("id" = String, Path, description = "Passage id.")),
     responses(

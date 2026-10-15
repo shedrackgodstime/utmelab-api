@@ -67,6 +67,7 @@ pub fn router() -> Router<AppState> {
     path = "/api/v1/blueprints/{exam}/{subject}",
     tag = "catalog",
     operation_id = "getBlueprint",
+    summary = "Per-topic expectations against verified coverage.",
     description = "Measured per-topic expectations against verified coverage (D63, provisional, opt-in). A topic is ready when deduped verified rows meet the measured expectation, rounded up. `governed` is false when the measurement does not cover the paper (D70) or the bank holds fewer than two cohorts (D71); then `complete` is coverage, not a promise, and papers come from the count gate.",
     params(
         ("exam" = String, Path, description = "Exam code."),

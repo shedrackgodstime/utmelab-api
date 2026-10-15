@@ -85,6 +85,7 @@ pub struct Detail {
     path = "/api/v1/questions/{id}",
     tag = "questions",
     operation_id = "getQuestion",
+    summary = "One question by id.",
     description = "One question by id, shaped exactly like an item from `/questions`.\n\nThe answer \
 is withheld unless `include_explanation=true`, the same rule the list follows.",
     params(
@@ -120,6 +121,7 @@ pub async fn question_by_id(
     path = "/api/v1/questions",
     tag = "questions",
     operation_id = "listQuestions",
+    summary = "Paged questions, answers withheld by default.",
     description = "Paged, and the answer is withheld unless you ask for it.\n\n**The answer \
 is only in the response when `include_explanation=true`.** A quiz consumer needs the stem \
 first, and an answer in a default payload gets rendered by somebody, eventually, by \

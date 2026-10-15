@@ -61,6 +61,7 @@ pub fn router() -> Router<AppState> {
     path = "/api/v1/novels",
     tag = "novels",
     operation_id = "listNovels",
+    summary = "Prescribed texts for an exam cycle.",
     description = "All novels, newest prescription first. No key required.",
     params(
         ("exam" = Option<String>, Query, description = "Scope to an exam."),
@@ -94,6 +95,7 @@ pub async fn list(State(state): State<AppState>, Query(f): Query<NovelFilter>) -
     path = "/api/v1/novels/{id}",
     tag = "novels",
     operation_id = "getNovel",
+    summary = "One novel: chapters, characters, themes.",
     description = "One novel: book, chapters, characters, themes. No key required.",
     params(("id" = String, Path, description = "Novel id, e.g. lekki-headmaster.")),
     responses(
@@ -116,6 +118,7 @@ pub async fn detail(
     path = "/api/v1/novels/{id}/questions",
     tag = "novels",
     operation_id = "listNovelQuestions",
+    summary = "Quiz rows for one novel.",
     description = "Quiz items for one novel, paged. The answer is withheld unless asked.",
     params(
         ("id" = String, Path, description = "Novel id."),

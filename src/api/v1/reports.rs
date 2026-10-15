@@ -47,6 +47,7 @@ pub fn router() -> Router<AppState> {
     path = "/api/v1/questions/{id}/report",
     tag = "questions",
     operation_id = "reportQuestion",
+    summary = "Flag a bad row for review.",
     description = "Flag a broken question. Reasons are a closed set so reports aggregate; \
 free-text detail is optional and capped. Reports never change the bank — they join a \
 review queue, and a question with many flags gets human eyes.",
