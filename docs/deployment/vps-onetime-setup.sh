@@ -48,12 +48,16 @@ install -d -o root -g utmelab -m 0750 "/etc/${APP}"
 if [ ! -f "/etc/${APP}/environment" ]; then
   cat > "/etc/${APP}/environment" <<EOF
 UTMELAB_API_BIND=127.0.0.1:${PORT}
-UTMELAB_API_DATA_DIR=/opt/apps/${APP}/current/data
-UTMELAB_API_KEYS_FILE=/var/lib/${APP}/api_keys.json
 UTMELAB_API_REPORTS_FILE=/var/lib/${APP}/reports.json
+# D73: Turso is the only source, nothing is embedded, no JSON ships. The bank
+# snapshot goes on the one writable path — ProtectSystem=strict makes the
+# release dir read-only, so the default var/bank_cache.json can never be
+# written and every boot would pay a full Turso re-fetch.
+UTMELAB_BANK_CACHE_FILE=/var/lib/${APP}/bank_cache.json
+UTMELAB_BANK_REFRESH_SECS=300
+KEY_CACHE_TTL_SECS=30
 TURSO_DB_URL=turso://utmelab-api-ultimatekristency.aws-eu-west-1.turso.io
 TURSO_DB_TOKEN=REPLACE_WITH_WRITE_TOKEN
-KEY_CACHE_TTL_SECS=30
 EOF
 fi
 chown root:utmelab "/etc/${APP}/environment"

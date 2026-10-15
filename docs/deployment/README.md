@@ -68,18 +68,23 @@ sudo chmod 0775 /opt/apps/utmelab-api/releases
 sudo mkdir -p /var/lib/utmelab-api && sudo chown utmelab:utmelab /var/lib/utmelab-api
 
 # 2. Secrets (0640 root:utmelab). Turso values you already have; rw token
-#    stays server-only — never in site/ or CI.
+#    stays server-only — never in site/ or CI. Per D73 there is no
+#    UTMELAB_API_DATA_DIR and no keys file: Turso is the only source and
+#    nothing JSON is embedded or shipped.
 sudo tee /etc/utmelab-api/environment >/dev/null <<'EOF'
 UTMELAB_API_BIND=127.0.0.1:8081
-UTMELAB_API_DATA_DIR=/opt/apps/utmelab-api/current/data
-UTMELAB_API_KEYS_FILE=/var/lib/utmelab-api/api_keys.json
 UTMELAB_API_REPORTS_FILE=/var/lib/utmelab-api/reports.json
+UTMELAB_BANK_CACHE_FILE=/var/lib/utmelab-api/bank_cache.json
+UTMELAB_BANK_REFRESH_SECS=300
+KEY_CACHE_TTL_SECS=30
 TURSO_DB_URL=turso://utmelab-api-ultimatekristency.aws-eu-west-1.turso.io
 TURSO_DB_TOKEN=<write-token>
-KEY_CACHE_TTL_SECS=30
 EOF
 sudo chown root:utmelab /etc/utmelab-api/environment
 sudo chmod 0640 /etc/utmelab-api/environment
+
+# 2b. the bank snapshot path must be writable by the service
+sudo mkdir -p /var/lib/utmelab-api && sudo chown utmelab:utmelab /var/lib/utmelab-api
 
 # 3. Install the gate (the ONLY privileged code). From this repo:
 sudo install -o root -g root -m 0755 docs/deployment/utmelab-api-deploy /usr/local/bin/utmelab-api-deploy
@@ -211,14 +216,14 @@ file rather than a flag error.
   `TURSO_API_KEY`; the service only needs `TURSO_DB_URL` + `TURSO_DB_TOKEN`. Note
   the parent's `.env` points at a *different* database (`utmelab-…`, not
   `utmelab-api-…`) — they are separate products, do not mix the tokens up.
-- `UTMELAB_API_KEYS_FILE` is vestigial. Since D53 keys live in Turso and
-  `KeyBackend::File` is test/import-only; the value is still read from the env
-  file but its only consumer is `key import`'s default source path. Harmless,
-  mildly misleading.
-- `UTMELAB_API_DATA_DIR` is transitional: it must hold exactly
-  `questions.json` — catalog + novels are embedded in the binary
-  (`JsonStore::load_embedded`). Releases ship only that one file. Once
-  questions move to Turso, the env var and the `data/` dir go away entirely:
-  the release is `binary + site/`.
-- `data/inbox/` (~2 MB of unverified harvested questions) never ships. Nothing
-  in production reads it — it is import staging, local-only.
+- `UTMELAB_API_DATA_DIR` and `UTMELAB_API_KEYS_FILE` are **removed** from the host
+  env file (D73, 2026-10-15). `config.data_dir()` is consumed nowhere outside
+  `config.rs`, and keys have lived in Turso since D53. They were dead config
+  that made the host look like it still served JSON.
+- The release is `binary + site/`. Per D73 the embedded catalog/novels are being
+  dropped and `data/questions.json` no longer ships — nothing JSON is needed to
+  serve. `data/` and `JsonStore` stay in the repo for local tagging, verification
+  and `import --turso`; that loop never runs on the host.
+- `UTMELAB_BANK_CACHE_FILE` must point inside `/var/lib/utmelab-api`. The default
+  is `var/bank_cache.json`, which resolves under the read-only release dir, so
+  the cache could never be written and every boot did a full Turso re-fetch.
