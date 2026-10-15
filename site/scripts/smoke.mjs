@@ -48,7 +48,16 @@ async function group(name, fn) {
 
 // 1. The API reaches the binary (not the static tier).
 await group('api reaches the binary', async () => {
-  const health = await get('/health');
+  // A fresh deploy boots the bank over the wire (~20 s), and Caddy answers
+  // 502 until the first bank loads. Poll instead of failing the deploy on
+  // its own boot time: 18 tries x 10 s.
+  let health;
+  for (let attempt = 1; attempt <= 18; attempt++) {
+    health = await get('/health');
+    if (!health.networkError && health.status === 200) break;
+    if (attempt === 18) break;
+    await new Promise((resolve) => setTimeout(resolve, 10000));
+  }
   if (health.networkError) return fail(`/health unreachable (${health.networkError})`);
   if (health.status !== 200) return fail(`/health status ${health.status}`);
   if (!health.contentType.includes('json')) return fail(`/health is ${health.contentType}, not JSON (static tier is shadowing the API)`);
