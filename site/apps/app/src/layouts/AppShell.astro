@@ -33,7 +33,7 @@ const { title, section = 'Overview' } = Astro.props;
         <header class="sticky top-0 flex items-center justify-between border-b bg-background px-6 py-3">
           <h1 class="text-[1.625rem] font-medium tracking-tight">{section}</h1>
           <div class="flex items-center gap-3">
-            <ThemeToggle client:load />
+            <ThemeToggle />
             <div class="grid size-8 place-items-center rounded-full bg-primary text-sm font-medium text-primary-foreground">AM</div>
           </div>
         </header>

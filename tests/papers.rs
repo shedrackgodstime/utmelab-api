@@ -20,6 +20,8 @@ use utmelab_api::{
     assemble_blueprint, blueprint_governs, cohorts, router,
 };
 
+static TEST_COUNTER: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
+
 fn data_dir() -> std::path::PathBuf {
     std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data")
 }
@@ -29,7 +31,8 @@ fn data_dir() -> std::path::PathBuf {
 /// A copy of the real bank holding only `keep` (plus the whole catalog), so a
 /// gate can be driven into a state the real bank is not in today.
 fn scratch_bank(tag: &str, keep: &[&str]) -> std::path::PathBuf {
-    let dir = std::env::temp_dir().join(format!("utmelab-{tag}-bank-{}", std::process::id()));
+    let count = TEST_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+    let dir = std::env::temp_dir().join(format!("utmelab-{tag}-bank-{}-{count}", std::process::id()));
     let _ = std::fs::remove_dir_all(&dir);
     std::fs::create_dir_all(&dir).expect("scratch dir");
     for f in [
@@ -66,11 +69,12 @@ fn scratch_bank(tag: &str, keep: &[&str]) -> std::path::PathBuf {
 
 /// Returns (AppState, api_key) for the real data directory.
 fn state_with_key(dir: &std::path::Path, tag: &str) -> (AppState, String) {
+    let count = TEST_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
     let keys_path =
-        std::env::temp_dir().join(format!("utmelab-{tag}-keys-{}.json", std::process::id()));
+        std::env::temp_dir().join(format!("utmelab-{tag}-keys-{}-{count}.json", std::process::id()));
     let _ = std::fs::remove_file(&keys_path);
     let reports_path =
-        std::env::temp_dir().join(format!("utmelab-{tag}-reports-{}.json", std::process::id()));
+        std::env::temp_dir().join(format!("utmelab-{tag}-reports-{}-{count}.json", std::process::id()));
     let _ = std::fs::remove_file(&reports_path);
     let (bank_tx, bank_rx) = tokio::sync::watch::channel(Arc::new(
         JsonStore::load(dir).expect("bank loads"),
