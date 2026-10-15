@@ -78,6 +78,10 @@ You MUST select the single best subtopic slug from this official list:
    - trap: Explanation of why distractors are tempting.
 5. Provide a confidence score between 0.0 and 1.0.
 6. Write a crisp 1-2 sentence "audit_report" summarizing: visual evidence inspected from diagram (if any), answer verification outcome, and final conclusion.
+7. PROSE & STYLE CONSTRAINTS (STRICT):
+   - ZERO EM DASHES: Do not use em dashes ("—"), en dashes ("–"), or double hyphens ("--") anywhere in explanation, key_point, body, trap, or audit_report. Use periods, commas, or standard conjunctions instead.
+   - NO AI CLICHES: Do not use filler words like "delve", "testament to", "tapestry", "furthermore", "it is worth noting", "crucial", or "pivotal".
+   - Keep all explanations direct, concise, and pedagogical. Show step-by-step numbers without condescending filler.
 
 Respond with ONLY valid JSON matching this schema:
 {{

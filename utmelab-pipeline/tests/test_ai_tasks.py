@@ -78,3 +78,30 @@ def test_parse_includes_audit_report():
     assert response.confidence == 0.98
     assert "series-parallel" in response.audit_report
 
+
+def test_sanitize_ai_prose_strips_em_dashes():
+    stem = "Calculate the momentum of a 2kg mass moving at 5m/s."
+    raw_ai = """{
+  "subtopic_slug": "linear-momentum",
+  "answer_check": "VERIFIED",
+  "explanation_quality": "GOOD",
+  "confidence": 0.99,
+  "audit_report": "Calculated p = mv — verified option a with 10 kg m/s.",
+  "reasoning": "Standard formula — clear and direct.",
+  "explanation": {
+    "key_point": "Linear momentum is mass times velocity — p = mv.",
+    "body": "Step 1: Identify given values — m = 2kg, v = 5m/s. Step 2: Multiply — p = 10.",
+    "trap": "Distractor b is 2.5 kg m/s — calculated by division instead of multiplication."
+  }
+}"""
+    response, marks = parse_and_snap_response(raw_ai, stem)
+    # Assert zero em dashes remain anywhere
+    assert "—" not in response.audit_report
+    assert "—" not in response.reasoning
+    assert "—" not in response.explanation.key_point
+    assert "—" not in response.explanation.body
+    assert "—" not in response.explanation.trap
+    assert "--" not in response.audit_report
+    assert "verified option a" in response.audit_report
+
+

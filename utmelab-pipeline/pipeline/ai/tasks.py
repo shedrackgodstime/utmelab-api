@@ -23,15 +23,38 @@ def extract_json_block(text: str) -> str:
     return text
 
 
+def sanitize_ai_prose(text: Optional[str]) -> Optional[str]:
+    """Sanitizes generated AI prose by removing em dashes, en dashes, and double hyphens."""
+    if not text:
+        return text
+    # Replace em-dashes and en-dashes with appropriate punctuation
+    cleaned = re.sub(r"\s*[—–]\s*", ", ", text)
+    cleaned = re.sub(r"\s*--\s*", ", ", cleaned)
+    # Clean up any duplicate commas or awkward punctuation combos
+    cleaned = re.sub(r",\s*,+", ", ", cleaned)
+    cleaned = re.sub(r"\.\s*,+", ". ", cleaned)
+    cleaned = re.sub(r",\s*\.", ".", cleaned)
+    return cleaned.strip()
+
+
 def parse_and_snap_response(raw_text: str, stem: str) -> Tuple[QuestionAIResponse, List[Dict[str, Any]]]:
-    """Parses LLM JSON response, validates with Pydantic, and snaps underline offsets.
-    
-    Returns:
-        (QuestionAIResponse, detected_marks_list)
-    """
+    """Parses LLM JSON response, validates with Pydantic, snaps underline offsets, and sanitizes prose."""
     clean_json = extract_json_block(raw_text)
     data = json.loads(clean_json)
     response = QuestionAIResponse.model_validate(data)
+
+    # Sanitize prose fields against em dashes and formatting slop
+    if response.audit_report:
+        response.audit_report = sanitize_ai_prose(response.audit_report)
+    if response.reasoning:
+        response.reasoning = sanitize_ai_prose(response.reasoning)
+    if response.explanation:
+        if response.explanation.key_point:
+            response.explanation.key_point = sanitize_ai_prose(response.explanation.key_point)
+        if response.explanation.body:
+            response.explanation.body = sanitize_ai_prose(response.explanation.body)
+        if response.explanation.trap:
+            response.explanation.trap = sanitize_ai_prose(response.explanation.trap)
 
     detected_marks: List[Dict[str, Any]] = []
 
@@ -68,3 +91,4 @@ def parse_and_snap_response(raw_text: str, stem: str) -> Tuple[QuestionAIRespons
                 response.underline = None
 
     return response, detected_marks
+
