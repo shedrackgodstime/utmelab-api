@@ -265,7 +265,7 @@ pub fn run(
     data: &Path,
     stdout: &mut dyn std::fmt::Write,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    let store = JsonStore::load_embedded(data).map_err(|e| format!("bank does not load: {e}"))?;
+    let store = JsonStore::load(data).map_err(|e| format!("bank does not load: {e}"))?;
     let findings = scan(&store);
 
     let mut by_kind: BTreeMap<&str, Vec<&Finding>> = BTreeMap::new();
@@ -339,14 +339,12 @@ mod tests {
     }
 
     fn store_of(name: &str, rows: Vec<Question>) -> JsonStore {
-        let dir = std::env::temp_dir().join(format!("utmelab-quar-{}-{name}", std::process::id()));
-        let _ = std::fs::remove_dir_all(&dir);
-        std::fs::create_dir_all(&dir).expect("scratch");
-        std::fs::copy("data/questions.json", dir.join("questions.json")).expect("seed");
-        let mut store = JsonStore::load_embedded(&dir).expect("loads");
+        let _ = name;
+        // Full catalog from disk (tests run from the repo root), fixture
+        // rows swapped in — same shape the loader served before.
+        let mut store = JsonStore::load("data").expect("loads");
         let problems = store.replace_questions(rows);
         assert!(problems.is_empty(), "fixture must be valid: {problems:?}");
-        let _ = std::fs::remove_dir_all(&dir);
         store
     }
 

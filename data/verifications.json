@@ -29605,5 +29605,75 @@
     "verifier": "passage-recovery-2026-10-14",
     "content_hash": "47c585bf8e83174b574fb692098167e5d45ebbe10200f5aa18fd58a0f6256048",
     "created_at": "2026-10-14T22:52:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_accounts-principles-of-accounts_75166_1921",
+    "question_id": "q_claim_2025_accounts-principles-of-accounts_75166",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "poa-rewrite1",
+    "detail": null,
+    "created_at": "2026-10-14T00:51:30Z",
+    "content_hash": "0518fb15c5d238ec0e0f5eb1e960b228c690e9d425e94ed6b12b90e1871337c3"
+  },
+  {
+    "id": "v_q_claim_2025_accounts-principles-of-accounts_75201_1935",
+    "question_id": "q_claim_2025_accounts-principles-of-accounts_75201",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "poa-rewrite1",
+    "detail": null,
+    "created_at": "2026-10-14T00:51:36Z",
+    "content_hash": "2ba0e9c47cdb188b9e775475af1d323e560da75b15bfb162d772153d3d0b9d7d"
+  },
+  {
+    "id": "v_q_claim_2025_computer-studies_64092_0887",
+    "question_id": "q_claim_2025_computer-studies_64092",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "comp1a-review",
+    "detail": null,
+    "created_at": "2026-10-13T18:04:55Z",
+    "content_hash": "ad2ec44a7f6a2660408107bbc3f02d90ed6eee25380232e9bd5e4445e713f410"
+  },
+  {
+    "id": "v_q_claim_2025_english-language_74779_2220",
+    "question_id": "q_claim_2025_english-language_74779",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "music-english-rewrite1",
+    "detail": null,
+    "created_at": "2026-10-14T01:20:20Z",
+    "content_hash": "90875ffea1d8d062e4c3bf82deb6cd3278b0ea62e2431c0e1dc31c4376bc15fd"
+  },
+  {
+    "id": "v_q_claim_2025_hausa_76200_1755",
+    "question_id": "q_claim_2025_hausa_76200",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "hausa-rewrite1",
+    "detail": null,
+    "created_at": "2026-10-14T00:37:52Z",
+    "content_hash": "48214aee39ba94e97d9ec70b531fd2fb13c468f12a486110124561049d61cd6e"
   }
 ]

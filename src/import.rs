@@ -156,11 +156,9 @@ pub fn run(
     config: Option<&Path>,
 ) -> anyhow_lite::Result<()> {
     let subjects = subject_map(config)?;
-    // Same transitional split as `serve`: catalog embedded, questions from
-    // `data/questions.json`. Import stays local-only — it never touches the
-    // VPS; the file it writes becomes the Turso seed.
-    let mut store =
-        JsonStore::load_embedded(data).map_err(|e| format!("bank does not load: {e}"))?;
+    // The bank loads from the `data/` tree on disk. Import stays local-only
+    // — it never touches the VPS; the file it writes becomes the Turso seed.
+    let mut store = JsonStore::load(data).map_err(|e| format!("bank does not load: {e}"))?;
 
     // Servable plus withheld: the rewrite must carry every valid row back,
     // or the next import silently deletes what review has not assigned yet
