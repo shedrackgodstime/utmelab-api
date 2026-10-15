@@ -267,9 +267,9 @@ async fn sql_reads_match_the_ram_bank_on_every_filter() {
             (1, 999),
             (99, 50),
         ] {
-            let want = bank.questions_page(filter.clone(), page, per_page);
+            let want = bank.questions_page(*filter, page, per_page);
             let got = reads
-                .questions_page(filter.clone(), page, per_page)
+                .questions_page(*filter, page, per_page)
                 .await
                 .unwrap_or_else(|e| panic!("filter {n} page {page}/{per_page}: {e}"));
             assert_eq!(got.page, want.page, "page echo {n}");
