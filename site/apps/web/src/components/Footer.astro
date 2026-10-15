@@ -1,75 +1,44 @@
 ---
+import Brand from '@utmelab/ui/components/Brand.astro';
 ---
 
 <footer class="border-t border-hairline bg-surface mt-24">
-  <div class="mx-auto max-w-6xl px-6 py-14">
-    <div class="grid grid-cols-1 gap-10 md:grid-cols-5 pb-12 border-b border-hairline">
-      <!-- Brand & Mission Column -->
-      <div class="md:col-span-2 space-y-4">
-        <a href="/" class="flex items-center gap-2.5 font-semibold tracking-tight text-ink text-base">
-          <span class="flex size-7 items-center justify-center rounded-brand bg-accent text-accent-ink shadow-xs">
-            <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="7" height="7" rx="1.5" />
-              <rect x="14" y="3" width="7" height="7" rx="1.5" />
-              <rect x="14" y="14" width="7" height="7" rx="1.5" />
-              <path d="M6.5 14v4a2 2 0 0 0 2 2H14" />
-            </svg>
-          </span>
-          <span>UTME<span class="text-accent font-bold">Lab</span></span>
-        </a>
-
+  <div class="mx-auto max-w-6xl px-6 py-10">
+    <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+      <div class="space-y-3">
+        <Brand href="/" badge={false} markClass="size-7" />
         <p class="text-sm text-body leading-relaxed max-w-sm">
-          Commercial question bank and assessment API for West African examinations. Built for Nigerian EdTech developers.
+          Question bank API for West African examinations.
         </p>
+      </div>
 
-        <div class="pt-1">
-          <div class="inline-flex items-center gap-2 rounded-full border border-hairline bg-surface-2 px-3 py-1 text-xs font-mono text-muted">
-            <span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>API v0.1.0: Operational</span>
-          </div>
+      <nav class="flex gap-12 text-sm text-body" aria-label="Footer">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-muted mb-3 font-mono">Docs</h3>
+          <ul class="space-y-2">
+            <li><a href="/docs/guides/quickstart/" class="hover:text-ink transition-colors">Quickstart</a></li>
+            <li><a href="/docs/guides/catalog/request/" class="hover:text-ink transition-colors">Coverage</a></li>
+            <li><a href="/docs/" class="hover:text-ink transition-colors">Guides</a></li>
+          </ul>
         </div>
-      </div>
 
-      <!-- Navigation Columns -->
-      <div>
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-muted mb-3 font-mono">Platform</h3>
-        <ul class="space-y-2 text-sm text-body">
-          <li><a href="#features" class="hover:text-ink transition-colors">Paper Assembly</a></li>
-          <li><a href="#features" class="hover:text-ink transition-colors">Syllabus Drills</a></li>
-          <li><a href="#features" class="hover:text-ink transition-colors">Prescribed Novels</a></li>
-          <li><a href="#features" class="hover:text-ink transition-colors">Stateless Scoring</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-muted mb-3 font-mono">Documentation</h3>
-        <ul class="space-y-2 text-sm text-body">
-          <li><a href="/docs/guides/quickstart/" class="hover:text-ink transition-colors">Quickstart</a></li>
-          <li><a href="/docs/" class="hover:text-ink transition-colors">Guides</a></li>
-          <li><a href="/docs/catalog/request/" class="hover:text-ink transition-colors">Coverage Matrix</a></li>
-          <li><a href="/openapi.json" class="hover:text-ink transition-colors">OpenAPI Spec</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-muted mb-3 font-mono">Developers</h3>
-        <ul class="space-y-2 text-sm text-body">
-          <li><a href="/dashboard/" class="hover:text-ink transition-colors">Developer Portal</a></li>
-          <li><a href="/dashboard/" class="hover:text-ink transition-colors">API Keys</a></li>
-          <li><a href="/docs/terms/" class="hover:text-ink transition-colors">Terms of Service</a></li>
-          <li><a href="/health" class="hover:text-ink transition-colors">System Health</a></li>
-        </ul>
-      </div>
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-muted mb-3 font-mono">Product</h3>
+          <ul class="space-y-2">
+            <li><a href="/dashboard/" class="hover:text-ink transition-colors">Console</a></li>
+            <li><a href="/auth/signin/" class="hover:text-ink transition-colors">Sign in</a></li>
+            <li><a href="/auth/signup/" class="hover:text-ink transition-colors">Get API key</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
 
-    <!-- Bottom Copyright -->
-    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
+    <div class="mt-8 pt-6 border-t border-hairline flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
       <p>© 2026 UTME Lab. All rights reserved.</p>
-      <div class="flex items-center gap-6">
-        <a href="/docs/terms/" class="hover:text-ink transition-colors">Terms</a>
-        <a href="/docs/guides/quickstart/" class="hover:text-ink transition-colors">Documentation</a>
-        <a href="/dashboard/" class="hover:text-ink transition-colors">Console</a>
-      </div>
+      <a href="/health" class="inline-flex items-center gap-2 rounded-full border border-hairline bg-surface-2 px-3 py-1 font-mono hover:text-ink transition-colors">
+        <span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>API: Operational</span>
+      </a>
     </div>
   </div>
 </footer>

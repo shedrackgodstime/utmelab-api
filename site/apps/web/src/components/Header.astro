@@ -1,43 +1,42 @@
 ---
 import ThemeToggle from '@utmelab/ui/components/ThemeToggle.astro';
+import Brand from '@utmelab/ui/components/Brand.astro';
 
 interface Props {
   currentPath?: string;
 }
 
+// Every href here is a real built page — no dead `#` anchors (the old
+// `#catalog` / `#pricing` targets never existed) and no duplicates (Docs
+// and API Reference both pointed at `/docs/`).
 const navLinks = [
-  { label: 'Catalog', href: '#catalog' },
-  { label: 'Documentation', href: '/docs/' },
-  { label: 'API Reference', href: '/docs/' },
-  { label: 'Pricing', href: '#pricing' },
+  { label: 'Docs', href: '/docs/' },
+  { label: 'Quickstart', href: '/docs/guides/quickstart/' },
+  { label: 'Coverage', href: '/docs/guides/catalog/request/' },
 ];
+
+const norm = (p: string) => (p.length > 1 ? p.replace(/\/+$/, '') : p);
+const current = norm(Astro.props.currentPath ?? Astro.url.pathname);
+const isActive = (href: string) => norm(href) === current;
 ---
 
 <header class="sticky top-0 z-50 border-b border-hairline bg-surface/80 backdrop-blur-md transition-colors">
   <div class="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
     <!-- Brand Identity -->
     <div class="flex items-center gap-8">
-      <a href="/" class="group flex items-center gap-2.5 focus-visible:outline-none" aria-label="UTME Lab home">
-        <span class="flex size-8 items-center justify-center rounded-brand bg-accent text-accent-ink shadow-xs transition-transform group-hover:scale-105">
-          <svg class="size-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="7" height="7" rx="1.5" />
-            <rect x="14" y="3" width="7" height="7" rx="1.5" />
-            <rect x="14" y="14" width="7" height="7" rx="1.5" />
-            <path d="M6.5 14v4a2 2 0 0 0 2 2H14" />
-          </svg>
-        </span>
-        <span class="flex items-center gap-1.5 font-semibold tracking-tight text-ink text-base">
-          <span>UTME</span><span class="text-accent font-bold">Lab</span>
-          <span class="rounded-full border border-hairline bg-surface-2 px-1.5 py-0.2 font-mono text-[10px] text-muted">API</span>
-        </span>
-      </a>
+      <Brand />
 
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-1 text-sm font-medium text-body" aria-label="Main navigation">
         {navLinks.map((link) => (
           <a
             href={link.href}
-            class="rounded-brand px-3 py-1.5 text-body hover:text-ink hover:bg-surface-2 transition-all"
+            aria-current={isActive(link.href) ? 'page' : undefined}
+            class={`rounded-brand px-3 py-1.5 transition-all ${
+              isActive(link.href)
+                ? 'text-ink bg-surface-2'
+                : 'text-body hover:text-ink hover:bg-surface-2'
+            }`}
           >
             {link.label}
           </a>
@@ -99,7 +98,10 @@ const navLinks = [
         {navLinks.map((link) => (
           <a
             href={link.href}
-            class="mobile-nav-link block rounded-brand px-3 py-2.5 text-base font-medium text-ink hover:bg-surface-2 transition-colors"
+            aria-current={isActive(link.href) ? 'page' : undefined}
+            class={`mobile-nav-link block rounded-brand px-3 py-2.5 text-base font-medium transition-colors ${
+              isActive(link.href) ? 'text-ink bg-surface-2' : 'text-ink hover:bg-surface-2'
+            }`}
           >
             {link.label}
           </a>
@@ -131,6 +133,10 @@ const navLinks = [
   const iconClose = document.getElementById('icon-close');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
+  function lockScroll(locked: boolean) {
+    document.body.style.overflow = locked ? 'hidden' : '';
+  }
+
   function openMenu() {
     if (!menu || !toggleBtn || !iconOpen || !iconClose) return;
     menu.classList.remove('hidden');
@@ -140,6 +146,7 @@ const navLinks = [
     iconClose.classList.add('block');
     toggleBtn.setAttribute('aria-expanded', 'true');
     toggleBtn.setAttribute('aria-label', 'Close navigation menu');
+    lockScroll(true);
   }
 
   function closeMenu() {
@@ -151,6 +158,7 @@ const navLinks = [
     iconClose.classList.remove('block');
     toggleBtn.setAttribute('aria-expanded', 'false');
     toggleBtn.setAttribute('aria-label', 'Open navigation menu');
+    lockScroll(false);
   }
 
   toggleBtn?.addEventListener('click', (e) => {
@@ -181,6 +189,14 @@ const navLinks = [
       if (!menu.contains(target) && !toggleBtn?.contains(target)) {
         closeMenu();
       }
+    }
+  });
+
+  // The drawer is mobile-only: a resize onto desktop must not leave the
+  // page scroll-locked behind a hidden menu.
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      closeMenu();
     }
   });
 </script>
