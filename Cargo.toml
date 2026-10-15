@@ -29,5 +29,6 @@ turso_serverless = "0.1.3"
 tower-http = { version = "0.6", features = ["cors", "timeout"] }
 
 [dev-dependencies]
+libsql = "0.10"
 tower = { version = "0.5", features = ["util"] }
 http-body-util = "0.1"

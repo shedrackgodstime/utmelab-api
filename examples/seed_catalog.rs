@@ -126,6 +126,16 @@ fn js(v: &serde_json::Value) -> String {
     serde_json::to_string(v).unwrap_or_else(|_| "[]".to_string())
 }
 
+/// A JSON array column: missing or null in the file means empty, matching
+/// the struct defaults the file loader applies. Writing a literal "null"
+/// would pass the seed and then fail `TursoStore` validation at boot.
+fn arr(v: Option<&serde_json::Value>) -> String {
+    match v {
+        Some(list) if list.is_array() => js(list),
+        _ => "[]".to_string(),
+    }
+}
+
 async fn table_count(db: &Db, table: &str) -> i64 {
     let sql = format!("SELECT COUNT(*) FROM {table}");
     let mut q = retry!("count", 6, db.conn().query(&sql, ()));
@@ -218,7 +228,7 @@ async fn main() {
                     t["name"].as_str().unwrap_or(""),
                     t["order"].as_i64().unwrap_or(0),
                     t["weight"].as_i64().unwrap_or(0),
-                    js(&t["objectives"]).as_str(),
+                    arr(t.get("objectives")).as_str(),
                 ),
             )
         );
@@ -237,7 +247,7 @@ async fn main() {
                     s["topic"].as_str().unwrap_or(""),
                     s["name"].as_str().unwrap_or(""),
                     s["order"].as_i64().unwrap_or(0),
-                    js(&s["objectives"]).as_str(),
+                    arr(s.get("objectives")).as_str(),
                 ),
             )
         );
