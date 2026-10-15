@@ -194,3 +194,8 @@ jobs:
             -p "${VPS_PORT}" \
             "${VPS_USER}@${VPS_HOST}" \
             "systemctl is-active ${APP}; curl -s http://127.0.0.1:${API_PORT}/health || true"
+
+      - name: Edge smoke check (public path, not loopback)
+        run: |
+          cd site
+          BASE_URL=https://api.utmelab.com node scripts/smoke.mjs
