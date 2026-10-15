@@ -34,9 +34,26 @@ api.utmelab.com {
 	}
 
 	# Static docs tier (Astro build output ships as site/ in the release).
+	#
+	# No try_files. Astro is fully prerendered — every page is a real
+	# index.html inside a directory — so `try_files {path} /index.html`, the
+	# SPA fallback pattern, is actively wrong here. It matched real files
+	# (/_astro/*.css, /docs/x/index.html) but missed every *directory* URL and
+	# fell through to the homepage, so /docs/guides/quickstart/, /dashboard/
+	# and /docs/ all rendered the home page with a 200. A miss also returned
+	# 200 instead of 404. `astro preview` hides this because it resolves
+	# directories itself; Caddy needs `index`.
 	handle {
 		root * /opt/apps/utmelab-api/current/site
-		try_files {path} /index.html
+		file_server {
+			index index.html
+		}
+	}
+
+	# Serve the built 404 page for a genuine miss, keeping the 404 status.
+	handle_errors {
+		@notfound expression {err.status_code} == 404
+		rewrite @notfound /404.html
 		file_server
 	}
 }
