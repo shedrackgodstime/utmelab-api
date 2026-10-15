@@ -105,15 +105,20 @@ pub async fn question_by_id(
     Path(id): Path<String>,
     Query(f): Query<Detail>,
 ) -> Result<Json<RenderedQuestion>, ApiError> {
+    let with_explanation = f.include_explanation.unwrap_or(false);
+    // D74 phase 1: per-request SQL when wired, in-RAM bank otherwise (tests).
+    if let Some(reads) = &state.reads {
+        let question = reads.question_by_id(&id).await?.ok_or_else(|| {
+            ApiError::not_found("question_not_found", format!("No question with id '{id}'."))
+        })?;
+        return Ok(Json(render(&question, with_explanation)));
+    }
     let bank = state.bank.borrow().clone();
     let question = bank.question(&id).ok_or_else(|| {
         ApiError::not_found("question_not_found", format!("No question with id '{id}'."))
     })?;
 
-    Ok(Json(render(
-        question,
-        f.include_explanation.unwrap_or(false),
-    )))
+    Ok(Json(render(question, with_explanation)))
 }
 
 #[utoipa::path(
@@ -163,10 +168,10 @@ pub async fn questions(
     _caller: Caller,
     Query(f): Query<Filter>,
 ) -> Result<Json<QuestionPage>, ApiError> {
-    let bank = state.bank.borrow().clone();
     // Reject a filter that names a subject this exam does not offer, rather
     // than returning a confident empty list.
     if let (Some(exam), Some(subject)) = (&f.exam, &f.subject) {
+        let bank = state.bank.borrow().clone();
         if f.subtopic.is_none() && bank.subject(exam, subject).is_none() {
             return Err(ApiError::not_found(
                 "subject_not_found",
@@ -175,22 +180,48 @@ pub async fn questions(
         }
     }
 
+    let filter = QuestionFilter {
+        exam: f.exam.as_deref(),
+        subject: f.subject.as_deref(),
+        subtopic: f.subtopic.as_deref(),
+        verified: f.verified,
+        text: f.q.as_deref(),
+        source: f.source.as_deref(),
+        year: f.year,
+        country: f.country.as_deref(),
+    };
+    let with_explanation = f.include_explanation.unwrap_or(false);
+
+    // D74 phase 1: per-request SQL when wired, in-RAM bank otherwise (tests).
+    // Both arms render the same envelope from the same row shape.
+    if let Some(reads) = &state.reads {
+        let stored = reads
+            .questions_page(
+                filter,
+                f.page.unwrap_or(1),
+                f.per_page.unwrap_or(DEFAULT_PER_PAGE),
+            )
+            .await?;
+        return Ok(Json(QuestionPage {
+            questions: stored
+                .questions
+                .iter()
+                .map(|q| render(q, with_explanation))
+                .collect(),
+            page: stored.page,
+            per_page: stored.per_page,
+            total_pages: stored.total_pages(),
+            total_records: stored.total_records,
+            includes_explanation: with_explanation,
+        }));
+    }
+
+    let bank = state.bank.borrow().clone();
     let page = bank.questions_page(
-        QuestionFilter {
-            exam: f.exam.as_deref(),
-            subject: f.subject.as_deref(),
-            subtopic: f.subtopic.as_deref(),
-            verified: f.verified,
-            text: f.q.as_deref(),
-            source: f.source.as_deref(),
-            year: f.year,
-            country: f.country.as_deref(),
-        },
+        filter,
         f.page.unwrap_or(1),
         f.per_page.unwrap_or(DEFAULT_PER_PAGE),
     );
-
-    let with_explanation = f.include_explanation.unwrap_or(false);
 
     Ok(Json(QuestionPage {
         questions: page

@@ -8,6 +8,7 @@ pub(crate) mod cache;
 mod json;
 pub mod model;
 pub mod readiness;
+pub mod reads;
 pub mod scheme;
 mod store;
 pub mod turso_store;
@@ -29,6 +30,7 @@ pub use readiness::{
     Blueprint, SubjectReadiness, TopicReadiness, blueprint_governs, cohorts, load_blueprints,
     per_topic,
 };
+pub use reads::SqlReads;
 pub use turso_store::TursoStore;
 
 pub use scheme::Scheme;

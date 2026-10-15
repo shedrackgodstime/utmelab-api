@@ -47,7 +47,7 @@ pub use bank::{
 };
 pub use bank::{
     DEFAULT_PER_PAGE, ImagePosition, Inline, InlineKind, JsonStore, MAX_PER_PAGE, QuestionFilter,
-    RichText, Store, StoreError, TursoStore,
+    RichText, SqlReads, Store, StoreError, TursoStore,
 };
 pub use config::Config;
 pub use db::Db;
@@ -71,6 +71,11 @@ use std::sync::{Arc, Mutex};
 #[derive(Clone)]
 pub struct AppState {
     pub bank: tokio::sync::watch::Receiver<Arc<dyn Store>>,
+    /// Per-request SQL reads (D74 phase 1). `Some` in production, `None` in
+    /// tests and wherever the in-RAM bank still answers. Handlers prefer it
+    /// when present; the match arms retire route by route until this field
+    /// (and the fallback) goes away with the full-RAM boot.
+    pub reads: Option<std::sync::Arc<SqlReads>>,
     /// File or Turso, chosen at boot (D53). Async because Turso is over the
     /// wire; the file branch is one stat + a lock in the common case (R1:
     /// CLI-created/revoked keys land without a restart).

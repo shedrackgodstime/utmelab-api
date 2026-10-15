@@ -311,7 +311,23 @@ async fn serve(config: &Config) -> Result<(), ApiError> {
 
     let reports_path = config.reports_file.clone();
     let (bank_tx, bank_rx) = tokio::sync::watch::channel(bank);
+    // D74 phase 1: the hot read path answers from indexed SQL, not the
+    // in-RAM bank. Same turso database, libsql remote client. Boot fails
+    // here rather than silently serving the fallback — a quiet fallback
+    // would hide the breakage this exists to remove.
+    let remote_url = url
+        .replacen("turso://", "https://", 1)
+        .replacen("libsql://", "https://", 1);
+    let reads_db = libsql::Builder::new_remote(remote_url, token.clone())
+        .build()
+        .await
+        .map_err(|e| ApiError::config(format!("reads database: {e}")))?;
+    // One query proves the handle before the port opens.
+    reads_db
+        .connect()
+        .map_err(|e| ApiError::config(format!("reads connect: {e}")))?;
     let state = AppState {
+        reads: Some(std::sync::Arc::new(utmelab_api::SqlReads::new(reads_db))),
         keys: Arc::new(keys),
         bank: bank_rx,
         limiter: Arc::new(Mutex::new(RateLimiter::new())),

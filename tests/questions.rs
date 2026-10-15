@@ -48,6 +48,7 @@ fn state() -> AppState {
     // every borrow() panics. Binding keeps it alive for the test body.
     let _bank_sender = bank_tx;
     AppState {
+        reads: None,
         bank: bank_rx,
         keys: Arc::new(KeyBackend::file(
             KeyStore::open_json(&keys_path).expect("key store"),

@@ -8,7 +8,7 @@
 //!
 //! Run: `set -a; source .env; set +a; cargo run --example seed_questions`
 
-use turso_serverless::{BatchStatement, TransactionBehavior};
+use turso_serverless::{BatchStatement, TransactionBehavior, Value};
 use utmelab_api::{Choice, Explanation, JsonStore, Question, RichText, db::Db};
 
 const DDL: &str = "CREATE TABLE IF NOT EXISTS questions(
@@ -27,12 +27,20 @@ const DDL: &str = "CREATE TABLE IF NOT EXISTS questions(
   explanation TEXT,
   marks REAL NOT NULL,
   difficulty INTEGER NOT NULL,
-  content_hash TEXT NOT NULL
+  content_hash TEXT NOT NULL,
+  text_norm TEXT NOT NULL DEFAULT ''
 );
 CREATE INDEX IF NOT EXISTS idx_q_exam_subject ON questions(exam, subject);
 CREATE INDEX IF NOT EXISTS idx_q_subtopic ON questions(subtopic_id);
 CREATE INDEX IF NOT EXISTS idx_q_source ON questions(source);
-CREATE INDEX IF NOT EXISTS idx_q_year ON questions(year);";
+CREATE INDEX IF NOT EXISTS idx_q_year ON questions(year);
+CREATE INDEX IF NOT EXISTS idx_q_text_norm ON questions(text_norm);";
+
+// Older tables predate text_norm: add the column when missing. The error
+// text is matched, not the code, because turso_serverless surfaces driver
+// strings — a duplicate column means another seed already migrated.
+const MIGRATE_TEXT_NORM: &str =
+    "ALTER TABLE questions ADD COLUMN text_norm TEXT NOT NULL DEFAULT ''";
 
 fn fail(ctx: &str, e: impl std::fmt::Display) -> ! {
     eprintln!("seed {ctx}: {e}");
@@ -84,7 +92,7 @@ async fn send_chunks(db: &Db, label: &str, stmts: Vec<BatchStatement>, total: us
     }
 }
 
-const QUESTION_UPSERT: &str = "INSERT INTO questions(id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty,content_hash) VALUES(?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15,?16) ON CONFLICT(id) DO UPDATE SET exam=excluded.exam,subject=excluded.subject,year=excluded.year,source=excluded.source,text=excluded.text,inline=excluded.inline,options=excluded.options,answer=excluded.answer,subtopic_id=excluded.subtopic_id,section=excluded.section,passage_id=excluded.passage_id,explanation=excluded.explanation,marks=excluded.marks,difficulty=excluded.difficulty,content_hash=excluded.content_hash";
+const QUESTION_UPSERT: &str = "INSERT INTO questions(id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty,content_hash,text_norm) VALUES(?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15,?16,?17) ON CONFLICT(id) DO UPDATE SET exam=excluded.exam,subject=excluded.subject,year=excluded.year,source=excluded.source,text=excluded.text,inline=excluded.inline,options=excluded.options,answer=excluded.answer,subtopic_id=excluded.subtopic_id,section=excluded.section,passage_id=excluded.passage_id,explanation=excluded.explanation,marks=excluded.marks,difficulty=excluded.difficulty,content_hash=excluded.content_hash,text_norm=excluded.text_norm";
 
 #[tokio::main]
 async fn main() {
@@ -110,6 +118,13 @@ async fn main() {
         .await
         .unwrap_or_else(|e| fail("connect", e));
     retry!("ddl", 6, db.conn().execute_batch(DDL));
+    // Backfill-era tables lack text_norm: add it once, ignore the call when
+    // a previous seed already did.
+    match db.conn().execute(MIGRATE_TEXT_NORM, ()).await {
+        Ok(_) => println!("migrated: text_norm column added"),
+        Err(e) if e.to_string().contains("duplicate column") => {}
+        Err(e) => fail("migrate-text-norm", e.to_string()),
+    }
 
     let mut stmts = Vec::with_capacity(questions.len());
     for q in questions.iter() {
@@ -120,29 +135,32 @@ async fn main() {
             .as_ref()
             .map(|e| serde_json::to_string(e).unwrap());
         let hash = q.content_fingerprint();
+        // Rust-side lowercase, stored once: Turso LOWER() is ASCII-only, so a
+        // SQL-side lowering would silently change ?q= results on diacritics.
+        let text_norm = q.text.text.to_lowercase();
+        // 17 params exceeds the driver's 16-tuple impl, so a Vec it is.
+        let params = vec![
+            Value::from(q.id.as_str()),
+            Value::from(q.exam.as_str()),
+            Value::from(q.subject.as_str()),
+            Value::from(q.year as i64),
+            Value::from(q.source.as_str()),
+            Value::from(q.text.text.as_str()),
+            Value::from(inline.as_str()),
+            Value::from(options.as_str()),
+            Value::from(q.answer.as_str()),
+            Value::from(q.subtopic_id.as_deref()),
+            Value::from(q.section.as_deref()),
+            Value::from(q.passage_id.as_deref()),
+            Value::from(explanation.as_deref()),
+            Value::from(q.marks as f64),
+            Value::from(q.difficulty as i64),
+            Value::from(hash.as_str()),
+            Value::from(text_norm.as_str()),
+        ];
         stmts.push(
-            BatchStatement::new(
-                QUESTION_UPSERT,
-                (
-                    q.id.as_str(),
-                    q.exam.as_str(),
-                    q.subject.as_str(),
-                    q.year as i64,
-                    q.source.as_str(),
-                    q.text.text.as_str(),
-                    inline.as_str(),
-                    options.as_str(),
-                    q.answer.as_str(),
-                    q.subtopic_id.as_deref(),
-                    q.section.as_deref(),
-                    q.passage_id.as_deref(),
-                    explanation.as_deref(),
-                    q.marks as f64,
-                    q.difficulty as i64,
-                    hash.as_str(),
-                ),
-            )
-            .unwrap_or_else(|e| fail("params", e.to_string())),
+            BatchStatement::new(QUESTION_UPSERT, params)
+                .unwrap_or_else(|e| fail("params", e.to_string())),
         );
     }
     send_chunks(&db, "questions", stmts, questions.len()).await;

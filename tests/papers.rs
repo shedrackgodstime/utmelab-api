@@ -32,7 +32,8 @@ fn data_dir() -> std::path::PathBuf {
 /// gate can be driven into a state the real bank is not in today.
 fn scratch_bank(tag: &str, keep: &[&str]) -> std::path::PathBuf {
     let count = TEST_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
-    let dir = std::env::temp_dir().join(format!("utmelab-{tag}-bank-{}-{count}", std::process::id()));
+    let dir =
+        std::env::temp_dir().join(format!("utmelab-{tag}-bank-{}-{count}", std::process::id()));
     let _ = std::fs::remove_dir_all(&dir);
     std::fs::create_dir_all(&dir).expect("scratch dir");
     for f in [
@@ -70,11 +71,15 @@ fn scratch_bank(tag: &str, keep: &[&str]) -> std::path::PathBuf {
 /// Returns (AppState, api_key) for the real data directory.
 fn state_with_key(dir: &std::path::Path, tag: &str) -> (AppState, String) {
     let count = TEST_COUNTER.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
-    let keys_path =
-        std::env::temp_dir().join(format!("utmelab-{tag}-keys-{}-{count}.json", std::process::id()));
+    let keys_path = std::env::temp_dir().join(format!(
+        "utmelab-{tag}-keys-{}-{count}.json",
+        std::process::id()
+    ));
     let _ = std::fs::remove_file(&keys_path);
-    let reports_path =
-        std::env::temp_dir().join(format!("utmelab-{tag}-reports-{}-{count}.json", std::process::id()));
+    let reports_path = std::env::temp_dir().join(format!(
+        "utmelab-{tag}-reports-{}-{count}.json",
+        std::process::id()
+    ));
     let _ = std::fs::remove_file(&reports_path);
     let (bank_tx, bank_rx) = tokio::sync::watch::channel(Arc::new(
         JsonStore::load(dir).expect("bank loads"),
@@ -83,6 +88,7 @@ fn state_with_key(dir: &std::path::Path, tag: &str) -> (AppState, String) {
     let mut ks = KeyStore::open_json(&keys_path).expect("key store");
     let (_, plain) = ks.create("test", 60).expect("create test key");
     let state = AppState {
+        reads: None,
         bank: bank_rx,
         keys: Arc::new(KeyBackend::file(ks)),
         limiter: Arc::new(Mutex::new(RateLimiter::new())),

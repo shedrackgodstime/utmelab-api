@@ -26,6 +26,7 @@ fn state() -> AppState {
     ) as Arc<dyn utmelab_api::Store>);
     let _bank_sender = bank_tx;
     AppState {
+        reads: None,
         bank: bank_rx,
         keys: Arc::new(KeyBackend::file(
             KeyStore::open_json(&keys_path).expect("key store"),
