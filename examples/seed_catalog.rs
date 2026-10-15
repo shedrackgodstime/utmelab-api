@@ -8,22 +8,14 @@
 //!
 //! Run: `set -a; source .env; set +a; cargo run --example seed_catalog`
 
-use turso_serverless::Value;
+use turso_serverless::{BatchStatement, TransactionBehavior, Value};
 use utmelab_api::{JsonStore, db::Db};
 
 // Phase 4 draft: catalog tables rebuild wholesale (single writer, no
 // readers yet — no read path exists and files stay source). This also heals
 // the stale pre-pinned `subjects` table found 2026-10-14 (empty, carried
 // `full_exam_questions` instead of `objective_paper_questions`).
-const DDL: &str = "DROP TABLE IF EXISTS subjects;
-DROP TABLE IF EXISTS exams;
-DROP TABLE IF EXISTS topics;
-DROP TABLE IF EXISTS subtopics;
-DROP TABLE IF EXISTS countries;
-DROP TABLE IF EXISTS topic_countries;
-DROP TABLE IF EXISTS exam_requirements;
-DROP TABLE IF EXISTS blueprints;
-CREATE TABLE subjects(
+const DDL: &str = "CREATE TABLE IF NOT EXISTS subjects(
   slug TEXT NOT NULL, exam TEXT NOT NULL, name TEXT NOT NULL,
   is_compulsory INTEGER NOT NULL, objective_paper_questions INTEGER,
   PRIMARY KEY (slug, exam)
@@ -136,6 +128,26 @@ fn arr(v: Option<&serde_json::Value>) -> String {
     }
 }
 
+/// One HTTP round trip per CHUNK rows instead of one per row. Each chunk
+/// commits all-or-nothing, and every statement here is an idempotent upsert,
+/// so a killed run resumes cleanly on the next pass.
+const CHUNK: usize = 200;
+
+async fn send_chunks(db: &Db, label: &str, stmts: Vec<BatchStatement>, total: usize) {
+    let mut done = 0usize;
+    for chunk in stmts.chunks(CHUNK) {
+        let owned = chunk.to_vec();
+        retry!(
+            label,
+            6,
+            db.conn()
+                .transactional_batch(owned.clone(), TransactionBehavior::Immediate)
+        );
+        done += chunk.len();
+        println!("{label} {done}/{total}");
+    }
+}
+
 async fn table_count(db: &Db, table: &str) -> i64 {
     let sql = format!("SELECT COUNT(*) FROM {table}");
     let mut q = retry!("count", 6, db.conn().query(&sql, ()));
@@ -180,11 +192,10 @@ async fn main() {
         .unwrap_or_else(|e| fail("connect", e));
     retry!("ddl", 6, db.conn().execute_batch(DDL));
 
+    let mut stmts = Vec::with_capacity(subjects.len());
     for s in &subjects {
-        retry!(
-            "upsert",
-            6,
-            db.conn().execute(
+        stmts.push(
+            BatchStatement::new(
                 "INSERT INTO subjects(slug,exam,name,is_compulsory,objective_paper_questions) VALUES(?1,?2,?3,?4,?5) ON CONFLICT(slug,exam) DO UPDATE SET name=excluded.name,is_compulsory=excluded.is_compulsory,objective_paper_questions=excluded.objective_paper_questions",
                 (
                     s["slug"].as_str().unwrap_or(""),
@@ -194,13 +205,14 @@ async fn main() {
                     s["objective_paper_questions"].as_i64(),
                 ),
             )
+            .unwrap_or_else(|e| fail("params", e.to_string())),
         );
     }
+    send_chunks(&db, "subjects", stmts, subjects.len()).await;
+    let mut stmts = Vec::with_capacity(exams.len());
     for e in &exams {
-        retry!(
-            "upsert",
-            6,
-            db.conn().execute(
+        stmts.push(
+            BatchStatement::new(
                 "INSERT INTO exams(code,name,countries,status,has_full_paper,subjects_required,duration_minutes,rules) VALUES(?1,?2,?3,?4,?5,?6,?7,?8) ON CONFLICT(code) DO UPDATE SET name=excluded.name,countries=excluded.countries,status=excluded.status,has_full_paper=excluded.has_full_paper,subjects_required=excluded.subjects_required,duration_minutes=excluded.duration_minutes,rules=excluded.rules",
                 (
                     e["code"].as_str().unwrap_or(""),
@@ -213,13 +225,14 @@ async fn main() {
                     js(&e["rules"]).as_str(),
                 ),
             )
+            .unwrap_or_else(|e| fail("params", e.to_string())),
         );
     }
-    for (i, t) in topics.iter().enumerate() {
-        retry!(
-            "upsert",
-            6,
-            db.conn().execute(
+    send_chunks(&db, "exams", stmts, exams.len()).await;
+    let mut stmts = Vec::with_capacity(topics.len());
+    for t in topics.iter() {
+        stmts.push(
+            BatchStatement::new(
                 "INSERT INTO topics(slug,subject,exam,name,\"order\",weight,objectives) VALUES(?1,?2,?3,?4,?5,?6,?7) ON CONFLICT(slug) DO UPDATE SET subject=excluded.subject,exam=excluded.exam,name=excluded.name,\"order\"=excluded.\"order\",weight=excluded.weight,objectives=excluded.objectives",
                 (
                     t["slug"].as_str().unwrap_or(""),
@@ -231,16 +244,14 @@ async fn main() {
                     arr(t.get("objectives")).as_str(),
                 ),
             )
+            .unwrap_or_else(|e| fail("params", e.to_string())),
         );
-        if (i + 1) % 250 == 0 {
-            println!("upserted {}/{} topics", i + 1, topics.len());
-        }
     }
-    for (i, s) in subtopics.iter().enumerate() {
-        retry!(
-            "upsert",
-            6,
-            db.conn().execute(
+    send_chunks(&db, "topics", stmts, topics.len()).await;
+    let mut stmts = Vec::with_capacity(subtopics.len());
+    for s in subtopics.iter() {
+        stmts.push(
+            BatchStatement::new(
                 "INSERT INTO subtopics(slug,topic,name,\"order\",objectives) VALUES(?1,?2,?3,?4,?5) ON CONFLICT(slug) DO UPDATE SET topic=excluded.topic,name=excluded.name,\"order\"=excluded.\"order\",objectives=excluded.objectives",
                 (
                     s["slug"].as_str().unwrap_or(""),
@@ -250,50 +261,49 @@ async fn main() {
                     arr(s.get("objectives")).as_str(),
                 ),
             )
+            .unwrap_or_else(|e| fail("params", e.to_string())),
         );
-        if (i + 1) % 500 == 0 {
-            println!("upserted {}/{} subtopics", i + 1, subtopics.len());
-        }
     }
+    send_chunks(&db, "subtopics", stmts, subtopics.len()).await;
+    let mut stmts = Vec::with_capacity(countries.len());
     for c in &countries {
-        retry!(
-            "upsert",
-            6,
-            db.conn().execute(
+        stmts.push(
+            BatchStatement::new(
                 "INSERT INTO countries(code,name) VALUES(?1,?2) ON CONFLICT(code) DO UPDATE SET name=excluded.name",
                 (c["code"].as_str().unwrap_or(""), c["name"].as_str().unwrap_or(""),),
             )
+            .unwrap_or_else(|e| fail("params", e.to_string())),
         );
     }
+    send_chunks(&db, "countries", stmts, countries.len()).await;
     // topic_countries.json rows are {topic, countries:[...]} — one pair per
     // member country. Empty file today, but the mapping must be right for
     // the day rows exist.
+    let mut stmts = Vec::new();
     for r in &scopes {
         let topic = r["topic"].as_str().unwrap_or("");
         let members: Vec<String> =
             serde_json::from_value(r["countries"].clone()).unwrap_or_default();
         for country in &members {
-            retry!(
-                "upsert",
-                6,
-                db.conn().execute(
+            stmts.push(
+                BatchStatement::new(
                     "INSERT INTO topic_countries(topic,country) VALUES(?1,?2) ON CONFLICT(topic,country) DO NOTHING",
                     (topic, country.as_str(),),
                 )
+                .unwrap_or_else(|e| fail("params", e.to_string())),
             );
         }
     }
-    // Keyless tables rebuild wholesale (draft: slow-moving, single writer).
-    retry!(
-        "clear-reqs",
-        6,
-        db.conn().execute("DELETE FROM exam_requirements", ())
-    );
+    send_chunks(&db, "topic_countries", stmts, scopes.len()).await;
+    // Keyless tables rebuild wholesale: the DELETE and every row ride one
+    // atomic batch, so an interrupted run cannot strand an empty table.
+    let mut stmts = vec![
+        BatchStatement::new("DELETE FROM exam_requirements", ())
+            .unwrap_or_else(|e| fail("params", e.to_string())),
+    ];
     for r in &reqs {
-        retry!(
-            "upsert",
-            6,
-            db.conn().execute(
+        stmts.push(
+            BatchStatement::new(
                 "INSERT INTO exam_requirements(exam,country,\"group\",min_select,subjects) VALUES(?1,?2,?3,?4,?5)",
                 (
                     r["exam"].as_str().unwrap_or(""),
@@ -303,13 +313,14 @@ async fn main() {
                     js(&r["subjects"]).as_str(),
                 ),
             )
+            .unwrap_or_else(|e| fail("params", e.to_string())),
         );
     }
-    retry!(
-        "clear-blueprints",
-        6,
-        db.conn().execute("DELETE FROM blueprints", ())
-    );
+    send_chunks(&db, "exam_requirements", stmts, reqs.len()).await;
+    let mut stmts = vec![
+        BatchStatement::new("DELETE FROM blueprints", ())
+            .unwrap_or_else(|e| fail("params", e.to_string())),
+    ];
     for bp in &blueprints {
         let params = [
             t(bp["exam"].as_str().unwrap_or("")),
@@ -332,15 +343,15 @@ async fn main() {
             t(bp["status"].as_str().unwrap_or("")),
             t(bp["note"].as_str().unwrap_or("")),
         ];
-        retry!(
-            "upsert",
-            6,
-            db.conn().execute(
+        stmts.push(
+            BatchStatement::new(
                 "INSERT INTO blueprints(exam,subject,level,topic,section,members,paper_size,pct,pct_low,pct_high,expected,expected_low,expected_high,source,sample,method,confidence,status,note) VALUES(?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15,?16,?17,?18,?19)",
-                &params,
+                params,
             )
+            .unwrap_or_else(|e| fail("params", e.to_string())),
         );
     }
+    send_chunks(&db, "blueprints", stmts, blueprints.len()).await;
     println!("upserted all tables");
 
     // Parity: COUNT per table.

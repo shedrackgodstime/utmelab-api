@@ -8,6 +8,7 @@
 //!
 //! Run: `set -a; source .env; set +a; cargo run --example seed_questions`
 
+use turso_serverless::{BatchStatement, TransactionBehavior};
 use utmelab_api::{Choice, Explanation, JsonStore, Question, RichText, db::Db};
 
 const DDL: &str = "CREATE TABLE IF NOT EXISTS questions(
@@ -62,6 +63,29 @@ macro_rules! retry {
     }};
 }
 
+/// One HTTP round trip per CHUNK rows instead of one per row. Each chunk
+/// commits all-or-nothing (`transactional_batch`), and upserts are
+/// idempotent, so a killed run retries whole chunks on the next pass and
+/// can never strand a half-written table.
+const CHUNK: usize = 200;
+
+async fn send_chunks(db: &Db, label: &str, stmts: Vec<BatchStatement>, total: usize) {
+    let mut done = 0usize;
+    for chunk in stmts.chunks(CHUNK) {
+        let owned = chunk.to_vec();
+        retry!(
+            label,
+            6,
+            db.conn()
+                .transactional_batch(owned.clone(), TransactionBehavior::Immediate)
+        );
+        done += chunk.len();
+        println!("{label} {done}/{total}");
+    }
+}
+
+const QUESTION_UPSERT: &str = "INSERT INTO questions(id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty,content_hash) VALUES(?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15,?16) ON CONFLICT(id) DO UPDATE SET exam=excluded.exam,subject=excluded.subject,year=excluded.year,source=excluded.source,text=excluded.text,inline=excluded.inline,options=excluded.options,answer=excluded.answer,subtopic_id=excluded.subtopic_id,section=excluded.section,passage_id=excluded.passage_id,explanation=excluded.explanation,marks=excluded.marks,difficulty=excluded.difficulty,content_hash=excluded.content_hash";
+
 #[tokio::main]
 async fn main() {
     let url = std::env::var("TURSO_DB_URL").unwrap_or_else(|e| fail("env", e));
@@ -87,7 +111,8 @@ async fn main() {
         .unwrap_or_else(|e| fail("connect", e));
     retry!("ddl", 6, db.conn().execute_batch(DDL));
 
-    for (i, q) in questions.iter().enumerate() {
+    let mut stmts = Vec::with_capacity(questions.len());
+    for q in questions.iter() {
         let inline = serde_json::to_string(&q.text.inline).unwrap();
         let options = serde_json::to_string(&q.options).unwrap();
         let explanation = q
@@ -95,11 +120,9 @@ async fn main() {
             .as_ref()
             .map(|e| serde_json::to_string(e).unwrap());
         let hash = q.content_fingerprint();
-        retry!(
-            "upsert",
-            6,
-            db.conn().execute(
-                "INSERT INTO questions(id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty,content_hash) VALUES(?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15,?16) ON CONFLICT(id) DO UPDATE SET exam=excluded.exam,subject=excluded.subject,year=excluded.year,source=excluded.source,text=excluded.text,inline=excluded.inline,options=excluded.options,answer=excluded.answer,subtopic_id=excluded.subtopic_id,section=excluded.section,passage_id=excluded.passage_id,explanation=excluded.explanation,marks=excluded.marks,difficulty=excluded.difficulty,content_hash=excluded.content_hash",
+        stmts.push(
+            BatchStatement::new(
+                QUESTION_UPSERT,
                 (
                     q.id.as_str(),
                     q.exam.as_str(),
@@ -119,11 +142,10 @@ async fn main() {
                     hash.as_str(),
                 ),
             )
+            .unwrap_or_else(|e| fail("params", e.to_string())),
         );
-        if (i + 1) % 250 == 0 {
-            println!("upserted {}/{}", i + 1, questions.len());
-        }
     }
+    send_chunks(&db, "questions", stmts, questions.len()).await;
     println!("upserted: {}", questions.len());
 
     // Parity: COUNT + per-row hash recomputed from table columns (R1/R6).

@@ -6,6 +6,7 @@
 //!
 //! Run: `set -a; source .env; set +a; cargo run --example seed_verifications`
 
+use turso_serverless::{BatchStatement, TransactionBehavior};
 use utmelab_api::Verification;
 use utmelab_api::db::Db;
 
@@ -52,6 +53,25 @@ macro_rules! retry {
     }};
 }
 
+/// One HTTP round trip per CHUNK rows instead of one per row. Each chunk
+/// commits all-or-nothing, and every statement here is an idempotent upsert.
+const CHUNK: usize = 200;
+
+async fn send_chunks(db: &Db, label: &str, stmts: Vec<BatchStatement>, total: usize) {
+    let mut done = 0usize;
+    for chunk in stmts.chunks(CHUNK) {
+        let owned = chunk.to_vec();
+        retry!(
+            label,
+            6,
+            db.conn()
+                .transactional_batch(owned.clone(), TransactionBehavior::Immediate)
+        );
+        done += chunk.len();
+        println!("{label} {done}/{total}");
+    }
+}
+
 #[tokio::main]
 async fn main() {
     let url = std::env::var("TURSO_DB_URL").unwrap_or_else(|e| fail("env", e));
@@ -69,14 +89,13 @@ async fn main() {
         .await
         .unwrap_or_else(|e| fail("ddl", e));
 
-    for (i, v) in rows.iter().enumerate() {
+    let mut stmts = Vec::with_capacity(rows.len());
+    for v in rows.iter() {
         let kind = serde_json::to_value(v.kind).unwrap();
         let verdict = serde_json::to_value(v.verdict).unwrap();
         let scope = serde_json::to_string(&v.scope).unwrap();
-        retry!(
-            "upsert",
-            6,
-            db.conn().execute(
+        stmts.push(
+            BatchStatement::new(
                 "INSERT INTO verifications(id,question_id,kind,verdict,scope,verifier,detail,content_hash,created_at) VALUES(?1,?2,?3,?4,?5,?6,?7,?8,?9) ON CONFLICT(id) DO UPDATE SET question_id=excluded.question_id,kind=excluded.kind,verdict=excluded.verdict,scope=excluded.scope,verifier=excluded.verifier,detail=excluded.detail,content_hash=excluded.content_hash,created_at=excluded.created_at",
                 (
                     v.id.as_str(),
@@ -90,11 +109,10 @@ async fn main() {
                     v.created_at.as_str(),
                 ),
             )
+            .unwrap_or_else(|e| fail("params", e.to_string())),
         );
-        if (i + 1) % 250 == 0 {
-            println!("upserted {}/{}", i + 1, rows.len());
-        }
     }
+    send_chunks(&db, "verifications", stmts, rows.len()).await;
     println!("upserted: {}", rows.len());
 
     // Parity: count + per-row content_hash.
