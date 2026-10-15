@@ -20,6 +20,11 @@ pub struct RenderedQuestion {
     pub text: RichText,
     pub options: Vec<Choice>,
     pub section: Option<String>,
+    /// A comprehension or cloze stimulus this row belongs to. Fetch it from
+    /// `/passages/{id}` — without it the stem may be unanswerable, so
+    /// consumers must resolve it, never ignore it.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub passage_id: Option<String>,
     pub marks: f32,
     pub difficulty: u8,
     pub verified: bool,
@@ -41,6 +46,7 @@ pub fn render(q: &Question, include_explanation: bool) -> RenderedQuestion {
         text: q.text.clone(),
         options: q.options.clone(),
         section: q.section.clone(),
+        passage_id: q.passage_id.clone(),
         marks: q.marks,
         difficulty: q.difficulty,
         verified: q.verified,
