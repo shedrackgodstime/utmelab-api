@@ -195,6 +195,12 @@ jobs:
             "${VPS_USER}@${VPS_HOST}" \
             "systemctl is-active ${APP}; curl -s http://127.0.0.1:${API_PORT}/health || true"
 
+      - name: Fetch smoke script
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: site/scripts/smoke.mjs
+          sparse-checkout-cone-mode: false
+
       - name: Edge smoke check (public path, not loopback)
         run: |
           cd site
