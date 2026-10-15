@@ -166,6 +166,7 @@ pub async fn assemble_paper(
     State(state): State<AppState>,
     Path((exam, subject)): Path<(String, String)>,
     Query(f): Query<AssembleQuery>,
+    _caller: crate::api::auth::Caller,
 ) -> Result<Json<AssembledPaperOut>, ApiError> {
     let paper = build(
         &state,
