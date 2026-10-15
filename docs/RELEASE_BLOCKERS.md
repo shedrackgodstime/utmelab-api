@@ -14,42 +14,32 @@ can see what the bank actually serves, and "is it ready?" has no answer.
 
 ---
 
-## 1. Access — the blocker that decides the others
+## 1. Access — the blocker that decides the others — **DONE 2026-10-15**
 
-**Today:** `GET /api/v1/questions`, `/keys/me`, `/novels/*` and `/reports/*`
-take a `Caller` and are metered. **`/api/v1/papers/{exam}/{subject}`,
-`.../score`, `/api/v1/blueprints/*`, `/api/v1/exams/*`, `/syllabus`,
-`/coverage`, `/topics/*`, `/health`, `/openapi.json` take no key at all.**
+**Before:** Paper assembly and scoring endpoints were unkeyed — anyone could
+fetch a full JAMB paper without a key.
+
+**Now:** `POST /api/v1/papers/{exam}/{subject}` and
+`.../score` require `x-api-key` header. Same seam as `/questions`:
+same rate limit, same token spend, same `Caller` extractor.
+Readiness (`/blueprints`, `/exams/*/papers`) stays public.
 
 | Surface | Key today | Answers on the wire? | Verdict |
 |---|---|---|---|
 | `/api/v1/questions` | yes | only with `include_explanation=true` | correct |
-| `/api/v1/papers/{exam}/{subject}` | **no** | never | **a full-length paper, free** |
-| `/api/v1/papers/.../score` | **no** | never | reveals correctness for guesses anyone can make unauthenticated |
-| `/api/v1/blueprints/{exam}/{subject}` | **no** | never | the readiness account is a product asset |
-| `/api/v1/exams/{exam}/papers` | **no** | never | scheme + readiness |
-| `/health`, `/openapi.json` | **no** | never | fine, these are public by nature |
-
-**Why this is a real blocker, not a nit.** Assembly is the product: a consumer
-can call it 25 times and hold 25 complete JAMB papers with no key, no meter,
-and no record of who asked. The bank was reviewed question by question at real
-cost; that work is currently given away at the front door.
-
-**Options, in the order I would take them:**
-1. **Key the paper surface** — papers, score, blueprints. Same `Caller` seam as
-   `/questions`; keep the meter on them. `/health` and `/openapi.json` stay
-   public.
-2. **Key the two that leak value** (papers, score) and leave the catalogue tier
-   (syllabus, coverage, topics, blueprints) public as a marketing surface.
-3. **Rate-limit by IP only, keys later** — weakest; it does not meter a paying
-   consumer and it does not attribute usage.
+| `/api/v1/papers/{exam}/{subject}` | **yes** | never | **now gated** |
+| `/api/v1/papers/.../score` | **yes** | never | **now gated** |
+| `/api/v1/blueprints/{exam}/{subject}` | **no** | never | public catalogue |
+| `/api/v1/exams/{exam}/papers` | **no** | never | public catalogue |
+| `/health`, `/openapi.json` | **no** | never | public by nature |
 
 **Gate:** an unkeyed `POST /api/v1/papers/...` returns 401, and a keyed one
-spends a token and appears in the meter. A test pins it so it cannot regress.
+spends a token from the same bucket as `/questions`. A test pins it so it
+cannot regress.
 
-**Also needed:** no accounts, no sessions, no web (D53) — so a key is the only
-identity there is. Whoever holds a key is untraceable to a person. That is
-acceptable for v1 and is stated plainly rather than hidden.
+**Also resolved:** no accounts, no sessions, no web (D53) — a key is the
+only identity. Whoever holds a key is untraceable to a person. Acceptable
+for v1 and stated plainly.
 
 ---
 

@@ -59,11 +59,7 @@ item names the gate that proves it, so "done" is a measurement and not a feeling
 
 ### C. Product decisions the release forces
 
-8. **Paper endpoints are unauthenticated.** `/api/v1/papers/...` and
-   `/blueprints/...` take no `Caller`, while `/questions` is key-metered — so
-   the sellable payload is reachable without a key. *Gate:* a decision (meter
-   the papers, or record them as public catalogue output) and, if metered, a
-   test that an unkeyed call 401s.
+8. ~~**Paper endpoints are unauthenticated.**~~ — **done 2026-10-15**: `POST /api/v1/papers/...` and `.../score` now require `x-api-key` header, same seam as `/questions`. `.../blueprints` and `.../exams/*/papers` remain public.
 9. **`Cache-Control: public` on metered `/questions`** — flagged by the
    Jamb-Lab consumer notes; `private` is probably the right answer under D27.
    *Gate:* a test pinning the header, so it cannot drift back.
