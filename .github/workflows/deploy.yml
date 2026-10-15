@@ -87,28 +87,25 @@ jobs:
           mkdir -p release
           cp target/release/${APP} release/${APP}
           cp -r site/dist release/site
-          # Transitional: catalog + novels are embedded in the binary
-          # (`JsonStore::load_embedded`); the release carries exactly one data
-          # file — questions.json. data/inbox/ never ships (import staging,
-          # local-only). Once questions move to Turso, this block ships no
-          # data at all: binary + site/.
-          mkdir -p release/data
-          cp data/questions.json release/data/questions.json
-          # Compatibility for the 2026-10-12 `web/` → `site/` rename.
-          # Two files on the host are *installed copies* of repo files and still
-          # hardcode the old name: /usr/local/bin/utmelab-api-deploy gates on
-          # `releases/<v>/web/index.html`, and /etc/caddy/Caddyfile.api roots at
-          # `…/current/web`. Shipping the docs under both names lets a host that
-          # has not re-run `vps-onetime-setup.sh` activate and serve docs at
-          # all — a symlink inside the tarball, so nothing on the host is
-          # mutated and no sudo is needed. DROP THIS LINE once the host setup
-          # has been re-run and both copies point at `site/` (see
-          # docs/deployment/README.md § "Renamed web/ → site/").
-          ln -s site release/web
+          # D73: the release is exactly binary + site/. No data/ at all.
+          #
+          # `serve` has no reference to data/, JsonStore or any path — it boots
+          # TursoStore::open_cached and serves from memory. config.data_dir is
+          # read only by the `import`, `quarantine` and `verify_row` CLI
+          # subcommands, and CI runs none of those on the artifact. So shipping
+          # questions.json was already dead weight, and data/inbox/ never
+          # shipped at all (import staging).
+          #
+          # What is NOT fixed here is the other half of D73: the catalog and
+          # novels are still `include_str!`'d into the binary (~2.6 MB). That is
+          # Rust, not deploy config — see the `verify-row`/`import` CLI paths,
+          # which still need the embedded bytes, and the removal lands with the
+          # code change.
           test -x release/${APP}
           test -f release/site/index.html
-          test -f release/web/index.html
-          test -f release/data/questions.json
+          test -d release/site
+          # Nothing JSON may reach the host.
+          ! test -e release/data
           tar -czf "${APP}-${{ steps.v.outputs.version }}.tar.gz" -C release .
 
       - name: Upload release artifact
