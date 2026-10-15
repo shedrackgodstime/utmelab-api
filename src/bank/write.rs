@@ -38,6 +38,8 @@ macro_rules! retry {
 /// Upsert validated questions. POSTcondition: every row carries a fresh
 /// fingerprint; callers must have run the R4 gate first.
 pub async fn upsert_questions(db: &Db, questions: &[Question]) -> Result<usize, ApiError> {
+    use turso_serverless::Value::{Integer, Null, Real, Text};
+    let text_of = |v: Option<&str>| v.map(|s| Text(s.to_owned())).unwrap_or(Null);
     for (i, q) in questions.iter().enumerate() {
         let inline = serde_json::to_string(&q.text.inline).unwrap_or_else(|_| "[]".to_string());
         let options = serde_json::to_string(&q.options).unwrap_or_else(|_| "[]".to_string());
@@ -46,29 +48,33 @@ pub async fn upsert_questions(db: &Db, questions: &[Question]) -> Result<usize, 
             .as_ref()
             .map(|e| serde_json::to_string(e).unwrap_or_else(|_| "null".to_string()));
         let hash = q.content_fingerprint();
+        // 17 params exceeds the driver's 16-tuple impl, so a Vec it is.
+        // text_norm rides along: Rust-lowercased once here, matched by ?q=.
+        let params = vec![
+            Text(q.id.clone()),
+            Text(q.exam.clone()),
+            Text(q.subject.clone()),
+            Integer(q.year as i64),
+            Text(q.source.clone()),
+            Text(q.text.text.clone()),
+            Text(inline),
+            Text(options),
+            Text(q.answer.clone()),
+            text_of(q.subtopic_id.as_deref()),
+            text_of(q.section.as_deref()),
+            text_of(q.passage_id.as_deref()),
+            text_of(explanation.as_deref()),
+            Real(q.marks as f64),
+            Integer(q.difficulty as i64),
+            Text(hash),
+            Text(q.text.text.to_lowercase()),
+        ];
         retry!(
             "upsert-question",
             6,
             db.conn().execute(
-                "INSERT INTO questions(id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty,content_hash) VALUES(?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15,?16) ON CONFLICT(id) DO UPDATE SET exam=excluded.exam,subject=excluded.subject,year=excluded.year,source=excluded.source,text=excluded.text,inline=excluded.inline,options=excluded.options,answer=excluded.answer,subtopic_id=excluded.subtopic_id,section=excluded.section,passage_id=excluded.passage_id,explanation=excluded.explanation,marks=excluded.marks,difficulty=excluded.difficulty,content_hash=excluded.content_hash",
-                (
-                    q.id.as_str(),
-                    q.exam.as_str(),
-                    q.subject.as_str(),
-                    q.year as i64,
-                    q.source.as_str(),
-                    q.text.text.as_str(),
-                    inline.as_str(),
-                    options.as_str(),
-                    q.answer.as_str(),
-                    q.subtopic_id.as_deref(),
-                    q.section.as_deref(),
-                    q.passage_id.as_deref(),
-                    explanation.as_deref(),
-                    q.marks as f64,
-                    q.difficulty as i64,
-                    hash.as_str(),
-                ),
+                "INSERT INTO questions(id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty,content_hash,text_norm) VALUES(?1,?2,?3,?4,?5,?6,?7,?8,?9,?10,?11,?12,?13,?14,?15,?16,?17) ON CONFLICT(id) DO UPDATE SET exam=excluded.exam,subject=excluded.subject,year=excluded.year,source=excluded.source,text=excluded.text,inline=excluded.inline,options=excluded.options,answer=excluded.answer,subtopic_id=excluded.subtopic_id,section=excluded.section,passage_id=excluded.passage_id,explanation=excluded.explanation,marks=excluded.marks,difficulty=excluded.difficulty,content_hash=excluded.content_hash,text_norm=excluded.text_norm",
+                params.clone(),
             )
         );
         if (i + 1) % 100 == 0 {
