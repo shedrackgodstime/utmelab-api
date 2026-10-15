@@ -24,35 +24,8 @@ fn data_dir() -> std::path::PathBuf {
     std::path::PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("data")
 }
 
-fn state() -> AppState {
-    state_from(&data_dir(), "papers")
-}
-
-/// The router over some bank directory. `tag` keeps the temp key/report files
-/// of concurrent tests apart.
-fn state_from(dir: &std::path::Path, tag: &str) -> AppState {
-    let keys_path =
-        std::env::temp_dir().join(format!("utmelab-{tag}-keys-{}.json", std::process::id()));
-    let _ = std::fs::remove_file(&keys_path);
-    let reports_path =
-        std::env::temp_dir().join(format!("utmelab-{tag}-reports-{}.json", std::process::id()));
-    let _ = std::fs::remove_file(&reports_path);
-    let (bank_tx, bank_rx) = tokio::sync::watch::channel(Arc::new(
-        JsonStore::load(dir).expect("bank loads"),
-    ) as Arc<dyn utmelab_api::Store>);
-    let _bank_sender = bank_tx;
-    AppState {
-        bank: bank_rx,
-        keys: Arc::new(KeyBackend::file(
-            KeyStore::open_json(&keys_path).expect("key store"),
-        )),
-        limiter: Arc::new(Mutex::new(RateLimiter::new())),
-        reports: Arc::new(tokio::sync::Mutex::new(
-            ReportStore::open(&reports_path).expect("report store"),
-        )),
-    }
-}
-
+/// Returns (AppState, api_key) for a test bank directory.
+/// Uses a shared KeyStore file so the key persists across requests.
 /// A copy of the real bank holding only `keep` (plus the whole catalog), so a
 /// gate can be driven into a state the real bank is not in today.
 fn scratch_bank(tag: &str, keep: &[&str]) -> std::path::PathBuf {
@@ -74,7 +47,7 @@ fn scratch_bank(tag: &str, keep: &[&str]) -> std::path::PathBuf {
     ] {
         let src = data_dir().join(format!("{f}.json"));
         if src.exists() {
-            std::fs::copy(&src, dir.join(format!("{f}.json"))).expect("copy fixture");
+            let _ = std::fs::copy(&src, dir.join(format!("{f}.json")));
         }
     }
     let raw = std::fs::read_to_string(data_dir().join("questions.json")).expect("questions");
@@ -91,12 +64,35 @@ fn scratch_bank(tag: &str, keep: &[&str]) -> std::path::PathBuf {
     dir
 }
 
-async fn post(path: &str, body: serde_json::Value) -> (StatusCode, serde_json::Value) {
-    post_with(state(), path, body).await
+/// Returns (AppState, api_key) for the real data directory.
+fn state_with_key(dir: &std::path::Path, tag: &str) -> (AppState, String) {
+    let keys_path =
+        std::env::temp_dir().join(format!("utmelab-{tag}-keys-{}.json", std::process::id()));
+    let _ = std::fs::remove_file(&keys_path);
+    let reports_path =
+        std::env::temp_dir().join(format!("utmelab-{tag}-reports-{}.json", std::process::id()));
+    let _ = std::fs::remove_file(&reports_path);
+    let (bank_tx, bank_rx) = tokio::sync::watch::channel(Arc::new(
+        JsonStore::load(dir).expect("bank loads"),
+    ) as Arc<dyn utmelab_api::Store>);
+    let _bank_sender = bank_tx;
+    let mut ks = KeyStore::open_json(&keys_path).expect("key store");
+    let (_, plain) = ks.create("test", 60).expect("create test key");
+    let state = AppState {
+        bank: bank_rx,
+        keys: Arc::new(KeyBackend::file(ks)),
+        limiter: Arc::new(Mutex::new(RateLimiter::new())),
+        reports: Arc::new(tokio::sync::Mutex::new(
+            ReportStore::open(&reports_path).expect("report store"),
+        )),
+    };
+    (state, plain)
 }
 
-async fn post_with(
+/// Helper: POST with API key from state_with_key, returning (status, body).
+async fn post(
     state: AppState,
+    key: &str,
     path: &str,
     body: serde_json::Value,
 ) -> (StatusCode, serde_json::Value) {
@@ -104,6 +100,28 @@ async fn post_with(
         .uri(path)
         .method("POST")
         .header("content-type", "application/json")
+        .header("x-api-key", key)
+        .body(Body::from(serde_json::to_vec(&body).unwrap()))
+        .expect("request");
+    let resp = router(state).oneshot(req).await.expect("router responds");
+    let status = resp.status();
+    let bytes = resp.into_body().collect().await.expect("body").to_bytes();
+    let json: serde_json::Value = serde_json::from_slice(&bytes).unwrap_or(serde_json::Value::Null);
+    (status, json)
+}
+
+/// Helper: POST with explicit API key (for scratch banks with different keys).
+async fn post_with_key(
+    state: AppState,
+    key: &str,
+    path: &str,
+    body: serde_json::Value,
+) -> (StatusCode, serde_json::Value) {
+    let req = Request::builder()
+        .uri(path)
+        .method("POST")
+        .header("content-type", "application/json")
+        .header("x-api-key", key)
         .body(Body::from(serde_json::to_vec(&body).unwrap()))
         .expect("request");
     let resp = router(state).oneshot(req).await.expect("router responds");
@@ -143,7 +161,10 @@ fn bp(topic: &str, paper_size: u32) -> utmelab_api::Blueprint {
 /// the count gate serves mathematics and the blueprint predicate stands down.
 #[tokio::test]
 async fn single_cohort_subject_serves_a_count_paper_not_an_impossible_blueprint() {
+    let (state, key) = state_with_key(&data_dir(), "papers");
     let (status, doc) = post(
+        state,
+        &key,
         "/api/v1/papers/JAMB/mathematics?seed=7",
         serde_json::json!({}),
     )
@@ -327,7 +348,14 @@ fn count_gate_serves_every_subject_today() {
 
 #[tokio::test]
 async fn count_paper_is_full_length_labelled_and_keyless() {
-    let (status, doc) = post("/api/v1/papers/JAMB/commerce?seed=7", serde_json::json!({})).await;
+    let (state, key) = state_with_key(&data_dir(), "papers");
+    let (status, doc) = post(
+        state,
+        &key,
+        "/api/v1/papers/JAMB/commerce?seed=7",
+        serde_json::json!({}),
+    )
+    .await;
     assert_eq!(status, StatusCode::OK);
     assert_eq!(doc["mode"], "count", "no measurement, so the paper says so");
     assert_eq!(doc["total"], 40);
@@ -367,13 +395,31 @@ async fn count_paper_is_full_length_labelled_and_keyless() {
 
 #[tokio::test]
 async fn same_seed_same_count_paper_different_seed_differs() {
-    let one = post("/api/v1/papers/JAMB/commerce?seed=1", serde_json::json!({})).await;
-    let two = post("/api/v1/papers/JAMB/commerce?seed=1", serde_json::json!({})).await;
-    let three = post(
+    let (state, key) = state_with_key(&data_dir(), "papers");
+    let (status1, one) = post(
+        state.clone(),
+        &key,
+        "/api/v1/papers/JAMB/commerce?seed=1",
+        serde_json::json!({}),
+    )
+    .await;
+    let (status2, two) = post(
+        state.clone(),
+        &key,
+        "/api/v1/papers/JAMB/commerce?seed=1",
+        serde_json::json!({}),
+    )
+    .await;
+    let (status3, three) = post(
+        state,
+        &key,
         "/api/v1/papers/JAMB/commerce?seed=99",
         serde_json::json!({}),
     )
     .await;
+    assert_eq!(status1, StatusCode::OK);
+    assert_eq!(status2, StatusCode::OK);
+    assert_eq!(status3, StatusCode::OK);
     let ids = |d: &serde_json::Value| -> Vec<String> {
         d["sections"]
             .as_array()
@@ -383,10 +429,10 @@ async fn same_seed_same_count_paper_different_seed_differs() {
             .map(|q| q["id"].as_str().unwrap_or_default().to_string())
             .collect()
     };
-    assert_eq!(ids(&one.1), ids(&two.1), "same seed, same paper");
-    assert_ne!(ids(&one.1), ids(&three.1), "a new seed reshuffles");
-    assert_eq!(ids(&one.1).len(), 40);
-    assert_eq!(ids(&three.1).len(), 40);
+    assert_eq!(ids(&one), ids(&two), "same seed, same paper");
+    assert_ne!(ids(&one), ids(&three), "a new seed reshuffles");
+    assert_eq!(ids(&one).len(), 40);
+    assert_eq!(ids(&three).len(), 40);
 }
 
 /// The refusal the launch position no longer has a live example of: a subject
@@ -403,9 +449,10 @@ async fn a_subject_below_its_paper_size_refuses_naming_the_shortfall() {
             "q_authored_music_003",
         ],
     );
-    let state = state_from(&dir, "shortfall");
-    let (status, doc) = post_with(
+    let (state, key) = state_with_key(&dir, "shortfall");
+    let (status, doc) = post_with_key(
         state,
+        &key,
         "/api/v1/papers/JAMB/music?seed=1",
         serde_json::json!({}),
     )
@@ -421,7 +468,10 @@ async fn a_subject_below_its_paper_size_refuses_naming_the_shortfall() {
 async fn subject_without_a_stated_paper_size_refuses_to_invent_one() {
     // WAEC rows state no objective paper size (D50), so no paper can be
     // assembled without inventing a number.
+    let (state, key) = state_with_key(&data_dir(), "papers");
     let (status, doc) = post(
+        state,
+        &key,
         "/api/v1/papers/WAEC/animal-husbandry?seed=1",
         serde_json::json!({}),
     )
@@ -436,7 +486,14 @@ async fn subject_without_a_stated_paper_size_refuses_to_invent_one() {
 
 #[tokio::test]
 async fn count_paper_scores_statelessly_and_reveals_no_key() {
-    let (_, paper) = post("/api/v1/papers/JAMB/commerce?seed=4", serde_json::json!({})).await;
+    let (state, key) = state_with_key(&data_dir(), "papers");
+    let (_, paper) = post(
+        state.clone(),
+        &key,
+        "/api/v1/papers/JAMB/commerce?seed=4",
+        serde_json::json!({}),
+    )
+    .await;
     let ids: Vec<String> = paper["sections"]
         .as_array()
         .expect("sections")
@@ -451,6 +508,8 @@ async fn count_paper_scores_statelessly_and_reveals_no_key() {
         .map(|id| (id.clone(), serde_json::json!("zzz-not-an-option")))
         .collect();
     let (status, doc) = post(
+        state,
+        &key,
         "/api/v1/papers/JAMB/commerce/score",
         serde_json::json!({"seed": 4, "answers": answers}),
     )
@@ -468,8 +527,10 @@ async fn count_paper_scores_statelessly_and_reveals_no_key() {
     }
     // Scoring an unassemblable subject refuses exactly as assembly does.
     let dir = scratch_bank("scoreshort", &["q_authored_music_001"]);
-    let (status, doc) = post_with(
-        state_from(&dir, "scoreshort"),
+    let (state, key) = state_with_key(&dir, "scoreshort");
+    let (status, doc) = post_with_key(
+        state,
+        &key,
         "/api/v1/papers/JAMB/music/score",
         serde_json::json!({"seed": 1, "answers": {}}),
     )
@@ -480,7 +541,10 @@ async fn count_paper_scores_statelessly_and_reveals_no_key() {
 
 #[tokio::test]
 async fn unknown_subject_is_404_not_a_refusal() {
+    let (state, key) = state_with_key(&data_dir(), "papers");
     let (status, doc) = post(
+        state,
+        &key,
         "/api/v1/papers/JAMB/not-a-subject?seed=1",
         serde_json::json!({}),
     )
@@ -492,7 +556,7 @@ async fn unknown_subject_is_404_not_a_refusal() {
 #[test]
 fn the_gate_needs_both_coverage_and_a_second_cohort() {
     let data = data_dir();
-    let blueprints = utmelab_api::load_blueprints(&data_dir()).expect("blueprints load");
+    let blueprints = utmelab_api::load_blueprints(&data).expect("blueprints load");
     let bank = JsonStore::load(&data).expect("bank loads");
 
     // Coverage alone is not enough: mathematics' measurement is whole (23
