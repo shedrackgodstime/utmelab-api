@@ -53,7 +53,12 @@ fn fail(stage: &str, e: impl std::fmt::Display) -> ! {
 
 #[tokio::main]
 async fn main() {
-    let url = std::env::var("TURSO_DB_URL").unwrap_or_else(|e| fail("env TURSO_DB_URL", e));
+    let raw_url = std::env::var("TURSO_DB_URL").unwrap_or_else(|e| fail("env TURSO_DB_URL", e));
+    // libsql speaks https to the primary; the repo's env files historically
+    // carry the turso:// form, so normalize here rather than demanding edits.
+    let url = raw_url
+        .replacen("turso://", "https://", 1)
+        .replacen("libsql://", "https://", 1);
     let token = std::env::var("TURSO_DB_TOKEN").unwrap_or_else(|e| fail("env TURSO_DB_TOKEN", e));
 
     // ── A. current path: full fetch into RAM ──────────────────────────
