@@ -255,3 +255,61 @@ or shipped in the release, and that removal is a code change, not a deploy.
 
 Do not tag `v0.1.0` until that is done and the release artifact is
 `binary + site/` with no `data/`.
+
+## Proposal (not implemented) — an edge smoke check after every deploy
+
+**Status: proposal only. Nothing has been written, and nothing runs today.**
+This section is the proposal. Decide it, then implement it.
+
+### The hole
+
+A green build and a green deploy gate prove nothing about what the internet
+actually gets. The gate health-checks `127.0.0.1:8081`, so Caddy, TLS and route
+resolution are all outside what it can observe. `cargo test` does not see them
+either, and `astro preview` resolves directories itself — so the site works
+locally and fails on the host, which is the worst combination.
+
+Two bugs shipped green through exactly that hole:
+
+1. **The docs tier shadowed the API.** Caddy orders `file_server` *before*
+   `reverse_proxy`, so `try_files {path} /index.html` answered `/health` and
+   every `/api/*` route with HTML. The binary was live and correct on loopback
+   the whole time. Only a request from outside would have caught it.
+2. **Every docs URL rendered the home page.** `try_files` matched real files
+   (`/_astro/*.css`, `/docs/x/index.html`) but not *directory* URLs, so
+   `/docs/guides/quickstart/`, `/dashboard/` and `/docs/` all fell through to
+   `index.html` — **with HTTP 200**, so even a status-code check passes.
+
+### Proposed check
+
+A single script, run as the last step of the deploy job, against
+`https://api.utmelab.com` from the runner (not the host — the point is the
+public path). Three groups:
+
+| Group | Asserts | Catches |
+|---|---|---|
+| API reaches the binary | `/health` is 200, is JSON not HTML, and carries `version` / `bank_version` / `subjects` / `questions`; `/api/v1/exams` is 200 with real catalog data; `/api/v1/questions` is 401 without a key | bug 1 |
+| Docs serve **distinct** pages | `/`, `/docs/`, `/docs/guides/quickstart/`, `/dashboard/` each return 200, a non-empty `<title>`, and **titles that differ from each other** | bug 2 |
+| Misses and redirects | a random missing path is **404**; an extensionless docs URL is **301/308**, not a 200 | bug 2's status-blind half |
+
+Exit non-zero on any failure, so the deploy run goes red.
+
+### The part that matters
+
+**Assert distinct content, not just status codes.** All four broken routes
+returned **200 with the identical home page**. Any check built on status codes
+passes while the site is completely broken. Deduplicate on the rendered
+`<title>`, comparing as an array — titles contain spaces, and a naive
+`for s in $seen` word-splits them and silently never matches.
+
+### Why not put it in the gate
+
+The gate is host-side, loopback-only, and root. A public check belongs in CI,
+where the runner already has egress. Keep the gate as the loopback health
+assertion it is; do not widen it.
+
+### Also worth deciding separately
+
+There is currently **no uptime check** on `/health` between deploys. The same
+script runnable by hand (or on a schedule) would cover that gap. It is not
+proposed here — it is a separate decision with its own failure noise trade-off.
