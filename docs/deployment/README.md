@@ -1,5 +1,23 @@
 # Deploying utmelab-api — set up once, then deploy on demand
 
+**Status 2026-10-15: WITHDRAWN.** The API is not in production and is not
+ready to be. `v0.1.0` is deliberately not cut — see the note at the end. The
+host is left as scaffolding so a future deploy is a one-click operation.
+
+> The running `v0.0.0-pre.6bcf7d8` deployment was **removed rather than
+> patched**, so the next deploy meets an empty host. Nothing of the API is
+> reachable: `api.utmelab.com` no longer serves (HTTP `000`).
+>
+> **To restore the public endpoint** (host config is all still in place):
+> ```bash
+> echo 'import /etc/caddy/Caddyfile.api' >> /etc/caddy/Caddyfile
+> systemctl reload caddy
+> systemctl enable --now utmelab-api        # after a release exists
+> ```
+> Everything else the deploy needs is untouched: the unit file, the gate, the
+> sudoers rule, `/etc/utmelab-api/environment`, and a `deploy`-writable
+> `releases/`.
+
 **You do not SSH per release.** The VPS config is one-time; after that you
 trigger a deploy from the Actions tab (or push a tag) and it builds and ships.
 This is the same proven pattern the parent UTME-Lab app already runs on this host
@@ -227,3 +245,13 @@ file rather than a flag error.
 - `UTMELAB_BANK_CACHE_FILE` must point inside `/var/lib/utmelab-api`. The default
   is `var/bank_cache.json`, which resolves under the read-only release dir, so
   the cache could never be written and every boot did a full Turso re-fetch.
+
+## v0.1.0 is deliberately not cut
+
+The prerelease pipeline is proven end to end — it has built, shipped, activated
+and health-checked six times on this host — but the API is **not ready**. It is
+being held while D73 lands: nothing JSON should be embedded in the served binary
+or shipped in the release, and that removal is a code change, not a deploy.
+
+Do not tag `v0.1.0` until that is done and the release artifact is
+`binary + site/` with no `data/`.
