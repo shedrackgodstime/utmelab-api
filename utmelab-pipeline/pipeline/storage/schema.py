@@ -129,7 +129,44 @@ PIPELINE_DDL: List[str] = [
         approved_at TEXT NOT NULL
     );
     """,
-    "CREATE INDEX IF NOT EXISTS idx_approved_passages_lookup ON approved_passages(exam, subject, year);"
+    "CREATE INDEX IF NOT EXISTS idx_approved_passages_lookup ON approved_passages(exam, subject, year);",
+    """
+    CREATE TABLE IF NOT EXISTS pipeline_metrics (
+        id TEXT PRIMARY KEY,
+        snapshot_at TEXT NOT NULL,
+        trigger_source TEXT NOT NULL,
+        exam TEXT,
+        subject TEXT,
+        health_status TEXT NOT NULL,
+        total_staged INTEGER NOT NULL DEFAULT 0,
+        gate0_valid INTEGER NOT NULL DEFAULT 0,
+        gate0_rejected INTEGER NOT NULL DEFAULT 0,
+        gate0_pass_rate_pct REAL NOT NULL DEFAULT 0.0,
+        ai_processed INTEGER NOT NULL DEFAULT 0,
+        auto_approved INTEGER NOT NULL DEFAULT 0,
+        flagged_for_review INTEGER NOT NULL DEFAULT 0,
+        approved_for_prod INTEGER NOT NULL DEFAULT 0,
+        ai_auto_approval_rate_pct REAL NOT NULL DEFAULT 0.0,
+        approved_questions_total INTEGER NOT NULL DEFAULT 0,
+        approved_passages_total INTEGER NOT NULL DEFAULT 0,
+        approved_verifications_total INTEGER NOT NULL DEFAULT 0,
+        avg_confidence REAL,
+        high_conf_count INTEGER NOT NULL DEFAULT 0,
+        med_conf_count INTEGER NOT NULL DEFAULT 0,
+        low_conf_count INTEGER NOT NULL DEFAULT 0,
+        verdict_verified INTEGER NOT NULL DEFAULT 0,
+        verdict_disagreement INTEGER NOT NULL DEFAULT 0,
+        verdict_ambiguous INTEGER NOT NULL DEFAULT 0,
+        questions_with_media INTEGER NOT NULL DEFAULT 0,
+        questions_with_passages INTEGER NOT NULL DEFAULT 0,
+        review_queue_open INTEGER NOT NULL DEFAULT 0,
+        review_queue_resolved INTEGER NOT NULL DEFAULT 0,
+        review_queue_discarded INTEGER NOT NULL DEFAULT 0,
+        payload_json TEXT NOT NULL
+    );
+    """,
+    "CREATE INDEX IF NOT EXISTS idx_metrics_snapshot_at ON pipeline_metrics(snapshot_at);",
+    "CREATE INDEX IF NOT EXISTS idx_metrics_exam_subject ON pipeline_metrics(exam, subject);",
 ]
 
 

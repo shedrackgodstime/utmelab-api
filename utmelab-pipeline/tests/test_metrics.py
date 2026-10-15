@@ -108,3 +108,49 @@ async def test_collector_populated_database(pipe_client: TursoClient):
     md_text = collector.render_markdown_summary(metrics)
     assert "physics" in md_text
     assert "| `Stem too short (min 15 chars)` | `1` |" in md_text
+
+
+@pytest.mark.asyncio
+async def test_record_snapshot_and_history(pipe_client: TursoClient):
+    # Insert 1 staging row
+    await pipe_client.execute(
+        """
+        INSERT INTO harvest_staging (
+            id, run_id, source_name, exam, subject, year, stem_raw, options_raw, answer_raw,
+            fingerprint, gate0_status, gate0_rejection_reason, ai_status, pipeline_status,
+            ai_confidence, answer_check_verdict, media_url, created_at, updated_at
+        ) VALUES (
+            'stage_1', 'run_1', 'jamb_myschool', 'JAMB', 'chemistry', 2025, 'What is the pH of water?',
+            '[]', 'a', 'fp_chem', 'valid', NULL, 'evaluated', 'auto_approved',
+            0.99, 'VERIFIED', NULL, '2026-10-15T00:00:00Z', '2026-10-15T00:00:00Z'
+        )
+        """
+    )
+
+    collector = MetricsCollector(pipe_client)
+
+    # 1. Record snapshot
+    snap_data = await collector.record_snapshot(trigger_source="unit_test", subject="chemistry", exam="JAMB")
+    assert "snapshot_id" in snap_data
+    assert snap_data["snapshot_id"].startswith("snap_")
+
+    # 2. Verify row exists in pipeline_metrics table
+    db_rows = await pipe_client.execute("SELECT * FROM pipeline_metrics WHERE id = ?", [snap_data["snapshot_id"]])
+    assert len(db_rows.rows) == 1
+    assert db_rows.rows[0]["trigger_source"] == "unit_test"
+    assert db_rows.rows[0]["subject"] == "chemistry"
+    assert db_rows.rows[0]["exam"] == "JAMB"
+    assert db_rows.rows[0]["total_staged"] == 1
+    assert db_rows.rows[0]["gate0_valid"] == 1
+
+    # 3. Retrieve history
+    history = await collector.get_history(limit=5)
+    assert len(history) == 1
+    assert history[0]["id"] == snap_data["snapshot_id"]
+
+    # 4. Render history table
+    table_str = collector.render_history_table(history)
+    assert "PIPELINE METRICS HISTORICAL SNAPSHOTS" in table_str
+    assert "unit_test" in table_str
+    assert "JAMB/chem" in table_str
+

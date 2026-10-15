@@ -305,18 +305,48 @@ def status_cmd():
 @click.option("--exam", default=None, help="Exam body filter (optional, e.g. JAMB, WAEC)")
 @click.option("--json", "as_json", is_flag=True, default=False, help="Output pure JSON telemetry")
 @click.option("--summary-file", default=None, help="Path to write GitHub Flavored Markdown summary (e.g. $GITHUB_STEP_SUMMARY)")
-def metrics_cmd(subject: Optional[str], exam: Optional[str], as_json: bool, summary_file: Optional[str]):
+@click.option("--record/--no-record", default=True, help="Persist snapshot to pipeline_metrics table in DB (default: True)")
+@click.option("--history", is_flag=True, default=False, help="View historical snapshots recorded in database")
+@click.option("--limit", "-n", default=10, type=int, help="Maximum historical snapshots to display")
+@click.option("--trigger", default="cli_snapshot", help="Trigger source label (e.g. cli, ci_run, harvest_cron)")
+def metrics_cmd(
+    subject: Optional[str],
+    exam: Optional[str],
+    as_json: bool,
+    summary_file: Optional[str],
+    record: bool,
+    history: bool,
+    limit: int,
+    trigger: str,
+):
     """Displays pipeline observability metrics, conversion funnel, and telemetry."""
     from pipeline.metrics.collector import MetricsCollector
     pipe_client, prod_client = get_clients()
     collector = MetricsCollector(pipe_client, prod_client)
 
     async def _metrics():
-        data = await collector.collect(subject=subject, exam=exam)
+        if history:
+            records = await collector.get_history(limit=limit, exam=exam, subject=subject)
+            if as_json:
+                click.echo(json.dumps(records, indent=2))
+            else:
+                click.echo(collector.render_history_table(records))
+            pipe_client.close()
+            if prod_client:
+                prod_client.close()
+            return
+
+        if record:
+            data = await collector.record_snapshot(trigger_source=trigger, subject=subject, exam=exam)
+        else:
+            data = await collector.collect(subject=subject, exam=exam)
+
         if as_json:
             click.echo(json.dumps(data, indent=2))
         else:
             click.echo(collector.render_cli_dashboard(data))
+            if record and data.get("snapshot_id"):
+                click.echo(f"  💾 Recorded metrics snapshot to DB: {data['snapshot_id']}")
 
         if summary_file:
             md = collector.render_markdown_summary(data)

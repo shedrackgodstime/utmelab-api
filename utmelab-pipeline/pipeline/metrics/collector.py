@@ -12,6 +12,7 @@ Aggregates:
 from datetime import datetime, timezone
 import json
 from typing import Any, Dict, List, Optional
+import uuid
 from pipeline.storage.client import TursoClient
 
 
@@ -250,6 +251,112 @@ class MetricsCollector:
             },
         }
 
+    async def record_snapshot(
+        self,
+        trigger_source: str = "cli_snapshot",
+        subject: Optional[str] = None,
+        exam: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        """Collects current metrics and records a persistent snapshot in the pipeline_metrics table."""
+        metrics = await self.collect(subject=subject, exam=exam)
+        snapshot_id = f"snap_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}_{uuid.uuid4().hex[:6]}"
+        f = metrics["funnel"]
+        ai = metrics["ai_telemetry"]
+        cb = ai["confidence_buckets"]
+        v = ai["verdicts"]
+        mm = ai["multimodal"]
+        rev = metrics["review_queue"]
+        health = metrics["health"]
+
+        sql = """
+        INSERT INTO pipeline_metrics (
+            id, snapshot_at, trigger_source, exam, subject, health_status,
+            total_staged, gate0_valid, gate0_rejected, gate0_pass_rate_pct,
+            ai_processed, auto_approved, flagged_for_review, approved_for_prod,
+            ai_auto_approval_rate_pct, approved_questions_total, approved_passages_total,
+            approved_verifications_total, avg_confidence, high_conf_count, med_conf_count,
+            low_conf_count, verdict_verified, verdict_disagreement, verdict_ambiguous,
+            questions_with_media, questions_with_passages, review_queue_open,
+            review_queue_resolved, review_queue_discarded, payload_json
+        ) VALUES (
+            ?, ?, ?, ?, ?, ?,
+            ?, ?, ?, ?,
+            ?, ?, ?, ?,
+            ?, ?, ?,
+            ?, ?, ?, ?,
+            ?, ?, ?, ?,
+            ?, ?, ?,
+            ?, ?, ?
+        )
+        """
+        params = [
+            snapshot_id,
+            metrics["timestamp"],
+            trigger_source,
+            exam,
+            subject,
+            health["status"],
+            f["total_staged"],
+            f["gate0_valid"],
+            f["gate0_rejected"],
+            f["gate0_pass_rate_pct"],
+            f["ai_processed"],
+            f["auto_approved"],
+            f["flagged_for_review"],
+            f["approved_for_prod"],
+            f["ai_auto_approval_rate_pct"],
+            f["approved_questions_total"],
+            f["approved_passages_total"],
+            f["approved_verifications_total"],
+            ai["avg_confidence"],
+            cb["high_ge_90"],
+            cb["med_70_89"],
+            cb["low_lt_70"],
+            v["verified"],
+            v["disagreement"],
+            v["ambiguous"],
+            mm["questions_with_media"],
+            mm["questions_with_passages"],
+            rev["open"],
+            rev["resolved"],
+            rev["discarded"],
+            json.dumps(metrics),
+        ]
+        await self.pipeline_client.execute(sql, params)
+        metrics["snapshot_id"] = snapshot_id
+        return metrics
+
+    async def get_history(
+        self,
+        limit: int = 10,
+        exam: Optional[str] = None,
+        subject: Optional[str] = None,
+    ) -> List[Dict[str, Any]]:
+        """Queries historical metrics snapshots from the pipeline_metrics table."""
+        filters = []
+        params = []
+        if exam:
+            filters.append("exam = ?")
+            params.append(exam)
+        if subject:
+            filters.append("subject = ?")
+            params.append(subject)
+
+        where_clause = f"WHERE {' AND '.join(filters)}" if filters else ""
+        sql = f"""
+        SELECT id, snapshot_at, trigger_source, exam, subject, health_status,
+               total_staged, gate0_valid, gate0_pass_rate_pct, ai_processed,
+               approved_questions_total, avg_confidence, review_queue_open
+        FROM pipeline_metrics
+        {where_clause}
+        ORDER BY snapshot_at DESC
+        LIMIT ?
+        """
+        params.append(limit)
+        res = await self.pipeline_client.execute(sql, params)
+        return res.rows
+
+
     @staticmethod
     def render_cli_dashboard(metrics: Dict[str, Any]) -> str:
         """Formats the collected metrics into an ANSI-styled terminal dashboard."""
@@ -398,3 +505,32 @@ class MetricsCollector:
             md.append("")
 
         return "\n".join(md)
+
+    @staticmethod
+    def render_history_table(history: List[Dict[str, Any]]) -> str:
+        """Formats historical metrics snapshots into a clean CLI table."""
+        if not history:
+            return "No historical metrics snapshots recorded in database yet."
+
+        lines = []
+        lines.append("╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗")
+        lines.append("║                                    PIPELINE METRICS HISTORICAL SNAPSHOTS                                      ║")
+        lines.append("╠═════════════════════╦══════════════╦═════════╦════════╦═══════╦══════════════╦═══════════╦══════════════╦═════╣")
+        lines.append("║ Snapshot Timestamp  ║ Trigger      ║ Scope   ║ Health ║ Staged║ Admitted (%) ║ Ready     ║ Avg AI Conf  ║ Open║")
+        lines.append("╠═════════════════════╬══════════════╬═════════╬════════╬═══════╬══════════════╬═══════════╬══════════════╬═════╣")
+        for h in history:
+            ts = h["snapshot_at"][:19]
+            trig = (h.get("trigger_source") or "cli")[:12]
+            scope = f"{h.get('exam') or '*'}/{h.get('subject') or '*'}"[:9]
+            health = h.get("health_status", "UNKNOWN")[:6]
+            staged = str(h.get("total_staged", 0))
+            valid_pct = f"{h.get('gate0_valid', 0)} ({h.get('gate0_pass_rate_pct', 0.0)}%)"
+            appr = str(h.get("approved_questions_total", 0))
+            avg_c = f"{h['avg_confidence']:.2f}" if h.get("avg_confidence") is not None else "N/A"
+            open_rev = str(h.get("review_queue_open", 0))
+            lines.append(
+                f"║ {ts:<19} ║ {trig:<12} ║ {scope:<9} ║ {health:<6} ║ {staged:<5} ║ {valid_pct:<12} ║ {appr:<9} ║ {avg_c:<12} ║ {open_rev:<3} ║"
+            )
+        lines.append("╚═════════════════════╩══════════════╩═════════╩════════╩═══════╩══════════════╩═══════════╩══════════════╩═════╝")
+        return "\n".join(lines)
+
