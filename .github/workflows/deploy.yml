@@ -114,6 +114,8 @@ jobs:
           name: ${{ env.APP }}-${{ steps.v.outputs.version }}
           path: ${{ env.APP }}-${{ steps.v.outputs.version }}.tar.gz
           if-no-files-found: error
+          # Deploy consumes this in the same run; keep a short audit record only.
+          retention-days: 7
 
   deploy:
     name: Ship to VPS
