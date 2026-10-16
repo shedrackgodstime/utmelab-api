@@ -5,6 +5,7 @@ pub const DEFAULT_WORKER_THREADS: usize = 4;
 pub const DEFAULT_MAX_BLOCKING_THREADS: usize = 32;
 pub const DEFAULT_CONCURRENCY_LIMIT: usize = 1000;
 pub const DEFAULT_PORT: u16 = 3100;
+pub const DEFAULT_SERVER_URL: &str = "http://localhost:3100";
 pub const DEFAULT_REPLICA_PATH: &str = "db/sync.db";
 /// Long-poll window, not a timer. Each pull hangs server-side until a change
 /// lands or this elapses. Idle stays idle; changes apply within ~seconds.
@@ -19,6 +20,7 @@ pub struct Config {
     pub max_blocking_threads: usize,
     pub concurrency_limit: usize,
     pub port: u16,
+    pub server_url: String,
     pub turso_url: String,
     pub turso_token: String,
     pub replica_path: String,
@@ -36,6 +38,7 @@ impl Default for Config {
             max_blocking_threads: DEFAULT_MAX_BLOCKING_THREADS,
             concurrency_limit: DEFAULT_CONCURRENCY_LIMIT,
             port: DEFAULT_PORT,
+            server_url: DEFAULT_SERVER_URL.to_string(),
             turso_url: String::new(),
             turso_token: String::new(),
             replica_path: DEFAULT_REPLICA_PATH.to_string(),
@@ -83,6 +86,7 @@ impl Config {
             max_blocking_threads: env_usize("MAX_BLOCKING_THREADS", d.max_blocking_threads),
             concurrency_limit: env_usize("CONCURRENCY_LIMIT", d.concurrency_limit),
             port: env_u16("PORT", d.port),
+            server_url: env_string("SERVER_URL", &d.server_url),
             turso_url: env_string("TURSO_DB_URL", ""),
             turso_token: env_string("TURSO_DB_TOKEN", ""),
             replica_path: env_string("REPLICA_PATH", &d.replica_path),

@@ -406,14 +406,20 @@ pub async fn create_key(s: &DbState, owner: &str) -> Result<String, AppError> {
     if owner.is_empty() || owner.len() > 64 {
         return Err(AppError::BadRequest("bad owner".to_string()));
     }
-    create_key_raw(s, "commercial", "read:catalog", owner).await
+    create_key_raw(s, "commercial", "read:catalog,write:reports", owner).await
 }
 
 /// Admin-only key creation. Admin tier, full scopes, owned by nobody so it
 /// shows in the staff-wide key list. Returns the plaintext once — the table
 /// only ever holds the hash.
 pub async fn create_admin_key(s: &DbState) -> Result<String, AppError> {
-    create_key_raw(s, "admin", "manage:keys,write:catalog,read:catalog", "").await
+    create_key_raw(
+        s,
+        "admin",
+        "manage:keys,write:catalog,write:reports,read:catalog",
+        "",
+    )
+    .await
 }
 
 /// Shared insert path for every key kind. Only tier/scopes/owner differ;
@@ -491,20 +497,98 @@ pub async fn list_users(s: &DbState) -> Result<Vec<UserSummary>, AppError> {
     .await
 }
 
-/// Admin role assignment. Suspended users fail every extractor below.
-pub async fn set_role(s: &DbState, username: &str, role: &str) -> Result<bool, AppError> {
-    crate::core::accounts::check_role(role)?;
-    if username.is_empty() || username.len() > 64 {
-        return Err(AppError::BadRequest("bad username".to_string()));
+/// File a consumer flag against any reportable target. Returns
+/// `(id, duplicate)`: first filing mints an `rpt_` id (201 upstream),
+/// a repeat returns the original id (200). Daily cap enforced here,
+/// beside the data, so no caller can skip it.
+pub async fn file_report(
+    s: &DbState,
+    reporter: &str,
+    target_type: &str,
+    target_id: &str,
+    reason: &str,
+    detail: Option<&str>,
+) -> Result<(String, bool), AppError> {
+    let now = crate::auth::session::now_unix();
+    let day_start = now - now % 86400;
+    let reporter = reporter.to_string();
+    let count: i64 = with_conn(s, |conn| {
+        let reporter = reporter.clone();
+        async move {
+            let mut rows = conn
+                .query(
+                    "SELECT COUNT(*) FROM reports WHERE reporter=?1 AND created_at>=?2",
+                    vec![
+                        turso::Value::Text(reporter),
+                        turso::Value::Integer(day_start),
+                    ],
+                )
+                .await
+                .map_err(upstream)?;
+            Ok(rows
+                .next()
+                .await
+                .map_err(upstream)?
+                .and_then(|r| r.get(0).ok())
+                .unwrap_or(0))
+        }
+    })
+    .await?;
+    if count as u32 >= crate::core::reports::MAX_REPORTS_PER_DAY {
+        return Err(AppError::RateLimited);
     }
+    let id: String = {
+        let bytes: [u8; 8] = rand::random();
+        format!(
+            "rpt_{}",
+            bytes.iter().map(|b| format!("{b:02x}")).collect::<String>()
+        )
+    };
     let n = super::write::execute_write(
         s,
-        "UPDATE dashboard_users SET role=?1 WHERE username=?2",
+        "INSERT OR IGNORE INTO reports (id, target_type, target_id, reporter, reason, detail, created_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)",
         vec![
-            turso::Value::Text(role.to_string()),
-            turso::Value::Text(username.to_string()),
+            turso::Value::Text(id.clone()),
+            turso::Value::Text(target_type.to_string()),
+            turso::Value::Text(target_id.to_string()),
+            turso::Value::Text(reporter.clone()),
+            turso::Value::Text(reason.to_string()),
+            match detail {
+                Some(d) => turso::Value::Text(d.to_string()),
+                None => turso::Value::Null,
+            },
+            turso::Value::Integer(now),
         ],
     )
     .await?;
-    Ok(n > 0)
+    if n == 1 {
+        return Ok((id, false));
+    }
+    let original: Option<String> = with_conn(s, |conn| {
+        let reporter = reporter.clone();
+        async move {
+            let mut rows = conn
+                .query(
+                    "SELECT id FROM reports WHERE reporter=?1 AND target_type=?2 AND target_id=?3 AND reason=?4",
+                    vec![
+                        turso::Value::Text(reporter),
+                        turso::Value::Text(target_type.to_string()),
+                        turso::Value::Text(target_id.to_string()),
+                        turso::Value::Text(reason.to_string()),
+                    ],
+                )
+                .await
+                .map_err(upstream)?;
+            Ok(rows
+                .next()
+                .await
+                .map_err(upstream)?
+                .and_then(|r| r.get(0).ok()))
+        }
+    })
+    .await?;
+    match original {
+        Some(id) => Ok((id, true)),
+        None => Err(AppError::Upstream("report not stored".to_string())),
+    }
 }

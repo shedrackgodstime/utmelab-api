@@ -11,6 +11,7 @@ use crate::error::AppError;
 pub const SCOPE_READ_CATALOG: &str = "read:catalog";
 pub const SCOPE_WRITE_CATALOG: &str = "write:catalog";
 pub const SCOPE_READ_REPORTS: &str = "read:reports";
+pub const SCOPE_WRITE_REPORTS: &str = "write:reports";
 pub const SCOPE_MANAGE_KEYS: &str = "manage:keys";
 
 #[derive(Clone, Debug)]
