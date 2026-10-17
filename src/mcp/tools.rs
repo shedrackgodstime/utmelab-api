@@ -24,7 +24,8 @@ pub async fn revoke_key(
     Json(b): Json<core::models::PrefixBody>,
 ) -> Result<Json<serde_json::Value>, AppError> {
     auth.require(SCOPE_MANAGE_KEYS)?;
-    let found = store::accounts::set_revoked(&s, &b.prefix, true).await?;
+    let actor = format!("key:{}", auth.key_id);
+    let found = store::accounts::set_revoked(&s, &b.prefix, true, &actor).await?;
     Ok(Json(serde_json::json!({"ok": found})))
 }
 
@@ -34,6 +35,7 @@ pub async fn unrevoke_key(
     Json(b): Json<core::models::PrefixBody>,
 ) -> Result<Json<serde_json::Value>, AppError> {
     auth.require(SCOPE_MANAGE_KEYS)?;
-    let found = store::accounts::set_revoked(&s, &b.prefix, false).await?;
+    let actor = format!("key:{}", auth.key_id);
+    let found = store::accounts::set_revoked(&s, &b.prefix, false, &actor).await?;
     Ok(Json(serde_json::json!({"ok": found})))
 }

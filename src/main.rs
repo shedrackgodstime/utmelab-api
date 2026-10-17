@@ -155,7 +155,9 @@ async fn run(cfg: Config) {
 
 /// `RUST_LOG` if set, else our crate at `info` with the sync engine quieted to
 /// `warn` (it logs every pull at info, which would otherwise flood a small
-/// box). A set-but-invalid filter fails at boot rather than logging nothing.
+/// box) and the `audit` target forced to `info` so a bare `warn` fallback can
+/// never swallow a successful key create or role change. A set-but-invalid
+/// filter fails at boot rather than logging nothing.
 fn log_filter() -> EnvFilter {
     match std::env::var("RUST_LOG") {
         Ok(v) if !v.trim().is_empty() => match EnvFilter::try_new(v.trim()) {
@@ -165,7 +167,7 @@ fn log_filter() -> EnvFilter {
                 std::process::exit(1);
             }
         },
-        _ => EnvFilter::new("utmelab_api=info,turso_sync_engine=warn,warn"),
+        _ => EnvFilter::new("utmelab_api=info,audit=info,turso_sync_engine=warn,warn"),
     }
 }
 

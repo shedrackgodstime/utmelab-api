@@ -1,7 +1,9 @@
 //! Dashboard surface: customer self-service plus admin administration.
 //! Session-authenticated, unversioned, excluded from public API docs.
-//! Customer handlers live in `dashboard`, admin handlers in `admin`;
-//! both share `store` and small `core` slices only.
+//! Convention: `/internal/admin/*` is admin-only, everything else under
+//! `/internal/*` is customer or session. Customer handlers live in
+//! `dashboard`, admin handlers in `admin`; both share `store` and small
+//! `core` slices only.
 
 pub mod admin;
 pub mod dashboard;
@@ -16,8 +18,8 @@ use crate::{config::Config, state::AppState};
 pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
     Router::new()
         .route(
-            "/internal/status",
-            get(dashboard::status).route_layer(cfg.fast_timeout()),
+            "/internal/admin/status",
+            get(admin::status).route_layer(cfg.fast_timeout()),
         )
         .route(
             "/internal/login",

@@ -277,4 +277,17 @@ mod tests {
         );
         assert_eq!(status_of(app, "/health").await, axum::http::StatusCode::OK);
     }
+
+    #[tokio::test]
+    async fn admin_surface_lives_under_admin() {
+        let app = crate::routes::router(state(true), &crate::config::Config::default());
+        assert_eq!(
+            status_of(app.clone(), "/api/internal/admin/status").await,
+            axum::http::StatusCode::UNAUTHORIZED
+        );
+        assert_eq!(
+            status_of(app, "/api/internal/status").await,
+            axum::http::StatusCode::NOT_FOUND
+        );
+    }
 }

@@ -7,35 +7,12 @@ use serde::Deserialize;
 use std::net::SocketAddr;
 
 use crate::{
-    auth::session::{self, AdminUser, SessionUser},
-    core::models::ServiceStatus,
+    auth::session::{self, SessionUser},
     error::AppError,
+    obs,
     state::DbState,
     store,
 };
-
-/// Admin-only. Load balancers get liveness from `/health`; this carries the
-/// operational counters, so it sits behind the admin session like the rest
-/// of `internal` instead of leaking replica state to anonymous callers.
-pub async fn status(State(s): State<DbState>, AdminUser(_): AdminUser) -> Json<ServiceStatus> {
-    let m = s.metrics.snapshot();
-    Json(ServiceStatus {
-        service: "utmelab-api",
-        has_sync: s.db.read().await.is_some(),
-        contract_ok: s.contract_ok.load(std::sync::atomic::Ordering::Relaxed),
-        gate_rejections: m.gate_rejections,
-        pulls_applied: m.pulls_applied,
-        pulls_empty: m.pulls_empty,
-        last_pull_unix: m.last_pull_unix,
-        requests_ok: m.requests_ok,
-        requests_client_error: m.requests_client_error,
-        requests_server_error: m.requests_server_error,
-        in_flight: m.in_flight,
-        latency_fast: m.latency_fast,
-        latency_ok: m.latency_ok,
-        latency_slow: m.latency_slow,
-    })
-}
 
 #[derive(Deserialize)]
 pub struct LoginBody {
@@ -54,14 +31,27 @@ pub async fn login(
         .check_login(&session::client_ip(&headers, addr))
         .await
     {
+        obs::login_denied(&b.username, "rate_limited");
         return Err(AppError::RateLimited);
     }
-    let (token, role) = store::accounts::login(&s, &b.username, &b.password).await?;
-    let cookie = session::session_cookie_value(&token, s.cookie_secure);
-    Ok((
-        [(axum::http::header::SET_COOKIE, cookie)],
-        Json(serde_json::json!({"ok": true, "role": role})),
-    ))
+    match store::accounts::login(&s, &b.username, &b.password).await {
+        Ok((token, role)) => {
+            obs::login_ok(&b.username, &role);
+            let cookie = session::session_cookie_value(&token, s.cookie_secure);
+            Ok((
+                [(axum::http::header::SET_COOKIE, cookie)],
+                Json(serde_json::json!({"ok": true, "role": role})),
+            ))
+        }
+        Err(e) => {
+            let reason = match &e {
+                AppError::Unauthorized => "bad_credentials",
+                _ => "error",
+            };
+            obs::login_denied(&b.username, reason);
+            Err(e)
+        }
+    }
 }
 
 pub async fn logout(

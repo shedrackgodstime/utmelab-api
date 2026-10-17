@@ -13,6 +13,7 @@ pub mod core;
 pub mod error;
 pub mod internal;
 pub mod mcp;
+pub mod obs;
 pub mod routes;
 pub mod state;
 pub mod store;

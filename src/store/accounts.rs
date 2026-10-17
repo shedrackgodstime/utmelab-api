@@ -7,7 +7,7 @@ use argon2::{
     Algorithm, Argon2, Params, Version,
 };
 
-use crate::{auth::Auth, error::AppError, state::DbState};
+use crate::{auth::Auth, error::AppError, obs, state::DbState};
 
 use super::{upstream, with_conn};
 
@@ -192,11 +192,17 @@ pub async fn seed_admin(
 /// Promote a user to admin. Used by recovery flows; day-to-day role
 /// changes go through dashboard handlers when they land.
 pub async fn promote_admin(s: &DbState, username: &str) -> Result<bool, AppError> {
-    set_user_role(s, username, "admin").await
+    set_user_role(s, username, "admin", "recovery").await
 }
 
 /// Admin role assignment. Suspended users fail every extractor below.
-pub async fn set_user_role(s: &DbState, username: &str, role: &str) -> Result<bool, AppError> {
+/// `actor` is recorded, so the change is attributable wherever it came from.
+pub async fn set_user_role(
+    s: &DbState,
+    username: &str,
+    role: &str,
+    actor: &str,
+) -> Result<bool, AppError> {
     crate::core::accounts::check_role(role)?;
     if username.is_empty() || username.len() > 64 {
         return Err(AppError::BadRequest("bad username".to_string()));
@@ -210,6 +216,9 @@ pub async fn set_user_role(s: &DbState, username: &str, role: &str) -> Result<bo
         ],
     )
     .await?;
+    if n > 0 {
+        obs::role_changed(actor, username, role);
+    }
     Ok(n > 0)
 }
 
@@ -388,7 +397,12 @@ pub async fn list_keys(s: &DbState, owner: Option<&str>) -> Result<Vec<KeySummar
     .await
 }
 
-pub async fn set_revoked(s: &DbState, prefix: &str, revoked: bool) -> Result<bool, AppError> {
+pub async fn set_revoked(
+    s: &DbState,
+    prefix: &str,
+    revoked: bool,
+    actor: &str,
+) -> Result<bool, AppError> {
     crate::core::accounts::check_prefix(prefix)?;
     let n = super::write::execute_write(
         s,
@@ -399,7 +413,19 @@ pub async fn set_revoked(s: &DbState, prefix: &str, revoked: bool) -> Result<boo
         ],
     )
     .await?;
+    if n > 0 {
+        obs::key_revoked(actor, prefix, revoked);
+    }
     Ok(n > 0)
+}
+
+/// The public half of a raw key, for audit logs. A generated key always
+/// carries a `.`; falling back to the whole string only avoids a panic on
+/// an impossible shape.
+fn key_prefix(full: &str) -> &str {
+    full.split_once('.')
+        .map(|(prefix, _)| prefix)
+        .unwrap_or(full)
 }
 
 /// Customer key creation. Commercial tier, catalog read scope, owned by
@@ -409,20 +435,24 @@ pub async fn create_key(s: &DbState, owner: &str) -> Result<String, AppError> {
     if owner.is_empty() || owner.len() > 64 {
         return Err(AppError::BadRequest("bad owner".to_string()));
     }
-    create_key_raw(s, "commercial", "read:catalog,write:reports", owner).await
+    let full = create_key_raw(s, "commercial", "read:catalog,write:reports", owner).await?;
+    obs::key_created(owner, key_prefix(&full), "commercial");
+    Ok(full)
 }
 
 /// Admin-only key creation. Admin tier, full scopes, owned by nobody so it
 /// shows in the staff-wide key list. Returns the plaintext once — the table
 /// only ever holds the hash.
-pub async fn create_admin_key(s: &DbState) -> Result<String, AppError> {
-    create_key_raw(
+pub async fn create_admin_key(s: &DbState, actor: &str) -> Result<String, AppError> {
+    let full = create_key_raw(
         s,
         "admin",
         "manage:keys,write:catalog,write:reports,read:catalog",
         "",
     )
-    .await
+    .await?;
+    obs::key_created(actor, key_prefix(&full), "admin");
+    Ok(full)
 }
 
 /// Shared insert path for every key kind. Only tier/scopes/owner differ;
@@ -467,7 +497,9 @@ pub async fn delete_key(s: &DbState, owner: &str, prefix: &str) -> Result<bool, 
         ],
     )
     .await?;
-    Ok(n > 0)
+    let found = n > 0;
+    obs::key_deleted(owner, prefix, found);
+    Ok(found)
 }
 
 #[derive(serde::Serialize)]

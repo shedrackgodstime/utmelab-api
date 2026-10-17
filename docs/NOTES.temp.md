@@ -15,8 +15,9 @@ highest value first. Delete an entry when it is closed.
 
 ## Done
 
-- `/api/internal/status` now requires an admin session; `/health` stays the
-  public liveness probe.
+- Admin-only endpoints now live under `/api/internal/admin/*` by convention, and
+  `/health` stays the public liveness probe. The operational status moved to
+  `/api/internal/admin/status`; the old customer path answers 404.
 - Per-key rate limiting on `api` + `mcp`, enforced in the key extractor so no
   route can forget it (`RATE_LIMIT_PER_MIN`, admin unlimited by default). A key
   past its ceiling gets 429 with `Retry-After: 60`.
@@ -36,9 +37,21 @@ highest value first. Delete an entry when it is closed.
   in-flight gauge, and three latency buckets (<25ms, <100ms, >=100ms). Atomics
   only, no DB and no gate; probe routes are excluded so health checks cannot
   drown out real traffic, and 408 counts server-side because it is our timeout.
+- Observability foundation: one `obs` vocabulary and audit events on the `audit`
+  target (login ok/denied, key create/delete, key revoke/unrevoke, role change).
+  Mutations take the acting identity as a required argument and the store is the
+  single emit point, so both the HTTP and MCP surfaces are covered and no surface
+  can act without an audit line. `audit=info` is forced in the default log filter
+  so a bare `warn` fallback cannot swallow a successful key create.
 
 ## Decisions worth keeping
 
+- Observability is three separate things: metrics (numbers), logs (events), and
+  audit (attributable security and business events). Audit is neither debug
+  logging nor metrics; it is its own target so it can be filtered and shipped on
+  its own.
+- Admin-only endpoints live under `/api/internal/admin/*`; everything else under
+  `/api/internal/*` is customer or session.
 - No long poll. Pull on an interval and pool connections, so reads and writes
   never queue behind the sync engine's single IO worker.
 - Reads fail fast (5s), writes get cloud headroom (30s), and a global 30s net
