@@ -1,27 +1,230 @@
 //! Single source of truth for production shapes.
 //!
 //! The pipeline stages whatever it wants in its own database, but what
-//! lands in the production database must match this file: table DDL plus
-//! a `contract_version` handshake. Drift cannot go silent — a version the
-//! server does not know fails loudly instead of serving misshapen rows.
+//! lands in the production database must match this file. Two guards,
+//! because drift can travel in two directions:
 //!
-//! Domain tables (questions, subjects, passages, …) join this module when
-//! bank data lands, each with a contract bump. Auth tables are here now
-//! because they already exist in production.
+//! - `contract_version` is the pipeline's announcement. A version the
+//!   server does not know fails loudly instead of serving misshapen rows.
+//! - `READ_SHAPES` is the server's own dependency list. `check_shapes`
+//!   probes the replica on every boot and re-check, and fails closed when
+//!   a table or column we read is absent, so a shape the pipeline changed
+//!   without announcing it is caught anyway.
+//!
+//! `DDL` creates the tables the API owns. The bank tables (questions,
+//! subjects, passages, …) are owned and created by the pipeline, so the
+//! API never creates them: they are declared here as reads, not DDL.
 
 use super::{upstream, with_conn};
 use crate::{error::AppError, state::DbState};
 
 /// Bump when a production shape changes. The pipeline stamps what it
-/// promoted against; anything else fails the check below.
+/// promoted against; anything else fails the version half of the check.
 pub const CONTRACT_VERSION: u64 = 1;
 
+/// Tables the API owns and creates at boot.
 const DDL: &[&str] = &[
     "CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)",
     "CREATE TABLE IF NOT EXISTS api_keys (prefix TEXT PRIMARY KEY, hash TEXT NOT NULL, tier TEXT NOT NULL DEFAULT 'commercial', scopes TEXT NOT NULL DEFAULT 'read:catalog', revoked INTEGER NOT NULL DEFAULT 0, owner TEXT NOT NULL DEFAULT '', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS dashboard_users (username TEXT PRIMARY KEY, pw_hash TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'customer', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS sessions (token_hash TEXT PRIMARY KEY, username TEXT NOT NULL, expires_at INTEGER NOT NULL)",
     "CREATE TABLE IF NOT EXISTS reports (id TEXT PRIMARY KEY, target_type TEXT NOT NULL, target_id TEXT NOT NULL, reporter TEXT NOT NULL, reason TEXT NOT NULL, detail TEXT, created_at INTEGER NOT NULL, UNIQUE(reporter, target_type, target_id, reason))",
+];
+
+/// Every table the store reads, and the columns it depends on. This is the
+/// list `check_shapes` enforces against the live replica. A table with no
+/// columns asserted (`countries`) only needs to exist, because the meta
+/// surface reads it with `SELECT *`.
+///
+/// When a reader starts depending on a new column, add it here in the same
+/// change. The test below fails otherwise only if the table itself is new,
+/// so treat this list as part of the reader's definition, not paperwork.
+pub const READ_SHAPES: &[(&str, &[&str])] = &[
+    // Account tables the API owns.
+    ("meta", &["key", "value"]),
+    (
+        "api_keys",
+        &[
+            "prefix",
+            "hash",
+            "tier",
+            "scopes",
+            "revoked",
+            "owner",
+            "created_at",
+        ],
+    ),
+    (
+        "dashboard_users",
+        &["username", "pw_hash", "role", "created_at"],
+    ),
+    ("sessions", &["token_hash", "username", "expires_at"]),
+    (
+        "reports",
+        &[
+            "id",
+            "target_type",
+            "target_id",
+            "reporter",
+            "reason",
+            "detail",
+            "created_at",
+        ],
+    ),
+    // Bank tables the pipeline owns.
+    (
+        "exams",
+        &[
+            "code",
+            "name",
+            "countries",
+            "status",
+            "has_full_paper",
+            "subjects_required",
+            "duration_minutes",
+            "rules",
+        ],
+    ),
+    (
+        "exam_requirements",
+        &["exam", "country", "group", "min_select", "subjects"],
+    ),
+    (
+        "subjects",
+        &[
+            "slug",
+            "exam",
+            "name",
+            "is_compulsory",
+            "objective_paper_questions",
+        ],
+    ),
+    (
+        "topics",
+        &[
+            "slug",
+            "subject",
+            "exam",
+            "name",
+            "order",
+            "weight",
+            "objectives",
+        ],
+    ),
+    (
+        "subtopics",
+        &["slug", "topic", "name", "order", "objectives"],
+    ),
+    ("topic_countries", &["topic", "country"]),
+    ("countries", &[]),
+    (
+        "questions",
+        &[
+            "id",
+            "exam",
+            "subject",
+            "year",
+            "source",
+            "text",
+            "inline",
+            "options",
+            "answer",
+            "subtopic_id",
+            "section",
+            "passage_id",
+            "explanation",
+            "marks",
+            "difficulty",
+            "content_hash",
+        ],
+    ),
+    (
+        "verifications",
+        &[
+            "id",
+            "question_id",
+            "kind",
+            "verdict",
+            "scope",
+            "verifier",
+            "detail",
+            "content_hash",
+            "created_at",
+        ],
+    ),
+    (
+        "passages",
+        &[
+            "id", "exam", "subject", "year", "kind", "title", "author", "text", "inline",
+        ],
+    ),
+    (
+        "novels",
+        &[
+            "id",
+            "title",
+            "author",
+            "year_published",
+            "exam",
+            "year_prescribed",
+            "category",
+            "featured",
+            "synopsis",
+            "setting_place",
+            "setting_period",
+            "cover_image",
+        ],
+    ),
+    (
+        "novel_chapters",
+        &["novel_id", "number", "title", "summary", "key_events"],
+    ),
+    (
+        "novel_characters",
+        &["novel_id", "name", "role", "character_type", "description"],
+    ),
+    (
+        "novel_themes",
+        &["novel_id", "name", "description", "evidence"],
+    ),
+    (
+        "novel_questions",
+        &[
+            "id",
+            "novel_id",
+            "chapter_number",
+            "text",
+            "inline",
+            "options",
+            "answer",
+            "explanation",
+            "content_hash",
+        ],
+    ),
+    (
+        "blueprints",
+        &[
+            "exam",
+            "subject",
+            "level",
+            "topic",
+            "section",
+            "members",
+            "paper_size",
+            "pct",
+            "pct_low",
+            "pct_high",
+            "expected",
+            "expected_low",
+            "expected_high",
+            "source",
+            "sample",
+            "method",
+            "confidence",
+            "status",
+            "note",
+        ],
+    ),
 ];
 
 /// Create every production table we read. Idempotent; safe to run at boot.
@@ -108,9 +311,42 @@ pub(crate) async fn ensure_column(
     Ok(())
 }
 
-/// Read the stamped version, stamping ours when absent.
-/// Returns true when the replica matches this binary.
-pub async fn check_version(s: &DbState) -> Result<bool, AppError> {
+/// The first way the replica departs from the shapes this binary reads, or
+/// `None` when every table and column in `READ_SHAPES` is present. Reads
+/// only, so it runs on every boot and every re-check.
+pub async fn check_shapes(s: &DbState) -> Result<Option<String>, AppError> {
+    for (table, columns) in READ_SHAPES {
+        let present: Vec<String> = with_conn(s, |conn| {
+            let table = table.to_string();
+            async move {
+                let mut rows = conn
+                    .query(format!("PRAGMA table_info(\"{table}\")"), ())
+                    .await
+                    .map_err(upstream)?;
+                let mut cols = Vec::new();
+                while let Some(row) = rows.next().await.map_err(upstream)? {
+                    cols.push(row.get::<String>(1).map_err(upstream)?);
+                }
+                Ok(cols)
+            }
+        })
+        .await?;
+        if present.is_empty() {
+            return Ok(Some(format!("table {table} is missing")));
+        }
+        for col in *columns {
+            if !present.iter().any(|c| c == col) {
+                return Ok(Some(format!("table {table} is missing column {col}")));
+            }
+        }
+    }
+    Ok(None)
+}
+
+/// Fold both guards into one answer: `None` when the replica matches this
+/// binary, or the reason it does not. Reads the stamped version, stamping
+/// ours when absent, then checks the shapes we read.
+pub async fn check_contract(s: &DbState) -> Result<Option<String>, AppError> {
     let current: Option<String> = with_conn(s, |conn| async move {
         let mut rows = conn
             .query("SELECT value FROM meta WHERE key='contract_version'", ())
@@ -131,10 +367,17 @@ pub async fn check_version(s: &DbState) -> Result<bool, AppError> {
                 vec![turso::Value::Text(CONTRACT_VERSION.to_string())],
             )
             .await?;
-            Ok(true)
         }
-        Some(v) => Ok(v.trim() == CONTRACT_VERSION.to_string()),
+        Some(v) if v.trim() != CONTRACT_VERSION.to_string() => {
+            return Ok(Some(format!(
+                "contract version {} != {}",
+                v.trim(),
+                CONTRACT_VERSION
+            )));
+        }
+        Some(_) => {}
     }
+    check_shapes(s).await
 }
 
 #[cfg(test)]
@@ -228,5 +471,97 @@ mod tests {
         .await
         .expect("legacy row");
         assert_eq!(legacy_reports_rows(&s).await.expect("probe"), Some(1));
+    }
+
+    async fn open(s: &crate::state::DbState) -> turso::Connection {
+        s.db.read()
+            .await
+            .clone()
+            .expect("db")
+            .connect()
+            .await
+            .expect("connect")
+    }
+
+    async fn create(conn: &turso::Connection, table: &str, columns: &[&str]) {
+        let cols = if columns.is_empty() {
+            String::from("\"c\" INTEGER")
+        } else {
+            columns
+                .iter()
+                .map(|c| format!("\"{c}\" TEXT"))
+                .collect::<Vec<_>>()
+                .join(",")
+        };
+        conn.execute(&format!("CREATE TABLE \"{table}\" ({cols})"), ())
+            .await
+            .expect("ddl");
+    }
+
+    #[tokio::test]
+    async fn declared_shapes_pass_when_present() {
+        let s = local_db().await;
+        let conn = open(&s).await;
+        for (table, columns) in READ_SHAPES {
+            create(&conn, table, columns).await;
+        }
+        assert_eq!(check_shapes(&s).await.expect("probe"), None);
+    }
+
+    #[tokio::test]
+    async fn missing_table_is_named() {
+        let s = local_db().await;
+        assert_eq!(
+            check_shapes(&s).await.expect("probe"),
+            Some(String::from("table meta is missing"))
+        );
+    }
+
+    #[tokio::test]
+    async fn missing_column_is_named() {
+        let s = local_db().await;
+        let conn = open(&s).await;
+        for (table, columns) in READ_SHAPES {
+            let cols: Vec<&str> = if *table == "questions" {
+                columns
+                    .iter()
+                    .copied()
+                    .filter(|c| *c != "content_hash")
+                    .collect()
+            } else {
+                columns.to_vec()
+            };
+            create(&conn, table, &cols).await;
+        }
+        assert_eq!(
+            check_shapes(&s).await.expect("probe"),
+            Some(String::from(
+                "table questions is missing column content_hash"
+            ))
+        );
+    }
+
+    #[test]
+    fn every_owned_table_has_a_declared_shape() {
+        for ddl in DDL {
+            let name = ddl
+                .strip_prefix("CREATE TABLE IF NOT EXISTS ")
+                .and_then(|rest| rest.split_whitespace().next())
+                .expect("ddl names its table");
+            assert!(
+                READ_SHAPES.iter().any(|(t, _)| *t == name),
+                "{name} is created by DDL but has no READ_SHAPES entry"
+            );
+        }
+    }
+
+    #[test]
+    fn every_introspectable_table_has_a_declared_shape() {
+        for table in crate::core::catalog::INTROSPECTABLE_TABLES {
+            assert!(
+                READ_SHAPES.iter().any(|(t, _)| t == table),
+                "{table} is introspectable but has no READ_SHAPES entry"
+            );
+        }
     }
 }

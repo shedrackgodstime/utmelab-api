@@ -11,26 +11,7 @@ promotion, no hand-kept contract, no duplicate admin surface. Ordered most
 important first, with standards, enforcement, and single sources of truth
 before features. Delete an entry when it is closed.
 
-### 1. `store/schema.rs` is not the single source of truth it claims  (standards)
-
-`store/schema.rs` says it is "the single source of truth for production
-shapes: table DDL plus a `contract_version` handshake". Its `DDL` holds five
-tables (`meta`, `api_keys`, `dashboard_users`, `sessions`, `reports`), while
-`store/catalog.rs` reads fourteen more that are declared nowhere: `questions`,
-`verifications`, `subjects`, `topics`, `subtopics`, `topic_countries`,
-`exam_requirements`, `passages`, `novels`, `novel_chapters`, `novel_characters`,
-`novel_themes`, `novel_questions`, `blueprints`. A domain shape can move and
-the contract guard will not notice, so the module's promise is false for the
-tables that matter most.
-
-How: declare the domain tables in `DDL` (idempotent `CREATE TABLE IF NOT
-EXISTS`) at the columns `catalog.rs` reads, then bump `CONTRACT_VERSION`. One
-decision to state in code: the pipeline is today's creator of those tables, so
-declaring them makes the API a co-owner of the shape. Keep creation idempotent
-and additive-only via `ensure_column`, and add a schema test asserting every
-table `catalog.rs` reads is declared. This is the guard G1 leans on.
-
-### 2. The MCP surface declares parity it does not enforce  (enforcement)
+### 1. The MCP surface declares parity it does not enforce  (enforcement)
 
 `mcp/mod.rs` says "tools wrap the same `core` functions the HTTP handlers
 call, so parity is structural". It is not. `mcp/resources.rs` is a one-line
@@ -45,7 +26,7 @@ asserting MCP and HTTP answers agree), or delete the unwired `resources`
 module and correct the doc comment. No third state where the tree promises a
 parity nothing checks.
 
-### 3. Surface-level keyed tests are missing  (enforcement)
+### 2. Surface-level keyed tests are missing  (enforcement)
 
 Only `api/v1/questions.rs` has a keyed handler test, the pattern added with
 the page envelope. The other ten `api/v1` modules, `internal`, and `mcp` have
@@ -58,7 +39,7 @@ router through `routes::router`, `x-api-key` header): no key is 401, wrong
 scope is 403, revoked is 401, a live key gets a typed envelope. Mechanical, not
 a redesign. Fold each new route's test into this list as it lands.
 
-### 4. The subject detail trio is the only missing public read  (feature)
+### 3. The subject detail trio is the only missing public read  (feature)
 
 Old served 18 `/api/v1` routes; new serves 18. The composition differs by
 exactly three: `GET /api/v1/subjects/{exam}/{slug}`,
@@ -76,7 +57,7 @@ need one; three handlers in `api/v1/subjects.rs` with `AuthedKey` and
 `requires(SCOPE_READ_CATALOG)` and 404 as `AppError::NotFound`. Tests: the
 `core` assembly test plus a keyed handler test per route.
 
-### 5. Deferred: CLI verbs and the OpenAPI contract  (out of scope for now)
+### 4. Deferred: CLI verbs and the OpenAPI contract  (out of scope for now)
 
 Recorded so it stays visible, not scheduled. Old's clap CLI had `key
 create/list/revoke/rotate`, `import` (json and Turso), `openapi --out`,
@@ -124,6 +105,14 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 ## Done
 
+- `store/schema.rs` is now the source of truth for the shapes the API reads.
+  `READ_SHAPES` declares every table the store touches and the columns it
+  depends on, and `check_shapes` (folded into `check_contract`, replacing
+  `check_version`) fails the contract closed when one is missing, on boot and on
+  every re-check. The bank tables are declared as reads, not `DDL`: the pipeline
+  still owns and creates them, so a fresh replica cannot be given a loose shape
+  that blocks the pipeline's. Two static tests assert every `DDL` table and every
+  `INTROSPECTABLE_TABLES` entry has a declared shape.
 - Admin-only endpoints now live under `/api/internal/admin/*` by convention, and
   `/health` stays the public liveness probe. The operational status moved to
   `/api/internal/admin/status`; the old customer path answers 404.
@@ -249,3 +238,7 @@ producing" bugs; new has no annotations, no served route, and a hand-written
   (`AuthedKey` plus `require(SCOPE_*)`, except an endpoint about the caller's own
   key). These are written at the top of `api/v1/mod.rs` so a new module follows
   the rule, not the last file it read.
+- Shape declarations follow ownership. Tables the API creates go in `DDL`; tables
+  the pipeline creates are declared in `READ_SHAPES` and validated, never
+  created, because `CREATE TABLE IF NOT EXISTS` from the API would win a fresh
+  replica and freeze a loose shape before the pipeline's promotion lands.

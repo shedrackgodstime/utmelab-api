@@ -121,14 +121,18 @@ async fn converge(probe: &DbState, db: &SyncDb) {
             tokio::time::sleep(READY_RETRY).await;
             continue;
         }
-        match super::schema::check_version(probe).await {
-            Ok(ok) => {
+        match super::schema::check_contract(probe).await {
+            Ok(None) => {
                 probe
                     .contract_ok
-                    .store(ok, std::sync::atomic::Ordering::Relaxed);
-                if !ok {
-                    tracing::error!("contract version mismatch: data surfaces now fail closed");
-                }
+                    .store(true, std::sync::atomic::Ordering::Relaxed);
+                return;
+            }
+            Ok(Some(why)) => {
+                probe
+                    .contract_ok
+                    .store(false, std::sync::atomic::Ordering::Relaxed);
+                tracing::error!("schema contract broken ({why}): data surfaces now fail closed");
                 return;
             }
             Err(e) => {
@@ -173,13 +177,21 @@ async fn supervise(probe: &DbState, cfg: &Config, db: &SyncDb) {
 }
 
 async fn recheck_contract(probe: &DbState) {
-    match super::schema::check_version(probe).await {
-        Ok(ok) => {
+    match super::schema::check_contract(probe).await {
+        Ok(None) => {
             let was = probe
                 .contract_ok
-                .swap(ok, std::sync::atomic::Ordering::Relaxed);
-            if !ok && was {
-                tracing::error!("contract version mismatch: data surfaces now fail closed");
+                .swap(true, std::sync::atomic::Ordering::Relaxed);
+            if !was {
+                tracing::info!("schema contract restored: data surfaces resume");
+            }
+        }
+        Ok(Some(why)) => {
+            let was = probe
+                .contract_ok
+                .swap(false, std::sync::atomic::Ordering::Relaxed);
+            if was {
+                tracing::error!("schema contract broken ({why}): data surfaces now fail closed");
             }
         }
         Err(e) => tracing::warn!("contract re-check failed: {e}"),
