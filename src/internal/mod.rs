@@ -54,6 +54,10 @@ pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
             post(admin::create_admin_key).route_layer(cfg.slow_timeout()),
         )
         .route(
+            "/internal/admin/keys/rotate",
+            post(admin::rotate).route_layer(cfg.slow_timeout()),
+        )
+        .route(
             "/internal/admin/keys",
             get(admin::list_keys).route_layer(cfg.fast_timeout()),
         )

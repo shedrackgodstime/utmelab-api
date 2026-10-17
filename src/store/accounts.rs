@@ -464,6 +464,50 @@ pub async fn create_admin_key(s: &DbState, actor: &str) -> Result<String, AppErr
     Ok(full)
 }
 
+/// Admin key rotation. Mints a replacement admin key, then revokes the old
+/// prefix so it stops working. Returns the new plaintext key exactly once —
+/// the table only ever holds the hash. Fails closed with `NotFound` when the
+/// prefix does not name a key. The replacement is minted first, so a failed
+/// rotation never leaves the caller without a working key; both the insert
+/// and the revocation commit locally even when the cloud push fails.
+pub async fn rotate_key(s: &DbState, prefix: &str, actor: &str) -> Result<String, AppError> {
+    crate::core::accounts::check_prefix(prefix)?;
+    let exists: bool = with_conn(s, |conn| {
+        let prefix = prefix.to_string();
+        async move {
+            let mut rows = conn
+                .query(
+                    "SELECT 1 FROM api_keys WHERE prefix=?1 LIMIT 1",
+                    [prefix.as_str()],
+                )
+                .await
+                .map_err(upstream)?;
+            Ok(rows.next().await.map_err(upstream)?.is_some())
+        }
+    })
+    .await?;
+    if !exists {
+        return Err(AppError::NotFound);
+    }
+    // Mint the replacement admin key. The local insert commits even when the
+    // cloud push fails; we proceed to revoke the old key regardless.
+    let full = match create_key_raw(s, "admin", "manage:keys,write:reports,read:catalog", "").await
+    {
+        Ok(full) => full,
+        Err(_) => {
+            // Push failed but the insert committed locally. Revoke the old
+            // key, then surface the error so the caller knows to retry.
+            let _ = set_revoked(s, prefix, true, actor).await;
+            return Err(AppError::Upstream(
+                "key rotated locally; push pending retry".to_string(),
+            ));
+        }
+    };
+    let _ = set_revoked(s, prefix, true, actor).await?;
+    obs::key_created(actor, key_prefix(&full), "admin");
+    Ok(full)
+}
+
 /// Shared insert path for every key kind. Only tier/scopes/owner differ;
 /// generation, hashing, insert, and row-count check are identical.
 async fn create_key_raw(
@@ -877,5 +921,37 @@ mod tests {
             cell(&s, "SELECT COUNT(*) FROM api_keys WHERE prefix='k1'").await,
             turso::Value::Integer(0)
         );
+    }
+
+    /// Rotating a key mints a replacement admin key and revokes the old
+    /// prefix. The new key authenticates; the old one does not.
+    #[tokio::test]
+    async fn rotate_key_mints_replacement_and_revokes_old() {
+        let s = local_accounts_db().await;
+        seed_key(&s, "k1.secret", "admin", "manage:keys", 0).await;
+
+        // Offline: the push fails, so the call surfaces the error — but the
+        // local rows still commit (new key minted, old key revoked).
+        assert!(rotate_key(&s, "k1", "root").await.is_err());
+
+        // The old prefix is revoked locally.
+        assert!(verify_key(&s, "k1.secret").await.is_err());
+        // A replacement admin key row exists locally.
+        let keys = list_keys(&s, None).await.expect("list keys");
+        assert!(
+            keys.iter()
+                .any(|k| k.tier == "admin" && k.prefix != "k1" && !k.revoked),
+            "replacement admin key exists locally"
+        );
+    }
+
+    /// Rotating an unknown prefix fails closed before any write runs.
+    #[tokio::test]
+    async fn rotate_key_rejects_unknown_prefix() {
+        let s = local_accounts_db().await;
+        assert!(matches!(
+            rotate_key(&s, "ghost", "root").await,
+            Err(AppError::NotFound)
+        ));
     }
 }

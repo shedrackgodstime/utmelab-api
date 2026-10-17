@@ -69,6 +69,15 @@ pub async fn create_admin_key(
     Ok(Json(NewKey { key }))
 }
 
+pub async fn rotate(
+    State(s): State<DbState>,
+    AdminUser(u): AdminUser,
+    Json(b): Json<PrefixBody>,
+) -> Result<Json<NewKey>, AppError> {
+    let key = store::accounts::rotate_key(&s, &b.prefix, &u).await?;
+    Ok(Json(NewKey { key }))
+}
+
 pub async fn list_keys(
     State(s): State<DbState>,
     AdminUser(_u): AdminUser,
