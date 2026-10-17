@@ -1,9 +1,0 @@
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.13s
-     Running `target/debug/utmelab-api serve`
-[2m2026-10-11T18:16:36.425542Z[0m [33m WARN[0m [2mutmelab_api::bank::json[0m[2m:[0m withheld from serving: novels/life-changer.json: only 0 questions — withheld until it reaches 50
-[2m2026-10-11T18:16:36.425645Z[0m [33m WARN[0m [2mutmelab_api::bank::json[0m[2m:[0m withheld from serving: novels/second-class-citizen.json: only 0 questions — withheld until it reaches 50
-[2m2026-10-11T18:16:36.425661Z[0m [33m WARN[0m [2mutmelab_api::bank::json[0m[2m:[0m withheld from serving: novels/sweet-sixteen.json: only 0 questions — withheld until it reaches 50
-[2m2026-10-11T18:16:36.425676Z[0m [33m WARN[0m [2mutmelab_api::bank::json[0m[2m:[0m withheld from serving: novels/unexpected-joy-at-dawn.json: only 0 questions — withheld until it reaches 50
-[2m2026-10-11T18:16:36.425690Z[0m [33m WARN[0m [2mutmelab_api::bank::json[0m[2m:[0m withheld from serving: novels/wuthering-heights.json: only 0 questions — withheld until it reaches 50
-[2m2026-10-11T18:16:38.977590Z[0m [32m INFO[0m [2mutmelab_api[0m[2m:[0m utmelab-api listening [3mbind[0m[2m=[0m127.0.0.1:8080 [3mdata[0m[2m=[0mdata [3mkey_backend[0m[2m=[0mturso [3mkeys[0m[2m=[0m1 [3msubjects[0m[2m=[0m34 [3mquestions[0m[2m=[0m2371 [3mdefault_rate_limit[0m[2m=[0m60
-[2m2026-10-11T18:31:54.050426Z[0m [33m WARN[0m [2mutmelab_api[0m[2m:[0m rate-limit retention skipped: internal error: turso list: request to https://utmelab-api-ultimatekristency.aws-eu-west-1.turso.io/v3/cursor failed: error sending request for url (https://utmelab-api-ultimatekristency.aws-eu-west-1.turso.io/v3/cursor)
