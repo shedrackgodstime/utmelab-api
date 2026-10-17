@@ -1190,31 +1190,35 @@ pub async fn fetch_rows(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::sync::atomic::AtomicU64;
+    use crate::testing::{api_schema, bank_schema, connect, replica};
 
-    static TEST_DB_SEQ: AtomicU64 = AtomicU64::new(0);
-
+    /// The shared bank fixture: one offline replica carrying every bank shape
+    /// the readers touch, seeded with the rows the tests below assert on. The
+    /// shapes come from `testing::BANK_DDL`; only the rows live here.
     async fn local_exams_db() -> crate::store::SyncDb {
-        let n = TEST_DB_SEQ.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
-        let path =
-            std::env::temp_dir().join(format!("utmelab-exams-test-{}-{n}.db", std::process::id()));
-        // Fully offline: bootstrap_if_empty(false) keeps build() from
-        // issuing any HTTP, and tests never pull — connect/execute/query
-        // all run against the local file.
-        let db = turso::sync::Builder::new_remote(path.to_str().expect("tmp path"))
-            .with_remote_url("http://127.0.0.1:9")
-            .with_auth_token("test-only")
-            .bootstrap_if_empty(false)
-            .build()
-            .await
-            .expect("local sync db builds offline");
-        let conn = db.connect().await.expect("connect");
-        conn.execute(
-            "CREATE TABLE exams (code TEXT, name TEXT, countries TEXT, status TEXT, has_full_paper INTEGER, subjects_required INTEGER, duration_minutes INTEGER, rules TEXT)",
-            (),
+        let db = replica().await;
+        let conn = connect(&db).await;
+        bank_schema(
+            &conn,
+            &[
+                "exams",
+                "exam_requirements",
+                "subjects",
+                "topics",
+                "subtopics",
+                "topic_countries",
+                "questions",
+                "verifications",
+                "novels",
+                "novel_chapters",
+                "novel_characters",
+                "novel_themes",
+                "novel_questions",
+                "passages",
+            ],
         )
-        .await
-        .expect("create exams");
+        .await;
+        api_schema(&conn).await;
         conn.execute(
             "INSERT INTO exams VALUES ('JAMB','Joint Admissions','[\"NG\"]','live',1,4,120,'[\"r1\"]')",
             (),
@@ -1228,12 +1232,6 @@ mod tests {
         .await
         .expect("insert waec");
         conn.execute(
-            "CREATE TABLE exam_requirements (exam TEXT, country TEXT, \"group\" TEXT, min_select INTEGER, subjects TEXT)",
-            (),
-        )
-        .await
-        .expect("create requirements");
-        conn.execute(
             "INSERT INTO exam_requirements VALUES ('JAMB','NG','core',1,'[\"use-of-english\"]')",
             (),
         )
@@ -1245,12 +1243,6 @@ mod tests {
         )
         .await
         .expect("insert elective requirement");
-        conn.execute(
-            "CREATE TABLE subjects (slug TEXT, exam TEXT, name TEXT, is_compulsory INTEGER, objective_paper_questions INTEGER)",
-            (),
-        )
-        .await
-        .expect("create subjects");
         conn.execute(
             "INSERT INTO subjects VALUES ('use-of-english','JAMB','Use of English',1,50)",
             (),
@@ -1270,12 +1262,6 @@ mod tests {
         .await
         .expect("insert waec english");
         conn.execute(
-            "CREATE TABLE topics (slug TEXT, subject TEXT, exam TEXT, name TEXT, \"order\" INTEGER, weight INTEGER, objectives TEXT)",
-            (),
-        )
-        .await
-        .expect("create topics");
-        conn.execute(
             "INSERT INTO topics VALUES ('algebra','mathematics','JAMB','Algebra',3,15,'[\"solve\"]')",
             (),
         )
@@ -1288,47 +1274,17 @@ mod tests {
         .await
         .expect("insert geometry");
         conn.execute(
-            "CREATE TABLE subtopics (slug TEXT, topic TEXT, name TEXT, \"order\" INTEGER, objectives TEXT)",
-            (),
-        )
-        .await
-        .expect("create subtopics");
-        conn.execute(
             "INSERT INTO subtopics VALUES ('geometry-basics','geometry','Geometry basics',1,'[]')",
             (),
         )
         .await
         .expect("insert subtopic");
         conn.execute(
-            "CREATE TABLE topic_countries (topic TEXT NOT NULL, country TEXT NOT NULL, PRIMARY KEY (topic, country))",
-            (),
-        )
-        .await
-        .expect("create topic_countries");
-        conn.execute(
-            "CREATE TABLE questions (id TEXT, exam TEXT, subject TEXT, year INTEGER, source TEXT, text TEXT, inline TEXT, options TEXT, answer TEXT, subtopic_id TEXT, section TEXT, passage_id TEXT, explanation TEXT, marks REAL, difficulty INTEGER, content_hash TEXT)",
-            (),
-        )
-        .await
-        .expect("create questions");
-        conn.execute(
             "INSERT INTO questions VALUES ('q1','JAMB','physics',2025,'past_paper','What is 2+2?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"4\",\"inline\":[]}}]','a',NULL,NULL,NULL,'{\"key_point\":{\"text\":\"addition\",\"inline\":[]},\"body\":{\"text\":\"2+2=4\",\"inline\":[]}}',1.0,2,'h1')",
             (),
         )
         .await
         .expect("insert q1");
-        conn.execute(
-            "CREATE TABLE reports (id TEXT PRIMARY KEY, target_type TEXT NOT NULL, target_id TEXT NOT NULL, reporter TEXT NOT NULL, reason TEXT NOT NULL, detail TEXT, created_at INTEGER NOT NULL, UNIQUE(reporter, target_type, target_id, reason))",
-            (),
-        )
-        .await
-        .expect("create reports");
-        conn.execute(
-            "CREATE TABLE verifications (id TEXT, question_id TEXT, kind TEXT, verdict TEXT, scope TEXT, verifier TEXT, detail TEXT, content_hash TEXT, created_at TEXT)",
-            (),
-        )
-        .await
-        .expect("create verifications");
         // q1: a human pass matching its content hash → verified.
         conn.execute(
             "INSERT INTO verifications VALUES ('v1','q1','human','pass','[\"answer\",\"explanation\"]','review',NULL,'h1','2026-01-01T00:00:00Z')",
@@ -1344,12 +1300,6 @@ mod tests {
         .await
         .expect("insert v2");
         conn.execute(
-            "CREATE TABLE novels (id TEXT, title TEXT, author TEXT, year_published INTEGER, exam TEXT, year_prescribed TEXT, category TEXT, featured INTEGER, synopsis TEXT, setting_place TEXT, setting_period TEXT, cover_image TEXT)",
-            (),
-        )
-        .await
-        .expect("create novels");
-        conn.execute(
             "INSERT INTO novels VALUES ('lekki','The Lekki Headmaster','A',2020,'JAMB','[2025,2026]','english',1,'syn','Lagos','modern',NULL)",
             (),
         )
@@ -1362,23 +1312,11 @@ mod tests {
         .await
         .expect("insert old");
         conn.execute(
-            "CREATE TABLE novel_chapters (novel_id TEXT, number INTEGER, title TEXT, summary TEXT, key_events TEXT)",
-            (),
-        )
-        .await
-        .expect("create chapters");
-        conn.execute(
             "INSERT INTO novel_chapters VALUES ('lekki',1,'Arrival',NULL,'[\"bus\"]')",
             (),
         )
         .await
         .expect("insert chapter");
-        conn.execute(
-            "CREATE TABLE novel_characters (novel_id TEXT, name TEXT, role TEXT, character_type TEXT, description TEXT)",
-            (),
-        )
-        .await
-        .expect("create characters");
         conn.execute(
             "INSERT INTO novel_characters VALUES ('lekki','Ada','hero','heroine','brave')",
             (),
@@ -1386,23 +1324,11 @@ mod tests {
         .await
         .expect("insert character");
         conn.execute(
-            "CREATE TABLE novel_themes (novel_id TEXT, name TEXT, description TEXT, evidence TEXT)",
-            (),
-        )
-        .await
-        .expect("create themes");
-        conn.execute(
             "INSERT INTO novel_themes VALUES ('lekki','Hope','endures','[\"dawn\"]')",
             (),
         )
         .await
         .expect("insert theme");
-        conn.execute(
-            "CREATE TABLE novel_questions (id TEXT, novel_id TEXT, chapter_number INTEGER, text TEXT, inline TEXT, options TEXT, answer TEXT, explanation TEXT, content_hash TEXT)",
-            (),
-        )
-        .await
-        .expect("create novel_questions");
         conn.execute(
             "INSERT INTO novel_questions VALUES ('nq1','lekki',1,'Who?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"Ada\",\"inline\":[]}}]','a',NULL,'nh1')",
             (),
@@ -1423,12 +1349,6 @@ mod tests {
         .await
         .expect("insert novel verification");
         conn.execute(
-            "CREATE TABLE passages (id TEXT, exam TEXT, subject TEXT, year INTEGER, kind TEXT, title TEXT, author TEXT, text TEXT, inline TEXT)",
-            (),
-        )
-        .await
-        .expect("create passages");
-        conn.execute(
             "INSERT INTO passages VALUES ('p1','JAMB','english',2025,'comprehension','The Market',NULL,'A market sells things.','[]')",
             (),
         )
@@ -1446,7 +1366,7 @@ mod tests {
         )
         .await
         .expect("insert q3");
-        std::sync::Arc::new(db)
+        db
     }
 
     #[tokio::test]
@@ -1732,33 +1652,20 @@ mod tests {
     #[tokio::test]
     async fn list_blueprints_maps_sparse_rows() {
         let db = local_exams_db().await;
-        db.connect()
-            .await
-            .expect("connect")
-            .execute(
-                "CREATE TABLE blueprints (exam TEXT, subject TEXT, level TEXT, topic TEXT, section TEXT, members TEXT, paper_size INTEGER, pct REAL, pct_low REAL, pct_high REAL, expected REAL, expected_low REAL, expected_high REAL, source TEXT, sample TEXT, method TEXT, confidence TEXT, status TEXT, note TEXT)",
-                (),
-            )
-            .await
-            .expect("create blueprints");
-        db.connect()
-            .await
-            .expect("connect")
-            .execute(
-                "INSERT INTO blueprints VALUES ('JAMB','physics','topic','algebra',NULL,'[\"a\"]',40,0.5,NULL,NULL,18.0,NULL,NULL,'past','n=200','freq','high','active','note')",
-                (),
-            )
-            .await
-            .expect("insert full row");
-        db.connect()
-            .await
-            .expect("connect")
-            .execute(
-                "INSERT INTO blueprints VALUES ('JAMB','physics','paper',NULL,NULL,'[]',40,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'freq',NULL,'draft',NULL)",
-                (),
-            )
-            .await
-            .expect("insert sparse row");
+        let conn = connect(&db).await;
+        bank_schema(&conn, &["blueprints"]).await;
+        conn.execute(
+            "INSERT INTO blueprints VALUES ('JAMB','physics','topic','algebra',NULL,'[\"a\"]',40,0.5,NULL,NULL,18.0,NULL,NULL,'past','n=200','freq','high','active','note')",
+            (),
+        )
+        .await
+        .expect("insert full row");
+        conn.execute(
+            "INSERT INTO blueprints VALUES ('JAMB','physics','paper',NULL,NULL,'[]',40,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'freq',NULL,'draft',NULL)",
+            (),
+        )
+        .await
+        .expect("insert sparse row");
         let s = crate::state::DbState::detached(db);
         let rows = list_blueprints(&s, "JAMB", "physics")
             .await

@@ -20,7 +20,7 @@ fn hasher() -> Result<Argon2<'static>, AppError> {
         .map_err(|e| AppError::Internal(format!("argon2 parameters: {e}")))
 }
 
-fn hash_key(full: &str) -> String {
+pub(crate) fn hash_key(full: &str) -> String {
     use sha2::Digest;
     crate::core::hex::encode(&sha2::Sha256::digest(full.as_bytes()))
 }
@@ -637,56 +637,33 @@ mod tests {
     use super::*;
     use crate::state::DbState;
 
-    /// Offline replica: `bootstrap_if_empty(false)` keeps `build()` off the
-    /// network. Reads (`verify_key`, `verify_session`, `list_*`) run here;
-    /// writes cannot, because the single write path pushes to the cloud and
-    /// a dead remote fails the push. Seeding therefore goes through a raw
-    /// connection, and mutation tests stop at the validation boundary.
+    /// Offline replica with the API's account tables. Reads (`verify_key`,
+    /// `verify_session`, `list_*`) run here; writes cannot, because the single
+    /// write path pushes to the cloud and a dead remote fails the push. Seeding
+    /// therefore goes through a raw connection, and mutation tests stop at the
+    /// validation boundary.
     async fn local_accounts_db() -> DbState {
-        let path = std::env::temp_dir().join(format!(
-            "utmelab-accounts-test-{}-{}.db",
-            std::process::id(),
-            std::time::SystemTime::now()
-                .duration_since(std::time::UNIX_EPOCH)
-                .map(|d| d.as_nanos())
-                .unwrap_or(0)
-        ));
-        let db = turso::sync::Builder::new_remote(path.to_str().expect("tmp path"))
-            .with_auth_token("test-only")
-            .bootstrap_if_empty(false)
-            .build()
-            .await
-            .expect("local sync db builds offline");
-        let conn = db.connect().await.expect("connect");
-        for ddl in [
-            "CREATE TABLE api_keys (prefix TEXT PRIMARY KEY, hash TEXT NOT NULL, tier TEXT NOT NULL DEFAULT 'commercial', scopes TEXT NOT NULL DEFAULT 'read:catalog', revoked INTEGER NOT NULL DEFAULT 0, owner TEXT NOT NULL DEFAULT '', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
-            "CREATE TABLE dashboard_users (username TEXT PRIMARY KEY, pw_hash TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'customer', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
-            "CREATE TABLE sessions (token_hash TEXT PRIMARY KEY, username TEXT NOT NULL, expires_at INTEGER NOT NULL)",
-        ] {
-            conn.execute(ddl, ()).await.expect("create table");
-        }
-        DbState::detached(std::sync::Arc::new(db))
+        let db = crate::testing::replica().await;
+        crate::testing::api_schema(&crate::testing::connect(&db).await).await;
+        crate::testing::db_state(db)
     }
 
     /// Seed through a raw connection, bypassing the pushing write path.
     async fn seed(s: &DbState, sql: &str, params: Vec<turso::Value>) {
-        let db = s.db.read().await.clone().expect("db");
-        let conn = db.connect().await.expect("connect");
-        conn.execute(sql, params).await.expect("seed write");
+        crate::testing::conn_of(s)
+            .await
+            .execute(sql, params)
+            .await
+            .expect("seed write");
     }
 
     async fn seed_key(s: &DbState, full: &str, tier: &str, scopes: &str, revoked: i64) {
-        let (prefix, _) = full.split_once('.').expect("key shape");
-        seed(
-            s,
-            "INSERT INTO api_keys (prefix, hash, tier, scopes, revoked, owner) VALUES (?1, ?2, ?3, ?4, ?5, '')",
-            vec![
-                turso::Value::Text(prefix.to_string()),
-                turso::Value::Text(hash_key(full)),
-                turso::Value::Text(tier.to_string()),
-                turso::Value::Text(scopes.to_string()),
-                turso::Value::Integer(revoked),
-            ],
+        crate::testing::issue_key(
+            &crate::testing::conn_of(s).await,
+            full,
+            tier,
+            scopes,
+            revoked != 0,
         )
         .await;
     }

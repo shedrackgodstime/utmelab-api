@@ -154,23 +154,11 @@ where
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    fn state_with_permits(n: usize) -> DbState {
-        DbState {
-            db: Arc::new(tokio::sync::RwLock::new(None)),
-            db_gate: Arc::new(Semaphore::new(n)),
-            conns: Arc::new(ConnPool::new(n)),
-            metrics: Arc::new(crate::state::Metrics::default()),
-            cookie_secure: false,
-            write_mutex: Arc::new(tokio::sync::Mutex::new(())),
-            contract_ok: Arc::new(std::sync::atomic::AtomicBool::new(true)),
-            limiter: Arc::new(crate::auth::rate_limit::RateLimiter::new()),
-        }
-    }
+    use crate::testing::db_state_without_db;
 
     #[tokio::test]
     async fn gate_admits_up_to_limit_then_saturates() {
-        let s = state_with_permits(2);
+        let s = db_state_without_db(true, 2);
         let _a = gate(&s).expect("first permit");
         let _b = gate(&s).expect("second permit");
         assert!(matches!(gate(&s), Err(AppError::DbSaturated)));
@@ -184,7 +172,7 @@ mod tests {
 
     #[tokio::test]
     async fn missing_db_reports_unavailable() {
-        let s = state_with_permits(4);
+        let s = db_state_without_db(true, 4);
         assert!(matches!(synced(&s).await, Err(AppError::DbUnavailable(_))));
     }
 }

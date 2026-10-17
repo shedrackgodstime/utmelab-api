@@ -17,3 +17,6 @@ pub mod obs;
 pub mod routes;
 pub mod state;
 pub mod store;
+
+#[cfg(test)]
+pub(crate) mod testing;

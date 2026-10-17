@@ -159,28 +159,28 @@ pub fn router(state: AppState, cfg: &Config) -> Router {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::testing::{
+        api_schema, call, connect, db_state_without_db, issue_key, replica, state, state_without_db,
+    };
     use std::sync::Arc;
     use tower::ServiceExt;
 
-    fn state(contract_ok: bool) -> AppState {
-        AppState {
-            name: Arc::from("test"),
-            db: Arc::new(tokio::sync::RwLock::new(None)),
-            db_gate: Arc::new(tokio::sync::Semaphore::new(1)),
-            conns: Arc::new(crate::store::ConnPool::new(1)),
-            metrics: Arc::new(crate::state::Metrics::default()),
-            cookie_secure: false,
-            write_mutex: Arc::new(tokio::sync::Mutex::new(())),
-            contract_ok: Arc::new(std::sync::atomic::AtomicBool::new(contract_ok)),
-            limiter: Arc::new(crate::auth::rate_limit::RateLimiter::new()),
-        }
+    /// The composed app over a contract flag, no replica behind it: the layer
+    /// stack and the router tables, nothing that reads a store.
+    fn app(contract_ok: bool) -> Router {
+        crate::routes::router(
+            state_without_db(contract_ok),
+            &crate::config::Config::default(),
+        )
     }
 
+    /// The raw body out, for the guard test: a non-JSON handler body must not
+    /// leak past the guard, which a parsed value could not show.
     async fn probe(contract_ok: bool) -> (axum::http::StatusCode, String) {
         let app = Router::new()
             .route("/data", get(|| async { "payload" }))
             .layer(axum::middleware::from_fn_with_state(
-                state(contract_ok),
+                state_without_db(contract_ok),
                 contract_guard,
             ));
         let res = app
@@ -214,91 +214,32 @@ mod tests {
         assert_eq!(body, "payload");
     }
 
-    fn db_state(contract_ok: bool) -> crate::state::DbState {
-        crate::state::DbState {
-            db: Arc::new(tokio::sync::RwLock::new(None)),
-            db_gate: Arc::new(tokio::sync::Semaphore::new(1)),
-            conns: Arc::new(crate::store::ConnPool::new(1)),
-            metrics: Arc::new(crate::state::Metrics::default()),
-            cookie_secure: false,
-            write_mutex: Arc::new(tokio::sync::Mutex::new(())),
-            contract_ok: Arc::new(std::sync::atomic::AtomicBool::new(contract_ok)),
-            limiter: Arc::new(crate::auth::rate_limit::RateLimiter::new()),
-        }
-    }
-
     #[tokio::test]
     async fn ready_is_503_until_a_replica_exists() {
-        let err = health::ready(State(db_state(true)))
+        let err = health::ready(State(db_state_without_db(true, 1)))
             .await
             .expect_err("no replica yet");
         assert!(matches!(err, AppError::DbUnavailable(_)));
     }
 
-    async fn request_status(
-        app: Router,
-        method: &'static str,
-        uri: &'static str,
-        key: Option<&'static str>,
-    ) -> axum::http::StatusCode {
-        let mut req = Request::builder().method(method).uri(uri);
-        if let Some(k) = key {
-            req = req.header("x-api-key", k);
-        }
-        app.oneshot(req.body(Body::empty()).expect("request"))
-            .await
-            .expect("call")
-            .status()
-    }
-
-    async fn status_of_method(
-        app: Router,
-        method: &'static str,
-        uri: &'static str,
-    ) -> axum::http::StatusCode {
-        request_status(app, method, uri, None).await
-    }
-
-    async fn status_of(app: Router, uri: &'static str) -> axum::http::StatusCode {
-        status_of_method(app, "GET", uri).await
-    }
-
-    async fn post_json_status(
-        app: Router,
-        uri: &'static str,
-        key: &'static str,
-        body: &'static str,
-    ) -> axum::http::StatusCode {
-        app.oneshot(
-            Request::builder()
-                .method("POST")
-                .uri(uri)
-                .header("content-type", "application/json")
-                .header("x-api-key", key)
-                .body(Body::from(body))
-                .expect("request"),
-        )
-        .await
-        .expect("call")
-        .status()
-    }
-
     #[tokio::test]
     async fn router_wires_guard_and_telemetry() {
-        let st = state(true);
+        let st = state_without_db(true);
         let metrics = Arc::clone(&st.metrics);
         let app = crate::routes::router(st, &crate::config::Config::default());
 
         assert_eq!(
-            status_of(app.clone(), "/health").await,
+            call(app.clone(), "GET", "/health", None, None).await.0,
             axum::http::StatusCode::OK
         );
         assert_eq!(
-            status_of(app.clone(), "/api/v1/meta/tables").await,
+            call(app.clone(), "GET", "/api/v1/meta/tables", None, None)
+                .await
+                .0,
             axum::http::StatusCode::UNAUTHORIZED
         );
         assert_eq!(
-            status_of(app, "/ready").await,
+            call(app, "GET", "/ready", None, None).await.0,
             axum::http::StatusCode::SERVICE_UNAVAILABLE
         );
 
@@ -311,42 +252,49 @@ mod tests {
 
     #[tokio::test]
     async fn router_fails_closed_through_the_guard() {
-        let app = crate::routes::router(state(false), &crate::config::Config::default());
+        let app = app(false);
         assert_eq!(
-            status_of(app.clone(), "/api/v1/meta/tables").await,
+            call(app.clone(), "GET", "/api/v1/meta/tables", None, None)
+                .await
+                .0,
             axum::http::StatusCode::SERVICE_UNAVAILABLE
         );
-        assert_eq!(status_of(app, "/health").await, axum::http::StatusCode::OK);
+        assert_eq!(
+            call(app, "GET", "/health", None, None).await.0,
+            axum::http::StatusCode::OK
+        );
     }
 
     #[tokio::test]
     async fn admin_surface_lives_under_admin() {
-        let app = crate::routes::router(state(true), &crate::config::Config::default());
+        let app = app(true);
         assert_eq!(
-            status_of(app.clone(), "/api/internal/admin/status").await,
+            call(app.clone(), "GET", "/api/internal/admin/status", None, None)
+                .await
+                .0,
             axum::http::StatusCode::UNAUTHORIZED
         );
         assert_eq!(
-            status_of(app, "/api/internal/status").await,
+            call(app, "GET", "/api/internal/status", None, None).await.0,
             axum::http::StatusCode::NOT_FOUND
         );
-    }
-
-    async fn post_status_of(app: Router, uri: &'static str) -> axum::http::StatusCode {
-        status_of_method(app, "POST", uri).await
     }
 
     #[tokio::test]
     async fn report_write_routes_stay_wired_outside_the_read_group() {
         // `reports` sits outside the read-timeout group in `api::router`, so
         // this guards against the move dropping the routes to a 404.
-        let app = crate::routes::router(state(true), &crate::config::Config::default());
+        let app = app(true);
         assert_eq!(
-            post_status_of(app.clone(), "/api/v1/report").await,
+            call(app.clone(), "POST", "/api/v1/report", None, None)
+                .await
+                .0,
             axum::http::StatusCode::UNAUTHORIZED
         );
         assert_eq!(
-            post_status_of(app, "/api/v1/questions/q1/report").await,
+            call(app, "POST", "/api/v1/questions/q1/report", None, None)
+                .await
+                .0,
             axum::http::StatusCode::UNAUTHORIZED
         );
     }
@@ -363,7 +311,7 @@ mod tests {
             .route("/boom", get(|| async { boom() }))
             .layer(CatchPanicLayer::new());
         assert_eq!(
-            status_of(app, "/boom").await,
+            call(app, "GET", "/boom", None, None).await.0,
             axum::http::StatusCode::INTERNAL_SERVER_ERROR
         );
     }
@@ -418,10 +366,10 @@ mod tests {
     ];
 
     async fn assert_all_require_identity(routes: &'static [(&'static str, &'static str)]) {
-        let app = crate::routes::router(state(true), &crate::config::Config::default());
+        let app = app(true);
         for (method, uri) in routes {
             assert_eq!(
-                status_of_method(app.clone(), method, uri).await,
+                call(app.clone(), method, uri, None, None).await.0,
                 axum::http::StatusCode::UNAUTHORIZED,
                 "{method} {uri} must require identity"
             );
@@ -438,67 +386,26 @@ mod tests {
         assert_all_require_identity(SESSION).await;
     }
 
-    /// Offline replica carrying only `api_keys`. The key extractor reads that
-    /// one table before any handler runs, so a key's fate is settled here
+    /// Offline replica carrying the API's own tables. The key extractor reads
+    /// `api_keys` before any handler runs, so a key's fate is settled here
     /// without seeding a bank.
-    async fn keyed_state() -> AppState {
-        let path = std::env::temp_dir().join(format!(
-            "utmelab-routes-test-{}-{}.db",
-            std::process::id(),
-            std::time::SystemTime::now()
-                .duration_since(std::time::UNIX_EPOCH)
-                .map(|d| d.as_nanos())
-                .unwrap_or(0)
-        ));
-        let db = turso::sync::Builder::new_remote(path.to_str().expect("tmp path"))
-            .with_auth_token("test-only")
-            .bootstrap_if_empty(false)
-            .build()
-            .await
-            .expect("local sync db builds offline");
-        let conn = db.connect().await.expect("connect");
-        conn.execute(
-            "CREATE TABLE api_keys (prefix TEXT PRIMARY KEY, hash TEXT NOT NULL, tier TEXT NOT NULL DEFAULT 'commercial', scopes TEXT NOT NULL DEFAULT 'read:catalog', revoked INTEGER NOT NULL DEFAULT 0, owner TEXT NOT NULL DEFAULT '', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
-            (),
-        )
-        .await
-        .expect("create api_keys");
-        for (prefix, revoked) in [("live", 0), ("revoked", 1)] {
-            let full = format!("{prefix}.secret");
-            use sha2::Digest;
-            conn.execute(
-                "INSERT INTO api_keys (prefix, hash, tier, scopes, revoked, owner) VALUES (?1, ?2, 'commercial', 'read:catalog', ?3, '')",
-                vec![
-                    turso::Value::Text(prefix.to_string()),
-                    turso::Value::Text(crate::core::hex::encode(&sha2::Sha256::digest(
-                        full.as_bytes(),
-                    ))),
-                    turso::Value::Integer(revoked),
-                ],
-            )
-            .await
-            .expect("insert key");
-        }
-        let d = crate::state::DbState::detached(std::sync::Arc::new(db));
-        AppState {
-            name: std::sync::Arc::from("test"),
-            db: d.db,
-            db_gate: d.db_gate,
-            conns: d.conns,
-            metrics: d.metrics,
-            cookie_secure: false,
-            write_mutex: d.write_mutex,
-            contract_ok: d.contract_ok,
-            limiter: d.limiter,
-        }
+    async fn keyed_app() -> Router {
+        let db = replica().await;
+        let conn = connect(&db).await;
+        api_schema(&conn).await;
+        issue_key(&conn, "live.secret", "commercial", "read:catalog", false).await;
+        issue_key(&conn, "revoked.secret", "commercial", "read:catalog", true).await;
+        crate::routes::router(state(db), &crate::config::Config::default())
     }
 
     #[tokio::test]
     async fn every_keyed_route_rejects_a_revoked_key() {
-        let app = crate::routes::router(keyed_state().await, &crate::config::Config::default());
+        let app = keyed_app().await;
         for (method, uri) in KEYED {
             assert_eq!(
-                request_status(app.clone(), method, uri, Some("revoked.secret")).await,
+                call(app.clone(), method, uri, Some("revoked.secret"), None)
+                    .await
+                    .0,
                 axum::http::StatusCode::UNAUTHORIZED,
                 "{method} {uri} must refuse a revoked key"
             );
@@ -507,7 +414,15 @@ mod tests {
         // revocation and not a malformed key. `/keys/me` reads no bank, so it
         // is the one route a bare `api_keys` table can answer.
         assert_eq!(
-            request_status(app.clone(), "GET", "/api/v1/keys/me", Some("live.secret")).await,
+            call(
+                app.clone(),
+                "GET",
+                "/api/v1/keys/me",
+                Some("live.secret"),
+                None
+            )
+            .await
+            .0,
             axum::http::StatusCode::OK
         );
         // Identity is not authorization: the same live read key is refused at
@@ -516,7 +431,15 @@ mod tests {
         // runs after extraction, so an empty one would be 422, not 403.
         for uri in ["/mcp/tools/revoke_key", "/mcp/tools/unrevoke_key"] {
             assert_eq!(
-                post_json_status(app.clone(), uri, "live.secret", r#"{"prefix":"live"}"#).await,
+                call(
+                    app.clone(),
+                    "POST",
+                    uri,
+                    Some("live.secret"),
+                    Some(r#"{"prefix":"live"}"#)
+                )
+                .await
+                .0,
                 axum::http::StatusCode::FORBIDDEN,
                 "POST {uri} needs manage:keys"
             );

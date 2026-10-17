@@ -101,6 +101,14 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 ## Done
 
+- Test scaffolding has one home. `src/testing.rs` (`cfg(test)`) defines the
+  offline replica, the schema seeding, the key minter, the `AppState` assembly,
+  and the one HTTP call. Before this, six fixtures each rebuilt the replica, four
+  re-typed the API-owned DDL, two re-declared the bank DDL, three re-hashed a key,
+  and four hand-rolled the `AppState` literal; a shape change meant editing every
+  copy. Now `api_schema` seeds the API-owned tables from `store::schema::DDL`,
+  `bank_schema` the pipeline tables from one `BANK_DDL`, and `issue_key` hashes
+  through `accounts::hash_key`, so a fixture declares only the rows it is about.
 - The auth contract is enforced from one place. `routes` carries the route
   inventory and sweeps it through the real router: every keyed route refuses no
   key and a revoked key with 401 (24 routes), every session route refuses no
@@ -261,6 +269,12 @@ producing" bugs; new has no annotations, no served route, and a hand-written
   (`routes`) instead of copied into every module; a typed response is the
   compiler's to check, so a per-module test is worth it only where it proves the
   store read is wired (questions, subjects, reports), not merely the shape.
+- Test fixtures have one home, like the schemas they seed. `src/testing.rs` owns
+  the offline replica, the API-owned `DDL`, the bank `BANK_DDL`, key minting,
+  `AppState` assembly, and the request call; a test owns only its rows. A copied
+  fixture is not just noise: a re-typed `api_keys` or bank shape drifts from
+  production silently — the exact bug class `READ_SHAPES` catches — reintroduced
+  in the tests meant to catch it.
 - Shape declarations follow ownership. Tables the API creates go in `DDL`; tables
   the pipeline creates are declared in `READ_SHAPES` and validated, never
   created, because `CREATE TABLE IF NOT EXISTS` from the API would win a fresh

@@ -23,7 +23,7 @@ use crate::{error::AppError, state::DbState};
 pub const CONTRACT_VERSION: u64 = 1;
 
 /// Tables the API owns and creates at boot.
-const DDL: &[&str] = &[
+pub(crate) const DDL: &[&str] = &[
     "CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)",
     "CREATE TABLE IF NOT EXISTS api_keys (prefix TEXT PRIMARY KEY, hash TEXT NOT NULL, tier TEXT NOT NULL DEFAULT 'commercial', scopes TEXT NOT NULL DEFAULT 'read:catalog', revoked INTEGER NOT NULL DEFAULT 0, owner TEXT NOT NULL DEFAULT '', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS dashboard_users (username TEXT PRIMARY KEY, pw_hash TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'customer', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
@@ -383,24 +383,10 @@ pub async fn check_contract(s: &DbState) -> Result<Option<String>, AppError> {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::testing::{conn_of, db_state, replica};
 
     async fn local_db() -> crate::state::DbState {
-        let path = std::env::temp_dir().join(format!(
-            "utmelab-schema-test-{}-{}.db",
-            std::process::id(),
-            std::time::SystemTime::now()
-                .duration_since(std::time::UNIX_EPOCH)
-                .map(|d| d.as_nanos())
-                .unwrap_or(0)
-        ));
-        let db = turso::sync::Builder::new_remote(path.to_str().expect("tmp path"))
-            .with_remote_url("http://127.0.0.1:9")
-            .with_auth_token("test-only")
-            .bootstrap_if_empty(false)
-            .build()
-            .await
-            .expect("local sync db builds offline");
-        crate::state::DbState::detached(std::sync::Arc::new(db))
+        db_state(replica().await)
     }
 
     #[tokio::test]
@@ -412,13 +398,8 @@ mod tests {
     #[tokio::test]
     async fn current_shape_is_not_legacy() {
         let s = local_db().await;
-        s.db.read()
+        conn_of(&s)
             .await
-            .clone()
-            .expect("db")
-            .connect()
-            .await
-            .expect("connect")
             .execute(
                 "CREATE TABLE reports (id TEXT PRIMARY KEY, target_type TEXT NOT NULL, target_id TEXT NOT NULL, reporter TEXT NOT NULL, reason TEXT NOT NULL, detail TEXT, created_at INTEGER NOT NULL, UNIQUE(reporter, target_type, target_id, reason))",
                 (),
@@ -431,13 +412,8 @@ mod tests {
     #[tokio::test]
     async fn legacy_empty_detected_for_rebuild() {
         let s = local_db().await;
-        s.db.read()
+        conn_of(&s)
             .await
-            .clone()
-            .expect("db")
-            .connect()
-            .await
-            .expect("connect")
             .execute(
                 "CREATE TABLE reports (id TEXT PRIMARY KEY, question_id TEXT NOT NULL, reporter TEXT NOT NULL, reason TEXT NOT NULL, detail TEXT, created_at INTEGER NOT NULL, UNIQUE(reporter, question_id, reason))",
                 (),
@@ -450,14 +426,7 @@ mod tests {
     #[tokio::test]
     async fn legacy_populated_reports_count() {
         let s = local_db().await;
-        let conn =
-            s.db.read()
-                .await
-                .clone()
-                .expect("db")
-                .connect()
-                .await
-                .expect("connect");
+        let conn = conn_of(&s).await;
         conn.execute(
             "CREATE TABLE reports (id TEXT PRIMARY KEY, question_id TEXT NOT NULL, reporter TEXT NOT NULL, reason TEXT NOT NULL, detail TEXT, created_at INTEGER NOT NULL, UNIQUE(reporter, question_id, reason))",
             (),
@@ -471,16 +440,6 @@ mod tests {
         .await
         .expect("legacy row");
         assert_eq!(legacy_reports_rows(&s).await.expect("probe"), Some(1));
-    }
-
-    async fn open(s: &crate::state::DbState) -> turso::Connection {
-        s.db.read()
-            .await
-            .clone()
-            .expect("db")
-            .connect()
-            .await
-            .expect("connect")
     }
 
     async fn create(conn: &turso::Connection, table: &str, columns: &[&str]) {
@@ -501,7 +460,7 @@ mod tests {
     #[tokio::test]
     async fn declared_shapes_pass_when_present() {
         let s = local_db().await;
-        let conn = open(&s).await;
+        let conn = conn_of(&s).await;
         for (table, columns) in READ_SHAPES {
             create(&conn, table, columns).await;
         }
@@ -520,7 +479,7 @@ mod tests {
     #[tokio::test]
     async fn missing_column_is_named() {
         let s = local_db().await;
-        let conn = open(&s).await;
+        let conn = conn_of(&s).await;
         for (table, columns) in READ_SHAPES {
             let cols: Vec<&str> = if *table == "questions" {
                 columns
