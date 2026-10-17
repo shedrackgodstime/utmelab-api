@@ -169,7 +169,31 @@ fn log_filter() -> EnvFilter {
     }
 }
 
+/// Ctrl-C for interactive runs, SIGTERM for orchestrators (systemd, Docker and
+/// k8s all stop a service with SIGTERM). Either one lets axum drain in-flight
+/// requests and stop accepting instead of dropping work mid-flight.
 async fn shutdown_signal() {
-    let _ = tokio::signal::ctrl_c().await;
+    let interrupt = async {
+        let _ = tokio::signal::ctrl_c().await;
+    };
+    #[cfg(unix)]
+    let terminate = async {
+        match tokio::signal::unix::signal(tokio::signal::unix::SignalKind::terminate()) {
+            Ok(mut sig) => {
+                sig.recv().await;
+            }
+            Err(e) => {
+                tracing::warn!("cannot listen for SIGTERM: {e}");
+                std::future::pending::<()>().await;
+            }
+        }
+    };
+    #[cfg(not(unix))]
+    let terminate = std::future::pending::<()>();
+
+    tokio::select! {
+        _ = interrupt => {}
+        _ = terminate => {}
+    }
     tracing::info!("shutdown signal received");
 }

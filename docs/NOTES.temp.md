@@ -5,11 +5,9 @@ highest value first. Delete an entry when it is closed.
 
 ## Backlog
 
-1. Replica WAL/log growth. Watch `db/sync-live.db-log` and `-wal` over a long
-   run; add a periodic `Database::checkpoint()` only if they grow unbounded.
-2. `GET /api/v1/exams/{exam}/papers` costs ~142ms (release) in the per-row
+1. `GET /api/v1/exams/{exam}/papers` costs ~142ms (release) in the per-row
    `verified` predicate. Optimize only if it matters at the expected rate.
-3. Consider an adaptive pull interval (longer when the replica is idle) if one
+2. Consider an adaptive pull interval (longer when the replica is idle) if one
    request per `SYNC_SECS` is judged too chatty.
 
 ## Done
@@ -19,6 +17,10 @@ highest value first. Delete an entry when it is closed.
 - Per-key rate limiting on `api` + `mcp`, enforced in the key extractor so no
   route can forget it (`RATE_LIMIT_PER_MIN`, admin unlimited by default). A key
   past its ceiling gets 429 with `Retry-After: 60`.
+- Replica WAL/log watched, no action needed: `-wal` stays at 0 (the engine
+  checkpoints it) and `-log` moved about 0.3 KB across a full session.
+- Graceful shutdown now covers SIGTERM as well as Ctrl-C, so an orchestrator
+  stopping the service drains in-flight requests instead of dropping them.
 
 ## Decisions worth keeping
 
