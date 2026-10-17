@@ -11,22 +11,7 @@ promotion, no hand-kept contract, no duplicate admin surface. Ordered most
 important first, with standards, enforcement, and single sources of truth
 before features. Delete an entry when it is closed.
 
-### 1. The MCP surface is a strict subset of HTTP, not the parity it claimed  (enforcement; build next release)
-
-The MCP admin surface is needed, so it stays; it is simply not built out.
-`mcp/resources.rs` is an unmounted placeholder and `mcp/tools.rs` exposes three
-admin tools (`list_tables`, `revoke_key`, `unrevoke_key`) that duplicate
-`meta/tables` and `/api/internal/admin/keys/revoke`. The doc comment claimed
-"parity is structural"; that claim is removed now, so the tree stops promising
-what nothing checks.
-
-Build it the release after this one ships and deploys: mount read tools and
-resources that mirror the catalog routes, keyed by `AuthedKey` and scoped like
-HTTP, with one test asserting an MCP call and its HTTP equivalent answer the
-same. Reuse the HTTP gate for admin ops; do not add a second auth for a
-capability HTTP already guards.
-
-### 2. Per-module handler tests are thin  (enforcement)
+### 1. Per-module handler tests are thin  (enforcement)
 
 The key gate is structural now (see Done). What stays thin is the per-module
 happy-path envelope test: `questions` (the page), `subjects` (the tree), and
@@ -36,7 +21,7 @@ typed, so a wrong shape is a compile error; what a test adds is the store read
 wired to the handler. Fold one in as each module is next touched rather than
 writing seven seeded fixtures now.
 
-### 3. Deferred: CLI verbs and the OpenAPI contract  (out of scope for now)
+### 2. Deferred: CLI verbs and the OpenAPI contract  (out of scope for now)
 
 Recorded so it stays visible, not scheduled. Old's clap CLI had `key
 create/list/revoke/rotate`, `import` (json and Turso), `openapi --out`,
@@ -84,6 +69,15 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 ## Done
 
+- MCP now mirrors the keyed HTTP surface by construction. A read is a resource
+  (`GET /mcp/resources/<tail>`, the `/api/v1` path without the version); an
+  action is a tool (`POST /mcp/tools/*`), which is the MCP split falling out of
+  the HTTP verb. Every route but the two admin tools mounts the *same handler*
+  its HTTP twin does, so scope, gate, and rendered shape are written once and
+  cannot drift; `tools::list_tables` was deleted as a duplicate of `meta::tables`.
+  A parity test compares both outputs, and the sweep derives each resource twin
+  from the HTTP read list, so a read added without its resource fails the sweep.
+  This is not a JSON-RPC MCP server: the transport is plain keyed HTTP.
 - Identity is structural, not per handler. `auth::api_key::verify_key` is a
   layer over each keyed router (`api/v1` reads and writes, `mcp`): it verifies
   the key once, applies the per-key limit, and stashes `Auth` in the request
@@ -125,10 +119,11 @@ producing" bugs; new has no annotations, no served route, and a hand-written
   through `accounts::hash_key`, so a fixture declares only the rows it is about.
 - The auth contract is enforced from one place. `routes` carries the route
   inventory and sweeps it through the real router: every keyed route refuses no
-  key and a revoked key with 401 (24 routes), every session route refuses no
-  cookie, and scope mismatch is proven with a read key on a read route, the write
-  route, and the two mcp admin tools. `api/v1/mod.rs` points a new route at the
-  sweep, since the gate itself is still per-handler.
+  key and a revoked key with 401, every session route refuses no cookie, and
+  scope mismatch is proven with a read key on a read route, the write route, and
+  an mcp admin tool. The sweep derives each MCP resource twin from the HTTP read
+  list, so the mirror is asserted; identity itself is structural (see the gate
+  entry below), so the sweep proves the composition, not each route by hand.
 - The public surface is now a superset of old's. The last three routes are
   wired: `GET /api/v1/subjects/{exam}/{slug}`, `.../syllabus`, and
   `.../coverage`. The syllabus is assembled in `core::catalog::assemble_syllabus`
@@ -141,10 +136,6 @@ producing" bugs; new has no annotations, no served route, and a hand-written
   domain shapes (the Rust half of `READ_SHAPES`) no longer sit beside the ops
   DTOs and the `Rendered*` wire forms, so a new type has an obvious home and the
   file cannot grow into the grab-bag we are porting away from.
-- The MCP doc comment no longer claims a structural parity that does not exist.
-  MCP is stated for what it is: three admin tools over the same `store` calls as
-  HTTP, with the resources surface and read tools marked as the next release's
-  work.
 - `store/schema.rs` is now the source of truth for the shapes the API reads.
   `READ_SHAPES` declares every table the store touches and the columns it
   depends on, and `check_shapes` (folded into `check_contract`, replacing
@@ -156,9 +147,9 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 - Admin-only endpoints now live under `/api/internal/admin/*` by convention, and
   `/health` stays the public liveness probe. The operational status moved to
   `/api/internal/admin/status`; the old customer path answers 404.
-- Per-key rate limiting on `api` + `mcp`, enforced in the key extractor so no
-  route can forget it (`RATE_LIMIT_PER_MIN`, admin unlimited by default). A key
-  past its ceiling gets 429 with `Retry-After: 60`.
+- Per-key rate limiting on `api` + `mcp`, enforced in the `verify_key` layer so
+  no route can forget it (`RATE_LIMIT_PER_MIN`, admin unlimited by default). A
+  key past its ceiling gets 429 with `Retry-After: 60`.
 - Replica WAL/log watched, no action needed: `-wal` stays at 0 (the engine
   checkpoints it) and `-log` moved about 0.3 KB across a full session.
 - Graceful shutdown now covers SIGTERM as well as Ctrl-C, so an orchestrator

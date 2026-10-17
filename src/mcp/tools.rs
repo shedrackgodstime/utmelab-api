@@ -1,19 +1,39 @@
-use axum::{extract::State, Json};
+//! MCP tools: the actions (POST on the HTTP surface), at `/mcp/tools/<verb>_<noun>`.
+//!
+//! The admin tools (`revoke_key`, `unrevoke_key`) are the one place MCP needs
+//! its own handler: they call the same `store` call the dashboard uses, so the
+//! capability, scope, and audit hold on both surfaces. Every other tool mounts
+//! the HTTP handler itself (the reports and papers writes), for the same
+//! no-drift reason the resources do.
+
+use axum::{extract::State, routing::post, Json, Router};
 
 use crate::{
-    auth::{api_key::AuthedKey, Auth, SCOPE_MANAGE_KEYS, SCOPE_READ_CATALOG},
+    api::v1::{papers, reports},
+    auth::{api_key::AuthedKey, Auth, SCOPE_MANAGE_KEYS},
     core,
     error::AppError,
-    state::DbState,
+    state::{AppState, DbState},
     store,
 };
 
-pub async fn list_tables(
-    State(s): State<DbState>,
-    AuthedKey(auth): AuthedKey,
-) -> Result<Json<Vec<core::models::TableRef>>, AppError> {
-    auth.require(SCOPE_READ_CATALOG)?;
-    Ok(Json(store::catalog::table_refs(&s).await?))
+pub fn routes() -> Router<AppState> {
+    Router::new()
+        .route("/mcp/tools/revoke_key", post(revoke_key))
+        .route("/mcp/tools/unrevoke_key", post(unrevoke_key))
+        .route("/mcp/tools/file_report", post(reports::file))
+        .route(
+            "/mcp/tools/report_question/{id}",
+            post(reports::report_question),
+        )
+        .route(
+            "/mcp/tools/assemble_paper/{exam}/{subject}",
+            post(papers::assemble_paper),
+        )
+        .route(
+            "/mcp/tools/score_paper/{exam}/{subject}",
+            post(papers::score_paper),
+        )
 }
 
 /// Admin-only. Same core path as the dashboard revoke — one operation,

@@ -316,13 +316,10 @@ mod tests {
         );
     }
 
-    /// Every keyed route the service serves. Identity is structural now (the
-    /// `verify_key` layer gates each keyed router), so this sweep proves the
-    /// composition wired that layer onto every surface and that scope still
-    /// holds per route: a route missing here is a route nothing exercises end
-    /// to end. The layer runs before any extractor, so an unauthenticated POST
-    /// is refused before a parser sees it.
-    const KEYED: &[(&str, &str)] = &[
+    /// The keyed HTTP routes, the source list. Reads and writes are separate
+    /// because the MCP resource twins derive from the reads only; the MCP tools
+    /// are listed because their names do not derive from the paths.
+    const HTTP_READS: &[(&str, &str)] = &[
         ("GET", "/api/v1/exams"),
         ("GET", "/api/v1/exams/JAMB/subjects"),
         ("GET", "/api/v1/exams/JAMB/papers"),
@@ -340,14 +337,47 @@ mod tests {
         ("GET", "/api/v1/keys/me"),
         ("GET", "/api/v1/meta/tables"),
         ("GET", "/api/v1/meta/rows/exams"),
+    ];
+
+    const HTTP_WRITES: &[(&str, &str)] = &[
         ("POST", "/api/v1/report"),
         ("POST", "/api/v1/questions/q1/report"),
         ("POST", "/api/v1/papers/JAMB/physics"),
         ("POST", "/api/v1/papers/JAMB/physics/score"),
-        ("POST", "/mcp/tools/list_tables"),
+    ];
+
+    const MCP_TOOLS: &[(&str, &str)] = &[
         ("POST", "/mcp/tools/revoke_key"),
         ("POST", "/mcp/tools/unrevoke_key"),
+        ("POST", "/mcp/tools/file_report"),
+        ("POST", "/mcp/tools/report_question/q1"),
+        ("POST", "/mcp/tools/assemble_paper/JAMB/physics"),
+        ("POST", "/mcp/tools/score_paper/JAMB/physics"),
     ];
+
+    /// Every keyed route: the HTTP routes, each read's MCP resource twin, and
+    /// the MCP tools. Identity is structural (the `verify_key` layer gates each
+    /// keyed router), so the sweep proves the composition wired that layer onto
+    /// every surface and that scope still holds per route. Deriving the twins
+    /// is the point: a read added to `api/v1` without its resource fails here,
+    /// so the mirror is asserted, not retyped.
+    fn keyed_routes() -> Vec<(String, String)> {
+        let mut out: Vec<(String, String)> = HTTP_READS
+            .iter()
+            .chain(HTTP_WRITES)
+            .map(|(m, u)| (m.to_string(), u.to_string()))
+            .collect();
+        out.extend(HTTP_READS.iter().map(|(_, u)| {
+            let tail = u.strip_prefix("/api/v1/").expect("an api/v1 path");
+            ("GET".to_string(), format!("/mcp/resources/{tail}"))
+        }));
+        out.extend(
+            MCP_TOOLS
+                .iter()
+                .map(|(m, u)| (m.to_string(), u.to_string())),
+        );
+        out
+    }
 
     /// Session routes: the same rule through the cookie door. `login` is absent
     /// on purpose — it is how a session is obtained, so it cannot require one.
@@ -365,7 +395,7 @@ mod tests {
         ("POST", "/api/internal/admin/keys/unrevoke"),
     ];
 
-    async fn assert_all_require_identity(routes: &'static [(&'static str, &'static str)]) {
+    async fn assert_all_require_identity(routes: &[(String, String)]) {
         let app = app(true);
         for (method, uri) in routes {
             assert_eq!(
@@ -378,12 +408,16 @@ mod tests {
 
     #[tokio::test]
     async fn every_keyed_route_rejects_a_missing_key() {
-        assert_all_require_identity(KEYED).await;
+        assert_all_require_identity(&keyed_routes()).await;
     }
 
     #[tokio::test]
     async fn every_session_route_rejects_a_missing_cookie() {
-        assert_all_require_identity(SESSION).await;
+        let routes: Vec<(String, String)> = SESSION
+            .iter()
+            .map(|(m, u)| (m.to_string(), u.to_string()))
+            .collect();
+        assert_all_require_identity(&routes).await;
     }
 
     /// Offline replica carrying the API's own tables. The key extractor reads
@@ -401,9 +435,9 @@ mod tests {
     #[tokio::test]
     async fn every_keyed_route_rejects_a_revoked_key() {
         let app = keyed_app().await;
-        for (method, uri) in KEYED {
+        for (method, uri) in keyed_routes() {
             assert_eq!(
-                call(app.clone(), method, uri, Some("revoked.secret"), None)
+                call(app.clone(), &method, &uri, Some("revoked.secret"), None)
                     .await
                     .0,
                 axum::http::StatusCode::UNAUTHORIZED,
