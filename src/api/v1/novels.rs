@@ -96,3 +96,126 @@ pub fn router(state: AppState) -> Router<AppState> {
         .route("/v1/novels/{id}/questions", get(questions))
         .with_state(state)
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::testing::{api_schema, bank_schema, call, connect, issue_key, replica, state};
+    use axum::http::StatusCode;
+
+    const BANK_TABLES: &[&str] = &[
+        "novels",
+        "novel_chapters",
+        "novel_characters",
+        "novel_themes",
+        "novel_questions",
+        "verifications",
+    ];
+
+    async fn seeded_app() -> axum::Router {
+        let db = replica().await;
+        let conn = connect(&db).await;
+        api_schema(&conn).await;
+        bank_schema(&conn, BANK_TABLES).await;
+        conn.execute(
+            "INSERT INTO novels VALUES ('lekki','Lekki Headmaster','Author',2010,'JAMB','[2024,2025]','literature',1,'A synopsis','Lagos','1970s',NULL)",
+            (),
+        )
+        .await
+        .expect("insert novel");
+        conn.execute(
+            "INSERT INTO novel_questions VALUES ('nq1','lekki',1,'Who is the headmaster?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"Lekki\",\"inline\":[]}}]','a',NULL,'h2')",
+            (),
+        )
+        .await
+        .expect("insert novel question");
+        issue_key(&conn, "reader.secret", "commercial", "read:catalog", false).await;
+        crate::routes::router(state(db), &crate::config::Config::default())
+    }
+
+    /// All three reads: the list decodes JSON columns, the detail assembles the
+    /// document, and the quiz page withholds the answer by default.
+    #[tokio::test]
+    async fn novel_reads_are_keyed_listed_and_paged() {
+        let app = seeded_app().await;
+
+        assert_eq!(
+            call(app.clone(), "GET", "/api/v1/novels", None, None)
+                .await
+                .0,
+            StatusCode::UNAUTHORIZED
+        );
+
+        let (status, list) = call(
+            app.clone(),
+            "GET",
+            "/api/v1/novels",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK);
+        let novels = list.as_array().expect("array");
+        assert_eq!(novels.len(), 1);
+        assert_eq!(novels[0]["id"], "lekki");
+        assert_eq!(novels[0]["featured"], true);
+        assert_eq!(
+            novels[0]["year_prescribed"],
+            serde_json::json!([2024, 2025])
+        );
+
+        let (status, doc) = call(
+            app.clone(),
+            "GET",
+            "/api/v1/novels/lekki",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK);
+        assert_eq!(doc["id"], "lekki");
+        assert_eq!(doc["chapters"].as_array().expect("chapters").len(), 0);
+        assert_eq!(doc["questions"].as_array().expect("questions").len(), 1);
+
+        let (status, page) = call(
+            app.clone(),
+            "GET",
+            "/api/v1/novels/lekki/questions",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK);
+        assert_eq!(page["total_records"], 1);
+        assert_eq!(page["questions"][0]["id"], "nq1");
+        assert!(
+            page["questions"][0].get("answer").is_none(),
+            "answer withheld"
+        );
+
+        // Unknown ids 404 on both detail and quiz.
+        assert_eq!(
+            call(
+                app.clone(),
+                "GET",
+                "/api/v1/novels/nope",
+                Some("reader.secret"),
+                None
+            )
+            .await
+            .0,
+            StatusCode::NOT_FOUND
+        );
+        assert_eq!(
+            call(
+                app,
+                "GET",
+                "/api/v1/novels/nope/questions",
+                Some("reader.secret"),
+                None
+            )
+            .await
+            .0,
+            StatusCode::NOT_FOUND
+        );
+    }
+}

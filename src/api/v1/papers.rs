@@ -218,3 +218,92 @@ pub fn router(state: AppState) -> Router<AppState> {
         .route("/v1/papers/{exam}/{subject}/score", post(score_paper))
         .with_state(state)
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::testing::{api_schema, bank_schema, call, connect, issue_key, replica, state};
+    use axum::http::StatusCode;
+
+    async fn seeded_app() -> axum::Router {
+        let db = replica().await;
+        let conn = connect(&db).await;
+        api_schema(&conn).await;
+        bank_schema(
+            &conn,
+            &[
+                "exams",
+                "subjects",
+                "exam_requirements",
+                "questions",
+                "verifications",
+                "subtopics",
+                "topic_countries",
+            ],
+        )
+        .await;
+        conn.execute(
+            "INSERT INTO exams VALUES ('JAMB','Joint Admissions','[\"NG\"]','live',1,4,120,'[]')",
+            (),
+        )
+        .await
+        .expect("insert exam");
+        conn.execute(
+            "INSERT INTO subjects VALUES ('physics','JAMB','Physics',0,40)",
+            (),
+        )
+        .await
+        .expect("insert subject");
+        conn.execute(
+            "INSERT INTO exam_requirements VALUES ('JAMB','NG','sciences',1,'[\"physics\"]')",
+            (),
+        )
+        .await
+        .expect("insert requirement");
+        issue_key(&conn, "reader.secret", "commercial", "read:catalog", false).await;
+        crate::routes::router(state(db), &crate::config::Config::default())
+    }
+
+    /// The readiness view carries the scope it was computed for and the
+    /// requirement set it judged, so a consumer can see what `complete` meant.
+    #[tokio::test]
+    async fn paper_readiness_is_keyed_and_scoped() {
+        let app = seeded_app().await;
+
+        assert_eq!(
+            call(app.clone(), "GET", "/api/v1/exams/JAMB/papers", None, None)
+                .await
+                .0,
+            StatusCode::UNAUTHORIZED
+        );
+
+        let (status, v) = call(
+            app.clone(),
+            "GET",
+            "/api/v1/exams/JAMB/papers",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK, "body: {v}");
+        assert_eq!(v["exam"], "JAMB");
+        assert_eq!(v["scheme"]["country"], "NG");
+        assert_eq!(v["scheme"]["subjects"][0]["slug"], "physics");
+        assert_eq!(v["scheme"]["requirements"][0]["min_select"], 1);
+        assert_eq!(v["scheme"]["requirements"][0]["subjects"][0], "physics");
+        // No verified questions are held, so no subject slot is ready yet.
+        assert_eq!(v["complete"], false);
+
+        assert_eq!(
+            call(
+                app,
+                "GET",
+                "/api/v1/exams/WAEC/papers",
+                Some("reader.secret"),
+                None
+            )
+            .await
+            .0,
+            StatusCode::NOT_FOUND
+        );
+    }
+}

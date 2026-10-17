@@ -11,17 +11,7 @@ promotion, no hand-kept contract, no duplicate admin surface. Ordered most
 important first, with standards, enforcement, and single sources of truth
 before features. Delete an entry when it is closed.
 
-### 1. Per-module handler tests are thin  (enforcement)
-
-The key gate is structural now (see Done). What stays thin is the per-module
-happy-path envelope test: `questions` (the page), `subjects` (the tree), and
-`reports` (the write boundary) have one; `exams`, `blueprints`, `meta`,
-`passages`, `topics`, `novels`, and `papers` do not. Their return types are
-typed, so a wrong shape is a compile error; what a test adds is the store read
-wired to the handler. Fold one in as each module is next touched rather than
-writing seven seeded fixtures now.
-
-### 2. Deferred: CLI verbs and the OpenAPI contract  (out of scope for now)
+### 1. Deferred: CLI verbs and the OpenAPI contract  (out of scope for now)
 
 Recorded so it stays visible, not scheduled. Old's clap CLI had `key
 create/list/revoke/rotate`, `import` (json and Turso), `openapi --out`,
@@ -67,6 +57,13 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 ## Done
 
+- Every catalog module now has a happy-path handler test through the real
+  router, each on a seeded offline replica: `exams` (typed booleans/ints/rules),
+  `blueprints` (measured columns and the honest empty list), `meta` (the
+  deny-by-default allowlist on both list and row dump), `passages`, `topics`,
+  `novels` (list, detail, quiz page), and `papers` (readiness carries the scope
+  and requirements it judged). These prove the store read is wired, not the
+  shape — the return types already do that.
 - Contention is classified from the typed engine error, not from wording. The
   `upstream` conversion, the one place a `turso::Error` is still in hand, now
   maps `Busy`/`BusySnapshot` to `AppError::DbContended` (503, code `contended`),
