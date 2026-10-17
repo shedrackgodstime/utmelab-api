@@ -9,14 +9,23 @@ directly if it is asking the wrong thing.
 
 ---
 
-## 1. Auth on the novel routes
+## 1. Which surfaces count as done?
 
-`src/api/v1/novels.rs`. `list` and `detail` take no `AuthedKey`; the nested
-`questions` handler does. Every other read route on that surface requires a
-key.
+I am treating this as a question about scope rather than about code, because
+getting it wrong wastes everyone's time.
 
-Is that deliberate? If yes, a comment saying why would stop the next reader
-from reading it as an oversight.
+Some parts of this service are filled in and being worked on properly. Others
+are started and will grow, and reading them as finished produces findings that
+are just "this is not finished yet".
+
+Which routes and which modules are complete enough to be held to the standard
+you want them at, and which are still filling in? I will not raise anything
+against a surface you tell me is in progress, including auth gaps, missing
+pagination, or handlers that are thinner than the finished ones.
+
+`src/api/v1/novels.rs` is the case that made me ask: `list` and `detail` take
+no `AuthedKey` while the nested `questions` handler does. If novels is a
+surface still being built, that is the answer and the question closes.
 
 ## 2. Health probe timing under load
 
