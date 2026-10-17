@@ -7,9 +7,10 @@
 //! The interval is the point: the replica is pulled every `SYNC_SECS` whether
 //! or not a request arrives, so a change made anywhere (the pipeline promoting
 //! content, a key revoked elsewhere) lands on this replica within `SYNC_SECS`.
-//! An idle process therefore costs one small pull per window and nothing else
-//! (no held request, no busy loop, no disk churn), and `SYNC_SECS` is both the
-//! bound on propagation delay and the single knob for freshness against chatter.
+//! An idle process therefore costs one pull per window and nothing else: no
+//! held request, no busy loop, and only the pull's own ~2.3KB of local log
+//! writes. `SYNC_SECS` is both the bound on propagation delay and the single
+//! knob for freshness against chatter (see its doc in `config`).
 //!
 //! Nothing here ever returns. Every failure is retried in place, so the
 //! replica recovers without a process restart.

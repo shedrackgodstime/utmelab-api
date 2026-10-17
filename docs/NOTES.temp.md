@@ -55,13 +55,23 @@ producing" bugs; new has no annotations, no served route, and a hand-written
    trivial keyed read costs ~0.4ms, so most of a page's price is the query's
    own filter and `COUNT(*)`, not the rows (~46us each) or the JSON. It is paid
    by the hottest route, so it is worth a look once papers is fixed.
-3. Pin `SYNC_SECS` against a real remote. It is the bound on how long a cloud
-   change takes to land, and 60 was the prototype's default, not measured here.
-   Lower it until the per-window pull cost, not the interval, is the limit. The
-   read-only token is enough to measure this: a pull against the real remote
-   succeeds under it, and a pull is the whole cost.
+3. Pin `SYNC_SECS` against a real remote. Done, see Done below.
 
 ## Done
+- `SYNC_SECS` is measured now, not inherited, and defaults to 10. Against the
+  real remote an empty pull is one round trip, and the round trip is most of the
+  cost: ~0.2s while the HTTP connection is still warm (tick gaps up to ~2s),
+  ~0.7s once it has sat idle and is re-established (gaps from ~6s, which is what
+  a 5s window actually pays every tick). Payload is ~160 bytes of sync wire
+  content and ~2.3KB of local log writes per pull. Idle at a 5s window measured
+  0.05% of one core (3 ticks in 60s), zero disk reads, and no request in flight,
+  so the idle claim is a figure now, not an adjective. The pull holds the same
+  mutex a write does, so the interval is also the share of the serialized write
+  path sync takes: 10s asks the remote for ~6 requests/minute and holds a write
+  behind a pull for at most ~0.7s, while the propagation (and key-revocation)
+  bound drops 6x from the prototype's unmeasured 60. Below ~5s pays the
+  connection setup every tick and multiplies the request rate for a lag no user
+  can perceive.
 
 - The capacity pass ran, and it changed the picture. On a release build over the
   real bank (2243 questions, 2268 verifications, 34 subjects), a 20-question page
