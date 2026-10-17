@@ -11,20 +11,20 @@ promotion, no hand-kept contract, no duplicate admin surface. Ordered most
 important first, with standards, enforcement, and single sources of truth
 before features. Delete an entry when it is closed.
 
-### 1. The MCP surface declares parity it does not enforce  (enforcement)
+### 1. The MCP surface is a strict subset of HTTP, not the parity it claimed  (enforcement; build next release)
 
-`mcp/mod.rs` says "tools wrap the same `core` functions the HTTP handlers
-call, so parity is structural". It is not. `mcp/resources.rs` is a one-line
-placeholder that the router does not even mount, and `mcp/tools.rs` exposes
-three admin tools (`list_tables`, `revoke_key`, `unrevoke_key`) that duplicate
-`meta/tables` and `/api/internal/admin/keys/revoke` under a second auth. A
-declared but unenforced surface is the same smell that removed `write:catalog`.
+The MCP admin surface is needed, so it stays; it is simply not built out.
+`mcp/resources.rs` is an unmounted placeholder and `mcp/tools.rs` exposes three
+admin tools (`list_tables`, `revoke_key`, `unrevoke_key`) that duplicate
+`meta/tables` and `/api/internal/admin/keys/revoke`. The doc comment claimed
+"parity is structural"; that claim is removed now, so the tree stops promising
+what nothing checks.
 
-How: decide and encode. Either build it (resource and tool handlers wrapping
-the same `store` reads, keyed by `AuthedKey` and scoped like HTTP, with a test
-asserting MCP and HTTP answers agree), or delete the unwired `resources`
-module and correct the doc comment. No third state where the tree promises a
-parity nothing checks.
+Build it the release after this one ships and deploys: mount read tools and
+resources that mirror the catalog routes, keyed by `AuthedKey` and scoped like
+HTTP, with one test asserting an MCP call and its HTTP equivalent answer the
+same. Reuse the HTTP gate for admin ops; do not add a second auth for a
+capability HTTP already guards.
 
 ### 2. Surface-level keyed tests are missing  (enforcement)
 
@@ -105,6 +105,10 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 ## Done
 
+- The MCP doc comment no longer claims a structural parity that does not exist.
+  MCP is stated for what it is: three admin tools over the same `store` calls as
+  HTTP, with the resources surface and read tools marked as the next release's
+  work.
 - `store/schema.rs` is now the source of truth for the shapes the API reads.
   `READ_SHAPES` declares every table the store touches and the columns it
   depends on, and `check_shapes` (folded into `check_contract`, replacing
