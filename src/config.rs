@@ -9,9 +9,10 @@ pub const DEFAULT_CONCURRENCY_LIMIT: usize = 1000;
 pub const DEFAULT_PORT: u16 = 3100;
 pub const DEFAULT_SERVER_URL: &str = "http://localhost:3100";
 pub const DEFAULT_REPLICA_PATH: &str = "db/sync.db";
-/// Seconds between background replica pulls. Not a long-poll window: each
-/// tick waits, pulls once, and leaves the sync IO worker free in between, so
-/// reads and writes on the serving path never queue behind a pull.
+/// Freshness window for the replica. A pull runs only when a request asks for
+/// data and at most once per window, so the process makes no request at all
+/// while idle. Not a long-poll window: the pull happens off the serving path,
+/// so reads and writes never queue behind the sync IO worker.
 pub const DEFAULT_SYNC_SECS: u64 = 60;
 pub const DEFAULT_DB_MAX_CONCURRENT: usize = 16;
 /// Secure-by-default: a session cookie is only non-`Secure` when an operator

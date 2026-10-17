@@ -42,15 +42,22 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 1. `GET /api/v1/exams/{exam}/papers` costs ~142ms (release) in the per-row
    `verified` predicate. Optimize only if it matters at the expected rate.
-2. Consider an adaptive pull interval (longer when the replica is idle) if one
-   request per `SYNC_SECS` is judged too chatty.
-3. Capacity pass: the gate itself is measured (flat throughput, see Decisions).
+2. Capacity pass: the gate itself is measured (flat throughput, see Decisions).
    Remaining is the load model: run an HTTP load test against `questions` and
    `papers` once a key exists, size `WORKER_THREADS` to the VPS vCPU count, and
    set `DB_MAX_CONCURRENT` to expected peak concurrent DB work.
 
 ## Done
 
+- The server is idle when nobody is using it. It used to pull once per
+  `SYNC_SECS` and run the session purge every hour on a timer, regardless of
+  traffic, so an unused process still reached Turso about once a minute. The
+  supervisor now parks on a `Freshness` gate: a non-probe request is the only
+  thing that asks for a refresh, and `due_at_unix` coalesces a burst into one
+  pull per `SYNC_SECS`. Idle means no pull, no purge, no cloud request. The
+  gate is unit-tested (a burst pulls once per window; a failed pull retries on
+  the short gap), the wait is proven to park with no traffic, and a router test
+  pins that `/health` and `/ready` do not ask while a real request does.
 - `questions` honours `country`. The list advertised a `country` param and then
   hard-rejected it with a 400, while `subjects` and `papers` already applied the
   same D19 topic scope. `QuestionFilter` now carries `country` and binds it
@@ -274,8 +281,14 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 - Security settings default to safe: `COOKIE_SECURE` defaults on and the meta
   allowlist denies by default, because a missing or typo'd variable must fail
   closed, never downgrade.
-- No long poll. Pull on an interval and pool connections, so reads and writes
-  never queue behind the sync engine's single IO worker.
+- Demand-driven refresh, not a timer: the whole point is that an unused server
+  costs nothing. The sync task parks until a non-probe request asks for fresh
+  data, then pulls at most once per `SYNC_SECS`. Idle means no pull, no purge,
+  no disk touch, no held connection. Pooled connections keep reads on the local
+  file, so reads and writes never queue behind the sync engine's single IO
+  worker, and the request that wakes the task is served from the local replica
+  while the refresh runs behind it (a window of staleness, never a blocked
+  read). A failed pull retries on the next request, never on a timer.
 - Reads fail fast (5s), writes get cloud headroom (30s), and a global 30s net
   covers any route that forgets its own budget.
 - 16KiB request body cap, ~5x the largest body we accept.
@@ -286,9 +299,9 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 - The read/write timeout split follows the verb, not the router: reads fail fast
   at 5s, writes take 30s of cloud headroom, so a write module sits outside the
   read-timeout layer wherever it lives.
-- The write path cannot run offline (it pushes to Turso), so store tests seed
-  through a raw connection and stop at the validation boundary; happy-path
-  mutation coverage needs a live replica.
+- The write path commits locally and then pushes, so it runs against the
+  offline replica: the local row exists and the push failure surfaces. Store
+  tests therefore cover mutations end to end, not only the validation boundary.
 - One page envelope, one response idiom (typed `core::models`), one identity rule
   (verify once in the `verify_key` layer, then `require(SCOPE_*)` per handler
   except an endpoint about the caller's own key; identity is a property of the
