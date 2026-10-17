@@ -133,3 +133,113 @@ pub fn router(state: AppState) -> Router<AppState> {
         .route("/v1/questions/{id}/report", post(report_question))
         .with_state(state)
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::state::AppState;
+    use axum::body::Body;
+    use axum::http::{Request, StatusCode};
+    use tower::ServiceExt;
+
+    /// Offline replica with a read key and a write key, seeded through a raw
+    /// connection. The happy filing needs the store push (Turso), so this stops
+    /// at the validation boundary: what it proves is the scope gate, not the
+    /// write. The sweep in `routes` proves the same routes reject a missing key.
+    async fn seeded_state() -> AppState {
+        let path = std::env::temp_dir().join(format!(
+            "utmelab-reports-api-test-{}-{}.db",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .map(|d| d.as_nanos())
+                .unwrap_or(0)
+        ));
+        let db = turso::sync::Builder::new_remote(path.to_str().expect("tmp path"))
+            .with_auth_token("test-only")
+            .bootstrap_if_empty(false)
+            .build()
+            .await
+            .expect("local sync db builds offline");
+        let conn = db.connect().await.expect("connect");
+        for ddl in [
+            "CREATE TABLE api_keys (prefix TEXT PRIMARY KEY, hash TEXT NOT NULL, tier TEXT NOT NULL DEFAULT 'commercial', scopes TEXT NOT NULL DEFAULT 'read:catalog', revoked INTEGER NOT NULL DEFAULT 0, owner TEXT NOT NULL DEFAULT '', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+            "CREATE TABLE questions (id TEXT, exam TEXT, subject TEXT, year INTEGER, source TEXT, text TEXT, inline TEXT, options TEXT, answer TEXT, subtopic_id TEXT, section TEXT, passage_id TEXT, explanation TEXT, marks REAL, difficulty INTEGER, content_hash TEXT)",
+            "CREATE TABLE verifications (id TEXT, question_id TEXT, kind TEXT, verdict TEXT, scope TEXT, verifier TEXT, detail TEXT, content_hash TEXT, created_at TEXT)",
+        ] {
+            conn.execute(ddl, ()).await.expect("create table");
+        }
+        for (prefix, scopes) in [("reader", "read:catalog"), ("reporter", "write:reports")] {
+            let full = format!("{prefix}.secret");
+            use sha2::Digest;
+            conn.execute(
+                "INSERT INTO api_keys (prefix, hash, tier, scopes, revoked, owner) VALUES (?1, ?2, 'commercial', ?3, 0, '')",
+                vec![
+                    turso::Value::Text(prefix.to_string()),
+                    turso::Value::Text(crate::core::hex::encode(&sha2::Sha256::digest(
+                        full.as_bytes(),
+                    ))),
+                    turso::Value::Text(scopes.to_string()),
+                ],
+            )
+            .await
+            .expect("insert key");
+        }
+        let d = crate::state::DbState::detached(std::sync::Arc::new(db));
+        AppState {
+            name: std::sync::Arc::from("test"),
+            db: d.db,
+            db_gate: d.db_gate,
+            conns: d.conns,
+            metrics: d.metrics,
+            cookie_secure: false,
+            write_mutex: d.write_mutex,
+            contract_ok: d.contract_ok,
+            limiter: d.limiter,
+        }
+    }
+
+    async fn post(app: axum::Router, key: Option<&str>, body: &str) -> StatusCode {
+        let mut req = Request::builder()
+            .method("POST")
+            .uri("/api/v1/report")
+            .header("content-type", "application/json");
+        if let Some(k) = key {
+            req = req.header("x-api-key", k);
+        }
+        app.oneshot(req.body(Body::from(body.to_string())).expect("request"))
+            .await
+            .expect("call")
+            .status()
+    }
+
+    #[tokio::test]
+    async fn filing_needs_the_write_scope() {
+        let app = crate::routes::router(seeded_state().await, &crate::config::Config::default());
+        let ok = r#"{"target_type":"question","target_id":"q1","reason":"other"}"#;
+
+        // A read key cannot file, however well-formed the body.
+        assert_eq!(
+            post(app.clone(), Some("reader.secret"), ok).await,
+            StatusCode::FORBIDDEN
+        );
+
+        // The write key clears the scope gate; a bad kind is the client's
+        // mistake (400), not a refusal.
+        assert_eq!(
+            post(
+                app.clone(),
+                Some("reporter.secret"),
+                r#"{"target_type":"nope","target_id":"q1","reason":"other"}"#
+            )
+            .await,
+            StatusCode::BAD_REQUEST
+        );
+
+        // A well-formed filing for a target we do not hold is 404, so the gate
+        // let it through to the read.
+        assert_eq!(
+            post(app, Some("reporter.secret"), ok).await,
+            StatusCode::NOT_FOUND
+        );
+    }
+}

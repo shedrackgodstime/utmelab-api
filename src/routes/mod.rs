@@ -235,11 +235,47 @@ mod tests {
         assert!(matches!(err, AppError::DbUnavailable(_)));
     }
 
+    async fn request_status(
+        app: Router,
+        method: &'static str,
+        uri: &'static str,
+        key: Option<&'static str>,
+    ) -> axum::http::StatusCode {
+        let mut req = Request::builder().method(method).uri(uri);
+        if let Some(k) = key {
+            req = req.header("x-api-key", k);
+        }
+        app.oneshot(req.body(Body::empty()).expect("request"))
+            .await
+            .expect("call")
+            .status()
+    }
+
+    async fn status_of_method(
+        app: Router,
+        method: &'static str,
+        uri: &'static str,
+    ) -> axum::http::StatusCode {
+        request_status(app, method, uri, None).await
+    }
+
     async fn status_of(app: Router, uri: &'static str) -> axum::http::StatusCode {
+        status_of_method(app, "GET", uri).await
+    }
+
+    async fn post_json_status(
+        app: Router,
+        uri: &'static str,
+        key: &'static str,
+        body: &'static str,
+    ) -> axum::http::StatusCode {
         app.oneshot(
             Request::builder()
+                .method("POST")
                 .uri(uri)
-                .body(Body::empty())
+                .header("content-type", "application/json")
+                .header("x-api-key", key)
+                .body(Body::from(body))
                 .expect("request"),
         )
         .await
@@ -297,16 +333,7 @@ mod tests {
     }
 
     async fn post_status_of(app: Router, uri: &'static str) -> axum::http::StatusCode {
-        app.oneshot(
-            Request::builder()
-                .method(axum::http::Method::POST)
-                .uri(uri)
-                .body(Body::empty())
-                .expect("request"),
-        )
-        .await
-        .expect("call")
-        .status()
+        status_of_method(app, "POST", uri).await
     }
 
     #[tokio::test]
@@ -339,5 +366,160 @@ mod tests {
             status_of(app, "/boom").await,
             axum::http::StatusCode::INTERNAL_SERVER_ERROR
         );
+    }
+
+    /// Every keyed route the service serves. The sweep below proves each one
+    /// rejects a credential-less request with 401, so identity is not optional
+    /// anywhere: a route missing here is a route nothing proves is keyed, so a
+    /// new route and its row land together. The auth extractor runs before any
+    /// body extractor, so an unauthenticated POST is refused before a parser
+    /// sees it.
+    const KEYED: &[(&str, &str)] = &[
+        ("GET", "/api/v1/exams"),
+        ("GET", "/api/v1/exams/JAMB/subjects"),
+        ("GET", "/api/v1/exams/JAMB/papers"),
+        ("GET", "/api/v1/subjects/JAMB/physics"),
+        ("GET", "/api/v1/subjects/JAMB/physics/syllabus"),
+        ("GET", "/api/v1/subjects/JAMB/physics/coverage"),
+        ("GET", "/api/v1/topics/JAMB/physics/mechanics"),
+        ("GET", "/api/v1/blueprints/JAMB/physics"),
+        ("GET", "/api/v1/passages/p1"),
+        ("GET", "/api/v1/novels"),
+        ("GET", "/api/v1/novels/lekki"),
+        ("GET", "/api/v1/novels/lekki/questions"),
+        ("GET", "/api/v1/questions"),
+        ("GET", "/api/v1/questions/q1"),
+        ("GET", "/api/v1/keys/me"),
+        ("GET", "/api/v1/meta/tables"),
+        ("GET", "/api/v1/meta/rows/exams"),
+        ("POST", "/api/v1/report"),
+        ("POST", "/api/v1/questions/q1/report"),
+        ("POST", "/api/v1/papers/JAMB/physics"),
+        ("POST", "/api/v1/papers/JAMB/physics/score"),
+        ("POST", "/mcp/tools/list_tables"),
+        ("POST", "/mcp/tools/revoke_key"),
+        ("POST", "/mcp/tools/unrevoke_key"),
+    ];
+
+    /// Session routes: the same rule through the cookie door. `login` is absent
+    /// on purpose — it is how a session is obtained, so it cannot require one.
+    /// `logout` is absent because it takes no session and always succeeds.
+    const SESSION: &[(&str, &str)] = &[
+        ("GET", "/api/internal/keys"),
+        ("POST", "/api/internal/keys/create"),
+        ("POST", "/api/internal/keys/delete"),
+        ("GET", "/api/internal/admin/status"),
+        ("GET", "/api/internal/admin/users"),
+        ("POST", "/api/internal/admin/users/role"),
+        ("GET", "/api/internal/admin/keys"),
+        ("POST", "/api/internal/admin/keys/create"),
+        ("POST", "/api/internal/admin/keys/revoke"),
+        ("POST", "/api/internal/admin/keys/unrevoke"),
+    ];
+
+    async fn assert_all_require_identity(routes: &'static [(&'static str, &'static str)]) {
+        let app = crate::routes::router(state(true), &crate::config::Config::default());
+        for (method, uri) in routes {
+            assert_eq!(
+                status_of_method(app.clone(), method, uri).await,
+                axum::http::StatusCode::UNAUTHORIZED,
+                "{method} {uri} must require identity"
+            );
+        }
+    }
+
+    #[tokio::test]
+    async fn every_keyed_route_rejects_a_missing_key() {
+        assert_all_require_identity(KEYED).await;
+    }
+
+    #[tokio::test]
+    async fn every_session_route_rejects_a_missing_cookie() {
+        assert_all_require_identity(SESSION).await;
+    }
+
+    /// Offline replica carrying only `api_keys`. The key extractor reads that
+    /// one table before any handler runs, so a key's fate is settled here
+    /// without seeding a bank.
+    async fn keyed_state() -> AppState {
+        let path = std::env::temp_dir().join(format!(
+            "utmelab-routes-test-{}-{}.db",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .map(|d| d.as_nanos())
+                .unwrap_or(0)
+        ));
+        let db = turso::sync::Builder::new_remote(path.to_str().expect("tmp path"))
+            .with_auth_token("test-only")
+            .bootstrap_if_empty(false)
+            .build()
+            .await
+            .expect("local sync db builds offline");
+        let conn = db.connect().await.expect("connect");
+        conn.execute(
+            "CREATE TABLE api_keys (prefix TEXT PRIMARY KEY, hash TEXT NOT NULL, tier TEXT NOT NULL DEFAULT 'commercial', scopes TEXT NOT NULL DEFAULT 'read:catalog', revoked INTEGER NOT NULL DEFAULT 0, owner TEXT NOT NULL DEFAULT '', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+            (),
+        )
+        .await
+        .expect("create api_keys");
+        for (prefix, revoked) in [("live", 0), ("revoked", 1)] {
+            let full = format!("{prefix}.secret");
+            use sha2::Digest;
+            conn.execute(
+                "INSERT INTO api_keys (prefix, hash, tier, scopes, revoked, owner) VALUES (?1, ?2, 'commercial', 'read:catalog', ?3, '')",
+                vec![
+                    turso::Value::Text(prefix.to_string()),
+                    turso::Value::Text(crate::core::hex::encode(&sha2::Sha256::digest(
+                        full.as_bytes(),
+                    ))),
+                    turso::Value::Integer(revoked),
+                ],
+            )
+            .await
+            .expect("insert key");
+        }
+        let d = crate::state::DbState::detached(std::sync::Arc::new(db));
+        AppState {
+            name: std::sync::Arc::from("test"),
+            db: d.db,
+            db_gate: d.db_gate,
+            conns: d.conns,
+            metrics: d.metrics,
+            cookie_secure: false,
+            write_mutex: d.write_mutex,
+            contract_ok: d.contract_ok,
+            limiter: d.limiter,
+        }
+    }
+
+    #[tokio::test]
+    async fn every_keyed_route_rejects_a_revoked_key() {
+        let app = crate::routes::router(keyed_state().await, &crate::config::Config::default());
+        for (method, uri) in KEYED {
+            assert_eq!(
+                request_status(app.clone(), method, uri, Some("revoked.secret")).await,
+                axum::http::StatusCode::UNAUTHORIZED,
+                "{method} {uri} must refuse a revoked key"
+            );
+        }
+        // The seed's live key is accepted, so the refusals above are the
+        // revocation and not a malformed key. `/keys/me` reads no bank, so it
+        // is the one route a bare `api_keys` table can answer.
+        assert_eq!(
+            request_status(app.clone(), "GET", "/api/v1/keys/me", Some("live.secret")).await,
+            axum::http::StatusCode::OK
+        );
+        // Identity is not authorization: the same live read key is refused at
+        // the mcp admin tools, which need `manage:keys`. The scope gate holds
+        // on that surface too. A valid body is sent because the scope check
+        // runs after extraction, so an empty one would be 422, not 403.
+        for uri in ["/mcp/tools/revoke_key", "/mcp/tools/unrevoke_key"] {
+            assert_eq!(
+                post_json_status(app.clone(), uri, "live.secret", r#"{"prefix":"live"}"#).await,
+                axum::http::StatusCode::FORBIDDEN,
+                "POST {uri} needs manage:keys"
+            );
+        }
     }
 }

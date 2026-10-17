@@ -6,7 +6,9 @@
 //! - Identity: every keyed handler takes `AuthedKey` and calls
 //!   `auth.require(SCOPE_*)` before touching the store. The one exception
 //!   is an endpoint about the caller's own key (`GET /v1/keys/me`), which
-//!   needs no scope.
+//!   needs no scope. Because the gate lives in the handler, a new route
+//!   must also be added to the `KEYED` sweep in `routes`, so the gate is
+//!   proven rather than assumed.
 //! - Response: return a typed `core::models` struct, never an ad-hoc
 //!   `serde_json::json!` value.
 //! - Paging: a page is `core::models::Page`, built with `Page::new`, never

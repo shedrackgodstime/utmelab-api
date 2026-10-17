@@ -26,18 +26,28 @@ HTTP, with one test asserting an MCP call and its HTTP equivalent answer the
 same. Reuse the HTTP gate for admin ops; do not add a second auth for a
 capability HTTP already guards.
 
-### 2. Surface-level keyed tests are missing  (enforcement)
+### 2. The key gate is per-handler, so a new route can forget it  (enforcement)
 
-Only `questions` and `subjects` have a keyed handler test, the pattern added
-with the page envelope. The other `api/v1` modules, `internal`, and `mcp` have
-none, and `tests/` is empty. The identity-plus-scope-plus-envelope rule is
-enforced by convention and two examples; nothing fails when a new module skips
-it.
+The auth contract is now covered from one place. `routes` holds the route
+inventory (`KEYED`, `SESSION`) and sweeps it through the real router: every
+keyed route refuses no key and a revoked key with 401, every session route
+refuses no cookie, and scope mismatch is proven on a read route, the write
+route, and the mcp admin tools (a read key gets 403 there). `/keys/me` answers
+a live key, so the refusals are the gate and not a bad seed.
 
-How: repeat the same harness per surface (offline replica, raw seed, real
-router through `routes::router`, `x-api-key` header): no key is 401, wrong
-scope is 403, revoked is 401, a live key gets a typed envelope. Mechanical, not
-a redesign. Fold each new route's test into this list as it lands.
+What stays convention is the gate itself: each handler opts into `AuthedKey` or
+`SessionUser`. A route added to the router *and* the table is caught when it
+forgets; a route added to neither is not. Making it structural means one layer
+that verifies the key and stashes the identity in request extensions, with the
+extractor reading it back. The naive layer would verify twice and halve the DB
+ceiling, so it is a deliberate change, not a sweep.
+
+The per-module happy-path envelope test is the one piece still thin: `questions`
+(the page), `subjects` (the tree), and `reports` (the write boundary) have one;
+`exams`, `blueprints`, `meta`, `passages`, `topics`, `novels`, and `papers` do
+not. Their return types are typed, so a wrong shape is a compile error; what a
+test would add is the store read wired to the handler. Fold one in as each
+module is next touched rather than writing seven seeded fixtures now.
 
 ### 3. Deferred: CLI verbs and the OpenAPI contract  (out of scope for now)
 
@@ -84,9 +94,19 @@ producing" bugs; new has no annotations, no served route, and a hand-written
    cannot run against an offline replica: only reads and the pre-write guards are
    covered today. Add a mutation test against a real replica (or a stubbed push)
    to cover key create/delete/revoke, role change, and report filing end to end.
+7. The dashboard and mcp surfaces still answer with ad-hoc `serde_json::json!`
+   (`{"key": ...}`, `{"ok": ...}`); the typed-response idiom is stated for
+   `api/v1` only. Give them `core::models::admin` shapes with the same JSON
+   keys, so the idiom holds across the service.
 
 ## Done
 
+- The auth contract is enforced from one place. `routes` carries the route
+  inventory and sweeps it through the real router: every keyed route refuses no
+  key and a revoked key with 401 (24 routes), every session route refuses no
+  cookie, and scope mismatch is proven with a read key on a read route, the write
+  route, and the two mcp admin tools. `api/v1/mod.rs` points a new route at the
+  sweep, since the gate itself is still per-handler.
 - The public surface is now a superset of old's. The last three routes are
   wired: `GET /api/v1/subjects/{exam}/{slug}`, `.../syllabus`, and
   `.../coverage`. The syllabus is assembled in `core::catalog::assemble_syllabus`
@@ -236,6 +256,11 @@ producing" bugs; new has no annotations, no served route, and a hand-written
   (`AuthedKey` plus `require(SCOPE_*)`, except an endpoint about the caller's own
   key). These are written at the top of `api/v1/mod.rs` so a new module follows
   the rule, not the last file it read.
+- Test the boundary once, not the same assertion per route. Identity is one
+  extractor and one `require`, so it is swept once over the whole route inventory
+  (`routes`) instead of copied into every module; a typed response is the
+  compiler's to check, so a per-module test is worth it only where it proves the
+  store read is wired (questions, subjects, reports), not merely the shape.
 - Shape declarations follow ownership. Tables the API creates go in `DDL`; tables
   the pipeline creates are declared in `READ_SHAPES` and validated, never
   created, because `CREATE TABLE IF NOT EXISTS` from the API would win a fresh
