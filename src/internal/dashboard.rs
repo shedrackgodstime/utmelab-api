@@ -7,16 +7,17 @@ use serde::Deserialize;
 use std::net::SocketAddr;
 
 use crate::{
-    auth::session::{self, SessionUser},
+    auth::session::{self, AdminUser, SessionUser},
     core::models::ServiceStatus,
     error::AppError,
     state::DbState,
     store,
 };
 
-/// Presence probe only: never takes a gate permit, never queries.
-/// Metrics ride along free — lock-free atomics, same guarantee.
-pub async fn status(State(s): State<DbState>) -> Json<ServiceStatus> {
+/// Admin-only. Load balancers get liveness from `/health`; this carries the
+/// operational counters, so it sits behind the admin session like the rest
+/// of `internal` instead of leaking replica state to anonymous callers.
+pub async fn status(State(s): State<DbState>, AdminUser(_): AdminUser) -> Json<ServiceStatus> {
     let m = s.metrics.snapshot();
     Json(ServiceStatus {
         service: "utmelab-api",
