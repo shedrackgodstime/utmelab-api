@@ -25,6 +25,10 @@ highest value first. Delete an entry when it is closed.
   "refusing to trust replica" while every route still answered; data surfaces
   now answer 503 with code `schema_mismatch`, and `/health` stays independent
   for liveness.
+- Liveness and readiness are now distinct: `/health` is liveness, `/ready` is
+  200 only once the replica is open and its contract is trusted. A proxy routes
+  on `/ready`, so a fail-closed instance leaves rotation instead of answering
+  503 to users.
 
 ## Decisions worth keeping
 

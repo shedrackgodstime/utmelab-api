@@ -1,11 +1,13 @@
-//! Composition root: merges the surfaces plus `/health` and applies the
-//! global layers. Surface-specific layers live with their surface; only
-//! transport-agnostic limits live here. Time budgets come from `Config`
-//! so surfaces never import each other for them.
+//! Composition root: merges the surfaces plus `/health` (liveness) and
+//! `/ready` (readiness) and applies the global layers. Surface-specific
+//! layers live with their surface; only transport-agnostic limits live here.
+//! Time budgets come from `Config` so surfaces never import each other for
+//! them.
 //!
 //! URL policy: `/api/*` (v1 commercial reads, internal dashboard/admin)
 //! nests here so local and prod paths are identical — no proxy prefix
-//! magic. `/mcp/*` and `/health` stay top-level.
+//! magic. `/mcp/*`, `/health` and `/ready` stay top-level. Data surfaces sit
+//! behind the contract guard; the two probes do not.
 
 pub mod health;
 
@@ -77,6 +79,7 @@ pub fn router(state: AppState, cfg: &Config) -> Router {
             "/health",
             get(health::health).route_layer(cfg.fast_timeout()),
         )
+        .route("/ready", get(health::ready).route_layer(cfg.fast_timeout()))
         .merge(gated)
         .fallback(not_found)
         .with_state(state)
@@ -156,5 +159,26 @@ mod tests {
         let (status, body) = probe(true).await;
         assert_eq!(status, axum::http::StatusCode::OK);
         assert_eq!(body, "payload");
+    }
+
+    fn db_state(contract_ok: bool) -> crate::state::DbState {
+        crate::state::DbState {
+            db: Arc::new(tokio::sync::RwLock::new(None)),
+            db_gate: Arc::new(tokio::sync::Semaphore::new(1)),
+            conns: Arc::new(crate::store::ConnPool::new(1)),
+            metrics: Arc::new(crate::state::Metrics::default()),
+            cookie_secure: false,
+            write_mutex: Arc::new(tokio::sync::Mutex::new(())),
+            contract_ok: Arc::new(std::sync::atomic::AtomicBool::new(contract_ok)),
+            limiter: Arc::new(crate::auth::rate_limit::RateLimiter::new()),
+        }
+    }
+
+    #[tokio::test]
+    async fn ready_is_503_until_a_replica_exists() {
+        let err = health::ready(State(db_state(true)))
+            .await
+            .expect_err("no replica yet");
+        assert!(matches!(err, AppError::DbUnavailable(_)));
     }
 }
