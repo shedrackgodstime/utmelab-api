@@ -32,6 +32,11 @@ pub fn login_denied(user: &str, reason: &str) {
     tracing::warn!(target: "audit", event = "login", user = user, reason = reason, outcome = "denied");
 }
 
+/// Sign-out ended a live session.
+pub fn logout(user: &str) {
+    tracing::info!(target: "audit", event = "logout", user = user, outcome = "ok");
+}
+
 /// Audit an operation that reports whether it changed anything. A privileged
 /// change that matched nothing still gets a line, at WARN, so a probe or a
 /// fat-fingered revoke is never silent.
@@ -120,6 +125,7 @@ mod tests {
         tracing::subscriber::with_default(subscriber, || {
             login_ok("alice", "admin");
             login_denied("bob", "bad_credentials");
+            logout("alice");
             key_created("alice", "abc123", "commercial");
             key_deleted("alice", "abc123", true);
             key_revoked("root", "deadbeef", true, false);
@@ -129,11 +135,12 @@ mod tests {
 
         assert_eq!(
             out.matches("audit").count(),
-            6,
+            7,
             "every event carries the audit target: {out}"
         );
         for event in [
             "event=\"login\"",
+            "event=\"logout\"",
             "event=\"key.create\"",
             "event=\"key.delete\"",
             "event=\"key.revoke\"",

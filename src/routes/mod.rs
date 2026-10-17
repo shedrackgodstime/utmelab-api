@@ -22,6 +22,7 @@ use axum::{
 };
 use tower::limit::ConcurrencyLimitLayer;
 use tower_http::{
+    catch_panic::CatchPanicLayer,
     request_id::{MakeRequestUuid, PropagateRequestIdLayer, SetRequestIdLayer},
     trace::{DefaultOnFailure, TraceLayer},
 };
@@ -127,6 +128,10 @@ pub fn router(state: AppState, cfg: &Config) -> Router {
         .fallback(not_found)
         .with_state(state)
         .layer((
+            // Innermost, so the 500 it synthesises still passes back through
+            // request-id, trace, and telemetry: a handler panic is logged and
+            // counted instead of resetting the client connection.
+            CatchPanicLayer::new(),
             SetRequestIdLayer::new(
                 axum::http::HeaderName::from_static(REQUEST_ID),
                 MakeRequestUuid,
@@ -288,6 +293,23 @@ mod tests {
         assert_eq!(
             status_of(app, "/api/internal/status").await,
             axum::http::StatusCode::NOT_FOUND
+        );
+    }
+
+    fn boom() {
+        panic!("boom");
+    }
+
+    #[tokio::test]
+    async fn a_handler_panic_becomes_a_500() {
+        // Integration of the innermost catch-panic layer with our Body type:
+        // a panic must surface as 500, not a dropped connection.
+        let app: Router = Router::new()
+            .route("/boom", get(|| async { boom() }))
+            .layer(CatchPanicLayer::new());
+        assert_eq!(
+            status_of(app, "/boom").await,
+            axum::http::StatusCode::INTERNAL_SERVER_ERROR
         );
     }
 }

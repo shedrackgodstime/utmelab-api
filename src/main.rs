@@ -95,7 +95,7 @@ fn seed_admin_cmd(username: String, role: String) -> i32 {
 }
 
 async fn run(cfg: Config) {
-    fmt().with_env_filter(log_filter()).init();
+    init_logging(log_filter());
     tracing::info!(
         workers = cfg.worker_threads,
         blocking = cfg.max_blocking_threads,
@@ -150,6 +150,27 @@ async fn run(cfg: Config) {
     {
         eprintln!("server stopped with error: {e}");
         std::process::exit(1);
+    }
+}
+
+/// Human-readable lines by default, which is what local work wants. Set
+/// `LOG_FORMAT=json` to emit one JSON object per line with the event fields
+/// flattened, so a shipping pipeline can index `event`, `outcome`, `actor`,
+/// and the request span without parsing prose.
+fn init_logging(filter: EnvFilter) {
+    let json = std::env::var("LOG_FORMAT")
+        .map(|v| v.trim().eq_ignore_ascii_case("json"))
+        .unwrap_or(false);
+    if json {
+        fmt()
+            .with_env_filter(filter)
+            .json()
+            .flatten_event(true)
+            .with_current_span(true)
+            .with_span_list(false)
+            .init();
+    } else {
+        fmt().with_env_filter(filter).init();
     }
 }
 

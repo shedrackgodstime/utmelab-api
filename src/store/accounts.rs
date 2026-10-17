@@ -336,14 +336,32 @@ pub async fn purge_expired(s: &DbState) -> Result<u64, AppError> {
     .await
 }
 
-pub async fn logout_session(s: &DbState, token: &str) -> Result<(), AppError> {
+/// End a session. Returns the session owner so the caller can attribute the
+/// audit line; `None` when the token matched nothing (already gone or bogus).
+pub async fn logout_session(s: &DbState, token: &str) -> Result<Option<String>, AppError> {
+    let owner: Option<String> = with_conn(s, |conn| {
+        let hashed = hash_token(token);
+        async move {
+            let mut stmt = conn
+                .prepare("SELECT username FROM sessions WHERE token_hash=?1")
+                .await
+                .map_err(upstream)?;
+            let mut rows = stmt.query([hashed.as_str()]).await.map_err(upstream)?;
+            Ok(rows
+                .next()
+                .await
+                .map_err(upstream)?
+                .and_then(|r| r.get::<String>(0).ok()))
+        }
+    })
+    .await?;
     super::write::execute_write(
         s,
         "DELETE FROM sessions WHERE token_hash=?1",
         vec![turso::Value::Text(hash_token(token))],
     )
     .await?;
-    Ok(())
+    Ok(owner)
 }
 
 #[derive(serde::Serialize)]

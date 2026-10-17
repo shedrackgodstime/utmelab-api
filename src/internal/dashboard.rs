@@ -59,7 +59,11 @@ pub async fn logout(
     headers: HeaderMap,
 ) -> Result<impl axum::response::IntoResponse, AppError> {
     if let Some(tok) = session::cookie_token(&headers) {
-        let _ = store::accounts::logout_session(&s, &tok).await;
+        // Best effort: logout always succeeds for the client, but the audit
+        // line only lands when a live session was actually ended.
+        if let Ok(Some(user)) = store::accounts::logout_session(&s, &tok).await {
+            obs::logout(&user);
+        }
     }
     Ok((
         [(axum::http::header::SET_COOKIE, session::expired_cookie())],

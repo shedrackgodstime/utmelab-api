@@ -12,7 +12,7 @@ use sha2::Digest;
 
 /// Strong ETag over exact response bytes for cacheable GETs. Matching
 /// `If-None-Match` short-circuits to an empty 304. Bodies are already
-/// capped by the 64KiB request limit plus our small responses; the 1MiB
+/// capped by the 16KiB request limit plus our small responses; the 1MiB
 /// collect cap below is a backstop, never a target.
 pub async fn etag(request: Request<Body>, next: Next) -> Response {
     if request.method() != axum::http::Method::GET {

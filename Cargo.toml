@@ -13,11 +13,11 @@ path = "src/lib.rs"
 axum = "0.8"
 tokio = { version = "1", features = ["macros", "net", "rt-multi-thread", "signal", "sync", "time"] }
 tower = { version = "0.5", features = ["limit"] }
-tower-http = { version = "0.6", features = ["trace", "timeout", "request-id", "cors"] }
+tower-http = { version = "0.6", features = ["trace", "timeout", "request-id", "cors", "catch-panic"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 tracing = "0.1"
-tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
 turso = { version = "0.8", features = ["sync"] }
 dotenvy = "0.15"
 sha2 = "0.11.1"

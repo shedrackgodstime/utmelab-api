@@ -38,11 +38,21 @@ highest value first. Delete an entry when it is closed.
   only, no DB and no gate; probe routes are excluded so health checks cannot
   drown out real traffic, and 408 counts server-side because it is our timeout.
 - Observability foundation: one `obs` vocabulary and audit events on the `audit`
-  target (login ok/denied, key create/delete, key revoke/unrevoke, role change).
-  Mutations take the acting identity as a required argument and the store is the
-  single emit point, so both the HTTP and MCP surfaces are covered and no surface
-  can act without an audit line. `audit=info` is forced in the default log filter
-  so a bare `warn` fallback cannot swallow a successful key create.
+  target (login ok/denied, logout, key create/delete, key revoke/unrevoke, role
+  change). Mutations take the acting identity as a required argument and the
+  store is the single emit point, so both the HTTP and MCP surfaces are covered
+  and no surface can act without an audit line. `audit=info` is forced in the
+  default log filter so a bare `warn` fallback cannot swallow a successful key
+  create.
+- Log sink is selectable: human text by default, `LOG_FORMAT=json` emits one JSON
+  object per line with fields flattened, `target` present, and the request span
+  embedded, so audit records ship and index without parsing prose.
+- A handler panic is caught at the innermost layer and returned as a 500, so a
+  bug logs and counts as a server error instead of resetting the client
+  connection.
+- Logout is attributed: `logout_session` returns the session owner, so a real
+  sign-out closes the lifecycle in the audit trail (best effort, since the
+  client's logout always succeeds).
 
 ## Decisions worth keeping
 
@@ -58,6 +68,8 @@ highest value first. Delete an entry when it is closed.
   matched nothing is still logged, at WARN, so a probe is never silent.
 - Admin-only endpoints live under `/api/internal/admin/*`; everything else under
   `/api/internal/*` is customer or session.
+- Log format is a deployment concern, chosen by `LOG_FORMAT` beside `RUST_LOG`,
+  not app config: it changes how output is rendered, never what the app does.
 - No long poll. Pull on an interval and pool connections, so reads and writes
   never queue behind the sync engine's single IO worker.
 - Reads fail fast (5s), writes get cloud headroom (30s), and a global 30s net
