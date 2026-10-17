@@ -197,9 +197,11 @@ fn map_question(row: &turso::Row) -> Result<core::models::Question, AppError> {
     })
 }
 
-/// Filters over the questions table. `country` is deliberately absent: it
-/// needs a `topic_countries` join this slice cannot verify, and a silently
-/// ignored filter is worse than a loud rejection (the handler 400s it).
+/// Filters over the questions table. `country` is the D19 topic scope: a
+/// question is in scope for a country when its topic carries no
+/// `topic_countries` rows (universal) or names the country. It binds through
+/// the same `scope_predicate` the subject readers use, so a country filter
+/// means one thing service-wide.
 #[derive(Clone, Debug, Default)]
 pub struct QuestionFilter {
     pub exam: Option<String>,
@@ -209,6 +211,7 @@ pub struct QuestionFilter {
     pub source: Option<String>,
     pub text: Option<String>,
     pub verified: Option<bool>,
+    pub country: Option<String>,
 }
 
 /// D62's rule, spelled once. `table` is a compile-time literal from this
@@ -304,6 +307,13 @@ fn question_where(f: &QuestionFilter) -> (String, Vec<turso::Value>) {
     if let Some(v) = f.verified {
         conds.push(format!("({}) = ?", verified_predicate("questions")));
         params.push(turso::Value::Integer(i32::from(v) as i64));
+    }
+    if f.country.is_some() {
+        // The scope predicate names the same bound value twice by number, so
+        // it is the one numbered placeholder; it goes last so the plain `?`
+        // conditions above stay 1..N-1 and this takes N.
+        conds.push(scope_predicate((params.len() + 1) as u8));
+        params.push(scope_param(&f.country));
     }
     let clause = if conds.is_empty() {
         String::new()
@@ -1877,6 +1887,42 @@ mod tests {
             .expect("unverified filter");
         assert_eq!(total, 2);
         assert!(rows.iter().all(|q| !q.verified));
+    }
+
+    #[tokio::test]
+    async fn question_country_filter_honours_topic_scope() {
+        let db = local_exams_db().await;
+        // q2 hangs off `algebra` through a subtopic; make `algebra` NG-only.
+        // Every other question has no subtopic, so it stays universal.
+        let conn = crate::testing::connect(&db).await;
+        conn.execute(
+            "INSERT INTO subtopics VALUES ('algebra','algebra','Algebra basics',1,'[]')",
+            (),
+        )
+        .await
+        .expect("insert subtopic");
+        conn.execute("INSERT INTO topic_countries VALUES ('algebra','NG')", ())
+            .await
+            .expect("insert scope");
+        let s = crate::state::DbState::detached(db);
+
+        let gh = QuestionFilter {
+            exam: Some("JAMB".to_string()),
+            country: Some("GH".to_string()),
+            ..Default::default()
+        };
+        let (rows, total) = list_questions(&s, &gh, 1, 50).await.expect("gh page");
+        assert_eq!(total, 1, "q2 is out of scope for GH");
+        assert!(rows.iter().all(|q| q.id != "q2"), "q2 is NG-only");
+
+        let ng = QuestionFilter {
+            exam: Some("JAMB".to_string()),
+            country: Some("NG".to_string()),
+            ..Default::default()
+        };
+        let (rows, total) = list_questions(&s, &ng, 1, 50).await.expect("ng page");
+        assert_eq!(total, 2, "both JAMB rows are in scope for NG");
+        assert!(rows.iter().any(|q| q.id == "q2"));
     }
 
     #[tokio::test]

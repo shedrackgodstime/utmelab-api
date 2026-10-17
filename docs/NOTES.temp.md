@@ -51,6 +51,15 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 ## Done
 
+- `questions` honours `country`. The list advertised a `country` param and then
+  hard-rejected it with a 400, while `subjects` and `papers` already applied the
+  same D19 topic scope. `QuestionFilter` now carries `country` and binds it
+  through the shared `scope_predicate` as the one numbered placeholder (the
+  plain `?` conditions take 1..N-1, scope takes N). A test seeds an NG-only
+  topic and pins exclusion for GH, inclusion for NG, and universality for a
+  question with no subtopic. `topics` and `blueprints` stay without a country
+  param on purpose: their models carry no country-sensitive field (the
+  count-sensitive views are `syllabus` and `papers`, which scope).
 - The write path is now covered against the offline replica. A mutation commits
   locally and then fails at `push()` because the harness's remote is dead, so a
   test asserts the local commit and treats the push error as the expected half

@@ -55,11 +55,6 @@ pub async fn list(
     Query(f): Query<List>,
 ) -> Result<Json<core::models::QuestionPageResponse>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
-    if f.country.is_some() {
-        return Err(AppError::BadRequest(
-            "country filter not yet supported".to_string(),
-        ));
-    }
     // A filter naming a combination the bank never had must 404, not
     // return a confident empty list.
     if let (Some(exam), Some(subject)) = (&f.exam, &f.subject) {
@@ -75,6 +70,7 @@ pub async fn list(
         source: f.source.clone(),
         text: f.q.clone(),
         verified: f.verified,
+        country: f.country.clone(),
     };
     let with_explanation = f.include_explanation.unwrap_or(false);
     let (page, per_page) = core::catalog::page_query(f.page, f.per_page);
@@ -113,7 +109,11 @@ mod tests {
         let db = replica().await;
         let conn = connect(&db).await;
         api_schema(&conn).await;
-        bank_schema(&conn, &["questions", "verifications"]).await;
+        bank_schema(
+            &conn,
+            &["questions", "verifications", "subtopics", "topic_countries"],
+        )
+        .await;
         conn.execute(
             "INSERT INTO questions VALUES ('q1','JAMB','physics',2025,'past_paper','What is 2+2?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"4\",\"inline\":[]}}]','a',NULL,NULL,NULL,'{\"key_point\":{\"text\":\"addition\",\"inline\":[]},\"body\":{\"text\":\"2+2=4\",\"inline\":[]}}',1.0,2,'h1')",
             (),
@@ -178,7 +178,14 @@ mod tests {
         );
 
         // A live key gets the shared page envelope, answer withheld.
-        let (status, v) = call(app, "GET", "/api/v1/questions", Some("reader.secret"), None).await;
+        let (status, v) = call(
+            app.clone(),
+            "GET",
+            "/api/v1/questions",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
         assert_eq!(status, StatusCode::OK);
         assert_eq!(v["total_records"], 1);
         assert_eq!(v["total_pages"], 1);
@@ -192,6 +199,20 @@ mod tests {
             v["questions"][0].get("answer").is_none(),
             "answer must be withheld by default"
         );
+
+        // The country filter is a scope filter, not a 400. q1 has no subtopic,
+        // so it is universal and survives any country.
+        let (status, scoped) = call(
+            app,
+            "GET",
+            "/api/v1/questions?country=GH",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK);
+        assert_eq!(scoped["total_records"], 1);
+        assert_eq!(scoped["questions"][0]["id"], "q1");
     }
 
     #[tokio::test]
