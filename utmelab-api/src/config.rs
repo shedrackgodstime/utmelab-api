@@ -1,5 +1,7 @@
 //! Runtime knobs. Defaults are tuned for a small box; every value is
-//! overridable by env (tune here). Invalid values fail at boot, never silently.
+//! overridable by env (tune here). Parsing is strict: a variable that is set
+//! must be valid or boot fails naming it, and a blank value counts as unset so
+//! an empty override never masquerades as a real one.
 
 pub const DEFAULT_WORKER_THREADS: usize = 4;
 pub const DEFAULT_MAX_BLOCKING_THREADS: usize = 32;
@@ -7,8 +9,9 @@ pub const DEFAULT_CONCURRENCY_LIMIT: usize = 1000;
 pub const DEFAULT_PORT: u16 = 3100;
 pub const DEFAULT_SERVER_URL: &str = "http://localhost:3100";
 pub const DEFAULT_REPLICA_PATH: &str = "db/sync.db";
-/// Long-poll window, not a timer. Each pull hangs server-side until a change
-/// lands or this elapses. Idle stays idle; changes apply within ~seconds.
+/// Seconds between background replica pulls. Not a long-poll window: each
+/// tick waits, pulls once, and leaves the sync IO worker free in between, so
+/// reads and writes on the serving path never queue behind a pull.
 pub const DEFAULT_SYNC_SECS: u64 = 60;
 pub const DEFAULT_DB_MAX_CONCURRENT: usize = 16;
 pub const DEFAULT_READ_TIMEOUT_SECS: u64 = 5;
@@ -51,51 +54,76 @@ impl Default for Config {
     }
 }
 
-fn env_usize(key: &str, default: usize) -> usize {
-    std::env::var(key)
-        .ok()
-        .and_then(|v| v.parse().ok())
-        .unwrap_or(default)
-}
+/// A lookup that yields a raw value for a key, as the environment would.
+/// Injected so parsing is testable without mutating process-global state.
+type Source<'a> = &'a dyn Fn(&str) -> Option<String>;
 
-fn env_u16(key: &str, default: u16) -> u16 {
-    std::env::var(key)
-        .ok()
-        .and_then(|v| v.parse().ok())
-        .unwrap_or(default)
-}
-
-fn env_string(key: &str, default: &str) -> String {
-    std::env::var(key)
+/// Trimmed value, or `None` when unset or blank. Blank is unset: an empty
+/// override is a mistake, not a request for an empty string.
+fn raw(source: Source, key: &str) -> Option<String> {
+    source(key)
         .map(|v| v.trim().to_string())
-        .unwrap_or_else(|_| default.to_string())
+        .filter(|v| !v.is_empty())
 }
 
-fn env_u64(key: &str, default: u64) -> u64 {
-    std::env::var(key)
-        .ok()
-        .and_then(|v| v.trim().parse().ok())
-        .unwrap_or(default)
+fn text(source: Source, key: &str, default: &str) -> String {
+    raw(source, key).unwrap_or_else(|| default.to_string())
+}
+
+/// Parse a set value, or fall back to the default when unset. A value that
+/// is present but unparseable is an error that names the variable.
+fn number<T: std::str::FromStr>(source: Source, key: &str, default: T) -> Result<T, String> {
+    match raw(source, key) {
+        None => Ok(default),
+        Some(v) => v
+            .parse::<T>()
+            .map_err(|_| format!("invalid config: {key}={v:?} is not a valid number")),
+    }
+}
+
+/// Booleans are spelled, not guessed: an unrecognized truthiness is an error
+/// rather than a silent `false`. That matters most for `COOKIE_SECURE`, where
+/// a typo would otherwise quietly downgrade a security setting.
+fn boolean(source: Source, key: &str, default: bool) -> Result<bool, String> {
+    match raw(source, key) {
+        None => Ok(default),
+        Some(v) => match v.to_ascii_lowercase().as_str() {
+            "1" | "true" | "yes" | "on" => Ok(true),
+            "0" | "false" | "no" | "off" => Ok(false),
+            _ => Err(format!(
+                "invalid config: {key}={v:?} is not a boolean (use 1/0 or true/false)"
+            )),
+        },
+    }
 }
 
 impl Config {
-    pub fn from_env() -> Self {
+    /// Parse and validate every knob. Returns the offending variable on a
+    /// bad value instead of quietly serving with a default.
+    pub fn from_env() -> Result<Self, String> {
+        Self::from_source(&|k| std::env::var(k).ok())
+    }
+
+    /// Testable core of [`Config::from_env`].
+    fn from_source(source: Source) -> Result<Self, String> {
         let d = Self::default();
-        Self {
-            worker_threads: env_usize("WORKER_THREADS", d.worker_threads),
-            max_blocking_threads: env_usize("MAX_BLOCKING_THREADS", d.max_blocking_threads),
-            concurrency_limit: env_usize("CONCURRENCY_LIMIT", d.concurrency_limit),
-            port: env_u16("PORT", d.port),
-            server_url: env_string("SERVER_URL", &d.server_url),
-            turso_url: env_string("TURSO_DB_URL", ""),
-            turso_token: env_string("TURSO_DB_TOKEN", ""),
-            replica_path: env_string("REPLICA_PATH", &d.replica_path),
-            sync_secs: env_u64("SYNC_SECS", d.sync_secs),
-            db_max_concurrent: env_usize("DB_MAX_CONCURRENT", d.db_max_concurrent),
-            cookie_secure: env_string("COOKIE_SECURE", "0") == "1",
-            read_timeout_secs: env_u64("READ_TIMEOUT_SECS", d.read_timeout_secs),
-            write_timeout_secs: env_u64("WRITE_TIMEOUT_SECS", d.write_timeout_secs),
-        }
+        let cfg = Self {
+            worker_threads: number(source, "WORKER_THREADS", d.worker_threads)?,
+            max_blocking_threads: number(source, "MAX_BLOCKING_THREADS", d.max_blocking_threads)?,
+            concurrency_limit: number(source, "CONCURRENCY_LIMIT", d.concurrency_limit)?,
+            port: number(source, "PORT", d.port)?,
+            server_url: text(source, "SERVER_URL", &d.server_url),
+            turso_url: text(source, "TURSO_DB_URL", ""),
+            turso_token: text(source, "TURSO_DB_TOKEN", ""),
+            replica_path: text(source, "REPLICA_PATH", &d.replica_path),
+            sync_secs: number(source, "SYNC_SECS", d.sync_secs)?,
+            db_max_concurrent: number(source, "DB_MAX_CONCURRENT", d.db_max_concurrent)?,
+            cookie_secure: boolean(source, "COOKIE_SECURE", d.cookie_secure)?,
+            read_timeout_secs: number(source, "READ_TIMEOUT_SECS", d.read_timeout_secs)?,
+            write_timeout_secs: number(source, "WRITE_TIMEOUT_SECS", d.write_timeout_secs)?,
+        };
+        cfg.validate()?;
+        Ok(cfg)
     }
 
     pub fn normalized_url(&self) -> String {
@@ -158,5 +186,73 @@ impl Config {
             return Err(bad("WRITE_TIMEOUT_SECS"));
         }
         Ok(())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn parse(pairs: &[(&str, &str)]) -> Result<Config, String> {
+        let owned: Vec<(String, String)> = pairs
+            .iter()
+            .map(|(k, v)| ((*k).to_string(), (*v).to_string()))
+            .collect();
+        Config::from_source(&move |k| {
+            owned
+                .iter()
+                .find(|(key, _)| key == k)
+                .map(|(_, v)| v.clone())
+        })
+    }
+
+    #[test]
+    fn unset_variables_take_defaults() {
+        let c = parse(&[]).expect("defaults are valid");
+        assert_eq!(c.port, DEFAULT_PORT);
+        assert_eq!(c.worker_threads, DEFAULT_WORKER_THREADS);
+        assert_eq!(c.replica_path, DEFAULT_REPLICA_PATH);
+        assert!(!c.cookie_secure);
+    }
+
+    #[test]
+    fn blank_counts_as_unset() {
+        let c = parse(&[("PORT", "   "), ("REPLICA_PATH", "")]).expect("blank falls back");
+        assert_eq!(c.port, DEFAULT_PORT);
+        assert_eq!(c.replica_path, DEFAULT_REPLICA_PATH);
+    }
+
+    #[test]
+    fn malformed_numbers_fail_naming_the_variable() {
+        let err = parse(&[("PORT", "abc")]).err().expect("must reject abc");
+        assert!(
+            err.contains("PORT"),
+            "message must name the variable: {err}"
+        );
+        assert!(parse(&[("SYNC_SECS", "-1")]).is_err());
+        assert!(parse(&[("DB_MAX_CONCURRENT", "many")]).is_err());
+    }
+
+    #[test]
+    fn zero_parses_but_fails_validation() {
+        assert!(parse(&[("PORT", "0")]).is_err());
+        assert!(parse(&[("WORKER_THREADS", "0")]).is_err());
+    }
+
+    #[test]
+    fn booleans_accept_common_spellings_and_reject_junk() {
+        assert!(
+            parse(&[("COOKIE_SECURE", "true")])
+                .expect("true")
+                .cookie_secure
+        );
+        assert!(parse(&[("COOKIE_SECURE", "1")]).expect("1").cookie_secure);
+        assert!(parse(&[("COOKIE_SECURE", "ON")]).expect("ON").cookie_secure);
+        assert!(
+            !parse(&[("COOKIE_SECURE", "off")])
+                .expect("off")
+                .cookie_secure
+        );
+        assert!(parse(&[("COOKIE_SECURE", "maybe")]).is_err());
     }
 }

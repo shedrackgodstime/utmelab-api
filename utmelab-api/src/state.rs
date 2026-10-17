@@ -10,7 +10,7 @@ use std::sync::{
 
 use tokio::sync::RwLock;
 
-use crate::store::{DbGate, SyncDb};
+use crate::store::{ConnPool, DbGate, SyncDb};
 
 use super::auth::rate_limit::RateLimiter;
 
@@ -47,6 +47,7 @@ pub struct AppState {
     pub name: Arc<str>,
     pub db: SyncCell,
     pub db_gate: DbGate,
+    pub conns: Arc<ConnPool>,
     pub metrics: SharedMetrics,
     pub cookie_secure: bool,
     pub write_mutex: WriteMutex,
@@ -76,6 +77,7 @@ impl axum::extract::FromRef<AppState> for HealthState {
 pub struct DbState {
     pub db: SyncCell,
     pub db_gate: DbGate,
+    pub conns: Arc<ConnPool>,
     pub metrics: SharedMetrics,
     pub cookie_secure: bool,
     pub write_mutex: WriteMutex,
@@ -91,6 +93,7 @@ impl DbState {
             db_gate: Arc::new(tokio::sync::Semaphore::new(
                 crate::config::DEFAULT_DB_MAX_CONCURRENT,
             )),
+            conns: Arc::new(ConnPool::new(crate::config::DEFAULT_DB_MAX_CONCURRENT)),
             metrics: Arc::new(Metrics::default()),
             cookie_secure: false,
             write_mutex: Arc::new(tokio::sync::Mutex::new(())),
@@ -105,6 +108,7 @@ impl axum::extract::FromRef<AppState> for DbState {
         Self {
             db: Arc::clone(&state.db),
             db_gate: Arc::clone(&state.db_gate),
+            conns: Arc::clone(&state.conns),
             metrics: Arc::clone(&state.metrics),
             cookie_secure: state.cookie_secure,
             write_mutex: Arc::clone(&state.write_mutex),

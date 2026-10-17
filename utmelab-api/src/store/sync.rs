@@ -1,7 +1,9 @@
 //! Replica lifecycle. Builds the synced database in the background so
-//! serving never blocks on it, then long-pulls forever: idle hangs on one
-//! quiet socket, any cloud write returns promptly with changes applied.
-//! Pull failures back off and retry; this task never dies.
+//! serving never blocks on it, fills the connection pool while the engine's IO
+//! worker is still free, then re-pulls on an interval. We deliberately do not
+//! long-poll: a pull in flight occupies that worker, and `connect()`/`push()`
+//! on the serving path would queue behind it. Pull failures back off and
+//! retry; this task never dies.
 
 use std::{sync::Arc, time::Duration};
 
@@ -16,7 +18,6 @@ async fn build(cfg: &Config) -> Option<SyncDb> {
     turso::sync::Builder::new_remote(&cfg.replica_path)
         .with_remote_url(cfg.normalized_url())
         .with_auth_token(cfg.turso_token.clone())
-        .with_long_poll_timeout(Duration::from_secs(cfg.sync_secs))
         .bootstrap_if_empty(true)
         .build()
         .await
@@ -47,8 +48,8 @@ fn record_pull(metrics: &crate::state::SharedMetrics, had: bool) {
 }
 
 /// Owns the replica for the process lifetime. Builds in the background so
-/// serve never blocks on it, then long-pulls forever: idle hangs on one
-/// quiet socket, any cloud write returns promptly with changes applied.
+/// serve never blocks on it, fills the connection pool while the IO worker is
+/// still free, then re-pulls every `SYNC_SECS`.
 pub fn spawn_sync_task(state: &AppState, cfg: Config) {
     if !cfg.has_db() {
         tracing::warn!("no TURSO_DB_URL/TOKEN, db routes will return 503");
@@ -66,6 +67,9 @@ pub fn spawn_sync_task(state: &AppState, cfg: Config) {
             if cell.read().await.is_none() {
                 match build(&cfg).await {
                     Some(db) => {
+                        // Fill the pool before any pull runs: while the worker
+                        // is free, connect() is millis, not a queued op.
+                        probe.conns.fill(&db).await;
                         *cell.write().await = Some(db);
                         tracing::info!("replica ready");
                     }
@@ -75,7 +79,9 @@ pub fn spawn_sync_task(state: &AppState, cfg: Config) {
             }
             if !ensured {
                 ensured = true;
-                let db = cell.read().await.clone().expect("replica present");
+                let Some(db) = cell.read().await.clone() else {
+                    continue;
+                };
                 // Converge first: the file may predate cloud changes, and the
                 // seed decision below must read the truth, not a stale copy.
                 match db.pull().await {
@@ -109,7 +115,12 @@ pub fn spawn_sync_task(state: &AppState, cfg: Config) {
                 }
                 continue;
             }
-            let db = cell.read().await.clone().expect("replica present");
+            // Interval between pulls, not a long-poll window: we wake, pull
+            // once, and leave the IO worker free until the next tick.
+            tokio::time::sleep(Duration::from_secs(cfg.sync_secs)).await;
+            let Some(db) = cell.read().await.clone() else {
+                continue;
+            };
             let pulled = {
                 // Serialized with writes: a pull must never interleave an
                 // unpushed local write, or the engine can discard it.

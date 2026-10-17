@@ -3,6 +3,8 @@
 
 pub mod accounts;
 pub mod catalog;
+pub mod hex;
 pub mod models;
+pub mod papers;
 pub mod reports;
 pub mod validate;

@@ -55,11 +55,6 @@ pub async fn list(
     Query(f): Query<List>,
 ) -> Result<Json<core::models::QuestionPageResponse>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
-    if f.verified.is_some() {
-        return Err(AppError::BadRequest(
-            "verified filter not yet supported".to_string(),
-        ));
-    }
     if f.country.is_some() {
         return Err(AppError::BadRequest(
             "country filter not yet supported".to_string(),
@@ -79,6 +74,7 @@ pub async fn list(
         year: f.year,
         source: f.source.clone(),
         text: f.q.clone(),
+        verified: f.verified,
     };
     let with_explanation = f.include_explanation.unwrap_or(false);
     let (page, per_page) =

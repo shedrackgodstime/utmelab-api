@@ -5,7 +5,7 @@ use utmelab_api::{
     config::Config,
     routes,
     state::{AppState, Metrics, SyncCell},
-    store,
+    store::{self, ConnPool},
 };
 
 fn main() {
@@ -23,18 +23,26 @@ fn main() {
         let role = args.get(3).cloned().unwrap_or_else(|| "admin".to_string());
         std::process::exit(seed_admin_cmd(username, role));
     }
-    let cfg = Config::from_env();
-    if let Err(e) = cfg.validate() {
-        eprintln!("{e}");
-        std::process::exit(1);
-    }
-    tokio::runtime::Builder::new_multi_thread()
+    let cfg = match Config::from_env() {
+        Ok(c) => c,
+        Err(e) => {
+            eprintln!("{e}");
+            std::process::exit(1);
+        }
+    };
+    let runtime = match tokio::runtime::Builder::new_multi_thread()
         .worker_threads(cfg.worker_threads)
         .max_blocking_threads(cfg.max_blocking_threads)
         .enable_all()
         .build()
-        .expect("build runtime")
-        .block_on(run(cfg));
+    {
+        Ok(r) => r,
+        Err(e) => {
+            eprintln!("failed to start runtime: {e}");
+            std::process::exit(1);
+        }
+    };
+    runtime.block_on(run(cfg));
 }
 
 fn seed_admin_cmd(username: String, role: String) -> i32 {
@@ -42,15 +50,27 @@ fn seed_admin_cmd(username: String, role: String) -> i32 {
         eprintln!("usage: seed-admin <username> [admin|customer]");
         return 2;
     }
-    let cfg = Config::from_env();
+    let cfg = match Config::from_env() {
+        Ok(c) => c,
+        Err(e) => {
+            eprintln!("{e}");
+            return 1;
+        }
+    };
     if !cfg.has_db() {
         eprintln!("no TURSO_DB_URL/TOKEN; nothing to seed into");
         return 1;
     }
-    let rt = tokio::runtime::Builder::new_current_thread()
+    let rt = match tokio::runtime::Builder::new_current_thread()
         .enable_all()
         .build()
-        .expect("build command runtime");
+    {
+        Ok(r) => r,
+        Err(e) => {
+            eprintln!("failed to start command runtime: {e}");
+            return 1;
+        }
+    };
     rt.block_on(async move {
         let Some(db) = store::sync::ready_db(&cfg).await else {
             eprintln!("could not open replica (is the server running?) or reach cloud");
@@ -58,7 +78,7 @@ fn seed_admin_cmd(username: String, role: String) -> i32 {
         };
         let st = utmelab_api::state::DbState::detached(db);
         let bytes: [u8; 18] = rand::random();
-        let password: String = bytes.iter().map(|b| format!("{b:02x}")).collect();
+        let password: String = utmelab_api::core::hex::encode(&bytes);
         match store::accounts::seed_admin(&st, &username, &password, &role).await {
             Ok(()) => {
                 println!("seeded {role} {username}");
@@ -75,7 +95,7 @@ fn seed_admin_cmd(username: String, role: String) -> i32 {
 }
 
 async fn run(cfg: Config) {
-    fmt().with_env_filter(EnvFilter::from_default_env()).init();
+    fmt().with_env_filter(log_filter()).init();
     tracing::info!(
         workers = cfg.worker_threads,
         blocking = cfg.max_blocking_threads,
@@ -97,6 +117,7 @@ async fn run(cfg: Config) {
         name: Arc::from("utmelab-api"),
         db,
         db_gate,
+        conns: Arc::new(ConnPool::new(cfg.db_max_concurrent)),
         metrics,
         cookie_secure: cfg.cookie_secure,
         write_mutex,
@@ -109,17 +130,40 @@ async fn run(cfg: Config) {
     let addr = SocketAddr::from(([127, 0, 0, 1], cfg.port));
     tracing::info!("listening on {addr}");
 
-    let listener = tokio::net::TcpListener::bind(addr)
-        .await
-        .expect("bind listener");
+    let listener = match tokio::net::TcpListener::bind(addr).await {
+        Ok(l) => l,
+        Err(e) => {
+            eprintln!("cannot bind {addr}: {e}");
+            std::process::exit(1);
+        }
+    };
 
-    axum::serve(
+    if let Err(e) = axum::serve(
         listener,
         app.into_make_service_with_connect_info::<SocketAddr>(),
     )
     .with_graceful_shutdown(shutdown_signal())
     .await
-    .expect("serve");
+    {
+        eprintln!("server stopped with error: {e}");
+        std::process::exit(1);
+    }
+}
+
+/// `RUST_LOG` if set, else our crate at `info` with the sync engine quieted to
+/// `warn` (it logs every pull at info, which would otherwise flood a small
+/// box). A set-but-invalid filter fails at boot rather than logging nothing.
+fn log_filter() -> EnvFilter {
+    match std::env::var("RUST_LOG") {
+        Ok(v) if !v.trim().is_empty() => match EnvFilter::try_new(v.trim()) {
+            Ok(f) => f,
+            Err(e) => {
+                eprintln!("invalid RUST_LOG: {e}");
+                std::process::exit(1);
+            }
+        },
+        _ => EnvFilter::new("utmelab_api=info,turso_sync_engine=warn,warn"),
+    }
 }
 
 async fn shutdown_signal() {

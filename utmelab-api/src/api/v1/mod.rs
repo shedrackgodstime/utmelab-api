@@ -5,6 +5,7 @@ pub mod exams;
 pub mod keys;
 pub mod meta;
 pub mod novels;
+pub mod papers;
 pub mod passages;
 pub mod questions;
 pub mod reports;
@@ -21,6 +22,7 @@ pub fn router(state: AppState) -> Router<AppState> {
         .merge(keys::router(state.clone()))
         .merge(novels::router(state.clone()))
         .merge(exams::router(state.clone()))
+        .merge(papers::router(state.clone()))
         .merge(subjects::router(state.clone()))
         .merge(topics::router(state.clone()))
         .merge(questions::router(state.clone()))

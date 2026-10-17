@@ -33,10 +33,7 @@ pub async fn etag(request: Request<Body>, next: Next) -> Response {
         Ok(b) => b,
         Err(_) => return (StatusCode::BAD_GATEWAY, "body unreadable").into_response(),
     };
-    let hex: String = sha2::Sha256::digest(&bytes)
-        .iter()
-        .map(|b| format!("{b:02x}"))
-        .collect();
+    let hex = crate::core::hex::encode(&sha2::Sha256::digest(&bytes));
     let tag = format!("\"{hex}\"");
     if etag_matches(&wanted, &tag) {
         parts.status = StatusCode::NOT_MODIFIED;

@@ -21,10 +21,7 @@ fn hasher() -> Argon2<'static> {
 
 fn hash_key(full: &str) -> String {
     use sha2::Digest;
-    sha2::Sha256::digest(full.as_bytes())
-        .iter()
-        .map(|b| format!("{b:02x}"))
-        .collect()
+    crate::core::hex::encode(&sha2::Sha256::digest(full.as_bytes()))
 }
 
 fn hash_token(token: &str) -> String {
@@ -262,7 +259,7 @@ pub async fn login(
         return Err(AppError::Unauthorized);
     }
     let bytes: [u8; 32] = rand::random();
-    let token: String = bytes.iter().map(|b| format!("{b:02x}")).collect();
+    let token: String = crate::core::hex::encode(&bytes);
     let exp = crate::auth::session::session_expiry();
     let wrote = super::write::execute_write(
         s,
@@ -430,10 +427,8 @@ async fn create_key_raw(
     scopes: &str,
     owner: &str,
 ) -> Result<String, AppError> {
-    let pfx: [u8; 6] = rand::random();
-    let sec: [u8; 24] = rand::random();
-    let prefix: String = pfx.iter().map(|b| format!("{b:02x}")).collect();
-    let secret: String = sec.iter().map(|b| format!("{b:02x}")).collect();
+    let prefix: String = crate::core::hex::encode(&rand::random::<[u8; 6]>());
+    let secret: String = crate::core::hex::encode(&rand::random::<[u8; 24]>());
     let full = format!("{prefix}.{secret}");
     let n = super::write::execute_write(
         s,
@@ -539,10 +534,7 @@ pub async fn file_report(
     }
     let id: String = {
         let bytes: [u8; 8] = rand::random();
-        format!(
-            "rpt_{}",
-            bytes.iter().map(|b| format!("{b:02x}")).collect::<String>()
-        )
+        format!("rpt_{}", crate::core::hex::encode(&bytes))
     };
     let n = super::write::execute_write(
         s,

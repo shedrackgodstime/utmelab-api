@@ -136,8 +136,8 @@ pub struct Question {
     pub explanation: Option<Explanation>,
     pub marks: f32,
     pub difficulty: u8,
-    /// Derived from the verification log, never authored. False until
-    /// the verifications table lands; skipped in serde like its sibling.
+    /// Derived from the verification log (the latest human pass covering
+    /// answer+explanation against the content we hold now), never authored.
     #[serde(skip, default)]
     pub verified: bool,
 }
@@ -291,7 +291,7 @@ pub struct Passage {
 /// One question as served. Identical to storage except the answer and
 /// working, which are present only when explicitly requested — an answer
 /// in a default payload gets rendered by somebody, eventually, by
-/// accident. `verified` is false until the verifications table lands.
+/// accident. `verified` comes from the verification log, never a stored flag.
 #[derive(Clone, Debug, PartialEq, serde::Serialize)]
 pub struct RenderedQuestion {
     pub id: String,
@@ -369,4 +369,61 @@ pub struct Topic {
     /// Examinable statements attached at topic level. Empty where the
     /// board states none — never invented.
     pub objectives: Vec<String>,
+}
+
+/// One board rule about which subjects a paper needs. An empty `subjects`
+/// means "every exam subject not named by another group"; `min_select` is
+/// how many of that pool must be ready before the paper is real.
+#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+pub struct Requirement {
+    pub group: String,
+    pub min_select: u32,
+    pub subjects: Vec<String>,
+}
+
+/// One subject's slot in an exam scheme. `questions` is the stated paper
+/// size (null where unverified), and `marks_per_question` is stated only
+/// where the bank supports it — both are absences, never zeros.
+#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+pub struct SubjectSlot {
+    pub slug: String,
+    pub name: String,
+    pub compulsory: bool,
+    pub questions: Option<u32>,
+    pub marks_per_question: Option<f32>,
+}
+
+/// How an exam's paper is shaped, restated from the bank (D19). This is a
+/// constant over our content, so it moves only when the bank does.
+#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+pub struct Scheme {
+    pub exam: String,
+    /// Minutes for a full sitting, verified only. Null where unverified.
+    pub duration_minutes: Option<u32>,
+    pub subjects: Vec<SubjectSlot>,
+    /// Board-stated rules a consumer must know. Empty where unstated.
+    pub rules: Vec<String>,
+    /// Questions a full paper holds, summed from subjects we can fill.
+    /// A lower bound for any exam whose bank is incomplete.
+    pub questions_available: u32,
+    /// Which subjects can fill a slot today, by slug.
+    pub subjects_ready: Vec<String>,
+    /// Country scope this scheme was computed for. Absent means the full
+    /// honest view, and completeness is only ever claimed for a scope.
+    pub country: Option<String>,
+    /// The paper-assembly rules evaluated for this scope, copied from the
+    /// exam's requirement rows so a consumer sees what `complete` meant.
+    pub requirements: Vec<Requirement>,
+}
+
+/// The scheme plus whether the bank can fill it. Readiness sits beside the
+/// scheme rather than inside it, so the validated shape does not move as
+/// our content grows.
+#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+pub struct PaperReadiness {
+    pub exam: String,
+    pub scheme: Scheme,
+    /// True when every requirement group for this scope holds enough
+    /// verified questions to fill its `min_select` slots.
+    pub complete: bool,
 }

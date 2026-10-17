@@ -114,6 +114,16 @@ fn req_f32(v: turso::Value, col: &'static str) -> Result<f32, AppError> {
     }
 }
 
+/// The SQLite engine only ever hands back 0/1 for a boolean expression;
+/// anything else is corruption, not a truthy value.
+fn req_bool(v: turso::Value, col: &'static str) -> Result<bool, AppError> {
+    match v {
+        turso::Value::Integer(0) => Ok(false),
+        turso::Value::Integer(1) => Ok(true),
+        _ => Err(AppError::Upstream(format!("{col} is not 0/1"))),
+    }
+}
+
 fn opt_f64(v: turso::Value, col: &'static str) -> Result<Option<f64>, AppError> {
     match v {
         turso::Value::Null => Ok(None),
@@ -207,16 +217,13 @@ fn map_question(row: &turso::Row) -> Result<core::models::Question, AppError> {
         },
         marks: req_f32(row.get_value(13).map_err(upstream)?, "question.marks")?,
         difficulty: req_u8(row.get_value(14).map_err(upstream)?, "question.difficulty")?,
-        // Derived from the verifications table, which has no reader yet —
-        // false until that join lands, never invented per row.
-        verified: false,
+        verified: req_bool(row.get_value(15).map_err(upstream)?, "question.verified")?,
     })
 }
 
-/// Filters that map straight onto question columns. `verified` and
-/// `country` are deliberately absent: they need joins this slice cannot
-/// verify, and a silently ignored filter is worse than a loud rejection
-/// (handlers 400 those params until they land).
+/// Filters over the questions table. `country` is deliberately absent: it
+/// needs a `topic_countries` join this slice cannot verify, and a silently
+/// ignored filter is worse than a loud rejection (the handler 400s it).
 #[derive(Clone, Debug, Default)]
 pub struct QuestionFilter {
     pub exam: Option<String>,
@@ -225,6 +232,52 @@ pub struct QuestionFilter {
     pub year: Option<u16>,
     pub source: Option<String>,
     pub text: Option<String>,
+    pub verified: Option<bool>,
+}
+
+/// D62's rule, spelled once. `table` is a compile-time literal from this
+/// module (never user input), so interpolating it is safe. The outer row is
+/// matched by `table.id`/`table.content_hash`, which both `questions` and
+/// `novel_questions` carry; the same predicate feeds the `verified` column
+/// and the `verified` filter, so the two can never disagree.
+fn verified_predicate(table: &str) -> String {
+    format!(
+        "EXISTS (SELECT 1 FROM verifications v \
+         WHERE v.question_id = {table}.id AND v.kind='human' AND v.verdict='pass' \
+         AND v.content_hash = {table}.content_hash \
+         AND EXISTS (SELECT 1 FROM json_each(v.scope) WHERE value='answer') \
+         AND EXISTS (SELECT 1 FROM json_each(v.scope) WHERE value='explanation') \
+         AND NOT EXISTS (SELECT 1 FROM verifications v2 \
+           WHERE v2.question_id = v.question_id AND v2.kind='human' \
+           AND (v2.created_at, v2.id) > (v.created_at, v.id) \
+           AND EXISTS (SELECT 1 FROM json_each(v2.scope) WHERE value='answer') \
+           AND EXISTS (SELECT 1 FROM json_each(v2.scope) WHERE value='explanation')))"
+    )
+}
+
+/// Countries a topic belongs to (D19): a topic with no `topic_countries`
+/// rows is in every country; one that lists countries is in only those.
+/// Expressed as SQL over `questions` so scope is one predicate rather than
+/// a second code path per reader. The bound param (NULL = unscoped) is
+/// supplied by `scope_param`.
+///
+/// The table is empty today, so this excludes nothing — it is here so the
+/// moment the bank states topic scope, every reader honours it without a
+/// rewrite.
+fn scope_predicate(param: u8) -> String {
+    format!(
+        "(?{p} IS NULL OR NOT EXISTS (SELECT 1 FROM topic_countries tc WHERE tc.topic = (SELECT st.topic FROM subtopics st WHERE st.slug = questions.subtopic_id)) OR EXISTS (SELECT 1 FROM topic_countries tc WHERE tc.topic = (SELECT st.topic FROM subtopics st WHERE st.slug = questions.subtopic_id) AND tc.country = ?{p}))",
+        p = param
+    )
+}
+
+/// The scope predicate's bound value: the asked country, or NULL for the
+/// unscoped view.
+fn scope_param(country: &Option<String>) -> turso::Value {
+    match country {
+        Some(c) => turso::Value::Text(c.clone()),
+        None => turso::Value::Null,
+    }
 }
 
 /// Escape LIKE wildcards so a consumer typing `%` searches a literal
@@ -246,31 +299,39 @@ fn like_literal(q: &str) -> String {
 /// Pure and unit-tested: both queries must filter identically, and the
 /// only way to guarantee that is one builder.
 fn question_where(f: &QuestionFilter) -> (String, Vec<turso::Value>) {
-    let mut conds = Vec::new();
+    let mut conds: Vec<String> = Vec::new();
     let mut params = Vec::new();
     if let Some(v) = &f.exam {
-        conds.push("exam=?");
+        conds.push("exam=?".to_string());
         params.push(turso::Value::Text(v.clone()));
     }
     if let Some(v) = &f.subject {
-        conds.push("subject=?");
+        conds.push("subject=?".to_string());
         params.push(turso::Value::Text(v.clone()));
     }
     if let Some(v) = &f.subtopic_id {
-        conds.push("subtopic_id=?");
+        conds.push("subtopic_id=?".to_string());
         params.push(turso::Value::Text(v.clone()));
     }
     if let Some(v) = f.year {
-        conds.push("year=?");
+        conds.push("year=?".to_string());
         params.push(turso::Value::Integer(v as i64));
     }
     if let Some(v) = &f.source {
-        conds.push("source=?");
+        conds.push("source=?".to_string());
         params.push(turso::Value::Text(v.clone()));
     }
     if let Some(v) = &f.text {
-        conds.push("text LIKE ? ESCAPE '\\'");
+        conds.push("text LIKE ? ESCAPE '\\'".to_string());
         params.push(turso::Value::Text(like_literal(v)));
+    }
+    if let Some(v) = f.verified {
+        conds.push(format!("({}) = ?", verified_predicate("questions")));
+        params.push(turso::Value::Integer(i32::from(v) as i64));
+    }
+    if let Some(v) = f.verified {
+        conds.push(format!("({}) = ?", verified_predicate("questions")));
+        params.push(turso::Value::Integer(i32::from(v) as i64));
     }
     let clause = if conds.is_empty() {
         String::new()
@@ -292,7 +353,8 @@ pub async fn list_questions(
     let (clause, params) = question_where(filter);
     let count_sql = format!("SELECT COUNT(*) FROM questions{clause}");
     let page_sql = format!(
-        "SELECT id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty FROM questions{clause} ORDER BY id LIMIT {} OFFSET {}",
+        "SELECT id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty, ({}) AS verified FROM questions{clause} ORDER BY id LIMIT {} OFFSET {}",
+        verified_predicate("questions"),
         per_page,
         (page - 1) * per_page
     );
@@ -469,7 +531,10 @@ fn map_novel_question(row: &turso::Row) -> Result<core::models::NovelQuestion, A
                 ))
             }
         },
-        verified: false,
+        verified: req_bool(
+            row.get_value(7).map_err(upstream)?,
+            "novel_question.verified",
+        )?,
     })
 }
 
@@ -565,13 +630,11 @@ async fn list_novel_questions_inner(
     id: &str,
 ) -> Result<Vec<core::models::NovelQuestion>, AppError> {
     let mut out = Vec::new();
-    let mut rows = conn
-        .query(
-            "SELECT id,chapter_number,text,inline,options,answer,explanation FROM novel_questions WHERE novel_id=?1 ORDER BY id",
-            [id],
-        )
-        .await
-        .map_err(upstream)?;
+    let sql = format!(
+        "SELECT id,chapter_number,text,inline,options,answer,explanation, ({}) AS verified FROM novel_questions WHERE novel_id=?1 ORDER BY id",
+        verified_predicate("novel_questions")
+    );
+    let mut rows = conn.query(&sql, [id]).await.map_err(upstream)?;
     while let Some(row) = rows.next().await.map_err(upstream)? {
         out.push(map_novel_question(&row)?);
     }
@@ -634,10 +697,11 @@ pub async fn get_question(
     with_conn(s, |conn| {
         let id = id.clone();
         async move {
-            let mut stmt = conn
-            .prepare("SELECT id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty FROM questions WHERE id=?1")
-            .await
-            .map_err(upstream)?;
+            let sql = format!(
+                "SELECT id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty, ({}) AS verified FROM questions WHERE id=?1",
+                verified_predicate("questions")
+            );
+            let mut stmt = conn.prepare(&sql).await.map_err(upstream)?;
             let mut rows = stmt
                 .query([id.as_str()])
                 .await
@@ -735,9 +799,26 @@ pub async fn target_exists(
     }
 }
 
-/// Subjects of one exam, in stored order. `is_compulsory` arrives as
-/// 0/1 and anything else fails loudly — a boolean column holding a 2
-/// is corruption, not a false.
+/// One row → one `Subject`. `is_compulsory` arrives as 0/1 and anything
+/// else fails loudly — a boolean column holding a 2 is corruption, not a
+/// false.
+fn map_subject(row: &turso::Row) -> Result<core::models::Subject, AppError> {
+    let compulsory: i64 = row.get(3).map_err(upstream)?;
+    if compulsory != 0 && compulsory != 1 {
+        return Err(AppError::Upstream(
+            "subject.is_compulsory not 0/1".to_string(),
+        ));
+    }
+    Ok(core::models::Subject {
+        slug: row.get(0).map_err(upstream)?,
+        exam: row.get(1).map_err(upstream)?,
+        name: row.get(2).map_err(upstream)?,
+        is_compulsory: compulsory == 1,
+        objective_paper_questions: opt_u32(row.get_value(4).map_err(upstream)?)?,
+    })
+}
+
+/// Subjects of one exam, in stored order.
 pub async fn list_subjects(
     s: &DbState,
     exam: &str,
@@ -747,35 +828,68 @@ pub async fn list_subjects(
         let exam = exam.clone();
         async move {
             let mut stmt = conn
-            .prepare("SELECT slug,exam,name,is_compulsory,objective_paper_questions FROM subjects WHERE exam=?1")
-            .await
-            .map_err(upstream)?;
-        let mut rows = stmt
-            .query([exam.as_str()])
-            .await
-            .map_err(upstream)?;
-        let mut out = Vec::new();
-        while let Some(row) = rows.next().await.map_err(upstream)? {
-            let compulsory: i64 = row.get(3).map_err(upstream)?;
-            if compulsory != 0 && compulsory != 1 {
-                return Err(AppError::Upstream("subject.is_compulsory not 0/1".to_string()));
+                .prepare("SELECT slug,exam,name,is_compulsory,objective_paper_questions FROM subjects WHERE exam=?1")
+                .await
+                .map_err(upstream)?;
+            let mut rows = stmt.query([exam.as_str()]).await.map_err(upstream)?;
+            let mut out = Vec::new();
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                out.push(map_subject(&row)?);
             }
-            out.push(core::models::Subject {
-                slug: row.get(0).map_err(upstream)?,
-                exam: row.get(1).map_err(upstream)?,
-                name: row.get(2).map_err(upstream)?,
-                is_compulsory: compulsory == 1,
-                objective_paper_questions: opt_u32(row.get_value(4).map_err(upstream)?)?,
-            });
-        }
-        Ok(out)
+            Ok(out)
         }
     })
     .await
 }
 
-/// All exams as stored. `countries`/`rules` arrive as JSON strings and
+/// One subject of one exam. `None` when absent — the handler decides that
+/// means 404.
+pub async fn get_subject(
+    s: &DbState,
+    exam: &str,
+    slug: &str,
+) -> Result<Option<core::models::Subject>, AppError> {
+    let exam = exam.to_string();
+    let slug = slug.to_string();
+    with_conn(s, |conn| {
+        let exam = exam.clone();
+        let slug = slug.clone();
+        async move {
+            let mut stmt = conn
+                .prepare("SELECT slug,exam,name,is_compulsory,objective_paper_questions FROM subjects WHERE exam=?1 AND slug=?2")
+                .await
+                .map_err(upstream)?;
+            let mut rows = stmt
+                .query([exam.as_str(), slug.as_str()])
+                .await
+                .map_err(upstream)?;
+            match rows.next().await.map_err(upstream)? {
+                Some(row) => Ok(Some(map_subject(&row)?)),
+                None => Ok(None),
+            }
+        }
+    })
+    .await
+}
+
+/// One row → one `Exam`. `countries`/`rules` arrive as JSON strings and
 /// fail loudly here when malformed — never silently emptied.
+fn map_exam(row: &turso::Row) -> Result<core::models::Exam, AppError> {
+    let countries_raw: String = row.get(2).map_err(upstream)?;
+    let rules_raw: String = row.get(7).map_err(upstream)?;
+    Ok(core::models::Exam {
+        code: row.get(0).map_err(upstream)?,
+        name: row.get(1).map_err(upstream)?,
+        countries: json_list(&countries_raw, "exam.countries")?,
+        status: row.get(3).map_err(upstream)?,
+        has_full_paper: opt_bool(row.get_value(4).map_err(upstream)?)?,
+        subjects_required: opt_u32(row.get_value(5).map_err(upstream)?)?,
+        duration_minutes: opt_u32(row.get_value(6).map_err(upstream)?)?,
+        rules: json_list(&rules_raw, "exam.rules")?,
+    })
+}
+
+/// All exams as stored.
 pub async fn list_exams(s: &DbState) -> Result<Vec<core::models::Exam>, AppError> {
     with_conn(s, |conn| async move {
         let mut rows = conn
@@ -787,20 +901,200 @@ pub async fn list_exams(s: &DbState) -> Result<Vec<core::models::Exam>, AppError
             .map_err(upstream)?;
         let mut out = Vec::new();
         while let Some(row) = rows.next().await.map_err(upstream)? {
-            let countries_raw: String = row.get(2).map_err(upstream)?;
-            let rules_raw: String = row.get(7).map_err(upstream)?;
-            out.push(core::models::Exam {
-                code: row.get(0).map_err(upstream)?,
-                name: row.get(1).map_err(upstream)?,
-                countries: json_list(&countries_raw, "exam.countries")?,
-                status: row.get(3).map_err(upstream)?,
-                has_full_paper: opt_bool(row.get_value(4).map_err(upstream)?)?,
-                subjects_required: opt_u32(row.get_value(5).map_err(upstream)?)?,
-                duration_minutes: opt_u32(row.get_value(6).map_err(upstream)?)?,
-                rules: json_list(&rules_raw, "exam.rules")?,
-            });
+            out.push(map_exam(&row)?);
         }
         Ok(out)
+    })
+    .await
+}
+
+/// One exam by code. `None` when absent — the handler decides that is 404.
+pub async fn get_exam(s: &DbState, code: &str) -> Result<Option<core::models::Exam>, AppError> {
+    let code = code.to_string();
+    with_conn(s, |conn| {
+        let code = code.clone();
+        async move {
+            let mut stmt = conn
+                .prepare("SELECT code,name,countries,status,has_full_paper,subjects_required,duration_minutes,rules FROM exams WHERE code=?1")
+                .await
+                .map_err(upstream)?;
+            let mut rows = stmt.query([code.as_str()]).await.map_err(upstream)?;
+            match rows.next().await.map_err(upstream)? {
+                Some(row) => Ok(Some(map_exam(&row)?)),
+                None => Ok(None),
+            }
+        }
+    })
+    .await
+}
+
+/// The board's paper requirements for one exam in one country. Empty where
+/// the shape is unstated — an unstated paper is never complete.
+pub async fn list_requirements(
+    s: &DbState,
+    exam: &str,
+    country: &str,
+) -> Result<Vec<core::models::Requirement>, AppError> {
+    let exam = exam.to_string();
+    let country = country.to_string();
+    with_conn(s, |conn| {
+        let exam = exam.clone();
+        let country = country.clone();
+        async move {
+            let mut stmt = conn
+                .prepare("SELECT \"group\",min_select,subjects FROM exam_requirements WHERE exam=?1 AND country=?2 ORDER BY \"group\"")
+                .await
+                .map_err(upstream)?;
+            let mut rows = stmt
+                .query([exam.as_str(), country.as_str()])
+                .await
+                .map_err(upstream)?;
+            let mut out = Vec::new();
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                let subjects_raw: String = row.get(2).map_err(upstream)?;
+                out.push(core::models::Requirement {
+                    group: row.get(0).map_err(upstream)?,
+                    min_select: req_u32(
+                        row.get_value(1).map_err(upstream)?,
+                        "requirement.min_select",
+                    )?,
+                    subjects: json_list(&subjects_raw, "requirement.subjects")?,
+                });
+            }
+            Ok(out)
+        }
+    })
+    .await
+}
+
+/// One query for every subject's figures under an exam: rows held, rows
+/// verified (the same D62 rule every reader uses), and the marks spread. A
+/// scheme is derived from this rather than N per-subject round trips.
+pub async fn subject_stats(
+    s: &DbState,
+    exam: &str,
+    country: Option<&str>,
+) -> Result<std::collections::HashMap<String, core::papers::SubjectStat>, AppError> {
+    let exam = exam.to_string();
+    let country = country.map(str::to_string);
+    with_conn(s, |conn| {
+        let exam = exam.clone();
+        let country = country.clone();
+        async move {
+            let sql = format!(
+                "SELECT subject,COUNT(*),SUM(CASE WHEN {} THEN 1 ELSE 0 END),COUNT(DISTINCT marks),MIN(marks) FROM questions WHERE exam=?1 AND {} GROUP BY subject",
+                verified_predicate("questions"),
+                scope_predicate(2)
+            );
+            let mut stmt = conn.prepare(&sql).await.map_err(upstream)?;
+            let params = [turso::Value::Text(exam), scope_param(&country)];
+            let mut rows = stmt.query(params).await.map_err(upstream)?;
+            let mut out = std::collections::HashMap::new();
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                let subject: String = row.get(0).map_err(upstream)?;
+                out.insert(
+                    subject,
+                    core::papers::SubjectStat {
+                        held: req_u32(row.get_value(1).map_err(upstream)?, "stats.held")?,
+                        verified: req_u32(
+                            row.get_value(2).map_err(upstream)?,
+                            "stats.verified",
+                        )?,
+                        distinct_marks: req_u32(
+                            row.get_value(3).map_err(upstream)?,
+                            "stats.distinct_marks",
+                        )?,
+                        marks_low: req_f32(row.get_value(4).map_err(upstream)?, "stats.marks_low")?,
+                    },
+                );
+            }
+            Ok(out)
+        }
+    })
+    .await
+}
+
+/// Every row one subject holds, in id order, `verified` derived. No paging:
+/// assembly and readiness need the whole pool, and a paged read would
+/// silently under-count a subject that outgrows one page.
+pub async fn subject_rows(
+    s: &DbState,
+    exam: &str,
+    subject: &str,
+    country: Option<&str>,
+) -> Result<Vec<core::models::Question>, AppError> {
+    let exam = exam.to_string();
+    let subject = subject.to_string();
+    let country = country.map(str::to_string);
+    with_conn(s, |conn| {
+        let exam = exam.clone();
+        let subject = subject.clone();
+        let country = country.clone();
+        async move {
+            let sql = format!(
+                "SELECT id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty,({}) AS verified FROM questions WHERE exam=?1 AND subject=?2 AND {} ORDER BY id",
+                verified_predicate("questions"),
+                scope_predicate(3)
+            );
+            let mut stmt = conn.prepare(&sql).await.map_err(upstream)?;
+            let params = [
+                turso::Value::Text(exam),
+                turso::Value::Text(subject),
+                scope_param(&country),
+            ];
+            let mut rows = stmt.query(params).await.map_err(upstream)?;
+            let mut out = Vec::new();
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                out.push(map_question(&row)?);
+            }
+            Ok(out)
+        }
+    })
+    .await
+}
+
+/// One subject's syllabus: topics in `order` with their subtopic slugs.
+/// This is the tree that attributes questions to topics; a topic the bank
+/// does not state is never invented.
+pub async fn list_syllabus(
+    s: &DbState,
+    exam: &str,
+    subject: &str,
+) -> Result<Vec<core::papers::SyllabusTopic>, AppError> {
+    let exam = exam.to_string();
+    let subject = subject.to_string();
+    with_conn(s, |conn| {
+        let exam = exam.clone();
+        let subject = subject.clone();
+        async move {
+            let mut stmt = conn
+                .prepare("SELECT t.slug,t.name,COALESCE(st.slug,'') FROM topics t LEFT JOIN subtopics st ON st.topic=t.slug WHERE t.exam=?1 AND t.subject=?2 ORDER BY t.\"order\",t.slug,st.\"order\",st.slug")
+                .await
+                .map_err(upstream)?;
+            let mut rows = stmt
+                .query([exam.as_str(), subject.as_str()])
+                .await
+                .map_err(upstream)?;
+            let mut out: Vec<core::papers::SyllabusTopic> = Vec::new();
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                let slug: String = row.get(0).map_err(upstream)?;
+                let name: String = row.get(1).map_err(upstream)?;
+                let sub: String = row.get(2).map_err(upstream)?;
+                match out.last_mut() {
+                    Some(t) if t.slug == slug => {
+                        if !sub.is_empty() {
+                            t.subtopics.push(sub);
+                        }
+                    }
+                    _ => out.push(core::papers::SyllabusTopic {
+                        slug,
+                        name,
+                        subtopics: if sub.is_empty() { Vec::new() } else { vec![sub] },
+                    }),
+                }
+            }
+            Ok(out)
+        }
     })
     .await
 }
@@ -887,6 +1181,24 @@ mod tests {
         .await
         .expect("insert waec");
         conn.execute(
+            "CREATE TABLE exam_requirements (exam TEXT, country TEXT, \"group\" TEXT, min_select INTEGER, subjects TEXT)",
+            (),
+        )
+        .await
+        .expect("create requirements");
+        conn.execute(
+            "INSERT INTO exam_requirements VALUES ('JAMB','NG','core',1,'[\"use-of-english\"]')",
+            (),
+        )
+        .await
+        .expect("insert core requirement");
+        conn.execute(
+            "INSERT INTO exam_requirements VALUES ('JAMB','NG','elective',3,'[]')",
+            (),
+        )
+        .await
+        .expect("insert elective requirement");
+        conn.execute(
             "CREATE TABLE subjects (slug TEXT, exam TEXT, name TEXT, is_compulsory INTEGER, objective_paper_questions INTEGER)",
             (),
         )
@@ -929,13 +1241,31 @@ mod tests {
         .await
         .expect("insert geometry");
         conn.execute(
-            "CREATE TABLE questions (id TEXT, exam TEXT, subject TEXT, year INTEGER, source TEXT, text TEXT, inline TEXT, options TEXT, answer TEXT, subtopic_id TEXT, section TEXT, passage_id TEXT, explanation TEXT, marks REAL, difficulty INTEGER)",
+            "CREATE TABLE subtopics (slug TEXT, topic TEXT, name TEXT, \"order\" INTEGER, objectives TEXT)",
+            (),
+        )
+        .await
+        .expect("create subtopics");
+        conn.execute(
+            "INSERT INTO subtopics VALUES ('geometry-basics','geometry','Geometry basics',1,'[]')",
+            (),
+        )
+        .await
+        .expect("insert subtopic");
+        conn.execute(
+            "CREATE TABLE topic_countries (topic TEXT NOT NULL, country TEXT NOT NULL, PRIMARY KEY (topic, country))",
+            (),
+        )
+        .await
+        .expect("create topic_countries");
+        conn.execute(
+            "CREATE TABLE questions (id TEXT, exam TEXT, subject TEXT, year INTEGER, source TEXT, text TEXT, inline TEXT, options TEXT, answer TEXT, subtopic_id TEXT, section TEXT, passage_id TEXT, explanation TEXT, marks REAL, difficulty INTEGER, content_hash TEXT)",
             (),
         )
         .await
         .expect("create questions");
         conn.execute(
-            "INSERT INTO questions VALUES ('q1','JAMB','physics',2025,'past_paper','What is 2+2?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"4\",\"inline\":[]}}]','a',NULL,NULL,NULL,'{\"key_point\":{\"text\":\"addition\",\"inline\":[]},\"body\":{\"text\":\"2+2=4\",\"inline\":[]}}',1.0,2)",
+            "INSERT INTO questions VALUES ('q1','JAMB','physics',2025,'past_paper','What is 2+2?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"4\",\"inline\":[]}}]','a',NULL,NULL,NULL,'{\"key_point\":{\"text\":\"addition\",\"inline\":[]},\"body\":{\"text\":\"2+2=4\",\"inline\":[]}}',1.0,2,'h1')",
             (),
         )
         .await
@@ -946,6 +1276,26 @@ mod tests {
         )
         .await
         .expect("create reports");
+        conn.execute(
+            "CREATE TABLE verifications (id TEXT, question_id TEXT, kind TEXT, verdict TEXT, scope TEXT, verifier TEXT, detail TEXT, content_hash TEXT, created_at TEXT)",
+            (),
+        )
+        .await
+        .expect("create verifications");
+        // q1: a human pass matching its content hash → verified.
+        conn.execute(
+            "INSERT INTO verifications VALUES ('v1','q1','human','pass','[\"answer\",\"explanation\"]','review',NULL,'h1','2026-01-01T00:00:00Z')",
+            (),
+        )
+        .await
+        .expect("insert v1");
+        // q3: a human pass against a *stale* hash → an edit voids it.
+        conn.execute(
+            "INSERT INTO verifications VALUES ('v2','q3','human','pass','[\"answer\",\"explanation\"]','review',NULL,'wrong','2026-01-01T00:00:00Z')",
+            (),
+        )
+        .await
+        .expect("insert v2");
         conn.execute(
             "CREATE TABLE novels (id TEXT, title TEXT, author TEXT, year_published INTEGER, exam TEXT, year_prescribed TEXT, category TEXT, featured INTEGER, synopsis TEXT, setting_place TEXT, setting_period TEXT, cover_image TEXT)",
             (),
@@ -1001,23 +1351,30 @@ mod tests {
         .await
         .expect("insert theme");
         conn.execute(
-            "CREATE TABLE novel_questions (id TEXT, novel_id TEXT, chapter_number INTEGER, text TEXT, inline TEXT, options TEXT, answer TEXT, explanation TEXT)",
+            "CREATE TABLE novel_questions (id TEXT, novel_id TEXT, chapter_number INTEGER, text TEXT, inline TEXT, options TEXT, answer TEXT, explanation TEXT, content_hash TEXT)",
             (),
         )
         .await
         .expect("create novel_questions");
         conn.execute(
-            "INSERT INTO novel_questions VALUES ('nq1','lekki',1,'Who?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"Ada\",\"inline\":[]}}]','a',NULL)",
+            "INSERT INTO novel_questions VALUES ('nq1','lekki',1,'Who?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"Ada\",\"inline\":[]}}]','a',NULL,'nh1')",
             (),
         )
         .await
         .expect("insert nq1");
         conn.execute(
-            "INSERT INTO novel_questions VALUES ('nq2','lekki',2,'Where?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"Lagos\",\"inline\":[]}}]','a',NULL)",
+            "INSERT INTO novel_questions VALUES ('nq2','lekki',2,'Where?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"Lagos\",\"inline\":[]}}]','a',NULL,'nh2')",
             (),
         )
         .await
         .expect("insert nq2");
+        // nq1 is verified; nq2 is not — the novel side of the same rule.
+        conn.execute(
+            "INSERT INTO verifications VALUES ('v3','nq1','human','pass','[\"answer\",\"explanation\"]','review',NULL,'nh1','2026-01-01T00:00:00Z')",
+            (),
+        )
+        .await
+        .expect("insert novel verification");
         conn.execute(
             "CREATE TABLE passages (id TEXT, exam TEXT, subject TEXT, year INTEGER, kind TEXT, title TEXT, author TEXT, text TEXT, inline TEXT)",
             (),
@@ -1031,13 +1388,13 @@ mod tests {
         .await
         .expect("insert p1");
         conn.execute(
-            "INSERT INTO questions VALUES ('q2','JAMB','physics',2024,'authored','What is 3+3?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"6\",\"inline\":[]}}]','a','algebra',NULL,NULL,NULL,2.0,3)",
+            "INSERT INTO questions VALUES ('q2','JAMB','physics',2024,'authored','What is 3+3?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"6\",\"inline\":[]}}]','a','algebra',NULL,NULL,NULL,2.0,3,'h2')",
             (),
         )
         .await
         .expect("insert q2");
         conn.execute(
-            "INSERT INTO questions VALUES ('q3','WAEC','physics',2025,'past_paper','What is 50% of 10?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"5\",\"inline\":[]}}]','a',NULL,NULL,NULL,NULL,1.0,1)",
+            "INSERT INTO questions VALUES ('q3','WAEC','physics',2025,'past_paper','What is 50% of 10?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"5\",\"inline\":[]}}]','a',NULL,NULL,NULL,NULL,1.0,1,'h3')",
             (),
         )
         .await
@@ -1273,7 +1630,7 @@ mod tests {
             .await
             .expect("connect")
             .execute(
-                "INSERT INTO questions VALUES ('bad','JAMB','physics',2025,'past_paper','t','[]','not-json','a',NULL,NULL,NULL,NULL,1.0,1)",
+                "INSERT INTO questions VALUES ('bad','JAMB','physics',2025,'past_paper','t','[]','not-json','a',NULL,NULL,NULL,NULL,1.0,1,'hbad')",
                 (),
             )
             .await
@@ -1551,5 +1908,187 @@ mod tests {
             .await
             .expect_err("non-0/1 flag fails loudly");
         assert!(matches!(err, crate::error::AppError::Upstream(_)));
+    }
+
+    #[tokio::test]
+    async fn question_verified_derives_from_the_log() {
+        let db = local_exams_db().await;
+        let s = crate::state::DbState::detached(db);
+        // q1 carries a human pass against its current content hash.
+        let q1 = get_question(&s, "q1").await.expect("q1").expect("present");
+        assert!(q1.verified);
+        // q2 has no verification at all.
+        let q2 = get_question(&s, "q2").await.expect("q2").expect("present");
+        assert!(!q2.verified);
+        // q3's only pass is against a stale hash, so the edit voids it.
+        let q3 = get_question(&s, "q3").await.expect("q3").expect("present");
+        assert!(!q3.verified);
+    }
+
+    #[tokio::test]
+    async fn verified_filter_agrees_with_the_flag() {
+        let db = local_exams_db().await;
+        let s = crate::state::DbState::detached(db);
+        let only = QuestionFilter {
+            verified: Some(true),
+            ..Default::default()
+        };
+        let (rows, total) = list_questions(&s, &only, 1, 50)
+            .await
+            .expect("verified filter");
+        assert_eq!(total, 1);
+        assert_eq!(rows[0].id, "q1");
+        assert!(rows[0].verified);
+        let unverified = QuestionFilter {
+            verified: Some(false),
+            ..Default::default()
+        };
+        let (rows, total) = list_questions(&s, &unverified, 1, 50)
+            .await
+            .expect("unverified filter");
+        assert_eq!(total, 2);
+        assert!(rows.iter().all(|q| !q.verified));
+    }
+
+    #[tokio::test]
+    async fn a_later_human_fail_voids_an_earlier_pass() {
+        let db = local_exams_db().await;
+        db.connect()
+            .await
+            .expect("connect")
+            .execute(
+                "INSERT INTO verifications VALUES ('v9','q1','human','fail','[\"answer\",\"explanation\"]','review',NULL,'h1','2026-02-01T00:00:00Z')",
+                (),
+            )
+            .await
+            .expect("insert fail");
+        let s = crate::state::DbState::detached(db);
+        let q1 = get_question(&s, "q1").await.expect("q1").expect("present");
+        assert!(!q1.verified, "a later fail must void the earlier pass");
+        let only = QuestionFilter {
+            verified: Some(true),
+            ..Default::default()
+        };
+        let (_, total) = list_questions(&s, &only, 1, 50).await.expect("filter");
+        assert_eq!(total, 0);
+    }
+
+    #[tokio::test]
+    async fn novel_question_verified_derives_from_the_log() {
+        let db = local_exams_db().await;
+        let s = crate::state::DbState::detached(db);
+        let rows = list_novel_questions(&s, "lekki", None)
+            .await
+            .expect("novel questions");
+        let nq1 = rows.iter().find(|q| q.id == "nq1").expect("nq1");
+        assert!(nq1.verified);
+        let nq2 = rows.iter().find(|q| q.id == "nq2").expect("nq2");
+        assert!(!nq2.verified);
+    }
+
+    #[tokio::test]
+    async fn get_exam_maps_row_and_missing_is_none() {
+        let db = local_exams_db().await;
+        let s = crate::state::DbState::detached(db);
+        let jamb = get_exam(&s, "JAMB").await.expect("query").expect("present");
+        assert_eq!(jamb.name, "Joint Admissions");
+        assert_eq!(jamb.countries, vec!["NG"]);
+        assert_eq!(jamb.duration_minutes, Some(120));
+        assert!(get_exam(&s, "WASSCE-2099").await.expect("query").is_none());
+    }
+
+    #[tokio::test]
+    async fn requirements_are_country_scoped() {
+        let db = local_exams_db().await;
+        let s = crate::state::DbState::detached(db);
+        let ng = list_requirements(&s, "JAMB", "NG").await.expect("query");
+        assert_eq!(ng.len(), 2);
+        assert_eq!(ng[0].group, "core");
+        assert_eq!(ng[0].min_select, 1);
+        assert_eq!(ng[0].subjects, vec!["use-of-english"]);
+        let gh = list_requirements(&s, "JAMB", "GH").await.expect("query");
+        assert!(gh.is_empty(), "JAMB states nothing for GH");
+    }
+
+    #[tokio::test]
+    async fn subject_stats_count_verified_under_the_same_rule() {
+        let db = local_exams_db().await;
+        let s = crate::state::DbState::detached(db);
+        let jamb = subject_stats(&s, "JAMB", None).await.expect("query");
+        // physics holds q1 (verified, 1.0) and q2 (unverified, 2.0).
+        let physics = jamb.get("physics").expect("physics has rows");
+        assert_eq!(physics.held, 2);
+        assert_eq!(physics.verified, 1);
+        assert_eq!(physics.distinct_marks, 2);
+        // The same subject under WAEC holds only q3, verified against a stale hash.
+        let waec = subject_stats(&s, "WAEC", None).await.expect("query");
+        let physics = waec.get("physics").expect("waec physics");
+        assert_eq!(physics.held, 1);
+        assert_eq!(physics.verified, 0, "a stale hash is not verified");
+    }
+
+    #[tokio::test]
+    async fn a_country_scope_restricts_nothing_while_no_topic_is_listed() {
+        let db = local_exams_db().await;
+        let s = crate::state::DbState::detached(db);
+        // topic_countries is empty, so a scope is a no-op, not an exclusion.
+        let unscoped = subject_stats(&s, "JAMB", None).await.expect("query");
+        let scoped = subject_stats(&s, "JAMB", Some("GH")).await.expect("query");
+        assert_eq!(
+            unscoped.get("physics").map(|p| p.held),
+            scoped.get("physics").map(|p| p.held)
+        );
+    }
+
+    #[tokio::test]
+    async fn get_subject_maps_row_and_missing_is_none() {
+        let db = local_exams_db().await;
+        let s = crate::state::DbState::detached(db);
+        let subject = get_subject(&s, "JAMB", "physics")
+            .await
+            .expect("query")
+            .expect("present");
+        assert_eq!(subject.name, "Physics");
+        assert!(!subject.is_compulsory);
+        assert!(get_subject(&s, "JAMB", "nope")
+            .await
+            .expect("query")
+            .is_none());
+    }
+
+    #[tokio::test]
+    async fn subject_rows_returns_the_whole_pool_verified_flag_and_all() {
+        let db = local_exams_db().await;
+        let s = crate::state::DbState::detached(db);
+        let rows = subject_rows(&s, "JAMB", "physics", None)
+            .await
+            .expect("query");
+        assert_eq!(rows.len(), 2, "no page cap: the whole pool");
+        let q1 = rows.iter().find(|q| q.id == "q1").expect("q1");
+        assert!(q1.verified);
+        let q2 = rows.iter().find(|q| q.id == "q2").expect("q2");
+        assert!(!q2.verified);
+    }
+
+    #[tokio::test]
+    async fn list_syllabus_groups_subtopics_under_their_topic() {
+        let db = local_exams_db().await;
+        let s = crate::state::DbState::detached(db);
+        let topics = list_syllabus(&s, "JAMB", "mathematics")
+            .await
+            .expect("query");
+        let geometry = topics
+            .iter()
+            .find(|t| t.slug == "geometry")
+            .expect("geometry");
+        assert_eq!(geometry.subtopics, vec!["geometry-basics"]);
+        let algebra = topics
+            .iter()
+            .find(|t| t.slug == "algebra")
+            .expect("algebra");
+        assert!(
+            algebra.subtopics.is_empty(),
+            "a topic with no subtopics is carried, not dropped"
+        );
     }
 }
