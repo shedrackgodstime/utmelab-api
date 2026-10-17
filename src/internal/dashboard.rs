@@ -27,6 +27,13 @@ pub async fn status(State(s): State<DbState>, AdminUser(_): AdminUser) -> Json<S
         pulls_applied: m.pulls_applied,
         pulls_empty: m.pulls_empty,
         last_pull_unix: m.last_pull_unix,
+        requests_ok: m.requests_ok,
+        requests_client_error: m.requests_client_error,
+        requests_server_error: m.requests_server_error,
+        in_flight: m.in_flight,
+        latency_fast: m.latency_fast,
+        latency_ok: m.latency_ok,
+        latency_slow: m.latency_slow,
     })
 }
 

@@ -15,6 +15,16 @@ pub struct ServiceStatus {
     pub pulls_empty: u64,
     /// Unix seconds of the last pull attempt (0 = none yet).
     pub last_pull_unix: u64,
+    /// Request telemetry since boot; the two probe routes are excluded so
+    /// health checks cannot drown out real traffic. Latency buckets are
+    /// fast < 25ms, ok < 100ms, slow >= 100ms.
+    pub requests_ok: u64,
+    pub requests_client_error: u64,
+    pub requests_server_error: u64,
+    pub in_flight: u64,
+    pub latency_fast: u64,
+    pub latency_ok: u64,
+    pub latency_slow: u64,
 }
 
 #[derive(Serialize)]

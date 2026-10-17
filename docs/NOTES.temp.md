@@ -9,6 +9,9 @@ highest value first. Delete an entry when it is closed.
    `verified` predicate. Optimize only if it matters at the expected rate.
 2. Consider an adaptive pull interval (longer when the replica is idle) if one
    request per `SYNC_SECS` is judged too chatty.
+3. Capacity pass: request telemetry now exists, so run one load test against
+   `questions` and `papers` and tune `DB_MAX_CONCURRENT` and `WORKER_THREADS`
+   against measured throughput and tail latency instead of guesswork.
 
 ## Done
 
@@ -29,6 +32,10 @@ highest value first. Delete an entry when it is closed.
   200 only once the replica is open and its contract is trusted. A proxy routes
   on `/ready`, so a fail-closed instance leaves rotation instead of answering
   503 to users.
+- Request telemetry rides on the admin status: totals by status class, an
+  in-flight gauge, and three latency buckets (<25ms, <100ms, >=100ms). Atomics
+  only, no DB and no gate; probe routes are excluded so health checks cannot
+  drown out real traffic, and 408 counts server-side because it is our timeout.
 
 ## Decisions worth keeping
 

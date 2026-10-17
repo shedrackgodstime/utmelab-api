@@ -51,6 +51,48 @@ async fn contract_guard(
     next.run(request).await
 }
 
+/// Latency bucket edges in milliseconds for request telemetry.
+const FAST_MS: u64 = 25;
+const OK_MS: u64 = 100;
+
+/// Request telemetry: status-class counts, an in-flight gauge, and three
+/// latency buckets. Atomics only, so it costs a few increments per request and
+/// nothing while idle. Outermost layer, so it times what a client actually
+/// waits for; the two probes are skipped so health checks cannot drown out
+/// real traffic.
+async fn telemetry(State(state): State<AppState>, request: Request<Body>, next: Next) -> Response {
+    use std::sync::atomic::Ordering::Relaxed;
+
+    if matches!(request.uri().path(), "/health" | "/ready") {
+        return next.run(request).await;
+    }
+    let m = &state.metrics;
+    m.in_flight.fetch_add(1, Relaxed);
+    let started = std::time::Instant::now();
+    let response = next.run(request).await;
+    m.in_flight.fetch_sub(1, Relaxed);
+
+    let status = response.status().as_u16();
+    // 408 is our own timeout: a capacity signal, not a client mistake.
+    if status >= 500 || status == 408 {
+        m.requests_server_error.fetch_add(1, Relaxed);
+    } else if status >= 400 {
+        m.requests_client_error.fetch_add(1, Relaxed);
+    } else {
+        m.requests_ok.fetch_add(1, Relaxed);
+    }
+    let ms = started.elapsed().as_millis() as u64;
+    let bucket = if ms < FAST_MS {
+        &m.latency_fast
+    } else if ms < OK_MS {
+        &m.latency_ok
+    } else {
+        &m.latency_slow
+    };
+    bucket.fetch_add(1, Relaxed);
+    response
+}
+
 fn span_for(request: &Request<Body>) -> tracing::Span {
     let id = request
         .headers()
@@ -74,6 +116,7 @@ pub fn router(state: AppState, cfg: &Config) -> Router {
             state.clone(),
             contract_guard,
         ));
+    let telemetry_state = state.clone();
     Router::new()
         .route(
             "/health",
@@ -96,10 +139,15 @@ pub fn router(state: AppState, cfg: &Config) -> Router {
             // JSON bomb dies at the edge, not in serde.
             axum::extract::DefaultBodyLimit::max(16 * 1024),
             ConcurrencyLimitLayer::new(cfg.concurrency_limit),
-            // Outermost by construction, so it is the net every route falls
-            // back on: a route that forgets its own budget still cannot run
-            // forever and hold a DB permit. Read routes layer 5s inside this.
+            // Outermost timeout by construction, so it is the net every route
+            // falls back on: a route that forgets its own budget still cannot
+            // run forever and hold a DB permit. Read routes layer 5s inside
+            // this. Telemetry sits above it and only observes.
             cfg.slow_timeout(),
+        ))
+        .layer(axum::middleware::from_fn_with_state(
+            telemetry_state,
+            telemetry,
         ))
 }
 
@@ -180,5 +228,53 @@ mod tests {
             .await
             .expect_err("no replica yet");
         assert!(matches!(err, AppError::DbUnavailable(_)));
+    }
+
+    async fn status_of(app: Router, uri: &'static str) -> axum::http::StatusCode {
+        app.oneshot(
+            Request::builder()
+                .uri(uri)
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("call")
+        .status()
+    }
+
+    #[tokio::test]
+    async fn router_wires_guard_and_telemetry() {
+        let st = state(true);
+        let metrics = Arc::clone(&st.metrics);
+        let app = crate::routes::router(st, &crate::config::Config::default());
+
+        assert_eq!(
+            status_of(app.clone(), "/health").await,
+            axum::http::StatusCode::OK
+        );
+        assert_eq!(
+            status_of(app.clone(), "/api/v1/meta/tables").await,
+            axum::http::StatusCode::UNAUTHORIZED
+        );
+        assert_eq!(
+            status_of(app, "/ready").await,
+            axum::http::StatusCode::SERVICE_UNAVAILABLE
+        );
+
+        let snap = metrics.snapshot();
+        assert_eq!(snap.requests_client_error, 1, "the 401 is counted once");
+        assert_eq!(snap.requests_ok, 0, "neither probe is counted");
+        assert_eq!(snap.in_flight, 0);
+        assert_eq!(snap.latency_fast + snap.latency_ok + snap.latency_slow, 1);
+    }
+
+    #[tokio::test]
+    async fn router_fails_closed_through_the_guard() {
+        let app = crate::routes::router(state(false), &crate::config::Config::default());
+        assert_eq!(
+            status_of(app.clone(), "/api/v1/meta/tables").await,
+            axum::http::StatusCode::SERVICE_UNAVAILABLE
+        );
+        assert_eq!(status_of(app, "/health").await, axum::http::StatusCode::OK);
     }
 }
