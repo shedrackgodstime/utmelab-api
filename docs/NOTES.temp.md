@@ -9,9 +9,10 @@ highest value first. Delete an entry when it is closed.
    `verified` predicate. Optimize only if it matters at the expected rate.
 2. Consider an adaptive pull interval (longer when the replica is idle) if one
    request per `SYNC_SECS` is judged too chatty.
-3. Capacity pass: request telemetry now exists, so run one load test against
-   `questions` and `papers` and tune `DB_MAX_CONCURRENT` and `WORKER_THREADS`
-   against measured throughput and tail latency instead of guesswork.
+3. Capacity pass: the gate itself is measured (flat throughput, see Decisions).
+   Remaining is the load model: run an HTTP load test against `questions` and
+   `papers` once a key exists, size `WORKER_THREADS` to the VPS vCPU count, and
+   set `DB_MAX_CONCURRENT` to expected peak concurrent DB work.
 4. Classify `turso::Error::Busy`/`BusySnapshot` as typed retryable errors before
    `upstream()` stringifies them, instead of text-matching in `is_busy`.
 5. Surface `stats()` (pending-change count, WAL size, last push time) read-only
@@ -72,6 +73,10 @@ highest value first. Delete an entry when it is closed.
   conflict retries instead of surfacing. The engine's Busy/BusySnapshot text is
   "database is busy"; a conflict is worded around "conflict", which the old
   matcher missed.
+- Session cookies are secure by default (`DEFAULT_COOKIE_SECURE = true`). The old
+  default was `false`, so a missing `COOKIE_SECURE` shipped a non-`Secure` admin
+  cookie. Now an unset variable fails closed; only an explicit `=0` opts out for
+  local http.
 
 ## Decisions worth keeping
 
@@ -92,6 +97,15 @@ highest value first. Delete an entry when it is closed.
 - The meta surface is deny-by-default: a table is visible only if it is named in
   `core::catalog::INTROSPECTABLE_TABLES`. A deny list fails open the moment a
   sensitive table is added; an allow list fails closed.
+- `DB_MAX_CONCURRENT` is a shedding/latency dial, not a throughput dial. Measured
+  flat ~1.1–1.4k ops/s at gates 4/8/16/32 on an offline replica: the engine's
+  rate is the ceiling. A smaller gate only sheds more (gate=8 answered 75% of 32
+  concurrent readers with 503 for the same throughput gate=16 got). Keep it equal
+  to the connection pool and tune it to expected peak concurrency; never treat it
+  as a performance knob.
+- Security settings default to safe: `COOKIE_SECURE` defaults on and the meta
+  allowlist denies by default, because a missing or typo'd variable must fail
+  closed, never downgrade.
 - No long poll. Pull on an interval and pool connections, so reads and writes
   never queue behind the sync engine's single IO worker.
 - Reads fail fast (5s), writes get cloud headroom (30s), and a global 30s net

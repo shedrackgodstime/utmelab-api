@@ -14,6 +14,10 @@ pub const DEFAULT_REPLICA_PATH: &str = "db/sync.db";
 /// reads and writes on the serving path never queue behind a pull.
 pub const DEFAULT_SYNC_SECS: u64 = 60;
 pub const DEFAULT_DB_MAX_CONCURRENT: usize = 16;
+/// Secure-by-default: a session cookie is only non-`Secure` when an operator
+/// explicitly sets `COOKIE_SECURE=0` for local http work. A typo or a missing
+/// variable must fail closed, never downgrade the cookie silently.
+pub const DEFAULT_COOKIE_SECURE: bool = true;
 pub const DEFAULT_READ_TIMEOUT_SECS: u64 = 5;
 pub const DEFAULT_WRITE_TIMEOUT_SECS: u64 = 30;
 /// Per-key request ceiling per minute on the public surfaces (`api` and
@@ -55,7 +59,7 @@ impl Default for Config {
             replica_path: DEFAULT_REPLICA_PATH.to_string(),
             sync_secs: DEFAULT_SYNC_SECS,
             db_max_concurrent: DEFAULT_DB_MAX_CONCURRENT,
-            cookie_secure: false,
+            cookie_secure: DEFAULT_COOKIE_SECURE,
             read_timeout_secs: DEFAULT_READ_TIMEOUT_SECS,
             write_timeout_secs: DEFAULT_WRITE_TIMEOUT_SECS,
             rate_limit_per_min: DEFAULT_RATE_LIMIT_PER_MIN,
@@ -228,7 +232,7 @@ mod tests {
         assert_eq!(c.port, DEFAULT_PORT);
         assert_eq!(c.worker_threads, DEFAULT_WORKER_THREADS);
         assert_eq!(c.replica_path, DEFAULT_REPLICA_PATH);
-        assert!(!c.cookie_secure);
+        assert!(c.cookie_secure, "secure must be the default, not opt-in");
     }
 
     #[test]

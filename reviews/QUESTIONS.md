@@ -61,13 +61,18 @@ may not carry over.
 The same note suggests 8 rather than 16. What is it set to on the VPS, and what
 was the reasoning for the value that was chosen?
 
-> **Answer.** 16 (`DEFAULT_DB_MAX_CONCURRENT`, and `.env` on this box). It is the
-> ceiling on concurrent DB work and the connection pool is sized to match it: 8
-> left reads queueing behind the pool on a small worker count, 16 keeps more
-> reads in flight without overrunning the sync engine's single IO worker that
-> pulls and pushes share. Tuned, not settled — the pending capacity pass will
-> confirm it under load. I cannot read the VPS value from here; it comes from the
-> same `.env` shape.
+> **Answer.** 16, and the change to make is to leave it — not to drop it to 8.
+> I measured it (in-process, offline replica, gates of 4/8/16/32, 8–400
+> concurrent readers): throughput is flat at ~1.1–1.4k ops/s across every gate,
+> so the engine's rate is the ceiling, not the semaphore. The gate is therefore
+> not a throughput dial; it trades *shedding* against *per-request latency*. At 32
+> concurrent readers, gate=8 answers **75% of them with 503** for exactly the
+> throughput gate=16 gets — it only sheds more. Dropping to 8 would be worse, so
+> the prototype's note points the wrong way. 16 also keeps the gate equal to the
+> connection pool (they must not drift). What is still unmeasured is the *load
+> model*: the right number is the expected peak concurrent DB-bound requests, and
+> the capacity pass should pin it once that is known. Raising it further trades
+> latency, never throughput.
 
 ## 4. Turso internal tables
 
@@ -183,10 +188,16 @@ default?
 Is `COOKIE_SECURE=1` set in the production systemd environment? If Caddy is the
 only path in, that closes it.
 
-> **Answer.** I cannot confirm the VPS from here. Locally `COOKIE_SECURE` is
-> unset (false) and `.env.example` ships `0`. Flagging it as a deployment action,
-> not a code fix: set `COOKIE_SECURE=1` in the systemd environment, since the code
-> only sets `Secure` when that is on. Caddy-only ingress closes the other half.
+> **Answer.** The default was the bug, not the VPS. `COOKIE_SECURE` defaulted to
+> `false`, so a missing or mistyped variable silently shipped an insecure session
+> cookie — fail-open on a security setting. Fixed at the source: the default is
+> now secure (`DEFAULT_COOKIE_SECURE = true`), `.env.example` documents `1`, and
+> local http dev opts out explicitly with `COOKIE_SECURE=0`. An unset variable in
+> production now fails closed instead of downgrading. I considered the `__Host-`
+> cookie prefix (browser-enforced Secure + `Path=/` + no Domain, which kills
+> subdomain cookie-tossing) and left it out: with a single origin and no
+> subdomains it buys little and would break the http dev loop. Revisit if a
+> subdomain ever serves the app.
 
 ## 10. Instance count
 
@@ -235,10 +246,13 @@ Is there a design doc, an ADR set, or a roadmap outside this repo that states
 intent for what is not built yet? Several calls would read differently against
 a stated plan.
 
-> **Answer.** No external design doc, ADR set, or roadmap. The in-repo record is
-> `docs/NOTES.temp.md` (backlog + decisions) and `reviews/` (this file);
-> `prototyping/` is the pre-`src/` baseline. If a plan is wanted, the honest move
-> is to write it down here rather than assume one exists.
+> **Answer.** No external design doc, ADR set, or roadmap, and I would not add
+> one. Decisions belong next to the code they constrain, which is what
+> `docs/NOTES.temp.md` (backlog + decisions) already is; a separate ADR tree
+> duplicates and then rots. The one thing wrong with the current setup is the
+> name: `.temp` says "ephemeral" about a file holding permanent decisions, so the
+> fix is to drop `.temp`, not to create more docs. `prototyping/` is the pre-`src/`
+> baseline; `reviews/` is this review.
 
 ---
 
