@@ -21,6 +21,7 @@ pub fn routes() -> Router<AppState> {
     Router::new()
         .route("/mcp/tools/revoke_key", post(revoke_key))
         .route("/mcp/tools/unrevoke_key", post(unrevoke_key))
+        .route("/mcp/tools/rotate_key", post(rotate_key))
         .route("/mcp/tools/file_report", post(reports::file))
         .route(
             "/mcp/tools/assemble_paper/{exam}/{subject}",
@@ -48,6 +49,18 @@ pub async fn unrevoke_key(
     Json(b): Json<core::models::PrefixBody>,
 ) -> Result<Json<core::models::Applied>, AppError> {
     apply(&s, &auth, &b.prefix, false).await
+}
+
+/// Rotate an admin key: mints a replacement, revokes the old prefix. The
+/// actor is the presenting key, so the audit line names it.
+pub async fn rotate_key(
+    State(s): State<DbState>,
+    AuthedKey(auth): AuthedKey,
+    Json(b): Json<core::models::PrefixBody>,
+) -> Result<Json<core::models::NewKey>, AppError> {
+    auth.require(SCOPE_MANAGE_KEYS)?;
+    let key = store::accounts::rotate_key(&s, &b.prefix, &format!("key:{}", auth.key_id)).await?;
+    Ok(Json(core::models::NewKey { key }))
 }
 
 /// The body both revoke tools share; they differ only by the flag. The actor

@@ -52,21 +52,39 @@ mod tests {
         crate::routes::router(state(db), &crate::config::Config::default())
     }
 
-    /// MCP mirrors HTTP by construction: each pair shares one handler, so this
-    /// proves the wiring points both at it, not that two implementations agree.
+    /// MCP mirrors HTTP by construction: every HTTP read has an MCP resource
+    /// twin at `/mcp/resources/<tail>`. Deriving the twin from the HTTP read
+    /// list and comparing status + body proves the wiring points both at the
+    /// same handler — a read added without its resource fails here.
     #[tokio::test]
     async fn mcp_resources_answer_what_http_answers() {
         let app = seeded().await;
-        for (http, mcp) in [
-            ("/api/v1/exams", "/mcp/resources/exams"),
-            ("/api/v1/meta/tables", "/mcp/resources/meta/tables"),
-            ("/api/v1/keys/me", "/mcp/resources/keys/me"),
-            ("/api/v1/questions", "/mcp/resources/questions"),
-        ] {
-            let (hs, hv) = call(app.clone(), "GET", http, Some("reader.secret"), None).await;
-            let (ms, mv) = call(app.clone(), "GET", mcp, Some("reader.secret"), None).await;
-            assert_eq!(hs, ms, "status for {http} vs {mcp}");
-            assert_eq!(hv, mv, "body for {http} vs {mcp}");
+        let http_reads: &[(&str, &str)] = &[
+            ("GET", "/api/v1/exams"),
+            ("GET", "/api/v1/exams/JAMB/subjects"),
+            ("GET", "/api/v1/exams/JAMB/papers"),
+            ("GET", "/api/v1/subjects/JAMB/physics"),
+            ("GET", "/api/v1/subjects/JAMB/physics/syllabus"),
+            ("GET", "/api/v1/subjects/JAMB/physics/coverage"),
+            ("GET", "/api/v1/topics/JAMB/physics/mechanics"),
+            ("GET", "/api/v1/blueprints/JAMB/physics"),
+            ("GET", "/api/v1/passages/p1"),
+            ("GET", "/api/v1/novels"),
+            ("GET", "/api/v1/novels/lekki"),
+            ("GET", "/api/v1/novels/lekki/questions"),
+            ("GET", "/api/v1/questions"),
+            ("GET", "/api/v1/questions/q1"),
+            ("GET", "/api/v1/keys/me"),
+            ("GET", "/api/v1/meta/tables"),
+            ("GET", "/api/v1/meta/rows/exams"),
+        ];
+        for (method, http) in http_reads {
+            let tail = http.strip_prefix("/api/v1/").expect("an api/v1 path");
+            let mcp = format!("/mcp/resources/{tail}");
+            let (hs, hv) = call(app.clone(), method, http, Some("reader.secret"), None).await;
+            let (ms, mv) = call(app.clone(), method, &mcp, Some("reader.secret"), None).await;
+            assert_eq!(hs, ms, "status for {http} vs {mcp}: {hs} vs {ms}");
+            assert_eq!(hv, mv, "body for {http} vs {mcp}: {hv} vs {mv}");
         }
     }
 
@@ -94,5 +112,62 @@ mod tests {
         .await;
         assert_eq!(hs, StatusCode::FORBIDDEN);
         assert_eq!(ms, hs, "the tool must gate like the route");
+    }
+
+    /// MCP-only admin tools: `rotate_key` mounts `store::accounts::rotate_key`.
+    /// An admin key rotates; a read key is refused.
+    #[tokio::test]
+    async fn mcp_rotate_key_tool() {
+        // App with a reader key and an admin key, plus a key to rotate.
+        let app = {
+            let db = replica().await;
+            let conn = connect(&db).await;
+            api_schema(&conn).await;
+            issue_key(&conn, "reader.secret", "commercial", "read:catalog", false).await;
+            issue_key(&conn, "admin.secret", "admin", "manage:keys", false).await;
+            issue_key(
+                &conn,
+                "to_rotate.secret",
+                "commercial",
+                "read:catalog",
+                false,
+            )
+            .await;
+            crate::routes::router(state(db), &crate::config::Config::default())
+        };
+
+        // A read key cannot rotate.
+        let (ms, _) = call(
+            app.clone(),
+            "POST",
+            "/mcp/tools/rotate_key",
+            Some("reader.secret"),
+            Some(r#"{"prefix":"to_rotate"}"#),
+        )
+        .await;
+        assert_eq!(ms, StatusCode::FORBIDDEN, "read key cannot rotate");
+
+        // An unknown prefix is not found.
+        let (ms, _) = call(
+            app.clone(),
+            "POST",
+            "/mcp/tools/rotate_key",
+            Some("admin.secret"),
+            Some(r#"{"prefix":"ghost"}"#),
+        )
+        .await;
+        assert_eq!(ms, StatusCode::NOT_FOUND, "unknown prefix is not found");
+
+        // A valid rotate hits the offline push: 502 upstream, same as every
+        // write in the test harness. The store test covers the local commit.
+        let (ms, _) = call(
+            app,
+            "POST",
+            "/mcp/tools/rotate_key",
+            Some("admin.secret"),
+            Some(r#"{"prefix":"to_rotate"}"#),
+        )
+        .await;
+        assert_eq!(ms, StatusCode::BAD_GATEWAY, "push fails offline");
     }
 }
