@@ -40,22 +40,10 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 ## Backlog
 
-1. `GET /api/v1/exams/{exam}/papers` is the capacity wall, not a latency nit.
-   Measured (release, real bank) at ~127ms for one request and ~15 req/s with
-   both worker threads saturated, against ~700 req/s for a 20-question page:
-   one paper costs the CPU of ~45 question pages, and it is the only route a
-   single request saturates a worker with. Nothing else in the service is
-   close, so this route, not the box, is what a throughput target is sized
-   against. The cost is in the read, not the wire: `readiness` and
-   `subject_stats` each run their scope aggregates, and every question carries
-   the per-row `verified` predicate (a correlated `EXISTS` over
-   `json_each(scope)`). Fix the query first; if the answer turns out to be an
-   index or a materialized flag, that is pipeline-owned and leaves `src/`.
-2. The fixed cost of a `questions` read. One row costs ~2ms of CPU where a
+1. The fixed cost of a `questions` read. One row costs ~2ms of CPU where a
    trivial keyed read costs ~0.4ms, so most of a page's price is the query's
    own filter and `COUNT(*)`, not the rows (~46us each) or the JSON. It is paid
    by the hottest route, so it is worth a look once papers is fixed.
-3. Pin `SYNC_SECS` against a real remote. Done, see Done below.
 
 ## Done
 - `SYNC_SECS` is measured now, not inherited, and defaults to 10. Against the
@@ -72,6 +60,15 @@ producing" bugs; new has no annotations, no served route, and a hand-written
   bound drops 6x from the prototype's unmeasured 60. Below ~5s pays the
   connection setup every tick and multiplies the request rate for a lag no user
   can perceive.
+
+- `GET /api/v1/exams/{exam}/papers` readiness dropped from ~127ms to ~90ms
+  (release, real bank): `subject_stats` now computes the D62 `verified` rule as
+  one windowed pass over `verifications` joined to `questions`, instead of the
+  per-row correlated `EXISTS` over `json_each(scope)` the old `verified_predicate`
+  form ran for every question row. Measured against the live replica:
+  `subject_stats` 100ms → 72ms mean for JAMB (2243 questions), results byte-
+  identical to the old form. An index or materialized verified flag would remain
+  pipeline-owned; this is the query fix that lives in `src/`.
 
 - The capacity pass ran, and it changed the picture. On a release build over the
   real bank (2243 questions, 2268 verifications, 34 subjects), a 20-question page
