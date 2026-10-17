@@ -1123,10 +1123,12 @@ pub async fn fetch_rows(
         async move {
             let sql = format!("SELECT * FROM \"{table}\" LIMIT {limit}");
             let mut rows = conn.query(&sql, ()).await.map_err(upstream)?;
+            // The names come from the statement, not from a row, so an empty
+            // table still states its shape instead of an empty header.
+            let cols = rows.column_names();
             let mut out: Vec<Vec<String>> = Vec::new();
-            let mut width = 0;
             while let Some(row) = rows.next().await.map_err(upstream)? {
-                width = row.column_count();
+                let width = row.column_count();
                 let mut r = Vec::with_capacity(width);
                 for i in 0..width {
                     let v = row.get_value(i).map_err(upstream)?;
@@ -1140,10 +1142,7 @@ pub async fn fetch_rows(
                 }
                 out.push(r);
             }
-            Ok(crate::core::models::RowPage {
-                cols: (0..width).map(|i| format!("c{i}")).collect(),
-                rows: out,
-            })
+            Ok(crate::core::models::RowPage { cols, rows: out })
         }
     })
     .await

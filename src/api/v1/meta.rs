@@ -106,11 +106,44 @@ mod tests {
         )
         .await;
         assert_eq!(status, StatusCode::OK);
-        assert_eq!(page["cols"].as_array().expect("cols").len(), 8);
+        let cols: Vec<&str> = page["cols"]
+            .as_array()
+            .expect("cols")
+            .iter()
+            .map(|c| c.as_str().expect("name"))
+            .collect();
+        assert_eq!(
+            cols,
+            vec![
+                "code",
+                "name",
+                "countries",
+                "status",
+                "has_full_paper",
+                "subjects_required",
+                "duration_minutes",
+                "rules",
+            ],
+            "the dump states the real column names, not placeholders"
+        );
         let rows = page["rows"].as_array().expect("rows");
         assert_eq!(rows.len(), 1);
         assert_eq!(rows[0].as_array().expect("row").len(), 8);
         assert_eq!(rows[0][0], "JAMB");
+
+        // An empty table still states its shape: the names come from the
+        // statement, not from a row.
+        let (status, empty) = call(
+            app.clone(),
+            "GET",
+            "/api/v1/meta/rows/subjects",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK);
+        assert_eq!(empty["cols"].as_array().expect("cols").len(), 5);
+        assert_eq!(empty["rows"].as_array().expect("rows").len(), 0);
 
         // Off the allowlist, and absent entirely, both answer 404 so the
         // surface cannot be used to probe for names.

@@ -55,6 +55,11 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 ## Done
 
+- `meta/rows` states the real column names. The dump returned `c0`, `c1`, ...
+  as a placeholder header, which made the endpoint useless as old's `audit-db`
+  replacement. The names now come from the statement (so an empty table still
+  states its shape, not an empty header), aligned to each row as before, and a
+  test pins the `exams` names and the empty-table case.
 - The admin status now carries the engine's own sync figures, read-only:
   `sync` holds `cdc_operations`, both WAL sizes, last pull/push unix (null until
   that direction has synced), the revision, and network bytes. A field is
