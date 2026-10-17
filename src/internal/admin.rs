@@ -5,7 +5,11 @@
 use axum::{extract::State, Json};
 
 use crate::{
-    auth::session::AdminUser, core::models::ServiceStatus, error::AppError, state::DbState, store,
+    auth::session::AdminUser,
+    core::models::{Applied, NewKey, PrefixBody, ServiceStatus},
+    error::AppError,
+    state::DbState,
+    store,
 };
 
 #[derive(serde::Deserialize)]
@@ -48,17 +52,17 @@ pub async fn set_role(
     State(s): State<DbState>,
     AdminUser(u): AdminUser,
     Json(b): Json<RoleBody>,
-) -> Result<Json<serde_json::Value>, AppError> {
+) -> Result<Json<Applied>, AppError> {
     let found = store::accounts::set_user_role(&s, &b.username, &b.role, &u).await?;
-    Ok(Json(serde_json::json!({"ok": found})))
+    Ok(Json(Applied { ok: found }))
 }
 
 pub async fn create_admin_key(
     State(s): State<DbState>,
     AdminUser(u): AdminUser,
-) -> Result<Json<serde_json::Value>, AppError> {
-    let full = store::accounts::create_admin_key(&s, &u).await?;
-    Ok(Json(serde_json::json!({"key": full})))
+) -> Result<Json<NewKey>, AppError> {
+    let key = store::accounts::create_admin_key(&s, &u).await?;
+    Ok(Json(NewKey { key }))
 }
 
 pub async fn list_keys(
@@ -71,17 +75,26 @@ pub async fn list_keys(
 pub async fn revoke(
     State(s): State<DbState>,
     AdminUser(u): AdminUser,
-    Json(b): Json<crate::core::models::PrefixBody>,
-) -> Result<Json<serde_json::Value>, AppError> {
-    let found = store::accounts::set_revoked(&s, &b.prefix, true, &u).await?;
-    Ok(Json(serde_json::json!({"ok": found})))
+    Json(b): Json<PrefixBody>,
+) -> Result<Json<Applied>, AppError> {
+    apply(s, u, b.prefix, true).await
 }
 
 pub async fn unrevoke(
     State(s): State<DbState>,
     AdminUser(u): AdminUser,
-    Json(b): Json<crate::core::models::PrefixBody>,
-) -> Result<Json<serde_json::Value>, AppError> {
-    let found = store::accounts::set_revoked(&s, &b.prefix, false, &u).await?;
-    Ok(Json(serde_json::json!({"ok": found})))
+    Json(b): Json<PrefixBody>,
+) -> Result<Json<Applied>, AppError> {
+    apply(s, u, b.prefix, false).await
+}
+
+/// The body both revoke routes share; they differ only by the flag.
+async fn apply(
+    s: DbState,
+    actor: String,
+    prefix: String,
+    revoked: bool,
+) -> Result<Json<Applied>, AppError> {
+    let ok = store::accounts::set_revoked(&s, &prefix, revoked, &actor).await?;
+    Ok(Json(Applied { ok }))
 }

@@ -67,8 +67,7 @@ pub async fn questions(
 ) -> Result<Json<core::models::NovelQuestionPage>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
     let with_explanation = f.include_explanation.unwrap_or(false);
-    let (page, per_page) =
-        core::catalog::page_bounds(f.page.unwrap_or(1), f.per_page.unwrap_or(50));
+    let (page, per_page) = core::catalog::page_query(f.page, f.per_page);
     let all = store::catalog::list_novel_questions(&s, &id, f.chapter).await?;
     if all.is_empty() && store::catalog::get_novel_doc(&s, &id).await?.is_none() {
         return Err(AppError::NotFound);

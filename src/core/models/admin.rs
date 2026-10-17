@@ -51,3 +51,26 @@ pub struct KeyInfo {
     pub admin: bool,
     pub scopes: Vec<String>,
 }
+
+/// The receipt for a state-changing key or role call. `ok` reports whether
+/// the operation matched anything: deleting a key you do not own is `false`,
+/// not an error.
+#[derive(Serialize)]
+pub struct Applied {
+    pub ok: bool,
+}
+
+/// A freshly minted key, in plaintext and only once. The table keeps the
+/// hash alone, so this response cannot be replayed.
+#[derive(Serialize)]
+pub struct NewKey {
+    pub key: String,
+}
+
+/// A signed-in session. The token rides in the `Set-Cookie` header; the body
+/// confirms it and names the role.
+#[derive(Serialize)]
+pub struct SignedIn {
+    pub ok: bool,
+    pub role: String,
+}

@@ -94,13 +94,27 @@ producing" bugs; new has no annotations, no served route, and a hand-written
    cannot run against an offline replica: only reads and the pre-write guards are
    covered today. Add a mutation test against a real replica (or a stubbed push)
    to cover key create/delete/revoke, role change, and report filing end to end.
-7. The dashboard and mcp surfaces still answer with ad-hoc `serde_json::json!`
-   (`{"key": ...}`, `{"ok": ...}`); the typed-response idiom is stated for
-   `api/v1` only. Give them `core::models::admin` shapes with the same JSON
-   keys, so the idiom holds across the service.
 
 ## Done
 
+- One response idiom now holds across the whole service. The dashboard, admin,
+  and mcp surfaces answered `{"ok": ...}` and `{"key": ...}` through eleven ad-hoc
+  `serde_json::json!` values; they now return `core::models::admin::{Applied,
+  NewKey, SignedIn}`, so the typed-response rule stated for `api/v1` is the rule
+  everywhere and no module spells a JSON object by hand. The revoke/unrevoke pair
+  on both surfaces was the same handler twice; each now delegates to one private
+  body that differs only by the flag.
+- The store's column decoders are one rule, not six. `opt_u8`/`opt_u16`/`opt_u32`
+  and `req_u8`/`req_u16`/`req_u32` were the same match over one integer variant,
+  with per-caller error text ("exam count column…", "column out of u16 range…")
+  and an unchecked `as` cast for `u32`; they are now `opt_int::<T>`/`req_int::<T>`
+  over `TryFrom<i64>`, which names the column and range-checks every width. The
+  strict 0/1 bool check inlined in `map_novel` and `map_subject` now calls
+  `req_bool`, the one copy, so a `featured` or `is_compulsory` column that is
+  neither fails the same way `verified` does.
+- The default page size lives in one place. `page_query(Option, Option)` applies
+  the 1/50 defaults before `page_bounds` clamps, so `questions` and `novels` no
+  longer each write `unwrap_or(1)`/`unwrap_or(50)`.
 - Test scaffolding has one home. `src/testing.rs` (`cfg(test)`) defines the
   offline replica, the schema seeding, the key minter, the `AppState` assembly,
   and the one HTTP call. Before this, six fixtures each rebuilt the replica, four
@@ -263,7 +277,14 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 - One page envelope, one response idiom (typed `core::models`), one identity rule
   (`AuthedKey` plus `require(SCOPE_*)`, except an endpoint about the caller's own
   key). These are written at the top of `api/v1/mod.rs` so a new module follows
-  the rule, not the last file it read.
+  the rule, not the last file it read. The response idiom is service-wide, not
+  `api/v1`-only: the dashboard, admin, and mcp surfaces answer the same typed
+  `core::models::admin` shapes, never a hand-built `json!` object.
+- A column decoder is one rule per value class, not per column. `opt_int`/`req_int`
+  over `TryFrom<i64>` name the column in the error and range-check the width, so a
+  new integer column adds a call, not a helper; `req_bool` is the one strict 0/1
+  check, so a nullable bool (`opt_bool`, nonzero) and a non-null one read
+  differently on purpose rather than by whoever wrote each mapper.
 - Test the boundary once, not the same assertion per route. Identity is one
   extractor and one `require`, so it is swept once over the whole route inventory
   (`routes`) instead of copied into every module; a typed response is the

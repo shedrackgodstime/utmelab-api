@@ -68,6 +68,12 @@ pub fn page_bounds(page: u32, per_page: u32) -> (u32, u32) {
     (page.max(1), per_page.clamp(1, 200))
 }
 
+/// [`page_bounds`] over the raw query inputs: absent means page 1, 50 rows.
+/// The default page size lives here, once, so no module spells it itself.
+pub fn page_query(page: Option<u32>, per_page: Option<u32>) -> (u32, u32) {
+    page_bounds(page.unwrap_or(1), per_page.unwrap_or(50))
+}
+
 /// Build the served syllabus: attribute the subject's rows to their
 /// subtopics through the tree, count them, and roll the counts up. Pure —
 /// the store fetched the tree and the rows, this only judges them.
@@ -267,6 +273,14 @@ mod tests {
         assert_eq!(page_bounds(0, 0), (1, 1));
         assert_eq!(page_bounds(2, 50), (2, 50));
         assert_eq!(page_bounds(1, 500), (1, 200));
+    }
+
+    #[test]
+    fn page_query_defaults_then_clamps() {
+        assert_eq!(page_query(None, None), (1, 50));
+        assert_eq!(page_query(Some(3), None), (3, 50));
+        assert_eq!(page_query(None, Some(10)), (1, 10));
+        assert_eq!(page_query(Some(0), Some(0)), (1, 1));
     }
 
     fn subject_fixture() -> Subject {

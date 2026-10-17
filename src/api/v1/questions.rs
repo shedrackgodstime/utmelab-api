@@ -77,8 +77,7 @@ pub async fn list(
         verified: f.verified,
     };
     let with_explanation = f.include_explanation.unwrap_or(false);
-    let (page, per_page) =
-        core::catalog::page_bounds(f.page.unwrap_or(1), f.per_page.unwrap_or(50));
+    let (page, per_page) = core::catalog::page_query(f.page, f.per_page);
     let (questions, total_records) =
         store::catalog::list_questions(&s, &filter, page, per_page).await?;
     let rendered = questions

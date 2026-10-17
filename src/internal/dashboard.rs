@@ -8,6 +8,7 @@ use std::net::SocketAddr;
 
 use crate::{
     auth::session::{self, SessionUser},
+    core::models::{Applied, NewKey, PrefixBody, SignedIn},
     error::AppError,
     obs,
     state::DbState,
@@ -40,7 +41,7 @@ pub async fn login(
             let cookie = session::session_cookie_value(&token, s.cookie_secure);
             Ok((
                 [(axum::http::header::SET_COOKIE, cookie)],
-                Json(serde_json::json!({"ok": true, "role": role})),
+                Json(SignedIn { ok: true, role }),
             ))
         }
         Err(e) => {
@@ -67,7 +68,7 @@ pub async fn logout(
     }
     Ok((
         [(axum::http::header::SET_COOKIE, session::expired_cookie())],
-        Json(serde_json::json!({"ok": true})),
+        Json(Applied { ok: true }),
     ))
 }
 
@@ -81,16 +82,16 @@ pub async fn my_keys(
 pub async fn create_key(
     State(s): State<DbState>,
     SessionUser(u): SessionUser,
-) -> Result<Json<serde_json::Value>, AppError> {
-    let full = store::accounts::create_key(&s, &u).await?;
-    Ok(Json(serde_json::json!({"key": full})))
+) -> Result<Json<NewKey>, AppError> {
+    let key = store::accounts::create_key(&s, &u).await?;
+    Ok(Json(NewKey { key }))
 }
 
 pub async fn delete_key(
     State(s): State<DbState>,
     SessionUser(u): SessionUser,
-    Json(b): Json<crate::core::models::PrefixBody>,
-) -> Result<Json<serde_json::Value>, AppError> {
-    let deleted = store::accounts::delete_key(&s, &u, &b.prefix).await?;
-    Ok(Json(serde_json::json!({"ok": deleted})))
+    Json(b): Json<PrefixBody>,
+) -> Result<Json<Applied>, AppError> {
+    let ok = store::accounts::delete_key(&s, &u, &b.prefix).await?;
+    Ok(Json(Applied { ok }))
 }

@@ -44,33 +44,23 @@ fn opt_bool(v: turso::Value) -> Result<Option<bool>, AppError> {
     }
 }
 
-fn opt_u32(v: turso::Value) -> Result<Option<u32>, AppError> {
+/// Decode an integer column into `T`, naming the column in the error. The
+/// engine's integer is the only accepted variant, and the value must fit `T`:
+/// out of range is corruption, not something to wrap.
+fn req_int<T: TryFrom<i64>>(v: turso::Value, col: &'static str) -> Result<T, AppError> {
     match v {
-        turso::Value::Null => Ok(None),
-        turso::Value::Integer(n) => Ok(Some(n as u32)),
-        _ => Err(AppError::Upstream(
-            "exam count column is not an integer".to_string(),
-        )),
+        turso::Value::Integer(n) => {
+            T::try_from(n).map_err(|_| AppError::Upstream(format!("{col} out of range")))
+        }
+        _ => Err(AppError::Upstream(format!("{col} is not an integer"))),
     }
 }
 
-fn opt_u16(v: turso::Value) -> Result<Option<u16>, AppError> {
+/// As [`req_int`], but a null column is honestly absent.
+fn opt_int<T: TryFrom<i64>>(v: turso::Value, col: &'static str) -> Result<Option<T>, AppError> {
     match v {
         turso::Value::Null => Ok(None),
-        turso::Value::Integer(n) => u16::try_from(n)
-            .map(Some)
-            .map_err(|_| AppError::Upstream("column out of u16 range".to_string())),
-        _ => Err(AppError::Upstream("column is not an integer".to_string())),
-    }
-}
-
-fn opt_u8(v: turso::Value) -> Result<Option<u8>, AppError> {
-    match v {
-        turso::Value::Null => Ok(None),
-        turso::Value::Integer(n) => u8::try_from(n)
-            .map(Some)
-            .map_err(|_| AppError::Upstream("column out of u8 range".to_string())),
-        _ => Err(AppError::Upstream("column is not an integer".to_string())),
+        other => req_int(other, col).map(Some),
     }
 }
 
@@ -89,24 +79,6 @@ fn opt_string(v: turso::Value) -> Result<Option<String>, AppError> {
         _ => Err(AppError::Upstream(
             "question text column is not text".to_string(),
         )),
-    }
-}
-
-fn req_u16(v: turso::Value, col: &'static str) -> Result<u16, AppError> {
-    match v {
-        turso::Value::Integer(n) => {
-            u16::try_from(n).map_err(|_| AppError::Upstream(format!("{col} out of range")))
-        }
-        _ => Err(AppError::Upstream(format!("{col} is not an integer"))),
-    }
-}
-
-fn req_u8(v: turso::Value, col: &'static str) -> Result<u8, AppError> {
-    match v {
-        turso::Value::Integer(n) => {
-            u8::try_from(n).map_err(|_| AppError::Upstream(format!("{col} out of range")))
-        }
-        _ => Err(AppError::Upstream(format!("{col} is not an integer"))),
     }
 }
 
@@ -168,7 +140,7 @@ pub async fn list_blueprints(
                     topic: opt_string(row.get_value(3).map_err(upstream)?)?,
                     section: opt_string(row.get_value(4).map_err(upstream)?)?,
                     members: json_col(&members_raw, "blueprint.members")?,
-                    paper_size: req_u32(row.get_value(6).map_err(upstream)?, "blueprint.paper_size")?,
+                    paper_size: req_int::<u32>(row.get_value(6).map_err(upstream)?, "blueprint.paper_size")?,
                     pct: opt_f64(row.get_value(7).map_err(upstream)?, "blueprint.pct")?,
                     pct_low: opt_f64(row.get_value(8).map_err(upstream)?, "blueprint.pct_low")?,
                     pct_high: opt_f64(row.get_value(9).map_err(upstream)?, "blueprint.pct_high")?,
@@ -199,7 +171,7 @@ fn map_question(row: &turso::Row) -> Result<core::models::Question, AppError> {
         id: row.get(0).map_err(upstream)?,
         exam: row.get(1).map_err(upstream)?,
         subject: row.get(2).map_err(upstream)?,
-        year: req_u16(row.get_value(3).map_err(upstream)?, "question.year")?,
+        year: req_int::<u16>(row.get_value(3).map_err(upstream)?, "question.year")?,
         source: row.get(4).map_err(upstream)?,
         text: core::models::RichText {
             text: text_raw,
@@ -220,7 +192,7 @@ fn map_question(row: &turso::Row) -> Result<core::models::Question, AppError> {
             }
         },
         marks: req_f32(row.get_value(13).map_err(upstream)?, "question.marks")?,
-        difficulty: req_u8(row.get_value(14).map_err(upstream)?, "question.difficulty")?,
+        difficulty: req_int::<u8>(row.get_value(14).map_err(upstream)?, "question.difficulty")?,
         verified: req_bool(row.get_value(15).map_err(upstream)?, "question.verified")?,
     })
 }
@@ -420,7 +392,7 @@ fn map_passage(row: &turso::Row) -> Result<core::models::Passage, AppError> {
         id: row.get(0).map_err(upstream)?,
         exam: row.get(1).map_err(upstream)?,
         subject: row.get(2).map_err(upstream)?,
-        year: req_u16(row.get_value(3).map_err(upstream)?, "passage.year")?,
+        year: req_int::<u16>(row.get_value(3).map_err(upstream)?, "passage.year")?,
         kind: row.get(4).map_err(upstream)?,
         title: opt_string(row.get_value(5).map_err(upstream)?)?,
         author: opt_string(row.get_value(6).map_err(upstream)?)?,
@@ -439,17 +411,11 @@ fn map_novel(row: &turso::Row) -> Result<core::models::Novel, AppError> {
         id: row.get(0).map_err(upstream)?,
         title: row.get(1).map_err(upstream)?,
         author: row.get(2).map_err(upstream)?,
-        year_published: opt_u16(row.get_value(3).map_err(upstream)?)?,
+        year_published: opt_int(row.get_value(3).map_err(upstream)?, "novel.year_published")?,
         exam: row.get(4).map_err(upstream)?,
         year_prescribed: json_col::<Vec<u16>>(&ypres_raw, "novel.year_prescribed")?,
         category: row.get(6).map_err(upstream)?,
-        featured: {
-            let f: i64 = row.get(7).map_err(upstream)?;
-            if f != 0 && f != 1 {
-                return Err(AppError::Upstream("novel.featured not 0/1".to_string()));
-            }
-            f == 1
-        },
+        featured: req_bool(row.get_value(7).map_err(upstream)?, "novel.featured")?,
         synopsis: row.get(8).map_err(upstream)?,
         setting_place: row.get(9).map_err(upstream)?,
         setting_period: row.get(10).map_err(upstream)?,
@@ -515,7 +481,10 @@ fn map_novel_question(row: &turso::Row) -> Result<core::models::NovelQuestion, A
     let options_raw: String = row.get(4).map_err(upstream)?;
     Ok(core::models::NovelQuestion {
         id: row.get(0).map_err(upstream)?,
-        chapter_number: opt_u8(row.get_value(1).map_err(upstream)?)?,
+        chapter_number: opt_int(
+            row.get_value(1).map_err(upstream)?,
+            "novel_question.chapter_number",
+        )?,
         text: core::models::RichText {
             text: text_raw,
             inline: json_col(&inline_raw, "novel_question.inline")?,
@@ -574,7 +543,7 @@ pub async fn get_novel_doc(
                     opt_string(row.get_value(2).map_err(upstream)?)?;
                 let ke_raw: String = row.get(3).map_err(upstream)?;
                 chapters.push(core::models::NovelChapter {
-                    number: req_u8(row.get_value(0).map_err(upstream)?, "chapter.number")?,
+                    number: req_int::<u8>(row.get_value(0).map_err(upstream)?, "chapter.number")?,
                     title: row.get(1).map_err(upstream)?,
                     summary: summary_raw,
                     key_events: json_col(&ke_raw, "chapter.key_events")?,
@@ -715,13 +684,6 @@ pub async fn get_question(
     .await
 }
 
-fn req_u32(v: turso::Value, col: &'static str) -> Result<u32, AppError> {
-    match v {
-        turso::Value::Integer(n) => Ok(n as u32),
-        _ => Err(AppError::Upstream(format!("{col} is not an integer"))),
-    }
-}
-
 /// One topic by identity. `None` when absent — the handler, not the
 /// store, decides that means 404.
 pub async fn get_topic(
@@ -755,8 +717,8 @@ pub async fn get_topic(
                 subject: row.get(1).map_err(upstream)?,
                 exam: row.get(2).map_err(upstream)?,
                 name: row.get(3).map_err(upstream)?,
-                order: req_u32(row.get_value(4).map_err(upstream)?, "topic.order")?,
-                weight: req_u32(row.get_value(5).map_err(upstream)?, "topic.weight")?,
+                order: req_int::<u32>(row.get_value(4).map_err(upstream)?, "topic.order")?,
+                weight: req_int::<u32>(row.get_value(5).map_err(upstream)?, "topic.weight")?,
                 objectives: json_list(&objectives_raw, "topic.objectives")?,
             }))
         }
@@ -803,18 +765,15 @@ pub async fn target_exists(
 /// else fails loudly — a boolean column holding a 2 is corruption, not a
 /// false.
 fn map_subject(row: &turso::Row) -> Result<core::models::Subject, AppError> {
-    let compulsory: i64 = row.get(3).map_err(upstream)?;
-    if compulsory != 0 && compulsory != 1 {
-        return Err(AppError::Upstream(
-            "subject.is_compulsory not 0/1".to_string(),
-        ));
-    }
     Ok(core::models::Subject {
         slug: row.get(0).map_err(upstream)?,
         exam: row.get(1).map_err(upstream)?,
         name: row.get(2).map_err(upstream)?,
-        is_compulsory: compulsory == 1,
-        objective_paper_questions: opt_u32(row.get_value(4).map_err(upstream)?)?,
+        is_compulsory: req_bool(row.get_value(3).map_err(upstream)?, "subject.is_compulsory")?,
+        objective_paper_questions: opt_int(
+            row.get_value(4).map_err(upstream)?,
+            "subject.objective_paper_questions",
+        )?,
     })
 }
 
@@ -883,8 +842,11 @@ fn map_exam(row: &turso::Row) -> Result<core::models::Exam, AppError> {
         countries: json_list(&countries_raw, "exam.countries")?,
         status: row.get(3).map_err(upstream)?,
         has_full_paper: opt_bool(row.get_value(4).map_err(upstream)?)?,
-        subjects_required: opt_u32(row.get_value(5).map_err(upstream)?)?,
-        duration_minutes: opt_u32(row.get_value(6).map_err(upstream)?)?,
+        subjects_required: opt_int(
+            row.get_value(5).map_err(upstream)?,
+            "exam.subjects_required",
+        )?,
+        duration_minutes: opt_int(row.get_value(6).map_err(upstream)?, "exam.duration_minutes")?,
         rules: json_list(&rules_raw, "exam.rules")?,
     })
 }
@@ -954,7 +916,7 @@ pub async fn list_requirements(
                 let subjects_raw: String = row.get(2).map_err(upstream)?;
                 out.push(core::models::Requirement {
                     group: row.get(0).map_err(upstream)?,
-                    min_select: req_u32(
+                    min_select: req_int::<u32>(
                         row.get_value(1).map_err(upstream)?,
                         "requirement.min_select",
                     )?,
@@ -995,12 +957,12 @@ pub async fn subject_stats(
                 out.insert(
                     subject,
                     core::papers::SubjectStat {
-                        held: req_u32(row.get_value(1).map_err(upstream)?, "stats.held")?,
-                        verified: req_u32(
+                        held: req_int::<u32>(row.get_value(1).map_err(upstream)?, "stats.held")?,
+                        verified: req_int::<u32>(
                             row.get_value(2).map_err(upstream)?,
                             "stats.verified",
                         )?,
-                        distinct_marks: req_u32(
+                        distinct_marks: req_int::<u32>(
                             row.get_value(3).map_err(upstream)?,
                             "stats.distinct_marks",
                         )?,
@@ -1088,8 +1050,8 @@ pub async fn list_syllabus(
                         topics.push(core::papers::SyllabusTopic {
                             slug: slug.clone(),
                             name: row.get(1).map_err(upstream)?,
-                            order: req_u32(row.get_value(2).map_err(upstream)?, "topic.order")?,
-                            weight: req_u32(row.get_value(3).map_err(upstream)?, "topic.weight")?,
+                            order: req_int::<u32>(row.get_value(2).map_err(upstream)?, "topic.order")?,
+                            weight: req_int::<u32>(row.get_value(3).map_err(upstream)?, "topic.weight")?,
                             objectives: json_list(&objectives, "topic.objectives")?,
                             countries: Vec::new(),
                             subtopics: Vec::new(),
@@ -1108,7 +1070,7 @@ pub async fn list_syllabus(
                         .push(core::papers::SyllabusSubtopic {
                             slug: st_slug,
                             name: row.get(6).map_err(upstream)?,
-                            order: req_u32(
+                            order: req_int::<u32>(
                                 row.get_value(7).map_err(upstream)?,
                                 "subtopic.order",
                             )?,
@@ -1394,9 +1356,8 @@ mod tests {
     #[tokio::test]
     async fn list_exams_rejects_malformed_json() {
         let db = local_exams_db().await;
-        db.connect()
+        crate::testing::connect(&db)
             .await
-            .expect("connect")
             .execute(
                 "INSERT INTO exams VALUES ('BAD','Bad','not-json','live',NULL,NULL,NULL,'[]')",
                 (),
@@ -1593,10 +1554,7 @@ mod tests {
     #[tokio::test]
     async fn get_question_rejects_bad_option_json() {
         let db = local_exams_db().await;
-        db.connect()
-            .await
-            .expect("connect")
-            .execute(
+        crate::testing::connect(&db).await.execute(
                 "INSERT INTO questions VALUES ('bad','JAMB','physics',2025,'past_paper','t','[]','not-json','a',NULL,NULL,NULL,NULL,1.0,1,'hbad')",
                 (),
             )
@@ -1633,10 +1591,7 @@ mod tests {
     #[tokio::test]
     async fn get_passage_rejects_bad_inline() {
         let db = local_exams_db().await;
-        db.connect()
-            .await
-            .expect("connect")
-            .execute(
+        crate::testing::connect(&db).await.execute(
                 "INSERT INTO passages VALUES ('bad','JAMB','english',2025,'comprehension',NULL,NULL,'t','nope')",
                 (),
             )
@@ -1770,7 +1725,7 @@ mod tests {
     #[tokio::test]
     async fn report_insert_or_ignore_is_idempotent() {
         let db = local_exams_db().await;
-        let conn = db.connect().await.expect("connect");
+        let conn = crate::testing::connect(&db).await;
         let first: u64 = conn
             .execute(
                 "INSERT OR IGNORE INTO reports (id, target_type, target_id, reporter, reason, detail, created_at) VALUES ('r1','question','q1','k1','wrong_answer',NULL,1)",
@@ -1829,7 +1784,7 @@ mod tests {
         // Seed 10 filings directly: file_report itself pushes, so the
         // cap path is exercised with the count already at the limit —
         // the trip happens before any write.
-        let conn = db.connect().await.expect("connect");
+        let conn = crate::testing::connect(&db).await;
         for i in 0..10 {
             conn.execute(
                 &format!("INSERT INTO reports VALUES ('r{i}','question','q{i}','k9','other',NULL,9999999999)"),
@@ -1848,9 +1803,8 @@ mod tests {
     #[tokio::test]
     async fn list_subjects_rejects_bad_flag() {
         let db = local_exams_db().await;
-        db.connect()
+        crate::testing::connect(&db)
             .await
-            .expect("connect")
             .execute(
                 "INSERT INTO subjects VALUES ('odd','JAMB','Odd',2,NULL)",
                 (),
@@ -1929,10 +1883,7 @@ mod tests {
     #[tokio::test]
     async fn a_later_human_fail_voids_an_earlier_pass() {
         let db = local_exams_db().await;
-        db.connect()
-            .await
-            .expect("connect")
-            .execute(
+        crate::testing::connect(&db).await.execute(
                 "INSERT INTO verifications VALUES ('v9','q1','human','fail','[\"answer\",\"explanation\"]','review',NULL,'h1','2026-02-01T00:00:00Z')",
                 (),
             )
