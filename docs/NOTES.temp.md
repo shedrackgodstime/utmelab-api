@@ -28,10 +28,10 @@ capability HTTP already guards.
 
 ### 2. Surface-level keyed tests are missing  (enforcement)
 
-Only `api/v1/questions.rs` has a keyed handler test, the pattern added with
-the page envelope. The other ten `api/v1` modules, `internal`, and `mcp` have
+Only `questions` and `subjects` have a keyed handler test, the pattern added
+with the page envelope. The other `api/v1` modules, `internal`, and `mcp` have
 none, and `tests/` is empty. The identity-plus-scope-plus-envelope rule is
-enforced by convention and one example; nothing fails when a new module skips
+enforced by convention and two examples; nothing fails when a new module skips
 it.
 
 How: repeat the same harness per surface (offline replica, raw seed, real
@@ -39,25 +39,7 @@ router through `routes::router`, `x-api-key` header): no key is 401, wrong
 scope is 403, revoked is 401, a live key gets a typed envelope. Mechanical, not
 a redesign. Fold each new route's test into this list as it lands.
 
-### 3. The subject detail trio is the only missing public read  (feature)
-
-Old served 18 `/api/v1` routes; new serves 18. The composition differs by
-exactly three: `GET /api/v1/subjects/{exam}/{slug}`,
-`GET /api/v1/subjects/{exam}/{slug}/syllabus`, and
-`GET /api/v1/subjects/{exam}/{slug}/coverage`. Nothing else in old's public
-surface is unserved. Cost differs: subject is trivial (`get_subject` exists),
-coverage is easy (`subject_stats` exists), syllabus is real work because new's
-`list_syllabus` returns only `{slug, name, subtopics}` while old's carried
-per-node counts, objectives, and country labels.
-
-How: wire shapes in `core/models.rs` (`Coverage`, `Syllabus`, `SyllabusNode`);
-a pure `core::catalog::assemble_syllabus(tree, rows, topics)` that counts rows
-per topic through the subtopic map; a richer store read only if the objectives
-need one; three handlers in `api/v1/subjects.rs` with `AuthedKey` and
-`requires(SCOPE_READ_CATALOG)` and 404 as `AppError::NotFound`. Tests: the
-`core` assembly test plus a keyed handler test per route.
-
-### 4. Deferred: CLI verbs and the OpenAPI contract  (out of scope for now)
+### 3. Deferred: CLI verbs and the OpenAPI contract  (out of scope for now)
 
 Recorded so it stays visible, not scheduled. Old's clap CLI had `key
 create/list/revoke/rotate`, `import` (json and Turso), `openapi --out`,
@@ -105,6 +87,13 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 ## Done
 
+- The public surface is now a superset of old's. The last three routes are
+  wired: `GET /api/v1/subjects/{exam}/{slug}`, `.../syllabus`, and
+  `.../coverage`. The syllabus is assembled in `core::catalog::assemble_syllabus`
+  (pure): the store's tree read gained order, weight, objectives, and country
+  scope, and the core adds the counts old served, attributing each row to its
+  subtopic and dropping topics scoped to another country. Coverage is the same
+  counts without the tree. Both get a keyed handler test.
 - `core/models.rs` is split by role into `core/models/{domain,wire,admin}.rs`,
   re-exported from `mod.rs` so every `core::models::…` path is unchanged. The
   domain shapes (the Rust half of `READ_SHAPES`) no longer sit beside the ops

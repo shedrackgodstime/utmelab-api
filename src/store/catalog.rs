@@ -1053,9 +1053,10 @@ pub async fn subject_rows(
     .await
 }
 
-/// One subject's syllabus: topics in `order` with their subtopic slugs.
-/// This is the tree that attributes questions to topics; a topic the bank
-/// does not state is never invented.
+/// One subject's syllabus: topics in `order`, each with its subtopics and
+/// the objectives and country scope the bank states. This is the tree that
+/// attributes questions to topics; a topic the bank does not state is never
+/// invented, and an unstated objective is absent, not blank.
 pub async fn list_syllabus(
     s: &DbState,
     exam: &str,
@@ -1067,33 +1068,74 @@ pub async fn list_syllabus(
         let exam = exam.clone();
         let subject = subject.clone();
         async move {
+            let mut topics: Vec<core::papers::SyllabusTopic> = Vec::new();
+            let mut index: std::collections::HashMap<String, usize> =
+                std::collections::HashMap::new();
             let mut stmt = conn
-                .prepare("SELECT t.slug,t.name,COALESCE(st.slug,'') FROM topics t LEFT JOIN subtopics st ON st.topic=t.slug WHERE t.exam=?1 AND t.subject=?2 ORDER BY t.\"order\",t.slug,st.\"order\",st.slug")
+                .prepare("SELECT t.slug,t.name,t.\"order\",t.weight,t.objectives,st.slug,st.name,st.\"order\",st.objectives FROM topics t LEFT JOIN subtopics st ON st.topic=t.slug WHERE t.exam=?1 AND t.subject=?2 ORDER BY t.\"order\",t.slug,st.\"order\",st.slug")
                 .await
                 .map_err(upstream)?;
             let mut rows = stmt
                 .query([exam.as_str(), subject.as_str()])
                 .await
                 .map_err(upstream)?;
-            let mut out: Vec<core::papers::SyllabusTopic> = Vec::new();
             while let Some(row) = rows.next().await.map_err(upstream)? {
                 let slug: String = row.get(0).map_err(upstream)?;
-                let name: String = row.get(1).map_err(upstream)?;
-                let sub: String = row.get(2).map_err(upstream)?;
-                match out.last_mut() {
-                    Some(t) if t.slug == slug => {
-                        if !sub.is_empty() {
-                            t.subtopics.push(sub);
-                        }
+                let slot = match index.get(&slug) {
+                    Some(i) => *i,
+                    None => {
+                        let objectives: String = row.get(4).map_err(upstream)?;
+                        topics.push(core::papers::SyllabusTopic {
+                            slug: slug.clone(),
+                            name: row.get(1).map_err(upstream)?,
+                            order: req_u32(row.get_value(2).map_err(upstream)?, "topic.order")?,
+                            weight: req_u32(row.get_value(3).map_err(upstream)?, "topic.weight")?,
+                            objectives: json_list(&objectives, "topic.objectives")?,
+                            countries: Vec::new(),
+                            subtopics: Vec::new(),
+                        });
+                        index.insert(slug, topics.len() - 1);
+                        topics.len() - 1
                     }
-                    _ => out.push(core::papers::SyllabusTopic {
-                        slug,
-                        name,
-                        subtopics: if sub.is_empty() { Vec::new() } else { vec![sub] },
-                    }),
+                };
+                let sub: Option<String> =
+                    opt_string(row.get_value(5).map_err(upstream)?)?;
+                if let Some(st_slug) = sub {
+                    let objectives: Option<String> =
+                        opt_string(row.get_value(8).map_err(upstream)?)?;
+                    topics[slot]
+                        .subtopics
+                        .push(core::papers::SyllabusSubtopic {
+                            slug: st_slug,
+                            name: row.get(6).map_err(upstream)?,
+                            order: req_u32(
+                                row.get_value(7).map_err(upstream)?,
+                                "subtopic.order",
+                            )?,
+                            objectives: match objectives {
+                                Some(raw) => json_list(&raw, "subtopic.objectives")?,
+                                None => Vec::new(),
+                            },
+                        });
                 }
             }
-            Ok(out)
+            // Country scope for the whole subject, one query.
+            let mut stmt = conn
+                .prepare("SELECT tc.topic,tc.country FROM topic_countries tc JOIN topics t ON t.slug=tc.topic WHERE t.exam=?1 AND t.subject=?2 ORDER BY tc.topic,tc.country")
+                .await
+                .map_err(upstream)?;
+            let mut rows = stmt
+                .query([exam.as_str(), subject.as_str()])
+                .await
+                .map_err(upstream)?;
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                let topic: String = row.get(0).map_err(upstream)?;
+                let country: String = row.get(1).map_err(upstream)?;
+                if let Some(i) = index.get(&topic) {
+                    topics[*i].countries.push(country);
+                }
+            }
+            Ok(topics)
         }
     })
     .await
@@ -2108,7 +2150,12 @@ mod tests {
             .iter()
             .find(|t| t.slug == "geometry")
             .expect("geometry");
-        assert_eq!(geometry.subtopics, vec!["geometry-basics"]);
+        let subs: Vec<&str> = geometry
+            .subtopics
+            .iter()
+            .map(|st| st.slug.as_str())
+            .collect();
+        assert_eq!(subs, vec!["geometry-basics"]);
         let algebra = topics
             .iter()
             .find(|t| t.slug == "algebra")
@@ -2117,6 +2164,10 @@ mod tests {
             algebra.subtopics.is_empty(),
             "a topic with no subtopics is carried, not dropped"
         );
+        // The tree carries the facts the endpoint serves, not just slugs.
+        assert_eq!(algebra.order, 3);
+        assert_eq!(algebra.weight, 15);
+        assert_eq!(algebra.objectives, vec!["solve"]);
     }
 
     #[tokio::test]

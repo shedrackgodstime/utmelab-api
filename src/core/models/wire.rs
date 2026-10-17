@@ -6,7 +6,7 @@
 //! copies a constructor instead of a formula. `ReportFiled` is the outcome
 //! of a write a consumer made.
 
-use super::domain::{Choice, Explanation, RichText};
+use super::domain::{Choice, Explanation, RichText, Subject};
 
 /// One page of a collection in the shape every paged endpoint serves.
 /// The envelope lives here, once, so a new paged endpoint cannot
@@ -63,6 +63,60 @@ pub struct ReportFiled {
     pub target_id: String,
     pub reason: String,
     pub duplicate: bool,
+}
+
+/// One node of a subject's syllabus as served: what you must be able to do
+/// (objectives) beside what you can actually practise (`question_count`).
+/// The stored form is `core::papers::SyllabusTopic`; this one adds counts.
+#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+pub struct SyllabusTopic {
+    pub slug: String,
+    pub name: String,
+    pub order: u32,
+    pub weight: u32,
+    pub question_count: usize,
+    pub objectives: Vec<String>,
+    /// Countries this topic belongs to. Empty means every member country.
+    pub countries: Vec<String>,
+    pub subtopics: Vec<SyllabusSubtopic>,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+pub struct SyllabusSubtopic {
+    pub slug: String,
+    pub name: String,
+    pub order: u32,
+    pub question_count: usize,
+    pub objectives: Vec<String>,
+    /// Inherited from the parent topic — a subtopic carries no scope of its own.
+    pub countries: Vec<String>,
+}
+
+/// Counts over a subject's syllabus, for progress bars and checklists.
+#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+pub struct SyllabusSummary {
+    pub topics: usize,
+    pub topics_with_questions: usize,
+    pub subtopics: usize,
+    pub subtopics_with_questions: usize,
+    pub questions: usize,
+}
+
+/// One subject's whole topic tree with live counts.
+#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+pub struct Syllabus {
+    pub exam: String,
+    pub subject: Subject,
+    pub topics: Vec<SyllabusTopic>,
+    pub summary: SyllabusSummary,
+}
+
+/// Coverage without the tree: the same counts and nothing else.
+#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+pub struct Coverage {
+    pub exam: String,
+    pub subject: Subject,
+    pub summary: SyllabusSummary,
 }
 
 /// One novel quiz row as served. `novel_id` is stamped by the caller —

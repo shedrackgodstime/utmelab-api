@@ -151,14 +151,30 @@ pub fn is_complete(scheme: &Scheme) -> bool {
 
 // ── assembly ────────────────────────────────────────────────────────────
 
-/// One syllabus topic with its subtopic slugs. Country scoping is not
-/// applied here: `topic_countries` is empty, so no topic is restricted to a
-/// country and the whole tree is in scope everywhere.
+/// One syllabus topic as stored, with its subtopics and the facts a reader
+/// needs: order, weight, objectives, and stated country scope. Scope is not
+/// applied here — an empty `countries` means every member country. The wire
+/// form with live counts is `core::models::SyllabusTopic`.
 #[derive(Clone, Debug)]
 pub struct SyllabusTopic {
     pub slug: String,
     pub name: String,
-    pub subtopics: Vec<String>,
+    pub order: u32,
+    pub weight: u32,
+    pub objectives: Vec<String>,
+    /// Countries this topic belongs to. Empty means every member country.
+    pub countries: Vec<String>,
+    pub subtopics: Vec<SyllabusSubtopic>,
+}
+
+/// One subtopic under a topic. The board states objectives at topic level
+/// (D50); a subtopic carries its own only where the bank states them.
+#[derive(Clone, Debug)]
+pub struct SyllabusSubtopic {
+    pub slug: String,
+    pub name: String,
+    pub order: u32,
+    pub objectives: Vec<String>,
 }
 
 /// Everything assembly and readiness need for one exam subject, fetched
@@ -296,7 +312,7 @@ pub fn pools(bank: &SubjectBank) -> PoolSet {
     for t in &bank.syllabus {
         names.insert(t.slug.clone(), t.name.clone());
         for st in &t.subtopics {
-            subtopic_topic.insert(st.clone(), t.slug.clone());
+            subtopic_topic.insert(st.slug.clone(), t.slug.clone());
         }
     }
     let mut pools: HashMap<String, TopicPool> = HashMap::new();
@@ -859,7 +875,16 @@ mod tests {
             syllabus: vec![SyllabusTopic {
                 slug: "algebra".to_string(),
                 name: "Algebra".to_string(),
-                subtopics: vec!["linear".to_string()],
+                order: 1,
+                weight: 0,
+                objectives: vec![],
+                countries: vec![],
+                subtopics: vec![SyllabusSubtopic {
+                    slug: "linear".to_string(),
+                    name: "Linear equations".to_string(),
+                    order: 1,
+                    objectives: vec![],
+                }],
             }],
             rows,
         }
