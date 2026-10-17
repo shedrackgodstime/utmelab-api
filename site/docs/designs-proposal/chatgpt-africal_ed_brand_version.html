@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffaf0">
+  <title>Learnstead — Learning rooted here. Ready for anywhere.</title>
+  <meta name="description" content="Education products built around the realities, ambitions, and possibilities of learners across Africa.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          ink: '#182a25',
+          green: '#176b4d',
+          deepgreen: '#124b39',
+          orange: '#e66b42',
+          sun: '#f5c84c',
+          cream: '#fffaf0',
+          sand: '#f2ead8',
+          palegreen: '#e0ead9',
+          graygreen: '#68766d'
+        },
+        fontFamily: {
+          sans: ['DM Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          display: ['Manrope', 'DM Sans', 'sans-serif']
+        },
+        boxShadow: { gentle: '0 20px 55px rgba(24,42,37,.09)' }
+      }}
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; }
+    h1,h2,h3,.display { font-family: Manrope, sans-serif; }
+    .woven {
+      background-color: #f2ead8;
+      background-image: linear-gradient(45deg, rgba(23,107,77,.07) 25%, transparent 25%, transparent 75%, rgba(23,107,77,.07) 75%), linear-gradient(45deg, rgba(23,107,77,.07) 25%, transparent 25%, transparent 75%, rgba(23,107,77,.07) 75%);
+      background-position: 0 0, 9px 9px;
+      background-size: 18px 18px;
+    }
+    .dotfield { background-image: radial-gradient(rgba(24,42,37,.14) 1px, transparent 1px); background-size: 18px 18px; }
+    .float { animation: drift 7s ease-in-out infinite; }
+    .float2 { animation: drift 8s ease-in-out infinite reverse; }
+    @keyframes drift { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-7px) rotate(1deg); } }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body class="bg-cream text-ink antialiased selection:bg-sun selection:text-ink">
+  <!-- Concept only: Learnstead is a placeholder name. Replace brand details and contact before launch. -->
+  <header class="relative z-20">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-10" aria-label="Main navigation">
+      <a href="#" class="flex items-center gap-3" aria-label="Learnstead home">
+        <span class="grid h-11 w-11 place-items-center rounded-[15px] bg-green text-sun">
+          <svg viewBox="0 0 36 36" class="h-7 w-7" fill="none" aria-hidden="true">
+            <path d="M5 12 18 5l13 7-13 7L5 12Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M9 15v9l9 5 9-5v-9M31 12v11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="31" cy="26" r="2.4" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="display text-xl font-extrabold tracking-[-.055em]">learnstead<span class="text-orange">.</span></span>
+      </a>
+      <div class="hidden items-center gap-8 text-sm font-bold text-ink/70 md:flex">
+        <a href="#work" class="transition hover:text-green">What we do</a>
+        <a href="#why" class="transition hover:text-green">Why it matters</a>
+        <a href="#partners" class="transition hover:text-green">Partner with us</a>
+      </div>
+      <a href="#contact" class="hidden items-center gap-2 rounded-full bg-green px-5 py-3 text-sm font-bold text-white transition hover:bg-deepgreen sm:inline-flex">Let's talk <span aria-hidden="true">↗</span></a>
+      <button id="menuBtn" class="grid h-10 w-10 place-items-center rounded-xl border border-ink/15 md:hidden" aria-label="Open navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="hidden border-t border-ink/10 bg-cream px-5 py-5 md:hidden">
+      <div class="flex flex-col gap-4 text-sm font-bold"><a href="#work">What we do</a><a href="#why">Why it matters</a><a href="#partners">Partner with us</a><a href="#contact">Let's talk ↗</a></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="relative overflow-hidden">
+      <div class="absolute right-0 top-0 h-full w-[42%] woven opacity-70"></div>
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-12 sm:px-8 sm:pb-24 sm:pt-16 lg:grid-cols-[1fr_.95fr] lg:px-10 lg:pb-28 lg:pt-20">
+        <div class="relative z-10">
+          <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-green/15 bg-white/70 px-3.5 py-2 text-xs font-bold text-green">
+            <span class="h-2 w-2 rounded-full bg-orange"></span> Built with Africa in mind
+          </div>
+          <h1 class="display max-w-2xl text-[3rem] font-extrabold leading-[1.04] tracking-[-.06em] sm:text-6xl lg:text-[4.4rem]">
+            Learning rooted <br class="hidden sm:block">here. <span class="relative inline-block text-green">Ready for <span class="relative z-10">anywhere.</span><svg class="absolute -bottom-2 left-0 h-4 w-full text-sun" viewBox="0 0 300 14" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M3 9C70 1 160 2 296 8" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg></span>
+          </h1>
+          <p class="mt-7 max-w-xl text-base leading-8 text-graygreen sm:text-lg">
+            We build useful education products and digital infrastructure for learners, educators, and the people creating what comes next.
+          </p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#work" class="group inline-flex items-center justify-center gap-4 rounded-full bg-green px-6 py-4 text-sm font-bold text-white shadow-gentle transition hover:-translate-y-0.5 hover:bg-deepgreen">Explore what we do <span class="text-sun transition group-hover:translate-x-1">↗</span></a>
+            <a href="#why" class="inline-flex items-center justify-center gap-3 rounded-full border border-ink/20 bg-white/60 px-6 py-4 text-sm font-bold transition hover:border-green">Our point of view <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="mt-10 flex items-center gap-3 text-xs font-semibold text-graygreen">
+            <span class="flex -space-x-2">
+              <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-cream bg-sun text-green">✳</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-cream bg-orange text-white">↗</span>
+              <span class="grid h-8 w-8 place-items-center rounded-full border-2 border-cream bg-palegreen text-green">◎</span>
+            </span>
+            <span>Practical learning. Better tools. More possibilities.</span>
+          </div>
+        </div>
+
+        <!-- Illustrative visual: learning is a connected, living ecosystem. -->
+        <div class="relative mx-auto w-full max-w-[570px]">
+          <div class="absolute -right-4 top-5 h-40 w-40 rounded-full bg-sun/30 blur-3xl"></div>
+          <div class="absolute -bottom-8 -left-5 h-48 w-48 rounded-full bg-green/15 blur-3xl"></div>
+          <div class="relative rounded-[2rem] border border-ink/10 bg-white/70 p-3 shadow-gentle backdrop-blur-sm sm:p-4">
+            <div class="relative min-h-[420px] overflow-hidden rounded-[1.5rem] bg-[#dfe9d9] p-5 sm:min-h-[480px] sm:p-7">
+              <div class="absolute inset-0 dotfield opacity-60"></div>
+              <div class="relative flex items-center justify-between">
+                <span class="text-[10px] font-extrabold uppercase tracking-[.18em] text-green">A world of possibility</span>
+                <span class="rounded-full bg-white/70 px-3 py-1.5 text-[10px] font-bold text-green">01 — 04</span>
+              </div>
+              <div class="absolute left-1/2 top-[47%] h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full border border-green/20 sm:h-80 sm:w-80"></div>
+              <div class="absolute left-1/2 top-[47%] h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full border border-green/20 sm:h-60 sm:w-60"></div>
+              <div class="absolute left-1/2 top-[47%] h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full border border-green/25 sm:h-40 sm:w-40"></div>
+              <div class="absolute left-1/2 top-[47%] grid h-28 w-28 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-[2rem] bg-green text-sun shadow-xl sm:h-32 sm:w-32">
+                <svg viewBox="0 0 64 64" class="h-14 w-14" fill="none" aria-hidden="true"><path d="M8 19 32 7l24 12-24 12L8 19Z" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M15 24v17l17 9 17-9V24M56 19v20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="56" cy="44" r="3" fill="currentColor"/></svg>
+              </div>
+              <div class="float absolute left-2 top-[26%] rounded-2xl border border-white bg-white/95 p-4 shadow-md sm:left-5">
+                <div class="flex items-center gap-2"><span class="grid h-8 w-8 place-items-center rounded-xl bg-sun/30 text-lg text-green">✳</span><span class="text-xs font-extrabold">Practice</span></div>
+                <p class="mt-2 text-[10px] text-graygreen">Build confidence step by step.</p>
+              </div>
+              <div class="float2 absolute right-2 top-[19%] rounded-2xl bg-green p-4 text-white shadow-lg sm:right-5">
+                <p class="text-[10px] font-bold uppercase tracking-[.15em] text-sun">For builders</p>
+                <p class="mt-2 text-sm font-extrabold">Tools that connect.</p>
+                <p class="mt-1 text-[10px] text-white/65">More than a single app.</p>
+              </div>
+              <div class="float absolute bottom-[15%] right-2 rounded-2xl border border-white bg-white/95 p-4 shadow-md sm:right-5">
+                <div class="flex items-center gap-3"><span class="grid h-9 w-9 place-items-center rounded-xl bg-orange/15 text-orange">↗</span><div><p class="text-xs font-extrabold">Next possibility</p><p class="mt-1 text-[10px] text-graygreen">Made to grow with need.</p></div></div>
+              </div>
+              <div class="absolute bottom-5 left-5 flex items-center gap-2 text-[10px] font-bold text-green sm:bottom-7 sm:left-7"><span class="h-2 w-2 rounded-full bg-orange"></span> Education moves us forward</div>
+            </div>
+          </div>
+          <div class="absolute -bottom-5 left-10 hidden items-center gap-2 rounded-full border border-ink/10 bg-cream px-4 py-2.5 text-xs font-bold text-green shadow-sm sm:flex"><span class="text-orange">✳</span> Local context. Global ambition.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUES STRIP -->
+    <section class="border-y border-ink/10 bg-white">
+      <div class="mx-auto grid max-w-7xl gap-5 px-5 py-7 sm:px-8 md:grid-cols-3 lg:px-10">
+        <div class="flex items-start gap-4"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-sun/30 text-lg text-green">✳</span><div><p class="font-extrabold">Grounded in context</p><p class="mt-1 text-sm leading-6 text-graygreen">Built with the realities of local learning in mind.</p></div></div>
+        <div class="flex items-start gap-4"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-orange/15 text-lg text-orange">↗</span><div><p class="font-extrabold">Open to possibility</p><p class="mt-1 text-sm leading-6 text-graygreen">Designed to evolve as people and needs change.</p></div></div>
+        <div class="flex items-start gap-4"><span class="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-palegreen text-lg text-green">◎</span><div><p class="font-extrabold">Connected by design</p><p class="mt-1 text-sm leading-6 text-graygreen">Products and services that can work better together.</p></div></div>
+      </div>
+    </section>
+
+    <!-- WHAT WE DO -->
+    <section id="work" class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-10">
+      <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <div class="max-w-2xl">
+          <p class="text-xs font-extrabold uppercase tracking-[.18em] text-green">What we're working on</p>
+          <h2 class="display mt-4 text-3xl font-extrabold leading-tight tracking-[-.055em] sm:text-5xl">Making learning work<br><span class="text-graygreen">a little better every day.</span></h2>
+        </div>
+        <p class="max-w-md text-sm leading-7 text-graygreen sm:text-base">We start with practical problems, build focused solutions, and grow into the opportunities that matter.</p>
+      </div>
+      <div class="mt-12 grid gap-5 md:grid-cols-2">
+        <article class="group relative flex min-h-[330px] flex-col overflow-hidden rounded-[1.75rem] bg-green p-7 text-white sm:p-9">
+          <div class="absolute -right-12 -top-12 h-52 w-52 rounded-full border border-white/15"></div><div class="absolute -right-1 top-0 h-36 w-36 rounded-full border border-white/15"></div>
+          <div class="relative flex items-center justify-between"><span class="rounded-full bg-white/15 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.14em]">Learning products</span><span class="text-xl text-sun">✳</span></div>
+          <div class="relative mt-auto pt-20"><h3 class="display text-2xl font-extrabold tracking-[-.04em] sm:text-3xl">Prepare with confidence.</h3><p class="mt-4 max-w-md text-sm leading-7 text-white/75">Exam practice and revision tools that help learners test their understanding, learn from mistakes, and prepare with purpose.</p><a href="#contact" class="mt-7 inline-flex items-center gap-3 text-sm font-bold text-sun">Explore learning tools <span class="transition group-hover:translate-x-1">→</span></a></div>
+        </article>
+        <article class="group relative flex min-h-[330px] flex-col overflow-hidden rounded-[1.75rem] bg-sand p-7 sm:p-9">
+          <div class="absolute -right-12 -top-12 h-52 w-52 rounded-full border border-green/15"></div><div class="absolute -right-1 top-0 h-36 w-36 rounded-full border border-green/15"></div>
+          <div class="relative flex items-center justify-between"><span class="rounded-full bg-white/75 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[.14em] text-green">Education infrastructure</span><span class="text-xl text-orange">↗</span></div>
+          <div class="relative mt-auto pt-20"><h3 class="display text-2xl font-extrabold tracking-[-.04em] sm:text-3xl">Help good ideas go further.</h3><p class="mt-4 max-w-md text-sm leading-7 text-graygreen">APIs and reusable services that help developers build education products without reinventing every underlying system.</p><a href="#partners" class="mt-7 inline-flex items-center gap-3 text-sm font-extrabold text-green">For builders and partners <span class="transition group-hover:translate-x-1">→</span></a></div>
+        </article>
+        <article class="group flex min-h-[270px] flex-col rounded-[1.75rem] border border-ink/10 bg-white p-7 transition hover:shadow-gentle sm:p-9">
+          <div class="flex items-center justify-between"><span class="text-xs font-extrabold uppercase tracking-[.14em] text-graygreen">Data & insight</span><span class="grid h-10 w-10 place-items-center rounded-full bg-palegreen text-green">◎</span></div>
+          <div class="mt-auto pt-14"><h3 class="display text-xl font-extrabold tracking-[-.04em] sm:text-2xl">Make information useful.</h3><p class="mt-3 max-w-lg text-sm leading-7 text-graygreen">Explore better ways to structure educational information and turn performance into clearer next steps.</p></div>
+        </article>
+        <article class="group flex min-h-[270px] flex-col rounded-[1.75rem] border border-ink/10 bg-white p-7 transition hover:shadow-gentle sm:p-9">
+          <div class="flex items-center justify-between"><span class="text-xs font-extrabold uppercase tracking-[.14em] text-graygreen">What's next</span><span class="grid h-10 w-10 place-items-center rounded-full bg-sun/30 text-green">✳</span></div>
+          <div class="mt-auto pt-14"><h3 class="display text-xl font-extrabold tracking-[-.04em] sm:text-2xl">Room for new possibilities.</h3><p class="mt-3 max-w-lg text-sm leading-7 text-graygreen">We’ll keep exploring needs across the education ecosystem and build where we can make a meaningful difference.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- WHY IT MATTERS -->
+    <section id="why" class="relative overflow-hidden bg-[#f4e7c8]">
+      <div class="absolute right-0 top-0 h-full w-1/3 woven opacity-60"></div>
+      <div class="relative mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[.9fr_1.1fr] lg:px-10">
+        <div><p class="text-xs font-extrabold uppercase tracking-[.18em] text-green">Why it matters</p><h2 class="display mt-4 max-w-lg text-3xl font-extrabold leading-tight tracking-[-.055em] sm:text-5xl">Big ambitions need practical foundations.</h2></div>
+        <div class="max-w-2xl">
+          <p class="text-base leading-8 text-ink/75 sm:text-lg">Across Africa, learners and educators bring enormous ambition to their work. The tools around them should help that ambition move forward — not make the journey harder.</p>
+          <p class="mt-5 text-sm leading-7 text-graygreen">That means building with real constraints in mind: connectivity, device access, relevant content, trust, and the need for products that are genuinely useful. It also means looking beyond one app to the systems that help the whole ecosystem grow.</p>
+          <div class="mt-8 flex flex-wrap gap-2"><span class="rounded-full border border-green/20 bg-white/50 px-4 py-2 text-xs font-bold text-green">Relevant by design</span><span class="rounded-full border border-green/20 bg-white/50 px-4 py-2 text-xs font-bold text-green">Accessible where possible</span><span class="rounded-full border border-green/20 bg-white/50 px-4 py-2 text-xs font-bold text-green">Built to earn trust</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <section id="partners" class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-10">
+      <div class="rounded-[2rem] bg-deepgreen p-7 text-white sm:p-12 lg:p-14">
+        <div class="grid gap-10 lg:grid-cols-[1fr_.75fr] lg:items-center">
+          <div><p class="text-xs font-extrabold uppercase tracking-[.18em] text-sun">For developers, educators & institutions</p><h2 class="display mt-4 max-w-2xl text-3xl font-extrabold leading-tight tracking-[-.05em] sm:text-4xl">Let's make useful things possible.</h2><p class="mt-4 max-w-xl text-sm leading-7 text-white/70">Building an education product? Working on a problem schools or learners face? We’re open to thoughtful conversations and practical partnerships.</p><a href="#contact" class="mt-7 inline-flex items-center gap-3 rounded-full bg-sun px-6 py-3.5 text-sm font-extrabold text-ink transition hover:bg-white">Talk to our team <span>↗</span></a></div>
+          <div class="rounded-2xl border border-white/15 bg-white/[.06] p-6"><p class="text-xs font-bold uppercase tracking-[.14em] text-white/60">What we value</p><ul class="mt-5 space-y-4 text-sm font-semibold"><li class="flex gap-3"><span class="text-sun">✓</span> Clear problems and real users</li><li class="flex gap-3"><span class="text-sun">✓</span> Thoughtful, dependable technology</li><li class="flex gap-3"><span class="text-sun">✓</span> Trust, privacy, and responsible data</li><li class="flex gap-3"><span class="text-sun">✓</span> Collaboration that creates lasting value</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="border-t border-ink/10 bg-white">
+      <div class="mx-auto flex max-w-7xl flex-col gap-7 px-5 py-14 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10">
+        <div><p class="text-xs font-extrabold uppercase tracking-[.18em] text-green">Start a conversation</p><h2 class="display mt-3 text-3xl font-extrabold tracking-[-.05em] sm:text-4xl">What should we build next?</h2><p class="mt-3 max-w-xl text-sm leading-7 text-graygreen">Share an idea, a challenge, or a partnership opportunity.</p></div>
+        <!-- Replace placeholder email before publishing. -->
+        <a href="mailto:hello@example.com?subject=Let's%20talk%20about%20education" class="inline-flex shrink-0 items-center justify-between gap-8 rounded-full bg-orange px-6 py-4 text-sm font-extrabold text-white transition hover:bg-green">hello@example.com <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-ink text-white">
+    <div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10">
+      <a href="#" class="flex items-center gap-3"><span class="grid h-9 w-9 place-items-center rounded-xl bg-sun text-green">✳</span><span class="display font-extrabold tracking-[-.05em]">learnstead<span class="text-orange">.</span></span></a>
+      <p class="text-xs leading-6 text-white/55">Learning rooted here. Ready for anywhere.</p>
+      <p class="text-xs text-white/45">© <span id="year"></span> Learnstead. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.classList.toggle('hidden');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

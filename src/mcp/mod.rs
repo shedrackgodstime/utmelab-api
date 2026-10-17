@@ -1,25 +1,26 @@
-//! ▸ MCP (Model Context Protocol) surface — prototype scaffold.
-//!
-//! Lives in `src/` (no `crates/` — the tree has not grown into a workspace
-//! yet). No behaviour here yet: this module only reserves the shape
-//! (`auth`, `tools`, `resources`) so the auth decision lands first and every
-//! later tool has one place to live.
-//!
-//! Two auth methods are planned (decision pending): the commercial API key
-//! (same `Caller` rules as `/api/v1`) and an admin/dev credential. Nothing
-//! is enforced until that decision row exists.
+//! MCP surface. Tools wrap the same `core` functions the HTTP handlers
+//! call, so parity is structural; tool-only extras live in `tools`.
 
-pub mod auth;
 pub mod resources;
 pub mod tools;
 
-use axum::Router;
+use axum::{routing::post, Router};
 
-use crate::AppState;
+use crate::{config::Config, state::AppState};
 
-/// Empty router. Tool/resource routes merge here as they land.
-pub fn router() -> Router<AppState> {
+pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
     Router::new()
-        .merge(tools::router())
-        .merge(resources::router())
+        .route(
+            "/mcp/tools/list_tables",
+            post(tools::list_tables).route_layer(cfg.fast_timeout()),
+        )
+        .route(
+            "/mcp/tools/revoke_key",
+            post(tools::revoke_key).route_layer(cfg.slow_timeout()),
+        )
+        .route(
+            "/mcp/tools/unrevoke_key",
+            post(tools::unrevoke_key).route_layer(cfg.slow_timeout()),
+        )
+        .with_state(state)
 }

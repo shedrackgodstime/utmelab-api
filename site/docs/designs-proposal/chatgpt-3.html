@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fbf8f0">
+  <title>Learnstead — Learning that moves us forward</title>
+  <meta name="description" content="Education products and technology built for the realities and possibilities of Africa.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: {
+          ink: '#202c25',
+          forest: '#174b3b',
+          green: '#28765a',
+          mango: '#f1b84b',
+          coral: '#e66f51',
+          cream: '#fbf8f0',
+          sand: '#f0e8d9',
+          muted: '#68766d',
+          lilac: '#dcd7ef'
+        },
+        fontFamily: {
+          sans: ['DM Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          display: ['Manrope', 'DM Sans', 'ui-sans-serif', 'sans-serif']
+        },
+        boxShadow: {
+          card: '0 18px 45px rgba(32, 44, 37, .09)'
+        }
+      }}
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; }
+    h1,h2,h3,.display { font-family: Manrope, sans-serif; }
+    .pattern {
+      background-image: linear-gradient(45deg, rgba(23,75,59,.07) 25%, transparent 25%, transparent 75%, rgba(23,75,59,.07) 75%), linear-gradient(45deg, rgba(23,75,59,.07) 25%, transparent 25%, transparent 75%, rgba(23,75,59,.07) 75%);
+      background-position: 0 0, 12px 12px;
+      background-size: 24px 24px;
+    }
+    .pattern-dots { background-image: radial-gradient(rgba(23,75,59,.19) 1.2px, transparent 1.2px); background-size: 16px 16px; }
+    .lift { transition: transform .25s ease, box-shadow .25s ease; }
+    .lift:hover { transform: translateY(-4px); box-shadow: 0 18px 45px rgba(32,44,37,.10); }
+    @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body class="bg-cream text-ink antialiased selection:bg-mango selection:text-ink">
+  <!-- Design concept. Learnstead and contact details are placeholders. -->
+  <header class="relative z-30">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-5 sm:px-8 lg:px-10" aria-label="Main navigation">
+      <a href="#" class="flex items-center gap-3" aria-label="Learnstead home">
+        <span class="relative grid h-11 w-11 place-items-center overflow-hidden rounded-2xl bg-forest text-mango">
+          <svg viewBox="0 0 40 40" class="h-8 w-8" fill="none" aria-hidden="true">
+            <path d="M6 13 20 5l14 8-14 8L6 13Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M10 16v10l10 6 10-6V16M34 13v12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <circle cx="34" cy="28" r="2.5" fill="currentColor"/>
+          </svg>
+          <span class="absolute -right-1 -top-1 h-4 w-4 rounded-full bg-coral"></span>
+        </span>
+        <span class="display text-xl font-extrabold tracking-[-.06em]">learnstead<span class="text-coral">.</span></span>
+      </a>
+
+      <div class="hidden items-center gap-8 text-sm font-semibold text-ink/70 md:flex">
+        <a href="#mission" class="transition hover:text-green">Our mission</a>
+        <a href="#work" class="transition hover:text-green">What we do</a>
+        <a href="#values" class="transition hover:text-green">Our values</a>
+      </div>
+      <a href="#contact" class="hidden rounded-full bg-forest px-5 py-3 text-sm font-bold text-white transition hover:bg-green sm:inline-flex">
+        Let's connect <span class="ml-2 text-mango">↗</span>
+      </a>
+      <button id="menuBtn" class="grid h-10 w-10 place-items-center rounded-xl border border-ink/15 md:hidden" aria-label="Open navigation" aria-expanded="false">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+      </button>
+    </nav>
+    <div id="mobileMenu" class="hidden border-t border-ink/10 bg-cream px-5 py-5 md:hidden">
+      <div class="flex flex-col gap-4 text-sm font-semibold"><a href="#mission">Our mission</a><a href="#work">What we do</a><a href="#values">Our values</a><a href="#contact">Let's connect ↗</a></div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute right-[-5rem] top-8 h-72 w-72 rounded-full bg-mango/20 blur-3xl"></div>
+      <div class="absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-green/10 blur-3xl"></div>
+      <div class="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-20 pt-10 sm:px-8 sm:pb-28 sm:pt-16 lg:grid-cols-[1fr_.94fr] lg:px-10">
+        <div class="relative z-10">
+          <div class="mb-7 inline-flex items-center gap-2 rounded-full border border-forest/15 bg-white/70 px-4 py-2 text-xs font-bold text-forest">
+            <span class="h-2 w-2 rounded-full bg-coral"></span>
+            Built for African learning
+          </div>
+          <h1 class="display max-w-2xl text-[3.15rem] font-extrabold leading-[1.04] tracking-[-.06em] sm:text-6xl lg:text-[4.5rem]">
+            Africa's next chapter is a <span class="relative inline-block text-forest">learning story.<svg viewBox="0 0 300 16" class="absolute -bottom-1 left-0 w-full" fill="none" aria-hidden="true"><path d="M3 11C72 3 181 3 296 8" stroke="#e66f51" stroke-width="5" stroke-linecap="round"/></svg></span>
+          </h1>
+          <p class="mt-7 max-w-xl text-base leading-8 text-muted sm:text-lg">
+            We create education products and technology that help learners move forward — and help the people building education do more with less friction.
+          </p>
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+            <a href="#work" class="inline-flex items-center justify-center gap-4 rounded-full bg-forest px-6 py-4 text-sm font-bold text-white shadow-card transition hover:-translate-y-0.5 hover:bg-green">Discover what we do <span class="text-mango">↗</span></a>
+            <a href="#mission" class="inline-flex items-center justify-center gap-3 rounded-full border border-forest/20 bg-white/50 px-6 py-4 text-sm font-bold transition hover:border-forest">Why we're here <span>↓</span></a>
+          </div>
+          <div class="mt-10 flex items-center gap-3 text-sm text-muted">
+            <div class="flex -space-x-2">
+              <span class="grid h-9 w-9 place-items-center rounded-full border-2 border-cream bg-mango text-sm">✳</span>
+              <span class="grid h-9 w-9 place-items-center rounded-full border-2 border-cream bg-coral text-sm text-white">↗</span>
+              <span class="grid h-9 w-9 place-items-center rounded-full border-2 border-cream bg-lilac text-sm">◌</span>
+            </div>
+            <span>Practical tools. Local context. Bigger possibilities.</span>
+          </div>
+        </div>
+
+        <!-- Warm, optimistic composition: product tiles, geometry and hand-drawn accents. -->
+        <div class="relative mx-auto w-full max-w-[560px]">
+          <div class="absolute -right-4 top-0 h-24 w-24 rounded-full bg-coral"></div>
+          <div class="absolute -bottom-5 left-2 h-24 w-24 rounded-full bg-mango"></div>
+          <div class="relative grid grid-cols-2 gap-3 sm:gap-4">
+            <div class="relative min-h-[215px] overflow-hidden rounded-[1.7rem] bg-forest p-5 text-white sm:min-h-[245px] sm:p-6">
+              <div class="pattern absolute inset-0 opacity-60"></div>
+              <div class="relative flex h-full min-h-[170px] flex-col justify-between">
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-mango text-forest"><svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4Z"/><path d="M8 8h6M8 12h6M8 16h3" stroke-linecap="round"/></svg></span>
+                <div><p class="text-xs font-semibold text-white/60">For learners</p><h3 class="mt-2 text-xl font-extrabold leading-tight sm:text-2xl">Learn with<br>confidence.</h3></div>
+              </div>
+              <span class="absolute -right-4 -top-5 text-8xl font-black text-white/10">✳</span>
+            </div>
+            <div class="relative mt-9 min-h-[215px] overflow-hidden rounded-[1.7rem] bg-mango p-5 sm:min-h-[245px] sm:p-6">
+              <div class="pattern-dots absolute inset-0 opacity-40"></div>
+              <div class="relative flex h-full min-h-[170px] flex-col justify-between">
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-forest text-mango"><svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h4M7 16h7" stroke-linecap="round"/></svg></span>
+                <div><p class="text-xs font-semibold text-ink/60">For builders</p><h3 class="mt-2 text-xl font-extrabold leading-tight sm:text-2xl">Build with<br>better tools.</h3></div>
+              </div>
+              <div class="absolute -bottom-5 -right-4 h-24 w-24 rounded-full border-[12px] border-forest/10"></div>
+            </div>
+            <div class="relative min-h-[185px] overflow-hidden rounded-[1.7rem] bg-sand p-5 sm:min-h-[210px] sm:p-6">
+              <div class="relative flex h-full min-h-[145px] flex-col justify-between">
+                <div class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-coral"></span><span class="text-xs font-bold text-ink/60">Connected ideas</span></div>
+                <div>
+                  <svg viewBox="0 0 180 55" class="mb-3 w-full max-w-[190px]" fill="none" aria-hidden="true">
+                    <path d="M12 28H168M45 8v40M90 8v40M135 8v40" stroke="#174b3b" stroke-opacity=".18"/>
+                    <path d="M12 28C35 28 30 10 45 10S65 44 90 28 115 10 135 10 150 28 168 28" stroke="#28765a" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="45" cy="10" r="4" fill="#e66f51"/><circle cx="90" cy="28" r="4" fill="#174b3b"/><circle cx="135" cy="10" r="4" fill="#f1b84b"/>
+                  </svg>
+                  <h3 class="text-lg font-extrabold sm:text-xl">More ways forward.</h3>
+                </div>
+              </div>
+            </div>
+            <div class="relative flex min-h-[185px] flex-col justify-between overflow-hidden rounded-[1.7rem] bg-coral p-5 text-white sm:min-h-[210px] sm:p-6">
+              <div class="absolute -right-7 -top-8 h-28 w-28 rounded-full border-[16px] border-white/15"></div>
+              <span class="relative flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-xl">✦</span>
+              <div class="relative"><p class="text-xs font-semibold text-white/70">Our mindset</p><h3 class="mt-2 text-lg font-extrabold sm:text-xl">Useful by<br>design.</h3></div>
+            </div>
+          </div>
+          <div class="absolute -left-7 top-[42%] hidden h-14 w-14 rotate-12 items-center justify-center rounded-2xl bg-white text-2xl text-forest shadow-card sm:flex">✳</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust / positioning strip -->
+    <section class="border-y border-forest/10 bg-white/65">
+      <div class="mx-auto grid max-w-7xl gap-6 px-5 py-7 sm:px-8 md:grid-cols-3 lg:px-10">
+        <div class="flex gap-4"><span class="text-2xl text-coral">01</span><div><p class="font-bold">Designed for our context</p><p class="mt-1 text-sm leading-6 text-muted">Built with local needs and real constraints in mind.</p></div></div>
+        <div class="flex gap-4"><span class="text-2xl text-green">02</span><div><p class="font-bold">Focused on real progress</p><p class="mt-1 text-sm leading-6 text-muted">Useful products that help people take the next step.</p></div></div>
+        <div class="flex gap-4"><span class="text-2xl text-mango">03</span><div><p class="font-bold">Open to what's possible</p><p class="mt-1 text-sm leading-6 text-muted">An evolving ecosystem, shaped by the problems worth solving.</p></div></div>
+      </div>
+    </section>
+
+    <!-- Mission -->
+    <section id="mission" class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-10">
+      <div class="grid gap-10 lg:grid-cols-[.72fr_1.28fr] lg:gap-20">
+        <div>
+          <p class="text-xs font-extrabold uppercase tracking-[.17em] text-green">Our mission</p>
+          <div class="mt-5 h-1.5 w-16 rounded-full bg-mango"></div>
+        </div>
+        <div>
+          <h2 class="display max-w-4xl text-3xl font-extrabold leading-[1.13] tracking-[-.05em] sm:text-5xl">Talent is everywhere. Opportunity should be, too.</h2>
+          <p class="mt-7 max-w-3xl text-base leading-8 text-muted sm:text-lg">We believe where someone starts should not define how far they can go. We build technology to make learning more useful, educational tools more accessible, and the work of improving education easier to carry forward.</p>
+          <div class="mt-10 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl border border-forest/10 bg-white p-5 sm:p-6"><span class="text-2xl">🌱</span><h3 class="mt-4 font-extrabold">Start with people</h3><p class="mt-2 text-sm leading-6 text-muted">Understand what learners and educators need before deciding what to build.</p></div>
+            <div class="rounded-2xl border border-forest/10 bg-white p-5 sm:p-6"><span class="text-2xl">🧩</span><h3 class="mt-4 font-extrabold">Make things work together</h3><p class="mt-2 text-sm leading-6 text-muted">Create products and services that can grow, connect, and support one another.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section id="work" class="bg-[#f0e8d9]">
+      <div class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-10">
+        <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div><p class="text-xs font-extrabold uppercase tracking-[.17em] text-green">What we do</p><h2 class="display mt-4 max-w-2xl text-3xl font-extrabold leading-tight tracking-[-.05em] sm:text-5xl">Small steps can open<br>up bigger possibilities.</h2></div>
+          <p class="max-w-md text-sm leading-7 text-muted sm:text-base">We're starting with focused learning tools and exploring the technology that can help more education ideas become reality.</p>
+        </div>
+        <div class="mt-12 grid gap-5 md:grid-cols-2">
+          <article class="lift flex min-h-[330px] flex-col rounded-[1.7rem] bg-white p-7 sm:p-9">
+            <div class="flex items-center justify-between"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-[#e0eee5] text-forest"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3V4Z"/><path d="M8 8h6M8 12h6M8 16h3" stroke-linecap="round"/></svg></span><span class="rounded-full bg-[#e0eee5] px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-forest">Learning</span></div>
+            <div class="mt-auto pt-12"><h3 class="display text-2xl font-extrabold tracking-tight sm:text-3xl">Prepare with purpose.</h3><p class="mt-4 max-w-lg text-sm leading-7 text-muted">Exam practice and learning tools designed to help learners test their understanding, learn from mistakes, and prepare for what comes next.</p><a href="#contact" class="mt-7 inline-flex items-center gap-2 text-sm font-bold text-forest">Explore learning products <span>↗</span></a></div>
+          </article>
+          <article class="lift flex min-h-[330px] flex-col rounded-[1.7rem] bg-forest p-7 text-white sm:p-9">
+            <div class="flex items-center justify-between"><span class="grid h-12 w-12 place-items-center rounded-2xl bg-white/10 text-mango"><svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h4M7 16h7" stroke-linecap="round"/></svg></span><span class="rounded-full bg-white/10 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-mango">Infrastructure</span></div>
+            <div class="mt-auto pt-12"><h3 class="display text-2xl font-extrabold tracking-tight sm:text-3xl">Build on better tools.</h3><p class="mt-4 max-w-lg text-sm leading-7 text-white/70">APIs and reusable services that help developers and education providers build products, manage assessments, and connect useful information.</p><a href="#contact" class="mt-7 inline-flex items-center gap-2 text-sm font-bold text-mango">For builders & partners <span>↗</span></a></div>
+          </article>
+          <article class="lift flex min-h-[250px] flex-col rounded-[1.7rem] bg-lilac/70 p-7 sm:p-9">
+            <div class="flex items-center justify-between"><span class="text-xs font-extrabold uppercase tracking-wider text-ink/60">Exploring</span><span class="text-2xl text-forest">✳</span></div>
+            <div class="mt-auto pt-10"><h3 class="display text-xl font-extrabold sm:text-2xl">Education data & insight</h3><p class="mt-3 max-w-lg text-sm leading-7 text-ink/65">Ways to make educational information more structured, connected, and useful for better decisions.</p></div>
+          </article>
+          <article class="lift flex min-h-[250px] flex-col rounded-[1.7rem] bg-mango p-7 sm:p-9">
+            <div class="flex items-center justify-between"><span class="text-xs font-extrabold uppercase tracking-wider text-ink/60">Looking ahead</span><span class="text-2xl text-forest">↗</span></div>
+            <div class="mt-auto pt-10"><h3 class="display text-xl font-extrabold sm:text-2xl">More possibilities, together.</h3><p class="mt-3 max-w-lg text-sm leading-7 text-ink/70">We will keep listening, learning, and expanding into problems where technology can make a meaningful difference.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section id="values" class="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28 lg:px-10">
+      <div class="grid gap-10 lg:grid-cols-[.7fr_1.3fr] lg:gap-20">
+        <div><p class="text-xs font-extrabold uppercase tracking-[.17em] text-green">Our values</p><h2 class="display mt-4 max-w-sm text-3xl font-extrabold leading-tight tracking-[-.05em] sm:text-4xl">Progress comes from doing the work.</h2></div>
+        <div class="space-y-0 border-t border-forest/15">
+          <div class="grid gap-3 border-b border-forest/15 py-6 sm:grid-cols-[52px_1fr] sm:py-7"><span class="text-xl font-extrabold text-coral">01</span><div class="grid gap-2 sm:grid-cols-2 sm:gap-8"><h3 class="font-extrabold">Keep it useful.</h3><p class="text-sm leading-7 text-muted">Build around a real need, and make the benefit clear.</p></div></div>
+          <div class="grid gap-3 border-b border-forest/15 py-6 sm:grid-cols-[52px_1fr] sm:py-7"><span class="text-xl font-extrabold text-green">02</span><div class="grid gap-2 sm:grid-cols-2 sm:gap-8"><h3 class="font-extrabold">Respect the context.</h3><p class="text-sm leading-7 text-muted">Design for real devices, real connectivity, and real circumstances.</p></div></div>
+          <div class="grid gap-3 border-b border-forest/15 py-6 sm:grid-cols-[52px_1fr] sm:py-7"><span class="text-xl font-extrabold text-coral">03</span><div class="grid gap-2 sm:grid-cols-2 sm:gap-8"><h3 class="font-extrabold">Earn trust.</h3><p class="text-sm leading-7 text-muted">Treat privacy, security, and accuracy as essential, not optional.</p></div></div>
+          <div class="grid gap-3 border-b border-forest/15 py-6 sm:grid-cols-[52px_1fr] sm:py-7"><span class="text-xl font-extrabold text-green">04</span><div class="grid gap-2 sm:grid-cols-2 sm:gap-8"><h3 class="font-extrabold">Grow with intention.</h3><p class="text-sm leading-7 text-muted">Expand when we understand the problem and can deliver real value.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="px-5 pb-8 sm:px-8 lg:px-10">
+      <div class="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-forest px-7 py-12 text-white sm:px-12 sm:py-16 lg:px-16">
+        <div class="pattern absolute right-0 top-0 h-full w-1/2 opacity-20"></div>
+        <div class="absolute -right-10 -top-14 h-56 w-56 rounded-full border-[30px] border-white/10"></div>
+        <div class="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div><p class="text-xs font-extrabold uppercase tracking-[.17em] text-mango">Let's move learning forward</p><h2 class="display mt-4 max-w-3xl text-3xl font-extrabold leading-tight tracking-[-.05em] sm:text-5xl">Have an idea or a problem worth solving?</h2><p class="mt-5 max-w-xl text-sm leading-7 text-white/70 sm:text-base">We'd like to hear from learners, educators, developers, and partners who want to make education work better.</p></div>
+          <!-- Replace placeholder email before publishing. -->
+          <a href="mailto:hello@example.com?subject=Education%20technology%20conversation" class="inline-flex items-center justify-center gap-4 rounded-full bg-mango px-6 py-4 text-sm font-extrabold text-ink transition hover:bg-white">Start a conversation <span>↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 sm:px-8 md:flex-row md:items-center md:justify-between lg:px-10">
+    <a href="#" class="flex items-center gap-2.5 font-extrabold tracking-tight"><span class="grid h-8 w-8 place-items-center rounded-xl bg-forest text-sm text-mango">L.</span> learnstead<span class="text-coral">.</span></a>
+    <p class="text-xs text-muted">Education products and technology, built for what's possible.</p>
+    <p class="text-xs text-muted">© <span id="year"></span> Learnstead. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      const expanded = menuBtn.getAttribute('aria-expanded') === 'true';
+      menuBtn.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.classList.toggle('hidden');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

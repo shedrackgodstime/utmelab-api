@@ -1,44 +1,34 @@
-//! `GET /api/v1/exams/{exam}/papers` — how an exam is shaped.
+//! `GET /v1/exams/{exam}/papers` — how an exam is shaped, and whether the
+//! bank can fill it. Read-only.
 //!
-//! Read-only. This is the *scheme*: which subjects, how many questions each,
-//! what the candidate must do. It is a constant restated from the bank (D19),
-//! so it changes when the bank changes and is never stored twice.
+//! The scheme is a constant restated from the bank (D19): subject counts,
+//! duration, rules, and requirement groups all come from content rather
+//! than a second copy, so it changes only when the bank does. Readiness is
+//! kept beside the scheme, and completeness is only ever claimed for a
+//! country scope.
 //!
-//! Everything it says about our readiness is honest: `questions_available` is
-//! a **lower bound**, and `subjects_ready` names the subjects that can fill a
-//! slot today. A consumer can therefore tell a real mock from an empty shell
-//! before assembling anything.
-//!
-//! `POST /api/v1/papers/{exam}/{subject}` assembles one subject's mock from
-//! ready topics (D69): deterministic per seed, answers always withheld, 409
-//! naming the gaps until D68 says complete. Scoring re-assembles with the
-//! same seed — stateless, no stored attempts.
+//! `POST /v1/papers/{exam}/{subject}` assembles one subject's mock from the
+//! rows the bank holds (D69/D70): deterministic per seed, answers always
+//! withheld, 409 naming the gaps until the bank can fill the paper.
+//! `.../score` re-assembles with the same seed and marks only submitted
+//! ids — stateless, no paper table, no stored attempts.
 
-use axum::Json;
-use axum::Router;
-use axum::extract::{Path, Query, State};
-use axum::routing::{get, post};
-use serde::{Deserialize, Serialize};
-use utoipa::ToSchema;
+use std::collections::HashMap;
 
-use crate::AppState;
-use crate::bank::RenderedQuestion;
-use crate::bank::Scheme;
-use crate::bank::render;
-use crate::bank::scheme;
-use crate::error::ApiError;
+use axum::{
+    extract::{Path, Query, State},
+    routing::{get, post},
+    Json, Router,
+};
+use serde::Deserialize;
 
-/// The scheme plus whether the bank can fill it. Readiness is kept beside the
-/// scheme rather than inside it, so the shape a consumer validates does not
-/// move when our content grows.
-#[derive(serde::Serialize, utoipa::ToSchema)]
-pub struct PaperReadiness {
-    pub exam: String,
-    pub scheme: Scheme,
-    /// True when every requirement group for the scheme's country scope
-    /// holds enough verified questions.
-    pub complete: bool,
-}
+use crate::{
+    auth::{api_key::AuthedKey, SCOPE_READ_CATALOG},
+    core,
+    error::AppError,
+    state::{AppState, DbState},
+    store,
+};
 
 #[derive(Deserialize)]
 pub struct PapersQuery {
@@ -48,172 +38,51 @@ pub struct PapersQuery {
     pub country: Option<String>,
 }
 
-pub fn router() -> Router<AppState> {
-    Router::new()
-        .route("/v1/exams/{exam}/papers", get(readiness))
-        .route("/v1/papers/{exam}/{subject}", post(assemble_paper))
-        .route("/v1/papers/{exam}/{subject}/score", post(score_paper))
+#[derive(Deserialize)]
+pub struct AssembleQuery {
+    /// Deterministic draw. Same seed, same paper. Defaults to 1, as the
+    /// published contract always has: omitting it stays reproducible.
+    pub seed: Option<u64>,
+    /// Country scope. No row is restricted to a country today
+    /// (`topic_countries` is empty), so this does not change the draw; it
+    /// is accepted so the request is the same shape as readiness.
+    pub country: Option<String>,
 }
 
-#[utoipa::path(
-    get,
-    path = "/api/v1/exams/{exam}/papers",
-    tag = "papers",
-    operation_id = "getExamScheme",
-    summary = "Paper assembly readiness for an exam.",
-    params(
-        ("exam" = String, Path, description = "Exam code, as listed by GET /exams."),
-        ("country" = Option<String>, Query, description = "Country scope, e.g. GH."),
-    ),
-    responses(
-        (status = 200, body = PaperReadiness),
-        (status = 404, description = "No subject carried for that exam"),
-    ),
-)]
-pub async fn readiness(
-    State(state): State<AppState>,
-    Path(exam): Path<String>,
-    Query(f): Query<PapersQuery>,
-) -> Result<Json<PaperReadiness>, ApiError> {
-    let bank = state.bank.borrow().clone();
-    let scheme = scheme::scheme_for(bank.as_ref(), &exam, f.country.as_deref())
-        .ok_or_else(|| ApiError::not_found("exam_not_found", &exam))?;
-    let complete = scheme.is_complete();
-    Ok(Json(PaperReadiness {
-        exam,
-        scheme,
-        complete,
-    }))
+#[derive(Deserialize)]
+pub struct ScoreRequest {
+    pub seed: u64,
+    pub country: Option<String>,
+    #[serde(default)]
+    pub answers: HashMap<String, String>,
 }
 
-/// Build the paper for a request, or say exactly why not. Shared by the paper
-/// and score endpoints so both refuse identically: one subject lookup, one
-/// gate decision, one sentence (D69/D70).
-fn build(
-    state: &AppState,
-    exam: &str,
-    subject: &str,
-    country: Option<&str>,
-    seed: u64,
-) -> Result<crate::bank::AssembledPaper, ApiError> {
-    let bank = state.bank.borrow().clone();
-    if bank.subject(exam, subject).is_none() {
-        return Err(ApiError::not_found(
-            "subject_not_found",
-            format!("No subject with slug '{subject}' for exam '{exam}'."),
-        ));
-    }
-    // Blueprint rows may legitimately be absent: count assembly (D70) needs no
-    // measurement, so an empty blueprint is not a 404 — it is a count paper.
-    let rows = bank.blueprints(exam, subject);
-    crate::bank::assemble(bank.as_ref(), &rows, exam, subject, country, seed)
-        .map_err(|unready| ApiError::conflict("paper_not_ready", unready.detail()))
-}
-
-#[derive(Serialize, ToSchema)]
+#[derive(serde::Serialize)]
 pub struct PaperSectionOut {
     pub topic: String,
     pub name: String,
-    pub questions: Vec<RenderedQuestion>,
+    pub questions: Vec<core::models::RenderedQuestion>,
 }
 
-#[derive(Serialize, ToSchema)]
+#[derive(serde::Serialize)]
 pub struct AssembledPaperOut {
     pub exam: String,
     pub subject: String,
     pub seed: u64,
-    /// Which gate built this paper (D70): `blueprint` is balanced per
-    /// measured topic expectation; `count` is a full-length draw whose mix
-    /// is not measured. Consumers must read it before calling the paper fair.
-    pub mode: crate::bank::PaperMode,
+    pub mode: core::papers::PaperMode,
     pub total: usize,
     pub sections: Vec<PaperSectionOut>,
 }
 
-#[derive(Deserialize)]
-pub struct AssembleQuery {
-    pub seed: Option<u64>,
-    pub country: Option<String>,
-}
-
-#[derive(Serialize, ToSchema)]
-pub struct ReadinessGapOut {
-    pub topic: String,
-    pub name: String,
-    pub expected: f64,
-    pub need: u32,
-    pub have: usize,
-}
-
-#[utoipa::path(
-    post,
-    path = "/api/v1/papers/{exam}/{subject}",
-    tag = "papers",
-    operation_id = "assemblePaper",
-    summary = "Assemble a seeded mock paper.",
-    description = "Assemble one subject's mock from ready topics (D69): deterministic per seed, answers always withheld. 409 names the gap topics until the subject is complete.",
-    params(
-        ("exam" = String, Path, description = "Exam code."),
-        ("subject" = String, Path, description = "Subject slug within that exam."),
-        ("seed" = Option<u64>, Query, description = "Deterministic draw. Same seed, same paper. Default: 1."),
-        ("country" = Option<String>, Query, description = "Country code filter, e.g. GH."),
-    ),
-    responses(
-        (status = 200, body = AssembledPaperOut),
-        (status = 404, description = "No such subject for this exam"),
-        (status = 409, description = "Bank cannot fill the paper; the detail names what is short"),
-    ),
-)]
-pub async fn assemble_paper(
-    State(state): State<AppState>,
-    Path((exam, subject)): Path<(String, String)>,
-    Query(f): Query<AssembleQuery>,
-    _caller: crate::api::auth::Caller,
-) -> Result<Json<AssembledPaperOut>, ApiError> {
-    let paper = build(
-        &state,
-        &exam,
-        &subject,
-        f.country.as_deref(),
-        f.seed.unwrap_or(1),
-    )?;
-    Ok(Json(AssembledPaperOut {
-        exam: paper.exam.clone(),
-        subject: paper.subject.clone(),
-        seed: paper.seed,
-        mode: paper.mode,
-        total: paper.total(),
-        sections: paper
-            .sections
-            .iter()
-            .map(|s| PaperSectionOut {
-                topic: s.topic.clone(),
-                name: s.name.clone(),
-                questions: s.questions.iter().map(|q| render(q, false)).collect(),
-            })
-            .collect(),
-    }))
-}
-
-#[derive(Deserialize, ToSchema)]
-pub struct ScoreRequest {
-    /// The seed the paper was assembled with.
-    pub seed: u64,
-    /// Country scope used at assembly, if any — scope changes the rows.
-    pub country: Option<String>,
-    /// Candidate's answers: question id → chosen option id.
-    pub answers: std::collections::HashMap<String, String>,
-}
-
-#[derive(Serialize, ToSchema)]
+#[derive(serde::Serialize)]
 pub struct ScoredQuestion {
     pub id: String,
     pub submitted: Option<String>,
     pub correct: bool,
 }
 
-#[derive(Serialize, ToSchema)]
-pub struct ScoreResponse {
+#[derive(serde::Serialize)]
+pub struct ScoredPaper {
     pub exam: String,
     pub subject: String,
     pub seed: u64,
@@ -222,35 +91,62 @@ pub struct ScoreResponse {
     pub questions: Vec<ScoredQuestion>,
 }
 
-#[utoipa::path(
-    post,
-    path = "/api/v1/papers/{exam}/{subject}/score",
-    tag = "papers",
-    operation_id = "scorePaper",
-    summary = "Score a paper assembled with the same seed.",
-    description = "Mark a paper assembled with the same seed (D69): re-assembles statelessly and marks only submitted ids. Unsubmitted rows report unanswered, never the key.",
-    params(
-        ("exam" = String, Path, description = "Exam code."),
-        ("subject" = String, Path, description = "Subject slug within that exam."),
-    ),
-    request_body = ScoreRequest,
-    responses(
-        (status = 200, body = ScoreResponse),
-        (status = 404, description = "No such subject for this exam"),
-        (status = 409, description = "Bank cannot fill the paper; the detail names what is short"),
-    ),
-)]
+pub async fn readiness(
+    State(s): State<DbState>,
+    AuthedKey(auth): AuthedKey,
+    Path(exam): Path<String>,
+    Query(f): Query<PapersQuery>,
+) -> Result<Json<core::models::PaperReadiness>, AppError> {
+    auth.require(SCOPE_READ_CATALOG)?;
+    let Some(record) = store::catalog::get_exam(&s, &exam).await? else {
+        return Err(AppError::NotFound);
+    };
+    let subjects = store::catalog::list_subjects(&s, &exam).await?;
+    if subjects.is_empty() {
+        return Err(AppError::NotFound);
+    }
+    let country = core::papers::effective_country(&record, f.country.as_deref());
+    let stats = store::catalog::subject_stats(&s, &exam, country.as_deref()).await?;
+    let requirements = match country.as_deref() {
+        Some(cc) => store::catalog::list_requirements(&s, &exam, cc).await?,
+        None => Vec::new(),
+    };
+    let scheme = core::papers::build_scheme(&record, &subjects, &stats, country, requirements);
+    let complete = core::papers::is_complete(&scheme);
+    Ok(Json(core::models::PaperReadiness {
+        exam: record.code.clone(),
+        scheme,
+        complete,
+    }))
+}
+
+pub async fn assemble_paper(
+    State(s): State<DbState>,
+    AuthedKey(auth): AuthedKey,
+    Path((exam, subject)): Path<(String, String)>,
+    Query(f): Query<AssembleQuery>,
+) -> Result<Json<AssembledPaperOut>, AppError> {
+    auth.require(SCOPE_READ_CATALOG)?;
+    let seed = f.seed.unwrap_or(1);
+    let paper = build(&s, &exam, &subject, seed, f.country.as_deref()).await?;
+    Ok(Json(into_out(paper)))
+}
+
+/// Score re-assembles the same paper with the same seed, then marks only
+/// submitted ids. Correctness is never revealed for a guess not made.
 pub async fn score_paper(
-    State(state): State<AppState>,
+    State(s): State<DbState>,
+    AuthedKey(auth): AuthedKey,
     Path((exam, subject)): Path<(String, String)>,
     Json(body): Json<ScoreRequest>,
-) -> Result<Json<ScoreResponse>, ApiError> {
-    let paper = build(&state, &exam, &subject, body.country.as_deref(), body.seed)?;
-    let (score, marked) = crate::bank::mark(&paper, &body.answers);
+) -> Result<Json<ScoredPaper>, AppError> {
+    auth.require(SCOPE_READ_CATALOG)?;
+    let paper = build(&s, &exam, &subject, body.seed, body.country.as_deref()).await?;
     let total = paper.total();
-    Ok(Json(ScoreResponse {
-        exam: paper.exam.clone(),
-        subject: paper.subject.clone(),
+    let (score, marked) = core::papers::mark(&paper, &body.answers);
+    Ok(Json(ScoredPaper {
+        exam: paper.exam,
+        subject: paper.subject,
         seed: paper.seed,
         score,
         total,
@@ -263,4 +159,62 @@ pub async fn score_paper(
             })
             .collect(),
     }))
+}
+
+/// Fetch the bank for one subject and assemble by the gate it earns. The
+/// 404 names an exam/subject the bank never had; the 409 names a paper the
+/// bank cannot fill yet.
+async fn build(
+    s: &DbState,
+    exam: &str,
+    subject: &str,
+    seed: u64,
+    country: Option<&str>,
+) -> Result<core::papers::AssembledPaper, AppError> {
+    let Some(record) = store::catalog::get_subject(s, exam, subject).await? else {
+        return Err(AppError::NotFound);
+    };
+    let blueprints = store::catalog::list_blueprints(s, exam, subject).await?;
+    let syllabus = store::catalog::list_syllabus(s, exam, subject).await?;
+    let rows = store::catalog::subject_rows(s, exam, subject, country).await?;
+    let bank = core::papers::SubjectBank {
+        subject: record,
+        blueprints,
+        syllabus,
+        rows,
+    };
+    core::papers::assemble(&bank, seed).map_err(|u| AppError::Conflict(u.detail()))
+}
+
+fn into_out(paper: core::papers::AssembledPaper) -> AssembledPaperOut {
+    let total = paper.total();
+    AssembledPaperOut {
+        exam: paper.exam,
+        subject: paper.subject,
+        seed: paper.seed,
+        mode: paper.mode,
+        total,
+        sections: paper
+            .sections
+            .into_iter()
+            .map(|sec| PaperSectionOut {
+                topic: sec.topic,
+                name: sec.name,
+                // Answers withheld: a paper never carries the key.
+                questions: sec
+                    .questions
+                    .iter()
+                    .map(|q| core::catalog::render(q, false))
+                    .collect(),
+            })
+            .collect(),
+    }
+}
+
+pub fn router(state: AppState) -> Router<AppState> {
+    Router::new()
+        .route("/v1/exams/{exam}/papers", get(readiness))
+        .route("/v1/papers/{exam}/{subject}", post(assemble_paper))
+        .route("/v1/papers/{exam}/{subject}/score", post(score_paper))
+        .with_state(state)
 }

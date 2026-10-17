@@ -33,3 +33,15 @@ Thumbs.db
 *.db-shm
 *.db-wal
 
+
+# replica/db artifacts (from the crate .gitignore)
+*.db
+*.db-info
+*.db-journal
+*.db-changes
+*.db-log
+
+# editor/backup artifacts: never commit (a .env backup already leaked once)
+*.bak
+*.orig
+*.rej

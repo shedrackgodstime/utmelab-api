@@ -1,146 +1,258 @@
-//! Process configuration, read once from the environment.
-//!
-//! Everything has a working default so the service boots during development
-//! without ceremony. The key file is the one value worth being deliberate about:
-//! it must live outside the committed constant, because it holds credential
-//! digests.
-//!
-//! Turso (Phase 1): `TURSO_DB_URL` + `TURSO_DB_TOKEN` select the remote key
-//! store; when unset the file store is used. Docs call these
-//! `TURSO_DATABASE_URL`/`TURSO_AUTH_TOKEN` — both spellings are accepted, ours
-//! wins, mismatch warns. The stray `TURSO_*` trio in `.env` is the same deal:
-//! accepted as deprecated aliases with a boot warning, never the canonical
-//! names.
+//! Runtime knobs. Defaults are tuned for a small box; every value is
+//! overridable by env (tune here). Parsing is strict: a variable that is set
+//! must be valid or boot fails naming it, and a blank value counts as unset so
+//! an empty override never masquerades as a real one.
 
-use std::env;
-use std::path::{Path, PathBuf};
+pub const DEFAULT_WORKER_THREADS: usize = 4;
+pub const DEFAULT_MAX_BLOCKING_THREADS: usize = 32;
+pub const DEFAULT_CONCURRENCY_LIMIT: usize = 1000;
+pub const DEFAULT_PORT: u16 = 3100;
+pub const DEFAULT_SERVER_URL: &str = "http://localhost:3100";
+pub const DEFAULT_REPLICA_PATH: &str = "db/sync.db";
+/// Seconds between background replica pulls. Not a long-poll window: each
+/// tick waits, pulls once, and leaves the sync IO worker free in between, so
+/// reads and writes on the serving path never queue behind a pull.
+pub const DEFAULT_SYNC_SECS: u64 = 60;
+pub const DEFAULT_DB_MAX_CONCURRENT: usize = 16;
+pub const DEFAULT_READ_TIMEOUT_SECS: u64 = 5;
+pub const DEFAULT_WRITE_TIMEOUT_SECS: u64 = 30;
 
-use crate::error::ApiError;
-
-#[derive(Clone, Debug)]
+#[derive(Clone)]
 pub struct Config {
-    /// Address the HTTP server binds to.
-    pub bind: String,
-    /// Default source file for `key import` (a one-time file -> Turso
-    /// migration). Gitignored, 0600. Not a runtime backend — keys live in
-    /// Turso (D53).
-    pub keys_file: PathBuf,
-    /// Where question reports are persisted. Same treatment: operational data,
-    /// never the committed constant.
-    pub reports_file: PathBuf,
-    /// Requests/minute applied to a key that has no explicit limit.
-    pub default_rate_limit: u32,
-    /// Directory holding the five table files. This is the constant (D23).
-    pub data_dir: PathBuf,
-    /// Remote key store. `None` = file store (v1 default, dev).
-    pub turso_url: Option<String>,
-    /// Write-capable token, server env only — never baked into `site/dist`.
-    pub turso_token: Option<String>,
-    /// Seconds a resolved key stays cached before re-read. Default 30.
-    pub key_cache_ttl_secs: u64,
-    /// On-disk bank snapshot for fast boots (`var/`-side, gitignored).
-    /// `UTMELAB_BANK_CACHE_FILE`, default `var/bank_cache.json`.
-    pub bank_cache_file: PathBuf,
-    /// Seconds between content-change checks for hot reload. Default 300.
-    /// `UTMELAB_BANK_REFRESH_SECS`.
-    pub bank_refresh_secs: u64,
+    pub worker_threads: usize,
+    pub max_blocking_threads: usize,
+    pub concurrency_limit: usize,
+    pub port: u16,
+    pub server_url: String,
+    pub turso_url: String,
+    pub turso_token: String,
+    pub replica_path: String,
+    pub sync_secs: u64,
+    pub db_max_concurrent: usize,
+    pub cookie_secure: bool,
+    pub read_timeout_secs: u64,
+    pub write_timeout_secs: u64,
 }
 
-impl Config {
-    pub fn data_dir(&self) -> &Path {
-        &self.data_dir
+impl Default for Config {
+    fn default() -> Self {
+        Self {
+            worker_threads: DEFAULT_WORKER_THREADS,
+            max_blocking_threads: DEFAULT_MAX_BLOCKING_THREADS,
+            concurrency_limit: DEFAULT_CONCURRENCY_LIMIT,
+            port: DEFAULT_PORT,
+            server_url: DEFAULT_SERVER_URL.to_string(),
+            turso_url: String::new(),
+            turso_token: String::new(),
+            replica_path: DEFAULT_REPLICA_PATH.to_string(),
+            sync_secs: DEFAULT_SYNC_SECS,
+            db_max_concurrent: DEFAULT_DB_MAX_CONCURRENT,
+            cookie_secure: false,
+            read_timeout_secs: DEFAULT_READ_TIMEOUT_SECS,
+            write_timeout_secs: DEFAULT_WRITE_TIMEOUT_SECS,
+        }
+    }
+}
+
+/// A lookup that yields a raw value for a key, as the environment would.
+/// Injected so parsing is testable without mutating process-global state.
+type Source<'a> = &'a dyn Fn(&str) -> Option<String>;
+
+/// Trimmed value, or `None` when unset or blank. Blank is unset: an empty
+/// override is a mistake, not a request for an empty string.
+fn raw(source: Source, key: &str) -> Option<String> {
+    source(key)
+        .map(|v| v.trim().to_string())
+        .filter(|v| !v.is_empty())
+}
+
+fn text(source: Source, key: &str, default: &str) -> String {
+    raw(source, key).unwrap_or_else(|| default.to_string())
+}
+
+/// Parse a set value, or fall back to the default when unset. A value that
+/// is present but unparseable is an error that names the variable.
+fn number<T: std::str::FromStr>(source: Source, key: &str, default: T) -> Result<T, String> {
+    match raw(source, key) {
+        None => Ok(default),
+        Some(v) => v
+            .parse::<T>()
+            .map_err(|_| format!("invalid config: {key}={v:?} is not a valid number")),
+    }
+}
+
+/// Booleans are spelled, not guessed: an unrecognized truthiness is an error
+/// rather than a silent `false`. That matters most for `COOKIE_SECURE`, where
+/// a typo would otherwise quietly downgrade a security setting.
+fn boolean(source: Source, key: &str, default: bool) -> Result<bool, String> {
+    match raw(source, key) {
+        None => Ok(default),
+        Some(v) => match v.to_ascii_lowercase().as_str() {
+            "1" | "true" | "yes" | "on" => Ok(true),
+            "0" | "false" | "no" | "off" => Ok(false),
+            _ => Err(format!(
+                "invalid config: {key}={v:?} is not a boolean (use 1/0 or true/false)"
+            )),
+        },
     }
 }
 
 impl Config {
-    pub fn from_env() -> Result<Self, ApiError> {
-        let bind = env::var("UTMELAB_API_BIND").unwrap_or_else(|_| "127.0.0.1:8080".into());
-        let keys_file = env::var("UTMELAB_API_KEYS_FILE")
-            .map(PathBuf::from)
-            .unwrap_or_else(|_| PathBuf::from("var/api_keys.json"));
-        let reports_file = env::var("UTMELAB_API_REPORTS_FILE")
-            .map(PathBuf::from)
-            .unwrap_or_else(|_| PathBuf::from("var/reports.json"));
-        let default_rate_limit = env::var("UTMELAB_API_DEFAULT_RATE_LIMIT")
-            .ok()
-            .and_then(|v| v.parse().ok())
-            .unwrap_or(60);
+    /// Parse and validate every knob. Returns the offending variable on a
+    /// bad value instead of quietly serving with a default.
+    pub fn from_env() -> Result<Self, String> {
+        Self::from_source(&|k| std::env::var(k).ok())
+    }
 
-        let data_dir = env::var("UTMELAB_API_DATA_DIR")
-            .map(PathBuf::from)
-            .unwrap_or_else(|_| PathBuf::from("data"));
+    /// Testable core of [`Config::from_env`].
+    fn from_source(source: Source) -> Result<Self, String> {
+        let d = Self::default();
+        let cfg = Self {
+            worker_threads: number(source, "WORKER_THREADS", d.worker_threads)?,
+            max_blocking_threads: number(source, "MAX_BLOCKING_THREADS", d.max_blocking_threads)?,
+            concurrency_limit: number(source, "CONCURRENCY_LIMIT", d.concurrency_limit)?,
+            port: number(source, "PORT", d.port)?,
+            server_url: text(source, "SERVER_URL", &d.server_url),
+            turso_url: text(source, "TURSO_DB_URL", ""),
+            turso_token: text(source, "TURSO_DB_TOKEN", ""),
+            replica_path: text(source, "REPLICA_PATH", &d.replica_path),
+            sync_secs: number(source, "SYNC_SECS", d.sync_secs)?,
+            db_max_concurrent: number(source, "DB_MAX_CONCURRENT", d.db_max_concurrent)?,
+            cookie_secure: boolean(source, "COOKIE_SECURE", d.cookie_secure)?,
+            read_timeout_secs: number(source, "READ_TIMEOUT_SECS", d.read_timeout_secs)?,
+            write_timeout_secs: number(source, "WRITE_TIMEOUT_SECS", d.write_timeout_secs)?,
+        };
+        cfg.validate()?;
+        Ok(cfg)
+    }
 
-        let (turso_url, turso_token) = turso_from_env();
-        let key_cache_ttl_secs = env::var("KEY_CACHE_TTL_SECS")
-            .or_else(|_| env::var("UTMELAB_API_KEY_CACHE_TTL_SECS"))
-            .ok()
-            .and_then(|v| v.parse().ok())
-            .unwrap_or(30);
-        let bank_cache_file = env::var("UTMELAB_BANK_CACHE_FILE")
-            .map(PathBuf::from)
-            .unwrap_or_else(|_| PathBuf::from("var/bank_cache.json"));
-        let bank_refresh_secs = env::var("UTMELAB_BANK_REFRESH_SECS")
-            .ok()
-            .and_then(|v| v.parse().ok())
-            .unwrap_or(300);
+    pub fn normalized_url(&self) -> String {
+        let u = self.turso_url.trim().to_string();
+        if u.starts_with("turso://") {
+            u.replacen("turso://", "libsql://", 1)
+        } else {
+            u
+        }
+    }
 
-        Ok(Self {
-            bind,
-            keys_file,
-            reports_file,
-            default_rate_limit,
-            data_dir,
-            turso_url,
-            turso_token,
-            key_cache_ttl_secs,
-            bank_cache_file,
-            bank_refresh_secs,
+    pub fn has_db(&self) -> bool {
+        !self.normalized_url().is_empty() && !self.turso_token.is_empty()
+    }
+
+    /// Reads answer from the local replica in milliseconds; anything past
+    /// this is a bug, not slowness worth waiting for.
+    pub fn fast_timeout(&self) -> tower_http::timeout::TimeoutLayer {
+        tower_http::timeout::TimeoutLayer::with_status_code(
+            axum::http::StatusCode::REQUEST_TIMEOUT,
+            std::time::Duration::from_secs(self.read_timeout_secs),
+        )
+    }
+
+    /// Writes push to cloud (~seconds from most regions); a slower budget
+    /// keeps them usable without letting reads hide behind it.
+    pub fn slow_timeout(&self) -> tower_http::timeout::TimeoutLayer {
+        tower_http::timeout::TimeoutLayer::with_status_code(
+            axum::http::StatusCode::REQUEST_TIMEOUT,
+            std::time::Duration::from_secs(self.write_timeout_secs),
+        )
+    }
+
+    /// Fail fast on nonsense before serving. Called once at boot; a bad
+    /// value exits the process with a message instead of a dead server.
+    pub fn validate(&self) -> Result<(), String> {
+        let bad = |k: &str| format!("invalid config: {k} must be > 0");
+        if self.worker_threads == 0 {
+            return Err(bad("WORKER_THREADS"));
+        }
+        if self.max_blocking_threads == 0 {
+            return Err(bad("MAX_BLOCKING_THREADS"));
+        }
+        if self.concurrency_limit == 0 {
+            return Err(bad("CONCURRENCY_LIMIT"));
+        }
+        if self.port == 0 {
+            return Err(bad("PORT"));
+        }
+        if self.sync_secs == 0 {
+            return Err(bad("SYNC_SECS"));
+        }
+        if self.db_max_concurrent == 0 {
+            return Err(bad("DB_MAX_CONCURRENT"));
+        }
+        if self.read_timeout_secs == 0 {
+            return Err(bad("READ_TIMEOUT_SECS"));
+        }
+        if self.write_timeout_secs == 0 {
+            return Err(bad("WRITE_TIMEOUT_SECS"));
+        }
+        Ok(())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn parse(pairs: &[(&str, &str)]) -> Result<Config, String> {
+        let owned: Vec<(String, String)> = pairs
+            .iter()
+            .map(|(k, v)| ((*k).to_string(), (*v).to_string()))
+            .collect();
+        Config::from_source(&move |k| {
+            owned
+                .iter()
+                .find(|(key, _)| key == k)
+                .map(|(_, v)| v.clone())
         })
     }
-}
 
-/// Turso credentials, or `None` when the file store should be used.
-///
-/// Canonical: `TURSO_DB_URL` / `TURSO_DB_TOKEN`. Accepted with a stderr
-/// warning: docs spellings (`TURSO_DATABASE_URL`/`TURSO_AUTH_TOKEN`) and the
-/// stray `TURSO_*` trio currently in `.env`. Ours wins on conflict; a URL
-/// without a token (or vice versa) is a configuration error, not a silent
-/// fallback — half-credentials would fail closed on every request.
-fn turso_from_env() -> (Option<String>, Option<String>) {
-    let url = first_of(&["TURSO_DB_URL", "TURSO_DATABASE_URL", "TURSO_DB_URL"]);
-    let token = first_of(&[
-        "TURSO_DB_TOKEN",
-        "TURSO_AUTH_TOKEN",
-        "TURSO_DB_TOKEN",
-        "TURSO_DB_TOKEN_READONLY",
-    ]);
-    match (url, token) {
-        (Some(u), Some(t)) => (Some(u), Some(t)),
-        (None, None) => (None, None),
-        (u, t) => {
-            eprintln!(
-                "warning: Turso URL {} but token {}; key store falls back to file",
-                if u.is_some() { "set" } else { "missing" },
-                if t.is_some() { "set" } else { "missing" },
-            );
-            (None, None)
-        }
+    #[test]
+    fn unset_variables_take_defaults() {
+        let c = parse(&[]).expect("defaults are valid");
+        assert_eq!(c.port, DEFAULT_PORT);
+        assert_eq!(c.worker_threads, DEFAULT_WORKER_THREADS);
+        assert_eq!(c.replica_path, DEFAULT_REPLICA_PATH);
+        assert!(!c.cookie_secure);
     }
-}
 
-fn first_of(names: &[&str]) -> Option<String> {
-    for (i, name) in names.iter().enumerate() {
-        if let Ok(v) = env::var(name) {
-            if !v.trim().is_empty() {
-                if i > 0 {
-                    eprintln!(
-                        "warning: {name} is a deprecated alias; use {} instead",
-                        names[0]
-                    );
-                }
-                return Some(v);
-            }
-        }
+    #[test]
+    fn blank_counts_as_unset() {
+        let c = parse(&[("PORT", "   "), ("REPLICA_PATH", "")]).expect("blank falls back");
+        assert_eq!(c.port, DEFAULT_PORT);
+        assert_eq!(c.replica_path, DEFAULT_REPLICA_PATH);
     }
-    None
+
+    #[test]
+    fn malformed_numbers_fail_naming_the_variable() {
+        let err = parse(&[("PORT", "abc")]).err().expect("must reject abc");
+        assert!(
+            err.contains("PORT"),
+            "message must name the variable: {err}"
+        );
+        assert!(parse(&[("SYNC_SECS", "-1")]).is_err());
+        assert!(parse(&[("DB_MAX_CONCURRENT", "many")]).is_err());
+    }
+
+    #[test]
+    fn zero_parses_but_fails_validation() {
+        assert!(parse(&[("PORT", "0")]).is_err());
+        assert!(parse(&[("WORKER_THREADS", "0")]).is_err());
+    }
+
+    #[test]
+    fn booleans_accept_common_spellings_and_reject_junk() {
+        assert!(
+            parse(&[("COOKIE_SECURE", "true")])
+                .expect("true")
+                .cookie_secure
+        );
+        assert!(parse(&[("COOKIE_SECURE", "1")]).expect("1").cookie_secure);
+        assert!(parse(&[("COOKIE_SECURE", "ON")]).expect("ON").cookie_secure);
+        assert!(
+            !parse(&[("COOKIE_SECURE", "off")])
+                .expect("off")
+                .cookie_secure
+        );
+        assert!(parse(&[("COOKIE_SECURE", "maybe")]).is_err());
+    }
 }

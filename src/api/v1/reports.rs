@@ -1,116 +1,135 @@
-//! `POST /api/v1/questions/{id}/report` — flag a broken question.
+//! Consumer flags. One endpoint serves every reportable kind — a
+//! question, a topic, a passage, a novel — dispatching on the target
+//! type rather than growing a route per kind. The original
+//! `POST /v1/questions/{id}/report` stays as a thin delegate so existing
+//! callers keep working.
 //!
-//! The objective, stated once: turn consumer-side flags into an aggregated
-//! review queue for us, without creating a spam vector, a moderation burden,
-//! or write-path complexity. Five constraints enforce that (see `reports/store.rs`).
-//!
-//! Requires a key like every other write. Subject to the key's per-minute limit
-//! **and** a tight daily report cap — reporting is rare, so the cap is generous
-//! for humans and useless for floods.
+//! Every filing is key-gated, subject to the key's per-minute limit and
+//! a tight daily cap (see `core::reports`): reporting is rare, so the cap
+//! is generous for humans and useless for floods.
 
-use axum::Json;
-use axum::Router;
-use axum::extract::{Path, State};
-use axum::response::IntoResponse;
-use axum::routing::post;
-use serde::{Deserialize, Serialize};
-use utoipa::ToSchema;
+use axum::{
+    extract::{Path, State},
+    http::StatusCode,
+    routing::post,
+    Json, Router,
+};
+use serde::Deserialize;
 
-use crate::AppState;
-use crate::api::auth::Caller;
-use crate::error::ApiError;
-use crate::reports::{DEFAULT_REPORTS_PER_DAY, ReportReason};
+use crate::{
+    auth::{api_key::AuthedKey, Auth, SCOPE_WRITE_REPORTS},
+    core,
+    error::AppError,
+    state::{AppState, DbState},
+    store,
+};
 
-#[derive(Deserialize, ToSchema)]
+#[derive(Deserialize)]
 pub struct ReportBody {
-    /// One of: wrong_answer, unclear_stem, broken_option, wrong_explanation, other.
+    /// One of: question, topic, passage, novel.
+    pub target_type: String,
+    /// The target's id. Topics have no single id, so theirs is the
+    /// slash-joined `exam/subject/slug`.
+    pub target_id: String,
+    /// One of: wrong_answer, unclear_stem, broken_option,
+    /// wrong_explanation, other.
     pub reason: String,
-    /// Optional context, max 500 characters. No PII — never send names or emails.
+    /// Optional context, max 500 characters. No PII.
     pub detail: Option<String>,
 }
 
-#[derive(Serialize, ToSchema)]
-pub struct ReportReceipt {
-    pub id: String,
-    pub question_id: String,
+#[derive(Deserialize)]
+pub struct QuestionReportBody {
     pub reason: String,
-    /// True when this exact flag was already filed — POST is idempotent here.
-    pub duplicate: bool,
+    pub detail: Option<String>,
 }
 
-pub fn router() -> Router<AppState> {
-    Router::new().route("/v1/questions/{id}/report", post(report))
+/// `POST /v1/report` — the general entry point.
+pub async fn file(
+    State(s): State<DbState>,
+    AuthedKey(auth): AuthedKey,
+    Json(b): Json<ReportBody>,
+) -> Result<(StatusCode, Json<serde_json::Value>), AppError> {
+    report(s, auth, b.target_type, b.target_id, b.reason, b.detail).await
 }
 
-#[utoipa::path(
-    post,
-    path = "/api/v1/questions/{id}/report",
-    tag = "questions",
-    operation_id = "reportQuestion",
-    summary = "Flag a bad row for review.",
-    description = "Flag a broken question. Reasons are a closed set so reports aggregate; \
-free-text detail is optional and capped. Reports never change the bank — they join a \
-review queue, and a question with many flags gets human eyes.",
-    params(("id" = String, Path, description = "Question id.")),
-    responses(
-        (status = 201, body = ReportReceipt),
-        (status = 400, description = "Unknown reason, or detail over 500 characters"),
-        (status = 401, description = "Missing or invalid API key"),
-        (status = 404, description = "No such question"),
-        (status = 429, description = "Over a limit — per-minute or the daily report cap"),
-    ),
-    security(("ApiKeyAuth" = [])),
-)]
-pub async fn report(
-    State(state): State<AppState>,
-    Caller(key): Caller,
+/// `POST /v1/questions/{id}/report` — kept for URL compatibility; the
+/// id is the target id, the kind is fixed to `question`.
+pub async fn report_question(
+    State(s): State<DbState>,
+    AuthedKey(auth): AuthedKey,
     Path(id): Path<String>,
-    Json(body): Json<ReportBody>,
-) -> Result<axum::response::Response<axum::body::Body>, ApiError> {
-    // The question must exist — but a missing id is a 404 like any other, not a
-    // special case. Question ids are public content.
-    let bank = state.bank.borrow().clone();
-    if bank.question(&id).is_none() {
-        return Err(ApiError::not_found(
-            "question_not_found",
-            format!("No question with id '{id}'."),
-        ));
-    }
+    Json(b): Json<QuestionReportBody>,
+) -> Result<(StatusCode, Json<serde_json::Value>), AppError> {
+    report(s, auth, "question".to_string(), id, b.reason, b.detail).await
+}
 
-    let reason = ReportReason::parse(body.reason.trim()).ok_or_else(|| {
-        ApiError::bad_request(
-            "unknown_reason",
-            "reason must be one of: wrong_answer, unclear_stem, broken_option, wrong_explanation, other.",
+/// The one filing path both routes share.
+async fn report(
+    s: DbState,
+    auth: Auth,
+    target_type: String,
+    target_id: String,
+    reason: String,
+    detail: Option<String>,
+) -> Result<(StatusCode, Json<serde_json::Value>), AppError> {
+    auth.require(SCOPE_WRITE_REPORTS)?;
+    if !s
+        .limiter
+        .check(
+            &format!("report:{}", auth.key_id),
+            core::reports::MAX_REPORTS_PER_MINUTE,
+            std::time::Duration::from_secs(60),
         )
-    })?;
-
-    // Daily cap, checked before filing. Separate from the per-minute bucket:
-    // reporting is rare enough that ten a day is generous. The tokio mutex
-    // cannot be poisoned, so there is no lock-failure branch to map (R3).
-    let mut reports = state.reports.lock().await;
-    if reports.recent_count(&key.id) >= DEFAULT_REPORTS_PER_DAY as usize {
-        return Err(ApiError::daily_limit(
-            "This key has filed its reports for today; the cap resets at midnight UTC.",
-        ));
+        .await
+    {
+        return Err(AppError::RateLimited);
     }
-
-    let (record, duplicate) = reports.file(&key.id, &id, reason, body.detail)?;
-
-    // 201 for a new flag, 200 for a duplicate — the client can tell whether
-    // anything happened without a second call.
+    let target_type = core::reports::parse_target_type(target_type.trim())?;
+    let target_id = target_id.trim().to_string();
+    if target_id.is_empty() {
+        return Err(AppError::BadRequest("target_id required".to_string()));
+    }
+    let reason = core::reports::parse_reason(reason.trim())?;
+    if let Some(d) = &detail {
+        if d.chars().count() > core::reports::MAX_DETAIL_CHARS {
+            return Err(AppError::BadRequest(
+                "detail over 500 characters".to_string(),
+            ));
+        }
+    }
+    if !store::catalog::target_exists(&s, target_type, &target_id).await? {
+        return Err(AppError::NotFound);
+    }
+    let (rid, duplicate) = store::accounts::file_report(
+        &s,
+        &auth.key_id,
+        target_type,
+        &target_id,
+        reason,
+        detail.as_deref(),
+    )
+    .await?;
     let status = if duplicate {
-        axum::http::StatusCode::OK
+        StatusCode::OK
     } else {
-        axum::http::StatusCode::CREATED
+        StatusCode::CREATED
     };
     Ok((
         status,
-        Json(ReportReceipt {
-            id: record.id,
-            question_id: record.question_id,
-            reason: reason.as_str().to_owned(),
-            duplicate,
-        }),
-    )
-        .into_response())
+        Json(serde_json::json!({
+            "id": rid,
+            "target_type": target_type,
+            "target_id": target_id,
+            "reason": reason,
+            "duplicate": duplicate,
+        })),
+    ))
+}
+
+pub fn router(state: AppState) -> Router<AppState> {
+    Router::new()
+        .route("/v1/report", post(file))
+        .route("/v1/questions/{id}/report", post(report_question))
+        .with_state(state)
 }

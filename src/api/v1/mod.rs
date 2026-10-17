@@ -1,13 +1,9 @@
-//! v1 of the public API. When a breaking change arrives this becomes a sibling
-//! `api/v2/` directory — never a feature flag inside v1 (D25).
-
-use axum::Router;
-
-use crate::AppState;
-
+//! Versioned public API surface. Each domain module owns its routes;
+//! shared logic lives in `core`, never duplicated across versions.
 pub mod blueprints;
 pub mod exams;
 pub mod keys;
+pub mod meta;
 pub mod novels;
 pub mod papers;
 pub mod passages;
@@ -16,16 +12,21 @@ pub mod reports;
 pub mod subjects;
 pub mod topics;
 
-pub fn router() -> Router<AppState> {
+use axum::Router;
+
+use crate::state::AppState;
+
+pub fn router(state: AppState) -> Router<AppState> {
     Router::new()
-        .merge(exams::router())
-        .merge(subjects::router())
-        .merge(questions::router())
-        .merge(keys::router())
-        .merge(novels::router())
-        .merge(papers::router())
-        .merge(reports::router())
-        .merge(passages::router())
-        .merge(topics::router())
-        .merge(blueprints::router())
+        .merge(meta::router(state.clone()))
+        .merge(keys::router(state.clone()))
+        .merge(novels::router(state.clone()))
+        .merge(exams::router(state.clone()))
+        .merge(papers::router(state.clone()))
+        .merge(subjects::router(state.clone()))
+        .merge(topics::router(state.clone()))
+        .merge(questions::router(state.clone()))
+        .merge(passages::router(state.clone()))
+        .merge(blueprints::router(state.clone()))
+        .merge(reports::router(state))
 }

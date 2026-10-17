@@ -1,35 +1,17 @@
-//! `/api/v1/keys/me` — the authentication probe.
-//!
-//! Returns the calling key exactly as stored. A dedicated projection used to
-//! live here that merely renamed two fields; that was duplication with no reason
-//! behind it (D22).
+use axum::{routing::get, Json, Router};
 
-use axum::Json;
-use axum::Router;
-use axum::routing::get;
+use crate::{auth::api_key::AuthedKey, core, error::AppError, state::AppState};
 
-use crate::AppState;
-use crate::api::auth::Caller;
-use crate::keys::ApiKey;
-
-pub fn router() -> Router<AppState> {
-    Router::new().route("/v1/keys/me", get(me))
+pub async fn me(AuthedKey(auth): AuthedKey) -> Result<Json<core::models::KeyInfo>, AppError> {
+    Ok(Json(core::models::KeyInfo {
+        prefix: auth.key_id,
+        admin: auth.is_admin,
+        scopes: auth.scopes,
+    }))
 }
 
-#[utoipa::path(
-    get,
-    path = "/api/v1/keys/me",
-    tag = "account",
-    operation_id = "whoami",
-    summary = "The calling key: label, quota, and expiry.",
-    description = "Returns the calling key exactly as stored. Use it to check a key works.",
-    responses(
-        (status = 200, body = ApiKey),
-        (status = 401, description = "Missing or invalid API key"),
-        (status = 429, description = "Over the key's per-minute limit"),
-    ),
-    security(("ApiKeyAuth" = [])),
-)]
-pub async fn me(Caller(key): Caller) -> Json<ApiKey> {
-    Json(key)
+pub fn router(state: AppState) -> Router<AppState> {
+    Router::new()
+        .route("/v1/keys/me", get(me))
+        .with_state(state)
 }
