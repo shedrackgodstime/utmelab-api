@@ -35,6 +35,12 @@ impl FromRequestParts<AppState> for AuthedKey {
             .and_then(|v| v.to_str().ok())
             .ok_or(AppError::Unauthorized)?;
         let s = DbState::from_ref(state);
-        Ok(AuthedKey(store::accounts::verify_key(&s, raw).await?))
+        let auth = store::accounts::verify_key(&s, raw).await?;
+        // Enforced here, not per handler: every keyed route on `api` and
+        // `mcp` inherits the per-key ceiling by construction.
+        if !s.limiter.check_api_key(&auth.key_id, auth.is_admin).await {
+            return Err(AppError::RateLimited);
+        }
+        Ok(AuthedKey(auth))
     }
 }

@@ -16,6 +16,12 @@ pub const DEFAULT_SYNC_SECS: u64 = 60;
 pub const DEFAULT_DB_MAX_CONCURRENT: usize = 16;
 pub const DEFAULT_READ_TIMEOUT_SECS: u64 = 5;
 pub const DEFAULT_WRITE_TIMEOUT_SECS: u64 = 30;
+/// Per-key request ceiling per minute on the public surfaces (`api` and
+/// `mcp`). 0 disables per-key limiting. Admin keys use the admin knob.
+pub const DEFAULT_RATE_LIMIT_PER_MIN: u32 = 600;
+/// Admin keys are internal (monitoring, provisioning), so unlimited by
+/// default. Set a positive value to bound them too.
+pub const DEFAULT_RATE_LIMIT_ADMIN_PER_MIN: u32 = 0;
 
 #[derive(Clone)]
 pub struct Config {
@@ -32,6 +38,8 @@ pub struct Config {
     pub cookie_secure: bool,
     pub read_timeout_secs: u64,
     pub write_timeout_secs: u64,
+    pub rate_limit_per_min: u32,
+    pub rate_limit_admin_per_min: u32,
 }
 
 impl Default for Config {
@@ -50,6 +58,8 @@ impl Default for Config {
             cookie_secure: false,
             read_timeout_secs: DEFAULT_READ_TIMEOUT_SECS,
             write_timeout_secs: DEFAULT_WRITE_TIMEOUT_SECS,
+            rate_limit_per_min: DEFAULT_RATE_LIMIT_PER_MIN,
+            rate_limit_admin_per_min: DEFAULT_RATE_LIMIT_ADMIN_PER_MIN,
         }
     }
 }
@@ -121,6 +131,12 @@ impl Config {
             cookie_secure: boolean(source, "COOKIE_SECURE", d.cookie_secure)?,
             read_timeout_secs: number(source, "READ_TIMEOUT_SECS", d.read_timeout_secs)?,
             write_timeout_secs: number(source, "WRITE_TIMEOUT_SECS", d.write_timeout_secs)?,
+            rate_limit_per_min: number(source, "RATE_LIMIT_PER_MIN", d.rate_limit_per_min)?,
+            rate_limit_admin_per_min: number(
+                source,
+                "RATE_LIMIT_ADMIN_PER_MIN",
+                d.rate_limit_admin_per_min,
+            )?,
         };
         cfg.validate()?;
         Ok(cfg)

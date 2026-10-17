@@ -5,19 +5,20 @@ highest value first. Delete an entry when it is closed.
 
 ## Backlog
 
-1. Per-key / per-tier rate limiting. Only `login` is limited today. Needed for
-   fair use and abuse resistance when many consumers share the API.
-2. Replica WAL/log growth. Watch `db/sync-live.db-log` and `-wal` over a long
+1. Replica WAL/log growth. Watch `db/sync-live.db-log` and `-wal` over a long
    run; add a periodic `Database::checkpoint()` only if they grow unbounded.
-3. `GET /api/v1/exams/{exam}/papers` costs ~142ms (release) in the per-row
+2. `GET /api/v1/exams/{exam}/papers` costs ~142ms (release) in the per-row
    `verified` predicate. Optimize only if it matters at the expected rate.
-4. Consider an adaptive pull interval (longer when the replica is idle) if one
+3. Consider an adaptive pull interval (longer when the replica is idle) if one
    request per `SYNC_SECS` is judged too chatty.
 
 ## Done
 
 - `/api/internal/status` now requires an admin session; `/health` stays the
   public liveness probe.
+- Per-key rate limiting on `api` + `mcp`, enforced in the key extractor so no
+  route can forget it (`RATE_LIMIT_PER_MIN`, admin unlimited by default). A key
+  past its ceiling gets 429 with `Retry-After: 60`.
 
 ## Decisions worth keeping
 

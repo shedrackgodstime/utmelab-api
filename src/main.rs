@@ -111,7 +111,10 @@ async fn run(cfg: Config) {
     let db_gate = Arc::new(tokio::sync::Semaphore::new(cfg.db_max_concurrent));
     let write_mutex = Arc::new(tokio::sync::Mutex::new(()));
     let contract_ok = Arc::new(std::sync::atomic::AtomicBool::new(true));
-    let limiter = Arc::new(utmelab_api::auth::rate_limit::RateLimiter::new());
+    let limiter = Arc::new(utmelab_api::auth::rate_limit::RateLimiter::with_api_limits(
+        cfg.rate_limit_per_min,
+        cfg.rate_limit_admin_per_min,
+    ));
 
     let state = AppState {
         name: Arc::from("utmelab-api"),

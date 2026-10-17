@@ -9,18 +9,39 @@ use std::{
 
 use tokio::sync::Mutex;
 
+use crate::config::{DEFAULT_RATE_LIMIT_ADMIN_PER_MIN, DEFAULT_RATE_LIMIT_PER_MIN};
+
 pub const LOGIN_MAX_PER_MINUTE: u32 = 10;
 pub const LOGIN_WINDOW: Duration = Duration::from_secs(60);
+/// Public-surface window. Fixed at a minute so the `Retry-After: 60` we
+/// answer a throttle with is always truthful.
+pub const API_WINDOW: Duration = Duration::from_secs(60);
 const MAX_BUCKETS: usize = 10_000;
 
-#[derive(Default)]
 pub struct RateLimiter {
     inner: Mutex<HashMap<String, VecDeque<Instant>>>,
+    api_per_min: u32,
+    api_admin_per_min: u32,
+}
+
+impl Default for RateLimiter {
+    fn default() -> Self {
+        Self::with_api_limits(DEFAULT_RATE_LIMIT_PER_MIN, DEFAULT_RATE_LIMIT_ADMIN_PER_MIN)
+    }
 }
 
 impl RateLimiter {
     pub fn new() -> Self {
         Self::default()
+    }
+
+    /// Build with the public-surface policy from config.
+    pub fn with_api_limits(api_per_min: u32, api_admin_per_min: u32) -> Self {
+        Self {
+            inner: Mutex::new(HashMap::new()),
+            api_per_min,
+            api_admin_per_min,
+        }
     }
 
     /// True when the call is allowed (and recorded). False means throttled.
@@ -43,6 +64,22 @@ impl RateLimiter {
 
     pub async fn check_login(&self, ip: &str) -> bool {
         self.check(&format!("login:{ip}"), LOGIN_MAX_PER_MINUTE, LOGIN_WINDOW)
+            .await
+    }
+
+    /// Public-surface ceiling, keyed by the verified key id. Called from the
+    /// key extractor, so `api` and `mcp` share it and no route can forget.
+    /// A zero limit, or an admin key, means unlimited.
+    pub async fn check_api_key(&self, key_id: &str, is_admin: bool) -> bool {
+        let limit = if is_admin {
+            self.api_admin_per_min
+        } else {
+            self.api_per_min
+        };
+        if limit == 0 {
+            return true;
+        }
+        self.check(&format!("key:{key_id}"), limit, API_WINDOW)
             .await
     }
 }
@@ -68,5 +105,28 @@ mod tests {
         assert!(!r.check("k", 1, Duration::from_millis(40)).await);
         tokio::time::sleep(Duration::from_millis(60)).await;
         assert!(r.check("k", 1, Duration::from_millis(40)).await);
+    }
+
+    #[tokio::test]
+    async fn api_key_limit_is_per_key_and_admin_is_unlimited() {
+        let r = RateLimiter::with_api_limits(2, 0);
+        assert!(r.check_api_key("key-a", false).await);
+        assert!(r.check_api_key("key-a", false).await);
+        assert!(!r.check_api_key("key-a", false).await);
+        assert!(
+            r.check_api_key("key-b", false).await,
+            "a different key is unaffected"
+        );
+        for _ in 0..50 {
+            assert!(r.check_api_key("ops", true).await, "admin bypasses");
+        }
+    }
+
+    #[tokio::test]
+    async fn zero_limit_disables_api_throttling() {
+        let r = RateLimiter::with_api_limits(0, 0);
+        for _ in 0..200 {
+            assert!(r.check_api_key("key-a", false).await);
+        }
     }
 }
