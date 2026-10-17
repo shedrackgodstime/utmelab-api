@@ -3,6 +3,106 @@
 Working notes for hardening the serving foundation. One entry per known gap,
 highest value first. Delete an entry when it is closed.
 
+## Porting gaps (old/src -> src/), ordered
+
+`utmelab-api-old/` is a source of capabilities, never of structure. We take
+what it served and serve it our way: no `bank/` tree, no in-process bank
+promotion, no hand-kept contract, no duplicate admin surface. Ordered most
+important first, with standards, enforcement, and single sources of truth
+before features. Delete an entry when it is closed.
+
+### 1. `store/schema.rs` is not the single source of truth it claims  (standards)
+
+`store/schema.rs` says it is "the single source of truth for production
+shapes: table DDL plus a `contract_version` handshake". Its `DDL` holds five
+tables (`meta`, `api_keys`, `dashboard_users`, `sessions`, `reports`), while
+`store/catalog.rs` reads fourteen more that are declared nowhere: `questions`,
+`verifications`, `subjects`, `topics`, `subtopics`, `topic_countries`,
+`exam_requirements`, `passages`, `novels`, `novel_chapters`, `novel_characters`,
+`novel_themes`, `novel_questions`, `blueprints`. A domain shape can move and
+the contract guard will not notice, so the module's promise is false for the
+tables that matter most.
+
+How: declare the domain tables in `DDL` (idempotent `CREATE TABLE IF NOT
+EXISTS`) at the columns `catalog.rs` reads, then bump `CONTRACT_VERSION`. One
+decision to state in code: the pipeline is today's creator of those tables, so
+declaring them makes the API a co-owner of the shape. Keep creation idempotent
+and additive-only via `ensure_column`, and add a schema test asserting every
+table `catalog.rs` reads is declared. This is the guard G1 leans on.
+
+### 2. The MCP surface declares parity it does not enforce  (enforcement)
+
+`mcp/mod.rs` says "tools wrap the same `core` functions the HTTP handlers
+call, so parity is structural". It is not. `mcp/resources.rs` is a one-line
+placeholder that the router does not even mount, and `mcp/tools.rs` exposes
+three admin tools (`list_tables`, `revoke_key`, `unrevoke_key`) that duplicate
+`meta/tables` and `/api/internal/admin/keys/revoke` under a second auth. A
+declared but unenforced surface is the same smell that removed `write:catalog`.
+
+How: decide and encode. Either build it (resource and tool handlers wrapping
+the same `store` reads, keyed by `AuthedKey` and scoped like HTTP, with a test
+asserting MCP and HTTP answers agree), or delete the unwired `resources`
+module and correct the doc comment. No third state where the tree promises a
+parity nothing checks.
+
+### 3. Surface-level keyed tests are missing  (enforcement)
+
+Only `api/v1/questions.rs` has a keyed handler test, the pattern added with
+the page envelope. The other ten `api/v1` modules, `internal`, and `mcp` have
+none, and `tests/` is empty. The identity-plus-scope-plus-envelope rule is
+enforced by convention and one example; nothing fails when a new module skips
+it.
+
+How: repeat the same harness per surface (offline replica, raw seed, real
+router through `routes::router`, `x-api-key` header): no key is 401, wrong
+scope is 403, revoked is 401, a live key gets a typed envelope. Mechanical, not
+a redesign. Fold each new route's test into this list as it lands.
+
+### 4. The subject detail trio is the only missing public read  (feature)
+
+Old served 18 `/api/v1` routes; new serves 18. The composition differs by
+exactly three: `GET /api/v1/subjects/{exam}/{slug}`,
+`GET /api/v1/subjects/{exam}/{slug}/syllabus`, and
+`GET /api/v1/subjects/{exam}/{slug}/coverage`. Nothing else in old's public
+surface is unserved. Cost differs: subject is trivial (`get_subject` exists),
+coverage is easy (`subject_stats` exists), syllabus is real work because new's
+`list_syllabus` returns only `{slug, name, subtopics}` while old's carried
+per-node counts, objectives, and country labels.
+
+How: wire shapes in `core/models.rs` (`Coverage`, `Syllabus`, `SyllabusNode`);
+a pure `core::catalog::assemble_syllabus(tree, rows, topics)` that counts rows
+per topic through the subtopic map; a richer store read only if the objectives
+need one; three handlers in `api/v1/subjects.rs` with `AuthedKey` and
+`requires(SCOPE_READ_CATALOG)` and 404 as `AppError::NotFound`. Tests: the
+`core` assembly test plus a keyed handler test per route.
+
+### 5. Deferred: CLI verbs and the OpenAPI contract  (out of scope for now)
+
+Recorded so it stays visible, not scheduled. Old's clap CLI had `key
+create/list/revoke/rotate`, `import` (json and Turso), `openapi --out`,
+`quarantine`, `audit-db`, and `verify`; new has serve plus `seed-admin`, with
+key lifecycle now on the session-authed `/api/internal/admin/keys*` surface.
+Still without a home: `rotate` (grace-period successor), `import`,
+`quarantine`, `verify` (a `verifications` writer the API does not have), and
+`audit-db` (partly replaced by `meta/tables` and `meta/rows`). OpenAPI is a
+regression rather than a gap: old derived the spec from the handlers with
+`utoipa` and served it at `/openapi.json` because a hand-written spec "kept
+producing" bugs; new has no annotations, no served route, and a hand-written
+`site/openapi.json`, so the bug class old removed is back.
+
+### Not gaps (do not port back)
+
+- The bank write path. `store/catalog.rs` has no writes by design: the
+  pipeline promotes bank data into Turso and the API serves a synced replica.
+  Old's two in-process bank writers (the `import` question upsert, the `verify`
+  row) are promotion and review work, not serving work. If the serving app
+  ever owns human verification writes, that is a new capability with its own
+  design, and `write:catalog` returns to the vocabulary at that moment.
+- The JSON-file bank and its cache (`bank/json.rs`, `bank/cache.rs`). New
+  reads the replica only.
+- DB audit (`db/audit.rs`). New audits to logs (`obs.rs`).
+- The question-only report route. New's report is target-agnostic.
+
 ## Backlog
 
 1. `GET /api/v1/exams/{exam}/papers` costs ~142ms (release) in the per-row
