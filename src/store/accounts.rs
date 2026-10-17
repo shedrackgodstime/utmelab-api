@@ -638,10 +638,11 @@ mod tests {
     use crate::state::DbState;
 
     /// Offline replica with the API's account tables. Reads (`verify_key`,
-    /// `verify_session`, `list_*`) run here; writes cannot, because the single
-    /// write path pushes to the cloud and a dead remote fails the push. Seeding
-    /// therefore goes through a raw connection, and mutation tests stop at the
-    /// validation boundary.
+    /// `verify_session`, `list_*`) run here. A write also runs here: it commits
+    /// locally and then fails at `push()` because the remote is dead, so the
+    /// call surfaces an error while the local row stays. Seeding goes through a
+    /// raw connection, and a mutation test asserts the local commit and treats
+    /// the push error as expected — see `mutations_land_locally_then_surface_the_failed_push`.
     async fn local_accounts_db() -> DbState {
         let db = crate::testing::replica().await;
         crate::testing::api_schema(&crate::testing::connect(&db).await).await;
@@ -807,5 +808,74 @@ mod tests {
             set_revoked(&s, "bad prefix!", true, "actor").await,
             Err(AppError::BadRequest(_))
         ));
+    }
+
+    /// One cell from the local replica, to prove a mutation committed.
+    async fn cell(s: &DbState, sql: &str) -> turso::Value {
+        let conn = crate::testing::conn_of(s).await;
+        let mut rows = conn.query(sql, ()).await.expect("query");
+        rows.next()
+            .await
+            .expect("next")
+            .expect("row")
+            .get_value(0)
+            .expect("value")
+    }
+
+    /// A mutation commits locally before the push, so with a dead remote the
+    /// call surfaces the push error while the row stays for the next successful
+    /// push. That is the boundary mutation coverage reaches without a remote,
+    /// and it is enough to prove each statement's columns and parameter order:
+    /// a renamed column fails the execute, a swapped parameter fails the read.
+    #[tokio::test]
+    async fn mutations_land_locally_then_surface_the_failed_push() {
+        let s = local_accounts_db().await;
+        seed(
+            &s,
+            "INSERT INTO dashboard_users (username, pw_hash, role) VALUES ('u','h','customer')",
+            vec![],
+        )
+        .await;
+        seed_key(&s, "k1.secret", "commercial", "read:catalog", 0).await;
+
+        // Every one of these commits and then fails at push; the error is the
+        // expected half of the contract, not the thing under test.
+        assert!(set_revoked(&s, "k1", true, "actor").await.is_err());
+        assert!(set_user_role(&s, "u", "admin", "actor").await.is_err());
+        assert!(create_key(&s, "owner1").await.is_err());
+        assert!(
+            file_report(&s, "k1", "question", "q1", "wrong_answer", None)
+                .await
+                .is_err()
+        );
+
+        // All four rows are committed locally.
+        assert_eq!(
+            cell(&s, "SELECT revoked FROM api_keys WHERE prefix='k1'").await,
+            turso::Value::Integer(1)
+        );
+        assert_eq!(
+            cell(&s, "SELECT role FROM dashboard_users WHERE username='u'").await,
+            turso::Value::Text("admin".to_string())
+        );
+        assert_eq!(
+            cell(&s, "SELECT COUNT(*) FROM api_keys WHERE owner='owner1'").await,
+            turso::Value::Integer(1)
+        );
+        assert_eq!(
+            cell(
+                &s,
+                "SELECT COUNT(*) FROM reports WHERE reporter='k1' AND target_id='q1'"
+            )
+            .await,
+            turso::Value::Integer(1)
+        );
+
+        // Delete goes last: it removes the `k1` row read above.
+        assert!(delete_key(&s, "", "k1").await.is_err());
+        assert_eq!(
+            cell(&s, "SELECT COUNT(*) FROM api_keys WHERE prefix='k1'").await,
+            turso::Value::Integer(0)
+        );
     }
 }

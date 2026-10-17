@@ -58,3 +58,39 @@ async fn execute_and_verify(
     }
     Ok(n)
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::testing::{api_schema, conn_of, connect, db_state, replica};
+
+    /// The harness's remote is unreachable, so `push()` fails after the row is
+    /// committed locally. That failure is the boundary the note named: the
+    /// write path's own work (gate, mutex, execute, the `changes()` visibility
+    /// check) still runs, and the local row stays for the next successful push.
+    #[tokio::test]
+    async fn a_write_lands_locally_before_the_push_fails() {
+        let db = replica().await;
+        api_schema(&connect(&db).await).await;
+        let s = db_state(db);
+
+        let result = super::execute_write(
+            &s,
+            "INSERT INTO meta (key, value) VALUES ('k', 'v')",
+            vec![],
+        )
+        .await;
+        assert!(
+            result.is_err(),
+            "the offline push fails, so the call surfaces it"
+        );
+
+        // The row is committed locally all the same.
+        let conn = conn_of(&s).await;
+        let mut rows = conn
+            .query("SELECT value FROM meta WHERE key='k'", ())
+            .await
+            .expect("query");
+        let row = rows.next().await.expect("next").expect("row");
+        assert_eq!(row.get::<String>(0).expect("value"), "v");
+    }
+}

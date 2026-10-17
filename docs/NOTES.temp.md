@@ -48,13 +48,17 @@ producing" bugs; new has no annotations, no served route, and a hand-written
    Remaining is the load model: run an HTTP load test against `questions` and
    `papers` once a key exists, size `WORKER_THREADS` to the VPS vCPU count, and
    set `DB_MAX_CONCURRENT` to expected peak concurrent DB work.
-4. The store write path (`execute_write`/`execute_ddl`) pushes to Turso, so it
-   cannot run against an offline replica: only reads and the pre-write guards are
-   covered today. Add a mutation test against a real replica (or a stubbed push)
-   to cover key create/delete/revoke, role change, and report filing end to end.
 
 ## Done
 
+- The write path is now covered against the offline replica. A mutation commits
+  locally and then fails at `push()` because the harness's remote is dead, so a
+  test asserts the local commit and treats the push error as the expected half
+  of the contract. One test pins the funnel (`execute_write`), one covers the
+  account mutations end to end — `set_revoked`, `set_user_role`, `create_key`,
+  `file_report`, `delete_key` — so a renamed column or a swapped parameter would
+  fail the execute or the read. This closes the old claim that mutation tests
+  cannot run here; `accounts.rs` was asserting something untrue.
 - `meta/rows` states the real column names. The dump returned `c0`, `c1`, ...
   as a placeholder header, which made the endpoint useless as old's `audit-db`
   replacement. The names now come from the statement (so an empty table still
