@@ -26,28 +26,15 @@ HTTP, with one test asserting an MCP call and its HTTP equivalent answer the
 same. Reuse the HTTP gate for admin ops; do not add a second auth for a
 capability HTTP already guards.
 
-### 2. The key gate is per-handler, so a new route can forget it  (enforcement)
+### 2. Per-module handler tests are thin  (enforcement)
 
-The auth contract is now covered from one place. `routes` holds the route
-inventory (`KEYED`, `SESSION`) and sweeps it through the real router: every
-keyed route refuses no key and a revoked key with 401, every session route
-refuses no cookie, and scope mismatch is proven on a read route, the write
-route, and the mcp admin tools (a read key gets 403 there). `/keys/me` answers
-a live key, so the refusals are the gate and not a bad seed.
-
-What stays convention is the gate itself: each handler opts into `AuthedKey` or
-`SessionUser`. A route added to the router *and* the table is caught when it
-forgets; a route added to neither is not. Making it structural means one layer
-that verifies the key and stashes the identity in request extensions, with the
-extractor reading it back. The naive layer would verify twice and halve the DB
-ceiling, so it is a deliberate change, not a sweep.
-
-The per-module happy-path envelope test is the one piece still thin: `questions`
-(the page), `subjects` (the tree), and `reports` (the write boundary) have one;
-`exams`, `blueprints`, `meta`, `passages`, `topics`, `novels`, and `papers` do
-not. Their return types are typed, so a wrong shape is a compile error; what a
-test would add is the store read wired to the handler. Fold one in as each
-module is next touched rather than writing seven seeded fixtures now.
+The key gate is structural now (see Done). What stays thin is the per-module
+happy-path envelope test: `questions` (the page), `subjects` (the tree), and
+`reports` (the write boundary) have one; `exams`, `blueprints`, `meta`,
+`passages`, `topics`, `novels`, and `papers` do not. Their return types are
+typed, so a wrong shape is a compile error; what a test adds is the store read
+wired to the handler. Fold one in as each module is next touched rather than
+writing seven seeded fixtures now.
 
 ### 3. Deferred: CLI verbs and the OpenAPI contract  (out of scope for now)
 
@@ -97,6 +84,19 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 ## Done
 
+- Identity is structural, not per handler. `auth::api_key::verify_key` is a
+  layer over each keyed router (`api/v1` reads and writes, `mcp`): it verifies
+  the key once, applies the per-key limit, and stashes `Auth` in the request
+  extensions; `AuthedKey` reads it back and rejects when it is absent. A route
+  on a keyed router is now gated whether or not its handler asks for identity,
+  so forgetting the extractor can no longer open one, and a keyed handler
+  mounted off a keyed router fails closed (401) rather than trusting an empty
+  extensions map. The layer sits inside each group's timeout, so verification is
+  bounded like the work it guards, and outside CORS, so a preflight needs no key.
+  Scope stays one `require` per handler because it differs per route. The sweep
+  still proves the composition end to end, and its live-key 200s are what catch a
+  layer that stops running. Unmatched paths under `/api` never reach the layer,
+  so they keep answering 404.
 - One response idiom now holds across the whole service. The dashboard, admin,
   and mcp surfaces answered `{"ok": ...}` and `{"key": ...}` through eleven ad-hoc
   `serde_json::json!` values; they now return `core::models::admin::{Applied,
@@ -275,11 +275,13 @@ producing" bugs; new has no annotations, no served route, and a hand-written
   through a raw connection and stop at the validation boundary; happy-path
   mutation coverage needs a live replica.
 - One page envelope, one response idiom (typed `core::models`), one identity rule
-  (`AuthedKey` plus `require(SCOPE_*)`, except an endpoint about the caller's own
-  key). These are written at the top of `api/v1/mod.rs` so a new module follows
-  the rule, not the last file it read. The response idiom is service-wide, not
-  `api/v1`-only: the dashboard, admin, and mcp surfaces answer the same typed
-  `core::models::admin` shapes, never a hand-built `json!` object.
+  (verify once in the `verify_key` layer, then `require(SCOPE_*)` per handler
+  except an endpoint about the caller's own key; identity is a property of the
+  surface, scope of the route). These are written at the top of `api/v1/mod.rs`
+  so a new module follows the rule, not the last file it read. The response idiom
+  is service-wide, not `api/v1`-only: the dashboard, admin, and mcp surfaces
+  answer the same typed `core::models::admin` shapes, never a hand-built `json!`
+  object.
 - A column decoder is one rule per value class, not per column. `opt_int`/`req_int`
   over `TryFrom<i64>` name the column in the error and range-check the width, so a
   new integer column adds a call, not a helper; `req_bool` is the one strict 0/1

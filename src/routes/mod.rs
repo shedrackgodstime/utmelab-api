@@ -316,12 +316,12 @@ mod tests {
         );
     }
 
-    /// Every keyed route the service serves. The sweep below proves each one
-    /// rejects a credential-less request with 401, so identity is not optional
-    /// anywhere: a route missing here is a route nothing proves is keyed, so a
-    /// new route and its row land together. The auth extractor runs before any
-    /// body extractor, so an unauthenticated POST is refused before a parser
-    /// sees it.
+    /// Every keyed route the service serves. Identity is structural now (the
+    /// `verify_key` layer gates each keyed router), so this sweep proves the
+    /// composition wired that layer onto every surface and that scope still
+    /// holds per route: a route missing here is a route nothing exercises end
+    /// to end. The layer runs before any extractor, so an unauthenticated POST
+    /// is refused before a parser sees it.
     const KEYED: &[(&str, &str)] = &[
         ("GET", "/api/v1/exams"),
         ("GET", "/api/v1/exams/JAMB/subjects"),

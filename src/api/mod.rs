@@ -9,10 +9,10 @@
 pub mod middleware;
 pub mod v1;
 
-use axum::{middleware::from_fn, Router};
+use axum::{middleware::from_fn, middleware::from_fn_with_state, Router};
 use tower_http::cors::{AllowHeaders, AllowMethods, AllowOrigin, CorsLayer, ExposeHeaders};
 
-use crate::{config::Config, state::AppState};
+use crate::{auth::api_key::verify_key, config::Config, state::AppState};
 
 pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
     let cors = CorsLayer::new()
@@ -35,9 +35,48 @@ pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
     // (they push to the cloud), so they sit outside both and take the global
     // write budget from `routes`. Same split as `internal` and `mcp`, where
     // the verb, not the path, picks the budget.
+    //
+    // `verify_key` rides inside each budget, so key verification is bounded by
+    // the same timeout as the work it guards, and outside CORS (applied last
+    // below, so a preflight is answered before the gate and never needs a key).
     let reads = v1::router(state.clone())
+        .layer(from_fn_with_state(state.clone(), verify_key))
         .layer(from_fn(middleware::etag))
         .layer(cfg.fast_timeout());
-    let writes = v1::reports::router(state);
+    let writes =
+        v1::reports::router(state.clone()).layer(from_fn_with_state(state.clone(), verify_key));
     Router::new().merge(reads).merge(writes).layer(cors)
+}
+
+#[cfg(test)]
+mod tests {
+    use axum::http::{header, Request, StatusCode};
+    use tower::ServiceExt;
+
+    /// A CORS preflight carries no key. CORS is the outermost layer, so the
+    /// `verify_key` gate never sees it: a browser's OPTIONS must be answered,
+    /// not refused. The stateless app proves the layer stack alone decides it,
+    /// since a gate that ran would fail on the absent replica.
+    #[tokio::test]
+    async fn cors_preflight_is_answered_before_the_key_gate() {
+        let app = crate::routes::router(
+            crate::testing::state_without_db(true),
+            &crate::config::Config::default(),
+        );
+        let req = Request::builder()
+            .method("OPTIONS")
+            .uri("/api/v1/questions")
+            .header(header::ORIGIN, "https://app.example")
+            .header(header::ACCESS_CONTROL_REQUEST_METHOD, "GET")
+            .header(header::ACCESS_CONTROL_REQUEST_HEADERS, "x-api-key")
+            .body(axum::body::Body::empty())
+            .expect("request");
+        let res = app.oneshot(req).await.expect("preflight");
+        assert_eq!(res.status(), StatusCode::OK);
+        assert!(
+            res.headers()
+                .contains_key(header::ACCESS_CONTROL_ALLOW_ORIGIN),
+            "the preflight must be answered, not gated"
+        );
+    }
 }

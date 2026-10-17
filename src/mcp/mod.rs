@@ -12,23 +12,21 @@
 pub mod resources;
 pub mod tools;
 
-use axum::{routing::post, Router};
+use axum::{middleware::from_fn_with_state, routing::post, Router};
 
-use crate::{config::Config, state::AppState};
+use crate::{auth::api_key::verify_key, config::Config, state::AppState};
 
 pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
-    Router::new()
-        .route(
-            "/mcp/tools/list_tables",
-            post(tools::list_tables).route_layer(cfg.fast_timeout()),
-        )
-        .route(
-            "/mcp/tools/revoke_key",
-            post(tools::revoke_key).route_layer(cfg.slow_timeout()),
-        )
-        .route(
-            "/mcp/tools/unrevoke_key",
-            post(tools::unrevoke_key).route_layer(cfg.slow_timeout()),
-        )
-        .with_state(state)
+    // Same split as `api`: `verify_key` rides inside the budget of the group
+    // it guards, so the gate is bounded like the work behind it.
+    let reads = Router::new()
+        .route("/mcp/tools/list_tables", post(tools::list_tables))
+        .layer(from_fn_with_state(state.clone(), verify_key))
+        .layer(cfg.fast_timeout());
+    let writes = Router::new()
+        .route("/mcp/tools/revoke_key", post(tools::revoke_key))
+        .route("/mcp/tools/unrevoke_key", post(tools::unrevoke_key))
+        .layer(from_fn_with_state(state.clone(), verify_key))
+        .layer(cfg.slow_timeout());
+    reads.merge(writes).with_state(state)
 }

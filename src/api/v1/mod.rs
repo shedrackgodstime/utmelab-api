@@ -3,12 +3,12 @@
 //!
 //! The rules a new endpoint follows, since the code shows examples but
 //! not the rule:
-//! - Identity: every keyed handler takes `AuthedKey` and calls
-//!   `auth.require(SCOPE_*)` before touching the store. The one exception
-//!   is an endpoint about the caller's own key (`GET /v1/keys/me`), which
-//!   needs no scope. Because the gate lives in the handler, a new route
-//!   must also be added to the `KEYED` sweep in `routes`, so the gate is
-//!   proven rather than assumed.
+//! - Identity: `auth::api_key::verify_key` is a layer over the whole keyed
+//!   router, so every route on it is gated whether or not it asks. A handler
+//!   takes `AuthedKey` to read that identity and calls `auth.require(SCOPE_*)`
+//!   before touching the store. The one exception is an endpoint about the
+//!   caller's own key (`GET /v1/keys/me`), which needs no scope. The `KEYED`
+//!   sweep in `routes` proves the gate on every route end to end.
 //! - Response: return a typed `core::models` struct, never an ad-hoc
 //!   `serde_json::json!` value.
 //! - Paging: a page is `core::models::Page`, built with `Page::new`, never
