@@ -20,6 +20,9 @@ pub struct Metrics {
     pub gate_rejections: AtomicU64,
     pub pulls_applied: AtomicU64,
     pub pulls_empty: AtomicU64,
+    /// Unix seconds of the last pull attempt (0 = none yet). Lets an
+    /// operator see replica freshness without querying the DB.
+    pub last_pull_unix: AtomicU64,
 }
 
 impl Metrics {
@@ -28,6 +31,7 @@ impl Metrics {
             gate_rejections: self.gate_rejections.load(Ordering::Relaxed),
             pulls_applied: self.pulls_applied.load(Ordering::Relaxed),
             pulls_empty: self.pulls_empty.load(Ordering::Relaxed),
+            last_pull_unix: self.last_pull_unix.load(Ordering::Relaxed),
         }
     }
 }
@@ -36,6 +40,7 @@ pub struct MetricsSnapshot {
     pub gate_rejections: u64,
     pub pulls_applied: u64,
     pub pulls_empty: u64,
+    pub last_pull_unix: u64,
 }
 
 pub type SharedMetrics = Arc<Metrics>;

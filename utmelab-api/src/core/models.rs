@@ -13,6 +13,8 @@ pub struct ServiceStatus {
     pub gate_rejections: u64,
     pub pulls_applied: u64,
     pub pulls_empty: u64,
+    /// Unix seconds of the last pull attempt (0 = none yet).
+    pub last_pull_unix: u64,
 }
 
 #[derive(Serialize)]

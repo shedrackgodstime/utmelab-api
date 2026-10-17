@@ -14,9 +14,10 @@ use super::{upstream, with_conn};
 /// Dashboard-scale parameters: ~100ms even in debug builds, inside the
 /// 5s route timeout with room for the gated read plus session push.
 /// Raise via config if the threat model ever outgrows a dashboard login.
-fn hasher() -> Argon2<'static> {
-    let params = Params::new(8192, 1, 1, None).expect("hardcoded argon2 params are valid");
-    Argon2::new(Algorithm::Argon2id, Version::V0x13, params)
+fn hasher() -> Result<Argon2<'static>, AppError> {
+    Params::new(8192, 1, 1, None)
+        .map(|params| Argon2::new(Algorithm::Argon2id, Version::V0x13, params))
+        .map_err(|e| AppError::Internal(format!("argon2 parameters: {e}")))
 }
 
 fn hash_key(full: &str) -> String {
@@ -26,6 +27,16 @@ fn hash_key(full: &str) -> String {
 
 fn hash_token(token: &str) -> String {
     hash_key(token)
+}
+
+/// A same-cost hash for a missing user, so login timing does not leak
+/// whether a username exists.
+fn dummy_hash() -> Result<String, AppError> {
+    let salt = argon2::password_hash::generate_salt();
+    hasher()?
+        .hash_password_with_salt(b"dummy-password-for-timing", &salt)
+        .map(|h| h.to_string())
+        .map_err(|e| AppError::Internal(e.to_string()))
 }
 
 /// Verify a raw `<prefix>.<secret>` key. Fails closed on anything odd.
@@ -79,7 +90,7 @@ pub(crate) async fn verify_key(s: &DbState, full: &str) -> Result<Auth, AppError
 /// must wrap this in `spawn_blocking`.
 pub(crate) fn hash_password(password: &str) -> Result<String, AppError> {
     let salt = argon2::password_hash::generate_salt();
-    hasher()
+    hasher()?
         .hash_password_with_salt(password.as_bytes(), &salt)
         .map(|h| h.to_string())
         .map_err(|e| AppError::Internal(e.to_string()))
@@ -213,13 +224,8 @@ pub async fn login(
     password: &str,
 ) -> Result<(String, String), AppError> {
     use std::sync::LazyLock;
-    static DUMMY: LazyLock<String> = LazyLock::new(|| {
-        let salt = argon2::password_hash::generate_salt();
-        hasher()
-            .hash_password_with_salt(b"dummy-password-for-timing", &salt)
-            .map(|h| h.to_string())
-            .unwrap_or_else(|_| String::from("unusable"))
-    });
+    static DUMMY: LazyLock<String> =
+        LazyLock::new(|| dummy_hash().unwrap_or_else(|_| String::from("unusable")));
     if username.is_empty() || username.len() > 64 || password.is_empty() || password.len() > 512 {
         return Err(AppError::Unauthorized);
     }
@@ -246,8 +252,8 @@ pub async fn login(
     let (stored, role) = found.unwrap_or_else(|| (DUMMY.clone(), String::from("customer")));
     let pass_ok = tokio::task::spawn_blocking(move || match PasswordHash::new(&stored) {
         Ok(parsed) => hasher()
-            .verify_password(password.as_bytes(), &parsed)
-            .is_ok(),
+            .map(|h| h.verify_password(password.as_bytes(), &parsed).is_ok())
+            .unwrap_or(false),
         Err(_) => false,
     })
     .await

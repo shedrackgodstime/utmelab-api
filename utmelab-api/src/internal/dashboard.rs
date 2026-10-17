@@ -25,6 +25,7 @@ pub async fn status(State(s): State<DbState>) -> Json<ServiceStatus> {
         gate_rejections: m.gate_rejections,
         pulls_applied: m.pulls_applied,
         pulls_empty: m.pulls_empty,
+        last_pull_unix: m.last_pull_unix,
     })
 }
 

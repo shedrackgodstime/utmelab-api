@@ -57,7 +57,13 @@ pub fn router(state: AppState, cfg: &Config) -> Router {
                 .make_span_with(span_for)
                 .on_failure(DefaultOnFailure::new().level(Level::WARN)),
             PropagateRequestIdLayer::new(axum::http::HeaderName::from_static(REQUEST_ID)),
-            axum::extract::DefaultBodyLimit::max(64 * 1024),
+            // 16 KiB is ~5x our largest body (a 40-answer paper score). A
+            // JSON bomb dies at the edge, not in serde.
+            axum::extract::DefaultBodyLimit::max(16 * 1024),
             ConcurrencyLimitLayer::new(cfg.concurrency_limit),
+            // Outermost by construction, so it is the net every route falls
+            // back on: a route that forgets its own budget still cannot run
+            // forever and hold a DB permit. Read routes layer 5s inside this.
+            cfg.slow_timeout(),
         ))
 }
