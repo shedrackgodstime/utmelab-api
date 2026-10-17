@@ -89,11 +89,16 @@ fn gate(s: &DbState) -> Result<OwnedSemaphorePermit, AppError> {
     })
 }
 
+/// Whether an error text looks like transient contention worth retrying.
+/// [`upstream`] erases the `turso::Error` variant before this sees it, so the
+/// match is on text: `busy`/`locked` cover `Busy`/`BusySnapshot` ("database is
+/// busy"), and `conflict` is the sync engine's commit-time wording, which a
+/// string-only match would otherwise miss.
 fn is_busy(e: &AppError) -> bool {
     match e {
         AppError::Upstream(m) => {
             let m = m.to_ascii_lowercase();
-            m.contains("locked") || m.contains("busy")
+            m.contains("locked") || m.contains("busy") || m.contains("conflict")
         }
         _ => false,
     }

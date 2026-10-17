@@ -26,6 +26,37 @@ pub fn to_refs(names: Vec<String>) -> Vec<TableRef> {
     names.into_iter().map(|name| TableRef { name }).collect()
 }
 
+/// Tables a key may see through the meta surface. Deny by default: a name
+/// absent here is invisible, so a table added later cannot leak just by being
+/// left off a deny list.
+///
+/// Deliberately absent: `api_keys`, `dashboard_users`, `sessions` (credential
+/// and token hashes), `meta` (server config), `questions` and
+/// `novel_questions` (carry the answer and working the read paths withhold),
+/// and `reports`/`verifications` (who filed or verified what). Engine tables
+/// (`turso_*`, `__turso_*`) are never here.
+pub const INTROSPECTABLE_TABLES: &[&str] = &[
+    "subjects",
+    "exams",
+    "topics",
+    "subtopics",
+    "blueprints",
+    "passages",
+    "countries",
+    "exam_requirements",
+    "topic_countries",
+    "novels",
+    "novel_chapters",
+    "novel_characters",
+    "novel_themes",
+];
+
+/// Whether `name` may be listed or dumped through the meta surface. The one
+/// gate both the list and the row endpoints consult.
+pub fn is_introspectable(name: &str) -> bool {
+    INTROSPECTABLE_TABLES.contains(&name)
+}
+
 /// Normalize paging inputs. Page numbers below 1 count as 1; sizes
 /// clamp to 1–200. One rule shared by the store query and the response
 /// envelope so they can never disagree.
@@ -57,6 +88,28 @@ pub fn render(q: &Question, include_explanation: bool) -> RenderedQuestion {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn only_catalog_tables_are_introspectable() {
+        for ok in ["subjects", "novels", "passages", "topic_countries"] {
+            assert!(is_introspectable(ok), "{ok} should be visible");
+        }
+        for no in [
+            "api_keys",
+            "dashboard_users",
+            "sessions",
+            "meta",
+            "questions",
+            "novel_questions",
+            "reports",
+            "verifications",
+            "__turso_internal_mvcc_meta",
+            "turso_sync_last_change_id",
+            "",
+        ] {
+            assert!(!is_introspectable(no), "{no} must not be visible");
+        }
+    }
 
     #[test]
     fn to_refs_preserves_names_in_order() {

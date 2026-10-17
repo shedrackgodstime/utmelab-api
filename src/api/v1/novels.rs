@@ -23,8 +23,10 @@ pub struct List {
 
 pub async fn list(
     State(s): State<DbState>,
+    AuthedKey(auth): AuthedKey,
     Query(f): Query<List>,
 ) -> Result<Json<Vec<core::models::Novel>>, AppError> {
+    auth.require(SCOPE_READ_CATALOG)?;
     Ok(Json(
         store::catalog::list_novels(
             &s,
@@ -39,8 +41,10 @@ pub async fn list(
 
 pub async fn detail(
     State(s): State<DbState>,
+    AuthedKey(auth): AuthedKey,
     Path(id): Path<String>,
 ) -> Result<Json<core::models::NovelDoc>, AppError> {
+    auth.require(SCOPE_READ_CATALOG)?;
     match store::catalog::get_novel_doc(&s, &id).await? {
         Some(d) => Ok(Json(d)),
         None => Err(AppError::NotFound),

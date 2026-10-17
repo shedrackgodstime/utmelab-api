@@ -12,6 +12,10 @@ highest value first. Delete an entry when it is closed.
 3. Capacity pass: request telemetry now exists, so run one load test against
    `questions` and `papers` and tune `DB_MAX_CONCURRENT` and `WORKER_THREADS`
    against measured throughput and tail latency instead of guesswork.
+4. Classify `turso::Error::Busy`/`BusySnapshot` as typed retryable errors before
+   `upstream()` stringifies them, instead of text-matching in `is_busy`.
+5. Surface `stats()` (pending-change count, WAL size, last push time) read-only
+   on the admin status; do not call `checkpoint()` ourselves.
 
 ## Done
 
@@ -53,6 +57,21 @@ highest value first. Delete an entry when it is closed.
 - Logout is attributed: `logout_session` returns the session owner, so a real
   sign-out closes the lifecycle in the audit trail (best effort, since the
   client's logout always succeeds).
+- Meta introspection is deny-by-default. `core::catalog::INTROSPECTABLE_TABLES`
+  is the one allowlist: `fetch_table_names` lists only those names and
+  `fetch_rows` answers 404 for anything else. This closed a credential hole, not
+  just a naming one: `fetch_rows` ran `SELECT *` for any `ident`-valid name, so a
+  `read:catalog` key (the default scope) could read `api_keys`,
+  `dashboard_users`, and `sessions` (hashes), while the old
+  `NOT LIKE 'sqlite_%'/'turso_%'` filter leaked the engine's
+  `__turso_internal_mvcc_meta`. `questions`/`novel_questions` stay off the
+  allowlist so the withheld answers stay withheld.
+- Every `api/v1` read is key-gated: `novels::list` and `novels::detail` were the
+  last two taking no `AuthedKey`.
+- `is_busy` retries `conflict` as well as `busy`/`locked`, so a commit-time
+  conflict retries instead of surfacing. The engine's Busy/BusySnapshot text is
+  "database is busy"; a conflict is worded around "conflict", which the old
+  matcher missed.
 
 ## Decisions worth keeping
 
@@ -70,6 +89,9 @@ highest value first. Delete an entry when it is closed.
   `/api/internal/*` is customer or session.
 - Log format is a deployment concern, chosen by `LOG_FORMAT` beside `RUST_LOG`,
   not app config: it changes how output is rendered, never what the app does.
+- The meta surface is deny-by-default: a table is visible only if it is named in
+  `core::catalog::INTROSPECTABLE_TABLES`. A deny list fails open the moment a
+  sensitive table is added; an allow list fails closed.
 - No long poll. Pull on an interval and pool connections, so reads and writes
   never queue behind the sync engine's single IO worker.
 - Reads fail fast (5s), writes get cloud headroom (30s), and a global 30s net

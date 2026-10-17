@@ -5,20 +5,24 @@
 use super::{upstream, with_conn};
 use crate::{core, error::AppError, state::DbState};
 
+/// Names a key may see. The SQL no longer carries a deny list: a name that is
+/// not in the `core` allowlist is dropped here, so an engine table such as
+/// `__turso_internal_mvcc_meta` (whose leading `__turso_` a deny list missed)
+/// can never be listed.
 pub async fn fetch_table_names(s: &DbState) -> Result<Vec<String>, AppError> {
     with_conn(s, |conn| async move {
         let mut rows = conn
-            .query(
-                "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' AND name NOT LIKE 'turso_%' LIMIT 50",
-                (),
-            )
+            .query("SELECT name FROM sqlite_master WHERE type='table'", ())
             .await
             .map_err(upstream)?;
         let mut out = Vec::new();
         while let Some(row) = rows.next().await.map_err(upstream)? {
             let name: String = row.get(0).map_err(upstream)?;
-            out.push(name);
+            if core::catalog::is_introspectable(&name) {
+                out.push(name);
+            }
         }
+        out.sort();
         Ok(out)
     })
     .await
@@ -1099,13 +1103,18 @@ pub async fn list_syllabus(
     .await
 }
 
+/// Dump up to `limit` rows of one table. The table must be on the `core`
+/// allowlist: `SELECT *` bypasses every withholding rule, so a credential
+/// table or an answer-bearing one must be unreachable here, not merely
+/// hidden from the listing. Anything else answers 404 so the surface cannot
+/// be used to probe for table names.
 pub async fn fetch_rows(
     s: &DbState,
     table: &str,
     limit: u64,
 ) -> Result<crate::core::models::RowPage, AppError> {
-    if !core::validate::ident(table) {
-        return Err(AppError::BadRequest("bad table name".to_string()));
+    if !core::validate::ident(table) || !core::catalog::is_introspectable(table) {
+        return Err(AppError::NotFound);
     }
     let limit = limit.clamp(1, 100);
     let table = table.to_string();
@@ -2089,6 +2098,47 @@ mod tests {
         assert!(
             algebra.subtopics.is_empty(),
             "a topic with no subtopics is carried, not dropped"
+        );
+    }
+
+    #[tokio::test]
+    async fn fetch_rows_refuses_anything_off_the_allowlist() {
+        let s = crate::state::DbState::detached(local_exams_db().await);
+        // A catalog table is reachable, so the guard is not refusing everything.
+        assert!(fetch_rows(&s, "exams", 5).await.is_ok());
+        // Credential, answer-bearing, and engine tables are refused before any
+        // SQL runs, so this holds even though the harness never created them.
+        for t in [
+            "api_keys",
+            "dashboard_users",
+            "sessions",
+            "meta",
+            "questions",
+            "novel_questions",
+            "__turso_internal_mvcc_meta",
+            "turso_sync_last_change_id",
+        ] {
+            assert!(
+                matches!(
+                    fetch_rows(&s, t, 5).await,
+                    Err(crate::error::AppError::NotFound)
+                ),
+                "{t} must be refused"
+            );
+        }
+    }
+
+    #[tokio::test]
+    async fn fetch_table_names_lists_only_the_allowlist() {
+        let s = crate::state::DbState::detached(local_exams_db().await);
+        let names = fetch_table_names(&s).await.expect("names");
+        assert!(names.contains(&"exams".to_string()));
+        assert!(names.contains(&"subjects".to_string()));
+        assert!(
+            names
+                .iter()
+                .all(|n| crate::core::catalog::is_introspectable(n)),
+            "a name outside the allowlist leaked: {names:?}"
         );
     }
 }
