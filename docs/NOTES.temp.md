@@ -105,6 +105,11 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 ## Done
 
+- `core/models.rs` is split by role into `core/models/{domain,wire,admin}.rs`,
+  re-exported from `mod.rs` so every `core::models::…` path is unchanged. The
+  domain shapes (the Rust half of `READ_SHAPES`) no longer sit beside the ops
+  DTOs and the `Rendered*` wire forms, so a new type has an obvious home and the
+  file cannot grow into the grab-bag we are porting away from.
 - The MCP doc comment no longer claims a structural parity that does not exist.
   MCP is stated for what it is: three admin tools over the same `store` calls as
   HTTP, with the resources surface and read tools marked as the next release's
@@ -246,3 +251,7 @@ producing" bugs; new has no annotations, no served route, and a hand-written
   the pipeline creates are declared in `READ_SHAPES` and validated, never
   created, because `CREATE TABLE IF NOT EXISTS` from the API would win a fresh
   replica and freeze a loose shape before the pipeline's promotion lands.
+- Models split by role, not by consumer: `domain` mirrors the bank and pairs with
+  `store::schema::READ_SHAPES`, `wire` is what we answer, `admin` is service and
+  key state. One module keeps the store and the API agreeing on one shape; the
+  submodules keep the layers visible.

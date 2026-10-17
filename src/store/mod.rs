@@ -2,7 +2,7 @@
 //!
 //! Laws (see foundation contract):
 //! - This module tree is the only importer of `turso` in the crate.
-//! - Every query passes [`gate`]; saturation answers 503, never queues.
+//! - Every query passes the `gate`; saturation answers 503, never queues.
 //! - Raw SQL lives only in `catalog`/`accounts`, always parameterized or
 //!   validated through [`crate::core::validate::ident`].
 //! - Transient lock contention retries inside these walls; consumers see
