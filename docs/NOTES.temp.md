@@ -40,18 +40,42 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 ## Backlog
 
-1. `GET /api/v1/exams/{exam}/papers` costs ~142ms (release) in the per-row
-   `verified` predicate. Optimize only if it matters at the expected rate.
-2. Pin `SYNC_SECS` against a real remote. It is the bound on how long a cloud
+1. `GET /api/v1/exams/{exam}/papers` is the capacity wall, not a latency nit.
+   Measured (release, real bank) at ~127ms for one request and ~15 req/s with
+   both worker threads saturated, against ~700 req/s for a 20-question page:
+   one paper costs the CPU of ~45 question pages, and it is the only route a
+   single request saturates a worker with. Nothing else in the service is
+   close, so this route, not the box, is what a throughput target is sized
+   against. The cost is in the read, not the wire: `readiness` and
+   `subject_stats` each run their scope aggregates, and every question carries
+   the per-row `verified` predicate (a correlated `EXISTS` over
+   `json_each(scope)`). Fix the query first; if the answer turns out to be an
+   index or a materialized flag, that is pipeline-owned and leaves `src/`.
+2. The fixed cost of a `questions` read. One row costs ~2ms of CPU where a
+   trivial keyed read costs ~0.4ms, so most of a page's price is the query's
+   own filter and `COUNT(*)`, not the rows (~46us each) or the JSON. It is paid
+   by the hottest route, so it is worth a look once papers is fixed.
+3. Pin `SYNC_SECS` against a real remote. It is the bound on how long a cloud
    change takes to land, and 60 was the prototype's default, not measured here.
-   Lower it until the per-window pull cost, not the interval, is the limit.
-3. Capacity pass: the gate itself is measured (flat throughput, see Decisions).
-   Remaining is the load model: run an HTTP load test against `questions` and
-   `papers` once a key exists, size `WORKER_THREADS` to the VPS vCPU count, and
-   set `DB_MAX_CONCURRENT` to expected peak concurrent DB work.
+   Lower it until the per-window pull cost, not the interval, is the limit. The
+   read-only token is enough to measure this: a pull against the real remote
+   succeeds under it, and a pull is the whole cost.
 
 ## Done
 
+- The capacity pass ran, and it changed the picture. On a release build over the
+  real bank (2243 questions, 2268 verifications, 34 subjects), a 20-question page
+  serves ~700 req/s on two worker threads and is CPU-bound, not IO-bound: the
+  same numbers came out pinned to two vCPUs and free on twelve, so a bigger box
+  does not buy read capacity. A full paper is the exception at ~15 req/s and
+  127ms (Backlog 1), which is where a throughput target actually bites. RAM is a
+  non-issue: 47MB while serving, 104MB peak after 1000 concurrent connections,
+  and a single request answers in 5ms immediately after that soak, so the
+  1.5-2GB target has about 15x of headroom. Overload degrades by rejection, not
+  by queueing: past the gate every extra request gets 503 `db_saturated` at once
+  (99.8% shed at c=1000) while the tail stays bounded, which is what the gate is
+  for. Both knobs are already at their measured values (see Decisions), so the
+  remaining lever is the query, not the configuration.
 - The replica converges with no traffic, and stays cheap while it does. The
   pull runs on its own interval, so a change made anywhere (the pipeline
   promoting content, a key revoked elsewhere) lands within `SYNC_SECS` instead
@@ -274,12 +298,33 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 - The meta surface is deny-by-default: a table is visible only if it is named in
   `core::catalog::INTROSPECTABLE_TABLES`. A deny list fails open the moment a
   sensitive table is added; an allow list fails closed.
-- `DB_MAX_CONCURRENT` is a shedding/latency dial, not a throughput dial. Measured
-  flat ~1.1–1.4k ops/s at gates 4/8/16/32 on an offline replica: the engine's
-  rate is the ceiling. A smaller gate only sheds more (gate=8 answered 75% of 32
-  concurrent readers with 503 for the same throughput gate=16 got). Keep it equal
-  to the connection pool and tune it to expected peak concurrency; never treat it
-  as a performance knob.
+- `DB_MAX_CONCURRENT` is a shedding/latency dial, not a throughput dial, and the
+  HTTP pass agreed with the offline one. Measured flat ~1.1–1.4k ops/s at gates
+  4/8/16/32 on an offline replica, and at the HTTP layer gate=64 bought nothing
+  over gate=16 (both ~600 req/s at c=16–64) while turning shedding into latency:
+  p50 107ms at c=64, against an immediate 503 and p50 ~2ms at gate=16. Overload
+  must therefore be answered by rejection, not by a queue; that is what keeps the
+  tail bounded under a 5s read timeout. Keep it equal to the connection pool,
+  keep it tight enough to shed before latency grows, and never treat it as a
+  performance knob.
+- `WORKER_THREADS` is the CPU parallelism of the HTTP and JSON layer, and this
+  workload does not want many. Throughput was identical between 2 and 12 CPUs,
+  and four workers measured *worse* than two on the hot read (478 against 698
+  req/s at c=4), which is what more contenders on a per-op serialized section
+  look like. Two is right for a two-vCPU box; sizing it to a large core count is
+  not supported by anything measured here. `MAX_BLOCKING_THREADS` has no bearing
+  on reads at all: password hashing is the only thing that offloads.
+- Measuring the load path needs a key, and the service seeds none by design
+  (`ensure_auth_tables` seeds nothing, and the cloud's `api_keys` is empty, so
+  the `.env` ADMIN/COMMERCIAL keys cannot work against it). For an isolated
+  bench: copy the replica with its `-info`/`-log`/`-changes` siblings, insert one
+  `api_keys` row for `<prefix>.<secret>` with `tier='admin'` and the SHA-256 of
+  the whole credential as `hash` — through `turso`, never `sqlite3`, because the
+  engine's file is not a plain SQLite file despite its header — then point the
+  copy at a dead remote, or at the real one under `TURSO_DB_TOKEN_READONLY`. The
+  cloud is then untouchable (pushes fail, pulls still work) and reads come off
+  the local file; both directions measured the same, so the offline state is not
+  a confound.
 - Security settings default to safe: `COOKIE_SECURE` defaults on and the meta
   allowlist denies by default, because a missing or typo'd variable must fail
   closed, never downgrade.

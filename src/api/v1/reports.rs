@@ -34,7 +34,8 @@ pub struct ReportBody {
     /// One of: wrong_answer, unclear_stem, broken_option,
     /// wrong_explanation, other.
     pub reason: String,
-    /// Optional context, max 500 characters. No PII.
+    /// Optional context, capped at [`crate::core::reports::MAX_DETAIL_CHARS`]
+    /// characters. No PII.
     pub detail: Option<String>,
 }
 
@@ -93,9 +94,10 @@ async fn report(
     let reason = core::reports::parse_reason(reason.trim())?;
     if let Some(d) = &detail {
         if d.chars().count() > core::reports::MAX_DETAIL_CHARS {
-            return Err(AppError::BadRequest(
-                "detail over 500 characters".to_string(),
-            ));
+            return Err(AppError::BadRequest(format!(
+                "detail over {} characters",
+                core::reports::MAX_DETAIL_CHARS
+            )));
         }
     }
     if !store::catalog::target_exists(&s, target_type, &target_id).await? {
