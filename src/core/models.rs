@@ -47,16 +47,61 @@ pub struct KeyInfo {
     pub scopes: Vec<String>,
 }
 
-/// Page of questions as served. Counts describe the filtered set, not
-/// the bank — a consumer pages `total_pages`, never guesses.
-#[derive(Clone, Debug, serde::Serialize)]
-pub struct QuestionPageResponse {
-    pub questions: Vec<RenderedQuestion>,
+/// One page of a collection in the shape every paged endpoint serves.
+/// The envelope lives here, once, so a new paged endpoint cannot
+/// re-derive the counts: `total_pages` comes from `total_records` and
+/// `per_page` through [`Page::new`], never from the call site.
+///
+/// The collection field is `questions` because both surfaces that page
+/// today page questions; a future non-question page renames it there.
+#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+pub struct Page<T> {
+    pub questions: Vec<T>,
     pub page: u32,
     pub per_page: u32,
     pub total_pages: u32,
     pub total_records: usize,
     pub includes_explanation: bool,
+}
+
+impl<T> Page<T> {
+    /// Build the envelope. `per_page` has already passed
+    /// [`crate::core::catalog::page_bounds`], so it is never zero.
+    pub fn new(
+        questions: Vec<T>,
+        page: u32,
+        per_page: u32,
+        total_records: usize,
+        includes_explanation: bool,
+    ) -> Self {
+        Self {
+            questions,
+            page,
+            per_page,
+            total_pages: if total_records == 0 {
+                0
+            } else {
+                total_records.div_ceil(per_page as usize) as u32
+            },
+            total_records,
+            includes_explanation,
+        }
+    }
+}
+
+/// Page of questions as served. Counts describe the filtered set, not
+/// the bank — a consumer pages `total_pages`, never guesses.
+pub type QuestionPageResponse = Page<RenderedQuestion>;
+
+/// Outcome of filing a consumer flag. `duplicate` is true when an
+/// identical filing already existed; `id` is then the original's.
+#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+pub struct ReportFiled {
+    pub id: String,
+    pub target_type: String,
+    pub target_id: String,
+    pub reason: String,
+    pub duplicate: bool,
 }
 
 /// Plain text plus offset marks. `text` stays searchable as characters;
@@ -275,15 +320,7 @@ pub struct RenderedNovelQuestion {
 
 /// One page of novel quiz rows. Counts describe the chapter-filtered
 /// set, same envelope rule as questions.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
-pub struct NovelQuestionPage {
-    pub questions: Vec<RenderedNovelQuestion>,
-    pub page: u32,
-    pub per_page: u32,
-    pub total_pages: u32,
-    pub total_records: usize,
-    pub includes_explanation: bool,
-}
+pub type NovelQuestionPage = Page<RenderedNovelQuestion>;
 
 /// A stimulus shared by many questions — one comprehension passage
 /// serving five questions, one cloze serving ten. Questions carry only
@@ -438,4 +475,24 @@ pub struct PaperReadiness {
     /// True when every requirement group for this scope holds enough
     /// verified questions to fill its `min_select` slots.
     pub complete: bool,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn page_envelope_counts_whole_and_partial_pages() {
+        let empty: Page<u8> = Page::new(vec![], 1, 50, 0, false);
+        assert_eq!(empty.total_pages, 0, "an empty set has no pages");
+        assert_eq!(empty.total_records, 0);
+
+        let exact: Page<u8> = Page::new(vec![1], 1, 50, 100, false);
+        assert_eq!(exact.total_pages, 2, "100 over 50 is exactly two pages");
+
+        let partial: Page<u8> = Page::new(vec![1], 3, 50, 101, true);
+        assert_eq!(partial.total_pages, 3, "101 over 50 rounds up to three");
+        assert_eq!(partial.page, 3);
+        assert!(partial.includes_explanation);
+    }
 }

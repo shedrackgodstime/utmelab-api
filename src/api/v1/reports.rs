@@ -49,7 +49,7 @@ pub async fn file(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,
     Json(b): Json<ReportBody>,
-) -> Result<(StatusCode, Json<serde_json::Value>), AppError> {
+) -> Result<(StatusCode, Json<core::models::ReportFiled>), AppError> {
     report(s, auth, b.target_type, b.target_id, b.reason, b.detail).await
 }
 
@@ -60,7 +60,7 @@ pub async fn report_question(
     AuthedKey(auth): AuthedKey,
     Path(id): Path<String>,
     Json(b): Json<QuestionReportBody>,
-) -> Result<(StatusCode, Json<serde_json::Value>), AppError> {
+) -> Result<(StatusCode, Json<core::models::ReportFiled>), AppError> {
     report(s, auth, "question".to_string(), id, b.reason, b.detail).await
 }
 
@@ -72,7 +72,7 @@ async fn report(
     target_id: String,
     reason: String,
     detail: Option<String>,
-) -> Result<(StatusCode, Json<serde_json::Value>), AppError> {
+) -> Result<(StatusCode, Json<core::models::ReportFiled>), AppError> {
     auth.require(SCOPE_WRITE_REPORTS)?;
     if !s
         .limiter
@@ -117,13 +117,13 @@ async fn report(
     };
     Ok((
         status,
-        Json(serde_json::json!({
-            "id": rid,
-            "target_type": target_type,
-            "target_id": target_id,
-            "reason": reason,
-            "duplicate": duplicate,
-        })),
+        Json(core::models::ReportFiled {
+            id: rid,
+            target_type: target_type.to_string(),
+            target_id,
+            reason: reason.to_string(),
+            duplicate,
+        }),
     ))
 }
 

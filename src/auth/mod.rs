@@ -8,9 +8,10 @@ pub mod session;
 
 use crate::error::AppError;
 
+/// The scope vocabulary is exactly what a route enforces. A scope is
+/// declared here only when a handler calls [`Auth::require`] with it, so a
+/// key's grant list can never name a capability nothing checks.
 pub const SCOPE_READ_CATALOG: &str = "read:catalog";
-pub const SCOPE_WRITE_CATALOG: &str = "write:catalog";
-pub const SCOPE_READ_REPORTS: &str = "read:reports";
 pub const SCOPE_WRITE_REPORTS: &str = "write:reports";
 pub const SCOPE_MANAGE_KEYS: &str = "manage:keys";
 

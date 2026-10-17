@@ -75,24 +75,19 @@ pub async fn questions(
     }
     let total_records = all.len();
     let start = ((page - 1) * per_page) as usize;
-    let questions = all
+    let rendered = all
         .into_iter()
         .skip(start)
         .take(per_page as usize)
         .map(|q| core::catalog::render_novel_question(&id, &q, with_explanation))
         .collect();
-    Ok(Json(core::models::NovelQuestionPage {
-        questions,
+    Ok(Json(core::models::Page::new(
+        rendered,
         page,
         per_page,
-        total_pages: if total_records == 0 {
-            0
-        } else {
-            total_records.div_ceil(per_page as usize) as u32
-        },
         total_records,
-        includes_explanation: with_explanation,
-    }))
+        with_explanation,
+    )))
 }
 
 pub fn router(state: AppState) -> Router<AppState> {

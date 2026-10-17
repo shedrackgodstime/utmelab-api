@@ -333,10 +333,6 @@ fn question_where(f: &QuestionFilter) -> (String, Vec<turso::Value>) {
         conds.push(format!("({}) = ?", verified_predicate("questions")));
         params.push(turso::Value::Integer(i32::from(v) as i64));
     }
-    if let Some(v) = f.verified {
-        conds.push(format!("({}) = ?", verified_predicate("questions")));
-        params.push(turso::Value::Integer(i32::from(v) as i64));
-    }
     let clause = if conds.is_empty() {
         String::new()
     } else {
@@ -1917,6 +1913,28 @@ mod tests {
             .await
             .expect_err("non-0/1 flag fails loudly");
         assert!(matches!(err, crate::error::AppError::Upstream(_)));
+    }
+
+    #[test]
+    fn verified_filter_adds_one_predicate_and_one_param() {
+        // A copy-paste once emitted this condition twice; the clause and the
+        // bound params must stay in step, one placeholder to one value.
+        let f = QuestionFilter {
+            exam: Some("JAMB".to_string()),
+            verified: Some(true),
+            ..Default::default()
+        };
+        let (clause, params) = question_where(&f);
+        assert_eq!(
+            clause.matches("SELECT 1 FROM verifications v ").count(),
+            1,
+            "the verified predicate must appear once: {clause}"
+        );
+        assert_eq!(
+            clause.matches('?').count(),
+            params.len(),
+            "one placeholder per bound value"
+        );
     }
 
     #[tokio::test]

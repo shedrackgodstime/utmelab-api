@@ -456,15 +456,10 @@ pub async fn create_key(s: &DbState, owner: &str) -> Result<String, AppError> {
 
 /// Admin-only key creation. Admin tier, full scopes, owned by nobody so it
 /// shows in the staff-wide key list. Returns the plaintext once — the table
-/// only ever holds the hash.
+/// only ever holds the hash. The grant names only scopes a route enforces;
+/// admin tier bypasses scope checks regardless.
 pub async fn create_admin_key(s: &DbState, actor: &str) -> Result<String, AppError> {
-    let full = create_key_raw(
-        s,
-        "admin",
-        "manage:keys,write:catalog,write:reports,read:catalog",
-        "",
-    )
-    .await?;
+    let full = create_key_raw(s, "admin", "manage:keys,write:reports,read:catalog", "").await?;
     obs::key_created(actor, key_prefix(&full), "admin");
     Ok(full)
 }
@@ -634,5 +629,206 @@ pub async fn file_report(
     match original {
         Some(id) => Ok((id, true)),
         None => Err(AppError::Upstream("report not stored".to_string())),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::state::DbState;
+
+    /// Offline replica: `bootstrap_if_empty(false)` keeps `build()` off the
+    /// network. Reads (`verify_key`, `verify_session`, `list_*`) run here;
+    /// writes cannot, because the single write path pushes to the cloud and
+    /// a dead remote fails the push. Seeding therefore goes through a raw
+    /// connection, and mutation tests stop at the validation boundary.
+    async fn local_accounts_db() -> DbState {
+        let path = std::env::temp_dir().join(format!(
+            "utmelab-accounts-test-{}-{}.db",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .map(|d| d.as_nanos())
+                .unwrap_or(0)
+        ));
+        let db = turso::sync::Builder::new_remote(path.to_str().expect("tmp path"))
+            .with_auth_token("test-only")
+            .bootstrap_if_empty(false)
+            .build()
+            .await
+            .expect("local sync db builds offline");
+        let conn = db.connect().await.expect("connect");
+        for ddl in [
+            "CREATE TABLE api_keys (prefix TEXT PRIMARY KEY, hash TEXT NOT NULL, tier TEXT NOT NULL DEFAULT 'commercial', scopes TEXT NOT NULL DEFAULT 'read:catalog', revoked INTEGER NOT NULL DEFAULT 0, owner TEXT NOT NULL DEFAULT '', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+            "CREATE TABLE dashboard_users (username TEXT PRIMARY KEY, pw_hash TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'customer', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+            "CREATE TABLE sessions (token_hash TEXT PRIMARY KEY, username TEXT NOT NULL, expires_at INTEGER NOT NULL)",
+        ] {
+            conn.execute(ddl, ()).await.expect("create table");
+        }
+        DbState::detached(std::sync::Arc::new(db))
+    }
+
+    /// Seed through a raw connection, bypassing the pushing write path.
+    async fn seed(s: &DbState, sql: &str, params: Vec<turso::Value>) {
+        let db = s.db.read().await.clone().expect("db");
+        let conn = db.connect().await.expect("connect");
+        conn.execute(sql, params).await.expect("seed write");
+    }
+
+    async fn seed_key(s: &DbState, full: &str, tier: &str, scopes: &str, revoked: i64) {
+        let (prefix, _) = full.split_once('.').expect("key shape");
+        seed(
+            s,
+            "INSERT INTO api_keys (prefix, hash, tier, scopes, revoked, owner) VALUES (?1, ?2, ?3, ?4, ?5, '')",
+            vec![
+                turso::Value::Text(prefix.to_string()),
+                turso::Value::Text(hash_key(full)),
+                turso::Value::Text(tier.to_string()),
+                turso::Value::Text(scopes.to_string()),
+                turso::Value::Integer(revoked),
+            ],
+        )
+        .await;
+    }
+
+    #[tokio::test]
+    async fn verify_key_accepts_a_live_key_and_parses_scopes() {
+        let s = local_accounts_db().await;
+        seed_key(
+            &s,
+            "k1.secret",
+            "commercial",
+            "read:catalog,write:reports",
+            0,
+        )
+        .await;
+        let auth = verify_key(&s, "k1.secret").await.expect("live key");
+        assert_eq!(auth.key_id, "k1");
+        assert!(!auth.is_admin);
+        assert!(auth.has_scope("read:catalog"));
+        assert!(auth.has_scope("write:reports"));
+        assert!(!auth.has_scope("manage:keys"), "scope must not leak");
+    }
+
+    #[tokio::test]
+    async fn verify_key_reads_admin_tier() {
+        let s = local_accounts_db().await;
+        seed_key(&s, "adm_1.x", "admin", "read:catalog", 0).await;
+        let auth = verify_key(&s, "adm_1.x").await.expect("admin key");
+        assert!(auth.is_admin);
+        assert!(
+            auth.has_scope("manage:keys"),
+            "admin tier bypasses scope lists"
+        );
+    }
+
+    #[tokio::test]
+    async fn verify_key_rejects_wrong_revoked_and_malformed() {
+        let s = local_accounts_db().await;
+        seed_key(&s, "k1.secret", "commercial", "read:catalog", 0).await;
+        seed_key(&s, "k2.gone", "commercial", "read:catalog", 1).await;
+
+        for bad in ["k1.wrong", "k2.gone", "ghost.secret", "nodot", ".x"] {
+            assert!(
+                matches!(verify_key(&s, bad).await, Err(AppError::Unauthorized)),
+                "{bad:?} must not authenticate"
+            );
+        }
+    }
+
+    #[tokio::test]
+    async fn verify_session_returns_identity_and_rejects_expired() {
+        let s = local_accounts_db().await;
+        seed(
+            &s,
+            "INSERT INTO dashboard_users (username, pw_hash, role) VALUES ('ada', 'unused', 'admin')",
+            vec![],
+        )
+        .await;
+        let now = crate::auth::session::now_unix();
+        seed(
+            &s,
+            "INSERT INTO sessions (token_hash, username, expires_at) VALUES (?1, 'ada', ?2)",
+            vec![
+                turso::Value::Text(hash_token("live")),
+                turso::Value::Integer(now + 3600),
+            ],
+        )
+        .await;
+        seed(
+            &s,
+            "INSERT INTO sessions (token_hash, username, expires_at) VALUES (?1, 'ada', ?2)",
+            vec![
+                turso::Value::Text(hash_token("stale")),
+                turso::Value::Integer(now - 1),
+            ],
+        )
+        .await;
+
+        let (user, role) = verify_session(&s, "live").await.expect("live session");
+        assert_eq!((user.as_str(), role.as_str()), ("ada", "admin"));
+        for bad in ["stale", "unknown", ""] {
+            assert!(
+                matches!(verify_session(&s, bad).await, Err(AppError::Unauthorized)),
+                "{bad:?} must not resolve"
+            );
+        }
+    }
+
+    #[tokio::test]
+    async fn list_keys_scopes_to_the_owner() {
+        let s = local_accounts_db().await;
+        seed(
+            &s,
+            "INSERT INTO api_keys (prefix, hash, tier, scopes, revoked, owner) VALUES ('k1','h','commercial','read:catalog',0,'ada')",
+            vec![],
+        )
+        .await;
+        seed(
+            &s,
+            "INSERT INTO api_keys (prefix, hash, tier, scopes, revoked, owner) VALUES ('k2','h','commercial','read:catalog',0,'bob')",
+            vec![],
+        )
+        .await;
+
+        assert_eq!(list_keys(&s, None).await.expect("admin view").len(), 2);
+        let ada = list_keys(&s, Some("ada")).await.expect("owner view");
+        assert_eq!(ada.len(), 1, "a customer sees only their own keys");
+        assert_eq!(ada[0].prefix, "k1");
+    }
+
+    #[tokio::test]
+    async fn mutations_validate_before_any_write() {
+        // These reject on the pure guards in `core::accounts`, before the
+        // write path (and its cloud push) is ever reached.
+        let s = local_accounts_db().await;
+        assert!(matches!(
+            create_key(&s, "").await,
+            Err(AppError::BadRequest(_))
+        ));
+        assert!(matches!(
+            set_user_role(&s, "", "admin", "actor").await,
+            Err(AppError::BadRequest(_))
+        ));
+        assert!(matches!(
+            set_user_role(&s, "u", "root", "actor").await,
+            Err(AppError::BadRequest(_))
+        ));
+        assert!(matches!(
+            seed_admin(&s, "u", "short", "admin").await,
+            Err(AppError::BadRequest(_))
+        ));
+        assert!(matches!(
+            seed_admin(&s, "u", "long-enough-password", "root").await,
+            Err(AppError::BadRequest(_))
+        ));
+        assert!(matches!(
+            delete_key(&s, "owner", "not a prefix").await,
+            Err(AppError::BadRequest(_))
+        ));
+        assert!(matches!(
+            set_revoked(&s, "bad prefix!", true, "actor").await,
+            Err(AppError::BadRequest(_))
+        ));
     }
 }

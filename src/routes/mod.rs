@@ -296,6 +296,34 @@ mod tests {
         );
     }
 
+    async fn post_status_of(app: Router, uri: &'static str) -> axum::http::StatusCode {
+        app.oneshot(
+            Request::builder()
+                .method(axum::http::Method::POST)
+                .uri(uri)
+                .body(Body::empty())
+                .expect("request"),
+        )
+        .await
+        .expect("call")
+        .status()
+    }
+
+    #[tokio::test]
+    async fn report_write_routes_stay_wired_outside_the_read_group() {
+        // `reports` sits outside the read-timeout group in `api::router`, so
+        // this guards against the move dropping the routes to a 404.
+        let app = crate::routes::router(state(true), &crate::config::Config::default());
+        assert_eq!(
+            post_status_of(app.clone(), "/api/v1/report").await,
+            axum::http::StatusCode::UNAUTHORIZED
+        );
+        assert_eq!(
+            post_status_of(app, "/api/v1/questions/q1/report").await,
+            axum::http::StatusCode::UNAUTHORIZED
+        );
+    }
+
     fn boom() {
         panic!("boom");
     }

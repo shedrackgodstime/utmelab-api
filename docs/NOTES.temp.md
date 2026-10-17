@@ -17,6 +17,10 @@ highest value first. Delete an entry when it is closed.
    `upstream()` stringifies them, instead of text-matching in `is_busy`.
 5. Surface `stats()` (pending-change count, WAL size, last push time) read-only
    on the admin status; do not call `checkpoint()` ourselves.
+6. The store write path (`execute_write`/`execute_ddl`) pushes to Turso, so it
+   cannot run against an offline replica: only reads and the pre-write guards are
+   covered today. Add a mutation test against a real replica (or a stubbed push)
+   to cover key create/delete/revoke, role change, and report filing end to end.
 
 ## Done
 
@@ -77,6 +81,26 @@ highest value first. Delete an entry when it is closed.
   default was `false`, so a missing `COOKIE_SECURE` shipped a non-`Secure` admin
   cookie. Now an unset variable fails closed; only an explicit `=0` opts out for
   local http.
+- Paged endpoints now share one envelope, `core::models::Page`, built with
+  `Page::new`. `questions` and `novels` no longer each hand-roll the
+  `total_pages` arithmetic, so a new paged endpoint copies a constructor, not a
+  formula.
+- The porting surface gained its first tests. A keyed handler test drives the
+  real router over `/api/v1/questions` (no key 401, wrong scope 403, revoked 401,
+  live key 200 with the page envelope, answer withheld by default). `store`
+  accounts gained tests for the credential reads (`verify_key`,
+  `verify_session`, `list_keys`) and the mutation validation guards.
+- `POST /v1/report` returns a typed `core::models::ReportFiled` instead of an
+  ad-hoc `serde_json::Value`, so the public surface has one response idiom.
+- The scope vocabulary now equals what a route enforces: the unused
+  `read:reports` and `write:catalog` are gone, and the admin key grant names only
+  enforced scopes.
+- The read/write budget split is now real on the public surface: `reports` (the
+  only write under `/api/v1`) is merged outside the read-timeout group in
+  `api::router`, so it runs on the write budget like `internal` and `mcp`.
+- `question_where` emitted the `verified` predicate twice under a copy-paste bug
+  (the query still worked, with a duplicate condition and param). It is emitted
+  once now, with a test pinning one placeholder per bound value.
 
 ## Decisions worth keeping
 
@@ -112,3 +136,16 @@ highest value first. Delete an entry when it is closed.
   covers any route that forgets its own budget.
 - 16KiB request body cap, ~5x the largest body we accept.
 - Production code has no `unwrap`/`expect`, no `#[allow]`, no `unsafe`.
+- A scope constant is declared only when a route enforces it. A granted scope
+  nothing checks is a capability a key appears to hold; the vocabulary stays
+  equal to enforcement, and admin tier bypasses scope lists regardless.
+- The read/write timeout split follows the verb, not the router: reads fail fast
+  at 5s, writes take 30s of cloud headroom, so a write module sits outside the
+  read-timeout layer wherever it lives.
+- The write path cannot run offline (it pushes to Turso), so store tests seed
+  through a raw connection and stop at the validation boundary; happy-path
+  mutation coverage needs a live replica.
+- One page envelope, one response idiom (typed `core::models`), one identity rule
+  (`AuthedKey` plus `require(SCOPE_*)`, except an endpoint about the caller's own
+  key). These are written at the top of `api/v1/mod.rs` so a new module follows
+  the rule, not the last file it read.

@@ -31,9 +31,13 @@ pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
             axum::http::header::RETRY_AFTER,
             axum::http::header::CONTENT_TYPE,
         ]));
-    Router::new()
-        .merge(v1::router(state))
-        .layer(cors)
+    // Reads run on the read budget and carry ETag; the report routes write
+    // (they push to the cloud), so they sit outside both and take the global
+    // write budget from `routes`. Same split as `internal` and `mcp`, where
+    // the verb, not the path, picks the budget.
+    let reads = v1::router(state.clone())
         .layer(from_fn(middleware::etag))
-        .layer(cfg.fast_timeout())
+        .layer(cfg.fast_timeout());
+    let writes = v1::reports::router(state);
+    Router::new().merge(reads).merge(writes).layer(cors)
 }
