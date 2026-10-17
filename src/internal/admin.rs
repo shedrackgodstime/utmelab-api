@@ -101,6 +101,15 @@ pub async fn unrevoke(
     apply(s, u, b.prefix, false).await
 }
 
+/// Admin-only: list filed consumer reports, newest first. Capped at 200;
+/// older reports are no longer visible through this surface.
+pub async fn list_reports(
+    State(s): State<DbState>,
+    AdminUser(_u): AdminUser,
+) -> Result<Json<Vec<crate::core::models::ReportSummary>>, AppError> {
+    Ok(Json(store::accounts::list_reports(&s).await?))
+}
+
 /// The body both revoke routes share; they differ only by the flag.
 async fn apply(
     s: DbState,

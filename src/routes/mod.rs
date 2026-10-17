@@ -385,6 +385,7 @@ mod tests {
         ("POST", "/api/internal/admin/keys/create"),
         ("POST", "/api/internal/admin/keys/revoke"),
         ("POST", "/api/internal/admin/keys/unrevoke"),
+        ("GET", "/api/internal/admin/reports"),
     ];
 
     async fn assert_all_require_identity(routes: &[(String, String)]) {

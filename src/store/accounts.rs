@@ -676,6 +676,41 @@ pub async fn file_report(
     }
 }
 
+/// Admin read: list filed reports, newest first, capped at 200. Admin-only
+/// surface reads every reporter's filings; consumers never see other keys'
+/// reports.
+pub async fn list_reports(
+    s: &DbState,
+) -> Result<Vec<crate::core::models::ReportSummary>, AppError> {
+    with_conn(s, |conn| async move {
+        let mut rows = conn
+            .query(
+                "SELECT id, target_type, target_id, reporter, reason, detail, created_at FROM reports ORDER BY created_at DESC LIMIT 200",
+                (),
+            )
+            .await
+            .map_err(upstream)?;
+        let mut out = Vec::new();
+        while let Some(row) = rows.next().await.map_err(upstream)? {
+            out.push(crate::core::models::ReportSummary {
+                id: row.get(0).map_err(upstream)?,
+                target_type: row.get(1).map_err(upstream)?,
+                target_id: row.get(2).map_err(upstream)?,
+                reporter: row.get(3).map_err(upstream)?,
+                reason: row.get(4).map_err(upstream)?,
+                detail: match row.get_value(5).map_err(upstream)? {
+                    turso::Value::Null => None,
+                    turso::Value::Text(d) => Some(d),
+                    _ => return Err(AppError::Upstream("reports.detail is not text".to_string())),
+                },
+                created_at: row.get(6).map_err(upstream)?,
+            });
+        }
+        Ok(out)
+    })
+    .await
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -953,5 +988,69 @@ mod tests {
             rotate_key(&s, "ghost", "root").await,
             Err(AppError::NotFound)
         ));
+    }
+
+    /// Admin can list filed reports; empty when none exist, newest first.
+    #[tokio::test]
+    async fn list_reports_empty_when_none() {
+        let s = local_accounts_db().await;
+        assert_eq!(
+            list_reports(&s).await.expect("list"),
+            Vec::<crate::core::models::ReportSummary>::new()
+        );
+    }
+
+    /// list_reports returns every filed report, newest first, with all fields.
+    #[tokio::test]
+    async fn list_reports_returns_all_filed() {
+        let s = local_accounts_db().await;
+        seed(
+            &s,
+            "INSERT INTO reports (id, target_type, target_id, reporter, reason, detail, created_at) VALUES ('r1','question','q1','k1','wrong_answer',NULL,100)",
+            vec![],
+        )
+        .await;
+        seed(
+            &s,
+            "INSERT INTO reports (id, target_type, target_id, reporter, reason, detail, created_at) VALUES ('r2','passage','p1','k2','unclear_stem','stem is ambiguous',200)",
+            vec![],
+        )
+        .await;
+        let reports = list_reports(&s).await.expect("list");
+        assert_eq!(reports.len(), 2);
+        // Newest first.
+        assert_eq!(reports[0].id, "r2");
+        assert_eq!(reports[0].target_type, "passage");
+        assert_eq!(reports[0].target_id, "p1");
+        assert_eq!(reports[0].reporter, "k2");
+        assert_eq!(reports[0].reason, "unclear_stem");
+        assert_eq!(reports[0].detail.as_deref(), Some("stem is ambiguous"));
+        assert_eq!(reports[0].created_at, 200);
+        assert_eq!(reports[1].id, "r1");
+        assert_eq!(reports[1].target_type, "question");
+        assert_eq!(reports[1].target_id, "q1");
+        assert_eq!(reports[1].reporter, "k1");
+        assert_eq!(reports[1].reason, "wrong_answer");
+        assert_eq!(reports[1].detail, None);
+        assert_eq!(reports[1].created_at, 100);
+    }
+
+    /// list_reports caps at 200 rows.
+    #[tokio::test]
+    async fn list_reports_caps_at_200() {
+        let s = local_accounts_db().await;
+        for i in 0..205 {
+            seed(
+                &s,
+                &format!(
+                    "INSERT INTO reports (id, target_type, target_id, reporter, reason, detail, created_at) VALUES ('r{}','question','q{}','k{}','other',NULL,{})",
+                    i, i, i, i
+                ),
+                vec![],
+            )
+            .await;
+        }
+        let reports = list_reports(&s).await.expect("list");
+        assert_eq!(reports.len(), 200, "cap at 200 rows");
     }
 }

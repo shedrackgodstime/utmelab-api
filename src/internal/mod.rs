@@ -69,5 +69,9 @@ pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
             "/internal/admin/keys/unrevoke",
             post(admin::unrevoke).route_layer(cfg.slow_timeout()),
         )
+        .route(
+            "/internal/admin/reports",
+            get(admin::list_reports).route_layer(cfg.fast_timeout()),
+        )
         .with_state(state)
 }

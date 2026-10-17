@@ -94,3 +94,16 @@ pub struct SignedIn {
     pub ok: bool,
     pub role: String,
 }
+
+/// One filed consumer report, as the admin surface lists it. `detail` may
+/// be absent; the reporter is the key prefix that filed it.
+#[derive(Clone, Debug, serde::Serialize, PartialEq)]
+pub struct ReportSummary {
+    pub id: String,
+    pub target_type: String,
+    pub target_id: String,
+    pub reporter: String,
+    pub reason: String,
+    pub detail: Option<String>,
+    pub created_at: i64,
+}
