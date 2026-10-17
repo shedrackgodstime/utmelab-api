@@ -244,3 +244,7 @@ producing" bugs; new has no annotations, no served route, and a hand-written
   `store::schema::READ_SHAPES`, `wire` is what we answer, `admin` is service and
   key state. One module keeps the store and the API agreeing on one shape; the
   submodules keep the layers visible.
+- The served syllabus drops old's `note_available`, which was always `false`
+  ("shape-only until D18 is activated"). A field that can only ever say one thing
+  is noise a consumer will branch on; it returns with real meaning when notes
+  exist.
