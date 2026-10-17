@@ -60,17 +60,13 @@ const OK_MS: u64 = 100;
 /// latency buckets. Atomics only, so it costs a few increments per request and
 /// nothing while idle. Outermost layer, so it times what a client actually
 /// waits for; the two probes are skipped so health checks cannot drown out
-/// real traffic. A non-probe request also marks the replica as wanted, so the
-/// sync task pulls only while someone is asking and never while idle.
+/// real traffic.
 async fn telemetry(State(state): State<AppState>, request: Request<Body>, next: Next) -> Response {
     use std::sync::atomic::Ordering::Relaxed;
 
     if matches!(request.uri().path(), "/health" | "/ready") {
         return next.run(request).await;
     }
-    // The one thing that asks for fresh data. The gate coalesces a burst into
-    // one pull, so this is a notify at most once per window and nothing else.
-    state.freshness.touch();
     let m = &state.metrics;
     m.in_flight.fetch_add(1, Relaxed);
     let started = std::time::Instant::now();
@@ -252,39 +248,6 @@ mod tests {
         assert_eq!(snap.requests_ok, 0, "neither probe is counted");
         assert_eq!(snap.in_flight, 0);
         assert_eq!(snap.latency_fast + snap.latency_ok + snap.latency_slow, 1);
-    }
-
-    #[tokio::test]
-    async fn a_real_request_asks_for_fresh_data_but_a_probe_does_not() {
-        let st = state_without_db(true);
-        let freshness = Arc::clone(&st.freshness);
-        let app = crate::routes::router(st, &crate::config::Config::default());
-
-        // A probe is not a data request, so it must not ask the sync task for
-        // anything: the wait stays empty.
-        assert_eq!(
-            call(app.clone(), "GET", "/health", None, None).await.0,
-            axum::http::StatusCode::OK
-        );
-        assert!(
-            tokio::time::timeout(std::time::Duration::from_millis(50), freshness.wanted())
-                .await
-                .is_err(),
-            "a probe must not ask for fresh data"
-        );
-
-        // A real request asks, releasing the wait. That single signal is what
-        // keeps an idle process from pulling at all.
-        assert_eq!(
-            call(app, "GET", "/api/v1/meta/tables", None, None).await.0,
-            axum::http::StatusCode::UNAUTHORIZED
-        );
-        assert!(
-            tokio::time::timeout(std::time::Duration::from_millis(50), freshness.wanted())
-                .await
-                .is_ok(),
-            "a real request must ask for fresh data"
-        );
     }
 
     #[tokio::test]

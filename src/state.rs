@@ -10,7 +10,7 @@ use std::sync::{
 
 use tokio::sync::RwLock;
 
-use crate::store::{sync::Freshness, ConnPool, DbGate, SyncDb};
+use crate::store::{ConnPool, DbGate, SyncDb};
 
 use super::auth::rate_limit::RateLimiter;
 
@@ -85,7 +85,6 @@ pub struct AppState {
     pub write_mutex: WriteMutex,
     pub contract_ok: ContractFlag,
     pub limiter: SharedLimiter,
-    pub freshness: Arc<Freshness>,
 }
 
 pub type SyncCell = Arc<RwLock<Option<SyncDb>>>;
@@ -116,7 +115,6 @@ pub struct DbState {
     pub write_mutex: WriteMutex,
     pub contract_ok: ContractFlag,
     pub limiter: SharedLimiter,
-    pub freshness: Arc<Freshness>,
 }
 
 impl DbState {
@@ -133,7 +131,6 @@ impl DbState {
             write_mutex: Arc::new(tokio::sync::Mutex::new(())),
             contract_ok: Arc::new(std::sync::atomic::AtomicBool::new(true)),
             limiter: Arc::new(crate::auth::rate_limit::RateLimiter::new()),
-            freshness: Arc::new(Freshness::new(crate::config::DEFAULT_SYNC_SECS)),
         }
     }
 }
@@ -149,7 +146,6 @@ impl axum::extract::FromRef<AppState> for DbState {
             write_mutex: Arc::clone(&state.write_mutex),
             contract_ok: Arc::clone(&state.contract_ok),
             limiter: Arc::clone(&state.limiter),
-            freshness: Arc::clone(&state.freshness),
         }
     }
 }

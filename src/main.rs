@@ -126,7 +126,6 @@ async fn run(cfg: Config) {
         write_mutex,
         contract_ok,
         limiter,
-        freshness: Arc::new(store::sync::Freshness::new(cfg.sync_secs)),
     };
     store::sync::spawn_sync_task(&state, cfg.clone());
     let app = routes::router(state, &cfg);

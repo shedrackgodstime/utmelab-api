@@ -42,22 +42,24 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 1. `GET /api/v1/exams/{exam}/papers` costs ~142ms (release) in the per-row
    `verified` predicate. Optimize only if it matters at the expected rate.
-2. Capacity pass: the gate itself is measured (flat throughput, see Decisions).
+2. Pin `SYNC_SECS` against a real remote. It is the bound on how long a cloud
+   change takes to land, and 60 was the prototype's default, not measured here.
+   Lower it until the per-window pull cost, not the interval, is the limit.
+3. Capacity pass: the gate itself is measured (flat throughput, see Decisions).
    Remaining is the load model: run an HTTP load test against `questions` and
    `papers` once a key exists, size `WORKER_THREADS` to the VPS vCPU count, and
    set `DB_MAX_CONCURRENT` to expected peak concurrent DB work.
 
 ## Done
 
-- The server is idle when nobody is using it. It used to pull once per
-  `SYNC_SECS` and run the session purge every hour on a timer, regardless of
-  traffic, so an unused process still reached Turso about once a minute. The
-  supervisor now parks on a `Freshness` gate: a non-probe request is the only
-  thing that asks for a refresh, and `due_at_unix` coalesces a burst into one
-  pull per `SYNC_SECS`. Idle means no pull, no purge, no cloud request. The
-  gate is unit-tested (a burst pulls once per window; a failed pull retries on
-  the short gap), the wait is proven to park with no traffic, and a router test
-  pins that `/health` and `/ready` do not ask while a real request does.
+- The replica converges with no traffic, and stays cheap while it does. The
+  pull runs on its own interval, so a change made anywhere (the pipeline
+  promoting content, a key revoked elsewhere) lands within `SYNC_SECS` instead
+  of waiting for the next request; an idle process costs one small pull per
+  window and nothing else. A test pins it by running the supervisor with a short
+  window and no request at all and asserting the attempt still lands. A failed
+  pull retries on the short gap, not the whole window, so a blip does not cost a
+  full interval of freshness.
 - `questions` honours `country`. The list advertised a `country` param and then
   hard-rejected it with a 400, while `subjects` and `papers` already applied the
   same D19 topic scope. `QuestionFilter` now carries `country` and binds it
@@ -281,14 +283,15 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 - Security settings default to safe: `COOKIE_SECURE` defaults on and the meta
   allowlist denies by default, because a missing or typo'd variable must fail
   closed, never downgrade.
-- Demand-driven refresh, not a timer: the whole point is that an unused server
-  costs nothing. The sync task parks until a non-probe request asks for fresh
-  data, then pulls at most once per `SYNC_SECS`. Idle means no pull, no purge,
-  no disk touch, no held connection. Pooled connections keep reads on the local
-  file, so reads and writes never queue behind the sync engine's single IO
-  worker, and the request that wakes the task is served from the local replica
-  while the refresh runs behind it (a window of staleness, never a blocked
-  read). A failed pull retries on the next request, never on a timer.
+- Refresh is on an interval, not on demand. A demand-driven pull looks cheaper
+  but breaks the thing the replica is for: with no traffic it never converges,
+  and the request that resumes traffic is the one served from before the
+  change. The interval keeps the process effectively idle (one small pull per
+  `SYNC_SECS`, no held request, no busy loop, no disk churn) while bounding how
+  long a cloud change can take to arrive, so `SYNC_SECS` is the single knob that
+  trades propagation delay against chatter. Pooled connections keep reads on the
+  local file, so reads and writes never queue behind the sync engine's single IO
+  worker.
 - Reads fail fast (5s), writes get cloud headroom (30s), and a global 30s net
   covers any route that forgets its own budget.
 - 16KiB request body cap, ~5x the largest body we accept.
