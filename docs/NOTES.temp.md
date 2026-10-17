@@ -48,15 +48,19 @@ producing" bugs; new has no annotations, no served route, and a hand-written
    Remaining is the load model: run an HTTP load test against `questions` and
    `papers` once a key exists, size `WORKER_THREADS` to the VPS vCPU count, and
    set `DB_MAX_CONCURRENT` to expected peak concurrent DB work.
-4. Surface `stats()` (pending-change count, WAL size, last push time) read-only
-   on the admin status; do not call `checkpoint()` ourselves.
-5. The store write path (`execute_write`/`execute_ddl`) pushes to Turso, so it
+4. The store write path (`execute_write`/`execute_ddl`) pushes to Turso, so it
    cannot run against an offline replica: only reads and the pre-write guards are
    covered today. Add a mutation test against a real replica (or a stubbed push)
    to cover key create/delete/revoke, role change, and report filing end to end.
 
 ## Done
 
+- The admin status now carries the engine's own sync figures, read-only:
+  `sync` holds `cdc_operations`, both WAL sizes, last pull/push unix (null until
+  that direction has synced), the revision, and network bytes. A field is
+  `null` when no replica is attached, so absence is stated, never zeroed, and
+  the read never checkpoints — that stays the engine's job. `SyncStats` pins the
+  wire shape so the store's turso type never crosses out of `store`.
 - Every catalog module now has a happy-path handler test through the real
   router, each on a seeded offline replica: `exams` (typed booleans/ints/rules),
   `blueprints` (measured columns and the honest empty list), `meta` (the

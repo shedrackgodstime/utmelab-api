@@ -197,3 +197,45 @@ async fn recheck_contract(probe: &DbState) {
         Err(e) => tracing::warn!("contract re-check failed: {e}"),
     }
 }
+
+/// Engine-side sync figures for the ops status, read-only. `None` when no
+/// replica is attached yet — absence is honest, never zeros. This never
+/// checkpoints; checkpointing is the engine's own job.
+pub async fn stats(
+    s: &DbState,
+) -> Result<Option<crate::core::models::SyncStats>, crate::error::AppError> {
+    let Some(db) = s.db.read().await.clone() else {
+        return Ok(None);
+    };
+    let st = db.stats().await.map_err(super::upstream)?;
+    Ok(Some(crate::core::models::SyncStats {
+        cdc_operations: st.cdc_operations,
+        main_wal_size: st.main_wal_size,
+        revert_wal_size: st.revert_wal_size,
+        last_pull_unix: st.last_pull_unix_time,
+        last_push_unix: st.last_push_unix_time,
+        revision: st.revision,
+        network_sent_bytes: st.network_sent_bytes,
+        network_received_bytes: st.network_received_bytes,
+    }))
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::testing::{db_state, db_state_without_db, replica};
+
+    /// A replica answers engine figures; with none attached the field is
+    /// honestly absent, so the ops status never invents zeros.
+    #[tokio::test]
+    async fn stats_reports_figures_only_with_a_replica() {
+        let with = db_state(replica().await);
+        let st = super::stats(&with).await.expect("stats").expect("some");
+        assert!(
+            st.last_push_unix.is_none(),
+            "a replica that never pushed states no push time"
+        );
+
+        let without = db_state_without_db(true, 1);
+        assert!(super::stats(&without).await.expect("stats").is_none());
+    }
+}

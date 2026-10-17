@@ -15,6 +15,10 @@ pub struct ServiceStatus {
     pub service: &'static str,
     pub has_sync: bool,
     pub contract_ok: bool,
+    /// Engine-side sync figures, read-only. Null when no replica is attached
+    /// (or the engine cannot answer) — absence is honest, never zeros. This
+    /// never checkpoints; checkpointing is the engine's own job.
+    pub sync: Option<SyncStats>,
     pub gate_rejections: u64,
     pub pulls_applied: u64,
     pub pulls_empty: u64,
@@ -36,6 +40,22 @@ pub struct ServiceStatus {
 pub struct RowPage {
     pub cols: Vec<String>,
     pub rows: Vec<Vec<String>>,
+}
+
+/// What the sync engine reports about the local replica. Named fields, pinned
+/// here so the store's turso type never crosses into the wire.
+#[derive(Serialize)]
+pub struct SyncStats {
+    /// Local change-log operations the engine is tracking.
+    pub cdc_operations: i64,
+    pub main_wal_size: u64,
+    pub revert_wal_size: u64,
+    /// Null until the first successful sync of that direction.
+    pub last_pull_unix: Option<i64>,
+    pub last_push_unix: Option<i64>,
+    pub revision: Option<String>,
+    pub network_sent_bytes: usize,
+    pub network_received_bytes: usize,
 }
 
 #[derive(serde::Deserialize)]

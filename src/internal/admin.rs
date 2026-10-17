@@ -21,12 +21,16 @@ pub struct RoleBody {
 /// Admin-only. Load balancers get liveness from `/health`; this carries the
 /// operational counters and request telemetry, so it sits on the admin
 /// surface instead of leaking replica state to anonymous callers.
-pub async fn status(State(s): State<DbState>, AdminUser(_): AdminUser) -> Json<ServiceStatus> {
+pub async fn status(
+    State(s): State<DbState>,
+    AdminUser(_): AdminUser,
+) -> Result<Json<ServiceStatus>, AppError> {
     let m = s.metrics.snapshot();
-    Json(ServiceStatus {
+    Ok(Json(ServiceStatus {
         service: "utmelab-api",
         has_sync: s.db.read().await.is_some(),
         contract_ok: s.contract_ok.load(std::sync::atomic::Ordering::Relaxed),
+        sync: store::sync::stats(&s).await?,
         gate_rejections: m.gate_rejections,
         pulls_applied: m.pulls_applied,
         pulls_empty: m.pulls_empty,
@@ -38,7 +42,7 @@ pub async fn status(State(s): State<DbState>, AdminUser(_): AdminUser) -> Json<S
         latency_fast: m.latency_fast,
         latency_ok: m.latency_ok,
         latency_slow: m.latency_slow,
-    })
+    }))
 }
 
 pub async fn list_users(
