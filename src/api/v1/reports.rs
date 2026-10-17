@@ -1,19 +1,12 @@
 //! Consumer flags. One endpoint serves every reportable kind — a
 //! question, a topic, a passage, a novel — dispatching on the target
-//! type rather than growing a route per kind. The original
-//! `POST /v1/questions/{id}/report` stays as a thin delegate so existing
-//! callers keep working.
+//! type rather than growing a route per kind.
 //!
 //! Every filing is key-gated, subject to the key's per-minute limit and
 //! a tight daily cap (see `core::reports`): reporting is rare, so the cap
 //! is generous for humans and useless for floods.
 
-use axum::{
-    extract::{Path, State},
-    http::StatusCode,
-    routing::post,
-    Json, Router,
-};
+use axum::{extract::State, http::StatusCode, routing::post, Json, Router};
 use serde::Deserialize;
 
 use crate::{
@@ -39,13 +32,7 @@ pub struct ReportBody {
     pub detail: Option<String>,
 }
 
-#[derive(Deserialize)]
-pub struct QuestionReportBody {
-    pub reason: String,
-    pub detail: Option<String>,
-}
-
-/// `POST /v1/report` — the general entry point.
+/// `POST /v1/report` — the single entry point. Dispatches on `target_type`.
 pub async fn file(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,
@@ -54,18 +41,7 @@ pub async fn file(
     report(s, auth, b.target_type, b.target_id, b.reason, b.detail).await
 }
 
-/// `POST /v1/questions/{id}/report` — kept for URL compatibility; the
-/// id is the target id, the kind is fixed to `question`.
-pub async fn report_question(
-    State(s): State<DbState>,
-    AuthedKey(auth): AuthedKey,
-    Path(id): Path<String>,
-    Json(b): Json<QuestionReportBody>,
-) -> Result<(StatusCode, Json<core::models::ReportFiled>), AppError> {
-    report(s, auth, "question".to_string(), id, b.reason, b.detail).await
-}
-
-/// The one filing path both routes share.
+/// The one filing path.
 async fn report(
     s: DbState,
     auth: Auth,
@@ -132,7 +108,6 @@ async fn report(
 pub fn router(state: AppState) -> Router<AppState> {
     Router::new()
         .route("/v1/report", post(file))
-        .route("/v1/questions/{id}/report", post(report_question))
         .with_state(state)
 }
 

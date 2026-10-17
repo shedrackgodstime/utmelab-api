@@ -23,10 +23,6 @@ pub fn routes() -> Router<AppState> {
         .route("/mcp/tools/unrevoke_key", post(unrevoke_key))
         .route("/mcp/tools/file_report", post(reports::file))
         .route(
-            "/mcp/tools/report_question/{id}",
-            post(reports::report_question),
-        )
-        .route(
             "/mcp/tools/assemble_paper/{exam}/{subject}",
             post(papers::assemble_paper),
         )

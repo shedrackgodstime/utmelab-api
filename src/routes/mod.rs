@@ -291,12 +291,6 @@ mod tests {
                 .0,
             axum::http::StatusCode::UNAUTHORIZED
         );
-        assert_eq!(
-            call(app, "POST", "/api/v1/questions/q1/report", None, None)
-                .await
-                .0,
-            axum::http::StatusCode::UNAUTHORIZED
-        );
     }
 
     fn boom() {
@@ -341,7 +335,6 @@ mod tests {
 
     const HTTP_WRITES: &[(&str, &str)] = &[
         ("POST", "/api/v1/report"),
-        ("POST", "/api/v1/questions/q1/report"),
         ("POST", "/api/v1/papers/JAMB/physics"),
         ("POST", "/api/v1/papers/JAMB/physics/score"),
     ];
@@ -350,7 +343,6 @@ mod tests {
         ("POST", "/mcp/tools/revoke_key"),
         ("POST", "/mcp/tools/unrevoke_key"),
         ("POST", "/mcp/tools/file_report"),
-        ("POST", "/mcp/tools/report_question/q1"),
         ("POST", "/mcp/tools/assemble_paper/JAMB/physics"),
         ("POST", "/mcp/tools/score_paper/JAMB/physics"),
     ];
