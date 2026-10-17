@@ -216,9 +216,7 @@ pub async fn set_user_role(
         ],
     )
     .await?;
-    if n > 0 {
-        obs::role_changed(actor, username, role);
-    }
+    obs::role_changed(actor, username, role, n > 0);
     Ok(n > 0)
 }
 
@@ -413,9 +411,7 @@ pub async fn set_revoked(
         ],
     )
     .await?;
-    if n > 0 {
-        obs::key_revoked(actor, prefix, revoked);
-    }
+    obs::key_revoked(actor, prefix, revoked, n > 0);
     Ok(n > 0)
 }
 

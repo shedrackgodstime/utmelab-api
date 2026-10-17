@@ -50,6 +50,12 @@ highest value first. Delete an entry when it is closed.
   audit (attributable security and business events). Audit is neither debug
   logging nor metrics; it is its own target so it can be filtered and shipped on
   its own.
+- Audit records decisions and lifecycle, not data. Login, key lifecycle, and role
+  changes are audited because their durable record is transient (sessions, a
+  deleted key) or absent (no role history). Report filings are not audited: they
+  persist an attributed row (key id plus timestamp) in their own table, so
+  copying them into logs would be noise, not a trail. A privileged change that
+  matched nothing is still logged, at WARN, so a probe is never silent.
 - Admin-only endpoints live under `/api/internal/admin/*`; everything else under
   `/api/internal/*` is customer or session.
 - No long poll. Pull on an interval and pool connections, so reads and writes
