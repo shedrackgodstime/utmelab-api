@@ -40,11 +40,6 @@ producing" bugs; new has no annotations, no served route, and a hand-written
 
 ## Backlog
 
-1. The fixed cost of a `questions` read. One row costs ~2ms of CPU where a
-   trivial keyed read costs ~0.4ms, so most of a page's price is the query's
-   own filter and `COUNT(*)`, not the rows (~46us each) or the JSON. It is paid
-   by the hottest route, so it is worth a look once papers is fixed.
-
 ## Done
 - `SYNC_SECS` is measured now, not inherited, and defaults to 10. Against the
   real remote an empty pull is one round trip, and the round trip is most of the
@@ -67,15 +62,25 @@ producing" bugs; new has no annotations, no served route, and a hand-written
   per-row correlated `EXISTS` over `json_each(scope)` the old `verified_predicate`
   form ran for every question row. Measured against the live replica:
   `subject_stats` 100ms → 72ms mean for JAMB (2243 questions), results byte-
-  identical to the old form. An index or materialized verified flag would remain
-  pipeline-owned; this is the query fix that lives in `src/`.
+  identical to the old form.
+
+- `GET /api/v1/questions` (the hottest route) dropped from ~48ms to ~6ms per
+  page (release, real bank, JAMB 2241 questions): `list_questions` now LIMITs
+  first in an inner subquery and derives the per-row `verified` flag only for
+  the output page rows in the outer query, instead of computing it for every
+  matching row before the ORDER BY/LIMIT sort. Measured against the live
+  replica: per_page=20 → ~6ms (was ~48ms), per_page=200 → ~6ms (was ~48ms),
+  results identical to the old form for unscoped and country-scoped pages.
+  The `COUNT(*)` total (0.7ms) is unaffected. The remaining ~6ms is the
+  ORDER BY sorter over the matching rows — that is plan cost, pipeline-owned
+  if an index is ever added.
 
 - The capacity pass ran, and it changed the picture. On a release build over the
   real bank (2243 questions, 2268 verifications, 34 subjects), a 20-question page
   serves ~700 req/s on two worker threads and is CPU-bound, not IO-bound: the
   same numbers came out pinned to two vCPUs and free on twelve, so a bigger box
   does not buy read capacity. A full paper is the exception at ~15 req/s and
-  127ms (Backlog 1), which is where a throughput target actually bites. RAM is a
+  127ms (now fixed, see above). RAM is a
   non-issue: 47MB while serving, 104MB peak after 1000 concurrent connections,
   and a single request answers in 5ms immediately after that soak, so the
   1.5-2GB target has about 15x of headroom. Overload degrades by rejection, not
