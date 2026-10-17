@@ -1,7 +1,8 @@
 //! Single write path. Execute plus push under one mutex that the pull
 //! loop also holds, so a pull can never interleave (and discard) an
-//! unpushed local write. Callers get the affected-row count; push failure
-//! is upstream — local row exists, cloud lags until the next push.
+//! unpushed local write. Callers get the affected-row count; a push failure
+//! surfaces (upstream, or contended when the engine says busy) — the local row
+//! exists, so the cloud lags until the next push.
 
 use super::{gate, synced, upstream};
 use crate::{error::AppError, state::DbState};

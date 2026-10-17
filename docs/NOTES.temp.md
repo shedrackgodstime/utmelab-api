@@ -58,17 +58,22 @@ producing" bugs; new has no annotations, no served route, and a hand-written
    Remaining is the load model: run an HTTP load test against `questions` and
    `papers` once a key exists, size `WORKER_THREADS` to the VPS vCPU count, and
    set `DB_MAX_CONCURRENT` to expected peak concurrent DB work.
-4. Classify `turso::Error::Busy`/`BusySnapshot` as typed retryable errors before
-   `upstream()` stringifies them, instead of text-matching in `is_busy`.
-5. Surface `stats()` (pending-change count, WAL size, last push time) read-only
+4. Surface `stats()` (pending-change count, WAL size, last push time) read-only
    on the admin status; do not call `checkpoint()` ourselves.
-6. The store write path (`execute_write`/`execute_ddl`) pushes to Turso, so it
+5. The store write path (`execute_write`/`execute_ddl`) pushes to Turso, so it
    cannot run against an offline replica: only reads and the pre-write guards are
    covered today. Add a mutation test against a real replica (or a stubbed push)
    to cover key create/delete/revoke, role change, and report filing end to end.
 
 ## Done
 
+- Contention is classified from the typed engine error, not from wording. The
+  `upstream` conversion, the one place a `turso::Error` is still in hand, now
+  maps `Busy`/`BusySnapshot` to `AppError::DbContended` (503, code `contended`),
+  and matches the plain-message form the sync engine and the remote use (`busy`,
+  `locked`, `conflict`) only on a `turso::Error::Error` — a serde or IO error is
+  never retried however it reads. `is_busy` is now a typed read of that decision,
+  so a reworded engine message can no longer silently stop retries.
 - MCP now mirrors the keyed HTTP surface by construction. A read is a resource
   (`GET /mcp/resources/<tail>`, the `/api/v1` path without the version); an
   action is a tool (`POST /mcp/tools/*`), which is the MCP split falling out of

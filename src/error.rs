@@ -14,6 +14,9 @@ pub enum AppError {
     Conflict(String),
     RateLimited,
     DbSaturated,
+    /// The engine refused for transient contention (busy/locked/conflict).
+    /// Classified from the typed engine error, never from wording alone.
+    DbContended,
     DbUnavailable(&'static str),
     /// The replica's schema does not match this build's contract. Serving it
     /// would mean reading rows we cannot interpret, so the request is refused
@@ -43,6 +46,7 @@ impl std::fmt::Display for AppError {
             AppError::RateLimited => write!(f, "slow down"),
             AppError::NotFound => write!(f, "not found"),
             AppError::DbSaturated => write!(f, "db saturated, retry"),
+            AppError::DbContended => write!(f, "database busy, retry"),
             AppError::DbUnavailable(w) => write!(f, "no {w} db configured"),
             AppError::SchemaMismatch => write!(f, "replica schema does not match this build"),
         }
@@ -62,6 +66,7 @@ impl AppError {
             AppError::Conflict(_) => "conflict",
             AppError::RateLimited => "rate_limited",
             AppError::DbSaturated => "db_saturated",
+            AppError::DbContended => "contended",
             AppError::DbUnavailable(_) => "db_unavailable",
             AppError::SchemaMismatch => "schema_mismatch",
             AppError::Upstream(_) => "upstream_error",
@@ -81,6 +86,7 @@ impl AppError {
             AppError::NotFound => "not found".to_string(),
             AppError::RateLimited => "slow down".to_string(),
             AppError::DbSaturated => "database busy, retry shortly".to_string(),
+            AppError::DbContended => "database busy, retry shortly".to_string(),
             AppError::DbUnavailable(_) => "database unavailable".to_string(),
             AppError::SchemaMismatch => "service temporarily unavailable".to_string(),
             AppError::Upstream(_) | AppError::Internal(_) => {
@@ -99,9 +105,10 @@ impl IntoResponse for AppError {
             AppError::RateLimited => StatusCode::TOO_MANY_REQUESTS,
             AppError::NotFound => StatusCode::NOT_FOUND,
             AppError::Conflict(_) => StatusCode::CONFLICT,
-            AppError::DbSaturated | AppError::DbUnavailable(_) | AppError::SchemaMismatch => {
-                StatusCode::SERVICE_UNAVAILABLE
-            }
+            AppError::DbSaturated
+            | AppError::DbContended
+            | AppError::DbUnavailable(_)
+            | AppError::SchemaMismatch => StatusCode::SERVICE_UNAVAILABLE,
             AppError::Upstream(_) => StatusCode::BAD_GATEWAY,
             AppError::Internal(_) => StatusCode::INTERNAL_SERVER_ERROR,
         };
@@ -161,6 +168,10 @@ mod tests {
         );
         assert_eq!(
             status_of(AppError::DbSaturated),
+            StatusCode::SERVICE_UNAVAILABLE
+        );
+        assert_eq!(
+            status_of(AppError::DbContended),
             StatusCode::SERVICE_UNAVAILABLE
         );
         assert_eq!(

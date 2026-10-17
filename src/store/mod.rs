@@ -89,29 +89,48 @@ fn gate(s: &DbState) -> Result<OwnedSemaphorePermit, AppError> {
     })
 }
 
-/// Whether an error text looks like transient contention worth retrying.
-/// [`upstream`] erases the `turso::Error` variant before this sees it, so the
-/// match is on text: `busy`/`locked` cover `Busy`/`BusySnapshot` ("database is
-/// busy"), and `conflict` is the sync engine's commit-time wording, which a
-/// string-only match would otherwise miss.
+/// Whether an error is transient contention worth retrying. The classification
+/// happens once, in [`upstream`], where the typed engine error is still in
+/// hand; this only reads that decision back, so no retry path guesses from text.
 fn is_busy(e: &AppError) -> bool {
-    match e {
-        AppError::Upstream(m) => {
-            let m = m.to_ascii_lowercase();
-            m.contains("locked") || m.contains("busy") || m.contains("conflict")
-        }
-        _ => false,
-    }
+    matches!(e, AppError::DbContended)
 }
 
 async fn backoff(attempt: u32) {
     tokio::time::sleep(std::time::Duration::from_millis(100 * attempt as u64)).await;
 }
 
-/// Map any displayable engine error into the shared upstream variant.
-/// This is the only spelling for that conversion in the crate.
-pub(crate) fn upstream<E: std::fmt::Display>(e: E) -> AppError {
-    AppError::Upstream(e.to_string())
+/// Map any engine error into the shared variants. This is the only spelling
+/// for that conversion in the crate.
+///
+/// Contention is classified here: `Busy`/`BusySnapshot` carry it typed, and the
+/// sync engine and the remote report some of it as a plain message, so that
+/// wording is matched here too — once, beside the typed match, on engine errors
+/// only, and nowhere else. Everything else keeps its text as [`AppError::Upstream`].
+pub(crate) fn upstream<E: std::error::Error + 'static>(e: E) -> AppError {
+    if is_contention(&e) {
+        AppError::DbContended
+    } else {
+        AppError::Upstream(e.to_string())
+    }
+}
+
+/// Contention is only meaningful for an engine error; a serde or IO error is
+/// never retryable, so its text is not consulted.
+fn is_contention(e: &(dyn std::error::Error + 'static)) -> bool {
+    let Some(err) = e.downcast_ref::<turso::Error>() else {
+        return false;
+    };
+    match err {
+        turso::Error::Busy(_) | turso::Error::BusySnapshot(_) => true,
+        // The sync engine and the remote report some contention as a plain
+        // message, which the variant cannot carry.
+        turso::Error::Error(m) => {
+            let m = m.to_ascii_lowercase();
+            m.contains("busy") || m.contains("locked") || m.contains("conflict")
+        }
+        _ => false,
+    }
 }
 
 async fn synced(s: &DbState) -> Result<SyncDb, AppError> {
@@ -174,5 +193,38 @@ mod tests {
     async fn missing_db_reports_unavailable() {
         let s = db_state_without_db(true, 4);
         assert!(matches!(synced(&s).await, Err(AppError::DbUnavailable(_))));
+    }
+
+    #[test]
+    fn upstream_classifies_engine_contention_by_variant() {
+        assert!(matches!(
+            upstream(turso::Error::Busy("database is busy".to_string())),
+            AppError::DbContended
+        ));
+        assert!(matches!(
+            upstream(turso::Error::BusySnapshot("snapshot busy".to_string())),
+            AppError::DbContended
+        ));
+        // The sync engine and the remote report contention as a plain message.
+        assert!(matches!(
+            upstream(turso::Error::Error("Database is busy".to_string())),
+            AppError::DbContended
+        ));
+        // A non-engine error is never contention, even if its text says so.
+        let io = std::io::Error::other("lock conflict");
+        assert!(matches!(upstream(io), AppError::Upstream(_)));
+        // An engine error that is not contention keeps its text.
+        assert!(matches!(
+            upstream(turso::Error::Error("no such table: x".to_string())),
+            AppError::Upstream(_)
+        ));
+    }
+
+    #[test]
+    fn is_busy_reads_the_typed_decision_not_the_text() {
+        assert!(is_busy(&AppError::DbContended));
+        assert!(!is_busy(&AppError::Upstream(
+            "database is busy".to_string()
+        )));
     }
 }
