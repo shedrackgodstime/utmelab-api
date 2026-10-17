@@ -9,7 +9,15 @@
 
 pub mod health;
 
-use axum::{body::Body, http::Request, routing::get, Router};
+use axum::{
+    body::Body,
+    extract::State,
+    http::Request,
+    middleware::Next,
+    response::{IntoResponse, Response},
+    routing::get,
+    Router,
+};
 use tower::limit::ConcurrencyLimitLayer;
 use tower_http::{
     request_id::{MakeRequestUuid, PropagateRequestIdLayer, SetRequestIdLayer},
@@ -23,6 +31,22 @@ const REQUEST_ID: &str = "x-request-id";
 
 async fn not_found() -> AppError {
     AppError::NotFound
+}
+
+/// Fail closed while the sync task reports a schema contract mismatch. The
+/// replica's shape is then not the one this build reads, so answering would
+/// mean serving rows we cannot trust; the log already says "refusing to trust
+/// replica", and this is what makes that true. `/health` stays outside the
+/// guard so liveness is independent of the database.
+async fn contract_guard(
+    State(state): State<AppState>,
+    request: Request<Body>,
+    next: Next,
+) -> Response {
+    if !state.contract_ok.load(std::sync::atomic::Ordering::Relaxed) {
+        return AppError::SchemaMismatch.into_response();
+    }
+    next.run(request).await
 }
 
 fn span_for(request: &Request<Body>) -> tracing::Span {
@@ -39,13 +63,21 @@ pub fn router(state: AppState, cfg: &Config) -> Router {
     let api = Router::new()
         .merge(api::router(state.clone(), cfg))
         .merge(internal::router(state.clone(), cfg));
+    // Every data surface sits behind the contract guard; only `/health`
+    // stays public, and it carries no database.
+    let gated = Router::new()
+        .nest("/api", api)
+        .merge(mcp::router(state.clone(), cfg))
+        .layer(axum::middleware::from_fn_with_state(
+            state.clone(),
+            contract_guard,
+        ));
     Router::new()
         .route(
             "/health",
             get(health::health).route_layer(cfg.fast_timeout()),
         )
-        .nest("/api", api)
-        .merge(mcp::router(state.clone(), cfg))
+        .merge(gated)
         .fallback(not_found)
         .with_state(state)
         .layer((
@@ -66,4 +98,63 @@ pub fn router(state: AppState, cfg: &Config) -> Router {
             // forever and hold a DB permit. Read routes layer 5s inside this.
             cfg.slow_timeout(),
         ))
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::sync::Arc;
+    use tower::ServiceExt;
+
+    fn state(contract_ok: bool) -> AppState {
+        AppState {
+            name: Arc::from("test"),
+            db: Arc::new(tokio::sync::RwLock::new(None)),
+            db_gate: Arc::new(tokio::sync::Semaphore::new(1)),
+            conns: Arc::new(crate::store::ConnPool::new(1)),
+            metrics: Arc::new(crate::state::Metrics::default()),
+            cookie_secure: false,
+            write_mutex: Arc::new(tokio::sync::Mutex::new(())),
+            contract_ok: Arc::new(std::sync::atomic::AtomicBool::new(contract_ok)),
+            limiter: Arc::new(crate::auth::rate_limit::RateLimiter::new()),
+        }
+    }
+
+    async fn probe(contract_ok: bool) -> (axum::http::StatusCode, String) {
+        let app = Router::new()
+            .route("/data", get(|| async { "payload" }))
+            .layer(axum::middleware::from_fn_with_state(
+                state(contract_ok),
+                contract_guard,
+            ));
+        let res = app
+            .oneshot(
+                Request::builder()
+                    .uri("/data")
+                    .body(Body::empty())
+                    .expect("request"),
+            )
+            .await
+            .expect("router call");
+        let status = res.status();
+        let bytes = axum::body::to_bytes(res.into_body(), usize::MAX)
+            .await
+            .expect("body");
+        (status, String::from_utf8(bytes.to_vec()).expect("utf8"))
+    }
+
+    #[tokio::test]
+    async fn contract_guard_fails_closed_on_mismatch() {
+        let (status, body) = probe(false).await;
+        assert_eq!(status, axum::http::StatusCode::SERVICE_UNAVAILABLE);
+        assert!(body.contains("schema_mismatch"), "{body}");
+        assert!(!body.contains("payload"), "body leaked past the guard");
+    }
+
+    #[tokio::test]
+    async fn contract_guard_passes_when_trusted() {
+        let (status, body) = probe(true).await;
+        assert_eq!(status, axum::http::StatusCode::OK);
+        assert_eq!(body, "payload");
+    }
 }

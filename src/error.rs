@@ -15,6 +15,10 @@ pub enum AppError {
     RateLimited,
     DbSaturated,
     DbUnavailable(&'static str),
+    /// The replica's schema does not match this build's contract. Serving it
+    /// would mean reading rows we cannot interpret, so the request is refused
+    /// rather than answered.
+    SchemaMismatch,
     Upstream(String),
     Internal(String),
 }
@@ -40,6 +44,7 @@ impl std::fmt::Display for AppError {
             AppError::NotFound => write!(f, "not found"),
             AppError::DbSaturated => write!(f, "db saturated, retry"),
             AppError::DbUnavailable(w) => write!(f, "no {w} db configured"),
+            AppError::SchemaMismatch => write!(f, "replica schema does not match this build"),
         }
     }
 }
@@ -58,6 +63,7 @@ impl AppError {
             AppError::RateLimited => "rate_limited",
             AppError::DbSaturated => "db_saturated",
             AppError::DbUnavailable(_) => "db_unavailable",
+            AppError::SchemaMismatch => "schema_mismatch",
             AppError::Upstream(_) => "upstream_error",
             AppError::Internal(_) => "internal_error",
         }
@@ -76,6 +82,7 @@ impl AppError {
             AppError::RateLimited => "slow down".to_string(),
             AppError::DbSaturated => "database busy, retry shortly".to_string(),
             AppError::DbUnavailable(_) => "database unavailable".to_string(),
+            AppError::SchemaMismatch => "service temporarily unavailable".to_string(),
             AppError::Upstream(_) | AppError::Internal(_) => {
                 "the server could not complete the request".to_string()
             }
@@ -92,7 +99,9 @@ impl IntoResponse for AppError {
             AppError::RateLimited => StatusCode::TOO_MANY_REQUESTS,
             AppError::NotFound => StatusCode::NOT_FOUND,
             AppError::Conflict(_) => StatusCode::CONFLICT,
-            AppError::DbSaturated | AppError::DbUnavailable(_) => StatusCode::SERVICE_UNAVAILABLE,
+            AppError::DbSaturated | AppError::DbUnavailable(_) | AppError::SchemaMismatch => {
+                StatusCode::SERVICE_UNAVAILABLE
+            }
             AppError::Upstream(_) => StatusCode::BAD_GATEWAY,
             AppError::Internal(_) => StatusCode::INTERNAL_SERVER_ERROR,
         };
@@ -156,6 +165,10 @@ mod tests {
         );
         assert_eq!(
             status_of(AppError::DbUnavailable("sync")),
+            StatusCode::SERVICE_UNAVAILABLE
+        );
+        assert_eq!(
+            status_of(AppError::SchemaMismatch),
             StatusCode::SERVICE_UNAVAILABLE
         );
         assert_eq!(

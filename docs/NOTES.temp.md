@@ -21,6 +21,10 @@ highest value first. Delete an entry when it is closed.
   checkpoints it) and `-log` moved about 0.3 KB across a full session.
 - Graceful shutdown now covers SIGTERM as well as Ctrl-C, so an orchestrator
   stopping the service drains in-flight requests instead of dropping them.
+- A schema contract mismatch now fails closed. The sync task had logged
+  "refusing to trust replica" while every route still answered; data surfaces
+  now answer 503 with code `schema_mismatch`, and `/health` stays independent
+  for liveness.
 
 ## Decisions worth keeping
 

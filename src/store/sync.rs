@@ -127,7 +127,7 @@ async fn converge(probe: &DbState, db: &SyncDb) {
                     .contract_ok
                     .store(ok, std::sync::atomic::Ordering::Relaxed);
                 if !ok {
-                    tracing::error!("contract version mismatch: refusing to trust replica");
+                    tracing::error!("contract version mismatch: data surfaces now fail closed");
                 }
                 return;
             }
@@ -179,7 +179,7 @@ async fn recheck_contract(probe: &DbState) {
                 .contract_ok
                 .swap(ok, std::sync::atomic::Ordering::Relaxed);
             if !ok && was {
-                tracing::error!("contract version mismatch: refusing to trust replica");
+                tracing::error!("contract version mismatch: data surfaces now fail closed");
             }
         }
         Err(e) => tracing::warn!("contract re-check failed: {e}"),
