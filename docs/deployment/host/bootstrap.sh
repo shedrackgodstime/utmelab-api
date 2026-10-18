@@ -174,9 +174,9 @@ say "done"
 cat <<'NEXT'
 
 Next, for each service:
-  1. hand CI its key:   sudo system enroll <service> <it>.pub
-                        then set VPS_USER=deploy-<service> and VPS_SSH_KEY in that
-                        repo's GitHub secrets
+  1. enroll the CI key ONCE per host (one deploy identity, every service repo
+     reuses it):      sudo system enroll <it>.pub
+                     then set VPS_USER=deploy and VPS_SSH_KEY in that repo
   2. stage a release and activate it (its normal pipeline)
   3. confirm the contract: sudo system verify
   4. root posture:         sudo system root status

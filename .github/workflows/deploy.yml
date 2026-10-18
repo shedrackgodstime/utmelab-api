@@ -13,8 +13,9 @@
 # One-time VPS prep is in docs/deployment/README.md. GitHub secrets needed —
 # set on THIS repo, they are not inherited from UTME-Lab:
 #   VPS_HOST, VPS_PORT, VPS_SSH_KEY, VPS_KNOWN_HOSTS
-#   VPS_USER — this service's own CI identity (see docs/deployment/README.md),
-#              not a shared deploy account.
+#   VPS_USER — `deploy`, the host's single CI identity. The same five values are
+#              used by every service repo, so prefer organisation-level secrets
+#              over copying them per repo.
 
 name: deploy-api
 

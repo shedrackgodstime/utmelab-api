@@ -35,7 +35,6 @@ is:
 SERVICE_NAME=utmelab-api
 BINARY_NAME=utmelab-api
 RUNTIME_USER=utmelab-api         # the process user
-DEPLOY_USER=deploy-utmelab-api   # the CI identity, scoped to this service
 DOMAIN=api.utmelab.com
 IP=127.0.0.1
 PORT=8081
@@ -56,8 +55,10 @@ Everything else on the host is **derived from that file** by `system provision`:
 |---|---|
 | `utmelab@utmelab-api` unit + its `User`/`Group`/`ReadWritePaths` drop-in | `RUNTIME_USER`, `READ_WRITE_PATHS` |
 | `/etc/caddy/sites/utmelab-api.caddy` (written once, then yours to edit) | `DOMAIN`, `IP`, `PORT` |
-| `/etc/sudoers.d/deploy-utmelab-api` | `DEPLOY_USER` |
-| `/opt/apps/utmelab-api/releases`, `/var/lib/utmelab-api`, both users | the names above |
+| `/opt/apps/utmelab-api/releases`, `/var/lib/utmelab-api`, the runtime user | the names above |
+
+The CI identity is the one thing that is **not** derived, because it is not a
+per-service fact: see [Identity model](#identity-model).
 
 A service that needs custom routing edits **its own** site file. `provision` never
 rewrites it, and the host-wide `Caddyfile` only imports `sites/*.caddy`.
@@ -79,9 +80,10 @@ wait for the health contract, and prune.
 
 Three properties are load-bearing:
 
-1. **The caller must match the service.** An identity named `deploy-<name>` may
-   only activate `<name>`, checked against `$SUDO_USER`. The script is shared, but
-   the blast radius of a stolen CI key is not.
+1. **The release has to look like a release.** A known service, a valid version,
+   a staged directory that ships the binary and the asset, and a release tree
+   writable by CI. A tarball that is missing `site/index.html` is rejected before
+   anything moves.
 2. **Activation means `HEALTH_ENDPOINT` answered exactly `HEALTH_EXPECT`.** For
    this service that is `/ready`, which stays 503 until the Turso replica is
    open. A process that binds 8081 and never syncs is never called live.
@@ -90,36 +92,58 @@ Three properties are load-bearing:
    -V` compares the sha, which once made "keep the newest N" delete the newest
    build and keep an older one.
 
+Exit codes: `1` usage, `2` bad version, `3` unknown service, `4` release not
+staged, `5` unusable release, `6` unit did not come up, `7` unhealthy.
+
 ## `system` — provision, enroll, verify
 
 ```bash
-sudo system provision utmelab-api        # create/repair everything the manifest implies
-sudo system enroll utmelab-api key.pub   # register a CI key for deploy-utmelab-api
-sudo system verify                       # does the host still match the manifests?
-sudo system report                       # resources + service health
-sudo system deploy preview               # what a deploy would do (read-only)
+sudo system provision utmelab-api    # create/repair everything the manifest implies
+sudo system enroll key.pub           # register a CI key (once per host, not per service)
+sudo system verify                   # does the host still match the manifests?
+sudo system report                   # resources + service health
+sudo system deploy preview           # what a deploy would do (read-only)
 ```
 
 `verify` is the one to run before trusting anything, and after any host change. It
 checks the manifest's mode, the unit's enable/active state, that the process runs
-as the manifest's `RUNTIME_USER`, that the Caddy port matches `PORT`, that the
-health contract holds locally and publicly, and then the host-level traps: legacy
-per-app units, legacy gates, and sudoers files pointing at commands that no longer
-exist. Exit is non-zero if any contract is broken.
+as the manifest's `RUNTIME_USER`, that the release tree is writable by the CI
+identity, that the Caddy port matches `PORT`, that the health contract holds
+locally and publicly, and then the host-level traps: legacy per-app units, legacy
+gates, and sudoers files pointing at commands that no longer exist. Exit is
+non-zero if any contract is broken.
 
 ## Identity model
 
 | Identity | Job | Reach |
 |---|---|---|
-| `deploy-<service>` (per service) | CI, over SSH key | exactly `/usr/local/bin/deploy-service`, and only for its own service |
+| `deploy` (one for the host) | CI, over SSH key | stage any release tree, run `/usr/local/bin/deploy-service` |
 | the gate (root) | privileged file moves, restart | `/opt/apps`, systemd |
 | `<service>` (per service, nologin) | runs the process | its own `READ_WRITE_PATHS` |
 | `caddy` (nologin) | TLS + proxy | loopback targets |
 | `shedrack` | human admin | full sudo |
 
-The first row is why a service has its own CI user rather than sharing one: with a
-single shared `deploy` user, any repo's key could activate any service, and no
-sudoers rule can tell them apart.
+**One CI identity, deliberately.** An earlier revision gave each service its own
+`deploy-<service>` account and key, which is the only way to stop a stolen key
+from activating a neighbouring service, since no sudoers rule can tell two keys
+of one account apart. It was reverted: per service that bought containment at the
+cost of a login account, a home, an authorized key, a sudoers rule, a GitHub
+secret pair and a key rotation, for two services on one host. Simplicity won.
+
+What that means in plain terms: **a stolen CI key can activate any service's
+already-staged release.** The gate still refuses an unknown service, a malformed
+version, a release missing its binary or asset, and any activation that fails the
+health contract, and it never prunes on a failed run. Treat `VPS_SSH_KEY` as a
+host-level credential, not a per-service one.
+
+The five secrets a repo needs (`VPS_HOST`, `VPS_PORT`, `VPS_USER`, `VPS_SSH_KEY`,
+`VPS_KNOWN_HOSTS`) are now identical everywhere. Define them once in the GitHub
+**organisation** secret store and let every repo inherit them; that is what makes
+"add a service" mean exactly one manifest and no CI change.
+
+If containment is ever wanted back without per-service Unix users, the thin form
+is per-key `command=` pinning in `deploy`'s `authorized_keys`: one entry per repo,
+each locked to its own service. One account, N pinned keys.
 
 ## Rebuilding a VPS
 
@@ -159,10 +183,12 @@ After changing any of them: `sudo system verify`, then `caddy validate --config
 2. **Host** — the framework is installed and the manifest is in place
    (`sudo system verify` says so).
 3. **Repo secrets** — `VPS_HOST`, `VPS_PORT`, `VPS_USER`, `VPS_SSH_KEY`,
-   `VPS_KNOWN_HOSTS` **on this repo**. GitHub does not share secrets between
-   repositories. `VPS_USER` is the service's CI identity, not a shared account.
-4. **CI key** — `sudo system enroll utmelab-api <key>.pub`, and put the private
-   half in `VPS_SSH_KEY`.
+   `VPS_KNOWN_HOSTS`. They are the same for every service, so put them in the
+   GitHub **organisation** secret store once and let repos inherit them. GitHub
+   does not share secrets between repositories by default, which is exactly why
+   the values should not be per repo.
+4. **CI key** — `sudo system enroll <key>.pub` once per host, and put the private
+   half in `VPS_SSH_KEY`. Adding another service does not repeat this.
 5. **Trigger a deploy** — Actions → `deploy-api` → **Run workflow**.
 6. **Confirm from outside** — see the next section. Step 6 is not optional.
 

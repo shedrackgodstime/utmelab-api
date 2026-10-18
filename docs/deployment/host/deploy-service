@@ -12,10 +12,9 @@
 # health budget, and pruning. CI owns nothing on the host but the staged
 # tarball it scp'd into /tmp.
 #
-# It will not:
-#   * serve two masters. A CI identity called deploy-<name> can only activate
-#     <name>; the argument is checked against the caller, so a stolen key
-#     cannot reach a neighbouring service.
+# One CI identity deploys every service on this host, so this gate is not a
+# boundary between services: a key that can reach it can activate any release
+# that is already staged. What it does hold is the release contract. It will not:
 #   * call a release live until HEALTH_ENDPOINT answers exactly HEALTH_EXPECT
 #     within HEALTH_TRIES * HEALTH_DELAY. 200 is not assumed: a service that
 #     binds its port but only ever answers 503 (a replica that never opens) is
@@ -23,8 +22,7 @@
 #   * prune on a failed run, or delete the release it just activated.
 #
 # Exit codes: 1 usage/setup, 2 version, 3 unknown service, 4 missing release,
-#             5 unusable release, 6 caller not allowed, 7 unit not active,
-#             8 unit up but not answering.
+#             5 unusable release, 6 unit not active, 7 unit up but not answering.
 #
 # Rehearsal: SYSTEM_PREFIX=/tmp/box relocates every path this script touches,
 # and SYSTEMCTL / CURL / JOURNALCTL can be pointed at stubs. Leave them unset
@@ -54,16 +52,6 @@ die() { printf '[deploy-service:%s] ERROR: %s\n' "${SERVICE:-?}" "$*" >&2; exit 
 
 ENV_FILE="${CONFIG_DIR}/${SERVICE}.env"
 [[ -f "${ENV_FILE}" ]] || die "no manifest at ${ENV_FILE}: that one file is what defines a service" 3
-
-# ---- Who is asking ---------------------------------------------------------
-# The identity that owns a service is deploy-<service>. When the caller has that
-# shape it may only touch its own service. Human/admin identities are not
-# pattern-matched, they are trusted by sudo rule instead.
-CALLER="${SUDO_USER:-${USER:-}}"
-if [[ "${CALLER}" == deploy-* ]]; then
-  [[ "${CALLER#deploy-}" == "${SERVICE}" ]] \
-    || die "identity ${CALLER} may not activate ${SERVICE}" 6
-fi
 
 # ---- The service's whole configuration -------------------------------------
 # shellcheck source=/dev/null
@@ -120,7 +108,7 @@ done
 if ! ${SYSTEMCTL} is-active --quiet "${UNIT}${SERVICE}"; then
   say "unit ${UNIT}${SERVICE} did not become active"
   ${JOURNALCTL} -u "${UNIT}${SERVICE}" --no-pager -n 40 >&2 || true
-  exit 7
+  exit 6
 fi
 
 # ---- Health ----------------------------------------------------------------
@@ -133,7 +121,7 @@ done
 if [[ "${code}" != "${HEALTH_EXPECT}" ]]; then
   say "unit is up but ${HEALTH_URL} answered '${code:-nothing}', want ${HEALTH_EXPECT}"
   ${JOURNALCTL} -u "${UNIT}${SERVICE}" --no-pager -n 40 >&2 || true
-  exit 8
+  exit 7
 fi
 say "activated ${VERSION} (${HEALTH_URL} -> ${code})"
 
