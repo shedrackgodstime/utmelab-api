@@ -173,7 +173,7 @@ jobs:
               mkdir -p /opt/apps/${APP}/releases/${VERSION}
               tar -xzf /tmp/${APP}-${VERSION}.tar.gz -C /opt/apps/${APP}/releases/${VERSION}
               rm -f /tmp/${APP}-${VERSION}.tar.gz
-              sudo /usr/local/bin/${APP}-deploy ${VERSION}"
+              sudo /usr/local/bin/deploy-service ${APP} ${VERSION}"
 
       - name: Show health
         env:
