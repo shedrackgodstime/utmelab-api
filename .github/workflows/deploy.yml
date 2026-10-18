@@ -175,6 +175,11 @@ jobs:
               rm -f /tmp/${APP}-${VERSION}.tar.gz
               sudo /usr/local/bin/deploy-service ${APP} ${VERSION}"
 
+      # The service is a utmelab@<name> instance, not a per-app unit: a bare
+      # `systemctl is-active utmelab-api` answers "inactive" (or "activating",
+      # back when legacy units were still loaded) for a perfectly healthy app.
+      # This step is diagnostics only; the edge smoke below is what actually
+      # asserts the replica is serving.
       - name: Show health
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
@@ -186,7 +191,7 @@ jobs:
             -i ~/.ssh/deploy \
             -p "${VPS_PORT}" \
             "${VPS_USER}@${VPS_HOST}" \
-            "systemctl is-active ${APP}; curl -s http://127.0.0.1:${API_PORT}/ready || true"
+            "systemctl is-active utmelab@${APP}; curl -s http://127.0.0.1:${API_PORT}/ready || true"
 
       - name: Fetch smoke script
         uses: actions/checkout@v4
