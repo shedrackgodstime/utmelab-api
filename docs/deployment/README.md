@@ -137,9 +137,12 @@ health contract, and it never prunes on a failed run. Treat `VPS_SSH_KEY` as a
 host-level credential, not a per-service one.
 
 The five secrets a repo needs (`VPS_HOST`, `VPS_PORT`, `VPS_USER`, `VPS_SSH_KEY`,
-`VPS_KNOWN_HOSTS`) are now identical everywhere. Define them once in the GitHub
-**organisation** secret store and let every repo inherit them; that is what makes
-"add a service" mean exactly one manifest and no CI change.
+`VPS_KNOWN_HOSTS`) are now identical everywhere, because they describe the host,
+not the service. GitHub shares secrets across repositories only through an
+organisation, and this account is a personal one, so the same five values are set
+in each repo (`utmelab-api`, `UTME-Lab`, and any repo added later). They change
+only when the host or the CI key does, never when a service is added — which is
+what makes "add a service" mean exactly one manifest and no CI change.
 
 If containment is ever wanted back without per-service Unix users, the thin form
 is per-key `command=` pinning in `deploy`'s `authorized_keys`: one entry per repo,
@@ -183,10 +186,10 @@ After changing any of them: `sudo system verify`, then `caddy validate --config
 2. **Host** — the framework is installed and the manifest is in place
    (`sudo system verify` says so).
 3. **Repo secrets** — `VPS_HOST`, `VPS_PORT`, `VPS_USER`, `VPS_SSH_KEY`,
-   `VPS_KNOWN_HOSTS`. They are the same for every service, so put them in the
-   GitHub **organisation** secret store once and let repos inherit them. GitHub
-   does not share secrets between repositories by default, which is exactly why
-   the values should not be per repo.
+   `VPS_KNOWN_HOSTS`. The same five values in every repo, and the same for every
+   service. This account is a personal one, so there is no organisation store to
+   inherit from: set them per repo. They are written once per repo, not once per
+   service.
 4. **CI key** — `sudo system enroll <key>.pub` once per host, and put the private
    half in `VPS_SSH_KEY`. Adding another service does not repeat this.
 5. **Trigger a deploy** — Actions → `deploy-api` → **Run workflow**.
