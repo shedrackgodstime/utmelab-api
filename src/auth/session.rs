@@ -41,7 +41,8 @@ pub fn cookie_token(headers: &axum::http::HeaderMap) -> Option<String> {
 /// 1. The socket peer is unforgeable, but the binary binds loopback (see
 ///    [`crate::config::BIND_HOST`]), so on its own it only ever names our own
 ///    proxy.
-/// 2. The proxy appends the address it observed, so the **last**
+/// 2. The proxy writes the address it observed (Caddy replaces an incoming
+///    value; a proxy that appends puts its own last), so the **last**
 ///    `X-Forwarded-For` entry is the one hop we can attest.
 /// 3. Everything before it was supplied by the caller. Reading the first
 ///    entry, as this once did, let any caller choose their own bucket by

@@ -22,6 +22,16 @@
 # `file_server` runs before `reverse_proxy`, so a bare matcher would lose every
 # request to the file server and /health would answer with the docs homepage.
 # That bug shipped once; the blocks are what stop it.
+#
+# Caller addresses are a contract here. Every rate ceiling in the binary keys on
+# the caller the proxy attests, read from the last `X-Forwarded-For` entry, so
+# nothing on this path may forward a value the caller supplied. Caddy's default
+# already does that: it ignores an incoming `X-Forwarded-For` and writes the peer
+# it observed (checked against v2.11.7: a forged two-entry claim arrives upstream
+# as `127.0.0.1`). Adding `trusted_proxies`, a CDN, or `header_up
+# +X-Forwarded-For` would change what that read means, so revisit
+# `auth::session::client_ip` in the same breath. The loopback bind above is the
+# other half: nothing but this proxy can reach the binary to claim anything.
 
 api.utmelab.com {
 	encode gzip zstd
