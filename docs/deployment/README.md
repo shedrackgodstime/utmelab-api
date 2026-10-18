@@ -1,12 +1,10 @@
 # Deploying utmelab-api — set up once, then deploy on demand
 
-**Status: not yet run for this repo.** The pipeline below is the same pattern the
-parent UTME-Lab app runs on the same host, and it was proven end to end against
-the previous service on that box. The host still holds that service's install
-(unit, gate, sudoers, Caddy site, `/etc/utmelab-api/environment`), and the
-environment variable names changed with this binary, so **re-run
-`vps-onetime-setup.sh` before the first deploy here**. Until then `api.utmelab.com`
-is not serving this code.
+**Status: live.** `api.utmelab.com` serves this binary and its static site. The
+pipeline is the same pattern the parent UTME-Lab app runs on the same host. The
+host install (unit, sudoers, Caddy site, `/etc/utmelab-api/environment`) is
+one-time, and `vps-onetime-setup.sh` re-installs the two pieces that come from
+this repo.
 
 **You do not SSH per release.** The host config is one-time. After that you
 trigger a deploy from the Actions tab (or push a tag) and it builds and ships.
@@ -27,16 +25,40 @@ matcher: the static tier is the fallback, so any surface Caddy does not name is
 answered by `file_server` (an empty-body 404), not by the binary.
 
 **Deploys are serialized.** Only one runs at a time and none is cancelled
-mid-flight, because the gate deletes old release directories — two overlapping
+mid-flight, because the host gate prunes old release directories. Two overlapping
 runs could delete the release the other was activating.
+
+## The host gate
+
+The one privileged step is the host's shared `/usr/local/bin/deploy-service`,
+called by the deploy job as:
+
+```bash
+sudo /usr/local/bin/deploy-service utmelab-api v0.0.0-pre.<sha>
+```
+
+It is host-side tooling shared with the parent app. **This repo does not ship
+it.** CI has already extracted the release at
+`/opt/apps/utmelab-api/releases/<v>` (the binary plus `site/`) by the time it
+runs, and the gate owns everything after that: validate the app name and the
+version, re-point `/opt/apps/utmelab-api/current`, restart `utmelab-api.service`,
+wait for `/ready`, then prune old releases.
+
+Two constraints come from this side of the wire:
+
+1. The version argument arrives from a dispatchable workflow. The gate must
+   validate it as strict semver and never interpolate it into a shell command.
+   An earlier per-app gate did exactly that; when it moved out of the repo, the
+   validation had to move with it.
+2. `utmelab-api` listens on **8081**, not the parent's 8080. A gate that polls
+   the wrong port fails a boot that is perfectly healthy.
 
 ## Config lives on the host as installed copies — a repo edit is not enough
 
-Three host files are copies of repo files, so a push never updates them:
+Two host files are copies of repo files, so a push never updates them:
 
 | On the host | Repo source | Effect if not updated |
 |---|---|---|
-| `/usr/local/bin/utmelab-api-deploy` | `docs/deployment/utmelab-api-deploy` | gate validates/polls the old way |
 | `/etc/systemd/system/utmelab-api.service` | `docs/deployment/utmelab-api.service` | service runs the old `ExecStart` / env names |
 | `/etc/caddy/Caddyfile.api` | `docs/deployment/Caddyfile.api` | routing is stale |
 
@@ -51,19 +73,20 @@ replace it.
 After any change to those files, on the VPS as a sudoer:
 
 ```bash
-sudo bash docs/deployment/vps-onetime-setup.sh    # idempotent; re-installs all three
+sudo bash docs/deployment/vps-onetime-setup.sh    # idempotent; re-installs both
 sudo caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile \
   && sudo systemctl reload caddy
 ```
 
-The script only rewrites config and re-installs the gate — it does not touch
-releases, so it is safe to run against a live deployment.
+The script only rewrites host config and the sudoers rule. It never touches
+releases or the gate, so it is safe to run against a live deployment.
 
 ## What's already done on the host (from the parent)
 
 - VPS `209.74.85.163`, SSH `:22022`, UFW (22022/80/443), Caddy, swap.
-- `deploy` user + dedicated SSH key; restricted to the two NOPASSWD-sudo gates
-  (`utmelab-deploy` and `utmelab-api-deploy`) and nothing else.
+- `deploy` user + dedicated SSH key; NOPASSWD sudo is restricted to the deploy
+  gate and nothing else. This repo's workflow calls the shared
+  `/usr/local/bin/deploy-service`.
 - Layout: `/opt/apps/utmelab-api/releases/`, `/var/lib/utmelab-api/`,
   `/etc/utmelab-api/environment`.
 
@@ -99,11 +122,12 @@ EOF
 sudo chown root:utmelab /etc/utmelab-api/environment
 sudo chmod 0640 /etc/utmelab-api/environment
 
-# 3. Install the gate (the ONLY privileged code). From this repo:
-sudo install -o root -g root -m 0755 docs/deployment/utmelab-api-deploy /usr/local/bin/utmelab-api-deploy
+# 3. The gate is host tooling, shared with the parent app, and is not installed
+#    from this repo. Confirm it exists and that it knows this app's port:
+ls -l /usr/local/bin/deploy-service
 
-# 4. Restricted sudo — deploy may run exactly the gate, nothing else.
-echo 'deploy ALL=(root) NOPASSWD: /usr/local/bin/utmelab-api-deploy' | sudo tee /etc/sudoers.d/utmelab-api-deploy
+# 4. Restricted sudo. deploy may run exactly the gate, nothing else.
+echo 'deploy ALL=(root) NOPASSWD: /usr/local/bin/deploy-service' | sudo tee /etc/sudoers.d/utmelab-api-deploy
 sudo chmod 0440 /etc/sudoers.d/utmelab-api-deploy
 sudo visudo -c   # must be OK
 
@@ -168,10 +192,9 @@ to `file_server` every time.
 
 | File | Role |
 |---|---|
-| `utmelab-api-deploy` | the privileged gate (validate → symlink → restart → readiness → prune) |
 | `utmelab-api.service` | hardened systemd unit, binds `127.0.0.1:8081`, reads `/etc/utmelab-api/environment` |
-| `Caddyfile.api` | `api.utmelab.com` — `handle` blocks proxy `/api/*`,`/health`,`/ready` to :8081; everything else is the static site |
-| `vps-onetime-setup.sh` | idempotent, re-runnable: dirs, env, gate, sudoers, service, Caddy site |
+| `Caddyfile.api` | `api.utmelab.com` routes `handle` blocks for `/api/*`,`/health`,`/ready`,`/mcp`,`/mcp/*` to :8081; everything else is the static site |
+| `vps-onetime-setup.sh` | idempotent, re-runnable: dirs, env, sudoers, service, Caddy site |
 | `../../.github/workflows/deploy.yml` | build (Rust + site) → SCP → gate → smoke, on `Run workflow` or `v*` tags |
 | `../../.github/workflows/quality.yml` | push/PR gate: fmt, clippy, doc, tests, site build |
 
@@ -180,13 +203,12 @@ to `file_server` every time.
 - **Config is one-time** and lives on the host (env file, service, Caddy) — not
   re-done per deploy.
 - **Deploys are one click** — you choose to ship; `main` never ships itself.
-- **Failures are loud, not hidden** — the gate readiness-checks `/ready` and
-  exits red with `systemctl status` + the journal in the run log. No
-  auto-rollback, so a broken build can never quietly sit behind a healthy-looking
-  symlink.
-- **The VPS stays small** — on a healthy deploy the gate deletes every release
-  except the active one, so one prerelease (binary + static site) is all the disk
-  carries. Raise `UTMELAB_API_KEEP_RELEASES=N` once real releases land.
+- **Failures are loud, not hidden.** A release that never answers `/ready` is
+  never activated and the run goes red. There is no auto-rollback, so a broken
+  build cannot quietly sit behind a healthy-looking symlink.
+- **The VPS stays small.** On a healthy deploy the gate prunes every release
+  except the active one, so one prerelease (binary plus static site) is all the
+  disk carries.
 - **Docs stay grouped** — the site builds in the same tarball; no separate deploy.
 
 ## Notes / watch-items
@@ -220,22 +242,23 @@ to `file_server` every time.
 Implemented as `site/scripts/smoke.mjs`, run as the last step of the deploy job
 against `https://api.utmelab.com`. It asserts distinct rendered content, not just
 status codes, because two real outages shipped green by returning `200` with the
-identical home page. Three groups:
+identical home page. Four groups:
 
 | Group | Asserts | Catches |
 |---|---|---|
-| API reaches the binary | `/ready` is 200 (polled, 18×10 s) and not HTML; `/health` is 200 and not HTML; `/api/v1/exams` is **401** without a key; `/openapi.json` is a JSON OpenAPI document | the docs tier shadowing the API |
+| API reaches the binary | `/ready` is 200 (polled, 18×10 s) and not HTML; `/health` is 200 and not HTML; `/api/v1/exams` is **401** without a key; `/openapi.json` is a JSON OpenAPI document; `/mcp` and `/mcp/admin` answer **401**, not an empty 404 | the docs tier shadowing the API, or `/mcp` losing its proxy |
+| Discovery is open | `/api/v1/public/summary` is 200 with four numeric totals and `verified <= held`; `/api/v1/public/exams` is 200, cacheable, non-empty, and carries no field outside the coarse key set | a stray gate on the funnel, or a payload that widened |
 | Site serves **distinct** pages | `/`, `/docs/`, `/docs/guides/quickstart/`, `/dashboard/` each return 200, a non-empty `<title>`, and **titles that differ from each other** | a `try_files` fallback answering every directory URL |
 | Misses and redirects | a random missing path is **404**; an extensionless docs URL is **301/308**, not a 200 | status-blind fallthrough |
 
-Titles are compared as an array — never word-split, they contain spaces. Exit is
-non-zero on any failure, so the deploy run goes red.
+Titles are compared as an array, never word-split, because they contain spaces.
+Exit is non-zero on any failure, so the deploy run goes red.
 
 **Assert distinct content, not just status codes.** That is the whole point of
 the script: a status-only check passes while the site is completely broken.
 
-### Still open
+### Scheduled uptime
 
-There is **no uptime check** on `/ready` between deploys. The same script is
-runnable by hand (or on a schedule) to cover that gap; it is a separate decision
-with its own failure-noise trade-off.
+`uptime.yml` runs the same script against the public origin once a day, with
+`SMOKE_READY_TRIES=1` so it reports an outage immediately instead of waiting out
+a boot. Alerting is GitHub's own notification to the repo owner, not a pager.

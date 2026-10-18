@@ -6,14 +6,15 @@
 # Does NOT start the service - the first deploy (Actions -> deploy-api ->
 # Run workflow) does that, because there is no release until then.
 #
-# Re-run this after pulling a change to any of the three installed copies:
-#   /usr/local/bin/utmelab-api-deploy
+# Re-run this after pulling a change to either installed copy:
 #   /etc/systemd/system/utmelab-api.service
 #   /etc/caddy/Caddyfile.api
-# A repo edit does not touch the host until you re-run it. This matters here
-# because the host was provisioned for the previous service, whose environment
-# file uses variable names this binary does not read (UTMELAB_API_BIND and
-# friends); the unit, gate and Caddy site all had to change with it.
+# A repo edit does not touch the host until you re-run it. The gate is not here:
+# it is the host's shared /usr/local/bin/deploy-service, which this repo does not
+# ship. This matters because the host was provisioned for the previous service,
+# whose environment file uses variable names this binary does not read
+# (UTMELAB_API_BIND and friends); the unit and the Caddy site had to change with
+# it.
 #
 # Prereqs:
 #   - Caddy installed, running
@@ -81,14 +82,19 @@ chown root:utmelab "/etc/${APP}/environment"
 chmod 0640 "/etc/${APP}/environment"
 echo "  edit /etc/${APP}/environment and set TURSO_DB_TOKEN (rw token — server only)"
 
-say "3. Deploy gate — /usr/local/bin/${APP}-deploy (root:root 0755)"
-install -o root -g root -m 0755 "${REPO}/utmelab-api-deploy" "/usr/local/bin/${APP}-deploy"
-echo "  installed (the only privileged code; validates + symlinks + readiness-checks)"
+say "3. Deploy gate: the shared /usr/local/bin/deploy-service"
+# Host tooling, shared with the parent app and NOT shipped by this repo. An
+# earlier per-app gate here (${APP}-deploy) was removed from the repo once the
+# workflow moved to the unified script, so there is nothing to install. It only
+# has to exist, and to know this app's port: 8081, not the parent's 8080.
+[[ -x /usr/local/bin/deploy-service ]] \
+  || { echo "  MISSING /usr/local/bin/deploy-service (the shared gate)"; exit 1; }
+echo "  present (validates, symlinks, restarts, readiness-checks; shared with the parent)"
 
-say "4. Restricted sudo — deploy may run ONLY the gate"
+say "4. Restricted sudo. deploy may run ONLY the gate"
 SUDOERS="/etc/sudoers.d/${APP}-deploy"
-if [ ! -f "$SUDOERS" ] || ! grep -q "${APP}-deploy" "$SUDOERS"; then
-  echo "deploy ALL=(root) NOPASSWD: /usr/local/bin/${APP}-deploy" > "$SUDOERS"
+if [ ! -f "$SUDOERS" ] || ! grep -q "deploy-service" "$SUDOERS"; then
+  echo "deploy ALL=(root) NOPASSWD: /usr/local/bin/deploy-service" > "$SUDOERS"
 fi
 chown root:root "$SUDOERS"; chmod 0440 "$SUDOERS"
 visudo -c | tail -n1
