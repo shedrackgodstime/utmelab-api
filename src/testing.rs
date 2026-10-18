@@ -227,18 +227,18 @@ fn app_from(d: DbState) -> AppState {
     }
 }
 
-/// Drive the real router with one request. Returns the status and the parsed
-/// JSON body (`Value::Null` when there is none).
-pub(crate) async fn call(
+/// Drive the real router with one request and the given headers. Returns the
+/// status and the parsed JSON body (`Value::Null` when there is none).
+async fn drive(
     app: axum::Router,
     method: &str,
     uri: &str,
-    key: Option<&str>,
+    headers: &[(&str, &str)],
     body: Option<&str>,
 ) -> (axum::http::StatusCode, serde_json::Value) {
     let mut req = axum::http::Request::builder().method(method).uri(uri);
-    if let Some(k) = key {
-        req = req.header("x-api-key", k);
+    for (name, value) in headers {
+        req = req.header(*name, *value);
     }
     let req = match body {
         Some(b) => req
@@ -254,4 +254,32 @@ pub(crate) async fn call(
         .expect("body");
     let value = serde_json::from_slice(&bytes).unwrap_or(serde_json::Value::Null);
     (status, value)
+}
+
+/// Drive the router as an API-key caller.
+pub(crate) async fn call(
+    app: axum::Router,
+    method: &str,
+    uri: &str,
+    key: Option<&str>,
+    body: Option<&str>,
+) -> (axum::http::StatusCode, serde_json::Value) {
+    let mut headers: Vec<(&str, &str)> = Vec::new();
+    if let Some(k) = key {
+        headers.push(("x-api-key", k));
+    }
+    drive(app, method, uri, &headers, body).await
+}
+
+/// Drive the router as a signed-in dashboard session. `token` is the raw
+/// cookie value; the store keeps only its hash.
+pub(crate) async fn call_session(
+    app: axum::Router,
+    method: &str,
+    uri: &str,
+    token: &str,
+    body: Option<&str>,
+) -> (axum::http::StatusCode, serde_json::Value) {
+    let cookie = format!("{}={token}", crate::auth::session::SESSION_COOKIE);
+    drive(app, method, uri, &[("cookie", cookie.as_str())], body).await
 }

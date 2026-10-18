@@ -27,6 +27,17 @@ pub fn can_login(role: &str) -> bool {
     matches!(role, "customer" | "admin")
 }
 
+/// Tiers a key can hold. The tier fixes the scope grant (see
+/// `store::accounts::create_key_spec`), so a caller names a tier and never a
+/// scope list: a half-granted key is impossible by construction.
+pub fn check_tier(tier: &str) -> Result<(), AppError> {
+    if matches!(tier, "admin" | "commercial") {
+        Ok(())
+    } else {
+        Err(AppError::BadRequest("bad tier".to_string()))
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -48,5 +59,13 @@ mod tests {
         assert!(can_login("customer"));
         assert!(can_login("admin"));
         assert!(!can_login("suspended"));
+    }
+
+    #[test]
+    fn tier_rules() {
+        assert!(check_tier("admin").is_ok());
+        assert!(check_tier("commercial").is_ok());
+        assert!(check_tier("root").is_err());
+        assert!(check_tier("").is_err());
     }
 }

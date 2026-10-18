@@ -6,7 +6,7 @@ use axum::{extract::State, Json};
 
 use crate::{
     auth::session::AdminUser,
-    core::models::{Applied, NewKey, PrefixBody, ServiceStatus},
+    core::models::{Applied, NewKey, NewKeySpec, PrefixBody, ServiceStatus},
     error::AppError,
     state::DbState,
     store,
@@ -61,11 +61,14 @@ pub async fn set_role(
     Ok(Json(Applied { ok: found }))
 }
 
-pub async fn create_admin_key(
+/// Admin-only. `tier` decides the grant, so this mints a consumer key or a
+/// staff key and nothing in between; a consumer key also carries its `owner`.
+pub async fn create_key(
     State(s): State<DbState>,
     AdminUser(u): AdminUser,
+    Json(b): Json<NewKeySpec>,
 ) -> Result<Json<NewKey>, AppError> {
-    let key = store::accounts::create_admin_key(&s, &u).await?;
+    let key = store::accounts::create_key_spec(&s, &u, &b.tier, &b.owner).await?;
     Ok(Json(NewKey { key }))
 }
 
@@ -119,4 +122,107 @@ async fn apply(
 ) -> Result<Json<Applied>, AppError> {
     let ok = store::accounts::set_revoked(&s, &prefix, revoked, &actor).await?;
     Ok(Json(Applied { ok }))
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::testing::{api_schema, call_session, connect, replica, state};
+    use axum::http::StatusCode;
+
+    const CREATE: &str = "/api/internal/admin/keys/create";
+
+    /// A replica with the account tables and two signed-in dashboard users:
+    /// `ada` is an admin, `sam` a customer. The returned tokens are the raw
+    /// cookie values; the table keeps only their hashes.
+    async fn app() -> (axum::Router, crate::store::SyncDb, String, String) {
+        let db = replica().await;
+        let conn = connect(&db).await;
+        api_schema(&conn).await;
+        let now = crate::auth::session::now_unix();
+        for (user, role, token) in [
+            ("ada", "admin", "ada-token"),
+            ("sam", "customer", "sam-token"),
+        ] {
+            conn.execute(
+                "INSERT INTO dashboard_users (username, pw_hash, role) VALUES (?1, 'unused', ?2)",
+                vec![
+                    turso::Value::Text(user.to_string()),
+                    turso::Value::Text(role.to_string()),
+                ],
+            )
+            .await
+            .expect("seed user");
+            conn.execute(
+                "INSERT INTO sessions (token_hash, username, expires_at) VALUES (?1, ?2, ?3)",
+                vec![
+                    turso::Value::Text(crate::store::accounts::hash_key(token)),
+                    turso::Value::Text(user.to_string()),
+                    turso::Value::Integer(now + 3600),
+                ],
+            )
+            .await
+            .expect("seed session");
+        }
+        let app = crate::routes::router(state(db.clone()), &crate::config::Config::default());
+        (app, db, "ada-token".to_string(), "sam-token".to_string())
+    }
+
+    /// An admin session mints a consumer key with the owner it named. The
+    /// replica is offline, so the write commits locally and the call surfaces
+    /// the failed push; the committed row is what this test reads.
+    #[tokio::test]
+    async fn an_admin_session_mints_a_consumer_key_for_an_owner() {
+        let (app, db, admin, customer) = app().await;
+
+        let (status, body) = call_session(
+            app.clone(),
+            "POST",
+            CREATE,
+            &admin,
+            Some(r#"{"tier":"commercial","owner":"utmelab-app"}"#),
+        )
+        .await;
+        assert_eq!(status, StatusCode::BAD_GATEWAY, "{body}");
+
+        let conn = connect(&db).await;
+        let mut rows = conn
+            .query("SELECT tier, scopes, owner FROM api_keys", ())
+            .await
+            .expect("query");
+        let row = rows.next().await.expect("next").expect("row");
+        assert_eq!(row.get::<String>(0).expect("tier"), "commercial");
+        assert_eq!(
+            row.get::<String>(1).expect("scopes"),
+            "read:catalog,write:reports"
+        );
+        assert_eq!(row.get::<String>(2).expect("owner"), "utmelab-app");
+
+        // A customer session is refused at the door, before the body is read.
+        let (status, _) = call_session(
+            app,
+            "POST",
+            CREATE,
+            &customer,
+            Some(r#"{"tier":"commercial","owner":"utmelab-app"}"#),
+        )
+        .await;
+        assert_eq!(status, StatusCode::FORBIDDEN);
+    }
+
+    /// The tier decides the grant, so a caller cannot name a scope or a tier
+    /// the store does not know: the request is refused before any write.
+    #[tokio::test]
+    async fn an_admin_session_cannot_mint_a_half_granted_key() {
+        let (app, _db, admin, _customer) = app().await;
+        let (status, body) = call_session(
+            app,
+            "POST",
+            CREATE,
+            &admin,
+            Some(r#"{"tier":"root","owner":"utmelab-app"}"#),
+        )
+        .await;
+        assert_eq!(status, StatusCode::BAD_REQUEST, "{body}");
+        assert_eq!(body["code"], "bad_request", "{body}");
+    }
 }

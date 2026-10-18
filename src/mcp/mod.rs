@@ -446,7 +446,7 @@ mod tests {
     #[tokio::test]
     async fn the_catalog_surface_never_names_an_admin_tool() {
         let app = app().await;
-        const ADMIN_TOOLS: [&str; 3] = ["revoke_key", "rotate_key", "unrevoke_key"];
+        const ADMIN_TOOLS: [&str; 4] = ["create_key", "revoke_key", "rotate_key", "unrevoke_key"];
         for key in [
             "reader.secret",
             "writer.secret",
@@ -491,7 +491,7 @@ mod tests {
         .await;
         assert_eq!(
             tool_names(&tools["result"]),
-            ["revoke_key", "rotate_key", "unrevoke_key"]
+            ["create_key", "revoke_key", "rotate_key", "unrevoke_key"]
         );
 
         let (_, resources) = rpc(
@@ -624,6 +624,30 @@ mod tests {
         );
     }
 
+    /// The admin surface can hand out a consumer key: the tool dispatches into
+    /// the store, which derives the grant from the tier and refuses one it does
+    /// not know. (The grant itself is pinned in the store tests; the test
+    /// replica is offline, so a valid call would stop at the failed push.)
+    #[tokio::test]
+    async fn an_admin_key_reaches_the_create_key_tool() {
+        let app = app().await;
+        let (_, refused) = rpc(
+            &app,
+            ADMIN,
+            Some("admin.secret"),
+            msg(
+                1,
+                "tools/call",
+                json!({ "name": "create_key", "arguments": { "tier": "root", "owner": "utmelab-app" } }),
+            ),
+        )
+        .await;
+        assert_eq!(
+            refused["error"]["data"]["code"], "bad_request",
+            "the store validates the tier behind the tool: {refused}"
+        );
+    }
+
     /// What the hand-written bodies cannot prove: a real MCP client
     /// (`rmcp::Client` over rmcp's own Streamable HTTP transport) drives the
     /// served surface across a real socket, so the handshake, the schemas, and
@@ -684,7 +708,7 @@ mod tests {
             .expect("handshake against /mcp/admin");
         assert_eq!(
             tool_names_of(&admin.list_tools(None).await.expect("list tools")),
-            ["revoke_key", "rotate_key", "unrevoke_key"]
+            ["create_key", "revoke_key", "rotate_key", "unrevoke_key"]
         );
 
         assert!(

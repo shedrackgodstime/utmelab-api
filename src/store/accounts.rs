@@ -442,26 +442,47 @@ fn key_prefix(full: &str) -> &str {
         .unwrap_or(full)
 }
 
-/// Customer key creation. Commercial tier, catalog read scope, owned by
-/// the caller. Returns the full plaintext key exactly once — the table
-/// only ever holds the hash.
-pub async fn create_key(s: &DbState, owner: &str) -> Result<String, AppError> {
-    if owner.is_empty() || owner.len() > 64 {
-        return Err(AppError::BadRequest("bad owner".to_string()));
-    }
-    let full = create_key_raw(s, "commercial", "read:catalog,write:reports", owner).await?;
-    obs::key_created(owner, key_prefix(&full), "commercial");
+/// The scopes a consumer key is written with: read the catalog, file reports.
+/// Nothing that manages keys.
+const COMMERCIAL_SCOPES: &str = "read:catalog,write:reports";
+
+/// The scopes an admin key is written with. Admin tier bypasses scope checks
+/// regardless, but the grant is still spelled out so a key that is not admin
+/// can never carry one of these.
+const ADMIN_SCOPES: &str = "manage:keys,write:reports,read:catalog";
+
+/// The one key-minting path. A caller names a tier, and the scopes come from
+/// the tier, so an admin can grant a consumer key but never a half-scoped one.
+/// A commercial key is labelled with its owner; an admin key belongs to the
+/// staff, so it carries no owner and shows in the staff-wide list. Returns the
+/// plaintext exactly once — the table only ever holds the hash.
+pub async fn create_key_spec(
+    s: &DbState,
+    actor: &str,
+    tier: &str,
+    owner: &str,
+) -> Result<String, AppError> {
+    crate::core::accounts::check_tier(tier)?;
+    let (scopes, owner) = match tier {
+        "admin" => (ADMIN_SCOPES, ""),
+        _ => (COMMERCIAL_SCOPES, check_owner(owner)?),
+    };
+    let full = create_key_raw(s, tier, scopes, owner).await?;
+    obs::key_created(actor, key_prefix(&full), tier);
     Ok(full)
 }
 
-/// Admin-only key creation. Admin tier, full scopes, owned by nobody so it
-/// shows in the staff-wide key list. Returns the plaintext once — the table
-/// only ever holds the hash. The grant names only scopes a route enforces;
-/// admin tier bypasses scope checks regardless.
-pub async fn create_admin_key(s: &DbState, actor: &str) -> Result<String, AppError> {
-    let full = create_key_raw(s, "admin", "manage:keys,write:reports,read:catalog", "").await?;
-    obs::key_created(actor, key_prefix(&full), "admin");
-    Ok(full)
+/// Customer self-service. Commercial tier, owned by the caller.
+pub async fn create_key(s: &DbState, owner: &str) -> Result<String, AppError> {
+    create_key_spec(s, owner, "commercial", owner).await
+}
+
+/// The owner label rule, shared by every path that stores one.
+fn check_owner(owner: &str) -> Result<&str, AppError> {
+    if owner.is_empty() || owner.len() > 64 {
+        return Err(AppError::BadRequest("bad owner".to_string()));
+    }
+    Ok(owner)
 }
 
 /// Rotate a key: mint a replacement, then revoke the old prefix so it stops
@@ -896,6 +917,14 @@ mod tests {
             set_revoked(&s, "bad prefix!", true, "actor").await,
             Err(AppError::BadRequest(_))
         ));
+        assert!(matches!(
+            create_key_spec(&s, "actor", "root", "owner1").await,
+            Err(AppError::BadRequest(_))
+        ));
+        assert!(matches!(
+            create_key_spec(&s, "actor", "commercial", "").await,
+            Err(AppError::BadRequest(_))
+        ));
     }
 
     /// One cell from the local replica, to prove a mutation committed.
@@ -964,6 +993,53 @@ mod tests {
         assert_eq!(
             cell(&s, "SELECT COUNT(*) FROM api_keys WHERE prefix='k1'").await,
             turso::Value::Integer(0)
+        );
+    }
+
+    /// The tier decides the grant: a consumer key gets the report scopes and
+    /// its owner, a staff key gets key management and no owner. Asking for a
+    /// tier the store does not know is refused before any write, so a key can
+    /// never be minted half-scoped.
+    #[tokio::test]
+    async fn create_key_spec_derives_the_grant_from_the_tier() {
+        let s = local_accounts_db().await;
+        // Offline: each write commits locally and then fails at the push; the
+        // local rows are what this test reads.
+        assert!(create_key_spec(&s, "root", "commercial", "utmelab-app")
+            .await
+            .is_err());
+        assert!(create_key_spec(&s, "root", "admin", "ignored")
+            .await
+            .is_err());
+
+        let keys = list_keys(&s, None).await.expect("list keys");
+        let consumer = keys
+            .iter()
+            .find(|k| k.tier == "commercial")
+            .expect("consumer key");
+        let staff = keys.iter().find(|k| k.tier == "admin").expect("staff key");
+        assert_eq!(consumer.scopes, "read:catalog,write:reports");
+        assert_eq!(staff.scopes, "manage:keys,write:reports,read:catalog");
+        assert!(!consumer.revoked && !staff.revoked);
+        // The owner is carried for a consumer key and left blank for staff.
+        assert_eq!(
+            cell(
+                &s,
+                &format!(
+                    "SELECT owner FROM api_keys WHERE prefix='{}'",
+                    consumer.prefix
+                )
+            )
+            .await,
+            turso::Value::Text("utmelab-app".to_string())
+        );
+        assert_eq!(
+            cell(
+                &s,
+                &format!("SELECT owner FROM api_keys WHERE prefix='{}'", staff.prefix)
+            )
+            .await,
+            turso::Value::Text(String::new())
         );
     }
 

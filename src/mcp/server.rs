@@ -188,6 +188,16 @@ struct PrefixArgs {
     prefix: String,
 }
 
+#[derive(Deserialize, JsonSchema)]
+struct CreateKeyArgs {
+    /// `commercial` for a consumer key, `admin` for a staff key.
+    tier: String,
+    /// Owner label for a commercial key, e.g. `utmelab-app`. Ignored for an
+    /// admin key, which belongs to the staff.
+    #[serde(default)]
+    owner: String,
+}
+
 /// The catalog surface's actions. Each delegates to the `api::v1` handler its
 /// HTTP twin mounts, so the scope check and the rendered shape live once.
 #[tool_router(router = catalog_router)]
@@ -275,6 +285,30 @@ impl McpServer {
 /// scope the router already enforced.
 #[tool_router(router = admin_router)]
 impl McpServer {
+    /// Grant a key. The tier decides the scopes, so this mints a consumer key
+    /// or a staff key and nothing in between. Needs the `manage:keys` scope.
+    #[tool(
+        description = "Create a key. tier is commercial or admin; owner labels a commercial key. Needs manage:keys.",
+        meta = scope_meta(SCOPE_MANAGE_KEYS)
+    )]
+    async fn create_key(
+        &self,
+        Parameters(args): Parameters<CreateKeyArgs>,
+        context: RequestContext<RoleServer>,
+    ) -> Result<CallToolResponse, ErrorData> {
+        let auth = auth_from(&context)?;
+        auth.require(SCOPE_MANAGE_KEYS).map_err(to_mcp)?;
+        let key = store::accounts::create_key_spec(
+            &self.db,
+            &format!("key:{}", auth.key_id),
+            &args.tier,
+            &args.owner,
+        )
+        .await
+        .map_err(to_mcp)?;
+        json_result(&core::models::NewKey { key })
+    }
+
     /// Revoke a key by prefix. Needs the `manage:keys` scope.
     #[tool(
         description = "Revoke a key by prefix. Needs manage:keys.",

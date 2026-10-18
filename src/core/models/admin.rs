@@ -87,6 +87,17 @@ pub struct NewKey {
     pub key: String,
 }
 
+/// What an admin is granting: a tier, plus the owner a commercial key belongs
+/// to. Scopes are never named here — `store::accounts::create_key_spec` derives
+/// them from the tier, so an admin cannot mint a half-granted key.
+#[derive(serde::Deserialize)]
+pub struct NewKeySpec {
+    pub tier: String,
+    /// Ignored for an admin key, which belongs to the staff, not to a user.
+    #[serde(default)]
+    pub owner: String,
+}
+
 /// A signed-in session. The token rides in the `Set-Cookie` header; the body
 /// confirms it and names the role.
 #[derive(Serialize)]
