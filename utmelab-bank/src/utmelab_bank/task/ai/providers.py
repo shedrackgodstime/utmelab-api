@@ -32,8 +32,12 @@ class Provider(Protocol):
 
     name: str
 
-    async def complete(self, prompt: str) -> str:
-        """Return the model's raw text reply for a single prompt."""
+    async def complete(self, prompt: str, *, image: str | None = None) -> str:
+        """Return the model's raw text reply for one prompt.
+
+        ``image`` is an absolute path to a figure to attach. Only the vision
+        tasks pass it; a text task leaves it ``None``.
+        """
         ...
 
     async def aclose(self) -> None:
@@ -59,8 +63,15 @@ class OpenCodeProvider:
         self.retry_delay = 3.0
         self.name = f"opencode:{self.model}"
 
-    async def complete(self, prompt: str) -> str:
+    def _argv(self, image: str | None = None) -> list[str]:
+        """The command line. The prompt itself goes on stdin, never argv."""
         cmd = [self.binary, "run", "--model", self.model, "--format", "json"]
+        if image:
+            cmd += ["--file", image]
+        return cmd
+
+    async def complete(self, prompt: str, *, image: str | None = None) -> str:
+        cmd = self._argv(image)
         last_error: Exception | None = None
 
         for attempt in range(1, self.max_attempts + 1):
@@ -144,7 +155,9 @@ class MockProvider:
         self.seed_salt = seed_salt
         self.name = "mock"
 
-    async def complete(self, prompt: str) -> str:
+    async def complete(self, prompt: str, *, image: str | None = None) -> str:
+        # The mock cannot see, so it accepts the protocol's image and ignores it.
+        _ = image
         seed = int(hashlib.md5((self.seed_salt + prompt).encode()).hexdigest()[:8], 16)
         rng = random.Random(seed)
 

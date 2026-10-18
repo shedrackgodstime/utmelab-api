@@ -119,10 +119,12 @@ class _FakeProvider:
     def __init__(self, reply: str | None = None) -> None:
         self.reply = reply
         self.calls = 0
+        self.image: str | None = None
         self.name = "fake"
 
-    async def complete(self, _prompt: str) -> str:
+    async def complete(self, _prompt: str, *, image: str | None = None) -> str:
         self.calls += 1
+        self.image = image
         if self.reply is None:
             raise OSError("network down")
         return self.reply
@@ -142,6 +144,12 @@ async def test_describe_figure_returns_result():
     assert result.description.startswith("A V-I graph")
     assert result.key_values == ["slope = 4 ohms"]
     assert result.confidence == 0.9
+
+
+async def test_describe_figure_attaches_the_image():
+    provider = _FakeProvider('{"figure_kind": "graph", "description": "A graph."}')
+    await describe_figure(provider, _media_row(), "stem text", [], image="/tmp/media/fig.png")
+    assert provider.image == "/tmp/media/fig.png"
 
 
 async def test_describe_figure_retries_then_errors():
@@ -168,14 +176,17 @@ async def test_describe_stamps_description(
 ) -> None:
     import utmelab_bank.task.ai.describe as describe_module
 
-    monkeypatch.setattr(
-        describe_module,
-        "build_provider",
-        lambda _cfg, _eng="opencode", **_kwargs: _FakeProvider(
+    captured: list[_FakeProvider] = []
+
+    def _provider(*_args: object, **_kwargs: object) -> _FakeProvider:
+        fake = _FakeProvider(
             '{"figure_kind": "diagram", "description": "A circuit with a 12V battery and resistor R1.", '
             '"key_values": ["12V"], "confidence": 0.8}'
-        ),
-    )
+        )
+        captured.append(fake)
+        return fake
+
+    monkeypatch.setattr(describe_module, "build_provider", _provider)
 
     repo = Repository(store, lane="work")
     await repo.insert_many("media", [_media_row()])
@@ -187,6 +198,9 @@ async def test_describe_stamps_description(
 
     assert result.run.succeeded == 1
     assert result.run.failed == 0
+    # The task must hand the figure's absolute path to the model. Without it the
+    # model describes a figure it never saw.
+    assert captured[0].image == str(config.repo.media_repo / blob_rel)
     updated = (await repo.rows("media", "id=m_fig_1"))[0]
     assert updated["status"] == "described"
     assert updated["description"].startswith("A circuit")

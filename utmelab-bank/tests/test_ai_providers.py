@@ -140,6 +140,16 @@ def test_build_opencode_default_model(tmp_path: Path):
     assert p.name == "opencode:opencode/space-bunny-free"
 
 
+def test_opencode_attaches_a_figure(tmp_path: Path):
+    p = OpenCodeProvider(_config(tmp_path))
+    argv = p._argv("/tmp/media/fig.png")
+    assert argv[argv.index("--file") + 1] == "/tmp/media/fig.png"
+
+
+def test_opencode_has_no_file_without_a_figure(tmp_path: Path):
+    assert "--file" not in OpenCodeProvider(_config(tmp_path))._argv()
+
+
 def test_build_unknown_engine_raises(tmp_path: Path):
     with pytest.raises(AiError):
         build_provider(_config(tmp_path), "bogus")

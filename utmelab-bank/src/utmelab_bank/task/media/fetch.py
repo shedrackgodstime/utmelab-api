@@ -91,7 +91,7 @@ async def fetch_one(row: dict[str, Any], ctx: TaskContext) -> RowOutcome:
         return ctx.fail(row_id, "fetch_failed", str(exc), retryable=True)
 
     content_type = response.headers.get("content-type")
-    ext = extension_for(source_url, content_type)
+    ext = extension_for(source_url, content_type, data)
     digest, blob_path, _our_path = store.write_blob(data, ext)
 
     stamp = now_iso()

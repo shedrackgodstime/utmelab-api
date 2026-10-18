@@ -79,7 +79,7 @@ async def describe_one(row: dict[str, Any], ctx: TaskContext) -> RowOutcome:
     image_model = ctx.config.ai_image_model or None
     provider = build_provider(ctx.config, "opencode", model=image_model)
     try:
-        result = await describe_figure(provider, row, stem, options)
+        result = await describe_figure(provider, row, stem, options, image=str(blob_path))
     finally:
         await provider.aclose()
 

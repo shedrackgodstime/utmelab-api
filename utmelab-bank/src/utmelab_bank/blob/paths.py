@@ -23,21 +23,55 @@ from pathlib import Path
 
 from utmelab_bank.errors import BlobError
 
-__all__ = ["blob_path_for", "extension_for", "is_blob_name", "sha256_of", "url_for"]
+__all__ = [
+    "blob_path_for",
+    "extension_for",
+    "is_blob_name",
+    "sha256_of",
+    "sniff_extension",
+    "url_for",
+]
 
 _HASH_RE: re.Pattern[str] = re.compile(r"^[0-9a-f]{64}\.[a-z0-9]{1,5}$")
+
+#: Leading bytes of the image formats we expect. The bytes are the truth here:
+#: myschool serves real PNGs with ``content-type: text/plain``, which previously
+#: filed every figure as ``.txt``.
+_MAGIC: tuple[tuple[bytes, str], ...] = (
+    (b"\x89PNG\r\n\x1a\n", ".png"),
+    (b"\xff\xd8\xff", ".jpg"),
+    (b"GIF87a", ".gif"),
+    (b"GIF89a", ".gif"),
+)
 
 
 def sha256_of(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def extension_for(url: str, content_type: str | None = None) -> str:
+def sniff_extension(data: bytes | None) -> str | None:
+    """The extension the bytes themselves declare, or ``None`` when unknown."""
+    if not data:
+        return None
+    for magic, extension in _MAGIC:
+        if data.startswith(magic):
+            return extension
+    if data[:4] == b"RIFF" and data[8:12] == b"WEBP":
+        return ".webp"
+    return None
+
+
+def extension_for(url: str, content_type: str | None = None, data: bytes | None = None) -> str:
     """The file extension to store under.
 
-    From the content type when the server gave one, because a url ending in
-    ``.jpg`` regularly serves a png.
+    The bytes win when we have them, because servers lie: a url ending in
+    ``.jpg`` regularly serves a png, and myschool serves png as ``text/plain``.
+    The content type and the url suffix are fallbacks for callers that only
+    have the response headers.
     """
+    sniffed = sniff_extension(data)
+    if sniffed:
+        return sniffed
     if content_type:
         guessed = mimetypes.guess_extension(content_type.split(";")[0].strip())
         if guessed:

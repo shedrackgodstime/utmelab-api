@@ -34,17 +34,23 @@ async def describe_figure(
     stem: str,
     options: list[str],
     *,
+    image: str | None = None,
     parse_retries: int = 1,
     parse_backoff: float = 2.0,
 ) -> DescribeResult:
-    """Ask the provider to describe one figure and validate the reply."""
+    """Ask the provider to describe one figure and validate the reply.
+
+    ``image`` is the absolute path to the figure's bytes. It must be attached:
+    a prompt that only carries the stem asks the model to describe a figure it
+    cannot see, and the honest-looking answer that follows is invented.
+    """
     media_id = str(media.get("id", ""))
     last_error: Exception | None = None
     prompt = build_describe_prompt(stem, options)
 
     for attempt in range(parse_retries + 1):
         try:
-            response_text = await provider.complete(prompt)
+            response_text = await provider.complete(prompt, image=image)
             model_output = describe_output_from_text(response_text, extract_json)
             if not model_output.description:
                 raise ValueError("the model returned an empty description")

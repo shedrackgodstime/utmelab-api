@@ -368,7 +368,14 @@ def test_the_published_url_is_ours_not_the_providers() -> None:
     assert "http" not in url
 
 
-def test_extension_prefers_the_content_type() -> None:
+def test_extension_prefers_the_bytes() -> None:
+    # myschool serves real PNGs as text/plain; the bytes must win.
+    assert extension_for("https://x/a", "text/plain", b"\x89PNG\r\n\x1a\n....") == ".png"
+    assert extension_for("https://x/a", None, b"\xff\xd8\xff\xe0") == ".jpg"
+    assert extension_for("https://x/a", None, b"RIFF\x00\x00\x00\x00WEBPVP8 ") == ".webp"
+
+
+def test_extension_falls_back_to_content_type_then_url() -> None:
     assert extension_for("https://x/a.php", "image/png") == ".png"
     assert extension_for("https://x/a.jpg") == ".jpg"
     assert extension_for("https://x/a") == ".bin"

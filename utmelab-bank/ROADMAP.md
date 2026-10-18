@@ -109,12 +109,12 @@ run on real rows end to end.
 | intake (raw to work) | yes | `intake` | yes | **yes** (100 rows, R5) |
 | gate (mechanical) | yes | `gate` | yes | **yes** (100 rows, R5) |
 | dedupe | yes | `dedupe` | yes | **yes** (refused a real copy; R4) |
-| ai-describe | yes | `ai-describe` | yes | **no** |
+| ai-describe | yes | `ai-describe` | yes | **yes** (12/12 figures, verified against images) |
 | ai-explain | yes | `ai-explain` | yes | **yes** (3 rows, R6) |
 | ai-tag | yes | `ai-tag` | yes | **yes** (3 rows, R6) |
 | ai-verify | yes | `ai-verify` | yes | **yes** (3 rows, R6; one real fail) |
-| media-discover | yes | `media-discover` | partial | **no** |
-| media-fetch | yes | `media-fetch` | partial | **no** |
+| media-discover | yes | `media-discover` | partial | **yes** (12 figures, R7a) |
+| media-fetch | yes | `media-fetch` | partial | **yes** (12/12 fetched; bytes decide extension) |
 | media-transform / upload / report / gc | **not built** | no | no | no |
 | promote (work to ready) | yes | `promote` | yes | **no** (all `ready_*` empty) |
 | review workbench | partial (`set`, `show`, `verify`) | not registered | yes | **no** |
