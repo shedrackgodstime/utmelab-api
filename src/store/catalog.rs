@@ -214,6 +214,20 @@ pub struct QuestionFilter {
     pub country: Option<String>,
 }
 
+/// D62's rule as a CTE: the newest human verification carrying both `answer`
+/// and `explanation` must be a pass whose `content_hash` still matches the
+/// row. It is the set-based form of [`verified_predicate`], and keeping one
+/// definition means `subject_stats` and the keyless discovery counts can
+/// never disagree about what "verified" means.
+const LATEST_VERIFIED_CTE: &str = "WITH latest_ver AS (
+                  SELECT v.question_id AS qid, v.verdict, v.content_hash,
+                         ROW_NUMBER() OVER (PARTITION BY v.question_id ORDER BY v.created_at DESC, v.id DESC) AS rn
+                  FROM verifications v
+                  WHERE v.kind='human'
+                    AND EXISTS (SELECT 1 FROM json_each(v.scope) WHERE value='answer')
+                    AND EXISTS (SELECT 1 FROM json_each(v.scope) WHERE value='explanation')
+                )";
+
 /// D62's rule, spelled once. `table` is a compile-time literal from this
 /// module (never user input), so interpolating it is safe. The outer row is
 /// matched by `table.id`/`table.content_hash`, which both `questions` and
@@ -965,14 +979,7 @@ pub async fn subject_stats(
         let country = country.clone();
         async move {
             let sql = format!(
-                "WITH latest_ver AS (
-                  SELECT v.question_id AS qid, v.verdict, v.content_hash,
-                         ROW_NUMBER() OVER (PARTITION BY v.question_id ORDER BY v.created_at DESC, v.id DESC) AS rn
-                  FROM verifications v
-                  WHERE v.kind='human'
-                    AND EXISTS (SELECT 1 FROM json_each(v.scope) WHERE value='answer')
-                    AND EXISTS (SELECT 1 FROM json_each(v.scope) WHERE value='explanation')
-                )
+                "{LATEST_VERIFIED_CTE}
                 SELECT questions.subject, COUNT(*),
                   SUM(CASE WHEN lv.qid IS NOT NULL AND lv.verdict='pass' AND lv.content_hash = questions.content_hash THEN 1 ELSE 0 END),
                   COUNT(DISTINCT questions.marks), MIN(questions.marks)
@@ -1014,6 +1021,99 @@ pub async fn subject_stats(
         }
     })
     .await
+}
+
+/// The whole keyless discovery payload: every exam, its subjects, and the
+/// held and verified question counts behind each. Two queries, one windowed
+/// pass over `verifications`, and a stable order so the ETag the public
+/// routes carry means something.
+///
+/// Deliberately coarse. It answers "what is in here and how much" — what a
+/// visitor needs before they have a key. No row of content is reachable
+/// through it at any size.
+pub async fn public_exams(s: &DbState) -> Result<Vec<core::models::PublicExam>, AppError> {
+    let exams = list_exams(s).await?;
+    let counted: Vec<(String, core::models::PublicSubject)> = with_conn(s, |conn| async move {
+        let sql = format!(
+            "{LATEST_VERIFIED_CTE}
+             SELECT subs.exam, subs.slug, subs.name, subs.is_compulsory,
+                    subs.objective_paper_questions,
+                    COUNT(questions.id),
+                    COALESCE(SUM(CASE WHEN lv.qid IS NOT NULL AND lv.verdict='pass'
+                                       AND lv.content_hash = questions.content_hash
+                                      THEN 1 ELSE 0 END), 0)
+             FROM subjects subs
+             LEFT JOIN questions
+                    ON questions.exam = subs.exam AND questions.subject = subs.slug
+             LEFT JOIN latest_ver lv ON lv.qid = questions.id AND lv.rn = 1
+             GROUP BY subs.exam, subs.slug
+             ORDER BY subs.exam, subs.slug"
+        );
+        let mut stmt = conn.prepare(&sql).await.map_err(upstream)?;
+        let mut rows = stmt.query(()).await.map_err(upstream)?;
+        let mut out = Vec::new();
+        while let Some(row) = rows.next().await.map_err(upstream)? {
+            out.push((
+                row.get(0).map_err(upstream)?,
+                core::models::PublicSubject {
+                    slug: row.get(1).map_err(upstream)?,
+                    name: row.get(2).map_err(upstream)?,
+                    is_compulsory: req_bool(
+                        row.get_value(3).map_err(upstream)?,
+                        "subject.is_compulsory",
+                    )?,
+                    objective_paper_questions: opt_int(
+                        row.get_value(4).map_err(upstream)?,
+                        "subject.objective_paper_questions",
+                    )?,
+                    held: req_int::<u32>(row.get_value(5).map_err(upstream)?, "public.held")?,
+                    verified: req_int::<u32>(
+                        row.get_value(6).map_err(upstream)?,
+                        "public.verified",
+                    )?,
+                },
+            ));
+        }
+        Ok(out)
+    })
+    .await?;
+
+    Ok(exams
+        .into_iter()
+        .map(|exam| {
+            let subjects: Vec<core::models::PublicSubject> = counted
+                .iter()
+                .filter(|(code, _)| code == &exam.code)
+                .map(|(_, subject)| subject.clone())
+                .collect();
+            let held = subjects.iter().map(|subject| subject.held).sum();
+            let verified = subjects.iter().map(|subject| subject.verified).sum();
+            core::models::PublicExam {
+                code: exam.code,
+                name: exam.name,
+                countries: exam.countries,
+                status: exam.status,
+                duration_minutes: exam.duration_minutes,
+                held,
+                verified,
+                subjects,
+            }
+        })
+        .collect())
+}
+
+/// Totals for the landing page, summed from [`public_exams`] rather than
+/// re-queried, so the hero figure can never disagree with the tree beside it.
+pub async fn public_summary(s: &DbState) -> Result<core::models::PublicSummary, AppError> {
+    let exams = public_exams(s).await?;
+    let subjects: Vec<&core::models::PublicSubject> =
+        exams.iter().flat_map(|exam| exam.subjects.iter()).collect();
+    Ok(core::models::PublicSummary {
+        exams: exams.len() as u32,
+        subjects: subjects.len() as u32,
+        held: subjects.iter().map(|subject| subject.held).sum(),
+        verified: subjects.iter().map(|subject| subject.verified).sum(),
+    })
 }
 
 /// Every row one subject holds, in id order, `verified` derived. No paging:

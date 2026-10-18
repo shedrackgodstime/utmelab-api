@@ -19,7 +19,8 @@ use utoipa::openapi::security::{ApiKey, ApiKeyValue, SecurityScheme};
 use utoipa::{Modify, OpenApi};
 
 use crate::api::v1::{
-    blueprints, exams, keys, meta, novels, papers, passages, questions, reports, subjects, topics,
+    blueprints, exams, keys, meta, novels, papers, passages, public, questions, reports, subjects,
+    topics,
 };
 
 /// The whole contract, as a value. `site/openapi.json` is this serialised.
@@ -81,6 +82,8 @@ surface is keyed.",
         papers::assemble_paper,
         papers::score_paper,
         reports::file,
+        public::summary,
+        public::exams,
     ),
     components(schemas(
         crate::core::models::Exam,
@@ -128,6 +131,7 @@ surface is keyed.",
     security(("ApiKeyAuth" = [])),
     modifiers(&AuthScheme),
     tags(
+        (name = "public", description = "What is in the bank, before you have a key. No credential, coarse on purpose."),
         (name = "catalog", description = "Exams, subjects, syllabi, topics, blueprints, passages and prescribed texts."),
         (name = "questions", description = "The metered question surface."),
         (name = "papers", description = "Seeded assembly and server-side scoring."),

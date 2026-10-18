@@ -228,14 +228,20 @@ fn app_from(d: DbState) -> AppState {
 }
 
 /// Drive the real router with one request and the given headers. Returns the
-/// status and the parsed JSON body (`Value::Null` when there is none).
+/// status, the response headers, and the parsed JSON body (`Value::Null` when
+/// there is none). Headers come back because some of them are a contract too:
+/// a cache directive, an ETag, a `Retry-After`.
 async fn drive(
     app: axum::Router,
     method: &str,
     uri: &str,
     headers: &[(&str, &str)],
     body: Option<&str>,
-) -> (axum::http::StatusCode, serde_json::Value) {
+) -> (
+    axum::http::StatusCode,
+    axum::http::HeaderMap,
+    serde_json::Value,
+) {
     let mut req = axum::http::Request::builder().method(method).uri(uri);
     for (name, value) in headers {
         req = req.header(*name, *value);
@@ -249,11 +255,12 @@ async fn drive(
     .expect("request");
     let res = app.oneshot(req).await.expect("call");
     let status = res.status();
+    let head = res.headers().clone();
     let bytes = axum::body::to_bytes(res.into_body(), usize::MAX)
         .await
         .expect("body");
     let value = serde_json::from_slice(&bytes).unwrap_or(serde_json::Value::Null);
-    (status, value)
+    (status, head, value)
 }
 
 /// Drive the router as an API-key caller.
@@ -264,10 +271,29 @@ pub(crate) async fn call(
     key: Option<&str>,
     body: Option<&str>,
 ) -> (axum::http::StatusCode, serde_json::Value) {
+    let (status, _, value) = call_with_headers(app, method, uri, key, &[], body).await;
+    (status, value)
+}
+
+/// [`call`], with the response headers kept and extra request headers allowed
+/// (`if-none-match` for a conditional read, for instance).
+pub(crate) async fn call_with_headers(
+    app: axum::Router,
+    method: &str,
+    uri: &str,
+    key: Option<&str>,
+    extra: &[(&str, &str)],
+    body: Option<&str>,
+) -> (
+    axum::http::StatusCode,
+    axum::http::HeaderMap,
+    serde_json::Value,
+) {
     let mut headers: Vec<(&str, &str)> = Vec::new();
     if let Some(k) = key {
         headers.push(("x-api-key", k));
     }
+    headers.extend_from_slice(extra);
     drive(app, method, uri, &headers, body).await
 }
 
@@ -281,5 +307,6 @@ pub(crate) async fn call_session(
     body: Option<&str>,
 ) -> (axum::http::StatusCode, serde_json::Value) {
     let cookie = format!("{}={token}", crate::auth::session::SESSION_COOKIE);
-    drive(app, method, uri, &[("cookie", cookie.as_str())], body).await
+    let (status, _, value) = drive(app, method, uri, &[("cookie", cookie.as_str())], body).await;
+    (status, value)
 }

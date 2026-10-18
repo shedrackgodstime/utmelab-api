@@ -1,14 +1,66 @@
-//! Public HTTP surface middleware. HTTP-only wrappers live here:
-//! ETag generation today; CORS-adjacent and rate-limit headers join when
-//! they land. Nothing here knows business logic.
+//! Public HTTP surface middleware. HTTP-only wrappers live here: ETag
+//! generation today, plus the IP ceiling over the keyless discovery routes.
+//! Nothing here knows business logic.
 
 use axum::{
     body::{to_bytes, Body},
+    extract::{ConnectInfo, State},
     http::{Request, StatusCode},
     middleware::Next,
     response::{IntoResponse, Response},
 };
 use sha2::Digest;
+use std::net::SocketAddr;
+
+use crate::{auth::session, error::AppError, state::AppState};
+
+/// Per-IP ceiling for the discovery routes, which have no key to meter. The
+/// caller's IP is the only identity available on that surface; behind Caddy
+/// that is the leftmost `X-Forwarded-For` entry, the same reading the login
+/// limiter uses.
+///
+/// A request with no `ConnectInfo` (a service built without it) falls back to
+/// loopback and shares one bucket. That is honest for a test and impossible in
+/// production, where the binary always serves with connect info.
+pub async fn public_limit(
+    State(state): State<AppState>,
+    request: Request<Body>,
+    next: Next,
+) -> Result<Response, AppError> {
+    let direct = request
+        .extensions()
+        .get::<ConnectInfo<SocketAddr>>()
+        .map(|c| c.0)
+        .unwrap_or_else(|| SocketAddr::from(([127, 0, 0, 1], 0)));
+    let ip = session::client_ip(request.headers(), direct);
+    if !state.limiter.check_public(&ip).await {
+        return Err(AppError::RateLimited);
+    }
+    Ok(next.run(request).await)
+}
+
+/// The discovery surface's freshness window, as a header value. It changes
+/// only when the bank does, so a visitor's browser can answer from its own
+/// copy instead of asking again; five minutes is short enough that a subject
+/// added this morning is never stale for long. This is also what keeps the
+/// keyless surface from absorbing a page view per visitor: a funnel page
+/// costs one request per visit, not one per render.
+pub const PUBLIC_CACHE_CONTROL: &str = "public, max-age=300";
+
+/// Attach that window to whatever the inner layers produced. It runs outside
+/// the ETag layer on purpose, so a `304` carries the directive too: the
+/// revalidation already cost a read, and re-sending the header is what lets
+/// the browser extend the copy it already holds.
+pub async fn public_cache(request: Request<Body>, next: Next) -> Response {
+    let mut response = next.run(request).await;
+    if response.status().is_success() || response.status() == StatusCode::NOT_MODIFIED {
+        response.headers_mut().insert(
+            axum::http::header::CACHE_CONTROL,
+            axum::http::HeaderValue::from_static(PUBLIC_CACHE_CONTROL),
+        );
+    }
+    response
+}
 
 /// Strong ETag over exact response bytes for cacheable GETs. Matching
 /// `If-None-Match` short-circuits to an empty 304. Bodies are already

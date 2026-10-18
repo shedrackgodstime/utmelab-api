@@ -160,7 +160,8 @@ pub fn router(state: AppState, cfg: &Config) -> Router {
 mod tests {
     use super::*;
     use crate::testing::{
-        api_schema, call, connect, db_state_without_db, issue_key, replica, state, state_without_db,
+        api_schema, bank_schema, call, call_with_headers, connect, db_state_without_db, issue_key,
+        replica, state, state_without_db,
     };
     use std::sync::Arc;
     use tower::ServiceExt;
@@ -382,6 +383,16 @@ mod tests {
         ),
     ];
 
+    /// The keyless discovery routes, in a list of their own for one reason:
+    /// `API_ROUTES` is swept for a *missing key* refusal, and these must do the
+    /// opposite. Listing them here is what makes "answers without a key" a
+    /// deliberate entry rather than an omission, and the sweeps below prove
+    /// both halves of the divide.
+    const PUBLIC_ROUTES: &[(&str, &str, &str)] = &[
+        ("GET", "/api/v1/public/summary", "/api/v1/public/summary"),
+        ("GET", "/api/v1/public/exams", "/api/v1/public/exams"),
+    ];
+
     /// The MCP surface is gated endpoints, one per capability set. Its tools
     /// and resources are covered in the `mcp` module's own tests, where the
     /// JSON-RPC envelope is available; here they only have to answer the same
@@ -458,10 +469,12 @@ mod tests {
     }
 
     /// The spec is derived from the handlers, but its route list must equal this
-    /// inventory: a route mounted here and absent from the spec fails, and a
-    /// path the spec advertises with no route behind it fails. With the identity
-    /// sweep (which proves each probe is mounted and gated), this closes the loop
-    /// between the router, the spec, and the MCP mirror.
+    /// inventory (the keyed routes plus the keyless ones): a route mounted here
+    /// and absent from the spec fails, and a path the spec advertises with no
+    /// route behind it fails. With the identity sweep (which proves each probe
+    /// is mounted and gated) and the security sweep (which proves the spec
+    /// agrees about *which* routes are keyless), this closes the loop between
+    /// the router, the spec, and the MCP mirror.
     #[test]
     fn the_spec_covers_exactly_the_api_routes() {
         let doc =
@@ -479,6 +492,7 @@ mod tests {
             .collect();
         let mut routed: Vec<(String, String)> = API_ROUTES
             .iter()
+            .chain(PUBLIC_ROUTES.iter())
             .map(|(method, template, _)| (method.to_string(), template.to_string()))
             .collect();
         documented.sort();
@@ -573,5 +587,137 @@ mod tests {
         // Identity is not authorization: the same live read key is refused at
         // the mcp admin tools, which need `manage:keys` (see the `mcp` tests).
         // The scope gate holds on that surface too.
+    }
+
+    /// A replica carrying the API's own tables plus the bank tables the
+    /// discovery surface reads, with one exam and one subject seeded. Enough
+    /// for the keyless payload to be a real answer rather than an empty one.
+    async fn discovery_app() -> Router {
+        let db = replica().await;
+        let conn = connect(&db).await;
+        api_schema(&conn).await;
+        bank_schema(&conn, &["exams", "subjects", "questions", "verifications"]).await;
+        conn.execute(
+            "INSERT INTO exams VALUES ('JAMB','Joint Admissions','[\"NG\"]','live',1,4,120,'[]')",
+            (),
+        )
+        .await
+        .expect("insert exam");
+        conn.execute(
+            "INSERT INTO subjects VALUES ('use-of-english','JAMB','Use of English',1,60)",
+            (),
+        )
+        .await
+        .expect("insert subject");
+        crate::routes::router(state(db), &crate::config::Config::default())
+    }
+
+    /// The other half of the divide the identity sweeps prove. A discovery
+    /// route that starts refusing anonymous callers (a stray gate, a mount
+    /// inside `v1::router`) fails here, and the funnel goes dark rather than
+    /// going unnoticed.
+    #[tokio::test]
+    async fn every_public_route_answers_without_a_key() {
+        let app = discovery_app().await;
+        for &(method, _, probe) in PUBLIC_ROUTES {
+            assert_eq!(
+                call(app.clone(), method, probe, None, None).await.0,
+                axum::http::StatusCode::OK,
+                "{method} {probe} must answer an anonymous caller"
+            );
+        }
+    }
+
+    /// The public surface is cacheable and the keyed surface is not. The
+    /// directive is what stops an anonymous funnel from costing a read per
+    /// page view, and it is scoped to the discovery router, so a keyed answer
+    /// can never be handed out by a shared cache. A `304` carries it too:
+    /// revalidation is exactly when the browser needs to be told it may keep
+    /// holding what it has.
+    #[tokio::test]
+    async fn the_discovery_surface_is_cacheable_and_the_keyed_surface_is_not() {
+        let app = discovery_app().await;
+        let (status, head, _) =
+            call_with_headers(app.clone(), "GET", "/api/v1/public/exams", None, &[], None).await;
+        assert_eq!(status, axum::http::StatusCode::OK);
+        assert_eq!(
+            head.get(axum::http::header::CACHE_CONTROL)
+                .and_then(|value| value.to_str().ok()),
+            Some(crate::api::middleware::PUBLIC_CACHE_CONTROL)
+        );
+
+        let etag = head
+            .get(axum::http::header::ETAG)
+            .and_then(|value| value.to_str().ok())
+            .expect("the public read carries an ETag")
+            .to_string();
+        let (status, head, _) = call_with_headers(
+            app.clone(),
+            "GET",
+            "/api/v1/public/exams",
+            None,
+            &[("if-none-match", etag.as_str())],
+            None,
+        )
+        .await;
+        assert_eq!(status, axum::http::StatusCode::NOT_MODIFIED);
+        assert_eq!(
+            head.get(axum::http::header::CACHE_CONTROL)
+                .and_then(|value| value.to_str().ok()),
+            Some(crate::api::middleware::PUBLIC_CACHE_CONTROL)
+        );
+
+        let (status, head, _) =
+            call_with_headers(app, "GET", "/api/v1/exams", None, &[], None).await;
+        assert_eq!(status, axum::http::StatusCode::UNAUTHORIZED);
+        assert!(
+            head.get(axum::http::header::CACHE_CONTROL).is_none(),
+            "a keyed answer must not carry a shared-cache directive"
+        );
+    }
+
+    /// The published contract has to agree about which routes are keyless. The
+    /// scheme is declared once at the document root, so a keyed operation must
+    /// not carry an override and a public one must carry the empty requirement
+    /// that lifts the root. A route that changes sides without a spec change
+    /// fails here, which is the only way a consumer learns the truth without
+    /// reading our source.
+    #[test]
+    fn the_spec_says_exactly_which_routes_are_keyless() {
+        let doc =
+            serde_json::to_value(crate::api::openapi::document()).expect("the document serialises");
+        assert_eq!(
+            doc.get("security"),
+            Some(&serde_json::json!([{ "ApiKeyAuth": [] }])),
+            "the document root must still require the key scheme"
+        );
+        let item = |path: &str| doc.get("paths").and_then(|paths| paths.get(path));
+        let op = |method: &str, path: &str| {
+            item(path)
+                .unwrap_or_else(|| panic!("{path} is not documented"))
+                .get(method.to_lowercase())
+                .unwrap_or_else(|| panic!("{method} {path} is not documented"))
+        };
+        let keyless = |op: &serde_json::Value| {
+            op.get("security")
+                .and_then(serde_json::Value::as_array)
+                .is_some_and(|reqs| {
+                    reqs.iter()
+                        .all(|r| r.as_object().is_some_and(|o| o.is_empty()))
+                })
+        };
+
+        for &(method, path, _) in PUBLIC_ROUTES {
+            assert!(
+                keyless(op(method, path)),
+                "{method} {path} is keyless and must declare no security requirement"
+            );
+        }
+        for &(method, path, _) in API_ROUTES {
+            assert!(
+                op(method, path).get("security").is_none(),
+                "{method} {path} is keyed and must inherit the document's requirement"
+            );
+        }
     }
 }

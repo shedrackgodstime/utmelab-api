@@ -44,9 +44,22 @@ pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
         .layer(from_fn_with_state(state.clone(), verify_key))
         .layer(from_fn(middleware::etag))
         .layer(cfg.fast_timeout());
+    // The discovery surface is the one place with no key to verify, so it is
+    // mounted without `verify_key`; an IP ceiling stands in for the quota a key
+    // would otherwise carry. Keeping it a separate router is what makes the
+    // divide structural rather than a property of each handler.
+    let public = v1::public::router(state.clone())
+        .layer(from_fn_with_state(state.clone(), middleware::public_limit))
+        .layer(from_fn(middleware::etag))
+        .layer(from_fn(middleware::public_cache))
+        .layer(cfg.fast_timeout());
     let writes =
         v1::reports::router(state.clone()).layer(from_fn_with_state(state.clone(), verify_key));
-    Router::new().merge(reads).merge(writes).layer(cors)
+    Router::new()
+        .merge(reads)
+        .merge(public)
+        .merge(writes)
+        .layer(cors)
 }
 
 #[cfg(test)]

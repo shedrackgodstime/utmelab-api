@@ -16,6 +16,11 @@ pub const LOGIN_WINDOW: Duration = Duration::from_secs(60);
 /// Public-surface window. Fixed at a minute so the `Retry-After: 60` we
 /// answer a throttle with is always truthful.
 pub const API_WINDOW: Duration = Duration::from_secs(60);
+/// Discovery-surface ceiling, per caller IP. A funnel page costs one or two
+/// requests, so this is generous for a shared school NAT and still bounds a
+/// script. The catalog is public by design, so this is abuse protection, not
+/// secrecy: it cannot be the thing that keeps the taxonomy in.
+pub const PUBLIC_MAX_PER_MINUTE: u32 = 120;
 const MAX_BUCKETS: usize = 10_000;
 
 pub struct RateLimiter {
@@ -80,6 +85,14 @@ impl RateLimiter {
             return true;
         }
         self.check(&format!("key:{key_id}"), limit, API_WINDOW)
+            .await
+    }
+
+    /// Discovery-surface ceiling, keyed by caller IP because there is no key
+    /// to key on. Called from `middleware::public_limit`, which is why the
+    /// keyless routes cannot ship unmetered.
+    pub async fn check_public(&self, ip: &str) -> bool {
+        self.check(&format!("public:{ip}"), PUBLIC_MAX_PER_MINUTE, API_WINDOW)
             .await
     }
 }

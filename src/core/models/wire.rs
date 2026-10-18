@@ -167,6 +167,53 @@ pub struct RenderedQuestion {
     pub explanation: Option<Explanation>,
 }
 
+/// Totals for the discovery surface, served without a key.
+///
+/// `held` is every row on file; `verified` is the subset whose latest human
+/// verification passed under the rule every keyed read applies (see
+/// `store::catalog`). Both are here on purpose: a funnel can say "2,244
+/// questions, 2,190 human-verified", and either number agrees with what a key
+/// actually fetches (`?verified=true` for the second).
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
+pub struct PublicSummary {
+    pub exams: u32,
+    pub subjects: u32,
+    pub held: u32,
+    pub verified: u32,
+}
+
+/// One exam as the discovery surface serves it: identity, size, and its
+/// subjects. No board rules, no paper shape, nothing a key is for.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
+pub struct PublicExam {
+    pub code: String,
+    pub name: String,
+    /// Member countries running this exam. Empty where unstated.
+    pub countries: Vec<String>,
+    pub status: String,
+    /// Minutes for a full sitting. Null where the board's shape is unstated.
+    pub duration_minutes: Option<u32>,
+    /// Rows held, summed over `subjects`.
+    pub held: u32,
+    /// Human-verified rows, summed over `subjects`.
+    pub verified: u32,
+    pub subjects: Vec<PublicSubject>,
+}
+
+/// One subject on the discovery surface: the name, whether the board makes
+/// it compulsory, and how many rows sit behind it.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
+pub struct PublicSubject {
+    pub slug: String,
+    pub name: String,
+    pub is_compulsory: bool,
+    /// MCQs the objective paper holds. Null where unverified, never zero
+    /// standing in for a fact nobody stated.
+    pub objective_paper_questions: Option<u32>,
+    pub held: u32,
+    pub verified: u32,
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

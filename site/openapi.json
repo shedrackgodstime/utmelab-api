@@ -611,6 +611,55 @@
         }
       }
     },
+    "/api/v1/public/exams": {
+      "get": {
+        "tags": [
+          "public"
+        ],
+        "summary": "Every exam with its subjects and sizes. No key required.",
+        "operationId": "publicExams",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PublicExam"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {}
+        ]
+      }
+    },
+    "/api/v1/public/summary": {
+      "get": {
+        "tags": [
+          "public"
+        ],
+        "summary": "How much the bank holds. No key required.",
+        "operationId": "publicSummary",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicSummary"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {}
+        ]
+      }
+    },
     "/api/v1/questions": {
       "get": {
         "tags": [
@@ -2077,6 +2126,137 @@
           }
         }
       },
+      "PublicExam": {
+        "type": "object",
+        "description": "One exam as the discovery surface serves it: identity, size, and its\nsubjects. No board rules, no paper shape, nothing a key is for.",
+        "required": [
+          "code",
+          "name",
+          "countries",
+          "status",
+          "held",
+          "verified",
+          "subjects"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "countries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Member countries running this exam. Empty where unstated."
+          },
+          "duration_minutes": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int32",
+            "description": "Minutes for a full sitting. Null where the board's shape is unstated.",
+            "minimum": 0
+          },
+          "held": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Rows held, summed over `subjects`.",
+            "minimum": 0
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "subjects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublicSubject"
+            }
+          },
+          "verified": {
+            "type": "integer",
+            "format": "int32",
+            "description": "Human-verified rows, summed over `subjects`.",
+            "minimum": 0
+          }
+        }
+      },
+      "PublicSubject": {
+        "type": "object",
+        "description": "One subject on the discovery surface: the name, whether the board makes\nit compulsory, and how many rows sit behind it.",
+        "required": [
+          "slug",
+          "name",
+          "is_compulsory",
+          "held",
+          "verified"
+        ],
+        "properties": {
+          "held": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "is_compulsory": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string"
+          },
+          "objective_paper_questions": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int32",
+            "description": "MCQs the objective paper holds. Null where unverified, never zero\nstanding in for a fact nobody stated.",
+            "minimum": 0
+          },
+          "slug": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
+      "PublicSummary": {
+        "type": "object",
+        "description": "Totals for the discovery surface, served without a key.\n\n`held` is every row on file; `verified` is the subset whose latest human\nverification passed under the rule every keyed read applies (see\n`store::catalog`). Both are here on purpose: a funnel can say \"2,244\nquestions, 2,190 human-verified\", and either number agrees with what a key\nactually fetches (`?verified=true` for the second).",
+        "required": [
+          "exams",
+          "subjects",
+          "held",
+          "verified"
+        ],
+        "properties": {
+          "exams": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "held": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "subjects": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "verified": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
       "RenderedNovelQuestion": {
         "type": "object",
         "description": "One novel quiz row as served. `novel_id` is stamped by the caller —\nthe stored row does not carry it.",
@@ -2792,6 +2972,10 @@
     }
   ],
   "tags": [
+    {
+      "name": "public",
+      "description": "What is in the bank, before you have a key. No credential, coarse on purpose."
+    },
     {
       "name": "catalog",
       "description": "Exams, subjects, syllabi, topics, blueprints, passages and prescribed texts."

@@ -28,9 +28,14 @@ async function get(path) {
   try {
     const res = await fetch(BASE + path, { redirect: 'manual', signal: ctrl.signal });
     const body = await res.text();
-    return { status: res.status, contentType: res.headers.get('content-type') || '', body };
+    return {
+      status: res.status,
+      contentType: res.headers.get('content-type') || '',
+      cacheControl: res.headers.get('cache-control') || '',
+      body,
+    };
   } catch (e) {
-    return { status: 0, contentType: '', body: '', networkError: e.cause?.code || e.message };
+    return { status: 0, contentType: '', cacheControl: '', body: '', networkError: e.cause?.code || e.message };
   } finally {
     clearTimeout(timer);
   }
@@ -143,7 +148,52 @@ await group('api reaches the binary', async () => {
   ok('/mcp/admin reaches the binary (401 without key)');
 });
 
-// 2. Docs serve distinct pages (not one homepage four times).
+// 2. The discovery surface is open. It is the only unkeyed part of `/api/v1`,
+// so both failure modes are loud: a stray gate turns it into a 401 (the
+// funnel goes dark) and a widened payload starts leaking bank rows. Neither
+// is visible from the keyed routes, hence an assertion of its own.
+await group('discovery surface is open', async () => {
+  const summary = await get('/api/v1/public/summary');
+  if (summary.networkError) return fail(`/api/v1/public/summary unreachable (${summary.networkError})`);
+  if (summary.status === 401) return fail('/api/v1/public/summary is 401: the funnel is gated');
+  if (summary.status !== 200) return fail(`/api/v1/public/summary status ${summary.status}`);
+  let totals;
+  try {
+    totals = JSON.parse(summary.body);
+  } catch {
+    return fail('/api/v1/public/summary is not JSON');
+  }
+  for (const key of ['exams', 'subjects', 'held', 'verified']) {
+    if (typeof totals[key] !== 'number') return fail(`/api/v1/public/summary.${key} is ${typeof totals[key]}, want a number`);
+  }
+  if (totals.verified > totals.held) return fail(`/api/v1/public/summary verified ${totals.verified} exceeds held ${totals.held}`);
+  ok(`/api/v1/public/summary is open (${totals.exams} exams, ${totals.subjects} subjects, ${totals.held} held, ${totals.verified} verified)`);
+
+  const exams = await get('/api/v1/public/exams');
+  if (exams.status !== 200) return fail(`/api/v1/public/exams status ${exams.status}`);
+  // A funnel page must not cost a read per view. The directive is part of the
+  // contract, so a cacheable public surface is asserted, not assumed.
+  const cache = exams.cacheControl;
+  if (!cache.includes('max-age=')) return fail(`/api/v1/public/exams cache-control is ${JSON.stringify(cache)}`);
+  ok(`/api/v1/public/exams is cacheable (${cache})`);
+  let list;
+  try {
+    list = JSON.parse(exams.body);
+  } catch {
+    return fail('/api/v1/public/exams is not JSON');
+  }
+  if (!Array.isArray(list) || list.length === 0) return fail('/api/v1/public/exams is not a non-empty array');
+  // Coarseness at the edge, mirroring the Rust key-set test: the keyless
+  // payload is identity and counts. A question id or stem arriving here is a
+  // contract break, not a nicety.
+  const allowed = ['code', 'countries', 'duration_minutes', 'held', 'name', 'status', 'subjects', 'verified'];
+  const extra = Object.keys(list[0]).filter((key) => !allowed.includes(key));
+  if (extra.length) return fail(`/api/v1/public/exams grew fields a keyless caller may read: ${extra.join(', ')}`);
+  if (!Array.isArray(list[0].subjects)) return fail('/api/v1/public/exams[0].subjects is not an array');
+  ok(`/api/v1/public/exams is open (${list.length} exams)`);
+});
+
+// 3. Docs serve distinct pages (not one homepage four times).
 await group('docs serve distinct pages', async () => {
   const pages = ['/', '/docs/', '/docs/guides/quickstart/', '/dashboard/'];
   const titles = [];
@@ -173,7 +223,7 @@ await group('docs serve distinct pages', async () => {
   }
 });
 
-// 3. Misses miss, and extensionless URLs redirect instead of 200ing.
+// 4. Misses miss, and extensionless URLs redirect instead of 200ing.
 await group('misses and redirects', async () => {
   const missing = await get('/no-such-page-check-' + Date.now());
   if (missing.status !== 404) fail(`missing path is ${missing.status}, want 404`);

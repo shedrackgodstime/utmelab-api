@@ -23,6 +23,7 @@ pub mod meta;
 pub mod novels;
 pub mod papers;
 pub mod passages;
+pub mod public;
 pub mod questions;
 pub mod reports;
 pub mod subjects;
