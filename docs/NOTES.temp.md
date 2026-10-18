@@ -42,6 +42,63 @@ record of each decision.
 
 ## Backlog
 
+Open items, split by whether they can be done from a device that cannot run
+Rust. Ordered by what blocks the most.
+
+### Needs a Rust build (cannot be done here)
+
+- **No admin/dashboard user exists.** `seed-admin` is implemented
+  (`src/main.rs:21`) but is a CLI verb, so it needs `cargo run -- seed-admin
+  <username>` against the cloud database. Until one is seeded,
+  `/api/internal/admin/*` and `/mcp/admin` are unreachable and keys cannot be
+  created, revoked or rotated through the service. Every admin surface is
+  built and tested; what is missing is the one row.
+- **No key expiry, and no rotation grace period.** `api_keys` has no
+  `expires_at` column, so a key is valid until revoked. Deferred pending
+  billing, which is what decides the tiering. Note this is the one old CLI
+  behaviour with no successor: old `rotate` kept the old key answering during
+  a grace window, and `rotate_key` revokes immediately. A grace period needs
+  the expiry column first.
+- **Turso has no backup job.** No workflow under `.github/workflows/` backs
+  up anything. Bank content re-seeds from the pipeline, but `api_keys` has
+  neither a re-seed nor a dump: a lost database means every key ever issued is
+  gone. This is the sharpest of the three, because it is unrecoverable rather
+  than merely inconvenient.
+
+### Does not need Rust (doable now)
+
+- **No uptime check on `/ready` between deploys.** `site/scripts/smoke.mjs`
+  already exists and takes `BASE_URL`; the deploy job runs it. Wiring the same
+  script to a schedule, or adding it to a monitoring target, needs no Rust.
+  Worth deciding with the failure-noise trade-off in mind: a scheduled check
+  that pages is only useful if someone is paged.
+- **The deploy gate can false-fail a first boot.** The gate polls `/ready`
+  for 30x1s. On a host with no replica, `/ready` stays 503 until the first full
+  sync completes, and a full sync against 2.2k questions is slower than an
+  incremental pull. A fresh host therefore can fail the gate while being
+  perfectly healthy, and the answer is just to re-run the deploy. Raising the
+  window, or having the gate distinguish "replica still syncing" from "replica
+  broken", would make that explicit rather than relying on a re-run.
+
+### Closed since 2026-10-11 — do not re-open
+
+Recorded because these were diagnosed against the previous architecture and are
+now wrong:
+
+- **The bank is no longer held in memory.** An earlier analysis found every
+  question loaded into RAM at boot with no LIMIT. That was `TursoStore`, which
+  is deleted. Reads now go through SQL against the local replica
+  (`store/catalog.rs`, `SELECT ... LIMIT ? OFFSET ?`), and the measured page
+  cost is ~6ms.
+- **No JSON is embedded or shipped.** `bank/json.rs`, `bank/cache.rs` and the
+  `include_str!` block are gone; the release is `binary + site/`. The old D73
+  concern is closed by the rewrite rather than by a separate removal.
+- **The rate-limit retention bug is gone.** `rate-limit retention skipped:
+  turso list: Parse error: no such column: id` came from a limiter backed by a
+  DB table. The limiter is now an in-memory `HashMap<String, VecDeque<Instant>>`
+  capped at 10,000 buckets, so there is no table and nothing to retain.
+
+
 ## Done
 - The old tree is out of the working repo. `utmelab-api-old/` (146 files) and
   the scratch `prototyping/` crate (12 files) are archived on the
