@@ -87,9 +87,12 @@ The flows we want to be able to run, in any order, in any combination:
   `ai-verify` in the same pass.
 - **Fill the gaps.** `--where 'no explanation'` then explain only those; or
   `--where 'no subtopic'` then tag only those.
-- **Media.** `has images` -> `media-discover` -> `media-fetch`. A fetch that is
-  not followed by an upload leaves the provider's full url on the row; an upload
-  replaces it with our file name in the media git project.
+- **Media.** `has images` -> `media-discover` -> `media-fetch` ->
+  `ai-describe` -> `media-verify`. A fetch that is not followed by an upload
+  leaves the provider's full url on the row; an upload replaces it with our file
+  name in the media git project. `media-verify` re-reads the same figure and
+  checks the description claim by claim. Only a pass makes the description
+  usable; a fail moves the row to `needs_review` and keeps the source image.
 - **Compose.** One `goal` that wires these into a full pass.
 
 ## What actually exists today
@@ -109,12 +112,13 @@ run on real rows end to end.
 | intake (raw to work) | yes | `intake` | yes | **yes** (100 rows, R5) |
 | gate (mechanical) | yes | `gate` | yes | **yes** (100 rows, R5) |
 | dedupe | yes | `dedupe` | yes | **yes** (refused a real copy; R4) |
-| ai-describe | yes | `ai-describe` | yes | **yes** (12/12 figures, verified against images) |
+| ai-describe | yes | `ai-describe` | yes | **yes** (12/12 described; 6/12 survived the check) |
 | ai-explain | yes | `ai-explain` | yes | **yes** (3 rows, R6) |
 | ai-tag | yes | `ai-tag` | yes | **yes** (3 rows, R6) |
 | ai-verify | yes | `ai-verify` | yes | **yes** (3 rows, R6; one real fail) |
 | media-discover | yes | `media-discover` | partial | **yes** (12 figures, R7a) |
 | media-fetch | yes | `media-fetch` | partial | **yes** (12/12 fetched; bytes decide extension) |
+| media-verify | yes | `media-verify` | yes | **yes** (12 checked; 6 pass, 6 fail; negative control caught) |
 | media-transform / upload / report / gc | **not built** | no | no | no |
 | promote (work to ready) | yes | `promote` | yes | **no** (all `ready_*` empty) |
 | review workbench | partial (`set`, `show`, `verify`) | not registered | yes | **no** |

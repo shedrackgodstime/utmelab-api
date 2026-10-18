@@ -13,6 +13,7 @@ from utmelab_bank.task import media as media_task  # noqa: F401  registers media
 from utmelab_bank.task import promote as promote_task  # noqa: F401  registers promotion
 from utmelab_bank.task.ai import describe as ai_describe_task  # noqa: F401  registers ai-describe
 from utmelab_bank.task.ai import explain as ai_explain_task  # noqa: F401  registers ai-explain
+from utmelab_bank.task.ai import media_verify as ai_media_verify_task  # noqa: F401  registers media-verify
 from utmelab_bank.task.ai import tag as ai_tag_task  # noqa: F401  registers ai-tag
 from utmelab_bank.task.ai import verify as ai_verify_task  # noqa: F401  registers ai-verify
 from utmelab_bank.task.base import (

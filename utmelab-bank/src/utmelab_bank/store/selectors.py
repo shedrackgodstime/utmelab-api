@@ -379,6 +379,48 @@ register(
 )
 register(
     Selector(
+        "description unverified",
+        "media rows whose description has not passed an independent check",
+        lambda _r, _a, p: (
+            f'({p}"description" IS NOT NULL AND {p}"description" <> \'\' AND '
+            f'({p}"description_verdict" IS NULL OR {p}"description_verdict" <> \'pass\'))',
+            {},
+        ),
+        fills=("description_verdict",),
+        matches=lambda r, _v: (
+            bool(r.get("description")) and str(r.get("description_verdict") or "") != "pass"
+        ),
+    )
+)
+register(
+    Selector(
+        "description failed",
+        "media rows whose description failed the independent check",
+        lambda _r, _a, p: (f"{p}\"description_verdict\" = 'fail'", {}),
+        fills=("description_verdict",),
+        matches=lambda r, _v: str(r.get("description_verdict") or "") == "fail",
+    )
+)
+register(
+    Selector(
+        "description verified",
+        "media rows whose description passed the independent check",
+        lambda _r, _a, p: (f"{p}\"description_verdict\" = 'pass'", {}),
+        fills=("description_verdict",),
+        matches=lambda r, _v: str(r.get("description_verdict") or "") == "pass",
+    )
+)
+register(
+    Selector(
+        "needs review",
+        "media rows waiting for a human after a failed check",
+        lambda _r, _a, p: (f"{p}\"status\" = 'needs_review'", {}),
+        fills=("status",),
+        matches=lambda r, _v: str(r.get("status") or "") == "needs_review",
+    )
+)
+register(
+    Selector(
         "has images",
         "questions carrying at least one image mark",
         lambda _r, _a, p: (

@@ -21,7 +21,7 @@ from utmelab_bank.task.ai.describe_tasks import describe_figure
 from utmelab_bank.task.ai.providers import build_provider
 from utmelab_bank.task.base import TaskContext, registered
 
-__all__ = ["AiDescribe", "describe_one"]
+__all__ = ["AiDescribe", "describe_one", "question_context"]
 
 log = logging.getLogger(__name__)
 
@@ -75,7 +75,7 @@ async def describe_one(row: dict[str, Any], ctx: TaskContext) -> RowOutcome:
     if not blob_path.is_file():
         return ctx.skip(row_id, "blob_missing", f"blob not on disk at {blob_rel}")
 
-    stem, options = await _question_context(ctx, row)
+    stem, options = await question_context(ctx, row)
     image_model = ctx.config.ai_image_model or None
     provider = build_provider(ctx.config, "opencode", model=image_model)
     try:
@@ -94,6 +94,10 @@ async def describe_one(row: dict[str, Any], ctx: TaskContext) -> RowOutcome:
         {
             "description": result.description,
             "description_model": provider.name,
+            # A fresh description invalidates any earlier verdict. The check
+            # belongs to these words and this figure, not to the row forever.
+            "description_verdict": None,
+            "description_verified_at": None,
             "status": "described",
             "updated_at": now_iso(),
         },
@@ -103,7 +107,7 @@ async def describe_one(row: dict[str, Any], ctx: TaskContext) -> RowOutcome:
     return ctx.ok(row_id)
 
 
-async def _question_context(ctx: TaskContext, row: dict[str, Any]) -> tuple[str, list[str]]:
+async def question_context(ctx: TaskContext, row: dict[str, Any]) -> tuple[str, list[str]]:
     """The owning question's stem and option texts, for the prompt's context."""
     question_id = str(row.get("question_id") or "")
     if not question_id:

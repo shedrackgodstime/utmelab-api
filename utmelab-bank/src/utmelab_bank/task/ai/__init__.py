@@ -16,6 +16,14 @@ from utmelab_bank.task.ai.explain_prompt import build_explain_prompt
 from utmelab_bank.task.ai.explain_schema import ExplainOutput, ExplainResult
 from utmelab_bank.task.ai.explain_tasks import explain_question
 from utmelab_bank.task.ai.jsonio import extract_json
+from utmelab_bank.task.ai.media_verify import MediaVerify, verify_media_one
+from utmelab_bank.task.ai.media_verify_prompt import build_media_verify_prompt
+from utmelab_bank.task.ai.media_verify_schema import (
+    MediaVerifyOutput,
+    MediaVerifyResult,
+    media_verify_output_from_text,
+)
+from utmelab_bank.task.ai.media_verify_tasks import verify_media
 from utmelab_bank.task.ai.prompt import build_tagging_prompt
 from utmelab_bank.task.ai.providers import (
     MockProvider,
@@ -46,6 +54,9 @@ __all__: list[str] = [
     "DescribeResult",
     "ExplainOutput",
     "ExplainResult",
+    "MediaVerify",
+    "MediaVerifyOutput",
+    "MediaVerifyResult",
     "MockProvider",
     "ModelOutput",
     "OpenCodeProvider",
@@ -56,6 +67,7 @@ __all__: list[str] = [
     "VerifyResult",
     "build_describe_prompt",
     "build_explain_prompt",
+    "build_media_verify_prompt",
     "build_provider",
     "build_tagging_prompt",
     "build_verify_prompt",
@@ -64,10 +76,13 @@ __all__: list[str] = [
     "explain_one",
     "explain_question",
     "extract_json",
+    "media_verify_output_from_text",
     "question_from_row",
     "snap_underline",
     "tag_one",
     "tag_question",
+    "verify_media",
+    "verify_media_one",
     "verify_one",
     "verify_output_from_text",
     "verify_question",
