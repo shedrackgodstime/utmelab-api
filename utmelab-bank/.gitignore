@@ -12,8 +12,9 @@ htmlcov/
 build/
 dist/
 
-# Run output and the media clone. Both belong under the repository's var/, and
-# both are disposable: a run can be repeated and a figure can be refetched.
+# Run output and the media clone live inside the package (utmelab-bank/var/),
+# never at the repo root: the API owns db/, this package owns var/. Both are
+# disposable: a run can be repeated and a figure can be refetched.
 var/
 *.db
 *.db-shm

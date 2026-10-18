@@ -81,8 +81,12 @@ class RepoRoot(BaseModel):
 
     @property
     def var(self) -> Path:
-        """The only directory this package may write files into. Gitignored."""
-        return self.path / "var"
+        """The only directory this package may write files into. Gitignored.
+
+        Lives inside the package (``utmelab-bank/var``), never at the repo
+        root: this package owns its run output, the API owns ``db/``.
+        """
+        return self.path / "utmelab-bank" / "var"
 
     @property
     def media_repo(self) -> Path:

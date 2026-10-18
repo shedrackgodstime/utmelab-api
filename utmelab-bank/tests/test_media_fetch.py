@@ -37,7 +37,7 @@ async def failing_get(self, url: str, **kwargs: Any) -> Any:
 @pytest.fixture
 def media_config(tmp_path: Path) -> Config:
     """Config with a temp media clone that already exists (ensure_cloned is a no-op)."""
-    clone_root = tmp_path / "var" / "media-repo"
+    clone_root = tmp_path / "utmelab-bank" / "var" / "media-repo"
     clone_root.mkdir(parents=True)
     (clone_root / ".git").mkdir()
     return Config(

@@ -7,7 +7,7 @@ PY      := uv run python
 PKG     := utmelab_bank
 SRC     := src
 TESTS   := tests
-VAR     := ../var
+VAR     := var
 
 .DEFAULT_GOAL := help
 .PHONY: help check test lint fmt types contract tasks sources clean install

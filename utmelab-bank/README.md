@@ -163,7 +163,7 @@ interface, because with git as the target a separate store would only duplicate
 every byte.
 
 ```
-var/media-repo/                    clone of the media project
+utmelab-bank/var/media-repo/           clone of the media project
   media/ab/abcdef0123....png       the blob, named by its sha256, never moves
   manifest/jamb-physics-2025.json  which figures that paper used
 ```
