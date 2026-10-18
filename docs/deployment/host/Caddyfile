@@ -1,0 +1,20 @@
+# Host-wide Caddy entry point.
+#
+# Each service's site block is its own file under sites/, written by
+# `system provision <service>` from the DOMAIN and PORT in that service's
+# manifest. Adding a service adds a file there; this file never changes. A
+# service that needs custom routing edits its own site file, which is created
+# once and never rewritten.
+#
+# A glob that matches nothing is a warning, not an error, so a fresh host
+# starts clean with an empty sites/.
+#
+# Always validate before reloading:
+#   caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
+#   systemctl reload caddy
+
+{
+	admin 127.0.0.1:2019
+}
+
+import /etc/caddy/sites/*.caddy

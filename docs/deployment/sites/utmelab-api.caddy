@@ -1,7 +1,17 @@
-# Caddy site for the API + the grouped static site.
-# Install as /etc/caddy/Caddyfile.api and `import` it, or merge into the main
-# Caddyfile. Requires DNS api.utmelab.com -> this host, then Caddy obtains a
-# real Let's Encrypt cert automatically (no `tls internal`).
+# utmelab-api's Caddy site block.
+#
+# This is the service's own site file. `/etc/caddy/Caddyfile` imports
+# /etc/caddy/sites/*.caddy once, so this file is the whole edge story for
+# api.utmelab.com. `system provision utmelab-api` writes a file here only when
+# none exists, and never rewrites it afterwards: custom routing lives here, in
+# the repo, where it can be reviewed. bootstrap.sh installs it on a fresh host;
+# after any change, install it and reload:
+#
+#   install -m 0644 sites/utmelab-api.caddy /etc/caddy/sites/utmelab-api.caddy
+#   caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile && systemctl reload caddy
+#
+# Requires DNS api.utmelab.com -> this host, after which Caddy obtains a real
+# Let's Encrypt cert automatically (no `tls internal`).
 #
 # Routing:
 #   /api/*  /health  /ready  /mcp  /mcp/*  -> the Rust binary on 127.0.0.1:8081
@@ -25,10 +35,10 @@
 #
 # Caller addresses are a contract here. Every rate ceiling in the binary keys on
 # the caller the proxy attests, read from the last `X-Forwarded-For` entry, so
-# nothing on this path may forward a value the caller supplied. Caddy's default
-# already does that: it ignores an incoming `X-Forwarded-For` and writes the peer
-# it observed (checked against v2.11.7: a forged two-entry claim arrives upstream
-# as `127.0.0.1`). Adding `trusted_proxies`, a CDN, or `header_up
+# nothing on this path may forward a value the caller supplied. `reverse_proxy`
+# appends the peer it observed to whatever XFF it received, so a caller can
+# prepend entries but never change the last one; reading the *last* entry is what
+# makes that safe. Adding `trusted_proxies`, a CDN, or `header_up
 # +X-Forwarded-For` would change what that read means, so revisit
 # `auth::session::client_ip` in the same breath. The loopback bind above is the
 # other half: nothing but this proxy can reach the binary to claim anything.

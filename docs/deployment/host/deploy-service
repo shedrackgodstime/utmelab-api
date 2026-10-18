@@ -1,0 +1,156 @@
+#!/usr/bin/env bash
+# deploy-service — activate a release that CI has already staged.
+#
+#   sudo deploy-service <service> <version>
+#
+# One gate for every service on this host. A service is defined by ONE file,
+# /etc/deploy-service/<service>.env, and nothing in here knows any service by
+# name. systemd reads that same file as its EnvironmentFile, so the process
+# environment and the deploy metadata cannot drift apart.
+#
+# This gate owns: the release tree, the `current` symlink, the restart, the
+# health budget, and pruning. CI owns nothing on the host but the staged
+# tarball it scp'd into /tmp.
+#
+# It will not:
+#   * serve two masters. A CI identity called deploy-<name> can only activate
+#     <name>; the argument is checked against the caller, so a stolen key
+#     cannot reach a neighbouring service.
+#   * call a release live until HEALTH_ENDPOINT answers exactly HEALTH_EXPECT
+#     within HEALTH_TRIES * HEALTH_DELAY. 200 is not assumed: a service that
+#     binds its port but only ever answers 503 (a replica that never opens) is
+#     never activated.
+#   * prune on a failed run, or delete the release it just activated.
+#
+# Exit codes: 1 usage/setup, 2 version, 3 unknown service, 4 missing release,
+#             5 unusable release, 6 caller not allowed, 7 unit not active,
+#             8 unit up but not answering.
+#
+# Rehearsal: SYSTEM_PREFIX=/tmp/box relocates every path this script touches,
+# and SYSTEMCTL / CURL / JOURNALCTL can be pointed at stubs. Leave them unset
+# in production.
+set -euo pipefail
+
+SYSTEM_PREFIX="${SYSTEM_PREFIX:-}"
+SYSTEMCTL="${SYSTEMCTL:-systemctl}"
+CURL="${CURL:-curl}"
+JOURNALCTL="${JOURNALCTL:-journalctl}"
+
+CONFIG_DIR="${SYSTEM_PREFIX}/etc/deploy-service"
+BASE_DIR="${SYSTEM_PREFIX}/opt/apps"
+UNIT="utmelab@"
+
+SERVICE="${1:-}"
+VERSION="${2:-}"
+
+say() { printf '[deploy-service:%s] %s\n' "${SERVICE:-?}" "$*"; }
+die() { printf '[deploy-service:%s] ERROR: %s\n' "${SERVICE:-?}" "$*" >&2; exit "${2:-1}"; }
+
+# ---- Args ------------------------------------------------------------------
+[[ $# -eq 2 ]] || die "usage: deploy-service <service> <version>" 1
+[[ "${SERVICE}" =~ ^[a-z0-9][a-z0-9-]*$ ]] || die "invalid service name '${SERVICE}'" 1
+[[ "${VERSION}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.]+)?$ ]] \
+  || die "invalid version '${VERSION}' (expected vMAJOR.MINOR.PATCH[-pre.sha])" 2
+
+ENV_FILE="${CONFIG_DIR}/${SERVICE}.env"
+[[ -f "${ENV_FILE}" ]] || die "no manifest at ${ENV_FILE}: that one file is what defines a service" 3
+
+# ---- Who is asking ---------------------------------------------------------
+# The identity that owns a service is deploy-<service>. When the caller has that
+# shape it may only touch its own service. Human/admin identities are not
+# pattern-matched, they are trusted by sudo rule instead.
+CALLER="${SUDO_USER:-${USER:-}}"
+if [[ "${CALLER}" == deploy-* ]]; then
+  [[ "${CALLER#deploy-}" == "${SERVICE}" ]] \
+    || die "identity ${CALLER} may not activate ${SERVICE}" 6
+fi
+
+# ---- The service's whole configuration -------------------------------------
+# shellcheck source=/dev/null
+source "${ENV_FILE}"
+
+IP="${IP:-127.0.0.1}"
+: "${PORT:?PORT is required in ${ENV_FILE}}"
+BINARY_NAME="${BINARY_NAME:-${SERVICE}}"
+ASSET_PATH="${ASSET_PATH:-public/index.html}"
+HEALTH_ENDPOINT="${HEALTH_ENDPOINT:-/}"
+HEALTH_PORT="${HEALTH_PORT:-${PORT}}"
+HEALTH_EXPECT="${HEALTH_EXPECT:-200}"
+HEALTH_TRIES="${HEALTH_TRIES:-15}"
+HEALTH_DELAY="${HEALTH_DELAY:-1}"
+KEEP_RELEASES="${KEEP_RELEASES:-3}"
+HEALTH_URL="http://${IP}:${HEALTH_PORT}${HEALTH_ENDPOINT}"
+
+for n in "${HEALTH_TRIES}" "${HEALTH_DELAY}" "${KEEP_RELEASES}"; do
+  [[ "${n}" =~ ^[0-9]+$ ]] || die "HEALTH_TRIES / HEALTH_DELAY / KEEP_RELEASES must be numbers in ${ENV_FILE}" 1
+done
+[[ "${HEALTH_TRIES}" -ge 1 ]] || die "HEALTH_TRIES must be at least 1" 1
+
+REL_DIR="${BASE_DIR}/${SERVICE}/releases"
+CUR_LINK="${BASE_DIR}/${SERVICE}/current"
+SRC_DIR="${REL_DIR}/${VERSION}"
+
+# ---- Pre-flight ------------------------------------------------------------
+[[ -d "${SRC_DIR}" ]] || die "release ${VERSION} is not staged in ${REL_DIR}" 4
+[[ -x "${SRC_DIR}/${BINARY_NAME}" ]] || die "${VERSION} has no executable ${BINARY_NAME}" 5
+[[ -f "${SRC_DIR}/${ASSET_PATH}" ]] || die "${VERSION} has no asset ${ASSET_PATH}" 5
+
+# A per-app unit for this name means two units would own the same port. The
+# template instance is the only owner; say so instead of fighting it.
+if ${SYSTEMCTL} is-active --quiet "${SERVICE}" 2>/dev/null; then
+  say "WARNING: legacy unit ${SERVICE}.service is active too; retire it (system verify)"
+fi
+
+# The service's runtime user is not this script's user, so the release has to be
+# world-readable before the unit can exec it.
+chmod -R o+rX "${SRC_DIR}"
+chmod 0755 "${SRC_DIR}/${BINARY_NAME}"
+
+# ---- Activate --------------------------------------------------------------
+say "activating ${VERSION}"
+ln -sfn "releases/${VERSION}" "${CUR_LINK}"
+${SYSTEMCTL} restart "${UNIT}${SERVICE}"
+
+# Type=simple units are active within milliseconds; if it is not up in 15s it is
+# crash-looping, and waiting longer only delays the journal tail below.
+for _ in $(seq 1 15); do
+  ${SYSTEMCTL} is-active --quiet "${UNIT}${SERVICE}" && break
+  sleep 1
+done
+if ! ${SYSTEMCTL} is-active --quiet "${UNIT}${SERVICE}"; then
+  say "unit ${UNIT}${SERVICE} did not become active"
+  ${JOURNALCTL} -u "${UNIT}${SERVICE}" --no-pager -n 40 >&2 || true
+  exit 7
+fi
+
+# ---- Health ----------------------------------------------------------------
+code=""
+for _ in $(seq 1 "${HEALTH_TRIES}"); do
+  code="$(${CURL} -s -o /dev/null -w '%{http_code}' --connect-timeout 2 --max-time 3 "${HEALTH_URL}" 2>/dev/null || true)"
+  [[ "${code}" == "${HEALTH_EXPECT}" ]] && break
+  sleep "${HEALTH_DELAY}"
+done
+if [[ "${code}" != "${HEALTH_EXPECT}" ]]; then
+  say "unit is up but ${HEALTH_URL} answered '${code:-nothing}', want ${HEALTH_EXPECT}"
+  ${JOURNALCTL} -u "${UNIT}${SERVICE}" --no-pager -n 40 >&2 || true
+  exit 8
+fi
+say "activated ${VERSION} (${HEALTH_URL} -> ${code})"
+
+# ---- Prune -----------------------------------------------------------------
+# Newest first by mtime. A prerelease version like v0.0.0-pre.<sha> has no
+# meaningful order (sort -V would compare the sha), so the clock is the only
+# honest signal for which release is newest.
+active="$(readlink -f "${CUR_LINK}" 2>/dev/null || true)"
+kept=0
+while IFS= read -r d; do
+  [[ "${d}" == "${SRC_DIR}" ]] && continue   # never the one just activated
+  [[ "${d}" == "${active}" ]] && continue    # never the live one
+  kept=$((kept + 1))
+  [[ "${kept}" -le "${KEEP_RELEASES}" ]] && continue
+  rm -rf -- "${d}"
+  say "pruned $(basename "${d}")"
+done < <(find "${REL_DIR}" -mindepth 1 -maxdepth 1 -type d -name 'v*' -printf '%T@ %p\n' 2>/dev/null \
+         | sort -rn | cut -d' ' -f2-)
+
+exit 0

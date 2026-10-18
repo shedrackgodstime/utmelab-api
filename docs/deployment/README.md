@@ -1,241 +1,232 @@
-# Deploying utmelab-api — set up once, then deploy on demand
+# Deploying utmelab-api — one manifest, one gate, no SSH per release
 
 **Status: live.** `api.utmelab.com` serves this binary and its static site. The
-pipeline is the same pattern the parent UTME-Lab app runs on the same host. The
-host install (unit, sudoers, Caddy site, `/etc/utmelab-api/environment`) is
-one-time, and `vps-onetime-setup.sh` re-installs the two pieces that come from
-this repo.
+host also runs the parent UTME-Lab app through the same framework, so the
+framework itself lives in `docs/deployment/host/` — it is not API-specific.
 
-**You do not SSH per release.** The host config is one-time. After that you
-trigger a deploy from the Actions tab (or push a tag) and it builds and ships.
+**You do not SSH per release.** Host config is one-time. After that you trigger a
+deploy from the Actions tab (or push a tag) and it builds and ships.
 
 ## The loop (what you'll actually do)
 
 | Action | What you type | What happens |
 |---|---|---|
 | **Work** | `git push` to `main` | CI runs the `quality` workflow (fmt, clippy, doc, tests, site build). **Nothing ships.** |
-| **Prerelease** | Actions → `deploy-api` → **Run workflow** | CI builds API + site → ships → gate activates → readiness-checks. Version `v0.0.0-pre.<sha>`. |
+| **Prerelease** | Actions → `deploy-api` → **Run workflow** | CI builds API + site → ships → the gate activates → readiness-checks. Version `v0.0.0-pre.<sha>`. |
 | **Release** (when solid) | `git tag v0.1.0 && git push origin v0.1.0` | identical machinery, stable version, same host. |
-| **A deploy failed** | nothing | the run goes **red**, `/ready` never answered, nothing was deleted. Fix and run it again. |
+| **A deploy failed** | nothing | the run goes **red**, the release is never activated, nothing was pruned. Fix and run it again. |
+| **Roll back** | `sudo system rollback utmelab-api` | flips to the previous release; restores the old one if the target does not come up healthy. |
 
-No SSH. No manual Caddy/systemd edits after the one-time setup. The site ships
-in the same tarball as the binary; Caddy serves it and proxies `/api/*`,
-`/health`, `/ready`, `/mcp` and `/mcp/admin`. Every one of those needs its own
-matcher: the static tier is the fallback, so any surface Caddy does not name is
-answered by `file_server` (an empty-body 404), not by the binary.
+Deploys are **serialized** by the workflow (`concurrency: deploy-api`). The gate
+prunes release directories, so two overlapping runs could delete the release the
+other one was activating.
 
-**Deploys are serialized.** Only one runs at a time and none is cancelled
-mid-flight, because the host gate prunes old release directories. Two overlapping
-runs could delete the release the other was activating.
+## One service is one file
+
+`/etc/deploy-service/<service>.env` — `0600 root:root`, read twice: by systemd as
+the unit's `EnvironmentFile`, and by the gate as root. Because systemd reads it as
+PID 1, the file can stay root-only and the service's own user never reads its
+secrets off disk.
+
+Every key is documented in `host/service.env.example`. `utmelab-api`'s manifest
+is:
+
+```sh
+SERVICE_NAME=utmelab-api
+BINARY_NAME=utmelab-api
+RUNTIME_USER=utmelab-api         # the process user
+DEPLOY_USER=deploy-utmelab-api   # the CI identity, scoped to this service
+DOMAIN=api.utmelab.com
+IP=127.0.0.1
+PORT=8081
+HEALTH_ENDPOINT=/ready           # the honest signal: /health only proves it bound
+HEALTH_EXPECT=200
+HEALTH_TRIES=60
+HEALTH_DELAY=3
+ASSET_PATH=site/index.html       # the static tier Caddy serves
+KEEP_RELEASES=3                  # superseded releases kept for rollback
+READ_WRITE_PATHS=/var/lib/utmelab-api
+TURSO_DB_URL=...
+TURSO_DB_TOKEN=...               # the rw token; the readonly one fails on writes
+```
+
+Everything else on the host is **derived from that file** by `system provision`:
+
+| Derived | From |
+|---|---|
+| `utmelab@utmelab-api` unit + its `User`/`Group`/`ReadWritePaths` drop-in | `RUNTIME_USER`, `READ_WRITE_PATHS` |
+| `/etc/caddy/sites/utmelab-api.caddy` (written once, then yours to edit) | `DOMAIN`, `IP`, `PORT` |
+| `/etc/sudoers.d/deploy-utmelab-api` | `DEPLOY_USER` |
+| `/opt/apps/utmelab-api/releases`, `/var/lib/utmelab-api`, both users | the names above |
+
+A service that needs custom routing edits **its own** site file. `provision` never
+rewrites it, and the host-wide `Caddyfile` only imports `sites/*.caddy`.
 
 ## The host gate
 
-The one privileged step is the host's shared `/usr/local/bin/deploy-service`,
-called by the deploy job as:
+The one privileged step is `/usr/local/bin/deploy-service`, shared by every
+service on the host and called by the deploy job as:
 
 ```bash
 sudo /usr/local/bin/deploy-service utmelab-api v0.0.0-pre.<sha>
 ```
 
-It is host-side tooling shared with the parent app. **This repo does not ship
-it.** CI has already extracted the release at
-`/opt/apps/utmelab-api/releases/<v>` (the binary plus `site/`) by the time it
-runs, and the gate owns everything after that: validate the app name and the
-version, re-point `/opt/apps/utmelab-api/current`, restart `utmelab-api.service`,
-wait for `/ready`, then prune old releases.
+It is host tooling, not shipped by this repo's release; its source is
+`docs/deployment/host/deploy-service`. By the time it runs, CI has extracted the
+tarball at `/opt/apps/utmelab-api/releases/<v>`. The gate then owns the rest:
+validate the name and version, re-point `current`, restart `utmelab@utmelab-api`,
+wait for the health contract, and prune.
 
-Two constraints come from this side of the wire:
+Three properties are load-bearing:
 
-1. The version argument arrives from a dispatchable workflow. The gate must
-   validate it as strict semver and never interpolate it into a shell command.
-   An earlier per-app gate did exactly that; when it moved out of the repo, the
-   validation had to move with it.
-2. `utmelab-api` listens on **8081**, not the parent's 8080. A gate that polls
-   the wrong port fails a boot that is perfectly healthy.
+1. **The caller must match the service.** An identity named `deploy-<name>` may
+   only activate `<name>`, checked against `$SUDO_USER`. The script is shared, but
+   the blast radius of a stolen CI key is not.
+2. **Activation means `HEALTH_ENDPOINT` answered exactly `HEALTH_EXPECT`.** For
+   this service that is `/ready`, which stays 503 until the Turso replica is
+   open. A process that binds 8081 and never syncs is never called live.
+3. **Pruning is by mtime, newest first**, and never runs on a failed activation.
+   A prerelease version (`v0.0.0-pre.<sha>`) has no meaningful order at all: `sort
+   -V` compares the sha, which once made "keep the newest N" delete the newest
+   build and keep an older one.
 
-## Config lives on the host as installed copies — a repo edit is not enough
+## `system` — provision, enroll, verify
 
-Two host files are copies of repo files, so a push never updates them:
+```bash
+sudo system provision utmelab-api        # create/repair everything the manifest implies
+sudo system enroll utmelab-api key.pub   # register a CI key for deploy-utmelab-api
+sudo system verify                       # does the host still match the manifests?
+sudo system report                       # resources + service health
+sudo system deploy preview               # what a deploy would do (read-only)
+```
 
-| On the host | Repo source | Effect if not updated |
+`verify` is the one to run before trusting anything, and after any host change. It
+checks the manifest's mode, the unit's enable/active state, that the process runs
+as the manifest's `RUNTIME_USER`, that the Caddy port matches `PORT`, that the
+health contract holds locally and publicly, and then the host-level traps: legacy
+per-app units, legacy gates, and sudoers files pointing at commands that no longer
+exist. Exit is non-zero if any contract is broken.
+
+## Identity model
+
+| Identity | Job | Reach |
 |---|---|---|
-| `/etc/systemd/system/utmelab-api.service` | `docs/deployment/utmelab-api.service` | service runs the old `ExecStart` / env names |
-| `/etc/caddy/Caddyfile.api` | `docs/deployment/Caddyfile.api` | routing is stale |
+| `deploy-<service>` (per service) | CI, over SSH key | exactly `/usr/local/bin/deploy-service`, and only for its own service |
+| the gate (root) | privileged file moves, restart | `/opt/apps`, systemd |
+| `<service>` (per service, nologin) | runs the process | its own `READ_WRITE_PATHS` |
+| `caddy` (nologin) | TLS + proxy | loopback targets |
+| `shedrack` | human admin | full sudo |
 
-And `/etc/utmelab-api/environment` is written once by the setup script and never
-touched by CI. The previous service read `UTMELAB_API_BIND` and friends; this
-binary reads `PORT`, `REPLICA_PATH`, `SYNC_SECS`, `RATE_LIMIT_PER_MIN`,
-`COOKIE_SECURE`, `TURSO_DB_URL`, `TURSO_DB_TOKEN` (the full set is
-`.env.example`). An old env file is not fatal — unknown names are ignored — but
-it means the replica lands on the read-only release dir and boot fails, so
-replace it.
+The first row is why a service has its own CI user rather than sharing one: with a
+single shared `deploy` user, any repo's key could activate any service, and no
+sudoers rule can tell them apart.
 
-After any change to those files, on the VPS as a sudoer:
+## Rebuilding a VPS
 
-```bash
-sudo bash docs/deployment/vps-onetime-setup.sh    # idempotent; re-installs both
-sudo caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile \
-  && sudo systemctl reload caddy
-```
-
-The script only rewrites host config and the sudoers rule. It never touches
-releases or the gate, so it is safe to run against a live deployment.
-
-## What's already done on the host (from the parent)
-
-- VPS `209.74.85.163`, SSH `:22022`, UFW (22022/80/443), Caddy, swap.
-- `deploy` user + dedicated SSH key; NOPASSWD sudo is restricted to the deploy
-  gate and nothing else. This repo's workflow calls the shared
-  `/usr/local/bin/deploy-service`.
-- Layout: `/opt/apps/utmelab-api/releases/`, `/var/lib/utmelab-api/`,
-  `/etc/utmelab-api/environment`.
-
-Not inherited: **GitHub secrets are per-repository.** `utmelab-api` needs its own
-`VPS_HOST` / `VPS_PORT` / `VPS_USER` / `VPS_SSH_KEY` / `VPS_KNOWN_HOSTS`, even
-though UTME-Lab already holds the same values.
-
-## One-time VPS setup (SSH once)
-
-Run as a sudoer (e.g. `shedrack`). Paths mirror the parent under
-`/opt/apps/utmelab-api`.
+`host/bootstrap.sh` installs the framework on a fresh cloud box and converges it to
+the manifests you hand it:
 
 ```bash
-# 1. Layout + runtime dirs
-sudo mkdir -p /opt/apps/utmelab-api/releases
-sudo chown deploy:deploy /opt/apps/utmelab-api/releases
-sudo chmod 0775 /opt/apps/utmelab-api/releases
-sudo mkdir -p /var/lib/utmelab-api && sudo chown utmelab:utmelab /var/lib/utmelab-api
-
-# 2. Secrets (0640 root:utmelab). No data dir and no keys file: the synced
-#    replica plus Turso are the only sources. rw token stays server-only.
-sudo mkdir -p /etc/utmelab-api
-sudo tee /etc/utmelab-api/environment >/dev/null <<'EOF'
-PORT=8081
-WORKER_THREADS=2
-REPLICA_PATH=/var/lib/utmelab-api/sync.db
-SYNC_SECS=10
-RATE_LIMIT_PER_MIN=60
-COOKIE_SECURE=1
-TURSO_DB_URL=turso://utmelab-api-ultimatekristency.aws-eu-west-1.turso.io
-TURSO_DB_TOKEN=<write-token>
-EOF
-sudo chown root:utmelab /etc/utmelab-api/environment
-sudo chmod 0640 /etc/utmelab-api/environment
-
-# 3. The gate is host tooling, shared with the parent app, and is not installed
-#    from this repo. Confirm it exists and that it knows this app's port:
-ls -l /usr/local/bin/deploy-service
-
-# 4. Restricted sudo. deploy may run exactly the gate, nothing else.
-echo 'deploy ALL=(root) NOPASSWD: /usr/local/bin/deploy-service' | sudo tee /etc/sudoers.d/utmelab-api-deploy
-sudo chmod 0440 /etc/sudoers.d/utmelab-api-deploy
-sudo visudo -c   # must be OK
-
-# 5. systemd service. From this repo:
-sudo install -m 0644 docs/deployment/utmelab-api.service /etc/systemd/system/utmelab-api.service
-sudo systemctl daemon-reload
-sudo systemctl enable utmelab-api    # not started yet — no release
-
-# 6. Caddy site (requires DNS api.utmelab.com -> this host). From this repo:
-sudo install -m 0644 docs/deployment/Caddyfile.api /etc/caddy/Caddyfile.api
-# then add to /etc/caddy/Caddyfile:   import /etc/caddy/Caddyfile.api
-# --adapter caddyfile is required; plain `caddy validate` parses as JSON and
-# fails with "unexpected end of JSON input", which aborts the reload below.
-sudo caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile && sudo systemctl reload caddy
+sudo ./bootstrap.sh --admin shedrack --admin-key /root/shedrack.pub --manifests /root/manifests
 ```
 
-Or skip the manual steps entirely — `bash docs/deployment/vps-onetime-setup.sh`
-does all six, is idempotent, and can be re-run safely.
+It installs Caddy/curl/ufw, the gate, `system`, the template unit, the host
+`Caddyfile`, any site file this repo carries (`sites/*.caddy`, installed only
+when absent), the firewall rules, the admin identity, then provisions each
+`<service>.env` it finds. It is idempotent and never overwrites a per-service
+site file or any service data. Secrets are the only thing it cannot conjure —
+they come from the manifests you copy in.
+
+## Config: what lives where, and why a repo edit is not enough
+
+Host config is **installed copies**, never re-read from the repo:
+
+| On the host | Repo source | Effect of not updating it |
+|---|---|---|
+| `/etc/deploy-service/utmelab-api.env` | the manifest (secrets included, so it is not in git) | the service boots with the old values |
+| `/usr/local/bin/deploy-service`, `/usr/local/bin/system` | `docs/deployment/host/` | the gate or tooling is stale |
+| `/etc/systemd/system/utmelab@.service` | `docs/deployment/host/utmelab@.service` | unit hardening/ExecStart drifts |
+| `/etc/caddy/Caddyfile` | `docs/deployment/host/Caddyfile` | per-service sites stop being imported |
+
+After changing any of them: `sudo system verify`, then `caddy validate --config
+/etc/caddy/Caddyfile --adapter caddyfile && sudo systemctl reload caddy`.
 
 ## First run, in this order
 
-1. **DNS first** — A record `api.utmelab.com` → `209.74.85.163`, then wait for
-   it to resolve (`getent hosts api.utmelab.com`). Nothing TLS works until it
-   does, so start it early; it is the only step with real lead time.
-2. **Repo secrets** — set `VPS_HOST`, `VPS_PORT`, `VPS_USER`, `VPS_SSH_KEY`,
+1. **DNS first** — A record `api.utmelab.com` → `209.74.85.163`, then wait for it
+   to resolve (`getent hosts api.utmelab.com`). Nothing TLS works until it does,
+   and it is the only step with real lead time.
+2. **Host** — the framework is installed and the manifest is in place
+   (`sudo system verify` says so).
+3. **Repo secrets** — `VPS_HOST`, `VPS_PORT`, `VPS_USER`, `VPS_SSH_KEY`,
    `VPS_KNOWN_HOSTS` **on this repo**. GitHub does not share secrets between
-   repositories; copying the parent's values in is a manual step.
-3. **One-time VPS setup** (needs root) — `bash docs/deployment/vps-onetime-setup.sh`,
-   then put the real `TURSO_DB_TOKEN` in `/etc/utmelab-api/environment`. The
-   script writes the literal placeholder `REPLACE_WITH_WRITE_TOKEN`; the API
-   will not boot without a real value. Use the **rw** token — the readonly one
-   fails on session and key writes.
-4. **Trigger a deploy** — Actions → `deploy-api` → **Run workflow**. Read the run
-   top to bottom; the first attempt is where plumbing bugs surface.
-5. **Confirm from outside** — see the next section. Step 5 is not optional.
+   repositories. `VPS_USER` is the service's CI identity, not a shared account.
+4. **CI key** — `sudo system enroll utmelab-api <key>.pub`, and put the private
+   half in `VPS_SSH_KEY`.
+5. **Trigger a deploy** — Actions → `deploy-api` → **Run workflow**.
+6. **Confirm from outside** — see the next section. Step 6 is not optional.
 
 ## Verify from outside, not just from the box
 
-**The gate readiness-checks `127.0.0.1:8081`. It cannot see Caddy.** A green
-deploy proves the binary starts, binds and trusts its schema; it says nothing
-about the edge. The first release of the previous service deployed green and
-served HTML for `/health`, because Caddy's `file_server` outranks
-`reverse_proxy` in the default directive order. Loopback was perfect the whole
-time.
+**The gate readiness-checks `127.0.0.1:8081`. It cannot see Caddy.** A green deploy
+proves the binary starts, binds and trusts its schema; it says nothing about the
+edge. The first release of the previous service deployed green and served HTML for
+`/health`, because Caddy's `file_server` outranks `reverse_proxy` in the default
+directive order. Loopback was perfect the whole time.
 
-The deploy job's last step runs `site/scripts/smoke.mjs` against the public
-origin and fails the run on any mismatch, so this now happens automatically.
-To check by hand:
+The deploy job's last step runs `site/scripts/smoke.mjs` against the public origin
+and fails the run on any mismatch. To check by hand:
 
 ```bash
 curl -s -o /dev/null -w '%{http_code}\n' https://api.utmelab.com/ready          # 200
 curl -s https://api.utmelab.com/health                                          # "ok" (text, not HTML)
 curl -s -o /dev/null -w '%{http_code}\n' https://api.utmelab.com/api/v1/exams   # 401 (keyed)
-curl -s https://api.utmelab.com/openapi.json | head -c 40                        # {"openapi":...
-curl -s -o /dev/null -w '%{http_code}\n' https://api.utmelab.com/                # 200 (landing)
+curl -s https://api.utmelab.com/openapi.json | head -c 40                       # {"openapi":...
+curl -s -o /dev/null -w '%{http_code}\n' https://api.utmelab.com/               # 200 (landing)
 ```
 
-Use `handle` blocks for both tiers. A bare matcher plus `reverse_proxy` will lose
-to `file_server` every time.
+Use `handle` blocks for both tiers. A bare matcher plus `reverse_proxy` will lose to
+`file_server` every time.
 
 ## Files in this folder
 
 | File | Role |
 |---|---|
-| `utmelab-api.service` | hardened systemd unit, binds `127.0.0.1:8081`, reads `/etc/utmelab-api/environment` |
-| `Caddyfile.api` | `api.utmelab.com` routes `handle` blocks for `/api/*`,`/health`,`/ready`,`/mcp`,`/mcp/*` to :8081; everything else is the static site |
-| `vps-onetime-setup.sh` | idempotent, re-runnable: dirs, env, sudoers, service, Caddy site |
-| `../../.github/workflows/deploy.yml` | build (Rust + site) → SCP → gate → smoke, on `Run workflow` or `v*` tags |
-| `../../.github/workflows/quality.yml` | push/PR gate: fmt, clippy, doc, tests, site build |
-
-## Why this removes the stress
-
-- **Config is one-time** and lives on the host (env file, service, Caddy) — not
-  re-done per deploy.
-- **Deploys are one click** — you choose to ship; `main` never ships itself.
-- **Failures are loud, not hidden.** A release that never answers `/ready` is
-  never activated and the run goes red. There is no auto-rollback, so a broken
-  build cannot quietly sit behind a healthy-looking symlink.
-- **The VPS stays small.** On a healthy deploy the gate prunes every release
-  except the active one, so one prerelease (binary plus static site) is all the
-  disk carries.
-- **Docs stay grouped** — the site builds in the same tarball; no separate deploy.
+| `host/service.env.example` | the manifest contract: one file per service, every key documented |
+| `host/deploy-service` | the shared gate (validate → activate → health → prune) |
+| `host/system` | provision / enroll / verify / report / preview / rollback / root |
+| `host/utmelab@.service` | the one systemd template every service instantiates |
+| `host/Caddyfile` | host entry point; imports per-service `sites/*.caddy` |
+| `host/bootstrap.sh` | fresh-VPS install, then converge the manifests |
+| `sites/utmelab-api.caddy` | this service's edge routing (static tier + named proxies); the repo copy is canonical |
+| `../../.github/workflows/deploy.yml` | build (Rust + site) → SCP → gate → smoke |
 
 ## Notes / watch-items
 
-- Port **8081** (the parent uses 8080). Keep 8081 out of UFW — only Caddy
-  exposes it.
+- Port **8081** (the parent uses 8080). Keep 8081 out of UFW — only Caddy exposes it.
 - `ProtectSystem=strict` makes the root fs read-only for the service. The only
-  writable path is `/var/lib/utmelab-api`, so `REPLICA_PATH` **must** point
-  inside it. The default `db/sync.db` resolves under the read-only release dir
-  and boot fails.
+  writable path is `/var/lib/utmelab-api`, so `REPLICA_PATH` **must** point inside
+  it. The default `db/sync.db` resolves under the read-only release dir and boot
+  fails.
 - The replica is the only thing written at runtime: libsql keeps `<db>-wal`,
   `<db>-log` and `<db>-changes` beside the file. Everything else is read from
   Turso or served from memory.
-- Caddy obtains a real Let's Encrypt cert for `api.utmelab.com` automatically —
-  no `tls internal` needed. Nothing TLS works until DNS resolves.
-- `TURSO_*` env names: the local `.env` also carries
-  `TURSO_DB_TOKEN_READONLY` / `TURSO_API_KEY`; the service only needs
-  `TURSO_DB_URL` + `TURSO_DB_TOKEN`. The parent's `.env` points at a **different**
-  database (`utmelab-…`, not `utmelab-api-…`) — separate products, do not mix
-  the tokens up.
+- Caddy obtains a real Let's Encrypt cert for `api.utmelab.com` automatically — no
+  `tls internal`. Nothing TLS works until DNS resolves.
+- `TURSO_*` env names: the local `.env` also carries `TURSO_DB_TOKEN_READONLY` /
+  `TURSO_API_KEY`; the service needs only `TURSO_DB_URL` + `TURSO_DB_TOKEN`, and
+  it must be the **rw** token. The parent's `.env` points at a **different**
+  database (`utmelab-…`, not `utmelab-api-…`) — separate products, do not mix the
+  tokens up.
+- This binary reads no `JWT_SECRET`. A manifest that carries one is carrying dead
+  config.
 - There is no `data/` in this repo and nothing JSON is embedded: the release is
   exactly `binary + site/`. `/openapi.json` is a committed file copied into the
   build output by `site/scripts/merge.mjs`; the binary serves no document route.
-- The admin surfaces (`/api/internal/admin/*`, `/mcp/admin`) need a dashboard
-  user. Until one exists the key lifecycle is unoperable: run
-  `cargo run -- seed-admin <username>` against the cloud database once, setting
-  the password it prompts for.
+- The admin surfaces (`/api/internal/admin/*`, `/mcp/admin`) need a dashboard user.
+  Until one exists the key lifecycle is unoperable: run
+  `cargo run -- seed-admin <username>` against the cloud database once, setting the
+  password it prompts for.
 
 ## The edge smoke check
 
@@ -254,11 +245,11 @@ identical home page. Four groups:
 Titles are compared as an array, never word-split, because they contain spaces.
 Exit is non-zero on any failure, so the deploy run goes red.
 
-**Assert distinct content, not just status codes.** That is the whole point of
-the script: a status-only check passes while the site is completely broken.
+**Assert distinct content, not just status codes.** That is the whole point of the
+script: a status-only check passes while the site is completely broken.
 
 ### Scheduled uptime
 
 `uptime.yml` runs the same script against the public origin once a day, with
-`SMOKE_READY_TRIES=1` so it reports an outage immediately instead of waiting out
-a boot. Alerting is GitHub's own notification to the repo owner, not a pager.
+`SMOKE_READY_TRIES=1` so it reports an outage immediately instead of waiting out a
+boot. Alerting is GitHub's own notification to the repo owner, not a pager.
