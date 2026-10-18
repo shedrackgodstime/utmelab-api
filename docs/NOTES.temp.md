@@ -5,7 +5,10 @@ highest value first. Delete an entry when it is closed.
 
 ## Porting gaps (old/src -> src/), ordered
 
-`utmelab-api-old/` is a source of capabilities, never of structure. We take
+The old tree `utmelab-api-old/` (and the scratch `prototyping/` crate) no
+longer sit in this repo: both are preserved on the
+`archive/utmelab-api-old-prototyping` branch, and in this branch's history.
+The old tree is a source of capabilities, never of structure. We take
 what it served and serve it our way: no `bank/` tree, no in-process bank
 promotion, no hand-kept contract, no duplicate admin surface. Ordered most
 important first, with standards, enforcement, and single sources of truth
@@ -40,6 +43,12 @@ record of each decision.
 ## Backlog
 
 ## Done
+- The old tree is out of the working repo. `utmelab-api-old/` (146 files) and
+  the scratch `prototyping/` crate (12 files) are archived on the
+  `archive/utmelab-api-old-prototyping` branch and deleted from `main`, so a
+  reader of the current tree cannot mistake either for live code. `main`'s
+  history still holds every version, so the branch is a convenience, not the
+  only copy.
 - The OpenAPI contract is derived from the handlers again, and only the public
   surface is in it. `#[derive(ToSchema)]` sits on the `core::models` response
   types and the `api/v1` DTOs, `#[utoipa::path]` sits on each `api/v1` handler,

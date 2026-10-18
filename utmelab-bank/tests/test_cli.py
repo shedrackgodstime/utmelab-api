@@ -208,9 +208,10 @@ def test_every_subject_the_bank_carries_is_mapped_for_its_exam() -> None:
     from utmelab_bank.source.myschool.subjects import load_map
 
     catalog = json.loads(
-        (
-            Path(__file__).resolve().parents[2] / "utmelab-api-old" / "data" / "subjects.json"
-        ).read_text()
+        # Vendored from the served catalog (data/subjects.json in the archived
+        # utmelab-api-old tree), so this test owns its fixture instead of
+        # reading a sibling tree that no longer sits in the repo.
+        (Path(__file__).parent / "fixtures" / "catalog_subjects.json").read_text()
     )
     subject_map = load_map()
     for exam in {row["exam"] for row in catalog}:
