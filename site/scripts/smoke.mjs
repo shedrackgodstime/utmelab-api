@@ -36,6 +36,31 @@ async function get(path) {
   }
 }
 
+// POST variant, only used to prove the MCP surface is proxied. The transport
+// is Streamable HTTP, so the accept header offers both shapes.
+async function post(path, body) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 20000);
+  try {
+    const res = await fetch(BASE + path, {
+      method: 'POST',
+      redirect: 'manual',
+      signal: ctrl.signal,
+      headers: {
+        'content-type': 'application/json',
+        accept: 'application/json, text/event-stream',
+      },
+      body,
+    });
+    const text = await res.text();
+    return { status: res.status, contentType: res.headers.get('content-type') || '', body: text };
+  } catch (e) {
+    return { status: 0, contentType: '', body: '', networkError: e.cause?.code || e.message };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 function titleOf(html) {
   const m = html.match(/<title>([^<]*)<\/title>/i);
   return m ? m[1].trim() : '';
@@ -95,6 +120,27 @@ await group('api reaches the binary', async () => {
   }
   if (!doc.openapi || !doc.paths) return fail('/openapi.json is not an OpenAPI document');
   ok(`/openapi.json ok (${Object.keys(doc.paths).length} paths)`);
+
+  // The MCP surface is keyed like `/api/v1`, so an anonymous POST is a JSON 401
+  // from the binary. It is the easiest surface to lose at the edge: there is no
+  // static file at /mcp, so a missing reverse_proxy answers Caddy's own
+  // empty-body 404, which reads like "no such route" and shipped silently.
+  // An empty 404 is the tell; a JSON 401 is the binary refusing the key.
+  const mcp = await post('/mcp', '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}');
+  if (mcp.networkError) return fail(`/mcp unreachable (${mcp.networkError})`);
+  if (mcp.status === 404 && mcp.body === '') {
+    return fail('/mcp is 404 with an empty body (Caddy is not proxying /mcp to the binary)');
+  }
+  if (mcp.status !== 401) return fail(`/mcp without key is ${mcp.status}, want 401`);
+  ok('/mcp reaches the binary (401 without key)');
+
+  const mcpAdmin = await post('/mcp/admin', '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}');
+  if (mcpAdmin.networkError) return fail(`/mcp/admin unreachable (${mcpAdmin.networkError})`);
+  if (mcpAdmin.status === 404 && mcpAdmin.body === '') {
+    return fail('/mcp/admin is 404 with an empty body (Caddy is not proxying /mcp to the binary)');
+  }
+  if (mcpAdmin.status !== 401) return fail(`/mcp/admin without key is ${mcpAdmin.status}, want 401`);
+  ok('/mcp/admin reaches the binary (401 without key)');
 });
 
 // 2. Docs serve distinct pages (not one homepage four times).

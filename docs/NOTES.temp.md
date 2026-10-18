@@ -225,15 +225,16 @@ now wrong:
   `locked`, `conflict`) only on a `turso::Error::Error` — a serde or IO error is
   never retried however it reads. `is_busy` is now a typed read of that decision,
   so a reworded engine message can no longer silently stop retries.
-- MCP now mirrors the keyed HTTP surface by construction. A read is a resource
-  (`GET /mcp/resources/<tail>`, the `/api/v1` path without the version); an
-  action is a tool (`POST /mcp/tools/*`), which is the MCP split falling out of
-  the HTTP verb. Every route but the two admin tools mounts the *same handler*
-  its HTTP twin does, so scope, gate, and rendered shape are written once and
-  cannot drift; `tools::list_tables` was deleted as a duplicate of `meta::tables`.
-  A parity test compares both outputs, and the sweep derives each resource twin
-  from the HTTP read list, so a read added without its resource fails the sweep.
-  This is not a JSON-RPC MCP server: the transport is plain keyed HTTP.
+- MCP is a real JSON-RPC 2.0 server over Streamable HTTP, on `rmcp`. Two
+  endpoints, split by URL so an admin capability is unreachable from a consumer
+  key rather than merely refused when called: `/mcp` is the catalog
+  (`utmelab://catalog/...` reads plus the report, assemble and score tools) and
+  `/mcp/admin` is key administration, gated by `manage:keys` before rmcp sees a
+  message. Both are stateless (no `Mcp-Session-Id` is minted), and identity is
+  the key the HTTP surface already uses: `verify_key` stashes the `Auth` in the
+  request extensions and handlers read it there, so scope and gate are written
+  once. Both endpoints need their own Caddy matcher — unproxied, the static tier
+  answers an empty 404 and the surface reads as a nonexistent route.
 - Identity is structural, not per handler. `auth::api_key::verify_key` is a
   layer over each keyed router (`api/v1` reads and writes, `mcp`): it verifies
   the key once, applies the per-key limit, and stashes `Auth` in the request

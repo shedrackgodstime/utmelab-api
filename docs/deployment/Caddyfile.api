@@ -4,8 +4,14 @@
 # real Let's Encrypt cert automatically (no `tls internal`).
 #
 # Routing:
-#   /api/*  /health  /ready   -> the Rust binary on 127.0.0.1:8081
-#   everything else           -> the static build shipped as site/
+#   /api/*  /health  /ready  /mcp  /mcp/*  -> the Rust binary on 127.0.0.1:8081
+#   everything else                        -> the static build shipped as site/
+#
+# `/mcp` and `/mcp/admin` are the keyed JSON-RPC surface. They must be proxied
+# like `/api/*`: the static tier does not define them, so a missing handle
+# answers Caddy's own empty-body 404, which is indistinguishable from a
+# nonexistent route on the API. The binary's own refusal is a JSON 401, and the
+# smoke check asserts that (an empty 404 means "not proxied", not "no key").
 #
 # The binary never serves HTML, and it does not serve the spec either:
 # `openapi.json` is a committed file that `site/scripts/merge.mjs` copies into
@@ -27,6 +33,12 @@ api.utmelab.com {
 		reverse_proxy 127.0.0.1:8081
 	}
 	handle /ready {
+		reverse_proxy 127.0.0.1:8081
+	}
+	handle /mcp {
+		reverse_proxy 127.0.0.1:8081
+	}
+	handle /mcp/* {
 		reverse_proxy 127.0.0.1:8081
 	}
 

@@ -108,7 +108,7 @@ fi
 # --adapter caddyfile is required: a bare `caddy validate` parses the main file
 # as JSON and aborts the reload with "unexpected end of JSON input".
 caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile && systemctl reload caddy
-echo "  api.utmelab.com -> proxies /api/*,/health,/ready to 127.0.0.1:${PORT};"
+echo "  api.utmelab.com -> proxies /api/*,/health,/ready,/mcp,/mcp/* to 127.0.0.1:${PORT};"
 echo "                     serves the static site + /openapi.json from current/site"
 
 say "DONE — nothing is live yet. Set the real TURSO_DB_TOKEN above, then trigger"

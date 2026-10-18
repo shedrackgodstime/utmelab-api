@@ -22,7 +22,9 @@ trigger a deploy from the Actions tab (or push a tag) and it builds and ships.
 
 No SSH. No manual Caddy/systemd edits after the one-time setup. The site ships
 in the same tarball as the binary; Caddy serves it and proxies `/api/*`,
-`/health` and `/ready`.
+`/health`, `/ready`, `/mcp` and `/mcp/admin`. Every one of those needs its own
+matcher: the static tier is the fallback, so any surface Caddy does not name is
+answered by `file_server` (an empty-body 404), not by the binary.
 
 **Deploys are serialized.** Only one runs at a time and none is cancelled
 mid-flight, because the gate deletes old release directories — two overlapping
