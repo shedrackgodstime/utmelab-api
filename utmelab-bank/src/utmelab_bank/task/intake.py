@@ -27,10 +27,10 @@ import logging
 from typing import Any
 
 from utmelab_bank.model.base import now_iso
-from utmelab_bank.task.base import Task, TaskContext, registered
 from utmelab_bank.rules import GateVerdict, judge_row
+from utmelab_bank.task.base import TaskContext, registered
 
-__all__ = ["Intake", "work_row", "refuse"]
+__all__ = ["Intake", "refuse", "work_row"]
 
 log = logging.getLogger(__name__)
 
@@ -76,7 +76,9 @@ async def run_intake(ctx: TaskContext, *, limit: int | None = None) -> list[Any]
         if not row_id:
             continue
         if row_id in existing:
-            outcomes.append(ctx.skip(row_id, "already_in_work", "this row is already in the work lane"))
+            outcomes.append(
+                ctx.skip(row_id, "already_in_work", "this row is already in the work lane")
+            )
             continue
 
         verdict = judge_raw(row)
@@ -120,7 +122,7 @@ def judge_raw(row: dict[str, Any]) -> GateVerdict:
     return judge_row(row)
 
 
-def work_row(row: dict[str, Any], verdict: GateVerdict, run_id: str) -> dict[str, Any]:
+def work_row(row: dict[str, Any], _verdict: GateVerdict, run_id: str) -> dict[str, Any]:
     """The work-lane shape of a raw row that passed the gate.
 
     A copy rather than a rename, so the raw row survives as the record of what

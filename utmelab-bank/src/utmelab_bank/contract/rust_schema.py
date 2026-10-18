@@ -18,7 +18,7 @@ from typing import Final, NamedTuple
 
 from utmelab_bank.errors import ContractError
 
-__all__ = ["ReadShape", "RustContract", "parse_schema_rs", "load_contract"]
+__all__ = ["ReadShape", "RustContract", "load_contract", "parse_schema_rs"]
 
 _CONTRACT_VERSION: Final[re.Pattern[str]] = re.compile(
     r"pub\s+const\s+CONTRACT_VERSION\s*:\s*u64\s*=\s*(\d+)\s*;",

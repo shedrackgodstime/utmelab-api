@@ -18,12 +18,10 @@ from utmelab_bank.source.myschool.parser import (
     ParsedQuestion,
     api_last_page,
     listing_url,
-    parse_detail,
-    parse_listing,
     slug_for,
 )
 
-__all__ = ["MyschoolSource", "NAME", "NAME_JSON"]
+__all__ = ["NAME", "NAME_JSON", "MyschoolSource"]
 
 NAME = "myschool"
 NAME_JSON = "myschool-json"

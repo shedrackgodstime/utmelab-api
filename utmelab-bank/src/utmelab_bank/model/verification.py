@@ -17,15 +17,15 @@ from pydantic import Field, model_validator
 from utmelab_bank.model.base import BankModel
 
 __all__ = [
-    "Verification",
-    "VerifierKind",
-    "Verdict",
-    "Scope",
-    "HUMAN",
     "AI",
+    "HUMAN",
     "PASS",
     "SCOPE_ANSWER",
     "SCOPE_EXPLANATION",
+    "Scope",
+    "Verdict",
+    "Verification",
+    "VerifierKind",
 ]
 
 VerifierKind = Literal["human", "ai_describe", "ai_explain", "ai_tag", "ai_verify", "ai_bulk"]

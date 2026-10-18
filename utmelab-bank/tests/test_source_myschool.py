@@ -131,10 +131,12 @@ def test_a_row_becomes_a_question() -> None:
 def test_the_answer_comes_from_the_api_not_from_a_colour() -> None:
     """The html harvester inferred the key from a background colour."""
     parsed = parse_api_question(
-        api_row(options=[
-            {"tag": "a", "description": "One", "is_correct": 0},
-            {"tag": "b", "description": "Two", "is_correct": 1},
-        ]),
+        api_row(
+            options=[
+                {"tag": "a", "description": "One", "is_correct": 0},
+                {"tag": "b", "description": "Two", "is_correct": 1},
+            ]
+        ),
         exam="jamb",
         subject="physics",
         year=2025,
@@ -179,10 +181,12 @@ def test_a_row_with_no_correct_option_is_refused() -> None:
     """A guessed key is the one defect a candidate cannot recover from."""
     with pytest.raises(SourceError, match="marked no option correct"):
         parse_api_question(
-            api_row(options=[
-                {"tag": "a", "description": "One", "is_correct": 0},
-                {"tag": "b", "description": "Two", "is_correct": 0},
-            ]),
+            api_row(
+                options=[
+                    {"tag": "a", "description": "One", "is_correct": 0},
+                    {"tag": "b", "description": "Two", "is_correct": 0},
+                ]
+            ),
             exam="jamb",
             subject="physics",
             year=2025,
@@ -196,11 +200,13 @@ def test_a_row_whose_text_is_empty_once_stripped_is_refused() -> None:
 
 def test_duplicate_option_tags_are_collapsed() -> None:
     parsed = parse_api_question(
-        api_row(options=[
-            {"tag": "a", "description": "One", "is_correct": 1},
-            {"tag": "a", "description": "One again", "is_correct": 0},
-            {"tag": "b", "description": "Two", "is_correct": 0},
-        ]),
+        api_row(
+            options=[
+                {"tag": "a", "description": "One", "is_correct": 1},
+                {"tag": "a", "description": "One again", "is_correct": 0},
+                {"tag": "b", "description": "Two", "is_correct": 0},
+            ]
+        ),
         exam="jamb",
         subject="physics",
         year=2025,
@@ -210,11 +216,13 @@ def test_duplicate_option_tags_are_collapsed() -> None:
 
 def test_options_come_out_in_tag_order_not_api_order() -> None:
     parsed = parse_api_question(
-        api_row(options=[
-            {"tag": "c", "description": "Three", "is_correct": 0},
-            {"tag": "a", "description": "One", "is_correct": 1},
-            {"tag": "b", "description": "Two", "is_correct": 0},
-        ]),
+        api_row(
+            options=[
+                {"tag": "c", "description": "Three", "is_correct": 0},
+                {"tag": "a", "description": "One", "is_correct": 1},
+                {"tag": "b", "description": "Two", "is_correct": 0},
+            ]
+        ),
         exam="jamb",
         subject="physics",
         year=2025,
@@ -314,10 +322,12 @@ def test_a_promised_stimulus_is_noticed() -> None:
 def test_the_payload_hash_differs_for_a_different_answer() -> None:
     one = parse_api_question(api_row(), exam="jamb", subject="physics", year=2025)
     two = parse_api_question(
-        api_row(options=[
-            {"tag": "a", "description": "Red", "is_correct": 0},
-            {"tag": "b", "description": "Blue", "is_correct": 1},
-        ]),
+        api_row(
+            options=[
+                {"tag": "a", "description": "Red", "is_correct": 0},
+                {"tag": "b", "description": "Blue", "is_correct": 1},
+            ]
+        ),
         exam="jamb",
         subject="physics",
         year=2025,

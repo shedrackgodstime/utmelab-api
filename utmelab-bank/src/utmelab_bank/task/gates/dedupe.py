@@ -28,16 +28,13 @@ cheap enough to run on every batch.
 from __future__ import annotations
 
 import logging
-import sys
 from typing import Any
 
-from utmelab_bank.errors import StoreError
-from utmelab_bank.rules import load_json_column
+from utmelab_bank.rules import option_texts_of
 from utmelab_bank.store.fingerprint import normalise_for_compare, stem_fingerprint
-from utmelab_bank.store.selectors import Selector, SelectorSet, all_names, register, resolve
-from utmelab_bank.task.base import Task, TaskContext, registered
+from utmelab_bank.task.base import TaskContext, registered
 
-__all__ = ["Dedupe", "fingerprint_row", "classify"]
+__all__ = ["Dedupe", "classify", "fingerprint_row"]
 
 log = logging.getLogger(__name__)
 
@@ -45,17 +42,6 @@ log = logging.getLogger(__name__)
 def fingerprint_row(row: dict[str, Any]) -> str:
     """One row's content fingerprint."""
     return stem_fingerprint(str(row.get("text") or ""), option_texts_of(row))
-
-
-def option_texts_of(row: dict[str, Any]) -> list[str]:
-    entries = load_json_column(row, "options", [])
-    texts: list[str] = []
-    for entry in entries:
-        if not isinstance(entry, dict):
-            continue
-        body = entry.get("text")
-        texts.append(str(body.get("text", "")) if isinstance(body, dict) else str(body))
-    return texts
 
 
 def classify(
@@ -97,7 +83,7 @@ class Dedupe:
     async def apply(self, row: dict[str, Any], ctx: TaskContext) -> Any:
         return await fingerprint_and_refuse(row, ctx)
 
-    async def collect(self, ctx: TaskContext) -> list[Any]:
+    async def collect(self, _ctx: TaskContext) -> list[Any]:
         return []
 
 
@@ -114,16 +100,14 @@ async def fingerprint_and_refuse(row: dict[str, Any], ctx: TaskContext) -> Any:
 
     digest = fingerprint_row(row)
     stem_key = normalise_for_compare(str(row.get("text") or ""))
-    print(f"DEBUG: row_id={row_id}, digest={digest}, stem_key={stem_key}", file=sys.stderr)
+    log.debug("dedupe %s: digest=%s stem_key=%s", row_id, digest, stem_key)
     if ctx.dry_run:
         return ctx.ok(row_id)
 
-    print(f"DEBUG: about to update row {row_id} with fingerprint={digest}, stem_key={stem_key}", file=sys.stderr)
     await ctx.repo.update("questions", row_id, {"fingerprint": digest, "stem_key": stem_key})
-    print(f"DEBUG: update done", file=sys.stderr)
 
-    collisions = await _collisions(ctx, row_id, digest, stem_key)
-    print(f"DEBUG: collisions={collisions}", file=sys.stderr)
+    collisions = await _collisions(ctx, row, row_id, digest, stem_key)
+    log.debug("dedupe %s: collisions=%s", row_id, collisions)
     if collisions["exact"]:
         return ctx.skip(
             row_id,
@@ -134,8 +118,7 @@ async def fingerprint_and_refuse(row: dict[str, Any], ctx: TaskContext) -> Any:
         return ctx.skip(
             row_id,
             "duplicate_fingerprint",
-            f"same stem and answer as {collisions['same_stem_same_key'][0]}, "
-            "different options",
+            f"same stem and answer as {collisions['same_stem_same_key'][0]}, different options",
         )
     if collisions["shared_stem"]:
         log.info(
@@ -148,6 +131,7 @@ async def fingerprint_and_refuse(row: dict[str, Any], ctx: TaskContext) -> Any:
 
 async def _collisions(
     ctx: TaskContext,
+    row: dict[str, Any],
     row_id: str,
     digest: str,
     stem_key: str,
@@ -160,21 +144,13 @@ async def _collisions(
     """
     found: dict[str, list[str]] = {"exact": [], "same_stem_same_key": [], "shared_stem": []}
 
-    print(f"DEBUG: querying exact fingerprint={digest}", file=sys.stderr)
-    print(f"DEBUG _collisions: querying fingerprint={digest}", file=sys.stderr)
-    print(f"DEBUG _collisions: querying fingerprint={digest}", file=sys.stderr)
     exact = await ctx.repo.rows("questions", f"fingerprint={digest}")
-    print(f"DEBUG _collisions: exact rows = {[(r.get('id'), r.get('fingerprint')) for r in exact]}", file=sys.stderr)
-    print(f"DEBUG: exact rows: {[(r.get('id'), r.get('fingerprint')) for r in exact]}", file=sys.stderr)
-    print(f"DEBUG: exact results: {[(r.get('id'), r.get('fingerprint')) for r in exact]}", file=sys.stderr)
     for other in exact:
         other_id = str(other.get("id", ""))
         if other_id and other_id != row_id:
             found["exact"].append(other_id)
 
-    print(f"DEBUG: querying stem_key={stem_key}", file=sys.stderr)
     stems = await ctx.repo.rows("questions", f"stem_key={stem_key}")
-    print(f"DEBUG: stem results: {[(r.get('id'), r.get('stem_key')) for r in stems]}", file=sys.stderr)
     for other in stems:
         other_id = str(other.get("id", ""))
         if not other_id or other_id == row_id:
@@ -193,14 +169,3 @@ async def _collisions(
         elif bucket == "shared_stem":
             found["shared_stem"].append(other_id)
     return found
-
-
-def option_texts_of(row: dict[str, Any]) -> list[str]:
-    entries = load_json_column(row, "options", [])
-    texts: list[str] = []
-    for entry in entries:
-        if not isinstance(entry, dict):
-            continue
-        body = entry.get("text")
-        texts.append(str(body.get("text", "")) if isinstance(body, dict) else str(body))
-    return texts

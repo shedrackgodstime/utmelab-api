@@ -11,12 +11,15 @@ Lane prefixes are generated from one function so a rename is one edit, and
 
 from __future__ import annotations
 
-from typing import Final
+from typing import TYPE_CHECKING, Final, cast
 
 from utmelab_bank.config import LANE_PREFIX, Lane
 from utmelab_bank.errors import StoreError
 
-__all__ = ["LANES", "LANE_TABLES", "table", "lane_of", "DDL", "ensure_schema", "assert_lane_parity"]
+if TYPE_CHECKING:
+    from utmelab_bank.store.client import Store
+
+__all__ = ["DDL", "LANES", "LANE_TABLES", "assert_lane_parity", "ensure_schema", "lane_of", "table"]
 
 #: The lanes, in the order a row moves through them.
 LANES: Final[tuple[Lane, ...]] = ("raw", "work", "ready")
@@ -61,7 +64,7 @@ def _question_table(lane: Lane) -> str:
     so there is nothing to forget.
     """
     return f"""
-    CREATE TABLE IF NOT EXISTS {table('questions', lane)} (
+    CREATE TABLE IF NOT EXISTS {table("questions", lane)} (
         id                  TEXT PRIMARY KEY,
         source_url          TEXT NOT NULL DEFAULT '',
         source_item_id      TEXT NOT NULL DEFAULT '',
@@ -104,7 +107,7 @@ def _media_table(lane: Lane) -> str:
     mentioned it.
     """
     return f"""
-    CREATE TABLE IF NOT EXISTS {table('media', lane)} (
+    CREATE TABLE IF NOT EXISTS {table("media", lane)} (
         id                  TEXT PRIMARY KEY,
         source_url          TEXT NOT NULL UNIQUE,
         question_id         TEXT,
@@ -128,7 +131,7 @@ def _media_table(lane: Lane) -> str:
 
 def _passage_table(lane: Lane) -> str:
     return f"""
-    CREATE TABLE IF NOT EXISTS {table('passages', lane)} (
+    CREATE TABLE IF NOT EXISTS {table("passages", lane)} (
         id              TEXT PRIMARY KEY,
         exam            TEXT NOT NULL,
         subject         TEXT NOT NULL,
@@ -146,7 +149,7 @@ def _passage_table(lane: Lane) -> str:
 
 def _subject_table(lane: Lane) -> str:
     return f"""
-    CREATE TABLE IF NOT EXISTS {table('subjects', lane)} (
+    CREATE TABLE IF NOT EXISTS {table("subjects", lane)} (
         slug                        TEXT PRIMARY KEY,
         exam                        TEXT NOT NULL,
         name                        TEXT NOT NULL,
@@ -160,7 +163,7 @@ def _subject_table(lane: Lane) -> str:
 
 def _topic_table(lane: Lane) -> str:
     return f"""
-    CREATE TABLE IF NOT EXISTS {table('topics', lane)} (
+    CREATE TABLE IF NOT EXISTS {table("topics", lane)} (
         slug        TEXT PRIMARY KEY,
         subject     TEXT NOT NULL,
         exam        TEXT NOT NULL,
@@ -176,7 +179,7 @@ def _topic_table(lane: Lane) -> str:
 
 def _subtopic_table(lane: Lane) -> str:
     return f"""
-    CREATE TABLE IF NOT EXISTS {table('subtopics', lane)} (
+    CREATE TABLE IF NOT EXISTS {table("subtopics", lane)} (
         slug        TEXT PRIMARY KEY,
         topic       TEXT NOT NULL,
         name        TEXT NOT NULL,
@@ -198,7 +201,7 @@ def _verification_table(lane: Lane) -> str:
     index behind it.
     """
     return f"""
-    CREATE TABLE IF NOT EXISTS {table('verifications', lane)} (
+    CREATE TABLE IF NOT EXISTS {table("verifications", lane)} (
         id            TEXT PRIMARY KEY,
         question_id   TEXT NOT NULL,
         kind          TEXT NOT NULL,
@@ -215,8 +218,7 @@ def _verification_table(lane: Lane) -> str:
 def _indexes(lane: Lane) -> tuple[str, ...]:
     prefix = LANE_PREFIX[lane]
     common = (
-        f"CREATE INDEX IF NOT EXISTS idx_{prefix}q_subject "
-        f"ON {prefix}questions(subject, exam)",
+        f"CREATE INDEX IF NOT EXISTS idx_{prefix}q_subject ON {prefix}questions(subject, exam)",
         f"CREATE INDEX IF NOT EXISTS idx_{prefix}q_gate ON {prefix}questions(gate_status)",
         f"CREATE INDEX IF NOT EXISTS idx_{prefix}q_run ON {prefix}questions(run_id)",
         f"CREATE INDEX IF NOT EXISTS idx_{prefix}q_retry ON {prefix}questions(next_retry_at)",
@@ -329,18 +331,17 @@ _ADDED_COLUMNS: Final[tuple[tuple[str, str], ...]] = (
 )
 
 MIGRATIONS: Final[tuple[tuple[str, Lane, str], ...]] = tuple(
-    (logical, lane, column)
-    for logical, column in _ADDED_COLUMNS
-    for lane in LANES
+    (logical, lane, column) for logical, column in _ADDED_COLUMNS for lane in LANES
 )
 
 
 async def ensure_schema(store: object) -> None:
     """Bring the database to the current shape. Safe to call on every run."""
+    typed_store = cast("Store", store)
     for statement in DDL():
-        await store.execute(statement)  # type: ignore[attr-defined]
+        await typed_store.execute(statement)
     for logical, lane, column in MIGRATIONS:
-        await _add_column(store, table(logical, lane), column)  # type: ignore[arg-defined]
+        await _add_column(typed_store, table(logical, lane), column)
 
 
 async def _add_column(store: object, physical: str, column: str) -> None:
@@ -350,12 +351,11 @@ async def _add_column(store: object, physical: str, column: str) -> None:
     treat that specific error as success, rather than wrapping every failure in
     a bare except and calling it done.
     """
-    rows = await store.fetch_all(f'PRAGMA table_info("{physical}")')  # type: ignore[attr-defined]
+    typed_store = cast("Store", store)
+    rows = await typed_store.fetch_all(f'PRAGMA table_info("{physical}")')
     if any(str(r.get("name")) == column for r in rows):
         return
-    await store.execute(  # type: ignore[attr-defined]
-        f'ALTER TABLE "{physical}" ADD COLUMN "{column}" TEXT'
-    )
+    await typed_store.execute(f'ALTER TABLE "{physical}" ADD COLUMN "{column}" TEXT')
 
 
 def assert_lane_parity() -> None:
@@ -366,11 +366,7 @@ def assert_lane_parity() -> None:
     """
     problems: list[str] = []
     for logical, suffixes in LANE_TABLES.items():
-        lanes_with = {
-            lane
-            for lane in LANES
-            if table(logical, lane).endswith(suffixes[0])
-        }
+        lanes_with = {lane for lane in LANES if table(logical, lane).endswith(suffixes[0])}
         if lanes_with != set(LANES):
             problems.append(f"{logical}: {sorted(set(LANES) - lanes_with)} lack it")
     if problems:

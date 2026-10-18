@@ -57,16 +57,13 @@ class BankModel(BaseModel):
         import json
 
         row: dict[str, Any] = {}
-        for name, field in type(self).model_fields.items():
+        for name, _field in type(self).model_fields.items():
             value = getattr(self, name)
             if isinstance(value, BaseModel):
                 row[name] = json.dumps(value.model_dump(mode="json"), separators=(",", ":"))
             elif isinstance(value, list):
                 row[name] = json.dumps(
-                    [
-                        v.model_dump(mode="json") if isinstance(v, BaseModel) else v
-                        for v in value
-                    ],
+                    [v.model_dump(mode="json") if isinstance(v, BaseModel) else v for v in value],
                     separators=(",", ":"),
                 )
             else:
@@ -85,7 +82,7 @@ class BankModel(BaseModel):
                 parsed[name] = None
                 continue
             annotation = str(field.annotation)
-            if value is not None and "dict" in annotation or "list" in annotation:
+            if (value is not None and "dict" in annotation) or "list" in annotation:
                 try:
                     parsed[name] = json.loads(value)
                 except (TypeError, ValueError):

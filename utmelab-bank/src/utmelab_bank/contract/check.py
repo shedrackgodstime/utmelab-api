@@ -19,7 +19,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-from utmelab_bank.contract.rust_schema import RustContract, ReadShape
+from utmelab_bank.contract.rust_schema import ReadShape, RustContract
 from utmelab_bank.errors import ContractError
 
 if TYPE_CHECKING:
@@ -97,9 +97,7 @@ async def check_shapes(
         if not present:
             missing_tables.append(shape.table)
             continue
-        missing_columns.extend(
-            f"{shape.table}.{column}" for column in shape.missing_from(present)
-        )
+        missing_columns.extend(f"{shape.table}.{column}" for column in shape.missing_from(present))
 
     if deep and not missing_tables:
         never_written = await _never_written(store, targets)

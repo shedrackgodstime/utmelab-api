@@ -22,9 +22,10 @@ import asyncio
 import contextlib
 import logging
 import uuid
+from collections.abc import AsyncIterator, Awaitable, Callable, Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime, timedelta
-from typing import Any, AsyncIterator, Awaitable, Callable, Protocol, Sequence, runtime_checkable
+from typing import Any, Protocol, runtime_checkable
 
 from utmelab_bank.config import Config, Lane
 from utmelab_bank.errors import BankError, TaskError
@@ -33,7 +34,7 @@ from utmelab_bank.model.run import RowOutcome, Run
 from utmelab_bank.store.repository import Repository
 from utmelab_bank.store.selectors import Selector
 
-__all__ = ["Task", "TaskContext", "TaskResult", "run_task", "registered", "all_tasks", "get"]
+__all__ = ["Task", "TaskContext", "TaskResult", "all_tasks", "get", "registered", "run_task"]
 
 log = logging.getLogger(__name__)
 
@@ -95,7 +96,9 @@ class TaskContext:
         return RowOutcome(row_id=row_id, state="skipped", code=code, detail=detail)
 
     def fail(self, row_id: str, code: str, detail: str, *, retryable: bool = False) -> RowOutcome:
-        return RowOutcome(row_id=row_id, state="failed", code=code, detail=detail, retryable=retryable)
+        return RowOutcome(
+            row_id=row_id, state="failed", code=code, detail=detail, retryable=retryable
+        )
 
     def refuse(self, row_id: str, requirement: str) -> RowOutcome:
         """Skip a row because ``requirement`` has not run for it.
@@ -141,7 +144,7 @@ class Task(Protocol):
 _TASKS: dict[str, Task] = {}
 
 
-def registered(task: Task | type[Task]) -> Task:
+def registered(task: Task | type[Task]) -> Task | type[Task]:
     """Register a task.
 
     Takes a class and stores an instance, so the registry holds objects whose
@@ -185,7 +188,7 @@ async def _process(
         outcome = await task.apply(row, ctx)
     except BankError as exc:
         outcome = ctx.fail(row_id, exc.code, str(exc), retryable=exc.is_retryable)
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         # A bug in a task must fail its row, not the run. Otherwise one bad
         # question stops 199 good ones and nobody finds out why.
         log.exception("task %s raised on row %s", task.name, row_id)
@@ -321,7 +324,9 @@ def _finish(run: Run, outcomes: Sequence[RowOutcome]) -> Run:
         # Only when a requirement really is unmet. Logging every skip as a
         # missing requirement is how a task that skips rows because they are
         # already done starts looking like it is broken.
-        log.info("%s: %d rows skipped, %d for a missing requirement", run.task, len(outcomes), unmet)
+        log.info(
+            "%s: %d rows skipped, %d for a missing requirement", run.task, len(outcomes), unmet
+        )
     return run
 
 
@@ -351,7 +356,7 @@ async def as_rows(source: AsyncIterator[dict[str, Any]]) -> list[dict[str, Any]]
     return [row async for row in source]
 
 
-def selectors_for(task: Task) -> tuple[Selector, ...]:
+def selectors_for(_task: Task) -> tuple[Selector, ...]:
     """The selectors a task's rows can be picked with, for ``--explain``."""
     from utmelab_bank.store import selectors
 

@@ -17,7 +17,7 @@ from pydantic import ConfigDict, Field
 
 from utmelab_bank.model.base import BankModel, now_iso
 
-__all__ = ["Run", "RowState", "Lane", "RowOutcome"]
+__all__ = ["Lane", "RowOutcome", "RowState", "Run"]
 
 Lane = Literal["raw", "work", "ready"]
 RowState = Literal["ok", "skipped", "failed", "pending"]

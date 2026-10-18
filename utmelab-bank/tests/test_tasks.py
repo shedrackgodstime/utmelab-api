@@ -20,14 +20,11 @@ from utmelab_bank.task.base import TaskContext, TaskResult
 from utmelab_bank.task.gates import MechanicalGate, judge
 from utmelab_bank.text import (
     clean_inline,
-    clean_blocks,
-    join_rich,
     mentions_figure,
     merge_words,
     promises_stimulus,
     slugify,
     strip_tags,
-    unescape_segment,
     visible_lines,
 )
 
@@ -48,13 +45,17 @@ def test_a_clean_row_passes() -> None:
 
 
 def test_a_key_pointing_at_nothing_is_refused() -> None:
-    verdict = judge(text="A real stem with words in it", option_ids=["A", "B"], answer="D", exam="jamb")
+    verdict = judge(
+        text="A real stem with words in it", option_ids=["A", "B"], answer="D", exam="jamb"
+    )
     assert not verdict.passed
     assert verdict.reason == "answer_not_an_option"
 
 
 def test_duplicate_options_are_refused() -> None:
-    verdict = judge(text="A real stem with words in it", option_ids=["A", "A"], answer="A", exam="jamb")
+    verdict = judge(
+        text="A real stem with words in it", option_ids=["A", "A"], answer="A", exam="jamb"
+    )
     assert "duplicate_options" in verdict.reasons
 
 
@@ -222,9 +223,7 @@ def test_merging_text_does_not_glue_words() -> None:
 
 
 def test_page_furniture_is_dropped() -> None:
-    lines = visible_lines(
-        "<p>Real question text</p><p>Advertisement</p><div>© mySchool.ng</div>"
-    )
+    lines = visible_lines("<p>Real question text</p><p>Advertisement</p><div>© mySchool.ng</div>")
     assert "Real question text" in lines
     assert not any("Advertisement" in line for line in lines)
     assert not any("mySchool" in line for line in lines)
@@ -405,7 +404,9 @@ def test_a_summary_a_person_can_read() -> None:
 def test_a_refusal_names_the_step_that_is_missing(config: Config) -> None:
     from utmelab_bank.model.run import Run
 
-    ctx = TaskContext(config=config, repo=Repository.__new__(Repository), run=Run(id="r1", task="t"))
+    ctx = TaskContext(
+        config=config, repo=Repository.__new__(Repository), run=Run(id="r1", task="t")
+    )
     outcome = ctx.refuse("q1", "ai-describe")
     assert outcome.state == "skipped"
     assert "ai-describe" in str(outcome.detail)

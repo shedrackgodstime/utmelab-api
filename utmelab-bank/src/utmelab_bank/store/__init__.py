@@ -7,8 +7,8 @@ from utmelab_bank.store.fingerprint import normalise_for_compare, stem_fingerpri
 from utmelab_bank.store.repository import Repository, Update
 from utmelab_bank.store.schema import (
     DDL,
-    LANES,
     LANE_TABLES,
+    LANES,
     assert_lane_parity,
     ensure_schema,
     lane_of,

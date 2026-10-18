@@ -20,8 +20,9 @@ from __future__ import annotations
 from typing import Any
 
 from utmelab_bank.errors import TaskError
-from utmelab_bank.task.base import Task, TaskContext, registered, run_task
 from utmelab_bank.model.base import now_iso
+from utmelab_bank.model.run import RowOutcome
+from utmelab_bank.task.base import TaskContext, registered, run_task
 
 __all__ = ["Promote", "promote_rows"]
 
@@ -54,22 +55,21 @@ class Promote:
 
     name = "promote"
     produces = "ready_questions"
-    requires = ("gate",)
+    requires: tuple[str, ...] = ("gate",)
     may_write_ready = True
     iterates_rows = True
     description = "Move gated, hashed work rows into the ready lane. The only ready writer."
 
-    async def apply(self, row: dict[str, Any], ctx: TaskContext) -> Any:
+    async def apply(self, row: dict[str, Any], ctx: TaskContext) -> RowOutcome:
         return await promote_one(row, ctx)
 
-    async def collect(self, ctx: TaskContext) -> list[Any]:
+    async def collect(self, _ctx: TaskContext) -> list[RowOutcome]:
         return []
 
 
-async def promote_one(row: dict[str, Any], ctx: TaskContext) -> Any:
+async def promote_one(row: dict[str, Any], ctx: TaskContext) -> RowOutcome:
     """Copy one work row into the ready lane, with the conditions checked."""
     row_id = str(row.get("id", ""))
-    source = ctx.repo
     target = ctx.repo.in_lane("ready")
 
     if not row.get("content_hash"):

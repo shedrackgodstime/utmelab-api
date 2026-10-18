@@ -41,7 +41,7 @@ from typing import Any, Final
 from utmelab_bank.errors import ContractError
 from utmelab_bank.model.richtext import Mark, RichText, mark_key
 
-__all__ = ["content_hash", "stamp_rows", "VECTORS_PATH", "load_vectors", "check_vectors"]
+__all__ = ["VECTORS_PATH", "check_vectors", "content_hash", "load_vectors", "stamp_rows"]
 
 #: Unit separator between an option id and its text. Chosen because it cannot
 #: appear in scraped prose, so two different splits can never collide.

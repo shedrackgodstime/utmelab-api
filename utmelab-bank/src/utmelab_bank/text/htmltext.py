@@ -13,26 +13,24 @@ There is one copy now.
 from __future__ import annotations
 
 import html
-import json
 import re
 from typing import Final
 
 from utmelab_bank.model.richtext import Mark
 
 __all__ = [
+    "CLOZE_HINT",
+    "INLINE_TAGS",
+    "NUMBERED_GAP",
+    "PROMISED_STIMULUS",
+    "clean_inline",
     "has_numbered_gap",
     "mentions_cloze",
     "mentions_figure",
-    "visible_lines",
-    "clean_inline",
+    "promises_stimulus",
     "strip_tags",
     "unescape_once",
-    "promises_stimulus",
-    "FIGURE_HINT",
-    "CLOZE_HINT",
-    "NUMBERED_GAP",
-    "PROMISED_STIMULUS",
-    "INLINE_TAGS",
+    "visible_lines",
 ]
 
 #: The words that mean the stem is about a figure it must ship with.
@@ -49,7 +47,7 @@ __all__ = [
 #: below", "the organ shown in the figure". A figure hint that slips through
 #: ships a question whose candidate sees no figure.
 _HINTS: Final[tuple[tuple[str, bool, bool], ...]] = (
-    ("diagram", True, False),      # (word, plural allowed, prefix match)
+    ("diagram", True, False),  # (word, plural allowed, prefix match)
     ("figure", False, False),
     ("graph", True, False),
     ("illustrat", False, True),
@@ -60,10 +58,12 @@ _HINTS: Final[tuple[tuple[str, bool, bool], ...]] = (
 
 #: Built once at import, so the cost is not paid per row.
 _HINT_RE: Final[re.Pattern[str]] = re.compile(
-    r"\b(" + "|".join(
+    r"\b("
+    + "|".join(
         (rf"{word}(?:e?s)?" if plural else word) if not prefix else rf"{word}\w*"
         for word, plural, prefix in _HINTS
-    ) + r")\b",
+    )
+    + r")\b",
     re.IGNORECASE,
 )
 
@@ -150,9 +150,7 @@ INLINE_TAGS: Final[dict[str, str]] = {
 #: "line oneline two" reached the bank.
 _BREAK_TAGS: Final[frozenset[str]] = frozenset({"br"})
 
-_SCRIPT_STYLE: Final[re.Pattern[str]] = re.compile(
-    r"(?s)<script.*?</script>|<style.*?</style>"
-)
+_SCRIPT_STYLE: Final[re.Pattern[str]] = re.compile(r"(?s)<script.*?</script>|<style.*?</style>")
 
 #: The hydration markers a Nuxt template is full of. Not matched by a tag regex,
 #: so they have to be named.
@@ -318,7 +316,7 @@ def clean_inline(markup: str) -> tuple[str, list[Mark]]:
             span = len("".join(out)) - started if started is not None else 0
             # An unclosed mark runs to the end of the text, never past it.
             if kind != "image" and started is not None and span >= 0:
-                marks.append(Mark(kind=kind, start=started, len=span))  # type: ignore[arg-type]
+                marks.append(Mark(kind=kind, start=started, len=span))
             continue
 
         if tag == "img":
@@ -341,7 +339,7 @@ def clean_inline(markup: str) -> tuple[str, list[Mark]]:
     push(markup[position:])
     for tag, started in list(open_at.items()):
         kind = INLINE_TAGS[tag]
-        marks.append(Mark(kind=kind, start=started, len=len("".join(out)) - started))  # type: ignore[arg-type]
+        marks.append(Mark(kind=kind, start=started, len=len("".join(out)) - started))
     marks.sort(key=lambda mark: (mark.start, mark.len))
 
     return _trim("".join(out), marks)

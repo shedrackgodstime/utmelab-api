@@ -20,10 +20,10 @@ from pydantic import AfterValidator, Field, model_validator
 from utmelab_bank.model.base import BankModel
 
 __all__ = [
-    "MarkKind",
     "Mark",
-    "RichText",
+    "MarkKind",
     "Option",
+    "RichText",
     "mark_key",
     "snap_offsets",
 ]
@@ -70,7 +70,7 @@ class Mark(BankModel):
 
     kind: MarkKind
     start: Annotated[int, AfterValidator(_valid_start)]
-    len: Annotated[int, AfterValidator(_valid_len)]  # noqa: A003
+    len: Annotated[int, AfterValidator(_valid_len)]
     url: str | None = None
     alt: str | None = None
     position: Literal["above", "below", "inline"] = "above"
@@ -149,7 +149,7 @@ class RichText(BankModel):
                     f"mark covers {mark.start}..{mark.end} but the text is {limit} characters"
                 )
         spans = sorted((m.start, m.end) for m in self.inline if m.kind == "underline")
-        for (a_start, a_end), (b_start, _b_end) in zip(spans, spans[1:], strict=False):
+        for (_a_start, a_end), (b_start, _b_end) in zip(spans, spans[1:], strict=False):
             if b_start < a_end:
                 raise ValueError(f"underline marks overlap at {b_start}")
         return self
@@ -184,7 +184,8 @@ def snap_offsets(
         return []
     limit = len(text)
     repaired: list[Mark] = []
-    for mark in marks:
+    for orig in marks:
+        mark = orig
         if finder:
             found = text.find(finder)
             if found >= 0:

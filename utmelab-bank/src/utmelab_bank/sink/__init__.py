@@ -15,7 +15,7 @@ from utmelab_bank.sink.base import Sink
 from utmelab_bank.sink.db import DbSink
 from utmelab_bank.sink.json import JsonSink
 
-__all__ = ["Sink", "DbSink", "JsonSink", "build_sink"]
+__all__ = ["DbSink", "JsonSink", "Sink", "build_sink"]
 
 
 def build_sink(config: Config, store: Any) -> Sink:

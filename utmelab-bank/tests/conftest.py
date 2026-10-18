@@ -19,6 +19,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+
 from utmelab_bank.config import Config, RepoRoot
 from utmelab_bank.model.richtext import Mark, Option, RichText
 from utmelab_bank.store.client import Store
@@ -101,7 +102,9 @@ def make_question(**overrides: Any) -> dict[str, Any]:
     marks = overrides.pop("marks", [])
     row_id = overrides.pop("id", "q_test_1")
 
-    option_models = [Option(id=chr(ord("A") + i), text=RichText(text=t)) for i, t in enumerate(options)]
+    option_models = [
+        Option(id=chr(ord("A") + i), text=RichText(text=t)) for i, t in enumerate(options)
+    ]
     digest = content_hash(
         stem=RichText(text=stem, inline=marks),
         options=option_models,
@@ -123,7 +126,9 @@ def make_question(**overrides: Any) -> dict[str, Any]:
         "source": "claimed_paper",
         "text": stem,
         "inline": rt_json(marks),
-        "options": json.dumps([o.model_dump(mode="json") for o in option_models], separators=(",", ":")),
+        "options": json.dumps(
+            [o.model_dump(mode="json") for o in option_models], separators=(",", ":")
+        ),
         "answer": answer,
         "subtopic_id": None,
         "section": None,
@@ -159,6 +164,7 @@ def make_rows():
     key identical, so twenty five rows collapse to one. Rows are built through
     the factory so the key moves with the id.
     """
+
     def build(count: int, **overrides: Any) -> list[dict[str, Any]]:
         return [make_question(id=f"q_{index}", **overrides) for index in range(count)]
 

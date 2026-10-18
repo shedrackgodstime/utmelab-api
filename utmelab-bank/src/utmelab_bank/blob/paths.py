@@ -23,7 +23,7 @@ from pathlib import Path
 
 from utmelab_bank.errors import BlobError
 
-__all__ = ["blob_path_for", "url_for", "extension_for", "sha256_of", "is_blob_name"]
+__all__ = ["blob_path_for", "extension_for", "is_blob_name", "sha256_of", "url_for"]
 
 _HASH_RE: re.Pattern[str] = re.compile(r"^[0-9a-f]{64}\.[a-z0-9]{1,5}$")
 
@@ -42,7 +42,7 @@ def extension_for(url: str, content_type: str | None = None) -> str:
         guessed = mimetypes.guess_extension(content_type.split(";")[0].strip())
         if guessed:
             return ".jpg" if guessed == ".jpe" else guessed
-    suffix = Path(url.split("?")[0]).suffix.lower()
+    suffix = Path(url.split("?", maxsplit=1)[0]).suffix.lower()
     if suffix and len(suffix) <= 5 and suffix[1:].isalnum():
         return suffix
     return ".bin"

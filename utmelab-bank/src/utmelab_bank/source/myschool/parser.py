@@ -14,16 +14,15 @@ from __future__ import annotations
 import hashlib
 import re
 from dataclasses import dataclass, field
-from typing import Final
+from typing import Any, Final
 
 from utmelab_bank.errors import SourceError
-from utmelab_bank.rules import MIN_PASSAGE_CHARS
 from utmelab_bank.model.question import Question
 from utmelab_bank.model.richtext import Mark, Option, RichText
+from utmelab_bank.rules import MIN_PASSAGE_CHARS
 from utmelab_bank.source.myschool.subjects import load_map
 from utmelab_bank.text import (
     clean_inline,
-    clean_blocks,
     has_numbered_gap,
     join_rich,
     mentions_cloze,
@@ -34,22 +33,22 @@ from utmelab_bank.text import (
 
 __all__ = [
     "DETAIL_RE",
-    "subject_listing_url",
     "DETAIL_URL",
-    "ExamSpec",
     "EXAMS",
+    "ExamSpec",
     "JsonRow",
     "SlugSpec",
+    "catalog_for",
     "extract_passage",
     "listing_url",
     "parse_api_listing",
-    "question_images",
     "parse_api_question",
-    "parse_listing",
     "parse_detail",
+    "parse_listing",
+    "question_images",
     "slug_for",
-    "catalog_for",
     "subject_display",
+    "subject_listing_url",
     "subject_slug",
 ]
 
@@ -101,6 +100,7 @@ ROW: Final[re.Pattern[str]] = re.compile(
     re.S,
 )
 
+
 #: A subject's html listing, paged. This is what the html path walks, and it is
 #: a subject url with query parameters rather than the exam root: the exam root
 #: at /classroom/jamb carries navigation only and no question links at all.
@@ -151,6 +151,7 @@ PASSAGE_BANNER: Final[re.Pattern[str]] = re.compile(
 ATTRIBUTION: Final[re.Pattern[str]] = re.compile(
     r"(?i)^\[?\s*(adapted from|source\s*:|from\b|quoted from)"
 )
+
 
 @dataclass(frozen=True)
 class ExamSpec:
@@ -384,9 +385,7 @@ def parse_detail(
 
     return ParsedQuestion(
         question=question,
-        source_url=DETAIL_URL.format(
-            slug=slug, item_id=item_id, exam=exam, year=year
-        ),
+        source_url=DETAIL_URL.format(slug=slug, item_id=item_id, exam=exam, year=year),
         source_item_id=item_id,
         payload_hash=_payload_hash(stem.text, question.options, answer),
         figures=figures,
@@ -421,7 +420,7 @@ def _with_figures(stem: RichText, figures: list[str]) -> RichText:
     )
 
 
-def _inline_figure_urls(markup: str) -> list[str]:
+def _inline_figure_urls(_markup: str) -> list[str]:
     """Figure urls already carried as ``<img>`` marks inside the stem markup."""
     return []
 
@@ -580,7 +579,9 @@ def parse_api_question(
     stem_text, stem_marks = clean_inline(markup)
     stem_text = merge_words([stem_text])
     if not stem_text:
-        raise SourceError("api row's question text is empty once tags are stripped", item_id=item_id)
+        raise SourceError(
+            "api row's question text is empty once tags are stripped", item_id=item_id
+        )
 
     raw_options = row.get("options")
     if not isinstance(raw_options, list):

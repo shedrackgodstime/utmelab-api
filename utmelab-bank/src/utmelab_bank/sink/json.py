@@ -16,6 +16,7 @@ something. Three rules keep it from becoming the substrate again.
 
 from __future__ import annotations
 
+import contextlib
 import json
 from pathlib import Path
 from typing import Any
@@ -87,7 +88,7 @@ class JsonSink:
         if not terms:
             return rows
 
-        for name, value in terms:
+        for name, _value in terms:
             selector = selectors.describe(name)
             if selector.matches is None:
                 raise ConfigError(
@@ -115,14 +116,12 @@ class JsonSink:
             name, _, raw_value = raw.partition("=")
             value: Any = raw_value.strip() if raw_value else None
             if value is not None:
-                try:
+                with contextlib.suppress(ValueError):
                     value = int(value)
-                except ValueError:
-                    pass
             terms.append((selectors.normalise(name), value))
         return terms
 
-    def stamp(self, logical: str) -> dict[str, Any]:
+    def stamp(self, _logical: str) -> dict[str, Any]:
         """A small header file, so an output directory is self-describing."""
         return {
             "generated_at": now_iso(),

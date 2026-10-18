@@ -11,7 +11,7 @@ from __future__ import annotations
 import re
 import unicodedata
 
-__all__ = ["slugify", "SLUG_MAX"]
+__all__ = ["SLUG_MAX", "slugify"]
 
 #: Long enough for any subject or topic name we have seen, short enough that a
 #: slug still fits a url path without truncation.

@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from utmelab_bank.task.base import Task, TaskContext, registered
+from utmelab_bank.task.base import TaskContext, registered
 
 __all__ = ["MediaPresence"]
 
@@ -32,7 +32,7 @@ class MediaPresence:
     async def apply(self, row: dict[str, Any], ctx: TaskContext) -> Any:
         return await discover(row, ctx)
 
-    async def collect(self, ctx: TaskContext) -> list[Any]:
+    async def collect(self, _ctx: TaskContext) -> list[Any]:
         return []
 
 

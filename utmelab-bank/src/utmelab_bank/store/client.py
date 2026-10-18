@@ -184,7 +184,9 @@ class Store:
         the one way to get interpolated sql into this package.
         """
         if empty:
-            sql = f'SELECT COUNT(*) AS n FROM "{table}" WHERE "{column}" IS NULL OR "{column}" = \'\''
+            sql = (
+                f'SELECT COUNT(*) AS n FROM "{table}" WHERE "{column}" IS NULL OR "{column}" = \'\''
+            )
         else:
             sql = f'SELECT COUNT(*) AS n FROM "{table}" WHERE "{column}" IS NOT NULL AND "{column}" <> \'\''
         value = await self.scalar(sql)

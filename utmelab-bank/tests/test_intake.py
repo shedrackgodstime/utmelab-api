@@ -171,10 +171,7 @@ async def test_a_refused_row_is_a_skip_not_a_failure(store: Store, config: Confi
 # ---------------------------------------------------------------------------
 
 
-async def test_intake_twice_moves_nothing_the_second_time(
-    store: Store,
-    config: Config
-) -> None:
+async def test_intake_twice_moves_nothing_the_second_time(store: Store, config: Config) -> None:
     await seed_raw(store, [raw_row()])
     repo = Repository(store, lane="work")
     await run_task(Intake(), config, repo, logical="questions")
@@ -185,10 +182,7 @@ async def test_intake_twice_moves_nothing_the_second_time(
     assert second.run.skipped == 1
 
 
-async def test_promote_twice_moves_nothing_the_second_time(
-    store: Store,
-    config: Config
-) -> None:
+async def test_promote_twice_moves_nothing_the_second_time(store: Store, config: Config) -> None:
     await seed_raw(store, [raw_row()])
     repo = Repository(store, lane="work")
     await run_task(Intake(), config, repo, logical="questions")
@@ -228,10 +222,7 @@ async def test_insert_reports_rows_landed_not_rows_sent(store: Store) -> None:
 # ---------------------------------------------------------------------------
 
 
-async def test_the_chain_runs_on_a_captured_response(
-    store: Store,
-    config: Config
-) -> None:
+async def test_the_chain_runs_on_a_captured_response(store: Store, config: Config) -> None:
     fixture = FIXTURES / "myschool_physics_page1.json"
     if not fixture.is_file():
         pytest.skip("no captured response")
@@ -344,7 +335,11 @@ def test_require_promotable_refuses_an_unhashed_row() -> None:
 
 def test_work_row_clears_the_error_bookkeeping() -> None:
     """A fresh work row must not inherit a previous failure."""
-    work = work_row(raw_row(error="boom", next_retry_at="2020-01-01T00:00:00+00:00"), judge_raw(raw_row()), "r_i")
+    work = work_row(
+        raw_row(error="boom", next_retry_at="2020-01-01T00:00:00+00:00"),
+        judge_raw(raw_row()),
+        "r_i",
+    )
     assert work["error"] is None
     assert work["next_retry_at"] is None
     assert work["attempts"] == 0
@@ -353,7 +348,9 @@ def test_work_row_clears_the_error_bookkeeping() -> None:
 async def test_intake_does_nothing_on_a_dry_run(store: Store, config: Config) -> None:
     await seed_raw(store, [raw_row()])
     dry = config.model_copy(update={"dry_run": False})
-    result = await run_task(Intake(), dry, Repository(store, lane="work"), logical="questions", dry_run=True)
+    result = await run_task(
+        Intake(), dry, Repository(store, lane="work"), logical="questions", dry_run=True
+    )
     assert await Repository(store, lane="work").count("questions") == 0
     assert result.run.succeeded == 1
 

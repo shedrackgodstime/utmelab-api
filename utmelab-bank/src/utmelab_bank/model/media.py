@@ -13,10 +13,10 @@ from typing import Literal
 
 from pydantic import Field, model_validator
 
-from utmelab_bank.model.base import BankModel, Timed
+from utmelab_bank.model.base import Timed
 from utmelab_bank.model.richtext import RichText
 
-__all__ = ["Passage", "MediaRow", "MediaStatus", "PassageKind"]
+__all__ = ["MediaRow", "MediaStatus", "Passage", "PassageKind"]
 
 PassageKind = Literal["Comprehension", "Data", "Reading"]
 
@@ -56,9 +56,7 @@ class Passage(Timed):
         so the number lives here once.
         """
         if len(self.text.strip()) < 200:
-            raise ValueError(
-                f"passage is {len(self.text.strip())} characters, the floor is 200"
-            )
+            raise ValueError(f"passage is {len(self.text.strip())} characters, the floor is 200")
         return self
 
     @property
@@ -81,7 +79,7 @@ class MediaRow(Timed):
     blob_path: str | None = None
     derived_path: str | None = None
     sha256: str | None = Field(default=None, pattern=r"^[0-9a-f]{64}$")
-    bytes: int | None = Field(default=None, ge=0)  # noqa: A003
+    bytes: int | None = Field(default=None, ge=0)
     media_url: str | None = None
 
     status: MediaStatus = "discovered"

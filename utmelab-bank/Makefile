@@ -3,7 +3,7 @@
 # `make help` lists everything. Nothing here reaches the network, so `make check`
 # is safe to run at any time.
 
-PY      := python3
+PY      := uv run python
 PKG     := utmelab_bank
 SRC     := src
 TESTS   := tests

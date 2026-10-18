@@ -19,10 +19,10 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Final, Literal
 
-from utmelab_bank.blob.paths import blob_path_for, ensure_inside, extension_for, sha256_of, url_for
+from utmelab_bank.blob.paths import blob_path_for, ensure_inside, sha256_of, url_for
 from utmelab_bank.errors import BlobError
 
-__all__ = ["GitStore", "CloneStats", "PushReport"]
+__all__ = ["CloneStats", "GitStore", "PushReport"]
 
 #: Never rewritten by us. The blobs are addressed by content, so a rewrite would
 #: change every url in the bank for no benefit.
@@ -85,8 +85,8 @@ class GitStore:
 
     def _git(self, args: list[str], *, check: bool = True, timeout: int = 600) -> str:
         try:
-            done = subprocess.run(  # noqa: S603
-                ["git", *args],  # noqa: S607
+            done = subprocess.run(
+                ["git", *args],
                 cwd=str(self.root),
                 capture_output=True,
                 text=True,

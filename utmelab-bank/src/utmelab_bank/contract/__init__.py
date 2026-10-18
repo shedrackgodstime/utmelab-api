@@ -13,13 +13,18 @@ from __future__ import annotations
 
 from utmelab_bank.contract.check import ShapeReport, check_shapes, read_contract_version
 from utmelab_bank.contract.content_hash import content_hash
-from utmelab_bank.contract.rust_schema import ReadShape, RustContract, load_contract, parse_schema_rs
+from utmelab_bank.contract.rust_schema import (
+    ReadShape,
+    RustContract,
+    load_contract,
+    parse_schema_rs,
+)
 from utmelab_bank.contract.version import SUPPORTED_CONTRACT_VERSIONS, refuse_unknown, supported
 
 __all__ = [
+    "SUPPORTED_CONTRACT_VERSIONS",
     "ReadShape",
     "RustContract",
-    "SUPPORTED_CONTRACT_VERSIONS",
     "ShapeReport",
     "check_shapes",
     "content_hash",

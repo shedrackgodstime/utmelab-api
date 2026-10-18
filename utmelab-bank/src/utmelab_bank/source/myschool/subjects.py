@@ -30,7 +30,7 @@ from typing import Any, Final, NamedTuple
 
 from utmelab_bank.errors import SourceError
 
-__all__ = ["SubjectMap", "SubjectEntry", "ExamSubjects", "load_map", "EXAMS", "subjects_for"]
+__all__ = ["ExamSubjects", "SubjectEntry", "SubjectMap", "known_exams", "load_map", "subjects_for"]
 
 MAP_PATH: Final[Path] = Path(__file__).with_name("subjects.json")
 
@@ -87,8 +87,7 @@ class SubjectMap(NamedTuple):
         entry = subjects.by_slug.get(subject) or subjects.by_source.get(subject)
         if entry is None:
             raise SourceError(
-                "that subject is not in the map, and a guess would be a decision "
-                "nobody made",
+                "that subject is not in the map, and a guess would be a decision nobody made",
                 exam=exam,
                 subject=subject,
                 hint="add it to subjects.json",
@@ -147,6 +146,8 @@ def subjects_for(exam: str) -> ExamSubjects:
     return load_map().exam(exam)
 
 
-def EXAMS() -> tuple[str, ...]:
+# NB: parser.py also defines EXAMS (exam specs). This helper lists which
+# exams the subject map covers. Renamed to avoid the collision.
+def known_exams() -> tuple[str, ...]:
     """The exams this source carries papers for."""
     return tuple(sorted(load_map().exams))

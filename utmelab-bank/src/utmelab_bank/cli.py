@@ -18,21 +18,22 @@ from __future__ import annotations
 
 import asyncio
 import contextlib
+import functools
 import json
 import logging
 import sys
-from collections.abc import AsyncIterator
+from collections.abc import AsyncIterator, Callable
 from pathlib import Path
-from typing import Any
+from typing import Any, TypeVar, cast
 
 import click
 
 from utmelab_bank import __version__
-from utmelab_bank.config import Config, Lane, load
-import functools
-
+from utmelab_bank.config import Config, load
 from utmelab_bank.errors import BankError, ConfigError, ContractError, SourceError, TaskError
 from utmelab_bank.store.client import Store
+
+F = TypeVar("F", bound=Callable[..., Any])
 
 log = logging.getLogger("utmelab_bank")
 
@@ -76,7 +77,7 @@ def _config(**overrides: Any) -> Config:
     for name, value in overrides.items():
         if value not in (None, False):
             flags[name] = str(value)
-    return load(where=flags, **overrides)  # type: ignore[arg-type]
+    return load(where=flags, **overrides)
 
 
 def reports_errors(command: Any) -> Any:
@@ -113,7 +114,9 @@ def exc_code_for(error: BankError) -> int:
 
 _common = [
     click.option("--target", default="work", help="raw, work or ready. ready is our 'prod' lane."),
-    click.option("--sink", type=click.Choice(["db", "json"]), default=None, help="Where rows land."),
+    click.option(
+        "--sink", type=click.Choice(["db", "json"]), default=None, help="Where rows land."
+    ),
     click.option(
         "--local-database",
         type=click.Path(path_type=Path),
@@ -124,17 +127,17 @@ _common = [
 ]
 
 
-def _add_common(command: Any) -> Any:
+def _add_common(command: F) -> F:
     for option in reversed(_common):
         command = option(command)
     return command
 
 
-def _command(name: str) -> Any:
+def _command(name: str) -> Callable[[F], F]:
     """``cli.command``, with error reporting already attached."""
 
-    def wrap(function: Any) -> Any:
-        return cli.command(name)(reports_errors(function))
+    def wrap(function: F) -> F:
+        return cast(F, cli.command(name)(reports_errors(function)))
 
     return wrap
 
@@ -271,9 +274,8 @@ def _raw_row(item: Any, run_id: str) -> dict[str, Any]:
     nothing and an edited page appears beside the old row instead of replacing
     it.
     """
-    from utmelab_bank.text import rt_json
-
     from utmelab_bank.model.base import now_iso
+    from utmelab_bank.text import rt_json
 
     question = item.question
     stamp = now_iso()
@@ -293,7 +295,9 @@ def _raw_row(item: Any, run_id: str) -> dict[str, Any]:
         "source": question.source,
         "text": question.text.text,
         "inline": rt_json(question.text.inline),
-        "options": json.dumps([o.model_dump(mode="json") for o in question.options], separators=(",", ":")),
+        "options": json.dumps(
+            [o.model_dump(mode="json") for o in question.options], separators=(",", ":")
+        ),
         "answer": question.answer,
         "subtopic_id": None,
         "section": None,
@@ -353,7 +357,7 @@ def task_cmd(
 async def _task(**kwargs: Any) -> int:
     from utmelab_bank.store.repository import Repository
     from utmelab_bank.store.schema import ensure_schema
-    from utmelab_bank.task import all_tasks, get, run_task
+    from utmelab_bank.task import get, run_task
 
     config = _config(
         target=kwargs["target"],
@@ -399,6 +403,106 @@ def sources_cmd() -> None:
             click.echo(f"  note      {caps.note}")
 
 
+@_command("goal")
+@click.argument("name")
+@click.option("--task", "tasks", multiple=True, help="Task name; repeatable, run in order given.")
+@click.option(
+    "--where", default="all", help="Selector expression for every task (task:where overrides)."
+)
+@click.option("--limit", type=int, default=None)
+@click.option("--table", default="questions", help="The logical table to iterate.")
+@click.option("--dry-run", is_flag=True)
+@_add_common
+def goal_cmd(
+    name: str,
+    tasks: tuple[str, ...],
+    where: str,
+    limit: int | None,
+    table: str,
+    dry_run: bool,
+    target: str,
+    sink: str | None,
+    local_database: Path | None,
+    log_level: str | None,
+) -> None:
+    """Run named tasks in sequence as one goal.
+
+    Steps are independent units; the goal just wires them together. No task
+    calls another. A failed step stops the goal.
+    """
+    raise SystemExit(
+        asyncio.run(
+            _goal(
+                name=name,
+                tasks=tasks,
+                where=where,
+                limit=limit,
+                table=table,
+                dry_run=dry_run,
+                target=target,
+                sink=sink,
+                local_database=local_database,
+                log_level=log_level,
+            )
+        )
+    )
+
+
+async def _goal(**kwargs: Any) -> int:
+    from utmelab_bank.store.repository import Repository
+    from utmelab_bank.store.schema import ensure_schema
+    from utmelab_bank.task.goal import Step, run_goal
+
+    config = _config(
+        target=kwargs["target"],
+        sink=kwargs["sink"],
+        local_database=kwargs["local_database"],
+    )
+    _setup_logging(kwargs["log_level"] or config.log_level)
+
+    if not kwargs["tasks"]:
+        raise click.ClickException("goal needs at least one --task")
+
+    steps: list[Step] = []
+    for task_spec in kwargs["tasks"]:
+        task_name, step_where = _parse_task_spec(task_spec, kwargs["where"])
+        steps.append(
+            Step(task=task_name, where=step_where, limit=kwargs["limit"], logical=kwargs["table"])
+        )
+
+    async with _open(config) as store:
+        await ensure_schema(store)
+        repo = Repository(store, lane=config.lane)
+        results = await run_goal(
+            config, repo, kwargs["name"], tuple(steps), dry_run=kwargs["dry_run"]
+        )
+
+    any_failed = False
+    any_broken = False
+    for result in results:
+        click.echo(result.summary())
+        if result.run.detail:
+            click.echo(result.run.detail, err=True)
+        if result.run.failed:
+            any_failed = True
+        if result.run.status == "broken":
+            any_broken = True
+
+    if any_broken:
+        return 2
+    if any_failed:
+        return 1
+    return 0
+
+
+def _parse_task_spec(task_spec: str, default_where: str) -> tuple[str, str]:
+    """Split ``task:where`` into (task, where); the colon is optional."""
+    if ":" in task_spec:
+        task_name, where = task_spec.split(":", 1)
+        return task_name, where
+    return task_spec, default_where
+
+
 @cli.command("tasks")
 def tasks_cmd() -> None:
     """What each task does, and what it fills."""
@@ -442,12 +546,22 @@ def config_cmd(target: str, sink: str | None, local_database: Path | None) -> No
 @_command("contract")
 @click.option("--deep", is_flag=True, help="Also count rows and name never-written columns.")
 @_add_common
-def contract_cmd(deep: bool, target: str, sink: str | None, local_database: Path | None, log_level: str | None) -> None:
+def contract_cmd(
+    deep: bool,
+    target: str,
+    sink: str | None,
+    local_database: Path | None,
+    log_level: str | None,  # noqa: ARG001
+) -> None:
     """Compare the database against what the API says it reads."""
-    raise SystemExit(asyncio.run(_contract(deep=deep, target=target, sink=sink, local_database=local_database)))
+    raise SystemExit(
+        asyncio.run(_contract(deep=deep, target=target, sink=sink, local_database=local_database))
+    )
 
 
-async def _contract(*, deep: bool, target: str, sink: str | None, local_database: Path | None) -> int:
+async def _contract(
+    *, deep: bool, target: str, sink: str | None, local_database: Path | None
+) -> int:
     from utmelab_bank.contract import check_shapes, load_contract, read_contract_version
     from utmelab_bank.store.schema import ensure_schema
 

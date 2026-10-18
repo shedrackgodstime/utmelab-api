@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Final
 
 __all__ = [
+    "AiError",
     "BankError",
+    "BlobError",
     "ConfigError",
     "ContractError",
-    "SourceError",
-    "TaskError",
-    "StoreError",
-    "BlobError",
-    "AiError",
     "RowFailed",
+    "SourceError",
+    "StoreError",
+    "TaskError",
 ]
 
 

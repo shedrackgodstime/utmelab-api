@@ -28,6 +28,7 @@ from utmelab_bank.source.base import FetchRequest
 from utmelab_bank.source.http import PoliteSession
 from utmelab_bank.source.myschool.parser import (
     EXAMS,
+    ExamSpec,
     JsonRow,
     ParsedQuestion,
     api_last_page,
@@ -40,12 +41,13 @@ from utmelab_bank.source.myschool.parser import (
     subject_listing_url,
 )
 
-__all__ = ["fetch_subject", "fetch_via_api", "fetch_via_html", "DETAIL_URL"]
+__all__ = ["DETAIL_URL", "fetch_subject", "fetch_via_api", "fetch_via_html"]
 
 log = logging.getLogger(__name__)
 
 _BASE: Final[str] = "https://myschool.ng"
 DETAIL_URL: Final[str] = _BASE + "/classroom/{slug}/{item_id}?exam_type={exam}&exam_year={year}"
+
 
 async def fetch_subject(
     request: FetchRequest,
@@ -167,10 +169,10 @@ async def fetch_via_html(
                 year=year,
             )
             try:
-                page = await session.get(detail_url)
+                detail = await session.get(detail_url)
                 parsed.append(
                     parse_detail(
-                        page.text,
+                        detail.text,
                         exam=request.exam,
                         subject=request.subject,
                         year=year,
@@ -187,10 +189,10 @@ async def fetch_via_html(
     return _report(parsed, refused)
 
 
-def _spec(request: FetchRequest) -> object:
+def _spec(request: FetchRequest) -> ExamSpec:
     spec = EXAMS.get(request.exam)
     if spec is None:
-        raise SourceError("unknown exam", exam=request.exam, known=sorted(EXMAS))
+        raise SourceError("unknown exam", exam=request.exam, known=sorted(EXAMS))
     return spec
 
 

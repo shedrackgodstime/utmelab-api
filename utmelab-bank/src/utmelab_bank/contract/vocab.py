@@ -18,17 +18,17 @@ from __future__ import annotations
 from typing import Final, Literal
 
 __all__ = [
-    "VERIFIER_KIND",
-    "VERDICT",
-    "SCOPE",
-    "VERIFICATION_SCOPE_NEEDED",
+    "AI_STATUS",
+    "EXAM",
+    "GATE_REASON",
+    "PASSAGE_KIND",
     "PIPELINE_STATUS",
     "PIPELINE_STATUS_CURRENT",
     "PIPELINE_STATUS_RETIRED",
-    "AI_STATUS",
-    "EXAM",
-    "PASSAGE_KIND",
-    "GATE_REASON",
+    "SCOPE",
+    "VERDICT",
+    "VERIFICATION_SCOPE_NEEDED",
+    "VERIFIER_KIND",
 ]
 
 VERIFIER_KIND: Final[tuple[str, ...]] = (

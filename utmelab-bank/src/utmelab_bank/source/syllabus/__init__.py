@@ -12,6 +12,7 @@ from typing import Final
 from utmelab_bank.config import Config
 from utmelab_bank.errors import SourceError
 from utmelab_bank.model.catalog import Subject, Subtopic, Topic
+from utmelab_bank.model.question import Question
 from utmelab_bank.source.base import FetchRequest, SourceCapabilities
 from utmelab_bank.source.http import PoliteSession
 from utmelab_bank.text import slugify, strip_tags, visible_lines
@@ -55,11 +56,13 @@ class SyllabusSource:
     def supports(self, request: FetchRequest) -> bool:
         return request.exam == self._exam
 
-    async def scrape(self, request: FetchRequest, config: Config) -> list[Subject]:
+    async def scrape(self, _request: FetchRequest, _config: Config) -> list[Question]:
         """Not what this source is for. Use ``catalog``."""
         raise SourceError("this source fetches the catalog, not questions", source=self.name)
 
-    async def catalog(self, subject: str, config: Config) -> tuple[Subject, list[Topic], list[Subtopic]]:
+    async def catalog(
+        self, subject: str, config: Config
+    ) -> tuple[Subject, list[Topic], list[Subtopic]]:
         """One subject's topic tree."""
         async with PoliteSession(config) as session:
             markup = (await session.get(self._url(subject))).text

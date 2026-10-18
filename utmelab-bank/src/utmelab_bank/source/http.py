@@ -13,14 +13,15 @@ from __future__ import annotations
 import asyncio
 import random
 import time
-from typing import Any, AsyncIterator, Final
+from collections.abc import AsyncIterator
+from typing import Any, Final
 
 import httpx
 
 from utmelab_bank.config import Config
 from utmelab_bank.errors import SourceError
 
-__all__ = ["PoliteSession", "RETRYABLE_STATUS"]
+__all__ = ["RETRYABLE_STATUS", "PoliteSession"]
 
 #: 429 is rate limited, so it is worth waiting out. 4xx generally is not.
 RETRYABLE_STATUS: Final[frozenset[int]] = frozenset({408, 425, 429, 500, 502, 503, 504})
@@ -92,7 +93,7 @@ class PoliteSession:
                 last = exc
                 if attempt == attempts:
                     break
-                await asyncio.sleep(min(2 ** attempt, 30))
+                await asyncio.sleep(min(2**attempt, 30))
                 continue
 
             if response.status_code < 400:
@@ -105,7 +106,7 @@ class PoliteSession:
             )
             if response.status_code not in RETRYABLE_STATUS or attempt == attempts:
                 break
-            await asyncio.sleep(min(2 ** attempt, 30))
+            await asyncio.sleep(min(2**attempt, 30))
 
         raise last or SourceError("request failed", url=url)
 

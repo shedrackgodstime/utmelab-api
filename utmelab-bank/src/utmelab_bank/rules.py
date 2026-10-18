@@ -26,13 +26,13 @@ from utmelab_bank.text import has_numbered_gap, mentions_cloze, mentions_figure,
 
 __all__ = [
     "GATE_REASON",
-    "GateVerdict",
     "MAX_OPTIONS",
     "MIN_OPTIONS",
     "MIN_PASSAGE_CHARS",
     "MIN_STEM_CHARS",
     "NOVEL_VOCABULARY",
     "OPTION_COUNTS",
+    "GateVerdict",
     "is_novel_leak",
     "judge",
     "names_underline",
@@ -218,7 +218,6 @@ def load_json_column(row: dict[str, Any], column: str, fallback: Any) -> Any:
     something that is not json, because a raw row arrives from a scraper. Three
     separate copies of this helper was one too many.
     """
-    import json
 
     value = row.get(column)
     if value in (None, ""):
@@ -235,8 +234,7 @@ def option_ids_of(row: dict[str, Any]) -> list[str]:
     """The option labels on a question row, in order."""
     entries = load_json_column(row, "options", [])
     return [
-        str(entry.get("id", "")) if isinstance(entry, dict) else str(entry)
-        for entry in entries
+        str(entry.get("id", "")) if isinstance(entry, dict) else str(entry) for entry in entries
     ]
 
 

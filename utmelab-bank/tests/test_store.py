@@ -12,6 +12,7 @@ from typing import Any
 
 import pytest
 
+from conftest import make_question
 from utmelab_bank.config import Config, RepoRoot
 from utmelab_bank.errors import ConfigError, StoreError
 from utmelab_bank.store.client import Store
@@ -19,12 +20,11 @@ from utmelab_bank.store.repository import Repository, Update
 from utmelab_bank.store.schema import LANES, assert_lane_parity, table
 from utmelab_bank.store.selectors import describe, explain, resolve
 
-from conftest import make_question
-
 
 def make_question_rows(count: int, **overrides: Any) -> list[dict[str, Any]]:
     """Distinct questions, so the raw lane's dedupe key moves with the id."""
     return [make_question(id=f"q_{index}", **overrides) for index in range(count)]
+
 
 # ---------------------------------------------------------------------------
 # Lanes
@@ -231,7 +231,6 @@ async def test_the_runs_table_records_a_run(
     question_row: dict[str, Any],
     config: Config,
 ) -> None:
-    from utmelab_bank.model.run import Run
     from utmelab_bank.task import run_task
     from utmelab_bank.task.gates import MechanicalGate
 

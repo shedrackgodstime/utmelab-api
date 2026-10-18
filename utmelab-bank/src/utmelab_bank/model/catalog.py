@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from utmelab_bank.model.base import BankModel, Timed
 
-__all__ = ["Exam", "Subject", "Topic", "Subtopic", "TopicCountry"]
+__all__ = ["Exam", "Subject", "Subtopic", "Topic", "TopicCountry"]
 
 
 class Exam(BankModel):

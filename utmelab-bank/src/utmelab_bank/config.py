@@ -19,11 +19,11 @@ from utmelab_bank.errors import ConfigError
 
 __all__ = [
     "Config",
-    "SinkName",
     "Lane",
     "RepoRoot",
-    "load",
+    "SinkName",
     "find_repo_root",
+    "load",
 ]
 
 SinkName = Literal["db", "json"]
@@ -263,5 +263,4 @@ def load(
     if target is not None:
         settings["lane"] = target
 
-    return Config(**settings, flags=where or {})  # type: ignore[arg-type]
-    return config
+    return Config(**settings, flags=where or {})

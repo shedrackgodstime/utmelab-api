@@ -8,9 +8,10 @@ from utmelab_bank.model.media import MediaRow, MediaStatus, Passage, PassageKind
 from utmelab_bank.model.question import QUESTION_COLUMNS, GateStatus, Question
 from utmelab_bank.model.richtext import Mark, MarkKind, Option, RichText, mark_key, snap_offsets
 from utmelab_bank.model.run import Lane, RowOutcome, RowState, Run
-from utmelab_bank.model.verification import Verification, Verdict, VerifierKind
+from utmelab_bank.model.verification import Verdict, Verification, VerifierKind
 
 __all__ = [
+    "QUESTION_COLUMNS",
     "BankModel",
     "Exam",
     "GateStatus",
@@ -22,7 +23,6 @@ __all__ = [
     "Option",
     "Passage",
     "PassageKind",
-    "QUESTION_COLUMNS",
     "Question",
     "RichText",
     "RowOutcome",
@@ -33,8 +33,8 @@ __all__ = [
     "Timed",
     "Topic",
     "TopicCountry",
-    "Verification",
     "Verdict",
+    "Verification",
     "VerifierKind",
     "mark_key",
     "now_iso",

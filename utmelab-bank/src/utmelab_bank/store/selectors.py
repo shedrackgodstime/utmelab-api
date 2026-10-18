@@ -14,23 +14,25 @@ with its arguments bound.
 
 from __future__ import annotations
 
+import contextlib
 import re
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from typing import Any, Callable, Final
+from typing import Any, Final
 
 from utmelab_bank.errors import StoreError
 from utmelab_bank.model.base import now_iso
 
 __all__ = [
+    "Predicate",
     "Selector",
     "SelectorSet",
-    "Predicate",
-    "register",
-    "resolve",
-    "explain",
     "all_names",
+    "explain",
     "is_known_column",
     "normalise",
+    "register",
+    "resolve",
 ]
 
 #: A predicate receives the table prefix and the bound arguments, and returns a
@@ -63,7 +65,6 @@ _COLUMNS: Final[frozenset[str]] = frozenset(
         "answer",
         "content_hash",
         "fingerprint",
-        "stem_key",
         "stem_key",
         "gate_status",
         "gate_reason",
@@ -187,6 +188,7 @@ def register(selector: Selector) -> Selector:
     _REGISTRY[selector.name] = selector
     return selector
 
+
 def all_names() -> tuple[str, ...]:
     return tuple(sorted(_REGISTRY))
 
@@ -240,10 +242,8 @@ def resolve(expression: str, *, table: str | None = None) -> SelectorSet:
         selector = describe(normalise(name))
         value: Any = raw_value.strip() if raw_value else None
         if value is not None:
-            try:
+            with contextlib.suppress(ValueError):
                 value = int(value)
-            except ValueError:
-                pass
 
         clause, bound = selector.sql({}, (value,), prefix)
         for position, (key, bound_value) in enumerate(sorted(bound.items())):
@@ -303,7 +303,9 @@ register(
         matches=_equals("run_id"),
     )
 )
-def _in_ids(row: dict[str, Any], args: tuple[Any, ...], prefix: str) -> tuple[str, dict[str, Any]]:
+
+
+def _in_ids(_row: dict[str, Any], args: tuple[Any, ...], prefix: str) -> tuple[str, dict[str, Any]]:
     """``id IN (...)`` with one placeholder per element.
 
     The driver has no list expansion, so the placeholders are built here. The
@@ -332,7 +334,7 @@ register(
     Selector(
         "gated",
         "rows that passed the mechanical gate",
-        lambda _r, _a, p: (f'{p}"gate_status" = \'pass\'', {}),
+        lambda _r, _a, p: (f"{p}\"gate_status\" = 'pass'", {}),
         fills=("gate_status",),
         matches=_equals("gate_status"),
     )
@@ -372,8 +374,7 @@ register(
         "has images",
         "questions carrying at least one image mark",
         lambda _r, _a, p: (
-            f'({p}"inline" LIKE \'%"kind":"image"%\''
-            f" OR {p}\"options\" LIKE '%\"kind\":\"image\"%')",
+            f'({p}"inline" LIKE \'%"kind":"image"%\' OR {p}"options" LIKE \'%"kind":"image"%\')',
             {},
         ),
         matches=lambda r, _v: _carries_image(r),
@@ -401,7 +402,7 @@ register(
     Selector(
         "not uploaded",
         "media rows the upload task has not finished with",
-        lambda _r, _a, p: (f'{p}"status" <> \'uploaded\'', {}),
+        lambda _r, _a, p: (f"{p}\"status\" <> 'uploaded'", {}),
         matches=lambda r, _v: str(r.get("status")) != "uploaded",
     )
 )
@@ -409,7 +410,7 @@ register(
     Selector(
         "fetched",
         "media rows whose bytes are local",
-        lambda _r, _a, p: (f'{p}"status" = \'fetched\'', {}),
+        lambda _r, _a, p: (f"{p}\"status\" = 'fetched'", {}),
         matches=_equals("status"),
     )
 )
@@ -427,11 +428,13 @@ register(
         "failed rows whose next attempt is due",
         lambda _r, _a, p: (
             f'({p}"error" IS NOT NULL AND '
-            f"({p}\"next_retry_at\" IS NULL OR {p}\"next_retry_at\" <= :sel_now))",
+            f'({p}"next_retry_at" IS NULL OR {p}"next_retry_at" <= :sel_now))',
             {"sel_now": now_iso()},
         ),
-        matches=lambda r, _v: bool(r.get("error"))
-        and (not r.get("next_retry_at") or str(r["next_retry_at"]) <= now_iso()),
+        matches=lambda r, _v: (
+            bool(r.get("error"))
+            and (not r.get("next_retry_at") or str(r["next_retry_at"]) <= now_iso())
+        ),
     )
 )
 register(
@@ -440,7 +443,7 @@ register(
         "questions with no human pass on the current content",
         lambda _r, _a, p: (
             "NOT EXISTS (SELECT 1 FROM verifications v WHERE v.question_id = "
-            f'{p}"id" AND v.kind = \'human\' AND v.verdict = \'pass\' '
+            f"{p}\"id\" AND v.kind = 'human' AND v.verdict = 'pass' "
             f'AND v.content_hash = {p}"content_hash")',
             {},
         ),

@@ -69,11 +69,11 @@ class FetchRequest:
 
 @runtime_checkable
 class Source(Protocol):
-    """A place questions come from.
+    """A place question material comes from.
 
-    ``scrape`` writes the raw lane only. A source that decides anything about
-    quality is doing a task's job, and that is how the two harvesters came to
-    disagree about the same rows.
+    ``scrape`` is question-shaped for the myschool site. ``SyllabusSource``
+    refuses it and serves ``catalog()`` instead, which is why this protocol
+    stays narrow: a catalog is not a question list.
     """
 
     name: str

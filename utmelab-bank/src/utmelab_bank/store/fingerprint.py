@@ -20,10 +20,11 @@ from __future__ import annotations
 import hashlib
 import re
 import unicodedata
+from collections.abc import Sequence
 
 from utmelab_bank.model.richtext import RichText
 
-__all__ = ["stem_fingerprint", "normalise_for_compare"]
+__all__ = ["normalise_for_compare", "stem_fingerprint"]
 
 #: Marks are dropped before hashing, because an underline is presentation and two
 #: rows differing only in presentation are the same question.

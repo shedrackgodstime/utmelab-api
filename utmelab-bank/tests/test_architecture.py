@@ -23,7 +23,8 @@ from utmelab_bank.source import all_sources, build_source
 from utmelab_bank.source.base import FetchRequest
 from utmelab_bank.store import selectors
 from utmelab_bank.store.schema import LANES, assert_lane_parity, table
-from utmelab_bank.task import all_tasks, get as get_task
+from utmelab_bank.task import all_tasks
+from utmelab_bank.task import get as get_task
 
 SRC: Final[Path] = Path(utmelab_bank.__file__).parent
 
@@ -32,6 +33,8 @@ def modules() -> list[Path]:
     return sorted(SRC.rglob("*.py"))
 
 
+# Tests enumerate module ASTs with nested isinstance guards; collapsing them
+# would trade readability for a lint score, so SIM102 stays off here.
 def string_literals(path: Path) -> list[str]:
     """Every string in a file that is not a docstring.
 
@@ -98,6 +101,13 @@ def test_no_task_imports_another_task() -> None:
             # subpackages so the registry fills; that is not one task reaching
             # into another.
             continue
+        # The importer's own package, e.g. task/ai/tasks.py lives in task.ai.
+        # Sibling imports inside one task package (task.ai.tasks importing
+        # task.ai.schema) are cohesion, not one task reaching into another.
+        try:
+            importer_pkg = ".".join(path.relative_to(SRC).with_suffix("").parts[:-1])
+        except ValueError:
+            importer_pkg = ""
         for module in imported_modules(path):
             if not module.startswith("utmelab_bank.task"):
                 continue
@@ -105,6 +115,9 @@ def test_no_task_imports_another_task() -> None:
             if tail and tail[0] in {"base", "goal"}:
                 continue
             if len(tail) >= 2:
+                importee_pkg = ".".join(["task", *tail[:-1]])
+                if importee_pkg == importer_pkg:
+                    continue
                 offenders.append(f"{path.relative_to(SRC)} imports {module}")
     assert not offenders, "tasks must not import tasks:\n" + "\n".join(offenders)
 
@@ -330,7 +343,7 @@ def test_selector_values_are_bound_not_interpolated() -> None:
 
 def test_selector_table_prefix_is_applied() -> None:
     resolved = selectors.resolve("no description", table="work_media")
-    assert "work_media.\"description\"" in resolved.clause
+    assert 'work_media."description"' in resolved.clause
 
 
 # ---------------------------------------------------------------------------
@@ -370,7 +383,7 @@ def test_the_verified_vocabulary_matches_what_the_api_joins_on() -> None:
     """The three values the API's predicate names must be the ones we write."""
     assert "human" in vocab.VERIFIER_KIND
     assert "pass" in vocab.VERDICT
-    assert vocab.VERIFICATION_SCOPE_NEEDED == {"answer", "explanation"}
+    assert {"answer", "explanation"} == vocab.VERIFICATION_SCOPE_NEEDED
 
 
 def test_the_retired_status_is_not_writable() -> None:

@@ -29,7 +29,7 @@ class MechanicalGate:
     async def apply(self, row: dict[str, Any], ctx: TaskContext) -> Any:
         return await record_verdict(row, ctx)
 
-    async def collect(self, ctx: TaskContext) -> list[Any]:
+    async def collect(self, _ctx: TaskContext) -> list[Any]:
         return []
 
 

@@ -13,19 +13,20 @@ from __future__ import annotations
 
 import html
 import json
-from typing import Any, Sequence
+from collections.abc import Sequence
+from typing import Any
 
 from utmelab_bank.model.richtext import Mark, RichText, snap_offsets
 
 __all__ = [
+    "clean_blocks",
+    "from_json",
+    "join_rich",
+    "merge_words",
+    "offset_of",
     "rt",
     "rt_json",
-    "from_json",
     "snap",
-    "offset_of",
-    "join_rich",
-    "clean_blocks",
-    "merge_words",
     "unescape_segment",
 ]
 
@@ -100,7 +101,9 @@ def join_rich(parts: Sequence[RichText], separator: str = " ") -> RichText:
             texts.append(separator)
             position += len(separator)
         texts.append(body)
-        marks.extend(mark.model_copy(update={"start": mark.start + position}) for mark in part.inline)
+        marks.extend(
+            mark.model_copy(update={"start": mark.start + position}) for mark in part.inline
+        )
         position += len(body)
 
     marks.sort(key=lambda mark: (mark.start, mark.len))

@@ -17,7 +17,8 @@ model layer, never anything a caller typed.
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, AsyncIterator, Iterable, Sequence
+from collections.abc import AsyncIterator, Iterable, Sequence
+from typing import TYPE_CHECKING, Any
 
 from utmelab_bank.config import Lane
 from utmelab_bank.contract.content_hash import stamp_rows
@@ -56,6 +57,18 @@ class Update(dict[str, Any]):
 _EXTRA_COLUMNS: frozenset[str] = frozenset(
     {"source_url", "source_item_id", "payload_hash", "kind", "status"}
 )
+
+#: Catalog tables are keyed by ``slug``, not ``id``. Everything else carries
+#: ``created_at`` and ``id``, so it orders by both.
+_ORDER: frozenset[str] = frozenset({"subjects", "topics", "subtopics"})
+
+
+def _order_for(physical: str) -> str:
+    """The ORDER BY for one physical table, as a fragment including the space."""
+    for logical in _ORDER:
+        if physical.endswith(logical):
+            return f' ORDER BY "{physical}"."created_at", "{physical}"."slug"'
+    return f' ORDER BY "{physical}"."created_at", "{physical}"."id"'
 
 
 class Repository:
@@ -100,7 +113,7 @@ class Repository:
         sql = f'SELECT * FROM "{physical}"'
         if resolved.clause:
             sql += f" WHERE {resolved.clause}"
-        sql += f' ORDER BY "{physical}"."created_at", "{physical}"."id"'
+        sql += _order_for(physical)
         if limit is not None:
             sql += f" LIMIT {int(limit)}"
             if offset:
@@ -309,7 +322,9 @@ class Repository:
             },
         )
 
-    async def record_outcomes(self, run_id: str, outcomes: Sequence[tuple[str, str, str | None]]) -> None:
+    async def record_outcomes(
+        self, run_id: str, outcomes: Sequence[tuple[str, str, str | None]]
+    ) -> None:
         """Persist ``(row_id, state, code)`` triples for a finished run."""
         if not outcomes:
             return

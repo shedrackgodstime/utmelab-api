@@ -22,9 +22,9 @@ from utmelab_bank.errors import ContractError
 
 __all__ = [
     "SUPPORTED_CONTRACT_VERSIONS",
-    "supported",
-    "refuse_unknown",
     "StampedVersion",
+    "refuse_unknown",
+    "supported",
 ]
 
 #: Contract versions this package implements. A shape change that alters what we

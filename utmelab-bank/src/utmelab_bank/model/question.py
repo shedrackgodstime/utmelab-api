@@ -13,10 +13,10 @@ from typing import Literal, Self
 
 from pydantic import Field, model_validator
 
-from utmelab_bank.model.base import BankModel, Timed
+from utmelab_bank.model.base import Timed
 from utmelab_bank.model.richtext import Mark, Option, RichText
 
-__all__ = ["Question", "GateStatus", "QUESTION_COLUMNS"]
+__all__ = ["QUESTION_COLUMNS", "GateStatus", "Question"]
 
 #: Stamped by ``store.Repository`` on the way into a lane, because the hash is a
 #: boundary field owned by ``contract.content_hash``.
@@ -72,7 +72,6 @@ class Question(Timed):
         if len(set(ids)) != len(ids):
             raise ValueError("option ids must be unique")
         return self
-
 
     @model_validator(mode="after")
     def _hash_is_stamped_not_computed(self) -> Self:

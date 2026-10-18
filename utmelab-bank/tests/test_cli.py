@@ -9,7 +9,6 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from typing import Any
 
 import pytest
 from click.testing import CliRunner
@@ -17,9 +16,10 @@ from click.testing import CliRunner
 from utmelab_bank.blob.gitstore import GitStore
 from utmelab_bank.blob.paths import blob_path_for, extension_for, is_blob_name, url_for
 from utmelab_bank.cli import cli, main
-from utmelab_bank.errors import BlobError, ConfigError, SourceError, StoreError
+from utmelab_bank.errors import BlobError, SourceError, StoreError
 from utmelab_bank.source.myschool.parser import EXAMS, slug_for
-from utmelab_bank.task import all_tasks, get as get_task
+from utmelab_bank.task import all_tasks
+from utmelab_bank.task import get as get_task
 
 
 @pytest.fixture
@@ -127,9 +127,9 @@ def test_an_unknown_task_is_named_with_the_known_ones(runner: CliRunner) -> None
 
 
 def test_a_database_url_that_is_not_a_url_is_refused(tmp_path: Path) -> None:
-    from utmelab_bank.store.client import Store
-
     import asyncio
+
+    from utmelab_bank.store.client import Store
 
     with pytest.raises(StoreError, match="unrecognised database url"):
         asyncio.run(Store.open("htp:/typo"))
@@ -208,7 +208,9 @@ def test_every_subject_the_bank_carries_is_mapped_for_its_exam() -> None:
     from utmelab_bank.source.myschool.subjects import load_map
 
     catalog = json.loads(
-        (Path(__file__).resolve().parents[2] / "utmelab-api-old" / "data" / "subjects.json").read_text()
+        (
+            Path(__file__).resolve().parents[2] / "utmelab-api-old" / "data" / "subjects.json"
+        ).read_text()
     )
     subject_map = load_map()
     for exam in {row["exam"] for row in catalog}:
@@ -234,6 +236,7 @@ def test_a_syllabus_source_serves_its_own_exam_for_the_catalog() -> None:
     waec = build_source("waecsyllabus")
     assert jamb.supports(FetchRequest(exam="jamb", subject="physics"))
     assert not jamb.supports(FetchRequest(exam="waec", subject="physics"))
+    assert waec.supports(FetchRequest(exam="waec", subject="physics"))
     assert jamb.capabilities().catalog
     assert not jamb.capabilities().media
 
