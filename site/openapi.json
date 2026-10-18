@@ -1,8 +1,8 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "UTME Lab Question Bank API",
-    "description": "Every candidate writes English plus three others. Questions are keyed to subtopics so a weak spot is a 20-question sitting, not a 40-question paper. Explanations are Markdown and carry the trap that catches people.",
+    "title": "UTME Lab API",
+    "description": "A keyed question bank for Nigerian entry exams. Every question is keyed to a subtopic so a weak spot is a twenty-question sitting rather than a mock. Explanations carry the trap that catches people. Send your key in the `X-API-Key` header; the whole surface is keyed.",
     "license": {
       "name": ""
     },
@@ -20,14 +20,13 @@
         "tags": [
           "catalog"
         ],
-        "summary": "Per-topic expectations against verified coverage.",
-        "description": "Measured per-topic expectations against verified coverage (D63, provisional, opt-in). A topic is ready when deduped verified rows meet the measured expectation, rounded up. `governed` is false when the measurement does not cover the paper (D70) or the bank holds fewer than two cohorts (D71); then `complete` is coverage, not a promise, and papers come from the count gate.",
-        "operationId": "getBlueprint",
+        "summary": "Measured expectations for one exam subject.",
+        "operationId": "listBlueprints",
         "parameters": [
           {
             "name": "exam",
             "in": "path",
-            "description": "Exam code.",
+            "description": "Exam code, e.g. `JAMB`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -36,17 +35,8 @@
           {
             "name": "subject",
             "in": "path",
-            "description": "Subject slug within that exam.",
+            "description": "Subject slug, e.g. `physics`.",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "country",
-            "in": "query",
-            "description": "Country code filter, e.g. GH. Absent means the full honest view.",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -57,13 +47,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlueprintResponse"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Blueprint"
+                  }
                 }
               }
             }
-          },
-          "404": {
-            "description": "No such subject, or no blueprint rows"
           }
         }
       }
@@ -73,14 +63,17 @@
         "tags": [
           "catalog"
         ],
-        "summary": "Exams the bank serves.",
+        "summary": "Every exam the bank holds.",
         "operationId": "listExams",
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ExamList"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Exam"
+                  }
                 }
               }
             }
@@ -93,13 +86,13 @@
         "tags": [
           "papers"
         ],
-        "summary": "Paper assembly readiness for an exam.",
-        "operationId": "getExamScheme",
+        "summary": "How an exam's paper is shaped, and whether the bank can fill it.",
+        "operationId": "getExamReadiness",
         "parameters": [
           {
             "name": "exam",
             "in": "path",
-            "description": "Exam code, as listed by GET /exams.",
+            "description": "Exam code, e.g. `JAMB`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -108,10 +101,13 @@
           {
             "name": "country",
             "in": "query",
-            "description": "Country scope, e.g. GH.",
+            "description": "Country scope, e.g. `GH`. A one-country exam implies its own;\nanything else needs it said out loud, and completeness is only\never claimed for a scope.",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             }
           }
         ],
@@ -126,7 +122,7 @@
             }
           },
           "404": {
-            "description": "No subject carried for that exam"
+            "description": "No such exam, or an exam with no subjects"
           }
         }
       }
@@ -136,13 +132,13 @@
         "tags": [
           "catalog"
         ],
-        "summary": "One exam subject list.",
+        "summary": "Every subject one exam offers.",
         "operationId": "listSubjects",
         "parameters": [
           {
             "name": "exam",
             "in": "path",
-            "description": "Exam code, e.g. JAMB",
+            "description": "Exam code, e.g. `JAMB`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -154,13 +150,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ExamSubjects"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Subject"
+                  }
                 }
               }
             }
-          },
-          "404": {
-            "description": "No such exam"
           }
         }
       }
@@ -170,40 +166,98 @@
         "tags": [
           "account"
         ],
-        "summary": "The calling key: label, quota, and expiry.",
-        "description": "Returns the calling key exactly as stored. Use it to check a key works.",
-        "operationId": "whoami",
+        "summary": "The presenting key's own prefix, admin flag and scopes.",
+        "operationId": "getCurrentKey",
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ApiKey"
+                  "$ref": "#/components/schemas/KeyInfo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/meta/rows/{table}": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "summary": "A page of rows from one allowlisted table.",
+        "operationId": "listTableRows",
+        "parameters": [
+          {
+            "name": "table",
+            "in": "path",
+            "description": "Table name from `/api/v1/meta/tables`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Rows to return. Default: 20.",
+            "required": false,
+            "schema": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int64",
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RowPage"
                 }
               }
             }
           },
-          "401": {
-            "description": "Missing or invalid API key"
-          },
-          "429": {
-            "description": "Over the key's per-minute limit"
+          "404": {
+            "description": "A table off the allowlist, or absent"
           }
-        },
-        "security": [
-          {
-            "ApiKeyAuth": []
+        }
+      }
+    },
+    "/api/v1/meta/tables": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "summary": "The bank tables exposed to keys.",
+        "operationId": "listTables",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TableRef"
+                  }
+                }
+              }
+            }
           }
-        ]
+        }
       }
     },
     "/api/v1/novels": {
       "get": {
         "tags": [
-          "novels"
+          "catalog"
         ],
-        "summary": "Prescribed texts for an exam cycle.",
-        "description": "All novels, newest prescription first. No key required.",
+        "summary": "The prescribed-text catalog.",
         "operationId": "listNovels",
         "parameters": [
           {
@@ -212,16 +266,22 @@
             "description": "Scope to an exam.",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             }
           },
           {
             "name": "year",
             "in": "query",
-            "description": "Prescription year, e.g. 2025.",
+            "description": "Scope to a prescribed cycle.",
             "required": false,
             "schema": {
-              "type": "integer",
+              "type": [
+                "integer",
+                "null"
+              ],
               "format": "int32",
               "minimum": 0
             }
@@ -229,19 +289,25 @@
           {
             "name": "featured",
             "in": "query",
-            "description": "Only the current set text.",
+            "description": "Only featured texts. Default: no filter.",
             "required": false,
             "schema": {
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             }
           },
           {
             "name": "category",
             "in": "query",
-            "description": "english (reading text) or literature (prescribed text).",
+            "description": "Scope to a category, e.g. `literature`.",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             }
           }
         ],
@@ -250,7 +316,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NovelList"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Novel"
+                  }
                 }
               }
             }
@@ -261,16 +330,15 @@
     "/api/v1/novels/{id}": {
       "get": {
         "tags": [
-          "novels"
+          "catalog"
         ],
-        "summary": "One novel: chapters, characters, themes.",
-        "description": "One novel: book, chapters, characters, themes. No key required.",
+        "summary": "One novel with its chapters, characters, themes and quiz.",
         "operationId": "getNovel",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "Novel id, e.g. lekki-headmaster.",
+            "description": "Novel id, e.g. `lekki`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -296,16 +364,15 @@
     "/api/v1/novels/{id}/questions": {
       "get": {
         "tags": [
-          "novels"
+          "catalog"
         ],
-        "summary": "Quiz rows for one novel.",
-        "description": "Quiz items for one novel, paged. The answer is withheld unless asked.",
+        "summary": "A novel's quiz, one page. The answer is withheld unless asked for.",
         "operationId": "listNovelQuestions",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "Novel id.",
+            "description": "Novel id, e.g. `lekki`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -317,7 +384,10 @@
             "description": "Drill one chapter.",
             "required": false,
             "schema": {
-              "type": "integer",
+              "type": [
+                "integer",
+                "null"
+              ],
               "format": "int32",
               "minimum": 0
             }
@@ -328,16 +398,22 @@
             "description": "Include the answer and the working. Default: false.",
             "required": false,
             "schema": {
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             }
           },
           {
             "name": "page",
             "in": "query",
-            "description": "1-based page number. Default: 1.",
+            "description": "1-based page. Default: 1.",
             "required": false,
             "schema": {
-              "type": "integer",
+              "type": [
+                "integer",
+                "null"
+              ],
               "format": "int32",
               "minimum": 0
             }
@@ -345,10 +421,13 @@
           {
             "name": "per_page",
             "in": "query",
-            "description": "Page size. Default: 50. Capped at 200.",
+            "description": "Rows per page, clamped. Default: 50, cap: 200.",
             "required": false,
             "schema": {
-              "type": "integer",
+              "type": [
+                "integer",
+                "null"
+              ],
               "format": "int32",
               "minimum": 0
             }
@@ -359,26 +438,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NovelQuestionPage"
+                  "$ref": "#/components/schemas/Page_RenderedNovelQuestion"
                 }
               }
             }
           },
-          "401": {
-            "description": "Missing or invalid API key"
-          },
           "404": {
             "description": "No such novel"
-          },
-          "429": {
-            "description": "Over the key's per-minute limit"
           }
-        },
-        "security": [
-          {
-            "ApiKeyAuth": []
-          }
-        ]
+        }
       }
     },
     "/api/v1/papers/{exam}/{subject}": {
@@ -386,14 +454,13 @@
         "tags": [
           "papers"
         ],
-        "summary": "Assemble a seeded mock paper.",
-        "description": "Assemble one subject's mock from ready topics (D69): deterministic per seed, answers always withheld. 409 names the gap topics until the subject is complete.",
+        "summary": "Assemble one subject's mock. Deterministic per seed, answers withheld.",
         "operationId": "assemblePaper",
         "parameters": [
           {
             "name": "exam",
             "in": "path",
-            "description": "Exam code.",
+            "description": "Exam code, e.g. `JAMB`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -402,7 +469,7 @@
           {
             "name": "subject",
             "in": "path",
-            "description": "Subject slug within that exam.",
+            "description": "Subject slug, e.g. `physics`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -411,10 +478,13 @@
           {
             "name": "seed",
             "in": "query",
-            "description": "Deterministic draw. Same seed, same paper. Default: 1.",
+            "description": "Deterministic draw. Same seed, same paper. Defaults to 1, as the\npublished contract always has: omitting it stays reproducible.",
             "required": false,
             "schema": {
-              "type": "integer",
+              "type": [
+                "integer",
+                "null"
+              ],
               "format": "int64",
               "minimum": 0
             }
@@ -422,10 +492,13 @@
           {
             "name": "country",
             "in": "query",
-            "description": "Country code filter, e.g. GH.",
+            "description": "Country scope. No row is restricted to a country today\n(`topic_countries` is empty), so this does not change the draw; it\nis accepted so the request is the same shape as readiness.",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             }
           }
         ],
@@ -440,10 +513,10 @@
             }
           },
           "404": {
-            "description": "No such subject for this exam"
+            "description": "No such exam subject"
           },
           "409": {
-            "description": "Bank cannot fill the paper; the detail names what is short"
+            "description": "The bank cannot fill this paper yet; the body names the gaps"
           }
         }
       }
@@ -453,14 +526,13 @@
         "tags": [
           "papers"
         ],
-        "summary": "Score a paper assembled with the same seed.",
-        "description": "Mark a paper assembled with the same seed (D69): re-assembles statelessly and marks only submitted ids. Unsubmitted rows report unanswered, never the key.",
+        "summary": "Re-assemble the same paper and mark the submitted ids. Stateless.",
         "operationId": "scorePaper",
         "parameters": [
           {
             "name": "exam",
             "in": "path",
-            "description": "Exam code.",
+            "description": "Exam code, e.g. `JAMB`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -469,7 +541,7 @@
           {
             "name": "subject",
             "in": "path",
-            "description": "Subject slug within that exam.",
+            "description": "Subject slug, e.g. `physics`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -491,16 +563,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ScoreResponse"
+                  "$ref": "#/components/schemas/ScoredPaper"
                 }
               }
             }
           },
           "404": {
-            "description": "No such subject for this exam"
+            "description": "No such exam subject"
           },
           "409": {
-            "description": "Bank cannot fill the paper; the detail names what is short"
+            "description": "The bank cannot fill this paper yet"
           }
         }
       }
@@ -510,14 +582,13 @@
         "tags": [
           "catalog"
         ],
-        "summary": "One shared stimulus passage.",
-        "description": "One shared stimulus — a comprehension or cloze passage its questions point at.",
+        "summary": "One reading passage shared by many questions.",
         "operationId": "getPassage",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "Passage id.",
+            "description": "Passage id, as a question carries it in `passage_id`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -529,7 +600,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PassageEnvelope"
+                  "$ref": "#/components/schemas/Passage"
                 }
               }
             }
@@ -545,17 +616,19 @@
         "tags": [
           "questions"
         ],
-        "summary": "Paged questions, answers withheld by default.",
-        "description": "Paged, and the answer is withheld unless you ask for it.\n\n**The answer is only in the response when `include_explanation=true`.** A quiz consumer needs the stem first, and an answer in a default payload gets rendered by somebody, eventually, by accident.\n\nRender option labels from array position: ids are stable identity, labels are display.",
+        "summary": "Questions, filtered and paged. The answer is withheld unless asked for.",
         "operationId": "listQuestions",
         "parameters": [
           {
             "name": "subtopic",
             "in": "query",
-            "description": "Drill one subtopic.",
+            "description": "Drill one subtopic id.",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             }
           },
           {
@@ -564,7 +637,10 @@
             "description": "Scope to an exam.",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             }
           },
           {
@@ -573,7 +649,10 @@
             "description": "Scope to a subject within that exam.",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             }
           },
           {
@@ -582,16 +661,22 @@
             "description": "Only human-checked questions. Default: no filter.",
             "required": false,
             "schema": {
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             }
           },
           {
             "name": "year",
             "in": "query",
-            "description": "Only questions prepared for this exam year. Default: no filter.",
+            "description": "Scope to one cohort year.",
             "required": false,
             "schema": {
-              "type": "integer",
+              "type": [
+                "integer",
+                "null"
+              ],
               "format": "int32",
               "minimum": 0
             }
@@ -599,28 +684,37 @@
           {
             "name": "source",
             "in": "query",
-            "description": "Provenance: `past_paper`, `authored` or `imported`. Default: no filter.",
+            "description": "Scope to a provenance, e.g. `past_paper`.",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             }
           },
           {
             "name": "q",
             "in": "query",
-            "description": "Substring of the question text, case-insensitive. Unranked — results stay in id order. Default: no filter.",
+            "description": "Substring search over the question text.",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             }
           },
           {
             "name": "country",
             "in": "query",
-            "description": "Country code filter through subtopic scope, e.g. GH. Default: no filter.",
+            "description": "Scope to a country; a question with no stated scope survives any.",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             }
           },
           {
@@ -629,16 +723,22 @@
             "description": "Include the answer and the working. Default: false.",
             "required": false,
             "schema": {
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             }
           },
           {
             "name": "page",
             "in": "query",
-            "description": "1-based page number. Default: 1.",
+            "description": "1-based page. Default: 1.",
             "required": false,
             "schema": {
-              "type": "integer",
+              "type": [
+                "integer",
+                "null"
+              ],
               "format": "int32",
               "minimum": 0
             }
@@ -646,10 +746,13 @@
           {
             "name": "per_page",
             "in": "query",
-            "description": "Page size. Default: 50. Capped at 200.",
+            "description": "Rows per page, clamped. Default: 50, cap: 200.",
             "required": false,
             "schema": {
-              "type": "integer",
+              "type": [
+                "integer",
+                "null"
+              ],
               "format": "int32",
               "minimum": 0
             }
@@ -660,26 +763,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/QuestionPage"
+                  "$ref": "#/components/schemas/Page_RenderedQuestion"
                 }
               }
             }
           },
-          "401": {
-            "description": "Missing or invalid API key"
-          },
           "404": {
-            "description": "No such subject, or no usable filter"
-          },
-          "429": {
-            "description": "Over the key's per-minute limit"
+            "description": "A filter naming a subject the bank never had"
           }
-        },
-        "security": [
-          {
-            "ApiKeyAuth": []
-          }
-        ]
+        }
       }
     },
     "/api/v1/questions/{id}": {
@@ -687,14 +779,13 @@
         "tags": [
           "questions"
         ],
-        "summary": "One question by id.",
-        "description": "One question by id, shaped exactly like an item from `/questions`.\n\nThe answer is withheld unless `include_explanation=true`, the same rule the list follows.",
+        "summary": "One rendered question. The answer and working are withheld unless asked for.",
         "operationId": "getQuestion",
         "parameters": [
           {
             "name": "id",
             "in": "path",
-            "description": "A question id, exactly as returned by `/questions`.",
+            "description": "Question id.",
             "required": true,
             "schema": {
               "type": "string"
@@ -706,7 +797,10 @@
             "description": "Include the answer and the working. Default: false.",
             "required": false,
             "schema": {
-              "type": "boolean"
+              "type": [
+                "boolean",
+                "null"
+              ]
             }
           }
         ],
@@ -720,34 +814,19 @@
               }
             }
           },
-          "401": {
-            "description": "Missing or invalid API key"
-          },
           "404": {
-            "description": "No question with that id"
+            "description": "No such question"
           }
         }
       }
     },
-    "/api/v1/questions/{id}/report": {
+    "/api/v1/report": {
       "post": {
         "tags": [
-          "questions"
+          "reports"
         ],
-        "summary": "Flag a bad row for review.",
-        "description": "Flag a broken question. Reasons are a closed set so reports aggregate; free-text detail is optional and capped. Reports never change the bank — they join a review queue, and a question with many flags gets human eyes.",
-        "operationId": "reportQuestion",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "Question id.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "summary": "File a consumer flag against one bank record.",
+        "operationId": "fileReport",
         "requestBody": {
           "content": {
             "application/json": {
@@ -759,33 +838,30 @@
           "required": true
         },
         "responses": {
-          "201": {
+          "200": {
+            "description": "An identical filing already existed; the body carries the original's id",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ReportReceipt"
+                  "$ref": "#/components/schemas/ReportFiled"
                 }
               }
             }
           },
-          "400": {
-            "description": "Unknown reason, or detail over 500 characters"
-          },
-          "401": {
-            "description": "Missing or invalid API key"
+          "201": {
+            "description": "Filed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReportFiled"
+                }
+              }
+            }
           },
           "404": {
-            "description": "No such question"
-          },
-          "429": {
-            "description": "Over a limit — per-minute or the daily report cap"
+            "description": "No such target"
           }
-        },
-        "security": [
-          {
-            "ApiKeyAuth": []
-          }
-        ]
+        }
       }
     },
     "/api/v1/subjects/{exam}/{slug}": {
@@ -793,13 +869,13 @@
         "tags": [
           "catalog"
         ],
-        "summary": "One subject offering within an exam.",
+        "summary": "One exam's offering of a subject.",
         "operationId": "getSubject",
         "parameters": [
           {
             "name": "exam",
             "in": "path",
-            "description": "Exam code.",
+            "description": "Exam code, e.g. `JAMB`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -808,7 +884,7 @@
           {
             "name": "slug",
             "in": "path",
-            "description": "The exam's own name for this subject.",
+            "description": "Subject slug within the exam, e.g. `physics`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -820,13 +896,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubjectEnvelope"
+                  "$ref": "#/components/schemas/Subject"
                 }
               }
             }
           },
           "404": {
-            "description": "No such subject in that exam"
+            "description": "No such subject in this exam"
           }
         }
       }
@@ -836,14 +912,13 @@
         "tags": [
           "catalog"
         ],
-        "summary": "Coverage counts without the tree.",
-        "description": "How much of this subject you can practise — counts only, no topic tree.",
+        "summary": "A subject's counts without the tree.",
         "operationId": "getCoverage",
         "parameters": [
           {
             "name": "exam",
             "in": "path",
-            "description": "Exam code.",
+            "description": "Exam code, e.g. `JAMB`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -852,7 +927,7 @@
           {
             "name": "slug",
             "in": "path",
-            "description": "Subject slug within that exam.",
+            "description": "Subject slug within the exam, e.g. `physics`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -861,10 +936,13 @@
           {
             "name": "country",
             "in": "query",
-            "description": "Country code filter, e.g. GH.",
+            "description": "Country code filter, e.g. `GH`. Absent is the full honest tree.",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             }
           }
         ],
@@ -879,7 +957,7 @@
             }
           },
           "404": {
-            "description": "No such subject in that exam"
+            "description": "No such subject in this exam"
           }
         }
       }
@@ -889,14 +967,13 @@
         "tags": [
           "catalog"
         ],
-        "summary": "The whole topic tree with live counts.",
-        "description": "The whole topic tree for one subject, with a question count and objectives on every node — what you must be able to do, beside what you can actually practise. A topic with no questions does not appear.",
+        "summary": "A subject's topic tree with live counts.",
         "operationId": "getSyllabus",
         "parameters": [
           {
             "name": "exam",
             "in": "path",
-            "description": "Exam code.",
+            "description": "Exam code, e.g. `JAMB`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -905,7 +982,7 @@
           {
             "name": "slug",
             "in": "path",
-            "description": "Subject slug within that exam.",
+            "description": "Subject slug within the exam, e.g. `physics`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -914,10 +991,13 @@
           {
             "name": "country",
             "in": "query",
-            "description": "Country code filter, e.g. GH.",
+            "description": "Country code filter, e.g. `GH`. Absent is the full honest tree.",
             "required": false,
             "schema": {
-              "type": "string"
+              "type": [
+                "string",
+                "null"
+              ]
             }
           }
         ],
@@ -932,7 +1012,7 @@
             }
           },
           "404": {
-            "description": "No such subject in that exam"
+            "description": "No such subject in this exam"
           }
         }
       }
@@ -942,14 +1022,13 @@
         "tags": [
           "catalog"
         ],
-        "summary": "One syllabus topic with objectives and counts.",
-        "description": "One topic with its subtopics, each carrying its question count and objectives.",
+        "summary": "One syllabus topic, with its examinable objectives.",
         "operationId": "getTopic",
         "parameters": [
           {
             "name": "exam",
             "in": "path",
-            "description": "Exam code.",
+            "description": "Exam code, e.g. `JAMB`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -958,7 +1037,7 @@
           {
             "name": "subject",
             "in": "path",
-            "description": "Subject slug within that exam.",
+            "description": "Subject slug, e.g. `physics`.",
             "required": true,
             "schema": {
               "type": "string"
@@ -967,17 +1046,8 @@
           {
             "name": "slug",
             "in": "path",
-            "description": "Topic slug.",
+            "description": "Topic slug, e.g. `mechanics`.",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "country",
-            "in": "query",
-            "description": "Country code filter, e.g. GH. Absent means the full tree.",
-            "required": false,
             "schema": {
               "type": "string"
             }
@@ -988,7 +1058,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TopicDetail"
+                  "$ref": "#/components/schemas/Topic"
                 }
               }
             }
@@ -998,120 +1068,10 @@
           }
         }
       }
-    },
-    "/health": {
-      "get": {
-        "tags": [
-          "meta"
-        ],
-        "summary": "Service status and content counts.",
-        "description": "Unauthenticated. Reports question and withheld-record counts.",
-        "operationId": "health",
-        "responses": {
-          "200": {
-            "description": "Service is up"
-          }
-        }
-      }
-    },
-    "/openapi.json": {
-      "get": {
-        "tags": [
-          "meta"
-        ],
-        "summary": "This document, as JSON.",
-        "description": "This document.",
-        "operationId": "openapi",
-        "responses": {
-          "200": {
-            "description": "The OpenAPI description"
-          }
-        }
-      }
     }
   },
   "components": {
     "schemas": {
-      "ApiKey": {
-        "type": "object",
-        "description": "A key as stored. Deliberately carries no secret material — no plaintext,\nno hash. `key_prefix` (first 8 chars of `sk_…`) is for support lookup only\nand never authenticates.",
-        "required": [
-          "id",
-          "label",
-          "rate_limit",
-          "created_at"
-        ],
-        "properties": {
-          "account_id": {
-            "type": "string"
-          },
-          "created_at": {
-            "type": "string"
-          },
-          "expires_at": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "id": {
-            "type": "string"
-          },
-          "key_prefix": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "label": {
-            "type": "string"
-          },
-          "last_used_at": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "plan": {
-            "type": "string"
-          },
-          "quota_monthly": {
-            "type": [
-              "integer",
-              "null"
-            ],
-            "format": "int32",
-            "minimum": 0
-          },
-          "rate_limit": {
-            "type": "integer",
-            "format": "int32",
-            "description": "Per-key request allowance (D26) — a column, not a key *type*.",
-            "minimum": 0
-          },
-          "revoked_at": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "scopes": {
-            "type": "string"
-          },
-          "suspend_reason": {
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "suspended_at": {
-            "type": [
-              "string",
-              "null"
-            ]
-          }
-        }
-      },
       "AssembledPaperOut": {
         "type": "object",
         "required": [
@@ -1127,8 +1087,7 @@
             "type": "string"
           },
           "mode": {
-            "$ref": "#/components/schemas/PaperMode",
-            "description": "Which gate built this paper (D70): `blueprint` is balanced per\nmeasured topic expectation; `count` is a full-length draw whose mix\nis not measured. Consumers must read it before calling the paper fair."
+            "$ref": "#/components/schemas/PaperMode"
           },
           "sections": {
             "type": "array",
@@ -1150,75 +1109,18 @@
           }
         }
       },
-      "BlueprintResponse": {
+      "Blueprint": {
         "type": "object",
+        "description": "Measured expectations for one exam subject. Every measurement is\noptional — a row states only what was measured, never a filled-in\nzero. Empty result where no rows exist is honest absence, not 404.",
         "required": [
           "exam",
           "subject",
-          "topics",
-          "ready",
-          "total",
-          "complete",
-          "governed",
-          "cohorts",
-          "unattributed"
-        ],
-        "properties": {
-          "cohorts": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32",
-              "minimum": 0
-            },
-            "description": "Exam cohorts the subject holds. The D71 input, shown so a consumer can\nsee why a single-cohort bank reports coverage rather than readiness."
-          },
-          "complete": {
-            "type": "boolean",
-            "description": "Every measured topic is ready. Only a **verdict** when `governed` —\notherwise this is coverage arithmetic, not a promise (D71)."
-          },
-          "exam": {
-            "type": "string"
-          },
-          "governed": {
-            "type": "boolean",
-            "description": "Does the blueprint predicate govern this subject's papers? False means\npapers are served by the count gate, and `complete` must not be read as\n\"we can build you a balanced mock\" (D71)."
-          },
-          "ready": {
-            "type": "integer",
-            "minimum": 0
-          },
-          "subject": {
-            "type": "string"
-          },
-          "topics": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BlueprintTopic"
-            }
-          },
-          "total": {
-            "type": "integer",
-            "minimum": 0
-          },
-          "unattributed": {
-            "type": "integer",
-            "minimum": 0
-          }
-        }
-      },
-      "BlueprintTopic": {
-        "type": "object",
-        "required": [
-          "topic",
-          "name",
-          "expected",
-          "need",
-          "held",
-          "verified",
-          "deduped",
-          "ready",
-          "method"
+          "level",
+          "members",
+          "paper_size",
+          "method",
+          "status",
+          "note"
         ],
         "properties": {
           "confidence": {
@@ -1227,31 +1129,82 @@
               "null"
             ]
           },
-          "deduped": {
-            "type": "integer",
-            "minimum": 0
+          "exam": {
+            "type": "string"
           },
           "expected": {
-            "type": "number",
+            "type": [
+              "number",
+              "null"
+            ],
             "format": "double"
           },
-          "held": {
-            "type": "integer",
-            "minimum": 0
+          "expected_high": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "format": "double"
+          },
+          "expected_low": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "format": "double"
+          },
+          "level": {
+            "type": "string"
+          },
+          "members": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "method": {
             "type": "string"
           },
-          "name": {
+          "note": {
             "type": "string"
           },
-          "need": {
+          "paper_size": {
             "type": "integer",
             "format": "int32",
             "minimum": 0
           },
-          "ready": {
-            "type": "boolean"
+          "pct": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "format": "double"
+          },
+          "pct_high": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "format": "double"
+          },
+          "pct_low": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "format": "double"
+          },
+          "sample": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "section": {
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "source": {
             "type": [
@@ -1259,18 +1212,22 @@
               "null"
             ]
           },
-          "topic": {
+          "status": {
             "type": "string"
           },
-          "verified": {
-            "type": "integer",
-            "minimum": 0
+          "subject": {
+            "type": "string"
+          },
+          "topic": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         }
       },
       "Choice": {
         "type": "object",
-        "description": "One answer choice. Named `Choice` because `Option` is Rust's, not ours.\n\n`id` is stable identity; the **label** the student sees (A, B, C…) is\nassigned from array position at render time and is never stored (D15).",
         "required": [
           "id",
           "text"
@@ -1286,7 +1243,7 @@
       },
       "Coverage": {
         "type": "object",
-        "description": "Counts without the tree — for progress bars and checklists.",
+        "description": "Coverage without the tree: the same counts and nothing else.",
         "required": [
           "exam",
           "subject",
@@ -1306,14 +1263,13 @@
       },
       "Exam": {
         "type": "object",
-        "description": "One exam, as recorded (D66) plus its live subject count. Nulls are\nload-bearing: a null the API states is a fact it cannot state.",
+        "description": "One exam as stored. Facts live here, not scattered across call sites.\n\n`status` is a passthrough string (`live` | `planned` | `retired`\ntoday): a new board status must keep serving, never break\ndeserialization of every row. Nullable columns stay `Option` for the\nsame honesty — unstated is null, never invented.",
         "required": [
           "code",
           "name",
           "countries",
           "status",
-          "rules",
-          "subject_count"
+          "rules"
         ],
         "properties": {
           "code": {
@@ -1324,7 +1280,8 @@
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "description": "Member countries running this exam. Empty where unstated."
           },
           "duration_minutes": {
             "type": [
@@ -1332,13 +1289,15 @@
               "null"
             ],
             "format": "int32",
+            "description": "Minutes for a full sitting, verified only. Null where unverified.",
             "minimum": 0
           },
           "has_full_paper": {
             "type": [
               "boolean",
               "null"
-            ]
+            ],
+            "description": "Whether a full paper can be assembled at all. Null where it\ncannot be stated."
           },
           "name": {
             "type": "string"
@@ -1347,14 +1306,11 @@
             "type": "array",
             "items": {
               "type": "string"
-            }
+            },
+            "description": "Board-stated rules a consumer must know. Empty where unstated."
           },
           "status": {
-            "$ref": "#/components/schemas/ExamStatus"
-          },
-          "subject_count": {
-            "type": "integer",
-            "minimum": 0
+            "type": "string"
           },
           "subjects_required": {
             "type": [
@@ -1362,54 +1318,14 @@
               "null"
             ],
             "format": "int32",
+            "description": "Subjects in a full paper (JAMB: 4). Null where unstated.",
             "minimum": 0
-          }
-        }
-      },
-      "ExamList": {
-        "type": "object",
-        "required": [
-          "exams"
-        ],
-        "properties": {
-          "exams": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Exam"
-            }
-          }
-        }
-      },
-      "ExamStatus": {
-        "type": "string",
-        "enum": [
-          "live",
-          "planned",
-          "retired"
-        ]
-      },
-      "ExamSubjects": {
-        "type": "object",
-        "description": "One exam's subject list.",
-        "required": [
-          "exam",
-          "subjects"
-        ],
-        "properties": {
-          "exam": {
-            "type": "string"
-          },
-          "subjects": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Subject"
-            }
           }
         }
       },
       "Explanation": {
         "type": "object",
-        "description": "Why the answer is what it is (D17). `key_point` is the flashcard teaser,\n`body` the working, `trap` the distractor that catches people.",
+        "description": "Why the answer is what it is: teaser, working, and the distractor\nthat catches people.",
         "required": [
           "key_point",
           "body"
@@ -1435,7 +1351,7 @@
       },
       "ImagePosition": {
         "type": "string",
-        "description": "Where the figure renders relative to the stem. Data, never inferred: the\nparent DB carries both (\"the diagram above\" ×1400, \"the diagram below\"\n×144), so assuming one placement misrenders one row in eleven. A question\nwith an image always knows its placement; a question without one carries\nnone — the struct makes the nonsense state (placement without a figure)\nunrepresentable.",
+        "description": "Where the figure renders relative to the stem. Data, never inferred.",
         "enum": [
           "above",
           "below"
@@ -1456,7 +1372,7 @@
               "len": {
                 "type": "integer",
                 "format": "int32",
-                "description": "Length in Unicode scalar values. Zero for an image anchor, which marks\nan attachment point rather than a span.",
+                "description": "Length in Unicode scalar values. Zero for an image anchor, which\nmarks an attachment point rather than a span.",
                 "minimum": 0
               },
               "start": {
@@ -1468,7 +1384,7 @@
             }
           }
         ],
-        "description": "One mark: where it applies and what it means."
+        "description": "One offset mark. Serialised flat with an adjacent `kind` tag, e.g.\n`{\"start\":24,\"len\":6,\"kind\":\"underline\"}`."
       },
       "InlineKind": {
         "oneOf": [
@@ -1584,17 +1500,42 @@
               }
             }
           }
+        ]
+      },
+      "KeyInfo": {
+        "type": "object",
+        "description": "The caller's own key, as the key itself may see it. No hashes,\nno secrets, no other keys — safe to hand to whoever presented it.",
+        "required": [
+          "prefix",
+          "admin",
+          "scopes"
         ],
-        "description": "The mark vocabulary (D60). Serialised with an adjacent `kind` tag so every\nmark is one flat object: `{\"start\":24,\"len\":6,\"kind\":\"underline\"}` or\n`{\"start\":37,\"len\":0,\"kind\":\"image\",\"url\":\"…\",\"position\":\"below\"}`."
+        "properties": {
+          "admin": {
+            "type": "boolean"
+          },
+          "prefix": {
+            "type": "string"
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
       },
       "Novel": {
         "type": "object",
-        "description": "A prescribed text. One row per (exam, cycle) — the novel rotates yearly, so\n`year_prescribed` is load-bearing, not decorative.",
+        "description": "A prescribed text. One row per (exam, cycle) — the set text rotates,\nso the prescription years are load-bearing, not decorative.",
         "required": [
           "id",
           "title",
           "author",
           "exam",
+          "year_prescribed",
+          "category",
+          "featured",
           "synopsis",
           "setting_place",
           "setting_period"
@@ -1605,7 +1546,7 @@
           },
           "category": {
             "type": "string",
-            "description": "Which paper sets it: the Use-of-English reading text, or a\nLiterature-in-English prescribed text. Consumers filter on this."
+            "description": "Which paper sets it: reading text or prescribed literature."
           },
           "cover_image": {
             "type": [
@@ -1618,7 +1559,7 @@
           },
           "featured": {
             "type": "boolean",
-            "description": "At most one per exam — enforced at load. The current set text."
+            "description": "At most one per exam — the current set text."
           },
           "id": {
             "type": "string"
@@ -1642,7 +1583,7 @@
               "format": "int32",
               "minimum": 0
             },
-            "description": "Every cycle this is (or was) the set text for. A novel routinely spans\nmore than one UTME — *The Lekki Headmaster* covers 2025 and 2026."
+            "description": "Every cycle this is (or was) the set text for."
           },
           "year_published": {
             "type": [
@@ -1650,7 +1591,7 @@
               "null"
             ],
             "format": "int32",
-            "description": "May be unknown for older set texts — absent, not zero.",
+            "description": "Unknown for older set texts — absent, not zero.",
             "minimum": 0
           }
         }
@@ -1659,7 +1600,8 @@
         "type": "object",
         "required": [
           "number",
-          "title"
+          "title",
+          "key_events"
         ],
         "properties": {
           "key_events": {
@@ -1678,7 +1620,7 @@
               "string",
               "null"
             ],
-            "description": "Null means not yet written — absence is the signal (D16)."
+            "description": "Null means not yet written — absence is the signal."
           },
           "title": {
             "type": "string"
@@ -1687,7 +1629,6 @@
       },
       "NovelCharacter": {
         "type": "object",
-        "description": "Character types use JAMB's own vocabulary (round/flat/foil/hero/antihero/\nvillain/heroine) because that is literally what the syllabus tests.",
         "required": [
           "name",
           "role",
@@ -1716,6 +1657,12 @@
           },
           {
             "type": "object",
+            "required": [
+              "chapters",
+              "characters",
+              "themes",
+              "questions"
+            ],
             "properties": {
               "chapters": {
                 "type": "array",
@@ -1744,25 +1691,11 @@
             }
           }
         ],
-        "description": "One file in `data/novels/`. The directory is the index — no separate list\nto keep in sync. Dropping a novel is deleting its file."
-      },
-      "NovelList": {
-        "type": "object",
-        "required": [
-          "novels"
-        ],
-        "properties": {
-          "novels": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Novel"
-            }
-          }
-        }
+        "description": "One novel with everything: book, chapters, characters, themes, quiz.\nMatches the established detail shape exactly, answers included —\ncallers already read quiz rows here, so withholding would silently\nchange the contract rather than improve it."
       },
       "NovelQuestion": {
         "type": "object",
-        "description": "A quiz item about the book. Reuses Option/answer/Explanation machinery —\na novel question is answered, shuffled and explained exactly like a subject\nquestion. It points at a chapter, not a subtopic, and the novel is the\npassage, so there is no passage_id.",
+        "description": "A quiz item about the book. Points at a chapter, not a subtopic;\nthe novel is the passage, so there is no passage id.",
         "required": [
           "id",
           "text",
@@ -1772,7 +1705,7 @@
         "properties": {
           "answer": {
             "type": "string",
-            "description": "An option id, same contract as Question.answer (D15)."
+            "description": "An option id, same contract as `Question.answer`."
           },
           "chapter_number": {
             "type": [
@@ -1806,8 +1739,31 @@
           }
         }
       },
-      "NovelQuestionPage": {
+      "NovelTheme": {
         "type": "object",
+        "required": [
+          "name",
+          "description",
+          "evidence"
+        ],
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Page_RenderedNovelQuestion": {
+        "type": "object",
+        "description": "One page of a collection in the shape every paged endpoint serves.\nThe envelope lives here, once, so a new paged endpoint cannot\nre-derive the counts: `total_pages` comes from `total_records` and\n`per_page` through [`Page::new`], never from the call site.\n\nThe collection field is `questions` because both surfaces that page\ntoday page questions; a future non-question page renames it there.",
         "required": [
           "questions",
           "page",
@@ -1833,7 +1789,59 @@
           "questions": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/RenderedNovelQuestion"
+              "type": "object",
+              "description": "One novel quiz row as served. `novel_id` is stamped by the caller —\nthe stored row does not carry it.",
+              "required": [
+                "id",
+                "novel_id",
+                "text",
+                "options",
+                "verified"
+              ],
+              "properties": {
+                "answer": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "chapter_number": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "format": "int32",
+                  "minimum": 0
+                },
+                "explanation": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Explanation"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "id": {
+                  "type": "string"
+                },
+                "novel_id": {
+                  "type": "string"
+                },
+                "options": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Choice"
+                  }
+                },
+                "text": {
+                  "$ref": "#/components/schemas/RichText"
+                },
+                "verified": {
+                  "type": "boolean"
+                }
+              }
             }
           },
           "total_pages": {
@@ -1847,30 +1855,134 @@
           }
         }
       },
-      "NovelTheme": {
+      "Page_RenderedQuestion": {
         "type": "object",
+        "description": "One page of a collection in the shape every paged endpoint serves.\nThe envelope lives here, once, so a new paged endpoint cannot\nre-derive the counts: `total_pages` comes from `total_records` and\n`per_page` through [`Page::new`], never from the call site.\n\nThe collection field is `questions` because both surfaces that page\ntoday page questions; a future non-question page renames it there.",
         "required": [
-          "name",
-          "description"
+          "questions",
+          "page",
+          "per_page",
+          "total_pages",
+          "total_records",
+          "includes_explanation"
         ],
         "properties": {
-          "description": {
-            "type": "string"
+          "includes_explanation": {
+            "type": "boolean"
           },
-          "evidence": {
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "per_page": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "questions": {
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "object",
+              "description": "One question as served. Identical to storage except the answer and\nworking, which are present only when explicitly requested — an answer\nin a default payload gets rendered by somebody, eventually, by\naccident. `verified` comes from the verification log, never a stored flag.",
+              "required": [
+                "id",
+                "exam",
+                "subject",
+                "year",
+                "source",
+                "text",
+                "options",
+                "marks",
+                "difficulty",
+                "verified"
+              ],
+              "properties": {
+                "answer": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "Present only when explanations were requested."
+                },
+                "difficulty": {
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": 0
+                },
+                "exam": {
+                  "type": "string"
+                },
+                "explanation": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Explanation"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "id": {
+                  "type": "string"
+                },
+                "marks": {
+                  "type": "number",
+                  "format": "float"
+                },
+                "options": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Choice"
+                  }
+                },
+                "passage_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "description": "A stimulus this row belongs to — fetch it, never ignore it: the\nstem may be unanswerable without it."
+                },
+                "section": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "source": {
+                  "type": "string"
+                },
+                "subject": {
+                  "type": "string"
+                },
+                "text": {
+                  "$ref": "#/components/schemas/RichText"
+                },
+                "verified": {
+                  "type": "boolean"
+                },
+                "year": {
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": 0
+                }
+              }
             }
           },
-          "name": {
-            "type": "string"
+          "total_pages": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "total_records": {
+            "type": "integer",
+            "minimum": 0
           }
         }
       },
       "PaperMode": {
         "type": "string",
-        "description": "Which gate built the paper (D70). Disclosed on the wire: a consumer must\nbe able to tell a balanced mock from a full-length draw.",
+        "description": "Which gate built a paper (D70). Disclosed on the wire: a consumer must\nbe able to tell a balanced mock from a full-length draw.",
         "enum": [
           "blueprint",
           "count"
@@ -1878,7 +1990,7 @@
       },
       "PaperReadiness": {
         "type": "object",
-        "description": "The scheme plus whether the bank can fill it. Readiness is kept beside the\nscheme rather than inside it, so the shape a consumer validates does not\nmove when our content grows.",
+        "description": "The scheme plus whether the bank can fill it. Readiness sits beside the\nscheme rather than inside it, so the validated shape does not move as\nour content grows.",
         "required": [
           "exam",
           "scheme",
@@ -1887,7 +1999,7 @@
         "properties": {
           "complete": {
             "type": "boolean",
-            "description": "True when every requirement group for the scheme's country scope\nholds enough verified questions."
+            "description": "True when every requirement group for this scope holds enough\nverified questions to fill its `min_select` slots."
           },
           "exam": {
             "type": "string"
@@ -1921,7 +2033,7 @@
       },
       "Passage": {
         "type": "object",
-        "description": "A stimulus shared by many questions — one comprehension passage serving five\nquestions, one cloze serving ten.",
+        "description": "A stimulus shared by many questions — one comprehension passage\nserving five questions, one cloze serving ten. Questions carry only\nthe id; consumers resolve it here, never ignore it.",
         "required": [
           "id",
           "exam",
@@ -1965,94 +2077,9 @@
           }
         }
       },
-      "PassageEnvelope": {
-        "type": "object",
-        "required": [
-          "passage"
-        ],
-        "properties": {
-          "passage": {
-            "$ref": "#/components/schemas/Passage"
-          }
-        }
-      },
-      "QuestionPage": {
-        "type": "object",
-        "description": "The paged response envelope (D3/D30).",
-        "required": [
-          "questions",
-          "page",
-          "per_page",
-          "total_pages",
-          "total_records",
-          "includes_explanation"
-        ],
-        "properties": {
-          "includes_explanation": {
-            "type": "boolean",
-            "description": "Whether `answer` and `explanation` were included (D27)."
-          },
-          "page": {
-            "type": "integer",
-            "format": "int32",
-            "description": "1-based.",
-            "minimum": 0
-          },
-          "per_page": {
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0
-          },
-          "questions": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RenderedQuestion"
-            }
-          },
-          "total_pages": {
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0
-          },
-          "total_records": {
-            "type": "integer",
-            "minimum": 0
-          }
-        }
-      },
-      "ReadinessGapOut": {
-        "type": "object",
-        "required": [
-          "topic",
-          "name",
-          "expected",
-          "need",
-          "have"
-        ],
-        "properties": {
-          "expected": {
-            "type": "number",
-            "format": "double"
-          },
-          "have": {
-            "type": "integer",
-            "minimum": 0
-          },
-          "name": {
-            "type": "string"
-          },
-          "need": {
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0
-          },
-          "topic": {
-            "type": "string"
-          }
-        }
-      },
       "RenderedNovelQuestion": {
         "type": "object",
+        "description": "One novel quiz row as served. `novel_id` is stamped by the caller —\nthe stored row does not carry it.",
         "required": [
           "id",
           "novel_id",
@@ -2107,6 +2134,7 @@
       },
       "RenderedQuestion": {
         "type": "object",
+        "description": "One question as served. Identical to storage except the answer and\nworking, which are present only when explicitly requested — an answer\nin a default payload gets rendered by somebody, eventually, by\naccident. `verified` comes from the verification log, never a stored flag.",
         "required": [
           "id",
           "exam",
@@ -2163,7 +2191,7 @@
               "string",
               "null"
             ],
-            "description": "A comprehension or cloze stimulus this row belongs to. Fetch it from\n`/passages/{id}` — without it the stem may be unanswerable, so\nconsumers must resolve it, never ignore it."
+            "description": "A stimulus this row belongs to — fetch it, never ignore it: the\nstem may be unanswerable without it."
           },
           "section": {
             "type": [
@@ -2193,6 +2221,8 @@
       "ReportBody": {
         "type": "object",
         "required": [
+          "target_type",
+          "target_id",
           "reason"
         ],
         "properties": {
@@ -2201,54 +2231,59 @@
               "string",
               "null"
             ],
-            "description": "Optional context, max 500 characters. No PII — never send names or emails."
+            "description": "Optional context, capped at [`crate::core::reports::MAX_DETAIL_CHARS`]\ncharacters. No PII."
           },
           "reason": {
             "type": "string",
-            "description": "One of: wrong_answer, unclear_stem, broken_option, wrong_explanation, other."
+            "description": "One of: wrong_answer, unclear_stem, broken_option,\nwrong_explanation, other."
+          },
+          "target_id": {
+            "type": "string",
+            "description": "The target's id. Topics have no single id, so theirs is the\nslash-joined `exam/subject/slug`."
+          },
+          "target_type": {
+            "type": "string",
+            "description": "One of: question, topic, passage, novel."
           }
         }
       },
-      "ReportReceipt": {
+      "ReportFiled": {
         "type": "object",
+        "description": "Outcome of filing a consumer flag. `duplicate` is true when an\nidentical filing already existed; `id` is then the original's.",
         "required": [
           "id",
-          "question_id",
+          "target_type",
+          "target_id",
           "reason",
           "duplicate"
         ],
         "properties": {
           "duplicate": {
-            "type": "boolean",
-            "description": "True when this exact flag was already filed — POST is idempotent here."
+            "type": "boolean"
           },
           "id": {
             "type": "string"
           },
-          "question_id": {
+          "reason": {
             "type": "string"
           },
-          "reason": {
+          "target_id": {
+            "type": "string"
+          },
+          "target_type": {
             "type": "string"
           }
         }
       },
       "Requirement": {
         "type": "object",
-        "description": "One paper-assembly rule for an exam in a country (D66-scope).\nGeneralizes both `is_compulsory` (which cannot say \"one of a group\") and\n`subjects_required` (which cannot vary by country): a named group, how\nmany of it must be ready, and which subjects belong — empty `subjects`\nmeans any subject of the exam.",
+        "description": "One board rule about which subjects a paper needs. An empty `subjects`\nmeans \"every exam subject not named by another group\"; `min_select` is\nhow many of that pool must be ready before the paper is real.",
         "required": [
-          "exam",
-          "country",
           "group",
-          "min_select"
+          "min_select",
+          "subjects"
         ],
         "properties": {
-          "country": {
-            "type": "string"
-          },
-          "exam": {
-            "type": "string"
-          },
           "group": {
             "type": "string"
           },
@@ -2267,26 +2302,50 @@
       },
       "RichText": {
         "type": "object",
-        "description": "Plain text plus offset marks (D60).",
+        "description": "Plain text plus offset marks. `text` stays searchable as characters;\nstructure rides in `inline` as Unicode-scalar offsets, never bytes.",
         "required": [
-          "text"
+          "text",
+          "inline"
         ],
         "properties": {
           "inline": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Inline"
-            },
-            "description": "Empty for unmarked prose — the common case, and what the harvester\nproduces before review adds marks."
+            }
           },
           "text": {
             "type": "string"
           }
         }
       },
+      "RowPage": {
+        "type": "object",
+        "required": [
+          "cols",
+          "rows"
+        ],
+        "properties": {
+          "cols": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "rows": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
       "Scheme": {
         "type": "object",
-        "description": "The exam's shape, derived from the subjects we actually carry.",
+        "description": "How an exam's paper is shaped, restated from the bank (D19). This is a\nconstant over our content, so it moves only when the bank does.",
         "required": [
           "exam",
           "subjects",
@@ -2301,7 +2360,7 @@
               "string",
               "null"
             ],
-            "description": "Country scope this scheme was computed for, if any. Absent means the\nfull honest view — and completeness is only ever claimed for a scope."
+            "description": "Country scope this scheme was computed for. Absent means the full\nhonest view, and completeness is only ever claimed for a scope."
           },
           "duration_minutes": {
             "type": [
@@ -2309,7 +2368,7 @@
               "null"
             ],
             "format": "int32",
-            "description": "`None` where unverified — absent, not zero (same rule as `year_published`).",
+            "description": "Minutes for a full sitting, verified only. Null where unverified.",
             "minimum": 0
           },
           "exam": {
@@ -2318,7 +2377,7 @@
           "questions_available": {
             "type": "integer",
             "format": "int32",
-            "description": "How many questions a full paper contains, summed from what we carry.\nThis is a lower bound for any exam whose bank is incomplete — an English\npaper only counts if `use-of-english` has 60 real questions.",
+            "description": "Questions a full paper holds, summed from subjects we can fill.\nA lower bound for any exam whose bank is incomplete.",
             "minimum": 0
           },
           "requirements": {
@@ -2326,14 +2385,14 @@
             "items": {
               "$ref": "#/components/schemas/Requirement"
             },
-            "description": "The paper-assembly rules evaluated here, copied from the exam's\nrequirement rows so a consumer sees what completeness meant."
+            "description": "The paper-assembly rules evaluated for this scope, copied from the\nexam's requirement rows so a consumer sees what `complete` meant."
           },
           "rules": {
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Human-readable caveats a candidate or consumer must know. The WAEC\n\"answer 10 of 13\" problem (recorded, not solved) lives here."
+            "description": "Board-stated rules a consumer must know. Empty where unstated."
           },
           "subjects": {
             "type": "array",
@@ -2346,20 +2405,18 @@
             "items": {
               "type": "string"
             },
-            "description": "Which subjects can actually fill a slot today."
+            "description": "Which subjects can fill a slot today, by slug."
           }
         }
       },
       "ScoreRequest": {
         "type": "object",
         "required": [
-          "seed",
-          "answers"
+          "seed"
         ],
         "properties": {
           "answers": {
             "type": "object",
-            "description": "Candidate's answers: question id → chosen option id.",
             "additionalProperties": {
               "type": "string"
             },
@@ -2371,18 +2428,16 @@
             "type": [
               "string",
               "null"
-            ],
-            "description": "Country scope used at assembly, if any — scope changes the rows."
+            ]
           },
           "seed": {
             "type": "integer",
             "format": "int64",
-            "description": "The seed the paper was assembled with.",
             "minimum": 0
           }
         }
       },
-      "ScoreResponse": {
+      "ScoredPaper": {
         "type": "object",
         "required": [
           "exam",
@@ -2443,7 +2498,7 @@
       },
       "Subject": {
         "type": "object",
-        "description": "One exam's offering of a subject (D21). The same concept can appear once per\nexam, carrying that board's own name — `Use of English` and\n`English Language` are two true rows, not one row with an alias.",
+        "description": "One exam's offering of a subject. The same concept appears once per\nexam carrying that board's own name — not one row with an alias.",
         "required": [
           "slug",
           "exam",
@@ -2466,7 +2521,7 @@
               "null"
             ],
             "format": "int32",
-            "description": "MCQs the objective paper holds — or null where unverified (D66).\nA bare integer here once asserted board fact for nine rows that had\nno source; D50's rule is absence, and absence is what null carries.\n(It also covers \"three papers, one count\" — in both cases no single\nnumber can be stated, so one value serves honestly.)",
+            "description": "MCQs the objective paper holds. Null where unverified — absence\nis data, never a zero masquerading as a fact.",
             "minimum": 0
           },
           "slug": {
@@ -2474,21 +2529,9 @@
           }
         }
       },
-      "SubjectEnvelope": {
-        "type": "object",
-        "description": "A single subject, wrapped so the response is one shape rather than a bare\nobject or a one-key envelope depending on the caller.",
-        "required": [
-          "subject"
-        ],
-        "properties": {
-          "subject": {
-            "$ref": "#/components/schemas/Subject"
-          }
-        }
-      },
       "SubjectSlot": {
         "type": "object",
-        "description": "One subject's slot in an exam.",
+        "description": "One subject's slot in an exam scheme. `questions` is the stated paper\nsize (null where unverified), and `marks_per_question` is stated only\nwhere the bank supports it — both are absences, never zeros.",
         "required": [
           "slug",
           "name",
@@ -2503,8 +2546,7 @@
               "number",
               "null"
             ],
-            "format": "float",
-            "description": "`None` where the per-question mark is not uniform (English carries\n1–3 depending on section), so a consumer must use each row's `marks`."
+            "format": "float"
           },
           "name": {
             "type": "string"
@@ -2515,7 +2557,6 @@
               "null"
             ],
             "format": "int32",
-            "description": "MCQs the objective paper holds (from `objective_paper_questions`).\n`None` where unverified — the slot is carried but uncounted.",
             "minimum": 0
           },
           "slug": {
@@ -2525,7 +2566,7 @@
       },
       "Syllabus": {
         "type": "object",
-        "description": "The syllabus tree with coverage counts (D19).",
+        "description": "One subject's whole topic tree with live counts.",
         "required": [
           "exam",
           "subject",
@@ -2566,7 +2607,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Inherited from the parent topic — subtopics carry no scope of their own."
+            "description": "Inherited from the parent topic — a subtopic carries no scope of its own."
           },
           "name": {
             "type": "string"
@@ -2593,6 +2634,7 @@
       },
       "SyllabusSummary": {
         "type": "object",
+        "description": "Counts over a subject's syllabus, for progress bars and checklists.",
         "required": [
           "topics",
           "topics_with_questions",
@@ -2625,13 +2667,13 @@
       },
       "SyllabusTopic": {
         "type": "object",
+        "description": "One node of a subject's syllabus as served: what you must be able to do\n(objectives) beside what you can actually practise (`question_count`).\nThe stored form is `core::papers::SyllabusTopic`; this one adds counts.",
         "required": [
           "slug",
           "name",
           "order",
           "weight",
           "question_count",
-          "note_available",
           "objectives",
           "countries",
           "subtopics"
@@ -2642,21 +2684,16 @@
             "items": {
               "type": "string"
             },
-            "description": "Member countries this topic belongs to, sorted. Empty means every\nmember country of the exam (D66-scope)."
+            "description": "Countries this topic belongs to. Empty means every member country."
           },
           "name": {
             "type": "string"
-          },
-          "note_available": {
-            "type": "boolean",
-            "description": "Notes are shape-only until D18 is activated."
           },
           "objectives": {
             "type": "array",
             "items": {
               "type": "string"
-            },
-            "description": "JAMB states objectives at topic level, so that is where they live\n(D50). Subtopics carry none rather than being given invented ones."
+            }
           },
           "order": {
             "type": "integer",
@@ -2683,6 +2720,17 @@
           }
         }
       },
+      "TableRef": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
       "Topic": {
         "type": "object",
         "description": "A topic within one exam's syllabus.",
@@ -2692,7 +2740,8 @@
           "exam",
           "name",
           "order",
-          "weight"
+          "weight",
+          "objectives"
         ],
         "properties": {
           "exam": {
@@ -2706,7 +2755,7 @@
             "items": {
               "type": "string"
             },
-            "description": "The examinable statements JAMB attaches to this topic. Objectives sit\nhere because that is the level JAMB states them at; subtopics inherit\nnone of their own rather than being given invented ones."
+            "description": "Examinable statements attached at topic level. Empty where the\nboard states none — never invented."
           },
           "order": {
             "type": "integer",
@@ -2722,67 +2771,8 @@
           "weight": {
             "type": "integer",
             "format": "int32",
-            "description": "Marks JAMB gives this topic. **0 means \"not published\"**, never \"worth\nnothing\" — JAMB states weights for some subjects and not others, and a\nfabricated weight would reach consumers as a fact.",
+            "description": "Marks the board gives this topic. Zero means \"not published\",\nnever \"worth nothing\" — a fabricated weight would reach\nconsumers as a fact.",
             "minimum": 0
-          }
-        }
-      },
-      "TopicDetail": {
-        "type": "object",
-        "required": [
-          "topic",
-          "subtopics"
-        ],
-        "properties": {
-          "subtopics": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TopicSubtopic"
-            }
-          },
-          "topic": {
-            "$ref": "#/components/schemas/Topic"
-          }
-        }
-      },
-      "TopicSubtopic": {
-        "type": "object",
-        "required": [
-          "slug",
-          "name",
-          "order",
-          "question_count",
-          "objectives",
-          "countries"
-        ],
-        "properties": {
-          "countries": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Inherited from the parent topic — empty means every member country."
-          },
-          "name": {
-            "type": "string"
-          },
-          "objectives": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "order": {
-            "type": "integer",
-            "format": "int32",
-            "minimum": 0
-          },
-          "question_count": {
-            "type": "integer",
-            "minimum": 0
-          },
-          "slug": {
-            "type": "string"
           }
         }
       }
@@ -2796,14 +2786,19 @@
       }
     }
   },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
   "tags": [
     {
       "name": "catalog",
-      "description": "Exams, subjects and syllabi. No key required."
+      "description": "Exams, subjects, syllabi, topics, blueprints, passages and prescribed texts."
     },
     {
       "name": "questions",
-      "description": "The metered surface. Requires a key."
+      "description": "The metered question surface."
     },
     {
       "name": "papers",
@@ -2814,12 +2809,12 @@
       "description": "The calling key."
     },
     {
-      "name": "novels",
-      "description": "Prescribed texts: book, chapters, characters, themes, quiz."
+      "name": "meta",
+      "description": "The tables the bank exposes."
     },
     {
-      "name": "meta",
-      "description": "Service health and this document."
+      "name": "reports",
+      "description": "Consumer flags against bank records."
     }
   ]
 }

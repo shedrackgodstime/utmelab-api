@@ -7,6 +7,7 @@
 //! off; the key travels in a header, never a cookie.
 
 pub mod middleware;
+pub mod openapi;
 pub mod v1;
 
 use axum::{middleware::from_fn, middleware::from_fn_with_state, Router};

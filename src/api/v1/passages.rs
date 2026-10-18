@@ -12,6 +12,18 @@ use crate::{
     store,
 };
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/passages/{id}",
+    tag = "catalog",
+    operation_id = "getPassage",
+    summary = "One reading passage shared by many questions.",
+    params(("id" = String, Path, description = "Passage id, as a question carries it in `passage_id`.")),
+    responses(
+        (status = 200, body = core::models::Passage),
+        (status = 404, description = "No such passage"),
+    ),
+)]
 pub async fn one(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,

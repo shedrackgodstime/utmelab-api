@@ -8,6 +8,14 @@ use crate::{
     store,
 };
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/exams",
+    tag = "catalog",
+    operation_id = "listExams",
+    summary = "Every exam the bank holds.",
+    responses((status = 200, body = [core::models::Exam])),
+)]
 pub async fn list(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,

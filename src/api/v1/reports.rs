@@ -17,7 +17,7 @@ use crate::{
     store,
 };
 
-#[derive(Deserialize)]
+#[derive(Deserialize, utoipa::ToSchema)]
 pub struct ReportBody {
     /// One of: question, topic, passage, novel.
     pub target_type: String,
@@ -33,6 +33,18 @@ pub struct ReportBody {
 }
 
 /// `POST /v1/report` — the single entry point. Dispatches on `target_type`.
+#[utoipa::path(
+    post,
+    path = "/api/v1/report",
+    tag = "reports",
+    operation_id = "fileReport",
+    summary = "File a consumer flag against one bank record.",
+    responses(
+        (status = 201, body = core::models::ReportFiled, description = "Filed"),
+        (status = 200, body = core::models::ReportFiled, description = "An identical filing already existed; the body carries the original's id"),
+        (status = 404, description = "No such target"),
+    ),
+)]
 pub async fn file(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,

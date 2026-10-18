@@ -30,7 +30,7 @@ use crate::{
     store,
 };
 
-#[derive(Deserialize)]
+#[derive(Deserialize, utoipa::IntoParams)]
 pub struct PapersQuery {
     /// Country scope, e.g. `GH`. A one-country exam implies its own;
     /// anything else needs it said out loud, and completeness is only
@@ -38,7 +38,7 @@ pub struct PapersQuery {
     pub country: Option<String>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, utoipa::IntoParams)]
 pub struct AssembleQuery {
     /// Deterministic draw. Same seed, same paper. Defaults to 1, as the
     /// published contract always has: omitting it stays reproducible.
@@ -49,7 +49,7 @@ pub struct AssembleQuery {
     pub country: Option<String>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, utoipa::ToSchema)]
 pub struct ScoreRequest {
     pub seed: u64,
     pub country: Option<String>,
@@ -57,14 +57,14 @@ pub struct ScoreRequest {
     pub answers: HashMap<String, String>,
 }
 
-#[derive(serde::Serialize)]
+#[derive(serde::Serialize, utoipa::ToSchema)]
 pub struct PaperSectionOut {
     pub topic: String,
     pub name: String,
     pub questions: Vec<core::models::RenderedQuestion>,
 }
 
-#[derive(serde::Serialize)]
+#[derive(serde::Serialize, utoipa::ToSchema)]
 pub struct AssembledPaperOut {
     pub exam: String,
     pub subject: String,
@@ -74,14 +74,14 @@ pub struct AssembledPaperOut {
     pub sections: Vec<PaperSectionOut>,
 }
 
-#[derive(serde::Serialize)]
+#[derive(serde::Serialize, utoipa::ToSchema)]
 pub struct ScoredQuestion {
     pub id: String,
     pub submitted: Option<String>,
     pub correct: bool,
 }
 
-#[derive(serde::Serialize)]
+#[derive(serde::Serialize, utoipa::ToSchema)]
 pub struct ScoredPaper {
     pub exam: String,
     pub subject: String,
@@ -91,6 +91,21 @@ pub struct ScoredPaper {
     pub questions: Vec<ScoredQuestion>,
 }
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/exams/{exam}/papers",
+    tag = "papers",
+    operation_id = "getExamReadiness",
+    summary = "How an exam's paper is shaped, and whether the bank can fill it.",
+    params(
+        ("exam" = String, Path, description = "Exam code, e.g. `JAMB`."),
+        PapersQuery,
+    ),
+    responses(
+        (status = 200, body = core::models::PaperReadiness),
+        (status = 404, description = "No such exam, or an exam with no subjects"),
+    ),
+)]
 pub async fn readiness(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,
@@ -120,6 +135,23 @@ pub async fn readiness(
     }))
 }
 
+#[utoipa::path(
+    post,
+    path = "/api/v1/papers/{exam}/{subject}",
+    tag = "papers",
+    operation_id = "assemblePaper",
+    summary = "Assemble one subject's mock. Deterministic per seed, answers withheld.",
+    params(
+        ("exam" = String, Path, description = "Exam code, e.g. `JAMB`."),
+        ("subject" = String, Path, description = "Subject slug, e.g. `physics`."),
+        AssembleQuery,
+    ),
+    responses(
+        (status = 200, body = AssembledPaperOut),
+        (status = 404, description = "No such exam subject"),
+        (status = 409, description = "The bank cannot fill this paper yet; the body names the gaps"),
+    ),
+)]
 pub async fn assemble_paper(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,
@@ -134,6 +166,22 @@ pub async fn assemble_paper(
 
 /// Score re-assembles the same paper with the same seed, then marks only
 /// submitted ids. Correctness is never revealed for a guess not made.
+#[utoipa::path(
+    post,
+    path = "/api/v1/papers/{exam}/{subject}/score",
+    tag = "papers",
+    operation_id = "scorePaper",
+    summary = "Re-assemble the same paper and mark the submitted ids. Stateless.",
+    params(
+        ("exam" = String, Path, description = "Exam code, e.g. `JAMB`."),
+        ("subject" = String, Path, description = "Subject slug, e.g. `physics`."),
+    ),
+    responses(
+        (status = 200, body = ScoredPaper),
+        (status = 404, description = "No such exam subject"),
+        (status = 409, description = "The bank cannot fill this paper yet"),
+    ),
+)]
 pub async fn score_paper(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,

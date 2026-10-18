@@ -20,6 +20,15 @@ use crate::{
     store,
 };
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/exams/{exam}/subjects",
+    tag = "catalog",
+    operation_id = "listSubjects",
+    summary = "Every subject one exam offers.",
+    params(("exam" = String, Path, description = "Exam code, e.g. `JAMB`.")),
+    responses((status = 200, body = [core::models::Subject])),
+)]
 pub async fn by_exam(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,
@@ -30,6 +39,21 @@ pub async fn by_exam(
 }
 
 /// One subject offering within an exam.
+#[utoipa::path(
+    get,
+    path = "/api/v1/subjects/{exam}/{slug}",
+    tag = "catalog",
+    operation_id = "getSubject",
+    summary = "One exam's offering of a subject.",
+    params(
+        ("exam" = String, Path, description = "Exam code, e.g. `JAMB`."),
+        ("slug" = String, Path, description = "Subject slug within the exam, e.g. `physics`."),
+    ),
+    responses(
+        (status = 200, body = core::models::Subject),
+        (status = 404, description = "No such subject in this exam"),
+    ),
+)]
 pub async fn subject(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,
@@ -42,7 +66,7 @@ pub async fn subject(
         .ok_or(AppError::NotFound)
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, utoipa::IntoParams)]
 pub struct SyllabusQuery {
     /// Country code filter, e.g. `GH`. Absent is the full honest tree.
     pub country: Option<String>,
@@ -67,6 +91,22 @@ async fn tree(
 }
 
 /// The whole topic tree with live counts.
+#[utoipa::path(
+    get,
+    path = "/api/v1/subjects/{exam}/{slug}/syllabus",
+    tag = "catalog",
+    operation_id = "getSyllabus",
+    summary = "A subject's topic tree with live counts.",
+    params(
+        ("exam" = String, Path, description = "Exam code, e.g. `JAMB`."),
+        ("slug" = String, Path, description = "Subject slug within the exam, e.g. `physics`."),
+        SyllabusQuery,
+    ),
+    responses(
+        (status = 200, body = core::models::Syllabus),
+        (status = 404, description = "No such subject in this exam"),
+    ),
+)]
 pub async fn syllabus(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,
@@ -78,6 +118,22 @@ pub async fn syllabus(
 }
 
 /// Coverage without the tree: counts only, for progress bars and checklists.
+#[utoipa::path(
+    get,
+    path = "/api/v1/subjects/{exam}/{slug}/coverage",
+    tag = "catalog",
+    operation_id = "getCoverage",
+    summary = "A subject's counts without the tree.",
+    params(
+        ("exam" = String, Path, description = "Exam code, e.g. `JAMB`."),
+        ("slug" = String, Path, description = "Subject slug within the exam, e.g. `physics`."),
+        SyllabusQuery,
+    ),
+    responses(
+        (status = 200, body = core::models::Coverage),
+        (status = 404, description = "No such subject in this exam"),
+    ),
+)]
 pub async fn coverage(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,

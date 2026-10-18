@@ -9,8 +9,9 @@ import tailwindcss from '@tailwindcss/vite';
 // share ONE brand with landing + dashboard. base '/docs' + static.
 //
 // Reference pages generate at build time from site/openapi.json, which is
-// emitted by `cargo run -- openapi --out site/openapi.json` (never hand
-// edited). Sidebar rule lives in site/docs/docs-IA-PLAN.md.
+// generated from the handlers and checked in (never hand edited): run
+// `UPDATE_SPEC=1 cargo test --lib openapi` to regenerate it. Sidebar rule
+// lives in site/docs/docs-IA-PLAN.md.
 export default defineConfig({
   site: 'https://api.utmelab.com',
   base: '/docs',

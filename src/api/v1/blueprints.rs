@@ -12,6 +12,18 @@ use crate::{
     store,
 };
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/blueprints/{exam}/{subject}",
+    tag = "catalog",
+    operation_id = "listBlueprints",
+    summary = "Measured expectations for one exam subject.",
+    params(
+        ("exam" = String, Path, description = "Exam code, e.g. `JAMB`."),
+        ("subject" = String, Path, description = "Subject slug, e.g. `physics`."),
+    ),
+    responses((status = 200, body = [core::models::Blueprint])),
+)]
 pub async fn list(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,

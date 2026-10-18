@@ -12,6 +12,22 @@ use crate::{
     store,
 };
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/topics/{exam}/{subject}/{slug}",
+    tag = "catalog",
+    operation_id = "getTopic",
+    summary = "One syllabus topic, with its examinable objectives.",
+    params(
+        ("exam" = String, Path, description = "Exam code, e.g. `JAMB`."),
+        ("subject" = String, Path, description = "Subject slug, e.g. `physics`."),
+        ("slug" = String, Path, description = "Topic slug, e.g. `mechanics`."),
+    ),
+    responses(
+        (status = 200, body = core::models::Topic),
+        (status = 404, description = "No such topic"),
+    ),
+)]
 pub async fn one(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,

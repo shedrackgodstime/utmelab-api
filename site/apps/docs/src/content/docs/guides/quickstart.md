@@ -74,5 +74,5 @@ query holds 167 records over 34 pages):
 ?q=passage                         # substring of the question text
 ```
 
-That's the whole first call. The [full route surface](/) is on the landing
-page; the raw spec downloads at `/openapi.json` for Postman or Insomnia.
+That's the whole first call. Every other route is documented, one operation
+per page, in the API Reference.

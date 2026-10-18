@@ -11,19 +11,8 @@ promotion, no hand-kept contract, no duplicate admin surface. Ordered most
 important first, with standards, enforcement, and single sources of truth
 before features. Delete an entry when it is closed.
 
-### 1. Deferred: CLI verbs and the OpenAPI contract  (out of scope for now)
-
-Recorded so it stays visible, not scheduled. Old's clap CLI had `key
-create/list/revoke/rotate`, `import` (json and Turso), `openapi --out`,
-`quarantine`, `audit-db`, and `verify`; new has serve plus `seed-admin`, with
-key lifecycle now on the session-authed `/api/internal/admin/keys*` surface.
-Still without a home: `rotate` (grace-period successor), `import`,
-`quarantine`, `verify` (a `verifications` writer the API does not have), and
-`audit-db` (partly replaced by `meta/tables` and `meta/rows`). OpenAPI is a
-regression rather than a gap: old derived the spec from the handlers with
-`utoipa` and served it at `/openapi.json` because a hand-written spec "kept
-producing" bugs; new has no annotations, no served route, and a hand-written
-`site/openapi.json`, so the bug class old removed is back.
+No gaps remain. What follows is what we deliberately did not port, kept as the
+record of each decision.
 
 ### Not gaps (do not port back)
 
@@ -37,10 +26,31 @@ producing" bugs; new has no annotations, no served route, and a hand-written
   reads the replica only.
 - DB audit (`db/audit.rs`). New audits to logs (`obs.rs`).
 - The question-only report route. New's report is target-agnostic.
+- The old CLI verbs, all of them. `serve` is `cargo run --`; `key
+  create/list/revoke/rotate` is the session-authed `/api/internal/admin/keys*`
+  surface plus the `/mcp/admin` tools; `audit-db` is `GET /api/v1/meta/tables`
+  and `/meta/rows/{table}`; `import`, `quarantine` and `verify` are pipeline
+  work (`utmelab-bank`'s intake, promote, gates and review steps), not serving
+  work. `openapi --out` would be a manual step to rebuild a derived artifact, so
+  it is a `cargo test` instead (see Done). Only one old CLI behaviour has no
+  successor: `rotate` took a grace period where the old key answered for a
+  while, and `rotate_key` revokes immediately. A grace period needs the expiry
+  column, which waits on billing.
 
 ## Backlog
 
 ## Done
+- The OpenAPI contract is derived from the handlers again, and only the public
+  surface is in it. `#[derive(ToSchema)]` sits on the `core::models` response
+  types and the `api/v1` DTOs, `#[utoipa::path]` sits on each `api/v1` handler,
+  and `src/api/openapi.rs` collects the paths into one `document()`. The
+  session-only `/api/internal/*` and `/mcp` surfaces stay out, exactly as the
+  MCP split keeps admin out of the commercial catalog. Nothing serves it:
+  `site/openapi.json` is generated and checked in, and two tests hold it — one
+  fails when the file drifts from `document()` (regenerate with
+  `UPDATE_SPEC=1 cargo test --lib openapi`), the other when the document's paths
+  differ from the route inventory in `routes`, which in the same pass proves
+  every documented read has its MCP resource.
 - `SYNC_SECS` is measured now, not inherited, and defaults to 10. Against the
   real remote an empty pull is one round trip, and the round trip is most of the
   cost: ~0.2s while the HTTP connection is still warm (tick gaps up to ~2s),

@@ -13,14 +13,27 @@ use crate::{
     store,
 };
 
-#[derive(Deserialize)]
+#[derive(Deserialize, utoipa::IntoParams)]
 pub struct List {
+    /// Scope to an exam.
     pub exam: Option<String>,
+    /// Scope to a prescribed cycle.
     pub year: Option<u16>,
+    /// Only featured texts. Default: no filter.
     pub featured: Option<bool>,
+    /// Scope to a category, e.g. `literature`.
     pub category: Option<String>,
 }
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/novels",
+    tag = "catalog",
+    operation_id = "listNovels",
+    summary = "The prescribed-text catalog.",
+    params(List),
+    responses((status = 200, body = [core::models::Novel])),
+)]
 pub async fn list(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,
@@ -39,6 +52,18 @@ pub async fn list(
     ))
 }
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/novels/{id}",
+    tag = "catalog",
+    operation_id = "getNovel",
+    summary = "One novel with its chapters, characters, themes and quiz.",
+    params(("id" = String, Path, description = "Novel id, e.g. `lekki`.")),
+    responses(
+        (status = 200, body = core::models::NovelDoc),
+        (status = 404, description = "No such novel"),
+    ),
+)]
 pub async fn detail(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,
@@ -51,14 +76,33 @@ pub async fn detail(
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, utoipa::IntoParams)]
 pub struct Questions {
+    /// Drill one chapter.
     pub chapter: Option<u8>,
+    /// Include the answer and the working. Default: false.
     pub include_explanation: Option<bool>,
+    /// 1-based page. Default: 1.
     pub page: Option<u32>,
+    /// Rows per page, clamped. Default: 50, cap: 200.
     pub per_page: Option<u32>,
 }
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/novels/{id}/questions",
+    tag = "catalog",
+    operation_id = "listNovelQuestions",
+    summary = "A novel's quiz, one page. The answer is withheld unless asked for.",
+    params(
+        ("id" = String, Path, description = "Novel id, e.g. `lekki`."),
+        Questions,
+    ),
+    responses(
+        (status = 200, body = core::models::Page<core::models::RenderedNovelQuestion>),
+        (status = 404, description = "No such novel"),
+    ),
+)]
 pub async fn questions(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,

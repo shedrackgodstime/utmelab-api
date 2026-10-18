@@ -15,7 +15,7 @@ use super::domain::{Choice, Explanation, RichText, Subject};
 ///
 /// The collection field is `questions` because both surfaces that page
 /// today page questions; a future non-question page renames it there.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct Page<T> {
     pub questions: Vec<T>,
     pub page: u32,
@@ -56,7 +56,7 @@ pub type QuestionPageResponse = Page<RenderedQuestion>;
 
 /// Outcome of filing a consumer flag. `duplicate` is true when an
 /// identical filing already existed; `id` is then the original's.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct ReportFiled {
     pub id: String,
     pub target_type: String,
@@ -68,7 +68,7 @@ pub struct ReportFiled {
 /// One node of a subject's syllabus as served: what you must be able to do
 /// (objectives) beside what you can actually practise (`question_count`).
 /// The stored form is `core::papers::SyllabusTopic`; this one adds counts.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct SyllabusTopic {
     pub slug: String,
     pub name: String,
@@ -81,7 +81,7 @@ pub struct SyllabusTopic {
     pub subtopics: Vec<SyllabusSubtopic>,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct SyllabusSubtopic {
     pub slug: String,
     pub name: String,
@@ -93,7 +93,7 @@ pub struct SyllabusSubtopic {
 }
 
 /// Counts over a subject's syllabus, for progress bars and checklists.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct SyllabusSummary {
     pub topics: usize,
     pub topics_with_questions: usize,
@@ -103,7 +103,7 @@ pub struct SyllabusSummary {
 }
 
 /// One subject's whole topic tree with live counts.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct Syllabus {
     pub exam: String,
     pub subject: Subject,
@@ -112,7 +112,7 @@ pub struct Syllabus {
 }
 
 /// Coverage without the tree: the same counts and nothing else.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct Coverage {
     pub exam: String,
     pub subject: Subject,
@@ -121,7 +121,7 @@ pub struct Coverage {
 
 /// One novel quiz row as served. `novel_id` is stamped by the caller —
 /// the stored row does not carry it.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct RenderedNovelQuestion {
     pub id: String,
     pub novel_id: String,
@@ -143,7 +143,7 @@ pub type NovelQuestionPage = Page<RenderedNovelQuestion>;
 /// working, which are present only when explicitly requested — an answer
 /// in a default payload gets rendered by somebody, eventually, by
 /// accident. `verified` comes from the verification log, never a stored flag.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct RenderedQuestion {
     pub id: String,
     pub exam: String,

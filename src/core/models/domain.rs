@@ -8,7 +8,7 @@
 
 /// Plain text plus offset marks. `text` stays searchable as characters;
 /// structure rides in `inline` as Unicode-scalar offsets, never bytes.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct RichText {
     pub text: String,
     pub inline: Vec<Inline>,
@@ -16,7 +16,7 @@ pub struct RichText {
 
 /// One offset mark. Serialised flat with an adjacent `kind` tag, e.g.
 /// `{"start":24,"len":6,"kind":"underline"}`.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct Inline {
     /// Offset in Unicode scalar values from the start of `text`.
     pub start: u32,
@@ -27,7 +27,7 @@ pub struct Inline {
     pub kind: InlineKind,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 #[serde(tag = "kind", rename_all = "lowercase")]
 pub enum InlineKind {
     Bold,
@@ -45,14 +45,14 @@ pub enum InlineKind {
 }
 
 /// Where the figure renders relative to the stem. Data, never inferred.
-#[derive(Clone, Copy, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Copy, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 #[serde(rename_all = "lowercase")]
 pub enum ImagePosition {
     Above,
     Below,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct Choice {
     pub id: String,
     pub text: RichText,
@@ -60,7 +60,7 @@ pub struct Choice {
 
 /// Why the answer is what it is: teaser, working, and the distractor
 /// that catches people.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct Explanation {
     pub key_point: RichText,
     pub body: RichText,
@@ -70,7 +70,7 @@ pub struct Explanation {
 
 /// One question as stored. Answer always present here — withholding
 /// happens in [`crate::core::catalog::render`], never in storage.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct Question {
     pub id: String,
     pub exam: String,
@@ -104,7 +104,7 @@ pub struct Question {
 /// Measured expectations for one exam subject. Every measurement is
 /// optional — a row states only what was measured, never a filled-in
 /// zero. Empty result where no rows exist is honest absence, not 404.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct Blueprint {
     pub exam: String,
     pub subject: String,
@@ -129,7 +129,7 @@ pub struct Blueprint {
 
 /// A prescribed text. One row per (exam, cycle) — the set text rotates,
 /// so the prescription years are load-bearing, not decorative.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct Novel {
     pub id: String,
     pub title: String,
@@ -153,7 +153,7 @@ pub struct Novel {
 /// Matches the established detail shape exactly, answers included —
 /// callers already read quiz rows here, so withholding would silently
 /// change the contract rather than improve it.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct NovelDoc {
     #[serde(flatten)]
     pub novel: Novel,
@@ -163,7 +163,7 @@ pub struct NovelDoc {
     pub questions: Vec<NovelQuestion>,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct NovelChapter {
     pub number: u8,
     pub title: String,
@@ -172,7 +172,7 @@ pub struct NovelChapter {
     pub key_events: Vec<String>,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct NovelCharacter {
     pub name: String,
     pub role: String,
@@ -180,7 +180,7 @@ pub struct NovelCharacter {
     pub description: String,
 }
 
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct NovelTheme {
     pub name: String,
     pub description: String,
@@ -189,7 +189,7 @@ pub struct NovelTheme {
 
 /// A quiz item about the book. Points at a chapter, not a subtopic;
 /// the novel is the passage, so there is no passage id.
-#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct NovelQuestion {
     pub id: String,
     pub chapter_number: Option<u8>,
@@ -207,7 +207,7 @@ pub struct NovelQuestion {
 /// A stimulus shared by many questions — one comprehension passage
 /// serving five questions, one cloze serving ten. Questions carry only
 /// the id; consumers resolve it here, never ignore it.
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, utoipa::ToSchema)]
 pub struct Passage {
     pub id: String,
     pub exam: String,
@@ -225,7 +225,7 @@ pub struct Passage {
 /// today): a new board status must keep serving, never break
 /// deserialization of every row. Nullable columns stay `Option` for the
 /// same honesty — unstated is null, never invented.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct Exam {
     /// Exam code, e.g. `JAMB`.
     pub code: String,
@@ -246,7 +246,7 @@ pub struct Exam {
 
 /// One exam's offering of a subject. The same concept appears once per
 /// exam carrying that board's own name — not one row with an alias.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct Subject {
     pub slug: String,
     pub exam: String,
@@ -258,7 +258,7 @@ pub struct Subject {
 }
 
 /// A topic within one exam's syllabus.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct Topic {
     pub slug: String,
     pub subject: String,
@@ -277,7 +277,7 @@ pub struct Topic {
 /// One board rule about which subjects a paper needs. An empty `subjects`
 /// means "every exam subject not named by another group"; `min_select` is
 /// how many of that pool must be ready before the paper is real.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct Requirement {
     pub group: String,
     pub min_select: u32,
@@ -287,7 +287,7 @@ pub struct Requirement {
 /// One subject's slot in an exam scheme. `questions` is the stated paper
 /// size (null where unverified), and `marks_per_question` is stated only
 /// where the bank supports it — both are absences, never zeros.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct SubjectSlot {
     pub slug: String,
     pub name: String,
@@ -298,7 +298,7 @@ pub struct SubjectSlot {
 
 /// How an exam's paper is shaped, restated from the bank (D19). This is a
 /// constant over our content, so it moves only when the bank does.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct Scheme {
     pub exam: String,
     /// Minutes for a full sitting, verified only. Null where unverified.
@@ -322,7 +322,7 @@ pub struct Scheme {
 /// The scheme plus whether the bank can fill it. Readiness sits beside the
 /// scheme rather than inside it, so the validated shape does not move as
 /// our content grows.
-#[derive(Clone, Debug, PartialEq, serde::Serialize)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct PaperReadiness {
     pub exam: String,
     pub scheme: Scheme,

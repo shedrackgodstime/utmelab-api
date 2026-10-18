@@ -190,7 +190,7 @@ pub struct SubjectBank {
 
 /// Which gate built a paper (D70). Disclosed on the wire: a consumer must
 /// be able to tell a balanced mock from a full-length draw.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, serde::Serialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, serde::Serialize, utoipa::ToSchema)]
 #[serde(rename_all = "lowercase")]
 pub enum PaperMode {
     /// Balanced per measured topic expectation (D68/D69).

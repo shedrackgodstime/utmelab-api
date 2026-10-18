@@ -5,7 +5,7 @@
 
 use serde::Serialize;
 
-#[derive(Serialize)]
+#[derive(Serialize, utoipa::ToSchema)]
 pub struct TableRef {
     pub name: String,
 }
@@ -36,7 +36,7 @@ pub struct ServiceStatus {
     pub latency_slow: u64,
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, utoipa::ToSchema)]
 pub struct RowPage {
     pub cols: Vec<String>,
     pub rows: Vec<Vec<String>>,
@@ -65,7 +65,7 @@ pub struct PrefixBody {
 
 /// The caller's own key, as the key itself may see it. No hashes,
 /// no secrets, no other keys — safe to hand to whoever presented it.
-#[derive(Clone, Debug, serde::Serialize)]
+#[derive(Clone, Debug, serde::Serialize, utoipa::ToSchema)]
 pub struct KeyInfo {
     pub prefix: String,
     pub admin: bool,

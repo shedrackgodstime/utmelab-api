@@ -13,11 +13,27 @@ use crate::{
     store,
 };
 
-#[derive(Deserialize)]
+#[derive(Deserialize, utoipa::IntoParams)]
 pub struct Detail {
+    /// Include the answer and the working. Default: false.
     pub include_explanation: Option<bool>,
 }
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/questions/{id}",
+    tag = "questions",
+    operation_id = "getQuestion",
+    summary = "One rendered question. The answer and working are withheld unless asked for.",
+    params(
+        ("id" = String, Path, description = "Question id."),
+        Detail,
+    ),
+    responses(
+        (status = 200, body = core::models::RenderedQuestion),
+        (status = 404, description = "No such question"),
+    ),
+)]
 pub async fn one(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,
@@ -34,21 +50,44 @@ pub async fn one(
     }
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, utoipa::IntoParams)]
 pub struct List {
+    /// Drill one subtopic id.
     pub subtopic: Option<String>,
+    /// Scope to an exam.
     pub exam: Option<String>,
+    /// Scope to a subject within that exam.
     pub subject: Option<String>,
+    /// Only human-checked questions. Default: no filter.
     pub verified: Option<bool>,
+    /// Scope to one cohort year.
     pub year: Option<u16>,
+    /// Scope to a provenance, e.g. `past_paper`.
     pub source: Option<String>,
+    /// Substring search over the question text.
     pub q: Option<String>,
+    /// Scope to a country; a question with no stated scope survives any.
     pub country: Option<String>,
+    /// Include the answer and the working. Default: false.
     pub include_explanation: Option<bool>,
+    /// 1-based page. Default: 1.
     pub page: Option<u32>,
+    /// Rows per page, clamped. Default: 50, cap: 200.
     pub per_page: Option<u32>,
 }
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/questions",
+    tag = "questions",
+    operation_id = "listQuestions",
+    summary = "Questions, filtered and paged. The answer is withheld unless asked for.",
+    params(List),
+    responses(
+        (status = 200, body = core::models::Page<core::models::RenderedQuestion>),
+        (status = 404, description = "A filter naming a subject the bank never had"),
+    ),
+)]
 pub async fn list(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,

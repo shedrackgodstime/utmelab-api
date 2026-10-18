@@ -13,6 +13,14 @@ use crate::{
     store,
 };
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/meta/tables",
+    tag = "meta",
+    operation_id = "listTables",
+    summary = "The bank tables exposed to keys.",
+    responses((status = 200, body = [core::models::TableRef])),
+)]
 pub async fn tables(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,
@@ -21,11 +29,27 @@ pub async fn tables(
     Ok(Json(store::catalog::table_refs(&s).await?))
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, utoipa::IntoParams)]
 pub struct RowsParams {
+    /// Rows to return. Default: 20.
     pub limit: Option<u64>,
 }
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/meta/rows/{table}",
+    tag = "meta",
+    operation_id = "listTableRows",
+    summary = "A page of rows from one allowlisted table.",
+    params(
+        ("table" = String, Path, description = "Table name from `/api/v1/meta/tables`."),
+        RowsParams,
+    ),
+    responses(
+        (status = 200, body = core::models::RowPage),
+        (status = 404, description = "A table off the allowlist, or absent"),
+    ),
+)]
 pub async fn rows(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,

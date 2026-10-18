@@ -310,33 +310,76 @@ mod tests {
         );
     }
 
-    /// The keyed HTTP routes, the source list. Reads and writes are separate
-    /// because the MCP resource twins derive from the reads only; the MCP tools
-    /// are listed because their names do not derive from the paths.
-    const HTTP_READS: &[(&str, &str)] = &[
-        ("GET", "/api/v1/exams"),
-        ("GET", "/api/v1/exams/JAMB/subjects"),
-        ("GET", "/api/v1/exams/JAMB/papers"),
-        ("GET", "/api/v1/subjects/JAMB/physics"),
-        ("GET", "/api/v1/subjects/JAMB/physics/syllabus"),
-        ("GET", "/api/v1/subjects/JAMB/physics/coverage"),
-        ("GET", "/api/v1/topics/JAMB/physics/mechanics"),
-        ("GET", "/api/v1/blueprints/JAMB/physics"),
-        ("GET", "/api/v1/passages/p1"),
-        ("GET", "/api/v1/novels"),
-        ("GET", "/api/v1/novels/lekki"),
-        ("GET", "/api/v1/novels/lekki/questions"),
-        ("GET", "/api/v1/questions"),
-        ("GET", "/api/v1/questions/q1"),
-        ("GET", "/api/v1/keys/me"),
-        ("GET", "/api/v1/meta/tables"),
-        ("GET", "/api/v1/meta/rows/exams"),
-    ];
-
-    const HTTP_WRITES: &[(&str, &str)] = &[
-        ("POST", "/api/v1/report"),
-        ("POST", "/api/v1/papers/JAMB/physics"),
-        ("POST", "/api/v1/papers/JAMB/physics/score"),
+    /// Every documented `/api/v1` route: method, OpenAPI template, and a
+    /// concrete probe. The template is what the spec advertises; the probe is
+    /// what the identity sweeps call; the read templates are what the MCP
+    /// resources mirror. One list, so a route cannot be mounted but
+    /// undocumented, or documented but unmounted.
+    const API_ROUTES: &[(&str, &str, &str)] = &[
+        ("GET", "/api/v1/exams", "/api/v1/exams"),
+        (
+            "GET",
+            "/api/v1/exams/{exam}/subjects",
+            "/api/v1/exams/JAMB/subjects",
+        ),
+        (
+            "GET",
+            "/api/v1/exams/{exam}/papers",
+            "/api/v1/exams/JAMB/papers",
+        ),
+        (
+            "GET",
+            "/api/v1/subjects/{exam}/{slug}",
+            "/api/v1/subjects/JAMB/physics",
+        ),
+        (
+            "GET",
+            "/api/v1/subjects/{exam}/{slug}/syllabus",
+            "/api/v1/subjects/JAMB/physics/syllabus",
+        ),
+        (
+            "GET",
+            "/api/v1/subjects/{exam}/{slug}/coverage",
+            "/api/v1/subjects/JAMB/physics/coverage",
+        ),
+        (
+            "GET",
+            "/api/v1/topics/{exam}/{subject}/{slug}",
+            "/api/v1/topics/JAMB/physics/mechanics",
+        ),
+        (
+            "GET",
+            "/api/v1/blueprints/{exam}/{subject}",
+            "/api/v1/blueprints/JAMB/physics",
+        ),
+        ("GET", "/api/v1/passages/{id}", "/api/v1/passages/p1"),
+        ("GET", "/api/v1/novels", "/api/v1/novels"),
+        ("GET", "/api/v1/novels/{id}", "/api/v1/novels/lekki"),
+        (
+            "GET",
+            "/api/v1/novels/{id}/questions",
+            "/api/v1/novels/lekki/questions",
+        ),
+        ("GET", "/api/v1/questions", "/api/v1/questions"),
+        ("GET", "/api/v1/questions/{id}", "/api/v1/questions/q1"),
+        ("GET", "/api/v1/keys/me", "/api/v1/keys/me"),
+        ("GET", "/api/v1/meta/tables", "/api/v1/meta/tables"),
+        (
+            "GET",
+            "/api/v1/meta/rows/{table}",
+            "/api/v1/meta/rows/exams",
+        ),
+        ("POST", "/api/v1/report", "/api/v1/report"),
+        (
+            "POST",
+            "/api/v1/papers/{exam}/{subject}",
+            "/api/v1/papers/JAMB/physics",
+        ),
+        (
+            "POST",
+            "/api/v1/papers/{exam}/{subject}/score",
+            "/api/v1/papers/JAMB/physics/score",
+        ),
     ];
 
     /// The MCP surface is gated endpoints, one per capability set. Its tools
@@ -345,28 +388,32 @@ mod tests {
     /// 401/revocation sweep as every other keyed route.
     const MCP_ENDPOINT: &[(&str, &str)] = &[("POST", "/mcp"), ("POST", "/mcp/admin")];
 
-    /// Every keyed route: the HTTP routes plus `/mcp`. Deriving the twins
-    /// is the point: a read added to `api/v1` without its resource fails the
-    /// `mcp` parity test, so the mirror is asserted, not retyped.
+    /// Every keyed route: the documented `/api/v1` routes plus `/mcp`.
     fn keyed_routes() -> Vec<(String, String)> {
-        HTTP_READS
+        API_ROUTES
             .iter()
-            .chain(HTTP_WRITES)
-            .chain(MCP_ENDPOINT)
-            .map(|(m, u)| (m.to_string(), u.to_string()))
+            .map(|(m, _, probe)| (m.to_string(), probe.to_string()))
+            .chain(
+                MCP_ENDPOINT
+                    .iter()
+                    .map(|(m, u)| (m.to_string(), u.to_string())),
+            )
             .collect()
     }
 
     /// The mirror is asserted, not retyped: the MCP surface exposes exactly one
-    /// resource or template per HTTP read. Add a read to `api/v1` without its
-    /// resource and the counts diverge, so the test fails and names the source
-    /// list to fix. Behavioural parity (a resource's answer equals its route's)
-    /// is proved in the `mcp` tests, where the JSON-RPC envelope is available.
+    /// resource or template per HTTP read. A concrete read (no `{`) must be a
+    /// fixed resource; a parameterised one must be a template. Set equality both
+    /// ways, so adding a read to `api/v1` without its resource fails, and a
+    /// resource with no route behind it fails too. Behavioural parity (a
+    /// resource's answer equals its route's) is proved in the `mcp` tests, where
+    /// the JSON-RPC envelope is available.
     #[test]
     fn every_http_read_has_one_mcp_resource() {
-        let tails: Vec<&str> = HTTP_READS
+        let tails: Vec<&str> = API_ROUTES
             .iter()
-            .map(|(_, u)| u.strip_prefix("/api/v1/").expect("an api/v1 path"))
+            .filter(|(method, _, _)| *method == "GET")
+            .map(|(_, template, _)| template.strip_prefix("/api/v1/").expect("an api/v1 path"))
             .collect();
         let fixed: Vec<String> = crate::mcp::resources::list()
             .iter()
@@ -377,20 +424,69 @@ mod tests {
                     .to_string()
             })
             .collect();
-        let templates = crate::mcp::resources::templates();
+        let templates: Vec<String> = crate::mcp::resources::templates()
+            .iter()
+            .map(|t| {
+                t.uri_template
+                    .strip_prefix("utmelab://catalog/")
+                    .expect("a catalog uri template")
+                    .to_string()
+            })
+            .collect();
+        let (concrete, parameterised): (Vec<&str>, Vec<&str>) =
+            tails.iter().partition(|tail| !tail.contains('{'));
+        let sorted = |xs: &[String]| {
+            let mut xs = xs.to_vec();
+            xs.sort();
+            xs
+        };
         assert_eq!(
-            fixed.len() + templates.len(),
-            tails.len(),
-            "every /api/v1 read needs exactly one MCP resource or template"
+            sorted(&concrete.iter().map(|s| s.to_string()).collect::<Vec<_>>()),
+            sorted(&fixed),
+            "every parameterless /api/v1 read needs exactly one MCP resource"
         );
-        // A concrete resource must name a read that exists, or it would answer
-        // a 404 the sweep never expects.
-        for tail in &fixed {
-            assert!(
-                tails.contains(&tail.as_str()),
-                "no /api/v1 read backs resource `{tail}`"
-            );
-        }
+        assert_eq!(
+            sorted(
+                &parameterised
+                    .iter()
+                    .map(|s| s.to_string())
+                    .collect::<Vec<_>>()
+            ),
+            sorted(&templates),
+            "every parameterised /api/v1 read needs exactly one MCP resource template"
+        );
+    }
+
+    /// The spec is derived from the handlers, but its route list must equal this
+    /// inventory: a route mounted here and absent from the spec fails, and a
+    /// path the spec advertises with no route behind it fails. With the identity
+    /// sweep (which proves each probe is mounted and gated), this closes the loop
+    /// between the router, the spec, and the MCP mirror.
+    #[test]
+    fn the_spec_covers_exactly_the_api_routes() {
+        let doc =
+            serde_json::to_value(crate::api::openapi::document()).expect("the document serialises");
+        let mut documented: Vec<(String, String)> = doc["paths"]
+            .as_object()
+            .expect("a paths object")
+            .iter()
+            .flat_map(|(path, item)| {
+                item.as_object()
+                    .expect("path item")
+                    .keys()
+                    .map(|method| (method.to_uppercase(), path.clone()))
+            })
+            .collect();
+        let mut routed: Vec<(String, String)> = API_ROUTES
+            .iter()
+            .map(|(method, template, _)| (method.to_string(), template.to_string()))
+            .collect();
+        documented.sort();
+        routed.sort();
+        assert_eq!(
+            documented, routed,
+            "the OpenAPI document and the route inventory disagree"
+        );
     }
 
     /// Session routes: the same rule through the cookie door. `login` is absent
