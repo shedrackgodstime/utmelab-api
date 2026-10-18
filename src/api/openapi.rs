@@ -9,10 +9,11 @@
 //! `/api/internal/*` dashboard and the `/mcp` JSON-RPC surface are ours, not a
 //! consumer's, so they stay out for the same reason the MCP admin tools do.
 //!
-//! Nothing serves this document. `site/openapi.json` is generated from
-//! [`document`] and checked in, because the docs build reads a file for
-//! determinism; the test below regenerates it under `UPDATE_SPEC=1` and
-//! otherwise fails the moment it drifts from the code.
+//! The API binary serves no document route. `site/openapi.json` is generated
+//! from [`document`] and checked in, because the docs build reads a file for
+//! determinism and the static site ships it at `/openapi.json`; the test below
+//! regenerates it under `UPDATE_SPEC=1` and otherwise fails the moment it
+//! drifts from the code.
 
 use utoipa::openapi::security::{ApiKey, ApiKeyValue, SecurityScheme};
 use utoipa::{Modify, OpenApi};

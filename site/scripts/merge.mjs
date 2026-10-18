@@ -35,5 +35,5 @@ if (existsSync(spec)) {
   copyFileSync(spec, join(dist, 'openapi.json'));
   console.log('  /openapi.json <- committed spec');
 } else {
-  console.warn('WARN: site/openapi.json missing — run `cargo run -- openapi --out site/openapi.json`');
+  console.warn('WARN: site/openapi.json missing — run `UPDATE_SPEC=1 cargo test --lib openapi` at the repo root');
 }
