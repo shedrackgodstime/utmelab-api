@@ -339,11 +339,11 @@ mod tests {
         ("POST", "/api/v1/papers/JAMB/physics/score"),
     ];
 
-    /// The MCP surface is one gated endpoint. Its tools and resources are
-    /// covered in the `mcp` module's own tests, where the JSON-RPC envelope is
-    /// available; here it only has to answer the same 401/revocation sweep as
-    /// every other keyed route.
-    const MCP_ENDPOINT: &[(&str, &str)] = &[("POST", "/mcp")];
+    /// The MCP surface is gated endpoints, one per capability set. Its tools
+    /// and resources are covered in the `mcp` module's own tests, where the
+    /// JSON-RPC envelope is available; here they only have to answer the same
+    /// 401/revocation sweep as every other keyed route.
+    const MCP_ENDPOINT: &[(&str, &str)] = &[("POST", "/mcp"), ("POST", "/mcp/admin")];
 
     /// Every keyed route: the HTTP routes plus `/mcp`. Deriving the twins
     /// is the point: a read added to `api/v1` without its resource fails the

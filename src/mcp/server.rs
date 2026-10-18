@@ -1,5 +1,10 @@
 //! The MCP server: tool handlers and the `ServerHandler` impl.
 //!
+//! One type serves both mounted endpoints, but never at once: a [`Surface`]
+//! picks which tool router answers, so the URL — not a scope check alone —
+//! decides what a caller can even see. `/mcp` is the catalog surface (reads
+//! plus the consumer actions); `/mcp/admin` is key management.
+//!
 //! Every tool mounts the same function its HTTP twin does (`api::v1`), so a
 //! capability is written once. The admin key tools have no twin on the keyed
 //! HTTP surface; they call the same `store::accounts` functions the dashboard
@@ -31,20 +36,45 @@ use crate::{
 
 use super::{resources, to_mcp};
 
-/// One MCP server instance. Stateless: it holds only the replica handle and
-/// the tool router, and reads each caller's identity from the request it is
-/// answering, so one instance serves every key.
+/// Which capability set an endpoint serves. The split is by URL, so an admin
+/// tool is unreachable from a consumer key rather than merely refused when it
+/// is called.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum Surface {
+    /// The keyed catalog: `utmelab://catalog` reads and the consumer actions.
+    Catalog,
+    /// Key administration. Gated at the router with `manage:keys`.
+    Admin,
+}
+
+/// One MCP server instance. Stateless: it holds the replica handle, the surface
+/// it serves, and both tool routers, and reads each caller's identity from the
+/// request it is answering, so one instance serves every key.
 #[derive(Clone)]
 pub struct McpServer {
     db: DbState,
-    tool_router: ToolRouter<Self>,
+    surface: Surface,
+    catalog_tools: ToolRouter<Self>,
+    admin_tools: ToolRouter<Self>,
 }
 
 impl McpServer {
-    pub fn new(db: DbState) -> Self {
+    pub fn new(db: DbState, surface: Surface) -> Self {
         Self {
             db,
-            tool_router: Self::tool_router(),
+            surface,
+            catalog_tools: Self::catalog_router(),
+            admin_tools: Self::admin_router(),
+        }
+    }
+
+    /// The router the served surface exposes. `#[tool_handler]` dispatches
+    /// through this, so `tools/list` and `tools/call` can only reach what the
+    /// URL offers.
+    fn tools(&self) -> &ToolRouter<Self> {
+        match self.surface {
+            Surface::Catalog => &self.catalog_tools,
+            Surface::Admin => &self.admin_tools,
         }
     }
 }
@@ -78,51 +108,53 @@ fn json_result<T: serde::Serialize>(value: &T) -> Result<CallToolResponse, Error
 #[derive(Deserialize, JsonSchema)]
 struct FileReportArgs {
     /// One of: question, topic, passage, novel.
-    pub target_type: String,
-    /// The target's id. A topic has no single id, so its is the slash-joined
-    /// `exam/subject/slug`.
-    pub target_id: String,
+    target_type: String,
+    /// The target's id. A topic has no single id, so its id is the
+    /// slash-joined `exam/subject/slug`.
+    target_id: String,
     /// One of: wrong_answer, unclear_stem, broken_option, wrong_explanation,
     /// other.
-    pub reason: String,
+    reason: String,
     /// Optional context. No PII.
-    pub detail: Option<String>,
+    detail: Option<String>,
 }
 
 #[derive(Deserialize, JsonSchema)]
 struct AssemblePaperArgs {
     /// Exam code, e.g. `JAMB`.
-    pub exam: String,
+    exam: String,
     /// Subject slug, e.g. `physics`.
-    pub subject: String,
+    subject: String,
     /// Deterministic draw: same seed, same paper. Defaults to 1.
-    pub seed: Option<u64>,
+    seed: Option<u64>,
     /// Country scope, e.g. `NG`.
-    pub country: Option<String>,
+    country: Option<String>,
 }
 
 #[derive(Deserialize, JsonSchema)]
 struct ScorePaperArgs {
     /// Exam code, e.g. `JAMB`.
-    pub exam: String,
+    exam: String,
     /// Subject slug, e.g. `physics`.
-    pub subject: String,
+    subject: String,
     /// The seed the paper was assembled with.
-    pub seed: u64,
+    seed: u64,
     /// Country scope, e.g. `NG`.
-    pub country: Option<String>,
+    country: Option<String>,
     /// Question id to chosen option id. Unanswered ids are left out on purpose:
     /// a guess not made is never marked.
-    pub answers: std::collections::HashMap<String, String>,
+    answers: std::collections::HashMap<String, String>,
 }
 
 #[derive(Deserialize, JsonSchema)]
 struct PrefixArgs {
     /// Key prefix, e.g. `live` from `live.secret`.
-    pub prefix: String,
+    prefix: String,
 }
 
-#[tool_router]
+/// The catalog surface's actions. Each delegates to the `api::v1` handler its
+/// HTTP twin mounts, so the scope check and the rendered shape live once.
+#[tool_router(router = catalog_router)]
 impl McpServer {
     /// Flag a catalog item (question, topic, passage or novel) for review.
     /// Needs the `write:reports` scope.
@@ -191,7 +223,13 @@ impl McpServer {
         .map_err(to_mcp)?;
         json_result(&scored)
     }
+}
 
+/// The admin surface's actions. These have no keyed HTTP twin; they call the
+/// same store functions the dashboard does, behind the same `manage:keys`
+/// scope the router already enforced.
+#[tool_router(router = admin_router)]
+impl McpServer {
     /// Revoke a key by prefix. Needs the `manage:keys` scope.
     #[tool(description = "Revoke a key by prefix. Needs manage:keys.")]
     async fn revoke_key(
@@ -234,7 +272,9 @@ impl McpServer {
 
 impl McpServer {
     /// The two revoke tools differ only by the flag. The actor is the
-    /// presenting key, so the audit line names it.
+    /// presenting key, so the audit line names it. `require` runs again here
+    /// even though the router gated the surface: a capability is never guarded
+    /// by the mount alone.
     async fn set_revoked(
         &self,
         prefix: &str,
@@ -251,24 +291,37 @@ impl McpServer {
     }
 }
 
-#[tool_handler(router = self.tool_router)]
+#[tool_handler(router = self.tools())]
 impl ServerHandler for McpServer {
     fn get_info(&self) -> ServerConfig {
-        ServerConfig::new(
-            ServerCapabilities::builder()
-                .enable_tools()
-                .enable_resources()
-                .build(),
-        )
-        .with_server_info(Implementation::new(
-            "utmelab-api",
-            env!("CARGO_PKG_VERSION"),
-        ))
-        .with_instructions(
-            "UTME Lab catalog: JAMB (and other exam) questions, subjects, \
-             syllabus, blueprints, novels and papers. Reads are resources under \
-             `utmelab://catalog/...`; reports and paper assembly are tools.",
-        )
+        match self.surface {
+            Surface::Catalog => ServerConfig::new(
+                ServerCapabilities::builder()
+                    .enable_tools()
+                    .enable_resources()
+                    .build(),
+            )
+            .with_server_info(Implementation::new(
+                "utmelab-api",
+                env!("CARGO_PKG_VERSION"),
+            ))
+            .with_instructions(
+                "UTME Lab catalog: JAMB (and other exam) questions, subjects, \
+                 syllabus, blueprints, novels and papers. Reads are resources under \
+                 `utmelab://catalog/...`; reports and paper assembly are tools.",
+            ),
+            Surface::Admin => {
+                ServerConfig::new(ServerCapabilities::builder().enable_tools().build())
+                    .with_server_info(Implementation::new(
+                        "utmelab-api-admin",
+                        env!("CARGO_PKG_VERSION"),
+                    ))
+                    .with_instructions(
+                        "UTME Lab key administration: revoke, unrevoke and rotate API keys \
+                 by prefix. Needs manage:keys.",
+                    )
+            }
+        }
     }
 
     async fn list_resources(
@@ -276,7 +329,13 @@ impl ServerHandler for McpServer {
         _request: Option<PaginatedRequestParams>,
         _context: RequestContext<RoleServer>,
     ) -> Result<ListResourcesResult, ErrorData> {
-        Ok(ListResourcesResult::with_all_items(resources::list()))
+        // The admin surface serves tools only and advertises no resources, so
+        // it cannot be used to read the catalog.
+        let items = match self.surface {
+            Surface::Catalog => resources::list(),
+            Surface::Admin => Vec::new(),
+        };
+        Ok(ListResourcesResult::with_all_items(items))
     }
 
     async fn list_resource_templates(
@@ -284,9 +343,11 @@ impl ServerHandler for McpServer {
         _request: Option<PaginatedRequestParams>,
         _context: RequestContext<RoleServer>,
     ) -> Result<ListResourceTemplatesResult, ErrorData> {
-        Ok(ListResourceTemplatesResult::with_all_items(
-            resources::templates(),
-        ))
+        let items = match self.surface {
+            Surface::Catalog => resources::templates(),
+            Surface::Admin => Vec::new(),
+        };
+        Ok(ListResourceTemplatesResult::with_all_items(items))
     }
 
     async fn read_resource(
@@ -294,6 +355,13 @@ impl ServerHandler for McpServer {
         request: ReadResourceRequestParams,
         context: RequestContext<RoleServer>,
     ) -> Result<ReadResourceResponse, ErrorData> {
+        if self.surface != Surface::Catalog {
+            return Err(ErrorData::new(
+                ErrorCode::METHOD_NOT_FOUND,
+                "the admin surface serves tools only",
+                None,
+            ));
+        }
         let auth = auth_from(&context)?;
         let uri = request.uri;
         let value = resources::read(&self.db, &auth, &uri)
