@@ -31,7 +31,10 @@ SVC=utmelab-api.service
 # Keep in step with API_PORT in .github/workflows/deploy.yml and PORT in
 # /etc/utmelab-api/environment. The gate runs as root and does not load the env
 # file, so it cannot read the value from there.
-PORT=8081
+# 3100, not 8081: the binary binds config.rs DEFAULT_PORT = 3100. A gate that
+# polls 8081 finds nothing, and if its failure test is weak it will happily
+# "pass" a service that never bound and then prune the last good release.
+PORT=3100
 READY="http://127.0.0.1:${PORT}/ready"
 
 log() { printf '[utmelab-api-deploy] %s\n' "$*"; }
@@ -85,7 +88,11 @@ restart_and_wait() {
   # answer. /health only says the process can reply at all. A binary that binds
   # but 500s, or a boot that crash-loops, must fail the deploy.
   for _ in $(seq 1 30); do
-    code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 2 "$READY" || echo 000)"
+    # `|| true`, NOT `|| echo 000`: on a connection failure curl prints its own
+    # 000 *and* exits non-zero, so `|| echo 000` captures "000000", which is
+    # != "000" — an earlier version of this gate read that as healthy, pruned
+    # the previous release, and reported success on a service that never bound.
+    code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 2 "$READY" 2>/dev/null || true)"
     [[ "$code" == "200" ]] && { log "ready OK (HTTP $code)"; return 0; }
     sleep 1
   done
