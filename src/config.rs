@@ -36,7 +36,10 @@ pub const DEFAULT_READ_TIMEOUT_SECS: u64 = 5;
 pub const DEFAULT_WRITE_TIMEOUT_SECS: u64 = 30;
 /// Per-key request ceiling per minute on the public surfaces (`api` and
 /// `mcp`). 0 disables per-key limiting. Admin keys use the admin knob.
-pub const DEFAULT_RATE_LIMIT_PER_MIN: u32 = 600;
+/// 60 is the figure the public docs promise customers ("60 requests a minute
+/// per key"), so the default is that promise, not a value free to drift from
+/// the docs. The old service defaulted to 60 too.
+pub const DEFAULT_RATE_LIMIT_PER_MIN: u32 = 60;
 /// Admin keys are internal (monitoring, provisioning), so unlimited by
 /// default. Set a positive value to bound them too.
 pub const DEFAULT_RATE_LIMIT_ADMIN_PER_MIN: u32 = 0;

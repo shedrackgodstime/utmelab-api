@@ -1,0 +1,53 @@
+# Caddy site for the API + the grouped static site.
+# Install as /etc/caddy/Caddyfile.api and `import` it, or merge into the main
+# Caddyfile. Requires DNS api.utmelab.com -> this host, then Caddy obtains a
+# real Let's Encrypt cert automatically (no `tls internal`).
+#
+# Routing:
+#   /api/*  /health  /ready   -> the Rust binary on 127.0.0.1:8081
+#   everything else           -> the static build shipped as site/
+#
+# The binary never serves HTML, and it does not serve the spec either:
+# `openapi.json` is a committed file that `site/scripts/merge.mjs` copies into
+# dist/, so it is served here from the static root. Proxying it to the API
+# would 404, which is why there is no handle for it.
+#
+# handle blocks are explicit and sequential: in Caddy's default directive order
+# `file_server` runs before `reverse_proxy`, so a bare matcher would lose every
+# request to the file server and /health would answer with the docs homepage.
+# That bug shipped once; the blocks are what stop it.
+
+api.utmelab.com {
+	encode gzip zstd
+
+	handle /api/* {
+		reverse_proxy 127.0.0.1:8081
+	}
+	handle /health {
+		reverse_proxy 127.0.0.1:8081
+	}
+	handle /ready {
+		reverse_proxy 127.0.0.1:8081
+	}
+
+	# Static tier (the Astro build ships as site/ inside the release).
+	#
+	# No try_files. Astro is fully prerendered — every page is a real
+	# index.html inside a directory — so `try_files {path} /index.html`, the
+	# SPA fallback pattern, is actively wrong here. It matched real files
+	# (/_astro/*.css, /docs/x/index.html) but missed every *directory* URL and
+	# fell through to the homepage, so /docs/guides/quickstart/, /dashboard/
+	# and /docs/ all rendered the home page with a 200. A miss also returned
+	# 200 instead of 404. `astro preview` hides this because it resolves
+	# directories itself; Caddy needs `index`.
+	handle {
+		root * /opt/apps/utmelab-api/current/site
+		file_server {
+			index index.html
+		}
+	}
+
+	# No handle_errors: the build has no top-level 404.html (Starlight's own
+	# 404 lives under /docs/, not at the root), so file_server's native 404 is
+	# what ships, and the smoke check asserts exactly that.
+}

@@ -48,38 +48,47 @@ async function group(name, fn) {
 
 // 1. The API reaches the binary (not the static tier).
 await group('api reaches the binary', async () => {
-  // A fresh deploy boots the bank over the wire (~20 s), and Caddy answers
-  // 502 until the first bank loads. Poll instead of failing the deploy on
-  // its own boot time: 18 tries x 10 s.
-  let health;
+  // Readiness is the meaningful signal: 200 only once the replica is open and
+  // its schema contract is trusted, so Caddy answers 502 until then. Poll
+  // instead of failing the deploy on its own boot time: 18 tries x 10 s.
+  let ready;
   for (let attempt = 1; attempt <= 18; attempt++) {
-    health = await get('/health');
-    if (!health.networkError && health.status === 200) break;
+    ready = await get('/ready');
+    if (!ready.networkError && ready.status === 200) break;
     if (attempt === 18) break;
     await new Promise((resolve) => setTimeout(resolve, 10000));
   }
-  if (health.networkError) return fail(`/health unreachable (${health.networkError})`);
+  if (ready.networkError) return fail(`/ready unreachable (${ready.networkError})`);
+  if (ready.status !== 200) return fail(`/ready status ${ready.status} (replica not open or contract not trusted)`);
+  if (ready.contentType.includes('html')) return fail(`/ready is ${ready.contentType} (static tier is shadowing the API)`);
+  ok('/ready is up');
+
+  // Liveness is plain text "ok" by design; HTML here means the static tier
+  // answered instead of the binary.
+  const health = await get('/health');
   if (health.status !== 200) return fail(`/health status ${health.status}`);
-  if (!health.contentType.includes('json')) return fail(`/health is ${health.contentType}, not JSON (static tier is shadowing the API)`);
-  let h;
+  if (health.contentType.includes('html')) return fail(`/health is ${health.contentType} (static tier is shadowing the API)`);
+  ok('/health is live');
+
+  // Every `/api/v1` route is key-gated, not just the metered ones. A missing
+  // key is a 401 from the key layer, which also proves the request reached the
+  // binary: the static tier would answer 404 or HTML.
+  const anon = await get('/api/v1/exams');
+  if (anon.status !== 401) return fail(`/api/v1/exams without key is ${anon.status}, want 401`);
+  ok('/api/v1/exams is keyed (401 without key)');
+
+  // The committed spec is not served by the binary; `merge.mjs` copies it into
+  // dist/ so it ships with the static site and the docs reference resolves.
+  const spec = await get('/openapi.json');
+  if (spec.status !== 200) return fail(`/openapi.json status ${spec.status}`);
+  let doc;
   try {
-    h = JSON.parse(health.body);
+    doc = JSON.parse(spec.body);
   } catch {
-    return fail('/health body is not JSON');
+    return fail('/openapi.json is not JSON');
   }
-  for (const key of ['version', 'bank_version', 'subjects', 'questions']) {
-    if (h[key] === undefined || h[key] === null) return fail(`/health missing ${key}`);
-  }
-  ok(`/health ok (v${h.version}, bank ${h.bank_version}, ${h.questions} questions)`);
-
-  const exams = await get('/api/v1/exams');
-  if (exams.status !== 200) return fail(`/api/v1/exams status ${exams.status}`);
-  if (!exams.body.includes('JAMB')) return fail('/api/v1/exams carries no catalog data');
-  ok('/api/v1/exams serves catalog data');
-
-  const anon = await get('/api/v1/questions?exam=JAMB&per_page=1');
-  if (anon.status !== 401) return fail(`/api/v1/questions without key is ${anon.status}, want 401`);
-  ok('/api/v1/questions is keyed (401 without key)');
+  if (!doc.openapi || !doc.paths) return fail('/openapi.json is not an OpenAPI document');
+  ok(`/openapi.json ok (${Object.keys(doc.paths).length} paths)`);
 });
 
 // 2. Docs serve distinct pages (not one homepage four times).

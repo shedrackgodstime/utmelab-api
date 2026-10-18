@@ -87,24 +87,17 @@ jobs:
           mkdir -p release
           cp target/release/${APP} release/${APP}
           cp -r site/dist release/site
-          # D73: the release is exactly binary + site/. No data/ at all.
-          #
-          # `serve` has no reference to data/, JsonStore or any path — it boots
-          # TursoStore::open_cached and serves from memory. config.data_dir is
-          # read only by the `import`, `quarantine` and `verify_row` CLI
-          # subcommands, and CI runs none of those on the artifact. So shipping
-          # questions.json was already dead weight, and data/inbox/ never
-          # shipped at all (import staging).
-          #
-          # What is NOT fixed here is the other half of D73: the catalog and
-          # novels are still `include_str!`'d into the binary (~2.6 MB). That is
-          # Rust, not deploy config — see the `verify-row`/`import` CLI paths,
-          # which still need the embedded bytes, and the removal lands with the
-          # code change.
+          # The release is exactly binary + site/. No data/ at all: the API
+          # serves a synced Turso replica and writes nothing to disk but that
+          # replica (REPLICA_PATH, set from the host env file), and nothing is
+          # `include_str!`'d into the binary. The gate refuses a release whose
+          # site/ is missing openapi.json, so assert it here too rather than
+          # shipping a tarball that will be rejected after the SCP.
           test -x release/${APP}
-          test -f release/site/index.html
           test -d release/site
-          # Nothing JSON may reach the host.
+          test -f release/site/index.html
+          test -f release/site/openapi.json
+          # Nothing JSON may reach the host as data.
           ! test -e release/data
           tar -czf "${APP}-${{ steps.v.outputs.version }}.tar.gz" -C release .
 
@@ -193,7 +186,7 @@ jobs:
             -i ~/.ssh/deploy \
             -p "${VPS_PORT}" \
             "${VPS_USER}@${VPS_HOST}" \
-            "systemctl is-active ${APP}; curl -s http://127.0.0.1:${API_PORT}/health || true"
+            "systemctl is-active ${APP}; curl -s http://127.0.0.1:${API_PORT}/ready || true"
 
       - name: Fetch smoke script
         uses: actions/checkout@v4

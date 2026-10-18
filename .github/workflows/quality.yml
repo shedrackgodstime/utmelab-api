@@ -1,0 +1,88 @@
+# Quality gate — runs on every push and pull request.
+#
+# Nothing here deploys. `deploy.yml` ships on demand (Run workflow, or a v* tag)
+# and repeats the Rust gate before it builds. This workflow exists so a broken
+# push is caught in minutes instead of at deploy time, which was the only other
+# place anything ran.
+#
+# Two jobs because they fail for different reasons and neither should hide the
+# other: `rust` is the AGENTS.md gate (tests, fmt, clippy, docs), `site` is the
+# static build, which is where a bad spec or a broken MDX lands.
+
+name: quality
+
+on:
+  push:
+  pull_request:
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  rust:
+    name: Rust gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Rust cache
+        uses: Swatinem/rust-cache@v2
+
+      # Includes the spec-drift test: `site/openapi.json` must match what the
+      # handlers generate, so a stale committed spec fails here, not at deploy.
+      - name: Tests
+        run: cargo test --workspace
+
+      - name: Format
+        run: cargo fmt --all -- --check
+
+      - name: Clippy (warnings denied)
+        run: cargo clippy --workspace --all-targets -- -D warnings
+
+      - name: Docs (warnings denied)
+        run: cargo doc --no-deps --workspace
+        env:
+          RUSTDOCFLAGS: -D warnings
+
+  site:
+    name: Static site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install
+        run: npm ci
+        working-directory: site
+
+      - name: Lint
+        run: npm run lint
+        working-directory: site
+
+      - name: Build
+        run: npm run build
+        working-directory: site
+
+      - name: dist carries all three tiers and the spec
+        run: |
+          set -euo pipefail
+          test -f dist/index.html
+          test -f dist/docs/index.html
+          test -f dist/dashboard/index.html
+          test -f dist/openapi.json
+        working-directory: site
