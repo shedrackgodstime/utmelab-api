@@ -9,16 +9,19 @@
 //! capability is written once. The admin key tools have no twin on the keyed
 //! HTTP surface; they call the same `store::accounts` functions the dashboard
 //! does. Scope is checked with the same [`Auth::require`] HTTP uses, read from
-//! the request the transport carried into `context.extensions`.
+//! the request the transport carried into `context.extensions`. Each tool
+//! declares the scope it needs at its registration, and that one declaration
+//! both hides the tool from `tools/list` for a caller who cannot call it and
+//! refuses the call.
 
 use axum::extract::{Path, Query, State};
 use rmcp::{
-    handler::server::{router::tool::ToolRouter, wrapper::Parameters},
+    handler::server::{router::tool::ToolRouter, tool::ToolCallContext, wrapper::Parameters},
     model::{
-        CallToolResponse, CallToolResult, ContentBlock, ErrorCode, Implementation,
-        ListResourceTemplatesResult, ListResourcesResult, PaginatedRequestParams,
-        ReadResourceRequestParams, ReadResourceResponse, ReadResourceResult, ResourceContents,
-        ServerCapabilities, ServerConfig,
+        CallToolRequestParams, CallToolResponse, CallToolResult, ContentBlock, ErrorCode,
+        Implementation, ListResourceTemplatesResult, ListResourcesResult, ListToolsResult,
+        MetaObject, PaginatedRequestParams, ReadResourceRequestParams, ReadResourceResponse,
+        ReadResourceResult, ResourceContents, ServerCapabilities, ServerConfig, Tool,
     },
     service::RequestContext,
     tool, tool_handler, tool_router, ErrorData, RoleServer, ServerHandler,
@@ -28,7 +31,7 @@ use serde::Deserialize;
 
 use crate::{
     api::v1::{papers, reports},
-    auth::{api_key::AuthedKey, Auth, SCOPE_MANAGE_KEYS},
+    auth::{api_key::AuthedKey, Auth, SCOPE_MANAGE_KEYS, SCOPE_READ_CATALOG, SCOPE_WRITE_REPORTS},
     core,
     state::DbState,
     store,
@@ -105,6 +108,29 @@ fn json_result<T: serde::Serialize>(value: &T) -> Result<CallToolResponse, Error
     Ok(CallToolResult::success(vec![ContentBlock::text(text)]).into())
 }
 
+/// The `_meta` key that carries a tool's required scope. Namespaced, as `_meta`
+/// keys must be.
+const SCOPE_KEY: &str = "io.utmelab/requiredScope";
+
+/// The `_meta` a tool carries. Declaring the scope beside the tool is what lets
+/// listing and dispatch share one declaration: [`list_tools`] hides a tool the
+/// caller's scopes cannot reach and `call_tool` refuses it, both by asking
+/// [`scope_of`]. The requirement stays on the wire because the vocabulary is
+/// public already (the docs name every scope), so a client can check before it
+/// calls instead of learning the rule from a refusal.
+///
+/// [`list_tools`]: McpServer::list_tools
+fn scope_meta(scope: &'static str) -> MetaObject {
+    let mut meta = MetaObject::new();
+    meta.insert(SCOPE_KEY.to_string(), serde_json::Value::from(scope));
+    meta
+}
+
+/// The scope a tool declared, or `None` for a tool that requires none.
+fn scope_of(tool: &Tool) -> Option<&str> {
+    tool.meta.as_ref()?.get(SCOPE_KEY)?.as_str()
+}
+
 #[derive(Deserialize, JsonSchema)]
 struct FileReportArgs {
     /// One of: question, topic, passage, novel.
@@ -158,7 +184,10 @@ struct PrefixArgs {
 impl McpServer {
     /// Flag a catalog item (question, topic, passage or novel) for review.
     /// Needs the `write:reports` scope.
-    #[tool(description = "Flag a catalog item for review. Needs write:reports.")]
+    #[tool(
+        description = "Flag a catalog item for review. Needs write:reports.",
+        meta = scope_meta(SCOPE_WRITE_REPORTS)
+    )]
     async fn file_report(
         &self,
         Parameters(args): Parameters<FileReportArgs>,
@@ -181,7 +210,10 @@ impl McpServer {
 
     /// Assemble one subject's mock from the bank. Deterministic per seed,
     /// answers always withheld. Needs the `read:catalog` scope.
-    #[tool(description = "Assemble a subject paper from the bank. Needs read:catalog.")]
+    #[tool(
+        description = "Assemble a subject paper from the bank. Needs read:catalog.",
+        meta = scope_meta(SCOPE_READ_CATALOG)
+    )]
     async fn assemble_paper(
         &self,
         Parameters(args): Parameters<AssemblePaperArgs>,
@@ -203,7 +235,10 @@ impl McpServer {
 
     /// Re-assemble a paper with the same seed and mark only submitted ids.
     /// Needs the `read:catalog` scope.
-    #[tool(description = "Score a subject paper by re-assembling it. Needs read:catalog.")]
+    #[tool(
+        description = "Score a subject paper by re-assembling it. Needs read:catalog.",
+        meta = scope_meta(SCOPE_READ_CATALOG)
+    )]
     async fn score_paper(
         &self,
         Parameters(args): Parameters<ScorePaperArgs>,
@@ -231,7 +266,10 @@ impl McpServer {
 #[tool_router(router = admin_router)]
 impl McpServer {
     /// Revoke a key by prefix. Needs the `manage:keys` scope.
-    #[tool(description = "Revoke a key by prefix. Needs manage:keys.")]
+    #[tool(
+        description = "Revoke a key by prefix. Needs manage:keys.",
+        meta = scope_meta(SCOPE_MANAGE_KEYS)
+    )]
     async fn revoke_key(
         &self,
         Parameters(args): Parameters<PrefixArgs>,
@@ -241,7 +279,10 @@ impl McpServer {
     }
 
     /// Undo a revocation by prefix. Needs the `manage:keys` scope.
-    #[tool(description = "Undo a key revocation by prefix. Needs manage:keys.")]
+    #[tool(
+        description = "Undo a key revocation by prefix. Needs manage:keys.",
+        meta = scope_meta(SCOPE_MANAGE_KEYS)
+    )]
     async fn unrevoke_key(
         &self,
         Parameters(args): Parameters<PrefixArgs>,
@@ -253,7 +294,8 @@ impl McpServer {
     /// Mint a replacement for a key and revoke the old prefix. Needs the
     /// `manage:keys` scope.
     #[tool(
-        description = "Rotate a key: mint a replacement, revoke the old prefix. Needs manage:keys."
+        description = "Rotate a key: mint a replacement, revoke the old prefix. Needs manage:keys.",
+        meta = scope_meta(SCOPE_MANAGE_KEYS)
     )]
     async fn rotate_key(
         &self,
@@ -293,6 +335,47 @@ impl McpServer {
 
 #[tool_handler(router = self.tools())]
 impl ServerHandler for McpServer {
+    /// Only the tools this caller can invoke are listed, so the advertised and
+    /// the callable sets agree. The scope each tool declares at its
+    /// registration is the same one `call_tool` enforces, so listing cannot
+    /// drift from dispatch.
+    async fn list_tools(
+        &self,
+        _request: Option<PaginatedRequestParams>,
+        context: RequestContext<RoleServer>,
+    ) -> Result<ListToolsResult, ErrorData> {
+        let auth = auth_from(&context)?;
+        let tools = self
+            .tools()
+            .list_all()
+            .into_iter()
+            .filter(|tool| scope_of(tool).is_none_or(|scope| auth.has_scope(scope)))
+            .collect();
+        Ok(ListToolsResult::with_all_items(tools))
+    }
+
+    /// Enforce the scope the tool declared before dispatching, so a tool that
+    /// `list_tools` hides is also refused when called by name. An unknown tool
+    /// declares nothing and falls through to the router's own "tool not found".
+    async fn call_tool(
+        &self,
+        request: CallToolRequestParams,
+        context: RequestContext<RoleServer>,
+    ) -> Result<CallToolResponse, ErrorData> {
+        let auth = auth_from(&context)?;
+        let required = self
+            .tools()
+            .get(&request.name)
+            .and_then(scope_of)
+            .map(str::to_owned);
+        if let Some(scope) = required {
+            auth.require(&scope).map_err(to_mcp)?;
+        }
+        self.tools()
+            .call(ToolCallContext::new(self, request, context))
+            .await
+    }
+
     fn get_info(&self) -> ServerConfig {
         match self.surface {
             Surface::Catalog => ServerConfig::new(

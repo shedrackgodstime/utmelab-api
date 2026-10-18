@@ -145,8 +145,8 @@ mod tests {
     const CATALOG: &str = "/mcp";
     const ADMIN: &str = "/mcp/admin";
 
-    /// A replica the surface can answer from: one exam, a read key, an admin
-    /// key.
+    /// A replica the surface can answer from: one exam, and keys that cover the
+    /// scopes a tool can declare (read, report write, none) plus an admin key.
     async fn app() -> Router {
         let db = replica().await;
         let conn = connect(&db).await;
@@ -159,6 +159,8 @@ mod tests {
         .await
         .expect("insert exam");
         issue_key(&conn, "reader.secret", "commercial", "read:catalog", false).await;
+        issue_key(&conn, "writer.secret", "commercial", "write:reports", false).await;
+        issue_key(&conn, "nobody.secret", "commercial", "", false).await;
         issue_key(&conn, "admin.secret", "admin", "manage:keys", false).await;
         crate::routes::router(state(db), &crate::config::Config::default())
     }
@@ -262,8 +264,8 @@ mod tests {
         .await;
         assert_eq!(
             tool_names(&tools["result"]),
-            ["assemble_paper", "file_report", "score_paper"],
-            "the catalog surface lists only its own actions"
+            ["assemble_paper", "score_paper"],
+            "the catalog surface lists only the actions a read key may call"
         );
 
         let (_, resources) = rpc(
@@ -294,6 +296,66 @@ mod tests {
                 .expect("templates")
                 .len(),
             12
+        );
+    }
+
+    /// Listing and calling read the same scope declaration: a tool the caller
+    /// cannot call is not advertised, so the surface never offers a door that
+    /// will not open.
+    #[tokio::test]
+    async fn tools_list_hides_what_the_caller_cannot_call() {
+        let app = app().await;
+
+        let (_, writer) = rpc(
+            &app,
+            CATALOG,
+            Some("writer.secret"),
+            msg(1, "tools/list", Value::Null),
+        )
+        .await;
+        assert_eq!(
+            tool_names(&writer["result"]),
+            ["file_report"],
+            "a report writer sees only the report write"
+        );
+
+        let (_, nobody) = rpc(
+            &app,
+            CATALOG,
+            Some("nobody.secret"),
+            msg(2, "tools/list", Value::Null),
+        )
+        .await;
+        assert!(
+            nobody["result"]["tools"]
+                .as_array()
+                .expect("tools")
+                .is_empty(),
+            "a key with no scope is offered no action: {nobody}"
+        );
+    }
+
+    /// The requirement is on the wire, namespaced, next to the tool that needs
+    /// it, so a client can check before it calls.
+    #[tokio::test]
+    async fn a_tool_advertises_the_scope_it_needs() {
+        let app = app().await;
+        let (_, listed) = rpc(
+            &app,
+            CATALOG,
+            Some("writer.secret"),
+            msg(1, "tools/list", Value::Null),
+        )
+        .await;
+        let file_report = listed["result"]["tools"]
+            .as_array()
+            .expect("tools")
+            .iter()
+            .find(|t| t["name"] == "file_report")
+            .expect("file_report is listed");
+        assert_eq!(
+            file_report["_meta"]["io.utmelab/requiredScope"], "write:reports",
+            "{file_report}"
         );
     }
 
@@ -402,7 +464,8 @@ mod tests {
 
     /// Identity is not authorization on this surface either: a read key is
     /// refused `file_report`, and the refusal carries the same machine code
-    /// HTTP's 403 body would.
+    /// HTTP's 403 body would. The scope enforced is the one the tool declared,
+    /// the same `write:reports` the HTTP route demands.
     #[tokio::test]
     async fn a_tool_checks_the_same_scope_http_checks() {
         let app = app().await;
