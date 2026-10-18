@@ -27,9 +27,26 @@ name: uptime
 
 on:
   schedule:
-    # Every 15 minutes. GitHub queues scheduled workflows and can delay them on
-    # busy repositories, so treat this as "at least this often", not a timer.
-    - cron: '*/15 * * * *'
+    # Once a day, and only for the reasons below — not as a pager.
+    #
+    # WHAT THIS IS FOR: a daily proof that the edge is still wired the way the
+    # deploy left it. Two real bugs sat undetected on this host for days because
+    # nothing outside loopback ever looked: Caddy answering /health with the
+    # docs homepage, and an SPA fallback serving the home page for every docs
+    # URL with HTTP 200. A daily run catches that class, plus a host that came
+    # back wrong from a reboot, a disk that filled, or an unattended upgrade
+    # that changed something. Those are all "fine yesterday, broken today", and
+    # a once-a-day check is exactly the right cadence for them.
+    #
+    # WHAT THIS IS NOT: outage detection. Today's outage lasted ~40 minutes and
+    # was noticed by hand; this run would not have told you until the next
+    # morning. Nothing cheap and unattended covers a short outage well, and
+    # pretending a daily cron does is worse than not having one.
+    #
+    # 06:23 UTC, not 06:00: scheduled workflows queue behind the top of the hour
+    # and a public repo is delayed most. Off the hour costs nothing and skips
+    # that queue.
+    - cron: '23 6 * * *'
   workflow_dispatch: {}
 
 permissions:

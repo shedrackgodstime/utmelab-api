@@ -69,10 +69,19 @@ Rust. Ordered by what blocks the most.
 
 - ~~No uptime check on `/ready` between deploys.~~ **Closed 2026-10-18.**
   `.github/workflows/uptime.yml` runs the same `site/scripts/smoke.mjs` the
-  deploy runs, from outside, every 15 minutes and on demand — one source of truth
-  for "is it serving". `smoke.mjs` gained `SMOKE_READY_TRIES` /
+  deploy runs, from outside, **once a day at 06:23 UTC**, and on demand — one
+  source of truth for "is it serving". `smoke.mjs` gained `SMOKE_READY_TRIES` /
   `SMOKE_READY_DELAY_MS` so the scheduled run fails fast while the deploy still
-  retries for 180 s. Alerting is GitHub's failing-run notification only: that is
+  retries for 180 s.
+  **This is a drift check, not a pager.** It exists for the "fine yesterday,
+  broken today" class — Caddy answering `/health` with the docs homepage, an SPA
+  fallback serving the home page for every docs URL at HTTP 200, a host coming
+  back wrong from a reboot, a filled disk, an unattended upgrade. It will not
+  catch a short outage: today's 40-minute one was noticed by hand, and this run
+  would not have spoken until the next morning. An earlier 15-minute cadence was
+  considered and dropped — the owner does not want something firing every N
+  minutes, and 96 runs a day is the wrong amount of standing noise for a check
+  that only matters when it fails. Alerting is GitHub's failing-run notification:
   a notification, not a page.
 - ~~The deploy gate can false-fail a first boot.~~ **Closed 2026-10-18.** The
   gate polled `/ready` for 30x1 s, but with no replica `/ready` is 503 until the
