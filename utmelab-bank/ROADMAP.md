@@ -95,7 +95,7 @@ run on real rows end to end.
 
 | Area | Code | In CLI | Unit-tested | Proven on real data |
 |---|---|---|---|---|
-| config / env | yes | `config` | yes | **no** (single URL today, see below) |
+| config / env | yes | `config` | yes | **yes** (two urls, tokens not echoed) |
 | contract: rust schema, vocab | yes | `contract` | yes | yes |
 | content hash | yes | (inside `contract`) | yes | **yes: 2243/2243 vs live prod** |
 | store: lanes, selectors, repo | yes | `selectors` | yes | yes (local) |
@@ -116,7 +116,7 @@ run on real rows end to end.
 | review workbench | partial (`set`, `show`, `verify`) | not registered | yes | **no** |
 | goal composition | yes | `goal` | partial | **no** |
 | status / progress report | **not built** | no | no | no |
-| two-DB env wiring (`.env`) | **not built** | no | no | no |
+| two-DB env wiring (`.env`) | yes | (behind `config`) | yes | **yes** (R1) |
 
 Known doc drift: the README's "Status" section still calls `intake`, the media
 tasks, the model tasks, the review bench and `goal` unbuilt. They are built.
@@ -143,6 +143,13 @@ The fix: two settings, not one. A bank-own URL and token, and a production
 **read** URL and token opened with `read_only=True`. Then isolation is
 structural.
 
+Fixed in R1. The two urls are separate fields; production is opened through a
+store object that refuses every write, rather than a flag that was silently
+discarded; and `config` reports each token as `set` instead of echoing it.
+Proven with a live `catalog` run: 583 topics and 2158 subtopics read from
+production into a local bank file, and production still reports 23 tables and
+zero lane tables.
+
 ## Environment and secrets
 
 The `.env` in `utmelab-bank/` (gitignored, confirmed) already carries the two
@@ -168,11 +175,14 @@ credential for production.
 Each step ships on its own and is green on its own. We do not start a step until
 the previous one is green.
 
-- **R1. Split the two databases and load `.env`.**
+- **R1. Split the two databases and load `.env`.** done
   Config gets `bank` (own) and `prod_read` (read-only) connections sourced from
   the names above; `.env` is loaded when present and never overrides real env.
-  *Green:* `config` shows both, `catalog` reads production and writes the bank
-  DB, and production still has zero lane tables.
+  *Green, met:* the live `catalog` run above. Three things fixed on the way,
+  each of which was a claim that was not true: `Store` now enforces
+  `read_only` instead of discarding it (`del read_only`), `config` no longer
+  echoes a token into stdout, and `catalog` now returns its exit code instead
+  of silently exiting 0 on every failure.
 - **R2. `status` command.**
   Lane counts, the last N runs with outcome, the retry queue, and how many rows
   are eligible for each flow.

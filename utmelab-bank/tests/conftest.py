@@ -32,10 +32,19 @@ REPO_ROOT = PROJECT_ROOT.parent
 
 @pytest.fixture(autouse=True)
 def _no_ambient_env(monkeypatch: pytest.MonkeyPatch) -> None:
-    """No test should inherit a developer's environment."""
+    """No test should inherit a developer's environment.
+
+    The bank's own knobs use the ``UTMELAB_BANK_`` prefix. The two databases and
+    the media token follow the ecosystem names, so those are cleared too; a
+    developer's ``.env`` must never reach a test.
+    """
     for key in list(os.environ):
-        if key.startswith("UTMELAB_BANK_"):
+        if key.startswith(("UTMELAB_BANK_", "TURSO_", "GITLAB_")):
             monkeypatch.delenv(key, raising=False)
+    # Refuse the real ``utmelab-bank/.env`` so a developer's two database urls
+    # (and their tokens) never reach a test, and so a config test cannot pass
+    # only because of what is on this disk.
+    monkeypatch.setenv("UTMELAB_BANK_NO_DOTENV", "1")
 
 
 @pytest.fixture

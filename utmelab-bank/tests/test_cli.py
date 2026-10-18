@@ -259,6 +259,68 @@ def test_a_syllabus_source_refuses_to_scrape_questions() -> None:
 
 
 # ---------------------------------------------------------------------------
+# Catalog: reads production, writes the bank, never the reverse
+# ---------------------------------------------------------------------------
+
+
+def test_catalog_reads_production_and_writes_the_bank(
+    runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The two databases stay separate, and production is opened read only."""
+    import asyncio
+
+    from utmelab_bank.store.client import Store
+
+    prod_path = tmp_path / "prod.db"
+    bank_path = tmp_path / "bank.db"
+
+    async def seed() -> None:
+        prod = await Store.open(f"sqlite:{prod_path}")
+        await prod.execute(
+            "CREATE TABLE topics (slug TEXT PRIMARY KEY, subject TEXT, exam TEXT, "
+            'name TEXT, "order" INTEGER, weight REAL, objectives TEXT)'
+        )
+        await prod.execute(
+            "CREATE TABLE subtopics (slug TEXT PRIMARY KEY, topic TEXT, name TEXT, "
+            '"order" INTEGER, objectives TEXT)'
+        )
+        await prod.execute(
+            "INSERT INTO topics VALUES ('algebra', 'mathematics', 'jamb', 'Algebra', 1, 1.0, '[]')"
+        )
+        await prod.execute(
+            "INSERT INTO subtopics VALUES ('linear-equations', 'algebra', "
+            "'Linear Equations', 1, '[]')"
+        )
+        await prod.aclose()
+
+    asyncio.run(seed())
+    monkeypatch.setenv("TURSO_DB_URL", f"sqlite:{prod_path}")
+
+    result = runner.invoke(cli, ["catalog", "--local-database", str(bank_path)])
+    assert result.exit_code == 0, result.output
+    assert "topics: 1" in result.output
+    assert "subtopics: 1" in result.output
+
+    async def read() -> tuple[int, int]:
+        bank = await Store.open(f"sqlite:{bank_path}")
+        try:
+            return (
+                await bank.count_rows("work_topics"),
+                await bank.count_rows("work_subtopics"),
+            )
+        finally:
+            await bank.aclose()
+
+    assert asyncio.run(read()) == (1, 1)
+
+
+def test_catalog_refuses_without_a_production_url(runner: CliRunner, tmp_path: Path) -> None:
+    result = runner.invoke(cli, ["catalog", "--local-database", str(tmp_path / "bank.db")])
+    assert result.exit_code == 2
+    assert "production" in result.output.lower()
+
+
+# ---------------------------------------------------------------------------
 # The media store
 # ---------------------------------------------------------------------------
 

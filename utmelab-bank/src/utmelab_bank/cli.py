@@ -270,7 +270,7 @@ def catalog_cmd(
     sink: str | None,
     local_database: Path | None,
     log_level: str | None,
-) -> int:
+) -> None:
     """Copy the authoritative topic/subtopic catalogue into the bank.
 
     The syllabus taxonomy lives in the production database and is the single
@@ -284,49 +284,33 @@ def catalog_cmd(
         local_database=local_database,
     )
     _setup_logging(log_level or config.log_level)
-
-    if not config.database_url:
-        click.echo(
-            "catalog: set UTMELAB_BANK_DATABASE_URL to read the authoritative "
-            "topic/subtopic catalog",
-            err=True,
-        )
-        return 2
-
-    return asyncio.run(_catalog_sync(config))
+    raise SystemExit(asyncio.run(_catalog_sync(config)))
 
 
 async def _catalog_sync(config: Config) -> int:
     log = logging.getLogger("utmelab_bank")
 
+    try:
+        prod_url = config.require_prod()
+        bank_url = config.require_database()
+    except ConfigError as exc:
+        click.echo(f"catalog: {exc}", err=True)
+        return 2
+
+    from utmelab_bank.store.schema import ensure_schema
+
     log.debug(
-        "catalog: database_url=%r local=%r repo_var=%r target=%r",
-        config.database_url,
-        config.local_database,
-        config.repo.var,
+        "catalog: prod=%r bank=%r target=%r",
+        prod_url,
+        bank_url,
         config.lane,
     )
 
-    if not config.database_url:
-        click.echo(
-            "catalog: set UTMELAB_BANK_DATABASE_URL to read the authoritative "
-            "topic/subtopic catalog",
-            err=True,
-        )
-        return 2
-
-    from utmelab_bank.store.client import Store
-    from utmelab_bank.store.schema import ensure_schema
-
-    log.debug("catalog: opening PROD store, url=%r", config.database_url)
-    prod = await Store.open(config.database_url, config.database_token)
-
-    if config.local_database:
-        bank_db = f"file:{config.local_database}"
-    else:
-        bank_db = f"file:{config.repo.var / 'bank.db'}"
-    log.debug("catalog: opening BANK store, url=%r", bank_db)
-    bank_store = await Store.open(bank_db, "")
+    # Production is opened read-only and only ever sees SELECTs. If a future edit
+    # makes it try to write, the store itself refuses rather than trusting the
+    # caller. ``read_only`` is the belt; a read-only token is the braces.
+    prod = await Store.open(prod_url, config.prod_database_token, read_only=True)
+    bank_store = await Store.open(bank_url, config.database_token)
 
     try:
         await ensure_schema(bank_store)

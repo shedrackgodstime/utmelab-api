@@ -30,10 +30,22 @@ class Store:
     surface small enough that "all SQL lives in store/" is true.
     """
 
-    def __init__(self, client: Any, url: str, token: str = "") -> None:
+    def __init__(
+        self,
+        client: Any,
+        url: str,
+        token: str = "",
+        *,
+        read_only: bool = False,
+    ) -> None:
         self._client = client
         self.url = url
         self.token = token
+        #: A store told it is read-only refuses every write, so "we only read
+        #: production" is a property of the object rather than of our self
+        #: control. The token still has to be read-only too; this is the belt to
+        #: the token's braces.
+        self.read_only = read_only
         self._closed = False
 
     @classmethod
@@ -77,12 +89,12 @@ class Store:
                 hint="use a libsql or https url, or a local path like sqlite:./bank.db",
             )
 
-        del read_only
-        return cls(client=client, url=url, token=token)
+        return cls(client=client, url=url, token=token, read_only=read_only)
 
     async def execute(self, sql: str, params: dict[str, Any] | None = None) -> None:
         """Run one statement that changes something."""
         self._guard()
+        self._guard_writable()
         try:
             await self._client.execute(sql, self._bind(params))
         except Exception as exc:
@@ -100,6 +112,7 @@ class Store:
         one transaction rather than 200.
         """
         self._guard()
+        self._guard_writable()
         if not statements:
             return 0
         try:
@@ -227,6 +240,14 @@ class Store:
     def _guard(self) -> None:
         if self._closed:
             raise StoreError("the store is closed")
+
+    def _guard_writable(self) -> None:
+        if self.read_only:
+            raise StoreError(
+                "refusing to write through a read-only store",
+                url=self.url,
+                hint="a read-only store is for reading production, never for staging",
+            )
 
     async def aclose(self) -> None:
         if self._closed:

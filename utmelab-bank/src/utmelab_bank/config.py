@@ -52,6 +52,31 @@ TARGET_ALIASES: Final[dict[str, Lane]] = {
     "prod": "ready",
 }
 
+#: Fields whose environment name is not the plain ``UTMELAB_BANK_`` prefix, in
+#: priority order. The two databases follow the ecosystem's ``TURSO_`` names, so
+#: one ``.env`` and one set of CI secrets serve both the API and the bank. The
+#: bank's own store and the production read store are deliberately separate
+#: names, so the only way the bank writes production is a deliberate edit.
+FIELD_ENV: Final[dict[str, tuple[str, ...]]] = {
+    "database_url": ("UTMELAB_BANK_DATABASE_URL", "TURSO_UTMELAB_BANK_DB_URL"),
+    "database_token": ("UTMELAB_BANK_DATABASE_TOKEN", "TURSO_UTMELAB_BANK_DB_TOKEN"),
+    "prod_database_url": ("UTMELAB_BANK_PROD_DATABASE_URL", "TURSO_DB_URL"),
+    "prod_database_token": (
+        "UTMELAB_BANK_PROD_DATABASE_TOKEN",
+        "TURSO_DB_TOKEN_READONLY",
+        "TURSO_DB_TOKEN",
+    ),
+}
+
+#: Never echoed by ``utmelab-bank config``. A report that prints a token puts it
+#: in a CI log, where it lives forever.
+SECRET_FIELDS: Final[frozenset[str]] = frozenset({"database_token", "prod_database_token"})
+
+
+def env_names_for(field: str) -> tuple[str, ...]:
+    """Every environment name that can set ``field``, most specific first."""
+    return FIELD_ENV.get(field) or (f"UTMELAB_BANK_{field.upper()}",)
+
 
 def find_repo_root(start: Path | None = None) -> Path:
     """Walk up until a directory holding both ``src`` and ``utmelab-bank`` is found.
@@ -80,17 +105,32 @@ class RepoRoot(BaseModel):
         return self.path / "src" / "store" / "schema.rs"
 
     @property
+    def package(self) -> Path:
+        """The bank package directory, ``<root>/utmelab-bank``."""
+        return self.path / "utmelab-bank"
+
+    @property
     def var(self) -> Path:
         """The only directory this package may write files into. Gitignored.
 
         Lives inside the package (``utmelab-bank/var``), never at the repo
         root: this package owns its run output, the API owns ``db/``.
         """
-        return self.path / "utmelab-bank" / "var"
+        return self.package / "var"
 
     @property
     def media_repo(self) -> Path:
         return self.var / "media-repo"
+
+    @property
+    def env_file(self) -> Path:
+        """The local ``.env``, when a developer left one. Gitignored.
+
+        Read only when it exists, and never allowed to override a real
+        environment variable, so a workflow's secrets always beat a file on
+        somebody's disk.
+        """
+        return self.package / ".env"
 
 
 class Config(BaseModel):
@@ -105,6 +145,12 @@ class Config(BaseModel):
     database_url: str = ""
     database_token: str = ""
     local_database: Path | None = None
+
+    #: Read from production, never written. Only ``catalog`` uses it today. Kept
+    #: in its own field, away from ``database_url``, so the bank's own store can
+    #: never be production by a single forgotten flag.
+    prod_database_url: str = ""
+    prod_database_token: str = ""
 
     media_remote: str = ""
     media_branch: str = "main"
@@ -163,26 +209,26 @@ class Config(BaseModel):
 
         Values that came from a flag are reported as ``flag``. Anything not in
         the environment and not flagged is ``default``, which is how a field
-        that should have been set in CI shows up as wrong.
+        that should have been set in CI shows up as wrong. A token is reported
+        as ``set`` rather than echoed, so a config dump is safe to paste.
         """
-        env = {
-            field: os.environ[f"UTMELAB_BANK_{field.upper()}"]
-            for field in type(self).model_fields
-            if f"UTMELAB_BANK_{field.upper()}" in os.environ
-        }
         report: dict[str, str] = {}
         for field in type(self).model_fields:
-            if field in env:
-                report[field] = f"env:{env[field]}"
+            found = next(
+                (name for name in env_names_for(field) if name in os.environ),
+                None,
+            )
+            if found is not None:
+                report[field] = "env:set" if field in SECRET_FIELDS else f"env:{os.environ[found]}"
+                continue
+            flag = next(
+                (name for name, target in FLAG_TO_FIELD.items() if target == field),
+                field,
+            )
+            if flag in self.flags:
+                report[field] = f"flag:{self.flags[flag]}"
             else:
-                flag = next(
-                    (name for name, target in FLAG_TO_FIELD.items() if target == field),
-                    field,
-                )
-                if flag in self.flags:
-                    report[field] = f"flag:{self.flags[flag]}"
-                else:
-                    report[field] = "default"
+                report[field] = "default"
         return report
 
     def require_database(self) -> str:
@@ -205,6 +251,38 @@ class Config(BaseModel):
             )
         return self.database_url
 
+    def require_prod(self) -> str:
+        """The production **read** url, or a refusal naming what is missing.
+
+        Separate from :meth:`require_database` on purpose. The only thing that
+        reads production is the catalog, and it must never be handed the bank's
+        own url or the reverse.
+        """
+        if not self.prod_database_url:
+            raise ConfigError(
+                "no production read database configured",
+                hint="set TURSO_DB_URL (or UTMELAB_BANK_PROD_DATABASE_URL)",
+            )
+        return self.prod_database_url
+
+
+def _load_env_file(root: RepoRoot) -> None:
+    """Load ``utmelab-bank/.env`` when it exists, never overriding real env.
+
+    Locally the file holds the two database urls. In CI the same names arrive as
+    secrets and there is no file, so this is a no-op there. ``override=False``
+    matters: a workflow's environment is the truth, and a stale file on disk is
+    not allowed to win.
+    """
+    path = root.env_file
+    if os.environ.get("UTMELAB_BANK_NO_DOTENV") == "1":
+        return
+    if not path.is_file():
+        return
+    from dotenv import load_dotenv
+
+    load_dotenv(path, override=False)
+
 
 def load(
     *,
@@ -220,10 +298,14 @@ def load(
     to a default, so a typo in CI fails loudly at startup.
     """
     root = RepoRoot(path=repo.resolve() if repo else find_repo_root())
+    _load_env_file(root)
     env = os.environ
 
     def env_str(name: str, default: str = "") -> str:
         return env.get(f"UTMELAB_BANK_{name}", default)
+
+    def env_first(names: tuple[str, ...]) -> str:
+        return next((env[name] for name in names if name in env), "")
 
     def env_int(name: str, default: int) -> int:
         raw = env.get(f"UTMELAB_BANK_{name}")
@@ -245,8 +327,10 @@ def load(
 
     settings: dict[str, object] = {
         "repo": root,
-        "database_url": env_str("DATABASE_URL"),
-        "database_token": env_str("DATABASE_TOKEN"),
+        "database_url": env_first(FIELD_ENV["database_url"]),
+        "database_token": env_first(FIELD_ENV["database_token"]),
+        "prod_database_url": env_first(FIELD_ENV["prod_database_url"]),
+        "prod_database_token": env_first(FIELD_ENV["prod_database_token"]),
         "media_remote": env_str("MEDIA_REMOTE"),
         "media_branch": env_str("MEDIA_BRANCH", "main"),
         "media_upload_enabled": env.get("UTMELAB_BANK_MEDIA_UPLOAD_ENABLED") == "1",
