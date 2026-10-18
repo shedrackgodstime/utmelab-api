@@ -33,7 +33,7 @@ permissions:
 
 env:
   APP: utmelab-api
-  API_PORT: "3100"
+  API_PORT: "8081"
 
 jobs:
   build:

@@ -29,12 +29,15 @@ REL="$BASE/releases"
 CUR="$BASE/current"
 SVC=utmelab-api.service
 # Keep in step with API_PORT in .github/workflows/deploy.yml and PORT in
-# /etc/utmelab-api/environment. The gate runs as root and does not load the env
-# file, so it cannot read the value from there.
-# 3100, not 8081: the binary binds config.rs DEFAULT_PORT = 3100. A gate that
-# polls 8081 finds nothing, and if its failure test is weak it will happily
-# "pass" a service that never bound and then prune the last good release.
-PORT=3100
+# /etc/utmelab-api/environment, which is where the service's port really comes
+# from. The gate runs as root and does not load the env file, so it cannot read
+# the value from there.
+# 8081 is the production port (the parent service sits on 8080). The code's
+# DEFAULT_PORT = 3100 applies only when PORT is unset, so a gate polling that
+# finds nothing on this host: at best it just fails the deploy, and against a
+# weak failure test it "passes" a service that never bound and then prunes the
+# last good release.
+PORT=8081
 READY="http://127.0.0.1:${PORT}/ready"
 
 log() { printf '[utmelab-api-deploy] %s\n' "$*"; }

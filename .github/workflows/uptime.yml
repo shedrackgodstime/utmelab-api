@@ -1,6 +1,6 @@
 # Uptime — is the public edge actually serving?
 #
-# The deploy gate health-checks 127.0.0.1:3100, so it cannot see Caddy, TLS or
+# The deploy gate health-checks 127.0.0.1:8081, so it cannot see Caddy, TLS or
 # route resolution. Two separate bugs shipped green through that hole:
 #
 #   1. Caddy orders file_server BEFORE reverse_proxy, so the docs tier answered
@@ -10,8 +10,8 @@
 #      not directory URLs, so every docs route rendered the home page — with
 #      HTTP 200, so a status-code check passes while the site is fully broken.
 #
-# The host also sat "active" with the binary on port 3100 while Caddy proxied to
-# the old 8081: a 502 for roughly forty minutes, with `systemctl is-active`
+# The host also sat "active" with the binary bound to one port while Caddy
+# proxied to another: a 502 for roughly forty minutes, with `systemctl is-active`
 # reporting healthy throughout. Nothing that watches loopback can see any of it.
 #
 # So this runs the SAME script the deploy runs, from outside, on a schedule.
