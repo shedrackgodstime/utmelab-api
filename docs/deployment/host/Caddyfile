@@ -12,7 +12,6 @@
 # Always validate before reloading:
 #   caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
 #   systemctl reload caddy
-
 {
 	admin 127.0.0.1:2019
 }

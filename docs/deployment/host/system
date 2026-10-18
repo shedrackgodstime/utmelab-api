@@ -100,7 +100,10 @@ write_dropin() { # svc, runtime, rw
     printf '# %s and re-run provision.\n\n' "$(manifest "$svc")"
     printf '[Service]\n'
     printf 'User=%s\nGroup=%s\n' "$runtime" "$runtime"
-    [ -n "$rw" ] && printf 'ReadWritePaths=%s\n' "$rw"
+    # Must stay an if, not `[ -n "$rw" ] && printf`: a false test would be the
+    # group's exit status, the redirect would still have written the file, and
+    # provision would abort for every service with no writable path.
+    if [ -n "$rw" ]; then printf 'ReadWritePaths=%s\n' "$rw"; fi
   } >"${dd}/override.conf" || die "writing ${dd}/override.conf"
   say "  unit drop-in: ${dd}/override.conf (User=${runtime})"
 }
@@ -159,14 +162,13 @@ cmd_provision() {
   local man; man="$(manifest "$svc")"
   [ -f "$man" ] || die "no manifest at $man"
 
-  local runtime deploy_user domain ip port rw asset
+  local runtime deploy_user domain ip port rw
   runtime="$(env_or "$svc" RUNTIME_USER "$svc")"
   deploy_user="$(env_or "$svc" DEPLOY_USER "deploy-$svc")"
   domain="$(env_of "$svc" DOMAIN)"
   ip="$(env_or "$svc" IP 127.0.0.1)"
   port="$(env_of "$svc" PORT)"
   rw="$(env_of "$svc" READ_WRITE_PATHS)"
-  asset="$(env_or "$svc" ASSET_PATH public/index.html)"
 
   [ -n "$port" ] || die "$man has no PORT"
   [[ "$runtime" =~ ^[a-z_][a-z0-9_-]*$ ]] || die "bad RUNTIME_USER: $runtime"
@@ -186,7 +188,7 @@ cmd_provision() {
   ensure_dir "$BASE_DIR/$svc/releases" 0775 "${deploy_user}:${deploy_user}"
   say "  tree: $BASE_DIR/$svc (releases owned by $deploy_user)"
 
-  local p first=1 paths=""
+  local p paths=""
   for p in $rw; do
     ensure_dir "$p" 0750 "${runtime}:${runtime}"
     chown -R "${runtime}:${runtime}" "$p"
@@ -211,7 +213,6 @@ cmd_provision() {
   say "     then set VPS_USER=${deploy_user} and VPS_SSH_KEY in the repo's secrets."
   say "  2. stage a release and activate it: sudo deploy-service $svc <version>"
   say "  3. confirm the contract holds:        sudo system verify"
-  [ -n "$asset" ] || true
 }
 
 # ============================================================================
