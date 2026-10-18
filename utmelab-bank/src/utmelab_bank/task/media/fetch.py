@@ -18,7 +18,7 @@ import logging
 from typing import Any
 
 from utmelab_bank.blob.gitstore import GitStore
-from utmelab_bank.blob.paths import extension_for, sha256_of
+from utmelab_bank.blob.paths import extension_for
 from utmelab_bank.errors import BlobError
 from utmelab_bank.model.base import now_iso
 from utmelab_bank.model.run import RowOutcome
@@ -90,10 +90,9 @@ async def fetch_one(row: dict[str, Any], ctx: TaskContext) -> RowOutcome:
     except Exception as exc:  # noqa: BLE001 — any network or filesystem error is a retryable row failure
         return ctx.fail(row_id, "fetch_failed", str(exc), retryable=True)
 
-    digest = sha256_of(data)
     content_type = response.headers.get("content-type")
     ext = extension_for(source_url, content_type)
-    digest, blob_path, media_url = store.write_blob(data, ext)
+    digest, blob_path, _our_path = store.write_blob(data, ext)
 
     stamp = now_iso()
     await ctx.repo.update(
@@ -103,7 +102,11 @@ async def fetch_one(row: dict[str, Any], ctx: TaskContext) -> RowOutcome:
             "blob_path": str(blob_path.relative_to(store.root)),
             "sha256": digest,
             "bytes": len(data),
-            "media_url": media_url,
+            # The question keeps the provider's full url until an upload actually
+            # publishes our own copy. Stamping our /media/... path here would
+            # point it at a file nothing serves yet. Upload replaces this value
+            # with our file name once the bytes are pushed.
+            "media_url": source_url,
             "status": "fetched",
             "error": None,
             "next_retry_at": None,
@@ -111,5 +114,5 @@ async def fetch_one(row: dict[str, Any], ctx: TaskContext) -> RowOutcome:
         },
     )
 
-    log.info("media-fetch %s: %d bytes -> %s", row_id, len(data), media_url)
+    log.info("media-fetch %s: %d bytes, sha %s", row_id, len(data), digest)
     return ctx.ok(row_id)

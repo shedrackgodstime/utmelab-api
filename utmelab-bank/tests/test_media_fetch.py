@@ -107,7 +107,8 @@ async def test_fetch_downloads_bytes_into_clone(
     assert updated["sha256"] is not None
     assert len(updated["sha256"]) == 64
     assert updated["bytes"] == len(PNG_BYTES)
-    assert updated["media_url"].startswith("/media/")
+    # The question keeps the provider's full url until an upload publishes ours.
+    assert updated["media_url"] == "https://cdn.example/fig-1.png"
     assert updated["blob_path"].startswith("media/")
     assert updated["error"] is None
     assert updated["next_retry_at"] is None
@@ -134,7 +135,7 @@ async def test_fetch_skips_already_fetched_row(
                 blob_path="media/ab/" + "a" * 64 + ".jpg",
                 sha256="a" * 64,
                 bytes=42,
-                media_url="/media/ab/" + "a" * 64 + ".jpg",
+                media_url="https://cdn.example/fig-2.jpg",
             )
         ],
     )

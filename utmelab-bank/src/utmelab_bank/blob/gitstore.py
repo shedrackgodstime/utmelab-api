@@ -80,7 +80,9 @@ class GitStore:
                 "no media remote configured",
                 hint="set UTMELAB_BANK_MEDIA_REMOTE, or point --repo at a clone",
             )
-        self.root.parent.mkdir(parents=True, exist_ok=True)
+        # git runs with the clone as its working directory, so the directory has
+        # to exist first. Cloning into an empty directory is allowed.
+        self.root.mkdir(parents=True, exist_ok=True)
         self._git(["clone", "--depth", "1", "--branch", self.branch, target, str(self.root)])
 
     def _git(self, args: list[str], *, check: bool = True, timeout: int = 600) -> str:
@@ -135,8 +137,16 @@ class GitStore:
         return digest, path, url_for(digest, extension)
 
     def stage_all(self) -> int:
-        """``git add`` everything untracked or changed. Returns the count."""
-        self._git(["add", "--all", "--", "media", "manifest"])
+        """``git add`` everything untracked or changed under ``media`` and ``manifest``.
+
+        Only paths that exist are named, because git refuses a pathspec matching
+        nothing. A first upload on a clone with no ``manifest`` yet would
+        otherwise fail before it ever staged the blob.
+        """
+        paths = [name for name in ("media", "manifest") if (self.root / name).exists()]
+        if not paths:
+            return 0
+        self._git(["add", "--all", "--", *paths])
         staged = self._git(["diff", "--cached", "--name-only", "--diff-filter=ACM"])
         return len([line for line in staged.splitlines() if line.strip()])
 
@@ -174,9 +184,14 @@ class GitStore:
         """
         return bool(config_flag and self.remote)
 
-    def push(self, branch: str | None = None) -> PushReport:
-        """Push the branch. Refuses unless :meth:`push_enabled` agrees."""
-        if not self.push_enabled():
+    def push(self, branch: str | None = None, *, allowed: bool = False) -> PushReport:
+        """Push the branch. Refuses unless :meth:`push_enabled` agrees.
+
+        ``allowed`` is the caller's decision to open the door (the config flag).
+        It is a parameter rather than a stored field so that every push site has
+        to say, in one line, that it means to publish.
+        """
+        if not self.push_enabled(allowed):
             raise BlobError(
                 "push is disabled",
                 hint="set UTMELAB_BANK_MEDIA_UPLOAD_ENABLED=1 and UTMELAB_BANK_MEDIA_REMOTE",

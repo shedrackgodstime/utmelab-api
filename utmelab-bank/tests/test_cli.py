@@ -8,6 +8,7 @@ hold it to that.
 from __future__ import annotations
 
 import json
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -383,6 +384,50 @@ def test_push_needs_both_the_flag_and_the_remote(tmp_path: Path) -> None:
     with_remote = GitStore(root=tmp_path / "m", remote="git@example.invalid:media.git")
     assert not with_remote.push_enabled()
     assert with_remote.push_enabled(config_flag=True)
+
+
+def _git(cwd: Path, *args: str) -> None:
+    subprocess.run(["git", *args], cwd=cwd, check=True, capture_output=True, text=True)
+
+
+def test_a_blob_is_committed_and_pushed_to_a_remote(tmp_path: Path) -> None:
+    """The upload mechanism, proven offline against a local remote.
+
+    Clone, write a content-addressed blob, stage, commit, push, then clone the
+    remote again and find the blob there. This is the shape the media upload
+    task will drive; proving it here means R7 only has to wire rows to it.
+    """
+    bare = tmp_path / "media.git"
+    _git(tmp_path, "init", "--bare", str(bare))
+
+    seed = tmp_path / "seed"
+    seed.mkdir()
+    _git(seed, "init", "-b", "main")
+    _git(seed, "config", "user.name", "test")
+    _git(seed, "config", "user.email", "test@test")
+    (seed / "README").write_text("media\n", encoding="utf-8")
+    _git(seed, "add", "--all")
+    _git(seed, "commit", "-m", "seed")
+    _git(seed, "remote", "add", "origin", str(bare))
+    _git(seed, "push", "origin", "main")
+
+    store = GitStore(root=tmp_path / "clone", remote=str(bare), branch="main")
+    store.ensure_cloned()
+    _git(store.root, "config", "user.name", "test")
+    _git(store.root, "config", "user.email", "test@test")
+
+    _, blob_path, our_url = store.write_blob(b"hello png", ".png")
+    assert store.stage_all() == 1
+    assert store.commit("media: add one blob") is not None
+    report = store.push(allowed=True)
+    assert report.branch == "main"
+
+    verify = tmp_path / "verify"
+    _git(tmp_path, "clone", "--branch", "main", str(bare), str(verify))
+    landed = list((verify / "media").rglob("*.png"))
+    assert landed, "the pushed blob is not on the remote"
+    assert landed[0] == verify / blob_path.relative_to(store.root)
+    assert our_url.startswith("/media/")
 
 
 def test_gc_keeps_the_hashes_it_is_told_to_keep(tmp_path: Path) -> None:

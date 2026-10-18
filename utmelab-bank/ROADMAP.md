@@ -52,9 +52,12 @@ status, this file wins and the README gets fixed.
 - **Catalog is read from production, never written there.** The topic/subtopic
   taxonomy lives in the production database; `catalog` copies it read-only into
   the bank's work lane. AI uses that copy for tagging and explanations.
-- **Media goes to our own destination**, content-addressed (sha256 blob names),
-  via the media git project. The URL we store is **ours**, never the provider's.
-  Upload stays disabled until it is proven with the probe.
+- **Media has two outcomes, and both leave a working url on the question.** A
+  figure we do not upload keeps the provider's **full source url**, unchanged.
+  A figure we do upload is downloaded, the provider url stops being its address,
+  and the bytes are pushed to the **media git project** (a GitLab repository,
+  content-addressed by sha256). What the question then stores is **our file
+  name**, never the provider's. Upload stays disabled until the probe proves it.
 - **Deduplication matters.** Two rows with the same stem and options are the
   same question. We do not grow the bank by growing duplicates.
 - **AI runs through opencode**, which is already proven in `utmelab-pipeline`.
@@ -84,8 +87,9 @@ The flows we want to be able to run, in any order, in any combination:
   `ai-verify` in the same pass.
 - **Fill the gaps.** `--where 'no explanation'` then explain only those; or
   `--where 'no subtopic'` then tag only those.
-- **Media.** `has images` -> `media-discover` -> `media-fetch` -> (transform) ->
-  upload to our store.
+- **Media.** `has images` -> `media-discover` -> `media-fetch`. A fetch that is
+  not followed by an upload leaves the provider's full url on the row; an upload
+  replaces it with our file name in the media git project.
 - **Compose.** One `goal` that wires these into a full pass.
 
 ## What actually exists today
@@ -104,7 +108,7 @@ run on real rows end to end.
 | catalog (read prod, write bank) | yes | `catalog` | yes | partial (583 / 2158 rows) |
 | intake (raw to work) | yes | `intake` | yes | partial (5 rows) |
 | gate (mechanical) | yes | `gate` | yes | partial (5 rows) |
-| dedupe | yes | `dedupe` | **23%** | **no** (has never refused a row) |
+| dedupe | yes | `dedupe` | yes | **yes** (refused a real copy; R4) |
 | ai-describe | yes | `ai-describe` | yes | **no** |
 | ai-explain | yes | `ai-explain` | yes | **no** |
 | ai-tag | yes | `ai-tag` | yes | **no** |
@@ -204,7 +208,8 @@ the previous one is green.
 - **R7. Prove media.**
   `media-discover` and `media-fetch` on rows with images; build the upload and
   the report; push one batch to the media project.
-  *Green:* blobs land in the media repo and a `media_url` is set on the row.
+  *Green:* a skipped figure carries the provider's full url, an uploaded figure
+  carries our file name, and blobs land in the media git project.
 - **R8. Compose a `goal`.**
   Wire the proven tasks into one named pass.
   *Green:* the goal runs end to end on a slice without any task calling another.
@@ -229,9 +234,10 @@ the previous one is green.
 
 ## Open decisions
 
-1. Coverage floor: cover the scraper and the gates up to 80%, or lower the floor
-   with a stated reason. Suppressing it is not allowed.
-2. Which source is proven first: `myschool` (questions) or the syllabus trees.
+1. ~~Coverage floor~~ **decided:** keep the 80% floor and cover the scraper and
+   the remaining gates up to it. Lowering the floor is not an option.
+2. ~~Which source is proven first~~ **decided:** `myschool` (questions), the one
+   already shown to scrape live.
 3. The review tier: the exact rule for "clean enough to need little review"
    (proposed: gate clean + an `ai_verify` pass + scopes covered).
 4. Media transform scope before the first push (originals vs derivatives only).
