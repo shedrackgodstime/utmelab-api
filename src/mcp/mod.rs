@@ -132,10 +132,20 @@ pub(crate) fn to_mcp(err: AppError) -> ErrorData {
 
 #[cfg(test)]
 mod tests {
+    use std::collections::HashMap;
+
     use axum::{
         body::Body,
-        http::{Request, StatusCode},
+        http::{HeaderName, HeaderValue, Request, StatusCode},
         Router,
+    };
+    use rmcp::{
+        model::{CallToolRequestParams, ReadResourceRequestParams, ResourceContents},
+        transport::{
+            streamable_http_client::StreamableHttpClientTransportConfig,
+            StreamableHttpClientTransport,
+        },
+        ServiceExt as _,
     };
     use serde_json::{json, Value};
     use tower::ServiceExt;
@@ -213,6 +223,48 @@ mod tests {
             .iter()
             .map(|t| t["name"].as_str().expect("name").to_string())
             .collect()
+    }
+
+    /// Serve the router on an ephemeral port. The real-client test needs a
+    /// socket rather than `oneshot`, because both the transport and the client
+    /// negotiate real HTTP.
+    async fn serve(app: Router) -> String {
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0")
+            .await
+            .expect("bind");
+        let addr = listener.local_addr().expect("addr");
+        tokio::spawn(async move {
+            let _ = axum::serve(listener, app).await;
+        });
+        format!("http://{addr}")
+    }
+
+    /// A real MCP client config, keyed like any other caller. `with_uri`
+    /// leaves `allow_stateless` at its default, which this server needs: it
+    /// never issues a session id. Returning the config rather than the
+    /// transport keeps the reqwest-parameterised transport type unnamed.
+    fn mcp_config(url: &str, key: &str) -> StreamableHttpClientTransportConfig {
+        let mut headers = HashMap::new();
+        headers.insert(
+            HeaderName::from_static("x-api-key"),
+            HeaderValue::from_str(key).expect("header value"),
+        );
+        StreamableHttpClientTransportConfig::with_uri(url).custom_headers(headers)
+    }
+
+    /// Connect a real MCP client to `url` with `key`.
+    macro_rules! mcp_client {
+        ($url:expr, $key:expr) => {
+            ().serve(StreamableHttpClientTransport::from_config(mcp_config(
+                $url, $key,
+            )))
+            .await
+        };
+    }
+
+    /// The tool names a real client's `tools/list` returned.
+    fn tool_names_of(list: &rmcp::model::ListToolsResult) -> Vec<String> {
+        list.tools.iter().map(|t| t.name.to_string()).collect()
     }
 
     /// Both surfaces are gated: a request with no key is refused by `verify_key`
@@ -357,6 +409,61 @@ mod tests {
             file_report["_meta"]["io.utmelab/requiredScope"], "write:reports",
             "{file_report}"
         );
+    }
+
+    /// No tool argument advertises a nullable `type` array. schemars spells
+    /// `Option<T>` that way; it is legal, but a client that maps onto a
+    /// single-`type` dialect may reject the whole tool, so the schema is kept
+    /// to plain types.
+    #[tokio::test]
+    async fn no_tool_argument_advertises_a_nullable_type() {
+        let app = app().await;
+        for (path, key) in [
+            (CATALOG, "reader.secret"),
+            (CATALOG, "writer.secret"),
+            (ADMIN, "admin.secret"),
+        ] {
+            let (_, listed) = rpc(&app, path, Some(key), msg(1, "tools/list", Value::Null)).await;
+            for tool in listed["result"]["tools"].as_array().expect("tools") {
+                let properties = tool["inputSchema"]["properties"]
+                    .as_object()
+                    .expect("properties");
+                for (name, property) in properties {
+                    assert!(
+                        property["type"].is_string(),
+                        "{} must render a plain type for {name}: {property}",
+                        tool["name"]
+                    );
+                }
+            }
+        }
+    }
+
+    /// The catalog surface cannot even name an admin tool, whatever key asks.
+    /// The split is the URL, not a scope check: an admin key on `/mcp` still
+    /// sees only catalog tools, and the admin router is a separate value that
+    /// `tools()` never hands to `list_tools`.
+    #[tokio::test]
+    async fn the_catalog_surface_never_names_an_admin_tool() {
+        let app = app().await;
+        const ADMIN_TOOLS: [&str; 3] = ["revoke_key", "rotate_key", "unrevoke_key"];
+        for key in [
+            "reader.secret",
+            "writer.secret",
+            "nobody.secret",
+            // Holds `manage:keys`, and still must not see them here.
+            "admin.secret",
+        ] {
+            let (_, listed) =
+                rpc(&app, CATALOG, Some(key), msg(1, "tools/list", Value::Null)).await;
+            let names = tool_names(&listed["result"]);
+            for admin_tool in ADMIN_TOOLS {
+                assert!(
+                    !names.iter().any(|name| name == admin_tool),
+                    "{key} saw {admin_tool} on the catalog surface: {names:?}"
+                );
+            }
+        }
     }
 
     /// The admin surface is tools-only: no resources are advertised or served,
@@ -514,6 +621,75 @@ mod tests {
         assert_eq!(
             not_found["error"]["data"]["code"], "not_found",
             "{not_found}"
+        );
+    }
+
+    /// What the hand-written bodies cannot prove: a real MCP client
+    /// (`rmcp::Client` over rmcp's own Streamable HTTP transport) drives the
+    /// served surface across a real socket, so the handshake, the schemas, and
+    /// the responses are checked by a client that is not ours.
+    #[tokio::test]
+    async fn a_real_mcp_client_drives_the_served_surface() {
+        let app = app().await;
+        let base = serve(app.clone()).await;
+
+        let reader =
+            mcp_client!(&format!("{base}/mcp"), "reader.secret").expect("handshake against /mcp");
+
+        assert_eq!(
+            tool_names_of(&reader.list_tools(None).await.expect("list tools")),
+            ["assemble_paper", "score_paper"],
+            "listing is scope-filtered for a real client too"
+        );
+
+        let refused = reader
+            .call_tool(
+                CallToolRequestParams::new("file_report").with_arguments(
+                    json!({
+                        "target_type": "question",
+                        "target_id": "q1",
+                        "reason": "other"
+                    })
+                    .as_object()
+                    .expect("object")
+                    .clone(),
+                ),
+            )
+            .await
+            .expect_err("file_report needs write:reports");
+        let rmcp::ServiceError::McpError(err) = refused else {
+            panic!("expected an MCP error, got {refused:?}");
+        };
+        assert_eq!(
+            err.data.as_ref().and_then(|d| d["code"].as_str()),
+            Some("forbidden"),
+            "the refusal carries the machine code: {err}"
+        );
+
+        let read = reader
+            .read_resource(ReadResourceRequestParams::new("utmelab://catalog/exams"))
+            .await
+            .expect("read exams");
+        let text = match &read.contents[0] {
+            ResourceContents::TextResourceContents { text, .. } => text.clone(),
+            other => panic!("expected text contents, got {other:?}"),
+        };
+        let via_mcp: Value = serde_json::from_str(&text).expect("resource text is JSON");
+        let (status, via_http) =
+            call(app, "GET", "/api/v1/exams", Some("reader.secret"), None).await;
+        assert_eq!(status, StatusCode::OK);
+        assert_eq!(via_mcp, via_http, "resource and route must agree");
+
+        let admin = mcp_client!(&format!("{base}/mcp/admin"), "admin.secret")
+            .expect("handshake against /mcp/admin");
+        assert_eq!(
+            tool_names_of(&admin.list_tools(None).await.expect("list tools")),
+            ["revoke_key", "rotate_key", "unrevoke_key"]
+        );
+
+        assert!(
+            mcp_client!(&format!("{base}/mcp/admin"), "reader.secret").is_err(),
+            "a key without manage:keys cannot open the admin transport"
         );
     }
 }

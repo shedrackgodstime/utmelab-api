@@ -464,35 +464,44 @@ pub async fn create_admin_key(s: &DbState, actor: &str) -> Result<String, AppErr
     Ok(full)
 }
 
-/// Admin key rotation. Mints a replacement admin key, then revokes the old
-/// prefix so it stops working. Returns the new plaintext key exactly once —
-/// the table only ever holds the hash. Fails closed with `NotFound` when the
-/// prefix does not name a key. The replacement is minted first, so a failed
-/// rotation never leaves the caller without a working key; both the insert
-/// and the revocation commit locally even when the cloud push fails.
+/// Rotate a key: mint a replacement, then revoke the old prefix so it stops
+/// working. The replacement carries the old row's tier, scopes, and owner
+/// unchanged, because rotating a credential must not change what its holder
+/// may do: a fixed replacement would hand a commercial caller `manage:keys`.
+/// Returns the new plaintext key exactly once — the table only ever holds the
+/// hash. Fails closed with `NotFound` when the prefix does not name a key.
+/// The replacement is minted first, so a failed rotation never leaves the
+/// caller without a working key; both the insert and the revocation commit
+/// locally even when the cloud push fails.
 pub async fn rotate_key(s: &DbState, prefix: &str, actor: &str) -> Result<String, AppError> {
     crate::core::accounts::check_prefix(prefix)?;
-    let exists: bool = with_conn(s, |conn| {
+    let (tier, scopes, owner): (String, String, String) = with_conn(s, |conn| {
         let prefix = prefix.to_string();
         async move {
             let mut rows = conn
                 .query(
-                    "SELECT 1 FROM api_keys WHERE prefix=?1 LIMIT 1",
+                    "SELECT tier, scopes, owner FROM api_keys WHERE prefix=?1 LIMIT 1",
                     [prefix.as_str()],
                 )
                 .await
                 .map_err(upstream)?;
-            Ok(rows.next().await.map_err(upstream)?.is_some())
+            let row = rows
+                .next()
+                .await
+                .map_err(upstream)?
+                .ok_or(AppError::NotFound)?;
+            Ok((
+                row.get(0).map_err(upstream)?,
+                row.get(1).map_err(upstream)?,
+                row.get(2).map_err(upstream)?,
+            ))
         }
     })
     .await?;
-    if !exists {
-        return Err(AppError::NotFound);
-    }
-    // Mint the replacement admin key. The local insert commits even when the
-    // cloud push fails; we proceed to revoke the old key regardless.
-    let full = match create_key_raw(s, "admin", "manage:keys,write:reports,read:catalog", "").await
-    {
+    // Mint the replacement with the old key's authority. The local insert
+    // commits even when the cloud push fails; we proceed to revoke the old key
+    // regardless.
+    let full = match create_key_raw(s, &tier, &scopes, &owner).await {
         Ok(full) => full,
         Err(_) => {
             // Push failed but the insert committed locally. Revoke the old
@@ -504,7 +513,7 @@ pub async fn rotate_key(s: &DbState, prefix: &str, actor: &str) -> Result<String
         }
     };
     let _ = set_revoked(s, prefix, true, actor).await?;
-    obs::key_created(actor, key_prefix(&full), "admin");
+    obs::key_created(actor, key_prefix(&full), &tier);
     Ok(full)
 }
 
@@ -958,12 +967,26 @@ mod tests {
         );
     }
 
-    /// Rotating a key mints a replacement admin key and revokes the old
-    /// prefix. The new key authenticates; the old one does not.
+    /// Rotation carries the old key's authority across unchanged. A fixed
+    /// replacement would escalate a commercial key to `manage:keys`, so a
+    /// customer key rotation could hand out administration.
     #[tokio::test]
-    async fn rotate_key_mints_replacement_and_revokes_old() {
+    async fn rotate_key_preserves_tier_scopes_and_owner() {
         let s = local_accounts_db().await;
-        seed_key(&s, "k1.secret", "admin", "manage:keys", 0).await;
+        seed_key(
+            &s,
+            "k1.secret",
+            "commercial",
+            "read:catalog,write:reports",
+            0,
+        )
+        .await;
+        seed(
+            &s,
+            "UPDATE api_keys SET owner='ada' WHERE prefix='k1'",
+            vec![],
+        )
+        .await;
 
         // Offline: the push fails, so the call surfaces the error — but the
         // local rows still commit (new key minted, old key revoked).
@@ -971,12 +994,24 @@ mod tests {
 
         // The old prefix is revoked locally.
         assert!(verify_key(&s, "k1.secret").await.is_err());
-        // A replacement admin key row exists locally.
-        let keys = list_keys(&s, None).await.expect("list keys");
-        assert!(
-            keys.iter()
-                .any(|k| k.tier == "admin" && k.prefix != "k1" && !k.revoked),
-            "replacement admin key exists locally"
+        let replacement = list_keys(&s, None)
+            .await
+            .expect("list keys")
+            .into_iter()
+            .find(|k| k.prefix != "k1" && !k.revoked)
+            .expect("replacement key exists locally");
+        assert_eq!(replacement.tier, "commercial", "tier must not escalate");
+        assert_eq!(replacement.scopes, "read:catalog,write:reports");
+        assert_eq!(
+            cell(
+                &s,
+                &format!(
+                    "SELECT owner FROM api_keys WHERE prefix='{}'",
+                    replacement.prefix
+                )
+            )
+            .await,
+            turso::Value::Text("ada".to_string())
         );
     }
 

@@ -28,3 +28,5 @@ argon2 = "0.6.0"
 rand = "0.10.3"
 
 [dev-dependencies]
+http = "1"
+rmcp = { version = "3.5.1", features = ["client", "transport-streamable-http-client-reqwest"] }

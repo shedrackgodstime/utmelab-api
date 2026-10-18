@@ -131,6 +131,12 @@ fn scope_of(tool: &Tool) -> Option<&str> {
     tool.meta.as_ref()?.get(SCOPE_KEY)?.as_str()
 }
 
+/// Tool arguments. An optional field carries `extend("type" = ...)` so its
+/// schema renders a plain type: schemars spells `Option<T>` as `["T","null"]`,
+/// which is legal but less portable, since a client that maps onto a
+/// single-`type` dialect (Gemini's OpenAPI subset) may reject the tool or drop
+/// the constraint. The field is already outside `required`, so the `null`
+/// branch describes nothing a caller needs.
 #[derive(Deserialize, JsonSchema)]
 struct FileReportArgs {
     /// One of: question, topic, passage, novel.
@@ -142,6 +148,7 @@ struct FileReportArgs {
     /// other.
     reason: String,
     /// Optional context. No PII.
+    #[schemars(extend("type" = "string"))]
     detail: Option<String>,
 }
 
@@ -152,8 +159,10 @@ struct AssemblePaperArgs {
     /// Subject slug, e.g. `physics`.
     subject: String,
     /// Deterministic draw: same seed, same paper. Defaults to 1.
+    #[schemars(extend("type" = "integer"))]
     seed: Option<u64>,
     /// Country scope, e.g. `NG`.
+    #[schemars(extend("type" = "string"))]
     country: Option<String>,
 }
 
@@ -166,6 +175,7 @@ struct ScorePaperArgs {
     /// The seed the paper was assembled with.
     seed: u64,
     /// Country scope, e.g. `NG`.
+    #[schemars(extend("type" = "string"))]
     country: Option<String>,
     /// Question id to chosen option id. Unanswered ids are left out on purpose:
     /// a guess not made is never marked.
