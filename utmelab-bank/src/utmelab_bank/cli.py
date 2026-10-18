@@ -491,8 +491,10 @@ def goal_cmd(
 ) -> None:
     """Run named tasks in sequence as one goal.
 
-    Steps are independent units; the goal just wires them together. No task
-    calls another. A failed step stops the goal.
+    A name that matches a preset (currently ``media``) runs that fixed, ordered
+    flow with its own table per step. Otherwise pass one or more ``--task``
+    flags. Steps are independent units; the goal just wires them together. No
+    task calls another. A failed step stops the goal.
     """
     raise SystemExit(
         asyncio.run(
@@ -513,9 +515,11 @@ def goal_cmd(
 
 
 async def _goal(**kwargs: Any) -> int:
+    from dataclasses import replace
+
     from utmelab_bank.store.repository import Repository
     from utmelab_bank.store.schema import ensure_schema
-    from utmelab_bank.task.goal import Step, run_goal
+    from utmelab_bank.task.goal import PRESETS, Step, run_goal
 
     config = _config(
         target=kwargs["target"],
@@ -524,15 +528,26 @@ async def _goal(**kwargs: Any) -> int:
     )
     _setup_logging(kwargs["log_level"] or config.log_level)
 
-    if not kwargs["tasks"]:
-        raise click.ClickException("goal needs at least one --task")
-
     steps: list[Step] = []
-    for task_spec in kwargs["tasks"]:
-        task_name, step_where = _parse_task_spec(task_spec, kwargs["where"])
-        steps.append(
-            Step(task=task_name, where=step_where, limit=kwargs["limit"], logical=kwargs["table"])
-        )
+    if kwargs["tasks"]:
+        for task_spec in kwargs["tasks"]:
+            task_name, step_where = _parse_task_spec(task_spec, kwargs["where"])
+            steps.append(
+                Step(
+                    task=task_name,
+                    where=step_where,
+                    limit=kwargs["limit"],
+                    logical=kwargs["table"],
+                )
+            )
+    else:
+        preset = PRESETS.get(kwargs["name"])
+        if preset is None:
+            known = ", ".join(sorted(PRESETS))
+            raise click.ClickException(
+                f"goal needs at least one --task, or a known goal name: {known}"
+            )
+        steps = [replace(step, limit=kwargs["limit"]) for step in preset.steps]
 
     async with _open(config) as store:
         await ensure_schema(store)
@@ -565,6 +580,60 @@ def _parse_task_spec(task_spec: str, default_where: str) -> tuple[str, str]:
         task_name, where = task_spec.split(":", 1)
         return task_name, where
     return task_spec, default_where
+
+
+@_command("status")
+@click.option("--json", "as_json", is_flag=True, help="Print the snapshot as json.")
+@_add_common
+def status_cmd(
+    as_json: bool,
+    target: str,
+    sink: str | None,
+    local_database: Path | None,
+    log_level: str | None,
+) -> None:
+    """Show lane counts, queues and recent runs. Reads only."""
+    raise SystemExit(
+        asyncio.run(
+            _status(
+                as_json=as_json,
+                target=target,
+                sink=sink,
+                local_database=local_database,
+                log_level=log_level,
+            )
+        )
+    )
+
+
+async def _status(
+    *,
+    as_json: bool,
+    target: str,
+    sink: str | None,
+    local_database: Path | None,
+    log_level: str | None,
+) -> int:
+    from dataclasses import asdict
+
+    from utmelab_bank.report.status import collect_status, render_status
+    from utmelab_bank.store.schema import ensure_schema
+
+    config = _config(target=target, sink=sink, local_database=local_database)
+    _setup_logging(log_level or config.log_level)
+    if config.sink == "json":
+        click.echo("status needs the database; the json sink holds no lanes", err=True)
+        return 2
+
+    async with _open(config) as store:
+        await ensure_schema(store)
+        report = await collect_status(store, config.lane, config.require_database())
+
+    if as_json:
+        click.echo(json.dumps(asdict(report), indent=2, sort_keys=True, default=str))
+    else:
+        click.echo(render_status(report))
+    return 0
 
 
 @cli.command("tasks")

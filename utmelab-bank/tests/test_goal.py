@@ -45,6 +45,23 @@ async def test_goal_empty_steps_returns_empty(store: Store, config: Config) -> N
     assert results == ()
 
 
+def test_media_preset_checks_every_description_after_it_is_written() -> None:
+    """The media flow is one ordered pass, and the check is part of it."""
+    from utmelab_bank.task.goal import PRESETS
+
+    steps = PRESETS["media"].steps
+    assert [step.task for step in steps] == [
+        "media-discover",
+        "media-fetch",
+        "ai-describe",
+        "media-verify",
+    ]
+    assert steps[0].logical == "questions"
+    assert steps[0].where == "has images"
+    assert all(step.logical == "media" for step in steps[1:])
+    assert steps[-1].where == "description unverified"
+
+
 async def test_goal_step_where_override(store: Store, config: Config) -> None:
     """Each step keeps its own where; the default applies when omitted."""
     repo = Repository(store, lane="work")

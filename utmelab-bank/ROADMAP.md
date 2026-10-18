@@ -122,8 +122,8 @@ run on real rows end to end.
 | media-transform / upload / report / gc | **not built** | no | no | no |
 | promote (work to ready) | yes | `promote` | yes | **no** (all `ready_*` empty) |
 | review workbench | partial (`set`, `show`, `verify`) | not registered | yes | **no** |
-| goal composition | yes | `goal` | partial | **no** |
-| status / progress report | **not built** | no | no | no |
+| goal composition | yes | `goal` | yes | **partial** (media preset, dry-run order proven) |
+| status / progress report | yes | `status` | yes | **yes** (proof DB: 100 questions, 12 media, 6 pass / 6 fail) |
 | two-DB env wiring (`.env`) | yes | (behind `config`) | yes | **yes** (R1) |
 
 Known doc drift: the README's "Status" section still calls `intake`, the media
@@ -191,10 +191,14 @@ the previous one is green.
   `read_only` instead of discarding it (`del read_only`), `config` no longer
   echoes a token into stdout, and `catalog` now returns its exit code instead
   of silently exiting 0 on every failure.
-- **R2. `status` command.**
+- **R2. `status` command.** *Done.*
   Lane counts, the last N runs with outcome, the retry queue, and how many rows
   are eligible for each flow.
-  *Green:* one command answers "are we progressing".
+  *Green:* `status` on the proof DB reports 100 work questions, 12 media rows,
+  18 verifications, 6 verified / 6 failed descriptions, and the last eight runs.
+  The same report exposed a latent bug: `unverified` looked for a bare
+  `verifications` table, which no lane has. The selector now derives the lane's
+  sibling table and is tested against a real lane.
 - **R3. CI: a `bank` job.**
   `ruff format --check`, `ruff check`, `mypy`, `pytest`, on push and pull
   request, alongside the Rust gate.
@@ -214,9 +218,11 @@ the previous one is green.
   the report; push one batch to the media project.
   *Green:* a skipped figure carries the provider's full url, an uploaded figure
   carries our file name, and blobs land in the media git project.
-- **R8. Compose a `goal`.**
+- **R8. Compose a `goal`.** *Started: the `media` preset is wired.*
   Wire the proven tasks into one named pass.
-  *Green:* the goal runs end to end on a slice without any task calling another.
+  *Green:* `goal media` runs `media-discover` -> `media-fetch` -> `ai-describe`
+  -> `media-verify` in order, each on its own table, proven dry-run on the proof
+  DB. A full online run remains.
 - **R9. Deploy to GitHub Actions.**
   A manual `workflow_dispatch` workflow with inputs (goal, source, subject,
   limit) that can be run N times.
@@ -254,7 +260,9 @@ utmelab-bank catalog      copy the topic/subtopic catalog from prod into the ban
 utmelab-bank scrape       fetch questions into the raw lane
 utmelab-bank intake       raw -> work, applying the gate
 utmelab-bank task NAME    run one task over the rows a selector picks
-utmelab-bank goal         run named tasks in sequence as one goal
+utmelab-bank goal media   run the media flow: discover, fetch, describe, verify
+utmelab-bank goal NAME    run named tasks in sequence as one goal
+utmelab-bank status       lane counts, queues and recent runs
 utmelab-bank tasks        what every task does and what it fills
 utmelab-bank sources      what every source can fetch
 utmelab-bank selectors    every --where phrase

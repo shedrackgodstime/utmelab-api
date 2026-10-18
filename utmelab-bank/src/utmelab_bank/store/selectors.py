@@ -152,6 +152,23 @@ def _and(*checks: Callable[[dict[str, Any], Any], bool]) -> Callable[[dict[str, 
     return run
 
 
+def _sibling_table(prefix: str, sibling: str) -> str:
+    """The table that shares a lane with the one ``prefix`` names.
+
+    Selectors receive a qualified prefix (``work_questions.``) when they are
+    resolved against a lane. A predicate that needs a second table cannot write
+    a bare ``verifications``, because no such table exists: the lanes are
+    ``work_verifications``, ``ready_verifications`` and so on. This restores the
+    sibling name from the prefix, and falls back to the bare name only when the
+    caller did not qualify anything (a joined query in a test).
+    """
+    physical = prefix.rstrip(".")
+    marker = "_questions"
+    if physical.endswith(marker):
+        return f"{physical[: -len(marker)]}_{sibling}"
+    return sibling
+
+
 def _carries_image(row: dict[str, Any]) -> bool:
     """Whether a question row holds an image mark on its stem or its options.
 
@@ -394,6 +411,19 @@ register(
 )
 register(
     Selector(
+        "description unchecked",
+        "media rows with a description and no verdict yet",
+        lambda _r, _a, p: (
+            f'({p}"description" IS NOT NULL AND {p}"description" <> \'\' AND '
+            f'{p}"description_verdict" IS NULL)',
+            {},
+        ),
+        fills=("description_verdict",),
+        matches=lambda r, _v: bool(r.get("description")) and r.get("description_verdict") is None,
+    )
+)
+register(
+    Selector(
         "description failed",
         "media rows whose description failed the independent check",
         lambda _r, _a, p: (f"{p}\"description_verdict\" = 'fail'", {}),
@@ -492,8 +522,9 @@ register(
         "unverified",
         "questions with no human pass on the current content",
         lambda _r, _a, p: (
-            "NOT EXISTS (SELECT 1 FROM verifications v WHERE v.question_id = "
-            f"{p}\"id\" AND v.kind = 'human' AND v.verdict = 'pass' "
+            f'NOT EXISTS (SELECT 1 FROM "{_sibling_table(p, "verifications")}" v '
+            f"WHERE v.question_id = {p}\"id\" AND v.kind = 'human' "
+            f"AND v.verdict = 'pass' "
             f'AND v.content_hash = {p}"content_hash")',
             {},
         ),

@@ -19,7 +19,7 @@ from utmelab_bank.store.repository import Repository
 from utmelab_bank.task.base import TaskResult, run_task
 from utmelab_bank.task.base import get as get_task
 
-__all__ = ["Step", "run_goal"]
+__all__ = ["PRESETS", "Preset", "Step", "run_goal"]
 
 log = logging.getLogger(__name__)
 
@@ -37,6 +37,31 @@ class Step:
     where: str = "all"
     limit: int | None = None
     logical: str = "questions"
+
+
+@dataclass(frozen=True)
+class Preset:
+    """A named composition whose steps carry their own tables and selectors.
+
+    A preset is not a second engine: it is the same ``Step`` tuple an operator
+    would type, kept in one place so a flow cannot drift out of order. The
+    ``media`` preset is the whole figure path, including the check that makes a
+    description usable.
+    """
+
+    steps: tuple[Step, ...]
+
+
+PRESETS: dict[str, Preset] = {
+    "media": Preset(
+        steps=(
+            Step(task="media-discover", where="has images", logical="questions"),
+            Step(task="media-fetch", where="no blob", logical="media"),
+            Step(task="ai-describe", where="no description", logical="media"),
+            Step(task="media-verify", where="description unverified", logical="media"),
+        )
+    ),
+}
 
 
 async def run_goal(
