@@ -103,16 +103,16 @@ run on real rows end to end.
 | contract: rust schema, vocab | yes | `contract` | yes | yes |
 | content hash | yes | (inside `contract`) | yes | **yes: 2243/2243 vs live prod** |
 | store: lanes, selectors, repo | yes | `selectors` | yes | yes (local) |
-| source: myschool | yes | `sources`, `scrape` | partial (`run.py` 15%) | **no** |
+| source: myschool | yes | `sources`, `scrape` | partial (`run.py` 15%) | **yes** (100 rows; re-scrape adds 0, R5) |
 | source: jambsyllabus / waecsyllabus | yes | `sources` | partial | **no** |
-| catalog (read prod, write bank) | yes | `catalog` | yes | partial (583 / 2158 rows) |
-| intake (raw to work) | yes | `intake` | yes | partial (5 rows) |
-| gate (mechanical) | yes | `gate` | yes | partial (5 rows) |
+| catalog (read prod, write bank) | yes | `catalog` | yes | **yes** (583 / 2158, R1) |
+| intake (raw to work) | yes | `intake` | yes | **yes** (100 rows, R5) |
+| gate (mechanical) | yes | `gate` | yes | **yes** (100 rows, R5) |
 | dedupe | yes | `dedupe` | yes | **yes** (refused a real copy; R4) |
 | ai-describe | yes | `ai-describe` | yes | **no** |
-| ai-explain | yes | `ai-explain` | yes | **no** |
-| ai-tag | yes | `ai-tag` | yes | **no** |
-| ai-verify | yes | `ai-verify` | yes | **no** |
+| ai-explain | yes | `ai-explain` | yes | **yes** (3 rows, R6) |
+| ai-tag | yes | `ai-tag` | yes | **yes** (3 rows, R6) |
+| ai-verify | yes | `ai-verify` | yes | **yes** (3 rows, R6; one real fail) |
 | media-discover | yes | `media-discover` | partial | **no** |
 | media-fetch | yes | `media-fetch` | partial | **no** |
 | media-transform / upload / report / gc | **not built** | no | no | no |

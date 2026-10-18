@@ -70,7 +70,8 @@ def _catalog_rows() -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
         {
             "slug": "periodicity",
             "subject": "physics",
-            "exam": "jamb",
+            # Production stores the exam uppercase; the scraper writes "jamb".
+            "exam": "JAMB",
             "name": "Periodicity",
             "ord": 1,
             "weight": None,

@@ -93,7 +93,11 @@ async def _catalog_for(
             "objectives": _loads(t.get("objectives"), []),
         }
         for t in topic_rows
-        if str(t.get("subject", "")) == subject and str(t.get("exam", "")) == exam
+        # Production stores the exam uppercase ("JAMB") while the scraper writes
+        # the slug lowercase ("jamb"). Matching exactly here silently starved
+        # ai-tag of the whole catalogue, so compare the way a person would.
+        if str(t.get("subject", "")).strip().casefold() == subject.strip().casefold()
+        and str(t.get("exam", "")).strip().casefold() == exam.strip().casefold()
     ]
 
     topic_slugs = {t["slug"] for t in topics}
