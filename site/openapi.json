@@ -2227,7 +2227,7 @@
       },
       "PublicSummary": {
         "type": "object",
-        "description": "Totals for the discovery surface, served without a key.\n\n`held` is every row on file; `verified` is the subset whose latest human\nverification passed under the rule every keyed read applies (see\n`store::catalog`). Both are here on purpose: a funnel can say \"2,244\nquestions, 2,190 human-verified\", and either number agrees with what a key\nactually fetches (`?verified=true` for the second).",
+        "description": "Totals for the discovery surface, served without a key.\n\n`held` is every row on file; `verified` is the subset whose latest human\nverification passed under the rule every keyed read applies (see\n`store::catalog`). Both are here because both are real reads on the keyed\nsurface: a default page returns `held` rows, and `?verified=true` returns\n`verified`, so a published figure can always be reconciled with a call.\nIt is the same pair `SubjectStat` already serves.",
         "required": [
           "exams",
           "subjects",

@@ -171,9 +171,10 @@ pub struct RenderedQuestion {
 ///
 /// `held` is every row on file; `verified` is the subset whose latest human
 /// verification passed under the rule every keyed read applies (see
-/// `store::catalog`). Both are here on purpose: a funnel can say "2,244
-/// questions, 2,190 human-verified", and either number agrees with what a key
-/// actually fetches (`?verified=true` for the second).
+/// `store::catalog`). Both are here because both are real reads on the keyed
+/// surface: a default page returns `held` rows, and `?verified=true` returns
+/// `verified`, so a published figure can always be reconciled with a call.
+/// It is the same pair `SubjectStat` already serves.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct PublicSummary {
     pub exams: u32,

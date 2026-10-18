@@ -14,25 +14,8 @@ curl -s "https://api.utmelab.com/api/v1/questions?exam=JAMB&subject=use-of-engli
 ```
 
 3. Read the `questions` array. Each `id` is your stable reference for that
-   row — fetch it later with `/api/v1/questions/{id}`, and flag trouble with
-   `POST /api/v1/report` (one endpoint for questions, topics, passages and
-   novels; it dispatches on `target_type`).
-
-## Before you have a key
-
-Two routes answer without one, so you can see what is in the bank before you
-ask for it:
-
-```bash
-curl -s "https://api.utmelab.com/api/v1/public/exams"
-```
-
-`/api/v1/public/exams` returns every exam with its subjects, and
-`/api/v1/public/summary` returns the totals. They carry identity and counts
-only: exam and subject names, sizes, how many are compulsory, and for each
-count how many of those rows are human-verified. No question, option, answer
-or explanation is reachable through them, and that is the whole point of the
-split — everything else under `/api/v1` needs `x-api-key`.
+   row — fetch it later with `/api/v1/questions/{id}`, and flag trouble
+   with `/api/v1/questions/{id}/report`.
 
 ## What you just called
 
