@@ -87,15 +87,24 @@ restart_and_wait() {
   # and its schema contract is trusted, so the data surfaces will actually
   # answer. /health only says the process can reply at all. A binary that binds
   # but 500s, or a boot that crash-loops, must fail the deploy.
-  for _ in $(seq 1 30); do
+  #
+  # Budget 180 s (60 x 3), not 30 s. /ready answers 503 until the replica is
+  # open, and on a host with no replica that means a FULL first sync, which is
+  # slower than the incremental pulls every later restart does. At 30 s the gate
+  # failed a boot that was perfectly healthy, and because the gate runs before
+  # the edge smoke — which waits 180 s — the smoke never got to prove it. The
+  # gate must not be the impatient one. 180 s also matches the deploy's own
+  # smoke budget, so the two cannot disagree about patience.
+  for _ in $(seq 1 60); do
     # `|| true`, NOT `|| echo 000`: on a connection failure curl prints its own
     # 000 *and* exits non-zero, so `|| echo 000` captures "000000", which is
     # != "000" — an earlier version of this gate read that as healthy, pruned
     # the previous release, and reported success on a service that never bound.
     code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 2 "$READY" 2>/dev/null || true)"
     [[ "$code" == "200" ]] && { log "ready OK (HTTP $code)"; return 0; }
-    sleep 1
+    sleep 3
   done
+  log "not ready after 180 s (last HTTP ${code:-none})"
   return 1
 }
 

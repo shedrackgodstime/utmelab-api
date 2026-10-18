@@ -65,20 +65,22 @@ Rust. Ordered by what blocks the most.
   gone. This is the sharpest of the three, because it is unrecoverable rather
   than merely inconvenient.
 
-### Does not need Rust (doable now)
+### Does not need Rust
 
-- **No uptime check on `/ready` between deploys.** `site/scripts/smoke.mjs`
-  already exists and takes `BASE_URL`; the deploy job runs it. Wiring the same
-  script to a schedule, or adding it to a monitoring target, needs no Rust.
-  Worth deciding with the failure-noise trade-off in mind: a scheduled check
-  that pages is only useful if someone is paged.
-- **The deploy gate can false-fail a first boot.** The gate polls `/ready`
-  for 30x1s. On a host with no replica, `/ready` stays 503 until the first full
-  sync completes, and a full sync against 2.2k questions is slower than an
-  incremental pull. A fresh host therefore can fail the gate while being
-  perfectly healthy, and the answer is just to re-run the deploy. Raising the
-  window, or having the gate distinguish "replica still syncing" from "replica
-  broken", would make that explicit rather than relying on a re-run.
+- ~~No uptime check on `/ready` between deploys.~~ **Closed 2026-10-18.**
+  `.github/workflows/uptime.yml` runs the same `site/scripts/smoke.mjs` the
+  deploy runs, from outside, every 15 minutes and on demand — one source of truth
+  for "is it serving". `smoke.mjs` gained `SMOKE_READY_TRIES` /
+  `SMOKE_READY_DELAY_MS` so the scheduled run fails fast while the deploy still
+  retries for 180 s. Alerting is GitHub's failing-run notification only: that is
+  a notification, not a page.
+- ~~The deploy gate can false-fail a first boot.~~ **Closed 2026-10-18.** The
+  gate polled `/ready` for 30x1 s, but with no replica `/ready` is 503 until the
+  first FULL sync, which is slower than every later incremental pull — so a
+  fresh host failed a healthy boot. Worse, the gate runs *before* the edge smoke,
+  which waits 180 s, so the smoke never got to prove it. The gate now waits
+  180 s (60x3), matching the smoke's budget so the two cannot disagree about
+  patience, and logs the last status it saw.
 
 ### Closed since 2026-10-11 — do not re-open
 
