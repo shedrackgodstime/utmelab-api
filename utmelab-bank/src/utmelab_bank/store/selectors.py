@@ -264,7 +264,7 @@ def explain(expression: str) -> str:
     for term in (t.strip() for t in expression.strip().lower().split(" and ")):
         if not term or term == "all":
             continue
-        name = term.partition("=")[0].strip()
+        name = normalise(term.partition("=")[0])
         selector = describe(name)
         if selector.fills:
             parts.append(f"{name} ({', '.join(selector.fills)} empty)")
@@ -301,6 +301,14 @@ register(
         "rows written by one run, e.g. run=42",
         lambda _r, a, p: (f'{p}"run_id" = :sel_value', {"sel_value": a[0]}),
         matches=_equals("run_id"),
+    )
+)
+register(
+    Selector(
+        "question id",
+        "verifications for one question, e.g. question_id=q_42",
+        lambda _r, a, p: (f'{p}"question_id" = :sel_value', {"sel_value": a[0]}),
+        matches=_equals("question_id"),
     )
 )
 

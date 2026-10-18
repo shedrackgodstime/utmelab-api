@@ -59,7 +59,7 @@ def _texts(options_raw: Any) -> list[str]:
 
 async def _already_judged(ctx: TaskContext, row_id: str, content_hash: str) -> bool:
     """Whether an ai_verify verdict already covers this row's content."""
-    rows = await ctx.repo.rows("verifications", f"question={row_id}")
+    rows = await ctx.repo.rows("verifications", f"question_id={row_id}")
     return any(
         str(r.get("kind", "")) == "ai_verify" and str(r.get("content_hash", "")) == content_hash
         for r in rows
