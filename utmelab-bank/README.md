@@ -85,6 +85,23 @@ payload_hash)`. Re-scraping an unchanged paper adds nothing. A question the site
 silently edited appears as a new raw row beside the old one rather than
 overwriting it, which makes upstream drift a fact we can see.
 
+## Catalog
+
+The topic/subtopic taxonomy is not scraped from syllabus sites. It is stored in
+the production database, the same source the pipeline reads, and it is the single
+source of truth `ai-tag` uses to pick a `subtopic_id`. `catalog` copies it into
+the bank's work lane read-only, keyed by the production slugs, so a second run
+changes nothing:
+
+```bash
+utmelab-bank catalog --target work   # reads production, writes var/bank.db
+```
+
+It reads `topics` and `subtopics` from the production database (set
+`UTMELAB_BANK_DATABASE_URL` / `UTMELAB_BANK_DATABASE_TOKEN`) and upserts the
+rows into `work_topics` / `work_subtopics`. After this, `ai-tag` can resolve a
+question's subject and exam against the taxonomy.
+
 ## Tasks
 
 The unit of work is a task, not a capability, because capability is worth

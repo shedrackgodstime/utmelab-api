@@ -57,7 +57,11 @@ class Store:
             raise StoreError("no database url")
 
         lowered = url.lower()
-        if lowered.startswith(("http://", "https://", "libsql://", "ws://", "wss://")):
+        if lowered.startswith(("http://", "https://", "libsql://", "ws://", "wss://", "turso://")):
+            if url.lower().startswith("turso://"):
+                # libsql_client only accepts https://; turso:// is a shorthand
+                # for the same Turso Cloud host with auth carried by ``token``.
+                url = "https://" + url[len("turso://") :]
             client = create_client(url=url, auth_token=token or None)
         elif lowered.startswith(("sqlite:", "file:")):
             path = url.split(":", 1)[1]

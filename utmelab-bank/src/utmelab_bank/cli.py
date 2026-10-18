@@ -31,7 +31,9 @@ import click
 from utmelab_bank import __version__
 from utmelab_bank.config import Config, load
 from utmelab_bank.errors import BankError, ConfigError, ContractError, SourceError, TaskError
+from utmelab_bank.store.catalog import sync_catalog
 from utmelab_bank.store.client import Store
+from utmelab_bank.store.repository import Repository
 
 F = TypeVar("F", bound=Callable[..., Any])
 
@@ -259,6 +261,84 @@ async def _scrape(**kwargs: Any) -> int:
             )
             return 1
         return 0
+
+
+@_command("catalog")
+@_add_common
+def catalog_cmd(
+    target: str,
+    sink: str | None,
+    local_database: Path | None,
+    log_level: str | None,
+) -> int:
+    """Copy the authoritative topic/subtopic catalogue into the bank.
+
+    The syllabus taxonomy lives in the production database and is the single
+    source of truth for ``ai-tag``. This command reads it read-only and upserts
+    the rows into the configured lane, keyed by the production slugs. A second
+    run changes nothing.
+    """
+    config = _config(
+        target=target,
+        sink=sink,
+        local_database=local_database,
+    )
+    _setup_logging(log_level or config.log_level)
+
+    if not config.database_url:
+        click.echo(
+            "catalog: set UTMELAB_BANK_DATABASE_URL to read the authoritative "
+            "topic/subtopic catalog",
+            err=True,
+        )
+        return 2
+
+    return asyncio.run(_catalog_sync(config))
+
+
+async def _catalog_sync(config: Config) -> int:
+    log = logging.getLogger("utmelab_bank")
+
+    log.debug(
+        "catalog: database_url=%r local=%r repo_var=%r target=%r",
+        config.database_url,
+        config.local_database,
+        config.repo.var,
+        config.lane,
+    )
+
+    if not config.database_url:
+        click.echo(
+            "catalog: set UTMELAB_BANK_DATABASE_URL to read the authoritative "
+            "topic/subtopic catalog",
+            err=True,
+        )
+        return 2
+
+    from utmelab_bank.store.client import Store
+    from utmelab_bank.store.schema import ensure_schema
+
+    log.debug("catalog: opening PROD store, url=%r", config.database_url)
+    prod = await Store.open(config.database_url, config.database_token)
+
+    if config.local_database:
+        bank_db = f"file:{config.local_database}"
+    else:
+        bank_db = f"file:{config.repo.var / 'bank.db'}"
+    log.debug("catalog: opening BANK store, url=%r", bank_db)
+    bank_store = await Store.open(bank_db, "")
+
+    try:
+        await ensure_schema(bank_store)
+        repo = Repository(bank_store, lane=config.lane)
+        written = await sync_catalog(prod, repo)
+    finally:
+        await prod.aclose()
+        await bank_store.aclose()
+
+    for table, count in written.items():
+        click.echo(f"  {table}: {count}")
+    return 0
 
 
 def raw_row_id(question_id: str, payload_hash: str) -> str:
