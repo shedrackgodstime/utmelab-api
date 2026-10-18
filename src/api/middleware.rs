@@ -15,9 +15,9 @@ use std::net::SocketAddr;
 use crate::{auth::session, error::AppError, state::AppState};
 
 /// Per-IP ceiling for the discovery routes, which have no key to meter. The
-/// caller's IP is the only identity available on that surface; behind Caddy
-/// that is the leftmost `X-Forwarded-For` entry, the same reading the login
-/// limiter uses.
+/// caller's address is the only identity available on that surface, and it
+/// comes from [`session::client_ip`], the single reading every surface shares:
+/// the entry the proxy attested, never one the caller supplied.
 ///
 /// A request with no `ConnectInfo` (a service built without it) falls back to
 /// loopback and shares one bucket. That is honest for a test and impossible in

@@ -7,6 +7,12 @@ pub const DEFAULT_WORKER_THREADS: usize = 4;
 pub const DEFAULT_MAX_BLOCKING_THREADS: usize = 32;
 pub const DEFAULT_CONCURRENCY_LIMIT: usize = 1000;
 pub const DEFAULT_PORT: u16 = 3100;
+/// Host the listener binds. Loopback-only on purpose, and load-bearing: the
+/// rate limiter trusts the address the reverse proxy attests, which is only
+/// sound while nothing can reach the binary without going through that proxy.
+/// Exposing this port directly means revisiting
+/// [`crate::auth::session::client_ip`] first, so it is a constant, not a knob.
+pub const BIND_HOST: [u8; 4] = [127, 0, 0, 1];
 pub const DEFAULT_SERVER_URL: &str = "http://localhost:3100";
 pub const DEFAULT_REPLICA_PATH: &str = "db/sync.db";
 /// Seconds between background replica pulls, and therefore the bound on how
@@ -291,5 +297,15 @@ mod tests {
                 .cookie_secure
         );
         assert!(parse(&[("COOKIE_SECURE", "maybe")]).is_err());
+    }
+
+    /// The listener is loopback-only, and that is what makes the address the
+    /// proxy attests trustworthy: nobody can reach the binary to claim one
+    /// directly. If this fails, the trust order in
+    /// [`crate::auth::session::client_ip`] changed with it, so read the
+    /// comment on [`BIND_HOST`] before touching this assertion.
+    #[test]
+    fn the_listener_stays_loopback_so_the_proxy_can_be_trusted() {
+        assert_eq!(BIND_HOST, [127, 0, 0, 1]);
     }
 }

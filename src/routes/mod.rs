@@ -676,6 +676,49 @@ mod tests {
         );
     }
 
+    /// The ceiling buckets on the entry our proxy attested, not on whatever the
+    /// caller claimed. Rotating the leading entries must not buy a fresh
+    /// bucket, which is exactly how this was defeatable; a different attested
+    /// address must get its own.
+    #[tokio::test]
+    async fn the_keyless_ceiling_buckets_on_the_attested_address_not_a_claimed_one() {
+        let app = discovery_app().await;
+        let mut last = None;
+        for i in 0..130 {
+            let claimed = format!("10.0.0.{i}, 203.0.113.7");
+            let (status, _, _) = call_with_headers(
+                app.clone(),
+                "GET",
+                "/api/v1/public/summary",
+                None,
+                &[("x-forwarded-for", claimed.as_str())],
+                None,
+            )
+            .await;
+            last = Some(status);
+        }
+        assert_eq!(
+            last,
+            Some(axum::http::StatusCode::TOO_MANY_REQUESTS),
+            "rotating the caller-supplied entry must not escape the ceiling"
+        );
+
+        let (status, _, _) = call_with_headers(
+            app,
+            "GET",
+            "/api/v1/public/summary",
+            None,
+            &[("x-forwarded-for", "10.0.0.1, 198.51.100.9")],
+            None,
+        )
+        .await;
+        assert_eq!(
+            status,
+            axum::http::StatusCode::OK,
+            "a different attested address is a different caller"
+        );
+    }
+
     /// The published contract has to agree about which routes are keyless. The
     /// scheme is declared once at the document root, so a keyed operation must
     /// not carry an override and a public one must carry the empty requirement

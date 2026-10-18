@@ -2,7 +2,7 @@ use std::{net::SocketAddr, sync::Arc};
 
 use tracing_subscriber::{fmt, EnvFilter};
 use utmelab_api::{
-    config::Config,
+    config::{Config, BIND_HOST},
     routes,
     state::{AppState, Metrics, SyncCell},
     store::{self, ConnPool},
@@ -130,7 +130,7 @@ async fn run(cfg: Config) {
     store::sync::spawn_sync_task(&state, cfg.clone());
     let app = routes::router(state, &cfg);
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], cfg.port));
+    let addr = SocketAddr::from((BIND_HOST, cfg.port));
     tracing::info!("listening on {addr}");
 
     let listener = match tokio::net::TcpListener::bind(addr).await {
