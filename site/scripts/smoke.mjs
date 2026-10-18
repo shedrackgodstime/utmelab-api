@@ -51,12 +51,18 @@ await group('api reaches the binary', async () => {
   // Readiness is the meaningful signal: 200 only once the replica is open and
   // its schema contract is trusted, so Caddy answers 502 until then. Poll
   // instead of failing the deploy on its own boot time: 18 tries x 10 s.
+  // Retry budget is overridable so the same script serves two callers with
+  // opposite needs: a deploy is booting a replica and should wait it out
+  // (default 18 x 10 s = 180 s), while a scheduled uptime check wants to know
+  // NOW and not sit in a retry loop for three minutes. Defaults are unchanged.
+  const tries = Number(process.env.SMOKE_READY_TRIES || 18);
+  const delay = Number(process.env.SMOKE_READY_DELAY_MS || 10000);
   let ready;
-  for (let attempt = 1; attempt <= 18; attempt++) {
+  for (let attempt = 1; attempt <= tries; attempt++) {
     ready = await get('/ready');
     if (!ready.networkError && ready.status === 200) break;
-    if (attempt === 18) break;
-    await new Promise((resolve) => setTimeout(resolve, 10000));
+    if (attempt === tries) break;
+    await new Promise((resolve) => setTimeout(resolve, delay));
   }
   if (ready.networkError) return fail(`/ready unreachable (${ready.networkError})`);
   if (ready.status !== 200) return fail(`/ready status ${ready.status} (replica not open or contract not trusted)`);

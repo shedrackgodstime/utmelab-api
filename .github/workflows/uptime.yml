@@ -1,0 +1,68 @@
+# Uptime — is the public edge actually serving?
+#
+# The deploy gate health-checks 127.0.0.1:3100, so it cannot see Caddy, TLS or
+# route resolution. Two separate bugs shipped green through that hole:
+#
+#   1. Caddy orders file_server BEFORE reverse_proxy, so the docs tier answered
+#      /health and every /api/* route with HTML while the binary was perfect on
+#      loopback.
+#   2. `try_files {path} /index.html` (the SPA pattern) matched real files but
+#      not directory URLs, so every docs route rendered the home page — with
+#      HTTP 200, so a status-code check passes while the site is fully broken.
+#
+# The host also sat "active" with the binary on port 3100 while Caddy proxied to
+# the old 8081: a 502 for roughly forty minutes, with `systemctl is-active`
+# reporting healthy throughout. Nothing that watches loopback can see any of it.
+#
+# So this runs the SAME script the deploy runs, from outside, on a schedule.
+# One source of truth for "is it serving": if the deploy smoke and this ever
+# disagree, the script is the thing that changed, not the answer.
+#
+# Alerting is GitHub's own: a failing scheduled run notifies the repo owner.
+# That is the whole paging story, and it is worth stating plainly — this is a
+# GitHub Actions notification, not a phone call. If you want to be paged, add a
+# notification channel; do not assume this is one.
+
+name: uptime
+
+on:
+  schedule:
+    # Every 15 minutes. GitHub queues scheduled workflows and can delay them on
+    # busy repositories, so treat this as "at least this often", not a timer.
+    - cron: '*/15 * * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: uptime
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: Public edge smoke
+    runs-on: ubuntu-latest
+    # A scheduled check on a 1 vCPU host is not worth piling onto. Skip rather
+    # than queue if a previous run is still going.
+    timeout-minutes: 5
+
+    steps:
+      - name: Fetch smoke script
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: site/scripts/smoke.mjs
+          sparse-checkout-cone-mode: false
+
+      - name: Check the public edge
+        env:
+          BASE_URL: https://api.utmelab.com
+          # Fail fast. The deploy retries /ready for 180 s because it is booting
+          # a replica and the boot is the thing being tested; an uptime check
+          # that waits three minutes to report an outage is an outage that has
+          # already been reported late.
+          SMOKE_READY_TRIES: '1'
+          SMOKE_READY_DELAY_MS: '0'
+        run: |
+          cd site
+          node scripts/smoke.mjs
