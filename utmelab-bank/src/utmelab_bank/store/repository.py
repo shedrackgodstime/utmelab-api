@@ -120,6 +120,34 @@ class Repository:
                 sql += f" OFFSET {int(offset)}"
         return await self._store.fetch_all(sql, resolved.params)
 
+    async def collision_candidates(
+        self,
+        logical: str,
+        *,
+        fingerprint: str,
+        stem_key: str,
+        exclude_id: str,
+    ) -> list[dict[str, Any]]:
+        """Rows that share one row's fingerprint or its normalised stem.
+
+        A dedicated lookup rather than a ``--where`` selector: a stem key is
+        data, and a stem containing the word "and" would be split by the
+        selector grammar into two terms. Both values are bound as parameters and
+        the two column names are literals here, so nothing a row holds reaches
+        the statement. The row's own id is excluded, because a row is never its
+        own duplicate.
+        """
+        physical = self.name(logical)
+        sql = (
+            f'SELECT * FROM "{physical}" '
+            'WHERE ("fingerprint" = :fingerprint OR "stem_key" = :stem_key) '
+            'AND "id" <> :self'
+        )
+        return await self._store.fetch_all(
+            sql,
+            {"fingerprint": fingerprint, "stem_key": stem_key, "self": exclude_id},
+        )
+
     async def count(self, logical: str, where: str = "all") -> int:
         physical = self.name(logical)
         resolved = selectors.resolve(where, table=physical)

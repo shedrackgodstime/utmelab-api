@@ -47,8 +47,10 @@ def fingerprint_row(row: dict[str, Any]) -> str:
 def classify(
     existing_stem: str,
     existing_options: list[str],
+    existing_answer: str,
     incoming_stem: str,
     incoming_options: list[str],
+    incoming_answer: str,
 ) -> str:
     """Which kind of near-duplicate this is, if any.
 
@@ -56,16 +58,20 @@ def classify(
     and same key letter is the dangerous middle; same stem and different options
     is the legitimate case.
 
-    Option letters come off as uppercase, so comparison is case-insensitive.
+    The key is the answer letter the row carries, compared case-insensitively.
+    An empty key on either side is not a shared key: two rows that both lost
+    their answer are not thereby evidence of being the same question.
     """
-    from utmelab_bank.store.fingerprint import normalise_for_compare
-
     if normalise_for_compare(existing_stem) != normalise_for_compare(incoming_stem):
         return "distinct"
     existing_options_norm = sorted(normalise_for_compare(o) for o in existing_options)
     incoming_options_norm = sorted(normalise_for_compare(o) for o in incoming_options)
     if existing_options_norm == incoming_options_norm:
         return "exact"
+    existing_key = existing_answer.strip().upper()
+    incoming_key = incoming_answer.strip().upper()
+    if existing_key and existing_key == incoming_key:
+        return "same_stem_same_key"
     return "shared_stem"
 
 
@@ -138,34 +144,33 @@ async def _collisions(
 ) -> dict[str, list[str]]:
     """Which earlier rows this row collides with, by bucket.
 
-    Two indexed lookups instead of scanning the lane: one for the full
-    fingerprint and one for rows sharing the stem key. Querying the lane is what
-    lets this run at batch size instead of scanning every row the lane holds.
+    One indexed lookup instead of scanning the lane: the candidates are the rows
+    sharing this row's fingerprint (the exact bucket) or its stem key (the other
+    two). Reading through ``collision_candidates`` rather than a ``--where``
+    selector is deliberate, because a stem key is data and can contain the word
+    "and", which the selector grammar splits on.
     """
     found: dict[str, list[str]] = {"exact": [], "same_stem_same_key": [], "shared_stem": []}
+    incoming_answer = str(row.get("answer") or "")
 
-    exact = await ctx.repo.rows("questions", f"fingerprint={digest}")
-    for other in exact:
+    candidates = await ctx.repo.collision_candidates(
+        "questions",
+        fingerprint=digest,
+        stem_key=stem_key,
+        exclude_id=row_id,
+    )
+    for other in candidates:
         other_id = str(other.get("id", ""))
-        if other_id and other_id != row_id:
-            found["exact"].append(other_id)
-
-    stems = await ctx.repo.rows("questions", f"stem_key={stem_key}")
-    for other in stems:
-        other_id = str(other.get("id", ""))
-        if not other_id or other_id == row_id:
+        if not other_id:
             continue
-        options = option_texts_of(other)
         bucket = classify(
             str(other.get("text") or ""),
-            options,
+            option_texts_of(other),
+            str(other.get("answer") or ""),
             str(row.get("text") or ""),
             option_texts_of(row),
+            incoming_answer,
         )
-        if bucket == "exact" and other_id not in found["exact"]:
-            found["exact"].append(other_id)
-        elif bucket == "same_stem_same_key":
-            found["same_stem_same_key"].append(other_id)
-        elif bucket == "shared_stem":
-            found["shared_stem"].append(other_id)
+        if bucket != "distinct" and other_id not in found[bucket]:
+            found[bucket].append(other_id)
     return found
