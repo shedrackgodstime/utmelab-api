@@ -339,36 +339,58 @@ mod tests {
         ("POST", "/api/v1/papers/JAMB/physics/score"),
     ];
 
-    const MCP_TOOLS: &[(&str, &str)] = &[
-        ("POST", "/mcp/tools/revoke_key"),
-        ("POST", "/mcp/tools/unrevoke_key"),
-        ("POST", "/mcp/tools/file_report"),
-        ("POST", "/mcp/tools/assemble_paper/JAMB/physics"),
-        ("POST", "/mcp/tools/score_paper/JAMB/physics"),
-    ];
+    /// The MCP surface is one gated endpoint. Its tools and resources are
+    /// covered in the `mcp` module's own tests, where the JSON-RPC envelope is
+    /// available; here it only has to answer the same 401/revocation sweep as
+    /// every other keyed route.
+    const MCP_ENDPOINT: &[(&str, &str)] = &[("POST", "/mcp")];
 
-    /// Every keyed route: the HTTP routes, each read's MCP resource twin, and
-    /// the MCP tools. Identity is structural (the `verify_key` layer gates each
-    /// keyed router), so the sweep proves the composition wired that layer onto
-    /// every surface and that scope still holds per route. Deriving the twins
-    /// is the point: a read added to `api/v1` without its resource fails here,
-    /// so the mirror is asserted, not retyped.
+    /// Every keyed route: the HTTP routes plus `/mcp`. Deriving the twins
+    /// is the point: a read added to `api/v1` without its resource fails the
+    /// `mcp` parity test, so the mirror is asserted, not retyped.
     fn keyed_routes() -> Vec<(String, String)> {
-        let mut out: Vec<(String, String)> = HTTP_READS
+        HTTP_READS
             .iter()
             .chain(HTTP_WRITES)
+            .chain(MCP_ENDPOINT)
             .map(|(m, u)| (m.to_string(), u.to_string()))
+            .collect()
+    }
+
+    /// The mirror is asserted, not retyped: the MCP surface exposes exactly one
+    /// resource or template per HTTP read. Add a read to `api/v1` without its
+    /// resource and the counts diverge, so the test fails and names the source
+    /// list to fix. Behavioural parity (a resource's answer equals its route's)
+    /// is proved in the `mcp` tests, where the JSON-RPC envelope is available.
+    #[test]
+    fn every_http_read_has_one_mcp_resource() {
+        let tails: Vec<&str> = HTTP_READS
+            .iter()
+            .map(|(_, u)| u.strip_prefix("/api/v1/").expect("an api/v1 path"))
             .collect();
-        out.extend(HTTP_READS.iter().map(|(_, u)| {
-            let tail = u.strip_prefix("/api/v1/").expect("an api/v1 path");
-            ("GET".to_string(), format!("/mcp/resources/{tail}"))
-        }));
-        out.extend(
-            MCP_TOOLS
-                .iter()
-                .map(|(m, u)| (m.to_string(), u.to_string())),
+        let fixed: Vec<String> = crate::mcp::resources::list()
+            .iter()
+            .map(|r| {
+                r.uri
+                    .strip_prefix("utmelab://catalog/")
+                    .expect("a catalog uri")
+                    .to_string()
+            })
+            .collect();
+        let templates = crate::mcp::resources::templates();
+        assert_eq!(
+            fixed.len() + templates.len(),
+            tails.len(),
+            "every /api/v1 read needs exactly one MCP resource or template"
         );
-        out
+        // A concrete resource must name a read that exists, or it would answer
+        // a 404 the sweep never expects.
+        for tail in &fixed {
+            assert!(
+                tails.contains(&tail.as_str()),
+                "no /api/v1 read backs resource `{tail}`"
+            );
+        }
     }
 
     /// Session routes: the same rule through the cookie door. `login` is absent
@@ -453,23 +475,7 @@ mod tests {
             axum::http::StatusCode::OK
         );
         // Identity is not authorization: the same live read key is refused at
-        // the mcp admin tools, which need `manage:keys`. The scope gate holds
-        // on that surface too. A valid body is sent because the scope check
-        // runs after extraction, so an empty one would be 422, not 403.
-        for uri in ["/mcp/tools/revoke_key", "/mcp/tools/unrevoke_key"] {
-            assert_eq!(
-                call(
-                    app.clone(),
-                    "POST",
-                    uri,
-                    Some("live.secret"),
-                    Some(r#"{"prefix":"live"}"#)
-                )
-                .await
-                .0,
-                axum::http::StatusCode::FORBIDDEN,
-                "POST {uri} needs manage:keys"
-            );
-        }
+        // the mcp admin tools, which need `manage:keys` (see the `mcp` tests).
+        // The scope gate holds on that surface too.
     }
 }

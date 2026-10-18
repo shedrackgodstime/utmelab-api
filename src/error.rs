@@ -57,7 +57,7 @@ impl std::error::Error for AppError {}
 
 impl AppError {
     /// Stable machine handle; does not change when a message is reworded.
-    fn code(&self) -> &'static str {
+    pub(crate) fn code(&self) -> &'static str {
         match self {
             AppError::BadRequest(_) => "bad_request",
             AppError::Unauthorized => "unauthorized",
@@ -77,7 +77,7 @@ impl AppError {
     /// What the client may read. A client mistake keeps its detail; engine,
     /// database, and internal text is never surfaced (it is logged instead),
     /// so a SQL string or connection error cannot leak through a 5xx.
-    fn public_detail(&self) -> String {
+    pub(crate) fn public_detail(&self) -> String {
         match self {
             AppError::BadRequest(e) => e.clone(),
             AppError::Conflict(e) => e.clone(),
