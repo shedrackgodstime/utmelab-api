@@ -14,8 +14,9 @@
 # set on THIS repo, they are not inherited from UTME-Lab:
 #   VPS_HOST, VPS_PORT, VPS_SSH_KEY, VPS_KNOWN_HOSTS
 #   VPS_USER — `deploy`, the host's single CI identity. The same five values are
-#              used by every service repo, so prefer organisation-level secrets
-#              over copying them per repo.
+#              used by every service repo; this account is a personal one, so
+#              there is no organisation store to inherit them from — set them
+#              per repo.
 
 name: deploy-api
 
