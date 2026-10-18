@@ -186,6 +186,12 @@ cmd_provision() {
   install_user "$deploy_user" login
   ensure_dir "$BASE_DIR/$svc" 0755 root:root
   ensure_dir "$BASE_DIR/$svc/releases" 0775 "${deploy_user}:${deploy_user}"
+  # The staged tree is CI's and is only ever written as DEPLOY_USER, so its
+  # ownership follows the manifest. Without this, changing DEPLOY_USER leaves
+  # releases owned by the previous identity: the next tar cannot overwrite
+  # files it does not own and the deploy fails before the gate is reached.
+  chown -R "${deploy_user}:${deploy_user}" "$BASE_DIR/$svc/releases" \
+    || die "chown -R $BASE_DIR/$svc/releases"
   say "  tree: $BASE_DIR/$svc (releases owned by $deploy_user)"
 
   local p paths=""
