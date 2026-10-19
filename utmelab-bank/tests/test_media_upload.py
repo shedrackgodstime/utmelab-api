@@ -12,8 +12,10 @@ import subprocess
 from pathlib import Path
 from typing import Any
 
+import pytest
+
 from utmelab_bank.blob.gitstore import GitStore
-from utmelab_bank.blob.paths import url_for
+from utmelab_bank.blob.paths import name_for
 from utmelab_bank.config import Config, RepoRoot
 from utmelab_bank.model.base import now_iso
 from utmelab_bank.model.richtext import Mark
@@ -137,7 +139,7 @@ async def test_upload_pushes_the_blob_and_rewrites_the_question(
 
     saved_media = (await repo.rows("media", "id=m_figure.png"))[0]
     assert saved_media["status"] == "uploaded"
-    assert saved_media["media_url"] == target == url_for(digest, ".png")
+    assert saved_media["media_url"] == target == name_for(digest, ".png")
 
     saved_question = (await repo.rows("questions", f"id={question['id']}"))[0]
     marks = json.loads(saved_question["inline"])
@@ -402,16 +404,17 @@ async def test_a_failed_push_is_a_retryable_row_failure(
     config: Config,
     tmp_path: Path,
 ) -> None:
+    """A push that fails for a reason that might clear is a retryable row."""
     bare = _remote(tmp_path)
+    hook = bare / "hooks" / "pre-receive"
+    hook.write_text('#!/bin/sh\necho "declined" >&2\nexit 1\n', encoding="utf-8")
+    hook.chmod(0o755)
     run_config = _config(config, tmp_path, bare)
     repo = Repository(store, lane="work")
     clone = _clone(run_config)
     digest, blob_path, _ = clone.write_blob(b"unpushable bytes", ".png")
     media = _media_row("q_1", digest, blob_path, clone.root, row_id="m_push.png", verdict="pass")
     await repo.insert_many("media", [media])
-
-    gone = tmp_path / "gone.git"
-    bare.rename(gone)
 
     result = await run_task(
         MediaUpload(), run_config, repo, logical="media", where="description verified"
@@ -422,3 +425,200 @@ async def test_a_failed_push_is_a_retryable_row_failure(
     assert result.outcomes[0].retryable is True
     saved = (await repo.rows("media", "id=m_push.png"))[0]
     assert saved["status"] == "fetched"
+
+
+def _git_env_off(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    """Take away every way git could learn an identity.
+
+    ``GIT_CONFIG_GLOBAL`` and ``GIT_CONFIG_SYSTEM`` point at paths that do not
+    exist, so this machine's ``~/.gitconfig`` cannot quietly satisfy the commit
+    and make the test below pass for the wrong reason.
+    """
+    monkeypatch.setenv("GIT_CONFIG_GLOBAL", str(tmp_path / "no-global"))
+    monkeypatch.setenv("GIT_CONFIG_SYSTEM", str(tmp_path / "no-system"))
+    for key in (
+        "GIT_AUTHOR_NAME",
+        "GIT_AUTHOR_EMAIL",
+        "GIT_COMMITTER_NAME",
+        "GIT_COMMITTER_EMAIL",
+    ):
+        monkeypatch.delenv(key, raising=False)
+
+
+async def test_a_run_with_no_git_identity_does_not_claim_a_publication(
+    store: Store,
+    config: Config,
+    make_rows: Any,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The production incident, at the layer that wrote the rows.
+
+    On 2026-10-19 a runner with no ``user.email`` published two figures as far
+    as the database was concerned. ``git commit`` exited 128, the error went to
+    stderr where nothing read it, the guard looked for "nothing to commit" in an
+    empty stdout and did not find it, and the method returned the previous
+    commit's sha. The push then had nothing to send, said "Everything
+    up-to-date", and exited zero.
+
+    This asserts the whole chain from the outside: the row's status, the url on
+    the question, and a fresh clone of the remote.
+    """
+    _git_env_off(monkeypatch, tmp_path)
+    bare = _remote(tmp_path)
+    run_config = _config(config, tmp_path, bare)
+    repo = Repository(store, lane="work")
+
+    question = make_rows(
+        1,
+        marks=[Mark(kind="image", start=0, len=0, url=SOURCE, position="above")],
+    )[0]
+    await repo.insert_many("questions", [question])
+
+    clone = _clone(run_config)
+    # Strip the identity the helper set, so this is the runner we are modelling.
+    _git_env_off(monkeypatch, tmp_path)
+    _git(clone.root, "config", "--unset", "user.name")
+    _git(clone.root, "config", "--unset", "user.email")
+
+    digest, blob_path, _ = clone.write_blob(b"figure bytes", ".png")
+    media = _media_row(question["id"], digest, blob_path, clone.root, verdict="pass")
+    await repo.insert_many("media", [media])
+
+    result = await run_task(
+        MediaUpload(), run_config, repo, logical="media", where="description verified"
+    )
+
+    assert result.run.failed == 1, "a run that published nothing cannot be green"
+    assert result.exit_code != 0
+
+    saved = (await repo.rows("media", "id=m_figure.png"))[0]
+    assert saved["status"] == "fetched", "the row must not claim to be uploaded"
+    assert saved["media_url"] == SOURCE, "the question must keep the provider's url"
+
+    marks = json.loads((await repo.rows("questions", f"id={question['id']}"))[0]["inline"])
+    assert marks[0]["url"] == SOURCE, "no rewrite without a verified publication"
+
+    # The strongest half: a fresh clone of the remote has no such file, which is
+    # exactly what the operator would have found on GitLab.
+    verify = tmp_path / "verify"
+    _git(tmp_path, "clone", "--branch", "main", str(bare), str(verify))
+    assert not (verify / blob_path.relative_to(clone.root)).exists()
+
+
+async def test_a_green_run_means_a_fresh_clone_has_the_figure(
+    store: Store,
+    config: Config,
+    make_rows: Any,
+    tmp_path: Path,
+) -> None:
+    """The other half of the contract, and the only one that matters.
+
+    A green run has to mean the bytes are somewhere anyone else can get them.
+    This asserts that against a clone that shares nothing with the run: not the
+    working tree, not the index, not the database.
+    """
+    bare = _remote(tmp_path)
+    run_config = _config(config, tmp_path, bare)
+    repo = Repository(store, lane="work")
+
+    question = make_rows(
+        1,
+        marks=[Mark(kind="image", start=0, len=0, url=SOURCE, position="above")],
+    )[0]
+    await repo.insert_many("questions", [question])
+
+    clone = _clone(run_config)
+    digest, blob_path, target = clone.write_blob(b"figure bytes", ".png")
+    media = _media_row(question["id"], digest, blob_path, clone.root, verdict="pass")
+    await repo.insert_many("media", [media])
+
+    result = await run_task(
+        MediaUpload(), run_config, repo, logical="media", where="description verified"
+    )
+    assert result.run.succeeded == 1
+    assert result.run.failed == 0
+
+    verify = tmp_path / "verify"
+    _git(tmp_path, "clone", "--branch", "main", str(bare), str(verify))
+    landed = verify / blob_path.relative_to(clone.root)
+    assert landed.is_file(), "green said published, and the remote disagrees"
+    assert landed.read_bytes() == b"figure bytes"
+
+    saved = (await repo.rows("media", "id=m_figure.png"))[0]
+    assert saved["status"] == "uploaded"
+    assert saved["media_url"] == target
+    marks = json.loads((await repo.rows("questions", f"id={question['id']}"))[0]["inline"])
+    assert marks[0]["url"] == target
+
+
+async def test_an_auth_failure_is_not_left_retrying_forever(
+    store: Store,
+    config: Config,
+    make_rows: Any,
+    tmp_path: Path,
+) -> None:
+    """A rejected credential must be refused, not scheduled for another try.
+
+    The row still says why, so the operator knows to fix the token, but it is
+    not marked retryable: the next attempt would fail identically.
+    """
+    bare = _remote(tmp_path)
+    hook = bare / "hooks" / "pre-receive"
+    hook.write_text(
+        '#!/bin/sh\necho "remote: HTTP Basic: Access denied." >&2\nexit 1\n', encoding="utf-8"
+    )
+    hook.chmod(0o755)
+
+    run_config = _config(config, tmp_path, bare)
+    repo = Repository(store, lane="work")
+    question = make_rows(1)[0]
+    await repo.insert_many("questions", [question])
+    clone = _clone(run_config)
+    digest, blob_path, _ = clone.write_blob(b"figure bytes", ".png")
+    media = _media_row(question["id"], digest, blob_path, clone.root, verdict="pass")
+    await repo.insert_many("media", [media])
+
+    result = await run_task(
+        MediaUpload(), run_config, repo, logical="media", where="description verified"
+    )
+
+    assert result.run.failed == 1
+    assert result.outcomes[0].code == "git_auth_failed"
+    assert result.outcomes[0].retryable is False
+    assert "access denied" in result.outcomes[0].detail.lower()
+    saved = (await repo.rows("media", "id=m_figure.png"))[0]
+    assert saved["status"] == "fetched"
+
+
+async def test_a_push_that_never_lands_leaves_no_row_looking_uploaded(
+    store: Store,
+    config: Config,
+    make_rows: Any,
+    tmp_path: Path,
+) -> None:
+    """The self-sealing failure, closed.
+
+    ``not uploaded`` selects ``status <> 'uploaded'``, so a row wrongly marked
+    uploaded is never selected again and nothing ever repairs it. This is the
+    test that says a run either puts the bytes there or changes nothing.
+    """
+    bare = _remote(tmp_path)
+    hook = bare / "hooks" / "pre-receive"
+    hook.write_text('#!/bin/sh\necho "declined" >&2\nexit 1\n', encoding="utf-8")
+    hook.chmod(0o755)
+
+    run_config = _config(config, tmp_path, bare)
+    repo = Repository(store, lane="work")
+    question = make_rows(1)[0]
+    await repo.insert_many("questions", [question])
+    clone = _clone(run_config)
+    digest, blob_path, _ = clone.write_blob(b"figure bytes", ".png")
+    media = _media_row(question["id"], digest, blob_path, clone.root, verdict="pass")
+    await repo.insert_many("media", [media])
+
+    await run_task(MediaUpload(), run_config, repo, logical="media", where="description verified")
+
+    assert await repo.count("media", "not uploaded") == 1, (
+        "the row must still be selected by the next run"
+    )

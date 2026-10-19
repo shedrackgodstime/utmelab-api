@@ -194,8 +194,9 @@ next run finds it.
 Content addressing and git agree: a blob already in history is never re-sent, so
 a batch of 400 figures where 380 already exist costs almost nothing.
 
-**The media url stored in the bank is ours, not the provider's.** A verified
-figure's question carries `/media/ab/abcd....png`, never a gitlab url. A figure
+**The media name stored in the bank is ours, not the provider's.** A verified
+figure's question carries the bare file name `abcd....png`, never a gitlab url
+and never a repo or route prefix. A figure
 whose description failed the check keeps the provider's full url, so the bank
 never publishes a copy it cannot explain. The project that serves our copy is a
 configuration detail, so moving off git later is a config change and not a data

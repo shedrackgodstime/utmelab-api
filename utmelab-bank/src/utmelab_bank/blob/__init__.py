@@ -3,7 +3,13 @@
 from __future__ import annotations
 
 from utmelab_bank.blob.gitstore import CloneStats, GitStore, PushReport
-from utmelab_bank.blob.paths import blob_path_for, extension_for, is_blob_name, sha256_of, url_for
+from utmelab_bank.blob.paths import (
+    blob_path_for,
+    extension_for,
+    is_blob_name,
+    name_for,
+    sha256_of,
+)
 
 __all__ = [
     "CloneStats",
@@ -12,6 +18,6 @@ __all__ = [
     "blob_path_for",
     "extension_for",
     "is_blob_name",
+    "name_for",
     "sha256_of",
-    "url_for",
 ]

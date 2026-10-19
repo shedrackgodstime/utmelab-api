@@ -117,9 +117,9 @@ run on real rows end to end.
 | ai-tag | yes | `ai-tag` | yes | **yes** (3 rows, R6) |
 | ai-verify | yes | `ai-verify` | yes | **yes** (3 rows, R6; one real fail) |
 | media-discover | yes | `media-discover` | partial | **yes** (12 figures, R7a) |
-| media-fetch | yes | `media-fetch` | partial | **yes** (12/12 fetched; bytes decide extension) |
+| media-fetch | yes | `media-fetch` | partial | **yes** (12/12 fetched; bytes decide extension; a fresh clone re-downloads a row whose bytes are gone) |
 | media-verify | yes | `media-verify` | yes | **yes** (12 checked; 6 pass, 6 fail; negative control caught) |
-| media-upload | yes | `media-upload` | yes | **yes** (manual 12/12 pushed; default flow publishes 6/6 verified, leaves 6 on source, hashes preserved) |
+| media-upload | yes | `media-upload` | yes | **yes** (bare remote: manual 12/12 pushed; default flow 6/6 verified; real GitLab: two figures in one commit, verified by fresh clone; protected branch appends instead of rewriting) |
 | media-transform / report / gc | **not built** | no | no | no |
 | media reachability / emptiness | **not built** | no | no | no |
 | fill planner (`fill`, `scrape_targets`) | yes | `fill` | yes | **yes** (physics 2025: 21 pages, 104 new, drained; re-run adds 0) |
@@ -223,16 +223,34 @@ the previous one is green.
   `ai-tag`, `ai-explain`, `ai-verify` over, say, 20 work rows.
   *Green:* verification rows are written with the exact vocabulary production
   joins on, and the run is resumable.
-- **R7. Prove media.** *Upload done; transform, report and gc remain.*
+- **R7. Prove media.** *Upload proven against GitLab; transform, report and gc remain.*
   `media-discover` and `media-fetch` on rows with images; build the upload and
   the report; push one batch to the media project.
   *Green:* a skipped figure carries the provider's full url, an uploaded figure
   carries our file name, and blobs land in the media git project. Proven on the
-  proof DB: 12/12 figures pushed in one commit to a bare remote. The default
-  flow publishes only a verified description: 6/6 verified figures carry
-  `/media/...`, the 6 failed descriptions keep their source url and stay in the
+  proof DB against a bare remote: 12/12 figures pushed in one commit. The default
+  flow publishes only a verified description: 6/6 verified figures carry our
+  file name, the 6 failed descriptions keep their source url and stay in the
   review queue. 12/12 content hashes preserved (the hash is an identity, not a
   checksum), and a second pass wrote and pushed 0.
+
+  Real GitLab is now proven too. `GitStore.publish` cloned
+  `shedrackgodstime/utmelab-bank`, published two figures in one commit to a
+  scratch branch, and read both back from a fresh clone of gitlab.com; the
+  branch was then deleted, leaving `main` at its original commit. `main` is
+  protected with force push disabled, so a publish attempts the single-commit
+  rewrite first and, when the server refuses it, appends an ordinary commit
+  instead. Blobs stay content-addressed, so that fallback costs one small commit
+  per run, never a second copy of the bytes.
+
+  A fresh clone no longer trusts a row's `blob_path` on its own: fetch checks
+  the clone, so a retry after a failed upload re-downloads instead of skipping
+  and leaving upload with nothing to publish.
+
+  The 2026-10-19 production run reported two figures uploaded and pushed
+  nothing: a commit failed for lack of a git identity, the failure was read from
+  the wrong stream, and the push result was never checked. Both are now
+  regressions in `tests/test_gitstore.py` and `tests/test_media_upload.py`.
   Two witnesses: when `UTMELAB_BANK_AI_IMAGE_SECOND_MODEL` names a different
   image model, a description passes only if both models pass it. A missing or
   dissenting witness is a fail, and the same model named twice is ignored

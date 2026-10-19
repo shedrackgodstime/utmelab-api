@@ -1,7 +1,7 @@
 """media-discover: record a provider figure once, and never record our own copy.
 
 The media goal can run after a previous upload. At that point a question carries
-``/media/ab/<sha>.png``, which is our path, not a provider url. A discover that
+``<sha>.png``, which is our own file name, not a provider url. A discover that
 treats every image mark as a new figure creates a duplicate row for every
 published figure on the next pass. These tests pin the identity to the source
 url.
@@ -20,7 +20,7 @@ from utmelab_bank.task.base import run_task
 from utmelab_bank.task.gates.media_presence import MediaPresence
 
 SOURCE = "https://cdn.example/figure.png"
-OUR_PATH = "/media/ab/abcdef.png"
+OUR_NAME = "a" * 64 + ".png"
 
 
 def _mark(url: str) -> Mark:
@@ -61,7 +61,7 @@ async def test_discover_ignores_a_figure_already_on_our_path(
     make_rows: Any,
 ) -> None:
     repo = Repository(store, lane="work")
-    question = make_rows(1, marks=[_mark(OUR_PATH)])[0]
+    question = make_rows(1, marks=[_mark(OUR_NAME)])[0]
     await repo.insert_many("questions", [question])
 
     result = await run_task(MediaPresence(), config, repo, logical="questions")

@@ -15,6 +15,7 @@ the task is a no-op, matching the json sink's read-only contract.
 from __future__ import annotations
 
 import logging
+from pathlib import Path
 from typing import Any
 
 from utmelab_bank.blob.gitstore import GitStore
@@ -63,18 +64,24 @@ async def fetch_one(row: dict[str, Any], ctx: TaskContext) -> RowOutcome:
     if not source_url:
         return ctx.skip(row_id, "no_source_url", "the media row has no source_url")
 
-    # Already fetched: nothing to do. Idempotent re-runs are free.
-    if row.get("blob_path") and row.get("sha256"):
-        return ctx.skip(row_id, "already_fetched", "this figure's bytes are already in the clone")
-
-    if ctx.dry_run or ctx.config.sink == "json":
-        return ctx.ok(row_id)
-
+    # Already fetched, but only if the bytes are still on disk. The row records
+    # a blob_path, and a fresh CI runner rebuilds the clone from the remote, so
+    # a row can claim to be fetched while this clone has never seen the figure.
+    # Trusting the row alone made every retry after a failed upload skip here
+    # and then fail in upload with "blob is not in the clone".
     store = GitStore(
         root=ctx.config.repo.media_repo,
         remote=ctx.config.media_remote,
         branch=ctx.config.media_branch,
     )
+    cached_digest = str(row.get("sha256") or "")
+    cached_path = str(row.get("blob_path") or "")
+    cached_ext = Path(cached_path).suffix if cached_path else ""
+    if cached_digest and cached_ext and store.has_blob(cached_digest, cached_ext):
+        return ctx.skip(row_id, "already_fetched", "this figure's bytes are already in the clone")
+
+    if ctx.dry_run or ctx.config.sink == "json":
+        return ctx.ok(row_id)
 
     # Ensure the clone exists. Idempotent: a no-op when the clone is already there.
     try:
@@ -103,7 +110,7 @@ async def fetch_one(row: dict[str, Any], ctx: TaskContext) -> RowOutcome:
             "sha256": digest,
             "bytes": len(data),
             # The question keeps the provider's full url until an upload actually
-            # publishes our own copy. Stamping our /media/... path here would
+            # publishes our own copy. Stamping our file name here would
             # point it at a file nothing serves yet. Upload replaces this value
             # with our file name once the bytes are pushed.
             "media_url": source_url,

@@ -129,6 +129,10 @@ jobs:
         if: ${{ inputs.mode != 'status' }}
         run: |
           set -euo pipefail
+          # git refuses to commit without these. The runner image does not set
+          # them, and the failure is a 128 on stderr that used to be swallowed.
+          git config --global user.name "utmelab-bot"
+          git config --global user.email "bot@utmelab.com"
           if [ -n "${GITLAB_FINE_GRAINED_ACCESS_TOKEN:-}" ]; then
             git config --global credential.helper store
             printf 'https://oauth2:%s@gitlab.com\n' "$GITLAB_FINE_GRAINED_ACCESS_TOKEN" \

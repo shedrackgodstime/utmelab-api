@@ -14,7 +14,7 @@ from typing import Final
 import pytest
 
 import utmelab_bank
-from utmelab_bank.blob.paths import blob_path_for, extension_for, url_for
+from utmelab_bank.blob.paths import blob_path_for, extension_for, path_for, name_for
 from utmelab_bank.config import LANE_PREFIX, TARGET_ALIASES, Lane
 from utmelab_bank.contract import vocab
 from utmelab_bank.contract.rust_schema import load_contract
@@ -355,17 +355,21 @@ def test_blob_paths_are_content_addressed() -> None:
     digest = "a" * 64
     path = blob_path_for(Path("/clone"), digest, ".png")
     assert path.name == f"{digest}.png"
-    assert path.parent.name == "aa"
-    assert url_for(digest, ".png") == f"/media/aa/{digest}.png"
+    assert path.parent.name == "images"
+    # The repo folder and the served route are separate on purpose: figures
+    # live under images/ in the project; the row stores only the file name.
+    assert path_for(digest, ".png") == f"images/{digest}.png"
+    assert name_for(digest, ".png") == f"{digest}.png"
 
 
-def test_the_published_url_is_ours_not_the_providers() -> None:
-    """A question carries our path, so moving hosts is config and not migration."""
+def test_the_published_name_is_ours_not_the_providers() -> None:
+    """A question carries our file name, so moving hosts is config, not migration."""
     digest = "b" * 64
-    url = url_for(digest, ".jpg")
-    assert url.startswith("/media/")
-    assert "gitlab" not in url
-    assert "http" not in url
+    name = name_for(digest, ".jpg")
+    assert name == f"{digest}.jpg"
+    assert "/" not in name
+    assert "gitlab" not in name
+    assert "http" not in name
 
 
 def test_extension_prefers_the_bytes() -> None:

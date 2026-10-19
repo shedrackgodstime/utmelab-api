@@ -1,8 +1,9 @@
 """media-upload: publish fetched figures and point each question at our copy.
 
-The media project holds the bytes; the bank holds ``/media/ab/<sha>.<ext>``,
-never a gitlab url. The api serves that path and keeps the credential, so moving
-the project later is a configuration change, not a rewrite of every question.
+The media project holds the bytes; the bank records the file name
+``<sha>.<ext>``, never a gitlab url and never a repo or route prefix. The api
+decides how to reach the file, and keeps the credential, so moving the project
+later is a configuration change, not a rewrite of every question.
 
 One commit, one push. The working tree is the pending batch, so a run that dies
 before the push leaves its work where the next run finds it, and the next run
@@ -10,7 +11,7 @@ stages the same bytes.
 
 The content hash is an identity, not a checksum. It is stamped once and edits
 preserve it (the same rule ``ai-explain`` follows). Rewriting a provider url to
-our own path therefore keeps the hash, and every verification written against
+our own file name therefore keeps the hash, and every verification written against
 the question still joins. Re-hashing here would orphan the human verdicts that
 are the whole point of the bank.
 """
@@ -22,9 +23,9 @@ import logging
 from pathlib import Path
 from typing import Any
 
-from utmelab_bank.blob.gitstore import GitStore
-from utmelab_bank.blob.paths import url_for
-from utmelab_bank.errors import BlobError
+from utmelab_bank.blob.gitstore import BlobRef, GitStore
+from utmelab_bank.blob.paths import name_for
+from utmelab_bank.errors import BlobError, GitAuthError
 from utmelab_bank.model.run import RowOutcome
 from utmelab_bank.rules import load_json_column
 from utmelab_bank.task.base import TaskContext, registered
@@ -32,8 +33,6 @@ from utmelab_bank.task.base import TaskContext, registered
 __all__ = ["MediaUpload", "upload_batch"]
 
 log = logging.getLogger(__name__)
-
-_COMMIT_MESSAGE = "media: publish fetched figures"
 
 
 @registered
@@ -95,7 +94,7 @@ def _rewrite_question(row: dict[str, Any], source: str, target: str) -> dict[str
     """The json columns that now point at our copy, or ``None`` when nothing did.
 
     The content hash is deliberately not in the result: it is the row's identity
-    and survives the address change.
+    and survives the name change.
     """
     changes: dict[str, str] = {}
     for column in ("inline", "options", "explanation"):
@@ -129,33 +128,60 @@ async def upload_batch(ctx: TaskContext) -> list[RowOutcome]:
             for row in rows
         ]
 
-    try:
-        store.ensure_cloned()
-        store.pull_ff_only()
-    except BlobError as exc:
-        return [
-            ctx.fail(str(row.get("id", "")), "no_media_clone", str(exc), retryable=False)
-            for row in rows
-        ]
-
     prepared, outcomes = _prepare(store, rows, ctx)
     if not prepared:
         return outcomes
 
-    staged = store.stage_all()
-    if staged:
-        store.commit(_COMMIT_MESSAGE, amend=store.has_commits())
+    # One publish for the whole batch, so one failure is one reason for every
+    # row in it. The rows still each carry it, because a row that does not say
+    # why it failed is a row the next run picks up with nothing to go on.
     try:
-        store.push(allowed=ctx.config.media_upload_enabled)
+        report = store.publish(_blob_refs(prepared), allowed=ctx.config.media_upload_enabled)
     except BlobError as exc:
+        code = "git_auth_failed" if isinstance(exc, GitAuthError) else "push_failed"
         outcomes.extend(
-            ctx.fail(str(row.get("id", "")), "push_failed", str(exc), retryable=True)
+            ctx.fail(
+                str(row.get("id", "")),
+                code,
+                str(exc),
+                # An auth failure is the one case that will not fix itself, and
+                # retrying it would spend the run's budget to arrive at the same
+                # answer. Everything else clears on its own.
+                retryable=exc.is_retryable,
+            )
             for row in prepared
         )
         return outcomes
 
+    log.info(
+        "media-upload: %d figures, %d bytes, %d attempt(s)%s at %s",
+        report.files,
+        report.bytes_added,
+        report.attempts,
+        " after recovering a lease" if report.recovered else "",
+        report.sha[:12],
+    )
     outcomes.extend(await _publish(ctx, prepared))
     return outcomes
+
+
+def _blob_refs(rows: list[dict[str, Any]]) -> list[BlobRef]:
+    """The batch as the git layer wants it, read off the rows themselves.
+
+    Derived here rather than inside the git layer so the published name, which
+    is what a question will carry, comes from the same place it was verified.
+    Two code paths computing the same name is how a row ends up pointing at
+    something that was never checked.
+    """
+    refs: list[BlobRef] = []
+    for row in rows:
+        digest = str(row.get("sha256") or "")
+        blob_rel = str(row.get("blob_path") or "")
+        extension = Path(blob_rel).suffix
+        if not digest or not extension:
+            continue
+        refs.append((digest, extension, name_for(digest, extension)))
+    return refs
 
 
 def _prepare(
@@ -195,7 +221,7 @@ async def _publish(ctx: TaskContext, prepared: list[dict[str, Any]]) -> list[Row
         row_id = str(row.get("id", ""))
         digest = str(row.get("sha256") or "")
         extension = Path(str(row.get("blob_path") or "")).suffix
-        target = url_for(digest, extension)
+        target = name_for(digest, extension)
         source = str(row.get("source_url") or "")
         question_id = str(row.get("question_id") or "")
 

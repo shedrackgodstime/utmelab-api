@@ -30,7 +30,7 @@ def _media_row(**over: Any) -> dict[str, Any]:
         "blob_path": "media/ab/" + hashlib.sha256(b"fig-1").hexdigest() + ".png",
         "sha256": hashlib.sha256(b"fig-1-bytes").hexdigest(),
         "bytes": 4096,
-        "media_url": "/media/ab/" + hashlib.sha256(b"fig-1").hexdigest() + ".png",
+        "media_url": hashlib.sha256(b"fig-1").hexdigest() + ".png",
         "description": None,
         "description_model": None,
         "attempts": 0,

@@ -10,8 +10,10 @@ three were the reason this design was chosen over a separate cache directory:
 - Garbage collection needs no reference counting, because a blob is disposable
   the moment its row is uploaded and ready.
 
-The layout is two levels deep because one directory with fifty thousand files is
-slow to list on the filesystem we run on.
+The layout is flat: ``images/<sha>.<ext>``, so the path is the name and nothing
+else. A sharded layout (``images/ab/<sha>.<ext>``) keeps any one directory
+smaller, which matters on a filesystem that lists slowly; the trade was made
+for the simpler path a person can read off a url.
 """
 
 from __future__ import annotations
@@ -20,17 +22,26 @@ import hashlib
 import mimetypes
 import re
 from pathlib import Path
+from typing import Final
 
 from utmelab_bank.errors import BlobError
 
 __all__ = [
+    "REPO_DIR",
     "blob_path_for",
     "extension_for",
     "is_blob_name",
+    "name_for",
+    "path_for",
     "sha256_of",
     "sniff_extension",
-    "url_for",
 ]
+
+#: The folder inside the media git project that holds the figures. The repo
+#: layout lives here and nowhere else: what the bank stores is the bare file
+#: name, and how a repo path or a web path is built from that name is this
+#: module's job, not a column's.
+REPO_DIR: Final[str] = "images"
 
 _HASH_RE: re.Pattern[str] = re.compile(r"^[0-9a-f]{64}\.[a-z0-9]{1,5}$")
 
@@ -82,32 +93,55 @@ def extension_for(url: str, content_type: str | None = None, data: bytes | None 
     return ".bin"
 
 
-def blob_path_for(root: Path, digest: str, extension: str) -> Path:
-    """The path a blob occupies, relative to the clone.
+def _validate(extension: str) -> None:
+    """Refuse an extension that is not plainly an extension.
 
-    Raises when the extension is not a plain extension, because this path ends
-    up inside a git index and a traversal here would be a file written outside
-    the clone.
+    This path ends up inside a git index and a url, so a traversal or a space
+    here is a file written outside the clone and a url that does not round
+    trip. Checked once, in one place, because two callers that each spell the
+    rule is how they drift apart.
     """
-    if not re.fullmatch(r"[0-9a-f]{64}", digest):
-        raise BlobError("not a sha256 digest", digest=digest)
     if not re.fullmatch(r"\.[a-z0-9]{1,5}", extension):
         raise BlobError("not a plain extension", extension=extension)
-    return root / "media" / digest[:2] / f"{digest}{extension}"
+
+
+def blob_path_for(root: Path, digest: str, extension: str) -> Path:
+    """The path a blob occupies, relative to the clone."""
+    return root / path_for(digest, extension)
 
 
 def is_blob_name(name: str) -> bool:
     return bool(_HASH_RE.match(name))
 
 
-def url_for(digest: str, extension: str) -> str:
-    """The path we publish, which is ours and not the provider's.
+def path_for(digest: str, extension: str) -> str:
+    """The blob's path inside the clone, as git addresses it.
 
-    Storing our own path rather than a gitlab url is what makes moving off the
-    media project a configuration change instead of a rewrite of every question
-    row that carries a figure.
+    Always ``images/<sha>.<ext>`` and never a leading slash, because this is
+    what ``git cat-file -e <commit>:<path>`` is asked about when a publish is
+    verified. Writing that string by hand at the call site is how a leading
+    slash or a missing prefix sneaks in and makes every verification fail for a
+    reason that has nothing to do with the push.
     """
-    return f"/media/{digest[:2]}/{digest}{extension}"
+    _validate(extension)
+    if not re.fullmatch(r"[0-9a-f]{64}", digest):
+        raise BlobError("not a sha256 digest", digest=digest)
+    return f"{REPO_DIR}/{digest}{extension}"
+
+
+def name_for(digest: str, extension: str) -> str:
+    """The file name a published figure is recorded under. Just the name.
+
+    The bank stores this and nothing more: no ``images/``, no ``/media/`` and
+    no host. Where the file sits in the git project and how the site serves it
+    are decided by whoever reads it, so changing either is not a database
+    migration. The name is content-addressed, which is what makes the row's
+    identity survive any such move.
+    """
+    _validate(extension)
+    if not re.fullmatch(r"[0-9a-f]{64}", digest):
+        raise BlobError("not a sha256 digest", digest=digest)
+    return f"{digest}{extension}"
 
 
 def ensure_inside(root: Path, candidate: Path) -> Path:

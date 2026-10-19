@@ -17,6 +17,8 @@ __all__ = [
     "BlobError",
     "ConfigError",
     "ContractError",
+    "GitAuthError",
+    "GitPublishError",
     "RowFailed",
     "SourceError",
     "StoreError",
@@ -103,6 +105,33 @@ class BlobError(BankError):
     retryable = True
 
 
+class GitAuthError(BlobError):
+    """GitLab refused the credential.
+
+    Not retryable, and that is the whole point of the class. A rejected token
+    will be rejected identically on the next attempt, so retrying it spends the
+    run's budget to arrive at the same failure. Everything else about a push,
+    from a declined hook to a dropped connection, is worth trying again.
+    """
+
+    code = "git_auth_failed"
+    retryable = False
+
+
+class GitPublishError(BlobError):
+    """The remote did not end up holding what we said it would.
+
+    The hardest failure to notice is the one where every command succeeded and
+    the bytes are still not there: a commit that wrote nothing, a push with
+    nothing staged to send, a remote that never moved. Reporting that as
+    published is worse than crashing, because the bank then points questions at
+    a path nothing serves and never selects those rows again.
+    """
+
+    code = "git_not_published"
+    retryable = True
+
+
 class AiError(BankError):
     """A model call failed or returned something we cannot use."""
 
@@ -124,6 +153,9 @@ RETRYABLE_CODES: Final[frozenset[str]] = frozenset(
         StoreError.code,
         SourceError.code,
         BlobError.code,
+        # A publish that did not land is worth another attempt: the common
+        # causes are a concurrent run and a dropped connection, and both clear.
+        GitPublishError.code,
         AiError.code,
         TransientAiError.code,
         RowFailed.code,

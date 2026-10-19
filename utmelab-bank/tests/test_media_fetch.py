@@ -7,6 +7,7 @@ from typing import Any
 
 import pytest
 
+from utmelab_bank.blob.paths import REPO_DIR
 from utmelab_bank.config import Config, RepoRoot
 from utmelab_bank.model.base import now_iso
 from utmelab_bank.source.http import PoliteSession
@@ -109,7 +110,7 @@ async def test_fetch_downloads_bytes_into_clone(
     assert updated["bytes"] == len(PNG_BYTES)
     # The question keeps the provider's full url until an upload publishes ours.
     assert updated["media_url"] == "https://cdn.example/fig-1.png"
-    assert updated["blob_path"].startswith("media/")
+    assert updated["blob_path"].startswith(f"{REPO_DIR}/")
     assert updated["error"] is None
     assert updated["next_retry_at"] is None
 
@@ -121,8 +122,13 @@ async def test_fetch_downloads_bytes_into_clone(
 async def test_fetch_skips_already_fetched_row(
     media_config: Config, media_store: Store, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """Re-running fetch on an already-fetched row skips without re-downloading."""
+    """Re-running fetch on a row whose bytes are still in the clone skips."""
     monkeypatch.setattr(PoliteSession, "get", fake_get)
+
+    digest = "a" * 64
+    blob = Path(media_config.repo.media_repo) / REPO_DIR / f"{digest}.jpg"
+    blob.parent.mkdir(parents=True)
+    blob.write_bytes(PNG_BYTES)
 
     repo = Repository(media_store, lane="work")
     await repo.insert_many(
@@ -132,9 +138,9 @@ async def test_fetch_skips_already_fetched_row(
                 id="m_fig2",
                 source_url="https://cdn.example/fig-2.jpg",
                 status="fetched",
-                blob_path="media/ab/" + "a" * 64 + ".jpg",
-                sha256="a" * 64,
-                bytes=42,
+                blob_path=f"{REPO_DIR}/{digest}.jpg",
+                sha256=digest,
+                bytes=len(PNG_BYTES),
                 media_url="https://cdn.example/fig-2.jpg",
             )
         ],
@@ -146,6 +152,45 @@ async def test_fetch_skips_already_fetched_row(
     assert result.run.failed == 0
     updated = (await repo.rows("media", "id=m_fig2"))[0]
     assert updated["status"] == "fetched"
+
+
+async def test_fetch_re_downloads_when_the_clone_is_fresh(
+    media_config: Config, media_store: Store, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A row that remembers a blob the clone does not have must be fetched again.
+
+    CI rebuilds the clone on every run. The row survives from the last run and
+    the bytes do not, so trusting the row alone skipped the download and left
+    upload with nothing to publish.
+    """
+    monkeypatch.setattr(PoliteSession, "get", fake_get)
+
+    digest = "b" * 64
+    repo = Repository(media_store, lane="work")
+    await repo.insert_many(
+        "media",
+        [
+            media_row(
+                id="m_fig3",
+                source_url="https://cdn.example/fig-3.jpg",
+                status="fetched",
+                blob_path=f"{REPO_DIR}/{digest}.jpg",
+                sha256=digest,
+                bytes=42,
+                media_url="https://cdn.example/fig-3.jpg",
+            )
+        ],
+    )
+
+    result = await run_task(MediaFetch(), media_config, repo, logical="media")
+
+    assert result.run.succeeded == 1
+    assert result.run.skipped == 0
+    updated = (await repo.rows("media", "id=m_fig3"))[0]
+    assert updated["status"] == "fetched"
+    assert updated["bytes"] == len(PNG_BYTES)
+    assert updated["blob_path"] != f"{REPO_DIR}/{digest}.jpg"
+    assert (Path(media_config.repo.media_repo) / updated["blob_path"]).is_file()
 
 
 async def test_fetch_failure_is_retryable(
@@ -183,4 +228,4 @@ async def test_fetch_uses_json_sink_without_writing_files(
     assert result.run.succeeded == 1
     assert result.run.failed == 0
     clone_root = media_config.repo.media_repo
-    assert not (clone_root / "media").exists()
+    assert not (clone_root / REPO_DIR).exists()

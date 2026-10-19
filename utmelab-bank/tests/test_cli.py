@@ -16,7 +16,7 @@ import pytest
 from click.testing import CliRunner
 
 from utmelab_bank.blob.gitstore import GitStore
-from utmelab_bank.blob.paths import blob_path_for, extension_for, is_blob_name, url_for
+from utmelab_bank.blob.paths import blob_path_for, extension_for, is_blob_name, name_for
 from utmelab_bank.cli import cli, main
 from utmelab_bank.errors import BlobError, SourceError, StoreError
 from utmelab_bank.source.myschool.parser import EXAMS, slug_for
@@ -334,7 +334,7 @@ def test_a_blob_is_written_where_its_hash_says(tmp_path: Path) -> None:
     assert path.is_file()
     assert path.name == f"{digest}.png"
     assert is_blob_name(path.name)
-    assert url == url_for(digest, ".png")
+    assert url == name_for(digest, ".png")
     assert blob_path_for(tmp_path / "media-repo", digest, ".png") == path
 
 
@@ -346,7 +346,7 @@ def test_writing_the_same_bytes_twice_changes_nothing(tmp_path: Path) -> None:
 
     assert first_digest == second_digest
     assert first_path == second_path
-    assert len(list((tmp_path / "media-repo" / "media").rglob("*.png"))) == 1
+    assert len(list((tmp_path / "media-repo" / "images").rglob("*.png"))) == 1
 
 
 def test_reading_a_blob_that_is_not_there_says_so(tmp_path: Path) -> None:
@@ -425,10 +425,10 @@ def test_a_blob_is_committed_and_pushed_to_a_remote(tmp_path: Path) -> None:
 
     verify = tmp_path / "verify"
     _git(tmp_path, "clone", "--branch", "main", str(bare), str(verify))
-    landed = list((verify / "media").rglob("*.png"))
+    landed = list((verify / "images").rglob("*.png"))
     assert landed, "the pushed blob is not on the remote"
     assert landed[0] == verify / blob_path.relative_to(store.root)
-    assert our_url.startswith("/media/")
+    assert is_blob_name(our_url)
 
 
 def test_gc_keeps_the_hashes_it_is_told_to_keep(tmp_path: Path) -> None:
