@@ -121,6 +121,8 @@ run on real rows end to end.
 | media-verify | yes | `media-verify` | yes | **yes** (12 checked; 6 pass, 6 fail; negative control caught) |
 | media-upload | yes | `media-upload` | yes | **yes** (manual 12/12 pushed; default flow publishes 6/6 verified, leaves 6 on source, hashes preserved) |
 | media-transform / report / gc | **not built** | no | no | no |
+| media reachability / emptiness | **not built** | no | no | no |
+| fill planner (target ranking) | **not built** | no | no | no |
 | promote (work to ready) | yes | `promote` | yes | **no** (all `ready_*` empty) |
 | review workbench | partial (`set`, `show`, `verify`) | not registered | yes | **no** |
 | goal composition | yes | `goal` | yes | **partial** (media preset, dry-run order proven) |
@@ -251,6 +253,118 @@ the previous one is green.
   (`auto_tag_questions`, `auto-verify`, `auto-verify-free`, `harvest`,
   `pipeline`) and then the `tools/` and `utmelab-pipeline/` directories.
   *Green:* nothing references them and the bank workflow replaces them.
+
+## R11. Two runners, valid figures, and a fill objective
+
+### Two runners
+
+The lane model already supports the split. Every task selects its rows by
+status from the database; only `bank.yml` chains them in one job. The chain is
+what makes a scrape pay for a fifty minute model tail. On the 100 row run,
+scrape plus intake plus gate plus dedupe took about 90 seconds, `ai-tag` took
+13 minutes, `ai-explain` took 28, and `ai-verify` was still running when the
+60 minute ceiling killed the job. Media never started.
+
+The split:
+
+- **Ingest.** `scrape` -> `intake` -> `gate` -> `dedupe`. No model, no GitLab,
+  no production token. It can run often, on a schedule or on demand.
+- **Enrich.** `catalog` -> `ai-tag` -> `ai-explain` -> `ai-verify`, then the
+  media steps. It reads the database by selector and never receives rows from
+  the ingest run. It carries the model, the read-only production token, and
+  the GitLab token.
+- **Media** stays a mode of enrich until it needs its own cadence. It has the
+  longest tail and the heaviest credentials.
+
+Each runner gets its own concurrency group so a long enrich run cannot block
+ingest. The tasks stay idempotent and retry tolerant, because both write the
+same bank database.
+
+### A figure must be reachable and not empty
+
+The free checks already exist: `myschool/parser.py` drops the site's
+`no_image_placeholder`, and `rules.judge` refuses a question that mentions a
+figure but carries none (`missing_referenced_figure`). The two network checks
+do not exist.
+
+The prototype has the reachability check in
+`utmelab-pipeline/pipeline/gates/media_check.py`: HEAD, a ranged GET when the
+server rejects HEAD, then require 200 or 206 and an image content type. It was
+exported but never wired.
+
+Add both checks in the media stage, where the figure is the subject:
+
+- A reachability probe before the download, so a dead or non-image URL never
+  becomes a blob. This can live in `media-discover` or a small `media-check`.
+- `media-fetch` rejects zero bytes, bytes that are not a known image magic, and
+  anything under a small size floor. Distinct codes: `empty_image` and
+  `not_an_image`.
+- A question whose figure fails either check is held, retried, and cannot
+  publish. It is not deleted; the host may have been down.
+
+Scraping still does not wait on the image host. The rule is that the figure
+must be valid before the question counts as finished, not that the scraper
+blocks on the CDN.
+
+### The fill objective
+
+`scrape` today needs an explicit `--exam`, `--subject` and (optionally)
+`--year`. Nothing chooses the next target, and nothing records that a target
+is done. That is the missing piece for an unattended night.
+
+The unit is `(source, exam, subject, year)`. A `scrape_targets` table is the
+plan of record:
+
+| column | meaning |
+|---|---|
+| `exam`, `subject`, `year` | the target, unique together |
+| `status` | `pending`, `active`, `drained`, `empty`, `failed`, `exhausted` |
+| `attempts`, `last_error`, `next_retry_at` | the retry trail |
+| `rows_seen`, `rows_new`, `requests` | what the last pass did |
+| `dry_streak` | consecutive empty or zero-new passes, for the guard |
+
+The ranking, recomputed each time a target finishes:
+
+1. For each subject, `target_count = objective_paper_questions * papers`, read
+   from the catalog (`Subject.is_compulsory`, `objective_paper_questions`).
+2. `need = max(0, target_count - held_count)`, where `held_count` counts the
+   subject's work rows.
+3. Pick the subject with the largest `need` that is not exhausted.
+4. Within it, pick the newest year with status `pending` or a retryable
+   `failed`.
+5. Fetch it fully. `api_last_page` says when the listing ends. If the first
+   page is empty, mark `empty`. If a full pass adds zero new rows, mark
+   `drained`.
+6. Recompute and continue.
+
+This answers the three questions directly:
+
+- **Already in the bank.** Three levels. The raw unique index on
+  `(source_url, source_item_id, payload_hash)` makes an exact re-scrape a
+  no-op. The dedupe fingerprint (normalized stem plus sorted options) catches
+  the same question with reordered options or different whitespace, including
+  from another source. The `content_hash` is the stable identity across lanes
+  and media. The target cursor is the fourth, cheaper level: a `drained`
+  target is not fetched again, so we do not spend the requests at all.
+- **When to move on.** A drained or empty target leaves the queue. When every
+  year of a subject is drained or empty, the subject is `exhausted` for this
+  source. The next pick is the top of the deficit ranking, so the runner moves
+  to another subject without a hard coded order.
+- **What stops a dead subject from hogging the queue.** `dry_streak`. After
+  `K` consecutive empty or zero-new passes, the subject is set aside for the
+  run and the next subject is tried.
+
+Two budgets keep a run bounded: minutes and requests. The runner stops
+cleanly, marks the current target `active`, and the next run continues from
+the same plan.
+
+The default for the first night: JAMB first, compulsory subjects at the front,
+newest year first, `papers = 2`, a 50 minute budget, then `intake`, `gate`,
+`dedupe`. Enrich runs as its own pass afterwards, on the rows ingest landed.
+
+A second order objective comes later: once `ai-tag` has assigned
+`subtopic_id`, rank the gaps by catalog subtopic rather than by subject, so the
+bank covers the syllabus rather than just the subject totals.
 
 ## How it runs
 
