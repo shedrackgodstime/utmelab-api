@@ -267,7 +267,11 @@ the previous one is green.
 3. The review tier: the exact rule for "clean enough to need little review"
    (proposed: gate clean + an `ai_verify` pass + scopes covered).
 4. Media transform scope before the first push (originals vs derivatives only).
-5. The `bank` DB: confirm a fresh Turso database, distinct from the pipeline DB.
+5. ~~Which database the bank writes~~ **decided:** the bank owns a dedicated,
+   isolated Turso database, set by `TURSO_UTMELAB_BANK_DB_URL`/`_TOKEN` in
+   `utmelab-bank/.env`, distinct from production and from the pipeline database.
+   It is fully at the bank's disposal, and the runner refuses to start if that
+   name ever equals the production database.
 
 ## Appendix: current command surface
 
