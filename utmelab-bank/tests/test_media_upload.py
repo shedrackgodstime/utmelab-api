@@ -304,3 +304,121 @@ async def test_a_dry_run_never_touches_the_remote(
     saved = (await repo.rows("media", "id=m_dry.png"))[0]
     assert saved["status"] == "fetched"
     assert saved["media_url"] == SOURCE
+
+
+async def test_upload_fails_a_row_with_no_question(
+    store: Store,
+    config: Config,
+    tmp_path: Path,
+) -> None:
+    bare = _remote(tmp_path)
+    run_config = _config(config, tmp_path, bare)
+    repo = Repository(store, lane="work")
+    clone = _clone(run_config)
+    digest, blob_path, _ = clone.write_blob(b"orphan bytes", ".png")
+    media = _media_row("", digest, blob_path, clone.root, row_id="m_orphan.png", verdict="pass")
+    await repo.insert_many("media", [media])
+
+    result = await run_task(
+        MediaUpload(), run_config, repo, logical="media", where="description verified"
+    )
+
+    assert result.run.failed == 1
+    assert result.outcomes[0].code == "no_question"
+    saved = (await repo.rows("media", "id=m_orphan.png"))[0]
+    assert saved["status"] == "fetched"
+
+
+async def test_upload_fails_a_row_whose_question_is_not_in_the_lane(
+    store: Store,
+    config: Config,
+    tmp_path: Path,
+) -> None:
+    bare = _remote(tmp_path)
+    run_config = _config(config, tmp_path, bare)
+    repo = Repository(store, lane="work")
+    clone = _clone(run_config)
+    digest, blob_path, _ = clone.write_blob(b"lost bytes", ".png")
+    media = _media_row(
+        "q_missing", digest, blob_path, clone.root, row_id="m_lost.png", verdict="pass"
+    )
+    await repo.insert_many("media", [media])
+
+    result = await run_task(
+        MediaUpload(), run_config, repo, logical="media", where="description verified"
+    )
+
+    assert result.run.failed == 1
+    assert result.outcomes[0].code == "question_missing"
+
+
+async def test_upload_fails_a_row_with_no_usable_address(
+    store: Store,
+    config: Config,
+    tmp_path: Path,
+) -> None:
+    bare = _remote(tmp_path)
+    run_config = _config(config, tmp_path, bare)
+    repo = Repository(store, lane="work")
+    clone = _clone(run_config)
+    digest, blob_path, _ = clone.write_blob(b"unaddressable bytes", ".png")
+    media = _media_row("q_1", digest, blob_path, clone.root, row_id="m_bad.png", verdict="pass")
+    media["sha256"] = ""
+    await repo.insert_many("media", [media])
+
+    result = await run_task(
+        MediaUpload(), run_config, repo, logical="media", where="description verified"
+    )
+
+    assert result.run.failed == 1
+    assert result.outcomes[0].code == "bad_address"
+
+
+async def test_upload_with_the_json_sink_never_touches_git(
+    store: Store,
+    config: Config,
+    tmp_path: Path,
+) -> None:
+    bare = _remote(tmp_path)
+    run_config = _config(config, tmp_path, bare).model_copy(update={"sink": "json"})
+    repo = Repository(store, lane="work")
+    clone = _clone(run_config)
+    digest, blob_path, _ = clone.write_blob(b"sink bytes", ".png")
+    media = _media_row("q_1", digest, blob_path, clone.root, row_id="m_json.png", verdict="pass")
+    await repo.insert_many("media", [media])
+
+    result = await run_task(
+        MediaUpload(), run_config, repo, logical="media", where="description verified"
+    )
+
+    assert result.run.succeeded == 1
+    saved = (await repo.rows("media", "id=m_json.png"))[0]
+    assert saved["status"] == "fetched"
+    assert saved["media_url"] == SOURCE
+
+
+async def test_a_failed_push_is_a_retryable_row_failure(
+    store: Store,
+    config: Config,
+    tmp_path: Path,
+) -> None:
+    bare = _remote(tmp_path)
+    run_config = _config(config, tmp_path, bare)
+    repo = Repository(store, lane="work")
+    clone = _clone(run_config)
+    digest, blob_path, _ = clone.write_blob(b"unpushable bytes", ".png")
+    media = _media_row("q_1", digest, blob_path, clone.root, row_id="m_push.png", verdict="pass")
+    await repo.insert_many("media", [media])
+
+    gone = tmp_path / "gone.git"
+    bare.rename(gone)
+
+    result = await run_task(
+        MediaUpload(), run_config, repo, logical="media", where="description verified"
+    )
+
+    assert result.run.failed == 1
+    assert result.outcomes[0].code == "push_failed"
+    assert result.outcomes[0].retryable is True
+    saved = (await repo.rows("media", "id=m_push.png"))[0]
+    assert saved["status"] == "fetched"
