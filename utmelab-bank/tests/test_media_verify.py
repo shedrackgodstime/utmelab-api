@@ -16,7 +16,7 @@ from utmelab_bank.model.base import now_iso
 from utmelab_bank.store.client import Store
 from utmelab_bank.store.repository import Repository
 from utmelab_bank.task import run_task
-from utmelab_bank.task.ai.media_verify import MediaVerify
+from utmelab_bank.task.ai.media_verify import MediaVerify, witness_models
 from utmelab_bank.task.ai.media_verify_schema import (
     MediaVerifyOutput,
     MediaVerifyResult,
@@ -63,10 +63,10 @@ WRONG = _reply(
 
 
 class _FakeProvider:
-    def __init__(self, reply: str) -> None:
+    def __init__(self, reply: str, name: str = "fake") -> None:
         self.reply = reply
         self.image: str | None = None
-        self.name = "fake"
+        self.name = name
 
     async def complete(self, _prompt: str, *, image: str | None = None) -> str:
         self.image = image
@@ -269,3 +269,122 @@ async def test_task_skips_a_row_without_a_description(store: Store, config: Conf
 
     assert result.run.skipped == 1
     assert result.run.failed == 0
+
+
+# ---------------------------------------------------------------------------
+# Witnesses: one model is not an independent check
+# ---------------------------------------------------------------------------
+
+PRIMARY = "opencode/space-bunny-free"
+SECOND = "opencode/second-witness"
+
+
+def _two(config: Config) -> Config:
+    return config.model_copy(update={"ai_image_second_model": SECOND})
+
+
+async def _run_two(
+    store: Store,
+    config: Config,
+    monkeypatch: Any,
+    replies: dict[str, str],
+) -> Any:
+    import utmelab_bank.task.ai.media_verify as module
+
+    fakes = {model: _FakeProvider(reply, name=model) for model, reply in replies.items()}
+    monkeypatch.setattr(module, "build_provider", lambda _c, _n, *, model=None: fakes[model])
+    repo = Repository(store, lane="work")
+    row = _media_row()
+    await repo.insert_many("media", [row])
+    blob = config.repo.media_repo / row["blob_path"]
+    blob.parent.mkdir(parents=True, exist_ok=True)
+    blob.write_bytes(b"fig-bytes")
+    result = await run_task(MediaVerify(), config, repo, logical="media")
+    return repo, row, result, fakes
+
+
+def test_a_second_different_model_is_a_witness(config: Config) -> None:
+    assert witness_models(_two(config)) == [PRIMARY, SECOND]
+
+
+def test_the_same_model_twice_is_not_a_witness(config: Config) -> None:
+    same = config.model_copy(update={"ai_image_second_model": PRIMARY})
+    assert witness_models(same) == [PRIMARY]
+
+
+async def test_two_witnesses_must_both_pass(store: Store, config: Config, monkeypatch: Any) -> None:
+    repo, row, result, _ = await _run_two(
+        store, _two(config), monkeypatch, {PRIMARY: PASS, SECOND: PASS}
+    )
+
+    assert result.run.succeeded == 1
+    updated = (await repo.rows("media", f"id={row['id']}"))[0]
+    assert updated["description_verdict"] == "pass"
+    assert updated["status"] == "described"
+
+    verifications = await repo.rows("verifications", f"question_id={row['question_id']}")
+    assert len(verifications) == 2
+    assert {v["verifier"] for v in verifications} == {PRIMARY, SECOND}
+
+
+async def test_a_dissenting_witness_fails_the_description(
+    store: Store, config: Config, monkeypatch: Any
+) -> None:
+    repo, row, result, _ = await _run_two(
+        store, _two(config), monkeypatch, {PRIMARY: PASS, SECOND: WRONG}
+    )
+
+    assert result.run.succeeded == 1
+    updated = (await repo.rows("media", f"id={row['id']}"))[0]
+    assert updated["description_verdict"] == "fail"
+    assert updated["status"] == "needs_review"
+
+    verifications = await repo.rows("verifications", f"question_id={row['question_id']}")
+    verdicts = {v["verifier"]: v["verdict"] for v in verifications}
+    assert verdicts == {PRIMARY: "pass", SECOND: "fail"}
+
+
+async def test_a_witness_that_cannot_answer_is_not_a_pass(
+    store: Store, config: Config, monkeypatch: Any
+) -> None:
+    import utmelab_bank.task.ai.media_verify as module
+
+    class _Broken(_FakeProvider):
+        async def complete(self, _prompt: str, *, image: str | None = None) -> str:
+            raise OSError("second witness down")
+
+    fake = {PRIMARY: _FakeProvider(PASS, name=PRIMARY), SECOND: _Broken(PASS, name=SECOND)}
+    monkeypatch.setattr(module, "build_provider", lambda _c, _n, *, model=None: fake[model])
+
+    repo = Repository(store, lane="work")
+    row = _media_row()
+    await repo.insert_many("media", [row])
+    blob = config.repo.media_repo / row["blob_path"]
+    blob.parent.mkdir(parents=True, exist_ok=True)
+    blob.write_bytes(b"fig-bytes")
+
+    result = await run_task(MediaVerify(), _two(config), repo, logical="media")
+
+    assert result.run.failed == 1
+    assert await repo.rows("verifications", f"question_id={row['question_id']}") == []
+    updated = (await repo.rows("media", f"id={row['id']}"))[0]
+    assert updated["description_verdict"] is None
+
+
+async def test_two_witnesses_make_the_check_idempotent(
+    store: Store, config: Config, monkeypatch: Any
+) -> None:
+    repo, row, _result, _fakes = await _run_two(
+        store, _two(config), monkeypatch, {PRIMARY: PASS, SECOND: PASS}
+    )
+
+    # Rewriting the description clears the verdict, as ai-describe does.
+    await repo.update(
+        "media",
+        row["id"],
+        {"description_verdict": None, "description_verified_at": None},
+    )
+
+    second = await run_task(MediaVerify(), _two(config), repo, logical="media")
+    assert second.run.skipped == 1
+    assert second.run.failed == 0

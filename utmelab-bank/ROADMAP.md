@@ -228,6 +228,10 @@ the previous one is green.
   `/media/...`, the 6 failed descriptions keep their source url and stay in the
   review queue. 12/12 content hashes preserved (the hash is an identity, not a
   checksum), and a second pass wrote and pushed 0.
+  Two witnesses: when `UTMELAB_BANK_AI_IMAGE_SECOND_MODEL` names a different
+  image model, a description passes only if both models pass it. A missing or
+  dissenting witness is a fail, and the same model named twice is ignored
+  because it is not an independent check.
 - **R8. Compose a `goal`.** *The `media` preset is proven.*
   Wire the proven tasks into one named pass.
   *Green:* `goal media` runs `media-discover` -> `media-fetch` -> `ai-describe`

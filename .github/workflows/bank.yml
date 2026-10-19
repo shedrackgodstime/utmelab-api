@@ -79,6 +79,9 @@ jobs:
       UTMELAB_BANK_MEDIA_UPLOAD_ENABLED: ${{ inputs.upload && '1' || '' }}
       UTMELAB_BANK_AI_MODEL: ${{ vars.UTMELAB_BANK_AI_MODEL || 'opencode/space-bunny-free' }}
       UTMELAB_BANK_AI_IMAGE_MODEL: ${{ vars.UTMELAB_BANK_AI_IMAGE_MODEL }}
+      # When set to a different image model, a description passes only if both
+      # models pass it. Unset keeps the single-witness behavior.
+      UTMELAB_BANK_AI_IMAGE_SECOND_MODEL: ${{ vars.UTMELAB_BANK_AI_IMAGE_SECOND_MODEL }}
       GITLAB_FINE_GRAINED_ACCESS_TOKEN: ${{ secrets.GITLAB_FINE_GRAINED_ACCESS_TOKEN }}
     steps:
       - uses: actions/checkout@v4

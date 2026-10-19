@@ -158,6 +158,11 @@ class Config(BaseModel):
 
     ai_model: str = "opencode/space-bunny-free"
     ai_image_model: str = ""
+    #: A second, different image model. When set, a description is usable only
+    #: when both models pass it. One model twice is not an independent witness,
+    #: so a value equal to ``ai_image_model`` (or ``ai_model`` when that is
+    #: empty) is ignored.
+    ai_image_second_model: str = ""
     ai_concurrency: int = 4
     ai_timeout_secs: int = 180
     ai_max_attempts: int = 3
@@ -336,6 +341,7 @@ def load(
         "media_upload_enabled": env.get("UTMELAB_BANK_MEDIA_UPLOAD_ENABLED") == "1",
         "ai_model": env_str("AI_MODEL", "opencode/space-bunny-free"),
         "ai_image_model": env_str("AI_IMAGE_MODEL", ""),
+        "ai_image_second_model": env_str("AI_IMAGE_SECOND_MODEL", ""),
         "ai_concurrency": env_int("AI_CONCURRENCY", 4),
         "ai_timeout_secs": env_int("AI_TIMEOUT_SECS", 180),
         "ai_max_attempts": env_int("AI_MAX_ATTEMPTS", 3),
