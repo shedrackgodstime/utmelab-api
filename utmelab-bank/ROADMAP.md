@@ -312,8 +312,14 @@ blocks on the CDN.
 `--year`. Nothing chooses the next target, and nothing records that a target
 is done. That is the missing piece for an unattended night.
 
-The unit is `(source, exam, subject, year)`. A `scrape_targets` table is the
-plan of record:
+The bank's job is content, not papers. A paper is something the serving layer
+assembles from whatever the bank holds. The bank should hold as many valid
+questions as the source will give, spread across the syllabus, and it should
+keep going until the source is exhausted. So there is no per-subject paper
+quota and no `papers` setting. The objective is coverage and volume.
+
+The unit is `(source, exam, subject, year)`, because that is what the source
+serves. A `scrape_targets` table is the plan of record:
 
 | column | meaning |
 |---|---|
@@ -325,17 +331,20 @@ plan of record:
 
 The ranking, recomputed each time a target finishes:
 
-1. For each subject, `target_count = objective_paper_questions * papers`, read
-   from the catalog (`Subject.is_compulsory`, `objective_paper_questions`).
-2. `need = max(0, target_count - held_count)`, where `held_count` counts the
-   subject's work rows.
-3. Pick the subject with the largest `need` that is not exhausted.
-4. Within it, pick the newest year with status `pending` or a retryable
-   `failed`.
-5. Fetch it fully. `api_last_page` says when the listing ends. If the first
+1. For each subject, read its catalog size: the number of subtopics, and the
+   sum of topic weights when they are present. That is the best available
+   proxy for how much content the subject needs before its syllabus is
+   covered.
+2. `density = held_count / catalog_size`. Pick the subject with the lowest
+   density, so a large syllabus is not starved by a small one. A subject with
+   no catalog rows uses a size of one rather than dividing by zero.
+3. Within it, pick the newest year with status `pending` or a retryable
+   `failed`. Newer papers are more likely to match the current syllabus.
+4. Fetch it fully. `api_last_page` says when the listing ends. If the first
    page is empty, mark `empty`. If a full pass adds zero new rows, mark
    `drained`.
-6. Recompute and continue.
+5. Recompute and continue. There is no "enough" number. The queue empties only
+   when every target is drained or empty, or when a budget stops the run.
 
 This answers the three questions directly:
 
@@ -348,7 +357,7 @@ This answers the three questions directly:
   target is not fetched again, so we do not spend the requests at all.
 - **When to move on.** A drained or empty target leaves the queue. When every
   year of a subject is drained or empty, the subject is `exhausted` for this
-  source. The next pick is the top of the deficit ranking, so the runner moves
+  source. The next pick is the top of the density ranking, so the runner moves
   to another subject without a hard coded order.
 - **What stops a dead subject from hogging the queue.** `dry_streak`. After
   `K` consecutive empty or zero-new passes, the subject is set aside for the
@@ -358,13 +367,15 @@ Two budgets keep a run bounded: minutes and requests. The runner stops
 cleanly, marks the current target `active`, and the next run continues from
 the same plan.
 
-The default for the first night: JAMB first, compulsory subjects at the front,
-newest year first, `papers = 2`, a 50 minute budget, then `intake`, `gate`,
-`dedupe`. Enrich runs as its own pass afterwards, on the rows ingest landed.
+The default for the first night: JAMB, every mapped subject, newest year
+first, a 50 minute budget, then `intake`, `gate`, `dedupe`. Enrich runs as its
+own pass afterwards, on the rows ingest landed.
 
 A second order objective comes later: once `ai-tag` has assigned
-`subtopic_id`, rank the gaps by catalog subtopic rather than by subject, so the
-bank covers the syllabus rather than just the subject totals.
+`subtopic_id`, compute the density per subtopic rather than per subject. A
+subtopic with zero questions is the strongest gap, and the planner prefers the
+subject that holds it. That is how the bank converges on the syllabus rather
+than on raw totals.
 
 ## How it runs
 
