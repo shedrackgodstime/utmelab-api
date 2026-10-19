@@ -172,7 +172,7 @@ databases and the media credential. The intended mapping:
 | bank own DB token | `TURSO_UTMELAB_BANK_DB_TOKEN` | every lane read/write |
 | production read url | `TURSO_DB_URL` | `catalog`, read-only joins |
 | production read token | `TURSO_DB_TOKEN_READONLY` (required, read-only) | `catalog` |
-| media push token | `GITLAB_FINE_GRAINED_ACCESS_TOKEN` | media upload |
+| media push token | `GITLAB_ACCESS_TOKEN` | media upload |
 | media remote | `UTMELAB_BANK_MEDIA_REMOTE` | media clone origin |
 | model | `UTMELAB_BANK_AI_MODEL` | opencode model id |
 
