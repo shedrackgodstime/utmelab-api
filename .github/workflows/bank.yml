@@ -150,46 +150,69 @@ jobs:
           AI: ${{ inputs.ai }}
           MEDIA: ${{ inputs.media }}
         run: |
-          set -euo pipefail
+          # One row's failure is a row to retry, not a reason to abandon the
+          # rest of the paper. Every step runs; the job is red at the end if
+          # any of them reported a failure. `set +e` undoes the runner's
+          # `bash -e`, so the `run` helper can see the status.
+          set +e
+          set -uo pipefail
+          failures=()
+          run() {
+            echo "+ $*"
+            "$@"
+            local status=$?
+            if [ "$status" -ne 0 ]; then
+              failures+=("$*")
+            fi
+            return "$status"
+          }
+
           limit_args=()
           if [ -n "${LIMIT:-}" ]; then
             limit_args=(--limit "$LIMIT")
           fi
 
-          utmelab-bank scrape \
+          run utmelab-bank scrape \
             --source "$SOURCE" --exam "$EXAM" --subject "$SUBJECT" --year "$YEAR" \
             "${limit_args[@]}"
-          utmelab-bank task intake "${limit_args[@]}"
-          utmelab-bank task gate "${limit_args[@]}"
-          utmelab-bank task dedupe "${limit_args[@]}"
+          run utmelab-bank task intake "${limit_args[@]}"
+          run utmelab-bank task gate "${limit_args[@]}"
+          run utmelab-bank task dedupe "${limit_args[@]}"
 
           catalogued=0
           if [ -n "${TURSO_DB_URL:-}" ] \
             && { [ -n "${TURSO_DB_TOKEN_READONLY:-}" ] || [ -n "${TURSO_DB_TOKEN:-}" ]; }; then
-            utmelab-bank catalog
-            catalogued=1
+            if run utmelab-bank catalog; then
+              catalogued=1
+            fi
           else
             echo "no production read credentials; skipping catalog"
           fi
 
           if [ "$AI" = "true" ]; then
             if [ "$catalogued" = "1" ]; then
-              utmelab-bank task ai-tag --where "no subtopic" "${limit_args[@]}"
+              run utmelab-bank task ai-tag --where "no subtopic" "${limit_args[@]}"
             else
               echo "no catalogue; skipping ai-tag"
             fi
-            utmelab-bank task ai-explain --where "no explanation" "${limit_args[@]}"
-            utmelab-bank task ai-verify --where "unverified" "${limit_args[@]}"
+            run utmelab-bank task ai-explain --where "no explanation" "${limit_args[@]}"
+            run utmelab-bank task ai-verify --where "unverified" "${limit_args[@]}"
           fi
 
           if [ "$MEDIA" = "true" ] && [ "$AI" = "true" ]; then
             if [ -z "${UTMELAB_BANK_MEDIA_REMOTE:-}" ]; then
               echo "::error::set the UTMELAB_BANK_MEDIA_REMOTE repository secret"
-              exit 1
+              failures+=("media: no remote")
+            else
+              run utmelab-bank goal media "${limit_args[@]}"
             fi
-            utmelab-bank goal media "${limit_args[@]}"
           elif [ "$MEDIA" = "true" ]; then
             echo "media requested without ai; describing a figure needs a model"
+          fi
+
+          if [ "${#failures[@]}" -ne 0 ]; then
+            echo "::error::${#failures[@]} step(s) failed: ${failures[*]}"
+            exit 1
           fi
 
       - name: Media
