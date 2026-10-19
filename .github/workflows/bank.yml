@@ -63,7 +63,7 @@ jobs:
   fill:
     name: Fill the bank
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 120
     defaults:
       run:
         working-directory: utmelab-bank
