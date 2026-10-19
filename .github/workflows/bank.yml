@@ -68,12 +68,14 @@ jobs:
       run:
         working-directory: utmelab-bank
     env:
-      TURSO_UTMELAB_BANK_DB_URL: ${{ secrets.TURSO_UTMELAB_BANK_DB_URL }}
-      TURSO_UTMELAB_BANK_DB_TOKEN: ${{ secrets.TURSO_UTMELAB_BANK_DB_TOKEN }}
+      TURSO_UTMELAB_BANK_DB_URL: ${{ secrets.TURSO_UTMELAB_BANK_DB_URL || secrets.TURSO_PIPELINE_DB_URL }}
+      TURSO_UTMELAB_BANK_DB_TOKEN: ${{ secrets.TURSO_UTMELAB_BANK_DB_TOKEN || secrets.TURSO_PIPELINE_DB_TOKEN }}
       TURSO_DB_URL: ${{ secrets.TURSO_DB_URL || secrets.TURSO_PROD_DB_URL }}
       TURSO_DB_TOKEN_READONLY: ${{ secrets.TURSO_DB_TOKEN_READONLY || secrets.TURSO_PROD_DB_TOKEN }}
       TURSO_DB_TOKEN: ${{ secrets.TURSO_DB_TOKEN || secrets.TURSO_PROD_DB_TOKEN }}
-      UTMELAB_BANK_MEDIA_REMOTE: ${{ secrets.UTMELAB_BANK_MEDIA_REMOTE }}
+      # The media project is a private GitLab repository; the url is not a
+      # credential. The token is, and it stays in a repository secret.
+      UTMELAB_BANK_MEDIA_REMOTE: ${{ secrets.UTMELAB_BANK_MEDIA_REMOTE || 'https://gitlab.com/shedrackgodstime/utmelab-bank.git' }}
       UTMELAB_BANK_MEDIA_UPLOAD_ENABLED: ${{ inputs.upload && '1' || '' }}
       UTMELAB_BANK_AI_MODEL: ${{ vars.UTMELAB_BANK_AI_MODEL || 'opencode/space-bunny-free' }}
       UTMELAB_BANK_AI_IMAGE_MODEL: ${{ vars.UTMELAB_BANK_AI_IMAGE_MODEL }}
