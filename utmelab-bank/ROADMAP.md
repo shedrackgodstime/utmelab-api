@@ -203,9 +203,11 @@ the previous one is green.
 - **R3. CI: a `bank` job.**
   `ruff format --check`, `ruff check`, `mypy`, `pytest`, on push and pull
   request, alongside the Rust gate.
-  *Green:* the job is green on GitHub. The same four commands are green locally:
-  389 passed (1 live test deselected), coverage 80.03%, ruff and mypy clean. The
-  workflow job itself is not added yet.
+  *Green:* the `bank` job lives in `.github/workflows/quality.yml` and is green on
+  GitHub (run 39179491954): format, lint, types, and 402 passed with 1 live test
+  deselected at 80.09% coverage. The same four commands are green locally on the
+  committed tree. The earlier 80.03% figure included an uncommitted test file and
+  is not the gate's number.
 - **R4. Prove dedupe.**
   Feed it a real cross-source duplicate and a same-source whitespace variant.
   *Green:* the duplicate is refused and the reason is recorded.
