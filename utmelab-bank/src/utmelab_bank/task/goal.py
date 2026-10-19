@@ -59,6 +59,7 @@ PRESETS: dict[str, Preset] = {
             Step(task="media-fetch", where="no blob", logical="media"),
             Step(task="ai-describe", where="no description", logical="media"),
             Step(task="media-verify", where="description unverified", logical="media"),
+            Step(task="media-upload", where="description verified", logical="media"),
         )
     ),
 }

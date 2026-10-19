@@ -55,11 +55,13 @@ def test_media_preset_checks_every_description_after_it_is_written() -> None:
         "media-fetch",
         "ai-describe",
         "media-verify",
+        "media-upload",
     ]
     assert steps[0].logical == "questions"
     assert steps[0].where == "has images"
     assert all(step.logical == "media" for step in steps[1:])
-    assert steps[-1].where == "description unverified"
+    assert steps[-2].where == "description unverified"
+    assert steps[-1].where == "description verified"
 
 
 async def test_goal_step_where_override(store: Store, config: Config) -> None:

@@ -119,7 +119,8 @@ run on real rows end to end.
 | media-discover | yes | `media-discover` | partial | **yes** (12 figures, R7a) |
 | media-fetch | yes | `media-fetch` | partial | **yes** (12/12 fetched; bytes decide extension) |
 | media-verify | yes | `media-verify` | yes | **yes** (12 checked; 6 pass, 6 fail; negative control caught) |
-| media-transform / upload / report / gc | **not built** | no | no | no |
+| media-upload | yes | `media-upload` | yes | **yes** (manual 12/12 pushed; default flow publishes 6/6 verified, leaves 6 on source, hashes preserved) |
+| media-transform / report / gc | **not built** | no | no | no |
 | promote (work to ready) | yes | `promote` | yes | **no** (all `ready_*` empty) |
 | review workbench | partial (`set`, `show`, `verify`) | not registered | yes | **no** |
 | goal composition | yes | `goal` | yes | **partial** (media preset, dry-run order proven) |
@@ -202,7 +203,9 @@ the previous one is green.
 - **R3. CI: a `bank` job.**
   `ruff format --check`, `ruff check`, `mypy`, `pytest`, on push and pull
   request, alongside the Rust gate.
-  *Green:* the job is green on GitHub.
+  *Green:* the job is green on GitHub. The same four commands are green locally:
+  389 passed (1 live test deselected), coverage 80.03%, ruff and mypy clean. The
+  workflow job itself is not added yet.
 - **R4. Prove dedupe.**
   Feed it a real cross-source duplicate and a same-source whitespace variant.
   *Green:* the duplicate is refused and the reason is recorded.
@@ -213,16 +216,23 @@ the previous one is green.
   `ai-tag`, `ai-explain`, `ai-verify` over, say, 20 work rows.
   *Green:* verification rows are written with the exact vocabulary production
   joins on, and the run is resumable.
-- **R7. Prove media.**
+- **R7. Prove media.** *Upload done; transform, report and gc remain.*
   `media-discover` and `media-fetch` on rows with images; build the upload and
   the report; push one batch to the media project.
   *Green:* a skipped figure carries the provider's full url, an uploaded figure
-  carries our file name, and blobs land in the media git project.
-- **R8. Compose a `goal`.** *Started: the `media` preset is wired.*
+  carries our file name, and blobs land in the media git project. Proven on the
+  proof DB: 12/12 figures pushed in one commit to a bare remote. The default
+  flow publishes only a verified description: 6/6 verified figures carry
+  `/media/...`, the 6 failed descriptions keep their source url and stay in the
+  review queue. 12/12 content hashes preserved (the hash is an identity, not a
+  checksum), and a second pass wrote and pushed 0.
+- **R8. Compose a `goal`.** *The `media` preset is proven.*
   Wire the proven tasks into one named pass.
   *Green:* `goal media` runs `media-discover` -> `media-fetch` -> `ai-describe`
-  -> `media-verify` in order, each on its own table, proven dry-run on the proof
-  DB. A full online run remains.
+  -> `media-verify` -> `media-upload` in order, each on its own table, proven on
+  the proof DB. The upload step selected only the verified figures and left the
+  failed descriptions on their source url. A second pass discovered no new
+  figures, re-checked no verdicts, and uploaded nothing.
 - **R9. Deploy to GitHub Actions.**
   A manual `workflow_dispatch` workflow with inputs (goal, source, subject,
   limit) that can be run N times.

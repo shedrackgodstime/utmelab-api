@@ -233,6 +233,19 @@ class SelectorSet:
         return not self.clause
 
 
+def _terms(expression: str) -> list[str]:
+    """Split on ``and`` without changing the case of a value.
+
+    The previous parser lowercased the whole expression before splitting, which
+    made ``exam=JAMB`` match a stored ``jamb`` by accident and made
+    ``id=m_0Cf...png`` impossible to select: the id was lowered before it was
+    bound. Names are normalised; values are the caller's exact bytes.
+    """
+    return [
+        term for term in re.split(r"\s+and\s+", expression.strip(), flags=re.IGNORECASE) if term
+    ]
+
+
 def resolve(expression: str, *, table: str | None = None) -> SelectorSet:
     """Turn ``'no description'`` or ``'has images and no description'`` into sql.
 
@@ -246,15 +259,14 @@ def resolve(expression: str, *, table: str | None = None) -> SelectorSet:
     bound as parameters, so a caller's string never becomes a column or a
     literal.
     """
-    text = expression.strip().lower()
-    if not text or text == "all":
+    if not expression.strip() or expression.strip().casefold() == "all":
         return SelectorSet(clause="", params={})
 
     prefix = f"{table}." if table else ""
     fragments: list[str] = []
     params: dict[str, Any] = {}
 
-    for index, term in enumerate(t for t in (t.strip() for t in text.split(" and ")) if t):
+    for index, term in enumerate(_terms(expression)):
         name, _, raw_value = term.partition("=")
         selector = describe(normalise(name))
         value: Any = raw_value.strip() if raw_value else None
@@ -278,8 +290,8 @@ def resolve(expression: str, *, table: str | None = None) -> SelectorSet:
 def explain(expression: str) -> str:
     """A human sentence for a selector, so ``--explain`` can answer plainly."""
     parts: list[str] = []
-    for term in (t.strip() for t in expression.strip().lower().split(" and ")):
-        if not term or term == "all":
+    for term in _terms(expression):
+        if not term or term.casefold() == "all":
             continue
         name = normalise(term.partition("=")[0])
         selector = describe(name)
@@ -308,8 +320,13 @@ register(
     Selector(
         "exam",
         "rows for one exam, e.g. exam=jamb",
-        lambda _r, a, p: (f'{p}"exam" = :sel_value', {"sel_value": a[0]}),
-        matches=_equals("exam"),
+        lambda _r, a, p: (
+            f'LOWER({p}"exam") = :sel_value',
+            {"sel_value": str(a[0]).strip().casefold()},
+        ),
+        matches=lambda r, v: (
+            str(r.get("exam") or "").strip().casefold() == str(v).strip().casefold()
+        ),
     )
 )
 register(
@@ -444,9 +461,15 @@ register(
     Selector(
         "needs review",
         "media rows waiting for a human after a failed check",
-        lambda _r, _a, p: (f"{p}\"status\" = 'needs_review'", {}),
-        fills=("status",),
-        matches=lambda r, _v: str(r.get("status") or "") == "needs_review",
+        lambda _r, _a, p: (
+            f"({p}\"status\" = 'needs_review' OR {p}\"description_verdict\" = 'fail')",
+            {},
+        ),
+        fills=("status", "description_verdict"),
+        matches=lambda r, _v: (
+            str(r.get("status") or "") == "needs_review"
+            or str(r.get("description_verdict") or "") == "fail"
+        ),
     )
 )
 register(
@@ -467,6 +490,15 @@ register(
         lambda _r, _a, p: (f'{p}"blob_path" IS NULL', {}),
         fills=("blob_path",),
         matches=_absent("blob_path"),
+    )
+)
+register(
+    Selector(
+        "has blob",
+        "media rows whose bytes are in the clone",
+        lambda _r, _a, p: (f'({p}"blob_path" IS NOT NULL AND {p}"blob_path" <> \'\')', {}),
+        fills=("blob_path",),
+        matches=lambda r, _v: bool(r.get("blob_path")),
     )
 )
 register(

@@ -53,7 +53,7 @@ async def test_status_counts_rows_and_media_queues(
         {
             "description": "a wrong description",
             "description_verdict": "fail",
-            "status": "needs_review",
+            "status": "uploaded",
         },
     )
 
@@ -61,7 +61,7 @@ async def test_status_counts_rows_and_media_queues(
 
     assert report.counts["work"]["questions"] == 1
     assert report.counts["work"]["media"] == 2
-    assert report.media_status == {"described": 1, "needs_review": 1}
+    assert report.media_status == {"described": 1, "uploaded": 1}
     assert report.media_verdicts == {"fail": 1, "pass": 1}
     assert report.media["description unchecked"] == 0
     assert report.media["description failed"] == 1

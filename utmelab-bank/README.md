@@ -194,10 +194,12 @@ next run finds it.
 Content addressing and git agree: a blob already in history is never re-sent, so
 a batch of 400 figures where 380 already exist costs almost nothing.
 
-**The media url stored in the bank is ours, not the provider's.** A question
-carries `/media/ab/abcd....png`, never a gitlab url. The project that serves it
-is a configuration detail, so moving off git later is a config change and not a
-data migration. The same reasoning applies to every other outbound url.
+**The media url stored in the bank is ours, not the provider's.** A verified
+figure's question carries `/media/ab/abcd....png`, never a gitlab url. A figure
+whose description failed the check keeps the provider's full url, so the bank
+never publishes a copy it cannot explain. The project that serves our copy is a
+configuration detail, so moving off git later is a config change and not a data
+migration. The same reasoning applies to every other outbound url.
 
 Because the project is private, raw urls are not readable without a credential.
 The API serves the media and keeps the token server-side. The bank never holds
@@ -224,9 +226,10 @@ utmelab-bank media-report
 utmelab-bank media-upload-probe --count 8      # real sizes, real pack, no push
 ```
 
-`media_upload` is written but disabled. It will not push unless explicitly
-enabled, and the probe exercises everything up to the push. Enabling it needs
-its own session, not a line in a config file.
+`media_upload` will not push unless explicitly enabled, and the probe exercises
+everything up to the push. It publishes one batch per pass and amends the
+single commit in place. Enabling it needs its own session, not a line in a
+config file.
 
 ## Layout
 

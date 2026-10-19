@@ -138,6 +138,19 @@ def test_a_caller_string_never_becomes_sql() -> None:
     assert "drop table" in str(resolved.params.values()).lower()
 
 
+def test_a_selector_keeps_the_case_of_an_id() -> None:
+    """Ids are case-sensitive. Lowercasing the expression lost every one with a capital."""
+    resolved = resolve("id=m_0CfjaNms40h8oE6oAhz3rzIyXO6ZOesEyTj4DhEV.png")
+    assert resolved.params == {"sel_0_0": "m_0CfjaNms40h8oE6oAhz3rzIyXO6ZOesEyTj4DhEV.png"}
+
+
+def test_exam_matching_ignores_case() -> None:
+    """The bank writes ``jamb``; production stored ``JAMB``. Both are the same exam."""
+    resolved = resolve("exam=JAMB")
+    assert "lower" in resolved.clause.lower()
+    assert resolved.params == {"sel_0_0": "jamb"}
+
+
 def test_explain_names_what_would_be_picked() -> None:
     assert "description" in explain("no description")
     assert "and" in explain("gated and no subtopic")

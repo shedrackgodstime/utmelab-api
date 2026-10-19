@@ -7,6 +7,7 @@ hold it to that.
 
 from __future__ import annotations
 
+import asyncio
 import json
 import subprocess
 from pathlib import Path
@@ -473,3 +474,163 @@ def test_media_status_values_are_the_documented_set() -> None:
         "uploaded",
         "failed",
     }
+
+
+# ---------------------------------------------------------------------------
+# Commands that own a database
+# ---------------------------------------------------------------------------
+
+
+async def _seed(db: Path, row: dict[str, object]) -> None:
+    from utmelab_bank.store.client import Store
+    from utmelab_bank.store.repository import Repository
+    from utmelab_bank.store.schema import ensure_schema
+
+    store = await Store.open(f"sqlite:{db}")
+    try:
+        await ensure_schema(store)
+        await Repository(store, lane="work").insert_many("questions", [row])
+    finally:
+        await store.aclose()
+
+
+def test_task_runs_one_task_over_the_lane(
+    runner: CliRunner,
+    tmp_path: Path,
+    question_row: dict[str, object],
+) -> None:
+    db = tmp_path / "bank.db"
+    asyncio.run(_seed(db, question_row))
+
+    result = runner.invoke(cli, ["task", "gate", "--local-database", str(db)])
+
+    assert result.exit_code == 0
+    assert "gate on work" in result.output
+    assert "1 ok" in result.output
+
+
+def test_task_can_run_against_the_json_sink(runner: CliRunner) -> None:
+    """The null store exists so the same task code runs with no database."""
+    result = runner.invoke(cli, ["task", "gate", "--sink", "json"])
+
+    assert result.exit_code == 0
+    assert "gate on work: 0 ok" in result.output
+
+
+def test_goal_runs_named_steps_in_the_order_given(
+    runner: CliRunner,
+    tmp_path: Path,
+    question_row: dict[str, object],
+) -> None:
+    db = tmp_path / "bank.db"
+    asyncio.run(_seed(db, question_row))
+
+    result = runner.invoke(
+        cli,
+        [
+            "goal",
+            "custom",
+            "--task",
+            "gate",
+            "--task",
+            "dedupe",
+            "--local-database",
+            str(db),
+        ],
+    )
+
+    assert result.exit_code == 0
+    assert result.output.index("gate on work") < result.output.index("dedupe on work")
+
+
+def test_a_task_spec_carries_its_own_selector(
+    runner: CliRunner,
+    tmp_path: Path,
+    question_row: dict[str, object],
+) -> None:
+    db = tmp_path / "bank.db"
+    asyncio.run(_seed(db, question_row))
+
+    result = runner.invoke(
+        cli,
+        ["goal", "custom", "--task", "gate:all", "--local-database", str(db)],
+    )
+
+    assert result.exit_code == 0
+    assert "gate on work" in result.output
+
+
+def test_a_goal_name_that_is_not_a_preset_says_what_is_known(runner: CliRunner) -> None:
+    result = runner.invoke(cli, ["goal", "nope"])
+
+    assert result.exit_code == 1
+    assert "known goal name" in result.output
+    assert "media" in result.output
+
+
+def test_the_media_preset_runs_all_five_steps_dry(
+    runner: CliRunner,
+    tmp_path: Path,
+) -> None:
+    db = tmp_path / "bank.db"
+    result = runner.invoke(
+        cli,
+        ["goal", "media", "--dry-run", "--local-database", str(db)],
+    )
+
+    assert result.exit_code == 0
+    for step in (
+        "media-discover",
+        "media-fetch",
+        "ai-describe",
+        "media-verify",
+        "media-upload",
+    ):
+        assert step in result.output
+
+
+def test_status_renders_and_serialises_the_lane(
+    runner: CliRunner,
+    tmp_path: Path,
+    question_row: dict[str, object],
+) -> None:
+    db = tmp_path / "bank.db"
+    asyncio.run(_seed(db, question_row))
+
+    text = runner.invoke(cli, ["status", "--local-database", str(db)])
+    assert text.exit_code == 0
+    assert "questions" in text.output
+
+    serialised = runner.invoke(cli, ["status", "--json", "--local-database", str(db)])
+    assert serialised.exit_code == 0
+    payload = json.loads(serialised.output)
+    assert payload["counts"]["work"]["questions"] == 1
+
+
+def test_status_refuses_a_sink_with_no_lanes(runner: CliRunner) -> None:
+    result = runner.invoke(cli, ["status", "--sink", "json"])
+
+    assert result.exit_code == 2
+    assert "json sink holds no lanes" in result.output
+
+
+def test_contract_prints_what_the_api_expects(runner: CliRunner, tmp_path: Path) -> None:
+    """A scratch bank is missing the api-owned tables; the report must say so."""
+    db = tmp_path / "bank.db"
+    result = runner.invoke(cli, ["contract", "--local-database", str(db)])
+
+    assert "contract version" in result.output
+    assert result.exit_code in (0, 1)
+    assert "missing table" in result.output or "shapes agree" in result.output
+
+
+def test_main_returns_the_command_exit_code(
+    tmp_path: Path,
+    question_row: dict[str, object],
+) -> None:
+    db = tmp_path / "bank.db"
+    asyncio.run(_seed(db, question_row))
+
+    assert main(["task", "gate", "--local-database", str(db)]) == 0
+    assert main(["nope"]) == 2
+    assert main(["explain", "not a selector"]) == 1

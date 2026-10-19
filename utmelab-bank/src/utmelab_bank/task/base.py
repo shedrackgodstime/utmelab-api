@@ -81,6 +81,12 @@ class TaskContext:
     run: Run
     source_name: str = ""
     dry_run: bool = False
+    #: The selector, logical table and limit the run was asked for. A batch task
+    #: that does its own query in ``collect`` needs them, or ``--where`` and
+    #: ``--limit`` would be silently ignored just for that task.
+    where: str = "all"
+    logical: str = "questions"
+    limit: int | None = None
     #: What each row is missing, when a task refused it for an unmet
     #: requirement. Keyed by row id, so one row's missing step does not get
     #: attributed to the next one.
@@ -270,7 +276,16 @@ async def run_task(
         selector=where,
         sink=config.sink,
     )
-    ctx = TaskContext(config=config, repo=repo, run=run, source_name=source, dry_run=dry_run)
+    ctx = TaskContext(
+        config=config,
+        repo=repo,
+        run=run,
+        source_name=source,
+        dry_run=dry_run,
+        where=where,
+        logical=logical,
+        limit=limit,
+    )
 
     await repo.open_run(run)
     outcomes: list[RowOutcome] = []
@@ -283,6 +298,7 @@ async def run_task(
 
         if not task.iterates_rows:
             finished = _finish(run, outcomes)
+            await repo.record_outcomes(run.id, [(o.row_id, o.state, o.code) for o in outcomes])
             await repo.close_run(finished)
             return TaskResult(run=finished, outcomes=tuple(outcomes))
 
