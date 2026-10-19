@@ -73,9 +73,12 @@ jobs:
       # silently point the bank at some other database.
       TURSO_UTMELAB_BANK_DB_URL: ${{ secrets.TURSO_UTMELAB_BANK_DB_URL }}
       TURSO_UTMELAB_BANK_DB_TOKEN: ${{ secrets.TURSO_UTMELAB_BANK_DB_TOKEN }}
-      TURSO_DB_URL: ${{ secrets.TURSO_DB_URL || secrets.TURSO_PROD_DB_URL }}
-      TURSO_DB_TOKEN_READONLY: ${{ secrets.TURSO_DB_TOKEN_READONLY || secrets.TURSO_PROD_DB_TOKEN }}
-      TURSO_DB_TOKEN: ${{ secrets.TURSO_DB_TOKEN || secrets.TURSO_PROD_DB_TOKEN }}
+      # Production is read from here and only here, with a credential that is
+      # itself read-only. The bank's own store can never be production, and a
+      # write is refused by the credential even if the store's read-only guard
+      # were bypassed. No full-access production token is present in this job.
+      TURSO_DB_URL: ${{ secrets.TURSO_DB_URL }}
+      TURSO_DB_TOKEN_READONLY: ${{ secrets.TURSO_DB_TOKEN_READONLY }}
       # The media project is a private GitLab repository; the url is not a
       # credential. The token is, and it stays in a repository secret.
       UTMELAB_BANK_MEDIA_REMOTE: ${{ secrets.UTMELAB_BANK_MEDIA_REMOTE || 'https://gitlab.com/shedrackgodstime/utmelab-bank.git' }}
@@ -192,8 +195,7 @@ jobs:
           run utmelab-bank task dedupe "${limit_args[@]}"
 
           catalogued=0
-          if [ -n "${TURSO_DB_URL:-}" ] \
-            && { [ -n "${TURSO_DB_TOKEN_READONLY:-}" ] || [ -n "${TURSO_DB_TOKEN:-}" ]; }; then
+          if [ -n "${TURSO_DB_URL:-}" ] && [ -n "${TURSO_DB_TOKEN_READONLY:-}" ]; then
             if run utmelab-bank catalog; then
               catalogued=1
             fi

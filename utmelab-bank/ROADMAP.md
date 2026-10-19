@@ -169,15 +169,18 @@ databases and the media credential. The intended mapping:
 | bank own DB url | `TURSO_UTMELAB_BANK_DB_URL` | every lane read/write |
 | bank own DB token | `TURSO_UTMELAB_BANK_DB_TOKEN` | every lane read/write |
 | production read url | `TURSO_DB_URL` | `catalog`, read-only joins |
-| production read token | `TURSO_DB_TOKEN` (prefer a read-only one) | `catalog` |
+| production read token | `TURSO_DB_TOKEN_READONLY` (required, read-only) | `catalog` |
 | media push token | `GITLAB_FINE_GRAINED_ACCESS_TOKEN` | media upload |
 | media remote | `UTMELAB_BANK_MEDIA_REMOTE` | media clone origin |
 | model | `UTMELAB_BANK_AI_MODEL` | opencode model id |
 
 For local runs the `.env` is read from `utmelab-bank/.env`. On GitHub Actions
 the same names come from repository secrets, so the code path is identical and
-`.env` is simply absent. Production tokens read-only; the bank holds no write
-credential for production.
+`.env` is simply absent. Production is opened read-only, and the production
+credential itself is read-only (`a: 'ro'` in the Turso token), so a write is
+refused by the credential even if the store's guard were bypassed. The bank job
+is given no full-access production token, and if the read-only credential is
+missing `catalog` is skipped rather than run against production with a writer.
 
 ## Roadmap
 

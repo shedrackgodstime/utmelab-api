@@ -57,6 +57,10 @@ TARGET_ALIASES: Final[dict[str, Lane]] = {
 #: one ``.env`` and one set of CI secrets serve both the API and the bank. The
 #: bank's own store and the production read store are deliberately separate
 #: names, so the only way the bank writes production is a deliberate edit.
+#:
+#: The production read token has no write-capable fallback: the bank accepts a
+#: read-only credential or none, so a full-access token in the environment can
+#: never be used to open production here.
 FIELD_ENV: Final[dict[str, tuple[str, ...]]] = {
     "database_url": ("UTMELAB_BANK_DATABASE_URL", "TURSO_UTMELAB_BANK_DB_URL"),
     "database_token": ("UTMELAB_BANK_DATABASE_TOKEN", "TURSO_UTMELAB_BANK_DB_TOKEN"),
@@ -64,7 +68,6 @@ FIELD_ENV: Final[dict[str, tuple[str, ...]]] = {
     "prod_database_token": (
         "UTMELAB_BANK_PROD_DATABASE_TOKEN",
         "TURSO_DB_TOKEN_READONLY",
-        "TURSO_DB_TOKEN",
     ),
 }
 

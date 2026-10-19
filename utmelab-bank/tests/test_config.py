@@ -35,12 +35,15 @@ def test_the_production_token_prefers_the_read_only_one(
     assert config.prod_database_token == "read-only"
 
 
-def test_production_falls_back_to_the_only_token_present(
+def test_a_write_capable_production_token_is_ignored(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
-    monkeypatch.setenv("TURSO_DB_TOKEN", "only-one")
+    # A full-access token in the environment must not open production here.
+    monkeypatch.setenv("TURSO_DB_TOKEN", "write-capable")
     config = load(repo=tmp_path)
-    assert config.prod_database_token == "only-one"
+    assert config.prod_database_token == ""
+    with pytest.raises(ConfigError, match="production read database"):
+        config.require_prod()
 
 
 def test_require_prod_refuses_when_nothing_is_configured(tmp_path: Path) -> None:
@@ -53,7 +56,7 @@ def test_the_config_report_never_echoes_a_token(
     monkeypatch: pytest.MonkeyPatch, tmp_path: Path
 ) -> None:
     monkeypatch.setenv("TURSO_UTMELAB_BANK_DB_TOKEN", "sekret-bank")
-    monkeypatch.setenv("TURSO_DB_TOKEN", "sekret-prod")
+    monkeypatch.setenv("TURSO_DB_TOKEN_READONLY", "sekret-prod")
     report = load(repo=tmp_path).source()
     assert report["database_token"] == "env:set"
     assert report["prod_database_token"] == "env:set"
