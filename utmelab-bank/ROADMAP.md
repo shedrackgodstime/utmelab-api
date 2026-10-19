@@ -122,7 +122,7 @@ run on real rows end to end.
 | media-upload | yes | `media-upload` | yes | **yes** (manual 12/12 pushed; default flow publishes 6/6 verified, leaves 6 on source, hashes preserved) |
 | media-transform / report / gc | **not built** | no | no | no |
 | media reachability / emptiness | **not built** | no | no | no |
-| fill planner (target ranking) | **not built** | no | no | no |
+| fill planner (`fill`, `scrape_targets`) | yes | `fill` | yes | **yes** (physics 2025: 21 pages, 104 new, drained; re-run adds 0) |
 | promote (work to ready) | yes | `promote` | yes | **no** (all `ready_*` empty) |
 | review workbench | partial (`set`, `show`, `verify`) | not registered | yes | **no** |
 | goal composition | yes | `goal` | yes | **partial** (media preset, dry-run order proven) |
@@ -324,11 +324,16 @@ serves. A `scrape_targets` table is the plan of record:
 
 | column | meaning |
 |---|---|
-| `exam`, `subject`, `year` | the target, unique together |
-| `status` | `pending`, `active`, `drained`, `empty`, `failed`, `exhausted` |
+| `source`, `exam`, `subject`, `year` | the target, unique together |
+| `subject_order` | the map's own order, so a year walks subjects in map order |
+| `status` | `pending`, `active`, `drained`, `empty`, `failed` |
 | `attempts`, `last_error`, `next_retry_at` | the retry trail |
-| `rows_seen`, `rows_new`, `requests` | what the last pass did |
-| `dry_streak` | consecutive empty or zero-new passes, for the guard |
+| `rows_seen`, `rows_new`, `pages` | what the last pass did |
+| `started_at`, `finished_at`, `created_at`, `updated_at` | the timeline |
+
+`exhausted` is derived, not stored: a subject is exhausted when every one of its
+targets is `drained` or `empty`. The dry streak is a run-local counter, not a
+column, so a dead subject is set aside for the run and tried again next time.
 
 The order, recomputed each time a target finishes:
 
@@ -359,13 +364,13 @@ This answers the three questions directly:
   source. The next pick is the next pending target in the order, so the runner
   moves to another subject or year without a hard coded sequence beyond the
   window.
-- **What stops a dead subject from hogging the queue.** `dry_streak`. After
-  `K` consecutive empty or zero-new passes, the subject is set aside for the
-  run and the next subject is tried.
+- **What stops a dead subject from hogging the queue.** A run-local dry streak.
+  After `K` consecutive empty or zero-new passes, the subject is set aside for
+  the run and the next subject is tried. It is not written off for good.
 
-Two budgets keep a run bounded: minutes and requests. The runner stops
-cleanly, marks the current target `active`, and the next run continues from
-the same plan.
+Two budgets keep a run bounded: minutes and targets. The runner stops cleanly
+between targets. A target that was being fetched when the process died stays
+`active`, and the next run picks it up from the same plan.
 
 The default for the first night: JAMB, every mapped subject, newest year
 first, a 50 minute budget, then `intake`, `gate`, `dedupe`. Enrich runs as its

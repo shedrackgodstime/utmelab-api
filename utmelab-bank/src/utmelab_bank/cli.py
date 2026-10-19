@@ -31,6 +31,7 @@ import click
 from utmelab_bank import __version__
 from utmelab_bank.config import Config, load
 from utmelab_bank.errors import BankError, ConfigError, ContractError, SourceError, TaskError
+from utmelab_bank.source.raw import raw_row as _raw_row
 from utmelab_bank.store.catalog import sync_catalog
 from utmelab_bank.store.client import Store
 from utmelab_bank.store.repository import Repository
@@ -325,61 +326,114 @@ async def _catalog_sync(config: Config) -> int:
     return 0
 
 
-def raw_row_id(question_id: str, payload_hash: str) -> str:
-    """A raw row's primary key: the question, plus the version we parsed."""
-    return f"{question_id}#{payload_hash[:12]}"
+@_command("fill")
+@click.option("--source", default="myschool", help="Where to fetch from. myschool for now.")
+@click.option("--exam", default="jamb", help="jamb, waec or neco.")
+@click.option(
+    "--subject",
+    multiple=True,
+    help="A catalog subject slug. Repeatable. Default: every mapped subject.",
+)
+@click.option("--from-year", type=int, default=None, help="Oldest year in the window.")
+@click.option("--to-year", type=int, default=None, help="Newest year in the window.")
+@click.option("--minutes", type=float, default=50.0, help="Stop after this many minutes.")
+@click.option("--max-targets", type=int, default=None, help="Stop after this many targets.")
+@click.option("--delay", type=float, default=None, help="Seconds between requests.")
+@click.option("--strategy", default="api", help="api or html, where a source offers both.")
+@click.option("--refresh", is_flag=True, help="Re-queue drained and empty targets.")
+@click.option("--dry-run", is_flag=True, help="Print the plan. Write nothing.")
+@_add_common
+def fill_cmd(
+    source: str,
+    exam: str,
+    subject: tuple[str, ...],
+    from_year: int | None,
+    to_year: int | None,
+    minutes: float,
+    max_targets: int | None,
+    delay: float | None,
+    strategy: str,
+    refresh: bool,
+    dry_run: bool,
+    target: str,
+    sink: str | None,
+    local_database: Path | None,
+    log_level: str | None,
+) -> None:
+    """Walk the plan and fetch every target until the source or budget ends.
 
-
-def _raw_row(item: Any, run_id: str) -> dict[str, Any]:
-    """One parsed question as a raw row.
-
-    ``payload_hash`` is what makes a re-scrape idempotent: the unique key is
-    ``(source_url, source_item_id, payload_hash)``, so an unchanged page adds
-    nothing and an edited page appears beside the old row instead of replacing
-    it.
+    The plan is ``(source, exam, subject, year)`` and nothing else. Newest year
+    first, subjects in the source map's order. A drained or empty target leaves
+    the queue; a failed one backs off and is retried. The plan lives in the
+    bank database, so the next run continues where this one stopped.
     """
-    from utmelab_bank.model.base import now_iso
-    from utmelab_bank.text import rt_json
+    raise SystemExit(
+        asyncio.run(
+            _fill(
+                source=source,
+                exam=exam,
+                subjects=subject,
+                from_year=from_year,
+                to_year=to_year,
+                minutes=minutes,
+                max_targets=max_targets,
+                delay=delay,
+                strategy=strategy,
+                refresh=refresh,
+                dry_run=dry_run,
+                target=target,
+                sink=sink,
+                local_database=local_database,
+                log_level=log_level,
+            )
+        )
+    )
 
-    question = item.question
-    stamp = now_iso()
-    return {
-        # The raw lane's identity is the question plus the payload we parsed from
-        # it. Without the hash in the id, a question the site edited later would
-        # collide with the version we already hold and be dropped, which is how
-        # upstream drift stays invisible. The work lane is where the two are
-        # reconciled.
-        "id": raw_row_id(question.id, item.payload_hash),
-        "source_url": item.source_url,
-        "source_item_id": item.source_item_id,
-        "payload_hash": item.payload_hash,
-        "exam": question.exam,
-        "subject": question.subject,
-        "year": question.year,
-        "source": question.source,
-        "text": question.text.text,
-        "inline": rt_json(question.text.inline),
-        "options": json.dumps(
-            [o.model_dump(mode="json") for o in question.options], separators=(",", ":")
-        ),
-        "answer": question.answer,
-        "subtopic_id": None,
-        "section": None,
-        "passage_id": None,
-        "explanation": None,
-        "marks": question.marks,
-        "difficulty": question.difficulty,
-        "content_hash": question.content_hash,
-        "fingerprint": None,
-        "gate_status": "pending",
-        "gate_reason": None,
-        "attempts": 0,
-        "error": None,
-        "next_retry_at": None,
-        "run_id": run_id,
-        "created_at": stamp,
-        "updated_at": stamp,
-    }
+
+async def _fill(**kwargs: Any) -> int:
+    from utmelab_bank.fill import FillOptions, plan, run_fill
+    from utmelab_bank.store.schema import ensure_schema
+
+    config = _config(
+        target=kwargs["target"],
+        sink=kwargs["sink"],
+        local_database=kwargs["local_database"],
+    )
+    _setup_logging(kwargs["log_level"] or config.log_level)
+    options = FillOptions(
+        source=kwargs["source"],
+        exam=kwargs["exam"],
+        subjects=tuple(kwargs["subjects"]),
+        from_year=kwargs["from_year"],
+        to_year=kwargs["to_year"],
+        minutes=kwargs["minutes"],
+        max_targets=kwargs["max_targets"],
+        delay=kwargs["delay"],
+        strategy=kwargs["strategy"],
+        refresh=kwargs["refresh"],
+    )
+
+    if kwargs["dry_run"]:
+        rows = plan(options)
+        click.echo(f"{len(rows)} targets, newest year first")
+        for row in rows[:25]:
+            click.echo(f"  {row['exam']} {row['subject']} {row['year']}")
+        if len(rows) > 25:
+            click.echo(f"  ... {len(rows) - 25} more")
+        return 0
+
+    async with _open(config) as store:
+        await ensure_schema(store)
+        report = await run_fill(config, store, options)
+        click.echo(report.summary())
+        click.echo(
+            f"  drained {report.drained}, empty {report.empty}, "
+            f"failed {report.failed}, seeded {report.seeded}, reset {report.reset}"
+        )
+        if report.reason != "done":
+            click.echo(f"  stopped: {report.reason} after {report.elapsed:.0f}s")
+        click.echo(f"  database: {report.database}")
+        return 0 if report.failed == 0 else 1
 
 
 @_command("task")

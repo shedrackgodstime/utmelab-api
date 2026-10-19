@@ -75,7 +75,7 @@ def raw_row(**overrides: Any) -> dict[str, Any]:
 
 async def seed_raw(store: Store, rows: list[dict[str, Any]]) -> int:
     """Put rows in the raw lane. Returns how many were new."""
-    from utmelab_bank.cli import raw_row_id
+    from utmelab_bank.source.raw import raw_row_id
 
     prepared = [{**row, "id": raw_row_id(row["id"], row["payload_hash"])} for row in rows]
     return await Repository(store, lane="raw").insert_many("questions", prepared)

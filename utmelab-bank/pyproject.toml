@@ -83,6 +83,7 @@ ignore = [
     "PLR0912", # judge() and parse_api_question() are decision tables; splitting hides the table
     "RUF007", # zip(spans, spans[1:]) keeps py311 compat; pairwise() needs 3.10+ strict form
     "PLR0911", # fetch_one() uses guard clauses; each return is a distinct early exit
+    "PLR0917", # CLI callbacks mirror their flags; grouping them would hide the option list
 ]
 
 [tool.ruff.lint.per-file-ignores]

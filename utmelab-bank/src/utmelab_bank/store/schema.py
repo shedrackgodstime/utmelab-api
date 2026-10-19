@@ -293,6 +293,44 @@ def _runs_ddl() -> tuple[str, ...]:
     )
 
 
+def _targets_ddl() -> tuple[str, ...]:
+    """The fill plan: one row per source, exam, subject and year.
+
+    A global table, not a lane. The plan belongs to acquisition, not to the
+    question data, and every lane shares it. ``status`` moves through
+    ``pending``, ``active``, ``drained``, ``empty`` and ``failed``. A subject is
+    exhausted when every one of its targets is terminal; that is derived, so
+    there is no subject row to keep in step.
+    """
+    return (
+        """
+        CREATE TABLE IF NOT EXISTS scrape_targets (
+            id            TEXT PRIMARY KEY,
+            source        TEXT NOT NULL,
+            exam          TEXT NOT NULL,
+            subject       TEXT NOT NULL,
+            subject_order INTEGER NOT NULL DEFAULT 0,
+            year          INTEGER NOT NULL,
+            status        TEXT NOT NULL DEFAULT 'pending',
+            attempts      INTEGER NOT NULL DEFAULT 0,
+            rows_seen     INTEGER NOT NULL DEFAULT 0,
+            rows_new      INTEGER NOT NULL DEFAULT 0,
+            pages         INTEGER NOT NULL DEFAULT 0,
+            last_error    TEXT,
+            next_retry_at TEXT,
+            started_at    TEXT,
+            finished_at   TEXT,
+            created_at    TEXT NOT NULL,
+            updated_at    TEXT NOT NULL
+        )
+        """,
+        "CREATE UNIQUE INDEX IF NOT EXISTS idx_targets_key "
+        "ON scrape_targets(source, exam, subject, year)",
+        "CREATE INDEX IF NOT EXISTS idx_targets_next "
+        "ON scrape_targets(source, exam, status, year DESC, subject_order ASC)",
+    )
+
+
 def DDL() -> tuple[str, ...]:
     """Every statement that brings a database to the current shape.
 
@@ -315,6 +353,7 @@ def DDL() -> tuple[str, ...]:
             statements.append(builder(lane))
         statements.extend(_indexes(lane))
     statements.extend(_runs_ddl())
+    statements.extend(_targets_ddl())
     return tuple(statements)
 
 
