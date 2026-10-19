@@ -259,11 +259,13 @@ the previous one is green.
 ### Two runners
 
 The lane model already supports the split. Every task selects its rows by
-status from the database; only `bank.yml` chains them in one job. The chain is
-what makes a scrape pay for a fifty minute model tail. On the 100 row run,
-scrape plus intake plus gate plus dedupe took about 90 seconds, `ai-tag` took
-13 minutes, `ai-explain` took 28, and `ai-verify` was still running when the
-60 minute ceiling killed the job. Media never started.
+status from the database; the old `bank.yml` chained them in one job, and that
+chain is what made a scrape pay for a fifty minute model tail. On the 100 row
+run, scrape plus intake plus gate plus dedupe took about 90 seconds, `ai-tag`
+took 13 minutes, `ai-explain` took 28, and `ai-verify` was still running when
+the 60 minute ceiling killed the job. Media never started. The chain is now
+two workflows, `bank-ingest.yml` and `bank-enrich.yml`, with separate
+concurrency groups.
 
 The split:
 
@@ -404,7 +406,8 @@ own pass afterwards, on the rows ingest landed.
 
 ```text
 utmelab-bank catalog      copy the topic/subtopic catalog from prod into the bank
-utmelab-bank scrape       fetch questions into the raw lane
+utmelab-bank scrape       fetch one exam/subject/year into the raw lane
+utmelab-bank fill         walk the scrape_targets plan until the budget or the queue ends
 utmelab-bank intake       raw -> work, applying the gate
 utmelab-bank task NAME    run one task over the rows a selector picks
 utmelab-bank goal media   run the media flow: discover, fetch, describe, verify

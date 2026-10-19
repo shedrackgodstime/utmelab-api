@@ -1,40 +1,24 @@
-# Fill the bank on demand.
+# Enrich: tag, explain, verify and describe the rows ingest already landed.
 #
-# This is the primary runner: the work happens on a GitHub runner against the
-# bank's own Turso database, never against production. Production is opened
-# read-only and only by `catalog`, which copies the taxonomy.
+# This is the model half of the split. It reads the bank database by selector
+# and never receives rows from an ingest run, so the two runners are decoupled
+# and each can have its own cadence. It carries the read-only production token
+# (for the taxonomy that `ai-tag` needs) and the media credential, which ingest
+# deliberately does not have.
 #
-# The job is deliberately manual. A bank run costs model calls and, when the
-# upload input is on, a media commit, so a person starts it and reads the
-# summary. Every step is idempotent: running the same inputs twice writes only
-# what the first run did not.
+# The acquisition half lives in `bank-ingest.yml`. Each has its own concurrency
+# group so a long model run cannot block ingest.
 
-name: bank
+name: bank-enrich
 
 on:
   workflow_dispatch:
     inputs:
       mode:
-        description: "fill scrapes and promotes; media runs the figure path; status only reports."
+        description: "enrich runs the model tasks; media runs only the figure path; status only reports."
         type: choice
-        options: [fill, media, status]
-        default: fill
-      source:
-        description: "Source plugin name."
-        type: string
-        default: myschool
-      exam:
-        description: "jamb, waec or neco."
-        type: string
-        default: jamb
-      subject:
-        description: "Source subject slug."
-        type: string
-        default: physics
-      year:
-        description: "Paper year."
-        type: string
-        default: "2025"
+        options: [enrich, media, status]
+        default: enrich
       limit:
         description: "Cap per step. Empty means the task's own batch size."
         type: string
@@ -44,7 +28,7 @@ on:
         type: boolean
         default: true
       media:
-        description: "Run the figure path after a fill."
+        description: "Run the figure path after the model tasks."
         type: boolean
         default: true
       upload:
@@ -53,15 +37,15 @@ on:
         default: false
 
 concurrency:
-  group: bank-fill
+  group: bank-enrich
   cancel-in-progress: false
 
 permissions:
   contents: read
 
 jobs:
-  fill:
-    name: Fill the bank
+  enrich:
+    name: Enrich the bank
     runs-on: ubuntu-latest
     timeout-minutes: 120
     defaults:
@@ -154,21 +138,17 @@ jobs:
             echo "no GITLAB_FINE_GRAINED_ACCESS_TOKEN secret"
           fi
 
-      - name: Fill
-        if: ${{ inputs.mode == 'fill' }}
+      - name: Enrich
+        if: ${{ inputs.mode == 'enrich' }}
         env:
-          SOURCE: ${{ inputs.source }}
-          EXAM: ${{ inputs.exam }}
-          SUBJECT: ${{ inputs.subject }}
-          YEAR: ${{ inputs.year }}
           LIMIT: ${{ inputs.limit }}
           AI: ${{ inputs.ai }}
           MEDIA: ${{ inputs.media }}
         run: |
           # One row's failure is a row to retry, not a reason to abandon the
-          # rest of the paper. Every step runs; the job is red at the end if
-          # any of them reported a failure. `set +e` undoes the runner's
-          # `bash -e`, so the `run` helper can see the status.
+          # rest of the batch. Every step runs; the job is red at the end if any
+          # of them reported a failure. `set +e` undoes the runner's `bash -e`,
+          # so the `run` helper can see the status.
           set +e
           set -uo pipefail
           failures=()
@@ -183,17 +163,11 @@ jobs:
           }
 
           limit_args=()
-          if [ -n "${LIMIT:-}" ]; then
-            limit_args=(--limit "$LIMIT")
-          fi
+          [ -n "${LIMIT:-}" ] && limit_args=(--limit "$LIMIT")
 
-          run utmelab-bank scrape \
-            --source "$SOURCE" --exam "$EXAM" --subject "$SUBJECT" --year "$YEAR" \
-            "${limit_args[@]}"
-          run utmelab-bank task intake "${limit_args[@]}"
-          run utmelab-bank task gate "${limit_args[@]}"
-          run utmelab-bank task dedupe "${limit_args[@]}"
-
+          # The catalogue is the taxonomy ai-tag needs. Without the read-only
+          # production credentials there is nothing to tag against, so ai-tag is
+          # skipped rather than guessing.
           catalogued=0
           if [ -n "${TURSO_DB_URL:-}" ] && [ -n "${TURSO_DB_TOKEN_READONLY:-}" ]; then
             if run utmelab-bank catalog; then
@@ -240,9 +214,7 @@ jobs:
             exit 1
           fi
           limit_args=()
-          if [ -n "${LIMIT:-}" ]; then
-            limit_args=(--limit "$LIMIT")
-          fi
+          [ -n "${LIMIT:-}" ] && limit_args=(--limit "$LIMIT")
           utmelab-bank goal media "${limit_args[@]}"
 
       - name: Status
@@ -262,6 +234,6 @@ jobs:
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          name: bank-status
+          name: bank-enrich-status
           path: utmelab-bank/status.json
           if-no-files-found: ignore
