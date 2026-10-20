@@ -3,8 +3,9 @@
 # This is the model half of the split. It reads the bank database by selector
 # and never receives rows from an ingest run, so the two runners are decoupled
 # and each can have its own cadence. It carries the read-only production token
-# (for the taxonomy that `ai-tag` needs) and the media credential, which ingest
-# deliberately does not have.
+# for the taxonomy that `ai-tag` and `ai-explain` read. Passages are bank
+# content: they arrive with the question and are read from the bank lane, never
+# from production. It also carries the media credential.
 #
 # The acquisition half lives in `bank-ingest.yml`. Each has its own concurrency
 # group so a long model run cannot block ingest.
@@ -169,24 +170,8 @@ jobs:
           limit_args=()
           [ -n "${LIMIT:-}" ] && limit_args=(--limit "$LIMIT")
 
-          # The catalogue is the taxonomy ai-tag needs. Without the read-only
-          # production credentials there is nothing to tag against, so ai-tag is
-          # skipped rather than guessing.
-          catalogued=0
-          if [ -n "${TURSO_DB_URL:-}" ] && [ -n "${TURSO_DB_TOKEN_READONLY:-}" ]; then
-            if run utmelab-bank catalog; then
-              catalogued=1
-            fi
-          else
-            echo "no production read credentials; skipping catalog"
-          fi
-
           if [ "$AI" = "true" ]; then
-            if [ "$catalogued" = "1" ]; then
-              run utmelab-bank task ai-tag --where "no subtopic" "${limit_args[@]}"
-            else
-              echo "no catalogue; skipping ai-tag"
-            fi
+            run utmelab-bank task ai-tag --where "no subtopic" "${limit_args[@]}"
             run utmelab-bank task ai-explain --where "no explanation" "${limit_args[@]}"
             run utmelab-bank task ai-verify --where "unverified" "${limit_args[@]}"
           fi

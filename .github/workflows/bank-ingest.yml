@@ -1,9 +1,9 @@
 # Ingest: fetch from the source and land valid rows in the bank.
 #
 # This is the acquisition half of the split. It runs `fill` (the plan in
-# `scrape_targets`), then `intake`, `gate` and `dedupe`. It never calls a model,
-# never touches production and never touches the media repository, so it can run
-# often and cheaply: the only credentials it needs are the bank database's.
+# `scrape_targets`), then `intake`, `gate` and `dedupe`. It never calls a model
+# and never touches the media repository. It reads the read-only production
+# hashes so `dedupe` can refuse a question production already serves.
 #
 # The enrich half lives in `bank-enrich.yml`. Each has its own concurrency group
 # so a long model run cannot block ingest.
@@ -72,10 +72,14 @@ jobs:
     env:
       # The bank owns a dedicated, isolated database. There is deliberately no
       # fallback: a missing secret must fail the "configured" check below, not
-      # silently point the bank at some other database. Ingest needs no other
-      # credential at all.
+      # silently point the bank at some other database.
       TURSO_UTMELAB_BANK_DB_URL: ${{ secrets.TURSO_UTMELAB_BANK_DB_URL }}
       TURSO_UTMELAB_BANK_DB_TOKEN: ${{ secrets.TURSO_UTMELAB_BANK_DB_TOKEN }}
+      # Dedupe reads production content hashes, read-only, so a question the
+      # API already serves is refused at acquisition time. The credential is
+      # read-only; the bank store is never handed the production url.
+      TURSO_DB_URL: ${{ secrets.TURSO_DB_URL }}
+      TURSO_DB_TOKEN_READONLY: ${{ secrets.TURSO_DB_TOKEN_READONLY }}
     steps:
       - uses: actions/checkout@v4
 
@@ -88,6 +92,14 @@ jobs:
           fi
           if [ -z "${TURSO_UTMELAB_BANK_DB_TOKEN:-}" ]; then
             echo "::error::set the TURSO_UTMELAB_BANK_DB_TOKEN repository secret"
+            exit 1
+          fi
+          if [ -n "${TURSO_DB_URL:-}" ] && [ "${TURSO_UTMELAB_BANK_DB_URL}" = "${TURSO_DB_URL}" ]; then
+            echo "::error::the bank database is the production database; refusing to run"
+            exit 1
+          fi
+          if [ -z "${TURSO_DB_URL:-}" ] || [ -z "${TURSO_DB_TOKEN_READONLY:-}" ]; then
+            echo "::error::set TURSO_DB_URL and TURSO_DB_TOKEN_READONLY; dedupe reads production hashes"
             exit 1
           fi
 
