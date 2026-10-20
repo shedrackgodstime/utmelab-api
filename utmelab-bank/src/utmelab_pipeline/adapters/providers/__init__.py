@@ -2,5 +2,13 @@
 
 from .mock import MockProvider
 from .opencode import OpenCodeProvider
+from .tagging import ExplainService, TagService, UnknownSubtopic, UnknownTopic
 
-__all__ = ["MockProvider", "OpenCodeProvider"]
+__all__ = [
+    "MockProvider",
+    "OpenCodeProvider",
+    "TagService",
+    "ExplainService",
+    "UnknownSubtopic",
+    "UnknownTopic",
+]

@@ -84,13 +84,22 @@ def catalog() -> CatalogSnapshot:
         version="2026.1",
         exam="JAMB",
         subject="Biology",
-        topics=(CatalogTopic(id="t1", slug="cell", name="Cell"),),
+        topics=(
+            CatalogTopic(id="t1", slug="cell", name="Cell"),
+            CatalogTopic(id="t2", slug="genetics", name="Genetics"),
+        ),
         subtopics=(
             CatalogSubtopic(
                 id="s1",
                 slug="cell-structure",
                 name="Cell structure",
                 topic_id="t1",
+            ),
+            CatalogSubtopic(
+                id="s2",
+                slug="inheritance",
+                name="Inheritance",
+                topic_id="t2",
             ),
         ),
     )
