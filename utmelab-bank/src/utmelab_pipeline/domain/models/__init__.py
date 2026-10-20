@@ -1,10 +1,23 @@
-"""Canonical models. Import from here, not from individual modules."""
+"""Canonical models. Import from here, not from individual modules.
 
-from .bundle import Bundle, BundleState, Evidence, RawBundle
+Every model is defined once, in exactly one module. This package re-exports
+them so callers have a single import path, and there is never a second class
+object with the same name.
+"""
+
+from pydantic import BaseModel
+
 from .catalog import CatalogRef, CatalogSnapshot, CatalogSubtopic, CatalogTopic
 from .common import (
     Confidence,
+    Content,
+    Coverage,
+    DescribeImageRequest,
     DomainModel,
+    Evidence,
+    ExplainRequest,
+    ExplainResponse,
+    GateVerdict,
     Hashes,
     Issue,
     Mark,
@@ -21,35 +34,44 @@ from .common import (
     Scope,
     Sha256,
     Slug,
-    StagingItem,
-    Year,
-    Content,
-    VerificationRecord,
-)
-from .content import MediaRef
-from .proposals import AnswerVerdict, Explanation, ImageDescription, TagProposal, DescribeImageResponse
-from .source import (
-    Coverage,
     SourceCapabilities,
     SourceItem,
     SourceProfile,
+    StagingItem,
+    TagRequest,
+    TagResponse,
+    Verification,
+    VerifyAnswerRequest,
+    VerifyAnswerResponse,
+    Year,
 )
-from .validation import GateVerdict, Verification
+from .proposals import (
+    AnswerVerdict,
+    Explanation,
+    ImageDescription,
+    TagProposal,
+)
 
 
-def rebuild(model, **updates):
+PAYLOAD_HASH = "b" * 64
+CONTENT_HASH = "c" * 64
+BUNDLE_HASH = "d" * 64
+
+
+def rebuild(model: BaseModel, **updates: object) -> BaseModel:
     """Rebuild a model with updated fields, using JSON serialization for proper validation."""
-    print(f"DEBUG rebuild: model type={type(model)}, has model_dump={hasattr(model, 'model_dump')}")
     if not hasattr(model, "model_dump"):
-        raise TypeError(f"model must have a model_dump method (Pydantic model), got {type(model)}")
+        raise TypeError(f"model must have a model_dump method, got {type(model)}")
     data = model.model_dump(mode="json")
     data.update(updates)
     return type(model).model_validate(data)
 
+
 __all__ = [
+    "BUNDLE_HASH",
+    "CONTENT_HASH",
+    "PAYLOAD_HASH",
     "AnswerVerdict",
-    "Bundle",
-    "BundleState",
     "CatalogRef",
     "CatalogSnapshot",
     "CatalogSubtopic",
@@ -57,9 +79,12 @@ __all__ = [
     "Confidence",
     "Content",
     "Coverage",
+    "DescribeImageRequest",
     "DomainModel",
     "Evidence",
     "Explanation",
+    "ExplainRequest",
+    "ExplainResponse",
     "GateVerdict",
     "Hashes",
     "ImageDescription",
@@ -74,18 +99,20 @@ __all__ = [
     "PositiveMarks",
     "Producer",
     "Provenance",
-    "RawBundle",
     "RichText",
     "Scope",
     "Sha256",
     "Slug",
-    "StagingItem",
     "SourceCapabilities",
     "SourceItem",
     "SourceProfile",
+    "StagingItem",
     "TagProposal",
+    "TagRequest",
+    "TagResponse",
     "Verification",
-    "VerificationRecord",
-    "DescribeImageResponse",
+    "VerifyAnswerRequest",
+    "VerifyAnswerResponse",
     "Year",
+    "rebuild",
 ]

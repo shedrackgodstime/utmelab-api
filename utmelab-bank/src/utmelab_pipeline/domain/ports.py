@@ -20,7 +20,12 @@ from .models.common import (
     SourceProfile,
     StagingItem,
 )
-from .models.common import VerificationRecord  # noqa: F401
+from .models.proposals import (
+    AnswerVerdict,
+    Explanation,
+    ImageDescription,
+    TagProposal,
+)
 
 
 from typing import runtime_checkable
@@ -31,7 +36,7 @@ class Source(Protocol):
 
     async def probe(self, scope: Scope) -> Coverage: ...
 
-    async def fetch(self, scope: Scope): ...
+    def fetch(self, scope: Scope) -> AsyncIterator[SourceItem]: ...
 
     def adapt(self, item: SourceItem, catalog: CatalogSnapshot) -> StagingItem: ...
 
@@ -42,28 +47,28 @@ class Source(Protocol):
 class ImageDescriber(Protocol):
     producer: Producer
 
-    async def describe(self, request: DescribeImageRequest) -> MediaAsset: ...
+    async def describe(self, request: DescribeImageRequest) -> ImageDescription: ...
 
 
 @runtime_checkable
 class Explainer(Protocol):
     producer: Producer
 
-    async def explain(self, request: ExplainRequest) -> None: ...
+    async def explain(self, request: ExplainRequest) -> Explanation: ...
 
 
 @runtime_checkable
 class Tagger(Protocol):
     producer: Producer
 
-    async def tag(self, request: TagRequest) -> None: ...
+    async def tag(self, request: TagRequest) -> TagProposal: ...
 
 
 @runtime_checkable
 class AnswerVerifier(Protocol):
     producer: Producer
 
-    async def verify(self, request: VerifyAnswerRequest) -> None: ...
+    async def verify(self, request: VerifyAnswerRequest) -> AnswerVerdict: ...
 
 
 @runtime_checkable

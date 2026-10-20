@@ -63,7 +63,7 @@ def make_provider(
     *,
     returncode: int = 0,
     stderr: str = "",
-) -> tuple:
+) -> tuple[OpenCodeProvider, FakeRunner]:
     from utmelab_pipeline.adapters.providers.opencode import OpenCodeProvider
     runner = FakeRunner(stdout, returncode=returncode, stderr=stderr)
     return OpenCodeProvider(model="opencode/test", runner=runner), runner
@@ -202,3 +202,22 @@ def test_missing_asset_file_is_rejected(media: MediaAsset) -> None:
     provider, _ = make_provider("")
     with pytest.raises(OpenCodeError, match="does not exist"):
         asyncio.run(provider.describe(DescribeImageRequest(asset=asset)))
+
+def test_error_event_is_surfaced(staging_item: StagingItem) -> None:
+    """The CLI reports provider failures as error events. They must not be swallowed."""
+    from utmelab_pipeline.adapters.providers.opencode import OpenCodeError
+
+    error_event = json.dumps(
+        {
+            "type": "error",
+            "error": {
+                "name": "UnknownError",
+                "data": {"message": "usage limit reached"},
+            },
+        }
+    )
+    provider, _ = make_provider(error_event)
+    with pytest.raises(OpenCodeError, match="usage limit reached"):
+        asyncio.run(
+            provider.explain(ExplainRequest(item=staging_item, catalog=None))
+        )

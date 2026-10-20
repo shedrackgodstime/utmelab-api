@@ -7,6 +7,7 @@ from typing import Optional
 import httpx
 from PIL import Image
 
+from utmelab_pipeline.domain.enums import State
 from utmelab_pipeline.domain.models import MediaAsset, StagingItem
 from utmelab_pipeline.domain.ports import MediaFetcher, MediaValidator, MediaStore
 
@@ -58,7 +59,8 @@ class PillowMediaValidator(MediaValidator):
             img.verify()  # Verify integrity
             img = Image.open(io.BytesIO(data))  # Reopen after verify
             width, height = img.size
-            mime = mime or Image.MIME.get(img.format, mime)
+            detected = Image.MIME.get(img.format) if img.format else None
+            mime = mime or detected
         except Exception as e:
             raise ValueError(f"Invalid image data: {e}")
 
@@ -113,23 +115,18 @@ class MediaIngestor:
 
         assets = []
         for ref in item.media_refs:
-            data = await self.fetcher.fetch(ref.source_url)
+            data = await self.fetcher.fetch(str(ref.source_url))
             asset = await self.validator.validate(data, ref.mime)
             asset = await self.store.put(
                 data,
                 mime=asset.mime,
-                source_url=ref.source_url,
+                source_url=str(ref.source_url),
             )
             assets.append(asset)
 
         # Build new item with assets attached
-        return item.model_copy(
-            update={
-                "media_assets": tuple(asset for asset in assets),
-                "state": "media_ready",
-                "updated_at": __import__("datetime").datetime.now(__import__("datetime").UTC),
-            }
-        )
+        updated = item.model_copy(update={"media_assets": tuple(assets)})
+        return updated.transition_to(State.MEDIA_READY)
 
 
 async def ingest_media_task(
@@ -141,3 +138,12 @@ async def ingest_media_task(
     """Task: ingest media refs for a staging item."""
     ingestor = MediaIngestor(fetcher, validator, store)
     return await ingestor.ingest_refs(item)
+
+__all__ = [
+    "HttpMediaFetcher",
+    "MediaIngestor",
+    "MediaFetcher",
+    "MediaValidator",
+    "PillowMediaValidator",
+    "ingest_media_task",
+]

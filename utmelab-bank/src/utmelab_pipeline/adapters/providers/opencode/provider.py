@@ -17,6 +17,7 @@ from utmelab_pipeline.domain.capabilities import (
     TagRequest,
     VerifyAnswerRequest,
 )
+from utmelab_pipeline.adapters.providers.catalog_prompt import catalog_for_prompt
 from utmelab_pipeline.domain.enums import Capability
 from utmelab_pipeline.domain.models import (
     AnswerVerdict,
@@ -82,7 +83,7 @@ class OpenCodeProvider:
         *,
         model: str,
         runner: CommandRunner | None = None,
-        timeout: float = 120.0,
+        timeout: float = 90.0,
         command: str = "opencode",
         capabilities: frozenset[Capability] = frozenset(Capability),
     ) -> None:
@@ -131,22 +132,10 @@ class OpenCodeProvider:
 
     async def tag(self, request: TagRequest) -> TagProposal:
         payload = self._content_payload(request.item)
-        payload["catalog"] = {
-            "version": request.catalog.version,
-            "topics": [
-                {"id": topic.id, "name": topic.name, "objectives": list(topic.objectives)}
-                for topic in request.catalog.topics
-            ],
-            "subtopics": [
-                {
-                    "id": subtopic.id,
-                    "name": subtopic.name,
-                    "topic_id": subtopic.topic_id,
-                    "objectives": list(subtopic.objectives),
-                }
-                for subtopic in request.catalog.subtopics
-            ],
-        }
+        payload["catalog"] = catalog_for_prompt(
+            request.catalog,
+            request.item.content.stem.text,
+        )
         prompt = self._prompt(
             "Choose one topic id and one subtopic id from the catalog. The evidence must be an "
             "exact quote from the stem or passage. Return JSON with keys topic_id (string), "
@@ -240,6 +229,7 @@ class OpenCodeProvider:
     @staticmethod
     def _collect_text(stdout: str) -> str:
         texts: list[str] = []
+        errors: list[str] = []
         for line in stdout.splitlines():
             line = line.strip()
             if not line:
@@ -248,11 +238,19 @@ class OpenCodeProvider:
                 event = json.loads(line)
             except json.JSONDecodeError as exc:
                 raise OpenCodeError("opencode returned a non-JSON line") from exc
-            if not isinstance(event, dict) or event.get("type") != "text":
+            if not isinstance(event, dict):
+                continue
+            kind = event.get("type")
+            if kind == "error":
+                errors.append(_error_message(event))
+                continue
+            if kind != "text":
                 continue
             part = event.get("part")
             if isinstance(part, dict) and isinstance(part.get("text"), str):
                 texts.append(part["text"])
+        if errors:
+            raise OpenCodeError("; ".join(errors))
         if not texts:
             raise OpenCodeError("opencode returned no text events")
         return "\n".join(texts)
@@ -276,6 +274,21 @@ class OpenCodeProvider:
         if not isinstance(data, dict):
             raise OpenCodeError("model output must be a JSON object")
         return cast(dict[str, Any], data)
+
+
+def _error_message(event: dict[str, Any]) -> str:
+    """Read the message out of an opencode error event."""
+    error = event.get("error")
+    if isinstance(error, dict):
+        data = error.get("data")
+        if isinstance(data, dict):
+            message = data.get("message")
+            if isinstance(message, str):
+                return message
+        name = error.get("name")
+        if isinstance(name, str):
+            return name
+    return "opencode reported an error"
 
 
 def _local_asset_path(storage_url: str) -> Path:

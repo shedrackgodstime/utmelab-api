@@ -3,6 +3,7 @@
 from utmelab_pipeline.adapters.providers import OpenCodeProvider
 from utmelab_pipeline.adapters.providers.mock import MockProvider
 from utmelab_pipeline.domain.capabilities import DescribeImageRequest
+from utmelab_pipeline.domain.enums import State
 from utmelab_pipeline.domain.models import MediaAsset, StagingItem
 from utmelab_pipeline.domain.ports import ImageDescriber
 
@@ -29,13 +30,8 @@ class ImageDescriberService:
             "image_descriptions": tuple(descriptions)
         })
 
-        return item.model_copy(
-            update={
-                "evidence": evidence,
-                "state": "described",
-                "updated_at": __import__("datetime").datetime.now(__import__("datetime").UTC),
-            }
-        )
+        updated = item.model_copy(update={"evidence": evidence})
+        return updated.transition_to(State.DESCRIBED)
 
 
 def create_describer(provider_name: str = "opencode") -> "ImageDescriber":

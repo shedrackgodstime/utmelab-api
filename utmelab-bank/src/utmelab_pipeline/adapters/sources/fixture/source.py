@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, cast
 
-from utmelab_pipeline.domain.enums import Severity
+from utmelab_pipeline.domain.enums import MarkKind, Severity
 from utmelab_pipeline.domain.hashing import payload_hash
 from utmelab_pipeline.domain.models.common import (
     CatalogRef,
@@ -67,7 +67,7 @@ class FixtureSource:
             raise ValueError("fixture items must be a list")
         return Coverage(source=self.profile.name, scope=scope, item_count=item_count)
 
-    async def fetch(self, scope: Scope):
+    async def fetch(self, scope: Scope) -> AsyncIterator[SourceItem]:
         record = self._record(scope)
         if record is None:
             return
@@ -237,14 +237,13 @@ class FixtureSource:
         for index, raw in enumerate(raw_marks):
             if not isinstance(raw, dict):
                 continue
-            if raw.get("kind") == "image":
+            if raw.get("kind") == MarkKind.IMAGE.value:
                 key = raw.get("asset_key")
                 if not isinstance(key, str) or key not in media_keys:
                     issues.append(f"source.mark: stem mark {index} references an unknown media key")
         return issues
 
-    def _option(self, raw: object):
-        from utmelab_pipeline.domain.models.common import Option
+    def _option(self, raw: object) -> Option:
         if not isinstance(raw, dict):
             raise ValueError("option must be an object")
         option_id = raw.get("id")
@@ -254,8 +253,7 @@ class FixtureSource:
         from utmelab_pipeline.domain.models.common import Option, RichText
         return Option(id=option_id, text=self._rich_text(text, raw.get("marks")))
 
-    def _passage(self, raw: object):
-        from utmelab_pipeline.domain.models.common import Passage
+    def _passage(self, raw: object) -> Passage | None:
         if raw is None:
             return None
         if not isinstance(raw, dict):
@@ -274,8 +272,7 @@ class FixtureSource:
             source_item_id=source_item_id,
         )
 
-    def _media_ref(self, raw: object):
-        from utmelab_pipeline.domain.models.common import MediaRef
+    def _media_ref(self, raw: object) -> MediaRef:
         if not isinstance(raw, dict):
             raise ValueError("media entry must be an object")
         key = raw.get("key")
@@ -293,11 +290,10 @@ class FixtureSource:
             raise ValueError("media required must be a boolean")
         return MediaRef(key=key, source_url=url, mime=mime, alt=alt, required=required)
 
-    def _rich_text(self, text: object, raw_marks: object):
-        from utmelab_pipeline.domain.models.common import Mark, RichText
+    def _rich_text(self, text: object, raw_marks: object) -> RichText:
         if not isinstance(text, str) or not text.strip():
             raise ValueError("rich text must be a non-empty string")
-        marks = []
+        marks: list[Mark] = []
         if raw_marks is not None:
             if not isinstance(raw_marks, list):
                 raise ValueError("marks must be a list")
@@ -306,8 +302,7 @@ class FixtureSource:
         from utmelab_pipeline.domain.models.common import RichText
         return RichText(text=text, marks=tuple(marks))
 
-    def _mark(self, raw: object):
-        from utmelab_pipeline.domain.models.common import Mark
+    def _mark(self, raw: object) -> Mark:
         if not isinstance(raw, dict):
             raise ValueError("mark must be an object")
         kind = raw.get("kind")
@@ -345,31 +340,3 @@ class FixtureSource:
 
     def _parse_catalog_snapshot(self, catalog: CatalogSnapshot) -> CatalogSnapshot:
         return catalog
-
-import json
-import re
-from datetime import datetime
-from pathlib import Path
-from typing import Any, cast
-from collections.abc import AsyncIterator
-
-from utmelab_pipeline.domain.enums import Severity
-from utmelab_pipeline.domain.hashing import payload_hash
-from utmelab_pipeline.domain.models.common import (
-    Coverage,
-    Issue,
-    Mark,
-    Option,
-    Passage,
-    Provenance,
-    RichText,
-    Scope,
-    SourceCapabilities,
-    SourceItem,
-    SourceProfile,
-    StagingItem,
-)
-
-from utmelab_pipeline.domain.models.common import MediaRef
-from utmelab_pipeline.domain.hashing import payload_hash
-from utmelab_pipeline.domain.enums import Severity

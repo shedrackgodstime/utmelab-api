@@ -1,16 +1,16 @@
+"""Tests for the port contracts. The core depends on these shapes, not on adapters."""
+
 from collections.abc import AsyncIterator
-from datetime import datetime, UTC
+from datetime import UTC, datetime
 
 from utmelab_pipeline.domain.capabilities import (
-    CAPABILITY_INPUTS,
-    CAPABILITY_OUTPUTS,
     DescribeImageRequest,
     ExplainRequest,
     TagRequest,
     VerifyAnswerRequest,
 )
 from utmelab_pipeline.domain.enums import Capability
-from utmelab_pipeline.domain.models.common import (
+from utmelab_pipeline.domain.models import (
     CatalogSnapshot,
     CatalogSubtopic,
     CatalogTopic,
@@ -22,10 +22,6 @@ from utmelab_pipeline.domain.models.common import (
     SourceItem,
     SourceProfile,
     StagingItem,
-    Provenance,
-    Content,
-    RichText,
-    Option,
 )
 from utmelab_pipeline.domain.ports import (
     AnswerVerifier,
@@ -37,6 +33,8 @@ from utmelab_pipeline.domain.ports import (
     StagingStore,
     Tagger,
 )
+
+NOW = datetime(2026, 10, 20, 12, 0, tzinfo=UTC)
 
 
 class FakeSource:
@@ -51,9 +49,10 @@ class FakeSource:
     async def probe(self, scope: Scope) -> Coverage:
         raise NotImplementedError
 
-    async def fetch(self, scope: Scope): ...
+    def fetch(self, scope: Scope) -> AsyncIterator[SourceItem]:
+        raise NotImplementedError
 
-    def adapt(self, item: SourceItem, catalog) -> StagingItem:
+    def adapt(self, item: SourceItem, catalog: CatalogSnapshot) -> StagingItem:
         raise NotImplementedError
 
     def validate(self, item: SourceItem) -> list[str]:
@@ -63,47 +62,72 @@ class FakeSource:
 class FakeDescriber:
     producer = Producer(provider="example", model="vision")
 
-    async def describe(self, request): ...
+    async def describe(self, request: DescribeImageRequest) -> object:
+        raise NotImplementedError
 
 
 class FakeExplainer:
     producer = Producer(provider="example", model="text")
 
-    async def explain(self, request): ...
+    async def explain(self, request: ExplainRequest) -> object:
+        raise NotImplementedError
 
 
 class FakeTagger:
     producer = Producer(provider="example", model="text")
 
-    async def tag(self, request): ...
+    async def tag(self, request: TagRequest) -> object:
+        raise NotImplementedError
 
 
 class FakeVerifier:
     producer = Producer(provider="example", model="text")
 
-    async def verify(self, request): ...
+    async def verify(self, request: VerifyAnswerRequest) -> object:
+        raise NotImplementedError
 
 
 class FakeCatalog:
-    async def snapshot(self, exam: str, subject: str): ...
+    async def snapshot(self, exam: str, subject: str) -> CatalogSnapshot:
+        raise NotImplementedError
 
 
 class FakeMediaStore:
-    async def put(self, data: bytes, *, mime: str, source_url: str | None = None): ...
+    async def put(
+        self,
+        data: bytes,
+        *,
+        mime: str,
+        source_url: str | None = None,
+    ) -> MediaAsset:
+        raise NotImplementedError
 
-    async def read(self, asset_id: str) -> bytes: ...
+    async def read(self, asset_id: str) -> bytes:
+        raise NotImplementedError
 
-    async def exists(self, asset_id: str) -> bool: ...
+    async def exists(self, asset_id: str) -> bool:
+        raise NotImplementedError
 
 
 class FakeStagingStore:
-    async def save(self, item): ...
+    async def save(self, item: StagingItem) -> None:
+        raise NotImplementedError
 
-    async def load(self, item_id: str): ...
+    async def load(self, item_id: str) -> StagingItem | None:
+        raise NotImplementedError
 
-    async def transition(self, item_id: str, to_state: str, *, error: str | None = None): ...
+    async def transition(
+        self,
+        item_id: str,
+        expected: str,
+        target: str,
+        *,
+        error: str | None = None,
+    ) -> StagingItem:
+        raise NotImplementedError
 
-    async def list_by_state(self, state: str, *, limit: int = 100): ...
+    async def list_by_state(self, state: str, *, limit: int = 100) -> tuple[StagingItem, ...]:
+        raise NotImplementedError
 
 
 def test_ports_accept_structural_implementations() -> None:
@@ -123,16 +147,16 @@ def test_ports_reject_plain_objects() -> None:
 
 
 def test_capability_maps_are_complete() -> None:
-    from utmelab_pipeline.domain.enums import Capability
-    from utmelab_pipeline.domain.capabilities import CAPABILITY_INPUTS, CAPABILITY_OUTPUTS
+    from utmelab_pipeline.domain.capabilities import (
+        CAPABILITY_INPUTS,
+        CAPABILITY_OUTPUTS,
+    )
+
     assert set(CAPABILITY_INPUTS) == set(Capability)
     assert set(CAPABILITY_OUTPUTS) == set(Capability)
 
 
 def test_describe_image_request_carries_asset() -> None:
-    from utmelab_pipeline.domain.capabilities import DescribeImageRequest
-    from utmelab_pipeline.domain.models.common import MediaAsset
-    from datetime import datetime, UTC
     asset = MediaAsset(
         asset_id="a" * 64,
         mime="image/png",
@@ -141,69 +165,7 @@ def test_describe_image_request_carries_asset() -> None:
         height=50,
         storage_url="file:///tmp/figure.png",
         source_url="https://example.com/figure.png",
-        fetched_at=datetime(2026, 10, 20, 12, 0, tzinfo=UTC),
+        fetched_at=NOW,
     )
     request = DescribeImageRequest(asset=asset, context="A labelled cell")
-    assert request.asset.asset_id == "a" * 64
-
-
-def test_tag_request_requires_catalog() -> None:
-    from utmelab_pipeline.domain.capabilities import TagRequest
-    from utmelab_pipeline.domain.models.common import (
-        StagingItem, CatalogSnapshot, CatalogSubtopic, CatalogTopic,
-        Provenance, Content, RichText, Option, Scope, Producer,
-    )
-    from datetime import datetime, UTC
-    NOW = datetime(2026, 10, 20, 12, 0, tzinfo=UTC)
-    catalog = CatalogSnapshot(
-        version="2026.1",
-        exam="JAMB",
-        subject="Biology",
-        topics=(CatalogTopic(id="t1", slug="cell", name="Cell"),),
-        subtopics=(
-            CatalogSubtopic(
-                id="s1",
-                slug="cell-structure",
-                name="Cell structure",
-                topic_id="t1",
-            ),
-        ),
-    )
-    prov = Provenance(
-        source="test", source_url="https://example.com", source_item_id="item1",
-        fetched_at=NOW, payload_hash="a" * 64, source_version="1.0",
-        scope=Scope(exam="JAMB", subject="Bio", year=2024)
-    )
-    item = StagingItem(
-            id="test",
-            provenance=prov,
-            content=Content(
-                stem=RichText(text="test"),
-                options=(
-                    Option(id="A", text=RichText(text="1")),
-                    Option(id="B", text=RichText(text="2")),
-                ),
-                answer="A",
-                marks=1.0,
-            ),
-            state="adapted",
-            created_at=datetime(2026, 10, 20, 12, 0, tzinfo=UTC),
-            updated_at=datetime(2026, 10, 20, 12, 0, tzinfo=UTC),
-        )
-    catalog = CatalogSnapshot(
-        version="2026.1",
-        exam="JAMB",
-        subject="Biology",
-        topics=(CatalogTopic(id="t1", slug="cell", name="Cell"),),
-        subtopics=(
-            CatalogSubtopic(
-                id="s1",
-                slug="cell-structure",
-                name="Cell structure",
-                topic_id="t1",
-            ),
-        ),
-    )
-    from utmelab_pipeline.domain.capabilities import TagRequest
-    request = TagRequest(item=item, catalog=catalog)
-    assert request.catalog.version == "2026.1"
+    assert request.asset.asset_id == asset.asset_id

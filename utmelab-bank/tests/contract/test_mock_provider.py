@@ -59,6 +59,6 @@ def test_mock_verify(staging_item: StagingItem) -> None:
 
 
 def test_mock_can_abstain(staging_item: StagingItem) -> None:
-    provider = MockProvider(verdict="abstain")
+    provider = MockProvider(verdict=Verdict.ABSTAIN)
     result = asyncio.run(provider.verify(VerifyAnswerRequest(item=staging_item, catalog=None)))
     assert result.verdict == "abstain"

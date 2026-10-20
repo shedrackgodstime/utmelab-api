@@ -9,7 +9,7 @@ from utmelab_pipeline.adapters.catalog import ProductionCatalogReader
 
 
 class FakeResult:
-    def __init__(self, rows: list[tuple]) -> None:
+    def __init__(self, rows: list[tuple[Any, ...]]) -> None:
         self.rows = rows
 
 

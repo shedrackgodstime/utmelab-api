@@ -6,6 +6,8 @@ from datetime import UTC, datetime
 from typing import Optional
 
 from utmelab_pipeline.domain.capabilities import ExplainRequest, TagRequest
+from utmelab_pipeline.domain.enums import State
+from utmelab_pipeline.domain.ports import Explainer, Tagger
 from utmelab_pipeline.domain.models import (
     CatalogSnapshot,
     Evidence,
@@ -26,7 +28,7 @@ class UnknownTopic(ValueError):
 class TagService:
     """Tag a staging item and refuse a choice the catalog does not contain."""
 
-    def __init__(self, tagger) -> None:
+    def __init__(self, tagger: Tagger) -> None:
         self._tagger = tagger
 
     async def tag(self, item: StagingItem, catalog: CatalogSnapshot) -> StagingItem:
@@ -60,7 +62,7 @@ class TagService:
 
     def _apply(self, item: StagingItem, proposal: TagProposal) -> StagingItem:
         evidence = item.evidence.model_copy(update={"tag": proposal})
-        return item.model_copy(
+        updated = item.model_copy(
             update={
                 "evidence": evidence,
                 "catalog": item.catalog.model_copy(
@@ -71,16 +73,15 @@ class TagService:
                 )
                 if item.catalog is not None
                 else None,
-                "state": "enriched",
-                "updated_at": datetime.now(UTC),
             }
         )
+        return updated.transition_to(State.ENRICHED)
 
 
 class ExplainService:
     """Explain a staging item against the catalog context."""
 
-    def __init__(self, explainer) -> None:
+    def __init__(self, explainer: Explainer) -> None:
         self._explainer = explainer
 
     async def explain(
@@ -94,13 +95,8 @@ class ExplainService:
 
     def _apply(self, item: StagingItem, explanation: Explanation) -> StagingItem:
         evidence = item.evidence.model_copy(update={"explanation": explanation})
-        return item.model_copy(
-            update={
-                "evidence": evidence,
-                "state": "enriched",
-                "updated_at": datetime.now(UTC),
-            }
-        )
+        updated = item.model_copy(update={"evidence": evidence})
+        return updated.transition_to(State.ENRICHED)
 
 
 def _evidence_present(*, item_text: str, item: StagingItem) -> bool:

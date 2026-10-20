@@ -115,7 +115,7 @@ def staging_item(content: Content, provenance: Provenance) -> StagingItem:
         media_assets=(),
         evidence=Evidence(),
         catalog=None,
-        state=State.PLANNED.value,
+        state=State.CATALOGUED.value,
         hashes=Hashes(payload_hash=PAYLOAD_HASH, content_hash=CONTENT_HASH, bundle_hash=BUNDLE_HASH),
         created_at=NOW,
         updated_at=NOW,
@@ -138,3 +138,12 @@ def image_content() -> Content:
         answer="A",
         marks=1.0,
     )
+
+__all__ = [
+    "BUNDLE_HASH",
+    "CONTENT_HASH",
+    "MEDIA_ID",
+    "NOW",
+    "PAYLOAD_HASH",
+    "rebuild",
+]

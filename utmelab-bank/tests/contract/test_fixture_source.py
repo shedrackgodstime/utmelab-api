@@ -92,7 +92,9 @@ def test_adapt_builds_a_raw_bundle() -> None:
     assert raw.content.stem.marks[0].asset_id == "cell-diagram"
     assert raw.media_refs[0].key == "cell-diagram"
     assert raw.media_refs[0].required is True
+    assert raw.catalog is not None
     assert raw.catalog.catalog_version == "2026.1"
+    assert raw.catalog is not None
     assert raw.catalog.subtopic_id == "cell-structure"
 
 

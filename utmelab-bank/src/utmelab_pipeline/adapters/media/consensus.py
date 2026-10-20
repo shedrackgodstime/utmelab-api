@@ -1,9 +1,11 @@
 """Consensus service: reconcile multiple image descriptions into one."""
 
+import asyncio
 from collections import Counter
-from typing import Optional
 
-from utmelab_pipeline.domain.models import DescribeImageResponse, Producer
+from utmelab_pipeline.domain.capabilities import DescribeImageRequest
+from utmelab_pipeline.domain.models import ImageDescription, Producer
+from utmelab_pipeline.domain.ports import ImageDescriber
 
 
 class ConsensusPolicy:
@@ -11,80 +13,67 @@ class ConsensusPolicy:
 
     @staticmethod
     def reconcile(
-        descriptions: tuple["DescribeImageResponse", ...],
-    ) -> "DescribeImageResponse":
+        descriptions: tuple[ImageDescription, ...],
+    ) -> ImageDescription:
         """
         Reconcile multiple descriptions into one consensus description.
 
         Policy:
-        - Description: majority vote on text (or longest if tie)
-        - Facts: union of all facts (deduplicated)
-        - Confidence: average of confidences
-        - Producer: "consensus" with contributors listed
+        - Description: majority vote, longest wins a tie
+        - Facts: union of all facts, deduplicated
+        - Confidence: mean of the confidences
+        - Producer: the consensus, with every contributor listed
         """
         if not descriptions:
             raise ValueError("No descriptions to reconcile")
         if len(descriptions) == 1:
-            return descriptions[0]
+            only = descriptions[0]
+            return only.model_copy(update={"contributors": (only.producer,)})
 
-        # Description: majority vote (or longest as tiebreaker)
-        desc_counts = Counter(d.description for d in descriptions)
-        most_common_desc, _ = desc_counts.most_common(1)[0]
+        counts = Counter(d.description for d in descriptions)
+        most_common = max(counts.items(), key=lambda pair: (pair[1], len(pair[0])))
+        description = most_common[0]
 
-        # Facts: union, deduplicated
-        all_facts = []
-        seen = set()
-        for d in descriptions:
-            for fact in d.facts:
+        facts: list[str] = []
+        seen: set[str] = set()
+        for item in descriptions:
+            for fact in item.facts:
                 if fact not in seen:
                     seen.add(fact)
-                    all_facts.append(fact)
+                    facts.append(fact)
 
-        # Confidence: average
-        avg_confidence = sum(d.confidence for d in descriptions) / len(descriptions)
-
-        # Producer: consensus with contributors
         contributors = tuple(d.producer for d in descriptions)
-        consensus_producer = Producer(
-            provider="consensus",
-            model=f"reconciled-{len(descriptions)}",
-            version=None,
-        )
-
-        return DescribeImageResponse(
+        return ImageDescription(
             asset_id=descriptions[0].asset_id,
-            description=most_common_desc,
-            facts=tuple(all_facts),
+            description=description,
+            facts=tuple(facts),
             confidence=sum(d.confidence for d in descriptions) / len(descriptions),
-            producer=consensus_producer,
+            producer=Producer(
+                provider="consensus",
+                model=f"reconciled-{len(descriptions)}",
+            ),
             contributors=contributors,
         )
 
 
 class DescribeImageConsensus:
-    """Run multiple describers and reconcile their outputs."""
+    """Run several describers and reconcile what they return."""
 
-    def __init__(self, describers: tuple["ImageDescriber", ...]) -> None:
+    def __init__(self, describers: tuple[ImageDescriber, ...]) -> None:
         if len(describers) < 2:
             raise ValueError("Consensus requires at least 2 describers")
-        self.describers = describers
+        self._describers = describers
 
-    async def describe(self, request) -> "DescribeImageResponse":
-        """Run all describers and reconcile."""
-        # Run all describers concurrently
-        import asyncio
-        tasks = [d.describe(request) for d in self.describers]
-        results = await asyncio.gather(*tasks, return_exceptions=True)
-
-        # Collect successful results
-        results_list = []
-        for r in results:
-            if isinstance(r, Exception):
-                # Log error but continue with other results
+    async def describe(self, request: DescribeImageRequest) -> ImageDescription:
+        results = await asyncio.gather(
+            *(d.describe(request) for d in self._describers),
+            return_exceptions=True,
+        )
+        good: list[ImageDescription] = []
+        for result in results:
+            if isinstance(result, BaseException):
                 continue
-            results_list.append(r)
-
-        if not results_list:
-            raise RuntimeError("All describers failed")
-
-        return ConsensusPolicy.reconcile(tuple(results_list))
+            good.append(result)
+        if not good:
+            raise RuntimeError("Every describer failed")
+        return ConsensusPolicy.reconcile(tuple(good))

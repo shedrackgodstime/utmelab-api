@@ -14,12 +14,12 @@ from .conftest import rebuild
 
 
 def test_default_selector_matches_state(staging_item: StagingItem) -> None:
-    assert Selector(state=State.PLANNED).matches(staging_item)
+    assert Selector(state=State.CATALOGUED).matches(staging_item)
 
 
 def test_selector_matches_full_scope(staging_item: StagingItem) -> None:
     selector = Selector(
-        state=State.PLANNED,
+        state=State.CATALOGUED,
         source="source-1",
         exam="JAMB",
         subject="Biology",
@@ -34,15 +34,15 @@ def test_selector_rejects_wrong_state(staging_item: StagingItem) -> None:
 
 
 def test_selector_rejects_wrong_scope(staging_item: StagingItem) -> None:
-    assert not Selector(state=State.PLANNED, source="source-2").matches(staging_item)
-    assert not Selector(state=State.PLANNED, exam="WAEC").matches(staging_item)
-    assert not Selector(state=State.PLANNED, subject="Chemistry").matches(staging_item)
-    assert not Selector(state=State.PLANNED, year=2023).matches(staging_item)
+    assert not Selector(state=State.CATALOGUED, source="source-2").matches(staging_item)
+    assert not Selector(state=State.CATALOGUED, exam="WAEC").matches(staging_item)
+    assert not Selector(state=State.CATALOGUED, subject="Chemistry").matches(staging_item)
+    assert not Selector(state=State.CATALOGUED, year=2023).matches(staging_item)
 
 
 def test_selector_filters_on_media(staging_item: StagingItem) -> None:
-    assert Selector(state=State.PLANNED, has_media=False).matches(staging_item)
-    assert not Selector(state=State.PLANNED, has_media=True).matches(staging_item)
+    assert Selector(state=State.CATALOGUED, has_media=False).matches(staging_item)
+    assert not Selector(state=State.CATALOGUED, has_media=True).matches(staging_item)
 
 
 def test_selector_matches_bundle_with_media(
@@ -61,12 +61,12 @@ def test_selector_matches_bundle_with_media(
         created_at=staging_item.created_at,
         updated_at=staging_item.updated_at,
     )
-    assert Selector(state=State.PLANNED, has_media=True).matches(with_media)
-    assert not Selector(state=State.PLANNED, has_media=False).matches(with_media)
+    assert Selector(state=State.CATALOGUED, has_media=True).matches(with_media)
+    assert not Selector(state=State.CATALOGUED, has_media=False).matches(with_media)
 
 
 def test_selector_limit_is_bounded() -> None:
     with pytest.raises(ValidationError):
-        Selector(state=State.PLANNED, limit=0)
+        Selector(state=State.CATALOGUED, limit=0)
     with pytest.raises(ValidationError):
-        Selector(state=State.PLANNED, limit=1001)
+        Selector(state=State.CATALOGUED, limit=1001)

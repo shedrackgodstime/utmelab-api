@@ -1,10 +1,11 @@
 """Shared value objects and constrained types."""
 
+from datetime import UTC, datetime
 from typing import Annotated, Any, Optional, Union
 
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, HttpUrl, StringConstraints, model_validator
 
-from ..enums import Severity
+from ..enums import MarkKind, Severity, SourceCapability, State, VerificationKind, Verdict
 
 NonEmptyStr = Annotated[str, StringConstraints(min_length=1, strip_whitespace=True)]
 Slug = Annotated[
@@ -138,23 +139,51 @@ class CatalogSnapshot(DomainModel):
         return self
 
 
-class VerificationRecord(DomainModel):
-    """Embedded verification record (AI or human) carried on the staging row."""
+class GateVerdict(DomainModel):
+    """The mechanical gate decision. Passing is not a warning free pass."""
+    passed: bool
+    issues: tuple[Issue, ...] = ()
+    rules_version: NonEmptyStr = "v1"
+
+    @model_validator(mode="after")
+    def _check(self) -> "GateVerdict":
+        has_error = any(issue.severity is Severity.ERROR for issue in self.issues)
+        if self.passed == has_error:
+            raise ValueError("passed must be true exactly when no error issues exist")
+        return self
+
+
+class Verification(DomainModel):
+    """A verification record carried on the staging row.
+
+    The trust rule lives here: an AI verification must name the model that
+    produced it, and a human verification must not carry a model producer.
+    """
     id: NonEmptyStr
-    kind: NonEmptyStr  # "ai" | "human"
-    verdict: NonEmptyStr  # "pass" | "fail" | "abstain"
-    scope: tuple[NonEmptyStr, ...]
+    kind: VerificationKind
+    verdict: Verdict
+    scope: tuple[NonEmptyStr, ...] = Field(min_length=1)
     content_hash: Sha256
-    verifier: NonEmptyStr
-    detail: NonEmptyStr | None = None
+    reviewer: NonEmptyStr
+    note: NonEmptyStr | None = None
     created_at: AwareDatetime
+    producer: Optional[Producer] = None
+
+    @model_validator(mode="after")
+    def _check(self) -> "Verification":
+        if self.kind is VerificationKind.AI and self.producer is None:
+            raise ValueError("AI verification requires a producer")
+        if self.kind is VerificationKind.HUMAN and self.producer is not None:
+            raise ValueError("human verification cannot carry a model producer")
+        return self
 
 
 class Coverage(DomainModel):
-    source: NonEmptyStr
+    source: Slug
     scope: Scope
-    item_count: int = 0
+    item_count: int = Field(ge=0)
     has_more: bool = False
+    notes: NonEmptyStr | None = None
 
 
 class SourceCapabilities(DomainModel):
@@ -168,30 +197,38 @@ class SourceCapabilities(DomainModel):
     sections: bool = False
     marks: bool = False
 
-    def supports(self, capability: str) -> bool:
-        return getattr(self, capability, False)
+    def supports(self, capability: "SourceCapability") -> bool:
+        return bool(getattr(self, capability.value, False))
 
 
 class SourceProfile(DomainModel):
-    name: NonEmptyStr
+    name: Slug
     version: NonEmptyStr
-    exams: tuple[NonEmptyStr, ...] = ()
-    subjects: dict[NonEmptyStr, NonEmptyStr] = {}
-    years: tuple[int, int] | None = None
+    exams: tuple[NonEmptyStr, ...] = Field(min_length=1)
+    subjects: dict[NonEmptyStr, NonEmptyStr] = Field(min_length=1)
+    years: tuple[Year, Year] | None = None
     capabilities: "SourceCapabilities" = SourceCapabilities()
     rate_limit_per_second: float = Field(default=1.0, gt=0.0)
     health_url: HttpUrl | None = None
 
-    def supports(self, capability: str) -> bool:
-        return getattr(self.capabilities, capability, False)
+    @model_validator(mode="after")
+    def _check(self) -> "SourceProfile":
+        if len(set(self.exams)) != len(self.exams):
+            raise ValueError("exams must be unique")
+        if self.years is not None and self.years[0] > self.years[1]:
+            raise ValueError("years must be ordered low to high")
+        return self
+
+    def supports(self, capability: "SourceCapability") -> bool:
+        return self.capabilities.supports(capability)
 
 
 class SourceItem(DomainModel):
-    source: NonEmptyStr
+    source: Slug
     source_url: HttpUrl
     source_item_id: NonEmptyStr
     fetched_at: AwareDatetime
-    payload: dict
+    payload: dict[str, Any]
     payload_hash: Sha256
     scope: Scope
     source_version: NonEmptyStr
@@ -225,14 +262,14 @@ class MediaAsset(DomainModel):
 
 
 class Mark(DomainModel):
-    kind: NonEmptyStr  # bold, italic, underline, strike, subscript, superscript, image
+    kind: MarkKind
     start: int = Field(ge=0)
     length: int = Field(ge=0)
     asset_id: NonEmptyStr | None = None  # for image marks
 
     @model_validator(mode="after")
     def _check(self) -> "Mark":
-        if self.kind == "image":
+        if self.kind is MarkKind.IMAGE:
             if self.asset_id is None:
                 raise ValueError("image marks require an asset_id")
             if self.length != 0:
@@ -302,21 +339,12 @@ class Content(DomainModel):
 
 
 class Evidence(DomainModel):
-    image_descriptions: tuple["DescribeImageResponse", ...] = ()
+    image_descriptions: tuple["ImageDescription", ...] = ()
     tag: Optional["TagProposal"] = None
     explanation: Optional["Explanation"] = None
     answer_verdict: Optional["AnswerVerdict"] = None
     gate: Optional["GateVerdict"] = None
-    verifications: tuple[Any, ...] = ()
-
-    @model_validator(mode="after")
-    def _check_verifications(self) -> "Evidence":
-        from .proposals import TagProposal, Explanation, AnswerVerdict
-        from .validation import GateVerdict, Verification
-        for v in self.verifications:
-            if not isinstance(v, (VerificationRecord, Verification)):
-                raise ValueError("verification must be VerificationRecord or Verification")
-        return self
+    verifications: tuple["Verification", ...] = ()
 
 
 class StagingItem(DomainModel):
@@ -329,14 +357,62 @@ class StagingItem(DomainModel):
     content: "Content"
     media_refs: tuple["MediaRef", ...] = ()
     media_assets: tuple["MediaAsset", ...] = ()
-    evidence: Any = Field(default_factory=lambda: Evidence())
+    evidence: "Evidence" = Field(default_factory=lambda: Evidence())
     catalog: Optional["CatalogRef"] = None
-    state: NonEmptyStr = "acquired"  # acquired, adapted, gated, media_ready, described, enriched, verified, ready
+    state: "State" = State.ACQUIRED
     hashes: Optional["Hashes"] = None
     created_at: AwareDatetime
     updated_at: AwareDatetime
     attempts: int = 0
     error: NonEmptyStr | None = None
+
+    def transition_to(self, target: "State", *, error: NonEmptyStr | None = None) -> "StagingItem":
+        """Move to a new state. The state machine refuses an invented move.
+
+        Staying put is not a move. Re-running a stage on an item that already
+        reached it is idempotent, so it updates the record without asking the
+        state machine for permission.
+        """
+        from ..state import assert_transition
+
+        if self.state is not target:
+            assert_transition(self.state, target)
+        return self.model_copy(
+            update={
+                "state": target,
+                "error": error,
+                "updated_at": datetime.now(UTC),
+            }
+        )
+
+    def with_content_hash(self) -> "StagingItem":
+        """Stamp the content hash that a verification is written against."""
+        from ..hashing import content_fingerprint
+
+        fingerprint = content_fingerprint(
+            stem=self.content.stem,
+            options=self.content.options,
+            answer=self.content.answer,
+            marks=self.content.marks,
+            explanation=self.evidence.explanation,
+            passage=self.content.passage,
+            media_assets=self.media_assets,
+            catalog_version=self.catalog.catalog_version if self.catalog else "",
+        )
+        if self.hashes is None:
+            raise ValueError("cannot stamp a content hash before the payload hash is known")
+        return self.model_copy(
+            update={
+                "hashes": self.hashes.model_copy(update={"content_hash": fingerprint}),
+                "updated_at": datetime.now(UTC),
+            }
+        )
+
+    @model_validator(mode="after")
+    def _check_identity(self) -> "StagingItem":
+        if self.id != self.provenance.external_key:
+            raise ValueError("id must be source:source_item_id")
+        return self
 
     @model_validator(mode="after")
     def _check_evidence(self) -> "StagingItem":
@@ -362,7 +438,7 @@ class StagingItem(DomainModel):
 
         for rich_text in self.content.rich_texts():
             for mark in rich_text.marks:
-                if mark.kind == "image" and mark.asset_id not in known_media:
+                if mark.kind is MarkKind.IMAGE and mark.asset_id not in known_media:
                     raise ValueError(f"mark references unknown media {mark.asset_id!r}")
 
         for description in self.evidence.image_descriptions:
@@ -405,15 +481,6 @@ class VerifyAnswerRequest(DomainModel):
     catalog: Any = None
 
 
-class DescribeImageResponse(DomainModel):
-    asset_id: Sha256
-    description: NonEmptyStr
-    facts: tuple[NonEmptyStr, ...] = ()
-    confidence: Confidence
-    producer: "Producer"
-    contributors: tuple["Producer", ...] = ()
-
-
 class ExplainResponse(DomainModel):
     key_point: "RichText"
     body: "RichText"
@@ -444,7 +511,6 @@ from .proposals import (
     AnswerVerdict,
     ImageDescription,
 )
-from .validation import GateVerdict
 
 # Resolve forward references for models with forward references
 CatalogRef.model_rebuild()
@@ -454,7 +520,6 @@ ExplainRequest.model_rebuild()
 TagRequest.model_rebuild()
 VerifyAnswerRequest.model_rebuild()
 DescribeImageRequest.model_rebuild()
-DescribeImageResponse.model_rebuild()
 ExplainResponse.model_rebuild()
 TagResponse.model_rebuild()
 VerifyAnswerResponse.model_rebuild()

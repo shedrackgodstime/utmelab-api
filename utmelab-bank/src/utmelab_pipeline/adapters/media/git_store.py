@@ -46,7 +46,7 @@ class GitMediaStore(MediaStore):
                 check=True,
             )
 
-    def _run_git(self, args: list[str]) -> subprocess.CompletedProcess:
+    def _run_git(self, args: list[str]) -> subprocess.CompletedProcess[str]:
         return subprocess.run(
             ["git", *args],
             cwd=self.repo_path,
@@ -142,7 +142,7 @@ class GitMediaStore(MediaStore):
         if self.remote_url:
             self._run_git(["pull", self.remote_url, self.branch])
 
-    def status(self) -> dict:
+    def status(self) -> dict[str, object]:
         """Get repository status."""
         result = self._run_git(["status", "--porcelain"])
         return {
