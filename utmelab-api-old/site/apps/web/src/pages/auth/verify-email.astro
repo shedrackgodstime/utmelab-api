@@ -1,0 +1,21 @@
+---
+import AuthShell from '../../layouts/AuthShell.astro';
+---
+
+<AuthShell title="Verify email" description="Verification is not open yet.">
+  <div class="w-full max-w-md rounded-brand border border-hairline bg-surface p-8 shadow-sm space-y-6 text-center">
+    <p class="inline-flex items-center gap-2 rounded-full border border-hairline bg-surface-2 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+      <span class="size-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+      Coming soon
+    </p>
+    <div class="space-y-1.5">
+      <h1 class="text-xl font-semibold tracking-tight text-ink">Nothing to verify yet</h1>
+      <p class="text-xs leading-relaxed text-body">This page starts working when accounts open.</p>
+    </div>
+    <div class="space-y-2.5">
+      <a href="/docs/" class="block w-full rounded-brand bg-accent py-2.5 text-sm font-medium text-accent-ink hover:bg-accent-hover transition-colors shadow-xs">Read the docs</a>
+      <a href="/" class="block w-full rounded-brand border border-hairline bg-surface py-2.5 text-sm font-medium text-ink hover:bg-surface-2 transition-colors">Back to home</a>
+    </div>
+    <p class="text-xs text-muted">Need quick access? Email <a href="mailto:dev@utmelab.com" class="font-medium text-accent hover:underline">dev@utmelab.com</a>.</p>
+  </div>
+</AuthShell>

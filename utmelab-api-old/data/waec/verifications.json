@@ -1,0 +1,2956 @@
+[
+  {
+    "id": "v_q_claim_2003_waec_22704_0001",
+    "question_id": "q_claim_2003_waec_22704",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "bca0f5566b536b852ae3e98e535f26523a2ee62a3a9870d75b61554ebef74a85",
+    "created_at": "2026-10-14T09:27:28Z"
+  },
+  {
+    "id": "v_q_claim_2003_waec_22706_0002",
+    "question_id": "q_claim_2003_waec_22706",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "7d1ef7899e7fe26fbbc0b7ce0edc3dfec086c8695b30d02bad55e755faeda83d",
+    "created_at": "2026-10-14T09:28:16Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37382_0003",
+    "question_id": "q_claim_2013_waec_37382",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "61a9ac4761df51ff036ba21dcbac60c3943ad13a8b4ba08318f3bfdb4569b26a",
+    "created_at": "2026-10-14T09:28:53Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37383_0004",
+    "question_id": "q_claim_2013_waec_37383",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "cbbfcc47609acdf4fbf7084fabc44e7275db88a4e04cbd2d929cadb9ebf42c6a",
+    "created_at": "2026-10-14T09:29:22Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37384_0005",
+    "question_id": "q_claim_2013_waec_37384",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "c8580d3e5acba5a07cdffc62ba53a4b96c05f0a267958a3ef1bfd798bacdbef6",
+    "created_at": "2026-10-14T09:30:30Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37385_0006",
+    "question_id": "q_claim_2013_waec_37385",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "703133f9a955ee9262900fd25adc1d5cba89970907ade72d2cd73519b9ec9f3e",
+    "created_at": "2026-10-14T09:31:19Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37386_0007",
+    "question_id": "q_claim_2013_waec_37386",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "98e57c9fec8d1ab718a49dfbd717d19300278c2416319ea0fb49d4b7c5fb2881",
+    "created_at": "2026-10-14T09:32:09Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37387_0008",
+    "question_id": "q_claim_2013_waec_37387",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "df9077c5999b800d035d15a30470ff25955680d0e4911a14fad6516be50f3e6a",
+    "created_at": "2026-10-14T09:32:41Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37388_0009",
+    "question_id": "q_claim_2013_waec_37388",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "94a3f152b3a6a3e5d966fdbe3d3dcf448c3d0952e9ada490613776ff99eebbac",
+    "created_at": "2026-10-14T09:33:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76656_0010",
+    "question_id": "q_claim_2025_waec_76656",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "a5aa6baa0ec6060ce98bc8b62fadb02e8ee8b0b564356c2d5adf43ee41286f97",
+    "created_at": "2026-10-14T09:34:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76657_0011",
+    "question_id": "q_claim_2025_waec_76657",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "b303b4571456d90ae39423f598555ba45cd8d5911afb8a8e680cc615918a1d05",
+    "created_at": "2026-10-14T09:35:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76661_0012",
+    "question_id": "q_claim_2025_waec_76661",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "78da3e21f1ca8d54381b396cd1a6efa3b00a43e8440e7edb988fec002b1a76ec",
+    "created_at": "2026-10-14T09:36:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77445_0013",
+    "question_id": "q_claim_2025_waec_77445",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "0f01d8132cf18af1645ccdd658e79d816d3cc7d5a6571cca33ef5c7cf3a4d14f",
+    "created_at": "2026-10-14T09:36:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77447_0014",
+    "question_id": "q_claim_2025_waec_77447",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "98076c6d6afca98f817b63e27cc087d926145f107ac9f3382693463ef1e710bd",
+    "created_at": "2026-10-14T09:37:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77452_0015",
+    "question_id": "q_claim_2025_waec_77452",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "99873053db245f4d6ed02d3117b2ab81bc1ef866a69b07787fcd182ae670f553",
+    "created_at": "2026-10-14T09:37:54Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37389_0016",
+    "question_id": "q_claim_2013_waec_37389",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "4b574edcfea95b01da137a4d44e397bed316edba2855b0afced4ec2626b90d62",
+    "created_at": "2026-10-14T09:43:11Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37392_0017",
+    "question_id": "q_claim_2013_waec_37392",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "b924a38f8ec1ece1ad28dea8fa08123ff0f74dcffbaab991552961ba00b592cc",
+    "created_at": "2026-10-14T09:44:37Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37393_0018",
+    "question_id": "q_claim_2013_waec_37393",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "772ad8336d9496ded02c04ae7372a90531b1c03152442ca7adb10642c06b8619",
+    "created_at": "2026-10-14T09:45:18Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37394_0019",
+    "question_id": "q_claim_2013_waec_37394",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "b93e65f5bf8decc4555d74e7a4d9dbb14b1a48aa8f23f60c73e78548791cd087",
+    "created_at": "2026-10-14T09:46:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76329_0020",
+    "question_id": "q_claim_2025_waec_76329",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "44ade36bf0554ba00e4e59d38275a97bd805a3c7c2c7f6f21220d445b98e4749",
+    "created_at": "2026-10-14T09:48:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76330_0021",
+    "question_id": "q_claim_2025_waec_76330",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ed392099e25a761902e7cf516cd22626908dc87aeae7b4cff881992f899b916a",
+    "created_at": "2026-10-14T09:49:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76331_0022",
+    "question_id": "q_claim_2025_waec_76331",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "33a96fa73cddf86c493899de24b4b451a8bbe1ec51f765bd7491a626ff80fb7a",
+    "created_at": "2026-10-14T09:50:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76332_0023",
+    "question_id": "q_claim_2025_waec_76332",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "4e95b731627c7df4e1354fc482df4b7a4c1b098f51b75ab95352f0ae9f508df3",
+    "created_at": "2026-10-14T09:50:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76333_0024",
+    "question_id": "q_claim_2025_waec_76333",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "9b6e8dd2e1ae7ebd9b9093c2efbd1529b6c3b2482359ab49f51c4c4ab2a568af",
+    "created_at": "2026-10-14T09:51:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76334_0025",
+    "question_id": "q_claim_2025_waec_76334",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "e6389274398bb60e7e2e7497df7096e4738575c4dbd898d553c1660e849c3f37",
+    "created_at": "2026-10-14T09:52:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76335_0026",
+    "question_id": "q_claim_2025_waec_76335",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ca743238421d6bd1721c8df6bc5e6e536286aad246f3bc855d0393021a6bb66d",
+    "created_at": "2026-10-14T09:53:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76336_0027",
+    "question_id": "q_claim_2025_waec_76336",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "82802bcfb4ef8f0c6a7934256d96fea4cbf3d3d4103c9aaac853889c76bae374",
+    "created_at": "2026-10-14T10:15:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76337_0028",
+    "question_id": "q_claim_2025_waec_76337",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "a32b62da7d47becbc022c3b1315f86a3e8f06aa61c6a16e3894f538603249378",
+    "created_at": "2026-10-14T10:15:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76338_0029",
+    "question_id": "q_claim_2025_waec_76338",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "4aa2f2b24940148e5eaaea62ea1fcab6b3f42abf7b320b48dfab2cccd28041de",
+    "created_at": "2026-10-14T10:17:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76339_0030",
+    "question_id": "q_claim_2025_waec_76339",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "1e6c1e6d01d9e0e6debb46d93d2485dc7cd021dd5fc15b893f158fcabf7ccb9b",
+    "created_at": "2026-10-14T10:19:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76351_0031",
+    "question_id": "q_claim_2025_waec_76351",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "d319ff4b341d3ae391b8e6087794ce842ca1927afd69d85f16fcb45b3a53543e",
+    "created_at": "2026-10-14T10:19:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76352_0032",
+    "question_id": "q_claim_2025_waec_76352",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "d6359ecc72a6ab5d6568f5e312427de12b925e3689e03ea3f6152593ce92c21c",
+    "created_at": "2026-10-14T10:20:23Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76353_0033",
+    "question_id": "q_claim_2025_waec_76353",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "462cbed5a8afb2598f0cc3b0d86fe077918f41c1fc5643596815d2b6ddc0e45d",
+    "created_at": "2026-10-14T10:21:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76354_0034",
+    "question_id": "q_claim_2025_waec_76354",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ef301440c308f97faccf0b3ecab2605aba8619e439078aa504cdb8be36ebf28a",
+    "created_at": "2026-10-14T10:21:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76355_0035",
+    "question_id": "q_claim_2025_waec_76355",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "d36fd194ea370830862f09697bf500bf35434751e39fb67c2c651b2ac2b4ae94",
+    "created_at": "2026-10-14T10:22:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76357_0036",
+    "question_id": "q_claim_2025_waec_76357",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "6e30015e639b4936b4d68ddb7f6eeee4a9331e9b07f8a8a2f12cb06182b429c4",
+    "created_at": "2026-10-14T10:23:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76360_0037",
+    "question_id": "q_claim_2025_waec_76360",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "eea1710aa55a3f89d0e0ae909799736ea2415ee3873ddf93b526ae278ea31062",
+    "created_at": "2026-10-14T10:24:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76361_0038",
+    "question_id": "q_claim_2025_waec_76361",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "fbe6691dcf21049749d91b6e34755aeb8a6645be4be119c97532828086e488ff",
+    "created_at": "2026-10-14T10:24:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76363_0039",
+    "question_id": "q_claim_2025_waec_76363",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "2b84ed77ba630523d898964edb9d22bf3a29f8af70a080e84f8e16ee24886bce",
+    "created_at": "2026-10-14T10:26:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76367_0040",
+    "question_id": "q_claim_2025_waec_76367",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ff6e396d9fb4068f9a45e96f698c74c2d492f5956fcf868f0f3bd87022dcb729",
+    "created_at": "2026-10-14T10:27:36Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76368_0041",
+    "question_id": "q_claim_2025_waec_76368",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "faa79c08d8d2f0fb31f174e9f2c1de79442e995dfeb3095407e971b89fccd0d3",
+    "created_at": "2026-10-14T10:28:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76369_0042",
+    "question_id": "q_claim_2025_waec_76369",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "156eac9bd9eb8b7838d4c7b813757293307399cb51f3db31c0bc5dcbe45f6a69",
+    "created_at": "2026-10-14T10:28:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76371_0043",
+    "question_id": "q_claim_2025_waec_76371",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "70154d8d279e05b707560be449affc8e5feadd98b0dd92f219f185b20b0eb8e9",
+    "created_at": "2026-10-14T10:30:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76373_0044",
+    "question_id": "q_claim_2025_waec_76373",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "2eba5bc800ed184c7b61930845fb66e3337b949f87017300cba3671910e77bb6",
+    "created_at": "2026-10-14T10:31:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76374_0045",
+    "question_id": "q_claim_2025_waec_76374",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "5c1584d403cecb842b6afa9e73c9625817e0d9ca4b40efad67721d5018f755ad",
+    "created_at": "2026-10-14T10:32:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76376_0046",
+    "question_id": "q_claim_2025_waec_76376",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "20afa52ca33d26dca1179807f412a3c60ce4479eae80d57f0975ec3b0de2ea10",
+    "created_at": "2026-10-14T10:32:49Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76377_0047",
+    "question_id": "q_claim_2025_waec_76377",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "829c92dc07e0a10aae4e042436e7fa7737350f36df65f3ea68bba4020ec26795",
+    "created_at": "2026-10-14T10:33:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76378_0048",
+    "question_id": "q_claim_2025_waec_76378",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "9ed33d6f498f87f2a1e8e45e0ec54d16425a8845c5c436b9a7284d12cbb3c185",
+    "created_at": "2026-10-14T10:35:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76381_0049",
+    "question_id": "q_claim_2025_waec_76381",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "e146037013ed3bf99d3acb15eaa76e7cf72e92fd9f0c3ab8a986d36f3b212aa6",
+    "created_at": "2026-10-14T10:36:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76384_0050",
+    "question_id": "q_claim_2025_waec_76384",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "31c3eefc2da08f39ec7b8e4d2c7d5915d10b55c7935de88c1502821e15394050",
+    "created_at": "2026-10-14T10:37:15Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76385_0051",
+    "question_id": "q_claim_2025_waec_76385",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "9f3629bde9508a29835dff66e05eac84873560327de9e75aea65629d3c1a234f",
+    "created_at": "2026-10-14T10:37:57Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76386_0052",
+    "question_id": "q_claim_2025_waec_76386",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "afb8eec178ba279b810165c9b3a6e731d0e7659638c623cc487f0bd1b3c3e539",
+    "created_at": "2026-10-14T10:38:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76387_0053",
+    "question_id": "q_claim_2025_waec_76387",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "9a34fddcd534f939ad190de4e68b9d95a2ea59d0bc8b5b4e8acb09c9fc45397e",
+    "created_at": "2026-10-14T10:39:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76388_0054",
+    "question_id": "q_claim_2025_waec_76388",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "11905b1846e76d6139aae1b3c1b3465acd27e0ca86a42c09708d0477424e1f79",
+    "created_at": "2026-10-14T10:41:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76394_0055",
+    "question_id": "q_claim_2025_waec_76394",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "e0cfe7954d20512ce3b8833ec3fdc7310b5618ec9cc84d84089688f598e9adda",
+    "created_at": "2026-10-14T10:49:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76400_0056",
+    "question_id": "q_claim_2025_waec_76400",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "eefd14557fa184d8af127042210635ddb770a0951496b8bc1c9feac2f8a2bba2",
+    "created_at": "2026-10-14T10:50:52Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76401_0057",
+    "question_id": "q_claim_2025_waec_76401",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "bb2169909bc94ee3402a74431e275a797e7fe3dcb6615eb8134ef41433b342ca",
+    "created_at": "2026-10-14T10:51:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76404_0058",
+    "question_id": "q_claim_2025_waec_76404",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "6cb846933efcf1e19013a5e421ce5d7719626164ba1780c2c11e2fedeeb680c4",
+    "created_at": "2026-10-14T10:53:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76411_0059",
+    "question_id": "q_claim_2025_waec_76411",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "e8d4fd8f7e17762044ce41f6faf6ab80fb53c9803a1acb1f9bdf05818e0a5d03",
+    "created_at": "2026-10-14T10:54:53Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37400_0060",
+    "question_id": "q_claim_2013_waec_37400",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "5a48c4e17d266f033283eae36ca096ad49044c0cbe433b81288ed05ea2d63b2b",
+    "created_at": "2026-10-14T10:59:59Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37401_0061",
+    "question_id": "q_claim_2013_waec_37401",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "6e6af480cf292e7466ff6b2847c21bfd2ece334bce39faacf5ca0132ffea5da9",
+    "created_at": "2026-10-14T11:01:00Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37403_0062",
+    "question_id": "q_claim_2013_waec_37403",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "aad3cd6c7c035d9a57329b563166e7ea99bd4815f51eaa0158f8e3b1a6eecd9a",
+    "created_at": "2026-10-14T11:01:38Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37407_0063",
+    "question_id": "q_claim_2013_waec_37407",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "5be6164999f7cfae7d807d348d072d5a63f448929456ea92c8caeaf8bf5d5034",
+    "created_at": "2026-10-14T11:02:20Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37409_0064",
+    "question_id": "q_claim_2013_waec_37409",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "7f1f52b05ce0a0a345201d90a55f798ca43b3a9807279b1001966255db9bd9c8",
+    "created_at": "2026-10-14T11:03:11Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37418_0065",
+    "question_id": "q_claim_2013_waec_37418",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "0324f0b757aa4fe7632e2cafa284daf7f0ea91edc38a9f2cafad935a08dabe8a",
+    "created_at": "2026-10-14T11:04:08Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37422_0066",
+    "question_id": "q_claim_2013_waec_37422",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ee42533d183e6a12268d0998d3aade422e2ce9223875ee8eea30a92fb3d3a231",
+    "created_at": "2026-10-14T11:04:53Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37423_0067",
+    "question_id": "q_claim_2013_waec_37423",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "7dc987162bdbba2650a4b61e09c8da2ce816f4bc110a65eab2414c26b53c59c9",
+    "created_at": "2026-10-14T11:05:34Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37424_0068",
+    "question_id": "q_claim_2013_waec_37424",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "8aa9935289a844b359d617cdbe320619f42c5d237c3144d53d254b0b7d863559",
+    "created_at": "2026-10-14T11:06:43Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37427_0069",
+    "question_id": "q_claim_2013_waec_37427",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "08df1ce11e41d7ab1668813dc72ff87e557d683eb13a112808f135f269028aaa",
+    "created_at": "2026-10-14T11:07:29Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37428_0070",
+    "question_id": "q_claim_2013_waec_37428",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ca8656f42ee1654af344f9d3c67c2ff97da7052969d5e4ba183af1a27aa26b01",
+    "created_at": "2026-10-14T11:08:42Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37429_0071",
+    "question_id": "q_claim_2013_waec_37429",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "40da7880b4adf93cf9f364c28187861c39ea58ed14a0f1b2440188928aec0c05",
+    "created_at": "2026-10-14T11:09:23Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37430_0072",
+    "question_id": "q_claim_2013_waec_37430",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "9648b797da70ce1398139cf6a7111894f8b3343012422c6faeb344095dfe9898",
+    "created_at": "2026-10-14T11:10:02Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37431_0073",
+    "question_id": "q_claim_2013_waec_37431",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "13f89555e186f5f92ea6fc247f60cc1cc141437891c138dd34ba7091540affe1",
+    "created_at": "2026-10-14T11:10:48Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37432_0074",
+    "question_id": "q_claim_2013_waec_37432",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "3cf5fe7eb52101a8375a86441ba1fc3d54246d144422edab0df2c4e129f77771",
+    "created_at": "2026-10-14T11:12:01Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37436_0075",
+    "question_id": "q_claim_2013_waec_37436",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "8b6dfabeb4f38d8c372c2b3f58d457612e1104b9bc7d5be2924bcca417e8d9fa",
+    "created_at": "2026-10-14T11:12:59Z"
+  },
+  {
+    "id": "v_q_claim_2013_waec_37437_0076",
+    "question_id": "q_claim_2013_waec_37437",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "72aff0a0cddf1db0b30478d96ec14e7bda1b47fd95074d0c0e4124aa4c8b66c5",
+    "created_at": "2026-10-14T11:13:58Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37310_0077",
+    "question_id": "q_claim_2014_waec_37310",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ba896dee4108554395f83ce71b4e3a6f1d640bcb00e0ce09a6e10c95e702bdc9",
+    "created_at": "2026-10-14T11:14:39Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37311_0078",
+    "question_id": "q_claim_2014_waec_37311",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "b944d0084de921efb5a2968248a20f42ff2d98bb3e4364fc4dc00bf1c0fa8342",
+    "created_at": "2026-10-14T11:15:38Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37312_0079",
+    "question_id": "q_claim_2014_waec_37312",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "1f2d1fc9ed9bcdbe82a774cea78f6f1bda5ec88a7f472ba9cf3cc18059dd9167",
+    "created_at": "2026-10-14T11:16:55Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37314_0080",
+    "question_id": "q_claim_2014_waec_37314",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "d397b8241b65eec4c9727082165fc7f43fa394e2e244215e47b12cf42e5c110b",
+    "created_at": "2026-10-14T11:17:54Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37315_0081",
+    "question_id": "q_claim_2014_waec_37315",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "c31f490998221dd7b4172ffdcc5b6db2c8fd54c1f9825b6e1b358d28363fdbf6",
+    "created_at": "2026-10-14T11:18:31Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37316_0082",
+    "question_id": "q_claim_2014_waec_37316",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "60b1222213d15ed0e69a1246cb5ea08cbf678a2b15b58fb218d46e4024009c7b",
+    "created_at": "2026-10-14T11:19:43Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37318_0083",
+    "question_id": "q_claim_2014_waec_37318",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "902715baf59372e31aa724a97e078556c6bd1716e20a04c703d4ac57fc8ef616",
+    "created_at": "2026-10-14T11:20:19Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37320_0084",
+    "question_id": "q_claim_2014_waec_37320",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "d67a271443e6852b358f59a5bc202cdcc8748c9fcf8e7edebf6510df48c820cc",
+    "created_at": "2026-10-14T11:21:06Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37324_0085",
+    "question_id": "q_claim_2014_waec_37324",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ecbfcb43d992888dc6c55643b2dd93d0db5833b18795396eb1a0935c75ef7244",
+    "created_at": "2026-10-14T11:21:52Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37325_0086",
+    "question_id": "q_claim_2014_waec_37325",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "b8231979e69f2148f8758d0f8cd5c53858ffb0dc6786522461237bc8b55c157e",
+    "created_at": "2026-10-14T11:22:29Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37326_0087",
+    "question_id": "q_claim_2014_waec_37326",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "060245e0b93d71bd4cf628195a3c0cbdf4773d1181c02b34ed83e42c93f7e127",
+    "created_at": "2026-10-14T11:23:02Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37327_0088",
+    "question_id": "q_claim_2014_waec_37327",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "83b0d01e4b312dc97bc64e634c7b7b87333d92483733020406730cb0a1c298b4",
+    "created_at": "2026-10-14T11:23:35Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37329_0089",
+    "question_id": "q_claim_2014_waec_37329",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "2b8c0004cde5aac6f68146ffe4adb03f567985eac542788be20d771c76531a77",
+    "created_at": "2026-10-14T11:24:13Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37330_0090",
+    "question_id": "q_claim_2014_waec_37330",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "fd17ca135d505c94f6eaa8cc9c3418d5816e1912be6e7417a3e7afcd4fd3474a",
+    "created_at": "2026-10-14T11:24:57Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37331_0091",
+    "question_id": "q_claim_2014_waec_37331",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "84580bea1b39920bbd125116b2f63a8c6f6c12257bdaf78a39a5795f90ec5242",
+    "created_at": "2026-10-14T11:25:56Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37333_0092",
+    "question_id": "q_claim_2014_waec_37333",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "3fd8510a8954560c9dae5f699130a5a53803ab6e979891302aa4eee06b3a61e4",
+    "created_at": "2026-10-14T11:26:36Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37334_0093",
+    "question_id": "q_claim_2014_waec_37334",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "6728e4666bcadb4bcb88cf5edf598a57b563b220eb92435bb4ab518fea37d8a6",
+    "created_at": "2026-10-14T11:27:23Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37335_0094",
+    "question_id": "q_claim_2014_waec_37335",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "0241f1e5151ac1bdda4f0e45553b795b2fffbea94ed2d1177d42aaaf193153e1",
+    "created_at": "2026-10-14T11:27:58Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37336_0095",
+    "question_id": "q_claim_2014_waec_37336",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "f9a5720e38ec04cf98a046e65d2302056457d7e331462e261399773d531d3f77",
+    "created_at": "2026-10-14T11:28:55Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37337_0096",
+    "question_id": "q_claim_2014_waec_37337",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "26e25f40b611c2f5fd1c56a9d39acffc3fcd1a19beedfe4f7f52e2d766d06642",
+    "created_at": "2026-10-14T11:29:53Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37339_0097",
+    "question_id": "q_claim_2014_waec_37339",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "f87dc0ecb8ac39699b982b0adad71a20f052c1a1d282be75f0556bd6902ca8e4",
+    "created_at": "2026-10-14T11:30:35Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37345_0098",
+    "question_id": "q_claim_2014_waec_37345",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "b2921a8fad0d2328ee31fc8bdbd99bd5dad8644b6b13d914b82b8b8d08fa826c",
+    "created_at": "2026-10-14T11:31:22Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37346_0099",
+    "question_id": "q_claim_2014_waec_37346",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "7e60a4b4cc079f34fe9d5105c19a6a098cf43ed57e24df148d714a81c491d968",
+    "created_at": "2026-10-14T11:32:08Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37347_0100",
+    "question_id": "q_claim_2014_waec_37347",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "810c199511b6a4928afacf6727ae8b193248af4419c035401465c277c1311fff",
+    "created_at": "2026-10-14T11:32:44Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37350_0101",
+    "question_id": "q_claim_2014_waec_37350",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "29ddde6ccbc3f2b34393fbca90b88426a5eb47328b5bbb1bdaa5ef742c1ecda0",
+    "created_at": "2026-10-14T11:33:31Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37351_0102",
+    "question_id": "q_claim_2014_waec_37351",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "d9f1acfbff0e775ef05ebaed693870deab014b280a87bc4cc4acdce4de52fc63",
+    "created_at": "2026-10-14T11:34:15Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37352_0103",
+    "question_id": "q_claim_2014_waec_37352",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "f691697b66eb5cb22722c2cc7d185312f2799431fba1cb488298ed7dc627c2ff",
+    "created_at": "2026-10-14T11:35:08Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37353_0104",
+    "question_id": "q_claim_2014_waec_37353",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "d51b5ed7ebd0d6d2ab54ec208afc262f990242bf6298d53504a1cdc06985a945",
+    "created_at": "2026-10-14T11:37:09Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37354_0105",
+    "question_id": "q_claim_2014_waec_37354",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "f374a49c3127035acaddeb1f9e61e1a8ea3775966cce808d59523bb3819bfd8c",
+    "created_at": "2026-10-14T11:39:25Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37355_0106",
+    "question_id": "q_claim_2014_waec_37355",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ab61b5ef8af8e197b9ec08e5734cac3d05cd28deb332bf13856c99986d13450f",
+    "created_at": "2026-10-14T11:40:15Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37356_0107",
+    "question_id": "q_claim_2014_waec_37356",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "3d6c712e2ce4e53c84fcc1db245f483792f184a4ff6893273d95f17cae1f3cdd",
+    "created_at": "2026-10-14T11:42:06Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37357_0108",
+    "question_id": "q_claim_2014_waec_37357",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "cdda2d0ad06c17d7306bd4256fff6a259c3bcdda5e5b1ff56094de00681e87cc",
+    "created_at": "2026-10-14T11:43:01Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37358_0109",
+    "question_id": "q_claim_2014_waec_37358",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "11d707542e55884253fffcfe84b676c294025f342746f52fb019732bba766a6e",
+    "created_at": "2026-10-14T11:43:54Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37361_0110",
+    "question_id": "q_claim_2014_waec_37361",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "102660acda13f2066a3fc12514ab56c512fed664dad039f8bd6c6409f23061d3",
+    "created_at": "2026-10-14T11:44:54Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37362_0111",
+    "question_id": "q_claim_2014_waec_37362",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "b37619635798c2f6cb3253ebf28173fcd6ed68e2e96415318eb90d35b349e63f",
+    "created_at": "2026-10-14T11:45:40Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37367_0112",
+    "question_id": "q_claim_2014_waec_37367",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ac7b05b83fd2597f7d84b452cd5b3c3c8986f411aa285605a8c89de02b525609",
+    "created_at": "2026-10-14T11:46:31Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37372_0113",
+    "question_id": "q_claim_2014_waec_37372",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "2ffba4d5661fec51c5dadd24c07843b4f1990930f769df2c604f010efc7faded",
+    "created_at": "2026-10-14T11:47:23Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37373_0114",
+    "question_id": "q_claim_2014_waec_37373",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "b39fdc8ea49dd8e9a84fe2010acf9886e03b8afac7edfb2772be320887d410e8",
+    "created_at": "2026-10-14T11:48:31Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37374_0115",
+    "question_id": "q_claim_2014_waec_37374",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "6ca2a92036ab4548c79288ca952525a6be6f887095b0097e8a469c7144c9c453",
+    "created_at": "2026-10-14T11:49:49Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37376_0116",
+    "question_id": "q_claim_2014_waec_37376",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "9f6aa702c28406f5fe18e89ec3562134f266984ccdb8fb0a7eabf6e31b2f3d27",
+    "created_at": "2026-10-14T11:50:52Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37377_0117",
+    "question_id": "q_claim_2014_waec_37377",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "c9a5c5210dc5fdf2348816bd3ef4c4ae32076e61faf1d8146a829e628239356b",
+    "created_at": "2026-10-14T11:52:03Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37378_0118",
+    "question_id": "q_claim_2014_waec_37378",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "87c5cf492f5bf46f4fdf417bdeeac0e70090330ed4270d10ebb7863d68aeea00",
+    "created_at": "2026-10-14T11:53:11Z"
+  },
+  {
+    "id": "v_q_claim_2014_waec_37381_0119",
+    "question_id": "q_claim_2014_waec_37381",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ee172e6acd55b1777001e33c6094cbbb8fa5a497746db9ab38443bd35fb0a70e",
+    "created_at": "2026-10-14T11:55:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76688_0120",
+    "question_id": "q_claim_2025_waec_76688",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "f5d65e0c07d4a09943366b6dd85b267b4f14277ecc7b9d63c1e1ea121ef786fd",
+    "created_at": "2026-10-14T12:05:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76689_0121",
+    "question_id": "q_claim_2025_waec_76689",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "eeaf898174d7fe4a5fd9ede5b20ba6e6e62af3d4765f9ac6409c85472d804054",
+    "created_at": "2026-10-14T12:06:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76690_0122",
+    "question_id": "q_claim_2025_waec_76690",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "2d0edf4da7cca6a0b64e70a573483276c3a78c76070fa7e7baa4c262c3ac7673",
+    "created_at": "2026-10-14T12:07:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76692_0123",
+    "question_id": "q_claim_2025_waec_76692",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "572982307609f1623954d1c85c1d38d578cb0018ed46b749d7f08757b9c34f40",
+    "created_at": "2026-10-14T12:08:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76694_0124",
+    "question_id": "q_claim_2025_waec_76694",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "efa7f0010c3bf9cb6c2cc3d7ce4799efe0050de6d33ed1c53b7c47d1d77232a2",
+    "created_at": "2026-10-14T12:09:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76714_0125",
+    "question_id": "q_claim_2025_waec_76714",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "f61ef1b6756b139b071f777fe14077f11740531dd8f4c4f729551163c1c2109c",
+    "created_at": "2026-10-14T12:10:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76719_0126",
+    "question_id": "q_claim_2025_waec_76719",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "c05e3d27040fb1f0f2167f852378e7dc955986b9d152702d68a6e81261dbfb43",
+    "created_at": "2026-10-14T12:12:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76723_0127",
+    "question_id": "q_claim_2025_waec_76723",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ab6c14784cc7b02b2975f97da187c046417e76f2b6dbfe2d1ba905d90a022ae4",
+    "created_at": "2026-10-14T12:13:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76727_0128",
+    "question_id": "q_claim_2025_waec_76727",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "571e6841bb271b5c6b9b9ca523e31aa39192b2b812542179175b9d07f18b6e14",
+    "created_at": "2026-10-14T12:16:04Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76731_0129",
+    "question_id": "q_claim_2025_waec_76731",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "7de121645c1f90e4b3c9698d2e0462cc0d8309d2345f83029e9ee997fa680dc6",
+    "created_at": "2026-10-14T12:17:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76734_0130",
+    "question_id": "q_claim_2025_waec_76734",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "7391cf8abd1374c18449603266505f32add679146f77f082c5fff5d501fae75d",
+    "created_at": "2026-10-14T12:18:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76740_0131",
+    "question_id": "q_claim_2025_waec_76740",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "f68037f8844e02fa2a3b23ff28ba42bf5c5964338d7e5e650b376be5e070ddfe",
+    "created_at": "2026-10-14T12:19:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76743_0132",
+    "question_id": "q_claim_2025_waec_76743",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "86bded313ba4dca1520e84325e4a896b97b341a9332da94047d8e4206214d282",
+    "created_at": "2026-10-14T12:19:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76744_0133",
+    "question_id": "q_claim_2025_waec_76744",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "6fd7bb490ce0a24fe3cd3cda5cb68c2a0d4d104c738b6f82bda37fa858b80bd2",
+    "created_at": "2026-10-14T12:21:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76745_0134",
+    "question_id": "q_claim_2025_waec_76745",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "8eb74171ea8fbeb55fc7b610ab95d60f4d2e39d49466846b4adc4c95ab8f3cf2",
+    "created_at": "2026-10-14T12:21:49Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76746_0135",
+    "question_id": "q_claim_2025_waec_76746",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "2733b176ca47c74d5b0ec033decf19679b8aa2f38f906888a5217af53eccdbf6",
+    "created_at": "2026-10-14T12:23:07Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76747_0136",
+    "question_id": "q_claim_2025_waec_76747",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "43d8baea0ad32e0225cff659ac884ca6461e52cc07c17ac07b4f5c6af7b827b7",
+    "created_at": "2026-10-14T12:23:46Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76748_0137",
+    "question_id": "q_claim_2025_waec_76748",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "16c826549e7b91d2ba6df18bc673de65000d4fbd929a332b338f96f0341a1282",
+    "created_at": "2026-10-14T12:24:30Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76749_0138",
+    "question_id": "q_claim_2025_waec_76749",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "b7021e10989f4a0a013c95feca9073006c800ae398a1b7f6ce5b0d0ade95ea3d",
+    "created_at": "2026-10-14T12:25:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76750_0139",
+    "question_id": "q_claim_2025_waec_76750",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "11d9ca404405036d25fe7b930092e9b3a1c0d1e058e0daefc713ee8e0abb4adc",
+    "created_at": "2026-10-14T12:25:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76751_0140",
+    "question_id": "q_claim_2025_waec_76751",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "4763c09266306d1764a62ce4c7bfbe3c0c9435209c8cc3905c8cba12231c3873",
+    "created_at": "2026-10-14T12:27:12Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76754_0141",
+    "question_id": "q_claim_2025_waec_76754",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "6df3356b55de40f50ec0c19171085bc1c069128907bcd3cfaac9167abc61862e",
+    "created_at": "2026-10-14T12:28:18Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76756_0142",
+    "question_id": "q_claim_2025_waec_76756",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "bd2fb2026c1eaeabfc5fd350aa7fc54a1fca0de62fd1b884a73e3306f9983eae",
+    "created_at": "2026-10-14T12:29:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76757_0143",
+    "question_id": "q_claim_2025_waec_76757",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "d04fce48cb03b03ed2f8b436bd6cd2036958441ab2a05076c050cfca99a2ce38",
+    "created_at": "2026-10-14T12:29:53Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76758_0144",
+    "question_id": "q_claim_2025_waec_76758",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "88b611110f36aa9de27797c10afe5962336f853c5f879aa67f25a6b1cc50d081",
+    "created_at": "2026-10-14T12:30:34Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76759_0145",
+    "question_id": "q_claim_2025_waec_76759",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "9b13dc42c3792866674ad23b2b42d1c95058d65d50fb48076f6c8c14ca9c4c03",
+    "created_at": "2026-10-14T12:31:13Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76760_0146",
+    "question_id": "q_claim_2025_waec_76760",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "bef2737a67b509ee9b9781089c2c3f319d8d319721ba005dddcea5c97c291096",
+    "created_at": "2026-10-14T12:32:24Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76761_0147",
+    "question_id": "q_claim_2025_waec_76761",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "78c57c65df0cfd419ab3ab7f1c3b8c03d5349bebe0b8f886ce9937d780085b30",
+    "created_at": "2026-10-14T12:33:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76762_0148",
+    "question_id": "q_claim_2025_waec_76762",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "1f2066a0e48988d81bef7f4bc26a20d51bbdbae5e1c55c3c8bc7e08e35531145",
+    "created_at": "2026-10-14T12:34:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76780_0149",
+    "question_id": "q_claim_2025_waec_76780",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "23fa9349c1073cb6a48aa286994e7859da3a25c21bbce28e83e5f0c6cbcdcd8b",
+    "created_at": "2026-10-14T12:34:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76781_0150",
+    "question_id": "q_claim_2025_waec_76781",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "c52783d52a21dc7b098af134975c80a7f833adfcf4aef2ebe36054598dcf5503",
+    "created_at": "2026-10-14T12:35:09Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76783_0151",
+    "question_id": "q_claim_2025_waec_76783",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "c508fbe0b46501a291e97cb23e8219d004b3ca75b048d105869cda9966c94126",
+    "created_at": "2026-10-14T12:36:02Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76785_0152",
+    "question_id": "q_claim_2025_waec_76785",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "a7339cc82a0be65c237597886e64fafc3c305da72be4af27578b592a1e87c889",
+    "created_at": "2026-10-14T12:36:35Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76789_0153",
+    "question_id": "q_claim_2025_waec_76789",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "b6441a16c47fe3f3ddc729f9ef9b148cc138abd37f3f5463e934b3ddf8c74044",
+    "created_at": "2026-10-14T12:37:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76790_0154",
+    "question_id": "q_claim_2025_waec_76790",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "50fe92448f781ab0291d70f72436e74def09cc443ba4196e263bbdf3b2c8ecc2",
+    "created_at": "2026-10-14T12:37:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76791_0155",
+    "question_id": "q_claim_2025_waec_76791",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "3550b6ad527dff358b13912e794f894f0fc5b4ca2766a4f500b334cec766d3b8",
+    "created_at": "2026-10-14T12:38:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76792_0156",
+    "question_id": "q_claim_2025_waec_76792",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "1516787f83c62b757c38ec6c0c1064080411f8aaead1433fc0bc0bf6391f6349",
+    "created_at": "2026-10-14T12:38:54Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76793_0157",
+    "question_id": "q_claim_2025_waec_76793",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "572f5881cd8fe8e35a17344784ae21dfa4ce712fceee9831edccab809b099cfe",
+    "created_at": "2026-10-14T12:39:21Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76794_0158",
+    "question_id": "q_claim_2025_waec_76794",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "00ed5d4c89c0f70c9d6e01813b0f0c31e24393d2070ffecf41be81aeb571f583",
+    "created_at": "2026-10-14T12:39:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76795_0159",
+    "question_id": "q_claim_2025_waec_76795",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "b969c703ffbf10bc3863086fd1e866495f6209d5bbd9767bd00727e3d8c9c90a",
+    "created_at": "2026-10-14T12:40:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76796_0160",
+    "question_id": "q_claim_2025_waec_76796",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "5033918ffd26a1a0621f3ef18192f8d01ae4ed736fe84d70a178298c9b7faa56",
+    "created_at": "2026-10-14T12:41:10Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76797_0161",
+    "question_id": "q_claim_2025_waec_76797",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "a1a28c79bf8f1c985e12592deb08fec524d1bf60d7dc24b075dcfeeb44c6c9d7",
+    "created_at": "2026-10-14T12:41:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76798_0162",
+    "question_id": "q_claim_2025_waec_76798",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "886d034920ade8640a936c084b3c48837090519e0d1bcf3a7805a335a61d5b44",
+    "created_at": "2026-10-14T12:42:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76801_0163",
+    "question_id": "q_claim_2025_waec_76801",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "4278e6b5b80a1b1d343ffaef23957d3c5c9e6ab335bfdb540cca4ba43dc57ad1",
+    "created_at": "2026-10-14T12:43:28Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_76802_0164",
+    "question_id": "q_claim_2025_waec_76802",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "7d75f517602b5816368560b2f40cb9219aa731380cff2a04acf3c5599af60dfd",
+    "created_at": "2026-10-14T12:43:59Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77456_0165",
+    "question_id": "q_claim_2025_waec_77456",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "0f1f7feddbaea36a52e6dee78dcac8e0628ce7b6715093eee2c1cd2c0847d7ed",
+    "created_at": "2026-10-14T12:54:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77460_0166",
+    "question_id": "q_claim_2025_waec_77460",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "0a14cc036f9771f22b449bd5dca46c0f31a5807add3ad697fca830d4c596c707",
+    "created_at": "2026-10-14T12:55:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77476_0167",
+    "question_id": "q_claim_2025_waec_77476",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "d7b3f9668c89edb8dbae06e5c9d70dcde24e5c283aa69d8ca89b3439a25eccb2",
+    "created_at": "2026-10-14T12:56:25Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77478_0168",
+    "question_id": "q_claim_2025_waec_77478",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "660cfff8dee7651cef6aa27b2709f437da29f8f11cde516f5d3512ac4db8ee7f",
+    "created_at": "2026-10-14T12:57:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77479_0169",
+    "question_id": "q_claim_2025_waec_77479",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ff75e5ef627343e83e63f81180e52a2369d0a9bd3d9a2f39998e455bc31f6f70",
+    "created_at": "2026-10-14T12:57:47Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77480_0170",
+    "question_id": "q_claim_2025_waec_77480",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "bbe0af825351bea6a075bdcc1d1e51f21569e43f8c51d8ef7ae594cd37e7d168",
+    "created_at": "2026-10-14T12:58:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77481_0171",
+    "question_id": "q_claim_2025_waec_77481",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "4484eaaba5c46420e70c70f39a0642f6df20485d18a081196e9365fff4ec1bd7",
+    "created_at": "2026-10-14T12:59:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77482_0172",
+    "question_id": "q_claim_2025_waec_77482",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "594fa44dbbae65208e3aad257e771211a12c5018e966e4e1e52f564378625cc6",
+    "created_at": "2026-10-14T13:02:11Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77483_0173",
+    "question_id": "q_claim_2025_waec_77483",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "f35c61e580c4478ba84b1ec4205b54d6e72c09b0a317767936612caf073b3db1",
+    "created_at": "2026-10-14T13:04:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77484_0174",
+    "question_id": "q_claim_2025_waec_77484",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "00c63eb6ebc2e2b7e82ec95e0084eb2d7b1892c2df8dbcbba1a15247b325c2cc",
+    "created_at": "2026-10-14T13:05:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77485_0175",
+    "question_id": "q_claim_2025_waec_77485",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "8e0fcca57bc9a5323c4df4f1bdbb1a9dca2db25bfd0e7ad6ee2a6a870abb876d",
+    "created_at": "2026-10-14T13:07:06Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77486_0176",
+    "question_id": "q_claim_2025_waec_77486",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "afbea4846ff710df7b7b805c6d3cf2b4c4830129f0a7989d3563327f959deb9a",
+    "created_at": "2026-10-14T13:09:00Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77487_0177",
+    "question_id": "q_claim_2025_waec_77487",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "692de30abfec9156f5efd9b58ed3eee694111cf6a104f672d40b9d51eb5785c9",
+    "created_at": "2026-10-14T13:10:19Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77500_0178",
+    "question_id": "q_claim_2025_waec_77500",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "89164db00e8d42e79eba0410e27a8ec5edc863ce04fd5da789e8dbf12ba7182a",
+    "created_at": "2026-10-14T13:11:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77501_0179",
+    "question_id": "q_claim_2025_waec_77501",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "d4e7be9ccffa52fa580df9c3f1bc872b76cc36dc6e64f7eb04a444e7d327b740",
+    "created_at": "2026-10-14T13:13:05Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77503_0180",
+    "question_id": "q_claim_2025_waec_77503",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "aed7dc72604465a832d5748ffa1127bb75b85e5ff76fb3962df8fb9d63e90b4e",
+    "created_at": "2026-10-14T13:14:01Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77505_0181",
+    "question_id": "q_claim_2025_waec_77505",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "553642550e02b3cfada83cba975c4ca1aec28d4f94c81673ea83923bc9036d18",
+    "created_at": "2026-10-14T13:15:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77511_0182",
+    "question_id": "q_claim_2025_waec_77511",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "0cca8558ef7ee00346e4beba35a102496d7fbd5ac8b4e85238f395bbdccf8e8e",
+    "created_at": "2026-10-14T13:16:43Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77517_0183",
+    "question_id": "q_claim_2025_waec_77517",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "4707000d8de520772a58b2655916163951cb3dfe1f763d48f10f322017bf1226",
+    "created_at": "2026-10-14T13:17:51Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77519_0184",
+    "question_id": "q_claim_2025_waec_77519",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "2a322b26d2c39741918b433894686e52b8a6f42b87387d2119c9f4cc4d53efd3",
+    "created_at": "2026-10-14T13:18:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77520_0185",
+    "question_id": "q_claim_2025_waec_77520",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "cd0f1e053b9f9d053f3cc340fa4795b126425aced52ea0c8f26fb11f6b962031",
+    "created_at": "2026-10-14T13:19:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77527_0186",
+    "question_id": "q_claim_2025_waec_77527",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "02dba538ca29bf5afbb0cb027df0b2d8d1c3422b561f709e475bfb0967c4213f",
+    "created_at": "2026-10-14T13:20:50Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77530_0187",
+    "question_id": "q_claim_2025_waec_77530",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "62bc923ab9f6026709757ed3b4d5f753f4cfe0b20ec47f0ea02d09ac559034a6",
+    "created_at": "2026-10-14T13:21:41Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77531_0188",
+    "question_id": "q_claim_2025_waec_77531",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "d88134d07a458da5441228c938583b0853fe2622f937945f8ebe085a3eca1a76",
+    "created_at": "2026-10-14T13:23:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77536_0189",
+    "question_id": "q_claim_2025_waec_77536",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "d9009a53e337242a76b6b566d8f2dfddc693a74478f55c6b2255ab3ddc2a1f7f",
+    "created_at": "2026-10-14T13:25:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77537_0190",
+    "question_id": "q_claim_2025_waec_77537",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "054b7ec5aa555d51c22f1ff21fcd911d23d02c5ab77692daf3b28fd73bbd790f",
+    "created_at": "2026-10-14T13:26:22Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77538_0191",
+    "question_id": "q_claim_2025_waec_77538",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "3558df6975d5ef0072fbc2b23523c6c199ae195895da1af8259078073581482f",
+    "created_at": "2026-10-14T13:27:16Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77539_0192",
+    "question_id": "q_claim_2025_waec_77539",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "3b6e7b5133da5ffc124b7daf599469696bac102e2b479d660dbb543d7c47ceb9",
+    "created_at": "2026-10-14T13:28:17Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77540_0193",
+    "question_id": "q_claim_2025_waec_77540",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "9f5efe0994863c054da49a71e92a3513797ccc4c5004dc0b0fb13dcb78cc0861",
+    "created_at": "2026-10-14T13:29:39Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77541_0194",
+    "question_id": "q_claim_2025_waec_77541",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ad460244787d5054127360f87ec95feb6e5999b5f057df4b9d7bf5b570fbc4cf",
+    "created_at": "2026-10-14T13:30:45Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77542_0195",
+    "question_id": "q_claim_2025_waec_77542",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "0924abf7600ea9e64742ba33e4809b7e7b05fb47df5c383e410c3d10186b10f1",
+    "created_at": "2026-10-14T13:31:32Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77543_0196",
+    "question_id": "q_claim_2025_waec_77543",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "cc0732c48dc9e8cb811c3d7f153794d51764f8f8ae0c8ad0511f25fe03e59e44",
+    "created_at": "2026-10-14T13:32:37Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77544_0197",
+    "question_id": "q_claim_2025_waec_77544",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "8450eb2cc30c871e47914bfc0796356502cb6f58c750c95d50b79d9eb9b706b0",
+    "created_at": "2026-10-14T13:33:48Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77545_0198",
+    "question_id": "q_claim_2025_waec_77545",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "b0f02dc749eca126d94062a7347807d1e85df6bea1b9547abcf213b3d8dfe608",
+    "created_at": "2026-10-14T13:34:26Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77546_0199",
+    "question_id": "q_claim_2025_waec_77546",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "6f0008ca25446f13346519e1103553a1d8939e3dca7de4f444e4749f4f57a339",
+    "created_at": "2026-10-14T13:35:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77547_0200",
+    "question_id": "q_claim_2025_waec_77547",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "a8fc23be26af3b18e62afa721aeaaa73be8f2185157d2c7772a7e6436e71d6c6",
+    "created_at": "2026-10-14T13:36:33Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77548_0201",
+    "question_id": "q_claim_2025_waec_77548",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "a718d743c8696129ec9d9cd14e3f432cc4636cb61dd8ceb5082a52c937c43695",
+    "created_at": "2026-10-14T13:37:08Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77549_0202",
+    "question_id": "q_claim_2025_waec_77549",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "39b69dee0074f661e17328fd7375faf17eaf34e2267e51ace2983f710256a792",
+    "created_at": "2026-10-14T13:37:44Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77550_0203",
+    "question_id": "q_claim_2025_waec_77550",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ff30778665790663916ec1f7ee7baa17e421e5606505596e16d400784a0c9674",
+    "created_at": "2026-10-14T13:38:20Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77555_0204",
+    "question_id": "q_claim_2025_waec_77555",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "ed9fa14f5cc08a3b55153fef6afa4eb83907e03b33b8da2a7cbf299c38dc6385",
+    "created_at": "2026-10-14T13:38:58Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77557_0205",
+    "question_id": "q_claim_2025_waec_77557",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "164cd3d2c5f6a0034fdddf60c7cf239ab299cbfc0c4acd131b7d472260fdc4a9",
+    "created_at": "2026-10-14T13:39:42Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77559_0206",
+    "question_id": "q_claim_2025_waec_77559",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "50000e4a0b5ba700e0943e9f595baf5aedfad17e26ebfc37621b73cf5f62d989",
+    "created_at": "2026-10-14T13:40:29Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77561_0207",
+    "question_id": "q_claim_2025_waec_77561",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "d38ad69884af370b37b07383984ff23315bb84c0954a8e5bbf4f80e741de0a6e",
+    "created_at": "2026-10-14T13:41:03Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77562_0208",
+    "question_id": "q_claim_2025_waec_77562",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "c5f6b75c94f9ca4ff0cea3d1cdd6948ee53d1c6328e7f70f5b9c6429998803f9",
+    "created_at": "2026-10-14T13:42:14Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77563_0209",
+    "question_id": "q_claim_2025_waec_77563",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "f36bf47b062ca310335d6c69a175349ff93082c705962d128131498c8e5eeb60",
+    "created_at": "2026-10-14T13:43:40Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77565_0210",
+    "question_id": "q_claim_2025_waec_77565",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "568b3e50c7bd66b13181999e68c95b0315c071795ee56a9410d5f38852073335",
+    "created_at": "2026-10-14T13:44:55Z"
+  },
+  {
+    "id": "v_q_claim_2025_waec_77566_0211",
+    "question_id": "q_claim_2025_waec_77566",
+    "kind": "human",
+    "verdict": "pass",
+    "scope": [
+      "answer",
+      "explanation"
+    ],
+    "verifier": "opencode",
+    "detail": null,
+    "content_hash": "53569e19b448f1652e072e32af37670a34d27115fd8e48957414693f26f93d46",
+    "created_at": "2026-10-14T13:45:49Z"
+  }
+]

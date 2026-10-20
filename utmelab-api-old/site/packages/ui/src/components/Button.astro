@@ -1,0 +1,20 @@
+---
+import '@utmelab/ui/tokens.css';
+
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary';
+  type?: 'button' | 'submit';
+  disabled?: boolean;
+}
+const { href, variant = 'primary', type = 'button', disabled = false } = Astro.props;
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  class:list={['btn', `btn-${variant}`]}
+  {...(href ? { href } : { type })}
+  {...(disabled ? { disabled: true } : {})}
+>
+  <slot />
+</Tag>

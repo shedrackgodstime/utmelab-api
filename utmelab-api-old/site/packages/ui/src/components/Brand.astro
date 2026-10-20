@@ -1,0 +1,49 @@
+---
+/**
+ * Shared Brand lockup. One logo + wordmark for landing + dashboard + auth.
+ * Theme tokens only (bg-accent, text-ink…), so it flips with the domain-wide
+ * data-theme toggle. No surface-specific classes.
+ */
+interface Props {
+  href?: string;
+  /** Show the `API` pill beside the wordmark. */
+  badge?: boolean;
+  markClass?: string;
+  iconClass?: string;
+}
+
+const {
+  href = '/',
+  badge = true,
+  markClass = 'size-8',
+  iconClass = 'size-4',
+} = Astro.props;
+---
+
+<a href={href} class="group flex items-center gap-2.5 focus-visible:outline-none" aria-label="UTME Lab home">
+  <span
+    class={`flex ${markClass} items-center justify-center rounded-brand bg-accent text-accent-ink shadow-xs transition-transform group-hover:scale-105`}
+  >
+    <svg
+      class={iconClass}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="14" width="7" height="7" rx="1.5" />
+      <path d="M6.5 14v4a2 2 0 0 0 2 2H14" />
+    </svg>
+  </span>
+  <span class="flex items-center gap-1.5 font-semibold tracking-tight text-ink text-base">
+    <span>UTME</span><span class="text-accent font-bold">Lab</span>
+    {badge && (
+      <span class="rounded-full border border-hairline bg-surface-2 px-1.5 py-px font-mono text-[10px] text-muted">API</span>
+    )}
+  </span>
+</a>

@@ -1,0 +1,43 @@
+---
+import '../styles/global.css';
+import ThemeScript from '@utmelab/ui/components/ThemeScript.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'UTME Lab authentication.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · UTME Lab</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <ThemeScript />
+  </head>
+  <!-- AUTH SHELL — empty: centered form only, no header/footer/nav. -->
+  <body class="min-h-screen flex items-center justify-center bg-canvas text-ink antialiased p-6">
+    <nav class="fixed top-4 left-4 flex items-center gap-2" aria-label="Auth navigation">
+      <a
+        href="/"
+        class="inline-flex items-center gap-1.5 rounded-brand border border-hairline bg-surface px-3 py-1.5 text-xs font-medium text-body hover:text-ink hover:border-muted transition-colors"
+      >
+        &larr; Home
+      </a>
+      <a
+        href="/docs/"
+        class="inline-flex items-center gap-1.5 rounded-brand border border-hairline bg-surface px-3 py-1.5 text-xs font-medium text-body hover:text-ink hover:border-muted transition-colors"
+      >
+        Docs
+      </a>
+    </nav>
+    <slot />
+  </body>
+</html>

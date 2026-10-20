@@ -1,0 +1,35 @@
+var/
+target/
+*.tmp
+node_modules/
+dist/
+.env
+ref/*
+site-old
+# raw harvest staging — committed so nothing is lost, consumed by the merge step
+
+# review workbench backups + python caches
+tmp/*.backup.json
+__pycache__/
+.pytest_cache/
+
+tmp/study/
+
+# auto-tagging prototype outputs — downloaded as CI artifacts, never committed
+tagging_results.json
+tagging_*.json
+
+# Runtime logs & scratch outputs (beyond the harvest backup)
+tmp/*.log
+tmp/serve.log
+
+# OS / editor leftovers
+.DS_Store
+Thumbs.db
+*.swp
+.*.swp
+.*.swo
+.*.un~
+*.db-shm
+*.db-wal
+

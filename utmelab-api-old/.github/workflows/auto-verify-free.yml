@@ -1,0 +1,64 @@
+name: Auto-verify WAEC Questions (Free Models)
+
+on:
+  workflow_dispatch:
+    inputs:
+      subject:
+        description: 'Subject to verify'
+        required: true
+        type: choice
+        options:
+          - economics
+          - physics
+          - chemistry
+          - biology
+          - agriculture
+          - computer-studies
+          - data-processing
+      limit:
+        description: 'Max questions to verify'
+        required: false
+        default: '20'
+        type: string
+      dry_run:
+        description: 'Dry run (do not save verifications)'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write
+  id-token: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  auto-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Install pinned opencode
+        run: npm install -g opencode-ai@1.18.34
+
+      - name: Run auto-verification with free model
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MODEL: opencode/space-bunny-free
+          USE_GITHUB_TOKEN: 'true'
+          SHARE: 'false'
+        run: |
+          python3 tools/auto_verify_opencode.py \
+            --subject ${{ github.event.inputs.subject }} \
+            --exam WAEC \
+            --limit ${{ github.event.inputs.limit }} \
+            ${{ github.event.inputs.dry_run && '--dry-run' || '' }}

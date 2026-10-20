@@ -1,0 +1,45 @@
+---
+import '../styles/globals.css';
+import ThemeScript from '@utmelab/ui/components/ThemeScript.astro';
+import ThemeToggle from '@utmelab/ui/components/ThemeToggle.astro';
+
+interface Props { title: string; section?: string; }
+const { title, section = 'Overview' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · UTME Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <ThemeScript />
+  </head>
+  <!-- APP SHELL — lives ONLY in apps/app. Distinct identity, same brand tokens. -->
+  <body class="min-h-screen">
+    <div class="grid min-h-screen grid-cols-[240px_1fr]">
+      <aside class="flex flex-col gap-6 border-r bg-surface p-4">
+        <a href="/dashboard/" class="px-2.5 font-semibold text-foreground">UTME<span class="text-primary">Lab</span></a>
+        <nav class="flex flex-col gap-0.5">
+          <a href="/dashboard/" class="rounded-md bg-primary/10 px-2.5 py-2 text-sm font-medium text-primary">Overview</a>
+          <a href="/dashboard/api-key/" class="rounded-md px-2.5 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">API keys</a>
+          <a href="/dashboard/billing/" class="rounded-md px-2.5 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Billing</a>
+          <a href="/docs/" class="rounded-md px-2.5 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground">Docs</a>
+        </nav>
+      </aside>
+      <div class="flex min-w-0 flex-col">
+        <header class="sticky top-0 flex items-center justify-between border-b bg-background px-6 py-3">
+          <h1 class="text-[1.625rem] font-medium tracking-tight">{section}</h1>
+          <div class="flex items-center gap-3">
+            <ThemeToggle />
+            <div class="grid size-8 place-items-center rounded-full bg-primary text-sm font-medium text-primary-foreground">AM</div>
+          </div>
+        </header>
+        <main class="flex-1 p-6"><slot /></main>
+      </div>
+    </div>
+  </body>
+</html>
+

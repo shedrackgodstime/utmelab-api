@@ -1,0 +1,26 @@
+---
+import AppShell from '../layouts/AppShell.astro';
+import KeyPanel from '../components/KeyPanel.tsx';
+---
+
+<AppShell title="Dashboard" section="Overview">
+  <div class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+    <div class="rounded-lg border bg-card p-6 shadow-sm">
+      <span class="block text-sm text-muted-foreground">Questions this month</span>
+      <span class="mt-1 block text-[1.75rem] font-semibold tracking-tight">12,480</span>
+    </div>
+    <div class="rounded-lg border bg-card p-6 shadow-sm">
+      <span class="block text-sm text-muted-foreground">Rate limit</span>
+      <span class="mt-1 block text-[1.75rem] font-semibold tracking-tight">60/min</span>
+    </div>
+    <div class="rounded-lg border bg-card p-6 shadow-sm">
+      <span class="block text-sm text-muted-foreground">Plan</span>
+      <span class="mt-1 block text-[1.75rem] font-semibold tracking-tight">Free</span>
+    </div>
+  </div>
+
+  <!-- React island: real interactive app behavior, scoped to the dashboard. -->
+  <KeyPanel client:load />
+</AppShell>
+
+

@@ -1,0 +1,21 @@
+---
+// Runs before paint: applies stored/OS theme so there's no flash of the
+// wrong theme (FOUC). Safe to place in <head> of every surface.
+// (No import: the inline script below is self-contained on purpose — it must
+// run before any module script loads.)
+---
+
+<script is:inline>
+  (() => {
+    try {
+      const k = 'starlight-theme';
+      const stored = localStorage.getItem(k);
+      const os = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      const theme = stored === 'light' || stored === 'dark' ? stored : os;
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.style.colorScheme = theme;
+    } catch {
+      // Private mode or no storage: the CSS default theme stands.
+    }
+  })();
+</script>

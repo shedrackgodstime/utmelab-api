@@ -1,0 +1,973 @@
+# Question Bank — Decision Log & Intent
+
+> **Workspace:** this is `utmelab-api`'s decision log. It lives here, not in the UTME-Lab
+> repo — the bank is a separate product with its own repo; the app is one consumer.
+> **Status:** living decision record. Written **before** any change to data or code.
+> **Rule of this file:** every decision gets an ID, a status, and a reason. Nothing
+> is changed in `data/` until it is recorded here.
+> **Related (still in the UTME-Lab repo):** `docs/QUESTION_BANK_AUDIT.md` (vendor research
+> + proposed schema) and `docs/GAPS.md` (gap list). This file is the **decision layer**
+> over both. Sections below that cite `data/bank/…` refer to the **UTME-Lab** working
+> copy; `data/api/…` refers to **this** repo.
+
+---
+
+## 1. Intent (load-bearing — changed 2026-10-10)
+
+The question bank is **not** an internal feature of UTME Lab. It is a **product**.
+
+1. UTME Lab is the **anchor consumer** — it must build fast against the bank.
+2. The bank is **also a public, paid API** that third parties can call.
+3. Decisions are made so the app can be built **quickly** against a small set of
+   **defined constants** (the schema), while leaving the **door open** for other
+   exams, other clients, and later extensions.
+4. Priorities, in the user's stated order: **efficiency → simplicity of use →
+   security last.** Security is not ignored; it is deliberately *deferred* so it
+   does not distort the schema before usage is understood.
+
+### 1.1 What this changes about past decisions
+
+- The audit's *"no vendor calls at runtime, own bank is the moat"* (§9) was written
+  for an internal-only product. It still holds — but the **moat is now also the API**.
+- Anything internal-only (RAM bundle, `cfg(feature)` gates, hardcoded registries)
+  must be re-examined: it may be fine for the app but **wrong** for a public API.
+
+---
+
+## 2. Measured facts (this repo, 2026-10-10)
+
+Measured directly from `data/bank/questions.json` (3,442 rows) and the source tree.
+These **correct** parts of `QUESTION_BANK_AUDIT.md` and `GAPS.md` — see §6.
+
+### 2.1 Shape of the bank
+- 3,442 rows, **year = 2025 only**, no other year present.
+- **34 distinct subjects** in the bank.
+- ~**1,061 bytes/question** raw, ~**127 bytes** gzipped.
+- English Language 249 rows; Music 82; Arabic 80; Book Keeping 31; **all others exactly 100**.
+
+### 2.2 The three subject catalogs do not line up
+| Catalog | Count | Source |
+|---|---|---|
+| Bank | 34 | `data/bank/questions.json` |
+| Syllabus | 34 | `crates/server/src/syllabus/` (39 files incl. `mod.rs`) |
+| `SUBJECTS` registry | **16** | `crates/core/src/models/subject.rs:42` |
+
+- **1,549 questions reachable** through the registry; **1,893 unreachable (55%).**
+- **17 subjects exist in bank + syllabus but have no registry entry**: Fine Arts,
+  French, Further Mathematics, Hausa, Igbo, Yoruba, Arabic, Music, Marketing,
+  Insurance, Home Economics, Office Practice, Physical Education, Animal Husbandry,
+  Book Keeping, Catering Craft Practice, Computer Studies, Data Processing.
+- **`History` and `Civic Education` are flagged `has_bank: false`
+  (`subject.rs:57-58`) but each has 100 questions in the bank.** A flag bug, not a
+  data gap.
+- Most of the 17 are **not JAMB UTME subjects** (Animal Husbandry, Catering,
+  Office Practice, Home Economics, Insurance are WAEC/NECO). So the registry
+  cannot simply be widened to 34 without lying to JAMB candidates.
+
+### 2.3 Topics are in better shape than documented
+- **317/317 bank topic tags exactly match an authored syllabus topic name. Zero drift.**
+- **328 of 329 bank topics have ≥ `MIN_TOPIC_QUESTIONS` (4) questions.** The
+  `MIN_TOPIC_QUESTIONS` "coming soon wall" does **not** exist in the bank.
+- But: **542 syllabus topics are authored, only 317 have questions → 225 (41%) are
+  empty.** e.g. Physics 45 syllabus topics / 10 bank topics; History 43/12;
+  Government 32/10. The real wall is syllabus breadth vs bank depth.
+
+### 2.4 Per-row field coverage (3,442 rows)
+| field | present | note |
+|---|---|---|
+| `id, subject, year, content, options, answer, explanation` | 3,442 | |
+| `topic` | 3,386 | **56 missing** — Music 28, **Mathematics 19**, Office Practice 7, Yoruba 2 |
+| `image` | 3,193 key / **170 non-null** | |
+| `content_hash` | 3,193 | **249 missing — exactly the 249 English rows** |
+| `explanation` non-empty | 3,220 | **222 empty (6.4%)** |
+| `exam, section, passage, subtopic, difficulty, marks, estimated_time, verified, source` | **0** | none exist |
+
+- The 249 English rows also lack the `image` key → they came through a **different
+  ingest path** than the other 3,193. Provenance seam.
+
+### 2.5 Serving today
+- Serving is a **RAM read** of the JSON via `crates/server/src/db/bank.rs`
+  (`OnceLock` at `bank.rs:29`); zero query, zero Turso.
+- `crates/server/src/db/migrate.rs` contains **no `questions` table**. The only
+  `CREATE TABLE questions` in the repo is a **test fixture**
+  (`crates/server/src/db/questions.rs:441`). The live Turso questions table is an
+  **orphan** — no migration owns it.
+
+### 2.6 Scale headroom
+| rows | raw | gzipped |
+|---|---|---|
+| 3,442 | 3.6 MB | 439 KB |
+| 64,000 | 68 MB | ~8 MB |
+| 200,000 | 212 MB | ~25 MB |
+
+64k in one table is not a capacity problem for SQLite/LibSQL. Serving is per-paper
+(4 subjects ≈ 180 questions), so the device never downloads the whole bank.
+
+---
+
+## 3. Decisions
+
+Status: **PINNED** = agreed, do not relitigate without a reason. **OPEN** = needs study.
+
+| ID | Decision | Status | Reason |
+|---|---|---|---|
+| **D1** | Subject catalog lives in a **DB table with an `exam` column**, not the hardcoded `SUBJECTS` static. The Rust static becomes a cache of the catalog, not the source of truth. | **PINNED** (user, 2026-10-10) | 16-vs-34 mismatch; `has_bank` lies; JAMB-vs-WAEC must be *data*, not omission. Also the shape a public API needs. |
+| **D2** | `exam` is on the **critical path** — added to the question schema and the subject catalog before anything else. | **PINNED** (implied by D1) | Every one of 3,442 rows is implicitly JAMB; without `exam` the catalog cannot be built. |
+| **D3** | **Simple paging** — plain `page` / `total_pages` / `total_records`. | **PINNED** (user, 2026-10-10) | Simplest thing that serves both the app and a public API. No cursors. |
+| **D4** | All question **rows in one table**; all **catalogs** (subjects/topics) in one table keyed with `exam`. No sharding, no per-subject tables. | **PINNED** | 64k rows is a non-issue for SQLite/LibSQL; simplicity wins; room to grow. |
+| **D5** | The **JSON is a placeholder**, not the plan. Decisions must hold for both the JSON and the DB. | **PINNED** (user, 2026-10-10) | Explicit: "the json is just a placeholder". |
+| **D6** | **Security is last** — deliberately deferred, not ignored. | **PINNED** (user, 2026-10-10) | Stated priority. Do not let auth/rate-limit design distort the schema before usage is understood. |
+| **D7** | Decisions are written here **before** any change to data or code. | **PINNED** (user, 2026-10-10) | Stated rule. |
+| **D8** | Add **`exam`** to every row of `data/bank/questions.json` now: `"JAMB"` for the 25 JAMB-owned subjects, **`""` (empty)** for the 9 non-JAMB subjects. | **PINNED** (user, 2026-10-10) | Unblocks D1/D2. Confirmed by user that IBASS lists 25 subjects. Non-JAMB rows are deliberately left empty, not guessed — WAEC/NECO assignment is still open (O1b). |
+| **D9** | Apply the **same `exam` tagging to the live Turso `questions` table** — `ALTER TABLE … ADD COLUMN exam TEXT`, then set per subject. Same 25/9 split. | **PINNED** (user, 2026-10-10) | "let do same there before we look into others" — keep JSON and DB consistent so the catalog has one truth. |
+| **D10** | **Do NOT rename subjects in Turso** — it is already canonical. The **JSON** is the store carrying long-form names and is the one to normalize later. **Deferred, not applied.** | **DEFERRED** (user, 2026-10-10) | Renaming Turso would break the one store that already matches the registry. JSON normalization is the correct direction but deliberately postponed. |
+| **D11** | The **canonical schema constant** (below). Adds `passage_id` and **answer-by-option-id**. Drops `sitting` and `format`. Keeps `marks`. | **PINNED** (user, 2026-10-10) | `passage_id`: the data already assumes passages (598 Turso rows say *"In question numbered N above"*) and none are stored. Answer-by-id: shuffling must never invalidate an answer. |
+| **D12** | **The constant is constant.** Every other artifact adapts to it — not the reverse. | **PINNED** (user, 2026-10-10) | Stated law. |
+| **D13** | **The JSON is the fast-adapting store; Turso is the slow one.** That is *why* the JSON exists — it serves the app now while Turso is worked to the same constant. | **PINNED** (user, 2026-10-10) | "the json is easy to quickly adapt, the turso will need time". The JSON is not a throwaway; it is the bridge. |
+| **D14** | **Five tables**: `questions`, `passages`, `subjects`, `topics`, `subtopics`. Subtopics are one level deep, no `parent_id`. | **PINNED** (user, 2026-10-10) | §3.1.2 argues each table by what breaks without it. Subtopics are justified by JAMB's own two-deep catalog (Biology 24/62/173) and by drill granularity. |
+| **D15** | **Options shape.** `Option { id, text }` with single-letter ids (`a`–`e`). **`label` is not stored** — it is assigned from array position at render time. `answer` references the id. | **PINNED** (user, 2026-10-10, "your call") | A label is a display position, not an identity. Index-based `answer` was rejected on failure-mode grounds: a forgotten remap silently marks correct answers wrong. 26 letters is ample for Nigerian MCQ (observed max 5 options); letters keep the wire readable. |
+| **D16** | **Where topics come from.** Topic names = **JAMB's official areas of concentration, verbatim**. Subtopics are **derived, not transcribed** — a topic gets them only once it has enough questions to drill. **No sync mechanism, no active flags.** | **PINNED** (user, 2026-10-10, "your call") | Verbatim names mean the consumer sees exactly what JAMB told them to revise. Deriving subtopics skips the fiddliest part (JAMB nests four levels deep: part → topic → a/b/c → i/ii) for structure that is not examinable. **Absence is the signal** — a topic with no questions does not appear, which deletes the maintenance problem rather than solving it. |
+| **D17** | **The explanation is three fields** — `key_point` (required), `body` (Markdown subset, formulas inline), `trap` (optional). **`verified: bool`** joins the question as a static credential. **No formula field**; **no per-option notes**; **no runtime signals in the bank.** | **PINNED** (user, 2026-10-10) | §3.1.7–3.1.10. Three consumers need three slices of one explanation, so it is structured, not a blob. `trap` is the differentiator no vendor offers. `verified` is the static half of trust — votes/disputes are runtime data and belong to the app, not the bank. |
+| **D18** | **Study notes: shape recorded, explicitly NOT v1.** One note per subtopic — `overview`, `must_know[]`, `formulas[]`, `traps[]`, `worked?`. **Not merged into explanations.** Link is the existing `subtopic_id`; no new field. Activating it means a **sixth table (`notes`)**. | **DEFERRED — not v1** (user, 2026-10-10, "not v1, but worth noting now as constant") | Recorded now so it is settled before it is needed, and so nothing else has to be revisited when it is. §3.1.11. |
+| **D19** | **The syllabus surface.** Six endpoints; every node returns **coverage** (`question_count`, `note_available`) beside name/order/weight. **`objectives: Vec<String>` on subtopics**, returned **by default — no flag**. Catalog never paginates; questions use D3 simple paging. Catalog is addressed by **slug**, questions by **id**. | **PINNED** (user, 2026-10-10, "useful & simple as possible") | §3.1.12. A syllabus that returns only names is a dump; coverage is what makes it actionable. `objectives` is examinable content every competitor publishes (JambKit: 173 for Biology) and pairs with coverage as *"what you must do"* + *"what you can practise"*. **One response shape, no flag** — two shapes is two things to get wrong. |
+
+## 3.1 THE CONSTANT (D11)
+
+### 3.1.1 The question shape
+
+```rust
+Option { id: String, text: String }        // id is "a".."e"; text may carry inline LaTeX
+
+Explanation { key_point: String, body: String, trap: Option<String> }
+
+Question {
+  id, exam, subject, year,
+  text, options: Vec<Option>, answer,      // answer = an Option.id, never a label or index
+  subtopic_id, section, passage_id, image,
+  explanation: Option<Explanation>,
+  marks, difficulty, verified,             // verified = static credential, ships with content
+}
+```
+
+**Field decisions and their grounds:**
+- `text` (not `content`/`prompt`) — matches ALOC/EDV/Sdash naming; `Question.text` avoids stutter.
+- `options` is **2–5, never fixed at 4** — 12,915 existing rows carry an `E`.
+- `answer` = **option id**, not label or index. Contract: options carry stable ids,
+  shuffling is a pure permutation that never touches an id, so `answer` never needs
+  remapping. JAMB draws 40 of thousands and randomises every one.
+- **`label` is not stored.** A label is a *display position*, not an identity — it is
+  assigned at render time from the array index. Storing it is exactly what makes
+  `answer: "C"` fragile: the moment you shuffle, the letter points at a different
+  option. Rejected `answer: u8` (index) too, on failure-mode grounds: every shuffling
+  code path would have to remember to remap, and forgetting once **silently marks
+  correct answers wrong**. With ids, shuffling is only ever a permutation.
+- Wire format emits `options: [{id, text}]` with labels assigned from position at
+  serve time, so a consumer rendering in stored order still sees A–D and the format
+  stays familiar. It also makes `answer` readable at a glance: `answer: "b"` is
+  verifiable against `options[1]` without counting.
+- `section` — the **marks key**. English is not flat: comprehension 3, cloze 2,
+  oral-forms 1, while other subjects are a uniform 2.5. `marks` is therefore **not
+  derivable from a question count** and must be stored.
+- `passage_id` — normalized in storage, **resolved inline on read**, so a consumer
+  makes one call and never joins.
+- `explanation` — see **§3.1.7**. Three discrete fields (`key_point` / `body` /
+  `trap`) rather than one blob, because three different consumers need three
+  different slices and a blob forces them to parse.
+- `difficulty` 1..=5, derived from solve-rates, never hand-set.
+- `verified` — **static** credential only. Upvotes, disputes, discussion counts
+  and report totals are **runtime data and live in the app's database, not the
+  bank.** Content carries its credentials; the crowd lives in the app.
+
+**Deliberately excluded:** `sitting` (JAMB sits yearly) · `format` (duplicates
+`options.is_empty()`, and a derivable field can be wrong) · `estimated_time`,
+`source` (reserved — add when earned) · **`Option.image`** (diagrams in option
+sets are real — ALOC carries image URLs — but we cannot point to a case today;
+add when a question forces it, one migration) · **`Option.note`** (per-option
+"why this is wrong" — parked, see §3.1.7) · **`is_correct` on an option**
+(would leak the answer inside the options array).
+
+**LaTeX convention is shared** by `Option.text`, `Question.text` and `explanation`:
+one rule to learn, not three.
+
+### 3.1.2 FIVE TABLES (D14)
+
+| # | Table | Rows | Holds |
+|---|---|---|---|
+| 1 | `questions` | 68,613 → grows | The bank |
+| 2 | `passages` | 0 today | Shared stimulus (English comprehension/cloze) |
+| 3 | `subjects` | 34 | The subject taxonomy, per exam |
+| 4 | `topics` | 542 | Syllabus topics within a subject+exam |
+| 5 | `subtopics` | ~1,100 | Drill-granular practice units |
+
+```sql
+subjects   (slug PK, exam, name, is_compulsory, full_exam_questions)
+topics     (slug PK, subject, exam, name, order, weight)
+subtopics  (slug PK, topic FK, name, order, objectives TEXT[])
+passages   (id PK, exam, subject, year, kind, title, author, text)
+questions  (id PK, exam, subject, year, text, options, answer,
+            subtopic_id FK, section, passage_id FK, image,
+            explanation, marks, difficulty)
+```
+
+**Why each table exists — what breaks without it:**
+
+**1. `questions`** — the product. Everything else is a way of slicing it.
+
+**2. `passages`** — JAMB English sets 5 questions off one comprehension passage and
+10 off one cloze. 598 existing rows read *"In question numbered N above"* and point at
+a passage stored nowhere; no passage over 417 characters exists in either store.
+Inlining instead would multiply payload and make "fetch this comprehension set"
+impossible. Normalised in storage, resolved inline on read.
+
+**3. `subjects`** — the replacement for the hardcoded `SUBJECTS` array that caused the
+16-vs-34 mismatch. It is the thing that *filters*: `SELECT DISTINCT subject` would
+return whatever was ingested, including Animal Husbandry, which no JAMB candidate may
+pick. Carries the metadata that does not belong on a question (`full_exam_questions`
+60/40, `is_compulsory`). Its `name` is **JAMB's official name**, verbatim — single
+source of truth, no second name (D20).
+
+**4. `topics`** — the syllabus taxonomy. Not derivable from questions: questions know
+their topic as a string but carry none of `order`, `weight`. Also holds topics with
+zero questions, which any `DISTINCT` query would miss — real value for a paid API
+buyer who wants the full taxonomy.
+`exam` sits here because a topic belongs to *an exam's syllabus*: WAEC Mathematics
+and JAMB Mathematics share topics and diverge.
+
+**5. `subtopics`** — one level, no `parent_id`. Justified three ways:
+- **JAMB's own catalog is two-deep**: 24 topics / **62 subtopics** / 173 objectives
+  in Biology; 33 / **41** / 76 in Government. A flat taxonomy strands those.
+- **WAEC and NECO are exactly two deep** (`11 Equilibrium of forces` → `11.1`, `11.2`,
+  `11.3`). Nothing at this level goes three deep.
+- **Objectives are not a level.** JAMB nests objective inside subtopic, but an
+  objective ("identify the units of length, area, volume…") is a teaching statement,
+  not practice-granular. Nobody filters questions on it.
+
+**The student argument that settles it.** A weak signal of *"bad at Motion, 9/28"*
+forces the student to redo all 28 to fix maybe 4. With subtopics the signal is
+*"bad at Projectile motion 2/9 and Newton's laws 2/12"* — a **21-question sitting**,
+not a paper. Subtopics are what make (a) honest mastery at a pool small enough to be
+true, (b) a *named* failure rather than a vague one, (c) skipping what you already
+mastered, and (d) a mistake bank that can say "you keep missing Principle of moments."
+They appear in the UI only on drill / weak-report / mistake screens — topics stay the
+browsing layer — so they cost one table and almost no interface.
+
+### 3.1.5 Where the taxonomy comes from (D16)
+
+**Topics: JAMB's official "areas of concentration", verbatim.** Published per subject at
+`efacility.jamb.gov.ng` / `jamb.gov.ng/ibass`, republished **yearly** ("subject to
+modification at any year"). We do not coin names — a student reading our topic list
+must see exactly what JAMB told them to revise, or we look less authoritative than a
+competitor that merely copied the syllabus.
+
+**Subtopics: derived, never transcribed.** JAMB's own outline runs four levels deep
+(`SECTION A` → `1. Living organisms` → `a. Characteristics` → `i. Cell e.g. Euglena`).
+Only the top two are examinable; "SECTION A" is a grouping, not a testable thing.
+Rather than flatten that structure, **a topic acquires subtopics only once it holds
+enough questions to drill.** The schema permits zero subtopics per topic, so this is
+incremental and blocks nothing.
+
+**No sync mechanism.** No revision flag, no active/inactive column, no catalog-version
+table. **Absence is the signal**: a topic with no questions behind it simply does not
+appear. If JAMB drops a topic we stop tagging new questions and it fades out; if JAMB
+adds one, the row appears when we first have content for it. This *deletes* the
+maintenance burden instead of solving it — the deliberate trade of a faithful mirror
+for a catalog that is useful and cheap to run.
+
+**Competitive context (recorded so we aim correctly).** The taxonomy is **table
+stakes, not differentiation.** JambKit already publishes JAMB's areas of concentration
+mapped to question counts (Biology "24 topics / 62 subtopics / 173 objectives";
+Government "33 / 41 / 76"). Our differentiation sits *upstream* of the taxonomy:
+the questions, the explanations, and subtopic-level weak-spot diagnosis. Knowing
+"you are weak at Principle of moments" is the product; the taxonomy only lets us say it.
+
+**Build order.** English first (compulsory, 60 of 180 questions, and passages are
+blocking it anyway), then Mathematics / Physics / Chemistry / Biology, then **Computer
+Studies and Physical & Health Education** — newly added JAMB subjects with no
+competitor coverage (the audit records ALOC as lacking Computer entirely), which is
+where the catalog is an advantage rather than a checkbox.
+
+**Attribution.** Topic *titles* are reproduced; JAMB is credited as the source of the
+taxonomy in the API. JAMB's *objective* text is not reproduced wholesale — it is
+teaching copy, not catalog, and it is where the IP risk actually sits.
+
+### 3.1.7 The explanation (D17)
+
+```rust
+Explanation {
+  key_point: String,     // REQUIRED — one line, the thing to remember
+  body: String,          // Markdown (documented subset), $$…$$ for formulas at point of use
+  trap: Option<String>,  // why the tempting wrong answer is wrong
+}
+```
+
+**Why three fields and not one string.** Three consumers need three different slices
+of the same explanation: a flashcard app wants a teaser, a quiz app wants the working
+shown on answer, a study-notes product wants all of it. A single blob forces every
+consumer to *parse* prose to extract a slice, and parsing is where integrations break.
+
+**`key_point`** is the reason the structure exists. A flashcard needs a teaser;
+deriving "the first line of body" is fragile and produces mush. Making it required
+forces authors to write a good one-liner — that discipline is worth more than the
+field costs.
+
+**`trap` is the commercial argument.** "You chose C because you confused *declared*
+with *paid* dividend" is the highest-value sentence the product can produce, and **no
+vendor offers it** — the audit found ALOC charges 10 credits per question just for the
+basic explanation, and Sdash's solutions are frequently null. Structuring it separately
+also makes it aggregatable: *"you keep missing Principle of moments"* requires it to be
+queryable, not buried in prose.
+
+**Body is Markdown, as a documented subset** — `##` headings, lists, `**bold**` /
+`*italic*`, `` `code` ``, links, `$$…$$` LaTeX. **No raw HTML.** Every consumer already
+ships a renderer so it costs them nothing; constraining the subset keeps output
+predictable and lets us reject raw HTML outright. A typed block enum was rejected —
+buyers would have to write a renderer before displaying anything, which is the wrong
+first impression for a paid API, and it is rigid the moment a subject needs a structure
+we did not predict.
+
+**Market validation (research, 2026-10-10).** PassJAMB — a **paid** product at
+₦1,500/month — states: *"Our explanations show the reasoning, the formula, and the
+trap"*, and *"tap any wrong answer to see exactly why it's wrong."* This structure is
+not speculative; it is roughly what the market already pays for.
+
+### 3.1.8 Formulas
+
+**Inline in `body`, never their own field.** A formula belongs in the explanation
+*only when applying it is the thing being tested* — V=IR for a circuit question,
+nothing for a Biology definition, nothing for English. That is a judgement made at the
+point of writing, so it belongs inline where it is used. A separate `formula` field
+would duplicate a line of `body` and sit empty on most questions — the sparse-field
+problem D15 already settled.
+
+**The JAMB formula sheet is a different artifact.** JAMB publishes an official
+per-subject formula sheet (JambKit ships it as "the JAMB formula sheet"). That is
+subject-level reference content, versioned by year, and genuinely sellable on its own.
+It is **not** part of the question constant — and it collides with the **undecided
+study-notes** decision. Flagged, not scheduled.
+
+### 3.1.9 "Useful" — what earns a mark, and what does not
+
+Looking for a helpful/upvote flag turned up something better. Myschool.ng's discussion
+threads on a single Physics question contain:
+
+> *"THE ANSWER SHOULD BE 11/9 NOT THE OTHER WAY ROUND"* (0 votes) ·
+> *"I don't understand any of this"* · *"the diagram is not showing"*
+
+Students do not upvote explanations. **They dispute answers.** That is a correctness
+signal, and the first question a paying API buyer asks is *"how do I know these answers
+are right?"*
+
+But that tells us where the mark should **not** live. Votes, disputes, discussion counts
+and report totals are **runtime data** — they change daily, and a per-question counter
+is meaningless on its own and only useful in aggregate. Putting them on a content row
+would mean rewriting 68k rows constantly to store a number nobody reads per-question.
+
+**`verified: bool` is the static form of the same trust:** a human has checked the
+question, its answer and its explanation. It ships with the content, never mutates, and
+is directly filterable by a buyer (`?verified=true` — "give me questions my students can
+trust"). It starts `false` everywhere until a human passes it, which is the honest
+starting state *and* a real backlog metric.
+
+**Rule that follows: content carries its credentials; the crowd lives in the app.**
+
+### 3.1.10 Per-option notes — parked
+
+PassJAMB's *"tap any wrong answer to see why it's wrong"* is the natural generalisation
+of `trap`: `trap` is the single most-picked distractor, a per-option note covers all of
+them. It is **not** in the constant, on cost grounds: 68k questions × 4 options ≈
+**275,000 "why wrong" strings** — the largest single authoring burden in the project —
+while `trap` already covers the common case. Add it when a subject genuinely needs it,
+by the same rule that parked `Option.image`.
+
+### 3.1.11 Study notes — shape recorded, NOT v1 (D18)
+
+```rust
+Note {
+  subtopic_id,             // one note per subtopic
+  overview: String,        // Markdown — the concept, taught plainly
+  must_know: Vec<String>,  // 3–7 bullets: the facts the exam actually tests
+  formulas: Vec<String>,   // LaTeX — empty for Biology, English, Civic
+  traps: Vec<String>,      // how students actually lose marks here
+  worked: Option<String>,  // one full worked example, Markdown
+}
+```
+
+**Why it is not merged into explanations.** They share vocabulary but not content: an
+explanation is the *instance* ("10% of 2,000,000 = 200,000; option B; GH¢ 20,000
+confuses face value with paid-up capital"), a note is the *general case* (dividends are
+declared by directors, approved by members, paid on paid-up capital, never face value).
+
+The deciding factor is **scale**: 68,613 questions across ~542 topics/subtopics is
+**~130 questions per subtopic**. Writing the concept 130 times is not sustainable; it
+is written once in the note. *At 500 total questions the merge would be correct — this
+design changes at scale, and we are past it.*
+
+**The link costs nothing.** Every question already carries `subtopic_id`, so "which note
+explains this question" is already answered by the schema — no `note_ref`, no join table,
+no sync. This matches the paid market: PassJAMB's *"tap any wrong answer to see exactly
+why it's wrong **and which concept to revisit**"* is two linked layers, not one.
+
+**The duplication that does exist is formulas, and it is acceptable.** A consumer
+fetching a single question must get a usable answer in **one call** — an explanation
+saying "see Note: Principle of Moments" forces a second request and strands anyone who
+asked only for the question. Self-containment at the API boundary is worth more than
+DRY. The formula still has **one canonical home** — the note, and the JAMB formula sheet
+(§3.1.8) — so there is no second source of truth.
+
+**Activation condition.** A note exists **only for subtopics with enough questions to
+practise against.** Three questions on a subtopic means the note and three explanations
+are the same content and the note is padding. Same rule as subtopics themselves (D16).
+
+**Authoring reality.** Largest content job in the project — a page per note, not a
+paragraph — so it is scoped to the build order (English, then Maths/Physics/Chem/Bio).
+Competitors already ship AI prose (PassJAMB "AI explanations written in simple English",
+Myschool's AI explanation), so AI-assisted + human-reviewed is the only viable
+production model. **The differentiator is not the AI — it is that notes are checked
+against the questions we actually have.**
+
+**Why this is the moat.** The audit's finding is that questions are *commodity* — ALOC,
+EDUV, Sdash and MyQuest all sell past papers, and that content already circulates in PDFs
+across Nigerian campuses. Nobody has a note per subtopic written at a level a student
+actually reads, pointing at the exact questions that test it.
+
+### 3.1.12 The syllabus surface (D19)
+
+**Principle.** A syllabus endpoint that returns topic names is a **dump** — it helps no
+one. The question someone actually has is *"what do I need to learn, and can I practise
+it?"* So every node answers three things: **what it is** (name), **where it sits**
+(order, weight), and **can I act on it** (`question_count`, `note_available`).
+
+```
+GET /v1/exams                    → the exams we carry
+GET /v1/exams/{exam}/subjects    → subjects offered in that exam
+GET /v1/subjects/{slug}          → one subject, its exams, its totals
+GET /v1/subjects/{slug}/syllabus → the whole tree, with coverage   ← carries the weight
+GET /v1/topics/{slug}            → one topic + subtopics + counts
+GET /v1/subjects/{slug}/coverage → counts only, no tree
+```
+
+```json
+{
+  "exam": "JAMB",
+  "subject": { "slug": "mathematics", "name": "Mathematics" },
+  "topics": [
+    { "slug": "indices-logarithms-surds", "name": "Indices, Logarithms and Surds",
+      "order": 4, "weight": 8, "question_count": 212, "note_available": true,
+      "subtopics": [
+        { "slug": "laws-of-indices", "name": "Laws of Indices", "question_count": 74,
+          "objectives": ["Apply the laws of indices to simplify algebraic expressions"] }
+      ] }
+  ],
+  "summary": { "topics": 23, "topics_with_questions": 23,
+               "subtopics": 62, "subtopics_with_questions": 58, "questions": 4370 }
+}
+```
+
+**Rules.**
+- **Catalog does not paginate; questions do.** A subject syllabus is ~23 topics / ~62
+  subtopics — it fits. A question list is unbounded, so that is where **D3's simple
+  paging** applies.
+- **Slugs for catalog, ids for questions.** Topics and subjects are readable, cacheable and
+  survive the yearly JAMB revision (D16 keeps topics stable). Nobody types question ids.
+- **`exam` is required where it changes the answer** — WAEC Mathematics ≠ JAMB Mathematics.
+- **`objectives` live on subtopics, default-on, no flag.** One attachment path, matching
+  notes (D18). A topic with no subtopics shows none — which correctly signals *"nothing
+  here yet"*, consistent with D16's absence-is-the-signal rule. **One response shape**: a
+  flag means two shapes to build, document and keep correct.
+- **`keywords` is dropped.** It existed to make a text classifier match topics; the
+  `subtopic_id` FK deleted the classifier. Search matches on name.
+
+**Why `objectives` earns its column.** JAMB syllabi are built from aims → topics →
+*contents* → *objectives*, and the objectives ("candidates should be able to…") are the
+examinable statements. JAMB's `contents` bullets are structurally what our subtopics
+already are, so that is covered — objectives were the uncovered half. Every competitor
+publishes them (JambKit counts **173** for Biology; jambsyllabus.com covers all 25), so
+a consumer expects them. Paired with coverage they give the promise of a syllabus in two
+fields: **what you must be able to do** + **what you can practise**.
+
+**Deliberately not modelled.** *Scheme of examination* — for JAMB it is three constants
+(English 60/100, others 40 @ 2.5, 120 min), so it is a constant, not content; WAEC makes
+it real later. *Recommended texts* — annual and JAMB-published, already half-captured by
+`passage.title/author`. *Included/excluded notes* — WAEC-specific.
+
+**⚠ Known future problem, recorded not solved.** WAEC Mathematics Paper 2 is
+**"answer 10 of 13"** — students attempt a subset. Our `marks` assumes every question in a
+paper counts toward 100, which is correct for JAMB and **wrong for WAEC**. Paper assembly
+will eventually need *"which questions does a candidate actually attempt"*. Flagged so it
+is not rediscovered when a WAEC mock scores wrong.
+
+### 3.1.13 O1b — the 25 subjects confirmed (D20 falls out of it)
+
+`efacility.jamb.gov.ng` and `www.jamb.gov.ng` both time out and IBASS is a JS app, so
+the official page could not be loaded directly. Confirmed via the search index's crawl of
+**`ibass.jamb.gov.ng/e-syllabus`** plus three independent listings.
+
+**The decisive detail — official pagination.** IBASS shows **"12 entries" per page across
+3 pages**, and page 1 is verbatim:
+
+> Agriculture science · Arabic · **Art** · Biology · Chemistry · Christian religious
+> studies · Commerce · **Computer studies** · Economics · French · Geography ·
+> Government
+
+Exactly 12, in alphabetical order. Page 2 takes the next 12 (Hausa → Use of English),
+leaving **Yoruba alone on page 3**. **12 + 12 + 1 = 25.**
+
+Corroborated by: the user's own count on the official site; `jambgovng.org`'s numbered
+list (items 1–25, ending Physical and Health Education); and academics.ng's older
+23-subject list, which is exactly 25 minus the two additions.
+
+**Two independent confirmations that the new subjects are real:** *Computer Studies*
+appears in IBASS's own subject list, and *Physical and Health Education* is item 25 on
+the numbered list.
+
+**The consequence — D20.** JAMB's official names differ from ours: **Art** (we say Fine
+Arts), **Use of English** (we say English), **Principles of Accounts** (we say
+Accounting). The tempting fix was a `display_name` column carrying both. Rejected —
+two names is two sources of truth, which is the same mistake that produced the 16-vs-34
+registry mismatch, the alias table, and the free-text topic tags.
+
+**Subjects are renamed to JAMB's official naming, verbatim, and `display_name` is
+removed.** `subjects { slug, name, is_compulsory, full_exam_questions, exams[] }`. This
+extends D16's "verbatim from JAMB" rule from topics up to subjects, where it belongs —
+and it retires `SUBJECT_ALIASES` entirely, since nothing needs a second name to resolve
+against any more.
+
+**One caution when transcribing:** take exact spellings from each subject's official PDF,
+not from IBASS's web UI strings — the UI renders "Agriculture science" (lowercase `s`)
+and abbreviates Art, which are display artefacts, not the official names. **D16's
+"absence is the signal" rule applies here too: if a name cannot be read off the official
+document, it is not confirmed.**
+
+### 3.1.14 Subjects are exam-scoped (D21) + the duplication principle (D22)
+
+**The problem that forced it.** The boards do not agree on names, and not cosmetically:
+
+| Concept | **JAMB** | **WAEC** | **NECO** |
+|---|---|---|---|
+| English | **Use of English** | **English Language** | **English Language** |
+| Mathematics | Mathematics | **General Mathematics** | Mathematics |
+| Accounting | **Principles of Accounts** | **Financial Accounting** | **Accounting** |
+| Art | **Art** | **Visual Arts** | **Visual Arts** |
+| Physical & Health | **Physical and Health Education** | **Health Education** | **Physical Education** |
+| Home Economics | **Home Economics** | **Home Management** | **Home Management** |
+| Civic Education | *not offered* | **Civic Education** | **Civic Education** |
+
+D20 ("use JAMB's name") fails on two counts: JAMB has **no name** for the 9 subjects it
+does not offer, and for subjects in *both* boards there are two equally official names.
+One name per concept cannot express that.
+
+**The fix — one row per exam, not one row tagged with exams.**
+
+```sql
+subjects (slug PK, exam, name, is_compulsory, full_exam_questions)
+
+{ "slug": "use-of-english",       "exam": "JAMB", "name": "Use of English",      "is_compulsory": true,  "full_exam_questions": 60 }
+{ "slug": "english-language",     "exam": "WAEC", "name": "English Language",    "is_compulsory": true,  "full_exam_questions": 80 }
+{ "slug": "general-mathematics",  "exam": "WAEC", "name": "General Mathematics", "is_compulsory": true,  "full_exam_questions": 75 }
+{ "slug": "mathematics",          "exam": "JAMB", "name": "Mathematics",         "is_compulsory": false, "full_exam_questions": 40 }
+```
+
+`slug` is the **exam's own** name, so it is verbatim from that board by construction.
+
+**Why this is not a compromise.** The alternative — one row plus a per-exam alias list —
+buys fewer rows at the cost of every consumer having to resolve names before they can
+display them, and every writer having to keep two lists in sync. Duplicating the row
+means a consumer reads `subject.name` and is done.
+
+**Two fields became correct for free.** `is_compulsory` is a per-exam fact: English is
+compulsory in all three boards, but WAEC's *General Mathematics* is compulsory while
+JAMB's *Mathematics* is an elective. `full_exam_questions` is also per-exam: JAMB
+English is 60 questions; WAEC English Paper 1 is 80. Neither was ever global, and D20
+had them wrong as one value.
+
+**Resolution is unambiguous** because `questions` already carries both `exam` and
+`subject` — the pair resolves to exactly one row.
+
+**Cost:** ~34 subject concepts become ~100–150 rows across three boards (WAEC and NECO
+each run ~76 subjects against JAMB's 25). Those rows describe *genuinely different
+offerings* — different papers, different topics, different marks — so the duplication
+is honest, not redundant.
+
+**⚠ Consequence to keep in mind.** An **unassigned question (`exam: ""`) cannot resolve
+its subject.** That is correct behaviour: such a record is incomplete and must not be
+servable. The fixture keeps one deliberately (`q_unassigned_civic_001`) to prove the
+loader tolerates incomplete records rather than crashing on them.
+
+### 3.1.15 The storage seam (D23/D24) — the bank moves, the code does not
+
+**The rule.** Routes depend on a trait. They never open a file and never write SQL.
+
+```rust
+trait QuestionStore {
+    fn exams(&self) -> Vec<Exam>;
+    fn subjects(&self, exam: &str) -> Vec<Subject>;
+    fn subject(&self, exam: &str, slug: &str) -> Option<Subject>;
+    fn syllabus(&self, exam: &str, slug: &str) -> Option<Syllabus>;
+    fn questions(&self, q: &Query) -> Page<Question>;
+    fn question(&self, id: &str) -> Option<Question>;
+    fn passages(&self, ids: &[String]) -> Vec<Passage>;
+}
+```
+
+`JsonStore` today (RAM over `data/*.json`), `TursoStore` later. Injected as
+`Arc<dyn QuestionStore>`.
+
+**What "the code will not change" actually requires — five things, not one.** This is
+the part that silently breaks if it is not designed for:
+
+1. **Identical types.** Both stores return the D11 constant. Non-negotiable; already true.
+2. **Identical ordering.** A JSON slice and a `SQL … LIMIT/OFFSET` must agree on sort
+   order, or the same query returns different questions in each store.
+3. **Identical paging.** Both must produce D3's envelope — `page`, `total_pages`,
+   `total_records` — from the same underlying count. A count taken in RAM must equal
+   the count SQL returns.
+4. **Identical absence.** D16's rule (*"absence is the signal"*) must hold in both: a
+   topic with no questions does not appear, identically.
+5. **Identical validation.** Both refuse to start on invalid data. The loader is a
+   correctness gate, not a convenience.
+
+If all five hold, the migration is: write `TursoStore`, flip one constructor, ship.
+
+**Two stores, deliberately (D24).**
+
+| Concern | Store now | Store later |
+|---|---|---|
+| Content (questions, catalog) | `JsonStore` — `data/*.json` | `TursoStore` |
+| **API keys** | **`KeyStore` — Turso, day one** | stays Turso |
+
+Keys are mutable operational state: issued, revoked, rate-limited, eventually billed.
+The bank is immutable published content. Mixing them would either put **secrets in the
+committed constant** or put **public content in the operational store**, and both are
+wrong. `TURSO_DB_TOKEN` is already available, so auth does not have to wait on the
+content migration.
+
+**API keys are stored as a hash, never as plaintext.** The key is generated, shown to
+the holder exactly once, and only `sha256(key)` is persisted; lookup hashes the incoming
+header. This is not a "security feature" in D6's sense — it is simply not writing
+user-visible credentials to disk in recoverable form.
+
+```sql
+CREATE TABLE api_keys (
+  id          TEXT PRIMARY KEY,
+  key_hash    TEXT NOT NULL UNIQUE,   -- sha256 hex; plaintext is never stored
+  label       TEXT NOT NULL,
+  created_at  TEXT NOT NULL,
+  revoked_at  TEXT                    -- NULL = live
+);
+-- quota / rate-limit / plan columns are added when billing needs them (D6).
+```
+
+### 3.1.6 What deliberately gets NO table
+
+- **`exams`** — 5 values, no mutable attributes. A code constant, not a table. It
+  becomes one when an exam needs metadata (active years, current cycle); today that
+  is a single env var (`JAMB_SESSION_END`).
+- **`subject_exams`** — folded into `subjects.exams`. 34 rows; "subjects in exam X"
+  is app-side filtering. A join table would be more portable but buys nothing here.
+- **papers, sessions, users, results** — serving/account concerns, not bank content.
+  A paper is **assembled at request time** from the constant, never stored.
+- **A polymorphic `catalog` table** merging subjects+topics — would save a table name
+  but needs a discriminator deciding which column set applies, with the other null.
+  Rejected: pays clarity forever for one name.
+
+### 3.1.4 Relationships
+
+```
+subjects ──< topics ──< subtopics ──< questions
+   │                     │
+   └─────────────────────┘
+passages ──< questions          (optional, 1:many)
+```
+
+`questions` carries the **coarsest** useful FK (`subtopic_id`); `topic`, `subject`
+and `exam` are all one join away. Storing only the finest avoids two sources of truth.
+
+### 3.0c D10 — the naming divergence, recorded for later (no action taken)
+
+Direction of truth: **registry ids → Turso → JSON.**
+
+| Store | Accounting | CRK | English |
+|---|---|---|---|
+| Registry (`subject.rs:42`) — the authority | `Accounting` | `CRK` | `English` |
+| Turso `questions.subject` — **already canonical** | `Accounting` | `CRK` | `English` |
+| `data/bank/questions.json` — **long-form, to rename later** | `Accounts - Principles of Accounts` | `Christian Religious Knowledge (CRK)` | `English Language` |
+
+Five JSON strings to normalize when D10 is taken up:
+`English Language`→`English` · `Accounts - Principles of Accounts`→`Accounting` ·
+`Christian Religious Knowledge (CRK)`→`CRK` · `Islamic Religious Knowledge (IRK)`→`IRK` ·
+`Literature in English`→`Literature` (the last one resolves via `display_name`, the
+other four via `SUBJECT_ALIASES`).
+
+> **Superseded by D20.** `display_name` no longer exists — subjects are renamed to JAMB's
+> official naming and the alias table retires with it. The mapping above is kept only
+> because it documents what the JSON still contains.
+
+Note this does **not** delete `SUBJECT_ALIASES` — it stays as a shim for *incoming
+vendor* rows (Sdash/ALOC), which is its real job.
+
+**The live risk this defers:** once the public API serves from Turso it will emit
+`Accounting`, while the app's JSON emits `Accounts - Principles of Accounts` — two
+vocabularies for one subject depending on which store answered. That must be closed
+before the API is exposed, not before we keep working.
+
+### 3.0b D9 — what the live Turso table actually holds (measured 2026-10-10)
+
+- **68,613 rows**, **34 subjects**, **years 1978–2025** (48 cycles), ~500–3,200 rows/year.
+- Schema (no `exam`): `id, subject, year, content, options, answer, explanation, image, content_hash`
+  — identical to the test fixture at `crates/server/src/db/questions.rs:441`. This
+  orphan table has always been unowned by a migration (see §2.5).
+- **Subject strings are already canonical** — `English`, `Accounting`, `CRK`, `IRK`,
+  `Literature` — i.e. the `SUBJECTS` registry ids, *not* the JSON's long-form
+  spellings (`Accounts - Principles of Accounts`). The two stores disagree on naming;
+  the catalog must reconcile them (O1b).
+- **The JAMB ratio inverts vs the JSON:**
+
+| | rows | share |
+|---|---|---|
+| JAMB (25 subjects) | **65,298** | **95.2%** |
+| non-JAMB (9 subjects) | 3,315 | 4.8% |
+
+The JSON is 76% JAMB because it is 100 Qs/subject across all 34. The Turso table is
+95% JAMB because it is **actual past UTME papers** — which is exactly why it is worth
+keeping. `Further Mathematics` (795), `Civic Education` (596), `Marketing` (439),
+`Data Processing` (438), `Catering Craft Practice` (358), `Animal Husbandry` (320),
+`Office Practice` (195), `Insurance` (143), `Book Keeping` (31) are the only
+non-JAMB inventory there.
+
+- **This is additive only**: one new column, plus per-subject `UPDATE`s. No deletes,
+  no schema rewrites, no row removal.
+
+### 3.0 D8 — the JAMB / non-JAMB split being written to the bank
+
+**`exam = "JAMB"` (25 subjects, by exact bank spelling):**
+English Language · Mathematics · Physics · Chemistry · Biology · Agricultural
+Science · Geography · Economics · Government · Commerce ·
+Accounts - Principles of Accounts · Christian Religious Knowledge (CRK) ·
+Islamic Religious Knowledge (IRK) · Literature in English · History · Arabic ·
+Fine Arts · French · Hausa · Igbo · Music · Yoruba · Home Economics ·
+Computer Studies · Physical Education
+
+**`exam = ""` (9 subjects — WAEC/NECO, deliberately unresolved):**
+Animal Husbandry · Book Keeping · Catering Craft Practice · Civic Education ·
+Data Processing · Further Mathematics · Insurance · Marketing · Office Practice
+
+> **Superseded in mechanism by D21 (recorded D65, 2026-10-13).** D21's
+> exam-scoped subject rows now carry exam ownership, so the catalog no
+> longer needs `""` — and the six WAEC/NECO rows in `subjects.json`
+> (`english-language`, `animal-husbandry`, `civic-education`,
+> `financial-accounting`, `general-mathematics`, `visual-arts`) are the
+> boards' own names from D21's §3.1.14 table, not guesses. The `""` rule
+> survives only for *question* rows (`q_unassigned_civic_001`), where an
+> unassigned exam still means an incomplete record. D8's nine names were
+> the old bank's spellings; seven of them hold no rows and no catalog
+> entry anywhere — absent, not mislabeled.
+
+Rationale for leaving the 9 empty rather than labelling them `WAEC`: we have not
+verified which of them are WAEC vs NECO, and per D7 we do not guess. `""` means
+**"not JAMB, exam not yet decided"** — the honest value until O1b closes.
+Note `Physical Education` in the bank maps to JAMB's **Physical & Health
+Education** (renamed on JAMB's side); the bank spelling is kept unchanged here and
+the rename is catalog-mapping work, not a data edit.
+
+### 3.1 O1 — RESOLVED (research, 2026-10-10): the canonical subject list
+
+**JAMB UTME offers 25 subjects.** English is compulsory; a candidate writes English + 3.
+
+**All 25 already exist in our bank.** The bank is not short of JAMB subjects — it is
+short of *registry entries*.
+
+| # | JAMB UTME subject | in bank | in `SUBJECTS` registry | served today |
+|---|---|---|---|---|
+| 1 | English Language (compulsory) | 249 | ✅ | ✅ |
+| 2 | Mathematics | 100 | ✅ | ✅ |
+| 3 | Physics | 100 | ✅ | ✅ |
+| 4 | Chemistry | 100 | ✅ | ✅ |
+| 5 | Biology | 100 | ✅ | ✅ |
+| 6 | Agricultural Science | 100 | ✅ | ✅ |
+| 7 | Geography | 100 | ✅ | ✅ |
+| 8 | Economics | 100 | ✅ | ✅ |
+| 9 | Government | 100 | ✅ | ✅ |
+| 10 | Commerce | 100 | ✅ | ✅ |
+| 11 | Principles of Accounts | 100 | ✅ | ✅ |
+| 12 | Christian Religious Studies | 100 | ✅ | ✅ |
+| 13 | Islamic Religious Studies | 100 | ✅ | ✅ |
+| 14 | Literature in English | 100 | ✅ | ✅ |
+| 15 | **History** | 100 | ✅ but `has_bank: false` | ❌ |
+| 16 | **Arabic** | 80 | ❌ | ❌ |
+| 17 | **Fine Art** | 100 | ❌ | ❌ |
+| 18 | **French** | 100 | ❌ | ❌ |
+| 19 | **Hausa** | 100 | ❌ | ❌ |
+| 20 | **Igbo** | 100 | ❌ | ❌ |
+| 21 | **Music** | 82 | ❌ | ❌ |
+| 22 | **Yoruba** | 100 | ❌ | ❌ |
+| 23 | **Home Economics** | 100 | ❌ | ❌ |
+| 24 | **Computer Studies** *(newly added)* | 100 | ❌ | ❌ |
+| 25 | **Physical & Health Education** *(newly added)* | 100 | ❌ | ❌ |
+
+**Result: 14 of 25 JAMB subjects served. 11 JAMB subjects — 1,062 questions — are in
+the bank and unreachable.** Two of them (**Computer Studies**, **Physical & Health
+Education**) are *brand-new* JAMB UTME subjects that competitors do not carry (the
+audit records ALOC as lacking Computer entirely) — that is a differentiator, and we
+already own 100 questions each.
+
+#### The two flagged subjects are not the same kind of wrong
+- **History** — genuinely a JAMB subject, genuinely 100 questions. `has_bank: false`
+  is a plain **bug**.
+- **Civic Education** — *not* a JAMB UTME subject (WAEC/NECO/SSS). It is in the
+  registry flagged `false`, which is **accidentally correct for JAMB** but wrong as
+  written: we do hold 100 questions, they just belong to another exam.
+
+### 3.2 O6 — dissolved by the constant (was: two disagreeing topic predicates)
+
+A real bug in the **old** design, recorded so nobody re-introduces its cause.
+
+`matches_topic` (`crates/core/src/syllabus/mod.rs:341`) is documented as *"the single
+predicate behind topic filtering"*:
+
+```rust
+match q.topic.as_deref() {
+    Some(tag) => tag == topic,            // trusts the tag; no catalog check
+    None => question_topic(topics, q).as_deref() == Some(topic),
+}
+```
+
+`TopicIndex::build` (`:369`) disagrees on exactly that case:
+
+```rust
+let topic = q.topic.as_deref()
+    .and_then(|tag| topic_for_name(topics, tag))   // tag must EXIST in the syllabus
+    .or_else(|| question_topic(topics, q));        // else discard it and classify
+```
+
+For a question tagged with a name the syllabus does not contain, `matches_topic` answers
+**yes** and `TopicIndex` **discards the tag and classifies instead**. `TopicIndex::matches`
+even carries a doc comment claiming it *"agrees with `matches_topic` for every question"* —
+false in precisely that case.
+
+**Why it is moot:** the cause was **free-text topic tags**. D15/D16 replaced them with
+`subtopic_id`, a foreign key. There is no longer a string that can disagree with the
+catalog — a question either points at a real subtopic or points at nothing, and both
+predicates collapse into one honest join. The bug cannot be expressed.
+
+**Lesson worth keeping:** free text as a *taxonomy key* is what produced this, the 16-vs-34
+registry mismatch, and the alias table. That is why D16 makes topic names catalog data.
+
+### 3.2b The other 9 bank subjects are WAEC/NECO, not JAMB
+
+Animal Husbandry, Book Keeping, Catering Craft Practice, Civic Education, Data
+Processing, Further Mathematics, Insurance, Marketing, Office Practice — **831
+questions**. These are **not waste**: they are WAEC/NECO inventory already paid for,
+directly relevant to the paid-API intent (D1/D2). They are correctly excluded from
+the JAMB picker — by data, per D1, not by omission.
+
+> **Scope correction (2026-10-13):** the 831 counts the *parent working copy*
+> measured in §2 (the 3,442-row `data/bank/questions.json` era), **not**
+> `data/questions.json` in this repo — which never held more than 2 non-JAMB
+> rows at any commit (1 animal-husbandry + the withheld civic fixture). Read
+> as "this bank holds WAEC inventory" it is false, and it must not decide
+> resourcing. The inventory worth keeping is real but lives in the parent DB
+> (§3.0b: 3,315 non-JAMB rows), not here.
+
+**Therefore the registry must split into two questions:**
+1. Which subjects are JAMB? → the 25 above (data answer: known).
+2. What is each subject's `exam` membership? → JAMB / WAEC / NECO / POST-UTME.
+
+### 3.3 Open — need study before deciding
+
+| ID | Question | Why it matters |
+|---|---|---|
+| ~~**O1**~~ | ~~Canonical subject list + exam ownership~~ | **RESOLVED — see §3.1.** JAMB = 25 subjects, all already in our bank. Remaining: assign `exam` to the 9 non-JAMB subjects. |
+| ~~**O1b**~~ | ~~Confirm the 25 JAMB subjects against `efacility.jamb.gov.ng`~~ | **RESOLVED — 25 confirmed.** See §3.1.13. |
+| **D20** | ~~Subjects carry JAMB's official name and nothing else. `display_name` is removed.~~ | **SUPERSEDED by D21** | Kept for its *spirit* — no alias table, verbatim from the official board — but its wording ("JAMB's name") is wrong. There is no single JAMB name: the boards genuinely disagree, and JAMB has no name at all for the 9 subjects it does not offer. |
+| **D21** | **Subjects are exam-scoped rows.** Each exam has its own row for a subject it offers; `exams[]` is gone, `exam` is a column, and `slug` is the *exam's own* name (`use-of-english` vs `english-language`). A question resolves its subject by the pair `(exam, subject)`. | **PINNED** (user, 2026-10-10) | §3.1.14. Solves the naming problem **without** two names per row — WAEC's *English Language* and JAMB's *Use of English* are two true rows, not one row plus an alias. It also makes two previously-global fields correct: `is_compulsory` (WAEC's *General Mathematics* is compulsory, JAMB's *Mathematics* is elective) and `full_exam_questions` (JAMB English 60, WAEC Paper 1 = 80). Aligns `subjects` with `topics`, which were already exam-scoped. |
+| **D22** | **Principle: choose duplication over complexity.** When a normalised alternative saves rows but costs join logic, branching, or consumer-side reasoning — duplicate the row. DB space is cheaper than cognitive load, on our side *and* the consumer's. | **PINNED** (user, 2026-10-10) | *"duplication on db wont cost much than the other way around."* Retrospective defence of earlier calls: the per-field alias table, D17's rejection of a block enum, and D21 itself. Applies whenever the trade is **rows vs logic**, never rows vs correctness. |
+| **D23** | **The bank lives behind a store trait. Routes never touch storage directly.** `JsonStore` (RAM over `data/*.json`) today, `TursoStore` later — **route code does not change when the DB arrives.** `data/` JSON is a **development** store, not the plan. | **PINNED** (user, 2026-10-10) | *"our code should not change once db comes in on that… the json is mainly for dev purpose."* §3.1.15. The bank moves to the DB **little by little**, once the implementation is strong — so the seam has to be real, not aspirational. |
+| **D24** | **Two stores, not one.** Content (questions/catalog) → `QuestionStore` (JSON now, Turso later). **API keys → `KeyStore`** — *currently a JSON file outside the constant*; Turso later. Keys are mutable operational state; the bank is immutable published content. | **PINNED** (user), **implementation revised by D28** | Originally "Turso day one". Kept alive by D28. **utmelab-api uses its own separate Turso database** (distinct from UTME-Lab's), which sits empty: the 68k rows are ported from the old DB only during the content migration, not piecemeal. Keys in `data/` would put **secrets in the committed constant**, so the key file lives in gitignored `var/` at 0600. |
+| **D28** | **Keys are stored in a local gitignored JSON file today, behind the `KeyStore` shape — not Turso yet.** `libsql` is **dropped**. When Turso is taken up it will be researched against the documented client and added as another impl behind the same shape. | **PINNED** (user, 2026-10-10) | There are **zero customers and one key** — ours. Keys are create/resolve/revoke over one row; a file does that today. Applying D23's own discipline to keys: the seam is what matters, not the backend. Separately, **`libsql` was the wrong dependency** — it compiles SQLite from source (~30 min on a phone) for a service that never runs SQLite locally, and there is a Turso HTTP API we should read the docs for rather than reverse-engineer. Build time went from >25 min to **4 seconds**. |
+| **D29** | **Source layout: two surfaces over one core.** `api/` (public commercial API, `/api/v1`, key auth, JSON) and `app/` (dashboard, `/`, human sessions, planned: accounts/usage/billing) sit side by side over `bank/` (domain types, `Store` trait, `JsonStore`, wire views) and `keys/`. **`bank/` contains no HTTP.** `app/` is created now, empty, so nobody's first route lands in `api/` by accident. | **PINNED** (user, 2026-10-10) | Billing arrives with a completely different auth model, rendering and change rate from the API contract we sell. They share the content and nothing else — and the dashboard stays a **module in this binary**, not a second service (one deploy, one process). Keeping `bank/` HTTP-free is what lets both surfaces read it without either reshaping it. `api/v1/` is a directory so v2 is a sibling, not a flag. |
+| **D30** | **Paging implemented on the store seam, not in the route.** `Store::questions_page(filter, page, per_page)` returns the page **and** the total, so a Turso impl can push `LIMIT/OFFSET` down without any route changing. Defaults: `per_page` 50, **capped at 200**. Envelope `{ questions, page, per_page, total_pages, total_records }`. | **PINNED** (user, 2026-10-10) | Unbounded responses are a defect, not a missing feature: one `GET /questions?exam=JAMB&subject=english` returned ~4,370 questions in a single payload. Putting the slice **in the route** would have frozen the count in RAM and made D23's "identical paging" impossible to keep when Turso computes it in SQL. The cap is the reason a caller cannot ask for the whole bank. |
+| **D31** | **The OpenAPI spec is derived by `utoipa`, not hand-written.** `#[derive(ToSchema)]` on the types handlers return; `#[utoipa::path]` on each handler. **Our axum router is not replaced** — plain `utoipa`, *not* `utoipa-axum`'s `OpenApiRouter`. | **PINNED** (user, 2026-10-10, after research) | The hand-written spec kept producing bugs the drift test had to catch (`securitySchemes` emitted as `security_schemes`; `"type":"integer"` carrying `"default":"50"`). Derived, that bug class is unrepresentable. **`utoipa-axum` was rejected on purpose**: `OpenApiRouter` fuses the router to the spec (`routes!(…)` *is* the router), which conflicts with D29 — `api/` and `app/` are separate surfaces and the dashboard must exist with no spec at all. **Cost, stated:** utoipa cannot emit `default` on a query parameter, so paging defaults (50 / 1 / false) live in parameter *descriptions* and a test asserts they are stated. |
+| **D32** | **The web tier is static files. Forever. No JS runtime on the VPS.** One Rust binary + one directory of files, served by Caddy. `web/` is Astro + Starlight, prerendered; the dashboard is a **static shell** that fetches `/internal/v1/*` from the browser. No adapter, no Node process. | **PINNED** (user, 2026-10-10, "static bro! forever… zero js runtime in vps") | SSR was offered because Astro's docs lead with exactly this case — a mistake: that pattern-matched the framework's flagship example instead of the constraint. **Zero JS runtime settles it.** It also removes the second point of failure (a Node crash no longer takes out anything) and, most importantly, removes a trusted second process holding `/internal/v1` credentials. UX is not the trade: the loading state is already solved. |
+| **D33** | **`/internal/*` is browser-reachable, authenticated by session cookie — and unversioned.** It is **not** in the public OpenAPI spec. `/api/v1/*` stays API-key authenticated for external customers. | **PINNED** (user, 2026-10-10) | A consequence of D32, recorded so it is designed for rather than discovered. Scaffolded as an empty module (`src/api/internal.rs`) pending the dashboard's first endpoint. No version prefix: internal callers are us, and versioning is a promise to integrators we do not owe ourselves. Both tiers are same-origin on `api.utmelab.com`, so **no CORS anywhere** — a browser `fetch('/internal/v1/me')` sends its httpOnly cookie automatically. The cost of D32 is that `/internal/v1` must be hardened for the browser: session auth on every route, `SameSite` cookies for CSRF, and it must never appear in the public spec. |
+| **D34** | **English first and only. Authored in JSON.** Topics, passages, explanations and questions for English are written into `data/api/*.json` — versioned, reviewable, served immediately. **Nothing is written to the new Turso DB until the content migration.** | **PINNED** (user, 2026-10-10) | The service reads JSON, so Turso-written content would be invisible. New content is *authored* — git shows a passage change, a DB row does not. The 68k port is a batch job that carries already-cleaned English rows across. |
+| **D35** | **Novel is its own domain, not part of questions.** `novels`, `novel_chapters`, `novel_characters`, `novel_themes`, `novel_questions` — same service, separate tables and routes. **The novel rotates yearly**, so `year_prescribed` (+ `exam`) is load-bearing. Character types and tested skills come **verbatim from the JAMB Literature syllabus**. | **PINNED** (user, 2026-10-10) | A subject question tests a concept you can reason about; a novel question tests whether you read chapter 7. Different content, different API. Reuses `Option`/`answer`-by-id/`Explanation`/paging/`verified` — the machinery, not a copy. JAMB prescribes plot, setting, themes and characterisation-by-type, so those are the tables. Summaries are always our words, never the book's text. |
+| **D36** | **Every novel ships with ≥50 questions, enforced at load.** Below 50 a novel is **withheld from serving** (logged, counted) — not a boot failure. One document per book under `data/novels/`; the directory is the index, dropping a novel is deleting its file, and at most one `featured` per exam. | **PINNED** (user, 2026-10-10) | Incomplete is not corrupt: a 12-question novel must never reach a customer, but it must not stop the service either. Same withheld-not-fatal pattern as D21. The file-per-novel shape means adding, dropping and featuring are file operations, never migrations. |
+| **D37** | **Novels are categorized: `english` (Use-of-English reading text) vs `literature` (Literature-in-English prescribed text).** We carry **all English** novels and **recent Literature** only. Stubs hold title + category; everything else waits until we face that novel. | **PINNED** (user, 2026-10-10) | JAMB sets novels in two different papers and consumers filter on that line. Older Lit texts are out of use, so only recent ones earn files. Route-level filtering by category comes when the novels are filled, not before. |
+| **D38** | **`POST /api/v1/questions/{id}/report` — the only write path.** Closed reason enum, no PII, 500-char detail cap, 10/day per key, dedupe by (key, question, reason), 201 new / 200 duplicate. Reports **never touch the bank** — they join a review queue. Stored in gitignored `var/reports.json`, same seam as keys. | **PINNED** (user, 2026-10-10) | Students find errors faster than any review team (Myschool's "THE ANSWER SHOULD BE 11/9" proves it), but most reports will be wrong — so the signal is the *count*, never any single report. Five constraints bound the risk; without them this would be a spam vector, not a feature. No public discussions surface — we take the signal in, we don't host the conversation. |
+| **D39** | **CORS: `Access-Control-Allow-Origin: *`.** A browser app calling us directly must not be blocked before auth. Safe *because* D26 already concedes client keys are extractable — the key is still required; we only let the browser send it. | **PINNED** (user, 2026-10-10) | Without this, "works from an app" is true for mobile only. Half the claimed market (pure-frontend study apps, no backend) cannot integrate. One header, no new risk beyond what D26 already accepted. |
+| **D40** | **Question ids are opaque.** `q_…` (authored) and `t…` (ported) both stand; the format carries no meaning and no new rule governs it. Consumers echo ids back, never parse them. | **PINNED** (user, 2026-10-10) | The alternative was churning 95 rows to satisfy aesthetics. Provenance belongs in our cleaning notes, not in a public contract — and declaring ids meaningless kills the question permanently instead of inviting a third format later. |
+| **D41** | **`GET /api/v1/exams/{exam}/papers` ships as *scheme + readiness*, never a mock.** The endpoint returns each subject's question count (read back from `full_exam_questions`), `marks_per_question` where uniform, `duration_minutes` only where verified, `rules`, and an honest `complete` flag plus `subjects_ready`. No assembly, no shuffle, no seed until content can fill a real paper. | **PINNED** (user, 2026-10-10) | The TODO said "mock assembly", but a mock assembled from 155 questions is a lie with a score attached: 4 JAMB subjects need 180 verified rows and we hold 103. Naming it `mock` would have let it ship and be bought. The scheme is real and useful now; readiness turns the content gap into a number the consumer — and we — can watch. Unverified values are absent, never guessed (same rule as `year_published`), and the recorded WAEC "answer N of M" problem is served as a `rules` entry rather than hidden. |
+| **D42** | **`bank_version` in `/health`** — a 16-hex-char SHA-256 over the raw bytes of every file we loaded (five tables plus every novel), exposed as `Store::version()`. It is **content identity, not deployment identity**: `version` (crate) still tells you the binary, `bank_version` tells you the content. | **PINNED** (user, 2026-10-10) | Consumers need one tiny poll instead of diffing the bank, and it replaces webhooks (no receiver, no retry, no secret to leak). Hashing bytes rather than parsed values means an occasional version bump after a reformat — harmless, because a consumer only compares strings for equality, and far cheaper to reason about than a canonicalisation pass that must survive every future field. |
+| **D43** | **Every 429 carries `Retry-After`** — 60s for the per-minute token bucket, 3600s for the daily report cap, and the header appears on **nothing else** (404, 400, 500 never carry it). The daily cap became its own `ApiError::DailyLimited` rather than reusing `rate_limited`, because telling a client to retry in 60 seconds against a limit that resets in hours is the spin this decision exists to remove. | **PINNED** (user, 2026-10-10) | Sending 429 without `Retry-After` invokes a standard the response then refuses to honour; a client is left guessing between one second and tomorrow. Two headers, and the limit stops being the server's problem to explain. |
+| **D44** | **Search is `?q=` on `/questions`: case-insensitive substring of the question text, no ranking.** Results stay in id order so page boundaries mean the same thing they mean everywhere else. It travels through `QuestionFilter`, so a Turso impl pushes it down as `LIKE '%q%'` — the seam owns the query, not the route. | **PINNED** (user, 2026-10-10) | Our own tool first: it is how we find duplicates before adding questions, which is cheaper than the curation it prevents. Consumers get a search UI for free. No relevance scoring because we have no corpus to rank against — 155 questions do not produce a meaningful order, and a ranking that looks authoritative while being arbitrary is worse than none. |
+| **D45** | **`verified` means one reviewer checked the answer and the explanation against the question — nothing else.** It is a claim about *review*, not about *source*. A row inherited from the old bank is **not** verified by provenance: all 97 ported rows arrived marked verified, and a hand-check of the 11 word-stress questions found **2 wrong answers (t74862 *convalescent*, t74864 *grammarian*) whose explanations were written to justify the wrong answer**. Both are now unverified. A full audit followed: **133 rows read line by line**, finding **6 wrong or broken questions** — t74862, t74864, emphatic_001, and t74832/t74834 (two valid answers each), plus two maths/physics questions (log_1, shm_001) where **the correct answer was not among the options at all**. The error rate was not uniform: **word-stress was 2 of 11 wrong**, while all 46 vowel/consonant/rhyme rows were correct. | **PINNED** (user, 2026-10-10) | Before this, "verified: 103" was a provenance flag wearing a quality label — every ported row carried it, almost nothing authored did. That number was about to be sold. An explanation that argues for a wrong answer is worse than no explanation, because it teaches the error with confidence; confidence was the tell. The honest count is lower and worth less, which is the only direction a quality label may move. |
+| **D46** | **Four options (A–D), 2.5 marks each. Not five.** Verified against real papers, not memory: myschool.ng's JAMB 2023/2024 Physics and 2014 Biology/Chemistry all present four options; PassJAMB states the format explicitly ("4 options (A–D), one correct answer … 2.5 marks per correct answer"). Older papers did use five — the 1978 JAMB Biology items on the same site carry an *e* option — so the schema keeps 2–5 and the era note is recorded rather than forgotten. | **PINNED** (user, 2026-10-10) | I had flagged "152 of 155 have four options" as a likely defect and was about to author 152 fifth distractors. Checking cost one search and saved 152 invented options: the ported rows were right, because they came from real papers. The 1978 case also proves the count is not a constant, which is exactly why `Option` is a list and not a fixed column — a schema that encoded "always five" would have been wrong twice. |
+| ~~**D47**~~ | **Provenance is explicit: `source` is `past_paper` or `authored`, and `year` is optional — absent for everything we wrote.** 56 authored ids lost the `q_jamb_2025_…` prefix they never earned; 58 authored rows now carry `year: null`. Load fails if an `authored` row claims a year. | **SUPERSEDED by D48, then D52** (user, 2026-10-10) | Every row claimed `year: 2025` — 97 ported items inherited it from the old bank, and 58 questions *we wrote* were stamped with it too. An authored question is not a 2025 JAMB item; it is a question written against the 2025 syllabus, and telling a paying customer otherwise is selling something we know is untrue. `source` was already reserved in the schema for exactly this. The ported rows keep their inherited year, and that is itself provisional: the old bank recorded one year for all 3,442 rows, so no row's year has ever been verified against the paper it came from. |
+| ~~**D48**~~ | **`source` is three values: `past_paper`, `authored`, `imported`. The 97 hand-entered rows are `imported`, not `past_paper`, and their `year` is null.** Only a row we can name the paper for may carry a year — the loader rejects the rest. `?source=` filters on it. | **SUPERSEDED on year by D52** (user, 2026-10-10) | Those rows were filled by hand from secondary sources, and **some are WAEC questions placed under JAMB**. We cannot tell which: the two id clusters are identical in shape (97/97 four options) and the only phrasing signal — 10 rows saying "most nearly opposite", a WAEC/NECO habit — is a weak minority. So the honest label is *unknown*, and `imported` is that word. They stay servable because the audit proved the content sound (46/46 objective rows correct, the rest reviewed and fixed): good JAMB-syllabus practice we cannot call a past paper. **This is a marketing consequence, not a data one** — we sell a syllabus-aligned verified bank, not a 2025 past-paper archive. Claiming the latter needs a real source, not a better guess. `verified` is unaffected and stays meaningful: it means reviewed, which is a different claim from *sourced*. |
+| **D49** | **`claimed_paper`: a third party attributes this to a named exam year; we have not verified it.** It is the only other source permitted to carry a `year`. Harvesting writes these with `verified: false` and **no explanation** — never, under any circumstance, on arrival. | **PINNED** (user, 2026-10-10) | The user wants the 2025 UTME papers for their own app, which is a legitimate reason, so the work continues — but the label still has to survive the audit we just ran. A pilot harvest of 5 Government questions gave 4 keys I could confirm and 1 I could not; a third-party key is evidence, not review. An imported explanation is worse than none, because it hides the fact that nobody has checked the question. Explanations are the product (D17), not something a scraper may supply. Politeness is also not optional: the harvester is single-threaded, identifies itself, sleeps between requests, and skips rather than guesses. |
+| **D50** | **JAMB's granularity wins.** Objectives attach to the **topic**, not the subtopic, because that is the level JAMB states them at; subtopics carry none rather than being given invented ones. Topic `weight` is `0` where JAMB publishes none — **0 means "not published", not "worth nothing"**. Syllabus rows are imported by `tools/import_syllabus.py` from a published rendering of the official brochure (D16 attribution unchanged). | **PINNED** (user, 2026-10-11) | Our earlier design put objectives on subtopics because subtopics are the drill unit. But JAMB does not state them that way, and inventing per-subtopic objectives means *we* write the exam we claim to reproduce — the same failure as the 2025 stamp, one level down. Likewise a fabricated weight would reach consumers as a number in a syllabus endpoint, which is the last place a guess belongs. The catalog is the bottleneck for importing harvested papers, so it had to be machine-readable: 25 subjects × hand-typed topics is a week of retyping and retyping is where mistakes live. Government landed first — 32 topics, 101 subtopics, verbatim topic names. |
+| **D51** | **Three gates, and only the first blocks entry.****Admissible** (mechanical, decided by `cargo run -- import`): structure, a key pointing at a real option, a subject the catalog knows, and no duplicate — matched on *content*, not id, because the same question legitimately arrives under two ids. **Explainable** is not a gate: a harvested row arrives with no explanation, `verified: false`, and stays servable. **Sellable** means `verified`, set by review and never by the import. | **PINNED** (user, 2026-10-11) | Making the explanation the price of admission means an empty bank until someone writes 675 lessons — which is how banks like this end up empty. So the explanation is what we *charge* for, and `verified` is the line between "in the bank" and "good enough to sell", which is exactly the free/paid split our competitors already run. The duplicate check is on content because ids proved useless at it: t74851 and t76545 shared a stem, and the import immediately found three real duplicates against questions we already held. Every refusal is counted and printed with an example — silent drops are indistinguishable from bugs, and we lost questions to silence twice today. |
+| **D52** | **`year` is required on every row and means "the exam cohort this question is prepared for" — not "the year of the paper it was lifted from".** `source` carries provenance; `?year=` and `?source=` are both first-class filters. Supersedes the year rules in D47–D49, which left 154 rows with no year at all. | **PINNED** (user, 2026-10-11) | A consumer building a year filter cannot use a field that is empty for a fifth of the bank, and that is a product defect regardless of how principled the omission was. The fix is not to re-assert a provenance claim we retracted — it is to give `year` an honest meaning and let `source` do the discriminating. `year: 2025, source: authored` reads *written against the 2025 syllabus*; `year: 2025, source: claimed_paper` reads *a third party attributes it to a 2025 paper, unverified*. Both are true, both are filterable, and neither tells a consumer the question is a lifted exam item when it is not. Two orthogonal fields beat one overloaded one. |
+| **Rejected** | **No `marks` on novel questions.** JAMB's reading-text section is flat 1-mark each; there is nothing to vary, so there is nothing to store. A field that can only ever hold one value is not a field. | **REJECTED** (user, 2026-10-10) | Same rule as `Option.image` and per-option notes: don't carry a field for a case that cannot vary. If a future exam weights novel questions differently, it becomes a real decision then. |
+| **D25** | **REST over HTTPS, JSON only.** Three response shapes and no others: bare resource for a single object, D3 envelope for paged collections, **RFC 9457 Problem Details** for errors. No GraphQL, gRPC, sparse fieldsets, XML/CSV, or wrapped-success envelopes. | **PINNED** (user, 2026-10-10) | REST means Python, TypeScript and `curl` all reach the same endpoint with no SDK — that is the whole value proposition for small teams. GraphQL adds a client library and kills HTTP caching; gRPC has no browser story. Problem Details is a real standard, so consumers get `status`/`title`/`type` plus our `code` for free. |
+| **D26** | **ONE key type. It works from a server, an app, or `curl` — we never ask.** No `sk_`/`pk_` split. Rate limit is **per-key configuration**, not per key-type. The catalog needs **no key at all**. | **PINNED** (user, 2026-10-10) | The two-type split existed to preserve consumer metering — but a `rate_limit` column already does that, and it cost every consumer a classification decision before their first call. Rejected as a *distinction* defending a *field*. The honest consequence is one documentation line, not a key taxonomy: *"if you embed this key in a client app it can be extracted, and whoever extracts it shares your quota."* |
+| **D27** | **What "security" means here.** Now, because keys exist: keys stored hashed (D24), **per-key rate limiting**, CORS scoped to the docs origin, and the answer never in a default payload. Infrastructure, not app code: DDoS/edge, encryption at rest, TLS. Deferred to billing (D6): per-key quotas, usage metering, IP allowlisting. | **PINNED** (user, 2026-10-10) | D6 puts security last **for features**. These three are not features — they are the minimum for keys to exist at all, and they are cheap. `?include=explanation` is a data-exposure decision as much as a design one. |
+| **D53** | **v1 keys are CLI-issued, account-free, one `api_keys` table, two backends.** No auth, no accounts, no sessions, no web until the v1 API is solid. `ApiKey` carries `account_id` (default `"local"`), `plan` (default `"free"`), `key_prefix`, `expires_at`, `suspended_*` columns, but v1 never branches on them. CLI is the only issuer: `key create/list/revoke/rotate`, plus one-time `key import --from var/api_keys.json` (file -> Turso, dry-run, refuses overwrite, counts every skip). Backend chosen at boot: `KeyBackend::Remote(TursoKeyStore)` via `turso_serverless` when `TURSO_DB_URL`+`TURSO_DB_TOKEN` set; otherwise a **hard error — no file fallback** (a missing Turso config must never fork keys into an invisible local store). `KeyBackend::File` remains only for tests and as the `key import` migration source, never a runtime default. `resolve()` returns live keys only; revoked/expired/suspended/unknown are identical `401`. Turso resolve = 30s TTL cache then wire; **cross-process CLI revoke is visible within the TTL, same-process (dashboard later) is immediate** — recorded in the plan §11.1, verified live 2026-10-11 against real Turso (create→200→revoke→TTL→401). | **ACCEPTED** (2026-10-14) — ratified by the v0.1.0 release; the key seam shipped as written | Keys must be testable today with curl + key alone. Account-shaped fields ride along defaulted so Phase 2 (dashboard) is additive, not a migration. One table = file and Turso store the same `StoredKey` shape, so import is column-for-column. |
+| **D54** | **`emphasis: Option<String>` on `Question` + `cargo run -- quarantine`.** The underlined target is a verbatim substring of the stem, served on every question payload (null when the stem needs none); the loader refuses a value that is not a substring. Quarantine is a read-only report of every mechanical defect (underline-missing, missing/dead figure, duplicate stem, non-four option count, novel leak) — 93 findings at ship time. `source_ref`, `difficulty` and `section` changes explicitly deferred: none blocks answerability, and every extra field is a reason to re-read a row twice. | **PINNED** (2026-10-11); **the `emphasis` field SUPERSEDED by D60** — the underline becomes an `Underline` mark. Quarantine and the loader-refuses-a-defective-row half both stand; the integrity bar D54 set is not lowered, it just moves from substring-matching to bounds-checking | UNDERLINE_PROBLEM.md option 1, by D22 (a field costs the consumer less than markup parsing). Substring over span offsets: reviewable, grep-able, survives reflow. |
+| **D55** | **Figures are `image: Option<ImageRef{url, position}>`, never a bare string.** `position` is `above \| below` (enum, required, no default); the loader rejects non-`https` URLs at boot. Import infers placement off the stem's prose (`below` → below, else above) and refuses relative URLs at its gate. `q_authored_physics_shm_002`'s dead relative path was stripped (image gone, `verified:false`) — the mirror job restores both, the shape does not move when it does. | **PINNED** (2026-10-11); **the `image` field SUPERSEDED by D60** — the figure becomes an `Image{url}` mark, which answers D55's open "Question only, or everywhere?" by construction. The https-only rule and the placement-varies evidence carry over unchanged | Two parallel `Option` fields admit placement-without-a-figure; the struct makes it unrepresentable and stays extensible (`alt` later costs nothing). Placement varies in the wild (parent DB: above ×1400, below ×144), so assuming one misrenders one row in eleven. No consumers exist — breaking the wire shape now is free, later is not. |
+| **D56** | **Text plainness is gated; passages own newlines; the port has rules.** Stems, options and explanations are plain text plus `\(...\)` LaTeX — the loader rejects `&entity;` and `<tag>` at boot (the 139-entity scrub must never re-enter, least of all via the 68k-row port). `x < 2` (a `<` followed by a space or digit) is comparison, not markup, and stays legal. Passages alone may carry `\n\n` paragraph breaks — the only field where newlines are legal; stems never. Port rules (parent → bank): `html.unescape` everything, strip tags, map answer label→id, keep 5th options for review to judge, explanations never ported, every refusal counted like D51. | **PINNED** (2026-10-11) | Byte-scan, no regex crate, for two patterns — fail-closed with the filename and id attached. `\n\n` over a block enum by D22: every consumer already renders paragraphs from blank lines. |
+| **D57** | **Passage links are validated; numbered-gap cloze is quarantined; the 78 underline rows are unverified until backfill.** `passage_id` must resolve (dangling links fail boot like dangling subtopics). `cloze_without_passage` lists "gap labelled N" rows with no link — inline-passage rows (Arabic/French) need no link and are excluded by construction. All 78 underline-missing rows set `verified:false` in one pass: the TODO rule, enforced, reversible via git; backfill re-verifies row by row. | **PINNED** (2026-10-11) | Audit found 10 orphan gaps and 78 verified-but-unanswerable rows. The former is a new mechanical kind; the latter is D45's honesty rule applied to D54's field — a verified flag on an unanswerable stem is the same lie as an explanation justifying a wrong answer. |
+| **D58** | **Withheld rows are partitioned aside, never dropped — and import carries them through.** `load` used `retain()`, so the D51 import (which rebuilds from `store.questions()`) silently deleted the unassigned-exam fixture the next rewrite (D21's deliberate `q_unassigned_civic_001` vanished in the 675-row merge). Now: `withheld_questions` lives beside the bank, `write_questions` round-trips it, import seeds from servable + withheld, and the fixture is restored (modernized to `year:2025`, still exam-less). Round-trip test guards it. | **PINNED** (2026-10-11) | Found by auditing withheld counts (5, not 6) against the D21 note. Silent drops are the exact failure D51's counted-refusals rule exists to prevent — the merge step had its own uncounted one. |
+| **D59** | **The review workbench is Python in `tools/`, not a CLI surface in the binary.** `tools/review.py` (`show/next/verify/set/stats`, human-readable or `--json`) works with zero toolchain on any machine. A first version was built as `cargo run -- review` and removed same-session: it baked review writes into the shipped binary and needed a compiler on the review machine. Companion rule: process logs go to stderr, always — stdout carries documents. | **PINNED** (2026-10-11) | Workflow tooling lives with the harvester and the proposer, not in `src/`. The binary serves; scripts work. |
+| **D60** | **Every text-bearing field is `RichText { text: String, inline: Vec<Inline> }`, with `Inline { start: u32, len: u32, kind: InlineKind }` and `kind ∈ {Bold, Italic, Underline, Strike, Subscript, Superscript, Image{url}}`.** Stems, every option, `key_point`/`body`/`trap`, passage text and novel-question text all take the identical shape, so emphasis cannot mean one thing on a question and nothing at all on an explanation. **Supersedes the field shapes of D54 (`emphasis`) and D55 (`image`)** — `emphasis` becomes an `Underline` mark, `image` becomes an `Image{url}` mark. Three further rules, all load-validated: offsets are **Unicode characters**, never bytes, and a mark running past the end of its text is refused at load (same integrity bar D54 set); marks may **share an identical range** (bold+underline) but **never partially overlap**, which is one checkable invariant; **paragraph breaks are `\n\n` in plain text** — there is no block layer, because a blank line already means that to everyone and a second structural concept would be the complexity this decision exists to remove. No deprecation and no alias: `emphasis` and `image` are deleted, not shadowed. | **PINNED** (user, 2026-10-12) | D54 and D55 each solved one symptom; the source ships both HTML tags and raw LaTeX, so the pipeline was being extended one field per formatting need — underline, then image, then bold in explanations, then paragraph breaks, then sub/superscript for chemistry — each one a schema change, a loader rule, an OpenAPI change and a per-consumer special case. `Image` **as a mark kind** is what retires D55's open "Question only, or everywhere?" question: it is everywhere by construction, so placement still varies in the wild (D55's parent-DB measurement: above ×1400, below ×144) without any field being added. `text` stays **plain**, so grep, diff, equality and search keep working and no field becomes ambiguous about escaping — this is D22's rule applied at the type level instead of one field at a time. Research confirmed the direction: Google Forms and Canvas keep stems plain and put structure in fields, Examplary ships a stripped safe-HTML subset, and Quizlet's inline markers are a documented consumer bug (literal asterisks rendered on screen) — the two teams that chose inline markup are the two that leaked it. Breaking now is free (D55's own argument); later it is not. |
+| **D61** | **The harvester maps markup to D60 marks instead of deleting it.** `clean()` becomes two functions: `clean_inline()` (collapse runs of whitespace inside one line, unescape entities) and `clean_blocks()` (join block-level fragments with `\n\n`, per D60). `<u>`/`<em>`/`<strong>`/`<s>` become marks, `<sub>`/`<sup>` become `Subscript`/`Superscript`, `<img>` becomes an `Image{url}` mark, and block boundaries survive as `\n\n`. Recorded alongside it, **not changed here**: `FIGURE_HINT` still *refuses and drops* a row whose stem says "diagram below" with no image — correct as an integrity rule, but it means the bank is a **filtered output, never a representative sample**, and no decision about "what content looks like" may be inferred from it. | **PINNED** (user, 2026-10-12) | D60 is dead on arrival without this: `re.sub(r"\s+", " ", text)` collapses every paragraph boundary to a single space, so `\n\n` could never appear in the data no matter what the schema said. The same line is why D54 exists at all — `<[^>]+>` → `" "` is what destroyed the 78 underlines, so markup loss is not a one-off defect but the harvester's standing policy. Mapping rather than deleting also makes the HTML→D60 target 1:1, which is what keeps the importer simple. |
+| **D62** | **`verified` is output, `verifications` is the store.** The wire keeps one bool — *a human checked answer + explanation against the question since its last content change, and it passed* (D45's meaning, unchanged). The store keeps a `Verification` log: `{question_id, kind: AutoRule\|AiBulk\|AiSingle\|Human, verdict: Pass\|Fail, scope: [Answer, Explanation, TopicLink, Marks, Bounds, Dupe], verifier, detail?, content_hash, created_at}`. Only `Human/Pass` covering `{Answer, Explanation}` sets `verified=true`; `AutoRule` (quarantine, bounds, dupe) can only block it — a quarantined row is never verified whoever passed it. `AiBulk`/`AiSingle` write signal rows, never flip the bool. Any edit where the hash differs from the last human-pass hash resets `verified=false` at load. Current `verified:true` rows seed one `Human/Pass {verifier:"legacy-import"}` each. | **PINNED** (user, 2026-10-13) | One bool cannot hold four processes plus an edit history; automation that can sell content will sell a wrong answer with confidence — D45's exact failure. Servability stays orthogonal (withheld → servable → verified, D21/D36/D51). Implements the review's point 1 without adding a lifecycle enum to the wire (D22). |
+| **D63** | **Per-topic expectations live in `data/blueprints.json`, provisional, opt-in only.** JAMB publishes no per-topic counts, so `Topic.weight` stays "not published" (D50) and is never fabricated. The blueprint is empirical: TestDriller 17yr topic-level maths (S1), Examkits section shares for 8 subjects (S2, section rows with member slugs, never even-split to topics), everything else explicitly `unmapped`. Every catalog topic appears exactly once (own row, section member, or unmapped member). Sources + sample + method + confidence ride on every row (provenance in `docs/BLUEPRINT_SOURCES.md`); S5 (our own ~65k Turso rows once tagged) replaces S1/S2 topic by topic. Never in the default syllabus response — `?include=blueprint` or `/blueprints/{exam}/{subject}` only. | **PINNED** (user, 2026-10-13) | Students revise by priority and paper assembly needs blueprint × coverage — but a fabricated `weight` would reach consumers as JAMB fact, the same failure as the 2025 stamp (D47). Section-to-topic even-splitting would be fabrication with a source attached. Unmapped-with-members keeps all 566 topics visible without inventing numbers. |
+| **D64** | **Pinned Turso schema for the JSON clearing (`docs/DB_SCHEMA.md`), not implemented.** Every file has a target table; scalars carry what is filtered/sorted/counted, JSON columns carry the API structs byte-for-byte (same serde — identical types by construction). Verified derives at read in Rust via shared `human_verified()` over a batched query, never a stored flag; `content_hash` maintained on write; validation moves to write-time + `audit-db`. Clearing order: keys ✅ → verifications → questions → passages+novels → catalog+blueprints, dual-run with parity per phase. Supersedes the "novels never move to a database / directory is the index" comments when each table lands. | **PINNED** (user, 2026-10-13) | The DB must be designed before the first table, or each phase invents its own shape and D23's seam breaks five times instead of once. Normalizing options/marks into tables was rejected per D22 (a join per read for nothing). |
+| **D65** | **D8's `exam=""` mechanism is retired for subject rows, kept for question rows.** D21's exam-scoped catalog now owns exam membership, and the six WAEC/NECO subject rows carry the boards' own names (D21 §3.1.14) — no guess involved. A question row with `exam:""` remains an incomplete, unservable record (D21/D58). No data changed: the catalog was already correct; only the rulebook caught up. | **PINNED** (user, 2026-10-13) | D8 said "we do not guess" while the catalog went ahead and assigned — silent supersession is how D8-style drift starts. The WAEC/NECO assignments needed a ruling that they are board names, not guesses, before anyone builds on them. |
+| **D66** | **An exam becomes a data record, and a subject stops asserting facts about an exam.** New `data/exams.json` holding `Exam { code, name, countries[], status: live\|planned\|retired, has_full_paper: Option<bool>, subjects_required: Option<u32>, duration_minutes: Option<u32>, rules[] }`, plus two field moves: `Subject.full_exam_questions: u32` → `objective_paper_questions: Option<u32>`, and country scope as a **join** (`topic_countries`, set membership — absence means universal), never the proposed nullable `Topic.country` column, which cannot hold a four-country section. This splits the product into an **objective mock** (every exam, every subject — the gate is a known count plus enough verified rows) and a **full paper** (`has_full_paper: true` only; JAMB now, POST-UTME later). **Not proposed:** a `Paper` table, N-of-M scoring, country-qualified exam codes, or a rewrite of `is_compulsory`. Shape and grounds: `docs/WAEC_NECO_RESEARCH.md` §1–§10. | **PINNED (scoped, 2026-10-13)** — exam record + nullable count implemented; scope as join tables (`topic_countries`, `exam_requirements`) with `?country=` filters implemented; `is_compulsory` rewrite stays deferred until WAEC content work starts | `full_exam_questions` was three facts in one field: how many MCQs the objective paper holds, how many the subject contributes to a full exam, and whether a full exam exists. JAMB makes all three coincide, so it read as one number; every other board separates them. Consequences measured, not predicted: **§1** a WAEC syllabus is country-partitioned in the board's own PDFs (Biology "Section B is for candidates in Ghana only"; Geography "\*\* will be for candidates in Nigeria only") and `Topic` has nowhere to record it, so one undifferentiated tree is wrong for four of five countries. **§4** the nine non-JAMB rows already assert unverified counts and at least two are contradicted by source — NECO English stores 40 against a 60-question objective paper — which is D50's failure mode already shipped. `duration_minutes` is the single exam-level fact in the codebase and it was the hardcode `(exam == "JAMB").then_some(120)`; `is_complete(min_electives)` took the paper shape from its call site, so the caller decided how many subjects a JAMB paper has. Both are data now. **No `Paper` table** is a proof, not caution: `Option {id, text}` + `answer` expresses only single-choice with one right answer, objective papers *are* MCQ and essay/practical are not, so the model can only ever represent the objective paper — one nullable column named for it is the whole story. `exams` is already phase 5 of D64's clearing order, so this is the same row as a table later. **Dropped from this row:** the nullable-`Topic.country` sketch (a scalar cannot hold Section C's four countries — sets shipped instead) and the Nigeria-only caveat (rejected: neighbours arrive as scope rows, no new machinery). |
+| **D67** | **MCP capability is expressed as scopes on the one existing key, and a credential's scopes set the ceiling on `Verification.kind` it may write.** `ApiKey` gains `scopes: Vec<Scope>` (`McpRead`, `McpAdmin`, `McpVerify`) beside the `account_id`/`plan` D53 already added. The commercial surface reuses the `/api/v1` `Caller` rules unchanged — resolve → live-check → token spend — and adds nothing. **The binding rule: `McpVerify` is what permits a `Human/Pass` row; without it a caller may only write `AiSingle`/`AiBulk`, which per D62 are signal rows that never flip the bool.** An admin write to text, options, answer, marks or explanation changes `content_hash` and voids that row's existing pass, so every write is attributable from the log. Nothing is built until the auth shape is settled; this row proposes the shape, it does not authorise the surface. | **ACCEPTED** (2026-10-14) — ratified by the v0.1.0 release; scopes ship with the MCP surface-asserted `kind` is trust-based and leaves that open; two credentials duplicate auth to buy the same guarantee. Scopes carry it on the key that already exists. `ApiKey` already carries `account_id` and `plan` (D53) and lives in Turso, so this is the same idea one level down and one column on a migration the roadmap already owes. **The alternative was rejected on the evidence, not on taste:** D45 records a hand audit finding six wrong answers and two explanations written to justify them, and D62 exists because "automation that can sell content will sell a wrong answer with confidence". A single admin key an AI agent also holds re-opens exactly that, only automated and at bank scale, with the log faithfully recording a human review that never happened. Making the ceiling a property of the credential rather than of the caller's honesty is the difference. The commercial tier needs no decision at all — it reuses `/api/v1` auth verbatim — so the whole question reduces to this one bit. | record, and a subject stops asserting facts about an exam.** New `data/exams.json` holding `Exam { code, name, countries[], status: live\|planned\|retired, has_full_paper: Option<bool>, subjects_required: Option<u32>, duration_minutes: Option<u32>, rules[] }`, plus two field moves: `Subject.full_exam_questions: u32` → `objective_paper_questions: Option<u32>`, and country scope as a **join** (`topic_countries`, set membership — absence means universal), never the proposed nullable `Topic.country` column, which cannot hold a four-country section. This splits the product into an **objective mock** (every exam, every subject — the gate is a known count plus enough verified rows) and a **full paper** (`has_full_paper: true` only; JAMB now, POST-UTME later). **Not proposed:** a `Paper` table, N-of-M scoring, country-qualified exam codes, or a rewrite of `is_compulsory`. Shape and grounds: `docs/WAEC_NECO_RESEARCH.md` §1–§10. | **PINNED (scoped, 2026-10-13)** — exam record + nullable count implemented; scope as join tables (`topic_countries`, `exam_requirements`) with `?country=` filters implemented; `is_compulsory` rewrite stays deferred until WAEC content work starts | `full_exam_questions` was three facts in one field: how many MCQs the objective paper holds, how many the subject contributes to a full exam, and whether a full exam exists. JAMB makes all three coincide, so it read as one number; every other board separates them. Consequences measured, not predicted: **§1** a WAEC syllabus is country-partitioned in the board's own PDFs (Biology "Section B is for candidates in Ghana only"; Geography "\*\* will be for candidates in Nigeria only") and `Topic` has nowhere to record it, so one undifferentiated tree is wrong for four of five countries. **§4** the nine non-JAMB rows already assert unverified counts and at least two are contradicted by source — NECO English stores 40 against a 60-question objective paper — which is D50's failure mode already shipped. `duration_minutes` is the single exam-level fact in the codebase and it was the hardcode `(exam == "JAMB").then_some(120)`; `is_complete(min_electives)` took the paper shape from its call site, so the caller decided how many subjects a JAMB paper has. Both are data now. **No `Paper` table** is a proof, not caution: `Option {id, text}` + `answer` expresses only single-choice with one right answer, objective papers *are* MCQ and essay/practical are not, so the model can only ever represent the objective paper — one nullable column named for it is the whole story. `exams` is already phase 5 of D64's clearing order, so this is the same row as a table later. **Dropped from this row:** the nullable-`Topic.country` sketch (a scalar cannot hold Section C's four countries — sets shipped instead) and the Nigeria-only caveat (rejected: neighbours arrive as scope rows, no new machinery). |
+| **D68** | **Per-topic readiness: a topic is ready when deduped verified rows meet the measured expectation, rounded up.** For a blueprint row with `expected` e (measured-topic only), `need = ceil(e)`; `have` = distinct `content_hash` over verified, servable, in-scope rows attributed through subtopic → topic; ready iff `have >= need`. Dedup by fingerprint (not row count) so near-duplicate stems cannot manufacture readiness; verified-only so unreviewed rows cannot sell; untagged rows count as unattributed, never assigned. Subject complete iff every measured topic is ready. **Not proposed:** changing the blueprint numbers, floor/round thresholds (ceil is the conservative reading — a paper holds whole questions), or applying the predicate to section/unmapped rows (no per-topic expectation exists there). | **ACCEPTED** (2026-10-14) — ratified by the v0.1.0 release; `/blueprints` serves it live-dedup over row counts: D45's wrong answers taught that counted rows are claims, and duplicate stems would otherwise pass readiness twice for one question. |
+| **D69** | **Single-subject assembly is deterministic, answerless, and refused until complete.** `POST /papers/{exam}/{subject}?seed=N` shuffles deduped verified rows per ready topic with one seeded RNG stream (topics in slug order) and takes `need` each; the same seed always builds the same paper, so scoring is a stateless re-assembly — no paper table, no stored attempts (D66 proved the model cannot hold them). Answers never ride the paper (`render(q, false)`); the score endpoint marks only submitted ids, so correctness is revealed solely for guesses the candidate already made. Until D68 says complete, assembly answers 409 naming the gap topics — an empty shell that claims to be a mock would be the D47 failure in product form. Scoped to one subject; the 4-subject JAMB mock stays refused per D41. | **ACCEPTED** (2026-10-14) — ratified by the v0.1.0 release; assembly and scoring serve it live-bearing word | Determinism over stored papers: a `Paper` table would persist attempts, PII-adjacent rows, and expiry rules for zero product gain — the seed *is* the paper's identity, reproducible by anyone. Withheld answers over trust: the wire already withholds by default on `/questions`, and a mock that ships its key is a leak, not a feature. 409 over 200-empty or 404: the subject exists and the request is well-formed; what is missing is bank content, and the response says exactly which topics are short. |
+| **D70** | **Launch assembly is count-gated; blueprint assembly is the premium path, and the gate turns only on a measurement that *covers* the paper.** `blueprint_governs` requires both: per-topic rows carrying a measured `expected`, whose sum reaches the blueprint's own `paper_size`. When it governs, assembly is exclusively D68/D69 (balanced by construction, 409 naming the topics that are short). When it does not, any subject holding at least `objective_paper_questions` verified, fingerprint-deduped rows assembles a full-length shuffled paper. Every paper discloses its `mode` (`blueprint` vs `count`), so no consumer mistakes an unbalanced draw for a balanced mock. Where the count is null (D50: unstated) or the verified rows fall short of it, assembly 409s naming both numbers — it never invents a paper size or pads with unreviewed rows. **Not proposed:** retiring the blueprint path, serving count papers for a governing subject, or filling a partial blueprint's missing seats from unmeasured rows. | **ACCEPTED** (2026-10-14) — ratified by the v0.1.0 release; all 25 JAMB subjects serve on it-topic measurement would hold the whole exam hostage to blueprint work while verified content sits idle. The split is principled, not convenient: where JAMB's topic mix is measured *and whole*, balance is enforceable and enforced; where it is not, a shuffled full-length draw of verified rows is exactly what "mock" has always meant, and the `mode` label keeps the two honest apart. The coverage condition is the load-bearing word: literature-in-english measures 34 of 40 seats and use-of-english states ranges rather than expectations, so neither governs — serving a "balanced" 34-question paper under a `blueprint` label would be the D47 failure wearing a measurement. | 
+| **D71** | **Blueprint balance is a multi-cohort property: the predicate governs only when the bank holds at least two exam cohorts.** `blueprint_governs` now requires both (a) measured topic rows summing to the blueprint's own `paper_size` (D70) and (b) `cohorts >= 2` for the subject. With one cohort, assembly serves a `count` paper and the readiness account reports `governed: false` with the cohort count, so no consumer reads "17/23 topics ready" as six questions we owe. | **ACCEPTED** (2026-10-14) — ratified by the v0.1.0 release; the bank ships 2025-only, so `mode: "count"` everywhere-only mandate | A per-paper topic expectation is measured over 17 papers (blueprint `sample`), so a single cohort can hold at most what that one paper contained. Asking a 2025-only bank for `ceil(1.30) = 2` binary-operations questions when the 2025 paper contained none is not a content gap — it is arithmetically unmeetable, and the honest response is to name that rather than author filler that claims an exam's shape. The alternative measurement (need = what *our* rows contain) is worse: it makes completeness self-fulfilling and deletes the only signal D68 exists to give. So with one cohort the count gate stands, it is labelled, and the moment older papers land the predicate activates and D68/D69 start doing real work — data-driven, no code change. |
+| **D72** | **One question, one row — and the invariant is enforced, not promised.** Question identity is the **normalized stem plus the normalized options** (every unicode letter and digit lowercased, nothing else), never `content_fingerprint`: that one folds in the explanation, so it answers "has this row changed?" and cannot answer "is this question in the bank twice?". `tests/dedup.rs` fails on duplicate ids, on two rows sharing an identity, and on same-stem/same-key/different-options (the shape where one copy's key is silently wrong). A shared stem with different options is **not** a duplicate: different papers ask the same stem with different option sets, so those pairs are reviewed and listed in the test — a *new* pair stops the suite until a person reads both rows. Dropping a duplicate also needs a Turso delete, because `seed_questions` upserts by id: `examples/prune_questions` deletes only ids absent from the file, prints each one, and asserts the count. | **ACCEPTED** (2026-10-14) — ratified by the v0.1.0 release; `tests/dedup.rs` and `tools/dup_audit.py` ship as gates-z0-9]`, which deleted Arabic and Hausa text outright and reported 66 good rows as one duplicate — a false alarm is worse than no audit, so the normalizer is part of the test now. Real findings, all in verified rows: two exact duplicates (computer-studies `64092` "Fire fox" typo of `64345`; principles-of-accounts `75201`, the same warrant question reordered) and two same-stem rows whose keys cannot be stood behind (accounts `75166` keys "Bank note", not a source document; Hausa `76200` keys a reading its options do not contain). Each dropped in favour of the twin that already holds the question — the bank keeps one copy, the record keeps the why. |
+| **D73** | **Production carries no JSON at all — Turso is the only source, and nothing is embedded in the served binary.** `serve` boots `TursoStore::open_cached` and serves from memory; JSON is a dev artifact. Concretely, three things are now wrong for production and must go: (1) the nine catalog files and six novel files baked in by `include_str!` in `src/bank/json.rs` — roughly 2.6 MB of JSON inside the executable that `serve` never reads, inflating every release and every boot's page cache; (2) `data/questions.json` shipped in the release tarball, which `JsonStore::load_embedded` reads from disk but `serve` never touches; (3) `UTMELAB_API_DATA_DIR` / `UTMELAB_API_KEYS_FILE` in the host env file, both consumed nowhere outside `config.rs`. `JsonStore` and the `data/` tree stay in the repo — they are how questions get tagged and verified locally before `import --turso` writes them. That loop is developer-side and runs from a checkout, never from the host. There is **no file fallback**: a future Turso mirror is the fallback, not JSON on disk, because a fallback that silently diverges from the source of truth is worse than an outage. | **ACCEPTED** (user, 2026-10-15) — ratified before `v0.1.0`; the live `v0.0.0-pre.6bcf7d8` deployment was withdrawn rather than patched, so the next deploy meets an empty host. | `serve` already ignores both loaders — `load_embedded` is reached only from `import.rs:163` and `quarantine.rs:268`, and `config.data_dir()` is consumed nowhere outside `config.rs`. So none of this is load-bearing at runtime; it is weight and confusion. The embedded catalog also encodes D42's fingerprint split ("a question edit moves the version without a rebuild, a catalog edit moves it on the next build") — a distinction that only means something to a build, and means nothing to a server that hot-swaps from Turso. Removing the embed deletes that asymmetry for free: a catalog edit becomes a Turso write like any other. Consequence to accept: the dev loop (`import`, `quarantine`, and the tests that call `JsonStore::load`) keeps needing the tree, so this is a *production* rule, not a deletion of `data/`. |
+| **D74** | **No embedded replicas while the primary runs MVCC journal mode; reads go per-request with a bounded cache instead.** Measured 2026-10-15 (`examples/replica_spike.rs`): the replica sync downloads a 4.4 MB snapshot that no SQLite engine can open, stock or bundled ("file is not a database" from both), because MVCC page layout is not plain SQLite. Two protocols tried (V1 handshake timeout, V2 same unreadable snapshot), clean directory, token valid (`/info` 200). So the RAM problem is solved without replicas: question reads become indexed per-request SQL with LIMIT plus filters, the catalog (34 subjects, 582 topics) stays in RAM as kilobytes, and a capped in-process cache holds hot rows. Measured on the same spike: full fetch 17 to 22 s at boot with RSS up 17 MB for 2,243 rows, which already prices a million rows out of a 2 GB box. Not proposed: switching the primary out of MVCC (production data, Turso default, needs vendor word first), or a DIY row-copy replica (full copy per sync, no change feed to diff on). | **ACCEPTED** (user, 2026-10-15) — ratified; phase 1 (hot-path SQL reads with parity gate) lands first, full-RAM boot retires after. | An unreadable snapshot fails closed and loud, which is why the spike ran before any redesign: a replica that cannot open is worse than RAM that cannot grow, because one is visible and the other is not. |
+| **O2** | Does the **public API** expose the bank as-is, or a sanitized/derived shape? | Affects whether `answer`/`explanation` are public fields (free tier?) and drives D6 later. |
+| **O3** | Is the **64k Turso table** real, usable, and in scope — or is it dead weight to be dropped? | §2.5: orphan table, no migration, unvalidated per audit. |
+| **O4** | Topic model: keep one flat `topic`, or add `subtopic`? | 542 syllabus topics vs 317 bank topics — is syllabus the authority? |
+| **O5** | Tiering / what is free vs paid, for the public API? | Referenced by `SUBSCRIPTION_V2_DESIGN` lineage; not yet decided here. |
+| ~~**O6**~~ | ~~Two disagreeing topic predicates~~ | **MOOT — dissolved by the constant.** See §3.2. |
+
+---
+
+## 4. Corrections to the pulled audit (research output)
+
+`QUESTION_BANK_AUDIT.md` / `GAPS.md` contain claims the data does not support. Do not
+build on these without re-checking:
+
+| Claim | Reality |
+|---|---|
+| A5: "half the TopicCards hide behind `MIN_TOPIC_QUESTIONS=4`" | **False.** 328/329 bank topics have ≥4 questions. |
+| A5: "alias drift (`Accounts - Principles of Accounts` vs `Accounting`) breaks topics" | **Misattributed.** That is a *subject* string, handled by `SUBJECT_ALIASES`. Topic drift is **0%**. |
+| A4: "History, Civic Education `has_bank=false`" presented as a data gap | **Registry flag bug** — both have 100 questions each. |
+| A1: "222 empty explanations" | **Correct.** |
+| C6: "`crates/mobile` empty" | **False** — built (`main.rs`, `net.rs`, `store.rs`). |
+| Audit: "image 170 rows" | Image *key* present on 3,193; **170 non-null**. |
+
+---
+
+## 5. Sequencing (proposed — not yet decided)
+
+1. Settle **O1** (canonical subjects + exam ownership) → unblocks D1/D2.
+2. Define the **canonical schema constant** (question + catalog rows).
+3. Then, and only then, touch data or code.
+
+---
+
+## 6. Explicitly not decided
+
+- **Study notes** — coming up, not yet decided. Not touched here.
+- Paging details beyond "simple" (D3).
+- Pricing, tiers, auth, rate limits (O5, D6).

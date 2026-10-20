@@ -1,0 +1,173 @@
+# Harvests exam questions and verifies the bank.
+#
+# Why the crawl runs here: it is a multi-hour job on a bad phone network. Not
+# because CI is where crawls belong — politeness is a property of
+# tools/harvest_all.py (single worker, spaced requests, identified user agent)
+# and holds wherever it runs.
+#
+# What this workflow deliberately does NOT do: run in parallel. The matrix
+# below fans out across *verify* (cheap, isolated) but the harvest is a single
+# sequential job with a concurrency group, because two crawlers at once doubles
+# the request rate on somebody else's server.
+#
+# No secrets are used. The harvest reads public pages and writes JSON back to
+# the repository using the automatic GITHUB_TOKEN.
+
+name: harvest
+
+on:
+  workflow_dispatch:
+    inputs:
+      subjects:
+        description: "Comma-separated source slugs, or 'all'"
+        required: false
+        default: all
+      year:
+        description: Exam year
+        required: false
+        default: "2025"
+      delay:
+        description: Seconds between requests (politeness floor)
+        required: false
+        default: "2"
+      probe:
+        description: "Count only, fetch no question pages"
+        type: boolean
+        default: false
+  schedule:
+    # 06:17 UTC daily. Off the hour on purpose: every workflow in the world
+    # fires at :00, and shared infrastructure notices.
+    - cron: "17 6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: harvest
+  cancel-in-progress: false
+
+jobs:
+  harvest:
+    name: Harvest
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Probe or crawl
+        run: |
+          set -euo pipefail
+          if [ "${{ inputs.probe }}" = "true" ]; then
+            python3 tools/harvest_all.py --probe --year "${{ inputs.year }}" \
+              ${SUBJECTS:+--subjects "$SUBJECTS"} --delay "${{ inputs.delay }}"
+          else
+            python3 tools/harvest_all.py --year "${{ inputs.year }}" \
+              ${SUBJECTS:+--subjects "$SUBJECTS"} --delay "${{ inputs.delay }}" --resume
+          fi
+        env:
+          SUBJECTS: ${{ inputs.subjects != 'all' && inputs.subjects || '' }}
+
+      - name: What changed
+        run: |
+          echo "### Harvested" >> "$GITHUB_STEP_SUMMARY"
+          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, glob, os
+          rows = []
+          for f in sorted(glob.glob("data/inbox/*.json")):
+              n = os.path.basename(f).replace("-2025.json", "")
+              rows.append((n, len(json.load(open(f))["questions"])))
+          print("| subject | questions on disk |")
+          print("| --- | ---: |")
+          for n, c in rows:
+              print(f"| {n} | {c} |")
+          print(f"\n**Total: {sum(c for _, c in rows)}** across {len(rows)} subjects.")
+          PY
+
+      # Uploaded before the commit so the data is downloadable even when the
+      # push fails — a failed push with no artifact means the run's hours are
+      # only visible in a log nobody reads.
+      - name: Upload harvested data
+        uses: actions/upload-artifact@v4
+        with:
+          name: harvested-questions
+          path: |
+            data/inbox/*.json
+            var/harvest-probe.json
+          retention-days: 30
+          if-no-files-found: warn
+
+      - name: Upload the run log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: harvest-log
+          path: data/inbox
+          retention-days: 7
+
+      - name: Commit what we harvested
+        run: |
+          set -euo pipefail
+          # `git diff` only sees changes to TRACKED files. A subject harvested
+          # for the first time produces a new untracked file, which `git diff`
+          # reports as nothing — so the first harvest of every new subject was
+          # silently discarded and the run reported "nothing new harvested".
+          # `git status --porcelain` sees untracked files too.
+          if [ -z "$(git status --porcelain -- data/inbox)" ]; then
+            echo "nothing new harvested — every subject already on disk"
+            exit 0
+          fi
+          git config user.name "utmelab-bot"
+          git config user.email "bot@utmelab.com"
+          git add data/inbox
+          git commit -m "Harvest $(date -u +%Y-%m-%d): $(ls data/inbox/*.json | wc -l) subject files"
+          # Rebase rather than push straight: a scheduled run and a manual one
+          # can overlap, and a plain push fails on a moved branch.
+          for attempt in 1 2 3; do
+            if git push; then exit 0; fi
+            echo "push failed (attempt $attempt) — rebasing onto origin"
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          done
+          echo "could not push after 3 attempts; the artifact above still has the data"
+          exit 1
+
+  verify:
+    name: Verify (${{ matrix.subject }})
+    needs: harvest
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        subject: [api, data]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Format
+        if: matrix.subject == 'api'
+        run: cargo fmt --check
+
+      - name: Clippy
+        if: matrix.subject == 'api'
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: Tests
+        if: matrix.subject == 'api'
+        run: cargo test --workspace
+
+      - name: The bank must load and merge cleanly
+        if: matrix.subject == 'data'
+        run: |
+          # A dry run refuses to write anything, so this proves the harvested
+          # JSON is admissible without putting it in the bank on a runner.
+          cargo run --quiet -- import --dry-run
+          python3 tools/harvest_all.py --probe --subjects government --pages 2 --delay 1
