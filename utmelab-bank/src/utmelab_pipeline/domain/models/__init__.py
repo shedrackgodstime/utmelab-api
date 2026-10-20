@@ -27,7 +27,7 @@ from .common import (
     VerificationRecord,
 )
 from .content import MediaRef
-from .proposals import AnswerVerdict, Explanation, ImageDescription, TagProposal
+from .proposals import AnswerVerdict, Explanation, ImageDescription, TagProposal, DescribeImageResponse
 from .source import (
     Coverage,
     SourceCapabilities,
@@ -86,5 +86,6 @@ __all__ = [
     "TagProposal",
     "Verification",
     "VerificationRecord",
+    "DescribeImageResponse",
     "Year",
 ]

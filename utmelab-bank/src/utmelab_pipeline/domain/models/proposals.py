@@ -42,3 +42,12 @@ class AnswerVerdict(DomainModel):
     reasoning: NonEmptyStr
     confidence: Confidence
     producer: Producer
+
+
+class DescribeImageResponse(DomainModel):
+    asset_id: Sha256
+    description: NonEmptyStr
+    facts: tuple[NonEmptyStr, ...] = ()
+    confidence: Confidence
+    producer: Producer
+    contributors: tuple[Producer, ...] = ()
