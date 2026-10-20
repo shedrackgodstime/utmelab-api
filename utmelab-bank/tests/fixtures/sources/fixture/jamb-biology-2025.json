@@ -1,0 +1,40 @@
+{
+  "recorded_at": "2026-10-20T12:00:00Z",
+  "items": [
+    {
+      "source_item_id": "bio-2025-001",
+      "source_url": "https://fixture.example/items/bio-2025-001",
+      "scope": {
+        "exam": "JAMB",
+        "subject": "Biology",
+        "year": 2025
+      },
+      "payload": {
+        "stem": "Which organelle is shown in the diagram?",
+        "stem_marks": [
+          {
+            "kind": "image",
+            "start": 0,
+            "length": 0,
+            "asset_key": "missing-figure"
+          }
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "Nucleus"
+          },
+          {
+            "id": "B",
+            "text": "Cytoplasm"
+          }
+        ],
+        "answer": "E",
+        "marks": 1.0,
+        "topic_id": "cell-biology",
+        "subtopic_id": "cell-structure",
+        "media": []
+      }
+    }
+  ]
+}

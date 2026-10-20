@@ -1,0 +1,204 @@
+import asyncio
+import json
+from datetime import datetime, UTC
+from pathlib import Path
+
+import pytest
+
+from utmelab_pipeline.adapters.providers.opencode import (
+    CommandResult,
+    OpenCodeError,
+    OpenCodeProvider,
+)
+from utmelab_pipeline.domain.capabilities import (
+    DescribeImageRequest,
+    ExplainRequest,
+    TagRequest,
+    VerifyAnswerRequest,
+)
+from utmelab_pipeline.domain.enums import Verdict
+from utmelab_pipeline.domain.models import StagingItem, CatalogSnapshot, MediaAsset
+from utmelab_pipeline.domain.ports import ImageDescriber
+
+from ..conftest import rebuild, catalog, staging_item
+
+
+class FakeRunner:
+    def __init__(
+        self,
+        stdout: str = "",
+        *,
+        returncode: int = 0,
+        stderr: str = "",
+        timeout: bool = False,
+    ) -> None:
+        self.stdout = stdout
+        self.returncode = returncode
+        self.stderr = stderr
+        self.timeout = timeout
+        self.calls: list[tuple[list[str], float]] = []
+
+    async def run(self, argv: list[str], *, timeout: float) -> CommandResult:
+        self.calls.append((list(argv), timeout))
+        if self.timeout:
+            raise TimeoutError
+        return CommandResult(
+            returncode=self.returncode,
+            stdout=self.stdout,
+            stderr=self.stderr,
+        )
+
+
+def text_event(text: str) -> str:
+    event = {
+        "type": "text",
+        "timestamp": 1,
+        "part": {"type": "text", "text": text},
+    }
+    return json.dumps(event) + "\n"
+
+
+def make_provider(
+    stdout: str,
+    *,
+    returncode: int = 0,
+    stderr: str = "",
+) -> tuple:
+    from utmelab_pipeline.adapters.providers.opencode import OpenCodeProvider
+    runner = FakeRunner(stdout, returncode=returncode, stderr=stderr)
+    return OpenCodeProvider(model="opencode/test", runner=runner), runner
+
+
+def test_opencode_matches_the_image_port() -> None:
+    provider: ImageDescriber = make_provider("")[0]
+    assert isinstance(provider, ImageDescriber)
+
+
+def test_describe_parses_text_and_attaches_file(
+    tmp_path: Path, media: MediaAsset
+) -> None:
+    path = tmp_path / "figure.png"
+    path.write_bytes(b"\x89PNG")
+    asset = rebuild(media, storage_url=path.as_uri())
+    provider, runner = make_provider(
+        text_event('{"description":"A cell","facts":["one cell"],"confidence":0.9}')
+    )
+
+    result = asyncio.run(
+        provider.describe(DescribeImageRequest(asset=asset, context="cell"))
+    )
+
+    assert result.asset_id == asset.asset_id
+    assert result.description == "A cell"
+    assert result.facts == ("one cell",)
+    assert result.producer.provider == "opencode"
+    argv, _ = runner.calls[0]
+    assert argv[:5] == ["run", "--format", "json", "-m", "opencode/test"]
+    assert "-f" in argv
+    assert str(path) in argv
+
+
+def test_explain_parses(staging_item: StagingItem) -> None:
+    from utmelab_pipeline.adapters.providers.opencode import OpenCodeProvider
+    from utmelab_pipeline.domain.capabilities import ExplainRequest
+
+    provider, _ = make_provider(
+        text_event('{"key_point":"k","body":"b","confidence":0.8}')
+    )
+    result = asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
+    assert result.key_point.text == "k"
+    assert result.body.text == "b"
+
+
+def test_tag_parses(catalog: CatalogSnapshot, staging_item: StagingItem) -> None:
+    from utmelab_pipeline.adapters.providers.opencode import OpenCodeProvider
+    from utmelab_pipeline.domain.capabilities import TagRequest
+
+    provider, runner = make_provider(
+        text_event(
+            '{"topic_id":"t1","subtopic_id":"s1",'
+            '"evidence":"What is 2 + 2?","confidence":0.7}'
+        )
+    )
+    result = asyncio.run(provider.tag(TagRequest(item=staging_item, catalog=catalog)))
+    assert result.topic_id == "t1"
+    assert result.subtopic_id == "s1"
+    assert "catalog" in runner.calls[0][0][-1]
+
+
+def test_verify_parses(staging_item: StagingItem) -> None:
+    from utmelab_pipeline.adapters.providers.opencode import OpenCodeProvider
+    from utmelab_pipeline.domain.capabilities import VerifyAnswerRequest
+
+    provider, _ = make_provider(
+        text_event('{"verdict":"pass","reasoning":"r","confidence":0.95}')
+    )
+    result = asyncio.run(provider.verify(VerifyAnswerRequest(item=staging_item, catalog=None)))
+    assert result.verdict == "pass"
+
+
+def test_fenced_json_is_accepted(staging_item: StagingItem) -> None:
+    from utmelab_pipeline.adapters.providers.opencode import OpenCodeProvider
+    from utmelab_pipeline.domain.capabilities import ExplainRequest
+
+    fenced = '```json\n{"key_point":"k","body":"b","confidence":0.5}\n```'
+    provider, _ = make_provider(text_event(fenced))
+    result = asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
+    assert result.confidence == 0.5
+
+
+def test_nonzero_exit_raises(staging_item: StagingItem) -> None:
+    from utmelab_pipeline.adapters.providers.opencode import OpenCodeError
+    from utmelab_pipeline.domain.capabilities import ExplainRequest
+
+    runner = FakeRunner("", returncode=2, stderr="boom")
+    provider = OpenCodeProvider(model="opencode/test", runner=runner)
+    with pytest.raises(OpenCodeError, match="boom"):
+        asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
+
+
+def test_timeout_raises(staging_item: StagingItem) -> None:
+    from utmelab_pipeline.adapters.providers.opencode import OpenCodeError
+
+    runner = FakeRunner(timeout=True)
+    provider = OpenCodeProvider(model="opencode/test", runner=runner)
+    with pytest.raises(OpenCodeError, match="timed out"):
+        asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
+
+
+def test_missing_text_event_raises(staging_item: StagingItem) -> None:
+    from utmelab_pipeline.adapters.providers.opencode import OpenCodeError
+
+    provider, _ = make_provider("")
+    with pytest.raises(OpenCodeError, match="no text"):
+        asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
+
+
+def test_invalid_schema_raises(staging_item: StagingItem) -> None:
+    from utmelab_pipeline.adapters.providers.opencode import OpenCodeError
+
+    provider, _ = make_provider(text_event('{"key_point":"only a key point"}'))
+    with pytest.raises(OpenCodeError, match="Explanation"):
+        asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
+
+
+def test_remote_asset_is_rejected(media: MediaAsset) -> None:
+    from utmelab_pipeline.adapters.providers.opencode import OpenCodeError
+    from utmelab_pipeline.domain.capabilities import DescribeImageRequest
+    from utmelab_pipeline.domain.models import rebuild
+
+    asset = rebuild(media, storage_url="https://example.com/figure.png")
+    provider, _ = make_provider("")
+    with pytest.raises(OpenCodeError, match="local"):
+        asyncio.run(provider.describe(DescribeImageRequest(asset=asset)))
+
+
+def test_missing_asset_file_is_rejected(media: MediaAsset) -> None:
+    from utmelab_pipeline.adapters.providers.opencode import OpenCodeError
+    from utmelab_pipeline.domain.capabilities import DescribeImageRequest
+    from utmelab_pipeline.domain.models import rebuild
+
+    asset = rebuild(media, storage_url="file:///nonexistent/figure.png")
+    provider, _ = make_provider("")
+    with pytest.raises(OpenCodeError, match="does not exist"):
+        asyncio.run(provider.describe(DescribeImageRequest(asset=asset)))

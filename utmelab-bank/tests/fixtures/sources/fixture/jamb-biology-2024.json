@@ -1,0 +1,57 @@
+{
+  "recorded_at": "2026-10-20T12:00:00Z",
+  "items": [
+    {
+      "source_item_id": "bio-2024-001",
+      "source_url": "https://fixture.example/items/bio-2024-001",
+      "scope": {
+        "exam": "JAMB",
+        "subject": "Biology",
+        "year": 2024,
+        "section": "A"
+      },
+      "payload": {
+        "stem": "The diagram shows a cell. Which part is labelled X?",
+        "stem_marks": [
+          {
+            "kind": "image",
+            "start": 0,
+            "length": 0,
+            "asset_key": "cell-diagram"
+          }
+        ],
+        "options": [
+          {
+            "id": "A",
+            "text": "Nucleus"
+          },
+          {
+            "id": "B",
+            "text": "Cytoplasm"
+          },
+          {
+            "id": "C",
+            "text": "Cell membrane"
+          },
+          {
+            "id": "D",
+            "text": "Cell wall"
+          }
+        ],
+        "answer": "A",
+        "marks": 1.0,
+        "topic_id": "cell-biology",
+        "subtopic_id": "cell-structure",
+        "media": [
+          {
+            "key": "cell-diagram",
+            "url": "https://fixture.example/media/cell.png",
+            "mime": "image/png",
+            "alt": "A labelled cell diagram",
+            "required": true
+          }
+        ]
+      }
+    }
+  ]
+}
