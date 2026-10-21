@@ -273,7 +273,14 @@ The whole thing is sha256 of the parts joined by `U+001F`, hex encoded.
 
 **The fingerprint does not cover the passage text, the media, the section or the difficulty.** That is finding F18 in FINDINGS.md and it is still true.
 
-`text_norm` is simply `stem text .to_lowercase()`.
+`text_norm` is the **full-Unicode** lowercase of the stem, the same as Rust's
+`.to_lowercase()` and Python's `.lower()`.
+
+**Not** SQLite's `lower()`. That one is ASCII only, and 41 live rows prove
+the difference: a stem with a `Δ` or a `Ụ` in it has a `text_norm` the SQL
+function would never produce. So the bank writes `text_norm` in Python and
+never dedupes in SQL with `lower(text)`. It compares the `text_norm` column,
+which is indexed, and which holds the full-Unicode value.
 
 ### 3.7a The fingerprint is verified against every production row
 
@@ -334,7 +341,7 @@ The eight rows:
 | `psg_jamb_2025_eng_birds_1` | Comprehension | Bird calls | 5 |
 | `psg_jamb_2025_eng_cloze_1` | Cloze | Passage B | 1 |
 | `psg_jamb_2025_eng_cloze_2` | Cloze | Passage D | 3 |
-| `psg_jamb_2025_eng_cloze_3` | Cloze | Passage C | 3 |
+| `psg_jamb_2025_eng_cloze_3` | Cloze | Passage C | 9 |
 | `psg_jamb_2025_eng_reading_1` | ReadingText | The Lekki Headmaster | 1 |
 | `psg_jamb_2025_commerce_data_1` | Data | Working capital data | 1 |
 
@@ -344,9 +351,9 @@ The eight rows:
 
 Every passage has `inline = '[]'`. No passage carries a mark of any kind, image or otherwise. Passage text holds its own paragraph structure, blank lines included, per D60.
 
-**The serving contract** (`src/bank/view.rs`): `RenderedQuestion` carries `passage_id: Option<String>` and the doc comment says it plainly:
+**The serving contract** (`src/core/models/wire.rs`): `RenderedQuestion` carries `passage_id: Option<String>` and the doc comment says it plainly:
 
-> A comprehension or cloze stimulus this row belongs to. Fetch it from `/passages/{id}` — without it the stem may be unanswerable, so consumers must resolve it, never ignore it.
+> A stimulus this row belongs to: fetch it, never ignore it: the stem may be unanswerable without it.
 
 So the API does **not** inline the passage into the question. The consumer must make a second call. Our bank must model a passage as a first-class object, not as a string pasted into a stem.
 
@@ -510,15 +517,17 @@ These are not mine to make.
 
 1. **The trust policy.** Production only counts `human` passes. If AI verification is ever to count, that is an API contract change, not a bank change. Until then, AI rows are signal.
 2. **Where media lives.** Production stores no media. The GitLab media repository is new ground, so the URL convention has to be decided: does the image mark carry the GitLab URL, or a CDN URL that points at it?
-3. **The image position.** Production guesses it from the stem's prose. Do we inherit that, or do we ask the human reviewer? Guessing means a question that says "the diagram below" renders the figure above the stem. That is a real bug in production, and copying it deliberately is a choice.
+3. **The image position.** Production guesses it from the stem's prose. Do we inherit that, or do we ask the human reviewer? Guessing means a question that says "the diagram below" renders the figure above the stem. That is a real bug in production, and copying it deliberately is a choice. **The current server has already settled it**: `src/core/models/domain.rs` says "Where the figure renders relative to the stem. Data, never inferred." So the position is a field the reviewer sets. The question is now only whether the bank's reviewer sets it, and how.
 4. **Whether we copy figure bytes at all.** Production points at myschool.ng and copies nothing, so the figures are one dead host away from being permanently broken. A media store fixes that, at the cost of downloading and describing every figure. The 71 rows are small enough to do it in one pass.
-5. **The `marks` versus `inline` key.** Rename our key to `inline` so the staging payload is promotable, or keep ours because the staging table is ours. The mark list inside is already identical.
+5. **The `marks` versus `inline` key.** Rename our key to `inline` so the staging payload is promotable, or keep ours because the staging table is ours. The mark list inside is already identical. **The live tooling decides it**: `tools/review.py` reads `q["text"]["inline"]` and writes the verification rows against that shape. A payload the bank cannot hand to the existing tool is a payload that is not promotable.
 6. **The passage shape.** Our passage is nested in the question, production's is a catalog object linked by id. Changing it means two questions can share one passage, which is the case production has 28 times.
+7. **Where the bank runs the gate.** The server does not validate rows at all, and the server's own test proves a malformed row fails the whole read. So the gate has to be airtight, and it has to be in the bank. The live rules in `tools/review.py` are the specification, and the bank should implement those rather than the archived import rules.
+8. **Who signs off on promotion.** The bank can produce a promotable row, but the serving predicate counts only a human pass, and the production notes say human verification writes are not the serving app's job. So a person is on the critical path. The mechanics of that sign-off are still undecided.
 
 Decided and done, previously listed here:
 
 - **The mark shape.** Our `Mark` now uses `len` plus a URL and a position for images, matching production. Done in `397030a`.
-- **The content hash.** Ours is now the production algorithm, verified byte for byte against **all 2,243** production rows. Done in `397030a`, re-verified after the whitespace fix.
+- **The content hash.** Ours is now the production algorithm, verified byte for byte against **all 2,243** production rows. Done in `397030a`, re-verified after the whitespace fix. It now agrees three ways: production's stored hash, `tools/review.py`'s `content_fingerprint`, and ours, on every row.
 - **The option id case.** Still open. Production uses lowercase, our fixtures use uppercase. This is a one-line change in the fixtures plus a constraint on `Option.id`.
 
 ---
@@ -533,6 +542,11 @@ Things that cost time. Do not walk into them again.
 - **A state that is free text.** `StagingItem.state` was a string and any string passed. It is now the `State` enum, and `transition_to` refuses an invented move.
 - **`is` on enum values.** `transition_to` compared with `is` and stored the raw argument, so a string target landed as a plain `str`. It now coerces to `State` first.
 - **A model wide strip rewrites content.** `DomainModel` carried `str_strip_whitespace=True`, so pydantic trimmed every string on every model. Two production rows have a leading space in the explanation, and trimming it changed the fingerprint, so those two rows could never match production. **A sample of 394 rows missed it, because those two rows were not in the sample.** Check against everything, not a slice.
+- **SQLite's `lower()` is ASCII only.** 41 live rows have a `text_norm` that SQLite's `lower(text)` would never produce, because the stem carries a `Δ` or a `Ụ`. Python's `.lower()` and Rust's `.to_lowercase()` are full-Unicode and do produce it. **Never dedupe in SQL with `lower(text)`.** Compare the `text_norm` column.
+- **The archived tree is not the current source.** `src/` at the root of the repository is the current server. `utmelab-api-old/` is the archived tree, and `docs/NOTES.temp.md` says so: "a source of capabilities, never of structure". The archived `import.rs` gate rules and the live `tools/review.py` gate rules are **different**, and the live ones are in force.
+- **The live gate flags, it does not refuse the row.** `tools/review.py` refuses to *verify* a quarantined row, which is different from refusing the row. The archived import gate refused at the door. The live behaviour is the safer one, because the figure hint words collide with ordinary English: "table" in a stress question is not a missing figure.
+- **The server does not validate rows.** It deserializes and type-checks. A mark past the end of its text, an answer naming no option, a stem with HTML, all get served happily. And a row whose `options` is not valid JSON fails the whole read, so one bad row breaks the endpoint for every consumer. There is no second line of defence.
+- **The live DDL is the spec, not `BANK_DDL`.** The server's test fixture DDL has no primary keys and no `NOT NULL`, on purpose, so a test can insert a partial row. The live tables have both. The pipeline creates the live shape.
 - **A url type that normalises.** `Mark.url` was an `HttpUrl`, and `HttpUrl("https://example.com")` is `https://example.com/`. The url is hashed, so normalising it silently changes the row. Anything that is hashed must be stored verbatim.
 - **"Must not overlap" is not the rule.** D60 allows two marks on the same range, and names the case, bold on top of underline. Production refuses only *partial* overlap. Our validator was stricter than production and would have refused a legitimate row.
 - **The provider's error events.** The OpenCode CLI reports failures as `{"type":"error"}` lines. An adapter that only looks for `text` swallows them and reports "no text events".
@@ -598,13 +612,24 @@ Everything below was counted against the live production database, not read from
 | `marks` | 2.5 for 2,096 rows, 1.0 for 87, 2.0 for 52, 3.0 for 8. |
 | `options` | 4 options for 2,232 rows, 3 for 8, 5 for 2, 2 for 1. The importer's gate is 2 to 5, and all three extremes really occur. |
 | `explanation` | Present on 2,193 of 2,243. 50 rows have none. |
-| `subtopic_id` | Null on 3 rows, and on those 3 the slug is dangling, not null. |
+| `subtopic_id` | Null on 3 rows. No row has a subtopic slug that does not exist. |
 
-The 3 dangling subtopic rows fail the serving predicate, so they are invisible to consumers even though they are in the table. A foreign key is not enforced here.
+The 3 rows with no subtopic fail the serving predicate, so they are invisible to consumers even though they are in the table. A foreign key is not enforced here.
 
 ### 11.2 What is servable
 
-Applying the production `where_clause` to the live data: **2,190 of 2,243** rows pass the exam gate and the human verification gate. The 3 dangling-subtopic rows drop that further.
+Applying the production predicate to the live data: **2,189 of 2,243** rows are servable.
+
+The 54 excluded rows break down exactly:
+
+| Rows | Why they are not servable |
+|---|---|
+| 50 | No explanation. The review step refuses to verify a row with no explanation, so these were never verified and their hash matches nothing. |
+| 1 | `exam` is empty, so the row is withheld (D21). |
+| 2 | No subtopic, so the row is not attributable to a topic. Also among the 50 with no explanation. |
+| 1 | No subtopic, but it does carry a matching verification hash. Unattributable, but verified. |
+
+2,243 minus 50 minus 1 minus 3 is 2,189, so nothing else is filtering anything out. 53 rows have no verification whose hash matches their current content, and 50 of those are the rows with no explanation. The mechanism working, not broken.
 
 Every verification in the table has the same shape: `kind='human'`, `verdict='pass'`, `scope='["answer","explanation"]'`. 2,268 rows, all identical. There is no `machine` kind, no `fail` verdict, no partial scope. The `scope` machinery is fully general in the Rust code, but the data uses exactly one shape.
 
@@ -666,7 +691,80 @@ novels  novel_chapters  novel_characters  novel_themes  novel_questions
 ```
 
 The live table list also has `questions.text_norm`, which the current server
-does not read. It is a leftover from the archived tree. Do not build on it.
+does not read. It is a leftover from the archived tree, but the bank should
+still write it, and should write it in Python's full-Unicode `.lower()`.
+Section 3.7 has the SQLite `lower()` trap.
+
+### 11.7 The trust boundary, measured
+
+**The current server does no semantic validation of a row.** The reader in
+`src/store/catalog.rs` deserializes the JSON columns and type-checks the
+scalars. It does not check that a mark fits inside its text, that the answer
+names an option, that there are four options, that the subtopic exists, or
+that the text carries no markup. There is no `validate` on a row anywhere in
+the current source.
+
+The server's own test says what a malformed row does:
+
+```rust
+async fn get_question_rejects_bad_option_json() {
+    // ... INSERT INTO questions VALUES ('bad', ..., 'not-json', ...)
+    let err = get_question(&s, "bad").await.expect_err("malformed options fail loudly");
+    assert!(matches!(err, crate::error::AppError::Upstream(_)));
+}
+```
+
+So one bad promoted row either **breaks the endpoint for every consumer**, or
+**is served as wrong content**. There is no second line of defence. The
+gate is the only defence, and it is the bank's.
+
+### 11.8 The gate rules in force, measured
+
+The live rules are in `tools/review.py`, not in the archived Rust. Run against
+the 2,243 live rows, they flag:
+
+| Flag | Live rows |
+|---|---|
+| `option_count`, not exactly 4 options | 11 |
+| `missing_figure`, a figure mentioned and none present | 2 |
+| `underline_missing` | 0 |
+| `novel_leak` | 0 |
+| `cloze_without_passage` | 0 |
+| `duplicate_stem` | 0 |
+
+One of the two `missing_figure` flags is a false positive. The word "table"
+in a stress question's last option trips it.
+
+### 11.9 The scale facts, measured
+
+`/api/v1/public/exams` and `/api/v1/public/summary` are keyless, and they
+scan the whole `verifications` table with two `json_each` passes and a
+sorter. On the live remote at 2,268 verifications that is **0.75 s**.
+
+On a local replica of the same data and the same queries:
+
+| Population | `public_exams` |
+|---|---|
+| 2,243 questions, 2,268 verifications | 0.038 s |
+| 22,430 questions, 22,680 verifications | 0.461 s |
+| 112,150 questions, 113,400 verifications | 2.046 s |
+
+Linear, and the remote engine is about 19 times slower than local sqlite on
+the same data.
+
+Two index facts:
+
+- **There is no index on `questions.content_hash`.** A hash lookup is a full
+  scan, 0.081 s at 112,150 rows. With an index it is 0.000 s. The bank
+  creates the index, so this is the bank's call.
+- `idx_ver_kind (kind, question_id, created_at DESC, id DESC)` turns the
+  public aggregate's `SCAN verifications` into a `SEARCH`, and removes the
+  sorter.
+
+And the rule that follows: **production's `verifications` table holds human
+verifications only.** The bank's AI evidence stays in the bank. Every AI row
+written into production's table is a row the public route scans, for a row
+that can never change a served answer.
 
 There is **no media table, no media_assets table, and no image column** anywhere.
 
