@@ -540,24 +540,47 @@ class StagingItem(DomainModel):
             }
         )
 
-    def with_content_hash(self) -> "StagingItem":
-        """Stamp the content hash that a verification is written against."""
-        from ..hashing import content_fingerprint
+    def stamp_hashes(self) -> "StagingItem":
+        """Build the row's hashes from the row itself.
 
-        fingerprint = content_fingerprint(
+        This is the one producer. ``payload_hash`` comes from the source
+        payload the row records, ``content_hash`` is production's content
+        fingerprint, and ``bundle_hash`` is the bank's wider fingerprint that
+        also covers the passage, the section and the media.
+
+        Run it again after any edit to the content, the passage or the media,
+        so the hash a verification is written against is the hash of the row
+        as it stands.
+        """
+        from ..hashing import bundle_fingerprint, content_fingerprint
+
+        content_hash = content_fingerprint(
             stem=self.content.stem,
             options=self.content.options,
             answer=self.content.answer,
             explanation=self.evidence.explanation,
         )
-        if self.hashes is None:
-            raise ValueError("cannot stamp a content hash before the payload hash is known")
-        return self.model_copy(
-            update={
-                "hashes": self.hashes.model_copy(update={"content_hash": fingerprint}),
-                "updated_at": datetime.now(UTC),
-            }
+        passage = self.passage
+        bundle_hash = bundle_fingerprint(
+            content_hash=content_hash,
+            passage_id=passage.id if passage is not None else self.content.passage_id,
+            passage_text=passage.text.text if passage is not None else "",
+            passage_inline=passage.text.inline if passage is not None else (),
+            section=self.content.section or self.provenance.scope.section,
+            media_ids=tuple(asset.asset_id for asset in self.media_assets),
         )
+        hashes = Hashes(
+            payload_hash=self.provenance.payload_hash,
+            content_hash=content_hash,
+            bundle_hash=bundle_hash,
+        )
+        return self.model_copy(
+            update={"hashes": hashes, "updated_at": datetime.now(UTC)},
+        )
+
+    def with_content_hash(self) -> "StagingItem":
+        """Stamp the content hash that a verification is written against."""
+        return self.stamp_hashes()
 
     @model_validator(mode="after")
     def _check_identity(self) -> "StagingItem":

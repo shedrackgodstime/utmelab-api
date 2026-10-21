@@ -21,7 +21,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-from collections.abc import Mapping
+from collections.abc import Mapping, Sequence
 from typing import Any
 
 #: Separates the parts of a fingerprint.
@@ -121,6 +121,33 @@ def content_fingerprint(
             parts.append(explanation.trap.text)
             parts.append(_inline_key(explanation.trap.inline))
 
+    return fingerprint_parts(parts)
+
+
+def bundle_fingerprint(
+    *,
+    content_hash: str,
+    passage_id: str | None = None,
+    passage_text: str = "",
+    passage_inline: Sequence[Any] = (),
+    section: str | None = None,
+    media_ids: Sequence[str] = (),
+) -> str:
+    """The bank's own fingerprint of the row as a bundle.
+
+    Production's ``content_hash`` covers the stem, the options, the answer,
+    the inline and the explanation, and nothing else. A row can still change
+    in the parts it does not cover: the passage it needs, the section it sits
+    in, and the media it carries. This fingerprint covers those too, so the
+    bank can tell when the bundle a reviewer signed is no longer the bundle
+    on the row. It is the bank's value; production never sees it.
+    """
+    parts: list[str] = [content_hash]
+    parts.append(passage_id or "")
+    parts.append(passage_text)
+    parts.append(_inline_key(passage_inline))
+    parts.append(section or "")
+    parts.extend(f"media:{asset_id}" for asset_id in media_ids)
     return fingerprint_parts(parts)
 
 

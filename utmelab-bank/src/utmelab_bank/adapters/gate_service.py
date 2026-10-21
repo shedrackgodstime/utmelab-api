@@ -92,20 +92,26 @@ class GateService:
         return run_gate(self.context_for(item))
 
     def apply(self, item: StagingItem) -> StagingItem:
-        """Judge one item and move it on or refuse it.
+        """Judge one item, keep the verdict, and move it on or refuse it.
 
         A refused row keeps its reason, so the run can report which rule
-        refused what, and the item stays in the bank with the count.
+        refused what, and the item stays in the bank with the count. The
+        verdict is kept on the row either way, because the ready check reads
+        it and a run that does not store it looks like a gate that never ran.
         """
         verdict = self.judge(item)
+        evidence = item.evidence.model_copy(update={"gate": verdict})
+        updated = item.model_copy(update={"evidence": evidence})
         if verdict.passed:
-            return item.transition_to(State.GATED)
-        return item.transition_to(State.REJECTED, error=self._summary(verdict))
+            return updated.transition_to(State.GATED)
+        return updated.transition_to(State.REJECTED, error=self._summary(verdict))
 
     def apply_all(self, items: Iterable[StagingItem]) -> list[StagingItem]:
         """Judge many items and report the counts per rule."""
         judged = [self.apply(item) for item in items]
-        self.last_counts = refusal_counts([self.judge(item) for item in items])
+        self.last_counts = refusal_counts(
+            item.evidence.gate for item in judged if item.evidence.gate is not None
+        )
         return judged
 
     def queue(self, items: Iterable[StagingItem]) -> dict[str, tuple[Issue, ...]]:

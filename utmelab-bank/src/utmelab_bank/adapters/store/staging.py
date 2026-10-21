@@ -244,10 +244,14 @@ def _row_to_item(row: tuple[Any, ...]) -> StagingItem:
         evidence=Evidence.model_validate(json.loads(evidence)),
         catalog=CatalogRef.model_validate_json(catalog) if catalog else None,
         state=State(state),
-        hashes=Hashes(
-            payload_hash=payload_hash,
-            content_hash=content_hash,
-            bundle_hash=bundle_hash,
+        hashes=(
+            Hashes(
+                payload_hash=payload_hash,
+                content_hash=content_hash,
+                bundle_hash=bundle_hash,
+            )
+            if content_hash and bundle_hash
+            else None
         ),
         attempts=attempts,
         error=error,

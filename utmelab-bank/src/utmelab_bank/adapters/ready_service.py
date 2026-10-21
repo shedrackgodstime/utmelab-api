@@ -14,7 +14,7 @@ from __future__ import annotations
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field
 
-from utmelab_bank.domain.enums import VerificationKind
+from utmelab_bank.domain.enums import State, VerificationKind
 from utmelab_bank.domain.hashing import content_fingerprint
 from utmelab_bank.domain.models import (
     CatalogSnapshot,
@@ -90,7 +90,7 @@ def _placed(item: StagingItem, context: ReadyContext) -> str | None:
             f"the catalog is for {catalog.subject!r} for {catalog.exam!r}, not "
             f"{placement.subject!r} for {placement.exam!r}"
         )
-    subtopic = next((s for s in catalog.subtopics if s.slug == placement.subtopic_id), None)
+    subtopic = next((s for s in catalog.subtopics if s.id == placement.subtopic_id), None)
     if subtopic is None:
         return f"the subtopic {placement.subtopic_id!r} is not in the catalog"
     if subtopic.topic_id != placement.topic_id:
@@ -98,7 +98,7 @@ def _placed(item: StagingItem, context: ReadyContext) -> str | None:
             f"the subtopic {placement.subtopic_id!r} sits under "
             f"{subtopic.topic_id!r}, not {placement.topic_id!r}"
         )
-    topic = next((t for t in catalog.topics if t.slug == placement.topic_id), None)
+    topic = next((t for t in catalog.topics if t.id == placement.topic_id), None)
     if topic is None:
         return f"the topic {placement.topic_id!r} is not in the catalog"
     return None
@@ -234,6 +234,25 @@ class ReadyService:
         """The bundle: the rows, and the report that says where they stand."""
         rows = tuple(items)
         return ReadyBundle(items=rows, report=self.check(rows))
+
+    def promote(self, items: Iterable[StagingItem]) -> ReadyBundle:
+        """Move the rows that meet every condition to READY.
+
+        A row is promoted only when all eight checks pass, so a bundle whose
+        report is satisfied and a bundle whose rows are READY are the same
+        thing. The report is computed over the promoted rows.
+        """
+        rows = tuple(
+            item.transition_to(State.READY)
+            if item.state is State.VERIFIED and self._meets_every_condition(item)
+            else item
+            for item in items
+        )
+        return self.bundle(rows)
+
+    def _meets_every_condition(self, item: StagingItem) -> bool:
+        """Whether one row meets all eight conditions."""
+        return all(check(item, self._context) is None for _, check in CHECKS)
 
     def _human_signed(self, items: tuple[StagingItem, ...]) -> int:
         """How many rows carry a human pass.

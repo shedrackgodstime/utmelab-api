@@ -50,7 +50,12 @@ from .models.common import (
 
 #: Bumped when a rule changes meaning, so a verdict can be traced to the
 #: rules that produced it.
-RULES_VERSION = "v2"
+#:
+#: v3: placement is matched on the catalog id, which is what the source
+#: adapter and the tag step write. Production sets id and slug to the same
+#: value, so this changes nothing against production but makes the gate
+#: agree with the rest of the bank on a catalog where the two differ.
+RULES_VERSION = "v3"
 
 #: The word hints that mean a question is about a figure. These collide with
 #: ordinary English, which is why the rule judges rather than refuses.
@@ -402,7 +407,7 @@ def _check_placement(context: GateContext, issues: list[Issue]) -> None:
             )
         )
         return
-    subtopic = next((s for s in catalog.subtopics if s.slug == placement.subtopic_id), None)
+    subtopic = next((s for s in catalog.subtopics if s.id == placement.subtopic_id), None)
     if subtopic is None:
         issues.append(
             _error(
@@ -425,7 +430,7 @@ def _check_placement(context: GateContext, issues: list[Issue]) -> None:
             )
         )
         return
-    if topic.slug != placement.topic_id:
+    if topic.id != placement.topic_id:
         issues.append(
             _error(
                 "subtopic_topic_mismatch",

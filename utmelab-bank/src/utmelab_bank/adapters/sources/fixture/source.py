@@ -157,7 +157,7 @@ class FixtureSource:
             catalog_version=catalog_snapshot.version,
         )
 
-        return StagingItem(
+        staged = StagingItem(
             id=item.external_key,
             provenance=Provenance(
                 source=item.source,
@@ -176,6 +176,7 @@ class FixtureSource:
             created_at=item.fetched_at,
             updated_at=item.fetched_at,
         )
+        return staged.stamp_hashes()
 
     def validate(self, item: SourceItem) -> list[str]:
         payload = item.payload

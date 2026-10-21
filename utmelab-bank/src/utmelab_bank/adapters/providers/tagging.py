@@ -71,7 +71,7 @@ class TagService:
                 else None,
             }
         )
-        return updated.transition_to(State.ENRICHED)
+        return updated.transition_to(State.CATALOGUED)
 
 
 class ExplainService:
@@ -91,7 +91,9 @@ class ExplainService:
 
     def _apply(self, item: StagingItem, explanation: Explanation) -> StagingItem:
         evidence = item.evidence.model_copy(update={"explanation": explanation})
-        updated = item.model_copy(update={"evidence": evidence})
+        # The explanation is part of the content fingerprint, so adding it
+        # changes the hash a verification is written against. Re-stamp first.
+        updated = item.model_copy(update={"evidence": evidence}).stamp_hashes()
         return updated.transition_to(State.ENRICHED)
 
 

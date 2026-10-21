@@ -42,7 +42,9 @@ def test_tag_service_applies_a_valid_subtopic(
 
     assert result.evidence.tag is not None
     assert result.evidence.tag.subtopic_id == "s1"
-    assert result.state.value == "enriched"
+    # The tag is the catalogue step: it places the row, and enrichment
+    # (the explanation) is the step after it.
+    assert result.state.value == "catalogued"
 
 
 def test_tag_service_refuses_an_unknown_topic(
