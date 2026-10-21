@@ -1,22 +1,21 @@
 import asyncio
 
-from utmelab_pipeline.adapters.providers.mock import MockProvider
-from utmelab_pipeline.domain.capabilities import (
+from utmelab_bank.adapters.providers.mock import MockProvider
+from utmelab_bank.domain.capabilities import (
     DescribeImageRequest,
     ExplainRequest,
     TagRequest,
     VerifyAnswerRequest,
 )
-from utmelab_pipeline.domain.enums import Verdict
-from utmelab_pipeline.domain.models import StagingItem, CatalogSnapshot, MediaAsset
-from utmelab_pipeline.domain.ports import (
+from utmelab_bank.domain.enums import Verdict
+from utmelab_bank.domain.models import CatalogSnapshot, MediaAsset, StagingItem
+from utmelab_bank.domain.ports import (
     AnswerVerifier,
     Explainer,
     ImageDescriber,
     Tagger,
 )
 
-from ..conftest import catalog
 
 
 def test_mock_matches_every_capability_port() -> None:

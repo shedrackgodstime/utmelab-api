@@ -5,10 +5,10 @@ from datetime import UTC, datetime
 
 import pytest
 
-from utmelab_pipeline.adapters.media import ConsensusPolicy, DescribeImageConsensus
-from utmelab_pipeline.adapters.providers.mock import MockProvider
-from utmelab_pipeline.domain.capabilities import DescribeImageRequest
-from utmelab_pipeline.domain.models import ImageDescription, MediaAsset, Producer
+from utmelab_bank.adapters.media import ConsensusPolicy, DescribeImageConsensus
+from utmelab_bank.adapters.providers.mock import MockProvider
+from utmelab_bank.domain.capabilities import DescribeImageRequest
+from utmelab_bank.domain.models import ImageDescription, MediaAsset, Producer
 
 
 def make_asset() -> MediaAsset:

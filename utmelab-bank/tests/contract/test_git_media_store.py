@@ -7,8 +7,8 @@ from pathlib import Path
 
 import pytest
 
-from utmelab_pipeline.adapters.media import GitMediaStore
-from utmelab_pipeline.domain.models import MediaAsset
+from utmelab_bank.adapters.media import GitMediaStore
+from utmelab_bank.domain.models import MediaAsset
 
 PNG_1X1 = bytes.fromhex(
     "89504e470d0a1a0a0000000d4948445200000001000000010806000000"

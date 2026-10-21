@@ -7,9 +7,9 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
-from utmelab_pipeline.adapters.sources.fixture import FixtureSource
-from utmelab_pipeline.domain.enums import PassageKind
-from utmelab_pipeline.domain.models import (
+from utmelab_bank.adapters.sources.fixture import FixtureSource
+from utmelab_bank.domain.enums import PassageKind
+from utmelab_bank.domain.models import (
     CatalogSnapshot,
     CatalogSubtopic,
     CatalogTopic,

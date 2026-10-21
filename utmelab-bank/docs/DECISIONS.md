@@ -34,7 +34,7 @@ counted per rule, so the weak sources are visible and fixable.
 
 **Two kinds of refusal.**
 
-*Defects.* Objective. A mark past the end of its text, an answer that names
+*Defects.* Objective. An inline past the end of its text, an answer that names
 no option, an unknown subtopic, a duplicate hash. The normal resolution is a
 fix to the content.
 
@@ -133,14 +133,14 @@ Both counts are reported. A duplicate is counted, never silently overwritten.
 
 * One `RichText { text, inline }` for a stem, every option, every
   explanation part, a passage's text and a novel question's text.
-* A mark is `{start, len, kind}` with a flat lowercase kind. Offsets count
+* An inline is `{start, len, kind}` with a flat lowercase kind. Offsets count
   Unicode characters. Identical ranges are allowed, partial overlap is not.
 * **The key is `inline`.** The live tooling reads `inline`, so the bank
   writes `inline`.
 * A passage is its own object with a kind, linked by id, because 28
   questions share 8 passages and `kind` is what tells a consumer how to read
   one.
-* A figure is a zero length mark with a url and a position. The position is
+* A figure is a zero length inline with a url and a position. The position is
   data, set by the reviewer, never inferred from the prose.
 * `text_norm` is the full-Unicode lowercase. Python's `.lower()`, never
   SQLite's ASCII `lower()`.
@@ -155,7 +155,7 @@ The algorithm is production's, unchanged. It is verified three ways on all
 
 ## D12. Media: source url now, the bank owns the asset
 
-The bank does not upload yet. The mark carries the source url, and that
+The bank does not upload yet. The inline carries the source url, and that
 renders today.
 
 The bank does own the asset: the bytes, the sha256, the mime type, the alt

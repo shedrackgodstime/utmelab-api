@@ -1,15 +1,14 @@
 """Contract tests for the bank's own store."""
 
-import json
 from datetime import UTC, datetime
 from typing import Any, Optional
 
 import pytest
 
-from utmelab_pipeline.adapters.store import StagingStore
-from utmelab_pipeline.domain.enums import State
-from utmelab_pipeline.domain.enums import PassageKind
-from utmelab_pipeline.domain.models import (
+from utmelab_bank.adapters.store import StagingStore
+from utmelab_bank.domain.enums import State
+from utmelab_bank.domain.enums import PassageKind
+from utmelab_bank.domain.models import (
     Content,
     Hashes,
     Option,
@@ -19,7 +18,7 @@ from utmelab_pipeline.domain.models import (
     Scope,
     StagingItem,
 )
-from utmelab_pipeline.domain.state import InvalidTransition
+from utmelab_bank.domain.state import InvalidTransition
 
 
 NOW = datetime(2026, 10, 20, 12, 0, tzinfo=UTC)

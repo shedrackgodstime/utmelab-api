@@ -2,10 +2,10 @@
 
 import pytest
 
-from utmelab_pipeline.domain.enums import State
-from utmelab_pipeline.domain.models import StagingItem
-from utmelab_pipeline.domain.hashing import content_fingerprint, payload_hash
-from utmelab_pipeline.domain.state import (
+from utmelab_bank.domain.enums import State
+from utmelab_bank.domain.models import StagingItem
+from utmelab_bank.domain.hashing import content_fingerprint, payload_hash
+from utmelab_bank.domain.state import (
     InvalidTransition,
     assert_transition,
     can_transition,
@@ -14,7 +14,7 @@ from utmelab_pipeline.domain.state import (
 
 
 def test_every_state_has_a_transition_entry() -> None:
-    from utmelab_pipeline.domain.state import TRANSITIONS
+    from utmelab_bank.domain.state import TRANSITIONS
 
     assert set(TRANSITIONS) == set(State)
 
@@ -121,8 +121,8 @@ def test_staging_item_stamps_a_content_hash(staging_item: StagingItem) -> None:
 
 
 def test_verification_must_match_the_content_hash(staging_item: StagingItem) -> None:
-    from utmelab_pipeline.domain.enums import VerificationKind, Verdict
-    from utmelab_pipeline.domain.models import Evidence, Verification
+    from utmelab_bank.domain.enums import VerificationKind, Verdict
+    from utmelab_bank.domain.models import Evidence, Verification
 
     stamped = staging_item.with_content_hash()
     assert stamped.hashes is not None

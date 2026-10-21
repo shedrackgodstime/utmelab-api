@@ -1,26 +1,23 @@
 import asyncio
 import json
-from datetime import datetime, UTC
 from pathlib import Path
 
 import pytest
 
-from utmelab_pipeline.adapters.providers.opencode import (
+from utmelab_bank.adapters.providers.opencode import (
     CommandResult,
-    OpenCodeError,
     OpenCodeProvider,
 )
-from utmelab_pipeline.domain.capabilities import (
+from utmelab_bank.domain.capabilities import (
     DescribeImageRequest,
     ExplainRequest,
     TagRequest,
     VerifyAnswerRequest,
 )
-from utmelab_pipeline.domain.enums import Verdict
-from utmelab_pipeline.domain.models import StagingItem, CatalogSnapshot, MediaAsset
-from utmelab_pipeline.domain.ports import ImageDescriber
+from utmelab_bank.domain.models import CatalogSnapshot, MediaAsset, StagingItem
+from utmelab_bank.domain.ports import ImageDescriber
 
-from ..conftest import rebuild, catalog, staging_item
+from ..conftest import rebuild
 
 
 class FakeRunner:
@@ -64,7 +61,6 @@ def make_provider(
     returncode: int = 0,
     stderr: str = "",
 ) -> tuple[OpenCodeProvider, FakeRunner]:
-    from utmelab_pipeline.adapters.providers.opencode import OpenCodeProvider
     runner = FakeRunner(stdout, returncode=returncode, stderr=stderr)
     return OpenCodeProvider(model="opencode/test", runner=runner), runner
 
@@ -99,8 +95,6 @@ def test_describe_parses_text_and_attaches_file(
 
 
 def test_explain_parses(staging_item: StagingItem) -> None:
-    from utmelab_pipeline.adapters.providers.opencode import OpenCodeProvider
-    from utmelab_pipeline.domain.capabilities import ExplainRequest
 
     provider, _ = make_provider(
         text_event('{"key_point":"k","body":"b","confidence":0.8}')
@@ -111,8 +105,6 @@ def test_explain_parses(staging_item: StagingItem) -> None:
 
 
 def test_tag_parses(catalog: CatalogSnapshot, staging_item: StagingItem) -> None:
-    from utmelab_pipeline.adapters.providers.opencode import OpenCodeProvider
-    from utmelab_pipeline.domain.capabilities import TagRequest
 
     provider, runner = make_provider(
         text_event(
@@ -127,8 +119,6 @@ def test_tag_parses(catalog: CatalogSnapshot, staging_item: StagingItem) -> None
 
 
 def test_verify_parses(staging_item: StagingItem) -> None:
-    from utmelab_pipeline.adapters.providers.opencode import OpenCodeProvider
-    from utmelab_pipeline.domain.capabilities import VerifyAnswerRequest
 
     provider, _ = make_provider(
         text_event('{"verdict":"pass","reasoning":"r","confidence":0.95}')
@@ -138,8 +128,6 @@ def test_verify_parses(staging_item: StagingItem) -> None:
 
 
 def test_fenced_json_is_accepted(staging_item: StagingItem) -> None:
-    from utmelab_pipeline.adapters.providers.opencode import OpenCodeProvider
-    from utmelab_pipeline.domain.capabilities import ExplainRequest
 
     fenced = '```json\n{"key_point":"k","body":"b","confidence":0.5}\n```'
     provider, _ = make_provider(text_event(fenced))
@@ -148,8 +136,7 @@ def test_fenced_json_is_accepted(staging_item: StagingItem) -> None:
 
 
 def test_nonzero_exit_raises(staging_item: StagingItem) -> None:
-    from utmelab_pipeline.adapters.providers.opencode import OpenCodeError
-    from utmelab_pipeline.domain.capabilities import ExplainRequest
+    from utmelab_bank.adapters.providers.opencode import OpenCodeError
 
     runner = FakeRunner("", returncode=2, stderr="boom")
     provider = OpenCodeProvider(model="opencode/test", runner=runner)
@@ -158,7 +145,7 @@ def test_nonzero_exit_raises(staging_item: StagingItem) -> None:
 
 
 def test_timeout_raises(staging_item: StagingItem) -> None:
-    from utmelab_pipeline.adapters.providers.opencode import OpenCodeError
+    from utmelab_bank.adapters.providers.opencode import OpenCodeError
 
     runner = FakeRunner(timeout=True)
     provider = OpenCodeProvider(model="opencode/test", runner=runner)
@@ -167,7 +154,7 @@ def test_timeout_raises(staging_item: StagingItem) -> None:
 
 
 def test_missing_text_event_raises(staging_item: StagingItem) -> None:
-    from utmelab_pipeline.adapters.providers.opencode import OpenCodeError
+    from utmelab_bank.adapters.providers.opencode import OpenCodeError
 
     provider, _ = make_provider("")
     with pytest.raises(OpenCodeError, match="no text"):
@@ -175,7 +162,7 @@ def test_missing_text_event_raises(staging_item: StagingItem) -> None:
 
 
 def test_invalid_schema_raises(staging_item: StagingItem) -> None:
-    from utmelab_pipeline.adapters.providers.opencode import OpenCodeError
+    from utmelab_bank.adapters.providers.opencode import OpenCodeError
 
     provider, _ = make_provider(text_event('{"key_point":"only a key point"}'))
     with pytest.raises(OpenCodeError, match="Explanation"):
@@ -183,9 +170,8 @@ def test_invalid_schema_raises(staging_item: StagingItem) -> None:
 
 
 def test_remote_asset_is_rejected(media: MediaAsset) -> None:
-    from utmelab_pipeline.adapters.providers.opencode import OpenCodeError
-    from utmelab_pipeline.domain.capabilities import DescribeImageRequest
-    from utmelab_pipeline.domain.models import rebuild
+    from utmelab_bank.adapters.providers.opencode import OpenCodeError
+    from utmelab_bank.domain.models import rebuild
 
     asset = rebuild(media, storage_url="https://example.com/figure.png")
     provider, _ = make_provider("")
@@ -194,9 +180,8 @@ def test_remote_asset_is_rejected(media: MediaAsset) -> None:
 
 
 def test_missing_asset_file_is_rejected(media: MediaAsset) -> None:
-    from utmelab_pipeline.adapters.providers.opencode import OpenCodeError
-    from utmelab_pipeline.domain.capabilities import DescribeImageRequest
-    from utmelab_pipeline.domain.models import rebuild
+    from utmelab_bank.adapters.providers.opencode import OpenCodeError
+    from utmelab_bank.domain.models import rebuild
 
     asset = rebuild(media, storage_url="file:///nonexistent/figure.png")
     provider, _ = make_provider("")
@@ -205,7 +190,7 @@ def test_missing_asset_file_is_rejected(media: MediaAsset) -> None:
 
 def test_error_event_is_surfaced(staging_item: StagingItem) -> None:
     """The CLI reports provider failures as error events. They must not be swallowed."""
-    from utmelab_pipeline.adapters.providers.opencode import OpenCodeError
+    from utmelab_bank.adapters.providers.opencode import OpenCodeError
 
     error_event = json.dumps(
         {

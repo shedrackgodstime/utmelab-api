@@ -11,16 +11,16 @@ from typing import Any
 
 import pytest
 
-from utmelab_pipeline.domain.enums import (
+from utmelab_bank.domain.enums import (
     ImagePosition,
-    MarkKind,
+    InlineKind,
     PassageKind,
     Severity,
 )
-from utmelab_pipeline.domain.gate import (
+from utmelab_bank.domain.gate import (
     RULES_VERSION,
     GateContext,
-    check_marks,
+    check_inline,
     check_option_ids,
     has_numbered_gap,
     mentions_figure,
@@ -28,7 +28,7 @@ from utmelab_pipeline.domain.gate import (
     refusal_counts,
     run_gate,
 )
-from utmelab_pipeline.domain.models import (
+from utmelab_bank.domain.models import (
     CatalogRef,
     CatalogSnapshot,
     CatalogSubtopic,
@@ -37,7 +37,7 @@ from utmelab_pipeline.domain.models import (
     Content,
     GateVerdict,
     Issue,
-    Mark,
+    Inline,
     Option,
     Passage,
     RichText,
@@ -101,26 +101,26 @@ def test_a_mark_past_the_end_of_the_text_fails() -> None:
     """
     issues: list[Issue] = []
 
-    check_marks("short", (Mark(kind=MarkKind.BOLD, start=0, len=40),), "text", issues)
+    check_inline("short", (Inline(kind=InlineKind.BOLD, start=0, len=40),), "text", issues)
 
-    assert [issue.code for issue in issues] == ["mark_out_of_bounds"]
+    assert [issue.code for issue in issues] == ["inline_out_of_bounds"]
     assert issues[0].severity is Severity.ERROR
 
 
 def test_two_marks_that_partially_overlap_fail() -> None:
     issues: list[Issue] = []
 
-    check_marks(
+    check_inline(
         "abcdef",
         (
-            Mark(kind=MarkKind.BOLD, start=0, len=4),
-            Mark(kind=MarkKind.ITALIC, start=2, len=2),
+            Inline(kind=InlineKind.BOLD, start=0, len=4),
+            Inline(kind=InlineKind.ITALIC, start=2, len=2),
         ),
         "text",
         issues,
     )
 
-    assert [issue.code for issue in issues] == ["mark_partial_overlap"]
+    assert [issue.code for issue in issues] == ["inline_partial_overlap"]
 
 
 def test_two_marks_on_an_identical_range_pass() -> None:
@@ -128,9 +128,9 @@ def test_two_marks_on_an_identical_range_pass() -> None:
     content = make_content(
         stem=RichText(
             text="abcdef",
-            marks=(
-                Mark(kind=MarkKind.BOLD, start=0, len=4),
-                Mark(kind=MarkKind.UNDERLINE, start=0, len=4),
+            inline=(
+                Inline(kind=InlineKind.BOLD, start=0, len=4),
+                Inline(kind=InlineKind.UNDERLINE, start=0, len=4),
             ),
         )
     )
@@ -143,8 +143,8 @@ def test_two_marks_on_an_identical_range_pass() -> None:
 def test_a_relative_image_url_fails() -> None:
     """The model refuses it first, and the gate refuses it second."""
     with pytest.raises(ValueError):
-        Mark(
-            kind=MarkKind.IMAGE,
+        Inline(
+            kind=InlineKind.IMAGE,
             start=0,
             len=0,
             url="/diagrams/x.png",
@@ -152,15 +152,15 @@ def test_a_relative_image_url_fails() -> None:
         )
 
     issues: list[Issue] = []
-    bypassed = Mark.model_construct(
-        kind=MarkKind.IMAGE,
+    bypassed = Inline.model_construct(
+        kind=InlineKind.IMAGE,
         start=0,
         len=0,
         url="/diagrams/x.png",
         position=ImagePosition.ABOVE,
         alt=None,
     )
-    check_marks("see the figure", (bypassed,), "text", issues)
+    check_inline("see the figure", (bypassed,), "text", issues)
 
     assert [issue.code for issue in issues] == ["image_url_not_https"]
 

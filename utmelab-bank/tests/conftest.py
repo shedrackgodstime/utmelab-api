@@ -4,8 +4,8 @@ from typing import TypeVar
 import pytest
 from pydantic import BaseModel
 
-from utmelab_pipeline.domain.enums import MarkKind, State
-from utmelab_pipeline.domain.models import (
+from utmelab_bank.domain.enums import State
+from utmelab_bank.domain.models import (
     StagingItem,
     CatalogSnapshot,
     CatalogSubtopic,
@@ -14,7 +14,7 @@ from utmelab_pipeline.domain.models import (
     Evidence,
     Hashes,
     MediaAsset,
-    Mark,
+    Inline,
     Option,
     Provenance,
     RichText,
@@ -127,8 +127,8 @@ def image_content() -> Content:
     return Content(
         stem=RichText(
             text="The diagram shows a cell.",
-            marks=(
-                Mark(
+            inline=(
+                Inline(
                     kind="image",
                     start=0,
                     len=0,

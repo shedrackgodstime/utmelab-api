@@ -4,10 +4,10 @@ from pathlib import Path
 
 import pytest
 
-from utmelab_pipeline.adapters.catalog.client import Result, TursoClient
-from utmelab_pipeline import config as config_module
-from utmelab_pipeline.config import _parse_env_file as parse_env_file
-from utmelab_pipeline.config import (
+from utmelab_bank.adapters.catalog.client import Result, TursoClient
+from utmelab_bank import config as config_module
+from utmelab_bank.config import _parse_env_file as parse_env_file
+from utmelab_bank.config import (
     BANK_ROOT,
     ENV_FILE,
     ConfigError,
@@ -72,7 +72,7 @@ def test_the_env_file_lives_inside_the_bank() -> None:
 
 
 def test_local_state_lives_inside_the_bank() -> None:
-    from utmelab_pipeline.config import VAR_DIR
+    from utmelab_bank.config import VAR_DIR
 
     assert VAR_DIR.parent == BANK_ROOT
     assert VAR_DIR.name == "var"

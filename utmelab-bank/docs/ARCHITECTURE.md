@@ -433,31 +433,33 @@ An API provider follows the same pattern with a different transport. A vision-on
 ## 14. Repository shape
 
 ```text
-src/utmelab_pipeline/
+src/utmelab_bank/
   domain/
     models/          canonical bundle, source item, proposals, verdicts
     capabilities.py  capability names and typed requests
+    enums.py         the fixed vocabulary
+    gate.py          the rules, pure, no I/O
+    hashing.py       the content fingerprint
     ports.py         Source, DescribeImage, Explain, Tag, Catalog, MediaStore, ContentStore
     state.py         transition table, guards, terminal states
     selector.py      typed query data for lanes and scopes
-    policies/        gates, trust policy, selection policy
-    consensus.py     multi-provider reconciliation
   adapters/
     sources/         one package per source
     providers/       one package per provider
-    media/           fetch, sniff, decode, store
+    media/           fetch, sniff, decode, store, describe, reconcile
     catalog/         versioned production reference reader
-    store/           Turso or libSQL persistence, one transaction per bundle
-  application/
-    tasks/           one task per state transition
-    goals/           named sequences of tasks
-  interface/
-    cli.py           one command per task and goal
-    config.py        settings and provider selection
+    store/           the bank's tables and their migrations
+    gate_service.py  runs the gate over a staging item
+  config.py
 tests/
-  fixtures/          recorded source payloads, images, provider replies
+  fixtures/          recorded source payloads
   contract/          one contract suite per source and provider
+  live/              the contracts that hit the real database and a real model
 ```
+
+The application and interface layers this brief describes are not built.
+There is no CLI and no task runner yet, so everything is driven from Python.
+What they should be is settled in `DECISIONS.md`.
 
 No task imports another task. No adapter imports another adapter. No domain module imports an infrastructure library or names a concrete adapter. Pydantic is the one allowed schema dependency.
 

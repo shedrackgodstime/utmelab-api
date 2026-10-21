@@ -3,9 +3,9 @@ import os
 
 import pytest
 
-from utmelab_pipeline.adapters.providers.opencode import OpenCodeProvider
-from utmelab_pipeline.domain.capabilities import ExplainRequest
-from utmelab_pipeline.domain.models import StagingItem
+from utmelab_bank.adapters.providers.opencode import OpenCodeProvider
+from utmelab_bank.domain.capabilities import ExplainRequest
+from utmelab_bank.domain.models import StagingItem
 
 pytestmark = [
     pytest.mark.live,

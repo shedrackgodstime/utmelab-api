@@ -10,20 +10,20 @@ It is skipped unless ``UTMELAB_LIVE=1`` is set, because it needs the network.
 from __future__ import annotations
 
 import asyncio
-import json
 import os
 from typing import Any
 
 import pytest
 
-from utmelab_pipeline.adapters.catalog.client import TursoClient
-from utmelab_pipeline.config import load_settings
-from utmelab_pipeline.domain.gate import (
+from utmelab_bank.adapters.catalog.client import TursoClient
+from utmelab_bank.config import load_settings
+from utmelab_bank.domain.gate import (
     GateContext,
     refusal_counts,
     run_gate,
 )
-from utmelab_pipeline.domain.models.common import Content, Option, RichText
+
+from tests.live.production_rows import content
 
 pytestmark = [
     pytest.mark.live,
@@ -34,45 +34,10 @@ pytestmark = [
 ]
 
 
-def _rich(raw: dict[str, Any]) -> RichText:
-    return RichText.model_validate(
-        {"text": raw["text"], "marks": raw.get("inline") or []}
-    )
-
-
-def build_content(row: tuple[Any, ...]) -> Content:
-    text, inline, options, answer, explanation = row[:5]
-    parsed = [
-        Option.model_validate(
-            {
-                "id": option["id"],
-                "text": {
-                    "text": option["text"]["text"],
-                    "marks": option["text"].get("inline") or [],
-                },
-            }
-        )
-        for option in json.loads(options)
-    ]
-    source_explanation = None
-    if explanation:
-        raw = json.loads(explanation)
-        body = raw.get("body") or raw.get("key_point")
-        if body:
-            source_explanation = _rich(body)
-    return Content(
-        stem=_rich({"text": text, "inline": json.loads(inline or "[]")}),
-        options=tuple(parsed),
-        answer=answer,
-        marks=float(row[5]),
-        source_explanation=source_explanation,
-    )
-
-
 def test_the_gate_sees_the_live_bank_as_it_is() -> None:
     settings = load_settings()
     client = TursoClient(url=settings.prod_database_url, token=settings.prod_auth_token)
-    rows = asyncio.run(
+    rows: list[tuple[Any, ...]] = asyncio.run(
         client.execute(
             "SELECT text, inline, options, answer, explanation, marks, exam, subject, year "
             "FROM questions"
@@ -81,11 +46,10 @@ def test_the_gate_sees_the_live_bank_as_it_is() -> None:
 
     verdicts = []
     for row in rows:
-        content = build_content(row)
         verdicts.append(
             run_gate(
                 GateContext(
-                    content=content,
+                    content=content(*row[:6]),
                     exam=row[6],
                     subject=row[7],
                     year=row[8],

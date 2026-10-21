@@ -3,9 +3,9 @@ requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
 [project]
-name = "utmelab-pipeline"
+name = "utmelab-bank"
 version = "0.1.0"
-description = "Deterministic content factory for UTME Lab exam content."
+description = "The UTME Lab content bank. Ingests, gates, reviews and hands over exam content."
 readme = "docs/ARCHITECTURE.md"
 requires-python = ">=3.12"
 dependencies = [
@@ -18,10 +18,11 @@ dev = [
   "mypy>=1.11,<2",
   "pytest>=8,<10",
   "pytest-asyncio>=0.24,<2",
+  "ruff>=0.6",
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/utmelab_pipeline"]
+packages = ["src/utmelab_bank"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -40,3 +41,21 @@ mypy_path = "src"
 [tool.ruff]
 target-version = "py312"
 line-length = 100
+
+[tool.ruff.lint]
+select = [
+  "E",    # pycodestyle
+  "F",    # pyflakes
+  "I",    # import order
+  "UP",   # pyupgrade
+  "B",    # bugbear
+  "SIM",  # simplify
+]
+ignore = [
+  "E501",  # the line length is ruff's job, not a separate check
+]
+
+[tool.ruff.lint.per-file-ignores]
+# The tests import from the package by its full path and the fixtures are
+# named after what they build.
+"tests/*" = ["B008"]

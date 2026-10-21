@@ -1,14 +1,14 @@
 import pytest
 from pydantic import ValidationError
 
-from utmelab_pipeline.domain.enums import State
-from utmelab_pipeline.domain.models import (
+from utmelab_bank.domain.enums import State
+from utmelab_bank.domain.models import (
     StagingItem,
     Content,
     Evidence,
     MediaAsset,
 )
-from utmelab_pipeline.domain.selector import Selector
+from utmelab_bank.domain.selector import Selector
 
 from .conftest import rebuild
 

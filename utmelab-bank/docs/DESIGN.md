@@ -139,8 +139,8 @@ payload has to use it too. The mark list inside is already identical to
 production's, but the key is not, and a payload the bank cannot hand to the
 existing tooling is a payload that is not ready.
 
-Two rules on the marks. Offsets count Unicode scalar values, never bytes, so
-a character outside the basic plane still counts as one. And two marks may
+Two rules on the inlines. Offsets count Unicode scalar values, never bytes, so
+a character outside the basic plane still counts as one. And two inlines may
 share an identical range, bold on top of underline is the case the old
 decision log names, while a partial overlap is refused.
 
@@ -158,7 +158,7 @@ nullability are all part of the shape the content has to take.
 | `year` | The cohort the question is prepared for, not the year it was lifted from. 1900 to 2100. |
 | `source` | `past_paper`, `claimed_paper`, `authored` or `imported`. |
 | `text` | The stem's plain text. |
-| `inline` | The stem's marks, as a JSON array. |
+| `inline` | The stem's inlines, as a JSON array. |
 | `options` | A JSON array of `{"id": "a", "text": {"text": ..., "inline": [...]}}`. |
 | `answer` | An option id, never a label and never an index. |
 | `subtopic_id` | A subtopic slug. Must exist in `subtopics`. |
@@ -349,14 +349,14 @@ The parts, in order, joined by `U+001F`:
 1  stem text
 2  for each option:  "<option id>" + U+001E + "<option text>"
 3  answer
-4  marks of the stem, then marks of each option, each mark encoded as
+4  inlines of the stem, then inlines of each option, each inline encoded as
    "<start>,<len>,<kind>", all joined by "|"
 5  explanation key_point text
-6  key_point marks joined by "|"
+6  key_point inlines joined by "|"
 7  explanation body text
-8  body marks joined by "|"
+8  body inlines joined by "|"
 9  trap text, or "" when there is no explanation or no trap
-10 trap marks joined by "|"
+10 trap inlines joined by "|"
 ```
 
 A mark is encoded as `<start>,<len>,<kind>`, and an image mark is
@@ -481,7 +481,7 @@ Two details in there are worth keeping exactly.
 
 **The underline is a substring, not an offset.** The tool takes the target
 text, finds it in the stem, and computes the span. One underline per stem is
-the observed shape, so a new underline replaces any existing underline marks
+the observed shape, so a new underline replaces any existing underline inlines
 rather than stacking on them. The bank should propose a substring and compute
 the offsets, so a target that is not in the stem is caught before it becomes
 an offset.
@@ -697,9 +697,17 @@ A ready bundle, made of:
   `MediaFetcher`, `MediaValidator`.
 - **The catalog is read, not copied.** The catalog reader queries the
   server's `subjects`, `topics` and `subtopics`.
-- **The mark shape and the fingerprint.** Both match production exactly, the
-  fingerprint verified three ways on all 2,243 production rows: production's
-  stored hash, `tools/review.py`, and the bank.
+- **The shape.** `RichText { text, inline }` and `Inline { start, len, kind }`,
+  the production shape, with one vocabulary. The fingerprint matches
+  production exactly, verified three ways on all 2,243 production rows:
+  production's stored hash, `tools/review.py`, and the bank.
+- **The gate.** Built, strict, machine only, and total. The default is fail.
+  Every refusal goes to a person, and a clearance is recorded with a reason.
+  Verified against the live bank: 2,178 of 2,243 live rows pass, and the
+  counts per rule are pinned by a live contract test.
+- **The passage as its own object.** A `passages` table in the bank, a
+  `passage_id` on the question, and the kind as a closed list of production's
+  four.
 - **The media store** is content addressed, keyed by the sha256 of the bytes.
 - **The state machine's spine**, from `planned` to `ready`, maps onto the
   jobs.
@@ -708,10 +716,7 @@ A ready bundle, made of:
 
 | What | Should be |
 |---|---|
-| The mark list key is `marks` | `inline`, the key the server reads and the live tooling uses |
-| The passage is nested inside the question | its own object with a kind and a title, and questions pointing at it by id |
-| The bank has no gate | the gate is the main product, and the `gated` state has nothing behind it |
-| The bank has no dedupe | `deduped` has nothing behind it either, and dedupe has to compare against what already exists, not only against the bank's own rows |
+| The bank has no dedupe | `deduped` has nothing behind it, and dedupe has to compare against what already exists, not only against the bank's own rows |
 | The bank never reads the server's `reports` | a report is work, and the table is right there |
 | There is no `live` state and no `reported` state | content that has been handed over has to stay tracked, and a report has to become work |
 | Nothing checks for drift | the server's own predicate detects it, and the bank should run the same check against what it handed over |

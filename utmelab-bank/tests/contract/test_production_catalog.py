@@ -5,7 +5,7 @@ from typing import Any, Optional
 
 import pytest
 
-from utmelab_pipeline.adapters.catalog import ProductionCatalogReader
+from utmelab_bank.adapters.catalog import ProductionCatalogReader
 
 
 class FakeResult:

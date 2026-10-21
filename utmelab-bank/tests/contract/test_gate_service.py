@@ -2,11 +2,9 @@
 
 from datetime import UTC, datetime
 
-import pytest
-
-from utmelab_pipeline.adapters.gate_service import GateService
-from utmelab_pipeline.domain.enums import State
-from utmelab_pipeline.domain.models import (
+from utmelab_bank.adapters.gate_service import GateService
+from utmelab_bank.domain.enums import State
+from utmelab_bank.domain.models import (
     CatalogRef,
     CatalogSnapshot,
     CatalogSubtopic,

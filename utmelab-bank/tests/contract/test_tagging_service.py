@@ -4,15 +4,15 @@ import asyncio
 
 import pytest
 
-from utmelab_pipeline.adapters.providers.mock import MockProvider
-from utmelab_pipeline.adapters.providers.tagging import (
+from utmelab_bank.adapters.providers.mock import MockProvider
+from utmelab_bank.adapters.providers.tagging import (
     ExplainService,
     TagService,
     UnknownSubtopic,
     UnknownTopic,
 )
-from utmelab_pipeline.domain.capabilities import TagRequest
-from utmelab_pipeline.domain.models import (
+from utmelab_bank.domain.capabilities import TagRequest
+from utmelab_bank.domain.models import (
     CatalogSnapshot,
     StagingItem,
     TagProposal,

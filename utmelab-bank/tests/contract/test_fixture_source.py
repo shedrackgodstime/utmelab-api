@@ -3,16 +3,16 @@ from pathlib import Path
 
 import pytest
 
-from utmelab_pipeline.adapters.sources.fixture import FixtureSource
-from utmelab_pipeline.domain.enums import SourceCapability
-from utmelab_pipeline.domain.models import (
+from utmelab_bank.adapters.sources.fixture import FixtureSource
+from utmelab_bank.domain.enums import SourceCapability
+from utmelab_bank.domain.models import (
     CatalogSnapshot,
     CatalogSubtopic,
     CatalogTopic,
     Scope,
     SourceItem,
 )
-from utmelab_pipeline.domain.ports import Source
+from utmelab_bank.domain.ports import Source
 
 FIXTURE_DIR = Path(__file__).resolve().parents[1] / "fixtures" / "sources" / "fixture"
 SCOPE = Scope(exam="JAMB", subject="Biology", year=2024, section="A")
@@ -89,7 +89,7 @@ def test_adapt_builds_a_raw_bundle() -> None:
 
     assert raw.id == "fixture:bio-2024-001"
     assert raw.content.answer == "A"
-    assert raw.content.stem.marks[0].url == str(raw.media_refs[0].source_url)
+    assert raw.content.stem.inline[0].url == str(raw.media_refs[0].source_url)
     assert raw.media_refs[0].key == "cell-diagram"
     assert raw.media_refs[0].required is True
     assert raw.catalog is not None

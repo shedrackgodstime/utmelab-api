@@ -3,17 +3,15 @@
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime
 
-from utmelab_pipeline.domain.capabilities import (
+from utmelab_bank.domain.capabilities import (
     DescribeImageRequest,
     ExplainRequest,
     TagRequest,
     VerifyAnswerRequest,
 )
-from utmelab_pipeline.domain.enums import Capability
-from utmelab_pipeline.domain.models import (
+from utmelab_bank.domain.enums import Capability
+from utmelab_bank.domain.models import (
     CatalogSnapshot,
-    CatalogSubtopic,
-    CatalogTopic,
     Coverage,
     MediaAsset,
     Producer,
@@ -23,7 +21,7 @@ from utmelab_pipeline.domain.models import (
     SourceProfile,
     StagingItem,
 )
-from utmelab_pipeline.domain.ports import (
+from utmelab_bank.domain.ports import (
     AnswerVerifier,
     CatalogReader,
     Explainer,
@@ -147,7 +145,7 @@ def test_ports_reject_plain_objects() -> None:
 
 
 def test_capability_maps_are_complete() -> None:
-    from utmelab_pipeline.domain.capabilities import (
+    from utmelab_bank.domain.capabilities import (
         CAPABILITY_INPUTS,
         CAPABILITY_OUTPUTS,
     )

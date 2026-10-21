@@ -1,12 +1,12 @@
 import pytest
 
-from utmelab_pipeline.domain.hashing import (
+from utmelab_bank.domain.hashing import (
     canonical_json_bytes,
     content_fingerprint,
     payload_hash,
     sha256_hex,
 )
-from utmelab_pipeline.domain.models.common import Option, RichText
+from utmelab_bank.domain.models.common import Option, RichText
 
 
 class StoredExplanation:

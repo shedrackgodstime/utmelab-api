@@ -5,15 +5,15 @@ from datetime import UTC, datetime
 import pytest
 from pydantic import ValidationError
 
-from utmelab_pipeline.domain.enums import (
+from utmelab_bank.domain.enums import (
     ImagePosition,
-    MarkKind,
+    InlineKind,
     Severity,
     SourceCapability,
     VerificationKind,
     Verdict,
 )
-from utmelab_pipeline.domain.models import (
+from utmelab_bank.domain.models import (
     BUNDLE_HASH,
     CONTENT_HASH,
     PAYLOAD_HASH,
@@ -27,7 +27,7 @@ from utmelab_pipeline.domain.models import (
     Hashes,
     ImageDescription,
     Issue,
-    Mark,
+    Inline,
     MediaAsset,
     Option,
     Producer,
@@ -75,8 +75,8 @@ def test_staging_item_accepts_a_marked_figure(
         created_at=NOW,
         updated_at=NOW,
     )
-    mark = result.content.stem.marks[0]
-    assert mark.kind is MarkKind.IMAGE
+    mark = result.content.stem.inline[0]
+    assert mark.kind is InlineKind.IMAGE
     assert mark.url is not None
     assert mark.position is ImagePosition.BELOW
 
@@ -208,9 +208,9 @@ def test_rich_text_rejects_overlap() -> None:
     with pytest.raises(ValidationError, match="overlap"):
         RichText(
             text="abcdef",
-            marks=(
-                Mark(kind=MarkKind.BOLD, start=0, len=4),
-                Mark(kind=MarkKind.ITALIC, start=2, len=2),
+            inline=(
+                Inline(kind=InlineKind.BOLD, start=0, len=4),
+                Inline(kind=InlineKind.ITALIC, start=2, len=2),
             ),
         )
 
@@ -218,18 +218,18 @@ def test_rich_text_rejects_overlap() -> None:
 def test_rich_text_allows_an_identical_range() -> None:
     """Bold on top of underline is the case D60 names.
 
-    Production allows two marks to share a range and refuses only partial
+    Production allows two inline to share a range and refuses only partial
     overlap, so the model must allow it too.
     """
     text = RichText(
         text="abcdef",
-        marks=(
-            Mark(kind=MarkKind.BOLD, start=0, len=4),
-            Mark(kind=MarkKind.UNDERLINE, start=0, len=4),
+        inline=(
+            Inline(kind=InlineKind.BOLD, start=0, len=4),
+            Inline(kind=InlineKind.UNDERLINE, start=0, len=4),
         ),
     )
 
-    assert len(text.marks) == 2
+    assert len(text.inline) == 2
 
 
 def test_rich_text_keeps_leading_and_trailing_spaces() -> None:
@@ -256,8 +256,8 @@ def test_rich_text_keeps_a_fully_blank_line() -> None:
 
 def test_image_mark_rejects_a_relative_url() -> None:
     with pytest.raises(ValidationError, match="absolute https"):
-        Mark(
-            kind=MarkKind.IMAGE,
+        Inline(
+            kind=InlineKind.IMAGE,
             start=0,
             len=0,
             url="/storage/classroom/x.png",
@@ -271,8 +271,8 @@ def test_image_mark_keeps_the_url_verbatim() -> None:
     ``https://example.com`` and ``https://example.com/`` are different rows
     and must not collapse into one.
     """
-    mark = Mark(
-        kind=MarkKind.IMAGE,
+    mark = Inline(
+        kind=InlineKind.IMAGE,
         start=0,
         len=0,
         url="https://example.com",
@@ -286,19 +286,19 @@ def test_rich_text_rejects_out_of_bounds() -> None:
     with pytest.raises(ValidationError, match="past the end"):
         RichText(
             text="abc",
-            marks=(Mark(kind=MarkKind.BOLD, start=2, len=5),),
+            inline=(Inline(kind=InlineKind.BOLD, start=2, len=5),),
         )
 
 
 def test_image_mark_requires_a_url() -> None:
     with pytest.raises(ValidationError, match="url"):
-        Mark(kind=MarkKind.IMAGE, start=0, len=0, position=ImagePosition.BELOW)
+        Inline(kind=InlineKind.IMAGE, start=0, len=0, position=ImagePosition.BELOW)
 
 
 def test_image_mark_requires_a_position() -> None:
     with pytest.raises(ValidationError, match="position"):
-        Mark(
-            kind=MarkKind.IMAGE,
+        Inline(
+            kind=InlineKind.IMAGE,
             start=0,
             len=0,
             url="https://example.com/figure.png",
@@ -307,8 +307,8 @@ def test_image_mark_requires_a_position() -> None:
 
 def test_image_mark_rejects_nonzero_length() -> None:
     with pytest.raises(ValidationError, match="zero length"):
-        Mark(
-            kind=MarkKind.IMAGE,
+        Inline(
+            kind=InlineKind.IMAGE,
             start=0,
             len=1,
             url="https://example.com/figure.png",
@@ -317,9 +317,9 @@ def test_image_mark_rejects_nonzero_length() -> None:
 
 
 def test_text_mark_rejects_a_url() -> None:
-    with pytest.raises(ValidationError, match="only image marks"):
-        Mark(
-            kind=MarkKind.BOLD,
+    with pytest.raises(ValidationError, match="only image inline"):
+        Inline(
+            kind=InlineKind.BOLD,
             start=0,
             len=1,
             url="https://example.com/figure.png",

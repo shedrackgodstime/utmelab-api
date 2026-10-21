@@ -2,8 +2,8 @@ from itertools import pairwise
 
 import pytest
 
-from utmelab_pipeline.domain.enums import State
-from utmelab_pipeline.domain.state import (
+from utmelab_bank.domain.enums import State
+from utmelab_bank.domain.state import (
     TERMINAL_STATES,
     TRANSITIONS,
     InvalidTransition,

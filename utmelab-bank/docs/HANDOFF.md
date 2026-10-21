@@ -109,7 +109,7 @@ Read this section before trusting any number, including ours.
 | `countries` | 5 |
 | `api_keys` | 3 |
 
-There is **no media table and no `media_assets` table**. The only media in production is an image mark with a URL.
+There is **no media table and no `media_assets` table**. The only media in production is an image inline with a URL.
 
 ### 3.2 `questions` columns, exactly
 
@@ -155,22 +155,22 @@ explanation: {"key_point":{"text":"...","inline":[]},
 
 This is `Question.text: RichText` flattened by serde, while `Choice.text` and `Explanation.*` are plain nested structs. The Rust source is `utmelab-api-old/src/bank/model.rs`; the row reader is `utmelab-api-old/src/bank/turso_store.rs` around line 297.
 
-### 3.4 The mark shape
+### 3.4 The inline shape
 
 ```json
 {"start":147,"len":16,"kind":"underline"}
 {"start":37,"len":0,"kind":"image","url":"https://...","position":"below","alt":"optional"}
 ```
 
-`kind` is a lowercase string, one of `bold`, `italic`, `underline`, `strike`, `subscript`, `superscript`, `image`. Image marks carry `url`, `position` (`above` or `below`) and optional `alt`. The mark is **flat**: the kind's fields sit beside `start` and `len`.
+`kind` is a lowercase string, one of `bold`, `italic`, `underline`, `strike`, `subscript`, `superscript`, `image`. Image inlines carry `url`, `position` (`above` or `below`) and optional `alt`. The inline is **flat**: the kind's fields sit beside `start` and `len`.
 
 Marks actually present today: `image`, `italic`, `underline`.
 
 ### 3.4a How images actually work
 
-**There is no image column and no media table. A figure is a mark on the stem.**
+**There is no image column and no media table. A figure is an inline on the stem.**
 
-71 of the 2,243 questions carry an image mark. Every one looks like this:
+71 of the 2,243 questions carry an image inline. Every one looks like this:
 
 ```json
 {"start":0,"len":0,"kind":"image",
@@ -202,7 +202,7 @@ So a figure's placement is **guessed from the wording of the question**. "the di
 
 ### 3.4b The figure rule
 
-The importer refuses a row whose stem mentions a figure but carries no image mark:
+The importer refuses a row whose stem mentions a figure but carries no image inline:
 
 ```rust
 let carried_image = stem.has_mark(|k| matches!(k, InlineKind::Image { .. }));
@@ -273,17 +273,17 @@ The parts, in order, joined by `U+001F`:
 1  stem text
 2  for each option:  "<option id>" + U+001E + "<option text>"
 3  answer
-4  marks of the stem, then marks of each option, each mark encoded as
+4  inlines of the stem, then inlines of each option, each inline encoded as
    "<start>,<len>,<kind>", all joined by "|"
 5  explanation key_point text
-6  key_point marks joined by "|"
+6  key_point inlines joined by "|"
 7  explanation body text
-8  body marks joined by "|"
+8  body inlines joined by "|"
 9  trap text, or "" when there is no explanation or no trap
-10 trap marks joined by "|"
+10 trap inlines joined by "|"
 ```
 
-A mark is encoded as `<start>,<len>,<kind>`, and an image mark is `image:<url>:<position>:<alt>` with an empty alt when there is none.
+An inline is encoded as `<start>,<len>,<kind>`, and an image inline is `image:<url>:<position>:<alt>` with an empty alt when there is none.
 
 The whole thing is sha256 of the parts joined by `U+001F`, hex encoded.
 
@@ -302,7 +302,7 @@ which is indexed, and which holds the full-Unicode value.
 
 Not a sample. All **2,243** rows, recomputed from the live database with our own model classes and our own `content_fingerprint`, compared against the `content_hash` production stored. **2,243 of 2,243 match.**
 
-That covers the cases a sample misses: 50 rows with no explanation, 2,189 with a trap, 71 with an image mark.
+That covers the cases a sample misses: 50 rows with no explanation, 2,189 with a trap, 71 with an image inline.
 
 The check is a test, not a script. `tests/live/test_production_fingerprint_live.py` runs it against the live database when `UTMELAB_LIVE=1` is set.
 
@@ -316,7 +316,7 @@ Production stores those bytes verbatim. D60 says "`text` stays plain, so grep, d
 
 Fixed by taking the strip off the base model and putting it back only on the types that carry identifiers, `NonEmptyStr` and `Slug`. Content text is now `Text`, which preserves the string exactly.
 
-**Bug two: we rejected two marks on the same range.** Our validator required marks not to overlap at all. D60 says marks may share an identical range, and names the case: bold on top of underline. Production sorts by `(start, len)` and refuses only *partial* overlap.
+**Bug two: we rejected two inlines on the same range.** Our validator required inlines not to overlap at all. D60 says two inlines may share an identical range, and names the case: bold on top of underline. Production sorts by `(start, len)` and refuses only *partial* overlap.
 
 Our validator now mirrors production's `RichText::validate` exactly: bounds are checked, partial overlap is refused, identical ranges are allowed.
 
@@ -365,7 +365,7 @@ The eight rows:
 
 **28 questions link to a passage** through `questions.passage_id`. Every linked question's subject matches its passage's subject, without exception. 27 are use-of-english, 1 is commerce.
 
-Every passage has `inline = '[]'`. No passage carries a mark of any kind, image or otherwise. Passage text holds its own paragraph structure, blank lines included, per D60.
+Every passage has `inline = '[]'`. No passage carries an inline of any kind, image or otherwise. Passage text holds its own paragraph structure, blank lines included, per D60.
 
 **The serving contract** (`src/core/models/wire.rs`): `RenderedQuestion` carries `passage_id: Option<String>` and the doc comment says it plainly:
 
@@ -400,26 +400,33 @@ Fixed after the full production check:
 | `RichText` refused any overlap | identical ranges are allowed, partial overlap is refused | mirrors production's `validate` |
 | `Mark.url` was an `HttpUrl` | the url is a raw string | plain string, validated as absolute https |
 
+Fixed after the full production check:
+
+| Ours was | Production | Now |
+|---|---|---|
+| `DomainModel` had `str_strip_whitespace=True` | text is stored verbatim | the strip is off the base, on the identifier types only |
+| `RichText` refused any overlap | identical ranges are allowed, partial overlap is refused | mirrors production's `validate` |
+| `Mark.url` was an `HttpUrl` | the url is a raw string | plain string, validated as absolute https |
+| `Mark` and `RichText.marks` | `Inline` and `RichText.inline` | **one vocabulary, the production one.** The type is `Inline`, the field is `inline`, the rule codes say `inline`. The mark *value* keeps the word marks, because production has a `marks` column and an `inline` column and so do we. |
+
 Still open:
 
 | Ours | Production | The gap |
 |---|---|---|
 | `Option.id` is `"A"`, `"B"` | `answer` is `"a"`, `"b"` | production ids are lowercase, our fixtures are uppercase |
-| `RichText.marks` | `RichText.inline` | **our JSON key is `marks`, production's is `inline`.** The mark list inside is identical, the key is not. The staging payload is ours, so it is consistent, but it is not the shape the live tooling reads. |
 | `Content.stem` is one `RichText` | `text` and `inline` are two columns | production splits the stem on write, we still write one blob |
-| `Content.options` is 2 to 6 | the importer's gate is 2 to 5 | we allow one option more than production accepts |
-| `Passage` is `{id, text, source_item_id}` nested inside `Content` | `passages` table with `exam, subject, year, kind, title, author, text, inline` | **our passage is a fragment, production's is a catalog object with a kind and a title.** Production links by `questions.passage_id`; we nest the whole thing in the question. |
+| `Content.options` is 2 to 6 | the importer's gate is 2 to 5 | we allow one option more than production accepts, and the gate now refuses anything but 4 |
 | `Content.source_explanation` is one `RichText` | `explanation` is `{key_point, body, trap}` | the reviewed `Explanation` matches, the pre-review source explanation is flat |
 | `CatalogTopic.id` and `.slug` are separate | only `slug` | ours is redundant but harmless |
 | `CatalogSnapshot.version` | no version column | ours is computed, fine |
 
-The passage gap is the one worth solving first. A passage is not text that belongs to a question, it is a shared object with a kind, a title and its own questions pointing at it. Production's `passage_id` reference is the shape. Ours cannot represent two questions sharing one passage, and it cannot carry `kind`, which is what tells a consumer whether the passage is a cloze with gaps or a data set to read a number off.
+The stem split is the one worth solving next. Production stores the stem in two columns so the search can use a plain one, and we still write it as one blob.
 
 ---
 
 ## 5. What has been built
 
-`utmelab-bank/src/utmelab_pipeline/`
+`utmelab-bank/src/utmelab_bank/`
 
 ```
 domain/
@@ -529,6 +536,34 @@ was run against the live bank database and the column is there.
 the staging row was read back, the passage was read by id, and the rows were
 cleaned up.
 
+### 5.3 One vocabulary
+
+Built. The plan's third item.
+
+**The shape is production's, word for word.** `RichText { text, inline }`,
+`Inline { start, len, kind }`, and a flat lowercase kind. The type is
+`Inline`, the field is `inline`, the rule codes say `inline`, and the source
+payload keys are `inline`, `stem_inline` and `explanation_inline`.
+
+**The mark value keeps the word marks.** Production has a `marks` column and
+an `inline` column, and so do we. `Content.marks` is what the question is
+worth, and `RichText.inline` is the list on the text. The two never share a
+name, and the gate checks them apart.
+
+**One helper keeps production's name.** `hashing.mark_key` is the Rust's own
+name, so the two can be compared line for line. Its docstring says so.
+
+**The package was renamed too.** The distribution was `utmelab-pipeline`,
+which collided with the archived attempt in the parent directory, and the
+import package was `utmelab_pipeline`. Both are now `utmelab-bank` and
+`utmelab_bank`.
+
+**The code is clean.** `pyflakes` reports nothing across `src` and `tests`.
+That pass found two real duplications in the fixture source, a `CatalogRef`
+built twice two different ways and a `media_refs` list built twice, and the
+dead `CatalogRef` was the one built from the raw payload rather than the
+validated values.
+
 
 ```
 config.py                       settings, read from utmelab-bank/.env
@@ -587,7 +622,8 @@ live/test_gate_live.py             the gate must see what the live bank shows,
                                    skipped unless UTMELAB_LIVE=1
 ```
 
-**197 tests pass, 3 skipped. mypy strict is clean across `src` and `tests`.**
+**197 tests pass, 3 skipped. mypy strict is clean across `src` and `tests`,
+and pyflakes reports nothing.**
 
 The three skipped are the live tests: the OpenCode smoke test, the
 production fingerprint contract and the gate contract. All run with
@@ -694,10 +730,16 @@ cd utmelab-bank
 
 python -m pytest tests/ -q          # the fast suite
 mypy src tests                        # strict, must be clean
+python -m pyflakes src tests          # must report nothing
 
-UTMELAB_LIVE=1 python -m pytest tests/live/ -q   # a real model call, and the
+UTMELAB_LIVE=1 python -m pytest tests/live/ -q   # a real model call, the
                                                 # production fingerprint check
+                                                # and the gate contract
 ```
+
+`ruff` is declared in the dev extras and configured in `pyproject.toml`, but
+it is not installed on this device, so the lint that runs here is
+`pyflakes`. Both must be clean.
 
 The live production fingerprint check is the one worth running after any change
 to a model, a validator or the hashing. It recomputes the hash of all 2,243
@@ -707,8 +749,8 @@ stored. If it fails, the change broke the contract.
 Read the catalog from production:
 
 ```python
-from utmelab_pipeline.config import load_settings
-from utmelab_pipeline.adapters.catalog import catalog_reader
+from utmelab_bank.config import load_settings
+from utmelab_bank.adapters.catalog import catalog_reader
 
 snapshot = await catalog_reader(load_settings()).snapshot("JAMB", "biology")
 ```
@@ -716,8 +758,8 @@ snapshot = await catalog_reader(load_settings()).snapshot("JAMB", "biology")
 Write a staging row:
 
 ```python
-from utmelab_pipeline.adapters.catalog import bank_client
-from utmelab_pipeline.adapters.store import StagingStore
+from utmelab_bank.adapters.catalog import bank_client
+from utmelab_bank.adapters.store import StagingStore
 
 client = bank_client(load_settings())
 store = StagingStore(client)
