@@ -51,21 +51,25 @@ def test_an_explicit_base_wins_and_is_normalised() -> None:
     assert settings.media_base == "https://cdn.example/figs"
 
 
-def test_without_upload_the_store_is_local() -> None:
-    store = create_media_store(_settings(gitlab_token="tok", gitlab_media_repo="g/m"))
+def test_without_a_token_or_repo_the_store_is_local() -> None:
+    store = create_media_store(_settings())
     assert isinstance(store, LocalMediaStore)
 
 
-def test_upload_without_gitlab_is_refused() -> None:
-    with pytest.raises(MediaError, match="GitLab is not configured"):
-        create_media_store(_settings(media_upload_enabled=True))
+def test_a_token_without_a_repo_is_refused() -> None:
+    with pytest.raises(MediaError, match="both a token and a repo"):
+        create_media_store(_settings(gitlab_token="tok"))
 
 
-def test_create_media_store_reads_the_settings() -> None:
+def test_a_repo_without_a_token_is_refused() -> None:
+    with pytest.raises(MediaError, match="both a token and a repo"):
+        create_media_store(_settings(gitlab_media_repo="g/m"))
+
+
+def test_a_token_and_repo_build_the_gitlab_store() -> None:
     settings = _settings(
         gitlab_token="tok",
         gitlab_media_repo="g/m",
-        media_upload_enabled=True,
     )
     store = create_media_store(settings)
     assert isinstance(store, GitLabMediaStore)

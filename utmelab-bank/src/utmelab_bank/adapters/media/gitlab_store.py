@@ -190,9 +190,8 @@ class GitLabMediaStore:
                 "gitlab refused the credential",
                 **context,
                 hint=(
-                    "the token needs API access to the media project; if the group "
-                    "enforces fine-grained tokens, use a fine-grained PAT or a "
-                    "project access token"
+                    "use a project access token with the api scope, or a fine-grained "
+                    "PAT with Repository: Read and Repository: Create"
                 ),
                 detail=response.text[:400],
             )

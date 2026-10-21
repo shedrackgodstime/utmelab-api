@@ -52,8 +52,6 @@ MEDIA_BASE_URL = "UTMELAB_BANK_MEDIA_BASE_URL"
 #: The served url prefix. The bytes may live on GitLab, but the row carries
 #: this host; pointing the domain at GitLab is a DNS change, not a rewrite.
 DEFAULT_MEDIA_BASE_URL = "https://assets.utmelab.com/images"
-#: The push is closed until somebody opens it deliberately.
-MEDIA_UPLOAD_ENABLED = "UTMELAB_BANK_MEDIA_UPLOAD_ENABLED"
 
 #: The model that tags, explains and verifies.
 AI_MODEL = "UTMELAB_BANK_AI_MODEL"
@@ -115,7 +113,6 @@ class Settings:
     media_branch: str = "main"
     #: An explicit served url prefix. Defaults to the assets host.
     media_base_url: str | None = None
-    media_upload_enabled: bool = False
     ai_model: str = DEFAULT_AI_MODEL
     ai_image_model: str = DEFAULT_AI_IMAGE_MODEL
     ai_image_second_model: str = DEFAULT_AI_IMAGE_SECOND_MODEL
@@ -180,7 +177,6 @@ def load_settings(*, require: bool = True) -> Settings:
         gitlab_host=values.get(GITLAB_HOST) or "gitlab.com",
         media_branch=values.get(MEDIA_BRANCH) or "main",
         media_base_url=values.get(MEDIA_BASE_URL) or None,
-        media_upload_enabled=values.get(MEDIA_UPLOAD_ENABLED) == "1",
         ai_model=values.get(AI_MODEL) or DEFAULT_AI_MODEL,
         ai_image_model=values.get(AI_IMAGE_MODEL) or DEFAULT_AI_IMAGE_MODEL,
         ai_image_second_model=(values.get(AI_IMAGE_SECOND_MODEL) or DEFAULT_AI_IMAGE_SECOND_MODEL),
