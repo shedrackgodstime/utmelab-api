@@ -127,19 +127,8 @@ class Settings:
 
     @property
     def media_repo_path(self) -> Path:
-        """Where the media clone lives. Inside the bank's own var dir."""
+        """Where a local run stores figures when no remote is configured."""
         return VAR_DIR / "media"
-
-    @property
-    def media_remote(self) -> str:
-        """The clone url, with the token in it, or empty when unconfigured.
-
-        Empty is a real answer: it means "local only", and the store then
-        records bytes without claiming a publication.
-        """
-        if not self.gitlab_media_repo or not self.gitlab_token:
-            return ""
-        return f"https://oauth2:{self.gitlab_token}@{self.gitlab_host}/{self.gitlab_media_repo}.git"
 
     @property
     def media_base(self) -> str:

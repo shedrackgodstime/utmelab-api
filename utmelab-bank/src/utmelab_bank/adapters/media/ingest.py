@@ -126,8 +126,12 @@ class MediaIngestor:
         self.validator = validator
         self.store = store
 
-    async def ingest_refs(self, item: StagingItem) -> StagingItem:
-        """Fetch and store every media ref, then move the row to media_ready.
+    async def capture_refs(self, item: StagingItem) -> StagingItem:
+        """Fetch and store every media ref, without moving the row.
+
+        Capture is the one moment the source is guaranteed alive, so it runs in
+        the scrape run, after the gate. The row keeps its state and carries the
+        assets; the later media step only finalizes and describes them.
 
         A ref the bank cannot ingest is skipped when it is optional and fails
         the row when it is required. The owned urls are collected as we go, so
@@ -153,17 +157,28 @@ class MediaIngestor:
                     raise
                 continue
 
-            if asset.storage_url.startswith("https://"):
+            served = self.store.served_url(asset.storage_url)
+            if served is not None:
                 # The bank can serve it, so it owns it and the source url goes.
-                owned[source_url] = asset.storage_url
+                owned[source_url] = served
                 assets.append(asset.model_copy(update={"source_url": None}))
             else:
                 # Stored but not servable yet: the row keeps the source url.
                 assets.append(asset)
 
-        updated = item.model_copy(update={"media_assets": tuple(assets)})
+        # The refs have done their job. Keeping them would make a later media
+        # step fetch the source again, which is the one thing capture exists to
+        # avoid.
+        updated = item.model_copy(
+            update={"media_assets": tuple(assets), "media_refs": ()},
+        )
         updated = _swap_owned_urls(updated, owned)
-        return updated.stamp_hashes().transition_to(State.MEDIA_READY)
+        return updated.stamp_hashes()
+
+    async def ingest_refs(self, item: StagingItem) -> StagingItem:
+        """Capture and move to ``media_ready``. The combined path, for one run."""
+        captured = await self.capture_refs(item)
+        return captured.transition_to(State.MEDIA_READY)
 
 
 def _swap_owned_urls(item: StagingItem, owned: dict[str, str]) -> StagingItem:

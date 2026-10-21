@@ -1,4 +1,4 @@
-"""Media adapters. Git-backed storage with a GitLab remote."""
+"""Media adapters: a stateless GitLab store, plus local and in-memory ones."""
 
 from .consensus import (
     ConsensusPolicy,
@@ -10,7 +10,7 @@ from .consensus import (
 from .describe import ImageDescriberService, create_describer
 from .errors import MediaAuthError, MediaError, MediaPublishError
 from .factory import create_media_store
-from .git_store import BlobRef, GitMediaStore, PushReport
+from .gitlab_store import GitLabMediaStore
 from .ingest import (
     HttpMediaFetcher,
     MediaFetcher,
@@ -19,17 +19,18 @@ from .ingest import (
     PillowMediaValidator,
     ingest_media_task,
 )
+from .local_store import LocalMediaStore
 from .paths import extension_for, is_blob_name, name_for, path_for, sha256_of
 from .service import MediaService
 
 __all__ = [
-    "BlobRef",
     "ConsensusPolicy",
     "DescribeImageConsensus",
     "Dissent",
-    "GitMediaStore",
+    "GitLabMediaStore",
     "HttpMediaFetcher",
     "ImageDescriberService",
+    "LocalMediaStore",
     "MediaAuthError",
     "MediaError",
     "MediaFetcher",
@@ -39,7 +40,6 @@ __all__ = [
     "MediaValidator",
     "MissingWitness",
     "PillowMediaValidator",
-    "PushReport",
     "WitnessError",
     "create_describer",
     "create_media_store",

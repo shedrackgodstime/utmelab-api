@@ -328,6 +328,8 @@ class MediaAsset(DomainModel):
     byte_size: int = Field(gt=0)
     width: int | None = Field(default=None, gt=0)
     height: int | None = Field(default=None, gt=0)
+    #: The bare name the bank records, ``<sha>.<ext>``. The host is config,
+    #: not data, so a move is a base change and not a migration.
     storage_url: NonEmptyStr
     source_url: HttpUrl | None = None
     fetched_at: AwareDatetime

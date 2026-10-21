@@ -257,7 +257,7 @@ def test_the_spine_carries_a_figure_to_ready(tmp_path: Path, catalog: CatalogSna
     source = FixtureSource(tmp_path)
     scope = Scope.model_validate(SCOPE)
 
-    async def walk() -> tuple[StagingItem, str]:
+    async def walk() -> tuple[StagingItem, str, str]:
         raw = [item async for item in source.fetch(scope)][0]
         adapted = source.adapt(raw, catalog)
         assert adapted.media_refs
@@ -265,34 +265,50 @@ def test_the_spine_carries_a_figure_to_ready(tmp_path: Path, catalog: CatalogSna
 
         gated = GateService(catalog=catalog).apply(adapted)
         assert gated.state is State.GATED
-        deduped = await DedupeService(_EmptyIndex()).apply(gated)
+
+        # capture: the scrape run stores the bytes while the source is alive.
+        # It does not move the row; the media step finalizes it later.
+        store = FakeMediaStore()
+        fetcher = FakeMediaFetcher()
+        capture = MediaIngestor(fetcher, PillowMediaValidator(), store)
+        captured = await capture.capture_refs(gated)
+        assert captured.state is State.GATED
+        assert captured.media_refs == ()
+        assert captured.media_assets
+        assert len(fetcher.urls) == 1
+
+        deduped = await DedupeService(_EmptyIndex()).apply(captured)
         catalogued = await TagService(MockProvider()).tag(deduped, catalog)
         assert catalogued.state is State.CATALOGUED
 
-        # media: the branch runs because the row brings a ref
+        # media: no source call, only the captured bytes and the witnesses
         second = MockProvider(producer=Producer(provider="mock", model="mock-v2"))
         media = MediaService(
-            MediaIngestor(FakeMediaFetcher(), PillowMediaValidator(), FakeMediaStore()),
+            capture,
             DescribeImageConsensus((MockProvider(), second)),
         )
         described = await media.apply(catalogued)
         assert described.state is State.DESCRIBED
         assert described.evidence.image_descriptions
+        # The media step never went back to the source.
+        assert len(fetcher.urls) == 1
 
         enriched = await ExplainService(MockProvider()).explain(described, catalog)
         assert enriched.state is State.ENRICHED
         verified = await ReviewService(MockProvider()).apply(enriched, catalog)
         bundle = ReadyService(catalog=catalog).promote([verified])
-        return bundle.items[0], FIGURE_URL
+        return bundle.items[0], FIGURE_URL, store.base
 
-    ready, source_url = asyncio.run(walk())
+    ready, source_url, base = asyncio.run(walk())
 
     assert ready.state is State.READY
     asset = ready.media_assets[0]
 
-    # The bank owns the bytes: the inline points at our url, not the source.
+    # The bank owns the bytes: the row records the bare name, the inline points
+    # at the served url, and the source url is gone.
     assert asset.source_url is None
-    assert ready.content.stem.inline[0].url == asset.storage_url
+    assert not asset.storage_url.startswith("https://")
+    assert ready.content.stem.inline[0].url == f"{base}/{asset.storage_url}"
     assert ready.content.stem.inline[0].url != source_url
 
     # The description is on the row, and it is about the asset we stored.

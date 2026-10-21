@@ -32,7 +32,7 @@ class ImageDescriberService:
         """
         descriptions = []
         for asset in item.media_assets:
-            data = await self.reader.read(asset.asset_id) if self.reader is not None else None
+            data = await self.reader.read(asset.storage_url) if self.reader is not None else None
             request = DescribeImageRequest(asset=asset, context=None, data=data)
             description = await self.describer.describe(request)
             descriptions.append(description)

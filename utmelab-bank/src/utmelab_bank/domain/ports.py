@@ -86,9 +86,17 @@ class MediaStore(Protocol):
         source_url: str | None = None,
     ) -> MediaAsset: ...
 
-    async def read(self, asset_id: str) -> bytes: ...
+    async def read(self, name: str) -> bytes: ...
 
-    async def exists(self, asset_id: str) -> bool: ...
+    async def exists(self, name: str) -> bool: ...
+
+    def served_url(self, name: str) -> str | None:
+        """The public url for a recorded name, or ``None`` when not public.
+
+        The row stores the bare name. This is where a host is attached to it,
+        so the same record can be served from a different host later.
+        """
+        ...
 
 
 @runtime_checkable

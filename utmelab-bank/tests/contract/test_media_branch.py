@@ -1,4 +1,4 @@
-"""The media branch: fetch, store, swap the url, describe."""
+"""The media branch: capture, store, swap the url, describe."""
 
 from __future__ import annotations
 
@@ -76,20 +76,34 @@ def ingestor(store: FakeMediaStore, fetcher: MediaFetcher | None = None) -> Medi
     return MediaIngestor(fetcher or FakeMediaFetcher(), PillowMediaValidator(), store)
 
 
+def test_capture_records_the_name_and_leaves_the_state_alone() -> None:
+    """The scrape run captures without moving the row or keeping the refs."""
+    store = FakeMediaStore()
+    result = asyncio.run(ingestor(store).capture_refs(make_item()))
+
+    assert result.state is State.CATALOGUED
+    assert result.media_refs == ()
+    assert len(result.media_assets) == 1
+    asset = result.media_assets[0]
+    assert asset.storage_url == f"{asset.asset_id}.png"
+
+
 def test_ingesting_owns_the_asset_and_swaps_the_url() -> None:
     item = make_item()
     before = item.hashes
+    store = FakeMediaStore()
 
-    result = asyncio.run(ingestor(FakeMediaStore()).ingest_refs(item))
+    result = asyncio.run(ingestor(store).ingest_refs(item))
 
     assert result.state is State.MEDIA_READY
     assert len(result.media_assets) == 1
     asset = result.media_assets[0]
 
     # The bank owns it: the source url is gone and the inline points at ours.
+    # The row records the bare name; the url is the base plus that name.
     assert asset.source_url is None
-    assert result.content.stem.inline[0].url == asset.storage_url
-    assert asset.storage_url.startswith("https://")
+    assert not asset.storage_url.startswith("https://")
+    assert result.content.stem.inline[0].url == f"{store.base}/{asset.storage_url}"
 
     # Swapping a url changes the content fingerprint, and attaching an asset
     # changes the bundle fingerprint, so both are re-stamped.
@@ -105,9 +119,7 @@ def test_ingesting_owns_the_asset_and_swaps_the_url() -> None:
 
 
 def test_a_store_that_cannot_serve_keeps_the_source_url() -> None:
-    result = asyncio.run(
-        ingestor(FakeMediaStore(base="file:///tmp/objects")).ingest_refs(make_item())
-    )
+    result = asyncio.run(ingestor(FakeMediaStore(published=False)).ingest_refs(make_item()))
 
     assert result.state is State.MEDIA_READY
     asset = result.media_assets[0]
@@ -139,7 +151,7 @@ def test_the_media_branch_describes_the_asset() -> None:
         DescribeImageConsensus((MockProvider(), second)),
     )
 
-    result = asyncio.run(service.apply(make_item()))
+    result = asyncio.run(service.apply(make_item(), capture=True))
 
     assert result.state is State.DESCRIBED
     assert len(result.evidence.image_descriptions) == 1

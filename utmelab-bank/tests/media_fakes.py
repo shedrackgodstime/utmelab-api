@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 from datetime import UTC, datetime
 
+from utmelab_bank.adapters.media.paths import extension_for, name_for
 from utmelab_bank.domain.models import MediaAsset
 
 PNG_1X1 = bytes.fromhex(
@@ -36,38 +37,50 @@ class FailingMediaFetcher:
 
 
 class FakeMediaStore:
-    """A store that hands back a url. The base decides whether it is servable.
+    """A store that records the bare name and decides whether it is servable.
 
-    With an ``https://`` base the bank owns the asset and swaps the url. With
-    anything else the asset is stored but not servable, so the row keeps the
-    source url, which is the skip branch.
+    ``published`` is the store's answer to "can anybody fetch this?". When it
+    is false the bytes are held but the row must keep its source url, which is
+    the skip branch.
     """
 
-    def __init__(self, base: str = "https://media.example/objects") -> None:
+    def __init__(
+        self,
+        base: str = "https://media.example/objects",
+        *,
+        published: bool = True,
+    ) -> None:
         self.base = base.rstrip("/")
+        self.published = published
         self.saved: dict[str, bytes] = {}
 
     async def put(self, data: bytes, *, mime: str, source_url: str | None = None) -> MediaAsset:
         asset_id = hashlib.sha256(data).hexdigest()
-        self.saved[asset_id] = data
+        name = name_for(asset_id, extension_for(source_url or "", mime, data))
+        self.saved[name] = data
         return MediaAsset(
             asset_id=asset_id,
             mime=mime,
             byte_size=len(data),
             width=1,
             height=1,
-            storage_url=f"{self.base}/{asset_id}",
+            storage_url=name,
             source_url=source_url,
             fetched_at=NOW,
             required=True,
             readable=True,
         )
 
-    async def read(self, asset_id: str) -> bytes:
-        return self.saved[asset_id]
+    async def read(self, name: str) -> bytes:
+        return self.saved[name]
 
-    async def exists(self, asset_id: str) -> bool:
-        return asset_id in self.saved
+    async def exists(self, name: str) -> bool:
+        return name in self.saved
+
+    def served_url(self, name: str) -> str | None:
+        if not self.published or not self.base:
+            return None
+        return f"{self.base}/{name}"
 
 
 __all__ = [

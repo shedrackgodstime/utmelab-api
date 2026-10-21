@@ -100,10 +100,13 @@ class FakeMediaStore:
     ) -> MediaAsset:
         raise NotImplementedError
 
-    async def read(self, asset_id: str) -> bytes:
+    async def read(self, name: str) -> bytes:
         raise NotImplementedError
 
-    async def exists(self, asset_id: str) -> bool:
+    async def exists(self, name: str) -> bool:
+        raise NotImplementedError
+
+    def served_url(self, name: str) -> str | None:
         raise NotImplementedError
 
 
