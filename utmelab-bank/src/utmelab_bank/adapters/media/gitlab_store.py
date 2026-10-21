@@ -189,7 +189,12 @@ class GitLabMediaStore:
             raise MediaAuthError(
                 "gitlab refused the credential",
                 **context,
-                hint="the token needs api scope and write access to the media project",
+                hint=(
+                    "the token needs API access to the media project; if the group "
+                    "enforces fine-grained tokens, use a fine-grained PAT or a "
+                    "project access token"
+                ),
+                detail=response.text[:400],
             )
         raise MediaError(
             f"gitlab could not {action} the figure",
