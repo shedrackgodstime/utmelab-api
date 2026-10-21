@@ -67,5 +67,14 @@ class VerificationKind(StrEnum):
 
 
 class Severity(StrEnum):
-    WARNING = "warning"
+    """How hard a gate issue is.
+
+    ``ERROR`` is a defect. It blocks, and only a fix to the content clears it.
+    ``JUDGEMENT`` also blocks, but a person can clear it with a recorded
+    reason, because some rules cannot tell a real defect from an ordinary
+    word. ``WARNING`` does not block, and the gate does not use it for rules.
+    """
+
     ERROR = "error"
+    JUDGEMENT = "judgement"
+    WARNING = "warning"

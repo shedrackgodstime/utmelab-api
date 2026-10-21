@@ -422,6 +422,79 @@ The passage gap is the one worth solving first. A passage is not text that belon
 `utmelab-bank/src/utmelab_pipeline/`
 
 ```
+domain/
+  enums.py                    the fixed vocabulary
+  models/                     every model, defined once
+  gate.py                     THE GATE. The rules, pure, no I/O.
+  hashing.py                  the content fingerprint
+  state.py                    the state machine
+  capabilities.py             the capability names and their requests
+  ports.py                    the ports the adapters implement
+  selector.py                 the selector
+adapters/
+  catalog/client.py           the turso_serverless driver
+  catalog/production.py       the production catalog reader
+  gate_service.py             runs the gate over a staging item
+  media/                      git store, ingest, describe, consensus
+  providers/                  the mock and the OpenCode provider, tagging
+  sources/fixture/            the fixture source
+  store/schema.py             the one table
+  store/staging.py            save, load, transition, list by state
+config.py
+```
+
+### 5.1 The gate
+
+Built, and the plan's first item is done. It lives in `domain/gate.py` and
+`adapters/gate_service.py`.
+
+**Strict, machine only, and total.** The default is fail. Every rule that can
+detect a defect can block a row. A rule that cannot tell a real defect from an
+ordinary word fires as a **judgement**: it blocks, and a person clears it
+with a recorded reason. The `Clearance` model carries the rule, the person
+and the reason, so a decision never dies with the row.
+
+**Two lines, not one.** The model refuses an out of bounds mark, a partial
+overlap, an answer that names no option and a relative image url before the
+gate ever sees them. The gate carries the same rules as the second line, and
+each rule is a pure function over plain values so it can be judged on its
+own. The rules the model does not enforce are the gate's own: exactly four
+options, an explanation present, an exam named, marks in range, no markup, a
+subtopic that exists under the right exam and subject, a passage that exists,
+and no duplicate by id, by hash or by near-duplicate.
+
+**Measured against the live bank.** The gate was run over all 2,243 live
+production rows, and the counts are pinned by
+`tests/live/test_gate_live.py`:
+
+| Rule | Rows | Severity |
+|---|---|---|
+| `explanation_missing` | 50 | defect |
+| `option_count` | 11 | defect |
+| `cloze_without_passage` | 9 | judgement |
+| `missing_figure` | 2 | judgement |
+| `exam_empty` | 1 | defect |
+
+**2,178 of 2,243 live rows pass.** The 65 that do not are exactly the rows
+that cannot be reviewed into service: the 50 with no explanation, the 11 that
+do not have four options, the 2 that mention a figure they do not carry, the
+9 that name a gap with no passage, and the 1 withheld row.
+
+**It agrees with the live rules.** `tools/review.py` is the tool that writes
+today's verification records, so its rules are the ones in force. Run over
+the same rows, the bank and the live tool agree exactly on `option_count`
+(11), `cloze_without_passage` (9) and `missing_figure` (2). The bank is
+stricter by 51 rows: the 50 with no explanation and the 1 withheld row, both
+of which the live tool catches later, at the review step rather than at the
+gate.
+
+**One thing the live tool got right and the gate copies.** The figure rule
+fires on the word "table" in a stress question, which is not a figure. It
+still fires, because a rule that guessed would let a real missing figure
+through, but it fires as a judgement, so a person clears it in seconds.
+
+
+```
 config.py                       settings, read from utmelab-bank/.env
 domain/
   enums.py                      State, Capability, MarkKind, SourceCapability, Verdict, VerificationKind
@@ -456,6 +529,7 @@ conftest.py                     fixtures
 test_models.py                  model validation
 test_state_machine.py           transitions, the content hash
 test_hashing.py                 canonical json
+test_gate.py                     the gate rules
 test_ports.py                   the port contracts
 test_selector.py                the selector
 test_config.py                  the settings
@@ -467,16 +541,20 @@ contract/test_tagging_service.py    tag and explain
 contract/test_consensus.py          consensus
 contract/test_git_media_store.py   the media store
 contract/test_staging_store.py      the staging store
+contract/test_gate_service.py        the gate service
 live/test_opencode_live.py         a real model call, skipped unless UTMELAB_LIVE=1
 live/test_production_fingerprint_live.py
                                    every production row must hash the way we
                                    hash it, skipped unless UTMELAB_LIVE=1
+live/test_gate_live.py             the gate must see what the live bank shows,
+                                   skipped unless UTMELAB_LIVE=1
 ```
 
-**133 tests pass, 2 skipped. mypy strict is clean across `src` and `tests`.**
+**177 tests pass, 3 skipped. mypy strict is clean across `src` and `tests`.**
 
-The two skipped are the live tests: the OpenCode smoke test and the
-production fingerprint contract. Both run with `UTMELAB_LIVE=1`.
+The three skipped are the live tests: the OpenCode smoke test, the
+production fingerprint contract and the gate contract. All run with
+`UTMELAB_LIVE=1`.
 
 ---
 

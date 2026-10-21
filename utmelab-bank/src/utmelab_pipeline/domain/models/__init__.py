@@ -9,6 +9,7 @@ from pydantic import BaseModel
 
 from .catalog import CatalogRef, CatalogSnapshot, CatalogSubtopic, CatalogTopic
 from .common import (
+    Clearance,
     Confidence,
     Content,
     Coverage,
@@ -76,6 +77,7 @@ __all__ = [
     "CatalogSnapshot",
     "CatalogSubtopic",
     "CatalogTopic",
+    "Clearance",
     "Confidence",
     "Content",
     "Coverage",

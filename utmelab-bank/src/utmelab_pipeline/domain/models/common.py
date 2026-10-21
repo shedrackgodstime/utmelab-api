@@ -159,18 +159,46 @@ class CatalogSnapshot(DomainModel):
                 )
         return self
 
+class Clearance(DomainModel):
+    """A person clearing one judgement issue, with the reason recorded.
+
+    The escape hatch for the rules a machine cannot settle. A clearance is
+    never silent: it names the rule, the person and the reason, so the
+    decision survives the row.
+    """
+
+    rule: NonEmptyStr
+    by: NonEmptyStr
+    reason: NonEmptyStr
+    created_at: AwareDatetime
+
 
 class GateVerdict(DomainModel):
-    """The mechanical gate decision. Passing is not a warning free pass."""
+    """The mechanical gate decision. Passing is not a warning free pass.
+
+    A row passes when no error issue is open and every judgement issue has
+    been cleared by a person. A warning never blocks, and the gate does not
+    raise one for a rule.
+    """
+
     passed: bool
     issues: tuple[Issue, ...] = ()
+    clearances: tuple[Clearance, ...] = ()
     rules_version: NonEmptyStr = "v1"
 
     @model_validator(mode="after")
     def _check(self) -> "GateVerdict":
         has_error = any(issue.severity is Severity.ERROR for issue in self.issues)
-        if self.passed == has_error:
-            raise ValueError("passed must be true exactly when no error issues exist")
+        cleared = {clearance.rule for clearance in self.clearances}
+        open_judgement = any(
+            issue.severity is Severity.JUDGEMENT and issue.code not in cleared
+            for issue in self.issues
+        )
+        if self.passed == (has_error or open_judgement):
+            raise ValueError(
+                "passed must be true exactly when no error is open and every "
+                "judgement issue is cleared"
+            )
         return self
 
 

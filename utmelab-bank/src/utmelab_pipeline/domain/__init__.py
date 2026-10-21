@@ -1,5 +1,14 @@
 """Domain layer. No I/O, no provider names, no framework imports."""
 
+from .gate import (
+    GateContext,
+    RULES_VERSION,
+    has_numbered_gap,
+    mentions_figure,
+    near_duplicate_fingerprint,
+    refusal_counts,
+    run_gate,
+)
 from .enums import (
     Capability,
     MarkKind,
@@ -71,6 +80,13 @@ from .selector import Selector
 from .state import InvalidTransition, assert_transition, can_transition, next_states
 
 __all__ = [
+    "GateContext",
+    "RULES_VERSION",
+    "has_numbered_gap",
+    "mentions_figure",
+    "near_duplicate_fingerprint",
+    "refusal_counts",
+    "run_gate",
     "AnswerVerifier",
     "AnswerVerdict",
     "CatalogReader",

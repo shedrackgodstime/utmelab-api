@@ -713,9 +713,9 @@ are different evidence.
 
 ### 9.4 The order that makes sense
 
-1. **The gate.** It is the main product, it is specified in 4.2, and the
-   model for its answer already exists. Everything after it assumes the gate
-   can say no.
+1. **The gate.** Built. Strict, machine only, 100% of rows, with the refusal
+   counts. Verified against the live bank: 2,178 of 2,243 live rows pass, and
+   the counts per rule are pinned by a live contract test.
 2. **The passage as its own object**, with a `passages` table in the bank and
    a `passage_id` on the question.
 3. **The key rename to `inline`,** which makes a staged payload matchable by
