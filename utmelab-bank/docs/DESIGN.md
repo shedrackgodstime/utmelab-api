@@ -259,6 +259,18 @@ question that references it by id. Nesting the passage inside the question is
 wrong on both counts. It forbids two questions sharing one passage, which
 production does 28 times, and it has nowhere to put `kind`.
 
+The bank's own shape, built:
+
+| | The passage | The reference |
+|---|---|---|
+| Where it lives | the `passages` table, keyed by id | `content.passage_id` on the question |
+| What it carries | id, exam, subject, year, kind, title, author, text | the id, and nothing else |
+| Who shares it | any number of questions | |
+
+The kind is a closed list of production's four: `Comprehension`, `Cloze`,
+`ReadingText`, `Data`. A kind nobody can read is not a kind, so a new one is
+a deliberate change.
+
 Titles repeat. `Passage C` names two different production rows, one
 Comprehension and one Cloze. The id is the only key.
 
@@ -725,8 +737,9 @@ are different evidence.
 1. **The gate.** Built. Strict, machine only, 100% of rows, with the refusal
    counts. Verified against the live bank: 2,178 of 2,243 live rows pass, and
    the counts per rule are pinned by a live contract test.
-2. **The passage as its own object**, with a `passages` table in the bank and
-   a `passage_id` on the question.
+2. **The passage as its own object.** Built. A `passages` table in the
+   bank, a `passage_id` on the question, and the kind as a closed list of
+   production's four.
 3. **The key rename to `inline`,** which makes a staged payload matchable by
    the live tooling.
 4. **Dedupe**, on the exact hash and the near-duplicate fingerprint, against

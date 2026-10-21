@@ -11,7 +11,12 @@ from typing import Any
 
 import pytest
 
-from utmelab_pipeline.domain.enums import ImagePosition, MarkKind, Severity
+from utmelab_pipeline.domain.enums import (
+    ImagePosition,
+    MarkKind,
+    PassageKind,
+    Severity,
+)
 from utmelab_pipeline.domain.gate import (
     RULES_VERSION,
     GateContext,
@@ -34,6 +39,7 @@ from utmelab_pipeline.domain.models import (
     Issue,
     Mark,
     Option,
+    Passage,
     RichText,
 )
 
@@ -500,6 +506,71 @@ def test_a_placement_for_another_subject_fails() -> None:
 
     assert verdict.passed is False
     assert "placement_scope_mismatch" in codes(verdict)
+
+
+# ── the passage ─────────────────────────────────────────────────────────────
+
+
+def make_passage(**overrides: object) -> Passage:
+    data: dict[str, object] = {
+        "id": "psg_1",
+        "exam": "JAMB",
+        "subject": "mathematics",
+        "year": 2025,
+        "kind": PassageKind.COMPREHENSION,
+        "title": "Passage A",
+        "text": RichText(text="Adura had learned to read the room."),
+    }
+    data.update(overrides)
+    return Passage.model_validate(data)
+
+
+def test_a_passage_the_bank_does_not_hold_fails() -> None:
+    content = make_content(passage_id="psg_1")
+
+    verdict = gate(content, known_passage_ids=frozenset({"psg_other"}))
+
+    assert verdict.passed is False
+    assert "passage_not_found" in codes(verdict)
+
+
+def test_a_passage_the_bank_holds_passes() -> None:
+    content = make_content(passage_id="psg_1")
+
+    verdict = gate(content, known_passage_ids=frozenset({"psg_1"}))
+
+    assert verdict.passed is True
+
+
+def test_a_passage_from_another_subject_fails() -> None:
+    """Production holds the subject rule without exception."""
+    content = make_content(passage_id="psg_1")
+    passage = make_passage(subject="use-of-english")
+
+    verdict = gate(content, passage=passage, known_passage_ids=frozenset({"psg_1"}))
+
+    assert verdict.passed is False
+    assert "passage_subject_mismatch" in codes(verdict)
+
+
+def test_a_passage_under_another_id_fails() -> None:
+    content = make_content(passage_id="psg_1")
+    passage = make_passage(id="psg_2")
+
+    verdict = gate(content, passage=passage)
+
+    assert verdict.passed is False
+    assert "passage_id_mismatch" in codes(verdict)
+
+
+def test_the_passage_text_is_judged_too() -> None:
+    content = make_content(passage_id="psg_1")
+    passage = make_passage(text=RichText(text="What is 2 &amp; 2?"))
+
+    verdict = gate(content, passage=passage)
+
+    assert verdict.passed is False
+    assert "html_in_text" in codes(verdict)
 
 
 # ── the counts ──────────────────────────────────────────────────────────────

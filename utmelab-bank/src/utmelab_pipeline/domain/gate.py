@@ -45,6 +45,7 @@ from .models.common import (
     GateVerdict,
     Issue,
     Mark,
+    Passage,
 )
 
 #: Bumped when a rule changes meaning, so a verdict can be traced to the
@@ -100,6 +101,9 @@ class GateContext:
     year: Optional[int] = None
     placement: Optional[CatalogRef] = None
     catalog: Optional[CatalogSnapshot] = None
+    #: The passage this row carries, if it brings one. The content names a
+    #: passage by id, and the id may point at a passage already held.
+    passage: Optional[Passage] = None
     known_ids: frozenset[str] = frozenset()
     known_hashes: frozenset[str] = frozenset()
     known_near_duplicates: frozenset[str] = frozenset()
@@ -472,8 +476,15 @@ def _check_placement(context: GateContext, issues: list[Issue]) -> None:
 
 
 def _check_passage(context: GateContext, issues: list[Issue]) -> None:
+    """The passage the question names has to be there, and has to belong to
+    the same subject.
+
+    Production holds the subject rule without exception, so a question that
+    names a passage from another subject is a defect, not a judgement.
+    """
     content = context.content
-    if content.passage is None:
+    passage_id = content.passage_id
+    if passage_id is None:
         if has_numbered_gap(content.stem.text):
             issues.append(
                 _judgement(
@@ -484,18 +495,39 @@ def _check_passage(context: GateContext, issues: list[Issue]) -> None:
                 )
             )
         return
-    if context.known_passage_ids and content.passage.id not in context.known_passage_ids:
+
+    passage = context.passage
+    if passage is None:
+        if context.known_passage_ids and passage_id not in context.known_passage_ids:
+            issues.append(
+                _error(
+                    "passage_not_found",
+                    f"the passage {passage_id!r} does not exist",
+                    "passage",
+                )
+            )
+        return
+
+    if passage.id != passage_id:
         issues.append(
             _error(
-                "passage_not_found",
-                f"the passage {content.passage.id!r} does not exist",
+                "passage_id_mismatch",
+                f"the question names passage {passage_id!r} but the item "
+                f"carries {passage.id!r}",
                 "passage",
             )
         )
-    check_marks(
-        content.passage.text.text, content.passage.text.marks, "passage", issues
-    )
-    check_plain_text(content.passage.text.text, "passage", issues)
+    if passage.subject != context.subject or passage.exam != context.exam:
+        issues.append(
+            _error(
+                "passage_subject_mismatch",
+                f"the passage is {passage.subject!r} for {passage.exam!r}, but "
+                f"the question is {context.subject!r} for {context.exam!r}",
+                "passage",
+            )
+        )
+    check_marks(passage.text.text, passage.text.marks, "passage", issues)
+    check_plain_text(passage.text.text, "passage", issues)
 
 
 def _check_duplicates(context: GateContext, issues: list[Issue]) -> None:

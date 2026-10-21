@@ -8,10 +8,12 @@ import pytest
 
 from utmelab_pipeline.adapters.store import StagingStore
 from utmelab_pipeline.domain.enums import State
+from utmelab_pipeline.domain.enums import PassageKind
 from utmelab_pipeline.domain.models import (
     Content,
     Hashes,
     Option,
+    Passage,
     Provenance,
     RichText,
     Scope,
@@ -33,6 +35,7 @@ class FakeClient:
 
     def __init__(self) -> None:
         self.rows: dict[str, tuple[Any, ...]] = {}
+        self.passages: dict[str, tuple[Any, ...]] = {}
         self.statements: list[str] = []
 
     async def execute(
@@ -40,6 +43,14 @@ class FakeClient:
     ) -> FakeResult:
         self.statements.append(statement)
         values = args or []
+        if "INSERT OR REPLACE INTO passages" in statement:
+            self.passages[values[0]] = tuple(values)
+            return FakeResult([])
+        if "SELECT id FROM passages" in statement:
+            return FakeResult([(key,) for key in self.passages])
+        if "FROM passages WHERE id" in statement:
+            row = self.passages.get(values[0])
+            return FakeResult([row] if row else [])
         if "INSERT OR REPLACE" in statement:
             self.rows[values[0]] = tuple(values)
             return FakeResult([])
@@ -177,3 +188,89 @@ async def test_list_by_state_returns_only_that_state() -> None:
     await store.transition(item.id, "catalogued", "enriched")
     rows = await store.list_by_state("enriched")
     assert [row.id for row in rows] == [item.id]
+
+
+def make_passage() -> Passage:
+    return Passage(
+        id="psg_1",
+        exam="JAMB",
+        subject="use-of-english",
+        year=2025,
+        kind=PassageKind.COMPREHENSION,
+        title="Passage A",
+        text=RichText(text="Adura had learned to read the room."),
+    )
+
+
+async def test_a_passage_is_written_to_its_own_table() -> None:
+    client = FakeClient()
+    store = StagingStore(client)
+    await store.prepare()
+
+    item = make_item().model_copy(
+        update={
+            "content": make_item().content.model_copy(update={"passage_id": "psg_1"}),
+            "passage": make_passage(),
+        }
+    )
+    await store.save(item)
+
+    assert "psg_1" in client.passages
+    assert await store.passage_ids() == frozenset({"psg_1"})
+
+
+async def test_a_passage_round_trips_by_id() -> None:
+    client = FakeClient()
+    store = StagingStore(client)
+    await store.prepare()
+
+    item = make_item().model_copy(
+        update={
+            "content": make_item().content.model_copy(update={"passage_id": "psg_1"}),
+            "passage": make_passage(),
+        }
+    )
+    await store.save(item)
+
+    back = await store.load_passage("psg_1")
+
+    assert back is not None
+    assert back.id == "psg_1"
+    assert back.kind is PassageKind.COMPREHENSION
+    assert back.subject == "use-of-english"
+    assert back.text.text == "Adura had learned to read the room."
+
+
+async def test_two_questions_share_one_passage_row() -> None:
+    """A passage is shared, so it is one row keyed by its id."""
+    client = FakeClient()
+    store = StagingStore(client)
+    await store.prepare()
+
+    first = make_item()
+    second = first.model_copy(
+        update={
+            "id": "live:q2",
+            "provenance": first.provenance.model_copy(update={"source_item_id": "q2"}),
+        }
+    )
+    for item in (first, second):
+        await store.save(
+            item.model_copy(
+                update={
+                    "content": item.content.model_copy(update={"passage_id": "psg_1"}),
+                    "passage": make_passage(),
+                }
+            )
+        )
+
+    assert len(client.passages) == 1
+    assert await store.passage_ids() == frozenset({"psg_1"})
+
+
+async def test_a_missing_passage_reads_as_none() -> None:
+    client = FakeClient()
+    store = StagingStore(client)
+    await store.prepare()
+
+    assert await store.load_passage("nope") is None

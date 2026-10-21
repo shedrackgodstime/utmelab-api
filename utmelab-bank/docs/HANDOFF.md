@@ -500,6 +500,35 @@ fires on the word "table" in a stress question, which is not a figure. It
 still fires, because a rule that guessed would let a real missing figure
 through, but it fires as a judgement, so a person clears it in seconds.
 
+### 5.2 The passage as its own object
+
+Built. The plan's second item.
+
+**The shape is production's, column for column.** `Passage` carries `id`,
+`exam`, `subject`, `year`, `kind`, `title`, `author` and `text`, with the text
+a `RichText` like everything else. The kind is a closed enum of production's
+four: `Comprehension`, `Cloze`, `ReadingText`, `Data`.
+
+**A question names a passage by id.** `Content.passage_id` is a reference, and
+`StagingItem.passage` carries the passage the item introduces. The model
+refuses an item whose content names one passage and carries another.
+
+**The bank owns a `passages` table.** It is the second table, beside
+`staging_items`, and it is keyed by the passage id, so two questions that
+share a passage share one row. Production does exactly that: 8 passages, 28
+questions. `StagingStore.passage_ids()` is the gate's known set, and
+`StagingStore.load_passage()` reads one by id.
+
+**The table grew, so there is a migration.** The live bank database already
+had a `staging_items` table without the `passage` column, and SQLite has no
+"add column if not exists". `schema.MIGRATIONS` names the column and the
+statement, and `ensure_schema` checks the column list first. The migration
+was run against the live bank database and the column is there.
+
+**It was verified against the live bank database.** A passage was written,
+the staging row was read back, the passage was read by id, and the rows were
+cleaned up.
+
 
 ```
 config.py                       settings, read from utmelab-bank/.env
@@ -525,7 +554,7 @@ adapters/
   media/ingest.py               fetch, validate, store
   media/describe.py             describe the assets
   media/consensus.py            reconcile several describers
-  store/schema.py               the one table
+  store/schema.py               the bank's tables and their migrations
   store/staging.py              save, load, transition, list by state
 ```
 
@@ -537,6 +566,7 @@ test_models.py                  model validation
 test_state_machine.py           transitions, the content hash
 test_hashing.py                 canonical json
 test_gate.py                     the gate rules
+test_passage.py                  the passage as its own object
 test_ports.py                   the port contracts
 test_selector.py                the selector
 test_config.py                  the settings
@@ -557,7 +587,7 @@ live/test_gate_live.py             the gate must see what the live bank shows,
                                    skipped unless UTMELAB_LIVE=1
 ```
 
-**182 tests pass, 3 skipped. mypy strict is clean across `src` and `tests`.**
+**197 tests pass, 3 skipped. mypy strict is clean across `src` and `tests`.**
 
 The three skipped are the live tests: the OpenCode smoke test, the
 production fingerprint contract and the gate contract. All run with

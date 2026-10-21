@@ -107,6 +107,6 @@ def _evidence_present(*, item_text: str, item: StagingItem) -> bool:
     haystacks = [item.content.stem.text]
     for option in item.content.options:
         haystacks.append(option.text.text)
-    if item.content.passage is not None:
-        haystacks.append(item.content.passage.text.text)
+    if item.passage is not None:
+        haystacks.append(item.passage.text.text)
     return any(needle in hay for hay in haystacks)

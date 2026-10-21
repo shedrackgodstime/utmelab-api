@@ -55,6 +55,25 @@ class ImagePosition(StrEnum):
     BELOW = "below"
 
 
+class PassageKind(StrEnum):
+    """How a passage is to be read.
+
+    The values are production's, spelled exactly as production spells them,
+    because the kind is what tells a consumer how to read the passage. A
+    cloze carries its gaps in the plain text. A data passage is numbers. A
+    comprehension is a story or an article.
+
+    The list is closed on purpose. A kind nobody can read is not a kind, and
+    a new one is a one line change here and a new decision about what it
+    means.
+    """
+
+    COMPREHENSION = "Comprehension"
+    CLOZE = "Cloze"
+    READING_TEXT = "ReadingText"
+    DATA = "Data"
+
+
 class Verdict(StrEnum):
     PASS = "pass"
     FAIL = "fail"

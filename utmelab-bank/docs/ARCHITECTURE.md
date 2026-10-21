@@ -1,8 +1,35 @@
 # UTME Lab Content Pipeline
 
-**Status:** canonical architecture and decision record.
+**Status:** the original brief. **Superseded in part.**
 **Date:** 20 October 2026.
-**Scope:** the Python content factory that acquires, validates, enriches, and promotes exam content for the serving API.
+**Scope:** the Python content factory that acquires, validates, enriches, and hands over exam content for the serving API.
+
+**Read these first, in this order.**
+
+| Document | What it is |
+|---|---|
+| `DECISIONS.md` | The sealed decisions. Where this brief and that file disagree, that file wins. |
+| `DESIGN.md` | How the bank is supposed to be, derived from the live production database and the live tooling. |
+| `HANDOFF.md` | What was measured, what was built, and what is wrong. |
+
+Three things in this brief are settled differently now, and the reasons are
+worth reading before the code.
+
+**Promotion is out of scope.** This brief treats the bundle as something the
+pipeline promotes. It is not. The bank stops at a ready bundle, and placing
+it is separate work.
+
+**The `content_hash` rule below is wrong and has been corrected.** The
+production fingerprint does not cover the source identity, the catalog
+reference, the passage text or the media. It covers the stem, the option ids
+and texts, the answer, the marks, and the explanation. That is the
+production algorithm, and the bank's is now byte for byte the same. The
+corrected rule is in `DESIGN.md` section 2.7.
+
+**The passage is its own object, not a fragment inside the question.** This
+brief nests it. Production has a `passages` table, and 28 questions share 8
+passages, so a nested passage cannot be shared and has nowhere to put its
+kind.
 
 This document exists to stop the same failure from happening a fourth time. The failure was never Python. It was that the objective lived in prose and in the author's head, while each attempt used a different vocabulary, a different scope, and a different definition of done. Models filled the gaps with confident invention. This file closes the gaps.
 
@@ -78,7 +105,7 @@ The words below are fixed. Future code, tests, and prompts use them with these m
 | **Fact** | A source or reality result that has passed validation. |
 | **Task** | One independently runnable unit that advances a bundle by one step. |
 | **Goal** | A named sequence of tasks. Composition only. No task calls another. |
-| **Bundle** | The unit of content and evidence that moves through the factory and is promoted as one thing. |
+| **Bundle** | The unit of content and evidence that moves through the factory and is handed over as one thing. |
 | **Catalog snapshot** | A versioned read of the production exam, subject, topic, and subtopic catalog. |
 | **Consensus** | A core service that reconciles several proposals for the same capability. |
 | **Lane** | A storage area that reflects lifecycle state. A task with a wrong selector cannot reach a later lane. |
@@ -264,7 +291,7 @@ pipeline media   --where 'state=catalogued and has figures'
 pipeline describe --where 'state=media_ready'
 pipeline enrich  --where 'state=described or state=catalogued'
 pipeline verify  --where 'state=enriched'
-pipeline promote --where 'state=verified'
+pipeline ready   --where 'state=verified'   # hands the bundle over
 ```
 
 The state machine is defined once and validates that no transition is invented. A task declares the state it consumes and the state it produces. A selector is data and cannot cross a lane boundary.
@@ -273,7 +300,7 @@ The state machine is defined once and validates that no transition is invented. 
 
 ## 10. The bundle
 
-The serving API does not read a row. It reads a bundle. The bundle is the unit that moves, is verified, and is promoted.
+The serving API does not read a row. It reads a bundle. The bundle is the unit that moves, is verified, and is handed over.
 
 ```text
 Bundle
@@ -282,7 +309,10 @@ Bundle
   catalog:
     exam, subject, year, section, topic_id, subtopic_id, catalog_version
   content:
-    stem, options, answer, inline marks, passage, source explanation
+    stem, options, answer, inline marks, source explanation
+  passage:
+    id, exam, subject, year, kind, title, author, text
+    a question names a passage by id, never by nesting it
   media:
     validated assets, each addressed by its sha256
   evidence:
@@ -296,10 +326,16 @@ Bundle
 Rules:
 
 - `payload_hash` covers the raw source payload. It detects upstream drift.
-- `content_hash` covers the facts only: source identity, catalog reference, stem, options, answer, marks, passage text, and media content hashes. It is deterministic.
+- `content_hash` is the production fingerprint, and it covers the facts the
+  served row is made of: the stem text, each option's id and text, the
+  answer, the marks on the stem and the options, and the explanation's key
+  point, body and trap. It does **not** cover the source identity, the
+  catalog reference, the passage text, the media, the section or the
+  difficulty. The rule above, which claimed otherwise, was wrong and is
+  corrected here.
 - `bundle_hash` covers `content_hash` plus the catalog version. It excludes model proposals and timestamps, so the same facts and catalog snapshot produce the same hash.
 - Evidence is stored with the bundle and referenced by the content hash. Evidence never changes the bundle hash.
-- One transaction promotes the bundle. It never writes a question without its passage, media link, and deciding verification.
+- A bundle is handed over whole. It never carries a question without its passage link, media link, and deciding verification.
 - Provenance is carried, not replaced by a generic source label.
 - The catalog version is stored so a later catalog change can be detected.
 
@@ -436,7 +472,7 @@ Each layer has one kind of proof.
 - **Transport tests.** `respx` intercepts httpx at the transport. The real request is built and can be asserted. Retries are tested with a scripted failure then success.
 - **Property tests.** Image sniffing, offset snapping, hash stability, and bundle round-trips with `hypothesis`.
 - **Live smoke tests.** Small, explicit, run separately. They catch upstream drift and outages. They never run in the fast suite.
-- **Acceptance tests.** One per state transition, plus one that applies the serving predicate to a promoted bundle and expects true. A green unit suite with a red serving predicate is not a pass.
+- **Acceptance tests.** One per state transition, plus one that applies the serving predicate to a ready bundle and expects true. A green unit suite with a red serving predicate is not a pass.
 
 Every task must be runnable alone in a test. If a task needs the whole pipeline, its boundary is wrong.
 
@@ -473,8 +509,8 @@ The architecture is done when these are true:
 - Every task runs alone from the CLI against a selector.
 - Every boundary fails closed with a named error and a reason.
 - The same input and the same catalog snapshot produce the same bundle hash.
-- Promotion writes the whole bundle in one transaction.
-- The serving predicate accepts every promoted bundle, and the pipeline refuses to mark a bundle ready when it would not.
+- A bundle is handed over whole, never a question on its own.
+- The serving predicate accepts every ready bundle, and the pipeline refuses to mark a bundle ready when it would not.
 - A model cannot write to the store, choose a pipeline step, or claim a human verification.
 - The fast test suite needs no network and no live database.
 
@@ -496,7 +532,7 @@ These are the remaining choices that need a human answer before or during the fi
 
 ## 19. The conclusion
 
-The system succeeds when it is boring to read. The core sequence should look like a table of contents: acquire, adapt, gate, dedupe, catalogue, describe, enrich, verify, promote. All the mess lives behind ports.
+The system succeeds when it is boring to read. The core sequence should look like a table of contents: acquire, adapt, gate, dedupe, catalogue, describe, enrich, verify, hand over. All the mess lives behind ports.
 
 Sources supply facts. Providers supply proposals. The core supplies certainty. The bundle carries the evidence, and the trust policy decides what may be served.
 

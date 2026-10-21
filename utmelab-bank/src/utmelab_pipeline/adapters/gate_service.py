@@ -77,6 +77,7 @@ class GateService:
             year=scope.year,
             placement=placement,
             catalog=self._catalog,
+            passage=item.passage,
             known_ids=self._known_ids,
             known_hashes=self._known_hashes,
             known_near_duplicates=self._known_near_duplicates,

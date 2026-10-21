@@ -9,7 +9,12 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, cast
 
-from utmelab_pipeline.domain.enums import ImagePosition, MarkKind, Severity
+from utmelab_pipeline.domain.enums import (
+    ImagePosition,
+    MarkKind,
+    PassageKind,
+    Severity,
+)
 from utmelab_pipeline.domain.hashing import payload_hash
 from utmelab_pipeline.domain.models.common import (
     CatalogRef,
@@ -135,12 +140,15 @@ class FixtureSource:
             raise ValueError("payload media must be a list")
         media_refs = tuple(self._media_ref(raw) for raw in raw_media)
 
+        passage = self._passage(payload.get("passage"), item.scope)
+        passage_id = passage.id if passage is not None else None
+
         content = Content(
             stem=self._rich_text(payload.get("stem"), payload.get("stem_marks")),
             options=options,
             answer=answer,
             marks=float(raw_marks),
-            passage=self._passage(payload.get("passage")),
+            passage_id=passage_id,
             source_explanation=source_explanation,
             section=item.scope.section,
         )
@@ -167,6 +175,7 @@ class FixtureSource:
                 scope=item.scope,
             ),
             content=content,
+            passage=passage,
             media_refs=tuple(self._media_ref(raw) for raw in payload.get("media", [])),
             catalog=CatalogRef(
                 exam=item.scope.exam,
@@ -255,7 +264,14 @@ class FixtureSource:
         from utmelab_pipeline.domain.models.common import Option, RichText
         return Option(id=option_id, text=self._rich_text(text, raw.get("marks")))
 
-    def _passage(self, raw: object) -> Passage | None:
+    def _passage(self, raw: object, scope: Scope) -> Passage | None:
+        """Build a passage in the production shape.
+
+        The scope supplies the exam, subject and year, so a passage cannot
+        arrive without them, and the kind comes from the source because only
+        the source knows whether the text is a story, a cloze, a reading or a
+        set of numbers.
+        """
         if raw is None:
             return None
         if not isinstance(raw, dict):
@@ -267,9 +283,18 @@ class FixtureSource:
             raise ValueError("passage needs an id and text")
         if source_item_id is not None and not isinstance(source_item_id, str):
             raise ValueError("passage source_item_id must be a string")
+        kind = raw.get("kind")
+        if not isinstance(kind, str):
+            raise ValueError("passage needs a kind")
         from utmelab_pipeline.domain.models.common import Passage, RichText
         return Passage(
             id=passage_id,
+            exam=scope.exam,
+            subject=scope.subject,
+            year=scope.year,
+            kind=PassageKind(kind),
+            title=raw.get("title") if isinstance(raw.get("title"), str) else None,
+            author=raw.get("author") if isinstance(raw.get("author"), str) else None,
             text=self._rich_text(text, raw.get("marks")),
             source_item_id=source_item_id,
         )

@@ -7,6 +7,7 @@ from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, HttpUrl, Strin
 
 from ..enums import (
     ImagePosition,
+    PassageKind,
     MarkKind,
     Severity,
     SourceCapability,
@@ -398,9 +399,23 @@ class Option(DomainModel):
 
 
 class Passage(DomainModel):
+    """A stimulus shared by many questions.
+
+    The production shape, column for column, because a passage is a row in
+    the served tables and not a fragment inside a question. Production has 8
+    of these and 28 questions point at one, so a passage that lives inside a
+    question cannot be shared and has nowhere to put its kind.
+    """
+
     id: NonEmptyStr
+    exam: NonEmptyStr
+    subject: NonEmptyStr
+    year: Year
+    kind: PassageKind
+    title: Optional[NonEmptyStr] = None
+    author: Optional[NonEmptyStr] = None
     text: "RichText"
-    source_item_id: NonEmptyStr | None = None
+    source_item_id: Optional[NonEmptyStr] = None
 
 
 class Content(DomainModel):
@@ -408,7 +423,10 @@ class Content(DomainModel):
     options: tuple["Option", ...] = Field(min_length=2, max_length=6)
     answer: NonEmptyStr
     marks: PositiveMarks
-    passage: Optional["Passage"] = None
+    #: The id of the passage this question needs, or null. A reference, not
+    #: the passage itself: production has 28 questions pointing at 8
+    #: passages, and only a reference lets two questions share one.
+    passage_id: Optional[NonEmptyStr] = None
     source_explanation: Optional["RichText"] = None
     section: NonEmptyStr | None = None
 
@@ -424,8 +442,6 @@ class Content(DomainModel):
     def rich_texts(self) -> tuple["RichText", ...]:
         texts: list["RichText"] = [self.stem]
         texts.extend(option.text for option in self.options)
-        if self.passage is not None:
-            texts.append(self.passage.text)
         if self.source_explanation is not None:
             texts.append(self.source_explanation)
         return tuple(texts)
@@ -448,6 +464,9 @@ class StagingItem(DomainModel):
     id: NonEmptyStr  # same as provenance.external_key
     provenance: "Provenance"
     content: "Content"
+    #: The passage this item introduces, if it brings one. The content names
+    #: it by id, and several questions can name the same one.
+    passage: Optional["Passage"] = None
     media_refs: tuple["MediaRef", ...] = ()
     media_assets: tuple["MediaAsset", ...] = ()
     evidence: "Evidence" = Field(default_factory=lambda: Evidence())
@@ -458,6 +477,23 @@ class StagingItem(DomainModel):
     updated_at: AwareDatetime
     attempts: int = 0
     error: NonEmptyStr | None = None
+
+    @model_validator(mode="after")
+    def _check(self) -> "StagingItem":
+        """The passage the content names must be the passage the item carries.
+
+        A reference to a passage the item does not carry is fine, because the
+        passage may already be held. A reference to a passage the item does
+        carry under a different id is not.
+        """
+        if self.passage is not None and self.content.passage_id is not None:
+            if self.passage.id != self.content.passage_id:
+                raise ValueError(
+                    "the content names passage "
+                    f"{self.content.passage_id!r} but the item carries "
+                    f"{self.passage.id!r}"
+                )
+        return self
 
     def transition_to(self, target: "State", *, error: NonEmptyStr | None = None) -> "StagingItem":
         """Move to a new state. The state machine refuses an invented move.

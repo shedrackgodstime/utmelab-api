@@ -7,7 +7,7 @@ from datetime import UTC, datetime
 from typing import Any, Optional
 
 from utmelab_pipeline.domain.enums import State
-from utmelab_pipeline.domain.models import StagingItem
+from utmelab_pipeline.domain.models import Passage, StagingItem
 from utmelab_pipeline.domain.state import InvalidTransition, can_transition
 
 from .schema import ensure_schema
@@ -24,15 +24,22 @@ class StagingStore:
         await ensure_schema(self._client)
 
     async def save(self, item: StagingItem) -> None:
-        """Write a staging row, replacing any earlier version of it."""
+        """Write a staging row, replacing any earlier version of it.
+
+        A passage the item carries is written to the passages table as well,
+        and written by id, so two questions that share one passage share one
+        row.
+        """
+        if item.passage is not None:
+            await self._save_passage(item.passage)
         await self._client.execute(
             """
             INSERT OR REPLACE INTO staging_items (
                 id, state, exam, subject, year, source, source_item_id,
                 source_url, payload_hash, content_hash, bundle_hash,
-                content, catalog, media, evidence, attempts, error,
+                content, passage, catalog, media, evidence, attempts, error,
                 created_at, updated_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             [
                 item.id,
@@ -47,6 +54,7 @@ class StagingStore:
                 item.hashes.content_hash if item.hashes else "",
                 item.hashes.bundle_hash if item.hashes else "",
                 item.content.model_dump_json(),
+                item.passage.model_dump_json() if item.passage else None,
                 item.catalog.model_dump_json() if item.catalog else None,
                 json.dumps([asset.model_dump(mode="json") for asset in item.media_assets]),
                 json.dumps(_evidence(item)),
@@ -57,11 +65,71 @@ class StagingStore:
             ],
         )
 
+    async def _save_passage(self, passage: Passage) -> None:
+        """Write one passage, keyed by its id so a shared passage is one row."""
+        await self._client.execute(
+            """
+            INSERT OR REPLACE INTO passages (
+                id, exam, subject, year, kind, title, author, text, inline,
+                source_item_id
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            [
+                passage.id,
+                passage.exam,
+                passage.subject,
+                passage.year,
+                passage.kind.value,
+                passage.title,
+                passage.author,
+                passage.text.text,
+                json.dumps(
+                    [mark.model_dump(mode="json") for mark in passage.text.marks]
+                ),
+                passage.source_item_id,
+            ],
+        )
+
+    async def passage_ids(self) -> frozenset[str]:
+        """The ids of every passage the bank holds.
+
+        This is the gate's known set, so a question naming a passage the bank
+        has never seen is refused rather than trusted.
+        """
+        result = await self._client.execute("SELECT id FROM passages")
+        return frozenset(str(row[0]) for row in result.rows)
+
+    async def load_passage(self, passage_id: str) -> Optional[Passage]:
+        """Read one passage by id."""
+        result = await self._client.execute(
+            "SELECT id, exam, subject, year, kind, title, author, text, inline "
+            "FROM passages WHERE id = ?",
+            [passage_id],
+        )
+        if not result.rows:
+            return None
+        row = result.rows[0]
+        from utmelab_pipeline.domain.enums import PassageKind
+        from utmelab_pipeline.domain.models import RichText
+
+        return Passage(
+            id=str(row[0]),
+            exam=str(row[1]),
+            subject=str(row[2]),
+            year=int(row[3]),
+            kind=PassageKind(str(row[4])),
+            title=str(row[5]) if row[5] is not None else None,
+            author=str(row[6]) if row[6] is not None else None,
+            text=RichText.model_validate(
+                {"text": str(row[7]), "marks": json.loads(row[8] or "[]")}
+            ),
+        )
+
     async def load(self, item_id: str) -> Optional[StagingItem]:
         """Read one staging row."""
         result = await self._client.execute(
             "SELECT id, state, exam, subject, year, source, source_item_id, "
-            "source_url, payload_hash, content_hash, bundle_hash, content, "
+            "source_url, payload_hash, content_hash, bundle_hash, content, passage, "
             "catalog, media, evidence, attempts, error, created_at, updated_at "
             "FROM staging_items WHERE id = ?",
             [item_id],
@@ -104,7 +172,7 @@ class StagingStore:
         """Read the rows in one state."""
         result = await self._client.execute(
             "SELECT id, state, exam, subject, year, source, source_item_id, "
-            "source_url, payload_hash, content_hash, bundle_hash, content, "
+            "source_url, payload_hash, content_hash, bundle_hash, content, passage, "
             "catalog, media, evidence, attempts, error, created_at, updated_at "
             "FROM staging_items WHERE state = ? ORDER BY created_at LIMIT ?",
             [state, limit],
@@ -142,11 +210,12 @@ def _row_to_item(row: tuple[Any, ...]) -> StagingItem:
         Evidence,
         Hashes,
         MediaAsset,
+        Passage,
         Provenance,
         Scope,
         Verification,
     )
-    from utmelab_pipeline.domain.enums import State
+    from utmelab_pipeline.domain.enums import PassageKind, State
 
     (
         item_id,
@@ -161,6 +230,7 @@ def _row_to_item(row: tuple[Any, ...]) -> StagingItem:
         content_hash,
         bundle_hash,
         content,
+        passage,
         catalog,
         media,
         evidence,
@@ -182,6 +252,7 @@ def _row_to_item(row: tuple[Any, ...]) -> StagingItem:
             scope=Scope(exam=exam, subject=subject, year=year),
         ),
         content=Content.model_validate_json(content),
+        passage=Passage.model_validate_json(passage) if passage else None,
         media_assets=tuple(
             MediaAsset.model_validate(asset) for asset in json.loads(media)
         ),
