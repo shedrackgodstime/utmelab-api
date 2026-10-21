@@ -157,6 +157,25 @@ def test_the_media_branch_describes_the_asset() -> None:
     assert result.evidence.image_descriptions[0].asset_id == result.media_assets[0].asset_id
 
 
+def test_a_row_that_crashed_at_media_ready_is_resumed() -> None:
+    second = MockProvider(producer=Producer(provider="mock", model="mock-v2"))
+    service = MediaService(
+        ingestor(FakeMediaStore()),
+        DescribeImageConsensus((MockProvider(), second)),
+    )
+    captured = asyncio.run(service.apply(make_item(), capture=True))
+    # Reconstruct the state a crash between the save and the description
+    # would leave behind: the bytes and the state, no description.
+    crashed = captured.model_copy(
+        update={"state": State.MEDIA_READY, "evidence": make_item().evidence}
+    )
+
+    result = asyncio.run(service.apply(crashed))
+
+    assert result.state is State.DESCRIBED
+    assert len(result.evidence.image_descriptions) == 1
+
+
 def test_a_row_with_no_media_skips_the_branch() -> None:
     item = make_item(with_media=False)
     second = MockProvider(producer=Producer(provider="mock", model="mock-v2"))

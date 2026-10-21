@@ -10,6 +10,7 @@ from utmelab_bank.domain.enums import PassageKind, State
 from utmelab_bank.domain.models import (
     Content,
     Hashes,
+    MediaRef,
     Option,
     Passage,
     Provenance,
@@ -59,6 +60,17 @@ class FakeClient:
             state, limit = values
             found = [r for r in self.rows.values() if r[1] == state][:limit]
             return FakeResult(found)
+        if "WHERE state IN" in statement:
+            limit = values[-1]
+            states = values[:-1]
+            found = [r for r in self.rows.values() if r[1] in states][:limit]
+            return FakeResult(found)
+        if "GROUP BY state" in statement:
+            counts: dict[str, int] = {}
+            for row in self.rows.values():
+                state = str(row[1])
+                counts[state] = counts.get(state, 0) + 1
+            return FakeResult(list(counts.items()))
         if "SELECT id, state" in statement:
             key = values[0]
             row = self.rows.get(key)
@@ -70,11 +82,15 @@ class FakeClient:
         return None
 
 
-def make_item(state: State = State.CATALOGUED) -> StagingItem:
+def make_item(
+    state: State = State.CATALOGUED,
+    *,
+    item_id: str = "q1",
+) -> StagingItem:
     provenance = Provenance(
         source="live",
-        source_url="https://example.com/q1",
-        source_item_id="q1",
+        source_url=f"https://example.com/{item_id}",
+        source_item_id=item_id,
         fetched_at=NOW,
         payload_hash="b" * 64,
         source_version="1",
@@ -193,6 +209,50 @@ async def test_list_by_state_returns_only_that_state() -> None:
     await store.transition(item.id, "catalogued", "enriched")
     rows = await store.list_by_state("enriched")
     assert [row.id for row in rows] == [item.id]
+
+
+async def test_list_by_states_spans_states_and_counts_them() -> None:
+    client = FakeClient()
+    store = StagingStore(client)
+    await store.prepare()
+    catalogued = make_item()
+    enriched = make_item(State.ENRICHED, item_id="q2")
+    await store.save(catalogued)
+    await store.save(enriched)
+
+    rows = await store.list_by_states(("catalogued", "enriched"))
+    assert {row.id for row in rows} == {catalogued.id, enriched.id}
+    assert await store.counts_by_state() == {"catalogued": 1, "enriched": 1}
+
+
+async def test_section_source_version_and_media_refs_round_trip() -> None:
+    client = FakeClient()
+    store = StagingStore(client)
+    await store.prepare()
+    item = make_item()
+    ref = MediaRef(
+        key="figure",
+        source_url="https://example.com/figure.png",
+        required=True,
+    )
+    item = item.model_copy(
+        update={
+            "provenance": item.provenance.model_copy(
+                update={
+                    "scope": Scope(exam="JAMB", subject="biology", year=2024, section="A"),
+                    "source_version": "2.3.4",
+                }
+            ),
+            "media_refs": (ref,),
+        }
+    )
+    await store.save(item)
+
+    back = await store.load(item.id)
+    assert back is not None
+    assert back.provenance.scope.section == "A"
+    assert back.provenance.source_version == "2.3.4"
+    assert back.media_refs == (ref,)
 
 
 def make_passage() -> Passage:

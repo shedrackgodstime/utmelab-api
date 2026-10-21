@@ -38,13 +38,23 @@ class MediaService:
 
         ``capture`` is for a one-run caller and for tests. The two-run pipeline
         captures in the scrape run and calls this without it.
+
+        The method is resumable. A row that crashed after the state moved to
+        ``media_ready`` is described without asking the state machine to move
+        it there a second time. A row with no assets is left at ``catalogued``
+        so the caller can take the optional path to enrichment; a row already
+        at ``media_ready`` has no optional path, so it is described and moves
+        on even when every ref was skipped.
         """
         if capture:
             item = await self._ingestor.capture_refs(item)
-        if not item.media_assets:
-            return item
-        ready = item.transition_to(State.MEDIA_READY)
-        return await self._describer.describe(ready)
+        if item.state is State.CATALOGUED:
+            if not item.media_assets:
+                return item
+            item = item.transition_to(State.MEDIA_READY)
+        if item.state is State.MEDIA_READY:
+            return await self._describer.describe(item)
+        return item
 
 
 __all__ = ["MediaService"]

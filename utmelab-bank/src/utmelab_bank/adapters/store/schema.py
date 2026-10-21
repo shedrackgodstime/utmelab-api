@@ -57,7 +57,10 @@ SCHEMA: tuple[str, ...] = (
         attempts        INTEGER NOT NULL DEFAULT 0,
         error           TEXT,
         created_at      TEXT NOT NULL,
-        updated_at      TEXT NOT NULL
+        updated_at      TEXT NOT NULL,
+        section         TEXT,
+        source_version  TEXT NOT NULL DEFAULT '1',
+        media_refs      TEXT NOT NULL DEFAULT '[]'
     )
     """,
     """
@@ -117,6 +120,15 @@ def statements() -> tuple[str, ...]:
 #: column is missing.
 MIGRATIONS: tuple[tuple[str, str], ...] = (
     ("passage", "ALTER TABLE staging_items ADD COLUMN passage TEXT"),
+    ("section", "ALTER TABLE staging_items ADD COLUMN section TEXT"),
+    (
+        "source_version",
+        "ALTER TABLE staging_items ADD COLUMN source_version TEXT NOT NULL DEFAULT '1'",
+    ),
+    (
+        "media_refs",
+        "ALTER TABLE staging_items ADD COLUMN media_refs TEXT NOT NULL DEFAULT '[]'",
+    ),
 )
 
 

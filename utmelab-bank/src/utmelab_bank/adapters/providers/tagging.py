@@ -5,6 +5,7 @@ from __future__ import annotations
 from utmelab_bank.domain.capabilities import ExplainRequest, TagRequest
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.models import (
+    CatalogRef,
     CatalogSnapshot,
     Explanation,
     StagingItem,
@@ -31,7 +32,7 @@ class TagService:
         request = TagRequest(item=item, catalog=catalog)
         proposal = await self._tagger.tag(request)
         self._validate(proposal, catalog, item)
-        return self._apply(item, proposal)
+        return self._apply(item, proposal, catalog)
 
     def _validate(
         self,
@@ -56,21 +57,41 @@ class TagService:
         if not _evidence_present(item_text=proposal.evidence, item=item):
             raise ValueError("tag evidence does not appear in the question or passage")
 
-    def _apply(self, item: StagingItem, proposal: TagProposal) -> StagingItem:
+    def _apply(
+        self,
+        item: StagingItem,
+        proposal: TagProposal,
+        catalog: CatalogSnapshot,
+    ) -> StagingItem:
+        """Record the placement the catalog just accepted.
+
+        A source that does not read the catalog arrives with no placement.
+        The tag step is the catalogue step, so this is where the placement is
+        created, using the row's own scope and the catalog version the choice
+        was validated against. A source that already supplied one keeps its
+        shape and gets the accepted ids and the current version.
+        """
         evidence = item.evidence.model_copy(update={"tag": proposal})
-        updated = item.model_copy(
-            update={
-                "evidence": evidence,
-                "catalog": item.catalog.model_copy(
-                    update={
-                        "topic_id": proposal.topic_id,
-                        "subtopic_id": proposal.subtopic_id,
-                    }
-                )
-                if item.catalog is not None
-                else None,
-            }
-        )
+        if item.catalog is not None:
+            placement = item.catalog.model_copy(
+                update={
+                    "topic_id": proposal.topic_id,
+                    "subtopic_id": proposal.subtopic_id,
+                    "catalog_version": catalog.version,
+                }
+            )
+        else:
+            scope = item.provenance.scope
+            placement = CatalogRef(
+                exam=scope.exam,
+                subject=scope.subject,
+                year=scope.year,
+                section=scope.section,
+                topic_id=proposal.topic_id,
+                subtopic_id=proposal.subtopic_id,
+                catalog_version=catalog.version,
+            )
+        updated = item.model_copy(update={"evidence": evidence, "catalog": placement})
         return updated.transition_to(State.CATALOGUED)
 
 

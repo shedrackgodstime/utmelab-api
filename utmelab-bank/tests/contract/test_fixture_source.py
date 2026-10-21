@@ -45,6 +45,7 @@ def collect(source: Source, scope: Scope) -> list[SourceItem]:
 def test_fixture_source_matches_the_port() -> None:
     source: Source = FixtureSource(FIXTURE_DIR)
     assert isinstance(source, Source)
+    assert source.needs_catalog is True
     assert source.profile.capabilities.supports(SourceCapability.FIGURES)
     assert source.profile.capabilities.supports(SourceCapability.MARKS)
 
@@ -84,7 +85,8 @@ def test_adapt_builds_a_raw_bundle() -> None:
     raw = source.adapt(item, make_catalog())
 
     assert raw.id == "fixture:bio-2024-001"
-    assert raw.content.answer == "A"
+    assert raw.content.answer == "a"
+    assert [option.id for option in raw.content.options] == ["a", "b", "c", "d"]
     assert raw.content.stem.inline[0].url == str(raw.media_refs[0].source_url)
     assert raw.media_refs[0].key == "cell-diagram"
     assert raw.media_refs[0].required is True

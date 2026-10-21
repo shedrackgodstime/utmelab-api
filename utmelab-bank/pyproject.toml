@@ -15,6 +15,9 @@ dependencies = [
   "turso-serverless>=0.1",
 ]
 
+[project.scripts]
+utmelab-bank = "utmelab_bank.cli:main"
+
 [project.optional-dependencies]
 dev = [
   "mypy>=1.11,<2",

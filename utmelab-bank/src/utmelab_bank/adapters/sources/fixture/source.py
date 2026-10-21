@@ -33,8 +33,23 @@ from utmelab_bank.domain.models.common import (
 )
 
 
+def _normalize_option_id(value: str) -> str:
+    """The bank's option vocabulary is a to e, lower case.
+
+    A source may print its labels as A, B, C or label them in another case.
+    The gate owns the vocabulary, so the adapter is where the source's label
+    becomes the bank's label instead of asking every later step to tolerate
+    both.
+    """
+    return value.strip().lower()
+
+
 class FixtureSource:
     """Reads one JSON file per scope from a fixture directory."""
+
+    #: The recorded fixture carries topic ids, so it cannot be adapted until
+    #: the catalog says those ids exist. A live scraper will set this false.
+    needs_catalog = True
 
     def __init__(self, fixture_dir: Path | str, *, source_name: str = "fixture") -> None:
         self._fixture_dir = Path(fixture_dir)
@@ -97,8 +112,10 @@ class FixtureSource:
                 source_version=self.profile.version,
             )
 
-    def adapt(self, item: SourceItem, catalog: CatalogSnapshot) -> StagingItem:
+    def adapt(self, item: SourceItem, catalog: CatalogSnapshot | None) -> StagingItem:
         """Adapt raw source item to staging item using production catalog snapshot."""
+        if catalog is None:
+            raise ValueError("the fixture source needs a catalog to adapt a record")
         payload = item.payload
         catalog_snapshot = catalog
         topic_id = payload.get("topic_id")
@@ -118,9 +135,10 @@ class FixtureSource:
         if isinstance(raw_marks, bool) or not isinstance(raw_marks, (int, float)):
             raise ValueError("payload marks must be a number")
 
-        answer = payload.get("answer")
-        if not isinstance(answer, str):
+        raw_answer = payload.get("answer")
+        if not isinstance(raw_answer, str):
             raise ValueError("payload answer must be a string")
+        answer = _normalize_option_id(raw_answer)
 
         explanation = payload.get("explanation")
         source_explanation = (
@@ -202,13 +220,13 @@ class FixtureSource:
             option_id = raw.get("id")
             text = raw.get("text")
             if isinstance(option_id, str) and isinstance(text, str) and text.strip():
-                option_ids.append(option_id)
+                option_ids.append(_normalize_option_id(option_id))
         return option_ids
 
     def _check_answer(self, answer: object, option_ids: list[str]) -> list[str]:
         if not isinstance(answer, str) or not answer.strip():
             return ["source.answer: answer is missing"]
-        elif answer not in option_ids:
+        elif _normalize_option_id(answer) not in option_ids:
             return ["source.answer: answer is not one of the options"]
         return []
 
@@ -247,7 +265,9 @@ class FixtureSource:
             raise ValueError("option needs an id and text")
         from utmelab_bank.domain.models.common import Option
 
-        return Option(id=option_id, text=self._rich_text(text, raw.get("inline")))
+        return Option(
+            id=_normalize_option_id(option_id), text=self._rich_text(text, raw.get("inline"))
+        )
 
     def _passage(self, raw: object, scope: Scope) -> Passage | None:
         """Build a passage in the production shape.

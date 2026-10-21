@@ -43,6 +43,7 @@ class FakeSource:
         subjects={"Biology": "Biology"},
         capabilities=SourceCapabilities(),
     )
+    needs_catalog = False
 
     async def probe(self, scope: Scope) -> Coverage:
         raise NotImplementedError
@@ -50,7 +51,7 @@ class FakeSource:
     def fetch(self, scope: Scope) -> AsyncIterator[SourceItem]:
         raise NotImplementedError
 
-    def adapt(self, item: SourceItem, catalog: CatalogSnapshot) -> StagingItem:
+    def adapt(self, item: SourceItem, catalog: CatalogSnapshot | None) -> StagingItem:
         raise NotImplementedError
 
     def validate(self, item: SourceItem) -> list[str]:

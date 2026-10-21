@@ -42,8 +42,12 @@ def test_tag_service_applies_a_valid_subtopic(
 
     assert result.evidence.tag is not None
     assert result.evidence.tag.subtopic_id == "s1"
-    # The tag is the catalogue step: it places the row, and enrichment
-    # (the explanation) is the step after it.
+    # The tag is the catalogue step: it places the row, even when the source
+    # did not read the catalog, and enrichment is the step after it.
+    assert result.catalog is not None
+    assert result.catalog.topic_id == "t1"
+    assert result.catalog.subtopic_id == "s1"
+    assert result.catalog.catalog_version == "2026.1"
     assert result.state.value == "catalogued"
 
 

@@ -34,6 +34,9 @@ TRANSIENT = (
     "IncompleteRead",
     "Software caused connection abort",
     "Remote end closed connection",
+    "Temporary failure in name resolution",
+    "Name or service not known",
+    "nodename nor servname provided",
 )
 
 

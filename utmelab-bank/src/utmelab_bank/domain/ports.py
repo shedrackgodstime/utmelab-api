@@ -32,11 +32,16 @@ from .models.proposals import (
 class Source(Protocol):
     profile: SourceProfile
 
+    #: Whether ``adapt`` needs the catalog. A scraper that only knows the
+    #: exam, subject and year sets this false; the catalogue step reads the
+    #: catalog later, when the row is placed.
+    needs_catalog: bool
+
     async def probe(self, scope: Scope) -> Coverage: ...
 
     def fetch(self, scope: Scope) -> AsyncIterator[SourceItem]: ...
 
-    def adapt(self, item: SourceItem, catalog: CatalogSnapshot) -> StagingItem: ...
+    def adapt(self, item: SourceItem, catalog: CatalogSnapshot | None) -> StagingItem: ...
 
     def validate(self, item: SourceItem) -> list[str]: ...
 

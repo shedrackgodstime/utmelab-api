@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Sequence
 from datetime import datetime
 from typing import Any
 
@@ -11,6 +12,16 @@ from utmelab_bank.domain.models import Passage, StagingItem
 from utmelab_bank.domain.state import InvalidTransition, can_transition
 
 from .schema import ensure_schema
+
+#: The staging columns in the order ``_row_to_item`` reads them. Kept in one
+#: place so a new column cannot be added to the writer and forgotten by one of
+#: the readers.
+_COLUMNS = (
+    "id, state, exam, subject, year, source, source_item_id, source_url, "
+    "payload_hash, content_hash, bundle_hash, content, passage, catalog, media, "
+    "evidence, attempts, error, created_at, updated_at, section, source_version, "
+    "media_refs"
+)
 
 
 class StagingStore:
@@ -38,8 +49,8 @@ class StagingStore:
                 id, state, exam, subject, year, source, source_item_id,
                 source_url, payload_hash, content_hash, bundle_hash,
                 content, passage, catalog, media, evidence, attempts, error,
-                created_at, updated_at
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                created_at, updated_at, section, source_version, media_refs
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             [
                 item.id,
@@ -62,6 +73,9 @@ class StagingStore:
                 item.error,
                 item.created_at.isoformat(),
                 item.updated_at.isoformat(),
+                item.provenance.scope.section,
+                item.provenance.source_version,
+                json.dumps([ref.model_dump(mode="json") for ref in item.media_refs]),
             ],
         )
 
@@ -126,10 +140,7 @@ class StagingStore:
     async def load(self, item_id: str) -> StagingItem | None:
         """Read one staging row."""
         result = await self._client.execute(
-            "SELECT id, state, exam, subject, year, source, source_item_id, "
-            "source_url, payload_hash, content_hash, bundle_hash, content, passage, "
-            "catalog, media, evidence, attempts, error, created_at, updated_at "
-            "FROM staging_items WHERE id = ?",
+            f"SELECT {_COLUMNS} FROM staging_items WHERE id = ?",
             [item_id],
         )
         if not result.rows:
@@ -165,13 +176,51 @@ class StagingStore:
     ) -> tuple[StagingItem, ...]:
         """Read the rows in one state."""
         result = await self._client.execute(
-            "SELECT id, state, exam, subject, year, source, source_item_id, "
-            "source_url, payload_hash, content_hash, bundle_hash, content, passage, "
-            "catalog, media, evidence, attempts, error, created_at, updated_at "
-            "FROM staging_items WHERE state = ? ORDER BY created_at LIMIT ?",
+            f"SELECT {_COLUMNS} FROM staging_items WHERE state = ? ORDER BY created_at LIMIT ?",
             [state, limit],
         )
         return tuple(_row_to_item(row) for row in result.rows)
+
+    async def list_by_states(
+        self,
+        states: Sequence[str],
+        *,
+        limit: int = 100,
+        exam: str | None = None,
+        subject: str | None = None,
+        year: int | None = None,
+    ) -> tuple[StagingItem, ...]:
+        """Read the rows in any of several states, optionally within a scope.
+
+        Processing spans states on purpose: a media step has to pick up a row
+        that crashed at ``media_ready`` as well as one that is still
+        ``catalogued``, and the count of round trips must not grow with the
+        number of states.
+        """
+        values = tuple(states)
+        if not values:
+            return ()
+        placeholders = ", ".join("?" for _ in values)
+        clauses = [f"state IN ({placeholders})"]
+        args: list[Any] = list(values)
+        for column, value in (("exam", exam), ("subject", subject), ("year", year)):
+            if value is not None:
+                clauses.append(f"{column} = ?")
+                args.append(value)
+        args.append(limit)
+        result = await self._client.execute(
+            f"SELECT {_COLUMNS} FROM staging_items "
+            f"WHERE {' AND '.join(clauses)} ORDER BY created_at LIMIT ?",
+            args,
+        )
+        return tuple(_row_to_item(row) for row in result.rows)
+
+    async def counts_by_state(self) -> dict[str, int]:
+        """How many rows sit in each state. One query, for the status report."""
+        result = await self._client.execute(
+            "SELECT state, count(*) FROM staging_items GROUP BY state"
+        )
+        return {str(row[0]): int(row[1]) for row in result.rows}
 
 
 def _evidence(item: StagingItem) -> dict[str, Any]:
@@ -199,6 +248,7 @@ def _row_to_item(row: tuple[Any, ...]) -> StagingItem:
         Evidence,
         Hashes,
         MediaAsset,
+        MediaRef,
         Passage,
         Provenance,
         Scope,
@@ -225,6 +275,9 @@ def _row_to_item(row: tuple[Any, ...]) -> StagingItem:
         error,
         created_at,
         updated_at,
+        section,
+        source_version,
+        media_refs,
     ) = row
 
     return StagingItem(
@@ -235,12 +288,13 @@ def _row_to_item(row: tuple[Any, ...]) -> StagingItem:
             source_item_id=source_item_id,
             fetched_at=datetime.fromisoformat(created_at),
             payload_hash=payload_hash,
-            source_version="1",
-            scope=Scope(exam=exam, subject=subject, year=year),
+            source_version=source_version or "1",
+            scope=Scope(exam=exam, subject=subject, year=year, section=section),
         ),
         content=Content.model_validate_json(content),
         passage=Passage.model_validate_json(passage) if passage else None,
         media_assets=tuple(MediaAsset.model_validate(asset) for asset in json.loads(media)),
+        media_refs=tuple(MediaRef.model_validate(ref) for ref in json.loads(media_refs or "[]")),
         evidence=Evidence.model_validate(json.loads(evidence)),
         catalog=CatalogRef.model_validate_json(catalog) if catalog else None,
         state=State(state),
