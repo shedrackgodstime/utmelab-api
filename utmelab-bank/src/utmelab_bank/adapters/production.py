@@ -2,10 +2,10 @@
 
 The catalog reader answers where a question goes. This one answers whether
 the question is new, by reading the served bank's questions and computing
-the two fingerprints the index holds.
+the keys the index holds.
 
 The reader is the only place that knows how production stores a question.
-The index only knows the fingerprints.
+The index only knows the keys.
 """
 
 from __future__ import annotations
@@ -15,7 +15,11 @@ from collections.abc import AsyncIterator
 from datetime import UTC, datetime
 from typing import Any, Protocol
 
-from utmelab_bank.domain.dedupe import near_duplicate_fingerprint
+from utmelab_bank.domain.dedupe import (
+    duplicate_content_key,
+    duplicate_near_key,
+    near_duplicate_fingerprint,
+)
 from utmelab_bank.domain.reports import Report
 
 
@@ -26,57 +30,128 @@ class SqlClient(Protocol):
 
 
 class KnownQuestion:
-    """One question production already holds, and its two fingerprints."""
+    """One question production already holds, and its index keys.
 
-    __slots__ = ("question_id", "content_hash", "near_duplicate")
+    ``content_hash`` and ``near_duplicate`` are the keys the bank's index
+    stores, not the raw fingerprints. Both carry the exam year, so the same
+    question in two years is two entries and not a false duplicate.
+    """
 
-    def __init__(self, question_id: str, content_hash: str, near_duplicate: str) -> None:
+    __slots__ = ("question_id", "content_hash", "near_duplicate", "year")
+
+    def __init__(
+        self,
+        question_id: str,
+        content_hash: str,
+        near_duplicate: str,
+        year: int = 0,
+    ) -> None:
         self.question_id = question_id
         self.content_hash = content_hash
         self.near_duplicate = near_duplicate
+        self.year = year
 
     def __repr__(self) -> str:
-        return f"KnownQuestion({self.question_id!r}, {self.content_hash!r})"
+        return f"KnownQuestion({self.question_id!r}, {self.year}, {self.content_hash!r})"
+
+
+def _image_keys(raw_inline: object) -> list[str]:
+    """Image anchors from one production inline array."""
+    if not isinstance(raw_inline, list):
+        return []
+    keys: list[str] = []
+    for entry in raw_inline:
+        if not isinstance(entry, dict) or entry.get("kind") != "image":
+            continue
+        keys.append(f"{entry.get('url')}|{entry.get('position') or ''}|{entry.get('alt') or ''}")
+    return keys
+
+
+def _option_images(options: object) -> list[str]:
+    if not isinstance(options, list):
+        return []
+    keys: list[str] = []
+    for option in options:
+        if not isinstance(option, dict):
+            continue
+        text = option.get("text")
+        if not isinstance(text, dict):
+            continue
+        keys.extend(_image_keys(text.get("inline")))
+    return keys
+
+
+#: How many rows one production read asks for.
+#:
+#: The served database is reached over one HTTP stream per query. A single
+#: read of every question carries all of the text and options, and a stream
+#: that runs for four minutes is closed by the server with a 404 before it
+#: finishes. A page is small enough to complete, and the keyset keeps the
+#: cost of the page independent of how far into the table it is.
+PAGE = 100
+
+#: A page of questions, cursor style. ``id`` is unique and the order is the
+#: primary key's, so a page starts after the last id it saw.
+_PAGE_SQL = (
+    "SELECT id, year, content_hash, text, inline, options FROM questions "
+    "WHERE id > ? ORDER BY id LIMIT ?"
+)
 
 
 class ProductionContentReader:
-    """Reads the served bank's questions and computes their fingerprints.
+    """Reads the served bank's questions and computes their index keys.
 
     The content hash is read, not recomputed, because production stores the
     one it wrote and that is the value the serving predicate compares. The
     near-duplicate fingerprint has to be computed, because production does
-    not store it.
+    not store it. Both are then qualified with the row's year.
     """
 
     def __init__(self, client: SqlClient) -> None:
         self._client = client
 
     async def known(self) -> tuple[KnownQuestion, ...]:
-        """Every question production holds, with both fingerprints."""
-        result = await self._client.execute("SELECT id, content_hash, text, options FROM questions")
-        return tuple(self._known(row) for row in result.rows)
+        """Every question production holds, with both index keys."""
+        return tuple([known async for known in self.iter_known()])
 
     def _known(self, row: tuple[Any, ...]) -> KnownQuestion:
         question_id = str(row[0])
-        content_hash = str(row[1])
-        stem = str(row[2])
-        options = json.loads(row[3]) if row[3] else []
+        year = int(row[1])
+        content_hash = str(row[2])
+        stem = str(row[3])
+        stem_inline = json.loads(row[4]) if row[4] else []
+        options = json.loads(row[5]) if row[5] else []
         texts = tuple(str(option.get("text", {}).get("text", "")) for option in options)
+        images = [
+            *_image_keys(stem_inline),
+            *_option_images(options),
+        ]
+        near = near_duplicate_fingerprint(stem, texts, tuple(images))
         return KnownQuestion(
             question_id=question_id,
-            content_hash=content_hash,
-            near_duplicate=near_duplicate_fingerprint(stem, texts),
+            content_hash=duplicate_content_key(content_hash, year),
+            near_duplicate=duplicate_near_key(near, year),
+            year=year,
         )
 
     async def iter_known(self) -> AsyncIterator[KnownQuestion]:
-        """The same set, one at a time, for a caller that streams it.
+        """The same set, one page at a time.
 
-        The refresh writes each question to the index as it goes, so the
-        memory stays flat however big the bank gets.
+        A page is a complete query, not a stream that has to stay open for
+        the whole bank. The caller can collect the result before it drops the
+        old index, so a failed read never leaves the bank with no index.
         """
-        result = await self._client.execute("SELECT id, content_hash, text, options FROM questions")
-        for row in result.rows:
-            yield self._known(row)
+        cursor = ""
+        while True:
+            result = await self._client.execute(_PAGE_SQL, [cursor, PAGE])
+            rows = result.rows
+            if not rows:
+                return
+            for row in rows:
+                yield self._known(row)
+            cursor = str(rows[-1][0])
+            if len(rows) < PAGE:
+                return
 
     async def hashes(self) -> dict[str, str]:
         """Every question id production holds, and the hash it holds.
@@ -111,7 +186,7 @@ class ProductionReportReader:
         if isinstance(created, (int, float)):
             created_at = datetime.fromtimestamp(created, tz=UTC)
         else:
-            created_at = datetime.fromisoformat(str(created).replace("Z", "++00:00"))
+            created_at = datetime.fromisoformat(str(created).replace("Z", "+00:00"))
         return Report(
             id=str(row[0]),
             target_type=str(row[1]),

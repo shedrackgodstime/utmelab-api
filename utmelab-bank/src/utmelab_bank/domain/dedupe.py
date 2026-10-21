@@ -28,21 +28,50 @@ from dataclasses import dataclass
 #: It cannot occur in a question, so it cannot be forged by one.
 GAP = "|"
 
+#: Separates the year from the fingerprint it qualifies.
+YEAR_GAP = "\x1f"
 
-def near_duplicate_fingerprint(stem: str, option_texts: tuple[str, ...]) -> str:
+
+def near_duplicate_fingerprint(
+    stem: str,
+    option_texts: tuple[str, ...],
+    image_keys: tuple[str, ...] = (),
+) -> str:
     """The fingerprint that catches the same question seen twice.
 
-    The lowercased stem, then the sorted lowercased option texts, joined.
-    Sixteen hex characters, which is enough to be a key and short enough to
-    be an index entry.
+    The lowercased stem, then the sorted lowercased option texts, then the
+    images the question carries. Sixteen hex characters, which is enough to
+    be a key and short enough to be an index entry.
 
-    It catches a different case, the options in a different order, and
-    padding. It does not catch a rewritten stem or a reworded option, and
-    it is not meant to.
+    The image is part of the key because a question and its options can be
+    identical while the diagram is not. Two rows that differ only in their
+    figure are different questions, and the bank should not refuse the second
+    one as a copy of the first. An empty image list keeps the old shape for
+    the callers that have no media, which is most of the gate's callers.
     """
     options = sorted(text.strip().lower() for text in option_texts)
     joined = stem.strip().lower() + GAP + "~".join(options)
+    if image_keys:
+        joined += GAP + "~".join(sorted(str(key) for key in image_keys))
     return hashlib.sha256(joined.encode("utf-8")).hexdigest()[:16]
+
+
+def duplicate_content_key(content_hash: str, year: int) -> str:
+    """The exact-duplicate key for one content hash in one exam year.
+
+    Production's ``content_hash`` is a hash of the question alone. Its
+    contract must stay that way, because the serving predicate compares it
+    with a verification. The bank, however, wants the same question in 2025
+    and 2026 to be two rows, so the index key adds the year. Two rows with
+    the same content and the same year collide; the same content in a
+    different year does not.
+    """
+    return hashlib.sha256(f"{content_hash}{YEAR_GAP}{year}".encode()).hexdigest()
+
+
+def duplicate_near_key(near_duplicate: str, year: int) -> str:
+    """The near-duplicate key for one fingerprint in one exam year."""
+    return hashlib.sha256(f"{near_duplicate}{YEAR_GAP}{year}".encode()).hexdigest()
 
 
 @dataclass(frozen=True)
@@ -62,4 +91,11 @@ class Duplicate:
             raise ValueError(f"unknown duplicate kind {self.kind!r}")
 
 
-__all__ = ["GAP", "Duplicate", "near_duplicate_fingerprint"]
+__all__ = [
+    "GAP",
+    "YEAR_GAP",
+    "Duplicate",
+    "duplicate_content_key",
+    "duplicate_near_key",
+    "near_duplicate_fingerprint",
+]

@@ -454,9 +454,14 @@ async def index(runtime: Runtime, options: TaskOptions) -> TaskResult:
         result.note(f"{result.seen} production question(s) would be indexed")
         return result
 
+    # Read production completely before dropping anything. The read is the
+    # slow, remote half, and a failure halfway through it must not leave the
+    # bank with an empty index.
+    questions = [known async for known in runtime.production.iter_known()]
+    result.seen = len(questions)
     await runtime.index.forget(PRODUCTION)
     entries: list[tuple[str, str, str, str]] = []
-    async for known in runtime.production.iter_known():
+    for known in questions:
         entries.append(
             (
                 known.content_hash,
@@ -465,7 +470,6 @@ async def index(runtime: Runtime, options: TaskOptions) -> TaskResult:
                 known.question_id,
             )
         )
-        result.seen += 1
         if len(entries) >= BATCH:
             await runtime.index.remember_many(entries, commit=False)
             result.done += len(entries)

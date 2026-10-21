@@ -1,7 +1,12 @@
 """Domain layer. No I/O, no provider names, no framework imports."""
 
 from .audit import Agreement, agreement
-from .dedupe import Duplicate, near_duplicate_fingerprint
+from .dedupe import (
+    Duplicate,
+    duplicate_content_key,
+    duplicate_near_key,
+    near_duplicate_fingerprint,
+)
 from .enums import (
     Capability,
     InlineKind,
@@ -115,6 +120,8 @@ __all__ = [
     "Explainer",
     "Explanation",
     "Duplicate",
+    "duplicate_content_key",
+    "duplicate_near_key",
     "GateContext",
     "GateVerdict",
     "Hashes",

@@ -29,18 +29,23 @@ class IndexRefresher:
     async def refresh(self) -> int:
         """Reload the production half of the index, and return the count.
 
-        The production half is dropped first, so a question that production
-        has deleted does not stay in the index forever and refuse content
-        that is no longer a duplicate of anything.
+        Production is read completely before anything is dropped. The read
+        is the slow, remote half; if it fails, the old index is still there
+        and still usable rather than half a bank.
+
+        The production half is then dropped, so a question production has
+        deleted does not stay in the index forever and refuse content that
+        is no longer a duplicate of anything.
 
         The rows are written in batches. The round trip to Turso is about a
         second, so one write per row would take an hour on a bank of two
         thousand questions, and a minute in batches.
         """
+        questions = [known async for known in self._reader.iter_known()]
         await self._index.forget(PRODUCTION)
         count = 0
         batch: list[tuple[str, str, str, str]] = []
-        async for known in self._reader.iter_known():
+        for known in questions:
             batch.append(
                 (
                     known.content_hash,

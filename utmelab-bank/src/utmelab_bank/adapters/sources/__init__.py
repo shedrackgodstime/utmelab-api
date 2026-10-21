@@ -8,13 +8,14 @@ from utmelab_bank.config import BANK_ROOT, ConfigError
 from utmelab_bank.domain.ports import Source
 
 from .fixture import FixtureSource
+from .myschool import MyschoolSource
 
 #: Where the recorded fixture lives when the caller does not name a directory.
 #: Only the source tree has it; a deployment must pass its own source.
 DEFAULT_FIXTURE_DIR = BANK_ROOT / "tests" / "fixtures" / "sources" / "fixture"
 
 #: Every source the runner knows how to build.
-KNOWN_SOURCES = ("fixture",)
+KNOWN_SOURCES = ("fixture", "myschool")
 
 
 def create_source(name: str, *, fixture_dir: Path | str | None = None) -> Source:
@@ -26,6 +27,8 @@ def create_source(name: str, *, fixture_dir: Path | str | None = None) -> Source
     """
     if name == "fixture":
         return FixtureSource(fixture_dir or DEFAULT_FIXTURE_DIR)
+    if name == "myschool":
+        return MyschoolSource()
     known = ", ".join(KNOWN_SOURCES)
     raise ConfigError(f"unknown source {name!r}; known sources: {known}")
 

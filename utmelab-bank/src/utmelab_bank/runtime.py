@@ -213,6 +213,9 @@ async def open_pipeline_runtime(
     async with open_store_runtime(settings) as runtime:
         if source_name is not None:
             runtime.source = create_source(source_name, fixture_dir=fixture_dir)
+            close = getattr(runtime.source, "close", None)
+            if callable(close):
+                runtime.add_closer(close)
 
         if media or image:
             store = create_media_store(settings)
