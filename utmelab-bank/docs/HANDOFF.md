@@ -592,7 +592,52 @@ never silently overwritten.
 has no duplicates: 0 exact hash duplicate groups and 0 near-duplicate groups
 across all 2,243 rows.
 
-### 5.5 The commit, which is not a detail
+### 5.5 The review, and the audit that measures it
+
+Built. The plan's fifth item.
+
+**The kinds are production's.** `VerificationKind` is `auto_rule`,
+`ai_bulk`, `ai_single` or `human`, spelled as production spells them,
+because the kind is what the serving predicate reads. A bulk run and a
+single careful check are different evidence, and the kind is where that
+difference lives.
+
+**The trust rule is in the model.** A machine check must name the machine
+that made it. A human check must not carry a model producer, because a
+person is not a model and a row that says otherwise is evidence of nothing.
+
+**The scope is the answer, the explanation and the topic link.** The first
+two are the ones the serving predicate reads, so a review that does not
+cover both cannot serve the row whatever it says about the third.
+
+**The record carries the hash of the content as it stands.** A later edit
+to the content leaves the check behind, where the serving predicate can see
+it. That is the whole point of the hash.
+
+**A failing review refuses the item with the reason kept**, so the failure
+is visible rather than a silent absence.
+
+**The audit is a sample, and the output is a number.** The person checks a
+sample of what the machine passed, and the bank measures how far the two
+agree. The two directions of disagreement are counted apart, because they
+are not the same thing:
+
+| | What it means |
+|---|---|
+| The machine passed, the person failed | the content is wrong and the machine missed it. The dangerous one, and the rate at which wrong content would have been let through. |
+| The machine failed, the person passed | the content is fine and the machine was strict. This costs effort, not trust. |
+
+An abstention agrees only with an abstention, because treating it as a pass
+would be a lie.
+
+**The sample is deterministic and covers the whole run**, from the first row
+to the last, so a second look is the same look.
+
+**Verified against a real model.** The live test runs the real provider on a
+real question and checks that the verdict comes back and that the record
+carries the kind, the scope, the model and the reason.
+
+### 5.6 The commit, which is not a detail
 
 **The driver opens a deferred transaction, so an uncommitted write is rolled
 back when the connection closes.** The client did not commit, so every write
@@ -660,6 +705,7 @@ contract/test_git_media_store.py   the media store
 contract/test_staging_store.py      the staging store
 contract/test_gate_service.py        the gate service
 contract/test_dedupe_service.py       the dedupe step and the index
+contract/test_review_service.py        the review step and the audit
 live/test_opencode_live.py         a real model call, skipped unless UTMELAB_LIVE=1
 live/test_production_fingerprint_live.py
                                    every production row must hash the way we
@@ -668,14 +714,16 @@ live/test_gate_live.py             the gate must see what the live bank shows,
                                    skipped unless UTMELAB_LIVE=1
 live/test_dedupe_live.py           the dedupe must catch a production row,
                                    skipped unless UTMELAB_LIVE=1
+live/test_review_live.py            the review must work against a real model,
+                                   skipped unless UTMELAB_LIVE=1
 ```
 
-**238 tests pass, 3 skipped. mypy strict is clean across `src` and `tests`,
+**256 tests pass, 7 skipped. mypy strict is clean across `src` and `tests`,
 and pyflakes reports nothing.**
 
-The three skipped are the live tests: the OpenCode smoke test, the
-production fingerprint contract and the gate contract. All run with
-`UTMELAB_LIVE=1`.
+The skipped ones are the live tests: the OpenCode smoke test, the
+production fingerprint contract, the gate contract, the dedupe contract and
+the review contract. All run with `UTMELAB_LIVE=1`.
 
 ---
 

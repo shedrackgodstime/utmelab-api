@@ -225,10 +225,18 @@ class Verification(DomainModel):
 
     @model_validator(mode="after")
     def _check(self) -> "Verification":
-        if self.kind is VerificationKind.AI and self.producer is None:
-            raise ValueError("AI verification requires a producer")
-        if self.kind is VerificationKind.HUMAN and self.producer is not None:
-            raise ValueError("human verification cannot carry a model producer")
+        """The trust rule.
+
+        A machine check must name the machine that made it, so the evidence
+        can be traced and the agreement rate can be computed per model. A
+        human check must not carry a model producer, because a person is not
+        a model and a row that says otherwise is not evidence of anything.
+        """
+        if self.kind is VerificationKind.HUMAN:
+            if self.producer is not None:
+                raise ValueError("human verification cannot carry a model producer")
+        elif self.producer is None:
+            raise ValueError(f"{self.kind.value} verification requires a producer")
         return self
 
 

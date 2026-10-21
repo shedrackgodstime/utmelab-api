@@ -81,7 +81,21 @@ class Verdict(StrEnum):
 
 
 class VerificationKind(StrEnum):
-    AI = "ai"
+    """Who checked, and how carefully.
+
+    The values are production's, spelled as production spells them, because
+    the kind is what the serving predicate reads. A bulk run and a single
+    careful check are different evidence, and the kind is where that
+    difference lives.
+
+    Only ``HUMAN`` makes a row servable. The others are signal: they tell a
+    reviewer what the machine thought, and they are the evidence behind a
+    decision about whether the machine is good enough to be believed.
+    """
+
+    AUTO_RULE = "auto_rule"
+    AI_BULK = "ai_bulk"
+    AI_SINGLE = "ai_single"
     HUMAN = "human"
 
 

@@ -731,6 +731,7 @@ A ready bundle, made of:
 | What | Should be |
 |---|---|
 | The bank never reads the server's `reports` | a report is work, and the table is right there |
+| The audit is not run against real content | the agreement rate is the number that decides how much content can move, and it has never been measured on a real run |
 | There is no `live` state and no `reported` state | content that has been handed over has to stay tracked, and a report has to become work |
 | Nothing checks for drift | the server's own predicate detects it, and the bank should run the same check against what it handed over |
 | The bank has no notion of a ready bundle | a definition of done, with the counts that go with it |
@@ -764,7 +765,9 @@ are different evidence.
    local index of both, and a refresh that reloads the index from
    production. Verified live: a production row fed back in is refused as
    `duplicate_exact`.
-5. **The review step**, wired to a task, with the human pass it produces.
+5. **The review step.** Built. The machine checks every row and the check
+   is recorded with its kind, its scope, the model and the reason. The
+   audit samples the machine's work and measures the agreement.
 6. **The ready bundle,** with the definition and the counts.
 7. **The report consumer and the drift check,** so a complaint or a changed
    row comes back as work.

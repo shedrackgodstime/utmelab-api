@@ -445,13 +445,27 @@ def test_verification_ai_requires_producer() -> None:
     with pytest.raises(ValidationError, match="producer"):
         Verification(
             id="v-1",
-            kind=VerificationKind.AI,
+            kind=VerificationKind.AI_BULK,
             verdict=Verdict.PASS,
             scope=("answer",),
             content_hash=CONTENT_HASH,
             reviewer="ai-1",
             created_at=NOW,
         )
+
+
+def test_a_single_check_is_a_different_kind_from_a_bulk_run() -> None:
+    """A bulk run and a single careful check are different evidence.
+
+    The values are production's, because the kind is what the serving
+    predicate reads.
+    """
+    assert [kind.value for kind in VerificationKind] == [
+        "auto_rule",
+        "ai_bulk",
+        "ai_single",
+        "human",
+    ]
 
 
 def test_human_verification_rejects_producer() -> None:

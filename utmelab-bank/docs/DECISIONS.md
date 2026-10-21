@@ -82,10 +82,26 @@ question is answerable as written, the figure description matches the
 figure, the topic placement is right.
 
 Each check is recorded with its kind, its scope, the model that produced it
-and the reason. A bulk run and a single careful check are different evidence
-and stay different kinds.
+and the reason. The kinds are production's, so the record reads the same
+wherever it goes: `auto_rule`, `ai_bulk`, `ai_single`, `human`. A bulk run
+and a single careful check are different evidence and stay different kinds.
 
 **The AI's verdict is the review. The human audits the AI.**
+
+**The audit is a sample, and the output is a number.** The person checks a
+sample of what the machine passed, and the bank measures how far the two
+agree. The rate is reported with the split, because the two directions of
+disagreement are not the same thing:
+
+- The machine **passed** what the person **failed**. The content is wrong
+  and the machine missed it. This is the dangerous one, and it is the rate
+  at which wrong content would have been let through.
+- The machine **failed** what the person **passed**. The content is fine and
+  the machine was strict. This one costs effort, not trust.
+
+A policy threshold says how far the machine has to be right. Until that
+number is measured, the human's judgement is the only thing standing between
+the machine and the served content.
 
 ## D6. The serving policy is not ours, and the bank does not wait for it
 
