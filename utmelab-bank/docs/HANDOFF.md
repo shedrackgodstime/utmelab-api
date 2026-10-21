@@ -3,6 +3,10 @@
 **Date:** 21 October 2026
 **Status:** read this before changing anything. It records what was measured, what was built, and what is wrong.
 
+**Read `DESIGN.md` first.** It says what the bank should be, derived from the
+current production source. This file records what was measured and built, and
+it is the older of the two.
+
 ---
 
 ## 1. What utmelab-bank is
@@ -13,12 +17,22 @@ It is **not** the API. It sits beside `utmelab-api-old/` and `src/` in this repo
 
 ```
 utmelab-api/                 the serving API (Rust). Reads production Turso, serves questions.
-utmelab-api-old/             the production bank code: schema, writes, the serving predicate.
+utmelab-api-old/             the ARCHIVED tree. A source of capabilities, never of structure.
 utmelab-bank/                 THIS. The Python factory. Builds and checks content.
 utmelab-bank-failed/         the previous attempt. Read FINDINGS.md; do not copy its code.
 utmelab-pipeline/             an earlier parallel attempt. Also do not copy.
 tools/                        the pre-bank tooling. Contains the original harvester.
 ```
+
+**Which source is current.** `src/` at the root of this repository is the
+current production server. `utmelab-api-old/` is the archived tree, and
+`docs/NOTES.temp.md` says so: "The old tree is a source of capabilities,
+never of structure." The citations in this file to `utmelab-api-old/src/`
+point at history. The current equivalents are listed in `DESIGN.md` section 9.
+
+The archived tree is still worth reading for the decision log, the rich text
+rule, the figure rules and the gate, because the current server does not carry
+that reasoning with it.
 
 ### The two databases
 
@@ -28,6 +42,12 @@ tools/                        the pre-bank tooling. Contains the original harves
 | **Bank** | `turso://utmelab-bank-shedrackgodstime08.aws-ap-south-1.turso.io` | us | one table, `staging_items` |
 
 We **read** production. We never write it. The catalog lives there and it is the only authority for topic placement.
+
+**One correction to the picture above.** The bank does not merely read
+production. The current server declares the bank tables as reads and never
+creates them, and the production notes say the pipeline owns and creates
+them. The bank is that pipeline, and the sixteen content tables are its
+tables. `DESIGN.md` section 1 has the full arrangement.
 
 ---
 
@@ -627,14 +647,26 @@ Novels are out of scope for the bank. But the D60 rule says novel-question text 
 
 ### 11.6 The full table list
 
-Production has these tables, in creation order. The bank owns none of them.
+The live database holds 21 real tables, in two groups. The split is by
+ownership, and it is the same split the current server's code draws.
+
+The five the **server** creates and owns:
 
 ```
-api_keys  verifications  questions  passages  novels
-novel_chapters  novel_characters  novel_themes  novel_questions
+meta  api_keys  dashboard_users  sessions  reports
+```
+
+The sixteen the **pipeline** creates and owns, which is the bank:
+
+```
+questions  verifications  passages
 subjects  exams  topics  subtopics  blueprints
 countries  topic_countries  exam_requirements
+novels  novel_chapters  novel_characters  novel_themes  novel_questions
 ```
+
+The live table list also has `questions.text_norm`, which the current server
+does not read. It is a leftover from the archived tree. Do not build on it.
 
 There is **no media table, no media_assets table, and no image column** anywhere.
 
@@ -666,8 +698,33 @@ Every place the old code decided something about rich text, and what it said:
 | `utmelab-api-old/src/quarantine.rs` | The read-only report of every mechanical defect. |
 | `utmelab-api-old/src/bank/readiness.rs` | Per-topic readiness, blueprint by coverage. |
 
-### 12.2 Our own docs
+### 12.2 The current source, which is what counts
 
+The archived tree above is where the reasoning lives. The current code is
+where the contract lives. These are the files to read first.
+
+| File | What it holds |
+|---|---|
+| `src/core/models/domain.rs` | The current types. `RichText`, `Inline`, `InlineKind`, `ImagePosition`, `Choice`, `Explanation`, `Question`, `Passage`, `Blueprint`, `Exam`, `Subject`, `Topic`. **The source of truth for the schema.** |
+| `src/core/models/wire.rs` | The shapes the server answers with, including `RenderedQuestion` and its passage contract. |
+| `src/store/schema.rs` | `READ_SHAPES`, the server's list of every table and column it depends on, and the contract check that fails closed. Also the split between the tables the server creates and the tables the pipeline creates. |
+| `src/testing.rs` | `BANK_DDL`, the bank tables' DDL. The closest thing to a specification that exists. |
+| `src/store/catalog.rs` | The serving predicate, spelled once: `verified_predicate` and `LATEST_VERIFIED_CTE`. |
+| `src/store/sync.rs` | The replica lifecycle. The server pulls the remote on a timer, so serving never blocks on the network. |
+| `docs/NOTES.temp.md` | The pipeline doctrine. It names the bank's four jobs: intake, promote, gates, review. |
+
+Two sentences from the current code that settle questions the archived tree
+left open:
+
+- `src/core/models/domain.rs`: "Where the figure renders relative to the
+  stem. Data, never inferred." The archived tree guessed the position from
+  the stem's prose. The current code has stopped guessing.
+- `src/store/schema.rs`: "The bank tables (questions, subjects, passages, …)
+  are owned and created by the pipeline, so the API never creates them."
+
+### 12.3 Our own docs
+
+- `utmelab-bank/docs/DESIGN.md` - how the bank is supposed to be. **Read this first.**
 - `utmelab-bank/docs/ARCHITECTURE.md` - the architecture this code implements.
 - `utmelab-bank-failed/FINDINGS.md` - the evidence file. **Read it, but check every number against the live database.** Its row counts are stale.
 
