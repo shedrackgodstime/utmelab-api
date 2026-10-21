@@ -15,8 +15,9 @@ read together, because GitLab reports different failures in different places.
 **Nothing is published until the remote says so.** After a create, the raw
 file is read back and hashed. A 201 only proves the request was accepted.
 
-The file name is the record. The public url is derived by ``served_url``, so
-the host is configuration and not a column.
+The file name is the record. The store only answers whether it can serve that
+name; the serving layer builds the public url, so the host is configuration
+and not a column.
 """
 
 from __future__ import annotations
@@ -121,11 +122,9 @@ class GitLabMediaStore:
         self._raise_for(response, "look up")
         return False
 
-    def served_url(self, name: str) -> str | None:
-        """The public url for a recorded name, or ``None`` when no base is set."""
-        if not self.base_url:
-            return None
-        return f"{self.base_url}/{name}"
+    def can_serve(self, name: str) -> bool:
+        """Whether a public host is configured for the recorded name."""
+        return bool(self.base_url)
 
     # -- the GitLab calls -------------------------------------------------
 

@@ -99,11 +99,10 @@ def test_ingesting_owns_the_asset_and_swaps_the_url() -> None:
     assert len(result.media_assets) == 1
     asset = result.media_assets[0]
 
-    # The bank owns it: the source url is gone and the inline points at ours.
-    # The row records the bare name; the url is the base plus that name.
+    # The bank owns it: the source url is gone and the inline records the name.
     assert asset.source_url is None
     assert not asset.storage_url.startswith("https://")
-    assert result.content.stem.inline[0].url == f"{store.base}/{asset.storage_url}"
+    assert result.content.stem.inline[0].url == asset.storage_url
 
     # Swapping a url changes the content fingerprint, and attaching an asset
     # changes the bundle fingerprint, so both are re-stamped.

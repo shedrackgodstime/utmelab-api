@@ -74,7 +74,7 @@ def test_put_writes_the_name_and_proves_the_bytes() -> None:
     fake = FakeGitLab()
     store = make_store(fake)
 
-    async def run() -> tuple[str, str]:
+    async def run() -> str:
         asset = await store.put(PNG_1X1, mime="image/png", source_url="https://s/x.png")
         assert not asset.storage_url.startswith("https://")
         assert asset.storage_url == f"{sha256_of(PNG_1X1)}.png"
@@ -82,12 +82,13 @@ def test_put_writes_the_name_and_proves_the_bytes() -> None:
         assert fake.files[f"images/{asset.storage_url}"] == PNG_1X1
         assert await store.read(asset.storage_url) == PNG_1X1
         assert await store.exists(asset.storage_url) is True
-        return asset.storage_url, store.served_url(asset.storage_url) or ""
+        assert store.can_serve(asset.storage_url) is True
+        return asset.storage_url
 
-    name, served = asyncio.run(run())
+    name = asyncio.run(run())
     asyncio.run(store.close())
 
-    assert served == f"{BASE}/{name}"
+    assert name == f"{sha256_of(PNG_1X1)}.png"
     assert fake.posts() == 1
 
 
@@ -139,7 +140,7 @@ def test_a_missing_file_reads_as_not_found() -> None:
     asyncio.run(store.close())
 
 
-def test_without_a_base_there_is_no_served_url() -> None:
+def test_without_a_base_the_store_cannot_serve() -> None:
     store = make_store(FakeGitLab(), base="")
-    assert store.served_url("0" * 64 + ".png") is None
+    assert store.can_serve("0" * 64 + ".png") is False
     asyncio.run(store.close())

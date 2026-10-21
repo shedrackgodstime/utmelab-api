@@ -157,10 +157,10 @@ class MediaIngestor:
                     raise
                 continue
 
-            served = self.store.served_url(asset.storage_url)
-            if served is not None:
-                # The bank can serve it, so it owns it and the source url goes.
-                owned[source_url] = served
+            if self.store.can_serve(asset.storage_url):
+                # The bank can serve it, so it owns it. The inline records the
+                # stored name; the serving layer composes the public url.
+                owned[source_url] = asset.storage_url
                 assets.append(asset.model_copy(update={"source_url": None}))
             else:
                 # Stored but not servable yet: the row keeps the source url.
@@ -182,7 +182,11 @@ class MediaIngestor:
 
 
 def _swap_owned_urls(item: StagingItem, owned: dict[str, str]) -> StagingItem:
-    """Point every image inline at the bank's own url for the asset."""
+    """Point every image inline at the bank's stored name.
+
+    The inline carries the name, not a url. The serving layer decides the host,
+    so a domain move does not rewrite a single row.
+    """
     if not owned:
         return item
 

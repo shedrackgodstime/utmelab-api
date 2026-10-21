@@ -187,6 +187,11 @@ def _judgement(code: str, message: str, field_name: str | None = None) -> Issue:
     return Issue(code=code, message=message, severity=Severity.JUDGEMENT, field=field_name)
 
 
+#: A stored figure name: ``<sha256>.<ext>``. The inline carries this once the
+#: bank owns the bytes, so the gate accepts it alongside a source url.
+_STORED_NAME_RE = re.compile(r"^[0-9a-f]{64}\.[a-z0-9]{1,5}$")
+
+
 def check_inline(text: str, inline: tuple[Inline, ...], label: str, issues: list[Issue]) -> None:
     """The rules every piece of text carries.
 
@@ -196,6 +201,10 @@ def check_inline(text: str, inline: tuple[Inline, ...], label: str, issues: list
     The rule takes the text and the inline separately, so it can be judged on
     its own. The model refuses an out of bounds inline and a partial overlap
     first, so in normal operation this is the second line, not the first.
+
+    An image value is either the absolute source url or the stored name the
+    capture step writes. Anything else is a defect, because neither the
+    fetcher nor the serving layer could resolve it.
     """
     length = len(text)
     for index, one in enumerate(inline):
@@ -209,12 +218,22 @@ def check_inline(text: str, inline: tuple[Inline, ...], label: str, issues: list
                 )
             )
         if one.kind.value == "image":
-            if one.url is None or not one.url.startswith("https://"):
+            value = one.url
+            if value is None:
                 issues.append(
                     _error(
-                        "image_url_not_https",
-                        f"{label} inline {index} has image url {one.url!r}, "
-                        "which must be absolute https",
+                        "image_url_missing",
+                        f"{label} inline {index} is an image with no value",
+                        label,
+                    )
+                )
+            elif not (value.startswith("https://") or _STORED_NAME_RE.match(value)):
+                issues.append(
+                    _error(
+                        "image_url_invalid",
+                        f"{label} inline {index} has image value {value!r}, "
+                        "which must be an absolute https url or a stored "
+                        "<sha>.<ext> name",
                         label,
                     )
                 )

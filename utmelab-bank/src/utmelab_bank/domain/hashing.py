@@ -58,8 +58,10 @@ def mark_key(inline: Any) -> str:
     the Rust is ``fn mark_key(m: &Inline) -> String``. Production calls an
     inline a mark in this one place and an inline everywhere else.
 
-    ``<start>,<len>,<kind>``. An image inline carries its url, its position
-    and its alt text, in that order, with an empty alt when there is none.
+    ``<start>,<len>,<kind>``. An image inline carries its value, its position
+    and its alt text, in that order, with an empty alt when there is none. The
+    value is the source url before capture and the stored name after, so the
+    fingerprint follows the record rather than a host.
     """
     kind = inline.kind
     if getattr(kind, "value", kind) == "image":

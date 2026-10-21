@@ -342,16 +342,19 @@ class Inline(DomainModel):
 
     The shape is the production shape: offsets in Unicode characters, and a
     flat kind. An image inline is an anchor, so its length is zero, and it
-    carries a url and a position rather than a hash.
+    carries a value and a position rather than a hash.
+
+    For an image, ``url`` holds the source url before capture and the bare
+    stored name (``<sha>.<ext>``) after. The serving layer composes the public
+    url, so the host is configuration and not content.
     """
 
     kind: InlineKind
     start: int = Field(ge=0)
     len: int = Field(ge=0)
-    #: The url, as a raw string. Production stores it verbatim and the
-    #: fingerprint hashes it verbatim, so a normalising url type would change
-    #: the hash. `https://example.com` and `https://example.com/` are
-    #: different rows.
+    #: The source url before capture, the stored name after. Kept as a raw
+    #: string because production stores it verbatim and the fingerprint
+    #: hashes it verbatim.
     url: str | None = None
     position: ImagePosition | None = None
     alt: NonEmptyStr | None = None
@@ -359,10 +362,8 @@ class Inline(DomainModel):
     @model_validator(mode="after")
     def _check(self) -> "Inline":
         if self.kind is InlineKind.IMAGE:
-            if self.url is None:
-                raise ValueError("image inline require a url")
-            if not self.url.startswith("https://"):
-                raise ValueError("image urls must be absolute https")
+            if not self.url:
+                raise ValueError("image inline require a source url or a stored name")
             if self.position is None:
                 raise ValueError("image inline require a position")
             if self.len != 0:

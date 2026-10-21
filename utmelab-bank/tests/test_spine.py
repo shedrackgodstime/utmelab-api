@@ -297,18 +297,18 @@ def test_the_spine_carries_a_figure_to_ready(tmp_path: Path, catalog: CatalogSna
         assert enriched.state is State.ENRICHED
         verified = await ReviewService(MockProvider()).apply(enriched, catalog)
         bundle = ReadyService(catalog=catalog).promote([verified])
-        return bundle.items[0], FIGURE_URL, store.base
+        return bundle.items[0], FIGURE_URL
 
-    ready, source_url, base = asyncio.run(walk())
+    ready, source_url = asyncio.run(walk())
 
     assert ready.state is State.READY
     asset = ready.media_assets[0]
 
-    # The bank owns the bytes: the row records the bare name, the inline points
-    # at the served url, and the source url is gone.
+    # The bank owns the bytes: the row records the bare name, the inline holds
+    # that name, and the source url is gone. The serving layer builds the url.
     assert asset.source_url is None
     assert not asset.storage_url.startswith("https://")
-    assert ready.content.stem.inline[0].url == f"{base}/{asset.storage_url}"
+    assert ready.content.stem.inline[0].url == asset.storage_url
     assert ready.content.stem.inline[0].url != source_url
 
     # The description is on the row, and it is about the asset we stored.

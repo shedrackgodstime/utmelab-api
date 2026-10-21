@@ -90,11 +90,12 @@ class MediaStore(Protocol):
 
     async def exists(self, name: str) -> bool: ...
 
-    def served_url(self, name: str) -> str | None:
-        """The public url for a recorded name, or ``None`` when not public.
+    def can_serve(self, name: str) -> bool:
+        """Whether the store can serve the file at this recorded name.
 
-        The row stores the bare name. This is where a host is attached to it,
-        so the same record can be served from a different host later.
+        The row stores the bare name. This is the question that decides
+        ownership: a store that holds bytes but has no public host is not
+        serving them, so the row keeps its source url.
         """
         ...
 

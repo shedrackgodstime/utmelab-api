@@ -106,7 +106,7 @@ class FakeMediaStore:
     async def exists(self, name: str) -> bool:
         raise NotImplementedError
 
-    def served_url(self, name: str) -> str | None:
+    def can_serve(self, name: str) -> bool:
         raise NotImplementedError
 
 

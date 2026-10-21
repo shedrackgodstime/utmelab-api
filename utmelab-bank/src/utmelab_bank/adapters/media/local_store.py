@@ -66,8 +66,8 @@ class LocalMediaStore:
     async def exists(self, name: str) -> bool:
         return self._path(name).is_file()
 
-    def served_url(self, name: str) -> str | None:
-        return None
+    def can_serve(self, name: str) -> bool:
+        return False
 
     def _path(self, name: str) -> Path:
         path = (self.root / REPO_DIR / name).resolve()

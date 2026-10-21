@@ -140,14 +140,14 @@ def test_two_marks_on_an_identical_range_pass() -> None:
     assert verdict.passed is True
 
 
-def test_a_relative_image_url_fails() -> None:
-    """The model refuses it first, and the gate refuses it second."""
+def test_an_image_value_that_is_neither_a_url_nor_a_name_fails() -> None:
+    """The model refuses an empty value, and the gate refuses a dead one."""
     with pytest.raises(ValueError):
         Inline(
             kind=InlineKind.IMAGE,
             start=0,
             len=0,
-            url="/diagrams/x.png",
+            url=None,
             position=ImagePosition.ABOVE,
         )
 
@@ -162,7 +162,23 @@ def test_a_relative_image_url_fails() -> None:
     )
     check_inline("see the figure", (bypassed,), "text", issues)
 
-    assert [issue.code for issue in issues] == ["image_url_not_https"]
+    assert [issue.code for issue in issues] == ["image_url_invalid"]
+
+
+def test_a_stored_image_name_passes() -> None:
+    """After capture the inline holds the bare name, and the gate accepts it."""
+    mark = Inline(
+        kind=InlineKind.IMAGE,
+        start=0,
+        len=0,
+        url="a" * 64 + ".png",
+        position=ImagePosition.ABOVE,
+    )
+
+    issues: list[Issue] = []
+    check_inline("see the figure", (mark,), "text", issues)
+
+    assert issues == []
 
 
 def test_the_option_count_must_be_four() -> None:

@@ -254,13 +254,27 @@ def test_rich_text_keeps_a_fully_blank_line() -> None:
     assert "\n\n" in text.text
 
 
-def test_image_mark_rejects_a_relative_url() -> None:
-    with pytest.raises(ValidationError, match="absolute https"):
+def test_image_mark_accepts_a_stored_name() -> None:
+    """After capture the inline holds the bare name, not a served url."""
+    name = "a" * 64 + ".png"
+    mark = Inline(
+        kind=InlineKind.IMAGE,
+        start=0,
+        len=0,
+        url=name,
+        position=ImagePosition.ABOVE,
+    )
+
+    assert mark.url == name
+
+
+def test_image_mark_rejects_a_missing_value() -> None:
+    with pytest.raises(ValidationError, match="source url or a stored name"):
         Inline(
             kind=InlineKind.IMAGE,
             start=0,
             len=0,
-            url="/storage/classroom/x.png",
+            url=None,
             position=ImagePosition.ABOVE,
         )
 

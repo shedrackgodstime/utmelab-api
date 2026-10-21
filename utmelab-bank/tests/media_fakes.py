@@ -44,13 +44,7 @@ class FakeMediaStore:
     the skip branch.
     """
 
-    def __init__(
-        self,
-        base: str = "https://media.example/objects",
-        *,
-        published: bool = True,
-    ) -> None:
-        self.base = base.rstrip("/")
+    def __init__(self, *, published: bool = True) -> None:
         self.published = published
         self.saved: dict[str, bytes] = {}
 
@@ -77,10 +71,8 @@ class FakeMediaStore:
     async def exists(self, name: str) -> bool:
         return name in self.saved
 
-    def served_url(self, name: str) -> str | None:
-        if not self.published or not self.base:
-            return None
-        return f"{self.base}/{name}"
+    def can_serve(self, name: str) -> bool:
+        return self.published
 
 
 __all__ = [
