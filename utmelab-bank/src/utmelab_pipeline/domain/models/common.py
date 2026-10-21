@@ -5,7 +5,15 @@ from typing import Annotated, Any, Optional, Union
 
 from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, HttpUrl, StringConstraints, model_validator
 
-from ..enums import MarkKind, Severity, SourceCapability, State, VerificationKind, Verdict
+from ..enums import (
+    ImagePosition,
+    MarkKind,
+    Severity,
+    SourceCapability,
+    State,
+    VerificationKind,
+    Verdict,
+)
 
 NonEmptyStr = Annotated[str, StringConstraints(min_length=1, strip_whitespace=True)]
 Slug = Annotated[
@@ -262,22 +270,33 @@ class MediaAsset(DomainModel):
 
 
 class Mark(DomainModel):
+    """One mark on a piece of text.
+
+    The shape is the production shape: offsets in Unicode characters, and a
+    flat kind. An image mark is an anchor, so its length is zero, and it
+    carries a url and a position rather than a hash.
+    """
+
     kind: MarkKind
     start: int = Field(ge=0)
-    length: int = Field(ge=0)
-    asset_id: NonEmptyStr | None = None  # for image marks
+    len: int = Field(ge=0)
+    url: Optional[HttpUrl] = None
+    position: Optional[ImagePosition] = None
+    alt: Optional[NonEmptyStr] = None
 
     @model_validator(mode="after")
     def _check(self) -> "Mark":
         if self.kind is MarkKind.IMAGE:
-            if self.asset_id is None:
-                raise ValueError("image marks require an asset_id")
-            if self.length != 0:
+            if self.url is None:
+                raise ValueError("image marks require a url")
+            if self.position is None:
+                raise ValueError("image marks require a position")
+            if self.len != 0:
                 raise ValueError("image marks are zero length anchors")
         else:
-            if self.asset_id is not None:
-                raise ValueError("only image marks may carry an asset_id")
-            if self.length < 1:
+            if self.url is not None or self.position is not None or self.alt is not None:
+                raise ValueError("only image marks may carry a url, position or alt")
+            if self.len < 1:
                 raise ValueError("text marks need a positive length")
         return self
 
@@ -292,7 +311,7 @@ class RichText(DomainModel):
         for mark in self.marks:
             if mark.start < last_end:
                 raise ValueError("marks must be sorted and must not overlap")
-            end = mark.start + mark.length
+            end = mark.start + mark.len
             if end > len(self.text):
                 raise ValueError("mark extends past the end of the text")
             last_end = end
@@ -394,11 +413,7 @@ class StagingItem(DomainModel):
             stem=self.content.stem,
             options=self.content.options,
             answer=self.content.answer,
-            marks=self.content.marks,
             explanation=self.evidence.explanation,
-            passage=self.content.passage,
-            media_assets=self.media_assets,
-            catalog_version=self.catalog.catalog_version if self.catalog else "",
         )
         if self.hashes is None:
             raise ValueError("cannot stamp a content hash before the payload hash is known")
@@ -439,8 +454,8 @@ class StagingItem(DomainModel):
 
         for rich_text in self.content.rich_texts():
             for mark in rich_text.marks:
-                if mark.kind is MarkKind.IMAGE and mark.asset_id not in known_media:
-                    raise ValueError(f"mark references unknown media {mark.asset_id!r}")
+                if mark.kind is MarkKind.IMAGE and mark.url is None:
+                    raise ValueError("image mark has no url")
 
         for description in self.evidence.image_descriptions:
             if description.asset_id not in known_media:

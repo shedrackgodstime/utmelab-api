@@ -72,13 +72,11 @@ def test_content_fingerprint_covers_the_answer(staging_item: StagingItem) -> Non
         stem=item.content.stem,
         options=item.content.options,
         answer=item.content.answer,
-        marks=item.content.marks,
     )
     changed = content_fingerprint(
         stem=item.content.stem,
         options=item.content.options,
         answer="A",
-        marks=item.content.marks,
     )
     assert base != changed
 
@@ -89,13 +87,11 @@ def test_content_fingerprint_covers_the_options(staging_item: StagingItem) -> No
         stem=item.content.stem,
         options=item.content.options,
         answer=item.content.answer,
-        marks=item.content.marks,
     )
     changed = content_fingerprint(
         stem=item.content.stem,
         options=(item.content.options[0],),
         answer=item.content.answer,
-        marks=item.content.marks,
     )
     assert base != changed
 
@@ -106,13 +102,11 @@ def test_content_fingerprint_is_stable(staging_item: StagingItem) -> None:
         stem=item.content.stem,
         options=item.content.options,
         answer=item.content.answer,
-        marks=item.content.marks,
     )
     second = content_fingerprint(
         stem=item.content.stem,
         options=item.content.options,
         answer=item.content.answer,
-        marks=item.content.marks,
     )
     assert first == second
 

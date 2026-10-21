@@ -127,7 +127,15 @@ def image_content() -> Content:
     return Content(
         stem=RichText(
             text="The diagram shows a cell.",
-            marks=(Mark(kind="image", start=0, length=0, asset_id="e" * 64),),
+            marks=(
+                Mark(
+                    kind="image",
+                    start=0,
+                    len=0,
+                    url="https://fixture.example/media/figure.png",
+                    position="below",
+                ),
+            ),
         ),
         options=(
             Option(id="A", text=RichText(text="Nucleus")),

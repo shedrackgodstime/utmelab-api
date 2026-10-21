@@ -16,8 +16,9 @@
           {
             "kind": "image",
             "start": 0,
-            "length": 0,
-            "asset_key": "cell-diagram"
+            "url": "https://fixture.example/media/cell.png",
+            "position": "below",
+            "len": 0
           }
         ],
         "options": [

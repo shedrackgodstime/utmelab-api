@@ -48,6 +48,13 @@ class MarkKind(StrEnum):
     IMAGE = "image"
 
 
+class ImagePosition(StrEnum):
+    """Where a figure sits relative to the text that marks it."""
+
+    ABOVE = "above"
+    BELOW = "below"
+
+
 class Verdict(StrEnum):
     PASS = "pass"
     FAIL = "fail"

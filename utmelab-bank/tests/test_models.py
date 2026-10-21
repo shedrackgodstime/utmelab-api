@@ -6,6 +6,7 @@ import pytest
 from pydantic import ValidationError
 
 from utmelab_pipeline.domain.enums import (
+    ImagePosition,
     MarkKind,
     Severity,
     SourceCapability,
@@ -58,22 +59,26 @@ def test_staging_item_id_must_match_provenance(staging_item: StagingItem) -> Non
         StagingItem.model_validate(payload)
 
 
-def test_staging_item_rejects_unknown_media(
+def test_staging_item_accepts_a_marked_figure(
     staging_item: StagingItem, image_content: Content
 ) -> None:
-    with pytest.raises(ValidationError, match="unknown media"):
-        StagingItem(
-            id=staging_item.id,
-            provenance=staging_item.provenance,
-            content=image_content,
-            media_refs=(),
-            media_assets=(),
-            evidence=Evidence(),
-            state=staging_item.state,
-            hashes=staging_item.hashes,
-            created_at=NOW,
-            updated_at=NOW,
-        )
+    """An image mark carries a url and a position, the production shape."""
+    result = StagingItem(
+        id=staging_item.id,
+        provenance=staging_item.provenance,
+        content=image_content,
+        media_refs=(),
+        media_assets=(),
+        evidence=Evidence(),
+        state=staging_item.state,
+        hashes=staging_item.hashes,
+        created_at=NOW,
+        updated_at=NOW,
+    )
+    mark = result.content.stem.marks[0]
+    assert mark.kind is MarkKind.IMAGE
+    assert mark.url is not None
+    assert mark.position is ImagePosition.BELOW
 
 
 def test_staging_item_accepts_media_reference(
@@ -204,8 +209,8 @@ def test_rich_text_rejects_overlap() -> None:
         RichText(
             text="abcdef",
             marks=(
-                Mark(kind=MarkKind.BOLD, start=0, length=4),
-                Mark(kind=MarkKind.ITALIC, start=2, length=2),
+                Mark(kind=MarkKind.BOLD, start=0, len=4),
+                Mark(kind=MarkKind.ITALIC, start=2, len=2),
             ),
         )
 
@@ -214,23 +219,44 @@ def test_rich_text_rejects_out_of_bounds() -> None:
     with pytest.raises(ValidationError, match="past the end"):
         RichText(
             text="abc",
-            marks=(Mark(kind=MarkKind.BOLD, start=2, length=5),),
+            marks=(Mark(kind=MarkKind.BOLD, start=2, len=5),),
         )
 
 
-def test_image_mark_requires_asset() -> None:
-    with pytest.raises(ValidationError, match="asset_id"):
-        Mark(kind=MarkKind.IMAGE, start=0, length=0)
+def test_image_mark_requires_a_url() -> None:
+    with pytest.raises(ValidationError, match="url"):
+        Mark(kind=MarkKind.IMAGE, start=0, len=0, position=ImagePosition.BELOW)
+
+
+def test_image_mark_requires_a_position() -> None:
+    with pytest.raises(ValidationError, match="position"):
+        Mark(
+            kind=MarkKind.IMAGE,
+            start=0,
+            len=0,
+            url="https://example.com/figure.png",
+        )
 
 
 def test_image_mark_rejects_nonzero_length() -> None:
     with pytest.raises(ValidationError, match="zero length"):
-        Mark(kind=MarkKind.IMAGE, start=0, length=1, asset_id="a" * 64)
+        Mark(
+            kind=MarkKind.IMAGE,
+            start=0,
+            len=1,
+            url="https://example.com/figure.png",
+            position=ImagePosition.BELOW,
+        )
 
 
-def test_text_mark_rejects_asset() -> None:
+def test_text_mark_rejects_a_url() -> None:
     with pytest.raises(ValidationError, match="only image marks"):
-        Mark(kind=MarkKind.BOLD, start=0, length=1, asset_id="a" * 64)
+        Mark(
+            kind=MarkKind.BOLD,
+            start=0,
+            len=1,
+            url="https://example.com/figure.png",
+        )
 
 
 def test_gate_verdict_rejects_passed_with_error() -> None:

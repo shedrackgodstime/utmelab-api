@@ -9,7 +9,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, cast
 
-from utmelab_pipeline.domain.enums import MarkKind, Severity
+from utmelab_pipeline.domain.enums import ImagePosition, MarkKind, Severity
 from utmelab_pipeline.domain.hashing import payload_hash
 from utmelab_pipeline.domain.models.common import (
     CatalogRef,
@@ -192,8 +192,8 @@ class FixtureSource:
 
         option_ids = self._check_options(payload.get("options"))
         issues.extend(self._check_answer(payload.get("answer"), option_ids))
-        media_keys = self._check_media(payload.get("media", []))
-        issues.extend(self._check_stem_marks(payload.get("stem_marks", []), media_keys))
+        media_urls = self._check_media(payload.get("media", []))
+        issues.extend(self._check_stem_marks(payload.get("stem_marks", []), media_urls))
         return issues
 
     def _check_options(self, raw_options: object) -> list[str]:
@@ -218,19 +218,19 @@ class FixtureSource:
         return []
 
     def _check_media(self, raw_media: object) -> list[str]:
-        media_keys: list[str] = []
+        media_urls: list[str] = []
         if not isinstance(raw_media, list):
-            return media_keys
+            return media_urls
         for raw in raw_media:
             if not isinstance(raw, dict):
                 continue
             key = raw.get("key")
             url = raw.get("url")
             if isinstance(key, str) and isinstance(url, str):
-                media_keys.append(key)
-        return media_keys
+                media_urls.append(url)
+        return media_urls
 
-    def _check_stem_marks(self, raw_marks: object, media_keys: list[str]) -> list[str]:
+    def _check_stem_marks(self, raw_marks: object, media_urls: list[str]) -> list[str]:
         issues: list[str] = []
         if not isinstance(raw_marks, list):
             return issues
@@ -238,9 +238,11 @@ class FixtureSource:
             if not isinstance(raw, dict):
                 continue
             if raw.get("kind") == MarkKind.IMAGE.value:
-                key = raw.get("asset_key")
-                if not isinstance(key, str) or key not in media_keys:
-                    issues.append(f"source.mark: stem mark {index} references an unknown media key")
+                url = raw.get("url")
+                if not isinstance(url, str) or url not in media_urls:
+                    issues.append(
+                        f"source.mark: stem mark {index} references an unknown media url"
+                    )
         return issues
 
     def _option(self, raw: object) -> Option:
@@ -307,17 +309,27 @@ class FixtureSource:
             raise ValueError("mark must be an object")
         kind = raw.get("kind")
         start = raw.get("start")
-        length = raw.get("length")
-        asset_key = raw.get("asset_key")
+        length = raw.get("len")
+        url = raw.get("url")
+        position = raw.get("position")
         if not isinstance(kind, str):
             raise ValueError("mark kind must be a string")
         if isinstance(start, bool) or not isinstance(start, int):
             raise ValueError("mark start must be an integer")
         if isinstance(length, bool) or not isinstance(length, int):
-            raise ValueError("mark length must be an integer")
-        if asset_key is not None and not isinstance(asset_key, str):
-            raise ValueError("mark asset_key must be a string")
-        return Mark(kind=kind, start=start, length=length, asset_id=asset_key)
+            raise ValueError("mark len must be an integer")
+        if url is not None and not isinstance(url, str):
+            raise ValueError("mark url must be a string")
+        if position is not None and not isinstance(position, str):
+            raise ValueError("mark position must be a string")
+        return Mark(
+            kind=kind,
+            start=start,
+            len=length,
+            url=url,
+            position=position,
+            alt=raw.get("alt"),
+        )
 
     def _record(self, scope: Scope) -> dict[str, Any] | None:
         path = self._path(scope)
