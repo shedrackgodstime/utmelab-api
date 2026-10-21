@@ -41,6 +41,30 @@ BANK_AUTH_TOKEN = "TURSO_BANK_AUTH_TOKEN"
 GITLAB_TOKEN = "GITLAB_TOKEN"
 NVIDIA_API_KEY = "NVIDIA_API_KEY"
 
+#: The GitLab project that holds the figure bytes, ``group/project``.
+GITLAB_MEDIA_REPO = "GITLAB_MEDIA_REPO"
+#: The GitLab host. Self-hosted instances set this.
+GITLAB_HOST = "GITLAB_HOST"
+#: The branch the media project publishes to.
+MEDIA_BRANCH = "UTMELAB_BANK_MEDIA_BRANCH"
+#: The url prefix a served figure gets. Derived from the repo when unset.
+MEDIA_BASE_URL = "UTMELAB_BANK_MEDIA_BASE_URL"
+#: The push is closed until somebody opens it deliberately.
+MEDIA_UPLOAD_ENABLED = "UTMELAB_BANK_MEDIA_UPLOAD_ENABLED"
+
+#: The model that tags, explains and verifies.
+AI_MODEL = "UTMELAB_BANK_AI_MODEL"
+#: The two models that witness a figure. They must differ: one model twice is
+#: not an independent witness.
+AI_IMAGE_MODEL = "UTMELAB_BANK_AI_IMAGE_MODEL"
+AI_IMAGE_SECOND_MODEL = "UTMELAB_BANK_AI_IMAGE_SECOND_MODEL"
+
+#: What we have today. Two different free models on the OpenCode provider,
+#: both picked for vision work; swap them in ``.env`` without touching code.
+DEFAULT_AI_MODEL = "opencode/deepseek-v4.1-flash-free"
+DEFAULT_AI_IMAGE_MODEL = "opencode/nemotron-3.5-super-vl-free"
+DEFAULT_AI_IMAGE_SECOND_MODEL = "opencode/glm-5.3-flash-free"
+
 
 class ConfigError(RuntimeError):
     """Raised when a required setting is missing or unusable."""
@@ -82,11 +106,52 @@ class Settings:
     bank_auth_token: str
     gitlab_token: str | None = None
     nvidia_api_key: str | None = None
+    #: ``group/project`` of the GitLab media project.
+    gitlab_media_repo: str | None = None
+    gitlab_host: str = "gitlab.com"
+    media_branch: str = "main"
+    #: An explicit served url prefix. Derived from the repo when unset.
+    media_base_url: str | None = None
+    media_upload_enabled: bool = False
+    ai_model: str = DEFAULT_AI_MODEL
+    ai_image_model: str = DEFAULT_AI_IMAGE_MODEL
+    ai_image_second_model: str = DEFAULT_AI_IMAGE_SECOND_MODEL
 
     @property
     def var_dir(self) -> Path:
         """The bank's own working directory."""
         return VAR_DIR
+
+    @property
+    def media_repo_path(self) -> Path:
+        """Where the media clone lives. Inside the bank's own var dir."""
+        return VAR_DIR / "media"
+
+    @property
+    def media_remote(self) -> str:
+        """The clone url, with the token in it, or empty when unconfigured.
+
+        Empty is a real answer: it means "local only", and the store then
+        records bytes without claiming a publication.
+        """
+        if not self.gitlab_media_repo or not self.gitlab_token:
+            return ""
+        return f"https://oauth2:{self.gitlab_token}@{self.gitlab_host}/{self.gitlab_media_repo}.git"
+
+    @property
+    def media_base(self) -> str:
+        """The url prefix a served figure gets.
+
+        The bank records the bare name ``<sha>.<ext>``; this is the prefix the
+        row's inline gets, so any hosting move is one setting, not a rewrite.
+        """
+        if self.media_base_url:
+            return self.media_base_url.rstrip("/")
+        if not self.gitlab_media_repo:
+            return ""
+        return (
+            f"https://{self.gitlab_host}/{self.gitlab_media_repo}/-/raw/{self.media_branch}/images"
+        )
 
 
 def load_settings(*, require: bool = True) -> Settings:
@@ -124,4 +189,12 @@ def load_settings(*, require: bool = True) -> Settings:
         bank_auth_token=bank_token,
         gitlab_token=values.get(GITLAB_TOKEN) or None,
         nvidia_api_key=values.get(NVIDIA_API_KEY) or None,
+        gitlab_media_repo=values.get(GITLAB_MEDIA_REPO) or None,
+        gitlab_host=values.get(GITLAB_HOST) or "gitlab.com",
+        media_branch=values.get(MEDIA_BRANCH) or "main",
+        media_base_url=values.get(MEDIA_BASE_URL) or None,
+        media_upload_enabled=values.get(MEDIA_UPLOAD_ENABLED) == "1",
+        ai_model=values.get(AI_MODEL) or DEFAULT_AI_MODEL,
+        ai_image_model=values.get(AI_IMAGE_MODEL) or DEFAULT_AI_IMAGE_MODEL,
+        ai_image_second_model=(values.get(AI_IMAGE_SECOND_MODEL) or DEFAULT_AI_IMAGE_SECOND_MODEL),
     )
