@@ -27,6 +27,12 @@ PASSAGES = "passages"
 #: scan the whole bank, and the scan grows with the bank.
 CONTENT_INDEX = "content_index"
 
+#: The table the bank owns for the reports it has already acted on.
+#:
+#: A report is acted on once. Recording that it was seen is what stops the
+#: same complaint opening the same work every time the reports are read.
+REPORT_LOG = "report_log"
+
 #: The bank's tables, one statement each. The engine refuses a string with
 #: more than one statement in it, so they are kept apart.
 SCHEMA: tuple[str, ...] = (
@@ -77,6 +83,16 @@ SCHEMA: tuple[str, ...] = (
         PRIMARY KEY (origin, content_hash)
     )
     """,
+    """
+    CREATE TABLE IF NOT EXISTS report_log (
+        report_id       TEXT PRIMARY KEY,
+        target_type     TEXT NOT NULL,
+        target_id       TEXT NOT NULL,
+        reason          TEXT NOT NULL,
+        item_id         TEXT,
+        acted_at        TEXT NOT NULL
+    )
+    """,
 )
 
 INDEXES = (
@@ -86,6 +102,7 @@ INDEXES = (
     "CREATE INDEX IF NOT EXISTS idx_staging_content_hash ON staging_items(content_hash)",
     "CREATE INDEX IF NOT EXISTS idx_passages_scope ON passages(exam, subject)",
     "CREATE INDEX IF NOT EXISTS idx_content_index_near ON content_index(near_duplicate)",
+    "CREATE INDEX IF NOT EXISTS idx_report_log_target ON report_log(target_type, target_id)",
 )
 
 
@@ -121,6 +138,7 @@ async def _migrate(client: Any) -> None:
 
 __all__ = [
     "CONTENT_INDEX",
+    "REPORT_LOG",
     "INDEXES",
     "MIGRATIONS",
     "PASSAGES",

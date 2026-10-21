@@ -12,9 +12,11 @@ from __future__ import annotations
 
 import json
 from collections.abc import AsyncIterator
+from datetime import UTC, datetime
 from typing import Any, Optional, Protocol
 
 from utmelab_bank.domain.dedupe import near_duplicate_fingerprint
+from utmelab_bank.domain.reports import Report
 
 
 class SqlClient(Protocol):
@@ -84,5 +86,54 @@ class ProductionContentReader:
         for row in result.rows:
             yield self._known(row)
 
+    async def hashes(self) -> dict[str, str]:
+        """Every question id production holds, and the hash it holds.
 
-__all__ = ["KnownQuestion", "ProductionContentReader", "SqlClient"]
+        This is what the drift check compares against. The hash is read, not
+        recomputed, because production stores the one it wrote.
+        """
+        result = await self._client.execute("SELECT id, content_hash FROM questions")
+        return {str(row[0]): str(row[1]) for row in result.rows}
+
+
+class ProductionReportReader:
+    """Reads the reports consumers have made.
+
+    The server owns the table, and the reasons are its five. The bank reads
+    them and turns them into work.
+    """
+
+    def __init__(self, client: SqlClient) -> None:
+        self._client = client
+
+    async def reports(self) -> tuple[Report, ...]:
+        """Every report the server holds, oldest first."""
+        result = await self._client.execute(
+            "SELECT id, target_type, target_id, reporter, reason, detail, "
+            "created_at FROM reports ORDER BY created_at, id"
+        )
+        return tuple(self._report(row) for row in result.rows)
+
+    def _report(self, row: tuple[Any, ...]) -> Report:
+        created = row[6]
+        if isinstance(created, (int, float)):
+            created_at = datetime.fromtimestamp(created, tz=UTC)
+        else:
+            created_at = datetime.fromisoformat(str(created).replace("Z", "++00:00"))
+        return Report(
+            id=str(row[0]),
+            target_type=str(row[1]),
+            target_id=str(row[2]),
+            reporter=str(row[3]),
+            reason=str(row[4]),
+            detail=str(row[5]) if row[5] is not None else None,
+            created_at=created_at,
+        )
+
+
+__all__ = [
+    "KnownQuestion",
+    "ProductionContentReader",
+    "ProductionReportReader",
+    "SqlClient",
+]

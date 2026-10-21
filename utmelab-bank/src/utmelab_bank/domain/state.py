@@ -1,11 +1,22 @@
-"""The allowed state transitions. This is the only source of truth."""
+"""The allowed state transitions. This is the only source of truth.
+
+The pipeline is a loop, not a line. Content that is already in production can
+come back, twice over:
+
+- A **consumer reported it**, so the content is wrong and it is reworked.
+- **It drifted**, so what production holds is no longer what the bank
+  checked, and the bank redoes it.
+
+Both land back at ``enriched``, because both need the content looked at
+again before it is checked again.
+"""
 
 from types import MappingProxyType
 from typing import Mapping
 
 from .enums import State
 
-TERMINAL_STATES = frozenset({State.READY, State.REJECTED, State.FAILED})
+TERMINAL_STATES = frozenset({State.REJECTED, State.FAILED})
 
 TRANSITIONS: Mapping[State, frozenset[State]] = MappingProxyType(
     {
@@ -21,7 +32,12 @@ TRANSITIONS: Mapping[State, frozenset[State]] = MappingProxyType(
         State.DESCRIBED: frozenset({State.ENRICHED, State.REJECTED, State.FAILED}),
         State.ENRICHED: frozenset({State.VERIFIED, State.REJECTED, State.FAILED}),
         State.VERIFIED: frozenset({State.READY, State.REJECTED, State.FAILED}),
-        State.READY: frozenset(),
+        # The bundle was handed over, so the bank is tracking a live row.
+        State.READY: frozenset({State.LIVE, State.REJECTED, State.FAILED}),
+        # It is in production and something was said about it.
+        State.LIVE: frozenset({State.REPORTED, State.ENRICHED, State.REJECTED, State.FAILED}),
+        # A consumer reported it. The content is reworked.
+        State.REPORTED: frozenset({State.ENRICHED, State.REJECTED, State.FAILED}),
         State.REJECTED: frozenset(),
         State.FAILED: frozenset(),
     }

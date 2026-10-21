@@ -730,13 +730,14 @@ A ready bundle, made of:
 
 | What | Should be |
 |---|---|
-| The bank never reads the server's `reports` | a report is work, and the table is right there |
+| The bank never refreshes the reports | the report log records what was acted on, and the reports are read on a schedule |
 | The audit is not run against real content | the agreement rate is the number that decides how much content can move, and it has never been measured on a real run |
 | The bundle is not placed anywhere | placing it is a separate piece of work, and the bank stops at ready |
 | There is no `live` state and no `reported` state | content that has been handed over has to stay tracked, and a report has to become work |
 | Nothing checks for drift | the server's own predicate detects it, and the bank should run the same check against what it handed over |
 | The bank has no notion of a ready bundle | a definition of done, with the counts that go with it |
 | The bank never refreshes the index | the index is a cache of what production holds, and it has to be brought up to date on a schedule |
+| Nothing drives the loop | the steps exist and are wired to services, but there is no runner yet, so nothing calls them on a schedule |
 
 ### 9.3 There, but empty
 
@@ -771,8 +772,10 @@ are different evidence.
    audit samples the machine's work and measures the agreement.
 6. **The ready bundle.** Built. Eight conditions, each machine-checkable,
    and a report that says where every row stands.
-7. **The report consumer and the drift check,** so a complaint or a changed
-   row comes back as work.
+7. **The report consumer and the drift check.** Built. A report against a
+   row the bank placed reopens it, and a report against a row it did not
+   place opens a new item. Drift is the hash comparison against what
+   production holds, and a drifted row goes back to the bench.
 
 The media work waits. The source url on the mark renders today, and the asset
 pipeline is a later cleanup rather than a blocker for any of the seven above.

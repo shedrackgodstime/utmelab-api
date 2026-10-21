@@ -12,8 +12,6 @@ The layout follows what each thing talks to.
 """
 
 from .catalog import ProductionCatalogReader, SqlClient
-from .dedupe_service import DedupeService
-from .index_refresh import IndexRefresher
 from .database import (
     DatabaseError,
     Result,
@@ -22,12 +20,21 @@ from .database import (
     catalog_reader,
     prod_client,
 )
+from .dedupe_service import DedupeService
+from .drift_service import DriftService
+from .index_refresh import IndexRefresher
+from .production import ProductionContentReader, ProductionReportReader
+from .report_service import ReportService
 
 __all__ = [
     "DatabaseError",
     "DedupeService",
+    "DriftService",
     "IndexRefresher",
     "ProductionCatalogReader",
+    "ProductionContentReader",
+    "ProductionReportReader",
+    "ReportService",
     "Result",
     "SqlClient",
     "TursoClient",

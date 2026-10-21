@@ -23,6 +23,13 @@ class SourceCapability(StrEnum):
 
 
 class State(StrEnum):
+    """Where a piece of content is in the pipeline.
+
+    The pipeline is a loop. ``live`` is content the bank handed over and
+    production serves, and it is not the end: a report or a drift brings it
+    back to ``enriched`` to be looked at again.
+    """
+
     PLANNED = "planned"
     ACQUIRED = "acquired"
     ADAPTED = "adapted"
@@ -34,6 +41,8 @@ class State(StrEnum):
     ENRICHED = "enriched"
     VERIFIED = "verified"
     READY = "ready"
+    LIVE = "live"
+    REPORTED = "reported"
     REJECTED = "rejected"
     FAILED = "failed"
 

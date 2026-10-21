@@ -47,8 +47,36 @@ def test_cannot_skip_to_ready() -> None:
 
 
 def test_terminal_states_have_no_exits() -> None:
-    for state in (State.READY, State.REJECTED, State.FAILED):
+    for state in (State.REJECTED, State.FAILED):
         assert next_states(state) == frozenset()
+
+
+def test_ready_is_not_the_end() -> None:
+    """A ready bundle is handed over, so the bank keeps tracking the row."""
+    assert can_transition(State.READY, State.LIVE)
+
+
+def test_a_live_row_can_be_reported() -> None:
+    assert can_transition(State.LIVE, State.REPORTED)
+
+
+def test_a_reported_row_goes_back_to_the_bench() -> None:
+    """The content is reworked, so it is looked at again."""
+    assert can_transition(State.REPORTED, State.ENRICHED)
+
+
+def test_a_live_row_can_drift_back_to_the_bench() -> None:
+    """The content is fine, but the check on it is stale."""
+    assert can_transition(State.LIVE, State.ENRICHED)
+
+
+def test_the_live_loop_is_a_loop() -> None:
+    """Content that is already in production comes back."""
+    assert can_transition(State.LIVE, State.REPORTED)
+    assert can_transition(State.REPORTED, State.ENRICHED)
+    assert can_transition(State.ENRICHED, State.VERIFIED)
+    assert can_transition(State.VERIFIED, State.READY)
+    assert can_transition(State.READY, State.LIVE)
 
 
 def test_staging_item_transition_refuses_an_invented_move(staging_item: StagingItem) -> None:

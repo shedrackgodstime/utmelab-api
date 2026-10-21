@@ -125,6 +125,18 @@ content, and the AI re-review of live rows.
 A live row that fails a re-check comes back as work. The bank is a loop, not
 a one-shot factory.
 
+**The loop is the state machine.** `ready` is not the end: a row goes to
+`live` when it is handed over, and it comes back to `enriched` twice over. A
+consumer reported it, so the content is wrong. Or it drifted, so what
+production holds is no longer what the bank checked, and the content is fine
+but the check on it is stale. Both need the content looked at again.
+
+**A report is evidence, not a verdict.** The server's reasons are its five: a
+wrong answer, an unclear stem, a broken option, a wrong explanation, and
+other. A report says the content deserves a look and what the look should be
+about. The bank records what it acted on, so the same complaint does not open
+the same work twice.
+
 ## D8. The catalogue is the placement authority
 
 The catalog is read from production, never copied and never invented. A

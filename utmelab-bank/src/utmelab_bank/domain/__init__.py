@@ -69,6 +69,7 @@ from .ready import (
     ReadyCondition,
     ReadyReport,
 )
+from .reports import Drift, Report, ReportReason, ReportTarget
 from .ports import (
     AnswerVerifier,
     CatalogReader,
@@ -86,10 +87,14 @@ from .state import InvalidTransition, assert_transition, can_transition, next_st
 
 __all__ = [
     "Agreement",
+    "Drift",
     "ConditionReport",
     "ReadyBundle",
     "ReadyCondition",
     "ReadyReport",
+    "Report",
+    "ReportReason",
+    "ReportTarget",
     "agreement",
     "AnswerVerdict",
     "AnswerVerifier",
