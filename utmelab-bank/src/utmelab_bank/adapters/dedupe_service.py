@@ -11,8 +11,6 @@ the duplicate is worth keeping.
 
 from __future__ import annotations
 
-from typing import Optional
-
 from utmelab_bank.domain.dedupe import Duplicate, near_duplicate_fingerprint
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.models import StagingItem
@@ -36,7 +34,7 @@ class DedupeService:
             tuple(option.text.text for option in item.content.options),
         )
 
-    async def find(self, item: StagingItem) -> Optional[Duplicate]:
+    async def find(self, item: StagingItem) -> Duplicate | None:
         """The duplicate of this item, if there is one.
 
         The exact match wins, because a row that is the same content is a

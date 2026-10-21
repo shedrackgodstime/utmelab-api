@@ -13,7 +13,7 @@ waste of effort as one that duplicates a live row.
 from __future__ import annotations
 
 from collections.abc import Sequence
-from typing import Any, Optional
+from typing import Any
 
 from utmelab_bank.domain.dedupe import Duplicate
 
@@ -70,9 +70,7 @@ class ContentIndexStore:
         """
         for start in range(0, len(entries), BATCH):
             batch = entries[start : start + BATCH]
-            placeholders = ", ".join(
-                "(?, ?, ?, ?)" for _ in batch
-            )
+            placeholders = ", ".join("(?, ?, ?, ?)" for _ in batch)
             args: list[Any] = []
             for content_hash, near_duplicate, origin, question_id in batch:
                 args.extend([content_hash, near_duplicate, origin, question_id])
@@ -84,11 +82,9 @@ class ContentIndexStore:
 
     async def forget(self, origin: str) -> None:
         """Drop everything from one origin, so it can be reloaded clean."""
-        await self._client.execute(
-            "DELETE FROM content_index WHERE origin = ?", [origin]
-        )
+        await self._client.execute("DELETE FROM content_index WHERE origin = ?", [origin])
 
-    async def exact_match(self, content_hash: str) -> Optional[str]:
+    async def exact_match(self, content_hash: str) -> str | None:
         """The id of the known question with this content hash, if any."""
         result = await self._client.execute(
             "SELECT question_id FROM content_index WHERE content_hash = ? LIMIT 1",
@@ -99,15 +95,12 @@ class ContentIndexStore:
     async def near_matches(self, near_duplicate: str) -> tuple[str, ...]:
         """The ids of the known questions with this near-duplicate fingerprint."""
         result = await self._client.execute(
-            "SELECT question_id FROM content_index WHERE near_duplicate = ? "
-            "ORDER BY question_id",
+            "SELECT question_id FROM content_index WHERE near_duplicate = ? ORDER BY question_id",
             [near_duplicate],
         )
         return tuple(str(row[0]) for row in result.rows)
 
-    async def find(
-        self, *, content_hash: str, near_duplicate: str
-    ) -> Optional[Duplicate]:
+    async def find(self, *, content_hash: str, near_duplicate: str) -> Duplicate | None:
         """The first duplicate of this content, exact first.
 
         The exact match wins, because a row that is the same content is a
@@ -126,12 +119,10 @@ class ContentIndexStore:
         """Commit whatever is open, so a batch of writes lands together."""
         await self._client.commit()
 
-    async def count(self, origin: Optional[str] = None) -> int:
+    async def count(self, origin: str | None = None) -> int:
         """How many questions the index holds."""
         if origin is None:
-            result = await self._client.execute(
-                "SELECT count(*) FROM content_index"
-            )
+            result = await self._client.execute("SELECT count(*) FROM content_index")
         else:
             result = await self._client.execute(
                 "SELECT count(*) FROM content_index WHERE origin = ?", [origin]

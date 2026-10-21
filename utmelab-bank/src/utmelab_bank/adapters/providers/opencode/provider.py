@@ -11,13 +11,13 @@ from urllib.parse import unquote, urlparse
 
 from pydantic import BaseModel, ValidationError
 
+from utmelab_bank.adapters.providers.catalog_prompt import catalog_for_prompt
 from utmelab_bank.domain.capabilities import (
     DescribeImageRequest,
     ExplainRequest,
     TagRequest,
     VerifyAnswerRequest,
 )
-from utmelab_bank.adapters.providers.catalog_prompt import catalog_for_prompt
 from utmelab_bank.domain.enums import Capability
 from utmelab_bank.domain.models import (
     AnswerVerdict,
@@ -180,14 +180,10 @@ class OpenCodeProvider:
         try:
             result = await self._runner.run(argv, timeout=self._timeout)
         except TimeoutError as exc:
-            raise OpenCodeError(
-                f"opencode timed out after {self._timeout} seconds"
-            ) from exc
+            raise OpenCodeError(f"opencode timed out after {self._timeout} seconds") from exc
         if result.returncode != 0:
             detail = result.stderr.strip() or result.stdout.strip()
-            raise OpenCodeError(
-                f"opencode failed with exit code {result.returncode}: {detail}"
-            )
+            raise OpenCodeError(f"opencode failed with exit code {result.returncode}: {detail}")
         return self._collect_text(result.stdout)
 
     def _content_payload(self, item: StagingItem) -> dict[str, Any]:
@@ -222,9 +218,7 @@ class OpenCodeProvider:
         try:
             return model_type.model_validate(data)
         except ValidationError as exc:
-            raise OpenCodeError(
-                f"model output did not match {model_type.__name__}"
-            ) from exc
+            raise OpenCodeError(f"model output did not match {model_type.__name__}") from exc
 
     @staticmethod
     def _collect_text(stdout: str) -> str:

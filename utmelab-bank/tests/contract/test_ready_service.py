@@ -5,14 +5,15 @@ decide whether a bundle can be placed without further judgement.
 """
 
 from datetime import UTC, datetime
+
 from utmelab_bank.adapters.ready_service import ReadyService
 from utmelab_bank.domain.enums import (
     ImagePosition,
     InlineKind,
     Severity,
     State,
-    VerificationKind,
     Verdict,
+    VerificationKind,
 )
 from utmelab_bank.domain.models import (
     CatalogRef,
@@ -46,11 +47,7 @@ def catalog() -> CatalogSnapshot:
         exam="JAMB",
         subject="mathematics",
         topics=(CatalogTopic(id="algebra", slug="algebra", name="Algebra"),),
-        subtopics=(
-            CatalogSubtopic(
-                id="surds", slug="surds", name="Surds", topic_id="algebra"
-            ),
-        ),
+        subtopics=(CatalogSubtopic(id="surds", slug="surds", name="Surds", topic_id="algebra"),),
     )
 
 
@@ -238,9 +235,7 @@ def test_a_row_whose_content_changed_after_the_check_is_not_ready() -> None:
     item = make_item()
     edited = item.model_copy(
         update={
-            "content": item.content.model_copy(
-                update={"stem": RichText(text="What is 2 + 3?")}
-            )
+            "content": item.content.model_copy(update={"stem": RichText(text="What is 2 + 3?")})
         }
     )
 
@@ -254,9 +249,7 @@ def test_a_subtopic_outside_the_catalog_is_not_ready() -> None:
     item = make_item()
     assert item.catalog is not None
     misplaced = item.model_copy(
-        update={
-            "catalog": item.catalog.model_copy(update={"subtopic_id": "not-there"})
-        }
+        update={"catalog": item.catalog.model_copy(update={"subtopic_id": "not-there"})}
     )
 
     bundle = service().bundle([misplaced])

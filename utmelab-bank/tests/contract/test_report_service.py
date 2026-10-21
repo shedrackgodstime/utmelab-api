@@ -5,7 +5,7 @@ wrong, and drift says the check on it is stale.
 """
 
 from datetime import UTC, datetime
-from typing import Any, Optional
+from typing import Any
 
 import pytest
 
@@ -13,7 +13,6 @@ from utmelab_bank.adapters.drift_service import DriftService
 from utmelab_bank.adapters.report_service import ReportService
 from utmelab_bank.adapters.store.reports import ReportLogStore
 from utmelab_bank.domain.enums import State
-from utmelab_bank.domain.state import can_transition
 from utmelab_bank.domain.models import (
     Content,
     Hashes,
@@ -24,6 +23,7 @@ from utmelab_bank.domain.models import (
     StagingItem,
 )
 from utmelab_bank.domain.reports import Drift, Report, ReportReason, ReportTarget
+from utmelab_bank.domain.state import can_transition
 
 NOW = datetime(2026, 10, 21, 9, 0, tzinfo=UTC)
 HASH = "c" * 64
@@ -39,9 +39,9 @@ class FakeClient:
     async def execute(
         self,
         statement: str,
-        args: Optional[list[Any]] = None,
+        args: list[Any] | None = None,
         *,
-        commit: Optional[bool] = None,
+        commit: bool | None = None,
     ) -> Any:
         self.statements.append(statement)
         values = args or []
@@ -106,7 +106,7 @@ def make_report(
     report_id: str = "rpt_1",
     target_id: str = "live:q1",
     reason: str = ReportReason.WRONG_ANSWER,
-    detail: Optional[str] = "the answer should be 4",
+    detail: str | None = "the answer should be 4",
 ) -> Report:
     return Report(
         id=report_id,

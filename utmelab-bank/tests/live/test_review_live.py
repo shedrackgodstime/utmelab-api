@@ -16,7 +16,7 @@ import pytest
 
 from utmelab_bank.adapters.providers.opencode import OpenCodeProvider
 from utmelab_bank.adapters.review_service import ReviewService
-from utmelab_bank.domain.enums import State, VerificationKind, Verdict
+from utmelab_bank.domain.enums import State, Verdict, VerificationKind
 from utmelab_bank.domain.models import StagingItem
 
 pytestmark = [

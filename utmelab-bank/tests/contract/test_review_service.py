@@ -13,7 +13,7 @@ import pytest
 from utmelab_bank.adapters.audit_service import AuditService
 from utmelab_bank.adapters.review_service import ReviewFailed, ReviewService
 from utmelab_bank.domain.audit import agreement
-from utmelab_bank.domain.enums import State, VerificationKind, Verdict
+from utmelab_bank.domain.enums import State, Verdict, VerificationKind
 from utmelab_bank.domain.models import (
     AnswerVerdict,
     Content,
@@ -191,9 +191,7 @@ def reviewed_item(item_id: str, verdict: Verdict) -> StagingItem:
         created_at=NOW,
         producer=Producer(provider="opencode", model="nemotron-3-ultra"),
     )
-    evidence = item.evidence.model_copy(
-        update={"verifications": (record,)}
-    )
+    evidence = item.evidence.model_copy(update={"verifications": (record,)})
     return item.model_copy(update={"evidence": evidence})
 
 

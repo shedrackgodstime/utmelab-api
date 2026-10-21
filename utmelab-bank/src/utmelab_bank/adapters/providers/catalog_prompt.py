@@ -72,9 +72,7 @@ def candidate_ids(
         for subtopic in catalog.subtopics
     ]
     ranked = sorted(scored_subtopics, key=lambda pair: (-pair[0], pair[1].id))
-    keep_subtopics = tuple(
-        subtopic.id for score, subtopic in ranked if score > 0
-    )[:max_candidates]
+    keep_subtopics = tuple(subtopic.id for score, subtopic in ranked if score > 0)[:max_candidates]
     if not keep_subtopics:
         keep_subtopics = tuple(subtopic.id for _, subtopic in ranked[:max_candidates])
 
@@ -83,9 +81,7 @@ def candidate_ids(
         for topic in catalog.topics
     ]
     ranked_topics = sorted(scored_topics, key=lambda pair: (-pair[0], pair[1].id))
-    keep_topics = tuple(topic.id for score, topic in ranked_topics if score > 0)[
-        :max_candidates
-    ]
+    keep_topics = tuple(topic.id for score, topic in ranked_topics if score > 0)[:max_candidates]
     if not keep_topics:
         keep_topics = tuple(topic.id for _, topic in ranked_topics[:max_candidates])
     return keep_topics, keep_subtopics
@@ -114,11 +110,7 @@ def catalog_for_prompt(
             {
                 "id": topic.id,
                 "name": topic.name,
-                **(
-                    {"objectives": list(topic.objectives)}
-                    if topic.id in keep_topics
-                    else {}
-                ),
+                **({"objectives": list(topic.objectives)} if topic.id in keep_topics else {}),
             }
             for topic in catalog.topics
         ],

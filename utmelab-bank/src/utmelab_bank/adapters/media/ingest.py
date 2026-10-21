@@ -1,7 +1,7 @@
 """Media ingestion: fetch, validate, store, and attach to staging items."""
 
 import hashlib
-from typing import Optional
+import io
 
 import httpx
 from PIL import Image
@@ -19,7 +19,7 @@ class HttpMediaFetcher(MediaFetcher):
         *,
         max_bytes: int = 10_000_000,  # 10 MB
         timeout: float = 30.0,
-        client: Optional[httpx.AsyncClient] = None,
+        client: httpx.AsyncClient | None = None,
     ) -> None:
         self.max_bytes = max_bytes
         self.timeout = timeout
@@ -44,7 +44,7 @@ class HttpMediaFetcher(MediaFetcher):
 class PillowMediaValidator(MediaValidator):
     """Validate media using Pillow (MIME sniff, decode, dimensions)."""
 
-    async def validate(self, data: bytes, mime: Optional[str] = None) -> MediaAsset:
+    async def validate(self, data: bytes, mime: str | None = None) -> MediaAsset:
         # Sniff MIME if not provided
         if mime is None:
             mime = self._sniff_mime(data)
@@ -53,7 +53,6 @@ class PillowMediaValidator(MediaValidator):
 
         # Decode with Pillow to validate and get dimensions
         try:
-            import io
             img = Image.open(io.BytesIO(data))
             img.verify()  # Verify integrity
             img = Image.open(io.BytesIO(data))  # Reopen after verify
@@ -61,7 +60,7 @@ class PillowMediaValidator(MediaValidator):
             detected = Image.MIME.get(img.format) if img.format else None
             mime = mime or detected
         except Exception as e:
-            raise ValueError(f"Invalid image data: {e}")
+            raise ValueError(f"Invalid image data: {e}") from e
 
         # Compute hash
         asset_id = hashlib.sha256(data).hexdigest()
@@ -79,7 +78,7 @@ class PillowMediaValidator(MediaValidator):
             readable=True,
         )
 
-    def _sniff_mime(self, data: bytes) -> Optional[str]:
+    def _sniff_mime(self, data: bytes) -> str | None:
         """Sniff MIME type from magic bytes."""
         if data.startswith(b"\x89PNG\r\n\x1a\n"):
             return "image/png"
@@ -137,6 +136,7 @@ async def ingest_media_task(
     """Task: ingest media refs for a staging item."""
     ingestor = MediaIngestor(fetcher, validator, store)
     return await ingestor.ingest_refs(item)
+
 
 __all__ = [
     "HttpMediaFetcher",

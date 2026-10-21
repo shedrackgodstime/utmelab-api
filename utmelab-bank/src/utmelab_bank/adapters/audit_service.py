@@ -11,7 +11,7 @@ audited, because the second look is not the same look.
 
 from __future__ import annotations
 
-from typing import Iterable, Sequence
+from collections.abc import Iterable, Sequence
 
 from utmelab_bank.domain.audit import Agreement, agreement
 from utmelab_bank.domain.enums import Verdict
@@ -37,14 +37,10 @@ class AuditService:
         if count >= len(self._items):
             return tuple(self._items)
         last = len(self._items) - 1
-        picked = [
-            self._items[round(index * last / (count - 1))] for index in range(count)
-        ]
+        picked = [self._items[round(index * last / (count - 1))] for index in range(count)]
         return tuple(picked)
 
-    def machine_verdicts(
-        self, items: Iterable[StagingItem]
-    ) -> tuple[Verdict, ...]:
+    def machine_verdicts(self, items: Iterable[StagingItem]) -> tuple[Verdict, ...]:
         """The machine's verdict on each row, from its last verification."""
         verdicts: list[Verdict] = []
         for item in items:

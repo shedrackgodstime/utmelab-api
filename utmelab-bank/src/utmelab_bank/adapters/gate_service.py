@@ -14,7 +14,7 @@ person either fixes the content or records a clearance with a reason, and
 
 from __future__ import annotations
 
-from typing import Iterable, Optional, Sequence
+from collections.abc import Iterable, Sequence
 
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.gate import (
@@ -47,8 +47,8 @@ class GateService:
         known_hashes: Iterable[str] = (),
         known_near_duplicates: Iterable[str] = (),
         known_passage_ids: Iterable[str] = (),
-        catalog: Optional[CatalogSnapshot] = None,
-        clearances: Optional[dict[str, Sequence[Clearance]]] = None,
+        catalog: CatalogSnapshot | None = None,
+        clearances: dict[str, Sequence[Clearance]] | None = None,
     ) -> None:
         self._known_ids = frozenset(known_ids)
         self._known_hashes = frozenset(known_hashes)
@@ -68,7 +68,7 @@ class GateService:
         be absent while the content is still judged for its own shape.
         """
         scope = item.provenance.scope
-        placement: Optional[CatalogRef] = item.catalog
+        placement: CatalogRef | None = item.catalog
         content_hash = item.hashes.content_hash if item.hashes else None
         return GateContext(
             content=item.content,
@@ -105,9 +105,7 @@ class GateService:
     def apply_all(self, items: Iterable[StagingItem]) -> list[StagingItem]:
         """Judge many items and report the counts per rule."""
         judged = [self.apply(item) for item in items]
-        self.last_counts = refusal_counts(
-            [self.judge(item) for item in items]
-        )
+        self.last_counts = refusal_counts([self.judge(item) for item in items])
         return judged
 
     def queue(self, items: Iterable[StagingItem]) -> dict[str, tuple[Issue, ...]]:

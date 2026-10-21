@@ -2,7 +2,7 @@
 
 import json
 from datetime import UTC, datetime
-from typing import Any, Optional
+from typing import Any
 
 from utmelab_bank.adapters.dedupe_service import DedupeService
 from utmelab_bank.adapters.index_refresh import IndexRefresher
@@ -39,9 +39,9 @@ class FakeClient:
     async def execute(
         self,
         statement: str,
-        args: Optional[list[Any]] = None,
+        args: list[Any] | None = None,
         *,
-        commit: Optional[bool] = None,
+        commit: bool | None = None,
     ) -> FakeResult:
         self.statements.append(statement)
         values = args or []
@@ -66,7 +66,6 @@ class FakeClient:
     async def commit(self) -> None:
         """The client contract has a commit, so the fake does too."""
         return None
-
 
 
 def make_item(
@@ -170,12 +169,8 @@ async def test_an_unknown_content_is_not_a_duplicate() -> None:
 async def test_forgetting_an_origin_drops_only_that_origin() -> None:
     client = FakeClient()
     index = ContentIndexStore(client)
-    await index.remember(
-        content_hash=HASH, near_duplicate="a", origin=PRODUCTION, question_id="q1"
-    )
-    await index.remember(
-        content_hash="d" * 64, near_duplicate="b", origin=BANK, question_id="q2"
-    )
+    await index.remember(content_hash=HASH, near_duplicate="a", origin=PRODUCTION, question_id="q1")
+    await index.remember(content_hash="d" * 64, near_duplicate="b", origin=BANK, question_id="q2")
 
     await index.forget(PRODUCTION)
 
@@ -231,9 +226,7 @@ async def test_a_shuffled_duplicate_is_refused() -> None:
         origin=PRODUCTION,
         question_id="q_existing",
     )
-    shuffled = make_item(
-        item_id="live:q2", stem="What is 2 + 2?", options=("6", "5", "4", "3")
-    )
+    shuffled = make_item(item_id="live:q2", stem="What is 2 + 2?", options=("6", "5", "4", "3"))
 
     refused = await service.apply(shuffled)
 
@@ -267,40 +260,38 @@ class ProductionClient:
     async def execute(
         self,
         statement: str,
-        args: Optional[list[Any]] = None,
+        args: list[Any] | None = None,
         *,
-        commit: Optional[bool] = None,
+        commit: bool | None = None,
     ) -> FakeResult:
         return FakeResult(self.rows)
 
 
 async def test_the_reader_computes_the_near_duplicate_fingerprint() -> None:
     options = json.dumps(
-        [{"id": "a", "text": {"text": "3", "inline": []}},
-         {"id": "b", "text": {"text": "4", "inline": []}}]
+        [
+            {"id": "a", "text": {"text": "3", "inline": []}},
+            {"id": "b", "text": {"text": "4", "inline": []}},
+        ]
     )
-    reader = ProductionContentReader(
-        ProductionClient([("q1", HASH, "What is 2 + 2?", options)])
-    )
+    reader = ProductionContentReader(ProductionClient([("q1", HASH, "What is 2 + 2?", options)]))
 
     known = await reader.known()
 
     assert len(known) == 1
     assert known[0].question_id == "q1"
     assert known[0].content_hash == HASH
-    assert known[0].near_duplicate == near_duplicate_fingerprint(
-        "What is 2 + 2?", ("3", "4")
-    )
+    assert known[0].near_duplicate == near_duplicate_fingerprint("What is 2 + 2?", ("3", "4"))
 
 
 async def test_the_refresh_loads_production_into_the_index() -> None:
     options = json.dumps(
-        [{"id": "a", "text": {"text": "3", "inline": []}},
-         {"id": "b", "text": {"text": "4", "inline": []}}]
+        [
+            {"id": "a", "text": {"text": "3", "inline": []}},
+            {"id": "b", "text": {"text": "4", "inline": []}},
+        ]
     )
-    reader = ProductionContentReader(
-        ProductionClient([("q1", HASH, "What is 2 + 2?", options)])
-    )
+    reader = ProductionContentReader(ProductionClient([("q1", HASH, "What is 2 + 2?", options)]))
     index = ContentIndexStore(FakeClient())
     refresher = IndexRefresher(index, reader)
 
@@ -320,12 +311,8 @@ async def test_the_refresh_drops_what_production_deleted() -> None:
     """A question production has removed must stop being a duplicate."""
     client = FakeClient()
     index = ContentIndexStore(client)
-    options = json.dumps(
-        [{"id": "a", "text": {"text": "3", "inline": []}}]
-    )
-    reader = ProductionContentReader(
-        ProductionClient([("q1", HASH, "What is 2 + 2?", options)])
-    )
+    options = json.dumps([{"id": "a", "text": {"text": "3", "inline": []}}])
+    reader = ProductionContentReader(ProductionClient([("q1", HASH, "What is 2 + 2?", options)]))
     await IndexRefresher(index, reader).refresh()
     assert await index.count(PRODUCTION) == 1
 

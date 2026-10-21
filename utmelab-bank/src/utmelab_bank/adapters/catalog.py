@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-from typing import Any, Optional, Protocol
+from typing import Any, Protocol
 
 from utmelab_bank.domain.models import (
     CatalogSnapshot,
@@ -16,7 +16,7 @@ from utmelab_bank.domain.models import (
 class SqlClient(Protocol):
     """Minimal async SQL client contract. The Turso client satisfies it."""
 
-    async def execute(self, statement: str, args: Optional[list[Any]] = None) -> Any: ...
+    async def execute(self, statement: str, args: list[Any] | None = None) -> Any: ...
 
 
 class ProductionCatalogReader:
@@ -42,7 +42,7 @@ class ProductionCatalogReader:
             subtopics=subtopics,
         )
 
-    async def _subject(self, exam: str, subject: str) -> Optional[tuple[str, str, str]]:
+    async def _subject(self, exam: str, subject: str) -> tuple[str, str, str] | None:
         result = await self._client.execute(
             "SELECT slug, exam, name FROM subjects WHERE exam = ? AND slug = ?",
             [exam, subject],

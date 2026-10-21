@@ -2,17 +2,15 @@
 
 from __future__ import annotations
 
-from typing import Optional
-
 from utmelab_bank.domain.capabilities import ExplainRequest, TagRequest
 from utmelab_bank.domain.enums import State
-from utmelab_bank.domain.ports import Explainer, Tagger
 from utmelab_bank.domain.models import (
     CatalogSnapshot,
     Explanation,
     StagingItem,
     TagProposal,
 )
+from utmelab_bank.domain.ports import Explainer, Tagger
 
 
 class UnknownSubtopic(ValueError):
@@ -85,7 +83,7 @@ class ExplainService:
     async def explain(
         self,
         item: StagingItem,
-        catalog: Optional[CatalogSnapshot] = None,
+        catalog: CatalogSnapshot | None = None,
     ) -> StagingItem:
         request = ExplainRequest(item=item, catalog=catalog)
         explanation = await self._explainer.explain(request)

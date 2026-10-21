@@ -23,8 +23,8 @@ percent the other way.
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
-from typing import Iterable
 
 from .enums import Verdict
 
@@ -66,9 +66,7 @@ class Agreement:
         )
 
 
-def agreement(
-    machine: Iterable[Verdict], person: Iterable[Verdict]
-) -> Agreement:
+def agreement(machine: Iterable[Verdict], person: Iterable[Verdict]) -> Agreement:
     """Compare the machine's verdicts with the person's on a sample.
 
     A verdict of abstain is neither a pass nor a fail, so it is counted as
@@ -87,7 +85,7 @@ def agreement(
     agreed = 0
     missed = 0
     over_strict = 0
-    for theirs, ours in zip(machine_verdicts, person_verdicts):
+    for theirs, ours in zip(machine_verdicts, person_verdicts, strict=True):
         if theirs is ours:
             agreed += 1
         elif theirs is Verdict.PASS and ours is not Verdict.PASS:

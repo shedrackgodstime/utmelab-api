@@ -18,11 +18,10 @@ import os
 
 import pytest
 
+from tests.live.production_rows import StoredExplanation, option, rich
 from utmelab_bank.adapters.database import TursoClient
 from utmelab_bank.config import load_settings
 from utmelab_bank.domain.hashing import content_fingerprint
-
-from tests.live.production_rows import StoredExplanation, option, rich
 
 pytestmark = [
     pytest.mark.live,
@@ -35,13 +34,10 @@ pytestmark = [
 
 def test_every_production_row_hashes_the_same_way() -> None:
     settings = load_settings()
-    client = TursoClient(
-        url=settings.prod_database_url, token=settings.prod_auth_token
-    )
+    client = TursoClient(url=settings.prod_database_url, token=settings.prod_auth_token)
     result = asyncio.run(
         client.execute(
-            "SELECT id, text, inline, options, answer, explanation, content_hash "
-            "FROM questions"
+            "SELECT id, text, inline, options, answer, explanation, content_hash FROM questions"
         )
     )
 

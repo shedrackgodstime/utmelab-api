@@ -74,11 +74,7 @@ def catalog() -> CatalogSnapshot:
         exam="JAMB",
         subject="mathematics",
         topics=(CatalogTopic(id="algebra", slug="algebra", name="Algebra"),),
-        subtopics=(
-            CatalogSubtopic(
-                id="surds", slug="surds", name="Surds", topic_id="algebra"
-            ),
-        ),
+        subtopics=(CatalogSubtopic(id="surds", slug="surds", name="Surds", topic_id="algebra"),),
     )
 
 
@@ -94,9 +90,9 @@ def test_a_clean_item_moves_to_gated() -> None:
 def test_a_refused_item_keeps_the_reason() -> None:
     service = GateService()
 
-    refused = service.apply(make_item(content=make_item().content.model_copy(
-        update={"source_explanation": None}
-    )))
+    refused = service.apply(
+        make_item(content=make_item().content.model_copy(update={"source_explanation": None}))
+    )
 
     assert refused.state is State.REJECTED
     assert refused.error is not None
@@ -134,7 +130,9 @@ def test_the_judgement_is_refused_until_a_person_clears_it() -> None:
 
 def test_the_known_hashes_catch_a_duplicate() -> None:
     service = GateService(known_hashes=["c" * 64])
-    item = make_item(hashes=Hashes(payload_hash="b" * 64, content_hash="c" * 64, bundle_hash="d" * 64))
+    item = make_item(
+        hashes=Hashes(payload_hash="b" * 64, content_hash="c" * 64, bundle_hash="d" * 64)
+    )
 
     refused = service.apply(item)
 
@@ -205,9 +203,7 @@ def test_the_queue_is_what_the_person_works_through() -> None:
     queue = service.queue([good, bad])
 
     assert list(queue) == ["source-1:item-2"]
-    assert [issue.code for issue in queue["source-1:item-2"]] == [
-        "explanation_missing"
-    ]
+    assert [issue.code for issue in queue["source-1:item-2"]] == ["explanation_missing"]
 
 
 def test_a_cleared_item_leaves_the_queue() -> None:
@@ -218,9 +214,7 @@ def test_a_cleared_item_leaves_the_queue() -> None:
         created_at=NOW,
     )
     service = GateService(clearances={"source-1:item-1": [clearance]})
-    item = make_item(
-        content=make_item().content.model_copy(update={"source_explanation": None})
-    )
+    item = make_item(content=make_item().content.model_copy(update={"source_explanation": None}))
 
     assert service.queue([item]) == {}
     assert service.apply(item).state is State.GATED

@@ -11,8 +11,8 @@ person decides what to do with the number.
 
 from __future__ import annotations
 
+from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field
-from typing import Callable, Iterable, Optional
 
 from utmelab_bank.domain.enums import VerificationKind
 from utmelab_bank.domain.hashing import content_fingerprint
@@ -36,16 +36,16 @@ class ReadyContext:
     what the bank already holds.
     """
 
-    catalog: Optional[CatalogSnapshot] = None
+    catalog: CatalogSnapshot | None = None
     known_passage_ids: frozenset[str] = field(default_factory=frozenset)
 
 
 #: What a check returns: None when the row meets the condition, and the
 #: reason when it does not.
-Check = Callable[[StagingItem, ReadyContext], Optional[str]]
+Check = Callable[[StagingItem, ReadyContext], str | None]
 
 
-def _gated(item: StagingItem, context: ReadyContext) -> Optional[str]:
+def _gated(item: StagingItem, context: ReadyContext) -> str | None:
     verdict = item.evidence.gate
     if verdict is None:
         return "the gate did not run"
@@ -55,7 +55,7 @@ def _gated(item: StagingItem, context: ReadyContext) -> Optional[str]:
     return None
 
 
-def _reviewed(item: StagingItem, context: ReadyContext) -> Optional[str]:
+def _reviewed(item: StagingItem, context: ReadyContext) -> str | None:
     """A check that covers the answer and the explanation, at this hash.
 
     The hash matters. A check made against content that has since changed
@@ -76,7 +76,7 @@ def _reviewed(item: StagingItem, context: ReadyContext) -> Optional[str]:
     return "no check covers the answer and the explanation"
 
 
-def _placed(item: StagingItem, context: ReadyContext) -> Optional[str]:
+def _placed(item: StagingItem, context: ReadyContext) -> str | None:
     placement = item.catalog
     if placement is None:
         return "there is no placement"
@@ -90,9 +90,7 @@ def _placed(item: StagingItem, context: ReadyContext) -> Optional[str]:
             f"the catalog is for {catalog.subject!r} for {catalog.exam!r}, not "
             f"{placement.subject!r} for {placement.exam!r}"
         )
-    subtopic = next(
-        (s for s in catalog.subtopics if s.slug == placement.subtopic_id), None
-    )
+    subtopic = next((s for s in catalog.subtopics if s.slug == placement.subtopic_id), None)
     if subtopic is None:
         return f"the subtopic {placement.subtopic_id!r} is not in the catalog"
     if subtopic.topic_id != placement.topic_id:
@@ -106,7 +104,7 @@ def _placed(item: StagingItem, context: ReadyContext) -> Optional[str]:
     return None
 
 
-def _complete(item: StagingItem, context: ReadyContext) -> Optional[str]:
+def _complete(item: StagingItem, context: ReadyContext) -> str | None:
     content = item.content
     if not content.stem.text.strip():
         return "the stem is empty"
@@ -120,7 +118,7 @@ def _complete(item: StagingItem, context: ReadyContext) -> Optional[str]:
     return None
 
 
-def _explanatory(item: StagingItem, context: ReadyContext) -> Optional[str]:
+def _explanatory(item: StagingItem, context: ReadyContext) -> str | None:
     explanation = item.evidence.explanation
     if explanation is None:
         return "there is no explanation"
@@ -131,11 +129,14 @@ def _explanatory(item: StagingItem, context: ReadyContext) -> Optional[str]:
     return None
 
 
-def _resolvable(item: StagingItem, context: ReadyContext) -> Optional[str]:
+def _resolvable(item: StagingItem, context: ReadyContext) -> str | None:
     passage_id = item.content.passage_id
-    if passage_id is not None:
-        if item.passage is None and passage_id not in context.known_passage_ids:
-            return f"the passage {passage_id!r} is not held"
+    if (
+        passage_id is not None
+        and item.passage is None
+        and passage_id not in context.known_passage_ids
+    ):
+        return f"the passage {passage_id!r} is not held"
     for inline in item.content.stem.inline:
         if inline.kind.value == "image":
             if not inline.url:
@@ -145,7 +146,7 @@ def _resolvable(item: StagingItem, context: ReadyContext) -> Optional[str]:
     return None
 
 
-def _identified(item: StagingItem, context: ReadyContext) -> Optional[str]:
+def _identified(item: StagingItem, context: ReadyContext) -> str | None:
     """The hash must match the content as it stands.
 
     This is the check that catches an edit made after the check, and it is
@@ -164,7 +165,7 @@ def _identified(item: StagingItem, context: ReadyContext) -> Optional[str]:
     return None
 
 
-def _new(item: StagingItem, context: ReadyContext) -> Optional[str]:
+def _new(item: StagingItem, context: ReadyContext) -> str | None:
     """The row must carry a hash, and the dedupe step has already run.
 
     The near-duplicate check belongs to the dedupe step, and it has already
@@ -194,7 +195,7 @@ class ReadyService:
     def __init__(
         self,
         *,
-        catalog: Optional[CatalogSnapshot] = None,
+        catalog: CatalogSnapshot | None = None,
         known_passage_ids: Iterable[str] = (),
     ) -> None:
         self._context = ReadyContext(

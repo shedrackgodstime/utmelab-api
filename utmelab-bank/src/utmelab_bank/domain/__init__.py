@@ -1,7 +1,7 @@
 """Domain layer. No I/O, no provider names, no framework imports."""
 
-from .dedupe import Duplicate, near_duplicate_fingerprint
 from .audit import Agreement, agreement
+from .dedupe import Duplicate, near_duplicate_fingerprint
 from .enums import (
     Capability,
     InlineKind,
@@ -11,8 +11,8 @@ from .enums import (
     VerificationKind,
 )
 from .gate import (
-    GateContext,
     RULES_VERSION,
+    GateContext,
     has_numbered_gap,
     mentions_figure,
     refusal_counts,
@@ -30,14 +30,14 @@ from .models import (
     DescribeImageRequest,
     DomainModel,
     Evidence,
-    Explanation,
     ExplainRequest,
     ExplainResponse,
+    Explanation,
     GateVerdict,
     Hashes,
     ImageDescription,
-    Issue,
     Inline,
+    Issue,
     MediaAsset,
     MediaRef,
     MimeType,
@@ -63,13 +63,6 @@ from .models import (
     VerifyAnswerResponse,
     Year,
 )
-from .ready import (
-    ConditionReport,
-    ReadyBundle,
-    ReadyCondition,
-    ReadyReport,
-)
-from .reports import Drift, Report, ReportReason, ReportTarget
 from .ports import (
     AnswerVerifier,
     CatalogReader,
@@ -82,6 +75,13 @@ from .ports import (
     StagingStore,
     Tagger,
 )
+from .ready import (
+    ConditionReport,
+    ReadyBundle,
+    ReadyCondition,
+    ReadyReport,
+)
+from .reports import Drift, Report, ReportReason, ReportTarget
 from .selector import Selector
 from .state import InvalidTransition, assert_transition, can_transition, next_states
 

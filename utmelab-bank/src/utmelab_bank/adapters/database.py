@@ -18,7 +18,7 @@ from __future__ import annotations
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
-from typing import Any, Optional
+from typing import Any
 
 from utmelab_bank.config import Settings
 
@@ -121,9 +121,9 @@ class TursoClient:
     async def execute(
         self,
         statement: str,
-        args: Optional[list[Any]] = None,
+        args: list[Any] | None = None,
         *,
-        commit: Optional[bool] = None,
+        commit: bool | None = None,
     ) -> Result:
         """Run one query in the driver's thread, retrying a dropped connection.
 
@@ -138,8 +138,9 @@ class TursoClient:
         the round trip is about a second.
         """
         loop = asyncio.get_running_loop()
-        last: Optional[BaseException] = None
+        last: BaseException | None = None
         for attempt in range(self._retries):
+
             def run() -> list[tuple[Any, ...]]:
                 connection = self._connect()
                 cursor = connection.execute(statement, args or [])
@@ -180,9 +181,7 @@ class TursoClient:
         connection = self._connection
         self._connection = None
         if connection is not None:
-            await asyncio.get_running_loop().run_in_executor(
-                self._executor, connection.close
-            )
+            await asyncio.get_running_loop().run_in_executor(self._executor, connection.close)
         self._executor.shutdown(wait=False)
 
 
@@ -196,7 +195,7 @@ def bank_client(settings: Settings) -> TursoClient:
     return TursoClient(settings.bank_database_url, settings.bank_auth_token)
 
 
-def catalog_reader(settings: Optional[Settings] = None) -> ProductionCatalogReader:
+def catalog_reader(settings: Settings | None = None) -> ProductionCatalogReader:
     """A catalog reader bound to the production database."""
     from utmelab_bank.config import load_settings
 

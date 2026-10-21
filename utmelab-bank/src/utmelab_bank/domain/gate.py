@@ -32,8 +32,8 @@ No I/O here. Everything the gate needs arrives in the context.
 from __future__ import annotations
 
 import re
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass, field
-from typing import Iterable, Optional, Sequence
 
 from .dedupe import near_duplicate_fingerprint
 from .enums import Severity
@@ -43,8 +43,8 @@ from .models.common import (
     Clearance,
     Content,
     GateVerdict,
-    Issue,
     Inline,
+    Issue,
     Passage,
 )
 
@@ -98,18 +98,18 @@ class GateContext:
     content: Content
     exam: str = ""
     subject: str = ""
-    year: Optional[int] = None
-    placement: Optional[CatalogRef] = None
-    catalog: Optional[CatalogSnapshot] = None
+    year: int | None = None
+    placement: CatalogRef | None = None
+    catalog: CatalogSnapshot | None = None
     #: The passage this row carries, if it brings one. The content names a
     #: passage by id, and the id may point at a passage already held.
-    passage: Optional[Passage] = None
+    passage: Passage | None = None
     known_ids: frozenset[str] = frozenset()
     known_hashes: frozenset[str] = frozenset()
     known_near_duplicates: frozenset[str] = frozenset()
     known_passage_ids: frozenset[str] = frozenset()
-    self_id: Optional[str] = None
-    self_hash: Optional[str] = None
+    self_id: str | None = None
+    self_hash: str | None = None
     clearances: tuple[Clearance, ...] = field(default_factory=tuple)
 
 
@@ -127,17 +127,13 @@ def mentions_figure(text: str) -> bool:
             pos = lower.find(hint, start)
             if pos < 0:
                 break
-            before_ok = pos == 0 or not (
-                lower[pos - 1].isalpha() or lower[pos - 1] == "-"
-            )
+            before_ok = pos == 0 or not (lower[pos - 1].isalpha() or lower[pos - 1] == "-")
             run = 0
             index = pos + len(hint)
             while index < len(lower) and (lower[index].isalpha() or lower[index] == "-"):
                 run += 1
                 index += 1
-            if prefix:
-                after_ok = True
-            elif run == 0:
+            if prefix or run == 0:
                 after_ok = True
             else:
                 after_ok = plural and run == 1 and lower[pos + len(hint)] == "s"
@@ -163,19 +159,15 @@ def has_numbered_gap(text: str) -> bool:
     return False
 
 
-def _error(code: str, message: str, field_name: Optional[str] = None) -> Issue:
+def _error(code: str, message: str, field_name: str | None = None) -> Issue:
     return Issue(code=code, message=message, severity=Severity.ERROR, field=field_name)
 
 
-def _judgement(code: str, message: str, field_name: Optional[str] = None) -> Issue:
-    return Issue(
-        code=code, message=message, severity=Severity.JUDGEMENT, field=field_name
-    )
+def _judgement(code: str, message: str, field_name: str | None = None) -> Issue:
+    return Issue(code=code, message=message, severity=Severity.JUDGEMENT, field=field_name)
 
 
-def check_inline(
-    text: str, inline: tuple[Inline, ...], label: str, issues: list[Issue]
-) -> None:
+def check_inline(text: str, inline: tuple[Inline, ...], label: str, issues: list[Issue]) -> None:
     """The rules every piece of text carries.
 
     Bounds are checked in Unicode characters, the same count the inline use.
@@ -210,14 +202,13 @@ def check_inline(
                 issues.append(
                     _error(
                         "image_inline_not_anchor",
-                        f"{label} inline {index} is an image, so its length must "
-                        "be zero",
+                        f"{label} inline {index} is an image, so its length must be zero",
                         label,
                     )
                 )
 
     order = sorted(range(len(inline)), key=lambda i: (inline[i].start, inline[i].len))
-    for first, second in zip(order, order[1:]):
+    for first, second in zip(order, order[1:], strict=False):
         a = inline[first]
         b = inline[second]
         identical = b.start == a.start and b.len == a.len
@@ -242,8 +233,7 @@ def check_plain_text(text: str, label: str, issues: list[Issue]) -> None:
         issues.append(
             _error(
                 "html_in_text",
-                f"{label} carries an HTML entity, which must be unescaped at "
-                "the source",
+                f"{label} carries an HTML entity, which must be unescaped at the source",
                 label,
             )
         )
@@ -257,14 +247,10 @@ def check_plain_text(text: str, label: str, issues: list[Issue]) -> None:
         )
 
 
-def check_option_ids(
-    option_ids: Sequence[str], answer: str, issues: list[Issue]
-) -> None:
+def check_option_ids(option_ids: Sequence[str], answer: str, issues: list[Issue]) -> None:
     """The option ids are a to e, unique, and the answer names one of them."""
     if len(set(option_ids)) != len(option_ids):
-        issues.append(
-            _error("option_id_duplicate", "option ids must be unique", "options")
-        )
+        issues.append(_error("option_id_duplicate", "option ids must be unique", "options"))
     for option_id in option_ids:
         if option_id not in _OPTION_IDS:
             issues.append(
@@ -290,8 +276,7 @@ def check_option_count(count: int, issues: list[Issue]) -> None:
         issues.append(
             _error(
                 "option_count",
-                f"the question has {count} options, and the live rule is "
-                "exactly four",
+                f"the question has {count} options, and the live rule is exactly four",
                 "options",
             )
         )
@@ -305,9 +290,7 @@ def _check_stem(content: Content, issues: list[Issue]) -> None:
     check_plain_text(stem.text, "text", issues)
 
     lower = stem.text.lower()
-    if "underlin" in lower and not any(
-        mark.kind.value == "underline" for mark in stem.inline
-    ):
+    if "underlin" in lower and not any(mark.kind.value == "underline" for mark in stem.inline):
         issues.append(
             _judgement(
                 "underline_missing",
@@ -315,9 +298,7 @@ def _check_stem(content: Content, issues: list[Issue]) -> None:
                 "text",
             )
         )
-    if mentions_figure(stem.text) and not any(
-        mark.kind.value == "image" for mark in stem.inline
-    ):
+    if mentions_figure(stem.text) and not any(mark.kind.value == "image" for mark in stem.inline):
         issues.append(
             _judgement(
                 "missing_figure",
@@ -361,8 +342,7 @@ def _check_explanation(content: Content, issues: list[Issue]) -> None:
         issues.append(
             _error(
                 "explanation_missing",
-                "the question has no explanation, and a question without one "
-                "cannot be reviewed",
+                "the question has no explanation, and a question without one cannot be reviewed",
                 "explanation",
             )
         )
@@ -373,9 +353,7 @@ def _check_explanation(content: Content, issues: list[Issue]) -> None:
 
 def _check_numbers(context: GateContext, issues: list[Issue]) -> None:
     if not context.exam:
-        issues.append(
-            _error("exam_empty", "the question names no exam", "exam")
-        )
+        issues.append(_error("exam_empty", "the question names no exam", "exam"))
     if context.year is not None and not 1900 <= context.year <= 2100:
         issues.append(
             _error(
@@ -424,9 +402,7 @@ def _check_placement(context: GateContext, issues: list[Issue]) -> None:
             )
         )
         return
-    subtopic = next(
-        (s for s in catalog.subtopics if s.slug == placement.subtopic_id), None
-    )
+    subtopic = next((s for s in catalog.subtopics if s.slug == placement.subtopic_id), None)
     if subtopic is None:
         issues.append(
             _error(
@@ -444,8 +420,7 @@ def _check_placement(context: GateContext, issues: list[Issue]) -> None:
         issues.append(
             _error(
                 "subtopic_topic_missing",
-                f"the subtopic {placement.subtopic_id!r} points at an unknown "
-                "topic",
+                f"the subtopic {placement.subtopic_id!r} points at an unknown topic",
                 "subtopic_id",
             )
         )
@@ -475,8 +450,7 @@ def _check_passage(context: GateContext, issues: list[Issue]) -> None:
             issues.append(
                 _judgement(
                     "cloze_without_passage",
-                    "the stem names a numbered gap but the question has no "
-                    "passage",
+                    "the stem names a numbered gap but the question has no passage",
                     "passage",
                 )
             )
@@ -498,8 +472,7 @@ def _check_passage(context: GateContext, issues: list[Issue]) -> None:
         issues.append(
             _error(
                 "passage_id_mismatch",
-                f"the question names passage {passage_id!r} but the item "
-                f"carries {passage.id!r}",
+                f"the question names passage {passage_id!r} but the item carries {passage.id!r}",
                 "passage",
             )
         )

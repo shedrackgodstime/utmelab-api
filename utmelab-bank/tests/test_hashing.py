@@ -27,10 +27,7 @@ def test_canonical_json_is_compact() -> None:
 
 
 def test_sha256_matches_the_known_empty_digest() -> None:
-    assert (
-        sha256_hex(b"")
-        == "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    )
+    assert sha256_hex(b"") == "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 
 
 def test_payload_hash_is_a_sha256() -> None:
@@ -69,9 +66,7 @@ def test_the_hash_keeps_a_leading_space() -> None:
     )
 
     assert (
-        content_fingerprint(
-            stem=stem, options=options, answer="d", explanation=explanation
-        )
+        content_fingerprint(stem=stem, options=options, answer="d", explanation=explanation)
         == "97106b8098f0e78c01a6e041e4a3f040524025c52246b69e7a9b6e0506728cad"
     )
 
@@ -79,13 +74,13 @@ def test_the_hash_keeps_a_leading_space() -> None:
 def test_the_hash_keeps_a_leading_space_on_the_key_point() -> None:
     stem = RichText(
         text=(
-            "Read the passage and answer questions below. \"Akwai wani yaro mai "
+            'Read the passage and answer questions below. "Akwai wani yaro mai '
             "suna Umar, wanda ke zaune a garin Funtua. Umar na da sha'awar "
             "karatu sosai, musamman kimiyya. Duk da cewa iyayensa ba su da "
             "karfi, suna dagewa wajen tallafa masa domin cimma burinsa. "
             "Kullum yana zuwa makaranta da wuri, yana kuma taimaka wa "
             "malamansa. Ranar wata gasa ta kimiyya, Umar ya lashe kyauta ta "
-            "farko. Wannan ya sa aka yaba masa a makarantar gaba ɗaya.\" Me "
+            'farko. Wannan ya sa aka yaba masa a makarantar gaba ɗaya." Me '
             "Umar ya samu bayan gasar kimiyya?"
         )
     )
@@ -98,15 +93,12 @@ def test_the_hash_keeps_a_leading_space_on_the_key_point() -> None:
     explanation = StoredExplanation(
         key_point=" contests pay prizes.",
         body=(
-            "After the contest: kyauta ta farko. Expulsion, transfer and "
-            "punishment miss the win."
+            "After the contest: kyauta ta farko. Expulsion, transfer and punishment miss the win."
         ),
         trap="Transfer tempts as school-move, but the fruit is prize.",
     )
 
     assert (
-        content_fingerprint(
-            stem=stem, options=options, answer="c", explanation=explanation
-        )
+        content_fingerprint(stem=stem, options=options, answer="c", explanation=explanation)
         == "a11038719770d705d2dc8cd145ac50da0a3c939b1b749718480d5c2c9301c264"
     )

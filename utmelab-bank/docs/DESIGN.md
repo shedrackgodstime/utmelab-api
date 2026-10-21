@@ -730,28 +730,27 @@ A ready bundle, made of:
 
 | What | Should be |
 |---|---|
-| The bank never refreshes the reports | the report log records what was acted on, and the reports are read on a schedule |
 | The audit is not run against real content | the agreement rate is the number that decides how much content can move, and it has never been measured on a real run |
 | The bundle is not placed anywhere | placing it is a separate piece of work, and the bank stops at ready |
-| There is no `live` state and no `reported` state | content that has been handed over has to stay tracked, and a report has to become work |
-| Nothing checks for drift | the server's own predicate detects it, and the bank should run the same check against what it handed over |
-| The bank has no notion of a ready bundle | a definition of done, with the counts that go with it |
-| The bank never refreshes the index | the index is a cache of what production holds, and it has to be brought up to date on a schedule |
-| Nothing drives the loop | the steps exist and are wired to services, but there is no runner yet, so nothing calls them on a schedule |
+| Nothing drives the loop | the steps exist and are wired to services, but there is no CLI or runner yet, so nothing calls them on a schedule |
+| The index refresh is not scheduled | the refresh exists; nothing runs it on a cadence |
 
 ### 9.3 There, but empty
 
-Two models exist with no implementation behind them, and both are central.
+- **A real source.** The fixture source is a placeholder. The capability enum
+  names the shapes the real one must supply.
+- **The media upload.** The store, fetch, validate, describe and consensus
+  exist. Nothing publishes a blob yet, so figures still point at the source.
+- **The CLI and the task runner.** Every step is a service. Nothing calls the
+  services on a schedule, and there is no command surface.
+- **The human review surface.** The review service records a verdict. There is
+  no screen or command that lists the queue.
+- **The agreement rate.** The audit exists and is tested. It has not been run
+  on a real sample, so the number that decides how much content can move is
+  still unknown.
 
-**`GateVerdict`.** It carries `passed`, a list of `Issue` with a severity, and
-a rules version. That is the right shape for the gate's answer. No code
-produces it, so nothing can fail yet.
-
-**The `verifications` list on `Evidence`.** It carries a kind, a verdict, a
-scope, a content hash, a reviewer, a note and a producer. The server's record
-has `auto_rule`, `ai_bulk`, `ai_single` and `human`, and the bank's `ai`
-collapses the two AI kinds into one. A bulk run and a single careful check
-are different evidence.
+The gate, the verification record, the ready bundle, the reports and the drift
+check are built. §9.4 records them.
 
 ### 9.4 The order that makes sense
 

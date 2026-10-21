@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import os
 from datetime import UTC, datetime
+
 import pytest
 
 from utmelab_bank.adapters.database import bank_client, prod_client
@@ -85,9 +86,7 @@ async def test_a_production_row_fed_back_in_is_refused() -> None:
             marks=1.0,
         ),
         state=State.GATED,
-        hashes=Hashes(
-            payload_hash="b" * 64, content_hash=content_hash, bundle_hash="d" * 64
-        ),
+        hashes=Hashes(payload_hash="b" * 64, content_hash=content_hash, bundle_hash="d" * 64),
         created_at=now,
         updated_at=now,
     )

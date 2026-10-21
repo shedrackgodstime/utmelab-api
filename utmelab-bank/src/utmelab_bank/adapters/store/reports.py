@@ -7,7 +7,7 @@ same complaint opening the same work every time the reports are read.
 from __future__ import annotations
 
 from datetime import UTC, datetime
-from typing import Any, Optional
+from typing import Any
 
 from utmelab_bank.domain.reports import Report
 
@@ -28,9 +28,7 @@ class ReportLogStore:
         done = await self.seen()
         return tuple(report for report in reports if report.id not in done)
 
-    async def record(
-        self, report: Report, *, item_id: Optional[str] = None
-    ) -> None:
+    async def record(self, report: Report, *, item_id: str | None = None) -> None:
         """Record that a report was acted on, and on what."""
         await self._client.execute(
             """

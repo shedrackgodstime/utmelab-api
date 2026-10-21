@@ -23,9 +23,7 @@ def make_catalog() -> CatalogSnapshot:
         version="2026.1",
         exam="JAMB",
         subject="Biology",
-        topics=(
-            CatalogTopic(id="cell-biology", slug="cell-biology", name="Cell biology"),
-        ),
+        topics=(CatalogTopic(id="cell-biology", slug="cell-biology", name="Cell biology"),),
         subtopics=(
             CatalogSubtopic(
                 id="cell-structure",
@@ -60,9 +58,7 @@ def test_probe_counts_recorded_items() -> None:
 
 def test_probe_unknown_scope_is_empty() -> None:
     source = FixtureSource(FIXTURE_DIR)
-    coverage = asyncio.run(
-        source.probe(Scope(exam="JAMB", subject="Biology", year=2030))
-    )
+    coverage = asyncio.run(source.probe(Scope(exam="JAMB", subject="Biology", year=2030)))
     assert coverage.item_count == 0
 
 

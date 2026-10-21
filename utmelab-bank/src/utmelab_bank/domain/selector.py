@@ -27,6 +27,4 @@ class Selector(DomainModel):
             return False
         if self.year is not None and scope.year != self.year:
             return False
-        if self.has_media is not None and bool(item.media_assets) != self.has_media:
-            return False
-        return True
+        return self.has_media is None or bool(item.media_assets) == self.has_media

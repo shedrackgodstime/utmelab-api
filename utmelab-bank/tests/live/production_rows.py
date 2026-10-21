@@ -15,9 +15,7 @@ from utmelab_bank.domain.models.common import Content, Option, RichText
 
 def rich(raw: dict[str, Any]) -> RichText:
     """A production text object, which is a text and its inline list."""
-    return RichText.model_validate(
-        {"text": raw["text"], "inline": raw.get("inline") or []}
-    )
+    return RichText.model_validate({"text": raw["text"], "inline": raw.get("inline") or []})
 
 
 def option(raw: dict[str, Any]) -> Option:

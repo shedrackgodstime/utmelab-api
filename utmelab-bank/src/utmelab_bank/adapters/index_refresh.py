@@ -22,9 +22,7 @@ from utmelab_bank.adapters.store.index import (
 class IndexRefresher:
     """Loads what production holds into the bank's index."""
 
-    def __init__(
-        self, index: ContentIndexStore, reader: ProductionContentReader
-    ) -> None:
+    def __init__(self, index: ContentIndexStore, reader: ProductionContentReader) -> None:
         self._index = index
         self._reader = reader
 

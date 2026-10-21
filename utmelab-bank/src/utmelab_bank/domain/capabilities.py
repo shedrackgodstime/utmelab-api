@@ -17,7 +17,6 @@ from .models.common import (
     VerifyAnswerResponse,
 )
 
-
 CAPABILITY_INPUTS: dict[str, type[BaseModel]] = {
     "describe_image": DescribeImageRequest,
     "explain": ExplainRequest,

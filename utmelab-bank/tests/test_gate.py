@@ -11,13 +11,13 @@ from typing import Any
 
 import pytest
 
+from utmelab_bank.domain.dedupe import near_duplicate_fingerprint
 from utmelab_bank.domain.enums import (
     ImagePosition,
     InlineKind,
     PassageKind,
     Severity,
 )
-from utmelab_bank.domain.dedupe import near_duplicate_fingerprint
 from utmelab_bank.domain.gate import (
     RULES_VERSION,
     GateContext,
@@ -36,8 +36,8 @@ from utmelab_bank.domain.models import (
     Clearance,
     Content,
     GateVerdict,
-    Issue,
     Inline,
+    Issue,
     Option,
     Passage,
     RichText,
@@ -218,9 +218,7 @@ def test_markup_in_the_stem_fails() -> None:
 
 
 def test_an_empty_exam_fails() -> None:
-    verdict = run_gate(
-        GateContext(content=make_content(), exam="", subject="mathematics")
-    )
+    verdict = run_gate(GateContext(content=make_content(), exam="", subject="mathematics"))
 
     assert verdict.passed is False
     assert "exam_empty" in codes(verdict)

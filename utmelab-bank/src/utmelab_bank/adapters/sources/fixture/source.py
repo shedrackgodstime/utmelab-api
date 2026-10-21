@@ -234,9 +234,7 @@ class FixtureSource:
             if raw.get("kind") == InlineKind.IMAGE.value:
                 url = raw.get("url")
                 if not isinstance(url, str) or url not in media_urls:
-                    issues.append(
-                        f"source.mark: stem mark {index} references an unknown media url"
-                    )
+                    issues.append(f"source.mark: stem mark {index} references an unknown media url")
         return issues
 
     def _option(self, raw: object) -> Option:
@@ -247,6 +245,7 @@ class FixtureSource:
         if not isinstance(option_id, str) or not isinstance(text, str):
             raise ValueError("option needs an id and text")
         from utmelab_bank.domain.models.common import Option
+
         return Option(id=option_id, text=self._rich_text(text, raw.get("inline")))
 
     def _passage(self, raw: object, scope: Scope) -> Passage | None:
@@ -272,6 +271,7 @@ class FixtureSource:
         if not isinstance(kind, str):
             raise ValueError("passage needs a kind")
         from utmelab_bank.domain.models.common import Passage
+
         return Passage(
             id=passage_id,
             exam=scope.exam,

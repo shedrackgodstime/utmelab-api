@@ -13,7 +13,7 @@ from __future__ import annotations
 import json
 from collections.abc import AsyncIterator
 from datetime import UTC, datetime
-from typing import Any, Optional, Protocol
+from typing import Any, Protocol
 
 from utmelab_bank.domain.dedupe import near_duplicate_fingerprint
 from utmelab_bank.domain.reports import Report
@@ -22,7 +22,7 @@ from utmelab_bank.domain.reports import Report
 class SqlClient(Protocol):
     """Minimal async SQL client contract. The Turso client satisfies it."""
 
-    async def execute(self, statement: str, args: Optional[list[Any]] = None) -> Any: ...
+    async def execute(self, statement: str, args: list[Any] | None = None) -> Any: ...
 
 
 class KnownQuestion:
@@ -30,9 +30,7 @@ class KnownQuestion:
 
     __slots__ = ("question_id", "content_hash", "near_duplicate")
 
-    def __init__(
-        self, question_id: str, content_hash: str, near_duplicate: str
-    ) -> None:
+    def __init__(self, question_id: str, content_hash: str, near_duplicate: str) -> None:
         self.question_id = question_id
         self.content_hash = content_hash
         self.near_duplicate = near_duplicate
@@ -55,9 +53,7 @@ class ProductionContentReader:
 
     async def known(self) -> tuple[KnownQuestion, ...]:
         """Every question production holds, with both fingerprints."""
-        result = await self._client.execute(
-            "SELECT id, content_hash, text, options FROM questions"
-        )
+        result = await self._client.execute("SELECT id, content_hash, text, options FROM questions")
         return tuple(self._known(row) for row in result.rows)
 
     def _known(self, row: tuple[Any, ...]) -> KnownQuestion:
@@ -65,9 +61,7 @@ class ProductionContentReader:
         content_hash = str(row[1])
         stem = str(row[2])
         options = json.loads(row[3]) if row[3] else []
-        texts = tuple(
-            str(option.get("text", {}).get("text", "")) for option in options
-        )
+        texts = tuple(str(option.get("text", {}).get("text", "")) for option in options)
         return KnownQuestion(
             question_id=question_id,
             content_hash=content_hash,
@@ -80,9 +74,7 @@ class ProductionContentReader:
         The refresh writes each question to the index as it goes, so the
         memory stays flat however big the bank gets.
         """
-        result = await self._client.execute(
-            "SELECT id, content_hash, text, options FROM questions"
-        )
+        result = await self._client.execute("SELECT id, content_hash, text, options FROM questions")
         for row in result.rows:
             yield self._known(row)
 

@@ -19,7 +19,6 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Optional
 
 #: The bank package root. Everything the bank owns lives under it.
 BANK_ROOT = Path(__file__).resolve().parents[2]
@@ -78,8 +77,8 @@ class Settings:
     prod_auth_token: str
     bank_database_url: str
     bank_auth_token: str
-    gitlab_token: Optional[str] = None
-    nvidia_api_key: Optional[str] = None
+    gitlab_token: str | None = None
+    nvidia_api_key: str | None = None
 
     @property
     def var_dir(self) -> Path:
@@ -96,16 +95,12 @@ def load_settings(*, require: bool = True) -> Settings:
     values = _read_env()
 
     prod_url = values.get(PROD_DATABASE_URL, "")
-    prod_token = values.get(PROD_AUTH_TOKEN, "") or values.get(
-        PROD_READONLY_TOKEN, ""
-    )
+    prod_token = values.get(PROD_AUTH_TOKEN, "") or values.get(PROD_READONLY_TOKEN, "")
     bank_url = values.get(BANK_DATABASE_URL, "")
     bank_token = values.get(BANK_AUTH_TOKEN, "")
 
     if prod_url and not prod_token:
-        raise ConfigError(
-            f"the production catalog needs a read only token: set {PROD_AUTH_TOKEN}"
-        )
+        raise ConfigError(f"the production catalog needs a read only token: set {PROD_AUTH_TOKEN}")
     if require and not prod_url:
         raise ConfigError(
             "the production catalog database is not configured: set "
@@ -113,8 +108,7 @@ def load_settings(*, require: bool = True) -> Settings:
         )
     if require and not bank_url:
         raise ConfigError(
-            "the bank database is not configured: set "
-            f"{BANK_DATABASE_URL} in {ENV_FILE}"
+            f"the bank database is not configured: set {BANK_DATABASE_URL} in {ENV_FILE}"
         )
 
     return Settings(

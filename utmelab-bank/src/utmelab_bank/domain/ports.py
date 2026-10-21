@@ -1,7 +1,7 @@
 """Ports. The core depends on these shapes, never on a concrete adapter."""
 
 from collections.abc import AsyncIterator
-from typing import Optional, Protocol
+from typing import Protocol, runtime_checkable
 
 from .capabilities import (
     DescribeImageRequest,
@@ -27,8 +27,6 @@ from .models.proposals import (
     TagProposal,
 )
 
-
-from typing import runtime_checkable
 
 @runtime_checkable
 class Source(Protocol):
@@ -74,6 +72,7 @@ class AnswerVerifier(Protocol):
 @runtime_checkable
 class CatalogReader(Protocol):
     """Reads catalog from PRODUCTION DB for AI context."""
+
     async def snapshot(self, exam: str, subject: str) -> CatalogSnapshot: ...
 
 
@@ -95,11 +94,14 @@ class MediaStore(Protocol):
 @runtime_checkable
 class StagingStore(Protocol):
     """Our minimal staging DB - 1 table for items, 1 for media."""
+
     async def save(self, item: StagingItem) -> None: ...
 
     async def load(self, item_id: str) -> StagingItem | None: ...
 
-    async def transition(self, item_id: str, to_state: str, *, error: str | None = None) -> StagingItem: ...
+    async def transition(
+        self, item_id: str, to_state: str, *, error: str | None = None
+    ) -> StagingItem: ...
 
     async def list_by_state(self, state: str, *, limit: int = 100) -> tuple[StagingItem, ...]: ...
 
@@ -121,23 +123,23 @@ class ContentIndex(Protocol):
         question_id: str,
     ) -> None: ...
 
-    async def find(
-        self, *, content_hash: str, near_duplicate: str
-    ) -> Optional[Duplicate]: ...
+    async def find(self, *, content_hash: str, near_duplicate: str) -> Duplicate | None: ...
 
-    async def exact_match(self, content_hash: str) -> Optional[str]: ...
+    async def exact_match(self, content_hash: str) -> str | None: ...
 
     async def near_matches(self, near_duplicate: str) -> tuple[str, ...]: ...
 
-    async def count(self, origin: Optional[str] = None) -> int: ...
+    async def count(self, origin: str | None = None) -> int: ...
 
 
 class MediaFetcher(Protocol):
     """Downloads media from source URLs."""
+
     async def fetch(self, url: str) -> bytes: ...
 
 
 @runtime_checkable
 class MediaValidator(Protocol):
     """Validates downloaded media (MIME, dimensions, corruption)."""
+
     async def validate(self, data: bytes, mime: str | None) -> MediaAsset: ...

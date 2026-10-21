@@ -3,17 +3,25 @@
 from datetime import UTC, datetime
 from typing import Annotated, Any, Optional
 
-from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, HttpUrl, StringConstraints, model_validator
+from pydantic import (
+    AwareDatetime,
+    BaseModel,
+    ConfigDict,
+    Field,
+    HttpUrl,
+    StringConstraints,
+    model_validator,
+)
 
 from ..enums import (
     ImagePosition,
-    PassageKind,
     InlineKind,
+    PassageKind,
     Severity,
     SourceCapability,
     State,
-    VerificationKind,
     Verdict,
+    VerificationKind,
 )
 
 NonEmptyStr = Annotated[str, StringConstraints(min_length=1, strip_whitespace=True)]
@@ -104,6 +112,7 @@ class Hashes(DomainModel):
 
 class CatalogRef(DomainModel):
     """Reference to a catalog snapshot from production DB."""
+
     exam: NonEmptyStr
     subject: NonEmptyStr
     year: Year
@@ -130,6 +139,7 @@ class CatalogSubtopic(DomainModel):
 
 class CatalogSnapshot(DomainModel):
     """Production catalog snapshot fetched from production DB for AI context."""
+
     version: NonEmptyStr
     exam: NonEmptyStr
     subject: NonEmptyStr
@@ -159,6 +169,7 @@ class CatalogSnapshot(DomainModel):
                     f"subtopic {subtopic.id!r} points at unknown topic {subtopic.topic_id!r}"
                 )
         return self
+
 
 class Clearance(DomainModel):
     """A person resolving one refusal, with the reason recorded.
@@ -201,9 +212,7 @@ class GateVerdict(DomainModel):
     @model_validator(mode="after")
     def _check(self) -> "GateVerdict":
         if self.passed == bool(self.unresolved):
-            raise ValueError(
-                "passed must be true exactly when every issue has been cleared"
-            )
+            raise ValueError("passed must be true exactly when every issue has been cleared")
         return self
 
 
@@ -213,6 +222,7 @@ class Verification(DomainModel):
     The trust rule lives here: an AI verification must name the model that
     produced it, and a human verification must not carry a model producer.
     """
+
     id: NonEmptyStr
     kind: VerificationKind
     verdict: Verdict
@@ -221,7 +231,7 @@ class Verification(DomainModel):
     reviewer: NonEmptyStr
     note: NonEmptyStr | None = None
     created_at: AwareDatetime
-    producer: Optional[Producer] = None
+    producer: Producer | None = None
 
     @model_validator(mode="after")
     def _check(self) -> "Verification":
@@ -302,6 +312,7 @@ class SourceItem(DomainModel):
 
 class MediaRef(DomainModel):
     """Media reference from source (before download)."""
+
     key: NonEmptyStr
     source_url: HttpUrl
     mime: MimeType | None = None
@@ -311,6 +322,7 @@ class MediaRef(DomainModel):
 
 class MediaAsset(DomainModel):
     """Downloaded and validated media asset."""
+
     asset_id: Sha256
     mime: MimeType
     byte_size: int = Field(gt=0)
@@ -338,9 +350,9 @@ class Inline(DomainModel):
     #: fingerprint hashes it verbatim, so a normalising url type would change
     #: the hash. `https://example.com` and `https://example.com/` are
     #: different rows.
-    url: Optional[str] = None
-    position: Optional[ImagePosition] = None
-    alt: Optional[NonEmptyStr] = None
+    url: str | None = None
+    position: ImagePosition | None = None
+    alt: NonEmptyStr | None = None
 
     @model_validator(mode="after")
     def _check(self) -> "Inline":
@@ -388,11 +400,9 @@ class RichText(DomainModel):
             range(len(self.inline)),
             key=lambda i: (self.inline[i].start, self.inline[i].len),
         )
-        for a, b in zip(order, order[1:]):
+        for a, b in zip(order, order[1:], strict=False):
             first, second = self.inline[a], self.inline[b]
-            identical = (
-                second.start == first.start and second.len == first.len
-            )
+            identical = second.start == first.start and second.len == first.len
             if second.start < first.start + first.len and not identical:
                 raise ValueError(
                     f"inline (start {second.start}, len {second.len}) partially "
@@ -420,10 +430,10 @@ class Passage(DomainModel):
     subject: NonEmptyStr
     year: Year
     kind: PassageKind
-    title: Optional[NonEmptyStr] = None
-    author: Optional[NonEmptyStr] = None
+    title: NonEmptyStr | None = None
+    author: NonEmptyStr | None = None
     text: "RichText"
-    source_item_id: Optional[NonEmptyStr] = None
+    source_item_id: NonEmptyStr | None = None
 
 
 class Content(DomainModel):
@@ -437,7 +447,7 @@ class Content(DomainModel):
     #: The id of the passage this question needs, or null. A reference, not
     #: the passage itself: production has 28 questions pointing at 8
     #: passages, and only a reference lets two questions share one.
-    passage_id: Optional[NonEmptyStr] = None
+    passage_id: NonEmptyStr | None = None
     source_explanation: Optional["RichText"] = None
     section: NonEmptyStr | None = None
 
@@ -451,7 +461,7 @@ class Content(DomainModel):
         return self
 
     def rich_texts(self) -> tuple["RichText", ...]:
-        texts: list["RichText"] = [self.stem]
+        texts: list[RichText] = [self.stem]
         texts.extend(option.text for option in self.options)
         if self.source_explanation is not None:
             texts.append(self.source_explanation)
@@ -472,6 +482,7 @@ class StagingItem(DomainModel):
     Single staging row - the complete work unit.
     This is the ONE table in our staging DB.
     """
+
     id: NonEmptyStr  # same as provenance.external_key
     provenance: "Provenance"
     content: "Content"
@@ -497,13 +508,16 @@ class StagingItem(DomainModel):
         passage may already be held. A reference to a passage the item does
         carry under a different id is not.
         """
-        if self.passage is not None and self.content.passage_id is not None:
-            if self.passage.id != self.content.passage_id:
-                raise ValueError(
-                    "the content names passage "
-                    f"{self.content.passage_id!r} but the item carries "
-                    f"{self.passage.id!r}"
-                )
+        if (
+            self.passage is not None
+            and self.content.passage_id is not None
+            and self.passage.id != self.content.passage_id
+        ):
+            raise ValueError(
+                "the content names passage "
+                f"{self.content.passage_id!r} but the item carries "
+                f"{self.passage.id!r}"
+            )
         return self
 
     def transition_to(self, target: "State", *, error: NonEmptyStr | None = None) -> "StagingItem":
@@ -562,7 +576,12 @@ class StagingItem(DomainModel):
         if self.catalog is not None:
             scope = self.provenance.scope
             expected = (scope.exam, scope.subject, scope.year, scope.section)
-            actual = (self.catalog.exam, self.catalog.subject, self.catalog.year, self.catalog.section)
+            actual = (
+                self.catalog.exam,
+                self.catalog.subject,
+                self.catalog.year,
+                self.catalog.section,
+            )
             if actual != expected:
                 raise ValueError("catalog must match the provenance scope")
         return self
@@ -604,6 +623,7 @@ class DescribeImageRequest(DomainModel):
 
 class ExplainRequest(DomainModel):
     """Explain request WITH catalog context for AI to reference syllabus."""
+
     item: "StagingItem"
     catalog: Optional["CatalogSnapshot"] = None
 
@@ -641,12 +661,15 @@ class VerifyAnswerResponse(DomainModel):
     producer: "Producer"
 
 
-# Import forward-referenced types for model_rebuild
-from .proposals import (
-    TagProposal,
-    Explanation,
+# Import forward-referenced types for model_rebuild. The import stays here
+# because proposals imports common, so a module-level import above would be
+# circular. It also puts the names in this module's globals, which is what
+# model_rebuild() resolves against.
+from .proposals import (  # noqa: E402
     AnswerVerdict,
+    Explanation,
     ImageDescription,
+    TagProposal,
 )
 
 # Resolve forward references for models with forward references

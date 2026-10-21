@@ -5,7 +5,6 @@ import json
 import subprocess
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Optional
 
 from utmelab_bank.domain.models import MediaAsset
 from utmelab_bank.domain.ports import MediaStore
@@ -17,7 +16,7 @@ class GitMediaStore(MediaStore):
     def __init__(
         self,
         repo_path: Path,
-        remote_url: Optional[str] = None,
+        remote_url: str | None = None,
         branch: str = "main",
     ) -> None:
         self.repo_path = Path(repo_path)
@@ -72,7 +71,7 @@ class GitMediaStore(MediaStore):
         data: bytes,
         *,
         mime: str,
-        source_url: Optional[str] = None,
+        source_url: str | None = None,
     ) -> MediaAsset:
         """Store media bytes and return the asset metadata."""
         asset_id = self._compute_hash(data)
@@ -93,8 +92,10 @@ class GitMediaStore(MediaStore):
         width = height = None
         if mime.startswith("image/"):
             try:
-                from PIL import Image
                 import io
+
+                from PIL import Image
+
                 img = Image.open(io.BytesIO(data))
                 width, height = img.size
             except Exception:
@@ -116,7 +117,13 @@ class GitMediaStore(MediaStore):
         meta_path.write_text(json.dumps(metadata, indent=2))
 
         # Stage and commit
-        self._run_git(["add", str(obj_path.relative_to(self.repo_path)), str(meta_path.relative_to(self.repo_path))])
+        self._run_git(
+            [
+                "add",
+                str(obj_path.relative_to(self.repo_path)),
+                str(meta_path.relative_to(self.repo_path)),
+            ]
+        )
         self._run_git(["commit", "-m", f"Add media asset {asset_id[:16]}"])
 
         return MediaAsset(**metadata)

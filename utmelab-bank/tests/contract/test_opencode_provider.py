@@ -70,9 +70,7 @@ def test_opencode_matches_the_image_port() -> None:
     assert isinstance(provider, ImageDescriber)
 
 
-def test_describe_parses_text_and_attaches_file(
-    tmp_path: Path, media: MediaAsset
-) -> None:
+def test_describe_parses_text_and_attaches_file(tmp_path: Path, media: MediaAsset) -> None:
     path = tmp_path / "figure.png"
     path.write_bytes(b"\x89PNG")
     asset = rebuild(media, storage_url=path.as_uri())
@@ -80,9 +78,7 @@ def test_describe_parses_text_and_attaches_file(
         text_event('{"description":"A cell","facts":["one cell"],"confidence":0.9}')
     )
 
-    result = asyncio.run(
-        provider.describe(DescribeImageRequest(asset=asset, context="cell"))
-    )
+    result = asyncio.run(provider.describe(DescribeImageRequest(asset=asset, context="cell")))
 
     assert result.asset_id == asset.asset_id
     assert result.description == "A cell"
@@ -96,9 +92,7 @@ def test_describe_parses_text_and_attaches_file(
 
 def test_explain_parses(staging_item: StagingItem) -> None:
 
-    provider, _ = make_provider(
-        text_event('{"key_point":"k","body":"b","confidence":0.8}')
-    )
+    provider, _ = make_provider(text_event('{"key_point":"k","body":"b","confidence":0.8}'))
     result = asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
     assert result.key_point.text == "k"
     assert result.body.text == "b"
@@ -108,8 +102,7 @@ def test_tag_parses(catalog: CatalogSnapshot, staging_item: StagingItem) -> None
 
     provider, runner = make_provider(
         text_event(
-            '{"topic_id":"t1","subtopic_id":"s1",'
-            '"evidence":"What is 2 + 2?","confidence":0.7}'
+            '{"topic_id":"t1","subtopic_id":"s1","evidence":"What is 2 + 2?","confidence":0.7}'
         )
     )
     result = asyncio.run(provider.tag(TagRequest(item=staging_item, catalog=catalog)))
@@ -120,9 +113,7 @@ def test_tag_parses(catalog: CatalogSnapshot, staging_item: StagingItem) -> None
 
 def test_verify_parses(staging_item: StagingItem) -> None:
 
-    provider, _ = make_provider(
-        text_event('{"verdict":"pass","reasoning":"r","confidence":0.95}')
-    )
+    provider, _ = make_provider(text_event('{"verdict":"pass","reasoning":"r","confidence":0.95}'))
     result = asyncio.run(provider.verify(VerifyAnswerRequest(item=staging_item, catalog=None)))
     assert result.verdict == "pass"
 
@@ -188,6 +179,7 @@ def test_missing_asset_file_is_rejected(media: MediaAsset) -> None:
     with pytest.raises(OpenCodeError, match="does not exist"):
         asyncio.run(provider.describe(DescribeImageRequest(asset=asset)))
 
+
 def test_error_event_is_surfaced(staging_item: StagingItem) -> None:
     """The CLI reports provider failures as error events. They must not be swallowed."""
     from utmelab_bank.adapters.providers.opencode import OpenCodeError
@@ -203,6 +195,4 @@ def test_error_event_is_surfaced(staging_item: StagingItem) -> None:
     )
     provider, _ = make_provider(error_event)
     with pytest.raises(OpenCodeError, match="usage limit reached"):
-        asyncio.run(
-            provider.explain(ExplainRequest(item=staging_item, catalog=None))
-        )
+        asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))

@@ -3,10 +3,10 @@ from pydantic import ValidationError
 
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.models import (
-    StagingItem,
     Content,
     Evidence,
     MediaAsset,
+    StagingItem,
 )
 from utmelab_bank.domain.selector import Selector
 

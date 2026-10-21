@@ -11,8 +11,8 @@ Both land back at ``enriched``, because both need the content looked at
 again before it is checked again.
 """
 
+from collections.abc import Mapping
 from types import MappingProxyType
-from typing import Mapping
 
 from .enums import State
 

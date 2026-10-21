@@ -15,6 +15,7 @@ from typing import Any
 
 import pytest
 
+from tests.live.production_rows import content
 from utmelab_bank.adapters.database import TursoClient
 from utmelab_bank.config import load_settings
 from utmelab_bank.domain.gate import (
@@ -22,8 +23,6 @@ from utmelab_bank.domain.gate import (
     refusal_counts,
     run_gate,
 )
-
-from tests.live.production_rows import content
 
 pytestmark = [
     pytest.mark.live,

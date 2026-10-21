@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 from datetime import datetime
-from typing import Any, Optional
+from typing import Any
 
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.models import Passage, StagingItem
@@ -83,9 +83,7 @@ class StagingStore:
                 passage.title,
                 passage.author,
                 passage.text.text,
-                json.dumps(
-                    [mark.model_dump(mode="json") for mark in passage.text.inline]
-                ),
+                json.dumps([mark.model_dump(mode="json") for mark in passage.text.inline]),
                 passage.source_item_id,
             ],
         )
@@ -99,7 +97,7 @@ class StagingStore:
         result = await self._client.execute("SELECT id FROM passages")
         return frozenset(str(row[0]) for row in result.rows)
 
-    async def load_passage(self, passage_id: str) -> Optional[Passage]:
+    async def load_passage(self, passage_id: str) -> Passage | None:
         """Read one passage by id."""
         result = await self._client.execute(
             "SELECT id, exam, subject, year, kind, title, author, text, inline "
@@ -125,7 +123,7 @@ class StagingStore:
             ),
         )
 
-    async def load(self, item_id: str) -> Optional[StagingItem]:
+    async def load(self, item_id: str) -> StagingItem | None:
         """Read one staging row."""
         result = await self._client.execute(
             "SELECT id, state, exam, subject, year, source, source_item_id, "
@@ -144,21 +142,17 @@ class StagingStore:
         expected: str,
         target: str,
         *,
-        error: Optional[str] = None,
+        error: str | None = None,
     ) -> StagingItem:
         """Move a row to a new state. The state machine refuses a wrong move."""
         item = await self.load(item_id)
         if item is None:
             raise KeyError(f"no staging row {item_id!r}")
         if item.state.value != expected:
-            raise InvalidTransition(
-                f"row is {item.state.value}, not {expected}"
-            )
+            raise InvalidTransition(f"row is {item.state.value}, not {expected}")
         resolved = State(target)
         if not can_transition(item.state, resolved):
-            raise InvalidTransition(
-                f"cannot move from {item.state.value} to {resolved.value}"
-            )
+            raise InvalidTransition(f"cannot move from {item.state.value} to {resolved.value}")
         moved = item.transition_to(resolved, error=error)
         await self.save(moved)
         return moved
@@ -182,14 +176,10 @@ class StagingStore:
 
 def _evidence(item: StagingItem) -> dict[str, Any]:
     return {
-        "image_descriptions": [
-            d.model_dump(mode="json") for d in item.evidence.image_descriptions
-        ],
+        "image_descriptions": [d.model_dump(mode="json") for d in item.evidence.image_descriptions],
         "tag": item.evidence.tag.model_dump(mode="json") if item.evidence.tag else None,
         "explanation": (
-            item.evidence.explanation.model_dump(mode="json")
-            if item.evidence.explanation
-            else None
+            item.evidence.explanation.model_dump(mode="json") if item.evidence.explanation else None
         ),
         "answer_verdict": (
             item.evidence.answer_verdict.model_dump(mode="json")
@@ -197,13 +187,12 @@ def _evidence(item: StagingItem) -> dict[str, Any]:
             else None
         ),
         "gate": item.evidence.gate.model_dump(mode="json") if item.evidence.gate else None,
-        "verifications": [
-            v.model_dump(mode="json") for v in item.evidence.verifications
-        ],
+        "verifications": [v.model_dump(mode="json") for v in item.evidence.verifications],
     }
 
 
 def _row_to_item(row: tuple[Any, ...]) -> StagingItem:
+    from utmelab_bank.domain.enums import State
     from utmelab_bank.domain.models import (
         CatalogRef,
         Content,
@@ -214,7 +203,6 @@ def _row_to_item(row: tuple[Any, ...]) -> StagingItem:
         Provenance,
         Scope,
     )
-    from utmelab_bank.domain.enums import State
 
     (
         item_id,
@@ -252,9 +240,7 @@ def _row_to_item(row: tuple[Any, ...]) -> StagingItem:
         ),
         content=Content.model_validate_json(content),
         passage=Passage.model_validate_json(passage) if passage else None,
-        media_assets=tuple(
-            MediaAsset.model_validate(asset) for asset in json.loads(media)
-        ),
+        media_assets=tuple(MediaAsset.model_validate(asset) for asset in json.loads(media)),
         evidence=Evidence.model_validate(json.loads(evidence)),
         catalog=CatalogRef.model_validate_json(catalog) if catalog else None,
         state=State(state),

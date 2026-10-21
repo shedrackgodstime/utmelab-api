@@ -1,13 +1,12 @@
 """Contract tests for the bank's own store."""
 
 from datetime import UTC, datetime
-from typing import Any, Optional
+from typing import Any
 
 import pytest
 
 from utmelab_bank.adapters.store import StagingStore
-from utmelab_bank.domain.enums import State
-from utmelab_bank.domain.enums import PassageKind
+from utmelab_bank.domain.enums import PassageKind, State
 from utmelab_bank.domain.models import (
     Content,
     Hashes,
@@ -19,7 +18,6 @@ from utmelab_bank.domain.models import (
     StagingItem,
 )
 from utmelab_bank.domain.state import InvalidTransition
-
 
 NOW = datetime(2026, 10, 20, 12, 0, tzinfo=UTC)
 
@@ -40,9 +38,9 @@ class FakeClient:
     async def execute(
         self,
         statement: str,
-        args: Optional[list[Any]] = None,
+        args: list[Any] | None = None,
         *,
-        commit: Optional[bool] = None,
+        commit: bool | None = None,
     ) -> FakeResult:
         self.statements.append(statement)
         values = args or []
@@ -70,7 +68,6 @@ class FakeClient:
     async def commit(self) -> None:
         """The client contract has a commit, so the fake does too."""
         return None
-
 
 
 def make_item(state: State = State.CATALOGUED) -> StagingItem:

@@ -1,7 +1,7 @@
 """Contract tests for the production catalog reader."""
 
 import json
-from typing import Any, Optional
+from typing import Any
 
 import pytest
 
@@ -17,9 +17,9 @@ class FakeClient:
     """A stand-in for the Turso client that answers the catalog queries."""
 
     def __init__(self) -> None:
-        self.calls: list[tuple[str, Optional[list[Any]]]] = []
+        self.calls: list[tuple[str, list[Any] | None]] = []
 
-    async def execute(self, statement: str, args: Optional[list[Any]] = None) -> Any:
+    async def execute(self, statement: str, args: list[Any] | None = None) -> Any:
         self.calls.append((statement, args))
         if "FROM subjects" in statement:
             if args and args[1] != "biology":

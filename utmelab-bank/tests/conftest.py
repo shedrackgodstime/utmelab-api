@@ -1,24 +1,23 @@
 from datetime import UTC, datetime
-from typing import TypeVar
 
 import pytest
 from pydantic import BaseModel
 
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.models import (
-    StagingItem,
     CatalogSnapshot,
     CatalogSubtopic,
     CatalogTopic,
     Content,
     Evidence,
     Hashes,
-    MediaAsset,
     Inline,
+    MediaAsset,
     Option,
     Provenance,
     RichText,
     Scope,
+    StagingItem,
 )
 
 NOW = datetime(2026, 10, 20, 12, 0, tzinfo=UTC)
@@ -27,10 +26,8 @@ PAYLOAD_HASH = "b" * 64
 CONTENT_HASH = "c" * 64
 BUNDLE_HASH = "d" * 64
 
-M = TypeVar("M", bound=BaseModel)
 
-
-def rebuild(model: M, **updates: object) -> M:
+def rebuild[M: BaseModel](model: M, **updates: object) -> M:
     data = model.model_dump(mode="json")
     data.update(updates)
     return type(model).model_validate(data)
@@ -116,7 +113,9 @@ def staging_item(content: Content, provenance: Provenance) -> StagingItem:
         evidence=Evidence(),
         catalog=None,
         state=State.CATALOGUED.value,
-        hashes=Hashes(payload_hash=PAYLOAD_HASH, content_hash=CONTENT_HASH, bundle_hash=BUNDLE_HASH),
+        hashes=Hashes(
+            payload_hash=PAYLOAD_HASH, content_hash=CONTENT_HASH, bundle_hash=BUNDLE_HASH
+        ),
         created_at=NOW,
         updated_at=NOW,
     )
@@ -146,6 +145,7 @@ def image_content() -> Content:
         answer="A",
         marks=1.0,
     )
+
 
 __all__ = [
     "BUNDLE_HASH",

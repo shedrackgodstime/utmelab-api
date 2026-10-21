@@ -8,8 +8,7 @@ what is wrong, and what to do next. `DESIGN.md` has the reasoning and
 `DECISIONS.md` has the sealed decisions, both linked from here.
 
 **State at the end of this session:** 288 tests pass, 12 live tests are
-skipped by default, mypy strict is clean across 87 files, and pyflakes reports
-nothing.
+skipped by default, mypy strict is clean across 87 files, and ruff is clean.
 
 ---
 
@@ -423,15 +422,15 @@ cd utmelab-bank
 
 python -m pytest tests/ -q          # the fast suite, about 3 seconds
 mypy src tests                       # strict, must be clean
-python -m pyflakes src tests         # must report nothing
+ruff check src tests                 # must report nothing
+ruff format --check src tests        # must report nothing
 
 UTMELAB_LIVE=1 python -m pytest tests/live/ -q   # the real database and the
                                                 # real model, about 6 minutes
 ```
 
-`ruff` is declared in the dev extras and configured in `pyproject.toml`, but
-it is not installed on the device this was built on, so the lint that runs
-here is `pyflakes`. Both must be clean.
+`ruff` and `mypy` are declared in the dev extras and configured in
+`pyproject.toml`. Both must be clean.
 
 ### 7.1 The live tests, and what they cost
 
@@ -450,6 +449,14 @@ trip to Turso costs about a second. Run the fast suite while you work and
 the live suite before you trust a change.
 
 ### 7.2 The environment
+
+The package declares its runtime dependencies in `pyproject.toml`:
+`pydantic`, `turso-serverless`, `httpx` and `Pillow`. Install the package and
+its dev extra once:
+
+```bash
+pip install -e ".[dev]"
+```
 
 `utmelab-bank/.env` holds the credentials and is never committed. The
 variables are `TURSO_PROD_DATABASE_URL`, `TURSO_PROD_AUTH_TOKEN`,

@@ -10,8 +10,8 @@ from utmelab_bank.domain.enums import (
     InlineKind,
     Severity,
     SourceCapability,
-    VerificationKind,
     Verdict,
+    VerificationKind,
 )
 from utmelab_bank.domain.models import (
     BUNDLE_HASH,
@@ -26,8 +26,8 @@ from utmelab_bank.domain.models import (
     GateVerdict,
     Hashes,
     ImageDescription,
-    Issue,
     Inline,
+    Issue,
     MediaAsset,
     Option,
     Producer,
@@ -327,17 +327,13 @@ def test_text_mark_rejects_a_url() -> None:
 
 
 def test_gate_verdict_rejects_passed_with_error() -> None:
-    issue = Issue(
-        code="gate.answer", message="answer is missing", severity=Severity.ERROR
-    )
+    issue = Issue(code="gate.answer", message="answer is missing", severity=Severity.ERROR)
     with pytest.raises(ValidationError, match="passed"):
         GateVerdict(passed=True, issues=(issue,))
 
 
 def test_gate_verdict_accepts_failed_with_error() -> None:
-    issue = Issue(
-        code="gate.answer", message="answer is missing", severity=Severity.ERROR
-    )
+    issue = Issue(code="gate.answer", message="answer is missing", severity=Severity.ERROR)
     verdict = GateVerdict(passed=False, issues=(issue,))
     assert verdict.issues[0].code == "gate.answer"
 

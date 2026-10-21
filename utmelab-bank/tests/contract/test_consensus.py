@@ -83,9 +83,7 @@ def test_consensus_with_failures() -> None:
             raise RuntimeError("Simulated failure")
 
     async def run() -> ImageDescription:
-        consensus = DescribeImageConsensus(
-            describers=(MockProvider(), FailingDescriber())
-        )
+        consensus = DescribeImageConsensus(describers=(MockProvider(), FailingDescriber()))
         request = DescribeImageRequest(asset=make_asset(), context="test")
         return await consensus.describe(request)
 

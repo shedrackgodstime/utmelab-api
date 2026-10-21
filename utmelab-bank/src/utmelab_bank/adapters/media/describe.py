@@ -25,9 +25,7 @@ class ImageDescriberService:
             descriptions.append(description)
 
         # Update evidence with descriptions
-        evidence = item.evidence.model_copy(update={
-            "image_descriptions": tuple(descriptions)
-        })
+        evidence = item.evidence.model_copy(update={"image_descriptions": tuple(descriptions)})
 
         updated = item.model_copy(update={"evidence": evidence})
         return updated.transition_to(State.DESCRIBED)
@@ -37,6 +35,7 @@ def create_describer(provider_name: str = "opencode") -> "ImageDescriber":
     """Factory for image describer implementations."""
     if provider_name == "mock":
         from utmelab_bank.adapters.providers.mock import MockProvider
+
         return MockProvider()
     elif provider_name == "opencode":
         return OpenCodeProvider(model="opencode/deepseek-v4.1-flash-free")

@@ -15,7 +15,7 @@ back as work instead of as a silent loss of coverage.
 
 from __future__ import annotations
 
-from typing import Iterable
+from collections.abc import Iterable
 
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.models import StagingItem
@@ -25,9 +25,7 @@ from utmelab_bank.domain.reports import Drift
 class DriftService:
     """Compares what the bank placed with what production holds."""
 
-    def find(
-        self, items: Iterable[StagingItem], production: dict[str, str]
-    ) -> tuple[Drift, ...]:
+    def find(self, items: Iterable[StagingItem], production: dict[str, str]) -> tuple[Drift, ...]:
         """The live rows that no longer match what the bank checked.
 
         Only rows the bank placed are compared, because only those have a
@@ -64,9 +62,7 @@ class DriftService:
         and checked again.
         """
         if item.state is not State.LIVE:
-            raise ValueError(
-                f"only a live row can drift, and this one is {item.state.value}"
-            )
+            raise ValueError(f"only a live row can drift, and this one is {item.state.value}")
         return item.transition_to(
             State.ENRICHED,
             error=(

@@ -163,9 +163,7 @@ def _catalog() -> CatalogSnapshot:
         version="2026.1",
         exam="JAMB",
         subject="use-of-english",
-        topics=(
-            CatalogTopic(id="comprehension", slug="comprehension", name="Comprehension"),
-        ),
+        topics=(CatalogTopic(id="comprehension", slug="comprehension", name="Comprehension"),),
         subtopics=(
             CatalogSubtopic(
                 id="reading-comprehension",

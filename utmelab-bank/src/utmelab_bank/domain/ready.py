@@ -26,6 +26,7 @@ do about the number.
 from __future__ import annotations
 
 from enum import StrEnum
+
 from .models.common import DomainModel, NonEmptyStr, StagingItem
 
 
@@ -80,9 +81,7 @@ class ReadyReport(DomainModel):
 
     def unmet(self) -> tuple[ReadyCondition, ...]:
         """The conditions that are not met."""
-        return tuple(
-            report.condition for report in self.conditions if not report.satisfied
-        )
+        return tuple(report.condition for report in self.conditions if not report.satisfied)
 
     def reason_for(self, condition: ReadyCondition) -> tuple[str, ...]:
         """Why a condition was not met."""

@@ -19,10 +19,9 @@ hash, and a stale hash is a check that no longer applies.
 from __future__ import annotations
 
 from datetime import UTC, datetime
-from typing import Optional
 
 from utmelab_bank.domain.capabilities import VerifyAnswerRequest
-from utmelab_bank.domain.enums import State, VerificationKind, Verdict
+from utmelab_bank.domain.enums import State, Verdict, VerificationKind
 from utmelab_bank.domain.models import (
     AnswerVerdict,
     CatalogSnapshot,
@@ -72,7 +71,7 @@ class ReviewService:
     async def review(
         self,
         item: StagingItem,
-        catalog: Optional[CatalogSnapshot] = None,
+        catalog: CatalogSnapshot | None = None,
     ) -> ReviewOutcome:
         """Check one item and return the outcome and the record of it.
 
@@ -102,7 +101,7 @@ class ReviewService:
     async def apply(
         self,
         item: StagingItem,
-        catalog: Optional[CatalogSnapshot] = None,
+        catalog: CatalogSnapshot | None = None,
     ) -> StagingItem:
         """Check one item and move it on or refuse it.
 

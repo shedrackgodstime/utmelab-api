@@ -20,8 +20,8 @@ from .common import (
     ExplainResponse,
     GateVerdict,
     Hashes,
-    Issue,
     Inline,
+    Issue,
     MediaAsset,
     MediaRef,
     MimeType,
@@ -52,7 +52,6 @@ from .proposals import (
     ImageDescription,
     TagProposal,
 )
-
 
 PAYLOAD_HASH = "b" * 64
 CONTENT_HASH = "c" * 64

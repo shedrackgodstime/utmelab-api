@@ -22,7 +22,7 @@ same work twice.
 
 from __future__ import annotations
 
-from typing import Iterable, Optional
+from collections.abc import Iterable
 
 from utmelab_bank.adapters.store.reports import ReportLogStore
 from utmelab_bank.domain.enums import State
@@ -50,18 +50,14 @@ class ReportService:
         looks at it next can see what was complained about.
         """
         if item.state is not State.LIVE:
-            raise ValueError(
-                f"only a live row can be reopened, and this one is {item.state.value}"
-            )
+            raise ValueError(f"only a live row can be reopened, and this one is {item.state.value}")
         description = _describe(report)
         reported = item.transition_to(State.REPORTED, error=description)
         # The complaint is still the reason this row is on the bench, so the
         # note travels with it.
         return reported.transition_to(State.ENRICHED, error=description)
 
-    def claim(
-        self, item: StagingItem, report: Report
-    ) -> StagingItem:
+    def claim(self, item: StagingItem, report: Report) -> StagingItem:
         """Take ownership of a row the bank did not place.
 
         The row becomes a fresh item, sourced from production, with the
@@ -70,14 +66,10 @@ class ReportService:
         yet.
         """
         if item.state is not State.ACQUIRED:
-            raise ValueError(
-                f"a claimed row starts acquired, and this one is {item.state.value}"
-            )
+            raise ValueError(f"a claimed row starts acquired, and this one is {item.state.value}")
         return item.transition_to(State.ADAPTED)
 
-    async def record(
-        self, report: Report, *, item_id: Optional[str] = None
-    ) -> None:
+    async def record(self, report: Report, *, item_id: str | None = None) -> None:
         """Record that a report was acted on."""
         await self._log.record(report, item_id=item_id)
 

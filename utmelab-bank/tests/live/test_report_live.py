@@ -46,9 +46,7 @@ pytestmark = [
 
 
 def _rich(raw: dict[str, Any]) -> RichText:
-    return RichText.model_validate(
-        {"text": raw["text"], "inline": raw.get("inline") or []}
-    )
+    return RichText.model_validate({"text": raw["text"], "inline": raw.get("inline") or []})
 
 
 async def test_the_reports_are_read_and_acted_on_once() -> None:
@@ -121,9 +119,7 @@ async def test_a_drifted_row_is_found_against_the_real_hashes() -> None:
             marks=1.0,
         ),
         state=State.LIVE,
-        hashes=Hashes(
-            payload_hash="b" * 64, content_hash="0" * 64, bundle_hash="d" * 64
-        ),
+        hashes=Hashes(payload_hash="b" * 64, content_hash="0" * 64, bundle_hash="d" * 64),
         created_at=now,
         updated_at=now,
     )

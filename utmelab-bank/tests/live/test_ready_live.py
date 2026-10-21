@@ -19,6 +19,7 @@ import pytest
 from utmelab_bank.adapters.database import prod_client
 from utmelab_bank.adapters.ready_service import ReadyService
 from utmelab_bank.config import load_settings
+from utmelab_bank.domain.enums import Verdict, VerificationKind
 from utmelab_bank.domain.models import (
     CatalogRef,
     Content,
@@ -34,7 +35,6 @@ from utmelab_bank.domain.models import (
     StagingItem,
     Verification,
 )
-from utmelab_bank.domain.enums import VerificationKind, Verdict
 from utmelab_bank.domain.ready import ReadyCondition
 
 pytestmark = [
@@ -47,9 +47,7 @@ pytestmark = [
 
 
 def _rich(raw: dict[str, Any]) -> RichText:
-    return RichText.model_validate(
-        {"text": raw["text"], "inline": raw.get("inline") or []}
-    )
+    return RichText.model_validate({"text": raw["text"], "inline": raw.get("inline") or []})
 
 
 async def test_the_conditions_describe_the_live_bank() -> None:
@@ -115,11 +113,7 @@ async def test_the_conditions_describe_the_live_bank() -> None:
             explanation_model = Explanation(
                 key_point=_rich(raw_explanation["key_point"]),
                 body=_rich(raw_explanation["body"]),
-                trap=(
-                    _rich(raw_explanation["trap"])
-                    if raw_explanation.get("trap")
-                    else None
-                ),
+                trap=(_rich(raw_explanation["trap"]) if raw_explanation.get("trap") else None),
                 confidence=0.9,
                 producer=Producer(provider="live", model="production"),
             )
@@ -174,10 +168,7 @@ async def test_the_conditions_describe_the_live_bank() -> None:
 
     print()
     for report in bundle.report.conditions:
-        print(
-            f"  {report.condition.value:14s} met={report.met:5d} "
-            f"unmet={report.unmet:5d}"
-        )
+        print(f"  {report.condition.value:14s} met={report.met:5d} unmet={report.unmet:5d}")
         for reason in report.reasons:
             print(f"        {reason}")
     print(f"  human signed: {bundle.report.human_signed}")
@@ -185,24 +176,18 @@ async def test_the_conditions_describe_the_live_bank() -> None:
     print()
 
     # The conditions that can be judged from a row alone.
-    by_condition = {
-        report.condition: report for report in bundle.report.conditions
-    }
-    assert by_condition[
-        ReadyCondition.COMPLETE
-    ].unmet == 0, "every live row has a stem, options and an answer"
-    assert by_condition[
-        ReadyCondition.IDENTIFIED
-    ].unmet == 0, "every live row's hash matches its content"
-    assert by_condition[
-        ReadyCondition.GATED
-    ].unmet == 0
-    assert by_condition[
-        ReadyCondition.NEW
-    ].unmet == 0
-    assert by_condition[
-        ReadyCondition.RESOLVABLE
-    ].unmet == 0, "every live row names a passage that exists"
+    by_condition = {report.condition: report for report in bundle.report.conditions}
+    assert by_condition[ReadyCondition.COMPLETE].unmet == 0, (
+        "every live row has a stem, options and an answer"
+    )
+    assert by_condition[ReadyCondition.IDENTIFIED].unmet == 0, (
+        "every live row's hash matches its content"
+    )
+    assert by_condition[ReadyCondition.GATED].unmet == 0
+    assert by_condition[ReadyCondition.NEW].unmet == 0
+    assert by_condition[ReadyCondition.RESOLVABLE].unmet == 0, (
+        "every live row names a passage that exists"
+    )
 
     # The live bank's only shortfall is the 50 rows that carry no
     # explanation. They were never reviewed, because a review covers the
@@ -215,7 +200,4 @@ async def test_the_conditions_describe_the_live_bank() -> None:
         "no check covers the answer and the explanation"
         in by_condition[ReadyCondition.REVIEWED].reasons
     )
-    assert (
-        "there is no explanation"
-        in by_condition[ReadyCondition.EXPLANATORY].reasons
-    )
+    assert "there is no explanation" in by_condition[ReadyCondition.EXPLANATORY].reasons

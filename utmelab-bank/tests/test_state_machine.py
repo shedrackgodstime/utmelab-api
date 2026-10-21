@@ -3,8 +3,8 @@
 import pytest
 
 from utmelab_bank.domain.enums import State
-from utmelab_bank.domain.models import StagingItem
 from utmelab_bank.domain.hashing import content_fingerprint, payload_hash
+from utmelab_bank.domain.models import StagingItem
 from utmelab_bank.domain.state import (
     InvalidTransition,
     assert_transition,
@@ -33,7 +33,7 @@ def test_happy_path_is_allowed() -> None:
         State.VERIFIED,
         State.READY,
     )
-    for source, target in zip(path, path[1:]):
+    for source, target in zip(path, path[1:], strict=False):
         assert_transition(source, target)
 
 
@@ -149,7 +149,7 @@ def test_staging_item_stamps_a_content_hash(staging_item: StagingItem) -> None:
 
 
 def test_verification_must_match_the_content_hash(staging_item: StagingItem) -> None:
-    from utmelab_bank.domain.enums import VerificationKind, Verdict
+    from utmelab_bank.domain.enums import Verdict, VerificationKind
     from utmelab_bank.domain.models import Evidence, Verification
 
     stamped = staging_item.with_content_hash()
@@ -163,9 +163,7 @@ def test_verification_must_match_the_content_hash(staging_item: StagingItem) -> 
         reviewer="human-1",
         created_at=stamped.created_at,
     )
-    ok = stamped.model_copy(
-        update={"evidence": Evidence(verifications=(good,))}
-    )
+    ok = stamped.model_copy(update={"evidence": Evidence(verifications=(good,))})
     assert ok.hashes is not None
     assert ok.evidence.verifications[0].content_hash == ok.hashes.content_hash
 

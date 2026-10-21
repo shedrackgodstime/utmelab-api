@@ -22,7 +22,6 @@ from __future__ import annotations
 
 from datetime import datetime
 from enum import StrEnum
-from typing import Optional
 
 from .models.common import DomainModel, NonEmptyStr, Sha256
 
@@ -56,7 +55,7 @@ class Report(DomainModel):
     target_id: NonEmptyStr
     reporter: NonEmptyStr
     reason: NonEmptyStr
-    detail: Optional[NonEmptyStr] = None
+    detail: NonEmptyStr | None = None
     created_at: datetime
 
 

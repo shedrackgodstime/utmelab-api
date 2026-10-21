@@ -1,9 +1,9 @@
 """Media adapters. Git-backed storage with GitLab remote."""
 
+from .consensus import ConsensusPolicy, DescribeImageConsensus
+from .describe import ImageDescriberService, create_describer
 from .git_store import GitMediaStore
 from .ingest import MediaFetcher, MediaIngestor, MediaValidator, ingest_media_task
-from .describe import ImageDescriberService, create_describer
-from .consensus import ConsensusPolicy, DescribeImageConsensus
 
 __all__ = [
     "ConsensusPolicy",
