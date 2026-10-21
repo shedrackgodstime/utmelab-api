@@ -77,7 +77,7 @@ def ingestor(store: FakeMediaStore, fetcher: MediaFetcher | None = None) -> Medi
 
 
 def test_capture_records_the_name_and_leaves_the_state_alone() -> None:
-    """The scrape run captures without moving the row or keeping the refs."""
+    """The capture step stores without moving the row or keeping the refs."""
     store = FakeMediaStore()
     result = asyncio.run(ingestor(store).capture_refs(make_item()))
 

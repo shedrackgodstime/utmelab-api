@@ -129,9 +129,9 @@ class MediaIngestor:
     async def capture_refs(self, item: StagingItem) -> StagingItem:
         """Fetch and store every media ref, without moving the row.
 
-        Capture is the one moment the source is guaranteed alive, so it runs in
-        the scrape run, after the gate. The row keeps its state and carries the
-        assets; the later media step only finalizes and describes them.
+        This runs after the gate and the duplicate check, so a row that will
+        not be kept never uploads a byte. The row keeps its state and carries
+        the assets; the later media step only finalizes and describes them.
 
         A ref the bank cannot ingest is skipped when it is optional and fails
         the row when it is required. The owned urls are collected as we go, so

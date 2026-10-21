@@ -22,6 +22,7 @@ from utmelab_bank.domain.gate import (
     RULES_VERSION,
     GateContext,
     check_inline,
+    check_option_count,
     check_option_ids,
     has_numbered_gap,
     mentions_figure,
@@ -181,18 +182,35 @@ def test_a_stored_image_name_passes() -> None:
     assert issues == []
 
 
-def test_the_option_count_must_be_four() -> None:
-    content = make_content(
+def test_the_option_count_must_be_two_to_five() -> None:
+    two = make_content(
         options=(
             Option(id="a", text=RichText(text="3")),
             Option(id="b", text=RichText(text="4")),
-        )
+        ),
+        answer="b",
+    )
+    five = make_content(
+        options=(
+            Option(id="a", text=RichText(text="3")),
+            Option(id="b", text=RichText(text="4")),
+            Option(id="c", text=RichText(text="5")),
+            Option(id="d", text=RichText(text="6")),
+            Option(id="e", text=RichText(text="7")),
+        ),
+        answer="e",
     )
 
-    verdict = gate(content)
+    assert gate(two).passed is True
+    assert gate(five).passed is True
 
-    assert verdict.passed is False
-    assert "option_count" in codes(verdict)
+    too_few: list[Issue] = []
+    check_option_count(1, too_few)
+    assert [issue.code for issue in too_few] == ["option_count"]
+
+    too_many: list[Issue] = []
+    check_option_count(6, too_many)
+    assert [issue.code for issue in too_many] == ["option_count"]
 
 
 def test_an_answer_that_names_no_option_fails() -> None:

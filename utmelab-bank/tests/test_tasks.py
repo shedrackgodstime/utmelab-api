@@ -28,6 +28,7 @@ from utmelab_bank.domain.models import (
 from utmelab_bank.runtime import Runtime
 from utmelab_bank.tasks import (
     TaskOptions,
+    capture,
     explain,
     fetch,
     index,
@@ -146,6 +147,9 @@ class FakeIndex:
     async def forget(self, origin: str) -> None:
         self.rows = [row for row in self.rows if row[2] != origin]
 
+    async def forget_question(self, question_id: str, *, origin: str = "bank") -> None:
+        self.rows = [row for row in self.rows if not (row[2] == origin and row[3] == question_id)]
+
     async def exact_match(self, content_hash: str) -> str | None:
         for row in self.rows:
             if row[0] == content_hash:
@@ -237,6 +241,17 @@ async def test_fetch_through_ready() -> None:
     assert fetched.done == 1
     row = next(iter(staging.items.values()))
     assert row.state is State.DEDUPED
+    assert row.media_refs
+    assert row.media_assets == ()
+    assert row.content.stem.inline[0].url == str(row.media_refs[0].source_url)
+    assert fetcher.urls == []
+
+    captured = await capture(runtime, OPTIONS)
+    assert captured.ok, captured.errors
+    assert captured.done == 1
+    row = await staging.load(row.id)
+    assert row is not None
+    assert row.state is State.DEDUPED
     assert row.media_refs == ()
     assert len(row.media_assets) == 1
     assert row.media_assets[0].source_url is None
@@ -292,20 +307,27 @@ async def test_the_presets_compose_the_same_steps() -> None:
     runtime, staging, _ = make_runtime()
 
     scrape = await run_preset("scrape", runtime, OPTIONS)
-    assert [result.task for result in scrape] == ["fetch", "tag"]
+    assert [result.task for result in scrape] == ["fetch"]
     assert all(result.ok for result in scrape), [r.errors for r in scrape]
     row = next(iter(staging.items.values()))
-    assert row.state is State.CATALOGUED
+    assert row.state is State.DEDUPED
 
     process = await run_preset("process", runtime, OPTIONS)
-    assert [result.task for result in process] == ["media", "explain", "review", "ready"]
+    assert [result.task for result in process] == [
+        "capture",
+        "tag",
+        "media",
+        "explain",
+        "review",
+        "ready",
+    ]
     assert all(result.ok for result in process), [r.errors for r in process]
     row = await staging.load(row.id)
     assert row is not None
     assert row.state is State.READY
 
 
-async def test_fetch_resumes_without_refetching_the_figure() -> None:
+async def test_fetch_resumes_without_touching_the_figure() -> None:
     runtime, staging, fetcher = make_runtime()
 
     first = await fetch(runtime, OPTIONS)
@@ -314,7 +336,7 @@ async def test_fetch_resumes_without_refetching_the_figure() -> None:
     assert first.done == 1
     assert second.done == 1
     assert len(staging.items) == 1
-    assert len(fetcher.urls) == 1
+    assert fetcher.urls == []
     assert any("resuming at deduped" in note for note in second.notes)
 
 
@@ -327,6 +349,62 @@ async def test_fetch_dry_run_writes_nothing() -> None:
     assert result.done == 0
     assert staging.items == {}
     assert fetcher.urls == []
+
+
+async def test_a_duplicate_is_filtered_without_uploading_a_figure() -> None:
+    runtime, staging, fetcher = make_runtime()
+    source = runtime.source
+    assert source is not None
+    raw = [item async for item in source.fetch(OPTIONS)][0]
+    adapted = source.adapt(raw, make_catalog())
+    dedupe = runtime.dedupe
+    await runtime.index.remember(
+        content_hash=dedupe.content_key(adapted),
+        near_duplicate=dedupe.near_key(adapted),
+        origin="production",
+        question_id="production:1",
+    )
+
+    result = await fetch(runtime, OPTIONS)
+
+    assert result.ok
+    assert result.done == 0
+    assert result.skipped == 1
+    row = next(iter(staging.items.values()))
+    assert row.state is State.REJECTED
+    assert "duplicate_exact" in (row.error or "")
+    assert row.media_assets == ()
+    assert fetcher.urls == []
+
+
+async def test_capture_rechecks_duplicates_after_the_image_swap() -> None:
+    runtime, staging, _ = make_runtime()
+    await fetch(runtime, OPTIONS)
+    first = await capture(runtime, OPTIONS)
+    assert first.ok
+    assert first.done == 1
+    row = next(iter(staging.items.values()))
+    assert row.state is State.DEDUPED
+    assert row.media_assets
+    assert await runtime.index.count("bank") == 1
+
+    dedupe = runtime.dedupe
+    await runtime.index.remember(
+        content_hash=dedupe.content_key(row),
+        near_duplicate=dedupe.near_key(row),
+        origin="production",
+        question_id="production:figure",
+    )
+
+    second = await capture(runtime, OPTIONS)
+    assert second.ok
+    assert second.done == 0
+    assert second.skipped == 1
+    row = await staging.load(row.id)
+    assert row is not None
+    assert row.state is State.REJECTED
+    assert "duplicate_exact" in (row.error or "")
+    assert await runtime.index.count("bank") == 0
 
 
 async def test_status_reports_the_pipeline_and_the_index() -> None:

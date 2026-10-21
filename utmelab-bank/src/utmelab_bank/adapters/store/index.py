@@ -84,6 +84,20 @@ class ContentIndexStore:
         """Drop everything from one origin, so it can be reloaded clean."""
         await self._client.execute("DELETE FROM content_index WHERE origin = ?", [origin])
 
+    async def forget_question(self, question_id: str, *, origin: str = BANK) -> None:
+        """Drop one question's entries from one origin.
+
+        A capture moves an image inline from the source url to the stored
+        name, which changes the content hash and the near key. The old entry
+        has to go before the new content is checked, both so the row cannot
+        match itself and so a crash between the upload and the re-index can
+        be repaired by running the capture again.
+        """
+        await self._client.execute(
+            "DELETE FROM content_index WHERE origin = ? AND question_id = ?",
+            [origin, question_id],
+        )
+
     async def exact_match(self, content_hash: str) -> str | None:
         """The id of the known question with this content hash, if any."""
         result = await self._client.execute(

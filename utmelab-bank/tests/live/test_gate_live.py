@@ -70,9 +70,8 @@ def test_the_gate_sees_the_live_bank_as_it_is() -> None:
     # another defect and 42 now pass the gate, which is why ``passed`` moved
     # from 2,178 to 2,220.
     assert counts == {
-        "option_count": 11,
         "cloze_without_passage": 9,
         "missing_figure": 2,
         "exam_empty": 1,
     }, counts
-    assert passed == 2220, passed
+    assert passed == 2231, passed

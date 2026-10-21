@@ -30,7 +30,7 @@ from utmelab_bank.adapters.media import (
 from utmelab_bank.adapters.production import KnownQuestion, ProductionContentReader
 from utmelab_bank.adapters.providers import create_text_provider
 from utmelab_bank.adapters.sources import create_source
-from utmelab_bank.adapters.store import ContentIndexStore, StagingStore
+from utmelab_bank.adapters.store import BANK, ContentIndexStore, StagingStore
 from utmelab_bank.config import Settings
 from utmelab_bank.domain.models import CatalogSnapshot, StagingItem
 from utmelab_bank.domain.ports import (
@@ -87,6 +87,8 @@ class Index(ContentIndex, Protocol):
     ) -> None: ...
 
     async def forget(self, origin: str) -> None: ...
+
+    async def forget_question(self, question_id: str, *, origin: str = BANK) -> None: ...
 
     async def commit(self) -> None: ...
 
@@ -205,10 +207,11 @@ async def open_pipeline_runtime(
 ) -> AsyncIterator[Runtime]:
     """Open the store half, then only the pipeline parts the command named.
 
-    ``media`` opens the store and the fetcher, which is what the scrape run
-    needs to capture figure bytes. ``text`` opens the tag, explain and verify
-    provider. ``image`` opens the two-witness describer and the media service,
-    which is what the later processing run needs. ``image`` implies ``media``.
+    ``media`` opens the store and the fetcher, which is what the capture step
+    needs before it can own a figure. ``text`` opens the tag, explain and
+    verify provider. ``image`` opens the two-witness describer and the media
+    service, which is what the later processing run needs. ``image`` implies
+    ``media``. The scrape itself names neither: it stops at deduped.
     """
     async with open_store_runtime(settings) as runtime:
         if source_name is not None:

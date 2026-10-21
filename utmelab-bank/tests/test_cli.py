@@ -13,17 +13,43 @@ def test_tasks_lists_tasks_and_presets(capsys: pytest.CaptureFixture[str]) -> No
     assert main(["tasks"]) == 0
     out = capsys.readouterr().out
     assert "fetch" in out
+    assert "capture" in out
     assert "status" in out
     assert "scrape" in out
-    assert "fetch -> tag" in out
-    assert "media -> explain -> review -> ready" in out
+    assert any(line.split() == ["scrape", "fetch"] for line in out.splitlines())
+    assert any(
+        line.split()
+        == [
+            "process",
+            "capture",
+            "->",
+            "tag",
+            "->",
+            "media",
+            "->",
+            "explain",
+            "->",
+            "review",
+            "->",
+            "ready",
+        ]
+        for line in out.splitlines()
+    )
 
 
 def test_tasks_json_is_machine_readable(capsys: pytest.CaptureFixture[str]) -> None:
     assert main(["tasks", "--json"]) == 0
     payload = json.loads(capsys.readouterr().out)
     assert "fetch" in payload["tasks"]
-    assert payload["presets"]["process"] == ["media", "explain", "review", "ready"]
+    assert payload["presets"]["scrape"] == ["fetch"]
+    assert payload["presets"]["process"] == [
+        "capture",
+        "tag",
+        "media",
+        "explain",
+        "review",
+        "ready",
+    ]
 
 
 def test_fetch_requires_a_full_scope() -> None:

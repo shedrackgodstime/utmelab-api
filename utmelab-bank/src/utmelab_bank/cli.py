@@ -110,12 +110,6 @@ def _add_fetch(parser: argparse.ArgumentParser) -> None:
         action="store_true",
         help="probe the scope without writing anything",
     )
-    parser.add_argument(
-        "--provider",
-        choices=PROVIDERS,
-        default="opencode",
-        help="model provider (used by the scrape preset's tag step)",
-    )
     _add_output(parser)
 
 
@@ -131,11 +125,11 @@ def build_parser() -> argparse.ArgumentParser:
     _add_output(tasks)
 
     for name in ("fetch", "scrape"):
-        help_text = TASK_HELP.get(name, "Scrape one scope, then tag it.")
+        help_text = TASK_HELP.get(name, "Scrape one scope, gate it, and stop at deduped.")
         command = sub.add_parser(name, help=help_text)
         _add_fetch(command)
 
-    for name in ("tag", "media", "explain", "review", "ready", "process"):
+    for name in ("capture", "tag", "media", "explain", "review", "ready", "process"):
         command = sub.add_parser(name, help=TASK_HELP.get(name, ""))
         _add_batch(command)
 
@@ -171,7 +165,6 @@ async def _execute(args: argparse.Namespace) -> list[TaskResult]:
             settings,
             source_name=args.source,
             fixture_dir=args.fixture_dir,
-            media=True,
         ) as runtime:
             return [await run_named("fetch", runtime, options)]
 
@@ -180,11 +173,12 @@ async def _execute(args: argparse.Namespace) -> list[TaskResult]:
             settings,
             source_name=args.source,
             fixture_dir=args.fixture_dir,
-            provider_name=provider,
-            media=True,
-            text=True,
         ) as runtime:
             return await run_preset("scrape", runtime, options)
+
+    if command == "capture":
+        async with open_pipeline_runtime(settings, media=True) as runtime:
+            return [await run_named("capture", runtime, options)]
 
     if command == "tag":
         async with open_pipeline_runtime(settings, provider_name=provider, text=True) as runtime:

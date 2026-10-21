@@ -2,8 +2,8 @@
 
 A task lists the rows it can act on, does one thing to each, and reports what
 happened. It does not call the next task. The presets are just named lists of
-tasks, run in order, so a scrape can stop after the catalogue and a later run
-can pick up the processing without the source being alive.
+tasks, run in order, so a scrape can stop at deduped and a later run can pick
+up the media and the catalogue without the source being alive.
 
 The runner is deliberately boring. The state machine decides what is legal;
 the services decide what is correct; a task only moves rows between them and
@@ -19,7 +19,6 @@ from dataclasses import dataclass, field
 from datetime import UTC, datetime
 
 from utmelab_bank.adapters.gate_service import GateService
-from utmelab_bank.adapters.media import MediaIngestor
 from utmelab_bank.adapters.providers.tagging import ExplainService, TagService
 from utmelab_bank.adapters.ready_service import ReadyService
 from utmelab_bank.adapters.review_service import ReviewService
@@ -174,23 +173,19 @@ async def _advance(
     runtime: Runtime,
     item: StagingItem,
     gate: GateService,
-    ingestor: MediaIngestor,
 ) -> StagingItem:
     """Move one adapted row through the scrape-side states.
 
-    The order is the contract: gate, then capture, then dedupe. The gate is
-    first so a malformed row never causes a fetch of somebody else's server.
-    Capture is second because the source is alive now and may not be later.
-    Dedupe is last because it looks at the finished content, figures included.
+    The order is the contract: gate, then dedupe. The gate is first so a
+    malformed row never reaches the index. Dedupe is last because it looks
+    at the content the gate has accepted. Media is deliberately not here:
+    a row that never passes either check must not upload a figure.
     """
     if item.state is State.ADAPTED:
         item = gate.apply(item)
         await runtime.staging.save(item)
         if item.state is State.REJECTED:
             return item
-    if item.state is State.GATED:
-        item = await ingestor.capture_refs(item)
-        await runtime.staging.save(item)
     if item.state is State.GATED:
         item = await runtime.dedupe.apply(item)
         await runtime.staging.save(item)
@@ -200,13 +195,14 @@ async def _advance(
 
 
 async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
-    """Scrape one scope, gate it, capture its figures, and stop at deduped.
+    """Scrape one scope, gate it, and stop at deduped.
 
-    A source can go offline after this run. The bytes are captured while it
-    is alive, and the later processing run starts at the catalogue.
+    This is the fast lane. It reads the source, validates the payload, runs
+    the gate and the duplicate check, and writes the accepted row to the
+    bank. It does not tag, describe, or upload a figure. The later stages
+    pick the row out of the bank and take as long as they need.
     """
     source = require(runtime.source, "source")
-    ingestor = require(runtime.ingestor, "media store")
     scope = _scope(options)
     result = TaskResult(task="fetch")
 
@@ -266,12 +262,20 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
                     catalog=catalog,
                     known_passage_ids=known_passages,
                 )
-                item = await _advance(runtime, item, gate, ingestor)
+                item = await _advance(runtime, item, gate)
 
                 if item.state is State.DEDUPED:
                     result.done += 1
                 elif item.state is State.REJECTED:
-                    result.block(f"{item.id}: {item.error or item.state.value}")
+                    # A gate or dedupe refusal is the scrape doing its job,
+                    # not a failed run. The row is kept in the bank with its
+                    # reason, and it never reaches media. A crash or a source
+                    # refusal still counts as a failure.
+                    result.skipped += 1
+                    result.note(
+                        f"{item.id}: filtered at {item.state.value}: "
+                        f"{item.error or item.state.value}"
+                    )
                 else:
                     result.skipped += 1
             except Exception as exc:
@@ -282,6 +286,59 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
     except Exception as exc:
         logger.exception("the source fetch failed")
         result.fail(f"{source.profile.name}: {type(exc).__name__}: {exc}")
+
+    return result
+
+
+async def capture(runtime: Runtime, options: TaskOptions) -> TaskResult:
+    """Fetch and store the figures for deduped rows.
+
+    This is the first point at which a figure can reach the media store. The
+    scrape stops before it, so a row the gate refused or the duplicate check
+    filtered never uploads a byte. That keeps the store free of images for
+    rows that will never be used.
+
+    The task is resumable and idempotent. A row already captured has no refs;
+    it is re-indexed from the content it now holds, so a crash between the
+    upload and the index write does not leave a stale key. Capturing changes
+    the content hash and the near key because the inline moves from the
+    source url to the stored name, so the row is checked for duplicates a
+    second time after the swap. A duplicate found then is refused here and
+    never reaches the catalogue.
+    """
+    ingestor = require(runtime.ingestor, "media store")
+    result = TaskResult(task="capture")
+    rows = await _rows(runtime, (State.DEDUPED,), options)
+
+    for item in rows:
+        result.seen += 1
+        if not item.media_refs and not item.media_assets:
+            result.skipped += 1
+            result.note(f"{item.id}: no figures")
+            continue
+        if options.dry_run:
+            result.note(f"{item.id}: would capture {len(item.media_refs)} figure(s)")
+            continue
+        try:
+            captured = await ingestor.capture_refs(item)
+            await runtime.index.forget_question(item.id, origin=BANK)
+            found = await runtime.dedupe.find(captured)
+            if found is not None:
+                rejected = captured.transition_to(
+                    State.REJECTED,
+                    error=f"duplicate_{found.kind}: {found.question_id}",
+                )
+                await runtime.staging.save(rejected)
+                result.skipped += 1
+                result.note(f"{rejected.id}: duplicate after capture: {found.question_id}")
+                continue
+            await runtime.dedupe.remember(captured, origin=BANK)
+            await runtime.staging.save(captured)
+            result.done += 1
+        except Exception as exc:
+            logger.warning("capture failed for %s: %s", item.id, exc)
+            result.fail(f"{item.id}: {type(exc).__name__}: {exc}")
+            await _record_failure(runtime, item, exc)
 
     return result
 
@@ -321,6 +378,10 @@ async def media(runtime: Runtime, options: TaskOptions) -> TaskResult:
 
     for item in rows:
         result.seen += 1
+        if item.state is State.CATALOGUED and item.media_refs:
+            result.skipped += 1
+            result.note(f"{item.id}: figures have not been captured; run capture first")
+            continue
         if options.dry_run:
             result.note(f"{item.id}: would describe {len(item.media_assets)} figure(s)")
             continue
@@ -352,9 +413,9 @@ async def explain(runtime: Runtime, options: TaskOptions) -> TaskResult:
 
     for item in rows:
         result.seen += 1
-        if item.state is State.CATALOGUED and item.media_assets:
+        if item.state is State.CATALOGUED and (item.media_assets or item.media_refs):
             result.skipped += 1
-            result.note(f"{item.id}: media has not run; run media first")
+            result.note(f"{item.id}: media has not run; run capture and media first")
             continue
         if options.dry_run:
             result.note(f"{item.id}: would explain")
@@ -500,6 +561,7 @@ async def status(runtime: Runtime, options: TaskOptions) -> TaskResult:
 
 TASKS: dict[str, TaskFn] = {
     "fetch": fetch,
+    "capture": capture,
     "tag": tag,
     "media": media,
     "explain": explain,
@@ -510,12 +572,13 @@ TASKS: dict[str, TaskFn] = {
 }
 
 PRESETS: dict[str, tuple[str, ...]] = {
-    "scrape": ("fetch", "tag"),
-    "process": ("media", "explain", "review", "ready"),
+    "scrape": ("fetch",),
+    "process": ("capture", "tag", "media", "explain", "review", "ready"),
 }
 
 TASK_HELP: dict[str, str] = {
-    "fetch": "Scrape one scope, gate it, capture figures, stop at deduped.",
+    "fetch": "Scrape one scope, gate it, and stop at deduped. No media or models.",
+    "capture": "Fetch and store figures for deduped rows, after the gate.",
     "tag": "Place deduped rows in the catalog.",
     "media": "Describe captured figures with two witnesses.",
     "explain": "Write the explanation and enrich the row.",
@@ -570,6 +633,7 @@ __all__ = [
     "TaskOptions",
     "TaskResult",
     "UsageError",
+    "capture",
     "explain",
     "fetch",
     "index",

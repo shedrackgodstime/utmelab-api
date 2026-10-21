@@ -27,6 +27,7 @@ on:
           - index
           - fetch
           - scrape
+          - capture
           - tag
           - media
           - explain
@@ -114,7 +115,7 @@ jobs:
           pip install -e ".[dev]"
 
       - name: Install OpenCode CLI
-        if: ${{ inputs.provider == 'opencode' && contains(fromJSON('["scrape","tag","media","explain","review","process"]'), inputs.command) }}
+        if: ${{ inputs.provider == 'opencode' && contains(fromJSON('["tag","media","explain","review","process"]'), inputs.command) }}
         run: |
           npm install -g opencode-ai@1.19.0 || (curl -fsSL https://opencode.ai/install.sh | bash && echo "$HOME/.opencode/bin" >> $GITHUB_PATH)
 
@@ -137,8 +138,10 @@ jobs:
             --subject "$SUBJECT"
             --year "$YEAR"
             --limit "$LIMIT"
-            --provider "$PROVIDER"
           )
+          if [ "$COMMAND" != "fetch" ] && [ "$COMMAND" != "scrape" ]; then
+            args+=(--provider "$PROVIDER")
+          fi
           if [ -n "$SECTION" ]; then
             args+=(--section "$SECTION")
           fi

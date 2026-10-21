@@ -70,7 +70,12 @@ from .models.common import (
 #: property of the served row and the enrich step authors it, so the gate
 #: cannot demand it before the explainer runs. The ready condition
 #: ``explanatory`` is where the requirement bites.
-RULES_VERSION = "v4"
+#:
+#: v5: the option count is two to five, not exactly four. Production already
+#: holds valid five-option and short questions, and the source carries the
+#: same range; refusing them lost useful content. The source still refuses a
+#: row with fewer than two usable options, so two is the floor.
+RULES_VERSION = "v5"
 
 #: The word hints that mean a question is about a figure. These collide with
 #: ordinary English, which is why the rule judges rather than refuses.
@@ -310,12 +315,18 @@ def check_option_ids(option_ids: Sequence[str], answer: str, issues: list[Issue]
 
 
 def check_option_count(count: int, issues: list[Issue]) -> None:
-    """Exactly four options, which is the live rule."""
-    if count != 4:
+    """Two to five options, which is the range production and the source use.
+
+    Two is the source's own floor: a row with fewer than two usable options
+    never becomes a source item. Five is the largest label the option
+    vocabulary has. A count outside the range is an incomplete or malformed
+    question, not a stylistic difference.
+    """
+    if count < 2 or count > 5:
         issues.append(
             _error(
                 "option_count",
-                f"the question has {count} options, and the live rule is exactly four",
+                f"the question has {count} options, and the accepted range is two to five",
                 "options",
             )
         )

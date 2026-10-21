@@ -266,19 +266,23 @@ def test_the_spine_carries_a_figure_to_ready(tmp_path: Path, catalog: CatalogSna
         gated = GateService(catalog=catalog).apply(adapted)
         assert gated.state is State.GATED
 
-        # capture: the scrape run stores the bytes while the source is alive.
-        # It does not move the row; the media step finalizes it later.
+        # deduped: nothing the bank already holds matches
+        deduped = await DedupeService(_EmptyIndex()).apply(gated)
+        assert deduped.state is State.DEDUPED
+
+        # capture: the bytes are stored after the gate and the duplicate
+        # check, so a refused row never uploads a figure. It does not move the
+        # row; the media step finalizes it later.
         store = FakeMediaStore()
         fetcher = FakeMediaFetcher()
         capture = MediaIngestor(fetcher, PillowMediaValidator(), store)
-        captured = await capture.capture_refs(gated)
-        assert captured.state is State.GATED
+        captured = await capture.capture_refs(deduped)
+        assert captured.state is State.DEDUPED
         assert captured.media_refs == ()
         assert captured.media_assets
         assert len(fetcher.urls) == 1
 
-        deduped = await DedupeService(_EmptyIndex()).apply(captured)
-        catalogued = await TagService(MockProvider()).tag(deduped, catalog)
+        catalogued = await TagService(MockProvider()).tag(captured, catalog)
         assert catalogued.state is State.CATALOGUED
 
         # media: no source call, only the captured bytes and the witnesses

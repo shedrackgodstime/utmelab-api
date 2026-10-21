@@ -5,11 +5,12 @@
     catalogued -> media_ready -> described -> enriched
     catalogued -> enriched            (the media step is optional)
 
-This is the first. The bytes were captured in the scrape run, because that is
-the only moment the source is guaranteed alive. This step only moves the row
-through the states and runs the witnesses; it never touches the source. An
-item with no assets is returned untouched, so the optional path stays the
-caller's choice rather than a special case buried here.
+This is the first. The bytes are captured after the gate and the duplicate
+check, in the dedicated capture step, so a row the scrape refuses never
+uploads a figure. This step only moves the row through the states and runs
+the witnesses; it never touches the source. An item with no assets is
+returned untouched, so the optional path stays the caller's choice rather
+than a special case buried here.
 """
 
 from __future__ import annotations
@@ -36,8 +37,8 @@ class MediaService:
     async def apply(self, item: StagingItem, *, capture: bool = False) -> StagingItem:
         """Finalize a captured row.
 
-        ``capture`` is for a one-run caller and for tests. The two-run pipeline
-        captures in the scrape run and calls this without it.
+        ``capture`` is for a one-run caller and for tests. The normal pipeline
+        captures in the dedicated capture step and calls this without it.
 
         The method is resumable. A row that crashed after the state moved to
         ``media_ready`` is described without asking the state machine to move
