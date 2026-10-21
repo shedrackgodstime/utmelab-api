@@ -1,13 +1,35 @@
-"""Media ingestion: fetch, validate, store, and attach to staging items."""
+"""Media ingestion: fetch, validate, store, and attach to staging items.
+
+The figure rule, in one place.
+
+A source offers an image at a url. The bank tries to own it: it fetches the
+bytes, validates them, and stores them. When the store hands back a url the
+bank can serve, the bank owns the asset. That url replaces the source url in
+every image inline that pointed at it, and the asset drops its ``source_url``
+so the row can no longer fall back to a host that may die.
+
+When the bank cannot own the asset the ref is **skipped** and the inline
+keeps the full source url. That is the case for an optional media entry that
+fails to fetch or validate, and for a store that cannot hand back a servable
+url. A ``required`` entry that fails is not skipped: it fails the row, because
+a question that needs its figure and does not have it is not a question the
+bank can serve.
+
+Attaching an asset changes the bundle fingerprint, and swapping a url changes
+the content fingerprint too, so the row is re-stamped before it moves on.
+"""
+
+from __future__ import annotations
 
 import hashlib
 import io
+from datetime import UTC, datetime
 
 import httpx
 from PIL import Image
 
-from utmelab_bank.domain.enums import State
-from utmelab_bank.domain.models import MediaAsset, StagingItem
+from utmelab_bank.domain.enums import InlineKind, State
+from utmelab_bank.domain.models import MediaAsset, RichText, StagingItem
 from utmelab_bank.domain.ports import MediaFetcher, MediaStore, MediaValidator
 
 
@@ -42,38 +64,36 @@ class HttpMediaFetcher(MediaFetcher):
 
 
 class PillowMediaValidator(MediaValidator):
-    """Validate media using Pillow (MIME sniff, decode, dimensions)."""
+    """Validate media using Pillow (MIME sniff, decode, dimensions).
+
+    The asset it returns is a placeholder in the one field the store owns:
+    the storage url and the fetch time. Everything the store does not
+    recompute comes from the bytes, and the store is what replaces those two.
+    """
 
     async def validate(self, data: bytes, mime: str | None = None) -> MediaAsset:
-        # Sniff MIME if not provided
-        if mime is None:
-            mime = self._sniff_mime(data)
-            if mime is None:
-                raise ValueError("Could not determine MIME type")
+        sniffed = mime or self._sniff_mime(data)
+        if sniffed is None:
+            raise ValueError("Could not determine MIME type")
 
-        # Decode with Pillow to validate and get dimensions
         try:
             img = Image.open(io.BytesIO(data))
             img.verify()  # Verify integrity
             img = Image.open(io.BytesIO(data))  # Reopen after verify
             width, height = img.size
             detected = Image.MIME.get(img.format) if img.format else None
-            mime = mime or detected
         except Exception as e:
             raise ValueError(f"Invalid image data: {e}") from e
 
-        # Compute hash
-        asset_id = hashlib.sha256(data).hexdigest()
-
         return MediaAsset(
-            asset_id=asset_id,
-            mime=mime,
+            asset_id=hashlib.sha256(data).hexdigest(),
+            mime=detected or sniffed,
             byte_size=len(data),
             width=width,
             height=height,
-            storage_url="",  # Filled in by store
+            storage_url="pending:the-store-fills-this",
             source_url=None,
-            fetched_at=None,  # Filled in by store
+            fetched_at=datetime.now(UTC),
             required=True,
             readable=True,
         )
@@ -106,33 +126,79 @@ class MediaIngestor:
         self.validator = validator
         self.store = store
 
-    async def ingest_refs(self, item: "StagingItem") -> "StagingItem":
-        """Fetch and store all media refs, return updated item."""
+    async def ingest_refs(self, item: StagingItem) -> StagingItem:
+        """Fetch and store every media ref, then move the row to media_ready.
+
+        A ref the bank cannot ingest is skipped when it is optional and fails
+        the row when it is required. The owned urls are collected as we go, so
+        the swap and the fingerprint see the same set of assets.
+        """
         if not item.media_refs:
             return item
 
-        assets = []
+        assets: list[MediaAsset] = []
+        owned: dict[str, str] = {}
         for ref in item.media_refs:
-            data = await self.fetcher.fetch(str(ref.source_url))
-            asset = await self.validator.validate(data, ref.mime)
-            asset = await self.store.put(
-                data,
-                mime=asset.mime,
-                source_url=str(ref.source_url),
-            )
-            assets.append(asset)
+            source_url = str(ref.source_url)
+            try:
+                data = await self.fetcher.fetch(source_url)
+                checked = await self.validator.validate(data, ref.mime)
+                asset = await self.store.put(
+                    data,
+                    mime=checked.mime,
+                    source_url=source_url,
+                )
+            except Exception:
+                if ref.required:
+                    raise
+                continue
 
-        # Build new item with assets attached
+            if asset.storage_url.startswith("https://"):
+                # The bank can serve it, so it owns it and the source url goes.
+                owned[source_url] = asset.storage_url
+                assets.append(asset.model_copy(update={"source_url": None}))
+            else:
+                # Stored but not servable yet: the row keeps the source url.
+                assets.append(asset)
+
         updated = item.model_copy(update={"media_assets": tuple(assets)})
-        return updated.transition_to(State.MEDIA_READY)
+        updated = _swap_owned_urls(updated, owned)
+        return updated.stamp_hashes().transition_to(State.MEDIA_READY)
+
+
+def _swap_owned_urls(item: StagingItem, owned: dict[str, str]) -> StagingItem:
+    """Point every image inline at the bank's own url for the asset."""
+    if not owned:
+        return item
+
+    def rewrite(text: RichText) -> RichText:
+        inline = tuple(
+            one.model_copy(update={"url": owned[one.url]})
+            if one.kind is InlineKind.IMAGE and one.url is not None and one.url in owned
+            else one
+            for one in text.inline
+        )
+        return text.model_copy(update={"inline": inline})
+
+    content = item.content
+    swapped = content.model_copy(
+        update={
+            "stem": rewrite(content.stem),
+            "options": tuple(
+                option.model_copy(update={"text": rewrite(option.text)})
+                for option in content.options
+            ),
+        }
+    )
+    return item.model_copy(update={"content": swapped})
 
 
 async def ingest_media_task(
-    item: "StagingItem",
+    item: StagingItem,
     fetcher: MediaFetcher,
     validator: MediaValidator,
     store: MediaStore,
-) -> "StagingItem":
+) -> StagingItem:
     """Task: ingest media refs for a staging item."""
     ingestor = MediaIngestor(fetcher, validator, store)
     return await ingestor.ingest_refs(item)

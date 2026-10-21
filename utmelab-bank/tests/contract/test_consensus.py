@@ -5,7 +5,12 @@ from datetime import UTC, datetime
 
 import pytest
 
-from utmelab_bank.adapters.media import ConsensusPolicy, DescribeImageConsensus
+from utmelab_bank.adapters.media import (
+    ConsensusPolicy,
+    DescribeImageConsensus,
+    Dissent,
+    MissingWitness,
+)
 from utmelab_bank.adapters.providers.mock import MockProvider
 from utmelab_bank.domain.capabilities import DescribeImageRequest
 from utmelab_bank.domain.models import ImageDescription, MediaAsset, Producer
@@ -75,9 +80,15 @@ def test_consensus_no_descriptions_raises() -> None:
         ConsensusPolicy.reconcile(())
 
 
-def test_consensus_with_failures() -> None:
+def test_a_missing_witness_fails() -> None:
+    """A witness that errors does not get to be ignored.
+
+    Two witnesses are the check. One of them going quiet means the figure was
+    seen once, not twice, so the check did not happen and the asset is refused.
+    """
+
     class FailingDescriber:
-        producer = MockProvider().producer
+        producer = Producer(provider="p2", model="m2")
 
         async def describe(self, request: DescribeImageRequest) -> ImageDescription:
             raise RuntimeError("Simulated failure")
@@ -87,6 +98,39 @@ def test_consensus_with_failures() -> None:
         request = DescribeImageRequest(asset=make_asset(), context="test")
         return await consensus.describe(request)
 
-    result = asyncio.run(run())
-    assert result.description.startswith("Mock description for ")
-    assert len(result.contributors) == 1
+    with pytest.raises(MissingWitness):
+        asyncio.run(run())
+
+
+def test_the_witnesses_must_differ() -> None:
+    with pytest.raises(ValueError, match="different model"):
+        DescribeImageConsensus(describers=(MockProvider(), MockProvider()))
+
+
+def test_a_dissent_fails() -> None:
+    class FixedDescriber:
+        def __init__(self, text: str, producer: Producer) -> None:
+            self.text = text
+            self.producer = producer
+
+        async def describe(self, request: DescribeImageRequest) -> ImageDescription:
+            return ImageDescription(
+                asset_id=request.asset.asset_id,
+                description=self.text,
+                confidence=0.9,
+                producer=self.producer,
+            )
+
+    consensus = DescribeImageConsensus(
+        describers=(
+            FixedDescriber("a cell with a nucleus", Producer(provider="p1", model="m1")),
+            FixedDescriber("a flower with petals", Producer(provider="p2", model="m2")),
+        )
+    )
+
+    async def run() -> ImageDescription:
+        request = DescribeImageRequest(asset=make_asset(), context="test")
+        return await consensus.describe(request)
+
+    with pytest.raises(Dissent):
+        asyncio.run(run())

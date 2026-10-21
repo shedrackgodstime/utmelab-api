@@ -14,10 +14,13 @@ class ImageDescriberService:
         self.describer = describer
 
     async def describe(self, item: "StagingItem") -> "StagingItem":
-        """Describe all media assets in the item."""
-        if not item.media_assets:
-            return item
+        """Describe every media asset, then move the row to described.
 
+        A row can reach this step with no assets, when every ref was skipped.
+        It still moves on, because ``media_ready`` leads only to ``described``,
+        and a skipped figure is a figure the row keeps as a source url rather
+        than one it carries.
+        """
         descriptions = []
         for asset in item.media_assets:
             request = DescribeImageRequest(asset=asset, context=None)

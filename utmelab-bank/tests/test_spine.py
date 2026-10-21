@@ -13,8 +13,16 @@ import asyncio
 import json
 from pathlib import Path
 
+from tests.media_fakes import FakeMediaFetcher, FakeMediaStore
 from utmelab_bank.adapters.dedupe_service import DedupeService
 from utmelab_bank.adapters.gate_service import GateService
+from utmelab_bank.adapters.media import (
+    DescribeImageConsensus,
+    ImageDescriberService,
+    MediaIngestor,
+    MediaService,
+    PillowMediaValidator,
+)
 from utmelab_bank.adapters.providers.mock import MockProvider
 from utmelab_bank.adapters.providers.tagging import ExplainService, TagService
 from utmelab_bank.adapters.ready_service import ReadyService
@@ -23,10 +31,17 @@ from utmelab_bank.adapters.sources.fixture import FixtureSource
 from utmelab_bank.domain.dedupe import Duplicate
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.hashing import bundle_fingerprint, content_fingerprint
-from utmelab_bank.domain.models import CatalogSnapshot, Scope, SourceItem, StagingItem
+from utmelab_bank.domain.models import (
+    CatalogSnapshot,
+    Producer,
+    Scope,
+    SourceItem,
+    StagingItem,
+)
 from utmelab_bank.domain.ready import ReadyReport
 
 SCOPE = {"exam": "JAMB", "subject": "Biology", "year": 2024, "section": "A"}
+FIGURE_URL = "https://fixture.example/media/figure.png"
 
 
 class _EmptyIndex:
@@ -88,6 +103,50 @@ def _write_fixture(directory: Path) -> Path:
                     "topic_id": "t1",
                     "subtopic_id": "s1",
                     "media": [],
+                },
+            }
+        ],
+    }
+    path = directory / "jamb-biology-2024.json"
+    path.write_text(json.dumps(record), encoding="utf-8")
+    return path
+
+
+def _write_figure_fixture(directory: Path) -> Path:
+    """One question with a figure: an image inline and the media it names.
+
+    The stem inline points at the source url, which is where a figure lives
+    today. The media entry is what the bank tries to own.
+    """
+    record = {
+        "recorded_at": "2026-10-21T12:00:00Z",
+        "items": [
+            {
+                "source_item_id": "bio-2024-002",
+                "source_url": "https://fixture.example/items/bio-2024-002",
+                "scope": SCOPE,
+                "payload": {
+                    "stem": "The diagram shows a cell. Which part is labelled X?",
+                    "stem_inline": [
+                        {
+                            "kind": "image",
+                            "start": 0,
+                            "len": 0,
+                            "url": FIGURE_URL,
+                            "position": "below",
+                        }
+                    ],
+                    "options": [
+                        {"id": "a", "text": "Nucleus"},
+                        {"id": "b", "text": "Mitochondrion"},
+                        {"id": "c", "text": "Ribosome"},
+                        {"id": "d", "text": "Vacuole"},
+                    ],
+                    "answer": "a",
+                    "marks": 1.0,
+                    "topic_id": "t1",
+                    "subtopic_id": "s1",
+                    "media": [{"key": "fig1", "url": FIGURE_URL, "required": True}],
                 },
             }
         ],
@@ -185,3 +244,66 @@ def test_the_spine_reaches_ready(tmp_path: Path, catalog: CatalogSnapshot) -> No
 
     # The bank never writes a human row of its own, so the report says none.
     assert report.human_signed == 0
+
+
+def test_the_spine_carries_a_figure_to_ready(tmp_path: Path, catalog: CatalogSnapshot) -> None:
+    """The media path: catalogued -> media_ready -> described -> enriched.
+
+    A figure is the one thing the bank can own that production does not: the
+    bytes. This is the join that says the branch runs, the asset is stored,
+    the source url is swapped for the bank's own, and the row still reaches
+    ready with the two-witness description attached.
+    """
+    _write_figure_fixture(tmp_path)
+    source = FixtureSource(tmp_path)
+    scope = Scope.model_validate(SCOPE)
+
+    async def walk() -> tuple[StagingItem, str]:
+        raw = [item async for item in source.fetch(scope)][0]
+        adapted = source.adapt(raw, catalog)
+        assert adapted.media_refs
+        assert adapted.content.stem.inline[0].url == FIGURE_URL
+
+        gated = GateService(catalog=catalog).apply(adapted)
+        assert gated.state is State.GATED
+        deduped = await DedupeService(_EmptyIndex()).apply(gated)
+        catalogued = await TagService(MockProvider()).tag(deduped, catalog)
+        assert catalogued.state is State.CATALOGUED
+
+        # media: the branch runs because the row brings a ref
+        second = MockProvider(producer=Producer(provider="mock", model="mock-v2"))
+        media = MediaService(
+            MediaIngestor(FakeMediaFetcher(), PillowMediaValidator(), FakeMediaStore()),
+            ImageDescriberService(DescribeImageConsensus((MockProvider(), second))),
+        )
+        described = await media.apply(catalogued)
+        assert described.state is State.DESCRIBED
+        assert described.evidence.image_descriptions
+
+        enriched = await ExplainService(MockProvider()).explain(described, catalog)
+        assert enriched.state is State.ENRICHED
+        verified = await ReviewService(MockProvider()).apply(enriched, catalog)
+        bundle = ReadyService(catalog=catalog).promote([verified])
+        return bundle.items[0], FIGURE_URL
+
+    ready, source_url = asyncio.run(walk())
+
+    assert ready.state is State.READY
+    asset = ready.media_assets[0]
+
+    # The bank owns the bytes: the inline points at our url, not the source.
+    assert asset.source_url is None
+    assert ready.content.stem.inline[0].url == asset.storage_url
+    assert ready.content.stem.inline[0].url != source_url
+
+    # The description is on the row, and it is about the asset we stored.
+    assert ready.evidence.image_descriptions[0].asset_id == asset.asset_id
+
+    # The hash a verification was written against is the hash as it stands.
+    assert ready.hashes is not None
+    assert ready.evidence.verifications[-1].content_hash == ready.hashes.content_hash
+    assert ready.hashes.bundle_hash == bundle_fingerprint(
+        content_hash=ready.hashes.content_hash,
+        section="A",
+        media_ids=(asset.asset_id,),
+    )

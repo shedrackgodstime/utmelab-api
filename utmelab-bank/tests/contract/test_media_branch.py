@@ -1,0 +1,161 @@
+"""The media branch: fetch, store, swap the url, describe."""
+
+from __future__ import annotations
+
+import asyncio
+from datetime import UTC, datetime
+
+import pytest
+
+from tests.media_fakes import FailingMediaFetcher, FakeMediaFetcher, FakeMediaStore
+from utmelab_bank.adapters.media import (
+    DescribeImageConsensus,
+    ImageDescriberService,
+    MediaIngestor,
+    MediaService,
+    PillowMediaValidator,
+)
+from utmelab_bank.adapters.providers.mock import MockProvider
+from utmelab_bank.domain.enums import State
+from utmelab_bank.domain.hashing import bundle_fingerprint
+from utmelab_bank.domain.models import (
+    Content,
+    Inline,
+    MediaRef,
+    Option,
+    Producer,
+    Provenance,
+    RichText,
+    Scope,
+    StagingItem,
+)
+from utmelab_bank.domain.ports import MediaFetcher
+
+SOURCE_URL = "https://source.example/figure.png"
+NOW = datetime(2026, 10, 21, 9, 0, tzinfo=UTC)
+
+
+def make_item(*, required: bool = False, with_media: bool = True) -> StagingItem:
+    inline = (
+        (Inline(kind="image", start=0, len=0, url=SOURCE_URL, position="below"),)
+        if with_media
+        else ()
+    )
+    content = Content(
+        stem=RichText(text="The diagram shows a cell.", inline=inline),
+        options=(
+            Option(id="a", text=RichText(text="nucleus")),
+            Option(id="b", text=RichText(text="membrane")),
+            Option(id="c", text=RichText(text="wall")),
+            Option(id="d", text=RichText(text="vacuole")),
+        ),
+        answer="a",
+        marks=1.0,
+    )
+    provenance = Provenance(
+        source="fixture",
+        source_url="https://source.example/items/1",
+        source_item_id="fig-1",
+        fetched_at=NOW,
+        payload_hash="b" * 64,
+        source_version="1.0.0",
+        scope=Scope(exam="JAMB", subject="Biology", year=2024, section="A"),
+    )
+    refs = (MediaRef(key="fig1", source_url=SOURCE_URL, required=required),) if with_media else ()
+    return StagingItem(
+        id=provenance.external_key,
+        provenance=provenance,
+        content=content,
+        media_refs=refs,
+        state=State.CATALOGUED,
+        created_at=NOW,
+        updated_at=NOW,
+    ).stamp_hashes()
+
+
+def ingestor(store: FakeMediaStore, fetcher: MediaFetcher | None = None) -> MediaIngestor:
+    return MediaIngestor(fetcher or FakeMediaFetcher(), PillowMediaValidator(), store)
+
+
+def test_ingesting_owns_the_asset_and_swaps_the_url() -> None:
+    item = make_item()
+    before = item.hashes
+
+    result = asyncio.run(ingestor(FakeMediaStore()).ingest_refs(item))
+
+    assert result.state is State.MEDIA_READY
+    assert len(result.media_assets) == 1
+    asset = result.media_assets[0]
+
+    # The bank owns it: the source url is gone and the inline points at ours.
+    assert asset.source_url is None
+    assert result.content.stem.inline[0].url == asset.storage_url
+    assert asset.storage_url.startswith("https://")
+
+    # Swapping a url changes the content fingerprint, and attaching an asset
+    # changes the bundle fingerprint, so both are re-stamped.
+    assert result.hashes is not None
+    assert before is not None
+    assert result.hashes.content_hash != before.content_hash
+    assert result.hashes.bundle_hash != before.bundle_hash
+    assert result.hashes.bundle_hash == bundle_fingerprint(
+        content_hash=result.hashes.content_hash,
+        section="A",
+        media_ids=(asset.asset_id,),
+    )
+
+
+def test_a_store_that_cannot_serve_keeps_the_source_url() -> None:
+    result = asyncio.run(
+        ingestor(FakeMediaStore(base="file:///tmp/objects")).ingest_refs(make_item())
+    )
+
+    assert result.state is State.MEDIA_READY
+    asset = result.media_assets[0]
+    assert str(asset.source_url) == SOURCE_URL
+    assert result.content.stem.inline[0].url == SOURCE_URL
+
+
+def test_an_optional_ref_that_fails_is_skipped() -> None:
+    result = asyncio.run(
+        ingestor(FakeMediaStore(), FailingMediaFetcher()).ingest_refs(make_item(required=False))
+    )
+
+    assert result.state is State.MEDIA_READY
+    assert result.media_assets == ()
+    assert result.content.stem.inline[0].url == SOURCE_URL
+
+
+def test_a_required_ref_that_fails_fails_the_row() -> None:
+    with pytest.raises(OSError):
+        asyncio.run(
+            ingestor(FakeMediaStore(), FailingMediaFetcher()).ingest_refs(make_item(required=True))
+        )
+
+
+def test_the_media_branch_describes_the_asset() -> None:
+    second = MockProvider(producer=Producer(provider="mock", model="mock-v2"))
+    describer = ImageDescriberService(
+        DescribeImageConsensus((MockProvider(), second)),
+    )
+    service = MediaService(ingestor(FakeMediaStore()), describer)
+
+    result = asyncio.run(service.apply(make_item()))
+
+    assert result.state is State.DESCRIBED
+    assert len(result.evidence.image_descriptions) == 1
+    assert result.evidence.image_descriptions[0].asset_id == result.media_assets[0].asset_id
+
+
+def test_a_row_with_no_media_skips_the_branch() -> None:
+    item = make_item(with_media=False)
+    second = MockProvider(producer=Producer(provider="mock", model="mock-v2"))
+    service = MediaService(
+        ingestor(FakeMediaStore()),
+        ImageDescriberService(DescribeImageConsensus((MockProvider(), second))),
+    )
+
+    result = asyncio.run(service.apply(item))
+
+    assert result is item
+    assert result.state is State.CATALOGUED
