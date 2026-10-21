@@ -23,7 +23,7 @@ def isolated_env(monkeypatch: pytest.MonkeyPatch) -> None:
 
 def test_settings_read_the_bank_env(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("TURSO_PROD_DATABASE_URL", "turso://prod.example")
-    monkeypatch.setenv("TURSO_PROD_AUTH_TOKEN", "prod-token")
+    monkeypatch.setenv("TURSO_PROD_AUTH_TOKEN_READONLY", "prod-token")
     monkeypatch.setenv("TURSO_BANK_DATABASE_URL", "turso://bank.example")
     monkeypatch.setenv("TURSO_BANK_AUTH_TOKEN", "bank-token")
     monkeypatch.setenv("GITLAB_TOKEN", "glpat")
@@ -46,7 +46,7 @@ def test_settings_require_the_production_database(
 
 def test_settings_require_the_bank_database(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("TURSO_PROD_DATABASE_URL", "turso://prod.example")
-    monkeypatch.setenv("TURSO_PROD_AUTH_TOKEN", "prod-token")
+    monkeypatch.setenv("TURSO_PROD_AUTH_TOKEN_READONLY", "prod-token")
     monkeypatch.delenv("TURSO_BANK_DATABASE_URL", raising=False)
     monkeypatch.setenv("TURSO_BANK_AUTH_TOKEN", "bank-token")
 
@@ -54,11 +54,13 @@ def test_settings_require_the_bank_database(monkeypatch: pytest.MonkeyPatch) -> 
         load_settings()
 
 
-def test_settings_refuse_a_prod_url_without_a_token(
+def test_settings_refuse_a_prod_url_without_a_read_only_token(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     monkeypatch.setenv("TURSO_PROD_DATABASE_URL", "turso://prod.example")
-    monkeypatch.delenv("TURSO_PROD_AUTH_TOKEN", raising=False)
+    # A write capable token is present, and the bank must not fall back to it.
+    monkeypatch.setenv("TURSO_PROD_AUTH_TOKEN", "write-token")
+    monkeypatch.delenv("TURSO_PROD_AUTH_TOKEN_READONLY", raising=False)
     monkeypatch.setenv("TURSO_BANK_DATABASE_URL", "turso://bank.example")
     monkeypatch.setenv("TURSO_BANK_AUTH_TOKEN", "bank-token")
 

@@ -31,7 +31,10 @@ ENV_FILE = BANK_ROOT / ".env"
 
 #: The variables the bank reads, and what each one is for.
 PROD_DATABASE_URL = "TURSO_PROD_DATABASE_URL"
-PROD_AUTH_TOKEN = "TURSO_PROD_AUTH_TOKEN"
+#: The production token the bank uses, and the only one it will accept.
+#:
+#: Read only, on purpose. The bank never writes production, so a write
+#: capable token must not be usable here, and there is no fallback to one.
 PROD_READONLY_TOKEN = "TURSO_PROD_AUTH_TOKEN_READONLY"
 BANK_DATABASE_URL = "TURSO_BANK_DATABASE_URL"
 BANK_AUTH_TOKEN = "TURSO_BANK_AUTH_TOKEN"
@@ -95,12 +98,15 @@ def load_settings(*, require: bool = True) -> Settings:
     values = _read_env()
 
     prod_url = values.get(PROD_DATABASE_URL, "")
-    prod_token = values.get(PROD_AUTH_TOKEN, "") or values.get(PROD_READONLY_TOKEN, "")
+    # Read only, and only read only. A write capable token is not a fallback.
+    prod_token = values.get(PROD_READONLY_TOKEN, "")
     bank_url = values.get(BANK_DATABASE_URL, "")
     bank_token = values.get(BANK_AUTH_TOKEN, "")
 
     if prod_url and not prod_token:
-        raise ConfigError(f"the production catalog needs a read only token: set {PROD_AUTH_TOKEN}")
+        raise ConfigError(
+            f"the production catalog needs a read only token: set {PROD_READONLY_TOKEN}"
+        )
     if require and not prod_url:
         raise ConfigError(
             "the production catalog database is not configured: set "
