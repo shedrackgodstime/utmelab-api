@@ -76,10 +76,12 @@ def test_put_writes_a_content_addressed_blob(tmp_path: Path) -> None:
     assert asyncio.run(store.exists("0" * 64)) is False
 
 
-def test_a_base_url_makes_the_url_servable(tmp_path: Path) -> None:
+def test_a_base_url_is_not_claimed_until_the_bytes_are_published(tmp_path: Path) -> None:
+    """A local run must not hand the row a served url that does not exist."""
     store = _local(tmp_path, base_url=BASE)
     asset = asyncio.run(store.put(PNG_1X1, mime="image/png"))
-    assert asset.storage_url == f"{BASE}/{asset.asset_id}.png"
+    assert asset.storage_url == name_for(asset.asset_id, ".png")
+    assert not asset.storage_url.startswith("https://")
 
 
 def test_idempotent_put(tmp_path: Path) -> None:

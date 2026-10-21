@@ -18,7 +18,6 @@ from utmelab_bank.adapters.dedupe_service import DedupeService
 from utmelab_bank.adapters.gate_service import GateService
 from utmelab_bank.adapters.media import (
     DescribeImageConsensus,
-    ImageDescriberService,
     MediaIngestor,
     MediaService,
     PillowMediaValidator,
@@ -274,7 +273,7 @@ def test_the_spine_carries_a_figure_to_ready(tmp_path: Path, catalog: CatalogSna
         second = MockProvider(producer=Producer(provider="mock", model="mock-v2"))
         media = MediaService(
             MediaIngestor(FakeMediaFetcher(), PillowMediaValidator(), FakeMediaStore()),
-            ImageDescriberService(DescribeImageConsensus((MockProvider(), second))),
+            DescribeImageConsensus((MockProvider(), second)),
         )
         described = await media.apply(catalogued)
         assert described.state is State.DESCRIBED

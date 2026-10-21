@@ -631,10 +631,14 @@ class GitMediaStore(MediaStore):
 
         if self.push_enabled(self.upload_enabled):
             self.publish([ref], allowed=True)
+            storage_url = self.url_for(digest, extension)
         else:
             # Local only: record the bytes with a commit, but claim nothing.
+            # The bare name is not an https url, so the row keeps its source
+            # url instead of pointing at a host that does not have the bytes.
             self.stage_all()
             self.commit(_COMMIT_MESSAGE)
+            storage_url = name
 
         width, height = _dimensions(data)
         return MediaAsset(
@@ -643,7 +647,7 @@ class GitMediaStore(MediaStore):
             byte_size=len(data),
             width=width,
             height=height,
-            storage_url=self.url_for(digest, extension),
+            storage_url=storage_url,
             source_url=source_url,
             fetched_at=datetime.now(UTC),
             required=True,

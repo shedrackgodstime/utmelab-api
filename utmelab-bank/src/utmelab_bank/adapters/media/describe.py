@@ -5,16 +5,22 @@ from utmelab_bank.config import DEFAULT_AI_IMAGE_MODEL, DEFAULT_AI_IMAGE_SECOND_
 from utmelab_bank.domain.capabilities import DescribeImageRequest
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.models import Producer, StagingItem
-from utmelab_bank.domain.ports import ImageDescriber
+from utmelab_bank.domain.ports import ImageDescriber, MediaStore
 
 from .consensus import DescribeImageConsensus
 
 
 class ImageDescriberService:
-    """Orchestrate image description for staging items."""
+    """Orchestrate image description for staging items.
 
-    def __init__(self, describer: ImageDescriber) -> None:
+    The asset carries the url the row serves, which is remote. When a reader is
+    wired, the service hands the describer the bytes it already holds, so a
+    provider never has to turn a served url back into a local file.
+    """
+
+    def __init__(self, describer: ImageDescriber, reader: MediaStore | None = None) -> None:
         self.describer = describer
+        self.reader = reader
 
     async def describe(self, item: "StagingItem") -> "StagingItem":
         """Describe every media asset, then move the row to described.
@@ -26,7 +32,8 @@ class ImageDescriberService:
         """
         descriptions = []
         for asset in item.media_assets:
-            request = DescribeImageRequest(asset=asset, context=None)
+            data = await self.reader.read(asset.asset_id) if self.reader is not None else None
+            request = DescribeImageRequest(asset=asset, context=None, data=data)
             description = await self.describer.describe(request)
             descriptions.append(description)
 

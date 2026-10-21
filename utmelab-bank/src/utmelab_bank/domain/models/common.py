@@ -642,6 +642,10 @@ class StagingItem(DomainModel):
 class DescribeImageRequest(DomainModel):
     asset: "MediaAsset"
     context: NonEmptyStr | None = None
+    #: The downloaded bytes, when the caller holds them. The served url is a
+    #: remote address, so an adapter that needs a local file must be handed
+    #: the bytes rather than asked to reconstruct a path from the url.
+    data: bytes | None = None
 
 
 class ExplainRequest(DomainModel):

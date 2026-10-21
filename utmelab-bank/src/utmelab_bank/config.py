@@ -47,8 +47,11 @@ GITLAB_MEDIA_REPO = "GITLAB_MEDIA_REPO"
 GITLAB_HOST = "GITLAB_HOST"
 #: The branch the media project publishes to.
 MEDIA_BRANCH = "UTMELAB_BANK_MEDIA_BRANCH"
-#: The url prefix a served figure gets. Derived from the repo when unset.
+#: The url prefix a served figure gets. Overrides the default assets host.
 MEDIA_BASE_URL = "UTMELAB_BANK_MEDIA_BASE_URL"
+#: The served url prefix. The bytes may live on GitLab, but the row carries
+#: this host; pointing the domain at GitLab is a DNS change, not a rewrite.
+DEFAULT_MEDIA_BASE_URL = "https://assets.utmelab.com/images"
 #: The push is closed until somebody opens it deliberately.
 MEDIA_UPLOAD_ENABLED = "UTMELAB_BANK_MEDIA_UPLOAD_ENABLED"
 
@@ -110,7 +113,7 @@ class Settings:
     gitlab_media_repo: str | None = None
     gitlab_host: str = "gitlab.com"
     media_branch: str = "main"
-    #: An explicit served url prefix. Derived from the repo when unset.
+    #: An explicit served url prefix. Defaults to the assets host.
     media_base_url: str | None = None
     media_upload_enabled: bool = False
     ai_model: str = DEFAULT_AI_MODEL
@@ -143,15 +146,10 @@ class Settings:
         """The url prefix a served figure gets.
 
         The bank records the bare name ``<sha>.<ext>``; this is the prefix the
-        row's inline gets, so any hosting move is one setting, not a rewrite.
+        row's inline gets. It points at the assets host, not the storage host,
+        so moving the bytes from GitLab to somewhere else is a DNS change.
         """
-        if self.media_base_url:
-            return self.media_base_url.rstrip("/")
-        if not self.gitlab_media_repo:
-            return ""
-        return (
-            f"https://{self.gitlab_host}/{self.gitlab_media_repo}/-/raw/{self.media_branch}/images"
-        )
+        return (self.media_base_url or DEFAULT_MEDIA_BASE_URL).rstrip("/")
 
 
 def load_settings(*, require: bool = True) -> Settings:

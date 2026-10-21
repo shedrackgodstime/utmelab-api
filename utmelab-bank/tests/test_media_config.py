@@ -9,7 +9,7 @@ from utmelab_bank.adapters.media import (
     create_describer,
     create_media_store,
 )
-from utmelab_bank.config import Settings
+from utmelab_bank.config import DEFAULT_MEDIA_BASE_URL, Settings
 
 
 def _settings(**overrides: object) -> Settings:
@@ -23,10 +23,10 @@ def _settings(**overrides: object) -> Settings:
     return Settings(**base)  # type: ignore[arg-type]
 
 
-def test_the_remote_and_base_derive_from_the_repo() -> None:
+def test_the_remote_comes_from_the_repo_and_the_base_is_the_assets_host() -> None:
     settings = _settings(gitlab_token="tok", gitlab_media_repo="group/media")
     assert settings.media_remote == "https://oauth2:tok@gitlab.com/group/media.git"
-    assert settings.media_base == "https://gitlab.com/group/media/-/raw/main/images"
+    assert settings.media_base == DEFAULT_MEDIA_BASE_URL
 
 
 def test_a_self_hosted_host_and_branch_are_honoured() -> None:
@@ -37,18 +37,19 @@ def test_a_self_hosted_host_and_branch_are_honoured() -> None:
         media_branch="figures",
     )
     assert settings.media_remote == "https://oauth2:tok@gitlab.example/g/m.git"
-    assert settings.media_base == "https://gitlab.example/g/m/-/raw/figures/images"
+    # The storage host and branch do not change the served url.
+    assert settings.media_base == DEFAULT_MEDIA_BASE_URL
 
 
 def test_no_repo_means_local_only() -> None:
     settings = _settings()
     assert settings.media_remote == ""
-    assert settings.media_base == ""
+    assert settings.media_base == DEFAULT_MEDIA_BASE_URL
     assert settings.media_upload_enabled is False
 
 
 def test_an_explicit_base_wins_and_is_normalised() -> None:
-    settings = _settings(gitlab_media_repo="g/m", media_base_url="https://cdn.example/figs/")
+    settings = _settings(media_base_url="https://cdn.example/figs/")
     assert settings.media_base == "https://cdn.example/figs"
 
 
@@ -60,7 +61,7 @@ def test_create_media_store_reads_the_settings() -> None:
     )
     store = create_media_store(settings)
     assert store.remote == "https://oauth2:tok@gitlab.com/g/m.git"
-    assert store.base_url == "https://gitlab.com/g/m/-/raw/main/images"
+    assert store.base_url == DEFAULT_MEDIA_BASE_URL
     assert store.root == settings.media_repo_path
     assert store.upload_enabled is True
 

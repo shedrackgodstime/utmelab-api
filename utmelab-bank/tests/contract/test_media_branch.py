@@ -10,7 +10,6 @@ import pytest
 from tests.media_fakes import FailingMediaFetcher, FakeMediaFetcher, FakeMediaStore
 from utmelab_bank.adapters.media import (
     DescribeImageConsensus,
-    ImageDescriberService,
     MediaIngestor,
     MediaService,
     PillowMediaValidator,
@@ -135,10 +134,10 @@ def test_a_required_ref_that_fails_fails_the_row() -> None:
 
 def test_the_media_branch_describes_the_asset() -> None:
     second = MockProvider(producer=Producer(provider="mock", model="mock-v2"))
-    describer = ImageDescriberService(
+    service = MediaService(
+        ingestor(FakeMediaStore()),
         DescribeImageConsensus((MockProvider(), second)),
     )
-    service = MediaService(ingestor(FakeMediaStore()), describer)
 
     result = asyncio.run(service.apply(make_item()))
 
@@ -152,7 +151,7 @@ def test_a_row_with_no_media_skips_the_branch() -> None:
     second = MockProvider(producer=Producer(provider="mock", model="mock-v2"))
     service = MediaService(
         ingestor(FakeMediaStore()),
-        ImageDescriberService(DescribeImageConsensus((MockProvider(), second))),
+        DescribeImageConsensus((MockProvider(), second)),
     )
 
     result = asyncio.run(service.apply(item))

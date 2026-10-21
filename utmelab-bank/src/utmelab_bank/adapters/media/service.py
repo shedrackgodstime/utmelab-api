@@ -14,17 +14,22 @@ choice rather than a special case buried here.
 from __future__ import annotations
 
 from utmelab_bank.domain.models import StagingItem
+from utmelab_bank.domain.ports import ImageDescriber
 
 from .describe import ImageDescriberService
 from .ingest import MediaIngestor
 
 
 class MediaService:
-    """Drive one item through media_ready and described."""
+    """Drive one item through media_ready and described.
 
-    def __init__(self, ingestor: MediaIngestor, describer: ImageDescriberService) -> None:
+    The describer is wired to the ingestor's store, so the bytes that were just
+    downloaded are the bytes the witnesses see.
+    """
+
+    def __init__(self, ingestor: MediaIngestor, describer: ImageDescriber) -> None:
         self._ingestor = ingestor
-        self._describer = describer
+        self._describer = ImageDescriberService(describer, reader=ingestor.store)
 
     async def apply(self, item: StagingItem) -> StagingItem:
         if not item.media_refs:

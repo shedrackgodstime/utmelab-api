@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import asyncio
 import json
+import mimetypes
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Protocol, TypeVar, cast
@@ -93,13 +95,25 @@ class OpenCodeProvider:
         self._timeout = timeout
 
     async def describe(self, request: DescribeImageRequest) -> ImageDescription:
-        path = _local_asset_path(request.asset.storage_url)
         prompt = self._prompt(
             "Describe the attached image for an exam question. Return JSON with keys "
             "description (string), facts (array of strings), confidence (number from 0 to 1).",
             {"context": request.context, "mime": request.asset.mime},
         )
-        data = self._extract_json(await self._complete(prompt, files=(path,)))
+        # The asset url is where the row serves the figure, not where the
+        # bytes are on this machine. When the caller hands us the bytes, the
+        # provider writes its own scratch file; the local-path branch remains
+        # for a store that really does address a file.
+        if request.data is not None:
+            path = _write_scratch(request.data, request.asset.mime)
+            try:
+                data = self._extract_json(await self._complete(prompt, files=(path,)))
+            finally:
+                path.unlink(missing_ok=True)
+        else:
+            data = self._extract_json(
+                await self._complete(prompt, files=(_local_asset_path(request.asset.storage_url),))
+            )
         return self._validate(
             ImageDescription,
             {
@@ -283,6 +297,15 @@ def _error_message(event: dict[str, Any]) -> str:
         if isinstance(name, str):
             return name
     return "opencode reported an error"
+
+
+def _write_scratch(data: bytes, mime: str) -> Path:
+    """Write the bytes to a scratch file the CLI can attach, named by mime."""
+    suffix = mimetypes.guess_extension(mime) or ".img"
+    with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as handle:
+        handle.write(data)
+        name = handle.name
+    return Path(name)
 
 
 def _local_asset_path(storage_url: str) -> Path:

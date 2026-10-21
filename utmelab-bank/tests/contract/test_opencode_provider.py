@@ -90,6 +90,34 @@ def test_describe_parses_text_and_attaches_file(tmp_path: Path, media: MediaAsse
     assert str(path) in argv
 
 
+def test_a_remote_asset_with_bytes_is_described(media: MediaAsset) -> None:
+    """The row carries a served url, not a local path, so the bytes travel.
+
+    The provider writes its own scratch file and hands that to the CLI; it
+    never tries to turn ``https://assets...`` back into a file.
+    """
+    from tests.media_fakes import PNG_1X1
+    from utmelab_bank.domain.models import rebuild
+
+    asset = rebuild(
+        media,
+        storage_url=f"https://assets.utmelab.com/images/{media.asset_id}.png",
+    )
+    provider, runner = make_provider(
+        text_event('{"description":"A cell","facts":[],"confidence":0.9}')
+    )
+
+    result = asyncio.run(
+        provider.describe(DescribeImageRequest(asset=asset, context="cell", data=PNG_1X1))
+    )
+
+    assert result.description == "A cell"
+    argv, _ = runner.calls[0]
+    attached = argv[argv.index("-f") + 1]
+    assert attached.endswith(".png")
+    assert attached != asset.storage_url
+
+
 def test_explain_parses(staging_item: StagingItem) -> None:
 
     provider, _ = make_provider(text_event('{"key_point":"k","body":"b","confidence":0.8}'))
