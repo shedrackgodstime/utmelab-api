@@ -215,6 +215,73 @@ def test_rich_text_rejects_overlap() -> None:
         )
 
 
+def test_rich_text_allows_an_identical_range() -> None:
+    """Bold on top of underline is the case D60 names.
+
+    Production allows two marks to share a range and refuses only partial
+    overlap, so the model must allow it too.
+    """
+    text = RichText(
+        text="abcdef",
+        marks=(
+            Mark(kind=MarkKind.BOLD, start=0, len=4),
+            Mark(kind=MarkKind.UNDERLINE, start=0, len=4),
+        ),
+    )
+
+    assert len(text.marks) == 2
+
+
+def test_rich_text_keeps_leading_and_trailing_spaces() -> None:
+    """Production stores some explanation bodies with a leading space.
+
+    The fingerprint hashes those bytes, so a strip would change the hash and
+    the row could never match a production row.
+    """
+    text = RichText(text=" leading and trailing ")
+
+    assert text.text == " leading and trailing "
+
+
+def test_rich_text_keeps_a_fully_blank_line() -> None:
+    """A blank line between paragraphs is structure, not noise.
+
+    D60 says paragraph breaks are two newlines in plain text, and there is no
+    block layer, so the newlines must survive.
+    """
+    text = RichText(text="first paragraph\n\nsecond paragraph")
+
+    assert "\n\n" in text.text
+
+
+def test_image_mark_rejects_a_relative_url() -> None:
+    with pytest.raises(ValidationError, match="absolute https"):
+        Mark(
+            kind=MarkKind.IMAGE,
+            start=0,
+            len=0,
+            url="/storage/classroom/x.png",
+            position=ImagePosition.ABOVE,
+        )
+
+
+def test_image_mark_keeps_the_url_verbatim() -> None:
+    """The url is hashed, so it must not be normalised.
+
+    ``https://example.com`` and ``https://example.com/`` are different rows
+    and must not collapse into one.
+    """
+    mark = Mark(
+        kind=MarkKind.IMAGE,
+        start=0,
+        len=0,
+        url="https://example.com",
+        position=ImagePosition.ABOVE,
+    )
+
+    assert mark.url == "https://example.com"
+
+
 def test_rich_text_rejects_out_of_bounds() -> None:
     with pytest.raises(ValidationError, match="past the end"):
         RichText(

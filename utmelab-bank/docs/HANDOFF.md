@@ -130,8 +130,60 @@ This is `Question.text: RichText` flattened by serde, while `Choice.text` and `E
 
 Marks actually present today: `image`, `italic`, `underline`.
 
-### 3.5 The catalog shape
+### 3.4a How images actually work
 
+**There is no image column and no media table. A figure is a mark on the stem.**
+
+71 of the 2,243 questions carry an image mark. Every one looks like this:
+
+```json
+{"start":0,"len":0,"kind":"image",
+ "url":"https://myschool.ng/storage/classroom/tzZCvA5EI0BAvOS0qdtp1cius4OlVxB3brjAOIqD.png",
+ "position":"above"}
+```
+
+Facts to hold:
+
+- The image is a **zero length anchor**. `len` is always 0 for an image.
+- `start` is 0 for `above`, and the character count of the stem for `below`.
+- `position` is `above` or `below`. It is **required**, there is no default. D55 records the measurement: above 1400, below 144. Assuming one misrenders one row in eleven.
+- The url is **absolute https**. The importer refuses a relative url: "image is not an absolute URL".
+- **Every image in production is `position: "above"`.** The 71 rows are all above.
+- The url points at **myschool.ng**, the source site. Nothing is copied into our storage. There is no media table, no media row, no asset record anywhere in production.
+
+Where the position came from, and this matters: the importer read it off the stem's own prose. `src/import.rs`:
+
+```rust
+fn image_position(text: &str) -> ImagePosition {
+    if text.to_lowercase().contains("below") { ImagePosition::Below }
+    else { ImagePosition::Above }
+}
+```
+
+So a figure's placement is **guessed from the wording of the question**. "the diagram below" gives below, everything else gives above. That is the "wording is not data" trap the architecture warns about, and it is already baked into the 71 production rows.
+
+**Nothing in production stores the bytes of a figure.** If myschool.ng drops a file, that question renders a broken image forever. That is the case for a real media store, and the case for hashing and describing the bytes ourselves.
+
+### 3.4b The figure rule
+
+The importer refuses a row whose stem mentions a figure but carries no image mark:
+
+```rust
+let carried_image = stem.has_mark(|k| matches!(k, InlineKind::Image { .. }));
+if !carried_image && mentions_figure(&text) {
+    refusals.note("needs a figure we do not have", text.clone());
+    return None;
+}
+```
+
+`mentions_figure` looks for these substrings, case-insensitively: `diagram`, `figure`, `graph`, `illustrat`, `shown`, `sketch`, `table`.
+
+Two consequences:
+
+1. A question that says "shown below" and has no image is **refused at the gate**, not admitted broken.
+2. **The production bank is a filtered output, never a representative sample.** D61 says this in as many words: "no decision about what content looks like may be inferred from it". Our fixture source is a sample of the same kind. Neither tells you what real content looks like.
+
+### 3.5 The catalog shape
 ```
 subjects  (slug PK, exam, name, is_compulsory, objective_paper_questions)
 topics    (slug PK, subject -> subjects.slug, exam, name, order, weight, objectives JSON)
@@ -203,26 +255,122 @@ The whole thing is sha256 of the parts joined by `U+001F`, hex encoded.
 
 `text_norm` is simply `stem text .to_lowercase()`.
 
+### 3.7a The fingerprint is verified against every production row
+
+Not a sample. All **2,243** rows, recomputed from the live database with our own model classes and our own `content_fingerprint`, compared against the `content_hash` production stored. **2,243 of 2,243 match.**
+
+That covers the cases a sample misses: 50 rows with no explanation, 2,189 with a trap, 71 with an image mark.
+
+The check is a test, not a script. `tests/live/test_production_fingerprint_live.py` runs it against the live database when `UTMELAB_LIVE=1` is set.
+
+Two production rows are also pinned offline, in `tests/test_hashing.py`, with the exact hash production stored, so the behaviour is frozen without a network.
+
+This check found two real bugs in our model. Both are fixed, and both are now regression-tested.
+
+**Bug one: we stripped whitespace from content text.** `DomainModel` carried `str_strip_whitespace=True` in its config, so pydantic trimmed every string field on every model. Two production rows carry a leading space in the explanation, `q_claim_2025_economics_76626` on the body and `q_claim_2025_hausa_75937` on the key point. We stripped it, so our hash could never equal production's.
+
+Production stores those bytes verbatim. D60 says "`text` stays plain, so grep, diff, equality and search keep working", and a silent strip breaks exactly that.
+
+Fixed by taking the strip off the base model and putting it back only on the types that carry identifiers, `NonEmptyStr` and `Slug`. Content text is now `Text`, which preserves the string exactly.
+
+**Bug two: we rejected two marks on the same range.** Our validator required marks not to overlap at all. D60 says marks may share an identical range, and names the case: bold on top of underline. Production sorts by `(start, len)` and refuses only *partial* overlap.
+
+Our validator now mirrors production's `RichText::validate` exactly: bounds are checked, partial overlap is refused, identical ranges are allowed.
+
+Also fixed while in there: `Mark.url` was an `HttpUrl`, which normalises `https://example.com` to `https://example.com/`. The url is hashed, so a normalised url is a different row. It is now a plain string, validated as absolute `https` the way production validates it.
+
+### 3.8 Passages
+
+This is the part the earlier draft of this handoff left out. A passage is a stimulus a question depends on. Without it the stem can be unanswerable.
+
+The table (`utmelab-api-old/docs/DB_SCHEMA.md`, phase 3a):
+
+```sql
+CREATE TABLE passages(
+  id TEXT PRIMARY KEY,
+  exam TEXT NOT NULL, subject TEXT NOT NULL, year INTEGER NOT NULL,
+  kind TEXT NOT NULL, title TEXT, author TEXT,
+  text TEXT NOT NULL, inline TEXT NOT NULL DEFAULT '[]'
+);
+```
+
+Same `text` + `inline` split as the stem. There is no `options`, no `answer`, no `content_hash` on a passage. A passage is never served as a question and never verified on its own.
+
+Production has **8 passages** and 4 kinds:
+
+| kind | count | total chars | what it is |
+|---|---|---|---|
+| `Comprehension` | 3 | 2,391 | a story or article, questions read against it |
+| `Cloze` | 3 | 1,535 | a text with gaps, the question asks for the word |
+| `ReadingText` | 1 | 440 | a text used for the reading section |
+| `Data` | 1 | 233 | a data set, the question reads a number off it |
+
+The eight rows:
+
+| id | kind | title | questions |
+|---|---|---|---|
+| `psg_jamb_2025_eng_comprehension_1` | Comprehension | Passage A | 5 |
+| `psg_jamb_2025_eng_comprehension_2` | Comprehension | Passage C | 3 |
+| `psg_jamb_2025_eng_birds_1` | Comprehension | Bird calls | 5 |
+| `psg_jamb_2025_eng_cloze_1` | Cloze | Passage B | 1 |
+| `psg_jamb_2025_eng_cloze_2` | Cloze | Passage D | 3 |
+| `psg_jamb_2025_eng_cloze_3` | Cloze | Passage C | 3 |
+| `psg_jamb_2025_eng_reading_1` | ReadingText | The Lekki Headmaster | 1 |
+| `psg_jamb_2025_commerce_data_1` | Data | Working capital data | 1 |
+
+**Titles are not unique.** `Passage C` is used by two different rows, one Comprehension and one Cloze. Key on the id, never on the title.
+
+**28 questions link to a passage** through `questions.passage_id`. Every linked question's subject matches its passage's subject, without exception. 27 are use-of-english, 1 is commerce.
+
+Every passage has `inline = '[]'`. No passage carries a mark of any kind, image or otherwise. Passage text holds its own paragraph structure, blank lines included, per D60.
+
+**The serving contract** (`src/bank/view.rs`): `RenderedQuestion` carries `passage_id: Option<String>` and the doc comment says it plainly:
+
+> A comprehension or cloze stimulus this row belongs to. Fetch it from `/passages/{id}` — without it the stem may be unanswerable, so consumers must resolve it, never ignore it.
+
+So the API does **not** inline the passage into the question. The consumer must make a second call. Our bank must model a passage as a first-class object, not as a string pasted into a stem.
+
+Cloze passages mark their gap inline in the plain text, with four dots: `... the court had declared him .... Within a year the family had left the village`. The dots are data, not markup.
+
+The `section` column is a separate idea and is not the passage kind. 145 questions carry a section, and the values are paper sections such as `Antonyms` (26), `Consonants` (19), `Comprehension` (8), `Rhymes` (7), `Basic Grammar` (6), `Cloze` (4), `Emphatic Stress` (2), `Reading Text` (1). A question can have a section and no passage, and a passage can hold questions from several sections.
+
 ---
 
 ## 4. Where our models do not match production
 
-These are real gaps, not style preferences. Fix them before anything is written to production.
+Fixed in commit `397030a`:
+
+| Ours was | Production | Now |
+|---|---|---|
+| `Mark.length` | `Inline.len` | `len`, fixed |
+| `Mark.asset_id`, a sha256 | `InlineKind::Image{url, position, alt}` | `url`, `position`, `alt`, fixed |
+| `Mark.kind`, an enum | a lowercase string, flat | `MarkKind` serialises lowercase, fixed |
+| `content_fingerprint()` from the architecture doc | `Question::content_fingerprint()` | replaced, verified byte for byte on **all 2,243** production rows |
+| no `text_norm` | `questions.text_norm` | produced, fixed |
+| `MediaAsset`, `MediaRef` | no media table at all | new ground, nothing to match |
+
+Fixed after the full production check:
+
+| Ours was | Production | Now |
+|---|---|---|
+| `DomainModel` had `str_strip_whitespace=True` | text is stored verbatim | the strip is off the base, on the identifier types only |
+| `RichText` refused any overlap | identical ranges are allowed, partial overlap is refused | mirrors production's `validate` |
+| `Mark.url` was an `HttpUrl` | the url is a raw string | plain string, validated as absolute https |
+
+Still open:
 
 | Ours | Production | The gap |
 |---|---|---|
-| `Mark.length` | `Inline.len` | different column name |
-| `Mark.asset_id`, a sha256 | `InlineKind::Image{url, position, alt}` | ours is a hash, production is a **URL plus a position** |
-| `Mark.kind`, an enum | a lowercase string, flat | ours needs an image variant carrying `url` and `position` |
-| `Content.stem` is one `RichText` | `text` and `inline` are two columns | production splits the stem |
-| `Option.id` is `"A"`, `"B"` | `answer` is `"a"`, `"b"` | production ids are lowercase |
-| `content_fingerprint()` in `domain/hashing.py` | `Question::content_fingerprint()` | **different structure. Our hashes will not match production's** |
-| no `text_norm` | `questions.text_norm` | we do not produce it |
-| `MediaAsset`, `MediaRef` | no media table at all | new ground, nothing to match |
+| `Option.id` is `"A"`, `"B"` | `answer` is `"a"`, `"b"` | production ids are lowercase, our fixtures are uppercase |
+| `RichText.marks` | `RichText.inline` | **our JSON key is `marks`, production's is `inline`.** The mark list inside is identical, the key is not. The staging payload is ours, so it is consistent, but it is not promotable as-is. |
+| `Content.stem` is one `RichText` | `text` and `inline` are two columns | production splits the stem on write, we still write one blob |
+| `Content.options` is 2 to 6 | the importer's gate is 2 to 5 | we allow one option more than production accepts |
+| `Passage` is `{id, text, source_item_id}` nested inside `Content` | `passages` table with `exam, subject, year, kind, title, author, text, inline` | **our passage is a fragment, production's is a catalog object with a kind and a title.** Production links by `questions.passage_id`; we nest the whole thing in the question. |
+| `Content.source_explanation` is one `RichText` | `explanation` is `{key_point, body, trap}` | the reviewed `Explanation` matches, the pre-review source explanation is flat |
 | `CatalogTopic.id` and `.slug` are separate | only `slug` | ours is redundant but harmless |
 | `CatalogSnapshot.version` | no version column | ours is computed, fine |
 
-Our `content_fingerprint` was written from the architecture document, not from the production source. It must be replaced with the production algorithm before any hash is compared to a production row.
+The passage gap is the one worth solving first. A passage is not text that belongs to a question, it is a shared object with a kind, a title and its own questions pointing at it. Production's `passage_id` reference is the shape. Ours cannot represent two questions sharing one passage, and it cannot carry `kind`, which is what tells a consumer whether the passage is a cloze with gaps or a data set to read a number off.
 
 ---
 
@@ -277,9 +425,15 @@ contract/test_consensus.py          consensus
 contract/test_git_media_store.py   the media store
 contract/test_staging_store.py      the staging store
 live/test_opencode_live.py         a real model call, skipped unless UTMELAB_LIVE=1
+live/test_production_fingerprint_live.py
+                                   every production row must hash the way we
+                                   hash it, skipped unless UTMELAB_LIVE=1
 ```
 
-**125 tests pass. mypy strict is clean across `src` and `tests`.**
+**133 tests pass, 2 skipped. mypy strict is clean across `src` and `tests`.**
+
+The two skipped are the live tests: the OpenCode smoke test and the
+production fingerprint contract. Both run with `UTMELAB_LIVE=1`.
 
 ---
 
@@ -335,10 +489,17 @@ The version is `sha256:<16 hex>` over the whole tree, computed by us. Production
 These are not mine to make.
 
 1. **The trust policy.** Production only counts `human` passes. If AI verification is ever to count, that is an API contract change, not a bank change. Until then, AI rows are signal.
-2. **The mark shape.** Our `Mark` must change to `len` plus a URL and position for images, to match production.
-3. **The content hash.** Ours must be replaced with the production algorithm, or nothing we write can ever match a production row.
-4. **The option id case.** Production uses lowercase. Ours uses uppercase in the fixtures.
-5. **Where media lives.** Production stores no media. The GitLab media repository is new ground, so the URL convention has to be decided: does the image mark carry the GitLab URL, or a CDN URL that points at it?
+2. **Where media lives.** Production stores no media. The GitLab media repository is new ground, so the URL convention has to be decided: does the image mark carry the GitLab URL, or a CDN URL that points at it?
+3. **The image position.** Production guesses it from the stem's prose. Do we inherit that, or do we ask the human reviewer? Guessing means a question that says "the diagram below" renders the figure above the stem. That is a real bug in production, and copying it deliberately is a choice.
+4. **Whether we copy figure bytes at all.** Production points at myschool.ng and copies nothing, so the figures are one dead host away from being permanently broken. A media store fixes that, at the cost of downloading and describing every figure. The 71 rows are small enough to do it in one pass.
+5. **The `marks` versus `inline` key.** Rename our key to `inline` so the staging payload is promotable, or keep ours because the staging table is ours. The mark list inside is already identical.
+6. **The passage shape.** Our passage is nested in the question, production's is a catalog object linked by id. Changing it means two questions can share one passage, which is the case production has 28 times.
+
+Decided and done, previously listed here:
+
+- **The mark shape.** Our `Mark` now uses `len` plus a URL and a position for images, matching production. Done in `397030a`.
+- **The content hash.** Ours is now the production algorithm, verified byte for byte against **all 2,243** production rows. Done in `397030a`, re-verified after the whitespace fix.
+- **The option id case.** Still open. Production uses lowercase, our fixtures use uppercase. This is a one-line change in the fixtures plus a constraint on `Option.id`.
 
 ---
 
@@ -351,6 +512,9 @@ Things that cost time. Do not walk into them again.
 - **`model_copy` does not validate.** It is the fastest way to put a bad value into a model. Use `model_validate` when a validator must run.
 - **A state that is free text.** `StagingItem.state` was a string and any string passed. It is now the `State` enum, and `transition_to` refuses an invented move.
 - **`is` on enum values.** `transition_to` compared with `is` and stored the raw argument, so a string target landed as a plain `str`. It now coerces to `State` first.
+- **A model wide strip rewrites content.** `DomainModel` carried `str_strip_whitespace=True`, so pydantic trimmed every string on every model. Two production rows have a leading space in the explanation, and trimming it changed the fingerprint, so those two rows could never match production. **A sample of 394 rows missed it, because those two rows were not in the sample.** Check against everything, not a slice.
+- **A url type that normalises.** `Mark.url` was an `HttpUrl`, and `HttpUrl("https://example.com")` is `https://example.com/`. The url is hashed, so normalising it silently changes the row. Anything that is hashed must be stored verbatim.
+- **"Must not overlap" is not the rule.** D60 allows two marks on the same range, and names the case, bold on top of underline. Production refuses only *partial* overlap. Our validator was stricter than production and would have refused a legitimate row.
 - **The provider's error events.** The OpenCode CLI reports failures as `{"type":"error"}` lines. An adapter that only looks for `text` swallows them and reports "no text events".
 - **The prompt was 17 KB.** The full catalog with every objective does not fit a sensible prompt. The catalog is pruned now: every id and name goes through, objectives only for candidates matched by keyword overlap.
 - **The free tier ran out.** `opencode/deepseek-v4.1-flash-free` stopped answering. `opencode/nemotron-3-ultra-free` still works.
@@ -366,8 +530,14 @@ cd utmelab-bank
 python -m pytest tests/ -q          # the fast suite
 mypy src tests                        # strict, must be clean
 
-UTMELAB_LIVE=1 python -m pytest tests/live/ -q   # a real model call
+UTMELAB_LIVE=1 python -m pytest tests/live/ -q   # a real model call, and the
+                                                # production fingerprint check
 ```
+
+The live production fingerprint check is the one worth running after any change
+to a model, a validator or the hashing. It recomputes the hash of all 2,243
+production rows with our own code and compares it against the hash production
+stored. If it fails, the change broke the contract.
 
 Read the catalog from production:
 
@@ -393,13 +563,111 @@ moved = await store.transition(item.id, "catalogued", "enriched")
 
 ---
 
-## 11. Where the doctrine comes from
+## 11. The rest of the bank, measured
+
+Everything below was counted against the live production database, not read from a document.
+
+### 11.1 The question rows
+
+| Column | What production holds |
+|---|---|
+| `source` | `claimed_paper` 2,079, `imported` 97, `authored` 67. No `past_paper` rows exist, even though the schema comment names it. |
+| `year` | **Every row is 2025.** D52: the cohort the question is prepared for, not the year it was lifted from. |
+| `exam` | `JAMB` 2,241, `WAEC` 1, `''` 1. The empty one is withheld and never servable (D21). |
+| `difficulty` | 3 for 2,113 rows, 2 for 82, 1 for 43, 4 for 5. Heavily concentrated on 3. |
+| `marks` | 2.5 for 2,096 rows, 1.0 for 87, 2.0 for 52, 3.0 for 8. |
+| `options` | 4 options for 2,232 rows, 3 for 8, 5 for 2, 2 for 1. The importer's gate is 2 to 5, and all three extremes really occur. |
+| `explanation` | Present on 2,193 of 2,243. 50 rows have none. |
+| `subtopic_id` | Null on 3 rows, and on those 3 the slug is dangling, not null. |
+
+The 3 dangling subtopic rows fail the serving predicate, so they are invisible to consumers even though they are in the table. A foreign key is not enforced here.
+
+### 11.2 What is servable
+
+Applying the production `where_clause` to the live data: **2,190 of 2,243** rows pass the exam gate and the human verification gate. The 3 dangling-subtopic rows drop that further.
+
+Every verification in the table has the same shape: `kind='human'`, `verdict='pass'`, `scope='["answer","explanation"]'`. 2,268 rows, all identical. There is no `machine` kind, no `fail` verdict, no partial scope. The `scope` machinery is fully general in the Rust code, but the data uses exactly one shape.
+
+`content_hash` matching is part of the predicate, so a row whose text changed after verification drops out of service until someone verifies it again. That is the point of the column, and it is why our fingerprint had to be byte-exact.
+
+### 11.3 Blueprints are not usable yet
+
+80 blueprint rows, and **none of them is `measured`**:
+
+| level | status | rows |
+|---|---|---|
+| `topic` | provisional | 31 |
+| `section` | provisional | 30 |
+| `subject` | unmapped | 19 |
+
+`readiness.rs` computes `need = ceil(expected)` against the number of distinct fingerprints over servable, in-scope, attributed rows. With every blueprint `provisional` or `unmapped`, **readiness cannot be computed from this table.** Do not build a readiness dashboard on it yet. The `expected` columns exist but are not authoritative.
+
+### 11.4 Countries and requirements
+
+`countries` holds 5: NG, GH, SL, GM, LR.
+
+`exam_requirements` holds 2 rows, both for JAMB in Nigeria:
+
+```
+JAMB NG core     min_select 1  subjects ["use-of-english"]
+JAMB NG elective min_select 3  subjects []
+```
+
+`topic_countries` is **empty**. The serving predicate checks a topic's allowed countries through that table, so today the check passes for every topic. It is a live rule with no data behind it, not an unused rule.
+
+### 11.5 Novels
+
+6 novels, 220 novel questions. The schema (DB_SCHEMA.md phase 3b) splits a novel into nine tables: `novels`, `novel_chapters`, `novel_characters`, `novel_themes`, `novel_questions`, and the rest.
+
+`novel_questions` uses the same `text` + `inline` split as questions, and **not one of the 220 rows has a mark**. Only 54 have an explanation. `novels.cover_image` is a plain column, not a mark, and there is no image table.
+
+The served shape is `RenderedNovelQuestion`, with the same withholding contract: no `answer` and no `explanation` unless asked for. `novel_id` is filled by the caller, the stored row does not carry it.
+
+Novels are out of scope for the bank. But the D60 rule says novel-question text takes the identical `RichText` shape, so if we ever model them, there is no new type to invent.
+
+### 11.6 The full table list
+
+Production has these tables, in creation order. The bank owns none of them.
+
+```
+api_keys  verifications  questions  passages  novels
+novel_chapters  novel_characters  novel_themes  novel_questions
+subjects  exams  topics  subtopics  blueprints
+countries  topic_countries  exam_requirements
+```
+
+There is **no media table, no media_assets table, and no image column** anywhere.
+
+---
+
+## 12. Where the doctrine comes from
+
+### 12.1 The docs trail for inline rich text
+
+Every place the old code decided something about rich text, and what it said:
+
+| Doc | What it decides |
+|---|---|
+| `utmelab-api-old/docs/QUESTION_BANK_DECISIONS.md` **D60** | The core rule. Every text-bearing field is `RichText { text: String, inline: Vec<Inline> }` with `Inline { start: u32, len: u32, kind: InlineKind }`. **Stems, every option, `key_point`/`body`/`trap`, passage text and novel-question text all take the identical shape.** Offsets are Unicode characters, never bytes. Marks may share an identical range (bold+underline) but never partially overlap. Paragraph breaks are `\n\n` in plain text, no block layer. `emphasis` and `image` are deleted, not shadowed. |
+| **D61** | The harvester maps markup to marks instead of deleting it. `<u>`/`<em>`/`<strong>`/`<s>` become marks, `<sub>`/`<sup>` become `Subscript`/`Superscript`, `<img>` becomes an `Image{url}` mark, block boundaries survive as `\n\n`. Also the warning that matters most: the bank is a **filtered output, never a representative sample**, and no decision about what content looks like may be inferred from it. |
+| **D54** | The underlined target, originally a substring field, superseded by D60. |
+| **D55** | Figures, originally `image: Option<ImageRef{url, position}>`. `position` is `above \| below`, required, no default. Placement varies: above 1,400, below 144. Superseded by D60. |
+| `utmelab-api-old/docs/RICH_TEXT_HANDOFF.md` | Why one `RichText` type exists and why it must be the same type everywhere. D60 and D61 in prose. |
+| `utmelab-api-old/docs/UNDERLINE_PROBLEM.md` | Why the underline mark matters and what the harvester destroyed. |
+| `utmelab-api-old/docs/CLOZE_PROBLEM.md` | Why a missing passage makes a question unanswerable, and the cloze recovery. |
+| `utmelab-api-old/docs/DB_SCHEMA.md` | The exact column list, and rules R1 to R9. R1: JSON columns deserialize into the same `RichText`, `Choice`, `Explanation` types, no parallel DB types ever. R4: validation moves to write time, because a database has no boot-load to validate at. R5: `verified` derives at read in Rust, never a stored flag. R6: `content_hash` is maintained on every write. |
+| `utmelab-api-old/docs/REVIEW_METHOD.md` | The review loop, the gate re-run, the refusal expectations. |
+| `utmelab-api-old/docs/RELEASE_BLOCKERS.md` | Every blocker between the bank and a launch, with owner and closing gate. |
+| `utmelab-api-old/src/bank/model.rs` | The real types. `Inline`, `InlineKind`, `RichText`, `Explanation`, `Question`, `Passage`, `ImagePosition`, `content_fingerprint()`. **The source of truth for the schema.** |
+| `utmelab-api-old/src/bank/reads.rs` | The real serving predicate, `where_clause()`. |
+| `utmelab-api-old/src/bank/write.rs` | The real write path, the hash storage, `text_norm`. |
+| `utmelab-api-old/src/bank/view.rs` | The shape the API serves, `render()`, and the passage contract. |
+| `utmelab-api-old/src/import.rs` | The gate. Every refusal rule, the figure hint list, and how image placement was guessed. |
+| `utmelab-api-old/src/quarantine.rs` | The read-only report of every mechanical defect. |
+| `utmelab-api-old/src/bank/readiness.rs` | Per-topic readiness, blueprint by coverage. |
+
+### 12.2 Our own docs
 
 - `utmelab-bank/docs/ARCHITECTURE.md` - the architecture this code implements.
 - `utmelab-bank-failed/FINDINGS.md` - the evidence file. **Read it, but check every number against the live database.** Its row counts are stale.
-- `utmelab-api-old/docs/QUESTION_BANK_DECISIONS.md` - the decision log. D45, D60, D61, D62, D16, D21.
-- `utmelab-api-old/docs/RICH_TEXT_HANDOFF.md` - why one `RichText` type exists.
-- `utmelab-api-old/docs/UNDERLINE_PROBLEM.md` - why the underline mark matters.
-- `utmelab-api-old/docs/CLOZE_PROBLEM.md` - why a missing passage makes a question unanswerable.
-- `utmelab-api-old/src/bank/model.rs` - the real types. The source of truth for the schema.
-- `utmelab-api-old/src/bank/reads.rs` - the real serving predicate.
+

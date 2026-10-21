@@ -16,6 +16,13 @@ from ..enums import (
 )
 
 NonEmptyStr = Annotated[str, StringConstraints(min_length=1, strip_whitespace=True)]
+#: Content text, preserved exactly as it arrived.
+#:
+#: Unlike `NonEmptyStr` this does not strip whitespace, and it must not.
+#: Production stores some explanation bodies and key points with a leading
+#: space, and the content fingerprint hashes those bytes verbatim. Stripping
+#: them changes the hash, so a stripped row can never match a production row.
+Text = Annotated[str, StringConstraints(min_length=1)]
 Slug = Annotated[
     str,
     StringConstraints(
@@ -39,12 +46,18 @@ PositiveMarks = Annotated[float, Field(gt=0.0)]
 
 
 class DomainModel(BaseModel):
-    """Base for canonical values. Unknown fields are rejected on purpose."""
+    """Base for canonical values. Unknown fields are rejected on purpose.
+
+    ``str_strip_whitespace`` is deliberately off. A model wide strip would
+    rewrite the text of every content field, and production stores some
+    explanation bodies and key points with a leading space. The fingerprint
+    hashes those bytes, so a stripped row can never match a production row.
+    Identifiers still get stripped, because the types that carry them say so.
+    """
 
     model_config = ConfigDict(
         extra="forbid",
         frozen=True,
-        str_strip_whitespace=True,
     )
 
 
@@ -280,7 +293,11 @@ class Mark(DomainModel):
     kind: MarkKind
     start: int = Field(ge=0)
     len: int = Field(ge=0)
-    url: Optional[HttpUrl] = None
+    #: The url, as a raw string. Production stores it verbatim and the
+    #: fingerprint hashes it verbatim, so a normalising url type would change
+    #: the hash. `https://example.com` and `https://example.com/` are
+    #: different rows.
+    url: Optional[str] = None
     position: Optional[ImagePosition] = None
     alt: Optional[NonEmptyStr] = None
 
@@ -289,6 +306,8 @@ class Mark(DomainModel):
         if self.kind is MarkKind.IMAGE:
             if self.url is None:
                 raise ValueError("image marks require a url")
+            if not self.url.startswith("https://"):
+                raise ValueError("image urls must be absolute https")
             if self.position is None:
                 raise ValueError("image marks require a position")
             if self.len != 0:
@@ -302,19 +321,42 @@ class Mark(DomainModel):
 
 
 class RichText(DomainModel):
-    text: NonEmptyStr
+    text: Text
     marks: tuple["Mark", ...] = ()
 
     @model_validator(mode="after")
     def _check(self) -> "RichText":
-        last_end = 0
-        for mark in self.marks:
-            if mark.start < last_end:
-                raise ValueError("marks must be sorted and must not overlap")
-            end = mark.start + mark.len
-            if end > len(self.text):
-                raise ValueError("mark extends past the end of the text")
-            last_end = end
+        """The load rules production applies, mirrored.
+
+        ``RichText::validate`` in ``utmelab-api-old/src/bank/model.rs``: a mark
+        running past the end of the text is refused, a mark that partially
+        overlaps another is refused, and two marks may share an identical
+        range. Bold on top of underline is the case that makes the last rule
+        matter.
+        """
+        n = len(self.text)
+        for i, mark in enumerate(self.marks):
+            if mark.start + mark.len > n:
+                raise ValueError(
+                    f"mark {i} (start {mark.start}, len {mark.len}) runs past "
+                    f"the end of {n} characters"
+                )
+        # Sorted by (start, len), any overlapping set has an overlapping
+        # adjacent pair. Identical ranges are allowed.
+        order = sorted(
+            range(len(self.marks)),
+            key=lambda i: (self.marks[i].start, self.marks[i].len),
+        )
+        for a, b in zip(order, order[1:]):
+            first, second = self.marks[a], self.marks[b]
+            identical = (
+                second.start == first.start and second.len == first.len
+            )
+            if second.start < first.start + first.len and not identical:
+                raise ValueError(
+                    f"mark (start {second.start}, len {second.len}) partially "
+                    f"overlaps (start {first.start}, len {first.len})"
+                )
         return self
 
 
