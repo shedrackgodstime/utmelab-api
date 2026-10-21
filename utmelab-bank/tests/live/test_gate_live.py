@@ -61,11 +61,18 @@ def test_the_gate_sees_the_live_bank_as_it_is() -> None:
 
     # The live bank, as the bank's own gate judges it. These are the counts
     # that say the gate is looking at the same defects a person would.
+    #
+    # There is no ``explanation_missing`` here, and that is deliberate. The
+    # live tool refuses a row with no explanation because its pass has to
+    # cover one, but the bank authors explanations at the enrich step, which
+    # runs after the gate. The requirement lives in the ready condition
+    # ``explanatory``. Of the 50 live rows without an explanation, 8 carry
+    # another defect and 42 now pass the gate, which is why ``passed`` moved
+    # from 2,178 to 2,220.
     assert counts == {
-        "explanation_missing": 50,
         "option_count": 11,
         "cloze_without_passage": 9,
         "missing_figure": 2,
         "exam_empty": 1,
     }, counts
-    assert passed == 2178, passed
+    assert passed == 2220, passed

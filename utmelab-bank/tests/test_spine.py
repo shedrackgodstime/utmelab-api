@@ -60,10 +60,13 @@ class _EmptyIndex:
 
 
 def _write_fixture(directory: Path) -> Path:
-    """One clean question: four options, an answer, an explanation, a topic.
+    """One clean question: four options, an answer, a topic, no explanation.
 
-    The gate requires a source explanation, four options with the live ids,
-    and an answer that names one of them, so the fixture carries all three.
+    It deliberately ships without an explanation. A source that only carries
+    the question and a topic is the common case, and the bank's job is to
+    author the explanation at the enrich step. This fixture fails at the gate
+    unless the gate lets it through to the explainer, which is the join this
+    test exists to protect.
     """
     record = {
         "recorded_at": "2026-10-21T12:00:00Z",
@@ -82,7 +85,6 @@ def _write_fixture(directory: Path) -> Path:
                     ],
                     "answer": "b",
                     "marks": 1.0,
-                    "explanation": "Mitochondria respire and release energy as ATP.",
                     "topic_id": "t1",
                     "subtopic_id": "s1",
                     "media": [],
@@ -114,12 +116,16 @@ def test_the_spine_reaches_ready(tmp_path: Path, catalog: CatalogSnapshot) -> No
         assert adapted.state is State.ADAPTED
         assert adapted.hashes is not None
         assert adapted.hashes.content_hash
+        # The source shipped no explanation, and the bank does not ask it to.
+        assert adapted.content.source_explanation is None
 
-        # gated: every mechanical rule ran and none refused
+        # gated: every mechanical rule ran and none refused. The missing
+        # explanation is not a refusal, because the explainer has not run yet.
         gated = GateService(catalog=catalog).apply(adapted)
         assert gated.state is State.GATED
         assert gated.evidence.gate is not None
         assert gated.evidence.gate.passed
+        assert "explanation_missing" not in {issue.code for issue in gated.evidence.gate.issues}
 
         # deduped: nothing the bank already holds matches
         deduped = await DedupeService(_EmptyIndex()).apply(gated)

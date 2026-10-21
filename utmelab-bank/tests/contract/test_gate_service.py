@@ -91,12 +91,16 @@ def test_a_refused_item_keeps_the_reason() -> None:
     service = GateService()
 
     refused = service.apply(
-        make_item(content=make_item().content.model_copy(update={"source_explanation": None}))
+        make_item(
+            content=make_item().content.model_copy(
+                update={"stem": RichText(text="What is 2 &amp; 2?")}
+            )
+        )
     )
 
     assert refused.state is State.REJECTED
     assert refused.error is not None
-    assert "explanation_missing" in refused.error
+    assert "html_in_text" in refused.error
 
 
 def test_the_judgement_is_refused_until_a_person_clears_it() -> None:
@@ -162,13 +166,15 @@ def test_a_run_reports_the_counts_per_rule() -> None:
             source_version="1.0.0",
             scope=Scope(exam="JAMB", subject="mathematics", year=2025),
         ),
-        content=make_item().content.model_copy(update={"source_explanation": None}),
+        content=make_item().content.model_copy(
+            update={"stem": RichText(text="What is 2 &amp; 2?")}
+        ),
     )
 
     judged = service.apply_all([make_item(), bad])
 
     assert [item.state for item in judged] == [State.GATED, State.REJECTED]
-    assert service.last_counts == {"explanation_missing": 1}
+    assert service.last_counts == {"html_in_text": 1}
 
 
 def test_the_placement_is_checked_against_the_catalog() -> None:
@@ -197,24 +203,28 @@ def test_the_queue_is_what_the_person_works_through() -> None:
             source_version="1.0.0",
             scope=Scope(exam="JAMB", subject="mathematics", year=2025),
         ),
-        content=make_item().content.model_copy(update={"source_explanation": None}),
+        content=make_item().content.model_copy(
+            update={"stem": RichText(text="What is 2 &amp; 2?")}
+        ),
     )
 
     queue = service.queue([good, bad])
 
     assert list(queue) == ["source-1:item-2"]
-    assert [issue.code for issue in queue["source-1:item-2"]] == ["explanation_missing"]
+    assert [issue.code for issue in queue["source-1:item-2"]] == ["html_in_text"]
 
 
 def test_a_cleared_item_leaves_the_queue() -> None:
     clearance = Clearance(
-        rule="explanation_missing",
+        rule="html_in_text",
         by="owner",
         reason="handled",
         created_at=NOW,
     )
     service = GateService(clearances={"source-1:item-1": [clearance]})
-    item = make_item(content=make_item().content.model_copy(update={"source_explanation": None}))
+    item = make_item(
+        content=make_item().content.model_copy(update={"stem": RichText(text="What is 2 &amp; 2?")})
+    )
 
     assert service.queue([item]) == {}
     assert service.apply(item).state is State.GATED

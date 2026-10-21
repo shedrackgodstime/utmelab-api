@@ -190,13 +190,14 @@ def test_an_answer_that_names_no_option_fails() -> None:
     assert [issue.code for issue in issues] == ["answer_not_an_option"]
 
 
-def test_a_missing_explanation_fails() -> None:
+def test_a_missing_explanation_is_not_a_gate_refusal() -> None:
+    """The explainer authors one later; the ready check enforces it."""
     content = make_content(source_explanation=None)
 
     verdict = gate(content)
 
-    assert verdict.passed is False
-    assert "explanation_missing" in codes(verdict)
+    assert verdict.passed is True
+    assert codes(verdict) == set()
 
 
 def test_html_in_the_stem_fails() -> None:
@@ -273,18 +274,18 @@ def test_a_defect_also_goes_to_the_person() -> None:
     recorded reason, and the severity stays on the issue so the counts still
     say what was objectively broken.
     """
-    content = make_content(source_explanation=None)
+    content = make_content(stem=RichText(text="What is 2 &amp; 2?"))
 
     verdict = gate(content)
 
     assert verdict.passed is False
-    issue = next(i for i in verdict.issues if i.code == "explanation_missing")
+    issue = next(i for i in verdict.issues if i.code == "html_in_text")
     assert issue.severity is Severity.ERROR
 
     clearance = Clearance(
-        rule="explanation_missing",
+        rule="html_in_text",
         by="owner",
-        reason="the explanation is written and lands with the next batch",
+        reason="the entity is deliberate and the loader decodes it",
         created_at=NOW,
     )
     cleared = gate(content, clearances=(clearance,))
@@ -294,17 +295,17 @@ def test_a_defect_also_goes_to_the_person() -> None:
 
 
 def test_the_unresolved_issues_are_the_queue() -> None:
-    content = make_content(source_explanation=None)
+    content = make_content(stem=RichText(text="What is 2 &amp; 2?"))
 
     verdict = gate(content)
 
-    assert [issue.code for issue in verdict.unresolved] == ["explanation_missing"]
+    assert [issue.code for issue in verdict.unresolved] == ["html_in_text"]
 
 
 def test_a_cleared_issue_leaves_the_queue() -> None:
-    content = make_content(source_explanation=None)
+    content = make_content(stem=RichText(text="What is 2 &amp; 2?"))
     clearance = Clearance(
-        rule="explanation_missing",
+        rule="html_in_text",
         by="owner",
         reason="handled",
         created_at=NOW,
@@ -589,23 +590,23 @@ def test_the_passage_text_is_judged_too() -> None:
 
 def test_the_refusal_counts_are_per_rule() -> None:
     good = gate(make_content())
-    bad = gate(make_content(source_explanation=None))
+    bad = gate(make_content(stem=RichText(text="What is 2 &amp; 2?")))
 
     counts = refusal_counts([good, bad])
 
-    assert counts == {"explanation_missing": 1}
+    assert counts == {"html_in_text": 1}
 
 
 def test_the_counts_are_ordered_by_volume() -> None:
     verdicts = [
-        gate(make_content(source_explanation=None)),
-        gate(make_content(source_explanation=None)),
+        gate(make_content(stem=RichText(text="What is 2 &amp; 2?"))),
+        gate(make_content(stem=RichText(text="What is 2 &amp; 2?"))),
         gate(make_content(stem=RichText(text="In the graph below:"))),
     ]
 
     counts = refusal_counts(verdicts)
 
-    assert list(counts) == ["explanation_missing", "missing_figure"]
+    assert list(counts) == ["html_in_text", "missing_figure"]
 
 
 # ── the helpers, on their own ───────────────────────────────────────────────

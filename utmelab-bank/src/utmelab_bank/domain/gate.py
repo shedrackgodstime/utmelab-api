@@ -26,6 +26,16 @@ The rules are the live ones from ``tools/review.py``, which is the tool that
 writes today's verification records. The archived tree's import rules are
 different, and they are not the ones in force.
 
+One live refusal is deliberately **not** here. The tool refuses a row with no
+explanation, because its pass covers the explanation and it has nothing to
+cover. The bank split that single button in two: the gate judges the source
+payload, and ``ready`` judges the served bundle. An explanation is a property
+of the served bundle, the enrich step authors one when the source brings none,
+and the requirement is enforced where it belongs, by the ready condition
+``explanatory``. Refusing it here would kill a row before the explainer could
+write the explanation, which is exactly backwards. So the gate validates a
+source explanation when one is present and stays silent when there is none.
+
 No I/O here. Everything the gate needs arrives in the context.
 """
 
@@ -55,7 +65,12 @@ from .models.common import (
 #: adapter and the tag step write. Production sets id and slug to the same
 #: value, so this changes nothing against production but makes the gate
 #: agree with the rest of the bank on a catalog where the two differ.
-RULES_VERSION = "v3"
+#:
+#: v4: a missing explanation is no longer a refusal. The explanation is a
+#: property of the served row and the enrich step authors it, so the gate
+#: cannot demand it before the explainer runs. The ready condition
+#: ``explanatory`` is where the requirement bites.
+RULES_VERSION = "v4"
 
 #: The word hints that mean a question is about a figure. These collide with
 #: ordinary English, which is why the rule judges rather than refuses.
@@ -342,15 +357,16 @@ def _check_options(content: Content, issues: list[Issue]) -> None:
 
 
 def _check_explanation(content: Content, issues: list[Issue]) -> None:
+    """No explanation is fine here; a broken one is not.
+
+    The bank authors the explanation at the enrich step, which runs after the
+    gate, so a row that arrives without one is a row waiting to be explained,
+    not a defective row. The ready condition ``explanatory`` is what refuses
+    a bundle that still has no explanation. When the source does bring an
+    explanation, its marks and text still have to be sound.
+    """
     explanation = content.source_explanation
     if explanation is None:
-        issues.append(
-            _error(
-                "explanation_missing",
-                "the question has no explanation, and a question without one cannot be reviewed",
-                "explanation",
-            )
-        )
         return
     check_inline(explanation.text, explanation.inline, "explanation", issues)
     check_plain_text(explanation.text, "explanation", issues)
