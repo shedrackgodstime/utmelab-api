@@ -358,6 +358,3 @@ class FixtureSource:
         if not isinstance(value, str):
             raise ValueError("fixture is missing recorded_at")
         return datetime.fromisoformat(value.replace("Z", "+00:00"))
-
-    def _parse_catalog_snapshot(self, catalog: CatalogSnapshot) -> CatalogSnapshot:
-        return catalog
