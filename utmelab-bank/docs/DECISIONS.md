@@ -124,10 +124,28 @@ The **exact hash** catches a row copied verbatim. It never collides, so it is
 a lookup, and the bank keeps a local index of the hashes it holds and the
 hashes production holds so the check stays a lookup.
 
-The **near-duplicate fingerprint** catches the reworded copy, which is the
-duplicate that actually happens. At volume this is the rule that matters.
+The **near-duplicate fingerprint** catches the same question presented
+differently: a different case, the options in a different order, padding. It
+is the live rule from `tools/review.py`, measured: those three are caught, a
+rewritten stem and a reworded option are not. It is not a similarity
+measure and does not pretend to be.
 
 Both counts are reported. A duplicate is counted, never silently overwritten.
+
+**The index is a cache, refreshed on a schedule.** The bank reads production
+for what it holds, computes the near-duplicate fingerprint for each, and
+keeps both fingerprints locally. The duplicate check is then a lookup, not a
+scan of the bank, which is what makes it work at volume.
+
+**Production's own content has no duplicates.** Measured on all 2,243 live
+rows: 0 exact hash duplicates and 0 near-duplicate groups.
+
+**A write is committed, or it did not happen.** The driver opens a deferred
+transaction, so an uncommitted write is rolled back when the connection
+closes. The client commits every write, and a caller that writes in a batch
+commits it once. This is not a detail: without it, every write the bank made
+looked like it worked, to the connection that made it, and was gone by the
+next one.
 
 ## D10. The shape of the content
 

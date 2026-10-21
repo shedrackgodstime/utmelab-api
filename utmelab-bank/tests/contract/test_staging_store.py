@@ -38,7 +38,11 @@ class FakeClient:
         self.statements: list[str] = []
 
     async def execute(
-        self, statement: str, args: Optional[list[Any]] = None
+        self,
+        statement: str,
+        args: Optional[list[Any]] = None,
+        *,
+        commit: Optional[bool] = None,
     ) -> FakeResult:
         self.statements.append(statement)
         values = args or []
@@ -62,6 +66,11 @@ class FakeClient:
             row = self.rows.get(key)
             return FakeResult([row] if row else [])
         return FakeResult([])
+
+    async def commit(self) -> None:
+        """The client contract has a commit, so the fake does too."""
+        return None
+
 
 
 def make_item(state: State = State.CATALOGUED) -> StagingItem:

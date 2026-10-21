@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from utmelab_bank.adapters.catalog.client import Result, TursoClient
+from utmelab_bank.adapters.database import Result, TursoClient
 from utmelab_bank import config as config_module
 from utmelab_bank.config import _parse_env_file as parse_env_file
 from utmelab_bank.config import (

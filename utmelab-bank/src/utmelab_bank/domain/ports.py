@@ -1,7 +1,7 @@
 """Ports. The core depends on these shapes, never on a concrete adapter."""
 
 from collections.abc import AsyncIterator
-from typing import Protocol
+from typing import Optional, Protocol
 
 from .capabilities import (
     DescribeImageRequest,
@@ -9,6 +9,7 @@ from .capabilities import (
     TagRequest,
     VerifyAnswerRequest,
 )
+from .dedupe import Duplicate
 from .models.common import (
     CatalogSnapshot,
     Coverage,
@@ -104,6 +105,33 @@ class StagingStore(Protocol):
 
 
 @runtime_checkable
+class ContentIndex(Protocol):
+    """What the bank already knows about, in a form a lookup can use.
+
+    The index holds the two fingerprints of every known question, so a
+    duplicate check is a lookup and not a scan of the whole bank.
+    """
+
+    async def remember(
+        self,
+        *,
+        content_hash: str,
+        near_duplicate: str,
+        origin: str,
+        question_id: str,
+    ) -> None: ...
+
+    async def find(
+        self, *, content_hash: str, near_duplicate: str
+    ) -> Optional[Duplicate]: ...
+
+    async def exact_match(self, content_hash: str) -> Optional[str]: ...
+
+    async def near_matches(self, near_duplicate: str) -> tuple[str, ...]: ...
+
+    async def count(self, origin: Optional[str] = None) -> int: ...
+
+
 class MediaFetcher(Protocol):
     """Downloads media from source URLs."""
     async def fetch(self, url: str) -> bytes: ...

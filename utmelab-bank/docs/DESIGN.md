@@ -500,10 +500,21 @@ Only the residue goes to a person.
 
 The near-duplicate fingerprint is not the content hash. It is the lowercased
 stem plus the sorted lowercased option texts, hashed to 16 hex characters.
-It catches a reworded duplicate that the exact hash would miss, and it is
-what the live tool uses for the duplicate flag. At volume this is the rule
-that matters most, because exact hashes never collide and near-duplicates are
-the real duplicate.
+It is the live rule, and it is worth knowing exactly what it does, measured
+against the live tool:
+
+| | Caught |
+|---|---|
+| A different case | yes |
+| The options in a different order | yes |
+| Padding around the text | yes |
+| A rewritten stem | no |
+| A reworded option | no |
+
+So it is the fingerprint for the same question seen twice, not a similarity
+measure. The same question harvested from two sources with the answers
+shuffled is the duplicate that actually happens, and the exact hash would
+never see it.
 
 **The gate also owns the hash.** A gate that passes a row hands over a row
 whose `content_hash` is correct, because the hash is the receipt every later
@@ -708,6 +719,9 @@ A ready bundle, made of:
 - **The passage as its own object.** A `passages` table in the bank, a
   `passage_id` on the question, and the kind as a closed list of production's
   four.
+- **Dedupe.** Two fingerprints, a local index of both, and a refresh that
+  reloads the index from production. The check is a lookup, so it holds up
+  when the bank is big.
 - **The media store** is content addressed, keyed by the sha256 of the bytes.
 - **The state machine's spine**, from `planned` to `ready`, maps onto the
   jobs.
@@ -716,12 +730,11 @@ A ready bundle, made of:
 
 | What | Should be |
 |---|---|
-| The bank has no dedupe | `deduped` has nothing behind it, and dedupe has to compare against what already exists, not only against the bank's own rows |
 | The bank never reads the server's `reports` | a report is work, and the table is right there |
 | There is no `live` state and no `reported` state | content that has been handed over has to stay tracked, and a report has to become work |
 | Nothing checks for drift | the server's own predicate detects it, and the bank should run the same check against what it handed over |
 | The bank has no notion of a ready bundle | a definition of done, with the counts that go with it |
-| The bank has no duplicate index | dedupe at volume needs a lookup, not a scan |
+| The bank never refreshes the index | the index is a cache of what production holds, and it has to be brought up to date on a schedule |
 
 ### 9.3 There, but empty
 
@@ -745,11 +758,12 @@ are different evidence.
 2. **The passage as its own object.** Built. A `passages` table in the
    bank, a `passage_id` on the question, and the kind as a closed list of
    production's four.
-3. **The key rename to `inline`,** which makes a staged payload matchable by
-   the live tooling.
-4. **Dedupe**, on the exact hash and the near-duplicate fingerprint, against
-   what the bank already holds and what production already holds, with a
-   local index so the check is a lookup.
+3. **The key rename to `inline`.** Built. One vocabulary, the production
+   one, and a staged payload is the shape the live tooling reads.
+4. **Dedupe.** Built. The exact hash and the near-duplicate fingerprint, a
+   local index of both, and a refresh that reloads the index from
+   production. Verified live: a production row fed back in is refused as
+   `duplicate_exact`.
 5. **The review step**, wired to a task, with the human pass it produces.
 6. **The ready bundle,** with the definition and the counts.
 7. **The report consumer and the drift check,** so a complaint or a changed

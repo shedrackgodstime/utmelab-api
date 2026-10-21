@@ -22,7 +22,7 @@ from typing import Any, Optional
 
 from utmelab_bank.config import Settings
 
-from .production import ProductionCatalogReader
+from .catalog import ProductionCatalogReader
 
 #: Errors that mean the connection dropped, not that the query was wrong.
 TRANSIENT = (
@@ -51,6 +51,35 @@ class Result:
 def _is_transient(exc: BaseException) -> bool:
     text = f"{type(exc).__name__}: {exc}"
     return any(marker in text for marker in TRANSIENT)
+
+
+#: The statements that change the database and so need a commit.
+#:
+#: The driver opens a deferred transaction, so a write that is not committed
+#: is rolled back when the connection closes. The check is on the first
+#: word, which is where the verb always is in a statement this bank writes.
+WRITE_VERBS = frozenset(
+    {
+        "insert",
+        "update",
+        "delete",
+        "create",
+        "drop",
+        "alter",
+        "replace",
+    }
+)
+
+
+def _is_write(statement: str) -> bool:
+    """Whether this statement changes the database."""
+    head = statement.lstrip().split(None, 1)
+    if not head:
+        return False
+    verb = head[0].lower()
+    if not verb.isalpha():
+        return False
+    return verb in WRITE_VERBS
 
 
 class TursoClient:
@@ -89,8 +118,25 @@ class TursoClient:
             raise DatabaseError(f"could not open {self._url}: {exc}") from exc
         return self._connection
 
-    async def execute(self, statement: str, args: Optional[list[Any]] = None) -> Result:
-        """Run one query in the driver's thread, retrying a dropped connection."""
+    async def execute(
+        self,
+        statement: str,
+        args: Optional[list[Any]] = None,
+        *,
+        commit: Optional[bool] = None,
+    ) -> Result:
+        """Run one query in the driver's thread, retrying a dropped connection.
+
+        A statement that writes is committed before this returns. The driver
+        opens a deferred transaction, so without that commit every write
+        would be rolled back when the connection closed, and the write would
+        look like it had worked to the connection that made it.
+
+        Pass ``commit=False`` to keep the write open, and commit it later
+        with :meth:`commit`. That is for a caller that makes many writes and
+        wants them to land together, because a commit is a round trip and
+        the round trip is about a second.
+        """
         loop = asyncio.get_running_loop()
         last: Optional[BaseException] = None
         for attempt in range(self._retries):
@@ -111,8 +157,24 @@ class TursoClient:
                     raise DatabaseError(f"query failed: {exc}") from exc
                 await asyncio.sleep(self._backoff * (attempt + 1))
                 continue
+            if commit is True or (commit is None and _is_write(statement)):
+                await self.commit()
             return Result(rows=rows)
         raise DatabaseError(f"query failed after {self._retries} attempts: {last}")
+
+    async def commit(self) -> None:
+        """Commit whatever the connection has open.
+
+        A write is committed on its own, so this is only needed by a caller
+        that made several writes and wants them to land together.
+        """
+        loop = asyncio.get_running_loop()
+
+        def run() -> None:
+            connection = self._connect()
+            connection.commit()
+
+        await loop.run_in_executor(self._executor, run)
 
     async def close(self) -> None:
         connection = self._connection

@@ -18,7 +18,7 @@ import os
 
 import pytest
 
-from utmelab_bank.adapters.catalog.client import TursoClient
+from utmelab_bank.adapters.database import TursoClient
 from utmelab_bank.config import load_settings
 from utmelab_bank.domain.hashing import content_fingerprint
 

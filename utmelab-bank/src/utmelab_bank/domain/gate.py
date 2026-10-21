@@ -31,11 +31,11 @@ No I/O here. Everything the gate needs arrives in the context.
 
 from __future__ import annotations
 
-import hashlib
 import re
 from dataclasses import dataclass, field
 from typing import Iterable, Optional, Sequence
 
+from .dedupe import near_duplicate_fingerprint
 from .enums import Severity
 from .models.common import (
     CatalogRef,
@@ -111,20 +111,6 @@ class GateContext:
     self_id: Optional[str] = None
     self_hash: Optional[str] = None
     clearances: tuple[Clearance, ...] = field(default_factory=tuple)
-
-
-def near_duplicate_fingerprint(stem: str, option_texts: Iterable[str]) -> str:
-    """The fingerprint that catches a reworded duplicate.
-
-    Not the content hash. The content hash never collides, so it only ever
-    catches a row copied verbatim, and a verbatim copy is not the duplicate
-    that actually happens. This is the live rule from ``tools/review.py``:
-    the lowercased stem plus the sorted lowercased option texts, joined, and
-    hashed to sixteen hex characters.
-    """
-    options = sorted(text.strip().lower() for text in option_texts)
-    joined = stem.strip().lower() + "|" + "~".join(options)
-    return hashlib.sha256(joined.encode("utf-8")).hexdigest()[:16]
 
 
 def mentions_figure(text: str) -> bool:
@@ -549,7 +535,7 @@ def _check_duplicates(context: GateContext, issues: list[Issue]) -> None:
         )
     fingerprint = near_duplicate_fingerprint(
         context.content.stem.text,
-        (option.text.text for option in context.content.options),
+        tuple(option.text.text for option in context.content.options),
     )
     if fingerprint in context.known_near_duplicates:
         issues.append(
@@ -612,7 +598,6 @@ __all__ = [
     "check_plain_text",
     "has_numbered_gap",
     "mentions_figure",
-    "near_duplicate_fingerprint",
     "refusal_counts",
     "run_gate",
 ]

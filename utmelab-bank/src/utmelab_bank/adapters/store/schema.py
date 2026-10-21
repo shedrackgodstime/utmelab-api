@@ -19,6 +19,14 @@ STAGING = "staging_items"
 #: The table the bank owns for the stimuli content refers to.
 PASSAGES = "passages"
 
+#: The table the bank owns for what it already knows about.
+#:
+#: The index holds the two fingerprints of every question the bank knows
+#: about, whether it came from production or from the bank. Keeping it here
+#: is what makes a duplicate check a lookup. Without it, every check would
+#: scan the whole bank, and the scan grows with the bank.
+CONTENT_INDEX = "content_index"
+
 #: The bank's tables, one statement each. The engine refuses a string with
 #: more than one statement in it, so they are kept apart.
 SCHEMA: tuple[str, ...] = (
@@ -60,6 +68,15 @@ SCHEMA: tuple[str, ...] = (
         source_item_id  TEXT
     )
     """,
+    """
+    CREATE TABLE IF NOT EXISTS content_index (
+        content_hash    TEXT NOT NULL,
+        near_duplicate  TEXT NOT NULL,
+        origin          TEXT NOT NULL,
+        question_id     TEXT NOT NULL,
+        PRIMARY KEY (origin, content_hash)
+    )
+    """,
 )
 
 INDEXES = (
@@ -68,6 +85,7 @@ INDEXES = (
     "CREATE INDEX IF NOT EXISTS idx_staging_source ON staging_items(source, source_item_id)",
     "CREATE INDEX IF NOT EXISTS idx_staging_content_hash ON staging_items(content_hash)",
     "CREATE INDEX IF NOT EXISTS idx_passages_scope ON passages(exam, subject)",
+    "CREATE INDEX IF NOT EXISTS idx_content_index_near ON content_index(near_duplicate)",
 )
 
 
@@ -102,6 +120,7 @@ async def _migrate(client: Any) -> None:
 
 
 __all__ = [
+    "CONTENT_INDEX",
     "INDEXES",
     "MIGRATIONS",
     "PASSAGES",

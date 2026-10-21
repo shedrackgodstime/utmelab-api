@@ -17,6 +17,7 @@ from utmelab_bank.domain.enums import (
     PassageKind,
     Severity,
 )
+from utmelab_bank.domain.dedupe import near_duplicate_fingerprint
 from utmelab_bank.domain.gate import (
     RULES_VERSION,
     GateContext,
@@ -24,7 +25,6 @@ from utmelab_bank.domain.gate import (
     check_option_ids,
     has_numbered_gap,
     mentions_figure,
-    near_duplicate_fingerprint,
     refusal_counts,
     run_gate,
 )
@@ -412,7 +412,8 @@ def test_a_duplicate_content_hash_fails() -> None:
 
 def test_a_near_duplicate_is_a_judgement() -> None:
     fingerprint = near_duplicate_fingerprint(
-        "What is 2 + 2?", ["3", "4", "5", "6"]
+        "What is 2 + 2?",
+        ("3", "4", "5", "6"),
     )
 
     verdict = gate(make_content(), known_near_duplicates=frozenset({fingerprint}))
@@ -423,15 +424,27 @@ def test_a_near_duplicate_is_a_judgement() -> None:
 
 
 def test_the_near_duplicate_fingerprint_ignores_option_order() -> None:
-    first = near_duplicate_fingerprint("What is 2 + 2?", ["3", "4", "5", "6"])
-    second = near_duplicate_fingerprint("what is 2 + 2?", ["6", "5", "4", "3"])
+    first = near_duplicate_fingerprint(
+        "What is 2 + 2?",
+        ("3", "4", "5", "6"),
+    )
+    second = near_duplicate_fingerprint(
+        "what is 2 + 2?",
+        ("6", "5", "4", "3"),
+    )
 
     assert first == second
 
 
 def test_the_near_duplicate_fingerprint_separates_different_content() -> None:
-    first = near_duplicate_fingerprint("What is 2 + 2?", ["3", "4", "5", "6"])
-    second = near_duplicate_fingerprint("What is 2 + 3?", ["3", "4", "5", "6"])
+    first = near_duplicate_fingerprint(
+        "What is 2 + 2?",
+        ("3", "4", "5", "6"),
+    )
+    second = near_duplicate_fingerprint(
+        "What is 2 + 3?",
+        ("3", "4", "5", "6"),
+    )
 
     assert first != second
 

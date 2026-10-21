@@ -1,14 +1,6 @@
 """Domain layer. No I/O, no provider names, no framework imports."""
 
-from .gate import (
-    GateContext,
-    RULES_VERSION,
-    has_numbered_gap,
-    mentions_figure,
-    near_duplicate_fingerprint,
-    refusal_counts,
-    run_gate,
-)
+from .dedupe import Duplicate, near_duplicate_fingerprint
 from .enums import (
     Capability,
     InlineKind,
@@ -16,6 +8,14 @@ from .enums import (
     State,
     Verdict,
     VerificationKind,
+)
+from .gate import (
+    GateContext,
+    RULES_VERSION,
+    has_numbered_gap,
+    mentions_figure,
+    refusal_counts,
+    run_gate,
 )
 from .models import (
     AnswerVerdict,
@@ -96,6 +96,7 @@ __all__ = [
     "ExplainResponse",
     "Explainer",
     "Explanation",
+    "Duplicate",
     "GateContext",
     "GateVerdict",
     "Hashes",

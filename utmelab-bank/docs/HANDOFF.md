@@ -564,6 +564,49 @@ built twice two different ways and a `media_refs` list built twice, and the
 dead `CatalogRef` was the one built from the raw payload rather than the
 validated values.
 
+### 5.4 Dedupe
+
+Built. The plan's fourth item.
+
+**Two fingerprints.** The exact hash catches a row copied verbatim. The
+near-duplicate fingerprint catches the same question presented differently.
+Measured against the live rule, it catches a different case, the options in a
+different order, and padding, and it does not catch a rewritten stem or a
+reworded option. It is the fingerprint for the same question seen twice, not
+a similarity measure, and the code says so.
+
+**A local index, so the check is a lookup.** The bank keeps both
+fingerprints of every question it knows, whether it came from production or
+from the bank, in a `content_index` table. `IndexRefresher` reloads the
+production half from the served bank on a schedule, and drops it first, so a
+question production has deleted stops being a duplicate of anything.
+
+**The exact match wins over the near one.** A reviewer should be told the
+stronger finding first.
+
+**A duplicate is refused with the id it duplicates**, and counted. It is
+never silently overwritten.
+
+**Verified live.** A production row fed back in is refused:
+`duplicate_exact: q_authored_math_surds_001`. And production's own content
+has no duplicates: 0 exact hash duplicate groups and 0 near-duplicate groups
+across all 2,243 rows.
+
+### 5.5 The commit, which is not a detail
+
+**The driver opens a deferred transaction, so an uncommitted write is rolled
+back when the connection closes.** The client did not commit, so every write
+the bank had ever made was lost. It looked like it worked, to the connection
+that made it, and was gone by the next one.
+
+The client now commits every write. A caller that writes in a batch passes
+`commit=False` and commits once at the end, because a commit is a round trip
+and the round trip to Turso is about a second.
+
+`tests/test_database.py` pins the contract, and the live dedupe test proves
+it end to end: the index is written, the process ends, and a separate process
+reads all 2,243 rows back.
+
 
 ```
 config.py                       settings, read from utmelab-bank/.env
@@ -602,6 +645,8 @@ test_state_machine.py           transitions, the content hash
 test_hashing.py                 canonical json
 test_gate.py                     the gate rules
 test_passage.py                  the passage as its own object
+test_dedupe.py                   the two fingerprints
+test_database.py                 the commit contract
 test_ports.py                   the port contracts
 test_selector.py                the selector
 test_config.py                  the settings
@@ -614,15 +659,18 @@ contract/test_consensus.py          consensus
 contract/test_git_media_store.py   the media store
 contract/test_staging_store.py      the staging store
 contract/test_gate_service.py        the gate service
+contract/test_dedupe_service.py       the dedupe step and the index
 live/test_opencode_live.py         a real model call, skipped unless UTMELAB_LIVE=1
 live/test_production_fingerprint_live.py
                                    every production row must hash the way we
                                    hash it, skipped unless UTMELAB_LIVE=1
 live/test_gate_live.py             the gate must see what the live bank shows,
                                    skipped unless UTMELAB_LIVE=1
+live/test_dedupe_live.py           the dedupe must catch a production row,
+                                   skipped unless UTMELAB_LIVE=1
 ```
 
-**197 tests pass, 3 skipped. mypy strict is clean across `src` and `tests`,
+**238 tests pass, 3 skipped. mypy strict is clean across `src` and `tests`,
 and pyflakes reports nothing.**
 
 The three skipped are the live tests: the OpenCode smoke test, the
@@ -708,6 +756,8 @@ Things that cost time. Do not walk into them again.
 - **`model_copy` does not validate.** It is the fastest way to put a bad value into a model. Use `model_validate` when a validator must run.
 - **A state that is free text.** `StagingItem.state` was a string and any string passed. It is now the `State` enum, and `transition_to` refuses an invented move.
 - **`is` on enum values.** `transition_to` compared with `is` and stored the raw argument, so a string target landed as a plain `str`. It now coerces to `State` first.
+- **A write that is not committed is a write that did not happen.** The driver opens a deferred transaction, so the client has to commit. It did not, and every write the bank made was rolled back when the connection closed. It looked like it worked, to the connection that made it, and was gone by the next one. The symptom was a live check that reported 2,243 rows and a fresh process that read 0. **Read back from a new connection, not the one that wrote.**
+- **A round trip is about a second.** Both databases measure 0.7 to 1.4 seconds per query from where the bank runs, so one write per row is an hour for a bank of two thousand. Batch the writes. The refresh went from 50 minutes unbatched, to 123 seconds with a commit per statement, to 39 seconds with a batch and one commit.
 - **A model wide strip rewrites content.** `DomainModel` carried `str_strip_whitespace=True`, so pydantic trimmed every string on every model. Two production rows have a leading space in the explanation, and trimming it changed the fingerprint, so those two rows could never match production. **A sample of 394 rows missed it, because those two rows were not in the sample.** Check against everything, not a slice.
 - **SQLite's `lower()` is ASCII only.** 41 live rows have a `text_norm` that SQLite's `lower(text)` would never produce, because the stem carries a `Δ` or a `Ụ`. Python's `.lower()` and Rust's `.to_lowercase()` are full-Unicode and do produce it. **Never dedupe in SQL with `lower(text)`.** Compare the `text_norm` column.
 - **The archived tree is not the current source.** `src/` at the root of the repository is the current server. `utmelab-api-old/` is the archived tree, and `docs/NOTES.temp.md` says so: "a source of capabilities, never of structure". The archived `import.rs` gate rules and the live `tools/review.py` gate rules are **different**, and the live ones are in force.
