@@ -433,20 +433,31 @@ domain/
   enums.py                    the fixed vocabulary
   models/                     every model, defined once
   gate.py                     THE GATE. The rules, pure, no I/O.
+  dedupe.py                   the two fingerprints
+  review.py                   the review scope and the check kinds
+  audit.py                    the agreement measurement, pure
+  ready.py                    the eight conditions and the report
   hashing.py                  the content fingerprint
   state.py                    the state machine
   capabilities.py             the capability names and their requests
-  ports.py                    the ports the adapters implement
+  ports.py                    the port contracts
   selector.py                 the selector
 adapters/
-  catalog/client.py           the turso_serverless driver
-  catalog/production.py       the production catalog reader
+  database.py                 the turso_serverless driver, both databases
+  catalog.py                  the production catalog reader
+  production.py               the production content reader
   gate_service.py             runs the gate over a staging item
+  dedupe_service.py           runs the dedupe step over a staging item
+  review_service.py           runs the review and records the check
+  audit_service.py            samples the machine's work and measures it
+  ready_service.py            checks the bundle against the eight conditions
+  index_refresh.py            reloads the content index from production
   media/                      git store, ingest, describe, consensus
   providers/                  the mock and the OpenCode provider, tagging
   sources/fixture/            the fixture source
-  store/schema.py             the one table
+  store/schema.py             the bank's tables and their migrations
   store/staging.py            save, load, transition, list by state
+  store/index.py              the content index
 config.py
 ```
 
@@ -637,7 +648,48 @@ to the last, so a second look is the same look.
 real question and checks that the verdict comes back and that the record
 carries the kind, the scope, the model and the reason.
 
-### 5.6 The commit, which is not a detail
+### 5.6 The ready bundle
+
+Built. The plan's sixth item, and the bank's output.
+
+**Ready is a definition, not a writer.** The bank does not place content in
+the served tables, so what it owes is a bundle that is complete enough that
+placing it is a mechanical step.
+
+**Eight conditions, each machine-checkable.** Gated, reviewed, placed,
+complete, explanatory, resolvable, identified, new. Each is one function that
+says why a row does not meet it, or says nothing when it does, and the
+service counts them and collects the distinct reasons.
+
+**The reasons matter more than the counts.** A report that says 50 rows are
+unmet is not much use. A report that says 50 rows have no explanation, and
+the same 50 have no check over it, says exactly where the gap is.
+
+**The human sign-off is not one of the eight**, because the bank cannot give
+it. Only a person can, and the serving predicate counts only a person. So
+the report counts how many rows carry a human pass and leaves the decision
+alone.
+
+**Measured against the live bank.** The live test builds a bundle out of the
+2,242 servable production rows and reports where each condition stands:
+
+| Condition | Met | Unmet | Why |
+|---|---|---|---|
+| gated | 2,242 | 0 | |
+| reviewed | 2,192 | 50 | no check covers the answer and the explanation |
+| placed | 2,240 | 2 | there is no placement |
+| complete | 2,242 | 0 | |
+| explanatory | 2,192 | 50 | there is no explanation |
+| resolvable | 2,242 | 0 | |
+| identified | 2,242 | 0 | |
+| new | 2,242 | 0 | |
+
+**The live bank's only shortfall is the 50 rows with no explanation.** They
+were never reviewed, because a review covers the explanation, so the two
+conditions fail together for the same reason. Every other row is complete,
+placed, identified and new.
+
+### 5.7 The commit, which is not a detail
 
 **The driver opens a deferred transaction, so an uncommitted write is rolled
 back when the connection closes.** The client did not commit, so every write
@@ -706,6 +758,7 @@ contract/test_staging_store.py      the staging store
 contract/test_gate_service.py        the gate service
 contract/test_dedupe_service.py       the dedupe step and the index
 contract/test_review_service.py        the review step and the audit
+contract/test_ready_service.py         the ready bundle
 live/test_opencode_live.py         a real model call, skipped unless UTMELAB_LIVE=1
 live/test_production_fingerprint_live.py
                                    every production row must hash the way we
@@ -716,9 +769,11 @@ live/test_dedupe_live.py           the dedupe must catch a production row,
                                    skipped unless UTMELAB_LIVE=1
 live/test_review_live.py            the review must work against a real model,
                                    skipped unless UTMELAB_LIVE=1
+live/test_ready_live.py              the ready conditions must describe the live
+                                   bank, skipped unless UTMELAB_LIVE=1
 ```
 
-**256 tests pass, 7 skipped. mypy strict is clean across `src` and `tests`,
+**271 tests pass, 8 skipped. mypy strict is clean across `src` and `tests`,
 and pyflakes reports nothing.**
 
 The skipped ones are the live tests: the OpenCode smoke test, the

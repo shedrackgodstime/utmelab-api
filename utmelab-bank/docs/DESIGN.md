@@ -556,7 +556,7 @@ A ready bundle satisfies all of these.
 | | The condition |
 |---|---|
 | **Gated** | Every rule in 4.2 ran, and the bundle carries the count of what was refused and why. |
-| **Reviewed** | Every question in it carries a human pass over the answer and the explanation, at the hash of the content as it stands. |
+| **Reviewed** | Every question in it carries a check over the answer and the explanation, at the hash of the content as it stands. Whose check it is does not matter here. |
 | **Placed** | Every question has a subtopic that exists in the catalog, under the right exam and subject, and its topic belongs to that subject. |
 | **Complete** | Every question has a stem, 2 to 5 options, an answer that names one of them, a difficulty in 1 to 5, and marks in the accepted range. |
 | **Explanatory** | Every question carries an explanation with a key point and a body. A question with no explanation was never reviewable, and 50 of the 2,243 live rows are in exactly that state. |
@@ -732,6 +732,7 @@ A ready bundle, made of:
 |---|---|
 | The bank never reads the server's `reports` | a report is work, and the table is right there |
 | The audit is not run against real content | the agreement rate is the number that decides how much content can move, and it has never been measured on a real run |
+| The bundle is not placed anywhere | placing it is a separate piece of work, and the bank stops at ready |
 | There is no `live` state and no `reported` state | content that has been handed over has to stay tracked, and a report has to become work |
 | Nothing checks for drift | the server's own predicate detects it, and the bank should run the same check against what it handed over |
 | The bank has no notion of a ready bundle | a definition of done, with the counts that go with it |
@@ -768,7 +769,8 @@ are different evidence.
 5. **The review step.** Built. The machine checks every row and the check
    is recorded with its kind, its scope, the model and the reason. The
    audit samples the machine's work and measures the agreement.
-6. **The ready bundle,** with the definition and the counts.
+6. **The ready bundle.** Built. Eight conditions, each machine-checkable,
+   and a report that says where every row stands.
 7. **The report consumer and the drift check,** so a complaint or a changed
    row comes back as work.
 
