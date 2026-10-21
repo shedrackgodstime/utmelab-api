@@ -28,11 +28,15 @@ tools/                        the pre-bank tooling. Contains the original harves
 current production server. `utmelab-api-old/` is the archived tree, and
 `docs/NOTES.temp.md` says so: "The old tree is a source of capabilities,
 never of structure." The citations in this file to `utmelab-api-old/src/`
-point at history. The current equivalents are listed in `DESIGN.md` section 9.
+point at history. The current equivalents are listed in `DESIGN.md` section 10.
 
 The archived tree is still worth reading for the decision log, the rich text
 rule, the figure rules and the gate, because the current server does not carry
 that reasoning with it.
+
+**The Rust is not finished.** It is an MVP, built so it can serve while the
+work continues. So its internals move, and the design does not hang on them.
+What the content must look like is the stable part.
 
 ### The two databases
 
@@ -44,7 +48,7 @@ that reasoning with it.
 We **read** production. We never write it. The catalog lives there and it is the only authority for topic placement.
 
 **One correction to the picture above.** The bank does not merely read
-production. The current server declares the bank tables as reads and never
+production. The current server declares the content tables as reads and never
 creates them, and the production notes say the pipeline owns and creates
 them. The bank is that pipeline, and the sixteen content tables are its
 tables. `DESIGN.md` section 1 has the full arrangement.
@@ -61,13 +65,25 @@ tables. `DESIGN.md` section 1 has the full arrangement.
 - Media: fetch, hash, store, describe
 - A staging table in our own Turso database
 - The gate, dedupe and the state machine
+- The **ready bundle**: a set of questions that are gated, reviewed, placed and
+  identified, so that putting them in the served tables is a mechanical step
 
 ### Explicitly out of scope, stated by the user
-- **Human verification.** Not being built.
+- **Human verification writes to the production database.** The review step is
+  ours, the placement of the record is not.
 - **Promotion from utmelab-bank to the production database.** Not being built.
-  Moving a row to production and making the API serve it as `verified` is a separate piece of work.
+  Moving a row to production and making the API serve it as `verified` is a
+  separate piece of work.
+- **The Rust.** We read it to learn the shape the content has to take. We do
+  not build it, and it is not finished: it is an MVP so it can serve while the
+  work continues, so its internals are a moving target and the design does
+  not hang on them.
 
 Everything below about promotion is background, not a task list.
+
+**The stage we are at is filling the bank.** The API is useless without
+content. The measure of success is content that is complete, correct, placed
+and reviewed.
 
 ---
 
@@ -389,7 +405,7 @@ Still open:
 | Ours | Production | The gap |
 |---|---|---|
 | `Option.id` is `"A"`, `"B"` | `answer` is `"a"`, `"b"` | production ids are lowercase, our fixtures are uppercase |
-| `RichText.marks` | `RichText.inline` | **our JSON key is `marks`, production's is `inline`.** The mark list inside is identical, the key is not. The staging payload is ours, so it is consistent, but it is not promotable as-is. |
+| `RichText.marks` | `RichText.inline` | **our JSON key is `marks`, production's is `inline`.** The mark list inside is identical, the key is not. The staging payload is ours, so it is consistent, but it is not the shape the live tooling reads. |
 | `Content.stem` is one `RichText` | `text` and `inline` are two columns | production splits the stem on write, we still write one blob |
 | `Content.options` is 2 to 6 | the importer's gate is 2 to 5 | we allow one option more than production accepts |
 | `Passage` is `{id, text, source_item_id}` nested inside `Content` | `passages` table with `exam, subject, year, kind, title, author, text, inline` | **our passage is a fragment, production's is a catalog object with a kind and a title.** Production links by `questions.passage_id`; we nest the whole thing in the question. |
@@ -519,10 +535,10 @@ These are not mine to make.
 2. **Where media lives.** Production stores no media. The GitLab media repository is new ground, so the URL convention has to be decided: does the image mark carry the GitLab URL, or a CDN URL that points at it?
 3. **The image position.** Production guesses it from the stem's prose. Do we inherit that, or do we ask the human reviewer? Guessing means a question that says "the diagram below" renders the figure above the stem. That is a real bug in production, and copying it deliberately is a choice. **The current server has already settled it**: `src/core/models/domain.rs` says "Where the figure renders relative to the stem. Data, never inferred." So the position is a field the reviewer sets. The question is now only whether the bank's reviewer sets it, and how.
 4. **Whether we copy figure bytes at all.** Production points at myschool.ng and copies nothing, so the figures are one dead host away from being permanently broken. A media store fixes that, at the cost of downloading and describing every figure. The 71 rows are small enough to do it in one pass.
-5. **The `marks` versus `inline` key.** Rename our key to `inline` so the staging payload is promotable, or keep ours because the staging table is ours. The mark list inside is already identical. **The live tooling decides it**: `tools/review.py` reads `q["text"]["inline"]` and writes the verification rows against that shape. A payload the bank cannot hand to the existing tool is a payload that is not promotable.
+5. **The `marks` versus `inline` key.** Rename our key to `inline` so the staging payload is the shape the live tooling reads, or keep ours because the staging table is ours. The mark list inside is already identical. **The live tooling decides it**: `tools/review.py` reads `q["text"]["inline"]` and writes the verification records against that shape. A payload the bank cannot hand to the existing tool is a payload that is not ready.
 6. **The passage shape.** Our passage is nested in the question, production's is a catalog object linked by id. Changing it means two questions can share one passage, which is the case production has 28 times.
 7. **Where the bank runs the gate.** The server does not validate rows at all, and the server's own test proves a malformed row fails the whole read. So the gate has to be airtight, and it has to be in the bank. The live rules in `tools/review.py` are the specification, and the bank should implement those rather than the archived import rules.
-8. **Who signs off on promotion.** The bank can produce a promotable row, but the serving predicate counts only a human pass, and the production notes say human verification writes are not the serving app's job. So a person is on the critical path. The mechanics of that sign-off are still undecided.
+8. **Who signs off, and how a ready bundle gets placed.** The serving predicate counts only a human pass, and the production notes say human verification writes are not the serving app's job. So a person is on the critical path, and someone places the bundle. Both are outside our scope. What is ours is making the bundle complete enough that placing it is mechanical.
 
 Decided and done, previously listed here:
 
@@ -714,7 +730,7 @@ async fn get_question_rejects_bad_option_json() {
 }
 ```
 
-So one bad promoted row either **breaks the endpoint for every consumer**, or
+So one bad row in the served content either **breaks the endpoint for every consumer**, or
 **is served as wrong content**. There is no second line of defence. The
 gate is the only defence, and it is the bank's.
 
@@ -809,7 +825,7 @@ where the contract lives. These are the files to read first.
 | `src/testing.rs` | `BANK_DDL`, the bank tables' DDL. The closest thing to a specification that exists. |
 | `src/store/catalog.rs` | The serving predicate, spelled once: `verified_predicate` and `LATEST_VERIFIED_CTE`. |
 | `src/store/sync.rs` | The replica lifecycle. The server pulls the remote on a timer, so serving never blocks on the network. |
-| `docs/NOTES.temp.md` | The pipeline doctrine. It names the bank's four jobs: intake, promote, gates, review. |
+| `docs/NOTES.temp.md` | The pipeline doctrine. It names intake, promote, gates and review. Promote is not ours, so our three are intake, gates and review, and the output is a ready bundle. |
 
 Two sentences from the current code that settle questions the archived tree
 left open:
