@@ -375,11 +375,12 @@ class StagingItem(DomainModel):
         """
         from ..state import assert_transition
 
-        if self.state is not target:
-            assert_transition(self.state, target)
+        resolved = State(target)
+        if self.state is not resolved:
+            assert_transition(self.state, resolved)
         return self.model_copy(
             update={
-                "state": target,
+                "state": resolved,
                 "error": error,
                 "updated_at": datetime.now(UTC),
             }

@@ -155,3 +155,10 @@ def test_verification_must_match_the_content_hash(staging_item: StagingItem) -> 
                 "evidence": {"verifications": [bad.model_dump(mode="json")]},
             }
         )
+
+
+def test_transition_accepts_a_state_name(staging_item: StagingItem) -> None:
+    """A caller that holds the name as text still gets the enum back."""
+    result = staging_item.transition_to("enriched")  # type: ignore[arg-type]
+    assert result.state is State.ENRICHED
+    assert result.state.value == "enriched"
