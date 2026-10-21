@@ -38,6 +38,35 @@ class OpenCodeError(RuntimeError):
     """Raised when the OpenCode CLI fails, times out, or returns junk."""
 
 
+#: The failures that are the server's, not the prompt's.
+#:
+#: The free models answer through a shared queue. A call can fail with an
+#: ``UnknownError`` or a usage limit and then succeed a moment later, and the
+#: message is the only thing that distinguishes that from a bad request. A
+#: second call costs seconds; a lost row costs a whole answer.
+TRANSIENT_MARKERS = (
+    "unexpected server error",
+    "usage limit",
+    "rate limit",
+    "too many requests",
+    "overloaded",
+    "temporarily unavailable",
+    "try again",
+    "timed out",
+    "server error",
+    " 429",
+    " 500",
+    " 502",
+    " 503",
+    " 504",
+)
+
+
+def _is_transient(message: str) -> bool:
+    lower = message.lower()
+    return any(marker in lower for marker in TRANSIENT_MARKERS)
+
+
 @dataclass(frozen=True)
 class CommandResult:
     returncode: int
@@ -88,11 +117,15 @@ class OpenCodeProvider:
         timeout: float = 90.0,
         command: str = "opencode",
         capabilities: frozenset[Capability] = frozenset(Capability),
+        retries: int = 3,
+        retry_delay: float = 5.0,
     ) -> None:
         self.producer = Producer(provider="opencode", model=model)
         self.capabilities = capabilities
         self._runner = runner or SubprocessRunner(command=command)
         self._timeout = timeout
+        self._retries = max(1, retries)
+        self._retry_delay = retry_delay
 
     async def describe(self, request: DescribeImageRequest) -> ImageDescription:
         prompt = self._prompt(
@@ -191,14 +224,34 @@ class OpenCodeProvider:
         for path in files:
             argv.extend(["-f", str(path)])
         argv.append(prompt)
-        try:
-            result = await self._runner.run(argv, timeout=self._timeout)
-        except TimeoutError as exc:
-            raise OpenCodeError(f"opencode timed out after {self._timeout} seconds") from exc
-        if result.returncode != 0:
-            detail = result.stderr.strip() or result.stdout.strip()
-            raise OpenCodeError(f"opencode failed with exit code {result.returncode}: {detail}")
-        return self._collect_text(result.stdout)
+        last: OpenCodeError | None = None
+        for attempt in range(self._retries):
+            final = attempt == self._retries - 1
+            try:
+                result = await self._runner.run(argv, timeout=self._timeout)
+            except TimeoutError as exc:
+                error = OpenCodeError(f"opencode timed out after {self._timeout} seconds")
+                if final:
+                    raise error from exc
+                last = error
+            else:
+                if result.returncode != 0:
+                    detail = result.stderr.strip() or result.stdout.strip()
+                    error = OpenCodeError(
+                        f"opencode failed with exit code {result.returncode}: {detail}"
+                    )
+                    if final or not _is_transient(detail):
+                        raise error
+                    last = error
+                else:
+                    try:
+                        return self._collect_text(result.stdout)
+                    except OpenCodeError as exc:
+                        if final or not _is_transient(str(exc)):
+                            raise
+                        last = exc
+            await asyncio.sleep(self._retry_delay * (attempt + 1))
+        raise last or OpenCodeError("opencode did not answer")
 
     def _content_payload(self, item: StagingItem) -> dict[str, Any]:
         return {

@@ -62,7 +62,7 @@ def make_provider(
     stderr: str = "",
 ) -> tuple[OpenCodeProvider, FakeRunner]:
     runner = FakeRunner(stdout, returncode=returncode, stderr=stderr)
-    return OpenCodeProvider(model="opencode/test", runner=runner), runner
+    return OpenCodeProvider(model="opencode/test", runner=runner, retry_delay=0.0), runner
 
 
 def test_opencode_matches_the_image_port() -> None:
@@ -158,7 +158,7 @@ def test_nonzero_exit_raises(staging_item: StagingItem) -> None:
     from utmelab_bank.adapters.providers.opencode import OpenCodeError
 
     runner = FakeRunner("", returncode=2, stderr="boom")
-    provider = OpenCodeProvider(model="opencode/test", runner=runner)
+    provider = OpenCodeProvider(model="opencode/test", runner=runner, retry_delay=0.0)
     with pytest.raises(OpenCodeError, match="boom"):
         asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
 
@@ -167,9 +167,44 @@ def test_timeout_raises(staging_item: StagingItem) -> None:
     from utmelab_bank.adapters.providers.opencode import OpenCodeError
 
     runner = FakeRunner(timeout=True)
-    provider = OpenCodeProvider(model="opencode/test", runner=runner)
+    provider = OpenCodeProvider(model="opencode/test", runner=runner, retry_delay=0.0)
     with pytest.raises(OpenCodeError, match="timed out"):
         asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
+
+
+def test_a_transient_server_error_is_retried(staging_item: StagingItem) -> None:
+    """The free models are a shared queue; a server error is not the row's fault."""
+    error_event = json.dumps(
+        {
+            "type": "error",
+            "error": {
+                "name": "UnknownError",
+                "data": {"message": "Unexpected server error. Check server logs for details."},
+            },
+        }
+    )
+
+    class RecoveringRunner:
+        def __init__(self) -> None:
+            self.calls = 0
+
+        async def run(self, argv: list[str], *, timeout: float) -> CommandResult:
+            self.calls += 1
+            if self.calls == 1:
+                return CommandResult(returncode=1, stdout=error_event, stderr="")
+            return CommandResult(
+                returncode=0,
+                stdout=text_event('{"key_point":"k","body":"b","confidence":0.8}'),
+                stderr="",
+            )
+
+    runner = RecoveringRunner()
+    provider = OpenCodeProvider(model="opencode/test", runner=runner, retries=3, retry_delay=0.0)
+
+    result = asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
+
+    assert result.key_point.text == "k"
+    assert runner.calls == 2
 
 
 def test_missing_text_event_raises(staging_item: StagingItem) -> None:
