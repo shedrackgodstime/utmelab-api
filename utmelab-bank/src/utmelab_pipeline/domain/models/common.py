@@ -160,11 +160,11 @@ class CatalogSnapshot(DomainModel):
         return self
 
 class Clearance(DomainModel):
-    """A person clearing one judgement issue, with the reason recorded.
+    """A person resolving one refusal, with the reason recorded.
 
-    The escape hatch for the rules a machine cannot settle. A clearance is
-    never silent: it names the rule, the person and the reason, so the
-    decision survives the row.
+    The escape hatch for the gate. A clearance is never silent: it names the
+    rule, the person and the reason, so the decision survives the row and the
+    counts still say what was resolved and how.
     """
 
     rule: NonEmptyStr
@@ -176,9 +176,14 @@ class Clearance(DomainModel):
 class GateVerdict(DomainModel):
     """The mechanical gate decision. Passing is not a warning free pass.
 
-    A row passes when no error issue is open and every judgement issue has
-    been cleared by a person. A warning never blocks, and the gate does not
-    raise one for a rule.
+    Every refusal goes to a person. A row passes when every issue it raised
+    has been cleared, and it passes with no issues at all.
+
+    The severity on an issue says what kind of refusal it was. A defect is
+    objective and the normal resolution is a fix to the content. A judgement
+    is a case the machine cannot settle. Both are cleared the same way,
+    because both need a person, and the severity keeps the two apart in the
+    counts.
     """
 
     passed: bool
@@ -186,18 +191,17 @@ class GateVerdict(DomainModel):
     clearances: tuple[Clearance, ...] = ()
     rules_version: NonEmptyStr = "v1"
 
+    @property
+    def unresolved(self) -> tuple[Issue, ...]:
+        """The issues no clearance has answered yet. The human's queue."""
+        cleared = {clearance.rule for clearance in self.clearances}
+        return tuple(issue for issue in self.issues if issue.code not in cleared)
+
     @model_validator(mode="after")
     def _check(self) -> "GateVerdict":
-        has_error = any(issue.severity is Severity.ERROR for issue in self.issues)
-        cleared = {clearance.rule for clearance in self.clearances}
-        open_judgement = any(
-            issue.severity is Severity.JUDGEMENT and issue.code not in cleared
-            for issue in self.issues
-        )
-        if self.passed == (has_error or open_judgement):
+        if self.passed == bool(self.unresolved):
             raise ValueError(
-                "passed must be true exactly when no error is open and every "
-                "judgement issue is cleared"
+                "passed must be true exactly when every issue has been cleared"
             )
         return self
 

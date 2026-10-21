@@ -454,6 +454,13 @@ ordinary word fires as a **judgement**: it blocks, and a person clears it
 with a recorded reason. The `Clearance` model carries the rule, the person
 and the reason, so a decision never dies with the row.
 
+**Every refusal goes to the same person, a defect and a judgement alike.**
+The gate refuses, and the person either fixes the content or records a
+clearance. One queue, one mechanism, and nothing leaves the bank without a
+person having looked at it. The severity stays on the issue, so the counts
+still say what was objectively broken and what needed judgement.
+`GateService.queue()` is what the person works through.
+
 **Two lines, not one.** The model refuses an out of bounds mark, a partial
 overlap, an answer that names no option and a relative image url before the
 gate ever sees them. The gate carries the same rules as the second line, and
@@ -550,7 +557,7 @@ live/test_gate_live.py             the gate must see what the live bank shows,
                                    skipped unless UTMELAB_LIVE=1
 ```
 
-**177 tests pass, 3 skipped. mypy strict is clean across `src` and `tests`.**
+**182 tests pass, 3 skipped. mypy strict is clean across `src` and `tests`.**
 
 The three skipped are the live tests: the OpenCode smoke test, the
 production fingerprint contract and the gate contract. All run with

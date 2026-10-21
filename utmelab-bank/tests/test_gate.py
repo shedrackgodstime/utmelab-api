@@ -261,6 +261,57 @@ def test_a_clearance_makes_a_judgement_pass() -> None:
     assert verdict.clearances == (clearance,)
 
 
+def test_a_defect_also_goes_to_the_person() -> None:
+    """Every refusal is the person's, a defect and a judgement alike.
+
+    The normal resolution of a defect is a fix to the content, but the gate
+    does not make that the only way out. A person can clear it with a
+    recorded reason, and the severity stays on the issue so the counts still
+    say what was objectively broken.
+    """
+    content = make_content(source_explanation=None)
+
+    verdict = gate(content)
+
+    assert verdict.passed is False
+    issue = next(i for i in verdict.issues if i.code == "explanation_missing")
+    assert issue.severity is Severity.ERROR
+
+    clearance = Clearance(
+        rule="explanation_missing",
+        by="owner",
+        reason="the explanation is written and lands with the next batch",
+        created_at=NOW,
+    )
+    cleared = gate(content, clearances=(clearance,))
+
+    assert cleared.passed is True
+    assert cleared.issues[0].severity is Severity.ERROR
+
+
+def test_the_unresolved_issues_are_the_queue() -> None:
+    content = make_content(source_explanation=None)
+
+    verdict = gate(content)
+
+    assert [issue.code for issue in verdict.unresolved] == ["explanation_missing"]
+
+
+def test_a_cleared_issue_leaves_the_queue() -> None:
+    content = make_content(source_explanation=None)
+    clearance = Clearance(
+        rule="explanation_missing",
+        by="owner",
+        reason="handled",
+        created_at=NOW,
+    )
+
+    verdict = gate(content, clearances=(clearance,))
+
+    assert verdict.unresolved == ()
+    assert verdict.passed is True
+
+
 def test_a_clearance_for_another_rule_does_not_pass() -> None:
     content = make_content(stem=RichText(text="In the graph below, the slope is:"))
     clearance = Clearance(

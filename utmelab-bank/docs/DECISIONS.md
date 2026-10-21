@@ -34,38 +34,45 @@ counted per rule, so the weak sources are visible and fixable.
 
 **Two kinds of refusal.**
 
-*Hard defects, no override.* A mark past the end of its text. Two marks
-partially overlapping. An unknown mark kind. An image url that is not
-absolute https. An answer naming no option. An empty stem. An empty exam. A
-year outside 1900 to 2100. Marks or difficulty out of range. An HTML entity
-or tag in the text. A subtopic that does not exist, or whose topic belongs to
-a different exam and subject. A passage id that does not exist. A duplicate by
-hash or by id. A missing explanation.
+*Defects.* Objective. A mark past the end of its text, an answer that names
+no option, an unknown subtopic, a duplicate hash. The normal resolution is a
+fix to the content.
 
-*Judgement calls.* A rule that cannot tell a real defect from an ordinary
-word. The figure hint is the only one. The row is refused, and a person
-clears it with a recorded reason. **The clearance is recorded, never
-silent.** That is what makes strictness lossless: nothing moves without being
-decided, and no good question dies on a false positive.
+*Judgements.* A rule that cannot tell a real defect from an ordinary word.
+The figure hint is the only one. The row is refused, the refusal names the
+rule, and a person says why it is fine.
 
-**Rules get tightened, queues do not grow.** A judgement-call rule that
-produces a large false-positive class gets rewritten until the class is
-acceptable. Only the residue goes to a person.
+**Both go to the same person, and both are resolved the same way.** The gate
+refuses, and the person either fixes the content or records a clearance with
+a reason. One queue, one mechanism, and nothing leaves the bank without a
+person having looked at it. The severity stays on the issue, so the counts
+still say what was objectively broken and what needed judgement.
 
-## D4. The human is a sampler and a policy setter, not a queue
+**The clearance is recorded, never silent.** It names the rule, the person
+and the reason, so the decision survives the row and the counts stay honest.
+
+**Rules get tightened, queues do not grow.** A judgement rule that produces
+a large false-positive class gets rewritten until the class is acceptable.
+Only the residue goes to a person.
+
+## D4. The human resolves the refusals, samples the passes, and sets policy
 
 A person cannot review 100,000 questions. One to three minutes each is
 1,500 to 5,000 hours, and there is one of them here whose job is the code.
 
-So the human does three things, and their cost does not grow with the bank.
+So the human's job is three things, and none of them is a pass over the
+content.
 
-1. **Samples.** Checks a sample to measure the AI's agreement rate.
-2. **Adjudicates.** Settles the disagreements, and clears the residue the
-   tightened rules cannot settle.
+1. **Resolves the refusals.** The queue is the gate's failures, not the
+   content. On the live bank that is 65 of 2,243 rows, and it is the only
+   queue.
+2. **Samples the passes.** Checks a sample to measure the AI's agreement
+   rate, and settles the disagreements.
 3. **Sets policy.** Decides the agreement rate below which content does not
    move.
 
-The output of the human is a number and a threshold, not a queue position.
+The output of the human is a resolved queue, a number and a threshold, not a
+queue position per row.
 
 ## D5. The AI review is the review at volume
 

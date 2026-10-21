@@ -456,6 +456,15 @@ The refusals, which stop the write:
 | difficulty outside 1 to 5 | |
 | no such passage | a passage id must exist |
 
+**Every refusal goes to the same person.** The gate refuses, and the person
+either fixes the content or records a clearance with a reason. One queue, one
+mechanism. The severity stays on the issue, so the counts still say what was
+objectively broken and what needed judgement, but nothing leaves the bank
+without a person having looked at it.
+
+**The clearance is recorded, never silent.** It names the rule, the person
+and the reason, so the decision survives the row.
+
 Two details in there are worth keeping exactly.
 
 **The underline is a substring, not an offset.** The tool takes the target
@@ -469,13 +478,13 @@ an offset.
 because the hint words collide with ordinary English.** Of the 2 live flags,
 one is a true positive, the physics row about a "displacement-time graph",
 and one is a false positive, a stress question whose last option is the word
-"table". A rule that refused on the word "table" would have thrown away a
-legitimate question, and would have thrown away more as the bank grows.
+"table". The rule still fires on the word "table", because a rule that
+guessed would let a real missing figure through, and it fires as a judgement
+so a person clears it in seconds.
 
-**So the figure rule flags, it does not refuse the row.** The archived tree
-turned it into a refusal at import. The live tool's behaviour is the one in
-force, and it is the safer one: the row is flagged, a person decides, and the
-ordinary word does not cost the bank a question.
+**Rules get tightened, queues do not grow.** A judgement rule that produces
+a large false-positive class gets rewritten until the class is acceptable.
+Only the residue goes to a person.
 
 The near-duplicate fingerprint is not the content hash. It is the lowercased
 stem plus the sorted lowercased option texts, hashed to 16 hex characters.

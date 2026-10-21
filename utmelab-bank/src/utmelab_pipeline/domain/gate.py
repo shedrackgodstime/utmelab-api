@@ -8,15 +8,19 @@ The gate is the only place either can be stopped.
 
 Two kinds of refusal, and the difference matters.
 
-A **defect** is objective and only a fix to the content clears it. A mark
-that runs past the end of its text, an answer that names no option, an
-unknown subtopic, a duplicate hash.
+A **defect** is objective. A mark that runs past the end of its text, an answer
+that names no option, an unknown subtopic, a duplicate hash. The normal
+resolution is a fix to the content.
 
-A **judgement** blocks too, but a person can clear it with a recorded
-reason. Some rules cannot tell a real defect from an ordinary word, the
-figure hint being the one that bites, and a refusal there would throw away
-good questions. So the row is refused, the refusal names the rule, and a
-person says why it is fine. The clearance is stored, never assumed.
+A **judgement** is a case the machine cannot settle. The figure hint is the
+one that bites, because "table" is both a display and an ordinary word. The
+row is refused, the refusal names the rule, and a person says why it is fine.
+
+**Both go to the same person, and both are resolved the same way.** The gate
+refuses, and the person either fixes the content or records a clearance with
+a reason. The severity stays on the issue, so the counts still say what was
+objectively broken and what needed judgement, but there is one queue and one
+mechanism, and nothing leaves the bank without a person having looked at it.
 
 The rules are the live ones from ``tools/review.py``, which is the tool that
 writes today's verification records. The archived tree's import rules are
@@ -528,8 +532,8 @@ def _check_duplicates(context: GateContext, issues: list[Issue]) -> None:
 def run_gate(context: GateContext) -> GateVerdict:
     """Run every rule over one row and return the verdict.
 
-    The verdict passes when no defect is open and every judgement issue has
-    been cleared by a person.
+    The verdict passes when every issue it raised has been cleared by a
+    person. The unresolved issues are the person's queue.
     """
     issues: list[Issue] = []
     _check_stem(context.content, issues)
@@ -542,12 +546,9 @@ def run_gate(context: GateContext) -> GateVerdict:
 
     clearances = context.clearances
     cleared = {clearance.rule for clearance in clearances}
-    has_error = any(issue.severity is Severity.ERROR for issue in issues)
-    open_judgement = any(
-        issue.severity is Severity.JUDGEMENT and issue.code not in cleared
-        for issue in issues)
+    unresolved = any(issue.code not in cleared for issue in issues)
     return GateVerdict(
-        passed=not has_error and not open_judgement,
+        passed=not unresolved,
         issues=tuple(issues),
         clearances=clearances,
         rules_version=RULES_VERSION,

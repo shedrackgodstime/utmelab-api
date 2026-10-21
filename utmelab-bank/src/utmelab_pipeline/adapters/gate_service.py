@@ -6,6 +6,10 @@ about a staging item, the state machine, and what the bank already holds.
 The flow is one way. A row that passes the gate moves to ``gated``. A row
 that does not is refused, with the reason kept on the item, so the count per
 rule is visible and a weak source can be found.
+
+Every refusal goes to the same person, a defect and a judgement alike. The
+person either fixes the content or records a clearance with a reason, and
+``queue`` is what they work through.
 """
 
 from __future__ import annotations
@@ -23,6 +27,7 @@ from utmelab_pipeline.domain.models import (
     CatalogSnapshot,
     Clearance,
     GateVerdict,
+    Issue,
     StagingItem,
 )
 
@@ -103,6 +108,20 @@ class GateService:
             [self.judge(item) for item in items]
         )
         return judged
+
+    def queue(self, items: Iterable[StagingItem]) -> dict[str, tuple[Issue, ...]]:
+        """The person's queue: what is still unanswered, per item.
+
+        Every refusal the gate raises goes here, a defect and a judgement
+        alike, because both need a person. The severity on each issue still
+        says what kind of refusal it was.
+        """
+        pending: dict[str, tuple[Issue, ...]] = {}
+        for item in items:
+            unresolved = self.judge(item).unresolved
+            if unresolved:
+                pending[item.id] = unresolved
+        return pending
 
     @staticmethod
     def _summary(verdict: GateVerdict) -> str:

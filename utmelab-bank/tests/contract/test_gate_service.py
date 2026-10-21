@@ -186,6 +186,48 @@ def test_the_placement_is_checked_against_the_catalog() -> None:
     assert "subtopic_not_in_catalog" in (refused.error or "")
 
 
+def test_the_queue_is_what_the_person_works_through() -> None:
+    """Every refusal is in it, a defect and a judgement alike."""
+    service = GateService()
+    good = make_item()
+    bad = make_item(
+        id="source-1:item-2",
+        provenance=Provenance(
+            source="source-1",
+            source_url="https://example.com/items/2",
+            source_item_id="item-2",
+            fetched_at=NOW,
+            payload_hash="b" * 64,
+            source_version="1.0.0",
+            scope=Scope(exam="JAMB", subject="mathematics", year=2025),
+        ),
+        content=make_item().content.model_copy(update={"source_explanation": None}),
+    )
+
+    queue = service.queue([good, bad])
+
+    assert list(queue) == ["source-1:item-2"]
+    assert [issue.code for issue in queue["source-1:item-2"]] == [
+        "explanation_missing"
+    ]
+
+
+def test_a_cleared_item_leaves_the_queue() -> None:
+    clearance = Clearance(
+        rule="explanation_missing",
+        by="owner",
+        reason="handled",
+        created_at=NOW,
+    )
+    service = GateService(clearances={"source-1:item-1": [clearance]})
+    item = make_item(
+        content=make_item().content.model_copy(update={"source_explanation": None})
+    )
+
+    assert service.queue([item]) == {}
+    assert service.apply(item).state is State.GATED
+
+
 def test_the_judgement_does_not_change_the_item() -> None:
     """Judging is not moving. The gate reports, the state machine decides."""
     item = make_item()
