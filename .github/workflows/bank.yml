@@ -115,7 +115,7 @@ jobs:
           pip install -e ".[dev]"
 
       - name: Install OpenCode CLI
-        if: ${{ inputs.provider == 'opencode' && contains(fromJSON('["tag","media","explain","review","process"]'), inputs.command) }}
+        if: ${{ inputs.provider == 'opencode' && contains(fromJSON('["scrape","fetch","tag","media","explain","review","process"]'), inputs.command) }}
         run: |
           npm install -g opencode-ai@1.19.0 || (curl -fsSL https://opencode.ai/install.sh | bash && echo "$HOME/.opencode/bin" >> $GITHUB_PATH)
 

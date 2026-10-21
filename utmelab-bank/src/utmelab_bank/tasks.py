@@ -19,6 +19,7 @@ from dataclasses import dataclass, field
 from datetime import UTC, datetime
 
 from utmelab_bank.adapters.gate_service import GateService
+from utmelab_bank.adapters.media import MediaIngestor
 from utmelab_bank.adapters.providers.tagging import ExplainService, TagService
 from utmelab_bank.adapters.ready_service import ReadyService
 from utmelab_bank.adapters.review_service import ReviewService
@@ -173,13 +174,16 @@ async def _advance(
     runtime: Runtime,
     item: StagingItem,
     gate: GateService,
+    ingestor: MediaIngestor,
 ) -> StagingItem:
     """Move one adapted row through the scrape-side states.
 
-    The order is the contract: gate, then dedupe. The gate is first so a
-    malformed row never reaches the index. Dedupe is last because it looks
-    at the content the gate has accepted. Media is deliberately not here:
-    a row that never passes either check must not upload a figure.
+    The order is the contract: gate, then dedupe, then capture. The gate is
+    first so a malformed row never reaches the index. Dedupe is second so a
+    duplicate never causes a figure fetch. Capture is last because the source
+    is alive now and may not be later, and only rows that passed both checks
+    upload their bytes. The row stays at DEDUPED with its media_assets;
+    the media step only finalizes and describes them later.
     """
     if item.state is State.ADAPTED:
         item = gate.apply(item)
@@ -189,8 +193,29 @@ async def _advance(
     if item.state is State.GATED:
         item = await runtime.dedupe.apply(item)
         await runtime.staging.save(item)
+        if item.state is State.REJECTED:
+            return item
     if item.state is State.DEDUPED:
         await runtime.dedupe.remember(item, origin=BANK)
+        # Capture figures now, while the source is alive. Only rows that
+        # passed gate + dedupe reach here, so no wasted uploads.
+        # Skip if already captured (has media_assets and no media_refs).
+        if item.media_refs or not item.media_assets:
+            item = await ingestor.capture_refs(item)
+            await runtime.staging.save(item)
+        # Whether capture ran or not, re-check dedupe because the production
+        # index may have new entries, or the inline swap changed the hash.
+        if item.state is State.DEDUPED:
+            await runtime.index.forget_question(item.id, origin=BANK)
+            found = await runtime.dedupe.find(item)
+            if found is not None:
+                item = item.transition_to(
+                    State.REJECTED,
+                    error=f"duplicate_{found.kind}: {found.question_id}",
+                )
+                await runtime.staging.save(item)
+                return item
+            await runtime.dedupe.remember(item, origin=BANK)
     return item
 
 
@@ -220,6 +245,7 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
     limit = _limit(options)
     item: StagingItem | None = None
 
+    ingestor = require(runtime.ingestor, "media store")
     try:
         async for raw in source.fetch(scope):
             if result.seen >= limit:
@@ -262,15 +288,14 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
                     catalog=catalog,
                     known_passage_ids=known_passages,
                 )
-                item = await _advance(runtime, item, gate)
+                item = await _advance(runtime, item, gate, ingestor)
 
                 if item.state is State.DEDUPED:
                     result.done += 1
                 elif item.state is State.REJECTED:
-                    # A gate or dedupe refusal is the scrape doing its job,
-                    # not a failed run. The row is kept in the bank with its
-                    # reason, and it never reaches media. A crash or a source
-                    # refusal still counts as a failure.
+                    # A gate, dedupe, or post-capture duplicate refusal is the
+                    # scrape doing its job, not a failed run. The row is kept in
+                    # the bank with its reason, and it never reaches media.
                     result.skipped += 1
                     result.note(
                         f"{item.id}: filtered at {item.state.value}: "
@@ -561,7 +586,6 @@ async def status(runtime: Runtime, options: TaskOptions) -> TaskResult:
 
 TASKS: dict[str, TaskFn] = {
     "fetch": fetch,
-    "capture": capture,
     "tag": tag,
     "media": media,
     "explain": explain,
@@ -573,12 +597,11 @@ TASKS: dict[str, TaskFn] = {
 
 PRESETS: dict[str, tuple[str, ...]] = {
     "scrape": ("fetch",),
-    "process": ("capture", "tag", "media", "explain", "review", "ready"),
+    "process": ("tag", "media", "explain", "review", "ready"),
 }
 
 TASK_HELP: dict[str, str] = {
-    "fetch": "Scrape one scope, gate it, and stop at deduped. No media or models.",
-    "capture": "Fetch and store figures for deduped rows, after the gate.",
+    "fetch": "Scrape one scope, gate it, capture figures, and stop at deduped.",
     "tag": "Place deduped rows in the catalog.",
     "media": "Describe captured figures with two witnesses.",
     "explain": "Write the explanation and enrich the row.",
@@ -633,7 +656,6 @@ __all__ = [
     "TaskOptions",
     "TaskResult",
     "UsageError",
-    "capture",
     "explain",
     "fetch",
     "index",

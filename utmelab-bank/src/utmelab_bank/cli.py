@@ -165,6 +165,7 @@ async def _execute(args: argparse.Namespace) -> list[TaskResult]:
             settings,
             source_name=args.source,
             fixture_dir=args.fixture_dir,
+            media=True,
         ) as runtime:
             return [await run_named("fetch", runtime, options)]
 
@@ -173,6 +174,7 @@ async def _execute(args: argparse.Namespace) -> list[TaskResult]:
             settings,
             source_name=args.source,
             fixture_dir=args.fixture_dir,
+            media=True,
         ) as runtime:
             return await run_preset("scrape", runtime, options)
 

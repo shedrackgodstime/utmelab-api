@@ -28,7 +28,6 @@ from utmelab_bank.domain.models import (
 from utmelab_bank.runtime import Runtime
 from utmelab_bank.tasks import (
     TaskOptions,
-    capture,
     explain,
     fetch,
     index,
@@ -241,17 +240,6 @@ async def test_fetch_through_ready() -> None:
     assert fetched.done == 1
     row = next(iter(staging.items.values()))
     assert row.state is State.DEDUPED
-    assert row.media_refs
-    assert row.media_assets == ()
-    assert row.content.stem.inline[0].url == str(row.media_refs[0].source_url)
-    assert fetcher.urls == []
-
-    captured = await capture(runtime, OPTIONS)
-    assert captured.ok, captured.errors
-    assert captured.done == 1
-    row = await staging.load(row.id)
-    assert row is not None
-    assert row.state is State.DEDUPED
     assert row.media_refs == ()
     assert len(row.media_assets) == 1
     assert row.media_assets[0].source_url is None
@@ -310,11 +298,13 @@ async def test_the_presets_compose_the_same_steps() -> None:
     assert [result.task for result in scrape] == ["fetch"]
     assert all(result.ok for result in scrape), [r.errors for r in scrape]
     row = next(iter(staging.items.values()))
+    # fetch now captures figures inline, so the row is DEDUPED with media_assets
     assert row.state is State.DEDUPED
+    assert row.media_refs == ()
+    assert row.media_assets
 
     process = await run_preset("process", runtime, OPTIONS)
     assert [result.task for result in process] == [
-        "capture",
         "tag",
         "media",
         "explain",
@@ -336,7 +326,9 @@ async def test_fetch_resumes_without_touching_the_figure() -> None:
     assert first.done == 1
     assert second.done == 1
     assert len(staging.items) == 1
-    assert fetcher.urls == []
+    # First fetch captures the figure; second fetch resumes at DEDUPED and
+    # skips capture because media_assets already exist.
+    assert len(fetcher.urls) == 1
     assert any("resuming at deduped" in note for note in second.notes)
 
 
@@ -377,12 +369,9 @@ async def test_a_duplicate_is_filtered_without_uploading_a_figure() -> None:
     assert fetcher.urls == []
 
 
-async def test_capture_rechecks_duplicates_after_the_image_swap() -> None:
-    runtime, staging, _ = make_runtime()
+async def test_fetch_rechecks_duplicates_after_the_image_swap() -> None:
+    runtime, staging, fetcher = make_runtime()
     await fetch(runtime, OPTIONS)
-    first = await capture(runtime, OPTIONS)
-    assert first.ok
-    assert first.done == 1
     row = next(iter(staging.items.values()))
     assert row.state is State.DEDUPED
     assert row.media_assets
@@ -396,7 +385,10 @@ async def test_capture_rechecks_duplicates_after_the_image_swap() -> None:
         question_id="production:figure",
     )
 
-    second = await capture(runtime, OPTIONS)
+    # The row already has media_assets and no media_refs, so a second fetch
+    # will see it at DEDUPED, re-capture (which is a no-op for refs), and
+    # re-check dedupe against the production index.
+    second = await fetch(runtime, OPTIONS)
     assert second.ok
     assert second.done == 0
     assert second.skipped == 1
