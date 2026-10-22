@@ -239,7 +239,7 @@ async fn recheck_contract(probe: &DbState) {
 }
 
 /// Engine-side sync figures for the ops status, read-only. `None` when no
-/// replica is attached yet — absence is honest, never zeros. This never
+/// replica is attached yet: absence is honest, never zeros. This never
 /// checkpoints; checkpointing is the engine's own job.
 pub async fn stats(
     s: &DbState,

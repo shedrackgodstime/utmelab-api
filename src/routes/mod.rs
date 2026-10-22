@@ -5,7 +5,7 @@
 //! them.
 //!
 //! URL policy: `/api/*` (v1 commercial reads, internal dashboard/admin)
-//! nests here so local and prod paths are identical — no proxy prefix
+//! nests here so local and prod paths are identical, with no proxy prefix
 //! magic. `/mcp/*`, `/health` and `/ready` stay top-level. Data surfaces sit
 //! behind the contract guard; the two probes do not.
 
@@ -515,7 +515,7 @@ mod tests {
     }
 
     /// Session routes: the same rule through the cookie door. `login` is absent
-    /// on purpose — it is how a session is obtained, so it cannot require one.
+    /// on purpose: it is how a session is obtained, so it cannot require one.
     /// `logout` is absent because it takes no session and always succeeds.
     const SESSION: &[(&str, &str)] = &[
         ("GET", "/api/internal/keys"),

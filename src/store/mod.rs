@@ -105,7 +105,7 @@ async fn backoff(attempt: u32) {
 ///
 /// Contention is classified here: `Busy`/`BusySnapshot` carry it typed, and the
 /// sync engine and the remote report some of it as a plain message, so that
-/// wording is matched here too — once, beside the typed match, on engine errors
+/// wording is matched here too: once, beside the typed match, on engine errors
 /// only, and nowhere else. Everything else keeps its text as [`AppError::Upstream`].
 pub(crate) fn upstream<E: std::error::Error + 'static>(e: E) -> AppError {
     if is_contention(&e) {
@@ -144,7 +144,7 @@ async fn synced(s: &DbState) -> Result<SyncDb, AppError> {
 /// pooled connection and run `op` on it, returning it to the pool when done.
 /// The connection is reused across busy retries. Anything that only reads
 /// goes through here, so bursts degrade to 503 on exhaustion instead of
-/// wedging workers. (Writes use `write::{execute_write, execute_ddl}` — same
+/// wedging workers. (Writes use `write::{execute_write, execute_ddl}`, with the same
 /// gate, plus the write mutex and cloud push.)
 pub(crate) async fn with_conn<T, F, Fut>(s: &DbState, mut op: F) -> Result<T, AppError>
 where

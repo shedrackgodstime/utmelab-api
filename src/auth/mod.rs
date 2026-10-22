@@ -1,6 +1,6 @@
 //! Shared auth primitives. `api_key` guards the public surfaces
 //! (`api` + `mcp`, same wire, same identity); `session` guards
-//! `internal`. Levels are scopes on one identity — never duplicate routes.
+//! `internal`. Levels are scopes on one identity, never duplicate routes.
 
 pub mod api_key;
 pub mod rate_limit;

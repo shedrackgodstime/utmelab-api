@@ -1,4 +1,4 @@
-//! `/api/v1/subjects/{exam}/{slug}` — one subject, its syllabus, and its
+//! `/api/v1/subjects/{exam}/{slug}`: one subject, its syllabus, and its
 //! coverage.
 //!
 //! The exam is in the path because it is part of a subject's identity (D21):

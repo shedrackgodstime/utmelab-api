@@ -29,7 +29,7 @@ pub fn document() -> utoipa::openapi::OpenApi {
 }
 
 const AUTH_NOTE: &str = "Send your key in the `X-API-Key` header. One key type: it works from \
-a server, an app, or curl — we never ask where it lives. If you embed it in a client app it can \
+a server, an app, or curl. We never ask where it lives. If you embed it in a client app it can \
 be extracted, and whoever extracts it shares your quota.";
 
 /// Adds the one security scheme, including the explanation utoipa has no field

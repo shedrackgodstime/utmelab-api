@@ -606,13 +606,37 @@
         "tags": [
           "catalog"
         ],
-        "summary": "Batch retrieve reading passages by IDs.",
+        "summary": "Batch retrieve reading passages by IDs or list by subject.",
         "operationId": "listPassages",
         "parameters": [
           {
             "name": "ids",
             "in": "query",
             "description": "Comma-separated passage IDs to fetch in a single round-trip.",
+            "required": false,
+            "schema": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          {
+            "name": "exam",
+            "in": "query",
+            "description": "Optional exam filter when listing passages for a subject.",
+            "required": false,
+            "schema": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "description": "Optional subject slug filter when listing passages for a subject.",
             "required": false,
             "schema": {
               "type": [
@@ -787,6 +811,18 @@
         "summary": "Questions, filtered and paged. The answer is withheld unless asked for.",
         "operationId": "listQuestions",
         "parameters": [
+          {
+            "name": "topic",
+            "in": "query",
+            "description": "Drill by topic slug.",
+            "required": false,
+            "schema": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
           {
             "name": "subtopic",
             "in": "query",
@@ -1021,6 +1057,18 @@
             }
           },
           {
+            "name": "topic",
+            "in": "query",
+            "description": "Optional drill to a specific topic slug.",
+            "required": false,
+            "schema": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          {
             "name": "subtopic",
             "in": "query",
             "description": "Optional drill to a specific subtopic.",
@@ -1030,6 +1078,20 @@
                 "string",
                 "null"
               ]
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "Scope to a cohort year.",
+            "required": false,
+            "schema": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32",
+              "minimum": 0
             }
           },
           {
@@ -1446,7 +1508,7 @@
       },
       "Blueprint": {
         "type": "object",
-        "description": "Measured expectations for one exam subject. Every measurement is\noptional — a row states only what was measured, never a filled-in\nzero. Empty result where no rows exist is honest absence, not 404.",
+        "description": "Measured expectations for one exam subject. Every measurement is\noptional: a row states only what was measured, never a filled-in\nzero. Empty result where no rows exist is honest absence, not 404.",
         "required": [
           "exam",
           "subject",
@@ -1598,7 +1660,7 @@
       },
       "Exam": {
         "type": "object",
-        "description": "One exam as stored. Facts live here, not scattered across call sites.\n\n`status` is a passthrough string (`live` | `planned` | `retired`\ntoday): a new board status must keep serving, never break\ndeserialization of every row. Nullable columns stay `Option` for the\nsame honesty — unstated is null, never invented.",
+        "description": "One exam as stored. Facts live here, not scattered across call sites.\n\n`status` is a passthrough string (`live` | `planned` | `retired`\ntoday): a new board status must keep serving, never break\ndeserialization of every row. Nullable columns stay `Option` for the\nsame honesty: unstated is null, never invented.",
         "required": [
           "code",
           "name",
@@ -1839,7 +1901,7 @@
       },
       "KeyInfo": {
         "type": "object",
-        "description": "The caller's own key, as the key itself may see it. No hashes,\nno secrets, no other keys — safe to hand to whoever presented it.",
+        "description": "The caller's own key, as the key itself may see it. No hashes,\nno secrets, no other keys, safe to hand to whoever presented it.",
         "required": [
           "prefix",
           "admin",
@@ -1862,7 +1924,7 @@
       },
       "Novel": {
         "type": "object",
-        "description": "A prescribed text. One row per (exam, cycle) — the set text rotates,\nso the prescription years are load-bearing, not decorative.",
+        "description": "A prescribed text. One row per (exam, cycle): the set text rotates,\nso the prescription years are load-bearing, not decorative.",
         "required": [
           "id",
           "title",
@@ -1894,7 +1956,7 @@
           },
           "featured": {
             "type": "boolean",
-            "description": "At most one per exam — the current set text."
+            "description": "At most one per exam: the current set text."
           },
           "id": {
             "type": "string"
@@ -1926,7 +1988,7 @@
               "null"
             ],
             "format": "int32",
-            "description": "Unknown for older set texts — absent, not zero.",
+            "description": "Unknown for older set texts: absent, not zero.",
             "minimum": 0
           }
         }
@@ -1955,7 +2017,7 @@
               "string",
               "null"
             ],
-            "description": "Null means not yet written — absence is the signal."
+            "description": "Null means not yet written: absence is the signal."
           },
           "title": {
             "type": "string"
@@ -2026,7 +2088,7 @@
             }
           }
         ],
-        "description": "One novel with everything: book, chapters, characters, themes, quiz.\nMatches the established detail shape exactly, answers included —\ncallers already read quiz rows here, so withholding would silently\nchange the contract rather than improve it."
+        "description": "One novel with everything: book, chapters, characters, themes, quiz.\nMatches the established detail shape exactly, answers included:\ncallers already read quiz rows here, so withholding would silently\nchange the contract rather than improve it."
       },
       "NovelQuestion": {
         "type": "object",
@@ -2137,7 +2199,7 @@
             "type": "array",
             "items": {
               "type": "object",
-              "description": "One novel quiz row as served. `novel_id` is stamped by the caller —\nthe stored row does not carry it.",
+              "description": "One novel quiz row as served. `novel_id` is stamped by the caller.\nThe stored row does not carry it.",
               "required": [
                 "id",
                 "novel_id",
@@ -2243,7 +2305,7 @@
             "type": "array",
             "items": {
               "type": "object",
-              "description": "One question as served. Identical to storage except the answer and\nworking, which are present only when explicitly requested — an answer\nin a default payload gets rendered by somebody, eventually, by\naccident. `verified` comes from the verification log, never a stored flag.",
+              "description": "One question as served. Identical to storage except the answer and\nworking, which are present only when explicitly requested. An answer\nin a default payload gets rendered by somebody, eventually, by\naccident. `verified` comes from the verification log, never a stored flag.",
               "required": [
                 "id",
                 "exam",
@@ -2311,7 +2373,7 @@
                     "string",
                     "null"
                   ],
-                  "description": "A stimulus this row belongs to — fetch it, never ignore it: the\nstem may be unanswerable without it."
+                  "description": "A stimulus this row belongs to. Fetch it, never ignore it: the\nstem may be unanswerable without it."
                 },
                 "section": {
                   "type": [
@@ -2409,7 +2471,7 @@
       },
       "Passage": {
         "type": "object",
-        "description": "A stimulus shared by many questions — one comprehension passage\nserving five questions, one cloze serving ten. Questions carry only\nthe id; consumers resolve it here, never ignore it.",
+        "description": "A stimulus shared by many questions: one comprehension passage\nserving five questions, one cloze serving ten. Questions carry only\nthe id; consumers resolve it here, never ignore it.",
         "required": [
           "id",
           "exam",
@@ -2586,7 +2648,7 @@
       },
       "RenderedNovelQuestion": {
         "type": "object",
-        "description": "One novel quiz row as served. `novel_id` is stamped by the caller —\nthe stored row does not carry it.",
+        "description": "One novel quiz row as served. `novel_id` is stamped by the caller.\nThe stored row does not carry it.",
         "required": [
           "id",
           "novel_id",
@@ -2641,7 +2703,7 @@
       },
       "RenderedQuestion": {
         "type": "object",
-        "description": "One question as served. Identical to storage except the answer and\nworking, which are present only when explicitly requested — an answer\nin a default payload gets rendered by somebody, eventually, by\naccident. `verified` comes from the verification log, never a stored flag.",
+        "description": "One question as served. Identical to storage except the answer and\nworking, which are present only when explicitly requested. An answer\nin a default payload gets rendered by somebody, eventually, by\naccident. `verified` comes from the verification log, never a stored flag.",
         "required": [
           "id",
           "exam",
@@ -2709,7 +2771,7 @@
               "string",
               "null"
             ],
-            "description": "A stimulus this row belongs to — fetch it, never ignore it: the\nstem may be unanswerable without it."
+            "description": "A stimulus this row belongs to. Fetch it, never ignore it: the\nstem may be unanswerable without it."
           },
           "section": {
             "type": [
@@ -2999,6 +3061,13 @@
               "null"
             ]
           },
+          "include_explanation": {
+            "type": [
+              "boolean",
+              "null"
+            ],
+            "description": "Include answers and explanations with the score. Default: false."
+          },
           "seed": {
             "type": "integer",
             "format": "int64",
@@ -3051,8 +3120,24 @@
           "correct"
         ],
         "properties": {
+          "answer": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "correct": {
             "type": "boolean"
+          },
+          "explanation": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Explanation"
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "id": {
             "type": "string"
@@ -3067,7 +3152,7 @@
       },
       "Subject": {
         "type": "object",
-        "description": "One exam's offering of a subject. The same concept appears once per\nexam carrying that board's own name — not one row with an alias.",
+        "description": "One exam's offering of a subject. The same concept appears once per\nexam carrying that board's own name, not one row with an alias.",
         "required": [
           "slug",
           "exam",
@@ -3090,7 +3175,7 @@
               "null"
             ],
             "format": "int32",
-            "description": "MCQs the objective paper holds. Null where unverified — absence\nis data, never a zero masquerading as a fact.",
+            "description": "MCQs the objective paper holds. Null where unverified: absence\nis data, never a zero masquerading as a fact.",
             "minimum": 0
           },
           "slug": {
@@ -3100,7 +3185,7 @@
       },
       "SubjectSlot": {
         "type": "object",
-        "description": "One subject's slot in an exam scheme. `questions` is the stated paper\nsize (null where unverified), and `marks_per_question` is stated only\nwhere the bank supports it — both are absences, never zeros.",
+        "description": "One subject's slot in an exam scheme. `questions` is the stated paper\nsize (null where unverified), and `marks_per_question` is stated only\nwhere the bank supports it: both are absences, never zeros.",
         "required": [
           "slug",
           "name",
@@ -3176,7 +3261,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Inherited from the parent topic — a subtopic carries no scope of its own."
+            "description": "Inherited from the parent topic. A subtopic carries no scope of its own."
           },
           "name": {
             "type": "string"
@@ -3324,7 +3409,7 @@
             "items": {
               "type": "string"
             },
-            "description": "Examinable statements attached at topic level. Empty where the\nboard states none — never invented."
+            "description": "Examinable statements attached at topic level. Empty where the\nboard states none, never invented."
           },
           "order": {
             "type": "integer",
@@ -3340,7 +3425,7 @@
           "weight": {
             "type": "integer",
             "format": "int32",
-            "description": "Marks the board gives this topic. Zero means \"not published\",\nnever \"worth nothing\" — a fabricated weight would reach\nconsumers as a fact.",
+            "description": "Marks the board gives this topic. Zero means \"not published\",\nnever \"worth nothing\". A fabricated weight would reach\nconsumers as a fact.",
             "minimum": 0
           }
         }
@@ -3351,7 +3436,7 @@
         "type": "apiKey",
         "in": "header",
         "name": "X-API-Key",
-        "description": "Send your key in the `X-API-Key` header. One key type: it works from a server, an app, or curl — we never ask where it lives. If you embed it in a client app it can be extracted, and whoever extracts it shares your quota."
+        "description": "Send your key in the `X-API-Key` header. One key type: it works from a server, an app, or curl. We never ask where it lives. If you embed it in a client app it can be extracted, and whoever extracts it shares your quota."
       }
     }
   },

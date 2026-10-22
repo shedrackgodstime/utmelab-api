@@ -2,7 +2,7 @@
 //!
 //! Everything else under `/api/v1` is a keyed product surface. These two are
 //! the shop window: they exist so a visitor can see what the bank holds before
-//! they have a key, and they are coarse by construction — exam and subject
+//! they have a key, and they are coarse by construction: exam and subject
 //! identity plus counts, never a row.
 //!
 //! The divide is structural, not stylistic. `api::router` mounts this router

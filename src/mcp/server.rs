@@ -1,7 +1,7 @@
 //! The MCP server: tool handlers and the `ServerHandler` impl.
 //!
 //! One type serves both mounted endpoints, but never at once: a [`Surface`]
-//! picks which tool router answers, so the URL — not a scope check alone —
+//! picks which tool router answers, so the URL, not a scope check alone,
 //! decides what a caller can even see. `/mcp` is the catalog surface (reads
 //! plus the consumer actions); `/mcp/admin` is key management.
 //!
@@ -186,6 +186,9 @@ struct ScorePaperArgs {
     /// Question id to chosen option id. Unanswered ids are left out on purpose:
     /// a guess not made is never marked.
     answers: std::collections::HashMap<String, String>,
+    /// Include answers and explanations with the score. Defaults to false.
+    #[schemars(extend("type" = "boolean"))]
+    include_explanation: Option<bool>,
 }
 
 #[derive(Deserialize, JsonSchema)]
@@ -280,6 +283,7 @@ impl McpServer {
                 seed: args.seed,
                 country: args.country,
                 answers: args.answers,
+                include_explanation: args.include_explanation,
             }),
         )
         .await

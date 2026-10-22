@@ -1,5 +1,5 @@
-//! Consumer flags. One endpoint serves every reportable kind — a
-//! question, a topic, a passage, a novel — dispatching on the target
+//! Consumer flags. One endpoint serves every reportable kind: a
+//! question, a topic, a passage, or a novel, dispatching on the target
 //! type rather than growing a route per kind.
 //!
 //! Every filing is key-gated, subject to the key's per-minute limit and
@@ -32,7 +32,7 @@ pub struct ReportBody {
     pub detail: Option<String>,
 }
 
-/// `POST /v1/report` — the single entry point. Dispatches on `target_type`.
+/// `POST /v1/report`: the single entry point. Dispatches on `target_type`.
 #[utoipa::path(
     post,
     path = "/api/v1/report",

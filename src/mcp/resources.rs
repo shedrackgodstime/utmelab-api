@@ -2,8 +2,8 @@
 //!
 //! A resource is a catalog read, addressed by `utmelab://catalog/<tail>` where
 //! `<tail>` is the `/api/v1` path with the version stripped. The read calls the
-//! exact `api::v1` handler the HTTP route mounts — same scope check, same
-//! `core` render — so a resource and its HTTP twin cannot drift: there is one
+//! exact `api::v1` handler the HTTP route mounts, with the same scope check and
+//! same `core` render, so a resource and its HTTP twin cannot drift: there is one
 //! implementation, and [`read`] only routes to it.
 //!
 //! A read with no parameters is a concrete resource ([`list`]); a read whose
@@ -218,6 +218,8 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
             AuthedKey(auth.clone()),
             Query(passages::BatchQuery {
                 ids: opt(&query, "ids"),
+                exam: opt(&query, "exam"),
+                subject: opt(&query, "subject"),
             }),
         )),
         ["passages", id] => read!(passages::one(
@@ -255,6 +257,7 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
             State(db.clone()),
             AuthedKey(auth.clone()),
             Query(questions::List {
+                topic: opt(&query, "topic"),
                 subtopic: opt(&query, "subtopic"),
                 exam: opt(&query, "exam"),
                 subject: opt(&query, "subject"),
@@ -278,7 +281,9 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
                 count: num(&query, "count")?,
                 seed: num(&query, "seed")?,
                 verified: flag(&query, "verified")?,
+                topic: opt(&query, "topic"),
                 subtopic: opt(&query, "subtopic"),
+                year: num(&query, "year")?,
                 country: opt(&query, "country"),
                 include_explanation: flag(&query, "include_explanation")?,
                 include_passage: flag(&query, "include_passage")?,

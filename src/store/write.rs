@@ -1,7 +1,7 @@
 //! Single write path. Execute plus push under one mutex that the pull
 //! loop also holds, so a pull can never interleave (and discard) an
 //! unpushed local write. Callers get the affected-row count; a push failure
-//! surfaces (upstream, or contended when the engine says busy) — the local row
+//! surfaces (upstream, or contended when the engine says busy), while the local row
 //! exists, so the cloud lags until the next push.
 
 use super::{gate, synced, upstream};
@@ -24,7 +24,7 @@ pub async fn execute_write(
 }
 
 /// DDL twin of [`execute_write`]. `changes()` is meaningless for schema
-/// statements, so no visibility check — failure still surfaces as Err.
+/// statements, so no visibility check: failure still surfaces as Err.
 pub async fn execute_ddl(s: &DbState, sql: &str) -> Result<(), AppError> {
     let _permit = gate(s)?;
     let _w = s.write_mutex.lock().await;

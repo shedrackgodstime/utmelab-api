@@ -2,15 +2,15 @@
 //!
 //! `rmcp` owns the wire: JSON-RPC framing, capability negotiation, protocol
 //! version negotiation, and the resource and tool vocabulary. This module owns
-//! only the two things rmcp cannot know — this repo's identity and its
+//! only the two things rmcp cannot know: this repo's identity and its
 //! catalog. Tools live in [`server`]; resource URIs live in [`resources`].
 //!
 //! There are two endpoints, split by URL so an admin capability is unreachable
 //! from a consumer key rather than merely refused when called:
 //!
-//! - `/mcp` — the catalog: `utmelab://catalog/...` reads and the consumer
-//!   actions (report, assemble, score).
-//! - `/mcp/admin` — key administration. Gated twice: the key must verify, and
+//! - `/mcp`: the catalog (`utmelab://catalog/...` reads and the consumer
+//!   actions: report, assemble, score).
+//! - `/mcp/admin`: key administration. Gated twice: the key must verify, and
 //!   it must carry `manage:keys` before rmcp sees a message.
 //!
 //! Identity is the key the HTTP surface already uses. `verify_key` (the same
@@ -80,7 +80,7 @@ pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
 /// (no session outlives a request), JSON-preferred (nothing here emits a
 /// notification mid-call), and with the DNS-rebinding host check off, because
 /// this server is keyed on every surface and answers one public name behind a
-/// proxy — the key is the boundary, and a localhost allowlist would reject real
+/// proxy: the key is the boundary, and a localhost allowlist would reject real
 /// traffic while protecting nothing.
 fn service(db: DbState, surface: Surface) -> StreamableHttpService<McpServer, LocalSessionManager> {
     StreamableHttpService::new(

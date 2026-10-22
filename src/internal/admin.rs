@@ -1,5 +1,5 @@
 //! Admin-only operations. Same core/store calls the MCP admin tools
-//! use — one operation, two surfaces, never duplicated. Every mutation
+//! use: one operation, two surfaces, never duplicated. Every mutation
 //! passes the acting admin to the store so the audit event is attributable.
 
 use axum::{extract::State, Json};

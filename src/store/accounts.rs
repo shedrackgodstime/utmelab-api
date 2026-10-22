@@ -455,7 +455,7 @@ const ADMIN_SCOPES: &str = "manage:keys,write:reports,read:catalog";
 /// the tier, so an admin can grant a consumer key but never a half-scoped one.
 /// A commercial key is labelled with its owner; an admin key belongs to the
 /// staff, so it carries no owner and shows in the staff-wide list. Returns the
-/// plaintext exactly once — the table only ever holds the hash.
+/// plaintext exactly once: the table only ever holds the hash.
 pub async fn create_key_spec(
     s: &DbState,
     actor: &str,
@@ -489,7 +489,7 @@ fn check_owner(owner: &str) -> Result<&str, AppError> {
 /// working. The replacement carries the old row's tier, scopes, and owner
 /// unchanged, because rotating a credential must not change what its holder
 /// may do: a fixed replacement would hand a commercial caller `manage:keys`.
-/// Returns the new plaintext key exactly once — the table only ever holds the
+/// Returns the new plaintext key exactly once: the table only ever holds the
 /// hash. Fails closed with `NotFound` when the prefix does not name a key.
 /// The replacement is minted first, so a failed rotation never leaves the
 /// caller without a working key; both the insert and the revocation commit
@@ -751,7 +751,7 @@ mod tests {
     /// locally and then fails at `push()` because the remote is dead, so the
     /// call surfaces an error while the local row stays. Seeding goes through a
     /// raw connection, and a mutation test asserts the local commit and treats
-    /// the push error as expected — see `mutations_land_locally_then_surface_the_failed_push`.
+    /// the push error as expected (see `mutations_land_locally_then_surface_the_failed_push`).
     async fn local_accounts_db() -> DbState {
         let db = crate::testing::replica().await;
         crate::testing::api_schema(&crate::testing::connect(&db).await).await;
@@ -1064,7 +1064,7 @@ mod tests {
         )
         .await;
 
-        // Offline: the push fails, so the call surfaces the error — but the
+        // Offline: the push fails, so the call surfaces the error, but the
         // local rows still commit (new key minted, old key revoked).
         assert!(rotate_key(&s, "k1", "root").await.is_err());
 

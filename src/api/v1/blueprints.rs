@@ -62,7 +62,7 @@ mod tests {
     }
 
     /// Measured expectations decode with their types intact, and an unmeasured
-    /// subject is an empty list, not a 404 — absence is honest here.
+    /// subject is an empty list, not a 404: absence is honest here.
     #[tokio::test]
     async fn blueprints_read_is_keyed_and_typed() {
         let app = seeded_app().await;

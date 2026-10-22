@@ -1,7 +1,7 @@
 //! Input shape rules. Pure predicates shared by every surface and the
 //! store: one spelling for "safe identifier", unit-tested here.
 
-/// ASCII alphanumerics plus underscore, 1–64 chars. Anything else is
+/// ASCII alphanumerics plus underscore, 1 to 64 chars. Anything else is
 /// rejected before it touches SQL, paths, or filenames.
 pub fn ident(s: &str) -> bool {
     !s.is_empty() && s.len() <= 64 && s.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'_')

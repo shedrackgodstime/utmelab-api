@@ -241,7 +241,7 @@ pub async fn ensure_schema(s: &DbState) -> Result<(), AppError> {
 /// The `reports` table first shipped question-only (`question_id` plus a
 /// `UNIQUE(question_id, …)`). Returns its row count when that legacy
 /// shape is present, or `None` when the table is absent or already
-/// target-agnostic — a pure read, so it probes safely on every boot.
+/// target-agnostic: a pure read, so it probes safely on every boot.
 async fn legacy_reports_rows(s: &DbState) -> Result<Option<i64>, AppError> {
     with_conn(s, |conn| async move {
         let mut cols = Vec::new();

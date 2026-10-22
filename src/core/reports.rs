@@ -25,7 +25,7 @@ pub fn parse_target_type(s: &str) -> Result<&'static str, crate::error::AppError
     }
 }
 
-/// Closed reason set. Unknown strings reject loudly — an open text
+/// Closed reason set. Unknown strings reject loudly: an open text
 /// field would make every flag its own category.
 pub fn parse_reason(s: &str) -> Result<&'static str, crate::error::AppError> {
     match s {

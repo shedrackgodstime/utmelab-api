@@ -2331,20 +2331,30 @@ mod tests {
 
     #[tokio::test]
     async fn question_topic_filter_matches_subtopics_under_topic() {
-        let s = crate::state::DbState::detached(local_exams_db().await);
+        let db = local_exams_db().await;
+        crate::testing::connect(&db)
+            .await
+            .execute(
+                "INSERT INTO questions VALUES ('q_geo','JAMB','mathematics',2025,'past_paper','Angle sum?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"180\",\"inline\":[]}}]','a','geometry-basics',NULL,NULL,NULL,1.0,1,'h_geo')",
+                (),
+            )
+            .await
+            .expect("insert q_geo");
+        let s = crate::state::DbState::detached(db);
         let filter_geo = QuestionFilter {
             exam: Some("JAMB".to_string()),
-            subject: Some("physics".to_string()),
+            subject: Some("mathematics".to_string()),
             topic: Some("geometry".to_string()),
             ..Default::default()
         };
         let (rows, total) = list_questions(&s, &filter_geo, 1, 10).await.expect("query");
-        assert_eq!(total, 2);
-        assert_eq!(rows.len(), 2);
+        assert_eq!(total, 1);
+        assert_eq!(rows.len(), 1);
+        assert_eq!(rows[0].id, "q_geo");
 
         let filter_none = QuestionFilter {
             exam: Some("JAMB".to_string()),
-            subject: Some("physics".to_string()),
+            subject: Some("mathematics".to_string()),
             topic: Some("nonexistent_topic".to_string()),
             ..Default::default()
         };

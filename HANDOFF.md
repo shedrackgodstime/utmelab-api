@@ -1,4 +1,4 @@
-# UTME Lab API — Consumer-Driven Enhancements Handoff
+# UTME Lab API: Consumer-Driven Enhancements Handoff
 
 > **Handoff Target Directory:** `/home/kristency/Projects/utmelab/utmelab-api`  
 > **Source Consumer Workspace:** `/home/kristency/Projects/jerry/jamb-quiz` (Next.js 16 + Turso + Live Nigerian CBT Quiz Engine)  

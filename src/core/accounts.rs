@@ -22,7 +22,7 @@ pub fn check_role(role: &str) -> Result<(), AppError> {
 }
 
 /// Roles allowed to hold sessions. Suspended users authenticate fine but
-/// receive nothing — the door stays shut at issuance, not just at use.
+/// receive nothing: the door stays shut at issuance, not just at use.
 pub fn can_login(role: &str) -> bool {
     matches!(role, "customer" | "admin")
 }

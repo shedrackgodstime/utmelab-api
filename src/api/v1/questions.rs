@@ -476,6 +476,7 @@ mod tests {
         assert_eq!(status, StatusCode::OK);
         assert!(v.get("passages").is_some());
         assert_eq!(v["passages"]["p1"]["title"], "Passage 1");
+        assert_eq!(v["questions"][0]["passage"]["title"], "Passage 1");
 
         let (status_one, v_one) = call(
             app,
@@ -497,7 +498,7 @@ mod tests {
         let (status, v) = call(
             app.clone(),
             "GET",
-            "/api/v1/questions/sample?exam=JAMB&subject=physics&count=5&seed=42&include_passage=true",
+            "/api/v1/questions/sample?exam=JAMB&subject=physics&count=5&seed=42&include_passage=true&year=2025",
             Some("reader.secret"),
             None,
         )
@@ -510,6 +511,19 @@ mod tests {
         assert_eq!(v["questions"][0]["id"], "q1");
         assert!(v.get("passages").is_some());
         assert_eq!(v["passages"]["p1"]["title"], "Passage 1");
+        assert_eq!(v["questions"][0]["passage"]["title"], "Passage 1");
+
+        // Filter by non-matching year
+        let (status_yr, v_yr) = call(
+            app.clone(),
+            "GET",
+            "/api/v1/questions/sample?exam=JAMB&subject=physics&year=2010",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
+        assert_eq!(status_yr, StatusCode::OK);
+        assert_eq!(v_yr["count"], 0);
 
         // Absent subject returns 404
         let (status_404, _) = call(

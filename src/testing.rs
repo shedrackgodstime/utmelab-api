@@ -1,7 +1,7 @@
 //! Test scaffolding, compiled only under `#[cfg(test)]`.
 //!
-//! One definition of the two things every fixture needs — an offline replica
-//! and a minted key — plus the schema and the HTTP call. A test then declares
+//! One definition of the two things every fixture needs: an offline replica
+//! and a minted key, plus the schema and the HTTP call. A test then declares
 //! only the rows it is about, never the plumbing.
 //!
 //! The replica is a unique temp file with sync on and the remote pointed at a

@@ -1,4 +1,4 @@
-//! `GET /v1/exams/{exam}/papers` — how an exam is shaped, and whether the
+//! `GET /v1/exams/{exam}/papers`: how an exam is shaped, and whether the
 //! bank can fill it. Read-only.
 //!
 //! The scheme is a constant restated from the bank (D19): subject counts,
@@ -11,7 +11,7 @@
 //! rows the bank holds (D69/D70): deterministic per seed, answers always
 //! withheld, 409 naming the gaps until the bank can fill the paper.
 //! `.../score` re-assembles with the same seed and marks only submitted
-//! ids — stateless, no paper table, no stored attempts.
+//! ids: stateless, no paper table, no stored attempts.
 
 use std::collections::HashMap;
 
@@ -59,6 +59,9 @@ pub struct ScoreRequest {
     pub country: Option<String>,
     #[serde(default)]
     pub answers: HashMap<String, String>,
+    /// Include answers and explanations with the score. Default: false.
+    #[serde(default)]
+    pub include_explanation: Option<bool>,
 }
 
 #[derive(serde::Serialize, utoipa::ToSchema)]
@@ -85,6 +88,10 @@ pub struct ScoredQuestion {
     pub id: String,
     pub submitted: Option<String>,
     pub correct: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub answer: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub explanation: Option<core::models::Explanation>,
 }
 
 #[derive(serde::Serialize, utoipa::ToSchema)]
@@ -175,7 +182,15 @@ pub async fn assemble_paper(
             .flat_map(|sec| sec.questions.iter().filter_map(|q| q.passage_id.clone()))
             .collect();
         if !pids.is_empty() {
-            out.passages = Some(store::catalog::get_passages(&s, &pids).await?);
+            let map = store::catalog::get_passages(&s, &pids).await?;
+            for sec in &mut out.sections {
+                for q in &mut sec.questions {
+                    if let Some(ref pid) = q.passage_id {
+                        q.passage = map.get(pid).cloned();
+                    }
+                }
+            }
+            out.passages = Some(map);
         }
     }
     Ok(Json(out))
@@ -209,6 +224,18 @@ pub async fn score_paper(
     let paper = build(&s, &exam, &subject, body.seed, body.country.as_deref()).await?;
     let total = paper.total();
     let (score, marked) = core::papers::mark(&paper, &body.answers);
+    let with_explanation = body.include_explanation.unwrap_or(false);
+
+    let q_map: HashMap<String, &core::models::Question> = if with_explanation {
+        paper
+            .sections
+            .iter()
+            .flat_map(|sec| sec.questions.iter().map(|q| (q.id.clone(), q)))
+            .collect()
+    } else {
+        HashMap::new()
+    };
+
     Ok(Json(ScoredPaper {
         exam: paper.exam,
         subject: paper.subject,
@@ -217,10 +244,23 @@ pub async fn score_paper(
         total,
         questions: marked
             .into_iter()
-            .map(|m| ScoredQuestion {
-                id: m.id,
-                submitted: m.submitted,
-                correct: m.correct,
+            .map(|m| {
+                let (answer, explanation) = if with_explanation {
+                    if let Some(q) = q_map.get(&m.id) {
+                        (Some(q.answer.clone()), q.explanation.clone())
+                    } else {
+                        (None, None)
+                    }
+                } else {
+                    (None, None)
+                };
+                ScoredQuestion {
+                    id: m.id,
+                    submitted: m.submitted,
+                    correct: m.correct,
+                    answer,
+                    explanation,
+                }
             })
             .collect(),
     }))
@@ -432,5 +472,35 @@ mod tests {
         assert!(q_with.get("explanation").is_some());
         assert!(v.get("passages").is_some());
         assert_eq!(v["passages"]["p1"]["title"], "Math Passage");
+        assert_eq!(q_with["passage"]["title"], "Math Passage");
+    }
+
+    #[tokio::test]
+    async fn score_paper_includes_explanation_on_request() {
+        let app = seeded_app().await;
+
+        let score_req = serde_json::json!({
+            "seed": 1,
+            "answers": {
+                "q1": "a"
+            },
+            "include_explanation": true
+        });
+
+        let (status, v) = call(
+            app,
+            "POST",
+            "/api/v1/papers/JAMB/math/score",
+            Some("reader.secret"),
+            Some(&score_req.to_string()),
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK);
+        assert_eq!(v["score"], 1);
+        let q = &v["questions"][0];
+        assert_eq!(q["id"], "q1");
+        assert_eq!(q["correct"], true);
+        assert_eq!(q["answer"], "a");
+        assert!(q.get("explanation").is_some());
     }
 }

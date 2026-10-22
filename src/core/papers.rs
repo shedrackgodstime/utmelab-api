@@ -153,7 +153,7 @@ pub fn is_complete(scheme: &Scheme) -> bool {
 
 /// One syllabus topic as stored, with its subtopics and the facts a reader
 /// needs: order, weight, objectives, and stated country scope. Scope is not
-/// applied here — an empty `countries` means every member country. The wire
+/// applied here: an empty `countries` means every member country. The wire
 /// form with live counts is `core::models::SyllabusTopic`.
 #[derive(Clone, Debug)]
 pub struct SyllabusTopic {
@@ -207,7 +207,7 @@ pub struct PaperSection {
     pub questions: Vec<Question>,
 }
 
-/// An assembled paper. Answers live nowhere in here — render answerless.
+/// An assembled paper. Answers live nowhere in here; render answerless.
 #[derive(Clone, Debug)]
 pub struct AssembledPaper {
     pub exam: String,
@@ -223,7 +223,7 @@ impl AssembledPaper {
     }
 }
 
-/// One marked row. Correctness is reported only for submitted ids —
+/// One marked row. Correctness is reported only for submitted ids:
 /// unsubmitted rows say unanswered, never the key (D69).
 #[derive(Clone, Debug)]
 pub struct MarkedQuestion {
@@ -254,7 +254,7 @@ pub enum Unready {
         gaps: Vec<ReadinessGap>,
     },
     /// Count-gated: the subject states no paper size, so none can be
-    /// assembled without inventing one (D50 — absence is the answer).
+    /// assembled without inventing one (D50: absence is the answer).
     NoPaperSize { subject: String },
     /// Count-gated: verified rows below the stated paper size.
     ShortOfCount { need: u32, have: usize },
@@ -289,7 +289,7 @@ pub struct TopicPool {
 }
 
 /// The attributed bank for one exam subject: rows grouped by topic slug,
-/// plus the verified rows no topic can claim (kept, not just counted —
+/// plus the verified rows no topic can claim (kept, not just counted;
 /// count-gated assembly draws from them too, D70).
 pub struct PoolSet {
     pub pools: HashMap<String, TopicPool>,
@@ -303,7 +303,7 @@ impl PoolSet {
 }
 
 /// Attribute the subject's rows to topics through their subtopic tags, once.
-/// Readiness and assembly both build from this — one bucketing, two uses.
+/// Readiness and assembly both build from this: one bucketing, two uses.
 /// Every syllabus topic gets a pool even when empty, so readiness can name a
 /// measured topic that currently holds nothing.
 pub fn pools(bank: &SubjectBank) -> PoolSet {
@@ -399,7 +399,7 @@ impl SubjectReadiness {
 
 /// Blueprint × coverage for one exam subject. Only measured-topic rows
 /// judge; everything else is reported. Untagged verified rows are counted
-/// as unattributed — assigning them would be fabrication (D68).
+/// as unattributed: assigning them would be fabrication (D68).
 pub fn per_topic(bank: &SubjectBank) -> SubjectReadiness {
     let poolset = pools(bank);
     let mut topics = Vec::new();
@@ -452,8 +452,8 @@ pub fn per_topic(bank: &SubjectBank) -> SubjectReadiness {
 ///
 /// Three conditions, all required:
 /// 1. measured per-topic expectations exist (a `topic`-level row carrying a
-///    value — a range-reported row with `expected: null` is not measured);
-/// 2. those rows cover the paper — their summed expectation reaches the
+///    value (a range-reported row with `expected: null` is not measured));
+/// 2. those rows cover the paper: their summed expectation reaches the
 ///    stated `paper_size`;
 /// 3. the bank holds at least two cohorts for the subject.
 ///
@@ -517,7 +517,7 @@ fn assemble_blueprint(bank: &SubjectBank, seed: u64) -> Result<AssembledPaper, U
     }
     let poolset = pools(bank);
     let mut rng = rand::rngs::StdRng::seed_from_u64(seed);
-    // Draw order is slug order — fixed independently of insertion order.
+    // Draw order is slug order, fixed independently of insertion order.
     let mut slugs: Vec<&String> = poolset.pools.keys().collect();
     slugs.sort();
     let needs: HashMap<&str, u32> = account
@@ -534,7 +534,7 @@ fn assemble_blueprint(bank: &SubjectBank, seed: u64) -> Result<AssembledPaper, U
         let mut rows: Vec<Question> = pool.rows.iter().filter(|q| q.verified).cloned().collect();
         rows.sort_by(|a, b| a.id.cmp(&b.id));
         // One stream across sections keeps the paper a pure function of the
-        // seed — never reseed per section.
+        // seed, never reseed per section.
         rows.shuffle(&mut rng);
         sections.push(PaperSection {
             topic: slug.clone(),
@@ -553,7 +553,7 @@ fn assemble_blueprint(bank: &SubjectBank, seed: u64) -> Result<AssembledPaper, U
 
 /// Count-gated draw (D70): a full-length shuffled paper from every verified
 /// row the subject holds, whatever its topic mix. Sections group the *drawn*
-/// rows by topic for presentation only — the draw itself is flat, so balance
+/// rows by topic for presentation only. The draw itself is flat, so balance
 /// is claimed nowhere and `mode` says so.
 fn assemble_count(bank: &SubjectBank, seed: u64) -> Result<AssembledPaper, Unready> {
     let need = bank
