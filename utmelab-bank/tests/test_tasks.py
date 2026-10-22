@@ -6,6 +6,7 @@ from collections.abc import AsyncIterator, Sequence
 from datetime import UTC, datetime
 from pathlib import Path
 
+from utmelab_bank.adapters.gate_service import GateService
 from utmelab_bank.adapters.media import (
     DescribeImageConsensus,
     MediaIngestor,
@@ -22,12 +23,17 @@ from utmelab_bank.domain.models import (
     CatalogSnapshot,
     CatalogSubtopic,
     CatalogTopic,
+    Content,
+    Inline,
+    MediaAsset,
     Producer,
+    RichText,
     StagingItem,
 )
 from utmelab_bank.runtime import Runtime
 from utmelab_bank.tasks import (
     TaskOptions,
+    _advance,
     explain,
     fetch,
     index,
@@ -39,7 +45,7 @@ from utmelab_bank.tasks import (
     tag,
 )
 
-from .media_fakes import FakeMediaFetcher, FakeMediaStore
+from .media_fakes import PNG_1X1, FakeMediaFetcher, FakeMediaStore
 
 FIXTURE_DIR = Path(__file__).resolve().parent / "fixtures" / "sources" / "fixture"
 NOW = datetime(2026, 10, 21, 9, 0, tzinfo=UTC)
@@ -330,6 +336,76 @@ async def test_fetch_resumes_without_touching_the_figure() -> None:
     # skips capture because media_assets already exist.
     assert len(fetcher.urls) == 1
     assert any("resuming at deduped" in note for note in second.notes)
+
+
+async def test_capture_clears_blobs_after_upload(staging_item: StagingItem) -> None:
+    item = staging_item.model_copy(
+        update={
+            "id": "blob-item",
+            "state": State.DEDUPED,
+            "content": Content(
+                stem=RichText(
+                    text="The diagram shows a cell.",
+                    inline=(
+                        Inline(
+                            kind="image",
+                            start=0,
+                            len=0,
+                            url="blob:figure",
+                            position="below",
+                        ),
+                    ),
+                ),
+                options=staging_item.content.options,
+                answer=staging_item.content.answer,
+                marks=staging_item.content.marks,
+            ),
+            "media_refs": (),
+            "media_assets": (),
+            "media_blobs": {"figure": PNG_1X1},
+        }
+    )
+    ingestor = MediaIngestor(FakeMediaFetcher(), PillowMediaValidator(), FakeMediaStore())
+
+    captured = await ingestor.capture_refs(item)
+
+    assert captured.media_blobs == {}
+    assert len(captured.media_assets) == 1
+    assert captured.content.stem.inline[0].url == captured.media_assets[0].storage_url
+
+
+class ExplodingIngestor:
+    """Capture must not run twice for a row that already owns its figures."""
+
+    async def capture_refs(self, item: StagingItem) -> StagingItem:
+        raise AssertionError(f"capture ran again for {item.id}")
+
+
+async def test_advance_drops_stale_blobs_without_recapturing(
+    staging_item: StagingItem,
+    media: MediaAsset,
+) -> None:
+    runtime, staging, _ = make_runtime()
+    item = staging_item.model_copy(
+        update={
+            "id": "stale-blob",
+            "state": State.DEDUPED,
+            "media_refs": (),
+            "media_assets": (media,),
+            "media_blobs": {"figure": PNG_1X1},
+        }
+    )
+    await staging.save(item)
+
+    advanced = await _advance(
+        runtime,
+        item,
+        GateService(catalog=None, known_passage_ids=frozenset()),
+        ExplodingIngestor(),  # type: ignore[arg-type]
+    )
+
+    assert advanced.media_blobs == {}
+    assert advanced.media_assets == (media,)
 
 
 async def test_fetch_dry_run_writes_nothing() -> None:

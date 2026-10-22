@@ -27,7 +27,7 @@ on:
           - index
           - fetch
           - scrape
-          - capture
+          - scrape-neco
           - tag
           - media
           - explain
@@ -115,11 +115,19 @@ jobs:
           pip install -e ".[dev]"
 
       - name: Install OpenCode CLI
-        if: ${{ inputs.provider == 'opencode' && contains(fromJSON('["scrape","fetch","tag","media","explain","review","process"]'), inputs.command) }}
+        if: ${{ inputs.provider == 'opencode' && contains(fromJSON('["tag","media","explain","review","process"]'), inputs.command) }}
         run: |
           npm install -g opencode-ai@1.19.0 || (curl -fsSL https://opencode.ai/install.sh | bash && echo "$HOME/.opencode/bin" >> $GITHUB_PATH)
 
+      - name: Scrape every NECO scope
+        if: ${{ inputs.command == 'scrape-neco' }}
+        working-directory: utmelab-bank
+        run: |
+          set -euo pipefail
+          python scripts/scrape_neco.py
+
       - name: Run the task
+        if: ${{ inputs.command != 'scrape-neco' }}
         working-directory: utmelab-bank
         env:
           COMMAND: ${{ inputs.command }}

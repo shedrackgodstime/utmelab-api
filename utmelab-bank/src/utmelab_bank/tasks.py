@@ -199,9 +199,14 @@ async def _advance(
         await runtime.dedupe.remember(item, origin=BANK)
         # Capture figures now, while the source is alive. Only rows that
         # passed gate + dedupe reach here, so no wasted uploads.
-        # Skip if already captured (has media_assets and no media_refs/media_blobs).
-        if item.media_refs or item.media_blobs or not item.media_assets:
+        # Skip if already captured. A row with assets and no refs is done;
+        # stale blobs from a capture that predates the cleanup are dropped
+        # rather than uploaded a second time.
+        if item.media_refs or not item.media_assets:
             item = await ingestor.capture_refs(item)
+            await runtime.staging.save(item)
+        elif item.media_blobs:
+            item = item.model_copy(update={"media_blobs": {}})
             await runtime.staging.save(item)
         # Whether capture ran or not, re-check dedupe because the production
         # index may have new entries, or the inline swap changed the hash.
@@ -248,9 +253,13 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
     ingestor = require(runtime.ingestor, "media store")
     try:
         async for raw in source.fetch(scope):
-            if result.seen >= limit:
-                break
-            result.seen += 1
+            # A source error row is a rejection, not a real item. Counting it
+            # against the limit lets a mismatched row on an early page stop
+            # the run before the requested scope's rows are reached.
+            if "error" not in raw.payload:
+                if result.seen >= limit:
+                    break
+                result.seen += 1
             item = None
             try:
                 issues = source.validate(raw)

@@ -229,10 +229,15 @@ class MediaIngestor:
         # step fetch the source again, which is the one thing capture exists to
         # avoid.
         updated = item.model_copy(
-            update={"media_assets": tuple(assets), "media_refs": ()},
+            update={
+                "media_assets": tuple(assets),
+                "media_refs": (),
+                # The bytes were only needed for this upload. Keeping them
+                # makes a resumed row look uncaptured and uploads them again.
+                "media_blobs": {},
+            },
         )
         updated = _swap_owned_urls(updated, owned)
-        return updated.stamp_hashes()
         return updated.stamp_hashes()
 
     async def ingest_refs(self, item: StagingItem) -> StagingItem:
