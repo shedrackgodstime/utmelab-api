@@ -1,0 +1,13 @@
+/* Landing: full Tailwind utilities + the shared brand theme. */
+@import "tailwindcss";
+
+/* Tell Tailwind to scan the shared UI package — otherwise classes used only
+   in packages/ui components (ThemeToggle, ThemeScript…) get purged, collapsing
+   them to invisible. (Tailwind v4 only auto-scans this app's own source.) */
+@source "../../../../packages/ui/src";
+
+/* Our theme switches via the data-theme attribute, not prefers-color-scheme —
+   so dark:* variants must target it (matches Starlight + shared theme.ts). */
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+@import "@utmelab/ui/theme.css";

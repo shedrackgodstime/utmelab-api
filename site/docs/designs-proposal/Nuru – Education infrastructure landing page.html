@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nuru – Education infrastructure for Africa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    fontFamily: { sans: ['"Bricolage Grotesque"','system-ui','sans-serif'], mono: ['"JetBrains Mono"','ui-monospace','monospace'] },
+    colors: { bg:'var(--bg)', surface:'var(--surface)', ink:'var(--ink)', muted:'var(--muted)', line:'var(--line)', brand:'var(--brand)', brandink:'var(--brandink)', mark:'var(--mark)', marktext:'var(--marktext)' }
+  } }
+}
+</script>
+<style>
+:root{--bg:#F8F9FF;--surface:#FFFFFF;--ink:#14205C;--muted:#55608F;--line:#D7DCF2;--brand:#0E7C4A;--brandink:#FFFFFF;--mark:#FFD84D;--marktext:#14205C;--rule:#C9D3F5;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0C1230;--surface:#141C45;--ink:#EEF0FF;--muted:#A3ACD6;--line:#28326A;--brand:#3DD68C;--brandink:#06210F;--mark:#FFD84D;--marktext:#14205C;--rule:#1B2556}}
+:root[data-theme="dark"]{--bg:#0C1230;--surface:#141C45;--ink:#EEF0FF;--muted:#A3ACD6;--line:#28326A;--brand:#3DD68C;--brandink:#06210F;--mark:#FFD84D;--marktext:#14205C;--rule:#1B2556}
+html{scroll-padding-top:5rem}
+body{background:var(--bg);color:var(--ink);font-family:"Bricolage Grotesque",system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.ruled{background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 35px,var(--rule) 35px,var(--rule) 36px)}
+.margin-line{background-image:linear-gradient(to right,transparent 47px,#E5484D55 47px,#E5484D55 49px,transparent 49px)}
+.hl{background:linear-gradient(transparent 55%,var(--mark) 55%,var(--mark) 92%,transparent 92%);color:inherit}
+.opt{transition:background .15s,border-color .15s}
+.opt:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.opt.right{border-color:var(--brand);background:color-mix(in srgb,var(--brand) 14%,transparent)}
+.opt.wrong{border-color:#E5484D;background:color-mix(in srgb,#E5484D 12%,transparent)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body class="antialiased">
+
+<header class="sticky z-20 border-b border-line bg-bg/95 backdrop-blur" style="top:env(safe-area-inset-top,0px)">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
+    <a href="#" class="flex items-center gap-2 text-xl font-extrabold tracking-tight">
+      <span class="grid h-8 w-8 place-items-center rounded-full bg-mark text-marktext">
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 3v3M4.5 7.5l2 2M19.5 7.5l-2 2M7 16a5 5 0 1 1 10 0v2H7z"/></svg>
+      </span>Nuru
+    </a>
+    <nav class="hidden gap-7 text-sm font-semibold text-muted md:flex">
+      <a href="#products" class="hover:text-ink">Products</a>
+      <a href="#how" class="hover:text-ink">How it works</a>
+      <a href="#offline" class="hover:text-ink">Offline</a>
+      <a href="#pricing" class="hover:text-ink">Pricing</a>
+      <a href="#docs" class="hover:text-ink">Docs</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a href="#" class="hidden rounded-lg px-3 py-2 text-sm font-semibold sm:block">Sign in</a>
+      <a href="#get-key" class="rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-brandink">Get API key</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="ruled margin-line border-b border-line">
+  <div class="mx-auto grid max-w-6xl gap-12 px-5 py-16 md:py-24 lg:grid-cols-[1.05fr_1fr] lg:items-center">
+    <div class="lg:pl-10">
+      <h1 class="text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-6xl">
+        Every education app in Africa needs the same <span class="hl">building blocks</span>. Stop rebuilding them.
+      </h1>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+        Nuru gives developers one API for exam questions, timed tests, scoring and learner analytics, and keeps working when the school's internet doesn't.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#get-key" class="rounded-xl bg-brand px-6 py-3 font-semibold text-brandink">Get a free API key</a>
+        <a href="#docs" class="rounded-xl border-2 border-ink px-6 py-3 font-semibold">Read the docs</a>
+      </div>
+      <p class="mt-4 text-sm text-muted">Free sandbox. No card needed. First request in under five minutes.</p>
+    </div>
+
+    <!-- Live demo: question + API response -->
+    <div class="rounded-2xl border border-line bg-surface p-5 shadow-[6px_6px_0_var(--ink)] sm:p-6" aria-label="Interactive demo">
+      <div class="flex items-center justify-between text-sm text-muted">
+        <span class="font-semibold text-ink">Biology · Question 12 of 40</span>
+        <span class="font-mono">38:14</span>
+      </div>
+      <p class="mt-4 text-lg font-semibold leading-snug">Which organelle is the site of aerobic respiration in a cell?</p>
+      <div class="mt-4 grid gap-2" id="opts" role="group" aria-label="Answer options">
+        <button class="opt flex items-center gap-3 rounded-xl border-2 border-line px-4 py-3 text-left" data-k="A"><b class="grid h-7 w-7 place-items-center rounded-full border-2 border-current text-sm">A</b>Ribosome</button>
+        <button class="opt flex items-center gap-3 rounded-xl border-2 border-line px-4 py-3 text-left" data-k="B"><b class="grid h-7 w-7 place-items-center rounded-full border-2 border-current text-sm">B</b>Mitochondrion</button>
+        <button class="opt flex items-center gap-3 rounded-xl border-2 border-line px-4 py-3 text-left" data-k="C"><b class="grid h-7 w-7 place-items-center rounded-full border-2 border-current text-sm">C</b>Golgi body</button>
+        <button class="opt flex items-center gap-3 rounded-xl border-2 border-line px-4 py-3 text-left" data-k="D"><b class="grid h-7 w-7 place-items-center rounded-full border-2 border-current text-sm">D</b>Vacuole</button>
+      </div>
+      <div class="mt-4 overflow-x-auto rounded-xl bg-ink p-4 font-mono text-[13px] leading-relaxed" style="color:var(--bg)">
+<pre id="resp" class="m-0">POST /v1/sessions/ses_8f2/answers
+{ "question": "q_bio_12", "choice": "?" }
+
+// Pick an answer above and see the response.</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="border-b border-line bg-surface">
+  <div class="mx-auto grid max-w-6xl gap-6 px-5 py-8 sm:grid-cols-3">
+    <p><b class="block text-3xl font-extrabold">JAMB · WAEC · NECO</b><span class="text-muted">Exam formats supported first</span></p>
+    <p><b class="block text-3xl font-extrabold">Works offline</b><span class="text-muted">Sync when the connection returns</span></p>
+    <p><b class="block text-3xl font-extrabold">Pay per use</b><span class="text-muted">Naira billing, no dollar card</span></p>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="mx-auto max-w-6xl px-5 py-20">
+  <h2 class="max-w-2xl text-3xl font-extrabold tracking-tight sm:text-4xl">Four APIs. Use one, or all of them together.</h2>
+  <div class="mt-10 grid gap-5 md:grid-cols-6">
+    <article class="rounded-2xl border border-line bg-surface p-6 md:col-span-4">
+      <h3 class="text-xl font-extrabold">Exam Data API</h3>
+      <p class="mt-2 max-w-lg text-muted">Past questions, answers and explanations, tagged by exam, subject, year and topic. Every question carries its licence, so you know what you can ship.</p>
+      <pre class="mt-5 overflow-x-auto rounded-lg bg-bg p-4 font-mono text-[13px]">GET /v1/questions?exam=jamb&amp;subject=biology&amp;topic=cell-biology&amp;limit=20</pre>
+    </article>
+    <article class="rounded-2xl border border-line bg-surface p-6 md:col-span-2">
+      <h3 class="text-xl font-extrabold">Assessment Engine</h3>
+      <p class="mt-2 text-muted">Create timed CBT sessions, shuffle questions, collect answers and return scores. No more rebuilding the exam hall.</p>
+    </article>
+    <article class="rounded-2xl border border-line bg-surface p-6 md:col-span-2">
+      <h3 class="text-xl font-extrabold">Learning Analytics</h3>
+      <p class="mt-2 text-muted">Send attempts, get back weak topics, progress over time and the mistakes students repeat.</p>
+    </article>
+    <article class="rounded-2xl border border-line bg-surface p-6 md:col-span-4">
+      <h3 class="text-xl font-extrabold">Curriculum API</h3>
+      <p class="mt-2 max-w-lg text-muted">Subjects, topics and learning objectives in one structure, so your content, questions and analytics all point at the same topic IDs.</p>
+      <span class="mt-4 inline-block rounded-full bg-mark px-3 py-1 text-sm font-semibold text-marktext">In development</span>
+    </article>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how" class="border-y border-line bg-surface">
+  <div class="mx-auto max-w-6xl px-5 py-20">
+    <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">From signup to first scored test in three steps</h2>
+    <ol class="mt-10 grid gap-8 md:grid-cols-3">
+      <li><span class="grid h-10 w-10 place-items-center rounded-full bg-brand font-extrabold text-brandink">1</span><h3 class="mt-4 text-xl font-bold">Get a key</h3><p class="mt-2 text-muted">Create an account and copy your sandbox key. Sandbox data is free and rate limited.</p></li>
+      <li><span class="grid h-10 w-10 place-items-center rounded-full bg-brand font-extrabold text-brandink">2</span><h3 class="mt-4 text-xl font-bold">Start a session</h3><p class="mt-2 text-muted">Choose an exam, subjects and a time limit. We return a session with the questions.</p></li>
+      <li><span class="grid h-10 w-10 place-items-center rounded-full bg-brand font-extrabold text-brandink">3</span><h3 class="mt-4 text-xl font-bold">Submit and score</h3><p class="mt-2 text-muted">Send the learner's answers. Get the score, corrections and topic breakdown back.</p></li>
+    </ol>
+    <pre id="docs" class="mt-10 overflow-x-auto rounded-2xl bg-ink p-5 font-mono text-[13px] leading-relaxed" style="color:var(--bg)">curl https://api.nuru.example/v1/sessions \
+  -H "Authorization: Bearer $NURU_KEY" \
+  -d '{ "exam": "jamb", "subjects": ["english","biology"], "minutes": 60 }'</pre>
+  </div>
+</section>
+
+<!-- OFFLINE -->
+<section id="offline" class="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-2 md:items-center">
+  <div>
+    <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">The network drops. The exam keeps going.</h2>
+    <p class="mt-5 max-w-lg text-lg leading-relaxed text-muted">A school server or tablet keeps a local copy of the questions and records every answer. When the internet is back, everything syncs to your app. Your learners never lose a test to a bad connection.</p>
+  </div>
+  <svg viewBox="0 0 420 220" class="w-full" role="img" aria-label="Diagram: school devices keep working offline and sync to the cloud when online">
+    <rect x="10" y="80" width="130" height="60" rx="12" fill="var(--surface)" stroke="var(--ink)" stroke-width="2.5"/>
+    <text x="75" y="115" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">School tablets</text>
+    <rect x="165" y="80" width="110" height="60" rx="12" fill="var(--mark)" stroke="var(--ink)" stroke-width="2.5"/>
+    <text x="220" y="108" text-anchor="middle" font-size="15" font-weight="700" fill="var(--marktext)">Local</text>
+    <text x="220" y="127" text-anchor="middle" font-size="15" font-weight="700" fill="var(--marktext)">Nuru node</text>
+    <rect x="300" y="80" width="110" height="60" rx="12" fill="var(--brand)" stroke="var(--ink)" stroke-width="2.5"/>
+    <text x="355" y="115" text-anchor="middle" font-size="15" font-weight="700" fill="var(--brandink)">Cloud API</text>
+    <path d="M140 110h25" stroke="var(--ink)" stroke-width="2.5"/>
+    <path d="M275 110h25" stroke="var(--ink)" stroke-width="2.5" stroke-dasharray="5 5"/>
+    <text x="220" y="175" text-anchor="middle" font-size="13" fill="var(--muted)">Dashed link = syncs when online</text>
+  </svg>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="border-y border-line bg-surface">
+  <div class="mx-auto max-w-6xl px-5 py-20">
+    <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Start free. Pay as your users grow.</h2>
+    <div class="mt-10 grid gap-5 md:grid-cols-3">
+      <div class="rounded-2xl border border-line bg-bg p-6"><h3 class="text-xl font-bold">Sandbox</h3><p class="mt-1 text-3xl font-extrabold">Free</p><p class="mt-3 text-muted">Sample questions and low rate limits. For building and testing.</p></div>
+      <div class="rounded-2xl border-2 border-brand bg-bg p-6"><h3 class="text-xl font-bold">Growth</h3><p class="mt-1 text-3xl font-extrabold">Pay per request</p><p class="mt-3 text-muted">Full question bank, assessment engine and analytics. Billed monthly in naira.</p></div>
+      <div class="rounded-2xl border border-line bg-bg p-6"><h3 class="text-xl font-bold">Schools &amp; publishers</h3><p class="mt-1 text-3xl font-extrabold">Talk to us</p><p class="mt-3 text-muted">Offline nodes, bulk data licences and a support contact.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="get-key" class="mx-auto max-w-6xl px-5 py-20">
+  <div class="rounded-3xl bg-ink p-8 sm:p-14" style="color:var(--bg)">
+    <h2 class="max-w-2xl text-3xl font-extrabold tracking-tight sm:text-5xl">Ship your education product faster.</h2>
+    <p class="mt-4 max-w-xl text-lg opacity-80">Join the early access list and get a sandbox key as soon as it opens.</p>
+    <div class="mt-8 flex max-w-lg flex-col gap-3 sm:flex-row" id="signup">
+      <label class="sr-only" for="email">Email address</label>
+      <input id="email" type="email" placeholder="you@company.com" class="w-full rounded-xl border-0 px-4 py-3 text-[#14205C] placeholder:text-[#55608F]">
+      <button id="join" class="whitespace-nowrap rounded-xl bg-mark px-6 py-3 font-semibold text-marktext">Join early access</button>
+    </div>
+    <p id="msg" class="mt-3 min-h-[1.5rem] text-sm" role="status"></p>
+  </div>
+</section>
+
+<footer class="border-t border-line">
+  <div class="mx-auto flex max-w-6xl flex-col justify-between gap-3 px-5 py-8 text-sm text-muted sm:flex-row">
+    <p>© 2026 Nuru. Built in Nigeria for Africa.</p>
+    <p class="flex gap-5"><a href="#">Docs</a><a href="#">Status</a><a href="#">Privacy</a><a href="#">Contact</a></p>
+  </div>
+</footer>
+
+<script>
+const resp = document.getElementById('resp');
+document.querySelectorAll('#opts .opt').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#opts .opt').forEach(x => x.classList.remove('right','wrong'));
+  const k = b.dataset.k, ok = k === 'B';
+  b.classList.add(ok ? 'right' : 'wrong');
+  if (!ok) document.querySelector('#opts [data-k="B"]').classList.add('right');
+  resp.textContent =
+`POST /v1/sessions/ses_8f2/answers
+{ "question": "q_bio_12", "choice": "${k}" }
+
+200 OK
+{ "correct": ${ok},
+  "answer": "B",
+  "topic": "cell-biology",
+  "explanation": "Aerobic respiration occurs in the mitochondrion." }`;
+}));
+document.getElementById('join').addEventListener('click', () => {
+  const e = document.getElementById('email'), m = document.getElementById('msg');
+  m.textContent = /\S+@\S+\.\S+/.test(e.value) ? 'Thanks. We will email you when your sandbox key is ready.' : 'Enter a valid email address.';
+});
+</script>
+</body>
+</html>

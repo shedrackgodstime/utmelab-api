@@ -1,0 +1,51 @@
+# One template for every service on this host. There is no per-service unit
+# file to keep in sync: `systemctl enable --now utmelab@<service>` is the whole
+# unit story.
+#
+# Everything service-specific is derived from /etc/deploy-service/<service>.env:
+#   * the environment       -> EnvironmentFile. systemd reads it as PID 1, so
+#                              the manifest stays 0600 root:root and the
+#                              service's own user never reads its secrets.
+#   * the work tree         -> /opt/apps/<service>
+#   * the runtime identity  -> User=%i, created by `system provision`. A
+#                              manifest that names another user, or needs
+#                              writable paths, gets a generated drop-in at
+#                              /etc/systemd/system/utmelab@<service>.service.d/
+
+[Unit]
+Description=utmelab service %i
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=%i
+Group=%i
+EnvironmentFile=/etc/deploy-service/%i.env
+WorkingDirectory=/opt/apps/%i/current
+ExecStart=/opt/apps/%i/current/%i
+Restart=on-failure
+RestartSec=3
+
+# The same hardening for every service. A service that genuinely needs an
+# exception gets a drop-in beside it rather than a fork of this file.
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+CapabilityBoundingSet=
+AmbientCapabilities=
+ProtectProc=invisible
+ProcSubset=pid
+
+[Install]
+WantedBy=multi-user.target

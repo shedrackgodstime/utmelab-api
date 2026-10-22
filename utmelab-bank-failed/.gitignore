@@ -1,0 +1,26 @@
+# Never commit anything this package generates. The root .gitignore already
+# covers var/, and these are here so the package is safe to copy on its own.
+
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Run output and the media clone live inside the package (utmelab-bank/var/),
+# never at the repo root: the API owns db/, this package owns var/. Both are
+# disposable: a run can be repeated and a figure can be refetched.
+var/
+*.db
+*.db-shm
+*.db-wal
+*.db-info
+
+.env
+.env.*
+!.env.example

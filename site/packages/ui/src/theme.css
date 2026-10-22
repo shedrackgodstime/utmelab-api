@@ -1,0 +1,124 @@
+/* ============================================================
+   @utmelab/ui — theme.css  (THE one shared brand + theme lever)
+   Tailwind v4, CSS-first. Warm-academic × engineering discipline.
+
+   Runtime theming: semantic vars flip on [data-theme="dark"].
+   `@theme inline` exposes them so utilities (bg-canvas, text-ink,
+   bg-accent, border-hairline…) respond to the toggle across ALL
+   surfaces. Same key + attribute as Starlight → one toggle, whole
+   domain (NOTES §3, §4).
+
+   Every surface imports this AFTER its Tailwind base import.
+   ============================================================ */
+
+/* ---- LIGHT (default): warm paper canvas, deep indigo accent ---- */
+:root {
+  --canvas: #faf9f7;        /* warm off-white page */
+  --surface: #ffffff;       /* cards, nav, panels */
+  --surface-2: #f4f3f0;     /* subtle raised / hover */
+  --ink: #1c1917;           /* headings (warm near-black) */
+  --body: #57534e;          /* body text */
+  --muted: #8a847e;         /* meta text */
+  --hairline: #e7e5e4;      /* 1px borders */
+
+  --accent: #4338ca;        /* primary — deep indigo */
+  --accent-hover: #3730a3;
+  --accent-ink: #ffffff;    /* text on accent */
+  --accent-soft: #eef2ff;   /* accent tint bg (active nav, badges) */
+  --ring: #4338ca;
+
+  --success: #15803d;
+  --warning: #a16207;
+  --danger: #dc2626;
+
+  --radius: 8px;
+  color-scheme: light;
+}
+
+/* ---- DARK: warm stone-dark (not cold zinc), lighter indigo accent ---- */
+[data-theme="dark"] {
+  --canvas: #0c0a09;        /* stone-950 */
+  --surface: #1c1917;       /* stone-900 */
+  --surface-2: #292524;     /* stone-800 */
+  --ink: #fafaf9;           /* stone-50 */
+  --body: #d6d3d1;          /* stone-300 */
+  --muted: #a8a29e;         /* stone-400 */
+  --hairline: #33302c;      /* warm hairline */
+
+  --accent: #818cf8;        /* indigo-400 — brighter for dark bg */
+  --accent-hover: #a5b4fc;
+  --accent-ink: #1e1b4b;    /* dark text on light-indigo button */
+  --accent-soft: #1e1b4b;   /* indigo-950 tint */
+  --ring: #818cf8;
+
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --danger: #f87171;
+
+  color-scheme: dark;
+}
+
+/* ---- Fixed brand ramp (decoration/gradients; not theme-flipped) ---- */
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-200: #c7d2fe;
+  --color-brand-300: #a5b4fc;
+  --color-brand-400: #818cf8;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+  --color-brand-800: #3730a3;
+  --color-brand-900: #312e81;
+  --color-brand-950: #1e1b4b;
+
+  /* Negative-tracked display scale — the "professional" tell. */
+  --text-display-xl: 3.5rem;
+  --text-display-xl--line-height: 1.08;
+  --text-display-xl--letter-spacing: -0.025em;
+  --text-display-lg: 2.875rem;
+  --text-display-lg--line-height: 1.05;
+  --text-display-lg--letter-spacing: -0.03em;
+}
+
+/* ---- Expose semantic tokens as themeable Tailwind utilities ---- */
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-hairline: var(--hairline);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+
+  --radius-brand: var(--radius);
+  --radius-brand-sm: calc(var(--radius) - 2px);
+  --radius-brand-pill: 999px;
+}
+
+@layer base {
+  html { font-family: var(--font-sans); }
+  body {
+    background-color: var(--canvas);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: var(--radius-brand-sm);
+  }
+}

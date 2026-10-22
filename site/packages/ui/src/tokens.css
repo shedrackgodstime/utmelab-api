@@ -1,0 +1,125 @@
+/* ============================================================
+   @utmelab/ui — tokens.css
+   THE brand contract. The ONLY file every surface shares.
+   Change a value here and landing + docs + dashboard re-theme
+   at once — no touching any component or page.
+   See NOTES.md §4. (v1 — light-first; dark-ready via [data-theme].)
+   ============================================================ */
+
+:root {
+  /* type — single geometric sans, no pairing */
+  --brand-font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --brand-mono: ui-monospace, Menlo, Consolas, monospace;
+
+  /* type scale — tight NEGATIVE tracking = the "professional" tell */
+  --text-display-xl: 3.5rem;   /* 56px */
+  --text-display-lg: 2.875rem; /* 46px */
+  --text-heading: 1.625rem;    /* 26px */
+  --text-body: 1rem;           /* 16px */
+  --text-small: 0.875rem;      /* 14px */
+  --track-xl: -0.02em;
+  --track-lg: -0.03em;
+  --track-heading: -0.02em;
+
+  /* spacing (Infisical-caliber scale) */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-s: 10px;
+  --space-sm: 12px;
+  --space-md: 14px;
+  --space-lg: 18px;
+  --space-xl: 24px;
+
+  /* PALETTE — unique to UTME Lab, NOT Infisical */
+  --brand-bg: #fafaf9;        /* warm off-white canvas */
+  --brand-surface: #ffffff;
+  --brand-ink: #111113;       /* near-black ink */
+  --brand-body: #52525b;      /* body text */
+  --brand-muted: #737373;
+  --brand-hairline: #e4e4e7;  /* 1px borders */
+  --brand-accent: #4338ca;    /* deep indigo primary */
+  --brand-accent-hover: #3730a3;
+  --brand-accent-ink: #eef2ff;
+
+  /* semantic */
+  --brand-success: #15803d;
+  --brand-warning: #a16207;
+  --brand-danger: #dc2626;
+
+  /* radius — soft-modern (Infisical is zero-radius; we are NOT) */
+  --brand-radius: 8px;
+  --brand-radius-sm: 6px;
+  --brand-radius-pill: 999px;
+
+  /* shell geometry — each surface sets its own via its layout */
+  --shell-maxw: 72rem;
+}
+
+/* Base primitives live in components/*.css and use ONLY the vars above. */
+
+/* ============================================================
+   Primitives — the shadcn *discipline* (one radius, one focus
+   ring, one disabled state), delivered as plain CSS at 0 JS cost.
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-family: var(--brand-font);
+  font-size: var(--text-small);
+  font-weight: 500;
+  line-height: 1;
+  padding: 10px var(--space-lg);
+  border-radius: var(--brand-radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.btn:focus-visible { outline: 2px solid var(--brand-accent); outline-offset: 2px; }
+.btn-primary { background: var(--brand-accent); color: #fff; }
+.btn-primary:hover { background: var(--brand-accent-hover); }
+.btn-secondary {
+  background: var(--brand-surface);
+  color: var(--brand-ink);
+  border-color: var(--brand-hairline);
+}
+.btn-secondary:hover { border-color: var(--brand-muted); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.card {
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-hairline);
+  border-radius: var(--brand-radius);
+  padding: var(--space-xl);
+}
+.card > * + * { margin-top: var(--space-sm); }
+
+.card h3, .card h2 { margin: 0; }
+
+.input {
+  width: 100%;
+  font-family: var(--brand-font);
+  font-size: var(--text-body);
+  color: var(--brand-ink);
+  background: var(--brand-surface);
+  border: 1px solid var(--brand-hairline);
+  border-radius: var(--brand-radius-sm);
+  padding: 10px var(--space-sm);
+}
+.input::placeholder { color: var(--brand-muted); }
+.input:focus { outline: none; border-color: var(--brand-accent); box-shadow: 0 0 0 3px var(--brand-accent-ink); }
+
+/* Dark-ready: later, flip one attribute — zero refactor (NOTES §4b). */
+[data-theme="dark"] {
+  --brand-bg: #0b0b0d;
+  --brand-surface: #131316;
+  --brand-ink: #f4f4f5;
+  --brand-body: #a1a1aa;
+  --brand-muted: #71717a;
+  --brand-hairline: #27272a;
+  --brand-accent: #6366f1;
+  --brand-accent-hover: #818cf8;
+  --brand-accent-ink: #1e1b4b;
+}

@@ -1,0 +1,154 @@
+# The bank pipeline, run by hand.
+#
+# The bank is not deployed from here. This workflow is the primary runner for
+# ingest and processing: it runs one named task or one preset, against the
+# isolated bank database, and reads production with the read-only token only.
+#
+# Two rules are deliberate:
+#   - No schedule. A scrape can be long, and two scrapes must not overlap.
+#     The concurrency group serializes runs instead of doubling the request
+#     rate on somebody else's server.
+#   - No production write token. The bank reads the catalog and the known
+#     content; it never writes production. A full token must not be available
+#     to this job, so it cannot become a fallback.
+
+name: bank
+
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "Task or preset to run"
+        type: choice
+        required: true
+        default: status
+        options:
+          - status
+          - index
+          - fetch
+          - scrape
+          - capture
+          - tag
+          - media
+          - explain
+          - review
+          - ready
+          - process
+      source:
+        description: "Source adapter for fetch/scrape"
+        type: string
+        required: false
+        default: fixture
+      exam:
+        description: "Exam, e.g. JAMB"
+        type: string
+        required: false
+        default: JAMB
+      subject:
+        description: "Subject slug, e.g. biology"
+        type: string
+        required: false
+        default: biology
+      year:
+        description: "Exam year"
+        type: string
+        required: false
+        default: "2025"
+      section:
+        description: "Optional paper section"
+        type: string
+        required: false
+        default: ""
+      limit:
+        description: "At most this many rows"
+        type: string
+        required: false
+        default: "100"
+      provider:
+        description: "Model provider for the step"
+        type: choice
+        required: true
+        default: opencode
+        options:
+          - opencode
+          - mock
+      dry_run:
+        description: "List the work without writing"
+        type: boolean
+        required: false
+        default: false
+
+concurrency:
+  group: bank-pipeline
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    name: Bank task
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      # The names on the left are the bank's config. The names on the right
+      # are the secrets this repository already keeps, so the workflow does
+      # not need a second copy of the same token under a new label.
+      TURSO_PROD_DATABASE_URL: ${{ secrets.TURSO_DB_URL }}
+      TURSO_PROD_AUTH_TOKEN_READONLY: ${{ secrets.TURSO_DB_TOKEN_READONLY }}
+      TURSO_BANK_DATABASE_URL: ${{ secrets.TURSO_UTMELAB_BANK_DB_URL }}
+      TURSO_BANK_AUTH_TOKEN: ${{ secrets.TURSO_UTMELAB_BANK_DB_TOKEN }}
+      GITLAB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+      GITLAB_MEDIA_REPO: shedrackgodstime/utmelab-bank
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install the bank
+        working-directory: utmelab-bank
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Install OpenCode CLI
+        if: ${{ inputs.provider == 'opencode' && contains(fromJSON('["scrape","fetch","tag","media","explain","review","process"]'), inputs.command) }}
+        run: |
+          npm install -g opencode-ai@1.19.0 || (curl -fsSL https://opencode.ai/install.sh | bash && echo "$HOME/.opencode/bin" >> $GITHUB_PATH)
+
+      - name: Run the task
+        working-directory: utmelab-bank
+        env:
+          COMMAND: ${{ inputs.command }}
+          SOURCE: ${{ inputs.source }}
+          EXAM: ${{ inputs.exam }}
+          SUBJECT: ${{ inputs.subject }}
+          YEAR: ${{ inputs.year }}
+          SECTION: ${{ inputs.section }}
+          LIMIT: ${{ inputs.limit }}
+          PROVIDER: ${{ inputs.provider }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          set -euo pipefail
+          args=(
+            --exam "$EXAM"
+            --subject "$SUBJECT"
+            --year "$YEAR"
+            --limit "$LIMIT"
+          )
+          if [ "$COMMAND" != "fetch" ] && [ "$COMMAND" != "scrape" ]; then
+            args+=(--provider "$PROVIDER")
+          fi
+          if [ -n "$SECTION" ]; then
+            args+=(--section "$SECTION")
+          fi
+          if [ "$DRY_RUN" = "true" ]; then
+            args+=(--dry-run)
+          fi
+          if [ "$COMMAND" = "fetch" ] || [ "$COMMAND" = "scrape" ]; then
+            args+=(--source "$SOURCE")
+          fi
+          utmelab-bank "$COMMAND" "${args[@]}"

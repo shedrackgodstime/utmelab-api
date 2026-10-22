@@ -1,0 +1,209 @@
+# Deploy utmelab-api — manual trigger, no SSH per release.
+#
+# Nothing deploys on a plain push. `main` is for working; the API ships only when
+# you ask for it:
+#   - Actions -> deploy-api -> "Run workflow"  -> prerelease (v0.0.0-pre.<sha>)
+#   - git push origin v0.1.0                   -> the first real release
+# Same machinery either way; only the version differs.
+#
+# A failed release has NO fallback. It is never made to stick, nothing is
+# pruned on failure, and you wait for the next deploy. Old releases are deleted
+# on success so the 25 GB VPS stays clean.
+#
+# One-time VPS prep is in docs/deployment/README.md. GitHub secrets needed —
+# set on THIS repo, they are not inherited from UTME-Lab:
+#   VPS_HOST, VPS_PORT, VPS_SSH_KEY, VPS_KNOWN_HOSTS
+#   VPS_USER — `deploy`, the host's single CI identity. The same five values are
+#              used by every service repo; this account is a personal one, so
+#              there is no organisation store to inherit them from — set them
+#              per repo.
+
+name: deploy-api
+
+on:
+  workflow_dispatch: {}
+  push:
+    tags: ["v*"]
+
+# Serialize EVERY deploy, not per-ref. The gate prunes release directories, so
+# two overlapping runs could delete the release the other is activating. One
+# deploy at a time, never cancelled mid-flight.
+concurrency:
+  group: deploy-api
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  APP: utmelab-api
+  API_PORT: "8081"
+
+jobs:
+  build:
+    name: Build API + docs
+    runs-on: ubuntu-latest
+    # The deploy job never checks out the repo, so it cannot run
+    # `git rev-parse --short HEAD` itself. Hand it the resolved version
+    # instead of cloning a second time just to compute a sha.
+    outputs:
+      version: ${{ steps.v.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Rust cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Resolve version
+        id: v
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            echo "version=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+          else
+            echo "version=v0.0.0-pre.$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Test API (release gate)
+        run: |
+          cargo test
+          cargo clippy --all-targets -- -D warnings
+
+      - name: Build API (release)
+        run: cargo build --release
+
+      - name: Build docs (static, D32)
+        run: |
+          cd site
+          npm ci
+          npm run lint
+          npm run build
+          test -f dist/index.html
+          test -f dist/openapi.json
+
+      - name: Package release
+        run: |
+          set -euo pipefail
+          mkdir -p release
+          cp target/release/${APP} release/${APP}
+          cp -r site/dist release/site
+          # The release is exactly binary + site/. No data/ at all: the API
+          # serves a synced Turso replica and writes nothing to disk but that
+          # replica (REPLICA_PATH, set from the host env file), and nothing is
+          # `include_str!`'d into the binary. The gate refuses a release whose
+          # site/ is missing openapi.json, so assert it here too rather than
+          # shipping a tarball that will be rejected after the SCP.
+          test -x release/${APP}
+          test -d release/site
+          test -f release/site/index.html
+          test -f release/site/openapi.json
+          # Nothing JSON may reach the host as data.
+          ! test -e release/data
+          tar -czf "${APP}-${{ steps.v.outputs.version }}.tar.gz" -C release .
+
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.APP }}-${{ steps.v.outputs.version }}
+          path: ${{ env.APP }}-${{ steps.v.outputs.version }}.tar.gz
+          if-no-files-found: error
+          # Deploy consumes this in the same run; keep a short audit record only.
+          retention-days: 7
+
+  deploy:
+    name: Ship to VPS
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve version
+        id: v
+        env:
+          BUILD_VERSION: ${{ needs.build.outputs.version }}
+        run: echo "version=${BUILD_VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Download release artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.APP }}-${{ steps.v.outputs.version }}
+          path: .
+
+      - name: Prepare SSH
+        env:
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/deploy && chmod 600 ~/.ssh/deploy
+          printf '%s\n' "$VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
+
+      - name: Upload + activate
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VERSION: ${{ steps.v.outputs.version }}
+        run: |
+          set -euo pipefail
+          echo "workspace contents after download:"
+          ls -la
+          # upload-artifact v4 re-roots what it stores, so the tarball is not
+          # guaranteed to land at the exact name we uploaded it under. Resolve
+          # it from disk instead of assuming, and fail loudly if absent.
+          TARBALL="$(ls -1 ./*.tar.gz 2>/dev/null | head -n1)"
+          if [ -z "$TARBALL" ]; then
+            echo "::error::no .tar.gz in the workspace after downloading the artifact"
+            exit 1
+          fi
+          echo "shipping: $TARBALL"
+          # Args are written inline, not stuffed into a variable and expanded
+          # unquoted: `scp $SSH` would not tilde-expand ~/.ssh/deploy, and
+          # scp's port flag is -P (lowercase -p means preserve-attributes,
+          # which silently made VPS_PORT look like the source path).
+          scp \
+            -o StrictHostKeyChecking=yes \
+            -i ~/.ssh/deploy \
+            -P "${VPS_PORT}" \
+            "$TARBALL" \
+            "${VPS_USER}@${VPS_HOST}:/tmp/${APP}-${VERSION}.tar.gz"
+          ssh \
+            -o StrictHostKeyChecking=yes \
+            -i ~/.ssh/deploy \
+            -p "${VPS_PORT}" \
+            "${VPS_USER}@${VPS_HOST}" "set -e
+              mkdir -p /opt/apps/${APP}/releases/${VERSION}
+              tar -xzf /tmp/${APP}-${VERSION}.tar.gz -C /opt/apps/${APP}/releases/${VERSION}
+              rm -f /tmp/${APP}-${VERSION}.tar.gz
+              sudo /usr/local/bin/deploy-service ${APP} ${VERSION}"
+
+      # The service is a utmelab@<name> instance, not a per-app unit: a bare
+      # `systemctl is-active utmelab-api` answers "inactive" (or "activating",
+      # back when legacy units were still loaded) for a perfectly healthy app.
+      # This step is diagnostics only; the edge smoke below is what actually
+      # asserts the replica is serving.
+      - name: Show health
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          ssh \
+            -o StrictHostKeyChecking=yes \
+            -i ~/.ssh/deploy \
+            -p "${VPS_PORT}" \
+            "${VPS_USER}@${VPS_HOST}" \
+            "systemctl is-active utmelab@${APP}; curl -s http://127.0.0.1:${API_PORT}/ready || true"
+
+      - name: Fetch smoke script
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: site/scripts/smoke.mjs
+          sparse-checkout-cone-mode: false
+
+      - name: Edge smoke check (public path, not loopback)
+        run: |
+          cd site
+          BASE_URL=https://api.utmelab.com node scripts/smoke.mjs

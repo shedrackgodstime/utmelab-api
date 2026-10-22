@@ -1,0 +1,55 @@
+var/
+target/
+*.tmp
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+ref/*
+site-old
+
+# scratch working notes — local only, never committed
+tmp/
+temp.txt
+*.temp.md
+NOTES.temp.md
+
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.coverage
+htmlcov/
+
+# auto-tagging prototype outputs — downloaded as CI artifacts, never committed
+tagging_results.json
+tagging_*.json
+
+# OS / editor leftovers
+.DS_Store
+Thumbs.db
+*.swp
+.*.swp
+.*.swo
+.*.un~
+*.db-shm
+*.db-wal
+
+
+# replica/db artifacts (from the crate .gitignore)
+*.db
+*.db-info
+*.db-journal
+*.db-changes
+*.db-log
+
+# editor/backup artifacts: never commit (a .env backup already leaked once)
+*.bak
+*.orig
+*.rej
+
+# archived prototype pulled from archive/utmelab-api-old-prototyping
+utmelab-api-old/

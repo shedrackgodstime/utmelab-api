@@ -1,0 +1,74 @@
+/* ============================================================
+   Docs theme — re-brand Starlight with our warm-academic brand.
+
+   KEY FACTS (read from Starlight's props.css — do not guess):
+   - Starlight's `:root` default = DARK mode. `[data-theme='light']` = light.
+   - The gray scale is POLARIZED: in dark, gray-1 is lightest text and gray-6
+     is the darkest surface; in light it inverts (gray-1 darkest text, gray-6
+     lightest surface). Sidebar/nav backgrounds come from --sl-color-bg-sidebar
+     / --sl-color-bg-nav, NOT the raw grays.
+   - Unlayered rules beat every @layer, so we set --sl-color-* here (never the
+     polarity anchors --sl-color-white/black, NOTES §4) to win the cascade and
+     flip with the one domain-wide toggle (NOTES §3b/§3c).
+   ============================================================ */
+@import '@astrojs/starlight-tailwind';
+@import '@utmelab/ui/theme.css';
+
+/* ---- DARK (Starlight default = :root). Warm stone-dark + bright indigo. ---- */
+:root {
+  /* Polarized grays: gray-1 lightest text → gray-6 darkest surface. */
+  --sl-color-gray-1: #f5f5f4;   /* brightest text */
+  --sl-color-gray-2: #e7e5e4;   /* body text */
+  --sl-color-gray-3: #d6d3d1;   /* secondary text */
+  --sl-color-gray-4: #a8a29e;   /* muted text */
+  --sl-color-gray-5: #78716c;   /* faint text */
+  --sl-color-gray-6: #1c1917;   /* DARKEST surface (sidebar/nav/hairline) */
+  --sl-color-gray-7: #0c0a09;   /* page background */
+
+  --sl-color-accent-low: #312e81;
+  --sl-color-accent: #818cf8;        /* bright indigo for dark bg */
+  --sl-color-accent-high: #c7d2fe;
+
+  /* Semantic surfaces — the ones the sidebar/header actually use. */
+  --sl-color-text: var(--sl-color-gray-2);
+  --sl-color-text-accent: var(--sl-color-accent);
+  --sl-color-bg: #0c0a09;            /* page */
+  --sl-color-bg-nav: #1c1917;        /* header bar */
+  --sl-color-bg-sidebar: #141210;    /* sidebar (a touch above page) */
+  --sl-color-bg-inline-code: #292524;
+  --sl-color-bg-accent: var(--sl-color-accent);
+  --sl-color-hairline: #292524;
+  --sl-color-hairline-light: #33302c;
+  --sl-color-hairline-shade: #0c0a09;
+}
+
+/* ---- LIGHT ([data-theme='light']). Warm paper + deep indigo. ---- */
+[data-theme='light'] {
+  /* Polarized grays: gray-1 darkest text → gray-6 lightest surface. */
+  --sl-color-gray-1: #1c1917;   /* darkest text */
+  --sl-color-gray-2: #44403c;   /* body text */
+  --sl-color-gray-3: #57534e;   /* secondary */
+  --sl-color-gray-4: #78716c;   /* muted */
+  --sl-color-gray-5: #a8a29e;   /* faint */
+  --sl-color-gray-6: #f4f3f0;   /* LIGHTEST surface */
+  --sl-color-gray-7: #ffffff;
+
+  --sl-color-accent-low: #e0e7ff;
+  --sl-color-accent: #4338ca;        /* deep indigo for light bg */
+  --sl-color-accent-high: #312e81;
+
+  --sl-color-text: var(--sl-color-gray-2);
+  --sl-color-text-accent: var(--sl-color-accent);
+  --sl-color-bg: #faf9f7;            /* warm paper page */
+  --sl-color-bg-nav: #ffffff;        /* header bar */
+  --sl-color-bg-sidebar: #faf9f7;    /* sidebar */
+  --sl-color-bg-inline-code: #f4f3f0;
+  --sl-color-bg-accent: var(--sl-color-accent);
+  --sl-color-hairline: #e7e5e4;
+  --sl-color-hairline-light: #f0efed;
+  --sl-color-hairline-shade: #e7e5e4;
+}
+
+/* Brand typography touches: negative tracking on headings (safe, non-structural). */
+.sl-markdown-content :is(h1, h2, h3) { letter-spacing: -0.02em; }
+.sl-markdown-content h1 { font-weight: 600; letter-spacing: -0.03em; }

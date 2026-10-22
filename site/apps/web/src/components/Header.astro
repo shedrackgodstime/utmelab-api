@@ -1,0 +1,202 @@
+---
+import ThemeToggle from '@utmelab/ui/components/ThemeToggle.astro';
+import Brand from '@utmelab/ui/components/Brand.astro';
+
+interface Props {
+  currentPath?: string;
+}
+
+// Every href here is a real built page — no dead `#` anchors (the old
+// `#catalog` / `#pricing` targets never existed) and no duplicates (Docs
+// and API Reference both pointed at `/docs/`).
+const navLinks = [
+  { label: 'Docs', href: '/docs/' },
+  { label: 'Quickstart', href: '/docs/guides/quickstart/' },
+  { label: 'Coverage', href: '/docs/guides/catalog/request/' },
+];
+
+const norm = (p: string) => (p.length > 1 ? p.replace(/\/+$/, '') : p);
+const current = norm(Astro.props.currentPath ?? Astro.url.pathname);
+const isActive = (href: string) => norm(href) === current;
+---
+
+<header class="sticky top-0 z-50 border-b border-hairline bg-surface/80 backdrop-blur-md transition-colors">
+  <div class="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+    <!-- Brand Identity -->
+    <div class="flex items-center gap-8">
+      <Brand />
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-1 text-sm font-medium text-body" aria-label="Main navigation">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+            class={`rounded-brand px-3 py-1.5 transition-all ${
+              isActive(link.href)
+                ? 'text-ink bg-surface-2'
+                : 'text-body hover:text-ink hover:bg-surface-2'
+            }`}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+    </div>
+
+    <!-- Desktop Action Buttons -->
+    <div class="hidden md:flex items-center gap-3">
+      <ThemeToggle />
+      <div class="h-4 w-px bg-hairline" aria-hidden="true"></div>
+      <a
+        href="/auth/signin/"
+        class="rounded-brand px-3 py-1.5 text-sm font-medium text-body hover:text-ink hover:bg-surface-2 transition-all"
+      >
+        Sign in
+      </a>
+      <a
+        href="/auth/signup/"
+        class="inline-flex items-center justify-center rounded-brand bg-accent px-3.5 py-1.5 text-sm font-medium text-accent-ink hover:bg-accent-hover transition-colors shadow-xs"
+      >
+        Get API key
+      </a>
+    </div>
+
+    <!-- Mobile Hamburger and Actions -->
+    <div class="flex items-center gap-2 md:hidden">
+      <ThemeToggle />
+      <button
+        type="button"
+        id="mobile-nav-toggle"
+        class="inline-flex size-9 items-center justify-center rounded-brand border border-hairline bg-surface text-ink hover:bg-surface-2 hover:border-muted transition-colors focus-visible:outline-none"
+        aria-controls="mobile-nav-menu"
+        aria-expanded="false"
+        aria-label="Toggle navigation menu"
+      >
+        <!-- Hamburger Icon -->
+        <svg id="icon-open" class="size-5 block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" y1="6" x2="20" y2="6" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="18" x2="20" y2="18" />
+        </svg>
+        <!-- Close Icon -->
+        <svg id="icon-close" class="size-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Drawer -->
+  <div
+    id="mobile-nav-menu"
+    class="hidden md:hidden fixed inset-x-0 top-16 border-b border-hairline bg-surface/95 backdrop-blur-xl shadow-xl transition-all"
+  >
+    <div class="px-6 py-5 space-y-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
+      <nav class="space-y-1" aria-label="Mobile navigation">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            aria-current={isActive(link.href) ? 'page' : undefined}
+            class={`mobile-nav-link block rounded-brand px-3 py-2.5 text-base font-medium transition-colors ${
+              isActive(link.href) ? 'text-ink bg-surface-2' : 'text-ink hover:bg-surface-2'
+            }`}
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <div class="border-t border-hairline pt-4 space-y-2.5">
+        <a
+          href="/auth/signin/"
+          class="mobile-nav-link block w-full text-center rounded-brand border border-hairline bg-surface py-2.5 text-sm font-medium text-ink hover:bg-surface-2 transition-colors"
+        >
+          Sign in
+        </a>
+        <a
+          href="/auth/signup/"
+          class="mobile-nav-link block w-full text-center rounded-brand bg-accent py-2.5 text-sm font-medium text-accent-ink hover:bg-accent-hover transition-colors shadow-xs"
+        >
+          Get API key
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggleBtn = document.getElementById('mobile-nav-toggle');
+  const menu = document.getElementById('mobile-nav-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  function lockScroll(locked: boolean) {
+    document.body.style.overflow = locked ? 'hidden' : '';
+  }
+
+  function openMenu() {
+    if (!menu || !toggleBtn || !iconOpen || !iconClose) return;
+    menu.classList.remove('hidden');
+    iconOpen.classList.add('hidden');
+    iconOpen.classList.remove('block');
+    iconClose.classList.remove('hidden');
+    iconClose.classList.add('block');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+    toggleBtn.setAttribute('aria-label', 'Close navigation menu');
+    lockScroll(true);
+  }
+
+  function closeMenu() {
+    if (!menu || !toggleBtn || !iconOpen || !iconClose) return;
+    menu.classList.add('hidden');
+    iconOpen.classList.remove('hidden');
+    iconOpen.classList.add('block');
+    iconClose.classList.add('hidden');
+    iconClose.classList.remove('block');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    toggleBtn.setAttribute('aria-label', 'Open navigation menu');
+    lockScroll(false);
+  }
+
+  toggleBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+    if (isExpanded) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  mobileLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!menu?.classList.contains('hidden')) {
+      const target = e.target as Node;
+      if (!menu.contains(target) && !toggleBtn?.contains(target)) {
+        closeMenu();
+      }
+    }
+  });
+
+  // The drawer is mobile-only: a resize onto desktop must not leave the
+  // page scroll-locked behind a hidden menu.
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      closeMenu();
+    }
+  });
+</script>

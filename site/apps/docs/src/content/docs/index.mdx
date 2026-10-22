@@ -1,0 +1,40 @@
+---
+title: Introduction
+description: What UTME Lab is, who it is for, and what is inside the bank.
+---
+
+UTME Lab is one REST API for West African exam content. You call an endpoint
+and get structured rows back: questions, options, answers, explanations,
+syllabi, and full papers. No scraping. No typing questions by hand.
+
+## Who it is for
+
+Developers building exam prep products. CBT apps, school portals, lesson
+tools, chatbots. If your app needs JAMB, WAEC or NECO content, this is the
+part you do not have to build.
+
+## What is inside
+
+- **2,244 questions**, 2025 cohort, almost all JAMB.
+- **JAMB fully served.** All 25 subjects assemble full length papers. Papers
+  are seeded and scored on the server. Answers never ride the paper.
+- **WAEC in 5 countries** (NG, GH, SL, GM, LR). Syllabi split by country, so
+  `country=GH` narrows the tree to Ghana. Question depth is still growing.
+- **NECO catalogued** (3 subjects). Depth still growing.
+- **POST-UTME is planned.** Requests return `404` until it lands.
+- Every row says where it came from. Human reviewed rows carry a `verified`
+  flag. Answers stay hidden unless you pass `include_explanation=true`.
+
+## How these docs are organized
+
+- [Quickstart](/docs/guides/quickstart/): one call, one key, one question back.
+- [Request coverage](/docs/guides/catalog/request/): your board or country is
+  missing. Start there.
+- The raw OpenAPI spec downloads at `/openapi.json`. It imports into Postman
+  and Insomnia. The docs explain. The spec declares.
+
+## Start
+
+Email [dev@utmelab.com](mailto:dev@utmelab.com) for a key. Self serve signup
+is not open yet. Then run the [Quickstart](/docs/guides/quickstart/). The
+base URL is `https://api.utmelab.com`. The limit is 60 requests a minute per key.

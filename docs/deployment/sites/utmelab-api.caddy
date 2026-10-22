@@ -1,0 +1,85 @@
+# utmelab-api's Caddy site block.
+#
+# This is the service's own site file. `/etc/caddy/Caddyfile` imports
+# /etc/caddy/sites/*.caddy once, so this file is the whole edge story for
+# api.utmelab.com. `system provision utmelab-api` writes a file here only when
+# none exists, and never rewrites it afterwards: custom routing lives here, in
+# the repo, where it can be reviewed. bootstrap.sh installs it on a fresh host;
+# after any change, install it and reload:
+#
+#   install -m 0644 sites/utmelab-api.caddy /etc/caddy/sites/utmelab-api.caddy
+#   caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile && systemctl reload caddy
+#
+# Requires DNS api.utmelab.com -> this host, after which Caddy obtains a real
+# Let's Encrypt cert automatically (no `tls internal`).
+#
+# Routing:
+#   /api/*  /health  /ready  /mcp  /mcp/*  -> the Rust binary on 127.0.0.1:8081
+#   everything else                        -> the static build shipped as site/
+#
+# `/mcp` and `/mcp/admin` are the keyed JSON-RPC surface. They must be proxied
+# like `/api/*`: the static tier does not define them, so a missing handle
+# answers Caddy's own empty-body 404, which is indistinguishable from a
+# nonexistent route on the API. The binary's own refusal is a JSON 401, and the
+# smoke check asserts that (an empty 404 means "not proxied", not "no key").
+#
+# The binary never serves HTML, and it does not serve the spec either:
+# `openapi.json` is a committed file that `site/scripts/merge.mjs` copies into
+# dist/, so it is served here from the static root. Proxying it to the API
+# would 404, which is why there is no handle for it.
+#
+# handle blocks are explicit and sequential: in Caddy's default directive order
+# `file_server` runs before `reverse_proxy`, so a bare matcher would lose every
+# request to the file server and /health would answer with the docs homepage.
+# That bug shipped once; the blocks are what stop it.
+#
+# Caller addresses are a contract here. Every rate ceiling in the binary keys on
+# the caller the proxy attests, read from the last `X-Forwarded-For` entry, so
+# nothing on this path may forward a value the caller supplied. `reverse_proxy`
+# appends the peer it observed to whatever XFF it received, so a caller can
+# prepend entries but never change the last one; reading the *last* entry is what
+# makes that safe. Adding `trusted_proxies`, a CDN, or `header_up
+# +X-Forwarded-For` would change what that read means, so revisit
+# `auth::session::client_ip` in the same breath. The loopback bind above is the
+# other half: nothing but this proxy can reach the binary to claim anything.
+
+api.utmelab.com {
+	encode gzip zstd
+
+	handle /api/* {
+		reverse_proxy 127.0.0.1:8081
+	}
+	handle /health {
+		reverse_proxy 127.0.0.1:8081
+	}
+	handle /ready {
+		reverse_proxy 127.0.0.1:8081
+	}
+	handle /mcp {
+		reverse_proxy 127.0.0.1:8081
+	}
+	handle /mcp/* {
+		reverse_proxy 127.0.0.1:8081
+	}
+
+	# Static tier (the Astro build ships as site/ inside the release).
+	#
+	# No try_files. Astro is fully prerendered — every page is a real
+	# index.html inside a directory — so `try_files {path} /index.html`, the
+	# SPA fallback pattern, is actively wrong here. It matched real files
+	# (/_astro/*.css, /docs/x/index.html) but missed every *directory* URL and
+	# fell through to the homepage, so /docs/guides/quickstart/, /dashboard/
+	# and /docs/ all rendered the home page with a 200. A miss also returned
+	# 200 instead of 404. `astro preview` hides this because it resolves
+	# directories itself; Caddy needs `index`.
+	handle {
+		root * /opt/apps/utmelab-api/current/site
+		file_server {
+			index index.html
+		}
+	}
+
+	# No handle_errors: the build has no top-level 404.html (Starlight's own
+	# 404 lives under /docs/, not at the root), so file_server's native 404 is
+	# what ships, and the smoke check asserts exactly that.
+}

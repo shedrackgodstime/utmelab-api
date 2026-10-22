@@ -1,0 +1,44 @@
+---
+import Brand from '@utmelab/ui/components/Brand.astro';
+---
+
+<footer class="border-t border-hairline bg-surface mt-24">
+  <div class="mx-auto max-w-6xl px-6 py-10">
+    <div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+      <div class="space-y-3">
+        <Brand href="/" badge={false} markClass="size-7" />
+        <p class="text-sm text-body leading-relaxed max-w-sm">
+          Question bank API for West African examinations.
+        </p>
+      </div>
+
+      <nav class="flex gap-12 text-sm text-body" aria-label="Footer">
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-muted mb-3 font-mono">Docs</h3>
+          <ul class="space-y-2">
+            <li><a href="/docs/guides/quickstart/" class="hover:text-ink transition-colors">Quickstart</a></li>
+            <li><a href="/docs/guides/catalog/request/" class="hover:text-ink transition-colors">Coverage</a></li>
+            <li><a href="/docs/" class="hover:text-ink transition-colors">Guides</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-muted mb-3 font-mono">Product</h3>
+          <ul class="space-y-2">
+            <li><a href="/dashboard/" class="hover:text-ink transition-colors">Console</a></li>
+            <li><a href="/auth/signin/" class="hover:text-ink transition-colors">Sign in</a></li>
+            <li><a href="/auth/signup/" class="hover:text-ink transition-colors">Get API key</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="mt-8 pt-6 border-t border-hairline flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
+      <p>© 2026 UTME Lab. All rights reserved.</p>
+      <a href="/health" class="inline-flex items-center gap-2 rounded-full border border-hairline bg-surface-2 px-3 py-1 font-mono hover:text-ink transition-colors">
+        <span class="size-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>API: Operational</span>
+      </a>
+    </div>
+  </div>
+</footer>
