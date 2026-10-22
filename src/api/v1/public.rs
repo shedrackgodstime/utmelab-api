@@ -126,7 +126,6 @@ mod tests {
                 "verifications",
                 "topics",
                 "subtopics",
-                "topic_countries",
             ],
         )
         .await;

@@ -99,7 +99,6 @@ pub const INTROSPECTABLE_TABLES: &[&str] = &[
     "passages",
     "countries",
     "exam_requirements",
-    "topic_countries",
     "novels",
     "novel_chapters",
     "novel_characters",
@@ -219,11 +218,7 @@ pub fn assemble_syllabus(
 /// Present a stored question. The answer and working ride along only on
 /// explicit request; everything else passes through untouched, with image
 /// filenames resolved against `media_base_url`.
-pub fn render(
-    q: &Question,
-    include_explanation: bool,
-    media_base_url: &str,
-) -> RenderedQuestion {
+pub fn render(q: &Question, include_explanation: bool, media_base_url: &str) -> RenderedQuestion {
     let mut text = q.text.clone();
     resolve_rich_text(&mut text, media_base_url);
 
@@ -270,7 +265,7 @@ mod tests {
 
     #[test]
     fn only_catalog_tables_are_introspectable() {
-        for ok in ["subjects", "novels", "passages", "topic_countries"] {
+        for ok in ["subjects", "novels", "passages", "topics"] {
             assert!(is_introspectable(ok), "{ok} should be visible");
         }
         for no in [
@@ -419,11 +414,11 @@ mod tests {
                 start: 0,
                 len: 0,
                 kind: InlineKind::Image {
-                url: "keypoint.png".to_string(),
-                position: ImagePosition::Above,
-                alt: None,
-            },
-        }];
+                    url: "keypoint.png".to_string(),
+                    position: ImagePosition::Above,
+                    alt: None,
+                },
+            }];
         }
 
         let r = render(&q, true, "https://assets.utmelab.com/images");

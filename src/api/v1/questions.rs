@@ -155,14 +155,8 @@ pub async fn list(
     );
 
     Ok(Json(
-        core::models::Page::new(
-            rendered,
-            page,
-            per_page,
-            total_records,
-            with_explanation,
-        )
-        .with_passages(passages),
+        core::models::Page::new(rendered, page, per_page, total_records, with_explanation)
+            .with_passages(passages),
     ))
 }
 
@@ -308,7 +302,14 @@ mod tests {
         api_schema(&conn).await;
         bank_schema(
             &conn,
-            &["subjects", "questions", "verifications", "subtopics", "topic_countries", "passages"],
+            &[
+                "subjects",
+                "topics",
+                "questions",
+                "verifications",
+                "subtopics",
+                "passages",
+            ],
         )
         .await;
         conn.execute(

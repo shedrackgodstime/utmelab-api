@@ -43,9 +43,9 @@ pub struct AssembleQuery {
     /// Deterministic draw. Same seed, same paper. Defaults to 1, as the
     /// published contract always has: omitting it stays reproducible.
     pub seed: Option<u64>,
-    /// Country scope. No row is restricted to a country today
-    /// (`topic_countries` is empty), so this does not change the draw; it
-    /// is accepted so the request is the same shape as readiness.
+    /// Country scope. A question whose topic names other countries is out;
+    /// a topic that names none is in every country. Omitted means no scope
+    /// filter, so the draw is the whole pool.
     pub country: Option<String>,
     /// Include answers and explanations. Default: false.
     pub include_explanation: Option<bool>,
@@ -262,10 +262,7 @@ pub async fn score_paper(
                                 s.media_base_url.as_ref(),
                             );
                             if let Some(ref mut trap) = e.trap {
-                                core::catalog::resolve_rich_text(
-                                    trap,
-                                    s.media_base_url.as_ref(),
-                                );
+                                core::catalog::resolve_rich_text(trap, s.media_base_url.as_ref());
                             }
                         }
                         (Some(q.answer.clone()), exp)
@@ -368,7 +365,6 @@ mod tests {
                 "verifications",
                 "topics",
                 "subtopics",
-                "topic_countries",
                 "passages",
                 "blueprints",
             ],
@@ -392,12 +388,9 @@ mod tests {
         )
         .await
         .expect("insert subject");
-        conn.execute(
-            "INSERT INTO subjects VALUES ('math','JAMB','Math',0,1)",
-            (),
-        )
-        .await
-        .expect("insert math subject");
+        conn.execute("INSERT INTO subjects VALUES ('math','JAMB','Math',0,1)", ())
+            .await
+            .expect("insert math subject");
         conn.execute(
             "INSERT INTO questions VALUES ('q1','JAMB','math',2025,'past_paper','What is 1+1?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"2\",\"inline\":[]}}]','a',NULL,NULL,'p1','{\"key_point\":{\"text\":\"k\",\"inline\":[]},\"body\":{\"text\":\"b\",\"inline\":[]}}',1.0,1,'h1')",
             (),

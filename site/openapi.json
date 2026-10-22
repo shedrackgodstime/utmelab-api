@@ -492,7 +492,7 @@
           {
             "name": "country",
             "in": "query",
-            "description": "Country scope. No row is restricted to a country today\n(`topic_countries` is empty), so this does not change the draw; it\nis accepted so the request is the same shape as readiness.",
+            "description": "Country scope. A question whose topic names other countries is out;\na topic that names none is in every country. Omitted means no scope\nfilter, so the draw is the whole pool.",
             "required": false,
             "schema": {
               "type": [

@@ -324,8 +324,8 @@ mod tests {
         let def = parse(&[]).expect("default config");
         assert_eq!(def.media_base_url, DEFAULT_MEDIA_BASE_URL);
 
-        let custom = parse(&[("MEDIA_BASE_URL", "https://cdn.example.com/assets")])
-            .expect("custom config");
+        let custom =
+            parse(&[("MEDIA_BASE_URL", "https://cdn.example.com/assets")]).expect("custom config");
         assert_eq!(custom.media_base_url, "https://cdn.example.com/assets");
 
         let utmelab_prefix = parse(&[("UTMELAB_MEDIA_BASE_URL", "https://cdn2.example.com")])

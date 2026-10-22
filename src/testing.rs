@@ -108,15 +108,11 @@ const BANK_DDL: &[(&str, &str)] = &[
     ),
     (
         "topics",
-        "CREATE TABLE topics (slug TEXT, subject TEXT, exam TEXT, name TEXT, \"order\" INTEGER, weight INTEGER, objectives TEXT)",
+        "CREATE TABLE topics (slug TEXT, subject TEXT, exam TEXT, name TEXT, \"order\" INTEGER, weight INTEGER, objectives TEXT, countries TEXT NOT NULL DEFAULT '[]')",
     ),
     (
         "subtopics",
         "CREATE TABLE subtopics (slug TEXT, topic TEXT, name TEXT, \"order\" INTEGER, objectives TEXT)",
-    ),
-    (
-        "topic_countries",
-        "CREATE TABLE topic_countries (topic TEXT NOT NULL, country TEXT NOT NULL, PRIMARY KEY (topic, country))",
     ),
     (
         "questions",

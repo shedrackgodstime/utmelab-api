@@ -109,13 +109,13 @@ pub const READ_SHAPES: &[(&str, &[&str])] = &[
             "order",
             "weight",
             "objectives",
+            "countries",
         ],
     ),
     (
         "subtopics",
         &["slug", "topic", "name", "order", "objectives"],
     ),
-    ("topic_countries", &["topic", "country"]),
     ("countries", &[]),
     (
         "questions",

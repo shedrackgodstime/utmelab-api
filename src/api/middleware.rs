@@ -76,10 +76,9 @@ pub async fn bank_version(
         .unwrap_or_else(|_| format!("v{}", crate::store::schema::CONTRACT_VERSION));
     let mut response = next.run(request).await;
     if let Ok(val) = axum::http::HeaderValue::from_str(&version) {
-        response.headers_mut().insert(
-            axum::http::HeaderName::from_static("x-bank-version"),
-            val,
-        );
+        response
+            .headers_mut()
+            .insert(axum::http::HeaderName::from_static("x-bank-version"), val);
     }
     response
 }

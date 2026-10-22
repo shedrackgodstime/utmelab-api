@@ -114,7 +114,9 @@ pub async fn syllabus(
     Query(f): Query<SyllabusQuery>,
 ) -> Result<Json<core::models::Syllabus>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
-    Ok(Json(build_syllabus(&s, &exam, &slug, f.country.as_deref()).await?))
+    Ok(Json(
+        build_syllabus(&s, &exam, &slug, f.country.as_deref()).await?,
+    ))
 }
 
 /// Coverage without the tree: counts only, for progress bars and checklists.
@@ -176,7 +178,6 @@ mod tests {
                 "subjects",
                 "topics",
                 "subtopics",
-                "topic_countries",
                 "questions",
                 "verifications",
             ],
@@ -189,7 +190,7 @@ mod tests {
         .await
         .expect("insert subject");
         conn.execute(
-            "INSERT INTO topics VALUES ('mechanics','physics','JAMB','Mechanics',1,0,'[\"state newton laws\"]')",
+            "INSERT INTO topics VALUES ('mechanics','physics','JAMB','Mechanics',1,0,'[\"state newton laws\"]','[]')",
             (),
         )
         .await

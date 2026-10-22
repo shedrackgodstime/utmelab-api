@@ -57,7 +57,7 @@ mod tests {
         api_schema(&conn).await;
         bank_schema(&conn, &["topics"]).await;
         conn.execute(
-            "INSERT INTO topics VALUES ('mechanics','physics','JAMB','Mechanics',1,0,'[\"state newton laws\"]')",
+            "INSERT INTO topics VALUES ('mechanics','physics','JAMB','Mechanics',1,0,'[\"state newton laws\"]','[]')",
             (),
         )
         .await

@@ -194,10 +194,10 @@ fn map_question(row: &turso::Row) -> Result<core::models::Question, AppError> {
 }
 
 /// Filters over the questions table. `country` is the D19 topic scope: a
-/// question is in scope for a country when its topic carries no
-/// `topic_countries` rows (universal) or names the country. It binds through
-/// the same `scope_predicate` the subject readers use, so a country filter
-/// means one thing service-wide.
+/// question is in scope for a country when its topic declares no countries
+/// (universal) or names the country. It binds through the same
+/// `scope_predicate` the subject readers use, so a country filter means one
+/// thing service-wide.
 #[derive(Clone, Debug, Default)]
 pub struct QuestionFilter {
     pub exam: Option<String>,
@@ -245,18 +245,19 @@ fn verified_predicate(table: &str) -> String {
     )
 }
 
-/// Countries a topic belongs to (D19): a topic with no `topic_countries`
-/// rows is in every country; one that lists countries is in only those.
-/// Expressed as SQL over `questions` so scope is one predicate rather than
-/// a second code path per reader. The bound param (NULL = unscoped) is
+/// Countries a topic belongs to (D19): a topic whose `countries` is an empty
+/// list is in every country; one that names countries is in only those. The
+/// column is the topic's own statement, so there is no join table to keep in
+/// step. Expressed as SQL over `questions` so scope is one predicate rather
+/// than a second code path per reader. The bound param (NULL = unscoped) is
 /// supplied by `scope_param`.
 ///
-/// The table is empty today, so this excludes nothing: it is here so the
+/// Every topic is empty today, so this excludes nothing: it is here so the
 /// moment the bank states topic scope, every reader honours it without a
 /// rewrite.
 fn scope_predicate(param: u8) -> String {
     format!(
-        "(?{p} IS NULL OR NOT EXISTS (SELECT 1 FROM topic_countries tc WHERE tc.topic = (SELECT st.topic FROM subtopics st WHERE st.slug = questions.subtopic_id)) OR EXISTS (SELECT 1 FROM topic_countries tc WHERE tc.topic = (SELECT st.topic FROM subtopics st WHERE st.slug = questions.subtopic_id) AND tc.country = ?{p}))",
+        "(?{p} IS NULL OR NOT EXISTS (SELECT 1 FROM subtopics st JOIN topics t ON t.slug = st.topic WHERE st.slug = questions.subtopic_id AND json_array_length(t.countries) > 0 AND NOT EXISTS (SELECT 1 FROM json_each(t.countries) je WHERE je.value = ?{p})))",
         p = param
     )
 }
@@ -300,7 +301,10 @@ fn question_where(f: &QuestionFilter) -> (String, Vec<turso::Value>) {
         params.push(turso::Value::Text(v.clone()));
     }
     if let Some(v) = &f.topic {
-        conds.push("questions.subtopic_id IN (SELECT st.slug FROM subtopics st WHERE st.topic=?)".to_string());
+        conds.push(
+            "questions.subtopic_id IN (SELECT st.slug FROM subtopics st WHERE st.topic=?)"
+                .to_string(),
+        );
         params.push(turso::Value::Text(v.clone()));
     }
     if let Some(v) = &f.subtopic_id {
@@ -1334,7 +1338,7 @@ pub async fn list_syllabus(
             let mut index: std::collections::HashMap<String, usize> =
                 std::collections::HashMap::new();
             let mut stmt = conn
-                .prepare("SELECT t.slug,t.name,t.\"order\",t.weight,t.objectives,st.slug,st.name,st.\"order\",st.objectives FROM topics t LEFT JOIN subtopics st ON st.topic=t.slug WHERE t.exam=?1 AND t.subject=?2 ORDER BY t.\"order\",t.slug,st.\"order\",st.slug")
+                .prepare("SELECT t.slug,t.name,t.\"order\",t.weight,t.objectives,st.slug,st.name,st.\"order\",st.objectives,t.countries FROM topics t LEFT JOIN subtopics st ON st.topic=t.slug WHERE t.exam=?1 AND t.subject=?2 ORDER BY t.\"order\",t.slug,st.\"order\",st.slug")
                 .await
                 .map_err(upstream)?;
             let mut rows = stmt
@@ -1347,13 +1351,14 @@ pub async fn list_syllabus(
                     Some(i) => *i,
                     None => {
                         let objectives: String = row.get(4).map_err(upstream)?;
+                        let countries: String = row.get(9).map_err(upstream)?;
                         topics.push(core::papers::SyllabusTopic {
                             slug: slug.clone(),
                             name: row.get(1).map_err(upstream)?,
                             order: req_int::<u32>(row.get_value(2).map_err(upstream)?, "topic.order")?,
                             weight: req_int::<u32>(row.get_value(3).map_err(upstream)?, "topic.weight")?,
                             objectives: json_list(&objectives, "topic.objectives")?,
-                            countries: Vec::new(),
+                            countries: json_list(&countries, "topic.countries")?,
                             subtopics: Vec::new(),
                         });
                         index.insert(slug, topics.len() - 1);
@@ -1379,22 +1384,6 @@ pub async fn list_syllabus(
                                 None => Vec::new(),
                             },
                         });
-                }
-            }
-            // Country scope for the whole subject, one query.
-            let mut stmt = conn
-                .prepare("SELECT tc.topic,tc.country FROM topic_countries tc JOIN topics t ON t.slug=tc.topic WHERE t.exam=?1 AND t.subject=?2 ORDER BY tc.topic,tc.country")
-                .await
-                .map_err(upstream)?;
-            let mut rows = stmt
-                .query([exam.as_str(), subject.as_str()])
-                .await
-                .map_err(upstream)?;
-            while let Some(row) = rows.next().await.map_err(upstream)? {
-                let topic: String = row.get(0).map_err(upstream)?;
-                let country: String = row.get(1).map_err(upstream)?;
-                if let Some(i) = index.get(&topic) {
-                    topics[*i].countries.push(country);
                 }
             }
             Ok(topics)
@@ -1467,7 +1456,6 @@ mod tests {
                 "subjects",
                 "topics",
                 "subtopics",
-                "topic_countries",
                 "questions",
                 "verifications",
                 "novels",
@@ -1523,13 +1511,13 @@ mod tests {
         .await
         .expect("insert waec english");
         conn.execute(
-            "INSERT INTO topics VALUES ('algebra','mathematics','JAMB','Algebra',3,15,'[\"solve\"]')",
+            "INSERT INTO topics VALUES ('algebra','mathematics','JAMB','Algebra',3,15,'[\"solve\"]','[]')",
             (),
         )
         .await
         .expect("insert algebra");
         conn.execute(
-            "INSERT INTO topics VALUES ('geometry','mathematics','JAMB','Geometry',4,0,'[]')",
+            "INSERT INTO topics VALUES ('geometry','mathematics','JAMB','Geometry',4,0,'[]','[]')",
             (),
         )
         .await
@@ -1817,7 +1805,9 @@ mod tests {
         assert_eq!(sampled.len(), 2);
 
         // Deterministic seed reproduces the same order
-        let (sampled2, total2) = sample_questions(&s, &blank, 2, 42).await.expect("sample seed");
+        let (sampled2, total2) = sample_questions(&s, &blank, 2, 42)
+            .await
+            .expect("sample seed");
         assert_eq!(total, total2);
         assert_eq!(sampled[0].id, sampled2[0].id);
         assert_eq!(sampled[1].id, sampled2[1].id);
@@ -2242,9 +2232,12 @@ mod tests {
         )
         .await
         .expect("insert subtopic");
-        conn.execute("INSERT INTO topic_countries VALUES ('algebra','NG')", ())
-            .await
-            .expect("insert scope");
+        conn.execute(
+            "UPDATE topics SET countries='[\"NG\"]' WHERE slug='algebra'",
+            (),
+        )
+        .await
+        .expect("set scope");
         let s = crate::state::DbState::detached(db);
 
         let gh = QuestionFilter {
@@ -2264,6 +2257,18 @@ mod tests {
         let (rows, total) = list_questions(&s, &ng, 1, 50).await.expect("ng page");
         assert_eq!(total, 2, "both JAMB rows are in scope for NG");
         assert!(rows.iter().any(|q| q.id == "q2"));
+
+        // A topic can name more than one country: NG and GH now both see it.
+        crate::testing::conn_of(&s)
+            .await
+            .execute(
+                "UPDATE topics SET countries='[\"NG\",\"GH\"]' WHERE slug='algebra'",
+                (),
+            )
+            .await
+            .expect("widen scope");
+        let (_, total) = list_questions(&s, &gh, 1, 50).await.expect("gh page again");
+        assert_eq!(total, 2, "GH is named by the topic now");
     }
 
     #[tokio::test]
@@ -2341,10 +2346,10 @@ mod tests {
     }
 
     #[tokio::test]
-    async fn a_country_scope_restricts_nothing_while_no_topic_is_listed() {
+    async fn a_country_scope_restricts_nothing_while_no_topic_declares_one() {
         let db = local_exams_db().await;
         let s = crate::state::DbState::detached(db);
-        // topic_countries is empty, so a scope is a no-op, not an exclusion.
+        // No topic names a country, so a scope is a no-op, not an exclusion.
         let unscoped = subject_stats(&s, "JAMB", None).await.expect("query");
         let scoped = subject_stats(&s, "JAMB", Some("GH")).await.expect("query");
         assert_eq!(
@@ -2458,12 +2463,16 @@ mod tests {
     #[tokio::test]
     async fn list_passages_returns_matching_subject_rows() {
         let s = crate::state::DbState::detached(local_exams_db().await);
-        let passages = list_passages(&s, "JAMB", "english").await.expect("passages");
+        let passages = list_passages(&s, "JAMB", "english")
+            .await
+            .expect("passages");
         assert_eq!(passages.len(), 1);
         assert_eq!(passages[0].id, "p1");
         assert_eq!(passages[0].title, Some("The Market".to_string()));
 
-        let empty = list_passages(&s, "JAMB", "physics").await.expect("empty passages");
+        let empty = list_passages(&s, "JAMB", "physics")
+            .await
+            .expect("empty passages");
         assert!(empty.is_empty());
     }
 
@@ -2496,7 +2505,9 @@ mod tests {
             topic: Some("nonexistent_topic".to_string()),
             ..Default::default()
         };
-        let (rows_none, total_none) = list_questions(&s, &filter_none, 1, 10).await.expect("query");
+        let (rows_none, total_none) = list_questions(&s, &filter_none, 1, 10)
+            .await
+            .expect("query");
         assert_eq!(total_none, 0);
         assert!(rows_none.is_empty());
     }
