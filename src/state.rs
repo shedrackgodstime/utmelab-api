@@ -87,6 +87,7 @@ pub struct AppState {
     pub contract_ok: ContractFlag,
     pub limiter: SharedLimiter,
     pub bank_version: BankVersion,
+    pub media_base_url: Arc<str>,
 }
 
 pub type SyncCell = Arc<RwLock<Option<SyncDb>>>;
@@ -118,6 +119,7 @@ pub struct DbState {
     pub contract_ok: ContractFlag,
     pub limiter: SharedLimiter,
     pub bank_version: BankVersion,
+    pub media_base_url: Arc<str>,
 }
 
 impl DbState {
@@ -138,6 +140,7 @@ impl DbState {
                 "v{}",
                 crate::store::schema::CONTRACT_VERSION
             ))),
+            media_base_url: Arc::from(crate::config::DEFAULT_MEDIA_BASE_URL),
         }
     }
 }
@@ -154,6 +157,7 @@ impl axum::extract::FromRef<AppState> for DbState {
             contract_ok: Arc::clone(&state.contract_ok),
             limiter: Arc::clone(&state.limiter),
             bank_version: Arc::clone(&state.bank_version),
+            media_base_url: Arc::clone(&state.media_base_url),
         }
     }
 }

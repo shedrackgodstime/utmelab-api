@@ -49,6 +49,8 @@ pub const DEFAULT_RATE_LIMIT_PER_MIN: u32 = 60;
 /// Admin keys are internal (monitoring, provisioning), so unlimited by
 /// default. Set a positive value to bound them too.
 pub const DEFAULT_RATE_LIMIT_ADMIN_PER_MIN: u32 = 0;
+/// Base URL where figure images and media assets are served.
+pub const DEFAULT_MEDIA_BASE_URL: &str = "https://assets.utmelab.com/images";
 
 #[derive(Clone)]
 pub struct Config {
@@ -67,6 +69,7 @@ pub struct Config {
     pub write_timeout_secs: u64,
     pub rate_limit_per_min: u32,
     pub rate_limit_admin_per_min: u32,
+    pub media_base_url: String,
 }
 
 impl Default for Config {
@@ -87,6 +90,7 @@ impl Default for Config {
             write_timeout_secs: DEFAULT_WRITE_TIMEOUT_SECS,
             rate_limit_per_min: DEFAULT_RATE_LIMIT_PER_MIN,
             rate_limit_admin_per_min: DEFAULT_RATE_LIMIT_ADMIN_PER_MIN,
+            media_base_url: DEFAULT_MEDIA_BASE_URL.to_string(),
         }
     }
 }
@@ -164,6 +168,9 @@ impl Config {
                 "RATE_LIMIT_ADMIN_PER_MIN",
                 d.rate_limit_admin_per_min,
             )?,
+            media_base_url: raw(source, "MEDIA_BASE_URL")
+                .or_else(|| raw(source, "UTMELAB_MEDIA_BASE_URL"))
+                .unwrap_or_else(|| d.media_base_url.clone()),
         };
         cfg.validate()?;
         Ok(cfg)
@@ -227,6 +234,9 @@ impl Config {
         }
         if self.write_timeout_secs == 0 {
             return Err(bad("WRITE_TIMEOUT_SECS"));
+        }
+        if self.media_base_url.trim().is_empty() {
+            return Err("invalid config: MEDIA_BASE_URL must not be empty".to_string());
         }
         Ok(())
     }
@@ -307,5 +317,19 @@ mod tests {
     #[test]
     fn the_listener_stays_loopback_so_the_proxy_can_be_trusted() {
         assert_eq!(BIND_HOST, [127, 0, 0, 1]);
+    }
+
+    #[test]
+    fn media_base_url_defaults_and_overrides() {
+        let def = parse(&[]).expect("default config");
+        assert_eq!(def.media_base_url, DEFAULT_MEDIA_BASE_URL);
+
+        let custom = parse(&[("MEDIA_BASE_URL", "https://cdn.example.com/assets")])
+            .expect("custom config");
+        assert_eq!(custom.media_base_url, "https://cdn.example.com/assets");
+
+        let utmelab_prefix = parse(&[("UTMELAB_MEDIA_BASE_URL", "https://cdn2.example.com")])
+            .expect("prefix config");
+        assert_eq!(utmelab_prefix.media_base_url, "https://cdn2.example.com");
     }
 }

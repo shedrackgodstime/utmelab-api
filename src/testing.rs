@@ -203,6 +203,7 @@ pub(crate) fn db_state_without_db(contract_ok: bool, permits: usize) -> DbState 
             "v{}",
             crate::store::schema::CONTRACT_VERSION
         ))),
+        media_base_url: Arc::from(crate::config::DEFAULT_MEDIA_BASE_URL),
     }
 }
 
@@ -229,6 +230,7 @@ fn app_from(d: DbState) -> AppState {
         contract_ok: d.contract_ok,
         limiter: d.limiter,
         bank_version: d.bank_version,
+        media_base_url: d.media_base_url,
     }
 }
 

@@ -174,7 +174,11 @@ pub async fn assemble_paper(
     auth.require(SCOPE_READ_CATALOG)?;
     let seed = f.seed.unwrap_or(1);
     let paper = build(&s, &exam, &subject, seed, f.country.as_deref()).await?;
-    let mut out = into_out(paper, f.include_explanation.unwrap_or(false));
+    let mut out = into_out(
+        paper,
+        f.include_explanation.unwrap_or(false),
+        s.media_base_url.as_ref(),
+    );
     if f.include_passage.unwrap_or(false) {
         let pids: Vec<String> = out
             .sections
@@ -182,7 +186,10 @@ pub async fn assemble_paper(
             .flat_map(|sec| sec.questions.iter().filter_map(|q| q.passage_id.clone()))
             .collect();
         if !pids.is_empty() {
-            let map = store::catalog::get_passages(&s, &pids).await?;
+            let mut map = store::catalog::get_passages(&s, &pids).await?;
+            for p in map.values_mut() {
+                core::catalog::resolve_rich_text(&mut p.text, s.media_base_url.as_ref());
+            }
             for sec in &mut out.sections {
                 for q in &mut sec.questions {
                     if let Some(ref pid) = q.passage_id {
@@ -247,7 +254,24 @@ pub async fn score_paper(
             .map(|m| {
                 let (answer, explanation) = if with_explanation {
                     if let Some(q) = q_map.get(&m.id) {
-                        (Some(q.answer.clone()), q.explanation.clone())
+                        let mut exp = q.explanation.clone();
+                        if let Some(ref mut e) = exp {
+                            core::catalog::resolve_rich_text(
+                                &mut e.key_point,
+                                s.media_base_url.as_ref(),
+                            );
+                            core::catalog::resolve_rich_text(
+                                &mut e.body,
+                                s.media_base_url.as_ref(),
+                            );
+                            if let Some(ref mut trap) = e.trap {
+                                core::catalog::resolve_rich_text(
+                                    trap,
+                                    s.media_base_url.as_ref(),
+                                );
+                            }
+                        }
+                        (Some(q.answer.clone()), exp)
                     } else {
                         (None, None)
                     }
@@ -291,7 +315,11 @@ async fn build(
     core::papers::assemble(&bank, seed).map_err(|u| AppError::Conflict(u.detail()))
 }
 
-fn into_out(paper: core::papers::AssembledPaper, include_explanation: bool) -> AssembledPaperOut {
+fn into_out(
+    paper: core::papers::AssembledPaper,
+    include_explanation: bool,
+    media_base_url: &str,
+) -> AssembledPaperOut {
     let total = paper.total();
     AssembledPaperOut {
         exam: paper.exam,
@@ -308,7 +336,7 @@ fn into_out(paper: core::papers::AssembledPaper, include_explanation: bool) -> A
                 questions: sec
                     .questions
                     .iter()
-                    .map(|q| core::catalog::render(q, include_explanation))
+                    .map(|q| core::catalog::render(q, include_explanation, media_base_url))
                     .collect(),
             })
             .collect(),

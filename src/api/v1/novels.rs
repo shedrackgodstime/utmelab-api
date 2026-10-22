@@ -40,16 +40,20 @@ pub async fn list(
     Query(f): Query<List>,
 ) -> Result<Json<Vec<core::models::Novel>>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
-    Ok(Json(
-        store::catalog::list_novels(
-            &s,
-            f.exam.as_deref(),
-            f.year,
-            f.featured,
-            f.category.as_deref(),
-        )
-        .await?,
-    ))
+    let mut novels = store::catalog::list_novels(
+        &s,
+        f.exam.as_deref(),
+        f.year,
+        f.featured,
+        f.category.as_deref(),
+    )
+    .await?;
+    for n in &mut novels {
+        if let Some(ref mut img) = n.cover_image {
+            *img = core::catalog::resolve_media_url(img, s.media_base_url.as_ref());
+        }
+    }
+    Ok(Json(novels))
 }
 
 #[utoipa::path(
@@ -71,7 +75,12 @@ pub async fn detail(
 ) -> Result<Json<core::models::NovelDoc>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
     match store::catalog::get_novel_doc(&s, &id).await? {
-        Some(d) => Ok(Json(d)),
+        Some(mut d) => {
+            if let Some(ref mut img) = d.novel.cover_image {
+                *img = core::catalog::resolve_media_url(img, s.media_base_url.as_ref());
+            }
+            Ok(Json(d))
+        }
         None => Err(AppError::NotFound),
     }
 }
@@ -122,7 +131,14 @@ pub async fn questions(
         .into_iter()
         .skip(start)
         .take(per_page as usize)
-        .map(|q| core::catalog::render_novel_question(&id, &q, with_explanation))
+        .map(|q| {
+            core::catalog::render_novel_question(
+                &id,
+                &q,
+                with_explanation,
+                s.media_base_url.as_ref(),
+            )
+        })
         .collect();
     Ok(Json(core::models::Page::new(
         rendered,

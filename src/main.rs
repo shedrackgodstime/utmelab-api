@@ -130,6 +130,7 @@ async fn run(cfg: Config) {
             "v{}",
             utmelab_api::store::schema::CONTRACT_VERSION
         ))),
+        media_base_url: Arc::from(cfg.media_base_url.as_str()),
     };
     store::sync::spawn_sync_task(&state, cfg.clone());
     let app = routes::router(state, &cfg);

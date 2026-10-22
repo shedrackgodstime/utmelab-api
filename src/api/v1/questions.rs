@@ -48,10 +48,17 @@ pub async fn one(
             let mut rendered = core::catalog::render(
                 &q,
                 f.include_explanation.unwrap_or(false),
+                s.media_base_url.as_ref(),
             );
             if f.include_passage.unwrap_or(false) {
                 if let Some(ref pid) = q.passage_id {
-                    rendered.passage = store::catalog::get_passage(&s, pid).await?;
+                    if let Some(mut passage) = store::catalog::get_passage(&s, pid).await? {
+                        core::catalog::resolve_rich_text(
+                            &mut passage.text,
+                            s.media_base_url.as_ref(),
+                        );
+                        rendered.passage = Some(passage);
+                    }
                 }
             }
             Ok(Json(rendered))
@@ -137,7 +144,11 @@ pub async fn list(
             .filter_map(|q| q.passage_id.clone())
             .collect();
         if !pids.is_empty() {
-            store::catalog::get_passages(&s, &pids).await?
+            let mut map = store::catalog::get_passages(&s, &pids).await?;
+            for p in map.values_mut() {
+                core::catalog::resolve_rich_text(&mut p.text, s.media_base_url.as_ref());
+            }
+            map
         } else {
             std::collections::HashMap::new()
         }
@@ -148,7 +159,11 @@ pub async fn list(
     let rendered: Vec<core::models::RenderedQuestion> = questions
         .iter()
         .map(|q| {
-            let mut r = core::catalog::render(q, with_explanation);
+            let mut r = core::catalog::render(
+                q,
+                with_explanation,
+                s.media_base_url.as_ref(),
+            );
             if f.include_passage.unwrap_or(false) {
                 if let Some(ref pid) = q.passage_id {
                     r.passage = passages.get(pid).cloned();
@@ -275,7 +290,11 @@ pub async fn sample(
             .filter_map(|q| q.passage_id.clone())
             .collect();
         if !pids.is_empty() {
-            Some(store::catalog::get_passages(&s, &pids).await?)
+            let mut map = store::catalog::get_passages(&s, &pids).await?;
+            for p in map.values_mut() {
+                core::catalog::resolve_rich_text(&mut p.text, s.media_base_url.as_ref());
+            }
+            Some(map)
         } else {
             None
         }
@@ -286,7 +305,11 @@ pub async fn sample(
     let rendered: Vec<core::models::RenderedQuestion> = candidates
         .iter()
         .map(|q| {
-            let mut r = core::catalog::render(q, with_explanation);
+            let mut r = core::catalog::render(
+                q,
+                with_explanation,
+                s.media_base_url.as_ref(),
+            );
             if let Some(ref map) = passages {
                 if let Some(ref pid) = q.passage_id {
                     r.passage = map.get(pid).cloned();

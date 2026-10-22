@@ -49,17 +49,21 @@ pub async fn list(
         .filter(|s| !s.is_empty())
         .collect();
     if !ids.is_empty() {
-        let map = store::catalog::get_passages(&s, &ids).await?;
+        let mut map = store::catalog::get_passages(&s, &ids).await?;
         let mut out = Vec::new();
         for id in ids {
-            if let Some(p) = map.get(&id) {
-                out.push(p.clone());
+            if let Some(mut p) = map.remove(&id) {
+                core::catalog::resolve_rich_text(&mut p.text, s.media_base_url.as_ref());
+                out.push(p);
             }
         }
         return Ok(Json(out));
     }
     if let (Some(exam), Some(subject)) = (&f.exam, &f.subject) {
-        let passages = store::catalog::list_passages(&s, exam, subject).await?;
+        let mut passages = store::catalog::list_passages(&s, exam, subject).await?;
+        for p in &mut passages {
+            core::catalog::resolve_rich_text(&mut p.text, s.media_base_url.as_ref());
+        }
         return Ok(Json(passages));
     }
     Ok(Json(Vec::new()))
@@ -84,7 +88,10 @@ pub async fn one(
 ) -> Result<Json<core::models::Passage>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
     match store::catalog::get_passage(&s, &id).await? {
-        Some(p) => Ok(Json(p)),
+        Some(mut p) => {
+            core::catalog::resolve_rich_text(&mut p.text, s.media_base_url.as_ref());
+            Ok(Json(p))
+        }
         None => Err(AppError::NotFound),
     }
 }

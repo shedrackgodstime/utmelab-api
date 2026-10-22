@@ -7,21 +7,70 @@ use super::models::{
 };
 use super::papers;
 
+/// Compose a complete URL for a stored figure filename. If the reference is
+/// already an absolute URL (https://, http://, data:, or //), it is returned
+/// unchanged. Otherwise, the reference is resolved against `media_base_url`.
+pub fn resolve_media_url(url: &str, media_base_url: &str) -> String {
+    let trimmed = url.trim();
+    if trimmed.starts_with("https://")
+        || trimmed.starts_with("http://")
+        || trimmed.starts_with("data:")
+        || trimmed.starts_with("//")
+    {
+        trimmed.to_string()
+    } else {
+        format!(
+            "{}/{}",
+            media_base_url.trim_end_matches('/'),
+            trimmed.trim_start_matches('/')
+        )
+    }
+}
+
+pub fn resolve_rich_text(rt: &mut super::models::RichText, media_base_url: &str) {
+    for inline in &mut rt.inline {
+        if let super::models::InlineKind::Image { url, .. } = &mut inline.kind {
+            *url = resolve_media_url(url, media_base_url);
+        }
+    }
+}
+
 /// Present one novel quiz row. Same withholding contract as [`render`];
 /// `novel_id` is stamped by the caller. The stored row does not carry it.
 pub fn render_novel_question(
     novel_id: &str,
     q: &super::models::NovelQuestion,
     include_explanation: bool,
+    media_base_url: &str,
 ) -> RenderedNovelQuestion {
+    let mut text = q.text.clone();
+    resolve_rich_text(&mut text, media_base_url);
+
+    let mut options = q.options.clone();
+    for opt in &mut options {
+        resolve_rich_text(&mut opt.text, media_base_url);
+    }
+
+    let explanation = include_explanation
+        .then(|| q.explanation.clone())
+        .flatten()
+        .map(|mut exp| {
+            resolve_rich_text(&mut exp.key_point, media_base_url);
+            resolve_rich_text(&mut exp.body, media_base_url);
+            if let Some(trap) = &mut exp.trap {
+                resolve_rich_text(trap, media_base_url);
+            }
+            exp
+        });
+
     RenderedNovelQuestion {
         id: q.id.clone(),
         novel_id: novel_id.to_owned(),
         chapter_number: q.chapter_number,
-        text: q.text.clone(),
-        options: q.options.clone(),
+        text,
+        options,
         answer: include_explanation.then(|| q.answer.clone()),
-        explanation: include_explanation.then(|| q.explanation.clone()).flatten(),
+        explanation,
         verified: q.verified,
     }
 }
@@ -156,16 +205,41 @@ pub fn assemble_syllabus(
 }
 
 /// Present a stored question. The answer and working ride along only on
-/// explicit request; everything else passes through untouched.
-pub fn render(q: &Question, include_explanation: bool) -> RenderedQuestion {
+/// explicit request; everything else passes through untouched, with image
+/// filenames resolved against `media_base_url`.
+pub fn render(
+    q: &Question,
+    include_explanation: bool,
+    media_base_url: &str,
+) -> RenderedQuestion {
+    let mut text = q.text.clone();
+    resolve_rich_text(&mut text, media_base_url);
+
+    let mut options = q.options.clone();
+    for opt in &mut options {
+        resolve_rich_text(&mut opt.text, media_base_url);
+    }
+
+    let explanation = include_explanation
+        .then(|| q.explanation.clone())
+        .flatten()
+        .map(|mut exp| {
+            resolve_rich_text(&mut exp.key_point, media_base_url);
+            resolve_rich_text(&mut exp.body, media_base_url);
+            if let Some(trap) = &mut exp.trap {
+                resolve_rich_text(trap, media_base_url);
+            }
+            exp
+        });
+
     RenderedQuestion {
         id: q.id.clone(),
         exam: q.exam.clone(),
         subject: q.subject.clone(),
         year: q.year,
         source: q.source.clone(),
-        text: q.text.clone(),
-        options: q.options.clone(),
+        text,
+        options,
         subtopic_id: q.subtopic_id.clone(),
         section: q.section.clone(),
         passage_id: q.passage_id.clone(),
@@ -174,7 +248,7 @@ pub fn render(q: &Question, include_explanation: bool) -> RenderedQuestion {
         difficulty: q.difficulty,
         verified: q.verified,
         answer: include_explanation.then(|| q.answer.clone()),
-        explanation: include_explanation.then(|| q.explanation.clone()).flatten(),
+        explanation,
     }
 }
 
@@ -253,7 +327,11 @@ mod tests {
 
     #[test]
     fn render_withholds_answer_by_default() {
-        let r = render(&sample_question(), false);
+        let r = render(
+            &sample_question(),
+            false,
+            crate::config::DEFAULT_MEDIA_BASE_URL,
+        );
         assert_eq!(r.id, "q1");
         assert_eq!(r.answer, None);
         assert_eq!(r.explanation, None);
@@ -267,10 +345,95 @@ mod tests {
     fn render_includes_answer_on_request() {
         let mut q = sample_question();
         q.subtopic_id = Some("sub-123".to_string());
-        let r = render(&q, true);
+        let r = render(&q, true, crate::config::DEFAULT_MEDIA_BASE_URL);
         assert_eq!(r.answer.as_deref(), Some("a"));
         assert!(r.explanation.is_some());
         assert_eq!(r.subtopic_id.as_deref(), Some("sub-123"));
+    }
+
+    #[test]
+    fn resolve_media_url_formats() {
+        let base = "https://assets.utmelab.com/images";
+        assert_eq!(
+            resolve_media_url("0123456789abcdef.png", base),
+            "https://assets.utmelab.com/images/0123456789abcdef.png"
+        );
+        assert_eq!(
+            resolve_media_url("/leading/slash.png", base),
+            "https://assets.utmelab.com/images/leading/slash.png"
+        );
+        assert_eq!(
+            resolve_media_url("https://myschool.ng/fig.png", base),
+            "https://myschool.ng/fig.png"
+        );
+        assert_eq!(
+            resolve_media_url("http://example.com/fig.png", base),
+            "http://example.com/fig.png"
+        );
+        assert_eq!(
+            resolve_media_url("//cdn.example.com/fig.png", base),
+            "//cdn.example.com/fig.png"
+        );
+        assert_eq!(
+            resolve_media_url("data:image/png;base64,abc", base),
+            "data:image/png;base64,abc"
+        );
+    }
+
+    #[test]
+    fn render_resolves_image_filenames_in_all_fields() {
+        use crate::core::models::*;
+        let mut q = sample_question();
+        q.text.inline = vec![Inline {
+            start: 0,
+            len: 0,
+            kind: InlineKind::Image {
+                url: "stem_diagram.png".to_string(),
+                position: ImagePosition::Above,
+                alt: Some("diagram".to_string()),
+            },
+        }];
+        q.options[0].text.inline = vec![Inline {
+            start: 0,
+            len: 0,
+            kind: InlineKind::Image {
+                url: "https://external.org/option.png".to_string(),
+                position: ImagePosition::Below,
+                alt: None,
+            },
+        }];
+        if let Some(exp) = &mut q.explanation {
+            exp.key_point.inline = vec![Inline {
+                start: 0,
+                len: 0,
+                kind: InlineKind::Image {
+                url: "keypoint.png".to_string(),
+                position: ImagePosition::Above,
+                alt: None,
+            },
+        }];
+        }
+
+        let r = render(&q, true, "https://assets.utmelab.com/images");
+        match &r.text.inline[0].kind {
+            InlineKind::Image { url, .. } => {
+                assert_eq!(url, "https://assets.utmelab.com/images/stem_diagram.png");
+            }
+            _ => panic!("expected image"),
+        }
+        match &r.options[0].text.inline[0].kind {
+            InlineKind::Image { url, .. } => {
+                assert_eq!(url, "https://external.org/option.png");
+            }
+            _ => panic!("expected image"),
+        }
+        let exp = r.explanation.expect("explanation present");
+        match &exp.key_point.inline[0].kind {
+            InlineKind::Image { url, .. } => {
+                assert_eq!(url, "https://assets.utmelab.com/images/keypoint.png");
+            }
+            _ => panic!("expected image"),
+        }
     }
 
     #[test]
