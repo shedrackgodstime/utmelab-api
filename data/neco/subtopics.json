@@ -23602,5 +23602,1244 @@
     "name": "Bambale, M.B",
     "order": 1,
     "objectives": []
+  },
+  {
+    "slug": "paper-ii",
+    "topic": "paper-i",
+    "name": "Paper II",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "paper-iii",
+    "topic": "paper-i",
+    "name": "Paper III",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "introduction-to-literature",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "INTRODUCTION TO LITERATURE",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-literature",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Meaning of Literature",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "genres-of-literature",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Genres of Literature",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "literary-appreciation",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Literary Appreciation",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "prose",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "PROSE",
+    "order": 5,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-prose",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Meaning of Prose",
+    "order": 6,
+    "objectives": []
+  },
+  {
+    "slug": "types-of-prose",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Types of Prose",
+    "order": 7,
+    "objectives": []
+  },
+  {
+    "slug": "elements-of-prose",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Elements of Prose",
+    "order": 8,
+    "objectives": []
+  },
+  {
+    "slug": "drama",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "DRAMA",
+    "order": 9,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-drama",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Meaning of Drama",
+    "order": 10,
+    "objectives": []
+  },
+  {
+    "slug": "types-of-drama",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Types of Drama",
+    "order": 11,
+    "objectives": []
+  },
+  {
+    "slug": "elements-of-drama",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Elements of Drama",
+    "order": 12,
+    "objectives": []
+  },
+  {
+    "slug": "poetry",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "POETRY",
+    "order": 13,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-poetry",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Meaning of Poetry",
+    "order": 14,
+    "objectives": []
+  },
+  {
+    "slug": "types-of-poetry",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Types of Poetry",
+    "order": 15,
+    "objectives": []
+  },
+  {
+    "slug": "elements-of-poetry",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Elements of Poetry",
+    "order": 16,
+    "objectives": []
+  },
+  {
+    "slug": "literary-devices",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "LITERARY DEVICES",
+    "order": 17,
+    "objectives": []
+  },
+  {
+    "slug": "figures-of-speech",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Figures of Speech",
+    "order": 18,
+    "objectives": []
+  },
+  {
+    "slug": "african-prose",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "AFRICAN PROSE",
+    "order": 19,
+    "objectives": []
+  },
+  {
+    "slug": "study-of-prescribed-african-texts",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Study of Prescribed African Texts",
+    "order": 20,
+    "objectives": []
+  },
+  {
+    "slug": "non-african-prose",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "NON-AFRICAN PROSE",
+    "order": 21,
+    "objectives": []
+  },
+  {
+    "slug": "study-of-prescribed-non-african-texts",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Study of Prescribed Non-African Texts",
+    "order": 22,
+    "objectives": []
+  },
+  {
+    "slug": "african-drama",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "AFRICAN DRAMA",
+    "order": 23,
+    "objectives": []
+  },
+  {
+    "slug": "study-of-prescribed-african-plays",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Study of Prescribed African Plays",
+    "order": 24,
+    "objectives": []
+  },
+  {
+    "slug": "non-african-drama",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "NON-AFRICAN DRAMA",
+    "order": 25,
+    "objectives": []
+  },
+  {
+    "slug": "study-of-prescribed-non-african-plays",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Study of Prescribed Non-African Plays",
+    "order": 26,
+    "objectives": []
+  },
+  {
+    "slug": "african-poetry",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "AFRICAN POETRY",
+    "order": 27,
+    "objectives": []
+  },
+  {
+    "slug": "study-of-prescribed-poems",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Study of Prescribed Poems",
+    "order": 28,
+    "objectives": []
+  },
+  {
+    "slug": "non-african-poetry",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "NON-AFRICAN POETRY",
+    "order": 29,
+    "objectives": []
+  },
+  {
+    "slug": "study-of-prescribed-poems",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Study of Prescribed Poems",
+    "order": 30,
+    "objectives": []
+  },
+  {
+    "slug": "literary-appreciation",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "LITERARY APPRECIATION",
+    "order": 31,
+    "objectives": []
+  },
+  {
+    "slug": "textual-analysis",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Textual Analysis",
+    "order": 32,
+    "objectives": []
+  },
+  {
+    "slug": "comparative-study",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Comparative Study",
+    "order": 33,
+    "objectives": []
+  },
+  {
+    "slug": "contextual-analysis",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Contextual Analysis",
+    "order": 34,
+    "objectives": []
+  },
+  {
+    "slug": "oral-literature",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "ORAL LITERATURE",
+    "order": 35,
+    "objectives": []
+  },
+  {
+    "slug": "folktales",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Folktales",
+    "order": 36,
+    "objectives": []
+  },
+  {
+    "slug": "myths-and-legends",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Myths and Legends",
+    "order": 37,
+    "objectives": []
+  },
+  {
+    "slug": "proverbs",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Proverbs",
+    "order": 38,
+    "objectives": []
+  },
+  {
+    "slug": "key-areas-frequently-tested-in-neco-literature-in-english",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "KEY AREAS FREQUENTLY TESTED IN NECO LITERATURE IN ENGLISH",
+    "order": 39,
+    "objectives": []
+  },
+  {
+    "slug": "subjects",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Subjects",
+    "order": 40,
+    "objectives": []
+  },
+  {
+    "slug": "recent-news",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Recent News",
+    "order": 41,
+    "objectives": []
+  },
+  {
+    "slug": "study-practice",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Study & Practice",
+    "order": 42,
+    "objectives": []
+  },
+  {
+    "slug": "student-community",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Student Community",
+    "order": 43,
+    "objectives": []
+  },
+  {
+    "slug": "opportunities",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Opportunities",
+    "order": 44,
+    "objectives": []
+  },
+  {
+    "slug": "popular-exams",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Popular Exams",
+    "order": 45,
+    "objectives": []
+  },
+  {
+    "slug": "help-company",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Help & Company",
+    "order": 46,
+    "objectives": []
+  },
+  {
+    "slug": "our-network",
+    "topic": "detailed-literature-in-english-syllabus",
+    "name": "Our Network",
+    "order": 47,
+    "objectives": []
+  },
+  {
+    "slug": "paper-ii-marketing",
+    "topic": "paper-i-marketing",
+    "name": "Paper II",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "introduction-to-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "INTRODUCTION TO MARKETING",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Meaning of Marketing",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "evolution-of-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Evolution of Marketing",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "basic-concepts-of-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "BASIC CONCEPTS OF MARKETING",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "needs-wants-and-demand",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Needs, Wants and Demand",
+    "order": 5,
+    "objectives": []
+  },
+  {
+    "slug": "products-and-services",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Products and Services",
+    "order": 6,
+    "objectives": []
+  },
+  {
+    "slug": "customer-satisfaction",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Customer Satisfaction",
+    "order": 7,
+    "objectives": []
+  },
+  {
+    "slug": "marketing-environment",
+    "topic": "detailed-marketing-syllabus",
+    "name": "MARKETING ENVIRONMENT",
+    "order": 8,
+    "objectives": []
+  },
+  {
+    "slug": "internal-environment",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Internal Environment",
+    "order": 9,
+    "objectives": []
+  },
+  {
+    "slug": "external-environment",
+    "topic": "detailed-marketing-syllabus",
+    "name": "External Environment",
+    "order": 10,
+    "objectives": []
+  },
+  {
+    "slug": "consumer-behaviour",
+    "topic": "detailed-marketing-syllabus",
+    "name": "CONSUMER BEHAVIOUR",
+    "order": 11,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-consumer-behaviour",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Meaning of Consumer Behaviour",
+    "order": 12,
+    "objectives": []
+  },
+  {
+    "slug": "factors-influencing-consumer-behaviour",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Factors Influencing Consumer Behaviour",
+    "order": 13,
+    "objectives": []
+  },
+  {
+    "slug": "buying-decision-process",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Buying Decision Process",
+    "order": 14,
+    "objectives": []
+  },
+  {
+    "slug": "market-segmentation",
+    "topic": "detailed-marketing-syllabus",
+    "name": "MARKET SEGMENTATION",
+    "order": 15,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-market-segmentation",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Meaning of Market Segmentation",
+    "order": 16,
+    "objectives": []
+  },
+  {
+    "slug": "bases-for-market-segmentation",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Bases for Market Segmentation",
+    "order": 17,
+    "objectives": []
+  },
+  {
+    "slug": "target-market-selection",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Target Market Selection",
+    "order": 18,
+    "objectives": []
+  },
+  {
+    "slug": "marketing-research",
+    "topic": "detailed-marketing-syllabus",
+    "name": "MARKETING RESEARCH",
+    "order": 19,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-marketing-research",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Meaning of Marketing Research",
+    "order": 20,
+    "objectives": []
+  },
+  {
+    "slug": "importance-of-marketing-research",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Importance of Marketing Research",
+    "order": 21,
+    "objectives": []
+  },
+  {
+    "slug": "research-process",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Research Process",
+    "order": 22,
+    "objectives": []
+  },
+  {
+    "slug": "sources-of-data",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Sources of Data",
+    "order": 23,
+    "objectives": []
+  },
+  {
+    "slug": "product-planning-and-development",
+    "topic": "detailed-marketing-syllabus",
+    "name": "PRODUCT PLANNING AND DEVELOPMENT",
+    "order": 24,
+    "objectives": []
+  },
+  {
+    "slug": "product-concept",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Product Concept",
+    "order": 25,
+    "objectives": []
+  },
+  {
+    "slug": "product-life-cycle",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Product Life Cycle",
+    "order": 26,
+    "objectives": []
+  },
+  {
+    "slug": "branding",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Branding",
+    "order": 27,
+    "objectives": []
+  },
+  {
+    "slug": "packaging",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Packaging",
+    "order": 28,
+    "objectives": []
+  },
+  {
+    "slug": "labelling",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Labelling",
+    "order": 29,
+    "objectives": []
+  },
+  {
+    "slug": "pricing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "PRICING",
+    "order": 30,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-pricing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Meaning of Pricing",
+    "order": 31,
+    "objectives": []
+  },
+  {
+    "slug": "pricing-objectives",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Pricing Objectives",
+    "order": 32,
+    "objectives": []
+  },
+  {
+    "slug": "pricing-methods",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Pricing Methods",
+    "order": 33,
+    "objectives": []
+  },
+  {
+    "slug": "factors-affecting-pricing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Factors Affecting Pricing",
+    "order": 34,
+    "objectives": []
+  },
+  {
+    "slug": "promotion",
+    "topic": "detailed-marketing-syllabus",
+    "name": "PROMOTION",
+    "order": 35,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-promotion",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Meaning of Promotion",
+    "order": 36,
+    "objectives": []
+  },
+  {
+    "slug": "promotional-mix",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Promotional Mix",
+    "order": 37,
+    "objectives": []
+  },
+  {
+    "slug": "distribution",
+    "topic": "detailed-marketing-syllabus",
+    "name": "DISTRIBUTION",
+    "order": 38,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-distribution",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Meaning of Distribution",
+    "order": 39,
+    "objectives": []
+  },
+  {
+    "slug": "channels-of-distribution",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Channels of Distribution",
+    "order": 40,
+    "objectives": []
+  },
+  {
+    "slug": "middlemen",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Middlemen",
+    "order": 41,
+    "objectives": []
+  },
+  {
+    "slug": "functions-of-distribution-channels",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Functions of Distribution Channels",
+    "order": 42,
+    "objectives": []
+  },
+  {
+    "slug": "retailing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "RETAILING",
+    "order": 43,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-retailing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Meaning of Retailing",
+    "order": 44,
+    "objectives": []
+  },
+  {
+    "slug": "types-of-retailers",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Types of Retailers",
+    "order": 45,
+    "objectives": []
+  },
+  {
+    "slug": "functions-of-retailers",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Functions of Retailers",
+    "order": 46,
+    "objectives": []
+  },
+  {
+    "slug": "wholesaling",
+    "topic": "detailed-marketing-syllabus",
+    "name": "WHOLESALING",
+    "order": 47,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-wholesaling",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Meaning of Wholesaling",
+    "order": 48,
+    "objectives": []
+  },
+  {
+    "slug": "functions-of-wholesalers",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Functions of Wholesalers",
+    "order": 49,
+    "objectives": []
+  },
+  {
+    "slug": "types-of-wholesalers",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Types of Wholesalers",
+    "order": 50,
+    "objectives": []
+  },
+  {
+    "slug": "international-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "INTERNATIONAL MARKETING",
+    "order": 51,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-international-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Meaning of International Marketing",
+    "order": 52,
+    "objectives": []
+  },
+  {
+    "slug": "export-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Export Marketing",
+    "order": 53,
+    "objectives": []
+  },
+  {
+    "slug": "import-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Import Marketing",
+    "order": 54,
+    "objectives": []
+  },
+  {
+    "slug": "challenges-of-international-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Challenges of International Marketing",
+    "order": 55,
+    "objectives": []
+  },
+  {
+    "slug": "e-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "E-MARKETING",
+    "order": 56,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-e-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Meaning of E-Marketing",
+    "order": 57,
+    "objectives": []
+  },
+  {
+    "slug": "online-marketing-tools",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Online Marketing Tools",
+    "order": 58,
+    "objectives": []
+  },
+  {
+    "slug": "advantages-of-e-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Advantages of E-Marketing",
+    "order": 59,
+    "objectives": []
+  },
+  {
+    "slug": "marketing-of-services",
+    "topic": "detailed-marketing-syllabus",
+    "name": "MARKETING OF SERVICES",
+    "order": 60,
+    "objectives": []
+  },
+  {
+    "slug": "characteristics-of-services",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Characteristics of Services",
+    "order": 61,
+    "objectives": []
+  },
+  {
+    "slug": "service-quality",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Service Quality",
+    "order": 62,
+    "objectives": []
+  },
+  {
+    "slug": "ethics-in-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "ETHICS IN MARKETING",
+    "order": 63,
+    "objectives": []
+  },
+  {
+    "slug": "marketing-ethics",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Marketing Ethics",
+    "order": 64,
+    "objectives": []
+  },
+  {
+    "slug": "social-responsibility",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Social Responsibility",
+    "order": 65,
+    "objectives": []
+  },
+  {
+    "slug": "entrepreneurship-and-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "ENTREPRENEURSHIP AND MARKETING",
+    "order": 66,
+    "objectives": []
+  },
+  {
+    "slug": "entrepreneurship",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Entrepreneurship",
+    "order": 67,
+    "objectives": []
+  },
+  {
+    "slug": "marketing-in-small-businesses",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Marketing in Small Businesses",
+    "order": 68,
+    "objectives": []
+  },
+  {
+    "slug": "marketing-information-system",
+    "topic": "detailed-marketing-syllabus",
+    "name": "MARKETING INFORMATION SYSTEM",
+    "order": 69,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-of-marketing-information-system-mis",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Meaning of Marketing Information System (MIS)",
+    "order": 70,
+    "objectives": []
+  },
+  {
+    "slug": "components-of-mis",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Components of MIS",
+    "order": 71,
+    "objectives": []
+  },
+  {
+    "slug": "key-areas-frequently-tested-in-neco-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "KEY AREAS FREQUENTLY TESTED IN NECO MARKETING",
+    "order": 72,
+    "objectives": []
+  },
+  {
+    "slug": "subjects-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Subjects",
+    "order": 73,
+    "objectives": []
+  },
+  {
+    "slug": "recent-news-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Recent News",
+    "order": 74,
+    "objectives": []
+  },
+  {
+    "slug": "study-practice-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Study & Practice",
+    "order": 75,
+    "objectives": []
+  },
+  {
+    "slug": "student-community-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Student Community",
+    "order": 76,
+    "objectives": []
+  },
+  {
+    "slug": "opportunities-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Opportunities",
+    "order": 77,
+    "objectives": []
+  },
+  {
+    "slug": "popular-exams-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Popular Exams",
+    "order": 78,
+    "objectives": []
+  },
+  {
+    "slug": "help-company-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Help & Company",
+    "order": 79,
+    "objectives": []
+  },
+  {
+    "slug": "our-network-marketing",
+    "topic": "detailed-marketing-syllabus",
+    "name": "Our Network",
+    "order": 80,
+    "objectives": []
+  },
+  {
+    "slug": "importance-of-farm-animals",
+    "topic": "livestock-production",
+    "name": "Importance of farm animals",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "classification-of-livestock-monogastric-and-ruminants",
+    "topic": "livestock-production",
+    "name": "Classification of livestock (monogastric and ruminants)",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "internal-organs-and-their-functions",
+    "topic": "livestock-production",
+    "name": "Internal organs and their functions",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "body-systems-digestive-respiratory-reproductive-etc",
+    "topic": "livestock-production",
+    "name": "Body systems (digestive, respiratory, reproductive, etc.)",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "reproduction-in-animals",
+    "topic": "livestock-production",
+    "name": "Reproduction in animals",
+    "order": 5,
+    "objectives": []
+  },
+  {
+    "slug": "classes-of-animal-feed",
+    "topic": "livestock-production",
+    "name": "Classes of animal feed",
+    "order": 6,
+    "objectives": []
+  },
+  {
+    "slug": "nutrients-carbohydrates-proteins-fats-vitamins-minerals-wate",
+    "topic": "livestock-production",
+    "name": "Nutrients (carbohydrates, proteins, fats, vitamins, minerals, water)",
+    "order": 7,
+    "objectives": []
+  },
+  {
+    "slug": "feeding-systems-and-rations",
+    "topic": "livestock-production",
+    "name": "Feeding systems and rations",
+    "order": 8,
+    "objectives": []
+  },
+  {
+    "slug": "feed-formulation",
+    "topic": "livestock-production",
+    "name": "Feed formulation",
+    "order": 9,
+    "objectives": []
+  },
+  {
+    "slug": "prevention-of-malnutrition",
+    "topic": "livestock-production",
+    "name": "Prevention of malnutrition",
+    "order": 10,
+    "objectives": []
+  },
+  {
+    "slug": "pasture-management",
+    "topic": "livestock-production",
+    "name": "Pasture management",
+    "order": 11,
+    "objectives": []
+  },
+  {
+    "slug": "breeding-methods-inbreeding-crossbreeding",
+    "topic": "livestock-production",
+    "name": "Breeding methods (inbreeding, crossbreeding)",
+    "order": 12,
+    "objectives": []
+  },
+  {
+    "slug": "artificial-insemination",
+    "topic": "livestock-production",
+    "name": "Artificial insemination",
+    "order": 13,
+    "objectives": []
+  },
+  {
+    "slug": "selection-of-livestock",
+    "topic": "livestock-production",
+    "name": "Selection of livestock",
+    "order": 14,
+    "objectives": []
+  },
+  {
+    "slug": "types-of-animal-diseases",
+    "topic": "livestock-production",
+    "name": "Types of animal diseases",
+    "order": 15,
+    "objectives": []
+  },
+  {
+    "slug": "symptoms-and-diagnosis",
+    "topic": "livestock-production",
+    "name": "Symptoms and diagnosis",
+    "order": 16,
+    "objectives": []
+  },
+  {
+    "slug": "prevention-and-control",
+    "topic": "livestock-production",
+    "name": "Prevention and control",
+    "order": 17,
+    "objectives": []
+  },
+  {
+    "slug": "parasites-and-pests",
+    "topic": "livestock-production",
+    "name": "Parasites and pests",
+    "order": 18,
+    "objectives": []
+  },
+  {
+    "slug": "treatment-methods",
+    "topic": "livestock-production",
+    "name": "Treatment methods",
+    "order": 19,
+    "objectives": []
+  },
+  {
+    "slug": "classes-of-animal-feed",
+    "topic": "animal-nutrition",
+    "name": "Classes of animal feed",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "nutrients-carbohydrates-proteins-fats-vitamins-minerals-wate",
+    "topic": "animal-nutrition",
+    "name": "Nutrients (carbohydrates, proteins, fats, vitamins, minerals, water)",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "feeding-systems-and-rations",
+    "topic": "animal-nutrition",
+    "name": "Feeding systems and rations",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "feed-formulation",
+    "topic": "animal-nutrition",
+    "name": "Feed formulation",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "prevention-of-malnutrition",
+    "topic": "animal-nutrition",
+    "name": "Prevention of malnutrition",
+    "order": 5,
+    "objectives": []
+  },
+  {
+    "slug": "pasture-management",
+    "topic": "animal-nutrition",
+    "name": "Pasture management",
+    "order": 6,
+    "objectives": []
+  },
+  {
+    "slug": "breeding-methods-inbreeding-crossbreeding",
+    "topic": "animal-nutrition",
+    "name": "Breeding methods (inbreeding, crossbreeding)",
+    "order": 7,
+    "objectives": []
+  },
+  {
+    "slug": "artificial-insemination",
+    "topic": "animal-nutrition",
+    "name": "Artificial insemination",
+    "order": 8,
+    "objectives": []
+  },
+  {
+    "slug": "selection-of-livestock",
+    "topic": "animal-nutrition",
+    "name": "Selection of livestock",
+    "order": 9,
+    "objectives": []
+  },
+  {
+    "slug": "types-of-animal-diseases",
+    "topic": "animal-nutrition",
+    "name": "Types of animal diseases",
+    "order": 10,
+    "objectives": []
+  },
+  {
+    "slug": "symptoms-and-diagnosis",
+    "topic": "animal-nutrition",
+    "name": "Symptoms and diagnosis",
+    "order": 11,
+    "objectives": []
+  },
+  {
+    "slug": "prevention-and-control",
+    "topic": "animal-nutrition",
+    "name": "Prevention and control",
+    "order": 12,
+    "objectives": []
+  },
+  {
+    "slug": "parasites-and-pests",
+    "topic": "animal-nutrition",
+    "name": "Parasites and pests",
+    "order": 13,
+    "objectives": []
+  },
+  {
+    "slug": "treatment-methods",
+    "topic": "animal-nutrition",
+    "name": "Treatment methods",
+    "order": 14,
+    "objectives": []
+  },
+  {
+    "slug": "pasture-management",
+    "topic": "pasture-breeding-and-management",
+    "name": "Pasture management",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "breeding-methods-inbreeding-crossbreeding",
+    "topic": "pasture-breeding-and-management",
+    "name": "Breeding methods (inbreeding, crossbreeding)",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "artificial-insemination",
+    "topic": "pasture-breeding-and-management",
+    "name": "Artificial insemination",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "selection-of-livestock",
+    "topic": "pasture-breeding-and-management",
+    "name": "Selection of livestock",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "types-of-animal-diseases",
+    "topic": "pasture-breeding-and-management",
+    "name": "Types of animal diseases",
+    "order": 5,
+    "objectives": []
+  },
+  {
+    "slug": "symptoms-and-diagnosis",
+    "topic": "pasture-breeding-and-management",
+    "name": "Symptoms and diagnosis",
+    "order": 6,
+    "objectives": []
+  },
+  {
+    "slug": "prevention-and-control",
+    "topic": "pasture-breeding-and-management",
+    "name": "Prevention and control",
+    "order": 7,
+    "objectives": []
+  },
+  {
+    "slug": "parasites-and-pests",
+    "topic": "pasture-breeding-and-management",
+    "name": "Parasites and pests",
+    "order": 8,
+    "objectives": []
+  },
+  {
+    "slug": "treatment-methods",
+    "topic": "pasture-breeding-and-management",
+    "name": "Treatment methods",
+    "order": 9,
+    "objectives": []
+  },
+  {
+    "slug": "types-of-animal-diseases",
+    "topic": "animal-health",
+    "name": "Types of animal diseases",
+    "order": 1,
+    "objectives": []
+  },
+  {
+    "slug": "symptoms-and-diagnosis",
+    "topic": "animal-health",
+    "name": "Symptoms and diagnosis",
+    "order": 2,
+    "objectives": []
+  },
+  {
+    "slug": "prevention-and-control",
+    "topic": "animal-health",
+    "name": "Prevention and control",
+    "order": 3,
+    "objectives": []
+  },
+  {
+    "slug": "parasites-and-pests",
+    "topic": "animal-health",
+    "name": "Parasites and pests",
+    "order": 4,
+    "objectives": []
+  },
+  {
+    "slug": "treatment-methods",
+    "topic": "animal-health",
+    "name": "Treatment methods",
+    "order": 5,
+    "objectives": []
   }
 ]

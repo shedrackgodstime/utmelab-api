@@ -3724,5 +3724,77 @@
     "order": 7,
     "weight": 0,
     "objectives": []
+  },
+  {
+    "slug": "paper-i",
+    "subject": "literature-in-english",
+    "exam": "NECO",
+    "name": "Paper I",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "detailed-literature-in-english-syllabus",
+    "subject": "literature-in-english",
+    "exam": "NECO",
+    "name": "Detailed Literature in English Syllabus",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "paper-i-marketing",
+    "subject": "marketing",
+    "exam": "NECO",
+    "name": "Paper I",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "detailed-marketing-syllabus",
+    "subject": "marketing",
+    "exam": "NECO",
+    "name": "Detailed Marketing Syllabus",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "livestock-production",
+    "subject": "livestock-farming",
+    "exam": "NECO",
+    "name": "Livestock Production",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "animal-nutrition",
+    "subject": "livestock-farming",
+    "exam": "NECO",
+    "name": "Animal Nutrition",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "pasture-breeding-and-management",
+    "subject": "livestock-farming",
+    "exam": "NECO",
+    "name": "Pasture, Breeding, and Management",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "animal-health",
+    "subject": "livestock-farming",
+    "exam": "NECO",
+    "name": "Animal Health",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
   }
 ]
