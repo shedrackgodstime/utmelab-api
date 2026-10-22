@@ -607,7 +607,19 @@ mod tests {
         let db = replica().await;
         let conn = connect(&db).await;
         api_schema(&conn).await;
-        bank_schema(&conn, &["exams", "subjects", "questions", "verifications"]).await;
+        bank_schema(
+            &conn,
+            &[
+                "exams",
+                "subjects",
+                "questions",
+                "verifications",
+                "topics",
+                "subtopics",
+                "topic_countries",
+            ],
+        )
+        .await;
         conn.execute(
             "INSERT INTO exams VALUES ('JAMB','Joint Admissions','[\"NG\"]','live',1,4,120,'[]')",
             (),

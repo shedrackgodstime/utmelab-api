@@ -301,11 +301,20 @@ mod tests {
                 "exam_requirements",
                 "questions",
                 "verifications",
+                "topics",
                 "subtopics",
                 "topic_countries",
+                "passages",
+                "blueprints",
             ],
         )
         .await;
+        conn.execute(
+            "INSERT INTO passages VALUES ('p1','JAMB','math',2025,'comprehension','Math Passage','Author','Body','[]')",
+            (),
+        )
+        .await
+        .expect("insert passage");
         conn.execute(
             "INSERT INTO exams VALUES ('JAMB','Joint Admissions','[\"NG\"]','live',1,4,120,'[]')",
             (),
@@ -318,6 +327,24 @@ mod tests {
         )
         .await
         .expect("insert subject");
+        conn.execute(
+            "INSERT INTO subjects VALUES ('math','JAMB','Math',0,1)",
+            (),
+        )
+        .await
+        .expect("insert math subject");
+        conn.execute(
+            "INSERT INTO questions VALUES ('q1','JAMB','math',2025,'past_paper','What is 1+1?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"2\",\"inline\":[]}}]','a',NULL,NULL,'p1','{\"key_point\":{\"text\":\"k\",\"inline\":[]},\"body\":{\"text\":\"b\",\"inline\":[]}}',1.0,1,'h1')",
+            (),
+        )
+        .await
+        .expect("insert question");
+        conn.execute(
+            "INSERT INTO verifications VALUES ('v1','q1','human','pass','[\"answer\",\"explanation\"]','review',NULL,'h1','2026-01-01T00:00:00Z')",
+            (),
+        )
+        .await
+        .expect("insert verification");
         conn.execute(
             "INSERT INTO exam_requirements VALUES ('JAMB','NG','sciences',1,'[\"physics\"]')",
             (),
@@ -370,5 +397,40 @@ mod tests {
             .0,
             StatusCode::NOT_FOUND
         );
+    }
+
+    #[tokio::test]
+    async fn assemble_paper_includes_explanation_and_passages_on_request() {
+        let app = seeded_app().await;
+
+        let (status_default, v_default) = call(
+            app.clone(),
+            "POST",
+            "/api/v1/papers/JAMB/math",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
+        assert_eq!(status_default, StatusCode::OK);
+        assert_eq!(v_default["total"], 1);
+        let q = &v_default["sections"][0]["questions"][0];
+        assert!(q.get("answer").is_none());
+        assert!(q.get("explanation").is_none());
+        assert!(v_default.get("passages").is_none());
+
+        let (status, v) = call(
+            app,
+            "POST",
+            "/api/v1/papers/JAMB/math?include_explanation=true&include_passage=true",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK);
+        let q_with = &v["sections"][0]["questions"][0];
+        assert_eq!(q_with["answer"], "a");
+        assert!(q_with.get("explanation").is_some());
+        assert!(v.get("passages").is_some());
+        assert_eq!(v["passages"]["p1"]["title"], "Math Passage");
     }
 }

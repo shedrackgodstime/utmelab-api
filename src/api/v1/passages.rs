@@ -17,6 +17,10 @@ use crate::{
 pub struct BatchQuery {
     /// Comma-separated passage IDs to fetch in a single round-trip.
     pub ids: Option<String>,
+    /// Optional exam filter when listing passages for a subject.
+    pub exam: Option<String>,
+    /// Optional subject slug filter when listing passages for a subject.
+    pub subject: Option<String>,
 }
 
 #[utoipa::path(
@@ -24,7 +28,7 @@ pub struct BatchQuery {
     path = "/api/v1/passages",
     tag = "catalog",
     operation_id = "listPassages",
-    summary = "Batch retrieve reading passages by IDs.",
+    summary = "Batch retrieve reading passages by IDs or list by subject.",
     params(BatchQuery),
     responses(
         (status = 200, body = [core::models::Passage]),
@@ -44,17 +48,21 @@ pub async fn list(
         .map(|s| s.trim().to_string())
         .filter(|s| !s.is_empty())
         .collect();
-    if ids.is_empty() {
-        return Ok(Json(Vec::new()));
-    }
-    let map = store::catalog::get_passages(&s, &ids).await?;
-    let mut out = Vec::new();
-    for id in ids {
-        if let Some(p) = map.get(&id) {
-            out.push(p.clone());
+    if !ids.is_empty() {
+        let map = store::catalog::get_passages(&s, &ids).await?;
+        let mut out = Vec::new();
+        for id in ids {
+            if let Some(p) = map.get(&id) {
+                out.push(p.clone());
+            }
         }
+        return Ok(Json(out));
     }
-    Ok(Json(out))
+    if let (Some(exam), Some(subject)) = (&f.exam, &f.subject) {
+        let passages = store::catalog::list_passages(&s, exam, subject).await?;
+        return Ok(Json(passages));
+    }
+    Ok(Json(Vec::new()))
 }
 
 #[utoipa::path(
@@ -174,7 +182,7 @@ mod tests {
         assert_eq!(arr[0]["id"], "p1");
 
         let (status, v_empty) = call(
-            app,
+            app.clone(),
             "GET",
             "/api/v1/passages?ids=",
             Some("reader.secret"),
@@ -183,5 +191,18 @@ mod tests {
         .await;
         assert_eq!(status, StatusCode::OK);
         assert_eq!(v_empty.as_array().expect("array").len(), 0);
+
+        let (status, v_subj) = call(
+            app,
+            "GET",
+            "/api/v1/passages?exam=JAMB&subject=english",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK);
+        let subj_arr = v_subj.as_array().expect("array");
+        assert_eq!(subj_arr.len(), 1);
+        assert_eq!(subj_arr[0]["id"], "p1");
     }
 }

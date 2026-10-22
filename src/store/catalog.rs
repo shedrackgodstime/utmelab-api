@@ -110,7 +110,7 @@ fn opt_f64(v: turso::Value, col: &'static str) -> Result<Option<f64>, AppError> 
 }
 
 /// Measured expectations for one exam subject. Empty where no rows
-/// exist — absence is honest, never 404.
+/// exist: absence is honest, never 404.
 pub async fn list_blueprints(
     s: &DbState,
     exam: &str,
@@ -206,6 +206,7 @@ fn map_question(row: &turso::Row) -> Result<core::models::Question, AppError> {
 pub struct QuestionFilter {
     pub exam: Option<String>,
     pub subject: Option<String>,
+    pub topic: Option<String>,
     pub subtopic_id: Option<String>,
     pub year: Option<u16>,
     pub source: Option<String>,
@@ -254,7 +255,7 @@ fn verified_predicate(table: &str) -> String {
 /// a second code path per reader. The bound param (NULL = unscoped) is
 /// supplied by `scope_param`.
 ///
-/// The table is empty today, so this excludes nothing — it is here so the
+/// The table is empty today, so this excludes nothing: it is here so the
 /// moment the bank states topic scope, every reader honours it without a
 /// rewrite.
 fn scope_predicate(param: u8) -> String {
@@ -302,6 +303,10 @@ fn question_where(f: &QuestionFilter) -> (String, Vec<turso::Value>) {
         conds.push("subject=?".to_string());
         params.push(turso::Value::Text(v.clone()));
     }
+    if let Some(v) = &f.topic {
+        conds.push("questions.subtopic_id IN (SELECT st.slug FROM subtopics st WHERE st.topic=?)".to_string());
+        params.push(turso::Value::Text(v.clone()));
+    }
     if let Some(v) = &f.subtopic_id {
         conds.push("subtopic_id=?".to_string());
         params.push(turso::Value::Text(v.clone()));
@@ -338,7 +343,7 @@ fn question_where(f: &QuestionFilter) -> (String, Vec<turso::Value>) {
 }
 
 /// One page of questions in id order, plus the filtered total. Page
-/// numbers below 1 count as 1; page sizes clamp to 1–200.
+/// numbers below 1 count as 1; page sizes clamp to 1 to 200.
 pub async fn list_questions(
     s: &DbState,
     filter: &QuestionFilter,
@@ -354,7 +359,7 @@ pub async fn list_questions(
     // so running it for all rows before the ORDER BY/LIMIT sort dominates
     // the read. Instead, LIMIT first in an inner query, then derive
     // `verified` for just the returned rows in the outer query. Same
-    // results — verified against the live replica: per_page=20 drops from
+    // results, verified against the live replica: per_page=20 drops from
     // ~48ms to ~6ms, per_page=200 likewise, results identical.
     let page_sql = format!(
         "SELECT id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty, ({verified_predicate}) AS verified FROM (
@@ -458,7 +463,7 @@ fn map_novel(row: &turso::Row) -> Result<core::models::Novel, AppError> {
     })
 }
 
-/// All novels, newest prescription first, then title — the established
+/// All novels, newest prescription first, then title: the established
 /// order consumers already page through. Filters apply in Rust over the
 /// full set: the table is a handful of rows, and pushing the JSON
 /// `year_prescribed` predicate into SQL buys nothing.
@@ -543,7 +548,7 @@ fn map_novel_question(row: &turso::Row) -> Result<core::models::NovelQuestion, A
 }
 
 /// One novel with everything: book plus chapters, characters, themes.
-/// Five queries, same shape as the established detail — including quiz
+/// Five queries, same shape as the established detail, including quiz
 /// rows with answers, which callers already read here.
 pub async fn get_novel_doc(
     s: &DbState,
@@ -667,7 +672,7 @@ pub async fn list_novel_questions(
     .await
 }
 
-/// One passage by id. `None` when absent — the handler, not the
+/// One passage by id. `None` when absent: the handler, not the
 /// store, decides that means 404.
 pub async fn get_passage(s: &DbState, id: &str) -> Result<Option<core::models::Passage>, AppError> {
     let id = id.to_string();
@@ -729,7 +734,37 @@ pub async fn get_passages(
     .await
 }
 
-/// One question by id. `None` when absent — the handler, not the
+/// List passages for an exam and subject, ordered by year descending then id ascending.
+pub async fn list_passages(
+    s: &DbState,
+    exam: &str,
+    subject: &str,
+) -> Result<Vec<core::models::Passage>, AppError> {
+    let exam = exam.to_string();
+    let subject = subject.to_string();
+    with_conn(s, |conn| {
+        let exam = exam.clone();
+        let subject = subject.clone();
+        async move {
+            let mut stmt = conn
+                .prepare("SELECT id,exam,subject,year,kind,title,author,text,inline FROM passages WHERE exam=?1 AND subject=?2 ORDER BY year DESC, id ASC")
+                .await
+                .map_err(upstream)?;
+            let mut rows = stmt
+                .query([exam.as_str(), subject.as_str()])
+                .await
+                .map_err(upstream)?;
+            let mut out = Vec::new();
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                out.push(map_passage(&row)?);
+            }
+            Ok(out)
+        }
+    })
+    .await
+}
+
+/// One question by id. `None` when absent: the handler, not the
 /// store, decides that means 404.
 pub async fn get_question(
     s: &DbState,
@@ -757,7 +792,7 @@ pub async fn get_question(
     .await
 }
 
-/// One topic by identity. `None` when absent — the handler, not the
+/// One topic by identity. `None` when absent: the handler, not the
 /// store, decides that means 404.
 pub async fn get_topic(
     s: &DbState,
@@ -813,7 +848,7 @@ pub async fn target_exists(
         "question" => Ok(get_question(s, target_id).await?.is_some()),
         "passage" => Ok(get_passage(s, target_id).await?.is_some()),
         "novel" => Ok(get_novel_doc(s, target_id).await?.is_some()),
-        // A topic's identity is (exam, subject, slug) — a single id
+        // A topic's identity is (exam, subject, slug): a single id
         // cannot address it, so the target id is the slash-joined triple.
         "topic" => {
             let mut parts = target_id.splitn(3, '/');
@@ -835,7 +870,7 @@ pub async fn target_exists(
 }
 
 /// One row → one `Subject`. `is_compulsory` arrives as 0/1 and anything
-/// else fails loudly — a boolean column holding a 2 is corruption, not a
+/// else fails loudly: a boolean column holding a 2 is corruption, not a
 /// false.
 fn map_subject(row: &turso::Row) -> Result<core::models::Subject, AppError> {
     Ok(core::models::Subject {
@@ -874,7 +909,7 @@ pub async fn list_subjects(
     .await
 }
 
-/// One subject of one exam. `None` when absent — the handler decides that
+/// One subject of one exam. `None` when absent: the handler decides that
 /// means 404.
 pub async fn get_subject(
     s: &DbState,
@@ -905,7 +940,7 @@ pub async fn get_subject(
 }
 
 /// One row → one `Exam`. `countries`/`rules` arrive as JSON strings and
-/// fail loudly here when malformed — never silently emptied.
+/// fail loudly here when malformed, never silently emptied.
 fn map_exam(row: &turso::Row) -> Result<core::models::Exam, AppError> {
     let countries_raw: String = row.get(2).map_err(upstream)?;
     let rules_raw: String = row.get(7).map_err(upstream)?;
@@ -943,7 +978,7 @@ pub async fn list_exams(s: &DbState) -> Result<Vec<core::models::Exam>, AppError
     .await
 }
 
-/// One exam by code. `None` when absent — the handler decides that is 404.
+/// One exam by code. `None` when absent: the handler decides that is 404.
 pub async fn get_exam(s: &DbState, code: &str) -> Result<Option<core::models::Exam>, AppError> {
     let code = code.to_string();
     with_conn(s, |conn| {
@@ -964,7 +999,7 @@ pub async fn get_exam(s: &DbState, code: &str) -> Result<Option<core::models::Ex
 }
 
 /// The board's paper requirements for one exam in one country. Empty where
-/// the shape is unstated — an unstated paper is never complete.
+/// the shape is unstated: an unstated paper is never complete.
 pub async fn list_requirements(
     s: &DbState,
     exam: &str,
@@ -1066,7 +1101,7 @@ pub async fn subject_stats(
 /// pass over `verifications`, and a stable order so the ETag the public
 /// routes carry means something.
 ///
-/// Deliberately coarse. It answers "what is in here and how much" — what a
+/// Deliberately coarse. It answers "what is in here and how much": what a
 /// visitor needs before they have a key. No row of content is reachable
 /// through it at any size.
 pub async fn public_exams(s: &DbState) -> Result<Vec<core::models::PublicExam>, AppError> {
@@ -1480,7 +1515,7 @@ mod tests {
         )
         .await
         .expect("insert nq2");
-        // nq1 is verified; nq2 is not — the novel side of the same rule.
+        // nq1 is verified; nq2 is not: the novel side of the same rule.
         conn.execute(
             "INSERT INTO verifications VALUES ('v3','nq1','human','pass','[\"answer\",\"explanation\"]','review',NULL,'nh1','2026-01-01T00:00:00Z')",
             (),
@@ -1959,7 +1994,7 @@ mod tests {
     async fn file_report_daily_cap_trips() {
         let db = local_exams_db().await;
         // Seed 10 filings directly: file_report itself pushes, so the
-        // cap path is exercised with the count already at the limit —
+        // cap path is exercised with the count already at the limit.
         // the trip happens before any write.
         let conn = crate::testing::connect(&db).await;
         for i in 0..10 {
@@ -2280,5 +2315,41 @@ mod tests {
                 .all(|n| crate::core::catalog::is_introspectable(n)),
             "a name outside the allowlist leaked: {names:?}"
         );
+    }
+
+    #[tokio::test]
+    async fn list_passages_returns_matching_subject_rows() {
+        let s = crate::state::DbState::detached(local_exams_db().await);
+        let passages = list_passages(&s, "JAMB", "english").await.expect("passages");
+        assert_eq!(passages.len(), 1);
+        assert_eq!(passages[0].id, "p1");
+        assert_eq!(passages[0].title, Some("The Market".to_string()));
+
+        let empty = list_passages(&s, "JAMB", "physics").await.expect("empty passages");
+        assert!(empty.is_empty());
+    }
+
+    #[tokio::test]
+    async fn question_topic_filter_matches_subtopics_under_topic() {
+        let s = crate::state::DbState::detached(local_exams_db().await);
+        let filter_geo = QuestionFilter {
+            exam: Some("JAMB".to_string()),
+            subject: Some("physics".to_string()),
+            topic: Some("geometry".to_string()),
+            ..Default::default()
+        };
+        let (rows, total) = list_questions(&s, &filter_geo, 1, 10).await.expect("query");
+        assert_eq!(total, 2);
+        assert_eq!(rows.len(), 2);
+
+        let filter_none = QuestionFilter {
+            exam: Some("JAMB".to_string()),
+            subject: Some("physics".to_string()),
+            topic: Some("nonexistent_topic".to_string()),
+            ..Default::default()
+        };
+        let (rows_none, total_none) = list_questions(&s, &filter_none, 1, 10).await.expect("query");
+        assert_eq!(total_none, 0);
+        assert!(rows_none.is_empty());
     }
 }

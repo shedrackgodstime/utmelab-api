@@ -62,6 +62,8 @@ pub async fn one(
 
 #[derive(Deserialize, utoipa::IntoParams)]
 pub struct List {
+    /// Drill by topic slug.
+    pub topic: Option<String>,
     /// Drill one subtopic id.
     pub subtopic: Option<String>,
     /// Scope to an exam.
@@ -116,6 +118,7 @@ pub async fn list(
     let filter = store::catalog::QuestionFilter {
         exam: f.exam.clone(),
         subject: f.subject.clone(),
+        topic: f.topic.clone(),
         subtopic_id: f.subtopic.clone(),
         year: f.year,
         source: f.source.clone(),
@@ -127,10 +130,6 @@ pub async fn list(
     let (page, per_page) = core::catalog::page_query(f.page, f.per_page);
     let (questions, total_records) =
         store::catalog::list_questions(&s, &filter, page, per_page).await?;
-    let rendered: Vec<core::models::RenderedQuestion> = questions
-        .iter()
-        .map(|q| core::catalog::render(q, with_explanation))
-        .collect();
 
     let passages = if f.include_passage.unwrap_or(false) {
         let pids: Vec<String> = questions
@@ -145,6 +144,19 @@ pub async fn list(
     } else {
         std::collections::HashMap::new()
     };
+
+    let rendered: Vec<core::models::RenderedQuestion> = questions
+        .iter()
+        .map(|q| {
+            let mut r = core::catalog::render(q, with_explanation);
+            if f.include_passage.unwrap_or(false) {
+                if let Some(ref pid) = q.passage_id {
+                    r.passage = passages.get(pid).cloned();
+                }
+            }
+            r
+        })
+        .collect();
 
     Ok(Json(
         core::models::Page::new(
@@ -170,8 +182,12 @@ pub struct SampleParams {
     pub seed: Option<u64>,
     /// Only verified questions. Default: true.
     pub verified: Option<bool>,
+    /// Optional drill to a specific topic slug.
+    pub topic: Option<String>,
     /// Optional drill to a specific subtopic.
     pub subtopic: Option<String>,
+    /// Scope to a cohort year.
+    pub year: Option<u16>,
     /// Scope to a country; a question with no stated scope survives any.
     pub country: Option<String>,
     /// Include the answer and the working. Default: false.
@@ -203,6 +219,19 @@ pub async fn sample(
     }
     let rows = store::catalog::subject_rows(&s, &f.exam, &f.subject, f.country.as_deref()).await?;
     let verified_only = f.verified.unwrap_or(true);
+
+    let topic_subtopics: Option<std::collections::HashSet<String>> = if let Some(ref top) = f.topic {
+        let tree = store::catalog::list_syllabus(&s, &f.exam, &f.subject).await?;
+        let subs: std::collections::HashSet<String> = tree
+            .into_iter()
+            .filter(|t| t.slug == *top)
+            .flat_map(|t| t.subtopics.into_iter().map(|st| st.slug))
+            .collect();
+        Some(subs)
+    } else {
+        None
+    };
+
     let mut candidates: Vec<core::models::Question> = rows
         .into_iter()
         .filter(|q| {
@@ -211,6 +240,16 @@ pub async fn sample(
             }
             if let Some(ref st) = f.subtopic {
                 if q.subtopic_id.as_deref() != Some(st.as_str()) {
+                    return false;
+                }
+            }
+            if let Some(ref subs) = topic_subtopics {
+                if !q.subtopic_id.as_deref().map(|id| subs.contains(id)).unwrap_or(false) {
+                    return false;
+                }
+            }
+            if let Some(year) = f.year {
+                if q.year != year {
                     return false;
                 }
             }
@@ -229,10 +268,6 @@ pub async fn sample(
     candidates.truncate(count);
 
     let with_explanation = f.include_explanation.unwrap_or(false);
-    let rendered: Vec<core::models::RenderedQuestion> = candidates
-        .iter()
-        .map(|q| core::catalog::render(q, with_explanation))
-        .collect();
 
     let passages = if f.include_passage.unwrap_or(false) {
         let pids: Vec<String> = candidates
@@ -247,6 +282,19 @@ pub async fn sample(
     } else {
         None
     };
+
+    let rendered: Vec<core::models::RenderedQuestion> = candidates
+        .iter()
+        .map(|q| {
+            let mut r = core::catalog::render(q, with_explanation);
+            if let Some(ref map) = passages {
+                if let Some(ref pid) = q.passage_id {
+                    r.passage = map.get(pid).cloned();
+                }
+            }
+            r
+        })
+        .collect();
 
     Ok(Json(core::models::SampledQuestions {
         exam: f.exam,
