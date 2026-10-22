@@ -63,7 +63,7 @@ impl<T> Page<T> {
 }
 
 /// Page of questions as served. Counts describe the filtered set, not
-/// the bank — a consumer pages `total_pages`, never guesses.
+/// the bank. A consumer pages `total_pages`, never guesses.
 pub type QuestionPageResponse = Page<RenderedQuestion>;
 
 /// A sampled set of questions for fast practice or quick quiz flows.
@@ -112,7 +112,7 @@ pub struct SyllabusSubtopic {
     pub order: u32,
     pub question_count: usize,
     pub objectives: Vec<String>,
-    /// Inherited from the parent topic — a subtopic carries no scope of its own.
+    /// Inherited from the parent topic. A subtopic carries no scope of its own.
     pub countries: Vec<String>,
 }
 
@@ -143,8 +143,8 @@ pub struct Coverage {
     pub summary: SyllabusSummary,
 }
 
-/// One novel quiz row as served. `novel_id` is stamped by the caller —
-/// the stored row does not carry it.
+/// One novel quiz row as served. `novel_id` is stamped by the caller.
+/// The stored row does not carry it.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct RenderedNovelQuestion {
     pub id: String,
@@ -164,7 +164,7 @@ pub struct RenderedNovelQuestion {
 pub type NovelQuestionPage = Page<RenderedNovelQuestion>;
 
 /// One question as served. Identical to storage except the answer and
-/// working, which are present only when explicitly requested — an answer
+/// working, which are present only when explicitly requested. An answer
 /// in a default payload gets rendered by somebody, eventually, by
 /// accident. `verified` comes from the verification log, never a stored flag.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
@@ -179,7 +179,7 @@ pub struct RenderedQuestion {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub subtopic_id: Option<String>,
     pub section: Option<String>,
-    /// A stimulus this row belongs to — fetch it, never ignore it: the
+    /// A stimulus this row belongs to. Fetch it, never ignore it: the
     /// stem may be unanswerable without it.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub passage_id: Option<String>,

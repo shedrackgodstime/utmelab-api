@@ -68,7 +68,7 @@ pub struct Explanation {
     pub trap: Option<RichText>,
 }
 
-/// One question as stored. Answer always present here — withholding
+/// One question as stored. Answer always present here: withholding
 /// happens in [`crate::core::catalog::render`], never in storage.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct Question {
@@ -102,7 +102,7 @@ pub struct Question {
 }
 
 /// Measured expectations for one exam subject. Every measurement is
-/// optional — a row states only what was measured, never a filled-in
+/// optional: a row states only what was measured, never a filled-in
 /// zero. Empty result where no rows exist is honest absence, not 404.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct Blueprint {
@@ -127,21 +127,21 @@ pub struct Blueprint {
     pub note: String,
 }
 
-/// A prescribed text. One row per (exam, cycle) — the set text rotates,
+/// A prescribed text. One row per (exam, cycle): the set text rotates,
 /// so the prescription years are load-bearing, not decorative.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct Novel {
     pub id: String,
     pub title: String,
     pub author: String,
-    /// Unknown for older set texts — absent, not zero.
+    /// Unknown for older set texts: absent, not zero.
     pub year_published: Option<u16>,
     pub exam: String,
     /// Every cycle this is (or was) the set text for.
     pub year_prescribed: Vec<u16>,
     /// Which paper sets it: reading text or prescribed literature.
     pub category: String,
-    /// At most one per exam — the current set text.
+    /// At most one per exam: the current set text.
     pub featured: bool,
     pub synopsis: String,
     pub setting_place: String,
@@ -150,7 +150,7 @@ pub struct Novel {
 }
 
 /// One novel with everything: book, chapters, characters, themes, quiz.
-/// Matches the established detail shape exactly, answers included —
+/// Matches the established detail shape exactly, answers included:
 /// callers already read quiz rows here, so withholding would silently
 /// change the contract rather than improve it.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
@@ -167,7 +167,7 @@ pub struct NovelDoc {
 pub struct NovelChapter {
     pub number: u8,
     pub title: String,
-    /// Null means not yet written — absence is the signal.
+    /// Null means not yet written: absence is the signal.
     pub summary: Option<String>,
     pub key_events: Vec<String>,
 }
@@ -204,7 +204,7 @@ pub struct NovelQuestion {
     pub verified: bool,
 }
 
-/// A stimulus shared by many questions — one comprehension passage
+/// A stimulus shared by many questions: one comprehension passage
 /// serving five questions, one cloze serving ten. Questions carry only
 /// the id; consumers resolve it here, never ignore it.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
@@ -224,7 +224,7 @@ pub struct Passage {
 /// `status` is a passthrough string (`live` | `planned` | `retired`
 /// today): a new board status must keep serving, never break
 /// deserialization of every row. Nullable columns stay `Option` for the
-/// same honesty — unstated is null, never invented.
+/// same honesty: unstated is null, never invented.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct Exam {
     /// Exam code, e.g. `JAMB`.
@@ -245,14 +245,14 @@ pub struct Exam {
 }
 
 /// One exam's offering of a subject. The same concept appears once per
-/// exam carrying that board's own name — not one row with an alias.
+/// exam carrying that board's own name, not one row with an alias.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct Subject {
     pub slug: String,
     pub exam: String,
     pub name: String,
     pub is_compulsory: bool,
-    /// MCQs the objective paper holds. Null where unverified — absence
+    /// MCQs the objective paper holds. Null where unverified: absence
     /// is data, never a zero masquerading as a fact.
     pub objective_paper_questions: Option<u32>,
 }
@@ -266,11 +266,11 @@ pub struct Topic {
     pub name: String,
     pub order: u32,
     /// Marks the board gives this topic. Zero means "not published",
-    /// never "worth nothing" — a fabricated weight would reach
+    /// never "worth nothing". A fabricated weight would reach
     /// consumers as a fact.
     pub weight: u32,
     /// Examinable statements attached at topic level. Empty where the
-    /// board states none — never invented.
+    /// board states none, never invented.
     pub objectives: Vec<String>,
 }
 
@@ -286,7 +286,7 @@ pub struct Requirement {
 
 /// One subject's slot in an exam scheme. `questions` is the stated paper
 /// size (null where unverified), and `marks_per_question` is stated only
-/// where the bank supports it — both are absences, never zeros.
+/// where the bank supports it: both are absences, never zeros.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct SubjectSlot {
     pub slug: String,

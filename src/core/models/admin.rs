@@ -16,7 +16,7 @@ pub struct ServiceStatus {
     pub has_sync: bool,
     pub contract_ok: bool,
     /// Engine-side sync figures, read-only. Null when no replica is attached
-    /// (or the engine cannot answer) — absence is honest, never zeros. This
+    /// (or the engine cannot answer): absence is honest, never zeros. This
     /// never checkpoints; checkpointing is the engine's own job.
     pub sync: Option<SyncStats>,
     pub gate_rejections: u64,
@@ -64,7 +64,7 @@ pub struct PrefixBody {
 }
 
 /// The caller's own key, as the key itself may see it. No hashes,
-/// no secrets, no other keys — safe to hand to whoever presented it.
+/// no secrets, no other keys, safe to hand to whoever presented it.
 #[derive(Clone, Debug, serde::Serialize, utoipa::ToSchema)]
 pub struct KeyInfo {
     pub prefix: String,
@@ -88,7 +88,7 @@ pub struct NewKey {
 }
 
 /// What an admin is granting: a tier, plus the owner a commercial key belongs
-/// to. Scopes are never named here — `store::accounts::create_key_spec` derives
+/// to. Scopes are never named here: `store::accounts::create_key_spec` derives
 /// them from the tier, so an admin cannot mint a half-granted key.
 #[derive(serde::Deserialize)]
 pub struct NewKeySpec {

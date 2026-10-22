@@ -1,0 +1,3728 @@
+[
+  {
+    "slug": "introduction-to-financial-accounting-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Introduction to Financial Accounting",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "the-accounting-equation-and-double-entry-principles-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "The Accounting Equation and Double Entry Principles",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "accounting-concepts-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Accounting Concepts",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "provisions-and-reserves-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Provisions and Reserves",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "manufacturing-accounts-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Manufacturing Accounts",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "control-accounts-and-self-balancing-ledgers-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Control Accounts and Self Balancing Ledgers",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "single-entry-and-incomplete-records-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Single Entry and Incomplete Records",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "accounts-of-not-for-profit-making-organizations-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Accounts of Not-for-Profit Making Organizations",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "partnership-accounts-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Partnership Accounts",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "company-accounts-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Company Accounts",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "accounting-for-value-added-tax-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Accounting for Value Added Tax",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "departmental-and-branch-accounts-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Departmental and Branch Accounts",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "public-sector-accounting-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Public Sector Accounting",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "information-technology-in-accounting-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Information Technology in Accounting",
+    "order": 14,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "miscellaneous-accounts-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Miscellaneous Accounts",
+    "order": 15,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "financial-system-accounting",
+    "subject": "accounting",
+    "exam": "NECO",
+    "name": "Financial system",
+    "order": 16,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "basic-concepts",
+    "subject": "agricultural-science",
+    "exam": "NECO",
+    "name": "BASIC CONCEPTS",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "agricultural-ecology",
+    "subject": "agricultural-science",
+    "exam": "NECO",
+    "name": "AGRICULTURAL ECOLOGY",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "agricultural-engineering-mechanization",
+    "subject": "agricultural-science",
+    "exam": "NECO",
+    "name": "AGRICULTURAL ENGINEERING/MECHANIZATION",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "crop-production",
+    "subject": "agricultural-science",
+    "exam": "NECO",
+    "name": "CROP PRODUCTION",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "forestry",
+    "subject": "agricultural-science",
+    "exam": "NECO",
+    "name": "FORESTRY",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "ornamental-plants",
+    "subject": "agricultural-science",
+    "exam": "NECO",
+    "name": "ORNAMENTAL PLANTS",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "crop-protection",
+    "subject": "agricultural-science",
+    "exam": "NECO",
+    "name": "CROP PROTECTION",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "animal-production",
+    "subject": "agricultural-science",
+    "exam": "NECO",
+    "name": "ANIMAL PRODUCTION",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "agricultural-economics-and-extension",
+    "subject": "agricultural-science",
+    "exam": "NECO",
+    "name": "AGRICULTURAL ECONOMICS AND EXTENSION",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "comprehension",
+    "subject": "arabic",
+    "exam": "NECO",
+    "name": "COMPREHENSION",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "translation",
+    "subject": "arabic",
+    "exam": "NECO",
+    "name": "TRANSLATION",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "grammar",
+    "subject": "arabic",
+    "exam": "NECO",
+    "name": "GRAMMAR",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "composition",
+    "subject": "arabic",
+    "exam": "NECO",
+    "name": "COMPOSITION",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "literature",
+    "subject": "arabic",
+    "exam": "NECO",
+    "name": "LITERATURE",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "oral-test",
+    "subject": "arabic",
+    "exam": "NECO",
+    "name": "ORAL TEST",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "concept-of-living",
+    "subject": "biology",
+    "exam": "NECO",
+    "name": "Concept of Living",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "plant-and-animal-nutrition",
+    "subject": "biology",
+    "exam": "NECO",
+    "name": "Plant and Animal Nutrition",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "basic-ecological-concepts",
+    "subject": "biology",
+    "exam": "NECO",
+    "name": "Basic Ecological Concepts",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "conservation-of-natural-resources",
+    "subject": "biology",
+    "exam": "NECO",
+    "name": "Conservation of Natural Resources",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "variation-in-population",
+    "subject": "biology",
+    "exam": "NECO",
+    "name": "Variation in Population",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "biology-of-heredity-genetics",
+    "subject": "biology",
+    "exam": "NECO",
+    "name": "Biology of Heredity (Genetics)",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "adaptation-for-survival-and-evolution",
+    "subject": "biology",
+    "exam": "NECO",
+    "name": "Adaptation for survival and Evolution",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "resumption-test-revision-of-last-session-work",
+    "subject": "catering-craft",
+    "exam": "NECO",
+    "name": "Resumption Test/Revision of last session work",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "meal-planning-meaning-of-meal-planning-importance-of-meal-pl",
+    "subject": "catering-craft",
+    "exam": "NECO",
+    "name": "Meal Planning -Meaning of meal planning -Importance of meal planning -Factors affecting meal planning",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "speacial-menu-vegetarians-types-of-vegetarians-reason-for-ve",
+    "subject": "catering-craft",
+    "exam": "NECO",
+    "name": "Speacial menu Vegetarians -Types of vegetarians -Reason for vegetarian -Plan meal for vegetarian",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "speacial-menu-pregnant-lactating-women",
+    "subject": "catering-craft",
+    "exam": "NECO",
+    "name": "Speacial menu Pregnant/lactating women",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "special-menu-infants-and-toddlers",
+    "subject": "catering-craft",
+    "exam": "NECO",
+    "name": "Special menu -Infants and toddlers",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "speacial-menu-adolescents",
+    "subject": "catering-craft",
+    "exam": "NECO",
+    "name": "Speacial menu Adolescents",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "speacial-menu-aged-elderly",
+    "subject": "catering-craft",
+    "exam": "NECO",
+    "name": "Speacial Menu Aged/ Elderly",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "special-menu-manual-and-sedementary-worker",
+    "subject": "catering-craft",
+    "exam": "NECO",
+    "name": "Special menu -Manual and sedementary worker",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "special-menu-diabetic-and-hypertensive-patients",
+    "subject": "catering-craft",
+    "exam": "NECO",
+    "name": "Special menu -Diabetic and hypertensive patients",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "speacial-menu-invalid-and-converlescent",
+    "subject": "catering-craft",
+    "exam": "NECO",
+    "name": "Speacial menu -Invalid and converlescent",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "introduction-to-chemistry",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "INTRODUCTION TO CHEMISTRY",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "structure-of-an-atom",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "STRUCTURE OF AN ATOM",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "standard-separation-techniques-for-mixtures",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "STANDARD SEPARATION TECHNIQUES FOR MIXTURES",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "periodic-chemistry",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "PERIODIC CHEMISTRY",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "chemical-bonds",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "CHEMICAL BONDS",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "stoichemistry-amp-chemical-reactions",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "STOICHEMISTRY &amp; CHEMICAL REACTIONS",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "states-of-matter",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "STATES OF MATTER",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "energy-amp-energy-changes",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "ENERGY &amp; ENERGY CHANGES",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "acids-bases-amp-salts",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "ACIDS, BASES &amp; SALTS",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "solubility-of-substances",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "SOLUBILITY OF SUBSTANCES",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "chemical-kinetics-amp-equilibrium-rate",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "CHEMICAL KINETICS &amp; EQUILIBRIUM RATE",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "redox-reactions",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "REDOX REACTIONS",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "chemistry-of-carbon-compounds",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "CHEMISTRY OF CARBON COMPOUNDS",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "chemistry-industry-amp-the-environment",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "CHEMISTRY, INDUSTRY &amp; THE ENVIRONMENT",
+    "order": 14,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "basic-biochemistry-amp-synthetic-polymers",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "BASIC BIOCHEMISTRY &amp; SYNTHETIC POLYMERS",
+    "order": 15,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "general-skills-amp-principles",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "GENERAL SKILLS &amp; PRINCIPLES",
+    "order": 16,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "quantitative-analysis",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "QUANTITATIVE ANALYSIS",
+    "order": 17,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "qualitative-analysis",
+    "subject": "chemistry",
+    "exam": "NECO",
+    "name": "QUALITATIVE ANALYSIS",
+    "order": 18,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "1-1-god-the-creator-1-2-god-the-controller-of-the-universe",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "1.1 God, the Creator 1.2 God, the Controller of the universe",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "2-1-joseph-2-2-moses-2-3-joshua-2-4-deborah",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "2.1 Joseph 2.2 Moses 2.3 Joshua 2.4 Deborah",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "eli-and-samuel",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "Eli and Samuel",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "topic-christian-religious-studies",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "5-1-david-s-submission-to-the-will-of-god-5-2-david-s-sin-re",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "5.1 David’s submission to the will of God 5.2 David’s sin, repentance and forgiveness",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "6-1-solomon-8217-s-wisdom-6-2-the-unwise-decision-of-solomon",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "6.1 Solomon&#8217;s wisdom 6.2 The unwise decision of Solomon and Rehoboam",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "7-1-religious-tensions-during-ahab-s-reign-7-2-elijah-at-mou",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "7.1 Religious tensions during Ahab’s reign 7.2 Elijah at Mount Carmel",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "8-1-ahab-8-2-gehazi",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "8.1 Ahab 8.2 Gehazi",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "the-reign-of-king-josiah",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "The reign of King Josiah",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "10-1-the-condition-of-the-nation-10-2-response-to-the-state",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "10.1 The condition of the nation 10.2 Response to the state of the nation",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "11-1-faith-and-courage-11-2-faith-and-power",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "11.1 Faith and courage 11.2 Faith and power",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "12-1-true-religion-and-social-justice-amos-12-2-god-s-divine",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "12.1 True religion and social justice – Amos 12.2 God’s divine love – Hosea",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "1-1-the-baptism-1-2-the-temptation",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "1.1 The Baptism 1.2 The Temptation",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "4-1-jesus-at-gethsemane-4-2-peter-s-denials-4-3-condemnation",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "4.1 Jesus at Gethsemane 4.2 Peter’s Denials 4.3 Condemnation of Jesus",
+    "order": 16,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "a-crucifixion-and-burial-b-the-resurrection",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "(a) Crucifixion and burial (b) The Resurrection",
+    "order": 17,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "a-the-holy-spirit-at-pentecost-b-mission-to-the-gentiles",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "(a) The Holy Spirit at Pentecost (b) Mission to the Gentiles",
+    "order": 19,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "a-faith-and-works-b-impartiality-c-effective-prayers",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "(a) Faith and Works (b) Impartiality (c) Effective Prayers",
+    "order": 21,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "a-good-citizenship-b-christians-living-among-non-christians",
+    "subject": "christian-religious-studies",
+    "exam": "NECO",
+    "name": "(a) Good Citizenship (b) Christians Living among non-Christians (c) Interpersonal Relationship among Christians",
+    "order": 22,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "values",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Values",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "citizenship-and-nationalism",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Citizenship and Nationalism",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "human-rights",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Human Rights",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "law-and-order",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Law and Order",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "responsible-parenthood",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Responsible Parenthood",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "traffic-regulations",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Traffic Regulations",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "interpersonal-relationships",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Interpersonal Relationships",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "cultism",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Cultism",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "drugs-and-drug-abuse",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Drugs and Drug Abuse",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "human-trafficking",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Human Trafficking",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "hiv-aids",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Hiv/Aids",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "youth-empowerment",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Youth Empowerment",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "structure-and-functions-of-government",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Structure and Functions of Government",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "democracy-rule-of-law-and-national-development",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Democracy, Rule of Law and National Development",
+    "order": 14,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "political-apathy",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Political Apathy",
+    "order": 15,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "civil-society-and-popular-participation",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Civil Society and Popular Participation",
+    "order": 16,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "public-service-in-democracy",
+    "subject": "civic-education",
+    "exam": "NECO",
+    "name": "Public Service in Democracy",
+    "order": 17,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "introduction",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "INTRODUCTION",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "occupation",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "OCCUPATION",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "production",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "PRODUCTION",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "business-units",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "BUSINESS UNITS",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "trade-associations",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "TRADE ASSOCIATIONS",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "business-capital-and-profits",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "BUSINESS CAPITAL AND PROFITS",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "trade",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "TRADE",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "purchase-and-sale-of-goods-in-home-and-foreign-trade",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "PURCHASE AND SALE OF GOODS IN HOME AND FOREIGN TRADE",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "finance-and-financial-institutions",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "FINANCE AND FINANCIAL INSTITUTIONS",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "transport-tourism-communication-and-warehousing",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "TRANSPORT, TOURISM, COMMUNICATION and WAREHOUSING",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "advertising",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "ADVERTISING",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "introduction-to-marketing",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "INTRODUCTION TO MARKETING",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "legal-aspect-of-business",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "LEGAL ASPECT OF BUSINESS",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "government-policies-relating-to-business",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "GOVERNMENT POLICIES RELATING to BUSINESS",
+    "order": 14,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "introduction-to-business-management",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "INTRODUCTION TO BUSINESS MANAGEMENT",
+    "order": 15,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "economic-groupings",
+    "subject": "commerce",
+    "exam": "NECO",
+    "name": "ECONOMIC GROUPINGS",
+    "order": 16,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "computer-evolution",
+    "subject": "computer-studies",
+    "exam": "NECO",
+    "name": "COMPUTER EVOLUTION",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "fundamentals-of-computing",
+    "subject": "computer-studies",
+    "exam": "NECO",
+    "name": "FUNDAMENTALS OF COMPUTING",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "computer-ethics-and-human-issue",
+    "subject": "computer-studies",
+    "exam": "NECO",
+    "name": "COMPUTER ETHICS AND HUMAN ISSUE",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "computer-hardware",
+    "subject": "computer-studies",
+    "exam": "NECO",
+    "name": "COMPUTER HARDWARE",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "computer-software",
+    "subject": "computer-studies",
+    "exam": "NECO",
+    "name": "COMPUTER SOFTWARE",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "computer-application",
+    "subject": "computer-studies",
+    "exam": "NECO",
+    "name": "COMPUTER APPLICATION",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "managing-computer-files",
+    "subject": "computer-studies",
+    "exam": "NECO",
+    "name": "MANAGING COMPUTER FILES",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "basic-computer-operations",
+    "subject": "computer-studies",
+    "exam": "NECO",
+    "name": "BASIC COMPUTER OPERATIONS",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "information-and-communication-technology-ict",
+    "subject": "computer-studies",
+    "exam": "NECO",
+    "name": "INFORMATION AND COMMUNICATION TECHNOLOGY(ICT)",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "developing-problem-solving-skills",
+    "subject": "computer-studies",
+    "exam": "NECO",
+    "name": "DEVELOPING PROBLEM-SOLVING SKILLS",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "definition-and-scope-of-economics",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "DEFINITION AND SCOPE OF ECONOMICS",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "factors-of-production",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "FACTORS OF PRODUCTION",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "types-and-basic-features-of-economic-systems",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "TYPES AND BASIC FEATURES OF ECONOMIC SYSTEMS",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "basic-tools-of-economic-analysis",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "BASIC TOOLS OF ECONOMIC ANALYSIS",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "demand",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "DEMAND",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "supply",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "SUPPLY",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "theory-of-consumer-behaviour",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "THEORY OF CONSUMER BEHAVIOUR",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "theory-of-price-determination",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "THEORY OF PRICE DETERMINATION",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "theory-of-production",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "THEORY OF PRODUCTION",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "theory-of-cost-and-revenue",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "THEORY OF COST AND REVENUE",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "market-structures",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "MARKET STRUCTURES",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "business-organizations",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "BUSINESS ORGANIZATIONS",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "distributive-trade",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "DISTRIBUTIVE TRADE",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "population-and-labour-market",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "POPULATION AND LABOUR MARKET",
+    "order": 14,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "agriculture",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "AGRICULTURE",
+    "order": 15,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "industrialization",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "INDUSTRIALIZATION",
+    "order": 16,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "national-income",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "NATIONAL INCOME",
+    "order": 17,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "money-and-inflation",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "MONEY AND INFLATION",
+    "order": 18,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "financial-institutions",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "FINANCIAL INSTITUTIONS",
+    "order": 19,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "public-finance",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "PUBLIC FINANCE",
+    "order": 20,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "economic-development-and-planning",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "ECONOMIC DEVELOPMENT AND PLANNING",
+    "order": 21,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "international-trade-and-balance-of-payments",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "INTERNATIONAL TRADE AND BALANCE OF PAYMENTS",
+    "order": 22,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "economic-integration",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "ECONOMIC INTEGRATION",
+    "order": 23,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "international-economic-organization",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "INTERNATIONAL ECONOMIC ORGANIZATION",
+    "order": 24,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "major-natural-resources",
+    "subject": "economics",
+    "exam": "NECO",
+    "name": "MAJOR NATURAL RESOURCES",
+    "order": 25,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "lexis",
+    "subject": "english",
+    "exam": "NECO",
+    "name": "Lexis",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "structure",
+    "subject": "english",
+    "exam": "NECO",
+    "name": "Structure",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "nutrition-and-health",
+    "subject": "foods-and-nutrition",
+    "exam": "NECO",
+    "name": "NUTRITION AND HEALTH",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "food-laboratory-and-equipment",
+    "subject": "foods-and-nutrition",
+    "exam": "NECO",
+    "name": "FOOD LABORATORY AND EQUIPMENT",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "food-commodities",
+    "subject": "foods-and-nutrition",
+    "exam": "NECO",
+    "name": "FOOD COMMODITIES",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "food-storage-and-preservation",
+    "subject": "foods-and-nutrition",
+    "exam": "NECO",
+    "name": "FOOD STORAGE AND PRESERVATION",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "food-preparation",
+    "subject": "foods-and-nutrition",
+    "exam": "NECO",
+    "name": "FOOD PREPARATION",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "flour-bakery-and-confectionery",
+    "subject": "foods-and-nutrition",
+    "exam": "NECO",
+    "name": "FLOUR BAKERY and CONFECTIONERY",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "beverages",
+    "subject": "foods-and-nutrition",
+    "exam": "NECO",
+    "name": "BEVERAGES",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "art-of-entertaining",
+    "subject": "foods-and-nutrition",
+    "exam": "NECO",
+    "name": "ART OF ENTERTAINING",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "experimental-cookery",
+    "subject": "foods-and-nutrition",
+    "exam": "NECO",
+    "name": "EXPERIMENTAL COOKERY",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "consumer-education",
+    "subject": "foods-and-nutrition",
+    "exam": "NECO",
+    "name": "CONSUMER EDUCATION",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "parts-of-speech",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Parts of speech",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "verbs",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Verbs",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "articles",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Articles",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "nouns",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Nouns",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "pronouns",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Pronouns",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "adjectives",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Adjectives",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "adverbs",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Adverbs",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "negatives",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Negatives",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "conjunctions-in-common-use",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Conjunctions in common use",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "preposition",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Preposition",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "sentence-patterns",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Sentence patterns",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "voice",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Voice",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "compound-and-complex-sentences",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Compound and complex sentences",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "idiomatic-expressions-amp-proverbs",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Idiomatic expressions&amp; proverbs",
+    "order": 14,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "common-figures-of-speech",
+    "subject": "french",
+    "exam": "NECO",
+    "name": "Common figures of speech",
+    "order": 15,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "sets",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Sets",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "surds",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Surds",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "binary-operations",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Binary Operations",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "logical-reasoning",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Logical Reasoning",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "functions",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Functions",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "polynomial-functions",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Polynomial Functions",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "rational-functions",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Rational Functions",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "indices-and-logarithmic-functions",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Indices and Logarithmic Functions",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "permutation-and-combinations",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Permutation And Combinations",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "binomial-theorem",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Binomial Theorem",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "sequences-and-series",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Sequences and Series",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "matrices-and-linear-transformation",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Matrices and Linear Transformation",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "trigonometry-further-mathematics",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Trigonometry",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "co-ordinate-geometry",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Co-ordinate Geometry",
+    "order": 14,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "differentiation",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Differentiation",
+    "order": 15,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "integration",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Integration",
+    "order": 16,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "statistics",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Statistics",
+    "order": 17,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "probability",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Probability",
+    "order": 18,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "vectors",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Vectors",
+    "order": 19,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "statics",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Statics",
+    "order": 20,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "dynamics",
+    "subject": "further-mathematics",
+    "exam": "NECO",
+    "name": "Dynamics",
+    "order": 21,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "elements-of-practical-and-physical-geography-map-work-princi",
+    "subject": "geography",
+    "exam": "NECO",
+    "name": "ELEMENTS OF PRACTICAL AND PHYSICAL GEOGRAPHY Map work Principles of elementary surveying Geographic Information System (GIS) Statistical maps and diagrams Elements of Physical Geography *Hydrosphere (i) Rocks (ii) Tectonic processes (iii) Denudational processes (iv) Weather and climate (v) Climate (a) Elements (b) Classification (c ) Climate change (vi) Vegetation (vii)Soil (vii)The environment (a) Environmental resources (b) Environmental problems/ hazards (c) Environmental conservation",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "meaning-and-scope-of-the-subject-matter-government",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "MEANING AND SCOPE OF THE SUBJECT MATTER – GOVERNMENT",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "basic-concepts-and-principles-of-government",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "BASIC CONCEPTS AND PRINCIPLES OF GOVERNMENT",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "constitutions",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "CONSTITUTIONS",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "organs-of-government",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "ORGANS OF GOVERNMENT",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "state-structure-and-characteristics-of-government",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "STATE STRUCTURE AND CHARACTERISTICS OF GOVERNMENT",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "citizenship",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "CITIZENSHIP",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "political-parties-and-party-systems",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "POLITICAL PARTIES AND PARTY SYSTEMS",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "pressure-groups-public-opinion-and-mass-media",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "PRESSURE GROUPS, PUBLIC OPINION AND MASS MEDIA",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "the-electoral-systems-processes-and-electoral-management-bod",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "THE ELECTORAL SYSTEMS, PROCESSES AND ELECTORAL MANAGEMENT BODY",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "public-civil-service-administration",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "PUBLIC/CIVIL SERVICE ADMINISTRATION",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "pre-colonial-political-system-of-candidates-respective-count",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "PRE-COLONIAL POLITICAL SYSTEM OF CANDIDATES’ RESPECTIVE COUNTRIES",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "colonial-administration",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "COLONIAL ADMINISTRATION",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "nationalism-in-candidates-respective-countries",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "NATIONALISM IN CANDIDATES’ RESPECTIVE COUNTRIES",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "constitutional-developments-in-candidates-respective-countri",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "CONSTITUTIONAL DEVELOPMENTS IN CANDIDATES’ RESPECTIVE COUNTRIES",
+    "order": 14,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "development-of-major-political-parties-in-the-candidates-res",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "DEVELOPMENT OF MAJOR POLITICAL PARTIES IN THE CANDIDATES’ RESPECTIVE COUNTRIES",
+    "order": 15,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "military-rule-in-the-candidates-respective-countries",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "MILITARY RULE IN THE CANDIDATES’ RESPECTIVE COUNTRIES",
+    "order": 16,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "federal-unitary-systems-of-government-in-west-africa",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "FEDERAL/UNITARY SYSTEMS OF GOVERNMENT IN WEST AFRICA",
+    "order": 17,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "foreign-policies-of-the-candidates-respective-countries",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "FOREIGN POLICIES OF THE CANDIDATES’ RESPECTIVE COUNTRIES",
+    "order": 18,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "international-organizations",
+    "subject": "government",
+    "exam": "NECO",
+    "name": "INTERNATIONAL ORGANIZATIONS",
+    "order": 19,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "k-idojin-rubutu-orthography-alphabetization-spelling-rules-o",
+    "subject": "hausa",
+    "exam": "NECO",
+    "name": "KÂ’IDOJIN RUBUTU (ORTHOGRAPHY) Alphabetization; spelling; rules of word merger and division; punctuation, paragraphing; all in line with standard Hausa. AUNA FAHIMTA (COMPREHENSION) Contextual questions from short unseen passages of about 200 words. TSARIN RUBUTUN INSHAÂ’I (COMPOSITION/LETTER WRITING TECHNIQUES) Tsarin Rubutun InshaÂ’i (Composition/Letter Writing Techniques). FASSARA (TRANSLATION) (a) Ire-iren fassara. (b) Ƙa’idojin fassara. (C) Matsalolin fassara TSARIN SAUTI (PHONOLOGY) (a) consonants – production and classification in terms of phonation, place and manner of articulation. (b) vowels – production and classification in terms of position of tongue and lips; monophthongs and diphthongs. (c) tone – e.g. high, low and falling tones. (d) syllable structure – syllable types, e.g. open and closed syllables, light and heavy syllables, syllabic categories of words – monosyllabic, disyllabic, etc. (e) vowel length – long and short vowels. (f) phonological processes – e.g. assimilatory: palatalization, labialization and vowel harmony; non-assimilatory: insertion and deletion. KIRAR KALMA (MORPHOLOGY) (a) roots and stems. (b) affixation Â– e.g. prefix, infix suffix and their derivational and inflectional functions. (c) gender and number inflections. (d) derivation of nouns and adjectives from verbs; adjectives and verbs from nouns. GININ JUMLA (SYNTAX) (a) word classes – e.g. nouns, pronouns, verbs, adverbs, adjectives, prepositions, conjunctions, interjections and ideophones. (b) grammatical categories – e.g. tense and aspect (general and relative past: general and relative continuous, first and second future, habitual); mood (subjunctive and negative); gender (masculine, feminine and neuter) and number (singular and plural). (c) sentence structure – e.g. verbal sentence, nominal phrase + verbal phrase and their components, non-verbal sentence: nominal phrase + stabilizer, nominal phrase complement + stabilizer, nominal phrases + continuous frame (yana../yake…) (+da) + nominal phrase. (d) sentence types Â– e.g. simple sentences, compound sentences and complex sentences. (e) clauses – types (e.g. relative and subjunctive); functions (e.g. main and subordinate). MAÂ’ANA (SEMANTICS) (a) lexical aspects of word meaning – e.g. ambiguity, synonymy and antonymy. (b) figures of speech – aspects of specialized meanings of words and phrases.",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "rayuwar-hausawa-hausa-rite-de-passage-a-haihuwa-birth-aukar",
+    "subject": "hausa",
+    "exam": "NECO",
+    "name": "RAYUWAR HAUSAWA (HAUSA RITE DE PASSAGE) (a) Haihuwa (birth) Â–ɗaukar ciki da goyon ciki da haihuwa da shayarwa da alÂ’adun makon haihuwa da wanka da ɓanti da yaye da kaciya da samartaka. (b) Aure (marriage) Â– ire-irensa da nema da baiko da ɗaurin aure da biki da zaman aure da saki da zawarci. (c) Mutuwa (death) Â– faɗar mutuwa da wanka da salla da janaÂ’iza da zaman makoki da sadaka da takaba da gado. (d) Tasirin zamani akan rayuwar Hausawa. ZAMANTAKEWA (SOCIAL INSTITUTIONS) (a) tsarin zaman iyali da zaman gandu da dangantakar kishiyoyi da Â‘yan uwantaka da barantaka da agolanci. (b) maƙwabtaka. (c) aikin gandu da na gayya. (d) abota da ƙawance. (e) gaisuwa da karimci. (f) tasirin zamani a kan zamantakewa. SANAÂ’OÂ’IN GARGAJIYA (TRADITIONAL OCCUPATIONS) (a) ire-irensu Â– noma da ƙira da jima da kasuwanci da wanzanci da sassaƙa da farauta da dukanci da saƙa da kitso da rini da fawa da fafar ƙorai, da sauransu. (b) yanayinsu Â– hanyoyin gadon su da kayayyakin yin su da matakan tafiyar da su da muhimmancinsu. (c) kayayyaki ko amfanin da suke samarwa. (d) sarautunsu. (e) sanaÂ’oÂ’i masu dangantaka da jinsi Â– aikatau da ƙwadago; kitso da aski. (f) tasirin zamani a kan sanaÂ’oÂ’in gargajiy KAYAYYAKIN BUKATUN RAYUWA (MATERIAL CULTURE) (a) na buƙatun cikin gida (household) Â– tufafi da karikitan cikin gida. (b) na sauran buƙatu (others) Â– gine-gine da girke-girke da sauransu. (c) tasirin zamani a kan kayayyakin buƙatuwa. BUKUKUWA DA WASANNI (CULTURAL FESTIVITIES): (a) na addini (religious) Â– irin su bikin salla da takutaha (sallar gani) da cika-ciki da saukar karatu. (b) na gargajiya (traditional) Â– irin su kalankuwa da buɗar dawa, da bikin shan kabewa. (c) na sanaÂ’a (occupational) Â– bikin kamun kifi da dambe da kokawa da wasan farauta da wasan maƙera da hawan ƙaho. (d) na nisha?i Â– sukuwa. (e) na yara (childrenÂ’s games) Â–irin su shalle da kulli-kurciya da a-sha-ruwan-tsuntsaye da gaɗa da carafke. (f) tasirin zamani kan bukukuwa da wasanni. CAMFE-CAMFE DA BAUTA (TRADITIONAL BELIEFS AND WORSHIP) (a) camfe-camfe irinsu kangida da camfi, da kambun baka. (b) bauta irin su bori da maita da tsafi. (c) tasirin zamani a kan camfe-camfe da bauta SARAUTUN GARGAJIYA (TRADITIONAL AUTHORITY) (a) ire-irensu Â– sarki da hakimai da dagatai da masu unguwanni. (b) na bayin sarki Â– shantali da jakadiya da baraya da sauransu. (c) masu alaƙa da addini; irin su liman da alƙali. (d) ayyukansu. MAGUNGUNAN GARGAJIYA (TRADITIONAL MEDICINE) (a) ire-irensu na gargajiya: sassaƙe-sassaƙe da sauyoyi da na gari da na ruwa. (b) na addini: layu da rubutu da ɗibbu da duba. (c) hanyar amfani da su Â– sha da shafawa da surace da turare da shaƙawa da taunawa da tsotsawa da ɗaurawa da liƙawa da ratayawa. (d) awo da kimantawa. (e) ayyukansu Â– riga-kafi da warkarwa. (f) tasirin zamani a kansu.",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "adabin-baka-oral-literature-a-zuben-baka-narratives-irin-su",
+    "subject": "hausa",
+    "exam": "NECO",
+    "name": "Adabin Baka (Oral Literature) a.ZUBEN BAKA (NARRATIVES) Irin su tatsuniya da almara da hikaya da ƙissa da tarihi. b. MAGANGANUN AZANCI (FOLK Â– SAYINGS); Irin su take da kirari da habaici da zambo da karin magana da kacici-kacici da salon maganada adon harshe c. WAKOKI NA BAKA (ORAL SONGS) (i). ire-irensu –na fada da na jama’a da na maza da na sha’awa da sauransu: (ii). jigo da salo da zubi da tsari da mawaƙi da kayan kiɗa da abin da aka waƙe. (iii). waƙoƙin aiki: na niƙa da daɓe da na daka da na talla da sauransu; (iv). Waƙoƙin yara (maza da mata); na aure da na dandali da sauransu; d. ZUBE (PROSE) Kome Nisan Dare e. WAKA (POETRY) Waƙoƙin Mu’azu Haɗeja f. WASAN KWAIKWAYO (DRAMA) Kulɓa Na Ɓarna",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "nau-i",
+    "subject": "hausa",
+    "exam": "NECO",
+    "name": "NauÂ’i",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "zube",
+    "subject": "hausa",
+    "exam": "NECO",
+    "name": "Zube",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "wa-a",
+    "subject": "hausa",
+    "exam": "NECO",
+    "name": "Waƙa",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "wasan-kwaikwayo",
+    "subject": "hausa",
+    "exam": "NECO",
+    "name": "Wasan Kwaikwayo",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "history-and-development-of-health-education",
+    "subject": "health-education",
+    "exam": "NECO",
+    "name": "HISTORY AND DEVELOPMENT OF HEALTH EDUCATION",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "human-anatomy-and-physiology",
+    "subject": "health-education",
+    "exam": "NECO",
+    "name": "HUMAN ANATOMY AND PHYSIOLOGY",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "personal-health",
+    "subject": "health-education",
+    "exam": "NECO",
+    "name": "PERSONAL HEALTH",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "community-health",
+    "subject": "health-education",
+    "exam": "NECO",
+    "name": "COMMUNITY HEALTH",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "environmental-health",
+    "subject": "health-education",
+    "exam": "NECO",
+    "name": "ENVIRONMENTAL HEALTH",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "nutrition-and-food-nutrients",
+    "subject": "health-education",
+    "exam": "NECO",
+    "name": "NUTRITION AND FOOD NUTRIENTS",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "safety-education-and-first-aid",
+    "subject": "health-education",
+    "exam": "NECO",
+    "name": "SAFETY EDUCATION AND FIRST AID",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "drug-alcohol-and-tobacco-education",
+    "subject": "health-education",
+    "exam": "NECO",
+    "name": "DRUG, ALCOHOL AND TOBACCO EDUCATION",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "communicable-and-non-communicable-diseases",
+    "subject": "health-education",
+    "exam": "NECO",
+    "name": "COMMUNICABLE AND NON COMMUNICABLE DISEASES",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "family-life-and-human-sexuality-education",
+    "subject": "health-education",
+    "exam": "NECO",
+    "name": "FAMILY LIFE AND HUMAN SEXUALITY EDUCATION",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "emotional-and-social-health",
+    "subject": "health-education",
+    "exam": "NECO",
+    "name": "EMOTIONAL AND SOCIAL HEALTH",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "consumer-health-education",
+    "subject": "health-education",
+    "exam": "NECO",
+    "name": "CONSUMER HEALTH EDUCATION",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "historiography-and-historical-skills",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Historiography and Historical Skills",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "trans-saharan-trade",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Trans – Saharan Trade",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "islam-in-west-africa-history",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Islam in West Africa",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "european-contact-with-west-africa",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "European Contact with West Africa",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "trans-atlantic-slave-trade",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Trans-Atlantic slave trade",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "christian-missionary-activities-in-west-africa",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Christian Missionary Activities in West Africa",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "the-scramble-for-and-partition-of-west-africa",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "The Scramble for and Partition of West Africa",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "colonial-rule-in-west-africa",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Colonial Rule in West Africa",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "problems-of-independent-west-african-states",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Problems of independent West African States",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "west-africa-and-international-organizations",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "West Africa and international organizations",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "historiography-and-historical-skills-history",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Historiography and historical skills",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "land-and-peoples-of-nigeria",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Land and peoples of Nigeria:",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "centers-of-ancient-civilization",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Centers of ancient civilization:",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "centralized-and-non-centralized-states",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Centralized and non-centralized states:",
+    "order": 14,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "indigenous-crafts-and-industries",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Indigenous crafts and industries;",
+    "order": 15,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "external-influences",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "External Influences",
+    "order": 16,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "nigeria-and-the-trans-atlantic-slave-trade",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Nigeria and the trans-Atlantic slave trade",
+    "order": 17,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "the-sokoto-caliphate",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "The Sokoto Caliphate",
+    "order": 18,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "borno-under-the-shehus",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Borno under the Shehus:",
+    "order": 19,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "christian-missionary-activities",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Christian Missionary Activities",
+    "order": 20,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "yorubaland-in-the-19th-century",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Yorubaland in the 19th century",
+    "order": 21,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "the-second-phase-of-the-british-conquest-in-nigeria-1900-196",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "The second phase of the British conquest in Nigeria 1900- 1960",
+    "order": 22,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "the-decolonization-process-in-nigeria-1922-1960",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "The decolonization process in Nigeria, 1922-1960",
+    "order": 23,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "nigeria-since-independence",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Nigeria since independence",
+    "order": 24,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "nigeria-and-the",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Nigeria and the",
+    "order": 25,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "global-issues",
+    "subject": "history",
+    "exam": "NECO",
+    "name": "Global issues",
+    "order": 26,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "part-i-composition-letter-writing",
+    "subject": "igbo",
+    "exam": "NECO",
+    "name": "Part I: Composition/ Letter Writing",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "part-ii-sound-system",
+    "subject": "igbo",
+    "exam": "NECO",
+    "name": "Part II: Sound system",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "part-iii-grammar",
+    "subject": "igbo",
+    "exam": "NECO",
+    "name": "Part III: Grammar",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "customs-omenala",
+    "subject": "igbo",
+    "exam": "NECO",
+    "name": "Customs – Omenala",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "institutions-ewumewu",
+    "subject": "igbo",
+    "exam": "NECO",
+    "name": "Institutions – Ewumewu",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "the-jahiliyyah-arabia-before-islam",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "The Jahiliyyah:Arabia before Islam.",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "the-life-of-prophet-muhammad-s-a-w",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "The life of Prophet Muhammad (S.A.W.)",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "the-khulaf-ur-r-shid-n-the-rightly-guided-caliphs-abu-bakr-i",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "The Khulafᾱ’ur-Rᾱshidīn(The Rightly – guided Caliphs): Abu- Bakr Ibn Abī Quhhᾱfah, ‘Umar Ibn al-Khattᾱb, ‘Uthmᾱn Ibn ‘Affᾱn and ‘Ali Ibn Abī Tᾱlib.",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "islam-in-west-africa",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "Islam in West Africa",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "revelation-of-the-qur-an",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "Revelation of the Qur’an",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "reading-in-either-arabic-text-or-transliteration-memorizatio",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "Reading (in either Arabic Text or Transliteration), Memorization, Meaning of the following suwar and the lessons learnt from them (Identification, Explanation, Interpretation and Application);",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "moral-lessons-from-the-qur-an",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "Moral Lessons from the Qur’an",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "topic",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "iman-faith",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "‘Iman (Faith)",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "shirk-associating-partners-with-allah",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "Shirk (Associating Partners with Allah)",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "taharah-purification",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "Taharah (Purification)",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "salat",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "Salat:",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "kinds-of-salat-and-how-they-are-observed",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "Kinds of Salat and how they are observed:",
+    "order": 14,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "sawm-fasting-detailed-study-of-sawm-with-emphasis-on-the-spi",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "Sawm (Fasting): Detailed study of Sawm with emphasis on the Spiritual, Social and Moral Objectives.",
+    "order": 15,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "zakat-charity-detailed-study-of-zakat-with-emphasis-on-the-s",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "Zakat (Charity): Detailed Study of Zakat with emphasis on the Spiritual, Socio-Economic and Moral Objectives:",
+    "order": 16,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "hajj-pilgrimage-detailed-study-of-hajj-and-umrah-with-emphas",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "Hajj (Pilgrimage): Detailed study of Hajj and ‘Umrah with emphasis on the Spiritual, Socio-Economic and Moral Values.",
+    "order": 17,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "shari-ah",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "Shari ‘ah:",
+    "order": 18,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "nikah-marriage",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "Nikah (Marriage)",
+    "order": 19,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "talaq-divorce",
+    "subject": "islamic-studies",
+    "exam": "NECO",
+    "name": "Talaq ( Divorce)",
+    "order": 20,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "number-and-numeration",
+    "subject": "mathematics",
+    "exam": "NECO",
+    "name": "NUMBER AND NUMERATION",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "algebraic-processes",
+    "subject": "mathematics",
+    "exam": "NECO",
+    "name": "ALGEBRAIC PROCESSES",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "mensuration",
+    "subject": "mathematics",
+    "exam": "NECO",
+    "name": "MENSURATION",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "plane-geometry",
+    "subject": "mathematics",
+    "exam": "NECO",
+    "name": "PLANE GEOMETRY",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "coordinate-geometry-of-straight-lines",
+    "subject": "mathematics",
+    "exam": "NECO",
+    "name": "COORDINATE GEOMETRY OF STRAIGHT LINES",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "trigonometry",
+    "subject": "mathematics",
+    "exam": "NECO",
+    "name": "TRIGONOMETRY",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "introductory-calculus",
+    "subject": "mathematics",
+    "exam": "NECO",
+    "name": "INTRODUCTORY CALCULUS",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "statistics-and-probability",
+    "subject": "mathematics",
+    "exam": "NECO",
+    "name": "STATISTICS AND PROBABILITY",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "vectors-and-transformation",
+    "subject": "mathematics",
+    "exam": "NECO",
+    "name": "VECTORS AND TRANSFORMATION",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "rudiments-of-music",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Rudiments of Music",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "elementary-harmony",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Elementary Harmony",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "composition-music",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Composition",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "form-and-analysis",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Form and Analysis",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "prepared-set-works-as-recommended-for-each-year",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Prepared set-works as recommended for each year",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "aural-tests-paper-3a",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "AURAL TESTS (PAPER 3A)",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "rhythmic-dictation",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Rhythmic Dictation",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "melody-writing",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Melody Writing",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "writing-the-upper-or-lower-part-of-a-two-part-phrase",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Writing the Upper or Lower Part of a Two-Part Phrase",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "chords",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Chords",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "cadences",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Cadences",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "modulations",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Modulations",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "identification-description-of-themes",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Identification/Description of Themes",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "performance",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Performance",
+    "order": 14,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "history-and-literature",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "HISTORY AND LITERATURE",
+    "order": 15,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "traditional-musicians-composers",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Traditional Musicians/Composers",
+    "order": 16,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "popular-musician",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Popular Musician",
+    "order": 17,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "contemporary-art-musicians",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Contemporary Art Musicians",
+    "order": 18,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "western-composer",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Western Composer",
+    "order": 19,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "musical-instrument",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Musical Instrument",
+    "order": 20,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "general-characteristics",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "General Characteristics",
+    "order": 21,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "categories-and-type",
+    "subject": "music",
+    "exam": "NECO",
+    "name": "Categories and Type",
+    "order": 22,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "principle-of-philosophy-of-physical-education",
+    "subject": "physical-education",
+    "exam": "NECO",
+    "name": "Principle of Philosophy of Physical Education",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "national-and-international-sport-competition",
+    "subject": "physical-education",
+    "exam": "NECO",
+    "name": "National and International Sport Competition",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "basic-human-anatomy-and-physiology",
+    "subject": "physical-education",
+    "exam": "NECO",
+    "name": "Basic Human Anatomy and Physiology",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "practice-of-athletics-games-and-dance",
+    "subject": "physical-education",
+    "exam": "NECO",
+    "name": "Practice of Athletics, Games and Dance",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "physical-fitness-and-conditioning",
+    "subject": "physical-education",
+    "exam": "NECO",
+    "name": "Physical Fitness and Conditioning",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "drug-nutrition-and-sport",
+    "subject": "physical-education",
+    "exam": "NECO",
+    "name": "Drug, Nutrition and Sport",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "sport-administration",
+    "subject": "physical-education",
+    "exam": "NECO",
+    "name": "Sport Administration",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "fundamental-and-derived-quantities-and-units",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Fundamental and derived quantities and units",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "position-distance-and-displacement",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Position, distance and displacement",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "mass-and-weight",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Mass and weight",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "time",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Time",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "fluid-at-rest",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Fluid at rest",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "motion",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Motion",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "speed-and-velocity",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Speed and velocity",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "rectilinear-acceleration",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Rectilinear acceleration",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "scalars-and-vectors",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Scalars and vectors",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "equilibrium-of-forces",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Equilibrium of forces",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "simple-harmonic-motion",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Simple harmonic motion",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "newton-s-laws-of-motion",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Newton’s laws of motion",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "energy",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Energy",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "work-energy-and-power",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Work, Energy and Power",
+    "order": 14,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "heat-energy",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Heat Energy",
+    "order": 15,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "production-and-propagation-of-waves",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Production and propagation of waves",
+    "order": 16,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "types-of-waves",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Types of waves",
+    "order": 17,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "properties-of-waves",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Properties of waves",
+    "order": 18,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "light-waves",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Light waves",
+    "order": 19,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "sound-wave",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Sound Wave",
+    "order": 20,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "description-property-of-fields",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Description property of fields",
+    "order": 21,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "gravitational-field",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Gravitational field",
+    "order": 22,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "electric-field",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Electric Field",
+    "order": 23,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "magnetic-field",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Magnetic field",
+    "order": 24,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "electromagnetic-field",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Electromagnetic field",
+    "order": 25,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "simple-a-c-circuits",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Simple a.c. circuits",
+    "order": 26,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "structure-of-the-atom",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Structure of the atom",
+    "order": 27,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "structure-of-the-nucleus",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Structure of the nucleus",
+    "order": 28,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "wave-particle-paradox",
+    "subject": "physics",
+    "exam": "NECO",
+    "name": "Wave-particle paradox",
+    "order": 29,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "drawing-materials-and-equipment-types-of-drawing-and-applica",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Drawing materials and equipment, types of drawing and applications",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "lines-lettering-and-dimensioning",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Lines, lettering and dimensioning",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "division-of-lines-and-its-applications",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Division of lines and its applications",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "scales-and-their-uses",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Scales and their uses",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "angles",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Angles",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "triangles-quadrilaterals-and-other-polygons",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Triangles, quadrilaterals and other polygons",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "circles",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Circles",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "tangents-and-tangency",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Tangents and tangency",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "inscribed-circumscribed-and-inscribed-figures",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Inscribed, circumscribed and inscribed figures",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "similar-figures-and-areas",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Similar figures and areas",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "loci",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Loci",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "lines-in-space-and-planes",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Lines in space and planes",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "pictorial-drawing-isometric-oblique-perspective",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Pictorial drawing: isometric, oblique, perspective",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "orthographic-projection",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Orthographic projection",
+    "order": 14,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "auxiliary-projections",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Auxiliary projections",
+    "order": 15,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "sectional-views-and-true-shapes",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Sectional views and true shapes",
+    "order": 16,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "development-of-surfaces",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Development of surfaces",
+    "order": 17,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "intersection-interpenetration",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Intersection /Interpenetration",
+    "order": 18,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "symbols-and-conventions-used-in-plane-and-solid-geometry",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Symbols and conventions used in plane and solid geometry",
+    "order": 19,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "freehand-sketching-and-identification-of-building-tools",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Freehand sketching and identification of building tools",
+    "order": 20,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "foundations-and-floors",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Foundations and Floors",
+    "order": 21,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "openings-windows-doors-and-arches",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Openings – windows, doors and arches",
+    "order": 22,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "stairs-and-staircases",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Stairs and staircases",
+    "order": 23,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "roofs",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Roofs",
+    "order": 24,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "constructional-details-of-parts-of-buildings",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Constructional details of parts of buildings",
+    "order": 25,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "working-drawings-of-buildings",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Working drawings of buildings",
+    "order": 26,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "building-materials-freehand-sketching-symbols-and-convention",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Building materials, freehand sketching, symbols and conventions",
+    "order": 27,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "freehand-sketching-and-identification-of-mechanical-tools",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Freehand sketching and identification of mechanical tools",
+    "order": 28,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "dimensioning",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Dimensioning",
+    "order": 29,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "screw-threads-fasteners-and-locking-devices",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Screw threads, fasteners and locking devices",
+    "order": 30,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "sectioning",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Sectioning",
+    "order": 31,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "pictorial-drawing",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Pictorial drawing",
+    "order": 32,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "working-and-assembly-drawing",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Working and assembly drawing.",
+    "order": 33,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "symbols-conventions-and-abbreviations",
+    "subject": "technical-drawing",
+    "exam": "NECO",
+    "name": "Symbols, conventions and abbreviations",
+    "order": 34,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "general-knowledge-in-art",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "General Knowledge in Art",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "art-of-west-africa",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "Art of West Africa",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "traditional-art",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "Traditional Art",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "contemporary-art",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "Contemporary Art",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "pre-historic-ancient-egyptian-and-western-art",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "Pre-historic, Ancient Egyptian and Western Art",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "19th-century-art",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "19th Century Art",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "20th-century-art",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "20th Century Art",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "drawing-from-object",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "Drawing from Object",
+    "order": 8,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "drawing-from-nature",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "Drawing from Nature",
+    "order": 9,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "drawing-from-life",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "Drawing from Life",
+    "order": 10,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "graphic-design",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "Graphic Design",
+    "order": 11,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "textile-designs",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "Textile Designs",
+    "order": 12,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "picture-making",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "Picture Making",
+    "order": 13,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "sculpture",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "Sculpture",
+    "order": 14,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "product-design-modeling",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "Product Design/Modeling",
+    "order": 15,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "ceramics",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "Ceramics",
+    "order": 16,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "crafts",
+    "subject": "visual-arts",
+    "exam": "NECO",
+    "name": "Crafts",
+    "order": 17,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "composition-yoruba",
+    "subject": "yoruba",
+    "exam": "NECO",
+    "name": "Composition",
+    "order": 1,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "sound-system",
+    "subject": "yoruba",
+    "exam": "NECO",
+    "name": "Sound System",
+    "order": 2,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "grammar-yoruba",
+    "subject": "yoruba",
+    "exam": "NECO",
+    "name": "Grammar",
+    "order": 3,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "oral-literature-prose-poetry-drama",
+    "subject": "yoruba",
+    "exam": "NECO",
+    "name": "Oral Literature – Prose, Poetry, Drama",
+    "order": 4,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "written-literature-prose-poetry-drama",
+    "subject": "yoruba",
+    "exam": "NECO",
+    "name": "Written Literature – Prose, Poetry, Drama",
+    "order": 5,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "customs",
+    "subject": "yoruba",
+    "exam": "NECO",
+    "name": "Customs",
+    "order": 6,
+    "weight": 0,
+    "objectives": []
+  },
+  {
+    "slug": "institutions",
+    "subject": "yoruba",
+    "exam": "NECO",
+    "name": "Institutions",
+    "order": 7,
+    "weight": 0,
+    "objectives": []
+  }
+]

@@ -8,7 +8,7 @@ use super::models::{
 use super::papers;
 
 /// Present one novel quiz row. Same withholding contract as [`render`];
-/// `novel_id` is stamped by the caller — the stored row does not carry it.
+/// `novel_id` is stamped by the caller. The stored row does not carry it.
 pub fn render_novel_question(
     novel_id: &str,
     q: &super::models::NovelQuestion,
@@ -62,7 +62,7 @@ pub fn is_introspectable(name: &str) -> bool {
 }
 
 /// Normalize paging inputs. Page numbers below 1 count as 1; sizes
-/// clamp to 1–200. One rule shared by the store query and the response
+/// clamp to 1 to 200. One rule shared by the store query and the response
 /// envelope so they can never disagree.
 pub fn page_bounds(page: u32, per_page: u32) -> (u32, u32) {
     (page.max(1), per_page.clamp(1, 200))
@@ -75,7 +75,7 @@ pub fn page_query(page: Option<u32>, per_page: Option<u32>) -> (u32, u32) {
 }
 
 /// Build the served syllabus: attribute the subject's rows to their
-/// subtopics through the tree, count them, and roll the counts up. Pure —
+/// subtopics through the tree, count them, and roll the counts up. Pure:
 /// the store fetched the tree and the rows, this only judges them.
 ///
 /// `country` keeps only topics whose stated scope includes it (an empty
