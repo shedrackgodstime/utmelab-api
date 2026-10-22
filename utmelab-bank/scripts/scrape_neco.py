@@ -37,6 +37,14 @@ SCOPES: dict[str, tuple[int, ...]] = {
     "computer-studies": (2014,),
 }
 
+#: A stalled scope must not hold the whole job. The largest paper is under
+#: four hundred rows, so half an hour is generous; a timeout leaves the saved
+#: rows in place and the next run resumes from them.
+SCOPE_TIMEOUT: int = 30 * 60
+#: The index normally reloads in a minute; a stuck database should fail the
+#: run instead of occupying the six-hour job.
+INDEX_TIMEOUT: int = 15 * 60
+
 
 def _selected(
     subjects: Sequence[str] | None,
@@ -71,7 +79,15 @@ async def _run(args: argparse.Namespace) -> int:
         media=not args.dry_run,
     ) as runtime:
         if not args.dry_run and not args.skip_index:
-            indexed = await run_named("index", runtime, TaskOptions(limit=args.limit))
+            try:
+                async with asyncio.timeout(INDEX_TIMEOUT):
+                    indexed = await run_named("index", runtime, TaskOptions(limit=args.limit))
+            except TimeoutError:
+                print(
+                    f"error: the production index did not finish in {INDEX_TIMEOUT}s",
+                    file=sys.stderr,
+                )
+                return 1
             print(f"index: {summary(indexed)}")
             if not indexed.ok:
                 for error in indexed.errors:
@@ -89,7 +105,16 @@ async def _run(args: argparse.Namespace) -> int:
                     dry_run=args.dry_run,
                 )
                 try:
-                    result = await run_named("fetch", runtime, options)
+                    async with asyncio.timeout(SCOPE_TIMEOUT):
+                        result = await run_named("fetch", runtime, options)
+                except TimeoutError:
+                    logger.error("NECO/%s/%s timed out after %ss", subject, year, SCOPE_TIMEOUT)
+                    print(
+                        f"NECO/{subject}/{year}: TIMEOUT after {SCOPE_TIMEOUT}s",
+                        file=sys.stderr,
+                    )
+                    failures += 1
+                    continue
                 except Exception as exc:  # one bad scope must not stop the rest
                     logger.exception("NECO/%s/%s failed", subject, year)
                     print(

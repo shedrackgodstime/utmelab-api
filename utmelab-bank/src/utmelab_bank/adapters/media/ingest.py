@@ -21,6 +21,7 @@ the content fingerprint too, so the row is re-stamped before it moves on.
 
 from __future__ import annotations
 
+import asyncio
 import hashlib
 import io
 import logging
@@ -57,9 +58,17 @@ class HttpMediaFetcher(MediaFetcher):
         )
 
     async def fetch(self, url: str) -> bytes:
-        resp = await self._client.get(url)
-        resp.raise_for_status()
-        content = resp.content
+        try:
+            async with asyncio.timeout(self.timeout):
+                resp = await self._client.get(url)
+                resp.raise_for_status()
+                content = resp.content
+        except TimeoutError as exc:
+            raise MediaError(
+                "the figure did not download in time",
+                url=url,
+                timeout=self.timeout,
+            ) from exc
         if len(content) > self.max_bytes:
             raise ValueError(f"Media exceeds size limit ({self.max_bytes} bytes)")
         return content

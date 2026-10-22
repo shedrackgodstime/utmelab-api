@@ -22,6 +22,7 @@ and not a column.
 
 from __future__ import annotations
 
+import asyncio
 import base64
 from datetime import UTC, datetime
 from typing import Any
@@ -61,6 +62,7 @@ class GitLabMediaStore:
         self.project = project
         self.branch = branch
         self.base_url = base_url.rstrip("/")
+        self._timeout = timeout
         self._token_value = token
         self._api = f"https://{host}/api/v4/projects/{quote(project, safe='')}"
         self._client = client or httpx.AsyncClient(
@@ -172,12 +174,19 @@ class GitLabMediaStore:
         json: dict[str, object] | None = None,
     ) -> httpx.Response:
         try:
-            return await self._client.request(
-                method,
-                url,
-                headers={"PRIVATE-TOKEN": self._token_value},
-                json=json,
-            )
+            async with asyncio.timeout(self._timeout):
+                return await self._client.request(
+                    method,
+                    url,
+                    headers={"PRIVATE-TOKEN": self._token_value},
+                    json=json,
+                )
+        except TimeoutError as exc:
+            raise MediaError(
+                "the gitlab request timed out",
+                method=method,
+                timeout=self._timeout,
+            ) from exc
         except httpx.HTTPError as exc:
             raise MediaError("the gitlab request failed", error=str(exc)) from exc
 

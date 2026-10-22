@@ -42,6 +42,9 @@ __all__ = ["MyschoolSource"]
 
 DEFAULT_RATE_LIMIT: Final[float] = 1.0
 ATTEMPTS: Final[int] = 3
+#: A page that trickles bytes can satisfy httpx's read timeout forever. Cap
+#: the whole request so one stalled page cannot hold the scope open.
+REQUEST_TIMEOUT: Final[float] = 45.0
 
 
 class MyschoolSource:
@@ -136,24 +139,10 @@ class MyschoolSource:
                     )
                     continue
 
-                # Extract base64 data URLs from media refs and store as blobs
-                # Extract base64 blobs from payload (both media array and media_blobs field)
-                media_blobs: dict[str, bytes] = {}
-                # From media array (legacy data: URLs)
-                for media in parsed.payload.get("media", []):
-                    url = media.get("url", "")
-                    if url.startswith("data:"):
-                        key = media.get("key", "")
-                        try:
-                            header, b64 = url.split(",", 1)
-                            import base64
-                            media_blobs[key] = base64.b64decode(b64)
-                            media["url"] = f"blob:{key}"
-                        except Exception:
-                            pass
-                # From media_blobs field (inline data: URLs from parser)
-                for key, blob in parsed.payload.get("media_blobs", {}).items():
-                    media_blobs[key] = blob
+                # The parser turns every data: URL into a blob marker and
+                # keeps its bytes here. The media list only carries resolved
+                # urls or blob: markers, so there is nothing left to decode.
+                media_blobs: dict[str, bytes] = dict(parsed.payload.get("media_blobs", {}))
 
                 # Remove media_blobs from payload before hashing (bytes not JSON-serializable)
                 payload_for_hash = {k: v for k, v in parsed.payload.items() if k != "media_blobs"}
@@ -217,12 +206,15 @@ class MyschoolSource:
         last_error = ""
         for attempt in range(ATTEMPTS):
             try:
-                response = await self._client.get(url)
-                if response.status_code >= 500:
-                    last_error = f"http {response.status_code}"
-                else:
-                    response.raise_for_status()
-                    return parse_json(response.text)
+                async with asyncio.timeout(REQUEST_TIMEOUT):
+                    response = await self._client.get(url)
+                    if response.status_code >= 500:
+                        last_error = f"http {response.status_code}"
+                    else:
+                        response.raise_for_status()
+                        return parse_json(response.text)
+            except TimeoutError:
+                last_error = f"no complete response in {REQUEST_TIMEOUT:.0f}s"
             except httpx.HTTPStatusError as exc:
                 if exc.response.status_code < 500:
                     raise SourceError(
