@@ -207,7 +207,7 @@ pub struct NovelQuestion {
 /// A stimulus shared by many questions — one comprehension passage
 /// serving five questions, one cloze serving ten. Questions carry only
 /// the id; consumers resolve it here, never ignore it.
-#[derive(Clone, Debug, serde::Serialize, utoipa::ToSchema)]
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct Passage {
     pub id: String,
     pub exam: String,

@@ -133,6 +133,7 @@ async fn converge(probe: &DbState, db: &SyncDb) {
                 probe
                     .contract_ok
                     .store(true, std::sync::atomic::Ordering::Relaxed);
+                update_bank_version(probe).await;
                 return;
             }
             Ok(Some(why)) => {
@@ -199,12 +200,28 @@ async fn supervise(probe: &DbState, window: Duration, db: &SyncDb) {
     }
 }
 
+async fn update_bank_version(probe: &DbState) {
+    let rev = if let Some(db) = probe.db.read().await.clone() {
+        db.stats().await.ok().and_then(|st| st.revision)
+    } else {
+        None
+    };
+    let ver = match rev {
+        Some(r) if !r.trim().is_empty() => r,
+        _ => super::schema::read_bank_version(probe).await,
+    };
+    if let Ok(mut w) = probe.bank_version.write() {
+        *w = ver;
+    }
+}
+
 async fn recheck_contract(probe: &DbState) {
     match super::schema::check_contract(probe).await {
         Ok(None) => {
             let was = probe
                 .contract_ok
                 .swap(true, std::sync::atomic::Ordering::Relaxed);
+            update_bank_version(probe).await;
             if !was {
                 tracing::info!("schema contract restored: data surfaces resume");
             }

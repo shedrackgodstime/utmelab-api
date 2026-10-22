@@ -38,6 +38,7 @@ pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
             // cannot read the validator it is meant to echo otherwise.
             axum::http::header::ETAG,
             axum::http::header::CONTENT_TYPE,
+            axum::http::HeaderName::from_static("x-bank-version"),
         ]));
     // Reads run on the read budget and carry ETag; the report routes write
     // (they push to the cloud), so they sit outside both and take the global
@@ -66,6 +67,7 @@ pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
         .merge(reads)
         .merge(public)
         .merge(writes)
+        .layer(from_fn_with_state(state.clone(), middleware::bank_version))
         .layer(cors)
 }
 
@@ -125,6 +127,16 @@ mod tests {
                 .split(',')
                 .any(|h| h.trim().eq_ignore_ascii_case("etag")),
             "the response ETag must be readable: {exposed}"
+        );
+        assert!(
+            exposed
+                .split(',')
+                .any(|h| h.trim().eq_ignore_ascii_case("x-bank-version")),
+            "the response x-bank-version must be readable: {exposed}"
+        );
+        assert!(
+            res.headers().contains_key("x-bank-version"),
+            "x-bank-version must be present on responses"
         );
     }
 

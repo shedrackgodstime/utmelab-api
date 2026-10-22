@@ -199,6 +199,10 @@ pub(crate) fn db_state_without_db(contract_ok: bool, permits: usize) -> DbState 
         write_mutex: Arc::new(tokio::sync::Mutex::new(())),
         contract_ok: Arc::new(std::sync::atomic::AtomicBool::new(contract_ok)),
         limiter: Arc::new(RateLimiter::new()),
+        bank_version: Arc::new(std::sync::RwLock::new(format!(
+            "v{}",
+            crate::store::schema::CONTRACT_VERSION
+        ))),
     }
 }
 
@@ -224,6 +228,7 @@ fn app_from(d: DbState) -> AppState {
         write_mutex: d.write_mutex,
         contract_ok: d.contract_ok,
         limiter: d.limiter,
+        bank_version: d.bank_version,
     }
 }
 

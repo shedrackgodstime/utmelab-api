@@ -136,15 +136,38 @@ class MyschoolSource:
                     )
                     continue
 
+                # Extract base64 data URLs from media refs and store as blobs
+                # Extract base64 blobs from payload (both media array and media_blobs field)
+                media_blobs: dict[str, bytes] = {}
+                # From media array (legacy data: URLs)
+                for media in parsed.payload.get("media", []):
+                    url = media.get("url", "")
+                    if url.startswith("data:"):
+                        key = media.get("key", "")
+                        try:
+                            header, b64 = url.split(",", 1)
+                            import base64
+                            media_blobs[key] = base64.b64decode(b64)
+                            media["url"] = f"blob:{key}"
+                        except Exception:
+                            pass
+                # From media_blobs field (inline data: URLs from parser)
+                for key, blob in parsed.payload.get("media_blobs", {}).items():
+                    media_blobs[key] = blob
+
+                # Remove media_blobs from payload before hashing (bytes not JSON-serializable)
+                payload_for_hash = {k: v for k, v in parsed.payload.items() if k != "media_blobs"}
+
                 yield SourceItem(
                     source=self.profile.name,
                     source_url=parsed.source_url,
                     source_item_id=parsed.source_item_id,
                     fetched_at=datetime.now(UTC),
-                    payload=parsed.payload,
-                    payload_hash=payload_hash(parsed.payload),
+                    payload=payload_for_hash,
+                    payload_hash=payload_hash(payload_for_hash),
                     scope=scope,
                     source_version=self.profile.version,
+                    media_blobs=media_blobs,
                 )
 
             last_page = api_last_page(payload)

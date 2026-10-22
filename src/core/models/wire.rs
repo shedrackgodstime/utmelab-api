@@ -6,7 +6,9 @@
 //! copies a constructor instead of a formula. `ReportFiled` is the outcome
 //! of a write a consumer made.
 
-use super::domain::{Choice, Explanation, RichText, Subject};
+use std::collections::HashMap;
+
+use super::domain::{Choice, Explanation, Passage, RichText, Subject};
 
 /// One page of a collection in the shape every paged endpoint serves.
 /// The envelope lives here, once, so a new paged endpoint cannot
@@ -23,6 +25,8 @@ pub struct Page<T> {
     pub total_pages: u32,
     pub total_records: usize,
     pub includes_explanation: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub passages: Option<HashMap<String, Passage>>,
 }
 
 impl<T> Page<T> {
@@ -46,13 +50,33 @@ impl<T> Page<T> {
             },
             total_records,
             includes_explanation,
+            passages: None,
         }
+    }
+
+    pub fn with_passages(mut self, passages: HashMap<String, Passage>) -> Self {
+        if !passages.is_empty() {
+            self.passages = Some(passages);
+        }
+        self
     }
 }
 
 /// Page of questions as served. Counts describe the filtered set, not
 /// the bank — a consumer pages `total_pages`, never guesses.
 pub type QuestionPageResponse = Page<RenderedQuestion>;
+
+/// A sampled set of questions for fast practice or quick quiz flows.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
+pub struct SampledQuestions {
+    pub exam: String,
+    pub subject: String,
+    pub count: usize,
+    pub total_available: usize,
+    pub questions: Vec<RenderedQuestion>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub passages: Option<HashMap<String, Passage>>,
+}
 
 /// Outcome of filing a consumer flag. `duplicate` is true when an
 /// identical filing already existed; `id` is then the original's.
@@ -152,11 +176,16 @@ pub struct RenderedQuestion {
     pub source: String,
     pub text: RichText,
     pub options: Vec<Choice>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub subtopic_id: Option<String>,
     pub section: Option<String>,
     /// A stimulus this row belongs to — fetch it, never ignore it: the
     /// stem may be unanswerable without it.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub passage_id: Option<String>,
+    /// The attached stimulus if requested.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub passage: Option<Passage>,
     pub marks: f32,
     pub difficulty: u8,
     pub verified: bool,

@@ -223,29 +223,66 @@ def parse_api_question(
 
     figures: list[str] = []
     marks: list[Inline] = []
+    data_url_blobs: dict[str, bytes] = {}
     for mark in stem_marks:
         if mark.kind is not InlineKind.IMAGE:
             marks.append(mark)
             continue
-        resolved = figure_url(mark.url)
+        url = mark.url or ""
+        if url.startswith("data:"):
+            # Base64 data URL - decode and store as blob
+            try:
+                header, b64 = url.split(",", 1)
+                import base64
+                blob = base64.b64decode(b64)
+                key = f"inline-img-{len(data_url_blobs)}"
+                data_url_blobs[key] = blob
+                # Replace with placeholder
+                marks.append(mark.model_copy(update={"url": f"blob:{key}", "position": ImagePosition.BELOW}))
+                if f"blob:{key}" not in figures:
+                    figures.append(f"blob:{key}")
+            except Exception:
+                continue
+            continue
+        resolved = figure_url(url)
         if resolved is None:
             continue
         marks.append(mark.model_copy(update={"url": resolved, "position": ImagePosition.BELOW}))
         if resolved not in figures:
             figures.append(resolved)
 
-    main_figure = figure_url(row.get("image"))
+    main_figure = figure_url(row.get("image") or "")
     if main_figure is not None and main_figure not in figures:
-        figures.append(main_figure)
-        marks.append(
-            Inline(
-                kind=InlineKind.IMAGE,
-                start=len(stem_text),
-                len=0,
-                url=main_figure,
-                position=ImagePosition.BELOW,
+        if main_figure.startswith("data:"):
+            try:
+                header, b64 = main_figure.split(",", 1)
+                import base64
+                blob = base64.b64decode(b64)
+                key = f"main-img-{len(data_url_blobs)}"
+                data_url_blobs[key] = blob
+                figures.append(f"blob:{key}")
+                marks.append(
+                    Inline(
+                        kind=InlineKind.IMAGE,
+                        start=len(stem_text),
+                        len=0,
+                        url=f"blob:{key}",
+                        position=ImagePosition.BELOW,
+                    )
+                )
+            except Exception:
+                pass
+        else:
+            figures.append(main_figure)
+            marks.append(
+                Inline(
+                    kind=InlineKind.IMAGE,
+                    start=len(stem_text),
+                    len=0,
+                    url=main_figure,
+                    position=ImagePosition.BELOW,
+                )
             )
-        )
 
     # Extract passage from ref field if present (myschool embeds stimuli here)
     passage = None
@@ -273,6 +310,8 @@ def parse_api_question(
             for index, url in enumerate(figures, start=1)
         ],
     }
+    if data_url_blobs:
+        payload["media_blobs"] = data_url_blobs
     if passage is not None:
         payload["passage"] = passage
 

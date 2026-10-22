@@ -353,6 +353,7 @@ mod tests {
             "/api/v1/blueprints/{exam}/{subject}",
             "/api/v1/blueprints/JAMB/physics",
         ),
+        ("GET", "/api/v1/passages", "/api/v1/passages?ids=p1"),
         ("GET", "/api/v1/passages/{id}", "/api/v1/passages/p1"),
         ("GET", "/api/v1/novels", "/api/v1/novels"),
         ("GET", "/api/v1/novels/{id}", "/api/v1/novels/lekki"),
@@ -362,6 +363,11 @@ mod tests {
             "/api/v1/novels/lekki/questions",
         ),
         ("GET", "/api/v1/questions", "/api/v1/questions"),
+        (
+            "GET",
+            "/api/v1/questions/sample",
+            "/api/v1/questions/sample?exam=JAMB&subject=physics",
+        ),
         ("GET", "/api/v1/questions/{id}", "/api/v1/questions/q1"),
         ("GET", "/api/v1/keys/me", "/api/v1/keys/me"),
         ("GET", "/api/v1/meta/tables", "/api/v1/meta/tables"),
@@ -391,6 +397,11 @@ mod tests {
     const PUBLIC_ROUTES: &[(&str, &str, &str)] = &[
         ("GET", "/api/v1/public/summary", "/api/v1/public/summary"),
         ("GET", "/api/v1/public/exams", "/api/v1/public/exams"),
+        (
+            "GET",
+            "/api/v1/public/syllabus/{exam}/{slug}",
+            "/api/v1/public/syllabus/JAMB/use-of-english",
+        ),
     ];
 
     /// The MCP surface is gated endpoints, one per capability set. Its tools

@@ -137,15 +137,50 @@ class MediaIngestor:
         the row when it is required. The owned urls are collected as we go, so
         the swap and the fingerprint see the same set of assets.
         """
-        if not item.media_refs:
-            return item
-
         assets: list[MediaAsset] = []
         owned: dict[str, str] = {}
+
+        # Collect all blob: URLs from media_refs and inline images
+        blob_urls: set[str] = set()
         for ref in item.media_refs:
             source_url = str(ref.source_url)
+            if source_url.startswith("blob:"):
+                blob_urls.add(source_url)
+
+        # Also scan inline images in content for blob: URLs
+        for inline in item.content.stem.inline:
+            if inline.kind.value == "image" and inline.url and inline.url.startswith("blob:"):
+                blob_urls.add(inline.url)
+        for option in item.content.options:
+            for inline in option.text.inline:
+                if inline.kind.value == "image" and inline.url and inline.url.startswith("blob:"):
+                    blob_urls.add(inline.url)
+
+        # Track which blob keys we've processed
+        processed_keys: set[str] = set()
+
+        # Process regular media_refs first
+        for ref in item.media_refs:
+            source_url = str(ref.source_url)
+            if source_url.startswith("blob:"):
+                processed_keys.add(source_url[5:])  # strip "blob:"
             try:
-                data = await self.fetcher.fetch(source_url)
+                # Handle blob: URLs (pre-decoded base64 images from data: URLs)
+                if source_url.startswith("blob:"):
+                    key = source_url[5:]  # strip "blob:"
+                    data = item.media_blobs.get(key)
+                    if data is None:
+                        raise ValueError(f"No blob found for key {key}")
+                # Handle data: URLs (base64 embedded images, e.g., NECO)
+                elif source_url.startswith("data:"):
+                    # Parse data URL: data:[<mediatype>][;base64],<data>
+                    header, b64 = source_url.split(",", 1)
+                    mime = header.split(";")[0].split(":")[1] if ":" in header else "image/jpeg"
+                    import base64
+                    data = base64.b64decode(b64)
+                else:
+                    data = await self.fetcher.fetch(source_url)
+
                 checked = await self.validator.validate(data, ref.mime)
                 asset = await self.store.put(
                     data,
@@ -158,13 +193,34 @@ class MediaIngestor:
                 continue
 
             if self.store.can_serve(asset.storage_url):
-                # The bank can serve it, so it owns it. The inline records the
-                # stored name; the serving layer composes the public url.
                 owned[source_url] = asset.storage_url
                 assets.append(asset.model_copy(update={"source_url": None}))
             else:
-                # Stored but not servable yet: the row keeps the source url.
                 assets.append(asset)
+
+        # Process any remaining blob: URLs from inline images that don't have a ref
+        for blob_url in blob_urls:
+            key = blob_url[5:]  # strip "blob:"
+            ref_keys = {ref.source_url[5:] for ref in item.media_refs if str(ref.source_url).startswith("blob:")}
+            if key in item.media_blobs and key not in {ref.source_url[5:] for ref in item.media_refs if str(ref.source_url).startswith("blob:")}:
+                # This blob doesn't have a corresponding ref, process it synthetically
+                data = item.media_blobs.get(key)
+                if data is None:
+                    continue
+                try:
+                    checked = await self.validator.validate(data, None)
+                    asset = await self.store.put(
+                        data,
+                        mime=checked.mime,
+                        source_url=None,  # blob URLs are not HTTP, so use None
+                    )
+                    if self.store.can_serve(asset.storage_url):
+                        owned[blob_url] = asset.storage_url
+                        assets.append(asset.model_copy(update={"source_url": None}))
+                    else:
+                        assets.append(asset)
+                except Exception:
+                    continue
 
         # The refs have done their job. Keeping them would make a later media
         # step fetch the source again, which is the one thing capture exists to
@@ -173,6 +229,7 @@ class MediaIngestor:
             update={"media_assets": tuple(assets), "media_refs": ()},
         )
         updated = _swap_owned_urls(updated, owned)
+        return updated.stamp_hashes()
         return updated.stamp_hashes()
 
     async def ingest_refs(self, item: StagingItem) -> StagingItem:

@@ -15,9 +15,14 @@
 //! caller's IP is the only identity available, and `middleware::public_limit`
 //! caps it there.
 
-use axum::{extract::State, routing::get, Json, Router};
+use axum::{
+    extract::{Path, Query, State},
+    routing::get,
+    Json, Router,
+};
 
 use crate::{
+    api::v1::subjects::SyllabusQuery,
     core,
     error::AppError,
     state::{AppState, DbState},
@@ -54,10 +59,47 @@ pub async fn exams(
     Ok(Json(store::catalog::public_exams(&s).await?))
 }
 
+#[utoipa::path(
+    get,
+    path = "/api/v1/public/syllabus/{exam}/{slug}",
+    tag = "public",
+    operation_id = "publicSyllabus",
+    summary = "A subject's syllabus tree with live counts. No key required.",
+    security(()),
+    params(
+        ("exam" = String, Path, description = "Exam code, e.g. `JAMB`."),
+        ("slug" = String, Path, description = "Subject slug, e.g. `physics`."),
+        SyllabusQuery,
+    ),
+    responses(
+        (status = 200, body = core::models::Syllabus),
+        (status = 404, description = "No such subject in this exam"),
+    ),
+)]
+pub async fn syllabus(
+    State(s): State<DbState>,
+    Path((exam, slug)): Path<(String, String)>,
+    Query(f): Query<SyllabusQuery>,
+) -> Result<Json<core::models::Syllabus>, AppError> {
+    let Some(subject) = store::catalog::get_subject(&s, &exam, &slug).await? else {
+        return Err(AppError::NotFound);
+    };
+    let tree = store::catalog::list_syllabus(&s, &exam, &slug).await?;
+    let rows = store::catalog::subject_rows(&s, &exam, &slug, f.country.as_deref()).await?;
+    Ok(Json(core::catalog::assemble_syllabus(
+        &exam,
+        subject,
+        &tree,
+        &rows,
+        f.country.as_deref(),
+    )))
+}
+
 pub fn router(state: AppState) -> Router<AppState> {
     Router::new()
         .route("/v1/public/summary", get(summary))
         .route("/v1/public/exams", get(exams))
+        .route("/v1/public/syllabus/{exam}/{slug}", get(syllabus))
         .with_state(state)
 }
 
@@ -84,7 +126,19 @@ mod tests {
         let db = replica().await;
         let conn = connect(&db).await;
         api_schema(&conn).await;
-        bank_schema(&conn, &["exams", "subjects", "questions", "verifications"]).await;
+        bank_schema(
+            &conn,
+            &[
+                "exams",
+                "subjects",
+                "questions",
+                "verifications",
+                "topics",
+                "subtopics",
+                "topic_countries",
+            ],
+        )
+        .await;
         conn.execute(
             "INSERT INTO exams VALUES ('JAMB','Joint Admissions','[\"NG\"]','live',1,4,120,'[]')",
             (),
@@ -181,5 +235,21 @@ mod tests {
         );
         assert_eq!(body[0]["held"], 2);
         assert_eq!(body[0]["verified"], 1);
+    }
+
+    #[tokio::test]
+    async fn the_public_syllabus_is_accessible_without_a_key() {
+        let app = seeded().await;
+        let (status, body) = call(
+            app,
+            "GET",
+            "/api/v1/public/syllabus/JAMB/use-of-english",
+            None,
+            None,
+        )
+        .await;
+        assert_eq!(status, axum::http::StatusCode::OK);
+        assert_eq!(body["exam"], "JAMB");
+        assert_eq!(body["subject"]["slug"], "use-of-english");
     }
 }

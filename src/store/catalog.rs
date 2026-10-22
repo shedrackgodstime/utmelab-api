@@ -691,6 +691,44 @@ pub async fn get_passage(s: &DbState, id: &str) -> Result<Option<core::models::P
     .await
 }
 
+/// Batch lookup passages by ids. Returns a map from id to Passage.
+pub async fn get_passages(
+    s: &DbState,
+    ids: &[String],
+) -> Result<std::collections::HashMap<String, core::models::Passage>, AppError> {
+    let mut unique_ids: Vec<String> = ids
+        .iter()
+        .map(|s| s.trim().to_string())
+        .filter(|s| !s.is_empty())
+        .collect();
+    unique_ids.sort();
+    unique_ids.dedup();
+    if unique_ids.is_empty() {
+        return Ok(std::collections::HashMap::new());
+    }
+    unique_ids.truncate(100);
+
+    let placeholders = vec!["?"; unique_ids.len()].join(",");
+    let sql = format!(
+        "SELECT id,exam,subject,year,kind,title,author,text,inline FROM passages WHERE id IN ({placeholders})"
+    );
+    let params: Vec<turso::Value> = unique_ids.into_iter().map(turso::Value::Text).collect();
+    with_conn(s, |conn| {
+        let sql = sql.clone();
+        let params = params.clone();
+        async move {
+            let mut rows = conn.query(&sql, params).await.map_err(upstream)?;
+            let mut out = std::collections::HashMap::new();
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                let p = map_passage(&row)?;
+                out.insert(p.id.clone(), p);
+            }
+            Ok(out)
+        }
+    })
+    .await
+}
+
 /// One question by id. `None` when absent — the handler, not the
 /// store, decides that means 404.
 pub async fn get_question(

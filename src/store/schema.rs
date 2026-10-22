@@ -380,6 +380,38 @@ pub async fn check_contract(s: &DbState) -> Result<Option<String>, AppError> {
     check_shapes(s).await
 }
 
+/// Resolve the passive bank version from the meta table or fallback to the contract version.
+pub async fn read_bank_version(s: &DbState) -> String {
+    let val: Option<String> = with_conn(s, |conn| async move {
+        let mut rows = conn
+            .query(
+                "SELECT value FROM meta WHERE key IN ('bank_version', 'contract_version') ORDER BY CASE WHEN key='bank_version' THEN 0 ELSE 1 END LIMIT 1",
+                (),
+            )
+            .await
+            .map_err(upstream)?;
+        Ok(rows
+            .next()
+            .await
+            .map_err(upstream)?
+            .and_then(|r| r.get(0).ok()))
+    })
+    .await
+    .unwrap_or(None);
+
+    match val {
+        Some(v) if !v.trim().is_empty() => {
+            let trimmed = v.trim();
+            if trimmed.starts_with('v') {
+                trimmed.to_string()
+            } else {
+                format!("v{trimmed}")
+            }
+        }
+        _ => format!("v{}", CONTRACT_VERSION),
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

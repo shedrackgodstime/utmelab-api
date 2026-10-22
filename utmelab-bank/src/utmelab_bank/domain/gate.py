@@ -232,7 +232,7 @@ def check_inline(text: str, inline: tuple[Inline, ...], label: str, issues: list
                         label,
                     )
                 )
-            elif not (value.startswith("https://") or _STORED_NAME_RE.match(value)):
+            elif not (value.startswith("https://") or value.startswith("blob:") or _STORED_NAME_RE.match(value)):
                 issues.append(
                     _error(
                         "image_url_invalid",

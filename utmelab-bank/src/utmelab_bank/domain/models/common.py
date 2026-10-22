@@ -304,6 +304,9 @@ class SourceItem(DomainModel):
     payload_hash: Sha256
     scope: Scope
     source_version: NonEmptyStr
+    #: Decoded base64 image blobs from data: URLs, keyed by media ref key.
+    #: Populated by the source adapter when the source embeds images as data URLs.
+    media_blobs: dict[str, bytes] = {}
 
     @property
     def external_key(self) -> str:
@@ -494,6 +497,9 @@ class StagingItem(DomainModel):
     passage: Optional["Passage"] = None
     media_refs: tuple["MediaRef", ...] = ()
     media_assets: tuple["MediaAsset", ...] = ()
+    #: Decoded base64 image blobs from data: URLs, keyed by media ref key.
+    #: Populated by the source adapter and used by capture_refs.
+    media_blobs: dict[str, bytes] = {}
     evidence: "Evidence" = Field(default_factory=lambda: Evidence())
     catalog: Optional["CatalogRef"] = None
     state: "State" = State.ACQUIRED

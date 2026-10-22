@@ -79,7 +79,9 @@ def adapt_payload(item: SourceItem, catalog: CatalogSnapshot | None) -> StagingI
     raw_media = payload.get("media", [])
     if not isinstance(raw_media, list):
         raise ValueError("payload media must be a list")
-    media_refs = tuple(_media_ref(raw) for raw in raw_media)
+    # Filter out blob: URLs - they're handled via media_blobs, not MediaRef
+    filtered_media = [m for m in raw_media if not m.get("url", "").startswith("blob:")]
+    media_refs = tuple(_media_ref(raw) for raw in filtered_media)
 
     passage = _passage(payload.get("passage"), item.scope)
     passage_id = passage.id if passage is not None else None
@@ -108,6 +110,7 @@ def adapt_payload(item: SourceItem, catalog: CatalogSnapshot | None) -> StagingI
         content=content,
         passage=passage,
         media_refs=media_refs,
+        media_blobs=item.media_blobs,
         catalog=catalog_ref,
         state="adapted",
         created_at=item.fetched_at,

@@ -62,6 +62,28 @@ pub async fn public_cache(request: Request<Body>, next: Next) -> Response {
     response
 }
 
+/// Attach the passive x-bank-version header to every response so consumers
+/// can detect bank updates without polling.
+pub async fn bank_version(
+    State(state): State<AppState>,
+    request: Request<Body>,
+    next: Next,
+) -> Response {
+    let version = state
+        .bank_version
+        .read()
+        .map(|v| v.clone())
+        .unwrap_or_else(|_| format!("v{}", crate::store::schema::CONTRACT_VERSION));
+    let mut response = next.run(request).await;
+    if let Ok(val) = axum::http::HeaderValue::from_str(&version) {
+        response.headers_mut().insert(
+            axum::http::HeaderName::from_static("x-bank-version"),
+            val,
+        );
+    }
+    response
+}
+
 /// Strong ETag over exact response bytes for cacheable GETs. Matching
 /// `If-None-Match` short-circuits to an empty 304. Bodies are already
 /// capped by the 16KiB request limit plus our small responses; the 1MiB

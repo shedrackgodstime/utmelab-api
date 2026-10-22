@@ -164,6 +164,12 @@ struct AssemblePaperArgs {
     /// Country scope, e.g. `NG`.
     #[schemars(extend("type" = "string"))]
     country: Option<String>,
+    /// Include answers and explanations. Defaults to false.
+    #[schemars(extend("type" = "boolean"))]
+    include_explanation: Option<bool>,
+    /// Include companion passages for reading items. Defaults to false.
+    #[schemars(extend("type" = "boolean"))]
+    include_passage: Option<bool>,
 }
 
 #[derive(Deserialize, JsonSchema)]
@@ -246,6 +252,8 @@ impl McpServer {
             Query(papers::AssembleQuery {
                 seed: args.seed,
                 country: args.country,
+                include_explanation: args.include_explanation,
+                include_passage: args.include_passage,
             }),
         )
         .await

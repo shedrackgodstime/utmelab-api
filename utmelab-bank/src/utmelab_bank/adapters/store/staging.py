@@ -20,7 +20,7 @@ _COLUMNS = (
     "id, state, exam, subject, year, source, source_item_id, source_url, "
     "payload_hash, content_hash, bundle_hash, content, passage, catalog, media, "
     "evidence, attempts, error, created_at, updated_at, section, source_version, "
-    "media_refs"
+    "media_refs, media_blobs"
 )
 
 
@@ -49,8 +49,8 @@ class StagingStore:
                 id, state, exam, subject, year, source, source_item_id,
                 source_url, payload_hash, content_hash, bundle_hash,
                 content, passage, catalog, media, evidence, attempts, error,
-                created_at, updated_at, section, source_version, media_refs
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                created_at, updated_at, section, source_version, media_refs, media_blobs
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             [
                 item.id,
@@ -76,6 +76,7 @@ class StagingStore:
                 item.provenance.scope.section,
                 item.provenance.source_version,
                 json.dumps([ref.model_dump(mode="json") for ref in item.media_refs]),
+                json.dumps({k: v.hex() for k, v in item.media_blobs.items()}),
             ],
         )
 
@@ -278,6 +279,7 @@ def _row_to_item(row: tuple[Any, ...]) -> StagingItem:
         section,
         source_version,
         media_refs,
+        media_blobs,
     ) = row
 
     return StagingItem(
@@ -311,6 +313,7 @@ def _row_to_item(row: tuple[Any, ...]) -> StagingItem:
         error=error,
         created_at=datetime.fromisoformat(created_at),
         updated_at=datetime.fromisoformat(updated_at),
+        media_blobs={k: bytes.fromhex(v) for k, v in json.loads(media_blobs or "{}").items()},
     )
 
 

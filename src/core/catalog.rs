@@ -166,8 +166,10 @@ pub fn render(q: &Question, include_explanation: bool) -> RenderedQuestion {
         source: q.source.clone(),
         text: q.text.clone(),
         options: q.options.clone(),
+        subtopic_id: q.subtopic_id.clone(),
         section: q.section.clone(),
         passage_id: q.passage_id.clone(),
+        passage: None,
         marks: q.marks,
         difficulty: q.difficulty,
         verified: q.verified,
@@ -263,9 +265,12 @@ mod tests {
 
     #[test]
     fn render_includes_answer_on_request() {
-        let r = render(&sample_question(), true);
+        let mut q = sample_question();
+        q.subtopic_id = Some("sub-123".to_string());
+        let r = render(&q, true);
         assert_eq!(r.answer.as_deref(), Some("a"));
         assert!(r.explanation.is_some());
+        assert_eq!(r.subtopic_id.as_deref(), Some("sub-123"));
     }
 
     #[test]

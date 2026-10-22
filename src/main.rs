@@ -126,6 +126,10 @@ async fn run(cfg: Config) {
         write_mutex,
         contract_ok,
         limiter,
+        bank_version: Arc::new(std::sync::RwLock::new(format!(
+            "v{}",
+            utmelab_api::store::schema::CONTRACT_VERSION
+        ))),
     };
     store::sync::spawn_sync_task(&state, cfg.clone());
     let app = routes::router(state, &cfg);

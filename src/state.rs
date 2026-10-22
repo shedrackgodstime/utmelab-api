@@ -73,6 +73,7 @@ pub struct MetricsSnapshot {
 pub type SharedMetrics = Arc<Metrics>;
 
 pub type SharedLimiter = Arc<RateLimiter>;
+pub type BankVersion = Arc<std::sync::RwLock<String>>;
 
 #[derive(Clone)]
 pub struct AppState {
@@ -85,6 +86,7 @@ pub struct AppState {
     pub write_mutex: WriteMutex,
     pub contract_ok: ContractFlag,
     pub limiter: SharedLimiter,
+    pub bank_version: BankVersion,
 }
 
 pub type SyncCell = Arc<RwLock<Option<SyncDb>>>;
@@ -115,6 +117,7 @@ pub struct DbState {
     pub write_mutex: WriteMutex,
     pub contract_ok: ContractFlag,
     pub limiter: SharedLimiter,
+    pub bank_version: BankVersion,
 }
 
 impl DbState {
@@ -131,6 +134,10 @@ impl DbState {
             write_mutex: Arc::new(tokio::sync::Mutex::new(())),
             contract_ok: Arc::new(std::sync::atomic::AtomicBool::new(true)),
             limiter: Arc::new(crate::auth::rate_limit::RateLimiter::new()),
+            bank_version: Arc::new(std::sync::RwLock::new(format!(
+                "v{}",
+                crate::store::schema::CONTRACT_VERSION
+            ))),
         }
     }
 }
@@ -146,6 +153,7 @@ impl axum::extract::FromRef<AppState> for DbState {
             write_mutex: Arc::clone(&state.write_mutex),
             contract_ok: Arc::clone(&state.contract_ok),
             limiter: Arc::clone(&state.limiter),
+            bank_version: Arc::clone(&state.bank_version),
         }
     }
 }

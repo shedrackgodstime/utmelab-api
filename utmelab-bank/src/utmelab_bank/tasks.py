@@ -199,8 +199,8 @@ async def _advance(
         await runtime.dedupe.remember(item, origin=BANK)
         # Capture figures now, while the source is alive. Only rows that
         # passed gate + dedupe reach here, so no wasted uploads.
-        # Skip if already captured (has media_assets and no media_refs).
-        if item.media_refs or not item.media_assets:
+        # Skip if already captured (has media_assets and no media_refs/media_blobs).
+        if item.media_refs or item.media_blobs or not item.media_assets:
             item = await ingestor.capture_refs(item)
             await runtime.staging.save(item)
         # Whether capture ran or not, re-check dedupe because the production

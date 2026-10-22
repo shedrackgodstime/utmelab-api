@@ -60,42 +60,27 @@ SCHEMA: tuple[str, ...] = (
         updated_at      TEXT NOT NULL,
         section         TEXT,
         source_version  TEXT NOT NULL DEFAULT '1',
-        media_refs      TEXT NOT NULL DEFAULT '[]'
+        media_refs      TEXT NOT NULL DEFAULT '[]',
+        media_blobs     TEXT NOT NULL DEFAULT '{}'
     )
     """,
-    """
-    CREATE TABLE IF NOT EXISTS passages (
-        id              TEXT PRIMARY KEY,
-        exam            TEXT NOT NULL,
-        subject         TEXT NOT NULL,
-        year            INTEGER NOT NULL,
-        kind            TEXT NOT NULL,
-        title           TEXT,
-        author          TEXT,
-        text            TEXT NOT NULL,
-        inline          TEXT NOT NULL DEFAULT '[]',
-        source_item_id  TEXT
-    )
-    """,
-    """
-    CREATE TABLE IF NOT EXISTS content_index (
-        content_hash    TEXT NOT NULL,
-        near_duplicate  TEXT NOT NULL,
-        origin          TEXT NOT NULL,
-        question_id     TEXT NOT NULL,
-        PRIMARY KEY (origin, content_hash)
-    )
-    """,
-    """
-    CREATE TABLE IF NOT EXISTS report_log (
-        report_id       TEXT PRIMARY KEY,
-        target_type     TEXT NOT NULL,
-        target_id       TEXT NOT NULL,
-        reason          TEXT NOT NULL,
-        item_id         TEXT,
-        acted_at        TEXT NOT NULL
-    )
-    """,
+)
+
+MIGRATIONS: tuple[tuple[str, str], ...] = (
+    ("passage", "ALTER TABLE staging_items ADD COLUMN passage TEXT"),
+    ("section", "ALTER TABLE staging_items ADD COLUMN section TEXT"),
+    (
+        "source_version",
+        "ALTER TABLE staging_items ADD COLUMN source_version TEXT NOT NULL DEFAULT '1'",
+    ),
+    (
+        "media_refs",
+        "ALTER TABLE staging_items ADD COLUMN media_refs TEXT NOT NULL DEFAULT '[]'",
+    ),
+    (
+        "media_blobs",
+        "ALTER TABLE staging_items ADD COLUMN media_blobs TEXT NOT NULL DEFAULT '{}'",
+    ),
 )
 
 INDEXES = (
@@ -112,24 +97,6 @@ INDEXES = (
 def statements() -> tuple[str, ...]:
     """Every statement that brings a database to the current shape."""
     return (*SCHEMA, *INDEXES)
-
-
-#: Columns added to the staging table after it was first created, and the
-#: statement that adds each one. SQLite has no "add column if not exists",
-#: so the column list is checked first and the statement runs only when the
-#: column is missing.
-MIGRATIONS: tuple[tuple[str, str], ...] = (
-    ("passage", "ALTER TABLE staging_items ADD COLUMN passage TEXT"),
-    ("section", "ALTER TABLE staging_items ADD COLUMN section TEXT"),
-    (
-        "source_version",
-        "ALTER TABLE staging_items ADD COLUMN source_version TEXT NOT NULL DEFAULT '1'",
-    ),
-    (
-        "media_refs",
-        "ALTER TABLE staging_items ADD COLUMN media_refs TEXT NOT NULL DEFAULT '[]'",
-    ),
-)
 
 
 async def ensure_schema(client: Any) -> None:

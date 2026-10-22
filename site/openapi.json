@@ -500,6 +500,30 @@
                 "null"
               ]
             }
+          },
+          {
+            "name": "include_explanation",
+            "in": "query",
+            "description": "Include answers and explanations. Default: false.",
+            "required": false,
+            "schema": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          {
+            "name": "include_passage",
+            "in": "query",
+            "description": "Include companion passages for reading comprehension items. Default: false.",
+            "required": false,
+            "schema": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
           }
         ],
         "responses": {
@@ -573,6 +597,43 @@
           },
           "409": {
             "description": "The bank cannot fill this paper yet"
+          }
+        }
+      }
+    },
+    "/api/v1/passages": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Batch retrieve reading passages by IDs.",
+        "operationId": "listPassages",
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "Comma-separated passage IDs to fetch in a single round-trip.",
+            "required": false,
+            "schema": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Passage"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -779,6 +840,18 @@
             }
           },
           {
+            "name": "include_passage",
+            "in": "query",
+            "description": "Include companion passages for questions referencing them. Default: false.",
+            "required": false,
+            "schema": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          {
             "name": "page",
             "in": "query",
             "description": "1-based page. Default: 1.",
@@ -823,6 +896,137 @@
         }
       }
     },
+    "/api/v1/questions/sample": {
+      "get": {
+        "tags": [
+          "questions"
+        ],
+        "summary": "Sample a random or seeded subset of questions for quick quiz flows.",
+        "operationId": "sampleQuestions",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "query",
+            "description": "Scope to an exam (e.g. `JAMB`).",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "query",
+            "description": "Scope to a subject slug (e.g. `physics`).",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "description": "Number of questions to draw. Clamped to 1..50. Default: 15.",
+            "required": false,
+            "schema": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "seed",
+            "in": "query",
+            "description": "Optional deterministic seed for 1-on-1 challenges or reproducible tests.",
+            "required": false,
+            "schema": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int64",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "verified",
+            "in": "query",
+            "description": "Only verified questions. Default: true.",
+            "required": false,
+            "schema": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          {
+            "name": "subtopic",
+            "in": "query",
+            "description": "Optional drill to a specific subtopic.",
+            "required": false,
+            "schema": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "description": "Scope to a country; a question with no stated scope survives any.",
+            "required": false,
+            "schema": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          {
+            "name": "include_explanation",
+            "in": "query",
+            "description": "Include the answer and the working. Default: false.",
+            "required": false,
+            "schema": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          {
+            "name": "include_passage",
+            "in": "query",
+            "description": "Include companion passages for questions referencing them. Default: false.",
+            "required": false,
+            "schema": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SampledQuestions"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "A subject the bank never had"
+          }
+        }
+      }
+    },
     "/api/v1/questions/{id}": {
       "get": {
         "tags": [
@@ -844,6 +1048,18 @@
             "name": "include_explanation",
             "in": "query",
             "description": "Include the answer and the working. Default: false.",
+            "required": false,
+            "schema": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          {
+            "name": "include_passage",
+            "in": "query",
+            "description": "Include the associated stimulus passage if present. Default: false.",
             "required": false,
             "schema": {
               "type": [
@@ -1137,6 +1353,18 @@
           },
           "mode": {
             "$ref": "#/components/schemas/PaperMode"
+          },
+          "passages": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Passage"
+            },
+            "propertyNames": {
+              "type": "string"
+            }
           },
           "sections": {
             "type": "array",
@@ -1830,6 +2058,18 @@
             "format": "int32",
             "minimum": 0
           },
+          "passages": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Passage"
+            },
+            "propertyNames": {
+              "type": "string"
+            }
+          },
           "per_page": {
             "type": "integer",
             "format": "int32",
@@ -1924,6 +2164,18 @@
             "format": "int32",
             "minimum": 0
           },
+          "passages": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Passage"
+            },
+            "propertyNames": {
+              "type": "string"
+            }
+          },
           "per_page": {
             "type": "integer",
             "format": "int32",
@@ -1985,6 +2237,17 @@
                     "$ref": "#/components/schemas/Choice"
                   }
                 },
+                "passage": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/Passage",
+                      "description": "The attached stimulus if requested."
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
                 "passage_id": {
                   "type": [
                     "string",
@@ -2003,6 +2266,12 @@
                 },
                 "subject": {
                   "type": "string"
+                },
+                "subtopic_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "text": {
                   "$ref": "#/components/schemas/RichText"
@@ -2366,6 +2635,17 @@
               "$ref": "#/components/schemas/Choice"
             }
           },
+          "passage": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Passage",
+                "description": "The attached stimulus if requested."
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "passage_id": {
             "type": [
               "string",
@@ -2384,6 +2664,12 @@
           },
           "subject": {
             "type": "string"
+          },
+          "subtopic_id": {
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "text": {
             "$ref": "#/components/schemas/RichText"
@@ -2520,6 +2806,51 @@
                 "type": "string"
               }
             }
+          }
+        }
+      },
+      "SampledQuestions": {
+        "type": "object",
+        "description": "A sampled set of questions for fast practice or quick quiz flows.",
+        "required": [
+          "exam",
+          "subject",
+          "count",
+          "total_available",
+          "questions"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "exam": {
+            "type": "string"
+          },
+          "passages": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Passage"
+            },
+            "propertyNames": {
+              "type": "string"
+            }
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RenderedQuestion"
+            }
+          },
+          "subject": {
+            "type": "string"
+          },
+          "total_available": {
+            "type": "integer",
+            "minimum": 0
           }
         }
       },

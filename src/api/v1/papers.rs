@@ -47,6 +47,10 @@ pub struct AssembleQuery {
     /// (`topic_countries` is empty), so this does not change the draw; it
     /// is accepted so the request is the same shape as readiness.
     pub country: Option<String>,
+    /// Include answers and explanations. Default: false.
+    pub include_explanation: Option<bool>,
+    /// Include companion passages for reading comprehension items. Default: false.
+    pub include_passage: Option<bool>,
 }
 
 #[derive(Deserialize, utoipa::ToSchema)]
@@ -72,6 +76,8 @@ pub struct AssembledPaperOut {
     pub mode: core::papers::PaperMode,
     pub total: usize,
     pub sections: Vec<PaperSectionOut>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub passages: Option<HashMap<String, core::models::Passage>>,
 }
 
 #[derive(serde::Serialize, utoipa::ToSchema)]
@@ -161,7 +167,18 @@ pub async fn assemble_paper(
     auth.require(SCOPE_READ_CATALOG)?;
     let seed = f.seed.unwrap_or(1);
     let paper = build(&s, &exam, &subject, seed, f.country.as_deref()).await?;
-    Ok(Json(into_out(paper)))
+    let mut out = into_out(paper, f.include_explanation.unwrap_or(false));
+    if f.include_passage.unwrap_or(false) {
+        let pids: Vec<String> = out
+            .sections
+            .iter()
+            .flat_map(|sec| sec.questions.iter().filter_map(|q| q.passage_id.clone()))
+            .collect();
+        if !pids.is_empty() {
+            out.passages = Some(store::catalog::get_passages(&s, &pids).await?);
+        }
+    }
+    Ok(Json(out))
 }
 
 /// Score re-assembles the same paper with the same seed, then marks only
@@ -234,7 +251,7 @@ async fn build(
     core::papers::assemble(&bank, seed).map_err(|u| AppError::Conflict(u.detail()))
 }
 
-fn into_out(paper: core::papers::AssembledPaper) -> AssembledPaperOut {
+fn into_out(paper: core::papers::AssembledPaper, include_explanation: bool) -> AssembledPaperOut {
     let total = paper.total();
     AssembledPaperOut {
         exam: paper.exam,
@@ -248,14 +265,14 @@ fn into_out(paper: core::papers::AssembledPaper) -> AssembledPaperOut {
             .map(|sec| PaperSectionOut {
                 topic: sec.topic,
                 name: sec.name,
-                // Answers withheld: a paper never carries the key.
                 questions: sec
                     .questions
                     .iter()
-                    .map(|q| core::catalog::render(q, false))
+                    .map(|q| core::catalog::render(q, include_explanation))
                     .collect(),
             })
             .collect(),
+        passages: None,
     }
 }
 

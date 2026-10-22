@@ -45,10 +45,20 @@ pub fn list() -> Vec<Resource> {
             "The novel catalog, filterable by `exam`, `year`, `featured`, `category`.",
         ),
         res(
+            "passages",
+            "Passages",
+            "Batch retrieve reading passages by `ids`.",
+        ),
+        res(
             "questions",
             "Questions",
             "Questions, filterable by `exam`, `subject`, `subtopic`, `year`, `source`, \
              `q`, `verified`, `country`, `include_explanation`, `page`, `per_page`.",
+        ),
+        res(
+            "questions/sample",
+            "Sample questions",
+            "Sample a random or seeded subset of questions for quick quiz flows.",
         ),
         res(
             "meta/tables",
@@ -203,6 +213,13 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
             AuthedKey(auth.clone()),
             Path((exam.to_string(), subject.to_string())),
         )),
+        ["passages"] => read!(passages::list(
+            State(db.clone()),
+            AuthedKey(auth.clone()),
+            Query(passages::BatchQuery {
+                ids: opt(&query, "ids"),
+            }),
+        )),
         ["passages", id] => read!(passages::one(
             State(db.clone()),
             AuthedKey(auth.clone()),
@@ -247,8 +264,24 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
                 q: opt(&query, "q"),
                 country: opt(&query, "country"),
                 include_explanation: flag(&query, "include_explanation")?,
+                include_passage: flag(&query, "include_passage")?,
                 page: num(&query, "page")?,
                 per_page: num(&query, "per_page")?,
+            }),
+        )),
+        ["questions", "sample"] => read!(questions::sample(
+            State(db.clone()),
+            AuthedKey(auth.clone()),
+            Query(questions::SampleParams {
+                exam: opt(&query, "exam").unwrap_or_default(),
+                subject: opt(&query, "subject").unwrap_or_default(),
+                count: num(&query, "count")?,
+                seed: num(&query, "seed")?,
+                verified: flag(&query, "verified")?,
+                subtopic: opt(&query, "subtopic"),
+                country: opt(&query, "country"),
+                include_explanation: flag(&query, "include_explanation")?,
+                include_passage: flag(&query, "include_passage")?,
             }),
         )),
         ["questions", id] => read!(questions::one(
@@ -257,6 +290,7 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
             Path(id.to_string()),
             Query(questions::Detail {
                 include_explanation: flag(&query, "include_explanation")?,
+                include_passage: flag(&query, "include_passage")?,
             }),
         )),
         ["meta", "tables"] => read!(meta::tables(State(db.clone()), AuthedKey(auth.clone()))),
