@@ -186,10 +186,7 @@ pub async fn assemble_paper(
             .flat_map(|sec| sec.questions.iter().filter_map(|q| q.passage_id.clone()))
             .collect();
         if !pids.is_empty() {
-            let mut map = store::catalog::get_passages(&s, &pids).await?;
-            for p in map.values_mut() {
-                core::catalog::resolve_rich_text(&mut p.text, s.media_base_url.as_ref());
-            }
+            let map = crate::api::v1::passages::load_passages_map(&s, &pids).await?;
             for sec in &mut out.sections {
                 for q in &mut sec.questions {
                     if let Some(ref pid) = q.passage_id {

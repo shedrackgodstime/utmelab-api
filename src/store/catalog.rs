@@ -34,13 +34,18 @@ pub async fn table_refs(s: &DbState) -> Result<Vec<core::models::TableRef>, AppE
     Ok(core::catalog::to_refs(fetch_table_names(s).await?))
 }
 
-fn opt_bool(v: turso::Value) -> Result<Option<bool>, AppError> {
+fn req_bool(v: turso::Value, col: &'static str) -> Result<bool, AppError> {
+    match v {
+        turso::Value::Integer(0) => Ok(false),
+        turso::Value::Integer(1) => Ok(true),
+        _ => Err(AppError::Upstream(format!("{col} is not 0/1"))),
+    }
+}
+
+fn opt_bool(v: turso::Value, col: &'static str) -> Result<Option<bool>, AppError> {
     match v {
         turso::Value::Null => Ok(None),
-        turso::Value::Integer(n) => Ok(Some(n != 0)),
-        _ => Err(AppError::Upstream(
-            "exam flag column is not an integer".to_string(),
-        )),
+        other => req_bool(other, col).map(Some),
     }
 }
 
@@ -72,13 +77,22 @@ fn json_list(raw: &str, col: &'static str) -> Result<Vec<String>, AppError> {
     json_col(raw, col)
 }
 
-fn opt_string(v: turso::Value) -> Result<Option<String>, AppError> {
+fn opt_string(v: turso::Value, col: &'static str) -> Result<Option<String>, AppError> {
     match v {
         turso::Value::Null => Ok(None),
         turso::Value::Text(t) => Ok(Some(t)),
-        _ => Err(AppError::Upstream(
-            "question text column is not text".to_string(),
-        )),
+        _ => Err(AppError::Upstream(format!("{col} is not text"))),
+    }
+}
+
+fn opt_json_col<T: serde::de::DeserializeOwned>(
+    v: turso::Value,
+    col: &'static str,
+) -> Result<Option<T>, AppError> {
+    match v {
+        turso::Value::Null => Ok(None),
+        turso::Value::Text(s) => json_col(&s, col).map(Some),
+        _ => Err(AppError::Upstream(format!("{col} is not text"))),
     }
 }
 
@@ -87,16 +101,6 @@ fn req_f32(v: turso::Value, col: &'static str) -> Result<f32, AppError> {
         turso::Value::Real(f) => Ok(f as f32),
         turso::Value::Integer(n) => Ok(n as f32),
         _ => Err(AppError::Upstream(format!("{col} is not a number"))),
-    }
-}
-
-/// The SQLite engine only ever hands back 0/1 for a boolean expression;
-/// anything else is corruption, not a truthy value.
-fn req_bool(v: turso::Value, col: &'static str) -> Result<bool, AppError> {
-    match v {
-        turso::Value::Integer(0) => Ok(false),
-        turso::Value::Integer(1) => Ok(true),
-        _ => Err(AppError::Upstream(format!("{col} is not 0/1"))),
     }
 }
 
@@ -137,8 +141,8 @@ pub async fn list_blueprints(
                     exam: row.get(0).map_err(upstream)?,
                     subject: row.get(1).map_err(upstream)?,
                     level: row.get(2).map_err(upstream)?,
-                    topic: opt_string(row.get_value(3).map_err(upstream)?)?,
-                    section: opt_string(row.get_value(4).map_err(upstream)?)?,
+                    topic: opt_string(row.get_value(3).map_err(upstream)?, "blueprint.topic")?,
+                    section: opt_string(row.get_value(4).map_err(upstream)?, "blueprint.section")?,
                     members: json_col(&members_raw, "blueprint.members")?,
                     paper_size: req_int::<u32>(row.get_value(6).map_err(upstream)?, "blueprint.paper_size")?,
                     pct: opt_f64(row.get_value(7).map_err(upstream)?, "blueprint.pct")?,
@@ -147,12 +151,12 @@ pub async fn list_blueprints(
                     expected: opt_f64(row.get_value(10).map_err(upstream)?, "blueprint.expected")?,
                     expected_low: opt_f64(row.get_value(11).map_err(upstream)?, "blueprint.expected_low")?,
                     expected_high: opt_f64(row.get_value(12).map_err(upstream)?, "blueprint.expected_high")?,
-                    source: opt_string(row.get_value(13).map_err(upstream)?)?,
-                    sample: opt_string(row.get_value(14).map_err(upstream)?)?,
+                    source: opt_string(row.get_value(13).map_err(upstream)?, "blueprint.source")?,
+                    sample: opt_string(row.get_value(14).map_err(upstream)?, "blueprint.sample")?,
                     method: row.get(15).map_err(upstream)?,
-                    confidence: opt_string(row.get_value(16).map_err(upstream)?)?,
+                    confidence: opt_string(row.get_value(16).map_err(upstream)?, "blueprint.confidence")?,
                     status: row.get(17).map_err(upstream)?,
-                    note: opt_string(row.get_value(18).map_err(upstream)?)?.unwrap_or_default(),
+                    note: opt_string(row.get_value(18).map_err(upstream)?, "blueprint.note")?.unwrap_or_default(),
                 });
             }
             Ok(out)
@@ -179,18 +183,10 @@ fn map_question(row: &turso::Row) -> Result<core::models::Question, AppError> {
         },
         options: json_col(&options_raw, "question.options")?,
         answer: row.get(8).map_err(upstream)?,
-        subtopic_id: opt_string(row.get_value(9).map_err(upstream)?)?,
-        section: opt_string(row.get_value(10).map_err(upstream)?)?,
-        passage_id: opt_string(row.get_value(11).map_err(upstream)?)?,
-        explanation: match row.get_value(12).map_err(upstream)? {
-            turso::Value::Null => None,
-            turso::Value::Text(s) => Some(json_col(&s, "question.explanation")?),
-            _ => {
-                return Err(AppError::Upstream(
-                    "question.explanation is not text".to_string(),
-                ))
-            }
-        },
+        subtopic_id: opt_string(row.get_value(9).map_err(upstream)?, "question.subtopic_id")?,
+        section: opt_string(row.get_value(10).map_err(upstream)?, "question.section")?,
+        passage_id: opt_string(row.get_value(11).map_err(upstream)?, "question.passage_id")?,
+        explanation: opt_json_col(row.get_value(12).map_err(upstream)?, "question.explanation")?,
         marks: req_f32(row.get_value(13).map_err(upstream)?, "question.marks")?,
         difficulty: req_int::<u8>(row.get_value(14).map_err(upstream)?, "question.difficulty")?,
         verified: req_bool(row.get_value(15).map_err(upstream)?, "question.verified")?,
@@ -395,6 +391,62 @@ pub async fn list_questions(
     .await
 }
 
+/// Draw a seeded sample of questions matching a filter.
+/// Only matching IDs are queried initially to avoid loading the whole pool,
+/// then shuffled with the seed before fetching the requested count.
+pub async fn sample_questions(
+    s: &DbState,
+    filter: &QuestionFilter,
+    count: usize,
+    seed: u64,
+) -> Result<(Vec<core::models::Question>, usize), AppError> {
+    let (clause, params) = question_where(filter);
+    let ids_sql = format!("SELECT id FROM questions{clause} ORDER BY id");
+    with_conn(s, |conn| {
+        let ids_sql = ids_sql.clone();
+        let params = params.clone();
+        async move {
+            let mut rows = conn.query(&ids_sql, params).await.map_err(upstream)?;
+            let mut ids = Vec::new();
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                let id: String = row.get(0).map_err(upstream)?;
+                ids.push(id);
+            }
+            let total = ids.len();
+            if ids.is_empty() || count == 0 {
+                return Ok((Vec::new(), total));
+            }
+
+            use rand::seq::SliceRandom;
+            use rand::SeedableRng;
+            let mut rng = rand::rngs::StdRng::seed_from_u64(seed);
+            ids.shuffle(&mut rng);
+            ids.truncate(count);
+
+            let placeholders = vec!["?"; ids.len()].join(",");
+            let sql = format!(
+                "SELECT id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty, ({verified_predicate}) AS verified FROM questions WHERE id IN ({placeholders})",
+                verified_predicate = verified_predicate("questions")
+            );
+            let query_params: Vec<turso::Value> = ids.iter().cloned().map(turso::Value::Text).collect();
+            let mut q_rows = conn.query(&sql, query_params).await.map_err(upstream)?;
+            let mut map = std::collections::HashMap::with_capacity(ids.len());
+            while let Some(row) = q_rows.next().await.map_err(upstream)? {
+                let q = map_question(&row)?;
+                map.insert(q.id.clone(), q);
+            }
+            let mut out = Vec::with_capacity(ids.len());
+            for id in ids {
+                if let Some(q) = map.remove(&id) {
+                    out.push(q);
+                }
+            }
+            Ok((out, total))
+        }
+    })
+    .await
+}
+
 /// True when this exam offers this subject. Powers the honest 404: a
 /// filter naming a combination the bank never had must not return a
 /// confident empty list.
@@ -434,8 +486,8 @@ fn map_passage(row: &turso::Row) -> Result<core::models::Passage, AppError> {
         subject: row.get(2).map_err(upstream)?,
         year: req_int::<u16>(row.get_value(3).map_err(upstream)?, "passage.year")?,
         kind: row.get(4).map_err(upstream)?,
-        title: opt_string(row.get_value(5).map_err(upstream)?)?,
-        author: opt_string(row.get_value(6).map_err(upstream)?)?,
+        title: opt_string(row.get_value(5).map_err(upstream)?, "passage.title")?,
+        author: opt_string(row.get_value(6).map_err(upstream)?, "passage.author")?,
         text: core::models::RichText {
             text: text_raw,
             inline: json_col(&inline_raw, "passage.inline")?,
@@ -459,7 +511,7 @@ fn map_novel(row: &turso::Row) -> Result<core::models::Novel, AppError> {
         synopsis: row.get(8).map_err(upstream)?,
         setting_place: row.get(9).map_err(upstream)?,
         setting_period: row.get(10).map_err(upstream)?,
-        cover_image: opt_string(row.get_value(11).map_err(upstream)?)?,
+        cover_image: opt_string(row.get_value(11).map_err(upstream)?, "novel.cover_image")?,
     })
 }
 
@@ -531,15 +583,10 @@ fn map_novel_question(row: &turso::Row) -> Result<core::models::NovelQuestion, A
         },
         options: json_col(&options_raw, "novel_question.options")?,
         answer: row.get(5).map_err(upstream)?,
-        explanation: match row.get_value(6).map_err(upstream)? {
-            turso::Value::Null => None,
-            turso::Value::Text(x) => Some(json_col(&x, "novel_question.explanation")?),
-            _ => {
-                return Err(AppError::Upstream(
-                    "novel_question.explanation is not text".to_string(),
-                ))
-            }
-        },
+        explanation: opt_json_col(
+            row.get_value(6).map_err(upstream)?,
+            "novel_question.explanation",
+        )?,
         verified: req_bool(
             row.get_value(7).map_err(upstream)?,
             "novel_question.verified",
@@ -580,7 +627,7 @@ pub async fn get_novel_doc(
                 .map_err(upstream)?;
             while let Some(row) = rows.next().await.map_err(upstream)? {
                 let summary_raw: Option<String> =
-                    opt_string(row.get_value(2).map_err(upstream)?)?;
+                    opt_string(row.get_value(2).map_err(upstream)?, "novel_chapter.summary")?;
                 let ke_raw: String = row.get(3).map_err(upstream)?;
                 chapters.push(core::models::NovelChapter {
                     number: req_int::<u8>(row.get_value(0).map_err(upstream)?, "chapter.number")?,
@@ -949,7 +996,7 @@ fn map_exam(row: &turso::Row) -> Result<core::models::Exam, AppError> {
         name: row.get(1).map_err(upstream)?,
         countries: json_list(&countries_raw, "exam.countries")?,
         status: row.get(3).map_err(upstream)?,
-        has_full_paper: opt_bool(row.get_value(4).map_err(upstream)?)?,
+        has_full_paper: opt_bool(row.get_value(4).map_err(upstream)?, "exam.has_full_paper")?,
         subjects_required: opt_int(
             row.get_value(5).map_err(upstream)?,
             "exam.subjects_required",
@@ -1274,10 +1321,10 @@ pub async fn list_syllabus(
                     }
                 };
                 let sub: Option<String> =
-                    opt_string(row.get_value(5).map_err(upstream)?)?;
+                    opt_string(row.get_value(5).map_err(upstream)?, "subtopic.slug")?;
                 if let Some(st_slug) = sub {
                     let objectives: Option<String> =
-                        opt_string(row.get_value(8).map_err(upstream)?)?;
+                        opt_string(row.get_value(8).map_err(upstream)?, "subtopic.objectives")?;
                     topics[slot]
                         .subtopics
                         .push(core::papers::SyllabusSubtopic {
@@ -1716,6 +1763,41 @@ mod tests {
             .await
             .expect("source filter");
         assert_eq!(total, 1);
+    }
+
+    #[tokio::test]
+    async fn sample_questions_filters_and_shuffles() {
+        let db = local_exams_db().await;
+        let s = crate::state::DbState::detached(db);
+
+        // Blank filter matches all 3 questions, count clamped to 2
+        let blank = QuestionFilter::default();
+        let (sampled, total) = sample_questions(&s, &blank, 2, 42).await.expect("sample");
+        assert_eq!(total, 3);
+        assert_eq!(sampled.len(), 2);
+
+        // Deterministic seed reproduces the same order
+        let (sampled2, total2) = sample_questions(&s, &blank, 2, 42).await.expect("sample seed");
+        assert_eq!(total, total2);
+        assert_eq!(sampled[0].id, sampled2[0].id);
+        assert_eq!(sampled[1].id, sampled2[1].id);
+
+        // Filtered sample for verified only matches q1
+        let verified_only = QuestionFilter {
+            verified: Some(true),
+            ..Default::default()
+        };
+        let (sampled_ver, total_ver) = sample_questions(&s, &verified_only, 10, 42)
+            .await
+            .expect("sample verified");
+        assert_eq!(total_ver, 1);
+        assert_eq!(sampled_ver.len(), 1);
+        assert_eq!(sampled_ver[0].id, "q1");
+
+        // Count zero returns empty set with accurate total
+        let (empty, total_zero) = sample_questions(&s, &blank, 0, 42).await.expect("count 0");
+        assert_eq!(total_zero, 3);
+        assert!(empty.is_empty());
     }
 
     #[tokio::test]

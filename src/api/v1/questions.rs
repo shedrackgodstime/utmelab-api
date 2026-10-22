@@ -52,13 +52,7 @@ pub async fn one(
             );
             if f.include_passage.unwrap_or(false) {
                 if let Some(ref pid) = q.passage_id {
-                    if let Some(mut passage) = store::catalog::get_passage(&s, pid).await? {
-                        core::catalog::resolve_rich_text(
-                            &mut passage.text,
-                            s.media_base_url.as_ref(),
-                        );
-                        rendered.passage = Some(passage);
-                    }
+                    rendered.passage = crate::api::v1::passages::load_passage(&s, pid).await?;
                 }
             }
             Ok(Json(rendered))
@@ -143,35 +137,22 @@ pub async fn list(
             .iter()
             .filter_map(|q| q.passage_id.clone())
             .collect();
-        if !pids.is_empty() {
-            let mut map = store::catalog::get_passages(&s, &pids).await?;
-            for p in map.values_mut() {
-                core::catalog::resolve_rich_text(&mut p.text, s.media_base_url.as_ref());
-            }
-            map
-        } else {
-            std::collections::HashMap::new()
-        }
+        crate::api::v1::passages::load_passages_map(&s, &pids).await?
     } else {
         std::collections::HashMap::new()
     };
 
-    let rendered: Vec<core::models::RenderedQuestion> = questions
-        .iter()
-        .map(|q| {
-            let mut r = core::catalog::render(
-                q,
-                with_explanation,
-                s.media_base_url.as_ref(),
-            );
-            if f.include_passage.unwrap_or(false) {
-                if let Some(ref pid) = q.passage_id {
-                    r.passage = passages.get(pid).cloned();
-                }
-            }
-            r
-        })
-        .collect();
+    let passages_opt = if f.include_passage.unwrap_or(false) {
+        Some(&passages)
+    } else {
+        None
+    };
+    let rendered = render_questions(
+        &questions,
+        with_explanation,
+        s.media_base_url.as_ref(),
+        passages_opt,
+    );
 
     Ok(Json(
         core::models::Page::new(
@@ -183,6 +164,26 @@ pub async fn list(
         )
         .with_passages(passages),
     ))
+}
+
+fn render_questions(
+    questions: &[core::models::Question],
+    with_explanation: bool,
+    media_base_url: &str,
+    passages: Option<&std::collections::HashMap<String, core::models::Passage>>,
+) -> Vec<core::models::RenderedQuestion> {
+    questions
+        .iter()
+        .map(|q| {
+            let mut r = core::catalog::render(q, with_explanation, media_base_url);
+            if let Some(map) = passages {
+                if let Some(ref pid) = q.passage_id {
+                    r.passage = map.get(pid).cloned();
+                }
+            }
+            r
+        })
+        .collect()
 }
 
 #[derive(Deserialize, utoipa::IntoParams)]
@@ -232,69 +233,33 @@ pub async fn sample(
     if !store::catalog::subject_exists(&s, &f.exam, &f.subject).await? {
         return Err(AppError::NotFound);
     }
-    let rows = store::catalog::subject_rows(&s, &f.exam, &f.subject, f.country.as_deref()).await?;
-    let verified_only = f.verified.unwrap_or(true);
-
-    let topic_subtopics: Option<std::collections::HashSet<String>> = if let Some(ref top) = f.topic {
-        let tree = store::catalog::list_syllabus(&s, &f.exam, &f.subject).await?;
-        let subs: std::collections::HashSet<String> = tree
-            .into_iter()
-            .filter(|t| t.slug == *top)
-            .flat_map(|t| t.subtopics.into_iter().map(|st| st.slug))
-            .collect();
-        Some(subs)
-    } else {
-        None
+    let filter = store::catalog::QuestionFilter {
+        exam: Some(f.exam.clone()),
+        subject: Some(f.subject.clone()),
+        topic: f.topic.clone(),
+        subtopic_id: f.subtopic.clone(),
+        year: f.year,
+        source: None,
+        text: None,
+        verified: match f.verified.unwrap_or(true) {
+            true => Some(true),
+            false => None,
+        },
+        country: f.country.clone(),
     };
 
-    let mut candidates: Vec<core::models::Question> = rows
-        .into_iter()
-        .filter(|q| {
-            if verified_only && !q.verified {
-                return false;
-            }
-            if let Some(ref st) = f.subtopic {
-                if q.subtopic_id.as_deref() != Some(st.as_str()) {
-                    return false;
-                }
-            }
-            if let Some(ref subs) = topic_subtopics {
-                if !q.subtopic_id.as_deref().map(|id| subs.contains(id)).unwrap_or(false) {
-                    return false;
-                }
-            }
-            if let Some(year) = f.year {
-                if q.year != year {
-                    return false;
-                }
-            }
-            true
-        })
-        .collect();
-
-    let total_available = candidates.len();
-    use rand::seq::SliceRandom;
-    use rand::SeedableRng;
     let seed = f.seed.unwrap_or_else(rand::random);
-    let mut rng = rand::rngs::StdRng::seed_from_u64(seed);
-    candidates.shuffle(&mut rng);
-
     let count = f.count.unwrap_or(15).clamp(1, 50) as usize;
-    candidates.truncate(count);
-
-    let with_explanation = f.include_explanation.unwrap_or(false);
+    let (questions, total_available) =
+        store::catalog::sample_questions(&s, &filter, count, seed).await?;
 
     let passages = if f.include_passage.unwrap_or(false) {
-        let pids: Vec<String> = candidates
+        let pids: Vec<String> = questions
             .iter()
             .filter_map(|q| q.passage_id.clone())
             .collect();
         if !pids.is_empty() {
-            let mut map = store::catalog::get_passages(&s, &pids).await?;
-            for p in map.values_mut() {
-                core::catalog::resolve_rich_text(&mut p.text, s.media_base_url.as_ref());
-            }
-            Some(map)
+            Some(crate::api::v1::passages::load_passages_map(&s, &pids).await?)
         } else {
             None
         }
@@ -302,22 +267,13 @@ pub async fn sample(
         None
     };
 
-    let rendered: Vec<core::models::RenderedQuestion> = candidates
-        .iter()
-        .map(|q| {
-            let mut r = core::catalog::render(
-                q,
-                with_explanation,
-                s.media_base_url.as_ref(),
-            );
-            if let Some(ref map) = passages {
-                if let Some(ref pid) = q.passage_id {
-                    r.passage = map.get(pid).cloned();
-                }
-            }
-            r
-        })
-        .collect();
+    let with_explanation = f.include_explanation.unwrap_or(false);
+    let rendered = render_questions(
+        &questions,
+        with_explanation,
+        s.media_base_url.as_ref(),
+        passages.as_ref(),
+    );
 
     Ok(Json(core::models::SampledQuestions {
         exam: f.exam,

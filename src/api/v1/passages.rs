@@ -13,6 +13,35 @@ use crate::{
     store,
 };
 
+/// Batch load passages and resolve media URLs against the configured asset host.
+pub async fn load_passages_map(
+    s: &DbState,
+    ids: &[String],
+) -> Result<std::collections::HashMap<String, core::models::Passage>, AppError> {
+    if ids.is_empty() {
+        return Ok(std::collections::HashMap::new());
+    }
+    let mut map = store::catalog::get_passages(s, ids).await?;
+    for p in map.values_mut() {
+        core::catalog::resolve_rich_text(&mut p.text, s.media_base_url.as_ref());
+    }
+    Ok(map)
+}
+
+/// Load a single passage by ID and resolve media URLs against the configured asset host.
+pub async fn load_passage(
+    s: &DbState,
+    id: &str,
+) -> Result<Option<core::models::Passage>, AppError> {
+    match store::catalog::get_passage(s, id).await? {
+        Some(mut p) => {
+            core::catalog::resolve_rich_text(&mut p.text, s.media_base_url.as_ref());
+            Ok(Some(p))
+        }
+        None => Ok(None),
+    }
+}
+
 #[derive(Deserialize, utoipa::IntoParams)]
 pub struct BatchQuery {
     /// Comma-separated passage IDs to fetch in a single round-trip.
@@ -49,11 +78,10 @@ pub async fn list(
         .filter(|s| !s.is_empty())
         .collect();
     if !ids.is_empty() {
-        let mut map = store::catalog::get_passages(&s, &ids).await?;
+        let mut map = load_passages_map(&s, &ids).await?;
         let mut out = Vec::new();
         for id in ids {
-            if let Some(mut p) = map.remove(&id) {
-                core::catalog::resolve_rich_text(&mut p.text, s.media_base_url.as_ref());
+            if let Some(p) = map.remove(&id) {
                 out.push(p);
             }
         }
@@ -87,11 +115,8 @@ pub async fn one(
     Path(id): Path<String>,
 ) -> Result<Json<core::models::Passage>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
-    match store::catalog::get_passage(&s, &id).await? {
-        Some(mut p) => {
-            core::catalog::resolve_rich_text(&mut p.text, s.media_base_url.as_ref());
-            Ok(Json(p))
-        }
+    match load_passage(&s, &id).await? {
+        Some(p) => Ok(Json(p)),
         None => Err(AppError::NotFound),
     }
 }

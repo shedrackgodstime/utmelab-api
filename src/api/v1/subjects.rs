@@ -73,8 +73,8 @@ pub struct SyllabusQuery {
 }
 
 /// Assemble one subject's tree. A subject the exam never had is 404, not an
-/// empty tree.
-async fn tree(
+/// empty tree. Shared across internal and public syllabus routes.
+pub async fn build_syllabus(
     s: &DbState,
     exam: &str,
     slug: &str,
@@ -114,7 +114,7 @@ pub async fn syllabus(
     Query(f): Query<SyllabusQuery>,
 ) -> Result<Json<core::models::Syllabus>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
-    Ok(Json(tree(&s, &exam, &slug, f.country.as_deref()).await?))
+    Ok(Json(build_syllabus(&s, &exam, &slug, f.country.as_deref()).await?))
 }
 
 /// Coverage without the tree: counts only, for progress bars and checklists.
@@ -141,7 +141,7 @@ pub async fn coverage(
     Query(f): Query<SyllabusQuery>,
 ) -> Result<Json<core::models::Coverage>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
-    let s = tree(&s, &exam, &slug, f.country.as_deref()).await?;
+    let s = build_syllabus(&s, &exam, &slug, f.country.as_deref()).await?;
     Ok(Json(core::models::Coverage {
         exam: s.exam,
         subject: s.subject,

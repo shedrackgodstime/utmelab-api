@@ -81,18 +81,9 @@ pub async fn syllabus(
     Path((exam, slug)): Path<(String, String)>,
     Query(f): Query<SyllabusQuery>,
 ) -> Result<Json<core::models::Syllabus>, AppError> {
-    let Some(subject) = store::catalog::get_subject(&s, &exam, &slug).await? else {
-        return Err(AppError::NotFound);
-    };
-    let tree = store::catalog::list_syllabus(&s, &exam, &slug).await?;
-    let rows = store::catalog::subject_rows(&s, &exam, &slug, f.country.as_deref()).await?;
-    Ok(Json(core::catalog::assemble_syllabus(
-        &exam,
-        subject,
-        &tree,
-        &rows,
-        f.country.as_deref(),
-    )))
+    let tree =
+        crate::api::v1::subjects::build_syllabus(&s, &exam, &slug, f.country.as_deref()).await?;
+    Ok(Json(tree))
 }
 
 pub fn router(state: AppState) -> Router<AppState> {
