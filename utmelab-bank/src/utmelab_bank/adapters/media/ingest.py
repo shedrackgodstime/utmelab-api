@@ -174,8 +174,7 @@ class MediaIngestor:
                 # Handle data: URLs (base64 embedded images, e.g., NECO)
                 elif source_url.startswith("data:"):
                     # Parse data URL: data:[<mediatype>][;base64],<data>
-                    header, b64 = source_url.split(",", 1)
-                    mime = header.split(";")[0].split(":")[1] if ":" in header else "image/jpeg"
+                    b64 = source_url.split(",", 1)[1]
                     import base64
                     data = base64.b64decode(b64)
                 else:
@@ -201,8 +200,12 @@ class MediaIngestor:
         # Process any remaining blob: URLs from inline images that don't have a ref
         for blob_url in blob_urls:
             key = blob_url[5:]  # strip "blob:"
-            ref_keys = {ref.source_url[5:] for ref in item.media_refs if str(ref.source_url).startswith("blob:")}
-            if key in item.media_blobs and key not in {ref.source_url[5:] for ref in item.media_refs if str(ref.source_url).startswith("blob:")}:
+            ref_keys = {
+                str(ref.source_url)[5:]
+                for ref in item.media_refs
+                if str(ref.source_url).startswith("blob:")
+            }
+            if key in item.media_blobs and key not in ref_keys:
                 # This blob doesn't have a corresponding ref, process it synthetically
                 data = item.media_blobs.get(key)
                 if data is None:
