@@ -933,6 +933,18 @@ fn map_subject(row: &turso::Row) -> Result<core::models::Subject, AppError> {
             row.get_value(4).map_err(upstream)?,
             "subject.objective_paper_questions",
         )?,
+        countries: {
+            let raw: String = row.get(5).map_err(upstream)?;
+            json_list(&raw, "subject.countries")?
+        },
+        syllabus_exam: {
+            let raw: Option<String> = row.get(6).map_err(upstream)?;
+            raw.filter(|s| !s.is_empty())
+        },
+        syllabus_subject: {
+            let raw: Option<String> = row.get(7).map_err(upstream)?;
+            raw.filter(|s| !s.is_empty())
+        },
     })
 }
 
@@ -946,7 +958,7 @@ pub async fn list_subjects(
         let exam = exam.clone();
         async move {
             let mut stmt = conn
-                .prepare("SELECT slug,exam,name,is_compulsory,objective_paper_questions FROM subjects WHERE exam=?1")
+                .prepare("SELECT slug,exam,name,is_compulsory,objective_paper_questions,countries,syllabus_exam,syllabus_subject FROM subjects WHERE exam=?1")
                 .await
                 .map_err(upstream)?;
             let mut rows = stmt.query([exam.as_str()]).await.map_err(upstream)?;
@@ -974,7 +986,7 @@ pub async fn get_subject(
         let slug = slug.clone();
         async move {
             let mut stmt = conn
-                .prepare("SELECT slug,exam,name,is_compulsory,objective_paper_questions FROM subjects WHERE exam=?1 AND slug=?2")
+                .prepare("SELECT slug,exam,name,is_compulsory,objective_paper_questions,countries,syllabus_exam,syllabus_subject FROM subjects WHERE exam=?1 AND slug=?2")
                 .await
                 .map_err(upstream)?;
             let mut rows = stmt
@@ -1493,19 +1505,19 @@ mod tests {
         .await
         .expect("insert elective requirement");
         conn.execute(
-            "INSERT INTO subjects VALUES ('use-of-english','JAMB','Use of English',1,50)",
+            "INSERT INTO subjects VALUES ('use-of-english','JAMB','Use of English',1,50,'[]',NULL,NULL)",
             (),
         )
         .await
         .expect("insert english");
         conn.execute(
-            "INSERT INTO subjects VALUES ('physics','JAMB','Physics',0,NULL)",
+            "INSERT INTO subjects VALUES ('physics','JAMB','Physics',0,NULL,'[]',NULL,NULL)",
             (),
         )
         .await
         .expect("insert physics");
         conn.execute(
-            "INSERT INTO subjects VALUES ('english-language','WAEC','English Language',1,60)",
+            "INSERT INTO subjects VALUES ('english-language','WAEC','English Language',1,60,'[]',NULL,NULL)",
             (),
         )
         .await
@@ -2146,7 +2158,7 @@ mod tests {
         crate::testing::connect(&db)
             .await
             .execute(
-                "INSERT INTO subjects VALUES ('odd','JAMB','Odd',2,NULL)",
+                "INSERT INTO subjects VALUES ('odd','JAMB','Odd',2,NULL,'[]',NULL,NULL)",
                 (),
             )
             .await

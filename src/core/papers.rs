@@ -710,6 +710,9 @@ mod tests {
             name: name.to_string(),
             is_compulsory: slug == "use-of-english",
             objective_paper_questions: paper,
+            countries: Vec::new(),
+            syllabus_exam: None,
+            syllabus_subject: None,
         }
     }
 
@@ -904,6 +907,9 @@ mod tests {
                 name: "Mathematics".to_string(),
                 is_compulsory: false,
                 objective_paper_questions: Some(2),
+                countries: Vec::new(),
+                syllabus_exam: None,
+                syllabus_subject: None,
             },
             blueprints: vec![],
             syllabus: vec![SyllabusTopic {

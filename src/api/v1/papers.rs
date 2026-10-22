@@ -312,6 +312,11 @@ async fn build(
     let Some(record) = store::catalog::get_subject(s, exam, subject).await? else {
         return Err(AppError::NotFound);
     };
+    if let Some(c) = country.as_deref() {
+        if !core::catalog::subject_offered(&record, c) {
+            return Err(AppError::NotFound);
+        }
+    }
     let blueprints = store::catalog::list_blueprints(s, exam, subject).await?;
     let syllabus = store::catalog::list_syllabus(s, exam, subject).await?;
     let rows = store::catalog::subject_rows(s, exam, subject, country.as_deref()).await?;
@@ -404,20 +409,23 @@ mod tests {
         .await
         .expect("insert waec exam");
         conn.execute(
-            "INSERT INTO subjects VALUES ('biology','WAEC','Biology',0,50)",
+            "INSERT INTO subjects VALUES ('biology','WAEC','Biology',0,50,'[]',NULL,NULL)",
             (),
         )
         .await
         .expect("insert waec biology");
         conn.execute(
-            "INSERT INTO subjects VALUES ('physics','JAMB','Physics',0,40)",
+            "INSERT INTO subjects VALUES ('physics','JAMB','Physics',0,40,'[]',NULL,NULL)",
             (),
         )
         .await
         .expect("insert subject");
-        conn.execute("INSERT INTO subjects VALUES ('math','JAMB','Math',0,1)", ())
-            .await
-            .expect("insert math subject");
+        conn.execute(
+            "INSERT INTO subjects VALUES ('math','JAMB','Math',0,1,'[]',NULL,NULL)",
+            (),
+        )
+        .await
+        .expect("insert math subject");
         conn.execute(
             "INSERT INTO questions VALUES ('q1','JAMB','math',2025,'past_paper','What is 1+1?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"2\",\"inline\":[]}}]','a',NULL,NULL,'p1','{\"key_point\":{\"text\":\"k\",\"inline\":[]},\"body\":{\"text\":\"b\",\"inline\":[]}}',1.0,1,'h1')",
             (),

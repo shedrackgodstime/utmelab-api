@@ -97,6 +97,9 @@ pub const READ_SHAPES: &[(&str, &[&str])] = &[
             "name",
             "is_compulsory",
             "objective_paper_questions",
+            "countries",
+            "syllabus_exam",
+            "syllabus_subject",
         ],
     ),
     (

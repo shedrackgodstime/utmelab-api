@@ -166,7 +166,7 @@ mod tests {
         )
         .await;
         assert_eq!(status, StatusCode::OK);
-        assert_eq!(empty["cols"].as_array().expect("cols").len(), 5);
+        assert_eq!(empty["cols"].as_array().expect("cols").len(), 8);
         assert_eq!(empty["rows"].as_array().expect("rows").len(), 0);
 
         // Off the allowlist, and absent entirely, both answer 404 so the

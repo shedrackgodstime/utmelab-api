@@ -3157,9 +3157,17 @@
           "slug",
           "exam",
           "name",
-          "is_compulsory"
+          "is_compulsory",
+          "countries"
         ],
         "properties": {
+          "countries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Countries this exam offers the subject in. Empty means every country\nthe exam runs in."
+          },
           "exam": {
             "type": "string"
           },
@@ -3180,6 +3188,20 @@
           },
           "slug": {
             "type": "string"
+          },
+          "syllabus_exam": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "If this subject uses another exam's syllabus, the exam code (e.g., \"WAEC\").\nNull means this exam's own syllabus."
+          },
+          "syllabus_subject": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "If this subject uses another exam's syllabus, the subject slug (e.g., \"biology\").\nNull means this exam's own syllabus."
           }
         }
       },

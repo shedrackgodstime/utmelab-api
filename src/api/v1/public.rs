@@ -136,13 +136,13 @@ mod tests {
         .await
         .expect("insert exam");
         conn.execute(
-            "INSERT INTO subjects VALUES ('use-of-english','JAMB','Use of English',1,60)",
+            "INSERT INTO subjects VALUES ('use-of-english','JAMB','Use of English',1,60,'[]',NULL,NULL)",
             (),
         )
         .await
         .expect("insert subject");
         conn.execute(
-            "INSERT INTO subjects VALUES ('mathematics','JAMB','Mathematics',0,40)",
+            "INSERT INTO subjects VALUES ('mathematics','JAMB','Mathematics',0,40,'[]',NULL,NULL)",
             (),
         )
         .await

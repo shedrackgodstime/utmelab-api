@@ -313,7 +313,7 @@ mod tests {
         )
         .await;
         conn.execute(
-            "INSERT INTO subjects VALUES ('physics','JAMB','Physics',0,40)",
+            "INSERT INTO subjects VALUES ('physics','JAMB','Physics',0,40,'[]',NULL,NULL)",
             (),
         )
         .await

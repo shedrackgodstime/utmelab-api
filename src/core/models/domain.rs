@@ -255,6 +255,15 @@ pub struct Subject {
     /// MCQs the objective paper holds. Null where unverified: absence
     /// is data, never a zero masquerading as a fact.
     pub objective_paper_questions: Option<u32>,
+    /// Countries this exam offers the subject in. Empty means every country
+    /// the exam runs in.
+    pub countries: Vec<String>,
+    /// If this subject uses another exam's syllabus, the exam code (e.g., "WAEC").
+    /// Null means this exam's own syllabus.
+    pub syllabus_exam: Option<String>,
+    /// If this subject uses another exam's syllabus, the subject slug (e.g., "biology").
+    /// Null means this exam's own syllabus.
+    pub syllabus_subject: Option<String>,
 }
 
 /// A topic within one exam's syllabus.

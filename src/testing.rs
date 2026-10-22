@@ -104,7 +104,7 @@ const BANK_DDL: &[(&str, &str)] = &[
     ),
     (
         "subjects",
-        "CREATE TABLE subjects (slug TEXT, exam TEXT, name TEXT, is_compulsory INTEGER, objective_paper_questions INTEGER)",
+        "CREATE TABLE subjects (slug TEXT, exam TEXT, name TEXT, is_compulsory INTEGER, objective_paper_questions INTEGER, countries TEXT NOT NULL DEFAULT '[]', syllabus_exam TEXT, syllabus_subject TEXT)",
     ),
     (
         "topics",

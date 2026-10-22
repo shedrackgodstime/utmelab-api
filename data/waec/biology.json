@@ -1,0 +1,876 @@
+{
+  "subjects": [
+    {
+      "slug": "biology",
+      "exam": "WAEC",
+      "name": "Biology",
+      "is_compulsory": false,
+      "objective_paper_questions": 50,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "biology"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-1-classification",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Classification",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1-plant-nutrition",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Plant Nutrition",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-2-animal-nutrition",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "2. Animal Nutrition",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-2-ecological-factors",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "2. Ecological factors:",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-3-simple-measurement-of-ecological",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "3. Simple Measurement of Ecological",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-4-food-webs-and-trophic-levels",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "4. Food webs and trophic levels",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1-resources-to-be-conserved-soil-water",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Resources to be conserved: soil, water,",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-2-ways-of-ensuring-conservation",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "2. Ways of ensuring conservation",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1-morphological-variations-in-the-physical",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Morphological variations in the physical",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1-genetic-terminologies",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Genetic terminologies",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-2-transmission-and-expression-of-characteristics-in",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "2. Transmission and expression of characteristics in",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1-behavioural-adaptations-in-social-animals",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Behavioural Adaptations in Social Animals.",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1-biology-as-a-science-of-life",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Biology as a science of life",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-2-procedure-for-biological-work",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "2. Procedure for biological work",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-3-importance-of-biology",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "3. Importance of Biology",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-4-body-symmetry-sectioning-and",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "4. Body symmetry, sectioning and",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-5-the-microscope",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "5. The microscope",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-1-movement-of-substances-into-and-out-of",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Movement of substances into and out of",
+      "order": 18,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-2-nucleic-acids",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "2. Nucleic acids",
+      "order": 19,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-3-dna-structure-and-replication",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "3. DNA structure and replication,",
+      "order": 20,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-4-protein-synthesis",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "4. Protein synthesis",
+      "order": 21,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-1-amoeba-paramecium",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Amoeba , Paramecium,",
+      "order": 22,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-2-spirogyra-and-rhizopus",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "2. Spirogyra and Rhizopus",
+      "order": 23,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-3-mosses-and-ferns",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "3. Mosses and ferns",
+      "order": 24,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-1-characteristics-of-some-of-the",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Characteristics of some of the",
+      "order": 25,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-1-dissection-of-a-small-mammal",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Dissection of a small mammal",
+      "order": 26,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-2-transport",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "2. Transport:",
+      "order": 27,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-3-cellular-respiration",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "3. Cellular respiration",
+      "order": 28,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-4-movement",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "4. Movement:",
+      "order": 29,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-5-reproduction",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "5. Reproduction",
+      "order": 30,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-1-morphology-of-monocotyledonous",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Morphology of monocotyledonous",
+      "order": 31,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-2-transport-biology",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "2. Transport:",
+      "order": 32,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-3-reproduction",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "3. Reproduction:",
+      "order": 33,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-1-integrated-water-resources",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Integrated water resources",
+      "order": 34,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-2-health-and-hygiene",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "2. Health and hygiene",
+      "order": 35,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-1-biology-and-water-industry",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Biology and water industry",
+      "order": 36,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-1-cell-theory",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Cell theory",
+      "order": 37,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GM",
+        "LR",
+        "NG",
+        "SL"
+      ]
+    },
+    {
+      "slug": "waec-1-nitrogen-cycle",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Nitrogen cycle",
+      "order": 38,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GM",
+        "LR",
+        "NG",
+        "SL"
+      ]
+    },
+    {
+      "slug": "waec-2-modes-of-nutrition",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "2. Modes of nutrition:",
+      "order": 39,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GM",
+        "LR",
+        "NG",
+        "SL"
+      ]
+    },
+    {
+      "slug": "waec-3-alimentary-system",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "3. Alimentary System",
+      "order": 40,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GM",
+        "LR",
+        "NG",
+        "SL"
+      ]
+    },
+    {
+      "slug": "waec-4-feeding-habits",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "4. Feeding habits",
+      "order": 41,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GM",
+        "LR",
+        "NG",
+        "SL"
+      ]
+    },
+    {
+      "slug": "waec-1-ecological-components",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Ecological Components:",
+      "order": 42,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GM",
+        "LR",
+        "NG",
+        "SL"
+      ]
+    },
+    {
+      "slug": "waec-3-energy-transformation-in-nature",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "3. Energy transformation in nature:",
+      "order": 43,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GM",
+        "LR",
+        "NG",
+        "SL"
+      ]
+    },
+    {
+      "slug": "waec-1-adaptation-for-survival",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "1. Adaptation for survival",
+      "order": 44,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GM",
+        "LR",
+        "NG",
+        "SL"
+      ]
+    },
+    {
+      "slug": "waec-2-structural-adaptation-for",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "2. Structural Adaptation for;",
+      "order": 45,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GM",
+        "LR",
+        "NG",
+        "SL"
+      ]
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-living-and-non-living-things",
+      "topic": "waec-1-classification",
+      "name": "Living and non-living things",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-classification-of-living-things-into-kingdoms-monera-protoct",
+      "topic": "waec-1-classification",
+      "name": "Classification of living things into Kingdoms: Monera, Protoctista (Protista), Fungi, Plantae, Animalia",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-photosynthesis",
+      "topic": "waec-1-plant-nutrition",
+      "name": "Photosynthesis:",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-process-of-photosynthesis-and-its-chemical-equation-ii-light",
+      "topic": "waec-1-plant-nutrition",
+      "name": "Process of photosynthesis and its chemical equation; (ii) Light and dark reactions; (iii) Materials and conditions necessary for photosynthesis; (iv) Evidence of photosynthesis",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mineral-requirement-of-plants",
+      "topic": "waec-1-plant-nutrition",
+      "name": "Mineral requirement of plants",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mineral-nutrition-macro-and-micro-nutrients-ii-soil-and-atmo",
+      "topic": "waec-1-plant-nutrition",
+      "name": "Mineral nutrition: Macro and micro-nutrients; (ii) Soil and atmosphere as sources of mineral elements",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-food-substances-classes-and-sources",
+      "topic": "waec-2-animal-nutrition",
+      "name": "Food substances; classes and sources",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-factors-climatic-topographic-and-gaseous",
+      "topic": "waec-3-simple-measurement-of-ecological",
+      "name": "Physical factors: Climatic, topographic and gaseous",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-edaphic-factors-chemical-and-physical-composition-moisture-c",
+      "topic": "waec-3-simple-measurement-of-ecological",
+      "name": "Edaphic factors: Chemical and physical composition, moisture content and soil texture",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-autotrophs-and-heterotrophs",
+      "topic": "waec-4-food-webs-and-trophic-levels",
+      "name": "Autotrophs and Heterotrophs",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-producers-autotrophs-ii-consumers-heterotrophs-iii-decompose",
+      "topic": "waec-4-food-webs-and-trophic-levels",
+      "name": "Producers: autotrophs; (ii) Consumers: heterotrophs; (iii) Decomposers",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-trophic-levels-e-nergy",
+      "topic": "waec-4-food-webs-and-trophic-levels",
+      "name": "Trophic levels e nergy",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-size-height-and-weight",
+      "topic": "waec-1-morphological-variations-in-the-physical",
+      "name": "size, height and weight",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-hereditary-variation",
+      "topic": "waec-2-transmission-and-expression-of-characteristics-in",
+      "name": "Hereditary variation",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mendel-s-work-in-genetics",
+      "topic": "waec-2-transmission-and-expression-of-characteristics-in",
+      "name": "Mendel's work in genetics",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mendel-s-experiments-ii-mendelian-traits-iii-mendelian-laws",
+      "topic": "waec-2-transmission-and-expression-of-characteristics-in",
+      "name": "Mendel’s experiments; (ii) Mendelian traits; (iii) Mendelian laws",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-termites",
+      "topic": "waec-1-behavioural-adaptations-in-social-animals",
+      "name": "Termites",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-bees",
+      "topic": "waec-1-behavioural-adaptations-in-social-animals",
+      "name": "Bees",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-muscles",
+      "topic": "waec-4-movement",
+      "name": "Muscles",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-skeletal-tissues",
+      "topic": "waec-4-movement",
+      "name": "Skeletal tissues",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-secondary-sexual-characteristics",
+      "topic": "waec-5-reproduction",
+      "name": "Secondary sexual characteristics",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-prenatal-antenatal-care",
+      "topic": "waec-5-reproduction",
+      "name": "Prenatal/Antenatal care",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-drug-abuse",
+      "topic": "waec-2-health-and-hygiene",
+      "name": "Drug abuse",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-community-health",
+      "topic": "waec-2-health-and-hygiene",
+      "name": "Community health",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-first-aid",
+      "topic": "waec-2-health-and-hygiene",
+      "name": "First Aid",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-responses-taxis-and-nastism",
+      "topic": "waec-1-cell-theory",
+      "name": "Types of responses: taxis and nastism",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-environmental-factors-that-evoke-responses-temperature-ph-et",
+      "topic": "waec-1-cell-theory",
+      "name": "Environmental factors that evoke responses; temperature, pH etc",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-diseases-of-the-kidney-nephritis-kidney-stone-and-diuresis-t",
+      "topic": "waec-1-cell-theory",
+      "name": "Diseases of the kidney: Nephritis, kidney stone and diuresis, Their",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-alimentary-tracts-of-different-animals",
+      "topic": "waec-3-alimentary-system",
+      "name": "Alimentary tracts of different animals",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-description-and-function-of-various-parts",
+      "topic": "waec-3-alimentary-system",
+      "name": "Description and function of various parts",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-categories-carnivorous-herbivorous-and-omnivorous",
+      "topic": "waec-4-feeding-habits",
+      "name": "Categories: Carnivorous, herbivorous and omnivorous",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-modifications-and-mechanisms-associated-with-the-following-h",
+      "topic": "waec-4-feeding-habits",
+      "name": "Modifications and mechanisms associated with the following habits; filter feeding, fluid feeding, feeding adaptation in insects, saprophytic feeding, parasitic feeding etc",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-population-size",
+      "topic": "waec-1-ecological-components",
+      "name": "Population size",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-dominance",
+      "topic": "waec-1-ecological-components",
+      "name": "Dominance",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-density",
+      "topic": "waec-1-ecological-components",
+      "name": "Density",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-energy-loss-in-the-ecosystem",
+      "topic": "waec-3-energy-transformation-in-nature",
+      "name": "Energy loss in the ecosystem",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-solar-radiation-its-intake-and-loss-at",
+      "topic": "waec-3-energy-transformation-in-nature",
+      "name": "Solar radiation: its intake and loss at",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-factors-that-bring-about-competition",
+      "topic": "waec-1-adaptation-for-survival",
+      "name": "Factors that bring about competition",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-intra-and-inter-species-competition",
+      "topic": "waec-1-adaptation-for-survival",
+      "name": "Intra and Inter-species competition",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-relationship-between-competition-and-succession",
+      "topic": "waec-1-adaptation-for-survival",
+      "name": "Relationship between competition and succession",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-obtaining-food",
+      "topic": "waec-2-structural-adaptation-for",
+      "name": "obtaining food",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-protection-and-defense",
+      "topic": "waec-2-structural-adaptation-for",
+      "name": "protection and defense",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-securing-mates-for-reproduction",
+      "topic": "waec-2-structural-adaptation-for",
+      "name": "securing mates for reproduction",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-regulating-body-temperature",
+      "topic": "waec-2-structural-adaptation-for",
+      "name": "regulating body temperature",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-conserving-water",
+      "topic": "waec-2-structural-adaptation-for",
+      "name": "conserving water",
+      "order": 5,
+      "objectives": []
+    }
+  ]
+}

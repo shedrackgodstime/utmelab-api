@@ -74,19 +74,47 @@ pub struct SyllabusQuery {
 
 /// Assemble one subject's tree. A subject the exam never had is 404, not an
 /// empty tree. Shared across internal and public syllabus routes.
+/// Resolves syllabus_exam/syllabus_subject mapping (e.g., NECO -> WAEC).
 pub async fn build_syllabus(
     s: &DbState,
     exam: &str,
     slug: &str,
     country: Option<&str>,
 ) -> Result<core::models::Syllabus, AppError> {
+    let Some(record) = store::catalog::get_exam(s, exam).await? else {
+        return Err(AppError::NotFound);
+    };
+    let country =
+        core::papers::effective_country(&record, country).map_err(AppError::BadRequest)?;
     let Some(subject) = store::catalog::get_subject(s, exam, slug).await? else {
         return Err(AppError::NotFound);
     };
-    let tree = store::catalog::list_syllabus(s, exam, slug).await?;
-    let counts = store::catalog::subtopic_counts(s, exam, slug, country).await?;
+    if let Some(c) = country.as_deref() {
+        if !core::catalog::subject_offered(&subject, c) {
+            return Err(AppError::NotFound);
+        }
+    }
+
+    // Resolve syllabus mapping: NECO subjects may point to WAEC syllabus
+    let (syllabus_exam, syllabus_subject) = if let (Some(se), Some(ss)) = (
+        subject.syllabus_exam.as_deref(),
+        subject.syllabus_subject.as_deref(),
+    ) {
+        (se, ss)
+    } else {
+        (exam, slug)
+    };
+
+    let tree = store::catalog::list_syllabus(s, syllabus_exam, syllabus_subject).await?;
+    let counts =
+        store::catalog::subtopic_counts(s, syllabus_exam, syllabus_subject, country.as_deref())
+            .await?;
     Ok(core::catalog::assemble_syllabus_from_counts(
-        exam, subject, &tree, &counts, country,
+        exam, // Keep original exam for response
+        subject,
+        &tree,
+        &counts,
+        country.as_deref(),
     ))
 }
 
@@ -175,6 +203,7 @@ mod tests {
         bank_schema(
             &conn,
             &[
+                "exams",
                 "subjects",
                 "topics",
                 "subtopics",
@@ -184,7 +213,13 @@ mod tests {
         )
         .await;
         conn.execute(
-            "INSERT INTO subjects VALUES ('physics','JAMB','Physics',0,40)",
+            "INSERT INTO exams VALUES ('JAMB','Joint Admissions and Matriculation Board','[\"NG\"]','active',1,NULL,NULL,'[]')",
+            (),
+        )
+        .await
+        .expect("insert exam");
+        conn.execute(
+            "INSERT INTO subjects VALUES ('physics','JAMB','Physics',0,40,'[]',NULL,NULL)",
             (),
         )
         .await
@@ -294,6 +329,33 @@ mod tests {
         assert_eq!(v["topics"][0]["question_count"], 1);
         assert_eq!(v["topics"][0]["objectives"][0], "state newton laws");
         assert_eq!(v["topics"][0]["subtopics"][0]["question_count"], 1);
+
+        // A country JAMB does not run in is refused, not silently unscoped.
+        assert_eq!(
+            call(
+                app.clone(),
+                "GET",
+                "/api/v1/subjects/JAMB/physics/syllabus?country=GH",
+                Some("reader.secret"),
+                None
+            )
+            .await
+            .0,
+            StatusCode::BAD_REQUEST
+        );
+        // The one member country is accepted in any case.
+        assert_eq!(
+            call(
+                app.clone(),
+                "GET",
+                "/api/v1/subjects/JAMB/physics/syllabus?country=ng",
+                Some("reader.secret"),
+                None
+            )
+            .await
+            .0,
+            StatusCode::OK
+        );
 
         // Coverage is the same counts without the tree.
         let (status, c) = call(

@@ -124,6 +124,18 @@ pub fn page_query(page: Option<u32>, per_page: Option<u32>) -> (u32, u32) {
     page_bounds(page.unwrap_or(1), per_page.unwrap_or(50))
 }
 
+/// Whether an exam offers a subject in `country`. An empty subject scope
+/// means every country its exam runs in; a stated one is a subset. This is
+/// the outer half of the country rule: a topic cannot be in scope where its
+/// subject is not offered.
+pub fn subject_offered(subject: &Subject, country: &str) -> bool {
+    subject.countries.is_empty()
+        || subject
+            .countries
+            .iter()
+            .any(|c| c.eq_ignore_ascii_case(country))
+}
+
 /// Build the served syllabus: attribute the subject's rows to their
 /// subtopics through the tree, count them, and roll the counts up. Pure:
 /// the store fetched the tree and the rows, this only judges them.
@@ -465,6 +477,9 @@ mod tests {
             name: "Physics".to_string(),
             is_compulsory: false,
             objective_paper_questions: Some(2),
+            countries: Vec::new(),
+            syllabus_exam: None,
+            syllabus_subject: None,
         }
     }
 
