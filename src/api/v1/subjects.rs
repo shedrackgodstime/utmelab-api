@@ -84,9 +84,9 @@ pub async fn build_syllabus(
         return Err(AppError::NotFound);
     };
     let tree = store::catalog::list_syllabus(s, exam, slug).await?;
-    let rows = store::catalog::subject_rows(s, exam, slug, country).await?;
-    Ok(core::catalog::assemble_syllabus(
-        exam, subject, &tree, &rows, country,
+    let counts = store::catalog::subtopic_counts(s, exam, slug, country).await?;
+    Ok(core::catalog::assemble_syllabus_from_counts(
+        exam, subject, &tree, &counts, country,
     ))
 }
 

@@ -43,35 +43,37 @@ pub fn render_novel_question(
     include_explanation: bool,
     media_base_url: &str,
 ) -> RenderedNovelQuestion {
-    let mut text = q.text.clone();
-    resolve_rich_text(&mut text, media_base_url);
-
-    let mut options = q.options.clone();
-    for opt in &mut options {
-        resolve_rich_text(&mut opt.text, media_base_url);
-    }
-
-    let explanation = include_explanation
-        .then(|| q.explanation.clone())
-        .flatten()
-        .map(|mut exp| {
-            resolve_rich_text(&mut exp.key_point, media_base_url);
-            resolve_rich_text(&mut exp.body, media_base_url);
-            if let Some(trap) = &mut exp.trap {
-                resolve_rich_text(trap, media_base_url);
-            }
-            exp
-        });
+    let mut cloned = q.clone();
+    resolve_novel_question(&mut cloned, media_base_url);
 
     RenderedNovelQuestion {
-        id: q.id.clone(),
+        id: cloned.id,
         novel_id: novel_id.to_owned(),
-        chapter_number: q.chapter_number,
-        text,
-        options,
-        answer: include_explanation.then(|| q.answer.clone()),
-        explanation,
-        verified: q.verified,
+        chapter_number: cloned.chapter_number,
+        text: cloned.text,
+        options: cloned.options,
+        answer: include_explanation.then_some(cloned.answer),
+        explanation: if include_explanation {
+            cloned.explanation
+        } else {
+            None
+        },
+        verified: cloned.verified,
+    }
+}
+
+/// Resolve image references in a stored novel question in place.
+pub fn resolve_novel_question(q: &mut super::models::NovelQuestion, media_base_url: &str) {
+    resolve_rich_text(&mut q.text, media_base_url);
+    for opt in &mut q.options {
+        resolve_rich_text(&mut opt.text, media_base_url);
+    }
+    if let Some(exp) = &mut q.explanation {
+        resolve_rich_text(&mut exp.key_point, media_base_url);
+        resolve_rich_text(&mut exp.body, media_base_url);
+        if let Some(trap) = &mut exp.trap {
+            resolve_rich_text(trap, media_base_url);
+        }
     }
 }
 
@@ -131,20 +133,14 @@ pub fn page_query(page: Option<u32>, per_page: Option<u32>) -> (u32, u32) {
 /// scope means every country). The rows arrive already scoped, so the tree
 /// and the counts agree. A row whose subtopic the tree does not state is
 /// held, never counted: a topic may not claim what nothing attributes (D68).
-pub fn assemble_syllabus(
+/// Assemble syllabus from pre-aggregated subtopic question counts.
+pub fn assemble_syllabus_from_counts(
     exam: &str,
     subject: Subject,
     tree: &[papers::SyllabusTopic],
-    rows: &[Question],
+    counts: &std::collections::HashMap<String, usize>,
     country: Option<&str>,
 ) -> Syllabus {
-    let mut counts: std::collections::HashMap<&str, usize> = std::collections::HashMap::new();
-    for q in rows {
-        if let Some(st) = q.subtopic_id.as_deref() {
-            *counts.entry(st).or_insert(0) += 1;
-        }
-    }
-
     let in_scope = |countries: &[String]| match country {
         None => true,
         Some(c) => countries.is_empty() || countries.iter().any(|x| x == c),
@@ -165,7 +161,7 @@ pub fn assemble_syllabus(
         summary.topics += 1;
         let mut subtopics: Vec<SyllabusSubtopic> = Vec::with_capacity(t.subtopics.len());
         for st in &t.subtopics {
-            let count = counts.get(st.slug.as_str()).copied().unwrap_or(0);
+            let count = counts.get(&st.slug).copied().unwrap_or(0);
             summary.subtopics += 1;
             if count > 0 {
                 summary.subtopics_with_questions += 1;
@@ -202,6 +198,22 @@ pub fn assemble_syllabus(
         topics,
         summary,
     }
+}
+
+pub fn assemble_syllabus(
+    exam: &str,
+    subject: Subject,
+    tree: &[papers::SyllabusTopic],
+    rows: &[Question],
+    country: Option<&str>,
+) -> Syllabus {
+    let mut counts: std::collections::HashMap<String, usize> = std::collections::HashMap::new();
+    for q in rows {
+        if let Some(st) = q.subtopic_id.as_ref() {
+            *counts.entry(st.clone()).or_insert(0) += 1;
+        }
+    }
+    assemble_syllabus_from_counts(exam, subject, tree, &counts, country)
 }
 
 /// Present a stored question. The answer and working ride along only on

@@ -1275,6 +1275,46 @@ pub async fn subject_rows(
     .await
 }
 
+/// Count questions grouped by subtopic slug within an exam subject.
+/// Runs a fast SQL aggregate so syllabus trees and coverage views do not
+/// need to deserialize the full question pool into memory.
+pub async fn subtopic_counts(
+    s: &DbState,
+    exam: &str,
+    subject: &str,
+    country: Option<&str>,
+) -> Result<std::collections::HashMap<String, usize>, AppError> {
+    let exam = exam.to_string();
+    let subject = subject.to_string();
+    let country = country.map(str::to_string);
+    with_conn(s, |conn| {
+        let exam = exam.clone();
+        let subject = subject.clone();
+        let country = country.clone();
+        async move {
+            let sql = format!(
+                "SELECT subtopic_id, COUNT(*) FROM questions WHERE exam=?1 AND subject=?2 AND subtopic_id IS NOT NULL AND {} GROUP BY subtopic_id",
+                scope_predicate(3)
+            );
+            let mut stmt = conn.prepare(&sql).await.map_err(upstream)?;
+            let params = [
+                turso::Value::Text(exam),
+                turso::Value::Text(subject),
+                scope_param(&country),
+            ];
+            let mut rows = stmt.query(params).await.map_err(upstream)?;
+            let mut counts = std::collections::HashMap::new();
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                let st: String = row.get(0).map_err(upstream)?;
+                let count: i64 = row.get(1).map_err(upstream)?;
+                counts.insert(st, count as usize);
+            }
+            Ok(counts)
+        }
+    })
+    .await
+}
+
 /// One subject's syllabus: topics in `order`, each with its subtopics and
 /// the objectives and country scope the bank states. This is the tree that
 /// attributes questions to topics; a topic the bank does not state is never
@@ -1797,6 +1837,22 @@ mod tests {
         // Count zero returns empty set with accurate total
         let (empty, total_zero) = sample_questions(&s, &blank, 0, 42).await.expect("count 0");
         assert_eq!(total_zero, 3);
+        assert!(empty.is_empty());
+    }
+
+    #[tokio::test]
+    async fn subtopic_counts_aggregates_frequencies_by_subtopic() {
+        let db = local_exams_db().await;
+        let s = crate::state::DbState::detached(db);
+        let counts = subtopic_counts(&s, "JAMB", "physics", None)
+            .await
+            .expect("subtopic counts");
+        assert_eq!(counts.get("algebra"), Some(&1));
+        assert_eq!(counts.len(), 1);
+
+        let empty = subtopic_counts(&s, "JAMB", "nonexistent", None)
+            .await
+            .expect("subtopic counts empty");
         assert!(empty.is_empty());
     }
 

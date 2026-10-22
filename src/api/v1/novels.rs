@@ -79,6 +79,9 @@ pub async fn detail(
             if let Some(ref mut img) = d.novel.cover_image {
                 *img = core::catalog::resolve_media_url(img, s.media_base_url.as_ref());
             }
+            for q in &mut d.questions {
+                core::catalog::resolve_novel_question(q, s.media_base_url.as_ref());
+            }
             Ok(Json(d))
         }
         None => Err(AppError::NotFound),
