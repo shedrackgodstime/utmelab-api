@@ -28,14 +28,36 @@ pub struct SubjectStat {
     pub marks_low: f32,
 }
 
-/// No silent defaults: only a one-country exam may imply its scope. A
-/// multi-country exam without an explicit country has no scope, and an
-/// unscoped paper is never complete.
-pub fn effective_country(record: &Exam, asked: Option<&str>) -> Option<String> {
+/// Resolve the country a read is scoped to. An explicit request must name a
+/// member country; a one-country exam implies its scope; a multi-country exam
+/// with no request has no scope. `Err` is the caller-facing reason a request
+/// names a country this exam never runs in.
+pub fn effective_country(record: &Exam, asked: Option<&str>) -> Result<Option<String>, String> {
+    if record.countries.is_empty() {
+        return Ok(None);
+    }
     match asked {
-        Some(c) => Some(c.to_owned()),
-        None if record.countries.len() == 1 => Some(record.countries[0].clone()),
-        None => None,
+        Some(raw) => {
+            let code = raw.trim().to_ascii_uppercase();
+            if code.is_empty() {
+                return Err(format!("{} needs a country code", record.code));
+            }
+            if record
+                .countries
+                .iter()
+                .any(|c| c.eq_ignore_ascii_case(&code))
+            {
+                Ok(Some(code))
+            } else {
+                Err(format!(
+                    "{} does not run in {code}; member countries: {}",
+                    record.code,
+                    record.countries.join(", ")
+                ))
+            }
+        }
+        None if record.countries.len() == 1 => Ok(Some(record.countries[0].clone())),
+        None => Ok(None),
     }
 }
 
@@ -703,18 +725,30 @@ mod tests {
     #[test]
     fn a_single_country_exam_implies_its_scope() {
         let record = exam("JAMB", &["NG"], Some(120));
-        assert_eq!(effective_country(&record, None), Some("NG".to_string()));
+        assert_eq!(effective_country(&record, None), Ok(Some("NG".to_string())));
         assert_eq!(
-            effective_country(&record, Some("GH")),
-            Some("GH".to_string()),
-            "an explicit scope always wins"
+            effective_country(&record, Some("ng")),
+            Ok(Some("NG".to_string())),
+            "an explicit member country is normalised"
         );
+    }
+
+    #[test]
+    fn a_country_the_exam_never_runs_in_is_refused() {
+        let record = exam("JAMB", &["NG"], Some(120));
+        let why = effective_country(&record, Some("GH")).expect_err("GH is not a JAMB country");
+        assert!(why.contains("JAMB"), "{why}");
+        assert!(why.contains("GH"), "{why}");
     }
 
     #[test]
     fn a_multi_country_exam_has_no_implied_scope() {
         let record = exam("WAEC", &["NG", "GH"], None);
-        assert_eq!(effective_country(&record, None), None);
+        assert_eq!(effective_country(&record, None), Ok(None));
+        assert_eq!(
+            effective_country(&record, Some("GH")),
+            Ok(Some("GH".to_string()))
+        );
     }
 
     #[test]

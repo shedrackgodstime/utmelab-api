@@ -133,7 +133,8 @@ pub async fn readiness(
     if subjects.is_empty() {
         return Err(AppError::NotFound);
     }
-    let country = core::papers::effective_country(&record, f.country.as_deref());
+    let country = core::papers::effective_country(&record, f.country.as_deref())
+        .map_err(AppError::BadRequest)?;
     let stats = store::catalog::subject_stats(&s, &exam, country.as_deref()).await?;
     let requirements = match country.as_deref() {
         Some(cc) => store::catalog::list_requirements(&s, &exam, cc).await?,
@@ -294,12 +295,26 @@ async fn build(
     seed: u64,
     country: Option<&str>,
 ) -> Result<core::papers::AssembledPaper, AppError> {
+    let Some(record) = store::catalog::get_exam(s, exam).await? else {
+        return Err(AppError::NotFound);
+    };
+    let country =
+        core::papers::effective_country(&record, country).map_err(AppError::BadRequest)?;
+    // A multi-country exam has no single honest pool: a paper built from all
+    // five would mix sections none of its candidates sits. Ask, don't guess.
+    if country.is_none() && record.countries.len() > 1 {
+        return Err(AppError::BadRequest(format!(
+            "{} runs in {}; pass one of those countries to assemble a paper",
+            record.code,
+            record.countries.join(", ")
+        )));
+    }
     let Some(record) = store::catalog::get_subject(s, exam, subject).await? else {
         return Err(AppError::NotFound);
     };
     let blueprints = store::catalog::list_blueprints(s, exam, subject).await?;
     let syllabus = store::catalog::list_syllabus(s, exam, subject).await?;
-    let rows = store::catalog::subject_rows(s, exam, subject, country).await?;
+    let rows = store::catalog::subject_rows(s, exam, subject, country.as_deref()).await?;
     let bank = core::papers::SubjectBank {
         subject: record,
         blueprints,
@@ -383,6 +398,18 @@ mod tests {
         .await
         .expect("insert exam");
         conn.execute(
+            "INSERT INTO exams VALUES ('WAEC','West African Examinations Council','[\"NG\",\"GH\",\"SL\",\"GM\",\"LR\"]','live',0,NULL,120,'[]')",
+            (),
+        )
+        .await
+        .expect("insert waec exam");
+        conn.execute(
+            "INSERT INTO subjects VALUES ('biology','WAEC','Biology',0,50)",
+            (),
+        )
+        .await
+        .expect("insert waec biology");
+        conn.execute(
             "INSERT INTO subjects VALUES ('physics','JAMB','Physics',0,40)",
             (),
         )
@@ -443,17 +470,85 @@ mod tests {
         // No verified questions are held, so no subject slot is ready yet.
         assert_eq!(v["complete"], false);
 
+        // WAEC runs in five countries, so it has no single honest scope:
+        // readiness reports the full tree as incomplete until one is named.
+        let (status, v) = call(
+            app.clone(),
+            "GET",
+            "/api/v1/exams/WAEC/papers",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK, "body: {v}");
+        assert!(v["scheme"]["country"].is_null());
+        assert_eq!(v["complete"], false);
         assert_eq!(
             call(
-                app,
+                app.clone(),
                 "GET",
-                "/api/v1/exams/WAEC/papers",
+                "/api/v1/exams/WAEC/papers?country=US",
                 Some("reader.secret"),
                 None
             )
             .await
             .0,
-            StatusCode::NOT_FOUND
+            StatusCode::BAD_REQUEST
+        );
+        let (status, v) = call(
+            app,
+            "GET",
+            "/api/v1/exams/WAEC/papers?country=GH",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK, "body: {v}");
+        assert_eq!(v["scheme"]["country"], "GH");
+    }
+
+    #[tokio::test]
+    async fn a_multi_country_paper_needs_its_country() {
+        let app = seeded_app().await;
+
+        assert_eq!(
+            call(
+                app.clone(),
+                "POST",
+                "/api/v1/papers/WAEC/biology",
+                Some("reader.secret"),
+                None
+            )
+            .await
+            .0,
+            StatusCode::BAD_REQUEST,
+            "five countries cannot share one pool"
+        );
+        assert_eq!(
+            call(
+                app.clone(),
+                "POST",
+                "/api/v1/papers/WAEC/biology?country=US",
+                Some("reader.secret"),
+                None
+            )
+            .await
+            .0,
+            StatusCode::BAD_REQUEST,
+            "US is not a WAEC country"
+        );
+        assert_eq!(
+            call(
+                app,
+                "POST",
+                "/api/v1/papers/WAEC/biology?country=GH",
+                Some("reader.secret"),
+                None
+            )
+            .await
+            .0,
+            StatusCode::CONFLICT,
+            "a valid country with no rows is unready, not unscoped"
         );
     }
 
