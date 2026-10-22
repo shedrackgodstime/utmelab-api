@@ -230,19 +230,24 @@ def parse_api_question(
             continue
         url = mark.url or ""
         if url.startswith("data:"):
-            # Base64 data URL - decode and store as blob
+            # Base64 data URL - decode and store as blob. A figure that cannot
+            # be decoded fails the row; dropping it would ship a question whose
+            # diagram is silently gone.
             try:
-                header, b64 = url.split(",", 1)
+                _, b64 = url.split(",", 1)
                 import base64
-                blob = base64.b64decode(b64)
+
+                blob = base64.b64decode("".join(b64.split()), altchars=b"-_", validate=True)
                 key = f"inline-img-{len(data_url_blobs)}"
                 data_url_blobs[key] = blob
                 # Replace with placeholder
-                marks.append(mark.model_copy(update={"url": f"blob:{key}", "position": ImagePosition.BELOW}))
+                marks.append(
+                    mark.model_copy(update={"url": f"blob:{key}", "position": ImagePosition.BELOW})
+                )
                 if f"blob:{key}" not in figures:
                     figures.append(f"blob:{key}")
-            except Exception:
-                continue
+            except Exception as exc:
+                raise SourceError(f"could not decode an inline figure: {exc}") from exc
             continue
         resolved = figure_url(url)
         if resolved is None:
@@ -255,9 +260,10 @@ def parse_api_question(
     if main_figure is not None and main_figure not in figures:
         if main_figure.startswith("data:"):
             try:
-                header, b64 = main_figure.split(",", 1)
+                _, b64 = main_figure.split(",", 1)
                 import base64
-                blob = base64.b64decode(b64)
+
+                blob = base64.b64decode("".join(b64.split()), altchars=b"-_", validate=True)
                 key = f"main-img-{len(data_url_blobs)}"
                 data_url_blobs[key] = blob
                 figures.append(f"blob:{key}")
@@ -270,8 +276,8 @@ def parse_api_question(
                         position=ImagePosition.BELOW,
                     )
                 )
-            except Exception:
-                pass
+            except Exception as exc:
+                raise SourceError(f"could not decode the main figure: {exc}") from exc
         else:
             figures.append(main_figure)
             marks.append(
@@ -287,7 +293,11 @@ def parse_api_question(
     # Extract passage from ref field if present (myschool embeds stimuli here)
     passage = None
     ref = row.get("ref")
-    if isinstance(ref, dict) and isinstance(ref.get("description"), str) and ref["description"].strip():
+    if (
+        isinstance(ref, dict)
+        and isinstance(ref.get("description"), str)
+        and ref["description"].strip()
+    ):
         passage_text, passage_marks = clean_inline(ref["description"])
         if passage_text:
             passage_id = str(ref.get("id", f"ref-{item_id}"))

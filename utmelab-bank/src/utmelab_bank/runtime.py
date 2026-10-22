@@ -59,6 +59,14 @@ class Staging(Protocol):
 
     async def load(self, item_id: str) -> StagingItem | None: ...
 
+    async def states_for(
+        self,
+        *,
+        exam: str,
+        subject: str,
+        year: int,
+    ) -> dict[str, tuple[str, bool, bool]]: ...
+
     async def passage_ids(self) -> frozenset[str]: ...
 
     async def list_by_state(self, state: str, *, limit: int = 100) -> tuple[StagingItem, ...]: ...

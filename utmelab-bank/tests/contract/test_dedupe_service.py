@@ -56,6 +56,14 @@ class FakeClient:
         if "DELETE FROM content_index" in statement:
             self.rows = [r for r in self.rows if r[2] != values[0]]
             return FakeResult([])
+        if "WHERE content_hash = ? OR near_duplicate = ?" in statement:
+            exact = [r for r in self.rows if r[0] == values[0]]
+            near = [r for r in self.rows if r[1] == values[1]]
+            if exact:
+                return FakeResult([(exact[0][3], exact[0][0])])
+            if near:
+                return FakeResult([(near[0][3], near[0][0])])
+            return FakeResult([])
         if "WHERE content_hash = ? LIMIT 1" in statement:
             found = [r for r in self.rows if r[0] == values[0]]
             return FakeResult([(found[0][3],)] if found else [])

@@ -115,19 +115,29 @@ class ContentIndexStore:
         return tuple(str(row[0]) for row in result.rows)
 
     async def find(self, *, content_hash: str, near_duplicate: str) -> Duplicate | None:
-        """The first duplicate of this content, exact first.
+        """The first duplicate of this content, exact first, in one query.
 
         The exact match wins, because a row that is the same content is a
         stronger finding than one that is a reworded copy, and a reviewer
-        should be told the stronger thing first.
+        should be told the stronger thing first. Asking for both in one
+        statement matters on a scrape: two queries per row is a round trip
+        the bank does not need to spend.
         """
-        exact = await self.exact_match(content_hash)
-        if exact is not None:
-            return Duplicate(kind="exact", question_id=exact)
-        near = await self.near_matches(near_duplicate)
-        if near:
-            return Duplicate(kind="near", question_id=near[0])
-        return None
+        result = await self._client.execute(
+            """
+            SELECT question_id, content_hash
+            FROM content_index
+            WHERE content_hash = ? OR near_duplicate = ?
+            ORDER BY CASE WHEN content_hash = ? THEN 0 ELSE 1 END
+            LIMIT 1
+            """,
+            [content_hash, near_duplicate, content_hash],
+        )
+        if not result.rows:
+            return None
+        row = result.rows[0]
+        kind = "exact" if str(row[1]) == content_hash else "near"
+        return Duplicate(kind=kind, question_id=str(row[0]))
 
     async def commit(self) -> None:
         """Commit whatever is open, so a batch of writes lands together."""

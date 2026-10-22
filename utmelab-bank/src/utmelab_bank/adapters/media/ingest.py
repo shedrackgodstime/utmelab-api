@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import hashlib
 import io
+import logging
 from datetime import UTC, datetime
 
 import httpx
@@ -31,6 +32,10 @@ from PIL import Image
 from utmelab_bank.domain.enums import InlineKind, State
 from utmelab_bank.domain.models import MediaAsset, RichText, StagingItem
 from utmelab_bank.domain.ports import MediaFetcher, MediaStore, MediaValidator
+
+from .errors import MediaError
+
+logger = logging.getLogger(__name__)
 
 
 class HttpMediaFetcher(MediaFetcher):
@@ -176,6 +181,7 @@ class MediaIngestor:
                     # Parse data URL: data:[<mediatype>][;base64],<data>
                     b64 = source_url.split(",", 1)[1]
                     import base64
+
                     data = base64.b64decode(b64)
                 else:
                     data = await self.fetcher.fetch(source_url)
@@ -186,15 +192,26 @@ class MediaIngestor:
                     mime=checked.mime,
                     source_url=source_url,
                 )
-            except Exception:
+            except Exception as exc:
                 if ref.required:
                     raise
+                logger.warning(
+                    "skipping optional figure %s (%s): %s",
+                    source_url,
+                    type(exc).__name__,
+                    exc,
+                )
                 continue
 
             if self.store.can_serve(asset.storage_url):
                 owned[source_url] = asset.storage_url
                 assets.append(asset.model_copy(update={"source_url": None}))
             else:
+                logger.warning(
+                    "stored figure %s but the bank cannot serve it; keeping %s",
+                    asset.storage_url,
+                    source_url,
+                )
                 assets.append(asset)
 
         # Process any remaining blob: URLs from inline images that don't have a ref
@@ -217,13 +234,32 @@ class MediaIngestor:
                         mime=checked.mime,
                         source_url=None,  # blob URLs are not HTTP, so use None
                     )
-                    if self.store.can_serve(asset.storage_url):
-                        owned[blob_url] = asset.storage_url
-                        assets.append(asset.model_copy(update={"source_url": None}))
-                    else:
-                        assets.append(asset)
-                except Exception:
-                    continue
+                except Exception as exc:
+                    # A blob has no source url to fall back to. A failed
+                    # upload is a lost figure, so it must fail the row and
+                    # leave the bytes in place for the retry.
+                    raise MediaError(
+                        "could not capture an inline figure",
+                        key=key,
+                    ) from exc
+
+                if not self.store.can_serve(asset.storage_url):
+                    raise MediaError(
+                        "a captured inline figure cannot be served",
+                        key=key,
+                        storage_url=asset.storage_url,
+                        hint="configure the media base url so the row can point at it",
+                    )
+                owned[blob_url] = asset.storage_url
+                assets.append(asset.model_copy(update={"source_url": None}))
+
+        missing = sorted(url for url in blob_urls if url not in owned)
+        if missing:
+            raise MediaError(
+                "an inline figure has no captured bytes",
+                keys=tuple(url[5:] for url in missing),
+                hint="re-fetch the row from the source so the bytes can be decoded again",
+            )
 
         # The refs have done their job. Keeping them would make a later media
         # step fetch the source again, which is the one thing capture exists to

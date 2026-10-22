@@ -6,9 +6,12 @@ from collections.abc import AsyncIterator, Sequence
 from datetime import UTC, datetime
 from pathlib import Path
 
+import pytest
+
 from utmelab_bank.adapters.gate_service import GateService
 from utmelab_bank.adapters.media import (
     DescribeImageConsensus,
+    MediaError,
     MediaIngestor,
     MediaService,
     PillowMediaValidator,
@@ -89,6 +92,25 @@ class FakeStaging:
 
     async def load(self, item_id: str) -> StagingItem | None:
         return self.items.get(item_id)
+
+    async def states_for(
+        self,
+        *,
+        exam: str,
+        subject: str,
+        year: int,
+    ) -> dict[str, tuple[str, bool, bool]]:
+        return {
+            item.id: (
+                item.state.value,
+                item.error is not None,
+                bool(item.media_refs) or bool(item.media_blobs),
+            )
+            for item in self.items.values()
+            if item.provenance.scope.exam == exam
+            and item.provenance.scope.subject == subject
+            and item.provenance.scope.year == year
+        }
 
     async def passage_ids(self) -> frozenset[str]:
         return frozenset(
@@ -332,10 +354,10 @@ async def test_fetch_resumes_without_touching_the_figure() -> None:
     assert first.done == 1
     assert second.done == 1
     assert len(staging.items) == 1
-    # First fetch captures the figure; second fetch resumes at DEDUPED and
-    # skips capture because media_assets already exist.
+    # The first fetch captures the figure. The second sees a finished row in
+    # one scope query and does not load, capture, or index it again.
     assert len(fetcher.urls) == 1
-    assert any("resuming at deduped" in note for note in second.notes)
+    assert not any("resuming at deduped" in note for note in second.notes)
 
 
 async def test_capture_clears_blobs_after_upload(staging_item: StagingItem) -> None:
@@ -408,6 +430,86 @@ async def test_advance_drops_stale_blobs_without_recapturing(
     assert advanced.media_assets == (media,)
 
 
+def _blob_item(staging_item: StagingItem, *, key: str = "figure") -> StagingItem:
+    return staging_item.model_copy(
+        update={
+            "id": f"blob-{key}",
+            "state": State.DEDUPED,
+            "content": Content(
+                stem=RichText(
+                    text="The diagram shows a cell.",
+                    inline=(
+                        Inline(
+                            kind="image",
+                            start=0,
+                            len=0,
+                            url=f"blob:{key}",
+                            position="below",
+                        ),
+                    ),
+                ),
+                options=staging_item.content.options,
+                answer=staging_item.content.answer,
+                marks=staging_item.content.marks,
+            ),
+            "media_refs": (),
+            "media_assets": (),
+            "media_blobs": {},
+        }
+    )
+
+
+async def test_capture_rejects_an_inline_figure_the_bank_cannot_serve(
+    staging_item: StagingItem,
+) -> None:
+    item = _blob_item(staging_item).model_copy(update={"media_blobs": {"figure": PNG_1X1}})
+    ingestor = MediaIngestor(
+        FakeMediaFetcher(),
+        PillowMediaValidator(),
+        FakeMediaStore(published=False),
+    )
+
+    with pytest.raises(MediaError, match="cannot be served"):
+        await ingestor.capture_refs(item)
+
+
+async def test_capture_rejects_an_inline_figure_with_no_bytes(
+    staging_item: StagingItem,
+) -> None:
+    ingestor = MediaIngestor(FakeMediaFetcher(), PillowMediaValidator(), FakeMediaStore())
+
+    with pytest.raises(MediaError, match="no captured bytes"):
+        await ingestor.capture_refs(_blob_item(staging_item))
+
+
+async def test_advance_clears_an_old_error_after_a_successful_resume(
+    staging_item: StagingItem,
+    media: MediaAsset,
+) -> None:
+    runtime, staging, _ = make_runtime()
+    item = staging_item.model_copy(
+        update={
+            "id": "retried-row",
+            "state": State.DEDUPED,
+            "media_refs": (),
+            "media_assets": (media,),
+            "media_blobs": {},
+            "error": "MediaError: the host is gone",
+        }
+    )
+    await staging.save(item)
+
+    advanced = await _advance(
+        runtime,
+        item,
+        GateService(catalog=None, known_passage_ids=frozenset()),
+        ExplodingIngestor(),  # type: ignore[arg-type]
+    )
+
+    assert advanced.error is None
+    assert advanced.state is State.DEDUPED
+
+
 async def test_fetch_dry_run_writes_nothing() -> None:
     runtime, staging, fetcher = make_runtime()
 
@@ -445,34 +547,33 @@ async def test_a_duplicate_is_filtered_without_uploading_a_figure() -> None:
     assert fetcher.urls == []
 
 
-async def test_fetch_rechecks_duplicates_after_the_image_swap() -> None:
-    runtime, staging, fetcher = make_runtime()
-    await fetch(runtime, OPTIONS)
-    row = next(iter(staging.items.values()))
-    assert row.state is State.DEDUPED
-    assert row.media_assets
-    assert await runtime.index.count("bank") == 1
+async def test_a_capture_that_changes_the_hash_is_rechecked() -> None:
+    runtime, _, _ = make_runtime()
+    source = runtime.source
+    assert source is not None
+    raw = [item async for item in source.fetch(OPTIONS)][0]
+    adapted = source.adapt(raw, make_catalog())
 
+    ingestor = runtime.ingestor
+    assert ingestor is not None
+    captured = await ingestor.capture_refs(adapted)
     dedupe = runtime.dedupe
     await runtime.index.remember(
-        content_hash=dedupe.content_key(row),
-        near_duplicate=dedupe.near_key(row),
+        content_hash=dedupe.content_key(captured),
+        near_duplicate=dedupe.near_key(captured),
         origin="production",
         question_id="production:figure",
     )
 
-    # The row already has media_assets and no media_refs, so a second fetch
-    # will see it at DEDUPED, re-capture (which is a no-op for refs), and
-    # re-check dedupe against the production index.
-    second = await fetch(runtime, OPTIONS)
-    assert second.ok
-    assert second.done == 0
-    assert second.skipped == 1
-    row = await staging.load(row.id)
-    assert row is not None
-    assert row.state is State.REJECTED
-    assert "duplicate_exact" in (row.error or "")
-    assert await runtime.index.count("bank") == 0
+    advanced = await _advance(
+        runtime,
+        adapted.transition_to(State.GATED),
+        GateService(catalog=make_catalog(), known_passage_ids=frozenset()),
+        ingestor,
+    )
+
+    assert advanced.state is State.REJECTED
+    assert "duplicate_exact" in (advanced.error or "")
 
 
 async def test_status_reports_the_pipeline_and_the_index() -> None:

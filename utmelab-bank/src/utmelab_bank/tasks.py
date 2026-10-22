@@ -187,40 +187,41 @@ async def _advance(
     """
     if item.state is State.ADAPTED:
         item = gate.apply(item)
-        await runtime.staging.save(item)
         if item.state is State.REJECTED:
             return item
     if item.state is State.GATED:
         item = await runtime.dedupe.apply(item)
-        await runtime.staging.save(item)
         if item.state is State.REJECTED:
             return item
-    if item.state is State.DEDUPED:
-        await runtime.dedupe.remember(item, origin=BANK)
+
+    captured = False
+    if item.media_refs or (item.media_blobs and not item.media_assets):
         # Capture figures now, while the source is alive. Only rows that
         # passed gate + dedupe reach here, so no wasted uploads.
-        # Skip if already captured. A row with assets and no refs is done;
-        # stale blobs from a capture that predates the cleanup are dropped
-        # rather than uploaded a second time.
-        if item.media_refs or not item.media_assets:
-            item = await ingestor.capture_refs(item)
-            await runtime.staging.save(item)
-        elif item.media_blobs:
-            item = item.model_copy(update={"media_blobs": {}})
-            await runtime.staging.save(item)
-        # Whether capture ran or not, re-check dedupe because the production
-        # index may have new entries, or the inline swap changed the hash.
-        if item.state is State.DEDUPED:
+        item = await ingestor.capture_refs(item)
+        captured = True
+    elif item.media_blobs:
+        # A capture that predates the blob cleanup left the bytes behind.
+        # The assets are already owned, so drop the stale source bytes.
+        item = item.model_copy(update={"media_blobs": {}})
+
+    if item.state is State.DEDUPED:
+        if captured:
+            # The inline swap may have changed the content hash. Drop the old
+            # bank entry before checking and writing the new one.
             await runtime.index.forget_question(item.id, origin=BANK)
             found = await runtime.dedupe.find(item)
             if found is not None:
-                item = item.transition_to(
+                return item.transition_to(
                     State.REJECTED,
                     error=f"duplicate_{found.kind}: {found.question_id}",
                 )
-                await runtime.staging.save(item)
-                return item
-            await runtime.dedupe.remember(item, origin=BANK)
+        await runtime.dedupe.remember(item, origin=BANK)
+
+    if item.state is State.DEDUPED and item.error is not None:
+        # A capture that failed once and succeeded on a retry should not keep
+        # the old reason on the row.
+        item = item.model_copy(update={"error": None})
     return item
 
 
@@ -247,6 +248,11 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
 
     catalog = await runtime.catalog_for(scope.exam, scope.subject) if source.needs_catalog else None
     known_passages = set(await runtime.staging.passage_ids())
+    states = await runtime.staging.states_for(
+        exam=scope.exam,
+        subject=scope.subject,
+        year=scope.year,
+    )
     limit = _limit(options)
     item: StagingItem | None = None
 
@@ -267,7 +273,26 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
                     result.fail(f"{raw.external_key}: source invalid: {'; '.join(issues)}")
                     continue
 
-                existing = await runtime.staging.load(raw.external_key)
+                known = states.get(raw.external_key)
+                if known is not None:
+                    state, has_error, pending_media = known
+                    if state == State.DEDUPED.value and not has_error and not pending_media:
+                        # A finished row needs no second load or capture.
+                        result.done += 1
+                        continue
+                    if state not in (
+                        State.ADAPTED.value,
+                        State.GATED.value,
+                        State.DEDUPED.value,
+                        State.ACQUIRED.value,
+                        State.PLANNED.value,
+                    ):
+                        result.skipped += 1
+                        continue
+
+                existing = (
+                    await runtime.staging.load(raw.external_key) if known is not None else None
+                )
                 if existing is not None:
                     if existing.provenance.scope != raw.scope:
                         result.fail(
@@ -283,13 +308,11 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
                         result.note(f"{existing.id}: resuming at {existing.state.value}")
                     elif existing.state in (State.ACQUIRED, State.PLANNED):
                         item = source.adapt(raw, catalog)
-                        await runtime.staging.save(item)
                     else:
                         result.skipped += 1
                         continue
                 else:
                     item = source.adapt(raw, catalog)
-                    await runtime.staging.save(item)
 
                 if item.passage is not None:
                     known_passages.add(item.passage.id)
@@ -298,6 +321,12 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
                     known_passage_ids=known_passages,
                 )
                 item = await _advance(runtime, item, gate, ingestor)
+                await runtime.staging.save(item)
+                states[item.id] = (
+                    item.state.value,
+                    item.error is not None,
+                    bool(item.media_refs) or bool(item.media_blobs),
+                )
 
                 if item.state is State.DEDUPED:
                     result.done += 1
@@ -317,6 +346,11 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
                 result.fail(f"{raw.external_key}: {type(exc).__name__}: {exc}")
                 if item is not None:
                     await _record_failure(runtime, item, exc)
+                    states[item.id] = (
+                        item.state.value,
+                        True,
+                        bool(item.media_refs) or bool(item.media_blobs),
+                    )
     except Exception as exc:
         logger.exception("the source fetch failed")
         result.fail(f"{source.profile.name}: {type(exc).__name__}: {exc}")

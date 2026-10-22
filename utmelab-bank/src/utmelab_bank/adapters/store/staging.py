@@ -138,6 +138,29 @@ class StagingStore:
             ),
         )
 
+    async def states_for(
+        self,
+        *,
+        exam: str,
+        subject: str,
+        year: int,
+    ) -> dict[str, tuple[str, bool, bool]]:
+        """The state of every row already held for one scope.
+
+        One query lets a scrape skip a finished row without a load per source
+        item. The error flag says a DEDUPED row failed and must be retried;
+        the pending flag says a row still holds refs or blobs, which is the
+        crash window between dedupe and capture. Either one means load it.
+        """
+        result = await self._client.execute(
+            "SELECT id, state, error IS NOT NULL, "
+            "(media_refs IS NOT NULL AND media_refs != '[]') OR "
+            "(media_blobs IS NOT NULL AND media_blobs != '{}') "
+            "FROM staging_items WHERE exam = ? AND subject = ? AND year = ?",
+            [exam, subject, year],
+        )
+        return {str(row[0]): (str(row[1]), bool(row[2]), bool(row[3])) for row in result.rows}
+
     async def load(self, item_id: str) -> StagingItem | None:
         """Read one staging row."""
         result = await self._client.execute(

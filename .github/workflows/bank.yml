@@ -124,7 +124,7 @@ jobs:
         working-directory: utmelab-bank
         run: |
           set -euo pipefail
-          python scripts/scrape_neco.py
+          python -u scripts/scrape_neco.py
 
       - name: Run the task
         if: ${{ inputs.command != 'scrape-neco' }}
