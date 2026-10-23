@@ -42,7 +42,8 @@ jobs:
     timeout-minutes: 360
     env:
       TURSO_DB_URL: ${{ secrets.TURSO_DB_URL }}
-      TURSO_DB_TOKEN: ${{ secrets.TURSO_DB_TOKEN }}
+      TURSO_DB_TOKEN: ${{ secrets.TURSO_PROD_DB_TOKEN }}
+      TURSO_PROD_AUTH_TOKEN: ${{ secrets.TURSO_PROD_DB_TOKEN }}
       TURSO_PROD_AUTH_TOKEN_READONLY: ${{ secrets.TURSO_DB_TOKEN_READONLY }}
       GITLAB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
       GITLAB_MEDIA_REPO: shedrackgodstime/utmelab-bank
