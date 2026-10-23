@@ -9,7 +9,6 @@ on:
         default: "process"
         type: choice
         options:
-          - "harvest"
           - "process"
           - "promote"
           - "metrics"
@@ -99,13 +98,7 @@ jobs:
         run: |
           ACTION="${{ github.event.inputs.action }}"
           
-          if [ "$ACTION" = "harvest" ]; then
-            pipeline harvest \
-              --source "${{ github.event.inputs.source }}" \
-              --subject "${{ github.event.inputs.subject }}" \
-              --year "${{ github.event.inputs.year }}" \
-              --limit "${{ github.event.inputs.limit }}"
-          elif [ "$ACTION" = "process" ]; then
+          if [ "$ACTION" = "process" ]; then
             PROMOTE_FLAG=""
             if [ "${{ github.event.inputs.auto_promote }}" = "true" ]; then
               PROMOTE_FLAG="--auto-promote"

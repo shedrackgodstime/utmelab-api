@@ -27,7 +27,6 @@ on:
           - index
           - fetch
           - scrape
-          - scrape-neco
           - tag
           - media
           - explain
@@ -38,7 +37,7 @@ on:
         description: "Source adapter for fetch/scrape"
         type: string
         required: false
-        default: fixture
+        default: myschool
       exam:
         description: "Exam, e.g. JAMB"
         type: string
@@ -91,9 +90,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 360
     env:
-      # The names on the left are the bank's config. The names on the right
-      # are the secrets this repository already keeps, so the workflow does
-      # not need a second copy of the same token under a new label.
       TURSO_PROD_DATABASE_URL: ${{ secrets.TURSO_DB_URL }}
       TURSO_PROD_AUTH_TOKEN_READONLY: ${{ secrets.TURSO_DB_TOKEN_READONLY }}
       TURSO_BANK_DATABASE_URL: ${{ secrets.TURSO_UTMELAB_BANK_DB_URL }}
@@ -103,8 +99,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
 
@@ -119,15 +114,7 @@ jobs:
         run: |
           npm install -g opencode-ai@1.19.0 || (curl -fsSL https://opencode.ai/install.sh | bash && echo "$HOME/.opencode/bin" >> $GITHUB_PATH)
 
-      - name: Scrape every NECO scope
-        if: ${{ inputs.command == 'scrape-neco' }}
-        working-directory: utmelab-bank
-        run: |
-          set -euo pipefail
-          python -u scripts/scrape_neco.py
-
       - name: Run the task
-        if: ${{ inputs.command != 'scrape-neco' }}
         working-directory: utmelab-bank
         env:
           COMMAND: ${{ inputs.command }}
@@ -160,3 +147,4 @@ jobs:
             args+=(--source "$SOURCE")
           fi
           utmelab-bank "$COMMAND" "${args[@]}"
+        timeout-minutes: 360
