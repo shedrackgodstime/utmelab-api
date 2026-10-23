@@ -3,7 +3,6 @@
 //! covered by unit tests below.
 
 use axum::{http::StatusCode, response::IntoResponse, Json};
-use serde::Serialize;
 
 #[derive(Debug)]
 pub enum AppError {
@@ -24,14 +23,6 @@ pub enum AppError {
     SchemaMismatch,
     Upstream(String),
     Internal(String),
-}
-
-/// The consumer-facing body. `error` stays the human sentence (a client that
-/// only reads it keeps working); `code` is the stable machine handle.
-#[derive(Serialize)]
-struct ErrorBody<'a> {
-    error: &'a str,
-    code: &'a str,
 }
 
 impl std::fmt::Display for AppError {
@@ -125,9 +116,9 @@ impl IntoResponse for AppError {
         let detail = self.public_detail();
         let mut res = (
             status,
-            Json(ErrorBody {
-                error: &detail,
-                code: self.code(),
+            Json(crate::core::models::ErrorResponse {
+                error: detail,
+                code: self.code().to_string(),
             }),
         )
             .into_response();

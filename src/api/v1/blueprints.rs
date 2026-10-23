@@ -22,7 +22,7 @@ use crate::{
         ("exam" = String, Path, description = "Exam code, e.g. `JAMB`."),
         ("subject" = String, Path, description = "Subject slug, e.g. `physics`."),
     ),
-    responses((status = 200, body = [core::models::Blueprint])),
+    responses((status = 200, body = [core::models::Blueprint]), core::models::ApiErrorResponses),
 )]
 pub async fn list(
     State(s): State<DbState>,

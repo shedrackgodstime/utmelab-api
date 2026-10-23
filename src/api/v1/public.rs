@@ -36,7 +36,7 @@ use crate::{
     operation_id = "publicSummary",
     summary = "How much the bank holds. No key required.",
     security(()),
-    responses((status = 200, body = core::models::PublicSummary)),
+    responses((status = 200, body = core::models::PublicSummary), core::models::PublicApiErrorResponses),
 )]
 pub async fn summary(
     State(s): State<DbState>,
@@ -51,7 +51,7 @@ pub async fn summary(
     operation_id = "publicExams",
     summary = "Every exam with its subjects and sizes. No key required.",
     security(()),
-    responses((status = 200, body = [core::models::PublicExam])),
+    responses((status = 200, body = [core::models::PublicExam]), core::models::PublicApiErrorResponses),
 )]
 pub async fn exams(
     State(s): State<DbState>,
@@ -73,7 +73,8 @@ pub async fn exams(
     ),
     responses(
         (status = 200, body = core::models::Syllabus),
-        (status = 404, description = "No such subject in this exam"),
+        (status = 404, description = "No such subject in this exam", body = core::models::ErrorResponse),
+        core::models::PublicApiErrorResponses,
     ),
 )]
 pub async fn syllabus(

@@ -14,7 +14,7 @@ use crate::{
     tag = "catalog",
     operation_id = "listExams",
     summary = "Every exam the bank holds.",
-    responses((status = 200, body = [core::models::Exam])),
+    responses((status = 200, body = [core::models::Exam]), core::models::ApiErrorResponses),
 )]
 pub async fn list(
     State(s): State<DbState>,

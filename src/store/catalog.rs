@@ -368,7 +368,7 @@ pub async fn list_questions(
         ) questions ORDER BY id",
         verified_predicate = verified_predicate("questions"),
         per_page = per_page,
-        offset = (page - 1) * per_page,
+        offset = core::catalog::page_offset(page, per_page),
     );
     with_conn(s, |conn| {
         let count_sql = count_sql.clone();

@@ -11,7 +11,8 @@
 //!   a table or column we read is absent, so a shape the pipeline changed
 //!   without announcing it is caught anyway.
 //!
-//! `DDL` creates the tables the API owns. The bank tables (questions,
+//! `DDL` creates the tables the API owns. API-owned changes after the initial
+//! shape go through the numbered migrations below. The bank tables (questions,
 //! subjects, passages, …) are owned and created by the pipeline, so the
 //! API never creates them: they are declared here as reads, not DDL.
 
@@ -22,9 +23,14 @@ use crate::{error::AppError, state::DbState};
 /// promoted against; anything else fails the version half of the check.
 pub const CONTRACT_VERSION: u64 = 1;
 
+/// Version of the API-owned schema. This is separate from
+/// [`CONTRACT_VERSION`], which belongs to the content pipeline.
+pub const API_SCHEMA_VERSION: u64 = 1;
+
 /// Tables the API owns and creates at boot.
 pub(crate) const DDL: &[&str] = &[
     "CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)",
+    "CREATE TABLE IF NOT EXISTS api_schema_migrations (version INTEGER PRIMARY KEY, applied_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS api_keys (prefix TEXT PRIMARY KEY, hash TEXT NOT NULL, tier TEXT NOT NULL DEFAULT 'commercial', scopes TEXT NOT NULL DEFAULT 'read:catalog', revoked INTEGER NOT NULL DEFAULT 0, owner TEXT NOT NULL DEFAULT '', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS dashboard_users (username TEXT PRIMARY KEY, pw_hash TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'customer', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS sessions (token_hash TEXT PRIMARY KEY, username TEXT NOT NULL, expires_at INTEGER NOT NULL)",
@@ -42,6 +48,7 @@ pub(crate) const DDL: &[&str] = &[
 pub const READ_SHAPES: &[(&str, &[&str])] = &[
     // Account tables the API owns.
     ("meta", &["key", "value"]),
+    ("api_schema_migrations", &["version", "applied_at"]),
     (
         "api_keys",
         &[
@@ -232,11 +239,56 @@ pub const READ_SHAPES: &[(&str, &[&str])] = &[
 
 /// Create every production table we read. Idempotent; safe to run at boot.
 pub async fn ensure_schema(s: &DbState) -> Result<(), AppError> {
-    // Shape migrations run before the DDL so a dropped table is recreated
-    // at the current shape by the loop below.
-    migrate_reports_to_targets(s).await?;
     for ddl in DDL {
         super::write::execute_ddl(s, ddl).await?;
+    }
+    apply_migrations(s).await?;
+    Ok(())
+}
+
+/// API-owned migrations are numbered, applied once, and never rewritten.
+/// Fresh databases receive the current DDL first; upgraded databases receive
+/// the same DDL idempotently and then any missing migrations.
+const MIGRATIONS: &[u64] = &[1];
+
+async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
+    for &version in MIGRATIONS {
+        let applied = with_conn(s, |conn| async move {
+            let mut rows = conn
+                .query(
+                    "SELECT 1 FROM api_schema_migrations WHERE version = ?1",
+                    [version as i64],
+                )
+                .await
+                .map_err(upstream)?;
+            Ok(rows.next().await.map_err(upstream)?.is_some())
+        })
+        .await?;
+        if applied {
+            continue;
+        }
+
+        match version {
+            1 => {
+                migrate_reports_to_targets(s).await?;
+                ensure_column(
+                    s,
+                    "dashboard_users",
+                    "role",
+                    "role TEXT NOT NULL DEFAULT 'customer'",
+                )
+                .await?;
+                ensure_column(s, "api_keys", "owner", "owner TEXT NOT NULL DEFAULT ''").await?;
+            }
+            _ => unreachable!("migration version is declared but not implemented"),
+        }
+
+        super::write::execute_write(
+            s,
+            "INSERT INTO api_schema_migrations (version) VALUES (?1)",
+            vec![turso::Value::Integer(version as i64)],
+        )
+        .await?;
     }
     Ok(())
 }
@@ -557,5 +609,106 @@ mod tests {
                 "{table} is introspectable but has no READ_SHAPES entry"
             );
         }
+    }
+
+    #[test]
+    fn api_migrations_are_numbered_and_reach_the_declared_version() {
+        assert!(!MIGRATIONS.is_empty());
+        assert!(MIGRATIONS.windows(2).all(|pair| pair[0] < pair[1]));
+        assert_eq!(MIGRATIONS.last().copied(), Some(API_SCHEMA_VERSION));
+    }
+
+    async fn owned_shape(conn: &turso::Connection) -> Vec<(String, Vec<String>)> {
+        let mut shape = Vec::new();
+        for ddl in DDL {
+            let table = ddl
+                .strip_prefix("CREATE TABLE IF NOT EXISTS ")
+                .and_then(|rest| rest.split_whitespace().next())
+                .expect("ddl names its table");
+            let mut rows = conn
+                .query(format!("PRAGMA table_info(\"{table}\")"), ())
+                .await
+                .expect("table info");
+            let mut columns = Vec::new();
+            while let Some(row) = rows.next().await.expect("table info row") {
+                columns.push(row.get::<String>(1).expect("column name"));
+            }
+            columns.sort();
+            shape.push((table.to_string(), columns));
+        }
+        shape
+    }
+
+    #[tokio::test]
+    async fn fresh_and_upgraded_api_shapes_converge() {
+        let fresh = local_db().await;
+        let fresh_conn = conn_of(&fresh).await;
+        for ddl in DDL {
+            fresh_conn.execute(ddl, ()).await.expect("fresh ddl");
+        }
+        let fresh_shape = owned_shape(&fresh_conn).await;
+
+        let upgraded = local_db().await;
+        let upgraded_conn = conn_of(&upgraded).await;
+        upgraded_conn
+            .execute(
+                "CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)",
+                (),
+            )
+            .await
+            .expect("legacy meta");
+        upgraded_conn
+            .execute(
+                "CREATE TABLE api_keys (prefix TEXT PRIMARY KEY, hash TEXT NOT NULL, tier TEXT NOT NULL, scopes TEXT NOT NULL, revoked INTEGER NOT NULL, created_at TEXT NOT NULL)",
+                (),
+            )
+            .await
+            .expect("legacy keys");
+        upgraded_conn
+            .execute(
+                "CREATE TABLE dashboard_users (username TEXT PRIMARY KEY, pw_hash TEXT NOT NULL, created_at TEXT NOT NULL)",
+                (),
+            )
+            .await
+            .expect("legacy users");
+        upgraded_conn
+            .execute(
+                "CREATE TABLE reports (id TEXT PRIMARY KEY, question_id TEXT NOT NULL, reporter TEXT NOT NULL, reason TEXT NOT NULL, detail TEXT, created_at INTEGER NOT NULL, UNIQUE(reporter, question_id, reason))",
+                (),
+            )
+            .await
+            .expect("legacy reports");
+
+        for ddl in DDL {
+            upgraded_conn.execute(ddl, ()).await.expect("upgrade ddl");
+        }
+        upgraded_conn
+            .execute("DROP TABLE reports", ())
+            .await
+            .expect("replace legacy reports");
+        upgraded_conn
+            .execute(DDL[5], ())
+            .await
+            .expect("current reports");
+        upgraded_conn
+            .execute(
+                "ALTER TABLE dashboard_users ADD COLUMN role TEXT NOT NULL DEFAULT 'customer'",
+                (),
+            )
+            .await
+            .expect("migrate user role");
+        upgraded_conn
+            .execute(
+                "ALTER TABLE api_keys ADD COLUMN owner TEXT NOT NULL DEFAULT ''",
+                (),
+            )
+            .await
+            .expect("migrate key owner");
+        upgraded_conn
+            .execute("INSERT INTO api_schema_migrations (version) VALUES (1)", ())
+            .await
+            .expect("record migration");
+
+        assert_eq!(owned_shape(&upgraded_conn).await, fresh_shape);
     }
 }

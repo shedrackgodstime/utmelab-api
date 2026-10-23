@@ -32,7 +32,7 @@ pub struct List {
     operation_id = "listNovels",
     summary = "The prescribed-text catalog.",
     params(List),
-    responses((status = 200, body = [core::models::Novel])),
+    responses((status = 200, body = [core::models::Novel]), core::models::ApiErrorResponses),
 )]
 pub async fn list(
     State(s): State<DbState>,
@@ -65,7 +65,8 @@ pub async fn list(
     params(("id" = String, Path, description = "Novel id, e.g. `lekki`.")),
     responses(
         (status = 200, body = core::models::NovelDoc),
-        (status = 404, description = "No such novel"),
+        (status = 404, description = "No such novel", body = core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn detail(
@@ -112,7 +113,8 @@ pub struct Questions {
     ),
     responses(
         (status = 200, body = core::models::Page<core::models::RenderedNovelQuestion>),
-        (status = 404, description = "No such novel"),
+        (status = 404, description = "No such novel", body = core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn questions(

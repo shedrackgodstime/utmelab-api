@@ -27,7 +27,7 @@ use crate::{
     operation_id = "listSubjects",
     summary = "Every subject one exam offers.",
     params(("exam" = String, Path, description = "Exam code, e.g. `JAMB`.")),
-    responses((status = 200, body = [core::models::Subject])),
+    responses((status = 200, body = [core::models::Subject]), core::models::ApiErrorResponses),
 )]
 pub async fn by_exam(
     State(s): State<DbState>,
@@ -51,7 +51,8 @@ pub async fn by_exam(
     ),
     responses(
         (status = 200, body = core::models::Subject),
-        (status = 404, description = "No such subject in this exam"),
+        (status = 404, description = "No such subject in this exam", body = core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn subject(
@@ -132,7 +133,8 @@ pub async fn build_syllabus(
     ),
     responses(
         (status = 200, body = core::models::Syllabus),
-        (status = 404, description = "No such subject in this exam"),
+        (status = 404, description = "No such subject in this exam", body = core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn syllabus(
@@ -161,7 +163,8 @@ pub async fn syllabus(
     ),
     responses(
         (status = 200, body = core::models::Coverage),
-        (status = 404, description = "No such subject in this exam"),
+        (status = 404, description = "No such subject in this exam", body = core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn coverage(

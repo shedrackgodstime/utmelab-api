@@ -1,4 +1,4 @@
-use std::{net::SocketAddr, sync::Arc};
+use std::{net::SocketAddr, path::Path, sync::Arc};
 
 use tracing_subscriber::{fmt, EnvFilter};
 use utmelab_api::{
@@ -9,7 +9,10 @@ use utmelab_api::{
 };
 
 fn main() {
-    let _ = dotenvy::dotenv();
+    if let Err(error) = load_dotenv() {
+        eprintln!("failed to load .env: {error}");
+        std::process::exit(1);
+    }
     for dead in ["ADMIN_USERNAME", "ADMIN_PASSWORD"] {
         if std::env::var(dead).is_ok() {
             eprintln!(
@@ -43,6 +46,18 @@ fn main() {
         }
     };
     runtime.block_on(run(cfg));
+}
+
+fn load_dotenv() -> Result<(), String> {
+    load_dotenv_path(Path::new(".env"))
+}
+
+fn load_dotenv_path(path: &Path) -> Result<(), String> {
+    match dotenvy::from_path(path) {
+        Ok(()) => Ok(()),
+        Err(dotenvy::Error::Io(error)) if error.kind() == std::io::ErrorKind::NotFound => Ok(()),
+        Err(error) => Err(error.to_string()),
+    }
 }
 
 fn seed_admin_cmd(username: String, role: String) -> i32 {
@@ -92,6 +107,34 @@ fn seed_admin_cmd(username: String, role: String) -> i32 {
             }
         }
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::load_dotenv_path;
+    use std::{fs, path::PathBuf};
+
+    fn temp_env(name: &str) -> PathBuf {
+        std::env::temp_dir().join(format!("utmelab-api-{name}-{}.env", std::process::id()))
+    }
+
+    #[test]
+    fn missing_dotenv_file_is_allowed() {
+        let path = temp_env("missing");
+        let _ = fs::remove_file(&path);
+        assert!(load_dotenv_path(&path).is_ok());
+    }
+
+    #[test]
+    fn malformed_dotenv_file_is_rejected() {
+        let path = temp_env("malformed");
+        fs::write(&path, "MALFORMED_LINE\n").expect("write malformed dotenv");
+
+        let result = load_dotenv_path(&path);
+
+        fs::remove_file(&path).expect("remove malformed dotenv");
+        assert!(result.is_err());
+    }
 }
 
 async fn run(cfg: Config) {

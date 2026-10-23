@@ -116,7 +116,8 @@ pub struct ScoredPaper {
     ),
     responses(
         (status = 200, body = core::models::PaperReadiness),
-        (status = 404, description = "No such exam, or an exam with no subjects"),
+        (status = 404, description = "No such exam, or an exam with no subjects", body = core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn readiness(
@@ -162,8 +163,9 @@ pub async fn readiness(
     ),
     responses(
         (status = 200, body = AssembledPaperOut),
-        (status = 404, description = "No such exam subject"),
-        (status = 409, description = "The bank cannot fill this paper yet; the body names the gaps"),
+        (status = 404, description = "No such exam subject", body = core::models::ErrorResponse),
+        (status = 409, description = "The bank cannot fill this paper yet; the body names the gaps", body = core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn assemble_paper(
@@ -215,8 +217,9 @@ pub async fn assemble_paper(
     ),
     responses(
         (status = 200, body = ScoredPaper),
-        (status = 404, description = "No such exam subject"),
-        (status = 409, description = "The bank cannot fill this paper yet"),
+        (status = 404, description = "No such exam subject", body = core::models::ErrorResponse),
+        (status = 409, description = "The bank cannot fill this paper yet", body = core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn score_paper(

@@ -19,7 +19,7 @@ use crate::{
     tag = "meta",
     operation_id = "listTables",
     summary = "The bank tables exposed to keys.",
-    responses((status = 200, body = [core::models::TableRef])),
+    responses((status = 200, body = [core::models::TableRef]), core::models::ApiErrorResponses),
 )]
 pub async fn tables(
     State(s): State<DbState>,
@@ -47,7 +47,8 @@ pub struct RowsParams {
     ),
     responses(
         (status = 200, body = core::models::RowPage),
-        (status = 404, description = "A table off the allowlist, or absent"),
+        (status = 404, description = "A table off the allowlist, or absent", body = crate::core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn rows(

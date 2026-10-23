@@ -33,7 +33,8 @@ pub struct Detail {
     ),
     responses(
         (status = 200, body = core::models::RenderedQuestion),
-        (status = 404, description = "No such question"),
+        (status = 404, description = "No such question", body = core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn one(
@@ -100,7 +101,8 @@ pub struct List {
     params(List),
     responses(
         (status = 200, body = core::models::Page<core::models::RenderedQuestion>),
-        (status = 404, description = "A filter naming a subject the bank never had"),
+        (status = 404, description = "A filter naming a subject the bank never had", body = core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn list(
@@ -215,7 +217,8 @@ pub struct SampleParams {
     params(SampleParams),
     responses(
         (status = 200, body = core::models::SampledQuestions),
-        (status = 404, description = "A subject the bank never had"),
+        (status = 404, description = "A subject the bank never had", body = core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn sample(

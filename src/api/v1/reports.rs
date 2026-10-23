@@ -42,7 +42,8 @@ pub struct ReportBody {
     responses(
         (status = 201, body = core::models::ReportFiled, description = "Filed"),
         (status = 200, body = core::models::ReportFiled, description = "An identical filing already existed; the body carries the original's id"),
-        (status = 404, description = "No such target"),
+        (status = 404, description = "No such target", body = core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn file(

@@ -100,14 +100,6 @@ pub(crate) fn hash_password(password: &str) -> Result<String, AppError> {
 /// admin creation is the explicit `seed-admin` dev command, never env.
 pub async fn ensure_auth_tables(s: &DbState) -> Result<(), AppError> {
     super::schema::ensure_schema(s).await?;
-    super::schema::ensure_column(
-        s,
-        "dashboard_users",
-        "role",
-        "role TEXT NOT NULL DEFAULT 'customer'",
-    )
-    .await?;
-    super::schema::ensure_column(s, "api_keys", "owner", "owner TEXT NOT NULL DEFAULT ''").await?;
     backfill_key_owners(s).await?;
     Ok(())
 }

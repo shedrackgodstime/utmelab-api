@@ -151,13 +151,16 @@ where
     F: FnMut(turso::Connection) -> Fut,
     Fut: Future<Output = Result<T, AppError>>,
 {
-    let _permit = gate(s)?;
     let mut attempt = 0;
     loop {
-        let db = synced(s).await?;
-        let conn = s.conns.take(&db).await?;
-        let outcome = op(conn.clone()).await;
-        s.conns.put(conn).await;
+        let outcome = {
+            let _permit = gate(s)?;
+            let db = synced(s).await?;
+            let conn = s.conns.take(&db).await?;
+            let outcome = op(conn.clone()).await;
+            s.conns.put(conn).await;
+            outcome
+        };
         match outcome {
             Ok(v) => return Ok(v),
             Err(e) if !is_busy(&e) => return Err(e),
@@ -173,7 +176,8 @@ where
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::testing::db_state_without_db;
+    use crate::testing::{db_state, db_state_without_db, replica};
+    use std::sync::Arc;
 
     #[tokio::test]
     async fn gate_admits_up_to_limit_then_saturates() {
@@ -187,6 +191,47 @@ mod tests {
                 .load(std::sync::atomic::Ordering::Relaxed),
             1
         );
+    }
+
+    #[tokio::test]
+    async fn retry_backoff_releases_the_gate_permit() {
+        let mut s = db_state(replica().await);
+        s.db_gate = Arc::new(Semaphore::new(1));
+        s.conns = Arc::new(ConnPool::new(1));
+        let gate_ref = Arc::clone(&s.db_gate);
+
+        let (first_attempt_sender, first_attempt_done) = tokio::sync::oneshot::channel();
+        let mut first_attempt = Some(first_attempt_sender);
+        let task = tokio::spawn(async move {
+            with_conn(&s, move |_conn| {
+                let is_first = first_attempt.is_some();
+                if is_first {
+                    first_attempt
+                        .take()
+                        .expect("first attempt signal sender")
+                        .send(())
+                        .expect("signal first attempt");
+                }
+                async move {
+                    if is_first {
+                        Err(AppError::DbContended)
+                    } else {
+                        Ok(())
+                    }
+                }
+            })
+            .await
+        });
+
+        first_attempt_done.await.expect("receive first attempt");
+        tokio::time::sleep(std::time::Duration::from_millis(20)).await;
+        let permit = gate_ref.try_acquire_owned();
+        assert!(permit.is_ok(), "retry backoff must release the gate permit");
+        drop(permit);
+
+        task.await
+            .expect("retry task joins")
+            .expect("second attempt succeeds");
     }
 
     #[tokio::test]

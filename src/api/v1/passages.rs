@@ -61,6 +61,7 @@ pub struct BatchQuery {
     params(BatchQuery),
     responses(
         (status = 200, body = [core::models::Passage]),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn list(
@@ -106,7 +107,8 @@ pub async fn list(
     params(("id" = String, Path, description = "Passage id, as a question carries it in `passage_id`.")),
     responses(
         (status = 200, body = core::models::Passage),
-        (status = 404, description = "No such passage"),
+        (status = 404, description = "No such passage", body = crate::core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn one(

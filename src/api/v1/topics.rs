@@ -25,7 +25,8 @@ use crate::{
     ),
     responses(
         (status = 200, body = core::models::Topic),
-        (status = 404, description = "No such topic"),
+        (status = 404, description = "No such topic", body = crate::core::models::ErrorResponse),
+        core::models::ApiErrorResponses,
     ),
 )]
 pub async fn one(

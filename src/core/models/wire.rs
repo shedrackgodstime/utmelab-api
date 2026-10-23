@@ -10,6 +10,41 @@ use std::collections::HashMap;
 
 use super::domain::{Choice, Explanation, Passage, RichText, Subject};
 
+/// Stable body returned by HTTP error responses.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
+pub struct ErrorResponse {
+    pub error: String,
+    pub code: String,
+}
+
+/// Errors produced by the keyed API boundary and shared middleware.
+#[derive(utoipa::IntoResponses)]
+pub enum ApiErrorResponses {
+    #[response(status = 401, description = "An API key is missing or invalid.")]
+    Unauthorized(ErrorResponse),
+    #[response(status = 403, description = "The API key lacks the required scope.")]
+    Forbidden(ErrorResponse),
+    #[response(
+        status = 429,
+        description = "The caller has exceeded the applicable rate limit."
+    )]
+    RateLimited(ErrorResponse),
+    #[response(status = 503, description = "The API is temporarily unavailable.")]
+    ServiceUnavailable(ErrorResponse),
+}
+
+/// Errors produced by the public, keyless API boundary.
+#[derive(utoipa::IntoResponses)]
+pub enum PublicApiErrorResponses {
+    #[response(
+        status = 429,
+        description = "The caller has exceeded the applicable rate limit."
+    )]
+    RateLimited(ErrorResponse),
+    #[response(status = 503, description = "The API is temporarily unavailable.")]
+    ServiceUnavailable(ErrorResponse),
+}
+
 /// One page of a collection in the shape every paged endpoint serves.
 /// The envelope lives here, once, so a new paged endpoint cannot
 /// re-derive the counts: `total_pages` comes from `total_records` and

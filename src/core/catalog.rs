@@ -118,6 +118,11 @@ pub fn page_bounds(page: u32, per_page: u32) -> (u32, u32) {
     (page.max(1), per_page.clamp(1, 200))
 }
 
+/// Compute a SQL offset without overflowing the public `u32` query bounds.
+pub fn page_offset(page: u32, per_page: u32) -> u64 {
+    u64::from(page.saturating_sub(1)) * u64::from(per_page)
+}
+
 /// [`page_bounds`] over the raw query inputs: absent means page 1, 50 rows.
 /// The default page size lives here, once, so no module spells it itself.
 pub fn page_query(page: Option<u32>, per_page: Option<u32>) -> (u32, u32) {
@@ -460,6 +465,11 @@ mod tests {
         assert_eq!(page_bounds(0, 0), (1, 1));
         assert_eq!(page_bounds(2, 50), (2, 50));
         assert_eq!(page_bounds(1, 500), (1, 200));
+    }
+
+    #[test]
+    fn page_offset_handles_the_largest_query_page() {
+        assert_eq!(page_offset(u32::MAX, 200), 858_993_458_800);
     }
 
     #[test]
