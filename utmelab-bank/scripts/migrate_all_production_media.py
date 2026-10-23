@@ -146,7 +146,12 @@ async def _upload(
     api = f"https://{host}/api/v4/projects/{quote(project, safe='')}"
     path = quote(f"images/{filename}", safe="")
     headers = {"PRIVATE-TOKEN": token}
-    check = await client.get(f"{api}/repository/files/{path}?ref={quote(branch, safe='')}", headers=headers)
+    check = await _gitlab_request(
+        client,
+        "GET",
+        f"{api}/repository/files/{path}?ref={quote(branch, safe='')}",
+        headers=headers,
+    )
     if check.status_code == 200:
         return
     if check.status_code != 404:
@@ -157,15 +162,43 @@ async def _upload(
         "encoding": "base64",
         "commit_message": f"add figure {filename}",
     }
-    created = await client.post(f"{api}/repository/files/{path}", headers=headers, json=body)
+    created = await _gitlab_request(
+        client,
+        "POST",
+        f"{api}/repository/files/{path}",
+        headers=headers,
+        json=body,
+    )
     if created.status_code not in (201, 400):
         created.raise_for_status()
-    raw = await client.get(
+    raw = await _gitlab_request(
+        client,
+        "GET",
         f"{api}/repository/files/{path}/raw?ref={quote(branch, safe='')}", headers=headers
     )
     raw.raise_for_status()
     if hashlib.sha256(raw.content).digest() != hashlib.sha256(data).digest():
         raise RuntimeError(f"GitLab returned different bytes for {filename}")
+
+
+async def _gitlab_request(
+    client: httpx.AsyncClient,
+    method: str,
+    url: str,
+    **kwargs: Any,
+) -> httpx.Response:
+    """Retry transient GitLab throttling and server failures."""
+    for attempt in range(6):
+        response = await client.request(method, url, **kwargs)
+        if response.status_code not in (429, 500, 502, 503, 504):
+            return response
+        retry_after = response.headers.get("retry-after")
+        try:
+            delay = float(retry_after) if retry_after else min(2**attempt, 30)
+        except ValueError:
+            delay = min(2**attempt, 30)
+        await asyncio.sleep(max(1.0, min(delay, 60.0)))
+    return response
 
 
 async def migrate(args: argparse.Namespace) -> None:
