@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "utmelab-bank"
 version = "0.1.0"
 description = "The UTME Lab content bank. Ingests, gates, reviews and hands over exam content."
-readme = "docs/DESIGN.md"
+readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
   "httpx>=0.27,<1",

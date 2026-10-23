@@ -333,6 +333,7 @@ async def test_the_presets_compose_the_same_steps() -> None:
 
     process = await run_preset("process", runtime, OPTIONS)
     assert [result.task for result in process] == [
+        "capture",
         "tag",
         "media",
         "explain",
@@ -343,6 +344,7 @@ async def test_the_presets_compose_the_same_steps() -> None:
     row = await staging.load(row.id)
     assert row is not None
     assert row.state is State.READY
+
 
 
 async def test_fetch_resumes_without_touching_the_figure() -> None:

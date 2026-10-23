@@ -216,6 +216,20 @@ bank's own at handover. Not urgent, and it does not block anything else.
 * Placing content in the served tables.
 * Human verification writes to the served tables.
 
+## D14. Production placement is a private promotion job
+
+The bank stops at `READY`. It does not upload production content as a GitHub
+artifact, and GitHub is not a content store.
+
+When production placement becomes in scope, a controlled promotion job will
+read `READY` rows from the bank database, validate them against the API
+contract, and write them through a private, idempotent import operation. The
+operation will record what it placed and will never expose a public write
+endpoint to learners.
+
+Until that job exists, the bank's scope ends at preparing and certifying
+content as `READY`.
+
 ---
 
 ## The plan of record

@@ -13,7 +13,7 @@ def test_tasks_lists_tasks_and_presets(capsys: pytest.CaptureFixture[str]) -> No
     assert main(["tasks"]) == 0
     out = capsys.readouterr().out
     assert "fetch" in out
-    # "capture" appears in the fetch help text, but not as a task name
+    assert "capture" in out
     assert "status" in out
     assert "scrape" in out
     assert any(line.split() == ["scrape", "fetch"] for line in out.splitlines())
@@ -21,6 +21,8 @@ def test_tasks_lists_tasks_and_presets(capsys: pytest.CaptureFixture[str]) -> No
         line.split()
         == [
             "process",
+            "capture",
+            "->",
             "tag",
             "->",
             "media",
@@ -39,9 +41,10 @@ def test_tasks_json_is_machine_readable(capsys: pytest.CaptureFixture[str]) -> N
     assert main(["tasks", "--json"]) == 0
     payload = json.loads(capsys.readouterr().out)
     assert "fetch" in payload["tasks"]
-    assert "capture" not in payload["tasks"]
+    assert "capture" in payload["tasks"]
     assert payload["presets"]["scrape"] == ["fetch"]
     assert payload["presets"]["process"] == [
+        "capture",
         "tag",
         "media",
         "explain",

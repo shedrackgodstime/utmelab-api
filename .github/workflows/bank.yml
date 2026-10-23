@@ -14,6 +14,11 @@
 
 name: bank
 
+run-name: >-
+  bank ${{ inputs.command }} |
+  ${{ inputs.exam }} ${{ inputs.subject }} ${{ inputs.year }}
+  ${{ inputs.dry_run && '| dry run' || '' }}
+
 on:
   workflow_dispatch:
     inputs:
@@ -27,6 +32,7 @@ on:
           - index
           - fetch
           - scrape
+          - capture
           - tag
           - media
           - explain
@@ -134,7 +140,7 @@ jobs:
             --year "$YEAR"
             --limit "$LIMIT"
           )
-          if [ "$COMMAND" != "fetch" ] && [ "$COMMAND" != "scrape" ]; then
+          if [[ "$COMMAND" =~ ^(tag|media|explain|review|process)$ ]]; then
             args+=(--provider "$PROVIDER")
           fi
           if [ -n "$SECTION" ]; then

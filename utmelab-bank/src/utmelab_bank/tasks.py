@@ -230,8 +230,9 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
 
     This is the fast lane. It reads the source, validates the payload, runs
     the gate and the duplicate check, and writes the accepted row to the
-    bank. It does not tag, describe, or upload a figure. The later stages
-    pick the row out of the bank and take as long as they need.
+    bank. It does not tag or describe the row. Figure capture may already have
+    happened while the source was alive; the separate capture task resumes
+    rows that still have pending media.
     """
     source = require(runtime.source, "source")
     scope = _scope(options)
@@ -361,10 +362,9 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
 async def capture(runtime: Runtime, options: TaskOptions) -> TaskResult:
     """Fetch and store the figures for deduped rows.
 
-    This is the first point at which a figure can reach the media store. The
-    scrape stops before it, so a row the gate refused or the duplicate check
-    filtered never uploads a byte. That keeps the store free of images for
-    rows that will never be used.
+    This is the explicit retry point for figure capture. The scrape may capture
+    figures while the source is alive, but rows with pending media can resume
+    here. A row refused by the gate or duplicate check never reaches capture.
 
     The task is resumable and idempotent. A row already captured has no refs;
     it is re-indexed from the content it now holds, so a crash between the
@@ -629,6 +629,7 @@ async def status(runtime: Runtime, options: TaskOptions) -> TaskResult:
 
 TASKS: dict[str, TaskFn] = {
     "fetch": fetch,
+    "capture": capture,
     "tag": tag,
     "media": media,
     "explain": explain,
@@ -640,11 +641,12 @@ TASKS: dict[str, TaskFn] = {
 
 PRESETS: dict[str, tuple[str, ...]] = {
     "scrape": ("fetch",),
-    "process": ("tag", "media", "explain", "review", "ready"),
+    "process": ("capture", "tag", "media", "explain", "review", "ready"),
 }
 
 TASK_HELP: dict[str, str] = {
     "fetch": "Scrape one scope, gate it, capture figures, and stop at deduped.",
+    "capture": "Capture figures for deduped rows that still need media.",
     "tag": "Place deduped rows in the catalog.",
     "media": "Describe captured figures with two witnesses.",
     "explain": "Write the explanation and enrich the row.",
