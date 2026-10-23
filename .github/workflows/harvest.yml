@@ -61,11 +61,12 @@ jobs:
       - name: Probe or crawl
         run: |
           set -euo pipefail
+          YEAR="${{ inputs.year || '2025' }}"
           if [ "${{ inputs.probe }}" = "true" ]; then
-            python3 tools/harvest_all.py --probe --year "${{ inputs.year }}" \
+            python3 tools/harvest_all.py --probe --year "$YEAR" \
               ${SUBJECTS:+--subjects "$SUBJECTS"} --delay "${{ inputs.delay }}"
           else
-            python3 tools/harvest_all.py --year "${{ inputs.year }}" \
+            python3 tools/harvest_all.py --year "$YEAR" \
               ${SUBJECTS:+--subjects "$SUBJECTS"} --delay "${{ inputs.delay }}" --resume
           fi
         env:
