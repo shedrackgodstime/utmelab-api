@@ -328,6 +328,25 @@ async def test_fetch_through_ready() -> None:
     assert row.state is State.READY
 
 
+async def test_tag_blocks_when_catalog_has_no_subtopics() -> None:
+    runtime, staging, _ = make_runtime()
+
+    fetched = await fetch(runtime, OPTIONS)
+    assert fetched.ok, fetched.errors
+
+    empty_catalog = make_catalog().model_copy(update={"subtopics": ()})
+    runtime.catalog_reader = FakeCatalog(empty_catalog)
+    runtime._catalogs.clear()
+
+    tagged = await tag(runtime, OPTIONS)
+
+    assert tagged.seen == 1
+    assert tagged.blocked == 1
+    assert tagged.failed == 0
+    row = next(iter(staging.items.values()))
+    assert row.state is State.DEDUPED
+
+
 async def test_the_presets_compose_the_same_steps() -> None:
     runtime, staging, _ = make_runtime()
 

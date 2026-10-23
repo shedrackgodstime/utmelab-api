@@ -443,6 +443,12 @@ async def tag(runtime: Runtime, options: TaskOptions) -> TaskResult:
                 item.provenance.scope.exam,
                 item.provenance.scope.subject,
             )
+            if not catalog.subtopics:
+                result.block(
+                    f"{item.id}: no catalog subtopics for "
+                    f"{item.provenance.scope.exam}/{item.provenance.scope.subject}"
+                )
+                continue
             catalogued = await service.tag(item, catalog)
             await runtime.staging.save(catalogued)
             result.done += 1
