@@ -30,6 +30,7 @@ on:
         options:
           - status
           - index
+          - probe
           - fetch
           - scrape
           - capture
@@ -149,8 +150,12 @@ jobs:
           if [ "$DRY_RUN" = "true" ]; then
             args+=(--dry-run)
           fi
-          if [ "$COMMAND" = "fetch" ] || [ "$COMMAND" = "scrape" ]; then
+          if [ "$COMMAND" = "probe" ]; then
+            python scripts/probe_myschool_years.py --exam "$EXAM" --year "$YEAR"
+          elif [ "$COMMAND" = "fetch" ] || [ "$COMMAND" = "scrape" ]; then
             args+=(--source "$SOURCE")
+            utmelab-bank "$COMMAND" "${args[@]}"
+          else
+            utmelab-bank "$COMMAND" "${args[@]}"
           fi
-          utmelab-bank "$COMMAND" "${args[@]}"
         timeout-minutes: 360
