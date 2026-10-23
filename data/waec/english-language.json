@@ -1,0 +1,167 @@
+{
+  "subjects": [
+    {
+      "slug": "english-language",
+      "exam": "WAEC",
+      "name": "English Language",
+      "is_compulsory": false,
+      "objective_paper_questions": 50,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "english-language"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-1-consonants",
+      "subject": "english-language",
+      "exam": "WAEC",
+      "name": "1. CONSONANTS",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1-vowels-pure-vowels-and-diphthongs",
+      "subject": "english-language",
+      "exam": "WAEC",
+      "name": "1. Vowels – pure vowels and diphthongs;",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-2-consonants-and-clusters",
+      "subject": "english-language",
+      "exam": "WAEC",
+      "name": "2. Consonants and clusters;",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-3-rhymes",
+      "subject": "english-language",
+      "exam": "WAEC",
+      "name": "3. Rhymes;",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-4-word-stress-syllable-structure",
+      "subject": "english-language",
+      "exam": "WAEC",
+      "name": "4. Word stress/Syllable Structure;",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-5-emphatic-stress-intonation-patterns",
+      "subject": "english-language",
+      "exam": "WAEC",
+      "name": "5. Emphatic Stress/Intonation Patterns;",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-6-phonetic-symbols",
+      "subject": "english-language",
+      "exam": "WAEC",
+      "name": "6. Phonetic Symbols.",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-10-questions-on-drama",
+      "subject": "english-language",
+      "exam": "WAEC",
+      "name": "10. questions on Drama",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-10-questions-on-prose",
+      "subject": "english-language",
+      "exam": "WAEC",
+      "name": "10. questions on Prose",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-10-questions-on-poetry-note",
+      "subject": "english-language",
+      "exam": "WAEC",
+      "name": "10. questions on Poetry NOTE",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-single-consonants-candidates-should-be-able-to-recognize-and",
+      "topic": "waec-1-consonants",
+      "name": "Single Consonants – Candidates should be able to recognize and produce all significant sound contrasts in the consonantal system of English. For the guidance of candidates, a few examples of such contrasts are given below. Initial they  –  day  buzzes  –  buses   boat  –  both ship  –   chip  parcel  –  partial   breathe  –  br eed fan  –    van  sopping – sobbing  wash  –  watch pit   –     fit   written  –  ridden   leaf  –  lea ve pit  –     bit   anger  –  anchor   cup  –  cub tuck – duck  faces    -        phrases   cart  –  c ard card – guard  prices     –        prizes gear – jeer",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-consonant-clusters-candidates-should-be-able-to-produce-and",
+      "topic": "waec-1-consonants",
+      "name": "Consonant Clusters – Candidates should be able to produce and recognize consonant clusters which may occur both initially and finally in a syllable. They should also be able to recognize and produce the consonant sounds in a consonant cluster in the right order. For the guidance of candidates, a few examples are given below. Initial play  –  pray    rains  - range sting  –  string    felt  –  felled scheme  –  scream   sent  –  send crime  –  climb    nest  –  next flee  –  free    ask  –  axe three  –  tree    lift  –  lived true  –  drew    missed  –  mixed blight  –  bright    seats  –  seeds tread  –  thread    hens  –  hence drift  –  thrift    lisp  –  lips glade  –  grade    coast  –  coats marks  –  masks II. VOWELS",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-pure-vowels",
+      "topic": "waec-1-consonants",
+      "name": "Pure Vowels",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-diphthongs",
+      "topic": "waec-1-consonants",
+      "name": "Diphthongs",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-triphthongs-candidates-should-be-able-to-recognize-and-produ",
+      "topic": "waec-1-consonants",
+      "name": "Triphthongs Candidates should be able to recognize and produce all the significant sound contrasts in the vowel system of English. For the guidance of candidates, a few examples of such contrasts are given below",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-letter-ii-speech-iii-narration-iv-description",
+      "topic": "waec-10-questions-on-poetry-note",
+      "name": "letter;; (ii) speech;; (iii) narration;; (iv) description;",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-argument-debate",
+      "topic": "waec-10-questions-on-poetry-note",
+      "name": "argument/debate;",
+      "order": 2,
+      "objectives": []
+    }
+  ]
+}

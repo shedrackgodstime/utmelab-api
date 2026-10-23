@@ -1,0 +1,435 @@
+{
+  "subjects": [
+    {
+      "slug": "mathematics",
+      "exam": "WAEC",
+      "name": "General Mathematics/Mathematics (Core)",
+      "is_compulsory": false,
+      "objective_paper_questions": 50,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "mathematics"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-number-bases",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Number bases",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-modular-arithmetic",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Modular Arithmetic",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-fractions-decimals-and-approximations",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Fractions, Decimals and Approximations",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-indices",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Indices",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-logarithms",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Logarithms",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-sequence-and-series",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Sequence and Series",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-sets",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Sets",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-logical-reasoning",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Logical Reasoning",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-positiv-e-and-nega-tive-integers-rational-numbers",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Positiv e and nega tive integers, rational numbers",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-surds-radicals-k-matrices-and-determinants",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Surds (Radicals) •∗∗ ∗∗ ( k ) Matrices and Determinants",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-ratio-proportions-and-rates",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Ratio, Proportions and Rates",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-percentages-n-financial-arithmetic",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Percentages ∗∗ ∗∗ ( n) Financial Arithmetic",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-variation",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Variation",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-change-of-subject-of-a-formula-relation",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Change of Subject of a        Formula/Relation",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-quadratic-equations",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Quadratic Equations",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-graphs-of-linear-and-quadratic-functions",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Graphs of Linear and Quadratic functions.",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-linear-inequalities",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Linear Inequalities",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-algebraic-fractions-i-functions-and-relations",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Algebraic Fractions ♦•♣♠ (i) Functions and Relations",
+      "order": 18,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-volumes",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Volumes",
+      "order": 19,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-circles",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Circles",
+      "order": 20,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-angles-of-elevation-and-depression-c-bearings-g-introductory",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Angles of elevation and depression ♦∗∗ ∗∗♣♠ ( c ) Bearings ∗∗ ∗∗ G. INTRODUCTORY CALCULUS",
+      "order": 21,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-vectors-in-a-plane",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Vectors in a Plane",
+      "order": 22,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-transformation-in-the-cartesian-plane",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Transformation in the Cartesian Plane",
+      "order": 23,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-3-units",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "3. UNITS",
+      "order": 24,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1000-millimetres-mm-100-centimetres-cm-1-metre-m",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "1000. millimetres (mm) = 100 centimetres (cm) = 1 metre(m).",
+      "order": 25,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1000-metres-1-kilometre-km",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "1000. metres = 1 kilometre (km)",
+      "order": 26,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1000-cubic-centimeters-cm",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "1000. cubic centimeters (cm",
+      "order": 27,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1000-milligrammes-mg-1-gramme-g",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "1000. milligrammes (mg) = 1 gramme (g)",
+      "order": 28,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1000-grammes-g-1-kilogramme-kg",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "1000. grammes (g) = 1 kilogramme( kg )",
+      "order": 29,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1000-ogrammes-kg-1-tonne",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "1000. ogrammes (kg) = 1 tonne.",
+      "order": 30,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-4-other-important-information",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "4. OTHER IMPORTANT INFORMATION",
+      "order": 31,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-algebraic-expressions",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Algebraic expressions",
+      "order": 32,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-simple-o-perations-on-algebraic-expressions",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Simple o perations on algebraic expressions",
+      "order": 33,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-solution-of-linear-equations",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Solution of Linear Equations",
+      "order": 34,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-lengths-and-perimeters",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Lengths and Perimeters",
+      "order": 35,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-areas",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Areas",
+      "order": 36,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-angles",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Angles",
+      "order": 37,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-angles-and-inte-rcepts-on-parallel-lines",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Angles and inte rcepts on parallel lines.",
+      "order": 38,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-triangles-and-polygons",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Triangles and Polygons.",
+      "order": 39,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-sine-cosine-and-tangent-of-an-angle",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Sine, Cosine and Tangent of an angle.",
+      "order": 40,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-probability",
+      "subject": "mathematics",
+      "exam": "WAEC",
+      "name": "Probability",
+      "order": 41,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-use-of-calculators-the-use-of-non-programmable-silent-and-co",
+      "topic": "waec-4-other-important-information",
+      "name": "Use of calculators The use of non-programmable, silent and cordless calculators is allowed. The calculators must, however not have the capability to print out or send any information. Phones with or without calculators are not allowed",
+      "order": 1,
+      "objectives": []
+    }
+  ]
+}
