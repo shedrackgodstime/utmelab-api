@@ -106,6 +106,8 @@ class ProductionReader(Protocol):
 
     def iter_known(self) -> AsyncIterator[KnownQuestion]: ...
 
+    async def question_ids(self, *, exam: str, subject: str, year: int) -> frozenset[str]: ...
+
 
 @dataclass
 class Runtime:

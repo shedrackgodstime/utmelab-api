@@ -57,6 +57,9 @@ class FakeSource:
     def validate(self, item: SourceItem) -> list[str]:
         raise NotImplementedError
 
+    def production_question_id(self, item: SourceItem) -> str | None:
+        return None
+
 
 class FakeDescriber:
     producer = Producer(provider="example", model="vision")

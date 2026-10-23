@@ -171,6 +171,10 @@ class MyschoolSource:
     def validate(self, item: SourceItem) -> list[str]:
         return validate_payload(item.payload)
 
+    def production_question_id(self, item: SourceItem) -> str:
+        """The production claim ID for a MySchool question."""
+        return f"q_claim_{item.scope.year}_{item.scope.subject}_{item.source_item_id}"
+
     def _error_item(
         self,
         scope: Scope,

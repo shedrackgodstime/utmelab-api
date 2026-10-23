@@ -31,6 +31,7 @@ from utmelab_bank.domain.models import (
     MediaAsset,
     Producer,
     RichText,
+    SourceItem,
     StagingItem,
 )
 from utmelab_bank.runtime import Runtime
@@ -214,12 +215,20 @@ class FakeCatalog:
 
 
 class FakeProduction:
-    def __init__(self, questions: Sequence[KnownQuestion] = ()) -> None:
+    def __init__(
+        self,
+        questions: Sequence[KnownQuestion] = (),
+        question_ids: frozenset[str] = frozenset(),
+    ) -> None:
         self.questions = tuple(questions)
+        self._question_ids = question_ids
 
     async def iter_known(self) -> AsyncIterator[KnownQuestion]:
         for question in self.questions:
             yield question
+
+    async def question_ids(self, *, exam: str, subject: str, year: int) -> frozenset[str]:
+        return self._question_ids
 
 
 def make_runtime(
@@ -547,6 +556,26 @@ async def test_a_duplicate_is_filtered_without_uploading_a_figure() -> None:
     assert "duplicate_exact" in (row.error or "")
     assert row.media_assets == ()
     assert fetcher.urls == []
+
+
+async def test_canonical_production_id_is_filtered_before_adaptation() -> None:
+    runtime, staging, fetcher = make_runtime(
+        production=FakeProduction(question_ids=frozenset({"production:existing"}))
+    )
+
+    class SourceWithCanonicalId(FixtureSource):
+        def production_question_id(self, item: SourceItem) -> str:
+            return "production:existing"
+
+    runtime.source = SourceWithCanonicalId(FIXTURE_DIR)
+    result = await fetch(runtime, OPTIONS)
+
+    assert result.ok
+    assert result.done == 0
+    assert result.skipped == 1
+    assert staging.items == {}
+    assert fetcher.urls == []
+    assert any("production already holds production:existing" in note for note in result.notes)
 
 
 async def test_a_capture_that_changes_the_hash_is_rechecked() -> None:

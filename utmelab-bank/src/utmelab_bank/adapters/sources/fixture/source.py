@@ -100,6 +100,10 @@ class FixtureSource:
     def validate(self, item: SourceItem) -> list[str]:
         return validate_payload(item.payload)
 
+    def production_question_id(self, item: SourceItem) -> str | None:
+        """Recorded fixtures do not claim a production ID."""
+        return None
+
     def _record(self, scope: Scope) -> dict[str, Any] | None:
         path = self._path(scope)
         if not path.is_file():

@@ -248,6 +248,12 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
         return result
 
     catalog = await runtime.catalog_for(scope.exam, scope.subject) if source.needs_catalog else None
+    production_ids = await runtime.production.question_ids(
+        exam=scope.exam,
+        subject=scope.subject,
+        year=scope.year,
+    )
+    seen_production_ids: set[str] = set()
     known_passages = set(await runtime.staging.passage_ids())
     states = await runtime.staging.states_for(
         exam=scope.exam,
@@ -273,6 +279,16 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
                 if issues:
                     result.fail(f"{raw.external_key}: source invalid: {'; '.join(issues)}")
                     continue
+
+                production_id = source.production_question_id(raw)
+                if production_id is not None:
+                    if production_id in production_ids or production_id in seen_production_ids:
+                        result.skipped += 1
+                        result.note(
+                            f"{raw.external_key}: production already holds {production_id}"
+                        )
+                        continue
+                    seen_production_ids.add(production_id)
 
                 known = states.get(raw.external_key)
                 if known is not None:

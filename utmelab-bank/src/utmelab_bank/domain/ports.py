@@ -45,6 +45,8 @@ class Source(Protocol):
 
     def validate(self, item: SourceItem) -> list[str]: ...
 
+    def production_question_id(self, item: SourceItem) -> str | None: ...
+
 
 @runtime_checkable
 class ImageDescriber(Protocol):

@@ -162,6 +162,14 @@ class ProductionContentReader:
         result = await self._client.execute("SELECT id, content_hash FROM questions")
         return {str(row[0]): str(row[1]) for row in result.rows}
 
+    async def question_ids(self, *, exam: str, subject: str, year: int) -> frozenset[str]:
+        """Question IDs already held for one scrape scope."""
+        result = await self._client.execute(
+            "SELECT id FROM questions WHERE exam = ? AND subject = ? AND year = ?",
+            [exam, subject, year],
+        )
+        return frozenset(str(row[0]) for row in result.rows)
+
 
 class ProductionReportReader:
     """Reads the reports consumers have made.
