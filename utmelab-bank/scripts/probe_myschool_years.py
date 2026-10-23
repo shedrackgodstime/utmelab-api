@@ -12,7 +12,7 @@ from utmelab_bank.adapters.sources.myschool import MyschoolSource
 from utmelab_bank.adapters.sources.myschool.subjects import subjects_for
 from utmelab_bank.domain.models import Scope
 
-SAMPLE_LIMIT = 100
+SAMPLE_LIMIT = 5
 YEAR_MISMATCH = re.compile(r"from \w+ (\d+), not \w+ \d+")
 
 
