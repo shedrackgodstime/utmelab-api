@@ -1,0 +1,76 @@
+name: production-media-migration
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Apply uploads and production database updates"
+        type: boolean
+        required: true
+        default: false
+      limit:
+        description: "Maximum questions to scan"
+        type: string
+        required: false
+        default: ""
+      exam:
+        description: "Optional exam filter"
+        type: string
+        required: false
+        default: ""
+      subject:
+        description: "Optional subject filter"
+        type: string
+        required: false
+        default: ""
+      year:
+        description: "Optional year filter"
+        type: string
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-media-migration
+  cancel-in-progress: false
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      TURSO_DB_URL: ${{ secrets.TURSO_DB_URL }}
+      TURSO_DB_TOKEN: ${{ secrets.TURSO_DB_TOKEN }}
+      TURSO_PROD_AUTH_TOKEN_READONLY: ${{ secrets.TURSO_DB_TOKEN_READONLY }}
+      GITLAB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+      GITLAB_MEDIA_REPO: shedrackgodstime/utmelab-bank
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install the bank
+        working-directory: utmelab-bank
+        run: pip install -e ".[dev]"
+
+      - name: Scan or migrate production media
+        working-directory: utmelab-bank
+        env:
+          APPLY: ${{ inputs.apply }}
+          LIMIT: ${{ inputs.limit }}
+          EXAM: ${{ inputs.exam }}
+          SUBJECT: ${{ inputs.subject }}
+          YEAR: ${{ inputs.year }}
+        run: |
+          set -euo pipefail
+          args=()
+          if [ "$APPLY" = "true" ]; then args+=(--apply); fi
+          if [ -n "$LIMIT" ]; then args+=(--limit "$LIMIT"); fi
+          if [ -n "$EXAM" ]; then args+=(--exam "$EXAM"); fi
+          if [ -n "$SUBJECT" ]; then args+=(--subject "$SUBJECT"); fi
+          if [ -n "$YEAR" ]; then args+=(--year "$YEAR"); fi
+          python scripts/migrate_all_production_media.py "${args[@]}"
