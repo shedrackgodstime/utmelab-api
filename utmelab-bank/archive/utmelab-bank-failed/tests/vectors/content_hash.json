@@ -1,0 +1,245 @@
+{
+ "_comment": "Content hash cases pinned from the bank that already exists. Each digest was read from utmelab-api-old/data/verifications.json, not produced by this implementation, so these vectors fail if the part order moves rather than merely recording whatever the code currently does. The algorithm is Question::content_fingerprint from the archived Rust tree.",
+ "algorithm": "sha256 of the parts joined by \\x1f, in this order: stem text; id+\\x1e+option text per option; answer; every mark stem-then-options joined by |; then the explanation key point text, key point marks, body text, body marks, trap text, trap marks, or a single empty part when there is no explanation.",
+ "cases": [
+  {
+   "name": "q_authored_eng_sentinterp_001",
+   "from_the_bank": true,
+   "stem": {
+    "text": "Choose the option that best conveys the meaning of the underlined portion in the following sentence: After the audit, the manager knew the figures would not add up.",
+    "inline": [
+     {
+      "start": 147,
+      "len": 16,
+      "kind": "underline"
+     }
+    ]
+   },
+   "options": [
+    {
+     "id": "a",
+     "text": {
+      "text": "the figures would be correct",
+      "inline": []
+     }
+    },
+    {
+     "id": "b",
+     "text": {
+      "text": "the figures would be inconsistent",
+      "inline": []
+     }
+    },
+    {
+     "id": "c",
+     "text": {
+      "text": "the figures would be impressive",
+      "inline": []
+     }
+    },
+    {
+     "id": "d",
+     "text": {
+      "text": "the figures would be hidden",
+      "inline": []
+     }
+    }
+   ],
+   "answer": "b",
+   "content_hash": "d78dcf49ffb99f07fa7bfc3925c894a5ccd234af08076c2655d38ea0e9d0c9d4",
+   "explanation": {
+    "key_point": {
+     "text": "'Not add up' means inconsistent, especially of figures or a story.",
+     "inline": []
+    },
+    "body": {
+     "text": "The idiom *not add up* is used when numbers — or an account of events — fail to agree with one another.",
+     "inline": []
+    },
+    "trap": {
+     "text": "'Correct' inverts the idiom; *add up* without the negative would mean the opposite.",
+     "inline": []
+    }
+   },
+   "matches_stored_hash": true
+  },
+  {
+   "name": "q_claim_2025_economics_76919",
+   "from_the_bank": true,
+   "stem": {
+    "text": "Table I above illustrates the law of",
+    "inline": [
+     {
+      "start": 0,
+      "len": 0,
+      "kind": "image",
+      "url": "https://myschool.ng/storage/classroom/tzZCvA5EI0BAvOS0qdtp1cius4OlVxB3brjAOIqD.png",
+      "position": "above",
+      "alt": null
+     }
+    ]
+   },
+   "options": [
+    {
+     "id": "a",
+     "text": {
+      "text": "diminishing returns.",
+      "inline": []
+     }
+    },
+    {
+     "id": "b",
+     "text": {
+      "text": "diminishing marginal productivity.",
+      "inline": []
+     }
+    },
+    {
+     "id": "c",
+     "text": {
+      "text": "diminishing marginal utility.",
+      "inline": []
+     }
+    },
+    {
+     "id": "d",
+     "text": {
+      "text": "variable proportion.",
+      "inline": []
+     }
+    }
+   ],
+   "answer": "c",
+   "content_hash": "215510e96f7cdd8d41b8abd9f2683d87f7c70efae3e6d0dd015a5393cd468d5b",
+   "explanation": {
+    "key_point": {
+     "text": "Falling marginal utility fills the table.",
+     "inline": []
+    },
+    "body": {
+     "text": "The figure's MU column drops 10, 5, 2, 1, 0 as units rise — textbook diminishing marginal utility.",
+     "inline": []
+    },
+    "trap": {
+     "text": "Variable-proportion tempts as production-talk, but the table is utility.",
+     "inline": []
+    }
+   },
+   "matches_stored_hash": true
+  },
+  {
+   "name": "q_authored_math_surds_001",
+   "from_the_bank": true,
+   "stem": {
+    "text": "Rationalise the denominator of \\(\\dfrac{6}{\\sqrt{3}}\\).",
+    "inline": []
+   },
+   "options": [
+    {
+     "id": "a",
+     "text": {
+      "text": "2",
+      "inline": []
+     }
+    },
+    {
+     "id": "b",
+     "text": {
+      "text": "\\(2\\sqrt{3}\\)",
+      "inline": []
+     }
+    },
+    {
+     "id": "c",
+     "text": {
+      "text": "\\(3\\sqrt{2}\\)",
+      "inline": []
+     }
+    },
+    {
+     "id": "d",
+     "text": {
+      "text": "\\(6\\sqrt{3}\\)",
+      "inline": []
+     }
+    },
+    {
+     "id": "e",
+     "text": {
+      "text": "\\(\\sqrt{3}\\)",
+      "inline": []
+     }
+    }
+   ],
+   "answer": "b",
+   "content_hash": "b8e9092e18f88dd95af217228bb3b2a15a9f15895080dd9c0fb749dca707599b",
+   "explanation": {
+    "key_point": {
+     "text": "To rationalise, multiply numerator and denominator by the surd itself.",
+     "inline": []
+    },
+    "body": {
+     "text": "## Working\n\nMultiply top and bottom by \\(\\sqrt{3}\\):\n\n$$\\frac{6}{\\sqrt{3}} \\times \\frac{\\sqrt{3}}{\\sqrt{3}} = \\frac{6\\sqrt{3}}{3} = 2\\sqrt{3}$$",
+     "inline": []
+    },
+    "trap": {
+     "text": "\\(2\\) comes from dividing 6 by 3 without carrying the surd down — rationalising removes the surd from the *denominator*, not from the answer.",
+     "inline": []
+    }
+   },
+   "matches_stored_hash": true
+  },
+  {
+   "name": "q_authored_math_change_of_bases_001",
+   "from_the_bank": true,
+   "stem": {
+    "text": "Evaluate \\(\\log_2 8\\).",
+    "inline": []
+   },
+   "options": [
+    {
+     "id": "a",
+     "text": {
+      "text": "1",
+      "inline": []
+     }
+    },
+    {
+     "id": "b",
+     "text": {
+      "text": "2",
+      "inline": []
+     }
+    },
+    {
+     "id": "c",
+     "text": {
+      "text": "3",
+      "inline": []
+     }
+    },
+    {
+     "id": "d",
+     "text": {
+      "text": "8",
+      "inline": []
+     }
+    }
+   ],
+   "answer": "c",
+   "content_hash": "6e79a627b33a5e714c13bfcc3771185d006cd3b9aa150536b377661224b787b4",
+   "explanation": {
+    "key_point": {
+     "text": "\\(\\log_b x = n\\) means \\(b^n = x\\).",
+     "inline": []
+    },
+    "body": {
+     "text": "We need the exponent \\(n\\) where \\(2^n = 8\\).\n\n$$2^3 = 8 \\Rightarrow n = 3$$",
+     "inline": []
+    },
+    "trap": null
+   },
+   "matches_stored_hash": true
+  }
+ ]
+}
