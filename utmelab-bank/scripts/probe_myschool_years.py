@@ -5,15 +5,17 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
-import re
 from typing import Any
 
 from utmelab_bank.adapters.sources.myschool import MyschoolSource
+from utmelab_bank.adapters.sources.myschool.parser import (
+    listing_url,
+    parse_api_listing,
+    parse_api_question,
+)
 from utmelab_bank.adapters.sources.myschool.subjects import subjects_for
-from utmelab_bank.domain.models import Scope
 
 SAMPLE_LIMIT = 5
-YEAR_MISMATCH = re.compile(r"from \w+ (\d+), not \w+ \d+")
 
 
 async def probe(exam: str, year: int) -> dict[str, Any]:
@@ -25,21 +27,28 @@ async def probe(exam: str, year: int) -> dict[str, Any]:
             matching_count = 0
             mismatched_years: set[int] = set()
             errors: list[str] = []
-            scope = Scope(exam=exam, subject=entry.slug, year=year)
             try:
-                async for item in source.fetch(scope):
-                    sample_count += 1
-                    error = item.payload.get("error")
-                    if isinstance(error, dict):
-                        message = str(error.get("message", error))
-                        errors.append(message)
-                        match = YEAR_MISMATCH.search(message)
-                        if match:
-                            mismatched_years.add(int(match.group(1)))
-                    else:
+                payload = await source._get_json(  # noqa: SLF001
+                    listing_url(exam.lower(), entry.source, year, 1)
+                )
+                rows = parse_api_listing(payload)[:SAMPLE_LIMIT]
+                sample_count = len(rows)
+                for row in rows:
+                    try:
+                        parsed = parse_api_question(
+                            row,
+                            exam=exam.lower(),
+                            subject=entry.slug,
+                            year=year,
+                            source_slug=entry.source,
+                        )
+                    except Exception as exc:
+                        errors.append(f"{type(exc).__name__}: {exc}")
+                        continue
+                    if parsed.exam == exam.lower() and parsed.year == year:
                         matching_count += 1
-                    if sample_count >= SAMPLE_LIMIT:
-                        break
+                    else:
+                        mismatched_years.add(parsed.year)
             except Exception as exc:
                 errors.append(f"{type(exc).__name__}: {exc}")
 
