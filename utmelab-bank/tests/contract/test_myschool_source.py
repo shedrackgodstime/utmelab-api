@@ -393,7 +393,7 @@ async def test_a_row_with_no_answer_is_a_per_row_failure() -> None:
     assert "source.error" in " ".join(source.validate(items[0]))
 
 
-async def test_a_row_from_another_year_is_a_per_row_failure() -> None:
+async def test_a_row_from_another_year_is_filtered_out() -> None:
     row = api_row(collection={"exam_year": 2024, "exam_type": "jamb"})
     source, client = source_with_payload(envelope([row]))
     try:
@@ -401,9 +401,7 @@ async def test_a_row_from_another_year_is_a_per_row_failure() -> None:
     finally:
         await client.aclose()
 
-    assert len(items) == 1
-    issues = source.validate(items[0])
-    assert any("2024" in issue for issue in issues)
+    assert items == []
 
 
 async def test_a_4xx_is_not_retried() -> None:

@@ -127,16 +127,9 @@ class MyschoolSource:
                     continue
 
                 if parsed.exam != exam or parsed.year != year:
-                    yield self._error_item(
-                        scope,
-                        source_slug,
-                        exam,
-                        year,
-                        page,
-                        index,
-                        row,
-                        f"the row is from {parsed.exam} {parsed.year}, not {exam} {year}",
-                    )
+                    # MySchool can return several historical collections from
+                    # one subject endpoint. The requested scope is the filter;
+                    # an older row is not a scrape failure.
                     continue
 
                 # The parser turns every data: URL into a blob marker and
