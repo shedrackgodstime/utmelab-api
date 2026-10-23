@@ -25,6 +25,8 @@ import turso_serverless
 from utmelab_bank.domain.hashing import content_fingerprint
 
 PAGE_SIZE = 100
+MEDIA_BATCH_FILES = 20
+MEDIA_BATCH_BYTES = 10 * 1024 * 1024
 
 
 def _env_file() -> dict[str, str]:
@@ -133,52 +135,108 @@ async def _download(client: httpx.AsyncClient, url: str) -> tuple[bytes, str]:
     return response.content, mime
 
 
-async def _upload(
+async def _existing_media(
+    client: httpx.AsyncClient,
+    *,
+    host: str,
+    project: str,
+    branch: str,
+    headers: dict[str, str],
+) -> set[str]:
+    api = f"https://{host}/api/v4/projects/{quote(project, safe='')}"
+    existing: set[str] = set()
+    page = 1
+    while True:
+        tree = await _gitlab_request(
+            client,
+            "GET",
+            f"{api}/repository/tree?path=images&ref={quote(branch, safe='')}&recursive=true&per_page=100&page={page}",
+            headers=headers,
+        )
+        if tree.status_code == 404:
+            return existing
+        tree.raise_for_status()
+        for entry in tree.json():
+            if entry.get("type") == "blob" and entry.get("path", "").startswith("images/"):
+                existing.add(entry["path"].removeprefix("images/"))
+        next_page = tree.headers.get("x-next-page", "")
+        if not next_page:
+            return existing
+        page = int(next_page)
+
+
+def _file_batches(files: dict[str, bytes]) -> list[dict[str, bytes]]:
+    batches: list[dict[str, bytes]] = []
+    current: dict[str, bytes] = {}
+    current_bytes = 0
+    for filename, data in files.items():
+        if current and (
+            len(current) >= MEDIA_BATCH_FILES
+            or current_bytes + len(data) > MEDIA_BATCH_BYTES
+        ):
+            batches.append(current)
+            current = {}
+            current_bytes = 0
+        current[filename] = data
+        current_bytes += len(data)
+    if current:
+        batches.append(current)
+    return batches
+
+
+async def _upload_batches(
     client: httpx.AsyncClient,
     *,
     host: str,
     project: str,
     token: str,
     branch: str,
-    filename: str,
-    data: bytes,
+    files: dict[str, bytes],
 ) -> None:
+    """Upload missing media in bounded GitLab commits and verify new files."""
     api = f"https://{host}/api/v4/projects/{quote(project, safe='')}"
-    path = quote(f"images/{filename}", safe="")
     headers = {"PRIVATE-TOKEN": token}
-    check = await _gitlab_request(
+    existing = await _existing_media(
         client,
-        "GET",
-        f"{api}/repository/files/{path}?ref={quote(branch, safe='')}",
+        host=host,
+        project=project,
+        branch=branch,
         headers=headers,
     )
-    if check.status_code == 200:
-        return
-    if check.status_code != 404:
-        check.raise_for_status()
-    body = {
-        "branch": branch,
-        "content": base64.b64encode(data).decode("ascii"),
-        "encoding": "base64",
-        "commit_message": f"add figure {filename}",
-    }
-    created = await _gitlab_request(
-        client,
-        "POST",
-        f"{api}/repository/files/{path}",
-        headers=headers,
-        json=body,
-    )
-    if created.status_code not in (201, 400):
+    missing = {filename: data for filename, data in files.items() if filename not in existing}
+    for batch in _file_batches(missing):
+        actions = [
+            {
+                "action": "create",
+                "file_path": f"images/{filename}",
+                "content": base64.b64encode(data).decode("ascii"),
+                "encoding": "base64",
+            }
+            for filename, data in batch.items()
+        ]
+        created = await _gitlab_request(
+            client,
+            "POST",
+            f"{api}/repository/commits",
+            headers=headers,
+            json={
+                "branch": branch,
+                "commit_message": f"add {len(batch)} content-addressed figure(s)",
+                "actions": actions,
+            },
+        )
         created.raise_for_status()
-    raw = await _gitlab_request(
-        client,
-        "GET",
-        f"{api}/repository/files/{path}/raw?ref={quote(branch, safe='')}", headers=headers
-    )
-    raw.raise_for_status()
-    if hashlib.sha256(raw.content).digest() != hashlib.sha256(data).digest():
-        raise RuntimeError(f"GitLab returned different bytes for {filename}")
+        for filename, data in batch.items():
+            path = quote(f"images/{filename}", safe="")
+            raw = await _gitlab_request(
+                client,
+                "GET",
+                f"{api}/repository/files/{path}/raw?ref={quote(branch, safe='')}",
+                headers=headers,
+            )
+            raw.raise_for_status()
+            if hashlib.sha256(raw.content).digest() != hashlib.sha256(data).digest():
+                raise RuntimeError(f"GitLab returned different bytes for {filename}")
 
 
 async def _gitlab_request(
@@ -207,6 +265,8 @@ async def migrate(args: argparse.Namespace) -> None:
     gitlab_token = _value(values, "GITLAB_TOKEN")
     project = _value(values, "GITLAB_MEDIA_REPO")
     branch = _value(values, "UTMELAB_BANK_MEDIA_BRANCH") or "main"
+    if args.apply and (not gitlab_token or not project):
+        raise RuntimeError("GITLAB_TOKEN and GITLAB_MEDIA_REPO are required with --apply")
     rows: list[tuple[Any, ...]] = []
     cursor = ""
     while True:
@@ -237,6 +297,7 @@ async def migrate(args: argparse.Namespace) -> None:
             break
 
     plans: list[tuple[str, str, str, str, str, str | None, dict[str, bytes]]] = []
+    all_files: dict[str, bytes] = {}
     async with httpx.AsyncClient(timeout=30, follow_redirects=True) as client:
         for row in rows:
             inline = json.loads(row[2])
@@ -277,19 +338,17 @@ async def migrate(args: argparse.Namespace) -> None:
                     files,
                 )
             )
-            if args.apply:
-                if not gitlab_token or not project:
-                    raise RuntimeError("GITLAB_TOKEN and GITLAB_MEDIA_REPO are required with --apply")
-                for filename, data in files.items():
-                    await _upload(
-                        client,
-                        host=_value(values, "GITLAB_HOST") or "gitlab.com",
-                        project=project,
-                        token=gitlab_token,
-                        branch=branch,
-                        filename=filename,
-                        data=data,
-                    )
+            all_files.update(files)
+
+        if args.apply and all_files:
+            await _upload_batches(
+                client,
+                host=_value(values, "GITLAB_HOST") or "gitlab.com",
+                project=project,
+                token=gitlab_token,
+                branch=branch,
+                files=all_files,
+            )
 
     if not args.apply:
         print(f"dry run only; {len(plans)} question(s) would change")

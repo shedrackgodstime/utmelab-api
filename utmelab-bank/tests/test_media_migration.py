@@ -63,3 +63,11 @@ def test_filename_replacement_changes_the_content_hash() -> None:
         "explanation": None,
     }
     assert migration._fingerprint(row, updated) != "old"
+
+
+def test_file_batches_bound_count_and_size() -> None:
+    migration = _module()
+    files = {f"{index}.png": b"x" for index in range(45)}
+    batches = migration._file_batches(files)
+    assert [len(batch) for batch in batches] == [20, 20, 5]
+    assert {name for batch in batches for name in batch} == set(files)
