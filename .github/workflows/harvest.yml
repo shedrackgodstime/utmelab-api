@@ -83,7 +83,6 @@ jobs:
               utmelab-bank scrape --source myschool --exam neco --subject "$subj" --year "${{ inputs.year }}" --delay "${{ inputs.delay }}" --log-level INFO
             done
           fi
-        working-directory: utmelab-bank
         timeout-minutes: 360
 
       - name: Upload harvest log
@@ -103,32 +102,6 @@ jobs:
       fail-fast: false
       matrix:
         subject: [api, data]
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: dtolnay/rust-toolchain@stable
-        with:
-          components: rustfmt, clippy
-
-      - uses: Swatinem/rust-cache@v2
-
-      - name: Format
-        if: matrix.subject == 'api'
-        run: cargo fmt --check
-
-      - name: Clippy
-        if: matrix.subject == 'api'
-        run: cargo clippy --all-targets -- -D warnings
-
-      - name: Tests
-        if: matrix.subject == 'api'
-        run: cargo test --workspace
-
-      - name: The bank must load and merge cleanly
-        if: matrix.subject == 'data'
-        run: |
-          cargo run --quiet -- import --dry-run
-          python3 tools/harvest_all.py --probe --subjects government --pages 2 --delay 1
     steps:
       - uses: actions/checkout@v4
 
