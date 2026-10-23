@@ -338,11 +338,13 @@ X_CONTINUATION = 160.0            # Continuation lines are indented further
 WAEC_SECTION_RE = re.compile(r"^SECTION\s+([ABC])\s*\((.+)\)", re.I)
 WAEC_LETTER_RE = re.compile(r"^([A-Z])\.\s+(.+)$")
 WAEC_NUMBER_RE = re.compile(r"^(\d+)\.\s+(.+)$")
+WAEC_NUMBER_DOT_ZERO_RE = re.compile(r"^(\d+)\.0\s+(.+)$")  # Chemistry 1.0, 2.0
 WAEC_SUB_LETTER_RE = re.compile(r"^\(([a-z])\)\s*(.+)$")
 WAEC_SUB_ROMAN_RE = re.compile(r"^\(([ivx]+)\)\s*(.+)$", re.I)
 
 # Right column section header detection
 WAEC_RIGHT_SECTION_RE = re.compile(r"^SECTION\s+([ABC])\s*$", re.I)
+WAEC_RIGHT_PART_RE = re.compile(r"^PART\s+([IVX]+|\d+)\s*$", re.I)  # Physics PART I, II, III, IV, V or PART 1, 2, 3
 WAEC_RIGHT_SECTION_DESC_RE = re.compile(r"^\(For\s+(.+)\)$", re.I)
 
 # Country mapping for WAEC sections
@@ -352,9 +354,34 @@ SECTION_COUNTRIES = {
     "C": ["NG", "SL", "GM", "LR"],
 }
 
+# Physics PARTS map to Section A (all countries) since they don't have country-specific sections
+PHYSICS_PART_COUNTRIES = {
+    "I": [], "II": [], "III": [], "IV": [], "V": [],  # Roman numerals
+    "1": [], "2": [], "3": [], "4": [], "5": [],      # Arabic numerals
+}
+
 # Continent/exam constants
 WAEC_EXAM = "WAEC"
 WAEC_COUNTRIES = ["NG", "GH", "SL", "GM", "LR"]
+
+# Subject-specific format handlers
+class WaecFormat:
+    BIOLOGY = "biology"      # Section A/B/C, 1., (a), (i) - standard
+    CHEMISTRY = "chemistry"  # Section A/B/C, 1.0, (a), (i)
+    ECONOMICS = "economics"  # No sections, 1., bullet points
+    GOVERNMENT = "government" # Section A only, 1., (i), (ii)
+    PHYSICS = "physics"      # Part 1/2/3, 1., (a), (i)
+
+
+def detect_format(subject_slug: str) -> str:
+    """Detect WAEC PDF format based on subject slug."""
+    format_map = {
+        "chemistry": WaecFormat.CHEMISTRY,
+        "economics": WaecFormat.ECONOMICS,
+        "government": WaecFormat.GOVERNMENT,
+        "physics": WaecFormat.PHYSICS,
+    }
+    return format_map.get(subject_slug.lower(), WaecFormat.BIOLOGY)
 
 
 def extract_page_columns(page: "pypdf.Page") -> tuple[list[tuple[float, float, str]], list[tuple[float, float, str]]]:
@@ -419,13 +446,19 @@ def merge_right_lines(chunks: list[tuple[float, float, str]], y_tolerance: float
     return merged
 
 
-def detect_section_from_right(right_lines: list[tuple[float, float, str]], current_section: str | None) -> str | None:
+def detect_section_from_right(right_lines: list[tuple[float, float, str]], current_section: str | None, fmt: str = WaecFormat.BIOLOGY) -> str | None:
     """Detect section header from right column lines. Returns new section letter or None."""
     for x, y, line in right_lines:
         line = line.strip()
+        # Standard SECTION A/B/C
         m = WAEC_RIGHT_SECTION_RE.match(line)
         if m:
             return m.group(1).upper()
+        # Physics PART I/II/III/IV/V
+        if fmt == WaecFormat.PHYSICS:
+            m = WAEC_RIGHT_PART_RE.match(line)
+            if m:
+                return m.group(1).upper()
         # Also check for "(For all candidates)" style lines that confirm section
         m = WAEC_RIGHT_SECTION_DESC_RE.match(line)
         if m and current_section is not None:
@@ -449,12 +482,13 @@ class WaecEntry:
         return f"{indent}{self.kind}: {self.name} ({self.countries})"
 
 
-def parse_left_column(lines: list[tuple[float, float, str]], section_countries: list[str], section_label: str) -> dict[str, WaecEntry]:
+def parse_left_column(lines: list[tuple[float, float, str]], section_countries: list[str], section_label: str, fmt: str = WaecFormat.BIOLOGY) -> dict[str, WaecEntry]:
     """Parse the left column (CONTENTS) into a tree of WaecEntry objects.
 
     lines: list of (x, y, text) sorted by y descending
     section_countries: country scope for this section
     section_label: the section letter ("A", "B", or "C")
+    fmt: WAEC format type (biology, chemistry, economics, government, physics)
     """
     sections: dict[str, WaecEntry] = {}
     current_section: WaecEntry | None = None
@@ -475,7 +509,13 @@ def parse_left_column(lines: list[tuple[float, float, str]], section_countries: 
         if line.startswith("PAPER 1:") or line.startswith("PAPER 2:") or line.startswith("PAPER 3:"):
             continue
 
-        # A. Concept of Living - letter header at left margin
+        # Skip format-specific headers
+        if fmt == WaecFormat.CHEMISTRY and line in ("PART 1", "PART 2", "PART 3"):
+            continue
+        if fmt == WaecFormat.PHYSICS and line.startswith("PART "):
+            continue
+
+        # A. Concept of Living - letter header at left margin (for formats with letter headers)
         if x < X_SECTION_LETTER_TOPIC:
             m = WAEC_LETTER_RE.match(line)
             if m:
@@ -490,12 +530,28 @@ def parse_left_column(lines: list[tuple[float, float, str]], section_countries: 
                 current_topic = current_subtopic = None
                 continue
 
-            # 1. Classification - numbered topic at left margin
-            m = WAEC_NUMBER_RE.match(line)
-            if m and current_section is not None:
+            # Numbered topic at left margin
+            if fmt == WaecFormat.CHEMISTRY:
+                m = WAEC_NUMBER_DOT_ZERO_RE.match(line)
+            else:
+                m = WAEC_NUMBER_RE.match(line)
+            if m:
                 num = m.group(1)
                 name = m.group(2).strip()
+                if current_section is None:
+                    # Create the section entry for this section (A, B, or C)
+                    # This handles formats like Chemistry where topics come before letter headers
+                    current_section = WaecEntry("section", f"Section {section_label}", 0, section_countries)
+                    sections[section_label] = current_section
                 parent = current_letter or current_section
+                
+                # For formats without letter headers (Chemistry), create a synthetic letter
+                # when adding the first topic directly to the section
+                if parent.kind == "section" and current_letter is None:
+                    current_letter = WaecEntry("letter", "Syllabus", 1, section_countries)
+                    current_section.children.append(current_letter)
+                    parent = current_letter
+                
                 current_topic = WaecEntry("topic", f"{num}. {name}", 2, section_countries)
                 parent.children.append(current_topic)
                 current_subtopic = None
@@ -525,7 +581,7 @@ def parse_left_column(lines: list[tuple[float, float, str]], section_countries: 
             # Check if this line looks like a continuation (not a new structural element)
             is_new_structure = (
                 WAEC_LETTER_RE.match(line) or
-                WAEC_NUMBER_RE.match(line) or
+                (WAEC_NUMBER_DOT_ZERO_RE.match(line) if fmt == WaecFormat.CHEMISTRY else WAEC_NUMBER_RE.match(line)) or
                 WAEC_SUB_LETTER_RE.match(line) or
                 WAEC_SUB_ROMAN_RE.match(line)
             )
@@ -552,7 +608,7 @@ def flatten_to_topics(sections: dict[str, WaecEntry]) -> list[dict]:
     return result
 
 
-def parse_waec_pdf(pdf_path: Path) -> list[dict]:
+def parse_waec_pdf(pdf_path: Path, subject_slug: str = "") -> list[dict]:
     """Parse a WAEC syllabus PDF into a structured topic list.
 
     Returns a list of topic dicts, each with name, contents (subtopics),
@@ -561,10 +617,19 @@ def parse_waec_pdf(pdf_path: Path) -> list[dict]:
     if not HAS_PYPDF:
         raise RuntimeError("pypdf not installed. Run: pip install pypdf")
 
+    fmt = detect_format(subject_slug)
     reader = pypdf.PdfReader(str(pdf_path))
 
     all_topics: list[dict] = []
     current_section: str | None = None  # "A", "B", or "C"
+
+    # Format-specific section handling
+    if fmt == WaecFormat.ECONOMICS:
+        # Economics has no Section A/B/C - it's a flat list
+        current_section = "A"  # Treat as Section A (all countries)
+    elif fmt == WaecFormat.GOVERNMENT:
+        # Government only has Section A in detailed syllabus
+        current_section = "A"
 
     for page in reader.pages:
         left, right = extract_page_columns(page)
@@ -572,19 +637,23 @@ def parse_waec_pdf(pdf_path: Path) -> list[dict]:
         left = merge_left_lines(left)
         right = merge_right_lines(right)
 
-        # Detect section from right column
-        new_section = detect_section_from_right(right, current_section)
-        if new_section:
-            current_section = new_section
+        # Detect section from right column (for formats with sections)
+        if fmt not in (WaecFormat.ECONOMICS, WaecFormat.GOVERNMENT):
+            new_section = detect_section_from_right(right, current_section, fmt)
+            if new_section:
+                current_section = new_section
 
         # If no section detected yet, skip (preamble pages)
         if current_section is None:
             continue
 
         section_countries = SECTION_COUNTRIES.get(current_section, [])
+        # Physics PARTs use all-countries scope
+        if fmt == WaecFormat.PHYSICS and current_section in PHYSICS_PART_COUNTRIES:
+            section_countries = PHYSICS_PART_COUNTRIES[current_section]
 
         # Parse left column for this page's section
-        sections = parse_left_column(left, section_countries, current_section)
+        sections = parse_left_column(left, section_countries, current_section, fmt)
 
         # Flatten and add to results
         topics = flatten_to_topics(sections)
@@ -716,7 +785,7 @@ def main() -> int:
             return 1
 
         print(f"parsing WAEC PDF for {args.waec_display}...", file=sys.stderr)
-        topics = parse_waec_pdf(pdf_path)
+        topics = parse_waec_pdf(pdf_path, args.waec_subject)
         print(f"parsed {len(topics)} topics across sections", file=sys.stderr)
 
         if not topics:

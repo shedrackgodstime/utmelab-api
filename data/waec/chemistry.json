@@ -1,0 +1,824 @@
+{
+  "subjects": [
+    {
+      "slug": "chemistry",
+      "exam": "WAEC",
+      "name": "Chemistry",
+      "is_compulsory": false,
+      "objective_paper_questions": 50,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "chemistry"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-1-introduction-to-chemistry",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "1. INTRODUCTION TO CHEMISTRY",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-2-structure-of-the-atom",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "2. STRUCTURE OF THE ATOM",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-3-standard-separation",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "3. STANDARD SEPARATION",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-4-periodic-chemistry",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "4. PERIODIC CHEMISTRY",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-5-chemical-bonds",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "5. CHEMICAL BONDS",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-6-stoichiometry-and-chemical",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "6. STOICHIOMETRY AND CHEMICAL",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-7-states-of-matter",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "7. STATES OF MATTER",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-8-energy-and-energy-changes",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "8. ENERGY AND ENERGY CHANGES",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-9-acids-bases-and-salts",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "9. ACIDS, BASES AND SALTS",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-10-solubility-of-subtances",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "10. SOLUBILITY OF SUBTANCES",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-11-chemical-kinetics-and",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "11. CHEMICAL KINETICS AND",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-12-redox-reactions",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "12. REDOX REACTIONS",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-13-chemistry-of-carbon",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "13. CHEMISTRY OF CARBON",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-14-chemistry-industry-and-the",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "14. CHEMISTRY, INDUSTRY AND THE",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-15-basic-biochemistry-and",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "15. BASIC BIOCHEMISTRY AND",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1-structure-of-the-atom",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "1. STRUCTURE OF THE ATOM",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-2-periodic-chemistry",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "2. PERIODIC CHEMISTRY",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-4-solutions",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "4. SOLUTIONS",
+      "order": 18,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-5-energy-and-energy-changes",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "5. ENERGY AND ENERGY CHANGES",
+      "order": 19,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-6-acids-bases-and-salts",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "6. ACIDS, BASES AND SALTS",
+      "order": 20,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-7-solubility-of-substances",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "7. SOLUBILITY OF SUBSTANCES",
+      "order": 21,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-8-chemical-kinetics-and",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "8. CHEMICAL KINETICS AND",
+      "order": 22,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-9-chemistry-of-carbon",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "9. CHEMISTRY OF CARBON",
+      "order": 23,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-10-chemical-industry-and",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "10. CHEMICAL INDUSTRY AND",
+      "order": 24,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-1-non-metals-and-their",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "1. NON METALS AND THEIR",
+      "order": 25,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GM",
+        "LR",
+        "NG",
+        "SL"
+      ]
+    },
+    {
+      "slug": "waec-2-metals-and-their-compounds",
+      "subject": "chemistry",
+      "exam": "WAEC",
+      "name": "2. METALS AND THEIR COMPOUNDS",
+      "order": 26,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GM",
+        "LR",
+        "NG",
+        "SL"
+      ]
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-i-measurement-of-physical-quantities-ii-scientific-measureme",
+      "topic": "waec-1-introduction-to-chemistry",
+      "name": "(i) Measurement of physical quantities.; (ii) Scientific measurements and their importance in chemistry",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-scientific-methods",
+      "topic": "waec-1-introduction-to-chemistry",
+      "name": "Scientific Methods",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-gross-features-of-the-atom",
+      "topic": "waec-2-structure-of-the-atom",
+      "name": "Gross features of the atom",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-i-atomic-number-proton-number-number-of-neutrons-isotopes-at",
+      "topic": "waec-2-structure-of-the-atom",
+      "name": "(i) Atomic number/proton number, number of neutrons, isotopes, atomic mass, mass number",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-classification-of-mixtures",
+      "topic": "waec-3-standard-separation",
+      "name": "Classification of mixtures",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-separation-techniques",
+      "topic": "waec-3-standard-separation",
+      "name": "Separation techniques",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-criteria-for-purity",
+      "topic": "waec-3-standard-separation",
+      "name": "Criteria for purity",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-periodicity-of-the-elements",
+      "topic": "waec-4-periodic-chemistry",
+      "name": "Periodicity of the elements",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-different-categories-of-elements-in-the-periodic-table",
+      "topic": "waec-4-periodic-chemistry",
+      "name": "Different categories of elements in the periodic table",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-periodic-law",
+      "topic": "waec-4-periodic-chemistry",
+      "name": "Periodic law:",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-trends-on-periodic-table-ii-periodic-gradation-of-the-elemen",
+      "topic": "waec-4-periodic-chemistry",
+      "name": "Trends on periodic table;; (ii) Periodic gradation of the elements in the third period (Na - Ar)",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-interatomic-bonding",
+      "topic": "waec-5-chemical-bonds",
+      "name": "Interatomic bonding",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-i-formation-of-ionic-bonds-and-compounds-ii-properties-of-io",
+      "topic": "waec-5-chemical-bonds",
+      "name": "(i)    Formation of ionic bonds and compounds.; (ii) Properties of ionic compounds",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-naming-of-ionic-compounds",
+      "topic": "waec-5-chemical-bonds",
+      "name": "Naming of ionic compounds",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-formation-of-covalent-bonds-and-compounds",
+      "topic": "waec-5-chemical-bonds",
+      "name": "Formation of covalent bonds and compounds",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-i-properties-of-covalent-compounds-ii-coordinate-dative-cova",
+      "topic": "waec-5-chemical-bonds",
+      "name": "(i) Properties of covalent compounds.; (ii) Coordinate (dative) covalent bonding",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-i-symbols-formulae-and-equations-ii-chemical-symbols-iii-emp",
+      "topic": "waec-6-stoichiometry-and-chemical",
+      "name": "(i) Symbols, formulae and equations.; (ii) chemical symbols; (iii) Empirical and molecular formulae.; (iv) Chemical equations and IUPAC names of chemical compounds",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-laws-of-chemical-combination",
+      "topic": "waec-6-stoichiometry-and-chemical",
+      "name": "Laws of chemical combination",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-amount-of-substance",
+      "topic": "waec-6-stoichiometry-and-chemical",
+      "name": "Amount of substance",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-i-kinetic-theory-of-matter-ii-changes-of-state-of-matter-iii",
+      "topic": "waec-7-states-of-matter",
+      "name": "(i) Kinetic theory of matter.; (ii) Changes of state of matter.; (iii) Diffusion",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-energy-and-enthalpy",
+      "topic": "waec-8-energy-and-energy-changes",
+      "name": "Energy and enthalpy",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-description-definition-and-illustrations-of-energy-changes-a",
+      "topic": "waec-8-energy-and-energy-changes",
+      "name": "Description, definition and illustrations of energy changes and their effects",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definitions-of-acids-and-bases",
+      "topic": "waec-9-acids-bases-and-salts",
+      "name": "Definitions of acids and bases",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-and-chemical-properties-of-acids-and-bases",
+      "topic": "waec-9-acids-bases-and-salts",
+      "name": "Physical and chemical properties of acids and bases",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-acids-bases-and-salts-as-electrolytes",
+      "topic": "waec-9-acids-bases-and-salts",
+      "name": "Acids, bases and salts as electrolytes",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-classification-of-acids-and-bases",
+      "topic": "waec-9-acids-bases-and-salts",
+      "name": "Classification of acids and bases",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-ph",
+      "topic": "waec-9-acids-bases-and-salts",
+      "name": "Concept of pH",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-general-principles",
+      "topic": "waec-10-solubility-of-subtances",
+      "name": "General principles",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-practical-application-of-solubility",
+      "topic": "waec-10-solubility-of-subtances",
+      "name": "Practical application of solubility",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-rate-of-reactions",
+      "topic": "waec-11-chemical-kinetics-and",
+      "name": "Rate of reactions:",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-factors-affecting-rates-ii-theories-of-reaction-rates-iii-an",
+      "topic": "waec-11-chemical-kinetics-and",
+      "name": "Factors affecting rates;; (ii) Theories of reaction rates;; (iii) Analysis and interpretation of graphs",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-equilibrium",
+      "topic": "waec-11-chemical-kinetics-and",
+      "name": "Equilibrium:",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-general-principle",
+      "topic": "waec-11-chemical-kinetics-and",
+      "name": "General Principle;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-oxidation-and-reduction-process",
+      "topic": "waec-12-redox-reactions",
+      "name": "Oxidation and reduction process",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-oxidizing-and-reducing-agents",
+      "topic": "waec-12-redox-reactions",
+      "name": "Oxidizing and reducing agents",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-redox-equations",
+      "topic": "waec-12-redox-reactions",
+      "name": "Redox equations",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-electrochemical-cells",
+      "topic": "waec-12-redox-reactions",
+      "name": "Electrochemical cells:",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-standard-electrode-potential-ii-drawing-of-cell-diagram-and",
+      "topic": "waec-12-redox-reactions",
+      "name": "Standard electrode potential;; (ii) Drawing of cell diagram and writing cell notation",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-classification",
+      "topic": "waec-13-chemistry-of-carbon",
+      "name": "Classification",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-functional-group",
+      "topic": "waec-13-chemistry-of-carbon",
+      "name": "Functional group",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-separation-and-purification-of-organic-compounds",
+      "topic": "waec-13-chemistry-of-carbon",
+      "name": "Separation and purification of organic compounds",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-petroleum-crude-oil",
+      "topic": "waec-13-chemistry-of-carbon",
+      "name": "Petroleum/crude oil",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-chemical-industry",
+      "topic": "waec-14-chemistry-industry-and-the",
+      "name": "Chemical industry",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-proteins",
+      "topic": "waec-15-basic-biochemistry-and",
+      "name": "Proteins:",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-sources-and-properties-ii-uses-of-protein",
+      "topic": "waec-15-basic-biochemistry-and",
+      "name": "Sources and properties;; (ii) Uses of protein",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-amino-acids",
+      "topic": "waec-15-basic-biochemistry-and",
+      "name": "Amino acids",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-elementary-treatment-of-mass-spectrometer",
+      "topic": "waec-1-structure-of-the-atom",
+      "name": "Elementary treatment of mass spectrometer",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-i-nuclear-chemistry-ii-types-and-nature-of-radiations-alpha",
+      "topic": "waec-1-structure-of-the-atom",
+      "name": "(i)  Nuclear chemistry; (ii) Types and nature of radiations: alpha, beta particles and gamma radiation.; (iii) Radioactivity: induced/stimulated.; (iv) Nuclear reactions: fission and fusion in nuclear reactions",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-effects-and-application-of-radioactivity",
+      "topic": "waec-1-structure-of-the-atom",
+      "name": "Effects and application of radioactivity",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-reactions-between-acids-and-metals-their-oxides-and-trioxoca",
+      "topic": "waec-2-periodic-chemistry",
+      "name": "Reactions between acids and metals their oxides and trioxocarbonates (IV)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-preparation-of-solutions-from-liquid-solutes-by-the-method-o",
+      "topic": "waec-4-solutions",
+      "name": "Preparation of solutions from liquid solutes by the method of dilution",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-energy-changes-in-physical-and-isolated-systems",
+      "topic": "waec-5-energy-and-energy-changes",
+      "name": "Energy changes in physical and isolated systems",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-hess-s-law-of-heat-summation-and-born-haber-cycle",
+      "topic": "waec-5-energy-and-energy-changes",
+      "name": "Hess’s Law of heat summation and Born-Haber cycle",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definitions-of-acids-and-bases-chemistry",
+      "topic": "waec-6-acids-bases-and-salts",
+      "name": "Definitions of acids and bases",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-ph-poh-and-pk-w",
+      "topic": "waec-6-acids-bases-and-salts",
+      "name": "pH, pOH and pK w",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-partial-ionization-of-weak-acids-and-weak-bases",
+      "topic": "waec-6-acids-bases-and-salts",
+      "name": "Partial ionization of weak acids and weak bases",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-buffer-solutions",
+      "topic": "waec-6-acids-bases-and-salts",
+      "name": "Buffer Solutions",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-solubility-and-solubility-product",
+      "topic": "waec-7-solubility-of-substances",
+      "name": "Solubility and solubility product",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-crystallization-and-recrystallization",
+      "topic": "waec-7-solubility-of-substances",
+      "name": "Crystallization and recrystallization",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-rate-law-and-order-of-reaction",
+      "topic": "waec-8-chemical-kinetics-and",
+      "name": "Rate law and Order of reaction",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-rate-determining-step-of-a-multi-step-reaction",
+      "topic": "waec-8-chemical-kinetics-and",
+      "name": "Rate determining step of a multi-step reaction",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-equilibrium-chemistry",
+      "topic": "waec-8-chemical-kinetics-and",
+      "name": "Equilibrium",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-separation-and-purification",
+      "topic": "waec-9-chemistry-of-carbon",
+      "name": "Separation and Purification",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-determination-of-empirical-and-molecular-formulae",
+      "topic": "waec-9-chemistry-of-carbon",
+      "name": "Determination of empirical and molecular formulae",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-reactivity-of-organic-compounds",
+      "topic": "waec-9-chemistry-of-carbon",
+      "name": "Reactivity of Organic Compounds",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-alkanes",
+      "topic": "waec-9-chemistry-of-carbon",
+      "name": "Alkanes",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-i-reactions-of-benzene-ii-comparison-or-reactions-of-benzene",
+      "topic": "waec-9-chemistry-of-carbon",
+      "name": "(i)  Reactions of benzene.; (ii) Comparison or reactions of benzene and alkenes",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-i-sources-of-raw-materials-ii-mining-of-mineral-as-ore-iii-e",
+      "topic": "waec-10-chemical-industry-and",
+      "name": "(i)   Sources of raw materials; (ii) Mining of mineral as ore.; (iii) Extraction of metals Mineral deposits in Ghana",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-cement-and-its-uses",
+      "topic": "waec-10-chemical-industry-and",
+      "name": "Cement and its uses",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-carbon",
+      "topic": "waec-1-non-metals-and-their",
+      "name": "Carbon:",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-allotropes-of-carbon-ii-coal-ii-destructive-distillation-of",
+      "topic": "waec-1-non-metals-and-their",
+      "name": "Allotropes of carbon;; (ii) Coal: II. Destructive distillation of coal and uses of the products.; (iii) Coke: II. Manufacture of synthetic gas and uses.; (iv) Oxides of carbon II. Carbon (II) oxides; III. Trioxocarbonate (IV) salt",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-extraction-of-metals",
+      "topic": "waec-2-metals-and-their-compounds",
+      "name": "Extraction of metals:",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-aluminium-ii-iron-iii-tin",
+      "topic": "waec-2-metals-and-their-compounds",
+      "name": "Aluminium;; (ii) Iron;; (iii) Tin",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-alloys",
+      "topic": "waec-2-metals-and-their-compounds",
+      "name": "Alloys",
+      "order": 3,
+      "objectives": []
+    }
+  ]
+}

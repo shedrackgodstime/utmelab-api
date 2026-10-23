@@ -1,0 +1,1183 @@
+{
+  "subjects": [
+    {
+      "slug": "physics",
+      "exam": "WAEC",
+      "name": "Physics",
+      "is_compulsory": false,
+      "objective_paper_questions": 50,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "physics"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-1-concepts-of-matter",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "1. Concepts of matter",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-2-fundamental-and-derived-quantities-and",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "2. Fundamental and derived quantities and",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-3-position-distance-and-displacement",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "3. Position, distance and displacement.",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-4-mass-and-weight",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "4. Mass and weight",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-5-time",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "5. Time",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-6-fluid-at-rest",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "6. Fluid at rest",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-7-motion",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "7. Motion",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-8-speed-and-velocity",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "8. Speed and velocity",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-9-rectilinear-acceleration",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "9. Rectilinear acceleration",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-10-scalars-and-vectors",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "10. Scalars and vectors",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-11-equilibrium-of-forces",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "11. Equilibrium of forces",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-12-simple-harmonic-motion",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "12. Simple harmonic motion",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-13-newton-s-laws-of-motion",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "13. Newton’s laws of motion:",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-14-energy",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "14. Energy:",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-15-work-energy-and-power",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "15. Work, Energy and Power",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-16-heat-energy",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "16. Heat Energy",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-17-production-and-propagation-of-waves",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "17. Production and propagation of waves",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-18-types-of-waves",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "18. Types of waves",
+      "order": 18,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-19-properties-of-waves",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "19. Properties of waves:",
+      "order": 19,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-20-light-waves",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "20. Light waves",
+      "order": 20,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-21-electromagnetic-waves",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "21. Electromagnetic waves:",
+      "order": 21,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-22-sound-waves",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "22. Sound Waves",
+      "order": 22,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-23-description-property-of-fields",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "23. Description property of fields.",
+      "order": 23,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-24-gravitational-field",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "24. Gravitational field",
+      "order": 24,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-25-electric-field",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "25. Electric Field",
+      "order": 25,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-26-magnetic-field",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "26. Magnetic field",
+      "order": 26,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-27-electromagnetic-field",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "27. Electromagnetic field",
+      "order": 27,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-26-magnetic-field-physics",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "26. Magnetic field",
+      "order": 28,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-27-electromagnetic-field-physics",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "27. Electromagnetic field",
+      "order": 29,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-28-simple-a-c-circuits",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "28. Simple a.c. circuits",
+      "order": 30,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-29-structure-of-the-atom",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "29. Structure of the atom",
+      "order": 31,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-30-structure-of-the-nucleus",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "30. Structure of the nucleus",
+      "order": 32,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-31-wave-particle-paradox",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "31. Wave-particle paradox",
+      "order": 33,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1-derived-quantities-and-dimensional",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "1. Derived quantities and dimensional",
+      "order": 34,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-2-projectile-motion-concept-of",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "2. Projectile motion concept of",
+      "order": 35,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-3-satellites-and-rockets",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "3. Satellites and rockets",
+      "order": 36,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-4-elastic-properties-of-solid",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "4. Elastic Properties of solid:",
+      "order": 37,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-5-fibre-optics",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "5. Fibre Optics",
+      "order": 38,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-6-introduction-to-laser",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "6. Introduction to LASER",
+      "order": 39,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-7-magnetic-materials",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "7. Magnetic materials",
+      "order": 40,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-8-electrical-conduction-through",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "8. Electrical Conduction through",
+      "order": 41,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-9-structure-of-matter",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "9. Structure of matter",
+      "order": 42,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-10-wave-particle-paradox",
+      "subject": "physics",
+      "exam": "WAEC",
+      "name": "10. Wave – particle paradox",
+      "order": 43,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-fundamental-quantities-and-units",
+      "topic": "waec-2-fundamental-and-derived-quantities-and",
+      "name": "Fundamental quantities and units",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-derived-quantities-and-units",
+      "topic": "waec-2-fundamental-and-derived-quantities-and",
+      "name": "Derived quantities and units",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-position-as-a-location-of-point-rectangular-coord",
+      "topic": "waec-3-position-distance-and-displacement",
+      "name": "Concept of position as a location of point-rectangular coordinates",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-measurement-of-distance",
+      "topic": "waec-3-position-distance-and-displacement",
+      "name": "Measurement of distance",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-time-as-interval-between-physical-events",
+      "topic": "waec-5-time",
+      "name": "Concept of time as interval between physical events",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-measurement-of-time",
+      "topic": "waec-5-time",
+      "name": "Measurement of time",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-volume-density-and-relative-density",
+      "topic": "waec-6-fluid-at-rest",
+      "name": "Volume, density and relative density",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-pressure-in-fluids",
+      "topic": "waec-6-fluid-at-rest",
+      "name": "Pressure in fluids",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-equilibrium-of-bodies",
+      "topic": "waec-6-fluid-at-rest",
+      "name": "Equilibrium of bodies",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-archimedes-principle-ii-law-of-flotation",
+      "topic": "waec-6-fluid-at-rest",
+      "name": "Archimedes’ principle; (ii) Law of flotation",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-motion-random-rectilinear-translational-rotational",
+      "topic": "waec-7-motion",
+      "name": "Types of motion: Random, rectilinear, translational, Rotational, circular, orbital, spin, Oscillatory",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-relative-motion",
+      "topic": "waec-7-motion",
+      "name": "Relative motion",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-cause-of-motion",
+      "topic": "waec-7-motion",
+      "name": "Cause of motion",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-force",
+      "topic": "waec-7-motion",
+      "name": "Types of force:",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-contact-force-ii-non-contact-force-field-force",
+      "topic": "waec-7-motion",
+      "name": "Contact force; (ii) Non-contact force(field force)",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-solid-friction",
+      "topic": "waec-7-motion",
+      "name": "Solid friction",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-viscosity-friction-in-fluids",
+      "topic": "waec-7-motion",
+      "name": "Viscosity (friction in fluids)",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-simple-ideas-of-circular-motion-topics-notes",
+      "topic": "waec-7-motion",
+      "name": "Simple ideas of circular motion TOPICS NOTES",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-speed-as-change-of-distance-with-time",
+      "topic": "waec-8-speed-and-velocity",
+      "name": "Concept of speed as change of distance with time",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-velocity-as-change-of-displacement-with-time",
+      "topic": "waec-8-speed-and-velocity",
+      "name": "Concept of velocity as change of displacement with time",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-uniform-non-uniform-speed-velocity",
+      "topic": "waec-8-speed-and-velocity",
+      "name": "Uniform/non-uniform speed/velocity",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-distance-displacement-time-graph",
+      "topic": "waec-8-speed-and-velocity",
+      "name": "Distance/displacement-time graph",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-acceleration-deceleration-as-increase-decrease-in",
+      "topic": "waec-9-rectilinear-acceleration",
+      "name": "Concept of Acceleration/deceleration as increase/decrease in velocity with time",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-uniform-non-uniform-acceleration",
+      "topic": "waec-9-rectilinear-acceleration",
+      "name": "Uniform/non-uniform acceleration",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-velocity-time-graph",
+      "topic": "waec-9-rectilinear-acceleration",
+      "name": "Velocity-time graph",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-equations-of-motion-with-constant-acceleration-motion-under",
+      "topic": "waec-9-rectilinear-acceleration",
+      "name": "Equations of motion with constant acceleration; Motion under gravity as a special case. TOPICS NOTES",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-scalars-as-physical-quantities-with-magnitude-and",
+      "topic": "waec-10-scalars-and-vectors",
+      "name": "Concept of scalars as physical quantities with magnitude and no direction",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-vectors-as-physical-quantities-with-both-magnitud",
+      "topic": "waec-10-scalars-and-vectors",
+      "name": "Concept of vectors as physical quantities with both magnitude and direction",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-vector-representation",
+      "topic": "waec-10-scalars-and-vectors",
+      "name": "Vector representation",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-addition-of-vectors",
+      "topic": "waec-10-scalars-and-vectors",
+      "name": "Addition of vectors",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-resolution-of-vectors",
+      "topic": "waec-10-scalars-and-vectors",
+      "name": "Resolution of vectors",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-resultant-velocity-using-vector-representation",
+      "topic": "waec-10-scalars-and-vectors",
+      "name": "Resultant velocity using vector representation",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-principle-of-moments",
+      "topic": "waec-11-equilibrium-of-forces",
+      "name": "Principle of moments",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-conditions-for-equilibrium-of-rigid-bodies-under-the-action",
+      "topic": "waec-11-equilibrium-of-forces",
+      "name": "Conditions for equilibrium of rigid bodies under the action of parallel and non-parallel forces",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-centre-of-gravity-and-stability",
+      "topic": "waec-11-equilibrium-of-forces",
+      "name": "Centre of gravity and stability",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-illustration-explanation-and-definition-of-simple-harmonic-m",
+      "topic": "waec-12-simple-harmonic-motion",
+      "name": "Illustration, explanation and definition of simple harmonic motion (S.H.M) TOPICS NOTES",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-first-law-inertia-of-rest-and-inertia-of-motion",
+      "topic": "waec-13-newton-s-laws-of-motion",
+      "name": "First Law: Inertia of rest and inertia of motion",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-second-law-force-acceleration-momentum-and-impulse",
+      "topic": "waec-13-newton-s-laws-of-motion",
+      "name": "Second Law: Force, acceleration, momentum and impulse",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-third-law-action-and-reaction",
+      "topic": "waec-13-newton-s-laws-of-motion",
+      "name": "Third Law: Action and reaction",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-forms-of-energy",
+      "topic": "waec-14-energy",
+      "name": "Forms of energy",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-world-energy-resources",
+      "topic": "waec-14-energy",
+      "name": "World energy resources",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-conservation-of-energy",
+      "topic": "waec-14-energy",
+      "name": "Conservation of energy",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-work-as-a-measure-of-energy-transfer",
+      "topic": "waec-15-work-energy-and-power",
+      "name": "Concept of work as a measure of energy transfer",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-energy-as-capability-to-do-work",
+      "topic": "waec-15-work-energy-and-power",
+      "name": "Concept of energy as capability to do work",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-work-done-in-a-gravitational-field",
+      "topic": "waec-15-work-energy-and-power",
+      "name": "Work done in a gravitational field",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-mechanical-energy",
+      "topic": "waec-15-work-energy-and-power",
+      "name": "Types of mechanical energy",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-potential-energy-p-e-ii-kinetic-energy-k-e",
+      "topic": "waec-15-work-energy-and-power",
+      "name": "Potential energy (P.E.); (ii) Kinetic energy (K.E)",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-conservation-of-mechanical-energy-topics-notes",
+      "topic": "waec-15-work-energy-and-power",
+      "name": "Conservation of mechanical energy. TOPICS NOTES",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-temperature-and-its-measurement",
+      "topic": "waec-16-heat-energy",
+      "name": "Temperature and its measurement",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-effects-of-heat-on-matter-e-g",
+      "topic": "waec-16-heat-energy",
+      "name": "Effects of heat on matter e.g",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-rise-in-temperature-ii-change-of-phase-state-iii-expansion-i",
+      "topic": "waec-16-heat-energy",
+      "name": "Rise in temperature; (ii) Change of phase state; (iii) Expansion; (iv) Change of resistance",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-thermal-expansion-linear-area-and-volume-expansivities-topic",
+      "topic": "waec-16-heat-energy",
+      "name": "Thermal expansion – Linear, area and volume expansivities TOPICS NOTES",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-production-and-propagation-of-mechanical-waves",
+      "topic": "waec-17-production-and-propagation-of-waves",
+      "name": "Production and propagation of mechanical waves",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-pulsating-system-energy-transmitted-with-definite-speed-freq",
+      "topic": "waec-17-production-and-propagation-of-waves",
+      "name": "Pulsating system: Energy transmitted with definite speed, frequency and wavelength",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-waveform",
+      "topic": "waec-17-production-and-propagation-of-waves",
+      "name": "Waveform",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mathematical-relationship-connecting-frequency-f-wavelength",
+      "topic": "waec-17-production-and-propagation-of-waves",
+      "name": "Mathematical relationship connecting frequency (f), wavelength( /g2755 ), period (T) and velocity (v)",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-transverse-and-longitudinal",
+      "topic": "waec-18-types-of-waves",
+      "name": "Transverse and longitudinal",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mathematical-representation-of",
+      "topic": "waec-18-types-of-waves",
+      "name": "Mathematical representation of",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-sources-of-light-topics-notes",
+      "topic": "waec-20-light-waves",
+      "name": "Sources of light TOPICS NOTES",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-rectilinear-propagation-of-light",
+      "topic": "waec-20-light-waves",
+      "name": "Rectilinear propagation of light",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-reflection-of-light-at-plane-surface-plane-mirror",
+      "topic": "waec-20-light-waves",
+      "name": "Reflection of light at plane surface: plane mirror",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-reflection-of-light-at-curved-surfaces-concave-and-convex-mi",
+      "topic": "waec-20-light-waves",
+      "name": "Reflection of light at curved surfaces: concave and convex mirrors",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-refraction-of-light-at-plane-surfaces-rectangular-glass-pris",
+      "topic": "waec-20-light-waves",
+      "name": "Refraction of light at plane surfaces: rectangular glass prism (block) and triangular prism",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-refraction-of-light-at-curved",
+      "topic": "waec-20-light-waves",
+      "name": "Refraction of light at curved",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-sources-of-sound",
+      "topic": "waec-22-sound-waves",
+      "name": "Sources of sound",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-transmission-of-sound-waves",
+      "topic": "waec-22-sound-waves",
+      "name": "Transmission of sound waves",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-speed-of-sound-in-solid-liquid-and",
+      "topic": "waec-22-sound-waves",
+      "name": "Speed of sound in solid, liquid and",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-fields-gravitational-electric-and-magnetic",
+      "topic": "waec-23-description-property-of-fields",
+      "name": "Concept of fields: Gravitational, electric and Magnetic",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-properties-of-a-force-field",
+      "topic": "waec-23-description-property-of-fields",
+      "name": "Properties of a force field",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-acceleration-due-to-gravity-g",
+      "topic": "waec-24-gravitational-field",
+      "name": "Acceleration due to gravity, (g)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-gravitational-force-between-two-masses-newton-s-law-of-gravi",
+      "topic": "waec-24-gravitational-field",
+      "name": "Gravitational force between two masses: Newton’s law of gravitation",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-gravitational-potential-and-escape-velocity",
+      "topic": "waec-24-gravitational-field",
+      "name": "Gravitational potential and escape velocity",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-production-of-electric-charges",
+      "topic": "waec-25-electric-field",
+      "name": "Production of electric charges",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-distribution-of-charges",
+      "topic": "waec-25-electric-field",
+      "name": "Types of distribution of charges",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-storage-of-charges",
+      "topic": "waec-25-electric-field",
+      "name": "Storage of charges",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-electric-lines-of-force-topics-notes",
+      "topic": "waec-25-electric-field",
+      "name": "Electric lines of force TOPICS NOTES",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-properties-of-magnets-and-magnetic-materials",
+      "topic": "waec-26-magnetic-field",
+      "name": "Properties of magnets and magnetic materials",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-magnetization-and-demagnetization",
+      "topic": "waec-26-magnetic-field",
+      "name": "Magnetization and demagnetization",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-magnetic-field",
+      "topic": "waec-26-magnetic-field",
+      "name": "Concept of magnetic field",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-magnetic-force-on",
+      "topic": "waec-26-magnetic-field",
+      "name": "Magnetic force on:",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-a-current-carrying-conductor-placed-in-a-magnetic-field-ii-b",
+      "topic": "waec-26-magnetic-field",
+      "name": "a current-carrying conductor placed in a magnetic field;; (ii) between two parallel current-carrying conductors",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-use-of-electromagnets",
+      "topic": "waec-26-magnetic-field",
+      "name": "Use of electromagnets",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-earth-s-magnetic-field",
+      "topic": "waec-26-magnetic-field",
+      "name": "The earth’s magnetic field",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-magnetic-force-on-a-moving-charged-particle",
+      "topic": "waec-26-magnetic-field",
+      "name": "Magnetic force on a moving charged particle",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-electromagnetic-field-topics-notes",
+      "topic": "waec-27-electromagnetic-field",
+      "name": "Concept of electromagnetic field TOPICS NOTES",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-properties-of-magnets-and-magnetic-materials-physics",
+      "topic": "waec-26-magnetic-field-physics",
+      "name": "Properties of magnets and magnetic materials",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-magnetization-and-demagnetization-physics",
+      "topic": "waec-26-magnetic-field-physics",
+      "name": "Magnetization and demagnetization",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-magnetic-field-physics",
+      "topic": "waec-26-magnetic-field-physics",
+      "name": "Concept of magnetic field",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-magnetic-force-on-physics",
+      "topic": "waec-26-magnetic-field-physics",
+      "name": "Magnetic force on:",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-a-current-carrying-conductor-placed-in-a-magnetic-field-ii-b-physics",
+      "topic": "waec-26-magnetic-field-physics",
+      "name": "a current-carrying conductor placed in a magnetic field;; (ii) between two parallel current-carrying conductors",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-use-of-electromagnets-physics",
+      "topic": "waec-26-magnetic-field-physics",
+      "name": "Use of electromagnets",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-earth-s-magnetic-field-physics",
+      "topic": "waec-26-magnetic-field-physics",
+      "name": "The earth’s magnetic field",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-magnetic-force-on-a-moving-charged-particle-physics",
+      "topic": "waec-26-magnetic-field-physics",
+      "name": "Magnetic force on a moving charged particle",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-electromagnetic-field-topic-notes",
+      "topic": "waec-27-electromagnetic-field-physics",
+      "name": "Concept of electromagnetic field TOPIC NOTES",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-graphical-representation-of-e-m-f-and-current-in-an-a-c-circ",
+      "topic": "waec-28-simple-a-c-circuits",
+      "name": "Graphical representation of e.m.f and current in an a.c. circult",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-peak-and-r-m-s-values-topic",
+      "topic": "waec-28-simple-a-c-circuits",
+      "name": "Peak and r..m.s. values TOPIC",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-models-of-the-atom",
+      "topic": "waec-29-structure-of-the-atom",
+      "name": "Models of the atom",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-energy-quantization",
+      "topic": "waec-29-structure-of-the-atom",
+      "name": "Energy quantization",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-photoelectric-effect",
+      "topic": "waec-29-structure-of-the-atom",
+      "name": "Photoelectric effect",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-thermionic-emission",
+      "topic": "waec-29-structure-of-the-atom",
+      "name": "Thermionic emission",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-composition-of-the-nucleus-topics",
+      "topic": "waec-30-structure-of-the-nucleus",
+      "name": "Composition of the nucleus TOPICS",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-radioactivity-natural-and-artificial",
+      "topic": "waec-30-structure-of-the-nucleus",
+      "name": "Radioactivity – Natural and artificial",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nuclear-reactions-fusion-and-fission",
+      "topic": "waec-30-structure-of-the-nucleus",
+      "name": "Nuclear reactions --- Fusion and Fission",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-electron-diffraction",
+      "topic": "waec-31-wave-particle-paradox",
+      "name": "Electron diffraction",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-duality-of-matter",
+      "topic": "waec-31-wave-particle-paradox",
+      "name": "Duality of matter",
+      "order": 2,
+      "objectives": []
+    }
+  ]
+}

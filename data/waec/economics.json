@@ -1,0 +1,371 @@
+{
+  "subjects": [
+    {
+      "slug": "economics",
+      "exam": "WAEC",
+      "name": "Economics",
+      "is_compulsory": false,
+      "objective_paper_questions": 50,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "economics"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-1-knowledge-of-the-basic-economic-principles-conc-epts-and-t",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "1. knowledge of the basic economic principles, conc epts, and the tools for economic",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-2-understanding-of-the-structure-and-functioning-o-f-economi",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "2. understanding of the structure and functioning o f economic institutions – commercial,",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-3-understanding-of-the-basis-for-rational-economic-decisions",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "3. understanding of the basis for rational economic  decisions;",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-4-ability-to-explain-the-basis-and-structure-of-th-e-west-af",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "4. ability to explain the basis and structure of th e West African economy, including the",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-5-ability-to-follow-the-role-and-status-of-the-wes-t-african",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "5. ability to follow the role and status of the Wes t African countries in international",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-6-ability-to-appreciate-the-problems-west-african-countries",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "6. ability to appreciate the problems West African countries encounter in their economic",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1-definition-and-scope-of-economics",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "1. DEFINITION AND SCOPE OF ECONOMICS",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-2-factors-of-production",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "2. FACTORS OF PRODUCTION",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-3-types-and-basic-features-of-economic-systems",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "3. TYPES AND BASIC FEATURES OF ECONOMIC SYSTEMS",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-4-basic-tools-of-economic-analysis",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "4. BASIC TOOLS OF ECONOMIC ANALYSIS",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-5-demand",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "5. DEMAND",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-6-supply",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "6. SUPPLY",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-7-theory-of-consumer-behaviour",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "7. THEORY OF CONSUMER BEHAVIOUR",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-8-theory-of-price-determination",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "8. THEORY OF PRICE DETERMINATION",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-9-theory-of-production",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "9. THEORY OF PRODUCTION",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-10-theory-of-cost-and-revenue",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "10. THEORY OF COST AND REVENUE",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-11-market-structures",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "11. MARKET STRUCTURES",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-12-business-organizations",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "12. BUSINESS ORGANIZATIONS",
+      "order": 18,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-15-agriculture",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "15. AGRICULTURE",
+      "order": 19,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-16-industrialization",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "16. INDUSTRIALIZATION",
+      "order": 20,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-17-national-income",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "17. NATIONAL INCOME",
+      "order": 21,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-18-money-and-inflation",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "18. MONEY AND INFLATION",
+      "order": 22,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-19-financial-institutions",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "19. FINANCIAL INSTITUTIONS",
+      "order": 23,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-20-public-finance",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "20. PUBLIC FINANCE",
+      "order": 24,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-21-economic-development-and-planning",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "21. ECONOMIC DEVELOPMENT AND PLANNING",
+      "order": 25,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-22-international-trade-and-balance-of-payments",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "22. INTERNATIONAL TRADE AND BALANCE OF PAYMENTS",
+      "order": 26,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-23-economic-integration",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "23. ECONOMIC INTEGRATION",
+      "order": 27,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-24-international-economic-organizations",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "24. INTERNATIONAL ECONOMIC ORGANIZATIONS",
+      "order": 28,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-25-major-natural-resources",
+      "subject": "economics",
+      "exam": "WAEC",
+      "name": "25. MAJOR NATURAL RESOURCES",
+      "order": 29,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-types-capitalism-socialism-and-mixed-economy",
+      "topic": "waec-3-types-and-basic-features-of-economic-systems",
+      "name": "Types – capitalism, socialism and mixed economy",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-basic-features-of-each",
+      "topic": "waec-3-types-and-basic-features-of-economic-systems",
+      "name": "Basic features of each",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-advantages-and-disadvantages-of-each",
+      "topic": "waec-3-types-and-basic-features-of-economic-systems",
+      "name": "Advantages and disadvantages of each",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-economic-problems-of-society-and-the-approaches-for-solving",
+      "topic": "waec-3-types-and-basic-features-of-economic-systems",
+      "name": "Economic problems of society and the approaches for solving them under each of the systems",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-cost-concepts-total-cost-average-cost-marg-inal-cost-variabl",
+      "topic": "waec-10-theory-of-cost-and-revenue",
+      "name": "Cost concepts: total cost, average cost, marg inal cost, variable cost, fixed cost; short run and long run costs.; (ii) Distinction between economist’s and ac countant’s view of cost (opportunity cost and money cost).; (iii) Revenue concepts: total, average and marginal revenue; Marginal revenue Product ",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-money-definition-and-historical-development-barter-and-its-p",
+      "topic": "waec-18-money-and-inflation",
+      "name": "Money – definition and historical development-barter and its problems, types, characteristics functions.  Supply of and demand for money, value of money and the price level",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-inflation-meaning-types-causes-effects-and-control",
+      "topic": "waec-18-money-and-inflation",
+      "name": "Inflation: meaning types, causes, effects and control",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-international-trade-differences-between-dom-estic-and-intern",
+      "topic": "waec-22-international-trade-and-balance-of-payments",
+      "name": "International Trade: differences between dom estic and international trade, the basis of international trade, absolute and comparative cost advantage,  terms of trade (definition and measurement) commercial policy (objectives) and instruments –  tariffs (types) and direct control. Trend and structure of West African countries’ external trade",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-balance-of-payments-role-of-money-in-international-transacti",
+      "topic": "waec-22-international-trade-and-balance-of-payments",
+      "name": "Balance of Payments: role of money in international  transactions, meaning and components of balance of payments, balance of payments disequilibrium, balance of payments adjustments (exchange rate policy exchange control, monetary and fiscal policies) and financing (the use of reserves and international borrowing)",
+      "order": 2,
+      "objectives": []
+    }
+  ]
+}
