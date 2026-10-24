@@ -71,6 +71,7 @@ music
 physical-education
 physics
 technical-drawing
+visual-arts
 ```
 
 The other mapped subjects remain source-mapped but catalog-pending. They must

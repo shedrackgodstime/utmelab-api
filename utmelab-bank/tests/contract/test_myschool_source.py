@@ -152,6 +152,7 @@ def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
         "nigerian-history": "history",
         "physical-education": "physical-education",
         "technical-drawing": "technical-drawing",
+        "visual-arts": "visual-arts",
     }
 
     assert {subject: slug_for("WAEC", subject) for subject in expected} == expected
