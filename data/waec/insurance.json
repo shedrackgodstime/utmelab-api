@@ -1,0 +1,1309 @@
+{
+  "subjects": [
+    {
+      "slug": "insurance",
+      "exam": "WAEC",
+      "name": "Insurance",
+      "is_compulsory": false,
+      "objective_paper_questions": 50,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "insurance"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-insurance-1-introduction-to-insurance",
+      "subject": "insurance",
+      "exam": "WAEC",
+      "name": "Introduction To Insurance",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-insurance-2-principles-of-insurance",
+      "subject": "insurance",
+      "exam": "WAEC",
+      "name": "Principles Of Insurance",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-insurance-3-documents-used-in-effecting-contract",
+      "subject": "insurance",
+      "exam": "WAEC",
+      "name": "Documents Used In Effecting Contract",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-insurance-4-insurance-practice",
+      "subject": "insurance",
+      "exam": "WAEC",
+      "name": "Insurance Practice",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-insurance-5-non-life-insurance-product",
+      "subject": "insurance",
+      "exam": "WAEC",
+      "name": "Non – Life Insurance Product",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-insurance-6-insurance-market-operators",
+      "subject": "insurance",
+      "exam": "WAEC",
+      "name": "Insurance Market ( Operators)",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-insurance-7-insurance-regulator",
+      "subject": "insurance",
+      "exam": "WAEC",
+      "name": "Insurance Regulator",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-insurance-8-common-insurance-terminologies",
+      "subject": "insurance",
+      "exam": "WAEC",
+      "name": "Common Insurance Terminologies",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-insurance-1-1-meaning",
+      "topic": "waec-insurance-1-introduction-to-insurance",
+      "name": "Meaning",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-1-2-pre-and-post-independence-era-and-legislation",
+      "topic": "waec-insurance-1-introduction-to-insurance",
+      "name": "Pre and Post independence era and legislation",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-1-3-parties-to-an-insurance-contract",
+      "topic": "waec-insurance-1-introduction-to-insurance",
+      "name": "Parties to an Insurance contract",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-1-4-essential-features-of-an-insurance-contract",
+      "topic": "waec-insurance-1-introduction-to-insurance",
+      "name": "Essential features of an Insurance contract",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-1-5-meaning",
+      "topic": "waec-insurance-1-introduction-to-insurance",
+      "name": "Meaning.",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-1-6-effects-of-risks-on-society",
+      "topic": "waec-insurance-1-introduction-to-insurance",
+      "name": "Effects of risks on society.",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-1-7-classification-of-risks",
+      "topic": "waec-insurance-1-introduction-to-insurance",
+      "name": "Classification of risks.",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-1-8-insurable-and-uninsurable-risks",
+      "topic": "waec-insurance-1-introduction-to-insurance",
+      "name": "Insurable and uninsurable risks.",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-1-10-types",
+      "topic": "waec-insurance-1-introduction-to-insurance",
+      "name": "Types",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-1-11-primary-functions",
+      "topic": "waec-insurance-1-introduction-to-insurance",
+      "name": "Primary functions",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-1-12-secondary-functions",
+      "topic": "waec-insurance-1-introduction-to-insurance",
+      "name": "Secondary functions",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-1-13-benefits-of-insurance",
+      "topic": "waec-insurance-1-introduction-to-insurance",
+      "name": "Benefits of Insurance",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-1-15-differences-among-perils-risks-and-hazards",
+      "topic": "waec-insurance-1-introduction-to-insurance",
+      "name": "Differences among perils, risks and hazards",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-2-1-meaning",
+      "topic": "waec-insurance-2-principles-of-insurance",
+      "name": "Meaning",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-2-2-essential-features-of-insurable-interest",
+      "topic": "waec-insurance-2-principles-of-insurance",
+      "name": "Essential features of insurable interest",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-2-3-application-of-insurable-interest-in-life-assurance-and-property-insurance",
+      "topic": "waec-insurance-2-principles-of-insurance",
+      "name": "Application of insurable interest in life assurance and property insurance",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-2-5-insured-and-insurer-s-duty-of-disclosure",
+      "topic": "waec-insurance-2-principles-of-insurance",
+      "name": "Insured and insurer’s duty of disclosure",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-2-6-breaches-and-effects",
+      "topic": "waec-insurance-2-principles-of-insurance",
+      "name": "Breaches and effects",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-2-8-application-of-proximate-cause-on-claims",
+      "topic": "waec-insurance-2-principles-of-insurance",
+      "name": "Application of proximate cause on claims",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-2-10-methods-of-providing-indemnity-by-an-insurer",
+      "topic": "waec-insurance-2-principles-of-insurance",
+      "name": "Methods of providing indemnity by an insurer",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-2-11-application-of-indemnity-in-property-and-liability-insurance",
+      "topic": "waec-insurance-2-principles-of-insurance",
+      "name": "Application of indemnity in property and liability insurance",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-2-13-insurer-s-right-under-subrogation",
+      "topic": "waec-insurance-2-principles-of-insurance",
+      "name": "Insurer’s right under Subrogation",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-2-14-insured-s-duty-under-subrogation",
+      "topic": "waec-insurance-2-principles-of-insurance",
+      "name": "Insured’s duty under Subrogation",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-2-16-application",
+      "topic": "waec-insurance-2-principles-of-insurance",
+      "name": "Application",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-2-17-conditions-necessary-for-contribution",
+      "topic": "waec-insurance-2-principles-of-insurance",
+      "name": "Conditions necessary for contribution",
+      "order": 17,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-3-1-meaning",
+      "topic": "waec-insurance-3-documents-used-in-effecting-contract",
+      "name": "Meaning",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-3-2-functions-and-uses",
+      "topic": "waec-insurance-3-documents-used-in-effecting-contract",
+      "name": "Functions and uses",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-3-3-contracts-where-proposal-forms-are-used",
+      "topic": "waec-insurance-3-documents-used-in-effecting-contract",
+      "name": "Contracts where proposal forms are used",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-3-5-contents-of-cover-notes",
+      "topic": "waec-insurance-3-documents-used-in-effecting-contract",
+      "name": "Contents of Cover notes",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-3-6-functions-and-uses-of-cover-notes",
+      "topic": "waec-insurance-3-documents-used-in-effecting-contract",
+      "name": "Functions and uses of Cover notes",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-3-7-contracts-where-cover-notes-are-issued",
+      "topic": "waec-insurance-3-documents-used-in-effecting-contract",
+      "name": "Contracts where Cover notes are issued",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-3-9-certificate-of-insurance-in-motor-marine-employer-s-liability",
+      "topic": "waec-insurance-3-documents-used-in-effecting-contract",
+      "name": "Certificate of Insurance in Motor Marine Employer’s liability",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-3-10-motor",
+      "topic": "waec-insurance-3-documents-used-in-effecting-contract",
+      "name": "Motor",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-3-11-marine",
+      "topic": "waec-insurance-3-documents-used-in-effecting-contract",
+      "name": "Marine",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-3-12-employer-s-liability",
+      "topic": "waec-insurance-3-documents-used-in-effecting-contract",
+      "name": "Employer’s liability",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-3-14-component-parts-of-a-policy",
+      "topic": "waec-insurance-3-documents-used-in-effecting-contract",
+      "name": "Component parts of a policy",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-3-15-parties-to-a-policy",
+      "topic": "waec-insurance-3-documents-used-in-effecting-contract",
+      "name": "Parties to a policy",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-1-meaning",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Meaning.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-2-forms-facultative-and-treaty",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Forms ( Facultative and Treaty).",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-3-functions",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Functions.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-4-uses",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Uses.",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-5-meaning-of-renewal-notice",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Meaning of renewal notice",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-6-renewal-procedure",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Renewal procedure",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-7-legal-status-of-a-renewal-notice",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Legal status of a renewal notice",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-8-no-claim-discount-ncd-meaning-and-uses",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "No claim Discount (NCD)- meaning and uses",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-9-long-term-agreement-lta-meaning-and-uses",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Long-term Agreement (LTA) – meaning and uses",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-10-meaning-of-claims",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Meaning of claims",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-11-claim-procedure-notification-documentation-claim-forms-investigation-discharge-v",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Claim procedure Notification Documentation (Claim forms) Investigation Discharge voucher Payment",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-12-notification",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Notification",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-13-documentation-claim-forms",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Documentation (Claim forms)",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-14-investigation",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Investigation",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-15-discharge-voucher",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Discharge voucher",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-16-payment",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Payment",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-17-duties-of-the-insured-and-the-underwriter-in-claims",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Duties of the Insured and the underwriter in claims",
+      "order": 17,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-18-functions-of-loss-assessors-and-loss-adjusters",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Functions of Loss Assessors and Loss Adjusters",
+      "order": 18,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-19-meaning",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Meaning",
+      "order": 19,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-20-factors-to-be-considered-when-determining-a-premium",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Factors to be considered when determining a premium",
+      "order": 20,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-21-factors-responsible-for-loading-premium",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Factors responsible for loading premium",
+      "order": 21,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-22-return-premium-partial-and-full-return-reasons-for-returning-premium",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Return premium Partial and full return Reasons for returning premium",
+      "order": 22,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-23-partial-and-full-return",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Partial and full return",
+      "order": 23,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-4-24-reasons-for-returning-premium",
+      "topic": "waec-insurance-4-insurance-practice",
+      "name": "Reasons for returning premium",
+      "order": 24,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-1-meaning",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Meaning",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-2-types-of-policies-in-motor-insurance-private-car-commercial-vehicle-motorcycle-a",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Types of policies in Motor Insurance Private car Commercial vehicle Motorcycle agricultural and Forestry vehicles Special types (forklifts, tractor, caterpillars)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-3-private-car",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Private car",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-4-commercial-vehicle",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Commercial vehicle",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-5-motorcycle",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Motorcycle",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-6-agricultural-and-forestry-vehicles",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "agricultural and Forestry vehicles",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-7-special-types-forklifts-tractor-caterpillars",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Special types (forklifts, tractor, caterpillars)",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-8-the-scope-of-cover-act-only-third-party-only-third-party-fire-and-theft-comprehe",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "The scope of cover Act only Third-party only Third-party, fire and theft Comprehensive",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-9-act-only",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Act only",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-10-third-party-only",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Third-party only",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-11-third-party-fire-and-theft",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Third-party, fire and theft",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-12-comprehensive",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Comprehensive",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-13-ecowas-brown-card-meaning-and-uses",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "ECOWAS Brown Card ( meaning and uses)",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-15-standard-fire-policy-cover",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Standard fire policy cover",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-16-special-perils-earthquake-flood-riot-and-strike",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Special perils (earthquake, flood, riot and strike)",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-17-properties-covered-building-and-its-contents-machinery-and-plant-stocks",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Properties covered Building and its contents Machinery and plant Stocks",
+      "order": 17,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-18-building-and-its-contents",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Building and its contents",
+      "order": 18,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-19-machinery-and-plant",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Machinery and plant",
+      "order": 19,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-20-stocks",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Stocks",
+      "order": 20,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-21-v-buyers-of-fire-insurance-individuals-corporate-bodies-government-agencies",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "v. Buyers of fire insurance Individuals Corporate Bodies Government agencies",
+      "order": 21,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-22-individuals",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Individuals",
+      "order": 22,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-23-corporate-bodies",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Corporate Bodies",
+      "order": 23,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-24-government-agencies",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Government agencies",
+      "order": 24,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-26-properties-covered-household-properties-stocks-machinery-and-plants",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Properties covered Household properties Stocks Machinery and Plants",
+      "order": 26,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-27-household-properties",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Household properties",
+      "order": 27,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-29-machinery-and-plants",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Machinery and Plants",
+      "order": 29,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-30-theft-insurance-and-burglary-insurance-in-business-and-private-premises",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Theft insurance and Burglary Insurance in business and private premises",
+      "order": 30,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-31-differences-between-theft-insurance-and-burglary-insurance",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Differences between Theft Insurance and Burglary Insurance",
+      "order": 31,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-33-what-constitutes-money-cash-cheque-postal-order",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "What constitutes money ( cash, cheque, postal order )",
+      "order": 33,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-34-types-of-cover-available-in-transit-only-in-safe-or-strong-room-after-business-h",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "types of cover available In transit only In safe or strong room after business hours In custody of a staff e g cashier",
+      "order": 34,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-35-in-transit-only",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "In transit only",
+      "order": 35,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-36-in-safe-or-strong-room-after-business-hours",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "In safe or strong room after business hours",
+      "order": 36,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-37-in-custody-of-a-staff-e-g-cashier",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "In custody of a staff e g cashier",
+      "order": 37,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-39-types-of-policies-in-fidelity-guarantee-insurance-named-policy-position-policy-b",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Types of policies in fidelity guarantee Insurance Named policy Position policy Blanket policy",
+      "order": 39,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-40-named-policy",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Named policy",
+      "order": 40,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-41-position-policy",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Position policy",
+      "order": 41,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-42-blanket-policy",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Blanket policy",
+      "order": 42,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-43-bond-meaning",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Bond ( meaning)",
+      "order": 43,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-44-differences-between-commercial-guarantees-and-bonds",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Differences between commercial guarantees and bonds.",
+      "order": 44,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-46-types-of-engineering-insurance-boiler-explosion-computer-all-risks",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Types of Engineering Insurance Boiler Explosion Computer all risks",
+      "order": 46,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-47-boiler",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Boiler",
+      "order": 47,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-48-explosion",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Explosion",
+      "order": 48,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-49-computer-all-risks",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Computer all risks",
+      "order": 49,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-50-iii-scope-of-engineering-insurance-material-damage-liability-cover",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "iii. Scope of Engineering Insurance Material damage Liability cover",
+      "order": 50,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-51-material-damage",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Material damage",
+      "order": 51,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-52-liability-cover",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Liability cover",
+      "order": 52,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-54-marine-perils",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Marine perils",
+      "order": 54,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-55-type-of-cover-hull-policy-cargo-policy-freight-policy",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Type of cover Hull policy Cargo policy Freight policy",
+      "order": 55,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-56-hull-policy",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Hull policy",
+      "order": 56,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-57-cargo-policy",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Cargo policy",
+      "order": 57,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-58-freight-policy",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Freight policy",
+      "order": 58,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-60-types-of-aviation-policy-aviation-hull-policy-cargo-policy-freight-policy-liabil",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Types of Aviation policy Aviation hull policy Cargo policy Freight policy Liability arising from aircraft operation Liability to passengers and non-passengers",
+      "order": 60,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-61-aviation-hull-policy",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Aviation hull policy",
+      "order": 61,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-64-liability-arising-from-aircraft-operation",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Liability arising from aircraft operation",
+      "order": 64,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-65-liability-to-passengers-and-non-passengers",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Liability to passengers and non-passengers",
+      "order": 65,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-66-aviation-risks",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Aviation risks",
+      "order": 66,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-67-factors-affecting",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Factors affecting",
+      "order": 67,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-68-international-regulations-of-aviation-insurance-montrel-convention-hague-rule-wa",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "International regulations of Aviation Insurance Montrel Convention Hague Rule Warsaw Convention",
+      "order": 68,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-69-montrel-convention",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Montrel Convention",
+      "order": 69,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-70-hague-rule",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Hague Rule",
+      "order": 70,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-71-warsaw-convention",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Warsaw Convention",
+      "order": 71,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-73-policy-covered-employees-compensation-policy",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Policy covered (employees’ compensation policy)",
+      "order": 73,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-74-level-of-benefits-payable",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Level of benefits payable",
+      "order": 74,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-75-perils-covered",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Perils covered",
+      "order": 75,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-77-types-personal-liability-policy-product-liability-policy",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Types Personal liability policy Product liability policy",
+      "order": 77,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-78-personal-liability-policy",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Personal liability policy",
+      "order": 78,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-79-product-liability-policy",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Product liability policy",
+      "order": 79,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-80-meaning",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "meaning",
+      "order": 80,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-81-professionals-that-require-professional-indemnity-doctors-lawyers-insurance-brok",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Professionals that require professional indemnity ( Doctors, Lawyers, Insurance brokers, Accountants, and Architects)",
+      "order": 81,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-82-doctors-lawyers-insurance-brokers-accountants-and-architects",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "( Doctors, Lawyers, Insurance brokers, Accountants, and Architects)",
+      "order": 82,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-83-meaning-consequential-loss",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Meaning ( consequential loss)",
+      "order": 83,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-84-causes-of-business-interruption-machinery-breakdown-fire-incident",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Causes of business interruption Machinery breakdown Fire Incident",
+      "order": 84,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-85-machinery-breakdown",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Machinery breakdown",
+      "order": 85,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-86-fire-incident",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Fire Incident",
+      "order": 86,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-88-risks-covered-death-bodily-injury-permanent-disability-total-temporary-disabilit",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Risks covered: Death Bodily injury Permanent disability Total temporary disability Medical expenses",
+      "order": 88,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-89-death",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Death",
+      "order": 89,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-90-bodily-injury",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Bodily injury",
+      "order": 90,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-91-permanent-disability",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Permanent disability",
+      "order": 91,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-92-total-temporary-disability",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Total temporary disability",
+      "order": 92,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-93-medical-expenses",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Medical expenses",
+      "order": 93,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-94-forms-of-personal-accident-insurance-personal-and-group",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Forms of Personal Accident Insurance ( personal and group)",
+      "order": 94,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-95-benefits-death-bodily-injury-and-medical-expenses",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Benefits ( Death, Bodily Injury and medical expenses)",
+      "order": 95,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-5-96-buys-of-personal-and-group-accident-policy",
+      "topic": "waec-insurance-5-non-life-insurance-product",
+      "name": "Buys of personal and group accident policy",
+      "order": 96,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-6-1-meaning",
+      "topic": "waec-insurance-6-insurance-market-operators",
+      "name": "Meaning",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-6-2-insurance-companies",
+      "topic": "waec-insurance-6-insurance-market-operators",
+      "name": "Insurance Companies",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-6-3-reinsurance-companies",
+      "topic": "waec-insurance-6-insurance-market-operators",
+      "name": "Reinsurance Companies",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-6-4-insurance-intermediaries-brokers-and-agents",
+      "topic": "waec-insurance-6-insurance-market-operators",
+      "name": "Insurance Intermediaries (Brokers and Agents)",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-6-5-insurance-buyers",
+      "topic": "waec-insurance-6-insurance-market-operators",
+      "name": "Insurance Buyers",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-6-6-individual-and-private",
+      "topic": "waec-insurance-6-insurance-market-operators",
+      "name": "Individual and private",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-6-7-corporate-and-public-institutions",
+      "topic": "waec-insurance-6-insurance-market-operators",
+      "name": "Corporate and public institutions",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-6-8-insurance-sellers",
+      "topic": "waec-insurance-6-insurance-market-operators",
+      "name": "Insurance Sellers",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-6-10-re-insurance-companies",
+      "topic": "waec-insurance-6-insurance-market-operators",
+      "name": "Re-insurance Companies",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-6-11-supporting-services-assessors-and-loss-adjusters",
+      "topic": "waec-insurance-6-insurance-market-operators",
+      "name": "Supporting Services (Assessors and Loss Adjusters)",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-7-1-nigerian-insurance-association-nia",
+      "topic": "waec-insurance-7-insurance-regulator",
+      "name": "Nigerian Insurance Association (NIA )",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-7-2-nigerian-council-of-registered-insurance-brokers-ncrib",
+      "topic": "waec-insurance-7-insurance-regulator",
+      "name": "Nigerian Council of Registered Insurance Brokers ( NCRIB )",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-7-3-institute-of-loss-adjusters-of-nigeria-ilan",
+      "topic": "waec-insurance-7-insurance-regulator",
+      "name": "Institute of Loss Adjusters of Nigeria (ILAN )",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-7-4-national-insurance-commission-naicom",
+      "topic": "waec-insurance-7-insurance-regulator",
+      "name": "National Insurance Commission (NAICOM)",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-7-5-chartered-insurance-institute-of-nigeria-ciin",
+      "topic": "waec-insurance-7-insurance-regulator",
+      "name": "Chartered Insurance Institute of Nigeria (CIIN)",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-8-1-meaning-of-hazards",
+      "topic": "waec-insurance-8-common-insurance-terminologies",
+      "name": "Meaning of Hazards",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-8-2-meaning-of-perils",
+      "topic": "waec-insurance-8-common-insurance-terminologies",
+      "name": "Meaning of Perils",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-8-3-meaning-of-concealment",
+      "topic": "waec-insurance-8-common-insurance-terminologies",
+      "name": "Meaning of Concealment",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-8-4-meaning-of-disclosure",
+      "topic": "waec-insurance-8-common-insurance-terminologies",
+      "name": "Meaning of Disclosure",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-8-5-meaning-of-days-of-grace",
+      "topic": "waec-insurance-8-common-insurance-terminologies",
+      "name": "Meaning of Days of grace",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-8-6-meaning-of-ex-gratia-payment",
+      "topic": "waec-insurance-8-common-insurance-terminologies",
+      "name": "Meaning of Ex-gratia payment",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-8-7-meaning-of-extra-premium",
+      "topic": "waec-insurance-8-common-insurance-terminologies",
+      "name": "Meaning of Extra-premium",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-8-8-meaning-of-endorsement",
+      "topic": "waec-insurance-8-common-insurance-terminologies",
+      "name": "Meaning of Endorsement",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-8-9-meaning-of-excepted-perils",
+      "topic": "waec-insurance-8-common-insurance-terminologies",
+      "name": "Meaning of Excepted perils",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-8-10-meaning-of-subject-matter-of-insurance",
+      "topic": "waec-insurance-8-common-insurance-terminologies",
+      "name": "Meaning of Subject matter of Insurance",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-8-11-meaning-of-under-insurance",
+      "topic": "waec-insurance-8-common-insurance-terminologies",
+      "name": "Meaning of Under Insurance",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-8-12-meaning-of-return-premium",
+      "topic": "waec-insurance-8-common-insurance-terminologies",
+      "name": "Meaning of Return Premium",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-8-13-meaning-of-surrender-value",
+      "topic": "waec-insurance-8-common-insurance-terminologies",
+      "name": "Meaning of Surrender Value",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-insurance-8-14-meaning-of-cover-note",
+      "topic": "waec-insurance-8-common-insurance-terminologies",
+      "name": "Meaning of Cover note.",
+      "order": 14,
+      "objectives": []
+    }
+  ]
+}

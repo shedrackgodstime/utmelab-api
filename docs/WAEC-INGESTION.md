@@ -57,6 +57,7 @@ english-language
 financial-accounting
 further-mathematics
 government
+insurance
 mathematics
 physics
 ```
