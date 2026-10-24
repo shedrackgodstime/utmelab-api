@@ -143,6 +143,7 @@ def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
         "geography": "geography",
         "government": "government",
         "general-mathematics": "mathematics",
+        "health-education": "health-education",
         "physics": "physics",
         "nigerian-history": "history",
         "physical-education": "physical-education",

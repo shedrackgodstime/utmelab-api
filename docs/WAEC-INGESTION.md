@@ -63,6 +63,7 @@ nigerian-history
 insurance
 marketing
 general-mathematics
+health-education
 physical-education
 physics
 ```
