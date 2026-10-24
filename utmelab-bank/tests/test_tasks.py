@@ -612,6 +612,25 @@ async def test_source_refusal_is_skipped_not_a_failed_run() -> None:
     assert any("skipped source row" in note for note in result.notes)
 
 
+async def test_payload_validation_issue_still_fails_the_run() -> None:
+    runtime, staging, _ = make_runtime()
+    source = FixtureSource(FIXTURE_DIR)
+    original = [item async for item in source.fetch(OPTIONS)][0]
+
+    class SourceWithInvalidPayload(FixtureSource):
+        async def fetch(self, _scope: object) -> AsyncIterator[SourceItem]:
+            yield original.model_copy(update={"payload": {"stem": ""}})
+
+    runtime.source = SourceWithInvalidPayload(FIXTURE_DIR)
+    result = await fetch(runtime, OPTIONS)
+
+    assert not result.ok
+    assert result.done == 0
+    assert result.skipped == 0
+    assert result.failed == 1
+    assert staging.items == {}
+
+
 async def test_a_duplicate_is_filtered_without_uploading_a_figure() -> None:
     runtime, staging, fetcher = make_runtime()
     source = runtime.source

@@ -290,10 +290,15 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
                     # The source adapter deliberately turns an unusable row
                     # into an error item so the rest of the page can continue.
                     # These are source-quality exclusions, not runner
-                    # failures. Infrastructure and unexpected exceptions
-                    # still take the failure path below.
-                    result.skipped += 1
-                    result.note(f"{raw.external_key}: skipped source row: {'; '.join(issues)}")
+                    # failures. A validation issue on an otherwise adapted
+                    # payload is still a real parser/data-contract failure.
+                    if all(issue.startswith("source.error:") for issue in issues):
+                        result.skipped += 1
+                        result.note(
+                            f"{raw.external_key}: skipped source row: {'; '.join(issues)}"
+                        )
+                    else:
+                        result.fail(f"{raw.external_key}: source invalid: {'; '.join(issues)}")
                     continue
 
                 production_id = source.production_question_id(raw)
