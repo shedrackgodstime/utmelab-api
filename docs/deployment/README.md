@@ -4,8 +4,8 @@
 host also runs the parent UTME-Lab app through the same framework, so the
 framework itself lives in `docs/deployment/host/` — it is not API-specific.
 
-**You do not SSH per release.** Host config is one-time. After that you trigger a
-deploy from the Actions tab (or push a tag) and it builds and ships.
+**You do not SSH per release.** Host config is one-time. After that you publish a
+GitHub Release or run the workflow manually, and it builds and ships.
 
 ## The loop (what you'll actually do)
 
@@ -13,7 +13,7 @@ deploy from the Actions tab (or push a tag) and it builds and ships.
 |---|---|---|
 | **Work** | `git push` to `main` | CI runs the `quality` workflow (fmt, clippy, doc, tests, site build). **Nothing ships.** |
 | **Manual release** | Actions → `deploy-api` → **Run workflow** with the Cargo version | CI verifies the version → builds API + site → ships → readiness-checks. |
-| **Tagged release** | `git tag v0.0.1 && git push origin v0.0.1` | identical machinery; the tag must exactly match `Cargo.toml`. |
+| **Tagged release** | `gh release create v0.0.1 --generate-notes` | publishes the tag and triggers deployment; the release tag must exactly match `Cargo.toml`. |
 | **A deploy failed** | previous release | the run goes **red**, the gate restores the previous release and checks it before returning. Nothing is pruned. Fix and run it again. |
 | **Roll back** | `sudo system rollback utmelab-api` | flips to the previous release; restores the old one if the target does not come up healthy. |
 
@@ -69,7 +69,7 @@ The one privileged step is `/usr/local/bin/deploy-service`, shared by every
 service on the host and called by the deploy job as:
 
 ```bash
-sudo /usr/local/bin/deploy-service utmelab-api v0.0.0-pre.<sha>
+sudo /usr/local/bin/deploy-service utmelab-api v0.0.1
 ```
 
 It is host tooling, not shipped by this repo's release; its source is
@@ -94,9 +94,8 @@ Three properties are load-bearing:
    this service that is `/ready`, which stays 503 until the Turso replica is
    open. A process that binds 8081 and never syncs is never called live.
 3. **Pruning is by mtime, newest first**, and never runs on a failed activation.
-   A prerelease version (`v0.0.0-pre.<sha>`) has no meaningful order at all: `sort
-   -V` compares the sha, which once made "keep the newest N" delete the newest
-   build and keep an older one.
+   Stable release versions sort predictably, and the workflow refuses a release
+   tag that does not match `Cargo.toml`.
 
 Exit codes: `1` usage, `2` bad version, `3` unknown service, `4` release not
 staged, `5` unusable release, `6` unit did not come up, `7` unhealthy.
