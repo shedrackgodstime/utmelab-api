@@ -1,0 +1,2256 @@
+{
+  "subjects": [
+    {
+      "slug": "geography",
+      "exam": "WAEC",
+      "name": "Geography",
+      "is_compulsory": false,
+      "objective_paper_questions": 50,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "geography"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-geography-1-map-work",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Map work",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-2-principles-of-elementary-surveying-compass-plotting-of-traverse-avoiding-obstacles-in-the-field",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Principles of elementary surveying compass, plotting of traverse, avoiding obstacles in the field",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH",
+        "GM",
+        "LR",
+        "SL"
+      ]
+    },
+    {
+      "slug": "waec-geography-3-geographic-information-system-gis",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Geographic Information System (GIS)",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "NG"
+      ]
+    },
+    {
+      "slug": "waec-geography-4-statistical-maps-and-diagrams",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Statistical maps and diagrams",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-5-elements-of-physical-geography",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Elements of Physical Geography",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-6-hydrosphere",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Hydrosphere",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH",
+        "GM",
+        "LR",
+        "SL"
+      ]
+    },
+    {
+      "slug": "waec-geography-7-rocks",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Rocks",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-8-tectonic-processes",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Tectonic processes",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-9-denudational-processes",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Denudational processes",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-10-weather-and-climate",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Weather and climate",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-11-climate-elements",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Climate Elements",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-12-climate-classification",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Climate Classification",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-13-climate-change",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Climate change",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-14-vegetation",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Vegetation",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-15-soil",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Soil",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-16-environmental-resources",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Environmental resources",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-17-environmental-problems-hazards",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Environmental problems/ hazards",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-18-environmental-conservation",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Environmental conservation",
+      "order": 18,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-19-world-population",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "World Population",
+      "order": 19,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-20-settlement",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Settlement",
+      "order": 20,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-21-transportation",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Transportation",
+      "order": 21,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-22-industry",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Industry",
+      "order": 22,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-23-trade",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Trade",
+      "order": 23,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-24-tourism",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Tourism",
+      "order": 24,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-25-nigeria-on-broad-outline",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Nigeria on broad outline",
+      "order": 25,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-26-physical-setting",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Physical setting",
+      "order": 26,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-27-population",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Population",
+      "order": 27,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-28-resources",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Resources",
+      "order": 28,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-29-agriculture",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Agriculture",
+      "order": 29,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-30-transportation",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Transportation",
+      "order": 30,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-31-communication",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Communication",
+      "order": 31,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-32-industry",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Industry",
+      "order": 32,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-33-trade",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Trade",
+      "order": 33,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-34-tourism",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Tourism",
+      "order": 34,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-35-issues-on-development-and-environmental-concerns",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Issues on development and environmental concerns",
+      "order": 35,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-36-ecowas",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "ECOWAS",
+      "order": 36,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-37-geo-political-issues",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Geo-political issues",
+      "order": 37,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-38-ghana-on-broad-outline",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Ghana on broad outline",
+      "order": 38,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-39-physical-setting",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Physical setting",
+      "order": 39,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-40-population",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Population",
+      "order": 40,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-41-settlement",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Settlement",
+      "order": 41,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-42-primary-economic-activities",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Primary economic activities",
+      "order": 42,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-43-agriculture",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Agriculture",
+      "order": 43,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-44-fishing",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Fishing",
+      "order": 44,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-45-lumbering",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Lumbering",
+      "order": 45,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-46-mining",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Mining",
+      "order": 46,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-47-manufacturing",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Manufacturing",
+      "order": 47,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-48-trade-and-commerce",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Trade and commerce",
+      "order": 48,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-49-tourism",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Tourism",
+      "order": 49,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-50-energy-and-power",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Energy and power",
+      "order": 50,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-51-issues-on-development-and-environmental-concerns",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Issues on development and environmental concerns",
+      "order": 51,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-52-sierra-leone-on-broad-outline",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Sierra Leone on broad outline",
+      "order": 52,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-53-agriculture",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Agriculture",
+      "order": 53,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-54-fishing",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Fishing",
+      "order": 54,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-55-lumbering",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Lumbering",
+      "order": 55,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-56-mining",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Mining",
+      "order": 56,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-57-manufacturing",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Manufacturing",
+      "order": 57,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-58-transport-and-communication",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Transport and Communication",
+      "order": 58,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-59-trade",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Trade",
+      "order": 59,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-60-population",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Population",
+      "order": 60,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-61-tourism",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Tourism",
+      "order": 61,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-62-liberia-on-broad-outline",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Liberia on broad outline",
+      "order": 62,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-63-physical-setting",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Physical setting",
+      "order": 63,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-64-population",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Population",
+      "order": 64,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-65-resources",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Resources",
+      "order": 65,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-66-agriculture",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Agriculture",
+      "order": 66,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-67-transportation",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Transportation",
+      "order": 67,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-68-communication",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Communication",
+      "order": 68,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-69-industry",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Industry",
+      "order": 69,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-70-trade",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Trade",
+      "order": 70,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-71-tourism",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Tourism",
+      "order": 71,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-72-fishing",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Fishing",
+      "order": 72,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-73-mining",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Mining",
+      "order": 73,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-74-senegambia-on-broad-outline",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Senegambia on broad outline",
+      "order": 74,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-75-physical-setting",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Physical setting",
+      "order": 75,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-76-population",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Population",
+      "order": 76,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-77-resources",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Resources",
+      "order": 77,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-78-agriculture",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Agriculture",
+      "order": 78,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-79-transportation",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Transportation",
+      "order": 79,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-80-communication",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Communication",
+      "order": 80,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-81-industry",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Industry",
+      "order": 81,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-82-mining",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Mining",
+      "order": 82,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-83-fishing",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Fishing",
+      "order": 83,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-84-issues-on-development-and-environmental-concerns",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Issues on development and environmental concerns",
+      "order": 84,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-85-trade",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Trade",
+      "order": 85,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-86-tourism",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Tourism",
+      "order": 86,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-87-africa-on-broad-outline",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Africa on broad outline",
+      "order": 87,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-88-irrigation-agriculture",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Irrigation agriculture",
+      "order": 88,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-89-plantation-agriculture",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Plantation agriculture",
+      "order": 89,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-90-oil-production",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Oil production",
+      "order": 90,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-91-lumbering",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Lumbering",
+      "order": 91,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-92-gold-mining",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Gold Mining",
+      "order": 92,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-93-copper-mining",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Copper mining",
+      "order": 93,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-94-population",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Population",
+      "order": 94,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-95-ecowas",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "ECOWAS",
+      "order": 95,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-96-field-work",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "FIELD WORK",
+      "order": 96,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-97-r-b-bunnett-amp-p-o-okunrotifa-general-geography-in-diagram-for-west-africa",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "R. B. BUNNETT &amp; P.O. OKUNROTIFA General Geography in Diagram for West Africa",
+      "order": 97,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-98-b-o-akindele-amp-g-c-leong-certificate-physical-and-human-geography-west-african-edition",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "B. O. AKINDELE &amp; G. C. LEONG Certificate Physical and Human Geography (West African Edition)",
+      "order": 98,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-99-strahler-a-n-introduction-to-physical-geography",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "STRAHLER, A. N. Introduction to Physical Geography",
+      "order": 99,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-100-monkhouse-f-j-principles-of-physical-geography",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "MONKHOUSE, F. J. Principles of Physical Geography",
+      "order": 100,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-101-udo-reuben-k-comprehensive-geography-of-tropical-africa",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "UDO, REUBEN K. Comprehensive Geography of Tropical Africa",
+      "order": 101,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-102-udo-reuben-k-geographical-regions-of-nigeria",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "UDO, REUBEN K. Geographical Regions of Nigeria",
+      "order": 102,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-103-n-p-iloeje-a-new-geography-of-nigeria-new-edition",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "N. P. ILOEJE A new Geography of Nigeria (New Edition)",
+      "order": 103,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-104-m-a-abegunde-et-al-senior-secondary-geography-series",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "M. A. ABEGUNDE et al Senior Secondary Geography Series",
+      "order": 104,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-105-dickson-k-b-amp-benneh-g-new-geography-of-ghana",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "DICKSON K. B. &amp; BENNEH G. New Geography of Ghana",
+      "order": 105,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-106-dickson-amp-acheampong-geography-for-senior-secondary-schools-in-ghana",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "DICKSON &amp; ACHEAMPONG Geography for Senior Secondary Schools in Ghana",
+      "order": 106,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-107-oboli-h-o-n-an-outline-geography-of-west-africa",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "OBOLI, H.O.N. An outline Geography of West Africa",
+      "order": 107,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-108-j-i-clarke-sierra-leone-in-maps",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "J. I. CLARKE Sierra Leone in Maps",
+      "order": 108,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-109-gwyn-jones-a-new-geography-of-sierra-leone",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "GWYN-JONES A New Geography of Sierra Leone",
+      "order": 109,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-110-pritchard-j-m-africa",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "PRITCHARD, J. M. Africa",
+      "order": 110,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-111-duze-amp-afolabi-ojo-macmillan-senior-school-atlas",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "DUZE &amp; AFOLABI OJO Macmillan Senior School Atlas",
+      "order": 111,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-112-collins-new-secondary-school-atlas",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "COLLINS New Secondary School Atlas",
+      "order": 112,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-113-philips-world-atlas",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "PHILIPS World Atlas",
+      "order": 113,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-114-clary-audrey-n-longman-dictionary-of-geography-human-and-physical",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "CLARY AUDREY N. Longman Dictionary of Geography(Human and Physical)",
+      "order": 114,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-115-moore-w-e-a-penguin-dictionary-of-geography",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "MOORE, W. E. A Penguin Dictionary of geography",
+      "order": 115,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-116-n-p-iloeje-p-c-onokala-amp-f-o-odemerho-basic-geography-course-for-senior-secondary-schools-books-1-3",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "N. P. ILOEJE, P.C. ONOKALA &amp; F.O. ODEMERHO Basic Geography Course for Senior Secondary Schools Books 1-3",
+      "order": 116,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-117-macmillan-macmillan-senior-school-atlas-for-liberia-schools",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "MACMILLAN Macmillan Senior School Atlas for Liberia Schools",
+      "order": 117,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-118-guiness-p-amp-nagle-g-igcse-geography",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Guiness, P. &amp; Nagle, G. IGCSE Geography",
+      "order": 118,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list",
+      "subject": "geography",
+      "exam": "WAEC",
+      "name": "Suggested reading list",
+      "order": 119,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-geography-1-map-work-1-map-reading-and-interpretation-based-on-contoured-survey-maps-of-parts-of-west-africa-scale",
+      "topic": "waec-geography-1-map-work",
+      "name": "Map reading and interpretation based on contoured survey maps of parts of West Africa: scale",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-1-map-work-2-measurement-of-distances-direction-and-bearing-map-reduction-and-enlargement",
+      "topic": "waec-geography-1-map-work",
+      "name": "measurement of distances, direction and bearing, map reduction and enlargement",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-1-map-work-3-identification-of-physical-features-such-as-spurs-valleys-etc-and",
+      "topic": "waec-geography-1-map-work",
+      "name": "identification of physical features such as spurs, valleys, etc. and",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-1-map-work-4-cultural-features-such-as-city-walls-settlements-communication-routes-etc",
+      "topic": "waec-geography-1-map-work",
+      "name": "cultural features such as city walls, settlements, communication routes, etc.;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-1-map-work-5-measurement-of-gradients",
+      "topic": "waec-geography-1-map-work",
+      "name": "measurement of gradients",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-1-map-work-6-drawing-of-cross-profiles-inter-visibility",
+      "topic": "waec-geography-1-map-work",
+      "name": "drawing of cross profiles, inter-visibility",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-1-map-work-7-description-and-explanation-of-drainage-characteristics-and-pattern",
+      "topic": "waec-geography-1-map-work",
+      "name": "description and explanation of drainage characteristics and pattern",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-1-map-work-8-patterns-of-communication-settlement-and-land-use",
+      "topic": "waec-geography-1-map-work",
+      "name": "patterns of communication, settlement and land use",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-3-geographic-information-system-gis-1-gis-basic-concepts-components-hardware-software-data-procedures-and-experts",
+      "topic": "waec-geography-3-geographic-information-system-gis",
+      "name": "GIS: Basic concepts, components (hardware, software, data, procedures and experts)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-3-geographic-information-system-gis-2-sources-of-data-land-surveying-remote-sensing-map-digitizing-map-scanning-field-investigation-and-tabular-data-etc",
+      "topic": "waec-geography-3-geographic-information-system-gis",
+      "name": "sources of data (land surveying, remote sensing, map digitizing, map scanning, field investigation and tabular data etc)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-3-geographic-information-system-gis-3-uses-defence-agriculture-urban-development-mapping-surveying-transportation-census-etc-problems-power-personnel-capital-etc",
+      "topic": "waec-geography-3-geographic-information-system-gis",
+      "name": "uses (defence, agriculture, urban development, mapping, surveying, transportation, census etc), problems (power, personnel, capital etc)",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-4-statistical-maps-and-diagrams-1-graphical-representation-of-statistical-data-bar-graphs-line-graphs-flow-charts-dot-maps-proportional-circles-density-maps-isopleth-maps",
+      "topic": "waec-geography-4-statistical-maps-and-diagrams",
+      "name": "Graphical representation of statistical data: Bar graphs, Line graphs, flow charts, dot maps, proportional circles, density maps, isopleth maps",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-5-elements-of-physical-geography-1-the-earth-as-a-planet-in-relation-to-the-sun-latitude-and-distance-longitude-and-time-earth-s-rotation-and-revolution-and-their-effects-structure-of-the-earth-internal-and-external",
+      "topic": "waec-geography-5-elements-of-physical-geography",
+      "name": "The earth as a planet in relation to the sun, latitude and distance, longitude and time, earth’s rotation and revolution and their effects, structure of the earth (internal and external)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-6-hydrosphere-1-ocean-basins-salinity-ocean-current-causes-types-and-their-effects-on-the-temperature-of-adjacent-coastlands-lakes-rivers-lagoons-water-as-an-environmental-resource",
+      "topic": "waec-geography-6-hydrosphere",
+      "name": "Ocean basins, salinity, ocean current ( causes, types and their effects on the temperature of adjacent coastlands), lakes, rivers, lagoons, water as an environmental resource",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-7-rocks-1-types-characteristics-formation-and-uses",
+      "topic": "waec-geography-7-rocks",
+      "name": "Types, characteristics, formation and uses",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-8-tectonic-processes-1-vulcanicity-earthquake-landforms-mountains-plains-karsts-and-coastal-landforms-formation-characteristics-and-importance",
+      "topic": "waec-geography-8-tectonic-processes",
+      "name": "Vulcanicity, earthquake, landforms: Mountains, plains, karsts and coastal landforms (formation, characteristics and importance)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-9-denudational-processes-1-agencies-modifying-landforms-such-as-weathering-mass-movement-running-water-underground-water-wind-and-waves",
+      "topic": "waec-geography-9-denudational-processes",
+      "name": "Agencies modifying landforms such as weathering, mass movement, running water, underground water, wind and waves",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-10-weather-and-climate-1-simple-weather-study-based-on-local-observation-description-of-the-stevenson-s-screen-and-uses-of-basic-weather-instruments-e-g-rain-gauge-thermometer-barometer-wind-vane-etc",
+      "topic": "waec-geography-10-weather-and-climate",
+      "name": "Simple weather study based on local observation, description of the Stevenson’s screen and uses of basic weather instruments e.g. rain gauge, thermometer, barometer, wind vane etc",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-11-climate-elements-1-rainfall-sunshine-air-pressure-wind-humidity-temperature-and-cloud-factors-affecting-climatic-elements-e-g-altitude-latitude-ocean-currents-land-and-sea-breezes-continentality-aspect-interpretation-of-climatic-charts-and-data",
+      "topic": "waec-geography-11-climate-elements",
+      "name": "Rainfall, sunshine, air pressure, wind, humidity, temperature and cloud. Factors affecting climatic elements e.g. altitude, latitude, ocean currents, land and sea breezes, continentality, aspect. Interpretation of climatic charts and data",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-12-climate-classification-1-major-types-of-climate-hot-climate-equatorial-tropical-continental-desert",
+      "topic": "waec-geography-12-climate-classification",
+      "name": "Major types of climate (Hot climate – Equatorial, Tropical Continental, Desert",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-12-climate-classification-2-temperate-climate-warm-and-cool",
+      "topic": "waec-geography-12-climate-classification",
+      "name": "Temperate climate – warm and cool)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-12-climate-classification-3-classification-of-climate-based-on-greek-and-koppen",
+      "topic": "waec-geography-12-climate-classification",
+      "name": "Classification of climate based on Greek and Koppen",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-13-climate-change-1-meaning-causes-effects-and-remedies",
+      "topic": "waec-geography-13-climate-change",
+      "name": "Meaning, causes, effects and remedies",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-14-vegetation-1-major-types-tropical-rainforest-cool-warm-temperate-woodland-tropical-grassland",
+      "topic": "waec-geography-14-vegetation",
+      "name": "Major types (Tropical Rainforest, cool/warm temperate woodland, Tropical Grassland)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-14-vegetation-2-characteristics-distribution-factors-affecting-their-distribution-plant-communities",
+      "topic": "waec-geography-14-vegetation",
+      "name": "characteristics, distribution, factors affecting their distribution, plant communities",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-14-vegetation-3-vegetation-as-an-environmental-resource",
+      "topic": "waec-geography-14-vegetation",
+      "name": "Vegetation as an environmental resource",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-14-vegetation-4-conservation-of-vegetation-resources",
+      "topic": "waec-geography-14-vegetation",
+      "name": "Conservation of vegetation resources",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-15-soil-1-definition-local-types-and-characteristics-factors-and-processes-of-soil-formation-soil-profile-importance-to-man-and-the-effects-of-human-activities-on-soil-soil-erosion-and-conservation",
+      "topic": "waec-geography-15-soil",
+      "name": "Definition, local types and characteristics. Factors and processes of soil formation, soil profile, importance to man and the effects of human activities on soil. Soil erosion and conservation",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-16-environmental-resources-1-meaning-classification-renewable-and-non-renewable-types-vegetation-water-mineral-atmospheric-etc-and-the-importance-of-each",
+      "topic": "waec-geography-16-environmental-resources",
+      "name": "Meaning, classification ( renewable and non renewable) types ( vegetation, water, mineral, atmospheric, etc ) and the importance of each",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-17-environmental-problems-hazards-1-types-soil-erosion-drought-desert-encroachment-flooding-and-pollution-causes-effects-and-prevention-of-each",
+      "topic": "waec-geography-17-environmental-problems-hazards",
+      "name": "Types (soil erosion, drought, desert encroachment, flooding and pollution), causes, effects and prevention of each",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-18-environmental-conservation-1-meaning-importance-methods-problems-and-solutions",
+      "topic": "waec-geography-18-environmental-conservation",
+      "name": "Meaning, importance, methods, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-19-world-population-1-factors-and-patterns-of-growth-distribution-and-movement-growth-rate-problems",
+      "topic": "waec-geography-19-world-population",
+      "name": "Factors and patterns of growth, distribution and movement, growth rate problems",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-20-settlement-1-types-rural-and-urban",
+      "topic": "waec-geography-20-settlement",
+      "name": "Types (rural and urban)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-20-settlement-2-patterns-and-factors-affecting-location",
+      "topic": "waec-geography-20-settlement",
+      "name": "patterns and factors affecting location",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-20-settlement-3-growth-and-size-functions-of-rural-and-urban-settlements",
+      "topic": "waec-geography-20-settlement",
+      "name": "growth and size; functions of rural and urban settlements",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-20-settlement-4-interaction-patterns-urban-rural-rural-urban-urban-urban-rural-rural",
+      "topic": "waec-geography-20-settlement",
+      "name": "interaction patterns( urban-rural, rural-urban, urban-urban, rural rural)",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-20-settlement-5-migration",
+      "topic": "waec-geography-20-settlement",
+      "name": "migration",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-21-transportation-1-modes-roads-railways-water-air-pipeline-cables-ropeways-etc",
+      "topic": "waec-geography-21-transportation",
+      "name": "Modes (roads, railways, water, air, pipeline, cables, ropeways etc.)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-21-transportation-2-transportation-and-economic-development-movement-of-people-and-commodities-national-and-international-trade-diffusion-of-ideas-and-technology-national-integration",
+      "topic": "waec-geography-21-transportation",
+      "name": "Transportation and economic development (movement of people and commodities, national and international trade, diffusion of ideas and technology, national integration)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-21-transportation-3-problems-of-transportation-and-their-solutions",
+      "topic": "waec-geography-21-transportation",
+      "name": "problems of transportation and their solutions",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-22-industry-1-classification-primary-secondary-and-tertiary",
+      "topic": "waec-geography-22-industry",
+      "name": "Classification (primary, secondary and tertiary)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-22-industry-2-types-heavy-and-light-industry-factors-of-industrial-location",
+      "topic": "waec-geography-22-industry",
+      "name": "types (heavy and light industry); factors of industrial location",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-22-industry-3-contributions-to-development",
+      "topic": "waec-geography-22-industry",
+      "name": "contributions to development",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-22-industry-4-problems-solutions",
+      "topic": "waec-geography-22-industry",
+      "name": "problems/solutions",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-23-trade-1-meaning-types-national-and-international-reasons-for-trade-importance",
+      "topic": "waec-geography-23-trade",
+      "name": "Meaning, types (national and international), reasons for trade, importance",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-24-tourism-1-meaning-centres-reasons-leisure-recreation-education-etc",
+      "topic": "waec-geography-24-tourism",
+      "name": "Meaning, centres, reasons (leisure, recreation, education etc )",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-24-tourism-2-importance-problems-and-solutions",
+      "topic": "waec-geography-24-tourism",
+      "name": "importance, problems and solutions",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-25-nigeria-on-broad-outline-1-location-position-size-distance-and-political-divisions",
+      "topic": "waec-geography-25-nigeria-on-broad-outline",
+      "name": "Location, position, size, distance and political divisions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-26-physical-setting-1-relief-drainage-climate-vegetation",
+      "topic": "waec-geography-26-physical-setting",
+      "name": "Relief, drainage, climate, vegetation",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-27-population-1-size-distribution-structure-population-quality-population-movement-population-data-sources-and-problems-solutions",
+      "topic": "waec-geography-27-population",
+      "name": "Size, distribution, structure, population quality, population movement, population data ( sources and problems/solutions)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-28-resources-1-mineral-petroleum-gas-coal-tin-columbite-iron-ore-limestone",
+      "topic": "waec-geography-28-resources",
+      "name": "Mineral (petroleum, gas, coal, tin/columbite, iron ore, limestone)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-28-resources-2-distribution-methods-of-extraction-problems-and-solutions",
+      "topic": "waec-geography-28-resources",
+      "name": "distribution, methods of extraction, problems and solutions)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-28-resources-3-power-petroleum-gas-coal-hep-solar-energy",
+      "topic": "waec-geography-28-resources",
+      "name": "Power (Petroleum, gas, coal HEP, solar energy)",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-28-resources-4-water-rivers-lakes-dams-sea-underground-water",
+      "topic": "waec-geography-28-resources",
+      "name": "Water (rivers, lakes, dams, sea, underground water)",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-28-resources-5-vegetation-trees-food-and-cash-crops-timber-etc-forest-savanna-biosphere",
+      "topic": "waec-geography-28-resources",
+      "name": "Vegetation (trees, food and cash crops; timber,etc)- forest, savanna, biosphere",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-29-agriculture-1-types-of-agricultural-practices-food-and-cash-crops-importance-problems-and-solutions",
+      "topic": "waec-geography-29-agriculture",
+      "name": "Types of agricultural practices, food and cash crops, importance, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-30-transportation-1-mode-advantages-and-disadvantages-problems-and-solutions-influence-of-transportation-on-human-activities",
+      "topic": "waec-geography-30-transportation",
+      "name": "Mode, advantages and disadvantages, problems and solutions, influence of transportation on human activities",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-31-communication-1-communication-networks-advantages-and-disadvantages-importance-problems-and-solutions",
+      "topic": "waec-geography-31-communication",
+      "name": "Communication networks, advantages and disadvantages, importance, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-32-industry-1-definition-types-major-industrial-zones-factors-of-location-importance-problems-and-solutions",
+      "topic": "waec-geography-32-industry",
+      "name": "Definition, types, major industrial zones, factors of location, importance, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-33-trade-1-meaning-types-national-and-international-stock-exchange-capital-market-forex-major-commercial-areas-importance-of-commercial-activities",
+      "topic": "waec-geography-33-trade",
+      "name": "Meaning, types (national and international), stock exchange, capital market, forex, major commercial areas, importance of commercial activities",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-34-tourism-1-meaning-centres-reasons-for-tourism-importance-problems-and-solutions",
+      "topic": "waec-geography-34-tourism",
+      "name": "Meaning, centres, reasons for tourism, importance, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-35-issues-on-development-and-environmental-concerns-1-issues-of-development-and-environmental-conservation-rural-and-regional-development-resource-management-and-conservation-environmental-pollution-e-g-air-water-soil-noise-waste-disposal-etc",
+      "topic": "waec-geography-35-issues-on-development-and-environmental-concerns",
+      "name": "Issues of Development and Environmental Conservation: Rural and regional development, resource management and conservation, environmental pollution e.g. air, water, soil, noise; waste disposal, etc",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-36-ecowas-1-meaning-member-countries-purposes-mandate-advantages-benefits-disadvantages-problems-and-solutions",
+      "topic": "waec-geography-36-ecowas",
+      "name": "Meaning, member countries, purposes/mandate, advantages/benefits, disadvantages, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-37-geo-political-issues-1-geo-political-issues-land-reclamation",
+      "topic": "waec-geography-37-geo-political-issues",
+      "name": "Geo-political issues-Land reclamation",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-38-ghana-on-broad-outline-1-location-position-size-distance-and-political-divisions",
+      "topic": "waec-geography-38-ghana-on-broad-outline",
+      "name": "Location, position, size, distance and political divisions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-39-physical-setting-1-physical-environment-geology-relief-drainage-climate-vegetation-and-soils",
+      "topic": "waec-geography-39-physical-setting",
+      "name": "Physical environment (geology, relief, drainage, climate, vegetation and soils)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-40-population-1-size-growth-distribution-and-density-age-sex-structure-fertility-morbidity-and-mortality-migration",
+      "topic": "waec-geography-40-population",
+      "name": "Size, growth, distribution and density, age/sex structure: fertility, morbidity and mortality, migration",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-41-settlement-1-origin-types-rural-and-urban-characteristics-hierarchy",
+      "topic": "waec-geography-41-settlement",
+      "name": "Origin, types (rural and urban), characteristics, hierarchy,",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-43-agriculture-1-subsistence-intensive-and-extensive-commercial-vegetable-livestock-dairying-commercial-grain-plantation-problems-and-solutions",
+      "topic": "waec-geography-43-agriculture",
+      "name": "Subsistence (intensive and extensive) commercial (vegetable, livestock, dairying, commercial grain), plantation, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-44-fishing-1-inland-and-ocean-in-shore-off-shore-methods-types-of-fish-storage-and-marketing-importance-problems-and-solutions-sources-of-timber-methods-of-exploitation-types-of-species",
+      "topic": "waec-geography-44-fishing",
+      "name": "Inland and ocean (in-shore/off shore), methods, types of fish, storage and marketing, importance, problems and solutions. Sources of timber, methods of exploitation, types of species",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-45-lumbering-1-for-internal-use-and-for-export-problems-and-solutions-conservation",
+      "topic": "waec-geography-45-lumbering",
+      "name": "(for internal use and for export), problems and solutions, conservation",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-46-mining-1-types-distribution-of-minerals-methods-of-extraction-importance-problems-and-solutions",
+      "topic": "waec-geography-46-mining",
+      "name": "Types, distribution of minerals, methods of extraction, importance, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-47-manufacturing-1-types-of-manufacturing-industries-distribution-factors-influencing-location-of-industries-problems-of-industrialization",
+      "topic": "waec-geography-47-manufacturing",
+      "name": "Types of manufacturing industries, distribution, factors influencing location of industries, problems of industrialization",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-48-trade-and-commerce-1-services-transport-and-communication-recreation-and-tourism-administration",
+      "topic": "waec-geography-48-trade-and-commerce",
+      "name": "Services, transport and communication, recreation and tourism, administration",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-49-tourism-1-meaning-centres-reasons-for-tourism-importance-problems-and-solutions",
+      "topic": "waec-geography-49-tourism",
+      "name": "Meaning, centres, reasons for tourism, importance, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-50-energy-and-power-1-water-akosombo-and-kpong-hydro-electric-power-projects-benefits-and-side-effects-fuel-wood-and-charcoal-petroleum-and-natural-gas-saltpond-solar-wave-and-wind-energies-donkokrom-and-kokrobite-biogas-e-g-cow-dung",
+      "topic": "waec-geography-50-energy-and-power",
+      "name": "Water (Akosombo and Kpong Hydro-electric Power projects – benefits and side effects), fuel wood and charcoal, petroleum and natural gas (Saltpond), solar, wave and wind energies (Donkokrom and Kokrobite), Biogas e.g. cow dung",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-51-issues-on-development-and-environmental-concerns-1-issues-of-development-and-environmental-conservation-rural-and-regional-development-resource-management-and-conservation-environmental-pollution-e-g-air-water-soil-noise-waste-disposal-etc",
+      "topic": "waec-geography-51-issues-on-development-and-environmental-concerns",
+      "name": "Issues of Development and Environmental Conservation: Rural and regional development, resource management and conservation, environmental pollution e.g. air, water, soil, noise; waste disposal etc",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-52-sierra-leone-on-broad-outline-1-size-and-location-physical-environment-people-and-settlements",
+      "topic": "waec-geography-52-sierra-leone-on-broad-outline",
+      "name": "Size and location, physical environment, people and settlements",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-53-agriculture-1-meaning-of-agriculture-subsistence-intensive-and-extensive-commercial-vegetable-livestock-dairying-commercial-grain-production-plantation-problems-and-solutions",
+      "topic": "waec-geography-53-agriculture",
+      "name": "Meaning of agriculture, Subsistence (intensive and extensive) commercial (vegetable, livestock, dairying, commercial grain production), plantation, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-54-fishing-1-meaning-of-fishing-inland-and-ocean-in-shore-off-shore-methods-types-of-fish-storage-and-marketing-importance-problems-and-solutions",
+      "topic": "waec-geography-54-fishing",
+      "name": "Meaning of fishing, Inland and ocean (in-shore/off shore), methods, types of fish, storage and marketing, importance, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-55-lumbering-1-meaning-of-lumbering-sources-of-timber-methods-of-exploitation-types-of-species-for-internal-use-and-for-export-problems-and-solutions-conservation",
+      "topic": "waec-geography-55-lumbering",
+      "name": "Meaning of lumbering, Sources of timber, methods of exploitation, types of species (for internal use and for export), problems and solutions, conservation",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-56-mining-1-types-distribution-of-minerals-methods-of-extraction-problems-and-solutions",
+      "topic": "waec-geography-56-mining",
+      "name": "Types, distribution of minerals, methods of extraction, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-57-manufacturing-1-location-of-industry-types-of-industries-problems-of-manufacturing-industry-energy-and-power-water-fuelwood-and-charcoal-biogas-e-g-cow-dung-hydroelectric-power-projects-e-g-dodo-guma-bumbuna",
+      "topic": "waec-geography-57-manufacturing",
+      "name": "Location of industry, types of industries, problems of manufacturing industry, Energy and Power, water, fuelwood and charcoal, biogas (e.g. cow-dung), hydroelectric power projects e.g. Dodo, Guma, Bumbuna",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-58-transport-and-communication-1-road-rail-water-air-the-roles-of-transport-and-communication-to-economic-development-internal-and-external-trade-diffusion-of-ideas-and-technology-problems-of-transport-and-communication-solutions",
+      "topic": "waec-geography-58-transport-and-communication",
+      "name": "Road, rail, water, air, the roles of transport and communication to economic development,( internal and external trade, diffusion of ideas and technology), problems of transport and communication, solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-59-trade-1-major-commodities-of-trade-agricultural-manufactured-goods-minerals-etc-patterns-of-trade-internal-and-external-problems-of-trade",
+      "topic": "waec-geography-59-trade",
+      "name": "Major commodities of trade (agricultural, manufactured goods, minerals, etc.), patterns of trade (internal and external), problems of trade",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-60-population-1-size-growth-distribution-and-migration",
+      "topic": "waec-geography-60-population",
+      "name": "Size, growth, distribution and migration",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-61-tourism-1-meaning-development-of-tourism-problems-of-tourism-amp-solutions-socio-economic-effects-of-tourism-main-tourism-areas-factors-responsible-for-its-development-economic-importance",
+      "topic": "waec-geography-61-tourism",
+      "name": "Meaning, development of tourism, problems of tourism &amp; solutions, socio-economic effects of tourism. Main tourism areas, factors responsible for its development, economic importance",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-62-liberia-on-broad-outline-1-location-position-size-distance-and-political-divisions",
+      "topic": "waec-geography-62-liberia-on-broad-outline",
+      "name": "Location, position, size, distance and political divisions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-63-physical-setting-1-relief-drainage-climate-vegetation-and-soil",
+      "topic": "waec-geography-63-physical-setting",
+      "name": "Relief, drainage, climate, vegetation and soil",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-64-population-1-size-distribution-structure-population-quality-population-movement-population-data-sources-problems-amp-solutions",
+      "topic": "waec-geography-64-population",
+      "name": "Size, distribution, structure, population quality, population movement, population data ( sources, problems &amp; solutions)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-65-resources-1-mineral-power-water-and-vegetation-resources-importance-of-resources-to-development",
+      "topic": "waec-geography-65-resources",
+      "name": "Mineral, power, water and vegetation resources, importance of resources to development",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-66-agriculture-1-types-of-agricultural-practices-food-and-cash-crops-importance-problems-and-solutions",
+      "topic": "waec-geography-66-agriculture",
+      "name": "Types of agricultural practices, food and cash crops, importance, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-67-transportation-1-mode-advantages-and-disadvantages-problems-and-solutions-influence-of-transportation-on-human-activities",
+      "topic": "waec-geography-67-transportation",
+      "name": "Mode, advantages and disadvantages, problems and solutions, influence of transportation on human activities",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-68-communication-1-communication-networks-advantages-and-disadvantages-importance-problems-amp-solutions",
+      "topic": "waec-geography-68-communication",
+      "name": "Communication networks, advantages and disadvantages, importance, problems &amp; solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-69-industry-1-definition-types-major-industrial-zones-factors-of-location-importance-problems-and-solutions-importance",
+      "topic": "waec-geography-69-industry",
+      "name": "Definition, types, major industrial zones, factors of location, importance, problems and solutions, importance",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-70-trade-1-meaning-types-national-and-international-forex-major-commercial-areas-importance-of-commercial-activities",
+      "topic": "waec-geography-70-trade",
+      "name": "Meaning, types ( national and international), forex, major commercial areas, importance of commercial activities",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-71-tourism-1-meaning-centres-reasons-for-tourism-importance-problems-and-solutions",
+      "topic": "waec-geography-71-tourism",
+      "name": "Meaning, centres, reasons for tourism, importance, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-72-fishing-1-meaning-of-fishing-inland-and-ocean-in-shore-off-shore-methods-types-of-fish-storage-and-marketing-importance-problems-and-solutions",
+      "topic": "waec-geography-72-fishing",
+      "name": "Meaning of fishing, Inland and ocean (in-shore/off shore), methods, types of fish, storage and marketing, importance, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-73-mining-1-types-distribution-of-minerals-methods-of-extraction-problems-and-solutions",
+      "topic": "waec-geography-73-mining",
+      "name": "Types, distribution of minerals, methods of extraction, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-74-senegambia-on-broad-outline-1-location-position-size-distance-and-political-divisions",
+      "topic": "waec-geography-74-senegambia-on-broad-outline",
+      "name": "Location, position, size, distance and political divisions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-75-physical-setting-1-relief-drainage-climate-vegetation-and-soil",
+      "topic": "waec-geography-75-physical-setting",
+      "name": "Relief, drainage, climate, vegetation and soil",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-76-population-1-size-distribution-structure-population-quality-population-movement-population-data-sources-problems-amp-solutions",
+      "topic": "waec-geography-76-population",
+      "name": "Size, distribution, structure, population quality, population movement, population data ( sources, problems &amp;solutions)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-77-resources-1-mineral-power-water-and-vegetation-resources-importance-of-resources-to-development",
+      "topic": "waec-geography-77-resources",
+      "name": "Mineral, power, water and vegetation resources, importance of resources to development",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-78-agriculture-1-types-of-agricultural-practices-food-and-cash-crops-importance-problems-and-solutions",
+      "topic": "waec-geography-78-agriculture",
+      "name": "Types of agricultural practices, food and cash crops, importance, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-79-transportation-1-mode-advantages-and-disadvantages-influence-of-transportation-on-human-activities-problems-and-solutions",
+      "topic": "waec-geography-79-transportation",
+      "name": "Mode, advantages and disadvantages, influence of transportation on human activities, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-80-communication-1-communication-networks-advantages-and-disadvantages-importance-problems-and-solutions",
+      "topic": "waec-geography-80-communication",
+      "name": "Communication networks, advantages and disadvantages, importance, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-81-industry-1-definition-types-major-industrial-zones-factors-of-location-importance-problems-and-solutions",
+      "topic": "waec-geography-81-industry",
+      "name": "Definition, types, major industrial zones, factors of location, importance, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-82-mining-1-types-distribution-methods-of-extraction-problems-and-solutions",
+      "topic": "waec-geography-82-mining",
+      "name": "Types, distribution, methods of extraction, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-83-fishing-1-meaning-of-fishing-inland-and-ocean-in-shore-off-shore-methods-types-of-fish-storage-and-marketing-problems-and-solutions",
+      "topic": "waec-geography-83-fishing",
+      "name": "Meaning of fishing, Inland and ocean (in-shore/off shore), methods, types of fish, storage and marketing, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-84-issues-on-development-and-environmental-concerns-1-issues-of-development-and-environmental-conservation-rural-and-regional-development-resource-management-and-conservation-environmental-pollution-e-g-air-water-soil-noise-waste-disposal-etc",
+      "topic": "waec-geography-84-issues-on-development-and-environmental-concerns",
+      "name": "Issues of Development and Environmental Conservation: Rural and regional development, resource management and conservation, environmental pollution e.g. air, water, soil, noise, waste disposal etc",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-85-trade-1-meaning-types-national-and-international-forex-major-commercial-areas-importance-of-commercial-activities-problems-and-solutions",
+      "topic": "waec-geography-85-trade",
+      "name": "Meaning, types (national and international), forex, major commercial areas, importance of commercial activities, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-86-tourism-1-meaning-centres-reasons-for-tourism-importance-problems-and-solutions",
+      "topic": "waec-geography-86-tourism",
+      "name": "Meaning, centres, reasons for tourism, importance, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-87-africa-on-broad-outline-1-location-size-position-political-divisions-and-associated-islands-physical-features-and-their-economic-importance-relief-drainage-climate-and-vegetation-distribution-of-minerals",
+      "topic": "waec-geography-87-africa-on-broad-outline",
+      "name": "Location, size, position, political divisions and associated islands, physical features and their economic importance (relief, drainage, climate and vegetation), distribution of minerals",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-88-irrigation-agriculture-1-irrigation-agriculture-in-the-nile-basin-and-the-niger-basin",
+      "topic": "waec-geography-88-irrigation-agriculture",
+      "name": "Irrigation agriculture in the Nile Basin and the Niger Basin",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-89-plantation-agriculture-1-plantation-agriculture-in-west-and-east-africa",
+      "topic": "waec-geography-89-plantation-agriculture",
+      "name": "Plantation agriculture in West and East Africa",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-90-oil-production-1-oil-production-in-nigeria-ghana-and-libya",
+      "topic": "waec-geography-90-oil-production",
+      "name": "Oil production in Nigeria, Ghana and Libya",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-91-lumbering-1-lumbering-in-equatorial-africa-with-particular-reference-to-cote-d-ivoire-and-zaire",
+      "topic": "waec-geography-91-lumbering",
+      "name": "Lumbering in Equatorial Africa (with particular reference to Cote d’Ivoire and Zaire)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-92-gold-mining-1-gold-mining-in-south-africa",
+      "topic": "waec-geography-92-gold-mining",
+      "name": "Gold mining in South Africa",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-93-copper-mining-1-copper-mining-in-zambia-and-zaire",
+      "topic": "waec-geography-93-copper-mining",
+      "name": "Copper mining in Zambia and Zaire",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-94-population-1-population-distribution-in-west-africa",
+      "topic": "waec-geography-94-population",
+      "name": "Population distribution in West Africa",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-95-ecowas-1-meaning-member-countries-purposes-mandate-advantages-benefits-disadvantages-problems-and-solutions",
+      "topic": "waec-geography-95-ecowas",
+      "name": "Meaning, member countries, purposes/mandate, advantages/benefits, disadvantages, problems and solutions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-96-field-work-1-land-use-rural-or-urban-rural-crop-farming-e-g-rice-cocoa-etc-urban-crop-farming-mining-e-g-coal-tin-petroleum-etc-fishing-urban-commercial-activities-ports-factories-recreational-etc",
+      "topic": "waec-geography-96-field-work",
+      "name": "Land use (rural or urban): rural – crop farming (e.g. rice, cocoa, etc. ) urban crop farming mining (e.g. coal, tin, petroleum etc.), fishing. urban – commercial activities, ports, factories, recreational etc",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-96-field-work-2-market-survey-rural-or-urban",
+      "topic": "waec-geography-96-field-work",
+      "name": "Market survey – rural or urban",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-96-field-work-3-traffic-flow-rural-or-urban",
+      "topic": "waec-geography-96-field-work",
+      "name": "Traffic flow – rural or urban",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-96-field-work-4-patterns-of-journey-to-work-rural-or-urban",
+      "topic": "waec-geography-96-field-work",
+      "name": "Patterns of journey to work – rural or urban",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-96-field-work-5-rate-of-erosion-in-the-locality-etc",
+      "topic": "waec-geography-96-field-work",
+      "name": "Rate of erosion in the locality, etc",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-1-r-b-bunnett-p-o-okunrotifa-general-geography-in-diagram-for-west-africa-longman",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "R. B. Bunnett & P. O. Okunrotifa — General Geography in Diagram for West Africa (Longman)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-2-b-o-akindele-g-c-leong-certificate-physical-and-human-geography-west-african-edition-oxford",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "B. O. Akindele & G. C. Leong — Certificate Physical and Human Geography, West African Edition (Oxford)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-3-strahler-a-n-introduction-to-physical-geography-wiley-international-edition",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Strahler, A. N. — Introduction to Physical Geography (Wiley International Edition)",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-4-monkhouse-f-j-principles-of-physical-geography-university-of-london",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Monkhouse, F. J. — Principles of Physical Geography (University of London)",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-5-udo-reuben-k-comprehensive-geography-of-tropical-africa-longman",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Udo, Reuben K. — Comprehensive Geography of Tropical Africa (Longman)",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-6-udo-reuben-k-geographical-regions-of-nigeria-longman",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Udo, Reuben K. — Geographical Regions of Nigeria (Longman)",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-7-n-p-iloeje-a-new-geography-of-nigeria-new-edition-longman",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "N. P. Iloeje — A New Geography of Nigeria, new edition (Longman)",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-8-m-a-abegunde-et-al-senior-secondary-geography-series-1-3-longman",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "M. A. Abegunde et al. — Senior Secondary Geography Series 1–3 (Longman)",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-9-dickson-k-b-benneh-g-new-geography-of-ghana-ghana-universities-press",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Dickson, K. B. & Benneh, G. — New Geography of Ghana (Ghana Universities Press)",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-10-dickson-acheampong-geography-for-senior-secondary-schools-in-ghana-ghana-education-service",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Dickson & Acheampong — Geography for Senior Secondary Schools in Ghana (Ghana Education Service)",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-11-oboli-h-o-n-an-outline-geography-of-west-africa-harrap-company",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Oboli, H. O. N. — An Outline Geography of West Africa (Harrap & Company)",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-12-j-i-clarke-sierra-leone-in-maps-hodder-stoughton",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "J. I. Clarke — Sierra Leone in Maps (Hodder & Stoughton)",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-13-gwyn-jones-a-new-geography-of-sierra-leone-hodder-stoughton",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Gwyn-Jones — A New Geography of Sierra Leone (Hodder & Stoughton)",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-14-pritchard-j-m-africa-longman",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Pritchard, J. M. — Africa (Longman)",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-15-m-duze-afolabi-ojo-macmillan-senior-school-atlas-macmillan",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "M. Duze & Afolabi Ojo — Macmillan Senior School Atlas (Macmillan)",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-16-collins-new-secondary-school-atlas-longman",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Collins — New Secondary School Atlas (Longman)",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-17-philips-world-atlas",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Philips — World Atlas",
+      "order": 17,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-18-clary-audrey-n-longman-dictionary-of-geography-human-and-physical-longman",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Clary, Audrey N. — Longman Dictionary of Geography (Human and Physical) (Longman)",
+      "order": 18,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-19-moore-w-e-a-penguin-dictionary-of-geography",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Moore, W. E. — A Penguin Dictionary of Geography",
+      "order": 19,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-20-n-p-iloeje-p-c-onokala-f-o-odemerho-basic-geography-course-for-senior-secondary-schools-books-1-3-longman",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "N. P. Iloeje, P. C. Onokala & F. O. Odemerho — Basic Geography Course for Senior Secondary Schools, Books 1–3 (Longman)",
+      "order": 20,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-21-macmillan-macmillan-senior-school-atlas-for-liberia-schools-macmillan",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Macmillan — Macmillan Senior School Atlas for Liberia Schools (Macmillan)",
+      "order": 21,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geography-119-suggested-reading-list-22-guiness-p-nagle-g-igcse-geography-hodder-education-uk",
+      "topic": "waec-geography-119-suggested-reading-list",
+      "name": "Guiness, P. & Nagle, G. — IGCSE Geography (Hodder Education, UK)",
+      "order": 22,
+      "objectives": []
+    }
+  ]
+}

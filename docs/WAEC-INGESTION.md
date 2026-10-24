@@ -56,6 +56,7 @@ civic-education
 economics
 english-language
 financial-accounting
+geography
 further-mathematics
 government
 insurance
