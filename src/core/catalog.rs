@@ -378,18 +378,18 @@ mod tests {
 
     #[test]
     fn resolve_media_url_formats() {
-        let base = "https://assets.utmelab.com";
+        let base = crate::config::DEFAULT_MEDIA_BASE_URL;
         assert_eq!(
             resolve_media_url("0123456789abcdef.png", base),
-            "https://assets.utmelab.com/images/0123456789abcdef.png"
+            "https://gitlab.com/shedrackgodstime/utmelab-bank/-/raw/main/images/0123456789abcdef.png"
         );
         assert_eq!(
             resolve_media_url("/leading/slash.png", base),
-            "https://assets.utmelab.com/images/leading/slash.png"
+            "https://gitlab.com/shedrackgodstime/utmelab-bank/-/raw/main/images/leading/slash.png"
         );
         assert_eq!(
             resolve_media_url("images/already-prefixed.png", base),
-            "https://assets.utmelab.com/images/already-prefixed.png"
+            "https://gitlab.com/shedrackgodstime/utmelab-bank/-/raw/main/images/already-prefixed.png"
         );
         assert_eq!(
             resolve_media_url("https://myschool.ng/fig.png", base),
@@ -443,10 +443,13 @@ mod tests {
             }];
         }
 
-        let r = render(&q, true, "https://assets.utmelab.com");
+        let r = render(&q, true, crate::config::DEFAULT_MEDIA_BASE_URL);
         match &r.text.inline[0].kind {
             InlineKind::Image { url, .. } => {
-                assert_eq!(url, "https://assets.utmelab.com/images/stem_diagram.png");
+                assert_eq!(
+                    url,
+                    "https://gitlab.com/shedrackgodstime/utmelab-bank/-/raw/main/images/stem_diagram.png"
+                );
             }
             _ => panic!("expected image"),
         }
@@ -459,7 +462,10 @@ mod tests {
         let exp = r.explanation.expect("explanation present");
         match &exp.key_point.inline[0].kind {
             InlineKind::Image { url, .. } => {
-                assert_eq!(url, "https://assets.utmelab.com/images/keypoint.png");
+                assert_eq!(
+                    url,
+                    "https://gitlab.com/shedrackgodstime/utmelab-bank/-/raw/main/images/keypoint.png"
+                );
             }
             _ => panic!("expected image"),
         }
