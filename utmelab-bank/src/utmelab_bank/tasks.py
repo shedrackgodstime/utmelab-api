@@ -26,6 +26,7 @@ from utmelab_bank.adapters.review_service import ReviewService
 from utmelab_bank.adapters.store.index import BANK, BATCH, PRODUCTION
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.models import Scope, StagingItem
+from utmelab_bank.domain.ports import Source
 from utmelab_bank.runtime import Runtime, require
 
 logger = logging.getLogger(__name__)
@@ -249,13 +250,7 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
     result = TaskResult(task="fetch")
 
     if options.dry_run:
-        coverage = await source.probe(scope)
-        result.seen = coverage.item_count
-        result.note(
-            f"{source.profile.name}: {coverage.item_count} item(s) for "
-            f"{scope.exam}/{scope.subject}/{scope.year}"
-        )
-        return result
+        return await probe(source, options)
 
     catalog = (
         await runtime.catalog_for(scope.exam, scope.subject, scope.country)
@@ -387,6 +382,20 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
         logger.exception("the source fetch failed")
         result.fail(f"{source.profile.name}: {type(exc).__name__}: {exc}")
 
+    return result
+
+
+async def probe(source: Source, options: TaskOptions) -> TaskResult:
+    """Probe a source without opening or touching either database."""
+    scope = _scope(options)
+    coverage = await source.probe(scope)
+    result = TaskResult(task="fetch", seen=coverage.item_count)
+    result.note(
+        f"{source.profile.name}: {coverage.item_count} item(s) for "
+        f"{scope.exam}/{scope.subject}/{scope.year}"
+    )
+    if coverage.has_more:
+        result.note("source reports more than one page")
     return result
 
 
@@ -746,6 +755,7 @@ __all__ = [
     "fetch",
     "index",
     "media",
+    "probe",
     "ready",
     "review",
     "run_named",

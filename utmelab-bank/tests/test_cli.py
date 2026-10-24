@@ -68,3 +68,28 @@ def test_batch_commands_accept_country_scope() -> None:
     args = build_parser().parse_args(["tag", "--country", "NG"])
 
     assert args.country == "NG"
+
+
+def test_source_dry_run_does_not_need_database_setup(
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    assert (
+        main(
+            [
+                "scrape",
+                "--exam",
+                "JAMB",
+                "--subject",
+                "physics",
+                "--year",
+                "2025",
+                "--source",
+                "fixture",
+                "--dry-run",
+                "--json",
+            ]
+        )
+        == 0
+    )
+    payload = json.loads(capsys.readouterr().out)
+    assert payload[0]["task"] == "fetch"

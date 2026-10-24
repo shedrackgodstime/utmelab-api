@@ -20,6 +20,7 @@ from pathlib import Path
 from utmelab_bank.adapters.database import DatabaseError
 from utmelab_bank.adapters.media import MediaError
 from utmelab_bank.adapters.providers.opencode import OpenCodeError
+from utmelab_bank.adapters.sources import create_source
 from utmelab_bank.config import ConfigError, load_settings
 from utmelab_bank.runtime import open_pipeline_runtime, open_store_runtime
 from utmelab_bank.tasks import (
@@ -29,6 +30,7 @@ from utmelab_bank.tasks import (
     TaskOptions,
     TaskResult,
     UsageError,
+    probe,
     run_named,
     run_preset,
     summary,
@@ -145,7 +147,6 @@ def build_parser() -> argparse.ArgumentParser:
 
 async def _execute(args: argparse.Namespace) -> list[TaskResult]:
     """Open the smallest runtime each command can run with."""
-    settings = load_settings()
     options = TaskOptions(
         exam=getattr(args, "exam", None),
         subject=getattr(args, "subject", None),
@@ -157,6 +158,17 @@ async def _execute(args: argparse.Namespace) -> list[TaskResult]:
     )
     command = str(args.command)
     provider = getattr(args, "provider", None)
+
+    if command in ("fetch", "scrape") and options.dry_run:
+        source = create_source(args.source, fixture_dir=args.fixture_dir)
+        try:
+            return [await probe(source, options)]
+        finally:
+            close = getattr(source, "close", None)
+            if callable(close):
+                await close()
+
+    settings = load_settings()
 
     if command in ("status", "index", "ready"):
         async with open_store_runtime(settings) as runtime:
