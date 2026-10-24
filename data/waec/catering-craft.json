@@ -1,0 +1,482 @@
+{
+  "subjects": [
+    {
+      "slug": "catering-craft",
+      "exam": "WAEC",
+      "name": "Catering Craft",
+      "is_compulsory": false,
+      "objective_paper_questions": 40,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "catering-craft-practice"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-catering-craft-1-hospitality-industry-catering",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Hospitality industry/catering",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-2-types-of-catering-establishments",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Types of catering establishments",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-3-culinary-terms",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Culinary terms",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-4-safety-precautions-in-catering",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Safety precautions in catering",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-5-sanitation-and-hygiene-in-catering",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Sanitation and Hygiene in catering",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-6-study-of-food-commodities-and-principles-of-cooking-methods",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Study of food commodities and principles of cooking methods",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-7-principles-of-cooking-methods-and-practical-demonstrations",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Principles of cooking methods and practical demonstrations",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-8-food-and-beverage-service-personnel",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Food and beverage service personnel",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-9-types-of-food-service-and-table-laying-setting",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Types of food service and table laying/setting",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-10-types-of-alcoholic-and-nonalcoholic-drinks",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Types of alcoholic and nonalcoholic drinks",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-11-costing-and-control-in-catering",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Costing and control in catering",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-12-types-of-kitchen-equipment-and-their-uses",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Types of kitchen equipment and their uses",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-13-care-and-maintenance-of-kitchen-equipment",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Care and maintenance of kitchen equipment",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-14-principles-of-menu-planning",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Principles of menu planning",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-15-types-of-menu-and-demonstrations",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Types of menu and demonstrations",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-16-special-menu-and-demonstrations",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Special menu and demonstrations",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-catering-craft-17-accompaniments",
+      "subject": "catering-craft",
+      "exam": "WAEC",
+      "name": "Accompaniments",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-catering-craft-1-hospitality-industry-catering-1-components-of-the-hospitality-industry",
+      "topic": "waec-catering-craft-1-hospitality-industry-catering",
+      "name": "Components of the hospitality industry",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-2-types-of-catering-establishments-1-types-of-catering-establishments-e-g-hotel-restaurant-hospitality-catering-outdoor-catering-school-mobile-catering-etc",
+      "topic": "waec-catering-craft-2-types-of-catering-establishments",
+      "name": "Types of catering establishments, e.g., hotel, restaurant, hospitality catering, outdoor catering, school, mobile catering, etc",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-2-types-of-catering-establishments-2-functions-of-catering-establishments",
+      "topic": "waec-catering-craft-2-types-of-catering-establishments",
+      "name": "Functions of catering establishments",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-3-culinary-terms-1-culinary-terms-commonly-used-in-catering",
+      "topic": "waec-catering-craft-3-culinary-terms",
+      "name": "Culinary terms commonly used in catering",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-3-culinary-terms-2-glossary-of-culinary-terms",
+      "topic": "waec-catering-craft-3-culinary-terms",
+      "name": "Glossary of culinary terms",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-4-safety-precautions-in-catering-1-types-and-causes-of-accidents",
+      "topic": "waec-catering-craft-4-safety-precautions-in-catering",
+      "name": "Types and causes of accidents",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-4-safety-precautions-in-catering-2-prevention-management",
+      "topic": "waec-catering-craft-4-safety-precautions-in-catering",
+      "name": "Prevention/management.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-4-safety-precautions-in-catering-3-first-aid",
+      "topic": "waec-catering-craft-4-safety-precautions-in-catering",
+      "name": "First aid",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-4-safety-precautions-in-catering-4-firefighting-equipment",
+      "topic": "waec-catering-craft-4-safety-precautions-in-catering",
+      "name": "Firefighting equipment",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-5-sanitation-and-hygiene-in-catering-1-water-sanitation",
+      "topic": "waec-catering-craft-5-sanitation-and-hygiene-in-catering",
+      "name": "Water sanitation",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-5-sanitation-and-hygiene-in-catering-2-environmental-sanitation",
+      "topic": "waec-catering-craft-5-sanitation-and-hygiene-in-catering",
+      "name": "Environmental sanitation",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-5-sanitation-and-hygiene-in-catering-3-food-safety-practices",
+      "topic": "waec-catering-craft-5-sanitation-and-hygiene-in-catering",
+      "name": "Food safety practices",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-5-sanitation-and-hygiene-in-catering-4-kitchen-hygiene",
+      "topic": "waec-catering-craft-5-sanitation-and-hygiene-in-catering",
+      "name": "Kitchen hygiene",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-5-sanitation-and-hygiene-in-catering-5-personal-hygiene",
+      "topic": "waec-catering-craft-5-sanitation-and-hygiene-in-catering",
+      "name": "Personal hygiene",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-6-study-of-food-commodities-and-principles-of-cooking-methods-1-food-commodities-e-g-poultry-game-meat-fish-vegetables-fruits-dairy-products-pulses-cereals-herbs-flavorings-etc",
+      "topic": "waec-catering-craft-6-study-of-food-commodities-and-principles-of-cooking-methods",
+      "name": "Food commodities e.g. poultry, game, meat, fish, vegetables, fruits, dairy products, pulses, cereals, herbs, flavorings etc",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-7-principles-of-cooking-methods-and-practical-demonstrations-1-principles-of-cooking-methods",
+      "topic": "waec-catering-craft-7-principles-of-cooking-methods-and-practical-demonstrations",
+      "name": "Principles of cooking methods",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-7-principles-of-cooking-methods-and-practical-demonstrations-2-preparation-of-the-various-food-commodities",
+      "topic": "waec-catering-craft-7-principles-of-cooking-methods-and-practical-demonstrations",
+      "name": "Preparation of the various food commodities.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-7-principles-of-cooking-methods-and-practical-demonstrations-3-standard-local-measurements",
+      "topic": "waec-catering-craft-7-principles-of-cooking-methods-and-practical-demonstrations",
+      "name": "Standard/local measurements.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-8-food-and-beverage-service-personnel-1-personnel-in-the-food-and-beverage-area",
+      "topic": "waec-catering-craft-8-food-and-beverage-service-personnel",
+      "name": "Personnel in the food and beverage area.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-8-food-and-beverage-service-personnel-2-functions-of-food-and-beverage-personnel",
+      "topic": "waec-catering-craft-8-food-and-beverage-service-personnel",
+      "name": "Functions of food and beverage personnel.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-9-types-of-food-service-and-table-laying-setting-1-different-types-of-food-service-e-g-gueridon-silver-service-waiter-service-vending-buffet-and-banquet-service",
+      "topic": "waec-catering-craft-9-types-of-food-service-and-table-laying-setting",
+      "name": "Different types of food service e.g. Gueridon, silver service, waiter service, vending, buffet and banquet service.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-9-types-of-food-service-and-table-laying-setting-2-types-of-covers",
+      "topic": "waec-catering-craft-9-types-of-food-service-and-table-laying-setting",
+      "name": "Types of covers",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-9-types-of-food-service-and-table-laying-setting-3-types-of-table-laying-setting",
+      "topic": "waec-catering-craft-9-types-of-food-service-and-table-laying-setting",
+      "name": "Types of table laying/setting",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-10-types-of-alcoholic-and-nonalcoholic-drinks-1-bar",
+      "topic": "waec-catering-craft-10-types-of-alcoholic-and-nonalcoholic-drinks",
+      "name": "Bar",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-10-types-of-alcoholic-and-nonalcoholic-drinks-2-alcoholic-beverages",
+      "topic": "waec-catering-craft-10-types-of-alcoholic-and-nonalcoholic-drinks",
+      "name": "Alcoholic beverages",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-10-types-of-alcoholic-and-nonalcoholic-drinks-3-nonalcoholic-beverages",
+      "topic": "waec-catering-craft-10-types-of-alcoholic-and-nonalcoholic-drinks",
+      "name": "Nonalcoholic beverages",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-11-costing-and-control-in-catering-1-cost-sales",
+      "topic": "waec-catering-craft-11-costing-and-control-in-catering",
+      "name": "Cost/sales",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-11-costing-and-control-in-catering-2-dish-costing",
+      "topic": "waec-catering-craft-11-costing-and-control-in-catering",
+      "name": "Dish costing",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-11-costing-and-control-in-catering-3-portion-control",
+      "topic": "waec-catering-craft-11-costing-and-control-in-catering",
+      "name": "Portion control",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-12-types-of-kitchen-equipment-and-their-uses-1-kitchen-equipment",
+      "topic": "waec-catering-craft-12-types-of-kitchen-equipment-and-their-uses",
+      "name": "Kitchen equipment",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-12-types-of-kitchen-equipment-and-their-uses-2-uses-of-kitchen-equipment",
+      "topic": "waec-catering-craft-12-types-of-kitchen-equipment-and-their-uses",
+      "name": "Uses of kitchen equipment",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-13-care-and-maintenance-of-kitchen-equipment-1-care-of-various-kitchen-equipment",
+      "topic": "waec-catering-craft-13-care-and-maintenance-of-kitchen-equipment",
+      "name": "Care of various kitchen equipment",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-13-care-and-maintenance-of-kitchen-equipment-2-maintenance-of-kitchen-equipment",
+      "topic": "waec-catering-craft-13-care-and-maintenance-of-kitchen-equipment",
+      "name": "Maintenance of kitchen equipment",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-14-principles-of-menu-planning-1-meaning-and-scope-of-menu",
+      "topic": "waec-catering-craft-14-principles-of-menu-planning",
+      "name": "Meaning and scope of menu.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-14-principles-of-menu-planning-2-factors-that-affect-menu-planning",
+      "topic": "waec-catering-craft-14-principles-of-menu-planning",
+      "name": "Factors that affect menu planning",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-15-types-of-menu-and-demonstrations-1-types-of-menu-e-g-table-d-hote-a-la-carte-and-special-occasions",
+      "topic": "waec-catering-craft-15-types-of-menu-and-demonstrations",
+      "name": "Types of menu e.g. table d’hote, a la carte, and special occasions.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-15-types-of-menu-and-demonstrations-2-others-breakfast-tea-dinner-supper-luncheon-carte-du-jour-plate-du-jour-etc",
+      "topic": "waec-catering-craft-15-types-of-menu-and-demonstrations",
+      "name": "Others: – breakfast, tea, dinner, supper, luncheon, carte du jour, plate du jour etc.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-16-special-menu-and-demonstrations-1-meals-plan-for-vegetarians",
+      "topic": "waec-catering-craft-16-special-menu-and-demonstrations",
+      "name": "Meals plan for vegetarians",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-16-special-menu-and-demonstrations-2-meals-plan-for-the-vulnerable-group",
+      "topic": "waec-catering-craft-16-special-menu-and-demonstrations",
+      "name": "Meals plan for the vulnerable group.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-16-special-menu-and-demonstrations-3-meals-plan-for-manual-sedentary-workers-etc",
+      "topic": "waec-catering-craft-16-special-menu-and-demonstrations",
+      "name": "Meals plan for manual, sedentary workers etc.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-17-accompaniments-1-food-accompaniments",
+      "topic": "waec-catering-craft-17-accompaniments",
+      "name": "Food accompaniments.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-catering-craft-17-accompaniments-2-table-accompaniments",
+      "topic": "waec-catering-craft-17-accompaniments",
+      "name": "Table accompaniments.",
+      "order": 2,
+      "objectives": []
+    }
+  ]
+}

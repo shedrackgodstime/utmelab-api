@@ -134,6 +134,7 @@ def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
     expected = {
         "agricultural-science": "agricultural-science",
         "biology": "biology",
+        "catering-craft": "catering-craft-practice",
         "chemistry": "chemistry",
         "christian-religious-studies": "christian-religious-knowledge-crk",
         "civic-education": "civic-education",

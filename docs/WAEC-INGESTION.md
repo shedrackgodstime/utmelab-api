@@ -50,6 +50,7 @@ The repository currently has WAEC syllabus inputs for:
 ```text
 agricultural-science
 biology
+catering-craft
 chemistry
 christian-religious-studies
 civic-education
