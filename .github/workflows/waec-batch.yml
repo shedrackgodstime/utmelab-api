@@ -1,0 +1,90 @@
+# Full WAEC subject scrape, split into independent jobs.
+#
+# Each subject owns its own runner and log. The small parallel limit protects
+# MySchool, GitLab, and the bank database while still making progress faster
+# than one long serial dispatch. Source-quality exclusions are reported by the
+# bank as skipped rows and do not fail the job.
+
+name: waec-batch
+
+run-name: >-
+  WAEC batch ${{ inputs.year }} ${{ inputs.country }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      year:
+        description: "WAEC year"
+        type: string
+        required: true
+        default: "2025"
+      country:
+        description: "WAEC country code"
+        type: string
+        required: true
+        default: NG
+      limit:
+        description: "Maximum valid source rows per subject"
+        type: string
+        required: true
+        default: "1000"
+      subjects:
+        description: "JSON array of subject slugs"
+        type: string
+        required: true
+        default: >-
+          ["agricultural-science","animal-husbandry","biology","book-keeping","catering-craft","chemistry","christian-religious-studies","civic-education","commerce","computer-studies","data-processing","economics","english-language","financial-accounting","foods-and-nutrition","french","further-mathematics","general-mathematics","geography","government","hausa","health-education","home-management","igbo","insurance","islamic-studies","literature-in-english","marketing","music","nigerian-history","office-practice","physical-education","physics","technical-drawing","visual-arts","yoruba"]
+
+concurrency:
+  group: waec-batch-${{ inputs.year }}-${{ inputs.country }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  scrape:
+    name: ${{ matrix.subject }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        subject: ${{ fromJSON(inputs.subjects) }}
+    env:
+      TURSO_PROD_DATABASE_URL: ${{ secrets.TURSO_DB_URL }}
+      TURSO_PROD_AUTH_TOKEN_READONLY: ${{ secrets.TURSO_DB_TOKEN_READONLY }}
+      TURSO_BANK_DATABASE_URL: ${{ secrets.TURSO_UTMELAB_BANK_DB_URL }}
+      TURSO_BANK_AUTH_TOKEN: ${{ secrets.TURSO_UTMELAB_BANK_DB_TOKEN }}
+      GITLAB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
+      GITLAB_MEDIA_REPO: shedrackgodstime/utmelab-bank
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install the bank
+        working-directory: utmelab-bank
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Scrape subject
+        working-directory: utmelab-bank
+        env:
+          SUBJECT: ${{ matrix.subject }}
+          YEAR: ${{ inputs.year }}
+          COUNTRY: ${{ inputs.country }}
+          LIMIT: ${{ inputs.limit }}
+        run: |
+          set -euo pipefail
+          utmelab-bank scrape \
+            --source myschool \
+            --exam WAEC \
+            --subject "$SUBJECT" \
+            --year "$YEAR" \
+            --country "$COUNTRY" \
+            --limit "$LIMIT"
