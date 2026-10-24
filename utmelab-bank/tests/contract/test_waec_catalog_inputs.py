@@ -13,7 +13,8 @@ WAEC_DIR = REPO_ROOT / "data" / "waec"
 
 def test_every_waec_syllabus_input_is_mapped_and_structurally_complete() -> None:
     entries = load_map().exam("WAEC").subjects
-    catalog_slugs = {entry.slug for entry in entries}
+    catalog_by_slug = {entry.slug: entry for entry in entries}
+    catalog_slugs = set(catalog_by_slug)
     files = sorted(WAEC_DIR.glob("*.json"))
 
     assert files
@@ -28,6 +29,7 @@ def test_every_waec_syllabus_input_is_mapped_and_structurally_complete() -> None
         assert len(subjects) == 1
         assert subjects[0]["exam"] == "WAEC"
         assert subjects[0]["slug"] == path.stem
+        assert subjects[0]["name"] == catalog_by_slug[path.stem].name
         assert topics
         assert subtopics
 
