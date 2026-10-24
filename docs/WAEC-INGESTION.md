@@ -54,6 +54,7 @@ christian-religious-studies
 civic-education
 economics
 english-language
+financial-accounting
 government
 mathematics
 physics

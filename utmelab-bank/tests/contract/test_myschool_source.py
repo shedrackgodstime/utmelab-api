@@ -137,6 +137,7 @@ def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
         "civic-education": "civic-education",
         "economics": "economics",
         "english-language": "english-language",
+        "financial-accounting": "accounts-principles-of-accounts",
         "government": "government",
         "mathematics": "mathematics",
         "physics": "physics",
