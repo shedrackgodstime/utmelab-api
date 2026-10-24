@@ -1,0 +1,721 @@
+{
+  "subjects": [
+    {
+      "slug": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Technical Drawing",
+      "is_compulsory": false,
+      "objective_paper_questions": 40,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "technical-drawing"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-technical-drawing-1-drawing-materials-and-equipment-types-of-drawing-and-applications",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Drawing materials and equipment, types of drawing and applications",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-2-lines-lettering-and-dimensioning",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Lines, lettering and dimensioning",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-3-division-of-lines-and-its-applications",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Division of lines and its applications",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-4-scales-and-their-uses",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Scales and their uses",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-5-angles",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Angles",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-6-triangles-quadrilaterals-and-other-polygons",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Triangles, quadrilaterals and other polygons",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-7-circles",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Circles",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-8-tangents-and-tangency",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Tangents and tangency",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-9-inscribed-circumscribed-and-escribed-figures",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Inscribed, circumscribed and escribed figures",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-10-similar-figures-and-areas",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Similar figures and areas",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-11-loci",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Loci",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-12-lines-in-space-and-planes",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Lines in space and planes",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-13-pictorial-drawing-isometric-oblique-perspective",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Pictorial drawing: isometric, oblique, perspective",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-14-orthographic-projection",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Orthographic projection",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-15-auxiliary-projections",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Auxiliary projections",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-16-sectional-views-and-true-shapes",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Sectional views and true shapes",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-17-development-of-surfaces",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Development of surfaces",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-18-intersection-interpenetration",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Intersection / Interpenetration",
+      "order": 18,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-19-symbols-and-conventions-used-in-plane-and-solid-geometry",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Symbols and conventions used in plane and solid geometry",
+      "order": 19,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-20-forces-co-planer-con-current-and-parallel",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Forces: co-planer, con-current and parallel",
+      "order": 20,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-technical-drawing-21-simple-framed-structure",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Simple framed structure",
+      "order": 21,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-technical-drawing-22-shearing-force-and-bending-moment-diagrams",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Shearing force and bending moment diagrams",
+      "order": 22,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-technical-drawing-23-centre-of-gravity-of-lamina",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Centre of gravity of lamina",
+      "order": 23,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "GH"
+      ]
+    },
+    {
+      "slug": "waec-technical-drawing-24-freehand-sketching-and-identification-of-building-tools",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Freehand sketching and identification of building tools",
+      "order": 24,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-25-foundations-and-floors",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Foundations and Floors",
+      "order": 25,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-26-openings-windows-doors-and-arches",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Openings – windows, doors and arches",
+      "order": 26,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-27-stairs-and-staircases",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Stairs and staircases",
+      "order": 27,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-28-roofs",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Roofs",
+      "order": 28,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-29-constructional-details-of-parts-of-buildings",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Constructional details of parts of buildings",
+      "order": 29,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-30-working-drawings-of-buildings",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Working drawings of buildings",
+      "order": 30,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-31-building-materials-freehand-sketching-symbols-and-conventions",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Building materials, freehand sketching, symbols and conventions",
+      "order": 31,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-32-freehand-sketching-and-identification-of-mechanical-tools",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Freehand sketching and identification of mechanical tools",
+      "order": 32,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-33-dimensioning",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Dimensioning",
+      "order": 33,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-34-screw-threads-fasteners-and-locking-devices",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Screw threads, fasteners and locking devices",
+      "order": 34,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-35-sectioning",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Sectioning",
+      "order": 35,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-36-pictorial-drawing",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Pictorial drawing",
+      "order": 36,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-37-working-and-assembly-drawing",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Working and assembly drawing.",
+      "order": 37,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-technical-drawing-38-symbols-conventions-and-abbreviations",
+      "subject": "technical-drawing",
+      "exam": "WAEC",
+      "name": "Symbols, conventions and abbreviations",
+      "order": 38,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-technical-drawing-1-drawing-materials-and-equipment-types-of-drawing-and-applications-1-standard-size-drawing-a2-iso-board-and-drawing-sheet-set-squares-drawing-instruments-protractor-and-t-square",
+      "topic": "waec-technical-drawing-1-drawing-materials-and-equipment-types-of-drawing-and-applications",
+      "name": "Standard size drawing A2 ISO board and drawing sheet, set squares, drawing instruments, protractor and T-square.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-2-lines-lettering-and-dimensioning-1-types-of-lines-and-their-uses",
+      "topic": "waec-technical-drawing-2-lines-lettering-and-dimensioning",
+      "name": "Types of lines and their uses.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-2-lines-lettering-and-dimensioning-2-types-and-styles-of-lettering-title-blocks-and-border-lines-these-should-conform-to-bs-1192-and-bs-308a",
+      "topic": "waec-technical-drawing-2-lines-lettering-and-dimensioning",
+      "name": "Types and styles of lettering, title blocks and border lines. These should conform to BS 1192 and BS 308A.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-3-division-of-lines-and-its-applications-1-dividing-into-a-given-number-of-equal-parts-or-proportion-and-other-simple-exercises-involving-mathematical-problems",
+      "topic": "waec-technical-drawing-3-division-of-lines-and-its-applications",
+      "name": "Dividing into a given number of equal parts or proportion and other simple exercises involving mathematical problems.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-4-scales-and-their-uses-1-plain-and-diagonal-scales-constructions-and-their-applications-including-scale-of-chords",
+      "topic": "waec-technical-drawing-4-scales-and-their-uses",
+      "name": "Plain and diagonal scales, constructions and their applications, including scale of chords.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-5-angles-1-types-and-their-constructions",
+      "topic": "waec-technical-drawing-5-angles",
+      "name": "Types and their constructions.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-6-triangles-quadrilaterals-and-other-polygons-1-regular-and-irregular-polygons-properties-and-their-constructions",
+      "topic": "waec-technical-drawing-6-triangles-quadrilaterals-and-other-polygons",
+      "name": "Regular and irregular polygons: properties and their constructions.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-7-circles-1-parts-types-properties-and-their-constructions",
+      "topic": "waec-technical-drawing-7-circles",
+      "name": "Parts, types, properties and their constructions.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-8-tangents-and-tangency-1-construction-and-application-of-principles-of-tangency-to-spanner-anchors-and-other-tools",
+      "topic": "waec-technical-drawing-8-tangents-and-tangency",
+      "name": "Construction and application of principles of tangency to spanner, anchors and other tools.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-9-inscribed-circumscribed-and-escribed-figures-1-definitions-identification-and-their-constructions",
+      "topic": "waec-technical-drawing-9-inscribed-circumscribed-and-escribed-figures",
+      "name": "Definitions, identification and their constructions.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-10-similar-figures-and-areas-1-enlargement-and-reduction-by-area-and-side",
+      "topic": "waec-technical-drawing-10-similar-figures-and-areas",
+      "name": "Enlargement and reduction by area and side.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-11-loci-1-definition-and-construction-of-straight-line-circle-ellipse-parabola-hyperbola-helix-trochoids-inferior-and-superior-spiral-cycloid-hypocycloid-involutes-and-link-mechanisms",
+      "topic": "waec-technical-drawing-11-loci",
+      "name": "Definition and construction of straight line, circle, ellipse, parabola, hyperbola, helix, trochoids (inferior and superior), spiral, cycloid, hypocycloid, involutes and link mechanisms.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-12-lines-in-space-and-planes-1-location-of-points-and-lines-in-space",
+      "topic": "waec-technical-drawing-12-lines-in-space-and-planes",
+      "name": "Location of points and lines in space.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-12-lines-in-space-and-planes-2-true-length-and-angle-of-inclination-of-a-line",
+      "topic": "waec-technical-drawing-12-lines-in-space-and-planes",
+      "name": "True length and angle of inclination of a line.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-12-lines-in-space-and-planes-3-intersecting-lines-plane-relationships-and-traces",
+      "topic": "waec-technical-drawing-12-lines-in-space-and-planes",
+      "name": "Intersecting lines, plane relationships and traces.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-12-lines-in-space-and-planes-4-types-of-planes-and-edge-views-of-planes",
+      "topic": "waec-technical-drawing-12-lines-in-space-and-planes",
+      "name": "Types of planes and edge views of planes.",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-13-pictorial-drawing-isometric-oblique-perspective-1-isometric-scales-and-circles-oblique-scales-and-curves",
+      "topic": "waec-technical-drawing-13-pictorial-drawing-isometric-oblique-perspective",
+      "name": "Isometric scales and circles, oblique scales and curves.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-13-pictorial-drawing-isometric-oblique-perspective-2-one-and-two-points-perspective-including-free-hand-sketching",
+      "topic": "waec-technical-drawing-13-pictorial-drawing-isometric-oblique-perspective",
+      "name": "One and two points perspective, including free hand sketching.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-14-orthographic-projection-1-multiplane-1st-and-3rd-angle-projection",
+      "topic": "waec-technical-drawing-14-orthographic-projection",
+      "name": "Multiplane, 1st and 3rd angle projection.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-15-auxiliary-projections-1-prisms-cones-cylinder-cube-pyramid-right-and-oblique-including-second-auxiliary-projection",
+      "topic": "waec-technical-drawing-15-auxiliary-projections",
+      "name": "Prisms, cones, cylinder, cube, pyramid (right and oblique), including second auxiliary projection.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-16-sectional-views-and-true-shapes-1-true-shape-of-sections-of-prisms-cylinders-pyramids-and-cones-ellipse-parabola-hyperbola-circle-and-triangle",
+      "topic": "waec-technical-drawing-16-sectional-views-and-true-shapes",
+      "name": "True shape of sections of prisms, cylinders, pyramids and cones: ellipse, parabola, hyperbola, circle and triangle.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-17-development-of-surfaces-1-surfaces-of-right-and-oblique-pyramids-prisms-cylinders-cones-and-their-truncated-parts-and-frustum",
+      "topic": "waec-technical-drawing-17-development-of-surfaces",
+      "name": "Surfaces of right and oblique pyramids, prisms, cylinders, cones and their truncated parts and frustum.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-17-development-of-surfaces-2-transition-pieces",
+      "topic": "waec-technical-drawing-17-development-of-surfaces",
+      "name": "Transition pieces.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-18-intersection-interpenetration-1-intersections-of-cylinders-cones-prisms-and-pyramids",
+      "topic": "waec-technical-drawing-18-intersection-interpenetration",
+      "name": "Intersections of cylinders, cones, prisms and pyramids.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-19-symbols-and-conventions-used-in-plane-and-solid-geometry-1-example-the-symbol-used-to-indicate-the-diameter-of-a-circle",
+      "topic": "waec-technical-drawing-19-symbols-and-conventions-used-in-plane-and-solid-geometry",
+      "name": "Example: the symbol used to indicate the diameter of a circle.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-20-forces-co-planer-con-current-and-parallel-1-graphical-determination-of-resultant-using-bow-s-notation",
+      "topic": "waec-technical-drawing-20-forces-co-planer-con-current-and-parallel",
+      "name": "Graphical determination of resultant, using Bow’s notation.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-20-forces-co-planer-con-current-and-parallel-2-equilibrant-and-reaction-using-triangle-and-polygon-of-forces",
+      "topic": "waec-technical-drawing-20-forces-co-planer-con-current-and-parallel",
+      "name": "Equilibrant and reaction using triangle and polygon of forces.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-21-simple-framed-structure-1-determination-of-reactions-and-internal-forces-of-members-and-nature-of-forces",
+      "topic": "waec-technical-drawing-21-simple-framed-structure",
+      "name": "Determination of reactions and internal forces of members and nature of forces.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-22-shearing-force-and-bending-moment-diagrams-1-simple-supported-beams-and-cantilevers-with-concentrated-and-uniformly-distributed-loads",
+      "topic": "waec-technical-drawing-22-shearing-force-and-bending-moment-diagrams",
+      "name": "Simple supported beams and cantilevers with concentrated and uniformly distributed loads.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-23-centre-of-gravity-of-lamina-1-simple-geometrical-shapes",
+      "topic": "waec-technical-drawing-23-centre-of-gravity-of-lamina",
+      "name": "Simple geometrical shapes.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-24-freehand-sketching-and-identification-of-building-tools-1-both-pictorial-and-orthographic-sketches-of-building-tools",
+      "topic": "waec-technical-drawing-24-freehand-sketching-and-identification-of-building-tools",
+      "name": "Both pictorial and orthographic sketches of building tools.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-25-foundations-and-floors-1-types-and-parts-of-foundations-and-floors",
+      "topic": "waec-technical-drawing-25-foundations-and-floors",
+      "name": "Types and parts of foundations and floors.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-26-openings-windows-doors-and-arches-1-types-and-parts-of-doors-windows-and-arches",
+      "topic": "waec-technical-drawing-26-openings-windows-doors-and-arches",
+      "name": "Types and parts of doors, windows and arches.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-27-stairs-and-staircases-1-parts-and-types-of-staircases",
+      "topic": "waec-technical-drawing-27-stairs-and-staircases",
+      "name": "Parts and types of staircases.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-28-roofs-1-types-and-parts-of-roofs",
+      "topic": "waec-technical-drawing-28-roofs",
+      "name": "Types and parts of roofs.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-29-constructional-details-of-parts-of-buildings-1-includes-wall-column-beam-lintel-etc",
+      "topic": "waec-technical-drawing-29-constructional-details-of-parts-of-buildings",
+      "name": "Includes wall, column, beam, lintel, etc.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-30-working-drawings-of-buildings-1-orthographic-projections-and-sectional-views",
+      "topic": "waec-technical-drawing-30-working-drawings-of-buildings",
+      "name": "Orthographic projections and sectional views.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-31-building-materials-freehand-sketching-symbols-and-conventions-1-including-electrical-and-plumbing-fittings",
+      "topic": "waec-technical-drawing-31-building-materials-freehand-sketching-symbols-and-conventions",
+      "name": "Including electrical and plumbing fittings.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-32-freehand-sketching-and-identification-of-mechanical-tools-1-both-pictorial-and-orthographic-sketches-of-mechanical-tools",
+      "topic": "waec-technical-drawing-32-freehand-sketching-and-identification-of-mechanical-tools",
+      "name": "Both pictorial and orthographic sketches of mechanical tools.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-33-dimensioning-1-limits-and-fits-allowances-tolerances-emphasis-on-correct-techniques",
+      "topic": "waec-technical-drawing-33-dimensioning",
+      "name": "Limits and fits, allowances, tolerances; emphasis on correct techniques.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-34-screw-threads-fasteners-and-locking-devices-1-include-conventional-representation-construction-and-their-applications",
+      "topic": "waec-technical-drawing-34-screw-threads-fasteners-and-locking-devices",
+      "name": "Include conventional representation, construction and their applications.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-35-sectioning-1-full-half-part-offset-broken-removed-aligned-and-revolved",
+      "topic": "waec-technical-drawing-35-sectioning",
+      "name": "Full, half-part, offset, broken, removed, aligned and revolved.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-36-pictorial-drawing-1-isometric-and-oblique-drawing-including-freehand-sketching",
+      "topic": "waec-technical-drawing-36-pictorial-drawing",
+      "name": "Isometric and oblique drawing; including freehand sketching.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-37-working-and-assembly-drawing-1-orthographic-and-sectional-views",
+      "topic": "waec-technical-drawing-37-working-and-assembly-drawing",
+      "name": "Orthographic and sectional views.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-drawing-38-symbols-conventions-and-abbreviations-1-include-electrical-and-plumbing-fittings-and-welding-symbols",
+      "topic": "waec-technical-drawing-38-symbols-conventions-and-abbreviations",
+      "name": "Include electrical and plumbing fittings and welding symbols.",
+      "order": 1,
+      "objectives": []
+    }
+  ]
+}

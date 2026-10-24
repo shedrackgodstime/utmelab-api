@@ -67,6 +67,7 @@ general-mathematics
 health-education
 physical-education
 physics
+technical-drawing
 ```
 
 The other mapped subjects remain source-mapped but catalog-pending. They must
