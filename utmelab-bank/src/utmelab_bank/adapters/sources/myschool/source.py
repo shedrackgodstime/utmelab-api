@@ -112,6 +112,19 @@ class MyschoolSource:
                 break
 
             for index, row in enumerate(rows, start=1):
+                # MySchool sometimes ignores the requested year and returns
+                # older collections from the same subject endpoint. Filter
+                # those rows before parsing: historical rows can contain
+                # malformed options and are irrelevant to this scope.
+                collection = row.get("collection")
+                if isinstance(collection, dict):
+                    row_exam = str(collection.get("exam_type", "")).strip().lower()
+                    try:
+                        row_year = int(collection.get("exam_year"))
+                    except (TypeError, ValueError):
+                        row_year = None
+                    if row_exam != exam or row_year != year:
+                        continue
                 try:
                     parsed = parse_api_question(
                         row,

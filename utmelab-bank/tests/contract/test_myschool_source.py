@@ -107,6 +107,24 @@ async def test_the_source_matches_the_port() -> None:
     await source.close()
 
 
+@pytest.mark.asyncio
+async def test_fetch_filters_old_collections_before_parsing() -> None:
+    old = api_row(
+        id=1,
+        question="<p>old malformed row</p>",
+        options=[{"tag": "a", "description": "only one", "is_correct": 1}],
+        collection={"exam_year": 2016, "exam_type": "jamb"},
+    )
+    current = api_row(id=2)
+    source, client = source_with_payload(envelope([old, current]))
+    try:
+        rows = await collect(source)
+    finally:
+        await client.aclose()
+
+    assert [row.source_item_id for row in rows] == ["2"]
+
+
 def test_the_map_is_the_only_source_of_slugs() -> None:
     assert slug_for("JAMB", "use-of-english") == "english-language"
     assert slug_for("JAMB", "biology") == "biology"
