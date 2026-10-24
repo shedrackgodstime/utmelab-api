@@ -48,12 +48,12 @@ on:
         required: false
         default: myschool
       exam:
-        description: "Exam, e.g. JAMB"
+        description: "Exam, e.g. JAMB; use ALL for unscoped processing"
         type: string
         required: false
         default: JAMB
       subject:
-        description: "Subject slug, e.g. biology"
+        description: "Subject slug, e.g. biology; use ALL for all subjects"
         type: string
         required: false
         default: biology
@@ -144,13 +144,13 @@ jobs:
         run: |
           set -euo pipefail
           args=(--limit "$LIMIT")
-          if [ -n "$EXAM" ]; then
+          if [ -n "$EXAM" ] && [ "$EXAM" != "ALL" ]; then
             args+=(--exam "$EXAM")
           fi
-          if [ -n "$SUBJECT" ]; then
+          if [ -n "$SUBJECT" ] && [ "$SUBJECT" != "ALL" ]; then
             args+=(--subject "$SUBJECT")
           fi
-          if [ -n "$YEAR" ]; then
+          if [ -n "$YEAR" ] && [ "$YEAR" != "ALL" ]; then
             args+=(--year "$YEAR")
           fi
           if [ -n "$COUNTRY" ]; then
