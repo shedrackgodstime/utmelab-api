@@ -9,7 +9,8 @@ use super::papers;
 
 /// Compose a complete URL for a stored figure filename. If the reference is
 /// already an absolute URL (https://, http://, data:, or //), it is returned
-/// unchanged. Otherwise, the reference is resolved against `media_base_url`.
+/// unchanged. Otherwise, the reference is resolved under the host's
+/// `/images/` namespace.
 pub fn resolve_media_url(url: &str, media_base_url: &str) -> String {
     let trimmed = url.trim();
     if trimmed.starts_with("https://")
@@ -19,11 +20,11 @@ pub fn resolve_media_url(url: &str, media_base_url: &str) -> String {
     {
         trimmed.to_string()
     } else {
-        format!(
-            "{}/{}",
-            media_base_url.trim_end_matches('/'),
-            trimmed.trim_start_matches('/')
-        )
+        let path = trimmed.trim_start_matches('/');
+        let image_path = path
+            .strip_prefix("images/")
+            .map_or_else(|| format!("images/{path}"), |rest| format!("images/{rest}"));
+        format!("{}/{}", media_base_url.trim_end_matches('/'), image_path)
     }
 }
 
@@ -377,7 +378,7 @@ mod tests {
 
     #[test]
     fn resolve_media_url_formats() {
-        let base = "https://assets.utmelab.com/images";
+        let base = "https://assets.utmelab.com";
         assert_eq!(
             resolve_media_url("0123456789abcdef.png", base),
             "https://assets.utmelab.com/images/0123456789abcdef.png"
@@ -385,6 +386,10 @@ mod tests {
         assert_eq!(
             resolve_media_url("/leading/slash.png", base),
             "https://assets.utmelab.com/images/leading/slash.png"
+        );
+        assert_eq!(
+            resolve_media_url("images/already-prefixed.png", base),
+            "https://assets.utmelab.com/images/already-prefixed.png"
         );
         assert_eq!(
             resolve_media_url("https://myschool.ng/fig.png", base),
@@ -438,7 +443,7 @@ mod tests {
             }];
         }
 
-        let r = render(&q, true, "https://assets.utmelab.com/images");
+        let r = render(&q, true, "https://assets.utmelab.com");
         match &r.text.inline[0].kind {
             InlineKind::Image { url, .. } => {
                 assert_eq!(url, "https://assets.utmelab.com/images/stem_diagram.png");

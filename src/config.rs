@@ -49,8 +49,9 @@ pub const DEFAULT_RATE_LIMIT_PER_MIN: u32 = 60;
 /// Admin keys are internal (monitoring, provisioning), so unlimited by
 /// default. Set a positive value to bound them too.
 pub const DEFAULT_RATE_LIMIT_ADMIN_PER_MIN: u32 = 0;
-/// Base URL where figure images and media assets are served.
-pub const DEFAULT_MEDIA_BASE_URL: &str = "https://assets.utmelab.com/images";
+/// Base URL where media assets are served. Image references add `/images/`
+/// when they are resolved; other asset families can use this same host.
+pub const DEFAULT_MEDIA_BASE_URL: &str = "https://assets.utmelab.com";
 
 #[derive(Clone)]
 pub struct Config {
