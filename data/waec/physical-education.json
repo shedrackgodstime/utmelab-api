@@ -1,0 +1,1144 @@
+{
+  "subjects": [
+    {
+      "slug": "physical-education",
+      "exam": "WAEC",
+      "name": "Physical Education",
+      "is_compulsory": false,
+      "objective_paper_questions": 50,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "physical-education"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-physical-education-1-philosophy-of-physical-education",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Philosophy of Physical Education",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-2-physical-education-ideologies",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Physical education ideologies",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-3-recreation",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Recreation",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-4-intramural-and-extramural-activities-and-tournament",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Intramural and Extramural activities and tournament",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-5-traditional-sports-in-west-africa",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Traditional sports in West Africa",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-6-greek-festivals-and-the-olympic-games",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Greek Festivals and The Olympic Games",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-7-sports-championship-at-national-level",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Sports Championship at national level",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-8-types-of-championship",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Types of championship",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-9-institutional-sports",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Institutional sports",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-10-the-all-african-games",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "The All African Games",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-11-international-competitions",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "International Competitions",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-12-skeletal-system",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Skeletal System",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-13-nervous-system",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Nervous System",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-14-circulatory-system",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Circulatory System",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-15-respiratory-system",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Respiratory System",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-16-skeletal-muscles",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Skeletal muscles",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-17-somatotype",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Somatotype",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-18-posture",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Posture",
+      "order": 18,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-19-athletics-track-and-field-events",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Athletics (Track and Field Events)",
+      "order": 19,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-20-field-events",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Field Events",
+      "order": 20,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-21-ball-games",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Ball games",
+      "order": 21,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-22-racket-games",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Racket games",
+      "order": 22,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-23-traditional-dances",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Traditional dances",
+      "order": 23,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-24-physical-fitness",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Physical fitness",
+      "order": 24,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-25-health-and-personal-hygiene",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Health and Personal hygiene",
+      "order": 25,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-26-nutrition",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Nutrition",
+      "order": 26,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-27-drug-in-sports",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Drug in sports",
+      "order": 27,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-28-sports-injuries",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Sports injuries",
+      "order": 28,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-29-corrective-and-adapted-physical-education-programme",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Corrective and adapted physical education programme",
+      "order": 29,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-physical-education-30-administrative-structure-functions-of-sports",
+      "subject": "physical-education",
+      "exam": "WAEC",
+      "name": "Administrative structure/functions of sports",
+      "order": 30,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-physical-education-1-philosophy-of-physical-education-1-principles-and-philosophies-of-founding-fathers",
+      "topic": "waec-physical-education-1-philosophy-of-physical-education",
+      "name": "Principles and philosophies of founding fathers",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-1-philosophy-of-physical-education-2-changes-in-concept-of-physical-education",
+      "topic": "waec-physical-education-1-philosophy-of-physical-education",
+      "name": "Changes in concept of physical Education",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-1-philosophy-of-physical-education-3-education-of-the-physical-and-education-through-the-physical",
+      "topic": "waec-physical-education-1-philosophy-of-physical-education",
+      "name": "Education of the physical and education through the physical",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-2-physical-education-ideologies-1-nationalism-and-patriotism-in-physical-education-and-sport",
+      "topic": "waec-physical-education-2-physical-education-ideologies",
+      "name": "Nationalism and patriotism in physical education and sport",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-2-physical-education-ideologies-2-national-ideologies",
+      "topic": "waec-physical-education-2-physical-education-ideologies",
+      "name": "National ideologies",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-3-recreation-1-definition-and-importance",
+      "topic": "waec-physical-education-3-recreation",
+      "name": "Definition and importance",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-3-recreation-2-types-of-recreational-activities-indoor",
+      "topic": "waec-physical-education-3-recreation",
+      "name": "Types of recreational activities: indoor",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-3-recreation-3-types-of-recreational-activities-outdoor",
+      "topic": "waec-physical-education-3-recreation",
+      "name": "Types of recreational activities: outdoor",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-3-recreation-4-recreational-activities-walking-jogging-swimming-cycling-playing-musical-instruments-table-tennis-camping-etc",
+      "topic": "waec-physical-education-3-recreation",
+      "name": "Recreational activities: walking, jogging, swimming, cycling, playing musical instruments, table tennis, camping etc",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-3-recreation-5-differences-between-recreational-activities-and-lifetime-sports",
+      "topic": "waec-physical-education-3-recreation",
+      "name": "Differences between recreational activities and lifetime sports",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-4-intramural-and-extramural-activities-and-tournament-1-definitions-of-intramural-activities",
+      "topic": "waec-physical-education-4-intramural-and-extramural-activities-and-tournament",
+      "name": "Definitions of intramural activities",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-4-intramural-and-extramural-activities-and-tournament-2-definitions-of-extramural-activities",
+      "topic": "waec-physical-education-4-intramural-and-extramural-activities-and-tournament",
+      "name": "Definitions of extramural activities",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-4-intramural-and-extramural-activities-and-tournament-3-benefit-of-intramural-and-extramural-activities",
+      "topic": "waec-physical-education-4-intramural-and-extramural-activities-and-tournament",
+      "name": "Benefit of intramural and extramural activities",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-4-intramural-and-extramural-activities-and-tournament-4-definition-of-tournament",
+      "topic": "waec-physical-education-4-intramural-and-extramural-activities-and-tournament",
+      "name": "Definition of tournament",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-4-intramural-and-extramural-activities-and-tournament-5-types-of-tournament",
+      "topic": "waec-physical-education-4-intramural-and-extramural-activities-and-tournament",
+      "name": "Types of tournament",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-5-traditional-sports-in-west-africa-1-origin-of-traditional-sports-in-west-africa-countries",
+      "topic": "waec-physical-education-5-traditional-sports-in-west-africa",
+      "name": "Origin of traditional sports in West Africa countries",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-5-traditional-sports-in-west-africa-2-types-of-traditional-sports-in-respective-different-west-african-countries",
+      "topic": "waec-physical-education-5-traditional-sports-in-west-africa",
+      "name": "Types of traditional sports in respective different West African Countries",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-5-traditional-sports-in-west-africa-3-values-of-traditional-sports",
+      "topic": "waec-physical-education-5-traditional-sports-in-west-africa",
+      "name": "Values of traditional sports",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-6-greek-festivals-and-the-olympic-games-1-greek-festivals-usthman-pythian-nemean-and-olympian",
+      "topic": "waec-physical-education-6-greek-festivals-and-the-olympic-games",
+      "name": "Greek Festivals: Usthman, Pythian, Nemean and Olympian",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-6-greek-festivals-and-the-olympic-games-2-ancient-olympic-games",
+      "topic": "waec-physical-education-6-greek-festivals-and-the-olympic-games",
+      "name": "Ancient Olympic Games",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-6-greek-festivals-and-the-olympic-games-3-the-modern-olympic-games",
+      "topic": "waec-physical-education-6-greek-festivals-and-the-olympic-games",
+      "name": "The modern Olympic Games",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-7-sports-championship-at-national-level-1-organization-and-administration",
+      "topic": "waec-physical-education-7-sports-championship-at-national-level",
+      "name": "Organization and administration",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-8-types-of-championship-1-national-championship-organized-by-different-sports-associations-federations",
+      "topic": "waec-physical-education-8-types-of-championship",
+      "name": "National championship organized by different sports associations/federations",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-8-types-of-championship-2-national-championship-organized-by-corporate-organizations",
+      "topic": "waec-physical-education-8-types-of-championship",
+      "name": "National championship organized by corporate organizations",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-8-types-of-championship-3-the-national-sports-festival",
+      "topic": "waec-physical-education-8-types-of-championship",
+      "name": "The national sports festival",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-9-institutional-sports-1-the-universities-games",
+      "topic": "waec-physical-education-9-institutional-sports",
+      "name": "The universities games",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-9-institutional-sports-2-the-polytechnic-games",
+      "topic": "waec-physical-education-9-institutional-sports",
+      "name": "The polytechnic games",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-9-institutional-sports-3-colleges-of-education-games",
+      "topic": "waec-physical-education-9-institutional-sports",
+      "name": "Colleges of education games",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-9-institutional-sports-4-national-school-sports-federation",
+      "topic": "waec-physical-education-9-institutional-sports",
+      "name": "National school sports federation",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-10-the-all-african-games-1-history-of-all-africa-games",
+      "topic": "waec-physical-education-10-the-all-african-games",
+      "name": "History of All Africa Games",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-10-the-all-african-games-2-reasons-for-disparity-in-the-timing-of-the-games",
+      "topic": "waec-physical-education-10-the-all-african-games",
+      "name": "Reasons for disparity in the timing of the games",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-10-the-all-african-games-3-history-and-activities-of-supreme-council-of-sports-in-africa-scsa",
+      "topic": "waec-physical-education-10-the-all-african-games",
+      "name": "History and activities of supreme Council of sports in Africa (SCSA)",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-11-international-competitions-1-the-f-i-f-a-world-cup",
+      "topic": "waec-physical-education-11-international-competitions",
+      "name": "The F.I.F.A World Cup",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-11-international-competitions-2-the-olympic-paraolympic-games",
+      "topic": "waec-physical-education-11-international-competitions",
+      "name": "The Olympic/Paraolympic Games",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-11-international-competitions-3-commonwealth-games",
+      "topic": "waec-physical-education-11-international-competitions",
+      "name": "Commonwealth Games",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-11-international-competitions-4-all-africa-games",
+      "topic": "waec-physical-education-11-international-competitions",
+      "name": "All Africa Games",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-11-international-competitions-5-world-athletics-championship",
+      "topic": "waec-physical-education-11-international-competitions",
+      "name": "World Athletics Championship",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-11-international-competitions-6-world-swimming-championship",
+      "topic": "waec-physical-education-11-international-competitions",
+      "name": "World Swimming Championship",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-12-skeletal-system-1-main-parts-and-functions-of-the-human-skeleton",
+      "topic": "waec-physical-education-12-skeletal-system",
+      "name": "Main parts and functions of the human skeleton",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-12-skeletal-system-2-bones-and-joints-involved-in-movement",
+      "topic": "waec-physical-education-12-skeletal-system",
+      "name": "Bones and joints involved in movement",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-13-nervous-system-1-the-brain",
+      "topic": "waec-physical-education-13-nervous-system",
+      "name": "The brain",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-13-nervous-system-2-the-spinal-cord",
+      "topic": "waec-physical-education-13-nervous-system",
+      "name": "The spinal cord",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-13-nervous-system-3-the-nerves",
+      "topic": "waec-physical-education-13-nervous-system",
+      "name": "The nerves",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-14-circulatory-system-1-the-heart-muscle",
+      "topic": "waec-physical-education-14-circulatory-system",
+      "name": "The heart muscle",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-14-circulatory-system-2-effects-of-exercise-on-the-heart",
+      "topic": "waec-physical-education-14-circulatory-system",
+      "name": "Effects of exercise on the heart",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-14-circulatory-system-3-the-blood-circulation",
+      "topic": "waec-physical-education-14-circulatory-system",
+      "name": "The blood circulation",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-14-circulatory-system-4-function-of-blood",
+      "topic": "waec-physical-education-14-circulatory-system",
+      "name": "Function of blood",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-14-circulatory-system-5-types-of-blood-circulation",
+      "topic": "waec-physical-education-14-circulatory-system",
+      "name": "Types of blood circulation",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-15-respiratory-system-1-the-trachea-lungs-and-nose",
+      "topic": "waec-physical-education-15-respiratory-system",
+      "name": "The trachea, lungs and nose",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-15-respiratory-system-2-the-functions",
+      "topic": "waec-physical-education-15-respiratory-system",
+      "name": "The functions",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-15-respiratory-system-3-types-of-respiration",
+      "topic": "waec-physical-education-15-respiratory-system",
+      "name": "Types of respiration",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-15-respiratory-system-4-aerobic-and-anaerobic-sports",
+      "topic": "waec-physical-education-15-respiratory-system",
+      "name": "Aerobic and anaerobic sports",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-16-skeletal-muscles-1-major-muscles-of-the-body",
+      "topic": "waec-physical-education-16-skeletal-muscles",
+      "name": "Major muscles of the body",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-16-skeletal-muscles-2-types-of-muscle-contraction",
+      "topic": "waec-physical-education-16-skeletal-muscles",
+      "name": "Types of muscle contraction",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-16-skeletal-muscles-3-muscle-cramp-cause-prevention-and-first-aid",
+      "topic": "waec-physical-education-16-skeletal-muscles",
+      "name": "Muscle cramp, cause, prevention and first aid",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-17-somatotype-1-description-of-the-various-body-type",
+      "topic": "waec-physical-education-17-somatotype",
+      "name": "Description of the various body type",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-17-somatotype-2-relationship-between-body-type-and-physical-activities-and-sports",
+      "topic": "waec-physical-education-17-somatotype",
+      "name": "Relationship between body type and physical activities and sports",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-18-posture-1-correct-posture",
+      "topic": "waec-physical-education-18-posture",
+      "name": "Correct posture",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-18-posture-2-postural-defects",
+      "topic": "waec-physical-education-18-posture",
+      "name": "Postural defects",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-19-athletics-track-and-field-events-1-short-distance-races-sprints-50m-100m-200m-400m-hurdles-and-relay-races",
+      "topic": "waec-physical-education-19-athletics-track-and-field-events",
+      "name": "Short distance races (sprints): 50m, 100m, 200m, 400m, hurdles and relay races",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-19-athletics-track-and-field-events-2-sprint-start-bullet-bunch-medium-and-elongated",
+      "topic": "waec-physical-education-19-athletics-track-and-field-events",
+      "name": "Sprint start: bullet/bunch, medium and elongated",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-19-athletics-track-and-field-events-3-relay-races",
+      "topic": "waec-physical-education-19-athletics-track-and-field-events",
+      "name": "Relay races",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-19-athletics-track-and-field-events-4-hurdle-events-high-and-low",
+      "topic": "waec-physical-education-19-athletics-track-and-field-events",
+      "name": "Hurdle events (high and low)",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-19-athletics-track-and-field-events-5-middle-race-800m-1-500m",
+      "topic": "waec-physical-education-19-athletics-track-and-field-events",
+      "name": "Middle race: 800m, 1,500m",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-19-athletics-track-and-field-events-6-3000-steeple-chase-cross-country",
+      "topic": "waec-physical-education-19-athletics-track-and-field-events",
+      "name": "3000 steeple chase cross country",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-19-athletics-track-and-field-events-7-long-distance-races-3-000m-5-000m-10-000m-and-marathon",
+      "topic": "waec-physical-education-19-athletics-track-and-field-events",
+      "name": "Long distance races: 3,000m, 5,000m, 10,000m and marathon",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-19-athletics-track-and-field-events-8-phases-of-running",
+      "topic": "waec-physical-education-19-athletics-track-and-field-events",
+      "name": "Phases of running",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-19-athletics-track-and-field-events-9-rules-and-regulations",
+      "topic": "waec-physical-education-19-athletics-track-and-field-events",
+      "name": "Rules and regulations",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-19-athletics-track-and-field-events-10-officiating",
+      "topic": "waec-physical-education-19-athletics-track-and-field-events",
+      "name": "Officiating",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-20-field-events-1-throwing-events-discus-javelin-and-shot-put",
+      "topic": "waec-physical-education-20-field-events",
+      "name": "Throwing events: discus, javelin and shot put",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-20-field-events-2-jumps-high-jump-long-jump-triple-jump-and-pole-vault",
+      "topic": "waec-physical-education-20-field-events",
+      "name": "Jumps: high jump, long jump, triple jump and pole vault",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-20-field-events-3-equipment-and-specification",
+      "topic": "waec-physical-education-20-field-events",
+      "name": "Equipment and specification",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-20-field-events-4-techniques",
+      "topic": "waec-physical-education-20-field-events",
+      "name": "Techniques",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-20-field-events-5-rules-and-regulations",
+      "topic": "waec-physical-education-20-field-events",
+      "name": "Rules and regulations",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-20-field-events-6-officiating",
+      "topic": "waec-physical-education-20-field-events",
+      "name": "Officiating",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-21-ball-games-1-football",
+      "topic": "waec-physical-education-21-ball-games",
+      "name": "Football",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-21-ball-games-2-basketball",
+      "topic": "waec-physical-education-21-ball-games",
+      "name": "Basketball",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-21-ball-games-3-volleyball",
+      "topic": "waec-physical-education-21-ball-games",
+      "name": "Volleyball",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-21-ball-games-4-hockey",
+      "topic": "waec-physical-education-21-ball-games",
+      "name": "Hockey",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-21-ball-games-5-handball",
+      "topic": "waec-physical-education-21-ball-games",
+      "name": "Handball",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-21-ball-games-6-rules-and-regulations-of-each-game",
+      "topic": "waec-physical-education-21-ball-games",
+      "name": "Rules and regulations of each game",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-21-ball-games-7-officiating",
+      "topic": "waec-physical-education-21-ball-games",
+      "name": "Officiating",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-22-racket-games-1-tennis",
+      "topic": "waec-physical-education-22-racket-games",
+      "name": "Tennis",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-22-racket-games-2-table-tennis",
+      "topic": "waec-physical-education-22-racket-games",
+      "name": "Table tennis",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-22-racket-games-3-badminton",
+      "topic": "waec-physical-education-22-racket-games",
+      "name": "Badminton",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-22-racket-games-4-specification-of-court-table-of-all-games",
+      "topic": "waec-physical-education-22-racket-games",
+      "name": "Specification of court/table of all games",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-22-racket-games-5-types-of-equipment-used",
+      "topic": "waec-physical-education-22-racket-games",
+      "name": "Types of equipment used",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-22-racket-games-6-skills-involved-in-each-game",
+      "topic": "waec-physical-education-22-racket-games",
+      "name": "Skills involved in each game",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-22-racket-games-7-rules-and-regulations",
+      "topic": "waec-physical-education-22-racket-games",
+      "name": "Rules and regulations",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-22-racket-games-8-officiating",
+      "topic": "waec-physical-education-22-racket-games",
+      "name": "Officiating",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-23-traditional-dances-1-dances-from-the-regions-of-each-country",
+      "topic": "waec-physical-education-23-traditional-dances",
+      "name": "Dances from the regions of each country",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-23-traditional-dances-2-costumes-for-various-dances",
+      "topic": "waec-physical-education-23-traditional-dances",
+      "name": "Costumes for various dances",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-23-traditional-dances-3-types-of-traditional-dance-and-dance-step",
+      "topic": "waec-physical-education-23-traditional-dances",
+      "name": "Types of traditional dance and dance step",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-24-physical-fitness-1-definition-of-physical-fitness",
+      "topic": "waec-physical-education-24-physical-fitness",
+      "name": "Definition of physical fitness",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-24-physical-fitness-2-components-of-physical-fitness",
+      "topic": "waec-physical-education-24-physical-fitness",
+      "name": "Components of physical fitness",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-24-physical-fitness-3-examples-of-health-related-and-performance-skill-related-components-of-physical-fitness",
+      "topic": "waec-physical-education-24-physical-fitness",
+      "name": "Examples of health related and performance/skill related components of physical fitness",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-24-physical-fitness-4-benefits-of-physical-activity-exercise-and-physical-fitness",
+      "topic": "waec-physical-education-24-physical-fitness",
+      "name": "Benefits of physical activity, exercise and physical fitness",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-25-health-and-personal-hygiene-1-importance-of-health-in-physical-education",
+      "topic": "waec-physical-education-25-health-and-personal-hygiene",
+      "name": "Importance of health in physical education",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-25-health-and-personal-hygiene-2-care-of-the-body",
+      "topic": "waec-physical-education-25-health-and-personal-hygiene",
+      "name": "Care of the body",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-25-health-and-personal-hygiene-3-sportswear",
+      "topic": "waec-physical-education-25-health-and-personal-hygiene",
+      "name": "Sportswear",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-26-nutrition-1-classes-of-food-nutrients",
+      "topic": "waec-physical-education-26-nutrition",
+      "name": "Classes of food nutrients",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-26-nutrition-2-balanced-diet",
+      "topic": "waec-physical-education-26-nutrition",
+      "name": "Balanced diet",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-26-nutrition-3-dietary-consideration-in-sports",
+      "topic": "waec-physical-education-26-nutrition",
+      "name": "Dietary consideration in sports",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-27-drug-in-sports-1-meaning-of-drug",
+      "topic": "waec-physical-education-27-drug-in-sports",
+      "name": "Meaning of drug",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-27-drug-in-sports-2-types-of-drug",
+      "topic": "waec-physical-education-27-drug-in-sports",
+      "name": "Types of drug",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-27-drug-in-sports-3-drug-use-and-misuse",
+      "topic": "waec-physical-education-27-drug-in-sports",
+      "name": "Drug use and misuse",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-27-drug-in-sports-4-the-effect-of-drug-on-sports-performance",
+      "topic": "waec-physical-education-27-drug-in-sports",
+      "name": "The effect of drug on sports performance",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-28-sports-injuries-1-common-sports-injuries-dislocation-sprain-strain-fracture-bruise-and-cramp",
+      "topic": "waec-physical-education-28-sports-injuries",
+      "name": "Common sports injuries: dislocation, sprain, strain, fracture, bruise and cramp",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-28-sports-injuries-2-first-aid-and-first-aid-box",
+      "topic": "waec-physical-education-28-sports-injuries",
+      "name": "First aid and first aid box",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-28-sports-injuries-3-special-conditions-and-solutions-that-require-first-aid-heat-stroke-heat-exhaustion-drowning-shock-fainting-muscle-fatigue",
+      "topic": "waec-physical-education-28-sports-injuries",
+      "name": "Special conditions and solutions that require first aid: heat stroke, heat exhaustion, drowning shock, fainting, muscle fatigue",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-28-sports-injuries-4-sportswear",
+      "topic": "waec-physical-education-28-sports-injuries",
+      "name": "Sportswear",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-29-corrective-and-adapted-physical-education-programme-1-definitions",
+      "topic": "waec-physical-education-29-corrective-and-adapted-physical-education-programme",
+      "name": "Definitions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-29-corrective-and-adapted-physical-education-programme-2-categories-of-people-with-special-needs",
+      "topic": "waec-physical-education-29-corrective-and-adapted-physical-education-programme",
+      "name": "Categories of people with special needs",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-29-corrective-and-adapted-physical-education-programme-3-corrective-exercise",
+      "topic": "waec-physical-education-29-corrective-and-adapted-physical-education-programme",
+      "name": "Corrective exercise",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-29-corrective-and-adapted-physical-education-programme-4-activities-for-the-special-needs",
+      "topic": "waec-physical-education-29-corrective-and-adapted-physical-education-programme",
+      "name": "Activities for the special needs",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-29-corrective-and-adapted-physical-education-programme-5-social-and-emotional-problems-of-the-special-needs",
+      "topic": "waec-physical-education-29-corrective-and-adapted-physical-education-programme",
+      "name": "Social and emotional problems of the special needs",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-30-administrative-structure-functions-of-sports-1-administrative-structure-functions-of-sports-at-national-regional-state-and-local-government-level",
+      "topic": "waec-physical-education-30-administrative-structure-functions-of-sports",
+      "name": "Administrative structure/functions of sports at national, regional/state and local government level",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-physical-education-30-administrative-structure-functions-of-sports-2-administrative-structure-function-of-sports-at-institution-level",
+      "topic": "waec-physical-education-30-administrative-structure-functions-of-sports",
+      "name": "Administrative structure/function of sports at institution level",
+      "order": 2,
+      "objectives": []
+    }
+  ]
+}
