@@ -67,6 +67,7 @@ insurance
 marketing
 general-mathematics
 health-education
+music
 physical-education
 physics
 technical-drawing
