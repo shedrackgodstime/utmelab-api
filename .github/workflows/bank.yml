@@ -30,6 +30,7 @@ on:
         default: status
         options:
           - status
+          - coverage
           - index
           - probe
           - fetch
@@ -162,6 +163,8 @@ jobs:
           fi
           if [ "$COMMAND" = "probe" ]; then
             python scripts/probe_myschool_years.py --exam "$EXAM" --year "$YEAR"
+          elif [ "$COMMAND" = "coverage" ]; then
+            python scripts/report_waec_coverage.py --year "$YEAR"
           elif [ "$COMMAND" = "fetch" ] || [ "$COMMAND" = "scrape" ]; then
             args+=(--source "$SOURCE")
             utmelab-bank "$COMMAND" "${args[@]}"
