@@ -153,6 +153,7 @@ def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
         "music": "music",
         "physics": "physics",
         "nigerian-history": "history",
+        "office-practice": "office-practice",
         "physical-education": "physical-education",
         "technical-drawing": "technical-drawing",
         "visual-arts": "visual-arts",

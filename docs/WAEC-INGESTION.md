@@ -65,6 +65,7 @@ home-management
 further-mathematics
 government
 nigerian-history
+office-practice
 islamic-studies
 insurance
 marketing
