@@ -141,6 +141,7 @@ def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
         "english-language": "english-language",
         "financial-accounting": "accounts-principles-of-accounts",
         "foods-and-nutrition": "food-and-nutrition",
+        "french": "french",
         "geography": "geography",
         "government": "government",
         "general-mathematics": "mathematics",

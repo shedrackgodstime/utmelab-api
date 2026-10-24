@@ -57,6 +57,7 @@ economics
 english-language
 financial-accounting
 foods-and-nutrition
+french
 geography
 further-mathematics
 government
