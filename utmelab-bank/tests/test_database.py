@@ -12,7 +12,7 @@ from typing import Any
 
 import pytest
 
-from utmelab_bank.adapters.database import Result, TursoClient, _is_write
+from utmelab_bank.adapters.database import Result, TursoClient, _is_transient, _is_write
 
 
 class FakeConnection:
@@ -119,6 +119,10 @@ async def test_the_result_carries_the_rows(
 )
 def test_the_write_verbs_are_recognised(statement: str) -> None:
     assert _is_write(statement) is True
+
+
+def test_turso_stream_expiry_is_retried() -> None:
+    assert _is_transient(RuntimeError("HTTP status 404: stream not found: abc")) is True
 
 
 @pytest.mark.parametrize(

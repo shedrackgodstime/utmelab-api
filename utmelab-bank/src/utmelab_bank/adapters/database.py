@@ -37,6 +37,10 @@ TRANSIENT = (
     "Temporary failure in name resolution",
     "Name or service not known",
     "nodename nor servname provided",
+    # Turso can expire the HTTP stream while a long batch is still using the
+    # connection. The driver reports that as a 404 even though the SQL is
+    # valid; reconnect and retry the query instead of failing the row.
+    "stream not found",
 )
 
 
