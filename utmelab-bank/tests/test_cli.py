@@ -62,3 +62,9 @@ def test_the_batch_commands_do_not_require_a_scope() -> None:
     args = build_parser().parse_args(["tag", "--limit", "5"])
     assert args.command == "tag"
     assert args.limit == 5
+
+
+def test_batch_commands_accept_country_scope() -> None:
+    args = build_parser().parse_args(["tag", "--country", "NG"])
+
+    assert args.country == "NG"

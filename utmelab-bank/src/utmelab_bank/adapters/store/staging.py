@@ -17,7 +17,7 @@ from .schema import ensure_schema
 #: place so a new column cannot be added to the writer and forgotten by one of
 #: the readers.
 _COLUMNS = (
-    "id, state, exam, subject, year, source, source_item_id, source_url, "
+    "id, state, exam, subject, year, country, source, source_item_id, source_url, "
     "payload_hash, content_hash, bundle_hash, content, passage, catalog, media, "
     "evidence, attempts, error, created_at, updated_at, section, source_version, "
     "media_refs, media_blobs"
@@ -46,11 +46,11 @@ class StagingStore:
         await self._client.execute(
             """
             INSERT OR REPLACE INTO staging_items (
-                id, state, exam, subject, year, source, source_item_id,
+                id, state, exam, subject, year, country, source, source_item_id,
                 source_url, payload_hash, content_hash, bundle_hash,
                 content, passage, catalog, media, evidence, attempts, error,
                 created_at, updated_at, section, source_version, media_refs, media_blobs
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             [
                 item.id,
@@ -58,6 +58,7 @@ class StagingStore:
                 item.provenance.scope.exam,
                 item.provenance.scope.subject,
                 item.provenance.scope.year,
+                item.provenance.scope.country,
                 item.provenance.source,
                 item.provenance.source_item_id,
                 str(item.provenance.source_url),
@@ -144,6 +145,7 @@ class StagingStore:
         exam: str,
         subject: str,
         year: int,
+        country: str | None = None,
     ) -> dict[str, tuple[str, bool, bool]]:
         """The state of every row already held for one scope.
 
@@ -156,8 +158,9 @@ class StagingStore:
             "SELECT id, state, error IS NOT NULL, "
             "(media_refs IS NOT NULL AND media_refs != '[]') OR "
             "(media_blobs IS NOT NULL AND media_blobs != '{}') "
-            "FROM staging_items WHERE exam = ? AND subject = ? AND year = ?",
-            [exam, subject, year],
+            "FROM staging_items WHERE exam = ? AND subject = ? AND year = ? "
+            "AND ((country IS NULL AND ? IS NULL) OR country = ?)",
+            [exam, subject, year, country, country],
         )
         return {str(row[0]): (str(row[1]), bool(row[2]), bool(row[3])) for row in result.rows}
 
@@ -213,6 +216,7 @@ class StagingStore:
         exam: str | None = None,
         subject: str | None = None,
         year: int | None = None,
+        country: str | None = None,
     ) -> tuple[StagingItem, ...]:
         """Read the rows in any of several states, optionally within a scope.
 
@@ -231,6 +235,9 @@ class StagingStore:
             if value is not None:
                 clauses.append(f"{column} = ?")
                 args.append(value)
+        if country is not None:
+            clauses.append("country = ?")
+            args.append(country)
         args.append(limit)
         result = await self._client.execute(
             f"SELECT {_COLUMNS} FROM staging_items "
@@ -284,6 +291,7 @@ def _row_to_item(row: tuple[Any, ...]) -> StagingItem:
         exam,
         subject,
         year,
+        country,
         source,
         source_item_id,
         source_url,
@@ -314,7 +322,13 @@ def _row_to_item(row: tuple[Any, ...]) -> StagingItem:
             fetched_at=datetime.fromisoformat(created_at),
             payload_hash=payload_hash,
             source_version=source_version or "1",
-            scope=Scope(exam=exam, subject=subject, year=year, section=section),
+            scope=Scope(
+                exam=exam,
+                subject=subject,
+                year=year,
+                section=section,
+                country=country,
+            ),
         ),
         content=Content.model_validate_json(content),
         passage=Passage.model_validate_json(passage) if passage else None,

@@ -43,6 +43,7 @@ SCHEMA: tuple[str, ...] = (
         exam            TEXT NOT NULL,
         subject         TEXT NOT NULL,
         year            INTEGER NOT NULL,
+        country         TEXT,
         source          TEXT NOT NULL,
         source_item_id  TEXT NOT NULL,
         source_url      TEXT NOT NULL,
@@ -69,6 +70,7 @@ SCHEMA: tuple[str, ...] = (
 MIGRATIONS: tuple[tuple[str, str], ...] = (
     ("passage", "ALTER TABLE staging_items ADD COLUMN passage TEXT"),
     ("section", "ALTER TABLE staging_items ADD COLUMN section TEXT"),
+    ("country", "ALTER TABLE staging_items ADD COLUMN country TEXT"),
     (
         "source_version",
         "ALTER TABLE staging_items ADD COLUMN source_version TEXT NOT NULL DEFAULT '1'",
@@ -86,6 +88,7 @@ MIGRATIONS: tuple[tuple[str, str], ...] = (
 INDEXES = (
     "CREATE INDEX IF NOT EXISTS idx_staging_state ON staging_items(state)",
     "CREATE INDEX IF NOT EXISTS idx_staging_scope ON staging_items(exam, subject, year)",
+    "CREATE INDEX IF NOT EXISTS idx_staging_scope_country ON staging_items(exam, country, subject, year)",
     "CREATE INDEX IF NOT EXISTS idx_staging_source ON staging_items(source, source_item_id)",
     "CREATE INDEX IF NOT EXISTS idx_staging_content_hash ON staging_items(content_hash)",
     "CREATE INDEX IF NOT EXISTS idx_passages_scope ON passages(exam, subject)",

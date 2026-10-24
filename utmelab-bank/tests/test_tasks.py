@@ -37,7 +37,9 @@ from utmelab_bank.domain.models import (
 from utmelab_bank.runtime import Runtime
 from utmelab_bank.tasks import (
     TaskOptions,
+    UsageError,
     _advance,
+    _scope,
     explain,
     fetch,
     index,
@@ -54,6 +56,14 @@ from .media_fakes import PNG_1X1, FakeMediaFetcher, FakeMediaStore
 FIXTURE_DIR = Path(__file__).resolve().parent / "fixtures" / "sources" / "fixture"
 NOW = datetime(2026, 10, 21, 9, 0, tzinfo=UTC)
 OPTIONS = TaskOptions(exam="JAMB", subject="Biology", year=2024, section="A")
+
+
+def test_waec_scope_requires_and_normalises_country() -> None:
+    with pytest.raises(UsageError, match="WAEC commands need --country"):
+        _scope(TaskOptions(exam="WAEC", subject="biology", year=2025))
+
+    scope = _scope(TaskOptions(exam="WAEC", subject="biology", year=2025, country="ng"))
+    assert scope.country == "NG"
 
 
 def make_catalog() -> CatalogSnapshot:
@@ -100,6 +110,7 @@ class FakeStaging:
         exam: str,
         subject: str,
         year: int,
+        country: str | None = None,
     ) -> dict[str, tuple[str, bool, bool]]:
         return {
             item.id: (
@@ -111,6 +122,7 @@ class FakeStaging:
             if item.provenance.scope.exam == exam
             and item.provenance.scope.subject == subject
             and item.provenance.scope.year == year
+            and item.provenance.scope.country == country
         }
 
     async def passage_ids(self) -> frozenset[str]:
@@ -129,6 +141,7 @@ class FakeStaging:
         exam: str | None = None,
         subject: str | None = None,
         year: int | None = None,
+        country: str | None = None,
     ) -> tuple[StagingItem, ...]:
         wanted = set(states)
         rows = [
@@ -138,6 +151,7 @@ class FakeStaging:
             and (exam is None or item.provenance.scope.exam == exam)
             and (subject is None or item.provenance.scope.subject == subject)
             and (year is None or item.provenance.scope.year == year)
+            and (country is None or item.provenance.scope.country == country)
         ]
         return tuple(rows[:limit])
 

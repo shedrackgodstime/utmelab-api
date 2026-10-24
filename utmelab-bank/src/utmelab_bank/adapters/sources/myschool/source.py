@@ -1,8 +1,8 @@
 """The myschool.ng source.
 
-The source only knows the exam, the subject and the year. It does not read the
-catalog and it does not read the syllabus: the scrape asks the site for a
-paper, and the catalogue step places the row later. That is what lets a scrape
+The source knows the exam, subject, year, and any country scope supplied by the
+caller. It does not read the catalog or syllabus. The scrape asks the site for
+a paper, and the catalog step places the row later. That is what lets a scrape
 run with a read-only production token and no catalog snapshot.
 """
 

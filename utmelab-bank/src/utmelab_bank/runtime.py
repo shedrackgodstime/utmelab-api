@@ -65,6 +65,7 @@ class Staging(Protocol):
         exam: str,
         subject: str,
         year: int,
+        country: str | None = None,
     ) -> dict[str, tuple[str, bool, bool]]: ...
 
     async def passage_ids(self) -> frozenset[str]: ...
@@ -79,6 +80,7 @@ class Staging(Protocol):
         exam: str | None = None,
         subject: str | None = None,
         year: int | None = None,
+        country: str | None = None,
     ) -> tuple[StagingItem, ...]: ...
 
     async def counts_by_state(self) -> dict[str, int]: ...

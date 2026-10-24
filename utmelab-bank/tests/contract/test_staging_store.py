@@ -86,6 +86,7 @@ def make_item(
     state: State = State.CATALOGUED,
     *,
     item_id: str = "q1",
+    country: str | None = None,
 ) -> StagingItem:
     provenance = Provenance(
         source="live",
@@ -94,7 +95,7 @@ def make_item(
         fetched_at=NOW,
         payload_hash="b" * 64,
         source_version="1",
-        scope=Scope(exam="JAMB", subject="biology", year=2024),
+        scope=Scope(exam="JAMB", subject="biology", year=2024, country=country),
     )
     content = Content(
         stem=RichText(text="Which organelle is the site of aerobic respiration?"),
@@ -142,6 +143,18 @@ async def test_save_then_load_round_trips() -> None:
     assert back.state is State.CATALOGUED
     assert back.hashes is not None
     assert back.hashes.content_hash == "c" * 64
+
+
+async def test_save_then_load_preserves_country() -> None:
+    client = FakeClient()
+    store = StagingStore(client)
+    item = make_item(country="NG")
+
+    await store.save(item)
+    back = await store.load(item.id)
+
+    assert back is not None
+    assert back.provenance.scope.country == "NG"
 
 
 async def test_load_returns_none_for_a_missing_row() -> None:

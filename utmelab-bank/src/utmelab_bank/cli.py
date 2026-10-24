@@ -62,6 +62,7 @@ def _add_scope(parser: argparse.ArgumentParser, *, required: bool) -> None:
     )
     parser.add_argument("--year", type=int, required=required, help="exam year")
     parser.add_argument("--section", default=None, help="optional paper section")
+    parser.add_argument("--country", default=None, help="country code, e.g. NG")
 
 
 def _add_batch(parser: argparse.ArgumentParser) -> None:
@@ -150,6 +151,7 @@ async def _execute(args: argparse.Namespace) -> list[TaskResult]:
         subject=getattr(args, "subject", None),
         year=getattr(args, "year", None),
         section=getattr(args, "section", None),
+        country=getattr(args, "country", None),
         limit=getattr(args, "limit", None),
         dry_run=bool(getattr(args, "dry_run", False)),
     )

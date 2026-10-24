@@ -46,6 +46,7 @@ class TaskOptions:
     subject: str | None = None
     year: int | None = None
     section: str | None = None
+    country: str | None = None
     limit: int | None = None
     dry_run: bool = False
 
@@ -111,11 +112,15 @@ def _scope(options: TaskOptions) -> Scope:
     """The source scope, which the scrape must name in full."""
     if not options.exam or not options.subject or options.year is None:
         raise UsageError("this command needs --exam, --subject and --year")
+    country = options.country.upper() if options.country else None
+    if options.exam.upper() == "WAEC" and country is None:
+        raise UsageError("WAEC commands need --country, e.g. --country NG")
     return Scope(
         exam=options.exam,
         subject=options.subject,
         year=options.year,
         section=options.section,
+        country=country,
     )
 
 
@@ -145,9 +150,14 @@ async def _rows(
         exam=options.exam,
         subject=options.subject,
         year=options.year,
+        country=options.country.upper() if options.country else None,
     )
     if options.section is not None:
         rows = tuple(row for row in rows if row.provenance.scope.section == options.section)
+    if options.country is not None:
+        rows = tuple(
+            row for row in rows if row.provenance.scope.country == options.country.upper()
+        )
     return rows
 
 
@@ -259,6 +269,7 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
         exam=scope.exam,
         subject=scope.subject,
         year=scope.year,
+        country=scope.country,
     )
     limit = _limit(options)
     item: StagingItem | None = None

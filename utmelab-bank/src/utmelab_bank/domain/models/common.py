@@ -10,6 +10,7 @@ from pydantic import (
     Field,
     HttpUrl,
     StringConstraints,
+    field_validator,
     model_validator,
 )
 
@@ -52,6 +53,15 @@ MimeType = Annotated[
 Confidence = Annotated[float, Field(ge=0.0, le=1.0)]
 Year = Annotated[int, Field(ge=1980, le=2100)]
 PositiveMarks = Annotated[float, Field(gt=0.0)]
+CountryCode = Annotated[
+    str,
+    StringConstraints(
+        min_length=2,
+        max_length=2,
+        pattern=r"^[A-Za-z]{2}$",
+        strip_whitespace=True,
+    ),
+]
 
 
 class DomainModel(BaseModel):
@@ -75,6 +85,12 @@ class Scope(DomainModel):
     subject: NonEmptyStr
     year: Year
     section: NonEmptyStr | None = None
+    country: CountryCode | None = None
+
+    @field_validator("country")
+    @classmethod
+    def _normalise_country(cls, value: str | None) -> str | None:
+        return value.upper() if value is not None else None
 
 
 class Producer(DomainModel):

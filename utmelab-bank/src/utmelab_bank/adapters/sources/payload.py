@@ -49,8 +49,9 @@ def adapt_payload(item: SourceItem, catalog: CatalogSnapshot | None) -> StagingI
     """Adapt one source item into a staging item.
 
     The catalog is required only when the payload already names a catalog
-    entry. A live scraper knows the exam, subject and year and nothing else,
-    so it passes ``None`` and the catalogue step places the row later.
+    entry. A live scraper knows the exam, subject, year, and optional country
+    scope. It passes ``None`` for the catalog, and the catalog step places the
+    row later.
     """
     payload = item.payload
     catalog_ref = _catalog_ref(payload, item.scope, catalog)

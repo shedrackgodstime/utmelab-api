@@ -17,6 +17,7 @@ name: bank
 run-name: >-
   bank ${{ inputs.command }} |
   ${{ inputs.exam }} ${{ inputs.subject }} ${{ inputs.year }}
+  ${{ inputs.country && inputs.country || '' }}
   ${{ inputs.dry_run && '| dry run' || '' }}
 
 on:
@@ -60,6 +61,11 @@ on:
         type: string
         required: false
         default: "2025"
+      country:
+        description: "Country code for country-scoped exams, e.g. NG"
+        type: string
+        required: false
+        default: ""
       section:
         description: "Optional paper section"
         type: string
@@ -129,6 +135,7 @@ jobs:
           EXAM: ${{ inputs.exam }}
           SUBJECT: ${{ inputs.subject }}
           YEAR: ${{ inputs.year }}
+          COUNTRY: ${{ inputs.country }}
           SECTION: ${{ inputs.section }}
           LIMIT: ${{ inputs.limit }}
           PROVIDER: ${{ inputs.provider }}
@@ -141,6 +148,9 @@ jobs:
             --year "$YEAR"
             --limit "$LIMIT"
           )
+          if [ -n "$COUNTRY" ]; then
+            args+=(--country "$COUNTRY")
+          fi
           if [[ "$COMMAND" =~ ^(tag|media|explain|review|process)$ ]]; then
             args+=(--provider "$PROVIDER")
           fi

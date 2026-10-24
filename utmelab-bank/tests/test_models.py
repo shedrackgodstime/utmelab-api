@@ -44,6 +44,12 @@ NOW = datetime(2026, 10, 20, 12, 0, tzinfo=UTC)
 PRODUCER = Producer(provider="example", model="example-model")
 
 
+def test_scope_normalises_country_codes() -> None:
+    scope = Scope(exam="WAEC", subject="biology", year=2025, country="ng")
+
+    assert scope.country == "NG"
+
+
 def test_valid_staging_item_keeps_facts(staging_item: StagingItem) -> None:
     assert staging_item.id == "source-1:item-1"
     assert staging_item.content.answer == "B"
