@@ -1,0 +1,611 @@
+{
+  "subjects": [
+    {
+      "slug": "nigerian-history",
+      "exam": "WAEC",
+      "name": "Nigerian History",
+      "is_compulsory": false,
+      "objective_paper_questions": 50,
+      "countries": [
+        "NG"
+      ],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "nigerian-history"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-nigerian-history-1-historiography-and-historical-skills",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "Historiography and Historical Skills",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-nigerian-history-2-trans-saharan-trade",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "Trans – Saharan Trade",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-nigerian-history-3-islam-in-west-africa",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "Islam in West Africa",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-nigerian-history-4-european-contact-with-west-africa",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "European Contact with West Africa",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-nigerian-history-5-trans-atlantic-slave-trade",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "Trans-Atlantic slave trade",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-nigerian-history-6-christian-missionary-activities-in-west-africa",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "Christian Missionary Activities in West Africa",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-nigerian-history-7-the-scramble-for-and-partition-of-west-africa",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "The Scramble for and Partition of West Africa",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-nigerian-history-8-colonial-rule-in-west-africa",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "Colonial Rule in West Africa",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-nigerian-history-9-problems-of-independent-west-african-states",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "Problems of Independent West African States",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-nigerian-history-10-west-africa-and-international-organizations",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "West Africa and international organizations",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "SECTION A: NIGERIA FROM EARLIEST TIMES TO 1800",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "NG"
+      ]
+    },
+    {
+      "slug": "waec-nigerian-history-12-section-b-nigeria-in-the-19th-century",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "SECTION B: NIGERIA IN THE 19TH CENTURY",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "NG"
+      ]
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "SECTION C: NIGERIA FROM 1900 to 2000",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": [
+        "NG"
+      ]
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-nigerian-history-1-historiography-and-historical-skills-1-what-is-history-and-why-do-we-study-history",
+      "topic": "waec-nigerian-history-1-historiography-and-historical-skills",
+      "name": "What is History, and why do we study History?",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-1-historiography-and-historical-skills-2-sources-of-history",
+      "topic": "waec-nigerian-history-1-historiography-and-historical-skills",
+      "name": "Sources of History;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-1-historiography-and-historical-skills-3-historical-skills-ancient-and-modern-approaches",
+      "topic": "waec-nigerian-history-1-historiography-and-historical-skills",
+      "name": "Historical skills (ancient and modern approaches);",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-1-historiography-and-historical-skills-4-prospect-of-ict-in-historical-studies",
+      "topic": "waec-nigerian-history-1-historiography-and-historical-skills",
+      "name": "Prospect of ICT in historical studies",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-2-trans-saharan-trade-1-origin-organization-and-the-effects-on-the-development-of-west-african-states",
+      "topic": "waec-nigerian-history-2-trans-saharan-trade",
+      "name": "Origin, organization and the effects on the development of West African states",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-3-islam-in-west-africa-1-introduction-spread-and-effects",
+      "topic": "waec-nigerian-history-3-islam-in-west-africa",
+      "name": "Introduction, spread and effects",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-4-european-contact-with-west-africa-1-reasons-for-their-coming-immediate-effects-and-west-african-reaction",
+      "topic": "waec-nigerian-history-4-european-contact-with-west-africa",
+      "name": "Reasons for their coming, immediate effects and West African reaction",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-5-trans-atlantic-slave-trade-1-origin-organization-effects-and-suppression",
+      "topic": "waec-nigerian-history-5-trans-atlantic-slave-trade",
+      "name": "Origin, organization, effects and suppression",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-6-christian-missionary-activities-in-west-africa-1-the-suppression-of-the-slave-trade",
+      "topic": "waec-nigerian-history-6-christian-missionary-activities-in-west-africa",
+      "name": "The suppression of the slave trade",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-6-christian-missionary-activities-in-west-africa-2-christian-missionary-activities-and-their-impact-on-west-africa",
+      "topic": "waec-nigerian-history-6-christian-missionary-activities-in-west-africa",
+      "name": "Christian Missionary Activities and their impact on West Africa",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-7-the-scramble-for-and-partition-of-west-africa-1-the-industrial-revolution",
+      "topic": "waec-nigerian-history-7-the-scramble-for-and-partition-of-west-africa",
+      "name": "The Industrial Revolution,",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-7-the-scramble-for-and-partition-of-west-africa-2-scramble-for-colonies",
+      "topic": "waec-nigerian-history-7-the-scramble-for-and-partition-of-west-africa",
+      "name": "Scramble for colonies,",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-7-the-scramble-for-and-partition-of-west-africa-3-colonial-subjugation",
+      "topic": "waec-nigerian-history-7-the-scramble-for-and-partition-of-west-africa",
+      "name": "Colonial subjugation,",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-7-the-scramble-for-and-partition-of-west-africa-4-occupation-and-west-african-reaction",
+      "topic": "waec-nigerian-history-7-the-scramble-for-and-partition-of-west-africa",
+      "name": "Occupation and West African reaction",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-8-colonial-rule-in-west-africa-1-patterns-of-colonial-rule",
+      "topic": "waec-nigerian-history-8-colonial-rule-in-west-africa",
+      "name": "Patterns of colonial rule",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-8-colonial-rule-in-west-africa-2-consolidation-of-european-culture-in-africa",
+      "topic": "waec-nigerian-history-8-colonial-rule-in-west-africa",
+      "name": "Consolidation of European culture in Africa",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-8-colonial-rule-in-west-africa-3-colonial-economy-and-the-underdevelopment-of-africa",
+      "topic": "waec-nigerian-history-8-colonial-rule-in-west-africa",
+      "name": "Colonial economy and the underdevelopment of Africa",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-8-colonial-rule-in-west-africa-4-colonial-africa-and-the-two-world-wars",
+      "topic": "waec-nigerian-history-8-colonial-rule-in-west-africa",
+      "name": "Colonial Africa and the two World Wars",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-9-problems-of-independent-west-african-states-1-nature-of-politics-neo-colonialism-and-economic-underdevelopment-unequal-development-within-states-and-instability-the-military-in-west-african-politics-boundary-disputes-and-threat-to-west-african-unity",
+      "topic": "waec-nigerian-history-9-problems-of-independent-west-african-states",
+      "name": "Nature of politics: neo-colonialism and economic underdevelopment, unequal development within states and instability, the Military in West African politics, boundary disputes and threat to West African Unity",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-10-west-africa-and-international-organizations-1-united-nations-organization-u-n-o-united-nations-u-n",
+      "topic": "waec-nigerian-history-10-west-africa-and-international-organizations",
+      "name": "United Nations Organization (U.N.O.)/United Nations (U.N);",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-10-west-africa-and-international-organizations-2-organization-of-african-unity-o-a-u-african-union-a-u",
+      "topic": "waec-nigerian-history-10-west-africa-and-international-organizations",
+      "name": "Organization of African Unity (O.A.U)/African Union (A.U.);",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-10-west-africa-and-international-organizations-3-economic-community-of-west-african-states-ecowas-etc",
+      "topic": "waec-nigerian-history-10-west-africa-and-international-organizations",
+      "name": "Economic Community of West African States (ECOWAS); Etc",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-1-what-is-history-and-why-we-study-history-sources-of-history-historical-skills-ancient-and-modern-approaches-prospect-of-ict-in-historical-studies",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "What is History and why we study History; sources of History; Historical skills (ancient and modern approaches); Prospect of ICT in Historical Studies",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-2-main-geographical-zones-in-nigeria-impact-of-the-environment-on-human-activities-e-g-hunting-fishing-farming-etc",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Main geographical zones in Nigeria: impact of the environment on human activities, e.g., hunting, fishing, farming, etc",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-3-nok-ife-igbo-ukwu-benin",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Nok, Ife, Igbo Ukwu, Benin",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-4-kanem-and-borno",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Kanem and Borno;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-5-hausa",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Hausa;",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-6-nupe",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Nupe;",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-7-oyo",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Oyo;",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-8-benin",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Benin;",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-9-igbo",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Igbo;",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-10-efik",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Efik;",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-11-inter-group-relations-economic-activities-intermarriages-bilingualism-etc",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Inter-group relations: economic activities, intermarriages, bilingualism, etc",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-12-impact-of-migrations-wars-and-politics-on-inter-group-relations",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Impact of migrations; wars and politics on inter-group relations",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-13-pottery-salt-making-iron-working-gold-mining-soap-making-leather-works-weaving-carving-bronze-casting-tie-and-dyeing-bead-making-boat-building-technology-social-and-economic-importance",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Pottery, salt making, iron working, gold mining, soap making, leather works, weaving, carving, bronze casting, tie and dyeing, bead making, boat building – technology; social and economic importance",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-14-contact-with-north-africa-trans-saharan-trade-islam-borno-and-hausaland-and-impact",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Contact with North Africa: trans-Saharan trade, Islam(Borno and Hausaland) and impact",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-15-early-european-contact-with-coastal-states-trade-christianity-and-impact",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Early European contact with coastal states, trade, Christianity and impact",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800-16-origin-organization-and-effects",
+      "topic": "waec-nigerian-history-11-section-a-nigeria-from-earliest-times-to-1800",
+      "name": "Origin, organization and effects",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-12-section-b-nigeria-in-the-19th-century-1-establishment-administration-relations-with-its-neighbors-and-impact-of-the-sokoto-jihad-on-nigeria",
+      "topic": "waec-nigerian-history-12-section-b-nigeria-in-the-19th-century",
+      "name": "Establishment, administration, relations with its neighbors and impact of the Sokoto jihad on Nigeria",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-12-section-b-nigeria-in-the-19th-century-2-the-emergence-of-el-kanemi-developments-under-el-kanemi-and-shehu-umar-and-development-under-the-later-shehus-the-fall-of-borno",
+      "topic": "waec-nigerian-history-12-section-b-nigeria-in-the-19th-century",
+      "name": "The emergence of El-Kanemi, developments under El-Kanemi and Shehu Umar, and development under the later Shehus, the fall of Borno",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-12-section-b-nigeria-in-the-19th-century-3-christian-missionary-activities-activities-impact",
+      "topic": "waec-nigerian-history-12-section-b-nigeria-in-the-19th-century",
+      "name": "Christian Missionary Activities – activities, impact",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-12-section-b-nigeria-in-the-19th-century-4-the-era-of-ibadan-dominance-increased-british-pressure-on-yorubaland",
+      "topic": "waec-nigerian-history-12-section-b-nigeria-in-the-19th-century",
+      "name": "The era of Ibadan dominance; increased British pressure on Yorubaland;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-12-section-b-nigeria-in-the-19th-century-5-benin-in-the-19th-century",
+      "topic": "waec-nigerian-history-12-section-b-nigeria-in-the-19th-century",
+      "name": "Benin in the 19th century",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-12-section-b-nigeria-in-the-19th-century-6-the-first-phase-of-the-british-conquest-of-nigeria-1851-1900",
+      "topic": "waec-nigerian-history-12-section-b-nigeria-in-the-19th-century",
+      "name": "The first phase of the British conquest of Nigeria: 1851-1900",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-1-the-early-phase-1900-1914-the-amalgamation-of-1914-and-its-significance",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "The early phase 1900-1914: the amalgamation of 1914 and its significance",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-2-central-administration",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "central administration;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-3-indirect-rule",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "indirect rule;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-4-the-colonial-economy",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "the colonial economy;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-5-social-developments",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "social developments",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-6-origin-of-nationalism-nationalist-movements-after-the-second-world-war-the-road-to-and-the-attainment-of-independence",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "Origin of nationalism, nationalist movements after the Second World War, the road to and the attainment of independence",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-7-the-first-republic-1960-1966",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "the First Republic, 1960-1966;",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-8-the-coups-d-etat-military-rule-civil-war-and-reconstruction-1966-1975",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "the coups d’etat, military rule, civil war and reconstruction, 1966-1975;",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-9-the-military-administration-murtala-obasanjo-regime-of-1975-1979",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "the military administration – Murtala/Obasanjo regime of 1975-1979;",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-10-the-second-republic-1979-1983",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "the Second Republic, 1979-1983;",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-11-the-return-of-military-rule-buhari-idiagbon-regime-1983-1984",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "the return of military rule – Buhari/Idiagbon regime, 1983-1984",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-12-the-ibrahim-babangida-regime-1985-1993",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "The Ibrahim Babangida regime, 1985-1993",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-13-the-interim-national-government-and-abacha-regime-1993-1998",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "The interim national government and Abacha regime, 1993-1998;",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-14-transition-to-the-fourth-republic-and-olusegun-obasanjo-administration",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "Transition to the fourth republic and Olusegun Obasanjo administration;",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-15-emerging-issues-up-to-2000-poverty-corruption-youth-unemployment-religious-crisis-terrorism-etc",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "Emerging issues up to 2000: poverty, corruption, youth unemployment, religious crisis, terrorism, etc",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-16-united-nations-organization-u-n-o-united-nations-u-n",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "United Nations Organization (U.N.O.)/United Nations (U.N);",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-17-commonwealth-of-nations",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "Commonwealth of Nations;",
+      "order": 17,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-18-organization-of-unity-o-a-u-african-union-a-u",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "Organization of Unity (O.A.U)/African Union (A.U.);",
+      "order": 18,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-19-economic-community-of-west-african-states-ecowas",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "Economic Community of West African States (ECOWAS);",
+      "order": 19,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-20-organization-of-petroleum-exporting-countries-opec",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "Organization of Petroleum Exporting Countries (OPEC)",
+      "order": 20,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000-21-west-africa-in-diaspora-racism-debt-relief-and-international-aids-peacekeeping-and-socio-political-interest-of-developed-societies-world-peace-armament-nuclear-science-millennium-development-goals-mdgs",
+      "topic": "waec-nigerian-history-13-section-c-nigeria-from-1900-to-2000",
+      "name": "West Africa in Diaspora; Racism, Debt relief and International aids; Peacekeeping and socio-political interest of developed societies; World peace (armament, nuclear science); Millennium Development Goals (MDGs)",
+      "order": 21,
+      "objectives": []
+    }
+  ]
+}

@@ -59,6 +59,7 @@ financial-accounting
 geography
 further-mathematics
 government
+nigerian-history
 insurance
 marketing
 general-mathematics

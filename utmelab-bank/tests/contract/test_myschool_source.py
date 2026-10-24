@@ -144,6 +144,7 @@ def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
         "government": "government",
         "general-mathematics": "mathematics",
         "physics": "physics",
+        "nigerian-history": "history",
     }
 
     assert {subject: slug_for("WAEC", subject) for subject in expected} == expected
