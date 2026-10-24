@@ -28,6 +28,7 @@ __all__ = ["clean_inline"]
 #: Tags that carry a mark we keep. Everything else is dropped.
 INLINE_TAGS: Final[dict[str, str]] = {
     "u": "underline",
+    "ins": "underline",
     "strong": "bold",
     "b": "bold",
     "em": "italic",

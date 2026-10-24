@@ -234,6 +234,17 @@ def test_underlines_survive_as_marks() -> None:
     assert any(mark["kind"] == "underline" for mark in marks)
 
 
+def test_inserted_html_survives_as_an_underline_mark() -> None:
+    parsed = parse_api_question(
+        api_row(question="<p>The <ins>rate</ins> of decay.</p>"),
+        exam="waec",
+        subject="english-language",
+        year=2025,
+    )
+    marks = parsed.payload["stem_inline"]
+    assert any(mark["kind"] == "underline" for mark in marks)
+
+
 def test_the_answer_comes_from_the_api() -> None:
     parsed = parse_api_question(
         api_row(
