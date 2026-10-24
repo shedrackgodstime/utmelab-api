@@ -287,7 +287,13 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
             try:
                 issues = source.validate(raw)
                 if issues:
-                    result.fail(f"{raw.external_key}: source invalid: {'; '.join(issues)}")
+                    # The source adapter deliberately turns an unusable row
+                    # into an error item so the rest of the page can continue.
+                    # These are source-quality exclusions, not runner
+                    # failures. Infrastructure and unexpected exceptions
+                    # still take the failure path below.
+                    result.skipped += 1
+                    result.note(f"{raw.external_key}: skipped source row: {'; '.join(issues)}")
                     continue
 
                 production_id = source.production_question_id(raw)

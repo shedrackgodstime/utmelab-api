@@ -592,6 +592,26 @@ async def test_fetch_dry_run_writes_nothing() -> None:
     assert fetcher.urls == []
 
 
+async def test_source_refusal_is_skipped_not_a_failed_run() -> None:
+    runtime, staging, _ = make_runtime()
+    source = FixtureSource(FIXTURE_DIR)
+    original = [item async for item in source.fetch(OPTIONS)][0]
+
+    class SourceWithRefusal(FixtureSource):
+        async def fetch(self, scope: object) -> AsyncIterator[SourceItem]:
+            yield original.model_copy(update={"payload": {"error": "theory paper"}})
+
+    runtime.source = SourceWithRefusal(FIXTURE_DIR)
+    result = await fetch(runtime, OPTIONS)
+
+    assert result.ok
+    assert result.done == 0
+    assert result.skipped == 1
+    assert result.failed == 0
+    assert staging.items == {}
+    assert any("skipped source row" in note for note in result.notes)
+
+
 async def test_a_duplicate_is_filtered_without_uploading_a_figure() -> None:
     runtime, staging, fetcher = make_runtime()
     source = runtime.source

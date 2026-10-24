@@ -124,8 +124,8 @@ def validate_payload(payload: dict[str, Any]) -> list[str]:
     """The source-level checks, before any model or the gate sees the row.
 
     A placeholder item carries an ``error`` key instead of content. Reporting
-    it here keeps a source refusal a per-row failure rather than a crash that
-    loses the rest of the page.
+    it here lets the task quarantine one source refusal without losing the
+    rest of the page.
     """
     error = payload.get("error")
     if isinstance(error, str) and error.strip():
