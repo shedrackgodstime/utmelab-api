@@ -102,6 +102,10 @@ class TursoClient:
     ) -> None:
         if not url:
             raise DatabaseError("no database url was configured")
+        if retries < 1:
+            raise DatabaseError("database retries must be at least 1")
+        if backoff < 0:
+            raise DatabaseError("database backoff cannot be negative")
         self._url = url
         self._token = token
         self._retries = retries
@@ -155,12 +159,18 @@ class TursoClient:
 
             try:
                 rows = await loop.run_in_executor(self._executor, run)
-            except DatabaseError:
-                raise
+            except DatabaseError as exc:
+                last = exc
+                if not _is_transient(exc) or attempt == self._retries - 1:
+                    raise
+                await self._discard_connection()
+                await asyncio.sleep(self._backoff * (attempt + 1))
+                continue
             except Exception as exc:
                 last = exc
-                # The connection is gone. Drop it so the next attempt reconnects.
-                self._connection = None
+                # The connection is gone. Close and drop it on the driver's
+                # own thread so the next attempt gets a clean session.
+                await self._discard_connection()
                 if not _is_transient(exc) or attempt == self._retries - 1:
                     raise DatabaseError(f"query failed: {exc}") from exc
                 await asyncio.sleep(self._backoff * (attempt + 1))
@@ -177,12 +187,42 @@ class TursoClient:
         that made several writes and wants them to land together.
         """
         loop = asyncio.get_running_loop()
+        last: BaseException | None = None
+        for attempt in range(self._retries):
+            def run() -> None:
+                connection = self._connect()
+                connection.commit()
 
+            try:
+                await loop.run_in_executor(self._executor, run)
+                return
+            except DatabaseError as exc:
+                last = exc
+                if not _is_transient(exc) or attempt == self._retries - 1:
+                    raise
+                await self._discard_connection()
+                await asyncio.sleep(self._backoff * (attempt + 1))
+                continue
+            except Exception as exc:
+                last = exc
+                await self._discard_connection()
+                if not _is_transient(exc) or attempt == self._retries - 1:
+                    raise DatabaseError(f"commit failed: {exc}") from exc
+                await asyncio.sleep(self._backoff * (attempt + 1))
+        raise DatabaseError(f"commit failed after {self._retries} attempts: {last}")
+
+    async def _discard_connection(self) -> None:
+        """Close the current driver session on its owning worker thread."""
         def run() -> None:
-            connection = self._connect()
-            connection.commit()
+            connection = self._connection
+            self._connection = None
+            if connection is not None:
+                try:
+                    connection.close()
+                except Exception:
+                    pass
 
-        await loop.run_in_executor(self._executor, run)
+        await asyncio.get_running_loop().run_in_executor(self._executor, run)
 
     async def close(self) -> None:
         connection = self._connection
