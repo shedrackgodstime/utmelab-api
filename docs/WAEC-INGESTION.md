@@ -56,6 +56,7 @@ civic-education
 economics
 english-language
 financial-accounting
+foods-and-nutrition
 geography
 further-mathematics
 government
