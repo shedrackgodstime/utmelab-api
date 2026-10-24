@@ -416,7 +416,10 @@ async def capture(runtime: Runtime, options: TaskOptions) -> TaskResult:
     """
     ingestor = require(runtime.ingestor, "media store")
     result = TaskResult(task="capture")
-    rows = await _rows(runtime, (State.DEDUPED,), options)
+    # A row can be tagged before its source figure is captured. Keep that
+    # row eligible here, otherwise ``catalogued + media_refs`` is a dead end:
+    # media refuses to describe uncaptured refs and capture never sees it.
+    rows = await _rows(runtime, (State.DEDUPED, State.CATALOGUED), options)
 
     for item in rows:
         result.seen += 1

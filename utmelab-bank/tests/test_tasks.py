@@ -29,6 +29,7 @@ from utmelab_bank.domain.models import (
     Content,
     Inline,
     MediaAsset,
+    MediaRef,
     Producer,
     RichText,
     SourceItem,
@@ -40,6 +41,7 @@ from utmelab_bank.tasks import (
     UsageError,
     _advance,
     _scope,
+    capture,
     explain,
     fetch,
     index,
@@ -438,6 +440,31 @@ async def test_capture_clears_blobs_after_upload(staging_item: StagingItem) -> N
     assert captured.media_blobs == {}
     assert len(captured.media_assets) == 1
     assert captured.content.stem.inline[0].url == captured.media_assets[0].storage_url
+
+
+async def test_capture_resumes_catalogued_rows_with_pending_media(
+    staging_item: StagingItem,
+) -> None:
+    runtime, staging, fetcher = make_runtime()
+    item = staging_item.model_copy(
+        update={
+            "id": "catalogued-media-item",
+            "media_refs": (
+                MediaRef(key="figure", source_url="https://fixture.example/figure.png"),
+            ),
+        }
+    )
+    await staging.save(item)
+
+    result = await capture(runtime, TaskOptions(exam="JAMB", subject="Biology", year=2024))
+
+    assert result.done == 1
+    resumed = await staging.load(item.id)
+    assert resumed is not None
+    assert resumed.state is State.CATALOGUED
+    assert resumed.media_refs == ()
+    assert resumed.media_assets
+    assert fetcher.urls == ["https://fixture.example/figure.png"]
 
 
 class ExplodingIngestor:
