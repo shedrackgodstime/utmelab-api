@@ -143,12 +143,16 @@ jobs:
           DRY_RUN: ${{ inputs.dry_run }}
         run: |
           set -euo pipefail
-          args=(
-            --exam "$EXAM"
-            --subject "$SUBJECT"
-            --year "$YEAR"
-            --limit "$LIMIT"
-          )
+          args=(--limit "$LIMIT")
+          if [ -n "$EXAM" ]; then
+            args+=(--exam "$EXAM")
+          fi
+          if [ -n "$SUBJECT" ]; then
+            args+=(--subject "$SUBJECT")
+          fi
+          if [ -n "$YEAR" ]; then
+            args+=(--year "$YEAR")
+          fi
           if [ -n "$COUNTRY" ]; then
             args+=(--country "$COUNTRY")
           fi
