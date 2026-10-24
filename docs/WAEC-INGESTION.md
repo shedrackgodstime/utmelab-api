@@ -48,6 +48,7 @@ ingestion. The production subject, topics, and subtopics must exist first.
 The repository currently has WAEC syllabus inputs for:
 
 ```text
+agricultural-science
 biology
 chemistry
 christian-religious-studies

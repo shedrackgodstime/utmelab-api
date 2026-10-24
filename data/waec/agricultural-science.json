@@ -1,0 +1,3493 @@
+{
+  "subjects": [
+    {
+      "slug": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Agricultural Science",
+      "is_compulsory": false,
+      "objective_paper_questions": 50,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "agricultural-science"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-agricultural-science-1-meaning-and-importance-of-agriculture",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Meaning and importance of agriculture",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Problems of agricultural development and possible solutions",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-3-meaning-and-differences-between-subsistence-and-commercial-agriculture",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Meaning and differences between subsistence and commercial agriculture",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-4-roles-of-government-in-agricultural-development",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Roles of government in agricultural development",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-5-role-of-non-governmental-organizations-in-agricultural-development",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Role of non-governmental organizations in agricultural development",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-6-agricultural-laws-and-reforms",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Agricultural laws and reforms",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-7-meaning-and-importance-of-agricultural-ecology",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Meaning and importance of agricultural ecology",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-8-land-and-its-uses",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Land and its uses",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Factors affecting land availability for agricultural purposes",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-10-agro-allied-industries-and-the-relationship-between-agriculture-and-industry",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Agro-allied industries and the relationship between agriculture and industry",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-11-environmental-factors-affecting-crop-and-animal-distribution-and-production",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Environmental factors affecting crop and animal distribution and production",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-12-rock-formation",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Rock formation",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-13-soil-formation-and-profile-development",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Soil formation and profile development",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-14-types-composition-and-properties-of-soil",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Types, composition and properties of soil",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-15-plant-nutrients-and-nutrient-cycle",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Plant nutrients and nutrient cycle",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-16-irrigation",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Irrigation",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-17-drainage",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Drainage",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-18-agricultural-pollution",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Agricultural pollution",
+      "order": 18,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-19-simple-farm-tools",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Simple farm tools",
+      "order": 19,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-20-farm-machinery-and-implements",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Farm machinery and implements",
+      "order": 20,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-21-maintenance-practices-and-precautionary-measures",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Maintenance practices and precautionary measures",
+      "order": 21,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-22-agricultural-mechanization",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Agricultural mechanization",
+      "order": 22,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-23-prospects-of-agricultural-mechanization",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Prospects of agricultural mechanization",
+      "order": 23,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-24-farm-power",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Farm power",
+      "order": 24,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-25-farm-surveying",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Farm Surveying",
+      "order": 25,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-26-farm-planning",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Farm planning",
+      "order": 26,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-27-principles-of-farmstead-planning",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Principles of farmstead planning",
+      "order": 27,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-28-classification-of-crops",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Classification of crops",
+      "order": 28,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-29-husbandry-of-selected-crops",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Husbandry of selected crops",
+      "order": 29,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-30-pasture-and-forage-crops",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Pasture and forage crops",
+      "order": 30,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-31-crop-improvement",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Crop improvement",
+      "order": 31,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-32-forest-management",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Forest management",
+      "order": 32,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-33-agro-forestry-practices-in-west-africa",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Agro-forestry practices in West Africa",
+      "order": 33,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-34-meaning-and-importance-of-ornamental-plants",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Meaning and importance of ornamental plants",
+      "order": 34,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-35-common-types-of-ornamental-plants",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Common types of ornamental plants",
+      "order": 35,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-36-settings-and-location-for-planting-ornamental-plants",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Settings and location for planting ornamental plants",
+      "order": 36,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-37-methods-of-cultivating-ornamental-plants",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Methods of cultivating ornamental plants",
+      "order": 37,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-38-maintenance-of-ornamental-plants",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Maintenance of ornamental plants",
+      "order": 38,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-39-diseases-of-crops",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Diseases of crops",
+      "order": 39,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Pests of crops",
+      "order": 40,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-41-weeds",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Weeds",
+      "order": 41,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-42-types-and-classification-of-farm-animals",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Types and classification of farm animals",
+      "order": 42,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-43-anatomy-and-physiology-of-farm-animals",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Anatomy and physiology of farm animals",
+      "order": 43,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-44-animal-reproduction",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Animal reproduction",
+      "order": 44,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-45-environmental-physiology",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Environmental physiology",
+      "order": 45,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-46-livestock-management",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Livestock management",
+      "order": 46,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-47-animal-nutrition",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Animal Nutrition",
+      "order": 47,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-48-rangeland-and-pasture-management",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Rangeland and pasture management",
+      "order": 48,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-49-animal-improvement",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Animal improvement",
+      "order": 49,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-50-",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "",
+      "order": 50,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-51-",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "",
+      "order": 51,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-52-aquaculture",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Aquaculture",
+      "order": 52,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-53-apiculture-or-bee-keeping",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Apiculture or bee keeping",
+      "order": 53,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-54-basic-economic-principles",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Basic economic principles",
+      "order": 54,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-55-factors-of-production",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Factors of production:",
+      "order": 55,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-56-principles-of-demand",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Principles of demand",
+      "order": 56,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-57-principles-of-supply",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Principles of supply",
+      "order": 57,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-58-implications-of-demand-and-supply-for-agricultural-production",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Implications of demand and supply for agricultural production",
+      "order": 58,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-59-functions-of-a-farm-manager",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Functions of a farm manager",
+      "order": 59,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-60-problems-faced-by-farm-managers",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Problems faced by farm managers",
+      "order": 60,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-61-agricultural-finance",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Agricultural Finance",
+      "order": 61,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-62-classes-of-farm-credit",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Classes of farm credit",
+      "order": 62,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-63-capital-market",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Capital market",
+      "order": 63,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-64-farm-records-and-accounts",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Farm records and accounts",
+      "order": 64,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-65-marketing-of-agricultural-produce",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Marketing of agricultural produce",
+      "order": 65,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-66-agricultural-insurance",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Agricultural insurance",
+      "order": 66,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-67-agricultural-extension",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "Agricultural extension",
+      "order": 67,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "AGRICULTURAL ECOLOGY",
+      "order": 68,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-69-agricultural-engineering-mechanization",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "AGRICULTURAL ENGINEERING/MECHANIZATION",
+      "order": 69,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-70-crop-production",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "CROP PRODUCTION",
+      "order": 70,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-agricultural-science-71-animal-production",
+      "subject": "agricultural-science",
+      "exam": "WAEC",
+      "name": "ANIMAL PRODUCTION",
+      "order": 71,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-agricultural-science-1-meaning-and-importance-of-agriculture-1-definition-and-branches-of-agricultural-science",
+      "topic": "waec-agricultural-science-1-meaning-and-importance-of-agriculture",
+      "name": "Definition and branches of agricultural science",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-1-meaning-and-importance-of-agriculture-2-importance-of-agriculture-to-the-individual-community-and-nation",
+      "topic": "waec-agricultural-science-1-meaning-and-importance-of-agriculture",
+      "name": "Importance of agriculture to the individual, community and nation",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions-1-land-tenure",
+      "topic": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions",
+      "name": "land tenure;",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions-2-basic-amenities",
+      "topic": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions",
+      "name": "basic amenities;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions-3-finance",
+      "topic": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions",
+      "name": "finance;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions-4-transportation",
+      "topic": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions",
+      "name": "transportation;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions-5-storage-and-processing-facilities",
+      "topic": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions",
+      "name": "storage and processing facilities;",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions-6-agricultural-education-and-extension",
+      "topic": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions",
+      "name": "agricultural education and extension;",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions-7-tools-and-machinery",
+      "topic": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions",
+      "name": "tools and machinery;",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions-8-farm-inputs",
+      "topic": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions",
+      "name": "farm inputs;",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions-9-marketing-system",
+      "topic": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions",
+      "name": "marketing system;",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions-10-environmental-degradation",
+      "topic": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions",
+      "name": "environmental degradation",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions-11-possible-solutions-to-identified-problems",
+      "topic": "waec-agricultural-science-2-problems-of-agricultural-development-and-possible-solutions",
+      "name": "Possible solutions to identified problems",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-3-meaning-and-differences-between-subsistence-and-commercial-agriculture-1-meaning-of-subsistence-and-commercial-agriculture",
+      "topic": "waec-agricultural-science-3-meaning-and-differences-between-subsistence-and-commercial-agriculture",
+      "name": "Meaning of subsistence and commercial agriculture",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-3-meaning-and-differences-between-subsistence-and-commercial-agriculture-2-differences-between-subsistence-and-commercial-agriculture-based-on-their-characteristics",
+      "topic": "waec-agricultural-science-3-meaning-and-differences-between-subsistence-and-commercial-agriculture",
+      "name": "Differences between subsistence and commercial agriculture based on their characteristics",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-3-meaning-and-differences-between-subsistence-and-commercial-agriculture-3-advantages-and-disadvantages-of-subsistence-and-commercial-agriculture",
+      "topic": "waec-agricultural-science-3-meaning-and-differences-between-subsistence-and-commercial-agriculture",
+      "name": "Advantages and disadvantages of subsistence and commercial agriculture",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-3-meaning-and-differences-between-subsistence-and-commercial-agriculture-4-problems-of-subsistence-and-commercial-agriculture",
+      "topic": "waec-agricultural-science-3-meaning-and-differences-between-subsistence-and-commercial-agriculture",
+      "name": "Problems of subsistence and commercial agriculture",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-4-roles-of-government-in-agricultural-development-1-credit",
+      "topic": "waec-agricultural-science-4-roles-of-government-in-agricultural-development",
+      "name": "credit",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-4-roles-of-government-in-agricultural-development-2-subsidy",
+      "topic": "waec-agricultural-science-4-roles-of-government-in-agricultural-development",
+      "name": "subsidy",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-4-roles-of-government-in-agricultural-development-3-agricultural-education",
+      "topic": "waec-agricultural-science-4-roles-of-government-in-agricultural-development",
+      "name": "Agricultural education",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-4-roles-of-government-in-agricultural-development-4-agricultural-extension-services",
+      "topic": "waec-agricultural-science-4-roles-of-government-in-agricultural-development",
+      "name": "Agricultural extension services",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-4-roles-of-government-in-agricultural-development-5-agricultural-policies-and-programmes",
+      "topic": "waec-agricultural-science-4-roles-of-government-in-agricultural-development",
+      "name": "Agricultural policies and programmes",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-5-role-of-non-governmental-organizations-in-agricultural-development-1-meaning-of-non-governmental-organizations-ngos",
+      "topic": "waec-agricultural-science-5-role-of-non-governmental-organizations-in-agricultural-development",
+      "name": "Meaning of non-governmental organizations (NGOs)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-5-role-of-non-governmental-organizations-in-agricultural-development-2-roles-of-ngos-in-agricultural-development",
+      "topic": "waec-agricultural-science-5-role-of-non-governmental-organizations-in-agricultural-development",
+      "name": "Roles of NGOs in agricultural development",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-6-agricultural-laws-and-reforms-1-land-tenure-systems-in-west-africa",
+      "topic": "waec-agricultural-science-6-agricultural-laws-and-reforms",
+      "name": "Land tenure systems in West Africa",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-6-agricultural-laws-and-reforms-2-government-laws-on-land-use-in-west-africa",
+      "topic": "waec-agricultural-science-6-agricultural-laws-and-reforms",
+      "name": "Government laws on land use in West Africa",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-6-agricultural-laws-and-reforms-3-advantages-and-disadvantages-of-the-land-use-act-decree-and-reforms-in-west-africa",
+      "topic": "waec-agricultural-science-6-agricultural-laws-and-reforms",
+      "name": "Advantages and disadvantages of the land use Act (Decree) and reforms in West Africa",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-7-meaning-and-importance-of-agricultural-ecology-1-meaning-of-agricultural-ecology-and-ecosystem",
+      "topic": "waec-agricultural-science-7-meaning-and-importance-of-agricultural-ecology",
+      "name": "Meaning of agricultural ecology and ecosystem",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-7-meaning-and-importance-of-agricultural-ecology-2-components-of-farm-ecosystem-e-g-biotic-and-abiotic",
+      "topic": "waec-agricultural-science-7-meaning-and-importance-of-agricultural-ecology",
+      "name": "Components of farm ecosystem, e.g., biotic and abiotic",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-7-meaning-and-importance-of-agricultural-ecology-3-interactions-of-the-components-in-the-terrestrial-and-aquatic-agro-ecosystem",
+      "topic": "waec-agricultural-science-7-meaning-and-importance-of-agricultural-ecology",
+      "name": "Interactions of the components in the terrestrial and aquatic agro-ecosystem",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-8-land-and-its-uses-1-meaning-of-land",
+      "topic": "waec-agricultural-science-8-land-and-its-uses",
+      "name": "Meaning of land",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-8-land-and-its-uses-2-characteristics-of-land-free-gift-of-nature-immobile-limited-in-supply-etc",
+      "topic": "waec-agricultural-science-8-land-and-its-uses",
+      "name": "Characteristics of land – free gift of nature, immobile, limited in supply etc",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-8-land-and-its-uses-3-crop-production",
+      "topic": "waec-agricultural-science-8-land-and-its-uses",
+      "name": "crop production;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-8-land-and-its-uses-4-wild-life-conservation-game-reserve",
+      "topic": "waec-agricultural-science-8-land-and-its-uses",
+      "name": "wild life conservation/game reserve;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-8-land-and-its-uses-5-livestock-production-etc",
+      "topic": "waec-agricultural-science-8-land-and-its-uses",
+      "name": "livestock production, etc",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-8-land-and-its-uses-6-industry",
+      "topic": "waec-agricultural-science-8-land-and-its-uses",
+      "name": "industry;",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-8-land-and-its-uses-7-housing",
+      "topic": "waec-agricultural-science-8-land-and-its-uses",
+      "name": "housing;",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-8-land-and-its-uses-8-transport-etc",
+      "topic": "waec-agricultural-science-8-land-and-its-uses",
+      "name": "transport, etc",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes-1-soil-type",
+      "topic": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes",
+      "name": "soil type;",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes-2-topography",
+      "topic": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes",
+      "name": "topography;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes-3-land-degradation",
+      "topic": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes",
+      "name": "land degradation;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes-4-soil-pollution",
+      "topic": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes",
+      "name": "soil pollution",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes-5-population-pressure",
+      "topic": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes",
+      "name": "population pressure",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes-6-expansion-of-industries",
+      "topic": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes",
+      "name": "expansion of industries",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes-7-mining-mineral-exploitation",
+      "topic": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes",
+      "name": "mining/mineral exploitation",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes-8-recreation-tourism",
+      "topic": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes",
+      "name": "recreation/tourism",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes-9-land-tenure-system",
+      "topic": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes",
+      "name": "land tenure system",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes-10-religious-purpose-church-mosque-and-shrine-etc",
+      "topic": "waec-agricultural-science-9-factors-affecting-land-availability-for-agricultural-purposes",
+      "name": "religious purpose (church, mosque and shrine) etc",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-10-agro-allied-industries-and-the-relationship-between-agriculture-and-industry-1-paper-industry-pulp-wood",
+      "topic": "waec-agricultural-science-10-agro-allied-industries-and-the-relationship-between-agriculture-and-industry",
+      "name": "paper industry: pulp wood;",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-10-agro-allied-industries-and-the-relationship-between-agriculture-and-industry-2-beverage-industry-cocoa-tea-etc",
+      "topic": "waec-agricultural-science-10-agro-allied-industries-and-the-relationship-between-agriculture-and-industry",
+      "name": "beverage industry (cocoa, tea, etc.);",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-10-agro-allied-industries-and-the-relationship-between-agriculture-and-industry-3-textile-industry-cotton",
+      "topic": "waec-agricultural-science-10-agro-allied-industries-and-the-relationship-between-agriculture-and-industry",
+      "name": "textile industry: cotton;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-10-agro-allied-industries-and-the-relationship-between-agriculture-and-industry-4-soap-industry-oil-seeds-etc",
+      "topic": "waec-agricultural-science-10-agro-allied-industries-and-the-relationship-between-agriculture-and-industry",
+      "name": "soap industry: oil, seeds, etc",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-10-agro-allied-industries-and-the-relationship-between-agriculture-and-industry-5-agriculture-provides-a-market-for-industrial-products-e-g-farm-machinery-and-chemicals",
+      "topic": "waec-agricultural-science-10-agro-allied-industries-and-the-relationship-between-agriculture-and-industry",
+      "name": "Agriculture provides a market for industrial products, e.g., farm machinery and chemicals;",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-10-agro-allied-industries-and-the-relationship-between-agriculture-and-industry-6-agriculture-provides-food-for-industrial-workers",
+      "topic": "waec-agricultural-science-10-agro-allied-industries-and-the-relationship-between-agriculture-and-industry",
+      "name": "Agriculture provides food for industrial workers",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-11-environmental-factors-affecting-crop-and-animal-distribution-and-production-1-climatic-factors-e-g-rainfall-temperature-light-wind-relative-humidity",
+      "topic": "waec-agricultural-science-11-environmental-factors-affecting-crop-and-animal-distribution-and-production",
+      "name": "Climatic factors, e.g., rainfall, temperature, light, wind, relative humidity",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-11-environmental-factors-affecting-crop-and-animal-distribution-and-production-2-biotic-factors-e-g-predators-parasites-soil-micro-organisms-pests-pathogens-and-weeds-interrelationships-such-as-competition-parasitism-and-mutualism-symbiosis",
+      "topic": "waec-agricultural-science-11-environmental-factors-affecting-crop-and-animal-distribution-and-production",
+      "name": "Biotic factors, e.g., predators, parasites, soil micro-organisms, pests, pathogens and weeds; interrelationships such as competition, parasitism, and mutualism (symbiosis)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-11-environmental-factors-affecting-crop-and-animal-distribution-and-production-3-edaphic-factors-soil-ph-soil-texture-soil-structure-soil-type-etc",
+      "topic": "waec-agricultural-science-11-environmental-factors-affecting-crop-and-animal-distribution-and-production",
+      "name": "Edaphic factors: soil pH, soil texture, soil structure, soil type etc",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-12-rock-formation-1-igneous",
+      "topic": "waec-agricultural-science-12-rock-formation",
+      "name": "igneous;",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-12-rock-formation-2-sedimentary",
+      "topic": "waec-agricultural-science-12-rock-formation",
+      "name": "sedimentary",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-12-rock-formation-3-metamorphic",
+      "topic": "waec-agricultural-science-12-rock-formation",
+      "name": "metamorphic",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-12-rock-formation-4-processes-of-rock-formation",
+      "topic": "waec-agricultural-science-12-rock-formation",
+      "name": "Processes of rock formation",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-13-soil-formation-and-profile-development-1-factors-of-soil-formation-the-parent-rock-organisms-climate-topography-and-time",
+      "topic": "waec-agricultural-science-13-soil-formation-and-profile-development",
+      "name": "Factors of soil formation: the parent rock, organisms, climate, topography and time",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-13-soil-formation-and-profile-development-2-physical-weathering",
+      "topic": "waec-agricultural-science-13-soil-formation-and-profile-development",
+      "name": "physical weathering;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-13-soil-formation-and-profile-development-3-chemical-weathering",
+      "topic": "waec-agricultural-science-13-soil-formation-and-profile-development",
+      "name": "chemical weathering",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-13-soil-formation-and-profile-development-4-soil-profile-development",
+      "topic": "waec-agricultural-science-13-soil-formation-and-profile-development",
+      "name": "Soil profile development",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-14-types-composition-and-properties-of-soil-1-types-of-soil",
+      "topic": "waec-agricultural-science-14-types-composition-and-properties-of-soil",
+      "name": "Types of soil",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-14-types-composition-and-properties-of-soil-2-soil-macro-and-micronutrients",
+      "topic": "waec-agricultural-science-14-types-composition-and-properties-of-soil",
+      "name": "soil macro and micronutrients;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-14-types-composition-and-properties-of-soil-3-soil-water",
+      "topic": "waec-agricultural-science-14-types-composition-and-properties-of-soil",
+      "name": "soil water;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-14-types-composition-and-properties-of-soil-4-soil-macro-organisms",
+      "topic": "waec-agricultural-science-14-types-composition-and-properties-of-soil",
+      "name": "soil macro-organisms;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-14-types-composition-and-properties-of-soil-5-soil-microbes",
+      "topic": "waec-agricultural-science-14-types-composition-and-properties-of-soil",
+      "name": "soil microbes;",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-14-types-composition-and-properties-of-soil-6-soil-air",
+      "topic": "waec-agricultural-science-14-types-composition-and-properties-of-soil",
+      "name": "soil air",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-14-types-composition-and-properties-of-soil-7-soil-ph",
+      "topic": "waec-agricultural-science-14-types-composition-and-properties-of-soil",
+      "name": "Soil pH",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-14-types-composition-and-properties-of-soil-8-soil-texture",
+      "topic": "waec-agricultural-science-14-types-composition-and-properties-of-soil",
+      "name": "soil texture",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-14-types-composition-and-properties-of-soil-9-soil-structure",
+      "topic": "waec-agricultural-science-14-types-composition-and-properties-of-soil",
+      "name": "soil structure",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-15-plant-nutrients-and-nutrient-cycle-1-macro-and-micronutrients-their-functions-and-deficiency-symptoms-in-crops",
+      "topic": "waec-agricultural-science-15-plant-nutrients-and-nutrient-cycle",
+      "name": "Macro and micronutrients; their functions and deficiency symptoms in crops",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-15-plant-nutrients-and-nutrient-cycle-2-factors-affecting-the-availability-of-nutrients-in-soil-such-as-ph-excess-of-other-nutrients-leaching-crop-removal-oxidation-and-burning",
+      "topic": "waec-agricultural-science-15-plant-nutrients-and-nutrient-cycle",
+      "name": "Factors affecting the availability of nutrients in soil such as pH, excess of other nutrients, leaching, crop removal, oxidation and burning",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-15-plant-nutrients-and-nutrient-cycle-3-methods-of-replenishing-lost-nutrients-e-g-crop-rotation-organic-manuring-fertilizer-application-fallowing-liming-and-cover-cropping",
+      "topic": "waec-agricultural-science-15-plant-nutrients-and-nutrient-cycle",
+      "name": "Methods of replenishing lost nutrients, e.g., crop rotation, organic manuring, fertilizer application, fallowing, liming, and cover-cropping",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-15-plant-nutrients-and-nutrient-cycle-4-nitrogen-carbon-water-and-phosphorus-cycles",
+      "topic": "waec-agricultural-science-15-plant-nutrients-and-nutrient-cycle",
+      "name": "Nitrogen, carbon, water and phosphorus cycles",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-15-plant-nutrients-and-nutrient-cycle-5-organic-agriculture-meaning-and-importance",
+      "topic": "waec-agricultural-science-15-plant-nutrients-and-nutrient-cycle",
+      "name": "Organic agriculture – meaning and importance",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-16-irrigation-1-meaning-of-irrigation-system",
+      "topic": "waec-agricultural-science-16-irrigation",
+      "name": "Meaning of irrigation system",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-16-irrigation-2-overhead-e-g-sprinkler",
+      "topic": "waec-agricultural-science-16-irrigation",
+      "name": "overhead, e.g., sprinkler;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-16-irrigation-3-surface-e-g-flooding-furrow-channel-basin-border",
+      "topic": "waec-agricultural-science-16-irrigation",
+      "name": "surface, e.g., flooding, furrow/channel, basin, border;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-16-irrigation-4-underground-e-g-perforated-pipes-and-drips",
+      "topic": "waec-agricultural-science-16-irrigation",
+      "name": "underground, e.g., perforated pipes and drips",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-16-irrigation-5-advantages-and-disadvantages-of-irrigation-systems",
+      "topic": "waec-agricultural-science-16-irrigation",
+      "name": "Advantages and disadvantages of irrigation systems",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-16-irrigation-6-importance-of-irrigation",
+      "topic": "waec-agricultural-science-16-irrigation",
+      "name": "Importance of irrigation",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-16-irrigation-7-problems-associated-with-irrigation",
+      "topic": "waec-agricultural-science-16-irrigation",
+      "name": "Problems associated with irrigation",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-17-drainage-1-meaning-of-drainage",
+      "topic": "waec-agricultural-science-17-drainage",
+      "name": "Meaning of drainage",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-17-drainage-2-importance-of-drainage",
+      "topic": "waec-agricultural-science-17-drainage",
+      "name": "Importance of drainage",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-17-drainage-3-surface-drainage-e-g-channel-furrow",
+      "topic": "waec-agricultural-science-17-drainage",
+      "name": "surface drainage, e.g., channel, furrow;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-17-drainage-4-subsurface-underground-drainage",
+      "topic": "waec-agricultural-science-17-drainage",
+      "name": "subsurface/underground drainage",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-17-drainage-5-advantages-and-disadvantages-of-drainage-systems",
+      "topic": "waec-agricultural-science-17-drainage",
+      "name": "Advantages and disadvantages of drainage systems",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-18-agricultural-pollution-1-meaning-of-agricultural-pollution",
+      "topic": "waec-agricultural-science-18-agricultural-pollution",
+      "name": "Meaning of agricultural pollution",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-18-agricultural-pollution-2-excessive-application-of-agricultural-chemicals",
+      "topic": "waec-agricultural-science-18-agricultural-pollution",
+      "name": "excessive application of agricultural chemicals;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-18-agricultural-pollution-3-marine-and-oil-spillage",
+      "topic": "waec-agricultural-science-18-agricultural-pollution",
+      "name": "marine and oil spillage;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-18-agricultural-pollution-4-livestock-waste-and-dung-disposal-etc",
+      "topic": "waec-agricultural-science-18-agricultural-pollution",
+      "name": "livestock waste and dung disposal etc",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-18-agricultural-pollution-5-effects-of-land-pond-pollution-on-farmers-and-agricultural-productivity",
+      "topic": "waec-agricultural-science-18-agricultural-pollution",
+      "name": "Effects of land/pond pollution on farmers and agricultural productivity",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-19-simple-farm-tools-1-meaning-of-simple-farm-tools",
+      "topic": "waec-agricultural-science-19-simple-farm-tools",
+      "name": "Meaning of simple farm tools",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-19-simple-farm-tools-2-cutlass-hoe-spade-shovel-etc",
+      "topic": "waec-agricultural-science-19-simple-farm-tools",
+      "name": "cutlass, hoe, spade, shovel etc",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-19-simple-farm-tools-3-general-maintenance-of-simple-farm-tools",
+      "topic": "waec-agricultural-science-19-simple-farm-tools",
+      "name": "General maintenance of simple farm tools",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-20-farm-machinery-and-implements-1-tractor",
+      "topic": "waec-agricultural-science-20-farm-machinery-and-implements",
+      "name": "tractor;",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-20-farm-machinery-and-implements-2-bulldozer",
+      "topic": "waec-agricultural-science-20-farm-machinery-and-implements",
+      "name": "bulldozer;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-20-farm-machinery-and-implements-3-shellers",
+      "topic": "waec-agricultural-science-20-farm-machinery-and-implements",
+      "name": "shellers;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-20-farm-machinery-and-implements-4-dryers",
+      "topic": "waec-agricultural-science-20-farm-machinery-and-implements",
+      "name": "dryers;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-20-farm-machinery-and-implements-5-incubators",
+      "topic": "waec-agricultural-science-20-farm-machinery-and-implements",
+      "name": "incubators;",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-20-farm-machinery-and-implements-6-milking-machines",
+      "topic": "waec-agricultural-science-20-farm-machinery-and-implements",
+      "name": "milking machines;",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-20-farm-machinery-and-implements-7-combine-harvester-etc",
+      "topic": "waec-agricultural-science-20-farm-machinery-and-implements",
+      "name": "combine harvester etc",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-20-farm-machinery-and-implements-8-ploughs",
+      "topic": "waec-agricultural-science-20-farm-machinery-and-implements",
+      "name": "ploughs;",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-20-farm-machinery-and-implements-9-harrows",
+      "topic": "waec-agricultural-science-20-farm-machinery-and-implements",
+      "name": "harrows;",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-20-farm-machinery-and-implements-10-ridgers",
+      "topic": "waec-agricultural-science-20-farm-machinery-and-implements",
+      "name": "ridgers;",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-20-farm-machinery-and-implements-11-planters",
+      "topic": "waec-agricultural-science-20-farm-machinery-and-implements",
+      "name": "planters;",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-20-farm-machinery-and-implements-12-harvesters",
+      "topic": "waec-agricultural-science-20-farm-machinery-and-implements",
+      "name": "harvesters;",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-20-farm-machinery-and-implements-13-sprayers-etc",
+      "topic": "waec-agricultural-science-20-farm-machinery-and-implements",
+      "name": "sprayers etc",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-21-maintenance-practices-and-precautionary-measures-1-reasons-for-maintaining-farm-machines",
+      "topic": "waec-agricultural-science-21-maintenance-practices-and-precautionary-measures",
+      "name": "Reasons for maintaining farm machines",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-21-maintenance-practices-and-precautionary-measures-2-check-water-and-oil-levels-regularly",
+      "topic": "waec-agricultural-science-21-maintenance-practices-and-precautionary-measures",
+      "name": "check water and oil levels regularly",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-21-maintenance-practices-and-precautionary-measures-3-carry-out-routine-service",
+      "topic": "waec-agricultural-science-21-maintenance-practices-and-precautionary-measures",
+      "name": "carry out routine service",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-21-maintenance-practices-and-precautionary-measures-4-keep-machines-clean-etc",
+      "topic": "waec-agricultural-science-21-maintenance-practices-and-precautionary-measures",
+      "name": "keep machines clean etc",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-22-agricultural-mechanization-1-meaning-of-agricultural-mechanization",
+      "topic": "waec-agricultural-science-22-agricultural-mechanization",
+      "name": "Meaning of agricultural mechanization",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-22-agricultural-mechanization-2-mechanized-agricultural-operations",
+      "topic": "waec-agricultural-science-22-agricultural-mechanization",
+      "name": "Mechanized agricultural operations",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-22-agricultural-mechanization-3-advantages-and-disadvantages-of-agricultural-mechanization",
+      "topic": "waec-agricultural-science-22-agricultural-mechanization",
+      "name": "Advantages and disadvantages of agricultural mechanization",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-22-agricultural-mechanization-4-limitations-of-agricultural-mechanization",
+      "topic": "waec-agricultural-science-22-agricultural-mechanization",
+      "name": "Limitations of agricultural mechanization",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-23-prospects-of-agricultural-mechanization-1-prospects-of-agricultural-mechanization",
+      "topic": "waec-agricultural-science-23-prospects-of-agricultural-mechanization",
+      "name": "Prospects of agricultural mechanization",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-24-farm-power-1-sources-of-farm-power",
+      "topic": "waec-agricultural-science-24-farm-power",
+      "name": "Sources of farm power",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-24-farm-power-2-advantages-and-disadvantages-of-different-sources-of-farm-power",
+      "topic": "waec-agricultural-science-24-farm-power",
+      "name": "Advantages and disadvantages of different sources of farm power",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-25-farm-surveying-1-meaning-of-farm-surveying",
+      "topic": "waec-agricultural-science-25-farm-surveying",
+      "name": "Meaning of farm surveying",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-25-farm-surveying-2-common-survey-equipment",
+      "topic": "waec-agricultural-science-25-farm-surveying",
+      "name": "Common survey equipment",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-25-farm-surveying-3-uses-of-farm-survey-equipment",
+      "topic": "waec-agricultural-science-25-farm-surveying",
+      "name": "Uses of farm survey equipment",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-25-farm-surveying-4-maintenance-of-farm-survey-equipment",
+      "topic": "waec-agricultural-science-25-farm-surveying",
+      "name": "Maintenance of farm survey equipment",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-25-farm-surveying-5-importance-of-farm-surveying",
+      "topic": "waec-agricultural-science-25-farm-surveying",
+      "name": "Importance of farm surveying",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-26-farm-planning-1-meaning-of-farm-planning",
+      "topic": "waec-agricultural-science-26-farm-planning",
+      "name": "Meaning of farm planning",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-26-farm-planning-2-factors-to-be-considered-in-farm-planning",
+      "topic": "waec-agricultural-science-26-farm-planning",
+      "name": "Factors to be considered in farm planning",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-26-farm-planning-3-importance-of-farm-planning",
+      "topic": "waec-agricultural-science-26-farm-planning",
+      "name": "Importance of farm planning",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-27-principles-of-farmstead-planning-1-meaning-of-farmstead",
+      "topic": "waec-agricultural-science-27-principles-of-farmstead-planning",
+      "name": "Meaning of farmstead",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-27-principles-of-farmstead-planning-2-importance-of-farmstead-planning",
+      "topic": "waec-agricultural-science-27-principles-of-farmstead-planning",
+      "name": "Importance of farmstead planning",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-27-principles-of-farmstead-planning-3-factors-to-be-considered-in-the-design-of-a-farmstead",
+      "topic": "waec-agricultural-science-27-principles-of-farmstead-planning",
+      "name": "Factors to be considered in the design of a farmstead",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-27-principles-of-farmstead-planning-4-farmstead-layout",
+      "topic": "waec-agricultural-science-27-principles-of-farmstead-planning",
+      "name": "Farmstead layout",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-28-classification-of-crops-1-classification-of-crops-based-on-their-uses-e-g-cereals-pulses-roots-and-tubers-and-vegetables",
+      "topic": "waec-agricultural-science-28-classification-of-crops",
+      "name": "Classification of crops based on their uses, e.g., cereals, pulses, roots and tubers, and vegetables",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-28-classification-of-crops-2-classification-based-on-their-life-cycle-e-g-annual-biennial-perennial-ephemeral",
+      "topic": "waec-agricultural-science-28-classification-of-crops",
+      "name": "Classification based on their life cycle, e.g., annual, biennial, perennial, ephemeral",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-28-classification-of-crops-3-classification-based-on-their-morphology-e-g-monocotyledonous-and-dicotyledonous-crops",
+      "topic": "waec-agricultural-science-28-classification-of-crops",
+      "name": "Classification based on their morphology, e.g., monocotyledonous and dicotyledonous crops",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-29-husbandry-of-selected-crops-1-cereals-e-g-maize-rice-guinea-corn-millet",
+      "topic": "waec-agricultural-science-29-husbandry-of-selected-crops",
+      "name": "Cereals, e.g., maize, rice, guinea corn, millet;",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-29-husbandry-of-selected-crops-2-pulses-grain-legumes-e-g-cowpea-soya-bean-pigeon-pea",
+      "topic": "waec-agricultural-science-29-husbandry-of-selected-crops",
+      "name": "Pulses (grain legumes), e.g., cowpea, soya bean, pigeon pea",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-29-husbandry-of-selected-crops-3-roots-and-tubers-e-g-cassava-yam-potatoes",
+      "topic": "waec-agricultural-science-29-husbandry-of-selected-crops",
+      "name": "Roots and tubers, e.g., cassava, yam, potatoes;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-29-husbandry-of-selected-crops-4-vegetables-e-g-tomatoes-onion-amaranthus-okra-cauliflower-spinach",
+      "topic": "waec-agricultural-science-29-husbandry-of-selected-crops",
+      "name": "Vegetables, e.g., tomatoes, onion, amaranthus, okra, cauliflower, spinach;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-29-husbandry-of-selected-crops-5-fruits-e-g-citrus-banana-pineapple",
+      "topic": "waec-agricultural-science-29-husbandry-of-selected-crops",
+      "name": "Fruits, e.g., citrus, banana, pineapple;",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-29-husbandry-of-selected-crops-6-beverages-e-g-cocoa-tea-coffee",
+      "topic": "waec-agricultural-science-29-husbandry-of-selected-crops",
+      "name": "Beverages, e.g., cocoa, tea, coffee;",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-29-husbandry-of-selected-crops-7-spices-e-g-pepper-ginger",
+      "topic": "waec-agricultural-science-29-husbandry-of-selected-crops",
+      "name": "Spices, e.g., pepper, ginger;",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-29-husbandry-of-selected-crops-8-oils-e-g-groundnut-shea-butter-sunflower-oil-palm",
+      "topic": "waec-agricultural-science-29-husbandry-of-selected-crops",
+      "name": "Oils, e.g., groundnut, shea butter, sunflower, oil palm;",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-29-husbandry-of-selected-crops-9-fibres-e-g-cotton-jute-sisal-hemp",
+      "topic": "waec-agricultural-science-29-husbandry-of-selected-crops",
+      "name": "Fibres e.g., cotton, jute, sisal hemp;",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-29-husbandry-of-selected-crops-10-latex-e-g-rubber",
+      "topic": "waec-agricultural-science-29-husbandry-of-selected-crops",
+      "name": "Latex e.g. rubber;",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-29-husbandry-of-selected-crops-11-others-sugar-cane-etc",
+      "topic": "waec-agricultural-science-29-husbandry-of-selected-crops",
+      "name": "Others – sugar cane etc",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-30-pasture-and-forage-crops-1-meaning-of-pasture-and-forage-crops",
+      "topic": "waec-agricultural-science-30-pasture-and-forage-crops",
+      "name": "Meaning of pasture and forage crops",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-30-pasture-and-forage-crops-2-uses-of-forage-crops",
+      "topic": "waec-agricultural-science-30-pasture-and-forage-crops",
+      "name": "Uses of forage crops",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-30-pasture-and-forage-crops-3-types-of-pasture",
+      "topic": "waec-agricultural-science-30-pasture-and-forage-crops",
+      "name": "Types of pasture",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-30-pasture-and-forage-crops-4-common-grasses-and-legumes-used-for-grazing-livestock",
+      "topic": "waec-agricultural-science-30-pasture-and-forage-crops",
+      "name": "Common grasses and legumes used for grazing livestock",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-30-pasture-and-forage-crops-5-factors-affecting-the-distribution-and-productivity-of-pasture",
+      "topic": "waec-agricultural-science-30-pasture-and-forage-crops",
+      "name": "Factors affecting the distribution and productivity of pasture",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-30-pasture-and-forage-crops-6-establishment-of-pasture",
+      "topic": "waec-agricultural-science-30-pasture-and-forage-crops",
+      "name": "Establishment of pasture",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-30-pasture-and-forage-crops-7-management-practices-of-pasture",
+      "topic": "waec-agricultural-science-30-pasture-and-forage-crops",
+      "name": "Management practices of pasture",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-31-crop-improvement-1-aims-of-crop-improvement",
+      "topic": "waec-agricultural-science-31-crop-improvement",
+      "name": "Aims of crop improvement",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-31-crop-improvement-2-methods-processes-of-crop-improvement-e-g-introduction-selection-breeding",
+      "topic": "waec-agricultural-science-31-crop-improvement",
+      "name": "Methods/processes of crop improvement, e.g., introduction, selection, breeding",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-31-crop-improvement-3-mendel-s-laws-of-inheritance",
+      "topic": "waec-agricultural-science-31-crop-improvement",
+      "name": "Mendel’s laws of inheritance",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-31-crop-improvement-4-advantages-and-disadvantages-of-crop-improvement",
+      "topic": "waec-agricultural-science-31-crop-improvement",
+      "name": "Advantages and disadvantages of crop improvement",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-32-forest-management-1-meaning-of-forest-and-forestry",
+      "topic": "waec-agricultural-science-32-forest-management",
+      "name": "Meaning of forest and forestry",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-32-forest-management-2-importance-of-forestry",
+      "topic": "waec-agricultural-science-32-forest-management",
+      "name": "Importance of forestry",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-32-forest-management-3-forest-regulations",
+      "topic": "waec-agricultural-science-32-forest-management",
+      "name": "Forest regulations",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-32-forest-management-4-forest-management-practices",
+      "topic": "waec-agricultural-science-32-forest-management",
+      "name": "Forest management practices",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-32-forest-management-5-implications-of-deforestation",
+      "topic": "waec-agricultural-science-32-forest-management",
+      "name": "Implications of deforestation",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-33-agro-forestry-practices-in-west-africa-1-meaning-of-agro-forestry",
+      "topic": "waec-agricultural-science-33-agro-forestry-practices-in-west-africa",
+      "name": "Meaning of agro-forestry",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-33-agro-forestry-practices-in-west-africa-2-taungya-system",
+      "topic": "waec-agricultural-science-33-agro-forestry-practices-in-west-africa",
+      "name": "taungya system;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-33-agro-forestry-practices-in-west-africa-3-alley-cropping",
+      "topic": "waec-agricultural-science-33-agro-forestry-practices-in-west-africa",
+      "name": "alley cropping;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-33-agro-forestry-practices-in-west-africa-4-ley-farming-etc",
+      "topic": "waec-agricultural-science-33-agro-forestry-practices-in-west-africa",
+      "name": "ley farming etc",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-34-meaning-and-importance-of-ornamental-plants-1-meaning-of-ornamental-plants",
+      "topic": "waec-agricultural-science-34-meaning-and-importance-of-ornamental-plants",
+      "name": "Meaning of ornamental plants",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-34-meaning-and-importance-of-ornamental-plants-2-importance-of-ornamental-plants",
+      "topic": "waec-agricultural-science-34-meaning-and-importance-of-ornamental-plants",
+      "name": "Importance of ornamental plants",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-35-common-types-of-ornamental-plants-1-bedding-plants-mostly-flowering-plants",
+      "topic": "waec-agricultural-science-35-common-types-of-ornamental-plants",
+      "name": "bedding plants (mostly flowering plants);",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-35-common-types-of-ornamental-plants-2-hedging-plants",
+      "topic": "waec-agricultural-science-35-common-types-of-ornamental-plants",
+      "name": "hedging plants;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-35-common-types-of-ornamental-plants-3-lawn-grasses-etc",
+      "topic": "waec-agricultural-science-35-common-types-of-ornamental-plants",
+      "name": "lawn grasses etc",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-35-common-types-of-ornamental-plants-4-examples-of-ornamental-plants",
+      "topic": "waec-agricultural-science-35-common-types-of-ornamental-plants",
+      "name": "Examples of ornamental plants",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-36-settings-and-location-for-planting-ornamental-plants-1-settings-and-location-for-planting-ornamental-plants",
+      "topic": "waec-agricultural-science-36-settings-and-location-for-planting-ornamental-plants",
+      "name": "Settings and location for planting ornamental plants",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-37-methods-of-cultivating-ornamental-plants-1-by-seed",
+      "topic": "waec-agricultural-science-37-methods-of-cultivating-ornamental-plants",
+      "name": "by seed;",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-37-methods-of-cultivating-ornamental-plants-2-vegetative-propagation",
+      "topic": "waec-agricultural-science-37-methods-of-cultivating-ornamental-plants",
+      "name": "vegetative propagation",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-38-maintenance-of-ornamental-plants-1-maintenance-of-ornamental-plants",
+      "topic": "waec-agricultural-science-38-maintenance-of-ornamental-plants",
+      "name": "Maintenance of ornamental plants",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-39-diseases-of-crops-1-meaning-of-disease",
+      "topic": "waec-agricultural-science-39-diseases-of-crops",
+      "name": "Meaning of disease",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-39-diseases-of-crops-2-general-effects-of-diseases-on-crop-production",
+      "topic": "waec-agricultural-science-39-diseases-of-crops",
+      "name": "General effects of diseases on crop production",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-39-diseases-of-crops-3-cereals-smut-rice-blast-leaf-rust-etc",
+      "topic": "waec-agricultural-science-39-diseases-of-crops",
+      "name": "cereals – smut, rice blast, leaf rust etc.;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-39-diseases-of-crops-4-legumes-cercospora-leaf-spot-rosette-etc",
+      "topic": "waec-agricultural-science-39-diseases-of-crops",
+      "name": "legumes – cercospora leaf spot, rosette etc;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-39-diseases-of-crops-5-beverages-cocoa-black-pod-swollen-shoot-coffee-leaf-rust-etc",
+      "topic": "waec-agricultural-science-39-diseases-of-crops",
+      "name": "beverages – cocoa black pod, swollen shoot, coffee leaf rust etc.;",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-39-diseases-of-crops-6-tubers-cassava-mosaic-bacterial-leaf-blight-etc",
+      "topic": "waec-agricultural-science-39-diseases-of-crops",
+      "name": "tubers – cassava mosaic, bacterial leaf blight etc.;",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-39-diseases-of-crops-7-fruits-citrus-gummosis-dieback-etc",
+      "topic": "waec-agricultural-science-39-diseases-of-crops",
+      "name": "fruits- citrus gummosis, dieback etc",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-39-diseases-of-crops-8-fibre-black-arm-bacterial-blight-of-cotton-etc",
+      "topic": "waec-agricultural-science-39-diseases-of-crops",
+      "name": "fibre – black arm/bacterial blight of cotton etc.;",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-39-diseases-of-crops-9-vegetables-root-knot-of-tomato-or-okro-damping-off-onion-twister-etc",
+      "topic": "waec-agricultural-science-39-diseases-of-crops",
+      "name": "vegetables – root-knot of tomato or okro, damping off, onion twister etc.;",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-39-diseases-of-crops-10-tored-produce-mould-etc",
+      "topic": "waec-agricultural-science-39-diseases-of-crops",
+      "name": "tored produce – mould etc",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-1-meaning-of-pests",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "Meaning of pests",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-2-insect-pests",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "insect pests;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-3-non-insect-pests",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "non-insect pests",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-4-biting-and-chewing",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "biting and chewing;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-5-piercing-and-sucking",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "piercing and sucking;",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-6-boring",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "boring",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-7-cereals-stem-borer-armyworm-earworm-etc",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "cereals – stem borer, armyworm, earworm etc",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-8-legumes-pod-borer-aphids-sucking-bugs-and-leaf-beetle",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "legumes – pod borer, aphids, sucking bugs and leaf beetle;",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-9-beverages-cocoa-myrids-capsids",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "beverages – cocoa myrids (capsids);",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-10-tubers-yam-beetle-cassava-mealybugs-green-spidermites-variegated-grasshopper",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "tubers – yam beetle, cassava mealybugs, green spidermites, variegated grasshopper;",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-11-fibre-cotton-stainer-bollworms",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "fibre – cotton stainer, bollworms;",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-12-fruits-and-vegetables-thrips-grasshoppers-leaf-roller-leaf-beetle-scale-insect",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "fruits and vegetables – thrips, grasshoppers, leaf roller, leaf beetle, scale insect;",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-13-stored-produce-grain-weevils-bean-beetle",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "stored produce – grain weevils, bean beetle",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-14-non-insect-pests-e-g-birds-rodents-etc",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "Non-insect pests, e.g., birds, rodents etc",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-15-chemical-pollution-poisoning",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "chemical – pollution, poisoning;",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-16-biological-disruption-of-the-ecosystem-etc",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "biological ­- disruption of the ecosystem etc;",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-17-cultural-harmful-effects-of-burning-etc",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "cultural – harmful effects of burning etc",
+      "order": 17,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-40-pests-of-crops-18-general-effects-economic-importance-of-pests",
+      "topic": "waec-agricultural-science-40-pests-of-crops",
+      "name": "General effects/economic importance of pests",
+      "order": 18,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-41-weeds-1-meaning-of-weeds",
+      "topic": "waec-agricultural-science-41-weeds",
+      "name": "Meaning of weeds",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-41-weeds-2-types-of-weeds",
+      "topic": "waec-agricultural-science-41-weeds",
+      "name": "Types of weeds",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-41-weeds-3-effects-of-weeds-on-crops-and-economy",
+      "topic": "waec-agricultural-science-41-weeds",
+      "name": "Effects of weeds on crops and economy",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-41-weeds-4-characteristic-features-of-weeds",
+      "topic": "waec-agricultural-science-41-weeds",
+      "name": "Characteristic features of weeds",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-41-weeds-5-methods-of-controlling-weeds-cultural-biological-chemical-physical-and-mechanical-methods",
+      "topic": "waec-agricultural-science-41-weeds",
+      "name": "Methods of controlling weeds: cultural, biological, chemical, physical and mechanical methods",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-42-types-and-classification-of-farm-animals-1-types-of-farm-animals-cattle-sheep-goat-poultry-pig-rabbit-fish-etc",
+      "topic": "waec-agricultural-science-42-types-and-classification-of-farm-animals",
+      "name": "Types of farm animals: cattle, sheep, goat, poultry, pig, rabbit, fish etc",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-42-types-and-classification-of-farm-animals-2-i-habitat-terrestrial-and-aquatic",
+      "topic": "waec-agricultural-science-42-types-and-classification-of-farm-animals",
+      "name": "(i) habitat: terrestrial and aquatic",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-42-types-and-classification-of-farm-animals-3-ii-uses-food-protection-pets-etc",
+      "topic": "waec-agricultural-science-42-types-and-classification-of-farm-animals",
+      "name": "(ii) uses: food, protection, pets, etc",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-43-anatomy-and-physiology-of-farm-animals-1-parts-of-farm-animals",
+      "topic": "waec-agricultural-science-43-anatomy-and-physiology-of-farm-animals",
+      "name": "Parts of farm animals",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-43-anatomy-and-physiology-of-farm-animals-2-organs-of-farm-animals-e-g-heart-liver-lungs",
+      "topic": "waec-agricultural-science-43-anatomy-and-physiology-of-farm-animals",
+      "name": "Organs of farm animals, e.g., heart, liver, lungs",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-43-anatomy-and-physiology-of-farm-animals-3-systems-of-farm-animals-e-g-digestive-system-circulatory-system-respiratory-system",
+      "topic": "waec-agricultural-science-43-anatomy-and-physiology-of-farm-animals",
+      "name": "Systems of farm animals, e.g., digestive system, circulatory system, respiratory system",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-44-animal-reproduction-1-meaning-of-reproduction",
+      "topic": "waec-agricultural-science-44-animal-reproduction",
+      "name": "Meaning of reproduction",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-44-animal-reproduction-2-roles-of-hormones-in-the-reproduction-of-farm-animals",
+      "topic": "waec-agricultural-science-44-animal-reproduction",
+      "name": "Roles of hormones in the reproduction of farm animals",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-44-animal-reproduction-3-reproductive-systems-of-farm-animals",
+      "topic": "waec-agricultural-science-44-animal-reproduction",
+      "name": "Reproductive systems of farm animals",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-44-animal-reproduction-4-processes-of-reproduction-in-farm-animals",
+      "topic": "waec-agricultural-science-44-animal-reproduction",
+      "name": "Processes of reproduction in farm animals",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-44-animal-reproduction-5-egg-formation-in-poultry",
+      "topic": "waec-agricultural-science-44-animal-reproduction",
+      "name": "Egg formation in poultry",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-45-environmental-physiology-1-meaning-of-environmental-physiology",
+      "topic": "waec-agricultural-science-45-environmental-physiology",
+      "name": "Meaning of environmental physiology",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-45-environmental-physiology-2-temperature",
+      "topic": "waec-agricultural-science-45-environmental-physiology",
+      "name": "temperature;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-45-environmental-physiology-3-relative-humidity-and",
+      "topic": "waec-agricultural-science-45-environmental-physiology",
+      "name": "relative humidity; and",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-45-environmental-physiology-4-growth-reproduction-milk-production-egg-production-etc",
+      "topic": "waec-agricultural-science-45-environmental-physiology",
+      "name": "Growth, reproduction, milk production, egg production, etc",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-46-livestock-management-1-meaning-of-livestock-management",
+      "topic": "waec-agricultural-science-46-livestock-management",
+      "name": "Meaning of livestock management",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-46-livestock-management-2-requirements-for-livestock-management-housing-feeding-hygiene-and-finishing-of-at-least-one-ruminant-and-one-non-ruminant-from-birth-to-market-weight",
+      "topic": "waec-agricultural-science-46-livestock-management",
+      "name": "Requirements for livestock management: housing, feeding, hygiene and finishing of at least one ruminant and one non-ruminant from birth to market weight",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-46-livestock-management-3-importance-of-management-practices",
+      "topic": "waec-agricultural-science-46-livestock-management",
+      "name": "Importance of management practices",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-47-animal-nutrition-1-meaning-of-animal-nutrition",
+      "topic": "waec-agricultural-science-47-animal-nutrition",
+      "name": "Meaning of animal nutrition",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-47-animal-nutrition-2-classification-of-feeds",
+      "topic": "waec-agricultural-science-47-animal-nutrition",
+      "name": "Classification of feeds",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-47-animal-nutrition-3-sources-and-functions-of-feed-nutrients",
+      "topic": "waec-agricultural-science-47-animal-nutrition",
+      "name": "Sources and functions of feed nutrients",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-47-animal-nutrition-4-types-of-ration-diet-and-their-uses-components-of-a-balanced-diet-production-and-maintenance-rations",
+      "topic": "waec-agricultural-science-47-animal-nutrition",
+      "name": "Types of ration/diet and their uses; components of a balanced diet; production and maintenance rations",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-47-animal-nutrition-5-causes-and-symptoms-of-malnutrition-and-their-correction-in-farm-animals",
+      "topic": "waec-agricultural-science-47-animal-nutrition",
+      "name": "Causes and symptoms of malnutrition and their correction in farm animals",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-48-rangeland-and-pasture-management-1-meaning-and-importance-of-rangeland-pasture-to-livestock-and-the-characteristics-of-range-land",
+      "topic": "waec-agricultural-science-48-rangeland-and-pasture-management",
+      "name": "Meaning and importance of rangeland/pasture to livestock and the characteristics of range land",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-48-rangeland-and-pasture-management-2-common-grasses-and-legumes-in-rangeland",
+      "topic": "waec-agricultural-science-48-rangeland-and-pasture-management",
+      "name": "Common grasses and legumes in rangeland",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-48-rangeland-and-pasture-management-3-factors-affecting-the-level-of-production-of-herbage-rainfall-grass-legume-composition-grazing-etc",
+      "topic": "waec-agricultural-science-48-rangeland-and-pasture-management",
+      "name": "Factors affecting the level of production of herbage; rainfall, grass/legume composition, grazing etc",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-48-rangeland-and-pasture-management-4-controlled-stocking-rotational-grazing-use-of-fertilizers-introduction-of-legumes-reseeding-weed-control-burning-pest-and-disease-control",
+      "topic": "waec-agricultural-science-48-rangeland-and-pasture-management",
+      "name": "Controlled stocking, rotational grazing, use of fertilizers, introduction of legumes, reseeding, weed control, burning, pest and disease control",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-49-animal-improvement-1-meaning-of-animal-improvement",
+      "topic": "waec-agricultural-science-49-animal-improvement",
+      "name": "Meaning of animal improvement",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-49-animal-improvement-2-aims-of-animal-improvement",
+      "topic": "waec-agricultural-science-49-animal-improvement",
+      "name": "Aims of animal improvement",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-49-animal-improvement-3-introduction",
+      "topic": "waec-agricultural-science-49-animal-improvement",
+      "name": "Introduction;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-49-animal-improvement-4-selection",
+      "topic": "waec-agricultural-science-49-animal-improvement",
+      "name": "selection;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-49-animal-improvement-5-breeding",
+      "topic": "waec-agricultural-science-49-animal-improvement",
+      "name": "breeding",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-49-animal-improvement-6-meaning-of-artificial-insemination",
+      "topic": "waec-agricultural-science-49-animal-improvement",
+      "name": "meaning of artificial insemination",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-49-animal-improvement-7-methods-of-collecting-semen",
+      "topic": "waec-agricultural-science-49-animal-improvement",
+      "name": "methods of collecting semen",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-49-animal-improvement-8-advantages-and-disadvantages-of-artificial-insemination",
+      "topic": "waec-agricultural-science-49-animal-improvement",
+      "name": "advantages and disadvantages of artificial insemination",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-50--1-meaning-of-disease",
+      "topic": "waec-agricultural-science-50-",
+      "name": "Meaning of disease",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-50--2-causal-organisms-viruses-bacteria-fungi-and-protozoa",
+      "topic": "waec-agricultural-science-50-",
+      "name": "Causal organisms: viruses, bacteria, fungi and protozoa",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-50--3-factors-that-could-predispose-animals-to-diseases-health-status-of-animals-nutrition-management-etc",
+      "topic": "waec-agricultural-science-50-",
+      "name": "Factors that could predispose animals to diseases: health status of animals, nutrition, management etc",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-50--4-reaction-of-animals-to-diseases-susceptibility-and-resistance-to-diseases",
+      "topic": "waec-agricultural-science-50-",
+      "name": "Reaction of animals to diseases: susceptibility and resistance to diseases",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-50--5-viral-foot-and-mouth-rinderpest-newcastle",
+      "topic": "waec-agricultural-science-50-",
+      "name": "viral-foot and mouth, rinderpest, newcastle;",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-50--6-bacterial-anthrax-brucellosis-tuberculosis",
+      "topic": "waec-agricultural-science-50-",
+      "name": "bacterial – anthrax, brucellosis, tuberculosis;",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-50--7-fungal-aspergillosis-ringworm-scabies",
+      "topic": "waec-agricultural-science-50-",
+      "name": "fungal – aspergillosis, ringworm, scabies;",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-50--8-protozoa-trypanosomiasis-coccidiosis",
+      "topic": "waec-agricultural-science-50-",
+      "name": "protozoa – trypanosomiasis, coccidiosis",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-51--1-meaning-of-parasite",
+      "topic": "waec-agricultural-science-51-",
+      "name": "meaning of parasite",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-51--2-types-of-parasites",
+      "topic": "waec-agricultural-science-51-",
+      "name": "types of parasites",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-51--3-endoparasites-tapeworm-liverfluke-and-roundworm",
+      "topic": "waec-agricultural-science-51-",
+      "name": "endoparasites – tapeworm, liverfluke and roundworm;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-51--4-ectoparasites-ticks-lice",
+      "topic": "waec-agricultural-science-51-",
+      "name": "ectoparasites – ticks, lice",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-51--5-quarantine-inoculation-immunization-hygiene-breeding-for-resistance-etc",
+      "topic": "waec-agricultural-science-51-",
+      "name": "Quarantine, inoculation/immunization, hygiene, breeding for resistance etc",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-52-aquaculture-1-meaning-of-aquaculture",
+      "topic": "waec-agricultural-science-52-aquaculture",
+      "name": "Meaning of aquaculture",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-52-aquaculture-2-i-fish-farming",
+      "topic": "waec-agricultural-science-52-aquaculture",
+      "name": "(i) fish farming;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-52-aquaculture-3-ii-shrimp-farming",
+      "topic": "waec-agricultural-science-52-aquaculture",
+      "name": "(ii) shrimp farming;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-52-aquaculture-4-iii-crab-farming",
+      "topic": "waec-agricultural-science-52-aquaculture",
+      "name": "(iii) crab farming",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-52-aquaculture-5-meaning-and-importance-of-fish-farming",
+      "topic": "waec-agricultural-science-52-aquaculture",
+      "name": "Meaning and importance of fish farming",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-52-aquaculture-6-conditions-necessary-for-siting-a-fish-pond",
+      "topic": "waec-agricultural-science-52-aquaculture",
+      "name": "Conditions necessary for siting a fish pond",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-52-aquaculture-7-establishment-and-maintenance-of-fish-ponds",
+      "topic": "waec-agricultural-science-52-aquaculture",
+      "name": "Establishment and maintenance of fish ponds",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-52-aquaculture-8-fishery-regulations-meaning-and-regulations",
+      "topic": "waec-agricultural-science-52-aquaculture",
+      "name": "Fishery regulations – meaning and regulations",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-52-aquaculture-9-fishing-methods-and-tools",
+      "topic": "waec-agricultural-science-52-aquaculture",
+      "name": "Fishing methods and tools",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-53-apiculture-or-bee-keeping-1-meaning-of-apiculture-or-bee-keeping",
+      "topic": "waec-agricultural-science-53-apiculture-or-bee-keeping",
+      "name": "Meaning of apiculture or bee keeping",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-53-apiculture-or-bee-keeping-2-indigenous-bees",
+      "topic": "waec-agricultural-science-53-apiculture-or-bee-keeping",
+      "name": "indigenous bees;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-53-apiculture-or-bee-keeping-3-exotic-bees",
+      "topic": "waec-agricultural-science-53-apiculture-or-bee-keeping",
+      "name": "exotic bees",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-53-apiculture-or-bee-keeping-4-importance-of-bee-keeping",
+      "topic": "waec-agricultural-science-53-apiculture-or-bee-keeping",
+      "name": "Importance of bee keeping",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-53-apiculture-or-bee-keeping-5-traditional-method",
+      "topic": "waec-agricultural-science-53-apiculture-or-bee-keeping",
+      "name": "traditional method;",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-53-apiculture-or-bee-keeping-6-modern-bee-keeping",
+      "topic": "waec-agricultural-science-53-apiculture-or-bee-keeping",
+      "name": "modern bee-keeping",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-53-apiculture-or-bee-keeping-7-bee-keeping-equipment-beehives-hive-tools-like-suits-smokers-jungle-boots-brushes-etc",
+      "topic": "waec-agricultural-science-53-apiculture-or-bee-keeping",
+      "name": "Bee-keeping equipment: beehives, hive tools like suits,smokers, jungle boots, brushes, etc",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-53-apiculture-or-bee-keeping-8-locate-apiaries-far-from-human-dwellings",
+      "topic": "waec-agricultural-science-53-apiculture-or-bee-keeping",
+      "name": "locate apiaries far from human dwellings;",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-53-apiculture-or-bee-keeping-9-put-warning-symbols-near-the-apiary-etc",
+      "topic": "waec-agricultural-science-53-apiculture-or-bee-keeping",
+      "name": "put warning symbols near the apiary etc",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-54-basic-economic-principles-1-scarcity",
+      "topic": "waec-agricultural-science-54-basic-economic-principles",
+      "name": "scarcity;",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-54-basic-economic-principles-2-choice",
+      "topic": "waec-agricultural-science-54-basic-economic-principles",
+      "name": "choice;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-54-basic-economic-principles-3-scale-of-preference",
+      "topic": "waec-agricultural-science-54-basic-economic-principles",
+      "name": "Scale of preference;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-54-basic-economic-principles-4-law-of-diminishing-returns",
+      "topic": "waec-agricultural-science-54-basic-economic-principles",
+      "name": "law of diminishing returns",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-55-factors-of-production-1-land",
+      "topic": "waec-agricultural-science-55-factors-of-production",
+      "name": "land;",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-55-factors-of-production-2-capital",
+      "topic": "waec-agricultural-science-55-factors-of-production",
+      "name": "capital;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-55-factors-of-production-3-labour-characteristics-and-classification",
+      "topic": "waec-agricultural-science-55-factors-of-production",
+      "name": "labour – characteristics and classification;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-55-factors-of-production-4-management-or-entrepreneur",
+      "topic": "waec-agricultural-science-55-factors-of-production",
+      "name": "management or entrepreneur",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-56-principles-of-demand-1-definition-of-demand",
+      "topic": "waec-agricultural-science-56-principles-of-demand",
+      "name": "Definition of demand",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-56-principles-of-demand-2-law-of-demand",
+      "topic": "waec-agricultural-science-56-principles-of-demand",
+      "name": "Law of demand",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-56-principles-of-demand-3-factors-affecting-demand-for-agricultural-produce",
+      "topic": "waec-agricultural-science-56-principles-of-demand",
+      "name": "Factors affecting demand for agricultural produce",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-56-principles-of-demand-4-movements-along-the-demand-curve",
+      "topic": "waec-agricultural-science-56-principles-of-demand",
+      "name": "Movements along the demand curve",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-56-principles-of-demand-5-shifts-in-the-demand-curve",
+      "topic": "waec-agricultural-science-56-principles-of-demand",
+      "name": "Shifts in the demand curve",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-57-principles-of-supply-1-definition-of-supply",
+      "topic": "waec-agricultural-science-57-principles-of-supply",
+      "name": "Definition of supply",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-57-principles-of-supply-2-law-of-supply",
+      "topic": "waec-agricultural-science-57-principles-of-supply",
+      "name": "Law of supply",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-57-principles-of-supply-3-movements-along-the-supply-curve",
+      "topic": "waec-agricultural-science-57-principles-of-supply",
+      "name": "Movements along the supply curve",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-57-principles-of-supply-4-shifts-in-the-supply-curve",
+      "topic": "waec-agricultural-science-57-principles-of-supply",
+      "name": "Shifts in the supply curve",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-57-principles-of-supply-5-factors-affecting-the-supply-of-agricultural-produce",
+      "topic": "waec-agricultural-science-57-principles-of-supply",
+      "name": "Factors affecting the supply of agricultural produce",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-58-implications-of-demand-and-supply-for-agricultural-production-1-price-support",
+      "topic": "waec-agricultural-science-58-implications-of-demand-and-supply-for-agricultural-production",
+      "name": "Price support",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-58-implications-of-demand-and-supply-for-agricultural-production-2-price-control",
+      "topic": "waec-agricultural-science-58-implications-of-demand-and-supply-for-agricultural-production",
+      "name": "Price control",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-58-implications-of-demand-and-supply-for-agricultural-production-3-subsidy-programme-and-its-effects-on-agricultural-production",
+      "topic": "waec-agricultural-science-58-implications-of-demand-and-supply-for-agricultural-production",
+      "name": "Subsidy programme and its effects on agricultural production",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-59-functions-of-a-farm-manager-1-meaning-of-a-farm-manager",
+      "topic": "waec-agricultural-science-59-functions-of-a-farm-manager",
+      "name": "Meaning of a farm manager",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-59-functions-of-a-farm-manager-2-functions-of-a-farm-manager",
+      "topic": "waec-agricultural-science-59-functions-of-a-farm-manager",
+      "name": "Functions of a farm manager",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-60-problems-faced-by-farm-managers-1-problems-faced-by-farm-managers",
+      "topic": "waec-agricultural-science-60-problems-faced-by-farm-managers",
+      "name": "Problems faced by farm managers",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-61-agricultural-finance-1-meaning-of-agricultural-finance",
+      "topic": "waec-agricultural-science-61-agricultural-finance",
+      "name": "Meaning of agricultural finance",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-61-agricultural-finance-2-importance-of-agricultural-finance",
+      "topic": "waec-agricultural-science-61-agricultural-finance",
+      "name": "Importance of agricultural finance",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-61-agricultural-finance-3-sources-of-farm-finance",
+      "topic": "waec-agricultural-science-61-agricultural-finance",
+      "name": "Sources of farm finance",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-62-classes-of-farm-credit-1-short-term-credit",
+      "topic": "waec-agricultural-science-62-classes-of-farm-credit",
+      "name": "short-term credit;",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-62-classes-of-farm-credit-2-medium-term-credit",
+      "topic": "waec-agricultural-science-62-classes-of-farm-credit",
+      "name": "medium-term credit;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-62-classes-of-farm-credit-3-long-term-credit",
+      "topic": "waec-agricultural-science-62-classes-of-farm-credit",
+      "name": "long-term credit",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-62-classes-of-farm-credit-4-institutional-credit",
+      "topic": "waec-agricultural-science-62-classes-of-farm-credit",
+      "name": "institutional credit;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-62-classes-of-farm-credit-5-non-institutional-credit",
+      "topic": "waec-agricultural-science-62-classes-of-farm-credit",
+      "name": "non-institutional credit",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-62-classes-of-farm-credit-6-loan-in-cash",
+      "topic": "waec-agricultural-science-62-classes-of-farm-credit",
+      "name": "loan in cash;",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-62-classes-of-farm-credit-7-loan-in-kind",
+      "topic": "waec-agricultural-science-62-classes-of-farm-credit",
+      "name": "loan in-kind",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-62-classes-of-farm-credit-8-high-interest-rate",
+      "topic": "waec-agricultural-science-62-classes-of-farm-credit",
+      "name": "high-interest rate;",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-62-classes-of-farm-credit-9-lack-or-inadequate-collateral-etc",
+      "topic": "waec-agricultural-science-62-classes-of-farm-credit",
+      "name": "lack or inadequate collateral, etc",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-62-classes-of-farm-credit-10-lack-of-records-and-accounts-etc",
+      "topic": "waec-agricultural-science-62-classes-of-farm-credit",
+      "name": "lack of records and accounts etc",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-63-capital-market-1-meaning-of-capital-market-institutions-that-deal-with-medium-and-long-term-loans-for-agricultural-business",
+      "topic": "waec-agricultural-science-63-capital-market",
+      "name": "meaning of capital market, institutions that deal with medium and long-term loans for agricultural business",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-63-capital-market-2-institutions-involved-in-the-capital-market",
+      "topic": "waec-agricultural-science-63-capital-market",
+      "name": "institutions involved in the capital market",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-63-capital-market-3-bonds",
+      "topic": "waec-agricultural-science-63-capital-market",
+      "name": "bonds",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-63-capital-market-4-insurance-companies",
+      "topic": "waec-agricultural-science-63-capital-market",
+      "name": "insurance companies;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-63-capital-market-5-merchant-banks",
+      "topic": "waec-agricultural-science-63-capital-market",
+      "name": "merchant banks;",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-63-capital-market-6-the-stock-exchange-sales-and-purchases-of-shares",
+      "topic": "waec-agricultural-science-63-capital-market",
+      "name": "the stock exchange (sales and purchases of shares)",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-63-capital-market-7-mobilization-of-long-term-funds-for-on-lending",
+      "topic": "waec-agricultural-science-63-capital-market",
+      "name": "mobilization of long-term funds for on-lending;",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-63-capital-market-8-reduce-over-reliance-on-the-money-market-etc",
+      "topic": "waec-agricultural-science-63-capital-market",
+      "name": "reduce over-reliance on the money market, etc",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-64-farm-records-and-accounts-1-importance-of-farm-records",
+      "topic": "waec-agricultural-science-64-farm-records-and-accounts",
+      "name": "Importance of farm records",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-64-farm-records-and-accounts-2-inventory-records",
+      "topic": "waec-agricultural-science-64-farm-records-and-accounts",
+      "name": "inventory records;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-64-farm-records-and-accounts-3-production-records",
+      "topic": "waec-agricultural-science-64-farm-records-and-accounts",
+      "name": "production records;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-64-farm-records-and-accounts-4-income-and-expenditure-records",
+      "topic": "waec-agricultural-science-64-farm-records-and-accounts",
+      "name": "income and expenditure records;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-64-farm-records-and-accounts-5-supplementary-or-special-records",
+      "topic": "waec-agricultural-science-64-farm-records-and-accounts",
+      "name": "supplementary or special records",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-64-farm-records-and-accounts-6-designing-farm-records",
+      "topic": "waec-agricultural-science-64-farm-records-and-accounts",
+      "name": "Designing farm records",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-64-farm-records-and-accounts-7-expenditure-purchases-account",
+      "topic": "waec-agricultural-science-64-farm-records-and-accounts",
+      "name": "expenditure/ purchases account;",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-64-farm-records-and-accounts-8-income-sales-account",
+      "topic": "waec-agricultural-science-64-farm-records-and-accounts",
+      "name": "income/sales account;",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-64-farm-records-and-accounts-9-profit-and-loss-account",
+      "topic": "waec-agricultural-science-64-farm-records-and-accounts",
+      "name": "profit and loss account;",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-64-farm-records-and-accounts-10-balance-sheet",
+      "topic": "waec-agricultural-science-64-farm-records-and-accounts",
+      "name": "balance sheet",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-65-marketing-of-agricultural-produce-1-meaning-and-importance-of-marketing-of-agricultural-produce",
+      "topic": "waec-agricultural-science-65-marketing-of-agricultural-produce",
+      "name": "Meaning and importance of marketing of agricultural produce",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-65-marketing-of-agricultural-produce-2-marketing-agents-and-their-functions",
+      "topic": "waec-agricultural-science-65-marketing-of-agricultural-produce",
+      "name": "Marketing agents and their functions",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-65-marketing-of-agricultural-produce-3-assembling",
+      "topic": "waec-agricultural-science-65-marketing-of-agricultural-produce",
+      "name": "assembling;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-65-marketing-of-agricultural-produce-4-transportation",
+      "topic": "waec-agricultural-science-65-marketing-of-agricultural-produce",
+      "name": "transportation;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-65-marketing-of-agricultural-produce-5-processing-etc",
+      "topic": "waec-agricultural-science-65-marketing-of-agricultural-produce",
+      "name": "processing etc",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-65-marketing-of-agricultural-produce-6-marketing-of-export-crops",
+      "topic": "waec-agricultural-science-65-marketing-of-agricultural-produce",
+      "name": "Marketing of export crops",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-65-marketing-of-agricultural-produce-7-export-crops-in-west-africa",
+      "topic": "waec-agricultural-science-65-marketing-of-agricultural-produce",
+      "name": "Export crops in West Africa",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-65-marketing-of-agricultural-produce-8-guidelines-for-exporting-crops-in-west-africa",
+      "topic": "waec-agricultural-science-65-marketing-of-agricultural-produce",
+      "name": "Guidelines for exporting crops in West Africa",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-65-marketing-of-agricultural-produce-9-corporate-bodies-cooperative-societies-and-individuals-engaged-in-exporting-agricultural-produce-e-g-ance-association-of-nigerian-cooperative-exporters",
+      "topic": "waec-agricultural-science-65-marketing-of-agricultural-produce",
+      "name": "Corporate bodies, cooperative societies, and individuals engaged in exporting agricultural produce, e.g., ANCE (Association of Nigerian Cooperative Exporters),",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-65-marketing-of-agricultural-produce-10-importance-of-exporting-agricultural-produce",
+      "topic": "waec-agricultural-science-65-marketing-of-agricultural-produce",
+      "name": "Importance of exporting agricultural produce",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-65-marketing-of-agricultural-produce-11-problems-of-marketing-agricultural-produce",
+      "topic": "waec-agricultural-science-65-marketing-of-agricultural-produce",
+      "name": "Problems of marketing agricultural produce",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-66-agricultural-insurance-1-meaning-of-agricultural-insurance",
+      "topic": "waec-agricultural-science-66-agricultural-insurance",
+      "name": "Meaning of agricultural insurance",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-66-agricultural-insurance-2-importance-of-agricultural-insurance",
+      "topic": "waec-agricultural-science-66-agricultural-insurance",
+      "name": "Importance of agricultural insurance",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-66-agricultural-insurance-3-specific-enterprise-insurance-e-g-crop-insurance-livestock-insurance",
+      "topic": "waec-agricultural-science-66-agricultural-insurance",
+      "name": "specific enterprise insurance, e.g., crop insurance, livestock insurance;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-66-agricultural-insurance-4-farm-vehicle-insurance",
+      "topic": "waec-agricultural-science-66-agricultural-insurance",
+      "name": "farm vehicle insurance;",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-66-agricultural-insurance-5-fire-disaster-insurance-or-machines-and-buildings-insurance",
+      "topic": "waec-agricultural-science-66-agricultural-insurance",
+      "name": "fire disaster insurance or machines and buildings insurance;",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-66-agricultural-insurance-6-life-assurance-farmers-farm-workers-and-farmers-households",
+      "topic": "waec-agricultural-science-66-agricultural-insurance",
+      "name": "life assurance (farmers, farm workers, and farmers’ households)",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-66-agricultural-insurance-7-insurance-premium",
+      "topic": "waec-agricultural-science-66-agricultural-insurance",
+      "name": "Insurance premium",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-66-agricultural-insurance-8-uncertainties-of-weather",
+      "topic": "waec-agricultural-science-66-agricultural-insurance",
+      "name": "uncertainties of weather;",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-66-agricultural-insurance-9-losses-due-to-natural-disasters-etc",
+      "topic": "waec-agricultural-science-66-agricultural-insurance",
+      "name": "losses due to natural disasters etc",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-67-agricultural-extension-1-meaning-and-importance-of-agricultural-extension",
+      "topic": "waec-agricultural-science-67-agricultural-extension",
+      "name": "Meaning and importance of agricultural extension",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-67-agricultural-extension-2-individual-contact-methods",
+      "topic": "waec-agricultural-science-67-agricultural-extension",
+      "name": "individual contact methods;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-67-agricultural-extension-3-group-contact-methods-etc",
+      "topic": "waec-agricultural-science-67-agricultural-extension",
+      "name": "group contact methods etc",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-67-agricultural-extension-4-agricultural-extension-programmes-in-west-africa-e-g-adp-nde-agro-service-centres-state-ministries-of-agriculture-and-natural-resources",
+      "topic": "waec-agricultural-science-67-agricultural-extension",
+      "name": "Agricultural extension programmes in West Africa, e.g., ADP, NDE, Agro-service centres, state ministries of agriculture and natural resources",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-67-agricultural-extension-5-problems-of-agricultural-extension-in-west-africa-e-g-illiteracy-among-farmers-inadequate-transport-facilities-etc",
+      "topic": "waec-agricultural-science-67-agricultural-extension",
+      "name": "Problems of agricultural extension in West Africa. e.g. illiteracy among farmers, inadequate transport facilities etc",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-1-soil",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "Soil",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-2-soil-profile",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "Soil profile",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-3-rocks",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "Rocks",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-4-mechanical-analysis-by-sedimentation-and-also-by-the-use-of-hydrometer-method-or-sieves",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "Mechanical analysis by sedimentation and also by the use of hydrometer method or sieves",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-5-determination-of-bulk-density-and-total-pore-space",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "Determination of bulk density and total pore space",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-6-determination-of-moisture-content-of-a-moist-soil-sample",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "Determination of moisture content of a moist soil sample",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-7-determination-of-maximum-water-holding-capacity",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "Determination of maximum water holding capacity",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-8-determination-of-wilting-point",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "Determination of wilting point",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-9-determination-of-capillary-action",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "Determination of capillary action",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-10-determination-of-soil-acidity-using-a-ph-meter-and-or-any-other-gadget-or-simple-equipment",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "Determination of soil acidity using a pH meter and/or any other gadget or simple equipment",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-11-common-types-of-chemical-fertilizers",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "Common types of chemical fertilizers",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-12-green-manure",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "green manure;",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-13-farm-yard",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "farm yard;",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-14-compost",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "compost",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-68-agricultural-ecology-15-irrigation-and-drainage",
+      "topic": "waec-agricultural-science-68-agricultural-ecology",
+      "name": "Irrigation and drainage",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-69-agricultural-engineering-mechanization-1-farm-tools-and-equipment",
+      "topic": "waec-agricultural-science-69-agricultural-engineering-mechanization",
+      "name": "Farm tools and equipment",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-69-agricultural-engineering-mechanization-2-tractor-and-animal-drawn-implement",
+      "topic": "waec-agricultural-science-69-agricultural-engineering-mechanization",
+      "name": "Tractor and animal-drawn implement",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-69-agricultural-engineering-mechanization-3-harvesting-processing-and-storage-equipment",
+      "topic": "waec-agricultural-science-69-agricultural-engineering-mechanization",
+      "name": "Harvesting, processing, and storage equipment",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-69-agricultural-engineering-mechanization-4-farm-tractor",
+      "topic": "waec-agricultural-science-69-agricultural-engineering-mechanization",
+      "name": "Farm tractor",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-69-agricultural-engineering-mechanization-5-use-and-maintenance-of-horticultural-tools-and-implements",
+      "topic": "waec-agricultural-science-69-agricultural-engineering-mechanization",
+      "name": "Use and maintenance of horticultural tools and implements",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-69-agricultural-engineering-mechanization-6-livestock-and-fishing-equipment",
+      "topic": "waec-agricultural-science-69-agricultural-engineering-mechanization",
+      "name": "Livestock and fishing equipment",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-69-agricultural-engineering-mechanization-7-farm-surveying-equipment",
+      "topic": "waec-agricultural-science-69-agricultural-engineering-mechanization",
+      "name": "Farm surveying equipment",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-70-crop-production-1-seeds-seedlings-fruits-and-storage-organs-of-crops",
+      "topic": "waec-agricultural-science-70-crop-production",
+      "name": "Seeds, seedlings, fruits and storage organs of crops",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-70-crop-production-2-main-pests-and-diseases-of-crops",
+      "topic": "waec-agricultural-science-70-crop-production",
+      "name": "Main pests and diseases of crops",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-70-crop-production-3-planting-dates-seed-rates-plant-population-and-seed-quality-tests-of-the-more-common-local-crop-plants",
+      "topic": "waec-agricultural-science-70-crop-production",
+      "name": "Planting dates, seed rates, plant population and seed quality tests of the more common local crop plants",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-70-crop-production-4-preparation-of-seedbeds-fertilizer-application-mulching-use-of-pesticides-watering-vegetative-propagation-germination-tests-etc",
+      "topic": "waec-agricultural-science-70-crop-production",
+      "name": "Preparation of seedbeds, fertilizer application, mulching, use of pesticides, watering, vegetative propagation, germination tests etc",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-70-crop-production-5-forest-products-and-by-products",
+      "topic": "waec-agricultural-science-70-crop-production",
+      "name": "Forest products and by-products",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-70-crop-production-6-methods-of-propagation-of-horticultural-plants",
+      "topic": "waec-agricultural-science-70-crop-production",
+      "name": "Methods of propagation of horticultural plants",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-70-crop-production-7-common-weeds",
+      "topic": "waec-agricultural-science-70-crop-production",
+      "name": "Common weeds",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-71-animal-production-1-common-breeds-of-animals-and-types-of-animals-available-in-the-locality",
+      "topic": "waec-agricultural-science-71-animal-production",
+      "name": "Common breeds of animals and types of animals available in the locality",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-71-animal-production-2-major-internal-organs-of-farm-animals-e-g-organs-of-the-digestive-system-reproductive-and-excretory-systems",
+      "topic": "waec-agricultural-science-71-animal-production",
+      "name": "Major internal organs of farm animals, e.g., organs of the digestive system, reproductive and excretory systems",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-71-animal-production-3-animal-by-products",
+      "topic": "waec-agricultural-science-71-animal-production",
+      "name": "Animal by-products",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-71-animal-production-4-animal-feeds-and-feedstuffs-and-their-local-sources",
+      "topic": "waec-agricultural-science-71-animal-production",
+      "name": "Animal feeds and feedstuffs and their local sources",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-71-animal-production-5-main-pests-and-parasites-of-farm-animals",
+      "topic": "waec-agricultural-science-71-animal-production",
+      "name": "Main pests and parasites of farm animals",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-71-animal-production-6-diseases-of-farm-animals",
+      "topic": "waec-agricultural-science-71-animal-production",
+      "name": "Diseases of farm animals",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-71-animal-production-7-routine-management-practices-in-farm-animals-e-g-selection-of-livestock-and-poultry-for-breeding-culling-ear-notching-tattooing-horn-or-skin-branding-debeaking-dehorning-castration",
+      "topic": "waec-agricultural-science-71-animal-production",
+      "name": "Routine management practices in farm animals, e.g., selection of livestock and poultry for breeding, culling, ear-notching, tattooing, horn or skin branding, debeaking, dehorning, castration",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-science-71-animal-production-8-fish-harvesting-and-preservation",
+      "topic": "waec-agricultural-science-71-animal-production",
+      "name": "Fish harvesting and preservation",
+      "order": 8,
+      "objectives": []
+    }
+  ]
+}

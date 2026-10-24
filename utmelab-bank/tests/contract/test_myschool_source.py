@@ -116,6 +116,7 @@ def test_the_map_is_the_only_source_of_slugs() -> None:
 
 def test_waec_active_subjects_use_their_recorded_source_slugs() -> None:
     expected = {
+        "agricultural-science": "agricultural-science",
         "biology": "biology",
         "book-keeping": "book-keeping",
         "catering-craft": "catering-craft-practice",
@@ -131,6 +132,7 @@ def test_waec_active_subjects_use_their_recorded_source_slugs() -> None:
 
 def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
     expected = {
+        "agricultural-science": "agricultural-science",
         "biology": "biology",
         "chemistry": "chemistry",
         "christian-religious-studies": "christian-religious-knowledge-crk",
