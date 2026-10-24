@@ -129,6 +129,22 @@ def test_waec_active_subjects_use_their_recorded_source_slugs() -> None:
     assert {subject: slug_for("WAEC", subject) for subject in expected} == expected
 
 
+def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
+    expected = {
+        "biology": "biology",
+        "chemistry": "chemistry",
+        "christian-religious-studies": "christian-religious-knowledge-crk",
+        "civic-education": "civic-education",
+        "economics": "economics",
+        "english-language": "english-language",
+        "government": "government",
+        "mathematics": "mathematics",
+        "physics": "physics",
+    }
+
+    assert {subject: slug_for("WAEC", subject) for subject in expected} == expected
+
+
 # ── the api envelope ────────────────────────────────────────────────────────
 
 
