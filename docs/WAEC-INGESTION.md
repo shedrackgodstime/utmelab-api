@@ -41,6 +41,28 @@ Country-scoped syllabus topics must be selected with the same country as the
 staged question. The bank must not tag a Nigerian row against an unscoped
 multi-country catalog snapshot when country-specific topics exist.
 
+## Catalog readiness
+
+Being present in the MySchool subject map does not make a subject ready for
+ingestion. The production subject, topics, and subtopics must exist first.
+The repository currently has WAEC syllabus inputs for:
+
+```text
+biology
+chemistry
+christian-religious-studies
+civic-education
+economics
+english-language
+government
+mathematics
+physics
+```
+
+The other mapped subjects remain source-mapped but catalog-pending. They must
+stay out of a production scrape until their production catalog is confirmed.
+An empty catalog is a block, not a reason to invent topic placement.
+
 The archived WAEC syllabus model records these common section rules:
 
 - Section A applies to all WAEC member countries.
