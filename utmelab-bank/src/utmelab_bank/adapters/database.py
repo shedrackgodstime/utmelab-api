@@ -16,6 +16,7 @@ thread. Two things follow from that:
 from __future__ import annotations
 
 import asyncio
+import contextlib
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from typing import Any
@@ -219,10 +220,8 @@ class TursoClient:
             connection = self._connection
             self._connection = None
             if connection is not None:
-                try:
+                with contextlib.suppress(Exception):
                     connection.close()
-                except Exception:
-                    pass
 
         await asyncio.get_running_loop().run_in_executor(self._executor, run)
 
