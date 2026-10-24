@@ -119,9 +119,17 @@ class MyschoolSource:
                 collection = row.get("collection")
                 if isinstance(collection, dict):
                     row_exam = str(collection.get("exam_type", "")).strip().lower()
-                    try:
-                        row_year = int(collection.get("exam_year"))
-                    except (TypeError, ValueError):
+                    raw_year = collection.get("exam_year")
+                    if isinstance(raw_year, bool):
+                        row_year = None
+                    elif isinstance(raw_year, int):
+                        row_year = raw_year
+                    elif isinstance(raw_year, str):
+                        try:
+                            row_year = int(raw_year)
+                        except ValueError:
+                            row_year = None
+                    else:
                         row_year = None
                     if row_exam != exam or row_year != year:
                         continue
