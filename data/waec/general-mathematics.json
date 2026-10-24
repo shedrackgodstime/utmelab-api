@@ -1,20 +1,20 @@
 {
   "subjects": [
     {
-      "slug": "mathematics",
+      "slug": "general-mathematics",
       "exam": "WAEC",
       "name": "General Mathematics",
       "is_compulsory": false,
       "objective_paper_questions": 50,
       "countries": [],
       "syllabus_exam": "WAEC",
-      "syllabus_subject": "mathematics"
+      "syllabus_subject": "general-mathematics"
     }
   ],
   "topics": [
     {
       "slug": "waec-number-bases",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Number bases",
       "order": 1,
@@ -24,7 +24,7 @@
     },
     {
       "slug": "waec-modular-arithmetic",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Modular Arithmetic",
       "order": 2,
@@ -34,7 +34,7 @@
     },
     {
       "slug": "waec-fractions-decimals-and-approximations",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Fractions, Decimals and Approximations",
       "order": 3,
@@ -44,7 +44,7 @@
     },
     {
       "slug": "waec-indices",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Indices",
       "order": 4,
@@ -54,7 +54,7 @@
     },
     {
       "slug": "waec-logarithms",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Logarithms",
       "order": 5,
@@ -64,7 +64,7 @@
     },
     {
       "slug": "waec-sequence-and-series",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Sequence and Series",
       "order": 6,
@@ -74,7 +74,7 @@
     },
     {
       "slug": "waec-sets",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Sets",
       "order": 7,
@@ -84,7 +84,7 @@
     },
     {
       "slug": "waec-logical-reasoning",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Logical Reasoning",
       "order": 8,
@@ -94,7 +94,7 @@
     },
     {
       "slug": "waec-positiv-e-and-nega-tive-integers-rational-numbers",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Positiv e and nega tive integers, rational numbers",
       "order": 9,
@@ -104,7 +104,7 @@
     },
     {
       "slug": "waec-surds-radicals-k-matrices-and-determinants",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Surds (Radicals) •∗∗ ∗∗ ( k ) Matrices and Determinants",
       "order": 10,
@@ -114,7 +114,7 @@
     },
     {
       "slug": "waec-ratio-proportions-and-rates",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Ratio, Proportions and Rates",
       "order": 11,
@@ -124,7 +124,7 @@
     },
     {
       "slug": "waec-percentages-n-financial-arithmetic",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Percentages ∗∗ ∗∗ ( n) Financial Arithmetic",
       "order": 12,
@@ -134,7 +134,7 @@
     },
     {
       "slug": "waec-variation",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Variation",
       "order": 13,
@@ -144,7 +144,7 @@
     },
     {
       "slug": "waec-change-of-subject-of-a-formula-relation",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Change of Subject of a        Formula/Relation",
       "order": 14,
@@ -154,7 +154,7 @@
     },
     {
       "slug": "waec-quadratic-equations",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Quadratic Equations",
       "order": 15,
@@ -164,7 +164,7 @@
     },
     {
       "slug": "waec-graphs-of-linear-and-quadratic-functions",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Graphs of Linear and Quadratic functions.",
       "order": 16,
@@ -174,7 +174,7 @@
     },
     {
       "slug": "waec-linear-inequalities",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Linear Inequalities",
       "order": 17,
@@ -184,7 +184,7 @@
     },
     {
       "slug": "waec-algebraic-fractions-i-functions-and-relations",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Algebraic Fractions ♦•♣♠ (i) Functions and Relations",
       "order": 18,
@@ -194,7 +194,7 @@
     },
     {
       "slug": "waec-volumes",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Volumes",
       "order": 19,
@@ -204,7 +204,7 @@
     },
     {
       "slug": "waec-circles",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Circles",
       "order": 20,
@@ -214,7 +214,7 @@
     },
     {
       "slug": "waec-angles-of-elevation-and-depression-c-bearings-g-introductory",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Angles of elevation and depression ♦∗∗ ∗∗♣♠ ( c ) Bearings ∗∗ ∗∗ G. INTRODUCTORY CALCULUS",
       "order": 21,
@@ -224,7 +224,7 @@
     },
     {
       "slug": "waec-vectors-in-a-plane",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Vectors in a Plane",
       "order": 22,
@@ -234,7 +234,7 @@
     },
     {
       "slug": "waec-transformation-in-the-cartesian-plane",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Transformation in the Cartesian Plane",
       "order": 23,
@@ -244,7 +244,7 @@
     },
     {
       "slug": "waec-3-units",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "3. UNITS",
       "order": 24,
@@ -254,7 +254,7 @@
     },
     {
       "slug": "waec-1000-millimetres-mm-100-centimetres-cm-1-metre-m",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "1000. millimetres (mm) = 100 centimetres (cm) = 1 metre(m).",
       "order": 25,
@@ -264,7 +264,7 @@
     },
     {
       "slug": "waec-1000-metres-1-kilometre-km",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "1000. metres = 1 kilometre (km)",
       "order": 26,
@@ -274,7 +274,7 @@
     },
     {
       "slug": "waec-1000-cubic-centimeters-cm",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "1000. cubic centimeters (cm",
       "order": 27,
@@ -284,7 +284,7 @@
     },
     {
       "slug": "waec-1000-milligrammes-mg-1-gramme-g",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "1000. milligrammes (mg) = 1 gramme (g)",
       "order": 28,
@@ -294,7 +294,7 @@
     },
     {
       "slug": "waec-1000-grammes-g-1-kilogramme-kg",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "1000. grammes (g) = 1 kilogramme( kg )",
       "order": 29,
@@ -304,7 +304,7 @@
     },
     {
       "slug": "waec-1000-ogrammes-kg-1-tonne",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "1000. ogrammes (kg) = 1 tonne.",
       "order": 30,
@@ -314,7 +314,7 @@
     },
     {
       "slug": "waec-4-other-important-information",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "4. OTHER IMPORTANT INFORMATION",
       "order": 31,
@@ -324,7 +324,7 @@
     },
     {
       "slug": "waec-algebraic-expressions",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Algebraic expressions",
       "order": 32,
@@ -334,7 +334,7 @@
     },
     {
       "slug": "waec-simple-o-perations-on-algebraic-expressions",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Simple o perations on algebraic expressions",
       "order": 33,
@@ -344,7 +344,7 @@
     },
     {
       "slug": "waec-solution-of-linear-equations",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Solution of Linear Equations",
       "order": 34,
@@ -354,7 +354,7 @@
     },
     {
       "slug": "waec-lengths-and-perimeters",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Lengths and Perimeters",
       "order": 35,
@@ -364,7 +364,7 @@
     },
     {
       "slug": "waec-areas",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Areas",
       "order": 36,
@@ -374,7 +374,7 @@
     },
     {
       "slug": "waec-angles",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Angles",
       "order": 37,
@@ -384,7 +384,7 @@
     },
     {
       "slug": "waec-angles-and-inte-rcepts-on-parallel-lines",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Angles and inte rcepts on parallel lines.",
       "order": 38,
@@ -394,7 +394,7 @@
     },
     {
       "slug": "waec-triangles-and-polygons",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Triangles and Polygons.",
       "order": 39,
@@ -404,7 +404,7 @@
     },
     {
       "slug": "waec-sine-cosine-and-tangent-of-an-angle",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Sine, Cosine and Tangent of an angle.",
       "order": 40,
@@ -414,7 +414,7 @@
     },
     {
       "slug": "waec-probability",
-      "subject": "mathematics",
+      "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Probability",
       "order": 41,

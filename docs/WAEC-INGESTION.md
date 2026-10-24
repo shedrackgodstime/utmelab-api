@@ -59,7 +59,7 @@ further-mathematics
 government
 insurance
 marketing
-mathematics
+general-mathematics
 physics
 ```
 
