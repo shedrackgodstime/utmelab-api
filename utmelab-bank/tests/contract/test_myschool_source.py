@@ -145,6 +145,7 @@ def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
         "government": "government",
         "general-mathematics": "mathematics",
         "health-education": "health-education",
+        "islamic-studies": "islamic-religious-knowledge-irk",
         "physics": "physics",
         "nigerian-history": "history",
         "physical-education": "physical-education",

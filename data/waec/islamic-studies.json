@@ -1,0 +1,932 @@
+{
+  "subjects": [
+    {
+      "slug": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Islamic Studies",
+      "is_compulsory": false,
+      "objective_paper_questions": 50,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "islamic-studies"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-islamic-studies-1-the-jahiliyyah-arabia-before-islam",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "The Jahiliyyah: Arabia before Islam",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "The life of Prophet Muhammad (S.A.W.)",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-3-the-khulaf-ur-r-shid-n-the-rightly-guided-caliphs-abu-bakr-ibn-ab-quhh-fah-umar-ibn-al-khatt-b-uthm-n-ibn-aff-n-and-ali-ibn-ab-t-lib",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "The Khulafᾱ’ur-Rᾱshidīn (The Rightly – guided Caliphs): Abu- Bakr Ibn Abī Quhhᾱfah, ‘Umar Ibn al-Khattᾱb, ‘Uthmᾱn Ibn ‘Affᾱn and ‘Ali Ibn Abī Tᾱlib",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-4-islam-in-west-africa",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Islam in West Africa",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-5-revelation-of-the-qur-an",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Revelation of the Qur’an",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-6-preservation-of-the-qur-an",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Preservation of the Qur’an",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-7-importance-of-the-qur-an",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Importance of the Qur’an",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Reading (in either Arabic Text or Transliteration), Memorization, Meaning of the following suwar and the lessons learnt from them (Identification, Explanation, Interpretation and Application);",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-9-moral-lessons-from-the-qur-an",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Moral Lessons from the Qur’an",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-10-hadith",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Hadith",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-11-reading-in-either-the-arabic-text-or-transliteration",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Reading (in either the Arabic Text or Transliteration)",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-12-iman-faith",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Iman (Faith)",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-13-shirk-associating-partners-with-allah",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Shirk (Associating Partners with Allah)",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-14-taharah-purification",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Taharah (Purification)",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-15-salat",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Salat",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-16-sawm-fasting",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Sawm (Fasting)",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-17-zakat-charity",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Zakat (Charity)",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-18-hajj-pilgrimage",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Hajj (Pilgrimage):",
+      "order": 18,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-19-shari-ah",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Shari ‘ah",
+      "order": 19,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-islamic-studies-20-nikah-marriage",
+      "subject": "islamic-studies",
+      "exam": "WAEC",
+      "name": "Nikah (Marriage)",
+      "order": 20,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-islamic-studies-1-the-jahiliyyah-arabia-before-islam-1-description-of-arabia-location",
+      "topic": "waec-islamic-studies-1-the-jahiliyyah-arabia-before-islam",
+      "name": "Description of Arabia – Location",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-1-the-jahiliyyah-arabia-before-islam-2-social-life-marriage-divorce-and-inheritance",
+      "topic": "waec-islamic-studies-1-the-jahiliyyah-arabia-before-islam",
+      "name": "Social Life – Marriage, divorce and inheritance",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-1-the-jahiliyyah-arabia-before-islam-3-religious-life-idol-worship-and-names-of-major-gods-idols",
+      "topic": "waec-islamic-studies-1-the-jahiliyyah-arabia-before-islam",
+      "name": "Religious life – Idol worship and names of major gods/idols",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-1-the-jahiliyyah-arabia-before-islam-4-political-life-system-of-government",
+      "topic": "waec-islamic-studies-1-the-jahiliyyah-arabia-before-islam",
+      "name": "Political Life – System of Government",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-1-the-jahiliyyah-arabia-before-islam-5-economic-life-sources-of-livelihood",
+      "topic": "waec-islamic-studies-1-the-jahiliyyah-arabia-before-islam",
+      "name": "Economic Life – Sources of livelihood",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w-1-birth",
+      "topic": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w",
+      "name": "Birth",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w-2-marriage",
+      "topic": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w",
+      "name": "Marriage",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w-3-call-to-prophethood-and-his-mission",
+      "topic": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w",
+      "name": "Call to prophethood and his mission",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w-4-hijrah-causes-course-and-significance",
+      "topic": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w",
+      "name": "Hijrah: Causes, Course and Significance",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w-5-formation-of-the-ummah-and-the-madinan-constitution",
+      "topic": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w",
+      "name": "Formation of the Ummah and the Madinan Constitution",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w-6-leadership-qualities-of-the-prophet",
+      "topic": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w",
+      "name": "Leadership qualities of the Prophet",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w-7-the-battles-badr-uhud-and-khandaq-causes-courses-and-effects",
+      "topic": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w",
+      "name": "The Battles: Badr, Uhud and Khandaq. ( causes, courses and effects .)",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w-8-the-treaty-of-hudaybiyyah-terms-and-outcomes",
+      "topic": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w",
+      "name": "The Treaty of Hudaybiyyah: terms and outcomes",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w-9-conquest-of-makkah",
+      "topic": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w",
+      "name": "Conquest of Makkah",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w-10-the-farewell-pilgrimage-description-sermon-and-its-lessons",
+      "topic": "waec-islamic-studies-2-the-life-of-prophet-muhammad-s-a-w",
+      "name": "The Farewell Pilgrimage: description, sermon, and its lessons",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-3-the-khulaf-ur-r-shid-n-the-rightly-guided-caliphs-abu-bakr-ibn-ab-quhh-fah-umar-ibn-al-khatt-b-uthm-n-ibn-aff-n-and-ali-ibn-ab-t-lib-1-their-biographies",
+      "topic": "waec-islamic-studies-3-the-khulaf-ur-r-shid-n-the-rightly-guided-caliphs-abu-bakr-ibn-ab-quhh-fah-umar-ibn-al-khatt-b-uthm-n-ibn-aff-n-and-ali-ibn-ab-t-lib",
+      "name": "Their biographies",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-3-the-khulaf-ur-r-shid-n-the-rightly-guided-caliphs-abu-bakr-ibn-ab-quhh-fah-umar-ibn-al-khatt-b-uthm-n-ibn-aff-n-and-ali-ibn-ab-t-lib-2-their-contributions-to-islam",
+      "topic": "waec-islamic-studies-3-the-khulaf-ur-r-shid-n-the-rightly-guided-caliphs-abu-bakr-ibn-ab-quhh-fah-umar-ibn-al-khatt-b-uthm-n-ibn-aff-n-and-ali-ibn-ab-t-lib",
+      "name": "Their contributions to Islam",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-3-the-khulaf-ur-r-shid-n-the-rightly-guided-caliphs-abu-bakr-ibn-ab-quhh-fah-umar-ibn-al-khatt-b-uthm-n-ibn-aff-n-and-ali-ibn-ab-t-lib-3-lessons-learnt-from-their-lives",
+      "topic": "waec-islamic-studies-3-the-khulaf-ur-r-shid-n-the-rightly-guided-caliphs-abu-bakr-ibn-ab-quhh-fah-umar-ibn-al-khatt-b-uthm-n-ibn-aff-n-and-ali-ibn-ab-t-lib",
+      "name": "Lessons learnt from their lives",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-4-islam-in-west-africa-1-the-advent-and-roles-of-traders-teachers-mur-bitun-sufi-orders-mujaddidun-reformers-and-hajj-in-the-pread-of-islam",
+      "topic": "waec-islamic-studies-4-islam-in-west-africa",
+      "name": "The advent and roles of traders, teachers, murᾱbitun, sufi orders, mujaddidun (reformers) and Hajj in the pread of Islam",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-4-islam-in-west-africa-2-the-impact-of-islam-on-the-socio-political-economic-and-linguistic-lives-of-the-peoples-of-ancient-west-african-empires-i-e-ghana-mali-shonghai-and-kanem-borno",
+      "topic": "waec-islamic-studies-4-islam-in-west-africa",
+      "name": "The Impact of Islam on the Socio-Political, Economic and Linguistic Lives of the Peoples of ancient West African empires (i.e. Ghana, Mali, Shonghai and Kanem- Borno",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-5-revelation-of-the-qur-an-1-visits-of-the-prophet-s-a-w-to-cave-hira-first-revelation-and-his-reaction-to-it-different-modes-of-revelation-piecemeal-revelation-of-the-qur-an",
+      "topic": "waec-islamic-studies-5-revelation-of-the-qur-an",
+      "name": "visits of the Prophet (S.A.W.) to Cave Hira ; first revelation and his reaction to it, different modes of revelation, piecemeal- revelation of the Qur’an",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-6-preservation-of-the-qur-an-1-complete-arrangement-including-distinction-between-makki-and-madani-suwar-recording-compilation-standardization-roles-played-by-the-companions-of-the-prophet-s-a-w-in-the-preservation-of-the-qur-an",
+      "topic": "waec-islamic-studies-6-preservation-of-the-qur-an",
+      "name": "Complete arrangement including distinction between Makki and Madani Suwar; Recording; Compilation; Standardization: Roles played by the Companions of the Prophet (S.A.W.) in the Preservation of the Qur’an",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-7-importance-of-the-qur-an-1-the-qur-an-as-a-source-of-guidance-in-social-political-spiritual-and-moral-matters",
+      "topic": "waec-islamic-studies-7-importance-of-the-qur-an",
+      "name": "The Qur’an as a source of guidance in social, political, spiritual and moral matters",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application-1-suratul-fatihah-q-1",
+      "topic": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application",
+      "name": "Suratul – Fatihah (Q.1)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application-2-suratud-duha-q-93",
+      "topic": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application",
+      "name": "Suratud – Duha (Q.93)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application-3-suratut-tin-q-95",
+      "topic": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application",
+      "name": "Suratut – Tin (Q.95)",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application-4-suratul-alaq-q-96-1-5",
+      "topic": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application",
+      "name": "Suratul – ‘Alaq (Q.96: 1-5)",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application-5-suratul-qadr-q-97",
+      "topic": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application",
+      "name": "Suratul – Qadr (Q.97)",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application-6-suratul-kafirun-q-109",
+      "topic": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application",
+      "name": "Suratul – Kafirun (Q.109)",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application-7-suratun-nasr-q-110",
+      "topic": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application",
+      "name": "Suratun – Nasr (Q.110)",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application-8-suratu-l-ikhlas-q-112",
+      "topic": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application",
+      "name": "Suratu l – Ikhlas (Q.112)",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application-9-suratu-l-falaq-q-113",
+      "topic": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application",
+      "name": "Suratu l – Falaq (Q.113)",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application-10-suratun-nas-q-114",
+      "topic": "waec-islamic-studies-8-reading-in-either-arabic-text-or-transliteration-memorization-meaning-of-the-following-suwar-and-the-lessons-learnt-from-them-identification-explanation-interpretation-and-application",
+      "name": "Suratun – Nas (Q.114)",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-9-moral-lessons-from-the-qur-an-1-attitudes-to-parents-q-17-23-24-31-13-15",
+      "topic": "waec-islamic-studies-9-moral-lessons-from-the-qur-an",
+      "name": "Attitudes to Parents (Q.17 :23 – 24: 31 : 13 – 15",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-9-moral-lessons-from-the-qur-an-2-honesty-in-words-and-deeds-q2-42-61-2-3-17-35",
+      "topic": "waec-islamic-studies-9-moral-lessons-from-the-qur-an",
+      "name": "Honesty in Words and Deeds Q2: 42; 61: 2-3, 17: 35",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-9-moral-lessons-from-the-qur-an-3-prohibition-of-gambling-q-2-219-5-90-91",
+      "topic": "waec-islamic-studies-9-moral-lessons-from-the-qur-an",
+      "name": "Prohibition of Gambling Q. 2:219:5 90-91",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-10-hadith-1-definition-of-hadith-and-sunnah",
+      "topic": "waec-islamic-studies-10-hadith",
+      "name": "Definition of Hadith and Sunnah",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-10-hadith-2-differences-and-similarities-between-hadith-and-sunnah",
+      "topic": "waec-islamic-studies-10-hadith",
+      "name": "Differences and similarities between Hadith and Sunnah",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-10-hadith-3-the-importance-of-hadith-and-sunnah",
+      "topic": "waec-islamic-studies-10-hadith",
+      "name": "The Importance of Hadith and Sunnah",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-10-hadith-4-parts-of-the-hadith-isnad-matn-and-rawi",
+      "topic": "waec-islamic-studies-10-hadith",
+      "name": "Parts of the Hadith: ‘Isnad, Matn and Rawi",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-10-hadith-5-criteria-for-authenticity-of-hadith",
+      "topic": "waec-islamic-studies-10-hadith",
+      "name": "Criteria for authenticity of Hadith",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-10-hadith-6-classification-of-hadith-sahih-hasan-and-da-if",
+      "topic": "waec-islamic-studies-10-hadith",
+      "name": "Classification of Hadith: Sahih, Hasan and Da‘if",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-10-hadith-7-the-six-sound-collections-of-hadith-sihaus-sittah-and-their-compilers",
+      "topic": "waec-islamic-studies-10-hadith",
+      "name": "The Six Sound Collections of Hadith (Sihaus-Sittah) and their Compilers",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-11-reading-in-either-the-arabic-text-or-transliteration-1-memorization-meaning-of-the-following-ahadith-and-lessons-learnt-from-them-identification-explanation-interpretation-and-application-an-nawawi-s-collection-1-5-7-9-13-15-16-18-34-and-41",
+      "topic": "waec-islamic-studies-11-reading-in-either-the-arabic-text-or-transliteration",
+      "name": "Memorization, Meaning of the following Ahadith and lessons learnt from them (Identification, Explanation, Interpretation and Application): an-Nawawi’s Collection. 1, 5, 7, 9, 13, 15,16,18,34 and 41",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-12-iman-faith-1-meaning-and-significance-of-iman-faith",
+      "topic": "waec-islamic-studies-12-iman-faith",
+      "name": "Meaning and Significance of Iman (Faith)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-12-iman-faith-2-articles-of-faith-belief-in-allah-with-emphasis-on-kalimatush-shahadah-q2-163-and-255-3-18-17-42-43-21-22-23-91-q-112-islam-and-the-concept-of-trinity-q-4-171-5-75-76-19-92-3-112",
+      "topic": "waec-islamic-studies-12-iman-faith",
+      "name": "Articles of Faith: Belief in Allah with emphasis on Kalimatush-Shahadah(Q2: 163 and 255; 3:18;17:42-43;21: 22 ; 23: 91 Q. 112, Islam and the concept of Trinity (Q.4:171; 5:75 – 76; 19:92-3; 112)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-12-iman-faith-3-his-angels-q-2-285-8-50-16-2-66-6-82-10-12",
+      "topic": "waec-islamic-studies-12-iman-faith",
+      "name": "His angels – Q 2: 285; 8:50; 16: 2; 66: 6 ; 82: 10 – 12",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-12-iman-faith-4-his-books-q-2-2-2-285-87-19-19-5-46",
+      "topic": "waec-islamic-studies-12-iman-faith",
+      "name": "His books – Q.2: 2; 2:285; 87: 19 – 19; 5:46",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-12-iman-faith-5-his-prophets-with-special-emphasis-on-the-ulu1-azm-ibrahim-nuh-musa-isa-a-s-muhammad-s-a-w-q-6-83-87-4-164-10-47-21-107-46-35-and-ahadith-relevant-to-the-foregoing",
+      "topic": "waec-islamic-studies-12-iman-faith",
+      "name": "His Prophets with special emphasis on the Ulu1-‘Azm: Ibrahim, Nuh, Musa, ‘Isa.(A.S.) Muhammad (S.A.W.) Q. 6: 83-87: 4: 164; 10;47;21:107;46:35 and ahadith relevant to the foregoing",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-12-iman-faith-6-the-day-of-resurrection-judgement-eternal-life-q-20-15-32-10-20-36-78-70-75-3-13",
+      "topic": "waec-islamic-studies-12-iman-faith",
+      "name": "The Day of Resurrection, Judgement: Eternal Life Q 20: 15:32:10-20: 36: 78-70; 75: 3-13",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-12-iman-faith-7-destiny-qada-and-qadar-distinction-between-the-two-concepts-q-3-145-25-2-76-3-87-3",
+      "topic": "waec-islamic-studies-12-iman-faith",
+      "name": "Destiny – Qada’ and Qadar; Distinction between the two Concepts (Q.3: 145:25:2:76:3:87:3)",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-13-shirk-associating-partners-with-allah-1-worship-of-idols-q-4-48-22-31-31-13-41-37",
+      "topic": "waec-islamic-studies-13-shirk-associating-partners-with-allah",
+      "name": "Worship of idols (Q.4:48:22:31:31:13:41:37)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-13-shirk-associating-partners-with-allah-2-ancestor-and-hero-worship-q-3-64-4-116-112-4-q-2-13-40-41",
+      "topic": "waec-islamic-studies-13-shirk-associating-partners-with-allah",
+      "name": "Ancestor and Hero- worship Q 3:64; 4:116;112:4; Q.2:13,40&41",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-14-taharah-purification-1-importance-of-taharah",
+      "topic": "waec-islamic-studies-14-taharah-purification",
+      "name": "Importance of Taharah",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-14-taharah-purification-2-al-istinja",
+      "topic": "waec-islamic-studies-14-taharah-purification",
+      "name": "al- Istinja’",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-14-taharah-purification-3-al-wudu",
+      "topic": "waec-islamic-studies-14-taharah-purification",
+      "name": "al-Wudu’",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-14-taharah-purification-4-at-tayammum",
+      "topic": "waec-islamic-studies-14-taharah-purification",
+      "name": "at-Tayammum",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-14-taharah-purification-5-al-ghusl",
+      "topic": "waec-islamic-studies-14-taharah-purification",
+      "name": "al-Ghusl",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-15-salat-1-meaning-of-salat",
+      "topic": "waec-islamic-studies-15-salat",
+      "name": "Meaning of Salat",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-15-salat-2-importance-of-salat",
+      "topic": "waec-islamic-studies-15-salat",
+      "name": "Importance of Salat",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-15-salat-3-acts-that-vitiate-salat",
+      "topic": "waec-islamic-studies-15-salat",
+      "name": "Acts that vitiate Salat",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-15-salat-4-joining-a-congregational-salat",
+      "topic": "waec-islamic-studies-15-salat",
+      "name": "Joining a Congregational Salat",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-15-salat-5-sujudus-sahwi-prostration-of-forgetfulness",
+      "topic": "waec-islamic-studies-15-salat",
+      "name": "Sujudus-Sahwi (Prostration of Forgetfulness.)",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-15-salat-6-kinds-of-salat-and-how-they-are-observed",
+      "topic": "waec-islamic-studies-15-salat",
+      "name": "Kinds of Salat and how they are observed:",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-15-salat-7-obligatory-salat-subh-fajr-zuhr-asr-maghrib-and-isha-i",
+      "topic": "waec-islamic-studies-15-salat",
+      "name": "Obligatory Salat (Subh/Fajr, Zuhr, ‘Asr, Maghrib and ‘Isha’i.)",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-15-salat-8-non-obligatory-salat-nawafil-that-accompany-the-obligatory-salawat-duha-witr-etc",
+      "topic": "waec-islamic-studies-15-salat",
+      "name": "Non-Obligatory Salat ( Nawafil that accompany the obligatory salawat, Duha, witr, etc.)",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-15-salat-9-special-prayers-jum-ah-idayn-janazah-istisqa-tarawih-kusufayn-and-istikhara",
+      "topic": "waec-islamic-studies-15-salat",
+      "name": "Special prayers (Jum‘ah, ‘Idayn, Janazah, Istisqa’ Tarawih, Kusufayn and Istikhara.)",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-15-salat-10-salatus-safar-salat-on-a-journey",
+      "topic": "waec-islamic-studies-15-salat",
+      "name": "Salatus-Safar (Salat on a journey.)",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-16-sawm-fasting-1-definition",
+      "topic": "waec-islamic-studies-16-sawm-fasting",
+      "name": "Definition",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-16-sawm-fasting-2-types-of-sawm-compulsory-and-voluntary",
+      "topic": "waec-islamic-studies-16-sawm-fasting",
+      "name": "Types of Sawm (compulsory and voluntary)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-16-sawm-fasting-3-examples-of-compulsory-fast-ramadan-kaffarah-and-nadr",
+      "topic": "waec-islamic-studies-16-sawm-fasting",
+      "name": "Examples of compulsory fast (Ramadan, Kaffarah and Nadr)",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-16-sawm-fasting-4-examples-of-voluntary-fast-shitta-shawwal-ashura-and-tasu-a-fasting-on-mondays-fasting-on-thursdays-etc",
+      "topic": "waec-islamic-studies-16-sawm-fasting",
+      "name": "Examples of voluntary fast (Shitta Shawwal, ‘Ashura’and Tasu‘a, fasting on Mondays, fasting on Thursdays, etc.)",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-16-sawm-fasting-5-voluntary-fast",
+      "topic": "waec-islamic-studies-16-sawm-fasting",
+      "name": "Voluntary fast",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-16-sawm-fasting-6-how-fasting-is-observed-in-islam",
+      "topic": "waec-islamic-studies-16-sawm-fasting",
+      "name": "How fasting is observed in Islam",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-16-sawm-fasting-7-ramadan-fast",
+      "topic": "waec-islamic-studies-16-sawm-fasting",
+      "name": "Ramadan Fast",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-16-sawm-fasting-8-those-exempted-from-fast",
+      "topic": "waec-islamic-studies-16-sawm-fasting",
+      "name": "Those Exempted from Fast",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-16-sawm-fasting-9-things-that-vitiate-fast",
+      "topic": "waec-islamic-studies-16-sawm-fasting",
+      "name": "Things that vitiate Fast",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-16-sawm-fasting-10-benefits-significance-of-sawm-spiritual-social-and-moral",
+      "topic": "waec-islamic-studies-16-sawm-fasting",
+      "name": "Benefits/Significance of Sawm—spiritual, social and moral",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-17-zakat-charity-1-definitions-of-zakat-and-sadaqah",
+      "topic": "waec-islamic-studies-17-zakat-charity",
+      "name": "Definitions of Zakat and Sadaqah",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-17-zakat-charity-2-difference-between-zakat-and-sadaqah",
+      "topic": "waec-islamic-studies-17-zakat-charity",
+      "name": "Difference between Zakat and Sadaqah",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-17-zakat-charity-3-articles-on-which-zakat-is-paid",
+      "topic": "waec-islamic-studies-17-zakat-charity",
+      "name": "Articles on which Zakat is paid",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-17-zakat-charity-4-the-nisab-of-zakat",
+      "topic": "waec-islamic-studies-17-zakat-charity",
+      "name": "The Nisab of Zakat",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-17-zakat-charity-5-zakat-on-livestock",
+      "topic": "waec-islamic-studies-17-zakat-charity",
+      "name": "Zakat on Livestock",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-17-zakat-charity-6-zakat-on-money",
+      "topic": "waec-islamic-studies-17-zakat-charity",
+      "name": "Zakat on Money",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-17-zakat-charity-7-zakat-on-agricultural-products",
+      "topic": "waec-islamic-studies-17-zakat-charity",
+      "name": "Zakat on Agricultural Products",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-17-zakat-charity-8-the-beneficiaries-of-zakat-q-9-60",
+      "topic": "waec-islamic-studies-17-zakat-charity",
+      "name": "The Beneficiaries of Zakat (Q.9:60)",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-17-zakat-charity-9-zakatul-fitr",
+      "topic": "waec-islamic-studies-17-zakat-charity",
+      "name": "Zakatul-Fitr",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-17-zakat-charity-10-benefits-of-zakat-spiritual-socio-economic-and-moral",
+      "topic": "waec-islamic-studies-17-zakat-charity",
+      "name": "Benefits of Zakat – Spiritual, Socio-economic and Moral",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-18-hajj-pilgrimage-1-definition-and-origin-of-hajj-and-umrah",
+      "topic": "waec-islamic-studies-18-hajj-pilgrimage",
+      "name": "Definition and Origin of Hajj and ‘Umrah",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-18-hajj-pilgrimage-2-pre-requisite-to-the-performance-of-hajj",
+      "topic": "waec-islamic-studies-18-hajj-pilgrimage",
+      "name": "Pre-requisite to the performance of Hajj",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-18-hajj-pilgrimage-3-performance-of-umrah-and-hajj",
+      "topic": "waec-islamic-studies-18-hajj-pilgrimage",
+      "name": "Performance of ‘Umrah and Hajj",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-18-hajj-pilgrimage-4-acts-that-affect-the-validity-of-hajj",
+      "topic": "waec-islamic-studies-18-hajj-pilgrimage",
+      "name": "Acts that affect the validity of Hajj",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-18-hajj-pilgrimage-5-types-of-hajj-ifrad-tamattu-and-qiran",
+      "topic": "waec-islamic-studies-18-hajj-pilgrimage",
+      "name": "Types of Hajj (Ifrad, Tamattu‘ and Qiran)",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-18-hajj-pilgrimage-6-rites-of-hajj",
+      "topic": "waec-islamic-studies-18-hajj-pilgrimage",
+      "name": "Rites of Hajj",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-18-hajj-pilgrimage-7-significance-of-hajj-spiritual-socio-economic-and-moral-objectives-of-hajj",
+      "topic": "waec-islamic-studies-18-hajj-pilgrimage",
+      "name": "Significance of Hajj (spiritual, socio-economic and moral objectives of Hajj",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-19-shari-ah-1-definition",
+      "topic": "waec-islamic-studies-19-shari-ah",
+      "name": "Definition;",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-19-shari-ah-2-sources-the-qur-an-the-sunnah-the-ijma-and-the-qiyas",
+      "topic": "waec-islamic-studies-19-shari-ah",
+      "name": "Sources (the Qur’an, the Sunnah, the Ijma‘ and the Qiyas.)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-20-nikah-marriage-1-concept-q-16-72-24-32-30-21-the-hadith-o-young-man",
+      "topic": "waec-islamic-studies-20-nikah-marriage",
+      "name": "Concept (Q.16:72:24:32; 30;21: the Hadith “O young man……….”",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-20-nikah-marriage-2-prohibited-categories-q-2221-4-22-24",
+      "topic": "waec-islamic-studies-20-nikah-marriage",
+      "name": "Prohibited Categories (Q.2221; 4:22–24)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-20-nikah-marriage-3-conditions-governing-validity-q-4-4-21-24-25-al-bukhari-67-29-37-42-49-51-52-abu-da-ud-12-29-31",
+      "topic": "waec-islamic-studies-20-nikah-marriage",
+      "name": "Conditions governing validity (Q. 4: 4, 21, 24-25): al-Bukhari 67: 29, 37, 42, 49, 51-52, Abu-Da’ud 12:29-31",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-20-nikah-marriage-4-rights-and-duties-of-husband-and-wife-q-2-228-230-20-132-33-33-41-34-65-6",
+      "topic": "waec-islamic-studies-20-nikah-marriage",
+      "name": "Rights and duties of husband and wife (Q.2.228- 230:20:132;33:33,41:34;65:6)",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-islamic-studies-20-nikah-marriage-5-law-prohibiting-the-ill-treatment-of-wife-idrar-q-65-6",
+      "topic": "waec-islamic-studies-20-nikah-marriage",
+      "name": "Law prohibiting the Ill-treatment of Wife (Idrar) Q 65:6",
+      "order": 5,
+      "objectives": []
+    }
+  ]
+}

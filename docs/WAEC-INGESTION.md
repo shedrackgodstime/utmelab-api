@@ -61,6 +61,7 @@ geography
 further-mathematics
 government
 nigerian-history
+islamic-studies
 insurance
 marketing
 general-mathematics
