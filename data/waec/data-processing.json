@@ -1,0 +1,873 @@
+{
+  "subjects": [
+    {
+      "slug": "data-processing",
+      "exam": "WAEC",
+      "name": "Data Processing",
+      "is_compulsory": false,
+      "objective_paper_questions": 40,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "data-processing"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-data-processing-1-history-of-computers",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "History of Computers",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-2-data-and-information",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Data and Information",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-3-classification-of-computers",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Classification of Computers",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-4-application-of-ict-in-everyday-life",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Application of ICT in everyday life",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-5-components-of-computers",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Components of Computers",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-6-the-art-of-information-processing",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "The art of Information processing",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-7-process-of-information-transmission",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Process of Information transmission",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-8-medium-of-information-transmission",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Medium of Information Transmission",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-9-networking",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Networking",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-10-internet",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Internet",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-11-operating-system",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Operating System",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-12-word-processing",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Word Processing",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-13-spreadsheet",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Spreadsheet",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-14-database-management-system",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Database Management System",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-15-presentation-package",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Presentation Package",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-16-web-design-packages",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Web Design Packages",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-17-graphic-packages",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Graphic Packages",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-18-maintenance-of-computer",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Maintenance of Computer",
+      "order": 18,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-19-computer-ethics",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Computer Ethics",
+      "order": 19,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-20-safety-measures",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Safety Measures",
+      "order": 20,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-21-career-opportunities-in-data-processing",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Career opportunities in Data Processing",
+      "order": 21,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-22-computer-virus",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Computer Virus",
+      "order": 22,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-23-relational-model",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Relational Model",
+      "order": 23,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-24-file-organization",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "File Organization",
+      "order": 24,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-25-database-security",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Database Security",
+      "order": 25,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-data-processing-26-parallel-and-distributed-databases",
+      "subject": "data-processing",
+      "exam": "WAEC",
+      "name": "Parallel and Distributed databases",
+      "order": 26,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-data-processing-1-history-of-computers-1-computing-devices",
+      "topic": "waec-data-processing-1-history-of-computers",
+      "name": "Computing devices",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-1-history-of-computers-2-concept-of-the-number-system-in-computing",
+      "topic": "waec-data-processing-1-history-of-computers",
+      "name": "Concept of the Number System in Computing",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-2-data-and-information-1-definition-of-data-and-information",
+      "topic": "waec-data-processing-2-data-and-information",
+      "name": "Definition of data and information.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-2-data-and-information-2-types-of-data",
+      "topic": "waec-data-processing-2-data-and-information",
+      "name": "Types of Data.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-2-data-and-information-3-ways-of-handling-data",
+      "topic": "waec-data-processing-2-data-and-information",
+      "name": "Ways of handling data.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-2-data-and-information-4-definition-of-data",
+      "topic": "waec-data-processing-2-data-and-information",
+      "name": "Definition of Data.",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-2-data-and-information-5-digitalization",
+      "topic": "waec-data-processing-2-data-and-information",
+      "name": "Digitalization.",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-4-application-of-ict-in-everyday-life-1-uses-of-ict-in-everyday-activities",
+      "topic": "waec-data-processing-4-application-of-ict-in-everyday-life",
+      "name": "Uses of ICT in everyday activities.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-4-application-of-ict-in-everyday-life-2-impact-of-ict-in-society",
+      "topic": "waec-data-processing-4-application-of-ict-in-everyday-life",
+      "name": "Impact of ICT in society",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-5-components-of-computers-1-input-devices",
+      "topic": "waec-data-processing-5-components-of-computers",
+      "name": "Input Devices.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-5-components-of-computers-2-output-devices",
+      "topic": "waec-data-processing-5-components-of-computers",
+      "name": "Output Devices.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-5-components-of-computers-3-system-unit",
+      "topic": "waec-data-processing-5-components-of-computers",
+      "name": "System Unit.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-5-components-of-computers-4-storage-devices",
+      "topic": "waec-data-processing-5-components-of-computers",
+      "name": "Storage Devices",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-6-the-art-of-information-processing-1-definition-of-information-processing",
+      "topic": "waec-data-processing-6-the-art-of-information-processing",
+      "name": "Definition of Information Processing.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-6-the-art-of-information-processing-2-steps-involved-in-information-processing",
+      "topic": "waec-data-processing-6-the-art-of-information-processing",
+      "name": "Steps involved in Information Processing",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-7-process-of-information-transmission-1-definition-of-information-transmission",
+      "topic": "waec-data-processing-7-process-of-information-transmission",
+      "name": "Definition of information transmission.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-7-process-of-information-transmission-2-methods-of-transmitting-the-information",
+      "topic": "waec-data-processing-7-process-of-information-transmission",
+      "name": "Methods of transmitting the information",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-8-medium-of-information-transmission-1-types-of-information-transmission",
+      "topic": "waec-data-processing-8-medium-of-information-transmission",
+      "name": "Types of Information Transmission.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-8-medium-of-information-transmission-2-classification-of-means-of-transmission",
+      "topic": "waec-data-processing-8-medium-of-information-transmission",
+      "name": "Classification of means of transmission",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-9-networking-1-meaning-of-networking-internet-and-intranet",
+      "topic": "waec-data-processing-9-networking",
+      "name": "Meaning of networking, internet, and intranet.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-9-networking-2-types-of-networking-the-significance-of-networking-should-be-mentioned",
+      "topic": "waec-data-processing-9-networking",
+      "name": "Types of Networking. The significance of networking should be mentioned",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-10-internet-1-definition-of-the-internet",
+      "topic": "waec-data-processing-10-internet",
+      "name": "Definition of the Internet.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-10-internet-2-benefits-of-the-internet",
+      "topic": "waec-data-processing-10-internet",
+      "name": "Benefits of the Internet",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-10-internet-3-internet-browsers",
+      "topic": "waec-data-processing-10-internet",
+      "name": "Internet browsers",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-10-internet-4-internet-security",
+      "topic": "waec-data-processing-10-internet",
+      "name": "Internet security",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-10-internet-5-abuse-of-the-internet",
+      "topic": "waec-data-processing-10-internet",
+      "name": "Abuse of the Internet",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-11-operating-system-1-definition-of-operating-system",
+      "topic": "waec-data-processing-11-operating-system",
+      "name": "Definition of Operating System.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-11-operating-system-2-types-of-operating-systems",
+      "topic": "waec-data-processing-11-operating-system",
+      "name": "Types of Operating Systems.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-11-operating-system-3-examples-of-operating-system",
+      "topic": "waec-data-processing-11-operating-system",
+      "name": "Examples of Operating System.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-11-operating-system-4-functions-of-operating-system",
+      "topic": "waec-data-processing-11-operating-system",
+      "name": "Functions of Operating System.",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-12-word-processing-1-definition-of-word-processing",
+      "topic": "waec-data-processing-12-word-processing",
+      "name": "Definition of Word Processing.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-12-word-processing-2-uses-of-word-processing",
+      "topic": "waec-data-processing-12-word-processing",
+      "name": "Uses of Word Processing",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-12-word-processing-3-examples-of-word-processing-software",
+      "topic": "waec-data-processing-12-word-processing",
+      "name": "Examples of word Processing software.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-12-word-processing-4-starting-loading-and-exiting-word-processing",
+      "topic": "waec-data-processing-12-word-processing",
+      "name": "Starting, loading and exiting word processing",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-12-word-processing-5-creating-saving-and-retrieving-documents-candidates-should-be-able-to-make-use-of-word-processor-to-create-and-manipulate-documents",
+      "topic": "waec-data-processing-12-word-processing",
+      "name": "Creating, saving and retrieving documents Candidates should be able to make use of word processor to create and manipulate documents",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-13-spreadsheet-1-definition",
+      "topic": "waec-data-processing-13-spreadsheet",
+      "name": "Definition.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-13-spreadsheet-2-uses",
+      "topic": "waec-data-processing-13-spreadsheet",
+      "name": "Uses.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-13-spreadsheet-3-examples-of-spreadsheet-applications",
+      "topic": "waec-data-processing-13-spreadsheet",
+      "name": "Examples of Spreadsheet Applications.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-13-spreadsheet-4-loading-and-exiting-spreadsheets",
+      "topic": "waec-data-processing-13-spreadsheet",
+      "name": "Loading and exiting spreadsheets.",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-13-spreadsheet-5-creating-saving-and-retrieving-spreadsheet-files",
+      "topic": "waec-data-processing-13-spreadsheet",
+      "name": "Creating, saving and retrieving Spreadsheet files",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-14-database-management-system-1-definition",
+      "topic": "waec-data-processing-14-database-management-system",
+      "name": "Definition.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-14-database-management-system-2-uses",
+      "topic": "waec-data-processing-14-database-management-system",
+      "name": "Uses.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-14-database-management-system-3-examples-of-database-applications",
+      "topic": "waec-data-processing-14-database-management-system",
+      "name": "Examples of database applications.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-14-database-management-system-4-loading-and-exiting-dbms",
+      "topic": "waec-data-processing-14-database-management-system",
+      "name": "Loading and exiting DBMS.",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-14-database-management-system-5-creating-saving-and-retrieving-database-files",
+      "topic": "waec-data-processing-14-database-management-system",
+      "name": "Creating, saving, and retrieving database files.",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-15-presentation-package-1-the-definition-uses-examples",
+      "topic": "waec-data-processing-15-presentation-package",
+      "name": "The definition uses examples.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-15-presentation-package-2-loading-and-exiting-presentation-programs",
+      "topic": "waec-data-processing-15-presentation-package",
+      "name": "Loading and exiting Presentation programs.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-15-presentation-package-3-creating-saving-and-retrieving-presentation-files",
+      "topic": "waec-data-processing-15-presentation-package",
+      "name": "Creating, saving and retrieving presentation files",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-16-web-design-packages-1-definition",
+      "topic": "waec-data-processing-16-web-design-packages",
+      "name": "Definition.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-16-web-design-packages-2-uses",
+      "topic": "waec-data-processing-16-web-design-packages",
+      "name": "Uses.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-16-web-design-packages-3-components",
+      "topic": "waec-data-processing-16-web-design-packages",
+      "name": "Components.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-16-web-design-packages-4-examples-designing-web-pages-is-not-required",
+      "topic": "waec-data-processing-16-web-design-packages",
+      "name": "Examples. Designing web pages is not required.",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-17-graphic-packages-1-definition",
+      "topic": "waec-data-processing-17-graphic-packages",
+      "name": "Definition.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-17-graphic-packages-2-uses-of-graphic-software-packages",
+      "topic": "waec-data-processing-17-graphic-packages",
+      "name": "Uses of Graphic software packages.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-17-graphic-packages-3-examples-of-graphic-packages-the-focus-should-be-placed-on-corel-draw",
+      "topic": "waec-data-processing-17-graphic-packages",
+      "name": "Examples of graphic packages. The focus should be placed on Corel Draw",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-18-maintenance-of-computer-1-general-cleaning",
+      "topic": "waec-data-processing-18-maintenance-of-computer",
+      "name": "General Cleaning.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-18-maintenance-of-computer-2-battery-charging-and-replacement-for-portable-systems-and-ups",
+      "topic": "waec-data-processing-18-maintenance-of-computer",
+      "name": "Battery charging and replacement for portable systems and UPS.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-18-maintenance-of-computer-3-dvd-drive-lens-cleaning",
+      "topic": "waec-data-processing-18-maintenance-of-computer",
+      "name": "DVD drive lens cleaning.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-18-maintenance-of-computer-4-details-of-hardware-maintenance",
+      "topic": "waec-data-processing-18-maintenance-of-computer",
+      "name": "Details of hardware maintenance.",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-18-maintenance-of-computer-5-details-of-software-maintenance",
+      "topic": "waec-data-processing-18-maintenance-of-computer",
+      "name": "Details of software maintenance.",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-18-maintenance-of-computer-6-computer-crash-and-data-recovery",
+      "topic": "waec-data-processing-18-maintenance-of-computer",
+      "name": "Computer crash and data recovery",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-19-computer-ethics-1-computer-room-management-ethics",
+      "topic": "waec-data-processing-19-computer-ethics",
+      "name": "Computer room management ethics.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-19-computer-ethics-2-laboratory-rules-and-regulations",
+      "topic": "waec-data-processing-19-computer-ethics",
+      "name": "Laboratory rules and regulations",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-20-safety-measures-1-the-sitting-arrangement",
+      "topic": "waec-data-processing-20-safety-measures",
+      "name": "The sitting arrangement.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-20-safety-measures-2-positioning-of-the-monitor-keyboard-cpu-mouse-and-any-other-peripheral-devices",
+      "topic": "waec-data-processing-20-safety-measures",
+      "name": "Positioning of the monitor, keyboard, CPU, mouse, and any other peripheral devices.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-20-safety-measures-3-illuminating-the-computer-room",
+      "topic": "waec-data-processing-20-safety-measures",
+      "name": "Illuminating the computer room.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-20-safety-measures-4-maintaining-a-dust-free-environment",
+      "topic": "waec-data-processing-20-safety-measures",
+      "name": "Maintaining a dust-free environment.",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-20-safety-measures-5-keep-liquid-away-from-the-computer-room",
+      "topic": "waec-data-processing-20-safety-measures",
+      "name": "Keep liquid away from the computer room",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-21-career-opportunities-in-data-processing-1-professions-in-computer",
+      "topic": "waec-data-processing-21-career-opportunities-in-data-processing",
+      "name": "Professions in computer.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-21-career-opportunities-in-data-processing-2-qualities-of-a-good-data-processing-professional",
+      "topic": "waec-data-processing-21-career-opportunities-in-data-processing",
+      "name": "Qualities of a good data processing professional.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-21-career-opportunities-in-data-processing-3-computer-professional-bodies",
+      "topic": "waec-data-processing-21-career-opportunities-in-data-processing",
+      "name": "Computer professional bodies.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-22-computer-virus-1-definition",
+      "topic": "waec-data-processing-22-computer-virus",
+      "name": "Definition.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-22-computer-virus-2-types-examples",
+      "topic": "waec-data-processing-22-computer-virus",
+      "name": "Types/Examples.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-22-computer-virus-3-sources",
+      "topic": "waec-data-processing-22-computer-virus",
+      "name": "Sources.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-22-computer-virus-4-signals-of-virus-warning",
+      "topic": "waec-data-processing-22-computer-virus",
+      "name": "Signals of virus warning",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-22-computer-virus-5-virus-prevention-detection-and-deletion",
+      "topic": "waec-data-processing-22-computer-virus",
+      "name": "Virus prevention, detection and deletion",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-23-relational-model-1-database-and-table-creation-using-application-packages",
+      "topic": "waec-data-processing-23-relational-model",
+      "name": "Database and table creation using application packages.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-23-relational-model-2-creating-relationships-between-tables",
+      "topic": "waec-data-processing-23-relational-model",
+      "name": "Creating relationships between tables",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-23-relational-model-3-creation-of-forms-queries-and-reports",
+      "topic": "waec-data-processing-23-relational-model",
+      "name": "Creation of forms, queries and reports.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-24-file-organization-1-definition-of-file-organization",
+      "topic": "waec-data-processing-24-file-organization",
+      "name": "Definition of File organization.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-24-file-organization-2-types-of-file-organization",
+      "topic": "waec-data-processing-24-file-organization",
+      "name": "Types of File organization",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-25-database-security-1-concept-of-data-security-access-control-and-data-encryption",
+      "topic": "waec-data-processing-25-database-security",
+      "name": "Concept of data security, access control and data encryption.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-25-database-security-2-role-of-a-database-administrator",
+      "topic": "waec-data-processing-25-database-security",
+      "name": "Role of a database administrator",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-26-parallel-and-distributed-databases-1-basic-concept-of-parallel-and-distributed-databases",
+      "topic": "waec-data-processing-26-parallel-and-distributed-databases",
+      "name": "Basic concept of parallel and distributed databases.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-processing-26-parallel-and-distributed-databases-2-storing-data-in-a-distributed-database-dbm",
+      "topic": "waec-data-processing-26-parallel-and-distributed-databases",
+      "name": "Storing data in a distributed database (DBM)",
+      "order": 2,
+      "objectives": []
+    }
+  ]
+}

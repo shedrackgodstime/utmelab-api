@@ -55,6 +55,7 @@ catering-craft
 chemistry
 christian-religious-studies
 civic-education
+data-processing
 economics
 english-language
 financial-accounting

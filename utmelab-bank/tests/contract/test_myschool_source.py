@@ -139,6 +139,7 @@ def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
         "chemistry": "chemistry",
         "christian-religious-studies": "christian-religious-knowledge-crk",
         "civic-education": "civic-education",
+        "data-processing": "data-processing",
         "economics": "economics",
         "english-language": "english-language",
         "financial-accounting": "accounts-principles-of-accounts",
