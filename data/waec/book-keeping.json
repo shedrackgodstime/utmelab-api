@@ -1,0 +1,700 @@
+{
+  "subjects": [
+    {
+      "slug": "book-keeping",
+      "exam": "WAEC",
+      "name": "Book Keeping",
+      "is_compulsory": false,
+      "objective_paper_questions": 40,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "book-keeping"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-book-keeping-1-meaning-of-book-keeping",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Meaning of Book Keeping",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-2-assets-and-liabilities",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Assets and Liabilities",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-3-business-transactions",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Business Transactions",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-4-classification-of-accounts",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Classification of Accounts",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-5-source-documents",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Source Documents",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-6-definition-identification-and-the-differences-between-concepts-and-conventions",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Definition, identification, and the differences between concepts and conventions.",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-7-definition-purpose-types-format-uses-and-preparation-of-books-of-original-entry",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Definition, purpose, types, format, uses and preparation of Books of Original entry",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-8-ledger",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Ledger",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-9-principles-of-double-entry",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Principles of Double Entry",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-10-meaning-purpose-description-differences-and-preparation-of",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Meaning, purpose, description, differences and preparation of",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-11-meaning-and-purpose",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "meaning and purpose",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-12-terminologies-and-banking-documents",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "terminologies and banking documents",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-13-causes-of-differences-between-cash-book-and-bank-statement-balance",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "causes of differences between cash book and bank statement balance",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-14-meaning-and-functions-of-trial-balance",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "meaning and functions of trial balance",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-15-rules-and-preparation-of-trial-balance",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "rules and preparation of trial balance",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-16-meaning-types-classification-of-errors",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "meaning, types, classification of errors",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-17-correction-of-errors-and-preparation-of-suspense-account",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "correction of errors and preparation of Suspense Account",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-18-trading-account",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Trading Account",
+      "order": 18,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-19-profit-and-loss-account",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Profit and Loss Account",
+      "order": 19,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-20-balance-sheet",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Balance Sheet",
+      "order": 20,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-21-adjustment-for-prepayments-accruals-depreciation-bad-and-doubtful-debts",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Adjustment for prepayments, accruals, depreciation, bad and doubtful debts",
+      "order": 21,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-22-meaning-and-methods-of-depreciation-straight-line-and-reducing-balance",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Meaning and methods of depreciation (straight line and reducing balance)",
+      "order": 22,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-23-meaning-and-preparation-of-sales-ledger-and-purchases-ledger-control-accounts",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Meaning and preparation of Sales Ledger and Purchases Ledger Control Accounts",
+      "order": 23,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-24-meaning-limitations-and-preparation-of-final-accounts-from-incomplete-records",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Meaning, limitations and preparation of final accounts from incomplete records",
+      "order": 24,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-25-purpose-content-and-preparation-of-receipts-and-payments-accounts-income-and-expenditure-account",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Purpose, content and preparation of Receipts and Payments Accounts, Income and Expenditure Account.",
+      "order": 25,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-26-meaning-purpose-and-terminologies",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "meaning, purpose and terminologies",
+      "order": 26,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-27-preparation-of-manufacturing-trading-profit-and-loss-accounts",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "preparation of Manufacturing, Trading, Profit and Loss Accounts",
+      "order": 27,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-28-meaning-and-terms",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "meaning and terms",
+      "order": 28,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-29-partnership-deed-drawings-interest-on-capital-interest-on-drawings",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "partnership deed, drawings, interest on capital, interest on drawings",
+      "order": 29,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-30-preparation-of-capital-and-current-accounts-profit-and-loss-and-appropriation-account-and-balance-sheet",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "preparation of Capital and Current Accounts, Profit and Loss and Appropriation Account and Balance Sheet",
+      "order": 30,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-31-admission-of-new-partners-and-goodwill-account",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "admission of new partners and Goodwill Account",
+      "order": 31,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-32-meaning-and-purpose",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "meaning and purpose",
+      "order": 32,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-33-differences-between-joint-venture-and-partnership",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "differences between joint venture and partnership",
+      "order": 33,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-34-importance-and-differences",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "importance and differences",
+      "order": 34,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-35-preparation-of-departmental-and-simple-branch-accounts",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "preparation of Departmental and simple Branch Accounts",
+      "order": 35,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-36-formation-and-terminologies",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "formation and terminologies",
+      "order": 36,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-37-preparation-of-simple-financial-statements",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "preparation of simple financial statements",
+      "order": 37,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-38-purpose-and-computation-of-ratios",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Purpose and computation of ratios",
+      "order": 38,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-39-net-profit-margin",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "net profit margin",
+      "order": 39,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-40-stock-turnover",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "stock turnover",
+      "order": 40,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-41-quick-ratio",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "quick ratio",
+      "order": 41,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-42-acid-test-ratio",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "acid test ratio",
+      "order": 42,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-43-gross-profit-margin",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "gross profit margin",
+      "order": 43,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-44-return-on-capital-employed",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "return on capital employed",
+      "order": 44,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-45-reasons-terminologies-and-preparation-of-accounts-related-to-purchase-and-sale-of-business",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Reasons, terminologies and preparation of accounts related to purchase and sale of business",
+      "order": 45,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-46-terminologies-and-preparation-of-simple-consignment-accounts",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Terminologies and preparation of simple Consignment Accounts.",
+      "order": 46,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-47-meaning-and-preparation-of-accounts-in-the-seller-s-and-hirer-s-books",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Meaning and preparation of accounts in the seller’s and hirer’s books",
+      "order": 47,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-48-meaning-purpose-and-terminologies",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "meaning, purpose and terminologies",
+      "order": 48,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-49-preparation-of-contract-accounts",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "preparation of Contract Accounts",
+      "order": 49,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-book-keeping-50-meaning-and-objectives-of-cooperative-societies",
+      "subject": "book-keeping",
+      "exam": "WAEC",
+      "name": "Meaning and objectives of cooperative societies",
+      "order": 50,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-book-keeping-1-meaning-of-book-keeping-1-definition",
+      "topic": "waec-book-keeping-1-meaning-of-book-keeping",
+      "name": "definition",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-1-meaning-of-book-keeping-2-history",
+      "topic": "waec-book-keeping-1-meaning-of-book-keeping",
+      "name": "history",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-1-meaning-of-book-keeping-3-nature",
+      "topic": "waec-book-keeping-1-meaning-of-book-keeping",
+      "name": "nature",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-1-meaning-of-book-keeping-4-importance-and-functions-of-book-keeping",
+      "topic": "waec-book-keeping-1-meaning-of-book-keeping",
+      "name": "importance and functions of Book Keeping",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-1-meaning-of-book-keeping-5-career-opportunities-and-beneficiaries-of-book-keeping",
+      "topic": "waec-book-keeping-1-meaning-of-book-keeping",
+      "name": "career opportunities and beneficiaries of book keeping",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-1-meaning-of-book-keeping-6-qualities-and-values-of-book-keepers",
+      "topic": "waec-book-keeping-1-meaning-of-book-keeping",
+      "name": "qualities and values of book keepers",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-2-assets-and-liabilities-1-definition",
+      "topic": "waec-book-keeping-2-assets-and-liabilities",
+      "name": "definition",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-2-assets-and-liabilities-2-differences",
+      "topic": "waec-book-keeping-2-assets-and-liabilities",
+      "name": "differences",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-2-assets-and-liabilities-3-classification",
+      "topic": "waec-book-keeping-2-assets-and-liabilities",
+      "name": "classification",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-2-assets-and-liabilities-4-examples-of-assets",
+      "topic": "waec-book-keeping-2-assets-and-liabilities",
+      "name": "examples of Assets",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-2-assets-and-liabilities-5-liabilities",
+      "topic": "waec-book-keeping-2-assets-and-liabilities",
+      "name": "Liabilities.",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-3-business-transactions-1-meaning-and-types-of-business-transactions",
+      "topic": "waec-book-keeping-3-business-transactions",
+      "name": "meaning and types of business transactions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-3-business-transactions-2-parties-involved-in-business-transactions",
+      "topic": "waec-book-keeping-3-business-transactions",
+      "name": "parties involved in business transactions",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-4-classification-of-accounts-1-personal-accounts-debtors-and-creditors",
+      "topic": "waec-book-keeping-4-classification-of-accounts",
+      "name": "personal accounts (debtors and creditors);",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-4-classification-of-accounts-2-impersonal-accounts-real-and-nominal",
+      "topic": "waec-book-keeping-4-classification-of-accounts",
+      "name": "Impersonal accounts (real and nominal)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-5-source-documents-1-definition-identification-types-and-uses-of-source-documents",
+      "topic": "waec-book-keeping-5-source-documents",
+      "name": "definition, identification, types and uses of source documents.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-8-ledger-1-definition-classification-format-uses-and-preparation-of-ledgers",
+      "topic": "waec-book-keeping-8-ledger",
+      "name": "definition, classification, format, uses and preparation of ledgers.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-9-principles-of-double-entry-1-meaning-history-rules-and-making-double-entries",
+      "topic": "waec-book-keeping-9-principles-of-double-entry",
+      "name": "meaning, history, rules and making double entries",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-10-meaning-purpose-description-differences-and-preparation-of-1-single-column",
+      "topic": "waec-book-keeping-10-meaning-purpose-description-differences-and-preparation-of",
+      "name": "single column;",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-10-meaning-purpose-description-differences-and-preparation-of-2-double-column",
+      "topic": "waec-book-keeping-10-meaning-purpose-description-differences-and-preparation-of",
+      "name": "double column;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-10-meaning-purpose-description-differences-and-preparation-of-3-three-column",
+      "topic": "waec-book-keeping-10-meaning-purpose-description-differences-and-preparation-of",
+      "name": "three column;",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-10-meaning-purpose-description-differences-and-preparation-of-4-petty-cash-book",
+      "topic": "waec-book-keeping-10-meaning-purpose-description-differences-and-preparation-of",
+      "name": "petty cash book",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-18-trading-account-1-definition-purpose-format-and-preparation-of-simple-trading-account",
+      "topic": "waec-book-keeping-18-trading-account",
+      "name": "definition, purpose, format and preparation of simple Trading Account",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-18-trading-account-2-methods-of-valuing-stock-fifo-and-lifo",
+      "topic": "waec-book-keeping-18-trading-account",
+      "name": "methods of valuing stock (FIFO and LIFO).",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-19-profit-and-loss-account-1-definition-purpose-format-and-preparation-of-profit-and-loss-account",
+      "topic": "waec-book-keeping-19-profit-and-loss-account",
+      "name": "definition, purpose, format and preparation of Profit and Loss Account",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-book-keeping-20-balance-sheet-1-meaning-content-format-and-preparation-of-a-simple-balance-sheet",
+      "topic": "waec-book-keeping-20-balance-sheet",
+      "name": "meaning, content, format and preparation of a simple balance sheet",
+      "order": 1,
+      "objectives": []
+    }
+  ]
+}
