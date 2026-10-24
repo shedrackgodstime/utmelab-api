@@ -1,0 +1,767 @@
+{
+  "subjects": [
+    {
+      "slug": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Further Mathematics",
+      "is_compulsory": false,
+      "objective_paper_questions": 40,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "further-mathematics"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-further-mathematics-1-sets",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Sets",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-2-surds",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Surds",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-3-binary-operations",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Binary Operations",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-4-logical-reasoning",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Logical Reasoning",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-5-functions",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Functions",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-6-polynomial-functions",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Polynomial Functions",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-7-rational-functions",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Rational Functions",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-8-indices-and-logarithmic-functions",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Indices and Logarithmic Functions",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-9-permutation-and-combinations",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Permutation And Combinations",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-10-binomial-theorem",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Binomial Theorem",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-11-sequences-and-series",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Sequences and Series",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-12-matrices-and-linear-transformation",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Matrices and Linear Transformation",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-13-trigonometry",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Trigonometry",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-14-co-ordinate-geometry",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Co-ordinate Geometry",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-15-differentiation",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Differentiation",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-16-integration",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Integration",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-17-statistics",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Statistics",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-18-probability",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Probability",
+      "order": 18,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-19-vectors",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Vectors",
+      "order": 19,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-20-statics",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Statics",
+      "order": 20,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-further-mathematics-21-dynamics",
+      "subject": "further-mathematics",
+      "exam": "WAEC",
+      "name": "Dynamics",
+      "order": 21,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-further-mathematics-1-1-idea-of-a-set-defined-by-a-property-set-notations-and-their-meanings",
+      "topic": "waec-further-mathematics-1-sets",
+      "name": "Idea of a set defined by a property, Set notations and their meanings.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-1-2-disjoint-sets-universal-sets-and-complement-of-a-set",
+      "topic": "waec-further-mathematics-1-sets",
+      "name": "Disjoint sets, Universal sets and complement of a set",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-1-3-venn-diagrams-use-of-sets-and-venn-diagrams-to-solve-problems",
+      "topic": "waec-further-mathematics-1-sets",
+      "name": "Venn diagrams, Use of sets And Venn diagrams to solve problems.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-1-4-commutative-and-associative-laws-distributive-properties-over-union-and-intersec",
+      "topic": "waec-further-mathematics-1-sets",
+      "name": "Commutative and Associative laws, Distributive properties over union and intersection.",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-2-1-surds-of-the-form-a-and-a-b-where-a-is-rational-b-is-a-positive-integer-and-n-is",
+      "topic": "waec-further-mathematics-2-surds",
+      "name": "Surds of the form , a and a+b, where a is rational, b is a positive integer, and n is not a perfect square.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-3-1-closure-commutativity-associativity-and-distributivity-identity-elements-and-inv",
+      "topic": "waec-further-mathematics-3-binary-operations",
+      "name": "Closure, Commutativity, Associativity and Distributivity, Identity elements and inverses.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-4-1-rule-of-syntax-true-or-false-statements-rule-of-logic-applied-to-arguments-impli",
+      "topic": "waec-further-mathematics-4-logical-reasoning",
+      "name": "Rule of syntax: true or false statements, rule of logic applied to arguments, implications and deductions.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-4-2-the-truth-table",
+      "topic": "waec-further-mathematics-4-logical-reasoning",
+      "name": "The truth table",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-5-1-domain-and-co-domain-of-a-function",
+      "topic": "waec-further-mathematics-5-functions",
+      "name": "Domain and co-domain of a function.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-5-2-one-to-one-onto-identity-and-constant-mapping",
+      "topic": "waec-further-mathematics-5-functions",
+      "name": "One-to-one, onto, identity and constant mapping;",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-5-3-inverse-of-a-function",
+      "topic": "waec-further-mathematics-5-functions",
+      "name": "Inverse of a function.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-5-4-composite-of-functions",
+      "topic": "waec-further-mathematics-5-functions",
+      "name": "Composite of functions.",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-6-1-linear-functions-equations-and-inequality",
+      "topic": "waec-further-mathematics-6-polynomial-functions",
+      "name": "Linear Functions, Equations and Inequality",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-6-2-quadratic-functions-equations-and-inequalities",
+      "topic": "waec-further-mathematics-6-polynomial-functions",
+      "name": "Quadratic Functions, Equations and Inequalities",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-6-3-cubic-functions-and-equations",
+      "topic": "waec-further-mathematics-6-polynomial-functions",
+      "name": "Cubic Functions and Equations",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-7-1-rational-functions-of-the-form-q-x-g-x-0-where-g-x-and-f-x-are-polynomials-e-g-f",
+      "topic": "waec-further-mathematics-7-rational-functions",
+      "name": "Rational functions of the form Q(x) = g(x) 0. where g(x) and f(x) are polynomials. e.g. f:x",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-7-2-resolution-of-rational-functions-into-partial-fractions",
+      "topic": "waec-further-mathematics-7-rational-functions",
+      "name": "Resolution of rational functions into partial fractions.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-8-1-indices",
+      "topic": "waec-further-mathematics-8-indices-and-logarithmic-functions",
+      "name": "Indices",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-8-2-logarithms",
+      "topic": "waec-further-mathematics-8-indices-and-logarithmic-functions",
+      "name": "Logarithms",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-9-1-simple-cases-of-arrangements",
+      "topic": "waec-further-mathematics-9-permutation-and-combinations",
+      "name": "Simple cases of arrangements",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-9-2-simple-cases-of-selection-of-objects",
+      "topic": "waec-further-mathematics-9-permutation-and-combinations",
+      "name": "Simple cases of selection of objects.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-10-1-expansion-of-a-b-n-use-of-1-x-n-1-nx-for-any-rational-n-where-x-is-sufficiently",
+      "topic": "waec-further-mathematics-10-binomial-theorem",
+      "name": "Expansion of (a + b)n. Use of (1+x)n ≈1+nx for any rational n, where x is sufficiently small. e.g (0.998)1/3",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-11-1-finite-and-infinite-sequences",
+      "topic": "waec-further-mathematics-11-sequences-and-series",
+      "name": "Finite and Infinite sequences.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-11-2-linear-sequence-arithmetic-progression-a-p-and-exponential-sequence-geometric-pr",
+      "topic": "waec-further-mathematics-11-sequences-and-series",
+      "name": "Linear sequence/Arithmetic Progression (A.P.) and Exponential sequence/Geometric Progression (G.P.)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-11-3-iii-finite-and-infinite-series",
+      "topic": "waec-further-mathematics-11-sequences-and-series",
+      "name": "(iii) Finite and Infinite series.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-11-4-linear-series-sum-of-a-p-and-exponential-series-sum-of-g-p",
+      "topic": "waec-further-mathematics-11-sequences-and-series",
+      "name": "Linear series (sum of A.P.) and exponential series (sum of G.P.)",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-11-5-recurrence-series",
+      "topic": "waec-further-mathematics-11-sequences-and-series",
+      "name": "* Recurrence Series",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-12-1-matrices",
+      "topic": "waec-further-mathematics-12-matrices-and-linear-transformation",
+      "name": "Matrices",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-12-2-determinants",
+      "topic": "waec-further-mathematics-12-matrices-and-linear-transformation",
+      "name": "Determinants",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-12-3-inverse-of-2-x-2-matrices",
+      "topic": "waec-further-mathematics-12-matrices-and-linear-transformation",
+      "name": "Inverse of 2 x 2 Matrices",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-12-4-linear-transformation",
+      "topic": "waec-further-mathematics-12-matrices-and-linear-transformation",
+      "name": "Linear Transformation",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-13-1-trigonometric-ratios-and-rules",
+      "topic": "waec-further-mathematics-13-trigonometry",
+      "name": "Trigonometric Ratios and Rules",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-13-2-compound-and-multiple-angles",
+      "topic": "waec-further-mathematics-13-trigonometry",
+      "name": "Compound and Multiple Angles.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-13-3-trigonometric-functions-and-equations",
+      "topic": "waec-further-mathematics-13-trigonometry",
+      "name": "Trigonometric Functions and Equations",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-14-1-straight-lines",
+      "topic": "waec-further-mathematics-14-co-ordinate-geometry",
+      "name": "Straight Lines",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-14-2-conic-sections",
+      "topic": "waec-further-mathematics-14-co-ordinate-geometry",
+      "name": "Conic Sections",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-15-1-the-idea-of-a-limit",
+      "topic": "waec-further-mathematics-15-differentiation",
+      "name": "The idea of a limit",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-15-2-the-derivative-of-a-function",
+      "topic": "waec-further-mathematics-15-differentiation",
+      "name": "The derivative of a function",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-15-3-differentiation-of-polynomials",
+      "topic": "waec-further-mathematics-15-differentiation",
+      "name": "Differentiation of polynomials",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-15-4-differentiation-of-trigonometric-functions",
+      "topic": "waec-further-mathematics-15-differentiation",
+      "name": "Differentiation of Trigonometric Functions",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-15-5-product-and-quotient-rules-differentiation-of-implicit-functions-such-as-ax2-by2",
+      "topic": "waec-further-mathematics-15-differentiation",
+      "name": "Product and quotient rules. Differentiation of implicit functions such as ax2 + by2 = c",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-15-6-differentiation-of-transcendental-functions",
+      "topic": "waec-further-mathematics-15-differentiation",
+      "name": "**Differentiation of Transcendental Functions",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-15-7-second-order-derivatives-and-rates-of-change-and-small-changes-x",
+      "topic": "waec-further-mathematics-15-differentiation",
+      "name": "Second-order derivatives and Rates of change and small changes (x)",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-15-8-concept-of-maxima-and-minima",
+      "topic": "waec-further-mathematics-15-differentiation",
+      "name": "Concept of Maxima and Minima",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-16-1-indefinite-integral",
+      "topic": "waec-further-mathematics-16-integration",
+      "name": "Indefinite Integral",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-16-2-definite-integral",
+      "topic": "waec-further-mathematics-16-integration",
+      "name": "Definite Integral",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-16-3-applications-of-the-definite-integral",
+      "topic": "waec-further-mathematics-16-integration",
+      "name": "Applications of the Definite Integral",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-17-1-tabulation-and-graphical-representation-of-data",
+      "topic": "waec-further-mathematics-17-statistics",
+      "name": "Tabulation and Graphical representation of data",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-17-2-measures-of-location-probability",
+      "topic": "waec-further-mathematics-17-statistics",
+      "name": "Measures of location Probability",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-17-3-measures-of-dispersion",
+      "topic": "waec-further-mathematics-17-statistics",
+      "name": "Measures of Dispersion",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-17-4-correlation",
+      "topic": "waec-further-mathematics-17-statistics",
+      "name": "Correlation",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-18-1-meaning-of-probability",
+      "topic": "waec-further-mathematics-18-probability",
+      "name": "Meaning of probability.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-18-2-relative-frequency",
+      "topic": "waec-further-mathematics-18-probability",
+      "name": "Relative frequency.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-18-3-calculation-of-probability-using-simple-sample-spaces",
+      "topic": "waec-further-mathematics-18-probability",
+      "name": "Calculation of Probability using simple sample spaces.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-18-4-addition-and-multiplication-of-probabilities",
+      "topic": "waec-further-mathematics-18-probability",
+      "name": "Addition and multiplication of probabilities.",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-18-5-probability-distributions",
+      "topic": "waec-further-mathematics-18-probability",
+      "name": "Probability distributions.",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-19-1-definitions-of-scalar-and-vector-quantities",
+      "topic": "waec-further-mathematics-19-vectors",
+      "name": "Definitions of scalar and vector Quantities.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-19-2-representation-of-vectors",
+      "topic": "waec-further-mathematics-19-vectors",
+      "name": "Representation of Vectors.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-19-3-algebra-of-vectors",
+      "topic": "waec-further-mathematics-19-vectors",
+      "name": "Algebra of Vectors.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-19-4-commutative-associative-and-distributive-properties",
+      "topic": "waec-further-mathematics-19-vectors",
+      "name": "Commutative, Associative and Distributive Properties.",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-19-5-unit-vectors",
+      "topic": "waec-further-mathematics-19-vectors",
+      "name": "Unit vectors.",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-19-6-position-vectors",
+      "topic": "waec-further-mathematics-19-vectors",
+      "name": "Position Vectors.",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-19-7-resolution-and-composition-of-vectors",
+      "topic": "waec-further-mathematics-19-vectors",
+      "name": "Resolution and Composition of Vectors.",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-19-8-scalar-dot-product-and-its-application",
+      "topic": "waec-further-mathematics-19-vectors",
+      "name": "Scalar (dot) product and its application.",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-19-9-vector-cross-product-and-its-application",
+      "topic": "waec-further-mathematics-19-vectors",
+      "name": "**Vector (cross) product and its application.",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-20-1-definition-of-a-force",
+      "topic": "waec-further-mathematics-20-statics",
+      "name": "Definition of a force.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-20-2-representation-of-forces",
+      "topic": "waec-further-mathematics-20-statics",
+      "name": "Representation of forces.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-20-3-composition-and-resolution-of-coplanar-forces-acting-at-a-point",
+      "topic": "waec-further-mathematics-20-statics",
+      "name": "Composition and resolution of coplanar forces acting at a point.",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-20-4-composition-and-resolution-of-general-coplanar-forces-on-rigid-bodies",
+      "topic": "waec-further-mathematics-20-statics",
+      "name": "Composition and resolution of general coplanar forces on rigid bodies.",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-20-5-equilibrium-of-bodies",
+      "topic": "waec-further-mathematics-20-statics",
+      "name": "Equilibrium of Bodies.",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-20-6-determination-of-resultant",
+      "topic": "waec-further-mathematics-20-statics",
+      "name": "Determination of Resultant.",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-20-7-moments-of-force",
+      "topic": "waec-further-mathematics-20-statics",
+      "name": "Moments of force.",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-20-8-friction",
+      "topic": "waec-further-mathematics-20-statics",
+      "name": "Friction.",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-21-1-the-concepts-of-motion",
+      "topic": "waec-further-mathematics-21-dynamics",
+      "name": "The concepts of motion",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-21-2-equations-of-motion",
+      "topic": "waec-further-mathematics-21-dynamics",
+      "name": "Equations of Motion",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-21-3-the-impulse-and-momentum-equations",
+      "topic": "waec-further-mathematics-21-dynamics",
+      "name": "The impulse and momentum equations:",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-mathematics-21-4-projectiles",
+      "topic": "waec-further-mathematics-21-dynamics",
+      "name": "**Projectiles.",
+      "order": 4,
+      "objectives": []
+    }
+  ]
+}

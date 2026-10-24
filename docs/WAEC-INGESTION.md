@@ -55,6 +55,7 @@ civic-education
 economics
 english-language
 financial-accounting
+further-mathematics
 government
 mathematics
 physics
