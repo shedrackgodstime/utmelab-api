@@ -58,6 +58,7 @@ financial-accounting
 further-mathematics
 government
 insurance
+marketing
 mathematics
 physics
 ```
