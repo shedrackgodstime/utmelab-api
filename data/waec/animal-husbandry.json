@@ -1,0 +1,565 @@
+{
+  "subjects": [
+    {
+      "slug": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Animal Husbandry",
+      "is_compulsory": false,
+      "objective_paper_questions": 40,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "animal-husbandry-alt-b"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-animal-husbandry-1-importance-of-farm-animals",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Importance of farm animals",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-2-classification-of-farm-animals",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Classification of farm animals",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-3-internal-organs-and-their-functions-in-farm-animals",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Internal organs and their functions in farm animals",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-4-body-systems-and-their-functions-in-farm-animals",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Body systems and their functions in farm animals",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Reproduction in farm animals",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-6-meaning-and-classes-of-animal-feeds",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Meaning and classes of animal feeds",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-7-animal-feeds-and-feeding",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Animal feeds and feeding",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-8-formulation-of-livestock-rations",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Formulation of livestock rations",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-9-processing-and-marketing-of-animal-products",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Processing and marketing of animal products",
+      "order": 9,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-10-pasture-management",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Pasture management",
+      "order": 10,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-11-rangeland-improvement",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Rangeland improvement",
+      "order": 11,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-12-animal-improvement",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Animal improvement",
+      "order": 12,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-13-methods-of-farm-animal-improvement",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Methods of farm animal improvement",
+      "order": 13,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-14-artificial-insemination",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Artificial insemination",
+      "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Farm animal diseases and pathogens",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-16-livestock-parasites-and-pests",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Livestock parasites and pests",
+      "order": 16,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-17-products-and-by-products-of-farm-animals",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Products and by-products of farm animals",
+      "order": 17,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-18-identification-of-farm-animals",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Identification of farm animals",
+      "order": 18,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-19-internal-organs-and-their-functions-in-farm-animals",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Internal organs and their functions in farm animals",
+      "order": 19,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-20-tools-and-equipment-used-in-management-of-farm-animals",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Tools and equipment used in management of farm animals",
+      "order": 20,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-21-feeds-and-feedstuffs",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Feeds and feedstuffs",
+      "order": 21,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-22-pasture-and-forage-crops",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Pasture and forage crops",
+      "order": 22,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-23-artificial-insemination",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Artificial insemination",
+      "order": 23,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-24-pests-and-parasites-of-farm-animals",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "Pests and parasites of farm animals",
+      "order": 24,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-25-farm-building-structure",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "FARM BUILDING/STRUCTURE",
+      "order": 25,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-animal-husbandry-26-live-animals",
+      "subject": "animal-husbandry",
+      "exam": "WAEC",
+      "name": "LIVE ANIMALS",
+      "order": 26,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-animal-husbandry-2-classification-of-farm-animals-1-classification-of-farm-animals",
+      "topic": "waec-animal-husbandry-2-classification-of-farm-animals",
+      "name": "Classification of farm animals.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-2-classification-of-farm-animals-2-identification-of-ruminants-and-non-ruminants",
+      "topic": "waec-animal-husbandry-2-classification-of-farm-animals",
+      "name": "Identification of ruminants and non-ruminants.",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals-1-definition-of-terms-used-in-livestock-reproduction",
+      "topic": "waec-animal-husbandry-5-reproduction-in-farm-animals",
+      "name": "Definition of terms used in livestock reproduction",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals-2-reproduction-in-livestock-mammals",
+      "topic": "waec-animal-husbandry-5-reproduction-in-farm-animals",
+      "name": "Reproduction in livestock(mammals)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals-3-reproduction-in-poultry",
+      "topic": "waec-animal-husbandry-5-reproduction-in-farm-animals",
+      "name": "Reproduction in poultry",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals-4-reproductive-hormones-and-their-functions",
+      "topic": "waec-animal-husbandry-5-reproduction-in-farm-animals",
+      "name": "Reproductive hormones and their functions",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals-5-management-of-pregnant-farm-animals",
+      "topic": "waec-animal-husbandry-5-reproduction-in-farm-animals",
+      "name": "Management of pregnant farm animals.",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals-6-livestock-management-systems",
+      "topic": "waec-animal-husbandry-5-reproduction-in-farm-animals",
+      "name": "Livestock management systems",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals-7-management-practices-of-livestock",
+      "topic": "waec-animal-husbandry-5-reproduction-in-farm-animals",
+      "name": "Management practices of livestock.",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-7-animal-feeds-and-feeding-1-livestock-rations",
+      "topic": "waec-animal-husbandry-7-animal-feeds-and-feeding",
+      "name": "Livestock rations",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-9-processing-and-marketing-of-animal-products-1-processing-techniques-for-different-farm-animal-products",
+      "topic": "waec-animal-husbandry-9-processing-and-marketing-of-animal-products",
+      "name": "Processing techniques for different farm animal products.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-9-processing-and-marketing-of-animal-products-2-marketing-of-animal-products",
+      "topic": "waec-animal-husbandry-9-processing-and-marketing-of-animal-products",
+      "name": "Marketing of animal products",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-10-pasture-management-1-meaning-and-importance-of-pasture-and-forage-crops",
+      "topic": "waec-animal-husbandry-10-pasture-management",
+      "name": "Meaning and importance of pasture and forage crops",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-10-pasture-management-2-types-of-pasture-and-forage-crops",
+      "topic": "waec-animal-husbandry-10-pasture-management",
+      "name": "Types of pasture and forage crops",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-10-pasture-management-3-terminologies-in-pasture-management",
+      "topic": "waec-animal-husbandry-10-pasture-management",
+      "name": "Terminologies in pasture management",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-11-rangeland-improvement-1-meaning-and-characteristics-of-rangelands",
+      "topic": "waec-animal-husbandry-11-rangeland-improvement",
+      "name": "Meaning and characteristics of rangelands",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-11-rangeland-improvement-2-methods-of-rangeland-improvement",
+      "topic": "waec-animal-husbandry-11-rangeland-improvement",
+      "name": "Methods of rangeland improvement",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-11-rangeland-improvement-3-importance-of-rangeland",
+      "topic": "waec-animal-husbandry-11-rangeland-improvement",
+      "name": "Importance of rangeland",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-12-animal-improvement-1-meaning-of-animal-improvement",
+      "topic": "waec-animal-husbandry-12-animal-improvement",
+      "name": "Meaning of animal improvement",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-12-animal-improvement-2-aims-importance-of-farm-animal-improvement",
+      "topic": "waec-animal-husbandry-12-animal-improvement",
+      "name": "Aims/importance of farm animal improvement",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-13-methods-of-farm-animal-improvement-1-methods-used-in-farm-animal-improvement",
+      "topic": "waec-animal-husbandry-13-methods-of-farm-animal-improvement",
+      "name": "Methods used in farm animal improvement",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-13-methods-of-farm-animal-improvement-2-merits-and-demerits-of-methods-used-in-farm-animal-improvement",
+      "topic": "waec-animal-husbandry-13-methods-of-farm-animal-improvement",
+      "name": "Merits and demerits of methods used in farm animal improvement",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-14-artificial-insemination-1-meaning-of-artificial-insemination",
+      "topic": "waec-animal-husbandry-14-artificial-insemination",
+      "name": "Meaning of artificial insemination.",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-14-artificial-insemination-2-methods-of-artificial-insemination",
+      "topic": "waec-animal-husbandry-14-artificial-insemination",
+      "name": "Methods of artificial insemination",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-14-artificial-insemination-3-advantages-of-artificial-insemination",
+      "topic": "waec-animal-husbandry-14-artificial-insemination",
+      "name": "Advantages of artificial insemination",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens-1-concept-of-farm-animal-disease",
+      "topic": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens",
+      "name": "Concept of farm animal disease",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens-2-general-symptoms-of-diseases-in-farm-animals",
+      "topic": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens",
+      "name": "General symptoms of diseases in farm animals",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens-3-diseases-of-farm-animals-prevention-and-control",
+      "topic": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens",
+      "name": "Diseases of farm animals, prevention and control",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens-4-factors-predisposing-farm-animals-to-diseases",
+      "topic": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens",
+      "name": "Factors predisposing farm animals to diseases",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-16-livestock-parasites-and-pests-1-livestock-parasites",
+      "topic": "waec-animal-husbandry-16-livestock-parasites-and-pests",
+      "name": "Livestock parasites",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-16-livestock-parasites-and-pests-2-livestock-pests",
+      "topic": "waec-animal-husbandry-16-livestock-parasites-and-pests",
+      "name": "Livestock pests",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-24-pests-and-parasites-of-farm-animals-1-pests-of-farm-animals",
+      "topic": "waec-animal-husbandry-24-pests-and-parasites-of-farm-animals",
+      "name": "Pests of farm animals",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-24-pests-and-parasites-of-farm-animals-2-parasites-of-farm-animals",
+      "topic": "waec-animal-husbandry-24-pests-and-parasites-of-farm-animals",
+      "name": "Parasites of farm animals",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-25-farm-building-structure-1-poultry-pig-house-battery-cages-1",
+      "topic": "waec-animal-husbandry-25-farm-building-structure",
+      "name": "Poultry/Pig House/Battery Cages : 1",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-25-farm-building-structure-2-cattle-goat-sheep-pen-1",
+      "topic": "waec-animal-husbandry-25-farm-building-structure",
+      "name": "Cattle/Goat/Sheep Pen : 1",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-25-farm-building-structure-3-rabbit-grass-cutter-hutch-1",
+      "topic": "waec-animal-husbandry-25-farm-building-structure",
+      "name": "Rabbit/Grass cutter Hutch : 1",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-25-farm-building-structure-4-snairy-bee-hive-1",
+      "topic": "waec-animal-husbandry-25-farm-building-structure",
+      "name": "Snairy/Bee Hive : 1",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-26-live-animals-1-poultry-pig-10",
+      "topic": "waec-animal-husbandry-26-live-animals",
+      "name": "Poultry/Pig 10",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-26-live-animals-2-rabbits-grass-cutter-10",
+      "topic": "waec-animal-husbandry-26-live-animals",
+      "name": "Rabbits/Grass cutter 10",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-26-live-animals-3-cattle-sheep-goat-10",
+      "topic": "waec-animal-husbandry-26-live-animals",
+      "name": "Cattle/Sheep/Goat 10",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animal-husbandry-26-live-animals-4-snails-bees-50-100",
+      "topic": "waec-animal-husbandry-26-live-animals",
+      "name": "Snails/Bees 50/100",
+      "order": 4,
+      "objectives": []
+    }
+  ]
+}

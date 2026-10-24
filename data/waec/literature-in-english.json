@@ -1,0 +1,235 @@
+{
+  "subjects": [
+    {
+      "slug": "literature-in-english",
+      "exam": "WAEC",
+      "name": "Literature-in-English",
+      "is_compulsory": false,
+      "objective_paper_questions": 0,
+      "countries": [],
+      "syllabus_exam": "WAEC",
+      "syllabus_subject": "literature-in-english"
+    }
+  ],
+  "topics": [
+    {
+      "slug": "waec-literature-in-english-1-african-prose",
+      "subject": "literature-in-english",
+      "exam": "WAEC",
+      "name": "African Prose",
+      "order": 1,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-literature-in-english-2-non-african-prose",
+      "subject": "literature-in-english",
+      "exam": "WAEC",
+      "name": "Non-African Prose",
+      "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-literature-in-english-3-shakespearean-text",
+      "subject": "literature-in-english",
+      "exam": "WAEC",
+      "name": "Shakespearean Text",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-literature-in-english-4-african-drama",
+      "subject": "literature-in-english",
+      "exam": "WAEC",
+      "name": "African Drama",
+      "order": 4,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-literature-in-english-5-non-african-drama",
+      "subject": "literature-in-english",
+      "exam": "WAEC",
+      "name": "Non-African Drama",
+      "order": 5,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-literature-in-english-6-african-poetry",
+      "subject": "literature-in-english",
+      "exam": "WAEC",
+      "name": "African Poetry",
+      "order": 6,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-literature-in-english-7-non-african-poetry",
+      "subject": "literature-in-english",
+      "exam": "WAEC",
+      "name": "Non-African Poetry",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    }
+  ],
+  "subtopics": [
+    {
+      "slug": "waec-literature-in-english-1-african-prose-1-so-the-path-does-not-die-by-pede-hollist",
+      "topic": "waec-literature-in-english-1-african-prose",
+      "name": "So the Path Does not Die by Pede Hollist",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-1-african-prose-2-redemption-road-by-elma-shaw",
+      "topic": "waec-literature-in-english-1-african-prose",
+      "name": "Redemption Road by Elma Shaw",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-2-non-african-prose-1-to-kill-a-mockingbird-by-harper-lee",
+      "topic": "waec-literature-in-english-2-non-african-prose",
+      "name": "To Kill a Mockingbird by Harper Lee",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-2-non-african-prose-2-path-of-lucas-the-journey-he-endured-by-susanne-bellefeuille",
+      "topic": "waec-literature-in-english-2-non-african-prose",
+      "name": "Path of Lucas: The Journey He Endured by Susanne Bellefeuille",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-3-shakespearean-text-1-antony-and-cleopatra-by-william-shakespeare",
+      "topic": "waec-literature-in-english-3-shakespearean-text",
+      "name": "Antony and Cleopatra by William Shakespeare",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-4-african-drama-1-once-upon-an-elephant-by-bosede-ademilua-afolayan",
+      "topic": "waec-literature-in-english-4-african-drama",
+      "name": "Once Upon an Elephant by Bosede Ademilua-Afolayan",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-4-african-drama-2-the-marriage-of-anansewa-by-efua-sutherland",
+      "topic": "waec-literature-in-english-4-african-drama",
+      "name": "The Marriage of Anansewa by Efua Sutherland",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-5-non-african-drama-1-an-inspector-calls-by-j-d-priestley",
+      "topic": "waec-literature-in-english-5-non-african-drama",
+      "name": "An Inspector Calls by J.D. Priestley",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-5-non-african-drama-2-a-man-for-all-seasons-by-robert-bolt",
+      "topic": "waec-literature-in-english-5-non-african-drama",
+      "name": "A Man for all Seasons by Robert Bolt",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-6-african-poetry-1-once-upon-a-time-by-gabriel-okara",
+      "topic": "waec-literature-in-english-6-african-poetry",
+      "name": "“Once Upon a Time” by Gabriel Okara",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-6-african-poetry-2-new-tongue-by-elizabeth-l-a-kamara",
+      "topic": "waec-literature-in-english-6-african-poetry",
+      "name": "“New Tongue” by Elizabeth L.A. Kamara",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-6-african-poetry-3-night-by-wole-soyinka",
+      "topic": "waec-literature-in-english-6-african-poetry",
+      "name": "“Night” by Wole Soyinka",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-6-african-poetry-4-not-my-business-by-niyi-osundare",
+      "topic": "waec-literature-in-english-6-african-poetry",
+      "name": "“Not my Business” by Niyi Osundare",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-6-african-poetry-5-hearty-garlands-by-s-o-h-afriyie-vidza",
+      "topic": "waec-literature-in-english-6-african-poetry",
+      "name": "“Hearty Garlands” by S.O.H. Afriyie-Vidza",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-6-african-poetry-6-the-breast-of-the-sea-by-syl-cheney-coker",
+      "topic": "waec-literature-in-english-6-african-poetry",
+      "name": "“The Breast of The Sea” by Syl Cheney-Coker",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-7-non-african-poetry-1-she-walks-in-beauty-by-lord-byron",
+      "topic": "waec-literature-in-english-7-non-african-poetry",
+      "name": "“She Walks in Beauty” by Lord Byron",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-7-non-african-poetry-2-the-nun-s-priest-s-tale-shortened-by-geoffrey-chaucer",
+      "topic": "waec-literature-in-english-7-non-african-poetry",
+      "name": "“The Nun’s Priest’s Tale” (shortened) by Geoffrey Chaucer",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-7-non-african-poetry-3-digging-by-seamus-heaney",
+      "topic": "waec-literature-in-english-7-non-african-poetry",
+      "name": "“Digging” by Seamus Heaney",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-7-non-african-poetry-4-still-i-rise-by-maya-angelou",
+      "topic": "waec-literature-in-english-7-non-african-poetry",
+      "name": "“Still I Rise” by Maya Angelou",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-7-non-african-poetry-5-the-telephone-call-by-fleur-adcock",
+      "topic": "waec-literature-in-english-7-non-african-poetry",
+      "name": "“The Telephone Call” by Fleur Adcock",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-literature-in-english-7-non-african-poetry-6-the-stone-by-wilfrid-wilson-gibson",
+      "topic": "waec-literature-in-english-7-non-african-poetry",
+      "name": "“The Stone” by Wilfrid Wilson Gibson",
+      "order": 6,
+      "objectives": []
+    }
+  ]
+}

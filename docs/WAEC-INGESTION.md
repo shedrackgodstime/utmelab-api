@@ -51,10 +51,12 @@ The repository currently has WAEC syllabus inputs for:
 agricultural-science
 biology
 book-keeping
+animal-husbandry
 catering-craft
 chemistry
 christian-religious-studies
 civic-education
+computer-studies
 data-processing
 economics
 english-language
@@ -70,6 +72,7 @@ office-practice
 islamic-studies
 insurance
 marketing
+literature-in-english
 general-mathematics
 health-education
 music
@@ -77,6 +80,9 @@ physical-education
 physics
 technical-drawing
 visual-arts
+yoruba
+igbo
+hausa
 ```
 
 The other mapped subjects remain source-mapped but catalog-pending. They must

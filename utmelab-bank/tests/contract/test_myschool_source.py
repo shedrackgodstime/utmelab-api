@@ -117,6 +117,7 @@ def test_the_map_is_the_only_source_of_slugs() -> None:
 def test_waec_active_subjects_use_their_recorded_source_slugs() -> None:
     expected = {
         "agricultural-science": "agricultural-science",
+        "animal-husbandry": "animal-husbandry",
         "biology": "biology",
         "book-keeping": "book-keeping",
         "catering-craft": "catering-craft-practice",
@@ -139,6 +140,7 @@ def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
         "chemistry": "chemistry",
         "christian-religious-studies": "christian-religious-knowledge-crk",
         "civic-education": "civic-education",
+        "computer-studies": "computer-studies",
         "data-processing": "data-processing",
         "economics": "economics",
         "english-language": "english-language",
@@ -151,6 +153,7 @@ def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
         "general-mathematics": "mathematics",
         "health-education": "health-education",
         "islamic-studies": "islamic-religious-knowledge-irk",
+        "literature-in-english": "literature-in-english",
         "music": "music",
         "physics": "physics",
         "nigerian-history": "history",
@@ -158,6 +161,9 @@ def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
         "physical-education": "physical-education",
         "technical-drawing": "technical-drawing",
         "visual-arts": "visual-arts",
+        "yoruba": "yoruba",
+        "igbo": "igbo",
+        "hausa": "hausa",
     }
 
     assert {subject: slug_for("WAEC", subject) for subject in expected} == expected
