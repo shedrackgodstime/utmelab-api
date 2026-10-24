@@ -12,8 +12,8 @@ deploy from the Actions tab (or push a tag) and it builds and ships.
 | Action | What you type | What happens |
 |---|---|---|
 | **Work** | `git push` to `main` | CI runs the `quality` workflow (fmt, clippy, doc, tests, site build). **Nothing ships.** |
-| **Prerelease** | Actions → `deploy-api` → **Run workflow** | CI builds API + site → ships → the gate activates → readiness-checks. Version `v0.0.0-pre.<sha>`. |
-| **Release** (when solid) | `git tag v0.1.0 && git push origin v0.1.0` | identical machinery, stable version, same host. |
+| **Manual release** | Actions → `deploy-api` → **Run workflow** with the Cargo version | CI verifies the version → builds API + site → ships → readiness-checks. |
+| **Tagged release** | `git tag v0.0.1 && git push origin v0.0.1` | identical machinery; the tag must exactly match `Cargo.toml`. |
 | **A deploy failed** | previous release | the run goes **red**, the gate restores the previous release and checks it before returning. Nothing is pruned. Fix and run it again. |
 | **Roll back** | `sudo system rollback utmelab-api` | flips to the previous release; restores the old one if the target does not come up healthy. |
 

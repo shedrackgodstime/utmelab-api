@@ -2,13 +2,13 @@
 #
 # Nothing deploys on a plain push. `main` is for working; the API ships only when
 # you ask for it:
-#   - Actions -> deploy-api -> "Run workflow"  -> prerelease (v0.0.0-pre.<sha>)
-#   - git push origin v0.1.0                   -> the first real release
-# Same machinery either way; only the version differs.
+#   - Actions -> deploy-api -> "Run workflow"  -> stable version input
+#   - git push origin v0.0.1                   -> the tagged release
+# Every deployment version must match Cargo.toml exactly.
 #
-# A failed release has NO fallback. It is never made to stick, nothing is
-# pruned on failure, and you wait for the next deploy. Old releases are deleted
-# on success so the 25 GB VPS stays clean.
+# A failed release is automatically rolled back by the host gate. Nothing is
+# pruned on failure. Old releases are pruned only after a successful activation
+# so the 25 GB VPS stays clean.
 #
 # One-time VPS prep is in docs/deployment/README.md. GitHub secrets needed —
 # set on THIS repo, they are not inherited from UTME-Lab:
@@ -21,7 +21,12 @@
 name: deploy-api
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Stable release version, for example v0.0.1"
+        required: true
+        type: string
   push:
     tags: ["v*"]
 
@@ -43,9 +48,8 @@ jobs:
   build:
     name: Build API + docs
     runs-on: ubuntu-latest
-    # The deploy job never checks out the repo, so it cannot run
-    # `git rev-parse --short HEAD` itself. Hand it the resolved version
-    # instead of cloning a second time just to compute a sha.
+    # The deploy job never checks out the repo, so it receives the verified
+    # release version from this build job.
     outputs:
       version: ${{ steps.v.outputs.version }}
     steps:
@@ -59,13 +63,33 @@ jobs:
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
 
+      - name: Verify release version
+        env:
+          MANUAL_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          package_version="$(cargo metadata --no-deps --format-version 1 | python3 -c 'import json, sys; print(json.load(sys.stdin)["packages"][0]["version"])')"
+          expected_version="v${package_version}"
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            requested_version="${GITHUB_REF#refs/tags/}"
+          else
+            requested_version="${MANUAL_VERSION}"
+          fi
+          [[ "${requested_version}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] \
+            || { echo "Invalid release version: ${requested_version}"; exit 1; }
+          if [[ "${requested_version}" != "${expected_version}" ]]; then
+            echo "Release version ${requested_version} does not match Cargo.toml (${expected_version})"
+            exit 1
+          fi
+          echo "Release version verified: ${requested_version}"
+
       - name: Resolve version
         id: v
         run: |
           if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
             echo "version=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
           else
-            echo "version=v0.0.0-pre.$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+            echo "version=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Test API (release gate)
