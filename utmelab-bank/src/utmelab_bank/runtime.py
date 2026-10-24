@@ -132,10 +132,14 @@ class Runtime:
     ingestor: MediaIngestor | None = None
     media: MediaService | None = None
 
-    _catalogs: dict[tuple[str, str], CatalogSnapshot] = field(default_factory=dict, init=False)
+    _catalogs: dict[tuple[str, str, str | None], CatalogSnapshot] = field(
+        default_factory=dict, init=False
+    )
     _closers: list[Callable[[], Awaitable[None]]] = field(default_factory=list, init=False)
 
-    async def catalog_for(self, exam: str, subject: str) -> CatalogSnapshot:
+    async def catalog_for(
+        self, exam: str, subject: str, country: str | None = None
+    ) -> CatalogSnapshot:
         """The catalog for a scope, read once and reused for the run.
 
         A batch of rows in one subject asks the same question repeatedly. The
@@ -143,10 +147,15 @@ class Runtime:
         both faster and the honest unit: the tag step validated against this
         version, not against one that changed halfway through.
         """
-        key = (exam, subject)
+        key = (exam, subject, country)
         cached = self._catalogs.get(key)
         if cached is None:
-            cached = await self.catalog_reader.snapshot(exam, subject)
+            if country is None:
+                # Keep existing third-party readers compatible for exams that
+                # do not carry a country scope.
+                cached = await self.catalog_reader.snapshot(exam, subject)
+            else:
+                cached = await self.catalog_reader.snapshot(exam, subject, country)
             self._catalogs[key] = cached
         return cached
 

@@ -80,7 +80,9 @@ class AnswerVerifier(Protocol):
 class CatalogReader(Protocol):
     """Reads catalog from PRODUCTION DB for AI context."""
 
-    async def snapshot(self, exam: str, subject: str) -> CatalogSnapshot: ...
+    async def snapshot(
+        self, exam: str, subject: str, country: str | None = None
+    ) -> CatalogSnapshot: ...
 
 
 @runtime_checkable

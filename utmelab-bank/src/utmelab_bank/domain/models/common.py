@@ -143,6 +143,7 @@ class CatalogTopic(DomainModel):
     slug: Slug
     name: NonEmptyStr
     objectives: tuple[NonEmptyStr, ...] = ()
+    countries: tuple[CountryCode, ...] = ()
 
 
 class CatalogSubtopic(DomainModel):
@@ -161,6 +162,7 @@ class CatalogSnapshot(DomainModel):
     subject: NonEmptyStr
     topics: tuple["CatalogTopic", ...]
     subtopics: tuple["CatalogSubtopic", ...]
+    country: CountryCode | None = None
 
     @model_validator(mode="after")
     def _check(self) -> "CatalogSnapshot":

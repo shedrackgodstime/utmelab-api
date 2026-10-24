@@ -257,7 +257,11 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
         )
         return result
 
-    catalog = await runtime.catalog_for(scope.exam, scope.subject) if source.needs_catalog else None
+    catalog = (
+        await runtime.catalog_for(scope.exam, scope.subject, scope.country)
+        if source.needs_catalog
+        else None
+    )
     production_ids = await runtime.production.question_ids(
         exam=scope.exam,
         subject=scope.subject,
@@ -453,6 +457,7 @@ async def tag(runtime: Runtime, options: TaskOptions) -> TaskResult:
             catalog = await runtime.catalog_for(
                 item.provenance.scope.exam,
                 item.provenance.scope.subject,
+                item.provenance.scope.country,
             )
             if not catalog.subtopics:
                 result.block(
@@ -525,6 +530,7 @@ async def explain(runtime: Runtime, options: TaskOptions) -> TaskResult:
             catalog = await runtime.catalog_for(
                 item.provenance.scope.exam,
                 item.provenance.scope.subject,
+                item.provenance.scope.country,
             )
             enriched = await service.explain(item, catalog)
             await runtime.staging.save(enriched)
@@ -552,6 +558,7 @@ async def review(runtime: Runtime, options: TaskOptions) -> TaskResult:
             catalog = await runtime.catalog_for(
                 item.provenance.scope.exam,
                 item.provenance.scope.subject,
+                item.provenance.scope.country,
             )
             reviewed = await service.apply(item, catalog)
             await runtime.staging.save(reviewed)
@@ -582,6 +589,7 @@ async def ready(runtime: Runtime, options: TaskOptions) -> TaskResult:
             catalog = await runtime.catalog_for(
                 item.provenance.scope.exam,
                 item.provenance.scope.subject,
+                item.provenance.scope.country,
             )
             service = ReadyService(
                 catalog=catalog,

@@ -72,3 +72,27 @@ async def test_snapshot_refuses_an_unknown_subject() -> None:
     reader = ProductionCatalogReader(FakeClient())
     with pytest.raises(LookupError, match="no subject"):
         await reader.snapshot("JAMB", "not-a-subject")
+
+
+async def test_snapshot_filters_country_scoped_topics() -> None:
+    class CountryClient(FakeClient):
+        async def execute(self, statement: str, args: list[Any] | None = None) -> Any:
+            self.calls.append((statement, args))
+            if "FROM subjects" in statement:
+                return FakeResult([("biology", "WAEC", "Biology", json.dumps(["NG", "GH"]))])
+            if "FROM topics" in statement:
+                return FakeResult(
+                    [
+                        ("shared", "Shared", "[]", json.dumps([])),
+                        ("nigeria", "Nigeria", "[]", json.dumps(["NG"])),
+                        ("ghana", "Ghana", "[]", json.dumps(["GH"])),
+                    ]
+                )
+            if "FROM subtopics" in statement:
+                return FakeResult([])
+            return FakeResult([])
+
+    snapshot = await ProductionCatalogReader(CountryClient()).snapshot("WAEC", "biology", "ng")
+
+    assert snapshot.country == "NG"
+    assert [topic.slug for topic in snapshot.topics] == ["shared", "nigeria"]

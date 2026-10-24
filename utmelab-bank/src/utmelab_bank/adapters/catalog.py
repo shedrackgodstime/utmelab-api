@@ -25,46 +25,63 @@ class ProductionCatalogReader:
     def __init__(self, client: SqlClient) -> None:
         self._client = client
 
-    async def snapshot(self, exam: str, subject: str) -> CatalogSnapshot:
+    async def snapshot(
+        self, exam: str, subject: str, country: str | None = None
+    ) -> CatalogSnapshot:
         """Build a versioned catalog snapshot for one exam and subject."""
         subject_row = await self._subject(exam, subject)
         if subject_row is None:
             raise LookupError(f"no subject {subject!r} for exam {exam!r}")
+        subject_countries = subject_row[3]
+        if country and subject_countries and country.upper() not in subject_countries:
+            raise LookupError(
+                f"subject {subject!r} for exam {exam!r} is not available in {country.upper()}"
+            )
 
-        topics = await self._topics(exam, subject)
+        topics = await self._topics(exam, subject, country)
         subtopics = await self._subtopics(topics)
 
         return CatalogSnapshot(
-            version=self._version(exam, subject, topics, subtopics),
+            version=self._version(exam, subject, country, topics, subtopics),
             exam=exam,
             subject=subject,
+            country=country.upper() if country else None,
             topics=topics,
             subtopics=subtopics,
         )
 
-    async def _subject(self, exam: str, subject: str) -> tuple[str, str, str] | None:
+    async def _subject(
+        self, exam: str, subject: str
+    ) -> tuple[str, str, str, tuple[str, ...]] | None:
         result = await self._client.execute(
-            "SELECT slug, exam, name FROM subjects WHERE exam = ? AND slug = ?",
+            "SELECT slug, exam, name, countries FROM subjects WHERE exam = ? AND slug = ?",
             [exam, subject],
         )
         rows = result.rows
         if not rows:
             return None
-        return (str(rows[0][0]), str(rows[0][1]), str(rows[0][2]))
+        row = rows[0]
+        return (str(row[0]), str(row[1]), str(row[2]), _countries(row[3] if len(row) > 3 else None))
 
-    async def _topics(self, exam: str, subject: str) -> tuple[CatalogTopic, ...]:
+    async def _topics(
+        self, exam: str, subject: str, country: str | None
+    ) -> tuple[CatalogTopic, ...]:
         result = await self._client.execute(
-            'SELECT slug, name, objectives FROM topics WHERE exam = ? AND subject = ? ORDER BY "order"',
+            'SELECT slug, name, objectives, countries FROM topics WHERE exam = ? AND subject = ? ORDER BY "order"',
             [exam, subject],
         )
         topics: list[CatalogTopic] = []
         for row in result.rows:
+            countries = _countries(row[3] if len(row) > 3 else None)
+            if country and countries and country.upper() not in countries:
+                continue
             topics.append(
                 CatalogTopic(
                     id=str(row[0]),
                     slug=str(row[0]),
                     name=str(row[1]),
                     objectives=_objectives(row[2]),
+                    countries=countries,
                 )
             )
         return tuple(topics)
@@ -95,12 +112,15 @@ class ProductionCatalogReader:
         self,
         exam: str,
         subject: str,
+        country: str | None,
         topics: tuple[CatalogTopic, ...],
         subtopics: tuple[CatalogSubtopic, ...],
     ) -> str:
         """A stable version string that changes when the catalog changes."""
-        parts = [exam, subject]
-        parts.extend(f"{topic.id}:{topic.name}" for topic in topics)
+        parts = [exam, subject, country.upper() if country else ""]
+        parts.extend(
+            f"{topic.id}:{topic.name}:{','.join(topic.countries)}" for topic in topics
+        )
         parts.extend(f"{subtopic.id}:{subtopic.topic_id}" for subtopic in subtopics)
         digest = hashlib.sha256("|".join(parts).encode("utf-8")).hexdigest()
         return f"sha256:{digest[:16]}"
@@ -119,3 +139,19 @@ def _objectives(value: Any) -> tuple[str, ...]:
     if not isinstance(parsed, list):
         return ()
     return tuple(str(item) for item in parsed)
+
+
+def _countries(value: Any) -> tuple[str, ...]:
+    """Read a production country scope, with empty meaning universal."""
+    if value is None:
+        return ()
+    if isinstance(value, (list, tuple)):
+        parsed = value
+    else:
+        try:
+            parsed = json.loads(str(value))
+        except (TypeError, ValueError):
+            return ()
+    if not isinstance(parsed, list):
+        return ()
+    return tuple(str(item).upper() for item in parsed if str(item).strip())
