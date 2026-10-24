@@ -14,7 +14,7 @@ deploy from the Actions tab (or push a tag) and it builds and ships.
 | **Work** | `git push` to `main` | CI runs the `quality` workflow (fmt, clippy, doc, tests, site build). **Nothing ships.** |
 | **Prerelease** | Actions → `deploy-api` → **Run workflow** | CI builds API + site → ships → the gate activates → readiness-checks. Version `v0.0.0-pre.<sha>`. |
 | **Release** (when solid) | `git tag v0.1.0 && git push origin v0.1.0` | identical machinery, stable version, same host. |
-| **A deploy failed** | nothing | the run goes **red**, the release is never activated, nothing was pruned. Fix and run it again. |
+| **A deploy failed** | previous release | the run goes **red**, the gate restores the previous release and checks it before returning. Nothing is pruned. Fix and run it again. |
 | **Roll back** | `sudo system rollback utmelab-api` | flips to the previous release; restores the old one if the target does not come up healthy. |
 
 Deploys are **serialized** by the workflow (`concurrency: deploy-api`). The gate
@@ -76,7 +76,13 @@ It is host tooling, not shipped by this repo's release; its source is
 `docs/deployment/host/deploy-service`. By the time it runs, CI has extracted the
 tarball at `/opt/apps/utmelab-api/releases/<v>`. The gate then owns the rest:
 validate the name and version, re-point `current`, restart `utmelab@utmelab-api`,
-wait for the health contract, and prune.
+wait for the health contract, restore the previous release if the new one fails,
+and prune only after success.
+
+The service currently runs as one systemd process on one port, so activation still
+has a brief restart window. The gate protects availability by automatic rollback,
+but it is not true zero-downtime deployment. That requires a second process or a
+proxy/socket handoff and is a separate infrastructure change.
 
 Three properties are load-bearing:
 

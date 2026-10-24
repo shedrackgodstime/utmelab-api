@@ -19,7 +19,9 @@
 #     within HEALTH_TRIES * HEALTH_DELAY. 200 is not assumed: a service that
 #     binds its port but only ever answers 503 (a replica that never opens) is
 #     never activated.
-#   * prune on a failed run, or delete the release it just activated.
+#   * leave a failed release selected: if the new unit does not become healthy,
+#     current is restored to the previous release and that release is restarted
+#     and checked before this gate returns failure.
 #
 # Exit codes: 1 usage/setup, 2 version, 3 unknown service, 4 missing release,
 #             5 unusable release, 6 unit not active, 7 unit up but not answering.
@@ -78,6 +80,43 @@ REL_DIR="${BASE_DIR}/${SERVICE}/releases"
 CUR_LINK="${BASE_DIR}/${SERVICE}/current"
 SRC_DIR="${REL_DIR}/${VERSION}"
 
+previous_link=""
+activation_started=0
+activation_succeeded=0
+health_code=""
+
+health_check() {
+  health_code=""
+  for _ in $(seq 1 "${HEALTH_TRIES}"); do
+    health_code="$(${CURL} -s -o /dev/null -w '%{http_code}' --connect-timeout 2 --max-time 3 "${HEALTH_URL}" 2>/dev/null || true)"
+    [[ "${health_code}" == "${HEALTH_EXPECT}" ]] && return 0
+    sleep "${HEALTH_DELAY}"
+  done
+  return 1
+}
+
+rollback_on_failure() {
+  local status=$?
+  [[ "${activation_started}" -eq 1 && "${activation_succeeded}" -eq 0 ]] || return "${status}"
+
+  if [[ -z "${previous_link}" ]]; then
+    say "no previous release is available for rollback"
+    return "${status}"
+  fi
+
+  say "release ${VERSION} failed; restoring ${previous_link}"
+  ln -sfn "${previous_link}" "${CUR_LINK}"
+  if ! ${SYSTEMCTL} restart "${UNIT}${SERVICE}" || ! health_check; then
+    say "ERROR: rollback release ${previous_link} did not become healthy"
+    ${JOURNALCTL} -u "${UNIT}${SERVICE}" --no-pager -n 40 >&2 || true
+    return "${status}"
+  fi
+  say "rollback restored ${previous_link}"
+  return "${status}"
+}
+
+trap rollback_on_failure EXIT
+
 # ---- Pre-flight ------------------------------------------------------------
 [[ -d "${SRC_DIR}" ]] || die "release ${VERSION} is not staged in ${REL_DIR}" 4
 [[ -x "${SRC_DIR}/${BINARY_NAME}" ]] || die "${VERSION} has no executable ${BINARY_NAME}" 5
@@ -95,6 +134,8 @@ chmod -R o+rX "${SRC_DIR}"
 chmod 0755 "${SRC_DIR}/${BINARY_NAME}"
 
 # ---- Activate --------------------------------------------------------------
+previous_link="$(readlink "${CUR_LINK}" 2>/dev/null || true)"
+activation_started=1
 say "activating ${VERSION}"
 ln -sfn "releases/${VERSION}" "${CUR_LINK}"
 ${SYSTEMCTL} restart "${UNIT}${SERVICE}"
@@ -112,18 +153,13 @@ if ! ${SYSTEMCTL} is-active --quiet "${UNIT}${SERVICE}"; then
 fi
 
 # ---- Health ----------------------------------------------------------------
-code=""
-for _ in $(seq 1 "${HEALTH_TRIES}"); do
-  code="$(${CURL} -s -o /dev/null -w '%{http_code}' --connect-timeout 2 --max-time 3 "${HEALTH_URL}" 2>/dev/null || true)"
-  [[ "${code}" == "${HEALTH_EXPECT}" ]] && break
-  sleep "${HEALTH_DELAY}"
-done
-if [[ "${code}" != "${HEALTH_EXPECT}" ]]; then
-  say "unit is up but ${HEALTH_URL} answered '${code:-nothing}', want ${HEALTH_EXPECT}"
+if ! health_check; then
+  say "unit is up but ${HEALTH_URL} did not answer ${HEALTH_EXPECT}"
   ${JOURNALCTL} -u "${UNIT}${SERVICE}" --no-pager -n 40 >&2 || true
   exit 7
 fi
-say "activated ${VERSION} (${HEALTH_URL} -> ${code})"
+activation_succeeded=1
+say "activated ${VERSION} (${HEALTH_URL} -> ${health_code})"
 
 # ---- Prune -----------------------------------------------------------------
 # Newest first by mtime. A prerelease version like v0.0.0-pre.<sha> has no
