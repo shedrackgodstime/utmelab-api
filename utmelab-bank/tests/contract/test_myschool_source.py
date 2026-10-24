@@ -184,7 +184,7 @@ def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
         "office-practice": "office-practice",
         "physical-education": "physical-education",
         "technical-drawing": "technical-drawing",
-        "visual-arts": "visual-arts",
+        "visual-arts": "fine-arts",
         "yoruba": "yoruba",
         "igbo": "igbo",
         "hausa": "hausa",
