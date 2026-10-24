@@ -144,6 +144,7 @@ def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
         "foods-and-nutrition": "food-and-nutrition",
         "french": "french",
         "geography": "geography",
+        "home-management": "home-management",
         "government": "government",
         "general-mathematics": "mathematics",
         "health-education": "health-education",

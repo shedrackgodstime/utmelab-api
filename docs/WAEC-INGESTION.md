@@ -60,6 +60,7 @@ financial-accounting
 foods-and-nutrition
 french
 geography
+home-management
 further-mathematics
 government
 nigerian-history
