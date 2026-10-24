@@ -189,6 +189,7 @@ class TursoClient:
         loop = asyncio.get_running_loop()
         last: BaseException | None = None
         for attempt in range(self._retries):
+
             def run() -> None:
                 connection = self._connect()
                 connection.commit()
@@ -213,6 +214,7 @@ class TursoClient:
 
     async def _discard_connection(self) -> None:
         """Close the current driver session on its owning worker thread."""
+
         def run() -> None:
             connection = self._connection
             self._connection = None
