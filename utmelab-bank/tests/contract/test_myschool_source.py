@@ -131,6 +131,12 @@ def test_waec_active_subjects_use_their_recorded_source_slugs() -> None:
     assert {subject: slug_for("WAEC", subject) for subject in expected} == expected
 
 
+def test_waec_does_not_guess_unsupported_subjects() -> None:
+    for subject in ("basic-science", "basic-technology", "home-economics"):
+        with pytest.raises(SourceError, match="not in the map"):
+            slug_for("WAEC", subject)
+
+
 def test_waec_catalog_ready_subjects_match_syllabus_inputs() -> None:
     expected = {
         "agricultural-science": "agricultural-science",

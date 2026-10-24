@@ -85,9 +85,11 @@ igbo
 hausa
 ```
 
-The other mapped subjects remain source-mapped but catalog-pending. They must
-stay out of a production scrape until their production catalog is confirmed.
-An empty catalog is a block, not a reason to invent topic placement.
+Arabic remains source-mapped but catalog-pending until a complete authoritative
+syllabus is confirmed. Basic Science, Basic Technology, and Home Economics are
+not part of the active WAEC ingestion map: the current WAEC subject list does
+not establish them as WASSCE subjects. Home Management remains the mapped
+subject. An empty catalog is a block, not a reason to invent topic placement.
 
 The archived WAEC syllabus model records these common section rules:
 
