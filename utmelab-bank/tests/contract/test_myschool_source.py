@@ -114,6 +114,21 @@ def test_the_map_is_the_only_source_of_slugs() -> None:
         slug_for("JAMB", "some-new-subject")
 
 
+def test_waec_active_subjects_use_their_recorded_source_slugs() -> None:
+    expected = {
+        "biology": "biology",
+        "book-keeping": "book-keeping",
+        "catering-craft": "catering-craft-practice",
+        "chemistry": "chemistry",
+        "further-mathematics": "further-mathematics",
+        "insurance": "insurance",
+        "marketing": "marketing",
+        "office-practice": "office-practice",
+    }
+
+    assert {subject: slug_for("WAEC", subject) for subject in expected} == expected
+
+
 # ── the api envelope ────────────────────────────────────────────────────────
 
 
