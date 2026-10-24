@@ -88,7 +88,6 @@ MIGRATIONS: tuple[tuple[str, str], ...] = (
 INDEXES = (
     "CREATE INDEX IF NOT EXISTS idx_staging_state ON staging_items(state)",
     "CREATE INDEX IF NOT EXISTS idx_staging_scope ON staging_items(exam, subject, year)",
-    "CREATE INDEX IF NOT EXISTS idx_staging_scope_country ON staging_items(exam, country, subject, year)",
     "CREATE INDEX IF NOT EXISTS idx_staging_source ON staging_items(source, source_item_id)",
     "CREATE INDEX IF NOT EXISTS idx_staging_content_hash ON staging_items(content_hash)",
     "CREATE INDEX IF NOT EXISTS idx_passages_scope ON passages(exam, subject)",
@@ -116,6 +115,10 @@ async def _migrate(client: Any) -> None:
     for column, statement in MIGRATIONS:
         if column not in present:
             await client.execute(statement)
+    await client.execute(
+        "CREATE INDEX IF NOT EXISTS idx_staging_scope_country "
+        "ON staging_items(exam, country, subject, year)"
+    )
 
 
 __all__ = [
