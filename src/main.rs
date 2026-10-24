@@ -109,34 +109,6 @@ fn seed_admin_cmd(username: String, role: String) -> i32 {
     })
 }
 
-#[cfg(test)]
-mod tests {
-    use super::load_dotenv_path;
-    use std::{fs, path::PathBuf};
-
-    fn temp_env(name: &str) -> PathBuf {
-        std::env::temp_dir().join(format!("utmelab-api-{name}-{}.env", std::process::id()))
-    }
-
-    #[test]
-    fn missing_dotenv_file_is_allowed() {
-        let path = temp_env("missing");
-        let _ = fs::remove_file(&path);
-        assert!(load_dotenv_path(&path).is_ok());
-    }
-
-    #[test]
-    fn malformed_dotenv_file_is_rejected() {
-        let path = temp_env("malformed");
-        fs::write(&path, "MALFORMED_LINE\n").expect("write malformed dotenv");
-
-        let result = load_dotenv_path(&path);
-
-        fs::remove_file(&path).expect("remove malformed dotenv");
-        assert!(result.is_err());
-    }
-}
-
 async fn run(cfg: Config) {
     init_logging(log_filter());
     tracing::info!(
@@ -267,4 +239,32 @@ async fn shutdown_signal() {
         _ = terminate => {}
     }
     tracing::info!("shutdown signal received");
+}
+
+#[cfg(test)]
+mod tests {
+    use super::load_dotenv_path;
+    use std::{fs, path::PathBuf};
+
+    fn temp_env(name: &str) -> PathBuf {
+        std::env::temp_dir().join(format!("utmelab-api-{name}-{}.env", std::process::id()))
+    }
+
+    #[test]
+    fn missing_dotenv_file_is_allowed() {
+        let path = temp_env("missing");
+        let _ = fs::remove_file(&path);
+        assert!(load_dotenv_path(&path).is_ok());
+    }
+
+    #[test]
+    fn malformed_dotenv_file_is_rejected() {
+        let path = temp_env("malformed");
+        fs::write(&path, "MALFORMED_LINE\n").expect("write malformed dotenv");
+
+        let result = load_dotenv_path(&path);
+
+        fs::remove_file(&path).expect("remove malformed dotenv");
+        assert!(result.is_err());
+    }
 }

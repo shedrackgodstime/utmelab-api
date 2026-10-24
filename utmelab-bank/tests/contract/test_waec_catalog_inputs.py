@@ -39,6 +39,5 @@ def test_every_waec_syllabus_input_is_mapped_and_structurally_complete() -> None
         assert all(len(subtopic["slug"]) <= 120 for subtopic in subtopics)
         assert all(subtopic["topic"] in topic_slugs for subtopic in subtopics)
         assert all(
-            set(topic.get("countries", [])) <= {"NG", "GH", "SL", "GM", "LR"}
-            for topic in topics
+            set(topic.get("countries", [])) <= {"NG", "GH", "SL", "GM", "LR"} for topic in topics
         )

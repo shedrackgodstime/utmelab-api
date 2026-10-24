@@ -390,7 +390,6 @@ async def test_the_presets_compose_the_same_steps() -> None:
     assert row.state is State.READY
 
 
-
 async def test_fetch_resumes_without_touching_the_figure() -> None:
     runtime, staging, fetcher = make_runtime()
 

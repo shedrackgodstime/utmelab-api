@@ -156,9 +156,7 @@ async def _rows(
     if options.section is not None:
         rows = tuple(row for row in rows if row.provenance.scope.section == options.section)
     if options.country is not None:
-        rows = tuple(
-            row for row in rows if row.provenance.scope.country == options.country.upper()
-        )
+        rows = tuple(row for row in rows if row.provenance.scope.country == options.country.upper())
     return rows
 
 
@@ -294,9 +292,7 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
                     # payload is still a real parser/data-contract failure.
                     if all(issue.startswith("source.error:") for issue in issues):
                         result.skipped += 1
-                        result.note(
-                            f"{raw.external_key}: skipped source row: {'; '.join(issues)}"
-                        )
+                        result.note(f"{raw.external_key}: skipped source row: {'; '.join(issues)}")
                     else:
                         result.fail(f"{raw.external_key}: source invalid: {'; '.join(issues)}")
                     continue
@@ -305,9 +301,7 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
                 if production_id is not None:
                     if production_id in production_ids or production_id in seen_production_ids:
                         result.skipped += 1
-                        result.note(
-                            f"{raw.external_key}: production already holds {production_id}"
-                        )
+                        result.note(f"{raw.external_key}: production already holds {production_id}")
                         continue
                     seen_production_ids.add(production_id)
 

@@ -118,9 +118,7 @@ class ProductionCatalogReader:
     ) -> str:
         """A stable version string that changes when the catalog changes."""
         parts = [exam, subject, country.upper() if country else ""]
-        parts.extend(
-            f"{topic.id}:{topic.name}:{','.join(topic.countries)}" for topic in topics
-        )
+        parts.extend(f"{topic.id}:{topic.name}:{','.join(topic.countries)}" for topic in topics)
         parts.extend(f"{subtopic.id}:{subtopic.topic_id}" for subtopic in subtopics)
         digest = hashlib.sha256("|".join(parts).encode("utf-8")).hexdigest()
         return f"sha256:{digest[:16]}"
