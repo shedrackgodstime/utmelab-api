@@ -92,6 +92,10 @@ image description, tagging, explanation, latency, and provider failures.
 Exit check: every provider or prompt change can be compared against the same
 rows.
 
+Current checkpoint: the manifest and local validation test are in
+`utmelab-bank/tests/fixtures/benchmark/`. The 14 cases still need manual
+expected observations before they can become verified gold cases.
+
 ### Phase 3: Deterministic media checks
 
 Add checks that do not need a model:

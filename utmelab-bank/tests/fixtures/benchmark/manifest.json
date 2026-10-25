@@ -1,0 +1,106 @@
+{
+  "version": "1",
+  "status": "baseline_pending_manual_labels",
+  "purpose": "Compare OCR, image descriptions, tagging, explanations, and provider failures on fixed representative media.",
+  "source": "local bank media captured 2026-10-25",
+  "entries": [
+    {
+      "id": "geometry-dimensions",
+      "asset_id": "024c7368664d65215adc37773691f30bd925ac27de7c78eb093cdfb0941c2e9a",
+      "kind": "labelled_diagram",
+      "expected": null,
+      "verified": false
+    },
+    {
+      "id": "angle-and-air",
+      "asset_id": "16af7024a7bbd274528e70d1033e4d960457494e6af5d55f5d9c1d1d8c472655",
+      "kind": "labelled_diagram",
+      "expected": null,
+      "verified": false
+    },
+    {
+      "id": "graph-control-point",
+      "asset_id": "3acf1c73fd8de15091532141ae835d0053263b6fd47c5538350ec2bf3f6cdea3",
+      "kind": "graph",
+      "expected": null,
+      "verified": false
+    },
+    {
+      "id": "formula-graph",
+      "asset_id": "5320ba4c07077ea247e7fd1840b9f4d4433ce884cfc222a6f4b72f16a0c9ab0b",
+      "kind": "equation_or_formula",
+      "expected": null,
+      "verified": false
+    },
+    {
+      "id": "electrical_diagram",
+      "asset_id": "5e77dd27bd697fa2e2295a924ccfb0fb80e9e4e1b25476d896e1d89d284b4fdb",
+      "kind": "electrical_diagram",
+      "expected": null,
+      "verified": false
+    },
+    {
+      "id": "diagram_without_clear_text",
+      "asset_id": "61b8123ef9f74f40a1da89bf892643e20f2f411afdfdb5d5d18df3a21c888acf",
+      "kind": "diagram_only",
+      "expected": null,
+      "verified": false
+    },
+    {
+      "id": "air_diagram",
+      "asset_id": "a41f22952a28d2f04069782f679e7bfd286a3c640169cfaacb020c7fcafc21cc",
+      "kind": "labelled_diagram",
+      "expected": null,
+      "verified": false
+    },
+    {
+      "id": "low_resolution_diagram",
+      "asset_id": "a460bfa8bff640b5f5c0a22463d44a6a097037d45329f0d896cd4be1d0612988",
+      "kind": "low_resolution",
+      "expected": null,
+      "verified": false
+    },
+    {
+      "id": "malformed-media-one",
+      "asset_id": "19b8ac52fee937c46dd1c188c08cd16549b10c0855b2e5d09a732271eb20d8f7",
+      "kind": "malformed_media",
+      "expected": null,
+      "verified": false
+    },
+    {
+      "id": "physics-force-diagram",
+      "asset_id": "ab11b2e10acc2551f3b59a7c3ca5d068fb638eb3dcb9644abff48feb4050e753",
+      "kind": "labelled_physics_diagram",
+      "expected": null,
+      "verified": false
+    },
+    {
+      "id": "diagram-without-extractable-text",
+      "asset_id": "cdaf3a447825eb3a180177feb2e3eecbe828eab1c69e6160a4d49633db0810f4",
+      "kind": "diagram_only",
+      "expected": null,
+      "verified": false
+    },
+    {
+      "id": "force-vectors",
+      "asset_id": "d58b4721ed4639e21843f08773946a5170c22938d6919e46d1dac14bfdba197d",
+      "kind": "calculation_diagram",
+      "expected": null,
+      "verified": false
+    },
+    {
+      "id": "malformed-media-two",
+      "asset_id": "e063813f4102ff17f3a63d2bebf9deba8e05724bfca11ae4912736723f2ea5d6",
+      "kind": "malformed_media",
+      "expected": null,
+      "verified": false
+    },
+    {
+      "id": "measurement-diagram",
+      "asset_id": "f42de0fcca5cfcd905b68fff5aef35dbb27c5d13ae72be6c04852a3f28aa052a",
+      "kind": "labelled_diagram",
+      "expected": null,
+      "verified": false
+    }
+  ]
+}
