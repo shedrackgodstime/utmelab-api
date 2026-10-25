@@ -2,9 +2,14 @@ import asyncio
 from types import SimpleNamespace
 
 from utmelab_bank.adapters.providers.openai_compatible import OpenAICompatibleProvider
-from utmelab_bank.domain.capabilities import ExplainRequest, TagRequest, VerifyAnswerRequest
+from utmelab_bank.domain.capabilities import (
+    DescribeImageRequest,
+    ExplainRequest,
+    TagRequest,
+    VerifyAnswerRequest,
+)
 from utmelab_bank.domain.enums import Verdict
-from utmelab_bank.domain.models import CatalogSnapshot, StagingItem
+from utmelab_bank.domain.models import CatalogSnapshot, MediaAsset, StagingItem
 
 
 class FakeCompletions:
@@ -46,6 +51,30 @@ def test_openai_compatible_provider_parses_explanation(staging_item: StagingItem
     assert calls.calls[0]["model"] == "test/model"
     assert calls.calls[0]["response_format"] == {"type": "json_object"}
     assert calls.calls[0]["max_tokens"] == 2048
+
+
+def test_openai_compatible_provider_describes_image_with_schema(
+    media: MediaAsset,
+) -> None:
+    built, calls = provider(
+        {
+            "description": "A blue line on labelled axes.",
+            "facts": ["The horizontal axis is labelled 10."],
+            "confidence": 0.8,
+        }
+    )
+
+    result = asyncio.run(
+        built.describe(DescribeImageRequest(asset=media, data=b"synthetic-image"))
+    )
+
+    assert result.description == "A blue line on labelled axes."
+    user_message = calls.calls[0]["messages"][1]
+    assert user_message["role"] == "user"
+    content = user_message["content"]
+    assert isinstance(content, list)
+    assert content[1]["type"] == "image_url"
+    assert content[1]["image_url"]["url"].startswith("data:image/png;base64,")
 
 
 def test_openai_compatible_provider_parses_tag_and_verdict(

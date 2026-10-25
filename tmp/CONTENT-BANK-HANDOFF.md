@@ -77,6 +77,12 @@ together.
   selected advertised model returned a provider-side 404, so model-specific
   smoke testing remains required before changing defaults or launching a
   batch. Errors are classified as `not_found` and `timeout`.
+- A synthetic exam-style graph was sent through the primary vision model. It
+  returned a schema-valid `ImageDescription` with the visible axes, labels,
+  values, and line segments. The configured second witness timed out; a
+  smaller vision model returned non-JSON output. The image consensus gate is
+  therefore not ready for a real batch until a second reliable vision model is
+  selected and passes the same test.
 
 ## Next exact action
 
