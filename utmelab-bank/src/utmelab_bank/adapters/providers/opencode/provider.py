@@ -52,7 +52,6 @@ TRANSIENT_MARKERS = (
     "overloaded",
     "temporarily unavailable",
     "try again",
-    "timed out",
     "server error",
     " 429",
     " 500",
@@ -231,9 +230,12 @@ class OpenCodeProvider:
                 result = await self._runner.run(argv, timeout=self._timeout)
             except TimeoutError as exc:
                 error = OpenCodeError(f"opencode timed out after {self._timeout} seconds")
-                if final:
-                    raise error from exc
-                last = error
+                # A timeout already consumed the full provider budget. Retrying
+                # it three times serially turns one bad model call into several
+                # minutes per row and can exhaust an entire workflow. Server
+                # errors returned by the CLI remain retryable below; timeouts
+                # are recorded on the row and move on.
+                raise error from exc
             else:
                 if result.returncode != 0:
                     detail = result.stderr.strip() or result.stdout.strip()

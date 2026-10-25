@@ -170,6 +170,7 @@ def test_timeout_raises(staging_item: StagingItem) -> None:
     provider = OpenCodeProvider(model="opencode/test", runner=runner, retry_delay=0.0)
     with pytest.raises(OpenCodeError, match="timed out"):
         asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
+    assert len(runner.calls) == 1
 
 
 def test_a_transient_server_error_is_retried(staging_item: StagingItem) -> None:
