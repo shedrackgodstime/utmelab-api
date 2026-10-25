@@ -35,35 +35,26 @@ M = TypeVar("M", bound=BaseModel)
 
 
 class OpenCodeError(RuntimeError):
-    """Raised when the OpenCode CLI fails, times out, or returns junk."""
+    """Raised when OpenCode fails, with an operator-readable error class."""
 
-
-#: The failures that are the server's, not the prompt's.
-#:
-#: The free models answer through a shared queue. A call can fail with an
-#: ``UnknownError`` or a usage limit and then succeed a moment later, and the
-#: message is the only thing that distinguishes that from a bad request. A
-#: second call costs seconds; a lost row costs a whole answer.
-TRANSIENT_MARKERS = (
-    "unexpected server error",
-    "usage limit",
-    "rate limit",
-    "too many requests",
-    "overloaded",
-    "temporarily unavailable",
-    "try again",
-    "server error",
-    " 429",
-    " 500",
-    " 502",
-    " 503",
-    " 504",
-)
-
-
-def _is_transient(message: str) -> bool:
-    lower = message.lower()
-    return any(marker in lower for marker in TRANSIENT_MARKERS)
+    def __init__(
+        self,
+        message: str,
+        *,
+        category: str = "unknown",
+        status: int | None = None,
+        retryable: bool = False,
+    ) -> None:
+        self.provider = "opencode"
+        self.category = category
+        self.status = status
+        self.retryable = retryable
+        self.detail = message
+        label = f"provider={self.provider} category={category}"
+        if status is not None:
+            label += f" status={status}"
+        label += f" retryable={'yes' if retryable else 'no'}"
+        super().__init__(f"{label}: {message}")
 
 
 @dataclass(frozen=True)
@@ -229,7 +220,10 @@ class OpenCodeProvider:
             try:
                 result = await self._runner.run(argv, timeout=self._timeout)
             except TimeoutError as exc:
-                error = OpenCodeError(f"opencode timed out after {self._timeout} seconds")
+                error = OpenCodeError(
+                    f"timed out after {self._timeout} seconds",
+                    category="timeout",
+                )
                 # A timeout already consumed the full provider budget. Retrying
                 # it three times serially turns one bad model call into several
                 # minutes per row and can exhaust an entire workflow. Server
@@ -239,21 +233,19 @@ class OpenCodeProvider:
             else:
                 if result.returncode != 0:
                     detail = result.stderr.strip() or result.stdout.strip()
-                    error = OpenCodeError(
-                        f"opencode failed with exit code {result.returncode}: {detail}"
-                    )
-                    if final or not _is_transient(detail):
+                    error = _process_error(result.returncode, detail)
+                    if final or not error.retryable:
                         raise error
                     last = error
                 else:
                     try:
                         return self._collect_text(result.stdout)
                     except OpenCodeError as exc:
-                        if final or not _is_transient(str(exc)):
+                        if final or not exc.retryable:
                             raise
                         last = exc
             await asyncio.sleep(self._retry_delay * (attempt + 1))
-        raise last or OpenCodeError("opencode did not answer")
+        raise last or OpenCodeError("did not answer", category="transport")
 
     def _content_payload(self, item: StagingItem) -> dict[str, Any]:
         return {
@@ -287,7 +279,10 @@ class OpenCodeProvider:
         try:
             return model_type.model_validate(data)
         except ValidationError as exc:
-            raise OpenCodeError(f"model output did not match {model_type.__name__}") from exc
+            raise OpenCodeError(
+                f"model output did not match {model_type.__name__}",
+                category="output_schema",
+            ) from exc
 
     @staticmethod
     def _collect_text(stdout: str) -> str:
@@ -300,7 +295,10 @@ class OpenCodeProvider:
             try:
                 event = json.loads(line)
             except json.JSONDecodeError as exc:
-                raise OpenCodeError("opencode returned a non-JSON line") from exc
+                raise OpenCodeError(
+                    "returned a non-JSON line",
+                    category="protocol",
+                ) from exc
             if not isinstance(event, dict):
                 continue
             kind = event.get("type")
@@ -313,9 +311,9 @@ class OpenCodeProvider:
             if isinstance(part, dict) and isinstance(part.get("text"), str):
                 texts.append(part["text"])
         if errors:
-            raise OpenCodeError("; ".join(errors))
+            raise _provider_error(errors[0])
         if not texts:
-            raise OpenCodeError("opencode returned no text events")
+            raise OpenCodeError("returned no text events", category="protocol")
         return "\n".join(texts)
 
     @staticmethod
@@ -329,13 +327,13 @@ class OpenCodeProvider:
         start = cleaned.find("{")
         end = cleaned.rfind("}")
         if start == -1 or end == -1 or end < start:
-            raise OpenCodeError("model output did not contain a JSON object")
+            raise OpenCodeError("output did not contain a JSON object", category="output")
         try:
             data = json.loads(cleaned[start : end + 1])
         except json.JSONDecodeError as exc:
-            raise OpenCodeError("model output was not valid JSON") from exc
+            raise OpenCodeError("output was not valid JSON", category="output") from exc
         if not isinstance(data, dict):
-            raise OpenCodeError("model output must be a JSON object")
+            raise OpenCodeError("output must be a JSON object", category="output")
         return cast(dict[str, Any], data)
 
 
@@ -348,10 +346,48 @@ def _error_message(event: dict[str, Any]) -> str:
             message = data.get("message")
             if isinstance(message, str):
                 return message
+        message = error.get("message")
+        if isinstance(message, str):
+            return message
         name = error.get("name")
         if isinstance(name, str):
             return name
     return "opencode reported an error"
+
+
+def _provider_error(message: str) -> OpenCodeError:
+    """Classify a provider message without leaking the raw event blob."""
+    lower = message.lower()
+    if "freeusagelimiterror" in lower or "free usage limit" in lower:
+        return OpenCodeError(message, category="quota", status=429)
+    if "unauthorized" in lower or "authentication" in lower or "invalid api key" in lower:
+        return OpenCodeError(message, category="authentication", status=401)
+    if "rate limit" in lower or "too many requests" in lower or " 429" in lower:
+        return OpenCodeError(message, category="rate_limit", status=429, retryable=True)
+    if any(
+        marker in lower
+        for marker in ("unexpected server error", "overloaded", "temporarily unavailable")
+    ):
+        return OpenCodeError(message, category="upstream", retryable=True)
+    return OpenCodeError(message, category="provider")
+
+
+def _process_error(returncode: int, detail: str) -> OpenCodeError:
+    """Turn a failed CLI process or structured provider event into one error."""
+    try:
+        event = json.loads(detail)
+    except json.JSONDecodeError:
+        return OpenCodeError(
+            f"CLI exited with code {returncode}: {detail or 'no detail'}",
+            category="process",
+        )
+    if isinstance(event, dict) and event.get("type") == "error":
+        error = _provider_error(_error_message(event))
+        return error
+    return OpenCodeError(
+        f"CLI exited with code {returncode}: {detail or 'no detail'}",
+        category="process",
+    )
 
 
 def _write_scratch(data: bytes, mime: str) -> Path:

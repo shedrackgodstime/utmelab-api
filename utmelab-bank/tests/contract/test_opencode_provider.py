@@ -260,3 +260,32 @@ def test_error_event_is_surfaced(staging_item: StagingItem) -> None:
     provider, _ = make_provider(error_event)
     with pytest.raises(OpenCodeError, match="usage limit reached"):
         asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
+
+
+def test_v2_quota_error_is_classified_and_not_retried(staging_item: StagingItem) -> None:
+    """OpenCode v2 quota events must identify the provider and stop immediately."""
+    from utmelab_bank.adapters.providers.opencode import OpenCodeError
+
+    error_event = json.dumps(
+        {
+            "type": "error",
+            "error": {
+                "type": "provider.quota",
+                "message": "Free usage limit reached",
+                "status": 429,
+            },
+        }
+    )
+    provider, runner = make_provider(error_event, returncode=1)
+
+    with pytest.raises(OpenCodeError) as raised:
+        asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
+
+    error = raised.value
+    assert error.provider == "opencode"
+    assert error.category == "quota"
+    assert error.status == 429
+    assert error.retryable is False
+    assert "provider=opencode" in str(error)
+    assert "category=quota" in str(error)
+    assert len(runner.calls) == 1
