@@ -378,6 +378,20 @@ class OcrRecord(DomainModel):
     error: NonEmptyStr | None = None
 
 
+class MediaCheck(DomainModel):
+    """Deterministic validation recorded for one captured asset."""
+
+    asset_id: Sha256
+    status: NonEmptyStr
+    mime: MimeType
+    detected_mime: MimeType | None = None
+    byte_size: int = Field(ge=0)
+    width: int | None = Field(default=None, gt=0)
+    height: int | None = Field(default=None, gt=0)
+    ocr_status: NonEmptyStr
+    issues: tuple[NonEmptyStr, ...] = ()
+
+
 class Inline(DomainModel):
     """One inline on a piece of text.
 
@@ -513,6 +527,7 @@ class Content(DomainModel):
 
 
 class Evidence(DomainModel):
+    media_checks: tuple[MediaCheck, ...] = ()
     ocr: tuple[OcrRecord, ...] = ()
     image_descriptions: tuple["ImageDescription", ...] = ()
     tag: Optional["TagProposal"] = None

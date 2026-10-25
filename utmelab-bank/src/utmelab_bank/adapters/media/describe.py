@@ -7,6 +7,7 @@ from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.models import OcrRecord, Producer, StagingItem
 from utmelab_bank.domain.ports import ImageDescriber, MediaStore
 
+from .checks import check_media
 from .consensus import DescribeImageConsensus
 from .ocr_space import OcrSpaceClient, OcrSpaceError
 
@@ -38,10 +39,13 @@ class ImageDescriberService:
         than one it carries.
         """
         descriptions = []
+        media_checks = []
         ocr_records: list[OcrRecord] = []
         for asset in item.media_assets:
             data = await self.reader.read(asset.storage_url) if self.reader is not None else None
             ocr_context: str | None = None
+            ocr_text: str | None = None
+            ocr_error: str | None = None
             if self.ocr is not None and data is not None:
                 try:
                     ocr_record = await self.ocr.extract(
@@ -56,14 +60,26 @@ class ImageDescriberService:
                         error=str(exc),
                     )
                 ocr_records.append(ocr_record)
+                ocr_text = ocr_record.text
+                ocr_error = ocr_record.error
                 if ocr_record.text:
                     ocr_context = f"OCR text extracted from this image:\n{ocr_record.text}"
+            if data is not None:
+                media_checks.append(
+                    check_media(
+                        asset,
+                        data,
+                        ocr_text=ocr_text,
+                        ocr_error=ocr_error,
+                    )
+                )
             request = DescribeImageRequest(asset=asset, context=ocr_context, data=data)
             description = await self.describer.describe(request)
             descriptions.append(description)
 
         evidence = item.evidence.model_copy(
             update={
+                "media_checks": tuple(media_checks),
                 "ocr": tuple(ocr_records),
                 "image_descriptions": tuple(descriptions),
             }

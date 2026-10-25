@@ -1,5 +1,6 @@
 """Media adapters: a stateless GitLab store, plus local and in-memory ones."""
 
+from .checks import check_media
 from .consensus import (
     ConsensusPolicy,
     DescribeImageConsensus,
@@ -26,6 +27,7 @@ from .service import MediaService
 
 __all__ = [
     "ConsensusPolicy",
+    "check_media",
     "DescribeImageConsensus",
     "Dissent",
     "GitLabMediaStore",
