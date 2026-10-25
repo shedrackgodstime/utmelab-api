@@ -52,6 +52,9 @@ together.
   The same database tests pass outside the sandbox, and the complete non-live
   suite passes there: 407 passed, 13 deselected. This was an execution
   environment limitation, not a Turso adapter failure.
+- The explanation provider prompt now requires distractor reasoning,
+  calculation steps, unit preservation, trusted figure evidence, and explicit
+  uncertainty instead of invented values or relationships.
 
 ## Next exact action
 
@@ -77,9 +80,8 @@ After OCR scoring:
 4. Run the full non-live suite.
 5. Update this handoff and the roadmap, then commit and push.
 
-The focused explanation pipeline tests pass. A later full non-live run became
-non-responsive after partial progress, so do not treat that interrupted run as
-a complete suite result.
+The focused explanation pipeline tests pass, and the complete non-live suite
+also passes outside the restricted sandbox.
 
 ## Recent commits
 

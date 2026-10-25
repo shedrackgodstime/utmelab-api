@@ -56,6 +56,8 @@ Completed:
   row can pass the explanatory condition.
 - The complete non-live suite passes outside the restricted sandbox: 407
   passed, 13 deselected.
+- Explanation prompts now require canonical-answer reasoning, distractors,
+  calculations, units, figure evidence, and uncertainty handling.
 - Real-image OCR testing found malformed `.png` files and diagram-only images.
 - The latest repository quality gate passed after the OCR preprocessing change.
 

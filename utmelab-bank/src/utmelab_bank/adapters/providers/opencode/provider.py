@@ -155,9 +155,14 @@ class OpenCodeProvider:
 
     async def explain(self, request: ExplainRequest) -> Explanation:
         prompt = self._prompt(
-            "Explain why the stated answer is correct and why the other options are wrong. "
-            "Return JSON with keys key_point (string), body (string), "
-            "trap (string or null), confidence (number from 0 to 1).",
+            "Explain why the canonical answer is correct and why every other option is "
+            "wrong. Use the exact option text and terminology from the question. Show "
+            "calculation steps for numerical questions, preserve units, and use trusted "
+            "image descriptions and OCR only when they support a visible figure fact. "
+            "Do not invent a value, label, source fact, or figure relationship. If a "
+            "figure is unclear, state the uncertainty. Return JSON with keys key_point "
+            "(string), body (string), trap (string or null), confidence (number from "
+            "0 to 1).",
             self._content_payload(request.item),
         )
         data = self._extract_json(await self._complete(prompt))
