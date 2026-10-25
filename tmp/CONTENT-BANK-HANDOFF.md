@@ -23,6 +23,8 @@ The earlier DNS failure was sandbox isolation, not a Turso outage.
 - Re-ran the deterministic benchmark: 17 cases, 0 failures.
 - Added `scripts/run_ocr_benchmark.py` for one bounded OCR pass over the current
   manifest.
+- Ran the bounded OCR pass against the current media set and fixed the scorer
+  to match both `.jpg` and `.png` result filenames by asset hash.
 
 ## Important evidence boundary
 
@@ -40,13 +42,14 @@ together.
 - Mypy passed.
 - Benchmark manifest contract test passed.
 - Deterministic current-media benchmark passed: 17/17.
-- The OCR provider pass was not started successfully in the final step because
-  the command process could not be created in the restricted tool session. No
-  OCR result should be inferred from that failed attempt.
+- OCR.space current-bank baseline: 7/17 cases met every required text fragment.
+  Ten failures are retained as genuine OCR misses involving small labels, map
+  text, diagram symbols, and numeric annotations.
 
 ## Next exact action
 
-Run the bounded OCR pass with external network access from `utmelab-bank`:
+Run or repeat the bounded OCR pass with external network access from
+`utmelab-bank`:
 
 ```bash
 python scripts/run_ocr_benchmark.py --media-root /path/to/current/media > /tmp/current-ocr.json
@@ -55,7 +58,8 @@ python scripts/score_ocr_benchmark.py /tmp/current-ocr.json
 
 Use the current GitLab media repository or the local media store as the media
 root. Keep the provider result outside Git, inspect failures by case, and do
-not launch a batch.
+not launch a batch. The current result is in `/tmp/utmelab-current-ocr-score2.json`
+for this machine only.
 
 After OCR scoring:
 

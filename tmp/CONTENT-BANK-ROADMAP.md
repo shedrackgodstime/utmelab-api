@@ -103,6 +103,9 @@ manually labelled. The complete cases still need source-question, catalogue,
 answer, and explanation labels before they become verified gold cases.
 The first OCR.space baseline scored 11 of 14 media cases, with failures kept
 visible for the electrical, air-label, and force-vector images.
+The rebuilt current-bank baseline scored 7 of 17 cases. The ten misses are
+retained as benchmark evidence for small labels, map text, diagram symbols,
+and numeric annotations.
 
 ### Phase 3: Deterministic media checks
 

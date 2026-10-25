@@ -23,14 +23,14 @@ def main() -> int:
 
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     results = {
-        Path(row["file"]).name: row
+        Path(row["file"]).stem: row
         for row in json.loads(args.results.read_text(encoding="utf-8"))
     }
     checked: list[dict[str, object]] = []
     failures = 0
     for entry in manifest["entries"]:
-        filename = f"{entry['asset_id']}.png"
-        row = results.get(filename)
+        asset_id = entry["asset_id"]
+        row = results.get(asset_id)
         expected = entry["expected"]
         if row is None:
             checked.append({"id": entry["id"], "accepted": False, "reason": "missing_result"})
