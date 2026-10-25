@@ -256,6 +256,8 @@ class StagingStore:
 
 def _evidence(item: StagingItem) -> dict[str, Any]:
     return {
+        "media_checks": [c.model_dump(mode="json") for c in item.evidence.media_checks],
+        "ocr": [record.model_dump(mode="json") for record in item.evidence.ocr],
         "image_descriptions": [d.model_dump(mode="json") for d in item.evidence.image_descriptions],
         "tag": item.evidence.tag.model_dump(mode="json") if item.evidence.tag else None,
         "explanation": (

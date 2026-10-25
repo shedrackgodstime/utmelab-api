@@ -9,10 +9,14 @@ from utmelab_bank.adapters.store import StagingStore
 from utmelab_bank.domain.enums import PassageKind, State
 from utmelab_bank.domain.models import (
     Content,
+    Evidence,
     Hashes,
+    MediaCheck,
     MediaRef,
+    OcrRecord,
     Option,
     Passage,
+    Producer,
     Provenance,
     RichText,
     Scope,
@@ -155,6 +159,43 @@ async def test_save_then_load_preserves_country() -> None:
 
     assert back is not None
     assert back.provenance.scope.country == "NG"
+
+
+async def test_save_then_load_preserves_media_evidence() -> None:
+    client = FakeClient()
+    store = StagingStore(client)
+    item = make_item().model_copy(
+        update={
+            "evidence": Evidence(
+                media_checks=(
+                    MediaCheck(
+                        asset_id="a" * 64,
+                        status="ok",
+                        mime="image/png",
+                        detected_mime="image/png",
+                        byte_size=10,
+                        width=2,
+                        height=5,
+                        ocr_status="usable",
+                    ),
+                ),
+                ocr=(
+                    OcrRecord(
+                        asset_id="a" * 64,
+                        producer=Producer(provider="ocr.space", model="engine-2"),
+                        text="label",
+                    ),
+                ),
+            )
+        }
+    )
+
+    await store.save(item)
+    back = await store.load(item.id)
+
+    assert back is not None
+    assert back.evidence.media_checks[0].status == "ok"
+    assert back.evidence.ocr[0].text == "label"
 
 
 async def test_load_returns_none_for_a_missing_row() -> None:

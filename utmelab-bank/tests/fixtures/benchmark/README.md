@@ -37,3 +37,9 @@ python scripts/run_media_benchmark.py
 
 The media store is local and ignored by Git, so this command is expected to
 report missing cases on a fresh checkout until the bank media store is present.
+
+Score an existing OCR result without making another provider request:
+
+```bash
+python scripts/score_ocr_benchmark.py /path/to/ocr-results.json
+```

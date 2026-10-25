@@ -47,6 +47,7 @@ Completed:
 - OCR text is passed to the vision provider as supporting evidence.
 - OCR preprocessing validates images, handles transparency, corrects
   orientation, and enlarges small captures.
+- OCR and deterministic media-check evidence survives staging database reloads.
 - Real-image OCR testing found malformed `.png` files and diagram-only images.
 - The latest repository quality gate passed after the OCR preprocessing change.
 
@@ -96,6 +97,8 @@ Current checkpoint: the manifest and local validation test are in
 `utmelab-bank/tests/fixtures/benchmark/`. The 14 image observations are now
 manually labelled. The complete cases still need source-question, catalogue,
 answer, and explanation labels before they become verified gold cases.
+The first OCR.space baseline scored 11 of 14 media cases, with failures kept
+visible for the electrical, air-label, and force-vector images.
 
 ### Phase 3: Deterministic media checks
 
