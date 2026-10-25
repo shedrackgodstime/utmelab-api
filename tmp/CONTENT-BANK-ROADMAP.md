@@ -31,6 +31,33 @@ this phase of the project.
 
 ## Current state
 
+### Live coverage checkpoint: 2026-10-25
+
+- WAEC 2025 has 1 production question, under Animal Husbandry. The other 36
+  catalogued WAEC subjects are currently empty for that year.
+- NECO 2025 has no production questions in the catalogued subjects. Four NECO
+  subjects still need an explicit source/catalog decision before ingestion:
+  Beauty and Cosmetology, Computer Hardware and GSM Repairs, Fashion Design
+  and Garment Making, and Health Education.
+- Post-UTME remains a response example and fixture only. It has no active
+  source adapter, production subject map, or certified content path.
+
+### Immediate execution order
+
+1. Build WAEC volume first from the highest-demand mapped subjects, beginning
+   with a bounded source probe and then independent subject jobs. The first
+   milestone is 500 certified WAEC rows, followed by 1,000.
+2. Run NECO as a separate exam pipeline. Do not reuse WAEC syllabus labels as
+   NECO facts. Finish the subject map, identify available subject-years, then
+   scrape, deduplicate, enrich, certify, and promote in batches.
+3. Start Post-UTME discovery in parallel only at the source/contract level:
+   identify a reliable source, define institution/course/session metadata, and
+   confirm the production catalog shape. Do not mix Post-UTME rows into WAEC or
+   NECO batches.
+4. Keep provider benchmarking subordinate to content throughput. A provider
+   change is useful only when it unblocks tagging, explanations, image
+   evidence, or certification for the next content batch.
+
 Completed:
 
 - MySchool scraping, deduplication, malformed-row handling, and production
