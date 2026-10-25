@@ -83,6 +83,13 @@ together.
   smaller vision model returned non-JSON output. The image consensus gate is
   therefore not ready for a real batch until a second reliable vision model is
   selected and passes the same test.
+- NVIDIA's official catalog confirms that free vision endpoints exist, including
+  Nemotron 3.5 Super VL and Meta Llama 3.2 Vision. On this key, the primary
+  Nemotron model passed the synthetic graph test; Llama 3.2 90B timed out,
+  Llama 3.2 11B returned non-JSON output, Microsoft Phi returned 404, and
+  DeepSeek V4.1 Flash timed out on the same multimodal request. Free listing
+  therefore means available to try, not a reliable second witness for this
+  bank.
 
 ## Next exact action
 
