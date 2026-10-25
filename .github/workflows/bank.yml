@@ -110,6 +110,7 @@ jobs:
       TURSO_BANK_AUTH_TOKEN: ${{ secrets.TURSO_UTMELAB_BANK_DB_TOKEN }}
       GITLAB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
       GITLAB_MEDIA_REPO: shedrackgodstime/utmelab-bank
+      OPENCODE_VERSION: 2.0.28
     steps:
       - uses: actions/checkout@v4
 
@@ -126,7 +127,20 @@ jobs:
       - name: Install OpenCode CLI
         if: ${{ inputs.provider == 'opencode' && contains(fromJSON('["tag","media","explain","review","process"]'), inputs.command) }}
         run: |
-          npm install -g opencode-ai@1.19.0 || (curl -fsSL https://opencode.ai/install.sh | bash && echo "$HOME/.opencode/bin" >> $GITHUB_PATH)
+          curl -fsSL https://opencode.ai/v2/install | bash -s -- \
+            --version "$OPENCODE_VERSION" \
+            --no-modify-path
+          echo "$HOME/.opencode/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.opencode/bin:$PATH"
+          installed_version="$(opencode --version)"
+          echo "OpenCode: $installed_version"
+          case "$installed_version" in
+            *"v$OPENCODE_VERSION"*) ;;
+            *)
+              echo "Expected OpenCode $OPENCODE_VERSION, got: $installed_version" >&2
+              exit 1
+              ;;
+          esac
 
       - name: Run the task
         working-directory: utmelab-bank
