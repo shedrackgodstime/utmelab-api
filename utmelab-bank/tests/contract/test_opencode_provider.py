@@ -276,7 +276,10 @@ def test_v2_quota_error_is_classified_and_not_retried(staging_item: StagingItem)
             },
         }
     )
-    provider, runner = make_provider(error_event, returncode=1)
+    provider, runner = make_provider(
+        json.dumps({"type": "step_start"}) + "\n" + error_event,
+        returncode=1,
+    )
 
     with pytest.raises(OpenCodeError) as raised:
         asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))

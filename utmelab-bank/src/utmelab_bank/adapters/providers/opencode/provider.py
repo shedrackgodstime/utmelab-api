@@ -374,16 +374,13 @@ def _provider_error(message: str) -> OpenCodeError:
 
 def _process_error(returncode: int, detail: str) -> OpenCodeError:
     """Turn a failed CLI process or structured provider event into one error."""
-    try:
-        event = json.loads(detail)
-    except json.JSONDecodeError:
-        return OpenCodeError(
-            f"CLI exited with code {returncode}: {detail or 'no detail'}",
-            category="process",
-        )
-    if isinstance(event, dict) and event.get("type") == "error":
-        error = _provider_error(_error_message(event))
-        return error
+    for line in detail.splitlines():
+        try:
+            event = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(event, dict) and event.get("type") == "error":
+            return _provider_error(_error_message(event))
     return OpenCodeError(
         f"CLI exited with code {returncode}: {detail or 'no detail'}",
         category="process",
