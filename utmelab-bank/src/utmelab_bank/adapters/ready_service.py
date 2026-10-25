@@ -140,6 +140,15 @@ def _explanatory(item: StagingItem, context: ReadyContext) -> str | None:
         candidates.extend(_number_words(answer))
     if not any(_contains_answer(searchable, candidate) for candidate in candidates):
         return "the explanation does not identify or support the canonical answer"
+    missing_distractors = []
+    for option in item.content.options:
+        if option.id == item.content.answer:
+            continue
+        option_candidates = (option.id.casefold(), option.text.text.casefold())
+        if not any(_contains_answer(searchable, candidate) for candidate in option_candidates):
+            missing_distractors.append(option.id)
+    if missing_distractors:
+        return "the explanation does not address distractors: " + ", ".join(missing_distractors)
     return None
 
 

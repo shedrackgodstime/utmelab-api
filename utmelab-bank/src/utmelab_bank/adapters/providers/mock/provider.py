@@ -48,12 +48,17 @@ class MockProvider:
             for option in request.item.content.options
             if option.id == request.item.content.answer
         )
+        distractors = ", ".join(
+            f"{option.id}: {option.text.text}"
+            for option in request.item.content.options
+            if option.id != request.item.content.answer
+        )
         return Explanation(
             key_point=RichText(text=f"The canonical answer is {request.item.content.answer}."),
             body=RichText(
                 text=(
                     f"Mock explanation for: {request.item.content.stem.text} "
-                    f"The answer is {answer}."
+                    f"The answer is {answer}. Distractors considered: {distractors}."
                 )
             ),
             confidence=self._confidence,

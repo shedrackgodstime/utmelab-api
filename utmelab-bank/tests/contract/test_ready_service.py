@@ -101,7 +101,12 @@ def make_item(
     explanation = (
         Explanation(
             key_point=RichText(text="Two and two is four."),
-            body=RichText(text="Adding two to two gives four."),
+            body=RichText(
+                text=(
+                    "Adding two to two gives four. Option a, 3, is too low; "
+                    "option c, 5, and option d, 6, are incorrect."
+                )
+            ),
             confidence=0.9,
             producer=PRODUCER,
         )
@@ -241,6 +246,29 @@ def test_an_explanation_that_does_not_support_the_answer_is_not_ready() -> None:
 
     assert ReadyCondition.EXPLANATORY in bundle.report.unmet()
     assert "canonical answer" in bundle.report.reason_for(ReadyCondition.EXPLANATORY)[0]
+
+
+def test_an_explanation_that_omits_a_distractor_is_not_ready() -> None:
+    item = make_item()
+    assert item.evidence.explanation is not None
+    explanation = item.evidence.explanation.model_copy(
+        update={
+            "key_point": RichText(text="The answer is b."),
+            "body": RichText(text="Option b, 4, is correct; option a, 3, is wrong."),
+        }
+    )
+    changed = item.model_copy(
+        update={
+            "evidence": item.evidence.model_copy(
+                update={"explanation": explanation, "verifications": ()}
+            )
+        }
+    ).stamp_hashes()
+
+    bundle = service().bundle([changed])
+
+    assert ReadyCondition.EXPLANATORY in bundle.report.unmet()
+    assert "distractors" in bundle.report.reason_for(ReadyCondition.EXPLANATORY)[0]
 
 
 def test_a_row_with_no_hash_is_not_ready() -> None:

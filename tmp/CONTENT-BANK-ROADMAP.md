@@ -64,6 +64,9 @@ Completed:
 - Latest complete non-live suite: 409 passed, 13 deselected.
 - Explanation and answer-review prompts receive OCR and deterministic media
   evidence, not only generated image descriptions.
+- READY explanations must address every distractor as well as the canonical
+  answer.
+- Latest complete non-live suite: 410 passed, 13 deselected.
 - Real-image OCR testing found malformed `.png` files and diagram-only images.
 - The latest repository quality gate passed after the OCR preprocessing change.
 

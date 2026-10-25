@@ -50,7 +50,7 @@ together.
   or a simple numeric word equivalent.
 - The restricted sandbox appeared to hang at the thread-backed database test.
   The same database tests pass outside the sandbox, and the complete non-live
-  suite passes there: 407 passed, 13 deselected. This was an execution
+  suite passes there: 410 passed, 13 deselected. This was an execution
   environment limitation, not a Turso adapter failure.
 - The explanation provider prompt now requires distractor reasoning,
   calculation steps, unit preservation, trusted figure evidence, and explicit
@@ -61,6 +61,8 @@ together.
   rejected from VERIFIED instead of moving forward as trusted checks.
 - Explanation and answer-review providers now receive persisted OCR records and
   deterministic media checks alongside image descriptions.
+- READY explanations must now address every distractor as well as support the
+  canonical answer.
 
 ## Next exact action
 
