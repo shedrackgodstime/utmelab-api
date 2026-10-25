@@ -130,6 +130,9 @@ def _explanatory(item: StagingItem, context: ReadyContext) -> str | None:
 
 
 def _resolvable(item: StagingItem, context: ReadyContext) -> str | None:
+    for check in item.evidence.media_checks:
+        if check.status != "ok":
+            return f"media check for {check.asset_id} is {check.status}"
     passage_id = item.content.passage_id
     if (
         passage_id is not None

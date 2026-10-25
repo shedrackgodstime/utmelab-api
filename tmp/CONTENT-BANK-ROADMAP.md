@@ -50,6 +50,8 @@ Completed:
 - OCR and deterministic media-check evidence survives staging database reloads.
 - Tag evidence accepts only normalized text from the row or accepted OCR
   evidence, and catalog ids still have to pass the production snapshot.
+- READY now refuses any media check that is not `ok`, including review-needed
+  OCR evidence.
 - Real-image OCR testing found malformed `.png` files and diagram-only images.
 - The latest repository quality gate passed after the OCR preprocessing change.
 

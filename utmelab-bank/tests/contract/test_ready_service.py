@@ -27,6 +27,7 @@ from utmelab_bank.domain.models import (
     Hashes,
     Inline,
     Issue,
+    MediaCheck,
     Option,
     Producer,
     Provenance,
@@ -256,6 +257,33 @@ def test_a_subtopic_outside_the_catalog_is_not_ready() -> None:
 
     assert ReadyCondition.PLACED in bundle.report.unmet()
     assert "not in the catalog" in bundle.report.reason_for(ReadyCondition.PLACED)[0]
+
+
+def test_a_non_ok_media_check_is_not_ready() -> None:
+    item = make_item().model_copy(
+        update={
+            "evidence": Evidence(
+                gate=make_item().evidence.gate,
+                explanation=make_item().evidence.explanation,
+                verifications=make_item().evidence.verifications,
+                media_checks=(
+                    MediaCheck(
+                        asset_id="a" * 64,
+                        status="review",
+                        mime="image/png",
+                        byte_size=10,
+                        ocr_status="empty",
+                        issues=("ocr_empty_on_expected_text_media",),
+                    ),
+                ),
+            )
+        }
+    )
+
+    bundle = service().bundle([item])
+
+    assert ReadyCondition.RESOLVABLE in bundle.report.unmet()
+    assert "media check" in bundle.report.reason_for(ReadyCondition.RESOLVABLE)[0]
 
 
 def test_a_subtopic_under_another_topic_is_not_ready() -> None:
