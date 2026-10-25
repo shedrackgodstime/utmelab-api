@@ -91,6 +91,21 @@ Copy `.env.example` to `.env` and provide:
 - media storage settings when figures are present;
 - provider settings when using a model-backed task.
 
+Provider and model routing lives in `openai.config`. It contains no secrets.
+The manifest names environment variables, account pools, model capabilities,
+task priorities, failover rules, and observation status. Its JSON Schema is in
+`schemas/openai.config.schema.json`, and the contract suite validates both
+files before a batch is allowed to proceed.
+
+Account selection is failover-only. A quota, rate-limit, timeout, or temporary
+provider failure may move to the next explicitly authorized account. Invalid
+requests, authentication failures, schema failures, and bad model output do
+not rotate accounts or hide the original defect.
+
+The manifest loader is currently validated as a separate routing boundary. The
+next integration step is to connect it to text routing and the two-witness
+image consensus service without changing the existing mock/OpenCode CLI path.
+
 The production token must be read-only. The bank must never write the serving
 API's content tables.
 
