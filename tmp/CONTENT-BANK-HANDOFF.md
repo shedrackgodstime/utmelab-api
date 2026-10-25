@@ -90,6 +90,13 @@ together.
   DeepSeek V4.1 Flash timed out on the same multimodal request. Free listing
   therefore means available to try, not a reliable second witness for this
   bank.
+- Authorized tests against a real local bank figure measured 12.45 seconds and
+  a schema-valid response from Nemotron on one attempt. A later primary-model
+  attempt returned provider HTTP 500, and another returned empty content after
+  consuming the output budget. The configured Llama 3.2 90B witness timed out
+  at about 16 seconds with implicit retries disabled. The provider now uses
+  the native async SDK and disables hidden SDK retries, so these timings are
+  bounded and visible to the runner.
 
 ## Next exact action
 

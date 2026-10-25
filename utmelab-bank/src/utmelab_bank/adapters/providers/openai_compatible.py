@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-import asyncio
 import base64
+import inspect
 import json
 from typing import Any, TypeVar, cast
 
@@ -64,6 +64,7 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
         client: Any | None = None,
         timeout: float = 120.0,
         max_tokens: int = 2048,
+        max_retries: int = 0,
     ) -> None:
         if not api_key:
             raise ValueError("an API key is required")
@@ -73,10 +74,17 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
             raise ValueError("an OpenAI-compatible model is required")
         if max_tokens < 1:
             raise ValueError("max_tokens must be positive")
+        if max_retries < 0:
+            raise ValueError("max_retries cannot be negative")
         if client is None:
-            from openai import OpenAI
+            from openai import AsyncOpenAI
 
-            client = OpenAI(api_key=api_key, base_url=base_url, timeout=timeout)
+            client = AsyncOpenAI(
+                api_key=api_key,
+                base_url=base_url,
+                timeout=timeout,
+                max_retries=max_retries,
+            )
         self._client = client
         self.producer = Producer(provider="openai", model=model)
         self._max_tokens = max_tokens
@@ -173,12 +181,16 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
 
     async def _complete(self, messages: list[dict[str, Any]]) -> dict[str, Any]:
         try:
-            response = await asyncio.to_thread(
-                cast(Any, self._client.chat.completions.create),
+            response_or_awaitable = cast(Any, self._client.chat.completions.create)(
                 model=self.producer.model,
                 messages=messages,
                 response_format={"type": "json_object"},
                 max_tokens=self._max_tokens,
+            )
+            response = (
+                await response_or_awaitable
+                if inspect.isawaitable(response_or_awaitable)
+                else response_or_awaitable
             )
         except Exception as exc:
             status = getattr(exc, "status_code", None)
