@@ -132,6 +132,8 @@ def test_explain_parses(staging_item: StagingItem) -> None:
     assert "every other option" in prompt
     assert "calculation steps" in prompt
     assert "Do not invent" in prompt
+    assert '"media_checks": []' in prompt
+    assert '"ocr": []' in prompt
 
 
 def test_tag_parses(catalog: CatalogSnapshot, staging_item: StagingItem) -> None:

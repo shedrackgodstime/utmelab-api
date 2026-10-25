@@ -59,6 +59,8 @@ together.
   remain available for review.
 - Passing answer reviews below 0.70 confidence now become abstentions and are
   rejected from VERIFIED instead of moving forward as trusted checks.
+- Explanation and answer-review providers now receive persisted OCR records and
+  deterministic media checks alongside image descriptions.
 
 ## Next exact action
 

@@ -260,6 +260,10 @@ class OpenCodeProvider:
     def _content_payload(self, item: StagingItem) -> dict[str, Any]:
         return {
             "content": item.content.model_dump(mode="json"),
+            "media_checks": [
+                check.model_dump(mode="json") for check in item.evidence.media_checks
+            ],
+            "ocr": [record.model_dump(mode="json") for record in item.evidence.ocr],
             "image_descriptions": [
                 description.model_dump(mode="json")
                 for description in item.evidence.image_descriptions
