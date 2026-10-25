@@ -43,9 +43,19 @@ class MockProvider:
         )
 
     async def explain(self, request: ExplainRequest) -> Explanation:
+        answer = next(
+            option.text.text
+            for option in request.item.content.options
+            if option.id == request.item.content.answer
+        )
         return Explanation(
-            key_point=RichText(text="Mock key point"),
-            body=RichText(text=f"Mock explanation for: {request.item.content.stem.text}"),
+            key_point=RichText(text=f"The canonical answer is {request.item.content.answer}."),
+            body=RichText(
+                text=(
+                    f"Mock explanation for: {request.item.content.stem.text} "
+                    f"The answer is {answer}."
+                )
+            ),
             confidence=self._confidence,
             producer=self.producer,
         )

@@ -52,6 +52,8 @@ Completed:
   evidence, and catalog ids still have to pass the production snapshot.
 - READY now refuses any media check that is not `ok`, including review-needed
   OCR evidence.
+- READY explanations must identify or support the canonical answer before a
+  row can pass the explanatory condition.
 - Real-image OCR testing found malformed `.png` files and diagram-only images.
 - The latest repository quality gate passed after the OCR preprocessing change.
 

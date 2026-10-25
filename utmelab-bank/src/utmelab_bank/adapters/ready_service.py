@@ -11,6 +11,7 @@ person decides what to do with the number.
 
 from __future__ import annotations
 
+import re
 from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field
 
@@ -126,7 +127,43 @@ def _explanatory(item: StagingItem, context: ReadyContext) -> str | None:
         return "the explanation has no key point"
     if not explanation.body.text.strip():
         return "the explanation has no body"
+    answer = next(
+        (option.text.text for option in item.content.options if option.id == item.content.answer),
+        None,
+    )
+    searchable = " ".join(
+        (explanation.key_point.text, explanation.body.text, explanation.trap.text if explanation.trap else "")
+    ).casefold()
+    candidates = [item.content.answer.casefold()]
+    if answer is not None:
+        candidates.append(answer.casefold())
+        candidates.extend(_number_words(answer))
+    if not any(_contains_answer(searchable, candidate) for candidate in candidates):
+        return "the explanation does not identify or support the canonical answer"
     return None
+
+
+def _number_words(value: str) -> tuple[str, ...]:
+    words = {
+        "0": "zero",
+        "1": "one",
+        "2": "two",
+        "3": "three",
+        "4": "four",
+        "5": "five",
+        "6": "six",
+        "7": "seven",
+        "8": "eight",
+        "9": "nine",
+        "10": "ten",
+    }
+    return tuple(word for token, word in words.items() if token in value.split() or value.strip() == token)
+
+
+def _contains_answer(text: str, candidate: str) -> bool:
+    if len(candidate) == 1:
+        return re.search(rf"\b{re.escape(candidate)}\b", text) is not None
+    return candidate in text
 
 
 def _resolvable(item: StagingItem, context: ReadyContext) -> str | None:

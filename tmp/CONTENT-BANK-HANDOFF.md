@@ -45,6 +45,9 @@ together.
 - OCR.space current-bank baseline: 7/17 cases met every required text fragment.
   Ten failures are retained as genuine OCR misses involving small labels, map
   text, diagram symbols, and numeric annotations.
+- READY now rejects explanations that do not identify or support the canonical
+  answer. The deterministic check accepts the answer option ID, option text,
+  or a simple numeric word equivalent.
 
 ## Next exact action
 
@@ -69,6 +72,10 @@ After OCR scoring:
    claims.
 4. Run the full non-live suite.
 5. Update this handoff and the roadmap, then commit and push.
+
+The focused explanation pipeline tests pass. A later full non-live run became
+non-responsive after partial progress, so do not treat that interrupted run as
+a complete suite result.
 
 ## Recent commits
 

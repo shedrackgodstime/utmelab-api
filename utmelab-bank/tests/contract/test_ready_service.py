@@ -220,6 +220,29 @@ def test_a_row_with_no_explanation_is_not_ready() -> None:
     assert ReadyCondition.EXPLANATORY in bundle.report.unmet()
 
 
+def test_an_explanation_that_does_not_support_the_answer_is_not_ready() -> None:
+    item = make_item()
+    assert item.evidence.explanation is not None
+    explanation = item.evidence.explanation.model_copy(
+        update={
+            "key_point": RichText(text="The answer is unrelated."),
+            "body": RichText(text="This discusses a different subject."),
+        }
+    )
+    changed = item.model_copy(
+        update={
+            "evidence": item.evidence.model_copy(
+                update={"explanation": explanation, "verifications": ()}
+            )
+        }
+    ).stamp_hashes()
+
+    bundle = service().bundle([changed])
+
+    assert ReadyCondition.EXPLANATORY in bundle.report.unmet()
+    assert "canonical answer" in bundle.report.reason_for(ReadyCondition.EXPLANATORY)[0]
+
+
 def test_a_row_with_no_hash_is_not_ready() -> None:
     bundle = service().bundle([make_item(with_hash=False)])
 
