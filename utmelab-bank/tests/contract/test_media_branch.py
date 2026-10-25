@@ -19,8 +19,11 @@ from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.hashing import bundle_fingerprint
 from utmelab_bank.domain.models import (
     Content,
+    DescribeImageRequest,
+    ImageDescription,
     Inline,
     MediaRef,
+    OcrRecord,
     Option,
     Producer,
     Provenance,
@@ -155,6 +158,48 @@ def test_the_media_branch_describes_the_asset() -> None:
     assert result.state is State.DESCRIBED
     assert len(result.evidence.image_descriptions) == 1
     assert result.evidence.image_descriptions[0].asset_id == result.media_assets[0].asset_id
+
+
+def test_ocr_is_saved_and_passed_to_the_describer() -> None:
+    class FakeOcr:
+        producer = Producer(provider="ocr.space", model="engine-2")
+
+        async def extract(self, *, asset_id: str, data: bytes, mime: str) -> OcrRecord:
+            assert data
+            assert mime == "image/png"
+            return OcrRecord(
+                asset_id=asset_id,
+                producer=self.producer,
+                text="label from figure",
+            )
+
+    class CapturingDescriber:
+        producer = Producer(provider="test", model="vision")
+
+        def __init__(self) -> None:
+            self.requests: list[DescribeImageRequest] = []
+
+        async def describe(self, request: DescribeImageRequest) -> ImageDescription:
+            self.requests.append(request)
+            return ImageDescription(
+                asset_id=request.asset.asset_id,
+                description="a figure",
+                facts=(),
+                confidence=0.5,
+                producer=self.producer,
+            )
+
+    describer = CapturingDescriber()
+    service = MediaService(
+        ingestor(FakeMediaStore()),
+        describer,
+        ocr=FakeOcr(),
+    )
+
+    result = asyncio.run(service.apply(make_item(), capture=True))
+
+    assert result.evidence.ocr[0].text == "label from figure"
+    assert describer.requests[0].context == "OCR text extracted from this image:\nlabel from figure"
 
 
 def test_a_row_that_crashed_at_media_ready_is_resumed() -> None:

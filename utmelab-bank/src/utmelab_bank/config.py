@@ -39,6 +39,7 @@ PROD_READONLY_TOKEN = "TURSO_PROD_AUTH_TOKEN_READONLY"
 BANK_DATABASE_URL = "TURSO_BANK_DATABASE_URL"
 BANK_AUTH_TOKEN = "TURSO_BANK_AUTH_TOKEN"
 GITLAB_TOKEN = "GITLAB_TOKEN"
+OCR_API_KEY = "OCR_API_KEY"
 NVIDIA_API_KEY = "NVIDIA_API_KEY"
 
 #: The GitLab project that holds the figure bytes, ``group/project``.
@@ -106,6 +107,7 @@ class Settings:
     bank_database_url: str
     bank_auth_token: str
     gitlab_token: str | None = None
+    ocr_api_key: str | None = None
     nvidia_api_key: str | None = None
     #: ``group/project`` of the GitLab media project.
     gitlab_media_repo: str | None = None
@@ -172,6 +174,7 @@ def load_settings(*, require: bool = True) -> Settings:
         bank_database_url=bank_url,
         bank_auth_token=bank_token,
         gitlab_token=values.get(GITLAB_TOKEN) or None,
+        ocr_api_key=values.get(OCR_API_KEY) or None,
         nvidia_api_key=values.get(NVIDIA_API_KEY) or None,
         gitlab_media_repo=values.get(GITLAB_MEDIA_REPO) or None,
         gitlab_host=values.get(GITLAB_HOST) or "gitlab.com",

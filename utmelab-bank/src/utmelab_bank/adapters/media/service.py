@@ -21,6 +21,7 @@ from utmelab_bank.domain.ports import ImageDescriber
 
 from .describe import ImageDescriberService
 from .ingest import MediaIngestor
+from .ocr_space import OcrSpaceClient
 
 
 class MediaService:
@@ -30,9 +31,18 @@ class MediaService:
     captured are the bytes the witnesses see.
     """
 
-    def __init__(self, ingestor: MediaIngestor, describer: ImageDescriber) -> None:
+    def __init__(
+        self,
+        ingestor: MediaIngestor,
+        describer: ImageDescriber,
+        ocr: OcrSpaceClient | None = None,
+    ) -> None:
         self._ingestor = ingestor
-        self._describer = ImageDescriberService(describer, reader=ingestor.store)
+        self._describer = ImageDescriberService(
+            describer,
+            reader=ingestor.store,
+            ocr=ocr,
+        )
 
     async def apply(self, item: StagingItem, *, capture: bool = False) -> StagingItem:
         """Finalize a captured row.

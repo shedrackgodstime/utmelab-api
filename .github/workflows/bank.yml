@@ -115,6 +115,7 @@ jobs:
       TURSO_BANK_AUTH_TOKEN: ${{ secrets.TURSO_UTMELAB_BANK_DB_TOKEN }}
       GITLAB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
       GITLAB_MEDIA_REPO: shedrackgodstime/utmelab-bank
+      OCR_API_KEY: ${{ secrets.OCR_API_KEY }}
       OPENCODE_VERSION: 2.0.28
       UTMELAB_BANK_AI_MODEL: ${{ inputs.model }}
     steps:

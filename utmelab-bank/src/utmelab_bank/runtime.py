@@ -23,6 +23,7 @@ from utmelab_bank.adapters.media import (
     HttpMediaFetcher,
     MediaIngestor,
     MediaService,
+    OcrSpaceClient,
     PillowMediaValidator,
     create_describer,
     create_media_store,
@@ -269,7 +270,10 @@ async def open_pipeline_runtime(
                 model=settings.ai_image_model,
                 second_model=settings.ai_image_second_model,
             )
-            runtime.media = MediaService(ingestor, describer)
+            ocr = OcrSpaceClient(settings.ocr_api_key) if settings.ocr_api_key else None
+            if ocr is not None:
+                runtime.add_closer(ocr.close)
+            runtime.media = MediaService(ingestor, describer, ocr=ocr)
 
         yield runtime
 

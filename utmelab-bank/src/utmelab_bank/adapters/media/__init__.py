@@ -20,6 +20,7 @@ from .ingest import (
     ingest_media_task,
 )
 from .local_store import LocalMediaStore
+from .ocr_space import OcrSpaceClient, OcrSpaceError
 from .paths import extension_for, is_blob_name, name_for, path_for, sha256_of
 from .service import MediaService
 
@@ -31,6 +32,8 @@ __all__ = [
     "HttpMediaFetcher",
     "ImageDescriberService",
     "LocalMediaStore",
+    "OcrSpaceClient",
+    "OcrSpaceError",
     "MediaAuthError",
     "MediaError",
     "MediaFetcher",

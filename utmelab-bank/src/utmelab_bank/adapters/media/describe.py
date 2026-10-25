@@ -4,10 +4,11 @@ from utmelab_bank.adapters.providers import OpenCodeProvider
 from utmelab_bank.config import DEFAULT_AI_IMAGE_MODEL, DEFAULT_AI_IMAGE_SECOND_MODEL
 from utmelab_bank.domain.capabilities import DescribeImageRequest
 from utmelab_bank.domain.enums import State
-from utmelab_bank.domain.models import Producer, StagingItem
+from utmelab_bank.domain.models import OcrRecord, Producer, StagingItem
 from utmelab_bank.domain.ports import ImageDescriber, MediaStore
 
 from .consensus import DescribeImageConsensus
+from .ocr_space import OcrSpaceClient, OcrSpaceError
 
 
 class ImageDescriberService:
@@ -18,9 +19,15 @@ class ImageDescriberService:
     provider never has to turn a served url back into a local file.
     """
 
-    def __init__(self, describer: ImageDescriber, reader: MediaStore | None = None) -> None:
+    def __init__(
+        self,
+        describer: ImageDescriber,
+        reader: MediaStore | None = None,
+        ocr: OcrSpaceClient | None = None,
+    ) -> None:
         self.describer = describer
         self.reader = reader
+        self.ocr = ocr
 
     async def describe(self, item: "StagingItem") -> "StagingItem":
         """Describe every media asset, then move the row to described.
@@ -31,14 +38,36 @@ class ImageDescriberService:
         than one it carries.
         """
         descriptions = []
+        ocr_records: list[OcrRecord] = []
         for asset in item.media_assets:
             data = await self.reader.read(asset.storage_url) if self.reader is not None else None
-            request = DescribeImageRequest(asset=asset, context=None, data=data)
+            ocr_context: str | None = None
+            if self.ocr is not None and data is not None:
+                try:
+                    ocr_record = await self.ocr.extract(
+                        asset_id=asset.asset_id,
+                        data=data,
+                        mime=asset.mime,
+                    )
+                except OcrSpaceError as exc:
+                    ocr_record = OcrRecord(
+                        asset_id=asset.asset_id,
+                        producer=self.ocr.producer,
+                        error=str(exc),
+                    )
+                ocr_records.append(ocr_record)
+                if ocr_record.text:
+                    ocr_context = f"OCR text extracted from this image:\n{ocr_record.text}"
+            request = DescribeImageRequest(asset=asset, context=ocr_context, data=data)
             description = await self.describer.describe(request)
             descriptions.append(description)
 
-        # Update evidence with descriptions
-        evidence = item.evidence.model_copy(update={"image_descriptions": tuple(descriptions)})
+        evidence = item.evidence.model_copy(
+            update={
+                "ocr": tuple(ocr_records),
+                "image_descriptions": tuple(descriptions),
+            }
+        )
 
         updated = item.model_copy(update={"evidence": evidence})
         return updated.transition_to(State.DESCRIBED)

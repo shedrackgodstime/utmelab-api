@@ -358,6 +358,26 @@ class MediaAsset(DomainModel):
     readable: bool = True
 
 
+class OcrWord(DomainModel):
+    """One OCR word and its pixel bounds in the source image."""
+
+    text: NonEmptyStr
+    left: int = Field(ge=0)
+    top: int = Field(ge=0)
+    width: int = Field(ge=0)
+    height: int = Field(ge=0)
+
+
+class OcrRecord(DomainModel):
+    """OCR enrichment for one captured asset, including a durable failure."""
+
+    asset_id: Sha256
+    producer: Producer
+    text: str = ""
+    words: tuple[OcrWord, ...] = ()
+    error: NonEmptyStr | None = None
+
+
 class Inline(DomainModel):
     """One inline on a piece of text.
 
@@ -493,6 +513,7 @@ class Content(DomainModel):
 
 
 class Evidence(DomainModel):
+    ocr: tuple[OcrRecord, ...] = ()
     image_descriptions: tuple["ImageDescription", ...] = ()
     tag: Optional["TagProposal"] = None
     explanation: Optional["Explanation"] = None
