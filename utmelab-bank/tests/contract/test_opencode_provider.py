@@ -86,6 +86,8 @@ def test_describe_parses_text_and_attaches_file(tmp_path: Path, media: MediaAsse
     assert result.producer.provider == "opencode"
     argv, _ = runner.calls[0]
     assert argv[:5] == ["run", "--format", "json", "-m", "opencode/test"]
+    assert "readable labels" in argv[-1]
+    assert "Do not infer the answer" in argv[-1]
     assert "-f" in argv
     assert str(path) in argv
 

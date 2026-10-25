@@ -119,8 +119,13 @@ class OpenCodeProvider:
 
     async def describe(self, request: DescribeImageRequest) -> ImageDescription:
         prompt = self._prompt(
-            "Describe the attached image for an exam question. Return JSON with keys "
-            "description (string), facts (array of strings), confidence (number from 0 to 1).",
+            "Describe only what is visibly supported by the attached image for an exam "
+            "question. Include readable labels, values, units, axes, arrows, and "
+            "relationships when visible. Treat OCR as supporting evidence, correct it "
+            "when the image disagrees, and state uncertainty instead of guessing. Do "
+            "not infer the answer or topic from the figure alone. Return JSON with "
+            "keys description (string), facts (array of strings), confidence (number "
+            "from 0 to 1).",
             {"context": request.context, "mime": request.asset.mime},
         )
         # The asset url is where the row serves the figure, not where the
