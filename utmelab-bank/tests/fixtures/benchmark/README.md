@@ -28,3 +28,12 @@ Check the manifest without contacting a provider:
 ```bash
 python scripts/check_benchmark_manifest.py
 ```
+
+Check the local media files as well:
+
+```bash
+python scripts/run_media_benchmark.py
+```
+
+The media store is local and ignored by Git, so this command is expected to
+report missing cases on a fresh checkout until the bank media store is present.
