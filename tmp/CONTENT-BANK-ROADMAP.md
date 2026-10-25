@@ -67,6 +67,8 @@ Completed:
 - READY explanations must address every distractor as well as the canonical
   answer.
 - Latest complete non-live suite: 410 passed, 13 deselected.
+- Provider selection is contract-tested and unknown providers fail closed.
+- Latest complete non-live suite: 413 passed, 13 deselected.
 - Real-image OCR testing found malformed `.png` files and diagram-only images.
 - The latest repository quality gate passed after the OCR preprocessing change.
 
