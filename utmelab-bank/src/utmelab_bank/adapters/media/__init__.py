@@ -8,7 +8,7 @@ from .consensus import (
     MissingWitness,
     WitnessError,
 )
-from .describe import ImageDescriberService, create_describer
+from .describe import ImageDescriberService, create_configured_describer, create_describer
 from .errors import MediaAuthError, MediaError, MediaPublishError
 from .factory import create_media_store
 from .gitlab_store import GitLabMediaStore
@@ -47,6 +47,7 @@ __all__ = [
     "PillowMediaValidator",
     "WitnessError",
     "create_describer",
+    "create_configured_describer",
     "create_media_store",
     "extension_for",
     "ingest_media_task",

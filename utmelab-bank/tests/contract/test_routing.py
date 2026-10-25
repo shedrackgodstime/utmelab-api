@@ -16,7 +16,8 @@ def test_manifest_resolves_only_authorized_configured_image_routes() -> None:
     )
 
     assert [route.model_id for route in routes] == [
-        "@cf/meta/llama-4-scout-17b-16e-instruct"
+        "@cf/meta/llama-4-scout-17b-16e-instruct",
+        "nvidia/nemotron-3.5-super-vl-120b-a12b",
     ]
     assert routes[0].base_url.endswith("accounts/account-1/ai/v1")
     assert "cloudflare-secret" not in repr(routes[0])

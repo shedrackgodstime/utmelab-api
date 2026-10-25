@@ -35,8 +35,8 @@ M = TypeVar("M", bound=BaseModel)
 class OpenAICompatibleError(RuntimeError):
     """A classified failure from an OpenAI-compatible provider."""
 
-    def __init__(self, message: str, *, category: str = "provider", status: int | None = None) -> None:
-        self.provider = "openai"
+    def __init__(self, message: str, *, category: str = "provider", status: int | None = None, provider: str = "openai") -> None:
+        self.provider = provider
         self.category = category
         self.status = status
         label = f"provider={self.provider} category={category}"
@@ -61,6 +61,8 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
         api_key: str,
         base_url: str,
         model: str,
+        provider_name: str = "openai",
+        account_id: str | None = None,
         client: Any | None = None,
         timeout: float = 120.0,
         max_tokens: int = 2048,
@@ -86,7 +88,9 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
                 max_retries=max_retries,
             )
         self._client = client
-        self.producer = Producer(provider="openai", model=model)
+        self.producer = Producer(provider=provider_name, model=model)
+        self._provider_name = provider_name
+        self.account_id = account_id
         self._max_tokens = max_tokens
 
     async def describe(self, request: DescribeImageRequest) -> ImageDescription:
@@ -208,7 +212,9 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
                 category = "timeout"
             else:
                 category = "transport"
-            raise OpenAICompatibleError(str(exc), category=category, status=status) from exc
+            raise OpenAICompatibleError(
+                str(exc), category=category, status=status, provider=self._provider_name
+            ) from exc
         try:
             content = response.choices[0].message.content
             payload = json.loads(content)
@@ -216,7 +222,9 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
                 raise TypeError("response JSON must be an object")
             return cast(dict[str, Any], payload)
         except (AttributeError, IndexError, TypeError, json.JSONDecodeError) as exc:
-            raise OpenAICompatibleError("response was not a JSON object", category="output") from exc
+            raise OpenAICompatibleError(
+                "response was not a JSON object", category="output", provider=self._provider_name
+            ) from exc
 
     def _text_messages(self, instruction: str, payload: object) -> list[dict[str, Any]]:
         return [
@@ -240,4 +248,8 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
         try:
             return model_type.model_validate(data)
         except Exception as exc:
-            raise OpenAICompatibleError("provider output failed schema validation", category="output") from exc
+            raise OpenAICompatibleError(
+                "provider output failed schema validation",
+                category="output",
+                provider=self._provider_name,
+            ) from exc

@@ -38,7 +38,7 @@ from utmelab_bank.tasks import (
 )
 
 LOG_LEVELS = ("DEBUG", "INFO", "WARNING", "ERROR")
-PROVIDERS = ("mock", "opencode", "openai")
+PROVIDERS = ("mock", "opencode", "openai", "config")
 
 
 def _add_output(parser: argparse.ArgumentParser) -> None:
@@ -198,7 +198,9 @@ async def _execute(args: argparse.Namespace) -> list[TaskResult]:
             return [await run_named("capture", runtime, options)]
 
     if command == "tag":
-        async with open_pipeline_runtime(settings, provider_name=provider, text=True) as runtime:
+        async with open_pipeline_runtime(
+            settings, provider_name=provider, routing_task="topic_classification", text=True
+        ) as runtime:
             return [await run_named("tag", runtime, options)]
 
     if command == "media":

@@ -25,6 +25,7 @@ from utmelab_bank.adapters.media import (
     MediaService,
     OcrSpaceClient,
     PillowMediaValidator,
+    create_configured_describer,
     create_describer,
     create_media_store,
 )
@@ -223,6 +224,7 @@ async def open_pipeline_runtime(
     source_name: str | None = None,
     fixture_dir: Path | None = None,
     provider_name: str | None = None,
+    routing_task: str = "question_explanation",
     media: bool = False,
     text: bool = False,
     image: bool = False,
@@ -254,7 +256,9 @@ async def open_pipeline_runtime(
         if text:
             if provider_name is None:
                 raise RuntimeError("a text step needs a provider")
-            provider = create_text_provider(provider_name, settings=settings)
+            provider = create_text_provider(
+                provider_name, settings=settings, task=routing_task
+            )
             runtime.tagger = provider
             runtime.explainer = provider
             runtime.verifier = provider
@@ -265,21 +269,24 @@ async def open_pipeline_runtime(
             ingestor = runtime.ingestor
             if ingestor is None:
                 raise RuntimeError("the figure describer needs the media branch")
-            describer = create_describer(
-                provider=provider_name,
-                model=(
-                    settings.openai_image_model
-                    if provider_name == "openai"
-                    else settings.ai_image_model
-                ),
-                second_model=(
-                    settings.openai_image_second_model
-                    if provider_name == "openai"
-                    else settings.ai_image_second_model
-                ),
-                api_key=settings.nvidia_api_key if provider_name == "openai" else None,
-                base_url=settings.openai_base_url if provider_name == "openai" else None,
-            )
+            if provider_name == "config":
+                describer = create_configured_describer()
+            else:
+                describer = create_describer(
+                    provider=provider_name,
+                    model=(
+                        settings.openai_image_model
+                        if provider_name == "openai"
+                        else settings.ai_image_model
+                    ),
+                    second_model=(
+                        settings.openai_image_second_model
+                        if provider_name == "openai"
+                        else settings.ai_image_second_model
+                    ),
+                    api_key=settings.nvidia_api_key if provider_name == "openai" else None,
+                    base_url=settings.openai_base_url if provider_name == "openai" else None,
+                )
             ocr = OcrSpaceClient(settings.ocr_api_key) if settings.ocr_api_key else None
             if ocr is not None:
                 runtime.add_closer(ocr.close)

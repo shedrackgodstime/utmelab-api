@@ -6,6 +6,7 @@ from utmelab_bank.domain.capabilities import DescribeImageRequest
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.models import OcrRecord, Producer, StagingItem
 from utmelab_bank.domain.ports import ImageDescriber, MediaStore
+from utmelab_bank.routing import select_routes
 
 from .checks import check_media
 from .consensus import DescribeImageConsensus
@@ -131,5 +132,26 @@ def create_describer(
         (
             OpenCodeProvider(model=model),
             OpenCodeProvider(model=second_model),
+        )
+    )
+
+
+def create_configured_describer() -> "ImageDescriber":
+    """Build the image consensus from the validated provider manifest."""
+    routes = select_routes("image_description")
+    if len(routes) < 2:
+        raise ValueError(
+            "the provider manifest has fewer than two usable image witnesses"
+        )
+    return DescribeImageConsensus(
+        tuple(
+            OpenAICompatibleProvider(
+                api_key=route.api_key,
+                base_url=route.base_url,
+                model=route.model_id,
+                provider_name=route.provider,
+                account_id=route.account_id,
+            )
+            for route in routes[:2]
         )
     )
