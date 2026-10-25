@@ -119,8 +119,8 @@ class ExplainService:
 
 
 def _evidence_present(*, item_text: str, item: StagingItem) -> bool:
-    """The quoted evidence must appear in the stem or the passage."""
-    needle = item_text.strip()
+    """The quoted evidence must appear in trusted row text or OCR evidence."""
+    needle = _normalise_evidence(item_text)
     if not needle:
         return False
     haystacks = [item.content.stem.text]
@@ -128,4 +128,9 @@ def _evidence_present(*, item_text: str, item: StagingItem) -> bool:
         haystacks.append(option.text.text)
     if item.passage is not None:
         haystacks.append(item.passage.text.text)
-    return any(needle in hay for hay in haystacks)
+    haystacks.extend(record.text for record in item.evidence.ocr if record.text)
+    return any(needle in _normalise_evidence(hay) for hay in haystacks)
+
+
+def _normalise_evidence(value: str) -> str:
+    return " ".join(value.split()).casefold()

@@ -14,6 +14,9 @@ from utmelab_bank.adapters.providers.tagging import (
 from utmelab_bank.domain.capabilities import TagRequest
 from utmelab_bank.domain.models import (
     CatalogSnapshot,
+    Evidence,
+    OcrRecord,
+    Producer,
     StagingItem,
     TagProposal,
 )
@@ -97,6 +100,37 @@ def test_tag_service_refuses_evidence_that_is_not_in_the_question(
     service = TagService(FabricatingTagger())
     with pytest.raises(ValueError, match="evidence does not appear"):
         asyncio.run(service.tag(staging_item, catalog))
+
+
+def test_tag_service_accepts_normalised_ocr_evidence(
+    staging_item: StagingItem, catalog: CatalogSnapshot
+) -> None:
+    item = staging_item.model_copy(
+        update={
+            "evidence": Evidence(
+                ocr=(
+                    OcrRecord(
+                        asset_id="a" * 64,
+                        producer=Producer(provider="ocr.space", model="engine-2"),
+                        text="Voltage   220 V",
+                    ),
+                )
+            )
+        }
+    )
+
+    class OcrTagger(MockProvider):
+        async def tag(self, request: TagRequest) -> TagProposal:
+            return make_proposal(
+                topic_id="t1",
+                subtopic_id="s1",
+                evidence="voltage 220 v",
+            )
+
+    result = asyncio.run(TagService(OcrTagger()).tag(item, catalog))
+
+    assert result.evidence.tag is not None
+    assert result.evidence.tag.evidence == "voltage 220 v"
 
 
 def test_explain_service_stores_the_explanation(
