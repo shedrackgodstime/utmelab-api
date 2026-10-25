@@ -48,6 +48,10 @@ together.
 - READY now rejects explanations that do not identify or support the canonical
   answer. The deterministic check accepts the answer option ID, option text,
   or a simple numeric word equivalent.
+- The restricted sandbox appeared to hang at the thread-backed database test.
+  The same database tests pass outside the sandbox, and the complete non-live
+  suite passes there: 407 passed, 13 deselected. This was an execution
+  environment limitation, not a Turso adapter failure.
 
 ## Next exact action
 

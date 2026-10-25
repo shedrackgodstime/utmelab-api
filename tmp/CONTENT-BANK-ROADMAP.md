@@ -54,6 +54,8 @@ Completed:
   OCR evidence.
 - READY explanations must identify or support the canonical answer before a
   row can pass the explanatory condition.
+- The complete non-live suite passes outside the restricted sandbox: 407
+  passed, 13 deselected.
 - Real-image OCR testing found malformed `.png` files and diagram-only images.
 - The latest repository quality gate passed after the OCR preprocessing change.
 
