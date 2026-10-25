@@ -106,7 +106,7 @@
       "slug": "waec-10-questions-on-poetry-note",
       "subject": "english-language",
       "exam": "WAEC",
-      "name": "10. questions on Poetry NOTE",
+      "name": "Essay Writing",
       "order": 10,
       "weight": 0,
       "objectives": [],
@@ -130,23 +130,51 @@
     },
     {
       "slug": "waec-pure-vowels",
-      "topic": "waec-1-consonants",
+      "topic": "waec-1-vowels-pure-vowels-and-diphthongs",
       "name": "Pure Vowels",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-diphthongs",
-      "topic": "waec-1-consonants",
+      "topic": "waec-1-vowels-pure-vowels-and-diphthongs",
       "name": "Diphthongs",
       "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-triphthongs-candidates-should-be-able-to-recognize-and-produ",
-      "topic": "waec-1-consonants",
+      "topic": "waec-1-vowels-pure-vowels-and-diphthongs",
       "name": "Triphthongs Candidates should be able to recognize and produce all the significant sound contrasts in the vowel system of English. For the guidance of candidates, a few examples of such contrasts are given below",
       "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-rhymes",
+      "topic": "waec-3-rhymes",
+      "name": "Rhymes",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-word-stress-syllable-structure",
+      "topic": "waec-4-word-stress-syllable-structure",
+      "name": "Word stress and syllable structure",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-emphatic-stress-intonation-patterns",
+      "topic": "waec-5-emphatic-stress-intonation-patterns",
+      "name": "Emphatic stress and intonation patterns",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-phonetic-symbols",
+      "topic": "waec-6-phonetic-symbols",
+      "name": "Phonetic symbols",
+      "order": 1,
       "objectives": []
     },
     {
@@ -161,6 +189,34 @@
       "topic": "waec-10-questions-on-poetry-note",
       "name": "argument/debate;",
       "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-report-writing",
+      "topic": "waec-10-questions-on-poetry-note",
+      "name": "Report writing",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-article-writing",
+      "topic": "waec-10-questions-on-poetry-note",
+      "name": "Article writing",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-expository-writing",
+      "topic": "waec-10-questions-on-poetry-note",
+      "name": "Expository writing",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-creative-writing",
+      "topic": "waec-10-questions-on-poetry-note",
+      "name": "Creative writing",
+      "order": 6,
       "objectives": []
     }
   ]
