@@ -93,8 +93,9 @@ Exit check: every provider or prompt change can be compared against the same
 rows.
 
 Current checkpoint: the manifest and local validation test are in
-`utmelab-bank/tests/fixtures/benchmark/`. The 14 cases still need manual
-expected observations before they can become verified gold cases.
+`utmelab-bank/tests/fixtures/benchmark/`. The 14 image observations are now
+manually labelled. The complete cases still need source-question, catalogue,
+answer, and explanation labels before they become verified gold cases.
 
 ### Phase 3: Deterministic media checks
 

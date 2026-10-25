@@ -5,8 +5,11 @@ content providers. The images stay in the bank media store. They are not copied
 into the source repository.
 
 Each manifest entry needs a real `asset_id` and a manually checked expected
-observation before it becomes a gold case. A provider result is evidence for
-comparison, not the expected answer.
+observation before it becomes a media gold case. The current labels verify only
+the image itself. The complete case remains unverified until its source
+question, catalogue placement, canonical answer, and explanation requirements
+are checked. A provider result is evidence for comparison, not the expected
+answer.
 
 Required observations include:
 

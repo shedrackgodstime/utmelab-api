@@ -24,4 +24,5 @@ def test_golden_manifest_has_unique_pending_cases() -> None:
     assert len({entry["asset_id"] for entry in entries}) == len(entries)
     assert {entry["kind"] for entry in entries} >= REQUIRED_KINDS
     assert all(entry["verified"] is False for entry in entries)
-    assert all(entry["expected"] is None for entry in entries)
+    assert all(entry["expected"] for entry in entries)
+    assert all(entry["media_verified"] is True for entry in entries)
