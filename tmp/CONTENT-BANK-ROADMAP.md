@@ -48,6 +48,8 @@ Completed:
 - OCR preprocessing validates images, handles transparency, corrects
   orientation, and enlarges small captures.
 - OCR and deterministic media-check evidence survives staging database reloads.
+- Tag evidence accepts only normalized text from the row or accepted OCR
+  evidence, and catalog ids still have to pass the production snapshot.
 - Real-image OCR testing found malformed `.png` files and diagram-only images.
 - The latest repository quality gate passed after the OCR preprocessing change.
 
