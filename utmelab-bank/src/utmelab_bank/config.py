@@ -41,6 +41,10 @@ BANK_AUTH_TOKEN = "TURSO_BANK_AUTH_TOKEN"
 GITLAB_TOKEN = "GITLAB_TOKEN"
 OCR_API_KEY = "OCR_API_KEY"
 NVIDIA_API_KEY = "NVIDIA_API_KEY"
+OPENAI_BASE_URL = "OPENAI_BASE_URL"
+OPENAI_MODEL = "OPENAI_MODEL"
+OPENAI_IMAGE_MODEL = "OPENAI_IMAGE_MODEL"
+OPENAI_IMAGE_SECOND_MODEL = "OPENAI_IMAGE_SECOND_MODEL"
 
 #: The GitLab project that holds the figure bytes, ``group/project``.
 GITLAB_MEDIA_REPO = "GITLAB_MEDIA_REPO"
@@ -64,6 +68,10 @@ AI_IMAGE_SECOND_MODEL = "UTMELAB_BANK_AI_IMAGE_SECOND_MODEL"
 #: What we have today. Two different free models on the OpenCode provider,
 #: both picked for vision work; swap them in ``.env`` without touching code.
 DEFAULT_AI_MODEL = "opencode/deepseek-v4.1-flash-free"
+DEFAULT_OPENAI_BASE_URL = "https://integrate.api.nvidia.com/v1"
+DEFAULT_OPENAI_MODEL = "nvidia/llama-3.1-nemotron-ultra-253b-v1"
+DEFAULT_OPENAI_IMAGE_MODEL = "nvidia/nemotron-3.5-super-vl-120b-a12b"
+DEFAULT_OPENAI_IMAGE_SECOND_MODEL = "meta/llama-3.2-90b-vision-instruct"
 DEFAULT_AI_IMAGE_MODEL = "opencode/nemotron-3.5-super-vl-free"
 DEFAULT_AI_IMAGE_SECOND_MODEL = "opencode/glm-5.3-flash-free"
 
@@ -109,6 +117,10 @@ class Settings:
     gitlab_token: str | None = None
     ocr_api_key: str | None = None
     nvidia_api_key: str | None = None
+    openai_base_url: str = DEFAULT_OPENAI_BASE_URL
+    openai_model: str = DEFAULT_OPENAI_MODEL
+    openai_image_model: str = DEFAULT_OPENAI_IMAGE_MODEL
+    openai_image_second_model: str = DEFAULT_OPENAI_IMAGE_SECOND_MODEL
     #: ``group/project`` of the GitLab media project.
     gitlab_media_repo: str | None = None
     gitlab_host: str = "gitlab.com"
@@ -176,6 +188,12 @@ def load_settings(*, require: bool = True) -> Settings:
         gitlab_token=values.get(GITLAB_TOKEN) or None,
         ocr_api_key=values.get(OCR_API_KEY) or None,
         nvidia_api_key=values.get(NVIDIA_API_KEY) or None,
+        openai_base_url=values.get(OPENAI_BASE_URL) or DEFAULT_OPENAI_BASE_URL,
+        openai_model=values.get(OPENAI_MODEL) or DEFAULT_OPENAI_MODEL,
+        openai_image_model=values.get(OPENAI_IMAGE_MODEL) or DEFAULT_OPENAI_IMAGE_MODEL,
+        openai_image_second_model=(
+            values.get(OPENAI_IMAGE_SECOND_MODEL) or DEFAULT_OPENAI_IMAGE_SECOND_MODEL
+        ),
         gitlab_media_repo=values.get(GITLAB_MEDIA_REPO) or None,
         gitlab_host=values.get(GITLAB_HOST) or "gitlab.com",
         media_branch=values.get(MEDIA_BRANCH) or "main",

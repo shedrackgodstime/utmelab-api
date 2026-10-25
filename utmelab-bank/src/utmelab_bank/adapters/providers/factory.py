@@ -10,13 +10,16 @@ from __future__ import annotations
 from utmelab_bank.config import ConfigError, Settings
 
 from .mock import MockProvider
+from .openai_compatible import OpenAICompatibleProvider
 from .opencode import OpenCodeProvider
 
 #: Every text provider the runner knows how to build.
-KNOWN_PROVIDERS = ("mock", "opencode")
+KNOWN_PROVIDERS = ("mock", "opencode", "openai")
 
 
-def create_text_provider(name: str, *, settings: Settings) -> MockProvider | OpenCodeProvider:
+def create_text_provider(
+    name: str, *, settings: Settings
+) -> MockProvider | OpenCodeProvider | OpenAICompatibleProvider:
     """Build a provider by name.
 
     The returned object satisfies the tag, explain and verify ports. A name
@@ -26,6 +29,16 @@ def create_text_provider(name: str, *, settings: Settings) -> MockProvider | Ope
         return MockProvider()
     if name == "opencode":
         return OpenCodeProvider(model=settings.ai_model)
+    if name == "openai":
+        if not settings.nvidia_api_key:
+            raise ConfigError("the openai-compatible provider needs NVIDIA_API_KEY")
+        if not settings.openai_model:
+            raise ConfigError("the openai-compatible provider needs OPENAI_MODEL")
+        return OpenAICompatibleProvider(
+            api_key=settings.nvidia_api_key,
+            base_url=settings.openai_base_url,
+            model=settings.openai_model,
+        )
     known = ", ".join(KNOWN_PROVIDERS)
     raise ConfigError(f"unknown provider {name!r}; known providers: {known}")
 

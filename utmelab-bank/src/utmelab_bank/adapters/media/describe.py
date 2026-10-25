@@ -1,6 +1,6 @@
 """Describe image capability: run image describers on media assets."""
 
-from utmelab_bank.adapters.providers import OpenCodeProvider
+from utmelab_bank.adapters.providers import OpenAICompatibleProvider, OpenCodeProvider
 from utmelab_bank.config import DEFAULT_AI_IMAGE_MODEL, DEFAULT_AI_IMAGE_SECOND_MODEL
 from utmelab_bank.domain.capabilities import DescribeImageRequest
 from utmelab_bank.domain.enums import State
@@ -94,6 +94,8 @@ def create_describer(
     provider: str = "opencode",
     model: str = DEFAULT_AI_IMAGE_MODEL,
     second_model: str = DEFAULT_AI_IMAGE_SECOND_MODEL,
+    api_key: str | None = None,
+    base_url: str | None = None,
 ) -> "ImageDescriber":
     """The two-witness describer for figures.
 
@@ -108,6 +110,17 @@ def create_describer(
             (
                 MockProvider(),
                 MockProvider(producer=Producer(provider="mock", model="mock-v2")),
+            )
+        )
+    if provider == "openai":
+        if not api_key or not base_url:
+            raise ValueError("the openai-compatible describer needs an API key and base URL")
+        if not model or not second_model or model == second_model:
+            raise ValueError("a figure needs two different models to witness it")
+        return DescribeImageConsensus(
+            (
+                OpenAICompatibleProvider(api_key=api_key, base_url=base_url, model=model),
+                OpenAICompatibleProvider(api_key=api_key, base_url=base_url, model=second_model),
             )
         )
     if provider != "opencode":

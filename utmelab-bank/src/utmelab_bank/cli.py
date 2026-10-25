@@ -19,6 +19,7 @@ from pathlib import Path
 
 from utmelab_bank.adapters.database import DatabaseError
 from utmelab_bank.adapters.media import MediaError
+from utmelab_bank.adapters.providers import OpenAICompatibleError
 from utmelab_bank.adapters.providers.opencode import OpenCodeError
 from utmelab_bank.adapters.sources import create_source
 from utmelab_bank.config import ConfigError, load_settings
@@ -37,7 +38,7 @@ from utmelab_bank.tasks import (
 )
 
 LOG_LEVELS = ("DEBUG", "INFO", "WARNING", "ERROR")
-PROVIDERS = ("mock", "opencode")
+PROVIDERS = ("mock", "opencode", "openai")
 
 
 def _add_output(parser: argparse.ArgumentParser) -> None:
@@ -280,7 +281,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     except ConfigError as exc:
         print(f"config: {exc}", file=sys.stderr)
         return 2
-    except (DatabaseError, MediaError, OpenCodeError) as exc:
+    except (DatabaseError, MediaError, OpenCodeError, OpenAICompatibleError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
     except KeyboardInterrupt:

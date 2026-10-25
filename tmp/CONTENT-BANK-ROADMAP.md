@@ -191,8 +191,10 @@ Add providers only when the benchmark identifies a gap.
 
 - Keep the mock provider for deterministic tests.
 - Keep OpenCode as an optional provider, not as a guaranteed service.
-- Add the direct NVIDIA provider through its OpenAI-compatible API when the
-  NVIDIA key is ready.
+- Add a generic OpenAI-compatible provider through the official `openai`
+  package. NVIDIA is the first configured endpoint, selected by
+  `NVIDIA_API_KEY` plus `OPENAI_BASE_URL` and model settings, so additional
+  compatible services do not require another provider class.
 - Keep provider errors separate from content errors and bank errors.
 - Add quota, authentication, timeout, transport, protocol, and output-schema
   categories for every provider.

@@ -1,6 +1,11 @@
 import pytest
 
-from utmelab_bank.adapters.providers import MockProvider, OpenCodeProvider, create_text_provider
+from utmelab_bank.adapters.providers import (
+    MockProvider,
+    OpenAICompatibleProvider,
+    OpenCodeProvider,
+    create_text_provider,
+)
 from utmelab_bank.config import ConfigError, Settings
 
 
@@ -26,6 +31,17 @@ def test_factory_builds_opencode_with_configured_model() -> None:
 
     assert isinstance(provider, OpenCodeProvider)
     assert provider.producer.model == "opencode/test-model"
+
+
+def test_factory_builds_openai_compatible_provider_from_nvidia_settings() -> None:
+    values = settings().__dict__.copy()
+    values.update(nvidia_api_key="nvidia-key", openai_model="meta/test-model")
+    configured = Settings(**values)
+
+    provider = create_text_provider("openai", settings=configured)
+
+    assert isinstance(provider, OpenAICompatibleProvider)
+    assert provider.producer.model == "meta/test-model"
 
 
 def test_factory_rejects_unknown_provider_without_fallback() -> None:

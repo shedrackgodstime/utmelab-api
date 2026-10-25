@@ -267,8 +267,18 @@ async def open_pipeline_runtime(
                 raise RuntimeError("the figure describer needs the media branch")
             describer = create_describer(
                 provider=provider_name,
-                model=settings.ai_image_model,
-                second_model=settings.ai_image_second_model,
+                model=(
+                    settings.openai_image_model
+                    if provider_name == "openai"
+                    else settings.ai_image_model
+                ),
+                second_model=(
+                    settings.openai_image_second_model
+                    if provider_name == "openai"
+                    else settings.ai_image_second_model
+                ),
+                api_key=settings.nvidia_api_key if provider_name == "openai" else None,
+                base_url=settings.openai_base_url if provider_name == "openai" else None,
             )
             ocr = OcrSpaceClient(settings.ocr_api_key) if settings.ocr_api_key else None
             if ocr is not None:

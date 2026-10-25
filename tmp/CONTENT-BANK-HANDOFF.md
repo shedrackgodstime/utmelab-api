@@ -50,7 +50,7 @@ together.
   or a simple numeric word equivalent.
 - The restricted sandbox appeared to hang at the thread-backed database test.
   The same database tests pass outside the sandbox, and the complete non-live
-  suite passes there: 413 passed, 13 deselected. This was an execution
+  suite passes there: 417 passed, 13 deselected. This was an execution
   environment limitation, not a Turso adapter failure.
 - The explanation provider prompt now requires distractor reasoning,
   calculation steps, unit preservation, trusted figure evidence, and explicit
@@ -65,6 +65,16 @@ together.
   canonical answer.
 - Provider selection is now contract-tested: mock and OpenCode are selected
   explicitly, and unknown names fail without fallback.
+- A generic `openai` provider now uses the official `openai` Python package and
+  supports any OpenAI-compatible endpoint. The current configuration uses
+  `NVIDIA_API_KEY` with NVIDIA's endpoint; `OPENAI_BASE_URL`, `OPENAI_MODEL`,
+  `OPENAI_IMAGE_MODEL`, and `OPENAI_IMAGE_SECOND_MODEL` select the endpoint and
+  models without changing code. It is wired into text tasks, image consensus,
+  and the CLI.
+- The NVIDIA model list is reachable, but bounded chat smoke tests currently
+  return a provider-side 404 for one advertised model and a timeout for a
+  standard vision model. Do not launch a batch until a model-specific smoke
+  test succeeds. These errors are classified as `not_found` and `timeout`.
 
 ## Next exact action
 
