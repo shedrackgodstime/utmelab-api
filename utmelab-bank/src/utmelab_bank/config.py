@@ -69,7 +69,7 @@ AI_IMAGE_SECOND_MODEL = "UTMELAB_BANK_AI_IMAGE_SECOND_MODEL"
 #: both picked for vision work; swap them in ``.env`` without touching code.
 DEFAULT_AI_MODEL = "opencode/deepseek-v4.1-flash-free"
 DEFAULT_OPENAI_BASE_URL = "https://integrate.api.nvidia.com/v1"
-DEFAULT_OPENAI_MODEL = "nvidia/llama-3.1-nemotron-ultra-253b-v1"
+DEFAULT_OPENAI_MODEL = "nvidia/nemotron-3.5-super-vl-120b-a12b"
 DEFAULT_OPENAI_IMAGE_MODEL = "nvidia/nemotron-3.5-super-vl-120b-a12b"
 DEFAULT_OPENAI_IMAGE_SECOND_MODEL = "meta/llama-3.2-90b-vision-instruct"
 DEFAULT_AI_IMAGE_MODEL = "opencode/nemotron-3.5-super-vl-free"

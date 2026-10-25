@@ -45,6 +45,7 @@ def test_openai_compatible_provider_parses_explanation(staging_item: StagingItem
     assert result.body.text == "b"
     assert calls.calls[0]["model"] == "test/model"
     assert calls.calls[0]["response_format"] == {"type": "json_object"}
+    assert calls.calls[0]["max_tokens"] == 2048
 
 
 def test_openai_compatible_provider_parses_tag_and_verdict(

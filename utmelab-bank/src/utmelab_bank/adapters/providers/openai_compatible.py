@@ -63,6 +63,7 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
         model: str,
         client: Any | None = None,
         timeout: float = 120.0,
+        max_tokens: int = 2048,
     ) -> None:
         if not api_key:
             raise ValueError("an API key is required")
@@ -70,12 +71,15 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
             raise ValueError("an OpenAI-compatible base URL is required")
         if not model:
             raise ValueError("an OpenAI-compatible model is required")
+        if max_tokens < 1:
+            raise ValueError("max_tokens must be positive")
         if client is None:
             from openai import OpenAI
 
             client = OpenAI(api_key=api_key, base_url=base_url, timeout=timeout)
         self._client = client
         self.producer = Producer(provider="openai", model=model)
+        self._max_tokens = max_tokens
 
     async def describe(self, request: DescribeImageRequest) -> ImageDescription:
         if request.data is None:
@@ -174,6 +178,7 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
                 model=self.producer.model,
                 messages=messages,
                 response_format={"type": "json_object"},
+                max_tokens=self._max_tokens,
             )
         except Exception as exc:
             status = getattr(exc, "status_code", None)

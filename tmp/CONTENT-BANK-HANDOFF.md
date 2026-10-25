@@ -71,10 +71,12 @@ together.
   `OPENAI_IMAGE_MODEL`, and `OPENAI_IMAGE_SECOND_MODEL` select the endpoint and
   models without changing code. It is wired into text tasks, image consensus,
   and the CLI.
-- The NVIDIA model list is reachable, but bounded chat smoke tests currently
-  return a provider-side 404 for one advertised model and a timeout for a
-  standard vision model. Do not launch a batch until a model-specific smoke
-  test succeeds. These errors are classified as `not_found` and `timeout`.
+- The NVIDIA model list and bounded chat serving are verified. The selected
+  default `nvidia/nemotron-3.5-super-vl-120b-a12b` returned valid JSON through
+  the real provider after the adapter added a `max_tokens` cap. One previously
+  selected advertised model returned a provider-side 404, so model-specific
+  smoke testing remains required before changing defaults or launching a
+  batch. Errors are classified as `not_found` and `timeout`.
 
 ## Next exact action
 
