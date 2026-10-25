@@ -2,6 +2,7 @@ import asyncio
 
 import httpx
 
+from tests.media_fakes import PNG_1X1
 from utmelab_bank.adapters.media.ocr_space import OcrSpaceClient, OcrSpaceError
 
 
@@ -39,7 +40,7 @@ def test_ocr_space_extracts_text_and_word_bounds() -> None:
         "test-key",
         client=httpx.AsyncClient(transport=httpx.MockTransport(handler)),
     )
-    record = asyncio.run(client.extract(asset_id="a" * 64, data=b"image", mime="image/png"))
+    record = asyncio.run(client.extract(asset_id="a" * 64, data=PNG_1X1, mime="image/png"))
 
     assert record.text == "Question text"
     assert record.words[0].text == "Question"
@@ -62,7 +63,7 @@ def test_ocr_space_preserves_provider_failure() -> None:
     )
 
     try:
-        asyncio.run(client.extract(asset_id="a" * 64, data=b"image", mime="image/png"))
+        asyncio.run(client.extract(asset_id="a" * 64, data=PNG_1X1, mime="image/png"))
     except OcrSpaceError as exc:
         assert exc.provider == "ocr.space"
         assert exc.category == "provider"
