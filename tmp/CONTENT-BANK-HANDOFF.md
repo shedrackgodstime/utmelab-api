@@ -55,6 +55,8 @@ together.
 - The explanation provider prompt now requires distractor reasoning,
   calculation steps, unit preservation, trusted figure evidence, and explicit
   uncertainty instead of invented values or relationships.
+- Tag proposals below 0.60 confidence now abstain before catalog placement and
+  remain available for review.
 
 ## Next exact action
 
@@ -80,8 +82,9 @@ After OCR scoring:
 4. Run the full non-live suite.
 5. Update this handoff and the roadmap, then commit and push.
 
-The focused explanation pipeline tests pass, and the complete non-live suite
-also passes outside the restricted sandbox.
+The focused explanation and tagging pipeline tests pass, and the complete
+non-live suite also passes outside the restricted sandbox: 408 passed, 13
+deselected.
 
 ## Recent commits
 

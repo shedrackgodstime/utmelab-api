@@ -7,6 +7,7 @@ import pytest
 from utmelab_bank.adapters.providers.mock import MockProvider
 from utmelab_bank.adapters.providers.tagging import (
     ExplainService,
+    LowConfidenceTag,
     TagService,
     UnknownSubtopic,
     UnknownTopic,
@@ -84,6 +85,23 @@ def test_tag_service_refuses_a_subtopic_from_another_topic(
     service = TagService(WrongParentTagger())
     with pytest.raises(UnknownSubtopic):
         asyncio.run(service.tag(staging_item, catalog))
+
+
+def test_tag_service_abstains_on_low_confidence(
+    staging_item: StagingItem, catalog: CatalogSnapshot
+) -> None:
+    class UncertainTagger(MockProvider):
+        async def tag(self, request: TagRequest) -> TagProposal:
+            return TagProposal(
+                topic_id="t1",
+                subtopic_id="s1",
+                evidence=request.item.content.stem.text,
+                confidence=0.59,
+                producer=self.producer,
+            )
+
+    with pytest.raises(LowConfidenceTag, match="below"):
+        asyncio.run(TagService(UncertainTagger()).tag(staging_item, catalog))
 
 
 def test_tag_service_refuses_evidence_that_is_not_in_the_question(

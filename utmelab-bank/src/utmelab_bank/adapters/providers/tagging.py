@@ -22,11 +22,18 @@ class UnknownTopic(ValueError):
     """Raised when a provider names a topic that is not in the snapshot."""
 
 
-class TagService:
-    """Tag a staging item and refuse a choice the catalog does not contain."""
+class LowConfidenceTag(ValueError):
+    """Raised when a tag proposal must abstain for human review."""
 
-    def __init__(self, tagger: Tagger) -> None:
+
+class TagService:
+    """Tag a row only when its catalog choice and confidence are supported."""
+
+    def __init__(self, tagger: Tagger, *, min_confidence: float = 0.6) -> None:
+        if not 0.0 <= min_confidence <= 1.0:
+            raise ValueError("tag confidence threshold must be between 0 and 1")
         self._tagger = tagger
+        self._min_confidence = min_confidence
 
     async def tag(self, item: StagingItem, catalog: CatalogSnapshot) -> StagingItem:
         request = TagRequest(item=item, catalog=catalog)
@@ -40,6 +47,11 @@ class TagService:
         catalog: CatalogSnapshot,
         item: StagingItem,
     ) -> None:
+        if proposal.confidence < self._min_confidence:
+            raise LowConfidenceTag(
+                f"tag confidence {proposal.confidence:.2f} is below "
+                f"the {self._min_confidence:.2f} threshold"
+            )
         topic = next((t for t in catalog.topics if t.id == proposal.topic_id), None)
         if topic is None:
             raise UnknownTopic(

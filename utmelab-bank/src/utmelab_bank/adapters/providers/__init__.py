@@ -3,10 +3,11 @@
 from .factory import KNOWN_PROVIDERS, create_text_provider
 from .mock import MockProvider
 from .opencode import OpenCodeProvider
-from .tagging import ExplainService, TagService, UnknownSubtopic, UnknownTopic
+from .tagging import ExplainService, LowConfidenceTag, TagService, UnknownSubtopic, UnknownTopic
 
 __all__ = [
     "ExplainService",
+    "LowConfidenceTag",
     "KNOWN_PROVIDERS",
     "MockProvider",
     "OpenCodeProvider",
