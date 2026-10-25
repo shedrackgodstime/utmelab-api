@@ -1,178 +1,25 @@
 {
   "version": "1",
-  "status": "media_labels_verified_content_labels_pending",
+  "status": "current_bank_media_labels_verified_content_review_pending",
   "purpose": "Compare OCR, image descriptions, tagging, explanations, and provider failures on fixed representative media.",
-  "source": "local bank media captured 2026-10-25",
+  "source": "current bank staging rows read 2026-10-25",
   "entries": [
-    {
-      "id": "geometry-dimensions",
-      "asset_id": "024c7368664d65215adc37773691f30bd925ac27de7c78eb093cdfb0941c2e9a",
-      "kind": "labelled_diagram",
-      "expected": {
-        "ocr_must_include": ["20cm", "50cm", "90cm"],
-        "ocr_may_be_empty": false,
-        "visual_facts": ["horizontal beam", "two upward arrows", "one downward arrow labelled W"]
-      },
-      "media_verified": true,
-      "verified": false
-    },
-    {
-      "id": "angle-and-air",
-      "asset_id": "16af7024a7bbd274528e70d1033e4d960457494e6af5d55f5d9c1d1d8c472655",
-      "kind": "labelled_diagram",
-      "expected": {
-        "ocr_must_include": ["30", "air"],
-        "ocr_may_be_empty": false,
-        "visual_facts": ["rectangular block", "oblique ray entering at the top boundary", "vertical normal"]
-      },
-      "media_verified": true,
-      "verified": false
-    },
-    {
-      "id": "graph-control-point",
-      "asset_id": "3acf1c73fd8de15091532141ae835d0053263b6fd47c5538350ec2bf3f6cdea3",
-      "kind": "graph",
-      "expected": {
-        "ocr_must_include": ["Extreme", "Control point"],
-        "ocr_may_be_empty": false,
-        "visual_facts": ["fixed support", "control point Q below the support", "extreme positions P and S", "intermediate position R"]
-      },
-      "media_verified": true,
-      "verified": false
-    },
-    {
-      "id": "formula-graph",
-      "asset_id": "5320ba4c07077ea247e7fd1840b9f4d4433ce884cfc222a6f4b72f16a0c9ab0b",
-      "kind": "equation_or_formula",
-      "expected": {
-        "ocr_must_include": ["12", "10", "14"],
-        "ocr_may_be_empty": false,
-        "visual_facts": ["velocity-time graph", "constant velocity segment at 12 m/s", "segment reaches zero velocity at 14 s"]
-      },
-      "media_verified": true,
-      "verified": false
-    },
-    {
-      "id": "electrical_diagram",
-      "asset_id": "5e77dd27bd697fa2e2295a924ccfb0fb80e9e4e1b25476d896e1d89d284b4fdb",
-      "kind": "electrical_diagram",
-      "expected": {
-        "ocr_must_include": ["0.5H", "45", "220V"],
-        "ocr_may_be_empty": false,
-        "visual_facts": ["series circuit", "inductor", "45 ohm resistor", "alternating-voltage source"]
-      },
-      "media_verified": true,
-      "verified": false
-    },
-    {
-      "id": "diagram_without_clear_text",
-      "asset_id": "61b8123ef9f74f40a1da89bf892643e20f2f411afdfdb5d5d18df3a21c888acf",
-      "kind": "diagram_only",
-      "expected": {
-        "ocr_must_include": [],
-        "ocr_may_be_empty": true,
-        "visual_facts": ["diamond-shaped resistor network", "three labelled resistor branches", "lower source or component branch"]
-      },
-      "media_verified": true,
-      "verified": false
-    },
-    {
-      "id": "air_diagram",
-      "asset_id": "a41f22952a28d2f04069782f679e7bfd286a3c640169cfaacb020c7fcafc21cc",
-      "kind": "labelled_diagram",
-      "expected": {
-        "ocr_must_include": ["air"],
-        "ocr_may_be_empty": false,
-        "visual_facts": ["rectangular medium", "ray from Q toward R", "vertical reference line at the right boundary"]
-      },
-      "media_verified": true,
-      "verified": false
-    },
-    {
-      "id": "low_resolution_diagram",
-      "asset_id": "a460bfa8bff640b5f5c0a22463d44a6a097037d45329f0d896cd4be1d0612988",
-      "kind": "low_resolution",
-      "expected": {
-        "ocr_must_include": [],
-        "ocr_may_be_empty": true,
-        "visual_facts": ["low-resolution circular diagram", "vertical central line", "concentric circular paths", "direction arrows"]
-      },
-      "media_verified": true,
-      "verified": false
-    },
-    {
-      "id": "malformed-media-one",
-      "asset_id": "19b8ac52fee937c46dd1c188c08cd16549b10c0855b2e5d09a732271eb20d8f7",
-      "kind": "malformed_media",
-      "expected": {
-        "ocr_must_include": [],
-        "ocr_may_be_empty": true,
-        "visual_facts": [],
-        "media_status": "malformed"
-      },
-      "media_verified": true,
-      "verified": false
-    },
-    {
-      "id": "physics-force-diagram",
-      "asset_id": "ab11b2e10acc2551f3b59a7c3ca5d068fb638eb3dcb9644abff48feb4050e753",
-      "kind": "labelled_physics_diagram",
-      "expected": {
-        "ocr_must_include": ["upthrust", "viscous drag", "15N", "mass", "10Kg"],
-        "ocr_may_be_empty": false,
-        "visual_facts": ["container or fluid vessel", "upward force arrow", "viscous-drag arrow", "mass label"]
-      },
-      "media_verified": true,
-      "verified": false
-    },
-    {
-      "id": "diagram-without-extractable-text",
-      "asset_id": "cdaf3a447825eb3a180177feb2e3eecbe828eab1c69e6160a4d49633db0810f4",
-      "kind": "diagram_only",
-      "expected": {
-        "ocr_must_include": [],
-        "ocr_may_be_empty": true,
-        "visual_facts": ["central circular feature", "concentric circular lines", "marked diagonal branches", "no dependable text labels"]
-      },
-      "media_verified": true,
-      "verified": false
-    },
-    {
-      "id": "force-vectors",
-      "asset_id": "d58b4721ed4639e21843f08773946a5170c22938d6919e46d1dac14bfdba197d",
-      "kind": "calculation_diagram",
-      "expected": {
-        "ocr_must_include": ["4N", "8N", "15N", "12N"],
-        "ocr_may_be_empty": false,
-        "visual_facts": ["four perpendicular force vectors", "4N points left", "8N points right", "15N points up", "12N points down"]
-      },
-      "media_verified": true,
-      "verified": false
-    },
-    {
-      "id": "malformed-media-two",
-      "asset_id": "e063813f4102ff17f3a63d2bebf9deba8e05724bfca11ae4912736723f2ea5d6",
-      "kind": "malformed_media",
-      "expected": {
-        "ocr_must_include": [],
-        "ocr_may_be_empty": true,
-        "visual_facts": [],
-        "media_status": "malformed"
-      },
-      "media_verified": true,
-      "verified": false
-    },
-    {
-      "id": "measurement-diagram",
-      "asset_id": "f42de0fcca5cfcd905b68fff5aef35dbb27c5d13ae72be6c04852a3f28aa052a",
-      "kind": "labelled_diagram",
-      "expected": {
-        "ocr_must_include": ["10cm", "100N", "85cm"],
-        "ocr_may_be_empty": false,
-        "visual_facts": ["horizontal beam", "triangular pivot", "downward 100N force", "upward T force"]
-      },
-      "media_verified": true,
-      "verified": false
-    }
+    {"id":"neco-biology-anatomy","asset_id":"201cb0d5a1eb67525309fce01a54e11282ffbc0e86efd4001a3324a0adac3ef9","kind":"diagram_only","source":{"item_id":"myschool:42292","exam":"NECO","subject":"biology","year":2005,"answer_option":"c","catalog":null},"expected":{"ocr_must_include":[],"ocr_may_be_empty":true,"visual_facts":["anatomical bone diagram","bilateral structure"]},"media_verified":true,"verified":false},
+    {"id":"neco-physics-force-work","asset_id":"523c3d6bbf498c75d57de8d9dd1257c387f8e4d2fb99feeac6860f777c19f426","kind":"calculation_diagram","source":{"item_id":"myschool:42958","exam":"NECO","subject":"physics","year":2004,"answer_option":"b","catalog":null},"expected":{"ocr_must_include":["P","Q","x"],"ocr_may_be_empty":false,"visual_facts":["body P","force arrow","horizontal distance x","point Q"]},"media_verified":true,"verified":false},
+    {"id":"jamb-biology-structure","asset_id":"8d709ebf73ddef75db2dc8843950f29c792e05fb741063261e4073ca06fa7147","kind":"labelled_diagram","source":{"item_id":"myschool:74398","exam":"JAMB","subject":"biology","year":2025,"answer_option":"d","catalog":{"topic_id":"variety-of-organisms-adaptations","subtopic_id":"structural-adaptations-in-organisms-biology","catalog_version":"sha256:f35633efcb2e21d1"}},"expected":{"ocr_must_include":["I","II"],"ocr_may_be_empty":false,"visual_facts":["labelled biological structure","labels I and II","curved outer form"]},"media_verified":true,"verified":false},
+    {"id":"waec-agriculture-water-cycle","asset_id":"cf9858d71514a225aa3f992a4c0dd5f9814d9ac31e3a6a692352b45269d846cd","kind":"labelled_diagram","source":{"item_id":"myschool:77044","exam":"WAEC","subject":"agricultural-science","year":2025,"answer_option":"d","catalog":null},"expected":{"ocr_must_include":["CLOUD"],"ocr_may_be_empty":false,"visual_facts":["cloud","water body","plants","arrows between land, water, and cloud"]},"media_verified":true,"verified":false},
+    {"id":"waec-biology-phagocytosis","asset_id":"ffd28740cd6d333af3d2e64d8293f4cfa253a323092ca4668f560fff6119c056","kind":"biology_diagram","source":{"item_id":"myschool:77319","exam":"WAEC","subject":"biology","year":2025,"answer_option":"b","catalog":{"topic_id":"waec-1-classification","subtopic_id":"waec-living-and-non-living-things","catalog_version":"sha256:5c734d0f61e92c4a"}},"expected":{"ocr_must_include":["Cell","Bacterium"],"ocr_may_be_empty":false,"visual_facts":["cell","bacterium","bacterium engulfed","two-stage biological process"]},"media_verified":true,"verified":false},
+    {"id":"waec-computer-logic-gate","asset_id":"d9d93e5e4182629bdeb34cdd9e86a520c91fccf14f26325bb4180fb5e125461c","kind":"electrical_diagram","source":{"item_id":"myschool:76800","exam":"WAEC","subject":"computer-studies","year":2025,"answer_option":"d","catalog":null},"expected":{"ocr_must_include":["X","Y","Z"],"ocr_may_be_empty":false,"visual_facts":["logic-gate symbol","inputs X and Y","output Z"]},"media_verified":true,"verified":false},
+    {"id":"waec-mathematics-venn-region","asset_id":"367d8bbdc08e5b550d440a0e3417d0d191573a66f328e814824bc45c9cdc376e","kind":"diagram_only","source":{"item_id":"myschool:75808","exam":"WAEC","subject":"general-mathematics","year":2025,"answer_option":"c","catalog":null},"expected":{"ocr_must_include":["U","P","Q","R"],"ocr_may_be_empty":false,"visual_facts":["universal set rectangle","three overlapping circles","shaded intersection region"]},"media_verified":true,"verified":false},
+    {"id":"waec-geography-map","asset_id":"1d28dcce8a5ce11027fe846af53e3dad457e83ea71edcf7a51429e76408072cb","kind":"map","source":{"item_id":"myschool:77189","exam":"WAEC","subject":"geography","year":2025,"answer_option":"b","catalog":null},"expected":{"ocr_must_include":["DAMBO"],"ocr_may_be_empty":false,"visual_facts":["topographic map","contour lines","map legend","DAMBO DISTRICT heading"]},"media_verified":true,"verified":false},
+    {"id":"waec-marketing-product-label","asset_id":"bf6e9981b5208b20d65dcd43d2f224c46bdc21a9d0ed9908fea940999d04e941","kind":"labelled_diagram","source":{"item_id":"myschool:77127","exam":"WAEC","subject":"marketing","year":2025,"answer_option":"b","catalog":null},"expected":{"ocr_must_include":["Y","Z"],"ocr_may_be_empty":false,"visual_facts":["product container","box or display frame","labels Y and Z"]},"media_verified":true,"verified":false},
+    {"id":"waec-physics-mirror-rays","asset_id":"416102882cfc23c2f9735e03178b68a7878e93d5951bd5435d746c16f07fc90a","kind":"physics_diagram","source":{"item_id":"myschool:76365","exam":"WAEC","subject":"physics","year":2025,"answer_option":"c","catalog":null},"expected":{"ocr_must_include":["30","mirror"],"ocr_may_be_empty":false,"visual_facts":["two plane mirrors","incident and reflected rays","30 degree marking"]},"media_verified":true,"verified":false},
+    {"id":"waec-physics-inductor-circuit","asset_id":"5357eea363ffce39f0d895cca04f6f33af87825ce127d4846748cb31e0d4ce63","kind":"electrical_diagram","source":{"item_id":"myschool:76389","exam":"WAEC","subject":"physics","year":2025,"answer_option":"c","catalog":null},"expected":{"ocr_must_include":["240V","100","2A"],"ocr_may_be_empty":false,"visual_facts":["series circuit","inductor coil","2 A ammeter","240 V source"]},"media_verified":true,"verified":false},
+    {"id":"waec-physics-rlc-vectors","asset_id":"31f695b872c4f5f9ba67322d17ed64ca596b16de404c05db4458edd8975219c4","kind":"calculation_diagram","source":{"item_id":"myschool:76398","exam":"WAEC","subject":"physics","year":2025,"answer_option":"a","catalog":null},"expected":{"ocr_must_include":["R","C","L"],"ocr_may_be_empty":false,"visual_facts":["series RLC circuit","voltage vector diagrams","resistor, capacitor, and inductor labels"]},"media_verified":true,"verified":false},
+    {"id":"waec-mathematics-sketch-graph","asset_id":"18eafdf7f187c1f411b6e4d36504f44757a6d12cae4f4e184547cd09295a90e3","kind":"graph","source":{"item_id":"myschool:75829","exam":"WAEC","subject":"general-mathematics","year":2025,"answer_option":"a","catalog":null},"expected":{"ocr_must_include":["0, 3","1, 0"],"ocr_may_be_empty":false,"visual_facts":["coordinate axes","straight line","intercepts labelled (0,3) and (1,0)","shaded half-plane"]},"media_verified":true,"verified":false},
+    {"id":"waec-physics-current-waveform","asset_id":"3b768caa86f327b5b7489af27799f39f6626905af2d1a73e1065a936a6b6f70c","kind":"equation_or_formula","source":{"item_id":"myschool:76405","exam":"WAEC","subject":"physics","year":2025,"answer_option":"b","catalog":null},"expected":{"ocr_must_include":["Current","Time"],"ocr_may_be_empty":false,"visual_facts":["sinusoidal waveform","current axis","time axis","amplitude marking"]},"media_verified":true,"verified":false},
+    {"id":"waec-computer-table-cell","asset_id":"b25e74cac53f5fb67d63f01fa0bc5b54ca6190cb3c4f07a3b49ff99bca0b82ce","kind":"table","source":{"item_id":"myschool:76891","exam":"WAEC","subject":"computer-studies","year":2025,"answer_option":"d","catalog":null},"expected":{"ocr_must_include":["BOOKS","SENIOR","SCHOOLS"],"ocr_may_be_empty":false,"visual_facts":["table with columns A to E","rows labelled 1, 2, 3, and 5","numeric and text cells"]},"media_verified":true,"verified":false},
+    {"id":"malformed-media-one","asset_id":"19b8ac52fee937c46dd1c188c08cd16549b10c0855b2e5d09a732271eb20d8f7","kind":"malformed_media","expected":{"ocr_must_include":[],"ocr_may_be_empty":true,"visual_facts":[],"media_status":"malformed"},"media_verified":true,"verified":false},
+    {"id":"malformed-media-two","asset_id":"e063813f4102ff17f3a63d2bebf9deba8e05724bfca11ae4912736723f2ea5d6","kind":"malformed_media","expected":{"ocr_must_include":[],"ocr_may_be_empty":true,"visual_facts":[],"media_status":"malformed"},"media_verified":true,"verified":false}
   ]
 }

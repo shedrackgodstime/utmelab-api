@@ -4,11 +4,13 @@ from pathlib import Path
 MANIFEST = Path(__file__).parents[1] / "fixtures" / "benchmark" / "manifest.json"
 REQUIRED_KINDS = {
     "labelled_diagram",
+    "biology_diagram",
     "graph",
     "equation_or_formula",
     "electrical_diagram",
     "diagram_only",
-    "low_resolution",
+    "map",
+    "table",
     "malformed_media",
     "calculation_diagram",
 }

@@ -28,7 +28,7 @@ def main() -> int:
         asset_id = entry["asset_id"]
         path = args.media_root / asset_id[:2] / f"{asset_id}.png"
         if not path.is_file():
-            matches = tuple(args.media_root.rglob(f"{asset_id}.png"))
+            matches = tuple(args.media_root.rglob(f"{asset_id}.*"))
             path = matches[0] if matches else path
         if not path.is_file():
             results.append({"id": entry["id"], "status": "missing"})
@@ -36,9 +36,10 @@ def main() -> int:
             continue
 
         data = path.read_bytes()
+        mime = "image/jpeg" if path.suffix.lower() in {".jpg", ".jpeg"} else "image/png"
         asset = MediaAsset(
             asset_id=asset_id,
-            mime="image/png",
+            mime=mime,
             byte_size=len(data),
             storage_url=path.name,
             fetched_at=datetime.now(UTC),

@@ -43,3 +43,10 @@ Score an existing OCR result without making another provider request:
 ```bash
 python scripts/score_ocr_benchmark.py /path/to/ocr-results.json
 ```
+
+Run one bounded OCR pass against the current local media store:
+
+```bash
+python scripts/run_ocr_benchmark.py > /tmp/ocr-results.json
+python scripts/score_ocr_benchmark.py /tmp/ocr-results.json
+```
