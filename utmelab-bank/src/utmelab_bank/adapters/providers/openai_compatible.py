@@ -97,7 +97,9 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
         prompt = (
             "Describe only visible facts in this exam figure. Include labels, values, units, "
             "axes, arrows, and relationships when readable. Do not infer the answer. "
-            "Return JSON with description, facts, and confidence."
+            'Return exactly {"description": "string", "facts": ["string"], '
+            '"confidence": 0.0}. Every facts entry must be a plain string, never an object. '
+            "Do not add other fields."
         )
         data = await self._complete(
             [
@@ -186,6 +188,7 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
                 messages=messages,
                 response_format={"type": "json_object"},
                 max_tokens=self._max_tokens,
+                temperature=0,
             )
             response = (
                 await response_or_awaitable

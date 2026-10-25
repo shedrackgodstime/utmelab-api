@@ -98,6 +98,14 @@ together.
   the native async SDK and disables hidden SDK retries, so these timings are
   bounded and visible to the runner.
 
+- Cloudflare Workers AI was tested through the same generic provider using the
+  real local figure and `@cf/meta/llama-4-scout-17b-16e-instruct`. It returned a
+  schema-valid description in 8.19 seconds with correct velocity-time facts.
+  Its reported confidence was `0.0`, so it is promising for speed and factual
+  extraction but not yet accepted as a production witness. Cloudflare's Llama
+  3.2 11B Vision endpoint was not used because it requires a Meta license
+  agreement that was not accepted automatically.
+
 ## Next exact action
 
 Run or repeat the bounded OCR pass with external network access from
