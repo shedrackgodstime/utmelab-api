@@ -74,6 +74,27 @@ async def test_snapshot_refuses_an_unknown_subject() -> None:
         await reader.snapshot("JAMB", "not-a-subject")
 
 
+async def test_snapshot_refuses_a_dangling_subtopic() -> None:
+    class DanglingClient(FakeClient):
+        async def execute(self, statement: str, args: list[Any] | None = None) -> Any:
+            result = await super().execute(statement, args)
+            if "FROM subtopics" in statement:
+                return FakeResult(
+                    [
+                        (
+                            "orphan",
+                            "missing-topic",
+                            "Orphan",
+                            json.dumps([]),
+                        )
+                    ]
+                )
+            return result
+
+    with pytest.raises(LookupError, match="missing topics"):
+        await ProductionCatalogReader(DanglingClient()).snapshot("JAMB", "biology")
+
+
 async def test_snapshot_filters_country_scoped_topics() -> None:
     class CountryClient(FakeClient):
         async def execute(self, statement: str, args: list[Any] | None = None) -> Any:

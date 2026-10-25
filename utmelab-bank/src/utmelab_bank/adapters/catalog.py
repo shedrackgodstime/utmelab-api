@@ -40,6 +40,17 @@ class ProductionCatalogReader:
 
         topics = await self._topics(exam, subject, country)
         subtopics = await self._subtopics(topics)
+        topic_ids = {topic.id for topic in topics}
+        dangling = sorted(
+            subtopic.id
+            for subtopic in subtopics
+            if subtopic.topic_id not in topic_ids
+        )
+        if dangling:
+            raise LookupError(
+                f"catalog {exam}/{subject} has subtopics with missing topics: "
+                f"{', '.join(dangling[:5])}"
+            )
 
         return CatalogSnapshot(
             version=self._version(exam, subject, country, topics, subtopics),
