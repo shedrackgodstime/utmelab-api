@@ -57,6 +57,8 @@ together.
   uncertainty instead of invented values or relationships.
 - Tag proposals below 0.60 confidence now abstain before catalog placement and
   remain available for review.
+- Passing answer reviews below 0.70 confidence now become abstentions and are
+  rejected from VERIFIED instead of moving forward as trusted checks.
 
 ## Next exact action
 

@@ -60,6 +60,8 @@ Completed:
   calculations, units, figure evidence, and uncertainty handling.
 - Tag proposals below 0.60 confidence abstain before catalog placement.
 - Latest complete non-live suite: 408 passed, 13 deselected.
+- Passing answer reviews below 0.70 confidence abstain before VERIFIED.
+- Latest complete non-live suite: 409 passed, 13 deselected.
 - Real-image OCR testing found malformed `.png` files and diagram-only images.
 - The latest repository quality gate passed after the OCR preprocessing change.
 

@@ -91,6 +91,12 @@ class FakeVerifier:
         )
 
 
+class LowConfidenceVerifier(FakeVerifier):
+    async def verify(self, request: Any) -> AnswerVerdict:
+        verdict = await super().verify(request)
+        return verdict.model_copy(update={"confidence": 0.69})
+
+
 # ── the review ──────────────────────────────────────────────────────────────
 
 
@@ -122,6 +128,15 @@ async def test_an_abstaining_review_refuses_the_item() -> None:
     assert refused.state is State.REJECTED
     assert refused.error is not None
     assert "review_abstain" in refused.error
+
+
+async def test_a_low_confidence_pass_abstains_and_refuses_the_item() -> None:
+    refused = await ReviewService(LowConfidenceVerifier()).apply(make_item())
+
+    assert refused.state is State.REJECTED
+    assert refused.error is not None
+    assert "review_abstain" in refused.error
+    assert "threshold" in refused.error
 
 
 async def test_the_review_records_the_kind_scope_model_and_reason() -> None:

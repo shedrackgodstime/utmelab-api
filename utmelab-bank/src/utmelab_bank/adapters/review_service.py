@@ -59,9 +59,13 @@ class ReviewService:
         verifier: AnswerVerifier,
         *,
         bulk: bool = True,
+        min_confidence: float = 0.7,
     ) -> None:
+        if not 0.0 <= min_confidence <= 1.0:
+            raise ValueError("review confidence threshold must be between 0 and 1")
         self._verifier = verifier
         self._kind = review_kind(bulk)
+        self._min_confidence = min_confidence
 
     @property
     def kind(self) -> VerificationKind:
@@ -84,6 +88,16 @@ class ReviewService:
 
         request = VerifyAnswerRequest(item=item, catalog=catalog)
         verdict = await self._verifier.verify(request)
+        if verdict.confidence < self._min_confidence and verdict.verdict is Verdict.PASS:
+            verdict = verdict.model_copy(
+                update={
+                    "verdict": Verdict.ABSTAIN,
+                    "reasoning": (
+                        f"confidence {verdict.confidence:.2f} is below the "
+                        f"{self._min_confidence:.2f} review threshold: {verdict.reasoning}"
+                    ),
+                }
+            )
 
         record = Verification(
             id=f"{item.id}:{self._kind.value}",
