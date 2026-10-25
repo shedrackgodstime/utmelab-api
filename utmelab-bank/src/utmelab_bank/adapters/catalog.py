@@ -42,9 +42,7 @@ class ProductionCatalogReader:
         subtopics = await self._subtopics(topics)
         topic_ids = {topic.id for topic in topics}
         dangling = sorted(
-            subtopic.id
-            for subtopic in subtopics
-            if subtopic.topic_id not in topic_ids
+            subtopic.id for subtopic in subtopics if subtopic.topic_id not in topic_ids
         )
         if dangling:
             raise LookupError(
