@@ -85,6 +85,11 @@ on:
         options:
           - opencode
           - mock
+      model:
+        description: "Optional model override, e.g. opencode/glm-5.3-flash-free"
+        type: string
+        required: false
+        default: ""
       dry_run:
         description: "List the work without writing"
         type: boolean
@@ -111,6 +116,7 @@ jobs:
       GITLAB_TOKEN: ${{ secrets.GITLAB_ACCESS_TOKEN }}
       GITLAB_MEDIA_REPO: shedrackgodstime/utmelab-bank
       OPENCODE_VERSION: 2.0.28
+      UTMELAB_BANK_AI_MODEL: ${{ inputs.model }}
     steps:
       - uses: actions/checkout@v4
 
