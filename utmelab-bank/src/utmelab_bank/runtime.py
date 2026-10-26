@@ -83,6 +83,7 @@ class Staging(Protocol):
         subject: str | None = None,
         year: int | None = None,
         country: str | None = None,
+        has_media: bool | None = None,
     ) -> tuple[StagingItem, ...]: ...
 
     async def counts_by_state(self) -> dict[str, int]: ...

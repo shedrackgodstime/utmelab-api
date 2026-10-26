@@ -144,6 +144,7 @@ class FakeStaging:
         subject: str | None = None,
         year: int | None = None,
         country: str | None = None,
+        has_media: bool | None = None,
     ) -> tuple[StagingItem, ...]:
         wanted = set(states)
         rows = [
@@ -154,6 +155,10 @@ class FakeStaging:
             and (subject is None or item.provenance.scope.subject == subject)
             and (year is None or item.provenance.scope.year == year)
             and (country is None or item.provenance.scope.country == country)
+            and (
+                has_media is None
+                or ((bool(item.media_refs) or bool(item.media_assets) or bool(item.media_blobs)) == has_media)
+            )
         ]
         return tuple(rows[:limit])
 
@@ -298,6 +303,17 @@ async def test_fetch_through_ready() -> None:
     assert row.media_assets[0].source_url is None
     assert row.content.stem.inline[0].url == row.media_assets[0].storage_url
     assert len(fetcher.urls) == 1
+
+    captured = await capture(runtime, OPTIONS)
+    assert captured.ok, captured.errors
+    # capture correctly skips already-captured items
+    assert captured.done == 0
+    assert captured.skipped == 1
+    row = await staging.load(row.id)
+    assert row is not None
+    assert row.state is State.DEDUPED
+    assert row.media_refs == ()
+    assert len(row.media_assets) == 1
 
     tagged = await tag(runtime, OPTIONS)
     assert tagged.ok, tagged.errors

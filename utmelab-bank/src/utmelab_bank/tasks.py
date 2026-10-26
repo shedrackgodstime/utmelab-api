@@ -137,6 +137,8 @@ async def _rows(
     runtime: Runtime,
     states: tuple[State, ...],
     options: TaskOptions,
+    *,
+    has_media: bool | None = None,
 ) -> tuple[StagingItem, ...]:
     """Read the rows a task can act on, within the optional scope filter.
 
@@ -152,6 +154,7 @@ async def _rows(
         subject=options.subject,
         year=options.year,
         country=options.country.upper() if options.country else None,
+        has_media=has_media,
     )
     if options.section is not None:
         rows = tuple(row for row in rows if row.provenance.scope.section == options.section)
@@ -424,13 +427,14 @@ async def capture(runtime: Runtime, options: TaskOptions) -> TaskResult:
     # A row can be tagged before its source figure is captured. Keep that
     # row eligible here, otherwise ``catalogued + media_refs`` is a dead end:
     # media refuses to describe uncaptured refs and capture never sees it.
-    rows = await _rows(runtime, (State.DEDUPED, State.CATALOGUED), options)
+    rows = await _rows(runtime, (State.DEDUPED, State.CATALOGUED), options, has_media=True)
 
     for item in rows:
         result.seen += 1
-        if not item.media_refs and not item.media_assets:
+        if not item.media_refs:
+            # Already captured (has media_assets) or no figures at all.
             result.skipped += 1
-            result.note(f"{item.id}: no figures")
+            result.note(f"{item.id}: no pending refs")
             continue
         if options.dry_run:
             result.note(f"{item.id}: would capture {len(item.media_refs)} figure(s)")
@@ -497,7 +501,7 @@ async def media(runtime: Runtime, options: TaskOptions) -> TaskResult:
     """Finalize captured figures: move to media_ready and run the witnesses."""
     service = require(runtime.media, "media service")
     result = TaskResult(task="media")
-    rows = await _rows(runtime, (State.CATALOGUED, State.MEDIA_READY), options)
+    rows = await _rows(runtime, (State.CATALOGUED, State.MEDIA_READY), options, has_media=True)
 
     for item in rows:
         result.seen += 1

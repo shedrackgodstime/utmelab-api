@@ -217,6 +217,7 @@ class StagingStore:
         subject: str | None = None,
         year: int | None = None,
         country: str | None = None,
+        has_media: bool | None = None,
     ) -> tuple[StagingItem, ...]:
         """Read the rows in any of several states, optionally within a scope.
 
@@ -238,6 +239,16 @@ class StagingStore:
         if country is not None:
             clauses.append("country = ?")
             args.append(country)
+        if has_media is True:
+            clauses.append(
+                "(media_refs IS NOT NULL AND media_refs != '[]') OR "
+                "(media_blobs IS NOT NULL AND media_blobs != '{}')"
+            )
+        elif has_media is False:
+            clauses.append(
+                "(media_refs IS NULL OR media_refs = '[]') AND "
+                "(media_blobs IS NULL OR media_blobs = '{}')"
+            )
         args.append(limit)
         result = await self._client.execute(
             f"SELECT {_COLUMNS} FROM staging_items "
