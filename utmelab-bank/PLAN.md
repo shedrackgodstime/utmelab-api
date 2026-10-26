@@ -1,7 +1,7 @@
 # Bank work queue
 
-One queue, newest facts first. Finished items leave the list. The bank facts
-below were measured on 2026-10-26 from the bank and production databases.
+One queue, newest facts first. Finished items leave the list. The numbers below
+were measured on 2026-10-27 from the bank and production databases.
 
 ## Bank state
 
@@ -12,36 +12,54 @@ below were measured on 2026-10-26 from the bank and production databases.
 | ready | 90 | |
 | rejected | 172 | |
 
-Of the 3054 deduped rows: 747 are taggable (WAEC), 2261 are NECO with no
-production catalog, 49 are WAEC agricultural-science where production holds
-two topics with blank names.
+The 49 WAEC agricultural-science rows that used to crash on the blank topic
+names can now be tagged. The 2261 NECO rows are parked until production has a
+NECO catalog.
+
+## Catalog contract
+
+Tagging can only choose a subtopic that exists under a named topic. Production
+must hold:
+
+- every topic has a non-empty name and at least one subtopic;
+- every subtopic has a non-empty name and belongs to an existing topic;
+- every subject has at least one topic and one subtopic.
+
+`utmelab-db --database prod catalog` checks all of it. Blank names and orphans
+are errors and exit 1. Coverage gaps (a subject with no topics, a topic with no
+subtopics) are warnings unless `--strict` is passed. The batch workflow runs
+the check before every task. A seeder must apply the same rules before it
+writes; this check catches what slips through.
+
+### Catalog state
+
+- The two blank WAEC agricultural-science topics are named in production and in
+  `data/waec/agricultural-science.json`: `Animal diseases` and `Parasites and
+  disease control`. The slugs stay as they are, so existing references hold.
+- 321 of the 1145 WAEC topics have no subtopics (28%). The largest gaps are
+  general-mathematics 40, office-practice 39, book-keeping 39, biology 27,
+  economics 25. Their names are syllabus fragments (`1. Resources to be
+  conserved: soil, water,`, `2. Ecological factors:`), so this looks like a
+  parse that produced headings without children, not 321 independent content
+  gaps. Re-importing the WAEC syllabus is the real repair; hand-writing 321
+  subtopics would preserve the damage.
+- All 36 NECO subjects exist with zero topics. That is the parked NECO work.
 
 ## Now
 
-1. **Catalog: blank topic names.** `ProductionCatalogReader` crashes with a
-   pydantic `ValidationError` when a topic name is empty (WAEC
-   agricultural-science, topics `waec-agricultural-science-50-` and `-51-`,
-   13 subtopics under them). Skip the unusable topic and log the defect, so
-   the rest of the subject is usable and the data problem stays visible.
-2. **Limits, not reports.** When every route fails with a retryable error the
-   run must stop, not re-attempt three providers for every remaining row.
-   Add provider exhaustion to the failover wrapper and a consecutive-failure
-   cap to every batch task, and stop the preset when a task stops.
-
-## Next
-
-3. **Process the WAEC runway.** 747 taggable deduped rows through
+1. **Process the WAEC runway.** 793 deduped WAEC rows through
    `tag -> media -> explain -> review -> ready` in batches of about 200.
-   Tagging alone is roughly 20s per row on the opencode route. The free
-   quota is expected to run out; failover covers it until every route is
-   exhausted, at which point item 2 stops the batch.
+   Tagging alone is roughly 20s per row on the opencode route. Run the catalog
+   check first, then watch the `ready` count.
+2. **Re-import the WAEC syllabus.** Fix the importer that produced the 321
+   parent-only topics, then reseed and run `utmelab-db --database prod catalog`
+   until the warnings are gone.
 
 ## Parked
 
 - **NECO.** 2261 deduped rows cannot be tagged. Production has 36 NECO
-  subjects and zero NECO topics and subtopics. The bank never writes
-  production (decision D8), so this needs a catalog seeded outside the bank.
-  Parked by decision.
+  subjects and zero topics and subtopics. The bank never writes production
+  (decision D8), so this needs a catalog seeded outside the bank.
 
 ## Tools
 
@@ -49,3 +67,7 @@ two topics with blank names.
   part of the pipeline CLI. It reads `.env` through `load_settings`, so no
   token is ever passed on a command line or pasted into a terminal. Complex
   work imports `utmelab_bank.db` instead of writing a Turso connection.
+  `utmelab-db --database prod catalog` is the catalog health check.
+- **Toolchain.** Python 3.14, in `.python-version`, `pyproject.toml` and the
+  workflows. The local venv is `.venv`; use `.venv/bin/utmelab-bank` and
+  `.venv/bin/utmelab-db`.
