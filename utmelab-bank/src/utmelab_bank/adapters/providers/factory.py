@@ -9,6 +9,7 @@ does not add a branch here.
 from __future__ import annotations
 
 from typing import Any, Callable, Coroutine, TypeVar, cast
+import logging
 
 from utmelab_bank.config import ConfigError, Settings
 from utmelab_bank.routing import ProviderRoute, select_routes
@@ -92,6 +93,7 @@ class FailoverProvider(Tagger, Explainer, AnswerVerifier):
         self._routes = routes
         self._current = 0
         self.producer = create_from_route(routes[0]).producer
+        self._log = logging.getLogger(__name__)
 
     def _build(self) -> OpenAICompatibleProvider | OpenCodeProvider:
         return create_from_route(self._routes[self._current])
@@ -104,14 +106,31 @@ class FailoverProvider(Tagger, Explainer, AnswerVerifier):
         for i in range(len(self._routes)):
             self._current = i
             self._update_current()
+            route = self._routes[i]
+            provider = self._build()
             try:
-                provider = self._build()
                 method = getattr(provider, method_name)
                 return cast(_R, await method(request))
             except BaseException as exc:
                 last_exc = exc
                 if not _is_retryable(exc) or i == len(self._routes) - 1:
+                    self._log.error(
+                        "failover exhausted for %s: route=%s provider=%s model=%s error=%s",
+                        method_name,
+                        route.model_key,
+                        route.provider,
+                        route.model_id,
+                        exc,
+                    )
                     raise
+                self._log.warning(
+                    "failover %s: route=%s provider=%s model=%s error=%s -> trying next",
+                    method_name,
+                    route.model_key,
+                    route.provider,
+                    route.model_id,
+                    exc,
+                )
         raise last_exc or ConfigError("all routes exhausted")
 
     async def explain(self, request: ExplainRequest) -> Explanation:

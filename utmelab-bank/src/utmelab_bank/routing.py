@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -11,6 +12,8 @@ from typing import Any, cast
 from jsonschema import Draft202012Validator
 
 from .config import BANK_ROOT, ConfigError, _read_env
+
+_log = logging.getLogger(__name__)
 
 #: Point the bank at an editable config directory instead of the packaged copy.
 CONFIG_DIR_ENV = "UTMELAB_BANK_CONFIG_DIR"
@@ -122,8 +125,10 @@ def select_routes(
     if task_config is None:
         raise ConfigError(f"provider routing has no task route: {task}")
     if not task_config.get("enabled", False):
+        _log.info("task %s is disabled", task)
         return ()
 
+    _log.info("selecting routes for task=%s", task)
     allowed_statuses = set(task_config.get("allowed_model_statuses", ()))
     routes: list[ProviderRoute] = []
     for candidate in sorted(task_config.get("candidates", ()), key=lambda item: item["priority"]):
@@ -132,10 +137,15 @@ def select_routes(
         model_key = candidate["model"]
         model = manifest["models"][model_key]
         if model.get("status") not in allowed_statuses:
+            _log.debug(
+                "skipping model %s in family %s: status %s not in allowed %s",
+                model_key, family, model.get("status"), allowed_statuses,
+            )
             continue
         provider_name = model["provider"]
         provider = manifest["providers"][provider_name]
         if provider.get("status") != "enabled":
+            _log.debug("skipping provider %s in family %s: disabled", provider_name, family)
             continue
         protocol = provider["protocol"]
         auth_kind = provider.get("auth", {}).get("kind", "env")
@@ -144,6 +154,10 @@ def select_routes(
         pool_name = provider["account_pool"]
         for account in sorted(manifest["accounts"][pool_name], key=lambda item: item["priority"]):
             if not account.get("enabled") or not account.get("authorized"):
+                _log.debug(
+                    "skipping account %s in pool %s: enabled=%s authorized=%s",
+                    account["id"], pool_name, account.get("enabled"), account.get("authorized"),
+                )
                 continue
             if auth_kind == "env":
                 api_key_env = account.get("api_key_env")
@@ -153,6 +167,7 @@ def select_routes(
                     )
                 api_key = env.get(api_key_env, "")
                 if not api_key:
+                    _log.debug("skipping account %s: env %s not set", account["id"], api_key_env)
                     continue
             else:
                 api_key = ""
@@ -165,20 +180,27 @@ def select_routes(
                 base_url = base_url.replace("{account_id}", account_id)
             else:
                 account_id = account["id"]
-            routes.append(
-                ProviderRoute(
-                    task=task,
-                    model_key=model_key,
-                    provider=provider_name,
-                    protocol=protocol,
-                    model_id=model["model_id"],
-                    account_id=account["id"],
-                    base_url=base_url,
-                    api_key=api_key,
-                    transport=transport,
-                    family=family,
-                )
+            route = ProviderRoute(
+                task=task,
+                model_key=model_key,
+                provider=provider_name,
+                protocol=protocol,
+                model_id=model["model_id"],
+                account_id=account["id"],
+                base_url=base_url,
+                api_key=api_key,
+                transport=transport,
+                family=family,
             )
+            routes.append(route)
+            _log.debug(
+                "selected route: family=%s provider=%s model=%s account=%s protocol=%s",
+                family, provider_name, model["model_id"], account["id"], protocol,
+            )
+    if not routes:
+        _log.warning("no usable routes found for task=%s", task)
+    else:
+        _log.info("task=%s resolved %d route(s)", task, len(routes))
     return tuple(routes)
 
 
