@@ -81,8 +81,9 @@ on:
         description: "Model provider for the step"
         type: choice
         required: true
-        default: opencode
+        default: config
         options:
+          - config
           - opencode
           - mock
       model:
@@ -132,7 +133,7 @@ jobs:
           pip install -e ".[dev]"
 
       - name: Install OpenCode CLI
-        if: ${{ inputs.provider == 'opencode' && contains(fromJSON('["tag","media","explain","review","process"]'), inputs.command) }}
+        if: ${{ (inputs.provider == 'opencode' || inputs.provider == 'config') && contains(fromJSON('["tag","media","explain","review","process"]'), inputs.command) }}
         run: |
           curl -fsSL https://opencode.ai/v2/install | bash -s -- \
             --version "$OPENCODE_VERSION" \
