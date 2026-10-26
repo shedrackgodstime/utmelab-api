@@ -119,7 +119,7 @@ def api_last_page(payload: dict[str, Any]) -> int:
         return 1
     try:
         return max(1, int(practice.get("last_page", 1)))
-    except (TypeError, ValueError):
+    except TypeError, ValueError:
         return 1
 
 

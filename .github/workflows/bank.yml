@@ -136,13 +136,17 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.13"
+          python-version: "3.14"
 
       - name: Install the bank
         working-directory: utmelab-bank
         run: |
           python -m pip install --upgrade pip
           pip install -e ".[dev]"
+
+      - name: Check the production catalog
+        working-directory: utmelab-bank
+        run: utmelab-db --database prod catalog
 
       - name: Install OpenCode CLI
         if: ${{ (inputs.provider == 'opencode' || inputs.provider == 'config') && contains(fromJSON('["tag","media","explain","review","process"]'), inputs.command) }}

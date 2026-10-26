@@ -7,7 +7,7 @@ name = "utmelab-bank"
 version = "0.1.0"
 description = "The UTME Lab content bank. Ingests, gates, reviews and hands over exam content."
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.14"
 dependencies = [
   "httpx>=0.27,<1",
   "openai>=1.68,<2",
@@ -45,13 +45,13 @@ markers = [
 ]
 
 [tool.mypy]
-python_version = "3.12"
+python_version = "3.14"
 strict = true
 plugins = ["pydantic.mypy"]
 mypy_path = "src"
 
 [tool.ruff]
-target-version = "py312"
+target-version = "py314"
 line-length = 100
 
 [tool.ruff.lint]

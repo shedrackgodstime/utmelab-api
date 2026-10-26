@@ -38,7 +38,7 @@ def validate_image_dimensions(
         with Image.open(BytesIO(data)) as image:
             image.verify()
             detected_mime = Image.MIME.get(image.format or "")
-    except (UnidentifiedImageError, OSError, ValueError):
+    except UnidentifiedImageError, OSError, ValueError:
         issues.append("unreadable_image")
 
     if not issues:

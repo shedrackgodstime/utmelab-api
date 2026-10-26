@@ -15,7 +15,7 @@ class ImageDescription(DomainModel):
     contributors: tuple[Producer, ...] = ()
 
     @model_validator(mode="after")
-    def _check(self) -> "ImageDescription":
+    def _check(self) -> ImageDescription:
         if len(set(self.contributors)) != len(self.contributors):
             raise ValueError("contributors must be unique")
         return self

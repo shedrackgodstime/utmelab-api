@@ -1,7 +1,7 @@
 """Shared value objects and constrained types."""
 
 from datetime import UTC, datetime
-from typing import Annotated, Any, Optional
+from typing import Annotated, Any
 
 from pydantic import (
     AwareDatetime,
@@ -160,12 +160,12 @@ class CatalogSnapshot(DomainModel):
     version: NonEmptyStr
     exam: NonEmptyStr
     subject: NonEmptyStr
-    topics: tuple["CatalogTopic", ...]
-    subtopics: tuple["CatalogSubtopic", ...]
+    topics: tuple[CatalogTopic, ...]
+    subtopics: tuple[CatalogSubtopic, ...]
     country: CountryCode | None = None
 
     @model_validator(mode="after")
-    def _check(self) -> "CatalogSnapshot":
+    def _check(self) -> CatalogSnapshot:
         topic_ids = [topic.id for topic in self.topics]
         topic_slugs = [topic.slug for topic in self.topics]
         if len(set(topic_ids)) != len(topic_ids):
@@ -228,7 +228,7 @@ class GateVerdict(DomainModel):
         return tuple(issue for issue in self.issues if issue.code not in cleared)
 
     @model_validator(mode="after")
-    def _check(self) -> "GateVerdict":
+    def _check(self) -> GateVerdict:
         if self.passed == bool(self.unresolved):
             raise ValueError("passed must be true exactly when every issue has been cleared")
         return self
@@ -252,7 +252,7 @@ class Verification(DomainModel):
     producer: Producer | None = None
 
     @model_validator(mode="after")
-    def _check(self) -> "Verification":
+    def _check(self) -> Verification:
         """The trust rule.
 
         A machine check must name the machine that made it, so the evidence
@@ -287,7 +287,7 @@ class SourceCapabilities(DomainModel):
     sections: bool = False
     marks: bool = False
 
-    def supports(self, capability: "SourceCapability") -> bool:
+    def supports(self, capability: SourceCapability) -> bool:
         return bool(getattr(self, capability.value, False))
 
 
@@ -297,19 +297,19 @@ class SourceProfile(DomainModel):
     exams: tuple[NonEmptyStr, ...] = Field(min_length=1)
     subjects: dict[NonEmptyStr, NonEmptyStr] = Field(min_length=1)
     years: tuple[Year, Year] | None = None
-    capabilities: "SourceCapabilities" = SourceCapabilities()
+    capabilities: SourceCapabilities = SourceCapabilities()
     rate_limit_per_second: float = Field(default=1.0, gt=0.0)
     health_url: HttpUrl | None = None
 
     @model_validator(mode="after")
-    def _check(self) -> "SourceProfile":
+    def _check(self) -> SourceProfile:
         if len(set(self.exams)) != len(self.exams):
             raise ValueError("exams must be unique")
         if self.years is not None and self.years[0] > self.years[1]:
             raise ValueError("years must be ordered low to high")
         return self
 
-    def supports(self, capability: "SourceCapability") -> bool:
+    def supports(self, capability: SourceCapability) -> bool:
         return self.capabilities.supports(capability)
 
 
@@ -415,7 +415,7 @@ class Inline(DomainModel):
     alt: NonEmptyStr | None = None
 
     @model_validator(mode="after")
-    def _check(self) -> "Inline":
+    def _check(self) -> Inline:
         if self.kind is InlineKind.IMAGE:
             if not self.url:
                 raise ValueError("image inline require a source url or a stored name")
@@ -433,10 +433,10 @@ class Inline(DomainModel):
 
 class RichText(DomainModel):
     text: Text
-    inline: tuple["Inline", ...] = ()
+    inline: tuple[Inline, ...] = ()
 
     @model_validator(mode="after")
-    def _check(self) -> "RichText":
+    def _check(self) -> RichText:
         """The load rules production applies, mirrored.
 
         ``RichText::validate`` in ``utmelab-api-old/src/bank/model.rs``: an inline
@@ -471,7 +471,7 @@ class RichText(DomainModel):
 
 class Option(DomainModel):
     id: NonEmptyStr
-    text: "RichText"
+    text: RichText
 
 
 class Passage(DomainModel):
@@ -490,13 +490,13 @@ class Passage(DomainModel):
     kind: PassageKind
     title: NonEmptyStr | None = None
     author: NonEmptyStr | None = None
-    text: "RichText"
+    text: RichText
     source_item_id: NonEmptyStr | None = None
 
 
 class Content(DomainModel):
-    stem: "RichText"
-    options: tuple["Option", ...] = Field(min_length=2, max_length=6)
+    stem: RichText
+    options: tuple[Option, ...] = Field(min_length=2, max_length=6)
     answer: NonEmptyStr
     #: What the question is worth. The mark value, not the inline list, so
     #: the two never share a name: production has a `marks` column and an
@@ -506,11 +506,11 @@ class Content(DomainModel):
     #: the passage itself: production has 28 questions pointing at 8
     #: passages, and only a reference lets two questions share one.
     passage_id: NonEmptyStr | None = None
-    source_explanation: Optional["RichText"] = None
+    source_explanation: RichText | None = None
     section: NonEmptyStr | None = None
 
     @model_validator(mode="after")
-    def _check(self) -> "Content":
+    def _check(self) -> Content:
         option_ids = [option.id for option in self.options]
         if len(set(option_ids)) != len(option_ids):
             raise ValueError("option ids must be unique")
@@ -518,7 +518,7 @@ class Content(DomainModel):
             raise ValueError("answer must name one of the options")
         return self
 
-    def rich_texts(self) -> tuple["RichText", ...]:
+    def rich_texts(self) -> tuple[RichText, ...]:
         texts: list[RichText] = [self.stem]
         texts.extend(option.text for option in self.options)
         if self.source_explanation is not None:
@@ -529,12 +529,12 @@ class Content(DomainModel):
 class Evidence(DomainModel):
     media_checks: tuple[MediaCheck, ...] = ()
     ocr: tuple[OcrRecord, ...] = ()
-    image_descriptions: tuple["ImageDescription", ...] = ()
-    tag: Optional["TagProposal"] = None
-    explanation: Optional["Explanation"] = None
-    answer_verdict: Optional["AnswerVerdict"] = None
-    gate: Optional["GateVerdict"] = None
-    verifications: tuple["Verification", ...] = ()
+    image_descriptions: tuple[ImageDescription, ...] = ()
+    tag: TagProposal | None = None
+    explanation: Explanation | None = None
+    answer_verdict: AnswerVerdict | None = None
+    gate: GateVerdict | None = None
+    verifications: tuple[Verification, ...] = ()
 
 
 class StagingItem(DomainModel):
@@ -544,27 +544,27 @@ class StagingItem(DomainModel):
     """
 
     id: NonEmptyStr  # same as provenance.external_key
-    provenance: "Provenance"
-    content: "Content"
+    provenance: Provenance
+    content: Content
     #: The passage this item introduces, if it brings one. The content names
     #: it by id, and several questions can name the same one.
-    passage: Optional["Passage"] = None
-    media_refs: tuple["MediaRef", ...] = ()
-    media_assets: tuple["MediaAsset", ...] = ()
+    passage: Passage | None = None
+    media_refs: tuple[MediaRef, ...] = ()
+    media_assets: tuple[MediaAsset, ...] = ()
     #: Decoded base64 image blobs from data: URLs, keyed by media ref key.
     #: Populated by the source adapter and used by capture_refs.
     media_blobs: dict[str, bytes] = {}
-    evidence: "Evidence" = Field(default_factory=lambda: Evidence())
-    catalog: Optional["CatalogRef"] = None
-    state: "State" = State.ACQUIRED
-    hashes: Optional["Hashes"] = None
+    evidence: Evidence = Field(default_factory=lambda: Evidence())
+    catalog: CatalogRef | None = None
+    state: State = State.ACQUIRED
+    hashes: Hashes | None = None
     created_at: AwareDatetime
     updated_at: AwareDatetime
     attempts: int = 0
     error: NonEmptyStr | None = None
 
     @model_validator(mode="after")
-    def _check(self) -> "StagingItem":
+    def _check(self) -> StagingItem:
         """The passage the content names must be the passage the item carries.
 
         A reference to a passage the item does not carry is fine, because the
@@ -583,7 +583,7 @@ class StagingItem(DomainModel):
             )
         return self
 
-    def transition_to(self, target: "State", *, error: NonEmptyStr | None = None) -> "StagingItem":
+    def transition_to(self, target: State, *, error: NonEmptyStr | None = None) -> StagingItem:
         """Move to a new state. The state machine refuses an invented move.
 
         Staying put is not a move. Re-running a stage on an item that already
@@ -603,7 +603,7 @@ class StagingItem(DomainModel):
             }
         )
 
-    def stamp_hashes(self) -> "StagingItem":
+    def stamp_hashes(self) -> StagingItem:
         """Build the row's hashes from the row itself.
 
         This is the one producer. ``payload_hash`` comes from the source
@@ -641,24 +641,24 @@ class StagingItem(DomainModel):
             update={"hashes": hashes, "updated_at": datetime.now(UTC)},
         )
 
-    def with_content_hash(self) -> "StagingItem":
+    def with_content_hash(self) -> StagingItem:
         """Stamp the content hash that a verification is written against."""
         return self.stamp_hashes()
 
     @model_validator(mode="after")
-    def _check_identity(self) -> "StagingItem":
+    def _check_identity(self) -> StagingItem:
         if self.id != self.provenance.external_key:
             raise ValueError("id must be source:source_item_id")
         return self
 
     @model_validator(mode="after")
-    def _check_evidence(self) -> "StagingItem":
+    def _check_evidence(self) -> StagingItem:
         if self.evidence.__class__.__name__ != "Evidence":
             raise ValueError("evidence must be an Evidence instance")
         return self
 
     @model_validator(mode="after")
-    def _check_catalog_scope(self) -> "StagingItem":
+    def _check_catalog_scope(self) -> StagingItem:
         if self.catalog is not None:
             scope = self.provenance.scope
             expected = (scope.exam, scope.subject, scope.year, scope.section)
@@ -673,7 +673,7 @@ class StagingItem(DomainModel):
         return self
 
     @model_validator(mode="after")
-    def _check_media(self) -> "StagingItem":
+    def _check_media(self) -> StagingItem:
         media_keys = {ref.key for ref in self.media_refs}
         asset_ids = {asset.asset_id for asset in self.media_assets}
         known_media = media_keys | asset_ids
@@ -690,7 +690,7 @@ class StagingItem(DomainModel):
         return self
 
     @model_validator(mode="after")
-    def _check_verification_hashes(self) -> "StagingItem":
+    def _check_verification_hashes(self) -> StagingItem:
         if self.hashes is None:
             return self
         for record in self.evidence.verifications:
@@ -703,7 +703,7 @@ class StagingItem(DomainModel):
 
 # Capability request/response models
 class DescribeImageRequest(DomainModel):
-    asset: "MediaAsset"
+    asset: MediaAsset
     context: NonEmptyStr | None = None
     #: The downloaded bytes, when the caller holds them. The served url is a
     #: remote address, so an adapter that needs a local file must be handed
@@ -714,26 +714,26 @@ class DescribeImageRequest(DomainModel):
 class ExplainRequest(DomainModel):
     """Explain request WITH catalog context for AI to reference syllabus."""
 
-    item: "StagingItem"
-    catalog: Optional["CatalogSnapshot"] = None
+    item: StagingItem
+    catalog: CatalogSnapshot | None = None
 
 
 class TagRequest(DomainModel):
-    item: "StagingItem"
+    item: StagingItem
     catalog: Any = None
 
 
 class VerifyAnswerRequest(DomainModel):
-    item: "StagingItem"
+    item: StagingItem
     catalog: Any = None
 
 
 class ExplainResponse(DomainModel):
-    key_point: "RichText"
-    body: "RichText"
-    trap: Optional["RichText"] = None
+    key_point: RichText
+    body: RichText
+    trap: RichText | None = None
     confidence: Confidence
-    producer: "Producer"
+    producer: Producer
 
 
 class TagResponse(DomainModel):
@@ -741,14 +741,14 @@ class TagResponse(DomainModel):
     subtopic_id: NonEmptyStr
     evidence: NonEmptyStr
     confidence: Confidence
-    producer: "Producer"
+    producer: Producer
 
 
 class VerifyAnswerResponse(DomainModel):
     verdict: NonEmptyStr  # pass | fail | abstain
     reasoning: NonEmptyStr
     confidence: Confidence
-    producer: "Producer"
+    producer: Producer
 
 
 # Import forward-referenced types for model_rebuild. The import stays here

@@ -174,7 +174,7 @@ def _objectives(value: Any) -> tuple[str, ...]:
         return tuple(str(item) for item in value)
     try:
         parsed = json.loads(str(value))
-    except (TypeError, ValueError):
+    except TypeError, ValueError:
         return ()
     if not isinstance(parsed, list):
         return ()
@@ -190,7 +190,7 @@ def _countries(value: Any) -> tuple[str, ...]:
     else:
         try:
             parsed = json.loads(str(value))
-        except (TypeError, ValueError):
+        except TypeError, ValueError:
             return ()
     if not isinstance(parsed, list):
         return ()

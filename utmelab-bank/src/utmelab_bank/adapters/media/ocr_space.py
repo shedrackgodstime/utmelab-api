@@ -141,7 +141,7 @@ def _append_words(overlay: object, words: list[OcrWord]) -> None:
                         height=int(word.get("Height", 0)),
                     )
                 )
-            except (TypeError, ValueError):
+            except TypeError, ValueError:
                 continue
 
 

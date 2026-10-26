@@ -32,7 +32,7 @@ class ImageDescriberService:
         self.reader = reader
         self.ocr = ocr
 
-    async def describe(self, item: "StagingItem") -> "StagingItem":
+    async def describe(self, item: StagingItem) -> StagingItem:
         """Describe every media asset, then move the row to described.
 
         A row can reach this step with no assets, when every ref was skipped.
@@ -98,7 +98,7 @@ def create_describer(
     second_model: str = DEFAULT_AI_IMAGE_SECOND_MODEL,
     api_key: str | None = None,
     base_url: str | None = None,
-) -> "ImageDescriber":
+) -> ImageDescriber:
     """The two-witness describer for figures.
 
     One model twice is not an independent witness, so the two ids must differ
@@ -137,7 +137,7 @@ def create_describer(
     )
 
 
-def create_configured_describer() -> "ImageDescriber":
+def create_configured_describer() -> ImageDescriber:
     """Build the image consensus from the validated provider routing."""
     routes = select_routes("image_description")
     if len(routes) < 2:
