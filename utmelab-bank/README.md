@@ -116,6 +116,13 @@ A wheel ships a copy of `config/` at `utmelab_bank/config_data/`, so an
 installed CLI runs without the source tree. Set `UTMELAB_BANK_CONFIG_DIR`
 to point at an editable copy when you need to change routes without rebuilding.
 
+The CLI also uses `UTMELAB_BANK_VAR_DIR` for its working directory and
+`UTMELAB_BANK_ENV_FILE` to locate the `.env` file. In a source checkout
+these default to `utmelab-bank/var` and `utmelab-bank/.env`. In an installed
+wheel they default to XDG directories (`~/.local/share/utmelab-bank/var`
+and `~/.config/utmelab-bank/.env`), with a fallback to a `.env` in the
+current working directory.
+
 The production token must be read-only. The bank must never write the serving
 API's content tables.
 

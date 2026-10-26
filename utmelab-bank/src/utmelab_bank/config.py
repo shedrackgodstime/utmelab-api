@@ -23,11 +23,50 @@ from pathlib import Path
 #: The bank package root. Everything the bank owns lives under it.
 BANK_ROOT = Path(__file__).resolve().parents[2]
 
+#: True when running from a source checkout (editable install).
+_SOURCE_CHECKOUT = (BANK_ROOT / "src" / "utmelab_bank").is_dir()
+
+
+def _var_dir() -> Path:
+    """Resolve the var directory: env override, source checkout, or XDG."""
+    override = os.environ.get("UTMELAB_BANK_VAR_DIR")
+    if override:
+        return Path(override)
+    if _SOURCE_CHECKOUT and (BANK_ROOT / "var").is_dir():
+        return BANK_ROOT / "var"
+    xdg_data = os.environ.get("XDG_DATA_HOME", str(Path.home() / ".local" / "share"))
+    return Path(xdg_data) / "utmelab-bank" / "var"
+
+
+def _env_file() -> Path:
+    """Resolve the .env file: env override, source checkout, cwd, or XDG."""
+    override = os.environ.get("UTMELAB_BANK_ENV_FILE")
+    if override:
+        return Path(override)
+    if _SOURCE_CHECKOUT and (BANK_ROOT / ".env").is_file():
+        return BANK_ROOT / ".env"
+    cwd_env = Path.cwd() / ".env"
+    if cwd_env.is_file():
+        return cwd_env
+    xdg_config = os.environ.get("XDG_CONFIG_HOME", str(Path.home() / ".config"))
+    return Path(xdg_config) / "utmelab-bank" / ".env"
+
+
 #: Where local state belongs. Never the parent directory.
-VAR_DIR = BANK_ROOT / "var"
+VAR_DIR = _var_dir()
 
 #: The one file that holds the answers.
-ENV_FILE = BANK_ROOT / ".env"
+ENV_FILE = _env_file()
+
+#: Point the bank at an editable config directory instead of the packaged copy.
+CONFIG_DIR_ENV = "UTMELAB_BANK_CONFIG_DIR"
+
+#: Override the var directory.
+VAR_DIR_ENV = "UTMELAB_BANK_VAR_DIR"
+
+#: Override the .env file location.
+ENV_FILE_ENV = "UTMELAB_BANK_ENV_FILE"
+
 
 #: The variables the bank reads, and what each one is for.
 PROD_DATABASE_URL = "TURSO_PROD_DATABASE_URL"
@@ -202,3 +241,24 @@ def load_settings(*, require: bool = True) -> Settings:
         ai_image_model=values.get(AI_IMAGE_MODEL) or DEFAULT_AI_IMAGE_MODEL,
         ai_image_second_model=(values.get(AI_IMAGE_SECOND_MODEL) or DEFAULT_AI_IMAGE_SECOND_MODEL),
     )
+
+
+__all__ = [
+    "BANK_ROOT",
+    "CONFIG_DIR_ENV",
+    "ENV_FILE",
+    "ENV_FILE_ENV",
+    "VAR_DIR",
+    "VAR_DIR_ENV",
+    "ConfigError",
+    "DEFAULT_AI_IMAGE_MODEL",
+    "DEFAULT_AI_IMAGE_SECOND_MODEL",
+    "DEFAULT_AI_MODEL",
+    "DEFAULT_MEDIA_BASE_URL",
+    "DEFAULT_OPENAI_BASE_URL",
+    "DEFAULT_OPENAI_IMAGE_MODEL",
+    "DEFAULT_OPENAI_IMAGE_SECOND_MODEL",
+    "DEFAULT_OPENAI_MODEL",
+    "Settings",
+    "load_settings",
+]

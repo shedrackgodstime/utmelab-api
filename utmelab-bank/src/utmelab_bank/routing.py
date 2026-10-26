@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, cast
@@ -17,7 +18,7 @@ CONFIG_DIR_ENV = "UTMELAB_BANK_CONFIG_DIR"
 
 def _resolve_config_dir() -> Path:
     """Use an explicit override, the source checkout, or the packaged copy."""
-    override = _read_env().get(CONFIG_DIR_ENV)
+    override = os.environ.get(CONFIG_DIR_ENV)
     if override:
         return Path(override)
     source = BANK_ROOT / "config"

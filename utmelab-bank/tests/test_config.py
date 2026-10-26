@@ -80,6 +80,19 @@ def test_local_state_lives_inside_the_bank() -> None:
     assert VAR_DIR.name == "var"
 
 
+def test_env_file_override_via_env_var(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    monkeypatch.setenv("UTMELAB_BANK_ENV_FILE", str(tmp_path / "custom.env"))
+    monkeypatch.setenv("UTMELAB_BANK_VAR_DIR", str(tmp_path / "custom_var"))
+
+    # Need to reload the module to pick up new env vars
+    import importlib
+    import utmelab_bank.config as cfg
+    importlib.reload(cfg)
+
+    assert cfg.ENV_FILE == tmp_path / "custom.env"
+    assert cfg.VAR_DIR == tmp_path / "custom_var"
+
+
 def test_env_file_parsing(tmp_path: Path) -> None:
 
     path = tmp_path / ".env"
