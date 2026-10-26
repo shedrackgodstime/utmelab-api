@@ -1,6 +1,6 @@
 {
-  "$schema": "./schemas/openai.config.schema.json",
-  "version": 2,
+  "$schema": "../schema/provider.schema.json",
+  "version": 3,
   "purpose": "Capability routing for authorized OpenAI-compatible free-tier accounts.",
   "secrets": {
     "source": "environment",
@@ -28,6 +28,8 @@
       "base_url": "https://integrate.api.nvidia.com/v1",
       "account_pool": "nvidia-free",
       "status": "enabled",
+      "auth": {"kind": "env"},
+      "transport": {"kind": "http"},
       "limits": {
         "daily_free_neurons": null,
         "daily_free_neurons_known": false,
@@ -40,6 +42,8 @@
       "base_url": "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1",
       "account_pool": "cloudflare-free",
       "status": "enabled",
+      "auth": {"kind": "env"},
+      "transport": {"kind": "http"},
       "limits": {
         "daily_free_neurons": 10000,
         "daily_free_neurons_known": true,
@@ -52,6 +56,8 @@
       "base_url": "https://openrouter.ai/api/v1",
       "account_pool": "openrouter-free",
       "status": "discovery_only",
+      "auth": {"kind": "env"},
+      "transport": {"kind": "http"},
       "limits": {
         "daily_free_neurons": null,
         "daily_free_neurons_known": false,
@@ -145,40 +151,6 @@
       "capabilities": [],
       "structured_output": "unknown",
       "status": "discovery_only"
-    }
-  },
-  "tasks": {
-    "image_description": {
-      "enabled": true,
-      "strategy": "consensus",
-      "minimum_successful_witnesses": 2,
-      "require_distinct_models": true,
-      "on_insufficient_witnesses": "block",
-      "allowed_model_statuses": ["verified_candidate", "unstable_candidate"],
-      "candidates": [
-        {"model": "cloudflare-llama4-scout", "account_pool": "cloudflare-free", "priority": 10},
-        {"model": "nvidia-nemotron-super-vl", "account_pool": "nvidia-free", "priority": 20}
-      ]
-    },
-    "question_explanation": {
-      "enabled": true,
-      "strategy": "failover",
-      "on_no_provider": "block",
-      "allowed_model_statuses": ["verified_candidate", "unstable_candidate"],
-      "candidates": [
-        {"model": "nvidia-nemotron-super-vl", "account_pool": "nvidia-free", "priority": 10},
-        {"model": "cloudflare-llama4-scout", "account_pool": "cloudflare-free", "priority": 20}
-      ]
-    },
-    "topic_classification": {
-      "enabled": true,
-      "strategy": "failover",
-      "on_no_provider": "block",
-      "allowed_model_statuses": ["verified_candidate", "unstable_candidate"],
-      "candidates": [
-        {"model": "nvidia-nemotron-super-vl", "account_pool": "nvidia-free", "priority": 10},
-        {"model": "cloudflare-llama4-scout", "account_pool": "cloudflare-free", "priority": 20}
-      ]
     }
   },
   "account_selection": {

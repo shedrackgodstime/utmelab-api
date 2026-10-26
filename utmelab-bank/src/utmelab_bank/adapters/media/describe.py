@@ -1,6 +1,7 @@
 """Describe image capability: run image describers on media assets."""
 
 from utmelab_bank.adapters.providers import OpenAICompatibleProvider, OpenCodeProvider
+from utmelab_bank.adapters.providers.factory import create_from_route
 from utmelab_bank.config import DEFAULT_AI_IMAGE_MODEL, DEFAULT_AI_IMAGE_SECOND_MODEL
 from utmelab_bank.domain.capabilities import DescribeImageRequest
 from utmelab_bank.domain.enums import State
@@ -137,19 +138,8 @@ def create_describer(
 
 
 def create_configured_describer() -> "ImageDescriber":
-    """Build the image consensus from the validated provider manifest."""
+    """Build the image consensus from the validated provider routing."""
     routes = select_routes("image_description")
     if len(routes) < 2:
-        raise ValueError("the provider manifest has fewer than two usable image witnesses")
-    return DescribeImageConsensus(
-        tuple(
-            OpenAICompatibleProvider(
-                api_key=route.api_key,
-                base_url=route.base_url,
-                model=route.model_id,
-                provider_name=route.provider,
-                account_id=route.account_id,
-            )
-            for route in routes[:2]
-        )
-    )
+        raise ValueError("provider routing has fewer than two usable image witnesses")
+    return DescribeImageConsensus(tuple(create_from_route(route) for route in routes[:2]))

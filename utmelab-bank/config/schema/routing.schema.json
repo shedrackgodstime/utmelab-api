@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://utmelab.com/schemas/routing.schema.json",
+  "title": "UTMELab task routing",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "version", "tasks"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "version": {"const": 1},
+    "purpose": {"type": "string"},
+    "tasks": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["enabled", "candidates"],
+        "properties": {
+          "enabled": {"type": "boolean"},
+          "strategy": {"type": "string"},
+          "on_no_provider": {"type": "string"},
+          "on_insufficient_witnesses": {"type": "string"},
+          "minimum_successful_witnesses": {"type": "integer", "minimum": 1},
+          "require_distinct_models": {"type": "boolean"},
+          "allowed_model_statuses": {"type": "array", "items": {"type": "string"}},
+          "candidates": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["provider", "model", "priority"],
+              "properties": {
+                "provider": {"type": "string"},
+                "model": {"type": "string"},
+                "priority": {"type": "integer"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

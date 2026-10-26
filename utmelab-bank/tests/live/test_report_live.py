@@ -25,6 +25,7 @@ from utmelab_bank.adapters.report_service import ReportService
 from utmelab_bank.adapters.store.reports import ReportLogStore
 from utmelab_bank.adapters.store.staging import StagingStore
 from utmelab_bank.config import load_settings
+from utmelab_bank.domain.dedupe import duplicate_content_key
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.models import (
     Content,
@@ -86,7 +87,9 @@ async def test_the_drift_check_compares_against_what_production_holds() -> None:
 
     assert len(hashes) == len(known)
     for question in known:
-        assert hashes[question.question_id] == question.content_hash
+        assert question.content_hash == duplicate_content_key(
+            hashes[question.question_id], question.year
+        )
 
 
 async def test_a_drifted_row_is_found_against_the_real_hashes() -> None:

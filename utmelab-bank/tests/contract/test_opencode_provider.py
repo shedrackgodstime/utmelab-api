@@ -154,6 +154,29 @@ def test_verify_parses(staging_item: StagingItem) -> None:
     assert result.verdict == "pass"
 
 
+def test_configured_transport_args_replace_the_model_placeholder(staging_item: StagingItem) -> None:
+    runner = FakeRunner(text_event('{"key_point":"k","body":"b","confidence":0.5}'))
+    provider = OpenCodeProvider(
+        model="opencode/test",
+        runner=runner,
+        args=("run", "--format", "json", "-m", "{model}", "--label", "configured"),
+        retry_delay=0.0,
+    )
+
+    asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
+
+    argv, _ = runner.calls[0]
+    assert argv[:7] == [
+        "run",
+        "--format",
+        "json",
+        "-m",
+        "opencode/test",
+        "--label",
+        "configured",
+    ]
+
+
 def test_fenced_json_is_accepted(staging_item: StagingItem) -> None:
 
     fenced = '```json\n{"key_point":"k","body":"b","confidence":0.5}\n```'

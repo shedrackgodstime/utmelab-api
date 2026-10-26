@@ -103,16 +103,19 @@ class OpenCodeProvider:
         self,
         *,
         model: str,
+        provider: str = "opencode",
         runner: CommandRunner | None = None,
         timeout: float = 90.0,
         command: str = "opencode",
+        args: tuple[str, ...] | None = None,
         capabilities: frozenset[Capability] = frozenset(Capability),
         retries: int = 3,
         retry_delay: float = 5.0,
     ) -> None:
-        self.producer = Producer(provider="opencode", model=model)
+        self.producer = Producer(provider=provider, model=model)
         self.capabilities = capabilities
         self._runner = runner or SubprocessRunner(command=command)
+        self._args = args or ("run", "--format", "json", "-m", "{model}")
         self._timeout = timeout
         self._retries = max(1, retries)
         self._retry_delay = retry_delay
@@ -220,7 +223,7 @@ class OpenCodeProvider:
         )
 
     async def _complete(self, prompt: str, files: tuple[Path, ...] = ()) -> str:
-        argv = ["run", "--format", "json", "-m", self.producer.model]
+        argv = [arg.replace("{model}", self.producer.model) for arg in self._args]
         for path in files:
             argv.extend(["-f", str(path)])
         argv.append(prompt)

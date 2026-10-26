@@ -91,20 +91,26 @@ Copy `.env.example` to `.env` and provide:
 - media storage settings when figures are present;
 - provider settings when using a model-backed task.
 
-Provider and model routing lives in `openai.config`. It contains no secrets.
-The manifest names environment variables, account pools, model capabilities,
-task priorities, failover rules, and observation status. Its JSON Schema is in
-`schemas/openai.config.schema.json`, and the contract suite validates both
-files before a batch is allowed to proceed.
+Provider and model routing lives in `config/`. Each file under
+`config/providers/` describes one provider family (`openai.json` for
+OpenAI-compatible endpoints, `opencode.json` for the OpenCode CLI) and contains
+no secrets. `config/routing.json` maps each task to provider/model candidates in
+priority order, so changing a default is a config edit, not a Python edit. A
+manifest names environment variables, account pools, model capabilities,
+protocols, transports, and account status. The shared schemas are
+`config/schema/provider.schema.json` and `config/schema/routing.schema.json`,
+and the contract suite validates every manifest and the routing file before a
+batch is allowed to proceed.
 
-Account selection is failover-only. A quota, rate-limit, timeout, or temporary
-provider failure may move to the next explicitly authorized account. Invalid
-requests, authentication failures, schema failures, and bad model output do
-not rotate accounts or hide the original defect.
+The routing file lists accounts in failover order. The current text consumer
+selects the first usable route, and runtime failover across that list is the
+next integration step, not yet wired. Invalid requests, authentication
+failures, schema failures, and bad model output never rotate accounts or hide
+the original defect.
 
-The manifest loader is currently validated as a separate routing boundary. The
-next integration step is to connect it to text routing and the two-witness
-image consensus service without changing the existing mock/OpenCode CLI path.
+The routing file is the integration point for text and image work. Provider
+protocols select the adapter (`openai-compatible` for HTTP, `opencode-cli` for
+the CLI), and the two-witness image consensus reads the same candidates.
 
 The production token must be read-only. The bank must never write the serving
 API's content tables.

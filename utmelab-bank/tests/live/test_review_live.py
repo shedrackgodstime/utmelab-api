@@ -19,6 +19,8 @@ from utmelab_bank.adapters.review_service import ReviewService
 from utmelab_bank.domain.enums import State, Verdict, VerificationKind
 from utmelab_bank.domain.models import StagingItem
 
+from .provider_routes import opencode_model
+
 pytestmark = [
     pytest.mark.live,
     pytest.mark.skipif(
@@ -28,15 +30,8 @@ pytestmark = [
 ]
 
 
-def _model() -> str:
-    return os.environ.get(
-        "UTMELAB_OPENCODE_MODEL",
-        "opencode/nemotron-3-ultra-free",
-    )
-
-
 async def test_the_review_runs_against_a_real_model(staging_item: StagingItem) -> None:
-    provider = OpenCodeProvider(model=_model(), timeout=180.0)
+    provider = OpenCodeProvider(model=opencode_model(), timeout=180.0)
     service = ReviewService(provider, bulk=False)
 
     outcome = await service.review(staging_item)
@@ -50,14 +45,14 @@ async def test_the_review_runs_against_a_real_model(staging_item: StagingItem) -
     assert outcome.record.kind is VerificationKind.AI_SINGLE
     assert outcome.record.scope == ("answer", "explanation", "topic_link")
     assert outcome.record.producer is not None
-    assert outcome.record.producer.model == _model()
+    assert outcome.record.producer.model == opencode_model()
 
 
 async def test_the_review_of_a_real_question_moves_the_item(
     staging_item: StagingItem,
 ) -> None:
     """The review comes after the enrichment, and the state machine says so."""
-    provider = OpenCodeProvider(model=_model(), timeout=180.0)
+    provider = OpenCodeProvider(model=opencode_model(), timeout=180.0)
     service = ReviewService(provider, bulk=False)
     enriched = staging_item.transition_to(State.ENRICHED)
 

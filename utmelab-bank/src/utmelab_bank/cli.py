@@ -84,8 +84,8 @@ def _add_batch(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--provider",
         choices=PROVIDERS,
-        default="opencode",
-        help="model provider for the step (default: opencode)",
+        default="config",
+        help="model provider for the step (default: config)",
     )
     _add_output(parser)
 

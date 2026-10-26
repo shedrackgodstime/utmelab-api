@@ -189,15 +189,20 @@ async def test_the_conditions_describe_the_live_bank() -> None:
         "every live row names a passage that exists"
     )
 
-    # The live bank's only shortfall is the 50 rows that carry no
-    # explanation. They were never reviewed, because a review covers the
-    # explanation, so the two conditions fail together and for the same
-    # reason.
+    # The live bank's shortfall is two-tiered. Fifty rows carry no
+    # explanation and were never reviewed, so REVIEWED and the
+    # no-explanation part of EXPLANATORY fail together. The stricter rule
+    # (8eb100b) adds rows whose explanation does not address every
+    # distractor, so EXPLANATORY's unmet count is larger.
     unexplained = 50
     assert by_condition[ReadyCondition.REVIEWED].unmet == unexplained
-    assert by_condition[ReadyCondition.EXPLANATORY].unmet == unexplained
+    assert by_condition[ReadyCondition.EXPLANATORY].unmet == 1663
     assert (
         "no check covers the answer and the explanation"
         in by_condition[ReadyCondition.REVIEWED].reasons
     )
     assert "there is no explanation" in by_condition[ReadyCondition.EXPLANATORY].reasons
+    assert any(
+        "does not address distractors" in reason
+        for reason in by_condition[ReadyCondition.EXPLANATORY].reasons
+    )

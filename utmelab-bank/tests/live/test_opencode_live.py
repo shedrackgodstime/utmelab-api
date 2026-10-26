@@ -7,6 +7,8 @@ from utmelab_bank.adapters.providers.opencode import OpenCodeProvider
 from utmelab_bank.domain.capabilities import ExplainRequest
 from utmelab_bank.domain.models import StagingItem
 
+from .provider_routes import opencode_model
+
 pytestmark = [
     pytest.mark.live,
     pytest.mark.skipif(
@@ -17,11 +19,7 @@ pytestmark = [
 
 
 def test_opencode_explain_live(staging_item: StagingItem) -> None:
-    model = os.environ.get(
-        "UTMELAB_OPENCODE_MODEL",
-        "opencode/deepseek-v4.1-flash-free",
-    )
-    provider = OpenCodeProvider(model=model, timeout=120.0)
+    provider = OpenCodeProvider(model=opencode_model(), timeout=120.0)
     result = asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
     assert result.body
     assert result.producer.provider == "opencode"

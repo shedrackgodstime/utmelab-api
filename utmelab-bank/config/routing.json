@@ -1,0 +1,43 @@
+{
+  "$schema": "./schema/routing.schema.json",
+  "version": 1,
+  "purpose": "Task routing across provider families. A default changes here, not in Python.",
+  "tasks": {
+    "question_explanation": {
+      "enabled": true,
+      "strategy": "first_available",
+      "on_no_provider": "block",
+      "allowed_model_statuses": ["verified_candidate", "unstable_candidate"],
+      "candidates": [
+        {"provider": "opencode", "model": "deepseek-v4.1-flash-free", "priority": 10},
+        {"provider": "openai", "model": "nvidia-nemotron-super-vl", "priority": 20},
+        {"provider": "openai", "model": "cloudflare-llama4-scout", "priority": 30}
+      ]
+    },
+    "topic_classification": {
+      "enabled": true,
+      "strategy": "first_available",
+      "on_no_provider": "block",
+      "allowed_model_statuses": ["verified_candidate", "unstable_candidate"],
+      "candidates": [
+        {"provider": "opencode", "model": "deepseek-v4.1-flash-free", "priority": 10},
+        {"provider": "openai", "model": "nvidia-nemotron-super-vl", "priority": 20},
+        {"provider": "openai", "model": "cloudflare-llama4-scout", "priority": 30}
+      ]
+    },
+    "image_description": {
+      "enabled": true,
+      "strategy": "consensus",
+      "minimum_successful_witnesses": 2,
+      "require_distinct_models": true,
+      "on_insufficient_witnesses": "block",
+      "allowed_model_statuses": ["verified_candidate", "unstable_candidate"],
+      "candidates": [
+        {"provider": "openai", "model": "cloudflare-llama4-scout", "priority": 10},
+        {"provider": "openai", "model": "nvidia-nemotron-super-vl", "priority": 20},
+        {"provider": "opencode", "model": "nemotron-3.5-super-vl-free", "priority": 30},
+        {"provider": "opencode", "model": "glm-5.3-flash-free", "priority": 40}
+      ]
+    }
+  }
+}
