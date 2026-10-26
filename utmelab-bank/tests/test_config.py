@@ -86,11 +86,13 @@ def test_env_file_override_via_env_var(monkeypatch: pytest.MonkeyPatch, tmp_path
 
     # Need to reload the module to pick up new env vars
     import importlib
+
     import utmelab_bank.config as cfg
+
     importlib.reload(cfg)
 
-    assert cfg.ENV_FILE == tmp_path / "custom.env"
-    assert cfg.VAR_DIR == tmp_path / "custom_var"
+    assert tmp_path / "custom.env" == cfg.ENV_FILE
+    assert tmp_path / "custom_var" == cfg.VAR_DIR
 
 
 def test_env_file_parsing(tmp_path: Path) -> None:

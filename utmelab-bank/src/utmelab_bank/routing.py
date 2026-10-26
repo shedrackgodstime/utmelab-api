@@ -139,7 +139,10 @@ def select_routes(
         if model.get("status") not in allowed_statuses:
             _log.debug(
                 "skipping model %s in family %s: status %s not in allowed %s",
-                model_key, family, model.get("status"), allowed_statuses,
+                model_key,
+                family,
+                model.get("status"),
+                allowed_statuses,
             )
             continue
         provider_name = model["provider"]
@@ -156,7 +159,10 @@ def select_routes(
             if not account.get("enabled") or not account.get("authorized"):
                 _log.debug(
                     "skipping account %s in pool %s: enabled=%s authorized=%s",
-                    account["id"], pool_name, account.get("enabled"), account.get("authorized"),
+                    account["id"],
+                    pool_name,
+                    account.get("enabled"),
+                    account.get("authorized"),
                 )
                 continue
             if auth_kind == "env":
@@ -195,7 +201,11 @@ def select_routes(
             routes.append(route)
             _log.debug(
                 "selected route: family=%s provider=%s model=%s account=%s protocol=%s",
-                family, provider_name, model["model_id"], account["id"], protocol,
+                family,
+                provider_name,
+                model["model_id"],
+                account["id"],
+                protocol,
             )
     if not routes:
         _log.warning("no usable routes found for task=%s", task)
