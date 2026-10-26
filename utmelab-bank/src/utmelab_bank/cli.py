@@ -19,7 +19,7 @@ from pathlib import Path
 
 from utmelab_bank.adapters.database import DatabaseError
 from utmelab_bank.adapters.media import MediaError
-from utmelab_bank.adapters.providers import OpenAICompatibleError
+from utmelab_bank.adapters.providers import OpenAICompatibleError, ProviderExhausted
 from utmelab_bank.adapters.providers.opencode import OpenCodeError
 from utmelab_bank.adapters.sources import create_source
 from utmelab_bank.config import ConfigError, load_settings
@@ -80,6 +80,12 @@ def _add_batch(parser: argparse.ArgumentParser) -> None:
         "--dry-run",
         action="store_true",
         help="list the work without writing anything",
+    )
+    parser.add_argument(
+        "--max-failures",
+        type=int,
+        default=3,
+        help="stop the task after this many consecutive failures (0 means no cap)",
     )
     parser.add_argument(
         "--provider",
@@ -155,6 +161,7 @@ async def _execute(args: argparse.Namespace) -> tuple[list[TaskResult], str | No
         section=getattr(args, "section", None),
         country=getattr(args, "country", None),
         limit=getattr(args, "limit", None),
+        max_failures=getattr(args, "max_failures", 3),
         dry_run=bool(getattr(args, "dry_run", False)),
     )
     command = str(args.command)
@@ -298,6 +305,8 @@ def _print_results(
             print(f"  {note}")
         for error in result.errors:
             print(f"  ERROR: {error}")
+        if result.stopped:
+            print("  STOPPED: the batch hit its consecutive-failure limit")
 
     if not json_output and results:
         total_seen = sum(r.seen for r in results)
@@ -339,6 +348,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         return 0
 
     import time
+
     start_time = time.perf_counter()
     try:
         results, actual_provider, actual_model = asyncio.run(_execute(args))
@@ -348,7 +358,13 @@ def main(argv: Sequence[str] | None = None) -> int:
     except ConfigError as exc:
         print(f"config: {exc}", file=sys.stderr)
         return 2
-    except (DatabaseError, MediaError, OpenCodeError, OpenAICompatibleError) as exc:
+    except (
+        DatabaseError,
+        MediaError,
+        ProviderExhausted,
+        OpenCodeError,
+        OpenAICompatibleError,
+    ) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
     except KeyboardInterrupt:

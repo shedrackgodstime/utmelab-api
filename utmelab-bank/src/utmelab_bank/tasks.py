@@ -18,8 +18,12 @@ from collections.abc import Awaitable, Callable
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 
+from utmelab_bank.adapters.database import DatabaseError
 from utmelab_bank.adapters.gate_service import GateService
-from utmelab_bank.adapters.media import MediaIngestor
+from utmelab_bank.adapters.media import MediaError, MediaIngestor
+from utmelab_bank.adapters.providers.factory import ProviderExhausted
+from utmelab_bank.adapters.providers.openai_compatible import OpenAICompatibleError
+from utmelab_bank.adapters.providers.opencode import OpenCodeError
 from utmelab_bank.adapters.providers.tagging import ExplainService, TagService
 from utmelab_bank.adapters.ready_service import ReadyService
 from utmelab_bank.adapters.review_service import ReviewService
@@ -49,6 +53,7 @@ class TaskOptions:
     section: str | None = None
     country: str | None = None
     limit: int | None = None
+    max_failures: int = 3
     dry_run: bool = False
 
 
@@ -64,6 +69,7 @@ class TaskResult:
     blocked: int = 0
     errors: list[str] = field(default_factory=list)
     notes: list[str] = field(default_factory=list)
+    stopped: bool = False
 
     @property
     def ok(self) -> bool:
@@ -93,6 +99,7 @@ class TaskResult:
             "skipped": self.skipped,
             "failed": self.failed,
             "blocked": self.blocked,
+            "stopped": self.stopped,
             "errors": list(self.errors),
             "notes": list(self.notes),
         }
@@ -131,6 +138,44 @@ def _limit(options: TaskOptions) -> int:
     if limit <= 0:
         raise UsageError("--limit must be positive")
     return limit
+
+
+def _max_failures(options: TaskOptions) -> int:
+    """The consecutive-failure cap. Zero means no cap."""
+    if options.max_failures < 0:
+        raise UsageError("--max-failures cannot be negative")
+    return options.max_failures
+
+
+def _stop_after_failures(
+    result: TaskResult,
+    failures: int,
+    options: TaskOptions,
+) -> bool:
+    """Record a stop when the consecutive-failure cap is reached."""
+    limit = _max_failures(options)
+    if limit and failures >= limit:
+        result.stopped = True
+        result.note(f"stopped after {failures} consecutive failure(s)")
+        return True
+    return False
+
+
+#: Failures that mean the batch cannot make progress. A low-confidence tag or
+#: an unknown subtopic is one row under review, not a dead provider, so those
+#: never count towards the cap.
+STOPPING_ERRORS = (
+    ProviderExhausted,
+    DatabaseError,
+    MediaError,
+    OpenCodeError,
+    OpenAICompatibleError,
+)
+
+
+def _stops_the_batch(exc: BaseException) -> bool:
+    """Whether this failure is a reason to stop asking for more rows."""
+    return isinstance(exc, STOPPING_ERRORS)
 
 
 async def _rows(
@@ -429,11 +474,13 @@ async def capture(runtime: Runtime, options: TaskOptions) -> TaskResult:
     # media refuses to describe uncaptured refs and capture never sees it.
     rows = await _rows(runtime, (State.DEDUPED, State.CATALOGUED), options, has_media=True)
 
+    failures = 0
     for item in rows:
         result.seen += 1
         if not item.media_refs:
             # Already captured (has media_assets) or no figures at all.
             result.skipped += 1
+            failures = 0
             result.note(f"{item.id}: no pending refs")
             continue
         if options.dry_run:
@@ -450,15 +497,24 @@ async def capture(runtime: Runtime, options: TaskOptions) -> TaskResult:
                 )
                 await runtime.staging.save(rejected)
                 result.skipped += 1
+                failures = 0
                 result.note(f"{rejected.id}: duplicate after capture: {found.question_id}")
                 continue
             await runtime.dedupe.remember(captured, origin=BANK)
             await runtime.staging.save(captured)
             result.done += 1
+            failures = 0
         except Exception as exc:
             logger.warning("capture failed for %s: %s", item.id, exc)
             result.fail(f"{item.id}: {type(exc).__name__}: {exc}")
             await _record_failure(runtime, item, exc)
+            if isinstance(exc, ProviderExhausted):
+                result.stopped = True
+                result.note(f"stopped: {exc}")
+                break
+            failures = failures + 1 if _stops_the_batch(exc) else 0
+            if _stop_after_failures(result, failures, options):
+                break
 
     return result
 
@@ -469,6 +525,7 @@ async def tag(runtime: Runtime, options: TaskOptions) -> TaskResult:
     result = TaskResult(task="tag")
     rows = await _rows(runtime, (State.DEDUPED,), options)
 
+    failures = 0
     for item in rows:
         result.seen += 1
         if options.dry_run:
@@ -485,14 +542,23 @@ async def tag(runtime: Runtime, options: TaskOptions) -> TaskResult:
                     f"{item.id}: no catalog subtopics for "
                     f"{item.provenance.scope.exam}/{item.provenance.scope.subject}"
                 )
+                failures = 0
                 continue
             catalogued = await service.tag(item, catalog)
             await runtime.staging.save(catalogued)
             result.done += 1
+            failures = 0
         except Exception as exc:
             logger.warning("tag failed for %s: %s", item.id, exc)
             result.fail(f"{item.id}: {type(exc).__name__}: {exc}")
             await _record_failure(runtime, item, exc)
+            if isinstance(exc, ProviderExhausted):
+                result.stopped = True
+                result.note(f"stopped: {exc}")
+                break
+            failures = failures + 1 if _stops_the_batch(exc) else 0
+            if _stop_after_failures(result, failures, options):
+                break
 
     return result
 
@@ -503,10 +569,12 @@ async def media(runtime: Runtime, options: TaskOptions) -> TaskResult:
     result = TaskResult(task="media")
     rows = await _rows(runtime, (State.CATALOGUED, State.MEDIA_READY), options, has_media=True)
 
+    failures = 0
     for item in rows:
         result.seen += 1
         if item.state is State.CATALOGUED and item.media_refs:
             result.skipped += 1
+            failures = 0
             result.note(f"{item.id}: figures have not been captured; run capture first")
             continue
         if options.dry_run:
@@ -524,10 +592,18 @@ async def media(runtime: Runtime, options: TaskOptions) -> TaskResult:
                 await runtime.staging.save(described)
                 result.skipped += 1
                 result.note(f"{item.id}: left at {described.state.value}")
+            failures = 0
         except Exception as exc:
             logger.warning("media failed for %s: %s", item.id, exc)
             result.fail(f"{item.id}: {type(exc).__name__}: {exc}")
             await _record_failure(runtime, item, exc)
+            if isinstance(exc, ProviderExhausted):
+                result.stopped = True
+                result.note(f"stopped: {exc}")
+                break
+            failures = failures + 1 if _stops_the_batch(exc) else 0
+            if _stop_after_failures(result, failures, options):
+                break
 
     return result
 
@@ -538,10 +614,12 @@ async def explain(runtime: Runtime, options: TaskOptions) -> TaskResult:
     result = TaskResult(task="explain")
     rows = await _rows(runtime, (State.DESCRIBED, State.CATALOGUED), options)
 
+    failures = 0
     for item in rows:
         result.seen += 1
         if item.state is State.CATALOGUED and (item.media_assets or item.media_refs):
             result.skipped += 1
+            failures = 0
             result.note(f"{item.id}: media has not run; run capture and media first")
             continue
         if options.dry_run:
@@ -556,10 +634,18 @@ async def explain(runtime: Runtime, options: TaskOptions) -> TaskResult:
             enriched = await service.explain(item, catalog)
             await runtime.staging.save(enriched)
             result.done += 1
+            failures = 0
         except Exception as exc:
             logger.warning("explain failed for %s: %s", item.id, exc)
             result.fail(f"{item.id}: {type(exc).__name__}: {exc}")
             await _record_failure(runtime, item, exc)
+            if isinstance(exc, ProviderExhausted):
+                result.stopped = True
+                result.note(f"stopped: {exc}")
+                break
+            failures = failures + 1 if _stops_the_batch(exc) else 0
+            if _stop_after_failures(result, failures, options):
+                break
 
     return result
 
@@ -570,6 +656,7 @@ async def review(runtime: Runtime, options: TaskOptions) -> TaskResult:
     result = TaskResult(task="review")
     rows = await _rows(runtime, (State.ENRICHED,), options)
 
+    failures = 0
     for item in rows:
         result.seen += 1
         if options.dry_run:
@@ -587,10 +674,18 @@ async def review(runtime: Runtime, options: TaskOptions) -> TaskResult:
                 result.done += 1
             else:
                 result.block(f"{item.id}: {reviewed.error or reviewed.state.value}")
+            failures = 0
         except Exception as exc:
             logger.warning("review failed for %s: %s", item.id, exc)
             result.fail(f"{item.id}: {type(exc).__name__}: {exc}")
             await _record_failure(runtime, item, exc)
+            if isinstance(exc, ProviderExhausted):
+                result.stopped = True
+                result.note(f"stopped: {exc}")
+                break
+            failures = failures + 1 if _stops_the_batch(exc) else 0
+            if _stop_after_failures(result, failures, options):
+                break
 
     return result
 
@@ -601,6 +696,7 @@ async def ready(runtime: Runtime, options: TaskOptions) -> TaskResult:
     rows = await _rows(runtime, (State.VERIFIED,), options)
     known_passages = await runtime.staging.passage_ids()
 
+    failures = 0
     for item in rows:
         result.seen += 1
         if options.dry_run:
@@ -627,10 +723,18 @@ async def ready(runtime: Runtime, options: TaskOptions) -> TaskResult:
                     detail = ", ".join(bundle.report.reason_for(condition))
                     reasons.append(f"{condition.value}: {detail or 'not met'}")
                 result.block(f"{item.id}: not ready ({'; '.join(reasons)})")
+            failures = 0
         except Exception as exc:
             logger.warning("ready failed for %s: %s", item.id, exc)
             result.fail(f"{item.id}: {type(exc).__name__}: {exc}")
             await _record_failure(runtime, item, exc)
+            if isinstance(exc, ProviderExhausted):
+                result.stopped = True
+                result.note(f"stopped: {exc}")
+                break
+            failures = failures + 1 if _stops_the_batch(exc) else 0
+            if _stop_after_failures(result, failures, options):
+                break
 
     return result
 
@@ -748,10 +852,15 @@ async def run_preset(
         known = ", ".join(PRESETS)
         raise UsageError(f"unknown preset {name!r}; known presets: {known}")
     results: list[TaskResult] = []
-    for step in steps:
+    for index, step in enumerate(steps):
         result = await run_named(step, runtime, options)
         results.append(result)
         logger.info("%s: %s", result.task, summary(result))
+        if result.stopped:
+            remaining = steps[index + 1 :]
+            if remaining:
+                result.note(f"preset stopped; not run: {', '.join(remaining)}")
+            break
     return results
 
 

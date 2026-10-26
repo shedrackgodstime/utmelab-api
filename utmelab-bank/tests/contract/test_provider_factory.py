@@ -8,12 +8,14 @@ from utmelab_bank.adapters.providers import (
 )
 from utmelab_bank.adapters.providers.factory import (
     FailoverProvider,
-    create_from_route,
+    ProviderExhausted,
     _is_retryable,
+    create_from_route,
 )
 from utmelab_bank.adapters.providers.openai_compatible import OpenAICompatibleError
 from utmelab_bank.adapters.providers.opencode import OpenCodeError
 from utmelab_bank.config import ConfigError, Settings
+from utmelab_bank.domain.models import Producer
 from utmelab_bank.routing import ProviderRoute
 
 
@@ -189,3 +191,73 @@ def test_is_retryable_recognizes_categories() -> None:
         status = 502
 
     assert _is_retryable(StatusError("502"))
+
+
+def _fake_route(model_key: str) -> ProviderRoute:
+    return ProviderRoute(
+        task="question_explanation",
+        model_key=model_key,
+        provider="fake",
+        protocol="openai-compatible",
+        model_id=f"fake/{model_key}",
+        account_id=f"account-{model_key}",
+        base_url="https://fake.invalid",
+        api_key="key",
+    )
+
+
+def _install_failing_adapter(
+    monkeypatch: pytest.MonkeyPatch,
+    error: BaseException,
+    calls: list[str],
+) -> None:
+    class Failing:
+        def __init__(self, label: str) -> None:
+            self._label = label
+            self.producer = Producer(provider="fake", model=label)
+
+        async def tag(self, request: object) -> object:
+            calls.append(self._label)
+            raise error
+
+    monkeypatch.setattr(
+        "utmelab_bank.adapters.providers.factory.create_from_route",
+        lambda route: Failing(route.model_key),
+    )
+
+
+async def test_failover_stops_after_every_route_is_exhausted(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    calls: list[str] = []
+    _install_failing_adapter(
+        monkeypatch,
+        OpenAICompatibleError("free quota reached", category="quota", status=429),
+        calls,
+    )
+    provider = FailoverProvider((_fake_route("first"), _fake_route("second")))
+
+    with pytest.raises(ProviderExhausted):
+        await provider._try_routes("tag", object())
+    assert calls == ["first", "second"]
+
+    # The next row must not touch a dead provider again.
+    with pytest.raises(ProviderExhausted):
+        await provider._try_routes("tag", object())
+    assert calls == ["first", "second"]
+
+
+async def test_failover_does_not_rotate_on_a_non_retryable_error(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    calls: list[str] = []
+    _install_failing_adapter(
+        monkeypatch,
+        OpenAICompatibleError("bad key", category="authentication", status=401),
+        calls,
+    )
+    provider = FailoverProvider((_fake_route("first"), _fake_route("second")))
+
+    with pytest.raises(OpenAICompatibleError):
+        await provider._try_routes("tag", object())
+    assert calls == ["first"]

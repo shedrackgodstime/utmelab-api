@@ -1,6 +1,6 @@
 """Provider adapters. Each one declares the capabilities it supports."""
 
-from .factory import KNOWN_PROVIDERS, create_text_provider
+from .factory import KNOWN_PROVIDERS, ProviderExhausted, create_text_provider
 from .mock import MockProvider
 from .openai_compatible import OpenAICompatibleError, OpenAICompatibleProvider
 from .opencode import OpenCodeProvider
@@ -14,6 +14,7 @@ __all__ = [
     "OpenAICompatibleError",
     "OpenAICompatibleProvider",
     "OpenCodeProvider",
+    "ProviderExhausted",
     "TagService",
     "UnknownSubtopic",
     "UnknownTopic",

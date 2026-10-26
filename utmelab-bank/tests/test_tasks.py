@@ -17,7 +17,10 @@ from utmelab_bank.adapters.media import (
     PillowMediaValidator,
 )
 from utmelab_bank.adapters.production import KnownQuestion
+from utmelab_bank.adapters.providers.factory import ProviderExhausted
 from utmelab_bank.adapters.providers.mock import MockProvider
+from utmelab_bank.adapters.providers.openai_compatible import OpenAICompatibleError
+from utmelab_bank.adapters.providers.tagging import LowConfidenceTag
 from utmelab_bank.adapters.sources.fixture import FixtureSource
 from utmelab_bank.config import Settings
 from utmelab_bank.domain.dedupe import Duplicate
@@ -157,7 +160,10 @@ class FakeStaging:
             and (country is None or item.provenance.scope.country == country)
             and (
                 has_media is None
-                or ((bool(item.media_refs) or bool(item.media_assets) or bool(item.media_blobs)) == has_media)
+                or (
+                    (bool(item.media_refs) or bool(item.media_assets) or bool(item.media_blobs))
+                    == has_media
+                )
             )
         ]
         return tuple(rows[:limit])
@@ -480,6 +486,126 @@ async def test_capture_resumes_catalogued_rows_with_pending_media(
     assert resumed.media_refs == ()
     assert resumed.media_assets
     assert fetcher.urls == ["https://fixture.example/figure.png"]
+
+
+class ExplodingTagger:
+    """Tag must not keep asking a provider that has no quota left."""
+
+    def __init__(self) -> None:
+        self.calls = 0
+        self.producer = Producer(provider="fake", model="fake")
+
+    async def tag(self, request: object) -> object:
+        self.calls += 1
+        raise OpenAICompatibleError("free quota reached", category="quota", status=429)
+
+
+async def test_tag_stops_at_the_consecutive_failure_limit(staging_item: StagingItem) -> None:
+    runtime, staging, _ = make_runtime()
+    tagger = ExplodingTagger()
+    runtime.tagger = tagger
+    for position in range(4):
+        await staging.save(
+            staging_item.model_copy(
+                update={
+                    "id": f"source-1:failure-{position}",
+                    "provenance": staging_item.provenance.model_copy(
+                        update={"source_item_id": f"failure-{position}"}
+                    ),
+                    "state": State.DEDUPED,
+                }
+            )
+        )
+
+    result = await tag(
+        runtime,
+        TaskOptions(exam="JAMB", subject="Biology", year=2024, max_failures=2),
+    )
+
+    assert result.stopped, "the task must stop when the cap is reached"
+    assert result.seen == 2
+    assert result.failed == 2
+    assert tagger.calls == 2
+    assert any("stopped after 2" in note for note in result.notes)
+
+
+class LowConfidenceTagger:
+    """A content rejection, not an outage: the batch must keep going."""
+
+    def __init__(self) -> None:
+        self.calls = 0
+        self.producer = Producer(provider="fake", model="fake")
+
+    async def tag(self, request: object) -> object:
+        self.calls += 1
+        raise LowConfidenceTag("confidence 0.08 is below 0.60")
+
+
+class ExhaustedTagger:
+    """No provider route left: the first row must stop the batch."""
+
+    def __init__(self) -> None:
+        self.calls = 0
+        self.producer = Producer(provider="fake", model="fake")
+
+    async def tag(self, request: object) -> object:
+        self.calls += 1
+        raise ProviderExhausted("all 3 provider route(s) failed")
+
+
+async def test_tag_keeps_going_after_a_content_rejection(staging_item: StagingItem) -> None:
+    runtime, staging, _ = make_runtime()
+    tagger = LowConfidenceTagger()
+    runtime.tagger = tagger
+    for position in range(4):
+        await staging.save(
+            staging_item.model_copy(
+                update={
+                    "id": f"source-1:low-{position}",
+                    "provenance": staging_item.provenance.model_copy(
+                        update={"source_item_id": f"low-{position}"}
+                    ),
+                    "state": State.DEDUPED,
+                }
+            )
+        )
+
+    result = await tag(
+        runtime,
+        TaskOptions(exam="JAMB", subject="Biology", year=2024, max_failures=2),
+    )
+
+    assert not result.stopped
+    assert result.seen == 4
+    assert result.failed == 4
+    assert tagger.calls == 4
+
+
+async def test_tag_stops_on_the_first_exhausted_provider(staging_item: StagingItem) -> None:
+    runtime, staging, _ = make_runtime()
+    tagger = ExhaustedTagger()
+    runtime.tagger = tagger
+    for position in range(4):
+        await staging.save(
+            staging_item.model_copy(
+                update={
+                    "id": f"source-1:dead-{position}",
+                    "provenance": staging_item.provenance.model_copy(
+                        update={"source_item_id": f"dead-{position}"}
+                    ),
+                    "state": State.DEDUPED,
+                }
+            )
+        )
+
+    result = await tag(
+        runtime,
+        TaskOptions(exam="JAMB", subject="Biology", year=2024, max_failures=3),
+    )
+
+    assert result.stopped
+    assert result.seen == 1
+    assert tagger.calls == 1
 
 
 class ExplodingIngestor:

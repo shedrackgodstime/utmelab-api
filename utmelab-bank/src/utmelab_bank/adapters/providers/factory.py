@@ -8,23 +8,22 @@ does not add a branch here.
 
 from __future__ import annotations
 
-from typing import Any, Callable, Coroutine, TypeVar, cast
 import logging
+from typing import Any, TypeVar, cast
 
 from utmelab_bank.config import ConfigError, Settings
-from utmelab_bank.routing import ProviderRoute, select_routes
 from utmelab_bank.domain.capabilities import ExplainRequest, TagRequest, VerifyAnswerRequest
 from utmelab_bank.domain.models import (
     AnswerVerdict,
     Explanation,
-    Producer,
     TagProposal,
 )
 from utmelab_bank.domain.ports import AnswerVerifier, Explainer, Tagger
+from utmelab_bank.routing import ProviderRoute, select_routes
 
 from .mock import MockProvider
-from .openai_compatible import OpenAICompatibleProvider, OpenAICompatibleError
-from .opencode import OpenCodeProvider, OpenCodeError
+from .openai_compatible import OpenAICompatibleProvider
+from .opencode import OpenCodeProvider
 
 #: Every text provider the runner knows how to build.
 KNOWN_PROVIDERS = ("mock", "opencode", "openai", "config")
@@ -42,6 +41,26 @@ RETRYABLE_CATEGORIES = frozenset(
 )
 
 _R = TypeVar("_R")
+
+
+class ProviderExhausted(RuntimeError):
+    """Every route failed with a retryable error, so the batch must stop.
+
+    Raising this is the limit, not the report: the run stops instead of
+    asking three dead providers about every remaining row.
+    """
+
+    def __init__(
+        self,
+        message: str,
+        *,
+        routes: tuple[str, ...] = (),
+        cause: BaseException | None = None,
+    ) -> None:
+        super().__init__(message)
+        self.routes = routes
+        if cause is not None:
+            self.__cause__ = cause
 
 
 def _is_retryable(exc: BaseException) -> bool:
@@ -71,9 +90,7 @@ def create_from_route(route: ProviderRoute) -> OpenAICompatibleProvider | OpenCo
     if route.protocol == "opencode-cli":
         raw_args = route.transport.get("args")
         args = (
-            tuple(str(item) for item in raw_args)
-            if isinstance(raw_args, (list, tuple))
-            else None
+            tuple(str(item) for item in raw_args) if isinstance(raw_args, (list, tuple)) else None
         )
         return OpenCodeProvider(
             model=route.model_id,
@@ -92,6 +109,7 @@ class FailoverProvider(Tagger, Explainer, AnswerVerifier):
             raise ConfigError("provider routing has no usable text route")
         self._routes = routes
         self._current = 0
+        self._exhausted: ProviderExhausted | None = None
         self.producer = create_from_route(routes[0]).producer
         self._log = logging.getLogger(__name__)
 
@@ -102,20 +120,27 @@ class FailoverProvider(Tagger, Explainer, AnswerVerifier):
         self.producer = self._build().producer
 
     async def _try_routes(self, method_name: str, request: Any) -> _R:
+        if self._exhausted is not None:
+            # The previous row used every route and every failure was
+            # retryable. Asking the same dead providers again only burns the
+            # rest of the batch.
+            raise self._exhausted
+
         last_exc: BaseException | None = None
-        for i in range(len(self._routes)):
+        tried: list[str] = []
+        for i, route in enumerate(self._routes):
             self._current = i
             self._update_current()
-            route = self._routes[i]
+            tried.append(f"{route.provider}/{route.model_key}")
             provider = self._build()
             try:
                 method = getattr(provider, method_name)
                 return cast(_R, await method(request))
             except BaseException as exc:
                 last_exc = exc
-                if not _is_retryable(exc) or i == len(self._routes) - 1:
+                if not _is_retryable(exc):
                     self._log.error(
-                        "failover exhausted for %s: route=%s provider=%s model=%s error=%s",
+                        "not failing over for %s: route=%s provider=%s model=%s error=%s",
                         method_name,
                         route.model_key,
                         route.provider,
@@ -123,6 +148,18 @@ class FailoverProvider(Tagger, Explainer, AnswerVerifier):
                         exc,
                     )
                     raise
+                if i == len(self._routes) - 1:
+                    self._exhausted = ProviderExhausted(
+                        f"all {len(self._routes)} provider route(s) failed: {exc}",
+                        routes=tuple(tried),
+                        cause=exc,
+                    )
+                    self._log.error(
+                        "provider exhausted after %d route(s): %s",
+                        len(self._routes),
+                        exc,
+                    )
+                    raise self._exhausted from exc
                 self._log.warning(
                     "failover %s: route=%s provider=%s model=%s error=%s -> trying next",
                     method_name,
@@ -176,4 +213,10 @@ def create_text_provider(
     raise ConfigError(f"unknown provider {name!r}; known providers: {known}")
 
 
-__all__ = ["KNOWN_PROVIDERS", "create_from_route", "create_text_provider", "FailoverProvider"]
+__all__ = [
+    "KNOWN_PROVIDERS",
+    "FailoverProvider",
+    "ProviderExhausted",
+    "create_from_route",
+    "create_text_provider",
+]
