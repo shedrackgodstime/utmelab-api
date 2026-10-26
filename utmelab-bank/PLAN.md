@@ -25,6 +25,10 @@ must hold:
 - every subtopic has a non-empty name and belongs to an existing topic;
 - every subject has at least one topic and one subtopic.
 
+Catalog names, topics and subtopics come from the official syllabus, never
+from inference. A blank name is a parser defect, and the repair is to re-read
+the source document, not to invent a heading.
+
 `utmelab-db --database prod catalog` checks all of it. Blank names and orphans
 are errors and exit 1. Coverage gaps (a subject with no topics, a topic with no
 subtopics) are warnings unless `--strict` is passed. The batch workflow runs
@@ -33,9 +37,14 @@ writes; this check catches what slips through.
 
 ### Catalog state
 
-- The two blank WAEC agricultural-science topics are named in production and in
-  `data/waec/agricultural-science.json`: `Animal diseases` and `Parasites and
-  disease control`. The slugs stay as they are, so existing references hold.
+- WAEC agricultural-science had one official topic split into two nameless
+  ones. The official PDF (page 18, Section D, item 9) names it **Animal health
+  management**, with items (a) to (g): disease, causal organisms, predisposing
+  factors, reaction, selected diseases, parasites, then prevention and
+  control. Production and `data/waec/agricultural-science.json` now hold that
+  one topic with its 13 sourced subtopics. Nothing in the catalog may be named
+  by inference: a blank is a parser defect, and the fix is to re-read the
+  official PDF.
 - 321 of the 1145 WAEC topics have no subtopics (28%). The largest gaps are
   general-mathematics 40, office-practice 39, book-keeping 39, biology 27,
   economics 25. Their names are syllabus fragments (`1. Resources to be
