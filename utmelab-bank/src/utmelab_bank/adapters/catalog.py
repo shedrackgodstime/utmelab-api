@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 from typing import Any, Protocol
 
 from utmelab_bank.domain.models import (
@@ -11,6 +12,8 @@ from utmelab_bank.domain.models import (
     CatalogSubtopic,
     CatalogTopic,
 )
+
+_log = logging.getLogger(__name__)
 
 
 class SqlClient(Protocol):
@@ -82,18 +85,34 @@ class ProductionCatalogReader:
         )
         result = await self._client.execute(query, [exam, subject])
         topics: list[CatalogTopic] = []
+        unnamed: list[str] = []
         for row in result.rows:
             countries = _countries(row[3] if len(row) > 3 else None)
             if country and countries and country.upper() not in countries:
+                continue
+            name = "" if row[1] is None else str(row[1]).strip()
+            if not name:
+                # A topic with no name cannot be offered to a model as a
+                # choice. Skipping it keeps the rest of the subject usable;
+                # the warning keeps the production defect visible.
+                unnamed.append(str(row[0]))
                 continue
             topics.append(
                 CatalogTopic(
                     id=str(row[0]),
                     slug=str(row[0]),
-                    name=str(row[1]),
+                    name=name,
                     objectives=_objectives(row[2]),
                     countries=countries,
                 )
+            )
+        if unnamed:
+            _log.warning(
+                "catalog %s/%s has %d unnamed topic(s), skipped: %s",
+                exam,
+                subject,
+                len(unnamed),
+                ", ".join(unnamed[:5]),
             )
         return tuple(topics)
 
@@ -108,15 +127,26 @@ class ProductionCatalogReader:
         )
         result = await self._client.execute(query, slugs)
         subtopics: list[CatalogSubtopic] = []
+        unnamed: list[str] = []
         for row in result.rows:
+            name = "" if row[2] is None else str(row[2]).strip()
+            if not name:
+                unnamed.append(str(row[0]))
+                continue
             subtopics.append(
                 CatalogSubtopic(
                     id=str(row[0]),
                     slug=str(row[0]),
-                    name=str(row[2]),
+                    name=name,
                     topic_id=str(row[1]),
                     objectives=_objectives(row[3]),
                 )
+            )
+        if unnamed:
+            _log.warning(
+                "catalog has %d unnamed subtopic(s), skipped: %s",
+                len(unnamed),
+                ", ".join(unnamed[:5]),
             )
         return tuple(subtopics)
 

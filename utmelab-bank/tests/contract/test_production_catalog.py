@@ -117,3 +117,58 @@ async def test_snapshot_filters_country_scoped_topics() -> None:
 
     assert snapshot.country == "NG"
     assert [topic.slug for topic in snapshot.topics] == ["shared", "nigeria"]
+
+
+async def test_snapshot_skips_a_topic_with_a_blank_name() -> None:
+    class BlankTopicClient(FakeClient):
+        async def execute(self, statement: str, args: list[Any] | None = None) -> Any:
+            self.calls.append((statement, args))
+            if "FROM subjects" in statement:
+                return FakeResult([("agricultural-science", "WAEC", "Agricultural Science")])
+            if "FROM topics" in statement:
+                return FakeResult(
+                    [
+                        ("named", "Crop production", "[]", json.dumps([])),
+                        ("unnamed", "   ", "[]", json.dumps([])),
+                    ]
+                )
+            if "FROM subtopics" in statement:
+                requested = set(args or [])
+                rows = [
+                    ("seeds", "named", "Seeds", json.dumps([])),
+                    ("orphaned", "unnamed", "Under the unnamed topic", json.dumps([])),
+                ]
+                return FakeResult([row for row in rows if row[1] in requested])
+            return FakeResult([])
+
+    client = BlankTopicClient()
+    snapshot = await ProductionCatalogReader(client).snapshot("WAEC", "agricultural-science")
+
+    assert [topic.slug for topic in snapshot.topics] == ["named"]
+    assert [subtopic.slug for subtopic in snapshot.subtopics] == ["seeds"]
+    subtopic_calls = [args for statement, args in client.calls if "FROM subtopics" in statement]
+    assert subtopic_calls == [["named"]]
+
+
+async def test_snapshot_skips_a_subtopic_with_a_blank_name() -> None:
+    class BlankSubtopicClient(FakeClient):
+        async def execute(self, statement: str, args: list[Any] | None = None) -> Any:
+            self.calls.append((statement, args))
+            if "FROM subjects" in statement:
+                return FakeResult([("agricultural-science", "WAEC", "Agricultural Science")])
+            if "FROM topics" in statement:
+                return FakeResult([("named", "Crop production", "[]", json.dumps([]))])
+            if "FROM subtopics" in statement:
+                return FakeResult(
+                    [
+                        ("seeds", "named", "Seeds", json.dumps([])),
+                        ("blank", "named", "", json.dumps([])),
+                    ]
+                )
+            return FakeResult([])
+
+    snapshot = await ProductionCatalogReader(BlankSubtopicClient()).snapshot(
+        "WAEC", "agricultural-science"
+    )
+
+    assert [subtopic.slug for subtopic in snapshot.subtopics] == ["seeds"]
