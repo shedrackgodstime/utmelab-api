@@ -35,7 +35,14 @@ M = TypeVar("M", bound=BaseModel)
 class OpenAICompatibleError(RuntimeError):
     """A classified failure from an OpenAI-compatible provider."""
 
-    def __init__(self, message: str, *, category: str = "provider", status: int | None = None, provider: str = "openai") -> None:
+    def __init__(
+        self,
+        message: str,
+        *,
+        category: str = "provider",
+        status: int | None = None,
+        provider: str = "openai",
+    ) -> None:
         self.provider = provider
         self.category = category
         self.status = status
@@ -229,7 +236,10 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
     def _text_messages(self, instruction: str, payload: object) -> list[dict[str, Any]]:
         return [
             {"role": "system", "content": "Return exactly one JSON object and nothing else."},
-            {"role": "user", "content": f"{instruction}\nInput:\n{json.dumps(payload, ensure_ascii=False)}"},
+            {
+                "role": "user",
+                "content": f"{instruction}\nInput:\n{json.dumps(payload, ensure_ascii=False)}",
+            },
         ]
 
     def _content_payload(self, item: StagingItem) -> dict[str, Any]:
@@ -237,7 +247,9 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
             "content": item.content.model_dump(mode="json"),
             "media_checks": [c.model_dump(mode="json") for c in item.evidence.media_checks],
             "ocr": [record.model_dump(mode="json") for record in item.evidence.ocr],
-            "image_descriptions": [d.model_dump(mode="json") for d in item.evidence.image_descriptions],
+            "image_descriptions": [
+                d.model_dump(mode="json") for d in item.evidence.image_descriptions
+            ],
         }
 
     def _validate(self, model_type: type[M], data: dict[str, Any]) -> M:

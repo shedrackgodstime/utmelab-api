@@ -256,9 +256,7 @@ async def open_pipeline_runtime(
         if text:
             if provider_name is None:
                 raise RuntimeError("a text step needs a provider")
-            provider = create_text_provider(
-                provider_name, settings=settings, task=routing_task
-            )
+            provider = create_text_provider(provider_name, settings=settings, task=routing_task)
             runtime.tagger = provider
             runtime.explainer = provider
             runtime.verifier = provider

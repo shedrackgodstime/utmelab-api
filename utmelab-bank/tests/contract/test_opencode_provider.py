@@ -122,9 +122,7 @@ def test_a_remote_asset_with_bytes_is_described(media: MediaAsset) -> None:
 
 def test_explain_parses(staging_item: StagingItem) -> None:
 
-    provider, runner = make_provider(
-        text_event('{"key_point":"k","body":"b","confidence":0.8}')
-    )
+    provider, runner = make_provider(text_event('{"key_point":"k","body":"b","confidence":0.8}'))
     result = asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
     assert result.key_point.text == "k"
     assert result.body.text == "b"

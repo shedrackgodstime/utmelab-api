@@ -75,10 +75,12 @@ class ProductionCatalogReader:
     async def _topics(
         self, exam: str, subject: str, country: str | None
     ) -> tuple[CatalogTopic, ...]:
-        result = await self._client.execute(
-            'SELECT slug, name, objectives, countries FROM topics WHERE exam = ? AND subject = ? ORDER BY "order"',
-            [exam, subject],
+        query = (
+            "SELECT slug, name, objectives, countries "
+            "FROM topics WHERE exam = ? AND subject = ? "
+            'ORDER BY "order"'
         )
+        result = await self._client.execute(query, [exam, subject])
         topics: list[CatalogTopic] = []
         for row in result.rows:
             countries = _countries(row[3] if len(row) > 3 else None)
@@ -100,10 +102,11 @@ class ProductionCatalogReader:
             return ()
         slugs = [topic.id for topic in topics]
         placeholders = ", ".join("?" for _ in slugs)
-        result = await self._client.execute(
-            f'SELECT slug, topic, name, objectives FROM subtopics WHERE topic IN ({placeholders}) ORDER BY "order"',
-            slugs,
+        query = (
+            f"SELECT slug, topic, name, objectives "
+            f'FROM subtopics WHERE topic IN ({placeholders}) ORDER BY "order"'
         )
+        result = await self._client.execute(query, slugs)
         subtopics: list[CatalogSubtopic] = []
         for row in result.rows:
             subtopics.append(

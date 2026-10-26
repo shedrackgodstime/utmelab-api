@@ -64,9 +64,7 @@ def test_openai_compatible_provider_describes_image_with_schema(
         }
     )
 
-    result = asyncio.run(
-        built.describe(DescribeImageRequest(asset=media, data=b"synthetic-image"))
-    )
+    result = asyncio.run(built.describe(DescribeImageRequest(asset=media, data=b"synthetic-image")))
 
     assert result.description == "A blue line on labelled axes."
     user_message = calls.calls[0]["messages"][1]

@@ -140,9 +140,7 @@ def create_configured_describer() -> "ImageDescriber":
     """Build the image consensus from the validated provider manifest."""
     routes = select_routes("image_description")
     if len(routes) < 2:
-        raise ValueError(
-            "the provider manifest has fewer than two usable image witnesses"
-        )
+        raise ValueError("the provider manifest has fewer than two usable image witnesses")
     return DescribeImageConsensus(
         tuple(
             OpenAICompatibleProvider(

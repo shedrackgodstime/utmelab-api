@@ -132,7 +132,11 @@ def _explanatory(item: StagingItem, context: ReadyContext) -> str | None:
         None,
     )
     searchable = " ".join(
-        (explanation.key_point.text, explanation.body.text, explanation.trap.text if explanation.trap else "")
+        (
+            explanation.key_point.text,
+            explanation.body.text,
+            explanation.trap.text if explanation.trap else "",
+        )
     ).casefold()
     candidates = [item.content.answer.casefold()]
     if answer is not None:
@@ -166,7 +170,9 @@ def _number_words(value: str) -> tuple[str, ...]:
         "9": "nine",
         "10": "ten",
     }
-    return tuple(word for token, word in words.items() if token in value.split() or value.strip() == token)
+    return tuple(
+        word for token, word in words.items() if token in value.split() or value.strip() == token
+    )
 
 
 def _contains_answer(text: str, candidate: str) -> bool:

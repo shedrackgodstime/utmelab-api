@@ -20,5 +20,5 @@ def test_openai_config_matches_its_schema() -> None:
 def test_openai_config_never_contains_secret_values() -> None:
     text = (ROOT / "openai.config").read_text(encoding="utf-8")
 
-    assert "NVIDIA_API_KEY=\"" not in text
-    assert "CLOUDFLARE_API_TOKEN_01=\"" not in text
+    assert 'NVIDIA_API_KEY="' not in text
+    assert 'CLOUDFLARE_API_TOKEN_01="' not in text

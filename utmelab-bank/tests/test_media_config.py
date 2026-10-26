@@ -95,9 +95,7 @@ def test_openai_compatible_describer_builds_two_witnesses() -> None:
         base_url="https://example.test/v1",
     )
     assert isinstance(describer, DescribeImageConsensus)
-    assert all(
-        isinstance(witness, OpenAICompatibleProvider) for witness in describer._describers
-    )
+    assert all(isinstance(witness, OpenAICompatibleProvider) for witness in describer._describers)
 
 
 def test_one_model_twice_is_refused() -> None:

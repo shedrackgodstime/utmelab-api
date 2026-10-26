@@ -79,9 +79,7 @@ def select_routes(
             continue
         pool_name = candidate["account_pool"]
         if pool_name != provider["account_pool"]:
-            raise ConfigError(
-                f"task {task!r} routes model {model_key!r} to the wrong account pool"
-            )
+            raise ConfigError(f"task {task!r} routes model {model_key!r} to the wrong account pool")
         for account in sorted(config["accounts"][pool_name], key=lambda item: item["priority"]):
             if not account.get("enabled") or not account.get("authorized"):
                 continue
@@ -127,7 +125,9 @@ def _validate_references(manifest: dict[str, Any]) -> None:
             if model_key not in models:
                 raise ConfigError(f"task {task_name!r} references unknown model {model_key!r}")
             if pool_name not in accounts:
-                raise ConfigError(f"task {task_name!r} references unknown account pool {pool_name!r}")
+                raise ConfigError(
+                    f"task {task_name!r} references unknown account pool {pool_name!r}"
+                )
 
 
 __all__ = ["MANIFEST_PATH", "ProviderRoute", "load_manifest", "select_routes"]
