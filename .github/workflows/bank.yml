@@ -118,6 +118,18 @@ jobs:
       GITLAB_MEDIA_REPO: shedrackgodstime/utmelab-bank
       OCR_API_KEY: ${{ secrets.OCR_API_KEY }}
       OPENCODE_VERSION: 2.0.28
+      NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+      NVIDIA_API_KEY_01: ${{ secrets.NVIDIA_API_KEY_01 }}
+      NVIDIA_API_KEY_02: ${{ secrets.NVIDIA_API_KEY_02 }}
+      NVIDIA_API_KEY_03: ${{ secrets.NVIDIA_API_KEY_03 }}
+      NVIDIA_API_KEY_04: ${{ secrets.NVIDIA_API_KEY_04 }}
+      NVIDIA_API_KEY_05: ${{ secrets.NVIDIA_API_KEY_05 }}
+      CLOUDFLARE_ACCOUNT_ID_01: ${{ secrets.CLOUDFLARE_ACCOUNT_ID_01 }}
+      CLOUDFLARE_API_TOKEN_01: ${{ secrets.CLOUDFLARE_API_TOKEN_01 }}
+      CLOUDFLARE_ACCOUNT_ID_02: ${{ secrets.CLOUDFLARE_ACCOUNT_ID_02 }}
+      CLOUDFLARE_API_TOKEN_02: ${{ secrets.CLOUDFLARE_API_TOKEN_02 }}
+      CLOUDFLARE_ACCOUNT_ID_03: ${{ secrets.CLOUDFLARE_ACCOUNT_ID_03 }}
+      CLOUDFLARE_API_TOKEN_03: ${{ secrets.CLOUDFLARE_API_TOKEN_03 }}
       UTMELAB_BANK_AI_MODEL: ${{ inputs.model }}
     steps:
       - uses: actions/checkout@v4
