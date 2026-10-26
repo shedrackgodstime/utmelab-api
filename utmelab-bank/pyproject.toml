@@ -32,6 +32,9 @@ dev = [
 [tool.hatch.build.targets.wheel]
 packages = ["src/utmelab_bank"]
 
+[tool.hatch.build.targets.wheel.force-include]
+"config" = "utmelab_bank/config_data"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]

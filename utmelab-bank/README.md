@@ -112,6 +112,10 @@ The routing file is the integration point for text and image work. Provider
 protocols select the adapter (`openai-compatible` for HTTP, `opencode-cli` for
 the CLI), and the two-witness image consensus reads the same candidates.
 
+A wheel ships a copy of `config/` at `utmelab_bank/config_data/`, so an
+installed CLI runs without the source tree. Set `UTMELAB_BANK_CONFIG_DIR`
+to point at an editable copy when you need to change routes without rebuilding.
+
 The production token must be read-only. The bank must never write the serving
 API's content tables.
 

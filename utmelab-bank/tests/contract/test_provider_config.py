@@ -4,6 +4,8 @@ from pathlib import Path
 import pytest
 from jsonschema import Draft202012Validator
 
+from utmelab_bank import routing
+
 ROOT = Path(__file__).parents[2]
 PROVIDERS = ROOT / "config" / "providers"
 SCHEMA = ROOT / "config" / "schema" / "provider.schema.json"
@@ -43,3 +45,15 @@ def test_provider_manifest_never_contains_secret_values(name: str) -> None:
 
     assert 'NVIDIA_API_KEY="' not in text
     assert 'CLOUDFLARE_API_TOKEN_01="' not in text
+
+
+def test_config_dir_honours_environment_override(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.setenv(routing.CONFIG_DIR_ENV, str(tmp_path))
+
+    assert routing._resolve_config_dir() == tmp_path
+
+
+def test_config_dir_exists() -> None:
+    assert routing.CONFIG_DIR.is_dir()

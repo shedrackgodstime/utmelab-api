@@ -11,7 +11,25 @@ from jsonschema import Draft202012Validator
 
 from .config import BANK_ROOT, ConfigError, _read_env
 
-CONFIG_DIR = BANK_ROOT / "config"
+#: Point the bank at an editable config directory instead of the packaged copy.
+CONFIG_DIR_ENV = "UTMELAB_BANK_CONFIG_DIR"
+
+
+def _resolve_config_dir() -> Path:
+    """Use an explicit override, the source checkout, or the packaged copy."""
+    override = _read_env().get(CONFIG_DIR_ENV)
+    if override:
+        return Path(override)
+    source = BANK_ROOT / "config"
+    if (BANK_ROOT / "src" / "utmelab_bank").is_dir() and source.is_dir():
+        return source
+    packaged = Path(__file__).resolve().parent / "config_data"
+    if packaged.is_dir():
+        return packaged
+    return source
+
+
+CONFIG_DIR = _resolve_config_dir()
 PROVIDERS_DIR = CONFIG_DIR / "providers"
 SCHEMA_DIR = CONFIG_DIR / "schema"
 SCHEMA_PATH = SCHEMA_DIR / "provider.schema.json"
@@ -212,6 +230,7 @@ def _validate_routing_references(
 
 __all__ = [
     "CONFIG_DIR",
+    "CONFIG_DIR_ENV",
     "MANIFEST_PATH",
     "OPENCODE_MANIFEST_PATH",
     "PROVIDERS_DIR",
