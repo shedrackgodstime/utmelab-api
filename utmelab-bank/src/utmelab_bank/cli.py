@@ -23,7 +23,7 @@ from utmelab_bank.adapters.providers import OpenAICompatibleError
 from utmelab_bank.adapters.providers.opencode import OpenCodeError
 from utmelab_bank.adapters.sources import create_source
 from utmelab_bank.config import ConfigError, load_settings
-from utmelab_bank.runtime import open_pipeline_runtime, open_store_runtime
+from utmelab_bank.runtime import Runtime, open_pipeline_runtime, open_store_runtime
 from utmelab_bank.tasks import (
     PRESETS,
     TASK_HELP,
@@ -146,8 +146,8 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-async def _execute(args: argparse.Namespace) -> list[TaskResult]:
-    """Open the smallest runtime each command can run with."""
+async def _execute(args: argparse.Namespace) -> tuple[list[TaskResult], str | None, str | None]:
+    """Open the smallest runtime each command can run with. Returns (results, provider, model)."""
     options = TaskOptions(
         exam=getattr(args, "exam", None),
         subject=getattr(args, "subject", None),
@@ -159,11 +159,34 @@ async def _execute(args: argparse.Namespace) -> list[TaskResult]:
     )
     command = str(args.command)
     provider = getattr(args, "provider", None)
+    actual_provider: str | None = None
+    actual_model: str | None = None
+
+    def _get_provider_info(runtime: Runtime) -> tuple[str | None, str | None]:
+        """Extract provider name and model from runtime's providers."""
+        # Text provider
+        if runtime.tagger and hasattr(runtime.tagger, "producer"):
+            prod = runtime.tagger.producer
+            return prod.provider, prod.model
+        if runtime.explainer and hasattr(runtime.explainer, "producer"):
+            prod = runtime.explainer.producer
+            return prod.provider, prod.model
+        if runtime.verifier and hasattr(runtime.verifier, "producer"):
+            prod = runtime.verifier.producer
+            return prod.provider, prod.model
+        # Image provider (describer has two witnesses)
+        if runtime.media and getattr(runtime.media, "_describer", None):
+            describer = runtime.media._describer
+            witnesses = getattr(describer, "witnesses", None)
+            if witnesses:
+                prod = witnesses[0].producer
+                return f"consensus({prod.provider})", prod.model
+        return None, None
 
     if command in ("fetch", "scrape") and options.dry_run:
         source = create_source(args.source, fixture_dir=args.fixture_dir)
         try:
-            return [await probe(source, options)]
+            return [await probe(source, options)], None, None
         finally:
             close = getattr(source, "close", None)
             if callable(close):
@@ -173,7 +196,7 @@ async def _execute(args: argparse.Namespace) -> list[TaskResult]:
 
     if command in ("status", "index", "ready"):
         async with open_store_runtime(settings) as runtime:
-            return [await run_named(command, runtime, options)]
+            return [await run_named(command, runtime, options)], None, None
 
     if command == "fetch":
         async with open_pipeline_runtime(
@@ -182,7 +205,8 @@ async def _execute(args: argparse.Namespace) -> list[TaskResult]:
             fixture_dir=args.fixture_dir,
             media=True,
         ) as runtime:
-            return [await run_named("fetch", runtime, options)]
+            actual_provider, actual_model = _get_provider_info(runtime)
+            return [await run_named("fetch", runtime, options)], actual_provider, actual_model
 
     if command == "scrape":
         async with open_pipeline_runtime(
@@ -191,31 +215,37 @@ async def _execute(args: argparse.Namespace) -> list[TaskResult]:
             fixture_dir=args.fixture_dir,
             media=True,
         ) as runtime:
-            return await run_preset("scrape", runtime, options)
+            actual_provider, actual_model = _get_provider_info(runtime)
+            return await run_preset("scrape", runtime, options), actual_provider, actual_model
 
     if command == "capture":
         async with open_pipeline_runtime(settings, media=True) as runtime:
-            return [await run_named("capture", runtime, options)]
+            actual_provider, actual_model = _get_provider_info(runtime)
+            return [await run_named("capture", runtime, options)], actual_provider, actual_model
 
     if command == "tag":
         async with open_pipeline_runtime(
             settings, provider_name=provider, routing_task="topic_classification", text=True
         ) as runtime:
-            return [await run_named("tag", runtime, options)]
+            actual_provider, actual_model = _get_provider_info(runtime)
+            return [await run_named("tag", runtime, options)], actual_provider, actual_model
 
     if command == "media":
         async with open_pipeline_runtime(
             settings, provider_name=provider, media=True, image=True
         ) as runtime:
-            return [await run_named("media", runtime, options)]
+            actual_provider, actual_model = _get_provider_info(runtime)
+            return [await run_named("media", runtime, options)], actual_provider, actual_model
 
     if command == "explain":
         async with open_pipeline_runtime(settings, provider_name=provider, text=True) as runtime:
-            return [await run_named("explain", runtime, options)]
+            actual_provider, actual_model = _get_provider_info(runtime)
+            return [await run_named("explain", runtime, options)], actual_provider, actual_model
 
     if command == "review":
         async with open_pipeline_runtime(settings, provider_name=provider, text=True) as runtime:
-            return [await run_named("review", runtime, options)]
+            actual_provider, actual_model = _get_provider_info(runtime)
+            return [await run_named("review", runtime, options)], actual_provider, actual_model
 
     if command == "process":
         async with open_pipeline_runtime(
@@ -225,7 +255,8 @@ async def _execute(args: argparse.Namespace) -> list[TaskResult]:
             text=True,
             image=True,
         ) as runtime:
-            return await run_preset("process", runtime, options)
+            actual_provider, actual_model = _get_provider_info(runtime)
+            return await run_preset("process", runtime, options), actual_provider, actual_model
 
     raise UsageError(f"unknown command {command!r}")
 
@@ -250,7 +281,14 @@ def _print_tasks(*, json_output: bool) -> None:
         print(f"  {name:10} {' -> '.join(steps)}")
 
 
-def _print_results(results: Sequence[TaskResult], *, json_output: bool) -> None:
+def _print_results(
+    results: Sequence[TaskResult],
+    *,
+    json_output: bool,
+    provider: str | None = None,
+    model: str | None = None,
+    duration: float | None = None,
+) -> None:
     if json_output:
         print(json.dumps([result.as_dict() for result in results], indent=2))
         return
@@ -260,6 +298,31 @@ def _print_results(results: Sequence[TaskResult], *, json_output: bool) -> None:
             print(f"  {note}")
         for error in result.errors:
             print(f"  ERROR: {error}")
+
+    if not json_output and results:
+        total_seen = sum(r.seen for r in results)
+        total_done = sum(r.done for r in results)
+        total_skipped = sum(r.skipped for r in results)
+        total_failed = sum(r.failed for r in results)
+        total_blocked = sum(r.blocked for r in results)
+        print()
+        print("=" * 60)
+        print("RUN SUMMARY")
+        print("=" * 60)
+        print(f"Command:        {results[0].task if len(results) == 1 else 'preset'}")
+        if provider:
+            print(f"Provider:       {provider}")
+        if model:
+            print(f"Model:          {model}")
+        if duration is not None:
+            print(f"Duration:       {duration:.1f}s")
+        print(f"Total seen:     {total_seen}")
+        print(f"  Done:         {total_done}")
+        print(f"  Skipped:      {total_skipped}")
+        print(f"  Failed:       {total_failed}")
+        print(f"  Blocked:      {total_blocked}")
+        print(f"All OK:         {'yes' if all(r.ok for r in results) else 'no'}")
+        print("=" * 60)
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -275,8 +338,10 @@ def main(argv: Sequence[str] | None = None) -> int:
         _print_tasks(json_output=args.json)
         return 0
 
+    import time
+    start_time = time.perf_counter()
     try:
-        results = asyncio.run(_execute(args))
+        results, actual_provider, actual_model = asyncio.run(_execute(args))
     except UsageError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
@@ -294,7 +359,14 @@ def main(argv: Sequence[str] | None = None) -> int:
         print(f"error: {type(exc).__name__}: {exc}", file=sys.stderr)
         return 1
 
-    _print_results(results, json_output=args.json)
+    duration = time.perf_counter() - start_time
+    _print_results(
+        results,
+        json_output=args.json,
+        provider=actual_provider,
+        model=actual_model,
+        duration=duration,
+    )
     return 0 if all(result.ok for result in results) else 1
 
 
