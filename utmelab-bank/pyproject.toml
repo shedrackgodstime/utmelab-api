@@ -18,6 +18,7 @@ dependencies = [
 
 [project.scripts]
 utmelab-bank = "utmelab_bank.cli:main"
+utmelab-db = "utmelab_bank.db_cli:main"
 
 [project.optional-dependencies]
 dev = [

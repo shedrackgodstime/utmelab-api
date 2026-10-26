@@ -80,7 +80,39 @@ Inspect the bank and index:
 utmelab-bank status
 ```
 
-Use `--json` for workflow output and `--dry-run` before a batch write.
+Inspect either database without a token on the command line:
+
+```bash
+utmelab-db status
+utmelab-db items --state deduped --limit 20
+utmelab-db --database prod query "SELECT exam, COUNT(*) FROM subjects GROUP BY exam"
+```
+
+`utmelab-db` reads the same `.env` as the pipeline, and refuses every
+statement that is not a read. For a question it does not answer, import the
+library in a script instead of building a Turso connection:
+
+```python
+import asyncio
+
+from utmelab_bank.db import open_database
+
+
+async def main() -> None:
+    async with open_database("bank") as db:
+        result = await db.query(
+            "SELECT state, COUNT(*) AS rows FROM staging_items GROUP BY state"
+        )
+        print(result.as_dicts())
+
+
+asyncio.run(main())
+```
+
+Use `--json` for workflow output and `--dry-run` before a batch write. A batch
+task stops after three consecutive failures by default, so a provider that has
+run out of quota cannot keep the run going row after row; change that with
+`--max-failures`, or pass `0` to remove the cap.
 
 ## Configuration
 

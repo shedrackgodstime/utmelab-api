@@ -51,9 +51,10 @@ class DatabaseError(RuntimeError):
 
 @dataclass(frozen=True)
 class Result:
-    """The rows a query returned."""
+    """The rows a query returned, with the column names the driver reported."""
 
     rows: list[tuple[Any, ...]]
+    columns: tuple[str, ...] = ()
 
 
 def _is_transient(exc: BaseException) -> bool:
@@ -153,13 +154,16 @@ class TursoClient:
         last: BaseException | None = None
         for attempt in range(self._retries):
 
-            def run() -> list[tuple[Any, ...]]:
+            def run() -> tuple[list[tuple[Any, ...]], tuple[str, ...]]:
                 connection = self._connect()
                 cursor = connection.execute(statement, args or [])
-                return list(cursor.fetchall())
+                rows = list(cursor.fetchall())
+                description = getattr(cursor, "description", None) or ()
+                columns = tuple(str(column[0]) for column in description)
+                return rows, columns
 
             try:
-                rows = await loop.run_in_executor(self._executor, run)
+                rows, columns = await loop.run_in_executor(self._executor, run)
             except DatabaseError as exc:
                 last = exc
                 if not _is_transient(exc) or attempt == self._retries - 1:
@@ -178,7 +182,7 @@ class TursoClient:
                 continue
             if commit is True or (commit is None and _is_write(statement)):
                 await self.commit()
-            return Result(rows=rows)
+            return Result(rows=rows, columns=columns)
         raise DatabaseError(f"query failed after {self._retries} attempts: {last}")
 
     async def commit(self) -> None:
