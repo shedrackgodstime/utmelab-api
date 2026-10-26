@@ -102,11 +102,12 @@ protocols, transports, and account status. The shared schemas are
 and the contract suite validates every manifest and the routing file before a
 batch is allowed to proceed.
 
-The routing file lists accounts in failover order. The current text consumer
-selects the first usable route, and runtime failover across that list is the
-next integration step, not yet wired. Invalid requests, authentication
-failures, schema failures, and bad model output never rotate accounts or hide
-the original defect.
+The routing file lists accounts in failover order. The ``config`` provider
+now tries each route in order, failing over on retryable errors
+(rate_limit, quota, timeout, provider_unavailable, upstream, transport).
+Non-retryable errors (authentication, invalid_request, input, output,
+schema, policy, not_found) never rotate accounts or hide the original
+defect.
 
 The routing file is the integration point for text and image work. Provider
 protocols select the adapter (`openai-compatible` for HTTP, `opencode-cli` for
