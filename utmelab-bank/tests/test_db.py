@@ -7,6 +7,7 @@ from typing import Any
 import pytest
 
 from utmelab_bank.adapters.database import Result
+from utmelab_bank.catalog_health import check_catalog
 from utmelab_bank.config import ConfigError
 from utmelab_bank.db import (
     Database,
@@ -127,3 +128,95 @@ def test_limit_is_bounded() -> None:
 def test_unknown_database_is_refused_by_the_parser() -> None:
     with pytest.raises(SystemExit):
         build_parser().parse_args(["--database", "other", "status"])
+
+
+class FakeCatalogDatabase:
+    """Answers the catalog queries by the clause that makes each one unique."""
+
+    def __init__(self, answers: dict[str, list[tuple[Any, ...]]]) -> None:
+        self.answers = answers
+
+    async def query(self, sql: str, params: object = None) -> QueryResult:
+        text = " ".join(sql.split())
+        if "COUNT(DISTINCT s.slug)" in text:
+            return self._answer("exam_counts", text)
+        if "COUNT(*) AS subtopics" in text:
+            return self._answer("subtopic_counts", text)
+        if "TRIM(s.name)" in text:
+            return self._answer("blank_subtopics", text)
+        if "TRIM(name)" in text:
+            return self._answer("blank_topics", text)
+        if "WHERE NOT EXISTS (SELECT 1 FROM topics t WHERE t.slug = s.topic)" in text:
+            return self._answer("orphans", text)
+        if "SELECT s.exam, s.slug" in text:
+            return self._answer("subjects_without_topics", text)
+        if "COUNT(*) AS topics" in text:
+            return self._answer("topics_without_subtopics", text)
+        raise AssertionError(f"unexpected catalog query: {text}")
+
+    def _answer(self, key: str, sql: str) -> QueryResult:
+        rows = tuple(self.answers.get(key, []))
+        return QueryResult(columns=(), rows=rows)
+
+
+async def test_catalog_health_reports_a_clean_catalog() -> None:
+    health = await check_catalog(
+        FakeCatalogDatabase(
+            {
+                "exam_counts": [("JAMB", 25, 583)],
+                "subtopic_counts": [("JAMB", 2158)],
+            }
+        )
+    )
+
+    assert len(health.exams) == 1
+    exam = health.exams[0]
+    assert (exam.exam, exam.subjects, exam.topics, exam.subtopics) == (
+        "JAMB",
+        25,
+        583,
+        2158,
+    )
+    assert health.errors == 0
+    assert health.warnings == 0
+    assert health.ok(strict=True)
+
+
+async def test_catalog_health_separates_defects_from_gaps() -> None:
+    health = await check_catalog(
+        FakeCatalogDatabase(
+            {
+                "exam_counts": [("WAEC", 36, 1145)],
+                "subtopic_counts": [("WAEC", 3369)],
+                "blank_topics": [("WAEC", "agricultural-science", "waec-agricultural-science-50-")],
+                "blank_subtopics": [("WAEC", "biology", "blank-subtopic")],
+                "orphans": [("orphan-subtopic", "missing-topic")],
+                "subjects_without_topics": [("NECO", "biology")],
+                "topics_without_subtopics": [("WAEC", "biology", 27)],
+            }
+        )
+    )
+
+    assert health.errors == 3
+    assert health.warnings == 28
+    assert not health.ok()
+    assert not health.ok(strict=True)
+    assert health.as_dict()["errors"]["count"] == 3
+    assert health.as_dict()["warnings"]["count"] == 28
+
+
+async def test_catalog_gaps_only_fail_when_strict() -> None:
+    health = await check_catalog(
+        FakeCatalogDatabase(
+            {
+                "exam_counts": [("WAEC", 36, 1145)],
+                "subtopic_counts": [("WAEC", 3369)],
+                "topics_without_subtopics": [("WAEC", "biology", 27)],
+            }
+        )
+    )
+
+    assert health.errors == 0
+    assert health.warnings == 27
+    assert health.ok()
+    assert not health.ok(strict=True)

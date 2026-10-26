@@ -31,6 +31,7 @@ from collections.abc import Sequence
 from typing import Any
 
 from utmelab_bank.adapters.database import DatabaseError
+from utmelab_bank.catalog_health import check_catalog
 from utmelab_bank.config import ConfigError
 from utmelab_bank.db import DATABASES, Database, QueryResult, ReadOnlyError, open_database
 
@@ -141,6 +142,16 @@ def build_parser() -> argparse.ArgumentParser:
     query = sub.add_parser("query", help="run one read-only SQL statement")
     query.add_argument("sql")
 
+    catalog = sub.add_parser(
+        "catalog",
+        help="check the production catalog for defects (use --database prod)",
+    )
+    catalog.add_argument(
+        "--strict",
+        action="store_true",
+        help="also fail on coverage gaps, not just defects",
+    )
+
     return parser
 
 
@@ -215,7 +226,45 @@ async def _show(db: Database, item_id: str, *, json_output: bool) -> int:
     return 0
 
 
+async def _catalog(db: Database, *, json_output: bool, strict: bool) -> int:
+    health = await check_catalog(db)
+    if json_output:
+        print(json.dumps(health.as_dict(), indent=2))
+        return 0 if health.ok(strict=strict) else 1
+
+    print("production catalog")
+    print(
+        format_table(
+            QueryResult(
+                columns=("exam", "subjects", "topics", "subtopics"),
+                rows=tuple(
+                    (exam.exam, exam.subjects, exam.topics, exam.subtopics) for exam in health.exams
+                ),
+            )
+        )
+    )
+    print()
+    print(f"errors: {health.errors}")
+    for item in health.blank_topics:
+        print(f"  blank topic name: {item.exam}/{item.subject} {item.slug}")
+    for item in health.blank_subtopics:
+        print(f"  blank subtopic name: {item.exam}/{item.subject} {item.slug}")
+    for item in health.orphan_subtopics:
+        print(f"  orphan subtopic: {item.slug} (missing topic {item.subject})")
+    print(f"warnings: {health.warnings}")
+    for item in health.subjects_without_topics:
+        print(f"  subject without topics: {item.exam}/{item.subject}")
+    for gap in health.topics_without_subtopics:
+        print(f"  topics without subtopics: {gap.exam}/{gap.subject}: {gap.topics}")
+    return 0 if health.ok(strict=strict) else 1
+
+
 async def _execute(args: argparse.Namespace) -> int:
+    if args.command == "catalog":
+        if args.database != "prod":
+            raise ConfigError("the catalog lives in production; use --database prod catalog")
+        async with open_database("prod") as db:
+            return await _catalog(db, json_output=args.json, strict=args.strict)
     if args.command in BANK_ONLY and args.database != "bank":
         raise ConfigError(f"{args.command} lists staging rows, which only the bank has")
     async with open_database(args.database) as db:

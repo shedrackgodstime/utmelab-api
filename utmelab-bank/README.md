@@ -86,7 +86,15 @@ Inspect either database without a token on the command line:
 utmelab-db status
 utmelab-db items --state deduped --limit 20
 utmelab-db --database prod query "SELECT exam, COUNT(*) FROM subjects GROUP BY exam"
+utmelab-db --database prod catalog
 ```
+
+`utmelab-db --database prod catalog` checks the production catalog against the
+rules tagging depends on: every topic and subtopic has a name, every subtopic
+names a real topic, and every subject has topics. Blank names and orphans fail
+the command; coverage gaps (subjects with no topics, topics with no subtopics)
+are reported as warnings, and `--strict` makes them fail too. The batch workflow
+runs this before every task.
 
 `utmelab-db` reads the same `.env` as the pipeline, and refuses every
 statement that is not a read. For a question it does not answer, import the
