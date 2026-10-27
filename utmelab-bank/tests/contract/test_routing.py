@@ -30,7 +30,7 @@ def test_image_routing_prefers_openai_then_opencode() -> None:
     assert "cloudflare-secret" not in repr(routes[0])
 
 
-def test_text_routing_prefers_opencode_then_nvidia_then_cloudflare() -> None:
+def test_text_routing_prefers_kilo_then_opencode_then_nvidia_then_cloudflare() -> None:
     routes = select_routes(
         "question_explanation",
         environment={
@@ -40,22 +40,37 @@ def test_text_routing_prefers_opencode_then_nvidia_then_cloudflare() -> None:
         },
     )
 
-    assert [route.family for route in routes] == ["opencode", "openai", "openai"]
-    assert [route.provider for route in routes] == ["opencode", "nvidia", "cloudflare"]
-    assert routes[0].model_id == "opencode/deepseek-v4.1-flash-free"
+    assert [route.family for route in routes] == ["kilo", "opencode", "openai", "openai"]
+    assert [route.provider for route in routes] == [
+        "kilo",
+        "opencode",
+        "nvidia",
+        "cloudflare",
+    ]
+    assert routes[0].model_id == "kilo/kilo-auto/free"
 
 
-def test_opencode_route_needs_no_secret() -> None:
+def test_credential_free_routes_need_no_secret() -> None:
     routes = select_routes("question_explanation", environment={})
 
-    assert len(routes) == 1
-    route = routes[0]
-    assert route.family == "opencode"
-    assert route.protocol == "opencode-cli"
-    assert route.model_id == "opencode/deepseek-v4.1-flash-free"
-    assert route.api_key == ""
-    assert route.transport["command"] == "opencode"
-    assert route.transport["args"] == ["run", "--format", "json", "-m", "{model}"]
+    assert [route.family for route in routes] == ["kilo", "opencode"]
+    kilo, opencode = routes
+    assert kilo.protocol == "opencode-cli"
+    assert kilo.model_id == "kilo/kilo-auto/free"
+    assert kilo.api_key == ""
+    assert kilo.transport["command"] == "kilo"
+    assert kilo.transport["args"] == [
+        "run",
+        "--auto",
+        "--format",
+        "json",
+        "-m",
+        "{model}",
+    ]
+    assert opencode.protocol == "opencode-cli"
+    assert opencode.model_id == "opencode/deepseek-v4.1-flash-free"
+    assert opencode.api_key == ""
+    assert opencode.transport["command"] == "opencode"
 
 
 def test_missing_task_is_a_configuration_error() -> None:

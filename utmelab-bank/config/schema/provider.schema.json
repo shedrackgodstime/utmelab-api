@@ -25,7 +25,7 @@
       "additionalProperties": false,
       "required": ["source", "never_log_values", "never_store_in_this_file"],
       "properties": {
-        "source": {"const": "environment"},
+        "source": {"enum": ["environment", "none"]},
         "never_log_values": {"const": true},
         "never_store_in_this_file": {"const": true}
       }

@@ -204,6 +204,57 @@ def test_timeout_raises(staging_item: StagingItem) -> None:
     assert len(runner.calls) == 1
 
 
+def test_a_missing_cli_is_retryable_so_the_next_route_can_run(
+    staging_item: StagingItem,
+) -> None:
+    """A workstation without one CLI installed must not abort the whole run."""
+    from utmelab_bank.adapters.providers.factory import _is_retryable
+    from utmelab_bank.adapters.providers.opencode import OpenCodeError
+
+    class MissingRunner:
+        async def run(self, argv: list[str], *, timeout: float) -> CommandResult:
+            raise FileNotFoundError("kilo")
+
+    provider = OpenCodeProvider(
+        model="kilo/kilo-auto/free",
+        provider="kilo",
+        runner=MissingRunner(),
+        retry_delay=0.0,
+    )
+
+    with pytest.raises(OpenCodeError) as raised:
+        asyncio.run(provider.explain(ExplainRequest(item=staging_item, catalog=None)))
+
+    error = raised.value
+    assert error.provider == "kilo"
+    assert error.category == "provider_unavailable"
+    assert error.retryable is True
+    assert "provider=kilo" in str(error)
+    assert _is_retryable(error) is True
+
+
+def test_errors_name_the_configured_provider_not_the_transport(
+    staging_item: StagingItem,
+) -> None:
+    """A Kilo route must not report itself as opencode in the operator log."""
+    from utmelab_bank.adapters.providers.opencode import OpenCodeError
+
+    provider, _ = make_provider("")
+    kilocode = OpenCodeProvider(
+        model="kilo/kilo-auto/free",
+        provider="kilo",
+        runner=FakeRunner(""),
+        retry_delay=0.0,
+    )
+
+    with pytest.raises(OpenCodeError) as raised:
+        asyncio.run(kilocode.explain(ExplainRequest(item=staging_item, catalog=None)))
+
+    assert raised.value.provider == "kilo"
+    assert "provider=kilo" in str(raised.value)
+    assert provider.producer.provider == "opencode"
+
+
 def test_a_transient_server_error_is_retried(staging_item: StagingItem) -> None:
     """The free models are a shared queue; a server error is not the row's fault."""
     error_event = json.dumps(

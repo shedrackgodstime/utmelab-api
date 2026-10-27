@@ -1,0 +1,130 @@
+{
+  "$schema": "../schema/provider.schema.json",
+  "version": 3,
+  "purpose": "Routing for the Kilo CLI provider family. The free tier answers without credentials; the CLI is an OpenCode fork, so it shares the CLI transport.",
+  "secrets": {
+    "source": "none",
+    "never_log_values": true,
+    "never_store_in_this_file": true
+  },
+  "defaults": {
+    "timeout_seconds": 240,
+    "max_retries": 0,
+    "max_tokens": 2048,
+    "temperature": 0,
+    "max_attempts_per_request": 1,
+    "cooldown_seconds": 300,
+    "health_probe_before_reenable": false
+  },
+  "error_policy": {
+    "failover_to_next_account": [
+      "rate_limit",
+      "quota",
+      "timeout",
+      "provider_unavailable"
+    ],
+    "do_not_failover": [
+      "authentication",
+      "invalid_request",
+      "input",
+      "output",
+      "schema",
+      "policy",
+      "not_found"
+    ],
+    "max_consecutive_failures_before_cooldown": 2,
+    "never_retry_without_a_new_account_or_health_check": true
+  },
+  "providers": {
+    "kilo": {
+      "protocol": "opencode-cli",
+      "status": "enabled",
+      "account_pool": "kilo-anonymous",
+      "auth": {
+        "kind": "none"
+      },
+      "transport": {
+        "kind": "cli",
+        "command": "kilo",
+        "args": [
+          "run",
+          "--auto",
+          "--format",
+          "json",
+          "-m",
+          "{model}"
+        ]
+      }
+    }
+  },
+  "accounts": {
+    "kilo-anonymous": [
+      {
+        "id": "kilo-free",
+        "enabled": true,
+        "authorized": true,
+        "priority": 10
+      }
+    ]
+  },
+  "models": {
+    "kilo-auto-free": {
+      "provider": "kilo",
+      "model_id": "kilo/kilo-auto/free",
+      "capabilities": [
+        "text"
+      ],
+      "status": "verified_candidate",
+      "observations": {
+        "measured_on": "2026-10-27",
+        "where": "ubuntu-latest GitHub runner and this workstation, no auth file",
+        "tag_pass_rate": "14/20 rows through TagService, 12.3 s per row at concurrency 3",
+        "failure_modes": "five low-confidence abstentions and one unknown subtopic",
+        "notes": "Routes each call to a different free upstream model, so quality varies per row."
+      }
+    },
+    "nemotron-3-5-super-vl-free": {
+      "provider": "kilo",
+      "model_id": "kilo/nvidia/nemotron-3.5-super-vl:free",
+      "capabilities": [
+        "text",
+        "image_input"
+      ],
+      "status": "unstable_candidate",
+      "observations": {
+        "measured_on": "2026-10-27",
+        "where": "this workstation, no auth file",
+        "tag_pass_rate": "16/20 rows through TagService, 12.7 s per row at concurrency 3",
+        "failure_modes": "three low-confidence abstentions and one unknown topic"
+      }
+    }
+  },
+  "account_selection": {
+    "mode": "failover_only",
+    "selection_order": "priority_then_health",
+    "rotate_on_quota_only": false,
+    "rotate_only_on_classified_transient_errors": true,
+    "do_not_round_robin_healthy_accounts": true,
+    "reserve_unknown_quota": true,
+    "persist_health_outside_git": true
+  },
+  "observability": {
+    "record_per_attempt": [
+      "provider",
+      "account_id",
+      "model_id",
+      "task",
+      "started_at",
+      "latency_ms",
+      "status",
+      "error_category"
+    ],
+    "never_record": [
+      "api_key",
+      "auth_token",
+      "raw_prompt",
+      "raw_image_bytes",
+      "raw_provider_response"
+    ]
+  }
+}

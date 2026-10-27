@@ -35,7 +35,7 @@ M = TypeVar("M", bound=BaseModel)
 
 
 class OpenCodeError(RuntimeError):
-    """Raised when OpenCode fails, with an operator-readable error class."""
+    """Raised when an OpenCode-shaped CLI fails, with an operator-readable error class."""
 
     def __init__(
         self,
@@ -44,8 +44,9 @@ class OpenCodeError(RuntimeError):
         category: str = "unknown",
         status: int | None = None,
         retryable: bool = False,
+        provider: str = "opencode",
     ) -> None:
-        self.provider = "opencode"
+        self.provider = provider
         self.category = category
         self.status = status
         self.retryable = retryable
@@ -114,6 +115,7 @@ class OpenCodeProvider:
     ) -> None:
         self.producer = Producer(provider=provider, model=model)
         self.capabilities = capabilities
+        self._provider_name = provider
         self._runner = runner or SubprocessRunner(command=command)
         self._args = args or ("run", "--format", "json", "-m", "{model}")
         self._timeout = timeout
@@ -143,7 +145,12 @@ class OpenCodeProvider:
                 path.unlink(missing_ok=True)
         else:
             data = self._extract_json(
-                await self._complete(prompt, files=(_local_asset_path(request.asset.storage_url),))
+                await self._complete(
+                    prompt,
+                    files=(
+                        _local_asset_path(request.asset.storage_url, provider=self._provider_name),
+                    ),
+                )
             )
         return self._validate(
             ImageDescription,
@@ -236,6 +243,7 @@ class OpenCodeProvider:
                 error = OpenCodeError(
                     f"timed out after {self._timeout} seconds",
                     category="timeout",
+                    provider=self._provider_name,
                 )
                 # A timeout already consumed the full provider budget. Retrying
                 # it three times serially turns one bad model call into several
@@ -243,10 +251,20 @@ class OpenCodeProvider:
                 # errors returned by the CLI remain retryable below; timeouts
                 # are recorded on the row and move on.
                 raise error from exc
+            except FileNotFoundError as exc:
+                # A machine that has not installed this CLI can still use the
+                # next route. Failing over here keeps routing a preference
+                # rather than a hard requirement on one binary.
+                raise OpenCodeError(
+                    f"the {self._provider_name} CLI was not found on PATH",
+                    category="provider_unavailable",
+                    retryable=True,
+                    provider=self._provider_name,
+                ) from exc
             else:
                 if result.returncode != 0:
                     detail = result.stderr.strip() or result.stdout.strip()
-                    error = _process_error(result.returncode, detail)
+                    error = _process_error(result.returncode, detail, provider=self._provider_name)
                     if final or not error.retryable:
                         raise error
                     last = error
@@ -258,7 +276,9 @@ class OpenCodeProvider:
                             raise
                         last = exc
             await asyncio.sleep(self._retry_delay * (attempt + 1))
-        raise last or OpenCodeError("did not answer", category="transport")
+        raise last or OpenCodeError(
+            "did not answer", category="transport", provider=self._provider_name
+        )
 
     def _content_payload(self, item: StagingItem) -> dict[str, Any]:
         return {
@@ -297,10 +317,10 @@ class OpenCodeProvider:
             raise OpenCodeError(
                 f"model output did not match {model_type.__name__}",
                 category="output_schema",
+                provider=self._provider_name,
             ) from exc
 
-    @staticmethod
-    def _collect_text(stdout: str) -> str:
+    def _collect_text(self, stdout: str) -> str:
         texts: list[str] = []
         errors: list[str] = []
         for line in stdout.splitlines():
@@ -313,6 +333,7 @@ class OpenCodeProvider:
                 raise OpenCodeError(
                     "returned a non-JSON line",
                     category="protocol",
+                    provider=self._provider_name,
                 ) from exc
             if not isinstance(event, dict):
                 continue
@@ -326,13 +347,14 @@ class OpenCodeProvider:
             if isinstance(part, dict) and isinstance(part.get("text"), str):
                 texts.append(part["text"])
         if errors:
-            raise _provider_error(errors[0])
+            raise _provider_error(errors[0], provider=self._provider_name)
         if not texts:
-            raise OpenCodeError("returned no text events", category="protocol")
+            raise OpenCodeError(
+                "returned no text events", category="protocol", provider=self._provider_name
+            )
         return "\n".join(texts)
 
-    @staticmethod
-    def _extract_json(text: str) -> dict[str, Any]:
+    def _extract_json(self, text: str) -> dict[str, Any]:
         cleaned = text.strip()
         if cleaned.startswith("```"):
             lines = cleaned.splitlines()[1:]
@@ -342,18 +364,26 @@ class OpenCodeProvider:
         start = cleaned.find("{")
         end = cleaned.rfind("}")
         if start == -1 or end == -1 or end < start:
-            raise OpenCodeError("output did not contain a JSON object", category="output")
+            raise OpenCodeError(
+                "output did not contain a JSON object",
+                category="output",
+                provider=self._provider_name,
+            )
         try:
             data = json.loads(cleaned[start : end + 1])
         except json.JSONDecodeError as exc:
-            raise OpenCodeError("output was not valid JSON", category="output") from exc
+            raise OpenCodeError(
+                "output was not valid JSON", category="output", provider=self._provider_name
+            ) from exc
         if not isinstance(data, dict):
-            raise OpenCodeError("output must be a JSON object", category="output")
+            raise OpenCodeError(
+                "output must be a JSON object", category="output", provider=self._provider_name
+            )
         return cast(dict[str, Any], data)
 
 
 def _error_message(event: dict[str, Any]) -> str:
-    """Read the message out of an opencode error event."""
+    """Read the message out of a CLI error event."""
     error = event.get("error")
     if isinstance(error, dict):
         data = error.get("data")
@@ -367,27 +397,37 @@ def _error_message(event: dict[str, Any]) -> str:
         name = error.get("name")
         if isinstance(name, str):
             return name
-    return "opencode reported an error"
+    return "the CLI reported an error"
 
 
-def _provider_error(message: str) -> OpenCodeError:
+def _provider_error(message: str, *, provider: str = "opencode") -> OpenCodeError:
     """Classify a provider message without leaking the raw event blob."""
     lower = message.lower()
     if "freeusagelimiterror" in lower or "free usage limit" in lower:
-        return OpenCodeError(message, category="quota", status=429)
+        return OpenCodeError(message, category="quota", status=429, provider=provider)
     if "unauthorized" in lower or "authentication" in lower or "invalid api key" in lower:
-        return OpenCodeError(message, category="authentication", status=401)
+        return OpenCodeError(message, category="authentication", status=401, provider=provider)
     if "rate limit" in lower or "too many requests" in lower or " 429" in lower:
-        return OpenCodeError(message, category="rate_limit", status=429, retryable=True)
+        return OpenCodeError(
+            message, category="rate_limit", status=429, retryable=True, provider=provider
+        )
+    if "not found for account" in lower:
+        # The gateway rejected the model binding itself, which is an upstream
+        # configuration fault rather than a bad prompt. Another route may work.
+        return OpenCodeError(
+            message, category="provider_unavailable", status=404, retryable=True, provider=provider
+        )
+    if "model not found" in lower:
+        return OpenCodeError(message, category="not_found", status=404, provider=provider)
     if any(
         marker in lower
         for marker in ("unexpected server error", "overloaded", "temporarily unavailable")
     ):
-        return OpenCodeError(message, category="upstream", retryable=True)
-    return OpenCodeError(message, category="provider")
+        return OpenCodeError(message, category="upstream", retryable=True, provider=provider)
+    return OpenCodeError(message, category="provider", provider=provider)
 
 
-def _process_error(returncode: int, detail: str) -> OpenCodeError:
+def _process_error(returncode: int, detail: str, *, provider: str = "opencode") -> OpenCodeError:
     """Turn a failed CLI process or structured provider event into one error."""
     for line in detail.splitlines():
         try:
@@ -395,10 +435,11 @@ def _process_error(returncode: int, detail: str) -> OpenCodeError:
         except json.JSONDecodeError:
             continue
         if isinstance(event, dict) and event.get("type") == "error":
-            return _provider_error(_error_message(event))
+            return _provider_error(_error_message(event), provider=provider)
     return OpenCodeError(
         f"CLI exited with code {returncode}: {detail or 'no detail'}",
         category="process",
+        provider=provider,
     )
 
 
@@ -411,14 +452,14 @@ def _write_scratch(data: bytes, mime: str) -> Path:
     return Path(name)
 
 
-def _local_asset_path(storage_url: str) -> Path:
+def _local_asset_path(storage_url: str, *, provider: str = "opencode") -> Path:
     parsed = urlparse(storage_url)
     if parsed.scheme == "file":
         path = Path(unquote(parsed.path))
     elif parsed.scheme == "":
         path = Path(storage_url)
     else:
-        raise OpenCodeError("describe_image needs a local asset path")
+        raise OpenCodeError("describe_image needs a local asset path", provider=provider)
     if not path.is_file():
-        raise OpenCodeError(f"asset file does not exist: {path}")
+        raise OpenCodeError(f"asset file does not exist: {path}", provider=provider)
     return path

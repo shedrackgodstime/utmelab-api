@@ -166,6 +166,23 @@ jobs:
               ;;
           esac
 
+      - name: Install the Kilo CLI
+        # The routing default now asks Kilo first. Its free tier needs no
+        # secret, so this install is the whole setup and the config route
+        # still falls through to OpenCode when a model call fails.
+        if: ${{ inputs.provider == 'config' && contains(fromJSON('["tag","media","explain","review","process"]'), inputs.command) }}
+        env:
+          KILO_VERSION: 7.8.18
+        run: |
+          set -euo pipefail
+          npm install --global "@kilocode/cli@$KILO_VERSION"
+          installed_version="$(kilo --version)"
+          echo "Kilo: $installed_version"
+          if [ "$installed_version" != "$KILO_VERSION" ]; then
+            echo "Expected Kilo $KILO_VERSION, got: $installed_version" >&2
+            exit 1
+          fi
+
       - name: Run the task
         working-directory: utmelab-bank
         env:
