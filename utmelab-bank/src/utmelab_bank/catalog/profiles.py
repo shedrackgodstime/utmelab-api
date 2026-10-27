@@ -57,6 +57,7 @@ class Profile:
     strict_continuation: bool = False
     section_lines_can_continue: bool = False
     topic_name_stop_re: str | None = None
+    subtopic_name_stop_re: str | None = None
     body_x_min: float = 0.0
     body_x_max: float = 600.0
     start_marker: str = "DETAILED SYLLABUS"
@@ -115,6 +116,10 @@ PROFILES: dict[str, Profile] = {
         slug="commerce",
         display="Commerce",
         topic_re=r"^(\d+)\.?\s*(.*)$",
+        subtopic_re=r"^([ivx]+)\.\s*(.+)$",
+        subtopic_name_stop_re=(
+            r"\s*[–:]\s+|\s+-\s+(?!(?i:commerce)\b)|\s+[A-Za-z]\.\s+|\s+\((?:[a-z]|[ivx]+)\)\s+"
+        ),
         topic_x_max=130,
         topic_continuation_x_max=140,
         topic_continuation_gap=45.0,

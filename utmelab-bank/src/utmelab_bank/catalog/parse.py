@@ -166,6 +166,24 @@ def _stop_topic_name(name: str, profile: Profile) -> str:
     return prefix if prefix else name
 
 
+def _stop_subtopic_name(name: str, profile: Profile) -> str:
+    """Cut a subtopic heading at the separator that starts its explanation.
+
+    Commerce prints several headings and their lists on one line ("Retail
+    trade: Functions of retailer - Factors..."). The heading is the part
+    before the first separator; the list is body text, not a second name.
+    A one-word prefix is not a heading, so leave that piece for the length
+    and fragment rules to drop.
+    """
+    if profile.subtopic_name_stop_re is None:
+        return name
+    match = re.search(profile.subtopic_name_stop_re, name)
+    if match is None:
+        return name
+    prefix = name[: match.start()].strip()
+    return prefix if len(prefix.split()) >= 2 else name
+
+
 def _incomplete(name: str) -> bool:
     stripped = name.rstrip()
     if stripped.endswith(("-", "–", "—")):
@@ -562,7 +580,7 @@ def parse(lines: list[Line], profile: Profile) -> Syllabus:
         seen: set[str] = set()
         for piece in pieces:
             for part in _split_inline(piece):
-                text = _tidy_name(part)
+                text = _tidy_name(_stop_subtopic_name(part, profile))
                 key = text.lower()
                 if len(text) < 2 or text.isdigit() or key in seen:
                     continue

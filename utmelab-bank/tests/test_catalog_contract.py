@@ -135,3 +135,9 @@ def test_table_and_paper_labels_are_not_qualifiers() -> None:
 def test_a_source_citation_is_not_a_table_label() -> None:
     name = "Conditions governing validity (Q. 4: 4, 21, 24-25): al-Bukhari 67: 29, 37"
     assert name_defects(name) == []
+
+
+def test_a_continuation_fragment_is_rejected() -> None:
+    rules = {rule for rule, _ in name_defects("And manifest")}
+    assert "fragment" in rules
+    assert name_defects("Andean region") == []

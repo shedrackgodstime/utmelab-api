@@ -28,6 +28,13 @@ _LIST_MARKER = r"^(?:\((?:\d+|[a-zA-Z]|[ivxIVX]+)\)|(?:\d+|[a-zA-Z]|[ivxIVX]+)[.
 #: sentence that came before it: "(for internal use and for export), ...".
 _PAREN_FRAGMENT = r"^\((?![a-zA-Z0-9]+\)\s)"
 
+#: A name that starts with a continuation word is the tail of the line above:
+#: "And manifest", "Also known as". It is not a heading.
+_CONTINUATION_START = re.compile(
+    r"^(?:And|Or|But|Also|Then|Thus|Hence|Moreover|Furthermore)\b",
+    re.IGNORECASE,
+)
+
 #: A heading cut before its object: "Problems related to", "Meaning and
 #: differences between". The rest became a subtopic, so the topic is a stub.
 _DANGLING_END = re.compile(
@@ -75,6 +82,8 @@ def name_defects(name: str) -> list[tuple[str, str]]:
         found.append(("list_marker", "starts with a list marker"))
     if re.match(_PAREN_FRAGMENT, name):
         found.append(("fragment", "starts mid-sentence inside a bracket"))
+    if _CONTINUATION_START.match(name):
+        found.append(("fragment", "starts as a continuation"))
     if name[:1].islower():
         found.append(("lowercase_start", "starts with a lowercase word"))
     dangling = _DANGLING_END.search(name)
