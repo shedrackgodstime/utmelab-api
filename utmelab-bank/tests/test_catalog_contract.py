@@ -119,3 +119,19 @@ def test_prose_addressed_to_the_candidate_is_rejected() -> None:
     assert "sentence" in rules
     rules = {rule for rule, _ in name_defects("The paper will be divided into three sections")}
     assert "sentence" in rules
+
+
+def test_table_and_paper_labels_are_not_qualifiers() -> None:
+    for name in (
+        "INTRODUCTION (S/no contents)",
+        "INTRODUCTION (B. Privatisation)",
+        "Historiography and Historical Skills (Paper 1:)",
+        "LEXIS (Paper 1: (for candidates in The Gambia only))",
+    ):
+        rules = {rule for rule, _ in name_defects(name)}
+        assert "invalid_qualifier" in rules, name
+
+
+def test_a_source_citation_is_not_a_table_label() -> None:
+    name = "Conditions governing validity (Q. 4: 4, 21, 24-25): al-Bukhari 67: 29, 37"
+    assert name_defects(name) == []

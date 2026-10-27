@@ -143,20 +143,20 @@
       "countries": []
     },
     {
-      "slug": "waec-formulation-and-preparation-of-animal-feeds-used-in-feed-for",
+      "slug": "waec-formulation-and-preparation-of-animal-feeds",
       "subject": "animal-husbandry",
       "exam": "WAEC",
-      "name": "Formulation and Preparation of Animal Feeds used in feed formulation",
+      "name": "Formulation and Preparation of Animal Feeds",
       "order": 14,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-handling-and-storage-of-animal-feeds-storage-and-features-of",
+      "slug": "waec-handling-and-storage-of-animal-feeds",
       "subject": "animal-husbandry",
       "exam": "WAEC",
-      "name": "Handling and Storage of Animal Feeds storage and features of storage structures",
+      "name": "Handling and Storage of Animal Feeds",
       "order": 15,
       "weight": 0,
       "objectives": [],
@@ -213,10 +213,10 @@
       "countries": []
     },
     {
-      "slug": "waec-ectoparasites-and-endoparasites-of-parasites-feeding-influen",
+      "slug": "waec-ectoparasites-and-endoparasites",
       "subject": "animal-husbandry",
       "exam": "WAEC",
-      "name": "Ectoparasites and endoparasites of parasites feeding influence parasite population",
+      "name": "Ectoparasites and endoparasites",
       "order": 21,
       "weight": 0,
       "objectives": [],
@@ -286,7 +286,7 @@
       "slug": "waec-artificial-insemination-principles-and-animal-improvement",
       "subject": "animal-husbandry",
       "exam": "WAEC",
-      "name": "Artificial Insemination (Principles and animal improvement)",
+      "name": "Artificial Insemination (Principles and Animal Improvement)",
       "order": 28,
       "weight": 0,
       "objectives": [],
@@ -313,10 +313,10 @@
       "countries": []
     },
     {
-      "slug": "waec-determination-of-room-temperature-body-temperature",
+      "slug": "waec-determination-of-room-temperature-body-temperature-and-anima",
       "subject": "animal-husbandry",
       "exam": "WAEC",
-      "name": "Determination of room temperature, body temperature",
+      "name": "Determination of room temperature, body temperature and animals",
       "order": 31,
       "weight": 0,
       "objectives": [],
@@ -476,7 +476,7 @@
       "slug": "waec-artificial-insemination-animal-production",
       "subject": "animal-husbandry",
       "exam": "WAEC",
-      "name": "Artificial Insemination (Animal production)",
+      "name": "Artificial Insemination (Animal Production)",
       "order": 47,
       "weight": 0,
       "objectives": [],
@@ -707,16 +707,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-common-terms",
-      "topic": "waec-formulation-and-preparation-of-animal-feeds-used-in-feed-for",
-      "name": "Common terms",
+      "slug": "waec-common-terms-used-in-feed-formulation",
+      "topic": "waec-formulation-and-preparation-of-animal-feeds",
+      "name": "Common terms used in feed formulation",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-importance-of-feed",
-      "topic": "waec-handling-and-storage-of-animal-feeds-storage-and-features-of",
-      "name": "Importance of feed",
+      "slug": "waec-importance-of-feed-storage-and-features-of-storage-structure",
+      "topic": "waec-handling-and-storage-of-animal-feeds",
+      "name": "Importance of feed storage and features of storage structures",
       "order": 1,
       "objectives": []
     },
@@ -777,17 +777,24 @@
       "objectives": []
     },
     {
-      "slug": "waec-types-and-examples",
-      "topic": "waec-ectoparasites-and-endoparasites-of-parasites-feeding-influen",
-      "name": "Types and examples",
+      "slug": "waec-types-and-examples-of-parasites",
+      "topic": "waec-ectoparasites-and-endoparasites",
+      "name": "Types and examples of parasites",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-structure-life-cycle",
-      "topic": "waec-ectoparasites-and-endoparasites-of-parasites-feeding-influen",
-      "name": "Structure, life cycle",
+      "slug": "waec-structure-life-cycle-feeding",
+      "topic": "waec-ectoparasites-and-endoparasites",
+      "name": "Structure, life cycle feeding",
       "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-conditions-that-influence-parasite-population",
+      "topic": "waec-ectoparasites-and-endoparasites",
+      "name": "Conditions that influence parasite population",
+      "order": 3,
       "objectives": []
     },
     {
@@ -868,9 +875,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-respiration-rate-in-farm-animals",
-      "topic": "waec-determination-of-room-temperature-body-temperature",
-      "name": "Respiration rate in farm animals",
+      "slug": "waec-respiration-rate-in-farm",
+      "topic": "waec-determination-of-room-temperature-body-temperature-and-anima",
+      "name": "Respiration rate in farm",
       "order": 1,
       "objectives": []
     },

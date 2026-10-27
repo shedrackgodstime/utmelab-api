@@ -51,6 +51,11 @@ class Profile:
     topic_continuation_same_x: bool = False
     topic_continuation_independent: bool = False
     topic_continuation_words: int = 3
+    topic_continuation_gap: float = 30.0
+    allow_uppercase_continuations: bool = False
+    continuation_line_gap: float | None = None
+    strict_continuation: bool = False
+    section_lines_can_continue: bool = False
     topic_name_stop_re: str | None = None
     body_x_min: float = 0.0
     body_x_max: float = 600.0
@@ -62,6 +67,7 @@ class Profile:
     merge_duplicate_topics: bool = False
     strip_topic_markers: bool = False
     uppercase_continuation_in_body: bool = False
+    bare_marker_topics: bool = False
     expected_topics: int | None = None
     section_re: str = DEFAULT_SECTION_RE
 
@@ -108,13 +114,21 @@ PROFILES: dict[str, Profile] = {
     "commerce": Profile(
         slug="commerce",
         display="Commerce",
-        topic_re=r"^(\d+)\.\s*(.+)$",
+        topic_re=r"^(\d+)\.?\s*(.*)$",
         topic_x_max=130,
         topic_continuation_x_max=140,
+        topic_continuation_gap=45.0,
+        allow_uppercase_continuations=True,
+        continuation_line_gap=35.0,
+        strict_continuation=True,
+        section_lines_can_continue=True,
+        uppercase_continuation_in_body=True,
+        bare_marker_topics=True,
         body_x_min=250,
         body_x_max=340,
         sentence_split=True,
         strip_topic_markers=True,
+        expected_topics=16,
         section_re=r"^(?:[A-Z]\.\s+[A-Z][A-Za-z ]+|[A-Z][A-Z ,&/()-]{3,})$",
     ),
     "economics": Profile(
@@ -218,6 +232,7 @@ PROFILES: dict[str, Profile] = {
         body_x_min=230,
         body_x_max=400,
         sentence_split=True,
+        continuation_line_gap=25.0,
         topic_name_stop_re=r"\s+(?=angles\b|The Gambia\b|histograms\b)",
     ),
     "technical-drawing": Profile(

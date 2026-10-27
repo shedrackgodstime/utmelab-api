@@ -13,41 +13,21 @@
   ],
   "topics": [
     {
-      "slug": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "slug": "waec-lexis",
       "subject": "english-language",
       "exam": "WAEC",
-      "name": "LEXIS (Paper 1: (for candidates in the gambia, nigeria, sierra leone and liberia only))",
+      "name": "LEXIS",
       "order": 1,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-structure-paper-1-for-candidates-in-the-gambia-nigeria-sierr",
+      "slug": "waec-structure-english-language",
       "subject": "english-language",
       "exam": "WAEC",
-      "name": "STRUCTURE (Paper 1: (for candidates in the gambia, nigeria, sierra leone and liberia only))",
+      "name": "STRUCTURE",
       "order": 2,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-lexis-paper-1",
-      "subject": "english-language",
-      "exam": "WAEC",
-      "name": "LEXIS (Paper 1:)",
-      "order": 3,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-structure-paper-1",
-      "subject": "english-language",
-      "exam": "WAEC",
-      "name": "STRUCTURE (Paper 1:)",
-      "order": 4,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -57,7 +37,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "LITERATURE",
-      "order": 5,
+      "order": 3,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -67,7 +47,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "ESSAY WRITING",
-      "order": 6,
+      "order": 4,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -77,7 +57,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "COMPREHENSION",
-      "order": 7,
+      "order": 5,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -87,7 +67,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "SUMMARY",
-      "order": 8,
+      "order": 6,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -97,7 +77,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "ORAL ENGLISH",
-      "order": 9,
+      "order": 7,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -107,7 +87,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "CONSONANTS",
-      "order": 10,
+      "order": 8,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -117,7 +97,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "VOWELS",
-      "order": 11,
+      "order": 9,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -127,7 +107,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "STRESS",
-      "order": 12,
+      "order": 10,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -137,7 +117,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "INTONATION",
-      "order": 13,
+      "order": 11,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -146,245 +126,217 @@
   "subtopics": [
     {
       "slug": "waec-building-and-building-construction",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Building and Building Construction",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-agriculture-english-language",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Agriculture",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-fishing",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Fishing",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-stock-exchange",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Stock exchange",
       "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-health",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Health",
       "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-environment",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Environment",
       "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-culture-institutions-and-ceremonies",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Culture, Institutions and Ceremonies",
       "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-law-and-order-english-language",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Law and Order",
       "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-motor-vehicles-and-travelling",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Motor Vehicles and Travelling",
       "order": 9,
       "objectives": []
     },
     {
       "slug": "waec-government-and-administration",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Government and Administration",
       "order": 10,
       "objectives": []
     },
     {
       "slug": "waec-sports",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Sports",
       "order": 11,
       "objectives": []
     },
     {
       "slug": "waec-religion",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Religion",
       "order": 12,
       "objectives": []
     },
     {
       "slug": "waec-science-and-technology",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Science and Technology",
       "order": 13,
       "objectives": []
     },
     {
       "slug": "waec-animal-husbandry",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Animal husbandry",
       "order": 14,
       "objectives": []
     },
     {
       "slug": "waec-advertising-english-language",
-      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "topic": "waec-lexis",
       "name": "Advertising",
       "order": 15,
       "objectives": []
     },
     {
-      "slug": "waec-the-patterns-of-changes-in-word-forms-which-indicate-number",
-      "topic": "waec-structure-paper-1-for-candidates-in-the-gambia-nigeria-sierr",
-      "name": "The patterns of changes in word-forms which indicate number, tense, degree, etc",
-      "order": 1,
-      "objectives": []
-    },
-    {
       "slug": "waec-building",
-      "topic": "waec-lexis-paper-1",
+      "topic": "waec-lexis",
       "name": "Building",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-plumbing",
-      "topic": "waec-lexis-paper-1",
-      "name": "Plumbing",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-fishing-english-language",
-      "topic": "waec-lexis-paper-1",
-      "name": "Fishing",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-finance-commerce-banking-stock-exchange-insurance",
-      "topic": "waec-lexis-paper-1",
-      "name": "Finance – commerce, banking, stock exchange, insurance",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-photography",
-      "topic": "waec-lexis-paper-1",
-      "name": "Photography",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-mineral-exploration",
-      "topic": "waec-lexis-paper-1",
-      "name": "Mineral exploration",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-common-manufacturing-industries",
-      "topic": "waec-lexis-paper-1",
-      "name": "Common manufacturing industries",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-printing-publishing-the-press-and-libraries",
-      "topic": "waec-lexis-paper-1",
-      "name": "Printing, publishing, the press and libraries",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-sea-road-rail-and-air-transport",
-      "topic": "waec-lexis-paper-1",
-      "name": "Sea, road, rail and air transport",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-government-and-politics",
-      "topic": "waec-lexis-paper-1",
-      "name": "Government and politics",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-sports-and-entertainment",
-      "topic": "waec-lexis-paper-1",
-      "name": "Sports and entertainment",
-      "order": 11,
-      "objectives": []
-    },
-    {
-      "slug": "waec-religion-english-language",
-      "topic": "waec-lexis-paper-1",
-      "name": "Religion",
-      "order": 12,
-      "objectives": []
-    },
-    {
-      "slug": "waec-science-and-technology-english-language",
-      "topic": "waec-lexis-paper-1",
-      "name": "Science and Technology",
-      "order": 13,
-      "objectives": []
-    },
-    {
-      "slug": "waec-power-production-hydro-thermal-solar",
-      "topic": "waec-lexis-paper-1",
-      "name": "Power production – hydro, thermal, solar",
-      "order": 14,
-      "objectives": []
-    },
-    {
-      "slug": "waec-education",
-      "topic": "waec-lexis-paper-1",
-      "name": "Education",
-      "order": 15,
-      "objectives": []
-    },
-    {
-      "slug": "waec-communication",
-      "topic": "waec-lexis-paper-1",
-      "name": "Communication",
       "order": 16,
       "objectives": []
     },
     {
-      "slug": "waec-military",
-      "topic": "waec-lexis-paper-1",
-      "name": "Military",
+      "slug": "waec-plumbing",
+      "topic": "waec-lexis",
+      "name": "Plumbing",
       "order": 17,
       "objectives": []
     },
     {
-      "slug": "waec-the-patterns-of-changes-in-word-forms-which-indicate-number-english-language",
-      "topic": "waec-structure-paper-1",
+      "slug": "waec-finance-commerce-banking-stock-exchange-insurance",
+      "topic": "waec-lexis",
+      "name": "Finance – commerce, banking, stock exchange, insurance",
+      "order": 18,
+      "objectives": []
+    },
+    {
+      "slug": "waec-photography",
+      "topic": "waec-lexis",
+      "name": "Photography",
+      "order": 19,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mineral-exploration",
+      "topic": "waec-lexis",
+      "name": "Mineral exploration",
+      "order": 20,
+      "objectives": []
+    },
+    {
+      "slug": "waec-common-manufacturing-industries",
+      "topic": "waec-lexis",
+      "name": "Common manufacturing industries",
+      "order": 21,
+      "objectives": []
+    },
+    {
+      "slug": "waec-printing-publishing-the-press-and-libraries",
+      "topic": "waec-lexis",
+      "name": "Printing, publishing, the press and libraries",
+      "order": 22,
+      "objectives": []
+    },
+    {
+      "slug": "waec-sea-road-rail-and-air-transport",
+      "topic": "waec-lexis",
+      "name": "Sea, road, rail and air transport",
+      "order": 23,
+      "objectives": []
+    },
+    {
+      "slug": "waec-government-and-politics",
+      "topic": "waec-lexis",
+      "name": "Government and politics",
+      "order": 24,
+      "objectives": []
+    },
+    {
+      "slug": "waec-sports-and-entertainment",
+      "topic": "waec-lexis",
+      "name": "Sports and entertainment",
+      "order": 25,
+      "objectives": []
+    },
+    {
+      "slug": "waec-power-production-hydro-thermal-solar",
+      "topic": "waec-lexis",
+      "name": "Power production – hydro, thermal, solar",
+      "order": 26,
+      "objectives": []
+    },
+    {
+      "slug": "waec-education",
+      "topic": "waec-lexis",
+      "name": "Education",
+      "order": 27,
+      "objectives": []
+    },
+    {
+      "slug": "waec-communication",
+      "topic": "waec-lexis",
+      "name": "Communication",
+      "order": 28,
+      "objectives": []
+    },
+    {
+      "slug": "waec-military",
+      "topic": "waec-lexis",
+      "name": "Military",
+      "order": 29,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-patterns-of-changes-in-word-forms-which-indicate-number",
+      "topic": "waec-structure-english-language",
       "name": "The patterns of changes in word-forms which indicate number, tense, degree, etc",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-the-use-of-structural-words-e-g-conjunctions-determiners-pre",
-      "topic": "waec-structure-paper-1",
+      "topic": "waec-structure-english-language",
       "name": "The use of structural words e.g. conjunctions, determiners, prepositions, etc",
       "order": 2,
       "objectives": []

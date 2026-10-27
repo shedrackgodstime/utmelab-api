@@ -136,13 +136,15 @@ def _segment(body: list[Line], profile: Profile) -> list[str]:
 def _is_heading_continuation(text: str, limit: int, *, allow_upper: bool = False) -> bool:
     """A wrapped heading is short and does not end like a sentence."""
     words = text.split()
-    if re.match(r"^(?:\(\w+\)|[a-z0-9]+[.)])\s", text):
+    if re.match(r"^(?:\(\w+\)|[A-Za-z0-9]+[.)])\s", text):
         return False
     if text.startswith(("•", "-", "–", "—")):
         return False
+    if text.strip().upper() in {"CONTENTS", "NOTES", "S/NO CONTENTS"}:
+        return False
     return (
         len(words) <= limit
-        and not text.rstrip().endswith((".", ";"))
+        and not text.rstrip().endswith((".", ";", ":"))
         and not text.upper().startswith("NOTE")
         and (allow_upper or not (len(words) > 1 and text.upper() == text))
     )
@@ -270,7 +272,7 @@ def _bands(scope: list[Line], profile: Profile) -> list[_Heading]:
         name = _stop_topic_name(_clean(raw), profile)
         if profile.strip_topic_markers:
             name = _strip_topic_marker(name)
-        if name:
+        if name or profile.bare_marker_topics:
             headings.append(_Heading(index=index, line=line, name=name))
     return _merge_incomplete_headings(headings, profile)
 
@@ -369,15 +371,17 @@ def _is_continuation(
     profile: Profile,
     *,
     seen_body: bool,
+    current_name: str | None = None,
+    closed: bool = False,
 ) -> bool:
-    if profile.topic_continuation_x_max is None:
+    if closed or profile.topic_continuation_x_max is None:
         return False
     if line.x > profile.topic_continuation_x_max:
         return False
     if not _is_heading_continuation(
         line.text,
         profile.topic_continuation_words,
-        allow_upper=profile.topic_continuation_same_x,
+        allow_upper=(profile.topic_continuation_same_x or profile.allow_uppercase_continuations),
     ):
         return False
     if profile.subtopic_re and re.match(profile.subtopic_re, line.text):
@@ -389,25 +393,29 @@ def _is_continuation(
         and len(line.text.split()) <= 4
     ):
         return True
-    if _incomplete(heading.name) and len(line.text.split()) <= 6:
+    in_progress = current_name if current_name is not None else heading.name
+    if _incomplete(in_progress) and len(line.text.split()) <= 6:
         return True
     # An indented lower-case line directly under the heading continues it:
     # "3. Meaning and differences between" / "subsistence and commercial
     # agriculture". Once a subtopic marker has appeared, body lines are closed.
     if (
         not seen_body
-        and heading.line.x <= line.x <= heading.line.x + 30
+        and heading.line.x <= line.x <= heading.line.x + profile.topic_continuation_gap
         and line.text[:1].islower()
     ):
         return True
     # A heading in the left column can wrap while the notes column, to its
     # right, is already printing body text on the same row. That body text
-    # does not close the heading: it is a different column.
+    # does not close the heading: it is a different column. Once body has
+    # started, only an uppercase continuation (a heading fragment) may join;
+    # a title-case subheading belongs to the body.
     if (
         profile.body_x_min > 0
         and line.x < profile.body_x_min
-        and heading.line.x <= line.x <= heading.line.x + 30
+        and heading.line.x <= line.x <= heading.line.x + profile.topic_continuation_gap
         and len(line.text.split()) <= 4
+        and (not seen_body or line.text.isupper())
     ):
         return True
     if (
@@ -425,8 +433,17 @@ def _is_continuation(
         # Independent means "not at the same x", not "after the body started".
         return not seen_body
     if profile.body_x_min > 0 and line.x < profile.body_x_min:
-        return True
+        return not (profile.strict_continuation and seen_body)
     return not seen_body
+
+
+def _starts_subheading(text: str) -> bool:
+    """A lettered row in the contents column opens a new part of the topic.
+
+    Once one appears, the topic's own name is complete. Everything below it
+    belongs to that subheading, not to the title.
+    """
+    return bool(re.match(r"^(?:[A-Z]\.|\([a-z0-9]+\))\s+", text.strip()))
 
 
 def parse(lines: list[Line], profile: Profile) -> Syllabus:
@@ -437,9 +454,9 @@ def parse(lines: list[Line], profile: Profile) -> Syllabus:
         raise ParseError(f"{profile.slug}: no topics found after {profile.start_marker!r}")
 
     topics: list[Topic] = []
-    topic_sections: list[str] = []
+    section_indexes: list[int] = []
     section_re = re.compile(profile.section_re)
-    sections = _section_map(scope, section_re)
+    consumed_ids: set[int] = set()
     for position, heading in enumerate(headings):
         following = headings[position + 1] if position + 1 < len(headings) else None
         band = [
@@ -448,20 +465,49 @@ def parse(lines: list[Line], profile: Profile) -> Syllabus:
             if line is not heading.line
             and id(line) not in heading.consumed
             and _in_band(line, heading, following)
-            and not section_re.match(line.text)
+            and (not section_re.match(line.text) or profile.section_lines_can_continue)
         ]
+        section_ids = {id(line) for line in band if section_re.match(line.text)}
         name = heading.name
         seen_body = False
+        closed = False
+        name_page, name_y = heading.line.page, heading.line.y
         continuation: set[int] = set()
         # A wrapped heading sits immediately under the heading, in the heading
         # column. Keep it out of the body.
         for line in band:
             if not _in_continuation_zone(line, heading, profile):
                 continue
-            if _is_continuation(line, heading, profile, seen_body=seen_body):
+            if line.x < profile.body_x_min and _starts_subheading(line.text):
+                closed = True
+                continue
+            near = (
+                profile.continuation_line_gap is not None
+                and not closed
+                and line.page == name_page
+                and 0 < name_y - line.y <= profile.continuation_line_gap
+                and line.x < profile.body_x_min
+                and len(line.text.split()) <= 6
+                and not line.text.rstrip().endswith((".", ";"))
+                and line.text.strip().upper() not in {"CONTENTS", "NOTES"}
+            )
+            if near:
                 name = _clean(f"{name} {line.text}")
                 continuation.add(id(line))
-            elif profile.body_x_min <= line.x <= profile.body_x_max:
+                name_y = line.y
+                continue
+            if _is_continuation(
+                line,
+                heading,
+                profile,
+                seen_body=seen_body,
+                current_name=name,
+                closed=closed,
+            ):
+                name = _clean(f"{name} {line.text}")
+                continuation.add(id(line))
+                name_page, name_y = line.page, line.y
+            elif profile.body_x_min <= line.x <= profile.body_x_max and id(line) not in section_ids:
                 seen_body = True
 
         name = re.sub(
@@ -484,6 +530,7 @@ def parse(lines: list[Line], profile: Profile) -> Syllabus:
                 if line.page == heading.line.page
                 and abs(line.y - heading.line.y) <= ROW_TOLERANCE
                 and heading.line.x < line.x <= profile.body_x_max
+                and id(line) not in section_ids
             ]
             if same_row:
                 candidate = _tidy_name(same_row[0].text)
@@ -496,9 +543,13 @@ def parse(lines: list[Line], profile: Profile) -> Syllabus:
         body = [
             line
             for line in band
-            if profile.body_x_min <= line.x <= profile.body_x_max and id(line) not in continuation
+            if profile.body_x_min <= line.x <= profile.body_x_max
+            and id(line) not in continuation
+            and id(line) not in section_ids
         ]
-        notes = [line for line in band if line.x > profile.body_x_max]
+        notes = [
+            line for line in band if line.x > profile.body_x_max and id(line) not in section_ids
+        ]
 
         pieces = _segment(body, profile)
         if not pieces:
@@ -526,8 +577,12 @@ def parse(lines: list[Line], profile: Profile) -> Syllabus:
         if not subtopics and profile.allow_single_subtopic and len(name) <= MAX_NAME_CHARS:
             subtopics.append(Subtopic(name=name, order=1))
         topics.append(Topic(name=name, order=len(topics) + 1, subtopics=subtopics))
-        topic_sections.append(sections[heading.index])
+        section_indexes.append(heading.index)
+        consumed_ids.update(id(line) for line in heading.consumed)
+        consumed_ids.update(continuation)
 
+    sections = _section_map(scope, section_re, skip=consumed_ids)
+    topic_sections = [sections[index] for index in section_indexes]
     topics = _disambiguate(topics, topic_sections)
     if profile.merge_duplicate_topics:
         topics = _merge_duplicates(topics)
@@ -544,30 +599,112 @@ def parse(lines: list[Line], profile: Profile) -> Syllabus:
     return syllabus
 
 
+#: Table furniture that is not a section heading.
+_TABLE_HEADERS = frozenset(
+    {"S/NO CONTENTS", "CONTENTS", "NOTES", "S/N AUTHOR", "TITLE", "PUBLISHER"}
+)
+
+#: Acronyms a title-cased section label would otherwise mangle.
+_ACRONYMS = {"Ecowas": "ECOWAS", "Waec": "WAEC", "Jamb": "JAMB"}
+
+#: Words a heading keeps lower-case unless they start it.
+_SMALL_WORDS = frozenset(
+    {
+        "a",
+        "an",
+        "and",
+        "as",
+        "at",
+        "by",
+        "for",
+        "from",
+        "in",
+        "into",
+        "of",
+        "on",
+        "or",
+        "the",
+        "to",
+        "with",
+    }
+)
+
+
+def _smart_title(text: str) -> str:
+    """Title-case a heading without shouting or capitalising every "and"."""
+    raw = text.split()
+    words: list[str] = []
+    for position, word in enumerate(raw):
+        lowered = word.lower()
+        after_colon = position > 0 and raw[position - 1].endswith(":")
+        if position > 0 and lowered in _SMALL_WORDS and not after_colon:
+            words.append(lowered)
+        elif word.isupper():
+            words.append(word[:1] + word[1:].lower())
+        else:
+            words.append(word[:1].upper() + word[1:])
+    return " ".join(words)
+
+
 def _section_label(text: str) -> str:
-    """A short, readable name for the section a topic sits in."""
-    label = text.strip().capitalize()
+    """A short, readable name for the section a topic sits in.
+
+    A label is only useful as a qualifier when it names a real section. Table
+    headers, exam-paper labels and lettered subsections are not sections; they
+    return an empty label, and the duplicate rule decides what happens next.
+    """
+    label = re.sub(r"\s+", " ", text).strip()
+    if not label:
+        return ""
+    upper = label.upper()
+    if upper in _TABLE_HEADERS or upper.startswith("S/NO "):
+        return ""
+    # "B. Privatisation" is a subsection of the topic above it.
+    if re.match(r"^[A-Z]\.\s+", label):
+        return ""
     for prefix in (
         "Regional geography of ",
         "Elements of practical and ",
         "Aspects of ",
     ):
         if label.lower().startswith(prefix.lower()):
-            label = label[len(prefix) :]
+            label = label[len(prefix) :].strip()
             break
-    return label.strip()
+    # "Paper 1" says which paper, not which part of the syllabus.
+    if re.match(r"^Paper\s+\d+\b", label, re.IGNORECASE):
+        return ""
+    label = label.rstrip(":").strip()
+    if not label:
+        return ""
+    label = _smart_title(label)
+    for wrong, right in _ACRONYMS.items():
+        label = label.replace(wrong, right)
+    return label
 
 
-def _section_map(scope: list[Line], section_re: re.Pattern[str]) -> list[str]:
-    """The section in force at each line, with multi-line headings joined."""
+def _section_map(
+    scope: list[Line], section_re: re.Pattern[str], *, skip: set[int] | None = None
+) -> list[str]:
+    """The section in force at each line, with multi-line headings joined.
+
+    ``skip`` holds lines already consumed as a topic heading's continuation.
+    A wrapped heading often looks like a section ("BUSINESS", "MANAGEMENT");
+    letting it become a section would qualify an unrelated topic with it.
+    """
+    skip = skip or set()
     labels: list[str] = []
-    block: list[str] = []
+    block: list[Line] = []
     current = ""
     for line in scope:
-        if section_re.match(line.text):
-            block.append(line.text)
+        if id(line) not in skip and section_re.match(line.text):
+            # A wrapped heading keeps its x. A new x is a new heading, even
+            # when no body line sits between the two.
+            if block and abs(line.x - block[-1].x) > 2.0:
+                current = _section_label(" ".join(item.text for item in block))
+                block = []
+            block.append(line)
         elif block:
-            current = _section_label(" ".join(block))
+            current = _section_label(" ".join(item.text for item in block))
             block = []
         labels.append(current)
     return labels
@@ -586,11 +723,14 @@ def _disambiguate(topics: list[Topic], sections: list[str]) -> list[Topic]:
     for indexes in groups.values():
         if len(indexes) < 2:
             continue
-        labels = {sections[index] for index in indexes if sections[index]}
-        if len(labels) < 2:
+        labels = [sections[index] for index in indexes]
+        nonempty = [label for label in labels if label]
+        if not nonempty:
             continue
-        for index in indexes:
-            label = sections[index]
+        if len(set(nonempty)) == 1 and len(nonempty) == len(labels):
+            # The same section label on every duplicate cannot tell them apart.
+            continue
+        for index, label in zip(indexes, labels, strict=True):
             if not label:
                 continue
             candidate = f"{topics[index].name} ({label})"

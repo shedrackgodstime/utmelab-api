@@ -44,6 +44,16 @@ _SENTENCE = re.compile(
     re.IGNORECASE,
 )
 
+#: A parenthetical that is a cut label or an empty shell: "(Paper 1:)",
+#: "(B. Privatisation)", "(S/no contents)". These read as noise to a model.
+_BAD_QUALIFIER = re.compile(
+    r"\((?:\s*|(?:S/No|Contents?|Notes?|Paper\s+\d+)\b[^()]*|[A-Z]\.\s+[A-Z][A-Za-z ]+)\)",
+    re.IGNORECASE,
+)
+
+#: A paper label with a colon inside a nested parenthetical.
+_PAPER_LABEL = re.compile(r"\bPaper\s+\d+\s*:", re.IGNORECASE)
+
 
 @dataclass(frozen=True, slots=True)
 class RowDefect:
@@ -72,6 +82,8 @@ def name_defects(name: str) -> list[tuple[str, str]]:
         found.append(("dangling_end", f"ends with {dangling.group(0)!r}"))
     if _SENTENCE.search(name):
         found.append(("sentence", "reads as prose, not a name"))
+    if _BAD_QUALIFIER.search(name) or _PAPER_LABEL.search(name):
+        found.append(("invalid_qualifier", "a qualifier is a table or paper label"))
     return found
 
 

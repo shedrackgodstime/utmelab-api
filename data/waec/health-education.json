@@ -43,10 +43,10 @@
       "countries": []
     },
     {
-      "slug": "waec-posture-and-postural-defects-lordosis",
+      "slug": "waec-posture-and-postural-defects",
       "subject": "health-education",
       "exam": "WAEC",
-      "name": "Posture and Postural Defects lordosis",
+      "name": "Posture and Postural Defects",
       "order": 4,
       "weight": 0,
       "objectives": [],
@@ -203,10 +203,10 @@
       "countries": []
     },
     {
-      "slug": "waec-communicable-diseases-education",
+      "slug": "waec-communicable-diseases",
       "subject": "health-education",
       "exam": "WAEC",
-      "name": "Communicable diseases EDUCATION",
+      "name": "Communicable diseases",
       "order": 20,
       "weight": 0,
       "objectives": [],
@@ -499,14 +499,14 @@
     },
     {
       "slug": "waec-definition-health-education",
-      "topic": "waec-posture-and-postural-defects-lordosis",
+      "topic": "waec-posture-and-postural-defects",
       "name": "Definition",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-characteristics-of-correct-posture",
-      "topic": "waec-posture-and-postural-defects-lordosis",
+      "topic": "waec-posture-and-postural-defects",
       "name": "Characteristics of correct posture",
       "order": 2,
       "objectives": []
@@ -1031,14 +1031,14 @@
     },
     {
       "slug": "waec-definition-8",
-      "topic": "waec-communicable-diseases-education",
+      "topic": "waec-communicable-diseases",
       "name": "Definition",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-classification-of-communicable-diseases",
-      "topic": "waec-communicable-diseases-education",
+      "topic": "waec-communicable-diseases",
       "name": "Classification of communicable diseases",
       "order": 2,
       "objectives": []

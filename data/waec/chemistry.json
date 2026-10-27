@@ -113,10 +113,10 @@
       "countries": []
     },
     {
-      "slug": "waec-chemical-kinetics-and-equilibrium-system-irreversible-reacti",
+      "slug": "waec-chemical-kinetics-and-equilibrium-system",
       "subject": "chemistry",
       "exam": "WAEC",
-      "name": "CHEMICAL KINETICS AND EQUILIBRIUM SYSTEM irreversible reactions. Reversible",
+      "name": "CHEMICAL KINETICS AND EQUILIBRIUM SYSTEM",
       "order": 11,
       "weight": 0,
       "objectives": [],
@@ -153,10 +153,10 @@
       "countries": []
     },
     {
-      "slug": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "slug": "waec-basic-biochemistry-and-synthetic-polymers",
       "subject": "chemistry",
       "exam": "WAEC",
-      "name": "BASIC BIOCHEMISTRY AND SYNTHETIC POLYMERS CONTACT Chemical properties",
+      "name": "BASIC BIOCHEMISTRY AND SYNTHETIC POLYMERS",
       "order": 15,
       "weight": 0,
       "objectives": [],
@@ -166,7 +166,7 @@
       "slug": "waec-structure-of-the-atom-section-b",
       "subject": "chemistry",
       "exam": "WAEC",
-      "name": "STRUCTURE OF THE ATOM (Section b)",
+      "name": "STRUCTURE OF THE ATOM (Section B)",
       "order": 16,
       "weight": 0,
       "objectives": [],
@@ -176,7 +176,7 @@
       "slug": "waec-periodic-chemistry-section-b",
       "subject": "chemistry",
       "exam": "WAEC",
-      "name": "PERIODIC CHEMISTRY (Section b)",
+      "name": "PERIODIC CHEMISTRY (Section B)",
       "order": 17,
       "weight": 0,
       "objectives": [],
@@ -196,7 +196,7 @@
       "slug": "waec-energy-and-energy-changes-section-b",
       "subject": "chemistry",
       "exam": "WAEC",
-      "name": "ENERGY AND ENERGY CHANGES (Section b)",
+      "name": "ENERGY AND ENERGY CHANGES (Section B)",
       "order": 19,
       "weight": 0,
       "objectives": [],
@@ -206,7 +206,7 @@
       "slug": "waec-acids-bases-and-salts-section-b",
       "subject": "chemistry",
       "exam": "WAEC",
-      "name": "ACIDS, BASES AND SALTS (Section b)",
+      "name": "ACIDS, BASES AND SALTS (Section B)",
       "order": 20,
       "weight": 0,
       "objectives": [],
@@ -236,17 +236,17 @@
       "slug": "waec-chemistry-of-carbon-compounds-section-b",
       "subject": "chemistry",
       "exam": "WAEC",
-      "name": "CHEMISTRY OF CARBON COMPOUNDS (Section b)",
+      "name": "CHEMISTRY OF CARBON COMPOUNDS (Section B)",
       "order": 23,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-chemical-industry-and-environment-kaolin-solar-salt",
+      "slug": "waec-chemical-industry-and-environment",
       "subject": "chemistry",
       "exam": "WAEC",
-      "name": "CHEMICAL INDUSTRY AND ENVIRONMENT Kaolin, solar salt",
+      "name": "CHEMICAL INDUSTRY AND ENVIRONMENT",
       "order": 24,
       "weight": 0,
       "objectives": [],
@@ -689,49 +689,49 @@
     },
     {
       "slug": "waec-rate-of-reactions",
-      "topic": "waec-chemical-kinetics-and-equilibrium-system-irreversible-reacti",
+      "topic": "waec-chemical-kinetics-and-equilibrium-system",
       "name": "Rate of reactions",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-factors-affecting-rates",
-      "topic": "waec-chemical-kinetics-and-equilibrium-system-irreversible-reacti",
+      "topic": "waec-chemical-kinetics-and-equilibrium-system",
       "name": "Factors affecting rates",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-theories-of-reaction-rates",
-      "topic": "waec-chemical-kinetics-and-equilibrium-system-irreversible-reacti",
+      "topic": "waec-chemical-kinetics-and-equilibrium-system",
       "name": "Theories of reaction rates",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-analysis-and-interpretation-of-graphs",
-      "topic": "waec-chemical-kinetics-and-equilibrium-system-irreversible-reacti",
+      "topic": "waec-chemical-kinetics-and-equilibrium-system",
       "name": "Analysis and interpretation of graphs",
       "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-equilibrium",
-      "topic": "waec-chemical-kinetics-and-equilibrium-system-irreversible-reacti",
+      "topic": "waec-chemical-kinetics-and-equilibrium-system",
       "name": "Equilibrium",
       "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-general-principle",
-      "topic": "waec-chemical-kinetics-and-equilibrium-system-irreversible-reacti",
+      "topic": "waec-chemical-kinetics-and-equilibrium-system",
       "name": "General Principle",
       "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-le-chatelier-s-principle",
-      "topic": "waec-chemical-kinetics-and-equilibrium-system-irreversible-reacti",
+      "topic": "waec-chemical-kinetics-and-equilibrium-system",
       "name": "Le Chatelier’s principle",
       "order": 7,
       "objectives": []
@@ -1025,105 +1025,105 @@
     },
     {
       "slug": "waec-proteins",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
       "name": "Proteins",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-uses-of-protein",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
       "name": "Uses of protein",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-amino-acids",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
-      "name": "Amino acids",
+      "slug": "waec-amino-acids-contact",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
+      "name": "Amino acids CONTACT",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-fats-oils",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
       "name": "Fats/oils",
       "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-sources-and-properties-chemistry",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
       "name": "Sources and properties",
       "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-general-structure-of-fats-oils",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
       "name": "General structure of fats/oils",
       "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-preparation-of-soap",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
       "name": "Preparation of soap",
       "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-uses-of-fats-oils",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
       "name": "Uses of fats/oils",
       "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-carbohydrates",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
       "name": "Carbohydrates",
       "order": 9,
       "objectives": []
     },
     {
       "slug": "waec-sources-and-nomenclature",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
       "name": "Sources and nomenclature",
       "order": 10,
       "objectives": []
     },
     {
       "slug": "waec-properties",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
       "name": "Properties",
       "order": 11,
       "objectives": []
     },
     {
       "slug": "waec-carbohydrate-as-examples-of-polymer",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
       "name": "Carbohydrate as examples of polymer",
       "order": 12,
       "objectives": []
     },
     {
       "slug": "waec-uses-2",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
       "name": "Uses",
       "order": 13,
       "objectives": []
     },
     {
       "slug": "waec-synthetic-polymers",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
       "name": "Synthetic polymers",
       "order": 14,
       "objectives": []
     },
     {
       "slug": "waec-uses-of-polymers-for-candidates-in-ghana-only",
-      "topic": "waec-basic-biochemistry-and-synthetic-polymers-contact-chemical-p",
+      "topic": "waec-basic-biochemistry-and-synthetic-polymers",
       "name": "Uses of polymers. (For candidates in Ghana only)",
       "order": 15,
       "objectives": []
@@ -1340,21 +1340,21 @@
     },
     {
       "slug": "waec-sources-of-raw-materials-location-of-mineral-deposits-and-th",
-      "topic": "waec-chemical-industry-and-environment-kaolin-solar-salt",
+      "topic": "waec-chemical-industry-and-environment",
       "name": "Sources of raw materials Location of mineral deposits and their nature",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-mining-of-mineral-as-ore",
-      "topic": "waec-chemical-industry-and-environment-kaolin-solar-salt",
+      "topic": "waec-chemical-industry-and-environment",
       "name": "Mining of mineral as ore",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-cement-and-its-uses-for-candidates-in-nigeria-sierra-leone-l",
-      "topic": "waec-chemical-industry-and-environment-kaolin-solar-salt",
+      "topic": "waec-chemical-industry-and-environment",
       "name": "Cement and its uses (For candidates in Nigeria, Sierra-Leone, Liberia and The Gambia)",
       "order": 3,
       "objectives": []

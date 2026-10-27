@@ -163,10 +163,10 @@
       "countries": []
     },
     {
-      "slug": "waec-change-of-subject-of-a-formula-relation-formula-relation",
+      "slug": "waec-change-of-subject-of-a-formula-relation",
       "subject": "general-mathematics",
       "exam": "WAEC",
-      "name": "Change of Subject of a Formula/Relation formula/relation",
+      "name": "Change of Subject of a Formula/Relation",
       "order": 16,
       "weight": 0,
       "objectives": [],
@@ -303,10 +303,10 @@
       "countries": []
     },
     {
-      "slug": "waec-probability-transformation-5-currencies",
+      "slug": "waec-probability-transformation",
       "subject": "general-mathematics",
       "exam": "WAEC",
-      "name": "Probability TRANSFORMATION ( 5) Currencies",
+      "name": "Probability TRANSFORMATION",
       "order": 30,
       "weight": 0,
       "objectives": [],
@@ -532,15 +532,15 @@
       "objectives": []
     },
     {
-      "slug": "waec-change-of-subject-of-a",
-      "topic": "waec-change-of-subject-of-a-formula-relation-formula-relation",
-      "name": "Change of subject of a",
+      "slug": "waec-change-of-subject-of-a-formula-relation-general-mathematics",
+      "topic": "waec-change-of-subject-of-a-formula-relation",
+      "name": "Change of subject of a formula/relation",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-substitution",
-      "topic": "waec-change-of-subject-of-a-formula-relation-formula-relation",
+      "topic": "waec-change-of-subject-of-a-formula-relation",
       "name": "Substitution",
       "order": 2,
       "objectives": []
@@ -903,64 +903,71 @@
       "objectives": []
     },
     {
+      "slug": "waec-calculation-of-distances-and-angles",
+      "topic": "waec-angles-of-elevation-and-depression",
+      "name": "Calculation of distances and angles",
+      "order": 4,
+      "objectives": []
+    },
+    {
       "slug": "waec-differentiation-of-algebraic-functions",
       "topic": "waec-angles-of-elevation-and-depression",
       "name": "Differentiation of algebraic functions",
-      "order": 4,
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-frequency-distribution",
       "topic": "waec-angles-of-elevation-and-depression",
       "name": "Frequency distribution",
-      "order": 5,
+      "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-pie-charts-bar-charts",
+      "slug": "waec-pie-charts-bar-charts-histograms-and-frequency-polygons",
       "topic": "waec-angles-of-elevation-and-depression",
-      "name": "Pie charts, bar charts",
-      "order": 6,
+      "name": "Pie charts, bar charts, histograms and frequency polygons",
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-mean-median-and-mode-for-both-discrete-and-grouped-data",
       "topic": "waec-angles-of-elevation-and-depression",
       "name": "Mean, median and mode for both discrete and grouped data",
-      "order": 7,
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-cumulative-frequency-curve-ogive",
       "topic": "waec-angles-of-elevation-and-depression",
       "name": "Cumulative frequency curve (Ogive)",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-measures-of-dispersion-quartile-range-variance-mean-deviatio",
-      "topic": "waec-angles-of-elevation-and-depression",
-      "name": "Measures of Dispersion: quartile range, variance, mean deviation and standard deviation",
       "order": 9,
       "objectives": []
     },
     {
+      "slug": "waec-measures-of-dispersion-range-semi-inter-quartile-inter-quart",
+      "topic": "waec-angles-of-elevation-and-depression",
+      "name": "Measures of Dispersion: range, semi inter-quartile/inter-quartile range, variance, mean deviation and standard deviation",
+      "order": 10,
+      "objectives": []
+    },
+    {
       "slug": "waec-experimental-and-theoretical-probability",
-      "topic": "waec-probability-transformation-5-currencies",
+      "topic": "waec-probability-transformation",
       "name": "Experimental and theoretical probability",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-addition-of-probabilities-for-mutually-exclusive-and-indepen",
-      "topic": "waec-probability-transformation-5-currencies",
+      "topic": "waec-probability-transformation",
       "name": "Addition of probabilities for mutually exclusive and independent events",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-1-franc-fr-general-mathematics",
-      "topic": "waec-probability-transformation-5-currencies",
+      "topic": "waec-probability-transformation",
       "name": "= 1 Franc (fr)",
       "order": 3,
       "objectives": []
