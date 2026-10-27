@@ -220,3 +220,36 @@ async def test_catalog_gaps_only_fail_when_strict() -> None:
     assert health.warnings == 27
     assert health.ok()
     assert not health.ok(strict=True)
+
+
+async def test_an_exam_with_no_topics_is_parked_not_a_warning() -> None:
+    health = await check_catalog(
+        FakeCatalogDatabase(
+            {
+                "exam_counts": [("JAMB", 25, 583), ("NECO", 36, 0)],
+                "subtopic_counts": [("JAMB", 2158)],
+                "subjects_without_topics": [("NECO", "biology")],
+            }
+        )
+    )
+
+    assert health.warnings == 0
+    assert [exam.exam for exam in health.parked] == ["NECO"]
+    assert health.ok(strict=True)
+    assert health.as_dict()["parked"] == [{"exam": "NECO", "subjects": 36}]
+
+
+async def test_a_subject_without_topics_in_a_live_exam_stays_a_warning() -> None:
+    health = await check_catalog(
+        FakeCatalogDatabase(
+            {
+                "exam_counts": [("WAEC", 36, 840)],
+                "subtopic_counts": [("WAEC", 2892)],
+                "subjects_without_topics": [("WAEC", "visual-arts")],
+            }
+        )
+    )
+
+    assert health.warnings == 1
+    assert health.ok()
+    assert not health.ok(strict=True)

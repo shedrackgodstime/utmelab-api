@@ -244,6 +244,9 @@ async def _catalog(db: Database, *, json_output: bool, strict: bool) -> int:
         )
     )
     print()
+    if health.parked:
+        parked = ", ".join(f"{exam.exam} ({exam.subjects} subjects)" for exam in health.parked)
+        print(f"parked: {parked}")
     print(f"errors: {health.errors}")
     for item in health.blank_topics:
         print(f"  blank topic name: {item.exam}/{item.subject} {item.slug}")

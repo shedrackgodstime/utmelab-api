@@ -106,6 +106,7 @@ class CatalogHealth:
     """What the catalog looks like, split by whether it costs a batch."""
 
     exams: tuple[ExamCounts, ...]
+    parked: tuple[ExamCounts, ...]
     blank_topics: tuple[Defect, ...]
     blank_subtopics: tuple[Defect, ...]
     orphan_subtopics: tuple[Defect, ...]
@@ -142,6 +143,7 @@ class CatalogHealth:
                 }
                 for exam in self.exams
             ],
+            "parked": [{"exam": exam.exam, "subjects": exam.subjects} for exam in self.parked],
             "errors": {
                 "blank_topics": [_defect(item) for item in self.blank_topics],
                 "blank_subtopics": [_defect(item) for item in self.blank_subtopics],
@@ -194,9 +196,16 @@ async def check_catalog(database: Database) -> CatalogHealth:
         Defect(exam="-", subject=str(row[1]), slug=str(row[0]))
         for row in (await database.query(ORPHANS)).rows
     )
+    # An exam with no topics at all is parked, not broken: its catalog has not
+    # been built yet, and every one of its subjects would otherwise be a
+    # warning that never clears. A subject with no topics inside a live exam
+    # stays a gap, because that subject can never be tagged.
+    parked = tuple(exam for exam in exams if exam.topics == 0)
+    parked_names = {exam.exam for exam in parked}
     subjects_without_topics = tuple(
         Defect(exam=str(row[0]), subject=str(row[1]), slug=str(row[1]))
         for row in (await database.query(SUBJECTS_WITHOUT_TOPICS)).rows
+        if str(row[0]) not in parked_names
     )
     topics_without_subtopics = tuple(
         SubjectGap(exam=str(row[0]), subject=str(row[1]), topics=int(row[2]))
@@ -205,6 +214,7 @@ async def check_catalog(database: Database) -> CatalogHealth:
 
     return CatalogHealth(
         exams=exams,
+        parked=parked,
         blank_topics=blank_topics,
         blank_subtopics=blank_subtopics,
         orphan_subtopics=orphan_subtopics,
