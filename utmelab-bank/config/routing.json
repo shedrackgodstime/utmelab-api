@@ -21,10 +21,10 @@
       "on_no_provider": "block",
       "allowed_model_statuses": ["verified_candidate", "unstable_candidate"],
       "candidates": [
-        {"provider": "kilo", "model": "kilo-auto-free", "priority": 5},
-        {"provider": "kilo", "model": "nemotron-3-5-super-vl-free", "priority": 8},
-        {"provider": "opencode", "model": "deepseek-v4.1-flash-free", "priority": 10},
-        {"provider": "openai", "model": "nvidia-nemotron-super-vl", "priority": 20},
+        {"provider": "openai", "model": "nvidia-nemotron-super-vl", "priority": 5},
+        {"provider": "kilo", "model": "kilo-auto-free", "priority": 10},
+        {"provider": "kilo", "model": "nemotron-3-5-super-vl-free", "priority": 12},
+        {"provider": "opencode", "model": "deepseek-v4.1-flash-free", "priority": 20},
         {"provider": "openai", "model": "cloudflare-llama4-scout", "priority": 30}
       ]
     },

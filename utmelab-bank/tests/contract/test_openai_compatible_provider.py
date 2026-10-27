@@ -87,3 +87,33 @@ def test_openai_compatible_provider_parses_tag_and_verdict(
     verifier, _ = provider({"verdict": "pass", "reasoning": "r", "confidence": 0.9})
     verdict = asyncio.run(verifier.verify(VerifyAnswerRequest(item=staging_item, catalog=catalog)))
     assert verdict.verdict is Verdict.PASS
+
+
+def test_openai_compatible_provider_names_the_exact_tag_schema(
+    staging_item: StagingItem, catalog: CatalogSnapshot
+) -> None:
+    built, calls = provider(
+        {"topic_id": "t1", "subtopic_id": "s1", "evidence": "What is 2 + 2?", "confidence": 0.9}
+    )
+
+    asyncio.run(built.tag(TagRequest(item=staging_item, catalog=catalog)))
+
+    instruction = calls.calls[0]["messages"][1]["content"]
+    for key in ('"topic_id"', '"subtopic_id"', '"evidence"', '"confidence"'):
+        assert key in instruction
+
+
+def test_openai_compatible_provider_names_the_exact_explain_and_verify_schema(
+    staging_item: StagingItem, catalog: CatalogSnapshot
+) -> None:
+    explainer, explain_calls = provider({"key_point": "k", "body": "b", "confidence": 0.9})
+    asyncio.run(explainer.explain(ExplainRequest(item=staging_item, catalog=catalog)))
+    instruction = explain_calls.calls[0]["messages"][1]["content"]
+    for key in ('"key_point"', '"body"', '"trap"', '"confidence"'):
+        assert key in instruction
+
+    verifier, verify_calls = provider({"verdict": "pass", "reasoning": "r", "confidence": 0.9})
+    asyncio.run(verifier.verify(VerifyAnswerRequest(item=staging_item, catalog=catalog)))
+    instruction = verify_calls.calls[0]["messages"][1]["content"]
+    for key in ('"verdict"', '"reasoning"', '"confidence"'):
+        assert key in instruction

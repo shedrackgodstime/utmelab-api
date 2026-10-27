@@ -139,7 +139,11 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
         data = await self._complete(
             self._text_messages(
                 "Explain the canonical answer and every distractor. Show calculations, preserve "
-                "units, and use figure evidence only when supported.",
+                "units, and use figure evidence only when supported. Return a JSON object with "
+                'exactly these keys: "key_point" (one sentence stating the key idea), "body" '
+                "(the full explanation, including why each distractor is wrong), "
+                '"trap" (the most likely mistake, or "none"), and "confidence" (a number '
+                "from 0.0 to 1.0). Do not add any other keys.",
                 self._content_payload(request.item),
             )
         )
@@ -159,8 +163,12 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
         payload["catalog"] = catalog_for_prompt(request.catalog, request.item.content.stem.text)
         data = await self._complete(
             self._text_messages(
-                "Choose one catalog topic and subtopic. Evidence must be an exact quote from "
-                "the question, passage, or accepted OCR text.",
+                "Choose one catalog topic and subtopic. Return a JSON object with exactly "
+                'these keys: "topic_id" (an id from catalog.topics), "subtopic_id" (an id '
+                "from catalog.subtopics whose topic_id matches the chosen topic), "
+                '"evidence" (an exact quote from the question, passage, or accepted OCR '
+                'text), and "confidence" (a number from 0.0 to 1.0). Use the ids, not the '
+                "names. Do not add any other keys.",
                 payload,
             )
         )
@@ -178,7 +186,9 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
     async def verify(self, request: VerifyAnswerRequest) -> AnswerVerdict:
         data = await self._complete(
             self._text_messages(
-                'Verify the canonical answer. Return verdict "pass", "fail", or "abstain" and reasoning.',
+                "Verify the canonical answer. Return a JSON object with exactly these keys: "
+                '"verdict" ("pass", "fail", or "abstain"), "reasoning" (plain text), and '
+                '"confidence" (a number from 0.0 to 1.0). Do not add any other keys.',
                 self._content_payload(request.item),
             )
         )
