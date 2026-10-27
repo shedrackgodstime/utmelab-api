@@ -153,6 +153,33 @@ Prose syllabi (`english-language`, `literature-in-english`, `commerce`,
 `insurance`) probably need a different shape: fewer real subtopics, or
 topic-level placement, rather than forcing a split of a paragraph.
 
+The contract is now code, not prose: `catalog/contract.py` rejects names over
+120 characters, leading list markers, bracket fragments, lowercase starts and
+duplicate topic names. `utmelab-catalog check` applies it and exits non-zero.
+The current WAEC data fails with 1380 defects across 30 subjects: 740 too long,
+384 lowercase starts, 213 list markers, 37 duplicate names, 6 bracket
+fragments. That is the acceptance target for the next phase, not a regression.
+
+### Phase 2c - build, then publish (started 2026-10-27)
+
+A new database is not a filter. The same parser and the same contract
+reproduce the same poems in a shiny new file. What makes a fresh start
+meaningful is that production is only ever the output of a build that passed
+the gate.
+
+- The build database is disposable: sources -> parse -> contract -> publish.
+  It can be deleted and rebuilt at any time.
+- Publish is one transaction and refuses a catalog that fails the contract.
+  Production is never edited by hand.
+- WAEC has one question and zero valid tags, so its slice can be rebuilt and
+  published without touching JAMB.
+- JAMB is migrated, not re-imported: 2243 questions, 2240 resolve to a live
+  subtopic, 0 blank answers, 0 blank text, 0 duplicate content hashes. Three
+  rows have no subtopic and one has a blank exam. The publish gate must reject
+  that shape rather than repeat it.
+- `StagingStore.save` currently accepts a row in any state. The write boundary
+  has to refuse an invalid row, otherwise the gate is only a report.
+
 ### Phase 3 - the 957 WAEC rows
 
 - HALTED 2026-10-27 until phase 2b passes. The 97 catalogued WAEC rows are

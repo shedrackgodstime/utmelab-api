@@ -17,6 +17,7 @@ from typing import Any
 from ..adapters.database import TursoClient, prod_client
 from ..config import catalog_write_credentials, load_settings
 from .apply import apply_plan, plan_subject
+from .contract import RowDefect, subject_defects, summarise
 from .model import Syllabus
 from .parse import ParseError, parse
 from .pdf import normalise, read_lines, text_of
@@ -190,6 +191,7 @@ def cmd_check(args: argparse.Namespace) -> int:
     subjects = args.subject or sorted(manifest)
     errors: list[str] = []
     warnings: list[str] = []
+    semantic: list[RowDefect] = []
     topic_slugs: dict[str, str] = {}
     subtopic_slugs: dict[str, str] = {}
     total_topics = 0
@@ -205,7 +207,6 @@ def cmd_check(args: argparse.Namespace) -> int:
         if not str(subject.get("name") or "").strip():
             errors.append(f"{slug}: subject has no name")
         local_topic_slugs = {str(row.get("slug")) for row in topics}
-        seen_names: set[str] = set()
         for row in topics:
             row_slug = str(row.get("slug") or "")
             name = str(row.get("name") or "")
@@ -218,13 +219,8 @@ def cmd_check(args: argparse.Namespace) -> int:
             defect = _name_defect(name)
             if defect:
                 errors.append(f"{slug}/{row_slug}: {defect}: {name!r}")
-            key = normalise(name)
-            if key in seen_names:
-                warnings.append(f"{slug}: duplicate topic name {name!r}")
-            seen_names.add(key)
             if not any(str(sub.get("topic")) == row_slug for sub in subtopics):
                 errors.append(f"{slug}/{row_slug}: topic has no subtopics")
-        seen_sub_names: set[tuple[str, str]] = set()
         for row in subtopics:
             row_slug = str(row.get("slug") or "")
             name = str(row.get("name") or "")
@@ -240,12 +236,34 @@ def cmd_check(args: argparse.Namespace) -> int:
                 errors.append(f"{slug}/{row_slug}: {defect}: {name!r}")
             if topic not in local_topic_slugs:
                 errors.append(f"{slug}/{row_slug}: orphan subtopic (topic {topic!r})")
-            sub_key = (topic, normalise(name))
-            if sub_key in seen_sub_names:
-                warnings.append(f"{slug}/{row_slug}: duplicate subtopic name {name!r}")
-            seen_sub_names.add(sub_key)
         total_topics += len(topics)
         total_subtopics += len(subtopics)
+        semantic.extend(subject_defects(slug, topics, subtopics))
+
+    if semantic:
+        counts = summarise(semantic)
+        rules = (
+            "too_long",
+            "list_marker",
+            "fragment",
+            "lowercase_start",
+            "duplicate_name",
+        )
+        print()
+        print(f"semantic defects: {len(semantic)}")
+        print(f"{'subject':28}" + "".join(f"{rule:>16}" for rule in rules))
+        for subject_slug in sorted({defect.subject for defect in semantic}):
+            line = f"{subject_slug:28}"
+            line += "".join(f"{counts.get((subject_slug, rule), 0):>16}" for rule in rules)
+            print(line)
+        totals = "".join(
+            f"{sum(n for (s, r), n in counts.items() if r == rule):>16}" for rule in rules
+        )
+        print(f"{'TOTAL':28}{totals}")
+        errors.extend(
+            f"{defect.subject}/{defect.slug}: {defect.rule}: {defect.detail}" for defect in semantic
+        )
+
     print(f"checked {len(subjects)} subjects: {total_topics} topics, {total_subtopics} subtopics")
     print(f"errors: {len(errors)}")
     for item in errors[: args.limit]:
