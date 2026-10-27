@@ -9,7 +9,7 @@ from .consensus import (
     WitnessError,
 )
 from .describe import ImageDescriberService, create_configured_describer, create_describer
-from .errors import MediaAuthError, MediaError, MediaPublishError
+from .errors import InsufficientWitnesses, MediaAuthError, MediaError, MediaPublishError
 from .factory import create_media_store
 from .gitlab_store import GitLabMediaStore
 from .ingest import (
@@ -33,6 +33,7 @@ __all__ = [
     "GitLabMediaStore",
     "HttpMediaFetcher",
     "ImageDescriberService",
+    "InsufficientWitnesses",
     "LocalMediaStore",
     "OcrSpaceClient",
     "OcrSpaceError",

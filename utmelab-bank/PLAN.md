@@ -250,10 +250,18 @@ scope.
 ### Phase 4 - media
 
 Current bank has no rows waiting at media; all 66 historical media failures
-ended in `rejected`. The latent gap is `create_configured_describer()` using
-`routes[:2]` and `DescribeImageConsensus` failing closed. Fix it before media
-is enabled for new rows: use every configured route, or make the policy
-explicit (two witnesses from the full pool, with a named failure).
+ended in `rejected`.
+
+Resolved 2026-10-27: the describer now obeys the routing file instead of
+slicing the resolved routes. `routing.task_policy` reads the task's
+`strategy`, `minimum_successful_witnesses`, `require_distinct_models` and
+`on_insufficient_witnesses`, and `create_configured_describer` builds exactly
+that many witnesses from distinct models, in priority order. One model on
+several keys collapses to one witness; if the routing cannot supply the
+declared count the run fails with `InsufficientWitnesses`, a named,
+non-retryable media error, before a figure is touched. A policy that asks for
+anything other than consensus, distinct models and a block is refused as a
+configuration error rather than quietly ignored.
 
 ### Phase 5 - NECO (the only path to global strict)
 

@@ -41,4 +41,16 @@ class MediaPublishError(MediaError):
     retryable = False
 
 
-__all__ = ["MediaAuthError", "MediaError", "MediaPublishError"]
+class InsufficientWitnesses(MediaError):
+    """The routing cannot name enough different models to check a figure.
+
+    This is the named failure the routing policy asks for when it says
+    ``on_insufficient_witnesses: block``. One model, however many accounts it
+    has, is not a second opinion; a configuration that can only produce one is
+    refused before any figure is described.
+    """
+
+    retryable = False
+
+
+__all__ = ["InsufficientWitnesses", "MediaAuthError", "MediaError", "MediaPublishError"]

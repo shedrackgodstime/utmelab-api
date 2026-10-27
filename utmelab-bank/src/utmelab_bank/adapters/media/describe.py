@@ -2,16 +2,24 @@
 
 from utmelab_bank.adapters.providers import OpenAICompatibleProvider, OpenCodeProvider
 from utmelab_bank.adapters.providers.factory import create_from_route
-from utmelab_bank.config import DEFAULT_AI_IMAGE_MODEL, DEFAULT_AI_IMAGE_SECOND_MODEL
+from utmelab_bank.config import (
+    DEFAULT_AI_IMAGE_MODEL,
+    DEFAULT_AI_IMAGE_SECOND_MODEL,
+    ConfigError,
+)
 from utmelab_bank.domain.capabilities import DescribeImageRequest
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.models import OcrRecord, StagingItem
 from utmelab_bank.domain.ports import ImageDescriber, MediaStore
-from utmelab_bank.routing import select_routes
+from utmelab_bank.routing import ProviderRoute, select_routes, task_policy
 
 from .checks import check_media
 from .consensus import DescribeImageConsensus
+from .errors import InsufficientWitnesses
 from .ocr_space import OcrSpaceClient, OcrSpaceError
+
+#: A consensus cannot be built from one model, whatever the policy says.
+MINIMUM_CONSENSUS_WITNESSES = 2
 
 
 class ImageDescriberService:
@@ -128,9 +136,59 @@ def create_describer(
     )
 
 
+def distinct_witnesses(routes: tuple[ProviderRoute, ...]) -> tuple[ProviderRoute, ...]:
+    """Collapse the resolved routes to one route per model, in priority order.
+
+    ``select_routes`` expands every authorized account, so two routes can be
+    the same model on two keys. Those are not two witnesses, and the consensus
+    would refuse the pair anyway; dropping the duplicate here keeps the first
+    account as the model's route and moves on to the next model.
+    """
+    seen: set[tuple[str, str]] = set()
+    chosen: list[ProviderRoute] = []
+    for route in routes:
+        identity = (route.provider, route.model_id)
+        if identity in seen:
+            continue
+        seen.add(identity)
+        chosen.append(route)
+    return tuple(chosen)
+
+
 def create_configured_describer() -> ImageDescriber:
-    """Build the image consensus from the validated provider routing."""
-    routes = select_routes("image_description")
-    if len(routes) < 2:
-        raise ValueError("provider routing has fewer than two usable image witnesses")
-    return DescribeImageConsensus(tuple(create_from_route(route) for route in routes[:2]))
+    """Build the image consensus from the routing file's own policy.
+
+    The policy decides how many witnesses are needed and whether they must be
+    different models. A configuration that cannot supply them is refused with
+    a named error before a figure is touched, because a single witness is not
+    a check and describing the figure anyway would record one.
+    """
+    policy = task_policy("image_description")
+    if policy.strategy != "consensus":
+        raise ConfigError(
+            f"image_description strategy is {policy.strategy!r}; "
+            "only 'consensus' can build a figure describer"
+        )
+    if policy.on_insufficient_witnesses != "block":
+        raise ConfigError(
+            "image_description must set on_insufficient_witnesses to 'block', "
+            f"not {policy.on_insufficient_witnesses!r}"
+        )
+    if not policy.require_distinct_models:
+        raise ConfigError(
+            "image_description must require distinct models; two runs of one "
+            "model agree because they are the same model"
+        )
+
+    needed = max(MINIMUM_CONSENSUS_WITNESSES, policy.minimum_successful_witnesses)
+    routes = distinct_witnesses(select_routes("image_description"))
+    if len(routes) < needed:
+        raise InsufficientWitnesses(
+            f"image_description needs {needed} distinct model witnesses and "
+            f"the routing resolved {len(routes)}",
+            hint="authorize another model in config/routing.json and its provider manifest",
+            task=policy.task,
+            required=needed,
+            resolved=len(routes),
+        )
+    return DescribeImageConsensus(tuple(create_from_route(route) for route in routes[:needed]))

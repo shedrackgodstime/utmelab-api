@@ -9,13 +9,16 @@ import pytest
 from utmelab_bank.adapters.media import (
     DescribeImageConsensus,
     GitLabMediaStore,
+    InsufficientWitnesses,
     LocalMediaStore,
     MediaError,
+    create_configured_describer,
     create_describer,
     create_media_store,
 )
 from utmelab_bank.adapters.providers import OpenAICompatibleProvider
-from utmelab_bank.config import DEFAULT_MEDIA_BASE_URL, Settings
+from utmelab_bank.config import DEFAULT_MEDIA_BASE_URL, ConfigError, Settings
+from utmelab_bank.routing import ProviderRoute, TaskPolicy, task_policy
 
 
 def _settings(**overrides: object) -> Settings:
@@ -110,3 +113,145 @@ def test_openai_compatible_describer_builds_two_witnesses() -> None:
 def test_one_model_twice_is_refused() -> None:
     with pytest.raises(ValueError, match="two different models"):
         create_describer(model="opencode/x", second_model="opencode/x")
+
+
+def _route(model_id: str, *, account: str = "account-01") -> ProviderRoute:
+    return ProviderRoute(
+        task="image_description",
+        model_key=model_id,
+        provider="nvidia",
+        protocol="openai-compatible",
+        model_id=model_id,
+        account_id=account,
+        base_url="https://example.test/v1",
+        api_key="test-key",
+    )
+
+
+def _policy(**overrides: object) -> TaskPolicy:
+    base: dict[str, object] = {
+        "task": "image_description",
+        "strategy": "consensus",
+        "on_insufficient_witnesses": "block",
+        "minimum_successful_witnesses": 2,
+        "require_distinct_models": True,
+    }
+    base.update(overrides)
+    return TaskPolicy(**base)  # type: ignore[arg-type]
+
+
+def _configure(
+    monkeypatch: pytest.MonkeyPatch,
+    routes: tuple[ProviderRoute, ...],
+    *,
+    policy: TaskPolicy | None = None,
+) -> None:
+    monkeypatch.setattr("utmelab_bank.adapters.media.describe.select_routes", lambda task: routes)
+    chosen = policy or _policy()
+    monkeypatch.setattr("utmelab_bank.adapters.media.describe.task_policy", lambda task: chosen)
+
+
+def test_the_configured_describer_takes_one_witness_per_model(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """A second key for one model is not a second witness."""
+    _configure(
+        monkeypatch,
+        (
+            _route("vision/one", account="account-01"),
+            _route("vision/one", account="account-02"),
+            _route("vision/one", account="account-03"),
+            _route("vision/two", account="account-01"),
+        ),
+    )
+
+    describer = create_configured_describer()
+
+    assert isinstance(describer, DescribeImageConsensus)
+    witnesses = describer._describers
+    assert [witness.producer.model for witness in witnesses] == ["vision/one", "vision/two"]
+    assert len({witness.producer.model for witness in witnesses}) == len(witnesses)
+
+
+def test_one_model_on_two_keys_cannot_witness_a_figure(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """The old routes[:2] slice built this pair, and it could never describe."""
+    _configure(
+        monkeypatch,
+        (
+            _route("vision/one", account="account-01"),
+            _route("vision/one", account="account-02"),
+        ),
+    )
+
+    with pytest.raises(InsufficientWitnesses, match="needs 2 distinct model witnesses"):
+        create_configured_describer()
+
+
+def test_no_usable_route_is_a_named_failure(monkeypatch: pytest.MonkeyPatch) -> None:
+    _configure(monkeypatch, ())
+
+    with pytest.raises(InsufficientWitnesses) as raised:
+        create_configured_describer()
+
+    assert raised.value.context["resolved"] == 0
+    assert raised.value.context["required"] == 2
+    assert raised.value.is_retryable is False
+
+
+def test_the_configured_witness_count_is_obeyed(monkeypatch: pytest.MonkeyPatch) -> None:
+    _configure(
+        monkeypatch,
+        (
+            _route("vision/one"),
+            _route("vision/two"),
+            _route("vision/three"),
+            _route("vision/four"),
+        ),
+        policy=_policy(minimum_successful_witnesses=3),
+    )
+
+    describer = create_configured_describer()
+
+    assert len(describer._describers) == 3
+
+
+def test_a_policy_that_cannot_be_a_consensus_is_refused(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _configure(
+        monkeypatch,
+        (_route("vision/one"), _route("vision/two")),
+        policy=_policy(strategy="first_available"),
+    )
+
+    with pytest.raises(ConfigError, match="only 'consensus'"):
+        create_configured_describer()
+
+
+def test_the_shipped_routing_file_declares_the_consensus_policy() -> None:
+    """The describer's rules come from the file, and the file says all three."""
+    assert task_policy("image_description") == _policy()
+
+
+def test_a_policy_without_distinct_models_is_refused(monkeypatch: pytest.MonkeyPatch) -> None:
+    _configure(
+        monkeypatch,
+        (_route("vision/one"), _route("vision/two")),
+        policy=_policy(require_distinct_models=False),
+    )
+
+    with pytest.raises(ConfigError, match="distinct models"):
+        create_configured_describer()
+
+
+def test_a_policy_that_does_not_block_is_refused(monkeypatch: pytest.MonkeyPatch) -> None:
+    _configure(
+        monkeypatch,
+        (_route("vision/one"), _route("vision/two")),
+        policy=_policy(on_insufficient_witnesses="continue"),
+    )
+
+    with pytest.raises(ConfigError, match="on_insufficient_witnesses"):
+        create_configured_describer()

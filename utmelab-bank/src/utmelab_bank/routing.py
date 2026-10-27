@@ -62,6 +62,41 @@ class ProviderRoute:
     family: str = ""
 
 
+@dataclass(frozen=True)
+class TaskPolicy:
+    """How a task reconciles the routes it selected.
+
+    The routing file already said this for ``image_description``: two
+    witnesses, from different models, and a block when it cannot get them.
+    Reading it here means the describer obeys the file instead of slicing the
+    resolved routes and hoping the first two are different models.
+    """
+
+    task: str
+    strategy: str = "first_available"
+    on_no_provider: str = "block"
+    on_insufficient_witnesses: str = "block"
+    minimum_successful_witnesses: int = 1
+    require_distinct_models: bool = False
+
+
+def task_policy(task: str, *, routing: dict[str, Any] | None = None) -> TaskPolicy:
+    """The declared policy for one task, with fail-closed defaults."""
+    if routing is None:
+        routing = load_routing()
+    config = routing["tasks"].get(task)
+    if config is None:
+        raise ConfigError(f"provider routing has no task route: {task}")
+    return TaskPolicy(
+        task=task,
+        strategy=str(config.get("strategy", "first_available")),
+        on_no_provider=str(config.get("on_no_provider", "block")),
+        on_insufficient_witnesses=str(config.get("on_insufficient_witnesses", "block")),
+        minimum_successful_witnesses=int(config.get("minimum_successful_witnesses", 1)),
+        require_distinct_models=bool(config.get("require_distinct_models", False)),
+    )
+
+
 def _load_json(path: Path, label: str) -> dict[str, Any]:
     if not path.is_file():
         raise ConfigError(f"{label} is missing: {path}")
@@ -271,8 +306,10 @@ __all__ = [
     "ROUTING_SCHEMA_PATH",
     "SCHEMA_PATH",
     "ProviderRoute",
+    "TaskPolicy",
     "load_manifest",
     "load_providers",
     "load_routing",
     "select_routes",
+    "task_policy",
 ]
