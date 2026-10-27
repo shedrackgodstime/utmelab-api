@@ -185,9 +185,9 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-the-jahiliyyah-arabia-before-islam-islamic-studies",
+      "slug": "waec-description-of-arabia-location-social-life-marriage-divorce",
       "topic": "waec-the-jahiliyyah-arabia-before-islam",
-      "name": "The Jahiliyyah: Arabia before Islam",
+      "name": "Description of Arabia - Location Social Life - Marriage, divorce and inheritance. Religious life - Idol worship and names of major gods / idols. Political Life System of Government Economic Life - Sources of livelihood The Reforms introduced by Islam on the Jahiliyyah practices",
       "order": 1,
       "objectives": []
     },
@@ -262,9 +262,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-the-khulaf-ur-r-shid-n-the-rightly-guided-caliphs-abu-bakr-i-islamic-studies",
+      "slug": "waec-quhh-fah-umar-ibn-al-khatt-b-uthm-n-ibn-aff-n-and-ali-ibn-ab",
       "topic": "waec-the-khulaf-ur-r-shid-n-the-rightly-guided-caliphs-abu-bakr-i",
-      "name": "The Khulafᾱ’ur-Rᾱshidīn (The Rightly – guided Caliphs): Abu-Bakr Ibn Abī",
+      "name": "Quhhᾱfah, ‘Umar Ibn al-Khattᾱb, ‘Uthmᾱn Ibn ‘Affᾱn and ‘Ali Ibn Abī Tᾱlib. - Their biographies - Their contributions to Islam - Lessons learnt from their lives",
       "order": 1,
       "objectives": []
     },
@@ -276,6 +276,13 @@
       "objectives": []
     },
     {
+      "slug": "waec-the-impact-of-islam-on-the-socio-political-economic-and-ling",
+      "topic": "waec-islam-in-west-africa",
+      "name": "The Impact of Islam on the Socio-Political, Economic and Linguistic Lives of the Peoples of ancient West African empires (i.e. Ghana, Mali, Shonghai and Kanem-Borno. QUR’AN",
+      "order": 2,
+      "objectives": []
+    },
+    {
       "slug": "waec-first-revelation-and-his-reaction-to-it-different-modes-of-r",
       "topic": "waec-revelation-of-the-qur-an-visits-of-the-prophet-s-a-w-to-cave",
       "name": "First revelation and his reaction to it, different modes of revelation, piecemeal-revelation of the Qur’an",
@@ -283,10 +290,17 @@
       "objectives": []
     },
     {
+      "slug": "waec-preservation-of-the-qur-an-complete-arrangement-including-di",
+      "topic": "waec-revelation-of-the-qur-an-visits-of-the-prophet-s-a-w-to-cave",
+      "name": "Preservation of the Qur’an: Complete arrangement including distinction between Makki and Madani Suwar; Recording; Compilation; Standardization: Roles played by the Companions of the Prophet (S.A.W.) in the Preservation of the Qur’an",
+      "order": 2,
+      "objectives": []
+    },
+    {
       "slug": "waec-importance-of-the-qur-an-the-qur-an-as-a-source-of-guidance",
       "topic": "waec-revelation-of-the-qur-an-visits-of-the-prophet-s-a-w-to-cave",
       "name": "Importance of the Qur’an: The Qur’an as a source of guidance in social, political, spiritual and moral matters",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
@@ -353,9 +367,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-reading-in-either-the-arabic-text-or-transliteration-memoriz-islamic-studies",
+      "slug": "waec-meaning-of-the-following-ahadith-and-lessons-learnt-from-the",
       "topic": "waec-reading-in-either-the-arabic-text-or-transliteration-memoriz",
-      "name": "Reading (in either the Arabic Text or Transliteration). Memorization",
+      "name": "Meaning of the following Ahadith and lessons learnt from them (Identification, Explanation, Interpretation and Application): an-Nawawi’s Collection. 1, 5, 7, 9, 13, 15,16,18,34 and 41. TAWHID AND FIQH (ISLAMIC THEOLOGY AND JURISPRUDENCE)",
       "order": 1,
       "objectives": []
     },
@@ -367,31 +381,45 @@
       "objectives": []
     },
     {
+      "slug": "waec-articles-of-faith-belief-in-allah-with-emphasis-on-kalimatus",
+      "topic": "waec-iman-faith",
+      "name": "Articles of Faith: Belief in Allah with emphasis on Kalimatush-Shahadah(Q2: 163 and 255; 3:18;17:42-43;21: 22; 23: 91 Q. 112, Islam and the concept of Trinity (Q.4:171; 5:75 – 76; 19:92-3; 112)",
+      "order": 2,
+      "objectives": []
+    },
+    {
       "slug": "waec-his-angels-q-2-285-8-50-16-2-66-6-82-10-12",
       "topic": "waec-iman-faith",
       "name": "His angels – Q 2: 285; 8:50; 16: 2; 66: 6; 82: 10 – 12",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-his-books-q-2-2-2-285-87-19-19-5-46",
       "topic": "waec-iman-faith",
       "name": "His books – Q.2: 2; 2:285; 87: 19 – 19; 5:46",
-      "order": 3,
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-his-prophets-with-special-emphasis-on-the-ulu1-azm-ibrahim-n",
+      "topic": "waec-iman-faith",
+      "name": "His Prophets with special emphasis on the Ulu1-‘Azm: Ibrahim, Nuh, Musa, ‘Isa.(A.S.) Muhammad (S.A.W.) Q. 6: 83-87: 4: 164; 10;47;21:107;46:35 and ahadith relevant to the foregoing",
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-the-day-of-resurrection-judgement-eternal-life-q-20-15-32-10",
       "topic": "waec-iman-faith",
       "name": "The Day of Resurrection, Judgement: Eternal Life Q 20: 15:32:10-20: 36: 78-70; 75: 3-13",
-      "order": 4,
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-destiny-qada-and-qadar-distinction-between-the-two-concepts",
       "topic": "waec-iman-faith",
       "name": "Destiny – Qada’ and Qadar; Distinction between the two Concepts (Q.3: 145:25:2:76:3:87:3)",
-      "order": 5,
+      "order": 7,
       "objectives": []
     },
     {
@@ -444,31 +472,38 @@
       "objectives": []
     },
     {
+      "slug": "waec-meaning-of-salat-importance-of-salat-acts-that-vitiate-salat",
+      "topic": "waec-salat",
+      "name": "- Meaning of Salat. - Importance of Salat. - Acts that vitiate Salat - Joining a Congregational Salat. - Sujudus-Sahwi (Prostration of Forgetfulness.) - Kinds of Salat and how they are observed",
+      "order": 1,
+      "objectives": []
+    },
+    {
       "slug": "waec-obligatory-salat-subh-fajr-zuhr-asr-maghrib-and-isha-i",
       "topic": "waec-salat",
       "name": "Obligatory Salat (Subh/Fajr, Zuhr, ‘Asr, Maghrib and ‘Isha’i.)",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-non-obligatory-salat-nawafil-that-accompany-the-obligatory-s",
       "topic": "waec-salat",
       "name": "Non-Obligatory Salat ( Nawafil that accompany the obligatory salawat, Duha, witr, etc.)",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-special-prayers-jum-ah-idayn-janazah-istisqa-tarawih-kusufay",
       "topic": "waec-salat",
       "name": "Special prayers (Jum‘ah, ‘Idayn, Janazah, Istisqa’ Tarawih, Kusufayn and Istikhara.)",
-      "order": 3,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-salatus-safar-salat-on-a-journey",
       "topic": "waec-salat",
       "name": "Salatus-Safar (Salat on a journey.)",
-      "order": 4,
+      "order": 5,
       "objectives": []
     },
     {

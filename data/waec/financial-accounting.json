@@ -165,9 +165,9 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-introduction-to-financial-financial-accounting",
+      "slug": "waec-1-1-history-nature-and-functions-of-accounting-accounting-1",
       "topic": "waec-introduction-to-financial",
-      "name": "Introduction to Financial",
+      "name": "1.1 History, nature and functions of Accounting. Accounting 1.2 Users of Accounting information. 1.3 Stages in the Accounting process. 1.4 Characteristics of Accounting information",
       "order": 1,
       "objectives": []
     },
@@ -186,9 +186,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-the-final-accounts-of-a-financial-accounting",
+      "slug": "waec-4-1-trading-profit-and-loss-accounts-income-statement-sole-t",
       "topic": "waec-the-final-accounts-of-a",
-      "name": "The Final Accounts of a",
+      "name": "4.1 Trading, profit and loss accounts/Income statement. Sole Trader/proprietorship 4.2 Balance sheet/statement of financial position. 4.3 Adjustments to final accounts",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-5-1-provision-for-doubtful-debts-allowance-for-doubtful-debt",
+      "topic": "waec-provisions-and-reserves",
+      "name": "5.1 Provision for doubtful debts/Allowance for doubtful debts. 5.2 Provision for discounts. 5.3 Depreciation – concepts, reasons for recording and methods",
       "order": 1,
       "objectives": []
     },
@@ -196,34 +203,34 @@
       "slug": "waec-straight-line",
       "topic": "waec-provisions-and-reserves",
       "name": "Straight line",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-reducing-balance",
       "topic": "waec-provisions-and-reserves",
       "name": "Reducing balance",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-sum-of-the-years-digits",
       "topic": "waec-provisions-and-reserves",
       "name": "Sum of the years digits",
-      "order": 3,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-revaluation-5-4-accounting-for-depreciation-5-5-reserves-rev",
       "topic": "waec-provisions-and-reserves",
       "name": "Revaluation. 5.4 Accounting for depreciation. 5.5 Reserves – revenue and capital reserves",
-      "order": 4,
+      "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-manufacturing-accounts-financial-accounting",
+      "slug": "waec-6-1-purpose-of-manufacturing-accounts-6-2-cost-classificatio",
       "topic": "waec-manufacturing-accounts",
-      "name": "Manufacturing Accounts",
+      "name": "6.1 Purpose of Manufacturing Accounts. 6.2 Cost classification in Manufacturing Accounts. 6.3 Preparation of final Accounts of Manufacturing concern",
       "order": 1,
       "objectives": []
     },
@@ -249,16 +256,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-single-entry-and-incomplete-financial-accounting",
+      "slug": "waec-8-1-meaning-and-limitations-records-8-2-computation-of-profi",
       "topic": "waec-single-entry-and-incomplete",
-      "name": "Single Entry and Incomplete",
+      "name": "8.1 Meaning and limitations Records 8.2 Computation of profit or loss from opening and closing balance sheets. 8.3 Conversion of singe entry to double entry. 8.4 Preparation of final accounts from a set of incomplete records. 8.5 Mark up and Margin",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-accounts-of-not-for-profit-financial-accounting",
+      "slug": "waec-9-1-meaning-and-terminologies-making-organizations-9-2-recei",
       "topic": "waec-accounts-of-not-for-profit",
-      "name": "Accounts of Not-for-Profit",
+      "name": "9.1 Meaning and terminologies. Making Organizations 9.2 Receipts and payments accounts. 9.3 Subscriptions Account 9.4. Income and expenditure accounts. 9.5 Accumulated fund. 9.6 Balance sheet. 9.7 Profit or loss from income generating activities",
       "order": 1,
       "objectives": []
     },
@@ -277,23 +284,23 @@
       "objectives": []
     },
     {
-      "slug": "waec-accounting-for-value-financial-accounting",
+      "slug": "waec-12-1-purpose-of-vat-added-tax-12-2-characteristics-of-vat-12",
       "topic": "waec-accounting-for-value",
-      "name": "Accounting for Value",
+      "name": "12.1 Purpose of VAT. Added Tax 12.2 Characteristics of VAT. 12.3 Bases of computing input/output VAT. 12.4 Preparation of VAT returns. 12.5 Exempt goods and services",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-departmental-and-branch-financial-accounting",
+      "slug": "waec-13-1-meaning-and-importance-accounts-13-2-differences-betwee",
       "topic": "waec-departmental-and-branch",
-      "name": "Departmental and Branch",
+      "name": "13.1 Meaning and importance Accounts 13.2 Differences between a department and branch. 13.3 Preparation of departmental account. 13.4 Preparation of Branch Account excluding foreign branches. 13.5 Inter branch transactions",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-public-sector-accounting-financial-accounting",
+      "slug": "waec-14-1-meaning-and-difference-between-public-sector-and-privat",
       "topic": "waec-public-sector-accounting",
-      "name": "Public Sector Accounting",
+      "name": "14.1 Meaning and difference between Public Sector and Private Sector Accounts. 14.2 Sources of public revenue. 14.3 Capital and recurrent expenditures. 14.4 Preparation of simple government accounts",
       "order": 1,
       "objectives": []
     },
@@ -379,6 +386,13 @@
       "topic": "waec-information-technology",
       "name": "Economy",
       "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-individual-company-17-6-types-features-and-reasons-for-regul",
+      "topic": "waec-information-technology",
+      "name": "Individual company; 17.6 Types, features and reasons for regulation. NOTE: * Available to candidates in Ghana only ** Available to candidates in Nigeria, The Gambia, Sierra Leone and Liberia only",
+      "order": 13,
       "objectives": []
     }
   ]

@@ -162,9 +162,17 @@ class ExplainService:
         return self._apply(item, explanation)
 
     def _apply(self, item: StagingItem, explanation: Explanation) -> StagingItem:
-        evidence = item.evidence.model_copy(update={"explanation": explanation})
-        # The explanation is part of the content fingerprint, so adding it
-        # changes the hash a verification is written against. Re-stamp first.
+        evidence = item.evidence.model_copy(
+            update={
+                "explanation": explanation,
+                # The explanation is part of the content fingerprint. A
+                # verification was written against the old fingerprint, so it
+                # cannot stay on the row: its hash no longer matches, and the
+                # next load would refuse the row.
+                "answer_verdict": None,
+                "verifications": (),
+            }
+        )
         updated = item.model_copy(update={"evidence": evidence}).stamp_hashes()
         return updated.transition_to(State.ENRICHED)
 

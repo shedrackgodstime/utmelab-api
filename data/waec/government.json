@@ -205,9 +205,9 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-government-as-an-institution-of-the-state-definition-of-stat",
+      "slug": "waec-government-as-an-institution-of-the-state",
       "topic": "waec-meaning-and-scope-of-the-subject-matter-government",
-      "name": "Government as an institution of the state. Definition of state, features, structure and functions",
+      "name": "Government as an institution of the state",
       "order": 1,
       "objectives": []
     },
@@ -226,10 +226,17 @@
       "objectives": []
     },
     {
-      "slug": "waec-basic-concepts-and-principles-of-government-government",
+      "slug": "waec-basic-concepts-state-society-nation-power-authority-legitima",
       "topic": "waec-basic-concepts-and-principles-of-government",
-      "name": "BASIC CONCEPTS AND PRINCIPLES OF GOVERNMENT",
+      "name": "Basic concepts – State, *Society, *Nation, Power, Authority, Legitimacy, Sovereignty, Democracy, Political Culture and Socialization, Communalism, Feudalism and oligarchy, *Liberalism, Socialism, Communism, Capitalism, Fascism, Aristocracy, Totalitarianism",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-basic-principles-rule-of-law-fundamental-human-rights-separa",
+      "topic": "waec-basic-concepts-and-principles-of-government",
+      "name": "Basic principles – Rule of Law, Fundamental Human Rights, Separation of Powers/Checks and Balances, Constitutionalism, Political participation, Representative Government, Centralization and Decentralization – (Delegated Legislation, Devolution and Decentralization)",
+      "order": 2,
       "objectives": []
     },
     {
@@ -254,23 +261,23 @@
       "objectives": []
     },
     {
-      "slug": "waec-organs-of-government-government",
+      "slug": "waec-the-executive-the-legislature-and-the-judiciary-judicial-ind",
       "topic": "waec-organs-of-government",
-      "name": "ORGANS OF GOVERNMENT",
+      "name": "The Executive, the Legislature and the Judiciary – Judicial Independence",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-state-structure-and-characteristics-of-government-government",
+      "slug": "waec-types-unitary-federal-confederal-presidential-or-non-parliam",
       "topic": "waec-state-structure-and-characteristics-of-government",
-      "name": "STATE STRUCTURE AND CHARACTERISTICS OF GOVERNMENT",
+      "name": "Types - Unitary, Federal, Confederal, Presidential or Non-parliamentary, Parliamentary or Cabinet, Monarchical and Republican",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-citizenship-government",
+      "slug": "waec-meaning-mode-of-acquisition-rights-duties-and-obligations-of",
       "topic": "waec-citizenship",
-      "name": "CITIZENSHIP",
+      "name": "Meaning, mode of acquisition, rights, duties and obligations of individuals in the state",
       "order": 1,
       "objectives": []
     },
@@ -373,38 +380,17 @@
       "objectives": []
     },
     {
-      "slug": "waec-countries-the-structural-organization-of-the-following-a-nig",
-      "topic": "waec-pre-colonial-political-system-of-candidates-respective",
-      "name": "COUNTRIES The Structural Organization of the following: (a) Nigeria - Hausa/Fulani, the Yoruba and the Igbo",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-ghana-the-akan-and-the-talensi",
-      "topic": "waec-pre-colonial-political-system-of-candidates-respective",
-      "name": "Ghana - The Akan and the Talensi",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-sierra-leone-the-mende-and-temme",
-      "topic": "waec-pre-colonial-political-system-of-candidates-respective",
-      "name": "Sierra Leone - The Mende and Temme",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-the-gambia-the-wolof-mandingo-and-jola",
-      "topic": "waec-pre-colonial-political-system-of-candidates-respective",
-      "name": "The Gambia - The Wolof, Mandingo and Jola",
+      "slug": "waec-local-governments-meaning-structure-purposes-functions-sourc",
+      "topic": "waec-public-civil-service-administration",
+      "name": "Local Governments – Meaning, structure, Purposes, Functions, Sources of revenue, control and problems",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-liberia-the-vai-and-the-kru",
+      "slug": "waec-countries-nigeria-hausa-fulani-the-yoruba-and-the-igbo",
       "topic": "waec-pre-colonial-political-system-of-candidates-respective",
-      "name": "Liberia - The Vai and the Kru",
-      "order": 5,
+      "name": "COUNTRIES Nigeria - Hausa/Fulani, the Yoruba and the Igbo",
+      "order": 1,
       "objectives": []
     },
     {
@@ -471,9 +457,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-the-gambia-features-merits-and-demerits-the-1947-1951-1954-1",
+      "slug": "waec-sierra-leone-features-merits-and-demerits-slatter-1924-steve",
       "topic": "waec-constitutional-developments-in-candidates-respective",
-      "name": "The Gambia (features, merits and demerits) - The 1947, 1951, 1954, 1960, 1962 and 1963 Constitutions",
+      "name": "Sierra Leone (features, merits and demerits) - Slatter 1924 Stevenson 1947 Beresford Stooke 1951 The 1956 and 1958 Constitutions",
       "order": 5,
       "objectives": []
     },
@@ -485,16 +471,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-sierra-leone-independence-constitution-1961-republican-const",
+      "slug": "waec-nigeria-independence-constitution-1960-republican-constituti",
       "topic": "waec-constitutional-developments-in-candidates-respective",
-      "name": "Sierra Leone – Independence Constitution 1961 Republican Constitution 1971 The 1978 and 1991 Constitutions",
+      "name": "Nigeria - Independence Constitution, 1960 Republican Constitution 1963 The 1979 and 1989 Constitutions 1999 Constitution - Origin, features, strength and Weaknesses",
       "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-the-gambia-independence-constitution-1965-republican-constit",
       "topic": "waec-constitutional-developments-in-candidates-respective",
-      "name": "The Gambia - Independence Constitution 1965 Republican Constitution 1970. 2nd Republican Constitution 1997",
+      "name": "The Gambia - Independence Constitution 1965 Republican Constitution 1970",
       "order": 8,
       "objectives": []
     },
@@ -506,9 +492,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-development-of-major-political-parties-in-the-candidates-government",
+      "slug": "waec-respective-countries-nigeria-sierra-leone-the-gambia-liberia",
       "topic": "waec-development-of-major-political-parties-in-the-candidates",
-      "name": "DEVELOPMENT OF MAJOR POLITICAL PARTIES IN THE CANDIDATES’",
+      "name": "RESPECTIVE COUNTRIES - Nigeria - Sierra Leone - The Gambia - Liberia Formation, Objectives, Sources of Finance, Achievements and Failures",
       "order": 1,
       "objectives": []
     },
@@ -520,9 +506,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-nigeria-sierra-leone-the-gambia-liberia-origin-factors-struc",
+      "slug": "waec-nigeria-sierra-leone-the-gambia-liberia",
       "topic": "waec-federal-unitary-systems-of-government-in-west-africa",
-      "name": "- Nigeria - Sierra Leone - The Gambia - Liberia Origin, Factors, Structure, Features and Problems",
+      "name": "- Nigeria - Sierra Leone - The Gambia - Liberia",
       "order": 1,
       "objectives": []
     },
@@ -534,9 +520,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-international-organizations-government",
+      "slug": "waec-african-union-au-nepad-wassce-government",
       "topic": "waec-international-organizations",
-      "name": "INTERNATIONAL ORGANIZATIONS",
+      "name": "African Union (AU) - NEPAD, WASSCE GOVERNMENT",
       "order": 1,
       "objectives": []
     }

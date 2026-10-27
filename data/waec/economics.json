@@ -279,6 +279,13 @@
       "objectives": []
     },
     {
+      "slug": "waec-classification-of-economic-activities-primary-secondary-and",
+      "topic": "waec-definition-and-scope-of-economics",
+      "name": "Classification of economic activities - Primary, Secondary and Tertiary and their relative contributions in terms of output/income, employment, savings, investment and foreign exchange",
+      "order": 3,
+      "objectives": []
+    },
+    {
       "slug": "waec-land-labour-capital-and-entrepreneurship-meaning-characteris",
       "topic": "waec-factors-of-production-economics",
       "name": "Land, labour, capital and entrepreneurship-meaning, characteristics and importance",
@@ -328,17 +335,31 @@
       "objectives": []
     },
     {
-      "slug": "waec-demand-economics",
+      "slug": "waec-types-of-elasticity-of-demand-and-their-measurement-price-in",
       "topic": "waec-demand",
-      "name": "DEMAND",
+      "name": "Types of elasticity of demand and their measurement – price, income and cross elasticities of demand: importance of the concept of elasticity of demand to consumers, producers and government",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-supply-and-law-of-supply-supply-schedules-and-cur",
+      "topic": "waec-supply",
+      "name": "Concept of supply and law of supply, supply schedules and curve, types of Supply – composite, complementary and competitive",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-factors-determining-supply-input-prices-technology-prices-of",
+      "topic": "waec-supply",
+      "name": "Factors determining supply – input prices, technology, prices of other commodities, climatic factors, etc. Distinction between the shift of and movement along the supply curve",
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-concept-and-measurement-of-elasticity-of-supply-and-its-impo",
       "topic": "waec-supply",
       "name": "Concept and measurement of elasticity of supply and its importance to producers and government",
-      "order": 1,
+      "order": 3,
       "objectives": []
     },
     {
@@ -419,9 +440,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-theory-of-production-economics",
+      "slug": "waec-price-controls-maximum-and-minimum-price-regulations-meaning",
+      "topic": "waec-theory-of-price-determination",
+      "name": "Price controls: maximum and minimum price regulations-meaning and their effects; rationing, black market (parallel market)",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-production-division-of-labour-and-specialization-scale-of-pr",
       "topic": "waec-theory-of-production",
-      "name": "THEORY OF PRODUCTION",
+      "name": "Production: division of labour and specialization: Scale of production (Internal and External economies), concept of total, average and marginal productivity and law of variable proportions",
       "order": 1,
       "objectives": []
     },
@@ -447,51 +475,65 @@
       "objectives": []
     },
     {
+      "slug": "waec-concept-of-a-market-characteristics-of-various-market-struct",
+      "topic": "waec-market-structures",
+      "name": "Concept of a market, characteristics of various market structures, determination of price and output under different structures - perfect competition and imperfect competition (monopoly and monopolistic competition)",
+      "order": 1,
+      "objectives": []
+    },
+    {
       "slug": "waec-review-of-cost-and-revenue-concepts",
       "topic": "waec-market-structures",
       "name": "Review of cost and revenue concepts",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-price-discrimination",
       "topic": "waec-market-structures",
       "name": "Price discrimination",
-      "order": 2,
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-and-basic-features-of-business-enterprises-sole-propri",
+      "topic": "waec-business-organizations",
+      "name": "Types and basic features of business enterprises – Sole Proprietorship; Partnership, Joint-Stock companies (Private and Public), Co-operatives; Statutory Corporation, Joint ventures",
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-sources-of-funds",
       "topic": "waec-business-organizations",
       "name": "Sources of funds",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-general-and-basic-problems-of-business-enterprises",
       "topic": "waec-business-organizations",
       "name": "General and basic problems of business enterprises",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-privatization-and-commercialization-as-solutions-to-problems",
       "topic": "waec-business-organizations",
       "name": "Privatization and Commercialization as solutions to problems of public enterprises",
-      "order": 3,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-indigenization-and-nationalization-policies",
       "topic": "waec-business-organizations",
       "name": "Indigenization and nationalization policies",
-      "order": 4,
+      "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-distributive-trade-economics",
+      "slug": "waec-process-of-distribution-role-of-producers-role-of-wholesaler",
       "topic": "waec-distributive-trade",
-      "name": "DISTRIBUTIVE TRADE",
+      "name": "Process of distribution, role of producers, role of wholesalers, retailers and co-operatives: the role of government agencies in product distribution and the problems of distribution and their solutions",
       "order": 1,
       "objectives": []
     },
@@ -503,10 +545,31 @@
       "objectives": []
     },
     {
+      "slug": "waec-concept-of-labour-force-and-human-capital-efficiency-and-mob",
+      "topic": "waec-population-and-labour-market",
+      "name": "Concept of labour force and human capital, efficiency and mobility of labour, factors affecting the size of the labour force, particularly the population characteristics (age, sex, occupation, education, etc.)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-supply-of-and-demand-for-labour-wage-determination-concept-o",
+      "topic": "waec-population-and-labour-market",
+      "name": "Supply of and demand for labour: wage determination. Concept of unemployment and underemployment, Trade Unions, Employers’ association and Government policies on labour and wages",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-structure-e-g-food-crops-export-crops-livestock-fisheries-sy",
+      "topic": "waec-agriculture",
+      "name": "Structure (e.g. food crops, export crops, livestock, fisheries): systems of agriculture (peasant, commercial, co-operative and state farming); importance of agriculture to the national economy: marketing of agricultural products (commodity boards)",
+      "order": 1,
+      "objectives": []
+    },
+    {
       "slug": "waec-agricultural-policies-minimum-agricultural-prices-problems-o",
       "topic": "waec-agriculture",
       "name": "Agricultural policies (minimum agricultural prices) problems of agriculture and remedies",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
@@ -566,9 +629,23 @@
       "objectives": []
     },
     {
+      "slug": "waec-money-definition-and-historical-development-barter-and-its-p",
+      "topic": "waec-money-and-inflation",
+      "name": "Money – definition and historical development-barter and its problems, types, characteristics functions. Supply of and demand for money, value of money and the price level",
+      "order": 1,
+      "objectives": []
+    },
+    {
       "slug": "waec-inflation-meaning-types-causes-effects-and-control",
       "topic": "waec-money-and-inflation",
       "name": "Inflation: meaning types, causes, effects and control",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-traditional-central-bank-commercial-bank-development-b",
+      "topic": "waec-financial-institutions",
+      "name": "Types (traditional, Central Bank, Commercial Bank, Development Bank, Merchant Bank, and Insurance Companies, Building Societies): development and functions of financial institutions",
       "order": 1,
       "objectives": []
     },
@@ -576,7 +653,7 @@
       "slug": "waec-money-and-capital-markets-meaning-types-and-functions",
       "topic": "waec-financial-institutions",
       "name": "Money and capital markets; meaning, types and functions",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
@@ -594,10 +671,17 @@
       "objectives": []
     },
     {
+      "slug": "waec-meaning-of-economic-development-distinction-between-economic",
+      "topic": "waec-economic-development-and-planning",
+      "name": "Meaning of economic development, distinction between economic growth and development, characteristics and problems of developing countries, elements of development planning (objectives of planning, and problems of planning)",
+      "order": 1,
+      "objectives": []
+    },
+    {
       "slug": "waec-types-of-plans-short-term-medium-term-perspective-or-long-te",
       "topic": "waec-economic-development-and-planning",
       "name": "Types of plans (short term, medium term, perspective or long term, rolling plan etc.)",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
@@ -629,9 +713,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-major-natural-resources-economics",
+      "slug": "waec-development-of-major-natural-resources-petroleum-gold-diamon",
       "topic": "waec-major-natural-resources",
-      "name": "MAJOR NATURAL RESOURCES",
+      "name": "Development of major natural resources (petroleum, gold, diamond, timber, groundnut etc) effects on West African economies (positive and negative)",
       "order": 1,
       "objectives": []
     }

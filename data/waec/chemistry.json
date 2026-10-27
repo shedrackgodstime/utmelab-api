@@ -681,9 +681,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-solubility-of-subtances-chemistry",
+      "slug": "waec-practical-application-of-solubility-and-their-applications-t",
       "topic": "waec-solubility-of-subtances",
-      "name": "SOLUBILITY OF SUBTANCES",
+      "name": "Practical application of solubility. and their applications to qualitative analysis. e.g. Pb2+, Ca2+, Al3+, Cu2+, 2-, S2-, and Fe2+, Fe3+, Cl-, Br-, I-, SO4 2-CO3 2-, Zn2+, NH4+, SO3 Explanation of solubility rules",
       "order": 1,
       "objectives": []
     },
@@ -1136,6 +1136,34 @@
       "objectives": []
     },
     {
+      "slug": "waec-types-and-nature-of-radiations-radiations-meaning-of-radioac",
+      "topic": "waec-structure-of-the-atom-section-b",
+      "name": "Types and nature of radiations: radiations. Meaning of radioactivity. Difference alpha, beta particles and gamma between spontaneous nuclear reactions radiation. (radioactivity) and induced nuclear reactions. Natural and artificial radioactivity",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-radioactivity-detection-of-radiation-by-geiger-muller-counte",
+      "topic": "waec-structure-of-the-atom-section-b",
+      "name": "Radioactivity: Detection of radiation by Geiger-Muller counter. induced/stimulated. Distinction between ordinary chemical reactions",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nuclear-reactions-fission-and-and-nuclear-reactions-generati",
+      "topic": "waec-structure-of-the-atom-section-b",
+      "name": "Nuclear reactions: fission and and nuclear reactions. Generations of electricity; fusion in nuclear reactions. atomic bombs. Balanced equations of nuclear reactions",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-effects-and-application-of-radioactivity-factors-affecting-s",
+      "topic": "waec-structure-of-the-atom-section-b",
+      "name": "Effects and application of radioactivity Factors affecting stability of nuclides: Binding energy, neutron-proton ratio, and half life. Calculations involving half-life",
+      "order": 5,
+      "objectives": []
+    },
+    {
       "slug": "waec-reactions-between-acids-and-metals-their-oxides-and-trioxoca-chemistry",
       "topic": "waec-periodic-chemistry-section-b",
       "name": "Reactions between acids and metals their oxides and trioxocarbonates (IV)",
@@ -1171,52 +1199,66 @@
       "objectives": []
     },
     {
+      "slug": "waec-shapes-of-complex-compounds-tetrahedral-square-planar-octahe",
+      "topic": "waec-periodic-chemistry-section-b",
+      "name": "Shapes of complex compounds. Tetrahedral, square planar, octahedral e.g. (Fe(CN)6]3-, [Cu(NH3)4]2+, [Ag)NH3)2]+ [Cu)CN)4]2",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-elements-of-the-first-transition-reactivity-of-the-metals-wi",
+      "topic": "waec-periodic-chemistry-section-b",
+      "name": "Elements of the first transition Reactivity of the metals with air, water, acids and series. comparison with s-block elements (Li, Na, Be, Mg). 3.0. CHEMICAL BONDS",
+      "order": 7,
+      "objectives": []
+    },
+    {
       "slug": "waec-formation-of-ionic-bonds",
       "topic": "waec-periodic-chemistry-section-b",
       "name": "Formation of Ionic bonds",
-      "order": 6,
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-factors-that-influence-ionic-bond-factors-should-include-lat",
       "topic": "waec-periodic-chemistry-section-b",
       "name": "Factors that influence ionic bond Factors should include lattice energy. formation",
-      "order": 7,
+      "order": 9,
       "objectives": []
     },
     {
       "slug": "waec-covalent-character-in-ionic-bond",
       "topic": "waec-periodic-chemistry-section-b",
       "name": "Covalent character in ionic bond",
-      "order": 8,
+      "order": 10,
       "objectives": []
     },
     {
       "slug": "waec-polar-covalent-bonds",
       "topic": "waec-periodic-chemistry-section-b",
       "name": "Polar covalent bonds",
-      "order": 9,
+      "order": 11,
       "objectives": []
     },
     {
       "slug": "waec-hybridization-of-atomic-orbitals-definition-of-hybridization",
       "topic": "waec-periodic-chemistry-section-b",
       "name": "Hybridization of atomic orbitals. Definition of Hybridization",
-      "order": 10,
+      "order": 12,
       "objectives": []
     },
     {
       "slug": "waec-formation-of-hybrid-orbitals",
       "topic": "waec-periodic-chemistry-section-b",
       "name": "Formation of hybrid orbitals",
-      "order": 11,
+      "order": 13,
       "objectives": []
     },
     {
       "slug": "waec-formation-of-sigma-and-pi-description-of-sigma-and-pi-bonds",
       "topic": "waec-periodic-chemistry-section-b",
       "name": "Formation of sigma (σ) and pi (π) Description of sigma and pi bonds. Using C2H2 and bonds. C6H6",
-      "order": 12,
+      "order": 14,
       "objectives": []
     },
     {
@@ -1273,6 +1315,13 @@
       "topic": "waec-solubility-of-substances",
       "name": "Solubility and solubility product",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-crystallization-and-recrystallization-explanation-of-the-eff",
+      "topic": "waec-solubility-of-substances",
+      "name": "Crystallization and recrystallization. Explanation of the effect of lattice energy and hydration energy on crystallization and recrystallization",
+      "order": 2,
       "objectives": []
     },
     {
@@ -1336,6 +1385,13 @@
       "topic": "waec-chemistry-of-carbon-compounds-section-b",
       "name": "Reactions of benzene. phenol, aniline, benzoic acid and nitrobenzene. (IUPAC and trivial names)",
       "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-comparison-or-reactions-of-differences-between-the-reactivit",
+      "topic": "waec-chemistry-of-carbon-compounds-section-b",
+      "name": "Comparison or reactions of Differences between the reactivity of benzene and benzene and alkenes. alkenes towards certain reagents. Uses of hexachlorocyclobezane and benzene hexachloride (BHC)",
+      "order": 6,
       "objectives": []
     },
     {

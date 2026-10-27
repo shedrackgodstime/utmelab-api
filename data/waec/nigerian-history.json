@@ -593,11 +593,21 @@
       "countries": []
     },
     {
+      "slug": "waec-origin-political-social-and-economic-organization-of-the-fol-nigerian-history",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "Origin, political, social and economic organization of the following (Section A: Sierra Leone from Earliest Times to 1800)",
+      "order": 59,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
       "slug": "waec-indigenous-crafts-and-industries-section-a-sierra-leone-from",
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Indigenous crafts and industries (Section A: Sierra Leone from Earliest Times to 1800)",
-      "order": 59,
+      "order": 60,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -607,7 +617,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Mane Invasions",
-      "order": 60,
+      "order": 61,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -617,7 +627,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Early European contact (Section A: Sierra Leone from Earliest Times to 1800)",
-      "order": 61,
+      "order": 62,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -627,7 +637,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Introduction spread and effects of Islam",
-      "order": 62,
+      "order": 63,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -637,7 +647,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Sierra Leone and the trans-Atlantic slave trade",
-      "order": 63,
+      "order": 64,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -647,7 +657,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The founding of the settlement colony of Sierra Leone to the declaration",
-      "order": 64,
+      "order": 65,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -657,7 +667,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The emergence of the Krio and their subsequent decline",
-      "order": 65,
+      "order": 66,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -667,7 +677,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Christian Missionary activities and their impact (Section B)",
-      "order": 66,
+      "order": 67,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -677,7 +687,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The activities of Samori Toure in Sierra Leone",
-      "order": 67,
+      "order": 68,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -687,7 +697,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Declaration of the Protectorate and the Hut Tax War",
-      "order": 68,
+      "order": 69,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -697,7 +707,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The administration of the colony and constitutional developments up to 1947",
-      "order": 69,
+      "order": 70,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -707,7 +717,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The administration of the Protectorate",
-      "order": 70,
+      "order": 71,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -717,7 +727,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Economic and social developments in the colonial period (Section C)",
-      "order": 71,
+      "order": 72,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -727,7 +737,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Political and constitutional developments from 1947 to the regaining",
-      "order": 72,
+      "order": 73,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -737,7 +747,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Sierra Leone from independence to 2000",
-      "order": 73,
+      "order": 74,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -745,9 +755,9 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-historiography-and-historical-skills-nigerian-history",
+      "slug": "waec-what-is-history-and-why-do-we-study-history-sources-of-histo",
       "topic": "waec-historiography-and-historical-skills",
-      "name": "Historiography and Historical Skills",
+      "name": "What is History and why do we study History? Sources of History; Historical skills (ancient and modern approaches); Prospect of ICT in historical studies",
       "order": 1,
       "objectives": []
     },
@@ -794,16 +804,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-colonial-rule-in-west-africa-nigerian-history",
+      "slug": "waec-patterns-of-colonial-rule-consolidation-of-european-culture",
       "topic": "waec-colonial-rule-in-west-africa",
-      "name": "Colonial Rule in West Africa",
+      "name": "Patterns of colonial rule, consolidation of European culture in Africa, colonial economy and the underdevelopment of Africa: colonial Africa and the two World Wars",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-problems-of-independent-west-african-states-nigerian-history",
+      "slug": "waec-nature-of-politics-neo-colonialism-and-economic-underdevelop",
       "topic": "waec-problems-of-independent-west-african-states",
-      "name": "Problems of independent West African States",
+      "name": "Nature of politics: neo-colonialism and economic underdevelopment, unequal development within states and instability, the Military in West African politics, boundary disputes and threat to West African Unity",
       "order": 1,
       "objectives": []
     },
@@ -822,9 +832,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-historiography-and-historical-skills-2",
+      "slug": "waec-economic-community-of-west-african-states-ecowas-etc-members",
+      "topic": "waec-west-africa-and-international-organizations",
+      "name": "Economic Community of West African States (ECOWAS); Etc. Membership, aims and objectives, achievements and failures. NIGERIA AND SIERRA LEONE UP TO 2000 (For candidates in The Gambia only)",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-what-is-history-and-why-do-we-study-history-sources-of-histo-nigerian-history",
       "topic": "waec-historiography-and-historical-skills-section-a-the-gambia-fr",
-      "name": "Historiography and Historical Skills",
+      "name": "What is History and why do we study History; sources of History; Historical skills (ancient and modern approaches); Prospect of ICT in Historical Studies",
       "order": 1,
       "objectives": []
     },
@@ -871,9 +888,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-indigenous-crafts-and-industries",
+      "slug": "waec-pottery-salt-making-iron-working-soap-making-leather-works-w",
       "topic": "waec-indigenous-crafts-and-industries-section-a-the-gambia-from-e",
-      "name": "Indigenous crafts and industries",
+      "name": "Pottery, salt making, iron working, soap making, leather works, weaving, carving, tie and dyeing, boat building – technology; social and economic importance",
       "order": 1,
       "objectives": []
     },
@@ -1060,16 +1077,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-historiography-and-historical-skills-3",
+      "slug": "waec-what-is-history-and-why-we-learn-history-sources-of-history",
       "topic": "waec-historiography-and-historical-skills-section-a-liberia-from",
-      "name": "Historiography and Historical skills",
+      "name": "What is History and why we learn history; sources of History; historical skills (ancient and modern approaches); prospect of ICT in Historical Studies",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-land-and-people-nigerian-history",
+      "slug": "waec-main-geographical-zones-of-liberia-b-demographic-ethnic-ling",
       "topic": "waec-land-and-people",
-      "name": "Land and People",
+      "name": "Main geographical zones of Liberia. b. Demographic, Ethnic, Linguistic distribution (Kru, Bassa, Krahn, Gio, Mano. Grebo, Lorma, Kpelle, Belle, Mandingo, Vai, Kissi, Gbandi, Gola, Dey,Mende)",
       "order": 1,
       "objectives": []
     },
@@ -1095,9 +1112,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-trans-atlantic-slave-trade-origin-organization-effects-suppr-nigerian-history",
+      "slug": "waec-the-coming-of-migrants-from-the-usa-the-caribbean-and-the-re",
       "topic": "waec-trans-atlantic-slave-trade-origin-organization-effects-suppr",
-      "name": "Trans Atlantic Slave Trade (origin, organization, effects, suppression)",
+      "name": "The coming of migrants from the USA, the Caribbean and the Recaptives to Liberia. b. The establishment and administration of settlements by the American Colonization Society and other Organizations. c. Christian missionary activities and impact",
       "order": 1,
       "objectives": []
     },
@@ -1158,9 +1175,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-historiography-and-historical-skills-4",
+      "slug": "waec-what-is-history-and-why-we-study-history-sources-of-history",
       "topic": "waec-historiography-and-historical-skills-section-a-nigeria-from",
-      "name": "Historiography and historical skills",
+      "name": "What is History and why we study History; sources of History; Historical skills (ancient and modern approaches); Prospect of ICT in Historical Studies",
       "order": 1,
       "objectives": []
     },
@@ -1249,9 +1266,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-indigenous-crafts-and-industries-nigerian-history",
+      "slug": "waec-pottery-salt-making-iron-working-gold-mining-soap-making-lea",
       "topic": "waec-indigenous-crafts-and-industries-section-a-nigeria-from-earl",
-      "name": "Indigenous crafts and industries",
+      "name": "Pottery, salt making, iron working, gold mining, soap making, leather works, weaving, carving, bronze casting, tie and dyeing, bead making, boat building – technology; social and economic importance",
       "order": 1,
       "objectives": []
     },
@@ -1284,9 +1301,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-borno-under-the-shehus-nigerian-history",
+      "slug": "waec-the-emergence-of-el-kanemi-developments-under-el-kanemi-and",
       "topic": "waec-borno-under-the-shehus",
-      "name": "Borno under the Shehus",
+      "name": "The emergence of El-Kanemi, developments under El-Kanemi and Shehu Umar, development under the later Shehus, the fall of Borno",
       "order": 1,
       "objectives": []
     },
@@ -1368,23 +1385,72 @@
       "objectives": []
     },
     {
-      "slug": "waec-global-issues-nigerian-history",
+      "slug": "waec-west-africa-in-diaspora-racism-debt-relief-and-international",
       "topic": "waec-global-issues",
-      "name": "Global issues",
+      "name": "West Africa in Diaspora; Racism, Debt relief and International aids; Peacekeeping and socio-political interest of developed societies; World peace (armament, nuclear science); Millennium Development Goals (MDGS). (For candidates in Sierra Leone only)",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-historiography-and-historical-skills-5",
+      "slug": "waec-what-is-history-and-why-do-we-study-history-sources-of-histo-2",
       "topic": "waec-historiography-and-historical-skills-section-a-sierra-leone",
-      "name": "Historiography and Historical Skills",
+      "name": "What is History and why do we study History; sources of History, Historical skills (ancient and modern approaches); Prospect of ICT in Historical Studies",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-indigenous-crafts-and-industries-2",
+      "slug": "waec-temne",
+      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol-nigerian-history",
+      "name": "Temne",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mende",
+      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol-nigerian-history",
+      "name": "Mende",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-limba",
+      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol-nigerian-history",
+      "name": "Limba",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-loko",
+      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol-nigerian-history",
+      "name": "Loko",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-susu",
+      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol-nigerian-history",
+      "name": "Susu",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mandingo",
+      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol-nigerian-history",
+      "name": "Mandingo",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-sherbro-bullom",
+      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol-nigerian-history",
+      "name": "Sherbro/Bullom",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-potters-salt-making-iron-working-gold-mining-soap-making-lea",
       "topic": "waec-indigenous-crafts-and-industries-section-a-sierra-leone-from",
-      "name": "Indigenous crafts and industries",
+      "name": "Potters, salt making, iron working, gold mining, soap making, leather works, weaving, carving, tie and dyeing, boat building – technology; social and economic importance",
       "order": 1,
       "objectives": []
     },

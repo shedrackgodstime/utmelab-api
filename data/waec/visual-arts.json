@@ -182,24 +182,45 @@
       "objectives": []
     },
     {
+      "slug": "waec-visual-awareness-understanding-and-appreciation-of-art-eleme",
+      "topic": "waec-general-knowledge-in-art",
+      "name": "Visual awareness, understanding and appreciation of Art elements, their forms, characteristics and functions e.g. line, colour, space, shape, form, texture, etc",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-principles-of-art-creative-application-of-art-and-design-pri",
+      "topic": "waec-general-knowledge-in-art",
+      "name": "Principles of Art – creative application of art and design principles e.g. balance, rhythm, proportion, harmony, emphasis, variety, etc",
+      "order": 3,
+      "objectives": []
+    },
+    {
       "slug": "waec-perspective-meaning-and-type-e-g-aerial-linear-angular-paral",
       "topic": "waec-general-knowledge-in-art",
       "name": "Perspective – meaning and type e.g. aerial, linear (angular/parallel) and foreshortening",
-      "order": 2,
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-knowledge-of-production-use-and-care-of-art-craft-tools",
+      "topic": "waec-general-knowledge-in-art",
+      "name": "The knowledge of production, use and care of art/craft tools and materials e.g. brush, pencil, colour, palette, easels, etc",
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-art-and-craft-terms-e-g-tie-and-dye-biscuit-ware-silhouette",
       "topic": "waec-general-knowledge-in-art",
       "name": "Art and craft terms e.g. tie and dye, biscuit ware, silhouette, relief, chiaroscuro, sfumato, aperture, etc",
-      "order": 3,
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-the-inter-relationships-of-the-arts-e-g-music-visual-art-dan",
       "topic": "waec-general-knowledge-in-art",
       "name": "The inter-relationships of the arts e.g. music, visual art, dance, drama and literary arts",
-      "order": 4,
+      "order": 7,
       "objectives": []
     },
     {
@@ -217,16 +238,23 @@
       "objectives": []
     },
     {
-      "slug": "waec-modern-traditional-art-visual-arts",
+      "slug": "waec-oshogbo-art-ashanti-and-ewe-kente-modern-benin-art-winneba-p",
       "topic": "waec-modern-traditional-art",
-      "name": "Modern Traditional Art",
+      "name": "Oshogbo art, Ashanti and Ewe Kente, Modern Benin art, Winneba pottery, Abuja pottery, Ntoso adinkra, Bida brass works, calabash carving, Enyiresi basketry, Mbari mud sculpture, weaving, leatherwork, wall decoration, indigenous Decorative Motifs",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-contemporary-visual-arts",
+      "slug": "waec-outstanding-contemporary-west-african-artists-their-training",
       "topic": "waec-contemporary",
-      "name": "Contemporary",
+      "name": "Outstanding contemporary West African Artists: their training, style, achievements and contributions to the development of art",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-pre-historic-earlyman-s-art-20-000-2000bc-paleolithic-mesoli",
+      "topic": "waec-pre-historic-ancient-egyptian-and-western-art",
+      "name": "Pre-historic (Earlyman’s Art 20,000 – 2000BC) (Paleolithic, Mesolithic and Neolithic stone Ages) beliefs, materials, characteristics and functions",
       "order": 1,
       "objectives": []
     },
@@ -234,21 +262,21 @@
       "slug": "waec-ancient-egyptian-art-11-000-7-000-bc-old-middle-and-new-king",
       "topic": "waec-pre-historic-ancient-egyptian-and-western-art",
       "name": "Ancient Egyptian art 11,000 – 7,000 BC (Old, Middle and New Kingdoms) beliefs, styles and functions",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-greek-art-periods-and-charctreristics",
       "topic": "waec-pre-historic-ancient-egyptian-and-western-art",
       "name": "Greek Art - Periods and charctreristics",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-medieval-art-features-media-and-characteristics",
       "topic": "waec-pre-historic-ancient-egyptian-and-western-art",
       "name": "Medieval Art – Features, media and characteristics",
-      "order": 3,
+      "order": 4,
       "objectives": []
     },
     {
@@ -266,9 +294,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-renaissance-art-visual-arts",
+      "slug": "waec-early-low-and-high-renaissance-art-artists-giotto-donatello",
       "topic": "waec-renaissance-art",
-      "name": "Renaissance Art",
+      "name": "Early, Low and High Renaissance Art – Artists: Giotto, Donatello, Masaccio, etc. Medieval Art: Features (characteristics). Greek Art: Periods (Archaic, Classical and Hellenistic), characteristics and artists",
       "order": 1,
       "objectives": []
     },
@@ -287,31 +315,38 @@
       "objectives": []
     },
     {
+      "slug": "waec-questions-in-graphic-design-will-test-candidates-sense-of-de",
+      "topic": "waec-graphic-design",
+      "name": "Questions in graphic design will test candidates’ sense of design, organizational ability and technical proficiency in the execution of the under-listed areas",
+      "order": 1,
+      "objectives": []
+    },
+    {
       "slug": "waec-book-illustration-this-includes-story-and-text-illustrations",
       "topic": "waec-graphic-design",
       "name": "Book Illustration – This includes story and text illustrations in books, magazines and newspapers",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-printmaking-this-includes-linocut-woodcut-yam-print-stencili",
       "topic": "waec-graphic-design",
       "name": "Printmaking – This includes linocut, woodcut, yam print, stenciling, screen printing and others",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-package-design-e-g-wrappers-cereal-packages-and-record-cd-ja",
       "topic": "waec-graphic-design",
       "name": "Package Design – e.g. wrappers, cereal packages and record (CD) jackets etc",
-      "order": 3,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-computer-graphics-designing-any-of-i-iv-with-the-use-of-comp",
       "topic": "waec-graphic-design",
       "name": "Computer Graphics – Designing any of (i – iv) with the use of computer software e.g. CorelDraw, Adobe Photoshop etc",
-      "order": 4,
+      "order": 5,
       "objectives": []
     },
     {
@@ -329,10 +364,24 @@
       "objectives": []
     },
     {
-      "slug": "waec-picture-making-visual-arts",
+      "slug": "waec-questions-on-picture-making-are-meant-to-test-candidates-cre",
       "topic": "waec-picture-making",
-      "name": "Picture-Making",
+      "name": "Questions on picture-making are meant to test candidates’ creative sense, ability and technical proficiency in the execution of the under-listed areas",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-painting-creating-illustrative-composition-of-ideas-themes-f",
+      "topic": "waec-picture-making",
+      "name": "Painting – Creating illustrative composition of ideas (themes) from everyday life or imagination, using suitable medium. This shall include Mural",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mosaic-making-picture-with-small-pieces-of-regular-shaped-co",
+      "topic": "waec-picture-making",
+      "name": "Mosaic – making picture with small pieces of regular shaped coloured materials e.g. glass, paper or tile stuck onto a surface",
+      "order": 3,
       "objectives": []
     },
     {
@@ -357,17 +406,24 @@
       "objectives": []
     },
     {
+      "slug": "waec-basketry-the-making-of-mats-chair-hat-stool-bag-macram-or-ot",
+      "topic": "waec-crafts",
+      "name": "Basketry: the making of mats, chair, hat, stool, bag, macramé or other useful objects designed and woven or plaited in cane, raffia, etc",
+      "order": 2,
+      "objectives": []
+    },
+    {
       "slug": "waec-jewellery-the-design-and-construction-of-ornaments-with-meta",
       "topic": "waec-crafts",
       "name": "Jewellery: the design and construction of ornaments with metals, beads, plastic, shells, seeds, etc",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-calabash-decoration-designing-and-decorating-calabash-using",
       "topic": "waec-crafts",
       "name": "Calabash Decoration: Designing and decorating calabash using various method",
-      "order": 3,
+      "order": 4,
       "objectives": []
     },
     {

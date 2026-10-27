@@ -1,6 +1,7 @@
 """Contract tests for the tag and explain services."""
 
 import asyncio
+from datetime import UTC, datetime
 
 import pytest
 
@@ -13,6 +14,7 @@ from utmelab_bank.adapters.providers.tagging import (
     UnknownTopic,
 )
 from utmelab_bank.domain.capabilities import TagRequest
+from utmelab_bank.domain.enums import Verdict, VerificationKind
 from utmelab_bank.domain.models import (
     CatalogSnapshot,
     CatalogSubtopic,
@@ -22,6 +24,7 @@ from utmelab_bank.domain.models import (
     Producer,
     StagingItem,
     TagProposal,
+    Verification,
 )
 
 
@@ -161,6 +164,32 @@ def test_explain_service_stores_the_explanation(
 
     assert result.evidence.explanation is not None
     assert result.state.value == "enriched"
+
+
+def test_explain_service_drops_a_verification_it_invalidates(
+    staging_item: StagingItem, catalog: CatalogSnapshot
+) -> None:
+    assert staging_item.hashes is not None
+    record = Verification(
+        id="myschool:1:ai_bulk",
+        kind=VerificationKind.AI_BULK,
+        verdict=Verdict.PASS,
+        scope=("answer",),
+        content_hash=staging_item.hashes.content_hash,
+        reviewer="nemotron",
+        created_at=datetime(2026, 10, 20, 12, 0, tzinfo=UTC),
+        producer=Producer(provider="test", model="test-model"),
+    )
+    item = staging_item.model_copy(
+        update={
+            "evidence": staging_item.evidence.model_copy(update={"verifications": (record,)}),
+        }
+    )
+
+    result = asyncio.run(ExplainService(MockProvider()).explain(item, catalog))
+
+    assert result.evidence.verifications == ()
+    assert result.evidence.answer_verdict is None
 
 
 def _prefix_catalog(*subtopic_ids: str) -> CatalogSnapshot:

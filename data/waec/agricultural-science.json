@@ -903,10 +903,17 @@
       "objectives": []
     },
     {
+      "slug": "waec-biotic-factors-e-g-predators-parasites-soil-micro-organisms",
+      "topic": "waec-environmental-factors-affecting-crop-and-animal-distribution",
+      "name": "Biotic factors e.g. predators, parasites, soil micro-organisms, pests, pathogens and weeds; interrelationship such as competition, parasitism, mutualism (symbiosis)",
+      "order": 2,
+      "objectives": []
+    },
+    {
       "slug": "waec-edaphic-factors-soil-ph-soil-texture-soil-structure-soil-typ",
       "topic": "waec-environmental-factors-affecting-crop-and-animal-distribution",
       "name": "Edaphic factors: soil pH, soil texture, soil structure, soil type etc",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
@@ -1631,101 +1638,108 @@
       "objectives": []
     },
     {
+      "slug": "waec-important-insect-pests-of-major-crops-field-and-storage-pest",
+      "topic": "waec-pests-of-crops",
+      "name": "Important insect-pests of major crops; field and storage pests, life cycle, economic importance, nature of damage, preventive and control measures of the following major insect-pests of crops",
+      "order": 9,
+      "objectives": []
+    },
+    {
       "slug": "waec-cereals-stem-borer-army-worm-ear-worm-etc",
       "topic": "waec-pests-of-crops",
       "name": "Cereals – stem borer, army worm, ear worm etc",
-      "order": 9,
+      "order": 10,
       "objectives": []
     },
     {
       "slug": "waec-legumes-pod-borer-aphids-sucking-bugs-and-leaf-beetle",
       "topic": "waec-pests-of-crops",
       "name": "Legumes – pod borer, aphids, sucking bugs and leaf beetle",
-      "order": 10,
+      "order": 11,
       "objectives": []
     },
     {
       "slug": "waec-beverages-cocoa-myrids-capsids",
       "topic": "waec-pests-of-crops",
       "name": "Beverages – cocoa myrids (capsids)",
-      "order": 11,
+      "order": 12,
       "objectives": []
     },
     {
       "slug": "waec-tubers-yam-beetle-cassava-mealybugs-green-spidermites-varieg",
       "topic": "waec-pests-of-crops",
       "name": "Tubers – yam beetle, cassava mealybugs, green spidermites, variegated grasshopper",
-      "order": 12,
+      "order": 13,
       "objectives": []
     },
     {
       "slug": "waec-fibre-cotton-stainer-bollworms",
       "topic": "waec-pests-of-crops",
       "name": "Fibre – cotton stainer, bollworms",
-      "order": 13,
+      "order": 14,
       "objectives": []
     },
     {
       "slug": "waec-fruits-and-vegetables-thrips-grasshopper-leaf-roller-leaf-be",
       "topic": "waec-pests-of-crops",
       "name": "Fruits and vegetables – thrips, grasshopper, leaf roller, leaf beetle, scale insect",
-      "order": 14,
+      "order": 15,
       "objectives": []
     },
     {
       "slug": "waec-stored-produce-grain-weevils-bean-beetle",
       "topic": "waec-pests-of-crops",
       "name": "Stored produce – grain weevils, bean beetle",
-      "order": 15,
+      "order": 16,
       "objectives": []
     },
     {
       "slug": "waec-non-insect-pests-e-g-birds-rodents-etc",
       "topic": "waec-pests-of-crops",
       "name": "Non-insect pests e.g. birds, rodents etc",
-      "order": 16,
+      "order": 17,
       "objectives": []
     },
     {
       "slug": "waec-side-effects-of-preventive-and-control-methods",
       "topic": "waec-pests-of-crops",
       "name": "Side effects of preventive and control methods",
-      "order": 17,
+      "order": 18,
       "objectives": []
     },
     {
       "slug": "waec-chemical-pollution-poisoning",
       "topic": "waec-pests-of-crops",
       "name": "Chemical – pollution, poisoning",
-      "order": 18,
+      "order": 19,
       "objectives": []
     },
     {
       "slug": "waec-biological-disruption-of-the-ecosystem-etc",
       "topic": "waec-pests-of-crops",
       "name": "Biological - disruption of the ecosystem etc",
-      "order": 19,
+      "order": 20,
       "objectives": []
     },
     {
       "slug": "waec-cultural-harmful-effects-of-burning-etc",
       "topic": "waec-pests-of-crops",
       "name": "Cultural – harmful effects of burning etc",
-      "order": 20,
+      "order": 21,
       "objectives": []
     },
     {
       "slug": "waec-general-effects-economic-importance-of-pests",
       "topic": "waec-pests-of-crops",
       "name": "General effects/economic importance of pests",
-      "order": 21,
+      "order": 22,
       "objectives": []
     },
     {
       "slug": "waec-methods-of-controlling-weeds-cultural-biological-chemical-ph",
       "topic": "waec-pests-of-crops",
       "name": "Methods of controlling weeds: cultural, biological, chemical, physical and mechanical methods",
-      "order": 22,
+      "order": 23,
       "objectives": []
     },
     {
@@ -1785,6 +1799,13 @@
       "objectives": []
     },
     {
+      "slug": "waec-methods-of-rangeland-and-pasture-improvement-controlled-stoc",
+      "topic": "waec-livestock-management",
+      "name": "Methods of rangeland and pasture improvement: controlled stocking, rotational grazing, use of fertilizers, introduction of legumes, reseeding, weed control, burning, pest and disease control",
+      "order": 5,
+      "objectives": []
+    },
+    {
       "slug": "waec-meaning-of-animal-improvement",
       "topic": "waec-animal-improvement",
       "name": "Meaning of animal improvement",
@@ -1841,45 +1862,66 @@
       "objectives": []
     },
     {
+      "slug": "waec-causal-organisms-symptoms-mode-of-transmission-effects-preve",
+      "topic": "waec-animal-health-management",
+      "name": "Causal organisms, symptoms, mode of transmission, effects, prevention and control of the following selected livestock diseases",
+      "order": 5,
+      "objectives": []
+    },
+    {
       "slug": "waec-viral-foot-and-mouth-rinderpest-newcastle",
       "topic": "waec-animal-health-management",
       "name": "Viral-foot and mouth, rinderpest, newcastle",
-      "order": 5,
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-bacterial-anthrax-brucellosis-tuberculosis",
       "topic": "waec-animal-health-management",
       "name": "Bacterial – anthrax, brucellosis, tuberculosis",
-      "order": 6,
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-fungal-aspergillosis-ringworm-scabies",
       "topic": "waec-animal-health-management",
       "name": "Fungal – aspergillosis, ringworm, scabies",
-      "order": 7,
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-parasites",
       "topic": "waec-animal-health-management",
       "name": "Parasites",
-      "order": 8,
+      "order": 9,
       "objectives": []
     },
     {
       "slug": "waec-meaning-of-parasite",
       "topic": "waec-animal-health-management",
       "name": "Meaning of parasite",
-      "order": 9,
+      "order": 10,
       "objectives": []
     },
     {
       "slug": "waec-types-of-parasites",
       "topic": "waec-animal-health-management",
       "name": "Types of parasites",
-      "order": 10,
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mode-of-transmission-life-cycle-economic-importance-and-cont",
+      "topic": "waec-animal-health-management",
+      "name": "Mode of transmission, life cycle, economic importance and control of the following selected livestock parasites: endoparasites – tapeworm, liverfluke and roundworm; ectoparasites – ticks, lice",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-general-methods-of-prevention-and-control-of-diseases-and-pa",
+      "topic": "waec-animal-health-management",
+      "name": "General methods of prevention and control of diseases and parasites: quarantine, inoculation/immunization, hygiene, breeding for resistance etc",
+      "order": 13,
       "objectives": []
     },
     {
@@ -2261,6 +2303,20 @@
       "objectives": []
     },
     {
+      "slug": "waec-sources-of-funds-for-the-capital-market-bonds-insurance-comp",
+      "topic": "waec-agricultural-finance-agricultural-science",
+      "name": "Sources of funds for the capital market: - bonds; - insurance companies; - merchant banks; - the stock exchange (sales and purchases of shares)",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-roles-of-capital-markets-in-agricultural-business-mobilizati",
+      "topic": "waec-agricultural-finance-agricultural-science",
+      "name": "Roles of capital markets in agricultural business: - mobilization of long term funds for on-lending; - reduce over reliance on money market etc",
+      "order": 14,
+      "objectives": []
+    },
+    {
       "slug": "waec-importance-of-farm-records",
       "topic": "waec-farm-records-and-accounts",
       "name": "Importance of farm records",
@@ -2359,17 +2415,24 @@
       "objectives": []
     },
     {
+      "slug": "waec-corporate-bodies-cooperative-societies-and-individuals-engag",
+      "topic": "waec-farm-records-and-accounts",
+      "name": "Corporate bodies, cooperative societies and individuals engaged in exporting agricultural produce e.g ANCE - Association of Nigerian Cooperative Exporters",
+      "order": 15,
+      "objectives": []
+    },
+    {
       "slug": "waec-importance-of-exporting-agricultural-produce",
       "topic": "waec-farm-records-and-accounts",
       "name": "Importance of exporting agricultural produce",
-      "order": 15,
+      "order": 16,
       "objectives": []
     },
     {
       "slug": "waec-problems-of-marketing-agricultural-produce",
       "topic": "waec-farm-records-and-accounts",
       "name": "Problems of marketing agricultural produce",
-      "order": 16,
+      "order": 17,
       "objectives": []
     },
     {
@@ -2447,6 +2510,20 @@
       "topic": "waec-agricultural-extension",
       "name": "Group contact methods etc",
       "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-extension-programmes-in-west-africa-e-g-adp-nde",
+      "topic": "waec-agricultural-extension",
+      "name": "Agricultural extension programmes in West Africa e.g ADP, NDE, Agro-service centres, state ministries of agriculture and natural resources",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-problems-of-agricultural-extension-in-west-africa-e-g-illite",
+      "topic": "waec-agricultural-extension",
+      "name": "Problems of agricultural extension in West Africa. e.g. illiteracy among farmers, inadequate transport facilities etc. PRACTICAL AGRICULTURAL SCIENCE",
+      "order": 4,
       "objectives": []
     },
     {
@@ -2548,9 +2625,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-forest-products-and-by-products-agricultural-science",
+      "slug": "waec-assessment-would-include-the-6-methods-of-propagation-of-hor",
       "topic": "waec-forest-products-and-by-products",
-      "name": "Forest products and by-products",
+      "name": "Assessment would include the 6. Methods of propagation of horticultural following propagation methods – plants. direct sowing, transplanting, layering, grafting and budding. External features, mode of dispersal",
       "order": 1,
       "objectives": []
     },
@@ -2590,9 +2667,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-main-pests-and-parasites-of-farm-animals-agricultural-science",
+      "slug": "waec-assessment-would-cover-identification-of-common-ectoparasite",
       "topic": "waec-main-pests-and-parasites-of-farm-animals",
-      "name": "Main pests and parasites of farm animals",
+      "name": "Assessment would cover identification of common ectoparasites(e.g. ticks, lice) and endoparasites(e.g tapeworms, liver flukes, roundworms); the damage caused on their hosts and their control; and their life cycles",
       "order": 1,
       "objectives": []
     },

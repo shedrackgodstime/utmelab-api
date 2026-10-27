@@ -393,6 +393,13 @@
       "objectives": []
     },
     {
+      "slug": "waec-food-tests-simple-physical-and-chemical-tests-of-food-stuffs",
+      "topic": "waec-basic-food-nutrients",
+      "name": "Food tests: simple physical and chemical tests of food stuffs to detect presence of nutrients in foods e.g. proteins, fats and carbohydrates",
+      "order": 7,
+      "objectives": []
+    },
+    {
       "slug": "waec-meal-planning-terms",
       "topic": "waec-meal-management",
       "name": "Meal planning terms",
@@ -425,6 +432,20 @@
       "topic": "waec-meal-management",
       "name": "Meal patterns",
       "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nutritional-needs-for-different-groups-e-g-pregnant-lactatin",
+      "topic": "waec-meal-management",
+      "name": "Nutritional needs for different groups e.g. pregnant, lactating mothers, infants and children, adolescents, adults and the aged, vegetarians",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-planning-meals-for-people-in-health-condition-e-g-hiv-aids-i",
+      "topic": "waec-meal-management",
+      "name": "Planning meals for people in health condition e.g. HIV & AIDS, invalids, convalescents, overweight, underweight, hypertension, diabetes etc",
+      "order": 7,
       "objectives": []
     },
     {
@@ -582,38 +603,45 @@
       "objectives": []
     },
     {
+      "slug": "waec-methods-of-heat-transfer-and-meaning-convection-liquid-gases",
+      "topic": "waec-transfer-of-heat",
+      "name": "Methods of heat transfer and meaning - Convection - liquid, gases - Radiation - space - conduction - solid metal Explanation of cooking terms (4)Cooking terms",
+      "order": 1,
+      "objectives": []
+    },
+    {
       "slug": "waec-definitions-5-food-additives",
       "topic": "waec-transfer-of-heat",
       "name": "Definitions (5) Food additives",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-types-of-food-additives",
       "topic": "waec-transfer-of-heat",
       "name": "Types of food additives",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-functions-of-additives",
       "topic": "waec-transfer-of-heat",
       "name": "Functions of additives",
-      "order": 3,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-selection-and-use-of-additives",
       "topic": "waec-transfer-of-heat",
       "name": "Selection and use of additives",
-      "order": 4,
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-food-adulteration",
       "topic": "waec-transfer-of-heat",
       "name": "Food adulteration",
-      "order": 5,
+      "order": 6,
       "objectives": []
     },
     {
@@ -764,10 +792,17 @@
       "objectives": []
     },
     {
+      "slug": "waec-non-alcoholic-beverages-coffee-and-tea-cocoa-drink-milk-and",
+      "topic": "waec-classification-of-beverages",
+      "name": "Non-alcoholic beverages - coffee and tea - cocoa drink - milk and egg drinks - fruit juices and fruit drinks - beef tea and lemon grass",
+      "order": 1,
+      "objectives": []
+    },
+    {
       "slug": "waec-alcoholic-beer-wine",
       "topic": "waec-classification-of-beverages",
       "name": "Alcoholic - beer - wine",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
@@ -985,6 +1020,13 @@
       "topic": "waec-research-into-local-dishes-and-drinks",
       "name": "Development of new recipes",
       "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-improving-existing-recipes-based-on-methods-of-preparation-n",
+      "topic": "waec-research-into-local-dishes-and-drinks",
+      "name": "Improving existing recipes based on methods of preparation, Nutritive value, time and energy use and service/ presentation",
+      "order": 5,
       "objectives": []
     },
     {

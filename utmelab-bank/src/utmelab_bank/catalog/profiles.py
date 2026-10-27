@@ -412,6 +412,18 @@ PROFILES: dict[str, Profile] = {
         body_x_max=600,
         sentence_split=False,
     ),
+    "government": Profile(
+        slug="government",
+        display="Government",
+        topic_re=r"^(\d+)\.\s+(.+)$",
+        subtopic_re=r"^\(([a-z0-9]+)\)\s*(.+)$",
+        subtopic_name_stop_re=r"\.\s+",
+        topic_x_max=80,
+        body_x_min=90,
+        body_x_max=500,
+        strict_continuation=True,
+        section_re=r"^SECTION\s+[A-Z]",
+    ),
     "physics": Profile(
         slug="physics",
         display="Physics",

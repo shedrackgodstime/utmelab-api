@@ -1098,6 +1098,13 @@
       "objectives": []
     },
     {
+      "slug": "waec-functions-of-supporting-tissues-in-plants-strength-rigidity",
+      "topic": "waec-tissues-and-supporting-systems-skeleton",
+      "name": "Functions of supporting tissues in plants: strength, rigidity (resistance against the forces of the wind and water), flexibility and resilience",
+      "order": 9,
+      "objectives": []
+    },
+    {
       "slug": "waec-need-for-transport",
       "topic": "waec-transport-system",
       "name": "Need for transport",
@@ -1777,31 +1784,38 @@
       "objectives": []
     },
     {
+      "slug": "waec-factors-that-affect-population-size-natality-mortality-emigr",
+      "topic": "waec-ecology-of-population",
+      "name": "Factors that affect population size: natality, mortality, emigration, immigration, food shortage, predation,competition and diseases",
+      "order": 6,
+      "objectives": []
+    },
+    {
       "slug": "waec-preservation-and-storage-of-foods",
       "topic": "waec-ecology-of-population",
       "name": "Preservation and storage of foods",
-      "order": 6,
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-the-life-of-selected-insects",
       "topic": "waec-ecology-of-population",
       "name": "The life of selected insects",
-      "order": 7,
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-weevils-and-cotton-strainers",
       "topic": "waec-ecology-of-population",
       "name": "Weevils and cotton strainers",
-      "order": 8,
+      "order": 9,
       "objectives": []
     },
     {
       "slug": "waec-control-of-pests",
       "topic": "waec-ecology-of-population",
       "name": "Control of pests",
-      "order": 9,
+      "order": 10,
       "objectives": []
     },
     {
@@ -2043,9 +2057,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-importance-of-biology-biology",
+      "slug": "waec-following-steps-for-writing-report-on-biological-experiment",
       "topic": "waec-importance-of-biology",
-      "name": "Importance of Biology",
+      "name": "Following steps for writing report on biological experiment or investigation: Aim, hypothesis/ scientific framework, materials/",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-drawing-of-set-up-method-results-observation-discussion-and",
+      "topic": "waec-body-symmetry-sectioning-and-orientation",
+      "name": "Drawing of set-up, method, results/ observation, discussion and conclusion. Application of biology to everyday life. Careers associated with the study of biology. Description of the following terms",
       "order": 1,
       "objectives": []
     },
@@ -2053,14 +2074,14 @@
       "slug": "waec-body-symmetry-bilateral-and-radial",
       "topic": "waec-body-symmetry-sectioning-and-orientation",
       "name": "Body symmetry (bilateral and radial)",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-sectioning-longitudinal-and-transverse-and-vertical",
       "topic": "waec-body-symmetry-sectioning-and-orientation",
       "name": "Sectioning: longitudinal and transverse and vertical",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
@@ -2092,9 +2113,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-spirogyra-and-rhizopus-biology",
+      "slug": "waec-external-structure-and-life-processes-of-amoeba-paramecium-a",
       "topic": "waec-spirogyra-and-rhizopus",
-      "name": "Spirogyra and Rhizopus",
+      "name": "External structure and life processes of Amoeba, Paramecium, and Euglena. Mounting of Paramecium and Euglena under the compound light microscope",
       "order": 1,
       "objectives": []
     },
@@ -2225,9 +2246,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-biology-and-agriculture-biology",
+      "slug": "waec-explanation-of-the-term-food-additives-identification-of-the",
       "topic": "waec-biology-and-agriculture",
-      "name": "Biology and agriculture",
+      "name": "Explanation of the term food additives. Identification of the categories of food additives (Naturally occurring and artificial food additives). Health implications in the use of food additives",
       "order": 1,
       "objectives": []
     },
@@ -2376,6 +2397,13 @@
       "topic": "waec-feeding-habits",
       "name": "Categories: Carnivorous, herbivorous and omnivorous",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-modifications-and-mechanisms-associated-with-the-following-h",
+      "topic": "waec-feeding-habits",
+      "name": "Modifications and mechanisms associated with the following habits; filter feeding, fluid feeding, feeding adaptation in insects, saprophytic feeding, parasitic feeding etc",
+      "order": 2,
       "objectives": []
     },
     {

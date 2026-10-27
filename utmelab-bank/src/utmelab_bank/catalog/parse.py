@@ -585,10 +585,16 @@ def parse(lines: list[Line], profile: Profile) -> Syllabus:
                 if len(text) < 2 or text.isdigit() or key in seen:
                     continue
                 rules = {rule for rule, _ in name_defects(text)}
-                if rules & {"too_long", "sentence", "dangling_end", "fragment"}:
-                    # A paragraph, a sentence or a half-phrase is not a target.
-                    # The topic remains, and the fallback below keeps it
-                    # choosable at topic level.
+                if rules & {
+                    "too_long",
+                    "sentence",
+                    "dangling_end",
+                    "fragment",
+                    "invalid_qualifier",
+                }:
+                    # A paragraph, a sentence, a half-phrase, or a table/paper label
+                    # is not a target. The topic remains, and the fallback below
+                    # keeps it choosable at topic level.
                     continue
                 seen.add(key)
                 subtopics.append(Subtopic(name=text, order=len(subtopics) + 1))

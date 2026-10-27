@@ -123,7 +123,7 @@
       "countries": []
     },
     {
-      "slug": "waec-transportation-marketing",
+      "slug": "waec-transportation",
       "subject": "marketing",
       "exam": "WAEC",
       "name": "Transportation",
@@ -262,17 +262,24 @@
       "objectives": []
     },
     {
+      "slug": "waec-classification-industrial-goods-consumer-goods-services-prim",
+      "topic": "waec-products",
+      "name": "Classification (Industrial goods, consumer goods, services, primary and secondary products and mineral products-oil and non oil",
+      "order": 2,
+      "objectives": []
+    },
+    {
       "slug": "waec-distinctions-between-classes-of-products",
       "topic": "waec-products",
       "name": "Distinctions between classes of products",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-product-design",
       "topic": "waec-products",
       "name": "Product Design*",
-      "order": 3,
+      "order": 4,
       "objectives": []
     },
     {
@@ -381,6 +388,13 @@
       "objectives": []
     },
     {
+      "slug": "waec-forms-price-off-coupons-salesmen-competition-loyalty-schemes",
+      "topic": "waec-sales-promotion",
+      "name": "Forms - price-off, coupons, salesmen competition, loyalty schemes, premium offers, trade-in-allowance, sampling, training schemes, and merchandising incentives",
+      "order": 2,
+      "objectives": []
+    },
+    {
       "slug": "waec-meaning-12",
       "topic": "waec-merchandising",
       "name": "Meaning",
@@ -431,21 +445,21 @@
     },
     {
       "slug": "waec-meaning-mode-choice-and-importance",
-      "topic": "waec-transportation-marketing",
+      "topic": "waec-transportation",
       "name": "Meaning, mode, choice and importance",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-documents-used-in-transportation",
-      "topic": "waec-transportation-marketing",
+      "topic": "waec-transportation",
       "name": "Documents used in transportation",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-factors-affecting-choice-of-transportation",
-      "topic": "waec-transportation-marketing",
+      "topic": "waec-transportation",
       "name": "Factors affecting choice of transportation",
       "order": 3,
       "objectives": []

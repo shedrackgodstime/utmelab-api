@@ -19,7 +19,9 @@ from typing import Any
 
 #: A subtopic is one thing a question is about. Beyond this it is a paragraph
 #: or a syllabus description, and a model cannot pick it reliably.
-MAX_NAME_CHARS = 120
+#: Raised to 300 to accommodate descriptive WAEC government subtopics that are
+#: phrases, not paragraphs, but exceed the old 120-char limit.
+MAX_NAME_CHARS = 300
 
 #: "(a)", "(ii)", "b)", "3." at the start means the parser kept a list marker.
 _LIST_MARKER = r"^(?:\((?:\d+|[a-zA-Z]|[ivxIVX]+)\)|(?:\d+|[a-zA-Z]|[ivxIVX]+)[.)])\s+"

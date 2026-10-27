@@ -812,23 +812,23 @@
       "objectives": []
     },
     {
-      "slug": "waec-statistical-maps-and-diagrams-geography",
+      "slug": "waec-graphical-representation-of-statistical-data-bar-graphs-line",
       "topic": "waec-statistical-maps-and-diagrams",
-      "name": "Statistical maps and diagrams",
+      "name": "Graphical representation of statistical data: Bar graphs, Line graphs, flow charts, dot maps, proportional circles, density maps, isopleth maps",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-elements-of-physical-geography-geography",
+      "slug": "waec-the-earth-as-a-planet-in-relation-to-the-sun-latitude-and-di",
       "topic": "waec-elements-of-physical-geography",
-      "name": "Elements of Physical Geography",
+      "name": "The earth as a planet in relation to the sun, latitude and distance, longitude and time, earth’s rotation and revolution and their effects, structure of the earth (internal and external)",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-hydrosphere-geography",
+      "slug": "waec-ocean-basins-salinity-ocean-current-causes-types-and-their-e",
       "topic": "waec-hydrosphere",
-      "name": "Hydrosphere",
+      "name": "Ocean basins, salinity, ocean current ( causes, types and their effects on the temperature of adjacent coastlands), lakes, rivers, lagoons, water as an environmental resource",
       "order": 1,
       "objectives": []
     },
@@ -840,17 +840,38 @@
       "objectives": []
     },
     {
-      "slug": "waec-tectonic-processes-geography",
+      "slug": "waec-vulcanicity-earthquake-landforms-mountains-plains-karsts-and",
       "topic": "waec-tectonic-processes",
-      "name": "Tectonic processes",
+      "name": "Vulcanicity, earthquake, landforms: Mountains, plains, karsts and coastal landforms (formation, characteristics and importance)",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agencies-modifying-landforms-such-as-weathering-mass-movemen",
+      "topic": "waec-denudational-processes",
+      "name": "Agencies modifying landforms such as weathering, mass movement, running water, underground water, wind and waves. Simple weather study based on local observation, description",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-weather-and-climate-of-the-stevenson-s-screen-and-uses-of-ba",
+      "topic": "waec-denudational-processes",
+      "name": "Weather and climate of the Stevenson’s screen and uses of basic weather instruments e.g. rain gauge, thermometer, barometer, wind vane etc. Rainfall, sunshine, air pressure, wind, humidity, temperature",
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-climate-and-cloud-factors-affecting-climatic-elements-e-g-al",
       "topic": "waec-denudational-processes",
       "name": "Climate and cloud. Factors affecting climatic elements e.g. altitude",
-      "order": 1,
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-elements-latitude-ocean-currents-land-and-sea-breezes-contin",
+      "topic": "waec-denudational-processes",
+      "name": "Elements latitude, ocean currents, land and sea breezes, continentality, aspect. Interpretation of climatic charts and data",
+      "order": 4,
       "objectives": []
     },
     {
@@ -875,17 +896,24 @@
       "objectives": []
     },
     {
+      "slug": "waec-major-types-tropical-rainforest-cool-warm-temperate-woodland",
+      "topic": "waec-climate-change-vegetation",
+      "name": "Major types (Tropical Rainforest, cool/warm temperate woodland, Tropical Grassland); characteristics, distribution, factors affecting their distribution, plant communities",
+      "order": 2,
+      "objectives": []
+    },
+    {
       "slug": "waec-vegetation-as-an-environmental-resource",
       "topic": "waec-climate-change-vegetation",
       "name": "Vegetation as an environmental resource",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-conservation-of-vegetation-resources",
       "topic": "waec-climate-change-vegetation",
       "name": "Conservation of vegetation resources",
-      "order": 3,
+      "order": 4,
       "objectives": []
     },
     {
@@ -952,23 +980,23 @@
       "objectives": []
     },
     {
-      "slug": "waec-settlement",
+      "slug": "waec-types-rural-and-urban-patterns-and-factors-affecting-locatio",
       "topic": "waec-settlement-economic-and-human-geography",
-      "name": "Settlement",
+      "name": "Types (rural and urban); patterns and factors affecting location; growth and size; functions of rural and urban settlements; interaction patterns( urban-rural, rural-urban, urban-urban, rural-rural); migration",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-transportation",
+      "slug": "waec-modes-roads-railways-water-air-pipeline-cables-ropeways-etc",
       "topic": "waec-transportation-economic-and-human-geography",
-      "name": "Transportation",
+      "name": "Modes (roads, railways, water, air, pipeline, cables, ropeways etc.) Transportation and economic development (movement of people and commodities, national and international trade, diffusion of ideas and technology, national integration); problems of transportation and their solutions",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-industry",
+      "slug": "waec-classification-primary-secondary-and-tertiary-types-heavy-an",
       "topic": "waec-industry-economic-and-human-geography",
-      "name": "Industry",
+      "name": "Classification (primary, secondary and tertiary); types (heavy and light industry); factors of industrial location; contributions to development; problems/solutions",
       "order": 1,
       "objectives": []
     },
@@ -980,37 +1008,72 @@
       "objectives": []
     },
     {
+      "slug": "waec-meaning-centres-reasons-leisure-recreation-education-etc-imp",
+      "topic": "waec-tourism-economic-and-human-geography",
+      "name": "Meaning, centres, reasons (leisure, recreation, education etc ); importance, problems and solutions. Location, position, size, distance and political divisions",
+      "order": 1,
+      "objectives": []
+    },
+    {
       "slug": "waec-nigeria-on-broad-outline-relief-drainage-climate-vegetation",
       "topic": "waec-tourism-economic-and-human-geography",
       "name": "Nigeria on broad outline Relief, drainage, climate, vegetation",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-physical-setting-size-distribution-structure-population-qual",
       "topic": "waec-tourism-economic-and-human-geography",
       "name": "Physical setting Size, distribution, structure, population quality, population",
-      "order": 2,
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-population-movement-population-data-sources-and-problems-sol",
+      "topic": "waec-tourism-economic-and-human-geography",
+      "name": "Population movement, population data ( sources and problems/solutions) Mineral (petroleum, gas, coal, tin/columbite, iron ore",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-transportation-solutions-influence-of-transportation-on-huma",
+      "topic": "waec-tourism-economic-and-human-geography",
+      "name": "Transportation solutions, influence of transportation on human activities. Communication networks, advantages and disadvantages",
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-communication-importance-problems-and-solutions",
       "topic": "waec-tourism-economic-and-human-geography",
       "name": "Communication importance, problems and solutions",
-      "order": 3,
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definition-types-major-industrial-zones-factors-of-location",
+      "topic": "waec-industry-nigeria",
+      "name": "Definition, types, major industrial zones, factors of location, importance, problems and solutions. Meaning, types (national and international), stock exchange",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-trade-capital-market-forex-major-commercial-areas-importance",
+      "topic": "waec-industry-nigeria",
+      "name": "Trade capital market, forex, major commercial areas, importance of commercial activities. Meaning, centres, reasons for tourism, importance, problems",
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-tourism-and-solutions-issues-of-development-and-environmenta",
       "topic": "waec-industry-nigeria",
       "name": "Tourism and solutions. Issues of Development and Environmental Conservation",
-      "order": 1,
+      "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-issues-on-development-and-environmental-concerns",
+      "slug": "waec-rural-and-regional-development-resource-management-and-conse",
       "topic": "waec-issues-on-development-and-environmental-concerns-nigeria",
-      "name": "Issues on development and environmental concerns",
+      "name": "Rural and regional development, resource management and conservation, environmental pollution e.g. air, water, soil, noise; waste disposal, etc. Meaning, member countries, purposes/mandate",
       "order": 1,
       "objectives": []
     },
@@ -1148,16 +1211,23 @@
       "objectives": []
     },
     {
-      "slug": "waec-issues-of-development-and-environmental-conservation",
+      "slug": "waec-benefits-and-side-effects-fuel-wood-and-charcoal-petroleum-a",
       "topic": "waec-energy-and-power",
-      "name": "Issues of Development and Environmental Conservation",
+      "name": "– benefits and side effects), fuel wood and charcoal, petroleum and natural gas (Saltpond), solar, wave and wind energies (Donkokrom and Kokrobite), Biogas e.g. cow dung",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-issues-on-development-and-environmental-concerns-geography",
+      "slug": "waec-issues-of-development-and-environmental-conservation",
+      "topic": "waec-energy-and-power",
+      "name": "Issues of Development and Environmental Conservation",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-rural-and-regional-development-resource-management-and-conse-geography",
       "topic": "waec-issues-on-development-and-environmental-concerns-ghana",
-      "name": "Issues on development and environmental concerns",
+      "name": "Rural and regional development, resource management and conservation, environmental pollution e.g. air, water, soil, noise; waste disposal etc",
       "order": 1,
       "objectives": []
     },
@@ -1176,23 +1246,23 @@
       "objectives": []
     },
     {
-      "slug": "waec-agriculture-geography",
+      "slug": "waec-meaning-of-agriculture-subsistence-intensive-and-extensive-c",
       "topic": "waec-agriculture-sierra-leone",
-      "name": "Agriculture",
+      "name": "Meaning of agriculture, Subsistence (intensive and extensive) commercial (vegetable, livestock, dairying, commercial grain production), plantation, problems and solutions",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-fishing-geography",
+      "slug": "waec-meaning-of-fishing-inland-and-ocean-in-shore-off-shore-metho",
       "topic": "waec-fishing-sierra-leone",
-      "name": "Fishing",
+      "name": "Meaning of fishing, Inland and ocean (in-shore/off shore), methods, types of fish, storage and marketing, importance, problems and solutions",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-lumbering",
+      "slug": "waec-meaning-of-lumbering-sources-of-timber-methods-of-exploitati",
       "topic": "waec-lumbering-sierra-leone",
-      "name": "Lumbering",
+      "name": "Meaning of lumbering, Sources of timber, methods of exploitation, types of species (for internal use and for export), problems and solutions, conservation",
       "order": 1,
       "objectives": []
     },
@@ -1204,16 +1274,23 @@
       "objectives": []
     },
     {
-      "slug": "waec-transport-and-communication-geography",
+      "slug": "waec-manufacturing-manufacturing-industry-energy-and-power-water",
+      "topic": "waec-mining-sierra-leone",
+      "name": "Manufacturing manufacturing industry, Energy and Power, water, fuelwood and charcoal, biogas (e.g. cow-dung), hydro-electric power projects e.g. Dodo, Guma, Bumbuna",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-road-rail-water-air-the-roles-of-transport-and-communication",
       "topic": "waec-transport-and-communication",
-      "name": "Transport and communication",
+      "name": "Road, rail, water, air, the roles of transport and communication to economic development,( internal and external trade, diffusion of ideas and technology), problems of transport and communication, solutions",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-trade-geography",
+      "slug": "waec-major-commodities-of-trade-agricultural-manufactured-goods-m",
       "topic": "waec-trade-sierra-leone",
-      "name": "Trade",
+      "name": "Major commodities of trade (agricultural, manufactured goods, minerals, etc.), patterns of trade (internal and external), problems of trade",
       "order": 1,
       "objectives": []
     },
@@ -1295,7 +1372,7 @@
       "objectives": []
     },
     {
-      "slug": "waec-definition-types-major-industrial-zones-factors-of-location",
+      "slug": "waec-definition-types-major-industrial-zones-factors-of-location-geography",
       "topic": "waec-industry-liberia",
       "name": "Definition, types, major industrial zones, factors of location, importance, problems and solutions, importance",
       "order": 1,
@@ -1421,16 +1498,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-issues-on-development-and-environmental-concerns-2",
+      "slug": "waec-issues-of-development-and-environmental-conservation-rural-a",
       "topic": "waec-issues-on-development-and-environmental-concerns-senegambia",
-      "name": "Issues on development and environmental concerns",
+      "name": "Issues of Development and Environmental Conservation: Rural and regional development, resource management and conservation, environmental pollution e.g. air, water, soil, noise, waste disposal etc",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-trade-2",
+      "slug": "waec-meaning-types-national-and-international-forex-major-commerc",
       "topic": "waec-trade-senegambia",
-      "name": "Trade",
+      "name": "Meaning, types (national and international), forex, major commercial areas, importance of commercial activities, problems and solutions",
       "order": 1,
       "objectives": []
     },
@@ -1442,9 +1519,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-africa-on-broad-outline-geography",
+      "slug": "waec-location-size-position-political-divisions-and-associated-is",
       "topic": "waec-africa-on-broad-outline",
-      "name": "Africa on broad outline",
+      "name": "Location, size, position, political divisions and associated islands, physical features and their economic importance (relief, drainage, climate and vegetation), distribution of minerals",
       "order": 1,
       "objectives": []
     },
@@ -1512,31 +1589,38 @@
       "objectives": []
     },
     {
+      "slug": "waec-land-use-rural-or-urban-rural-crop-farming-e-g-rice-cocoa-et",
+      "topic": "waec-ecowas-africa",
+      "name": "Land use (rural or urban): rural – crop farming (e.g. rice, cocoa, etc. ) urban crop farming mining (e.g. coal, tin, petroleum etc.), fishing. urban – commercial activities, ports, factories, recreational etc",
+      "order": 1,
+      "objectives": []
+    },
+    {
       "slug": "waec-market-survey-rural-or-urban",
       "topic": "waec-ecowas-africa",
       "name": "Market survey – rural or urban",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-traffic-flow-rural-or-urban",
       "topic": "waec-ecowas-africa",
       "name": "Traffic flow – rural or urban",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-patterns-of-journey-to-work-rural-or-urban",
       "topic": "waec-ecowas-africa",
       "name": "Patterns of journey to work – rural or urban",
-      "order": 3,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-rate-of-erosion-in-the-locality-etc",
       "topic": "waec-ecowas-africa",
       "name": "Rate of erosion in the locality, etc",
-      "order": 4,
+      "order": 5,
       "objectives": []
     }
   ]

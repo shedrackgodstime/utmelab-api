@@ -127,7 +127,7 @@ def test_a_clean_file_has_no_errors(tmp_path: Path) -> None:
 
 
 def test_a_prose_name_is_a_contract_error(tmp_path: Path) -> None:
-    _write_subject(tmp_path, "geography", "X" * 140)
+    _write_subject(tmp_path, "geography", "X" * 310)
 
     result = _validate_catalog(tmp_path, ["geography"])
 
@@ -135,7 +135,7 @@ def test_a_prose_name_is_a_contract_error(tmp_path: Path) -> None:
 
 
 def test_publish_refuses_a_dirty_contract_before_it_connects(tmp_path: Path) -> None:
-    _write_subject(tmp_path, "geography", "X" * 140)
+    _write_subject(tmp_path, "geography", "X" * 310)
     args = argparse.Namespace(data_dir=tmp_path, subject=None, apply=True, limit=5)
 
     assert asyncio.run(_apply(args)) == 1
