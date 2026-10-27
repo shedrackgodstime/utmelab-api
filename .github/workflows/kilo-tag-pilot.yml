@@ -1,0 +1,74 @@
+name: Kilo Tag Pilot
+
+on:
+  workflow_dispatch:
+    inputs:
+      exam:
+        description: Exam to tag
+        required: true
+        default: WAEC
+      subject:
+        description: Subject slug
+        required: false
+        default: commerce
+      limit:
+        description: Rows to process
+        required: false
+        default: "20"
+
+jobs:
+  kilo-tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Kilo CLI
+        run: |
+          npm install -g @kilocode/cli
+          kilo --version
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install utmelab-bank
+        run: |
+          cd utmelab-bank
+          pip install -e .
+          utmelab-bank --version || true
+
+      - name: Verify Kilo routes are credential-free
+        run: |
+          cd utmelab-bank
+          python - <<'PY'
+          from utmelab_bank.routing import select_routes
+          routes = select_routes("question_explanation", environment={})
+          print("Routes:", [r.family for r in routes])
+          assert routes[0].family == "kilo"
+          assert routes[0].api_key == ""
+          print("Kilo route is credential-free")
+          PY
+
+      - name: Pilot tag with Kilo
+        env:
+          TURSO_DATABASE_URL: ${{ secrets.TURSO_DATABASE_URL }}
+          TURSO_AUTH_TOKEN: ${{ secrets.TURSO_AUTH_TOKEN }}
+        run: |
+          cd utmelab-bank
+          EXAM="${{ github.event.inputs.exam }}"
+          SUBJECT="${{ github.event.inputs.subject }}"
+          LIMIT="${{ github.event.inputs.limit }}"
+          echo "Running pilot tag for $EXAM $SUBJECT limit $LIMIT"
+          utmelab-bank tag --exam "$EXAM" --subject "$SUBJECT" --limit "$LIMIT" --provider config --dry-run || true
+          utmelab-bank tag --exam "$EXAM" --subject "$SUBJECT" --limit "$LIMIT" --provider config
