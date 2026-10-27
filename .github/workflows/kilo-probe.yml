@@ -10,9 +10,14 @@
 name: kilo-probe
 
 run-name: >-
-  Kilo probe ${{ inputs.model }}
+  Kilo probe ${{ inputs.model || 'kilo/kilo-auto/free' }}
 
 on:
+  # A push trigger so this probe can run from a branch without landing the
+  # file on the default branch first. Dispatch stays for repeat runs.
+  push:
+    paths:
+      - .github/workflows/kilo-probe.yml
   workflow_dispatch:
     inputs:
       model:
@@ -60,8 +65,8 @@ jobs:
 
       - name: Run tag-shaped requests with no secrets
         env:
-          MODEL: ${{ inputs.model }}
-          ATTEMPTS: ${{ inputs.attempts }}
+          MODEL: ${{ inputs.model || 'kilo/kilo-auto/free' }}
+          ATTEMPTS: ${{ inputs.attempts || '3' }}
         run: |
           set -euo pipefail
           python3 - <<'PY'
