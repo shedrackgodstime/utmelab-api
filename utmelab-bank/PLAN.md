@@ -10,10 +10,11 @@ A run is green when all of these hold:
    coverage gaps for JAMB and WAEC. NECO is reported as parked until its
    catalog exists, not as an active warning.
 2. Every WAEC topic and subtopic comes from the official PDF. No blank names,
-   no orphans, no parent-only topics, no inferred headings.
+   no orphans, no parent-only topics, no inferred headings, and no paragraph
+   posing as a subtopic (phase 2b).
 3. All 957 WAEC deduped rows are `ready`, or `rejected` with a recorded
    reason. No row is stuck.
-4. The 52 catalogued and 4 ready WAEC rows still resolve against the rebuilt
+4. The 97 catalogued and 4 ready WAEC rows still resolve against the rebuilt
    catalog.
 5. `cargo check --workspace`, `cargo check -p utmelab-ui --features
    web-pages,server`, `cargo test --workspace`, ruff, mypy and the four
@@ -26,8 +27,8 @@ It stays parked until phase 5.
 
 | State | Rows | Note |
 |---|---|---|
-| deduped | 3221 | 2261 NECO, 957 WAEC, 3 JAMB |
-| catalogued | 52 | all WAEC; Kilo and OpenCode, all resolving |
+| deduped | 3176 | 2261 NECO, 912 WAEC, 3 JAMB |
+| catalogued | 97 | all WAEC; resolving, not validated |
 | ready | 53 | 49 JAMB, 4 WAEC |
 | rejected | 172 | duplicate_exact / duplicate_near |
 | adapted | 4 | JAMB |
@@ -120,7 +121,42 @@ diff report that explains every removal and rename.
 - Re-tag the few bank rows whose snapshot subtopic disappears; the rest keep
   their tags.
 
+### Phase 2b - the catalog is valid, not good (blocker, found 2026-10-27)
+
+The contract checks names, parents and orphans. It cannot see a "subtopic"
+that is a whole poem. On production WAEC:
+
+- 809 of 2892 subtopics are prose blobs (over 150 characters, or carrying
+  roman list markers). `literature-in-english` averages 1394 characters; its
+  12 subtopics are entire poems. `english-language`'s longest is 1581
+  characters and starts mid-sentence at "(i) above which are generally known".
+- 42 topic names are list markers. Geography has "(b) Physical setting" three
+  times; biology has "(a) Cell structure and functions of cell".
+- 27 duplicate topic-name groups, for example geography Trade x3 and Mining
+  x3. The names carry no section, so a model choosing "Trade" cannot tell
+  which one is meant.
+- JAMB is better, not clean: 133 of 2158 subtopics are blobs, worst in
+  chemistry (35) and French (22).
+
+A tag can only be as good as the subtopic it chooses. The 98% structural pass
+rate on the English batch says nothing about correctness: the model picked a
+paragraph and the gate accepted it.
+
+Acceptance for a subtopic before more tagging:
+- a phrase of at most 120 characters, not a sentence or a paragraph;
+- no leading list marker and no lowercase continuation;
+- unique within its subject, or disambiguated by its section;
+- a parent topic that is a real heading, not a section letter;
+- a 10-question sample per subject tagged correctly by hand, at least 9 of 10.
+
+Prose syllabi (`english-language`, `literature-in-english`, `commerce`,
+`insurance`) probably need a different shape: fewer real subtopics, or
+topic-level placement, rather than forcing a split of a paragraph.
+
 ### Phase 3 - the 957 WAEC rows
+
+- HALTED 2026-10-27 until phase 2b passes. The 97 catalogued WAEC rows are
+  structurally placed, not validated.
 
 - Run `tag -> media -> explain -> review -> ready` in batches of about 200,
   scoped by subject, starting with subjects whose catalog just passed.
