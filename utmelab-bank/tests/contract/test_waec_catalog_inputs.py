@@ -10,12 +10,16 @@ from utmelab_bank.adapters.sources.myschool.subjects import load_map
 REPO_ROOT = Path(__file__).resolve().parents[3]
 WAEC_DIR = REPO_ROOT / "data" / "waec"
 
+#: Checked-in files beside the subject syllabuses: the pinned source map and
+#: the extraction verifications. They are not subjects.
+NON_CATALOG_FILES = frozenset({"sources", "verifications"})
+
 
 def test_every_waec_syllabus_input_is_mapped_and_structurally_complete() -> None:
     entries = load_map().exam("WAEC").subjects
     catalog_by_slug = {entry.slug: entry for entry in entries}
     catalog_slugs = set(catalog_by_slug)
-    files = sorted(WAEC_DIR.glob("*.json"))
+    files = sorted(path for path in WAEC_DIR.glob("*.json") if path.stem not in NON_CATALOG_FILES)
 
     assert files
     assert {path.stem for path in files} <= catalog_slugs

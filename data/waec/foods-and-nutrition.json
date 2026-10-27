@@ -13,7 +13,7 @@
   ],
   "topics": [
     {
-      "slug": "waec-foods-and-nutrition-1-introduction-to-foods-and-nutrition",
+      "slug": "waec-introduction-to-foods-and-nutrition",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
       "name": "Introduction to Foods and Nutrition",
@@ -23,7 +23,7 @@
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-2-careers-associated-with-foods-and-nutrition",
+      "slug": "waec-careers-associated-with-foods-and-nutrition",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
       "name": "Careers associated with Foods and Nutrition",
@@ -33,7 +33,7 @@
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-3-basic-food-nutrients",
+      "slug": "waec-basic-food-nutrients",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
       "name": "Basic Food Nutrients",
@@ -43,7 +43,7 @@
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-4-meal-management",
+      "slug": "waec-meal-management",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
       "name": "Meal Management",
@@ -53,7 +53,7 @@
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-5-the-kitchen",
+      "slug": "waec-the-kitchen",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
       "name": "The kitchen",
@@ -63,441 +63,231 @@
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-6-kitchen-equipment-and-tools",
+      "slug": "waec-sanitation-in-the-kitchen",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Kitchen equipment and tools",
+      "name": "Sanitation in the kitchen",
       "order": 6,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-7-safety-in-the-kitchen",
+      "slug": "waec-legumes-and-oily-seeds",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Safety in the kitchen",
+      "name": "Legumes and oily seeds",
       "order": 7,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-8-sanitation-in-the-kitchen",
+      "slug": "waec-starchy-roots-and-plantain",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Sanitation in the kitchen",
+      "name": "Starchy roots and plantain",
       "order": 8,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-9-animal-and-animal-products",
+      "slug": "waec-food-preservation",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Animal and animal products",
+      "name": "Food preservation",
       "order": 9,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-10-cereals-grains",
+      "slug": "waec-food-storage",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Cereals/grains",
+      "name": "Food storage",
       "order": 10,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-11-fruits-and-vegetables",
+      "slug": "waec-principles-underlying-cooking",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Fruits and vegetables",
+      "name": "Principles underlying cooking",
       "order": 11,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-12-legumes-and-oily-seeds",
+      "slug": "waec-methods-of-cooking",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Legumes and oily seeds",
+      "name": "Methods of cooking",
       "order": 12,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-13-fats-and-oils",
+      "slug": "waec-transfer-of-heat",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Fats and oils",
+      "name": "Transfer of heat",
       "order": 13,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-14-starchy-roots-and-plantains",
+      "slug": "waec-flour-cookery-and-confectionery",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Starchy roots and plantains",
+      "name": "Flour Cookery and Confectionery",
       "order": 14,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-15-food-spoilage",
+      "slug": "waec-classification-of-beverages",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Food spoilage",
+      "name": "Classification of beverages",
       "order": 15,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-16-food-preservation",
+      "slug": "waec-importance-of-beverages",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Food preservation",
+      "name": "Importance of beverages",
       "order": 16,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-17-food-storage",
+      "slug": "waec-principles-underlining-preparation-of-beverage",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Food storage",
+      "name": "Principles underlining preparation of beverage",
       "order": 17,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-18-principles-underlying-cooking",
+      "slug": "waec-entertainment",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Principles underlying cooking",
+      "name": "Entertainment",
       "order": 18,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-19-methods-of-cooking",
+      "slug": "waec-table-setting-and-etiquette",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Methods of cooking",
+      "name": "Table setting and etiquette",
       "order": 19,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-20-transfer-of-heat",
+      "slug": "waec-meal-service-style",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Transfer of heat",
+      "name": "Meal Service Style",
       "order": 20,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-21-cooking-terms",
+      "slug": "waec-research-into-local-dishes-and-drinks",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Cooking terms",
+      "name": "Research into Local dishes and Drinks",
       "order": 21,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-22-food-additives",
+      "slug": "waec-experiments",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Food additives",
+      "name": "Experiments",
       "order": 22,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
+      "slug": "waec-consumer-education",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Flour Cookery and Confectionery",
+      "name": "Consumer Education",
       "order": 23,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-24-classification-of-beverages",
+      "slug": "waec-food-budgeting",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Classification of beverages",
+      "name": "Food Budgeting",
       "order": 24,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-25-importance-of-beverages",
+      "slug": "waec-food-purchasing",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Importance of beverages",
+      "name": "Food Purchasing",
       "order": 25,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-26-principles-underlining-the-preparation-of-beverages",
+      "slug": "waec-setting-up-and-managing-a",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Principles underlining the preparation of beverages",
+      "name": "Setting up and managing a",
       "order": 26,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-27-types-of-convenience-foods",
+      "slug": "waec-work-ethics",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Types of convenience foods",
+      "name": "Work ethics",
       "order": 27,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-foods-and-nutrition-28-selection-and-uses-of-convenience-foods",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Selection and uses of convenience foods",
-      "order": 28,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-29-advantages-and-disadvantages-of-using-convenience-foods",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Advantages and disadvantages of using convenience foods",
-      "order": 29,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-30-preparation-of-dishes-using-convenience-foods",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Preparation of dishes using convenience foods",
-      "order": 30,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-31-explanation",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Explanation",
-      "order": 31,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-32-importance-of-using-leftover-goods",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Importance of using leftover goods",
-      "order": 32,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-33-rules-guidelines-for-using-leftover-foods",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Rules/guidelines for using leftover foods",
-      "order": 33,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-34-rechauff-dishes",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Rechauffé dishes",
-      "order": 34,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-35-explanation",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Explanation",
-      "order": 35,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-36-occasions-for-festive-dishes",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Occasions for festive dishes",
-      "order": 36,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-37-types-of-festive-dishes-special-occasion-dishes",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Types of festive dishes/special occasion dishes",
-      "order": 37,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-38-preparation-of-festive-dishes-special-occasion-dishes",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Preparation of festive dishes/special occasion dishes",
-      "order": 38,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-39-entertainment",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Entertainment",
-      "order": 39,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-40-table-setting-and-etiquette",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Table setting and etiquette",
-      "order": 40,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-41-meal-service-style",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Meal Service Style",
-      "order": 41,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-42-research-into-local-dishes-and-drinks",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Research into Local dishes and Drinks",
-      "order": 42,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-43-experiments",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Experiments",
-      "order": 43,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-44-consumer-education",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Consumer Education",
-      "order": 44,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-45-food-budgeting",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Food Budgeting",
-      "order": 45,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-46-food-purchasing",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Food Purchasing",
-      "order": 46,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Setting up and managing a catering enterprise",
-      "order": 47,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-48-work-ethics",
-      "subject": "foods-and-nutrition",
-      "exam": "WAEC",
-      "name": "Work ethics",
-      "order": 48,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-49-packaging",
+      "slug": "waec-packaging",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
       "name": "Packaging",
-      "order": 49,
+      "order": 28,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -505,1128 +295,883 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-foods-and-nutrition-1-introduction-to-foods-and-nutrition-1-meaning",
-      "topic": "waec-foods-and-nutrition-1-introduction-to-foods-and-nutrition",
+      "slug": "waec-meaning",
+      "topic": "waec-introduction-to-foods-and-nutrition",
       "name": "Meaning",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-1-introduction-to-foods-and-nutrition-2-basic-knowledge-of-nutrition",
-      "topic": "waec-foods-and-nutrition-1-introduction-to-foods-and-nutrition",
+      "slug": "waec-basic-knowledge-of-nutrition",
+      "topic": "waec-introduction-to-foods-and-nutrition",
       "name": "Basic knowledge of Nutrition",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-1-introduction-to-foods-and-nutrition-3-importance-of-human-nutrition",
-      "topic": "waec-foods-and-nutrition-1-introduction-to-foods-and-nutrition",
+      "slug": "waec-importance-of-human-nutrition",
+      "topic": "waec-introduction-to-foods-and-nutrition",
       "name": "Importance of Human Nutrition",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-1-introduction-to-foods-and-nutrition-4-factors-affecting-foods-and-nutrition",
-      "topic": "waec-foods-and-nutrition-1-introduction-to-foods-and-nutrition",
-      "name": "Factors Affecting Foods and Nutrition",
+      "slug": "waec-factors-affecting-foods-and-nutrition",
+      "topic": "waec-introduction-to-foods-and-nutrition",
+      "name": "Factors affecting Foods and Nutrition",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-1-introduction-to-foods-and-nutrition-5-food-habits",
-      "topic": "waec-foods-and-nutrition-1-introduction-to-foods-and-nutrition",
+      "slug": "waec-food-habits",
+      "topic": "waec-introduction-to-foods-and-nutrition",
       "name": "Food Habits",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-2-careers-associated-with-foods-and-nutrition-1-careers-associated-with-foods-and-nutrition",
-      "topic": "waec-foods-and-nutrition-2-careers-associated-with-foods-and-nutrition",
+      "slug": "waec-careers-associated-with-foods-and-nutrition-foods-and-nutrition",
+      "topic": "waec-careers-associated-with-foods-and-nutrition",
       "name": "Careers associated with Foods and Nutrition",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-2-careers-associated-with-foods-and-nutrition-2-factors-that-influence-career-choices",
-      "topic": "waec-foods-and-nutrition-2-careers-associated-with-foods-and-nutrition",
+      "slug": "waec-factors-that-influence-career-choices",
+      "topic": "waec-careers-associated-with-foods-and-nutrition",
       "name": "Factors that influence career choices",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-2-careers-associated-with-foods-and-nutrition-3-characteristics-required-for-foods-a-16da1525be",
-      "topic": "waec-foods-and-nutrition-2-careers-associated-with-foods-and-nutrition",
+      "slug": "waec-characteristics-required-for-foods-and-nutrition-careers",
+      "topic": "waec-careers-associated-with-foods-and-nutrition",
       "name": "Characteristics required for Foods and Nutrition careers",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-3-basic-food-nutrients-1-the-nutrients-and-their-nutritive-values",
-      "topic": "waec-foods-and-nutrition-3-basic-food-nutrients",
+      "slug": "waec-the-nutrients-and-their-nutritive-values",
+      "topic": "waec-basic-food-nutrients",
       "name": "The nutrients and their nutritive values",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-3-basic-food-nutrients-2-functions-of-the-different-nutrients",
-      "topic": "waec-foods-and-nutrition-3-basic-food-nutrients",
+      "slug": "waec-functions-of-the-different-nutrients",
+      "topic": "waec-basic-food-nutrients",
       "name": "Functions of the different nutrients",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-3-basic-food-nutrients-3-sources-of-the-different-nutrients",
-      "topic": "waec-foods-and-nutrition-3-basic-food-nutrients",
+      "slug": "waec-sources-of-the-different-nutrients",
+      "topic": "waec-basic-food-nutrients",
       "name": "Sources of the different nutrients",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-3-basic-food-nutrients-4-dietary-deficiencies",
-      "topic": "waec-foods-and-nutrition-3-basic-food-nutrients",
+      "slug": "waec-dietary-deficiencies",
+      "topic": "waec-basic-food-nutrients",
       "name": "Dietary deficiencies",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-3-basic-food-nutrients-5-metabolism-digestion-and-absorption-of-foods-carbohydrate-protein-fat",
-      "topic": "waec-foods-and-nutrition-3-basic-food-nutrients",
+      "slug": "waec-metabolism-digestion-and-absorption-of-foods-carbohydrate-pr",
+      "topic": "waec-basic-food-nutrients",
       "name": "Metabolism,(digestion and absorption of foods carbohydrate, protein, fat)",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-3-basic-food-nutrients-6-knowledge-and-use-of-food-composition-table",
-      "topic": "waec-foods-and-nutrition-3-basic-food-nutrients",
+      "slug": "waec-knowledge-and-use-of-food-composition-table",
+      "topic": "waec-basic-food-nutrients",
       "name": "Knowledge and use of food composition table",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-3-basic-food-nutrients-7-food-tests-simple-physical-and-chemical-tests-of-foodstuffs-a8bf09d1ca",
-      "topic": "waec-foods-and-nutrition-3-basic-food-nutrients",
-      "name": "Food tests: simple physical and chemical tests of foodstuffs to detect the presence of nutrients in foods e.g. proteins, fats and carbohydrates",
+      "slug": "waec-food-tests-simple-physical-and-chemical-tests-of-food-stuffs",
+      "topic": "waec-basic-food-nutrients",
+      "name": "Food tests: simple physical and chemical tests of food stuffs to detect presence of nutrients in foods e.g. proteins, fats and carbohydrates",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-4-meal-management-1-meal-planning-terms",
-      "topic": "waec-foods-and-nutrition-4-meal-management",
+      "slug": "waec-meal-planning-terms",
+      "topic": "waec-meal-management",
       "name": "Meal planning terms",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-4-meal-management-2-reasons-for-planning-meals",
-      "topic": "waec-foods-and-nutrition-4-meal-management",
+      "slug": "waec-reasons-for-planning-meals",
+      "topic": "waec-meal-management",
       "name": "Reasons for planning meals",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-4-meal-management-3-factors-in-planning-meals",
-      "topic": "waec-foods-and-nutrition-4-meal-management",
+      "slug": "waec-factors-in-planning-meals",
+      "topic": "waec-meal-management",
       "name": "Factors in planning meals",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-4-meal-management-4-general-principles-of-meal-planning",
-      "topic": "waec-foods-and-nutrition-4-meal-management",
+      "slug": "waec-general-principles-of-meal-planning",
+      "topic": "waec-meal-management",
       "name": "General principles of meal planning",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-4-meal-management-5-meal-patterns",
-      "topic": "waec-foods-and-nutrition-4-meal-management",
+      "slug": "waec-meal-patterns",
+      "topic": "waec-meal-management",
       "name": "Meal patterns",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-4-meal-management-6-nutritional-needs-for-different-groups-e-g-pregnant-lactating-mo-5a53d60866",
-      "topic": "waec-foods-and-nutrition-4-meal-management",
+      "slug": "waec-nutritional-needs-for-different-groups-e-g-pregnant-lactatin",
+      "topic": "waec-meal-management",
       "name": "Nutritional needs for different groups e.g. pregnant, lactating mothers, infants and children, adolescents, adults and the aged, vegetarians",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-4-meal-management-7-planning-meals-for-people-with-health-conditions-e-g-hiv-aids-in-9b7591aa26",
-      "topic": "waec-foods-and-nutrition-4-meal-management",
-      "name": "Planning meals for people with health conditions e.g. HIV & AIDS, invalids, convalescents, overweight, underweight, hypertension, diabetes etc",
+      "slug": "waec-planning-meals-for-people-in-health-condition-e-g-hiv-aids-i",
+      "topic": "waec-meal-management",
+      "name": "Planning meals for people in health condition e.g. HIV & AIDS, invalids, convalescents, overweight, underweight, hypertension, diabetes etc",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-5-the-kitchen-1-types-of-kitchens-e-g-traditional-modern-institutional",
-      "topic": "waec-foods-and-nutrition-5-the-kitchen",
-      "name": "Types of kitchens, e.g., traditional, modern, institutional",
+      "slug": "waec-the-kitchen-foods-and-nutrition",
+      "topic": "waec-the-kitchen",
+      "name": "The kitchen",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-5-the-kitchen-2-planning-different-types-of-kitchens",
-      "topic": "waec-foods-and-nutrition-5-the-kitchen",
-      "name": "Planning different types of kitchens",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-5-the-kitchen-3-factors-to-consider-when-planning",
-      "topic": "waec-foods-and-nutrition-5-the-kitchen",
-      "name": "Factors to consider when planning",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-5-the-kitchen-4-cleaning-agents-and-abrasives-commercial-and-local",
-      "topic": "waec-foods-and-nutrition-5-the-kitchen",
-      "name": "Cleaning agents and abrasives (commercial and local)",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-6-kitchen-equipment-and-tools-1-classes-and-types-of-equipment",
-      "topic": "waec-foods-and-nutrition-6-kitchen-equipment-and-tools",
-      "name": "Classes and types of equipment",
+      "slug": "waec-sanitation-in-the-kitchen-foods-and-nutrition",
+      "topic": "waec-sanitation-in-the-kitchen",
+      "name": "Sanitation in the kitchen",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-6-kitchen-equipment-and-tools-2-selection-use-care-and-storage-of-large-and-small-eq-e6c6efab84",
-      "topic": "waec-foods-and-nutrition-6-kitchen-equipment-and-tools",
-      "name": "Selection, use, care and storage of large and small equipment, fixtures and appliances",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-7-safety-in-the-kitchen-1-types-of-kitchen-accidents",
-      "topic": "waec-foods-and-nutrition-7-safety-in-the-kitchen",
-      "name": "Types of kitchen accidents",
+      "slug": "waec-kinds-and-classification-5-fats-and-oils-vegetable-fats-and",
+      "topic": "waec-legumes-and-oily-seeds",
+      "name": "Kinds and classification (5) Fats and oils - vegetable fats and oils - animal fats and oils",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-7-safety-in-the-kitchen-2-causes-and-prevention-of-accidents",
-      "topic": "waec-foods-and-nutrition-7-safety-in-the-kitchen",
-      "name": "Causes and prevention of accidents",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-7-safety-in-the-kitchen-3-content-and-use-of-first-aid-box",
-      "topic": "waec-foods-and-nutrition-7-safety-in-the-kitchen",
-      "name": "Content and use of first aid box",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-7-safety-in-the-kitchen-4-simple-first-aid-treatment",
-      "topic": "waec-foods-and-nutrition-7-safety-in-the-kitchen",
-      "name": "Simple first-aid treatment",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-8-sanitation-in-the-kitchen-1-personal-hygiene",
-      "topic": "waec-foods-and-nutrition-8-sanitation-in-the-kitchen",
-      "name": "Personal Hygiene",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-8-sanitation-in-the-kitchen-2-kitchen-hygiene-e-g-general-cleaning-waste-disposal-pe-ad3da9e32f",
-      "topic": "waec-foods-and-nutrition-8-sanitation-in-the-kitchen",
-      "name": "Kitchen hygiene, e.g., general cleaning, waste disposal, pests, and pest control",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-8-sanitation-in-the-kitchen-3-food-hygiene-e-g-handling-of-foods-foodborne-diseases-31ec5addd9",
-      "topic": "waec-foods-and-nutrition-8-sanitation-in-the-kitchen",
-      "name": "Food hygiene, e.g., handling of foods, foodborne diseases, and food sanitation laws",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-9-animal-and-animal-products-1-milk-and-milk-products-e-g-cheese-yoghurt-eggs-meat-p-0a5e0fbb9a",
-      "topic": "waec-foods-and-nutrition-9-animal-and-animal-products",
-      "name": "Milk and milk products e.g., cheese, yoghurt, eggs, meat, poultry, fish etc",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-9-animal-and-animal-products-2-kinds-types-and-structure",
-      "topic": "waec-foods-and-nutrition-9-animal-and-animal-products",
-      "name": "Kinds/types and structure",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-9-animal-and-animal-products-3-selection",
-      "topic": "waec-foods-and-nutrition-9-animal-and-animal-products",
-      "name": "Selection",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-9-animal-and-animal-products-4-storage",
-      "topic": "waec-foods-and-nutrition-9-animal-and-animal-products",
-      "name": "Storage",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-10-cereals-grains-1-kinds-and-forms",
-      "topic": "waec-foods-and-nutrition-10-cereals-grains",
-      "name": "Kinds and forms",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-10-cereals-grains-2-versatility",
-      "topic": "waec-foods-and-nutrition-10-cereals-grains",
-      "name": "versatility",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-10-cereals-grains-3-thickening",
-      "topic": "waec-foods-and-nutrition-10-cereals-grains",
-      "name": "thickening",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-10-cereals-grains-4-cheap-source-of-energy-good-source-of-roughage",
-      "topic": "waec-foods-and-nutrition-10-cereals-grains",
-      "name": "cheap source of energy/good source of roughage",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-11-fruits-and-vegetables-1-classification-of-fruits-classification-of-vegetables",
-      "topic": "waec-foods-and-nutrition-11-fruits-and-vegetables",
-      "name": "Classification of fruits/Classification of vegetables",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-11-fruits-and-vegetables-2-structure-nutritive-value-and-storage",
-      "topic": "waec-foods-and-nutrition-11-fruits-and-vegetables",
-      "name": "Structure, nutritive value and storage",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-11-fruits-and-vegetables-3-important-of-fruits-and-vegetables-in-the-diet-etc",
-      "topic": "waec-foods-and-nutrition-11-fruits-and-vegetables",
-      "name": "Important of fruits and vegetables in the diet, etc",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-12-legumes-and-oily-seeds-1-classification-of-legumes-oily-seeds",
-      "topic": "waec-foods-and-nutrition-12-legumes-and-oily-seeds",
-      "name": "Classification of legumes, oily seeds",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-12-legumes-and-oily-seeds-2-importance-of-legumes-and-oily-seeds-in-the-diet-etc",
-      "topic": "waec-foods-and-nutrition-12-legumes-and-oily-seeds",
-      "name": "Importance of legumes and oily seeds in the diet, etc",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-13-fats-and-oils-1-vegetable-fats-and-oils",
-      "topic": "waec-foods-and-nutrition-13-fats-and-oils",
-      "name": "vegetable fats and oils",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-13-fats-and-oils-2-animal-fats-and-oils",
-      "topic": "waec-foods-and-nutrition-13-fats-and-oils",
-      "name": "animal fats and oils",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-13-fats-and-oils-3-uses-in-diet",
-      "topic": "waec-foods-and-nutrition-13-fats-and-oils",
+      "slug": "waec-uses-in-diet",
+      "topic": "waec-legumes-and-oily-seeds",
       "name": "Uses in diet",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-uses-in-the-body",
+      "topic": "waec-legumes-and-oily-seeds",
+      "name": "Uses in the body",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-13-fats-and-oils-4-uses-in-the-body",
-      "topic": "waec-foods-and-nutrition-13-fats-and-oils",
-      "name": "Uses in the body",
+      "slug": "waec-health-implications-of-fats-and-oils",
+      "topic": "waec-legumes-and-oily-seeds",
+      "name": "Health implications of fats and oils",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-13-fats-and-oils-5-health-implications-of-fats-and-oils",
-      "topic": "waec-foods-and-nutrition-13-fats-and-oils",
-      "name": "Health implications of fats and oils",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-14-starchy-roots-and-plantains-1-types-of-starchy-roots",
-      "topic": "waec-foods-and-nutrition-14-starchy-roots-and-plantains",
+      "slug": "waec-types-of-starchy-roots",
+      "topic": "waec-starchy-roots-and-plantain",
       "name": "Types of starchy roots",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-14-starchy-roots-and-plantains-2-types-of-plantain",
-      "topic": "waec-foods-and-nutrition-14-starchy-roots-and-plantains",
+      "slug": "waec-types-of-plantain",
+      "topic": "waec-starchy-roots-and-plantain",
       "name": "Types of plantain",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-14-starchy-roots-and-plantains-3-types-of-dishes",
-      "topic": "waec-foods-and-nutrition-14-starchy-roots-and-plantains",
+      "slug": "waec-types-of-dishes",
+      "topic": "waec-starchy-roots-and-plantain",
       "name": "Types of dishes",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-15-food-spoilage-1-meaning-of-food-spoilage",
-      "topic": "waec-foods-and-nutrition-15-food-spoilage",
-      "name": "Meaning of food spoilage",
-      "order": 1,
+      "slug": "waec-meaning-of-food-spoilage-1-food-spoilage",
+      "topic": "waec-starchy-roots-and-plantain",
+      "name": "Meaning of food spoilage (1) Food spoilage",
+      "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-15-food-spoilage-2-causes-and-agents-of-food-spoilage",
-      "topic": "waec-foods-and-nutrition-15-food-spoilage",
+      "slug": "waec-causes-and-agents-of-food-spoilage",
+      "topic": "waec-starchy-roots-and-plantain",
       "name": "Causes and agents of food spoilage",
-      "order": 2,
+      "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-16-food-preservation-1-meaning-and-importance-of-preservation",
-      "topic": "waec-foods-and-nutrition-16-food-preservation",
-      "name": "meaning and importance of preservation",
+      "slug": "waec-meaning-and-importance-of-preservation",
+      "topic": "waec-food-preservation",
+      "name": "Meaning and importance of preservation",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-16-food-preservation-2-general-principles-underlying-food-preservation",
-      "topic": "waec-foods-and-nutrition-16-food-preservation",
+      "slug": "waec-general-principles-underlying-food-preservation",
+      "topic": "waec-food-preservation",
       "name": "General principles underlying food preservation",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-16-food-preservation-3-methods-of-food-preservation",
-      "topic": "waec-foods-and-nutrition-16-food-preservation",
+      "slug": "waec-methods-of-food-preservation",
+      "topic": "waec-food-preservation",
       "name": "Methods of food preservation",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-17-food-storage-1-meaning-and-importance-of-food-storage",
-      "topic": "waec-foods-and-nutrition-17-food-storage",
+      "slug": "waec-meaning-and-importance-of-food-storage",
+      "topic": "waec-food-storage",
       "name": "Meaning and importance of food storage",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-17-food-storage-2-storage-of-perishable-and-nonperishable-foods",
-      "topic": "waec-foods-and-nutrition-17-food-storage",
-      "name": "Storage of perishable and nonperishable foods",
+      "slug": "waec-storage-of-perishable-and-non-perishable-foods",
+      "topic": "waec-food-storage",
+      "name": "Storage of perishable and non perishable foods",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-17-food-storage-3-storage-space-and-equipment-e-g-refrigeration-deep-freezer-cupboar-f4997c4f53",
-      "topic": "waec-foods-and-nutrition-17-food-storage",
+      "slug": "waec-storage-space-and-equipment-e-g-refrigeration-deep-freezer-c",
+      "topic": "waec-food-storage",
       "name": "Storage space and equipment e.g. refrigeration, deep freezer, cupboards, shelves, granaries, barns etc",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-18-principles-underlying-cooking-1-explanation-of-the-concept-of-cooking",
-      "topic": "waec-foods-and-nutrition-18-principles-underlying-cooking",
+      "slug": "waec-explanation-of-the-concept-of-cooking",
+      "topic": "waec-principles-underlying-cooking",
       "name": "Explanation of the concept of cooking",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-18-principles-underlying-cooking-2-reasons-for-cooking-food",
-      "topic": "waec-foods-and-nutrition-18-principles-underlying-cooking",
+      "slug": "waec-reasons-for-cooking-food",
+      "topic": "waec-principles-underlying-cooking",
       "name": "Reasons for cooking food",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-19-methods-of-cooking-1-moist-heat-methods-e-g-boiling-stewing-steaming-etc",
-      "topic": "waec-foods-and-nutrition-19-methods-of-cooking",
+      "slug": "waec-moist-heat-methods-e-g-boiling-stewing-steaming-etc",
+      "topic": "waec-methods-of-cooking",
       "name": "Moist heat methods e.g. boiling, stewing, steaming etc",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-19-methods-of-cooking-2-dry-heat-methods-e-g-baking-roasting-grilling-frying-etc",
-      "topic": "waec-foods-and-nutrition-19-methods-of-cooking",
+      "slug": "waec-dry-heat-methods-e-g-baking-roasting-grilling-frying-etc",
+      "topic": "waec-methods-of-cooking",
       "name": "Dry heat methods e.g. baking, roasting, grilling, frying etc",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-19-methods-of-cooking-3-effects-of-heat-on-different-food-commodities-e-g-animal-pro-bd8b19778e",
-      "topic": "waec-foods-and-nutrition-19-methods-of-cooking",
+      "slug": "waec-effects-of-heat-on-different-food-commodities-e-g-animal-pro",
+      "topic": "waec-methods-of-cooking",
       "name": "Effects of heat on different food commodities e.g. animal products, cereals and grains, fats and oil etc",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-20-transfer-of-heat-1-convection-liquid-gases",
-      "topic": "waec-foods-and-nutrition-20-transfer-of-heat",
-      "name": "Convection – liquid, gases",
+      "slug": "waec-methods-of-heat-transfer-and-meaning-convection-liquid-gases",
+      "topic": "waec-transfer-of-heat",
+      "name": "Methods of heat transfer and meaning - Convection - liquid, gases - Radiation - space - conduction - solid metal Explanation of cooking terms (4)Cooking terms",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-20-transfer-of-heat-2-radiation-space",
-      "topic": "waec-foods-and-nutrition-20-transfer-of-heat",
-      "name": "Radiation – space",
+      "slug": "waec-definitions-5-food-additives",
+      "topic": "waec-transfer-of-heat",
+      "name": "Definitions (5) Food additives",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-20-transfer-of-heat-3-conduction-solid-metal",
-      "topic": "waec-foods-and-nutrition-20-transfer-of-heat",
-      "name": "Conduction – solid metal",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-21-cooking-terms-1-explanation-of-cooking-terms",
-      "topic": "waec-foods-and-nutrition-21-cooking-terms",
-      "name": "Explanation of cooking terms",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-22-food-additives-1-definitions",
-      "topic": "waec-foods-and-nutrition-22-food-additives",
-      "name": "Definitions",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-22-food-additives-2-types-of-food-additives",
-      "topic": "waec-foods-and-nutrition-22-food-additives",
+      "slug": "waec-types-of-food-additives",
+      "topic": "waec-transfer-of-heat",
       "name": "Types of food additives",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-22-food-additives-3-functions-of-additives",
-      "topic": "waec-foods-and-nutrition-22-food-additives",
-      "name": "Functions of additives",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-22-food-additives-4-selection-and-use-of-additives",
-      "topic": "waec-foods-and-nutrition-22-food-additives",
-      "name": "Selection and use of additives",
+      "slug": "waec-functions-of-additives",
+      "topic": "waec-transfer-of-heat",
+      "name": "Functions of additives",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-22-food-additives-5-food-adulteration",
-      "topic": "waec-foods-and-nutrition-22-food-additives",
-      "name": "Food adulteration",
+      "slug": "waec-selection-and-use-of-additives",
+      "topic": "waec-transfer-of-heat",
+      "name": "Selection and use of additives",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-1-types-of-flour",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
+      "slug": "waec-food-adulteration",
+      "topic": "waec-transfer-of-heat",
+      "name": "Food adulteration",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-flour",
+      "topic": "waec-flour-cookery-and-confectionery",
       "name": "Types of flour",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-2-ingredients-in-flour",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
+      "slug": "waec-ingredients-in-flour",
+      "topic": "waec-flour-cookery-and-confectionery",
       "name": "Ingredients in flour",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-3-uses-of-flour",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Uses of flour",
+      "slug": "waec-uses-of-flour-flour-fat-sugar-eggs-b-basic-ingredients-in-fl",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Uses of flour - Flour, fat, sugar, eggs (b) Basic ingredients in flour cookery",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-4-flour-fat-sugar-eggs",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Flour, fat, sugar, eggs",
+      "slug": "waec-types-of-raising-agents-i-e-steam-carbon-dioxide-and-air",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Types of raising agents, i.e., steam, carbon dioxide and air",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-5-types-of-raising-agents-i-e-steam-carbon-dioxide-and-air",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Types of raising agents, i.e., steam, carbon dioxide and air",
+      "slug": "waec-sources-boiling-liquid-steam-baking-powder-carbon-dioxide-wh",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Sources:- boiling liquid – steam, baking powder - carbon dioxide whisking - air",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-6-sources-boiling-liquid-steam-baking-powder-carb-946d62581f",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Sources:- boiling liquid – steam, baking powder – carbon dioxide whisking – air",
+      "slug": "waec-types-of-batters-batters",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Types of batters - Batters",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-7-types-of-batters",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Types of batters",
+      "slug": "waec-uses-of-batters",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Uses of batters",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-8-uses-of-batters",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Uses of batters",
+      "slug": "waec-dishes-using-batter-biscuits-classification-doughs-rubbed-in",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Dishes using batter - biscuits - classification - Doughs - rubbed in - creamed - whisked - melted - sponge mixtures - rubbed in (e) Cakes - creamed - whisked - melted - sponge mixtures",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-9-dishes-using-batter",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Dishes using batter",
+      "slug": "waec-types-of-pastries-f-pastries-shortcrust-suet-flaky-etc",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Types of Pastries (f) Pastries Shortcrust, suet, flaky, etc",
       "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-10-biscuits-classification",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "biscuits – classification",
+      "slug": "waec-principles-underlying-pastry-making",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Principles underlying pastry making",
       "order": 10,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-11-rubbed-in",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "rubbed in",
+      "slug": "waec-pastry-dishes-e-g-turn-over-jam-tartlets-cornish-pasties-etc",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Pastry dishes e.g. turn over; jam tartlets, cornish pasties, etc",
       "order": 11,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-12-creamed",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "creamed",
+      "slug": "waec-definition-foods-and-nutrition",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Definition",
       "order": 12,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-13-whisked",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "whisked",
+      "slug": "waec-ways-of-preparing-yeast-mixture",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Ways of preparing yeast mixture",
       "order": 13,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-14-melted",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "melted",
+      "slug": "waec-important-points-in-preparing-yeast-mixture",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Important points in preparing yeast mixture",
       "order": 14,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-15-sponge-mixtures",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "sponge mixtures",
+      "slug": "waec-yeast-dishes-bread-loaves-bread-rolls-doughnut",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Yeast dishes – bread loaves, bread rolls, doughnut",
       "order": 15,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-16-rubbed-in",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "rubbed in",
+      "slug": "waec-types-of-icing-e-g-butter-icing-royal-icing",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Types of icing e.g. butter icing, royal icing",
       "order": 16,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-17-creamed",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "creamed",
+      "slug": "waec-uses-of-icing",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Uses of icing",
       "order": 17,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-18-whisked",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "whisked",
+      "slug": "waec-preparation-of-icing",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Preparation of icing",
       "order": 18,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-19-melted",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "melted",
+      "slug": "waec-using-royal-icing-and-butter-icing",
+      "topic": "waec-flour-cookery-and-confectionery",
+      "name": "Using royal icing and butter icing",
       "order": 19,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-20-sponge-mixtures",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "sponge mixtures",
-      "order": 20,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-21-types-of-pastries-shortcrust-suet-flaky-etc",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Types of Pastries: Shortcrust, suet, flaky, etc",
-      "order": 21,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-22-principles-underlying-pastry-making",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Principles underlying pastry making",
-      "order": 22,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-23-pastry-dishes-e-g-turn-over-jam-tartlets-corni-182ba8b849",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Pastry dishes e.g. turn, over; jam tartlets, cornish pasties, etc",
-      "order": 23,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-24-definition",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Definition",
-      "order": 24,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-25-ways-of-preparing-yeast-mixture",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Ways of preparing yeast mixture",
-      "order": 25,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-26-important-points-in-preparing-yeast-mixture",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Important points in preparing yeast mixture",
-      "order": 26,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-27-yeast-dishes-bread-loaves-bread-rolls-doughnut",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Yeast dishes – bread loaves, bread rolls, doughnut",
-      "order": 27,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-28-types-of-icing-e-g-butter-icing-royal-icing",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Types of icing e.g. butter icing, royal icing",
-      "order": 28,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-29-uses-of-icing",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Uses of icing",
-      "order": 29,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-30-preparation-of-icing",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Preparation of icing",
-      "order": 30,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery-31-using-royal-icing-and-butter-icing",
-      "topic": "waec-foods-and-nutrition-23-flour-cookery-and-confectionery",
-      "name": "Using royal icing and butter icing",
-      "order": 31,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-24-classification-of-beverages-1-coffee-and-tea",
-      "topic": "waec-foods-and-nutrition-24-classification-of-beverages",
-      "name": "coffee and tea",
+      "slug": "waec-non-alcoholic-beverages-coffee-and-tea-cocoa-drink-milk-and",
+      "topic": "waec-classification-of-beverages",
+      "name": "Non-alcoholic beverages - coffee and tea - cocoa drink - milk and egg drinks - fruit juices and fruit drinks - beef tea and lemon grass",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-24-classification-of-beverages-2-cocoa-drink",
-      "topic": "waec-foods-and-nutrition-24-classification-of-beverages",
-      "name": "cocoa drink",
+      "slug": "waec-alcoholic-beer-wine",
+      "topic": "waec-classification-of-beverages",
+      "name": "Alcoholic - beer - wine",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-24-classification-of-beverages-3-milk-and-egg-drinks",
-      "topic": "waec-foods-and-nutrition-24-classification-of-beverages",
-      "name": "milk and egg drinks",
+      "slug": "waec-nutritive-values-etc",
+      "topic": "waec-importance-of-beverages",
+      "name": "- Nutritive values etc",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-tea-coffee-cocoa-etc",
+      "topic": "waec-principles-underlining-preparation-of-beverage",
+      "name": "- Tea, coffee, cocoa etc",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-convenience-foods-vii",
+      "topic": "waec-principles-underlining-preparation-of-beverage",
+      "name": "Types of convenience foods VII",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-selection-and-uses-of-convenience-foods",
+      "topic": "waec-principles-underlining-preparation-of-beverage",
+      "name": "Selection and uses of convenience foods",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-24-classification-of-beverages-4-fruit-juices-and-fruit-drinks",
-      "topic": "waec-foods-and-nutrition-24-classification-of-beverages",
-      "name": "fruit juices and fruit drinks",
+      "slug": "waec-advantages-and-disadvantages-of-using-convenience-foods",
+      "topic": "waec-principles-underlining-preparation-of-beverage",
+      "name": "Advantages and disadvantages of using convenience foods",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-24-classification-of-beverages-5-beef-tea-and-lemon-grass",
-      "topic": "waec-foods-and-nutrition-24-classification-of-beverages",
-      "name": "beef tea and lemon grass",
+      "slug": "waec-preparation-of-dishes-using-convenience-foods",
+      "topic": "waec-principles-underlining-preparation-of-beverage",
+      "name": "Preparation of dishes using convenience foods",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-24-classification-of-beverages-6-beer",
-      "topic": "waec-foods-and-nutrition-24-classification-of-beverages",
-      "name": "beer",
+      "slug": "waec-explanation-viii-rechauff-leftover-foods",
+      "topic": "waec-principles-underlining-preparation-of-beverage",
+      "name": "Explanation VIII. RECHAUFFÉ (LEFTOVER) FOODS",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-24-classification-of-beverages-7-wine",
-      "topic": "waec-foods-and-nutrition-24-classification-of-beverages",
-      "name": "wine",
+      "slug": "waec-importance-of-using-left-over-goods",
+      "topic": "waec-principles-underlining-preparation-of-beverage",
+      "name": "Importance of using left over goods",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-25-importance-of-beverages-1-nutritive-values-etc",
-      "topic": "waec-foods-and-nutrition-25-importance-of-beverages",
-      "name": "Nutritive values etc",
-      "order": 1,
+      "slug": "waec-rules-guidelines-for-using-leftover-foods",
+      "topic": "waec-principles-underlining-preparation-of-beverage",
+      "name": "Rules/guidelines for using leftover foods",
+      "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-26-principles-underlining-the-preparation-of-beverages-1-tea-coffee-cocoa-etc",
-      "topic": "waec-foods-and-nutrition-26-principles-underlining-the-preparation-of-beverages",
-      "name": "Tea, coffee, cocoa etc",
-      "order": 1,
+      "slug": "waec-rechauff-dishes",
+      "topic": "waec-principles-underlining-preparation-of-beverage",
+      "name": "Rechauffé dishes",
+      "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-39-entertainment-1-explanation",
-      "topic": "waec-foods-and-nutrition-39-entertainment",
+      "slug": "waec-explanation-festive-dishes-special-ix",
+      "topic": "waec-principles-underlining-preparation-of-beverage",
+      "name": "Explanation FESTIVE DISHES/SPECIAL IX",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-occasions-for-festive-dishes",
+      "topic": "waec-principles-underlining-preparation-of-beverage",
+      "name": "Occasions for festive dishes",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-festive-dishes-special-occasion-dishes",
+      "topic": "waec-principles-underlining-preparation-of-beverage",
+      "name": "Types of festive dishes/special occasion dishes",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-preparation-of-festive-dishes-special-occasion-dishes",
+      "topic": "waec-principles-underlining-preparation-of-beverage",
+      "name": "Preparation of festive dishes/special occasion dishes",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-explanation",
+      "topic": "waec-entertainment",
       "name": "Explanation",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-39-entertainment-2-types-of-parties",
-      "topic": "waec-foods-and-nutrition-39-entertainment",
+      "slug": "waec-types-of-parties",
+      "topic": "waec-entertainment",
       "name": "Types of parties",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-39-entertainment-3-occasions-for-parties",
-      "topic": "waec-foods-and-nutrition-39-entertainment",
+      "slug": "waec-occasions-for-parties",
+      "topic": "waec-entertainment",
       "name": "Occasions for parties",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-39-entertainment-4-points-to-consider-when-selecting-types-of-parties",
-      "topic": "waec-foods-and-nutrition-39-entertainment",
+      "slug": "waec-points-to-consider-when-selecting-types-of-parties",
+      "topic": "waec-entertainment",
       "name": "Points to consider when selecting types of parties",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-39-entertainment-5-factors-that-contribute-to-the-success-of-parties",
-      "topic": "waec-foods-and-nutrition-39-entertainment",
+      "slug": "waec-factors-that-contribute-to-the-success-of-parties",
+      "topic": "waec-entertainment",
       "name": "Factors that contribute to the success of parties",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-40-table-setting-and-etiquette-1-explanation-e-g-table-setting-cover-etc",
-      "topic": "waec-foods-and-nutrition-40-table-setting-and-etiquette",
+      "slug": "waec-explanation-e-g-table-setting-cover-etc",
+      "topic": "waec-table-setting-and-etiquette",
       "name": "Explanation e.g. table setting, cover, etc",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-40-table-setting-and-etiquette-2-setting-tables-and-trays-for-different-meals-and-occasions",
-      "topic": "waec-foods-and-nutrition-40-table-setting-and-etiquette",
-      "name": "Setting tables and trays for different meals and occasions",
+      "slug": "waec-setting-tables-and-tray-for-different-meal-and-occasion",
+      "topic": "waec-table-setting-and-etiquette",
+      "name": "Setting tables and tray for different meal and occasion",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-40-table-setting-and-etiquette-3-table-appointments",
-      "topic": "waec-foods-and-nutrition-40-table-setting-and-etiquette",
+      "slug": "waec-table-appointments",
+      "topic": "waec-table-setting-and-etiquette",
       "name": "Table appointments",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-40-table-setting-and-etiquette-4-table-manners-etiquette",
-      "topic": "waec-foods-and-nutrition-40-table-setting-and-etiquette",
+      "slug": "waec-table-manners-etiquette",
+      "topic": "waec-table-setting-and-etiquette",
       "name": "Table manners/etiquette",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-41-meal-service-style-1-informal-meal-service",
-      "topic": "waec-foods-and-nutrition-41-meal-service-style",
-      "name": "Informal meal service",
+      "slug": "waec-types-of-meal-service-informal-meal-service-formal-meal-serv",
+      "topic": "waec-meal-service-style",
+      "name": "Types of meal service - Informal meal service - formal meal service",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-41-meal-service-style-2-formal-meal-service",
-      "topic": "waec-foods-and-nutrition-41-meal-service-style",
-      "name": "formal meal service",
+      "slug": "waec-factors-determining-choice-of-service-styles-types-of-party",
+      "topic": "waec-meal-service-style",
+      "name": "Factors determining choice of service styles types of party",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-41-meal-service-style-3-factors-determining-the-choice-of-service-styles-types-of-party",
-      "topic": "waec-foods-and-nutrition-41-meal-service-style",
-      "name": "Factors determining the choice of service styles, types of party",
+      "slug": "waec-foods-for-special-occasions-e-g-birthday-naming-ceremonies-w",
+      "topic": "waec-meal-service-style",
+      "name": "Foods for special occasions e. g. birthday, naming ceremonies, weddings etc",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-41-meal-service-style-4-foods-for-special-occasions-e-g-birthdays-naming-ceremonies-7cb98f7679",
-      "topic": "waec-foods-and-nutrition-41-meal-service-style",
-      "name": "Foods for special occasions, e.g., birthdays, naming ceremonies, weddings etc",
+      "slug": "waec-factors-that-contribute-to-the-success-of-parties-foods-and-nutrition",
+      "topic": "waec-meal-service-style",
+      "name": "Factors that contribute to the success of parties",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-41-meal-service-style-5-factors-that-contribute-to-the-success-of-parties",
-      "topic": "waec-foods-and-nutrition-41-meal-service-style",
-      "name": "Factors that contribute to the success of parties",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-42-research-into-local-dishes-and-drinks-1-importance-of-research-in-foods-and-nutrition",
-      "topic": "waec-foods-and-nutrition-42-research-into-local-dishes-and-drinks",
+      "slug": "waec-importance-of-research-in-foods-and-nutrition",
+      "topic": "waec-research-into-local-dishes-and-drinks",
       "name": "Importance of research in Foods and Nutrition",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-42-research-into-local-dishes-and-drinks-2-collection-of-information-data",
-      "topic": "waec-foods-and-nutrition-42-research-into-local-dishes-and-drinks",
+      "slug": "waec-collection-of-information-data",
+      "topic": "waec-research-into-local-dishes-and-drinks",
       "name": "Collection of information (data)",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-42-research-into-local-dishes-and-drinks-3-research-into-local-dishes",
-      "topic": "waec-foods-and-nutrition-42-research-into-local-dishes-and-drinks",
+      "slug": "waec-research-into-local-dishes",
+      "topic": "waec-research-into-local-dishes-and-drinks",
       "name": "Research into local dishes",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-42-research-into-local-dishes-and-drinks-4-development-of-new-recipes",
-      "topic": "waec-foods-and-nutrition-42-research-into-local-dishes-and-drinks",
+      "slug": "waec-development-of-new-recipes",
+      "topic": "waec-research-into-local-dishes-and-drinks",
       "name": "Development of new recipes",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-42-research-into-local-dishes-and-drinks-5-improving-existing-recipes-based-on-metho-0216c27833",
-      "topic": "waec-foods-and-nutrition-42-research-into-local-dishes-and-drinks",
+      "slug": "waec-improving-existing-recipes-based-on-methods-of-preparation-n",
+      "topic": "waec-research-into-local-dishes-and-drinks",
       "name": "Improving existing recipes based on methods of preparation, Nutritive value, time and energy use and service/ presentation",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-43-experiments-1-using-fruits-e-g-passion-fruit-samia-royal-palm-fruit",
-      "topic": "waec-foods-and-nutrition-43-experiments",
+      "slug": "waec-using-fruits-e-g-passion-fruit-samia-royal-palm-fruit",
+      "topic": "waec-experiments",
       "name": "Using fruits e.g. passion fruit, samia, royal palm fruit",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-43-experiments-2-other-types-of-flour-e-g-root-cereal-and-legumes-etc",
-      "topic": "waec-foods-and-nutrition-43-experiments",
+      "slug": "waec-other-types-of-flour-e-g-root-cereal-and-legumes-etc",
+      "topic": "waec-experiments",
       "name": "Other types of flour e.g. root, cereal and legumes, etc",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-44-consumer-education-1-meaning-and-principles",
-      "topic": "waec-foods-and-nutrition-44-consumer-education",
+      "slug": "waec-meaning-and-principles",
+      "topic": "waec-experiments",
       "name": "Meaning and principles",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-consumer-agents",
+      "topic": "waec-consumer-education",
+      "name": "consumer agents",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-44-consumer-education-2-consumer-agents",
-      "topic": "waec-foods-and-nutrition-44-consumer-education",
-      "name": "consumer agents",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-45-food-budgeting-1-explanation",
-      "topic": "waec-foods-and-nutrition-45-food-budgeting",
+      "slug": "waec-explanation-foods-and-nutrition",
+      "topic": "waec-food-budgeting",
       "name": "Explanation",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-45-food-budgeting-2-factors-to-consider-when-budgeting",
-      "topic": "waec-foods-and-nutrition-45-food-budgeting",
+      "slug": "waec-factors-to-consider-when-budgeting",
+      "topic": "waec-food-budgeting",
       "name": "Factors to consider when budgeting",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-46-food-purchasing-1-guidelines-for-shopping-for-food",
-      "topic": "waec-foods-and-nutrition-46-food-purchasing",
+      "slug": "waec-guidelines-for-shopping-for-food",
+      "topic": "waec-food-purchasing",
       "name": "Guidelines for shopping for food",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-46-food-purchasing-2-guidelines-for-bulk-purchasing",
-      "topic": "waec-foods-and-nutrition-46-food-purchasing",
+      "slug": "waec-guidelines-for-bulk-purchasing",
+      "topic": "waec-food-purchasing",
       "name": "Guidelines for bulk purchasing",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-46-food-purchasing-3-reasons-for-buying-in-bulk",
-      "topic": "waec-foods-and-nutrition-46-food-purchasing",
+      "slug": "waec-reasons-for-buying-in-bulk",
+      "topic": "waec-food-purchasing",
       "name": "Reasons for buying in bulk",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-46-food-purchasing-4-advantages-and-disadvantages-of-bulk-purchasing",
-      "topic": "waec-foods-and-nutrition-46-food-purchasing",
+      "slug": "waec-advantages-and-disadvantages-of-bulk-purchasing",
+      "topic": "waec-food-purchasing",
       "name": "Advantages and disadvantages of bulk purchasing",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise-1-entrepreneur",
-      "topic": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise",
-      "name": "entrepreneur",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise-2-entrepreneurship",
-      "topic": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise",
-      "name": "entrepreneurship",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise-3-enterprise",
-      "topic": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise",
-      "name": "enterprise",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise-4-characteristics-of-an-entrepreneur",
-      "topic": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise",
-      "name": "Characteristics of an entrepreneur",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise-5-advantages-and-disadvantages-of-a-afa79c3b13",
-      "topic": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise",
-      "name": "Advantages and disadvantages of an entrepreneur",
+      "slug": "waec-explanation-of-terms",
+      "topic": "waec-food-purchasing",
+      "name": "Explanation of terms",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise-6-setting-up-a-catering-entrepreneur",
-      "topic": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise",
-      "name": "Setting up a catering entrepreneur",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise-7-some-catering-enterprises",
-      "topic": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise",
-      "name": "Some catering enterprises",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise-8-factors-contributing-to-the-succe-00d6477e62",
-      "topic": "waec-foods-and-nutrition-47-setting-up-and-managing-a-catering-enterprise",
-      "name": "Factors contributing to the success of an enterprise",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-foods-and-nutrition-48-work-ethics-1-explanation-of-work-ethics",
-      "topic": "waec-foods-and-nutrition-48-work-ethics",
-      "name": "Explanation of work ethics",
+      "slug": "waec-entrepreneur-entrepreneurship-enterprise",
+      "topic": "waec-setting-up-and-managing-a",
+      "name": "- entrepreneur - entrepreneurship - enterprise",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-48-work-ethics-2-good-work-ethics",
-      "topic": "waec-foods-and-nutrition-48-work-ethics",
-      "name": "Good work ethics",
+      "slug": "waec-characteristics-of-an-entrepreneur",
+      "topic": "waec-setting-up-and-managing-a",
+      "name": "Characteristics of an entrepreneur",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-49-packaging-1-explanation-of-food-packaging",
-      "topic": "waec-foods-and-nutrition-49-packaging",
+      "slug": "waec-advantages-and-disadvantages-of-an-entrepreneur",
+      "topic": "waec-setting-up-and-managing-a",
+      "name": "Advantages and disadvantages of an entrepreneur",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-setting-up-a-catering-entrepreneur",
+      "topic": "waec-setting-up-and-managing-a",
+      "name": "Setting up a catering entrepreneur",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-some-catering-enterprises",
+      "topic": "waec-setting-up-and-managing-a",
+      "name": "Some catering enterprises",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-factors-contributing-to-the-success-of-an-enterprise",
+      "topic": "waec-setting-up-and-managing-a",
+      "name": "Factors contributing to the success of an enterprise",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-explanation-of-work-ethics",
+      "topic": "waec-setting-up-and-managing-a",
+      "name": "Explanation of work ethics",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-good-work-ethics",
+      "topic": "waec-work-ethics",
+      "name": "Good work ethics",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-explanation-of-food-packaging",
+      "topic": "waec-packaging",
       "name": "Explanation of Food Packaging",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-49-packaging-2-reasons-why-food-is-packaged",
-      "topic": "waec-foods-and-nutrition-49-packaging",
+      "slug": "waec-reasons-why-food-is-packaged",
+      "topic": "waec-packaging",
       "name": "Reasons why food is packaged",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-49-packaging-3-qualities-of-packaging-materials",
-      "topic": "waec-foods-and-nutrition-49-packaging",
+      "slug": "waec-qualities-of-packaging-materials",
+      "topic": "waec-packaging",
       "name": "Qualities of packaging materials",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-foods-and-nutrition-49-packaging-4-types-of-packaging-materials",
-      "topic": "waec-foods-and-nutrition-49-packaging",
+      "slug": "waec-types-of-packaging-materials",
+      "topic": "waec-packaging",
       "name": "Types of packaging materials",
       "order": 4,
       "objectives": []

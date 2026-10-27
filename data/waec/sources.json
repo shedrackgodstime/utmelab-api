@@ -1,0 +1,294 @@
+{
+  "base": "https://waecsyllabus.com",
+  "fetched": "2026-10-27",
+  "subjects": {
+    "agricultural-science": {
+      "name": "Agricultural Science",
+      "page": "https://waecsyllabus.com/agricultural-science/",
+      "pdf": "https://waecsyllabus.com/download/ssce/AGRICULTURAL%20SCIENCE.pdf",
+      "sha256": "1746872b0c4f31479f41fcfdffb86a32a2925ceb8bd7a383033175e708e3d32b",
+      "bytes": 147889,
+      "pages": 29
+    },
+    "animal-husbandry": {
+      "name": "Animal Husbandry (ALT A)",
+      "page": "https://waecsyllabus.com/animal-husbandry/",
+      "pdf": "https://waecsyllabus.com/download/ssce/ANIMAL%20HUSBANDRY%20(ALT%20A).pdf",
+      "sha256": "cc35c1ea93626862ef446a9042136578c7d47c8a06dafbc56024794a47f1d6cf",
+      "bytes": 160207,
+      "pages": 23
+    },
+    "biology": {
+      "name": "Biology",
+      "page": "https://waecsyllabus.com/biology/",
+      "pdf": "https://waecsyllabus.com/files/ssce/BIOLOGY.pdf",
+      "sha256": "8c63b2f3022c771a081fafde289dc7b3248d3977099e5d3d26850447a448217e",
+      "bytes": 263621,
+      "pages": 35
+    },
+    "book-keeping": {
+      "name": "Book Keeping",
+      "page": "https://waecsyllabus.com/book-keeping/",
+      "pdf": "https://waecsyllabus.com/download/ssce/BOOK%20KEEPING.pdf",
+      "sha256": "4bd3651e96f9d55203a7d63be28f41a0bdfff0e00164fef5170d209f004ce41c",
+      "bytes": 95911,
+      "pages": 5
+    },
+    "catering-craft": {
+      "name": "Catering",
+      "page": "https://waecsyllabus.com/catering/",
+      "pdf": "https://waecsyllabus.com/download/ssce/CATERING%20CRAFT%20PRACTICE.pdf",
+      "sha256": "def8b5af57064ebc4b99553e08f612f62a564c0a36cad56db39c9de31a9d52c2",
+      "bytes": 92023,
+      "pages": 4
+    },
+    "chemistry": {
+      "name": "Chemistry",
+      "page": "https://waecsyllabus.com/chemistry/",
+      "pdf": "https://waecsyllabus.com/files/ssce/CHEMISTRY.pdf",
+      "sha256": "6317c3353c6cde06d878bd45d931a1581721230ea4a97c12f742e5a8b47d4b39",
+      "bytes": 231936,
+      "pages": 40
+    },
+    "christian-religious-studies": {
+      "name": "CHRISTIAN RELIGIOUS STUDIES",
+      "page": "https://waecsyllabus.com/christian-religious-studies/",
+      "pdf": "https://waecsyllabus.com/files/ssce/CHRISTIAN%20RELIGIOUS%20STUDIES%20%28NEW%29.pdf",
+      "sha256": "da8b502415dc4e672c0845c2e4347fbd40bfe4ba65a342ea1332604fd63c7b0d",
+      "bytes": 111740,
+      "pages": 6
+    },
+    "civic-education": {
+      "name": "Civic Education",
+      "page": "https://waecsyllabus.com/civic-education/",
+      "pdf": "https://waecsyllabus.com/files/ssce/CIVIC%20EDUCATION.pdf",
+      "sha256": "14e00d35eb42e1165fbab48518eb9535b99d461c9fb0c930d55d8c69c1439361",
+      "bytes": 142707,
+      "pages": 6
+    },
+    "commerce": {
+      "name": "Commerce",
+      "page": "https://waecsyllabus.com/commerce/",
+      "pdf": "https://waecsyllabus.com/download/ssce/COMMERCE.pdf",
+      "sha256": "f6a651654749754cef025f24e605377b4ac447fb446ab566364bd82eb271b6e0",
+      "bytes": 101950,
+      "pages": 14
+    },
+    "computer-studies": {
+      "name": "Computer Science",
+      "page": "https://waecsyllabus.com/computer-science/",
+      "pdf": "https://waecsyllabus.com/download/ssce/COMPUTER%20STUDIES.pdf",
+      "sha256": "1033cb43647a6b95a5753f3dc0539d2720cfadf43a68a3327981656569f6c7f5",
+      "bytes": 174355,
+      "pages": 29
+    },
+    "data-processing": {
+      "name": "Data Processing",
+      "page": "https://waecsyllabus.com/data-processing/",
+      "pdf": "https://waecsyllabus.com/download/ssce/DATA%20PROCESSING.pdf",
+      "sha256": "01cd6bb544fb961c72b10b03cd7f25f27e424e402a69994a0d59b420bbe83007",
+      "bytes": 115343,
+      "pages": 7
+    },
+    "economics": {
+      "name": "Economics",
+      "page": "https://waecsyllabus.com/economics/",
+      "pdf": "https://waecsyllabus.com/files/ssce/ECONOMICS.pdf",
+      "sha256": "5a61a445389b29ad34e1d1280a5689c126557f84e39a9156b66761e5a0af2ef4",
+      "bytes": 105440,
+      "pages": 6
+    },
+    "english-language": {
+      "name": "English Language",
+      "page": "https://waecsyllabus.com/english-language/",
+      "pdf": "https://waecsyllabus.com/files/ssce/ENGLISH%20LANGUAGE.pdf",
+      "sha256": "9445b2d403c50e96e045c24970d472bc0e40a8b1fb8255165cb75189361b3c2c",
+      "bytes": 128696,
+      "pages": 11
+    },
+    "financial-accounting": {
+      "name": "Financial Accounting",
+      "page": "https://waecsyllabus.com/financial-accounting/",
+      "pdf": "https://waecsyllabus.com/download/ssce/FINANCIAL%20ACCOUNTS.pdf",
+      "sha256": "cb7033e41900f3c2de3536bf09e8918d1a0292d614e51c3e98bd3a30b3a55b42",
+      "bytes": 106922,
+      "pages": 5
+    },
+    "foods-and-nutrition": {
+      "name": "Foods and Nutrition",
+      "page": "https://waecsyllabus.com/foods-nutrition/",
+      "pdf": "https://waecsyllabus.com/download/ssce/FOODS%20AND%20NUTRITION.pdf",
+      "sha256": "9013909a48af2bd897da83bf0cec02480df6e95afebbe98143c972ccf81e425e",
+      "bytes": 108641,
+      "pages": 12
+    },
+    "french": {
+      "name": "French",
+      "page": "https://waecsyllabus.com/french/",
+      "pdf": "https://waecsyllabus.com/download/ssce/FRENCH.pdf",
+      "sha256": "c84f893e5c53ac8a731c99120a6da4af850bd60569b5bc2bf56095a7a91f5b6f",
+      "bytes": 131788,
+      "pages": 6
+    },
+    "further-mathematics": {
+      "name": "Further Mathematics",
+      "page": "https://waecsyllabus.com/further-mathematics/",
+      "pdf": "https://waecsyllabus.com/download/ssce/FURTHER%20MATHEMATICS%20OR%20MATHEMATICS%20(ELECTIVE).pdf",
+      "sha256": "d154a2605aefdc37296b7fb0dbb071833807dea70822b75de18890c23e2bc723",
+      "bytes": 151045,
+      "pages": 18
+    },
+    "general-mathematics": {
+      "name": "Mathematics",
+      "page": "https://waecsyllabus.com/mathematics/",
+      "pdf": "https://waecsyllabus.com/files/ssce/GENERAL%20MATHEMATICS%20OR%20MATHEMATICS%20%28CORE%29.pdf",
+      "sha256": "014b415aa6a9ba965dcdd6822e92f9375306183c7fadb28641051d013dcf200e",
+      "bytes": 146998,
+      "pages": 16
+    },
+    "geography": {
+      "name": "Geography",
+      "page": "https://waecsyllabus.com/geography/",
+      "pdf": "https://waecsyllabus.com/download/ssce/GEOGRAPHY.pdf",
+      "sha256": "ac4a9ae85c14ce289f2608e18b66de4040c30033a2ef710a2dc869f9daa1441e",
+      "bytes": 141080,
+      "pages": 12
+    },
+    "government": {
+      "name": "Government",
+      "page": "https://waecsyllabus.com/government/",
+      "pdf": "https://waecsyllabus.com/files/ssce/GOVERNMENT.pdf",
+      "sha256": "b20320803a895f7d504c43bea681df1cacb9fd3982b4127add88cfeaea6bb6bf",
+      "bytes": 102770,
+      "pages": 7
+    },
+    "hausa": {
+      "name": "Hausa",
+      "page": "https://waecsyllabus.com/hausa/",
+      "pdf": "https://waecsyllabus.com/download/ssce/HAUSA.pdf",
+      "sha256": "fecf538fd69c082e61d92f70fe440cc8f9dc870bc6c40267a4da64604e05474a",
+      "bytes": 647665,
+      "pages": 11
+    },
+    "health-education": {
+      "name": "Health Education",
+      "page": "https://waecsyllabus.com/health-education/",
+      "pdf": "https://waecsyllabus.com/download/ssce/HEALTH%20EDUCATION%20OR%20HEALTH%20SCIENCE.pdf",
+      "sha256": "6f3fc48de8402990fc3a45007f95c5281d786faa3237cf362e8a725eafb0e556",
+      "bytes": 156627,
+      "pages": 17
+    },
+    "home-management": {
+      "name": "Home Management",
+      "page": "https://waecsyllabus.com/home-management/",
+      "pdf": "https://waecsyllabus.com/download/ssce/HOME%20MANAGEMENT.pdf",
+      "sha256": "64c66c6bd8b91b1163d8eba7078dd7ce011480c94123cc42878039543289105d",
+      "bytes": 91794,
+      "pages": 10
+    },
+    "igbo": {
+      "name": "Igbo",
+      "page": "https://waecsyllabus.com/igbo/",
+      "pdf": "https://waecsyllabus.com/download/ssce/IGBO.pdf",
+      "sha256": "650841eddd77aac6d644850ce9dd3be411f5b7fb41f306fba7a0a639bf98426e",
+      "bytes": 578594,
+      "pages": 9
+    },
+    "insurance": {
+      "name": "Insurance",
+      "page": "https://waecsyllabus.com/insurance/",
+      "pdf": "https://waecsyllabus.com/download/ssce/INSURANCE.pdf",
+      "sha256": "23d2674f3b946f9260c61b1c340dc08035c1b1ad5830f281648725d93ec82a7f",
+      "bytes": 95570,
+      "pages": 9
+    },
+    "islamic-studies": {
+      "name": "Islamic Studies",
+      "page": "https://waecsyllabus.com/islamic-studies/",
+      "pdf": "https://waecsyllabus.com/download/ssce/ISLAMIC%20RELIGIOUS%20STUDIES.pdf",
+      "sha256": "ba5b735af88c04edb853082b5f581f6b6b55266086c29be853ce58f4066c4119",
+      "bytes": 141219,
+      "pages": 8
+    },
+    "literature-in-english": {
+      "name": "Literature in English",
+      "page": "https://waecsyllabus.com/literature-in-english/",
+      "pdf": "https://waecsyllabus.com/download/ssce/LITERATURE%20IN%20ENGLISH.pdf",
+      "sha256": "5d5e62a06e1f35bbec8a8a8b39817599bc518c0cc5d62b3c4f50be6a3025b6f7",
+      "bytes": 271556,
+      "pages": 14
+    },
+    "marketing": {
+      "name": "Marketing",
+      "page": "https://waecsyllabus.com/marketing/",
+      "pdf": "https://waecsyllabus.com/download/ssce/MARKETING.pdf",
+      "sha256": "48f59d5d87225eda36110bcb5d2e69c20d1d2e8f7bf117b1bf7e30fd671ee0e5",
+      "bytes": 58537,
+      "pages": 5
+    },
+    "music": {
+      "name": "Music",
+      "page": "https://waecsyllabus.com/music/",
+      "pdf": "https://waecsyllabus.com/download/ssce/MUSIC(NEW).pdf",
+      "sha256": "7b42dd093ebac6b2e33bf7268a339cad53ba69eb52ae53e31283883d2bf485bb",
+      "bytes": 201059,
+      "pages": 18
+    },
+    "nigerian-history": {
+      "name": "History",
+      "page": "https://waecsyllabus.com/history/",
+      "pdf": "https://waecsyllabus.com/download/ssce/HISTORY.pdf",
+      "sha256": "35e7ddddd800eb3d6c02888985e32edcda73f65cec9a757559873f5da3982a19",
+      "bytes": 155040,
+      "pages": 18
+    },
+    "office-practice": {
+      "name": "Office Practice",
+      "page": "https://waecsyllabus.com/office-practice/",
+      "pdf": "https://waecsyllabus.com/download/ssce/OFFICE%20PRACTICE.pdf",
+      "sha256": "f80ff4e6993edd401bfe52398b0ed5aa16554315c5e33eab99468a768278d46e",
+      "bytes": 83932,
+      "pages": 4
+    },
+    "physical-education": {
+      "name": "Physical Education",
+      "page": null,
+      "pdf": "https://waecsyllabus.com/download/ssce/PHYSICAL%20EDUCATION.pdf",
+      "sha256": "1f0db64d0634035f5e83e0f5a5de7af613c4911754df3015ba310cea71cc6dfe",
+      "bytes": 128305,
+      "pages": 8
+    },
+    "physics": {
+      "name": "Physics",
+      "page": "https://waecsyllabus.com/physics/",
+      "pdf": "https://waecsyllabus.com/files/ssce/PHYSICS.pdf",
+      "sha256": "07922e7eaf2ae24dece5c45042876f14f4196e81b22472c89574ad8d9e25a3fe",
+      "bytes": 184522,
+      "pages": 24
+    },
+    "technical-drawing": {
+      "name": "Technical Drawing",
+      "page": null,
+      "pdf": "https://waecsyllabus.com/download/ssce/TECHNICAL%20DRAWING.pdf",
+      "sha256": "dccfb79b96768cf76543571aea1f3c7126d870418bc6d413e63b2c190d675595",
+      "bytes": 87738,
+      "pages": 4
+    },
+    "visual-arts": {
+      "name": "Art",
+      "page": "https://waecsyllabus.com/art/",
+      "pdf": "https://waecsyllabus.com/download/ssce/VISUAL%20ART.pdf",
+      "sha256": "c7241c4f157fc96d68b06db40084a7c8202bb2df2a16ad871ea10618e31eb166",
+      "bytes": 141441,
+      "pages": 9
+    },
+    "yoruba": {
+      "name": "Yoruba",
+      "page": "https://waecsyllabus.com/yoruba-waec-syllabus/",
+      "pdf": "https://waecsyllabus.com/download/ssce/YORUBA.pdf",
+      "sha256": "50214bd286598db45aadc893980c95e2aa3d082c1c95f35c08ad49d7c2b2b71c",
+      "bytes": 515259,
+      "pages": 9
+    }
+  }
+}

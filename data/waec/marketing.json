@@ -13,7 +13,7 @@
   ],
   "topics": [
     {
-      "slug": "waec-marketing-1-introduction-to-marketing",
+      "slug": "waec-introduction-to-marketing",
       "subject": "marketing",
       "exam": "WAEC",
       "name": "Introduction to Marketing",
@@ -23,7 +23,7 @@
       "countries": []
     },
     {
-      "slug": "waec-marketing-2-marketing-concepts",
+      "slug": "waec-marketing-concepts",
       "subject": "marketing",
       "exam": "WAEC",
       "name": "Marketing Concepts",
@@ -33,7 +33,7 @@
       "countries": []
     },
     {
-      "slug": "waec-marketing-3-marketing-mix-and-marketing-environment",
+      "slug": "waec-marketing-mix-and-marketing-environment",
       "subject": "marketing",
       "exam": "WAEC",
       "name": "Marketing Mix and Marketing Environment",
@@ -43,7 +43,7 @@
       "countries": []
     },
     {
-      "slug": "waec-marketing-4-products",
+      "slug": "waec-products",
       "subject": "marketing",
       "exam": "WAEC",
       "name": "Products",
@@ -53,141 +53,131 @@
       "countries": []
     },
     {
-      "slug": "waec-marketing-5-markets",
+      "slug": "waec-markets-organizational-behaviour",
       "subject": "marketing",
       "exam": "WAEC",
-      "name": "Markets",
+      "name": "Markets Organizational Behaviour",
       "order": 5,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-marketing-6-consumer-and-organizational-behaviour",
+      "slug": "waec-marketing-planning-and-research",
       "subject": "marketing",
       "exam": "WAEC",
-      "name": "Consumer and Organizational Behaviour",
+      "name": "Marketing Planning and Research",
       "order": 6,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-marketing-7-marketing-planning-and-research",
+      "slug": "waec-pricing",
       "subject": "marketing",
       "exam": "WAEC",
-      "name": "Marketing Planning and Research",
+      "name": "Pricing",
       "order": 7,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-marketing-8-pricing",
+      "slug": "waec-advertising-marketing",
       "subject": "marketing",
       "exam": "WAEC",
-      "name": "Pricing",
+      "name": "Advertising",
       "order": 8,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-marketing-9-advertising",
+      "slug": "waec-sales-promotion",
       "subject": "marketing",
       "exam": "WAEC",
-      "name": "Advertising",
+      "name": "Sales Promotion",
       "order": 9,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-marketing-10-sales-promotion",
+      "slug": "waec-merchandising",
       "subject": "marketing",
       "exam": "WAEC",
-      "name": "Sales Promotion",
+      "name": "Merchandising",
       "order": 10,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-marketing-11-merchandising",
+      "slug": "waec-distribution",
       "subject": "marketing",
       "exam": "WAEC",
-      "name": "Merchandising",
+      "name": "Distribution",
       "order": 11,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-marketing-12-distribution",
+      "slug": "waec-transportation-marketing",
       "subject": "marketing",
       "exam": "WAEC",
-      "name": "Distribution",
+      "name": "Transportation",
       "order": 12,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-marketing-13-transportation",
+      "slug": "waec-warehousing",
       "subject": "marketing",
       "exam": "WAEC",
-      "name": "Transportation",
+      "name": "Warehousing",
       "order": 13,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-marketing-14-warehousing",
+      "slug": "waec-market-unions-and-facilitators",
       "subject": "marketing",
       "exam": "WAEC",
-      "name": "Warehousing",
+      "name": "Market Unions and Facilitators",
       "order": 14,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-marketing-15-market-unions-and-facilitators",
+      "slug": "waec-international-marketing",
       "subject": "marketing",
       "exam": "WAEC",
-      "name": "Market Unions and Facilitators",
+      "name": "International Marketing",
       "order": 15,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-marketing-16-international-marketing",
+      "slug": "waec-ict-in-marketing",
       "subject": "marketing",
       "exam": "WAEC",
-      "name": "International Marketing",
+      "name": "ICT in Marketing",
       "order": 16,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-marketing-17-ict-in-marketing",
-      "subject": "marketing",
-      "exam": "WAEC",
-      "name": "ICT in Marketing",
-      "order": 17,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-marketing-18-entrepreneurship-in-marketing",
+      "slug": "waec-entrepreneurship-in-marketing",
       "subject": "marketing",
       "exam": "WAEC",
       "name": "Entrepreneurship in Marketing",
-      "order": 18,
+      "order": 17,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -195,456 +185,386 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-marketing-1-introduction-to-marketing-1-meaning",
-      "topic": "waec-marketing-1-introduction-to-marketing",
+      "slug": "waec-meaning-marketing",
+      "topic": "waec-introduction-to-marketing",
       "name": "Meaning",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-1-introduction-to-marketing-2-explanation-of-basic-terms-in-marketing-needs-wants-demands-prod-c40a47478b",
-      "topic": "waec-marketing-1-introduction-to-marketing",
-      "name": "Explanation of basic terms in marketing: needs, wants, demands, product, exchange, transactions, and markets",
+      "slug": "waec-explanation-of-basic-terms-in-marketing-needs-wants-demands",
+      "topic": "waec-introduction-to-marketing",
+      "name": "Explanation of basic terms in marketing: needs, wants, demands, product, exchange, transactions, and markets,",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-1-introduction-to-marketing-3-brief-history-of-marketing-in-nigeria",
-      "topic": "waec-marketing-1-introduction-to-marketing",
+      "slug": "waec-brief-history-of-marketing-in-nigeria",
+      "topic": "waec-introduction-to-marketing",
       "name": "Brief history of marketing in Nigeria",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-1-introduction-to-marketing-4-functions-of-marketing",
-      "topic": "waec-marketing-1-introduction-to-marketing",
+      "slug": "waec-functions-of-marketing",
+      "topic": "waec-introduction-to-marketing",
       "name": "Functions of marketing",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-2-marketing-concepts-1-meaning",
-      "topic": "waec-marketing-2-marketing-concepts",
+      "slug": "waec-meaning-4",
+      "topic": "waec-marketing-concepts",
       "name": "Meaning",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-2-marketing-concepts-2-various-marketing-concepts-production-product-selling-marketing-and-soc-8c2d258fa8",
-      "topic": "waec-marketing-2-marketing-concepts",
-      "name": "Various marketing concepts: production, product, selling, marketing and societal marketing",
+      "slug": "waec-various-marketing-concepts-production-product-selling-market",
+      "topic": "waec-marketing-concepts",
+      "name": "Various marketing concepts (production, product, selling, marketing and societal marketing)",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-3-marketing-mix-and-marketing-environment-1-meaning",
-      "topic": "waec-marketing-3-marketing-mix-and-marketing-environment",
+      "slug": "waec-meaning-5",
+      "topic": "waec-marketing-mix-and-marketing-environment",
       "name": "Meaning",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-3-marketing-mix-and-marketing-environment-2-elements-4-ps",
-      "topic": "waec-marketing-3-marketing-mix-and-marketing-environment",
-      "name": "Elements: 4 Ps",
+      "slug": "waec-elements-4-ps",
+      "topic": "waec-marketing-mix-and-marketing-environment",
+      "name": "Elements (4 Ps)",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-3-marketing-mix-and-marketing-environment-3-explain-marketing-environment",
-      "topic": "waec-marketing-3-marketing-mix-and-marketing-environment",
-      "name": "Explain Marketing Environment",
+      "slug": "waec-i-explain-marketing-environment",
+      "topic": "waec-marketing-mix-and-marketing-environment",
+      "name": "i Explain Marketing Environment",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-3-marketing-mix-and-marketing-environment-4-factors-affecting-marketing-environment-political",
-      "topic": "waec-marketing-3-marketing-mix-and-marketing-environment",
-      "name": "Factors affecting marketing environment: political",
+      "slug": "waec-ii-factors-affecting-marketing-environment-political-cultura",
+      "topic": "waec-marketing-mix-and-marketing-environment",
+      "name": "ii Factors affecting marketing environment: - political; - cultural; - religious; - economic; - technological; - social",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-3-marketing-mix-and-marketing-environment-5-factors-affecting-marketing-environment-cultural",
-      "topic": "waec-marketing-3-marketing-mix-and-marketing-environment",
-      "name": "Factors affecting marketing environment: cultural",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-marketing-3-marketing-mix-and-marketing-environment-6-factors-affecting-marketing-environment-religious",
-      "topic": "waec-marketing-3-marketing-mix-and-marketing-environment",
-      "name": "Factors affecting marketing environment: religious",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-marketing-3-marketing-mix-and-marketing-environment-7-factors-affecting-marketing-environment-economic",
-      "topic": "waec-marketing-3-marketing-mix-and-marketing-environment",
-      "name": "Factors affecting marketing environment: economic",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-marketing-3-marketing-mix-and-marketing-environment-8-factors-affecting-marketing-environment-technological",
-      "topic": "waec-marketing-3-marketing-mix-and-marketing-environment",
-      "name": "Factors affecting marketing environment: technological",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-marketing-3-marketing-mix-and-marketing-environment-9-factors-affecting-marketing-environment-social",
-      "topic": "waec-marketing-3-marketing-mix-and-marketing-environment",
-      "name": "Factors affecting marketing environment: social",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-marketing-4-products-1-meaning",
-      "topic": "waec-marketing-4-products",
+      "slug": "waec-meaning-6",
+      "topic": "waec-products",
       "name": "Meaning",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-4-products-2-classification-industrial-goods-consumer-goods-services-primary-and-secondary-pro-53b70d7ef5",
-      "topic": "waec-marketing-4-products",
-      "name": "Classification: industrial goods, consumer goods, services, primary and secondary products, and mineral products: oil and non oil",
+      "slug": "waec-classification-industrial-goods-consumer-goods-services-prim",
+      "topic": "waec-products",
+      "name": "Classification (Industrial goods, consumer goods, services, primary and secondary products and mineral products-oil and non oil",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-4-products-3-distinctions-between-classes-of-products",
-      "topic": "waec-marketing-4-products",
+      "slug": "waec-distinctions-between-classes-of-products",
+      "topic": "waec-products",
       "name": "Distinctions between classes of products",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-4-products-4-product-design",
-      "topic": "waec-marketing-4-products",
-      "name": "Product Design",
+      "slug": "waec-product-design",
+      "topic": "waec-products",
+      "name": "Product Design*",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-5-markets-1-meaning",
-      "topic": "waec-marketing-5-markets",
+      "slug": "waec-meaning-7",
+      "topic": "waec-markets-organizational-behaviour",
       "name": "Meaning",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-5-markets-2-classification-consumer",
-      "topic": "waec-marketing-5-markets",
-      "name": "Classification: consumer",
+      "slug": "waec-classification-consumer-organization-industrial-reseller-and",
+      "topic": "waec-markets-organizational-behaviour",
+      "name": "Classification: - Consumer; - Organization (industrial, reseller and government)",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-5-markets-3-classification-organization-industrial-reseller-and-government",
-      "topic": "waec-marketing-5-markets",
-      "name": "Classification: organization: industrial, reseller and government",
+      "slug": "waec-meaning-6-consumer-and",
+      "topic": "waec-markets-organizational-behaviour",
+      "name": "Meaning; 6. Consumer and",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-6-consumer-and-organizational-behaviour-1-meaning",
-      "topic": "waec-marketing-6-consumer-and-organizational-behaviour",
-      "name": "Meaning",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-marketing-6-consumer-and-organizational-behaviour-2-influencing-factors",
-      "topic": "waec-marketing-6-consumer-and-organizational-behaviour",
+      "slug": "waec-influencing-factors",
+      "topic": "waec-markets-organizational-behaviour",
       "name": "Influencing factors",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-marketing-6-consumer-and-organizational-behaviour-3-decision-process-in-logical-order",
-      "topic": "waec-marketing-6-consumer-and-organizational-behaviour",
-      "name": "Decision process in logical order",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-marketing-7-marketing-planning-and-research-1-meaning-process-and-importance",
-      "topic": "waec-marketing-7-marketing-planning-and-research",
-      "name": "Meaning, process and importance",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-marketing-7-marketing-planning-and-research-2-elements-of-marketing-planning",
-      "topic": "waec-marketing-7-marketing-planning-and-research",
-      "name": "Elements of marketing planning",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-marketing-7-marketing-planning-and-research-3-information-required-for-marketing-planning",
-      "topic": "waec-marketing-7-marketing-planning-and-research",
-      "name": "Information required for marketing planning",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-marketing-7-marketing-planning-and-research-4-reasons-for-marketing-planning-and-research",
-      "topic": "waec-marketing-7-marketing-planning-and-research",
-      "name": "Reasons for marketing planning and research",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-7-marketing-planning-and-research-5-utilization-of-feedback",
-      "topic": "waec-marketing-7-marketing-planning-and-research",
-      "name": "Utilization of feedback",
+      "slug": "waec-decision-process-in-logical-order",
+      "topic": "waec-markets-organizational-behaviour",
+      "name": "Decision process in logical order",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-8-pricing-1-meaning",
-      "topic": "waec-marketing-8-pricing",
+      "slug": "waec-i-meaning-process-and-importance-ii-elements-of-marketing-pl",
+      "topic": "waec-marketing-planning-and-research",
+      "name": "i Meaning, process and importance; ii Elements of marketing planning; iii Information required for marketing planning",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-reasons-for-marketing-planning-and-research",
+      "topic": "waec-marketing-planning-and-research",
+      "name": "Reasons for marketing planning and research",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-utilization-of-feedback",
+      "topic": "waec-marketing-planning-and-research",
+      "name": "Utilization of feedback",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning-8",
+      "topic": "waec-pricing",
       "name": "Meaning",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-8-pricing-2-strategies-haggling-cost-plus-demand-and-competition",
-      "topic": "waec-marketing-8-pricing",
-      "name": "Strategies: haggling, cost-plus, demand and competition",
+      "slug": "waec-i-strategies-haggling-cost-plus-demand-and-competition-ii-ap",
+      "topic": "waec-pricing",
+      "name": "i Strategies (haggling, cost-plus, demand and competition); ii Application of strategies*",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-8-pricing-3-application-of-strategies",
-      "topic": "waec-marketing-8-pricing",
-      "name": "Application of strategies",
+      "slug": "waec-price-determinants",
+      "topic": "waec-pricing",
+      "name": "Price determinants",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-8-pricing-4-price-determinants",
-      "topic": "waec-marketing-8-pricing",
-      "name": "Price determinants",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-marketing-9-advertising-1-definition",
-      "topic": "waec-marketing-9-advertising",
+      "slug": "waec-definition-marketing",
+      "topic": "waec-advertising-marketing",
       "name": "Definition",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-9-advertising-2-functions",
-      "topic": "waec-marketing-9-advertising",
+      "slug": "waec-functions-marketing",
+      "topic": "waec-advertising-marketing",
       "name": "Functions",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-9-advertising-3-media-meaning-types-advantages-and-disadvantages",
-      "topic": "waec-marketing-9-advertising",
-      "name": "Media: meaning, types, advantages and disadvantages",
+      "slug": "waec-media-meaning-types-advantages-and-disadvantages",
+      "topic": "waec-advertising-marketing",
+      "name": "Media - meaning, types, advantages and disadvantages",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-9-advertising-4-production-of-sample-adverts",
-      "topic": "waec-marketing-9-advertising",
-      "name": "Production of sample adverts",
+      "slug": "waec-production-of-sample-adverts",
+      "topic": "waec-advertising-marketing",
+      "name": "Production of sample adverts*",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-10-sales-promotion-1-meaning-and-functions",
-      "topic": "waec-marketing-10-sales-promotion",
+      "slug": "waec-meaning-and-functions",
+      "topic": "waec-sales-promotion",
       "name": "Meaning and Functions",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-10-sales-promotion-2-forms-price-off-coupons-salesmen-competition-loyalty-schemes-premium-offe-cbb95e0dfa",
-      "topic": "waec-marketing-10-sales-promotion",
-      "name": "Forms: price-off, coupons, salesmen competition, loyalty schemes, premium offers, trade-in-allowance, sampling, training schemes, and merchandising incentives",
+      "slug": "waec-forms-price-off-coupons-salesmen-competition-loyalty-schemes",
+      "topic": "waec-sales-promotion",
+      "name": "Forms - price-off, coupons, salesmen competition, loyalty schemes, premium offers, trade-in-allowance, sampling, training schemes, and merchandising incentives",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-11-merchandising-1-meaning",
-      "topic": "waec-marketing-11-merchandising",
+      "slug": "waec-meaning-9",
+      "topic": "waec-merchandising",
       "name": "Meaning",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-11-merchandising-2-elements-packaging-branding-and-labeling",
-      "topic": "waec-marketing-11-merchandising",
-      "name": "Elements: packaging, branding and labeling",
+      "slug": "waec-elements-packaging-branding-and-labeling-c-influencing-facto",
+      "topic": "waec-merchandising",
+      "name": "Elements (packaging, branding and labeling) (C) Influencing factors",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-11-merchandising-3-influencing-factors",
-      "topic": "waec-marketing-11-merchandising",
-      "name": "Influencing factors",
+      "slug": "waec-functions-2",
+      "topic": "waec-merchandising",
+      "name": "Functions",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-11-merchandising-4-functions",
-      "topic": "waec-marketing-11-merchandising",
-      "name": "Functions",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-marketing-12-distribution-1-definition",
-      "topic": "waec-marketing-12-distribution",
+      "slug": "waec-definition-8",
+      "topic": "waec-distribution",
       "name": "Definition",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-12-distribution-2-channels-of-distribution-definition-and-types",
-      "topic": "waec-marketing-12-distribution",
-      "name": "Channels of distribution: definition and types",
+      "slug": "waec-channels-of-distribution-definition-and-types",
+      "topic": "waec-distribution",
+      "name": "Channels of distribution (definition and types)",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-12-distribution-3-factors-influencing-choice-of-distribution-channels",
-      "topic": "waec-marketing-12-distribution",
+      "slug": "waec-factors-influencing-choice-of-distribution-channels",
+      "topic": "waec-distribution",
       "name": "Factors influencing choice of distribution channels",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-12-distribution-4-functions-of-channel-members",
-      "topic": "waec-marketing-12-distribution",
+      "slug": "waec-functions-of-channel-members",
+      "topic": "waec-distribution",
       "name": "Functions of channel members",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-13-transportation-1-meaning-mode-choice-and-importance",
-      "topic": "waec-marketing-13-transportation",
+      "slug": "waec-meaning-mode-choice-and-importance",
+      "topic": "waec-transportation-marketing",
       "name": "Meaning, mode, choice and importance",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-13-transportation-2-documents-used-in-transportation",
-      "topic": "waec-marketing-13-transportation",
+      "slug": "waec-documents-used-in-transportation",
+      "topic": "waec-transportation-marketing",
       "name": "Documents used in transportation",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-13-transportation-3-factors-affecting-choice-of-transportation",
-      "topic": "waec-marketing-13-transportation",
+      "slug": "waec-factors-affecting-choice-of-transportation",
+      "topic": "waec-transportation-marketing",
       "name": "Factors affecting choice of transportation",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-14-warehousing-1-meaning-types-and-functions",
-      "topic": "waec-marketing-14-warehousing",
+      "slug": "waec-meaning-types-and-functions",
+      "topic": "waec-warehousing",
       "name": "Meaning, types and functions",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-14-warehousing-2-activities-in-the-warehouse",
-      "topic": "waec-marketing-14-warehousing",
+      "slug": "waec-activities-in-the-warehouse",
+      "topic": "waec-warehousing",
       "name": "Activities in the warehouse",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-15-market-unions-and-facilitators-1-market-unions-meaning-and-types",
-      "topic": "waec-marketing-15-market-unions-and-facilitators",
-      "name": "Market Unions: meaning and types",
+      "slug": "waec-market-unions-meaning-and-types",
+      "topic": "waec-market-unions-and-facilitators",
+      "name": "Market Unions (Meaning and types)",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-15-market-unions-and-facilitators-2-roles-of-market-unions-in-local-markets",
-      "topic": "waec-marketing-15-market-unions-and-facilitators",
+      "slug": "waec-roles-of-market-unions-in-local-markets",
+      "topic": "waec-market-unions-and-facilitators",
       "name": "Roles of Market Unions in local markets",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-15-market-unions-and-facilitators-3-market-facilitators-meaning-types-and-roles",
-      "topic": "waec-marketing-15-market-unions-and-facilitators",
-      "name": "Market Facilitators: meaning, types and roles",
+      "slug": "waec-market-facilitators-meaning-types-and-roles",
+      "topic": "waec-market-unions-and-facilitators",
+      "name": "Market Facilitators – meaning, types and roles",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-16-international-marketing-1-meaning-importance-reasons-and-methods-of-engaging-in-internation-81a2e20853",
-      "topic": "waec-marketing-16-international-marketing",
-      "name": "Meaning, importance/reasons and methods of engaging in international marketing",
+      "slug": "waec-meaning-importance-reasons-and-methods-of-engaging-in-intern",
+      "topic": "waec-international-marketing",
+      "name": "Meaning, importance/reasons and methods of engaging in international marketing,",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-16-international-marketing-2-influencing-factors",
-      "topic": "waec-marketing-16-international-marketing",
+      "slug": "waec-influencing-factors-marketing",
+      "topic": "waec-international-marketing",
       "name": "Influencing factors",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-16-international-marketing-3-guiding-rules-and-regulations",
-      "topic": "waec-marketing-16-international-marketing",
+      "slug": "waec-guiding-rules-and-regulations",
+      "topic": "waec-international-marketing",
       "name": "Guiding rules and regulations",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-17-ict-in-marketing-1-e-marketing-electronic-marketing-meaning-importance-uses-ethics-and-abuses",
-      "topic": "waec-marketing-17-ict-in-marketing",
-      "name": "E-Marketing (electronic marketing): meaning, importance, uses, ethics and abuses",
+      "slug": "waec-e-marketing-electronic-marketing-meaning-importance-uses-eth",
+      "topic": "waec-ict-in-marketing",
+      "name": "E-Marketing (electronic marketing) – meaning, ,importance, uses, ethics and abuses",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-18-entrepreneurship-in-marketing-1-meaning-of-entrepreneurship-and-entrepreneur",
-      "topic": "waec-marketing-18-entrepreneurship-in-marketing",
+      "slug": "waec-meaning-of-entrepreneurship-and-entrepreneur",
+      "topic": "waec-entrepreneurship-in-marketing",
       "name": "Meaning of entrepreneurship and entrepreneur",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-18-entrepreneurship-in-marketing-2-sources-of-funds",
-      "topic": "waec-marketing-18-entrepreneurship-in-marketing",
+      "slug": "waec-sources-of-funds-marketing",
+      "topic": "waec-entrepreneurship-in-marketing",
       "name": "Sources of funds",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-18-entrepreneurship-in-marketing-3-factors-affecting-location-of-a-market-outlet",
-      "topic": "waec-marketing-18-entrepreneurship-in-marketing",
+      "slug": "waec-factors-affecting-location-of-a-market-outlet",
+      "topic": "waec-entrepreneurship-in-marketing",
       "name": "Factors affecting location of a market outlet",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-18-entrepreneurship-in-marketing-4-management-of-market-outlets-purchase-and-supply-of-goods-and-services",
-      "topic": "waec-marketing-18-entrepreneurship-in-marketing",
-      "name": "Management of market outlets: purchase and supply of goods and services",
+      "slug": "waec-management-of-market-outlets-purchase-and-supply-of-goods-an",
+      "topic": "waec-entrepreneurship-in-marketing",
+      "name": "Management of market outlets – purchase and supply of goods and services",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-18-entrepreneurship-in-marketing-5-selling-and-bargaining-skills",
-      "topic": "waec-marketing-18-entrepreneurship-in-marketing",
+      "slug": "waec-selling-and-bargaining-skills",
+      "topic": "waec-entrepreneurship-in-marketing",
       "name": "Selling and bargaining skills",
       "order": 5,
       "objectives": []

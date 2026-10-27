@@ -13,141 +13,161 @@
   ],
   "topics": [
     {
-      "slug": "waec-visual-arts-1-the-rationale-for-visual-arts",
+      "slug": "waec-general-knowledge-in-art",
       "subject": "visual-arts",
       "exam": "WAEC",
-      "name": "The Rationale for Visual Arts",
+      "name": "General Knowledge in Art",
       "order": 1,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-visual-arts-2-basic-drawing-tools-equipment-and-materials",
+      "slug": "waec-art-of-west-africa",
       "subject": "visual-arts",
       "exam": "WAEC",
-      "name": "Basic Drawing Tools, Equipment and Materials",
+      "name": "Art of West Africa",
       "order": 2,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-visual-arts-3-basic-design-and-composition",
+      "slug": "waec-ancient-traditional-art",
       "subject": "visual-arts",
       "exam": "WAEC",
-      "name": "Basic Design and Composition",
+      "name": "Ancient Traditional Art",
       "order": 3,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-visual-arts-4-printmaking-printing",
+      "slug": "waec-modern-traditional-art",
       "subject": "visual-arts",
       "exam": "WAEC",
-      "name": "Printmaking/Printing",
+      "name": "Modern Traditional Art",
       "order": 4,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-visual-arts-5-lettering",
+      "slug": "waec-contemporary",
       "subject": "visual-arts",
       "exam": "WAEC",
-      "name": "Lettering",
+      "name": "Contemporary",
       "order": 5,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-visual-arts-6-prehistoric-art",
+      "slug": "waec-pre-historic-ancient-egyptian-and-western-art",
       "subject": "visual-arts",
       "exam": "WAEC",
-      "name": "Prehistoric Art",
+      "name": "Pre-historic, Ancient Egyptian and Western Art",
       "order": 6,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-visual-arts-7-ancient-art",
+      "slug": "waec-19th-century-art",
       "subject": "visual-arts",
       "exam": "WAEC",
-      "name": "Ancient Art",
+      "name": "19th Century Art",
       "order": 7,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art",
+      "slug": "waec-renaissance-art",
       "subject": "visual-arts",
       "exam": "WAEC",
-      "name": "Greek, Renaissance, Oriental and Oceanic Art",
+      "name": "Renaissance Art",
       "order": 8,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-visual-arts-9-african-art",
+      "slug": "waec-20th-century-art",
       "subject": "visual-arts",
       "exam": "WAEC",
-      "name": "African Art",
+      "name": "20th Century Art",
       "order": 9,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-visual-arts-10-art-in-national-development",
+      "slug": "waec-graphic-design",
       "subject": "visual-arts",
       "exam": "WAEC",
-      "name": "Art in National Development",
+      "name": "Graphic Design",
       "order": 10,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-visual-arts-11-art-appreciation-and-modern-art",
+      "slug": "waec-textile-design",
       "subject": "visual-arts",
       "exam": "WAEC",
-      "name": "Art Appreciation and Modern Art",
+      "name": "Textile Design",
       "order": 11,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-visual-arts-12-entrepreneurship",
+      "slug": "waec-picture-making",
       "subject": "visual-arts",
       "exam": "WAEC",
-      "name": "Entrepreneurship",
+      "name": "Picture-Making",
       "order": 12,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-visual-arts-13-professional-ethics",
+      "slug": "waec-sculpture",
       "subject": "visual-arts",
       "exam": "WAEC",
-      "name": "Professional Ethics",
+      "name": "Sculpture",
       "order": 13,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-visual-arts-14-museum-and-gallery-studies",
+      "slug": "waec-product-design-modeling-ceramics",
       "subject": "visual-arts",
       "exam": "WAEC",
-      "name": "Museum and Gallery Studies",
+      "name": "Product Design/Modeling Ceramics",
       "order": 14,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-crafts",
+      "subject": "visual-arts",
+      "exam": "WAEC",
+      "name": "Crafts",
+      "order": 15,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-general-note-on-paper-3c",
+      "subject": "visual-arts",
+      "exam": "WAEC",
+      "name": "General Note on Paper 3C",
+      "order": 16,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -155,591 +175,332 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-visual-arts-1-the-rationale-for-visual-arts-1-concept-of-visual-arts-and-general-knowledge-in-art",
-      "topic": "waec-visual-arts-1-the-rationale-for-visual-arts",
-      "name": "Concept of Visual Arts and General Knowledge in Art",
+      "slug": "waec-nature-and-branches-of-art-and-careers-in-art",
+      "topic": "waec-general-knowledge-in-art",
+      "name": "Nature and branches of Art and careers in art",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-1-the-rationale-for-visual-arts-2-scope-and-vocations-of-visual-arts",
-      "topic": "waec-visual-arts-1-the-rationale-for-visual-arts",
-      "name": "Scope and Vocations of Visual Arts",
+      "slug": "waec-visual-awareness-understanding-and-appreciation-of-art-eleme",
+      "topic": "waec-general-knowledge-in-art",
+      "name": "Visual awareness, understanding and appreciation of Art elements, their forms, characteristics and functions e.g. line, colour, space, shape, form, texture, etc",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-1-the-rationale-for-visual-arts-3-the-role-of-art-in-national-development",
-      "topic": "waec-visual-arts-1-the-rationale-for-visual-arts",
-      "name": "The Role of Art in National Development.",
+      "slug": "waec-principles-of-art-creative-application-of-art-and-design-pri",
+      "topic": "waec-general-knowledge-in-art",
+      "name": "Principles of Art – creative application of art and design principles e.g. balance, rhythm, proportion, harmony, emphasis, variety, etc",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-2-basic-drawing-tools-equipment-and-materials-1-definition-techniques-types-and-purposes-of-b124f18541",
-      "topic": "waec-visual-arts-2-basic-drawing-tools-equipment-and-materials",
-      "name": "Definition, techniques, types and purposes of drawing and identification",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-2-basic-drawing-tools-equipment-and-materials-2-exploration-of-tools-equipment-and-materials-63905b3831",
-      "topic": "waec-visual-arts-2-basic-drawing-tools-equipment-and-materials",
-      "name": "Exploration of tools, equipment and materials used in art",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-2-basic-drawing-tools-equipment-and-materials-3-preparation-uses-care-and-maintenance-of-drawing-media",
-      "topic": "waec-visual-arts-2-basic-drawing-tools-equipment-and-materials",
-      "name": "Preparation, uses, care and maintenance of drawing media",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-3-basic-design-and-composition-1-perspective-definition-and-types",
-      "topic": "waec-visual-arts-3-basic-design-and-composition",
-      "name": "Perspective; definition and types",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-3-basic-design-and-composition-2-idea-development-from-natural-and-man-made-objects",
-      "topic": "waec-visual-arts-3-basic-design-and-composition",
-      "name": "Idea development from natural and man-made objects",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-3-basic-design-and-composition-3-drawing-for-communication-analytical-study-object-and-figure-drawing",
-      "topic": "waec-visual-arts-3-basic-design-and-composition",
-      "name": "Drawing for communication; analytical study – object and figure drawing",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-3-basic-design-and-composition-4-design-process-definition",
-      "topic": "waec-visual-arts-3-basic-design-and-composition",
-      "name": "Design process (definition)",
+      "slug": "waec-perspective-meaning-and-type-e-g-aerial-linear-angular-paral",
+      "topic": "waec-general-knowledge-in-art",
+      "name": "Perspective – meaning and type e.g. aerial, linear (angular/parallel) and foreshortening",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-3-basic-design-and-composition-5-product-designing",
-      "topic": "waec-visual-arts-3-basic-design-and-composition",
-      "name": "Product designing",
+      "slug": "waec-the-knowledge-of-production-use-and-care-of-art-craft-tools",
+      "topic": "waec-general-knowledge-in-art",
+      "name": "The knowledge of production, use and care of art/craft tools and materials e.g. brush, pencil, colour, palette, easels, etc",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-3-basic-design-and-composition-6-two-and-three-dimensional-drawing-designing",
-      "topic": "waec-visual-arts-3-basic-design-and-composition",
-      "name": "Two and three-dimensional drawing/designing",
+      "slug": "waec-art-and-craft-terms-e-g-tie-and-dye-biscuit-ware-silhouette",
+      "topic": "waec-general-knowledge-in-art",
+      "name": "Art and craft terms e.g. tie and dye, biscuit ware, silhouette, relief, chiaroscuro, sfumato, aperture, etc",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-3-basic-design-and-composition-7-computer-as-a-tool-in-art-identification-of-parts-and-uses",
-      "topic": "waec-visual-arts-3-basic-design-and-composition",
-      "name": "Computer as a tool in art (identification of parts and uses)",
+      "slug": "waec-the-inter-relationships-of-the-arts-e-g-music-visual-art-dan",
+      "topic": "waec-general-knowledge-in-art",
+      "name": "The inter-relationships of the arts e.g. music, visual art, dance, drama and literary arts",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-3-basic-design-and-composition-8-portfolio-building-importance-and-functions",
-      "topic": "waec-visual-arts-3-basic-design-and-composition",
-      "name": "Portfolio building (importance and functions)",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-3-basic-design-and-composition-9-elements-principles-and-organization-of-design",
-      "topic": "waec-visual-arts-3-basic-design-and-composition",
-      "name": "Elements, principles and organization of design",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-3-basic-design-and-composition-10-perception-definition",
-      "topic": "waec-visual-arts-3-basic-design-and-composition",
-      "name": "Perception (definition)",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-3-basic-design-and-composition-11-colour-definition-the-twelve-point-colour-wheel-sources-of-e502020eb4",
-      "topic": "waec-visual-arts-3-basic-design-and-composition",
-      "name": "Colour (definition), the twelve-point colour wheel, sources of colour, colour terminologies, colour mixing (tints and shades/gradation), colour harmony, colour philosophy, colour psychology, colour relationships, colour perspective etc",
-      "order": 11,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-3-basic-design-and-composition-12-ghanaian-colour-concepts-e-g-association-of-colour-with-objects",
-      "topic": "waec-visual-arts-3-basic-design-and-composition",
-      "name": "Ghanaian colour concepts e.g. association of colour with objects",
-      "order": 12,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-3-basic-design-and-composition-13-colour-symbolism",
-      "topic": "waec-visual-arts-3-basic-design-and-composition",
-      "name": "Colour symbolism",
-      "order": 13,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-4-printmaking-printing-1-definitions",
-      "topic": "waec-visual-arts-4-printmaking-printing",
-      "name": "Definitions",
+      "slug": "waec-knowledge-of-traditional-art-of-west-africa-the-basic-concep",
+      "topic": "waec-art-of-west-africa",
+      "name": "Knowledge of traditional Art of West Africa, the basic concepts (e.g. animism, fetishism and mythology): art forms, geographical location, characteristics, underlying beliefs and the sacred and secular functions of art. A general knowledge of contemporary artists and art educator, their works, style, media, materials and contribution to the development of art",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-4-printmaking-printing-2-identification-of-tools-materials-and-equipment",
-      "topic": "waec-visual-arts-4-printmaking-printing",
-      "name": "Identification of tools, materials and equipment",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-4-printmaking-printing-3-the-basic-printing-processes-direct-and-indirect-e-g-relief-printin-0f8bc39837",
-      "topic": "waec-visual-arts-4-printmaking-printing",
-      "name": "The basic printing processes – direct and indirect, e.g., relief printing, intaglio, lithography, serigraphy and photographic screen printing etc. Print from natural and artificial surfaces",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-4-printmaking-printing-4-printing-as-a-means-of-communication",
-      "topic": "waec-visual-arts-4-printmaking-printing",
-      "name": "Printing as a means of communication",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-5-lettering-1-definitions",
-      "topic": "waec-visual-arts-5-lettering",
-      "name": "Definitions",
+      "slug": "waec-cameroon-bamileke-dahomey-now-benin-republic-fon-gambia-woll",
+      "topic": "waec-ancient-traditional-art",
+      "name": "Cameroon - Bamileke Dahomey (Now Benin Republic) - Fon Gambia - Wollof, Mandinka, Jola Ghana (Formerly Gold Coast) - Ashanti, Fante, Ewe, Frafra Guinea - Kissi Cote d’Ivoire (Ivory Coast) - Senufo, Baule Liberia - Dan and Ngere Mali - Dogon, Bambara Sierra Leone - Mende, Sherbro Upper Volta (Now Burkina Faso) - Mossi, Bobo, Kurumba Nigeria - Benin, Ife, Nok, Igbo-Ukwu, Esie, Owo, etc",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-5-lettering-2-types-of-lettering-e-g-block-lettering-construction-of-block-letters-calligrap-b466320bc9",
-      "topic": "waec-visual-arts-5-lettering",
-      "name": "Types of lettering, e.g., block lettering- construction of block letters, calligraphy, upper and lower case letters, parts of letters etc",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-5-lettering-3-gothic-lettering-sans-serif-characteristics-functions-and-importance",
-      "topic": "waec-visual-arts-5-lettering",
-      "name": "Gothic lettering (sans serif); characteristics, functions and importance",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-5-lettering-4-roman-lettering-serifs-characteristics-significance-and-functions",
-      "topic": "waec-visual-arts-5-lettering",
-      "name": "Roman lettering (serifs); characteristics, significance and functions",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-6-prehistoric-art-1-paleolithic",
-      "topic": "waec-visual-arts-6-prehistoric-art",
-      "name": "Paleolithic",
+      "slug": "waec-oshogbo-art-ashanti-and-ewe-kente-modern-benin-art-winneba-p",
+      "topic": "waec-modern-traditional-art",
+      "name": "Oshogbo art, Ashanti and Ewe Kente, Modern Benin art, Winneba pottery, Abuja pottery, Ntoso adinkra, Bida brass works, calabash carving, Enyiresi basketry, Mbari mud sculpture, weaving, leatherwork, wall decoration, indigenous Decorative Motifs",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-6-prehistoric-art-2-mesolithic",
-      "topic": "waec-visual-arts-6-prehistoric-art",
-      "name": "Mesolithic",
+      "slug": "waec-art-institutions-art-schools-art-galleries-arts-centres-muse",
+      "topic": "waec-contemporary",
+      "name": "Art institutions (art schools, art galleries, arts centres, museums). Various departments responsible for art and culture, Art organizations, e.g INSEA (International Society for Education through Art), NSIAD (Nigeria Society of Industrial Artists and Designers), Ghana Artists Association, Ghana Craftsmen Association, Ghana Arts Council, GAT (Gambia Art Teachers Association), NAAC (National Association of Artists and Craftsmen) SNA (Society of Nigerian Artists), NSEA (Nigerian Society of Education through Art), Ona Art Movement of Artists, Ulli Art Movement, The Eye Society. Cultural festivals (their artistic significance e.g. costumes, symbols, objects, masks, body decorations, wall decorations, etc)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-outstanding-contemporary-west-african-artists-their-training",
+      "topic": "waec-contemporary",
+      "name": "Outstanding contemporary West African Artists: their training, style, achievements and contributions to the development of art",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-6-prehistoric-art-3-neolithic",
-      "topic": "waec-visual-arts-6-prehistoric-art",
-      "name": "Neolithic",
+      "slug": "waec-pre-historic-earlyman-s-art-20-000-2000bc-paleolithic-mesoli",
+      "topic": "waec-pre-historic-ancient-egyptian-and-western-art",
+      "name": "Pre-historic (Earlyman’s Art 20,000 – 2000BC) (Paleolithic, Mesolithic and Neolithic stone Ages) beliefs, materials, characteristics and functions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-ancient-egyptian-art-11-000-7-000-bc-old-middle-and-new-king",
+      "topic": "waec-pre-historic-ancient-egyptian-and-western-art",
+      "name": "Ancient Egyptian art 11,000 – 7,000 BC (Old, Middle and New Kingdoms) beliefs, styles and functions",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-greek-art-periods-and-charctreristics",
+      "topic": "waec-pre-historic-ancient-egyptian-and-western-art",
+      "name": "Greek Art - Periods and charctreristics",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-6-prehistoric-art-4-beginnings-location-of-art-and-development-through-the-ages-e-g-cave-art",
-      "topic": "waec-visual-arts-6-prehistoric-art",
-      "name": "Beginnings, location of art and development through the ages, e.g., cave art.",
+      "slug": "waec-medieval-art-features-media-and-characteristics",
+      "topic": "waec-pre-historic-ancient-egyptian-and-western-art",
+      "name": "Medieval Art – Features, media and characteristics",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-6-prehistoric-art-5-use-of-prehistoric-art-in-promoting-aspects-of-living-e-g-hunting-throug-5fc6b7efe0",
-      "topic": "waec-visual-arts-6-prehistoric-art",
-      "name": "Use of prehistoric art in promoting aspects of living. E.g., hunting through sympathetic magic.",
+      "slug": "waec-impressionism-artists-paul-cezanne-claude-monet-edouard-mane",
+      "topic": "waec-19th-century-art",
+      "name": "Impressionism - Artists - Paul Cezanne, Claude Monet, Edouard Manet, Georges Seurat",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-post-impressionism-late-19-century-artists-vincent-van-gogh",
+      "topic": "waec-19th-century-art",
+      "name": "Post Impressionism (late 19 century)- Artists - Vincent van Gogh, Paul Gauguin etc",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-early-low-and-high-renaissance-art-artists-giotto-donatello",
+      "topic": "waec-renaissance-art",
+      "name": "Early, Low and High Renaissance Art – Artists: Giotto, Donatello, Masaccio, etc. Medieval Art: Features (characteristics). Greek Art: Periods (Archaic, Classical and Hellenistic), characteristics and artists",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-cubism-influence-of-african-art-and-artists-pablo-picasso-ge",
+      "topic": "waec-20th-century-art",
+      "name": "Cubism: Influence of African Art and Artists - Pablo Picasso, George Braque. This paper will seek to test candidates’ ability to observe, analyse and accurately depict natural and man-made objects. It will also test their ability to represent the structure and forms of the human figure. The paper has three alternatives",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-drawing-from-objects",
+      "topic": "waec-20th-century-art",
+      "name": "Drawing from Objects",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-drawing-from-nature",
+      "topic": "waec-20th-century-art",
+      "name": "Drawing from Nature",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-drawing-from-life-works-can-be-rendered-in-pencil-pastel-cha",
+      "topic": "waec-20th-century-art",
+      "name": "Drawing from Life. Works can be rendered in pencil, pastel, charcoal, pen and ink or poster/water colour. Candidates should attempt one alternative only. All alternatives carry equal marks",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-drawing-from-objects-the-aim-of-this-alternative-is-to-test",
+      "topic": "waec-20th-century-art",
+      "name": "Drawing from Objects The aim of this alternative is to test candidates’ ability to observe and interpret a group of arranged objects as a total composition. It will require a drawing of a group of man-made objects. The work may be carried out in relation to the surroundings or the part of the room in which the objects are placed. The drawing may include objects such as old radio sets, parts of cars, bicycles, machines, bottles, etc",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-6-prehistoric-art-6-creative-desires-of-the-caveman-reasons-and-purposes-of-hunting",
-      "topic": "waec-visual-arts-6-prehistoric-art",
-      "name": "Creative desires of the caveman (reasons and purposes of hunting).",
+      "slug": "waec-drawing-from-nature-the-purpose-of-this-alternative-is-to-ge",
+      "topic": "waec-20th-century-art",
+      "name": "Drawing from Nature The purpose of this alternative is to get candidates to make a study of natural objects to bring out the beauty of their forms and/or the nature of their growth. This may require the study of a branch which may include flowers, foliage, fruits and vegetables. It may also be the study of rocks, bones, insects and birds, shells and other forms including fish, crustacean, skeleton etc",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-6-prehistoric-art-7-techniques-tools-and-materials-used-by-the-caveman",
-      "topic": "waec-visual-arts-6-prehistoric-art",
-      "name": "Techniques, tools and materials used by the caveman",
+      "slug": "waec-drawing-from-life-the-aim-of-this-alternative-is-to-test-can",
+      "topic": "waec-20th-century-art",
+      "name": "Drawing from Life The aim of this alternative is to test candidates’ ability to observe and depict accurately, the structure and form of a living person. The model (male or female) is to be posed in an attitude which will be described. The figure must be drawn as may be instructed. This Part contains six questions, two each on graphic design, textile design and picture making and candidates are to attempt one question only. It seeks to test candidates’ ability to visualize ideas and situations, sense of critical observation, originality and imagination in communicating personal vision in 2-Dimensional art forms",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-6-prehistoric-art-8-terms-associated-with-cave-art",
-      "topic": "waec-visual-arts-6-prehistoric-art",
-      "name": "Terms associated with cave art.",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-7-ancient-art-1-purpose-eternity",
-      "topic": "waec-visual-arts-7-ancient-art",
-      "name": "Purpose (eternity).",
+      "slug": "waec-questions-in-graphic-design-will-test-candidates-sense-of-de",
+      "topic": "waec-graphic-design",
+      "name": "Questions in graphic design will test candidates’ sense of design, organizational ability and technical proficiency in the execution of the under-listed areas",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-7-ancient-art-2-characteristics-and-conventions-or-canons-of-art",
-      "topic": "waec-visual-arts-7-ancient-art",
-      "name": "Characteristics and conventions or canons of art.",
+      "slug": "waec-lettering-and-poster-design-this-includes-the-design-and-lay",
+      "topic": "waec-graphic-design",
+      "name": "Lettering and Poster Design. This includes: the design and layout of a brief notice requiring formal lettering, which may be in Roman, Gothic or any other formalized characters; creation of pictorial posters with suitable lettering; lettering and layout appropriate for purposes such as greeting cards, formal invitations and book jackets, logo types, emblems, symbols, labels, wall hangings etc",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-7-ancient-art-3-relevance-and-influence-of-egyptian-art-on-other-cultures",
-      "topic": "waec-visual-arts-7-ancient-art",
-      "name": "Relevance and influence of Egyptian art on other cultures.",
+      "slug": "waec-book-illustration-this-includes-story-and-text-illustrations",
+      "topic": "waec-graphic-design",
+      "name": "Book Illustration – This includes story and text illustrations in books, magazines and newspapers",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art-1-greek-art-contributions-to-the-development-of-a51ceb79a6",
-      "topic": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art",
-      "name": "Greek art – contributions to the development of art during the Archaic, Classical and Hellenistic periods.",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art-2-renaissance-art-meaning-period-of-rebirth-origin-etc",
-      "topic": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art",
-      "name": "Renaissance art – (meaning, period of rebirth) origin etc.",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art-3-major-contributions-artists-of-the-period-and-de1a9eabc0",
-      "topic": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art",
-      "name": "Major contributions: artists of the period and achievements",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art-4-art-forms-and-styles",
-      "topic": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art",
-      "name": "Art forms and styles.",
+      "slug": "waec-printmaking-this-includes-linocut-woodcut-yam-print-stencili",
+      "topic": "waec-graphic-design",
+      "name": "Printmaking – This includes linocut, woodcut, yam print, stenciling, screen printing and others",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art-5-relevance-of-renaissance-art-to-mankind",
-      "topic": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art",
-      "name": "Relevance of Renaissance art to mankind.",
+      "slug": "waec-package-design-e-g-wrappers-cereal-packages-and-record-cd-ja",
+      "topic": "waec-graphic-design",
+      "name": "Package Design – e.g. wrappers, cereal packages and record (CD) jackets etc",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art-6-oriental-art-beliefs-art-forms-functions-and-1ca6a3c728",
-      "topic": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art",
-      "name": "Oriental art – beliefs, art forms, functions and influences on the following; Indian art, Chinese art and Japanese art.",
+      "slug": "waec-computer-graphics-designing-any-of-i-iv-with-the-use-of-comp",
+      "topic": "waec-graphic-design",
+      "name": "Computer Graphics – Designing any of (i – iv) with the use of computer software e.g. CorelDraw, Adobe Photoshop etc",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art-7-oceanic-art-beliefs-art-forms-and-functions-o-6dd6ef6de6",
-      "topic": "waec-visual-arts-8-greek-renaissance-oriental-and-oceanic-art",
-      "name": "Oceanic art – beliefs, art forms and functions of Polynesian art and Melanesian art.",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-9-african-art-1-influence-of-religious-beliefs-animism-magic-myth-rituals-etc",
-      "topic": "waec-visual-arts-9-african-art",
-      "name": "Influence of religious beliefs – animism, magic, myth, rituals etc.",
+      "slug": "waec-designing-a-piece-of-material-such-as-cotton-or-silk-dyed-in",
+      "topic": "waec-textile-design",
+      "name": "Designing a piece of material such as cotton, or silk, dyed in a pattern as in batik, tie and dye or printed as in block or screen printing. The piece should be at least two metres in length and unsewn. This section will also involve the following",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-9-african-art-2-types-of-art-forms-and-functions",
-      "topic": "waec-visual-arts-9-african-art",
-      "name": "Types of art forms and functions.",
+      "slug": "waec-appliqu-shaped-fabric-pieces-sewn-on-a-foundation-fabric-to",
+      "topic": "waec-textile-design",
+      "name": "Appliqué – shaped fabric pieces sewn on a foundation fabric to form a Design or pattern",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-9-african-art-3-concept-of-art-in-africa-functionality",
-      "topic": "waec-visual-arts-9-african-art",
-      "name": "Concept of art in Africa (functionality).",
+      "slug": "waec-tapestry-a-piece-of-fabric-with-a-woven-pattern-or-picture-u",
+      "topic": "waec-textile-design",
+      "name": "Tapestry – a piece of fabric with a woven pattern or picture used as wall hanging, upholstery, etc",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-9-african-art-4-types-visual-performing-and-verbal",
-      "topic": "waec-visual-arts-9-african-art",
-      "name": "Types – visual, performing and verbal.",
+      "slug": "waec-questions-on-picture-making-are-meant-to-test-candidates-cre",
+      "topic": "waec-picture-making",
+      "name": "Questions on picture-making are meant to test candidates’ creative sense, ability and technical proficiency in the execution of the under-listed areas",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-painting-creating-illustrative-composition-of-ideas-themes-f",
+      "topic": "waec-picture-making",
+      "name": "Painting – Creating illustrative composition of ideas (themes) from everyday life or imagination, using suitable medium. This shall include Mural",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-photography-the-art-of-producing-pictures-with-camera-the-pu",
+      "topic": "waec-picture-making",
+      "name": "Photography – the art of producing pictures with camera. The purpose of this aspect is for candidates to be able to demonstrate basic knowledge and creative skill in shooting and printing of pictures from a variety of subjects such as: Portraits - human compositions Landscape - rocks, hills, anthills, buildings, street scenes, etc. Seascape - beach scenes, streams, waterfall, dams etc. Nature - plants, leaves, flower foliage, twigs, fruits, etc. Pets - cats, dogs, birds etc. Experimental photography with simple forms of photo tricks e.g. photo grams and image distortion in printing etc. is encouraged",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mosaic-making-picture-with-small-pieces-of-regular-shaped-co",
+      "topic": "waec-picture-making",
+      "name": "Mosaic – making picture with small pieces of regular shaped coloured materials e.g. glass, paper or tile stuck onto a surface",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-9-african-art-5-main-characteristics-of-indigenous-african-art-forms",
-      "topic": "waec-visual-arts-9-african-art",
-      "name": "Main characteristics of indigenous African art forms.",
+      "slug": "waec-collage-making-pictures-by-synthesizing-a-variety-of-irregul",
+      "topic": "waec-picture-making",
+      "name": "Collage – making pictures by synthesizing a variety of irregular shaped materials like cloth, pieces of paper and other objects onto a surface. This part is aimed at evaluating candidates’ sense of originality and imagination in communicating personal ideas and vision in 3-Dimensaional art forms. Candidates may use clay, papier-mâché, wood/plywood, cement, fiber-glass, Plaster-of-Paris, paper (including embossed/texturized card-board, chip-board and straw-board) etc",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-9-african-art-6-arts-of-the-major-ethnic-groups-of-west-africa",
-      "topic": "waec-visual-arts-9-african-art",
-      "name": "Arts of the major ethnic groups of West Africa.",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-9-african-art-7-types-of-contemporary-arts-i-e-visual-performing-and-verbal",
-      "topic": "waec-visual-arts-9-african-art",
-      "name": "Types of contemporary arts, i.e., visual, performing and verbal.",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-9-african-art-8-indigenous-and-contemporary-arts",
-      "topic": "waec-visual-arts-9-african-art",
-      "name": "Indigenous and contemporary arts.",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-9-african-art-9-uses-and-relevance-of-indigenous-and-contemporary-current-african-arts",
-      "topic": "waec-visual-arts-9-african-art",
-      "name": "Uses and relevance of indigenous and contemporary/current African arts.",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-9-african-art-10-religion-education-trade-and-politics-as-agents-of-change-in-art",
-      "topic": "waec-visual-arts-9-african-art",
-      "name": "Religion, education, trade and politics as agents of change in art.",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-10-art-in-national-development-1-indigenous-art-forms-and-artists-identification-of-ghanaian-0be291fc6b",
-      "topic": "waec-visual-arts-10-art-in-national-development",
-      "name": "Indigenous art forms and artists – identification of Ghanaian art forms, e.g., Adinkra etc.",
+      "slug": "waec-this-may-be-rendered-in-clay-metal-wood-papier-m-ch-cement-e",
+      "topic": "waec-sculpture",
+      "name": "This may be rendered in clay, metal, wood, papier-mâché, cement, etc. All works rendered in clay must be fired",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-10-art-in-national-development-2-contemporary-current-ghanaian-art-forms-and-artists",
-      "topic": "waec-visual-arts-10-art-in-national-development",
-      "name": "Contemporary/current Ghanaian Art forms and artists.",
+      "slug": "waec-designing-and-producing-models-of-industrial-products-such-a",
+      "topic": "waec-product-design-modeling-ceramics",
+      "name": "Designing and producing models of industrial products, such as automobiles, phones, bottles, cosmetics, etc. Ceramic wares such as jugs, flower vase, bowl, etc which a candidate has either moulded, hand-built or thrown on the wheel or any other object such as a toy animal or figure. Clay works must be fired",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-this-shall-include",
+      "topic": "waec-crafts",
+      "name": "This shall include",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-basketry-the-making-of-mats-chair-hat-stool-bag-macram-or-ot",
+      "topic": "waec-crafts",
+      "name": "Basketry: the making of mats, chair, hat, stool, bag, macramé or other useful objects designed and woven or plaited in cane, raffia, etc",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-10-art-in-national-development-3-form-symbolism-and-functions-of-ghanaian-arts",
-      "topic": "waec-visual-arts-10-art-in-national-development",
-      "name": "Form, symbolism and functions of Ghanaian arts.",
+      "slug": "waec-jewellery-the-design-and-construction-of-ornaments-with-meta",
+      "topic": "waec-crafts",
+      "name": "Jewellery: the design and construction of ornaments with metals, beads, plastic, shells, seeds, etc",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-10-art-in-national-development-4-art-and-tourism-roles-and-contributions-of-art-in-the-devel-e000dc0917",
-      "topic": "waec-visual-arts-10-art-in-national-development",
-      "name": "Art and Tourism: Roles and contributions of art in the development of tourism.",
+      "slug": "waec-calabash-decoration-designing-and-decorating-calabash-using",
+      "topic": "waec-crafts",
+      "name": "Calabash Decoration: Designing and decorating calabash using various method",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-visual-arts-11-art-appreciation-and-modern-art-1-concepts-of-appreciation",
-      "topic": "waec-visual-arts-11-art-appreciation-and-modern-art",
-      "name": "Concepts of appreciation.",
+      "slug": "waec-the-project-work-in-paper-3c-3-dimensional-design-should-be",
+      "topic": "waec-general-note-on-paper-3c",
+      "name": "The project work in Paper 3C (3-Dimensional design) should be executed within 6 months of the examination year. Notes, diagrams and working drawings must be submitted along with the finished projects. These constitute 10% of the total marks obtainable",
       "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-11-art-appreciation-and-modern-art-2-procedures-in-art-appreciation-identification-inventory-4fac1080f6",
-      "topic": "waec-visual-arts-11-art-appreciation-and-modern-art",
-      "name": "Procedures in art appreciation – identification, inventory, technical qualities and interpretation.",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-11-art-appreciation-and-modern-art-3-creativity-definition-and-relevance-the-creative-proces-34334ac21a",
-      "topic": "waec-visual-arts-11-art-appreciation-and-modern-art",
-      "name": "Creativity – definition and relevance, the creative process, and qualities of a creative person.",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-11-art-appreciation-and-modern-art-4-aesthetics-criticism-and-judgment-definitions-and-relevance",
-      "topic": "waec-visual-arts-11-art-appreciation-and-modern-art",
-      "name": "Aesthetics, criticism and judgment – definitions and relevance.",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-11-art-appreciation-and-modern-art-5-modern-art-philosophy-style-artists-and-impact",
-      "topic": "waec-visual-arts-11-art-appreciation-and-modern-art",
-      "name": "Modern art – philosophy, style, artists and impact.",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-11-art-appreciation-and-modern-art-6-cubism",
-      "topic": "waec-visual-arts-11-art-appreciation-and-modern-art",
-      "name": "Cubism.",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-11-art-appreciation-and-modern-art-7-impressionism",
-      "topic": "waec-visual-arts-11-art-appreciation-and-modern-art",
-      "name": "Impressionism.",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-11-art-appreciation-and-modern-art-8-post-impressionism",
-      "topic": "waec-visual-arts-11-art-appreciation-and-modern-art",
-      "name": "Post impressionism.",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-11-art-appreciation-and-modern-art-9-neo-impressionism",
-      "topic": "waec-visual-arts-11-art-appreciation-and-modern-art",
-      "name": "Neo impressionism.",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-11-art-appreciation-and-modern-art-10-fauvism",
-      "topic": "waec-visual-arts-11-art-appreciation-and-modern-art",
-      "name": "Fauvism.",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-11-art-appreciation-and-modern-art-11-expressionism",
-      "topic": "waec-visual-arts-11-art-appreciation-and-modern-art",
-      "name": "Expressionism.",
-      "order": 11,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-11-art-appreciation-and-modern-art-12-surrealism-etc",
-      "topic": "waec-visual-arts-11-art-appreciation-and-modern-art",
-      "name": "Surrealism etc.",
-      "order": 12,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-12-entrepreneurship-1-enterprises-in-visual-arts",
-      "topic": "waec-visual-arts-12-entrepreneurship",
-      "name": "Enterprises in visual arts.",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-12-entrepreneurship-2-setting-up-an-enterprise-factors-to-consider-e-g-where-to-get-financia-88ce23728f",
-      "topic": "waec-visual-arts-12-entrepreneurship",
-      "name": "Setting up an enterprise – factors to consider, e.g., where to get financial and technical assistance.",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-12-entrepreneurship-3-managing-an-enterprise-functions-of-a-manager-the-importance-of-good-c-1f740eed27",
-      "topic": "waec-visual-arts-12-entrepreneurship",
-      "name": "Managing an enterprise – functions of a manager, the importance of good customer relations, costing and pricing etc.",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-12-entrepreneurship-4-costing-and-pricing-factors-to-consider",
-      "topic": "waec-visual-arts-12-entrepreneurship",
-      "name": "Costing and pricing – factors to consider.",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-12-entrepreneurship-5-basic-marketing-selling-strategies-e-g-advertising",
-      "topic": "waec-visual-arts-12-entrepreneurship",
-      "name": "Basic marketing/selling strategies, e.g., advertising.",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-12-entrepreneurship-6-business-risks-direct-and-indirect-risks",
-      "topic": "waec-visual-arts-12-entrepreneurship",
-      "name": "Business risks – direct and indirect risks.",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-12-entrepreneurship-7-exhibition-definition-types-levels-factors-to-consider-in-planning-pre-79c924659a",
-      "topic": "waec-visual-arts-12-entrepreneurship",
-      "name": "Exhibition (Definition), types/levels, factors to consider in planning, preparing and mounting exhibition",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-13-professional-ethics-1-artists-statement-definition-and-importance",
-      "topic": "waec-visual-arts-13-professional-ethics",
-      "name": "Artists Statement – Definition and importance",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-14-museum-and-gallery-studies-1-definition-history-and-development-of-the-museum",
-      "topic": "waec-visual-arts-14-museum-and-gallery-studies",
-      "name": "Definition, history and development of the museum",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-14-museum-and-gallery-studies-2-functions-and-socio-economic-importance-of-the-museum",
-      "topic": "waec-visual-arts-14-museum-and-gallery-studies",
-      "name": "Functions and socio-economic importance of the museum.",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-14-museum-and-gallery-studies-3-the-administrative-structure-of-the-museum",
-      "topic": "waec-visual-arts-14-museum-and-gallery-studies",
-      "name": "The administrative structure of the museum.",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-14-museum-and-gallery-studies-4-authenticity-and-neutrality-of-the-museum",
-      "topic": "waec-visual-arts-14-museum-and-gallery-studies",
-      "name": "Authenticity and neutrality of the museum.",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-visual-arts-14-museum-and-gallery-studies-5-examples-of-museums-and-their-activities",
-      "topic": "waec-visual-arts-14-museum-and-gallery-studies",
-      "name": "Examples of museums and their activities",
-      "order": 5,
       "objectives": []
     }
   ]

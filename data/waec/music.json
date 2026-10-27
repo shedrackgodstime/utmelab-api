@@ -13,411 +13,111 @@
   ],
   "topics": [
     {
-      "slug": "waec-music-1-rudiments-of-music",
+      "slug": "waec-theory-and-composition",
       "subject": "music",
       "exam": "WAEC",
-      "name": "Rudiments of Music",
+      "name": "THEORY AND COMPOSITION",
       "order": 1,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-music-2-elementary-harmony",
+      "slug": "waec-aural-tests-paper-3a",
       "subject": "music",
       "exam": "WAEC",
-      "name": "Elementary Harmony",
+      "name": "AURAL TESTS (PAPER 3A)",
       "order": 2,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-music-3-composition",
+      "slug": "waec-performance-test",
       "subject": "music",
       "exam": "WAEC",
-      "name": "Composition",
+      "name": "PERFORMANCE TEST",
       "order": 3,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-music-4-form-and-analysis",
+      "slug": "waec-for-test-centres-supervisors",
       "subject": "music",
       "exam": "WAEC",
-      "name": "Form and Analysis",
+      "name": "For Test Centres/Supervisors",
       "order": 4,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-music-5-prepared-set-works-as-recommended-for-each-year",
+      "slug": "waec-for-candidates",
       "subject": "music",
       "exam": "WAEC",
-      "name": "Prepared set works as recommended for each year",
+      "name": "For Candidates",
       "order": 5,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-music-6-rhythmic-dictation",
+      "slug": "waec-history-and-literature",
       "subject": "music",
       "exam": "WAEC",
-      "name": "Rhythmic Dictation",
+      "name": "HISTORY AND LITERATURE",
       "order": 6,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-music-7-melody-writing",
+      "slug": "waec-traditional-and-contemporary-african-music",
       "subject": "music",
       "exam": "WAEC",
-      "name": "Melody Writing",
+      "name": "TRADITIONAL AND CONTEMPORARY AFRICAN MUSIC",
       "order": 7,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-music-8-writing-the-upper-or-lower-part-of-a-two-part-phrase",
+      "slug": "waec-the-scale-of-c-major-two-octaves-ascending-and-descending",
       "subject": "music",
       "exam": "WAEC",
-      "name": "Writing the Upper or Lower part of a Two-Part Phrase",
+      "name": "The scale of C major two octaves ascending and descending",
       "order": 8,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-music-9-chords",
+      "slug": "waec-the-major-scales-of-g-d-f-and-b-flat-one-octave-ascending-an",
       "subject": "music",
       "exam": "WAEC",
-      "name": "Chords",
+      "name": "The major scales of G, D, F, and B flat one octave ascending and descending",
       "order": 9,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-music-10-cadences",
+      "slug": "waec-the-minor-scales-of-e-a-and-d",
       "subject": "music",
       "exam": "WAEC",
-      "name": "Cadences",
+      "name": "The minor scales of E, A and D",
       "order": 10,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-music-11-modulations",
+      "slug": "waec-arpeggios-one-octave-of-each-of-the-above-keys",
       "subject": "music",
       "exam": "WAEC",
-      "name": "Modulations",
+      "name": "Arpeggios – one octave of each of the above keys",
       "order": 11,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-12-identification-description-of-themes",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Identification/Description of Themes",
-      "order": 12,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-13-performance",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Performance",
-      "order": 13,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-14-musical-instruments",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Musical Instruments",
-      "order": 14,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-15-traditional-musicians-composers",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Traditional Musicians/Composers",
-      "order": 15,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-16-popular-musicians",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Popular Musicians",
-      "order": 16,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-17-contemporary-art-musicians",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Contemporary Art Musicians",
-      "order": 17,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-18-western-composers",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Western Composers",
-      "order": 18,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-19-black-music-in-the-diaspora",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Black Music in the Diaspora",
-      "order": 19,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-20-the-role-of-music-in-traditional-african-society",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "The Role of Music in Traditional African Society",
-      "order": 20,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-21-musical-instruments",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Musical Instruments",
-      "order": 21,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-22-general-characteristics",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "General Characteristics",
-      "order": 22,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-23-categories-and-types",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Categories and types",
-      "order": 23,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-24-relationship-of-music-to-other-arts",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Relationship of music to other arts",
-      "order": 24,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-25-list-of-traditional-dances-to-be-studied",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "List of traditional dances to be studied",
-      "order": 25,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-26-voice",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "VOICE",
-      "order": 26,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-27-technical-exercises",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Technical Exercises",
-      "order": 27,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-28-soprano-tenor",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Soprano/Tenor",
-      "order": 28,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-29-contralto-baritone",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Contralto/Baritone",
-      "order": 29,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-30-singing-at-sight",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Singing at Sight",
-      "order": 30,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-31-violin",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "VIOLIN",
-      "order": 31,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-32-arpeggios",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Arpeggios",
-      "order": 32,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-33-piano",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "PIANO",
-      "order": 33,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-34-arpeggios-and-scales-from-memory",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Arpeggios and Scales (from memory)",
-      "order": 34,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-35-wind-instruments",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "WIND INSTRUMENTS",
-      "order": 35,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-36-technical-exercises",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "Technical Exercises",
-      "order": 36,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-37-descant-recorder",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "DESCANT RECORDER",
-      "order": 37,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-38-at-nt-b-n",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "ATƐNTƐBƐN",
-      "order": 38,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-39-flute",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "FLUTE",
-      "order": 39,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-40-trumpet",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "TRUMPET",
-      "order": 40,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-music-41-e-flat-alto-saxophone",
-      "subject": "music",
-      "exam": "WAEC",
-      "name": "E-FLAT ALTO SAXOPHONE",
-      "order": 41,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -425,829 +125,759 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-music-1-rudiments-of-music-1-staff",
-      "topic": "waec-music-1-rudiments-of-music",
-      "name": "Staff",
+      "slug": "waec-a-rudiments-of-music",
+      "topic": "waec-theory-and-composition",
+      "name": "(A) Rudiments of Music",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-music-1-rudiments-of-music-2-clefs-c-g-and-f",
-      "topic": "waec-music-1-rudiments-of-music",
-      "name": "Clefs (C, G, and F)",
+      "slug": "waec-notation",
+      "topic": "waec-theory-and-composition",
+      "name": "Notation",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-music-1-rudiments-of-music-3-diatonic-major-and-minor-natural-harmonic-and-melodic",
-      "topic": "waec-music-1-rudiments-of-music",
-      "name": "Diatonic – Major and Minor (natural, harmonic and melodic)",
+      "slug": "waec-staff-ii-clefs-c-g-and-f",
+      "topic": "waec-theory-and-composition",
+      "name": "Staff (ii) Clefs (C, G, and F)",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-music-1-rudiments-of-music-4-chromatic-melodic-only",
-      "topic": "waec-music-1-rudiments-of-music",
-      "name": "Chromatic – (melodic only)",
+      "slug": "waec-scales-western",
+      "topic": "waec-theory-and-composition",
+      "name": "Scales: (Western)",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-music-1-rudiments-of-music-5-pentatonic-5-tone",
-      "topic": "waec-music-1-rudiments-of-music",
-      "name": "Pentatonic (5-tone)",
+      "slug": "waec-diatonic-major-and-minor-natural-harmonic-and-melodic-ii-chr",
+      "topic": "waec-theory-and-composition",
+      "name": "Diatonic – Major and Minor (natural, harmonic and melodic) (ii) Chromatic – (melodic only)",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-music-1-rudiments-of-music-6-hexatonic-6-tone",
-      "topic": "waec-music-1-rudiments-of-music",
-      "name": "Hexatonic (6-tone)",
+      "slug": "waec-modes-african",
+      "topic": "waec-theory-and-composition",
+      "name": "Modes: (African)",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-music-1-rudiments-of-music-7-heptatonic-7-tone",
-      "topic": "waec-music-1-rudiments-of-music",
-      "name": "Heptatonic (7-tone)",
+      "slug": "waec-pentatonic-5-tone-ii-hexatonic-6-tone-iii-heptatonic-7-tone",
+      "topic": "waec-theory-and-composition",
+      "name": "Pentatonic (5-tone) (ii) Hexatonic (6-tone) (iii) Heptatonic (7-tone)",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-music-1-rudiments-of-music-8-keys-and-key-signatures",
-      "topic": "waec-music-1-rudiments-of-music",
+      "slug": "waec-keys-and-key-signatures",
+      "topic": "waec-theory-and-composition",
       "name": "Keys and Key Signatures",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-music-1-rudiments-of-music-9-time-signatures-simple-and-compound",
-      "topic": "waec-music-1-rudiments-of-music",
+      "slug": "waec-time-signatures-simple-and-compound",
+      "topic": "waec-theory-and-composition",
       "name": "Time Signatures: Simple and Compound",
       "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-music-1-rudiments-of-music-10-intervals",
-      "topic": "waec-music-1-rudiments-of-music",
+      "slug": "waec-intervals",
+      "topic": "waec-theory-and-composition",
       "name": "Intervals",
       "order": 10,
       "objectives": []
     },
     {
-      "slug": "waec-music-1-rudiments-of-music-11-transcription-staff-notation-into-solfa-and-vice-versa",
-      "topic": "waec-music-1-rudiments-of-music",
+      "slug": "waec-transcription-staff-notation-into-solfa-and-vice-versa",
+      "topic": "waec-theory-and-composition",
       "name": "Transcription (Staff notation into Solfa and vice versa)",
       "order": 11,
       "objectives": []
     },
     {
-      "slug": "waec-music-1-rudiments-of-music-12-transposition-including-writing-for-transposing-instruments",
-      "topic": "waec-music-1-rudiments-of-music",
+      "slug": "waec-transposition-including-writing-for-transposing-instruments",
+      "topic": "waec-theory-and-composition",
       "name": "Transposition, including writing for transposing instruments",
       "order": 12,
       "objectives": []
     },
     {
-      "slug": "waec-music-1-rudiments-of-music-13-musical-terms-signs-ornaments-and-abbreviations",
-      "topic": "waec-music-1-rudiments-of-music",
-      "name": "Musical terms, signs, ornaments and abbreviations",
+      "slug": "waec-musical-terms-signs-ornaments-and-abbreviations-b-elementary",
+      "topic": "waec-theory-and-composition",
+      "name": "Musical terms, signs, ornaments and abbreviations (B) Elementary Harmony",
       "order": 13,
       "objectives": []
     },
     {
-      "slug": "waec-music-2-elementary-harmony-1-primary-i-i-iv-iv-v-and-their-inversions",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "Primary – I/i, IV/iv, V and their inversions",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-2-elementary-harmony-2-secondary-ii-iii-vi-and-their-inversions",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "Secondary – ii, iii, vi and their inversions",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-2-elementary-harmony-3-chord-vii-and-its-inversions",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "Chord vii˚ and its inversions",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-2-elementary-harmony-4-7th-chords-dominant-7th-only-and-its-inversions",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "7th Chords (dominant 7th only) and its inversions",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-2-elementary-harmony-5-perfect-v-i",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "Perfect (V – I)",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-2-elementary-harmony-6-plagal-iv-i",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "Plagal (IV – I)",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-2-elementary-harmony-7-interrupted-v-vi",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "Interrupted (V–vi)",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-2-elementary-harmony-8-imperfect-i-v-ii-v-iii-v-iv-v",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "Imperfect (I–V), (ii – V), (iii – V), (IV – V)",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-2-elementary-harmony-9-use-of-six-four-chords-cadential-and-passing-only",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "Use of six-four chords (cadential and passing only)",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-2-elementary-harmony-10-the-use-of-non-harmonic-tones-passing-accented-and-non-accented-auxiliary-d0e915008e",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "The use of non-harmonic tones; Passing (accented and non-accented) Auxiliary or Neighbouring tones Anticipation",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-2-elementary-harmony-11-dominant",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "Dominant",
-      "order": 11,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-2-elementary-harmony-12-subdominant",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "Subdominant",
-      "order": 12,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-2-elementary-harmony-13-relative-major-and-minor",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "Relative major and minor",
-      "order": 13,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-2-elementary-harmony-14-four-part-harmony-satb",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "Four-part harmony (SATB)",
+      "slug": "waec-chords-triads",
+      "topic": "waec-theory-and-composition",
+      "name": "Chords/Triads",
       "order": 14,
       "objectives": []
     },
     {
-      "slug": "waec-music-2-elementary-harmony-15-two-part-free-counterpoint-adding-a-part-above-or-below-a-given-melody",
-      "topic": "waec-music-2-elementary-harmony",
-      "name": "Two-part free Counterpoint (adding a part above or below a given melody)",
+      "slug": "waec-primary-i-i-iv-iv-v-and-their-inversions-ii-secondary-ii-iii",
+      "topic": "waec-theory-and-composition",
+      "name": "Primary - I/i, IV/iv, V and their inversions (ii) Secondary - ii, iii, vi and their inversions (iii) Chord vii˚ and its inversions (iv) 7th Chords (dominant 7th only) and its inversions",
       "order": 15,
       "objectives": []
     },
     {
-      "slug": "waec-music-3-composition-1-continuing-a-given-melodic-phrase-in-either-a-major-or-minor-key-to-form-a-melody-2365753ea7",
-      "topic": "waec-music-3-composition",
+      "slug": "waec-chord-progressions-cadences-in-both-major-and-minor-keys",
+      "topic": "waec-theory-and-composition",
+      "name": "Chord Progressions Cadences (in both major and minor keys)",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-perfect-v-i-ii-plagal-iv-i-iii-interrupted-v-vi-iv-imperfect",
+      "topic": "waec-theory-and-composition",
+      "name": "Perfect (V – I); (ii) Plagal (IV – I) (iii) Interrupted (V–vi) (iv) Imperfect (I–V), (ii – V), (iii – V), (IV – V)",
+      "order": 17,
+      "objectives": []
+    },
+    {
+      "slug": "waec-use-of-primary-and-secondary-triads-in-harmonising-a-given-m",
+      "topic": "waec-theory-and-composition",
+      "name": "Use of primary and secondary triads in harmonising a given melody",
+      "order": 18,
+      "objectives": []
+    },
+    {
+      "slug": "waec-use-of-six-four-chords-cadential-and-passing-only-ii-the-use",
+      "topic": "waec-theory-and-composition",
+      "name": "Use of six-four chords (cadential and passing only) (ii) The use of non-harmonic tones; (cid:1) Passing (accented and non-accented) (cid:1) Auxiliary or Neighbouring tones (cid:1) Anticipation",
+      "order": 19,
+      "objectives": []
+    },
+    {
+      "slug": "waec-modulations-from-the-home-key-to-its-closely-related-keys-on",
+      "topic": "waec-theory-and-composition",
+      "name": "Modulations from the home key to its closely related keys only",
+      "order": 20,
+      "objectives": []
+    },
+    {
+      "slug": "waec-dominant-ii-subdominant-iii-relative-major-and-minor",
+      "topic": "waec-theory-and-composition",
+      "name": "Dominant (ii) Subdominant (iii) Relative major and minor",
+      "order": 21,
+      "objectives": []
+    },
+    {
+      "slug": "waec-four-part-harmony-satb",
+      "topic": "waec-theory-and-composition",
+      "name": "Four-part harmony (SATB)",
+      "order": 22,
+      "objectives": []
+    },
+    {
+      "slug": "waec-two-part-free-counterpoint-adding-a-part-above-or-below-a-gi",
+      "topic": "waec-theory-and-composition",
+      "name": "Two-part free Counterpoint (adding a part above or below a given melody). (C) Composition",
+      "order": 23,
+      "objectives": []
+    },
+    {
+      "slug": "waec-continuing-a-given-melodic-phrase-in-either-a-major-or-minor",
+      "topic": "waec-theory-and-composition",
       "name": "Continuing a given melodic phrase in either a major or minor key to form a melody of not less than 12 bars and not more than 16 bars in all. Candidates may be required to modulate to at least one specified related key",
-      "order": 1,
+      "order": 24,
       "objectives": []
     },
     {
-      "slug": "waec-music-3-composition-2-setting-a-given-text-in-english-to-music",
-      "topic": "waec-music-3-composition",
-      "name": "Setting a given text in English to music",
-      "order": 2,
+      "slug": "waec-setting-a-given-text-in-english-to-music-d-form-and-analysis",
+      "topic": "waec-theory-and-composition",
+      "name": "Setting a given text in English to music. (D) Form and Analysis",
+      "order": 25,
       "objectives": []
     },
     {
-      "slug": "waec-music-4-form-and-analysis-1-simple-forms-e-g-binary-ternary-rondo-etc",
-      "topic": "waec-music-4-form-and-analysis",
+      "slug": "waec-simple-forms-e-g-binary-ternary-rondo-etc",
+      "topic": "waec-theory-and-composition",
       "name": "Simple forms e.g. binary, ternary, rondo, etc",
-      "order": 1,
+      "order": 26,
       "objectives": []
     },
     {
-      "slug": "waec-music-4-form-and-analysis-2-extended-forms-e-g-overture-oratorio-opera-cantata-suite-sonata-symphony-concerto-etc",
-      "topic": "waec-music-4-form-and-analysis",
+      "slug": "waec-extended-forms-e-g-overture-oratorio-opera-cantata-suite-son",
+      "topic": "waec-theory-and-composition",
       "name": "Extended forms e.g. overture, oratorio, opera, cantata, suite, sonata, symphony, concerto, etc",
-      "order": 2,
+      "order": 27,
       "objectives": []
     },
     {
-      "slug": "waec-music-4-form-and-analysis-3-form-in-traditional-african-music-e-g-the-various-forms-of-antiphony-call-an-057a3c1a65",
-      "topic": "waec-music-4-form-and-analysis",
+      "slug": "waec-form-in-traditional-african-music-e-g-the-various-forms-of-a",
+      "topic": "waec-theory-and-composition",
       "name": "Form in traditional African music, e.g. the various forms of antiphony (Call and Response, Cantor/Chorus, Call and Refrain), Repetitive (Cyclic) forms, etc",
-      "order": 3,
+      "order": 28,
       "objectives": []
     },
     {
-      "slug": "waec-music-4-form-and-analysis-4-form-in-contemporary-african-art-music-with-emphasis-on-compositional-techni-73cf738be5",
-      "topic": "waec-music-4-form-and-analysis",
-      "name": "Form in contemporary African art music – with emphasis on compositional techniques, e.g. use of melody, rhythm, harmony, instrumentation, through-composed pieces, etc",
-      "order": 4,
+      "slug": "waec-form-in-contemporary-african-art-music-with-emphasis-on-comp",
+      "topic": "waec-theory-and-composition",
+      "name": "Form in contemporary African art music – with emphasis on compositional techniques, e.g. use of melody, rhythm, harmony, instrumentation, through-composed pieces, etc. (E) Prepared set-works as recommended for each year The set-works listed below (Western or African) are to be chosen by the candidate, as recommended, for each year. This will be studied for a compulsory question in Paper 2. Year Work Composers Trumpet Concerto (2nd Movement) J. Haydn OR 2013 Ahekoo E. Pappoe-Thompson Largo from the Symphony in E minor “From Antonn Dvorak the New World” (Abridged Piano Version) OR Akin Euba Ore Meta Gavotte (From French Suite No. 5 in G) J. S. Bach OR 2015 Nne Bia Nyerem Aka Laz Ekwueme Triumphal March (From AIDA) Giuseppe Verdi ( Abridged Piano Version) OR C.W.K. Mereku Atentenata in C (Opus 3 No. 1) Moment Musical in G Minor Franz Schubert OR 2017 Kiniun Ayo Bankole",
+      "order": 29,
       "objectives": []
     },
     {
-      "slug": "waec-music-5-prepared-set-works-as-recommended-for-each-year-1-2013-trumpet-concerto-2nd-movement-or-ahekoo",
-      "topic": "waec-music-5-prepared-set-works-as-recommended-for-each-year",
-      "name": "2013: Trumpet Concerto (2nd Movement) OR Ahekoo",
+      "slug": "waec-candidates-will-be-required-to-write-all-seven-tests-the-aur",
+      "topic": "waec-aural-tests-paper-3a",
+      "name": "Candidates will be required to write all seven tests. The Aural Tests will be administered by means of a CD/cassette, a copy of which will be sent to each examination centre on the day of the examination",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-music-5-prepared-set-works-as-recommended-for-each-year-2-2014-largo-from-the-symphony-in-e-minor-from-t-5152d572cc",
-      "topic": "waec-music-5-prepared-set-works-as-recommended-for-each-year",
-      "name": "2014: Largo from the Symphony in E minor “From the New World” (Abridged Piano Version) OR Ore Meta",
+      "slug": "waec-rhythmic-dictation-a-melody-not-exceeding-4-bars-will-be-pla",
+      "topic": "waec-aural-tests-paper-3a",
+      "name": "Rhythmic Dictation A melody not exceeding 4 bars will be played four times. Candidates will be required to write the rhythm on a monotone. Before playing the passage, the examiner will give the time signature and indicate the speed at which the pulse of the music moves. The passage may be in either simple or compound time. (8 marks)",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-music-5-prepared-set-works-as-recommended-for-each-year-3-2015-gavotte-from-french-suite-no-5-in-g-or-nn-3d206e48ab",
-      "topic": "waec-music-5-prepared-set-works-as-recommended-for-each-year",
-      "name": "2015: Gavotte (From French Suite No. 5 in G) OR Nne Bia Nyerem Aka",
+      "slug": "waec-melody-writing-candidates-will-be-required-to-write-from-dic",
+      "topic": "waec-aural-tests-paper-3a",
+      "name": "Melody Writing Candidates will be required to write from dictation a short melodic passage not exceeding 4 bars and which may contain elements of African Music. Before playing the passage, the examiner will indicate the speed at which the pulse of the music moves. The passage may be in either simple or compound time. The piece, which may be modal or in a major or minor key, will normally begin on the first beat of a bar. If the music is in a major or minor key, the key will be named and tonic chord sounded, followed by the key note. If in a mode, the tonal centre and the mode will be played. The pulse will be given and the melody will first be played in its entirety. It will then be played twice in sections at short intervals of time and finally it will be repeated in its entirety. (8 marks)",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-music-5-prepared-set-works-as-recommended-for-each-year-4-2016-triumphal-march-from-aida-abridged-piano-4f88476269",
-      "topic": "waec-music-5-prepared-set-works-as-recommended-for-each-year",
-      "name": "2016: Triumphal March (From AIDA) (Abridged Piano Version) OR Atentenata in C (Opus 3 No. 1)",
+      "slug": "waec-writing-the-upper-or-lower-part-of-a-two-part-phrase-a-two-p",
+      "topic": "waec-aural-tests-paper-3a",
+      "name": "Writing the Upper or Lower part of a Two-Part Phrase A two-part phrase in a major or minor key not exceeding four bars will be played. The candidates will be required to write out either the upper or the lower part in full. The key and time-signature will be given and the tonic chord sounded. The passage will be played four time. The passage may be in either simple or time. (8 marks)",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-music-5-prepared-set-works-as-recommended-for-each-year-5-2017-moment-musical-in-g-minor-or-kiniun",
-      "topic": "waec-music-5-prepared-set-works-as-recommended-for-each-year",
-      "name": "2017: Moment Musical in G Minor OR Kiniun",
+      "slug": "waec-chords-a-passage-in-a-named-key-containing-not-more-than-eig",
+      "topic": "waec-aural-tests-paper-3a",
+      "name": "Chords A passage in a named key containing not more than eight chords will be played. The candidate will be required to identify chords employed in the progression by using the Roman numerals e.g. Ic, V, vib, etc. or a technical description of each chord, e.g. dominant, first inversion; sub-dominant, root position etc. The passage will be played four (4) times at a reasonably slow pace. The key will be given and the tonic chord sounded before the passage is played through. (8 marks)",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-music-6-rhythmic-dictation-1-a-melody-not-exceeding-4-bars-will-be-played-four-times-candidates-will-be-8b8677a661",
-      "topic": "waec-music-6-rhythmic-dictation",
-      "name": "A melody not exceeding 4 bars will be played four times. Candidates will be required to write the rhythm in a monotone. Before playing the passage, the examiner will give the time signature and indicate the speed at which the pulse of the music moves. The passage may be in either simple or compound time. (8 marks)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-7-melody-writing-1-candidates-will-be-required-to-write-from-dictation-a-short-melodic-passage-not-6a5ba86f80",
-      "topic": "waec-music-7-melody-writing",
-      "name": "Candidates will be required to write from dictation a short melodic passage not exceeding 4 bars and which may contain elements of African Music. Before playing the passage, the examiner will indicate the speed at which the pulse of the music moves. The passage may be in either simple or compound time. The piece, which may be modal or a major or minor key, will normally begin on the first beat of a bar. If the music is in a major or minor key, the key will be named, and the tonic chord will be sounded, followed by the keynote. If in a mode, the tonal center and the mode will be played. The pulse will be given, and the melody will first be played in its entirety. It will then be played twice in sections at short intervals of time, and finally, it will e repeated in its entirety. (8 marks)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-8-writing-the-upper-or-lower-part-of-a-two-part-phrase-1-a-two-part-phrase-in-a-major-or-minor-key-8c9c694add",
-      "topic": "waec-music-8-writing-the-upper-or-lower-part-of-a-two-part-phrase",
-      "name": "A two-part phrase in a major or minor key not exceeding four bars will be played. The candidates will be required to write out either the upper or the lower part in full. The key and time signature will be given, and the tonic chord will be sounded. The passage will be played four times. The passage may be either simple or time. (8 marks)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-9-chords-1-a-passage-in-a-named-key-containing-not-more-than-eight-chords-will-be-played-the-candi-5c77a884f1",
-      "topic": "waec-music-9-chords",
-      "name": "A passage in a named key containing not more than eight chords will be played. The candidate will be required to identify chords employed in the progression by using the Roman numerals e.g. Ic, V, VIB, etc. or a technical description of each chord, e.g. dominant, first inversion ; sub-dominant, root position etc. The passage will be played four (4) times at a reasonably slow pace. The key will be given, and the tonic chord will be sounded before the passage is played through. (8 marks)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-10-cadences-1-candidates-will-be-required-to-recognize-and-name-any-of-the-following-cadences-perf-3bc61a33df",
-      "topic": "waec-music-10-cadences",
-      "name": "Candidates will be required to recognize and name any of the following cadences (perfect, imperfect, interrupted or plagal) occurring in a musical example in a major key. After the tonic chord has been sounded, the whole musical sentence will be played 3 times with due deliberation at short intervals. Only four examples will be given, which may not necessarily have to be different. (6 marks)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-11-modulations-1-candidates-will-be-required-to-recognize-and-name-simple-changes-of-key-four-exam-d73c568ca5",
-      "topic": "waec-music-11-modulations",
-      "name": "Candidates will be required to recognize and name simple changes of key. Four examples will be given, each starting from the same tonic key and containing one modulation only. Modulations will be limited to the dominant, subdominant, and relative major or minor keys. After the key has been named and the tonic chord sounded, each of the four examples will be played three times. The test will not necessarily contain examples of modulations to four different keys: the same key change may re-occur. (6 marks)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-12-identification-description-of-themes-1-candidates-will-be-required-to-identify-or-describe-the-33ec74c7e2",
-      "topic": "waec-music-12-identification-description-of-themes",
-      "name": "Candidates will be required to identify or describe the characteristics of three themes or excerpts taken from selected pieces, at least one of which will be African. Each theme/excerpt will be played three times. Before each passage is played, the Examiner will tell candidates exactly what they are expected to do. Questions will be limited to the form, style or genre of excerpt played, principal instrument(s) playing, scale or mode employed and meter. (6 marks)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-13-performance-1-every-candidate-will-offer-an-instrument-or-voice-for-a-practical-examination",
-      "topic": "waec-music-13-performance",
-      "name": "Every candidate will offer an instrument or voice for a practical examination",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-13-performance-2-sight-reading-will-form-part-of-the-examination-for-the-performance-test",
-      "topic": "waec-music-13-performance",
-      "name": "Sight-reading will form part of the examination for the Performance Test",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-13-performance-3-a-list-of-set-works-for-the-practical-examinations-is-attached-as-appendix",
-      "topic": "waec-music-13-performance",
-      "name": "A list of set works for the practical examinations is attached as Appendix",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-13-performance-4-only-works-from-that-list-may-be-selected-for-the-performance-test",
-      "topic": "waec-music-13-performance",
-      "name": "Only works from that list may be selected for the performance test",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-13-performance-5-information-on-set-pieces-is-available-at-any-waec-office-in-the-member-countries",
-      "topic": "waec-music-13-performance",
-      "name": "Information on set pieces is available at any WAEC Office in the member countries",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-14-musical-instruments-1-voice-soprano-alto-tenor-baritone-bass",
-      "topic": "waec-music-14-musical-instruments",
-      "name": "Voice (Soprano, Alto, Tenor, Baritone/Bass)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-14-musical-instruments-2-pianoforte-electronic-keyboard",
-      "topic": "waec-music-14-musical-instruments",
-      "name": "Pianoforte/electronic keyboard",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-14-musical-instruments-3-string-instruments-violin-guitar",
-      "topic": "waec-music-14-musical-instruments",
-      "name": "String Instruments: Violin, Guitar",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-14-musical-instruments-4-selected-wind-instruments-recorder-descant-and-treble-atenteben-flute-cla-f20bca60f6",
-      "topic": "waec-music-14-musical-instruments",
-      "name": "Selected wind instruments: Recorder (descant and treble), atenteben , flute, clarinet, saxophone, trumpet, trombone, euphonium and tuba",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-15-traditional-musicians-composers-1-ezigbo-obiligbo-dan-maraya-haruna-ishola-ayinla-omowura-dauda-1d19e051cc",
-      "topic": "waec-music-15-traditional-musicians-composers",
-      "name": "Ezigbo Obiligbo, Dan Maraya, Haruna Ishola, Ayinla Omowura, Dauda Epoakara, Odolaye Aremu, Ogundare Foyanmu, Hubert Ogunde, Israel Nwoba, Mamman Shata, etc",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-15-traditional-musicians-composers-2-vinoko-akpalu-yaa-adusa-afua-abasa-kakraba-lobi-gilbert-beres-0c97099bd2",
-      "topic": "waec-music-15-traditional-musicians-composers",
-      "name": "Vinoko Akpalu, Yaa Adusa, Afua Abasa, Kakraba Lobi, Gilbert Berese, Kodjo Nuatro, Kwamina Pra, etc",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-16-popular-musicians-1-victor-olaiya-celestine-ukwu-inyang-henshaw-zeal-onyia-victor-uwaifor-nico-f683c60435",
-      "topic": "waec-music-16-popular-musicians",
-      "name": "Victor Olaiya, Celestine Ukwu, Inyang Henshaw, Zeal Onyia, Victor Uwaifor, Nico Mbarga, Roy Chicago, Rex Jim Lawson, Bobby Benson, Stephen Osita Osadebey, Eddie Okonta, Adeolu Akinsanya",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-16-popular-musicians-2-fela-anikulapo-kuti-femi-kuti-orlando-julius-ekemode",
-      "topic": "waec-music-16-popular-musicians",
-      "name": "Fela Anikulapo Kuti, Femi Kuti, Orlando Julius Ekemode",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-16-popular-musicians-3-i-k-dairo-fatai-rolling-dollar-ebenezer-obey-sunny-ade-prince-adekunle-segu-6040bb028a",
-      "topic": "waec-music-16-popular-musicians",
-      "name": "I. K. Dairo, Fatai Rolling Dollar, Ebenezer Obey, Sunny Ade, Prince Adekunle, Segun Adewale, Dele Abiodun, Shina Peters",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-16-popular-musicians-4-sikiru-ayinde-barrister-ayinla-killington-rasheed-ayinde-wasiu-ayinde-marsh-6e0e6f4729",
-      "topic": "waec-music-16-popular-musicians",
-      "name": "Sikiru Ayinde Barrister, Ayinla Killington, Rasheed Ayinde, Wasiu Ayinde Marshall, Abass Obesere, Wasiu Alabi Pasuma, Saheed Osupa",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-16-popular-musicians-5-batile-alake-kuburatu-alaragbo-salawatu-abeni",
-      "topic": "waec-music-16-popular-musicians",
-      "name": "Batile Alake, Kuburatu Alaragbo, Salawatu Abeni",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-16-popular-musicians-6-onyeka-onwenu-christi-essien-igbokwe-sonny-okosuns-mike-okri-chris-okotie-b-6eaad82ae8",
-      "topic": "waec-music-16-popular-musicians",
-      "name": "Onyeka Onwenu, Christi Essien Igbokwe, Sonny Okosuns, Mike Okri, Chris Okotie, Bisade Ologunde (Lagbaja) Zaki Adze",
+      "slug": "waec-cadences-candidates-will-be-required-to-recognize-and-name-a",
+      "topic": "waec-aural-tests-paper-3a",
+      "name": "Cadences Candidates will be required to recognize and name any of the following cadences (perfect, imperfect, interrupted or plagal) occurring in a musical example in a major key. After the tonic chord has been sounded, the whole musical sentence will be played through 3 times with due deliberation at short intervals. Only four examples will be given which may not necessarily have to be different. (6 marks)",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-music-16-popular-musicians-7-terra-kota-majek-fashek-ras-kimono-victor-essiet-evi-edna-ogholi",
-      "topic": "waec-music-16-popular-musicians",
-      "name": "Terra Kota, Majek Fashek, Ras Kimono, Victor Essiet, Evi Edna-Ogholi",
+      "slug": "waec-modulations-candidates-will-be-required-to-recognize-and-nam",
+      "topic": "waec-aural-tests-paper-3a",
+      "name": "Modulations Candidates will be required to recognize and name simple changes of key. Four examples will be given, each starting from the same tonic key and containing one modulation only. Modulations will be limited to the dominant, subdominant, and relative major or minor keys. After the key has been named and the tonic chord sounded, each of the four examples will be played through three times. The test will not necessarily contain examples of modulations to four different keys: the same key-change may re-occur. (6 marks)",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-music-16-popular-musicians-8-tuface-idibia-dbanj-p-square-paul-dairo-9ice-wande-coal-terry-gee-davido-etc",
-      "topic": "waec-music-16-popular-musicians",
-      "name": "Tuface Idibia, Dbanj, P-Square, Paul Dairo, 9ice, Wande Coal, Terry Gee, Davido, etc",
+      "slug": "waec-identification-description-of-themes-candidates-will-be-requ",
+      "topic": "waec-aural-tests-paper-3a",
+      "name": "Identification/Description of Themes Candidates will be required to identify or describe the characteristics of three themes or excerpts taken from selected pieces, at least one of which will be African. Each theme/excerpt will be played three times. Before each passage is played, the Examiner will tell candidates exactly what they are expected to do. Questions will be limited to the form, style or genre of excerpt played, principal instrument(s) playing, scale or mode employed and meter. (6 marks) NOTES ON THE CONDUCT OF AURAL TEST For Centre Supervisors only Schools and centres at whose venues Aural Tests are held must provide a quiet, well-lit room, a good CD/cassette player, and a non-music teacher to assist the Supervisor. The Assistant’s role would be to administer the test through the playing of the provided CD/cassette for the examination. The CD/cassette must be played once only",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-music-16-popular-musicians-9-t-mensah-george-darko-a-b-crentsil-paapa-yankson-asabea-cropper-dinah-akiwu-28d6162f85",
-      "topic": "waec-music-16-popular-musicians",
-      "name": "T. Mensah, George Darko, A. B. Crentsil, Paapa Yankson, Asabea Cropper, Dinah Akiwumi, Kwa Mensah, M. K Oppong (Kakaiku), Jerry Hanson, Kwame Gyasi, Nana Kwame Ampadu, Awurama Badu, Mary Ghansah, E K Nyame, Kwabena Onyina Gyedu Blay Ambolley, C. K. Mann, Akwasi Ampofo Agyei, Akosua Agyapong, Stella Doughan Reggie Rockstone",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-17-contemporary-art-musicians-1-k-e-phillips-fela-sowande-ayo-bankole-w-w-c-echezona-adam-fiberesi-d78608f52a",
-      "topic": "waec-music-17-contemporary-art-musicians",
-      "name": "K. E. Phillips, Fela Sowande, Ayo Bankole, W.W.C. Echezona, Adam Fiberesima, Dayo Dedeke, Akin Euba, Sam Akpabot, Ikoli Harcourt- Whyte, Laz Ekwueme, Okechukwu Ndubuisi, Sam Ojukwu, Bode Omojola, Ayo Oluranti, Debo Akinwunmi, Christian Onyeji, Richard Okafor",
+      "slug": "waec-performance-every-candidate-will-offer-an-instrument-or-voic",
+      "topic": "waec-performance-test",
+      "name": "Performance Every candidate will offer an instrument or voice for a practical examination. Sight-reading will form part of the examination for the Performance Test. A list of set-works for the practical examinations is attached as Appendix. Only works from that list may be selected for the performance test. Information on set pieces are available at any WAEC Office in the member countries. Musical Instruments The current approved instruments for Performance Tests are",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-music-17-contemporary-art-musicians-2-ephraim-amu-otto-boateng-j-m-t-dosoo-s-g-boateng-walter-blege-h-k-8d03eccc78",
-      "topic": "waec-music-17-contemporary-art-musicians",
-      "name": "Ephraim Amu, Otto Boateng, J. M. T. Dosoo, S. G Boateng, Walter Blege, H. K. Nketia, Alfred Enstua-Mensah, A. Adu Safo, J. A. Yankey, Kenn Kafui, E. Pappoe Thompson, Ata Annan-Mensah, N. Z. Nayo, R. G. K Ndo, M. K. Amissah, G. W. K Dor, Sam Asare-Bediako. Gyima-Larbi",
+      "slug": "waec-voice-soprano-alto-tenor-baritone-bass-ii-pianoforte-electro",
+      "topic": "waec-performance-test",
+      "name": "Voice (Soprano, Alto, Tenor, Baritone/Bass) (ii) Pianoforte/electronic keyboard (iii) String Instruments: Violin, Guitar (iv) Selected wind instruments: Recorder (descant and treble), atenteben, flute, clarinet, saxophone, trumpet, trombone, euphonium and tuba NOTES ON THE CONDUCT OF PERFORMANCE TEST",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-music-18-western-composers-1-guillaume-de-machaut-johannes-ockeghem-jacob-obrecht",
-      "topic": "waec-music-18-western-composers",
-      "name": "Guillaume de Machaut, Johannes Ockeghem, Jacob Obrecht",
+      "slug": "waec-the-exact-dates-of-performance-tests-at-individual-centres-c",
+      "topic": "waec-for-test-centres-supervisors",
+      "name": "The exact dates of performance tests at individual centres can be arranged only after the entries are completed",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-music-18-western-composers-2-guillaume-dufay-thomas-tallis-john-cooke-john-tudor-josquin-des-prez-orland-b6b24b0fcd",
-      "topic": "waec-music-18-western-composers",
-      "name": "Guillaume Dufay, Thomas Tallis, John Cooke, John Tudor, Josquin des Prez, Orlando di Lasso, John Dowland, Orlando Gibbons, William Byrd, John Dunstable Giovanni Pierluigi da Palestrina,",
+      "slug": "waec-there-may-be-one-or-more-examiners-at-the-option-of-the-west",
+      "topic": "waec-for-test-centres-supervisors",
+      "name": "There may be one or more examiners at the option of the West African Examinations Council. No other person will normally be allowed in the room with the candidates (except an accompanist) during the examination",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-music-18-western-composers-3-claudio-monterverdi-antonio-vivaldi-archangelo-corelli-henry-purcell-johann-a24981a5ed",
-      "topic": "waec-music-18-western-composers",
-      "name": "Claudio Monterverdi, Antonio Vivaldi, Archangelo Corelli, Henry Purcell, Johannes Sebastian Bach, George Frederick Handel, , Domenico Scarlatti",
+      "slug": "waec-the-normal-time-for-the-performance-test-will-be-about-30-mi",
+      "topic": "waec-for-test-centres-supervisors",
+      "name": "The normal time for the performance test will be about 30 minutes per candidate. However, examiners may, at their discretion, take less time over examination of individual candidate",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-music-18-western-composers-4-willibald-gluck-josef-haydn-wolfgang-amadeus-mozart-jan-ladislav-dussek-muz-9ade801439",
-      "topic": "waec-music-18-western-composers",
-      "name": "Willibald Gluck, Josef Haydn, Wolfgang Amadeus Mozart, Jan Ladislav Dussek, Muzio Clementi, C.P.E. Bach, Ludwig van Beethoven. Franz Haydn",
+      "slug": "waec-schools-and-centres-at-whose-premises-performance-tests-are",
+      "topic": "waec-for-test-centres-supervisors",
+      "name": "Schools and Centres at whose premises performance tests are held must provide a quiet, well-lit room, a well-tuned pianoforte/electronic keyboard, a writing table and chair for the Examiner, and someone to act as a steward outside the examination room",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-music-18-western-composers-5-franz-schubert-robert-schumann-clara-schumann-felix-mendelssohn-fredrick-ch-b00afbca91",
-      "topic": "waec-music-18-western-composers",
-      "name": "Franz Schubert, Robert Schumann, Clara Schumann, Felix Mendelssohn, Fredrick Chopin, Franz Lizst, Johannes Brahms, Hector Berlioz, Richard Wagner, Antonn Dvorak, Claude Debussy, Maurice Ravel, Johannes Strauss, P. I. Tchaikovsky The Russian Five (Modeste Mussorgsky, Balakirev, Cezar Cui, Alex Borodin and Rimsky Korsakov)",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-18-western-composers-6-bela-bartok-igor-stravinsky-arnold-schoenberg-paul-hindemith-aaron-copland-a4f5e19349",
-      "topic": "waec-music-18-western-composers",
-      "name": "Bela Bartok, Igor Stravinsky, Arnold Schoenberg, Paul Hindemith, Aaron Copland, Hector Villa-Lobos, Saint Saens,",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-19-black-music-in-the-diaspora-1-scott-joplin-ma-rainey-bessie-smith-louis-armstrong-duke-ellingto-0481fcad1d",
-      "topic": "waec-music-19-black-music-in-the-diaspora",
-      "name": "Scott Joplin, Ma Rainey, Bessie Smith, Louis Armstrong, Duke Ellington, Charlie Parker, Dizzie Gillespie, John Coletraine, Aretha Franklin, Miles Davies, James Brown, Diana Ross, Lord Kitchener, Mighty Sparrow, Jimmy Cliff, Bob Marley, Michael Jackson, Hugh Masakela, Mariam Makeba, and such forms as Spiritual, Jazz, Blues, Rock, Gospel, Soul, Calypso, Reggae and Afrobeat",
+      "slug": "waec-performing-or-playing-from-memory-is-optional-but-candidates",
+      "topic": "waec-for-candidates",
+      "name": "Performing or playing from memory is optional. But, candidates performing from memory must bring copies for the Examiner’s use",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-music-20-the-role-of-music-in-traditional-african-society-1-nbsp",
-      "topic": "waec-music-20-the-role-of-music-in-traditional-african-society",
-      "name": "&nbsp;",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-21-musical-instruments-1-names-and-description",
-      "topic": "waec-music-21-musical-instruments",
-      "name": "Names and description",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-21-musical-instruments-2-classification",
-      "topic": "waec-music-21-musical-instruments",
-      "name": "Classification",
+      "slug": "waec-a-technical-exercise-or-study-as-stipulated-on-a-list-of-set",
+      "topic": "waec-for-candidates",
+      "name": "A technical exercise or study as stipulated on a list of set works will be performed from memory",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-music-21-musical-instruments-3-function-musical-and-non-musical",
-      "topic": "waec-music-21-musical-instruments",
-      "name": "Function (musical and non-musical)",
+      "slug": "waec-the-examiner-may-at-his-her-discretion-stop-the-performance",
+      "topic": "waec-for-candidates",
+      "name": "The Examiner may, at his/her discretion, stop the performance of any piece when he/she has heard enough to assess the candidate",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-music-22-general-characteristics-1-scales-modes",
-      "topic": "waec-music-22-general-characteristics",
-      "name": "Scales/Modes",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-22-general-characteristics-2-rhythm-metrical-and-non-metrical-cross-rhythm-hemiola-syncopation-polyrhythm",
-      "topic": "waec-music-22-general-characteristics",
-      "name": "Rhythm (metrical and non-metrical, cross-rhythm, hemiola, syncopation, polyrhythm)",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-22-general-characteristics-3-polyphony",
-      "topic": "waec-music-22-general-characteristics",
-      "name": "Polyphony",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-22-general-characteristics-4-form-antiphony-strophic-through-composed-etc",
-      "topic": "waec-music-22-general-characteristics",
-      "name": "Form (antiphony, strophic, through-composed etc.)",
+      "slug": "waec-candidates-must-perform-pieces-from-the-approved-list-only-u",
+      "topic": "waec-for-candidates",
+      "name": "Candidates must perform pieces from the approved list only, using the instrument for which the pieces were written",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-music-22-general-characteristics-5-vocal-styles-recitative-yodelling-ululation-holler-nasalization",
-      "topic": "waec-music-22-general-characteristics",
-      "name": "Vocal styles (recitative, yodelling, ululation, holler, nasalization)",
+      "slug": "waec-a-candidate-should-provide-his-her-own-accompanist-if-needed",
+      "topic": "waec-for-candidates",
+      "name": "A candidate should provide his/her own accompanist (if needed) who may remain in the room only while actually engaged in the accompanying. The candidate’s teacher may also be the accompanist but the Examiner will not. However, in lieu of an accompanist, a soundtrack of the accompaniment is allowed",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-music-22-general-characteristics-6-texture-monophonic-homophonic-polyphonic",
-      "topic": "waec-music-22-general-characteristics",
-      "name": "Texture (monophonic, homophonic, polyphonic)",
+      "slug": "waec-each-candidate-is-to-provide-music-stand-if-required",
+      "topic": "waec-for-candidates",
+      "name": "Each candidate is to provide music stand (if required)",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-music-22-general-characteristics-7-instrumentation",
-      "topic": "waec-music-22-general-characteristics",
-      "name": "Instrumentation",
+      "slug": "waec-two-sight-reading-tests-will-be-given-the-tests-may-be-in-ei",
+      "topic": "waec-for-candidates",
+      "name": "Two sight-reading tests will be given. The tests may be in either simple or compound time",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-music-23-categories-and-types-1-dirges",
-      "topic": "waec-music-23-categories-and-types",
-      "name": "Dirges",
+      "slug": "waec-general-historical-backgrounds-works-and-contributions-made",
+      "topic": "waec-history-and-literature",
+      "name": "General historical backgrounds, works and contributions made by composers as outlined below. Only a general (non-specialist) knowledge of the composers, periods, works and forms will be expected. A. Traditional Musicians/Composers",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-music-23-categories-and-types-2-cradle-songs-lullabies",
-      "topic": "waec-music-23-categories-and-types",
-      "name": "Cradle songs; Lullabies",
+      "slug": "waec-nigeria-ezigbo-obiligbo-dan-maraya-haruna-ishola-ayinla-omow",
+      "topic": "waec-history-and-literature",
+      "name": "Nigeria Ezigbo Obiligbo, Dan Maraya, Haruna Ishola, Ayinla Omowura, Dauda Epoakara, Odolaye Aremu, Ogundare Foyanmu, Hubert Ogunde, Israel Nwoba, Mamman Shata, etc",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-music-23-categories-and-types-3-ritual-songs",
-      "topic": "waec-music-23-categories-and-types",
-      "name": "Ritual songs",
+      "slug": "waec-ghana-vinoko-akpalu-yaa-adusa-afua-abasa-kakraba-lobi-gilber",
+      "topic": "waec-history-and-literature",
+      "name": "Ghana Vinoko Akpalu, Yaa Adusa, Afua Abasa, Kakraba Lobi, Gilbert Berese, Kodjo Nuatro, Kwamina Pra, etc. B. Popular Musicians",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-music-23-categories-and-types-4-folk-songs",
-      "topic": "waec-music-23-categories-and-types",
-      "name": "Folk songs",
+      "slug": "waec-nigeria",
+      "topic": "waec-history-and-literature",
+      "name": "Nigeria",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-music-23-categories-and-types-5-satirical-songs",
-      "topic": "waec-music-23-categories-and-types",
-      "name": "Satirical songs",
+      "slug": "waec-highlife-victor-olaiya-celestine-ukwu-inyang-henshaw-zeal-on",
+      "topic": "waec-history-and-literature",
+      "name": "Highlife: Victor Olaiya, Celestine Ukwu, Inyang Henshaw, Zeal Onyia, Victor Uwaifor, Nico Mbarga, Roy Chicago, Rex Jim Lawson, Bobby Benson, Stephen Osita Osadebey, Eddie Okonta, Adeolu Akinsanya (ii) Afrobeat : Fela Anikulapo Kuti, Femi Kuti, Orlando Julius Ekemode. (iii) Juju : I. K. Dairo, Fatai Rolling Dollar, Ebenezer Obey, Sunny Ade, Prince Adekunle, Segun Adewale, Dele Abiodun, Shina Peters. (iv) Fuji : Sikiru Ayinde Barrister, Ayinla Kollington, Rasheed Ayinde, Wasiu Ayinde Marshall, Abass Obesere, Wasiu Alabi Pasuma, Saheed Osupa",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-music-23-categories-and-types-6-other-types-of-traditional-vocal-genres",
-      "topic": "waec-music-23-categories-and-types",
-      "name": "Other types of traditional vocal genres",
+      "slug": "waec-waka-batile-alake-kuburatu-alaragbo-salawatu-abeni-vi-afro-p",
+      "topic": "waec-history-and-literature",
+      "name": "Waka : Batile Alake, Kuburatu Alaragbo, Salawatu Abeni (vi) Afro-Pop: Onyeka Onwenu, Christi Essien Igbokwe, Sonny Okosuns, Mike Okri, Chris Okotie, Bisade Ologunde (Lagbaja) Zaki Adze. (vii) Afro-Reggae : Terra Kota, Majek Fashek, Ras Kimono, Victor Essiet, Evi Edna-Ogholi (viii) Hip-Hop : Tuface Idibia, Dbanj, P-Square, Paul Dairo, 9ice, Wande Coal, Terry Gee, Davido, etc",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-music-24-relationship-of-music-to-other-arts-1-dance-drama-festival-etc",
-      "topic": "waec-music-24-relationship-of-music-to-other-arts",
-      "name": "dance, drama, festival etc",
+      "slug": "waec-ghana-e-t-mensah-george-darko-a-b-crentsil-paapa-yankson-asa",
+      "topic": "waec-history-and-literature",
+      "name": "Ghana E. T. Mensah, George Darko, A. B. Crentsil, Paapa Yankson, Asabea Cropper, Dinah Akiwumi, Kwa Mensah, M. K Oppong (Kakaiku), Jerry Hanson, Kwame Gyasi, Nana Kwame Ampadu, Awurama Badu, Mary Ghansah, E K Nyame, Kwabena Onyina Gyedu Blay Ambolley, C. K. Mann, Akwasi Ampofo Agyei, Akosua Agyapong, Stella Doughan Reggie Rockstone C. Contemporary Art Musicians",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nigeria-t-k-e-phillips-fela-sowande-ayo-bankole-w-w-c-echezo",
+      "topic": "waec-history-and-literature",
+      "name": "Nigeria T. K. E. Phillips, Fela Sowande, Ayo Bankole, W.W.C. Echezona, Adam Fiberesima, Dayo Dedeke, Akin Euba, Sam Akpabot, Ikoli Harcourt-Whyte, Laz Ekwueme, Okechukwu Ndubuisi, Sam Ojukwu, Bode Omojola, Ayo Oluranti, Debo Akinwunmi, Christian Onyeji, Richard Okafor",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-ghana-ephraim-amu-otto-boateng-j-m-t-dosoo-s-g-boateng-walte",
+      "topic": "waec-history-and-literature",
+      "name": "Ghana Ephraim Amu, Otto Boateng, J. M. T. Dosoo, S. G Boateng, Walter Blege, J. H. K. Nketia, Alfred Enstua-Mensah, A. Adu Safo, J. A. Yankey, Kenn Kafui, E. Pappoe Thompson, Ata Annan-Mensah, N. Z. Nayo, R. G. K Ndo, M. K. Amissah, G. W. K Dor, Sam Asare-Bediako. Gyima-Larbi D. Western Composers",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-medieval-ca-450-1400-guillaume-de-machaut-johannes-ockeghem",
+      "topic": "waec-history-and-literature",
+      "name": "Medieval ca. 450 - 1400 Guillaume de Machaut, Johannes Ockeghem, Jacob Obrecht",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-renaissance-ca-1400-1600-guillaume-dufay-thomas-tallis-john",
+      "topic": "waec-history-and-literature",
+      "name": "Renaissance ca. 1400 - 1600 Guillaume Dufay, Thomas Tallis, John Cooke, John Tudor, Josquin des Prez, Orlando di Lasso, John Dowland, Orlando Gibbons, William Byrd, John Dunstable Giovanni Pierluigi da Palestrina,",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-baroque-ca-1600-1750-claudio-monterverdi-antonio-vivaldi-arc",
+      "topic": "waec-history-and-literature",
+      "name": "Baroque ca. 1600 - 1750 Claudio Monterverdi, Antonio Vivaldi, Archangelo Corelli, Henry Purcell Johannes Sebastian Bach, George Frederick Handel, , Domenico Scarlatti",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-classical-ca-1750-1820-willibald-gluck-josef-haydn-wolfgang",
+      "topic": "waec-history-and-literature",
+      "name": "Classical ca. 1750 -1820 Willibald Gluck, Josef Haydn, Wolfgang Amadeus Mozart, Jan Ladislav Dussek, Muzio Clementi, C.P.E. Bach, Ludwig van Beethoven. Franz Haydn",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-romantic-ca-1820-1900-franz-schubert-robert-schumann-clara-s",
+      "topic": "waec-history-and-literature",
+      "name": "Romantic ca. 1820 - 1900 Franz Schubert, Robert Schumann, Clara Schumann, Felix Mendelssohn, Fredrick Chopin, Franz Lizst, Johannes Brahms, Hector Berlioz, Richard Wagner, Antonn Dvorak, Claude Debussy, Maurice Ravel, Johannes Strauss, P. I. Tchaikovsky The Russian Five (Modeste Mussorgsky, Balakirev, Cezar Cui, Alex Borodin and Rimsky Korsakov)",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-20th-century-ca-1900-2000-bela-bartok-igor-stravinsky-arnold",
+      "topic": "waec-history-and-literature",
+      "name": "20th century ca. 1900 - 2000 Bela Bartok, Igor Stravinsky, Arnold Schoenberg, Paul Hindemith, Aaron Copland, Hector Villa-Lobos, Saint Saens, E Black Music in the Diaspora Scott Joplin, Ma Rainey, Bessie Smith, Louis Armstrong, Duke Ellington, Charlie Parker, Dizzie Gillespie, John Coletraine, Aretha Franklin, Miles Davies James Brown, Diana Ross, Lord Kitchener, Mighty Sparrow, Jimmy Cliff, Bob Marley, Michael Jackson, Hugh Masakela, Mariam Makeba, and such forms as Spiritual, Jazz, Blues, Rock, Gospel, Soul, Calypso, Reggae and Afrobeat Note : Questions may also be asked on current and very widely known musicians of African origin",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-role-of-music-in-traditional-african-society",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "The role of music in traditional African Society",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-music-25-list-of-traditional-dances-to-be-studied-1-adowa-kundum-kete-akom-fontomfrom-agbadza-atsigbekor-b725a38d7e",
-      "topic": "waec-music-25-list-of-traditional-dances-to-be-studied",
-      "name": "Adowa, Kundum, Kete, Akom, Fontomfrom, Agbadza, Atsigbekor, Kpatsa, Borborbor, Toke, Gahu Kolomashie, Gome, Kpanlogo, Apatampa, Gumbe Takai, Bamaya, Nagila etc",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-25-list-of-traditional-dances-to-be-studied-2-bata-egwu-amala-atilogwu-swange-apiiri-etc",
-      "topic": "waec-music-25-list-of-traditional-dances-to-be-studied",
-      "name": "Bata, Egwu Amala, Atilogwu, Swange, Apiiri, etc",
+      "slug": "waec-musical-instruments",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Musical Instruments",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-music-26-voice-1-candidates-should-note-that-purity-of-vowels-and-tone-production-breath-control-flexibi-6d9bde8465",
-      "topic": "waec-music-26-voice",
-      "name": "Candidates should note that purity of vowels and tone production, breath control, flexibility, intonation, articulation and diction will be taken into account in the marking",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-26-voice-2-the-candidate-should-bring-a-copy-of-each-of-the-chosen-songs-for-the-accompanist-s-use",
-      "topic": "waec-music-26-voice",
-      "name": "The candidate should bring a copy of each of the chosen songs for the accompanist’s use",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-26-voice-3-the-test-of-singing-at-sight-will-not-be-accompanied-it-may-be-sung-on-any-of-the-sylla-3aeb334424",
-      "topic": "waec-music-26-voice",
-      "name": "The test of singing at sight will not be accompanied. It may be sung on any of the syllables, ah, oh, as legato or staccato",
+      "slug": "waec-names-and-description-ii-classification-iii-function-musical",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Names and description (ii) Classification (iii) Function (musical and non-musical)",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-music-26-voice-4-the-test-of-singing-at-sight-will-not-be-accompanied-it-may-be-sung-on-any-of-the-sylla-464db62e0e",
-      "topic": "waec-music-26-voice",
-      "name": "The test of singing at sight will not be accompanied. It may be sung on any of the syllables, ah, oh, as legato or staccato",
+      "slug": "waec-general-characteristics",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "General Characteristics",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-music-27-technical-exercises-1-each-of-the-following-exercises-could-be-sung-to-any-of-the-syllables-ah-ae6b9c13ff",
-      "topic": "waec-music-27-technical-exercises",
-      "name": "Each of the following exercises could be sung to any of the syllables ah, oh, oo or in tonic solfa, legato or staccato",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-28-soprano-tenor-1-two-songs-are-to-be-sung-from-memory-one-chosen-by-the-candidate-from-each-of-t-9c93fcafce",
-      "topic": "waec-music-28-soprano-tenor",
-      "name": "Two songs are to be sung from memory, one chosen by the candidate from each of the lists A and B. List A F. Handel: How beautiful are the feet (Air) Mendelssohn Bartholdy: O for the wings of a dove Charles Gounod &#8211; Ave Maria List B (Ghana) Dr E. Amu &#8211; Mawue na ‘me Timothy Mensah &#8211; Taabanyiriba (Accompaniement) Joshua A. Amuah &#8211; Bɔne Bɛn H. Nketia &#8211; Mo! Agya no a Ɔɔko",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-29-contralto-baritone-1-two-songs-are-to-be-sung-from-memory-one-chosen-by-the-candidate-from-each-64e792d898",
-      "topic": "waec-music-29-contralto-baritone",
-      "name": "Two songs are to be sung from memory, one chosen by the candidate from each of the lists A and B. List A (i) Henry Purcell &#8211; If Music be the food of love (Arr. By Lawrence Henry) van Beethoven &#8211; Ich Liebe dich (I love you Dear) Franz Schubert &#8211; To Music List B (Ghana) (i) Faustina Amu &#8211; Gyae Nsem keka yi H Nketia &#8211; Dwabenhene ba Foriwa H Nketia &#8211; Wo ho te sen Wo ho te sen",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-30-singing-at-sight-1-two-short-tests-in-a-major-minor-or-modal-key-one-of-the-tests-will-be-on-af-4de097aa67",
-      "topic": "waec-music-30-singing-at-sight",
-      "name": "Two short tests in a major, minor or modal key. One of the tests will be on African rhythm",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-31-violin-1-scales",
-      "topic": "waec-music-31-violin",
-      "name": "Scales",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-32-arpeggios-1-two-pieces-are-to-be-played-one-chosen-by-the-candidate-from-each-of-the-lists-a-an-c04568b598",
-      "topic": "waec-music-32-arpeggios",
-      "name": "Two pieces are to be played; one chosen by the candidate from each of the lists A and B. List A F. Handel &#8211; Lord of our being Stephen Dodgson pg. 34-35 &#8211; Serenade Antonio Vivaldi &#8211; Spring (from the four seasons) List B W.K Mereku &#8211; Atɛntɛnatta in C (Opus 3 No. 1) H. Nketia &#8211; Prelude E. Kwame &#8211; Ibibio Folk Tune",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-33-piano-1-schedule-of-marks-scales-broken-chords-arpeggios-10-marks-one-piece-from-list-a-15-mark-5d6282e6d4",
-      "topic": "waec-music-33-piano",
-      "name": "Schedule of Marks Scales, Broken Chords/Arpeggios 10 marks One piece from list A 15 marks One piece from list B 15 marks Playing at Sight 10 marks Total 50 marks The Examiners in marking will pay attention not only to the accuracy of notes and time but also to other things inherent in a good performance, for example, quality of touch, variety of gradation of tone, choice of tempo, observance of marks of expression, rhythm, phrasing and accent and the use of practical fingering. Scales, arpeggios and broken chords should be played from memory, ascending and descending throughout the prescribed compass, at a pace appropriate to the technical demands of the grade, consistent with accuracy and distinctiveness and without undue accentuation. &nbsp;",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-34-arpeggios-and-scales-from-memory-1-scales-major-and-minor-melodic-or-harmonic-at-candidate-s-ch-224ab7123f",
-      "topic": "waec-music-34-arpeggios-and-scales-from-memory",
-      "name": "Scales: Major and minor (melodic or harmonic at candidate’s choice): hands together in similar motion one octave apart, in all keys (three octaves). In contrary motion with both hands beginning and ending on the keynote (unison), in the major keys of C, G, D, F, B-flat (two octaves) Chromatic scales: Hands together in similar motion, one octave apart, beginning on any note na d by the examiner (two octaves). Arpeggios: The major and minor common chords of C, G, D, F, and B-flat in root position only, with hands together in similar motion an octave apart (two octaves). Two pieces are to be played; one chosen by the candidate from each of the lists A and B. List A Wolfgang Amadeus Mozart &#8211; Sonata 1 Ludwig van Beethoven &#8211; Minuet in G J S Bach &#8211; 2-part Inventio No 8 List B N. Kofie &#8211; Akan Fughetta H. Nketia &#8211; Play Time H. Nketia &#8211; Bulsa Worksong",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-35-wind-instruments-1-recorder",
-      "topic": "waec-music-35-wind-instruments",
-      "name": "Recorder",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-35-wind-instruments-2-at-nt-b-n",
-      "topic": "waec-music-35-wind-instruments",
-      "name": "Atɛntɛbɛn",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-35-wind-instruments-3-flute",
-      "topic": "waec-music-35-wind-instruments",
-      "name": "Flute",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-35-wind-instruments-4-trumpet",
-      "topic": "waec-music-35-wind-instruments",
-      "name": "Trumpet",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-music-35-wind-instruments-5-saxophone-alto-in-e-flat",
-      "topic": "waec-music-35-wind-instruments",
-      "name": "Saxophone (Alto in E flat)",
+      "slug": "waec-scales-modes-ii-rhythm-metrical-and-non-metrical-cross-rhyth",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Scales/Modes (ii) Rhythm (metrical and non-metrical, cross-rhythm, hemiola, syncopation, polyrhythm) (iii) Polyphony (iv) Form (antiphony, strophic, through-composed etc.)",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-music-36-technical-exercises-1-the-technical-exercises-are-for-all-wind-instruments-candidates-will-be-r-6bb979c551",
-      "topic": "waec-music-36-technical-exercises",
-      "name": "The Technical Exercises are for all wind instruments. Candidates will be required to play the exercises legato or staccato. The scale of C major is two octaves ascending and descending. The major scales of G, D, F, and B are flat, one octave ascending and descending. The minor scales of E, A and D Arpeggios – one octave of each of the above keys",
+      "slug": "waec-vocal-styles-recitative-yodelling-ululation-holler-nasalizat",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Vocal styles (recitative, yodelling, ululation, holler, nasalization) (vi) Texture (monophonic, homophonic, polyphonic) (vii) Instrumentation",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-categories-and-types",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Categories and types",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-dirges-ii-cradle-songs-lullabies-iii-ritual-songs-iv-folk-so",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Dirges (ii) Cradle songs; Lullabies (iii) Ritual songs (iv) Folk songs",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-satirical-songs-vi-other-types-of-traditional-vocal-genres",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Satirical songs (vi) Other types of traditional vocal genres",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-relationship-of-music-to-other-arts-e-g-dance-drama-festival",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Relationship of music to other arts e.g. dance, drama, festival etc. List of traditional dances to be studied General knowledge of the dances and the ethnic groups that perform them as well as the occasions on which they are used would be expected. Ghana Adowa, Kundum, Kete, Akom, Fontomfrom, Agbadza, Atsigbekor, Kpatsa, Borborbor, Toke, Gahu Kolomashie, Gome, Kpanlogo, Apatampa, Gumbe Takai, Bamaya, Nagila etc Nigeria Bata, Egwu Amala, Atilogwu, Swange, Apiiri, etc. APPENDIX INFORMATION AND GUIDELINES ON THE LIST OF STUDIES AND PIECES AND OTHER TECHNICAL EXERCISES FOR THE PERFORMANCE TEST (PAPER 3B UNDER PRACTICAL) PERFORMANCE TEST Introduction The separate lists embodying the requirements for the performances tests, technical exercises, scales, arpeggios, etc. are published here along with the pieces for the musical instruments that are testable at the moment. The instruments are voice, (soprano/tenor and alto/bass), pianoforte/electronic keyboard, violin, selected wind instruments (descant recorder, treble recorder, atenteben, flute, B-flat trumpet, and E-flat alto saxophone). Other musical instruments will be added when necessary. The present lists are subject to review from time to time. Requirements for Practical Examination",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-candidates-may-use-any-edition-of-music-except-where-a-parti",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Candidates may use any edition of music, except where a particular arrangement or transcription is specified. Candidates and teachers are reminded that the Copyright Acts do not permit the making or use of photocopies of copyright works",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-where-no-metronome-or-expression-marks-are-indicated-in-the",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Where no metronome or expression marks are indicated in the music, candidates should use their discretion to achieve an acceptable performance",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-discretion-should-be-used-in-choosing-works-from-different-l",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Discretion should be used in choosing works from different lists (i.e. A and B) so as to display variety and contrast of style and mood. VOICE Schedule of Marks Technical Exercises etc. One piece from list A One piece from list B Singing at sight Total",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-candidates-should-note-that-purity-of-vowels-and-tone-produc",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Candidates should note that purity of vowels and tone production, breath control, flexibility, intonation, articulation and diction will be taken into account in the marking",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-candidate-should-bring-a-copy-of-each-of-the-chosen-song",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "The candidate should bring a copy of each of the chosen songs for the accompanist’s use",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-test-of-singing-at-sight-will-not-be-accompanied-it-may",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "The test of singing at sight will not be accompanied. It may be sung on any of the syllables, ah, oh, as legato or staccato",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-chord-and-the-keynote-will-first-be-sounded-for-the-cand",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "The chord and the keynote will first be sounded for the candidate before each sight-singing test. If in a mode, the tonal centre and the notes of the mode will first be played",
+      "order": 17,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technical-exercises-each-of-the-following-exercises-could-be",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Technical Exercises Each of the following exercises could be sung to any of the syllables ah, oh, oo or in tonic solfa, legato or staccato. 1. 2. I). Soprano/Tenor Two songs to be sung from memory; one chosen by the candidate from each of the lists A and B. List A",
+      "order": 18,
+      "objectives": []
+    },
+    {
+      "slug": "waec-g-f-handel-how-beautiful-are-the-feet-air-ii-f-mendelssohn-b",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "G. F. Handel - How beautiful are the feet (Air) (ii) F. Mendelssohn Bartholdy - O for the wings of a dove (iii) Charles Gounod - Ave Maria List B (Ghana)",
+      "order": 19,
+      "objectives": []
+    },
+    {
+      "slug": "waec-dr-e-amu-mawue-na-me-ii-timothy-mensah-taabanyiriba-accompan",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Dr E. Amu - Mawue na ‘me (ii) Timothy Mensah - Taabanyiriba (Accompaniement) (iii) Joshua A. Amuah - Bɔne Bɛn (iv) J. H. Nketia - Mo! Agya no a Ɔɔko List B (Nigeria) (i) (ii) (iii) II). Contralto/Baritone Two songs to be sung from memory; one chosen by the candidate from each of the lists A and B. List A",
+      "order": 20,
+      "objectives": []
+    },
+    {
+      "slug": "waec-henry-purcell-if-music-be-the-food-of-love-arr-by-lawrence-h",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Henry Purcell - If Music be the food of love (Arr. By Lawrence Henry) (ii) L. van Beethoven - Ich Liebe dich (I love you Dear) (iii) Franz Schubert - To Music List B (Ghana)",
+      "order": 21,
+      "objectives": []
+    },
+    {
+      "slug": "waec-faustina-amu-gyae-nsem-keka-yi-ii-j-h-nketia-dwabenhene-ba-f",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Faustina Amu - Gyae Nsem keka yi (ii) J. H Nketia - Dwabenhene ba Foriwa (iii) J. H Nketia - Wo ho te sen Wo ho te sen List B (Nigeria) (i) (ii) (iii) Singing at Sight: Two short tests in a major, minor or modal key. One of the tests will be on African rhythm. VIOLIN Schedule of Marks Technical Exercise etc. One piece from list A One piece from list B Singing at sight Total a. The teacher or accompanist may help to tune the instrument before the examination begins. The teacher may act as the accompanist. The Examiner will not accompany any candidate. b. Candidates should provide themselves with music stands or stools if they require them. c. Intonation, production and quality of tone (bowing, finger action) and positioning of the instrument will be taken into account in the marking of the pieces and studies, scales and arpeggios. Candidates are not compelled to adhere to the fingering and bowing marks indicated. Any good practical fingering and bowing will be accepted. d. The test of playing at sight will be given without accompaniment",
+      "order": 22,
+      "objectives": []
+    },
+    {
+      "slug": "waec-scales",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Scales",
+      "order": 23,
+      "objectives": []
+    },
+    {
+      "slug": "waec-scales-separate-bows-ii-slurred-bowing",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Scales – separate bows (ii) Slurred bowing",
+      "order": 24,
+      "objectives": []
+    },
+    {
+      "slug": "waec-arpeggios-i-ii-two-pieces-to-be-played-one-chosen-by-the-can",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Arpeggios (i) (ii) Two pieces to be played; one chosen by the candidate from each of the lists A and B. List A",
+      "order": 25,
+      "objectives": []
+    },
+    {
+      "slug": "waec-g-f-handel-lord-of-our-being-ii-stephen-dodgson-pg-34-35-ser",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "G. F. Handel - Lord of our being (ii) Stephen Dodgson pg. 34-35 - Serenade (iii) Antonio Vivaldi - Spring (from the four seasons) List B",
+      "order": 26,
+      "objectives": []
+    },
+    {
+      "slug": "waec-c-w-k-mereku-at-nt-natta-in-c-opus-3-no-1-ii-j-h-nketia-prel",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "C.W.K Mereku - Atɛntɛnatta in C (Opus 3 No. 1) (ii) J. H. Nketia - Prelude (iii) G. E. Kwame - Ibibio Folk Tune PIANO Schedule of Marks Scales, Broken Chords/Arpeggios 10 marks One piece from list A 15 marks One piece from list B 15 marks Playing at Sight 10 marks Total 50 marks a. The Examiners in marking will pay attention not only to accuracy of notes and time, but also to other things inherent in good performance, for example, quality of touch, variety of gradation of tone, choice of tempo, observance of marks of expression, rhythm, phrasing and accent and the use of practical fingering. b. Scales, arpeggios and broken chords should be played from memory, ascending and descending throughout the prescribed compass, at a pace appropriate to the technical demands of the grade, consistent with accuracy and distinctiveness and without undue accentuation. Scales and Arpeggios (from memory) Scales: Major and minor (melodic or harmonic at candidate’s choice): hands together in similar motion one octave apart, in all keys (three octaves). In contrary motion with both hands beginning and ending on the keynote (unison), in the major keys of C, G, D, F, B-flat (two octaves) Chromatic scales: Hands together in similar motion, one octave apart, beginning on any note named by the examiner (two octaves). Arpeggios: The major and minor common chords of C, G, D, F, B-flat in root position only, with hands together in similar motion an octave apart (two octaves). Two pieces to be played; one chosen by the candidate from each of the lists A and B. List A",
+      "order": 27,
+      "objectives": []
+    },
+    {
+      "slug": "waec-wolfgang-amadeus-mozart-sonata-1-ii-ludwig-van-beethoven-min",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "Wolfgang Amadeus Mozart - Sonata 1 (ii) Ludwig van Beethoven - Minuet in G (iii) J S Bach - 2-part Inventio No 8 List B",
+      "order": 28,
+      "objectives": []
+    },
+    {
+      "slug": "waec-n-n-kofie-akan-fughetta-ii-j-h-nketia-play-time-iii-j-h-nket",
+      "topic": "waec-traditional-and-contemporary-african-music",
+      "name": "N. N. Kofie - Akan Fughetta (ii) J. H. Nketia - Play Time (iii) J. H. Nketia - Bulsa Worksong WIND INSTRUMENTS A Recorder B. Atɛntɛbɛn C. Flute D. Trumpet E. Saxophone (Alto in E flat) Schedule of Marks Technical Exercise -- 10 One piece from list A -- 15 One piece from list B -- 15 Singing at sight -- 10 Total = Technical Exercises The Technical Exercises are for all wind instruments. Candidates will be required to play the exercises legato or staccato",
+      "order": 29,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-scale-of-c-major-two-octaves-ascending-and-descending-music",
+      "topic": "waec-the-scale-of-c-major-two-octaves-ascending-and-descending",
+      "name": "The scale of C major two octaves ascending and descending",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-music-37-descant-recorder-1-two-pieces-to-be-played-one-chosen-by-the-candidate-from-each-of-the-lists-a-86ae42aa86",
-      "topic": "waec-music-37-descant-recorder",
-      "name": "Two pieces to be played; one chosen by the candidate from each of the lists A and B. List A Ludwig van Beethoven &#8211; Melody (from the Sorp. ‘Ich Liebe Dich ) Francis Piggott &#8211; Minuet ( from a choice collection of Ayres for the Harpsichord or Spinet ) Jeremiah Clarke &#8211; The Prince of Denmark‘s March List B H. Nketia &#8211; Quartet No. 1 W.K Mereku &#8211; Atentenatta in C (Opus 3 No. 1) H. Nketia &#8211; Yaanom Montie",
+      "slug": "waec-the-major-scales-of-g-d-f-and-b-flat-one-octave-ascending-an-music",
+      "topic": "waec-the-major-scales-of-g-d-f-and-b-flat-one-octave-ascending-an",
+      "name": "The major scales of G, D, F, and B flat one octave ascending and descending",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-music-38-at-nt-b-n-1-two-pieces-are-to-be-played-one-chosen-by-the-candidate-from-each-of-the-lists-a-an-64d5623bce",
-      "topic": "waec-music-38-at-nt-b-n",
-      "name": "Two pieces are to be played; one chosen by the candidate from each of the lists A and B. List A Kojo Tibu &#8211; Ghana Nyingba (Arr. E. Obed Acquah). W.K Mereku &#8211; Atentenatta in C (Opus 3 No. 1) Ebeli Eva &#8211; Journey of Hope List B J H Nketia &#8211; Quartet No 1 (Arr. C. W. K. Mereku) Obed Acquah &#8211; Ama Adoma H. Nketia &#8211; Yaanom Montie",
+      "slug": "waec-the-minor-scales-of-e-a-and-d-music",
+      "topic": "waec-the-minor-scales-of-e-a-and-d",
+      "name": "The minor scales of E, A and D",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-music-39-flute-1-carl-reinecke-8211-gavotte-from-five-serenades-for-the-young-justin-connolly-8211-the-p-dcad222e1a",
-      "topic": "waec-music-39-flute",
-      "name": "Carl Reinecke &#8211; Gavotte (From Five Serenades for the Young) Justin Connolly &#8211; The Purple Chorale Timothy Baxter &#8211; Waltz Interlude List B W.K Mereku &#8211; Atentenatta in C (Opus 3 No. 1) Eva Ebeli &#8211; Dambai Kojo Tibu &#8211; Ghana Nyingba (Arr. E. Obed Acquah)",
+      "slug": "waec-a-b-descant-recorder-two-pieces-to-be-played-one-chosen-by-t",
+      "topic": "waec-arpeggios-one-octave-of-each-of-the-above-keys",
+      "name": "A B DESCANT RECORDER Two pieces to be played; one chosen by the candidate from each of the lists A and B. List A",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-music-40-trumpet-1-two-pieces-are-to-be-played-one-chosen-by-the-candidate-from-each-of-the-lists-a-and-cd4b9cea87",
-      "topic": "waec-music-40-trumpet",
-      "name": "Two pieces are to be played; one chosen by the candidate from each of the lists A and B. List A John Barrett &#8211; The St. Catherine William Croft &#8211; Sarabande Lully &#8211; Lonely Woods List B H.K Nketia &#8211; Mmoboro Asem (Arr. E. Obed Acquah) Kojo Tibu &#8211; Ghana Nyingba (Arr. E. Obed Acquah). Ebeli Eva &#8211; Enyonam",
-      "order": 1,
+      "slug": "waec-ludwig-van-beethoven-melody-from-the-sorp-ich-liebe-dich-ii",
+      "topic": "waec-arpeggios-one-octave-of-each-of-the-above-keys",
+      "name": "Ludwig van Beethoven - Melody (from the Sorp. ‘Ich Liebe Dich) (ii) Francis Piggott - Minuet (from a choice collection of Ayres for the Harpsichord or Spinet) (iii) Jeremiah Clarke - The Prince of Denmark‘s March List B",
+      "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-music-41-e-flat-alto-saxophone-1-two-pieces-are-to-be-played-one-chosen-by-the-candidate-from-each-of-th-c33bc471cb",
-      "topic": "waec-music-41-e-flat-alto-saxophone",
-      "name": "Two pieces are to be played; one chosen by the candidate from each of the lists A and B. List A Jeremiah Clarke &#8211; Gavott Henry Purcell &#8211; Rigadoon Franz Schubert &#8211; Ave Maria List B . H.K.Nketia &#8211; Onipa beyee bi Kojo Tibu &#8211; Ghana Nyingba (Arr. E. Obed Acquah). H.K Nketia &#8211; Mmoboro Asem (Arr. E. Obed Acquah)",
-      "order": 1,
+      "slug": "waec-j-h-nketia-quartet-no-1-ii-c-w-k-mereku-atentenatta-in-c-opu",
+      "topic": "waec-arpeggios-one-octave-of-each-of-the-above-keys",
+      "name": "J. H. Nketia - Quartet No. 1 (ii) C.W.K Mereku - Atentenatta in C (Opus 3 No. 1) (iii) J. H. Nketia - Yaanom Montie ATƐNTƐBƐN Two pieces to be played; one chosen by the candidate from each of the lists A and B. List A",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-kojo-tibu-ghana-nyingba-arr-e-obed-acquah-ii-c-w-k-mereku-at",
+      "topic": "waec-arpeggios-one-octave-of-each-of-the-above-keys",
+      "name": "Kojo Tibu - Ghana Nyingba (Arr. E. Obed Acquah). (ii) C.W.K Mereku - Atentenatta in C (Opus 3 No. 1) (iii) Ebeli Eva - Journey of Hope List B",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-j-h-nketia-quartet-no-1-arr-c-w-k-mereku-ii-e-obed-acquah-am",
+      "topic": "waec-arpeggios-one-octave-of-each-of-the-above-keys",
+      "name": "J H Nketia - Quartet No 1 (Arr. C. W. K. Mereku) (ii) E. Obed Acquah - Ama Adoma (iii) J. H. Nketia - Yaanom Montie FLUTE Two pieces to be played; one chosen by the candidate from each of the lists A and B. List A",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-carl-reinecke-gavotte-from-five-serenades-for-the-young-ii-j",
+      "topic": "waec-arpeggios-one-octave-of-each-of-the-above-keys",
+      "name": "Carl Reinecke - Gavotte (From Five serenades for the young) (ii) Justin Connolly - The Purple Chorale (iii) Timothy Baxter - Waltz Interlude List B",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-c-w-k-mereku-atentenatta-in-c-opus-3-no-1-ii-eva-ebeli-damba",
+      "topic": "waec-arpeggios-one-octave-of-each-of-the-above-keys",
+      "name": "C.W.K Mereku - Atentenatta in C (Opus 3 No. 1) (ii) Eva Ebeli - Dambai (iii) Kojo Tibu - Ghana Nyingba (Arr. E. Obed Acquah). TRUMPET Two pieces to be played; one chosen by the candidate from each of the lists A and B. List A",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-john-barrett-the-st-catherine-ii-william-croft-sarabande-iii",
+      "topic": "waec-arpeggios-one-octave-of-each-of-the-above-keys",
+      "name": "John Barrett - The St. Catherine (ii) William Croft - Sarabande (iii) Lully - Lonely Woods List B",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-j-h-k-nketia-mmoboro-asem-arr-e-obed-acquah-ii-kojo-tibu-gha",
+      "topic": "waec-arpeggios-one-octave-of-each-of-the-above-keys",
+      "name": "J.H.K Nketia - Mmoboro Asem (Arr. E. Obed Acquah) (ii) Kojo Tibu - Ghana Nyingba (Arr. E. Obed Acquah). (iii) Ebeli Eva - Enyonam E-FLAT ALTO SAXOPHONE Two pieces to be played; one chosen by the candidate from each of the lists A and B. List A",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-jeremiah-clarke-gavott-ii-henry-purcell-rigadoon-iii-franz-s",
+      "topic": "waec-arpeggios-one-octave-of-each-of-the-above-keys",
+      "name": "Jeremiah Clarke - Gavott (ii) Henry Purcell - Rigadoon (iii) Franz Schubert - Ave Maria List B",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-j-h-k-nketia-onipa-beyee-bi-ii-kojo-tibu-ghana-nyingba-arr-e",
+      "topic": "waec-arpeggios-one-octave-of-each-of-the-above-keys",
+      "name": "J.H.K.Nketia - Onipa beyee bi (ii) Kojo Tibu - Ghana Nyingba (Arr. E. Obed Acquah). (iii) J.H.K Nketia - Mmoboro Asem (Arr. E. Obed Acquah)",
+      "order": 11,
       "objectives": []
     }
   ]

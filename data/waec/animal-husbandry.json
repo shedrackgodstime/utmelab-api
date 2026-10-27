@@ -8,266 +8,76 @@
       "objective_paper_questions": 40,
       "countries": [],
       "syllabus_exam": "WAEC",
-      "syllabus_subject": "animal-husbandry-alt-b"
+      "syllabus_subject": "animal-husbandry"
     }
   ],
   "topics": [
     {
-      "slug": "waec-animal-husbandry-1-importance-of-farm-animals",
+      "slug": "waec-preamble",
       "subject": "animal-husbandry",
       "exam": "WAEC",
-      "name": "Importance of farm animals",
+      "name": "PREAMBLE",
       "order": 1,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-animal-husbandry-2-classification-of-farm-animals",
+      "slug": "waec-aims-of-the-syllabus",
       "subject": "animal-husbandry",
       "exam": "WAEC",
-      "name": "Classification of farm animals",
+      "name": "AIMS OF THE SYLLABUS",
       "order": 2,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-animal-husbandry-3-internal-organs-and-their-functions-in-farm-animals",
+      "slug": "waec-requirements",
       "subject": "animal-husbandry",
       "exam": "WAEC",
-      "name": "Internal organs and their functions in farm animals",
+      "name": "REQUIREMENTS",
       "order": 3,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-animal-husbandry-4-body-systems-and-their-functions-in-farm-animals",
+      "slug": "waec-schools-offering-animal-husbandry-are-expected-to-raise-at-l",
       "subject": "animal-husbandry",
       "exam": "WAEC",
-      "name": "Body systems and their functions in farm animals",
+      "name": "Schools offering Animal Husbandry are expected to raise at least one species of farm",
       "order": 4,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals",
+      "slug": "waec-it-is-recommended-that-the-schools-should-have-agriculture-l",
       "subject": "animal-husbandry",
       "exam": "WAEC",
-      "name": "Reproduction in farm animals",
+      "name": "It is recommended that the schools should have agriculture laboratories where specimens,",
       "order": 5,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-animal-husbandry-6-meaning-and-classes-of-animal-feeds",
+      "slug": "waec-it-is-also-recommended-that-candidates-keep-practical-notebo",
       "subject": "animal-husbandry",
       "exam": "WAEC",
-      "name": "Meaning and classes of animal feeds",
+      "name": "It is also recommended that candidates keep practical notebooks which should contain",
       "order": 6,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-animal-husbandry-7-animal-feeds-and-feeding",
+      "slug": "waec-examination-scheme",
       "subject": "animal-husbandry",
       "exam": "WAEC",
-      "name": "Animal feeds and feeding",
+      "name": "EXAMINATION SCHEME",
       "order": 7,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-8-formulation-of-livestock-rations",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Formulation of livestock rations",
-      "order": 8,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-9-processing-and-marketing-of-animal-products",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Processing and marketing of animal products",
-      "order": 9,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-10-pasture-management",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Pasture management",
-      "order": 10,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-11-rangeland-improvement",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Rangeland improvement",
-      "order": 11,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-12-animal-improvement",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Animal improvement",
-      "order": 12,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-13-methods-of-farm-animal-improvement",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Methods of farm animal improvement",
-      "order": 13,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-14-artificial-insemination",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Artificial insemination",
-      "order": 14,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Farm animal diseases and pathogens",
-      "order": 15,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-16-livestock-parasites-and-pests",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Livestock parasites and pests",
-      "order": 16,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-17-products-and-by-products-of-farm-animals",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Products and by-products of farm animals",
-      "order": 17,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-18-identification-of-farm-animals",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Identification of farm animals",
-      "order": 18,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-19-internal-organs-and-their-functions-in-farm-animals",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Internal organs and their functions in farm animals",
-      "order": 19,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-20-tools-and-equipment-used-in-management-of-farm-animals",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Tools and equipment used in management of farm animals",
-      "order": 20,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-21-feeds-and-feedstuffs",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Feeds and feedstuffs",
-      "order": 21,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-22-pasture-and-forage-crops",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Pasture and forage crops",
-      "order": 22,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-23-artificial-insemination",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Artificial insemination",
-      "order": 23,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-24-pests-and-parasites-of-farm-animals",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "Pests and parasites of farm animals",
-      "order": 24,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-25-farm-building-structure",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "FARM BUILDING/STRUCTURE",
-      "order": 25,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-animal-husbandry-26-live-animals",
-      "subject": "animal-husbandry",
-      "exam": "WAEC",
-      "name": "LIVE ANIMALS",
-      "order": 26,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -275,290 +85,675 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-animal-husbandry-2-classification-of-farm-animals-1-classification-of-farm-animals",
-      "topic": "waec-animal-husbandry-2-classification-of-farm-animals",
-      "name": "Classification of farm animals.",
+      "slug": "waec-the-syllabus-has-been-structured-to-assess-candidates-basic",
+      "topic": "waec-preamble",
+      "name": "The syllabus has been structured to assess candidates’ basic knowledge and skills in the production, processing, storage, packaging and marketing of farm animals and their products. It is also intended to assess the capability of the candidates to pursue further training at the tertiary level",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-2-classification-of-farm-animals-2-identification-of-ruminants-and-non-ruminants",
-      "topic": "waec-animal-husbandry-2-classification-of-farm-animals",
-      "name": "Identification of ruminants and non-ruminants.",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals-1-definition-of-terms-used-in-livestock-reproduction",
-      "topic": "waec-animal-husbandry-5-reproduction-in-farm-animals",
-      "name": "Definition of terms used in livestock reproduction",
+      "slug": "waec-the-syllabus-will-therefore-seek-to-assess-candidates-knowle",
+      "topic": "waec-aims-of-the-syllabus",
+      "name": "The syllabus will therefore seek to assess candidates’ knowledge and skills in (1) basic animal production practices such as feeding, housing, pest and disease control; (2) the efficient and effective management of animal enterprises; (3) the application of environmentally friendly practices to sustain production; (4) the identification of basic problems hindering the improvement of the Animal Industry; (5) the efficient processing, preservation, packaging, storage and marketing of animals and their products",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals-2-reproduction-in-livestock-mammals",
-      "topic": "waec-animal-husbandry-5-reproduction-in-farm-animals",
-      "name": "Reproduction in livestock(mammals)",
+      "slug": "waec-requirements-animal-husbandry",
+      "topic": "waec-requirements",
+      "name": "REQUIREMENTS",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-animals-from-each-of-the-following-groups",
+      "topic": "waec-schools-offering-animal-husbandry-are-expected-to-raise-at-l",
+      "name": "animals from each of the following groups",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-monogastrics-e-g-poultry-pigs-rabbits",
+      "topic": "waec-schools-offering-animal-husbandry-are-expected-to-raise-at-l",
+      "name": "Monogastrics e.g. poultry, pigs, rabbits",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals-3-reproduction-in-poultry",
-      "topic": "waec-animal-husbandry-5-reproduction-in-farm-animals",
-      "name": "Reproduction in poultry",
+      "slug": "waec-ruminants-e-g-goats-sheep-cattle",
+      "topic": "waec-schools-offering-animal-husbandry-are-expected-to-raise-at-l",
+      "name": "Ruminants e.g. goats, sheep, cattle",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals-4-reproductive-hormones-and-their-functions",
-      "topic": "waec-animal-husbandry-5-reproduction-in-farm-animals",
-      "name": "Reproductive hormones and their functions",
+      "slug": "waec-non-traditional-farm-animals-e-g-grasscutters-snails",
+      "topic": "waec-schools-offering-animal-husbandry-are-expected-to-raise-at-l",
+      "name": "Non-traditional farm animals e.g. grasscutters,snails",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals-5-management-of-pregnant-farm-animals",
-      "topic": "waec-animal-husbandry-5-reproduction-in-farm-animals",
-      "name": "Management of pregnant farm animals.",
+      "slug": "waec-equipment-and-chemicals-would-be-kept",
+      "topic": "waec-it-is-recommended-that-the-schools-should-have-agriculture-l",
+      "name": "equipment and chemicals would be kept",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-records-of-activities-undertaken-and-observations-made-on-th",
+      "topic": "waec-it-is-also-recommended-that-candidates-keep-practical-notebo",
+      "name": "records of activities undertaken and observations made on the school farm and on field trips and of specimens collected",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-for-candidates-in-ghana-only-there-will-be-three-papers-pape",
+      "topic": "waec-examination-scheme",
+      "name": "For candidates in Ghana only There will be three papers, Papers 1, 2 and 3, all of which must be taken. Papers 1 and 2 will be a composite paper to be taken at one sitting. PAPER 1: Will consist of fifty multiple choice objective questions all of which must be answered within 1 hour for 50 marks. PAPER 2: Will consist of six essay-type questions. Candidates will be required to answer four questions within 2 hours for 80 marks. PAPER 3: Will be a practical paper for school candidates or a test of practical paper for private candidates. The paper will consist of four questions all of which must be answered within 2 hours for 60 marks. ANIMAL HUSBANDRY 1. Meaning, scope and Knowledge of the meaning (rearing of importance of animal farm animals), scope (nutrition, health, husbandry etc.) and importance (source of food, employment, income, etc) of farm animals are required. 2. Problems in animal Knowledge and understanding of the production problems in animal production in West Africa and possible solutions to the problems will be assessed. 3.Quality and Safety Description of the quality and safety standard of animal food standards of animal food products. products Practices for maintaining standards, effect of consuming poor animal products and roles of agencies involved in the animal food products safety and quality will be assessed. 4. Classification of farm Classification based on; animals 1. Digestive system",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-ruminants-e-g-sheep-goat-cattle",
+      "topic": "waec-examination-scheme",
+      "name": "Ruminants e.g. sheep, goat, cattle",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-non-ruminants-monogastrics-eg-poultry-pigs",
+      "topic": "waec-examination-scheme",
+      "name": "Non-ruminants (monogastrics) eg. poultry, pigs",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-non-ruminant-herbivores-e-g-rabbits-grasscutter-guinea-pigs",
+      "topic": "waec-examination-scheme",
+      "name": "Non-ruminant herbivores e.g. rabbits, grasscutter, guinea pigs. 2. Concept of traditional (cattle, sheep, goat) and non-traditional farmanimals (rabbit, grasscutter, snails). PHYSIOLOGY OF FARM ANIMALS 1. Meaning of the terms: Understanding of the terms anatomy anatomy, physiology and physiology; and knowledge of parts and the external and positions of the various external orientation of farm parts (orientation) of farm animals e.g. animals the head of the cow is anterior to the hind limb or udder; will be assessed. 2. Digestive System The main features of the digestive",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-comparative-systems-of-ruminants-non-ruminant-anatomy-of-dig",
+      "topic": "waec-examination-scheme",
+      "name": "Comparative systems of ruminants, non-ruminant anatomy of digestive herbivores and monogastrics and the system of farm differences in structure and functions animals will be assessed",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals-6-livestock-management-systems",
-      "topic": "waec-animal-husbandry-5-reproduction-in-farm-animals",
-      "name": "Livestock management systems",
+      "slug": "waec-digestion-and-absorption-candidates-understanding-of-digesti",
+      "topic": "waec-examination-scheme",
+      "name": "Digestion and Absorption Candidates’ understanding of digestion processes in the processes in the various classes of farm various classes animals, the role of specific enzymes in of farm animals the digestion of specific nutrients e.g. carbohydrates, proteins, fats and oils in farm animals, and the structures and processes involved in absorption of nutrients will be assessed. 3. Central Nervous System Ability to identify the parts of the CNS",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-5-reproduction-in-farm-animals-7-management-practices-of-livestock",
-      "topic": "waec-animal-husbandry-5-reproduction-in-farm-animals",
-      "name": "Management practices of livestock.",
+      "slug": "waec-parts-of-the-central-and-ans-and-describe-the-mode-of-nervou",
+      "topic": "waec-examination-scheme",
+      "name": "Parts of the Central and ANS and describe the mode of Nervous System action of the CNS and ANS is required. (CNS) and Autonomic Nervous System Knowledge of the functions of the ANS (ANS) is required. The ability to explain how nerve impulses are transmitted and how homeostasis is ensured will also be",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-7-animal-feeds-and-feeding-1-livestock-rations",
-      "topic": "waec-animal-husbandry-7-animal-feeds-and-feeding",
-      "name": "Livestock rations",
-      "order": 1,
+      "slug": "waec-functions-of-the-assessed-ans-knowledge-of-what-endocrine-gl",
+      "topic": "waec-examination-scheme",
+      "name": "Functions of the assessed. ANS Knowledge of what endocrine glands are, their location in the body and functions will be assessed",
+      "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-9-processing-and-marketing-of-animal-products-1-processing-techniques-for-different-far-ae53992188",
-      "topic": "waec-animal-husbandry-9-processing-and-marketing-of-animal-products",
-      "name": "Processing techniques for different farm animal products.",
-      "order": 1,
+      "slug": "waec-endocrine-system-hormones-their-functions-and-mode-of-i-endo",
+      "topic": "waec-examination-scheme",
+      "name": "Endocrine System Hormones, their functions and mode of (i) Endocrine glands action, and understanding of the need to and their functions administer synthetic hormones will be assessed (ii) Hormones and their functions The structure and functions of the 4. Integumentary, skeletal integumentary (skin), skeletal and and muscular systems muscular systems will be assessed. Understanding of reproductive terms 5. Reproductive System e.g. puberty, oestrous cycle, oestrus/anoestrus, ovulation, fertilization, libido, etc will be assessed. Knowledge of the main features of the",
+      "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-9-processing-and-marketing-of-animal-products-2-marketing-of-animal-products",
-      "topic": "waec-animal-husbandry-9-processing-and-marketing-of-animal-products",
-      "name": "Marketing of animal products",
-      "order": 2,
+      "slug": "waec-anatomy-of-the-reproductive-system-of-poultry-and-reproducti",
+      "topic": "waec-examination-scheme",
+      "name": "Anatomy of the reproductive system of poultry and reproductive system livestock will be assessed. of poultry and livestock Knowledge of the functions of the",
+      "order": 10,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-10-pasture-management-1-meaning-and-importance-of-pasture-and-forage-crops",
-      "topic": "waec-animal-husbandry-10-pasture-management",
-      "name": "Meaning and importance of pasture and forage crops",
-      "order": 1,
+      "slug": "waec-functions-of-organs-organs-and-parts-of-the-reproductive-and",
+      "topic": "waec-examination-scheme",
+      "name": "Functions of organs organs and parts of the reproductive and parts of the system will be assessed. reproductive system The various stages in the reproductive",
+      "order": 11,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-10-pasture-management-2-types-of-pasture-and-forage-crops",
-      "topic": "waec-animal-husbandry-10-pasture-management",
-      "name": "Types of pasture and forage crops",
-      "order": 2,
+      "slug": "waec-reproductive-process-from-puberty-through-mating-processes-t",
+      "topic": "waec-examination-scheme",
+      "name": "Reproductive process (from puberty through mating processes to parturition); differences between the reproductive processes in poultry and livestock will be assessed. Knowledge of reproductive hormones and their functions is also required. Assessment will be on the various 6. Circulatory System organs of the system e.g. heart, blood",
+      "order": 12,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-10-pasture-management-3-terminologies-in-pasture-management",
-      "topic": "waec-animal-husbandry-10-pasture-management",
-      "name": "Terminologies in pasture management",
-      "order": 3,
+      "slug": "waec-structure-and-vessels-tissues-blood-lymph-and-cells-function",
+      "topic": "waec-examination-scheme",
+      "name": "Structure and vessels; tissues (blood, lymph) and cells functions (blood cells); and their functions. Differences between pulmonary and systemic circulation will also be assessed. Meaning of heart and pulse rate and the (b) Heart and Pulse interpretation of their values will be rate assessed. Understanding of the term respiration and its importance will be assessed. 7. Respiratory System",
+      "order": 13,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-11-rangeland-improvement-1-meaning-and-characteristics-of-rangelands",
-      "topic": "waec-animal-husbandry-11-rangeland-improvement",
-      "name": "Meaning and characteristics of rangelands",
-      "order": 1,
+      "slug": "waec-meaning-and-importance-of-respiration-the-structure-and-func",
+      "topic": "waec-examination-scheme",
+      "name": "Meaning and Importance of Respiration The structure and functions of the parts",
+      "order": 14,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-11-rangeland-improvement-2-methods-of-rangeland-improvement",
-      "topic": "waec-animal-husbandry-11-rangeland-improvement",
-      "name": "Methods of rangeland improvement",
-      "order": 2,
+      "slug": "waec-structure-and-of-the-respiratory-system-of-livestock-functio",
+      "topic": "waec-examination-scheme",
+      "name": "Structure and of the respiratory system of livestock Functions of the will be required. Respiratory System Understanding of the term excretion and 8. Excretory System its importance is required",
+      "order": 15,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-11-rangeland-improvement-3-importance-of-rangeland",
-      "topic": "waec-animal-husbandry-11-rangeland-improvement",
-      "name": "Importance of rangeland",
-      "order": 3,
+      "slug": "waec-meaning-and-importance-of-the-excretion",
+      "topic": "waec-examination-scheme",
+      "name": "Meaning and Importance of the Excretion",
+      "order": 16,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-12-animal-improvement-1-meaning-of-animal-improvement",
-      "topic": "waec-animal-husbandry-12-animal-improvement",
-      "name": "Meaning of animal improvement",
-      "order": 1,
+      "slug": "waec-structure-and-the-structure-and-functions-of-the-parts-funct",
+      "topic": "waec-examination-scheme",
+      "name": "Structure and The structure and functions of the parts Functions of the of the excretory system of livestock will Excretory System be required",
+      "order": 17,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-12-animal-improvement-2-aims-importance-of-farm-animal-improvement",
-      "topic": "waec-animal-husbandry-12-animal-improvement",
-      "name": "Aims/importance of farm animal improvement",
-      "order": 2,
+      "slug": "waec-excretory-products-examples-of-excretory-products-and-how-th",
+      "topic": "waec-examination-scheme",
+      "name": "Excretory Products Examples of excretory products and how they are eliminated from the body is required. 1. Introduction to Animal Understanding of the term nutrition and Nutrition its importance/role in animal production (a) Meaning and e.g. improves body resistance, Importance production level, etc. will be assessed. Understanding of basic nutrition terms such as nutrients, diet, ration, roughages, malnutrition, concentrates, etc will also be required. The differences in the various modes of",
+      "order": 18,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-13-methods-of-farm-animal-improvement-1-methods-used-in-farm-animal-improvement",
-      "topic": "waec-animal-husbandry-13-methods-of-farm-animal-improvement",
-      "name": "Methods used in farm animal improvement",
-      "order": 1,
+      "slug": "waec-modes-of-feeding-feeding-in-non-ruminant-herbivores-ruminant",
+      "topic": "waec-examination-scheme",
+      "name": "Modes of feeding feeding in non-ruminant herbivores, ruminants, carnivores and omnivores will be required. The influence of the type of dentition on the mode of feeding of the animals will also be required. 2. Feedstuffs and Feed Supplements",
+      "order": 19,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-13-methods-of-farm-animal-improvement-2-merits-and-demerits-of-methods-used-in-farm-ani-df55909868",
-      "topic": "waec-animal-husbandry-13-methods-of-farm-animal-improvement",
-      "name": "Merits and demerits of methods used in farm animal improvement",
-      "order": 2,
+      "slug": "waec-types-composition-feedstuffs-and-supplements-their-main-and",
+      "topic": "waec-examination-scheme",
+      "name": "Types, composition Feedstuffs and supplements, their main and functions of composition and functions of the major the feed nutrients nutrients will be required Ability to group feedstuffs according to (b) Classification of the major nutrients they supply will also feedstuffs be assessed. Ability to use simple food tests to detect",
+      "order": 20,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-14-artificial-insemination-1-meaning-of-artificial-insemination",
-      "topic": "waec-animal-husbandry-14-artificial-insemination",
-      "name": "Meaning of artificial insemination.",
-      "order": 1,
+      "slug": "waec-food-tests-the-presence-of-carbohydrates-fats-and-oils-prote",
+      "topic": "waec-examination-scheme",
+      "name": "Food tests the presence of carbohydrates, fats and oils, proteins in feedstuffs is required",
+      "order": 21,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-14-artificial-insemination-2-methods-of-artificial-insemination",
-      "topic": "waec-animal-husbandry-14-artificial-insemination",
-      "name": "Methods of artificial insemination",
-      "order": 2,
+      "slug": "waec-producers-and-knowledge-of-major-producers-and-suppliers-of",
+      "topic": "waec-examination-scheme",
+      "name": "Producers and Knowledge of major producers and suppliers of suppliers of feedstuffs in the country is feedstuffs and also required supplements 3. Formulation and Preparation of Animal Feeds",
+      "order": 22,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-14-artificial-insemination-3-advantages-of-artificial-insemination",
-      "topic": "waec-animal-husbandry-14-artificial-insemination",
-      "name": "Advantages of artificial insemination",
-      "order": 3,
+      "slug": "waec-common-terms-understanding-of-the-common-terms-used-in-feed",
+      "topic": "waec-examination-scheme",
+      "name": "Common terms Understanding of the common terms used in feed used in formulation such as dry matter, formulation diet, metabolizable energy, malnutrition etc. will be assessed. Factors considered in the formulation of (b) Factors considered rations e.g. age, physiological state of in the formulation the animal, cost of feed ingredients etc. of ration will be required. Ability to use the Pearson Square (c) Steps in the Method to formulate a balanced ration formulation of ration is required. 4. Handling and Storage of Animal Feeds",
+      "order": 23,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens-1-concept-of-farm-animal-disease",
-      "topic": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens",
-      "name": "Concept of farm animal disease",
-      "order": 1,
+      "slug": "waec-importance-of-feed-importance-of-feed-storage-and-storage-an",
+      "topic": "waec-examination-scheme",
+      "name": "Importance of feed Importance of feed storage and storage and features of the various feed storage features of structures/containers will be required. storage structures Factors which affect the quality of (b) Factors that affect stored feed e.g. storage the quality of stored temperature/ambient temperature, feed humidity, water content, pests and rodents will be required. Ability to follow procedures /practices in the handling of stored feed e.g. drying, fumigation, will also be assessed. 5. Record keeping and Ability to keep feed records and estimation of cost of estimate the cost of prepared feed will prepared feed be assessed. 6. Pests of stored feed and Ability to identify common pests of their control stored feeds, the effects of pests on stored feed (e.g. damage, contamination), preventive and control measures of pests in feed will be assessed. 1. Meaning of terms Candidates will be assessed on their understanding of the terms: disease, pest and parasite. Knowledge of the characteristics of 2. Signs of good and ill-healthy and sick animals and ability to health describe the signs and symptoms of disease in farm animals will be assessed. Understanding of the factors and how 3. Factors that pre-they predispose animals to diseases e.g. dispose animals to over crowding, poor nutrition, poor diseases housing, Causes of stress and measures to reduce stress in farm animals will be assessed. Understanding of the effects of 4. Effects of diseases, diseases, pests and parasites on the pests and parasites on economic value of animals/ animal animal production products and income e.g. reduced value/output, loss of income, reduced quality of products, will be assessed. 5. Zoonotic diseases; their Understanding of the term zoonotic importance and disease and its importance e.g. effect on prevention human health and preventive methods will be assessed. 6. Pathogens of farm animal diseases Knowledge of the various classes of",
+      "order": 24,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens-2-general-symptoms-of-diseases-in-farm-animals",
-      "topic": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens",
-      "name": "General symptoms of diseases in farm animals",
-      "order": 2,
+      "slug": "waec-classification-of-pathogens-viruses-bacteria-fungi-and-patho",
+      "topic": "waec-examination-scheme",
+      "name": "Classification of pathogens (viruses, bacteria, fungi and pathogens protozoa) Common pathogenic diseases and their",
+      "order": 25,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens-3-diseases-of-farm-animals-prevention-and-control",
-      "topic": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens",
-      "name": "Diseases of farm animals, prevention and control",
-      "order": 3,
+      "slug": "waec-pathogenic-economic-importance-in-animal-diseases-and-their",
+      "topic": "waec-examination-scheme",
+      "name": "Pathogenic economic importance in animal diseases and their production will be assessed. economic importance",
+      "order": 26,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens-4-factors-predisposing-farm-animals-to-diseases",
-      "topic": "waec-animal-husbandry-15-farm-animal-diseases-and-pathogens",
-      "name": "Factors predisposing farm animals to diseases",
-      "order": 4,
+      "slug": "waec-principles-for-principles-for-prevention-and-control-of-prev",
+      "topic": "waec-examination-scheme",
+      "name": "Principles for Principles for prevention and control of prevention and diseases (e.g. nutrition, vaccination, ) control of with respect to cost, suitability and diseases of farm efficiency; animals Ability to use prophylactics (coccidiostat, anti-biotics, anti-stress drugs, vitamins) to control animal diseases will be assessed",
+      "order": 27,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-16-livestock-parasites-and-pests-1-livestock-parasites",
-      "topic": "waec-animal-husbandry-16-livestock-parasites-and-pests",
-      "name": "Livestock parasites",
-      "order": 1,
+      "slug": "waec-management-practices-such-as-deworming-dipping-practices-in",
+      "topic": "waec-examination-scheme",
+      "name": "Management Practices such as deworming, dipping, practices in the dusting, treatment of wounds and sores, prevention and spraying and fumigation of animal control of diseases houses, drug administration and of farm animals precautions to be taken in the use of drugs for disease control will be assessed. 7. Ectoparasites and endoparasites",
+      "order": 28,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-16-livestock-parasites-and-pests-2-livestock-pests",
-      "topic": "waec-animal-husbandry-16-livestock-parasites-and-pests",
-      "name": "Livestock pests",
-      "order": 2,
+      "slug": "waec-types-and-knowledge-of-the-two-main-types-of-examples-parasi",
+      "topic": "waec-examination-scheme",
+      "name": "Types and Knowledge of the two main types of examples parasites (ecto and endoparasites) and of parasites examples is required",
+      "order": 29,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-24-pests-and-parasites-of-farm-animals-1-pests-of-farm-animals",
-      "topic": "waec-animal-husbandry-24-pests-and-parasites-of-farm-animals",
-      "name": "Pests of farm animals",
-      "order": 1,
+      "slug": "waec-structure-life-cycle-the-structure-life-cycle-and-mode-of-an",
+      "topic": "waec-examination-scheme",
+      "name": "Structure, life cycle The structure, life cycle and mode of and mode of feeding of the common types of endo-feeding and ectoparasites will be required",
+      "order": 30,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-24-pests-and-parasites-of-farm-animals-2-parasites-of-farm-animals",
-      "topic": "waec-animal-husbandry-24-pests-and-parasites-of-farm-animals",
-      "name": "Parasites of farm animals",
-      "order": 2,
+      "slug": "waec-conditions-that-conditions-that-affect-parasite-influence-pa",
+      "topic": "waec-examination-scheme",
+      "name": "Conditions that Conditions that affect parasite influence parasite population, and how they could be population changed to reduce parasite population will be assessed. Measures such as deworming, 8. Prevention and control drenching, dipping, farm sanitation etc, of parasites the use of appropriate equipment and chemicals in the prevention and control of parasites will be assessed. 9. Economic importance The economic importance of of parasites ectoparasites and endoparasites (i) on the host e.g. ectoparasites damage skin and hides, suck blood. Endoparasites damage internal organs (ii) on animal products e.g. loss of income, increased expenditure due to control measures, etc. will be assessed. PRINCIPLES AND ANIMAL IMPROVEMENT 1. Heredity, basic genetic terms and Mendel’s first Candidates will be assessed on their law of inheritance understanding of heredity and associated genetic terms (e.g. gene, genotype, phenotype, sex-linkage) in animals, the processes of cell division (meiosis and mitosis) and inheritance of traits; Mendel’s first law of inheritance of genes 2. Meaning, objectives and benefits of animal Understanding of the term animal improvement improvement and knowledge of the objectives and benefits of animal improvement e.g. disease resistance, better growth rate, will be assessed. 3. Performance traits of Ability to analyze data to determine improved and superiority of improved animals based unimproved animals on genotype and phenotype will be assessed. 4. Methods of animal improvement; The different methods of animal advantages and improvement (introduction, selection, disadvantages breeding), types of breeding (e.g. cross breeding, line breeding), advantages and disadvantages of the different methods of animal improvement will be required. 5. Nutritional and environmental factors Nutritional and environmental factors affecting animal that affect animal improvement will be improvement assessed 6. Artificial Insemination",
+      "order": 31,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-25-farm-building-structure-1-poultry-pig-house-battery-cages-1",
-      "topic": "waec-animal-husbandry-25-farm-building-structure",
-      "name": "Poultry/Pig House/Battery Cages : 1",
-      "order": 1,
+      "slug": "waec-meaning-and-process-of-understanding-of-the-term-artificial",
+      "topic": "waec-examination-scheme",
+      "name": "Meaning and process of Understanding of the term artificial artificial insemination, the ability to describe A.I. insemination technique and name of tools and (A.I.) equipment used in the process are required",
+      "order": 32,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-25-farm-building-structure-2-cattle-goat-sheep-pen-1",
-      "topic": "waec-animal-husbandry-25-farm-building-structure",
-      "name": "Cattle/Goat/Sheep Pen : 1",
-      "order": 2,
+      "slug": "waec-advantages-of-a-i-advantages-in-the-use-of-a-i-will-be-requi",
+      "topic": "waec-examination-scheme",
+      "name": "Advantages of A.I. Advantages in the use of A.I. will be required",
+      "order": 33,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-25-farm-building-structure-3-rabbit-grass-cutter-hutch-1",
-      "topic": "waec-animal-husbandry-25-farm-building-structure",
-      "name": "Rabbit/Grass cutter Hutch : 1",
-      "order": 3,
+      "slug": "waec-signs-of-heat-ability-to-detect-heat-in-farm-animals-oestrus",
+      "topic": "waec-examination-scheme",
+      "name": "Signs of heat Ability to detect heat in farm animals (oestrus) and through knowledge of signs of heat and handling the proper handling procedures in the procedures in the collection and storage of semen will be collection and assessed storage of semen ENVIRONMENTAL PHYSIOLOGY 1. Internal and external environment of animals Candidates will be assessed on what constitutes the internal environment (e.g. blood glucose level, body temperature) and external environment (e.g. ambient temperature, humidity, wind) of animals and examples of acceptable levels of constituents of these environments 2. The role of the nervous and endocrine systems The role of the nervous and endocrine in homeostasis and systems in creating environmental animal’s response to awareness in animals, their responses to stimuli stimuli and maintenance of homeostasis e.g. normal levels of body Temperature espiration; heart rate is required. Knowledge of physiological and behavioural responses of animals to heat, cold, exercise, etc is also required. 3. Determination of room Knowledge of equipment employed in temperature, body the measurement of temperature, temperature and humidity, respiration rate, heart beat, respiration rate in farm etc. and the ability to use the equipment animals and interpretation of generated data are required 4. Effects of climate on farm animals Indirect and direct effects of climate on farm animals (e.g. disease prevalence, feed quality and quantity, heat stress, increased abortion) will be assessed. Understanding of the terms thermo-neutral zone and optimum temperature and their relation to animal productivity will be assessed. 5. Modification of animal environment and Ways of modifying the environment management pratices to e.g. provision of appropriate housing, reduce stress on shading, cooling; and management (e.g. animals better feeding, time of grazing, etc.) on improved animal productivity will be assessed. Strategies to minimize stress e.g. design and lay-out of houses, provision of cool water, modified feeds, proper timing of drug administration will also be assessed. AND DOMESTIC PET PRODUCTION 1. Poultry production",
+      "order": 34,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-25-farm-building-structure-4-snairy-bee-hive-1",
-      "topic": "waec-animal-husbandry-25-farm-building-structure",
-      "name": "Snairy/Bee Hive : 1",
-      "order": 4,
+      "slug": "waec-definition-and-candidates-will-be-assessed-on-their-characte",
+      "topic": "waec-examination-scheme",
+      "name": "Definition and Candidates will be assessed on their characteristics of understanding of the term poultry and poultry knowledge of the characteristics of poultry e.g. possession of beaks, wings, feathers",
+      "order": 35,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-26-live-animals-1-poultry-pig-10",
-      "topic": "waec-animal-husbandry-26-live-animals",
-      "name": "Poultry/Pig 10",
-      "order": 1,
+      "slug": "waec-classes-of-poultry-knowledge-of-the-different-types-of-poult",
+      "topic": "waec-examination-scheme",
+      "name": "Classes of poultry Knowledge of the different types of poultry e.g. chicken, turkey, ducks, Guinea fowls and ostriches will be assessed",
+      "order": 36,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-26-live-animals-2-rabbits-grass-cutter-10",
-      "topic": "waec-animal-husbandry-26-live-animals",
-      "name": "Rabbits/Grass cutter 10",
-      "order": 2,
+      "slug": "waec-breeds-and-types-of-poultry-knowledge-of-the-breeds-of-the-v",
+      "topic": "waec-examination-scheme",
+      "name": "Breeds and types of poultry Knowledge of the breeds of the various types of poultry: Chicken e.g Rhode Island Red, Plymouth Rock; Guinea fowl e.g.Grey, Red-wattled (Pearl variety); Turkey e.g. Broad Breasted Bronze: Ducks e.g. Muscovy, Khaki Campbell; Ostriches e.g. Blue Neck, Red Neck will be assessed",
+      "order": 37,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-26-live-animals-3-cattle-sheep-goat-10",
-      "topic": "waec-animal-husbandry-26-live-animals",
-      "name": "Cattle/Sheep/Goat 10",
-      "order": 3,
+      "slug": "waec-importance-role-of-poultry-production-the-importance-of-the",
+      "topic": "waec-examination-scheme",
+      "name": "Importance/role of poultry production The importance of the production of the various types of poultry will be assessed",
+      "order": 38,
       "objectives": []
     },
     {
-      "slug": "waec-animal-husbandry-26-live-animals-4-snails-bees-50-100",
-      "topic": "waec-animal-husbandry-26-live-animals",
-      "name": "Snails/Bees 50/100",
-      "order": 4,
+      "slug": "waec-systems-of-poultry-production-the-various-systems-of-poultry",
+      "topic": "waec-examination-scheme",
+      "name": "Systems of poultry Production The various systems of poultry keeping and the advantages and disadvantages of the various production systems: extensive, intensive, semi-intensive systems will be required",
+      "order": 39,
+      "objectives": []
+    },
+    {
+      "slug": "waec-incubation-and-hatchery-practices-understanding-of-terms-suc",
+      "topic": "waec-examination-scheme",
+      "name": "Incubation and Hatchery Practices Understanding of terms such as fertile",
+      "order": 40,
+      "objectives": []
+    },
+    {
+      "slug": "waec-terminologies-egg-hatchability-incubation-and-broodiness-wil",
+      "topic": "waec-examination-scheme",
+      "name": "Terminologies egg, hatchability, incubation and broodiness will be assessed. (ii) Natural and Artificial Ability to describe and differentiate Incubation between natural and artificial incubation, the advantages and disadvantages of each method of incubation will be assessed. (iii) Selection of eggs for Hatching Knowledge of the characteristics of eggs suitable for hatching and the ability to select them for hatching are required. (iv) Conditions necessary for Knowledge of the incubation period of hatching of eggs the types of poultry and the conditions necessary for hatching of eggs will be assessed",
+      "order": 41,
+      "objectives": []
+    },
+    {
+      "slug": "waec-incubation-process-ability-to-describe-the-process-of-incuba",
+      "topic": "waec-examination-scheme",
+      "name": "Incubation Process Ability to describe the process of incubation and knowledge of hatchery practices that would ensure production of healthy chicks e.g. fumigation, temperature will be assessed. (vi) Candling of Eggs Understanding of the process of candling of eggs is required. (vii) Marketing of day-old chicks Techniques and precautions for the marketing of day-old chicks will be assessed",
+      "order": 42,
+      "objectives": []
+    },
+    {
+      "slug": "waec-management-practices-management-practices-i-e-housing-breedi",
+      "topic": "waec-examination-scheme",
+      "name": "Management Practices Management practices i.e. housing, breeding, brooding, feeding, sanitation, pest and disease control, identification, record keeping, etc. will be assessed",
+      "order": 43,
+      "objectives": []
+    },
+    {
+      "slug": "waec-processing-and-marketing-knowledge-and-understanding-of-the",
+      "topic": "waec-examination-scheme",
+      "name": "Processing and marketing Knowledge and understanding of the of Poultry activities involved in the processing and marketing of poultry i.e. slaughtering and Processing, Quality Control, Packaging, Preservation and Storage, Marketing Outlets, transportation and advertisement will be assessed",
+      "order": 44,
+      "objectives": []
+    },
+    {
+      "slug": "waec-prospects-of-producing-the-various-types-of-the-prospects-fo",
+      "topic": "waec-examination-scheme",
+      "name": "Prospects of producing the various types of The prospects for keeping the various poultry types of poultry, consumer preferences, market availability, cost etc will be assessed. 2. Pig Production",
+      "order": 45,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-breeds-and-candidates-will-be-assessed-on-their-charac",
+      "topic": "waec-examination-scheme",
+      "name": "Types, breeds and Candidates will be assessed on their characteristics knowledge of",
+      "order": 46,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-pig-i-e-bacon-lard-and-pork-types-ii-breeds-of-pig",
+      "topic": "waec-examination-scheme",
+      "name": "Types of pig. i.e. bacon, lard and pork types (ii) Breeds of pig e.g., Yorkshire, Ashanti Black, Large White, Landrace, and (iii) The characteristics of the breeds of",
+      "order": 47,
+      "objectives": []
+    },
+    {
+      "slug": "waec-importance-of-pig-pig-production-the-importance-of-pig-produ",
+      "topic": "waec-examination-scheme",
+      "name": "Importance of pig pig. production The importance of pig production to the economy i.e. source of employment, income, insulin used in pharmaceutical industries etc will be assessed",
+      "order": 48,
+      "objectives": []
+    },
+    {
+      "slug": "waec-systems-of-keeping-pigs-candidates-understanding-of-and-abil",
+      "topic": "waec-examination-scheme",
+      "name": "Systems of keeping pigs Candidates’ understanding of and ability to describe the various management systems of pig production i.e. Intensive, Semi-intensive and Extensive systems will be assessed. The advantages and disadvantages of each of the management systems will also be assessed",
+      "order": 49,
+      "objectives": []
+    },
+    {
+      "slug": "waec-management-practices-the-various-management-practices-used-i",
+      "topic": "waec-examination-scheme",
+      "name": "Management practices The various management practices used in pig production e.g. breeding, housing amd feeding will be assessed. (e) Slaughtering, processing and Knowledge and techniques of marketing of pigs slaughtering, processing and marketing practices, e.g. bacon making, quality control, packaging, storage, identification of marketing outlets, advertisements etc. will be assessed. 3. Domestic Pets",
+      "order": 50,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning-and-the-meaning-of-the-term-pet-e-g-cat-importance-o",
+      "topic": "waec-examination-scheme",
+      "name": "Meaning and The meaning of the term ‘pet’; (e.g. cat, Importance of pets dog, parrot) and the important roles pets play in the society e.g. security, income, shepherding, companionship are required",
+      "order": 51,
+      "objectives": []
+    },
+    {
+      "slug": "waec-management-of-pets-the-management-practices-in-the-raising-o",
+      "topic": "waec-examination-scheme",
+      "name": "Management of pets The management practices in the raising of pets such as housing, feeding, sanitation, breeding, grooming and care, pests and diseases and their control will be assessed. The importance of pet licencing and regular vaccination will be assessed. (c) Training of Pets Knowledge of animal behaviour and reasons for training of pets is required",
+      "order": 52,
+      "objectives": []
+    },
+    {
+      "slug": "waec-marketing-of-pets-marketing-strategies-and-value-chain-h-rum",
+      "topic": "waec-examination-scheme",
+      "name": "Marketing of pets Marketing strategies and value chain (H) RUMINANT process in the marketing of pets will be PRODUCTION assessed. 1. Sheep and goat production",
+      "order": 53,
+      "objectives": []
+    },
+    {
+      "slug": "waec-common-breeds-distribution-and-the-common-breeds-of-sheep-an",
+      "topic": "waec-examination-scheme",
+      "name": "Common Breeds, Distribution and The common breeds of sheep and goats Characteristics and their geographical distribution will be assessed. The distinguishing features between sheep and goats, as well as the characteristics of the breeds e.g. body size, nature of hair cover and horn shape will also be assessed",
+      "order": 54,
+      "objectives": []
+    },
+    {
+      "slug": "waec-importance-of-sheep-and-goats-the-importance-of-sheep-and-go",
+      "topic": "waec-examination-scheme",
+      "name": "Importance of sheep and goats The importance of sheep and goats i.e. Social e.g. religious; Economic e.g. income, hides and skin for leather etc; Nutrition e.g. meat for food etc. is required",
+      "order": 55,
+      "objectives": []
+    },
+    {
+      "slug": "waec-management-practices-production-requirements-using-a-value-c",
+      "topic": "waec-examination-scheme",
+      "name": "Management Practices Production requirements using a value chain approach is required. Management practices in the production of sheep and goats such as hoof trimming, housing, feeding, sanitation, disease and pest control are also required. Ability to determine the age of sheep and goat by the dentition (d) Common parasites will be assessed. and diseases and their control Common parasites (ticks and worms) and diseases of sheep and goats e.g anthrax, mastitis, foot rot; signs/symptoms of infection and control (e) Processing and measures will be assessed. marketing Techniques involved in the processing and marketing of sheep and goats to ensure meat quality, safety and consumer satisfaction including slaughtering and processing, quality control, preservation and storage, 2. Beef Cattle Production packaging, advertising and marketing outlets will be assessed. (a) Breeds and characteristics Common breeds of beef cattle in West Africa and Europe; and the characteristics and general structure of (b) Importance of breef breeds will be assessed. beef cattle production The importance of beef cattle production i.e. nutritional value of beef, use of hides, horns, bones and manure, social and economic value of beef and (c) Common live cattle will be assessed. Production Systems The common production systems of beef cattle e.g. Extensive, pastoral, agropastoral, semi-intensive, intensive feedlot,pastures), their characteristics and the strengths and weaknesses of",
+      "order": 56,
+      "objectives": []
+    },
+    {
+      "slug": "waec-planning-production-each-system-will-be-and-management-of-as",
+      "topic": "waec-examination-scheme",
+      "name": "Planning,production each system will be and management of assessed. cattle for beef and traction The requirements, using value chain approach for producing beef cattle; selection of management system, foundation stock, and qualities of bulls and cows to be selected for traction will e) General management be assessed. practices Skills in carrying out practices such as housing, feeding, breeding, fattening, etc. Knowledge of training of yoked",
+      "order": 57,
+      "objectives": []
+    },
+    {
+      "slug": "waec-processing-and-cattle-will-be-assessed-marketing-techniques",
+      "topic": "waec-examination-scheme",
+      "name": "Processing and cattle will be assessed. marketing Techniques of slaughtering and processing of carcass, maintenance of safety standards, packaging and sale of",
+      "order": 58,
+      "objectives": []
+    },
+    {
+      "slug": "waec-major-problems-in-meat-products-will-be-assessed-beef-cattle",
+      "topic": "waec-examination-scheme",
+      "name": "Major Problems in meat products will be assessed. beef cattle production The negative effects of poor management of beef cattle on the environment, as well as problems of feed and water shortages, cattle theft ,pestsetc and their solutions will be 3. Dairy cattle production assessed",
+      "order": 59,
+      "objectives": []
+    },
+    {
+      "slug": "waec-breeds-and-features-of-dairy-cow-examples-of-pure-and-cross",
+      "topic": "waec-examination-scheme",
+      "name": "Breeds and features of dairy . cow Examples of pure and cross bred dairy breeds in tropical and temperate regions; and the distinguishing features of dairy cow will be assessed",
+      "order": 60,
+      "objectives": []
+    },
+    {
+      "slug": "waec-characteristics-sources-and-knowledge-of-the-composition-and",
+      "topic": "waec-examination-scheme",
+      "name": "Characteristics, sources and Knowledge of the composition and importance of milk nutritional value of fresh milk will be assessed. Knowledge of sources of milk such as goats, sheep, buffaloes, camels and cattle and the importance of milk from dairy cattle including food, income,employment, trade etc. will be assessed. c) Management practices The requirements, using a value chain approach, for producing milk from dairy cattle e.g. market demand for milk and dairy products, inputs for producing wholesome /healthy milk etc. Selecting suitable breeds and management systems will be assessed",
+      "order": 61,
+      "objectives": []
+    },
+    {
+      "slug": "waec-diseases-and-their-control-knowledge-of-symptoms-and-methods",
+      "topic": "waec-examination-scheme",
+      "name": "Diseases and their control Knowledge of symptoms and methods of controlling mastitis, tuberculosis and",
+      "order": 62,
+      "objectives": []
+    },
+    {
+      "slug": "waec-production-processing-ketosis-is-required-and-marketing-of-m",
+      "topic": "waec-examination-scheme",
+      "name": "Production, processing ketosis is required. and marketing of milk and dairy products Equipment and tools required for milking, milk handling and processing; pasteurization of milk; examples of products e.g. yoghurt, cottage cheese, tinned milk, powdered milk will be assessed",
+      "order": 63,
+      "objectives": []
+    },
+    {
+      "slug": "waec-knowledge-of-consequences-of-consuming-contaminated-milk-wil",
+      "topic": "waec-examination-scheme",
+      "name": "Knowledge of consequences of consuming contaminated milk will be assessed. (ii) Knowledge in maintaining quality and safety standards in milk processing and marketing will be assessed. Knowledge of packaging,storage and marketing practices will also be",
+      "order": 64,
+      "objectives": []
+    },
+    {
+      "slug": "waec-problems-of-dairy-assessed-cattle-production-in-warm-climate",
+      "topic": "waec-examination-scheme",
+      "name": "Problems of dairy assessed. cattle production in warm climates Effects of warm climate on dairy animals and milk production; and the solutions to the problems will be assessed. PASTURE MANAGEMENT 1. Introduction to range and pastures Candidates will be assessed on their",
+      "order": 65,
+      "objectives": []
+    },
+    {
+      "slug": "waec-basic-understanding-of-the-basic-terms-in-pasture-terminolog",
+      "topic": "waec-examination-scheme",
+      "name": "Basic understanding of the basic terms in pasture terminologies in and range management e.g. pasture, pasture pasture and range rotation, stocking rate, range, forage crops management Types of pasture (natural/range and artificial/cultivated) and their features will (b) Types of pasture be assessed. and their features",
+      "order": 66,
+      "objectives": []
+    },
+    {
+      "slug": "waec-importance-of-pastures-and-forage-crops-in-animal-the-role-o",
+      "topic": "waec-examination-scheme",
+      "name": "Importance of pastures and forage crops in animal The role of forage and pasture crops in production animal production will be assessed",
+      "order": 67,
+      "objectives": []
+    },
+    {
+      "slug": "waec-factors-that-affect-the-productivity-of-the-factors-that-aff",
+      "topic": "waec-examination-scheme",
+      "name": "Factors that affect the productivity of The factors that affect the productivity different types of of different types of pasture eg. rainfall, pasture soil fertility, temperature, weeds, etc. is required",
+      "order": 68,
+      "objectives": []
+    },
+    {
+      "slug": "waec-major-forage-crops-knowledge-of-the-common-and-scientific-na",
+      "topic": "waec-examination-scheme",
+      "name": "Major forage crops Knowledge of the common and scientific names of the major forage crops and their classification are required. (f) Poisonous plants in pasture Knowledge of poisonous plants in pasture e.g. Lantana camara, Crotalaria rotundusis required. 2. Pasture establishment and management",
+      "order": 69,
+      "objectives": []
+    },
+    {
+      "slug": "waec-qualities-of-good-pasture-and-forage-knowledge-of-qualitites",
+      "topic": "waec-examination-scheme",
+      "name": "Qualities of good pasture and forage Knowledge of qualitites of good pasture species and forage species e.g. high productivity, palatability and fast growth is required. (b) Establishment of pasture Cultural practices associated with pasture establishment e.g. site selection, land preparation, methods of propagation of pasture, their merits and demerits, i.e. seeding, vegetative means will be assessed. (c) Improving natural Pastures Understanding of the need to improve natural pastures and the techniques for improving natural pastures will be required",
+      "order": 70,
+      "objectives": []
+    },
+    {
+      "slug": "waec-management-of-cultivated-pastures-skills-in-managing-cultiva",
+      "topic": "waec-examination-scheme",
+      "name": "Management of cultivated pastures Skills in managing cultivated pastures e.g. control of fire, proper stocking rate, disease prevention and control will be assessed",
+      "order": 71,
+      "objectives": []
+    },
+    {
+      "slug": "waec-harvesting-of-forage-crops-knowledge-of-tools-equipment-for",
+      "topic": "waec-examination-scheme",
+      "name": "Harvesting of forage crops Knowledge of tools/equipment for harvesting forage crops and yield determination will be assessed. 3. Forage conservation and utilization",
+      "order": 72,
+      "objectives": []
+    },
+    {
+      "slug": "waec-forage-conservation-and-its-importance-forage-conservation-a",
+      "topic": "waec-examination-scheme",
+      "name": "Forage conservation and its importance Forage conservation and its importance; the various forms of conserved forage e.g. hay and silage; and differences between hay and silage based on the physical,chemical and nutritive properties will be assessed",
+      "order": 73,
+      "objectives": []
+    },
+    {
+      "slug": "waec-preparation-of-hay-and-silage-the-processes-and-precautions",
+      "topic": "waec-examination-scheme",
+      "name": "Preparation of hay and silage The processes and precautions in the preparation of hay and silage e.g. cutting herbage at the right time, proper compacting, use of additives,etc will be assessed",
+      "order": 74,
+      "objectives": []
+    },
+    {
+      "slug": "waec-utilization-of-crop-residue-in-feeding-animals-the-different",
+      "topic": "waec-examination-scheme",
+      "name": "Utilization of crop residue in feeding animals The different types of crop residue, the merits and demerits of using residue for feeding ruminants is (J) NON-TRADITIONAL required. ANIMAL PRODUCTION 1. Rabbit and Grasscutter Producation",
+      "order": 75,
+      "objectives": []
+    },
+    {
+      "slug": "waec-common-breeds-knowledge-of-the-common-breeds-of",
+      "topic": "waec-examination-scheme",
+      "name": "Common breeds Knowledge of the common breeds of",
+      "order": 76,
+      "objectives": []
+    },
+    {
+      "slug": "waec-importance-of-rabbits-and-grasscutter-will-be-assessed-produ",
+      "topic": "waec-examination-scheme",
+      "name": "Importance of rabbits and grasscutter will be assessed. producing rabbits and grasscutters Importance of producing the animals e.g. source of meat, pelt, income, will be assessed",
+      "order": 77,
+      "objectives": []
+    },
+    {
+      "slug": "waec-manangement-practices-production-and-management-practices-i",
+      "topic": "waec-examination-scheme",
+      "name": "Manangement Practices Production and management practices i.e. housing, feeding, sanitation, breeding, disease and pest control,",
+      "order": 78,
+      "objectives": []
+    },
+    {
+      "slug": "waec-processing-and-record-keeping-will-be-assessed-marketing-act",
+      "topic": "waec-examination-scheme",
+      "name": "Processing and record keeping will be assessed. Marketing Activities involved in the processing and marketing of rabbits and grascutter 2. Snail Farming will be assessed",
+      "order": 79,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning-and-importance-meaning-and-importance-of-snail-farmi",
+      "topic": "waec-examination-scheme",
+      "name": "Meaning and importance Meaning and importance of snail farming are required",
+      "order": 80,
+      "objectives": []
+    },
+    {
+      "slug": "waec-external-features-of-snails-knowledge-of-external-features-o",
+      "topic": "waec-examination-scheme",
+      "name": "External features of Snails Knowledge of external features of snails and their functions is required",
+      "order": 81,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-species-knowledge-of-types-of-species-used-for-snai",
+      "topic": "waec-examination-scheme",
+      "name": "Types of species Knowledge of types of species used for snail farming is required",
+      "order": 82,
+      "objectives": []
+    },
+    {
+      "slug": "waec-site-selection-factors-to-consider-in-site-selection-is-requ",
+      "topic": "waec-examination-scheme",
+      "name": "Site selection Factors to consider in site selection is required",
+      "order": 83,
+      "objectives": []
+    },
+    {
+      "slug": "waec-management-practices-management-practices-housing-feeding-sa",
+      "topic": "waec-examination-scheme",
+      "name": "Management Practices Management practices: housing, feeding, sanitation, breeding, pest and disease control, record keeping, processing and marketing is required",
+      "order": 84,
+      "objectives": []
+    },
+    {
+      "slug": "waec-processing-and-marketing-of-snails-steps-involved-in-process",
+      "topic": "waec-examination-scheme",
+      "name": "Processing and marketing of snails Steps involved in processing snail as well as marketing will be assessed",
+      "order": 85,
+      "objectives": []
+    },
+    {
+      "slug": "waec-establishing-enterprises-in-animal",
+      "topic": "waec-examination-scheme",
+      "name": "Establishing enterprises in animal",
+      "order": 86,
+      "objectives": []
+    },
+    {
+      "slug": "waec-knowledge-of-animal-production-husbandry-enterprises-ii-fact",
+      "topic": "waec-examination-scheme",
+      "name": "Knowledge of animal production husbandry enterprises (ii) Factors to be considered and procedures in establishing animal production enterprise will be assessed. 1. Breeds of Farm Animals. Ability to identify common types and breeds of farm animals is required. 2. Classification of farm Animals. Ability to classify farm animals based on the type of digestive system i.e ruminants, non-ruminant (monogastrics) and non- 3. Anatomy and ruminant herbivores is required. Physiology of Farm Animals. Ability to describe the orientation of external parts of farm animals and to draw and label animals and their parts will be assessed. Ability to identify and draw the major anatomical structures in the various body systems; the differences between the structures and their functions will 4. Animal Nutrition also be assessed. Ability to identify common feedstuffs and supplements e.g. maize, fish meal, oyster shell; and state the major nutrients they contain is required. Ability to perform simple food tests for carbohydrates, fats and oils and protein is required. Ability to formulate feed using the Pearson Square Method, estimate cost of prepared feed and keep feed records will be assessed. Ability to identify pests of stored feed and feedstuffs; their effects and control measures will be assessed. 5. Main Pests and Parasites of farm animals Ability to identify the main pests and parasites of farm animals ( ectoparasites and endoparasites); their effects and control will be assessed. Ability to draw and label the life cycles of tapeworm and roundworm is 6. Diseases of farm required. animals; their prevention Ability to identify the main diseases of and control farm animals, and causal agents is required. Simple preventive and control measures such as drenching, dipping, spraying, vaccination; and the various equipment and tools used in their control are also 7. Artificial Insemination required. Ability to identify the tools and equipment used in artificial insemination and their uses will be 8. Environmental assessed. Physiology Ability to identify and use equipment to determine parameters such as temperature, relative humidity, respiration rate and heart beat; and interpret data will be assessed. 9. Management Practices Ability to identify tools and equipment used for management practices such as housing, breeding, brooding, feeding, identification, debeaking, castration,dehorning, and candling; and 10 Animal Products their maintenance will be assessed. and By-products Ability to identify, and knowledge of the uses of animal products and by-products such as milk, skin, blood meal 11. Range and Pasture and feathers will be assessed. Management Ability to identify forage crops e.g. Panicum maximum; Poisonous plants e.g. Lantana camara; and conserved forage e.g.hay and silage is required. Ability to identify tools and equipment used in the cultivation and managment of pastures and conservation of forage 12. Animal Housing and is also required. Structures Ability to identify suitable material to use in constructing animal houses and structures e.g. cement, bamboo, wire mesh and wood is required. Ability to identify appropriate structures for various farm animals e.g. hutches for rabbits, open -sided houses for pigs",
+      "order": 87,
       "objectives": []
     }
   ]

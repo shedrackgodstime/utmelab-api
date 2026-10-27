@@ -13,7 +13,7 @@
   ],
   "topics": [
     {
-      "slug": "waec-igbo-1-part-i-composition-letter-writing",
+      "slug": "waec-part-i-composition-letter-writing",
       "subject": "igbo",
       "exam": "WAEC",
       "name": "Part I: Composition/ Letter Writing",
@@ -23,7 +23,7 @@
       "countries": []
     },
     {
-      "slug": "waec-igbo-2-part-ii-sound-system",
+      "slug": "waec-part-ii-sound-system",
       "subject": "igbo",
       "exam": "WAEC",
       "name": "Part II: Sound system",
@@ -33,7 +33,7 @@
       "countries": []
     },
     {
-      "slug": "waec-igbo-3-part-iii-grammar",
+      "slug": "waec-part-iii-grammar",
       "subject": "igbo",
       "exam": "WAEC",
       "name": "Part III: Grammar",
@@ -43,41 +43,61 @@
       "countries": []
     },
     {
-      "slug": "waec-igbo-4-part-i-oral-literature",
+      "slug": "waec-part-i-oral-literature-prose-poetry-and-drama",
       "subject": "igbo",
       "exam": "WAEC",
-      "name": "Part I: Oral Literature",
+      "name": "Part I: Oral Literature – Prose, Poetry and Drama",
       "order": 4,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-igbo-5-part-ii-written-literature",
+      "slug": "waec-part-ii-written-literature-prose-poetry-and-drama",
       "subject": "igbo",
       "exam": "WAEC",
-      "name": "Part II: Written Literature",
+      "name": "Part II: Written Literature – Prose, Poetry and Drama",
       "order": 5,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-igbo-6-customs-omenala",
+      "slug": "waec-part-i-oral-literature",
       "subject": "igbo",
       "exam": "WAEC",
-      "name": "Customs – Omenala",
+      "name": "Part I: Oral Literature",
       "order": 6,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-igbo-7-institutions-ewumewu",
+      "slug": "waec-part-ii-written-literature",
+      "subject": "igbo",
+      "exam": "WAEC",
+      "name": "Part II: Written Literature",
+      "order": 7,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-customs-omenala",
+      "subject": "igbo",
+      "exam": "WAEC",
+      "name": "Customs – Omenala",
+      "order": 8,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-institutions-ewumewu",
       "subject": "igbo",
       "exam": "WAEC",
       "name": "Institutions – Ewumewu",
-      "order": 7,
+      "order": 9,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -85,359 +105,387 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-igbo-1-part-i-composition-letter-writing-1-narrative",
-      "topic": "waec-igbo-1-part-i-composition-letter-writing",
-      "name": "Narrative;",
+      "slug": "waec-candidates-are-advised-not-to-spend-more-than-45-minutes-on",
+      "topic": "waec-part-i-composition-letter-writing",
+      "name": "Candidates are advised not to spend more than 45 minutes on this section. There will be five topics from the following essay types and candidates will be expected to write on one of them in about 300 words",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-1-part-i-composition-letter-writing-2-descriptive",
-      "topic": "waec-igbo-1-part-i-composition-letter-writing",
-      "name": "Descriptive;",
+      "slug": "waec-narrative",
+      "topic": "waec-part-i-composition-letter-writing",
+      "name": "Narrative",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-1-part-i-composition-letter-writing-3-argumentative",
-      "topic": "waec-igbo-1-part-i-composition-letter-writing",
-      "name": "Argumentative;",
+      "slug": "waec-descriptive",
+      "topic": "waec-part-i-composition-letter-writing",
+      "name": "Descriptive",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-1-part-i-composition-letter-writing-4-expository",
-      "topic": "waec-igbo-1-part-i-composition-letter-writing",
-      "name": "Expository;",
+      "slug": "waec-argumentative",
+      "topic": "waec-part-i-composition-letter-writing",
+      "name": "Argumentative",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-1-part-i-composition-letter-writing-5-dialogue",
-      "topic": "waec-igbo-1-part-i-composition-letter-writing",
-      "name": "Dialogue;",
+      "slug": "waec-expository",
+      "topic": "waec-part-i-composition-letter-writing",
+      "name": "Expository",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-1-part-i-composition-letter-writing-6-debate",
-      "topic": "waec-igbo-1-part-i-composition-letter-writing",
-      "name": "Debate;",
+      "slug": "waec-dialogue",
+      "topic": "waec-part-i-composition-letter-writing",
+      "name": "Dialogue",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-1-part-i-composition-letter-writing-7-letter-writing",
-      "topic": "waec-igbo-1-part-i-composition-letter-writing",
-      "name": "Letter writing.",
+      "slug": "waec-debate",
+      "topic": "waec-part-i-composition-letter-writing",
+      "name": "Debate",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-2-part-ii-sound-system-1-syllable-structure",
-      "topic": "waec-igbo-2-part-ii-sound-system",
-      "name": "Syllable Structure.",
+      "slug": "waec-letter-writing",
+      "topic": "waec-part-i-composition-letter-writing",
+      "name": "Letter writing",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-two-questions-will-be-set-for-candidates-to-answer-one-of-th",
+      "topic": "waec-part-ii-sound-system",
+      "name": "Two questions will be set for candidates to answer one of them. The questions will test candidate’s basic knowledge of the following areas",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-2-part-ii-sound-system-2-sound-processes-vowel-harmony-vowel-assimilation-vowel-elision-and-consonants-elision",
-      "topic": "waec-igbo-2-part-ii-sound-system",
+      "slug": "waec-igbo-phonemes-vowels-consonants-the-syllabic-nasal",
+      "topic": "waec-part-ii-sound-system",
+      "name": "Igbo Phonemes: Vowels, Consonants, the Syllabic nasal,",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-their-production-and",
+      "topic": "waec-part-ii-sound-system",
+      "name": "their production, and",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-their-classification",
+      "topic": "waec-part-ii-sound-system",
+      "name": "their classification",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-syllable-structure",
+      "topic": "waec-part-ii-sound-system",
+      "name": "Syllable Structure",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-sound-processes-vowel-harmony-vowel-assimilation-vowel-elisi",
+      "topic": "waec-part-ii-sound-system",
       "name": "Sound Processes: vowel harmony, vowel assimilation, vowel elision and consonants elision",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-igbo-2-part-ii-sound-system-3-tone-and-tone-notation",
-      "topic": "waec-igbo-2-part-ii-sound-system",
-      "name": "Tone and tone notation",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-igbo-2-part-ii-sound-system-4-the-igbo-alphabet",
-      "topic": "waec-igbo-2-part-ii-sound-system",
-      "name": "The Igbo alphabet",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-igbo-3-part-iii-grammar-1-spelling-rules",
-      "topic": "waec-igbo-3-part-iii-grammar",
-      "name": "Spelling rules.",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-igbo-3-part-iii-grammar-2-word-formation",
-      "topic": "waec-igbo-3-part-iii-grammar",
-      "name": "Word formation.",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-igbo-3-part-iii-grammar-3-igbo-dialects-and-standard-igbo",
-      "topic": "waec-igbo-3-part-iii-grammar",
-      "name": "Igbo dialects and Standard Igbo.",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-igbo-3-part-iii-grammar-4-loan-words",
-      "topic": "waec-igbo-3-part-iii-grammar",
-      "name": "Loan words.",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-igbo-3-part-iii-grammar-5-igbo-metalanguage-new-words",
-      "topic": "waec-igbo-3-part-iii-grammar",
-      "name": "Igbo metalanguage (new words).",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-igbo-3-part-iii-grammar-6-word-classes-noun-verb-pronoun-conjunction-preposition-etc",
-      "topic": "waec-igbo-3-part-iii-grammar",
-      "name": "Word classes: Noun, verb, pronoun, conjunction, preposition, etc.",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-3-part-iii-grammar-7-grammatical-categories-tense-number-and-person",
-      "topic": "waec-igbo-3-part-iii-grammar",
-      "name": "Grammatical categories: tense, number and person.",
+      "slug": "waec-tone-and-tone-notation-e-the-igbo-alphabet",
+      "topic": "waec-part-ii-sound-system",
+      "name": "Tone and tone notation. (e) The Igbo alphabet",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-3-part-iii-grammar-8-phrases-and-clauses-their-types-and-functions",
-      "topic": "waec-igbo-3-part-iii-grammar",
-      "name": "Phrases and Clauses: their types and functions.",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-igbo-3-part-iii-grammar-9-lexis-and-structure",
-      "topic": "waec-igbo-3-part-iii-grammar",
-      "name": "Lexis and Structure.",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-igbo-3-part-iii-grammar-10-punctuation-marks",
-      "topic": "waec-igbo-3-part-iii-grammar",
-      "name": "Punctuation marks",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-igbo-4-part-i-oral-literature-1-definition-and-characteristics-of-oral-literature",
-      "topic": "waec-igbo-4-part-i-oral-literature",
-      "name": "Definition and characteristics of oral Literature",
+      "slug": "waec-two-questions-will-be-set-for-candidates-to-answerly-one-of",
+      "topic": "waec-part-iii-grammar",
+      "name": "Two questions will be set for candidates to answerly one of them. The questions will test candidate’s knowledge of the following areas",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-4-part-i-oral-literature-2-classification-and-functions",
-      "topic": "waec-igbo-4-part-i-oral-literature",
-      "name": "Classification and functions",
+      "slug": "waec-spelling-rules",
+      "topic": "waec-part-iii-grammar",
+      "name": "Spelling rules",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-4-part-i-oral-literature-3-literary-devices",
-      "topic": "waec-igbo-4-part-i-oral-literature",
-      "name": "Literary devices",
+      "slug": "waec-word-formation",
+      "topic": "waec-part-iii-grammar",
+      "name": "Word formation",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-4-part-i-oral-literature-4-folktales-ifo",
-      "topic": "waec-igbo-4-part-i-oral-literature",
-      "name": "Folktales (ifo)",
+      "slug": "waec-igbo-dialects-and-standard-igbo",
+      "topic": "waec-part-iii-grammar",
+      "name": "Igbo dialects and Standard Igbo",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-4-part-i-oral-literature-5-anecdotes-kab-ilu",
-      "topic": "waec-igbo-4-part-i-oral-literature",
-      "name": "Anecdotes (ụkabụilu)",
+      "slug": "waec-loan-words",
+      "topic": "waec-part-iii-grammar",
+      "name": "Loan words",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-4-part-i-oral-literature-6-legends-nk-k-r-k-ak-k-dike",
-      "topic": "waec-igbo-4-part-i-oral-literature",
-      "name": "Legends (nkọkịrịkọ/akụkọ dike)",
+      "slug": "waec-igbo-metalanguage-new-words",
+      "topic": "waec-part-iii-grammar",
+      "name": "Igbo metalanguage (new words)",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-4-part-i-oral-literature-7-myths-nk-m-r-k-ak-k-okike-mmalite",
-      "topic": "waec-igbo-4-part-i-oral-literature",
-      "name": "Myths (nkọmịrịkọ/akụkọokike/mmalite)",
+      "slug": "waec-word-classes-the-noun-verb-pronoun-conjunction-preposition-e",
+      "topic": "waec-part-iii-grammar",
+      "name": "Word classes: The noun, verb, pronoun, conjunction, preposition, etc",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-4-part-i-oral-literature-8-poems-ab",
-      "topic": "waec-igbo-4-part-i-oral-literature",
-      "name": "Poems (abụ)",
+      "slug": "waec-grammatical-categories-tense-number-and-person",
+      "topic": "waec-part-iii-grammar",
+      "name": "Grammatical categories: tense, number and person",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-4-part-i-oral-literature-9-songs-uri",
-      "topic": "waec-igbo-4-part-i-oral-literature",
-      "name": "Songs (uri)",
+      "slug": "waec-phrases-and-clauses-their-types-and-functions",
+      "topic": "waec-part-iii-grammar",
+      "name": "Phrases and Clauses: their types and functions",
       "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-4-part-i-oral-literature-10-proverbs-ilu",
-      "topic": "waec-igbo-4-part-i-oral-literature",
-      "name": "Proverbs (ilu)",
+      "slug": "waec-sentences-i-their-constituents-and-types-ii-sentences-contai",
+      "topic": "waec-part-iii-grammar",
+      "name": "Sentences: i. their constituents and types. ii. Sentences containing Direct and Indirect Speech",
       "order": 10,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-4-part-i-oral-literature-11-riddles-agw-gwa",
-      "topic": "waec-igbo-4-part-i-oral-literature",
-      "name": "Riddles (agwụgwa)",
+      "slug": "waec-lexis-and-structure",
+      "topic": "waec-part-iii-grammar",
+      "name": "Lexis and Structure",
       "order": 11,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-4-part-i-oral-literature-12-chants-mbem",
-      "topic": "waec-igbo-4-part-i-oral-literature",
-      "name": "Chants (mbem)",
+      "slug": "waec-punctuation-marks-this-section-will-consist-of-two-parts-par",
+      "topic": "waec-part-iii-grammar",
+      "name": "Punctuation marks. This section will consist of two parts, Parts I and II as follows",
       "order": 12,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-4-part-i-oral-literature-13-oral-drama-ejije-n",
-      "topic": "waec-igbo-4-part-i-oral-literature",
-      "name": "Oral drama (ejije ọnụ)",
-      "order": 13,
-      "objectives": []
-    },
-    {
-      "slug": "waec-igbo-4-part-i-oral-literature-14-tongue-twisters-okwunt-hi",
-      "topic": "waec-igbo-4-part-i-oral-literature",
-      "name": "Tongue twisters (okwuntụhi)",
-      "order": 14,
-      "objectives": []
-    },
-    {
-      "slug": "waec-igbo-6-customs-omenala-1-mmemme-j-t-nz-kw-aka-t-t-g-f-dg",
-      "topic": "waec-igbo-6-customs-omenala",
-      "name": "Mmemme -ọjị, ịtụ nzụ, ịkwọ aka ụtụtụ, ịgọ ọfọ, dg",
+      "slug": "waec-part-i-oral-literature-prose-poetry-and-drama-igbo",
+      "topic": "waec-part-i-oral-literature-prose-poetry-and-drama",
+      "name": "Part I: Oral Literature – Prose, Poetry and Drama",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-6-customs-omenala-2-nnabata-b-a",
-      "topic": "waec-igbo-6-customs-omenala",
-      "name": "Nnabata ọbịa",
+      "slug": "waec-part-ii-written-literature-prose-poetry-and-drama-igbo",
+      "topic": "waec-part-ii-written-literature-prose-poetry-and-drama",
+      "name": "Part II: Written Literature – Prose, Poetry and Drama",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-three-questions-will-be-set-for-this-part-and-candidates-wil",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Three questions will be set for this part and candidates will be required to answer only one of them. All questions in this section will be based on the prescribed texts. In this part, candidates will be required to have basic knowledge of the following",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definiton-and-characteristics-of-oral-literature",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Definiton and characteristics of oral Literature",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-6-customs-omenala-3-m-m-nwa-ile-m-gw-ibi-ugwu-ikup-ta-nwa-g-aha-z-ah-a-nwa-h-eze-dg",
-      "topic": "waec-igbo-6-customs-omenala",
-      "name": "Ọmụmụ nwa – ile ọmụgwọ, ibi ugwu, ikupụta nwa, ịgụ aha, ịzụ ahịa nwa, ịhụ eze, dg",
+      "slug": "waec-classification-and-functions",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Classification and functions",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-6-customs-omenala-4-nkwenye-l-wa-gbanje-nr-ihi-isi-an-ha-ch-mmiri-dg",
-      "topic": "waec-igbo-6-customs-omenala",
-      "name": "Nkwenye – ịlọ ụwa, ọgbanje, nrọ, ihi/isi anụ, ịha/ịchụ mmiri, dg",
+      "slug": "waec-literary-devices",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Literary devices",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-6-customs-omenala-5-emume-fala-b-z-wa-ji-iri-ji-igbu-ewuukwu-iru-mgbede-wa-akwa-akwamozu-gba-mkpe-g-f4fa36c545",
-      "topic": "waec-igbo-6-customs-omenala",
-      "name": "Emume – ọfala, ịbọ ụzọ, ịwa ji/iri ji, igbu ewuukwu,iru mgbede, ịwa akwa, akwamozu, ịgba mkpe, ịgụ afọ, mbarị, ụdara, dg",
+      "slug": "waec-folktales-ifo",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Folktales (ifo)",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-6-customs-omenala-6-egwuregwu-egwu-m-aka-gba-ch-oro-t-okwe-z-nch-r-k-t-kp-okwe-mgba-kp-ga-okoso-egwu-nwa-dg",
-      "topic": "waec-igbo-6-customs-omenala",
-      "name": "Egwuregwu – egwu ụmụaka, ịgba/ịchụ oro, ịtụ okwe, ịzụ nchọrọkọtọ, ịkpọ okwe, mgba, ịkpọ ọga, okoso, egwu ọnwa, dg",
+      "slug": "waec-anecdotes-kab-ilu",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Anecdotes (ụkabụilu)",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-6-customs-omenala-7-ns-ala-ar-ihens-ebens-an-ns-osisins-ime-ibee-e",
-      "topic": "waec-igbo-6-customs-omenala",
-      "name": "Nsọala/Arụ – ihensọ, ebensọ, anụnsọ, osisinsọ, ime ibeeṅe",
+      "slug": "waec-legends-nk-k-r-k-ak-k-dike",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Legends (nkọkịrịkọ/akụkọ dike)",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-7-institutions-ewumewu-1-ewumewu-ch-ch-ezina-l-nd-eze-d-nala-nze-na-z-m-kp-m-ada-otu-gb-otu-nzuzo-o-c15e0ce686",
-      "topic": "waec-igbo-7-institutions-ewumewu",
-      "name": "Ewumewu ọchịchị – ezinaụlọ, ndị eze ọdịnala, nze na ọzọ, ụmụọkpụ/ụmụada, otu ọgbọ, otu nzuzo, otu inyomdi, ụmụnna, ogbe, obodo.",
+      "slug": "waec-myths-nk-m-r-k-ak-k-okike-mmalite",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Myths (nkọmịrịkọ/akụkọokike/mmalite)",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-poems-ab",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Poems (abụ)",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-songs-uri",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Songs (uri)",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-proverbs-ilu",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Proverbs (ilu)",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-riddles-agw-gwa",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Riddles (agwụgwa)",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-chants-mbem",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Chants (mbem)",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-oral-drama-ejije-n",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Oral drama (ejije ọnụ)",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-tongue-twisters-okwunt-hi",
+      "topic": "waec-part-i-oral-literature",
+      "name": "Tongue twisters (okwuntụhi)",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-three-questions-will-be-set-for-this-part-and-candidates-wil-igbo",
+      "topic": "waec-part-ii-written-literature",
+      "name": "Three questions will be set for this part and candidates will be required to attempt only one. All questions in this section will be based on the prescribed texts. Two questions will be set on culture and candidates will be required to attempt only one. Candidates should be familiar with Igbo customs and institutions as aspects of the culture. The following areas will be covered",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-7-institutions-ewumewu-2-ewumewu-mmek-r-ta-mmad-na-ibe-ya-al-mal-ezina-l-g-g-nwanwa-nwadiala-gba-nd-gba-orik",
-      "topic": "waec-igbo-7-institutions-ewumewu",
-      "name": "Ewumewu mmekọrịta mmadụ na ibe ya – alụmalụ, ezinaụlọ, ịgọ ọgọ, nwanwa/nwadiala, ịgba ndụ, ịgba orikọ",
+      "slug": "waec-i-njirimara-nd-igbo-as-s-ejiji-omenala-ekpemekpe-agbamb-dg-i",
+      "topic": "waec-customs-omenala",
+      "name": "i. Njirimara ndị Igbo-asụsụ, ejiji, omenala, ekpemekpe , agbambọ, dg. ii. Ekele ndị Igbo n’oge dị icheiche. (b) Mmemme -ọjị, ịtụ nzụ, ịkwọ aka ụtụtụ, ịgọ ọfọ, dg. (c) Nnabata ọbịa. (d) Ọmụmụ nwa - ile ọmụgwọ, ibi ugwu, ikupụta nwa, ịgụ aha, ịzụ ahịa nwa, ịhụ eze, dg. (e) Nkwenye - ịlọ ụwa, ọgbanje, nrọ, ihi/isi anụ, ịha/ịchụ mmiri, dg. (f) Emume - ọfala, ịbọ ụzọ, ịwa ji/iri ji, igbu ewuukwu,iru mgbede, ịwa akwa, akwamozu, ịgba mkpe, ịgụ afọ, mbarị, ụdara, dg. (g) Egwuregwu – egwu ụmụaka, ịgba/ịchụ oro, ịtụ okwe, ịzụ nchọrọkọtọ, ịkpọ okwe, mgba, ịkpọ ọga, okoso, egwu ọnwa, dg. (h) Nsọala/Arụ - ihensọ, ebensọ, anụnsọ, osisinsọ, ime ibeeṅe",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-ewumewu-ch-ch-ezina-l-nd-eze-d-nala-nze-na-z-m-kp-m-ada-otu",
+      "topic": "waec-institutions-ewumewu",
+      "name": "Ewumewu ọchịchị - ezinaụlọ, ndị eze ọdịnala, nze na ọzọ, ụmụọkpụ/ụmụada, otu ọgbọ, otu nzuzo, otu inyomdi, ụmụnna, ogbe, obodo",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-ewumewu-mmek-r-ta-mmad-na-ibe-ya-al-mal-ezina-l-g-g-nwanwa-n",
+      "topic": "waec-institutions-ewumewu",
+      "name": "Ewumewu mmekọrịta mmadụ na ibe ya - alụmalụ, ezinaụlọ, ịgọ ọgọ, nwanwa/nwadiala, ịgba ndụ, ịgba orikọ",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-7-institutions-ewumewu-3-echichi-l-l-iy-m-m-ezeji-jioke-atama",
-      "topic": "waec-igbo-7-institutions-ewumewu",
-      "name": "Echichi – Lọọlọ, Iyọm, Ọmụ, Ezeji, Jioke, Atama",
+      "slug": "waec-echichi-l-l-iy-m-m-ezeji-jioke-atama",
+      "topic": "waec-institutions-ewumewu",
+      "name": "Echichi - Lọọlọ, Iyọm, Ọmụ, Ezeji, Jioke, Atama",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-7-institutions-ewumewu-4-abamaba-mm-nw-k-nk-ekpe-mabe-odo-dib-a",
-      "topic": "waec-igbo-7-institutions-ewumewu",
-      "name": "Abamaba – Mmọnwụ,Ọkọnkọ, Ekpe, Ọmabe, Odo, Dibịa",
+      "slug": "waec-abamaba-mm-nw-k-nk-ekpe-mabe-odo-dib-a",
+      "topic": "waec-institutions-ewumewu",
+      "name": "Abamaba - Mmọnwụ,Ọkọnkọ, Ekpe, Ọmabe, Odo, Dibịa",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-7-institutions-ewumewu-5-ewumewu-ak-na-ba-ike-ekpe-iri-ekpe-ala-na-ihe-d-na-ya",
-      "topic": "waec-igbo-7-institutions-ewumewu",
+      "slug": "waec-ewumewu-ak-na-ba-ike-ekpe-iri-ekpe-ala-na-ihe-d-na-ya",
+      "topic": "waec-institutions-ewumewu",
       "name": "Ewumewu akụnaụba – ike ekpe, iri ekpe, ala na ihe dị na ya",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-7-institutions-ewumewu-6-aka-r-kp-z-gba-nta-k-az-r-ugbo-kwa-nka-kp-ite-dg",
-      "topic": "waec-igbo-7-institutions-ewumewu",
-      "name": "Akaọrụ – ịkpụ ụzụ, ịgba nta, ịkụ azụ, ọrụugbo, ịkwa nka, ịkpụ ite, dg",
+      "slug": "waec-aka-r-kp-z-gba-nta-k-az-r-ugbo-kwa-nka-kp-ite-dg",
+      "topic": "waec-institutions-ewumewu",
+      "name": "Akaọrụ - ịkpụ ụzụ, ịgba nta, ịkụ azụ, ọrụugbo, ịkwa nka, ịkpụ ite, dg",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-7-institutions-ewumewu-7-ewumewu-ofufe-gba-afa-ch-aja-dg",
-      "topic": "waec-igbo-7-institutions-ewumewu",
-      "name": "Ewumewu ofufe – ịgba afa, ịchụ aja, dg",
+      "slug": "waec-ewumewu-ofufe-gba-afa-ch-aja-dg",
+      "topic": "waec-institutions-ewumewu",
+      "name": "Ewumewu ofufe - ịgba afa, ịchụ aja, dg",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-7-institutions-ewumewu-8-ngwa-ofufe-f-ikenga-okpesi-ogu-t-nsi-dg",
-      "topic": "waec-igbo-7-institutions-ewumewu",
-      "name": "Ngwa ofufe – ọfọ, ikenga, okpesi, ogu, ọtọnsi , dg",
+      "slug": "waec-ngwa-ofufe-f-ikenga-okpesi-ogu-t-nsi-dg",
+      "topic": "waec-institutions-ewumewu",
+      "name": "Ngwa ofufe - ọfọ, ikenga, okpesi, ogu, ọtọnsi , dg",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-igbo-7-institutions-ewumewu-9-ihe-ofufe-nd-ichie-ar-s-ikenga-ala-mm-mmiri-ar-s-agbarad-ka-ogwugwu-ah-aji-216fbda0e9",
-      "topic": "waec-igbo-7-institutions-ewumewu",
-      "name": "Ihe ofufe – Ndịichie, Arụsị, Ikenga, Ala, Mmụọ mmiri, Arụsị/ Agbaradịka Ogwugwu, Ahịajiọkụ, Agwụ, Amadịọha, Kamalụ, Agbala, Ibini Ụkpabị, Ojukwu, Igwekaala, Idemmili, dg",
+      "slug": "waec-ihe-ofufe-nd-ichie-ar-s-ikenga-ala-mm-mmiri-ar-s-agbara-d-ka",
+      "topic": "waec-institutions-ewumewu",
+      "name": "Ihe ofufe - Ndịichie, Arụsị, Ikenga, Ala, Mmụọ mmiri, Arụsị/ Agbara dịka Ogwugwu, Ahịajiọkụ, Agwụ, Amadịọha, Kamalụ, Agbala, Ibini Ụkpabị, Ojukwu, Igwekaala, Idemmili, dg",
       "order": 9,
       "objectives": []
     }

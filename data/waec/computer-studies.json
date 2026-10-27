@@ -8,776 +8,106 @@
       "objective_paper_questions": 50,
       "countries": [],
       "syllabus_exam": "WAEC",
-      "syllabus_subject": "computer-science"
+      "syllabus_subject": "computer-studies"
     }
   ],
   "topics": [
     {
-      "slug": "waec-computer-studies-1-computing-devices-i-pre-computing-age-19th-century",
+      "slug": "waec-computer-evolution",
       "subject": "computer-studies",
       "exam": "WAEC",
-      "name": "Computing Devices I (Pre-computing age- 19th century)",
+      "name": "COMPUTER EVOLUTION",
       "order": 1,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-computer-studies-2-computing-devices-ii-20th-century-to-date",
+      "slug": "waec-fundamentals-of-computing",
       "subject": "computer-studies",
       "exam": "WAEC",
-      "name": "Computing Devices II (20th century to date)",
+      "name": "FUNDAMENTALS OF COMPUTING",
       "order": 2,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-computer-studies-3-overview-of-computing-systems",
+      "slug": "waec-computer-ethics-and-human-issues",
       "subject": "computer-studies",
       "exam": "WAEC",
-      "name": "Overview of Computing Systems",
+      "name": "COMPUTER ETHICS AND HUMAN ISSUES",
       "order": 3,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-computer-studies-4-characteristics-of-computers",
+      "slug": "waec-computer-hardware",
       "subject": "computer-studies",
       "exam": "WAEC",
-      "name": "Characteristics of Computers",
+      "name": "COMPUTER HARDWARE",
       "order": 4,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-computer-studies-5-differences-between-hardware-and-software",
+      "slug": "waec-computer-software",
       "subject": "computer-studies",
       "exam": "WAEC",
-      "name": "Differences between hardware and software",
+      "name": "COMPUTER SOFTWARE",
       "order": 5,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-computer-studies-6-data-and-information-definition-and-examples-of-data-and-information",
+      "slug": "waec-computer-application",
       "subject": "computer-studies",
       "exam": "WAEC",
-      "name": "Data and Information: Definition and examples of data and information",
+      "name": "COMPUTER APPLICATION",
       "order": 6,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-computer-studies-7-computer-ethics",
+      "slug": "waec-managing-computer-files",
       "subject": "computer-studies",
       "exam": "WAEC",
-      "name": "Computer Ethics",
+      "name": "MANAGING COMPUTER FILES",
       "order": 7,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-computer-studies-8-legal-issues",
+      "slug": "waec-basic-computer-operations",
       "subject": "computer-studies",
       "exam": "WAEC",
-      "name": "Legal Issues",
+      "name": "BASIC COMPUTER OPERATIONS",
       "order": 8,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-computer-studies-9-input-devices",
+      "slug": "waec-information-and-communication",
       "subject": "computer-studies",
       "exam": "WAEC",
-      "name": "Input devices",
+      "name": "INFORMATION AND COMMUNICATION",
       "order": 9,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples",
+      "slug": "waec-developing-problem-solving-skills",
       "subject": "computer-studies",
       "exam": "WAEC",
-      "name": "Output Devices -Definition and examples",
+      "name": "DEVELOPING PROBLEM-SOLVING SKILLS",
       "order": 10,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Computer Software",
-      "order": 11,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-12-word-processing",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Word Processing",
-      "order": 12,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-13-features-of-word-processing-programs-in-general",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Features of Word Processing programs in general.",
-      "order": 13,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-14-features-of-ms-word",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Features of MS Word",
-      "order": 14,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-15-further-operations-in-ms-word",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Further operations in MS Word",
-      "order": 15,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-16-spreadsheet",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Spreadsheet",
-      "order": 16,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-17-arithmetic-calculations-using-formula-and-built-in-function",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Arithmetic calculations using formula and built-in function",
-      "order": 17,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-18-additional-operation-in-excel",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Additional operation in Excel",
-      "order": 18,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-19-database",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Database",
-      "order": 19,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-20-graphics",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Graphics",
-      "order": 20,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-21-presentation-package",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Presentation package",
-      "order": 21,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-22-powerpoint-operation",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "PowerPoint operation",
-      "order": 22,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-23-definition-of-some-terms",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Definition of some terms",
-      "order": 23,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-24-definition-of-some-terms",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Definition of some terms",
-      "order": 24,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-25-types-of-the-data-item",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Types of the data item",
-      "order": 25,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-26-file-structure-organization-data-item-a-record-file-database",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "File structure organization (Data item—a record—file—database)",
-      "order": 26,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-27-types-of-file-organization",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Types of file organization",
-      "order": 27,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-28-methods-of-accessing-files",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Methods of accessing files",
-      "order": 28,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-29-file-classification",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "File classification",
-      "order": 29,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-30-criteria-for-classifying-files",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Criteria for classifying files:",
-      "order": 30,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-31-basic-operation-of-computer-files",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Basic operation of computer files",
-      "order": 31,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-32-effect-of-file-insecurity",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Effect of file insecurity",
-      "order": 32,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-33-causes-of-data-loss",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Causes of data loss",
-      "order": 33,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-34-methods-of-file-security",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Methods of file security",
-      "order": 34,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-35-differences-between-computer-files-and-manual-files",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Differences between computer files and manual files",
-      "order": 35,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-36-advantages-of-computer-files",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Advantages of computer files",
-      "order": 36,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-37-disadvantages-of-computer-files",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Disadvantages of computer files",
-      "order": 37,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-38-booting-and-shutting-down-process",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Booting and shutting down process",
-      "order": 38,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-39-identification-of-features-on-a-desktop",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Identification of features on a desktop",
-      "order": 39,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-40-steps-involved-in-how-a-computer-converts-data-to-required-information-input-process-output",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Steps involved in how a computer converts data to required information (Input-Process-Output)",
-      "order": 40,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-41-factors-affecting-the-speed-of-data-transfer",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Factors affecting the speed of data transfer",
-      "order": 41,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-42-what-ict-acronym-stands-for",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "What‘ICT’ acronym stands for?",
-      "order": 42,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-43-types-of-ict",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Types of ICT",
-      "order": 43,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-44-examples-of-broadcasting",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Examples of Broadcasting",
-      "order": 44,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-45-examples-of-telecommunication",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Examples of Telecommunication",
-      "order": 45,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-46-examples-of-data-networks",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Examples of data networks",
-      "order": 46,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-47-examples-of-information-systems",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "-Examples of Information Systems",
-      "order": 47,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-48-application-areas-of-ict",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Application areas of ICT",
-      "order": 48,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-49-application-areas-of-ict-include-the-following",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Application Areas of ICT include the following",
-      "order": 49,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-50-ct-based-gadgets-and-their-operations",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "CT-based gadgets and their operations",
-      "order": 50,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Definition of the Internet and some Internet terms:",
-      "order": 51,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-52-types-of-internet-browsers",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Types of Internet browsers",
-      "order": 52,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-53-features-of-internet-browsers",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Features of Internet browsers",
-      "order": 53,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-54-types-of-internet-services",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Types of Internet services",
-      "order": 54,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-55-definition-of-electronic-mail",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Definition of electronic mail",
-      "order": 55,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-56-e-mail-services",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "E-mail Services:",
-      "order": 56,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-57-networking",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Networking",
-      "order": 57,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-58-protocol",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Protocol",
-      "order": 58,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-59-uses-benefits-of-www",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Uses/benefits of www",
-      "order": 59,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-60-difference-between-e-mail-and-website-address-features-e-g-www-waeconline-org",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Difference between e-mail and website address features: e.g.www.waeconline.org",
-      "order": 60,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-61-software-for-web-development",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Software for web development",
-      "order": 61,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-62-cables-and-connectors",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Cables and Connectors",
-      "order": 62,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-63-programming-language-pl",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Programming Language (PL)",
-      "order": 63,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-64-high-level-languages",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "High-Level Languages",
-      "order": 64,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-65-algorithm-and-flowchart",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Algorithm and Flowchart",
-      "order": 65,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-66-basic-programming",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "BASIC Programming",
-      "order": 66,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-67-built-in-functions-in-basic",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Built-in functions in BASIC",
-      "order": 67,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-68-definition-of-the-system-development-cycle",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Definition of the system development cycle",
-      "order": 68,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-69-description-of-the-system-development-cycle",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Description of the system development cycle",
-      "order": 69,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-70-stages-in-the-system-development-cycle",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Stages in the system development Cycle",
-      "order": 70,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-71-description-of-each-stage-of-a-system-development-cycle",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Description of each stage of a system development cycle",
-      "order": 71,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-72-diagram-of-a-system-development-cycle",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Diagram of a system development cycle",
-      "order": 72,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-73-definition-of-the-program",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Definition of the program",
-      "order": 73,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-74-characteristics-of-a-good-program",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Characteristics of a good Program",
-      "order": 74,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-75-precautions-in-developing-a-program",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Precautions in developing a program",
-      "order": 75,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-76-steps-involved-in-program-development",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Steps involved in program development",
-      "order": 76,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-computer-studies-77-description-of-each-of-the-stages-in-program-development",
-      "subject": "computer-studies",
-      "exam": "WAEC",
-      "name": "Description of each of the stages in program development",
-      "order": 77,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -785,2278 +115,1200 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-computer-studies-1-computing-devices-i-pre-computing-age-19th-century-1-the-trend-of-development-in-comp-c3c47b398d",
-      "topic": "waec-computer-studies-1-computing-devices-i-pre-computing-age-19th-century",
-      "name": "The trend of development in computing devices from one to the other",
+      "slug": "waec-trend-of-i-features-components-and-uses-of-early-computing-d",
+      "topic": "waec-computer-evolution",
+      "name": "Trend of (i) Features , components and uses of early computing development",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-2-computing-devices-ii-20th-century-to-date-1-eniac",
-      "topic": "waec-computer-studies-2-computing-devices-ii-20th-century-to-date",
-      "name": "ENIAC",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-2-computing-devices-ii-20th-century-to-date-2-edvac",
-      "topic": "waec-computer-studies-2-computing-devices-ii-20th-century-to-date",
-      "name": "EDVAC",
+      "slug": "waec-computing-devices-i-pre-devices-in-computing-computing-age-1",
+      "topic": "waec-computer-evolution",
+      "name": "Computing Devices I (Pre-devices: in computing computing age- 19th century) - Abacus; devices from - Slide Rule ; one to the - Napier’s bone; other. - Pascal’s calculator; - Leibnitz multiplier; - Jacquad loom; - Charles Babbage’s analytical engine; - Hollerith Census Machine; - Burrough’s Machine",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-2-computing-devices-ii-20th-century-to-date-3-univac-1",
-      "topic": "waec-computer-studies-2-computing-devices-ii-20th-century-to-date",
-      "name": "UNIVAC 1",
+      "slug": "waec-contribution-of-each-of-the-founder-of-these-devices-to-mode",
+      "topic": "waec-computer-evolution",
+      "name": "Contribution of each of the founder of these devices to modern computers",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-2-computing-devices-ii-20th-century-to-date-4-desktop-personal-computers",
-      "topic": "waec-computer-studies-2-computing-devices-ii-20th-century-to-date",
-      "name": "Desktop Personal Computers",
+      "slug": "waec-computing-devices-ii-20th-features-components-and-sizes-and",
+      "topic": "waec-computer-evolution",
+      "name": "Computing Devices II (20th Features, components and Sizes and basic century to date) uses of: components -ENIAC should be -EDVAC considered in -UNIVAC 1 a comparative -Desktop Personal form. Computers -Laptop and Notebook computers -Palmtop",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-2-computing-devices-ii-20th-century-to-date-5-laptop-and-notebook-computers",
-      "topic": "waec-computer-studies-2-computing-devices-ii-20th-century-to-date",
-      "name": "Laptop and Notebook computers",
+      "slug": "waec-definition-of-a-computer-two-main-constituents-differences-o",
+      "topic": "waec-fundamentals-of-computing",
+      "name": "- Definition of a Computer; - Two main constituents Differences of a Computer",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-overview-of-computing-system-between-computer-hardware-hardw",
+      "topic": "waec-fundamentals-of-computing",
+      "name": "Overview of Computing System between - Computer hardware; hardware and - Computer software software - Classification and should be examples of treated. hardware and software. - Functional parts of a computer Characteristics of Computers - Electronic in nature; - Accuracy; - Speed; - Interactive etc",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-data-and-information-definition-and-examples-of-data-and-inf",
+      "topic": "waec-fundamentals-of-computing",
+      "name": "Data and Information - Definition and examples of data and information; - Differences between data and information",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definition-and-1-sources-of-security-security-and-ethics-eff",
+      "topic": "waec-computer-ethics-and-human-issues",
+      "name": "Definition and 1. Sources of security Security and Ethics effects of breaches: viruses and - Virus, worms and worms should Trojan horses; be treated - Poor implementation of network; - Poor implementation or lack of ICT policies; - Carelessness-giving out personal and vital information on the net without careful screening. - Hackers, spammers etc. Definition of hackers and spammers should be treated 2. Preventive measures - Use of antivirus software e.g. Norton, McAfee, Avast, etc - Use of firewall; Explanation of - Exercising care in giving firewall is out vital and personal required information - Encryption - Proper Network Implementation and Definition of Polies encryption - Using sites with web should be certificates treated - Exercising care in opening e-mail attachments 3. Legal Issues -Copyright (software copyright) -ownership right to -text; -images; -audio; -video -Privacy of audio and video software -Cyber crimes -identify theft; -internet fraud -Hacking",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definition-and-examples-of",
+      "topic": "waec-computer-hardware",
+      "name": "Definition and examples of",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-input-devices-input-devices-the-use-of-keyboard-mouse-scanne",
+      "topic": "waec-computer-hardware",
+      "name": "Input devices input devices The use of keyboard, mouse, scanner, joystick, light pen, etc Classification of keys on the keyboard into Function, Numeric, Alphabetic -Cursor keys -Features, function and operation of the mouse -Differences in keyboard, mouse, light pen and scanner Output Devices -Definition and examples -Output devices: monitor, printer, speaker, plotter – Type, features and uses. -Differences between input Examples and and output devices types of -Similarities and printers and differences in inkjet, laser monitors and line printer should be treated. Combination Central Processing Unit Components of C.P.U.: of the CPU and Arithmetic and logic unit, Memory Unit control unit as system unit Function of ALU and should be Control Unit mentioned. Memory Unit Types of Memory Unit: Primaryand Secondary Physical memory identification -Components of Primary of RAM and memory unit: ROM and ROM devices RAM required. Differences and uses of ROM and RAM Examples of Seconadry memory devices: floppy disk, hard disk, compact disk(CD), flash disk, digital-video-disk(DVD) Unit of storage in memory devices: bits, nibble, bytes, kilobytes, megabytes, gigabytes, terabytes Interconversion of unit of Simple storage. calculation -Comparative study of involving the auxiliary storage devices in conversion respect of their size, speed from a unit to and technology another Size and shape variation of floppy, flask/USB and compact disks should be noted Logic equation Logic Circuits -Definition, types and uses for AND, NOT, of standard logic gate: OR gate AND, NOT, OR should be Symbols of AND, NOT, OR treated. gates Uses of logic -Construction of truth table gates are for standard logic gates required. -Differences between AND, NOT, OR gates -NAND and NOR as alternative logic gates should be treated Construction of Truth Table for NAND and NOR Construction of a simple comparator with -XOR( Simple Exclusive OR) definition of a -NOR gate comparator is required",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-differences",
+      "topic": "waec-computer-software",
+      "name": "Differences",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definition-and-types-of-between-software-system-and-system-s",
+      "topic": "waec-computer-software",
+      "name": "Definition and types of between software system and - System software application - Application software software is (ii) System software and their required examples - Operating System e.g. MS Windows - Translator e.g. Compiler - Tools/ Utility e.g. Anti-virus",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-examples-of-operating-system-operating-ms-windows-systems-of",
+      "topic": "waec-computer-software",
+      "name": "Examples of Operating System Operating - MS Windows systems of - Linux - UNIX phones, ipad - MS-DOS etc and other computerized",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-examples-of-translators-devices-should-assemblers-be-treated",
+      "topic": "waec-computer-software",
+      "name": "Examples of Translators devices should - Assemblers be treated. - Compilers E.g. Android, - Interpreters Blackberry,",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-examples-of-utility-etc-programs-editor-anti-virus-etc-diffe",
+      "topic": "waec-computer-software",
+      "name": "Examples of Utility etc. Programs - Editor - Anti-virus etc Differences among the",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-2-computing-devices-ii-20th-century-to-date-6-palmtop",
-      "topic": "waec-computer-studies-2-computing-devices-ii-20th-century-to-date",
-      "name": "Palmtop.",
+      "slug": "waec-definition-types-translators-examples-and-function-should-be",
+      "topic": "waec-computer-software",
+      "name": "Definition, types, translators examples and function should be of Operating System noted - Graphic User Interface(GUI) - GUI (MS Windows, Linux, etc) - Command line (MS DOS, UNIX, etc) Differences between GUI and Command line Operating Systems are required. Differences (c) Application Software (i) Definition and types of application software between user",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-3-overview-of-computing-systems-1-definition-of-a-computer",
-      "topic": "waec-computer-studies-3-overview-of-computing-systems",
-      "name": "Definition of a Computer",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-3-overview-of-computing-systems-2-classification-and-examples-of-hardware-and-software",
-      "topic": "waec-computer-studies-3-overview-of-computing-systems",
-      "name": "classification and examples of hardware and software",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-3-overview-of-computing-systems-3-functional-parts-of-a-computer",
-      "topic": "waec-computer-studies-3-overview-of-computing-systems",
-      "name": "Functional parts of a computer",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-4-characteristics-of-computers-1-electronic-in-nature",
-      "topic": "waec-computer-studies-4-characteristics-of-computers",
-      "name": "Electronic in nature;",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-4-characteristics-of-computers-2-accuracy",
-      "topic": "waec-computer-studies-4-characteristics-of-computers",
-      "name": "Accuracy;",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-4-characteristics-of-computers-3-speed",
-      "topic": "waec-computer-studies-4-characteristics-of-computers",
-      "name": "Speed;",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-4-characteristics-of-computers-4-interactive-etc",
-      "topic": "waec-computer-studies-4-characteristics-of-computers",
-      "name": "Interactive etc.",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-7-computer-ethics-1-security-and-ethics",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "Security and Ethics",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-7-computer-ethics-2-sources-of-security-breaches",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "Sources of security breaches:",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-7-computer-ethics-3-virus-worms-and-trojan-horses",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "Virus, worms and Trojan horses;",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-7-computer-ethics-4-poor-implementation-of-the-network",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "Poor implementation of the network",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-7-computer-ethics-5-poor-implementation-or-lack-of-ict-policies",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "Poor implementation or lack of ICT policies",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-7-computer-ethics-6-carelessness-giving-out-personal-and-vital-information-on-the-net-w-6f9e9ba1a2",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "Carelessness- giving out personal and vital information on the net without careful screening.",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-7-computer-ethics-7-hackers-spammers-etc",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "Hackers, spammers etc",
+      "slug": "waec-common-application-application-packages-and-their-program-an",
+      "topic": "waec-computer-software",
+      "name": "Common Application application Packages and their program and examples application - Word processing(MS packages are Windows) required - Spreadsheet(MS Excel) - Database(MS Access) - Graphics",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-7-computer-ethics-8-the-definition-and-effects-of-viruses-and-worms-should-be-treated",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "The definition and effects of viruses and worms should be treated",
+      "slug": "waec-packages-for-spreadsheet-purpose-accounting-software-payroll",
+      "topic": "waec-computer-software",
+      "name": "Packages for spreadsheet purpose - Accounting software - Payroll program - Banking software - Education management software - Statistical packages - Hospital management software",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-7-computer-ethics-9-the-definition-of-hackers-and-spammers-should-be-treated-preventive-measures",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "The definition of hackers and spammers should be treated. Preventive measures",
+      "slug": "waec-definition-and",
+      "topic": "waec-computer-application",
+      "name": "Definition and",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-word-processing-examples-of-word-processing-and-word-process",
+      "topic": "waec-computer-application",
+      "name": "Word Processing examples of word processing and word processor -MS Word -Wordstar -WordPerfect",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-features-of-word-processing-programs-in-general",
+      "topic": "waec-computer-application",
+      "name": "Features of Word Processing programs in general",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-application-areas-of-word-processing-programs-office-publish",
+      "topic": "waec-computer-application",
+      "name": "Application areas of Word Processing programs -Office -Publishing -Journalism -Education, etc",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-features-of-ms-word",
+      "topic": "waec-computer-application",
+      "name": "Features of MS Word",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-steps-in-activating-and-exiting-ms-word",
+      "topic": "waec-computer-application",
+      "name": "Steps in activating and exiting MS Word",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-basic-operations-in-ms-definition-of-word-each-create-operat",
+      "topic": "waec-computer-application",
+      "name": "Basic operations in MS Definition of Word each -Create operational - Edit term is - Save required. -Retrieve -Print - Close",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-further-operations-in-ms-word-move-copy-cut-use-of-different",
+      "topic": "waec-computer-application",
+      "name": "Further operations in MS Word -move -copy -cut -use of different Types and sizes of fonts -formatting -justifying -search/explore -spell checking -file merging, etc",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-spreadsheet",
+      "topic": "waec-computer-application",
+      "name": "Spreadsheet",
       "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-7-computer-ethics-10-use-of-antivirus-software-e-g-norton-mcafee-avast-etc",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "Use of antivirus software e.g. Norton, McAfee, Avast, etc",
+      "slug": "waec-definition-and-examples-of-spreadsheet-program-visicalc-ms-e",
+      "topic": "waec-computer-application",
+      "name": "Definition and examples of spreadsheet program -VisiCALC -MS Excel -SuperCALC -Autocad, etc",
       "order": 10,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-7-computer-ethics-11-use-of-firewall",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "Use of firewall",
+      "slug": "waec-feature-of-spreadsheet-program",
+      "topic": "waec-computer-application",
+      "name": "Feature of spreadsheet program",
       "order": 11,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-7-computer-ethics-12-exercising-care-in-giving-out-vital-and-personal-information",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "Exercising care in giving out vital and personal information",
+      "slug": "waec-application-areas-of-spreadsheet-programs-accounting-statist",
+      "topic": "waec-computer-application",
+      "name": "Application areas of Spreadsheet programs: -Accounting -Statistical calculation -Student result, etc",
       "order": 12,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-7-computer-ethics-13-encryption",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "Encryption",
+      "slug": "waec-features-of-ms-excel-environment-status-bar-menu-bar-formula",
+      "topic": "waec-computer-application",
+      "name": "Features of MS Excel Environment -status bar -menu bar -formula bar, etc",
       "order": 13,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-7-computer-ethics-14-proper-network-implementation-and-policies",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "Proper Network Implementation and policies",
+      "slug": "waec-definition-of-basic-terms-in-ms-excel-worksheet-workbook-cel",
+      "topic": "waec-computer-application",
+      "name": "Definition of basic terms in MS Excel -worksheet -workbook -cells -cell ranges",
       "order": 14,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-7-computer-ethics-15-using-sites-with-web-certificates",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "Using sites with web certificates",
+      "slug": "waec-data-types-in-excel-number-labels-formula",
+      "topic": "waec-computer-application",
+      "name": "Data types in Excel -Number -Labels -Formula",
       "order": 15,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-7-computer-ethics-16-exercising-care-in-opening-e-mail-attachments",
-      "topic": "waec-computer-studies-7-computer-ethics",
-      "name": "Exercising care in opening e-mail attachments",
+      "slug": "waec-basic-operation-in-excel-data-entry-simple-saving-calculatio",
+      "topic": "waec-computer-application",
+      "name": "Basic operation in Excel -Data Entry Simple -Saving calculations -Retrieve with and Copy without built- -Move in function e.g",
       "order": 16,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-8-legal-issues-1-copyright-software-copyright",
-      "topic": "waec-computer-studies-8-legal-issues",
-      "name": "Copyright (software copyright)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-8-legal-issues-2-ownership-right-to",
-      "topic": "waec-computer-studies-8-legal-issues",
-      "name": "ownership right to",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-8-legal-issues-3-text",
-      "topic": "waec-computer-studies-8-legal-issues",
-      "name": "text;",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-8-legal-issues-4-images",
-      "topic": "waec-computer-studies-8-legal-issues",
-      "name": "images",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-8-legal-issues-5-audio",
-      "topic": "waec-computer-studies-8-legal-issues",
-      "name": "audio",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-8-legal-issues-6-video",
-      "topic": "waec-computer-studies-8-legal-issues",
-      "name": "video",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-8-legal-issues-7-privacy-of-audio-and-video-software",
-      "topic": "waec-computer-studies-8-legal-issues",
-      "name": "Privacy of audio and video software",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-8-legal-issues-8-cyber-crimes",
-      "topic": "waec-computer-studies-8-legal-issues",
-      "name": "Cyber crimes",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-8-legal-issues-9-identify-theft",
-      "topic": "waec-computer-studies-8-legal-issues",
-      "name": "identify theft;",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-8-legal-issues-10-internet-fraud",
-      "topic": "waec-computer-studies-8-legal-issues",
-      "name": "Internet fraud",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-8-legal-issues-11-hacking",
-      "topic": "waec-computer-studies-8-legal-issues",
-      "name": "Hacking",
-      "order": 11,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-8-legal-issues-12-an-explanation-of-firewall-is-required",
-      "topic": "waec-computer-studies-8-legal-issues",
-      "name": "An explanation of firewall is required",
-      "order": 12,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-8-legal-issues-13-the-definition-of-encryption-should-be-treated",
-      "topic": "waec-computer-studies-8-legal-issues",
-      "name": "The definition of encryption should be treated",
-      "order": 13,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-9-input-devices-1-definition-and-examples-of-input-devices",
-      "topic": "waec-computer-studies-9-input-devices",
-      "name": "Definition and examples of input devices",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-9-input-devices-2-the-use-of-a-keyboard-mouse-scanner-joystick-light-pen-etc",
-      "topic": "waec-computer-studies-9-input-devices",
-      "name": "The use of a keyboard, mouse, scanner, joystick, light pen, etc",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-9-input-devices-3-classification-of-keys-on-the-keyboard-into-function-numeric-alphabetic",
-      "topic": "waec-computer-studies-9-input-devices",
-      "name": "Classification of keys on the keyboard into Function, Numeric, Alphabetic",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-9-input-devices-4-cursor-keys",
-      "topic": "waec-computer-studies-9-input-devices",
-      "name": "Cursor keys",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-9-input-devices-5-features-function-and-operation-of-the-mouse",
-      "topic": "waec-computer-studies-9-input-devices",
-      "name": "Features, function and operation of the mouse",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-9-input-devices-6-differences-in-keyboard-mouse-light-pen-and-scanner",
-      "topic": "waec-computer-studies-9-input-devices",
-      "name": "Differences in keyboard, mouse, light pen and scanner",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-1-output-devices-monitor-printer-speaker-plot-a6a354b740",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Output devices: monitor, printer, speaker, plotter; type, features, and uses.",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-2-differences-between-input-and-output-devices",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Differences between input and output devices",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-3-similarities-and-differences-in-inkjet-lase-6c704934bc",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Similarities and differences in inkjet, laser and line printers",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-4-examples-and-types-of-printers-and-monitors-3dae6476ba",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Examples and types of printers and monitors should be treated.",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-5-central-processing-unit-components-of-c-p-u-1fff7923c9",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Central Processing Unit Components of C.P.U.: Arithmetic and logic unit, the control unit",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-6-the-function-of-alu-and-control-unit-the-co-31f60682c2",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "The function of ALU and Control Unit The combination of the CPU and memory unit as a system unit should be mentioned.",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-7-memory-unit-types-of-memory-unit-primary-an-fa9cc1d9d4",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Memory Unit Types of Memory Unit: Primary and Secondary Memory",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-8-components-of-primary-memory-unit-rom-and-ram",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "components of Primary memory unit: ROM and RAM",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-9-differences-and-uses-of-rom-and-ram",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Differences and uses of ROM and RAM",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-10-examples-of-secondary-memory-devices-are-f-971595c8c7",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Examples of Secondary memory devices: are floppy disks, hard disks, compact disks (CD), flash disks, digital video disks (DVD)",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-11-unit-of-storage-in-memory-devices-bits-nib-7c942b2e6e",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Unit of storage in memory devices: bits, nibble, bytes, kilobytes, megabytes, gigabytes, terabytes",
-      "order": 11,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-12-interconversion-of-a-unit-of-storage",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Interconversion of a unit of storage.",
-      "order": 12,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-13-comparative-study-of-auxiliary-storage-dev-20e463115e",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "comparative study of auxiliary storage devices in respect of their size, speed and technology",
-      "order": 13,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-14-physical-identification-of-ram-and-rom-dev-0c1f185710",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Physical identification of RAM and ROM devices is required.",
-      "order": 14,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-15-simple-calculations-involving-the-conversi-4f3ffa46e2",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Simple calculations involving the conversion from one unit to another Size and shape variation of floppy, flask/USB and compact disks should be noted",
-      "order": 15,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-16-logic-circuits-definition-types-and-uses-o-8f2bcdce4d",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Logic Circuits: -Definition, types and uses of the standard Logic gate: AND, NOT, OR",
-      "order": 16,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-17-symbols-of-and-not-or-gates",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Symbols of AND, NOT, OR gates",
+      "slug": "waec-arithmetic-sum-average-calculations-using-etc-formula-and-bu",
+      "topic": "waec-computer-application",
+      "name": "Arithmetic sum, average, calculations using etc formula and built-in function",
       "order": 17,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-18-construction-of-truth-table-for-standard-logic-gates",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "construction of truth table for standard logic gates",
+      "slug": "waec-additional-operation-in-excel-editing-formatting-printing-dr",
+      "topic": "waec-computer-application",
+      "name": "Additional operation in Excel -Editing -Formatting -Printing -Drawing charts, etc Pie chart, histogram, bar chart, etc",
       "order": 18,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-19-differences-between-and-not-or-gates",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Differences between AND, NOT, OR gates",
+      "slug": "waec-database",
+      "topic": "waec-computer-application",
+      "name": "Database",
       "order": 19,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-20-nand-and-nor-as-alternative-logic-gates-sh-9edd926790",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "NAND and NOR as alternative logic gates should be treated",
+      "slug": "waec-definition-of-database-and-database-packages",
+      "topic": "waec-computer-application",
+      "name": "Definition of database and database packages",
       "order": 20,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-21-construction-of-truth-table-for-nand-and-nor",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Construction of Truth Table for NAND and NOR",
+      "slug": "waec-examples-of-database-packages-dbase-iv-foxbase-ms-access-ora",
+      "topic": "waec-computer-application",
+      "name": "Examples of database packages -Dbase IV, -Foxbase -MS Access -Oracle, etc",
       "order": 21,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-22-construction-of-a-simple-comparator-with-x-fa0e8e76bd",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Construction of a simple comparator with -XOR( Exclusive OR)",
+      "slug": "waec-basic-terms-in-database-file-record-field-key",
+      "topic": "waec-computer-application",
+      "name": "Basic terms in Database -File -Record -Field -Key",
       "order": 22,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-23-nor-gate-the-logic-equation-for-and-not-or-a31857bd21",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "NOR gate The logic equation for AND, NOT, OR gate should be treated.",
+      "slug": "waec-types-of-database-organization-methods-and-their-features-hi",
+      "topic": "waec-computer-application",
+      "name": "Types of database organization methods and their features -Hierarchical -Network -Relational",
       "order": 23,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-24-uses-of-logic-gates-are-required",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "Uses of logic gates are required.",
+      "slug": "waec-features-of-database-format-files-designed-as-tables-tables",
+      "topic": "waec-computer-application",
+      "name": "Features of database format -Files designed as tables -Tables comprise row and columns -Row containing related information about a record. -Column containing specific type of information about a field",
       "order": 24,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-10-output-devices-definition-and-examples-25-the-simple-definition-of-a-comparator-is-required",
-      "topic": "waec-computer-studies-10-output-devices-definition-and-examples",
-      "name": "The simple definition of a comparator is required.",
+      "slug": "waec-steps-in-creating-database-define-the-structure-indicate-fie",
+      "topic": "waec-computer-application",
+      "name": "Steps in creating database -define the structure -indicate field type(numeric, character, data, text, etc) -enter data -save data",
       "order": 25,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-1-system-software",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "System Software",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-2-operating-system",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Operating System",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-3-definition-and-types-of-software",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Definition and types of software",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-4-system-software",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "System software",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-5-application-software",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Application software",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-6-ii-system-software-and-their-examples",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "(ii) System software and their examples",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-7-operating-system-e-g-ms-windows",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Operating System e.g., MS Windows",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-8-translator-e-g-compiler",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Translator e.g. Compiler",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-9-tools-utility-e-g-anti-virus",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Tools/ Utility e.g. Anti-virus",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-10-examples-of-operating-systems",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Examples of Operating Systems",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-11-ms-windows",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "MS Windows",
-      "order": 11,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-12-linux",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Linux",
-      "order": 12,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-13-unix",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "UNIX",
-      "order": 13,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-14-ms-dos-etc",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "MS-DOS etc",
-      "order": 14,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-15-examples-of-translators",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Examples of Translators",
-      "order": 15,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-16-assemblers",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Assemblers",
-      "order": 16,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-17-compilers",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Compilers",
-      "order": 17,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-18-interpreters",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Interpreters",
-      "order": 18,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-19-v-examples-of-utility",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "(v) Examples of Utility",
-      "order": 19,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-20-programs",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Programs",
-      "order": 20,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-21-editor",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Editor",
-      "order": 21,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-22-anti-virus-etc",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Anti-virus etc",
-      "order": 22,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-23-definition-types-examples-and-function-of-operating-system",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Definition, types, examples and function of Operating System",
-      "order": 23,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-24-graphic-user-interface-gui",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Graphic User Interface(GUI)",
-      "order": 24,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-25-gui-ms-windows-linux-etc",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "GUI (MS Windows, Linux, etc)",
-      "order": 25,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-11-computer-software-26-command-line-ms-dos-unix-etc",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Command line (MS-DOS, UNIX, etc)",
+      "slug": "waec-basic-operations-on-already-created-database-database-search",
+      "topic": "waec-computer-application",
+      "name": "Basic operations on already created database. Database -searching -modifying -sorting -reporting -selecting -inserting, etc",
       "order": 26,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-27-differences-between-system-and-application-software-is-required",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Differences between system and application software is required",
+      "slug": "waec-graphics",
+      "topic": "waec-computer-application",
+      "name": "Graphics",
       "order": 27,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-28-operating-systems-of-phones-ipad-and-other-computerized-devices-19434ace24",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Operating systems of phones, iPad and other computerized devices should be treated. E.g., Android, Blackberry, etc.",
+      "slug": "waec-definition-of-graphics",
+      "topic": "waec-computer-application",
+      "name": "Definition of Graphics",
       "order": 28,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-29-differences-among-the-translators-should-be-noted",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Differences among the translators should be noted",
+      "slug": "waec-examples-of-graphics-packages-paint-harvard-graphics-photosh",
+      "topic": "waec-computer-application",
+      "name": "Examples of Graphics packages -Paint -Harvard graphics -Photoshop -Coreldraw, etc",
       "order": 29,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-30-differences-between-gui-and-command-line-operating-systems-are-required",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Differences between GUI and Command line Operating Systems are required.",
+      "slug": "waec-features-in-activating-and-existing-coreldraw",
+      "topic": "waec-computer-application",
+      "name": "Features in activating and existing Coreldraw",
       "order": 30,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-31-application-software-definition-and-types-of-application-software",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Application Software Definition and Types of application software",
+      "slug": "waec-simple-design-using-coreldraw-business-card-school-logo-nati",
+      "topic": "waec-computer-application",
+      "name": "Simple design using Coreldraw -Business card -School logo -National flag -Invitation card -Certification, etc",
       "order": 31,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-32-common-application-packages-and-their-examples",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Common Application Packages and their examples",
+      "slug": "waec-presentation-package",
+      "topic": "waec-computer-application",
+      "name": "Presentation package",
       "order": 32,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-33-word-processing-ms-windows",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Word processing(MS Windows)",
+      "slug": "waec-definition-of-presentation-package",
+      "topic": "waec-computer-application",
+      "name": "Definition of presentation package",
       "order": 33,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-34-spreadsheet-ms-excel",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Spreadsheet(MS Excel)",
+      "slug": "waec-examples-of-presentation-package-ms-powerpoint-etc",
+      "topic": "waec-computer-application",
+      "name": "Examples of presentation package -MS PowerPoint, etc",
       "order": 34,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-35-database-ms-access",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Database(MS Access)",
+      "slug": "waec-features-of-powerpoint-environment",
+      "topic": "waec-computer-application",
+      "name": "Features of PowerPoint environment",
       "order": 35,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-36-graphics",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Graphics",
+      "slug": "waec-steps-in-activating-and-exiting-powerpoint",
+      "topic": "waec-computer-application",
+      "name": "Steps in activating and exiting PowerPoint",
       "order": 36,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-37-packages-for-spreadsheet-purposes",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Packages for spreadsheet purposes",
+      "slug": "waec-powerpoint-operation-create-new-presentation-insert-pictures",
+      "topic": "waec-computer-application",
+      "name": "PowerPoint operation -create new presentation -insert pictures, text, graphs -animated contents -add new slide -save presentation -run slide show -print presentation -close presentation",
       "order": 37,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-38-accounting-software",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Accounting software",
+      "slug": "waec-definition-of-some",
+      "topic": "waec-managing-computer-files",
+      "name": "Definition of some",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-concept-of-computer-files-terms-computer-file-record-field-d",
+      "topic": "waec-managing-computer-files",
+      "name": "Concept of Computer Files terms -computer file -record -field -data item",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-data-item-numeric-alphabetic-alphanumeric",
+      "topic": "waec-managing-computer-files",
+      "name": "Types of data item -numeric -alphabetic -alphanumeric",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-file-structure-differences-organisation-among-the-data-item",
+      "topic": "waec-managing-computer-files",
+      "name": "File structure Differences organisation among the (Data item—record— organization file—database) methods are",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-file-required-organization-serial-sequential-index",
+      "topic": "waec-managing-computer-files",
+      "name": "Types of file required organization -serial -sequential -index -random",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-methods-of-accessing-files-serial-sequential-random",
+      "topic": "waec-managing-computer-files",
+      "name": "Methods of accessing files -serial -sequential -random",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-file-classification-master-file-transaction-file-reference-f",
+      "topic": "waec-managing-computer-files",
+      "name": "File classification -master file -transaction file -reference file",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-criteria-for-classifying-files-nature-of-content-program-and",
+      "topic": "waec-managing-computer-files",
+      "name": "Criteria for classifying files: -nature of content(program and data) -organisation method -storage medium",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-basic-operation-on-file-processing-computer-files-b-handling",
+      "topic": "waec-managing-computer-files",
+      "name": "Basic operation on File processing computer files (b) Handling Computer Files using BASIC -file programming -delete is required. -retrieve -insert -copy -view -update -open -close",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-effect-of-file-insecurity-data-loss-data-corruption-data-bec",
+      "topic": "waec-managing-computer-files",
+      "name": "Effect of file insecurity -data loss -data corruption -data becomes unreliable",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-causes-of-data-loss-over-writing-inadvertent-deletion",
+      "topic": "waec-managing-computer-files",
+      "name": "Causes of data loss -over-writing -inadvertent deletion",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-methods-of-file-security-use-of-backup-use-of-antivirus-pass",
+      "topic": "waec-managing-computer-files",
+      "name": "Methods of file security -use of backup -use of antivirus -password -proper labelling of storage devices, etc",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-differences-between-computer-files-and-manual-files",
+      "topic": "waec-managing-computer-files",
+      "name": "Differences between computer files and manual files",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-advantages-of-computer-files-more-secure-fast-to-access-etc",
+      "topic": "waec-managing-computer-files",
+      "name": "Advantages of computer files -more secure -fast to access,etc",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-disadvantages-of-computer-files-expensive-to-set-up-irregula",
+      "topic": "waec-managing-computer-files",
+      "name": "Disadvantages of computer files -expensive to set up -irregular supply of electricity",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-description-and-types-difference",
+      "topic": "waec-basic-computer-operations",
+      "name": "Description and types Difference",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-booting-and-shutting-of-booting-process-between-cold-down-pr",
+      "topic": "waec-basic-computer-operations",
+      "name": "Booting and shutting of booting process between cold down process",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-booting-and-warm-process-booting-should-cold-bootin",
+      "topic": "waec-basic-computer-operations",
+      "name": "Types of booting and warm process booting should -cold booting be treated -warm booting",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-steps-involved-in-booting-a-computer-shutting-down-a-compute",
+      "topic": "waec-basic-computer-operations",
+      "name": "Steps involved in : -booting a computer; -shutting down a computer",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-identification-of-features-on-a-desktop",
+      "topic": "waec-basic-computer-operations",
+      "name": "Identification of features on a desktop",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definition-of-registers",
+      "topic": "waec-basic-computer-operations",
+      "name": "Definition of registers,",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-computer-data-address-bus-fetch-execute-conversion",
+      "topic": "waec-basic-computer-operations",
+      "name": "Computer Data address, bus Fetch-execute Conversion",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-and-functions-cycle-is-not-of-registers-mdr-required-c",
+      "topic": "waec-basic-computer-operations",
+      "name": "Types and functions cycle is not of registers: MDR, required CIR, SCR",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-differences-between-register-and-main-memory",
+      "topic": "waec-basic-computer-operations",
+      "name": "Differences between register and main memory",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-steps-involved-in-how-a-computer-converts-data-to-required-i",
+      "topic": "waec-basic-computer-operations",
+      "name": "Steps involved in how a computer converts data to required information (Input-Process-Output)",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-factors-affecting-speed-of-data-transfer-bus-speed-bus-width",
+      "topic": "waec-basic-computer-operations",
+      "name": "Factors affecting speed of data transfer: -bus speed; -bus width",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-technology-ict",
+      "topic": "waec-information-and-communication",
+      "name": "TECHNOLOGY(ICT)",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-communication-systems",
+      "topic": "waec-information-and-communication",
+      "name": "Communication Systems",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-what-ict-acronym-stands-for",
+      "topic": "waec-information-and-communication",
+      "name": "What‘ICT’ acronym stands for",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-ict-broadcasting-telecommunication-data-network-inf",
+      "topic": "waec-information-and-communication",
+      "name": "Types of ICT -Broadcasting -Telecommunication -Data Network -Information Systems -Satellite Communications -Examples of Broadcasting -Radio broadcasting -Television broadcasting -Satellite system -Examples of Telecommunication -Public Switched Telephone Network(PSTN)- Landline -Mobile phone systems -Circuit Switched Packet Telephone System(CSPT) -Satellite telephone system -Fixed wireless telephone system -Examples of data networks -Personal Area Network(PAN) -Local Area Network(LAN) -Metropolitan Area Network(MAN) -Wide Area Network(WAN) -Internet -Examples of Information Systems -Data Processing System -Global Positioning System(GPS)",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-application-areas-of-ict",
+      "topic": "waec-information-and-communication",
+      "name": "Application areas of ICT",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-application-areas-of-ict-definition-and-include-description",
+      "topic": "waec-information-and-communication",
+      "name": "Application Areas of ICT Definition and include description of the following: these terms -Teleconferencing are required -Video conferencing -Telecommuting -Telecomputing -Messaging -Information search, retrieval and archival",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-ict-based-gadgets-knowledge-on-and-their-the-operations-oper",
+      "topic": "waec-information-and-communication",
+      "name": "ICT based gadgets Knowledge on and their the operations operations on these ICT- -Mobile phones based gadgets -Computers is required. -Fax machines -Automated Teller Machines(ATM) -Dispensing machines -Point of Sale Machines - Automated Cash Register(ACR) -Radio sets -Television sets, etc",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definition-of-internet-c-internet-and-some-internet-terms-de",
+      "topic": "waec-information-and-communication",
+      "name": "Definition of Internet (c)Internet and some Internet terms: Demonstratio -Homepage n of these -Browse terms through -Browser Internet -Chatroom access is -Cybercafe required -HTTP -HTML -ISP -Webpage -Website,etc",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-internet-browsers-access-internet-explorer-netscape",
+      "topic": "waec-information-and-communication",
+      "name": "Types of internet browsers Access -Internet explorer -Netscape navigator Internet -Opera through these -Firefox browsers. -Cometbird ,etc",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-features-of-internet-browsers-title-bar-menu-bar-application",
+      "topic": "waec-information-and-communication",
+      "name": "Features of Internet browsers: -Title bar -Menu bar Application of -Tool bar the features of -Address bar,etc Internet",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-internet-browser-services-window-is-electronic-mail",
+      "topic": "waec-information-and-communication",
+      "name": "Types of Internet browser services window is -Electronic mail (e-required mail) -e-mail discussion group Benefits of -Instant messaging Internet to our -Telnet society should -Usenet be stressed -File Transfer Protocol(FTP) -Worldwide web(www) -Chatting, etc",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definition-of-electronic-d-electronic-mail-e-mail-mail-servi",
+      "topic": "waec-information-and-communication",
+      "name": "Definition of electronic (d) Electronic Mail(e-mail mail)Services",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-e-mail-services-sending-receiving-e-mail-chatting-etc",
+      "topic": "waec-information-and-communication",
+      "name": "E-mail Services: -sending/receiving e-mail -chatting, etc",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-steps-involved-in-creating-e-mail-account-procedure-for",
+      "topic": "waec-information-and-communication",
+      "name": "Steps involved in creating e-mail account Procedure for",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-steps-involved-in-sending-and-opening-mail-box-receiving-e",
+      "topic": "waec-information-and-communication",
+      "name": "Steps involved in sending and opening mail box receiving e",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-features-in-an-e-mail-mail-is-address-e-g-required-fmemail-f",
+      "topic": "waec-information-and-communication",
+      "name": "Features in an e-mail mail is address e.g. required fmemail@fmegovng.org",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definition-and-steps-involved-in-chatting",
+      "topic": "waec-information-and-communication",
+      "name": "Definition and steps involved in chatting",
+      "order": 17,
+      "objectives": []
+    },
+    {
+      "slug": "waec-networking",
+      "topic": "waec-information-and-communication",
+      "name": "Networking",
+      "order": 18,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definition-of-a-computer-network",
+      "topic": "waec-information-and-communication",
+      "name": "Definition of a Computer Network",
+      "order": 19,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-network-pan-lan-wan-man-internet",
+      "topic": "waec-information-and-communication",
+      "name": "Types of Network -PAN -LAN -WAN -MAN -Internet",
+      "order": 20,
+      "objectives": []
+    },
+    {
+      "slug": "waec-network-topology-differences-in-star-the-various-bus-topolog",
+      "topic": "waec-information-and-communication",
+      "name": "Network topology Differences in -Star the various -Bus topologies -Ring should be",
+      "order": 21,
+      "objectives": []
+    },
+    {
+      "slug": "waec-network-devices-treated-hub-modems-switches-knowledge-of-rou",
+      "topic": "waec-information-and-communication",
+      "name": "Network devices treated -Hub -Modems -Switches Knowledge of -Routers “Bridge” as a -Network Interface networking Card(NIC) device is",
+      "order": 22,
+      "objectives": []
+    },
+    {
+      "slug": "waec-introduction-to-worldwide",
+      "topic": "waec-information-and-communication",
+      "name": "Introduction to Worldwide",
+      "order": 23,
+      "objectives": []
+    },
+    {
+      "slug": "waec-advantages-of-required-web-w-w-w-networking",
+      "topic": "waec-information-and-communication",
+      "name": "Advantages of required. web (W.W.W.) Networking",
+      "order": 24,
+      "objectives": []
+    },
+    {
+      "slug": "waec-what-is-the-w-w-w-acronym-stands-for",
+      "topic": "waec-information-and-communication",
+      "name": "What is the ‘W.W.W.’ acronym stands for",
+      "order": 25,
+      "objectives": []
+    },
+    {
+      "slug": "waec-brief-history-of-w-w-w",
+      "topic": "waec-information-and-communication",
+      "name": "Brief history of W.W.W",
+      "order": 26,
+      "objectives": []
+    },
+    {
+      "slug": "waec-basic-terminologies-w-w-w-website-webpage-homepage-protocol",
+      "topic": "waec-information-and-communication",
+      "name": "Basic terminologies: -W.W.W. -website -webpage -homepage -protocol, etc Nigeria’s",
+      "order": 27,
+      "objectives": []
+    },
+    {
+      "slug": "waec-protocol-contribution-http-to-www-html-should-be",
+      "topic": "waec-information-and-communication",
+      "name": "Protocol contribution -HTTP to www -HTML should be",
+      "order": 28,
+      "objectives": []
+    },
+    {
+      "slug": "waec-uses-benefits-of-www-mentioned",
+      "topic": "waec-information-and-communication",
+      "name": "Uses/benefits of www mentioned",
+      "order": 29,
+      "objectives": []
+    },
+    {
+      "slug": "waec-navigating-through-websites-www-waeconline-org-www-itbeginsw",
+      "topic": "waec-information-and-communication",
+      "name": "Navigating through websites www.waeconline.org -www.itbeginswithu.org -www.servenigeria.com - Use of HTTP www.phillipemeagwali.co and HTML m should be -www.jambonline.org mentioned (vii)Difference between e-mail and website address features: e.g.www.waeconline.org Visits to these and waec@yahoo.com websites are (viii)Software for web essential development -Frontpage - etc",
+      "order": 30,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-network-cables-and-identification-connectors-of-dif",
+      "topic": "waec-information-and-communication",
+      "name": "Types of Network Cables and Identification Connectors of different -Cables: Twisted pair, Network coaxial, fibre optic, Cables telephone Connectors -Connectors: RJ45, RJ11, T-should be connectors treated",
+      "order": 31,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-computer-cables-and-connector-cables-power-cables-d",
+      "topic": "waec-information-and-communication",
+      "name": "Types of Computer Cables and Connector -Cables:Power cables Data cables – Printer Cable,universal serial bus(USB), monitor cable, serial cable -Connectors: Male and female",
+      "order": 32,
+      "objectives": []
+    },
+    {
+      "slug": "waec-programming",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Programming",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-programming-language-language-pl-definition-examples-levels",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Programming Language: Language(PL) Definition, examples, levels and features",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-levels-and-examples-of-programming-language-machine-language",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Levels and examples of programming language -Machine Language(ML) , e.g.100011001 -Low Level Language(LLL), e.g. Assembly Language -High Level Language(HLL) e.g. BASIC,C++, FORTRAN, etc",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-comparison-of-ml-lll-hll",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Comparison of ML, LLL, HLL",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-advantages-and-disadvantages-of-ml-lll-and-hll",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Advantages and disadvantages of ML, LLL and HLL",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-high-level",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "High Level",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definition-and-other-languages-examples-programming",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Definition and Other Languages examples programming",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-classification-of-hll-languages-as-such-as-java-scientific-p",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Classification of HLL languages as such as Java, -Scientific Python, etc. -Gen-purpose should be -Business mentioned. -AI -String processing language(SPL)",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-features-of-basic-c-pascal-cobol-comparative-study",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Features of BASIC, C, PASCAL, COBOL – Comparative study",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definition-of-c-algorithm-and-algorithhm-and-flowchart-flowc",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Definition of : (c)Algorithm and Algorithhm and Flowchart Flowchart",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-functions-of-algorithm",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Functions of Algorithm",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-characteristics-of-algorithm-finite-effective-unambiguous",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Characteristics of Algorithm: -Finite -Effective -Unambiguous",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-writing-algorithm-for-computing-average-of-a-given-set-of-nu",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Writing algorithm for: -Computing average of a given set of numbers -Evaluation of equation: y=a(b-c)2/(d+2) -Computing out the first ten odd numbers, etc",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-flowchart-symbols-i-o-process-decisions-etc",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Flowchart symbols: - I/O, Process, decisions, etc",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-use-of-each-flowchart-symbol",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Use of each flowchart symbol",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-flowchart-diagrams-for-given-programming-problem",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Flowchart diagrams for given programming problem",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-basic-programming",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "BASIC Programming",
+      "order": 17,
+      "objectives": []
+    },
+    {
+      "slug": "waec-what-basic-acronym-stands-for",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "What BASIC acronym stands for",
+      "order": 18,
+      "objectives": []
+    },
+    {
+      "slug": "waec-basic-characteristics-types-of-data-iii-types-of-data-should",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "BASIC characteristics Types of data (iii)Types of data should be -variable treated -constant/literal -numeric -string/alphanumeric",
+      "order": 19,
+      "objectives": []
+    },
+    {
+      "slug": "waec-basic-statements-input-print-lprint-let-end-rem-read-data",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "BASIC Statements INPUT PRINT, LPRINT LET END REM READ DATA",
+      "order": 20,
+      "objectives": []
+    },
+    {
+      "slug": "waec-arithmetic-operators",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Arithmetic operators (-,+,*,/)",
+      "order": 21,
+      "objectives": []
+    },
+    {
+      "slug": "waec-arithmetic-expressions",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Arithmetic Expressions",
+      "order": 22,
+      "objectives": []
+    },
+    {
+      "slug": "waec-evaluation-of-arithmetic-expressions",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Evaluation of Arithmetic expressions",
+      "order": 23,
+      "objectives": []
+    },
+    {
+      "slug": "waec-simple-basic-program-to-programs-calculate-area-of-triangle",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Simple BASIC Program to Programs calculate -Area of triangle -Area of a rectangle -Average of 3 (ix)Running Simple numbers,etc Programs The simple BASIC program developed should be executable on the computer",
+      "order": 24,
+      "objectives": []
+    },
+    {
+      "slug": "waec-built-in-functions-in-basic-sqr-x-int-x-sin-x-abs-x-rnd-x-co",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Built-in functions in BASIC -SQR(X) -INT(X) -SIN(X) -ABS(X) -RND(X) -COS(X) -TAN(X) -LOG(X) -EXP(X)",
+      "order": 25,
+      "objectives": []
+    },
+    {
+      "slug": "waec-basic-notation-of-cid-1-cid-2-cid-2-cid-5-cid-1-cid-6-cid-7",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "BASIC Notation of (cid:1)(cid:2)±√(cid:2)(cid:5)(cid:1)(cid:6)(cid:7)(cid:8) - (cid:9)(cid:7) -(x-y)/(x+y) -(a+b) +c/sind -ex+y – sin(x+ny), etc",
+      "order": 26,
+      "objectives": []
+    },
+    {
+      "slug": "waec-basic-program-to-find-the-square-root-of-numbers-find-square",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "BASIC program to -find the square root of numbers -find square root of S, Numbers of round up to an iterations integer should not -find the cosine of exceed eight known values",
+      "order": 27,
+      "objectives": []
+    },
+    {
+      "slug": "waec-find-the-tangent-of-given-angles-plot-sine-wave-curve",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": ". -find the tangent of given angles. -plot sine wave curve",
+      "order": 28,
+      "objectives": []
+    },
+    {
+      "slug": "waec-additional-basic-statements-dim-statement-for-next-statement",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Additional BASIC Statements -DIM Statement -FOR – NEXT statement -WHILE-END statement",
+      "order": 29,
+      "objectives": []
+    },
+    {
+      "slug": "waec-defining-one-dimensional-array-using-dim-statement",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Defining one-dimensional array , using DIM statement",
+      "order": 30,
+      "objectives": []
+    },
+    {
+      "slug": "waec-operating-on-array-elements-input-of-array-output-of-array-a",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Operating on Array elements -Input of array -Output of array -Arithmetic operations on array",
+      "order": 31,
+      "objectives": []
+    },
+    {
+      "slug": "waec-write-basic-program-to-store-a-vector-of-10-numbers-calculat",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Write BASIC program to : -store a vector of 10 numbers -calculate the mean of 100 numeric values -calculate area of 10 different rectangles -Compute the sum of the first 100 integers",
+      "order": 32,
+      "objectives": []
+    },
+    {
+      "slug": "waec-systems-development-cycle",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Systems Development Cycle",
+      "order": 33,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definition-of-system-development-cycle",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Definition of system development cycle",
+      "order": 34,
+      "objectives": []
+    },
+    {
+      "slug": "waec-description-of-system-development-cycle",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Description of system development cycle",
+      "order": 35,
+      "objectives": []
+    },
+    {
+      "slug": "waec-stages-in-system-development-cycle-preliminary-study-feasibi",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Stages in system development Cycle -Preliminary study -Feasibility -Investigate study -Analysis -Design -Implementation -Maintenance -Study review",
+      "order": 36,
+      "objectives": []
+    },
+    {
+      "slug": "waec-description-of-each-stage-of-system-development-cycle",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Description of each stage of system development cycle",
+      "order": 37,
+      "objectives": []
+    },
+    {
+      "slug": "waec-diagram-of-system-development-cycle",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Diagram of system development cycle",
       "order": 38,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-39-payroll-program",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Payroll program",
+      "slug": "waec-definition-of-program-flow-diagram-e-program",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Definition of program Flow diagram (e)Program",
       "order": 39,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-40-banking-software",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Banking Software",
+      "slug": "waec-characteristics-of-a-on-how-a-development-good-compiler-and",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Characteristics of a on how a Development good compiler and Cycle Program interpreter -Accuracy works is -Readability required -Maintainability -Efficiency -Generality -Clarity",
       "order": 40,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-41-education-management-software",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Education management software",
+      "slug": "waec-precautions-in-developing-a-program-be-stable-steady-and-pat",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Precautions in developing a program -Be stable, steady and patient -No step skipping -Follow order of execution",
       "order": 41,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-42-statistical-packages",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Statistical packages",
+      "slug": "waec-steps-involved-in-program-development-problem-definition-pro",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Steps involved in program development -Problem definition -Problem analysis -Flow chatting -Desk checking -Program coding -Program compilation -Program testing/debugging -Program documentation",
       "order": 42,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-11-computer-software-43-hospital-management-software-differences-between-the-user-appli-9dfc42bf4c",
-      "topic": "waec-computer-studies-11-computer-software",
-      "name": "Hospital management software Differences between the user application programs and application packages are required",
+      "slug": "waec-description-of-each-of-stages-in-program-development",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Description of each of stages in program development",
       "order": 43,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-13-features-of-word-processing-programs-in-general-1-application-areas-of-word-processing-programs",
-      "topic": "waec-computer-studies-13-features-of-word-processing-programs-in-general",
-      "name": "Application areas of Word Processing programs",
-      "order": 1,
+      "slug": "waec-examples-of-interpreted-program-basic-compiled-program-cobol",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Examples of : -Interpreted program (BASIC) -Compiled program (COBOL, FORTRAN) 1. LIST OF FACILITIES AND MAJOR EQUIPMENT/MATERIALS REQUIRED",
+      "order": 44,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-13-features-of-word-processing-programs-in-general-2-office",
-      "topic": "waec-computer-studies-13-features-of-word-processing-programs-in-general",
-      "name": "Office",
-      "order": 2,
+      "slug": "waec-computer-set",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Computer set",
+      "order": 45,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-13-features-of-word-processing-programs-in-general-3-publishing",
-      "topic": "waec-computer-studies-13-features-of-word-processing-programs-in-general",
-      "name": "Publishing",
-      "order": 3,
+      "slug": "waec-laptops",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Laptops",
+      "order": 46,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-13-features-of-word-processing-programs-in-general-4-journalism",
-      "topic": "waec-computer-studies-13-features-of-word-processing-programs-in-general",
-      "name": "Journalism",
-      "order": 4,
+      "slug": "waec-scanners",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Scanners",
+      "order": 47,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-13-features-of-word-processing-programs-in-general-5-education-etc",
-      "topic": "waec-computer-studies-13-features-of-word-processing-programs-in-general",
-      "name": "Education, etc.",
-      "order": 5,
+      "slug": "waec-printers",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Printers",
+      "order": 48,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-14-features-of-ms-word-1-steps-in-activating-and-exiting-ms-word",
-      "topic": "waec-computer-studies-14-features-of-ms-word",
-      "name": "Steps in activating and exiting MS Word",
-      "order": 1,
+      "slug": "waec-fax-machine",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Fax Machine",
+      "order": 49,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-15-further-operations-in-ms-word-1-move-copy-cut",
-      "topic": "waec-computer-studies-15-further-operations-in-ms-word",
-      "name": "move, copy, cut",
-      "order": 1,
+      "slug": "waec-gsm-phone",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "GSM Phone",
+      "order": 50,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-15-further-operations-in-ms-word-2-use-of-different-types-and-sizes-of-fonts",
-      "topic": "waec-computer-studies-15-further-operations-in-ms-word",
-      "name": "use of different types and sizes of fonts",
-      "order": 2,
+      "slug": "waec-memory-chips",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Memory chips",
+      "order": 51,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-15-further-operations-in-ms-word-3-formatting",
-      "topic": "waec-computer-studies-15-further-operations-in-ms-word",
-      "name": "formatting",
-      "order": 3,
+      "slug": "waec-hard-disks",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Hard disks",
+      "order": 52,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-15-further-operations-in-ms-word-4-justifying",
-      "topic": "waec-computer-studies-15-further-operations-in-ms-word",
-      "name": "justifying",
-      "order": 4,
+      "slug": "waec-flash-drives",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Flash drives",
+      "order": 53,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-15-further-operations-in-ms-word-5-search-explore",
-      "topic": "waec-computer-studies-15-further-operations-in-ms-word",
-      "name": "search/explore",
-      "order": 5,
+      "slug": "waec-internet-connectivity",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Internet connectivity",
+      "order": 54,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-15-further-operations-in-ms-word-6-spell-checking",
-      "topic": "waec-computer-studies-15-further-operations-in-ms-word",
-      "name": "spell checking",
-      "order": 6,
+      "slug": "waec-dvd",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "DVD",
+      "order": 55,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-15-further-operations-in-ms-word-7-file-merging-etc",
-      "topic": "waec-computer-studies-15-further-operations-in-ms-word",
-      "name": "file merging, etc",
-      "order": 7,
+      "slug": "waec-compact-disks",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Compact disks",
+      "order": 56,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-15-further-operations-in-ms-word-8-a-definition-of-each-operational-term-is-required",
-      "topic": "waec-computer-studies-15-further-operations-in-ms-word",
-      "name": "A definition of each operational term is required.",
-      "order": 8,
+      "slug": "waec-cables-power-and-data",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Cables (power and data)",
+      "order": 57,
       "objectives": []
     },
     {
-      "slug": "waec-computer-studies-16-spreadsheet-1-feature-of-a-spreadsheet-program",
-      "topic": "waec-computer-studies-16-spreadsheet",
-      "name": "Feature of a spreadsheet program",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-18-additional-operation-in-excel-1-editing",
-      "topic": "waec-computer-studies-18-additional-operation-in-excel",
-      "name": "Editing",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-18-additional-operation-in-excel-2-formatting",
-      "topic": "waec-computer-studies-18-additional-operation-in-excel",
-      "name": "Formatting",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-18-additional-operation-in-excel-3-printing",
-      "topic": "waec-computer-studies-18-additional-operation-in-excel",
-      "name": "Printing",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-18-additional-operation-in-excel-4-drawing-charts-etc",
-      "topic": "waec-computer-studies-18-additional-operation-in-excel",
-      "name": "-Drawing charts, etc",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-18-additional-operation-in-excel-5-simple-calculations-with-and-without-built-in-functi-6a4349aef5",
-      "topic": "waec-computer-studies-18-additional-operation-in-excel",
-      "name": "Simple calculations with and without built-in functions e.g. sum, average, etc",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-18-additional-operation-in-excel-6-pie-chart-histogram-bar-chart-etc",
-      "topic": "waec-computer-studies-18-additional-operation-in-excel",
-      "name": "Pie chart, histogram, bar chart, etc",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-19-database-1-definition-of-database-and-database-packages",
-      "topic": "waec-computer-studies-19-database",
-      "name": "Definition of database and database packages",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-20-graphics-1-definition-of-graphics",
-      "topic": "waec-computer-studies-20-graphics",
-      "name": "Definition of Graphics",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-20-graphics-2-features-in-activating-and-existing-coreldraw",
-      "topic": "waec-computer-studies-20-graphics",
-      "name": "Features in activating and existing Coreldraw",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-21-presentation-package-1-definition-of-presentation-package",
-      "topic": "waec-computer-studies-21-presentation-package",
-      "name": "Definition of presentation package",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-21-presentation-package-2-features-of-powerpoint-environment",
-      "topic": "waec-computer-studies-21-presentation-package",
-      "name": "Features of PowerPoint environment",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-21-presentation-package-3-steps-in-activating-and-exiting-powerpoint",
-      "topic": "waec-computer-studies-21-presentation-package",
-      "name": "Steps in activating and exiting PowerPoint",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-22-powerpoint-operation-1-create-a-new-presentation",
-      "topic": "waec-computer-studies-22-powerpoint-operation",
-      "name": "create a new presentation",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-22-powerpoint-operation-2-insert-pictures-text-graphs",
-      "topic": "waec-computer-studies-22-powerpoint-operation",
-      "name": "insert pictures, text, graphs",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-22-powerpoint-operation-3-animated-contents",
-      "topic": "waec-computer-studies-22-powerpoint-operation",
-      "name": "animated contents",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-22-powerpoint-operation-4-add-a-new-slide",
-      "topic": "waec-computer-studies-22-powerpoint-operation",
-      "name": "add a new slide",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-22-powerpoint-operation-5-save-presentation",
-      "topic": "waec-computer-studies-22-powerpoint-operation",
-      "name": "save presentation",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-22-powerpoint-operation-6-run-a-slide-show",
-      "topic": "waec-computer-studies-22-powerpoint-operation",
-      "name": "run a slide show",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-22-powerpoint-operation-7-print-presentation",
-      "topic": "waec-computer-studies-22-powerpoint-operation",
-      "name": "print presentation",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-22-powerpoint-operation-8-close-presentation",
-      "topic": "waec-computer-studies-22-powerpoint-operation",
-      "name": "close presentation",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-23-definition-of-some-terms-1-concept-of-computer-files",
-      "topic": "waec-computer-studies-23-definition-of-some-terms",
-      "name": "Concept of Computer Files",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-23-definition-of-some-terms-2-handling-computer-files",
-      "topic": "waec-computer-studies-23-definition-of-some-terms",
-      "name": "Handling Computer Files",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-24-definition-of-some-terms-1-computer-file",
-      "topic": "waec-computer-studies-24-definition-of-some-terms",
-      "name": "computer file",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-24-definition-of-some-terms-2-record",
-      "topic": "waec-computer-studies-24-definition-of-some-terms",
-      "name": "record",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-24-definition-of-some-terms-3-field",
-      "topic": "waec-computer-studies-24-definition-of-some-terms",
-      "name": "field",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-24-definition-of-some-terms-4-data-item",
-      "topic": "waec-computer-studies-24-definition-of-some-terms",
-      "name": "data item",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-25-types-of-the-data-item-1-numeric",
-      "topic": "waec-computer-studies-25-types-of-the-data-item",
-      "name": "numeric",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-25-types-of-the-data-item-2-alphabetic",
-      "topic": "waec-computer-studies-25-types-of-the-data-item",
-      "name": "alphabetic",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-25-types-of-the-data-item-3-alphanumeric",
-      "topic": "waec-computer-studies-25-types-of-the-data-item",
-      "name": "alphanumeric",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-27-types-of-file-organization-1-serial",
-      "topic": "waec-computer-studies-27-types-of-file-organization",
-      "name": "serial",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-27-types-of-file-organization-2-sequential",
-      "topic": "waec-computer-studies-27-types-of-file-organization",
-      "name": "sequential",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-27-types-of-file-organization-3-index",
-      "topic": "waec-computer-studies-27-types-of-file-organization",
-      "name": "index",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-27-types-of-file-organization-4-random",
-      "topic": "waec-computer-studies-27-types-of-file-organization",
-      "name": "random",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-28-methods-of-accessing-files-1-serial",
-      "topic": "waec-computer-studies-28-methods-of-accessing-files",
-      "name": "serial",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-28-methods-of-accessing-files-2-sequential",
-      "topic": "waec-computer-studies-28-methods-of-accessing-files",
-      "name": "sequential",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-28-methods-of-accessing-files-3-random",
-      "topic": "waec-computer-studies-28-methods-of-accessing-files",
-      "name": "random",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-29-file-classification-1-master-file",
-      "topic": "waec-computer-studies-29-file-classification",
-      "name": "master file",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-29-file-classification-2-transaction-file",
-      "topic": "waec-computer-studies-29-file-classification",
-      "name": "transaction file",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-29-file-classification-3-reference-file",
-      "topic": "waec-computer-studies-29-file-classification",
-      "name": "reference file",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-30-criteria-for-classifying-files-1-nature-of-content-program-and-data",
-      "topic": "waec-computer-studies-30-criteria-for-classifying-files",
-      "name": "nature of content(program and data)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-30-criteria-for-classifying-files-2-organization-method",
-      "topic": "waec-computer-studies-30-criteria-for-classifying-files",
-      "name": "organization method",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-30-criteria-for-classifying-files-3-storage-medium",
-      "topic": "waec-computer-studies-30-criteria-for-classifying-files",
-      "name": "storage medium",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-31-basic-operation-of-computer-files-1-file",
-      "topic": "waec-computer-studies-31-basic-operation-of-computer-files",
-      "name": "file",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-31-basic-operation-of-computer-files-2-delete",
-      "topic": "waec-computer-studies-31-basic-operation-of-computer-files",
-      "name": "delete",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-31-basic-operation-of-computer-files-3-retrieve",
-      "topic": "waec-computer-studies-31-basic-operation-of-computer-files",
-      "name": "retrieve",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-31-basic-operation-of-computer-files-4-insert",
-      "topic": "waec-computer-studies-31-basic-operation-of-computer-files",
-      "name": "insert",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-31-basic-operation-of-computer-files-5-copy",
-      "topic": "waec-computer-studies-31-basic-operation-of-computer-files",
-      "name": "copy",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-31-basic-operation-of-computer-files-6-view",
-      "topic": "waec-computer-studies-31-basic-operation-of-computer-files",
-      "name": "View",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-31-basic-operation-of-computer-files-7-update",
-      "topic": "waec-computer-studies-31-basic-operation-of-computer-files",
-      "name": "update",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-31-basic-operation-of-computer-files-8-open",
-      "topic": "waec-computer-studies-31-basic-operation-of-computer-files",
-      "name": "open",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-31-basic-operation-of-computer-files-9-close",
-      "topic": "waec-computer-studies-31-basic-operation-of-computer-files",
-      "name": "close",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-32-effect-of-file-insecurity-1-data-loss",
-      "topic": "waec-computer-studies-32-effect-of-file-insecurity",
-      "name": "data loss",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-32-effect-of-file-insecurity-2-corruption-of-data",
-      "topic": "waec-computer-studies-32-effect-of-file-insecurity",
-      "name": "corruption of data",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-32-effect-of-file-insecurity-3-data-becomes-unreliable",
-      "topic": "waec-computer-studies-32-effect-of-file-insecurity",
-      "name": "data becomes unreliable",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-33-causes-of-data-loss-1-over-writing",
-      "topic": "waec-computer-studies-33-causes-of-data-loss",
-      "name": "over-writing",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-33-causes-of-data-loss-2-inadvertent-deletion",
-      "topic": "waec-computer-studies-33-causes-of-data-loss",
-      "name": "inadvertent deletion",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-34-methods-of-file-security-1-use-of-backup",
-      "topic": "waec-computer-studies-34-methods-of-file-security",
-      "name": "use of backup",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-34-methods-of-file-security-2-use-of-antivirus",
-      "topic": "waec-computer-studies-34-methods-of-file-security",
-      "name": "use of antivirus",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-34-methods-of-file-security-3-password",
-      "topic": "waec-computer-studies-34-methods-of-file-security",
-      "name": "password",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-34-methods-of-file-security-4-proper-labelling-of-storage-devices-etc",
-      "topic": "waec-computer-studies-34-methods-of-file-security",
-      "name": "proper labelling of storage devices, etc",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-36-advantages-of-computer-files-1-more-secure",
-      "topic": "waec-computer-studies-36-advantages-of-computer-files",
-      "name": "more secure",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-36-advantages-of-computer-files-2-fast-to-access-etc",
-      "topic": "waec-computer-studies-36-advantages-of-computer-files",
-      "name": "fast to access, etc",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-37-disadvantages-of-computer-files-1-expensive-to-set-up",
-      "topic": "waec-computer-studies-37-disadvantages-of-computer-files",
-      "name": "expensive to set up",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-37-disadvantages-of-computer-files-2-irregular-supply-of-electricity",
-      "topic": "waec-computer-studies-37-disadvantages-of-computer-files",
-      "name": "irregular supply of electricity",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-38-booting-and-shutting-down-process-1-description-and-types-of-the-booting-process",
-      "topic": "waec-computer-studies-38-booting-and-shutting-down-process",
-      "name": "Description and types of the booting process",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-39-identification-of-features-on-a-desktop-1-definition-of-registers-address-bus",
-      "topic": "waec-computer-studies-39-identification-of-features-on-a-desktop",
-      "name": "Definition of registers, address, bus",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-39-identification-of-features-on-a-desktop-2-types-and-functions-of-registers-mdr-cir-scr",
-      "topic": "waec-computer-studies-39-identification-of-features-on-a-desktop",
-      "name": "Types and functions of registers: MDR, CIR, SCR",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-39-identification-of-features-on-a-desktop-3-differences-between-register-and-main-memory",
-      "topic": "waec-computer-studies-39-identification-of-features-on-a-desktop",
-      "name": "Differences between register and main memory",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-41-factors-affecting-the-speed-of-data-transfer-1-bus-speed",
-      "topic": "waec-computer-studies-41-factors-affecting-the-speed-of-data-transfer",
-      "name": "-bus speed;",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-41-factors-affecting-the-speed-of-data-transfer-2-bus-width",
-      "topic": "waec-computer-studies-41-factors-affecting-the-speed-of-data-transfer",
-      "name": "-bus width.",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-43-types-of-ict-1-broadcasting",
-      "topic": "waec-computer-studies-43-types-of-ict",
-      "name": "Broadcasting",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-43-types-of-ict-2-telecommunication",
-      "topic": "waec-computer-studies-43-types-of-ict",
-      "name": "Telecommunication",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-43-types-of-ict-3-data-network",
-      "topic": "waec-computer-studies-43-types-of-ict",
-      "name": "Data Network",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-43-types-of-ict-4-information-systems",
-      "topic": "waec-computer-studies-43-types-of-ict",
-      "name": "Information Systems",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-43-types-of-ict-5-satellite-communications",
-      "topic": "waec-computer-studies-43-types-of-ict",
-      "name": "Satellite Communications",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-44-examples-of-broadcasting-1-radio-broadcasting",
-      "topic": "waec-computer-studies-44-examples-of-broadcasting",
-      "name": "Radio broadcasting",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-44-examples-of-broadcasting-2-television-broadcasting",
-      "topic": "waec-computer-studies-44-examples-of-broadcasting",
-      "name": "Television broadcasting",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-44-examples-of-broadcasting-3-satellite-system",
-      "topic": "waec-computer-studies-44-examples-of-broadcasting",
-      "name": "Satellite system",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-45-examples-of-telecommunication-1-public-switched-telephone-network-pstn-landline",
-      "topic": "waec-computer-studies-45-examples-of-telecommunication",
-      "name": "Public Switched Telephone Network(PSTN)-Landline",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-45-examples-of-telecommunication-2-mobile-phone-systems",
-      "topic": "waec-computer-studies-45-examples-of-telecommunication",
-      "name": "Mobile phone systems",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-45-examples-of-telecommunication-3-circuit-switched-packet",
-      "topic": "waec-computer-studies-45-examples-of-telecommunication",
-      "name": "Circuit Switched Packet",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-45-examples-of-telecommunication-4-telephone-system-cspt",
-      "topic": "waec-computer-studies-45-examples-of-telecommunication",
-      "name": "Telephone System(CSPT)",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-45-examples-of-telecommunication-5-satellite-telephone-system",
-      "topic": "waec-computer-studies-45-examples-of-telecommunication",
-      "name": "Satellite telephone system",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-45-examples-of-telecommunication-6-fixed-wireless-telephone-system",
-      "topic": "waec-computer-studies-45-examples-of-telecommunication",
-      "name": "Fixed wireless telephone system",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-46-examples-of-data-networks-1-personal-area-network-pan",
-      "topic": "waec-computer-studies-46-examples-of-data-networks",
-      "name": "Personal Area Network(PAN)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-46-examples-of-data-networks-2-local-area-network-lan",
-      "topic": "waec-computer-studies-46-examples-of-data-networks",
-      "name": "Local Area Network(LAN)",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-46-examples-of-data-networks-3-metropolitan-area-network-man",
-      "topic": "waec-computer-studies-46-examples-of-data-networks",
-      "name": "Metropolitan Area Network(MAN)",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-46-examples-of-data-networks-4-wide-area-network-wan",
-      "topic": "waec-computer-studies-46-examples-of-data-networks",
-      "name": "Wide Area Network(WAN)",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-46-examples-of-data-networks-5-internet",
-      "topic": "waec-computer-studies-46-examples-of-data-networks",
-      "name": "Internet",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-47-examples-of-information-systems-1-data-processing-system",
-      "topic": "waec-computer-studies-47-examples-of-information-systems",
-      "name": "Data Processing System",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-47-examples-of-information-systems-2-global-positioning-system-gps",
-      "topic": "waec-computer-studies-47-examples-of-information-systems",
-      "name": "Global Positioning System(GPS)",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-48-application-areas-of-ict-1-internet",
-      "topic": "waec-computer-studies-48-application-areas-of-ict",
-      "name": "Internet",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-48-application-areas-of-ict-2-electronic-mail-e-mail-services",
-      "topic": "waec-computer-studies-48-application-areas-of-ict",
-      "name": "Electronic Mail(e-mail)Services",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-49-application-areas-of-ict-include-the-following-1-teleconferencing",
-      "topic": "waec-computer-studies-49-application-areas-of-ict-include-the-following",
-      "name": "Teleconferencing",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-49-application-areas-of-ict-include-the-following-2-video-conferencing",
-      "topic": "waec-computer-studies-49-application-areas-of-ict-include-the-following",
-      "name": "Video conferencing",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-49-application-areas-of-ict-include-the-following-3-telecommuting",
-      "topic": "waec-computer-studies-49-application-areas-of-ict-include-the-following",
-      "name": "Telecommuting",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-49-application-areas-of-ict-include-the-following-4-telecomputing",
-      "topic": "waec-computer-studies-49-application-areas-of-ict-include-the-following",
-      "name": "Telecomputing",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-49-application-areas-of-ict-include-the-following-5-messaging",
-      "topic": "waec-computer-studies-49-application-areas-of-ict-include-the-following",
-      "name": "Messaging",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-49-application-areas-of-ict-include-the-following-6-information-search-retrieval-and-archival",
-      "topic": "waec-computer-studies-49-application-areas-of-ict-include-the-following",
-      "name": "Information search, retrieval and archival.",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-50-ct-based-gadgets-and-their-operations-1-mobile-phones",
-      "topic": "waec-computer-studies-50-ct-based-gadgets-and-their-operations",
-      "name": "Mobile phones",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-50-ct-based-gadgets-and-their-operations-2-computers",
-      "topic": "waec-computer-studies-50-ct-based-gadgets-and-their-operations",
-      "name": "Computers",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-50-ct-based-gadgets-and-their-operations-3-fax-machines",
-      "topic": "waec-computer-studies-50-ct-based-gadgets-and-their-operations",
-      "name": "Fax machines",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-50-ct-based-gadgets-and-their-operations-4-automated-teller-machines-atm",
-      "topic": "waec-computer-studies-50-ct-based-gadgets-and-their-operations",
-      "name": "Automated Teller Machines(ATM)",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-50-ct-based-gadgets-and-their-operations-5-dispensing-machines",
-      "topic": "waec-computer-studies-50-ct-based-gadgets-and-their-operations",
-      "name": "Dispensing machines",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-50-ct-based-gadgets-and-their-operations-6-point-of-sale-machines",
-      "topic": "waec-computer-studies-50-ct-based-gadgets-and-their-operations",
-      "name": "Point of Sale Machines",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-50-ct-based-gadgets-and-their-operations-7-automated-cash-register-acr",
-      "topic": "waec-computer-studies-50-ct-based-gadgets-and-their-operations",
-      "name": "Automated Cash Register(ACR)",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-50-ct-based-gadgets-and-their-operations-8-radio-sets",
-      "topic": "waec-computer-studies-50-ct-based-gadgets-and-their-operations",
-      "name": "Radio sets",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-50-ct-based-gadgets-and-their-operations-9-television-sets-etc",
-      "topic": "waec-computer-studies-50-ct-based-gadgets-and-their-operations",
-      "name": "Television sets, etc",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms-1-homepage",
-      "topic": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms",
-      "name": "Homepage",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms-2-browse",
-      "topic": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms",
-      "name": "Browse",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms-3-browser",
-      "topic": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms",
-      "name": "Browser",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms-4-chatroom",
-      "topic": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms",
-      "name": "Chatroom",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms-5-cybercafe",
-      "topic": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms",
-      "name": "Cybercafe",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms-6-http",
-      "topic": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms",
-      "name": "HTTP",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms-7-html",
-      "topic": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms",
-      "name": "HTML",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms-8-isp",
-      "topic": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms",
-      "name": "ISP",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms-9-webpage",
-      "topic": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms",
-      "name": "Webpage",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms-10-website-etc",
-      "topic": "waec-computer-studies-51-definition-of-the-internet-and-some-internet-terms",
-      "name": "Website, etc",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-52-types-of-internet-browsers-1-internet-explorer",
-      "topic": "waec-computer-studies-52-types-of-internet-browsers",
-      "name": "Internet Explorer",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-52-types-of-internet-browsers-2-netscape-navigator",
-      "topic": "waec-computer-studies-52-types-of-internet-browsers",
-      "name": "Netscape Navigator",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-52-types-of-internet-browsers-3-opera",
-      "topic": "waec-computer-studies-52-types-of-internet-browsers",
-      "name": "Opera",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-52-types-of-internet-browsers-4-firefox",
-      "topic": "waec-computer-studies-52-types-of-internet-browsers",
-      "name": "Firefox",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-52-types-of-internet-browsers-5-cometbird-etc",
-      "topic": "waec-computer-studies-52-types-of-internet-browsers",
-      "name": "Cometbird , etc",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-53-features-of-internet-browsers-1-title-bar",
-      "topic": "waec-computer-studies-53-features-of-internet-browsers",
-      "name": "Title bar",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-53-features-of-internet-browsers-2-menu-bar",
-      "topic": "waec-computer-studies-53-features-of-internet-browsers",
-      "name": "Menu bar",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-53-features-of-internet-browsers-3-toolbar",
-      "topic": "waec-computer-studies-53-features-of-internet-browsers",
-      "name": "Toolbar",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-53-features-of-internet-browsers-4-address-bar-etc",
-      "topic": "waec-computer-studies-53-features-of-internet-browsers",
-      "name": "Address bar etc",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-54-types-of-internet-services-1-electronic-mail-e-mail",
-      "topic": "waec-computer-studies-54-types-of-internet-services",
-      "name": "Electronic mail (e-mail)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-54-types-of-internet-services-2-e-mail-discussion-group",
-      "topic": "waec-computer-studies-54-types-of-internet-services",
-      "name": "e-mail discussion group",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-54-types-of-internet-services-3-instant-messaging",
-      "topic": "waec-computer-studies-54-types-of-internet-services",
-      "name": "Instant messaging",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-54-types-of-internet-services-4-telnet",
-      "topic": "waec-computer-studies-54-types-of-internet-services",
-      "name": "Telnet",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-54-types-of-internet-services-5-usenet",
-      "topic": "waec-computer-studies-54-types-of-internet-services",
-      "name": "Usenet",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-54-types-of-internet-services-6-file-transfer",
-      "topic": "waec-computer-studies-54-types-of-internet-services",
-      "name": "File Transfer",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-54-types-of-internet-services-7-protocol-ftp",
-      "topic": "waec-computer-studies-54-types-of-internet-services",
-      "name": "Protocol(FTP)",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-54-types-of-internet-services-8-worldwide",
-      "topic": "waec-computer-studies-54-types-of-internet-services",
-      "name": "Worldwide",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-54-types-of-internet-services-9-web-www",
-      "topic": "waec-computer-studies-54-types-of-internet-services",
-      "name": "web(www)",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-54-types-of-internet-services-10-chatting-etc",
-      "topic": "waec-computer-studies-54-types-of-internet-services",
-      "name": "Chatting, etc",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-56-e-mail-services-1-sending-receiving-e-mail",
-      "topic": "waec-computer-studies-56-e-mail-services",
-      "name": "sending/receiving e-mail",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-56-e-mail-services-2-chatting-etc",
-      "topic": "waec-computer-studies-56-e-mail-services",
-      "name": "chatting, etc",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-56-e-mail-services-3-steps-involved-in-creating-an-e-mail-account",
-      "topic": "waec-computer-studies-56-e-mail-services",
-      "name": "Steps involved in creating an e-mail account",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-56-e-mail-services-4-steps-involved-in-opening-a-mailbox",
-      "topic": "waec-computer-studies-56-e-mail-services",
-      "name": "Steps involved in opening a mailbox",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-56-e-mail-services-5-features-in-an-e-mail-address-e-g-email-protected",
-      "topic": "waec-computer-studies-56-e-mail-services",
-      "name": "Features in an e-mail address, e.g., [email protected]",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-56-e-mail-services-6-definition-and-steps-involved-in-chatting",
-      "topic": "waec-computer-studies-56-e-mail-services",
-      "name": "Definition and steps involved in chatting",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-57-networking-1-definition-of-a-computer-network",
-      "topic": "waec-computer-studies-57-networking",
-      "name": "Definition of a Computer Network",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-58-protocol-1-http",
-      "topic": "waec-computer-studies-58-protocol",
-      "name": "HTTP",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-58-protocol-2-html",
-      "topic": "waec-computer-studies-58-protocol",
-      "name": "HTML",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-62-cables-and-connectors-1-identification-of-different-network-cables-connectors-should-be-treated",
-      "topic": "waec-computer-studies-62-cables-and-connectors",
-      "name": "Identification of different Network Cables Connectors should be treated",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-63-programming-language-pl-1-programming-language-definition-examples-levels-and-features",
-      "topic": "waec-computer-studies-63-programming-language-pl",
-      "name": "Programming Language: Definition, examples, levels and features:",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-63-programming-language-pl-2-comparison-of-ml-lll-hll",
-      "topic": "waec-computer-studies-63-programming-language-pl",
-      "name": "Comparison of ML, LLL, HLL.",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-63-programming-language-pl-3-advantages-and-disadvantages-of-ml-lll-and-hll",
-      "topic": "waec-computer-studies-63-programming-language-pl",
-      "name": "Advantages and disadvantages of ML, LLL and HLL.",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-64-high-level-languages-1-definition-and-examples",
-      "topic": "waec-computer-studies-64-high-level-languages",
-      "name": "Definition and examples",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-64-high-level-languages-2-features-of-basic-c-pascal-cobol",
-      "topic": "waec-computer-studies-64-high-level-languages",
-      "name": "Features of BASIC, C, PASCAL, COBOL",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-64-high-level-languages-3-comparative-study-other-programming-languages-such-as-java-py-04edff87ad",
-      "topic": "waec-computer-studies-64-high-level-languages",
-      "name": "Comparative study Other programming languages, such as Java, Python, etc., should be mentioned.",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-65-algorithm-and-flowchart-1-definition-of-algorithm-and-flowchart",
-      "topic": "waec-computer-studies-65-algorithm-and-flowchart",
-      "name": "Definition of Algorithm and Flowchart",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-65-algorithm-and-flowchart-2-functions-of-algorithm",
-      "topic": "waec-computer-studies-65-algorithm-and-flowchart",
-      "name": "Functions of Algorithm",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-65-algorithm-and-flowchart-3-flowchart-symbols-i-o-process-decisions-etc",
-      "topic": "waec-computer-studies-65-algorithm-and-flowchart",
-      "name": "Flowchart symbols: – I/O, Process, decisions, etc",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-65-algorithm-and-flowchart-4-use-of-each-flowchart-symbol",
-      "topic": "waec-computer-studies-65-algorithm-and-flowchart",
-      "name": "Use of each flowchart symbol",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-65-algorithm-and-flowchart-5-flowchart-diagrams-for-given-programming-problem",
-      "topic": "waec-computer-studies-65-algorithm-and-flowchart",
-      "name": "Flowchart diagrams for given programming problem",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-66-basic-programming-1-what-basic-acronym-stands-for",
-      "topic": "waec-computer-studies-66-basic-programming",
-      "name": "What BASIC acronym stands for",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-66-basic-programming-2-basic-characteristics",
-      "topic": "waec-computer-studies-66-basic-programming",
-      "name": "BASIC characteristics",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-66-basic-programming-3-arithmetic-operators",
-      "topic": "waec-computer-studies-66-basic-programming",
-      "name": "Arithmetic operators(-,+,*,/)",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-66-basic-programming-4-arithmetic-expressions",
-      "topic": "waec-computer-studies-66-basic-programming",
-      "name": "Arithmetic Expressions",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-66-basic-programming-5-evaluation-of-arithmetic-expressions",
-      "topic": "waec-computer-studies-66-basic-programming",
-      "name": "Evaluation of Arithmetic expressions",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-66-basic-programming-6-simple-basic-programs",
-      "topic": "waec-computer-studies-66-basic-programming",
-      "name": "Simple BASIC Programs",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-66-basic-programming-7-running-simple-programs",
-      "topic": "waec-computer-studies-66-basic-programming",
-      "name": "Running Simple Programs",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-67-built-in-functions-in-basic-1-defining-one-dimensional-array-using-dim-statement",
-      "topic": "waec-computer-studies-67-built-in-functions-in-basic",
-      "name": "Defining one-dimensional array, using DIM statement",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-70-stages-in-the-system-development-cycle-1-preliminary-study",
-      "topic": "waec-computer-studies-70-stages-in-the-system-development-cycle",
-      "name": "Preliminary study",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-70-stages-in-the-system-development-cycle-2-feasibility",
-      "topic": "waec-computer-studies-70-stages-in-the-system-development-cycle",
-      "name": "Feasibility",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-70-stages-in-the-system-development-cycle-3-investigate-study",
-      "topic": "waec-computer-studies-70-stages-in-the-system-development-cycle",
-      "name": "Investigate study",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-70-stages-in-the-system-development-cycle-4-analysis",
-      "topic": "waec-computer-studies-70-stages-in-the-system-development-cycle",
-      "name": "Analysis",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-70-stages-in-the-system-development-cycle-5-design",
-      "topic": "waec-computer-studies-70-stages-in-the-system-development-cycle",
-      "name": "Design",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-70-stages-in-the-system-development-cycle-6-implementation",
-      "topic": "waec-computer-studies-70-stages-in-the-system-development-cycle",
-      "name": "Implementation",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-70-stages-in-the-system-development-cycle-7-maintenance",
-      "topic": "waec-computer-studies-70-stages-in-the-system-development-cycle",
-      "name": "Maintenance",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-70-stages-in-the-system-development-cycle-8-study-review",
-      "topic": "waec-computer-studies-70-stages-in-the-system-development-cycle",
-      "name": "Study review",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-74-characteristics-of-a-good-program-1-accuracy",
-      "topic": "waec-computer-studies-74-characteristics-of-a-good-program",
-      "name": "Accuracy",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-74-characteristics-of-a-good-program-2-readability",
-      "topic": "waec-computer-studies-74-characteristics-of-a-good-program",
-      "name": "Readability",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-74-characteristics-of-a-good-program-3-maintainability",
-      "topic": "waec-computer-studies-74-characteristics-of-a-good-program",
-      "name": "Maintainability",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-74-characteristics-of-a-good-program-4-efficiency",
-      "topic": "waec-computer-studies-74-characteristics-of-a-good-program",
-      "name": "Efficiency",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-74-characteristics-of-a-good-program-5-generality",
-      "topic": "waec-computer-studies-74-characteristics-of-a-good-program",
-      "name": "Generality",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-74-characteristics-of-a-good-program-6-clarity",
-      "topic": "waec-computer-studies-74-characteristics-of-a-good-program",
-      "name": "Clarity",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-75-precautions-in-developing-a-program-1-be-stable-steady-and-patient",
-      "topic": "waec-computer-studies-75-precautions-in-developing-a-program",
-      "name": "Be stable, steady and patient",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-75-precautions-in-developing-a-program-2-no-step-skipping",
-      "topic": "waec-computer-studies-75-precautions-in-developing-a-program",
-      "name": "No step skipping",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-75-precautions-in-developing-a-program-3-follow-the-order-of-execution",
-      "topic": "waec-computer-studies-75-precautions-in-developing-a-program",
-      "name": "Follow the order of execution",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-76-steps-involved-in-program-development-1-problem-definition",
-      "topic": "waec-computer-studies-76-steps-involved-in-program-development",
-      "name": "Problem definition",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-76-steps-involved-in-program-development-2-problem-analysis",
-      "topic": "waec-computer-studies-76-steps-involved-in-program-development",
-      "name": "Problem analysis",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-76-steps-involved-in-program-development-3-flow-chatting",
-      "topic": "waec-computer-studies-76-steps-involved-in-program-development",
-      "name": "Flow chatting",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-76-steps-involved-in-program-development-4-desk-checking",
-      "topic": "waec-computer-studies-76-steps-involved-in-program-development",
-      "name": "Desk checking",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-76-steps-involved-in-program-development-5-program-coding",
-      "topic": "waec-computer-studies-76-steps-involved-in-program-development",
-      "name": "Program coding",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-76-steps-involved-in-program-development-6-program-compilation",
-      "topic": "waec-computer-studies-76-steps-involved-in-program-development",
-      "name": "Program compilation",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-76-steps-involved-in-program-development-7-program-testing-debugging",
-      "topic": "waec-computer-studies-76-steps-involved-in-program-development",
-      "name": "Program testing/debugging",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-76-steps-involved-in-program-development-8-program-documentation",
-      "topic": "waec-computer-studies-76-steps-involved-in-program-development",
-      "name": "Program documentation",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-77-description-of-each-of-the-stages-in-program-development-1-interpreted-program-basic",
-      "topic": "waec-computer-studies-77-description-of-each-of-the-stages-in-program-development",
-      "name": "Interpreted program (BASIC)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-computer-studies-77-description-of-each-of-the-stages-in-program-development-2-compiled-program-cobol-fortran",
-      "topic": "waec-computer-studies-77-description-of-each-of-the-stages-in-program-development",
-      "name": "Compiled program (COBOL, FORTRAN)",
-      "order": 2,
+      "slug": "waec-word-processing-packages-database-package-basic-program-and",
+      "topic": "waec-developing-problem-solving-skills",
+      "name": "Word processing packages, database package, BASIC program and CorelDraw",
+      "order": 58,
       "objectives": []
     }
   ]

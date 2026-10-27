@@ -75,6 +75,9 @@ PROD_DATABASE_URL = "TURSO_PROD_DATABASE_URL"
 #: Read only, on purpose. The bank never writes production, so a write
 #: capable token must not be usable here, and there is no fallback to one.
 PROD_READONLY_TOKEN = "TURSO_PROD_AUTH_TOKEN_READONLY"
+#: The catalog owner's write token. Only ``utmelab-catalog apply`` reads it;
+#: it is never part of ``Settings`` and never reaches a bank batch job.
+PROD_WRITE_TOKEN = "TURSO_PROD_AUTH_TOKEN"
 BANK_DATABASE_URL = "TURSO_BANK_DATABASE_URL"
 BANK_AUTH_TOKEN = "TURSO_BANK_AUTH_TOKEN"
 GITLAB_TOKEN = "GITLAB_TOKEN"
@@ -241,6 +244,23 @@ def load_settings(*, require: bool = True) -> Settings:
         ai_image_model=values.get(AI_IMAGE_MODEL) or DEFAULT_AI_IMAGE_MODEL,
         ai_image_second_model=(values.get(AI_IMAGE_SECOND_MODEL) or DEFAULT_AI_IMAGE_SECOND_MODEL),
     )
+
+
+def catalog_write_credentials() -> tuple[str, str]:
+    """The URL and full token used only to reseed the catalog.
+
+    Kept out of :class:`Settings` on purpose: the bank pipeline has no route to
+    a write capable production token. Never print the returned token.
+    """
+    values = _read_env()
+    url = values.get(PROD_DATABASE_URL, "")
+    token = values.get(PROD_WRITE_TOKEN, "")
+    if not url or not token:
+        raise ConfigError(
+            "catalog writes need the production URL and the write token: set "
+            f"{PROD_DATABASE_URL} and {PROD_WRITE_TOKEN} in {ENV_FILE}"
+        )
+    return url, token
 
 
 __all__ = [

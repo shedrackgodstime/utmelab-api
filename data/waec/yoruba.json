@@ -8,12 +8,12 @@
       "objective_paper_questions": 60,
       "countries": [],
       "syllabus_exam": "WAEC",
-      "syllabus_subject": "yoruba-waec-syllabus"
+      "syllabus_subject": "yoruba"
     }
   ],
   "topics": [
     {
-      "slug": "waec-yoruba-1-composition",
+      "slug": "waec-composition",
       "subject": "yoruba",
       "exam": "WAEC",
       "name": "Composition",
@@ -23,7 +23,7 @@
       "countries": []
     },
     {
-      "slug": "waec-yoruba-2-sound-system",
+      "slug": "waec-sound-system",
       "subject": "yoruba",
       "exam": "WAEC",
       "name": "Sound System",
@@ -33,7 +33,7 @@
       "countries": []
     },
     {
-      "slug": "waec-yoruba-3-grammar",
+      "slug": "waec-grammar",
       "subject": "yoruba",
       "exam": "WAEC",
       "name": "Grammar",
@@ -43,7 +43,7 @@
       "countries": []
     },
     {
-      "slug": "waec-yoruba-4-oral-literature-prose-poetry-drama",
+      "slug": "waec-oral-literature-prose-poetry-drama",
       "subject": "yoruba",
       "exam": "WAEC",
       "name": "Oral Literature – Prose, Poetry, Drama",
@@ -53,7 +53,7 @@
       "countries": []
     },
     {
-      "slug": "waec-yoruba-5-written-literature-prose-poetry-drama",
+      "slug": "waec-written-literature-prose-poetry-drama",
       "subject": "yoruba",
       "exam": "WAEC",
       "name": "Written Literature – Prose, Poetry, Drama",
@@ -63,7 +63,7 @@
       "countries": []
     },
     {
-      "slug": "waec-yoruba-6-customs",
+      "slug": "waec-customs",
       "subject": "yoruba",
       "exam": "WAEC",
       "name": "Customs",
@@ -73,7 +73,7 @@
       "countries": []
     },
     {
-      "slug": "waec-yoruba-7-institutions",
+      "slug": "waec-institutions",
       "subject": "yoruba",
       "exam": "WAEC",
       "name": "Institutions",
@@ -85,261 +85,240 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-yoruba-1-composition-1-narrative",
-      "topic": "waec-yoruba-1-composition",
+      "slug": "waec-candidates-are-advised-to-write-300-words-and-spend-not-more",
+      "topic": "waec-composition",
+      "name": "Candidates are advised to write 300 words and spend not more than 45 minutes on this section. The essay will be any of the following types",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-narrative-yoruba",
+      "topic": "waec-composition",
       "name": "Narrative",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-1-composition-2-descriptive",
-      "topic": "waec-yoruba-1-composition",
+      "slug": "waec-descriptive-yoruba",
+      "topic": "waec-composition",
       "name": "Descriptive",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-1-composition-3-argumentative",
-      "topic": "waec-yoruba-1-composition",
+      "slug": "waec-argumentative-yoruba",
+      "topic": "waec-composition",
       "name": "Argumentative",
-      "order": 3,
+      "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-1-composition-4-expository",
-      "topic": "waec-yoruba-1-composition",
+      "slug": "waec-expository-yoruba",
+      "topic": "waec-composition",
       "name": "Expository",
-      "order": 4,
+      "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-1-composition-5-dialogue",
-      "topic": "waec-yoruba-1-composition",
+      "slug": "waec-dialogue-yoruba",
+      "topic": "waec-composition",
       "name": "Dialogue",
-      "order": 5,
+      "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-1-composition-6-debate",
-      "topic": "waec-yoruba-1-composition",
+      "slug": "waec-debate-yoruba",
+      "topic": "waec-composition",
       "name": "Debate",
-      "order": 6,
+      "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-1-composition-7-letter-writing",
-      "topic": "waec-yoruba-1-composition",
+      "slug": "waec-letter-writing-yoruba",
+      "topic": "waec-composition",
       "name": "Letter writing",
-      "order": 7,
+      "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-2-sound-system-1-vowels-consonants-and-syllabic-nasal",
-      "topic": "waec-yoruba-2-sound-system",
-      "name": "Vowels, Consonants and Syllabic nasal",
+      "slug": "waec-candidates-will-be-required-to-answer-one-question-from-the-yoruba",
+      "topic": "waec-sound-system",
+      "name": "Candidates will be required to answer one question from the two to be set. Areas to cover include",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-2-sound-system-2-their-production-in-terms-of-place-and-manner",
-      "topic": "waec-yoruba-2-sound-system",
-      "name": "their production in terms of place and manner",
+      "slug": "waec-vowels-consonants-and-syllabic-nasal-a-their-production-in-t",
+      "topic": "waec-sound-system",
+      "name": "Vowels, Consonants and Syllabic nasal (a) their production in terms of place and manner (b) their basic phonetic and phonemic classification",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-2-sound-system-3-their-basic-phonetic-and-phonemic-classification",
-      "topic": "waec-yoruba-2-sound-system",
-      "name": "their basic phonetic and phonemic classification",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-yoruba-2-sound-system-4-syllable-structure",
-      "topic": "waec-yoruba-2-sound-system",
+      "slug": "waec-syllable-structure-yoruba",
+      "topic": "waec-sound-system",
       "name": "Syllable structure",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-yoruba-2-sound-system-5-sound-processes-e-g-vowel-harmony-assimilation-elision",
-      "topic": "waec-yoruba-2-sound-system",
-      "name": "Sound processes, e.g. vowel harmony assimilation, elision",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-yoruba-2-sound-system-6-sound-system-aspect-of-the-orthography",
-      "topic": "waec-yoruba-2-sound-system",
-      "name": "Sound system aspect of the orthography",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-yoruba-2-sound-system-7-tones-and-tone-notation",
-      "topic": "waec-yoruba-2-sound-system",
-      "name": "Tones and tone notation",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-yoruba-3-grammar-1-word-structure-and-word-formation",
-      "topic": "waec-yoruba-3-grammar",
-      "name": "Word structure and word formation",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-yoruba-3-grammar-2-numerals-basic-and-derived",
-      "topic": "waec-yoruba-3-grammar",
-      "name": "Numerals: basic and derived",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-yoruba-3-grammar-3-word-classes-nouns-verbs-adverbs-pronouns-adjectives-etc",
-      "topic": "waec-yoruba-3-grammar",
-      "name": "Word classes: nouns, verbs, adverbs, pronouns, adjectives, etc",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-3-grammar-4-grammatical-categories-subject-object-complement-predicate-number-person-tense-aspect-mood-etc",
-      "topic": "waec-yoruba-3-grammar",
-      "name": "Grammatical categories: subject, object, complement, predicate, number, person, tense, aspect, mood, etc",
+      "slug": "waec-sound-processes-e-g-vowel-harmony-assimilation-elision",
+      "topic": "waec-sound-system",
+      "name": "Sound processes, e.g. vowel harmony assimilation elision",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-3-grammar-5-phrases-and-clauses",
-      "topic": "waec-yoruba-3-grammar",
-      "name": "Phrases and clauses",
+      "slug": "waec-sound-system-aspect-of-the-orthography",
+      "topic": "waec-sound-system",
+      "name": "Sound system aspect of the orthography",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-3-grammar-6-the-structure-and-type-of-sentences",
-      "topic": "waec-yoruba-3-grammar",
-      "name": "The structure and type of sentences.",
+      "slug": "waec-tones-and-tone-notation",
+      "topic": "waec-sound-system",
+      "name": "Tones and tone notation",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-6-customs-1-make-up-and-adornments",
-      "topic": "waec-yoruba-6-customs",
+      "slug": "waec-candidates-will-be-required-to-answer-one-question-from-the-2",
+      "topic": "waec-grammar",
+      "name": "Candidates will be required to answer one question from the two questions to be made available. Areas to cover are: i. Word structure and word formation ii. Numerals: basic and derived iii. Word classes: nouns, verbs, adverbs, pronouns, adjectives, etc iv. Grammatical categories: subject, object, complement, predicate, number, person, tense, aspect, mood, etc. v. Phrases and clauses vi. The structure and type of sentences. This section is made up of Oral Literature and Written Literature",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-in-oral-literature-there-will-be-3-set-books-covering-the-di",
+      "topic": "waec-oral-literature-prose-poetry-drama",
+      "name": "In Oral Literature, there will be 3 set books covering the different genres. 1 question will be set from each set book and candidates will be required to answer any 1 of the 3 questions",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-in-written-literature-there-will-be-three-set-books-covering",
+      "topic": "waec-written-literature-prose-poetry-drama",
+      "name": "In Written Literature, there will be three set books covering the different genres. One question will be set from each set book and candidates will be required to answer any one of the three questions. This section will consist of questions on customs and institutions. Two questions will be set and candidates will be required to answer any one of them. Areas to cover will include",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-make-up-and-adornments",
+      "topic": "waec-customs",
       "name": "Make-up and adornments",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-6-customs-2-in-door-and-out-door-games",
-      "topic": "waec-yoruba-6-customs",
+      "slug": "waec-in-door-and-out-door-games",
+      "topic": "waec-customs",
       "name": "In-door and out-door games",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-6-customs-3-pregnancy-and-its-care",
-      "topic": "waec-yoruba-6-customs",
+      "slug": "waec-pregnancy-and-its-care",
+      "topic": "waec-customs",
       "name": "Pregnancy and its care",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-6-customs-4-naming",
-      "topic": "waec-yoruba-6-customs",
+      "slug": "waec-naming",
+      "topic": "waec-customs",
       "name": "Naming",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-6-customs-5-home-training-greetings-respect-for-superiors-cleanliness-tolerance-integrity-hard-work-etc",
-      "topic": "waec-yoruba-6-customs",
-      "name": "Home training: greetings, respect for superiors, cleanliness, tolerance, integrity, hard work, etc.",
+      "slug": "waec-home-training-greetings-respect-for-superiors-cleanliness-to",
+      "topic": "waec-customs",
+      "name": "Home training: greetings, respect for superiors, cleanliness, tolerance, integrity, hard work, etc",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-6-customs-6-yoruba-foods",
-      "topic": "waec-yoruba-6-customs",
+      "slug": "waec-yoruba-foods",
+      "topic": "waec-customs",
       "name": "Yoruba foods",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-6-customs-7-non-verbal-communication",
-      "topic": "waec-yoruba-6-customs",
+      "slug": "waec-non-verbal-communication",
+      "topic": "waec-customs",
       "name": "Non-verbal communication",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-6-customs-8-funerals-traditional-and-modern-methods",
-      "topic": "waec-yoruba-6-customs",
+      "slug": "waec-funerals-traditional-and-modern-methods",
+      "topic": "waec-customs",
       "name": "Funerals: traditional and modern methods",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-6-customs-9-inheritance-traditional-and-modern-methods",
-      "topic": "waec-yoruba-6-customs",
-      "name": "Inheritance: traditional and modern methods.",
+      "slug": "waec-inheritance-traditional-and-modern-methods",
+      "topic": "waec-customs",
+      "name": "Inheritance: traditional and modern methods",
       "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-7-institutions-1-traditional-occupations",
-      "topic": "waec-yoruba-7-institutions",
+      "slug": "waec-traditional-occupations",
+      "topic": "waec-institutions",
       "name": "Traditional occupations",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-7-institutions-2-marriage",
-      "topic": "waec-yoruba-7-institutions",
+      "slug": "waec-marriage",
+      "topic": "waec-institutions",
       "name": "Marriage",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-7-institutions-3-politics-family-structure-age-grades-chieftaincy-obaship-etc",
-      "topic": "waec-yoruba-7-institutions",
-      "name": "Politics: family structure, age, grades, chieftaincy, Obaship, etc.",
+      "slug": "waec-politics-family-structure-age-grades-chieftaincy-obaship-etc",
+      "topic": "waec-institutions",
+      "name": "Politics: family structure, age grades, chieftaincy, Obaship, etc",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-7-institutions-4-child-care",
-      "topic": "waec-yoruba-7-institutions",
+      "slug": "waec-child-care",
+      "topic": "waec-institutions",
       "name": "Child care",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-7-institutions-5-ancestors",
-      "topic": "waec-yoruba-7-institutions",
+      "slug": "waec-ancestors",
+      "topic": "waec-institutions",
       "name": "Ancestors",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-7-institutions-6-yoruba-beliefs-about-olodumare-god-deities-divinities-other-invisible-forces-etc",
-      "topic": "waec-yoruba-7-institutions",
-      "name": "Yoruba beliefs about Olodumare (God), deities/divinities, other invisible forces, etc.",
+      "slug": "waec-yoruba-beliefs-about-olodumare-god-deities-divinities-other",
+      "topic": "waec-institutions",
+      "name": "Yoruba beliefs about Olodumare (God), deities/divinities, other invisible forces, etc",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-7-institutions-7-modern-religions-islam-christianity-etc",
-      "topic": "waec-yoruba-7-institutions",
-      "name": "Modern religions: Islam, Christianity, etc.",
+      "slug": "waec-modern-religions-islam-christianity-etc",
+      "topic": "waec-institutions",
+      "name": "Modern religions: Islam, Christianity, etc",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-yoruba-7-institutions-8-economy-adverts-money-lending-cooperative-efforts-etc",
-      "topic": "waec-yoruba-7-institutions",
-      "name": "Economy: adverts, money lending, cooperative efforts, etc.",
+      "slug": "waec-economy-adverts-money-lending-cooperative-efforts-etc-nb-to",
+      "topic": "waec-institutions",
+      "name": "Economy: adverts, money lending, cooperative efforts, etc. NB: To enhance the teaching of this language, it is recommended that schools provide audio-visual materials such as television sets, radios, tape-recorders and tapes, cameras, charts and artefacts",
       "order": 8,
       "objectives": []
     }
