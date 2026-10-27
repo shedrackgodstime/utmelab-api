@@ -11,10 +11,10 @@ A run is green when all of these hold:
    catalog exists, not as an active warning.
 2. Every WAEC topic and subtopic comes from the official PDF. No blank names,
    no orphans, no parent-only topics, no inferred headings.
-3. All 871 WAEC deduped rows are `ready`, or `rejected` with a recorded
+3. All 957 WAEC deduped rows are `ready`, or `rejected` with a recorded
    reason. No row is stuck.
-4. The 137 catalogued, 4 ready and 1 verified WAEC rows still resolve against
-   the rebuilt catalog.
+4. The 52 catalogued and 4 ready WAEC rows still resolve against the rebuilt
+   catalog.
 5. `cargo check --workspace`, `cargo check -p utmelab-ui --features
    web-pages,server`, `cargo test --workspace`, ruff, mypy and the four
    workflows pass.
@@ -26,12 +26,11 @@ It stays parked until phase 5.
 
 | State | Rows | Note |
 |---|---|---|
-| deduped | 3135 | 2261 NECO, 871 WAEC, 3 JAMB |
-| catalogued | 137 | all WAEC; 5 tagged by Kilo, 132 by OpenCode |
+| deduped | 3221 | 2261 NECO, 957 WAEC, 3 JAMB |
+| catalogued | 52 | all WAEC; Kilo and OpenCode, all resolving |
 | ready | 53 | 49 JAMB, 4 WAEC |
 | rejected | 172 | duplicate_exact / duplicate_near |
 | adapted | 4 | JAMB |
-| verified | 1 | WAEC |
 
 Production questions: JAMB 2241 (2240 tagged), WAEC 1 (0 tagged). WAEC catalog
 churn therefore cannot break a production question today.
@@ -121,7 +120,7 @@ diff report that explains every removal and rename.
 - Re-tag the few bank rows whose snapshot subtopic disappears; the rest keep
   their tags.
 
-### Phase 3 - the 871 WAEC rows
+### Phase 3 - the 957 WAEC rows
 
 - Run `tag -> media -> explain -> review -> ready` in batches of about 200,
   scoped by subject, starting with subjects whose catalog just passed.
@@ -153,6 +152,20 @@ gate because it was structurally valid. It now lives in `tests/fakes/` only.
 `create_text_provider` refuses it, the CLI no longer offers it, and the media
 describer no longer builds two mock witnesses that agree with each other.
 
+### Phase 3b - the stale placements are gone (done 2026-10-27)
+
+The reseed changed every catalog version and replaced the slugs that
+pre-reseed tags were written against. 96 WAEC rows (95 `catalogued`, 1
+`verified`) named a topic or subtopic that no longer existed; the other 48
+resolved and were kept. All 96 went back to `deduped` with the placement
+cleared.
+
+The review gate would have refused them, but the tag batch only looks at
+`deduped` rows, so they sat in `catalogued` looking finished. Any future
+reseed must run the same check before a batch: a placement is stale when its
+ids are not in the snapshot the runtime reads, which includes the country
+scope.
+
 ### Phase 4 - media
 
 Current bank has no rows waiting at media; all 66 historical media failures
@@ -171,7 +184,7 @@ explicit (two witnesses from the full pool, with a named failure).
 ## Paused
 
 - No bank batch and no production catalog write until phase 1 passes `check`
-  and the diff is reviewed. This prevents tagging 871 rows against a catalog
+  and the diff is reviewed. This prevents tagging 957 rows against a catalog
   that is about to change.
 
 ## Tools
