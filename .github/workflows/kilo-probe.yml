@@ -1,0 +1,192 @@
+# Feasibility probe: can the Kilo CLI serve as a model provider for this
+# repository with no credentials at all?
+#
+# No `secrets.*` and no `env` carrying a key. The job installs the CLI,
+# asserts there is no auth file, then runs tag-shaped requests and checks the
+# returned ids against the catalog it was given. This is a probe, not a
+# pipeline step: it exists to answer whether the free tier works from a
+# GitHub runner before any adapter is written.
+
+name: kilo-probe
+
+run-name: >-
+  Kilo probe ${{ inputs.model }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: "Kilo model id"
+        type: string
+        required: true
+        default: kilo/kilo-auto/free
+      attempts:
+        description: "How many tag-shaped requests to run"
+        type: string
+        required: true
+        default: "3"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install the Kilo CLI
+        run: |
+          set -euo pipefail
+          npm install --global @kilocode/cli
+          kilo --version
+
+      - name: Prove the runner has no Kilo credentials
+        run: |
+          set -euo pipefail
+          if [ -f "$HOME/.local/share/kilo/auth.json" ]; then
+            echo "::error::an auth file exists on the runner; the probe is not credential-free"
+            exit 1
+          fi
+          echo "no auth.json before the run"
+          kilo auth list
+          env | grep -Ei 'kilo|anthropic|openai|openrouter|nvidia|groq|cloudflare' \
+            | sed 's/=.*/=<redacted>/' || echo "no model-provider variables in the environment"
+
+      - name: Run tag-shaped requests with no secrets
+        env:
+          MODEL: ${{ inputs.model }}
+          ATTEMPTS: ${{ inputs.attempts }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os, subprocess, time
+
+          model = os.environ["MODEL"]
+          attempts = int(os.environ["ATTEMPTS"])
+
+          catalog = [
+              {"id": "waec-biology-12-ecology", "name": "Ecology"},
+              {"id": "waec-biology-19-genetics", "name": "Genetics"},
+              {"id": "waec-biology-7-cell-biology", "name": "Cell biology"},
+          ]
+          subtopics = [
+              {"id": "waec-food-chain-and-food-web", "topic_id": "waec-biology-12-ecology",
+               "name": "Food chain and food web"},
+              {"id": "waec-mendelian-inheritance", "topic_id": "waec-biology-19-genetics",
+               "name": "Mendelian inheritance"},
+              {"id": "waec-cell-structure", "topic_id": "waec-biology-7-cell-biology",
+               "name": "Cell structure"},
+          ]
+          topic_ids = {item["id"] for item in catalog}
+          subtopic_ids = {item["id"] for item in subtopics}
+
+          rows = [
+              {
+                  "stem": "In a food chain, which organism occupies the first trophic level?",
+                  "options": ["Green plants", "Primary consumers", "Secondary consumers", "Decomposers"],
+                  "answer": "Green plants",
+              },
+              {
+                  "stem": "A cross between two heterozygous tall pea plants produced 300 offspring. "
+                          "How many are expected to be short?",
+                  "options": ["25", "75", "150", "225"],
+                  "answer": "75",
+              },
+              {
+                  "stem": "Which structure controls the movement of substances into and out of a cell?",
+                  "options": ["Cell wall", "Cell membrane", "Nucleus", "Cytoplasm"],
+                  "answer": "Cell membrane",
+              },
+          ]
+
+          def build_prompt(row):
+              payload = {
+                  "content": {"stem": {"text": row["stem"]},
+                              "options": [{"text": text} for text in row["options"]],
+                              "answer": row["answer"]},
+                  "catalog": {"topics": catalog, "subtopics": subtopics},
+              }
+              return (
+                  "You are a careful exam content assistant. Return exactly one JSON object "
+                  "and nothing else. Do not use markdown fences.\n"
+                  "Choose one topic id and one subtopic id from the catalog. The evidence must "
+                  "be an exact quote from the stem. Return JSON with keys topic_id (string), "
+                  "subtopic_id (string), evidence (string), confidence (number from 0 to 1).\n"
+                  f"Input:\n{json.dumps(payload, ensure_ascii=False, sort_keys=True)}"
+              )
+
+          results = []
+          for index in range(attempts):
+              row = rows[index % len(rows)]
+              argv = ["kilo", "run", "--auto", "--format", "json", "-m", model, build_prompt(row)]
+              started = time.monotonic()
+              completed = subprocess.run(argv, capture_output=True, text=True, timeout=300)
+              elapsed = round(time.monotonic() - started, 1)
+              texts, error, model_id, tokens = [], None, None, None
+              for line in completed.stdout.splitlines():
+                  try:
+                      event = json.loads(line)
+                  except json.JSONDecodeError:
+                      continue
+                  if event.get("type") == "text":
+                      texts.append((event.get("part") or {}).get("text", ""))
+                  elif event.get("type") == "error":
+                      error = json.dumps(event.get("error"))[:300]
+                  elif event.get("type") == "step_finish":
+                      part = event.get("part") or {}
+                      model_id = (part.get("model") or {}).get("modelID")
+                      tokens = (part.get("tokens") or {}).get("total")
+              joined = "\n".join(text for text in texts if text)
+              parsed, verdict = None, None
+              if joined:
+                  start, end = joined.find("{"), joined.rfind("}")
+                  if start != -1 and end > start:
+                      try:
+                          parsed = json.loads(joined[start:end + 1])
+                      except json.JSONDecodeError:
+                          verdict = "text was not valid JSON"
+                  else:
+                      verdict = "no JSON object in the text"
+              if verdict is None and parsed is not None:
+                  if parsed.get("topic_id") not in topic_ids:
+                      verdict = f"unknown topic {parsed.get('topic_id')!r}"
+                  elif parsed.get("subtopic_id") not in subtopic_ids:
+                      verdict = f"unknown subtopic {parsed.get('subtopic_id')!r}"
+                  elif not isinstance(parsed.get("confidence"), (int, float)):
+                      verdict = "confidence is not a number"
+                  elif str(parsed.get("evidence", "")).strip().lower() not in row["stem"].lower():
+                      verdict = "evidence is not a quote from the stem"
+                  else:
+                      verdict = "ok"
+              results.append({
+                  "attempt": index + 1,
+                  "exit": completed.returncode,
+                  "seconds": elapsed,
+                  "upstream_model": model_id,
+                  "tokens": tokens,
+                  "verdict": verdict,
+                  "error": error,
+              })
+              print(json.dumps(results[-1]))
+
+          ok = sum(1 for item in results if item["verdict"] == "ok")
+          print(f"\nsummary: {ok}/{attempts} ok, model={model}")
+          if ok == 0:
+              raise SystemExit("no attempt produced a valid, catalog-bound tag")
+          PY
+
+      - name: Prove still no credentials after the run
+        if: always()
+        run: |
+          set -euo pipefail
+          if [ -f "$HOME/.local/share/kilo/auth.json" ]; then
+            echo "::warning::the CLI created an auth file during the run"
+          else
+            echo "still no auth.json; the free tier ran anonymously"
+          fi
