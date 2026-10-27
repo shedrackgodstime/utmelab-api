@@ -270,7 +270,7 @@ PROFILES: dict[str, Profile] = {
     ),
     "catering-craft": Profile(
         slug="catering-craft",
-        display="Catering Craft Practice",
+        display="Catering Craft",
         topic_re=r"^([IVX]+)\.?\s*(.+)$",
         topic_x_min=130,
         topic_x_max=170,

@@ -11,12 +11,14 @@ import asyncio
 import json
 import re
 import sys
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 from ..adapters.database import TursoClient, prod_client
+from ..adapters.sources.myschool.subjects import load_map
 from ..config import catalog_write_credentials, load_settings
-from .apply import apply_plan, plan_subject
+from .apply import Plan, apply_plan, plan_subject
 from .contract import RowDefect, subject_defects, summarise
 from .model import Syllabus
 from .parse import ParseError, parse
@@ -107,7 +109,7 @@ def _write(data_dir: Path, syllabus: Syllabus, metadata: dict[str, Any]) -> Path
     subject = {
         "slug": syllabus.subject,
         "exam": "WAEC",
-        "name": metadata.get("name") or syllabus.display,
+        "name": syllabus.display,
         "is_compulsory": bool(metadata.get("is_compulsory", False)),
         "objective_paper_questions": int(metadata.get("objective_paper_questions", 50)),
         "countries": metadata.get("countries", []),
@@ -184,11 +186,18 @@ def _name_defect(name: str) -> str | None:
     return None
 
 
-def cmd_check(args: argparse.Namespace) -> int:
-    """Apply the catalog contract to the JSON before any write."""
-    data_dir: Path = args.data_dir
-    manifest = load_manifest(data_dir / "sources.json")
-    subjects = args.subject or sorted(manifest)
+@dataclass(slots=True)
+class _CheckResult:
+    subjects: int
+    topics: int
+    subtopics: int
+    errors: list[str]
+    warnings: list[str]
+    semantic: list[RowDefect]
+
+
+def _validate_catalog(data_dir: Path, subjects: list[str]) -> _CheckResult:
+    """The whole contract as data, so check and publish cannot disagree."""
     errors: list[str] = []
     warnings: list[str] = []
     semantic: list[RowDefect] = []
@@ -196,6 +205,7 @@ def cmd_check(args: argparse.Namespace) -> int:
     subtopic_slugs: dict[str, str] = {}
     total_topics = 0
     total_subtopics = 0
+    official = {entry.slug: entry.name for entry in load_map().exam("WAEC").subjects}
     for slug in subjects:
         path = data_dir / f"{slug}.json"
         if not path.exists():
@@ -206,6 +216,15 @@ def cmd_check(args: argparse.Namespace) -> int:
             errors.append(f"{slug}: subject slug is {subject.get('slug')!r}")
         if not str(subject.get("name") or "").strip():
             errors.append(f"{slug}: subject has no name")
+        if slug not in official:
+            errors.append(f"{slug}: not an official WAEC subject")
+        elif str(subject.get("name") or "") != official[slug]:
+            errors.append(
+                f"{slug}: name {str(subject.get('name') or '')!r} is not the official "
+                f"{official[slug]!r}"
+            )
+        if not topics:
+            errors.append(f"{slug}: subject has no topics")
         local_topic_slugs = {str(row.get("slug")) for row in topics}
         for row in topics:
             row_slug = str(row.get("slug") or "")
@@ -240,40 +259,59 @@ def cmd_check(args: argparse.Namespace) -> int:
         total_subtopics += len(subtopics)
         semantic.extend(subject_defects(slug, topics, subtopics))
 
-    if semantic:
-        counts = summarise(semantic)
-        rules = (
-            "too_long",
-            "list_marker",
-            "fragment",
-            "lowercase_start",
-            "duplicate_name",
-            "dangling_end",
-            "sentence",
-        )
-        print()
-        print(f"semantic defects: {len(semantic)}")
-        print(f"{'subject':28}" + "".join(f"{rule:>16}" for rule in rules))
-        for subject_slug in sorted({defect.subject for defect in semantic}):
-            line = f"{subject_slug:28}"
-            line += "".join(f"{counts.get((subject_slug, rule), 0):>16}" for rule in rules)
-            print(line)
-        totals = "".join(
-            f"{sum(n for (s, r), n in counts.items() if r == rule):>16}" for rule in rules
-        )
-        print(f"{'TOTAL':28}{totals}")
-        errors.extend(
-            f"{defect.subject}/{defect.slug}: {defect.rule}: {defect.detail}" for defect in semantic
-        )
+    errors.extend(
+        f"{defect.subject}/{defect.slug}: {defect.rule}: {defect.detail}" for defect in semantic
+    )
+    return _CheckResult(
+        subjects=len(subjects),
+        topics=total_topics,
+        subtopics=total_subtopics,
+        errors=errors,
+        warnings=warnings,
+        semantic=semantic,
+    )
 
-    print(f"checked {len(subjects)} subjects: {total_topics} topics, {total_subtopics} subtopics")
-    print(f"errors: {len(errors)}")
-    for item in errors[: args.limit]:
+
+def _print_semantic(result: _CheckResult) -> None:
+    if not result.semantic:
+        return
+    counts = summarise(result.semantic)
+    rules = (
+        "too_long",
+        "list_marker",
+        "fragment",
+        "lowercase_start",
+        "duplicate_name",
+        "dangling_end",
+        "sentence",
+    )
+    print()
+    print(f"semantic defects: {len(result.semantic)}")
+    print(f"{'subject':28}" + "".join(f"{rule:>16}" for rule in rules))
+    for subject_slug in sorted({defect.subject for defect in result.semantic}):
+        line = f"{subject_slug:28}"
+        line += "".join(f"{counts.get((subject_slug, rule), 0):>16}" for rule in rules)
+        print(line)
+    totals = "".join(f"{sum(n for (s, r), n in counts.items() if r == rule):>16}" for rule in rules)
+    print(f"{'TOTAL':28}{totals}")
+
+
+def cmd_check(args: argparse.Namespace) -> int:
+    """Apply the catalog contract to the JSON before any write."""
+    manifest = load_manifest(args.data_dir / "sources.json")
+    subjects = args.subject or sorted(manifest)
+    result = _validate_catalog(args.data_dir, subjects)
+    _print_semantic(result)
+    print(
+        f"checked {result.subjects} subjects: {result.topics} topics, {result.subtopics} subtopics"
+    )
+    print(f"errors: {len(result.errors)}")
+    for item in result.errors[: args.limit]:
         print(f"  error: {item}")
-    print(f"warnings: {len(warnings)}")
-    for item in warnings[: args.limit]:
+    print(f"warnings: {len(result.warnings)}")
+    for item in result.warnings[: args.limit]:
         print(f"  warning: {item}")
-    if errors or (args.strict and warnings):
+    if result.errors or (args.strict and result.warnings):
         return 1
     return 0
 
@@ -331,6 +369,61 @@ def cmd_apply(args: argparse.Namespace) -> int:
     return asyncio.run(_apply(args))
 
 
+async def _count(client: TursoClient, sql: str, args: list[Any] | None = None) -> int:
+    result = await client.execute(sql, args or [])
+    return int(result.rows[0][0]) if result.rows else 0
+
+
+async def _publish_defects(client: TursoClient, plans: list[Plan]) -> list[str]:
+    """Facts that must hold after the writes but before the commit.
+
+    These reads see the open transaction. A defect here means the write is
+    rolled back, not published and repaired later.
+    """
+    defects: list[str] = []
+    blank_topics = await _count(
+        client, "SELECT COUNT(*) FROM topics WHERE name IS NULL OR TRIM(name) = ''"
+    )
+    blank_subtopics = await _count(
+        client, "SELECT COUNT(*) FROM subtopics WHERE name IS NULL OR TRIM(name) = ''"
+    )
+    orphans = await _count(
+        client,
+        "SELECT COUNT(*) FROM subtopics s "
+        "WHERE NOT EXISTS (SELECT 1 FROM topics t WHERE t.slug = s.topic)",
+    )
+    if blank_topics:
+        defects.append(f"{blank_topics} blank topic name(s)")
+    if blank_subtopics:
+        defects.append(f"{blank_subtopics} blank subtopic name(s)")
+    if orphans:
+        defects.append(f"{orphans} orphan subtopic(s)")
+    for plan in plans:
+        slug = plan.subject_slug
+        topics = await _count(
+            client,
+            "SELECT COUNT(*) FROM topics WHERE exam = 'WAEC' AND subject = ?",
+            [slug],
+        )
+        subtopics = await _count(
+            client,
+            "SELECT COUNT(*) FROM subtopics s JOIN topics t ON t.slug = s.topic "
+            "WHERE t.exam = 'WAEC' AND t.subject = ?",
+            [slug],
+        )
+        expected_topics = len({row["slug"] for row in plan.topics} | set(plan.kept_topics))
+        expected_subtopics = len(
+            {row["slug"] for row in plan.subtopics} | set(plan.kept_referenced)
+        )
+        if topics != expected_topics:
+            defects.append(f"{slug}: {topics} topics after write, expected {expected_topics}")
+        if subtopics != expected_subtopics:
+            defects.append(
+                f"{slug}: {subtopics} subtopics after write, expected {expected_subtopics}"
+            )
+    return defects
+
+
 async def _apply(args: argparse.Namespace) -> int:
     data_dir: Path = args.data_dir
     subjects = args.subject or ["all"]
@@ -338,11 +431,22 @@ async def _apply(args: argparse.Namespace) -> int:
         subjects = [path.stem for path in _subject_files(data_dir)]
 
     if args.apply:
+        contract = _validate_catalog(data_dir, subjects)
+        if contract.errors:
+            _print_semantic(contract)
+            for item in contract.errors[: args.limit]:
+                print(f"  error: {item}", file=sys.stderr)
+            print(
+                f"{len(contract.errors)} contract error(s); refusing to write production",
+                file=sys.stderr,
+            )
+            return 1
         url, token = catalog_write_credentials()
         client = TursoClient(url, token)
     else:
         client = prod_client(load_settings())
 
+    plans: list[Plan] = []
     failures = 0
     try:
         for slug in subjects:
@@ -357,6 +461,7 @@ async def _apply(args: argparse.Namespace) -> int:
                 print(f"{slug}: {exc}", file=sys.stderr)
                 failures += 1
                 continue
+            plans.append(plan)
             print(plan.summary())
             for topic in plan.topics[: args.limit]:
                 print(f"  + topic {topic['name']!r}")
@@ -364,17 +469,30 @@ async def _apply(args: argparse.Namespace) -> int:
                 print(f"  - topic {slug_to_delete!r}")
             if plan.kept_referenced:
                 print(f"  kept referenced: {', '.join(plan.kept_referenced[: args.limit])}")
-            if args.apply:
-                try:
-                    await apply_plan(client, plan)
-                except Exception as exc:  # noqa: BLE001 - one subject at a time
-                    print(f"{slug}: apply failed: {exc}", file=sys.stderr)
-                    failures += 1
-                    continue
-                print(f"  applied {slug}")
+        if failures:
+            print(
+                f"{failures} subject(s) could not be planned; nothing was written",
+                file=sys.stderr,
+            )
+            return 1
+        if not args.apply:
+            return 0
+        for plan in plans:
+            await apply_plan(client, plan, commit=False)
+        problems = await _publish_defects(client, plans)
+        if problems:
+            for problem in problems:
+                print(f"  {problem}", file=sys.stderr)
+            # Returning closes the connection, which rolls the transaction
+            # back. Production only ever sees a whole, checked publish.
+            print("publish refused; production is unchanged", file=sys.stderr)
+            return 1
+        await client.commit()
+        for plan in plans:
+            print(f"  published {plan.subject_slug}")
+        return 0
     finally:
         await client.close()
-    return 1 if failures else 0
 
 
 def main(argv: list[str] | None = None) -> int:

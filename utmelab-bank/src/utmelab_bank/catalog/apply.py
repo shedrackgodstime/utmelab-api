@@ -31,6 +31,7 @@ class Plan:
     delete_subtopics: list[str] = field(default_factory=list)
     delete_topics: list[str] = field(default_factory=list)
     kept_referenced: list[str] = field(default_factory=list)
+    kept_topics: list[str] = field(default_factory=list)
     reused_topics: int = 0
     reused_subtopics: int = 0
 
@@ -197,6 +198,8 @@ async def plan_subject(client: TursoClient, data: dict[str, Any], subject_slug: 
         if parent:
             keep_topic_slugs.add(parent)
             plan.kept_referenced.append(slug)
+            if parent not in plan.kept_topics:
+                plan.kept_topics.append(parent)
     keep_sub_slugs = new_sub_slugs | referenced
 
     plan.delete_subtopics = [
@@ -233,8 +236,12 @@ def _chunks(items: list[Any], size: int) -> Iterator[list[Any]]:
         yield items[start : start + size]
 
 
-async def apply_plan(client: TursoClient, plan: Plan) -> None:
-    """Write a plan as one transaction. A failure leaves production unchanged."""
+async def apply_plan(client: TursoClient, plan: Plan, *, commit: bool = True) -> None:
+    """Write a plan. A failure leaves production unchanged.
+
+    ``commit=False`` keeps the plan in the open transaction so a caller can
+    publish several subjects and validate the result before landing it.
+    """
     for chunk in _chunks(plan.topics, 50):
         placeholders = ",".join("(?, ?, 'WAEC', ?, ?, ?, ?, ?)" for _ in chunk)
         args: list[Any] = []
@@ -308,7 +315,8 @@ async def apply_plan(client: TursoClient, plan: Plan) -> None:
         ],
         commit=False,
     )
-    await client.commit()
+    if commit:
+        await client.commit()
 
 
 __all__ = ["Plan", "apply_plan", "plan_subject"]
