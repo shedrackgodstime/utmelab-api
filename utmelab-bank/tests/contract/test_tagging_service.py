@@ -15,6 +15,8 @@ from utmelab_bank.adapters.providers.tagging import (
 from utmelab_bank.domain.capabilities import TagRequest
 from utmelab_bank.domain.models import (
     CatalogSnapshot,
+    CatalogSubtopic,
+    CatalogTopic,
     Evidence,
     OcrRecord,
     Producer,
@@ -159,3 +161,65 @@ def test_explain_service_stores_the_explanation(
 
     assert result.evidence.explanation is not None
     assert result.state.value == "enriched"
+
+
+def _prefix_catalog(*subtopic_ids: str) -> CatalogSnapshot:
+    topic_id = "waec-metamorphosis-and-life-courtship"
+    return CatalogSnapshot(
+        version="2026.2",
+        exam="WAEC",
+        subject="biology",
+        topics=(CatalogTopic(id=topic_id, slug="metamorphosis", name="Metamorphosis"),),
+        subtopics=tuple(
+            CatalogSubtopic(
+                id=subtopic_id,
+                slug=subtopic_id,
+                name=subtopic_id,
+                topic_id=topic_id,
+            )
+            for subtopic_id in subtopic_ids
+        ),
+    )
+
+
+def test_tag_service_resolves_one_unambiguous_truncated_id(
+    staging_item: StagingItem,
+) -> None:
+    full = "waec-metamorphosis-and-life-courtship-pattern-in-male-and-female"
+    catalog = _prefix_catalog(full)
+    truncated = "waec-metamorphosis-and-life-courtship-pattern"
+
+    class TruncatingTagger(MockProvider):
+        async def tag(self, request: TagRequest) -> TagProposal:
+            return make_proposal(
+                topic_id="waec-metamorphosis-and-life-courtship",
+                subtopic_id=truncated,
+                evidence=request.item.content.stem.text,
+            )
+
+    result = asyncio.run(TagService(TruncatingTagger()).tag(staging_item, catalog))
+
+    assert result.evidence.tag is not None
+    assert result.evidence.tag.subtopic_id == full
+    assert result.catalog is not None
+    assert result.catalog.subtopic_id == full
+
+
+def test_tag_service_refuses_a_truncated_id_that_fits_two_entries(
+    staging_item: StagingItem,
+) -> None:
+    catalog = _prefix_catalog(
+        "waec-metamorphosis-and-life-courtship-pattern-in-male-and-female",
+        "waec-metamorphosis-and-life-courtship-pattern-in-male",
+    )
+
+    class TruncatingTagger(MockProvider):
+        async def tag(self, request: TagRequest) -> TagProposal:
+            return make_proposal(
+                topic_id="waec-metamorphosis-and-life-courtship",
+                subtopic_id="waec-metamorphosis-and-life-courtship-pattern",
+                evidence=request.item.content.stem.text,
+            )
+
+    with pytest.raises(UnknownSubtopic, match="ambiguous"):
+        asyncio.run(TagService(TruncatingTagger()).tag(staging_item, catalog))

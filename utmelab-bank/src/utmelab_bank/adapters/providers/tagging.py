@@ -2,16 +2,33 @@
 
 from __future__ import annotations
 
+import logging
+from typing import Protocol
+
 from utmelab_bank.domain.capabilities import ExplainRequest, TagRequest
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.models import (
     CatalogRef,
     CatalogSnapshot,
+    CatalogSubtopic,
+    CatalogTopic,
     Explanation,
     StagingItem,
     TagProposal,
 )
 from utmelab_bank.domain.ports import Explainer, Tagger
+
+_log = logging.getLogger(__name__)
+
+#: A model that copies a long id sometimes stops early. A prefix shorter than
+#: this could match a different entry by accident, so only longer ones get the
+#: benefit of the doubt, and only when exactly one entry matches.
+_MIN_TRUNCATED_ID = 8
+
+
+class _Identified(Protocol):
+    @property
+    def id(self) -> str: ...
 
 
 class UnknownSubtopic(ValueError):
@@ -26,6 +43,34 @@ class LowConfidenceTag(ValueError):
     """Raised when a tag proposal must abstain for human review."""
 
 
+def _resolve[T: _Identified](
+    candidates: tuple[T, ...],
+    wanted: str,
+    error: type[ValueError],
+    kind: str,
+) -> T:
+    """Find the entry the model meant, refusing to guess between two.
+
+    An exact id always wins. A long, unambiguous prefix is the same id with
+    its tail lost in transcription, which happens often with generated slugs.
+    Anything shorter or shared by two entries is an unknown reference.
+    """
+    for candidate in candidates:
+        if candidate.id == wanted:
+            return candidate
+    if len(wanted) >= _MIN_TRUNCATED_ID:
+        matches = [c for c in candidates if c.id.startswith(wanted)]
+        if len(matches) == 1:
+            _log.info("resolved truncated %s id %r to %r", kind, wanted, matches[0].id)
+            return matches[0]
+        if len(matches) > 1:
+            raise error(
+                f"provider named {kind} {wanted!r} which matches {len(matches)} "
+                "catalog entries, so it is ambiguous"
+            )
+    raise error(f"provider named {kind} {wanted!r} which is not in the catalog")
+
+
 class TagService:
     """Tag a row only when its catalog choice and confidence are supported."""
 
@@ -38,7 +83,10 @@ class TagService:
     async def tag(self, item: StagingItem, catalog: CatalogSnapshot) -> StagingItem:
         request = TagRequest(item=item, catalog=catalog)
         proposal = await self._tagger.tag(request)
-        self._validate(proposal, catalog, item)
+        topic, subtopic = self._validate(proposal, catalog, item)
+        # The evidence keeps the ids the catalog actually holds, so a truncated
+        # reference cannot leave a placement that the review gate later refuses.
+        proposal = proposal.model_copy(update={"topic_id": topic.id, "subtopic_id": subtopic.id})
         return self._apply(item, proposal, catalog)
 
     def _validate(
@@ -46,28 +94,19 @@ class TagService:
         proposal: TagProposal,
         catalog: CatalogSnapshot,
         item: StagingItem,
-    ) -> None:
+    ) -> tuple[CatalogTopic, CatalogSubtopic]:
         if proposal.confidence < self._min_confidence:
             raise LowConfidenceTag(
                 f"tag confidence {proposal.confidence:.2f} is below "
                 f"the {self._min_confidence:.2f} threshold"
             )
-        topic = next((t for t in catalog.topics if t.id == proposal.topic_id), None)
-        if topic is None:
-            raise UnknownTopic(
-                f"provider named topic {proposal.topic_id!r} which is not in the catalog"
-            )
-        subtopic = next((s for s in catalog.subtopics if s.id == proposal.subtopic_id), None)
-        if subtopic is None:
-            raise UnknownSubtopic(
-                f"provider named subtopic {proposal.subtopic_id!r} which is not in the catalog"
-            )
-        if subtopic.topic_id != proposal.topic_id:
-            raise UnknownSubtopic(
-                f"subtopic {subtopic.id!r} does not belong to topic {proposal.topic_id!r}"
-            )
+        topic = _resolve(catalog.topics, proposal.topic_id, UnknownTopic, "topic")
+        subtopic = _resolve(catalog.subtopics, proposal.subtopic_id, UnknownSubtopic, "subtopic")
+        if subtopic.topic_id != topic.id:
+            raise UnknownSubtopic(f"subtopic {subtopic.id!r} does not belong to topic {topic.id!r}")
         if not _evidence_present(item_text=proposal.evidence, item=item):
             raise ValueError("tag evidence does not appear in the question or passage")
+        return topic, subtopic
 
     def _apply(
         self,
