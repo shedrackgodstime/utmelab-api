@@ -248,6 +248,8 @@ def cmd_check(args: argparse.Namespace) -> int:
             "fragment",
             "lowercase_start",
             "duplicate_name",
+            "dangling_end",
+            "sentence",
         )
         print()
         print(f"semantic defects: {len(semantic)}")

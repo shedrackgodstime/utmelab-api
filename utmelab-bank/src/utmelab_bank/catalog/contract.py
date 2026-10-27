@@ -28,6 +28,22 @@ _LIST_MARKER = r"^(?:\((?:\d+|[a-zA-Z]|[ivxIVX]+)\)|(?:\d+|[a-zA-Z]|[ivxIVX]+)[.
 #: sentence that came before it: "(for internal use and for export), ...".
 _PAREN_FRAGMENT = r"^\((?![a-zA-Z0-9]+\)\s)"
 
+#: A heading cut before its object: "Problems related to", "Meaning and
+#: differences between". The rest became a subtopic, so the topic is a stub.
+_DANGLING_END = re.compile(
+    r"\b(?:to|of|for|and|or|with|between|includes|including|following|"
+    r"are|is|the|in|on|by|as|from|into|that|which)$",
+    re.IGNORECASE,
+)
+
+#: Prose addressed to the candidate, not a name: "Candidates will be required
+#: to answer one question", "The paper will be divided into three sections".
+_SENTENCE = re.compile(
+    r"\b(?:will be|should be|are required|is required|are advised|"
+    r"candidates? (?:are|will|should)|the paper (?:will|is)|this paper (?:will|is))\b",
+    re.IGNORECASE,
+)
+
 
 @dataclass(frozen=True, slots=True)
 class RowDefect:
@@ -51,6 +67,11 @@ def name_defects(name: str) -> list[tuple[str, str]]:
         found.append(("fragment", "starts mid-sentence inside a bracket"))
     if name[:1].islower():
         found.append(("lowercase_start", "starts with a lowercase word"))
+    dangling = _DANGLING_END.search(name)
+    if dangling:
+        found.append(("dangling_end", f"ends with {dangling.group(0)!r}"))
+    if _SENTENCE.search(name):
+        found.append(("sentence", "reads as prose, not a name"))
     return found
 
 

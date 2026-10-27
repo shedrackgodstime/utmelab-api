@@ -96,3 +96,26 @@ def test_summarise_counts_by_subject_and_rule() -> None:
     counts = summarise(defects)
     assert counts[("geography", "duplicate_name")] == 1
     assert counts[("geography", "list_marker")] == 1
+
+
+def test_a_heading_cut_before_its_object_is_rejected() -> None:
+    for name in (
+        "Problems related to",
+        "Meaning and differences between",
+        "Structure here includes",
+    ):
+        assert ("dangling_end", name) not in name_defects(name)
+        rules = {rule for rule, _ in name_defects(name)}
+        assert "dangling_end" in rules
+
+
+def test_a_complete_phrase_ending_in_a_noun_passes() -> None:
+    assert name_defects("Importance of agriculture to the individual, community and nation") == []
+    assert name_defects("Building and Building Construction") == []
+
+
+def test_prose_addressed_to_the_candidate_is_rejected() -> None:
+    rules = {rule for rule, _ in name_defects("Candidates will be required to answer one question")}
+    assert "sentence" in rules
+    rules = {rule for rule, _ in name_defects("The paper will be divided into three sections")}
+    assert "sentence" in rules

@@ -12,6 +12,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
+from .contract import MAX_NAME_CHARS
 from .model import Subtopic, Syllabus, Topic
 from .pdf import Line
 from .profiles import STOP_MARKERS, Profile
@@ -38,6 +39,15 @@ class _Heading:
     consumed: frozenset[int] = frozenset()
 
 
+#: A list marker that the PDF printed in front of a name: "(a)", "(ii)", "b)",
+#: "3.". Decimal numbers keep their dot ("1.0"), so a dot needs a space after it.
+_NAME_MARKER = re.compile(
+    r"^(?:\*+\s*"
+    r"|\((?:\d{1,2}|[a-zA-Z]|[ivxIVX]{1,5})\)\s*"
+    r"|(?:\d{1,2}|[a-zA-Z]|[ivxIVX]{1,5})[.)]\s+)+"
+)
+
+
 def _clean(text: str) -> str:
     text = re.sub(r"\s+", " ", text).strip().lstrip("*").strip()
     text = re.sub(r"(?<=\w)-\s+(?=[A-Za-z])", "-", text)
@@ -46,15 +56,40 @@ def _clean(text: str) -> str:
 
 def _tidy_name(text: str) -> str:
     text = re.sub(r"[•∗♦♣♠]+", " ", text)
+    text = _NAME_MARKER.sub("", text)
+    text = re.sub(r"\b\d+\s*\|\s*P\s*a\s*g\s*e\b", " ", text, flags=re.IGNORECASE)
+    text = re.sub(r"\bP\s*a\s*g\s*e\s*\|\s*\d+\b", " ", text, flags=re.IGNORECASE)
     text = re.sub(r"\s+", " ", text).strip()
-    return text.rstrip(" .:;–—-").strip()
+    text = re.sub(r"\s+([,;:.])", r"\1", text)
+    text = text.rstrip(" .,:;–—-").strip()
+    # "(Homeostasis)" wraps a heading in brackets; the brackets are layout.
+    if text.startswith("(") and text.endswith(")") and text.count("(") == 1:
+        text = text[1:-1].strip()
+    # "(For all candidates) The paper ..." is an audience note in front of the
+    # real heading, not part of its name.
+    text = re.sub(r"^\([^)]{2,60}\)\s+(?=\S)", "", text).strip()
+    if not text:
+        return text
+    # The source prints many table entries in lower case ("definition,").
+    # Raising the first letter is typography, not a change of words.
+    return text[:1].upper() + text[1:]
+
+
+#: A list that continues inside one printed line: "Cell ... (ii) Tissue ...
+#: (iii) Organ ...". Splitting at (ii) onward keeps every item verbatim.
+_INLINE_MARKER = re.compile(r"\s+(?=\((?:ii|iii|iv|v|vi|vii|viii|ix|x|[b-h])\)\s)")
+
+
+def _split_inline(text: str) -> list[str]:
+    return [part.strip() for part in _INLINE_MARKER.split(text) if part.strip()]
 
 
 def _sentences(text: str) -> list[str]:
     # A prose topic that numbers its parts (a), (b) is already segmented; use
     # those markers before guessing at sentence boundaries.
-    if len(re.findall(r"(?<![A-Za-z])\([a-z]\)\s", text)) >= 2:
-        return [part.strip() for part in re.split(r"(?=\([a-z]\)\s)", text) if part.strip()]
+    marker = r"\((?:[a-z]|[ivx]{1,4})\)\s"
+    if len(re.findall(rf"(?<![A-Za-z]){marker}", text)) >= 2:
+        return [part.strip() for part in re.split(rf"(?={marker})", text) if part.strip()]
     parts = re.split(r"(?<=[.!?])\s+(?=[A-Z(])", text)
     merged: list[str] = []
     for part in parts:
@@ -141,12 +176,7 @@ def _incomplete(name: str) -> bool:
 
 
 def _strip_topic_marker(name: str) -> str:
-    return re.sub(
-        r"^(?:\*+\s*|\(?[ivxal0-9]+\)\s*|[A-Za-z]\.\s+|(?:[IVXLCDM]+|\d+)[.)]\s+)+",
-        "",
-        name,
-        flags=re.I,
-    ).strip()
+    return _NAME_MARKER.sub("", name).strip()
 
 
 def _scope(lines: list[Line], profile: Profile) -> list[Line]:
@@ -348,6 +378,15 @@ def _is_continuation(
         return True
     if _incomplete(heading.name) and len(line.text.split()) <= 6:
         return True
+    # An indented lower-case line directly under the heading continues it:
+    # "3. Meaning and differences between" / "subsistence and commercial
+    # agriculture". Once a subtopic marker has appeared, body lines are closed.
+    if (
+        not seen_body
+        and heading.line.x <= line.x <= heading.line.x + 30
+        and line.text[:1].islower()
+    ):
+        return True
     if (
         profile.body_x_min > 0
         and line.x >= profile.body_x_min
@@ -404,6 +443,12 @@ def parse(lines: list[Line], profile: Profile) -> Syllabus:
         ).strip()
         name = _stop_topic_name(name, profile)
         name = _tidy_name(name)
+        if len(name) > MAX_NAME_CHARS and ":" in name:
+            # "Husbandry of selected crops:- varieties/types, ..." is a heading
+            # with its body on the same line. Keep the heading.
+            prefix = name.split(":", 1)[0].strip()
+            if len(prefix.split()) >= 2 and len(prefix) <= MAX_NAME_CHARS:
+                name = prefix
         if not name:
             name = heading.name
         body = [
@@ -423,12 +468,19 @@ def parse(lines: list[Line], profile: Profile) -> Syllabus:
         subtopics: list[Subtopic] = []
         seen: set[str] = set()
         for piece in pieces:
-            text = _tidy_name(piece)
-            key = text.lower()
-            if len(text) < 2 or text.isdigit() or key in seen:
-                continue
-            seen.add(key)
-            subtopics.append(Subtopic(name=text, order=len(subtopics) + 1))
+            for part in _split_inline(piece):
+                text = _tidy_name(part)
+                key = text.lower()
+                if len(text) < 2 or text.isdigit() or key in seen:
+                    continue
+                if len(text) > MAX_NAME_CHARS:
+                    # A paragraph is not a target. The topic remains, and the
+                    # fallback below keeps it choosable at topic level.
+                    continue
+                seen.add(key)
+                subtopics.append(Subtopic(name=text, order=len(subtopics) + 1))
+        if not subtopics and profile.allow_single_subtopic and len(name) <= MAX_NAME_CHARS:
+            subtopics.append(Subtopic(name=name, order=1))
         topics.append(Topic(name=name, order=len(topics) + 1, subtopics=subtopics))
 
     if profile.merge_duplicate_topics:

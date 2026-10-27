@@ -24,6 +24,20 @@ LINE_TOLERANCE = 3.5
 #: A marker and its name are close. Two table columns are not.
 MERGE_GAP = 60.0
 
+#: A printed page number, with or without the "Page" label. These sit inside the
+#: body column on some WAEC PDFs, so position alone does not remove them.
+_PAGE_NUMBER = re.compile(
+    r"^(?:\d{1,4}|Page\s+\d{1,4}|\d{1,4}\s*\|\s*P\s*a\s*g\s*e|P\s*a\s*g\s*e\s*\|\s*\d{1,4})$",
+    re.IGNORECASE,
+)
+
+
+def _is_page_number(text: str, x: float) -> bool:
+    """A bare number is a page number only in the margin, not a topic number."""
+    if not _PAGE_NUMBER.match(text):
+        return False
+    return "|" in text or text.lower().startswith("page") or x > 300
+
 
 @dataclass(frozen=True, slots=True)
 class Line:
@@ -46,8 +60,9 @@ def _tidy(text: str) -> str:
     text = re.sub(r"\(\s*([ivx]+)\s*\)", r"(\1)", text)
     # A parenthesised marker glued to its text reads badly and hides the
     # marker from the profile regexes. Decimal topic numbers are left alone:
-    # "1.0" must not become "1. 0" again.
-    return re.sub(r"^(\([a-z]+\)|\([ivx]+\))(?=\w)", r"\1 ", text)
+    # "1.0" must not become "1. 0" again. This is not anchored: a table row
+    # often prints two markers on one line ("(i) Hospitality (ii) Catering").
+    return re.sub(r"(\([a-z]+\)|\([ivx]+\))(?=\w)", r"\1 ", text)
 
 
 def _merge(raw: list[tuple[float, float, str, float]]) -> list[Line]:
@@ -83,6 +98,8 @@ def read_lines(path: Path) -> list[Line]:
                 if not text:
                     continue
                 x0, y0, _x1, _y1 = line.bbox
+                if _is_page_number(text, float(x0)):
+                    continue
                 size = max((char.size for char in line if hasattr(char, "size")), default=0.0)
                 raw.append((float(x0), float(y0), text, float(size)))
         for line in _merge(raw):
