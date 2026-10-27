@@ -1,4 +1,4 @@
-"""A deterministic provider used to prove the capability ports."""
+"""A deterministic test double. It is not a provider the product can select."""
 
 from utmelab_bank.domain.capabilities import (
     DescribeImageRequest,

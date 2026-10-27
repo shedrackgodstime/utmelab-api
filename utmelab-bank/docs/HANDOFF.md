@@ -206,7 +206,6 @@ utmelab-bank/
         describe.py         describe the assets
         consensus.py        reconcile several describers
       providers/
-        mock/provider.py    the provider that needs no network
         opencode/provider.py  the provider that runs the model
         catalog_prompt.py   the prompt, with the catalog pruned
         tagging.py          tag and explain, with the core validating

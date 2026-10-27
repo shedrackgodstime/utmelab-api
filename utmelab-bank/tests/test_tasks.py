@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pytest
 
+from tests.fakes.mock_provider import MockProvider
 from utmelab_bank.adapters.gate_service import GateService
 from utmelab_bank.adapters.media import (
     DescribeImageConsensus,
@@ -18,7 +19,6 @@ from utmelab_bank.adapters.media import (
 )
 from utmelab_bank.adapters.production import KnownQuestion
 from utmelab_bank.adapters.providers.factory import ProviderExhausted
-from utmelab_bank.adapters.providers.mock import MockProvider
 from utmelab_bank.adapters.providers.openai_compatible import OpenAICompatibleError
 from utmelab_bank.adapters.providers.tagging import LowConfidenceTag
 from utmelab_bank.adapters.sources.fixture import FixtureSource

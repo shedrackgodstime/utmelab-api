@@ -1,6 +1,6 @@
 import asyncio
 
-from utmelab_bank.adapters.providers.mock import MockProvider
+from tests.fakes.mock_provider import MockProvider
 from utmelab_bank.domain.capabilities import (
     DescribeImageRequest,
     ExplainRequest,

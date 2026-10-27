@@ -5,13 +5,13 @@ from datetime import UTC, datetime
 
 import pytest
 
+from tests.fakes.mock_provider import MockProvider
 from utmelab_bank.adapters.media import (
     ConsensusPolicy,
     DescribeImageConsensus,
     Dissent,
     MissingWitness,
 )
-from utmelab_bank.adapters.providers.mock import MockProvider
 from utmelab_bank.domain.capabilities import DescribeImageRequest
 from utmelab_bank.domain.models import ImageDescription, MediaAsset, Producer
 

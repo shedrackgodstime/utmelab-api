@@ -71,7 +71,7 @@ utmelab-bank process \
   --exam JAMB \
   --subject biology \
   --year 2024 \
-  --provider mock
+  --provider config
 ```
 
 Inspect the bank and index:

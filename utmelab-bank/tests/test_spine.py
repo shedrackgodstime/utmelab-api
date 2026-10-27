@@ -13,6 +13,7 @@ import asyncio
 import json
 from pathlib import Path
 
+from tests.fakes.mock_provider import MockProvider
 from tests.media_fakes import FakeMediaFetcher, FakeMediaStore
 from utmelab_bank.adapters.dedupe_service import DedupeService
 from utmelab_bank.adapters.gate_service import GateService
@@ -22,7 +23,6 @@ from utmelab_bank.adapters.media import (
     MediaService,
     PillowMediaValidator,
 )
-from utmelab_bank.adapters.providers.mock import MockProvider
 from utmelab_bank.adapters.providers.tagging import ExplainService, TagService
 from utmelab_bank.adapters.ready_service import ReadyService
 from utmelab_bank.adapters.review_service import ReviewService

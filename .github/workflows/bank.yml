@@ -85,7 +85,6 @@ on:
         options:
           - config
           - opencode
-          - mock
       model:
         description: "Optional model override, e.g. opencode/glm-5.3-flash-free"
         type: string

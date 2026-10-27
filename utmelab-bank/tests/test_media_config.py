@@ -82,8 +82,17 @@ def test_a_token_and_repo_build_the_gitlab_store() -> None:
 
 
 def test_the_describer_is_a_two_witness_consensus() -> None:
-    describer = create_describer(provider="mock")
+    describer = create_describer()
     assert isinstance(describer, DescribeImageConsensus)
+    witnesses = describer._describers
+    assert len(witnesses) == 2
+    assert witnesses[0].producer.model != witnesses[1].producer.model
+
+
+def test_mock_is_not_a_selectable_describer() -> None:
+    """A double that answers without a model must not be reachable in the product."""
+    with pytest.raises(ValueError, match="Unknown describer"):
+        create_describer(provider="mock")
 
 
 def test_openai_compatible_describer_builds_two_witnesses() -> None:

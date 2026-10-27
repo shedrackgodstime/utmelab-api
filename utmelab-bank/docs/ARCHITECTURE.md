@@ -83,7 +83,7 @@ Everything below follows from these three rules.
    No dicts crossing boundaries. No ad hoc checks scattered through stages. A stage declares its input, its output, and the law that decides whether it may advance.
 
 3. **The core never names a concrete source, model, transport, or vendor.**
-   It asks for a capability. The registry supplies providers. OpenCode, an HTTP API, a vision-only model, and a mock are all the same to the core.
+   It asks for a capability. The registry supplies providers. OpenCode, the Kilo CLI, an HTTP API, and a vision-only model are all the same to the core. A test double lives in the test tree and is never a selectable provider.
 
 If a change violates one of these, the change is wrong, even if it works.
 

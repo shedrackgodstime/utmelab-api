@@ -7,6 +7,7 @@ from datetime import UTC, datetime
 
 import pytest
 
+from tests.fakes.mock_provider import MockProvider
 from tests.media_fakes import FailingMediaFetcher, FakeMediaFetcher, FakeMediaStore
 from utmelab_bank.adapters.media import (
     DescribeImageConsensus,
@@ -14,7 +15,6 @@ from utmelab_bank.adapters.media import (
     MediaService,
     PillowMediaValidator,
 )
-from utmelab_bank.adapters.providers.mock import MockProvider
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.hashing import bundle_fingerprint
 from utmelab_bank.domain.models import (

@@ -38,7 +38,7 @@ from utmelab_bank.tasks import (
 )
 
 LOG_LEVELS = ("DEBUG", "INFO", "WARNING", "ERROR")
-PROVIDERS = ("mock", "opencode", "openai", "config")
+PROVIDERS = ("opencode", "openai", "config")
 
 
 def _add_output(parser: argparse.ArgumentParser) -> None:

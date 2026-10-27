@@ -4,7 +4,7 @@ import asyncio
 
 import pytest
 
-from utmelab_bank.adapters.providers.mock import MockProvider
+from tests.fakes.mock_provider import MockProvider
 from utmelab_bank.adapters.providers.tagging import (
     ExplainService,
     LowConfidenceTag,

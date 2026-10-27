@@ -1,9 +1,10 @@
 """Choose the provider that answers the text capabilities.
 
-The mock provider proves the wiring without a model. The routing-driven
-``config`` provider is the real one, and ``opencode`` and ``openai`` remain
-legacy shortcuts. The route's protocol chooses the adapter, so a new transport
-does not add a branch here.
+The routing-driven ``config`` provider is the real one, and ``opencode`` and
+``openai`` remain legacy shortcuts. The route's protocol chooses the adapter,
+so a new transport does not add a branch here. There is no mock route: a double
+that answers without a model must never be reachable from the CLI, because the
+tag it writes is indistinguishable from a real one once it reaches the bank.
 """
 
 from __future__ import annotations
@@ -21,12 +22,11 @@ from utmelab_bank.domain.models import (
 from utmelab_bank.domain.ports import AnswerVerifier, Explainer, Tagger
 from utmelab_bank.routing import ProviderRoute, select_routes
 
-from .mock import MockProvider
 from .openai_compatible import OpenAICompatibleProvider
 from .opencode import OpenCodeProvider
 
 #: Every text provider the runner knows how to build.
-KNOWN_PROVIDERS = ("mock", "opencode", "openai", "config")
+KNOWN_PROVIDERS = ("opencode", "openai", "config")
 
 #: Error categories that trigger failover to the next route.
 RETRYABLE_CATEGORIES = frozenset(
@@ -182,14 +182,12 @@ class FailoverProvider(Tagger, Explainer, AnswerVerifier):
 
 def create_text_provider(
     name: str, *, settings: Settings, task: str = "question_explanation"
-) -> MockProvider | OpenCodeProvider | OpenAICompatibleProvider | FailoverProvider:
+) -> OpenCodeProvider | OpenAICompatibleProvider | FailoverProvider:
     """Build a provider by name.
 
     The returned object satisfies the tag, explain and verify ports. A name
     the runner does not know is a configuration error.
     """
-    if name == "mock":
-        return MockProvider()
     if name == "opencode":
         return OpenCodeProvider(model=settings.ai_model)
     if name == "openai":

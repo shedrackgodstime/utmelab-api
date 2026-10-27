@@ -5,7 +5,7 @@ from utmelab_bank.adapters.providers.factory import create_from_route
 from utmelab_bank.config import DEFAULT_AI_IMAGE_MODEL, DEFAULT_AI_IMAGE_SECOND_MODEL
 from utmelab_bank.domain.capabilities import DescribeImageRequest
 from utmelab_bank.domain.enums import State
-from utmelab_bank.domain.models import OcrRecord, Producer, StagingItem
+from utmelab_bank.domain.models import OcrRecord, StagingItem
 from utmelab_bank.domain.ports import ImageDescriber, MediaStore
 from utmelab_bank.routing import select_routes
 
@@ -105,15 +105,6 @@ def create_describer(
     and the pair is built here rather than discovered later as a consensus that
     agrees with itself.
     """
-    if provider == "mock":
-        from utmelab_bank.adapters.providers.mock import MockProvider
-
-        return DescribeImageConsensus(
-            (
-                MockProvider(),
-                MockProvider(producer=Producer(provider="mock", model="mock-v2")),
-            )
-        )
     if provider == "openai":
         if not api_key or not base_url:
             raise ValueError("the openai-compatible describer needs an API key and base URL")

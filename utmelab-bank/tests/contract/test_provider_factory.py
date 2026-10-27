@@ -1,7 +1,6 @@
 import pytest
 
 from utmelab_bank.adapters.providers import (
-    MockProvider,
     OpenAICompatibleProvider,
     OpenCodeProvider,
     create_text_provider,
@@ -29,11 +28,10 @@ def settings() -> Settings:
     )
 
 
-def test_factory_builds_mock_provider() -> None:
-    provider = create_text_provider("mock", settings=settings())
-
-    assert isinstance(provider, MockProvider)
-    assert provider.producer.provider == "mock"
+def test_factory_refuses_the_mock_provider() -> None:
+    """The double lives in the tests. The product must not be able to select it."""
+    with pytest.raises(ConfigError, match="unknown provider"):
+        create_text_provider("mock", settings=settings())
 
 
 def test_factory_builds_opencode_with_configured_model() -> None:
