@@ -3,7 +3,7 @@
     {
       "slug": "christian-religious-studies",
       "exam": "WAEC",
-      "name": "Christian Religious Studies",
+      "name": "CHRISTIAN RELIGIOUS STUDIES",
       "is_compulsory": false,
       "objective_paper_questions": 50,
       "countries": [],
@@ -197,9 +197,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-eli-and-samuel-1-sam-2-11-36-3-1-18-4-10-22-8-1-5-4-1-samuel",
+      "slug": "waec-parental-responsibility-christian-religious-studies",
       "topic": "waec-parental-responsibility",
-      "name": "Eli and Samuel 1 Sam 2: 11-36; 3:1- 18; 4: 10-22; 8: 1-5 4. 1 Samuel 15: 1-26; 16: 14-23; Consequences of Saul’s disobedience 31: 1-13",
+      "name": "Parental Responsibility",
       "order": 1,
       "objectives": []
     },
@@ -218,10 +218,24 @@
       "objectives": []
     },
     {
-      "slug": "waec-solomon-s-wisdom-12-8-1-kings-9-15-23-11-1-13-b-the-unwise-d",
+      "slug": "waec-solomon-s-wisdom-12-8-1-kings-9-15-23-11-1-13",
       "topic": "waec-submission-to-the-will-of-god",
-      "name": "Solomon’s wisdom 12; 8 1 Kings 9; 15-23; 11: 1-13; (b) The unwise decision of Solomon and 12:1-20 Rehoboam 7 Supremacy of God 1 Kings 16: 29-34; 17: 1-7; 18: (a) Religious tensions during Ahab’s reign 1-19 1 Kings 18: 17-46 (b) Elijah at Mount Carmel 8 Greed and its effects 1 Kings 21: 1-29 (a) Ahab 2 Kings 5 (b) Gehazi",
+      "name": "Solomon’s wisdom 12; 8 1 Kings 9; 15-23; 11: 1-13",
       "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-elijah-at-mount-carmel-8-greed-and-its-effects-1-kings-21-1",
+      "topic": "waec-submission-to-the-will-of-god",
+      "name": "Elijah at Mount Carmel 8 Greed and its effects 1 Kings 21: 1-29 (a) Ahab 2 Kings 5",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-gehazi",
+      "topic": "waec-submission-to-the-will-of-god",
+      "name": "Gehazi",
+      "order": 5,
       "objectives": []
     },
     {
@@ -234,64 +248,127 @@
     {
       "slug": "waec-2-kings-24-25-1-17-a-the-condition-of-the-nation-nehemiah-1",
       "topic": "waec-concern-for-one-s-nation",
-      "name": "2 Kings 24; 25;1-17 (a) The condition of the nation Nehemiah 1; 2: 9-20; 4 (b) Response to the state of the nation Ezra 1; 4; 5: 1-2; 6: 13-22; 7: 1",
+      "name": "2 Kings 24; 25;1-17 (a) The condition of the nation Nehemiah 1; 2: 9-20; 4",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-daniel-3-a-faith-and-courage-daniel-6-b-faith-and-power",
+      "slug": "waec-response-to-the-state-of-the-nation-ezra-1-4-5-1-2-6-13-22-7",
+      "topic": "waec-concern-for-one-s-nation",
+      "name": "Response to the state of the nation Ezra 1; 4; 5: 1-2; 6: 13-22; 7: 1",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-daniel-3-a-faith-and-courage-daniel-6",
       "topic": "waec-faith-in-god",
-      "name": "Daniel 3 (a) Faith and courage Daniel 6 (b) Faith and power",
+      "name": "Daniel 3 (a) Faith and courage Daniel 6",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-faith-and-power",
+      "topic": "waec-faith-in-god",
+      "name": "Faith and power",
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-amos-2-6-8-4-5-1-24-7-10-a-true-religion-and-social-justice",
       "topic": "waec-nature-of-god",
-      "name": "Amos 2: 6-8; 4; 5: 1-24; 7: 10- (a) True religion and social justice – Amos 17; 8 Hosea 1; 2; 3; 6 (b) God’s divine love – Hosea Themes from the Synoptic Gospels and the Acts Of The Apostles S/N CONTENTS",
+      "name": "Amos 2: 6-8; 4; 5: 1-24; 7: 10- (a) True religion and social justice – Amos 17; 8 Hosea 1; 2; 3; 6",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-god-s-divine-love-hosea-themes-from-the-synoptic-gospels-and",
+      "topic": "waec-nature-of-god",
+      "name": "God’s divine love – Hosea Themes from the Synoptic Gospels and the Acts Of The Apostles S/N CONTENTS",
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-matthew-3-13-17-a-the-baptism-mark-1-9-11-luke-3-21-matthew",
       "topic": "waec-baptism-and-temptation-of-jesus",
-      "name": "Matthew 3:13-17 (a) The Baptism Mark 1: 9-11; Luke 3: 21-Matthew 4: 1-11; (b) The Temptation Mark 1: 12-13; Luke 4:1-13 Matthew 4: 18-25; 8: 18-22; 2. The Call and Demands of Discipleship 9:9-13 ; Mark 1: 16-20; 2: 13-17; Luke 5: 1-11; 9: 57-63; 14: 25-33 Matthew 6: 12,14-15; 3. Jesus’ Teaching on forgiveness 18:21-35",
+      "name": "Matthew 3:13-17 (a) The Baptism Mark 1: 9-11; Luke 3: 21-Matthew 4: 1-11",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-matthew-26-36-56-mk-14-a-jesus-at-gethsemane-32-52-matthew-2",
       "topic": "waec-the-trials-of-jesus",
-      "name": "Matthew 26:36-56; Mk 14: (a) Jesus at Gethsemane 32-52; Matthew 26: 69-75; (b) Peter’s Denials Mark 14: 66-72; Luke 22: 54-62 Matthew 26:47-75 (c) Condemnation of Jesus Mark 14: 53-72; Luke 22: 66-71; 23: 1-12",
+      "name": "Matthew 26:36-56; Mk 14: (a) Jesus at Gethsemane 32-52; Matthew 26: 69-75",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-peter-s-denials-mark-14-66-72-luke-22-54-62-matthew-26-47-75",
+      "topic": "waec-the-trials-of-jesus",
+      "name": "Peter’s Denials Mark 14: 66-72; Luke 22: 54-62 Matthew 26:47-75",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-condemnation-of-jesus-mark-14-53-72-luke-22-66-71-23-1-12",
+      "topic": "waec-the-trials-of-jesus",
+      "name": "Condemnation of Jesus Mark 14: 53-72; Luke 22: 66-71; 23: 1-12",
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-jesus-matthew-27-32-66-a-crucifixion-and-burial-mark-15-16-4",
       "topic": "waec-the-crucifixion-burial-and-resurrection",
-      "name": "Jesus Matthew 27: 32-66 (a) Crucifixion and burial Mark 15: 16-47; Luke 23: 26-56 Matthew 28:1-10 (b) The Resurrection Mark 16: 1-14; Luke 24: 1-Acts 1:15-26; 2:41-47; 6. Fellowship in the Early Church 4:32-37; 5:1-11; 6:2-6",
+      "name": "Jesus Matthew 27: 32-66 (a) Crucifixion and burial Mark 15: 16-47; Luke 23: 26-56 Matthew 28:1-10",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-acts-2-a-the-holy-spirit-at-pentecost-acts-9-11-1-18-b-missi",
+      "slug": "waec-acts-2-a-the-holy-spirit-at-pentecost-acts-9-11-1-18",
       "topic": "waec-the-holy-spirit-and-the-mission-to-the-gentiles",
-      "name": "Acts 2 (a) The Holy Spirit at Pentecost Acts 9; 11:1-18 (b) Mission to the Gentiles Acts 4:1-31; 5:17-42; 6:8-9; 8. Opposition to the Gospel Message 7:1-10; 12:1-24 Themes from selected Epistles S/N CONTENTS",
+      "name": "Acts 2 (a) The Holy Spirit at Pentecost Acts 9; 11:1-18",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-james-1-2-27-2-14-26-a-faith-and-works-james-2-1-13-b-impart",
+      "slug": "waec-james-1-2-27-2-14-26-a-faith-and-works-james-2-1-13",
       "topic": "waec-the-epistles-of-james",
-      "name": "James 1: 2-27; 2:14-26 (a) Faith and Works James 2:1-13 (b) Impartiality James 1: 2-8; 5:13-18 (c) Effective Prayers",
+      "name": "James 1: 2-27; 2:14-26 (a) Faith and Works James 2:1-13",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-1-peter-2-13-17-a-good-citizenship-1-peter-2-1-25-b-christia",
+      "slug": "waec-impartiality-james-1-2-8-5-13-18",
+      "topic": "waec-the-epistles-of-james",
+      "name": "Impartiality James 1: 2-8; 5:13-18",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-effective-prayers",
+      "topic": "waec-the-epistles-of-james",
+      "name": "Effective Prayers",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-1-peter-2-13-17-a-good-citizenship-1-peter-2-1-25",
       "topic": "waec-the-epistle-of-1-peter",
-      "name": "1 Peter 2:13-17 (a) Good Citizenship 1 Peter 2:1-25 (b) Christians Living among non-Christians 1 Peter 5:1-11 (c) Interpersonal Relationship among Christians",
+      "name": "1 Peter 2:13-17 (a) Good Citizenship 1 Peter 2:1-25",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-christians-living-among-non-christians-1-peter-5-1-11",
+      "topic": "waec-the-epistle-of-1-peter",
+      "name": "Christians Living among non-Christians 1 Peter 5:1-11",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-interpersonal-relationship-among-christians",
+      "topic": "waec-the-epistle-of-1-peter",
+      "name": "Interpersonal Relationship among Christians",
+      "order": 3,
       "objectives": []
     }
   ]

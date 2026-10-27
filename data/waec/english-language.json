@@ -13,21 +13,41 @@
   ],
   "topics": [
     {
-      "slug": "waec-lexis",
+      "slug": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
       "subject": "english-language",
       "exam": "WAEC",
-      "name": "LEXIS",
+      "name": "LEXIS (Paper 1: (for candidates in the gambia, nigeria, sierra leone and liberia only))",
       "order": 1,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-structure",
+      "slug": "waec-structure-paper-1-for-candidates-in-the-gambia-nigeria-sierr",
       "subject": "english-language",
       "exam": "WAEC",
-      "name": "STRUCTURE",
+      "name": "STRUCTURE (Paper 1: (for candidates in the gambia, nigeria, sierra leone and liberia only))",
       "order": 2,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-lexis-paper-1",
+      "subject": "english-language",
+      "exam": "WAEC",
+      "name": "LEXIS (Paper 1:)",
+      "order": 3,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-structure-paper-1",
+      "subject": "english-language",
+      "exam": "WAEC",
+      "name": "STRUCTURE (Paper 1:)",
+      "order": 4,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -37,7 +57,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "LITERATURE",
-      "order": 3,
+      "order": 5,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -47,7 +67,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "ESSAY WRITING",
-      "order": 4,
+      "order": 6,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -57,7 +77,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "COMPREHENSION",
-      "order": 5,
+      "order": 7,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -67,7 +87,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "SUMMARY",
-      "order": 6,
+      "order": 8,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -77,7 +97,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "ORAL ENGLISH",
-      "order": 7,
+      "order": 9,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -87,7 +107,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "CONSONANTS",
-      "order": 8,
+      "order": 10,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -97,7 +117,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "VOWELS",
-      "order": 9,
+      "order": 11,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -107,7 +127,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "STRESS",
-      "order": 10,
+      "order": 12,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -117,7 +137,7 @@
       "subject": "english-language",
       "exam": "WAEC",
       "name": "INTONATION",
-      "order": 11,
+      "order": 13,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -125,507 +145,437 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-in-addition-to-items-testing-knowledge-of-the-vocabulary-of",
-      "topic": "waec-lexis",
-      "name": "In addition to items testing knowledge of the vocabulary of everyday usage (i.e home, social relationships, and common core school subjects) questions will be set to test candidates’ ability in the use of the general vocabulary associated with the following fields of human activity: I",
+      "slug": "waec-building-and-building-construction",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Building and Building Construction",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-a-building-and-building-construction",
-      "topic": "waec-lexis",
-      "name": "(a) Building and Building Construction",
+      "slug": "waec-agriculture-english-language",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Agriculture",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-b-agriculture",
-      "topic": "waec-lexis",
-      "name": "(b) Agriculture",
+      "slug": "waec-fishing",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Fishing",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-c-fishing",
-      "topic": "waec-lexis",
-      "name": "(c) Fishing",
+      "slug": "waec-stock-exchange",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Stock exchange",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-d-stock-exchange",
-      "topic": "waec-lexis",
-      "name": "(d) Stock exchange",
+      "slug": "waec-health",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Health",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-e-health",
-      "topic": "waec-lexis",
-      "name": "(e) Health",
+      "slug": "waec-environment",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Environment",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-f-environment",
-      "topic": "waec-lexis",
-      "name": "(f) Environment",
+      "slug": "waec-culture-institutions-and-ceremonies",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Culture, Institutions and Ceremonies",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-g-culture-institutions-and-ceremonies",
-      "topic": "waec-lexis",
-      "name": "(g) Culture, Institutions and Ceremonies",
+      "slug": "waec-law-and-order-english-language",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Law and Order",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-h-law-and-order",
-      "topic": "waec-lexis",
-      "name": "(h) Law and Order",
+      "slug": "waec-motor-vehicles-and-travelling",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Motor Vehicles and Travelling",
       "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-i-motor-vehicles-and-travelling",
-      "topic": "waec-lexis",
-      "name": "(i) Motor Vehicles and Travelling",
+      "slug": "waec-government-and-administration",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Government and Administration",
       "order": 10,
       "objectives": []
     },
     {
-      "slug": "waec-j-government-and-administration",
-      "topic": "waec-lexis",
-      "name": "(j) Government and Administration",
+      "slug": "waec-sports",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Sports",
       "order": 11,
       "objectives": []
     },
     {
-      "slug": "waec-k-sports",
-      "topic": "waec-lexis",
-      "name": "(k) Sports",
+      "slug": "waec-religion",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Religion",
       "order": 12,
       "objectives": []
     },
     {
-      "slug": "waec-l-religion",
-      "topic": "waec-lexis",
-      "name": "(l) Religion",
+      "slug": "waec-science-and-technology",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Science and Technology",
       "order": 13,
       "objectives": []
     },
     {
-      "slug": "waec-m-science-and-technology",
-      "topic": "waec-lexis",
-      "name": "(m) Science and Technology",
+      "slug": "waec-animal-husbandry",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Animal husbandry",
       "order": 14,
       "objectives": []
     },
     {
-      "slug": "waec-n-animal-husbandry",
-      "topic": "waec-lexis",
-      "name": "(n) Animal husbandry",
+      "slug": "waec-advertising-english-language",
+      "topic": "waec-lexis-paper-1-for-candidates-in-the-gambia-nigeria-sierra-le",
+      "name": "Advertising",
       "order": 15,
       "objectives": []
     },
     {
-      "slug": "waec-o-advertising",
-      "topic": "waec-lexis",
-      "name": "(o) Advertising",
-      "order": 16,
-      "objectives": []
-    },
-    {
-      "slug": "waec-p-human-internal-body-system-and-function-ii-idioms-i-e-idio",
-      "topic": "waec-lexis",
-      "name": "(p) Human Internal Body system and function. II. Idioms, i.e. idiomatic expressions and collocations (e.g. ‘hook, line and sinker’, ‘every Tom, Dick and Harry” etc.) the total meaning of which cannot be arrived at simply by consideration of the dictionary meanings of the words in the structures in which they appear. III. Structural elements of English e.g. sequence of tenses, matching of pronouns with their antecedents, correct use of prepositions etc. IV. Figurative Usage The term ‘general’ vocabulary refers to those words and usage of words normally associated with the fields of human activity in A1 above which are generally known, used and understood by most educated people who, while not engaged in that field of activity may have occasion to read, speak or write about it. Thus, for example, in the vocabulary of transportation by road, one would expect knowledge of terms such as ‘pedestrian bridge’ and ‘traffic signs’ which most educated people understand, but not ‘berm’ or ‘camber’ which are specialized. All items will be phrased in such a way as to test the use and understanding of the required lexis, rather than dictionary definitions and explanations. In practice, the test of lexis will be so designed as to explore, not merely the extent of the candidates’ vocabulary but more importantly their ability to respond to sense relations in the use of lexical items e.g. synonyms, antonyms and homonyms. In the test of figurative language, candidates will be expected to recognize when an expression is used figuratively and not only when it is used literally",
-      "order": 17,
-      "objectives": []
-    },
-    {
-      "slug": "waec-in-addition-to-items-testing-knowledge-of-the-vocabulary-of-english-language",
-      "topic": "waec-lexis",
-      "name": "In addition to items testing knowledge of the vocabulary of everyday usage (i.e. home, social relationships, common core school subjects) questions will be set to test the candidates’ ability in the use of the general vocabulary associated with the following fields of human activity: I",
-      "order": 18,
-      "objectives": []
-    },
-    {
-      "slug": "waec-a-building",
-      "topic": "waec-lexis",
-      "name": "(a) Building",
-      "order": 19,
-      "objectives": []
-    },
-    {
-      "slug": "waec-b-plumbing",
-      "topic": "waec-lexis",
-      "name": "(b) Plumbing",
-      "order": 20,
-      "objectives": []
-    },
-    {
-      "slug": "waec-d-finance-commerce-banking-stock-exchange-insurance",
-      "topic": "waec-lexis",
-      "name": "(d) Finance – commerce, banking, stock exchange, insurance",
-      "order": 21,
-      "objectives": []
-    },
-    {
-      "slug": "waec-e-photography",
-      "topic": "waec-lexis",
-      "name": "(e) Photography",
-      "order": 22,
-      "objectives": []
-    },
-    {
-      "slug": "waec-f-mineral-exploration",
-      "topic": "waec-lexis",
-      "name": "(f) Mineral exploration",
-      "order": 23,
-      "objectives": []
-    },
-    {
-      "slug": "waec-g-common-manufacturing-industries",
-      "topic": "waec-lexis",
-      "name": "(g) Common manufacturing industries",
-      "order": 24,
-      "objectives": []
-    },
-    {
-      "slug": "waec-h-printing-publishing-the-press-and-libraries",
-      "topic": "waec-lexis",
-      "name": "(h) Printing, publishing, the press and libraries",
-      "order": 25,
-      "objectives": []
-    },
-    {
-      "slug": "waec-i-sea-road-rail-and-air-transport",
-      "topic": "waec-lexis",
-      "name": "(i) Sea, road, rail and air transport",
-      "order": 26,
-      "objectives": []
-    },
-    {
-      "slug": "waec-j-government-and-politics",
-      "topic": "waec-lexis",
-      "name": "(j) Government and politics",
-      "order": 27,
-      "objectives": []
-    },
-    {
-      "slug": "waec-k-sports-and-entertainment",
-      "topic": "waec-lexis",
-      "name": "(k) Sports and entertainment",
-      "order": 28,
-      "objectives": []
-    },
-    {
-      "slug": "waec-n-power-production-hydro-thermal-solar",
-      "topic": "waec-lexis",
-      "name": "(n) Power production – hydro, thermal, solar",
-      "order": 29,
-      "objectives": []
-    },
-    {
-      "slug": "waec-o-education",
-      "topic": "waec-lexis",
-      "name": "(o) Education",
-      "order": 30,
-      "objectives": []
-    },
-    {
-      "slug": "waec-p-communication",
-      "topic": "waec-lexis",
-      "name": "(p) Communication",
-      "order": 31,
-      "objectives": []
-    },
-    {
-      "slug": "waec-q-military",
-      "topic": "waec-lexis",
-      "name": "(q) Military",
-      "order": 32,
-      "objectives": []
-    },
-    {
-      "slug": "waec-r-journalism-and-advertising-the-term-general-vocabulary-ref",
-      "topic": "waec-lexis",
-      "name": "(r) Journalism and Advertising. The term ‘general vocabulary’ refers to those words and usage of words normally associated with the relevant field of human activity in",
-      "order": 33,
-      "objectives": []
-    },
-    {
-      "slug": "waec-i-above-which-are-generally-known-used-and-understood-by-mos",
-      "topic": "waec-lexis",
-      "name": "(i) above which are generally known, used and understood by most educated people, who, while not engaged in that field of activity, may have occasion to read, speak or write about it. Thus, for example, in the vocabulary of transportation by sea, one would expect knowledge of terms such as “bridge” and “deck”, which most educated people understand but not “halyard”, “dodge”, “davit” or “thrust block”, which are specialized. II. Idioms, i.e., idiomatic expressions and collocations (e.g. “hook, line and sinker”, “every Tom, Dick and Harry” etc) the total meaning of which cannot be arrived at simply by the consideration of the dictionary meanings of words in the structures in which they appear. III. Structural elements of English e.g. sequence of tenses, concord and the use of correct prepositions, matching of pronouns with their antecedents, etc. IV. Figurative Usage All items will be phrased in such a way as to test the use and understanding of the required lexis, rather than dictionary definitions and explanations. In practice, the test of lexis will be designed to explore, not merely the extent of the candidates’ vocabulary but more importantly their ability to respond to sense relations in the use of lexical items e.g. synonyms, antonyms and homonyms. In the test of figurative language, candidates will be expected to recognize when an expression is used figuratively and not only when it is used",
-      "order": 34,
-      "objectives": []
-    },
-    {
-      "slug": "waec-structure-here-includes-i-the-patterns-of-changes-in-word-fo",
-      "topic": "waec-structure",
-      "name": "Structure here includes: (i) The patterns of changes in word-forms which indicate number, tense, degree, etc; (ii) The patterns in which different categories of words regularly combine to form groups and these groups in turn combine to form sentences; (iii) The use of structural words e.g. conjunctions, determiners, prepositions, etc. (For candidates in Ghana only) This is a multiple choice objective paper comprising eighty questions which will be made up of two parts: Parts A and B",
+      "slug": "waec-the-patterns-of-changes-in-word-forms-which-indicate-number",
+      "topic": "waec-structure-paper-1-for-candidates-in-the-gambia-nigeria-sierr",
+      "name": "The patterns of changes in word-forms which indicate number, tense, degree, etc",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-part-a-will-consist-of-thirty-lexical-and-twenty-structured",
-      "topic": "waec-structure",
-      "name": "Part A will consist of thirty lexical and twenty structured questions, while Part B will have thirty objective questions on literature",
+      "slug": "waec-building",
+      "topic": "waec-lexis-paper-1",
+      "name": "Building",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-plumbing",
+      "topic": "waec-lexis-paper-1",
+      "name": "Plumbing",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-each-question-will-have-four-options-lettered-a-to-d",
-      "topic": "waec-structure",
-      "name": "Each question will have four options lettered A to D",
+      "slug": "waec-fishing-english-language",
+      "topic": "waec-lexis-paper-1",
+      "name": "Fishing",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-structure-here-includes-i-the-patterns-of-changes-in-word-fo-english-language",
-      "topic": "waec-structure",
-      "name": "Structure here includes: (i) The patterns of changes in word-forms which indicate number, tense, degree, etc. (ii) The patterns in which different categories of words regularly combine to form groups and these groups in turn combine to form sentences; (iii) The use of structural words e.g. conjunctions, determiners, prepositions, etc",
+      "slug": "waec-finance-commerce-banking-stock-exchange-insurance",
+      "topic": "waec-lexis-paper-1",
+      "name": "Finance – commerce, banking, stock exchange, insurance",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-the-objective-questions-on-literature-will-be-as-follows-10",
-      "topic": "waec-literature",
-      "name": "The objective questions on Literature will be as follows: 10 questions on Drama 10 questions on Prose 10 questions on Poetry NOTE: For Prose and Drama the candidate is to study one prescribed text each",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-for-all-candidates-the-paper-will-be-divided-into-three-sect",
-      "topic": "waec-literature",
-      "name": "(For all candidates) The paper will be divided into three sections: Sections A, B and C",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-candidates-will-be-required-to-spend-2-hours-on-this-paper",
-      "topic": "waec-literature",
-      "name": "Candidates will be required to spend 2 hours on this paper",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-50-marks-candidates-will-be-required-to-spend-50-minutes-on",
-      "topic": "waec-essay-writing",
-      "name": "(50 marks) Candidates will be required to spend 50 minutes on this section. There will be five questions in all and candidates will be required to answer only one question. The questions will test candidates’ ability to communicate in writing. The topics will demand the following kinds of writing",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-i-letter-ii-speech-iii-narration-iv-description",
-      "topic": "waec-essay-writing",
-      "name": "(i) letter; (ii) speech; (iii) narration; (iv) description",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-v-argument-debate-vi-report-vii-article-viii-exposition-ix-c",
-      "topic": "waec-essay-writing",
-      "name": "(v) argument/debate; (vi) report; (vii) article; (viii) exposition; (ix) creative writing. Marks will be awarded for",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-i-content-relevance-of-ideas-to-the-topic-ii-organization-fo",
-      "topic": "waec-essay-writing",
-      "name": "(i) Content: relevance of ideas to the topic; (ii) Organization: formal features (where applicable), good paragraphing, appropriate emphasis and arrangement of ideas; (iii) Expression: effective control of vocabulary and sentence structure; (iv) Mechanical Accuracy: correct grammar, punctuation, spelling etc. The minimum length will be 450 words",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-candidates-will-be-required-to-spend-30-minutes-on-this-sect",
-      "topic": "waec-comprehension",
-      "name": "Candidates will be required to spend 30 minutes on this section. The section will consist of one passage of at least three hundred and fifty (350) words. Candidates will be required to answer all the questions on the passage. The questions will test candidates’ ability to",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-i-find-appropriate-equivalents-for-selected-words-or-phrases",
-      "topic": "waec-comprehension",
-      "name": "(i) find appropriate equivalents for selected words or phrases; (ii) understand the factual content; (iii) make inferences from the content of the passage; (iv) understand the use of English expressions that reveal/reflect sentiments/emotions/attitudes",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-v-identify-and-label-basic-grammatical-structures-words-phra",
-      "topic": "waec-comprehension",
-      "name": "(v) identify and label basic grammatical structures, words, phrases or clauses and explain their functions as they appear in the context; (vi) identify and explain basic literary terms and expressions; (vii) recast phrases or sentences into grammatical alternatives. The passage will be chosen from a wide variety of sources all of which should be suitable for this level of examination in terms of theme and interest. The passage will be written in modern English that should be within the experience of candidates. The comprehension test will include at least four questions based on (ii) above",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-candidates-will-be-required-to-spend-40-minutes-on-this-sect",
-      "topic": "waec-summary",
-      "name": "Candidates will be required to spend 40 minutes on this section",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-the-section-will-consist-of-one-prose-passage-of-about-five",
-      "topic": "waec-summary",
-      "name": "The section will consist of one prose passage of about five hundred (500) words and will test candidates’ ability to (i) extract relevant information; (ii) summarize the points demanded in clear concise English, avoiding repetition and redundancy; (iii) present a summary of specific aspects or portions of the passage",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-the-passage-will-be-selected-from-a-wide-variety-of-suitable",
-      "topic": "waec-summary",
-      "name": "The passage will be selected from a wide variety of suitable sources, including excerpts from narratives, dialogues and expositions of social, cultural, economic and political issues in any part of the world",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-30-marks-this-paper-will-test-candidates-knowledge-of-oral-e",
-      "topic": "waec-oral-english",
-      "name": "(30 marks) This paper will test candidates’ knowledge of Oral English",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-there-will-be-two-alternatives-for-this-paper-candidates-in",
-      "topic": "waec-oral-english",
-      "name": "There will be two alternatives for this paper: Candidates in Ghana, The Gambia and Sierra Leone will be tested in listening comprehension and those in Nigeria and Liberia will take a paper on test of oral",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-listening-comprehension-test-for-candidates-in-ghana-the-gam",
-      "topic": "waec-oral-english",
-      "name": "Listening Comprehension Test (For candidates in Ghana, The Gambia and Sierra Leone) This will be made up of sixty multiple choice objective questions on: Consonants, consonant clusters, vowels, diphthongs, stress and intonation patterns, dialogues and narratives",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-section-1-test-of-word-final-voiced-voiceless-consonants-in",
-      "topic": "waec-oral-english",
-      "name": "Section 1: Test of word final voiced-voiceless consonants in isolated words mainly, but other features such as consonant clusters may also be tested",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-section-2-test-of-vowel-quality-in-isolated-words",
-      "topic": "waec-oral-english",
-      "name": "Section 2: Test of vowel quality in isolated words",
+      "slug": "waec-photography",
+      "topic": "waec-lexis-paper-1",
+      "name": "Photography",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-section-3-test-of-vowel-quality-and-consonant-contrasts-in-i",
-      "topic": "waec-oral-english",
-      "name": "Section 3: Test of vowel quality and consonant contrasts in isolated words",
+      "slug": "waec-mineral-exploration",
+      "topic": "waec-lexis-paper-1",
+      "name": "Mineral exploration",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-section-4-one-of-three-options-below-will-be-used-in-differe",
-      "topic": "waec-oral-english",
-      "name": "Section 4: One of three options below will be used in different years: (i) test of vowel and/or consonant contrasts in sentence contexts; (ii) test of vowel and consonant contrasts in isolated words-to be selected from a list of at least four-word contrasts; (iii) test of vowel and consonant contrasts through rhymes",
+      "slug": "waec-common-manufacturing-industries",
+      "topic": "waec-lexis-paper-1",
+      "name": "Common manufacturing industries",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-section-5-test-of-rhymes-section-6-test-of-comprehension-of",
-      "topic": "waec-oral-english",
-      "name": "Section 5: Test of rhymes Section 6: Test of comprehension of emphatic stress Section 7: Test of understanding of the content of longer dialogues and narratives NOTE: CD players will be used for the administration of this Listening Comprehension Test",
+      "slug": "waec-printing-publishing-the-press-and-libraries",
+      "topic": "waec-lexis-paper-1",
+      "name": "Printing, publishing, the press and libraries",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-features-to-be-tested",
-      "topic": "waec-oral-english",
-      "name": "Features to be tested",
+      "slug": "waec-sea-road-rail-and-air-transport",
+      "topic": "waec-lexis-paper-1",
+      "name": "Sea, road, rail and air transport",
       "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-a-single-consonants-candidates-should-be-able-to-recognize-a",
-      "topic": "waec-consonants",
-      "name": "(a) Single Consonants – Candidates should be able to recognize and produce all significant sound contrasts in the consonantal system of English. For the guidance of candidates, a few examples of such contrasts are given below. Initial Medial Final they – day buzzes – buses boat – both ship – chip parcel – partial breathe – breed fan – van sopping – sobbing wash – watch pit – fit written – ridden leaf – leave pit – bit anger – anchor cup – cub tuck – duck faces - phrases cart – card card – guard prices – prizes gear – jeer",
+      "slug": "waec-government-and-politics",
+      "topic": "waec-lexis-paper-1",
+      "name": "Government and politics",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-sports-and-entertainment",
+      "topic": "waec-lexis-paper-1",
+      "name": "Sports and entertainment",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-religion-english-language",
+      "topic": "waec-lexis-paper-1",
+      "name": "Religion",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-science-and-technology-english-language",
+      "topic": "waec-lexis-paper-1",
+      "name": "Science and Technology",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-power-production-hydro-thermal-solar",
+      "topic": "waec-lexis-paper-1",
+      "name": "Power production – hydro, thermal, solar",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-education",
+      "topic": "waec-lexis-paper-1",
+      "name": "Education",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-communication",
+      "topic": "waec-lexis-paper-1",
+      "name": "Communication",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-military",
+      "topic": "waec-lexis-paper-1",
+      "name": "Military",
+      "order": 17,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-patterns-of-changes-in-word-forms-which-indicate-number-english-language",
+      "topic": "waec-structure-paper-1",
+      "name": "The patterns of changes in word-forms which indicate number, tense, degree, etc",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-b-consonant-clusters-candidates-should-be-able-to-produce-an",
-      "topic": "waec-consonants",
-      "name": "(b) Consonant Clusters – Candidates should be able to produce and recognize consonant clusters which may occur both initially and finally in a syllable. They should also be able to recognize and produce the consonant sounds in a consonant cluster in the right order. For the guidance of candidates, a few examples are given below. Initial Final play – pray rains - range sting – string felt – felled scheme – scream sent – send crime – climb nest – next flee – free ask – axe three – tree lift – lived true – drew missed – mixed blight – bright seats – seeds tread – thread hens – hence drift – thrift lisp – lips glade – grade coast – coats marks – masks",
+      "slug": "waec-the-use-of-structural-words-e-g-conjunctions-determiners-pre",
+      "topic": "waec-structure-paper-1",
+      "name": "The use of structural words e.g. conjunctions, determiners, prepositions, etc",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-a-pure-vowels",
-      "topic": "waec-vowels",
-      "name": "(a) Pure Vowels",
+      "slug": "waec-literature-english-language",
+      "topic": "waec-literature",
+      "name": "LITERATURE",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-b-diphthongs",
-      "topic": "waec-vowels",
-      "name": "(b) Diphthongs",
+      "slug": "waec-letter",
+      "topic": "waec-essay-writing",
+      "name": "Letter",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-speech",
+      "topic": "waec-essay-writing",
+      "name": "Speech",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-c-triphthongs-candidates-should-be-able-to-recognize-and-pro",
-      "topic": "waec-vowels",
-      "name": "(c) Triphthongs Candidates should be able to recognize and produce all the significant sound contrasts in the vowel system of English. For the guidance of candidates, a few examples of such contrasts are given below. seat - sit sit - set peck - pack pack - park cart - cat load - lord pair - purr park - port hard - heard word - ward let - late cheer - chair pet - pat - part - pate hat - heart - height - hate - hut caught - cot - cut - curt pool - pull - pole bird - bed - bared but - bat",
+      "slug": "waec-narration",
+      "topic": "waec-essay-writing",
+      "name": "Narration",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-a-word-stress-candidates-should-be-able-to-contrast-stressed",
-      "topic": "waec-stress",
-      "name": "(a) Word Stress - Candidates should be able to contrast stressed and unstressed syllables in words which are not otherwise distinguished. In addition, they should be aware of the possibility of shifting stress from one syllable to another in different derivations of the same word with consequent change in vowel quality. For the guidance of candidates, a few examples of changing word stress are given below. ‘increase (noun) in’crease (verb) ‘import “ im’port “ ‘rebel “ re’bel “ ‘convict “ con’vict “ ‘extract “ ex’tract “ ‘record “ re’cord “ ‘subject “ sub’ject “",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-b-sentence-stress-candidates-should-be-aware-that-stress-in",
-      "topic": "waec-stress",
-      "name": "(b) Sentence Stress – Candidates should be aware that stress in sentences in English tends to occur at regular intervals in time. English is therefore called a stress-timed language. They should also be aware that in most sentences, unless some sort of emphasis is introduced, only nouns, main verbs (not auxiliaries), adjectives and adverbs are stressed. Final pronouns should not be stressed, unless some kind of contrast is intended: relative pronouns should not be stressed, nor should possessive pronouns. Thus, for example, the following sentences should be stressed as indicated: He ‘went to the town and ‘bought some ‘oranges. I ‘told him to ‘go to the ‘station to ‘ask when the train would ‘leave. Did you ‘ask him? I ‘read it but I did not understand it. They ar’rived yesterday. I ‘fetched his ‘book. NOTE: There are a few words in English that are pronounced differently depending on whether or not they are stressed in the sentence. These are usually called strong and weak forms",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-c-emphatic-stress-candidates-should-be-aware-of-the-use-of-e",
-      "topic": "waec-stress",
-      "name": "(c) Emphatic stress – Candidates should be aware of the use of emphatic stress, most commonly to indicate a contrast, which is realized partly as a change in pitch within the intonational pattern. This falling pitch illustrated below is one of the common ways of indicating this: He borrowed ‘my newspaper. (i.e. not hers) He’ borrowed my newspaper. (i.e. he did not steal it) He borrowed my ‘newspaper.(i.e. not my book) ‘He borrowed my newspaper.(i.e. not someone else’s)",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-candidates-should-be-made-aware-of-the-different-forms-that",
-      "topic": "waec-intonation",
-      "name": "Candidates should be made aware of the different forms that English intonation takes in relation to the grammar of the language and the attitudes conveyed by the speaker. There are two basic intonation patterns or tunes: the falling and rising patterns. They should also realize that whereas the normal place for the changing pitch in an intonation is the last stressed syllable of the utterance(as indicated below), placing the changing pitch elsewhere implies a contrast to the item on which this changing pitch falls. For example",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-a-falling-pattern-they-ar-rived-to-day-statement-where-did-h",
-      "topic": "waec-intonation",
-      "name": "(a) Falling Pattern They ar’rived to’day. - Statement ‘Where did he ‘go? - WH question ‘Come ‘here! - Command",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-b-rising-pattern-did-he-see-the-principal-yes-no-question-wh",
-      "topic": "waec-intonation",
-      "name": "(b) Rising Pattern Did he ‘see the ‘principal? - Yes/No question When the ‘train arrived. - Incomplete They arrived to’day? - Question Note that",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-i-the-two-patterns-indicated-above-may-be-combined-in-longer",
-      "topic": "waec-intonation",
-      "name": "(i) the two patterns indicated above may be combined in longer sentences, e.g. When the ‘train ar’rived, the passengers were on the platform. ( ) (ii) candidates should note, in addition, that any unstressed syllable following the last stressed syllable of the sentence is said on a low level pitch when the pattern is falling, but continues the rise if the pattern is rising. The same rule applies to tags following quoted speech. Test Of Orals (For candidates in Nigeria and Liberia) The test will also be of the multiple-choice objective type consisting of sixty questions on a wide range of areas or aspects of Orals as contained in the syllabus. The test will cover the following areas: 1. Vowels – pure vowels and diphthongs; 2. Consonants and clusters; 3. Rhymes; 4. Word stress/Syllable Structure; 5. Emphatic Stress/Intonation Patterns; 6. Phonetic Symbols",
+      "slug": "waec-description",
+      "topic": "waec-essay-writing",
+      "name": "Description",
       "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-argument-debate",
+      "topic": "waec-essay-writing",
+      "name": "Argument/debate",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-report",
+      "topic": "waec-essay-writing",
+      "name": "Report",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-article",
+      "topic": "waec-essay-writing",
+      "name": "Article",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-exposition",
+      "topic": "waec-essay-writing",
+      "name": "Exposition",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-content-relevance-of-ideas-to-the-topic",
+      "topic": "waec-essay-writing",
+      "name": "Content: relevance of ideas to the topic",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-organization-formal-features-where-applicable-good-paragraph",
+      "topic": "waec-essay-writing",
+      "name": "Organization: formal features (where applicable), good paragraphing, appropriate emphasis and arrangement of ideas",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-expression-effective-control-of-vocabulary-and-sentence-stru",
+      "topic": "waec-essay-writing",
+      "name": "Expression: effective control of vocabulary and sentence structure",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-find-appropriate-equivalents-for-selected-words-or-phrases",
+      "topic": "waec-comprehension",
+      "name": "Find appropriate equivalents for selected words or phrases",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-understand-the-factual-content",
+      "topic": "waec-comprehension",
+      "name": "Understand the factual content",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-make-inferences-from-the-content-of-the-passage",
+      "topic": "waec-comprehension",
+      "name": "Make inferences from the content of the passage",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-understand-the-use-of-english-expressions-that-reveal-reflec",
+      "topic": "waec-comprehension",
+      "name": "Understand the use of English expressions that reveal/reflect sentiments/emotions/attitudes",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-identify-and-explain-basic-literary-terms-and-expressions",
+      "topic": "waec-comprehension",
+      "name": "Identify and explain basic literary terms and expressions",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-above",
+      "topic": "waec-comprehension",
+      "name": "Above",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-extract-relevant-information",
+      "topic": "waec-summary",
+      "name": "Extract relevant information",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-summarize-the-points-demanded-in-clear-concise-english-avoid",
+      "topic": "waec-summary",
+      "name": "Summarize the points demanded in clear concise English, avoiding repetition and redundancy",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-test-of-vowel-and-or-consonant-contrasts-in-sentence-context",
+      "topic": "waec-oral-english",
+      "name": "Test of vowel and/or consonant contrasts in sentence contexts",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-test-of-vowel-and-consonant-contrasts-in-isolated-words-to-b",
+      "topic": "waec-oral-english",
+      "name": "Test of vowel and consonant contrasts in isolated words-to be selected from a list of at least four-word contrasts",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-consonants-english-language",
+      "topic": "waec-consonants",
+      "name": "CONSONANTS",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-pure-vowels",
+      "topic": "waec-vowels",
+      "name": "Pure Vowels",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-diphthongs",
+      "topic": "waec-vowels",
+      "name": "Diphthongs",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-stress-english-language",
+      "topic": "waec-stress",
+      "name": "STRESS",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-falling-pattern-they-ar-rived-to-day-statement-where-did-he",
+      "topic": "waec-intonation",
+      "name": "Falling Pattern They ar’rived to’day. - Statement ‘Where did he ‘go? - WH question ‘Come ‘here! - Command",
+      "order": 1,
       "objectives": []
     }
   ]

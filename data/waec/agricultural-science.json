@@ -33,20 +33,20 @@
       "countries": []
     },
     {
-      "slug": "waec-meaning-and-differences-between",
+      "slug": "waec-meaning-and-differences-between-subsistence-and-commercial-a",
       "subject": "agricultural-science",
       "exam": "WAEC",
-      "name": "Meaning and differences between",
+      "name": "Meaning and differences between subsistence and commercial agriculture",
       "order": 3,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-roles-of-government-in-agricultural",
+      "slug": "waec-roles-of-government-in-agricultural-development",
       "subject": "agricultural-science",
       "exam": "WAEC",
-      "name": "Roles of government in agricultural",
+      "name": "Roles of government in agricultural development",
       "order": 4,
       "weight": 0,
       "objectives": [],
@@ -73,10 +73,10 @@
       "countries": []
     },
     {
-      "slug": "waec-agro-allied-industries-and-relationship",
+      "slug": "waec-agro-allied-industries-and-relationship-between-agriculture",
       "subject": "agricultural-science",
       "exam": "WAEC",
-      "name": "Agro-allied industries and relationship",
+      "name": "Agro-allied industries and relationship between agriculture and industry",
       "order": 7,
       "weight": 0,
       "objectives": [],
@@ -203,10 +203,10 @@
       "countries": []
     },
     {
-      "slug": "waec-husbandry-of-selected-crops-varieties-types-climatic-and-soi",
+      "slug": "waec-husbandry-of-selected-crops",
       "subject": "agricultural-science",
       "exam": "WAEC",
-      "name": "Husbandry of selected crops:- varieties/types, climatic and soil requirements, land preparation, methods of propagation, planting date, requirements, cultural practices: supplying, thinning, manuring and fertilizer requirement and application, weeding, pests and disease control, harvesting,",
+      "name": "Husbandry of selected crops",
       "order": 20,
       "weight": 0,
       "objectives": [],
@@ -493,21 +493,11 @@
       "countries": []
     },
     {
-      "slug": "waec-planting-dates-seed-rates-plant",
+      "slug": "waec-preparation-of-seedbeds-fertilizer-application-mulching-use",
       "subject": "agricultural-science",
       "exam": "WAEC",
-      "name": "Planting dates, seed rates, plant",
+      "name": "Preparation of seedbeds, fertilizer application, mulching, use of pesticides, watering, vegetative propagation",
       "order": 49,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-preparation-of-seedbeds-fertilizer",
-      "subject": "agricultural-science",
-      "exam": "WAEC",
-      "name": "Preparation of seedbeds, fertilizer",
-      "order": 50,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -517,7 +507,7 @@
       "subject": "agricultural-science",
       "exam": "WAEC",
       "name": "Forest products and by-products",
-      "order": 51,
+      "order": 50,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -527,7 +517,7 @@
       "subject": "agricultural-science",
       "exam": "WAEC",
       "name": "Common weeds",
-      "order": 52,
+      "order": 51,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -537,17 +527,17 @@
       "subject": "agricultural-science",
       "exam": "WAEC",
       "name": "Common breeds of animals and types",
-      "order": 53,
+      "order": 52,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-major-internal-organs-of-farm-animals-e-g",
+      "slug": "waec-major-internal-organs-of-farm-animals-e-g-organs-of-the-dige",
       "subject": "agricultural-science",
       "exam": "WAEC",
-      "name": "Major internal organs of farm animals, e.g",
-      "order": 54,
+      "name": "Major internal organs of farm animals, e.g organs of the digestive system",
+      "order": 53,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -557,7 +547,7 @@
       "subject": "agricultural-science",
       "exam": "WAEC",
       "name": "Animal by-products",
-      "order": 55,
+      "order": 54,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -567,7 +557,7 @@
       "subject": "agricultural-science",
       "exam": "WAEC",
       "name": "Animal feeds and feed stuffs and their",
-      "order": 56,
+      "order": 55,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -577,7 +567,7 @@
       "subject": "agricultural-science",
       "exam": "WAEC",
       "name": "Main pests and parasites of farm animals",
-      "order": 57,
+      "order": 56,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -587,7 +577,7 @@
       "subject": "agricultural-science",
       "exam": "WAEC",
       "name": "Diseases of farm animals",
-      "order": 58,
+      "order": 57,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -597,7 +587,7 @@
       "subject": "agricultural-science",
       "exam": "WAEC",
       "name": "Fish harvesting and preservation",
-      "order": 59,
+      "order": 58,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -619,99 +609,113 @@
       "objectives": []
     },
     {
-      "slug": "waec-problems-related-to",
+      "slug": "waec-land-tenure",
       "topic": "waec-problems-of-agricultural-development-and-possible-solutions",
-      "name": "Problems related to",
+      "name": "Land tenure",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-land-tenure-ii-basic-amenities-extension-vii-tools-and-machi",
+      "slug": "waec-basic-amenities-extension",
       "topic": "waec-problems-of-agricultural-development-and-possible-solutions",
-      "name": "land tenure; (ii) basic amenities; extension; (vii) tools and machinery; (viii) farm inputs; (ix) marketing system",
+      "name": "Basic amenities; extension",
       "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-tools-and-machinery",
+      "topic": "waec-problems-of-agricultural-development-and-possible-solutions",
+      "name": "Tools and machinery",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-farm-inputs",
+      "topic": "waec-problems-of-agricultural-development-and-possible-solutions",
+      "name": "Farm inputs",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-marketing-system",
+      "topic": "waec-problems-of-agricultural-development-and-possible-solutions",
+      "name": "Marketing system",
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-environmental-degradation",
       "topic": "waec-problems-of-agricultural-development-and-possible-solutions",
-      "name": "environmental degradation",
-      "order": 3,
+      "name": "Environmental degradation",
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-possible-solutions-to-identified-problems",
       "topic": "waec-problems-of-agricultural-development-and-possible-solutions",
       "name": "Possible solutions to identified problems",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-subsistence-and-commercial-agriculture",
-      "topic": "waec-meaning-and-differences-between",
-      "name": "subsistence and commercial agriculture",
-      "order": 1,
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-meaning-of-subsistence-and-commercial-agriculture",
-      "topic": "waec-meaning-and-differences-between",
+      "topic": "waec-meaning-and-differences-between-subsistence-and-commercial-a",
       "name": "Meaning of subsistence and commercial agriculture",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-differences-between-subsistence-and-commercial-agriculture-b",
-      "topic": "waec-meaning-and-differences-between",
-      "name": "Differences between subsistence and commercial agriculture based on their characteristics",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-advantages-and-disadvantages-of-subsistence-and-commercial-a",
-      "topic": "waec-meaning-and-differences-between",
-      "name": "Advantages and disadvantages of subsistence and commercial agriculture",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-problems-of-subsistence-and-commercial-agriculture",
-      "topic": "waec-meaning-and-differences-between",
-      "name": "Problems of subsistence and commercial agriculture",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-development",
-      "topic": "waec-roles-of-government-in-agricultural",
-      "name": "development",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-agricultural-finance",
-      "topic": "waec-roles-of-government-in-agricultural",
-      "name": "Agricultural finance",
+      "slug": "waec-differences-between-subsistence-and-commercial-agriculture-b",
+      "topic": "waec-meaning-and-differences-between-subsistence-and-commercial-a",
+      "name": "Differences between subsistence and commercial agriculture based on their characteristics",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-credit-ii-subsidy",
-      "topic": "waec-roles-of-government-in-agricultural",
-      "name": "credit; (ii) subsidy",
+      "slug": "waec-advantages-and-disadvantages-of-subsistence-and-commercial-a",
+      "topic": "waec-meaning-and-differences-between-subsistence-and-commercial-a",
+      "name": "Advantages and disadvantages of subsistence and commercial agriculture",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-problems-of-subsistence-and-commercial-agriculture",
+      "topic": "waec-meaning-and-differences-between-subsistence-and-commercial-a",
+      "name": "Problems of subsistence and commercial agriculture",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-finance",
+      "topic": "waec-roles-of-government-in-agricultural-development",
+      "name": "Agricultural finance",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-credit",
+      "topic": "waec-roles-of-government-in-agricultural-development",
+      "name": "Credit",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-subsidy",
+      "topic": "waec-roles-of-government-in-agricultural-development",
+      "name": "Subsidy",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-agricultural-education",
-      "topic": "waec-roles-of-government-in-agricultural",
+      "topic": "waec-roles-of-government-in-agricultural-development",
       "name": "Agricultural education",
       "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-agricultural-extension-services",
-      "topic": "waec-roles-of-government-in-agricultural",
+      "topic": "waec-roles-of-government-in-agricultural-development",
       "name": "Agricultural extension services",
       "order": 5,
       "objectives": []
@@ -745,37 +749,37 @@
       "objectives": []
     },
     {
-      "slug": "waec-interactions-of-the-components-in-the",
-      "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
-      "name": "Interactions of the components in the",
-      "order": 3,
-      "objectives": []
-    },
-    {
       "slug": "waec-meaning-of-land",
       "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
       "name": "Meaning of land",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-characteristics-of-land-free-gift-of-nature-immobile-limited",
       "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
       "name": "Characteristics of land – free gift of nature, immobile, limited in supply etc",
-      "order": 5,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-uses-of-land",
       "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
       "name": "Uses of land",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agricultural-purposes-crop-production",
+      "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
+      "name": "Agricultural purposes: - crop production",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-agricultural-purposes-crop-production-ii-non-agricultural-pu",
+      "slug": "waec-non-agricultural-purposes",
       "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
-      "name": "agricultural purposes: - crop production; - (ii) non-agricultural purposes",
+      "name": "Non-agricultural purposes",
       "order": 7,
       "objectives": []
     },
@@ -787,52 +791,108 @@
       "objectives": []
     },
     {
-      "slug": "waec-soil-type-ii-topography-iii-land-degradation-iv-soil-polluti",
+      "slug": "waec-soil-type",
       "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
-      "name": "soil type; (ii) topography; (iii) land degradation; (iv) soil pollution",
+      "name": "Soil type",
       "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-topography",
+      "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
+      "name": "Topography",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-land-degradation",
+      "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
+      "name": "Land degradation",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-soil-pollution",
+      "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
+      "name": "Soil pollution",
+      "order": 12,
       "objectives": []
     },
     {
       "slug": "waec-economic-factors",
       "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
       "name": "Economic factors",
-      "order": 10,
+      "order": 13,
       "objectives": []
     },
     {
-      "slug": "waec-population-pressure-ii-expansion-of-industries-iii-mining-mi",
+      "slug": "waec-population-pressure",
       "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
-      "name": "population pressure; (ii) expansion of industries; (iii) mining/mineral exploitation; (iv) recreation/tourism",
-      "order": 11,
+      "name": "Population pressure",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-expansion-of-industries",
+      "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
+      "name": "Expansion of industries",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mining-mineral-exploitation",
+      "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
+      "name": "Mining/mineral exploitation",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-recreation-tourism",
+      "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
+      "name": "Recreation/tourism",
+      "order": 17,
       "objectives": []
     },
     {
       "slug": "waec-socio-cultural-factors",
       "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
       "name": "Socio-cultural factors",
-      "order": 12,
+      "order": 18,
       "objectives": []
     },
     {
-      "slug": "waec-land-tenure-system-ii-religious-purpose-church-mosque-and-sh",
+      "slug": "waec-land-tenure-system",
       "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
-      "name": "land tenure system; (ii) religious purpose (church, mosque and shrine) etc",
-      "order": 13,
+      "name": "Land tenure system",
+      "order": 19,
       "objectives": []
     },
     {
-      "slug": "waec-between-agriculture-and-industry-etc",
-      "topic": "waec-agro-allied-industries-and-relationship",
-      "name": "between agriculture and industry etc",
+      "slug": "waec-religious-purpose-church-mosque-and-shrine-etc",
+      "topic": "waec-meaning-and-importance-of-agricultural-ecology-agricultural",
+      "name": "Religious purpose (church, mosque and shrine) etc",
+      "order": 20,
+      "objectives": []
+    },
+    {
+      "slug": "waec-etc",
+      "topic": "waec-agro-allied-industries-and-relationship-between-agriculture",
+      "name": "Etc",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-relationship-between-agriculture-and-industries-ii-agricultu",
-      "topic": "waec-agro-allied-industries-and-relationship",
-      "name": "Relationship between agriculture and industries: (ii) Agriculture provides food for industrial workers",
+      "slug": "waec-relationship-between-agriculture-and-industries",
+      "topic": "waec-agro-allied-industries-and-relationship-between-agriculture",
+      "name": "Relationship between agriculture and industries",
       "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agriculture-provides-food-for-industrial-workers",
+      "topic": "waec-agro-allied-industries-and-relationship-between-agriculture",
+      "name": "Agriculture provides food for industrial workers",
+      "order": 3,
       "objectives": []
     },
     {
@@ -843,17 +903,10 @@
       "objectives": []
     },
     {
-      "slug": "waec-biotic-factors-e-g-predators-parasites-soil-micro-organisms",
-      "topic": "waec-environmental-factors-affecting-crop-and-animal-distribution",
-      "name": "Biotic factors e.g. predators, parasites, soil micro-organisms, pests, pathogens and weeds; interrelationship such as competition, parasitism, mutualism (symbiosis)",
-      "order": 2,
-      "objectives": []
-    },
-    {
       "slug": "waec-edaphic-factors-soil-ph-soil-texture-soil-structure-soil-typ",
       "topic": "waec-environmental-factors-affecting-crop-and-animal-distribution",
       "name": "Edaphic factors: soil pH, soil texture, soil structure, soil type etc",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
@@ -864,59 +917,80 @@
       "objectives": []
     },
     {
-      "slug": "waec-factors-of-soil-formation-the-parent-rock-ii-chemical-weathe",
+      "slug": "waec-factors-of-soil-formation-the-parent-rock",
       "topic": "waec-soil-formation-and-profile-development",
-      "name": "Factors of soil formation: the parent rock, (ii) chemical weathering",
+      "name": "Factors of soil formation: the parent rock",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-chemical-weathering",
+      "topic": "waec-soil-formation-and-profile-development",
+      "name": "Chemical weathering",
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-soil-profile-development",
       "topic": "waec-soil-formation-and-profile-development",
       "name": "Soil profile development",
-      "order": 2,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-chemical-and-biological-composition-of-soil",
       "topic": "waec-soil-formation-and-profile-development",
       "name": "Chemical and biological composition of soil",
-      "order": 3,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-soil-ph",
       "topic": "waec-soil-formation-and-profile-development",
       "name": "Soil pH",
-      "order": 4,
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-methods-of-replenishing-lost-nutrients-e-g-crop-rotation-org",
       "topic": "waec-plant-nutrients-and-nutrient-cycle",
-      "name": "Methods of replenishing lost nutrients, e.g. crop rotation, organic manuring, fertilizer application, (ii) surface e.g. flooding, furrow/channel, basin, border; (iii) underground e.g. perforated pipes, drips",
+      "name": "Methods of replenishing lost nutrients, e.g. crop rotation, organic manuring, fertilizer application",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-surface-e-g-flooding-furrow-channel-basin-border",
+      "topic": "waec-plant-nutrients-and-nutrient-cycle",
+      "name": "Surface e.g. flooding, furrow/channel, basin, border",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-underground-e-g-perforated-pipes-drips",
+      "topic": "waec-plant-nutrients-and-nutrient-cycle",
+      "name": "Underground e.g. perforated pipes, drips",
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-advantages-and-disadvantages-of-irrigation-systems",
       "topic": "waec-plant-nutrients-and-nutrient-cycle",
       "name": "Advantages and disadvantages of irrigation systems",
-      "order": 2,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-importance-of-irrigation",
       "topic": "waec-plant-nutrients-and-nutrient-cycle",
       "name": "Importance of irrigation",
-      "order": 3,
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-problems-associated-with-irrigation",
       "topic": "waec-plant-nutrients-and-nutrient-cycle",
       "name": "Problems associated with irrigation",
-      "order": 4,
+      "order": 6,
       "objectives": []
     },
     {
@@ -941,17 +1015,24 @@
       "objectives": []
     },
     {
-      "slug": "waec-surface-drainage-e-g-channel-furrow-ii-subsurface-undergroun",
+      "slug": "waec-surface-drainage-e-g-channel-furrow",
       "topic": "waec-drainage",
-      "name": "surface drainage e.g. channel, furrow; (ii) subsurface/underground drainage",
+      "name": "Surface drainage e.g. channel, furrow",
       "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-subsurface-underground-drainage",
+      "topic": "waec-drainage",
+      "name": "Subsurface/underground drainage",
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-advantages-and-disadvantages-of-drainage-systems",
       "topic": "waec-drainage",
       "name": "Advantages and disadvantages of drainage systems",
-      "order": 5,
+      "order": 6,
       "objectives": []
     },
     {
@@ -969,17 +1050,31 @@
       "objectives": []
     },
     {
-      "slug": "waec-excessive-application-of-agricultural-chemicals-ii-marine-an",
+      "slug": "waec-excessive-application-of-agricultural-chemicals",
       "topic": "waec-agricultural-pollution",
-      "name": "excessive application of agricultural chemicals; (ii) marine and oil spillage; (iii) livestock waste and dung disposal etc",
+      "name": "Excessive application of agricultural chemicals",
       "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-marine-and-oil-spillage",
+      "topic": "waec-agricultural-pollution",
+      "name": "Marine and oil spillage",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-livestock-waste-and-dung-disposal-etc",
+      "topic": "waec-agricultural-pollution",
+      "name": "Livestock waste and dung disposal etc",
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-effects-of-land-pond-pollution-on-farmers-and-agricultural-p",
       "topic": "waec-agricultural-pollution",
       "name": "Effects of land/pond pollution on farmers and agricultural productivity",
-      "order": 4,
+      "order": 6,
       "objectives": []
     },
     {
@@ -1011,24 +1106,73 @@
       "objectives": []
     },
     {
-      "slug": "waec-tractor-ii-bulldozer-iii-shellers-iv-dryers",
+      "slug": "waec-tractor",
       "topic": "waec-farm-machinery-and-implements",
-      "name": "tractor; (ii) bulldozer; (iii) shellers; (iv) dryers",
+      "name": "Tractor",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-incubators-vi-milking-machines-vii-combine-harvester-etc-iv",
+      "slug": "waec-bulldozer",
       "topic": "waec-farm-machinery-and-implements",
-      "name": "incubators; (vi) milking machines; (vii) combine harvester etc. (iv) planters",
+      "name": "Bulldozer",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-harvesters-vi-sprayers-etc",
+      "slug": "waec-shellers",
       "topic": "waec-farm-machinery-and-implements",
-      "name": "harvesters; (vi) sprayers etc",
+      "name": "Shellers",
       "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-dryers",
+      "topic": "waec-farm-machinery-and-implements",
+      "name": "Dryers",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-incubators",
+      "topic": "waec-farm-machinery-and-implements",
+      "name": "Incubators",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-milking-machines",
+      "topic": "waec-farm-machinery-and-implements",
+      "name": "Milking machines",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-combine-harvester-etc",
+      "topic": "waec-farm-machinery-and-implements",
+      "name": "Combine harvester etc",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-planters",
+      "topic": "waec-farm-machinery-and-implements",
+      "name": "Planters",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-harvesters",
+      "topic": "waec-farm-machinery-and-implements",
+      "name": "Harvesters",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-sprayers-etc",
+      "topic": "waec-farm-machinery-and-implements",
+      "name": "Sprayers etc",
+      "order": 11,
       "objectives": []
     },
     {
@@ -1048,7 +1192,7 @@
     {
       "slug": "waec-check-water-and-oil-levels-regularly",
       "topic": "waec-maintenance-practices-and-precautionary-measures",
-      "name": "check water and oil levels regularly",
+      "name": "Check water and oil levels regularly",
       "order": 3,
       "objectives": []
     },
@@ -1158,87 +1302,80 @@
       "objectives": []
     },
     {
-      "slug": "waec-botanical-names-and-common-names-of-the-crop-seed-rate-spaci",
-      "topic": "waec-husbandry-of-selected-crops-varieties-types-climatic-and-soi",
-      "name": "botanical names and common names of the crop, seed rate, spacing, sowing depth and nursery processing and storage of at least one representative crop from each of the following crop groupings",
+      "slug": "waec-cereals-e-g-maize-rice-guinea-corn-millet",
+      "topic": "waec-husbandry-of-selected-crops",
+      "name": "Cereals e.g. maize, rice, guinea corn, millet",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-cereals-e-g-maize-rice-guinea-corn-millet",
-      "topic": "waec-husbandry-of-selected-crops-varieties-types-climatic-and-soi",
-      "name": "Cereals e.g. maize, rice, guinea corn, millet",
+      "slug": "waec-pulses-grain-legumes-e-g-cowpea-soya-bean-pigeon-pea",
+      "topic": "waec-husbandry-of-selected-crops",
+      "name": "Pulses (grain legumes) e.g. cowpea, soya bean, pigeon pea",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-pulses-grain-legumes-e-g-cowpea-soya-bean-pigeon-pea",
-      "topic": "waec-husbandry-of-selected-crops-varieties-types-climatic-and-soi",
-      "name": "Pulses (grain legumes) e.g. cowpea, soya bean, pigeon pea",
+      "slug": "waec-roots-and-tubers-e-g-cassava-yam-potatoes",
+      "topic": "waec-husbandry-of-selected-crops",
+      "name": "Roots and tubers e.g. cassava, yam, potatoes",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-roots-and-tubers-e-g-cassava-yam-potatoes",
-      "topic": "waec-husbandry-of-selected-crops-varieties-types-climatic-and-soi",
-      "name": "Roots and tubers e.g. cassava, yam, potatoes",
+      "slug": "waec-vegetables-e-g-tomatoes-onion-amaranthus-okro-cauliflower-sp",
+      "topic": "waec-husbandry-of-selected-crops",
+      "name": "Vegetables e.g. tomatoes, onion, amaranthus, okro, cauliflower, spinach",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-vegetables-e-g-tomatoes-onion-amaranthus-okro-cauliflower-sp",
-      "topic": "waec-husbandry-of-selected-crops-varieties-types-climatic-and-soi",
-      "name": "Vegetables e.g. tomatoes, onion, amaranthus, okro, cauliflower, spinach",
+      "slug": "waec-fruits-e-g-citrus-banana-pineapple",
+      "topic": "waec-husbandry-of-selected-crops",
+      "name": "Fruits e.g. citrus, banana, pineapple",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-fruits-e-g-citrus-banana-pineapple",
-      "topic": "waec-husbandry-of-selected-crops-varieties-types-climatic-and-soi",
-      "name": "Fruits e.g. citrus, banana, pineapple",
+      "slug": "waec-beverages-e-g-cocoa-tea-coffee",
+      "topic": "waec-husbandry-of-selected-crops",
+      "name": "Beverages e.g. cocoa, tea, coffee",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-beverages-e-g-cocoa-tea-coffee",
-      "topic": "waec-husbandry-of-selected-crops-varieties-types-climatic-and-soi",
-      "name": "Beverages e.g. cocoa, tea, coffee",
+      "slug": "waec-spices-e-g-pepper-ginger",
+      "topic": "waec-husbandry-of-selected-crops",
+      "name": "Spices e.g. pepper, ginger",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-spices-e-g-pepper-ginger",
-      "topic": "waec-husbandry-of-selected-crops-varieties-types-climatic-and-soi",
-      "name": "Spices e.g. pepper, ginger",
+      "slug": "waec-oils-e-g-groundnut-sheabutter-sunflower-oil-palm",
+      "topic": "waec-husbandry-of-selected-crops",
+      "name": "Oils e.g. groundnut, sheabutter, sunflower, oil palm",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-oils-e-g-groundnut-sheabutter-sunflower-oil-palm",
-      "topic": "waec-husbandry-of-selected-crops-varieties-types-climatic-and-soi",
-      "name": "Oils e.g. groundnut, sheabutter, sunflower, oil palm",
+      "slug": "waec-fibres-e-g-cotton-jute-sissal-hemp",
+      "topic": "waec-husbandry-of-selected-crops",
+      "name": "Fibres e.g. cotton, jute, sissal hemp",
       "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-fibres-e-g-cotton-jute-sissal-hemp",
-      "topic": "waec-husbandry-of-selected-crops-varieties-types-climatic-and-soi",
-      "name": "Fibres e.g. cotton, jute, sissal hemp",
+      "slug": "waec-latex-e-g-rubber",
+      "topic": "waec-husbandry-of-selected-crops",
+      "name": "Latex e.g. rubber",
       "order": 10,
       "objectives": []
     },
     {
-      "slug": "waec-latex-e-g-rubber",
-      "topic": "waec-husbandry-of-selected-crops-varieties-types-climatic-and-soi",
-      "name": "Latex e.g. rubber",
-      "order": 11,
-      "objectives": []
-    },
-    {
       "slug": "waec-others-sugar-cane-etc",
-      "topic": "waec-husbandry-of-selected-crops-varieties-types-climatic-and-soi",
+      "topic": "waec-husbandry-of-selected-crops",
       "name": "Others – sugar cane etc",
-      "order": 12,
+      "order": 11,
       "objectives": []
     },
     {
@@ -1389,9 +1526,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-ii-vegetative-propagation",
+      "slug": "waec-vegetative-propagation",
       "topic": "waec-settings-and-location-for-planting-ornamental-plants",
-      "name": "(ii) vegetative propagation",
+      "name": "Vegetative propagation",
       "order": 1,
       "objectives": []
     },
@@ -1403,10 +1540,31 @@
       "objectives": []
     },
     {
-      "slug": "waec-cereals-smut-rice-blast-leaf-rust-etc-ii-legumes-cercospora",
+      "slug": "waec-cereals-smut-rice-blast-leaf-rust-etc",
       "topic": "waec-settings-and-location-for-planting-ornamental-plants",
-      "name": "cereals – smut, rice blast, leaf rust etc; (ii) legumes – cercospora leaf spot, rosette etc; (iii) beverages – cocoa blackpod, swollen shoot, coffee leaf rust etc; damping off, onion twister etc; (viii) stored produce – mould etc",
+      "name": "Cereals – smut, rice blast, leaf rust etc",
       "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-legumes-cercospora-leaf-spot-rosette-etc",
+      "topic": "waec-settings-and-location-for-planting-ornamental-plants",
+      "name": "Legumes – cercospora leaf spot, rosette etc",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-beverages-cocoa-blackpod-swollen-shoot-coffee-leaf-rust-etc",
+      "topic": "waec-settings-and-location-for-planting-ornamental-plants",
+      "name": "Beverages – cocoa blackpod, swollen shoot, coffee leaf rust etc; damping off, onion twister etc",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-stored-produce-mould-etc",
+      "topic": "waec-settings-and-location-for-planting-ornamental-plants",
+      "name": "Stored produce – mould etc",
+      "order": 6,
       "objectives": []
     },
     {
@@ -1424,80 +1582,143 @@
       "objectives": []
     },
     {
-      "slug": "waec-insect-pests-ii-non-insect-pests",
+      "slug": "waec-insect-pests",
       "topic": "waec-pests-of-crops",
-      "name": "insect-pests; (ii) non-insect pests",
+      "name": "Insect-pests",
       "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-non-insect-pests",
+      "topic": "waec-pests-of-crops",
+      "name": "Non-insect pests",
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-classification-of-insect-pests-based-on-mouth-parts-with-exa",
       "topic": "waec-pests-of-crops",
       "name": "Classification of insect-pests based on mouth parts with examples",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-biting-and-chewing-ii-piercing-and-sucking-iii-boring",
-      "topic": "waec-pests-of-crops",
-      "name": "biting and chewing; (ii) piercing and sucking; (iii) boring",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-important-insect-pests-of-major-crops-field-and-storage-pest",
+      "slug": "waec-biting-and-chewing",
       "topic": "waec-pests-of-crops",
-      "name": "Important insect-pests of major crops; field and storage pests, life cycle, economic importance, nature of damage, preventive and control measures of the following major insect-pests of crops",
+      "name": "Biting and chewing",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-cereals-stem-borer-army-worm-ear-worm-etc-ii-legumes-pod-bor",
+      "slug": "waec-piercing-and-sucking",
       "topic": "waec-pests-of-crops",
-      "name": "cereals – stem borer, army worm, ear worm etc; (ii) legumes – pod borer, aphids, sucking bugs and leaf beetle; (iii) beverages – cocoa myrids (capsids); (iv) tubers – yam beetle, cassava mealybugs, green spidermites, variegated grasshopper",
+      "name": "Piercing and sucking",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-fibre-cotton-stainer-bollworms-vi-fruits-and-vegetables-thri",
+      "slug": "waec-boring",
       "topic": "waec-pests-of-crops",
-      "name": "fibre – cotton stainer, bollworms; (vi) fruits and vegetables – thrips, grasshopper, leaf roller, leaf beetle, scale insect; (vii) stored produce – grain weevils, bean beetle",
+      "name": "Boring",
       "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-cereals-stem-borer-army-worm-ear-worm-etc",
+      "topic": "waec-pests-of-crops",
+      "name": "Cereals – stem borer, army worm, ear worm etc",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-legumes-pod-borer-aphids-sucking-bugs-and-leaf-beetle",
+      "topic": "waec-pests-of-crops",
+      "name": "Legumes – pod borer, aphids, sucking bugs and leaf beetle",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-beverages-cocoa-myrids-capsids",
+      "topic": "waec-pests-of-crops",
+      "name": "Beverages – cocoa myrids (capsids)",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-tubers-yam-beetle-cassava-mealybugs-green-spidermites-varieg",
+      "topic": "waec-pests-of-crops",
+      "name": "Tubers – yam beetle, cassava mealybugs, green spidermites, variegated grasshopper",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-fibre-cotton-stainer-bollworms",
+      "topic": "waec-pests-of-crops",
+      "name": "Fibre – cotton stainer, bollworms",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-fruits-and-vegetables-thrips-grasshopper-leaf-roller-leaf-be",
+      "topic": "waec-pests-of-crops",
+      "name": "Fruits and vegetables – thrips, grasshopper, leaf roller, leaf beetle, scale insect",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-stored-produce-grain-weevils-bean-beetle",
+      "topic": "waec-pests-of-crops",
+      "name": "Stored produce – grain weevils, bean beetle",
+      "order": 15,
       "objectives": []
     },
     {
       "slug": "waec-non-insect-pests-e-g-birds-rodents-etc",
       "topic": "waec-pests-of-crops",
       "name": "Non-insect pests e.g. birds, rodents etc",
-      "order": 9,
+      "order": 16,
       "objectives": []
     },
     {
       "slug": "waec-side-effects-of-preventive-and-control-methods",
       "topic": "waec-pests-of-crops",
       "name": "Side effects of preventive and control methods",
-      "order": 10,
+      "order": 17,
       "objectives": []
     },
     {
-      "slug": "waec-chemical-pollution-poisoning-ii-biological-disruption-of-the",
+      "slug": "waec-chemical-pollution-poisoning",
       "topic": "waec-pests-of-crops",
-      "name": "chemical – pollution, poisoning; (ii) biological - disruption of the ecosystem etc; (iii) cultural – harmful effects of burning etc",
-      "order": 11,
+      "name": "Chemical – pollution, poisoning",
+      "order": 18,
+      "objectives": []
+    },
+    {
+      "slug": "waec-biological-disruption-of-the-ecosystem-etc",
+      "topic": "waec-pests-of-crops",
+      "name": "Biological - disruption of the ecosystem etc",
+      "order": 19,
+      "objectives": []
+    },
+    {
+      "slug": "waec-cultural-harmful-effects-of-burning-etc",
+      "topic": "waec-pests-of-crops",
+      "name": "Cultural – harmful effects of burning etc",
+      "order": 20,
       "objectives": []
     },
     {
       "slug": "waec-general-effects-economic-importance-of-pests",
       "topic": "waec-pests-of-crops",
       "name": "General effects/economic importance of pests",
-      "order": 12,
+      "order": 21,
       "objectives": []
     },
     {
       "slug": "waec-methods-of-controlling-weeds-cultural-biological-chemical-ph",
       "topic": "waec-pests-of-crops",
       "name": "Methods of controlling weeds: cultural, biological, chemical, physical and mechanical methods",
-      "order": 13,
+      "order": 22,
       "objectives": []
     },
     {
@@ -1508,16 +1729,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-classification-of-farm-animals-according-to",
+      "slug": "waec-habitat-terrestrial-and-aquatic",
       "topic": "waec-types-and-classification-of-farm-animals",
-      "name": "Classification of farm animals according to",
+      "name": "Habitat – terrestrial and aquatic",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-habitat-terrestrial-and-aquatic-ii-uses-food-protection-pet",
+      "slug": "waec-uses-food-protection-pet-etc",
       "topic": "waec-types-and-classification-of-farm-animals",
-      "name": "habitat – terrestrial and aquatic. (ii) uses – food, protection, pet etc",
+      "name": "Uses – food, protection, pet etc",
       "order": 3,
       "objectives": []
     },
@@ -1557,13 +1778,6 @@
       "objectives": []
     },
     {
-      "slug": "waec-methods-of-rangeland-and-pasture-improvement-controlled-stoc",
-      "topic": "waec-livestock-management",
-      "name": "Methods of rangeland and pasture improvement: controlled stocking, rotational grazing, use of fertilizers, introduction of legumes, reseeding, weed control, burning, pest and disease control",
-      "order": 5,
-      "objectives": []
-    },
-    {
       "slug": "waec-meaning-of-animal-improvement",
       "topic": "waec-animal-improvement",
       "name": "Meaning of animal improvement",
@@ -1571,10 +1785,24 @@
       "objectives": []
     },
     {
-      "slug": "waec-meaning-of-artificial-insemination-ii-methods-of-collecting",
+      "slug": "waec-meaning-of-artificial-insemination",
       "topic": "waec-animal-improvement",
-      "name": "meaning of artificial insemination. (ii) methods of collecting semen. (iii) advantages and disadvantages of artificial insemination",
+      "name": "Meaning of artificial insemination",
       "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-methods-of-collecting-semen",
+      "topic": "waec-animal-improvement",
+      "name": "Methods of collecting semen",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-advantages-and-disadvantages-of-artificial-insemination",
+      "topic": "waec-animal-improvement",
+      "name": "Advantages and disadvantages of artificial insemination",
+      "order": 4,
       "objectives": []
     },
     {
@@ -1606,38 +1834,45 @@
       "objectives": []
     },
     {
-      "slug": "waec-causal-organisms-symptoms-mode-of-transmission-effects-preve",
+      "slug": "waec-viral-foot-and-mouth-rinderpest-newcastle",
       "topic": "waec-animal-health-management",
-      "name": "Causal organisms, symptoms, mode of transmission, effects, prevention and control of the following selected livestock diseases",
+      "name": "Viral-foot and mouth, rinderpest, newcastle",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-viral-foot-and-mouth-rinderpest-newcastle-ii-bacterial-anthr",
+      "slug": "waec-bacterial-anthrax-brucellosis-tuberculosis",
       "topic": "waec-animal-health-management",
-      "name": "viral-foot and mouth, rinderpest, newcastle; (ii) bacterial – anthrax, brucellosis, tuberculosis; (iii) fungal – aspergillosis, ringworm, scabies",
+      "name": "Bacterial – anthrax, brucellosis, tuberculosis",
       "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-fungal-aspergillosis-ringworm-scabies",
+      "topic": "waec-animal-health-management",
+      "name": "Fungal – aspergillosis, ringworm, scabies",
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-parasites",
       "topic": "waec-animal-health-management",
       "name": "Parasites",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-meaning-of-parasite-ii-types-of-parasites-iii-mode-of-transm",
-      "topic": "waec-animal-health-management",
-      "name": "meaning of parasite. (ii) types of parasites. (iii) mode of transmission, life cycle, economic importance and control of the following selected livestock parasites: endoparasites – tapeworm, liverfluke and roundworm; ectoparasites – ticks, lice",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-general-methods-of-prevention-and-control-of-diseases-and-pa",
+      "slug": "waec-meaning-of-parasite",
       "topic": "waec-animal-health-management",
-      "name": "General methods of prevention and control of diseases and parasites: quarantine, inoculation/immunization, hygiene, breeding for resistance etc",
+      "name": "Meaning of parasite",
       "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-parasites",
+      "topic": "waec-animal-health-management",
+      "name": "Types of parasites",
+      "order": 10,
       "objectives": []
     },
     {
@@ -1655,45 +1890,59 @@
       "objectives": []
     },
     {
-      "slug": "waec-fish-farming-ii-shrimp-farming-iii-crab-farming",
+      "slug": "waec-fish-farming",
       "topic": "waec-aquaculture",
-      "name": "fish farming; (ii) shrimp farming; (iii) crab farming",
+      "name": "Fish farming",
       "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-shrimp-farming",
+      "topic": "waec-aquaculture",
+      "name": "Shrimp farming",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-crab-farming",
+      "topic": "waec-aquaculture",
+      "name": "Crab farming",
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-meaning-and-importance-of-fish-farming",
       "topic": "waec-aquaculture",
       "name": "Meaning and importance of fish farming",
-      "order": 4,
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-conditions-necessary-for-siting-a-fish-pond",
       "topic": "waec-aquaculture",
       "name": "Conditions necessary for siting a fish pond",
-      "order": 5,
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-establishment-and-maintenance-of-fish-pond",
       "topic": "waec-aquaculture",
       "name": "Establishment and maintenance of fish pond",
-      "order": 6,
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-fishery-regulations-meaning-and-regulations",
       "topic": "waec-aquaculture",
       "name": "Fishery regulations – meaning and regulations",
-      "order": 7,
+      "order": 9,
       "objectives": []
     },
     {
       "slug": "waec-fishing-methods-and-tools",
       "topic": "waec-aquaculture",
       "name": "Fishing methods and tools",
-      "order": 8,
+      "order": 10,
       "objectives": []
     },
     {
@@ -1711,100 +1960,121 @@
       "objectives": []
     },
     {
-      "slug": "waec-indigenous-bees-ii-exotic-bees",
+      "slug": "waec-indigenous-bees",
       "topic": "waec-apiculture-or-bee-keeping",
-      "name": "indigenous bees; (ii) exotic bees",
+      "name": "Indigenous bees",
       "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-exotic-bees",
+      "topic": "waec-apiculture-or-bee-keeping",
+      "name": "Exotic bees",
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-importance-of-bee-keeping",
       "topic": "waec-apiculture-or-bee-keeping",
       "name": "Importance of bee keeping",
-      "order": 4,
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-methods-of-bee-keeping",
       "topic": "waec-apiculture-or-bee-keeping",
       "name": "Methods of bee keeping",
-      "order": 5,
+      "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-traditional-method-ii-modern-bee-keeping",
+      "slug": "waec-traditional-method",
       "topic": "waec-apiculture-or-bee-keeping",
-      "name": "traditional method; (ii) modern bee keeping",
-      "order": 6,
+      "name": "Traditional method",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-modern-bee-keeping",
+      "topic": "waec-apiculture-or-bee-keeping",
+      "name": "Modern bee keeping",
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-bee-keeping-equipment-bee-hives-hive-tools-like-suits-smoker",
       "topic": "waec-apiculture-or-bee-keeping",
       "name": "Bee keeping equipment: bee hives, hive tools like suits, smokers, jungle boots, brushes etc",
-      "order": 7,
+      "order": 9,
       "objectives": []
     },
     {
       "slug": "waec-precautionary-measures-in-bee-keeping",
       "topic": "waec-apiculture-or-bee-keeping",
       "name": "Precautionary measures in bee keeping",
-      "order": 8,
+      "order": 10,
       "objectives": []
     },
     {
-      "slug": "waec-locate-apiaries-far-from-human-dwellings-ii-put-warning-symb",
+      "slug": "waec-locate-apiaries-far-from-human-dwellings",
       "topic": "waec-apiculture-or-bee-keeping",
-      "name": "locate apiaries far from human dwellings; (ii) put warning symbols near apiary etc",
-      "order": 9,
+      "name": "Locate apiaries far from human dwellings",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-put-warning-symbols-near-apiary-etc",
+      "topic": "waec-apiculture-or-bee-keeping",
+      "name": "Put warning symbols near apiary etc",
+      "order": 12,
       "objectives": []
     },
     {
       "slug": "waec-scarcity",
       "topic": "waec-basic-economic-principles",
-      "name": "scarcity",
+      "name": "Scarcity",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-choice",
       "topic": "waec-basic-economic-principles",
-      "name": "choice",
+      "name": "Choice",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-scale-of-preference",
       "topic": "waec-basic-economic-principles",
-      "name": "scale of preference",
+      "name": "Scale of preference",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-law-of-diminishing-returns",
       "topic": "waec-basic-economic-principles",
-      "name": "law of diminishing returns",
+      "name": "Law of diminishing returns",
       "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-land",
       "topic": "waec-factors-of-production",
-      "name": "land",
+      "name": "Land",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-capital",
       "topic": "waec-factors-of-production",
-      "name": "capital",
+      "name": "Capital",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-labour-characteristics-and-classification",
       "topic": "waec-factors-of-production",
-      "name": "labour – characteristics and classification",
+      "name": "Labour – characteristics and classification",
       "order": 3,
       "objectives": []
     },
@@ -1930,36 +2200,57 @@
     {
       "slug": "waec-classification-based-on-length-of-time-short-term-credit-med",
       "topic": "waec-agricultural-finance-agricultural-science",
-      "name": "classification based on length of time: - short-term credit; - medium term credit; - long-term credit. (ii) classification based on source of credit: - institutional credit; - non-institutional credit. (iii) classification based on liquidity: - loan in-cash; - loan in-kind",
+      "name": "Classification based on length of time: - short-term credit; - medium term credit; - long-term credit",
       "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-classification-based-on-source-of-credit-institutional-credi",
+      "topic": "waec-agricultural-finance-agricultural-science",
+      "name": "Classification based on source of credit: - institutional credit; - non-institutional credit",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-classification-based-on-liquidity-loan-in-cash-loan-in-kind",
+      "topic": "waec-agricultural-finance-agricultural-science",
+      "name": "Classification based on liquidity: - loan in-cash; - loan in-kind",
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-problems-faced-by-farmers-in-procuring-agricultural-credit-h",
       "topic": "waec-agricultural-finance-agricultural-science",
       "name": "Problems faced by farmers in procuring agricultural credit. - high interest rate; - lack or inadequate collateral etc",
-      "order": 6,
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-problems-faced-by-institutions-in-granting-loans-to-farmers",
       "topic": "waec-agricultural-finance-agricultural-science",
       "name": "Problems faced by institutions in granting loans to farmers: - lack of records and accounts etc",
-      "order": 7,
+      "order": 9,
       "objectives": []
     },
     {
       "slug": "waec-capital-market",
       "topic": "waec-agricultural-finance-agricultural-science",
       "name": "Capital market",
-      "order": 8,
+      "order": 10,
       "objectives": []
     },
     {
       "slug": "waec-meaning-of-capital-market-institutions-that-deal-with-medium",
       "topic": "waec-agricultural-finance-agricultural-science",
-      "name": "meaning of capital market, institutions that deal with medium and long term loans for agricultural business. (ii) institutions involved in the capital market (iii) sources of funds for the capital market: - bonds; - insurance companies; - merchant banks; - the stock exchange (sales and purchases of shares). (iv) roles of capital markets in agricultural business: - mobilization of long term funds for on-lending; - reduce over reliance on money market etc",
-      "order": 9,
+      "name": "Meaning of capital market, institutions that deal with medium and long term loans for agricultural business",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-institutions-involved-in-the-capital-market",
+      "topic": "waec-agricultural-finance-agricultural-science",
+      "name": "Institutions involved in the capital market",
+      "order": 12,
       "objectives": []
     },
     {
@@ -1977,80 +2268,101 @@
       "objectives": []
     },
     {
-      "slug": "waec-inventory-records-ii-production-records-iii-income-and-expen",
+      "slug": "waec-inventory-records",
       "topic": "waec-farm-records-and-accounts",
-      "name": "inventory records; (ii) production records; (iii) income and expenditure records; (iv) supplementary or special records",
+      "name": "Inventory records",
       "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-production-records",
+      "topic": "waec-farm-records-and-accounts",
+      "name": "Production records",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-income-and-expenditure-records",
+      "topic": "waec-farm-records-and-accounts",
+      "name": "Income and expenditure records",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-supplementary-or-special-records",
+      "topic": "waec-farm-records-and-accounts",
+      "name": "Supplementary or special records",
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-designing-farm-records",
       "topic": "waec-farm-records-and-accounts",
       "name": "Designing farm records",
-      "order": 4,
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-farm-accounts",
       "topic": "waec-farm-records-and-accounts",
       "name": "Farm accounts",
-      "order": 5,
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-meaning-and-importance-of-marketing-of-agricultural-produce",
       "topic": "waec-farm-records-and-accounts",
       "name": "Meaning and importance of marketing of agricultural produce",
-      "order": 6,
+      "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-marketing-agents-and-their-functions-iii-processing-etc",
+      "slug": "waec-marketing-agents-and-their-functions",
       "topic": "waec-farm-records-and-accounts",
-      "name": "Marketing agents and their functions. (iii) processing etc",
-      "order": 7,
+      "name": "Marketing agents and their functions",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-processing-etc",
+      "topic": "waec-farm-records-and-accounts",
+      "name": "Processing etc",
+      "order": 11,
       "objectives": []
     },
     {
       "slug": "waec-marketing-of-export-crops",
       "topic": "waec-farm-records-and-accounts",
       "name": "Marketing of export crops",
-      "order": 8,
+      "order": 12,
       "objectives": []
     },
     {
       "slug": "waec-export-crops-in-west-africa",
       "topic": "waec-farm-records-and-accounts",
       "name": "Export crops in West Africa",
-      "order": 9,
+      "order": 13,
       "objectives": []
     },
     {
       "slug": "waec-guidelines-for-exporting-crops-in-west-africa",
       "topic": "waec-farm-records-and-accounts",
       "name": "Guidelines for exporting crops in West Africa",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-corporate-bodies-cooperative-societies-and-individuals-engag",
-      "topic": "waec-farm-records-and-accounts",
-      "name": "Corporate bodies, cooperative societies and individuals engaged in exporting agricultural produce e.g ANCE - Association of Nigerian Cooperative Exporters",
-      "order": 11,
+      "order": 14,
       "objectives": []
     },
     {
       "slug": "waec-importance-of-exporting-agricultural-produce",
       "topic": "waec-farm-records-and-accounts",
       "name": "Importance of exporting agricultural produce",
-      "order": 12,
+      "order": 15,
       "objectives": []
     },
     {
       "slug": "waec-problems-of-marketing-agricultural-produce",
       "topic": "waec-farm-records-and-accounts",
       "name": "Problems of marketing agricultural produce",
-      "order": 13,
+      "order": 16,
       "objectives": []
     },
     {
@@ -2077,56 +2389,70 @@
     {
       "slug": "waec-specific-enterprise-insurance-e-g-crop-insurance-livestock-i",
       "topic": "waec-agricultural-insurance",
-      "name": "specific enterprise insurance e.g. crop insurance, livestock insurance; (ii) farm vehicle insurance; (iii) fire disaster insurance or machines and buildings insurance; (iv) life assurance (farmers, farm workers and farmers’ household)",
+      "name": "Specific enterprise insurance e.g. crop insurance, livestock insurance",
       "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-farm-vehicle-insurance",
+      "topic": "waec-agricultural-insurance",
+      "name": "Farm vehicle insurance",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-fire-disaster-insurance-or-machines-and-buildings-insurance",
+      "topic": "waec-agricultural-insurance",
+      "name": "Fire disaster insurance or machines and buildings insurance",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-life-assurance-farmers-farm-workers-and-farmers-household",
+      "topic": "waec-agricultural-insurance",
+      "name": "Life assurance (farmers, farm workers and farmers’ household)",
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-insurance-premium",
       "topic": "waec-agricultural-insurance",
       "name": "Insurance premium",
-      "order": 5,
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-problems-of-agricultural-insurance-uncertainties-of-weather",
       "topic": "waec-agricultural-insurance",
       "name": "Problems of agricultural insurance: - uncertainties of weather; - losses due to natural disaster etc",
-      "order": 6,
+      "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-and-importance-of-agricultural-extension-ii-group-co",
+      "slug": "waec-meaning-and-importance-of-agricultural-extension",
       "topic": "waec-agricultural-extension",
-      "name": "Meaning and importance of agricultural extension (ii) group contact methods etc",
+      "name": "Meaning and importance of agricultural extension",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-agricultural-extension-programmes-in-west-africa-e-g-adp-nde",
+      "slug": "waec-group-contact-methods-etc",
       "topic": "waec-agricultural-extension",
-      "name": "Agricultural extension programmes in West Africa e.g ADP, NDE, Agro-service centres, state ministries of agriculture and natural resources",
+      "name": "Group contact methods etc",
       "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-problems-of-agricultural-extension-in-west-africa-e-g-illite",
-      "topic": "waec-agricultural-extension",
-      "name": "Problems of agricultural extension in West Africa. e.g. illiteracy among farmers, inadequate transport facilities etc. PRACTICAL AGRICULTURAL SCIENCE",
-      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-types-igneous-sedimentary-and-metamorphic-would-be-assessed",
       "topic": "waec-rocks",
-      "name": "types: igneous, sedimentary and metamorphic would be assessed",
+      "name": "Types: igneous, sedimentary and metamorphic would be assessed",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-soil",
       "topic": "waec-laboratory-work-on-physical-properties",
-      "name": "soil",
+      "name": "Soil",
       "order": 1,
       "objectives": []
     },
@@ -2175,7 +2501,7 @@
     {
       "slug": "waec-soil-agricultural-science",
       "topic": "waec-laboratory-work-on-chemical-properties",
-      "name": "soil",
+      "name": "Soil",
       "order": 1,
       "objectives": []
     },
@@ -2187,86 +2513,86 @@
       "objectives": []
     },
     {
-      "slug": "waec-common-types-of-chemical-iii-compost",
+      "slug": "waec-common-types-of-chemical",
       "topic": "waec-laboratory-work-on-chemical-properties",
-      "name": "Common types of chemical (iii) compost",
+      "name": "Common types of chemical",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-identification-uses-and-tools-and-implements-maintenance-of",
+      "slug": "waec-compost",
+      "topic": "waec-laboratory-work-on-chemical-properties",
+      "name": "Compost",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-uses-and-maintenance-of-horticultural-agricultural-science",
       "topic": "waec-uses-and-maintenance-of-horticultural",
-      "name": "Identification, uses and tools and implements. maintenance of the following horticultural tools: shears, dibber, pruning knife, secateurs, budding knife, measuring tapes, hand fork, hand trowel, hoe, fork would be assessed. 6. Livestock and fishing equipment Identification, description, uses and care of livestock and fishing equipment e.g. waterers, feeders, milking machines, nets, hook and line, branding machine, egg candler would be assessed. Assessment would include 7. Farm surveying equipment identification, uses, and care of simple surveying equipment e.g. measuring tape, pins or arrows, ranging poles, plum bob, offset staff, compass, gunter’s chains, pegs, theodolite. Identification of seeds, seedlings, fruits, storage organs and essential 1. Seeds, seedlings, fruits and parts of the common crop plants, storage organs of crops. pasture grasses and legumes would be assessed. Assessment would include 2. Main pests and diseases of crops identification and control of the main field and storage pests e.g. cotton stainer, yam beetles, weevils etc and the damage they cause to crops; identification of main diseases of crops, their causal agents and characteristic symptoms, prevention and control",
+      "name": "Uses and maintenance of horticultural",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-population-and-seed-quality-tests-of-the-more-common-local-c",
-      "topic": "waec-planting-dates-seed-rates-plant",
-      "name": "population and seed quality tests of the more common local crop plants",
+      "slug": "waec-germination-tests-etc",
+      "topic": "waec-preparation-of-seedbeds-fertilizer-application-mulching-use",
+      "name": "Germination tests etc",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-application-mulching-use-of-pesticides-watering-vegetative-p",
-      "topic": "waec-preparation-of-seedbeds-fertilizer",
-      "name": "application, mulching, use of pesticides , watering, vegetative propagation, germination tests etc",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-assessment-would-include-the-6-methods-of-propagation-of-hor",
+      "slug": "waec-forest-products-and-by-products-agricultural-science",
       "topic": "waec-forest-products-and-by-products",
-      "name": "Assessment would include the 6. Methods of propagation of horticultural following propagation methods – plants. direct sowing, transplanting, layering, grafting and budding. External features, mode of dispersal",
+      "name": "Forest products and by-products",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-and-methods-of-controlling-weeds-on-the-farm-would-be-assess",
+      "slug": "waec-common-weeds-agricultural-science",
       "topic": "waec-common-weeds",
-      "name": "and methods of controlling weeds on the farm would be assessed. Identification of breeds, methods of",
+      "name": "Common weeds",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-animals-available-in-the-locality",
       "topic": "waec-common-breeds-of-animals-and-types",
-      "name": "animals available in the locality",
+      "name": "Animals available in the locality",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-organs-of-the-digestive-system-reproductive-and-excretory-sy",
-      "topic": "waec-major-internal-organs-of-farm-animals-e-g",
-      "name": "organs of the digestive system, reproductive and excretory systems",
+      "slug": "waec-reproductive-and-excretory-systems",
+      "topic": "waec-major-internal-organs-of-farm-animals-e-g-organs-of-the-dige",
+      "name": "Reproductive and excretory systems",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-e-g-hides-and-skin-fur-feather-horn-would-be-assessed-assess",
+      "slug": "waec-animal-by-products-agricultural-science",
       "topic": "waec-animal-by-products",
-      "name": "e.g. hides and skin, fur, feather, horn would be assessed. Assessment would cover the",
+      "name": "Animal by-products",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-local-sources",
       "topic": "waec-animal-feeds-and-feed-stuffs-and-their",
-      "name": "local sources",
+      "name": "Local sources",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-assessment-would-cover-identification-of-common-ectoparasite",
+      "slug": "waec-main-pests-and-parasites-of-farm-animals-agricultural-science",
       "topic": "waec-main-pests-and-parasites-of-farm-animals",
-      "name": "Assessment would cover identification of common ectoparasites(e.g. ticks, lice) and endoparasites(e.g tapeworms, liver flukes, roundworms); the damage caused on their hosts and their control; and their life cycles",
+      "name": "Main pests and parasites of farm animals",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-methods-of-prevention-and-control-of-diseases-of-farm-animal",
+      "slug": "waec-diseases-of-farm-animals-agricultural-science",
       "topic": "waec-diseases-of-farm-animals",
-      "name": "Methods of prevention and control of diseases of farm animals, e.g. drugging, drenching, dipping, spraying and simple methods of 7. Routine management practices in farm farm sanitation would be assessed. animals, e.g. selection of livestock and Assessment would cover the poultry for breeding, culling, ear-notching, identification of equipment/tools tattooing, horn or skin branding, used for routine management debeaking, dehorning, castration. practices",
+      "name": "Diseases of farm animals",
       "order": 1,
       "objectives": []
     },

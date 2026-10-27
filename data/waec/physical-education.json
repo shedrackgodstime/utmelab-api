@@ -133,7 +133,7 @@
       "countries": []
     },
     {
-      "slug": "waec-circulatory-system",
+      "slug": "waec-circulatory-system-physical-education",
       "subject": "physical-education",
       "exam": "WAEC",
       "name": "Circulatory System",
@@ -273,10 +273,10 @@
       "countries": []
     },
     {
-      "slug": "waec-corrective-and-adapted-physical",
+      "slug": "waec-corrective-and-adapted-physical-education-programme",
       "subject": "physical-education",
       "exam": "WAEC",
-      "name": "Corrective and adapted physical",
+      "name": "Corrective and adapted physical education programme",
       "order": 27,
       "weight": 0,
       "objectives": [],
@@ -293,10 +293,10 @@
       "countries": []
     },
     {
-      "slug": "waec-administrative-structure-function-of-sports",
+      "slug": "waec-administrative-structure-function-of-sports-at-institution-l",
       "subject": "physical-education",
       "exam": "WAEC",
-      "name": "Administrative structure/function of sports",
+      "name": "Administrative structure/function of sports at institution level",
       "order": 29,
       "weight": 0,
       "objectives": [],
@@ -305,65 +305,58 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-principles-and-philosophies-of-emphases-should-be-on-hetheri",
+      "slug": "waec-principles-and-philosophies-of-founding-fathers",
       "topic": "waec-philosophy-of-physical-education",
-      "name": "Principles and philosophies of Emphases should be on Hetherington, Dudley founding fathers Sergent, Thomas Wood and John Dewey",
+      "name": "Principles and philosophies of founding fathers",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-changes-in-concept-of-physical-education",
       "topic": "waec-philosophy-of-physical-education",
-      "name": "changes in concept of physical Education",
+      "name": "Changes in concept of physical Education",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-education-of-the-physical-and-education-through-the-physical",
       "topic": "waec-philosophy-of-physical-education",
-      "name": "education of the physical and education through the physical",
+      "name": "Education of the physical and education through the physical",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-students-should-be-taught-on-how-physical",
+      "slug": "waec-physical-education-ideologies-physical-education",
       "topic": "waec-physical-education-ideologies",
-      "name": "Students should be taught on how physical",
+      "name": "Physical education ideologies",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-nationalism-and-patriotism-in-education-and-sports-will-enha",
-      "topic": "waec-physical-education-ideologies",
-      "name": "nationalism and patriotism in education and sports will enhance physical education and sport. achievement of nationalism, patriotism and (b) national ideologies national ideologies",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-definition-and-importance-differences-between-work-rest-recr",
+      "slug": "waec-definition-and-importance",
       "topic": "waec-recreation",
-      "name": "Definition and importance Differences between work, rest, recreation,",
+      "name": "Definition and importance",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-types-of-recreational-activities-leisure-and-sports-should-b",
+      "slug": "waec-types-of-recreational-activities",
       "topic": "waec-recreation",
-      "name": "Types of recreational activities leisure and sports should be emphasized",
+      "name": "Types of recreational activities",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-indoor-ii-outdoor-candidates-should-be-able-to-differentiate",
+      "slug": "waec-indoor",
       "topic": "waec-recreation",
-      "name": "indoor (ii) outdoor Candidates should be able to differentiate between indoor and outdoor recreation",
+      "name": "Indoor",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-recreational-activities-walking-jogging-swimming-cycling-the",
+      "slug": "waec-outdoor",
       "topic": "waec-recreation",
-      "name": "Recreational activities: Walking, jogging, swimming, cycling, The role of recreational activities in the life of playing musical instruments, table an individual and the society should be tennis, camping etc. emphasized. Safety in recreational activities should be (d) Differences between recreational activities and lifetime sports. mentioned",
+      "name": "Outdoor",
       "order": 4,
       "objectives": []
     },
@@ -375,31 +368,38 @@
       "objectives": []
     },
     {
-      "slug": "waec-definitions-of",
+      "slug": "waec-intramural-activities",
       "topic": "waec-intramural-and-extramural-activities",
-      "name": "Definitions of",
+      "name": "Intramural activities",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-intramural-activities-differences-between-intramural-and-ii",
+      "slug": "waec-extramural-activities",
       "topic": "waec-intramural-and-extramural-activities",
-      "name": "intramural activities Differences between intramural and (ii) extramural activities extramural activities, minor and major games and sports should be emphasized",
+      "name": "Extramural activities",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-benefit-of-intramural-and-extramural-activities-the-role-of",
+      "slug": "waec-benefit-of-intramural-and-extramural-activities",
       "topic": "waec-intramural-and-extramural-activities",
-      "name": "Benefit of intramural and extramural activities The role of lead up games and games of low organization should be mentioned",
+      "name": "Benefit of intramural and extramural activities",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-i-definition-of-tournament-advantages-and-disadvantages-of-e",
+      "slug": "waec-definition-of-tournament",
       "topic": "waec-intramural-and-extramural-activities",
-      "name": "(i) Definition of tournament Advantages and disadvantages of each type of (ii) Types of tournament tournament",
+      "name": "Definition of tournament",
       "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-tournament",
+      "topic": "waec-intramural-and-extramural-activities",
+      "name": "Types of tournament",
+      "order": 6,
       "objectives": []
     },
     {
@@ -412,133 +412,133 @@
     {
       "slug": "waec-types-of-traditional-sports-in-respective-different-west-afr",
       "topic": "waec-traditional-sports-in-west-africa",
-      "name": "types of traditional sports in respective different West African Countries",
+      "name": "Types of traditional sports in respective different West African Countries",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-values-of-traditional-sports",
       "topic": "waec-traditional-sports-in-west-africa",
-      "name": "values of traditional sports",
+      "name": "Values of traditional sports",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-games-reference-should-be-made-to-the-origin-and-significanc",
+      "slug": "waec-games-sports-competitions",
       "topic": "waec-greek-festivals-and-the-olympic",
-      "name": "Games Reference should be made to the origin and significance of these festivals. (a) Greek Festivals: The origin and importance of the Olympic Games (i) Usthman, Pythian, Nemean and to the social and political life of the ancient Greek Olympian should be discussed. Emphasis to be placed on Sparta and Athens. (ii) Ancient Olympic Games The origin and importance of the modern Olympic (b) The modern Olympic Games Games should be discussed. SPORTS COMPETITIONS",
+      "name": "Games SPORTS COMPETITIONS",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-organization-and-administration",
       "topic": "waec-sports-championship-at-national-level",
-      "name": "organization and administration",
+      "name": "Organization and administration",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-national-championship-organized-by-different-sports-associat",
       "topic": "waec-types-of-championship",
-      "name": "national championship organized by different sports associations/federations",
+      "name": "National championship organized by different sports associations/federations",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-national-championship-organized-by-corporate-organizations",
       "topic": "waec-types-of-championship",
-      "name": "national championship organized by corporate organizations",
+      "name": "National championship organized by corporate organizations",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-the-national-sports-festival",
       "topic": "waec-types-of-championship",
-      "name": "the national sports festival",
+      "name": "The national sports festival",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-the-universities-games",
       "topic": "waec-institutional-sports",
-      "name": "the universities games",
+      "name": "The universities games",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-the-polytechnic-games",
       "topic": "waec-institutional-sports",
-      "name": "the polytechnic games",
+      "name": "The polytechnic games",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-colleges-of-education-games",
       "topic": "waec-institutional-sports",
-      "name": "colleges of education games",
+      "name": "Colleges of education games",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-national-school-sports-federation",
       "topic": "waec-institutional-sports",
-      "name": "national school sports federation",
+      "name": "National school sports federation",
       "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-history-of-all-africa-games",
       "topic": "waec-the-all-african-games",
-      "name": "history of All Africa Games",
+      "name": "History of All Africa Games",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-reasons-for-disparity-in-the-timing-of-the-games",
       "topic": "waec-the-all-african-games",
-      "name": "reasons for disparity in the timing of the games",
+      "name": "Reasons for disparity in the timing of the games",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-history-and-activities-of-supreme-council-of-sports-in-afric",
       "topic": "waec-the-all-african-games",
-      "name": "history and activities of supreme Council of sports in African (SCSA)",
+      "name": "History and activities of supreme Council of sports in African (SCSA)",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-the-f-i-f-a-world-cup-emphasis-should-be-on-history-organiza",
+      "slug": "waec-the-f-i-f-a-world-cup",
       "topic": "waec-international-competitions",
-      "name": "The F.I.F.A World Cup Emphasis should be on history, organization and",
+      "name": "The F.I.F.A World Cup",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-the-olympic-paraolympic-games-the-governing-body-of-each-of",
+      "slug": "waec-the-olympic-paraolympic-games",
       "topic": "waec-international-competitions",
-      "name": "The Olympic/Paraolympic Games the governing body of each of the competition",
+      "name": "The Olympic/Paraolympic Games",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-commonwealth-games-it-should-be-noted-that-all-sports-federa",
+      "slug": "waec-commonwealth-games",
       "topic": "waec-international-competitions",
-      "name": "Commonwealth Games It should be noted that all sports federation have",
+      "name": "Commonwealth Games",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-all-africa-games-their-own-international-competition-and-sho",
+      "slug": "waec-all-africa-games",
       "topic": "waec-international-competitions",
-      "name": "All Africa Games their own international competition and should be",
+      "name": "All Africa Games",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-world-athletics-championship-stated",
+      "slug": "waec-world-athletics-championship",
       "topic": "waec-international-competitions",
-      "name": "world Athletics Championship stated",
+      "name": "World Athletics Championship",
       "order": 5,
       "objectives": []
     },
@@ -550,296 +550,373 @@
       "objectives": []
     },
     {
-      "slug": "waec-main-parts-and-functions-of-the-candidates-should-be-able-to",
+      "slug": "waec-main-parts-and-functions-of-the-human-skeleton",
       "topic": "waec-skeletal-system",
-      "name": "main parts and functions of the Candidates should be able to name the main parts human skeleton of the human skeleton",
+      "name": "Main parts and functions of the human skeleton",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-bones-and-joints-involved-in-candidates-should-be-able-to-li",
+      "slug": "waec-bones-and-joints-involved-in-movement",
       "topic": "waec-skeletal-system",
-      "name": "bones and joints involved in Candidates should be able to list the main bones movement. involved in movement of all the joints. Joints that permit different kinds of movement should be discussed. 2. Nervous System",
+      "name": "Bones and joints involved in movement",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-the-brain",
       "topic": "waec-skeletal-system",
-      "name": "the brain",
+      "name": "The brain",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-the-spinal-cord-the-parts-and-functions-of-each-organ-listed",
+      "slug": "waec-the-spinal-cord",
       "topic": "waec-skeletal-system",
-      "name": "the spinal cord The parts and functions of each organ listed",
+      "name": "The spinal cord",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-the-nerves-should-be-discussed-the-simple-reflex-action-shou",
+      "slug": "waec-the-nerves",
       "topic": "waec-skeletal-system",
-      "name": "the nerves should be discussed. The simple reflex action should be discussed",
+      "name": "The nerves",
       "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-the-hearts-muscle",
-      "topic": "waec-circulatory-system",
-      "name": "the hearts muscle",
+      "topic": "waec-circulatory-system-physical-education",
+      "name": "The hearts muscle",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-effects-of-exercise-on-the-heart-internal-and-external-respi",
-      "topic": "waec-circulatory-system",
-      "name": "effects of exercise on the heart Internal and external respiration should be",
+      "slug": "waec-effects-of-exercise-on-the-heart",
+      "topic": "waec-circulatory-system-physical-education",
+      "name": "Effects of exercise on the heart",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-the-blood-circulation-emphasized",
-      "topic": "waec-circulatory-system",
-      "name": "the blood circulation emphasized",
+      "slug": "waec-the-blood-circulation",
+      "topic": "waec-circulatory-system-physical-education",
+      "name": "The blood circulation",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-function-of-blood",
-      "topic": "waec-circulatory-system",
-      "name": "function of blood",
+      "topic": "waec-circulatory-system-physical-education",
+      "name": "Function of blood",
       "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-types-of-blood-circulation",
-      "topic": "waec-circulatory-system",
-      "name": "types of blood circulation",
+      "topic": "waec-circulatory-system-physical-education",
+      "name": "Types of blood circulation",
       "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-the-trachea-lungs-and-nose",
       "topic": "waec-respiratory-system-physical-education",
-      "name": "the trachea, lungs and nose",
+      "name": "The trachea, lungs and nose",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-the-functions-aerobic-and-anaerobic-activities-in-relation-t",
+      "slug": "waec-the-functions",
       "topic": "waec-respiratory-system-physical-education",
-      "name": "the functions Aerobic and anaerobic activities in relation to",
+      "name": "The functions",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-types-of-respiration-respiration-should-be-discussed",
+      "slug": "waec-types-of-respiration",
       "topic": "waec-respiratory-system-physical-education",
-      "name": "types of respiration respiration should be discussed",
+      "name": "Types of respiration",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-aerobic-and-anaerobic-sports",
       "topic": "waec-respiratory-system-physical-education",
-      "name": "aerobic and anaerobic sports",
+      "name": "Aerobic and anaerobic sports",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-major-muscles-of-the-body-name-and-locations-of-major-muscle",
+      "slug": "waec-major-muscles-of-the-body",
       "topic": "waec-skeletal-muscles",
-      "name": "major muscles of the body Name and locations of major muscles should be",
+      "name": "Major muscles of the body",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-types-of-muscle-contraction-emphasized",
+      "slug": "waec-types-of-muscle-contraction",
       "topic": "waec-skeletal-muscles",
-      "name": "types of muscle contraction emphasized",
+      "name": "Types of muscle contraction",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-muscle-cramp-cause-prevention-and-first-aid-isotonic-and-iso",
+      "slug": "waec-muscle-cramp-cause-prevention-and-first-aid",
       "topic": "waec-skeletal-muscles",
-      "name": "muscle cramp, cause, prevention and first aid. Isotonic and isometric contraction should be emphasized",
+      "name": "Muscle cramp, cause, prevention and first aid",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-description-of-the-various-body-type",
       "topic": "waec-somatotype",
-      "name": "description of the various body type",
+      "name": "Description of the various body type",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-relationship-between-body-type-and-physical-activities-and-s",
       "topic": "waec-somatotype",
-      "name": "relationship between body type and physical activities and sports",
+      "name": "Relationship between body type and physical activities and sports",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-correct-posture-the-characteristics-of-correct-posture-shoul",
+      "slug": "waec-correct-posture",
       "topic": "waec-posture",
-      "name": "correct posture The characteristics of correct posture should be",
+      "name": "Correct posture",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-postural-defects-discussed-candidates-should-be-able-to-stat",
+      "slug": "waec-postural-defects-and-dance",
       "topic": "waec-posture",
-      "name": "postural defects discussed. Candidates should be able to state the causes of the following postural defects: kyphosis, scoliosis, lordiosis and flat foot. Corrective measures should be discussed AND DANCE",
+      "name": "Postural defects AND DANCE",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-a-track-events-the-start-race-and-finish-should-be-discussed",
+      "slug": "waec-track-events",
       "topic": "waec-athletics-track-and-field-events",
-      "name": "A. Track Events The start, race and finish should be discussed and",
+      "name": "Track Events",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-short-distance-races-sprints-50m-demonstrated-100m-200m-400",
+      "slug": "waec-short-distance-races-sprints-50m-100m-200m-400-hurdles-and-r",
       "topic": "waec-athletics-track-and-field-events",
-      "name": "Short distance races (sprints) 50m, demonstrated. 100m, 200m, 400, hurdles and relay races",
+      "name": "Short distance races (sprints) 50m, 100m, 200m, 400, hurdles and relay races",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-sprint-start-bullet-bunch-medium-and-elongated-visual-and-no",
+      "slug": "waec-sprint-start-bullet-bunch-medium-and-elongated",
       "topic": "waec-athletics-track-and-field-events",
-      "name": "Sprint start: bullet/bunch. medium and elongated Visual and non-visual types of baton take-over",
+      "name": "Sprint start: bullet/bunch. medium and elongated",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-relay-races-and-take-over-zone-should-be-explained",
+      "slug": "waec-relay-races",
       "topic": "waec-athletics-track-and-field-events",
-      "name": "relay races and take-over zone should be explained",
+      "name": "Relay races",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-hurdle-events-high-and-low-demonstrated-and-practised",
+      "slug": "waec-hurdle-events-high-and-low",
       "topic": "waec-athletics-track-and-field-events",
-      "name": "hurdle events (high and low) Demonstrated and practised",
+      "name": "Hurdle events (high and low)",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-middle-race-800m-the-flight-over-hurdles-should-be-demonstat",
+      "slug": "waec-middle-race-800m-1-500m",
       "topic": "waec-athletics-track-and-field-events",
-      "name": "middle race (800m, The flight over hurdles should be demonstated 1,500m, and practiced. Different distances involved in (ii) 3000 steeple chance cross hurdling should be explained country (iii) long distance races (3,00m, The start, stride and finishing should be explained. 5,000, 10,000m) and marathon (iv) phases of running",
+      "name": "Middle race (800m, 1,500m",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-rules-and-regulations-vi-officiating",
+      "slug": "waec-3000-steeple-chance-cross-country",
       "topic": "waec-athletics-track-and-field-events",
-      "name": "rules and regulations (vi) officiating",
+      "name": "3000 steeple chance cross country",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-the-candidate-should-be-able-to-explain-rules-and",
+      "slug": "waec-long-distance-races-3-00m-5-000-10-000m-and-marathon",
+      "topic": "waec-athletics-track-and-field-events",
+      "name": "Long distance races (3,00m, 5,000, 10,000m) and marathon",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-phases-of-running",
+      "topic": "waec-athletics-track-and-field-events",
+      "name": "Phases of running",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-rules-and-regulations",
+      "topic": "waec-athletics-track-and-field-events",
+      "name": "Rules and regulations",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-officiating",
+      "topic": "waec-athletics-track-and-field-events",
+      "name": "Officiating",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-throwing-events-discus-javelin-and-shot-put",
       "topic": "waec-field-events",
-      "name": "The candidate should be able to explain rules and",
+      "name": "Throwing events: discus, javelin and shot put",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-throwing-events-regulations-of-short-middle-and-long-distanc",
+      "slug": "waec-jumps-high-jump-long-jump-triple-jump-and-pole-vault",
       "topic": "waec-field-events",
-      "name": "throwing events: regulations of short, middle and long distance discus, javelin and shot put races (ii) jumps: high jump, long jump, Duties of officials should be discussed. triple jump and pole vault Candidates should be able to explain the",
+      "name": "Jumps: high jump, long jump, triple jump and pole vault",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-equipment-and-specification-techniques-and-rules-involved-in",
+      "slug": "waec-equipment-and-specification",
       "topic": "waec-field-events",
-      "name": "equipment and specification techniques and rules involved in each event and (ii) techniques identify the various equipment and specifications (iii) rules and regulations used for each event. (iv) officiating Safety precautions involved in each event should be discussed. Techniques/skills involved in jumping events 2. Games A. Ball games should be explained demonstrated and practised. Different styles of high jump (flop, straddle, (i) (a) football western roll, scissors and different (b) basketball techniques/skills involved in long jump (sail/hang (c) volleyball and hitch kick should be discussed, demonstrated (d) hockey and practised. (e) handball (ii) rules and regulations of each Skills in each game should demonstrate and game practised (iii) Officiating. Safety precaution involved in each game should be discussed. Candidates should be able to draw and label",
+      "name": "Equipment and specification",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-standard-courts-playing-areas-and-equipment-1-a-tennis-termi",
+      "slug": "waec-techniques",
+      "topic": "waec-field-events",
+      "name": "Techniques",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-rules-and-regulations-physical-education",
+      "topic": "waec-field-events",
+      "name": "Rules and regulations",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-officiating-a-ball-games",
+      "topic": "waec-field-events",
+      "name": "Officiating A. Ball games",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-rules-and-regulations-of-each",
+      "topic": "waec-field-events",
+      "name": "Rules and regulations of each",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-tennis",
       "topic": "waec-racket-games",
-      "name": "standard courts/playing areas and equipment. (1) (a) tennis terminologies in each game should be explained",
+      "name": "Tennis",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-table-tennis",
       "topic": "waec-racket-games",
-      "name": "table tennis",
+      "name": "Table tennis",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-badminton-duties-of-officials-in-each-game-should-be-discuss",
+      "slug": "waec-badminton",
       "topic": "waec-racket-games",
-      "name": "badminton Duties of officials in each game should be discussed",
+      "name": "Badminton",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-specification-of-court-table-of-all-games-the-application-of",
+      "slug": "waec-specification-of-court-table-of-all-games",
       "topic": "waec-racket-games",
-      "name": "Specification of court/table of all games; The application of the rules and regulations (ii) types of equipment used; should be discussed (iii) skills involved in each game; Skills in each game should demonstrate and (iv) rules and regulations practised",
+      "name": "Specification of court/table of all games",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-officiating-safety-precautions-in-each-game-should-be-discus",
+      "slug": "waec-types-of-equipment-used",
       "topic": "waec-racket-games",
-      "name": "officiating Safety precautions in each game should be discussed. Candidates should be able to draw and label standard court and playing areas and demonstrated the skills involved in each game",
+      "name": "Types of equipment used",
       "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-skills-involved-in-each-game",
+      "topic": "waec-racket-games",
+      "name": "Skills involved in each game",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-rules-and-regulations-2",
+      "topic": "waec-racket-games",
+      "name": "Rules and regulations",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-officiating-physical-education",
+      "topic": "waec-racket-games",
+      "name": "Officiating",
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-dances-from-the-regions-of-each-country",
       "topic": "waec-traditional-dances",
-      "name": "dances from the regions of each country",
+      "name": "Dances from the regions of each country",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-costumes-for-various-dances",
       "topic": "waec-traditional-dances",
-      "name": "costumes for various dances",
+      "name": "Costumes for various dances",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-types-of-traditional-dance-and-dance-step-conditioning",
       "topic": "waec-traditional-dances",
-      "name": "types of traditional dance and dance step CONDITIONING",
+      "name": "Types of traditional dance and dance step CONDITIONING",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-definition-of-physical-fitness-the-application-of-the-rules",
+      "slug": "waec-definition-of-physical-fitness",
       "topic": "waec-physical-fitness",
-      "name": "Definition of physical fitness The application of the rules and regulations",
+      "name": "Definition of physical fitness",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-components-of-physical-fitness-should-be-discussed-teachers",
+      "slug": "waec-components-of-physical-fitness",
       "topic": "waec-physical-fitness",
-      "name": "Components of physical fitness should be discussed. Teachers should demonstrate",
+      "name": "Components of physical fitness",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-examples-of-health-related-and-coaching-points-emphasized-pu",
+      "slug": "waec-examples-of-health-related-and-performance-skill-related-com",
       "topic": "waec-physical-fitness",
-      "name": "Examples of health related and coaching points emphasized. Pupils should performance/skill related components of practice. Game situation should be encouraged. physical fitness",
+      "name": "Examples of health related and performance/skill related components of physical fitness",
       "order": 3,
       "objectives": []
     },
@@ -851,72 +928,72 @@
       "objectives": []
     },
     {
-      "slug": "waec-importance-of-health-in-physical-qualities-of-good-health-sh",
+      "slug": "waec-importance-of-health-in-physical-education",
       "topic": "waec-health-and-personal-hygiene",
-      "name": "importance of health in physical Qualities of good health should be mentioned. education",
+      "name": "Importance of health in physical education",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-care-of-the-body-the-importance-of-keeping-the-body-clean-be",
+      "slug": "waec-care-of-the-body",
       "topic": "waec-health-and-personal-hygiene",
-      "name": "care of the body The importance of keeping the body clean before,",
+      "name": "Care of the body",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-sportswear-during-and-after-exercise-should-be-emphasized-th",
+      "slug": "waec-sportswear",
       "topic": "waec-health-and-personal-hygiene",
-      "name": "sportswear during and after exercise should be emphasized. The importance of selecting appropriate sportswear for difference sports and games should be emphasized. Reference should be made to the effect of good and bad sportswear on the body",
+      "name": "Sportswear",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-classes-of-food-nutrients-emphasis-should-be-on-pre-game-nut",
+      "slug": "waec-classes-of-food-nutrients",
       "topic": "waec-nutrition-physical-education",
-      "name": "classes of food nutrients Emphasis should be on pre-game nutrition role of",
+      "name": "Classes of food nutrients",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-balanced-diet-carbohydrate-in-sports-performance",
+      "slug": "waec-balanced-diet",
       "topic": "waec-nutrition-physical-education",
-      "name": "balanced diet carbohydrate in sports performance",
+      "name": "Balanced diet",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-dietary-consideration-in-sports",
       "topic": "waec-nutrition-physical-education",
-      "name": "dietary consideration in sports",
+      "name": "Dietary consideration in sports",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-of-drug-emphasis-should-be-placed-on",
+      "slug": "waec-meaning-of-drug",
       "topic": "waec-drug-in-sports",
-      "name": "meaning of drug Emphasis should be placed on",
+      "name": "Meaning of drug",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-types-of-drug-stimulants-narcotics-hallucinogen-sedatives-an",
+      "slug": "waec-types-of-drug",
       "topic": "waec-drug-in-sports",
-      "name": "types of drug Stimulants, narcotics, hallucinogen, sedatives and",
+      "name": "Types of drug",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-drug-use-and-misuse-ergogenic-aids",
+      "slug": "waec-drug-use-and-misuse",
       "topic": "waec-drug-in-sports",
-      "name": "drug use and misuse ergogenic aids",
+      "name": "Drug use and misuse",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-the-effect-of-drug-on-sports-performance",
       "topic": "waec-drug-in-sports",
-      "name": "the effect of drug on sports performance",
+      "name": "The effect of drug on sports performance",
       "order": 4,
       "objectives": []
     },
@@ -928,86 +1005,107 @@
       "objectives": []
     },
     {
-      "slug": "waec-dislocation-ii-sprain-candidates-should-be-able-to-identify",
+      "slug": "waec-dislocation",
       "topic": "waec-sports-injuries",
-      "name": "dislocation (ii) sprain Candidates should be able to identify kinds of (iii) strain sports injuries and explain the causes, symptoms, (iv) fracture management and prevention of each injury",
+      "name": "Dislocation",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-bruise-vi-cramp",
+      "slug": "waec-sprain",
       "topic": "waec-sports-injuries",
-      "name": "bruise (vi) cramp",
+      "name": "Sprain",
       "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-strain",
+      "topic": "waec-sports-injuries",
+      "name": "Strain",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-fracture",
+      "topic": "waec-sports-injuries",
+      "name": "Fracture",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-bruise",
+      "topic": "waec-sports-injuries",
+      "name": "Bruise",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-cramp",
+      "topic": "waec-sports-injuries",
+      "name": "Cramp",
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-first-aid-and-first-aid-box",
       "topic": "waec-sports-injuries",
       "name": "First aid and first aid box",
-      "order": 4,
+      "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-special-conditions-and-solutions-candidates-should-be-able-t",
+      "slug": "waec-special-conditions-and-solutions-that-require-first-aid",
       "topic": "waec-sports-injuries",
-      "name": "Special conditions and solutions Candidates should be able to define and apply first that require first aid aid to sports injury. They should also be able to (ii) Sportswear list the contents of a first aid box. Pupils should be made aware of the use, care and maintenance of sportswear. The role of sportswear in regulating body temperature before, during and after exercise should be discussed",
-      "order": 5,
+      "name": "Special conditions and solutions that require first aid",
+      "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-education-programme",
-      "topic": "waec-corrective-and-adapted-physical",
-      "name": "education programme",
+      "slug": "waec-sportswear-physical-education",
+      "topic": "waec-sports-injuries",
+      "name": "Sportswear",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definitions-physical-education",
+      "topic": "waec-corrective-and-adapted-physical-education-programme",
+      "name": "Definitions",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-definitions",
-      "topic": "waec-corrective-and-adapted-physical",
-      "name": "Definitions",
+      "slug": "waec-categories-of-people-with-special-needs",
+      "topic": "waec-corrective-and-adapted-physical-education-programme",
+      "name": "Categories of people with special needs",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-categories-of-people-with-special-needs-the-management-for-e",
-      "topic": "waec-corrective-and-adapted-physical",
-      "name": "Categories of people with special needs The management for each of these should be",
+      "slug": "waec-corrective-exercise",
+      "topic": "waec-corrective-and-adapted-physical-education-programme",
+      "name": "Corrective exercise",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-corrective-exercise-discussed",
-      "topic": "waec-corrective-and-adapted-physical",
-      "name": "Corrective exercise discussed",
+      "slug": "waec-activities-for-the-special-needs",
+      "topic": "waec-corrective-and-adapted-physical-education-programme",
+      "name": "Activities for the special needs",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-activities-for-the-special-needs",
-      "topic": "waec-corrective-and-adapted-physical",
-      "name": "Activities for the special needs",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-social-and-emotional-problems-of-the-the-different-types-and",
-      "topic": "waec-corrective-and-adapted-physical",
-      "name": "Social and emotional problems of the The different types and application of artificial special needs: respiration should be discussed. Heat stroke, heat exhaustion, drowning shock, fainting, muscle The need for safety precautions in physical fatigue education should be discussed",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-sports-at-national-regional-state-and-local-administrative-c",
+      "slug": "waec-sports-at-national-regional-state-and-local-government-level",
       "topic": "waec-administrative-structure-functions",
-      "name": "sports at national, regional/state and local Administrative chart and organogram at different government level. levels should be emphasized",
+      "name": "Sports at national, regional/state and local government level",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-at-institution-level-administrative-chart-and-organogram-at",
-      "topic": "waec-administrative-structure-function-of-sports",
-      "name": "at institution level Administrative chart and organogram at different institutional levels should be emphasized",
+      "slug": "waec-administrative-structure-function-of-sports-at-institution-l-physical-education",
+      "topic": "waec-administrative-structure-function-of-sports-at-institution-l",
+      "name": "Administrative structure/function of sports at institution level",
       "order": 1,
       "objectives": []
     }

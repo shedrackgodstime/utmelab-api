@@ -5,7 +5,7 @@
       "exam": "WAEC",
       "name": "Foods and Nutrition",
       "is_compulsory": false,
-      "objective_paper_questions": 60,
+      "objective_paper_questions": 50,
       "countries": [],
       "syllabus_exam": "WAEC",
       "syllabus_subject": "foods-and-nutrition"
@@ -63,10 +63,10 @@
       "countries": []
     },
     {
-      "slug": "waec-sanitation-in-the-kitchen",
+      "slug": "waec-sanitation-in-the-kitchen-cheese-yoghurt",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Sanitation in the kitchen",
+      "name": "Sanitation in the kitchen Cheese, yoghurt",
       "order": 6,
       "weight": 0,
       "objectives": [],
@@ -123,7 +123,7 @@
       "countries": []
     },
     {
-      "slug": "waec-methods-of-cooking",
+      "slug": "waec-methods-of-cooking-foods-and-nutrition",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
       "name": "Methods of cooking",
@@ -143,10 +143,10 @@
       "countries": []
     },
     {
-      "slug": "waec-flour-cookery-and-confectionery",
+      "slug": "waec-flour-cookery-and-confectionery-icing",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Flour Cookery and Confectionery",
+      "name": "Flour Cookery and Confectionery Icing",
       "order": 14,
       "weight": 0,
       "objectives": [],
@@ -263,10 +263,10 @@
       "countries": []
     },
     {
-      "slug": "waec-setting-up-and-managing-a",
+      "slug": "waec-setting-up-and-managing-a-catering-enterprise",
       "subject": "foods-and-nutrition",
       "exam": "WAEC",
-      "name": "Setting up and managing a",
+      "name": "Setting up and managing a catering enterprise",
       "order": 26,
       "weight": 0,
       "objectives": [],
@@ -295,7 +295,7 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-meaning",
+      "slug": "waec-meaning-foods-and-nutrition",
       "topic": "waec-introduction-to-foods-and-nutrition",
       "name": "Meaning",
       "order": 1,
@@ -393,13 +393,6 @@
       "objectives": []
     },
     {
-      "slug": "waec-food-tests-simple-physical-and-chemical-tests-of-food-stuffs",
-      "topic": "waec-basic-food-nutrients",
-      "name": "Food tests: simple physical and chemical tests of food stuffs to detect presence of nutrients in foods e.g. proteins, fats and carbohydrates",
-      "order": 7,
-      "objectives": []
-    },
-    {
       "slug": "waec-meal-planning-terms",
       "topic": "waec-meal-management",
       "name": "Meal planning terms",
@@ -435,20 +428,6 @@
       "objectives": []
     },
     {
-      "slug": "waec-nutritional-needs-for-different-groups-e-g-pregnant-lactatin",
-      "topic": "waec-meal-management",
-      "name": "Nutritional needs for different groups e.g. pregnant, lactating mothers, infants and children, adolescents, adults and the aged, vegetarians",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-planning-meals-for-people-in-health-condition-e-g-hiv-aids-i",
-      "topic": "waec-meal-management",
-      "name": "Planning meals for people in health condition e.g. HIV & AIDS, invalids, convalescents, overweight, underweight, hypertension, diabetes etc",
-      "order": 7,
-      "objectives": []
-    },
-    {
       "slug": "waec-the-kitchen-foods-and-nutrition",
       "topic": "waec-the-kitchen",
       "name": "The kitchen",
@@ -456,9 +435,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-sanitation-in-the-kitchen-foods-and-nutrition",
-      "topic": "waec-sanitation-in-the-kitchen",
-      "name": "Sanitation in the kitchen",
+      "slug": "waec-sanitation-in-the-kitchen-cheese-yoghurt-foods-and-nutrition",
+      "topic": "waec-sanitation-in-the-kitchen-cheese-yoghurt",
+      "name": "Sanitation in the kitchen Cheese, yoghurt",
       "order": 1,
       "objectives": []
     },
@@ -583,212 +562,212 @@
     },
     {
       "slug": "waec-moist-heat-methods-e-g-boiling-stewing-steaming-etc",
-      "topic": "waec-methods-of-cooking",
+      "topic": "waec-methods-of-cooking-foods-and-nutrition",
       "name": "Moist heat methods e.g. boiling, stewing, steaming etc",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-dry-heat-methods-e-g-baking-roasting-grilling-frying-etc",
-      "topic": "waec-methods-of-cooking",
+      "topic": "waec-methods-of-cooking-foods-and-nutrition",
       "name": "Dry heat methods e.g. baking, roasting, grilling, frying etc",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-effects-of-heat-on-different-food-commodities-e-g-animal-pro",
-      "topic": "waec-methods-of-cooking",
+      "topic": "waec-methods-of-cooking-foods-and-nutrition",
       "name": "Effects of heat on different food commodities e.g. animal products, cereals and grains, fats and oil etc",
       "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-methods-of-heat-transfer-and-meaning-convection-liquid-gases",
-      "topic": "waec-transfer-of-heat",
-      "name": "Methods of heat transfer and meaning - Convection - liquid, gases - Radiation - space - conduction - solid metal Explanation of cooking terms (4)Cooking terms",
-      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-definitions-5-food-additives",
       "topic": "waec-transfer-of-heat",
       "name": "Definitions (5) Food additives",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-types-of-food-additives",
       "topic": "waec-transfer-of-heat",
       "name": "Types of food additives",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-functions-of-additives",
       "topic": "waec-transfer-of-heat",
       "name": "Functions of additives",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-selection-and-use-of-additives",
       "topic": "waec-transfer-of-heat",
       "name": "Selection and use of additives",
-      "order": 5,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-food-adulteration",
       "topic": "waec-transfer-of-heat",
       "name": "Food adulteration",
-      "order": 6,
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-types-of-flour",
-      "topic": "waec-flour-cookery-and-confectionery",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
       "name": "Types of flour",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-ingredients-in-flour",
-      "topic": "waec-flour-cookery-and-confectionery",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
       "name": "Ingredients in flour",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-uses-of-flour-flour-fat-sugar-eggs-b-basic-ingredients-in-fl",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Uses of flour - Flour, fat, sugar, eggs (b) Basic ingredients in flour cookery",
+      "slug": "waec-uses-of-flour-flour-fat-sugar-eggs",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Uses of flour - Flour, fat, sugar, eggs",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-types-of-raising-agents-i-e-steam-carbon-dioxide-and-air",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Types of raising agents, i.e., steam, carbon dioxide and air",
+      "slug": "waec-basic-ingredients-in-flour-cookery",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Basic ingredients in flour cookery",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-sources-boiling-liquid-steam-baking-powder-carbon-dioxide-wh",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Sources:- boiling liquid – steam, baking powder - carbon dioxide whisking - air",
+      "slug": "waec-types-of-raising-agents-i-e-steam-carbon-dioxide-and-air",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Types of raising agents, i.e., steam, carbon dioxide and air",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-types-of-batters-batters",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Types of batters - Batters",
+      "slug": "waec-sources-boiling-liquid-steam-baking-powder-carbon-dioxide-wh",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Sources:- boiling liquid – steam, baking powder - carbon dioxide whisking - air",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-uses-of-batters",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Uses of batters",
+      "slug": "waec-types-of-batters-batters",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Types of batters - Batters",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-dishes-using-batter-biscuits-classification-doughs-rubbed-in",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Dishes using batter - biscuits - classification - Doughs - rubbed in - creamed - whisked - melted - sponge mixtures - rubbed in (e) Cakes - creamed - whisked - melted - sponge mixtures",
+      "slug": "waec-uses-of-batters",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Uses of batters",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-types-of-pastries-f-pastries-shortcrust-suet-flaky-etc",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Types of Pastries (f) Pastries Shortcrust, suet, flaky, etc",
+      "slug": "waec-cakes-creamed-whisked-melted-sponge-mixtures",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Cakes - creamed - whisked - melted - sponge mixtures",
       "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-principles-underlying-pastry-making",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Principles underlying pastry making",
+      "slug": "waec-types-of-pastries",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Types of Pastries",
       "order": 10,
       "objectives": []
     },
     {
-      "slug": "waec-pastry-dishes-e-g-turn-over-jam-tartlets-cornish-pasties-etc",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Pastry dishes e.g. turn over; jam tartlets, cornish pasties, etc",
+      "slug": "waec-pastries-shortcrust-suet-flaky-etc",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Pastries Shortcrust, suet, flaky, etc",
       "order": 11,
       "objectives": []
     },
     {
-      "slug": "waec-definition-foods-and-nutrition",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Definition",
+      "slug": "waec-principles-underlying-pastry-making",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Principles underlying pastry making",
       "order": 12,
       "objectives": []
     },
     {
-      "slug": "waec-ways-of-preparing-yeast-mixture",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Ways of preparing yeast mixture",
+      "slug": "waec-pastry-dishes-e-g-turn-over-jam-tartlets-cornish-pasties-etc",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Pastry dishes e.g. turn over; jam tartlets, cornish pasties, etc",
       "order": 13,
       "objectives": []
     },
     {
-      "slug": "waec-important-points-in-preparing-yeast-mixture",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Important points in preparing yeast mixture",
+      "slug": "waec-definition-foods-and-nutrition",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Definition",
       "order": 14,
       "objectives": []
     },
     {
-      "slug": "waec-yeast-dishes-bread-loaves-bread-rolls-doughnut",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Yeast dishes – bread loaves, bread rolls, doughnut",
+      "slug": "waec-ways-of-preparing-yeast-mixture",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Ways of preparing yeast mixture",
       "order": 15,
       "objectives": []
     },
     {
-      "slug": "waec-types-of-icing-e-g-butter-icing-royal-icing",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Types of icing e.g. butter icing, royal icing",
+      "slug": "waec-important-points-in-preparing-yeast-mixture",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Important points in preparing yeast mixture",
       "order": 16,
       "objectives": []
     },
     {
-      "slug": "waec-uses-of-icing",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Uses of icing",
+      "slug": "waec-yeast-dishes-bread-loaves-bread-rolls-doughnut",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Yeast dishes – bread loaves, bread rolls, doughnut",
       "order": 17,
       "objectives": []
     },
     {
-      "slug": "waec-preparation-of-icing",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Preparation of icing",
+      "slug": "waec-types-of-icing-e-g-butter-icing-royal-icing",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Types of icing e.g. butter icing, royal icing",
       "order": 18,
       "objectives": []
     },
     {
-      "slug": "waec-using-royal-icing-and-butter-icing",
-      "topic": "waec-flour-cookery-and-confectionery",
-      "name": "Using royal icing and butter icing",
+      "slug": "waec-uses-of-icing",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Uses of icing",
       "order": 19,
       "objectives": []
     },
     {
-      "slug": "waec-non-alcoholic-beverages-coffee-and-tea-cocoa-drink-milk-and",
-      "topic": "waec-classification-of-beverages",
-      "name": "Non-alcoholic beverages - coffee and tea - cocoa drink - milk and egg drinks - fruit juices and fruit drinks - beef tea and lemon grass",
-      "order": 1,
+      "slug": "waec-preparation-of-icing",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Preparation of icing",
+      "order": 20,
+      "objectives": []
+    },
+    {
+      "slug": "waec-using-royal-icing-and-butter-icing",
+      "topic": "waec-flour-cookery-and-confectionery-icing",
+      "name": "Using royal icing and butter icing",
+      "order": 21,
       "objectives": []
     },
     {
       "slug": "waec-alcoholic-beer-wine",
       "topic": "waec-classification-of-beverages",
       "name": "Alcoholic - beer - wine",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
@@ -1009,13 +988,6 @@
       "objectives": []
     },
     {
-      "slug": "waec-improving-existing-recipes-based-on-methods-of-preparation-n",
-      "topic": "waec-research-into-local-dishes-and-drinks",
-      "name": "Improving existing recipes based on methods of preparation, Nutritive value, time and energy use and service/ presentation",
-      "order": 5,
-      "objectives": []
-    },
-    {
       "slug": "waec-using-fruits-e-g-passion-fruit-samia-royal-palm-fruit",
       "topic": "waec-experiments",
       "name": "Using fruits e.g. passion fruit, samia, royal palm fruit",
@@ -1039,7 +1011,7 @@
     {
       "slug": "waec-consumer-agents",
       "topic": "waec-consumer-education",
-      "name": "consumer agents",
+      "name": "Consumer agents",
       "order": 1,
       "objectives": []
     },
@@ -1094,49 +1066,49 @@
     },
     {
       "slug": "waec-entrepreneur-entrepreneurship-enterprise",
-      "topic": "waec-setting-up-and-managing-a",
+      "topic": "waec-setting-up-and-managing-a-catering-enterprise",
       "name": "- entrepreneur - entrepreneurship - enterprise",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-characteristics-of-an-entrepreneur",
-      "topic": "waec-setting-up-and-managing-a",
+      "topic": "waec-setting-up-and-managing-a-catering-enterprise",
       "name": "Characteristics of an entrepreneur",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-advantages-and-disadvantages-of-an-entrepreneur",
-      "topic": "waec-setting-up-and-managing-a",
+      "topic": "waec-setting-up-and-managing-a-catering-enterprise",
       "name": "Advantages and disadvantages of an entrepreneur",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-setting-up-a-catering-entrepreneur",
-      "topic": "waec-setting-up-and-managing-a",
+      "topic": "waec-setting-up-and-managing-a-catering-enterprise",
       "name": "Setting up a catering entrepreneur",
       "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-some-catering-enterprises",
-      "topic": "waec-setting-up-and-managing-a",
+      "topic": "waec-setting-up-and-managing-a-catering-enterprise",
       "name": "Some catering enterprises",
       "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-factors-contributing-to-the-success-of-an-enterprise",
-      "topic": "waec-setting-up-and-managing-a",
+      "topic": "waec-setting-up-and-managing-a-catering-enterprise",
       "name": "Factors contributing to the success of an enterprise",
       "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-explanation-of-work-ethics",
-      "topic": "waec-setting-up-and-managing-a",
+      "topic": "waec-setting-up-and-managing-a-catering-enterprise",
       "name": "Explanation of work ethics",
       "order": 7,
       "objectives": []

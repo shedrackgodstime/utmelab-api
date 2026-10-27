@@ -146,24 +146,38 @@
       "objectives": []
     },
     {
-      "slug": "waec-principles-of-office-organization-a-span-of-control-b-unity",
+      "slug": "waec-principles-of-office-organization-a-span-of-control",
       "topic": "waec-the-office",
-      "name": "Principles of office organization. (a) Span of control, (b) Unity of control, (c) Unity of function, etc",
+      "name": "Principles of office organization. (a) Span of control",
       "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-unity-of-control",
+      "topic": "waec-the-office",
+      "name": "Unity of control",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-unity-of-function-etc",
+      "topic": "waec-the-office",
+      "name": "Unity of function, etc",
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-office-procedures",
       "topic": "waec-the-office",
       "name": "Office procedures",
-      "order": 5,
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-sections-of-the-office",
       "topic": "waec-the-office",
       "name": "Sections of the office",
-      "order": 6,
+      "order": 8,
       "objectives": []
     },
     {
@@ -195,24 +209,80 @@
       "objectives": []
     },
     {
-      "slug": "waec-types-of-office-equipment-manual-a-typewriter-b-perforator-c",
+      "slug": "waec-types-of-office-equipment-manual-a-typewriter",
       "topic": "waec-office-equipment",
-      "name": "Types of office equipment. Manual: (a) Typewriter, (b) Perforator, (c) Stapling machine, (d) Duplicating machine,etc. Electrical: (a) Typewriter, (b) Photocopier, (c) Shredding machine, (d) Computer, (e) Scanning machine, (f) Facsimile machine, etc",
+      "name": "Types of office equipment. Manual: (a) Typewriter",
       "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-perforator",
+      "topic": "waec-office-equipment",
+      "name": "Perforator",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-stapling-machine",
+      "topic": "waec-office-equipment",
+      "name": "Stapling machine",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-duplicating-machine-etc-electrical-a-typewriter",
+      "topic": "waec-office-equipment",
+      "name": "Duplicating machine,etc. Electrical: (a) Typewriter",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-photocopier",
+      "topic": "waec-office-equipment",
+      "name": "Photocopier",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-shredding-machine",
+      "topic": "waec-office-equipment",
+      "name": "Shredding machine",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-computer",
+      "topic": "waec-office-equipment",
+      "name": "Computer",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-scanning-machine",
+      "topic": "waec-office-equipment",
+      "name": "Scanning machine",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-facsimile-machine-etc",
+      "topic": "waec-office-equipment",
+      "name": "Facsimile machine, etc",
+      "order": 10,
       "objectives": []
     },
     {
       "slug": "waec-uses-of-office-equipment",
       "topic": "waec-office-equipment",
       "name": "Uses of office equipment",
-      "order": 3,
+      "order": 11,
       "objectives": []
     },
     {
       "slug": "waec-care-of-office-equipment",
       "topic": "waec-office-equipment",
       "name": "Care of office equipment",
-      "order": 4,
+      "order": 12,
       "objectives": []
     },
     {
@@ -253,15 +323,36 @@
     {
       "slug": "waec-i-meaning-of-office-documents-ii-types-of-office-documents-a",
       "topic": "waec-office-documents",
-      "name": "i Meaning of office documents. ii Types of office documents. (a) Administrative (b) Sales (c) Stores (d) Purchasing",
+      "name": "I Meaning of office documents. ii Types of office documents. (a) Administrative",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-sales",
+      "topic": "waec-office-documents",
+      "name": "Sales",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-stores",
+      "topic": "waec-office-documents",
+      "name": "Stores",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-purchasing",
+      "topic": "waec-office-documents",
+      "name": "Purchasing",
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-uses-of-office-documents-iv-preparation-of-office-documents",
       "topic": "waec-office-documents",
       "name": "Uses of office documents. iv Preparation of office documents",
-      "order": 2,
+      "order": 5,
       "objectives": []
     },
     {
@@ -272,31 +363,94 @@
       "objectives": []
     },
     {
-      "slug": "waec-types-of-office-correspondence-a-memos-b-business-letters-c",
+      "slug": "waec-types-of-office-correspondence-a-memos",
       "topic": "waec-office-correspondence",
-      "name": "Types of office correspondence. (a) Memos, (b) Business letters, (c) Notice of meetings, (d) Minutes of meetings, (e) Reports, (f) Circulars",
+      "name": "Types of office correspondence. (a) Memos",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-types-of-mail-a-personal-mail-b-official-mail-c-urgent-mail",
+      "slug": "waec-business-letters",
+      "topic": "waec-office-correspondence",
+      "name": "Business letters",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-notice-of-meetings",
+      "topic": "waec-office-correspondence",
+      "name": "Notice of meetings",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-minutes-of-meetings",
+      "topic": "waec-office-correspondence",
+      "name": "Minutes of meetings",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-reports",
+      "topic": "waec-office-correspondence",
+      "name": "Reports",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-circulars",
+      "topic": "waec-office-correspondence",
+      "name": "Circulars",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-mail-a-personal-mail",
       "topic": "waec-mail",
-      "name": "Types of mail: (a) Personal mail, (b) Official mail, (c) Urgent mail, (d) Confidential mail",
+      "name": "Types of mail: (a) Personal mail",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-classification-of-mail-a-incoming-mail-b-outgoing-mail",
+      "slug": "waec-official-mail",
       "topic": "waec-mail",
-      "name": "Classification of mail: (a) incoming mail, (b) Outgoing mail",
+      "name": "Official mail",
       "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-urgent-mail",
+      "topic": "waec-mail",
+      "name": "Urgent mail",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-confidential-mail",
+      "topic": "waec-mail",
+      "name": "Confidential mail",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-classification-of-mail-a-incoming-mail",
+      "topic": "waec-mail",
+      "name": "Classification of mail: (a) incoming mail",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-outgoing-mail",
+      "topic": "waec-mail",
+      "name": "Outgoing mail",
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-procedures-for-handling-incoming-and-outgoing-mail",
       "topic": "waec-mail",
       "name": "Procedures for handling incoming and outgoing mail",
-      "order": 3,
+      "order": 7,
       "objectives": []
     },
     {
@@ -307,73 +461,171 @@
       "objectives": []
     },
     {
-      "slug": "waec-systems-of-filing-a-vertical-b-lateral-c-electronic",
+      "slug": "waec-systems-of-filing-a-vertical",
       "topic": "waec-filing",
-      "name": "Systems of filing. (a) Vertical, (b) Lateral, (c) Electronic",
+      "name": "Systems of filing. (a) Vertical",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-classifications-of-filing-a-alphabetical-b-chronological-c-n",
+      "slug": "waec-lateral",
       "topic": "waec-filing",
-      "name": "Classifications of filing (a) Alphabetical, (b) Chronological, (c) Numerical, (d) Geographical, (e) Alpha-numerical. (f) Subject",
+      "name": "Lateral",
       "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-electronic",
+      "topic": "waec-filing",
+      "name": "Electronic",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-classifications-of-filing-a-alphabetical",
+      "topic": "waec-filing",
+      "name": "Classifications of filing (a) Alphabetical",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-chronological",
+      "topic": "waec-filing",
+      "name": "Chronological",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-numerical",
+      "topic": "waec-filing",
+      "name": "Numerical",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-geographical",
+      "topic": "waec-filing",
+      "name": "Geographical",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-alpha-numerical",
+      "topic": "waec-filing",
+      "name": "Alpha-numerical",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-subject",
+      "topic": "waec-filing",
+      "name": "Subject",
+      "order": 10,
       "objectives": []
     },
     {
       "slug": "waec-purposes-of-filing",
       "topic": "waec-filing",
       "name": "Purposes of filing",
-      "order": 4,
+      "order": 11,
       "objectives": []
     },
     {
       "slug": "waec-steps-involved-in-filing",
       "topic": "waec-filing",
       "name": "Steps involved in filing",
-      "order": 5,
+      "order": 12,
       "objectives": []
     },
     {
       "slug": "waec-filing-equipment",
       "topic": "waec-filing",
       "name": "Filing equipment",
-      "order": 6,
+      "order": 13,
       "objectives": []
     },
     {
       "slug": "waec-definition-of-communication",
       "topic": "waec-filing",
       "name": "Definition of communication",
-      "order": 7,
+      "order": 14,
       "objectives": []
     },
     {
       "slug": "waec-importance-of-communication",
       "topic": "waec-filing",
       "name": "Importance of communication",
-      "order": 8,
+      "order": 15,
       "objectives": []
     },
     {
-      "slug": "waec-types-of-communication-a-verbal-oral-written-b-non-verbal-vi",
+      "slug": "waec-types-of-communication-a-verbal-oral-written",
       "topic": "waec-filing",
-      "name": "Types of communication (a) Verbal - Oral - Written (b) Non verbal - Visual - Audio - Audio-visual",
-      "order": 9,
+      "name": "Types of communication (a) Verbal - Oral - Written",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-non-verbal-visual-audio-audio-visual",
+      "topic": "waec-filing",
+      "name": "Non verbal - Visual - Audio - Audio-visual",
+      "order": 17,
       "objectives": []
     },
     {
       "slug": "waec-methods-media-of-communication-a-print-newspapers-magazines",
       "topic": "waec-filing",
-      "name": "Methods/Media of communication (a) Print (newspapers, magazines, directories, handbills, flyers, etc.) (b) Electronic (radio, television, audio and video conferencing, etc)",
-      "order": 10,
+      "name": "Methods/Media of communication (a) Print (newspapers, magazines, directories, handbills, flyers, etc.)",
+      "order": 18,
       "objectives": []
     },
     {
-      "slug": "waec-communication-service-providers-a-nipost-b-nitel-c-media-hou",
+      "slug": "waec-electronic-radio-television-audio-and-video-conferencing-etc",
       "topic": "waec-filing",
-      "name": "Communication service providers: (a) NIPOST, (b) NITEL, (c) Media houses (d) Satellite stations (e) The internet (f) Global System of Mobile Communication (GSM)",
-      "order": 11,
+      "name": "Electronic (radio, television, audio and video conferencing, etc)",
+      "order": 19,
+      "objectives": []
+    },
+    {
+      "slug": "waec-communication-service-providers-a-nipost",
+      "topic": "waec-filing",
+      "name": "Communication service providers: (a) NIPOST",
+      "order": 20,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nitel",
+      "topic": "waec-filing",
+      "name": "NITEL",
+      "order": 21,
+      "objectives": []
+    },
+    {
+      "slug": "waec-media-houses",
+      "topic": "waec-filing",
+      "name": "Media houses",
+      "order": 22,
+      "objectives": []
+    },
+    {
+      "slug": "waec-satellite-stations",
+      "topic": "waec-filing",
+      "name": "Satellite stations",
+      "order": 23,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-internet",
+      "topic": "waec-filing",
+      "name": "The internet",
+      "order": 24,
+      "objectives": []
+    },
+    {
+      "slug": "waec-global-system-of-mobile-communication-gsm",
+      "topic": "waec-filing",
+      "name": "Global System of Mobile Communication (GSM)",
+      "order": 25,
       "objectives": []
     },
     {
@@ -391,38 +643,143 @@
       "objectives": []
     },
     {
-      "slug": "waec-types-of-meeting-a-statutory-meeting-b-emergency-meeting-c-b",
+      "slug": "waec-types-of-meeting-a-statutory-meeting",
       "topic": "waec-meetings",
-      "name": "Types of meeting (a) Statutory meeting, (b) Emergency meeting, (c) Board meeting, (d) Management meeting, (e) Annual General Meeting, (f) Staff meeting, (g) Committee meeting",
+      "name": "Types of meeting (a) Statutory meeting",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-procedure-for-conducting-a-meeting-a-opening-prayer-b-agenda",
+      "slug": "waec-emergency-meeting",
       "topic": "waec-meetings",
-      "name": "Procedure for conducting a meeting (a) Opening prayer, (b) Agenda, (c) Chairman’s opening remarks, (d) Reading of the last minutes, (e) Correction ( if any), (f) Adoption of the last minutes, (g) Matters arising from the last minutes, (h) Main business, (i) Any other business (AOB), (j) Chairman’s closing remarks, (k) Adjournment/ closing, (l) Closing prayer",
+      "name": "Emergency meeting",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-meeting-terminologies-a-agenda-b-adoption-c-a-o-b-d-adjournm",
+      "slug": "waec-board-meeting",
       "topic": "waec-meetings",
-      "name": "Meeting Terminologies: (a) Agenda, (b) Adoption, (c) A O B. (d) Adjournment, etc",
+      "name": "Board meeting",
       "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-management-meeting",
+      "topic": "waec-meetings",
+      "name": "Management meeting",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-annual-general-meeting",
+      "topic": "waec-meetings",
+      "name": "Annual General Meeting",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-staff-meeting",
+      "topic": "waec-meetings",
+      "name": "Staff meeting",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-committee-meeting",
+      "topic": "waec-meetings",
+      "name": "Committee meeting",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-procedure-for-conducting-a-meeting-a-opening-prayer",
+      "topic": "waec-meetings",
+      "name": "Procedure for conducting a meeting (a) Opening prayer",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agenda",
+      "topic": "waec-meetings",
+      "name": "Agenda",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-chairman-s-opening-remarks",
+      "topic": "waec-meetings",
+      "name": "Chairman’s opening remarks",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-reading-of-the-last-minutes",
+      "topic": "waec-meetings",
+      "name": "Reading of the last minutes",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-correction-if-any",
+      "topic": "waec-meetings",
+      "name": "Correction ( if any)",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-adoption-of-the-last-minutes",
+      "topic": "waec-meetings",
+      "name": "Adoption of the last minutes",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-matters-arising-from-the-last-minutes",
+      "topic": "waec-meetings",
+      "name": "Matters arising from the last minutes",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meeting-terminologies-a-agenda",
+      "topic": "waec-meetings",
+      "name": "Meeting Terminologies: (a) Agenda",
+      "order": 17,
+      "objectives": []
+    },
+    {
+      "slug": "waec-adoption",
+      "topic": "waec-meetings",
+      "name": "Adoption",
+      "order": 18,
+      "objectives": []
+    },
+    {
+      "slug": "waec-a-o-b",
+      "topic": "waec-meetings",
+      "name": "A O B",
+      "order": 19,
+      "objectives": []
+    },
+    {
+      "slug": "waec-adjournment-etc",
+      "topic": "waec-meetings",
+      "name": "Adjournment, etc",
+      "order": 20,
       "objectives": []
     },
     {
       "slug": "waec-roles-of-the-chairman-secretary",
       "topic": "waec-meetings",
       "name": "Roles of the chairman/secretary",
-      "order": 6,
+      "order": 21,
       "objectives": []
     },
     {
       "slug": "waec-writing-the-minutes",
       "topic": "waec-meetings",
       "name": "Writing the minutes",
-      "order": 7,
+      "order": 22,
       "objectives": []
     },
     {
@@ -433,24 +790,45 @@
       "objectives": []
     },
     {
-      "slug": "waec-types-of-report-formal-a-short-report-b-long-report-c-invest",
+      "slug": "waec-types-of-report-formal-a-short-report",
       "topic": "waec-report-writing",
-      "name": "Types of report – Formal (a) Short report (b) Long report (c) Investigative report (d) Routine/Periodic",
+      "name": "Types of report – Formal (a) Short report",
       "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-long-report",
+      "topic": "waec-report-writing",
+      "name": "Long report",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-investigative-report",
+      "topic": "waec-report-writing",
+      "name": "Investigative report",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-routine-periodic",
+      "topic": "waec-report-writing",
+      "name": "Routine/Periodic",
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-parts-of-a-report",
       "topic": "waec-report-writing",
       "name": "Parts of a report",
-      "order": 3,
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-importance-of-report-writing",
       "topic": "waec-report-writing",
       "name": "Importance of report writing",
-      "order": 4,
+      "order": 7,
       "objectives": []
     },
     {
@@ -489,10 +867,31 @@
       "objectives": []
     },
     {
-      "slug": "waec-qualities-of-good-information-a-timeliness-b-accuracy-c-spee",
+      "slug": "waec-qualities-of-good-information-a-timeliness",
       "topic": "waec-information",
-      "name": "Qualities of good information (a) Timeliness, (b) Accuracy, (c) Speed of delivery, (d) Usability, etc",
+      "name": "Qualities of good information (a) Timeliness",
       "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-accuracy",
+      "topic": "waec-information",
+      "name": "Accuracy",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-speed-of-delivery",
+      "topic": "waec-information",
+      "name": "Speed of delivery",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-usability-etc",
+      "topic": "waec-information",
+      "name": "Usability, etc",
+      "order": 9,
       "objectives": []
     }
   ]

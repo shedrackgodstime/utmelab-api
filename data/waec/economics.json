@@ -279,13 +279,6 @@
       "objectives": []
     },
     {
-      "slug": "waec-classification-of-economic-activities-primary-secondary-and",
-      "topic": "waec-definition-and-scope-of-economics",
-      "name": "Classification of economic activities - Primary, Secondary and Tertiary and their relative contributions in terms of output/income, employment, savings, investment and foreign exchange",
-      "order": 3,
-      "objectives": []
-    },
-    {
       "slug": "waec-land-labour-capital-and-entrepreneurship-meaning-characteris",
       "topic": "waec-factors-of-production-economics",
       "name": "Land, labour, capital and entrepreneurship-meaning, characteristics and importance",
@@ -293,30 +286,30 @@
       "objectives": []
     },
     {
-      "slug": "waec-a-types-capitalism-socialism-and-mixed-economy",
+      "slug": "waec-types-capitalism-socialism-and-mixed-economy",
       "topic": "waec-types-and-basic-features-of-economic-systems",
-      "name": "(a) Types – capitalism, socialism and mixed economy",
+      "name": "Types – capitalism, socialism and mixed economy",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-b-basic-features-of-each",
+      "slug": "waec-basic-features-of-each",
       "topic": "waec-types-and-basic-features-of-economic-systems",
-      "name": "(b) Basic features of each",
+      "name": "Basic features of each",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-c-advantages-and-disadvantages-of-each",
+      "slug": "waec-advantages-and-disadvantages-of-each",
       "topic": "waec-types-and-basic-features-of-economic-systems",
-      "name": "(c) Advantages and disadvantages of each",
+      "name": "Advantages and disadvantages of each",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-d-economic-problems-of-society-and-the-approaches-for-solvin",
+      "slug": "waec-economic-problems-of-society-and-the-approaches-for-solving",
       "topic": "waec-types-and-basic-features-of-economic-systems",
-      "name": "(d) Economic problems of society and the approaches for solving them under each of the systems",
+      "name": "Economic problems of society and the approaches for solving them under each of the systems",
       "order": 4,
       "objectives": []
     },
@@ -335,38 +328,17 @@
       "objectives": []
     },
     {
-      "slug": "waec-concept-of-demand-and-law-of-demand-the-demand-schedules-and",
+      "slug": "waec-demand-economics",
       "topic": "waec-demand",
-      "name": "Concept of demand and law of demand, the demand schedules and curve, reasons for exceptional demand curves, types of demand (derived, composite, joint and competitive); factors determining demand for goods and services – price of the commodity, prices of other commodities, income, tastes, price expectation, etc. Distinction between a shift of and movement along a demand curve; concept of elasticity of demand",
+      "name": "DEMAND",
       "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-types-of-elasticity-of-demand-and-their-measurement-price-in",
-      "topic": "waec-demand",
-      "name": "Types of elasticity of demand and their measurement – price, income and cross elasticities of demand: importance of the concept of elasticity of demand to consumers, producers and government",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-concept-of-supply-and-law-of-supply-supply-schedules-and-cur",
-      "topic": "waec-supply",
-      "name": "Concept of supply and law of supply, supply schedules and curve, types of Supply – composite, complementary and competitive",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-factors-determining-supply-input-prices-technology-prices-of",
-      "topic": "waec-supply",
-      "name": "Factors determining supply – input prices, technology, prices of other commodities, climatic factors, etc. Distinction between the shift of and movement along the supply curve",
-      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-concept-and-measurement-of-elasticity-of-supply-and-its-impo",
       "topic": "waec-supply",
       "name": "Concept and measurement of elasticity of supply and its importance to producers and government",
-      "order": 3,
+      "order": 1,
       "objectives": []
     },
     {
@@ -447,128 +419,86 @@
       "objectives": []
     },
     {
-      "slug": "waec-price-controls-maximum-and-minimum-price-regulations-meaning",
-      "topic": "waec-theory-of-price-determination",
-      "name": "Price controls: maximum and minimum price regulations-meaning and their effects; rationing, black market (parallel market)",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-production-division-of-labour-and-specialization-scale-of-pr",
+      "slug": "waec-theory-of-production-economics",
       "topic": "waec-theory-of-production",
-      "name": "Production: division of labour and specialization: Scale of production (Internal and External economies), concept of total, average and marginal productivity and law of variable proportions",
+      "name": "THEORY OF PRODUCTION",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-i-cost-concepts-total-cost-average-cost-marginal-cost-variab",
+      "slug": "waec-cost-concepts-total-cost-average-cost-marginal-cost-variable",
       "topic": "waec-theory-of-cost-and-revenue",
-      "name": "(i) Cost concepts: total cost, average cost, marginal cost, variable cost, fixed cost; short run and long run costs",
+      "name": "Cost concepts: total cost, average cost, marginal cost, variable cost, fixed cost; short run and long run costs",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-ii-distinction-between-economist-s-and-accountant-s-view-of",
+      "slug": "waec-distinction-between-economist-s-and-accountant-s-view-of-cos",
       "topic": "waec-theory-of-cost-and-revenue",
-      "name": "(ii) Distinction between economist’s and accountant’s view of cost (opportunity cost and money cost)",
+      "name": "Distinction between economist’s and accountant’s view of cost (opportunity cost and money cost)",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-iii-revenue-concepts-total-average-and-marginal-revenue-marg",
+      "slug": "waec-revenue-concepts-total-average-and-marginal-revenue-marginal",
       "topic": "waec-theory-of-cost-and-revenue",
-      "name": "(iii) Revenue concepts: total, average and marginal revenue; Marginal revenue Product",
+      "name": "Revenue concepts: total, average and marginal revenue; Marginal revenue Product",
       "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-concept-of-a-market-characteristics-of-various-market-struct",
-      "topic": "waec-market-structures",
-      "name": "Concept of a market, characteristics of various market structures, determination of price and output under different structures - perfect competition and imperfect competition (monopoly and monopolistic competition)",
-      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-review-of-cost-and-revenue-concepts",
       "topic": "waec-market-structures",
       "name": "Review of cost and revenue concepts",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-price-discrimination",
       "topic": "waec-market-structures",
       "name": "Price discrimination",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-types-and-basic-features-of-business-enterprises-sole-propri",
-      "topic": "waec-business-organizations",
-      "name": "Types and basic features of business enterprises – Sole Proprietorship; Partnership, Joint-Stock companies (Private and Public), Co-operatives; Statutory Corporation, Joint ventures",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-sources-of-funds",
       "topic": "waec-business-organizations",
       "name": "Sources of funds",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-general-and-basic-problems-of-business-enterprises",
       "topic": "waec-business-organizations",
       "name": "General and basic problems of business enterprises",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-privatization-and-commercialization-as-solutions-to-problems",
       "topic": "waec-business-organizations",
       "name": "Privatization and Commercialization as solutions to problems of public enterprises",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-indigenization-and-nationalization-policies",
       "topic": "waec-business-organizations",
       "name": "Indigenization and nationalization policies",
-      "order": 5,
+      "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-process-of-distribution-role-of-producers-role-of-wholesaler",
+      "slug": "waec-distributive-trade-economics",
       "topic": "waec-distributive-trade",
-      "name": "Process of distribution, role of producers, role of wholesalers, retailers and co-operatives: the role of government agencies in product distribution and the problems of distribution and their solutions",
+      "name": "DISTRIBUTIVE TRADE",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-a-population-determination-and-implication-of-size-and-growt",
+      "slug": "waec-labour-market",
       "topic": "waec-population-and-labour-market",
-      "name": "(a) Population - determination and implication of size and growth of population, Rural – urban migration, Malthusian theory of population Geographical, age, sex and occupational distribution. Importance and problems of census. Population and economic development (under - population, optimum population and over-population)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-b-labour-market",
-      "topic": "waec-population-and-labour-market",
-      "name": "(b) Labour Market",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-i-concept-of-labour-force-and-human-capital-efficiency-and-m",
-      "topic": "waec-population-and-labour-market",
-      "name": "(i) Concept of labour force and human capital, efficiency and mobility of labour, factors affecting the size of the labour force, particularly the population characteristics (age, sex, occupation, education, etc.) (ii) supply of and demand for labour: wage determination. Concept of unemployment and underemployment, Trade Unions, Employers’ association and Government policies on labour and wages",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-structure-e-g-food-crops-export-crops-livestock-fisheries-sy",
-      "topic": "waec-agriculture",
-      "name": "Structure (e.g. food crops, export crops, livestock, fisheries): systems of agriculture (peasant, commercial, co-operative and state farming); importance of agriculture to the national economy: marketing of agricultural products (commodity boards)",
+      "name": "Labour Market",
       "order": 1,
       "objectives": []
     },
@@ -576,7 +506,7 @@
       "slug": "waec-agricultural-policies-minimum-agricultural-prices-problems-o",
       "topic": "waec-agriculture",
       "name": "Agricultural policies (minimum agricultural prices) problems of agriculture and remedies",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
@@ -636,23 +566,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-a-money-definition-and-historical-development-barter-and-its",
+      "slug": "waec-inflation-meaning-types-causes-effects-and-control",
       "topic": "waec-money-and-inflation",
-      "name": "(a) Money – definition and historical development-barter and its problems, types, characteristics functions. Supply of and demand for money, value of money and the price level",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-b-inflation-meaning-types-causes-effects-and-control",
-      "topic": "waec-money-and-inflation",
-      "name": "(b) Inflation: meaning types, causes, effects and control",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-types-traditional-central-bank-commercial-bank-development-b",
-      "topic": "waec-financial-institutions",
-      "name": "Types (traditional, Central Bank, Commercial Bank, Development Bank, Merchant Bank, and Insurance Companies, Building Societies) : development and functions of financial institutions",
+      "name": "Inflation: meaning types, causes, effects and control",
       "order": 1,
       "objectives": []
     },
@@ -660,7 +576,7 @@
       "slug": "waec-money-and-capital-markets-meaning-types-and-functions",
       "topic": "waec-financial-institutions",
       "name": "Money and capital markets; meaning, types and functions",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
@@ -671,45 +587,24 @@
       "objectives": []
     },
     {
-      "slug": "waec-taxation-types-direct-and-indirect-objectives-merits-demerit",
-      "topic": "waec-public-finance",
-      "name": "Taxation -types(direct and indirect),objectives, merits, demerits and incidence; Principles/canons of taxation; Rates of taxation(proportional, progressive and regressive) direct and indirect taxation: incidence and effects of taxes, composition/ structure of public expenditure (recurrent and capital expenditure): effects of public expenditure",
-      "order": 2,
-      "objectives": []
-    },
-    {
       "slug": "waec-government-budget-and-the-national-debt",
       "topic": "waec-public-finance",
       "name": "Government budget and the national debt",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-meaning-of-economic-development-distinction-between-economic",
-      "topic": "waec-economic-development-and-planning",
-      "name": "Meaning of economic development, distinction between economic growth and development, characteristics and problems of developing countries, elements of development planning (objectives of planning, and problems of planning)",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-types-of-plans-short-term-medium-term-perspective-or-long-te",
       "topic": "waec-economic-development-and-planning",
       "name": "Types of plans (short term, medium term, perspective or long term, rolling plan etc.)",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-a-international-trade-differences-between-domestic-and-inter",
-      "topic": "waec-international-trade-and-balance-of-payments",
-      "name": "(a) International Trade: differences between domestic and international trade, the basis of international trade, absolute and comparative cost advantage, terms of trade (definition and measurement) commercial policy (objectives) and instruments – tariffs (types) and direct control. Trend and structure of West African countries’ external trade",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-b-balance-of-payments-role-of-money-in-international-transac",
+      "slug": "waec-international-trade-and-balance-of-payments-economics",
       "topic": "waec-international-trade-and-balance-of-payments",
-      "name": "(b) Balance of Payments: role of money in international transactions, meaning and components of balance of payments, balance of payments disequilibrium, balance of payments adjustments (exchange rate policy exchange control, monetary and fiscal policies) and financing (the use of reserves and international borrowing)",
-      "order": 2,
+      "name": "INTERNATIONAL TRADE AND BALANCE OF PAYMENTS",
+      "order": 1,
       "objectives": []
     },
     {
@@ -727,16 +622,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-development-and-role-of-organization-of-petroleum-exporting",
+      "slug": "waec-international-economic-organizations-economics",
       "topic": "waec-international-economic-organizations",
-      "name": "Development and role of: - Organization of Petroleum Exporting Countries (OPEC) - Economic Commission for Africa (ECA) - International Monetary Fund (IMF) - International Bank for Reconstruction and Development (IBRD) - African Development Bank (AfDB) - United Nations Conference on Trade and Development (UNCTAD) etc. relevance of such organizations to West African Countries",
+      "name": "INTERNATIONAL ECONOMIC ORGANIZATIONS",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-development-of-major-natural-resources-petroleum-gold-diamon",
+      "slug": "waec-major-natural-resources-economics",
       "topic": "waec-major-natural-resources",
-      "name": "Development of major natural resources (petroleum, gold, diamond, timber, groundnut etc) effects on West African economies (positive and negative)",
+      "name": "MAJOR NATURAL RESOURCES",
       "order": 1,
       "objectives": []
     }

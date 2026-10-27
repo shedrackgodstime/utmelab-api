@@ -207,57 +207,106 @@
     {
       "slug": "waec-government-as-an-institution-of-the-state-definition-of-stat",
       "topic": "waec-meaning-and-scope-of-the-subject-matter-government",
-      "name": "Government as an institution of the state . Definition of state, features, structure and functions. (ii) Government as a process or art or governing. (iii) Government as an academic field of study – reasons for studying government",
+      "name": "Government as an institution of the state. Definition of state, features, structure and functions",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-basic-concepts-state-society-nation-power-authority-legitima",
+      "slug": "waec-government-as-a-process-or-art-or-governing",
+      "topic": "waec-meaning-and-scope-of-the-subject-matter-government",
+      "name": "Government as a process or art or governing",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-government-as-an-academic-field-of-study-reasons-for-studyin",
+      "topic": "waec-meaning-and-scope-of-the-subject-matter-government",
+      "name": "Government as an academic field of study – reasons for studying government",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-basic-concepts-and-principles-of-government-government",
       "topic": "waec-basic-concepts-and-principles-of-government",
-      "name": "Basic concepts – State, *Society, *Nation, Power, Authority, Legitimacy, Sovereignty, Democracy, Political Culture and Socialization, Communalism, Feudalism and oligarchy, *Liberalism, Socialism, Communism, Capitalism, Fascism, Aristocracy, Totalitarianism. Meaning and features. (ii) Basic principles – Rule of Law, Fundamental Human Rights, Separation of Powers/Checks and Balances, Constitutionalism, Political participation, Representative Government, Centralization and Decentralization – (Delegated Legislation, Devolution and Decentralization)",
+      "name": "BASIC CONCEPTS AND PRINCIPLES OF GOVERNMENT",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-definition-and-sources-ii-functions-iii-types-and-features-w",
+      "slug": "waec-definition-and-sources",
       "topic": "waec-constitutions",
-      "name": "Definition and Sources (ii) Functions (iii) Types and Features, (Written and Unwritten, Rigid and Flexible)",
+      "name": "Definition and Sources",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-the-executive-the-legislature-and-the-judiciary-judicial-ind",
+      "slug": "waec-functions-government",
+      "topic": "waec-constitutions",
+      "name": "Functions",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-and-features-written-and-unwritten-rigid-and-flexible",
+      "topic": "waec-constitutions",
+      "name": "Types and Features, (Written and Unwritten, Rigid and Flexible)",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-organs-of-government-government",
       "topic": "waec-organs-of-government",
-      "name": "The Executive, the Legislature and the Judiciary – Judicial Independence. (Types, Structure, Composition/membership; Functions; powers and limitations)",
+      "name": "ORGANS OF GOVERNMENT",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-types-unitary-federal-confederal-presidential-or-non-parliam",
+      "slug": "waec-state-structure-and-characteristics-of-government-government",
       "topic": "waec-state-structure-and-characteristics-of-government",
-      "name": "Types - Unitary, Federal, Confederal, Presidential or Non-parliamentary, Parliamentary or Cabinet, Monarchical and Republican. Meaning, types, features, merits and demerits",
+      "name": "STATE STRUCTURE AND CHARACTERISTICS OF GOVERNMENT",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-mode-of-acquisition-rights-duties-and-obligations-of",
+      "slug": "waec-citizenship-government",
       "topic": "waec-citizenship",
-      "name": "Meaning, mode of acquisition, rights, duties and obligations of individuals in the state. Means of safeguarding rights of citizens",
+      "name": "CITIZENSHIP",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-political-parties-definition-organization-structure-and-func",
       "topic": "waec-political-parties-and-party-systems",
-      "name": "Political Parties – definition, organization/structure, and functions. (ii) Party Systems – definition, types, merits and demerits",
+      "name": "Political Parties – definition, organization/structure, and functions",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-party-systems-definition-types-merits-and-demerits",
+      "topic": "waec-political-parties-and-party-systems",
+      "name": "Party Systems – definition, types, merits and demerits",
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-pressure-groups-definition-types-mode-of-operation-and-funct",
       "topic": "waec-pressure-groups-public-opinion-and-mass-media",
-      "name": "Pressure Groups – definition, types, mode of operation and functions; (ii) Public opinion – definition, formation, Measurement and importance; (iii) Mass Media – definition, roles and impact",
+      "name": "Pressure Groups – definition, types, mode of operation and functions",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-public-opinion-definition-formation-measurement-and-importan",
+      "topic": "waec-pressure-groups-public-opinion-and-mass-media",
+      "name": "Public opinion – definition, formation, Measurement and importance",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mass-media-definition-roles-and-impact",
+      "topic": "waec-pressure-groups-public-opinion-and-mass-media",
+      "name": "Mass Media – definition, roles and impact",
+      "order": 3,
       "objectives": []
     },
     {
@@ -275,45 +324,122 @@
       "objectives": []
     },
     {
-      "slug": "waec-election-meaning-and-purpose-of-elections-ii-franchise-meani",
+      "slug": "waec-election-meaning-and-purpose-of-elections",
       "topic": "waec-the-electoral-systems-processes-and-electoral",
-      "name": "Election-Meaning and purpose of elections. (ii) Franchise – meaning, and limitations. (iii) Types, advantages and disadvantages of Electoral Systems",
+      "name": "Election-Meaning and purpose of elections",
       "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-franchise-meaning-and-limitations",
+      "topic": "waec-the-electoral-systems-processes-and-electoral",
+      "name": "Franchise – meaning, and limitations",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-advantages-and-disadvantages-of-electoral-systems",
+      "topic": "waec-the-electoral-systems-processes-and-electoral",
+      "name": "Types, advantages and disadvantages of Electoral Systems",
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-electoral-management-body-definition-function-problems-const",
       "topic": "waec-the-electoral-systems-processes-and-electoral",
       "name": "Electoral Management Body – definition, function, problems/constrains",
-      "order": 4,
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-public-civil-service-meaning-structure-characteristics-and-f",
       "topic": "waec-public-civil-service-administration",
-      "name": "Public/Civil Service – Meaning, Structure, Characteristics and Functions. (ii) Public/Civil Service Commission –meaning and Functions. (iii) Public Corporations – definition, purposes, functions, control, challenges, need for commercialization and privatization. (iv) Local Governments – Meaning, structure, Purposes, Functions, Sources of revenue, control and problems. SECTION B: POLITICAL AND CONSTITUTIONAL DEVLEOPMENTS IN WEST AFRICA AND INTERNATIONAL RELATIONS",
+      "name": "Public/Civil Service – Meaning, Structure, Characteristics and Functions",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-public-civil-service-commission-meaning-and-functions",
+      "topic": "waec-public-civil-service-administration",
+      "name": "Public/Civil Service Commission –meaning and Functions",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-public-corporations-definition-purposes-functions-control-ch",
+      "topic": "waec-public-civil-service-administration",
+      "name": "Public Corporations – definition, purposes, functions, control, challenges, need for commercialization and privatization",
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-countries-the-structural-organization-of-the-following-a-nig",
       "topic": "waec-pre-colonial-political-system-of-candidates-respective",
-      "name": "COUNTRIES The Structural Organization of the following: (a) Nigeria - Hausa/Fulani, the Yoruba and the Igbo. (b) Ghana - The Akan and the Talensi. (c) Sierra Leone - The Mende and Temme. (d) The Gambia - The Wolof, Mandingo and Jola. (e) Liberia - The Vai and the Kru",
+      "name": "COUNTRIES The Structural Organization of the following: (a) Nigeria - Hausa/Fulani, the Yoruba and the Igbo",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-ghana-the-akan-and-the-talensi",
+      "topic": "waec-pre-colonial-political-system-of-candidates-respective",
+      "name": "Ghana - The Akan and the Talensi",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-sierra-leone-the-mende-and-temme",
+      "topic": "waec-pre-colonial-political-system-of-candidates-respective",
+      "name": "Sierra Leone - The Mende and Temme",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-gambia-the-wolof-mandingo-and-jola",
+      "topic": "waec-pre-colonial-political-system-of-candidates-respective",
+      "name": "The Gambia - The Wolof, Mandingo and Jola",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-liberia-the-vai-and-the-kru",
+      "topic": "waec-pre-colonial-political-system-of-candidates-respective",
+      "name": "Liberia - The Vai and the Kru",
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-the-policy-and-structure-of-the-british-colonial-administrat",
       "topic": "waec-colonial-administration",
-      "name": "The Policy and Structure of the British Colonial Administration – Crown Colony, Protectorate and Indirect Rule. (ii) The Policy of French Colonial Administration – Assimilation and Association (Loi Cadre). (iii) Impact, Advantages and disadvantages of Colonial Rule",
+      "name": "The Policy and Structure of the British Colonial Administration – Crown Colony, Protectorate and Indirect Rule",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-nationalism-meaning-factors-and-effects-ii-key-nationalist-l",
+      "slug": "waec-the-policy-of-french-colonial-administration-assimilation-an",
+      "topic": "waec-colonial-administration",
+      "name": "The Policy of French Colonial Administration – Assimilation and Association (Loi Cadre)",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-impact-advantages-and-disadvantages-of-colonial-rule",
+      "topic": "waec-colonial-administration",
+      "name": "Impact, Advantages and disadvantages of Colonial Rule",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-nationalism-meaning-factors-and-effects",
       "topic": "waec-nationalism-in-candidates-respective-countries",
-      "name": "Nationalism: Meaning, factors and effects. (ii) Key Nationalist leaders/movements and their contributions",
+      "name": "Nationalism: Meaning, factors and effects",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-key-nationalist-leaders-movements-and-their-contributions",
+      "topic": "waec-nationalism-in-candidates-respective-countries",
+      "name": "Key Nationalist leaders/movements and their contributions",
+      "order": 2,
       "objectives": []
     },
     {
@@ -345,58 +471,44 @@
       "objectives": []
     },
     {
-      "slug": "waec-sierra-leone-features-merits-and-demerits-slatter-1924-steve",
+      "slug": "waec-the-gambia-features-merits-and-demerits-the-1947-1951-1954-1",
       "topic": "waec-constitutional-developments-in-candidates-respective",
-      "name": "Sierra Leone (features, merits and demerits) - Slatter 1924 Stevenson 1947 Beresford Stooke 1951 The 1956 and 1958 Constitutions",
+      "name": "The Gambia (features, merits and demerits) - The 1947, 1951, 1954, 1960, 1962 and 1963 Constitutions",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-the-gambia-features-merits-and-demerits-the-1947-1951-1954-1",
+      "slug": "waec-post-independence-constitutions-features",
       "topic": "waec-constitutional-developments-in-candidates-respective",
-      "name": "The Gambia (features, merits and demerits) - The 1947, 1951, 1954, 1960, 1962 and 1963 Constitutions. (ii) Post-Independence Constitutions – Features",
+      "name": "Post-Independence Constitutions – Features",
       "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-nigeria-independence-constitution-1960-republican-constituti",
-      "topic": "waec-constitutional-developments-in-candidates-respective",
-      "name": "Nigeria - Independence Constitution, 1960 Republican Constitution 1963 The 1979 and 1989 Constitutions 1999 Constitution - Origin, features, strength and Weaknesses",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-ghana-independence-constitution-1957-republican-constitution",
-      "topic": "waec-constitutional-developments-in-candidates-respective",
-      "name": "Ghana - Independence Constitution, 1957 Republican Constitution 1960 2nd Republican Constitution 1969 3rd Republican Constitution 1979 4th Republican Constitutions 1992",
-      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-sierra-leone-independence-constitution-1961-republican-const",
       "topic": "waec-constitutional-developments-in-candidates-respective",
-      "name": "Sierra Leone – Independence Constitution 1961 Republican Constitution 1971 The 1978 and 1991 Constitutions,",
-      "order": 9,
+      "name": "Sierra Leone – Independence Constitution 1961 Republican Constitution 1971 The 1978 and 1991 Constitutions",
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-the-gambia-independence-constitution-1965-republican-constit",
       "topic": "waec-constitutional-developments-in-candidates-respective",
       "name": "The Gambia - Independence Constitution 1965 Republican Constitution 1970. 2nd Republican Constitution 1997",
-      "order": 10,
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-liberia-independence-republican-constitution-1947-2nd-republ",
       "topic": "waec-constitutional-developments-in-candidates-respective",
       "name": "Liberia - Independence/Republican Constitution 1947 2nd Republican Constitution 1985",
-      "order": 11,
+      "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-respective-countries-nigeria-sierra-leone-the-gambia-liberia",
+      "slug": "waec-development-of-major-political-parties-in-the-candidates-government",
       "topic": "waec-development-of-major-political-parties-in-the-candidates",
-      "name": "RESPECTIVE COUNTRIES - Nigeria - Sierra Leone - The Gambia - Liberia Formation, Objectives, Sources of Finance, Achievements and Failures",
+      "name": "DEVELOPMENT OF MAJOR POLITICAL PARTIES IN THE CANDIDATES’",
       "order": 1,
       "objectives": []
     },
@@ -422,9 +534,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-the-united-nations-organizations-uno-the-commonwealth-of-nat",
+      "slug": "waec-international-organizations-government",
       "topic": "waec-international-organizations",
-      "name": "The United Nations Organizations (UNO), The Commonwealth of Nations, African Union (AU) - NEPAD, The Economic Community of West African States (ECOWAS). Origin, aims/objectives, achievements and problems. WASSCE GOVERNMENT",
+      "name": "INTERNATIONAL ORGANIZATIONS",
       "order": 1,
       "objectives": []
     }

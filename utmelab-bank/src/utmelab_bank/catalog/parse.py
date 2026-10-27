@@ -12,7 +12,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 
-from .contract import MAX_NAME_CHARS
+from .contract import MAX_NAME_CHARS, name_defects
 from .model import Subtopic, Syllabus, Topic
 from .pdf import Line
 from .profiles import STOP_MARKERS, Profile
@@ -171,7 +171,20 @@ def _incomplete(name: str) -> bool:
     return (
         stripped.rstrip(".;:")
         .lower()
-        .endswith((" and", " of", " for", " to", " in", " on", " with", " the"))
+        .endswith(
+            (
+                " and",
+                " of",
+                " for",
+                " to",
+                " in",
+                " on",
+                " with",
+                " the",
+                " between",
+                " following",
+            )
+        )
     )
 
 
@@ -387,6 +400,16 @@ def _is_continuation(
         and line.text[:1].islower()
     ):
         return True
+    # A heading in the left column can wrap while the notes column, to its
+    # right, is already printing body text on the same row. That body text
+    # does not close the heading: it is a different column.
+    if (
+        profile.body_x_min > 0
+        and line.x < profile.body_x_min
+        and heading.line.x <= line.x <= heading.line.x + 30
+        and len(line.text.split()) <= 4
+    ):
+        return True
     if (
         profile.body_x_min > 0
         and line.x >= profile.body_x_min
@@ -399,7 +422,8 @@ def _is_continuation(
     elif line.x <= heading.line.x + 2:
         return False
     if profile.topic_continuation_independent:
-        return True
+        # Independent means "not at the same x", not "after the body started".
+        return not seen_body
     if profile.body_x_min > 0 and line.x < profile.body_x_min:
         return True
     return not seen_body
@@ -413,7 +437,9 @@ def parse(lines: list[Line], profile: Profile) -> Syllabus:
         raise ParseError(f"{profile.slug}: no topics found after {profile.start_marker!r}")
 
     topics: list[Topic] = []
+    topic_sections: list[str] = []
     section_re = re.compile(profile.section_re)
+    sections = _section_map(scope, section_re)
     for position, heading in enumerate(headings):
         following = headings[position + 1] if position + 1 < len(headings) else None
         band = [
@@ -450,7 +476,23 @@ def parse(lines: list[Line], profile: Profile) -> Syllabus:
             if len(prefix.split()) >= 2 and len(prefix) <= MAX_NAME_CHARS:
                 name = prefix
         if not name:
-            name = heading.name
+            # The heading's second table cell, on the same row, carries the
+            # name: "4. (a)" | "Centralized and non-centralized states:".
+            same_row = [
+                line
+                for line in band
+                if line.page == heading.line.page
+                and abs(line.y - heading.line.y) <= ROW_TOLERANCE
+                and heading.line.x < line.x <= profile.body_x_max
+            ]
+            if same_row:
+                candidate = _tidy_name(same_row[0].text)
+                if candidate and not name_defects(candidate):
+                    name = candidate
+                    continuation.add(id(same_row[0]))
+            if not name:
+                # A bare marker is a layout artefact, not a topic.
+                continue
         body = [
             line
             for line in band
@@ -473,24 +515,88 @@ def parse(lines: list[Line], profile: Profile) -> Syllabus:
                 key = text.lower()
                 if len(text) < 2 or text.isdigit() or key in seen:
                     continue
-                if len(text) > MAX_NAME_CHARS:
-                    # A paragraph is not a target. The topic remains, and the
-                    # fallback below keeps it choosable at topic level.
+                rules = {rule for rule, _ in name_defects(text)}
+                if rules & {"too_long", "sentence", "dangling_end", "fragment"}:
+                    # A paragraph, a sentence or a half-phrase is not a target.
+                    # The topic remains, and the fallback below keeps it
+                    # choosable at topic level.
                     continue
                 seen.add(key)
                 subtopics.append(Subtopic(name=text, order=len(subtopics) + 1))
         if not subtopics and profile.allow_single_subtopic and len(name) <= MAX_NAME_CHARS:
             subtopics.append(Subtopic(name=name, order=1))
         topics.append(Topic(name=name, order=len(topics) + 1, subtopics=subtopics))
+        topic_sections.append(sections[heading.index])
 
+    topics = _disambiguate(topics, topic_sections)
     if profile.merge_duplicate_topics:
         topics = _merge_duplicates(topics)
+    # A heading the source itself cut before its object ("The Gambia and the")
+    # cannot be a target. Dropping it is honest; renaming it would invent one.
+    topics = [topic for topic in topics if not _incomplete(topic.name)]
+    for position, topic in enumerate(topics, start=1):
+        topic.order = position
 
     syllabus = Syllabus(subject=profile.slug, display=profile.display, topics=topics)
     errors = validate(syllabus, expected_topics=profile.expected_topics)
     if errors:
         raise ParseError(f"{profile.slug}: " + "; ".join(errors))
     return syllabus
+
+
+def _section_label(text: str) -> str:
+    """A short, readable name for the section a topic sits in."""
+    label = text.strip().capitalize()
+    for prefix in (
+        "Regional geography of ",
+        "Elements of practical and ",
+        "Aspects of ",
+    ):
+        if label.lower().startswith(prefix.lower()):
+            label = label[len(prefix) :]
+            break
+    return label.strip()
+
+
+def _section_map(scope: list[Line], section_re: re.Pattern[str]) -> list[str]:
+    """The section in force at each line, with multi-line headings joined."""
+    labels: list[str] = []
+    block: list[str] = []
+    current = ""
+    for line in scope:
+        if section_re.match(line.text):
+            block.append(line.text)
+        elif block:
+            current = _section_label(" ".join(block))
+            block = []
+        labels.append(current)
+    return labels
+
+
+def _disambiguate(topics: list[Topic], sections: list[str]) -> list[Topic]:
+    """Qualify duplicate topic names with the section that separates them.
+
+    "Mining" appears once in each regional syllabus. The id is unique either
+    way, but a model choosing an id by name cannot tell them apart. The section
+    heading is official text, so the qualifier does not invent a name.
+    """
+    groups: dict[str, list[int]] = {}
+    for index, topic in enumerate(topics):
+        groups.setdefault(topic.name.casefold(), []).append(index)
+    for indexes in groups.values():
+        if len(indexes) < 2:
+            continue
+        labels = {sections[index] for index in indexes if sections[index]}
+        if len(labels) < 2:
+            continue
+        for index in indexes:
+            label = sections[index]
+            if not label:
+                continue
+            candidate = f"{topics[index].name} ({label})"
+            if len(candidate) <= MAX_NAME_CHARS:
+                topics[index].name = candidate
+    return topics
 
 
 def _merge_duplicates(topics: list[Topic]) -> list[Topic]:

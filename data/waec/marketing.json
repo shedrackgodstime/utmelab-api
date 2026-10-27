@@ -5,7 +5,7 @@
       "exam": "WAEC",
       "name": "Marketing",
       "is_compulsory": false,
-      "objective_paper_questions": 40,
+      "objective_paper_questions": 50,
       "countries": [],
       "syllabus_exam": "WAEC",
       "syllabus_subject": "marketing"
@@ -194,7 +194,7 @@
     {
       "slug": "waec-explanation-of-basic-terms-in-marketing-needs-wants-demands",
       "topic": "waec-introduction-to-marketing",
-      "name": "Explanation of basic terms in marketing: needs, wants, demands, product, exchange, transactions, and markets,",
+      "name": "Explanation of basic terms in marketing: needs, wants, demands, product, exchange, transactions, and markets",
       "order": 2,
       "objectives": []
     },
@@ -213,7 +213,7 @@
       "objectives": []
     },
     {
-      "slug": "waec-meaning-4",
+      "slug": "waec-meaning-7",
       "topic": "waec-marketing-concepts",
       "name": "Meaning",
       "order": 1,
@@ -227,7 +227,7 @@
       "objectives": []
     },
     {
-      "slug": "waec-meaning-5",
+      "slug": "waec-meaning-8",
       "topic": "waec-marketing-mix-and-marketing-environment",
       "name": "Meaning",
       "order": 1,
@@ -243,47 +243,40 @@
     {
       "slug": "waec-i-explain-marketing-environment",
       "topic": "waec-marketing-mix-and-marketing-environment",
-      "name": "i Explain Marketing Environment",
+      "name": "I Explain Marketing Environment",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-ii-factors-affecting-marketing-environment-political-cultura",
       "topic": "waec-marketing-mix-and-marketing-environment",
-      "name": "ii Factors affecting marketing environment: - political; - cultural; - religious; - economic; - technological; - social",
+      "name": "Ii Factors affecting marketing environment: - political; - cultural; - religious; - economic; - technological; - social",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-6",
+      "slug": "waec-meaning-9",
       "topic": "waec-products",
       "name": "Meaning",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-classification-industrial-goods-consumer-goods-services-prim",
-      "topic": "waec-products",
-      "name": "Classification (Industrial goods, consumer goods, services, primary and secondary products and mineral products-oil and non oil",
-      "order": 2,
-      "objectives": []
-    },
-    {
       "slug": "waec-distinctions-between-classes-of-products",
       "topic": "waec-products",
       "name": "Distinctions between classes of products",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-product-design",
       "topic": "waec-products",
       "name": "Product Design*",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-7",
+      "slug": "waec-meaning-10",
       "topic": "waec-markets-organizational-behaviour",
       "name": "Meaning",
       "order": 1,
@@ -297,30 +290,23 @@
       "objectives": []
     },
     {
-      "slug": "waec-meaning-6-consumer-and",
-      "topic": "waec-markets-organizational-behaviour",
-      "name": "Meaning; 6. Consumer and",
-      "order": 3,
-      "objectives": []
-    },
-    {
       "slug": "waec-influencing-factors",
       "topic": "waec-markets-organizational-behaviour",
       "name": "Influencing factors",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-decision-process-in-logical-order",
       "topic": "waec-markets-organizational-behaviour",
       "name": "Decision process in logical order",
-      "order": 5,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-i-meaning-process-and-importance-ii-elements-of-marketing-pl",
       "topic": "waec-marketing-planning-and-research",
-      "name": "i Meaning, process and importance; ii Elements of marketing planning; iii Information required for marketing planning",
+      "name": "I Meaning, process and importance; ii Elements of marketing planning; iii Information required for marketing planning",
       "order": 1,
       "objectives": []
     },
@@ -339,7 +325,7 @@
       "objectives": []
     },
     {
-      "slug": "waec-meaning-8",
+      "slug": "waec-meaning-11",
       "topic": "waec-pricing",
       "name": "Meaning",
       "order": 1,
@@ -348,7 +334,7 @@
     {
       "slug": "waec-i-strategies-haggling-cost-plus-demand-and-competition-ii-ap",
       "topic": "waec-pricing",
-      "name": "i Strategies (haggling, cost-plus, demand and competition); ii Application of strategies*",
+      "name": "I Strategies (haggling, cost-plus, demand and competition); ii Application of strategies*",
       "order": 2,
       "objectives": []
     },
@@ -395,14 +381,7 @@
       "objectives": []
     },
     {
-      "slug": "waec-forms-price-off-coupons-salesmen-competition-loyalty-schemes",
-      "topic": "waec-sales-promotion",
-      "name": "Forms - price-off, coupons, salesmen competition, loyalty schemes, premium offers, trade-in-allowance, sampling, training schemes, and merchandising incentives",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-meaning-9",
+      "slug": "waec-meaning-12",
       "topic": "waec-merchandising",
       "name": "Meaning",
       "order": 1,
@@ -423,7 +402,7 @@
       "objectives": []
     },
     {
-      "slug": "waec-definition-8",
+      "slug": "waec-definition-11",
       "topic": "waec-distribution",
       "name": "Definition",
       "order": 1,
@@ -509,7 +488,7 @@
     {
       "slug": "waec-meaning-importance-reasons-and-methods-of-engaging-in-intern",
       "topic": "waec-international-marketing",
-      "name": "Meaning, importance/reasons and methods of engaging in international marketing,",
+      "name": "Meaning, importance/reasons and methods of engaging in international marketing",
       "order": 1,
       "objectives": []
     },
@@ -530,7 +509,7 @@
     {
       "slug": "waec-e-marketing-electronic-marketing-meaning-importance-uses-eth",
       "topic": "waec-ict-in-marketing",
-      "name": "E-Marketing (electronic marketing) – meaning, ,importance, uses, ethics and abuses",
+      "name": "E-Marketing (electronic marketing) – meaning,,importance, uses, ethics and abuses",
       "order": 1,
       "objectives": []
     },

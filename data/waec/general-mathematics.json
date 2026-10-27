@@ -43,7 +43,7 @@
       "countries": []
     },
     {
-      "slug": "waec-indices",
+      "slug": "waec-indices-general-mathematics",
       "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Indices",
@@ -53,7 +53,7 @@
       "countries": []
     },
     {
-      "slug": "waec-logarithms",
+      "slug": "waec-logarithms-general-mathematics",
       "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Logarithms",
@@ -73,7 +73,7 @@
       "countries": []
     },
     {
-      "slug": "waec-sets",
+      "slug": "waec-sets-general-mathematics",
       "subject": "general-mathematics",
       "exam": "WAEC",
       "name": "Sets",
@@ -83,10 +83,10 @@
       "countries": []
     },
     {
-      "slug": "waec-positive-and-negative",
+      "slug": "waec-positive-and-negative-integers-rational-numbers",
       "subject": "general-mathematics",
       "exam": "WAEC",
-      "name": "Positive and negative",
+      "name": "Positive and negative integers, rational numbers",
       "order": 8,
       "weight": 0,
       "objectives": [],
@@ -153,10 +153,10 @@
       "countries": []
     },
     {
-      "slug": "waec-solution-of-linear",
+      "slug": "waec-solution-of-linear-equations",
       "subject": "general-mathematics",
       "exam": "WAEC",
-      "name": "Solution of Linear",
+      "name": "Solution of Linear Equations",
       "order": 15,
       "weight": 0,
       "objectives": [],
@@ -303,10 +303,10 @@
       "countries": []
     },
     {
-      "slug": "waec-probability",
+      "slug": "waec-probability-transformation-5-currencies",
       "subject": "general-mathematics",
       "exam": "WAEC",
-      "name": "Probability",
+      "name": "Probability TRANSFORMATION ( 5) Currencies",
       "order": 30,
       "weight": 0,
       "objectives": [],
@@ -317,7 +317,7 @@
     {
       "slug": "waec-conversion-of-numbers-from-one-base-to-another",
       "topic": "waec-number-bases",
-      "name": "conversion of numbers from one base to another",
+      "name": "Conversion of numbers from one base to another",
       "order": 1,
       "objectives": []
     },
@@ -365,35 +365,35 @@
     },
     {
       "slug": "waec-laws-of-indices",
-      "topic": "waec-indices",
+      "topic": "waec-indices-general-mathematics",
       "name": "Laws of indices",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-numbers-in-standard-form-scientific-notation",
-      "topic": "waec-indices",
+      "topic": "waec-indices-general-mathematics",
       "name": "Numbers in standard form ( scientific notation)",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-relationship-between-indices-and-logarithms-e-g-y",
-      "topic": "waec-logarithms",
+      "topic": "waec-logarithms-general-mathematics",
       "name": "Relationship between indices and logarithms e.g. y =",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-basic-rules-of-logarithms-e-g-log10-p-q-log10p-log10q-log10p",
-      "topic": "waec-logarithms",
+      "topic": "waec-logarithms-general-mathematics",
       "name": "Basic rules of logarithms e.g. log10(p/q) = log10p – log10q log10pn = nlog10p",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-use-of-tables-of-logarithms-and-antilogarithms",
-      "topic": "waec-logarithms",
+      "topic": "waec-logarithms-general-mathematics",
       "name": "Use of tables of logarithms and antilogarithms",
       "order": 3,
       "objectives": []
@@ -413,22 +413,15 @@
       "objectives": []
     },
     {
-      "slug": "waec-idea-of-sets-universal-sets-finite-and-infinite-sets-subsets",
-      "topic": "waec-sets",
-      "name": "Idea of sets, universal sets, finite and infinite sets, subsets, empty sets and disjoint sets. Idea of and notation for union, intersection and complement of sets",
+      "slug": "waec-logical-reasoning-false-statements-negation-of-statements-im",
+      "topic": "waec-sets-general-mathematics",
+      "name": "Logical Reasoning false statements. Negation of statements, implications",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-solution-of-practical-problems-involving-classification-usin",
-      "topic": "waec-sets",
-      "name": "Solution of practical problems involving classification using Venn diagrams. Simple statements. True and (h) Logical Reasoning false statements. Negation of statements, implications",
-      "order": 2,
-      "objectives": []
-    },
-    {
       "slug": "waec-the-four-basic-operations-on-rational-numbers",
-      "topic": "waec-positive-and-negative",
+      "topic": "waec-positive-and-negative-integers-rational-numbers",
       "name": "The four basic operations on rational numbers",
       "order": 1,
       "objectives": []
@@ -462,16 +455,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-ratio-between-two-similar-quantities-proportion-between-two",
+      "slug": "waec-ratio-proportions-and-rates-general-mathematics",
       "topic": "waec-ratio-proportions-and-rates",
-      "name": "Ratio between two similar quantities. Proportion between two or more similar quantities. Financial partnerships, rates of work, costs, taxes, foreign exchange, density (e.g. population), mass, distance, time and speed",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-simple-interest-commission-discount-depreciation-profit-and",
-      "topic": "waec-percentages",
-      "name": "Simple interest, commission, discount, depreciation, profit and loss, compound interest, hire purchase and percentage error",
+      "name": "Ratio, Proportions and Rates",
       "order": 1,
       "objectives": []
     },
@@ -479,21 +465,21 @@
       "slug": "waec-depreciation-amortization",
       "topic": "waec-percentages",
       "name": "Depreciation/ Amortization",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-annuities",
       "topic": "waec-percentages",
       "name": "Annuities",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-capital-market-instruments",
       "topic": "waec-percentages",
       "name": "Capital Market Instruments",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
@@ -533,14 +519,14 @@
     },
     {
       "slug": "waec-linear-equations-in-one-variable",
-      "topic": "waec-solution-of-linear",
+      "topic": "waec-solution-of-linear-equations",
       "name": "Linear equations in one variable",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-simultaneous-linear-equations-in-two-variables",
-      "topic": "waec-solution-of-linear",
+      "topic": "waec-solution-of-linear-equations",
       "name": "Simultaneous linear equations in two variables",
       "order": 2,
       "objectives": []
@@ -595,16 +581,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-solution-of-linear-inequalities-in-one-variable-and-represen",
+      "slug": "waec-linear-inequalities-general-mathematics",
       "topic": "waec-linear-inequalities",
-      "name": "Solution of linear inequalities in one variable and representation on the number line. (ii) Graphical solution of linear inequalities in two variables",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-operations-on-algebraic-fractions-with",
-      "topic": "waec-algebraic-fractions",
-      "name": "Operations on algebraic fractions with",
+      "name": "Linear Inequalities",
       "order": 1,
       "objectives": []
     },
@@ -612,14 +591,14 @@
       "slug": "waec-monomial-denominators",
       "topic": "waec-algebraic-fractions",
       "name": "Monomial denominators",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-binomial-denominators-types-of-functions",
       "topic": "waec-algebraic-fractions",
       "name": "Binomial denominators Types of Functions",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
@@ -707,13 +686,6 @@
       "objectives": []
     },
     {
-      "slug": "waec-interior-opposite-angles-are",
-      "topic": "waec-angles-and-intercepts-on-supplementary",
-      "name": "Interior opposite angles are",
-      "order": 3,
-      "objectives": []
-    },
-    {
       "slug": "waec-the-sum-of-the-angles-of-a-triangle-is-2-right-angles",
       "topic": "waec-triangles-and-polygons",
       "name": "The sum of the angles of a triangle is 2 right angles",
@@ -784,115 +756,94 @@
       "objectives": []
     },
     {
-      "slug": "waec-the-angle-which-an-arc-of-a-circle-subtends-at-the-centre-of",
-      "topic": "waec-circles",
-      "name": "The angle which an arc of a circle subtends at the centre of the circle is twice that which it subtends at any point on the remaining part of the circumference",
-      "order": 2,
-      "objectives": []
-    },
-    {
       "slug": "waec-any-angle-subtended-at-the-circumference-by-a-diameter-is-a",
       "topic": "waec-circles",
       "name": "Any angle subtended at the circumference by a diameter is a right angle",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-angles-in-the-same-segment-are-equal",
       "topic": "waec-circles",
       "name": "Angles in the same segment are equal",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-angles-in-opposite-segments-are-supplementary",
       "topic": "waec-circles",
       "name": "Angles in opposite segments are supplementary",
-      "order": 5,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-perpendicularity-of-tangent-and-radius",
       "topic": "waec-circles",
       "name": "Perpendicularity of tangent and radius",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-if-a-tangent-is-drawn-to-a-circle-and-from-the-point-of-cont",
-      "topic": "waec-circles",
-      "name": "If a tangent is drawn to a circle and from the point of contact a chord is drawn, each angle which this chord makes with the tangent is equal to the angle in the alternate segment",
-      "order": 7,
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-bisectors-of-angles-and-line-e-construction-segments",
       "topic": "waec-circles",
       "name": "Bisectors of angles and line (e) Construction segments",
-      "order": 8,
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-line-parallel-or-perpendicular-to-a-given-line",
       "topic": "waec-circles",
       "name": "Line parallel or perpendicular to a given line",
-      "order": 9,
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-angles-e-g-90o-60o-45o-30o-and-an-angle-equal-to-a-given-ang",
       "topic": "waec-circles",
       "name": "Angles e.g. 90o, 60o, 45o, 30o, and an angle equal to a given angle",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-triangles-and-quadrilaterals-from-sufficient-data-knowledge",
-      "topic": "waec-circles",
-      "name": "Triangles and quadrilaterals from sufficient data. Knowledge of the loci listed (f) Loci below and their intersections in 2 dimensions",
-      "order": 11,
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-points-at-a-given-distance-from-a-given-point",
       "topic": "waec-circles",
       "name": "Points at a given distance from a given point",
-      "order": 12,
+      "order": 9,
       "objectives": []
     },
     {
       "slug": "waec-points-equidistant-from-two-given-points",
       "topic": "waec-circles",
       "name": "Points equidistant from two given points",
-      "order": 13,
+      "order": 10,
       "objectives": []
     },
     {
       "slug": "waec-points-equidistant-from-two-given-straight-lines",
       "topic": "waec-circles",
       "name": "Points equidistant from two given straight lines",
-      "order": 14,
+      "order": 11,
       "objectives": []
     },
     {
       "slug": "waec-points-at-a-given-distance-from-a-given-straight-line",
       "topic": "waec-circles",
       "name": "Points at a given distance from a given straight line",
-      "order": 15,
+      "order": 12,
       "objectives": []
     },
     {
       "slug": "waec-concept-of-the-x-y-plane",
       "topic": "waec-circles",
       "name": "Concept of the x-y plane",
-      "order": 16,
+      "order": 13,
       "objectives": []
     },
     {
       "slug": "waec-coordinates-of-points-on-the-x-y-plane",
       "topic": "waec-circles",
       "name": "Coordinates of points on the x-y plane",
-      "order": 17,
+      "order": 14,
       "objectives": []
     },
     {
@@ -952,72 +903,65 @@
       "objectives": []
     },
     {
-      "slug": "waec-calculation-of-distances-and",
-      "topic": "waec-angles-of-elevation-and-depression",
-      "name": "Calculation of distances and",
-      "order": 4,
-      "objectives": []
-    },
-    {
       "slug": "waec-differentiation-of-algebraic-functions",
       "topic": "waec-angles-of-elevation-and-depression",
       "name": "Differentiation of algebraic functions",
-      "order": 5,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-frequency-distribution",
       "topic": "waec-angles-of-elevation-and-depression",
       "name": "Frequency distribution",
-      "order": 6,
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-pie-charts-bar-charts",
       "topic": "waec-angles-of-elevation-and-depression",
-      "name": "Pie charts, bar charts,",
-      "order": 7,
+      "name": "Pie charts, bar charts",
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-mean-median-and-mode-for-both-discrete-and-grouped-data",
       "topic": "waec-angles-of-elevation-and-depression",
       "name": "Mean, median and mode for both discrete and grouped data",
-      "order": 8,
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-cumulative-frequency-curve-ogive",
       "topic": "waec-angles-of-elevation-and-depression",
       "name": "Cumulative frequency curve (Ogive)",
-      "order": 9,
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-measures-of-dispersion-quartile-range-variance-mean-deviatio",
       "topic": "waec-angles-of-elevation-and-depression",
       "name": "Measures of Dispersion: quartile range, variance, mean deviation and standard deviation",
-      "order": 10,
+      "order": 9,
       "objectives": []
     },
     {
       "slug": "waec-experimental-and-theoretical-probability",
-      "topic": "waec-probability",
+      "topic": "waec-probability-transformation-5-currencies",
       "name": "Experimental and theoretical probability",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-addition-of-probabilities-for-mutually-exclusive-and-indepen",
-      "topic": "waec-probability",
+      "topic": "waec-probability-transformation-5-currencies",
       "name": "Addition of probabilities for mutually exclusive and independent events",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-multiplication-of-probabilities-for-independent-events-vecto",
-      "topic": "waec-probability",
-      "name": "Multiplication of probabilities for independent events. Vectors as a directed line segment. Cartesian components of a vector Magnitude of a vector, equal vectors, addition and subtraction of vectors, zero vector, parallel vectors, multiplication of a vector by scalar. Reflection of points and shapes in (b) Transformation in the the Cartesian Plane. Cartesian Plane Rotation of points and shapes in the Cartesian Plane. Translation of points and shapes in the Cartesian Plane. Enlargement 100 pence (p) = 1 pound (£) 100 centimes (c) = 1 Franc (fr)",
+      "slug": "waec-1-franc-fr-general-mathematics",
+      "topic": "waec-probability-transformation-5-currencies",
+      "name": "= 1 Franc (fr)",
       "order": 3,
       "objectives": []
     }

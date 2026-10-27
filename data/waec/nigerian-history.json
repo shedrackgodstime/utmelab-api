@@ -6,19 +6,17 @@
       "name": "Nigerian History",
       "is_compulsory": false,
       "objective_paper_questions": 50,
-      "countries": [
-        "NG"
-      ],
+      "countries": [],
       "syllabus_exam": "WAEC",
       "syllabus_subject": "nigerian-history"
     }
   ],
   "topics": [
     {
-      "slug": "waec-historiography-and-historical-skills",
+      "slug": "waec-historiography-and-historical-skills-paper-1",
       "subject": "nigerian-history",
       "exam": "WAEC",
-      "name": "Historiography and Historical Skills",
+      "name": "Historiography and Historical Skills (Paper 1:)",
       "order": 1,
       "weight": 0,
       "objectives": [],
@@ -115,10 +113,10 @@
       "countries": []
     },
     {
-      "slug": "waec-historiography-and-historical-skills-nigerian-history",
+      "slug": "waec-historiography-and-historical-skills-section-a-the-gambia-fr",
       "subject": "nigerian-history",
       "exam": "WAEC",
-      "name": "Historiography and Historical Skills",
+      "name": "Historiography and Historical Skills (Section a: the gambia from earliest times to 2000)",
       "order": 11,
       "weight": 0,
       "objectives": [],
@@ -128,27 +126,27 @@
       "slug": "waec-origin-political-social-and-economic-organization-of-the-fol",
       "subject": "nigerian-history",
       "exam": "WAEC",
-      "name": "Origin, political, social and economic organization of the following",
+      "name": "Origin, political, social and economic organization of the following (Section a: the gambia from earliest times to 2000)",
       "order": 12,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-indigenous-crafts-and-industries",
+      "slug": "waec-indigenous-crafts-and-industries-section-a-the-gambia-from-e",
       "subject": "nigerian-history",
       "exam": "WAEC",
-      "name": "Indigenous crafts and industries",
+      "name": "Indigenous crafts and industries (Section a: the gambia from earliest times to 2000)",
       "order": 13,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-early-european-contact",
+      "slug": "waec-early-european-contact-section-a-the-gambia-from-earliest-ti",
       "subject": "nigerian-history",
       "exam": "WAEC",
-      "name": "Early European contact",
+      "name": "Early European contact (Section a: the gambia from earliest times to 2000)",
       "order": 14,
       "weight": 0,
       "objectives": [],
@@ -195,10 +193,10 @@
       "countries": []
     },
     {
-      "slug": "waec-christian-missionary-activities-and-their-impact",
+      "slug": "waec-christian-missionary-activities-and-their-impact-section-b-t",
       "subject": "nigerian-history",
       "exam": "WAEC",
-      "name": "Christian Missionary activities and their impact",
+      "name": "Christian Missionary activities and their impact (Section b: the gambia in the 19th century)",
       "order": 19,
       "weight": 0,
       "objectives": [],
@@ -235,10 +233,10 @@
       "countries": []
     },
     {
-      "slug": "waec-economic-and-social-developments-in-the-colonial-period",
+      "slug": "waec-economic-and-social-developments-in-the-colonial-period-sect",
       "subject": "nigerian-history",
       "exam": "WAEC",
-      "name": "Economic and social developments in the colonial period",
+      "name": "Economic and social developments in the colonial period (Section c: the gambia from 1900 to 2000)",
       "order": 23,
       "weight": 0,
       "objectives": [],
@@ -275,21 +273,11 @@
       "countries": []
     },
     {
-      "slug": "waec-the-gambia-and",
+      "slug": "waec-historiography-and-historical-skills-section-a-liberia-from",
       "subject": "nigerian-history",
       "exam": "WAEC",
-      "name": "The Gambia and",
+      "name": "Historiography and Historical skills (Section a: liberia from earliest times to 1800)",
       "order": 27,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-historiography-and-historical-skills-2",
-      "subject": "nigerian-history",
-      "exam": "WAEC",
-      "name": "Historiography and Historical skills",
-      "order": 28,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -299,7 +287,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Land and People",
-      "order": 29,
+      "order": 28,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -309,7 +297,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Migration",
-      "order": 30,
+      "order": 29,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -319,7 +307,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Kingdoms, Chiefdoms and Confederacies",
-      "order": 31,
+      "order": 30,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -329,7 +317,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "European Contacts – Liberia (economic and social effects)",
-      "order": 32,
+      "order": 31,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -339,7 +327,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Trans Atlantic Slave Trade (origin, organization, effects, suppression)",
-      "order": 33,
+      "order": 32,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -349,7 +337,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The formation and significance of the Commonwealth of Liberia",
-      "order": 34,
+      "order": 33,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -359,7 +347,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Declaration of Independence",
-      "order": 35,
+      "order": 34,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -369,7 +357,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Liberia’s relationship with the outside world",
-      "order": 36,
+      "order": 35,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -379,7 +367,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Problems of land acquisition",
-      "order": 37,
+      "order": 36,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -389,7 +377,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Political Development",
-      "order": 38,
+      "order": 37,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -399,6 +387,16 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The administration of Edwin Barclay, William V.S Tubman, William R. Tolbert",
+      "order": 38,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-1980-coup-d-etat-and-samuel-k-doe",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "1980 coup d’etat and Samuel K. Doe",
       "order": 39,
       "weight": 0,
       "objectives": [],
@@ -415,21 +413,11 @@
       "countries": []
     },
     {
-      "slug": "waec-liberia-and",
+      "slug": "waec-historiography-and-historical-skills-section-a-nigeria-from",
       "subject": "nigerian-history",
       "exam": "WAEC",
-      "name": "Liberia and",
+      "name": "Historiography and historical skills (Section a: nigeria from earliest times to 1800)",
       "order": 41,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-historiography-and-historical-skills-3",
-      "subject": "nigerian-history",
-      "exam": "WAEC",
-      "name": "Historiography and historical skills",
-      "order": 42,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -439,7 +427,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Land and peoples of Nigeria",
-      "order": 43,
+      "order": 42,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -449,27 +437,27 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Centers of ancient civilization",
+      "order": 43,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-centralized-and-non-centralized-states",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "Centralized and non-centralized states",
       "order": 44,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-a-nigerian-history",
+      "slug": "waec-indigenous-crafts-and-industries-section-a-nigeria-from-earl",
       "subject": "nigerian-history",
       "exam": "WAEC",
-      "name": "(a)",
+      "name": "Indigenous crafts and industries (Section a: nigeria from earliest times to 1800)",
       "order": 45,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-indigenous-crafts-and-industries-nigerian-history",
-      "subject": "nigerian-history",
-      "exam": "WAEC",
-      "name": "Indigenous crafts and industries",
-      "order": 46,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -479,7 +467,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "External Influences",
-      "order": 47,
+      "order": 46,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -489,7 +477,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Nigeria and the trans-Atlantic slave trade",
-      "order": 48,
+      "order": 47,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -499,7 +487,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The Sokoto Caliphate",
-      "order": 49,
+      "order": 48,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -509,7 +497,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Borno under the Shehus",
-      "order": 50,
+      "order": 49,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -519,7 +507,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Christian Missionary Activities – activities, impact",
-      "order": 51,
+      "order": 50,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -529,7 +517,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Yorubaland in the 19th century",
-      "order": 52,
+      "order": 51,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -539,7 +527,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Benin in the 19th century",
-      "order": 53,
+      "order": 52,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -549,7 +537,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The first phase of the British conquest of Nigeria: 1851-1900",
-      "order": 54,
+      "order": 53,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -559,7 +547,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The second phase of the British conquest in Nigeria 1900- 1960",
-      "order": 55,
+      "order": 54,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -569,7 +557,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The decolonization process in Nigeria, 1922-1960",
-      "order": 56,
+      "order": 55,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -579,17 +567,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Nigeria since independence",
-      "order": 57,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-nigeria-and",
-      "subject": "nigerian-history",
-      "exam": "WAEC",
-      "name": "Nigeria and",
-      "order": 58,
+      "order": 56,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -599,37 +577,27 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Global issues",
+      "order": 57,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-historiography-and-historical-skills-section-a-sierra-leone",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "Historiography and Historical Skills (Section a: sierra leone from earliest times to 1800)",
+      "order": 58,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-indigenous-crafts-and-industries-section-a-sierra-leone-from",
+      "subject": "nigerian-history",
+      "exam": "WAEC",
+      "name": "Indigenous crafts and industries (Section a: sierra leone from earliest times to 1800)",
       "order": 59,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-historiography-and-historical-skills-4",
-      "subject": "nigerian-history",
-      "exam": "WAEC",
-      "name": "Historiography and Historical Skills",
-      "order": 60,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-origin-political-social-and-economic-organization-of-the-fol-nigerian-history",
-      "subject": "nigerian-history",
-      "exam": "WAEC",
-      "name": "Origin, political, social and economic organization of the following",
-      "order": 61,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-indigenous-crafts-and-industries-2",
-      "subject": "nigerian-history",
-      "exam": "WAEC",
-      "name": "Indigenous crafts and industries",
-      "order": 62,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -639,17 +607,17 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Mane Invasions",
-      "order": 63,
+      "order": 60,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-early-european-contact-nigerian-history",
+      "slug": "waec-early-european-contact-section-a-sierra-leone-from-earliest",
       "subject": "nigerian-history",
       "exam": "WAEC",
-      "name": "Early European contact",
-      "order": 64,
+      "name": "Early European contact (Section a: sierra leone from earliest times to 1800)",
+      "order": 61,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -659,7 +627,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Introduction spread and effects of Islam",
-      "order": 65,
+      "order": 62,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -669,7 +637,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Sierra Leone and the trans-Atlantic slave trade",
-      "order": 66,
+      "order": 63,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -679,7 +647,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The founding of the settlement colony of Sierra Leone to the declaration",
-      "order": 67,
+      "order": 64,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -689,27 +657,17 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The emergence of the Krio and their subsequent decline",
-      "order": 68,
+      "order": 65,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-christian-missionary-activities-and-their-impact-2",
+      "slug": "waec-christian-missionary-activities-and-their-impact-section-b",
       "subject": "nigerian-history",
       "exam": "WAEC",
-      "name": "Christian Missionary activities and their impact",
-      "order": 69,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-the-role-of-the-colonial-government-in-contacts-between-the",
-      "subject": "nigerian-history",
-      "exam": "WAEC",
-      "name": "The role of the colonial government in contacts between the colony and",
-      "order": 70,
+      "name": "Christian Missionary activities and their impact (Section b:)",
+      "order": 66,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -719,7 +677,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The activities of Samori Toure in Sierra Leone",
-      "order": 71,
+      "order": 67,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -729,7 +687,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Declaration of the Protectorate and the Hut Tax War",
-      "order": 72,
+      "order": 68,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -739,7 +697,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The administration of the colony and constitutional developments up to 1947",
-      "order": 73,
+      "order": 69,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -749,17 +707,17 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "The administration of the Protectorate",
-      "order": 74,
+      "order": 70,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-economic-and-social-developments-in-the-colonial-period-nigerian-history",
+      "slug": "waec-economic-and-social-developments-in-the-colonial-period-sect-nigerian-history",
       "subject": "nigerian-history",
       "exam": "WAEC",
-      "name": "Economic and social developments in the colonial period",
-      "order": 75,
+      "name": "Economic and social developments in the colonial period (Section c:)",
+      "order": 71,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -769,7 +727,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Political and constitutional developments from 1947 to the regaining",
-      "order": 76,
+      "order": 72,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -779,17 +737,7 @@
       "subject": "nigerian-history",
       "exam": "WAEC",
       "name": "Sierra Leone from independence to 2000",
-      "order": 77,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-sierra-leone-and",
-      "subject": "nigerian-history",
-      "exam": "WAEC",
-      "name": "Sierra Leone and",
-      "order": 78,
+      "order": 73,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -797,9 +745,9 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-what-is-history-and-why-do-we-study-history-sources-of-histo",
-      "topic": "waec-historiography-and-historical-skills",
-      "name": "What is History and why do we study History? Sources of History; Historical skills (ancient and modern approaches); Prospect of ICT in historical studies",
+      "slug": "waec-historiography-and-historical-skills",
+      "topic": "waec-historiography-and-historical-skills-paper-1",
+      "name": "Historiography and Historical Skills",
       "order": 1,
       "objectives": []
     },
@@ -834,7 +782,7 @@
     {
       "slug": "waec-the-suppression-of-slave-trade-christian-missionary-activiti",
       "topic": "waec-christian-missionary-activities-in-west-africa",
-      "name": "The suppression of slave trade. Christian Missionary activities and their impact on West Africa. 2 | P a g e",
+      "name": "The suppression of slave trade. Christian Missionary activities and their impact on West Africa",
       "order": 1,
       "objectives": []
     },
@@ -846,57 +794,92 @@
       "objectives": []
     },
     {
-      "slug": "waec-patterns-of-colonial-rule-consolidation-of-european-culture",
+      "slug": "waec-colonial-rule-in-west-africa-nigerian-history",
       "topic": "waec-colonial-rule-in-west-africa",
-      "name": "Patterns of colonial rule, consolidation of European culture in Africa, colonial economy and the underdevelopment of Africa: colonial Africa and the two World Wars",
+      "name": "Colonial Rule in West Africa",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-nature-of-politics-neo-colonialism-and-economic-underdevelop",
+      "slug": "waec-problems-of-independent-west-african-states-nigerian-history",
       "topic": "waec-problems-of-independent-west-african-states",
-      "name": "Nature of politics: neo-colonialism and economic underdevelopment, unequal development within states and instability, the Military in West African politics, boundary disputes and threat to West African Unity",
+      "name": "Problems of independent West African States",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-united-nations-organization-u-n-o-united-nations-u-n-ii-orga",
+      "slug": "waec-united-nations-organization-u-n-o-united-nations-u-n",
       "topic": "waec-west-africa-and-international-organizations",
-      "name": "United Nations Organization (U.N.O.)/United Nations (U.N); (ii) Organization of African Unity (O.A.U)/African Union (A.U.); (iii) Economic Community of West African States (ECOWAS); Etc. Membership, aims and objectives, achievements and failures. PAPER 2: NATIONAL HISTORIES OF THE GAMBIA, GHANA, LIBERIA, NIGERIA AND SIERRA LEONE UP TO 2000 THE GAMBIA (For candidates in The Gambia only) SECTION A: THE GAMBIA FROM EARLIEST TIMES TO 2000",
+      "name": "United Nations Organization (U.N.O.)/United Nations (U.N)",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-what-is-history-and-why-do-we-study-history-sources-of-histo-nigerian-history",
-      "topic": "waec-historiography-and-historical-skills-nigerian-history",
-      "name": "What is History and why do we study History; sources of History; Historical skills (ancient and modern approaches); Prospect of ICT in Historical Studies",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-the-wollof-ii-mandinka-iii-fula-3-p-a-g-e-iv-jola",
-      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol",
-      "name": "The Wollof; (ii) Mandinka; (iii) Fula; 3 | P a g e (iv) Jola",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-krio-aku-vi-serahuli",
-      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol",
-      "name": "Krio(Aku); (vi) Serahuli",
+      "slug": "waec-organization-of-african-unity-o-a-u-african-union-a-u",
+      "topic": "waec-west-africa-and-international-organizations",
+      "name": "Organization of African Unity (O.A.U)/African Union (A.U.)",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-pottery-salt-making-iron-working-soap-making-leather-works-w",
-      "topic": "waec-indigenous-crafts-and-industries",
-      "name": "Pottery, salt making, iron working, soap making, leather works, weaving, carving, tie and dyeing, boat building – technology; social and economic importance",
+      "slug": "waec-historiography-and-historical-skills-nigerian-history",
+      "topic": "waec-historiography-and-historical-skills-section-a-the-gambia-fr",
+      "name": "Historiography and Historical Skills",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-wollof",
+      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol",
+      "name": "The Wollof",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mandinka",
+      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol",
+      "name": "Mandinka",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-fula",
+      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol",
+      "name": "Fula",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-jola",
+      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol",
+      "name": "Jola",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-krio-aku",
+      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol",
+      "name": "Krio(Aku)",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-serahuli",
+      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol",
+      "name": "Serahuli",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-indigenous-crafts-and-industries",
+      "topic": "waec-indigenous-crafts-and-industries-section-a-the-gambia-from-e",
+      "name": "Indigenous crafts and industries",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-trade-christianity-and-impact",
-      "topic": "waec-early-european-contact",
+      "topic": "waec-early-european-contact-section-a-the-gambia-from-earliest-ti",
       "name": "Trade, Christianity and impact",
       "order": 1,
       "objectives": []
@@ -909,9 +892,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-origin-organization-and-effects-section-b-the-gambia-in-the",
+      "slug": "waec-origin-organization-and-effects",
       "topic": "waec-the-gambia-and-the-trans-atlantic-slave-trade",
-      "name": "Origin, organization and effects SECTION B: THE GAMBIA IN THE 19TH CENTURY",
+      "name": "Origin, organization and effects",
       "order": 1,
       "objectives": []
     },
@@ -930,38 +913,59 @@
       "objectives": []
     },
     {
-      "slug": "waec-christian-missionary-activities-and-their-impact-nigerian-history",
-      "topic": "waec-christian-missionary-activities-and-their-impact",
+      "slug": "waec-christian-missionary-activities-and-their-impact",
+      "topic": "waec-christian-missionary-activities-and-their-impact-section-b-t",
       "name": "Christian Missionary activities and their impact",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-colonial-government-s-reaction-to-religious-disturbances-185",
+      "slug": "waec-the-soninke-marabout-wars-jihadist-leaders-nigerian-history",
       "topic": "waec-the-soninke-marabout-wars-jihadist-leaders",
-      "name": "Colonial government’s reaction to religious disturbances, 1850 to 1880",
+      "name": "The Soninke-Marabout wars, jihadist leaders",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-foday-kombo-sillah-foday-kabbah-dumbuya-and-musa-molloh-bald",
       "topic": "waec-resistance-to-european-colonialism",
-      "name": "Foday Kombo Sillah, Foday Kabbah Dumbuya and Musa Molloh Baldeh SECTION C: THE GAMBIA FROM 1900 TO 2000",
+      "name": "Foday Kombo Sillah, Foday Kabbah Dumbuya and Musa Molloh Baldeh",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-indirect-rule-and-the-role-of-traditional-rulers-4-p-a-g-e",
+      "slug": "waec-indirect-rule-and-the-role-of-traditional-rulers",
       "topic": "waec-british-colonial-administration",
-      "name": "Indirect Rule and the role of traditional rulers 4 | P a g e",
+      "name": "Indirect Rule and the role of traditional rulers",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-agriculture-attempts-at-diversification-ii-transportation-an",
-      "topic": "waec-economic-and-social-developments-in-the-colonial-period",
-      "name": "agriculture; attempts at diversification, (ii) transportation and communication, (iii) education, (iv) health services",
+      "slug": "waec-agriculture-attempts-at-diversification",
+      "topic": "waec-economic-and-social-developments-in-the-colonial-period-sect",
+      "name": "Agriculture; attempts at diversification",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-transportation-and-communication",
+      "topic": "waec-economic-and-social-developments-in-the-colonial-period-sect",
+      "name": "Transportation and communication",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-education-nigerian-history",
+      "topic": "waec-economic-and-social-developments-in-the-colonial-period-sect",
+      "name": "Education",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-health-services",
+      "topic": "waec-economic-and-social-developments-in-the-colonial-period-sect",
+      "name": "Health services",
+      "order": 4,
       "objectives": []
     },
     {
@@ -972,443 +976,114 @@
       "objectives": []
     },
     {
-      "slug": "waec-emergence-and-role-of-trade-unions-and-political-parties-ii",
+      "slug": "waec-emergence-and-role-of-trade-unions-and-political-parties",
       "topic": "waec-the-struggle-for-and-regaining-of-independence",
-      "name": "Emergence and role of trade unions and political parties, (ii) Internal government, (iii) Independence negotiations, (iv) Senegambia relations before independence",
+      "name": "Emergence and role of trade unions and political parties",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-attempt-at-national-government-ii-the-republican-constitutio",
-      "topic": "waec-development-after-independence",
-      "name": "attempt at national government, (ii) the Republican Constitution, (iii) parliamentary government; multiparty politics, political realighnment (iv) social and economic developments,",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-senegambia-relations-vi-1981-attempted-coup-d-etat-vii-1994",
-      "topic": "waec-development-after-independence",
-      "name": "Senegambia relations, (vi) 1981 attempted coup d’etat, (vii) 1994 coup d’etat – AFPRC, (viii) The Second Republic – 1996 to 2000",
+      "slug": "waec-internal-government",
+      "topic": "waec-the-struggle-for-and-regaining-of-independence",
+      "name": "Internal government",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-united-nations-organization-u-n-o-united-nations-u-n-ii-comm",
-      "topic": "waec-the-gambia-and",
-      "name": "United Nations Organization (U.N.O.)/United Nations (U.N); (ii) Commonwealth of Nations/ The Commonwealth; (iii) Organization of African Unity (O.A.U)/African Union (A.U.); (iv) Economic Community of West African States (ECOWAS). GHANA (For candidates in Ghana only) SECTION A: LANDMARKS OF AFRICAN HISTORY (FROM EARLIEST TIMES TO 1800) 1. Introduction to African History a) History as a subject of study 5 | P a g e b) Sources of African History c) Methods of African History 2. African pre-history up to 500 B.C a) Hunters and gatherers, etc. b) Beginning of village/community life. 3. Civilizations of North Africa from 3000B.C To A.D 1800 a) Pharaonic Egypt i. emergence of Lower and Upper Kingdoms. ii. development of: - Farming technology (irrigation), - Metal technology (ship building), - Engineering technology (pyramids). iii. development of: African arts and sciences, writing, mathematics, commerce, military organization, architecture etc. iv. Introduction of Christianity and Islam b) Northern Africa-Berber",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-indigenous-civilization-ii-economy-metal-technology-etc-iii",
-      "topic": "waec-the-gambia-and",
-      "name": "indigenous civilization. (ii) economy, metal technology etc., (iii) external relations with the Phoenicians /Greeks, Carthaginians, Romans and Arabs. 4. Civilizations of the Horn, East and Central Africa",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-axum",
-      "topic": "waec-the-gambia-and",
-      "name": "Axum",
+      "slug": "waec-independence-negotiations",
+      "topic": "waec-the-struggle-for-and-regaining-of-independence",
+      "name": "Independence negotiations",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-rise-of-axum-factors-responsible-ii-major-achievements-in-ar",
-      "topic": "waec-the-gambia-and",
-      "name": "Rise of Axum-factors responsible (ii) Major achievements in Arts, Technology etc. (iii) Introduction of Christianity and effects",
+      "slug": "waec-senegambia-relations-before-independence",
+      "topic": "waec-the-struggle-for-and-regaining-of-independence",
+      "name": "Senegambia relations before independence",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-emergence-of-ancient-ethiopia-abyssinia-rise-of-solomonic-li",
-      "topic": "waec-the-gambia-and",
-      "name": "Emergence of Ancient Ethiopia (Abyssinia); rise of Solomonic line of Kings, conflicts – internal and external",
-      "order": 5,
+      "slug": "waec-attempt-at-national-government",
+      "topic": "waec-development-after-independence",
+      "name": "Attempt at national government",
+      "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-bantu-civilization",
-      "topic": "waec-the-gambia-and",
-      "name": "Bantu Civilization",
-      "order": 6,
+      "slug": "waec-the-republican-constitution",
+      "topic": "waec-development-after-independence",
+      "name": "The Republican Constitution",
+      "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-definition-origin-and-spread-6-p-a-g-e-ii-study-of-examples",
-      "topic": "waec-the-gambia-and",
-      "name": "Definition, origin and spread 6 | P a g e (ii) Study of examples of Bantu complex societies",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-zimbabwe",
-      "topic": "waec-the-gambia-and",
-      "name": "Zimbabwe,",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-mapungubwe",
-      "topic": "waec-the-gambia-and",
-      "name": "Mapungubwe",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-kisale",
-      "topic": "waec-the-gambia-and",
-      "name": "Kisale",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-swahili-civilization-of-the-east-african-coast",
-      "topic": "waec-the-gambia-and",
-      "name": "Swahili Civilization of the East African Coast",
-      "order": 11,
-      "objectives": []
-    },
-    {
-      "slug": "waec-definition-and-origins-of-swahili-civilization-ii-economy-ii",
-      "topic": "waec-the-gambia-and",
-      "name": "Definition and origins of Swahili Civilization (ii) Economy (iii) Metal Technology (iv) Architecture",
-      "order": 12,
-      "objectives": []
-    },
-    {
-      "slug": "waec-city-based-civilization-vi-the-swahili-language-5-west-afric",
-      "topic": "waec-the-gambia-and",
-      "name": "City Based Civilization (vi) The Swahili Language 5. West Africa – Civilizations and Cultures",
-      "order": 13,
-      "objectives": []
-    },
-    {
-      "slug": "waec-general-characteristics-of-west-african-sudanese-states-and",
-      "topic": "waec-the-gambia-and",
-      "name": "General characteristics of West African Sudanese states and kingdoms: Location, social and political organizations, economic, religious, technological developments, citing examples from",
-      "order": 14,
-      "objectives": []
-    },
-    {
-      "slug": "waec-ghana-ii-mali-iii-songhai-iv-kanem-bornu",
-      "topic": "waec-the-gambia-and",
-      "name": "Ghana (ii) Mali (iii) Songhai (iv) Kanem-Bornu",
-      "order": 15,
-      "objectives": []
-    },
-    {
-      "slug": "waec-hausa-states",
-      "topic": "waec-the-gambia-and",
-      "name": "Hausa States",
-      "order": 16,
-      "objectives": []
-    },
-    {
-      "slug": "waec-the-trans-saharan-trade-origin-organisation-and-effects-on-t",
-      "topic": "waec-the-gambia-and",
-      "name": "The trans –Saharan trade: origin, organisation and effects on the development of the states",
-      "order": 17,
-      "objectives": []
-    },
-    {
-      "slug": "waec-forest-and-coastal-states-general-characteristics-of-west-af",
-      "topic": "waec-the-gambia-and",
-      "name": "Forest and Coastal States: General characteristics of West African Coastal States and kingdoms (Ife, Oyo, Asante, Mende-Temne, Dahomey, Igbo): social, political and economic organization, intra-regional trade, religious and technological developments. SECTION B: GHANA AND THE WIDER WORLD; FROM EARLIEST TIMES TO AD.1900 6. Introduction to the History of Ghana",
-      "order": 18,
-      "objectives": []
-    },
-    {
-      "slug": "waec-sources-and-methods-7-p-a-g-e",
-      "topic": "waec-the-gambia-and",
-      "name": "Sources and Methods 7 | P a g e",
-      "order": 19,
-      "objectives": []
-    },
-    {
-      "slug": "waec-pre-history-of-ghana-50-000b-c-a-d-1700",
-      "topic": "waec-the-gambia-and",
-      "name": "Pre-history of Ghana -50,000B.C. – A.D 1700",
-      "order": 20,
-      "objectives": []
-    },
-    {
-      "slug": "waec-hunters-and-gatherers-ii-kintampo-culture-farmers-and-villag",
-      "topic": "waec-the-gambia-and",
-      "name": "Hunters and Gatherers (ii) Kintampo culture-farmers and village builders (2000 BC – AD 500) (iii) The first townsmen in Ghana: Begho, Bono-Manso etc.(AD1000- 1700) 7. The peopling of Ghana",
-      "order": 21,
-      "objectives": []
-    },
-    {
-      "slug": "waec-peoples-of-ghana",
-      "topic": "waec-the-gambia-and",
-      "name": "Peoples of Ghana",
-      "order": 22,
-      "objectives": []
-    },
-    {
-      "slug": "waec-northern-zone-ii-forest-zone-iii-coastal-zone",
-      "topic": "waec-the-gambia-and",
-      "name": "Northern zone (ii) Forest zone (iii) Coastal zone",
-      "order": 23,
-      "objectives": []
-    },
-    {
-      "slug": "waec-the-rise-of-states-and-kingdoms-general-characteristics-i-e",
-      "topic": "waec-the-gambia-and",
-      "name": "The rise of states and kingdoms: General characteristics i.e. factors for rise, attainment level etc",
-      "order": 24,
-      "objectives": []
-    },
-    {
-      "slug": "waec-northern-zone-e-g-dagomba-manprugu-gonja-and-nanumba-ii-fore",
-      "topic": "waec-the-gambia-and",
-      "name": "Northern zone e.g. Dagomba, Manprugu, Gonja and Nanumba. (ii) Forest zone e.g. Denkyira, Akwamu,Akyem, Asante. (iii) Coastal zone e.g. Fante, Ga, Anlo. 8. Social, Cultural, Political and Economic Developments in Ghana in the Sixteenth Centuries",
-      "order": 25,
-      "objectives": []
-    },
-    {
-      "slug": "waec-political-systems",
-      "topic": "waec-the-gambia-and",
-      "name": "Political systems",
-      "order": 26,
-      "objectives": []
-    },
-    {
-      "slug": "waec-centralized-communities-e-g-asante-dagomba-ii-non-centralize",
-      "topic": "waec-the-gambia-and",
-      "name": "Centralized communities e.g. Asante, Dagomba; (ii) Non-centralized communities e.g Sisala, Chamba (iii) Theocratic communities e.g. Ga-Adangbe, Guan (iv) Comparison of the three systems",
-      "order": 27,
-      "objectives": []
-    },
-    {
-      "slug": "waec-social-organizations-religion-kinship-systems-e-g-matriclans",
-      "topic": "waec-the-gambia-and",
-      "name": "Social organizations-religion, kinship systems e.g. matriclans and patriclans: festivals, rites and ceremonies associated with various stages in the life cycle (marriage, birth, puberty and death)",
-      "order": 28,
-      "objectives": []
-    },
-    {
-      "slug": "waec-history-of-medicine-as-practised-by-various-peoples-some-exa",
-      "topic": "waec-the-gambia-and",
-      "name": "History of medicine as practised by various peoples: Some examples of medicinal items and uses (botanical and zoological aspects of medicine)",
-      "order": 29,
-      "objectives": []
-    },
-    {
-      "slug": "waec-pre-colonial-technological-advancement-brass-casting-gold-wo",
-      "topic": "waec-the-gambia-and",
-      "name": "Pre-colonial technological advancement: brass casting, gold working, pottery etc. Their",
-      "order": 30,
-      "objectives": []
-    },
-    {
-      "slug": "waec-processes-ii-products-8-p-a-g-e-iii-importance",
-      "topic": "waec-the-gambia-and",
-      "name": "processes (ii) products 8 | P a g e (iii) importance",
-      "order": 31,
-      "objectives": []
-    },
-    {
-      "slug": "waec-art-forms-e-g-adinkra-symbols-textiles-kete-adowa-dance-form",
-      "topic": "waec-the-gambia-and",
-      "name": "Art forms e.g. Adinkra symbols, textiles, Kete, Adowa dance forms",
-      "order": 32,
-      "objectives": []
-    },
-    {
-      "slug": "waec-economy",
-      "topic": "waec-the-gambia-and",
-      "name": "Economy",
-      "order": 33,
-      "objectives": []
-    },
-    {
-      "slug": "waec-subsistence-economy-fishing-farming-craftworks-hunting-and-g",
-      "topic": "waec-the-gambia-and",
-      "name": "subsistence economy: fishing, farming, craftworks, hunting and gathering. (ii) exchange economy - local trading e.g. salt, kola nuts - long distance trading e.g. leather, gold, beads (iii) importance of long distance trade 9. European contact",
-      "order": 34,
-      "objectives": []
-    },
-    {
-      "slug": "waec-europeans-on-ghana-coast",
-      "topic": "waec-the-gambia-and",
-      "name": "Europeans on Ghana Coast",
-      "order": 35,
-      "objectives": []
-    },
-    {
-      "slug": "waec-reasons-for-their-coming-ii-immediate-effects",
-      "topic": "waec-the-gambia-and",
-      "name": "reasons for their coming (ii) immediate effects",
-      "order": 36,
-      "objectives": []
-    },
-    {
-      "slug": "waec-changing-patterns-of-trade-ad1500-1900",
-      "topic": "waec-the-gambia-and",
-      "name": "Changing patterns of trade: AD1500- 1900",
-      "order": 37,
-      "objectives": []
-    },
-    {
-      "slug": "waec-trade-with-europeans-gold-ivory-etc-ii-atlantic-slave-trade",
-      "topic": "waec-the-gambia-and",
-      "name": "trade with Europeans-gold, ivory etc. (ii) Atlantic slave trade-nature volume and contributions to the development of the Americas, (iii) effects of slave trade on Ghana",
-      "order": 38,
-      "objectives": []
-    },
-    {
-      "slug": "waec-the-scramble-for-and-partition-of-west-africa-nigerian-history",
-      "topic": "waec-the-gambia-and",
-      "name": "The Scramble for and partition of West Africa",
-      "order": 39,
-      "objectives": []
-    },
-    {
-      "slug": "waec-causes-ii-berlin-conference-iii-major-recommendations-iv-the",
-      "topic": "waec-the-gambia-and",
-      "name": "causes (ii) Berlin Conference (iii) major recommendations. (iv) the effects on West Africa. 10. Social and Political Development AD 1500- 1900",
-      "order": 40,
-      "objectives": []
-    },
-    {
-      "slug": "waec-activities-of-the-christian-missionaries",
-      "topic": "waec-the-gambia-and",
-      "name": "Activities of the Christian missionaries",
-      "order": 41,
-      "objectives": []
-    },
-    {
-      "slug": "waec-opening-of-churches-and-setting-up-of-schools-and-colleges-i",
-      "topic": "waec-the-gambia-and",
-      "name": "opening of churches and setting up of schools and colleges. (ii) establishment of medical facilities (iii) literacy work: translating the Bible into local languages, providing dictionaries, reducing local languages into writing etc",
-      "order": 42,
-      "objectives": []
-    },
-    {
-      "slug": "waec-political-developments",
-      "topic": "waec-the-gambia-and",
-      "name": "Political Developments",
-      "order": 43,
-      "objectives": []
-    },
-    {
-      "slug": "waec-effects-of-european-presence-on-local-politics-ii-the-bond-o",
-      "topic": "waec-the-gambia-and",
-      "name": "Effects of European presence on local politics (ii) The Bond of 1844 (iii) Aborigines Rights Protection Society. 9 | P a g e SECTION C: GHANA (AD 1900-1991) 11. Social, Economic and Political Developments (AD 1900- 1957)",
-      "order": 44,
-      "objectives": []
-    },
-    {
-      "slug": "waec-nationalist-activities-and-political-changes-from-1900-to-19",
-      "topic": "waec-the-gambia-and",
-      "name": "Nationalist activities and political changes from 1900 to 1957",
-      "order": 45,
-      "objectives": []
-    },
-    {
-      "slug": "waec-early-nationalist-organizations-aborigines-rights-protection",
-      "topic": "waec-the-gambia-and",
-      "name": "Early Nationalist organizations: Aborigines Rights Protection Society (ARPS), National Congress of British West Africa (NCBWA), Gold Coast Youth Conference, West African Youth League. (ii) Early Nationalists e.g. John Mensah Sarbah, J. Casely Hayford, Kobina Sekyi. (iii) Later Nationalist Parties: United Gold Coast Convention (UGCC) Convention People’s Party (CPP) National Liberation Movement (NLM) (iv) Later Nationalists: J.B. Danquah, Kwame Nkrumah, Paa Grant",
-      "order": 46,
+      "slug": "waec-parliamentary-government-multiparty-politics-political-reali",
+      "topic": "waec-development-after-independence",
+      "name": "Parliamentary government; multiparty politics, political realighnment",
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-social-and-economic-developments",
-      "topic": "waec-the-gambia-and",
-      "name": "Social and Economic Developments",
-      "order": 47,
+      "topic": "waec-development-after-independence",
+      "name": "Social and economic developments",
+      "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-education-ii-health-and-sanitation-etc-iii-religion-iv-agric",
-      "topic": "waec-the-gambia-and",
-      "name": "education (ii) health and sanitation: etc. (iii) religion (iv) agriculture-cocoa, oil palm, copra, coffee, fishing; etc",
-      "order": 48,
+      "slug": "waec-senegambia-relations",
+      "topic": "waec-development-after-independence",
+      "name": "Senegambia relations",
+      "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-transport-and-communications-railways-roads-harbours-airways",
-      "topic": "waec-the-gambia-and",
-      "name": "transport and communications: railways, roads, harbours, airways, telegraph and postal services and mass media. (vi) mining – gold, diamond, bauxite, manganese, etc. (vii) timber and other forest products. (viii) the work of Sir Gordon Guggisberg; 12. Post-Independence Ghana",
-      "order": 49,
+      "slug": "waec-1981-attempted-coup-d-etat",
+      "topic": "waec-development-after-independence",
+      "name": "1981 attempted coup d’etat",
+      "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-the-nkrumah-era",
-      "topic": "waec-the-gambia-and",
-      "name": "The Nkrumah Era",
-      "order": 50,
+      "slug": "waec-1994-coup-d-etat-afprc",
+      "topic": "waec-development-after-independence",
+      "name": "1994 coup d’etat – AFPRC",
+      "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-social-developments-ii-economic-developments-iii-political-d",
-      "topic": "waec-the-gambia-and",
-      "name": "Social developments (ii) Economic developments (iii) Political developments - contributions to African unity and world peace 10 | P a g e - development of one party state. (iv) The fall of Nkrumah regime",
-      "order": 51,
+      "slug": "waec-the-second-republic-1996-to-2000",
+      "topic": "waec-development-after-independence",
+      "name": "The Second Republic – 1996 to 2000",
+      "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-post-nkrumah-era",
-      "topic": "waec-the-gambia-and",
-      "name": "Post Nkrumah Era",
-      "order": 52,
-      "objectives": []
-    },
-    {
-      "slug": "waec-causes-of-rapid-changes-of-government-ii-social-and-economic",
-      "topic": "waec-the-gambia-and",
-      "name": "causes of rapid changes of government (ii) social and economic character of each regime: - National Liberation Council (N.L.C) - The Second Republic 1969- 1972 - The National Redemption Council (NRC) & The Supreme Military Council Era (S.M.C) 1972-1979. - The Uprising of 1979 (May 15, and June 4) and the Armed Forces Revolutionary Council (AFRC). - The Third Republic 1979- 1981; - Provisional National Defence Council (PNDC) 1981- 1991. 13. Ghana in the Comity of Nations",
-      "order": 53,
-      "objectives": []
-    },
-    {
-      "slug": "waec-contributions-benefits-and-challenges-of-ghana-s-membership",
-      "topic": "waec-the-gambia-and",
-      "name": "Contributions, benefits and challenges of Ghana’s membership of",
-      "order": 54,
-      "objectives": []
-    },
-    {
-      "slug": "waec-united-nations-organization-uno-united-nations-un-ii-commonw",
-      "topic": "waec-the-gambia-and",
-      "name": "United Nations Organization (UNO); / United Nations (UN) (ii) Commonwealth of Nations; (iii) Non-Aligned Movement (NAM); (iv) Organization of African Unity (OAU); African Union (AU)",
-      "order": 55,
-      "objectives": []
-    },
-    {
-      "slug": "waec-economic-community-of-west-african-states-ecowas-vi-african",
-      "topic": "waec-the-gambia-and",
-      "name": "Economic Community of West African States (ECOWAS); (vi) African, Caribbean and Pacific Countries (ACP/EEC) LIBERIA (For candidates in Liberia only) SECTION A: LIBERIA FROM EARLIEST TIMES TO 1800",
-      "order": 56,
-      "objectives": []
-    },
-    {
-      "slug": "waec-what-is-history-and-why-we-learn-history-sources-of-history",
-      "topic": "waec-historiography-and-historical-skills-2",
-      "name": "What is History and why we learn history; sources of History; historical skills (ancient and modern approaches); prospect of ICT in Historical Studies",
+      "slug": "waec-historiography-and-historical-skills-2",
+      "topic": "waec-historiography-and-historical-skills-section-a-liberia-from",
+      "name": "Historiography and Historical skills",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-a-main-geographical-zones-of-liberia-11-p-a-g-e-b-demographi",
+      "slug": "waec-land-and-people-nigerian-history",
       "topic": "waec-land-and-people",
-      "name": "a. Main geographical zones of Liberia. 11 | P a g e b. Demographic, Ethnic, Linguistic distribution (Kru, Bassa, Krahn, Gio, Mano. Grebo, Lorma, Kpelle, Belle, Mandingo, Vai, Kissi, Gbandi, Gola, Dey,Mende)",
+      "name": "Land and People",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-a-migration-due-to-war-pestilence-drought-overpopulation-b-i",
+      "slug": "waec-migration-due-to-war-pestilence-drought-overpopulation-b-int",
       "topic": "waec-migration",
-      "name": "a. Migration due to war, pestilence, drought, overpopulation. b. Introduction, spread and effects of Islam",
+      "name": "Migration due to war, pestilence, drought, overpopulation. b. Introduction, spread and effects of Islam",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-a-political-institutions-b-social-religious-and-cultural-act",
+      "slug": "waec-political-institutions-b-social-religious-and-cultural-activ",
       "topic": "waec-kingdoms-chiefdoms-and-confederacies",
-      "name": "a. Political Institutions. b. Social, religious and cultural activities (weaving, blacksmithing)",
+      "name": "Political Institutions. b. Social, religious and cultural activities (weaving, blacksmithing)",
       "order": 1,
       "objectives": []
     },
@@ -1420,51 +1095,58 @@
       "objectives": []
     },
     {
-      "slug": "waec-section-b-liberia-in-the-19th-century-7-the-effects-of-colon",
+      "slug": "waec-trans-atlantic-slave-trade-origin-organization-effects-suppr-nigerian-history",
       "topic": "waec-trans-atlantic-slave-trade-origin-organization-effects-suppr",
-      "name": "SECTION B: LIBERIA IN THE 19TH CENTURY 7 The effects of Colonization movements on Liberia. a. The coming of migrants from the USA, the Caribbean and the Recaptives to Liberia. b. The establishment and administration of settlements by the American Colonization Society and other Organizations. c. Christian missionary activities and impact",
+      "name": "Trans Atlantic Slave Trade (origin, organization, effects, suppression)",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-a-problems-conflicts-and-cooperation-between-the-settlers-an",
+      "slug": "waec-the-formation-and-significance-of-the-commonwealth-of-liberi-nigerian-history",
       "topic": "waec-the-formation-and-significance-of-the-commonwealth-of-liberi",
-      "name": "a. Problems, conflicts and cooperation between the settlers and indigenous people. b. Territorial expansion and its effects",
+      "name": "The formation and significance of the Commonwealth of Liberia",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-a-the-reasons-for-and-the-significance-of-the-declaration-of",
+      "slug": "waec-declaration-of-independence-nigerian-history",
       "topic": "waec-declaration-of-independence",
-      "name": "a. The reasons for and the significance of the Declaration of Independence. b. The Constitution of 1847 and its importance. c. The origin and development of political parties. d. The administration of Joseph .J. Roberts e. Edward J. Roye and the ruling class",
+      "name": "Declaration of Independence",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-diplomatic-recognition-by-britain-france-etc",
+      "slug": "waec-liberia-s-relationship-with-the-outside-world-nigerian-history",
       "topic": "waec-liberia-s-relationship-with-the-outside-world",
-      "name": "- Diplomatic recognition by Britain, France etc",
+      "name": "Liberia’s relationship with the outside world",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-12-p-a-g-e-a-encroachment-by-the-british-and-french-beyond-t",
+      "slug": "waec-problems-of-land-acquisition-nigerian-history",
       "topic": "waec-problems-of-land-acquisition",
-      "name": "12 | P a g e a. Encroachment by the British and French beyond the agreed colonial boundaries. b. Expansion into the interior SECTION C: LIBERIA FROM 1900 TO 2000",
+      "name": "Problems of land acquisition",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-a-the-roles-of-presidents-david-coleman-and-arthur-barclay-b",
+      "slug": "waec-political-development-nigerian-history",
       "topic": "waec-political-development",
-      "name": "a. The roles of Presidents David Coleman and Arthur Barclay. b. The origin and development of political parties up to 2000. c. Exportation of labour; the Fernando Po crisis, intervention of the League of Nations",
+      "name": "Political Development",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-jnr-14-1980-coup-d-etat-and-samuel-k-doe-a-beginning-of-the",
+      "slug": "waec-the-administration-of-edwin-barclay-william-v-s-tubman-willi-nigerian-history",
       "topic": "waec-the-administration-of-edwin-barclay-william-v-s-tubman-willi",
-      "name": "Jnr. 14.1980 coup d’etat and Samuel K. Doe a. Beginning of the civil war (ECOWAS intervention/ ECOMOG activities). b. Interim government – 1990- 1994; 1994 – 1997. c. Administration of Charles Taylor (1997-2000)",
+      "name": "The administration of Edwin Barclay, William V.S Tubman, William R. Tolbert",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-interim-government-1990-1994-1994-1997-c-administration-of-c",
+      "topic": "waec-1980-coup-d-etat-and-samuel-k-doe",
+      "name": "Interim government – 1990- 1994; 1994 – 1997. c. Administration of Charles Taylor (1997-2000)",
       "order": 1,
       "objectives": []
     },
@@ -1476,16 +1158,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-a-united-nations-organization-uno-b-organization-of-african",
-      "topic": "waec-liberia-and",
-      "name": "a. United Nations Organization (UNO) b. Organization of African Unity (OAU)/ African Union (AU) c. Economic Community of West African States (ECOWAS) d. Mano River Union (MRU) NIGERIA (For candidates in Nigeria only) SECTION A: NIGERIA FROM EARLIEST TIMES TO 1800",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-what-is-history-and-why-we-study-history-sources-of-history",
-      "topic": "waec-historiography-and-historical-skills-3",
-      "name": "What is History and why we study History; sources of History; Historical skills (ancient and modern approaches); Prospect of ICT in Historical Studies. 13 | P a g e",
+      "slug": "waec-historiography-and-historical-skills-3",
+      "topic": "waec-historiography-and-historical-skills-section-a-nigeria-from",
+      "name": "Historiography and historical skills",
       "order": 1,
       "objectives": []
     },
@@ -1504,44 +1179,79 @@
       "objectives": []
     },
     {
-      "slug": "waec-centralized-and-non-centralized-states",
-      "topic": "waec-a-nigerian-history",
-      "name": "Centralized and non-centralized states",
+      "slug": "waec-kanem-and-borno",
+      "topic": "waec-centralized-and-non-centralized-states",
+      "name": "Kanem and Borno",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-kanem-and-borno-ii-hausa-iii-nupe-iv-oyo",
-      "topic": "waec-a-nigerian-history",
-      "name": "Kanem and Borno; (ii) Hausa; (iii) Nupe; (iv) Oyo",
+      "slug": "waec-hausa",
+      "topic": "waec-centralized-and-non-centralized-states",
+      "name": "Hausa",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-benin-vi-igbo-vii-efik-viii-tiv",
-      "topic": "waec-a-nigerian-history",
-      "name": "Benin; (vi) Igbo; (vii) Efik; (viii) Tiv",
+      "slug": "waec-nupe",
+      "topic": "waec-centralized-and-non-centralized-states",
+      "name": "Nupe",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-inter-group-relations-economic-activities-intermarriages-bil",
-      "topic": "waec-a-nigerian-history",
-      "name": "Inter-group relations: economic activities, intermarriages, bilingualism, etc",
+      "slug": "waec-oyo",
+      "topic": "waec-centralized-and-non-centralized-states",
+      "name": "Oyo",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-impact-of-migrations-wars-and-politics-on-inter-group-relati",
-      "topic": "waec-a-nigerian-history",
-      "name": "Impact of migrations; wars and politics on inter-group relations",
+      "slug": "waec-benin",
+      "topic": "waec-centralized-and-non-centralized-states",
+      "name": "Benin",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-pottery-salt-making-iron-working-gold-mining-soap-making-lea",
-      "topic": "waec-indigenous-crafts-and-industries-nigerian-history",
-      "name": "Pottery, salt making, iron working, gold mining, soap making, leather works, weaving, carving, bronze casting, tie and dyeing, bead making, boat building – technology; social and economic importance",
+      "slug": "waec-igbo",
+      "topic": "waec-centralized-and-non-centralized-states",
+      "name": "Igbo",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-efik",
+      "topic": "waec-centralized-and-non-centralized-states",
+      "name": "Efik",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-tiv",
+      "topic": "waec-centralized-and-non-centralized-states",
+      "name": "Tiv",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-inter-group-relations-economic-activities-intermarriages-bil",
+      "topic": "waec-centralized-and-non-centralized-states",
+      "name": "Inter-group relations: economic activities, intermarriages, bilingualism, etc",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-impact-of-migrations-wars-and-politics-on-inter-group-relati",
+      "topic": "waec-centralized-and-non-centralized-states",
+      "name": "Impact of migrations; wars and politics on inter-group relations",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-indigenous-crafts-and-industries-nigerian-history",
+      "topic": "waec-indigenous-crafts-and-industries-section-a-nigeria-from-earl",
+      "name": "Indigenous crafts and industries",
       "order": 1,
       "objectives": []
     },
@@ -1560,23 +1270,23 @@
       "objectives": []
     },
     {
-      "slug": "waec-origin-organization-and-effects-section-b-nigeria-in-the-19t",
+      "slug": "waec-origin-organization-and-effects-nigerian-history",
       "topic": "waec-nigeria-and-the-trans-atlantic-slave-trade",
-      "name": "Origin, organization and effects SECTION B: NIGERIA IN THE 19TH CENTURY",
+      "name": "Origin, organization and effects",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-establishment-administration-relations-with-its-neighbours-a",
       "topic": "waec-the-sokoto-caliphate",
-      "name": "Establishment, administration, relations with its neighbours and impact of the Sokoto jihad on Nigeria. 14 | P a g e",
+      "name": "Establishment, administration, relations with its neighbours and impact of the Sokoto jihad on Nigeria",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-the-emergence-of-el-kanemi-developments-under-el-kanemi-and",
+      "slug": "waec-borno-under-the-shehus-nigerian-history",
       "topic": "waec-borno-under-the-shehus",
-      "name": "The emergence of El-Kanemi, developments under El-Kanemi and Shehu Umar, development under the later Shehus, the fall of Borno",
+      "name": "Borno under the Shehus",
       "order": 1,
       "objectives": []
     },
@@ -1602,24 +1312,45 @@
       "objectives": []
     },
     {
-      "slug": "waec-section-c-nigeria-from-1900-to-2000",
+      "slug": "waec-the-first-phase-of-the-british-conquest-of-nigeria-1851-1900-nigerian-history",
       "topic": "waec-the-first-phase-of-the-british-conquest-of-nigeria-1851-1900",
-      "name": "SECTION C: NIGERIA FROM 1900 TO 2000",
+      "name": "The first phase of the British conquest of Nigeria: 1851-1900",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-a-the-early-phase-1900-1914-the-amalgamation-of-1914-and-its",
+      "slug": "waec-the-early-phase-1900-1914-the-amalgamation-of-1914-and-its-s",
       "topic": "waec-the-second-phase-of-the-british-conquest-in-nigeria-1900-196",
-      "name": "a. The early phase 1900-1914: the amalgamation of 1914 and its significance b. Later phase 1914-1960",
+      "name": "The early phase 1900-1914: the amalgamation of 1914 and its significance b. Later phase 1914-1960",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-central-administration-ii-indirect-rule-iii-the-colonial-eco",
+      "slug": "waec-central-administration",
       "topic": "waec-the-second-phase-of-the-british-conquest-in-nigeria-1900-196",
-      "name": "central administration; (ii) indirect rule; (iii) the colonial economy; (iv) social developments",
+      "name": "Central administration",
       "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-indirect-rule",
+      "topic": "waec-the-second-phase-of-the-british-conquest-in-nigeria-1900-196",
+      "name": "Indirect rule",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-colonial-economy",
+      "topic": "waec-the-second-phase-of-the-british-conquest-in-nigeria-1900-196",
+      "name": "The colonial economy",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-social-developments",
+      "topic": "waec-the-second-phase-of-the-british-conquest-in-nigeria-1900-196",
+      "name": "Social developments",
+      "order": 5,
       "objectives": []
     },
     {
@@ -1630,51 +1361,30 @@
       "objectives": []
     },
     {
-      "slug": "waec-a-the-first-republic-1960-1966-b-the-coups-d-etat-military-r",
+      "slug": "waec-nigeria-since-independence-nigerian-history",
       "topic": "waec-nigeria-since-independence",
-      "name": "a. the First Republic, 1960-1966; b. the coups d’etat, military rule, civil war and reconstruction, 1966-1975; c. the military administration - Murtala/Obasanjo regime of 1975-1979; d. the Second Republic, 1979-1983; e. the return of military rule - Buhari/Idiagbon regime, 1983-1984 f. The Ibrahim Babangida regime, 1985-1993 g. Interim national government and Abacha regime, 1993-1998; h. Transition to fourth republic and Olusegun Obasanjo administration; i. Emerging issues up to 2000: poverty, corruption, youth unemployment, religious crisis, terrorism, etc. 15 | P a g e",
+      "name": "Nigeria since independence",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-a-united-nations-organization-u-n-o-united-nations-u-n-b-com",
-      "topic": "waec-nigeria-and",
-      "name": "a. United Nations Organization (U.N.O.)/United Nations (U.N); b. Commonwealth of Nations; c. Organization of Unity (O.A.U)/African Union (A.U.); d. Economic Community of West African States (ECOWAS); e. Organization of Petroleum Exporting Countries (OPEC)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-west-africa-in-diaspora-racism-debt-relief-and-international",
+      "slug": "waec-global-issues-nigerian-history",
       "topic": "waec-global-issues",
-      "name": "West Africa in Diaspora; Racism, Debt relief and International aids; Peacekeeping and socio-political interest of developed societies; World peace (armament, nuclear science); Millennium Development Goals (MDGS). SIERRA LEONE (For candidates in Sierra Leone only) SECTION A: SIERRA LEONE FROM EARLIEST TIMES TO 1800",
+      "name": "Global issues",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-what-is-history-and-why-do-we-study-history-sources-of-histo-2",
-      "topic": "waec-historiography-and-historical-skills-4",
-      "name": "What is History and why do we study History; sources of History, Historical skills (ancient and modern approaches); Prospect of ICT in Historical Studies",
+      "slug": "waec-historiography-and-historical-skills-4",
+      "topic": "waec-historiography-and-historical-skills-section-a-sierra-leone",
+      "name": "Historiography and Historical Skills",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-temne-ii-mende-iii-limba-iv-loko",
-      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol-nigerian-history",
-      "name": "Temne; (ii) Mende; (iii) Limba; (iv) Loko",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-susu-vi-mandingo-vii-sherbro-bullom",
-      "topic": "waec-origin-political-social-and-economic-organization-of-the-fol-nigerian-history",
-      "name": "Susu; (vi) Mandingo; (vii) Sherbro/Bullom",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-potters-salt-making-iron-working-gold-mining-soap-making-lea",
-      "topic": "waec-indigenous-crafts-and-industries-2",
-      "name": "Potters, salt making, iron working, gold mining, soap making, leather works, weaving, carving, tie and dyeing, boat building – technology; social and economic importance",
+      "slug": "waec-indigenous-crafts-and-industries-2",
+      "topic": "waec-indigenous-crafts-and-industries-section-a-sierra-leone-from",
+      "name": "Indigenous crafts and industries",
       "order": 1,
       "objectives": []
     },
@@ -1686,9 +1396,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-trade-christianity-and-impact-16-p-a-g-e",
-      "topic": "waec-early-european-contact-nigerian-history",
-      "name": "Trade, Christianity and impact. 16 | P a g e",
+      "slug": "waec-trade-christianity-and-impact-nigerian-history",
+      "topic": "waec-early-european-contact-section-a-sierra-leone-from-earliest",
+      "name": "Trade, Christianity and impact",
       "order": 1,
       "objectives": []
     },
@@ -1700,16 +1410,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-origin-organization-and-effects-section-b-sierra-leone-in-th",
+      "slug": "waec-origin-organization-and-effects-sierra-leone-in-the-19th-cen",
       "topic": "waec-sierra-leone-and-the-trans-atlantic-slave-trade",
-      "name": "Origin, organization and effects SECTION B: SIERRA LEONE IN THE 19TH CENTURY",
+      "name": "Origin, organization and effects SIERRA LEONE IN THE 19TH CENTURY",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-the-crown-colony",
       "topic": "waec-the-founding-of-the-settlement-colony-of-sierra-leone-to-the",
-      "name": "the Crown Colony",
+      "name": "The Crown Colony",
       "order": 1,
       "objectives": []
     },
@@ -1721,16 +1431,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-christian-missionary-activities-and-their-impact-3",
-      "topic": "waec-christian-missionary-activities-and-their-impact-2",
+      "slug": "waec-christian-missionary-activities-and-their-impact-nigerian-history",
+      "topic": "waec-christian-missionary-activities-and-their-impact-section-b",
       "name": "Christian Missionary activities and their impact",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-hinterland",
-      "topic": "waec-the-role-of-the-colonial-government-in-contacts-between-the",
-      "name": "hinterland",
       "order": 1,
       "objectives": []
     },
@@ -1742,9 +1445,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-section-c-sierra-leone-from-1900-to-2000",
+      "slug": "waec-sierra-leone-from-1900-to-2000",
       "topic": "waec-declaration-of-the-protectorate-and-the-hut-tax-war",
-      "name": "SECTION C: SIERRA LEONE FROM 1900 TO 2000",
+      "name": "SIERRA LEONE FROM 1900 TO 2000",
       "order": 1,
       "objectives": []
     },
@@ -1763,52 +1466,87 @@
       "objectives": []
     },
     {
-      "slug": "waec-agriculture-ii-mining-iii-transportation-and-communication-i",
-      "topic": "waec-economic-and-social-developments-in-the-colonial-period-nigerian-history",
-      "name": "Agriculture (ii) Mining (iii) Transportation and communication (iv) Education",
+      "slug": "waec-agriculture-nigerian-history",
+      "topic": "waec-economic-and-social-developments-in-the-colonial-period-sect-nigerian-history",
+      "name": "Agriculture",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-health",
-      "topic": "waec-economic-and-social-developments-in-the-colonial-period-nigerian-history",
+      "slug": "waec-mining",
+      "topic": "waec-economic-and-social-developments-in-the-colonial-period-sect-nigerian-history",
+      "name": "Mining",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-transportation-and-communication-nigerian-history",
+      "topic": "waec-economic-and-social-developments-in-the-colonial-period-sect-nigerian-history",
+      "name": "Transportation and communication",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-education-2",
+      "topic": "waec-economic-and-social-developments-in-the-colonial-period-sect-nigerian-history",
+      "name": "Education",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-health-nigerian-history",
+      "topic": "waec-economic-and-social-developments-in-the-colonial-period-sect-nigerian-history",
       "name": "Health",
-      "order": 2,
+      "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-independence-in-1961-17-p-a-g-e",
+      "slug": "waec-independence-in-1961",
       "topic": "waec-political-and-constitutional-developments-from-1947-to-the-r",
-      "name": "independence in 1961. 17 | P a g e",
+      "name": "Independence in 1961",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-the-era-of-the-margais-1961-ii-military-rule-national-reform",
+      "slug": "waec-the-era-of-the-margais-1961",
       "topic": "waec-sierra-leone-from-independence-to-2000",
-      "name": "The era of the Margais – 1961 (ii) Military rule – National Reformation Council, (iii) The administration of Siaka Stevens, (iv) The administration of Joseph Saidu Momoh – outbreak of the rebel war",
+      "name": "The era of the Margais – 1961",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-military-rule-national-provisional-ruling-council-vi-the-adm",
+      "slug": "waec-military-rule-national-reformation-council",
       "topic": "waec-sierra-leone-from-independence-to-2000",
-      "name": "Military rule – National Provisional Ruling Council, (vi) The administration of Ahmed Tejan Kabbah up to 2000",
+      "name": "Military rule – National Reformation Council",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-united-nationals-organization-u-n-o-united-nations-u-n-ii-co",
-      "topic": "waec-sierra-leone-and",
-      "name": "United Nationals Organization (U.N.O.)/United Nations (U.N); (ii) Commonwealth of Nations; (iii) Organization of African Unity (O.A.U.)/African Union (A.U.); (iv) Economic Community of West African States (ECOWAS)",
-      "order": 1,
+      "slug": "waec-the-administration-of-siaka-stevens",
+      "topic": "waec-sierra-leone-from-independence-to-2000",
+      "name": "The administration of Siaka Stevens",
+      "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-manu-river-union-mru-18-p-a-g-e",
-      "topic": "waec-sierra-leone-and",
-      "name": "Manu River Union (MRU). 18 | P a g e",
-      "order": 2,
+      "slug": "waec-the-administration-of-joseph-saidu-momoh-outbreak-of-the-reb",
+      "topic": "waec-sierra-leone-from-independence-to-2000",
+      "name": "The administration of Joseph Saidu Momoh – outbreak of the rebel war",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-military-rule-national-provisional-ruling-council",
+      "topic": "waec-sierra-leone-from-independence-to-2000",
+      "name": "Military rule – National Provisional Ruling Council",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-the-administration-of-ahmed-tejan-kabbah-up-to-2000",
+      "topic": "waec-sierra-leone-from-independence-to-2000",
+      "name": "The administration of Ahmed Tejan Kabbah up to 2000",
+      "order": 6,
       "objectives": []
     }
   ]

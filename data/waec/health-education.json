@@ -43,10 +43,10 @@
       "countries": []
     },
     {
-      "slug": "waec-posture-and-postural-defects",
+      "slug": "waec-posture-and-postural-defects-lordosis",
       "subject": "health-education",
       "exam": "WAEC",
-      "name": "Posture and Postural Defects",
+      "name": "Posture and Postural Defects lordosis",
       "order": 4,
       "weight": 0,
       "objectives": [],
@@ -63,7 +63,7 @@
       "countries": []
     },
     {
-      "slug": "waec-personal-hygiene",
+      "slug": "waec-personal-hygiene-health-education",
       "subject": "health-education",
       "exam": "WAEC",
       "name": "Personal hygiene",
@@ -163,10 +163,10 @@
       "countries": []
     },
     {
-      "slug": "waec-first-aid",
+      "slug": "waec-first-aid-education",
       "subject": "health-education",
       "exam": "WAEC",
-      "name": "First Aid",
+      "name": "First Aid EDUCATION",
       "order": 16,
       "weight": 0,
       "objectives": [],
@@ -203,10 +203,10 @@
       "countries": []
     },
     {
-      "slug": "waec-communicable-diseases",
+      "slug": "waec-communicable-diseases-education",
       "subject": "health-education",
       "exam": "WAEC",
-      "name": "Communicable diseases",
+      "name": "Communicable diseases EDUCATION",
       "order": 20,
       "weight": 0,
       "objectives": [],
@@ -295,73 +295,101 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-facility-and-work-place-base-health-education-programmes-and",
-      "topic": "waec-meaning-and-setting-for-health-education",
-      "name": "facility and work place base, health education programmes and services",
-      "order": 1,
-      "objectives": []
-    },
-    {
       "slug": "waec-meaning-health-education",
       "topic": "waec-meaning-and-setting-for-health-education",
       "name": "Meaning",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-setting",
       "topic": "waec-meaning-and-setting-for-health-education",
       "name": "Setting",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-home-based",
+      "topic": "waec-meaning-and-setting-for-health-education",
+      "name": "Home-based",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-home-based-ii-school-based-iii-community-based-iv-health-fac",
+      "slug": "waec-school-based",
       "topic": "waec-meaning-and-setting-for-health-education",
-      "name": "home-based; (ii) school-based; (iii) community-based; (iv) health facility-based",
+      "name": "School-based",
       "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-community-based",
+      "topic": "waec-meaning-and-setting-for-health-education",
+      "name": "Community-based",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-health-facility-based",
+      "topic": "waec-meaning-and-setting-for-health-education",
+      "name": "Health facility-based",
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-work-place-based",
       "topic": "waec-meaning-and-setting-for-health-education",
-      "name": "work place-based",
-      "order": 5,
+      "name": "Work place-based",
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-meaning-of-health-promotion",
       "topic": "waec-meaning-and-setting-for-health-education",
       "name": "Meaning of health promotion",
-      "order": 6,
+      "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-types-of-cell-structure-of-a-typical-animal-cell-and-functio",
+      "slug": "waec-types-of-cell",
       "topic": "waec-cells-and-tissues-of-human-body",
-      "name": "Types of cell: Structure of a typical animal cell and functions of its (i) somatic cells; parts should be discussed. (ii) sex cells",
+      "name": "Types of cell",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-cell-division-differences-between-mitosis-and-meiosis-should",
+      "slug": "waec-cell-division-sense-organs",
       "topic": "waec-cells-and-tissues-of-human-body",
-      "name": "Cell division: Differences between mitosis and meiosis should be (i) Mitosis; emphasized. (ii) Meiosis Mention should be made of epithelial, connective and (c) Cell differentiation: muscular tissue, an organ and a system should be Formation of tissues, explained. Organs and Systems. NOTES CONTENTS (1) Differences between growth and development (d) Growth and development should be emphasized. (2) Factors that affect growth and development 2. Sense Organs should be discussed. (a) Structure and functions of the following sense organs",
+      "name": "Cell division: sense organs",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-eye-ii-ear-iii-skin-accommodation-should-be-discussed-iv-nos",
+      "slug": "waec-eye-health-education",
       "topic": "waec-cells-and-tissues-of-human-body",
-      "name": "eye; (ii) ear; (iii) skin; Accommodation should be discussed. (iv) nose",
+      "name": "Eye",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-tongue-process-of-hearing-and-balancing-should-be-discussed",
+      "slug": "waec-ear",
       "topic": "waec-cells-and-tissues-of-human-body",
-      "name": "tongue. Process of hearing and balancing should be discussed",
+      "name": "Ear",
       "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-skin",
+      "topic": "waec-cells-and-tissues-of-human-body",
+      "name": "Skin",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-tongue-health-education",
+      "topic": "waec-cells-and-tissues-of-human-body",
+      "name": "Tongue",
+      "order": 6,
       "objectives": []
     },
     {
@@ -372,108 +400,115 @@
       "objectives": []
     },
     {
-      "slug": "waec-the-general-plan-of-the-axial-and-a-chart-model-of-a-human-s",
+      "slug": "waec-functions-of-the-skeletal-system",
       "topic": "waec-systems-of-the-body",
-      "name": "The general plan of the axial and A chart/model of a human skeleton should be appendicular skeleton. examined. (ii) Functions of the skeletal system. Types of bones that make up the mammalian skeleton should be identified. (iii) Joints: Structures and types. (1) Emphasis should be on synovial joint. (2) Location of the different types of joint should be identified. (3) Specific examples should be used to illustrate the classes of levers. (iv) Structures and types of muscles tissues. The three different types of muscles should be discussed in relation to their functions",
+      "name": "Functions of the skeletal system",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-movement-reference-should-be-made-to-origin-and-insertion-of",
+      "slug": "waec-joints-structures-and-types",
       "topic": "waec-systems-of-the-body",
-      "name": "Movement. Reference should be made to origin and insertion of",
+      "name": "Joints: Structures and types",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-circulatory-system-muscles-in-relation-to-movement",
+      "slug": "waec-structures-and-types-of-muscles-tissues",
       "topic": "waec-systems-of-the-body",
-      "name": "Circulatory System muscles in relation to movement",
+      "name": "Structures and types of muscles tissues",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-structure-and-functions-candidates-should-examine-the-heart",
+      "slug": "waec-movement-health-education",
       "topic": "waec-systems-of-the-body",
-      "name": "Structure and functions. Candidates should examine the heart of a dissected (I) Heart mammal. Pulse rate should be counted. The web of a toad/frog (II) Blood and lymph vessels should be examined with a hand lens to observe the capillaries. The importance of lymph nodes should be mentioned. Prepared slides of blood should be observed under (ii) Composition of blood and lymph microscope. Pulmonary and systemic circulation should be (iii) (I) Blood and lymph emphasized. circulation (II) Process of blood clotting The relevance of these factors in relation to blood (iv) Blood groups, rhesus factors transfusion should be mentioned. hemoglobin, genotype. (1) Heredity aspect of sickle cell andhaemophilia (v) Diseases disorder of the should be discussed. circulatory system and their (2) Prevention of anaemia and arteriosclerosis causes; sickle cell anaemia, should be discussed. leukaemia, haemophilia arteriosclerosis, hypertension, coronary thrombosis and stroke",
+      "name": "Movement",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-digestive-system-candidates-should-examine-the-alimentary-ca",
+      "slug": "waec-circulatory-system-health-education",
       "topic": "waec-systems-of-the-body",
-      "name": "Digestive system Candidates should examine the alimentary canal of a (i) Organs of the digestive system and dissected mammal.The location and function of their functions. accessory organs of digestion should be emphasized. Digestive enzymes should be discussed in relation to substrates and end-product. (ii) Process of digestion NOTES CONTENTS (1) Mentioned should be made of tissue respiration (iii) Absorption, assimilation and in relation to metabolism. metabolism. (2) Osmosis and diffusion should be demonstrated and their importance in absorption should be emphasized. Importance of proper eating habits and the effects of (iv) Diseases/disorders of the digestive over-eating and under-eating should be discussed. system and their prevention",
+      "name": "Circulatory System",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-excretory-system-1-candidates-should-examine-the-parts-of-th",
+      "slug": "waec-structure-and-functions-ii-process-of-blood-clotting-arterio",
       "topic": "waec-systems-of-the-body",
-      "name": "Excretory System (1) Candidates should examine the parts of the (i) Structure and functions of the urinary system of a dissected mammal. kidney and skin. (2) Candidates should examine prepared slides of the skin under the microscope. (ii) Process of urine formation. Reference should be made to the excretory functions of the lungs. The use of dialysis machine for kidney failure should be mentioned",
+      "name": "Structure and functions. (II) Process of blood clotting arteriosclerosis, hypertension, coronary thrombosis and stroke",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-respiratory-system-health-education",
+      "slug": "waec-process-of-urine-formation",
       "topic": "waec-systems-of-the-body",
-      "name": "Respiratory System",
+      "name": "Process of urine formation",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-structure-and-functions-of-the-candidates-should-examine-the",
+      "slug": "waec-process-of-respiration-i-mechanism-of-breathing-ii-gaseous-e",
       "topic": "waec-systems-of-the-body",
-      "name": "Structure and functions of the Candidates should examine the respiratory organs of a respiratory system dissected mammals. (ii) Process of respiration (I) Mechanism of breathing Experiment to demonstrate the inhalation and exhalation of air should be performed. (II) Gaseous exchange. Total, compIemental and residual air should be explained. Experiment to show that expired air contains more carbon dioxide and water vapour should be performed. NOTES CONTENTS (III) Tissue/Cellular respiration. (iii) Diseases/disorders of the respiratory system and their control",
+      "name": "Process of respiration (I) Mechanism of breathing (II) Gaseous exchange. (III) Tissue/Cellular respiration",
       "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-nervous-system",
+      "slug": "waec-diseases-disorders-of-the-respiratory-system-and-their-contr",
       "topic": "waec-systems-of-the-body",
-      "name": "Nervous System",
+      "name": "Diseases/disorders of the respiratory system and their control",
       "order": 10,
       "objectives": []
     },
     {
-      "slug": "waec-structure-and-functions-of-the-the-brain-spinal-cord-and-ner",
+      "slug": "waec-structure-and-functions-of-the-components-of-the-nervous-sys",
       "topic": "waec-systems-of-the-body",
-      "name": "Structure and functions of the The brain, spinal cord and nerves should be discussed. components of the nervous system (ii) Voluntary and involuntary actions (iii) Diseases/disorders of the nervous The reflex arc should be studied. system",
+      "name": "Structure and functions of the components of the nervous system",
       "order": 11,
       "objectives": []
     },
     {
-      "slug": "waec-endocrine-system-location-of-the-different-endocrine-glands",
+      "slug": "waec-voluntary-and-involuntary-actions",
       "topic": "waec-systems-of-the-body",
-      "name": "Endocrine System: Location of the different endocrine glands, the hormones produced and their (1) Characteristics of endocrine glands should functions. mentioned",
+      "name": "Voluntary and involuntary actions",
       "order": 12,
       "objectives": []
     },
     {
-      "slug": "waec-homeostasis-2-charts-models-should-be-used-to-study-the-loca",
+      "slug": "waec-diseases-disorders-of-the-nervous-system",
       "topic": "waec-systems-of-the-body",
-      "name": "Homeostasis (2) Charts/models should be used to study the location of the glands. (3) The effects of over-and under – secretion of hormones should be emphasized. Physiological factors affecting homeostatis (1) Body temperature, blood sugar level, water balance, electrolytes balance, pH and blood pressure should be highlighted",
+      "name": "Diseases/disorders of the nervous system",
       "order": 13,
       "objectives": []
     },
     {
-      "slug": "waec-2-candidates-should-test-urine-with-litmus-paper",
-      "topic": "waec-posture-and-postural-defects",
-      "name": "(2) Candidates should test urine with litmus paper",
+      "slug": "waec-endocrine-system",
+      "topic": "waec-systems-of-the-body",
+      "name": "Endocrine System",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-homeostasis-physiological-factors-affecting-homeostatis",
+      "topic": "waec-systems-of-the-body",
+      "name": "Homeostasis Physiological factors affecting homeostatis",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definition-health-education",
+      "topic": "waec-posture-and-postural-defects-lordosis",
+      "name": "Definition",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-definition-and-also-count-pulse-rate-ii-characteristics-of-c",
-      "topic": "waec-posture-and-postural-defects",
-      "name": "Definition; and also, count pulse rate. (ii) Characteristics of correct posture. (3) Mention should be made of the positive and negative feed back control system. (iii) Determination of correct postures Posture should be related to the following: sitting; standing; walking and lifting. (iv) Types of postural defects: Flat foot; scoliosis, kyphosis and The roles of nutrition and exercise as determinants of lordosis correct posture should be discussed. (1) The causes of postural defects e.g. habits, accidents, heredity and diseases should be discussed. CONTENTS",
+      "slug": "waec-characteristics-of-correct-posture",
+      "topic": "waec-posture-and-postural-defects-lordosis",
+      "name": "Characteristics of correct posture",
       "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-effects-of-incorrect-posture-on-2-the-roles-of-orthopaedicho",
-      "topic": "waec-posture-and-postural-defects",
-      "name": "Effects of incorrect posture on (2) The roles of orthopaedichospital and physical physiotherapy unit in the correction of postural appearance, position and functions of defect should be mentioned. body organs",
-      "order": 3,
       "objectives": []
     },
     {
@@ -484,56 +519,84 @@
       "objectives": []
     },
     {
-      "slug": "waec-personal-hygiene-health-education",
-      "topic": "waec-personal-hygiene",
+      "slug": "waec-personal-hygiene-2",
+      "topic": "waec-personal-hygiene-health-education",
       "name": "Personal hygiene",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-definition-care-of-body-parts-including-the-teeth-mouth-hair",
+      "slug": "waec-definition-6",
       "topic": "waec-promotion-and-maintenance-of-health",
-      "name": "Definition Care of body parts including the teeth, mouth, hair,",
+      "name": "Definition",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-factors-and-their-roles-in-the-maintenance-of-hands-and-nail",
+      "slug": "waec-factors-and-their-roles-in-the-maintenance-of-health",
       "topic": "waec-promotion-and-maintenance-of-health",
-      "name": "Factors and their roles in the maintenance of hands and nails should be discussed. health",
+      "name": "Factors and their roles in the maintenance of health",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-eye-defects-and-their-corrections-myopia-hypermetropia-the-u",
+      "slug": "waec-eye-defects-and-their-corrections-myopia-hypermetropia-astig",
       "topic": "waec-health-screening",
-      "name": "Eye defects and their corrections. Myopia; Hypermetropia; The use of snellen chart for vision screening should be Astigmatism; mentioned. The roles of eye specialist in the correction Presbyopia; of the defects should be discussed. Squints (cross eye)",
+      "name": "Eye defects and their corrections. Myopia; Hypermetropia; Astigmatism; Presbyopia; Squints (cross eye)",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-auditory-defects-otitis-media-should-be-mentioned",
+      "slug": "waec-auditory-defects",
       "topic": "waec-health-screening",
-      "name": "Auditory defects Otitis media should be mentioned",
+      "name": "Auditory defects",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-conductive-impairment-the-use-of-tuning-fork-audiometer-guit",
+      "slug": "waec-conductive-impairment",
       "topic": "waec-health-screening",
-      "name": "Conductive impairment The use of tuning fork; audiometer, guitar strings and wrist watch in auditory screening should be mentioned. (ii) Neurosensory impairment Also, mention should be made of the sign language. (iii) Disorder of the skin (iv) Care of the eye, ear and skin",
+      "name": "Conductive impairment",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-and-types-ii-types-of-human-teeth-iii-teeth-diseases",
+      "slug": "waec-neurosensory-impairment",
+      "topic": "waec-health-screening",
+      "name": "Neurosensory impairment",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-disorder-of-the-skin",
+      "topic": "waec-health-screening",
+      "name": "Disorder of the skin",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-care-of-the-eye-ear-and-skin",
+      "topic": "waec-health-screening",
+      "name": "Care of the eye, ear and skin",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning-and-types",
       "topic": "waec-dental-health-education",
-      "name": "Meaning and types (ii) Types of human teeth (iii) Teeth diseases Structure and functions of the different types of teeth Dental caries and gingivitis should be should be discussed. mentioned",
+      "name": "Meaning and types",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-definition-health-education",
+      "slug": "waec-types-of-human-teeth",
+      "topic": "waec-dental-health-education",
+      "name": "Types of human teeth",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-definition-7",
       "topic": "waec-community-health-services",
       "name": "Definition",
       "order": 1,
@@ -547,16 +610,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-orthodox-services-e-g-primary-health-advantages-and-disadvan",
+      "slug": "waec-orthodox-services-e-g-primary-health-birth-attendance",
       "topic": "waec-community-health-services",
-      "name": "Orthodox services e.g. primary health Advantages and disadvantages of traditional medicine care; should be mentioned. (ii) Traditional services e.g. bone setters, birth attendance",
+      "name": "Orthodox services e.g. primary health birth attendance",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-community-efforts-in-health-promotion-awareness-campaign-sho",
+      "slug": "waec-community-efforts-in-health-promotion",
       "topic": "waec-community-health-services",
-      "name": "Community efforts in health promotion. Awareness campaign should be discussed. 2. School health programme",
+      "name": "Community efforts in health promotion",
       "order": 4,
       "objectives": []
     },
@@ -568,65 +631,100 @@
       "objectives": []
     },
     {
-      "slug": "waec-skill-based-health-education-ii-healthful-school-environment",
+      "slug": "waec-skill-based-health-education",
       "topic": "waec-community-health-services",
-      "name": "Skill-based health education (ii) Healthful school environment Both physical and biological environment should be (iii) School feeding services discussed. (iv) School health and nutrition services",
+      "name": "Skill-based health education",
       "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-healthful-school-environment",
+      "topic": "waec-community-health-services",
+      "name": "Healthful school environment",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-school-health-and-nutrition-services",
+      "topic": "waec-community-health-services",
+      "name": "School health and nutrition services",
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-school-home-and-community-relationship",
       "topic": "waec-community-health-services",
       "name": "School, home and community relationship",
-      "order": 7,
+      "order": 9,
       "objectives": []
     },
     {
       "slug": "waec-goals-and-objectives",
       "topic": "waec-community-health-services",
       "name": "Goals and Objectives",
-      "order": 8,
+      "order": 10,
       "objectives": []
     },
     {
       "slug": "waec-linkages-for-promotion-initiatives",
       "topic": "waec-community-health-services",
       "name": "Linkages for promotion (initiatives)",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-health-promoting-school-hps-ii-child-friendly-school-cfs-iii",
-      "topic": "waec-community-health-services",
-      "name": "Health Promoting School (HPS) (ii) Child-Friendly School (CFS) (iii) Focusing resources on Effective Schools Health (FRESH) (iv) Life Skills (LS)",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-education-for-all-efa-contentsnotes",
-      "topic": "waec-community-health-services",
-      "name": "Education for All (EFA) CONTENTSNOTES",
       "order": 11,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-2",
+      "slug": "waec-health-promoting-school-hps",
+      "topic": "waec-community-health-services",
+      "name": "Health Promoting School (HPS)",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-child-friendly-school-cfs",
+      "topic": "waec-community-health-services",
+      "name": "Child-Friendly School (CFS)",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-focusing-resources-on-effective-schools-health-fresh",
+      "topic": "waec-community-health-services",
+      "name": "Focusing resources on Effective Schools Health (FRESH)",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-life-skills-ls",
+      "topic": "waec-community-health-services",
+      "name": "Life Skills (LS)",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-education-for-all-efa",
+      "topic": "waec-community-health-services",
+      "name": "Education for All (EFA)",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning-3",
       "topic": "waec-family-health",
       "name": "Meaning",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-different-aspects-of-family-health-antenatal-care-immunizati",
+      "slug": "waec-different-aspects-of-family-health-matenal-and-child-health",
       "topic": "waec-family-health",
-      "name": "Different aspects of family health: Antenatal care, immunization, oral rehydration therapy Matenal and child health (ORT), breast feeding and safe motherhood should be",
+      "name": "Different aspects of family health: Matenal and child health",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-family-size-and-budgeting-discussed",
+      "slug": "waec-family-size-and-budgeting",
       "topic": "waec-family-health",
-      "name": "Family size and budgeting discussed",
+      "name": "Family size and budgeting",
       "order": 3,
       "objectives": []
     },
@@ -652,143 +750,129 @@
       "objectives": []
     },
     {
-      "slug": "waec-common-causes-of-death-candidates-should-be-able-to-define-e",
+      "slug": "waec-common-causes-of-death",
       "topic": "waec-ageing-and-death-education",
-      "name": "Common causes of death. Candidates should be able to define epidemiology, vital",
+      "name": "Common causes of death",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-statistics-and-population-dynamics",
+      "slug": "waec-definitions-health-education",
       "topic": "waec-epidemiology-and-vital-statistics",
-      "name": "statistics and population dynamics",
+      "name": "Definitions",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-definitions-the-importance-and-use-of-health-records-should",
+      "slug": "waec-mortality-rate",
       "topic": "waec-epidemiology-and-vital-statistics",
-      "name": "Definitions The importance and use of health records should be (b) Components of vital statistics stressed. (i) Birth rate (ii) Mortality rate (iii) Morbidity rate",
+      "name": "Mortality rate",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-uses-of-the-major-components-of-vital-statistics-effects-of",
+      "slug": "waec-morbidity-rate",
       "topic": "waec-epidemiology-and-vital-statistics",
-      "name": "Uses of the major components of vital statistics. Effects of poor sanitation and pest infestation in home E. ENVIRONMENTAL HEALTH should be discussed. 1. Housing",
+      "name": "Morbidity rate",
       "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-uses-of-the-major-components-of-vital-statistics",
+      "topic": "waec-epidemiology-and-vital-statistics",
+      "name": "Uses of the major components of vital statistics",
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-criteria-for-good-housing-to-include-siting-ventilation-ligh",
       "topic": "waec-epidemiology-and-vital-statistics",
       "name": "Criteria for good housing to include siting, ventilation, lighting and sanitation",
-      "order": 4,
+      "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-components-of-a-standard-house-effects-of-substandard-housin",
+      "slug": "waec-components-of-a-standard-house",
       "topic": "waec-epidemiology-and-vital-statistics",
-      "name": "Components of a standard house. Effects of substandard housing on health should be 2. Water supply discussed. (a) Definition and sources",
-      "order": 5,
+      "name": "Components of a standard house",
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-purification-and-uses",
       "topic": "waec-epidemiology-and-vital-statistics",
       "name": "Purification and uses",
-      "order": 6,
+      "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-sources-should-include-rain-borehole-rivers-streams-a-meanin",
+      "slug": "waec-refuse",
       "topic": "waec-waste-disposal",
-      "name": "Sources should include rain, borehole, rivers, streams, (a) Meaning springs, well pond, pipe borne water (b) Types",
+      "name": "Refuse",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-refuse-ii-sewage",
+      "slug": "waec-sewage",
       "topic": "waec-waste-disposal",
-      "name": "refuse; (ii) Sewage",
+      "name": "Sewage",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-methods-advantages-and-disadvantages-of-each-method-should-4",
+      "slug": "waec-methods",
       "topic": "waec-waste-disposal",
-      "name": "Methods Advantages and disadvantages of each method should 4. Pollution be discussed. (a) Meaning",
+      "name": "Methods",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-types-air-water-soil-and-noise-contentsnotes",
+      "slug": "waec-types-air-water-soil-and-noise",
       "topic": "waec-waste-disposal",
-      "name": "Types: air, water, soil and noise. CONTENTSNOTES",
+      "name": "Types: air, water, soil and noise",
       "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-meaning-and-sources-of-pollutants",
-      "topic": "waec-waste-disposal",
-      "name": "Meaning and sources of pollutants",
-      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-health-consequences-of-pollution-c-industrial-occupation",
       "topic": "waec-waste-disposal",
       "name": "Health consequences of pollution. (C) Industrial occupation",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning-4",
+      "topic": "waec-waste-disposal",
+      "name": "Meaning",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-3",
+      "slug": "waec-programmes-industrial-health-services",
       "topic": "waec-waste-disposal",
-      "name": "Meaning",
+      "name": "Programmes: Industrial health services",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-programmes-industrial-health-services-the-need-for-health-ca",
+      "slug": "waec-occupation-hazard-d-pests-and-vectors-control",
       "topic": "waec-waste-disposal",
-      "name": "Programmes: Industrial health services The need for health care and rehabilitation should be",
+      "name": "Occupation hazard (D) Pests and vectors control",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-occupation-hazard-discussed-d-pests-and-vectors-control-the",
+      "slug": "waec-habitats-of-pests-and-vectors",
       "topic": "waec-waste-disposal",
-      "name": "Occupation hazard discussed. (D) Pests and vectors control The need for health insurance schemes should be",
+      "name": "Habitats of pests and vectors",
       "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-stressed",
+      "slug": "waec-harmful-effects-and-control",
       "topic": "waec-waste-disposal",
-      "name": "Meaning stressed",
+      "name": "Harmful effects and control",
       "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-habitats-of-pests-and-vectors-students-should-be-able-to-ide",
-      "topic": "waec-waste-disposal",
-      "name": "Habitats of pests and vectors Students should be able to identify to differentiate",
-      "order": 11,
-      "objectives": []
-    },
-    {
-      "slug": "waec-harmful-effects-and-control-between-pests-and-vectors-nutrit",
-      "topic": "waec-waste-disposal",
-      "name": "Harmful effects and control. between pests and vectors. Nutrition Tests for starch, simple and complex sugars, proteins (i) Classes, sources and functions of food and fats should be carried out. nutrients. Local example of sources of food nutrients should be mentioned. (ii) Caloric value of food nutrients Caloric needs in relations to age, occupation and health 2. Balanced/adequate diets condition should be discussed. (a) Definition Food deficiency diseases should be emphasized. (b) Classification",
-      "order": 12,
-      "objectives": []
-    },
-    {
-      "slug": "waec-nutritional-problems-factors-responsible-for-unbalanced-diet",
-      "topic": "waec-waste-disposal",
-      "name": "Nutritional problems Factors responsible for unbalanced diet and effects associated with poor diet should be discussed. 3. Factors influencing feeding habits/choice of foods Factors should include: availability, religion education, age, belief, health condition and cost 4. Water The role of water in relation to nutrition should be discussed. 5. Nutritional processes: ingestion, digestion, absorption, assimilation and metabolism and defecation/ejection. Negative and positive effects should be stressed. 6. Beverages Nutritional value of non-alcoholic beverages should be (a) Definition stressed. (b) Types and effects Charts should be used to show diets for the different 7. Diet for different group of people: children, groups of people. male adolescent; female adolescent; athletes; pregnant woman; adult and aged. Food handling; cleanliness of cooking utensils and surroundings should be discussed. Effects of poor 10 food handling should be stressed. Effects of washing, boiling, frying, baking and roasting should be discussed",
-      "order": 13,
       "objectives": []
     },
     {
@@ -806,80 +890,87 @@
       "objectives": []
     },
     {
-      "slug": "waec-methods-of-food-preservation-smoking-drying-dehydration-free",
-      "topic": "waec-food-hygiene-preservation-and-storage",
-      "name": "Methods of food preservation: Smoking/drying/dehydration, Freezing/refrigeration, addition of chemicals/sugar salts, Bottling/pickling/canning",
-      "order": 3,
-      "objectives": []
-    },
-    {
       "slug": "waec-meaning-aims-and-principles-of-first-aid",
-      "topic": "waec-first-aid",
+      "topic": "waec-first-aid-education",
       "name": "Meaning/aims and principles of first aid",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-first-aid-kit",
-      "topic": "waec-first-aid",
+      "topic": "waec-first-aid-education",
       "name": "First aid kit",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-specific-emergency-conditions-cuts-wounds-bleeding-dislocati",
-      "topic": "waec-first-aid",
-      "name": "Specific emergency conditions cuts; Wounds; bleeding dislocation; fractures; burns; scalds; shocks; asphysia/suffocation; poisoning",
+      "slug": "waec-agencies-providing-first-aid-services",
+      "topic": "waec-first-aid-education",
+      "name": "Agencies providing First Aid Services",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-agencies-providing-first-aid-services",
-      "topic": "waec-first-aid",
-      "name": "Agencies providing First Aid Services",
+      "slug": "waec-disaster",
+      "topic": "waec-first-aid-education",
+      "name": "Disaster",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-disaster",
-      "topic": "waec-first-aid",
-      "name": "Disaster",
+      "slug": "waec-meaning-and-types-health-education",
+      "topic": "waec-first-aid-education",
+      "name": "Meaning and types",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-and-types-ii-disaster-relief-activities",
-      "topic": "waec-first-aid",
-      "name": "Meaning and types (ii) Disaster relief activities",
+      "slug": "waec-disaster-relief-activities",
+      "topic": "waec-first-aid-education",
+      "name": "Disaster relief activities",
       "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-accident",
-      "topic": "waec-first-aid",
+      "topic": "waec-first-aid-education",
       "name": "Accident",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-types-and-causes-ii-prevention",
-      "topic": "waec-first-aid",
-      "name": "Types and causes (ii) Prevention",
+      "slug": "waec-types-and-causes",
+      "topic": "waec-first-aid-education",
+      "name": "Types and causes",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-disability-and-rehabilitation",
-      "topic": "waec-first-aid",
-      "name": "Disability and rehabilitation",
+      "slug": "waec-prevention",
+      "topic": "waec-first-aid-education",
+      "name": "Prevention",
       "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-ii-types-and-prevention-mention-should-include-drug",
-      "topic": "waec-first-aid",
-      "name": "Meaning (ii) Types and prevention. Mention should include drug abuse, drug dependence, drug misuse, drug addiction, self medication, alcoholism, rehabilitation This should include oral, injection, inhalation, topical and anal. Prevention of drug abuse should be highlighted. EDUCATION",
+      "slug": "waec-disability-and-rehabilitation",
+      "topic": "waec-first-aid-education",
+      "name": "Disability and rehabilitation",
       "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning-5",
+      "topic": "waec-first-aid-education",
+      "name": "Meaning",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-and-prevention",
+      "topic": "waec-first-aid-education",
+      "name": "Types and prevention",
+      "order": 12,
       "objectives": []
     },
     {
@@ -918,24 +1009,17 @@
       "objectives": []
     },
     {
-      "slug": "waec-components-ii-effects-of-smoking-on-health",
+      "slug": "waec-alcohol-on-health-effects-of-alcohol-on-health",
       "topic": "waec-behaviour-altering-chemicals",
-      "name": "Components (ii) Effects of smoking on health",
+      "name": "Alcohol on health Effects of alcohol on health",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-alcohol-on-health-effects-of-alcohol-on-health",
+      "slug": "waec-drugs-effects-of-drug-on-health",
       "topic": "waec-behaviour-altering-chemicals",
-      "name": "Alcohol on health Effects of alcohol on health",
+      "name": "Drugs Effects of drug on health",
       "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-drugs-effects-of-drug-on-health-communicable-diseases",
-      "topic": "waec-behaviour-altering-chemicals",
-      "name": "Drugs Effects of drug on health COMMUNICABLE DISEASES",
-      "order": 4,
       "objectives": []
     },
     {
@@ -946,101 +1030,45 @@
       "objectives": []
     },
     {
-      "slug": "waec-definition-6",
-      "topic": "waec-communicable-diseases",
+      "slug": "waec-definition-8",
+      "topic": "waec-communicable-diseases-education",
       "name": "Definition",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-classification-of-communicable-diseases",
-      "topic": "waec-communicable-diseases",
+      "topic": "waec-communicable-diseases-education",
       "name": "Classification of communicable diseases",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-air-borne-respiratory-diseases-common-cold-measles-whooping",
-      "topic": "waec-communicable-diseases",
-      "name": "Air-borne/Respiratory diseases Common cold, measles, whooping cough, poliomyelitis, tuberculosis and cerebro-spinal The life cycle of the pathogen of each disease meningitis, diphtheria. should be discussed. The life cycle of each worm should be discussed with the aid of a chart. (ii) Water/food-borne diseases: Dysentery, cholera, typhoid fever and schistosomiasis, guinea worm (iii) Insect-borne diseases: Malaria, yellow fever, trypanosomiasis and filariasis (iv) Worm infection",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-ascarislumbricoides-round-worm-ii-taeniasolium-tape-worm-iii",
-      "topic": "waec-communicable-diseases",
-      "name": "Ascarislumbricoides (round worm) (ii) Taeniasolium (tape worm) (iii) Ancylostomaduodenale (Hook worm) (iv) Dracunculusmedinensis (Guinea worm)",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-animal-borne-diseases-rabies-leptospoirosis-vi-contact-disea",
-      "topic": "waec-communicable-diseases",
-      "name": "Animal-borne diseases rabies, leptospoirosis (vi) Contact diseases diseases;Gonorrhoea, syphilis, Tineapedis (athlete/foot), Taeniacapitis (ringworm) leprosy, scabies and Acquired immune Deficiency Syndrome (AIDS)",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-factors-necessary-for-communicable-diseases-to-occur",
-      "topic": "waec-communicable-diseases",
-      "name": "Factors necessary for communicable diseases to occur",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-causative-agent-ii-susceptible-host-iii-transmission-route-e",
-      "topic": "waec-communicable-diseases",
-      "name": "Causative agent (ii) Susceptible host; (iii) Transmission route (environment)",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-non-communicable-diseases-types",
-      "topic": "waec-communicable-diseases",
-      "name": "Non-communicable diseases: Types",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-deficiency-scurvy-pellagra-rickets-kwashiorkor-anaemia-berib",
-      "topic": "waec-communicable-diseases",
-      "name": "Deficiency (scurvy, pellagra, rickets, Kwashiorkor, anaemia, beriberi etc) (ii) Diseases due to growth in cells, heredity and normal disorders (cancer, diabetes, epilepsy, haemophilia, heart disease, hypertension. Ulcer, mental illness, sickle cell, rheumatism, infertility, asthma, albinism etc. Secondary sexual characteristics in boys and girls EDUCATION should be discussed",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-candidates-should-observe-study-the-parts-of-the",
+      "slug": "waec-definition-of-terms-reproduction-sex-gametes-ovulation-menst",
       "topic": "waec-human-reproduction",
-      "name": "Candidates should observe/study the parts of the",
+      "name": "Definition of terms: Reproduction; sex gametes; ovulation; menstruation",
       "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-definition-of-terms-reproduction-sex-reproductive-organs-in",
-      "topic": "waec-human-reproduction",
-      "name": "Definition of terms: Reproduction; sex reproductive organs in a mammal. Menstrual gametes; ovulation; menstruation; cycle, sex determination, ante-natal care should be fertilization; pregnancy and gestation. discussed. Causes of infertility should be discussed. Artificial insemination and text tube babies should be explained. Meaning of sexuality, sexuality education, sexual reproductive health rights, gender and equality should be discussed",
-      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-structures-and-functions-of-male-and-female-reproductive-org",
       "topic": "waec-human-reproduction",
       "name": "Structures and functions of male and female reproductive organs",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-conception-pregnancy-foetal-development-and-child-birth",
       "topic": "waec-human-reproduction",
       "name": "Conception, pregnancy, foetal development and child birth",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-diseases-disorders-of-the-reproductive-system",
       "topic": "waec-human-reproduction",
       "name": "Diseases disorders of the reproductive system",
-      "order": 5,
+      "order": 4,
       "objectives": []
     },
     {
@@ -1067,7 +1095,7 @@
     {
       "slug": "waec-parenthood-pre-marital-and-extra-marital-affairs-in-laws-etc",
       "topic": "waec-family-life-challenges-widowhood-single",
-      "name": "parenthood, pre-marital and extra-marital affairs, in-laws etc",
+      "name": "Parenthood, pre-marital and extra-marital affairs, in-laws etc",
       "order": 1,
       "objectives": []
     },
@@ -1086,73 +1114,66 @@
       "objectives": []
     },
     {
-      "slug": "waec-birth-control-methods-candidates-should-be-able-to-distingui",
+      "slug": "waec-birth-control-methods",
       "topic": "waec-family-planning-and-safe-motherhood",
-      "name": "Birth control methods Candidates should be able to distinguish between",
+      "name": "Birth control methods",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-safe-motherhood-family-planning-and-safe-motherhood",
+      "slug": "waec-safe-motherhood",
       "topic": "waec-family-planning-and-safe-motherhood",
-      "name": "Safe motherhood family planning and safe motherhood",
+      "name": "Safe motherhood",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-candidates-should-be-able-to-distinguish-between",
+      "slug": "waec-population-education-health-education",
       "topic": "waec-population-education",
-      "name": "Candidates should be able to distinguish between",
+      "name": "Population Education",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-of-population-and-population-population-and-census-e",
-      "topic": "waec-population-education",
-      "name": "Meaning of population and population population and census. education. Advantages of accurate census should be discussed",
+      "slug": "waec-types-and-prevention-health-education",
+      "topic": "waec-mental-health",
+      "name": "Types and prevention",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-reasons-for-avoiding-nostrum",
+      "topic": "waec-health-insurance-and-advertisement",
+      "name": "Reasons for avoiding nostrum",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-health-tonic",
+      "topic": "waec-health-insurance-and-advertisement",
+      "name": "Health tonic",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-census-and-its-problems",
-      "topic": "waec-population-education",
-      "name": "Census and its problems",
+      "slug": "waec-miracle-substances",
+      "topic": "waec-health-insurance-and-advertisement",
+      "name": "Miracle substances",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-small-and-large-population-meaning-and-the-interrelationship",
-      "topic": "waec-population-education",
-      "name": "Small and large population Meaning and the interrelationship between emotional health and social health should be discussed. The attributes of emotional and social health should be 1. Interrelationship discussed. 2. Attributes",
+      "slug": "waec-magic-portions",
+      "topic": "waec-health-insurance-and-advertisement",
+      "name": "Magic portions",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-definition-of-personality-and-candidates-should-be-able-to-i",
-      "topic": "waec-population-education",
-      "name": "Definition of personality and Candidates should be able to identify personal personality traits problems and proffer solutions. (b) Personality problems and solution",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-candidates-should-be-able-to-state-factors-that-promote-a-de",
-      "topic": "waec-mental-health",
-      "name": "Candidates should be able to state factors that promote (a) Definition mental health. (b) Promotion",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-types-and-prevention-types-causes-prevention-and-management",
-      "topic": "waec-mental-health",
-      "name": "Types and prevention Types, causes prevention and management of mental (d) Importance health should be discussed. Importance of mental and social health should be 1. Consumer health products and services discussed. 2. Laws protecting the consumer 1. The importance of checking label expiry dates on products before purchase should be highlighted. Various agencies promoting consumers health should be discussed. Mention features of genuine products and services Various types of health services: traditional medicine, 3. Factors influencing choice of consumer orthodox medicine, alternative methods of healing products; Authencity; cost; availability; (acupuncture, yoga and faith healing) should be accessibility; availability and advertisement. discussed. 4. Consumer health care services 1. Different types of quackery such as mechanical, electrical, drug and cosmetic and 5. Quacks and quackery meaning and types medical quackery should be discussed 2. The danger of quacks and quackery should be highlighted",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-1-meaning-and-importance-of-health-insurance-health-products",
+      "slug": "waec-amulets-and-talisman",
       "topic": "waec-health-insurance-and-advertisement",
-      "name": "1. Meaning and importance of health insurance health products and services 2. State of health insurance 3. Advertisement of health products and consumer 7. Nostrum: services. (a) Definition and types Types should include: (b) Reasons for avoiding nostrum. (1) Health tonic; (2) Miracle substances; (3) Magic portions; (4) Amulets and talisman",
-      "order": 1,
+      "name": "Amulets and talisman",
+      "order": 5,
       "objectives": []
     }
   ]

@@ -13,10 +13,10 @@
   ],
   "topics": [
     {
-      "slug": "waec-introduction",
+      "slug": "waec-introduction-s-no-contents",
       "subject": "commerce",
       "exam": "WAEC",
-      "name": "INTRODUCTION",
+      "name": "INTRODUCTION (S/no contents)",
       "order": 1,
       "weight": 0,
       "objectives": [],
@@ -33,7 +33,7 @@
       "countries": []
     },
     {
-      "slug": "waec-production",
+      "slug": "waec-production-commerce",
       "subject": "commerce",
       "exam": "WAEC",
       "name": "PRODUCTION",
@@ -83,10 +83,10 @@
       "countries": []
     },
     {
-      "slug": "waec-finance",
+      "slug": "waec-finance-and-first-tier-communication",
       "subject": "commerce",
       "exam": "WAEC",
-      "name": "FINANCE",
+      "name": "FINANCE AND (first tier) COMMUNICATION",
       "order": 8,
       "weight": 0,
       "objectives": [],
@@ -103,30 +103,30 @@
       "countries": []
     },
     {
-      "slug": "waec-legal-aspect",
+      "slug": "waec-legal-aspect-of-business-consumer-protection",
       "subject": "commerce",
       "exam": "WAEC",
-      "name": "LEGAL ASPECT",
+      "name": "LEGAL ASPECT OF Business Consumer Protection",
       "order": 10,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-government-policies-relating",
+      "slug": "waec-government-policies-relating-to-business",
       "subject": "commerce",
       "exam": "WAEC",
-      "name": "Government policies relating",
+      "name": "Government policies relating to business",
       "order": 11,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-introduction-commerce",
+      "slug": "waec-introduction-b-privatisation",
       "subject": "commerce",
       "exam": "WAEC",
-      "name": "INTRODUCTION",
+      "name": "INTRODUCTION (B. privatisation)",
       "order": 12,
       "weight": 0,
       "objectives": [],
@@ -145,241 +145,668 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-i-definition-of-commerce-and-e-commerce-ii-history-backgroun",
-      "topic": "waec-introduction",
-      "name": "i. Definition of Commerce and E - Commerce ii. History/Background of Commerce iii. Scope of Commerce and E Commerce iv. Functions of Commerce and E Commerce",
+      "slug": "waec-definition-of-commerce-and-e-commerce-ii",
+      "topic": "waec-introduction-s-no-contents",
+      "name": "Definition of Commerce and E - Commerce ii",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-i-meaning-of-occupation-ii-types-industrial-commercial-servi",
-      "topic": "waec-occupation",
-      "name": "i. Meaning of Occupation ii. Types;- Industrial, Commercial, Service Occupation iii. Factors that determine types of occupation / employment Career Opportunities",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-i-meaning-ii-factors-land-labour-capital-and-entrepreneurshi",
-      "topic": "waec-production",
-      "name": "i. Meaning ii. Factors – land, labour, capital and entrepreneurship iii. Types:- Primary, Secondary and Tertiary production iv. Division of labour/specialization - meaning - types - advantages and disadvantages, - limitation v. Inter-relationship between production and exchange",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-i-meaning-and-objectives-of-business-ii-forms-of-business-un",
-      "topic": "waec-business-units",
-      "name": "i. Meaning and objectives of business ii. Forms of business units — Sole proprietorship, — Partnership, — Co-operative Societies, — Credit Union and Thrift Societies, — Public enterprises, — Companies - iii. Types, Formation, characteristics, comparison, advantages and disadvantages iv. Sources of capital of each forms of business v. Meaning and purpose of - Amalgamations, - Mergers and acquisitions - Trust, - Holding companies and Subsidiaries - Consortium and Cartel vi. Dissolution/Liquidation of Companies/Partnership",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-aims-and-functions-of-i-trade-association-ii-chamber-of-comm",
-      "topic": "waec-trade-associations",
-      "name": "Aims and functions of i. Trade Association ii. Chamber of Commerce, Employers Association iii. Consumer Association/Consumerism",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-i-meaning-and-types-profits-authorized-registered-normal-cap",
-      "topic": "waec-business-capital",
-      "name": "i. Meaning and types - PROFITS Authorized/Registered/Normal capital, called-up, paid-up capital, capital owned, liquid/circulating capital ii. Credit - Meaning, Sources, Instrument and Functions iii. Calculation of working capital, the Importance of working capital iv. Profits - Meaning, types and calculation of profit v. Turnover - Meaning, calculations and factors affecting turnover",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-purpose-and-branches-of-trade",
-      "topic": "waec-trade",
-      "name": "Purpose and branches of trade",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-home-trade-home-trade-and-foreign-trade-meaning-and-differen",
-      "topic": "waec-trade",
-      "name": "HOME TRADE Home Trade and Foreign Trade – Meaning and Differences i. Retail trade: Functions of retailer - Factors to consider in starting a retail business - Reasons for success/failure of retail business. ii. Small scale and large scale retailing – Types of Retail Outlets, - Unit shops, Stalls, Hawkers, Kiosks, Mobile shops, Supermarket, Chain Stores, Department Stores, Shopping malls, Hypermarkets and Mail Order business The main characteristics of each. - Advantages and disadvantages. - Modern trends in retailing – branding, self service, Vouchers. Vending machines, credit cards. iii. Wholesale trade - Functions of Wholesalers Types of Wholesalers. Factors. Merchant and agent Wholesalers iv. Factor making for elimination and survival of middlemen v. Channel of Distribution: Meaning, Types. Factors for choice of Channel",
+      "slug": "waec-history-background-of-commerce-iii",
+      "topic": "waec-introduction-s-no-contents",
+      "name": "History/Background of Commerce iii",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-foreign-trade-i-meaning-types-import-export-and-entreport-ii",
-      "topic": "waec-trade",
-      "name": "FOREIGN TRADE i. Meaning - Types: Import, export and entreport ii Basic concept in International trade - terms of trade, balance of trade, balance of payment -favourable, unfavourable, visible and invisible items, bilateral and multilateral agreements and counter trade iv. Advantages and Disadvantages v. Barriers to Foreign trade – vi. Tariffs – Meaning Reason for tariffs, vii. Functions of port and Airports Authorities, Customs and Excise Authority and Shipping, Clearing and forwarding Agents. Exports promotion Council. 8 PURCHASE AND SALE i. Procedure and documents used in business - OF GOODS IN HOME Order, Indent, Consular Invoice, Ordinary Invoice, AND FOREIGN TRADE Credit/Debit notes, Proforma Invoice, Letter of hypothecation, documentary credit, certificate of origin, certificate of inspection, insurance certificate. ii. Price Quotation - Trade discount, Cash discount, Quantity discount, COD, CWO, CIF, FOB, E & OE, Ex-works, LOCO, FAS, FOR and Franco iii. Terms of Payment: Cash/Spot Payment, Purchase and deferred payment. iv. Means of payment - Legal tender – (bank notes and coins), cheques, standing order, bank draft, stamps, postal-orders, money orders, bills of exchange and promissory Note, mail transfer, traveller’s cheques, telegraphic transfer. Epayment",
+      "slug": "waec-scope-of-commerce-and-e-commerce-iv",
+      "topic": "waec-introduction-s-no-contents",
+      "name": "Scope of Commerce and E Commerce iv",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-i-meaning-financial-ii-evolution-history-institutions-iii-fo",
-      "topic": "waec-finance",
-      "name": "i. Meaning FINANCIAL ii. Evolution/History INSTITUTIONS iii. Forms iv. Qualities and functions. i. Types of Banks - Central Bank, Commercial Banks and other specialized banks e.g. Development Bank, Mortgage Bank, Building Society, Micro finance institutions, - their features and Functions. Bureau-de-change (Meaning and Functions) ii. E. Banking – Meaning, forms - ATM, Money transfer - E Payment – online transfer iii. Types of Accounts: Current, Savings and Fixed Deposit Account - Their main features i. Meaning and basic principles – utmost good faith, insurable interest, indemnity and subrogation, Contribution and proximate cause ii. Types of Insurance a. life Insurance - Whole life Assurance - Endowment b. Non life Insurance - Motor vehicle - Fire - Fidelity - Burglary/Robbery/Theft - Accidents - Consequential Loss - Marine c. Types of Risk i. Insurable Risk e.g. fundamental risks - Pure risk - Particular risk ii. Uninsurable risk - speculative risk d. Importance of Insurance to business and individual. e. Procedure for taking an Insurance Policy. f. Underwriting - meaning g. Re-insurance - Meaning and purpose i. Meaning ii. Functions iii. Methods of raising funds by companies - offer for sale, offer for subscription, rights issue, private placement, issue by tender Second tier Security market i. meaning and functions ii. Advantages to Companies/Public iii. Requirement for listing i. Meaning and functions, ii. Importance iii. Transactions on the stock exchange iv. Speculators - Meaning and Types v. Types of Security - Shares, Stock, Bond gilt edge, debentures/Convertible loans i. Meaning ii. Types of tradable commodities iii. Requirements for trading - Grading, Standardizing, Warehousing, Clearing system (first tier) iv. Method of Trading - open outcry and electronic mechanisms v. Benefit of Commodity exchange EXCHANGE",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-meaning-ii-importance-iii-choice-of-transport-iv-forms",
-      "topic": "waec-finance",
-      "name": "Meaning (ii) Importance (iii) Choice of transport (iv) Forms",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-land-commerce",
-      "topic": "waec-finance",
-      "name": "Land",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-water",
-      "topic": "waec-finance",
-      "name": "Water",
+      "slug": "waec-functions-of-commerce-and-e-commerce",
+      "topic": "waec-introduction-s-no-contents",
+      "name": "Functions of Commerce and E Commerce",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-air",
-      "topic": "waec-finance",
-      "name": "Air",
+      "slug": "waec-meaning-of-occupation-ii",
+      "topic": "waec-occupation",
+      "name": "Meaning of Occupation ii",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-industrial-commercial-service-occupation-iii",
+      "topic": "waec-occupation",
+      "name": "Types;- Industrial, Commercial, Service Occupation iii",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-factors-that-determine-types-of-occupation-employment-career",
+      "topic": "waec-occupation",
+      "name": "Factors that determine types of occupation / employment Career Opportunities",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning-ii",
+      "topic": "waec-production-commerce",
+      "name": "Meaning ii",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-factors-land-labour-capital-and-entrepreneurship-iii",
+      "topic": "waec-production-commerce",
+      "name": "Factors – land, labour, capital and entrepreneurship iii",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-primary-secondary-and-tertiary-production-iv",
+      "topic": "waec-production-commerce",
+      "name": "Types:- Primary, Secondary and Tertiary production iv",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-division-of-labour-specialization-meaning-types-advantages-a",
+      "topic": "waec-production-commerce",
+      "name": "Division of labour/specialization - meaning - types - advantages and disadvantages, - limitation v",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-inter-relationship-between-production-and-exchange",
+      "topic": "waec-production-commerce",
+      "name": "Inter-relationship between production and exchange",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-pipeline",
-      "topic": "waec-finance",
-      "name": "Pipeline",
+      "slug": "waec-meaning-and-objectives-of-business-ii",
+      "topic": "waec-business-units",
+      "name": "Meaning and objectives of business ii",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-formation-characteristics-comparison-advantages-and-di",
+      "topic": "waec-business-units",
+      "name": "Types, Formation, characteristics, comparison, advantages and disadvantages iv",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-sources-of-capital-of-each-forms-of-business-v",
+      "topic": "waec-business-units",
+      "name": "Sources of capital of each forms of business v",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-dissolution-liquidation-of-companies-partnership",
+      "topic": "waec-business-units",
+      "name": "Dissolution/Liquidation of Companies/Partnership",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-aims-and-functions-of-i",
+      "topic": "waec-trade-associations",
+      "name": "Aims and functions of i",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-trade-association-ii",
+      "topic": "waec-trade-associations",
+      "name": "Trade Association ii",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-chamber-of-commerce-employers-association-iii",
+      "topic": "waec-trade-associations",
+      "name": "Chamber of Commerce, Employers Association iii",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-consumer-association-consumerism",
+      "topic": "waec-trade-associations",
+      "name": "Consumer Association/Consumerism",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-credit-meaning-sources-instrument-and-functions-iii",
+      "topic": "waec-business-capital",
+      "name": "Credit - Meaning, Sources, Instrument and Functions iii",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-calculation-of-working-capital-the-importance-of-working-cap",
+      "topic": "waec-business-capital",
+      "name": "Calculation of working capital, the Importance of working capital iv",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-profits-meaning-types-and-calculation-of-profit-v",
+      "topic": "waec-business-capital",
+      "name": "Profits - Meaning, types and calculation of profit v",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-turnover-meaning-calculations-and-factors-affecting-turnover",
+      "topic": "waec-business-capital",
+      "name": "Turnover - Meaning, calculations and factors affecting turnover",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-purpose-and-branches-of-trade-home-trade-and-foreign-trade-m",
+      "topic": "waec-trade",
+      "name": "Purpose and branches of trade – Home Trade and Foreign Trade – Meaning and Differences i",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-vending-machines-credit-cards-iii",
+      "topic": "waec-trade",
+      "name": "Vending machines, credit cards. iii",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-wholesale-trade-functions-of-wholesalers-types-of-wholesaler",
+      "topic": "waec-trade",
+      "name": "Wholesale trade - Functions of Wholesalers Types of Wholesalers",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-factors-commerce",
+      "topic": "waec-trade",
+      "name": "Factors",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-merchant-and-agent-wholesalers-iv",
+      "topic": "waec-trade",
+      "name": "Merchant and agent Wholesalers iv",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-factor-making-for-elimination-and-survival-of-middlemen-v",
+      "topic": "waec-trade",
+      "name": "Factor making for elimination and survival of middlemen v",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-advantages-and-disadvantage-of-each-form-vi-documents-waybil",
-      "topic": "waec-finance",
-      "name": "Advantages and disadvantage of each form (vi) Documents - Waybills, Consignment note, tickets 10. and manifest TRANSPORT, TOURISM,",
+      "slug": "waec-channel-of-distribution-meaning-types",
+      "topic": "waec-trade",
+      "name": "Channel of Distribution: Meaning, Types",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-communication-and-ii-advantages-and-disadvantages-wa",
-      "topic": "waec-finance",
-      "name": "Meaning COMMUNICATION and (ii) Advantages and disadvantages WAREHOUSING",
+      "slug": "waec-factors-for-choice-of-channel-i",
+      "topic": "waec-trade",
+      "name": "Factors for choice of Channel i",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-ii-types-oral-written-visual-non-verbal-non-visual-t",
-      "topic": "waec-finance",
-      "name": "Meaning (ii) Types – Oral. Written, Visual, Non-verbal, Non-visual, Traditional, (iii) Advantages and Disadvantages (iv) Importance and services of Post Office",
+      "slug": "waec-advantages-and-disadvantages-v",
+      "topic": "waec-trade",
+      "name": "Advantages and Disadvantages v",
       "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-courier-agencies-and-other-communication-agencies-telephone",
-      "topic": "waec-finance",
-      "name": "Courier Agencies and other communication agencies – Telephone system, satellite services, internet-E-mail (vi) Computer Appreciation - meaning, - component parts, - advantages and disadvantages",
+      "slug": "waec-barriers-to-foreign-trade-vi",
+      "topic": "waec-trade",
+      "name": "Barriers to Foreign trade – vi",
       "order": 10,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-ii-importance-iii-functions-iv-types",
-      "topic": "waec-finance",
-      "name": "Meaning (ii) Importance (iii) Functions (iv) Types",
+      "slug": "waec-tariffs-meaning-reason-for-tariffs-vii",
+      "topic": "waec-trade",
+      "name": "Tariffs – Meaning Reason for tariffs, vii",
       "order": 11,
       "objectives": []
     },
     {
-      "slug": "waec-advantages-c-communication",
-      "topic": "waec-finance",
-      "name": "Advantages C COMMUNICATION",
+      "slug": "waec-functions-of-port-and-airports-authorities-customs-and-excis",
+      "topic": "waec-trade",
+      "name": "Functions of port and Airports Authorities, Customs and Excise Authority and Shipping, Clearing and forwarding Agents",
       "order": 12,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-ii-roles-advantages-and-disadvantages-iii-types-info",
-      "topic": "waec-advertising",
-      "name": "Meaning (ii) Roles, advantages and disadvantages (iii) Types - informative, persuasive, Competitive, mass/specific (iv) Methods - direct and indirect",
+      "slug": "waec-exports-promotion-council-i",
+      "topic": "waec-trade",
+      "name": "Exports promotion Council. i",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-terms-of-payment-cash-spot-payment-purchase-and-deferred-pay",
+      "topic": "waec-trade",
+      "name": "Terms of Payment: Cash/Spot Payment, Purchase and deferred payment. iv",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-epayment",
+      "topic": "waec-trade",
+      "name": "Epayment",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Meaning",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-media-meaning-choice-and-types-12-introduction-to-marketing",
-      "topic": "waec-advertising",
-      "name": "Media-meaning, choice and types 12 INTRODUCTION TO MARKETING",
+      "slug": "waec-importance",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Importance",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-ii-importance-iii-functions-iv-differences-between-m",
-      "topic": "waec-advertising",
-      "name": "Meaning (ii) Importance (iii) Functions (iv) Differences between market and marketing, market and marketing research. The Marketing mix 4ps",
+      "slug": "waec-choice-of-transport",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Choice of transport",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-b-marketing-concept-ii-components-products-price-pla",
-      "topic": "waec-advertising",
-      "name": "Meaning B. Marketing Concept (ii) Components - Products, - price, - place and - promotion",
+      "slug": "waec-forms",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Forms",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-ii-importance-types-pre-and-after-sales-services",
-      "topic": "waec-advertising",
-      "name": "Meaning (ii) Importance Types – Pre and after sales services",
+      "slug": "waec-land-commerce",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Land",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-ii-methods-trade-fairs-exhibitions-gifts-demonstrati",
-      "topic": "waec-advertising",
-      "name": "Meaning (ii) Methods Trade fairs, exhibitions, gifts, demonstration Personal Selling Meaning Importance C. Customer Services D. Sales Promotion",
+      "slug": "waec-water",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Water",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-contract-business-meaning-elements-of-a-valid-contract-areas",
-      "topic": "waec-legal-aspect",
-      "name": "Contract BUSINESS - Meaning - - Elements of a valid contract Areas of law that relate to Business - Discharge of a contract (ii) Agency - Meaning - Creation - Duties and responsibilities of principals and agents - Termination (iii) Sales of goods Act (iv) Hire Purchase Act",
+      "slug": "waec-air",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Air",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-pipeline",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Pipeline",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-advantages-and-disadvantage-of-each-form",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Advantages and disadvantage of each form",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-documents-waybills-consignment-note-tickets-and-manifest",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Documents - Waybills, Consignment note, tickets and manifest",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-advantages-and-disadvantages",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Advantages and disadvantages",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-oral-written-visual-non-verbal-non-visual-traditional",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Types – Oral. Written, Visual, Non-verbal, Non-visual, Traditional",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-importance-and-services-of-post-office",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Importance and services of Post Office",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-courier-agencies-and-other-communication-agencies-telephone",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Courier Agencies and other communication agencies – Telephone system, satellite services, internet-E-mail",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-computer-appreciation-meaning-component-parts-advantages-and",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Computer Appreciation - meaning, - component parts, - advantages and disadvantages",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-functions",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Functions",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-commerce",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Types",
+      "order": 17,
+      "objectives": []
+    },
+    {
+      "slug": "waec-advantages",
+      "topic": "waec-finance-and-first-tier-communication",
+      "name": "Advantages",
+      "order": 18,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning-commerce",
+      "topic": "waec-advertising",
+      "name": "Meaning",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-rights-and-obligations-of-employer-and-employee-vi-governmen",
-      "topic": "waec-legal-aspect",
-      "name": "Rights and Obligations of employer and Employee (vi) Government regulation of Business - patents, copyright. Trade mark (vii) Registration of Business - Meaning and uses",
+      "slug": "waec-roles-advantages-and-disadvantages",
+      "topic": "waec-advertising",
+      "name": "Roles, advantages and disadvantages",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-ii-need-for-protection-iii-means-of-protection-iv-co",
-      "topic": "waec-legal-aspect",
-      "name": "Meaning (ii) Need for protection (iii) Means of protection (iv) Consumerism Meaning Means, Instrument of protection Government Legislation - food and drugs Act standard organization Act - Price Control Act - Factory, Shops and Offices Act – Product quality Consumer Protection",
+      "slug": "waec-types-informative-persuasive-competitive-mass-specific",
+      "topic": "waec-advertising",
+      "name": "Types - informative, persuasive, Competitive, mass/specific",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-to-business-a-commercialsation",
-      "topic": "waec-government-policies-relating",
-      "name": "to business A. Commercialsation",
+      "slug": "waec-methods-direct-and-indirect",
+      "topic": "waec-advertising",
+      "name": "Methods - direct and indirect",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-media-meaning-choice-and-types",
+      "topic": "waec-advertising",
+      "name": "Media-meaning, choice and types",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-importance-commerce",
+      "topic": "waec-advertising",
+      "name": "Importance",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-functions-commerce",
+      "topic": "waec-advertising",
+      "name": "Functions",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-differences-between-market-and-marketing-market-and-marketin",
+      "topic": "waec-advertising",
+      "name": "Differences between market and marketing, market and marketing research. The Marketing mix 4ps",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning-b-marketing-concept",
+      "topic": "waec-advertising",
+      "name": "Meaning B. Marketing Concept",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-components-products-price-place-and-promotion",
+      "topic": "waec-advertising",
+      "name": "Components - Products, - price, - place and - promotion",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-importance-types-pre-and-after-sales-services",
+      "topic": "waec-advertising",
+      "name": "Importance Types – Pre and after sales services",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-methods-trade-fairs-exhibitions-gifts-demonstration-personal",
+      "topic": "waec-advertising",
+      "name": "Methods Trade fairs, exhibitions, gifts, demonstration Personal Selling Meaning Importance",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-contract-meaning-elements-of-a-valid-contract-discharge-of-a",
+      "topic": "waec-legal-aspect-of-business-consumer-protection",
+      "name": "Contract - Meaning - - Elements of a valid contract - Discharge of a contract",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-and-reasons-b-privatisation-ii-advantages-and-disadv",
-      "topic": "waec-government-policies-relating",
-      "name": "Meaning and Reasons B. Privatisation (ii) Advantages and disadvantages (iii) Comparison/differences C. Deregulation",
+      "slug": "waec-agency-meaning-creation-duties-and-responsibilities-of-princ",
+      "topic": "waec-legal-aspect-of-business-consumer-protection",
+      "name": "Agency - Meaning - Creation - Duties and responsibilities of principals and agents - Termination",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-i-meaning-business-ii-objectives-of-business-management-iii",
-      "topic": "waec-introduction-commerce",
-      "name": "i. Meaning BUSINESS ii. Objectives of business MANAGEMENT iii. Meaning of Business Management iv. Functions v. Business Resources - Man, Money, Materials Opportunities/Goodwill vi. Structure of Business organizational setup Organisational chart, Departments, Functions of each, Authority, Delegation of Authority - Responsibility Span of Control Meanings vii. Business and its environment Economical - Political Competition Technological etc viii. Social responsibility of Business to the Society ix. Importance of Inter and Intra departmental communications",
+      "slug": "waec-sales-of-goods-act",
+      "topic": "waec-legal-aspect-of-business-consumer-protection",
+      "name": "Sales of goods Act",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-hire-purchase-act",
+      "topic": "waec-legal-aspect-of-business-consumer-protection",
+      "name": "Hire Purchase Act",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-rights-and-obligations-of-employer-and-employee",
+      "topic": "waec-legal-aspect-of-business-consumer-protection",
+      "name": "Rights and Obligations of employer and Employee",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-government-regulation-of-business-patents-copyright-trade-ma",
+      "topic": "waec-legal-aspect-of-business-consumer-protection",
+      "name": "Government regulation of Business - patents, copyright. Trade mark",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-registration-of-business-meaning-and-uses",
+      "topic": "waec-legal-aspect-of-business-consumer-protection",
+      "name": "Registration of Business - Meaning and uses",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning-2",
+      "topic": "waec-legal-aspect-of-business-consumer-protection",
+      "name": "Meaning",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-need-for-protection",
+      "topic": "waec-legal-aspect-of-business-consumer-protection",
+      "name": "Need for protection",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-means-of-protection",
+      "topic": "waec-legal-aspect-of-business-consumer-protection",
+      "name": "Means of protection",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning-and-reasons",
+      "topic": "waec-government-policies-relating-to-business",
+      "name": "Meaning and Reasons",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-i-history-ii-membership-b-nigerbasin-iii-objectives-commissi",
-      "topic": "waec-economic-groupings",
-      "name": "i. History ii. Membership B NIGERBASIN . iii. Objectives COMMISSION (NBC) iv. Achievements v. Problems/Obstacles COMMISSION (LCBC) CLEARING HOUSE",
+      "slug": "waec-advantages-and-disadvantages-commerce",
+      "topic": "waec-government-policies-relating-to-business",
+      "name": "Advantages and disadvantages",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-comparison-differences-c-deregulation",
+      "topic": "waec-government-policies-relating-to-business",
+      "name": "Comparison/differences C. Deregulation",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning-ii-commerce",
+      "topic": "waec-introduction-b-privatisation",
+      "name": "Meaning ii",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-objectives-of-business-iii",
+      "topic": "waec-introduction-b-privatisation",
+      "name": "Objectives of business iii",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-meaning-of-business-management-iv",
+      "topic": "waec-introduction-b-privatisation",
+      "name": "Meaning of Business Management iv",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-functions-v",
+      "topic": "waec-introduction-b-privatisation",
+      "name": "Functions v",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-business-resources-man-money-materials-opportunities-goodwil",
+      "topic": "waec-introduction-b-privatisation",
+      "name": "Business Resources - Man, Money, Materials Opportunities/Goodwill vi",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-business-and-its-environment-economical-political-competitio",
+      "topic": "waec-introduction-b-privatisation",
+      "name": "Business and its environment Economical - Political Competition Technological etc viii",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-social-responsibility-of-business-to-the-society-ix",
+      "topic": "waec-introduction-b-privatisation",
+      "name": "Social responsibility of Business to the Society ix",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-importance-of-inter-and-intra-departmental-communications",
+      "topic": "waec-introduction-b-privatisation",
+      "name": "Importance of Inter and Intra departmental communications",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-history-ii",
+      "topic": "waec-economic-groupings",
+      "name": "History ii",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-membership-iii",
+      "topic": "waec-economic-groupings",
+      "name": "Membership iii",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-objectives-iv",
+      "topic": "waec-economic-groupings",
+      "name": "Objectives iv",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-achievements-v",
+      "topic": "waec-economic-groupings",
+      "name": "Achievements v",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-problems-obstacles",
+      "topic": "waec-economic-groupings",
+      "name": "Problems/Obstacles",
+      "order": 5,
       "objectives": []
     }
   ]

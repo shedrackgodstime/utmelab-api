@@ -154,11 +154,29 @@ Prose syllabi (`english-language`, `literature-in-english`, `commerce`,
 topic-level placement, rather than forcing a split of a paragraph.
 
 The contract is now code, not prose: `catalog/contract.py` rejects names over
-120 characters, leading list markers, bracket fragments, lowercase starts and
-duplicate topic names. `utmelab-catalog check` applies it and exits non-zero.
-The current WAEC data fails with 1380 defects across 30 subjects: 740 too long,
-384 lowercase starts, 213 list markers, 37 duplicate names, 6 bracket
-fragments. That is the acceptance target for the next phase, not a regression.
+120 characters, leading list markers, bracket fragments, lowercase starts,
+duplicate names, dangling ends and prose. `utmelab-catalog check` applies it.
+
+Resolved 2026-10-27: all 36 WAEC subjects rebuilt from the pinned PDFs and
+`check --strict` exits 0 with zero defects (876 topics, 3147 subtopics). The
+fixes were layout, not wording:
+
+- profiles bound the syllabus column, so the notes column is no longer read
+  into the name (biology, health education, physical education, computer
+  studies, commerce, animal husbandry);
+- page numbers are dropped by position, list markers stripped, lower-case
+  table entries raised to sentence case, and inline (ii)/(b) lists split;
+- a paragraph, sentence, half-phrase or bare marker is never emitted as a
+  target; the topic remains and is its own subtopic when nothing smaller
+  survives;
+- duplicate topic names are qualified with their section, which is how
+  "Mining" becomes "Mining (Nigeria)" and no longer collides;
+- a heading cut by the source itself ("The Gambia and the") is dropped rather
+  than renamed.
+
+The remaining risk is that the contract cannot judge meaning. A model can
+still choose a short but wrong name. The 10-per-subject hand-labelled sample
+below is what measures that, and it has not been run yet.
 
 ### Phase 2c - build, then publish (started 2026-10-27)
 

@@ -5,7 +5,7 @@
       "exam": "WAEC",
       "name": "Further Mathematics",
       "is_compulsory": false,
-      "objective_paper_questions": 40,
+      "objective_paper_questions": 50,
       "countries": [],
       "syllabus_exam": "WAEC",
       "syllabus_subject": "further-mathematics"
@@ -13,7 +13,7 @@
   ],
   "topics": [
     {
-      "slug": "waec-sets-further-mathematics",
+      "slug": "waec-sets",
       "subject": "further-mathematics",
       "exam": "WAEC",
       "name": "Sets",
@@ -43,7 +43,7 @@
       "countries": []
     },
     {
-      "slug": "waec-logical-reasoning-further-mathematics",
+      "slug": "waec-logical-reasoning",
       "subject": "further-mathematics",
       "exam": "WAEC",
       "name": "Logical Reasoning",
@@ -53,7 +53,7 @@
       "countries": []
     },
     {
-      "slug": "waec-functions",
+      "slug": "waec-functions-further-mathematics",
       "subject": "further-mathematics",
       "exam": "WAEC",
       "name": "Functions",
@@ -83,7 +83,7 @@
       "countries": []
     },
     {
-      "slug": "waec-indices-further-mathematics",
+      "slug": "waec-indices",
       "subject": "further-mathematics",
       "exam": "WAEC",
       "name": "Indices",
@@ -183,7 +183,7 @@
       "countries": []
     },
     {
-      "slug": "waec-probability-further-mathematics",
+      "slug": "waec-probability",
       "subject": "further-mathematics",
       "exam": "WAEC",
       "name": "Probability",
@@ -226,28 +226,28 @@
   "subtopics": [
     {
       "slug": "waec-idea-of-a-set-defined-by-a-property-set-notations-and-their",
-      "topic": "waec-sets-further-mathematics",
+      "topic": "waec-sets",
       "name": "Idea of a set defined by a property, Set notations and their meanings",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-disjoint-sets-universal-set-and-complement-of-set",
-      "topic": "waec-sets-further-mathematics",
+      "topic": "waec-sets",
       "name": "Disjoint sets, Universal set and complement of set",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-venn-diagrams-use-of-sets-and-venn-diagrams-to-solve-problem",
-      "topic": "waec-sets-further-mathematics",
+      "topic": "waec-sets",
       "name": "Venn diagrams, Use of sets And Venn diagrams to solve problems",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-commutative-and-associative-laws-distributive-properties-ove",
-      "topic": "waec-sets-further-mathematics",
+      "topic": "waec-sets",
       "name": "Commutative and Associative laws, Distributive properties over union and intersection",
       "order": 4,
       "objectives": []
@@ -268,35 +268,35 @@
     },
     {
       "slug": "waec-rule-of-syntax",
-      "topic": "waec-logical-reasoning-further-mathematics",
+      "topic": "waec-logical-reasoning",
       "name": "Rule of syntax",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-the-truth-table",
-      "topic": "waec-logical-reasoning-further-mathematics",
+      "topic": "waec-logical-reasoning",
       "name": "The truth table",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-domain-and-co-domain-of-a-constant-mapping",
-      "topic": "waec-functions",
+      "topic": "waec-functions-further-mathematics",
       "name": "Domain and co-domain of a constant mapping",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-inverse-of-a-function",
-      "topic": "waec-functions",
+      "topic": "waec-functions-further-mathematics",
       "name": "Inverse of a function",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-composite-of-functions",
-      "topic": "waec-functions",
+      "topic": "waec-functions-further-mathematics",
       "name": "Composite of functions",
       "order": 3,
       "objectives": []
@@ -323,29 +323,22 @@
       "objectives": []
     },
     {
-      "slug": "waec-rational-functions-of-the-form-cid-26-where-g-x-and-f-x-are",
+      "slug": "waec-resolution-of-rational-functions-into-partial-fractions",
       "topic": "waec-rational-functions",
-      "name": "Rational functions of the form !((cid:26)) where g(x) and f(x) are polynomials. e.g. (cid:3)(cid:26)(cid:10)(cid:5) \"(cid:26)#(cid:10)$(cid:26)(cid:10)%",
+      "name": "Resolution of rational functions into partial fractions",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-resolution-of-rational-functions-into-partial-fractions",
-      "topic": "waec-rational-functions",
-      "name": "Resolution of rational functions into partial fractions",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-indices-2",
-      "topic": "waec-indices-further-mathematics",
+      "slug": "waec-indices-further-mathematics",
+      "topic": "waec-indices",
       "name": "Indices",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-logarithms-further-mathematics",
-      "topic": "waec-indices-further-mathematics",
+      "slug": "waec-logarithms",
+      "topic": "waec-indices",
       "name": "Logarithms",
       "order": 2,
       "objectives": []
@@ -463,17 +456,10 @@
       "objectives": []
     },
     {
-      "slug": "waec-product-and-quotient-rules-differentiation-of-implicit-funct",
-      "topic": "waec-differentiation",
-      "name": "Product and quotient rules. Differentiation of implicit functions such as ax2 + by2 = c **(vi) Differentiation of Transcendental Functions",
-      "order": 5,
-      "objectives": []
-    },
-    {
       "slug": "waec-second-order-derivatives-and-rates-of-change-and-small-chang",
       "topic": "waec-differentiation",
       "name": "Second order derivatives and Rates of change and small changes (∆x), Concept of Maxima and Minima",
-      "order": 6,
+      "order": 5,
       "objectives": []
     },
     {
@@ -527,35 +513,35 @@
     },
     {
       "slug": "waec-meaning-of-probability",
-      "topic": "waec-probability-further-mathematics",
+      "topic": "waec-probability",
       "name": "Meaning of probability",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-relative-frequency",
-      "topic": "waec-probability-further-mathematics",
+      "topic": "waec-probability",
       "name": "Relative frequency",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-calculation-of-probability-using-simple-sample-spaces",
-      "topic": "waec-probability-further-mathematics",
+      "topic": "waec-probability",
       "name": "Calculation of Probability using simple sample spaces",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-addition-and-multiplication-of-probabilities",
-      "topic": "waec-probability-further-mathematics",
+      "topic": "waec-probability",
       "name": "Addition and multiplication of probabilities",
       "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-probability-distributions",
-      "topic": "waec-probability-further-mathematics",
+      "topic": "waec-probability",
       "name": "Probability distributions",
       "order": 5,
       "objectives": []
@@ -638,7 +624,7 @@
       "objectives": []
     },
     {
-      "slug": "waec-equilibrium-of-bodies-further-mathematics",
+      "slug": "waec-equilibrium-of-bodies",
       "topic": "waec-statics",
       "name": "Equilibrium of Bodies",
       "order": 5,
@@ -673,10 +659,45 @@
       "objectives": []
     },
     {
-      "slug": "waec-equations-of-motion-100-bututs-b-1-dalasi-d-100-ghana-pesewa",
+      "slug": "waec-equations-of-motion-100-bututs",
       "topic": "waec-dynamics",
-      "name": "Equations of Motion – 100 bututs (b) = 1 Dalasi (D) - 100 Ghana pesewas (Gp) = 1 Ghana Cedi ( GH¢) - 100 cents (c) = 1 Liberian Dollar (LD) - 100 kobo (k) = 1 Naira (N) - 100 cents (c) = 1 Leone (Le) - 100 pence (p) = 1 pound (£) - 100 cents (c) = 1 dollar ($) 100 centimes (c) = 1 Franc (fr)",
+      "name": "Equations of Motion – 100 bututs",
       "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-1-dalasi-d-100-ghana-pesewas-gp-1-ghana-cedi-gh-100-cents",
+      "topic": "waec-dynamics",
+      "name": "= 1 Dalasi (D) - 100 Ghana pesewas (Gp) = 1 Ghana Cedi ( GH¢) - 100 cents",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-1-liberian-dollar-ld-100-kobo-k-1-naira-n-100-cents",
+      "topic": "waec-dynamics",
+      "name": "= 1 Liberian Dollar (LD) - 100 kobo (k) = 1 Naira (N) - 100 cents",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-1-leone-le-100-pence-p-1-pound-100-cents",
+      "topic": "waec-dynamics",
+      "name": "= 1 Leone (Le) - 100 pence (p) = 1 pound (£) - 100 cents",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-1-dollar-100-centimes",
+      "topic": "waec-dynamics",
+      "name": "= 1 dollar ($) 100 centimes",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-1-franc-fr",
+      "topic": "waec-dynamics",
+      "name": "= 1 Franc (fr)",
+      "order": 7,
       "objectives": []
     }
   ]

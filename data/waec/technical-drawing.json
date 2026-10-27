@@ -5,7 +5,7 @@
       "exam": "WAEC",
       "name": "Technical Drawing",
       "is_compulsory": false,
-      "objective_paper_questions": 40,
+      "objective_paper_questions": 50,
       "countries": [],
       "syllabus_exam": "WAEC",
       "syllabus_subject": "technical-drawing"
@@ -16,7 +16,7 @@
       "slug": "waec-types-of-drawing-and-applications",
       "subject": "technical-drawing",
       "exam": "WAEC",
-      "name": "types of drawing and applications",
+      "name": "Types of drawing and applications",
       "order": 1,
       "weight": 0,
       "objectives": [],
@@ -186,7 +186,7 @@
       "slug": "waec-co-planer-con-current-and-parallel",
       "subject": "technical-drawing",
       "exam": "WAEC",
-      "name": "co-planer,con-current and parallel",
+      "name": "Co-planer,con-current and parallel",
       "order": 18,
       "weight": 0,
       "objectives": [],
@@ -427,7 +427,7 @@
     {
       "slug": "waec-sheet-set-squares-drawing-instruments-protractor-and-t-squar",
       "topic": "waec-types-of-drawing-and-applications",
-      "name": "sheet, set squares, drawing instruments, protractor and T-square",
+      "name": "Sheet, set squares, drawing instruments, protractor and T-square",
       "order": 1,
       "objectives": []
     },
@@ -439,16 +439,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-types-and-styles-of",
-      "topic": "waec-types-of-drawing-and-applications",
-      "name": "Types and styles of",
-      "order": 3,
-      "objectives": []
-    },
-    {
       "slug": "waec-lettering-title-blocks-and-border-lines",
       "topic": "waec-lines-lettering-and-dimensioning",
-      "name": "lettering, title blocks and border lines",
+      "name": "Lettering, title blocks and border lines",
       "order": 1,
       "objectives": []
     },
@@ -460,16 +453,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-dividing-into-a-given-number-of-equal-parts-or",
-      "topic": "waec-lines-lettering-and-dimensioning",
-      "name": "Dividing into a given number of equal parts or",
-      "order": 3,
-      "objectives": []
-    },
-    {
       "slug": "waec-proportion-and-other-simple-exercises-involving-mathematical",
       "topic": "waec-division-of-lines-and-its-applications",
-      "name": "proportion and other simple exercises involving mathematical problems",
+      "name": "Proportion and other simple exercises involving mathematical problems",
       "order": 1,
       "objectives": []
     },
@@ -520,13 +506,6 @@
       "topic": "waec-similar-figures-and-areas-loci",
       "name": "Enlargement and reduction by area and side",
       "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-definition-and-construction-of-straight-line-circle-ellipse",
-      "topic": "waec-similar-figures-and-areas-loci",
-      "name": "Definition and construction of straight line, circle, ellipse, parabola, hyperbola, helix, trochoids (inferior and superior) spiral, cycloid, hypocycloid, involutes and link mechanisms",
-      "order": 2,
       "objectives": []
     },
     {
@@ -595,7 +574,7 @@
     {
       "slug": "waec-surfaces-of-right-and-oblique-pyramids-prisms-cylinders-cone",
       "topic": "waec-development-of-surfaces",
-      "name": "Surfaces of right and oblique pyramids, prisms, cylinders, cones and their truncated parts and frustum .Transition pieces",
+      "name": "Surfaces of right and oblique pyramids, prisms, cylinders, cones and their truncated parts and frustum.Transition pieces",
       "order": 1,
       "objectives": []
     },

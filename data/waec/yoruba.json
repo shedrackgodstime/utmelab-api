@@ -5,7 +5,7 @@
       "exam": "WAEC",
       "name": "Yoruba",
       "is_compulsory": false,
-      "objective_paper_questions": 60,
+      "objective_paper_questions": 50,
       "countries": [],
       "syllabus_exam": "WAEC",
       "syllabus_subject": "yoruba"
@@ -85,72 +85,65 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-candidates-are-advised-to-write-300-words-and-spend-not-more",
-      "topic": "waec-composition",
-      "name": "Candidates are advised to write 300 words and spend not more than 45 minutes on this section. The essay will be any of the following types",
-      "order": 1,
-      "objectives": []
-    },
-    {
       "slug": "waec-narrative-yoruba",
       "topic": "waec-composition",
       "name": "Narrative",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-descriptive-yoruba",
       "topic": "waec-composition",
       "name": "Descriptive",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-argumentative-yoruba",
       "topic": "waec-composition",
       "name": "Argumentative",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-expository-yoruba",
       "topic": "waec-composition",
       "name": "Expository",
-      "order": 5,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-dialogue-yoruba",
       "topic": "waec-composition",
       "name": "Dialogue",
-      "order": 6,
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-debate-yoruba",
       "topic": "waec-composition",
       "name": "Debate",
-      "order": 7,
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-letter-writing-yoruba",
       "topic": "waec-composition",
       "name": "Letter writing",
-      "order": 8,
-      "objectives": []
-    },
-    {
-      "slug": "waec-candidates-will-be-required-to-answer-one-question-from-the-yoruba",
-      "topic": "waec-sound-system",
-      "name": "Candidates will be required to answer one question from the two to be set. Areas to cover include",
-      "order": 1,
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-vowels-consonants-and-syllabic-nasal-a-their-production-in-t",
       "topic": "waec-sound-system",
-      "name": "Vowels, Consonants and Syllabic nasal (a) their production in terms of place and manner (b) their basic phonetic and phonemic classification",
+      "name": "Vowels, Consonants and Syllabic nasal (a) their production in terms of place and manner",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-their-basic-phonetic-and-phonemic-classification",
+      "topic": "waec-sound-system",
+      "name": "Their basic phonetic and phonemic classification",
       "order": 2,
       "objectives": []
     },
@@ -183,23 +176,23 @@
       "objectives": []
     },
     {
-      "slug": "waec-candidates-will-be-required-to-answer-one-question-from-the-2",
+      "slug": "waec-grammar-yoruba",
       "topic": "waec-grammar",
-      "name": "Candidates will be required to answer one question from the two questions to be made available. Areas to cover are: i. Word structure and word formation ii. Numerals: basic and derived iii. Word classes: nouns, verbs, adverbs, pronouns, adjectives, etc iv. Grammatical categories: subject, object, complement, predicate, number, person, tense, aspect, mood, etc. v. Phrases and clauses vi. The structure and type of sentences. This section is made up of Oral Literature and Written Literature",
+      "name": "Grammar",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-in-oral-literature-there-will-be-3-set-books-covering-the-di",
+      "slug": "waec-oral-literature-prose-poetry-drama-yoruba",
       "topic": "waec-oral-literature-prose-poetry-drama",
-      "name": "In Oral Literature, there will be 3 set books covering the different genres. 1 question will be set from each set book and candidates will be required to answer any 1 of the 3 questions",
+      "name": "Oral Literature – Prose, Poetry, Drama",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-in-written-literature-there-will-be-three-set-books-covering",
+      "slug": "waec-written-literature-prose-poetry-drama-yoruba",
       "topic": "waec-written-literature-prose-poetry-drama",
-      "name": "In Written Literature, there will be three set books covering the different genres. One question will be set from each set book and candidates will be required to answer any one of the three questions. This section will consist of questions on customs and institutions. Two questions will be set and candidates will be required to answer any one of them. Areas to cover will include",
+      "name": "Written Literature – Prose, Poetry, Drama",
       "order": 1,
       "objectives": []
     },
@@ -274,7 +267,7 @@
       "objectives": []
     },
     {
-      "slug": "waec-marriage",
+      "slug": "waec-marriage-yoruba",
       "topic": "waec-institutions",
       "name": "Marriage",
       "order": 2,
@@ -313,13 +306,6 @@
       "topic": "waec-institutions",
       "name": "Modern religions: Islam, Christianity, etc",
       "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-economy-adverts-money-lending-cooperative-efforts-etc-nb-to",
-      "topic": "waec-institutions",
-      "name": "Economy: adverts, money lending, cooperative efforts, etc. NB: To enhance the teaching of this language, it is recommended that schools provide audio-visual materials such as television sets, radios, tape-recorders and tapes, cameras, charts and artefacts",
-      "order": 8,
       "objectives": []
     }
   ]

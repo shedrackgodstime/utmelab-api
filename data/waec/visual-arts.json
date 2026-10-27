@@ -5,7 +5,7 @@
       "exam": "WAEC",
       "name": "Visual Arts",
       "is_compulsory": false,
-      "objective_paper_questions": 40,
+      "objective_paper_questions": 50,
       "countries": [],
       "syllabus_exam": "WAEC",
       "syllabus_subject": "visual-arts"
@@ -182,86 +182,51 @@
       "objectives": []
     },
     {
-      "slug": "waec-visual-awareness-understanding-and-appreciation-of-art-eleme",
-      "topic": "waec-general-knowledge-in-art",
-      "name": "Visual awareness, understanding and appreciation of Art elements, their forms, characteristics and functions e.g. line, colour, space, shape, form, texture, etc",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-principles-of-art-creative-application-of-art-and-design-pri",
-      "topic": "waec-general-knowledge-in-art",
-      "name": "Principles of Art – creative application of art and design principles e.g. balance, rhythm, proportion, harmony, emphasis, variety, etc",
-      "order": 3,
-      "objectives": []
-    },
-    {
       "slug": "waec-perspective-meaning-and-type-e-g-aerial-linear-angular-paral",
       "topic": "waec-general-knowledge-in-art",
       "name": "Perspective – meaning and type e.g. aerial, linear (angular/parallel) and foreshortening",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-the-knowledge-of-production-use-and-care-of-art-craft-tools",
-      "topic": "waec-general-knowledge-in-art",
-      "name": "The knowledge of production, use and care of art/craft tools and materials e.g. brush, pencil, colour, palette, easels, etc",
-      "order": 5,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-art-and-craft-terms-e-g-tie-and-dye-biscuit-ware-silhouette",
       "topic": "waec-general-knowledge-in-art",
       "name": "Art and craft terms e.g. tie and dye, biscuit ware, silhouette, relief, chiaroscuro, sfumato, aperture, etc",
-      "order": 6,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-the-inter-relationships-of-the-arts-e-g-music-visual-art-dan",
       "topic": "waec-general-knowledge-in-art",
       "name": "The inter-relationships of the arts e.g. music, visual art, dance, drama and literary arts",
-      "order": 7,
+      "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-knowledge-of-traditional-art-of-west-africa-the-basic-concep",
+      "slug": "waec-art-of-west-africa-visual-arts",
       "topic": "waec-art-of-west-africa",
-      "name": "Knowledge of traditional Art of West Africa, the basic concepts (e.g. animism, fetishism and mythology): art forms, geographical location, characteristics, underlying beliefs and the sacred and secular functions of art. A general knowledge of contemporary artists and art educator, their works, style, media, materials and contribution to the development of art",
+      "name": "Art of West Africa",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-cameroon-bamileke-dahomey-now-benin-republic-fon-gambia-woll",
+      "slug": "waec-ancient-traditional-art-visual-arts",
       "topic": "waec-ancient-traditional-art",
-      "name": "Cameroon - Bamileke Dahomey (Now Benin Republic) - Fon Gambia - Wollof, Mandinka, Jola Ghana (Formerly Gold Coast) - Ashanti, Fante, Ewe, Frafra Guinea - Kissi Cote d’Ivoire (Ivory Coast) - Senufo, Baule Liberia - Dan and Ngere Mali - Dogon, Bambara Sierra Leone - Mende, Sherbro Upper Volta (Now Burkina Faso) - Mossi, Bobo, Kurumba Nigeria - Benin, Ife, Nok, Igbo-Ukwu, Esie, Owo, etc",
+      "name": "Ancient Traditional Art",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-oshogbo-art-ashanti-and-ewe-kente-modern-benin-art-winneba-p",
+      "slug": "waec-modern-traditional-art-visual-arts",
       "topic": "waec-modern-traditional-art",
-      "name": "Oshogbo art, Ashanti and Ewe Kente, Modern Benin art, Winneba pottery, Abuja pottery, Ntoso adinkra, Bida brass works, calabash carving, Enyiresi basketry, Mbari mud sculpture, weaving, leatherwork, wall decoration, indigenous Decorative Motifs",
+      "name": "Modern Traditional Art",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-art-institutions-art-schools-art-galleries-arts-centres-muse",
+      "slug": "waec-contemporary-visual-arts",
       "topic": "waec-contemporary",
-      "name": "Art institutions (art schools, art galleries, arts centres, museums). Various departments responsible for art and culture, Art organizations, e.g INSEA (International Society for Education through Art), NSIAD (Nigeria Society of Industrial Artists and Designers), Ghana Artists Association, Ghana Craftsmen Association, Ghana Arts Council, GAT (Gambia Art Teachers Association), NAAC (National Association of Artists and Craftsmen) SNA (Society of Nigerian Artists), NSEA (Nigerian Society of Education through Art), Ona Art Movement of Artists, Ulli Art Movement, The Eye Society. Cultural festivals (their artistic significance e.g. costumes, symbols, objects, masks, body decorations, wall decorations, etc)",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-outstanding-contemporary-west-african-artists-their-training",
-      "topic": "waec-contemporary",
-      "name": "Outstanding contemporary West African Artists: their training, style, achievements and contributions to the development of art",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-pre-historic-earlyman-s-art-20-000-2000bc-paleolithic-mesoli",
-      "topic": "waec-pre-historic-ancient-egyptian-and-western-art",
-      "name": "Pre-historic (Earlyman’s Art 20,000 – 2000BC) (Paleolithic, Mesolithic and Neolithic stone Ages) beliefs, materials, characteristics and functions",
+      "name": "Contemporary",
       "order": 1,
       "objectives": []
     },
@@ -269,21 +234,21 @@
       "slug": "waec-ancient-egyptian-art-11-000-7-000-bc-old-middle-and-new-king",
       "topic": "waec-pre-historic-ancient-egyptian-and-western-art",
       "name": "Ancient Egyptian art 11,000 – 7,000 BC (Old, Middle and New Kingdoms) beliefs, styles and functions",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-greek-art-periods-and-charctreristics",
       "topic": "waec-pre-historic-ancient-egyptian-and-western-art",
       "name": "Greek Art - Periods and charctreristics",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-medieval-art-features-media-and-characteristics",
       "topic": "waec-pre-historic-ancient-egyptian-and-western-art",
       "name": "Medieval Art – Features, media and characteristics",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
@@ -301,16 +266,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-early-low-and-high-renaissance-art-artists-giotto-donatello",
+      "slug": "waec-renaissance-art-visual-arts",
       "topic": "waec-renaissance-art",
-      "name": "Early, Low and High Renaissance Art – Artists: Giotto, Donatello, Masaccio, etc. Medieval Art: Features (characteristics). Greek Art: Periods (Archaic, Classical and Hellenistic), characteristics and artists",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-cubism-influence-of-african-art-and-artists-pablo-picasso-ge",
-      "topic": "waec-20th-century-art",
-      "name": "Cubism: Influence of African Art and Artists - Pablo Picasso, George Braque. This paper will seek to test candidates’ ability to observe, analyse and accurately depict natural and man-made objects. It will also test their ability to represent the structure and forms of the human figure. The paper has three alternatives",
+      "name": "Renaissance Art",
       "order": 1,
       "objectives": []
     },
@@ -318,55 +276,13 @@
       "slug": "waec-drawing-from-objects",
       "topic": "waec-20th-century-art",
       "name": "Drawing from Objects",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-drawing-from-nature",
       "topic": "waec-20th-century-art",
       "name": "Drawing from Nature",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-drawing-from-life-works-can-be-rendered-in-pencil-pastel-cha",
-      "topic": "waec-20th-century-art",
-      "name": "Drawing from Life. Works can be rendered in pencil, pastel, charcoal, pen and ink or poster/water colour. Candidates should attempt one alternative only. All alternatives carry equal marks",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-drawing-from-objects-the-aim-of-this-alternative-is-to-test",
-      "topic": "waec-20th-century-art",
-      "name": "Drawing from Objects The aim of this alternative is to test candidates’ ability to observe and interpret a group of arranged objects as a total composition. It will require a drawing of a group of man-made objects. The work may be carried out in relation to the surroundings or the part of the room in which the objects are placed. The drawing may include objects such as old radio sets, parts of cars, bicycles, machines, bottles, etc",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-drawing-from-nature-the-purpose-of-this-alternative-is-to-ge",
-      "topic": "waec-20th-century-art",
-      "name": "Drawing from Nature The purpose of this alternative is to get candidates to make a study of natural objects to bring out the beauty of their forms and/or the nature of their growth. This may require the study of a branch which may include flowers, foliage, fruits and vegetables. It may also be the study of rocks, bones, insects and birds, shells and other forms including fish, crustacean, skeleton etc",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-drawing-from-life-the-aim-of-this-alternative-is-to-test-can",
-      "topic": "waec-20th-century-art",
-      "name": "Drawing from Life The aim of this alternative is to test candidates’ ability to observe and depict accurately, the structure and form of a living person. The model (male or female) is to be posed in an attitude which will be described. The figure must be drawn as may be instructed. This Part contains six questions, two each on graphic design, textile design and picture making and candidates are to attempt one question only. It seeks to test candidates’ ability to visualize ideas and situations, sense of critical observation, originality and imagination in communicating personal vision in 2-Dimensional art forms",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-questions-in-graphic-design-will-test-candidates-sense-of-de",
-      "topic": "waec-graphic-design",
-      "name": "Questions in graphic design will test candidates’ sense of design, organizational ability and technical proficiency in the execution of the under-listed areas",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-lettering-and-poster-design-this-includes-the-design-and-lay",
-      "topic": "waec-graphic-design",
-      "name": "Lettering and Poster Design. This includes: the design and layout of a brief notice requiring formal lettering, which may be in Roman, Gothic or any other formalized characters; creation of pictorial posters with suitable lettering; lettering and layout appropriate for purposes such as greeting cards, formal invitations and book jackets, logo types, emblems, symbols, labels, wall hangings etc",
       "order": 2,
       "objectives": []
     },
@@ -374,84 +290,49 @@
       "slug": "waec-book-illustration-this-includes-story-and-text-illustrations",
       "topic": "waec-graphic-design",
       "name": "Book Illustration – This includes story and text illustrations in books, magazines and newspapers",
-      "order": 3,
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-printmaking-this-includes-linocut-woodcut-yam-print-stencili",
       "topic": "waec-graphic-design",
       "name": "Printmaking – This includes linocut, woodcut, yam print, stenciling, screen printing and others",
-      "order": 4,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-package-design-e-g-wrappers-cereal-packages-and-record-cd-ja",
       "topic": "waec-graphic-design",
       "name": "Package Design – e.g. wrappers, cereal packages and record (CD) jackets etc",
-      "order": 5,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-computer-graphics-designing-any-of-i-iv-with-the-use-of-comp",
       "topic": "waec-graphic-design",
       "name": "Computer Graphics – Designing any of (i – iv) with the use of computer software e.g. CorelDraw, Adobe Photoshop etc",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-designing-a-piece-of-material-such-as-cotton-or-silk-dyed-in",
-      "topic": "waec-textile-design",
-      "name": "Designing a piece of material such as cotton, or silk, dyed in a pattern as in batik, tie and dye or printed as in block or screen printing. The piece should be at least two metres in length and unsewn. This section will also involve the following",
-      "order": 1,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-appliqu-shaped-fabric-pieces-sewn-on-a-foundation-fabric-to",
       "topic": "waec-textile-design",
       "name": "Appliqué – shaped fabric pieces sewn on a foundation fabric to form a Design or pattern",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-tapestry-a-piece-of-fabric-with-a-woven-pattern-or-picture-u",
       "topic": "waec-textile-design",
       "name": "Tapestry – a piece of fabric with a woven pattern or picture used as wall hanging, upholstery, etc",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-questions-on-picture-making-are-meant-to-test-candidates-cre",
-      "topic": "waec-picture-making",
-      "name": "Questions on picture-making are meant to test candidates’ creative sense, ability and technical proficiency in the execution of the under-listed areas",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-painting-creating-illustrative-composition-of-ideas-themes-f",
-      "topic": "waec-picture-making",
-      "name": "Painting – Creating illustrative composition of ideas (themes) from everyday life or imagination, using suitable medium. This shall include Mural",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-photography-the-art-of-producing-pictures-with-camera-the-pu",
+      "slug": "waec-picture-making-visual-arts",
       "topic": "waec-picture-making",
-      "name": "Photography – the art of producing pictures with camera. The purpose of this aspect is for candidates to be able to demonstrate basic knowledge and creative skill in shooting and printing of pictures from a variety of subjects such as: Portraits - human compositions Landscape - rocks, hills, anthills, buildings, street scenes, etc. Seascape - beach scenes, streams, waterfall, dams etc. Nature - plants, leaves, flower foliage, twigs, fruits, etc. Pets - cats, dogs, birds etc. Experimental photography with simple forms of photo tricks e.g. photo grams and image distortion in printing etc. is encouraged",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-mosaic-making-picture-with-small-pieces-of-regular-shaped-co",
-      "topic": "waec-picture-making",
-      "name": "Mosaic – making picture with small pieces of regular shaped coloured materials e.g. glass, paper or tile stuck onto a surface",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-collage-making-pictures-by-synthesizing-a-variety-of-irregul",
-      "topic": "waec-picture-making",
-      "name": "Collage – making pictures by synthesizing a variety of irregular shaped materials like cloth, pieces of paper and other objects onto a surface. This part is aimed at evaluating candidates’ sense of originality and imagination in communicating personal ideas and vision in 3-Dimensaional art forms. Candidates may use clay, papier-mâché, wood/plywood, cement, fiber-glass, Plaster-of-Paris, paper (including embossed/texturized card-board, chip-board and straw-board) etc",
-      "order": 5,
+      "name": "Picture-Making",
+      "order": 1,
       "objectives": []
     },
     {
@@ -462,9 +343,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-designing-and-producing-models-of-industrial-products-such-a",
+      "slug": "waec-product-design-modeling-ceramics-visual-arts",
       "topic": "waec-product-design-modeling-ceramics",
-      "name": "Designing and producing models of industrial products, such as automobiles, phones, bottles, cosmetics, etc. Ceramic wares such as jugs, flower vase, bowl, etc which a candidate has either moulded, hand-built or thrown on the wheel or any other object such as a toy animal or figure. Clay works must be fired",
+      "name": "Product Design/Modeling Ceramics",
       "order": 1,
       "objectives": []
     },
@@ -476,30 +357,23 @@
       "objectives": []
     },
     {
-      "slug": "waec-basketry-the-making-of-mats-chair-hat-stool-bag-macram-or-ot",
-      "topic": "waec-crafts",
-      "name": "Basketry: the making of mats, chair, hat, stool, bag, macramé or other useful objects designed and woven or plaited in cane, raffia, etc",
-      "order": 2,
-      "objectives": []
-    },
-    {
       "slug": "waec-jewellery-the-design-and-construction-of-ornaments-with-meta",
       "topic": "waec-crafts",
       "name": "Jewellery: the design and construction of ornaments with metals, beads, plastic, shells, seeds, etc",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-calabash-decoration-designing-and-decorating-calabash-using",
       "topic": "waec-crafts",
       "name": "Calabash Decoration: Designing and decorating calabash using various method",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-the-project-work-in-paper-3c-3-dimensional-design-should-be",
+      "slug": "waec-general-note-on-paper-3c-visual-arts",
       "topic": "waec-general-note-on-paper-3c",
-      "name": "The project work in Paper 3C (3-Dimensional design) should be executed within 6 months of the examination year. Notes, diagrams and working drawings must be submitted along with the finished projects. These constitute 10% of the total marks obtainable",
+      "name": "General Note on Paper 3C",
       "order": 1,
       "objectives": []
     }

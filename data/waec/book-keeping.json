@@ -5,7 +5,7 @@
       "exam": "WAEC",
       "name": "Book Keeping",
       "is_compulsory": false,
-      "objective_paper_questions": 40,
+      "objective_paper_questions": 50,
       "countries": [],
       "syllabus_exam": "WAEC",
       "syllabus_subject": "book-keeping"
@@ -245,38 +245,31 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-meaning-of-book-keeping-definition-history-nature-importance",
-      "topic": "waec-introduction-to-book-keeping",
-      "name": "Meaning of Book Keeping - definition, history, nature, importance and functions of Book Keeping; - career opportunities and beneficiaries of book keeping; - qualities and values of book keepers",
-      "order": 1,
-      "objectives": []
-    },
-    {
       "slug": "waec-assets-and-liabilities-definition-differences-classification",
       "topic": "waec-introduction-to-book-keeping",
       "name": "Assets and Liabilities: - definition, differences, classification and examples of Assets and Liabilities",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-business-transactions-meaning-and-types-of-business-transact",
       "topic": "waec-introduction-to-book-keeping",
       "name": "Business Transactions: - meaning and types of business transactions; - parties involved in business transactions",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-classification-of-accounts-personal-accounts-debtors-and-cre",
       "topic": "waec-introduction-to-book-keeping",
       "name": "Classification of Accounts: - personal accounts (debtors and creditors); - Impersonal accounts (real and nominal)",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-source-documents-definition-identification-types-and-uses-of",
       "topic": "waec-introduction-to-book-keeping",
       "name": "Source Documents: - definition, identification, types and uses of source documents",
-      "order": 5,
+      "order": 4,
       "objectives": []
     },
     {
@@ -308,30 +301,23 @@
       "objectives": []
     },
     {
-      "slug": "waec-meaning-purpose-description-differences-and-preparation-of-s",
+      "slug": "waec-cash-book-book-keeping",
       "topic": "waec-cash-book",
-      "name": "Meaning, purpose, description, differences and preparation of: - single column; - double column; - three column; - petty cash book",
+      "name": "Cash Book",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-and-purpose-statement-terminologies-and-banking-docu",
+      "slug": "waec-bank-reconciliation-book-keeping",
       "topic": "waec-bank-reconciliation",
-      "name": "- meaning and purpose Statement - terminologies and banking documents - causes of differences between cash book and bank statement balance",
+      "name": "Bank Reconciliation",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-and-functions-of-trial-balance-rules-and-preparation",
+      "slug": "waec-trial-balance-and-errors-book-keeping",
       "topic": "waec-trial-balance-and-errors",
-      "name": "- meaning and functions of trial balance; - rules and preparation of trial balance; - meaning, types, classification of errors; - correction of errors and preparation of Suspense Account",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-trading-account-definition-purpose-format-and-preparation-of",
-      "topic": "waec-financial-statements-of-sole-proprietorship",
-      "name": "Trading Account: - definition, purpose, format and preparation of simple Trading Account; - methods of valuing stock (FIFO and LIFO)",
+      "name": "Trial Balance and Errors",
       "order": 1,
       "objectives": []
     },
@@ -339,14 +325,14 @@
       "slug": "waec-profit-and-loss-account-definition-purpose-format-and-prepar",
       "topic": "waec-financial-statements-of-sole-proprietorship",
       "name": "Profit and Loss Account: - definition, purpose, format and preparation of Profit and Loss Account",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-balance-sheet-meaning-content-format-and-preparation-of-a-si",
       "topic": "waec-financial-statements-of-sole-proprietorship",
       "name": "Balance Sheet: - meaning, content, format and preparation of a simple balance sheet",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
@@ -392,9 +378,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-meaning-and-terms-partnership-deed-drawings-interest-on-capi",
+      "slug": "waec-partnership-accounts-book-keeping",
       "topic": "waec-partnership-accounts",
-      "name": "- meaning and terms: - partnership deed, drawings, interest on capital, interest on drawings; - preparation of Capital and Current Accounts, Profit and Loss and Appropriation Account and Balance Sheet; - admission of new partners and Goodwill Account",
+      "name": "Partnership Accounts",
       "order": 1,
       "objectives": []
     },
@@ -420,9 +406,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-purpose-and-computation-of-ratios-net-profit-margin-stock-tu",
+      "slug": "waec-interpretation-of-accounts-book-keeping",
       "topic": "waec-interpretation-of-accounts",
-      "name": "- Purpose and computation of ratios: - net profit margin; - stock turnover; - quick ratio; - acid test ratio; - gross profit margin; - return on capital employed",
+      "name": "Interpretation of Accounts",
       "order": 1,
       "objectives": []
     },
@@ -455,9 +441,9 @@
       "objectives": []
     },
     {
-      "slug": "waec-note-emphasis-should-be-on-application",
+      "slug": "waec-cooperative-accounts-book-keeping",
       "topic": "waec-cooperative-accounts",
-      "name": "NOTE: Emphasis should be on application",
+      "name": "Cooperative Accounts",
       "order": 1,
       "objectives": []
     }

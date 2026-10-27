@@ -13,7 +13,7 @@
   ],
   "topics": [
     {
-      "slug": "waec-classification-biology",
+      "slug": "waec-classification",
       "subject": "biology",
       "exam": "WAEC",
       "name": "Classification",
@@ -43,10 +43,10 @@
       "countries": []
     },
     {
-      "slug": "waec-a-cell-structure-and-functions-of-cell",
+      "slug": "waec-cell-structure-and-functions-of-cell",
       "subject": "biology",
       "exam": "WAEC",
-      "name": "(a) Cell structure and functions of cell",
+      "name": "Cell structure and functions of cell",
       "order": 4,
       "weight": 0,
       "objectives": [],
@@ -73,10 +73,10 @@
       "countries": []
     },
     {
-      "slug": "waec-a-tissues-and-supporting-systems-skeleton",
+      "slug": "waec-tissues-and-supporting-systems-skeleton",
       "subject": "biology",
       "exam": "WAEC",
-      "name": "(a) Tissues and supporting systems: Skeleton",
+      "name": "Tissues and supporting systems: Skeleton",
       "order": 7,
       "weight": 0,
       "objectives": [],
@@ -133,10 +133,10 @@
       "countries": []
     },
     {
-      "slug": "waec-sense-organs-structure-and-function",
+      "slug": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
       "subject": "biology",
       "exam": "WAEC",
-      "name": "Sense Organs: Structure and function",
+      "name": "Sense Organs: Structure and function of the (sperm and ovum) plants pollinated flowers dispersal",
       "order": 13,
       "weight": 0,
       "objectives": [],
@@ -153,7 +153,7 @@
       "countries": []
     },
     {
-      "slug": "waec-animal-nutrition",
+      "slug": "waec-animal-nutrition-biology",
       "subject": "biology",
       "exam": "WAEC",
       "name": "Animal Nutrition",
@@ -243,10 +243,10 @@
       "countries": []
     },
     {
-      "slug": "waec-morphological-variations-in-the-physical",
+      "slug": "waec-morphological-variations-in-the-physical-appearance-of-indiv",
       "subject": "biology",
       "exam": "WAEC",
-      "name": "Morphological variations in the physical",
+      "name": "Morphological variations in the physical appearance of individuals",
       "order": 24,
       "weight": 0,
       "objectives": [],
@@ -313,21 +313,11 @@
       "countries": []
     },
     {
-      "slug": "waec-application-of-the-principles-of-heredity-in",
-      "subject": "biology",
-      "exam": "WAEC",
-      "name": "Application of the principles of heredity in",
-      "order": 31,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
       "slug": "waec-behavioural-adaptations-in-social-animals",
       "subject": "biology",
       "exam": "WAEC",
       "name": "Behavioural Adaptations in Social Animals",
-      "order": 32,
+      "order": 31,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -337,7 +327,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Evolution",
-      "order": 33,
+      "order": 32,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -347,7 +337,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Biology as a science of life",
-      "order": 34,
+      "order": 33,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -357,7 +347,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Procedure for biological work",
-      "order": 35,
+      "order": 34,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -367,17 +357,17 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Importance of Biology",
-      "order": 36,
+      "order": 35,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-body-symmetry-sectioning",
+      "slug": "waec-body-symmetry-sectioning-and-orientation",
       "subject": "biology",
       "exam": "WAEC",
-      "name": "Body symmetry, sectioning",
-      "order": 37,
+      "name": "Body symmetry, sectioning and orientation",
+      "order": 36,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -387,7 +377,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "The microscope",
-      "order": 38,
+      "order": 37,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -397,7 +387,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Nucleic acids",
-      "order": 39,
+      "order": 38,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -407,17 +397,17 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Cell cycle",
-      "order": 40,
+      "order": 39,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-amoeba-paramecium",
+      "slug": "waec-amoeba-paramecium-and-euglena",
       "subject": "biology",
       "exam": "WAEC",
-      "name": "Amoeba, Paramecium,",
-      "order": 41,
+      "name": "Amoeba, Paramecium, and Euglena",
+      "order": 40,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -427,7 +417,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Spirogyra and Rhizopus",
-      "order": 42,
+      "order": 41,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -437,17 +427,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Mosses and ferns",
-      "order": 43,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-characteristics-of-some-of",
-      "subject": "biology",
-      "exam": "WAEC",
-      "name": "Characteristics of some of",
-      "order": 44,
+      "order": 42,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -457,7 +437,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Dissection of a small mammal",
-      "order": 45,
+      "order": 43,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -467,7 +447,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Transport",
-      "order": 46,
+      "order": 44,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -477,7 +457,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Cellular respiration",
-      "order": 47,
+      "order": 45,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -487,7 +467,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Movement",
-      "order": 48,
+      "order": 46,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -497,7 +477,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Reproduction",
-      "order": 49,
+      "order": 47,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -507,7 +487,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Integrated water resources",
-      "order": 50,
+      "order": 48,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -517,7 +497,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Health and hygiene",
-      "order": 51,
+      "order": 49,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -527,7 +507,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Biology and water industry",
-      "order": 52,
+      "order": 50,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -537,7 +517,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Biology and fishing industry",
-      "order": 53,
+      "order": 51,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -547,7 +527,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Biology and food industry",
-      "order": 54,
+      "order": 52,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -557,7 +537,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Biology and agriculture",
-      "order": 55,
+      "order": 53,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -567,7 +547,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Biotechnology",
-      "order": 56,
+      "order": 54,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -577,7 +557,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Biological fuel generation",
-      "order": 57,
+      "order": 55,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -587,17 +567,17 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Cell theory",
-      "order": 58,
+      "order": 56,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-irritability-as-a-basic-characteristic",
+      "slug": "waec-irritability-as-a-basic-characteristic-of-protoplasm",
       "subject": "biology",
       "exam": "WAEC",
-      "name": "Irritability as a basic characteristic",
-      "order": 59,
+      "name": "Irritability as a basic characteristic of protoplasm",
+      "order": 57,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -607,7 +587,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Excretory Systems",
-      "order": 60,
+      "order": 58,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -617,7 +597,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Sense organs",
-      "order": 61,
+      "order": 59,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -627,7 +607,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Nitrogen cycle",
-      "order": 62,
+      "order": 60,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -637,7 +617,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Alimentary System",
-      "order": 63,
+      "order": 61,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -647,7 +627,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Feeding habits",
-      "order": 64,
+      "order": 62,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -657,7 +637,17 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Ecological Components",
-      "order": 65,
+      "order": 63,
+      "weight": 0,
+      "objectives": [],
+      "countries": []
+    },
+    {
+      "slug": "waec-population-studies-by-sampling",
+      "subject": "biology",
+      "exam": "WAEC",
+      "name": "Population Studies by Sampling",
+      "order": 64,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -667,17 +657,17 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Energy transformation in nature",
-      "order": 66,
+      "order": 65,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-ecological-management-tolerance-minimum",
+      "slug": "waec-ecological-management-tolerance-minimum-and-maximum-range",
       "subject": "biology",
       "exam": "WAEC",
-      "name": "Ecological Management: Tolerance, Minimum",
-      "order": 67,
+      "name": "Ecological Management: Tolerance, Minimum and maximum range",
+      "order": 66,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -687,7 +677,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Habitats",
-      "order": 68,
+      "order": 67,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -697,7 +687,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Relevance of Biology to Agriculture",
-      "order": 69,
+      "order": 68,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -707,7 +697,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Microorganisms: Man and His Health",
-      "order": 70,
+      "order": 69,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -717,7 +707,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Crime detection",
-      "order": 71,
+      "order": 70,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -727,7 +717,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Blood transfusion",
-      "order": 72,
+      "order": 71,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -737,7 +727,7 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Determination of paternity",
-      "order": 73,
+      "order": 72,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -747,17 +737,17 @@
       "subject": "biology",
       "exam": "WAEC",
       "name": "Adaptation for survival",
-      "order": 74,
+      "order": 73,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-structural-adaptation-for",
+      "slug": "waec-structural-adaptation-for-reproduction-functions",
       "subject": "biology",
       "exam": "WAEC",
-      "name": "Structural Adaptation for",
-      "order": 75,
+      "name": "Structural Adaptation for; reproduction functions",
+      "order": 74,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -765,31 +755,24 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-classification-of-objects-into-living-and-non",
-      "topic": "waec-classification-biology",
-      "name": "Classification of objects into living and non",
+      "slug": "waec-living-and-non-living-things",
+      "topic": "waec-classification",
+      "name": "Living and non-living things",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-living-and-non-living-things-living-giving-examples-of-each",
-      "topic": "waec-classification-biology",
-      "name": "Living and non-living things living, giving examples of each group. Viruses should be mentioned as a link between living and non living things",
+      "slug": "waec-classification-of-living-things-into-kingdoms-monera-protoct",
+      "topic": "waec-classification",
+      "name": "Classification of living things into Kingdoms: Monera, Protoctista (Protista), Fungi, Plantae, Animalia",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-classification-of-living-kingdom-monera-prokaryotes-single-t",
-      "topic": "waec-classification-biology",
-      "name": "Classification of living Kingdom Monera (Prokaryotes), single-things into Kingdoms: celled, motile or non-motile organisms Monera, Protoctista (Protista), without definite nucleus e.g. bacteria and Fungi, Plantae, Animalia. blue-green algae. Major characteristics of the major phyla of Kingdoms Protoctista and Fungi. Kingdom Protista (Eukaryotes), single-celled, motile or non-motile organisms. Cell structure complex with definite nucleus e.g. Chlamydomonas, Amoeba. Major phyla of Kingdom Protoctista include: Rhizopoda, Zoomastigina, Apicomplexa, Ciliophora, Euglenophyta, Oomycota, Chlorophyta, Rhodophyta and Phaeophyta. Kingdom Fungi (Eukaryotes), mainly non-motile organisms composed of hyphae containing nuclei e.g. moulds, mushrooms and Rhizopus. Major phyla of Kingdom Fungi include: Zygomycota, Ascomycota and Basidiomycota. Kingdom Plantae (Eukaryotes), mainly multicellular non-motile organisms which contain chlorophyll that enable them to photosynthesize e.g. mosses, ferns, pines, oil palms and yam plants. Characteristics of the major divisions and classes: Bryophyta (Hepaticae, Musci), Lycopodophyta, Filicinophyta, Coniferophyta, Cycadophyta and Angiospermophyta (Monocotyledoneae and Dicotyledoneae). Kingdom Animalia (Eukaryotes), multicellular motile organisms that feed on other organisms e.g. corals, worms, insects, snails, fishes, frogs, snakes, monkeys cows. Characteristics of the major phyla and classes of Kingdom Animalia. The external features of the following organisms should be mentioned: cockroach, butterfly, Tilapia, toad/frog, lizard, domestic fowl/pigeon",
-      "order": 3,
-      "objectives": []
-    },
-    {
       "slug": "waec-differences-between-plants-and-animals",
-      "topic": "waec-classification-biology",
+      "topic": "waec-classification",
       "name": "Differences between plants and animals",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
@@ -800,248 +783,325 @@
       "objectives": []
     },
     {
-      "slug": "waec-cell-single-celled-organisms-the-examples-should-be-used-to",
+      "slug": "waec-cell-single-celled-organisms-amoeba-euglena-paramecium",
       "topic": "waec-organization-of-life",
-      "name": "cell (single-celled organisms): The examples should be used to illustrate Amoeba, Euglena, Paramecium differentiation and specialization in organisms. (ii) Tissue: Hydra (iii) Organ (storage organ) bulb, rhizome and heart. (iv) System/Organ System: In mammals, flowering plants - reproductive system, excretory system etc",
+      "name": "Cell (single-celled organisms): Amoeba, Euglena, Paramecium",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-complexity-of-organization-the-significance-of-different-lev",
+      "slug": "waec-tissue-hydra",
       "topic": "waec-organization-of-life",
-      "name": "Complexity of organization The significance of different levels of in higher organisms: organization including volume/surface area advantages and ratio should be mentioned. disadvantages",
+      "name": "Tissue: Hydra",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-the-structure-of-these-organisms-in-relation-to-the-forms-of",
-      "topic": "waec-forms-in-which-living-cells-exist",
-      "name": "The structure of these organisms in relation to the forms of existence should be studied to",
-      "order": 1,
+      "slug": "waec-organ-storage-organ-bulb-rhizome-and-heart",
+      "topic": "waec-organization-of-life",
+      "name": "Organ (storage organ) bulb, rhizome and heart",
+      "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-single-and-free-living-illustrate-dependence-and-interdepend",
+      "slug": "waec-system-organ-system-in-mammals-flowering-plants-reproductive",
+      "topic": "waec-organization-of-life",
+      "name": "System/Organ System: In mammals, flowering plants - reproductive system, excretory system etc",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-complexity-of-organization-in-higher-organisms-advantages-an",
+      "topic": "waec-organization-of-life",
+      "name": "Complexity of organization in higher organisms: advantages and disadvantages",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-single-and-free-living-amoeba-paramecium-euglena-and-chlamyd",
       "topic": "waec-forms-in-which-living-cells-exist",
-      "name": "Single and free-living: illustrate dependence and interdependence. Amoeba, Paramecium, Euglena, and Chlamydomonas",
-      "order": 2,
+      "name": "Single and free-living: Amoeba, Paramecium, Euglena, and Chlamydomonas",
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-colony-volvox",
       "topic": "waec-forms-in-which-living-cells-exist",
       "name": "Colony: Volvox",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-filament-spirogyra",
       "topic": "waec-forms-in-which-living-cells-exist",
       "name": "Filament: Spirogyra",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-part-of-a-living-organism-cheek-cells-onion-root-tip-cells-a",
+      "topic": "waec-forms-in-which-living-cells-exist",
+      "name": "Part of a living organism: Cheek cells, onion root tip cells and epidermis of fleshy leaves",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-part-of-a-living-organism-distinguish-groups-of-cells-that-f",
-      "topic": "waec-forms-in-which-living-cells-exist",
-      "name": "Part of a living organism: Distinguish groups of cells that form tissues Cheek cells, onion root tip from those that form colonies or filaments. cells and epidermis of fleshy leaves",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-cell-structure-should-include-cell-wall-cell-components-memb",
-      "topic": "waec-a-cell-structure-and-functions-of-cell",
-      "name": "Cell structure should include: Cell wall, cell components. membrane, nucleus, cytoplasm, cytoplasmic organelles: mitochondria, lysosomes, chloroplasts, endoplasmic reticulum, ribosomes, centrosomes, Golgi bodies, chromosomes. The function performed by organelles should be known",
+      "slug": "waec-components",
+      "topic": "waec-cell-structure-and-functions-of-cell",
+      "name": "Components",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-similarities-and-differences-between-plant-and-animal-cells",
-      "topic": "waec-a-cell-structure-and-functions-of-cell",
+      "topic": "waec-cell-structure-and-functions-of-cell",
       "name": "Similarities and differences between plant and animal cells",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-the-significance-of-these-processes-should-be-biophysical-pr",
+      "slug": "waec-biophysical-processes",
       "topic": "waec-the-cell-and-its-environment-physical",
-      "name": "The significance of these processes should be Biophysical processes. mentioned as factors that affect cell activities in its environment",
+      "name": "Biophysical processes",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-diffusion",
       "topic": "waec-the-cell-and-its-environment-physical",
-      "name": "diffusion",
+      "name": "Diffusion",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-osmosis-haemolysis-plasmolysis-turgidity-and",
+      "slug": "waec-osmosis",
       "topic": "waec-the-cell-and-its-environment-physical",
-      "name": "osmosis Haemolysis, plasmolysis, turgidity and",
+      "name": "Osmosis",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-active-transport-crenation-should-be-mentioned",
+      "slug": "waec-active-transport",
       "topic": "waec-the-cell-and-its-environment-physical",
-      "name": "active transport crenation should be mentioned",
+      "name": "Active transport",
       "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-these-should-be-mentioned-as-processes-occurring-within-livi",
-      "topic": "waec-properties-and-functions-of-the-living-cell",
-      "name": "These should be mentioned as processes occurring within living cells",
-      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-nutrition",
       "topic": "waec-properties-and-functions-of-the-living-cell",
       "name": "Nutrition",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-autotrophic-photosynthesis",
+      "topic": "waec-properties-and-functions-of-the-living-cell",
+      "name": "Autotrophic (photosynthesis)",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-autotrophic-nutrition-in-euglena-chlamydomonas-and-photosynt",
+      "slug": "waec-heterotrophic-holozoic",
       "topic": "waec-properties-and-functions-of-the-living-cell",
-      "name": "Autotrophic Nutrition in Euglena, Chlamydomonas and (photosynthesis) Spirogyra should be mentioned. (ii) Heterotrophic (holozoic) Nutrition in Amoeba and Paramecium should be mentioned",
+      "name": "Heterotrophic (holozoic)",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-cellular-respiration-a-simplified-outline-of-the-chemical-de",
+      "slug": "waec-aerobic-respiration",
       "topic": "waec-properties-and-functions-of-the-living-cell",
-      "name": "Cellular respiration A simplified outline of the chemical Definition and processes of: processes involved in glycolysis and Kreb's cycle; Reference should be made to the role",
+      "name": "Aerobic respiration",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-aerobic-respiration-of-atp-ii-anaerobic-respiration-the-impo",
+      "slug": "waec-anaerobic-respiration",
       "topic": "waec-properties-and-functions-of-the-living-cell",
-      "name": "aerobic respiration of ATP. (ii) anaerobic respiration The importance of anaerobic respiration in (iii) energy release food processing should be mentioned",
+      "name": "Anaerobic respiration",
       "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-energy-release",
+      "topic": "waec-properties-and-functions-of-the-living-cell",
+      "name": "Energy release",
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-excretion",
       "topic": "waec-properties-and-functions-of-the-living-cell",
       "name": "Excretion",
-      "order": 6,
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-excretion-in-single-celled-aquatic-organisms-diffusion-by-bo",
       "topic": "waec-properties-and-functions-of-the-living-cell",
-      "name": "Excretion in single-celled aquatic organisms. Diffusion by body surface and by contractile vacuole. (ii) Waste products of metabolism. Reference should be made to carbon dioxide, water and ammonia as examples of waste products",
-      "order": 7,
+      "name": "Excretion in single-celled aquatic organisms. Diffusion by body surface and by contractile vacuole",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-waste-products-of-metabolism",
+      "topic": "waec-properties-and-functions-of-the-living-cell",
+      "name": "Waste products of metabolism",
+      "order": 9,
       "objectives": []
     },
     {
       "slug": "waec-growth",
       "topic": "waec-properties-and-functions-of-the-living-cell",
       "name": "Growth",
-      "order": 8,
+      "order": 10,
       "objectives": []
     },
     {
       "slug": "waec-basis-of-growth-cell-division-mitosis-enlargement-and-differ",
       "topic": "waec-properties-and-functions-of-the-living-cell",
-      "name": "Basis of growth - cell division (mitosis), enlargement and differentiation. (ii) Aspects of growth: Increase in dry weight, irreversible increase in size and length and increase in number of cells. (iii) Regions of fastest growth in plants. Observation of root tip and shoot tip are required. (iv) Influence of growth hormones and auxins. Regulation of growth by hormones should be mentioned",
-      "order": 9,
-      "objectives": []
-    },
-    {
-      "slug": "waec-growth-curvatures-tropisms-types-of-tropisms-should-be-demon",
-      "topic": "waec-properties-and-functions-of-the-living-cell",
-      "name": "Growth curvatures (Tropisms) Types of tropisms should be demonstrated. Microscopic examination of the different regions of growth and development: region of cell division, elongation, differentiation and maturation",
-      "order": 10,
-      "objectives": []
-    },
-    {
-      "slug": "waec-development-enlargement-and-differentiation-processes-that-r",
-      "topic": "waec-properties-and-functions-of-the-living-cell",
-      "name": "Development: Enlargement and differentiation. Processes that result in primary and secondary growth",
+      "name": "Basis of growth - cell division (mitosis), enlargement and differentiation",
       "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-aspects-of-growth-increase-in-dry-weight-irreversible-increa",
+      "topic": "waec-properties-and-functions-of-the-living-cell",
+      "name": "Aspects of growth: Increase in dry weight, irreversible increase in size and length and increase in number of cells",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-regions-of-fastest-growth-in-plants",
+      "topic": "waec-properties-and-functions-of-the-living-cell",
+      "name": "Regions of fastest growth in plants",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-influence-of-growth-hormones-and-auxins",
+      "topic": "waec-properties-and-functions-of-the-living-cell",
+      "name": "Influence of growth hormones and auxins",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-growth-curvatures-tropisms",
+      "topic": "waec-properties-and-functions-of-the-living-cell",
+      "name": "Growth curvatures (Tropisms)",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-development-enlargement-and-differentiation",
+      "topic": "waec-properties-and-functions-of-the-living-cell",
+      "name": "Development: Enlargement and differentiation",
+      "order": 16,
       "objectives": []
     },
     {
       "slug": "waec-movement",
       "topic": "waec-properties-and-functions-of-the-living-cell",
       "name": "Movement",
-      "order": 12,
+      "order": 17,
       "objectives": []
     },
     {
-      "slug": "waec-organelles-for-movement-cilia-and-flagella-ii-cyclosis",
+      "slug": "waec-organelles-for-movement-cilia-and-flagella",
       "topic": "waec-properties-and-functions-of-the-living-cell",
-      "name": "Organelles for movement: cilia and flagella, (ii) Cyclosis",
-      "order": 13,
+      "name": "Organelles for movement: cilia and flagella",
+      "order": 18,
+      "objectives": []
+    },
+    {
+      "slug": "waec-cyclosis",
+      "topic": "waec-properties-and-functions-of-the-living-cell",
+      "name": "Cyclosis",
+      "order": 19,
       "objectives": []
     },
     {
       "slug": "waec-reproduction-types-of-reproduction",
       "topic": "waec-properties-and-functions-of-the-living-cell",
       "name": "Reproduction: Types of reproduction",
-      "order": 14,
+      "order": 20,
       "objectives": []
     },
     {
-      "slug": "waec-asexual-fission-budding-and-prepared-slides-of-vegetative-pr",
+      "slug": "waec-asexual-fission-budding-and-vegetative-propagation",
       "topic": "waec-properties-and-functions-of-the-living-cell",
-      "name": "Asexual: fission, budding and Prepared slides of: vegetative propagation",
-      "order": 15,
+      "name": "Asexual: fission, budding and vegetative propagation",
+      "order": 21,
       "objectives": []
     },
     {
-      "slug": "waec-fission-in-paramecium",
+      "slug": "waec-sexual-conjugation-formation-of-male-and-female-gametes-game",
       "topic": "waec-properties-and-functions-of-the-living-cell",
-      "name": "fission in Paramecium",
-      "order": 16,
+      "name": "Sexual: Conjugation, formation of male and female gametes (gametogenesis), fusion of gametes fertilization)",
+      "order": 22,
       "objectives": []
     },
     {
-      "slug": "waec-budding-in-yeast-and-chlamydomonas-should-be-observed-and-dr",
-      "topic": "waec-properties-and-functions-of-the-living-cell",
-      "name": "budding in yeast and Chlamydomonas; should be observed and drawn. (ii) Sexual: Conjugation, formation of male and female gametes Prepared slides of conjugation in (gametogenesis), fusion of gametes Paramecium and Spirogyra should be fertilization) studied. The process of meiosis should be mentioned",
-      "order": 17,
-      "objectives": []
-    },
-    {
-      "slug": "waec-and-supporting-systems-in-animals-the-location-and-arrangeme",
-      "topic": "waec-a-tissues-and-supporting-systems-skeleton",
-      "name": "and supporting systems in animals: The location and arrangement of skeletal and",
+      "slug": "waec-and-supporting-systems-in-animals",
+      "topic": "waec-tissues-and-supporting-systems-skeleton",
+      "name": "And supporting systems in animals",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-biological-significance-supporting-tissues-in-animals-should",
-      "topic": "waec-a-tissues-and-supporting-systems-skeleton",
-      "name": "Biological significance. supporting tissues in animals should be mentioned. Candidates should be familiar with (ii) Skeletal materials, e.g. bone, the general plan of mammalian skeleton and the cartilage and chitin. different types of joints. They should be able to identify, draw, label and state the functions of (iii) Types of skeleton: the individual bones listed in the content exoskeleton, endoskeleton and column. Detailed structure of the skull will not hydrostatic skeleton. be required. Histological structure of bones and cartilages will also not be required. (iv) Bones of the vertebral column, girdles and long bones of the appendicular skeleton",
+      "slug": "waec-biological-significance",
+      "topic": "waec-tissues-and-supporting-systems-skeleton",
+      "name": "Biological significance",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-mechanism-of-support-in-animals-vi-functions-of-skeleton-in",
-      "topic": "waec-a-tissues-and-supporting-systems-skeleton",
-      "name": "Mechanism of support in animals. (vi) Functions of skeleton in animals: Protection, support, locomotion and Candidates should be able to explain how these respiratory movement. functions are performed. The relationship of skeleton and muscles during movement should be used to illustrate the different functions of the skeleton",
+      "slug": "waec-skeletal-materials-e-g-bone-cartilage-and-chitin",
+      "topic": "waec-tissues-and-supporting-systems-skeleton",
+      "name": "Skeletal materials, e.g. bone, cartilage and chitin",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-different-types-of-supporting-tissues-in-plants-the-differen",
-      "topic": "waec-a-tissues-and-supporting-systems-skeleton",
-      "name": "Different types of supporting tissues in plants. The different types of supporting tissues: turgid parenchyma, collenchyma, xylem (wood) sclerenchyma should be studied",
+      "slug": "waec-types-of-skeleton-exoskeleton-endoskeleton-and-hydrostatic-s",
+      "topic": "waec-tissues-and-supporting-systems-skeleton",
+      "name": "Types of skeleton: exoskeleton, endoskeleton and hydrostatic skeleton",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-main-features-of-supporting-tissues-in-plants-candidates-sho",
-      "topic": "waec-a-tissues-and-supporting-systems-skeleton",
-      "name": "Main features of supporting tissues in plants. Candidates should be able to cut and draw the low power of the T.S. of stem and root of a (ii) Functions of supporting tissues in herbaceous plant and label the different tissues; plants: strength, rigidity (resistance epidermis, cortex and stele. against the forces of the wind and water), flexibility and resilience",
+      "slug": "waec-bones-of-the-vertebral-column-girdles-and-long-bones-of-the",
+      "topic": "waec-tissues-and-supporting-systems-skeleton",
+      "name": "Bones of the vertebral column, girdles and long bones of the appendicular skeleton",
       "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mechanism-of-support-in-animals",
+      "topic": "waec-tissues-and-supporting-systems-skeleton",
+      "name": "Mechanism of support in animals",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-functions-of-skeleton-in-animals-protection-support-locomoti",
+      "topic": "waec-tissues-and-supporting-systems-skeleton",
+      "name": "Functions of skeleton in animals: Protection, support, locomotion and respiratory movement",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-different-types-of-supporting-tissues-in-plants",
+      "topic": "waec-tissues-and-supporting-systems-skeleton",
+      "name": "Different types of supporting tissues in plants",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-main-features-of-supporting-tissues-in-plants",
+      "topic": "waec-tissues-and-supporting-systems-skeleton",
+      "name": "Main features of supporting tissues in plants",
+      "order": 9,
       "objectives": []
     },
     {
@@ -1052,227 +1112,353 @@
       "objectives": []
     },
     {
-      "slug": "waec-surface-area-volume-ratio-ii-substances-have-to-move-greater",
+      "slug": "waec-surface-area-volume-ratio",
       "topic": "waec-transport-system",
-      "name": "surface area/volume ratio. (ii) substances have to move greater distances. Source of materials and forms in which they are transported and where they are transported to should be studied. Media of transport: cytoplasm in cells, cell sap or latex in most plants and body fluid in invertebrates",
+      "name": "Surface area/volume ratio",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-transport-in-animals-candidates-should-be-familiar-with-the",
+      "slug": "waec-substances-have-to-move-greater-distances",
       "topic": "waec-transport-system",
-      "name": "Transport in animals. Candidates should be familiar with the general",
+      "name": "Substances have to move greater distances",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-structure-of-the-heart-arteries-circulatory-system-open-circ",
+      "slug": "waec-transport-in-animals",
       "topic": "waec-transport-system",
-      "name": "Structure of the heart, arteries, circulatory system. Open circulatory systems in veins and capillaries. invertebrates. The names of the blood vessels responsible for transporting excretory products, gases, digested food and other nutrients should be mentioned. (ii) Composition and function of blood and lymph. (iii) Materials for transport: excretory products, gases, digested food, and other nutrients",
+      "name": "Transport in animals",
       "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-structure-of-the-heart-arteries-veins-and-capillaries",
+      "topic": "waec-transport-system",
+      "name": "Structure of the heart, arteries, veins and capillaries",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-composition-and-function-of-blood-and-lymph",
+      "topic": "waec-transport-system",
+      "name": "Composition and function of blood and lymph",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-materials-for-transport-excretory-products-gases-digested-fo",
+      "topic": "waec-transport-system",
+      "name": "Materials for transport: excretory products, gases, digested food, and other nutrients",
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-transport-in-plants",
       "topic": "waec-transport-system",
       "name": "Transport in plants",
-      "order": 5,
+      "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-uptake-and-movement-of-water-and-mineral-salts-in-plants-des",
+      "slug": "waec-uptake-and-movement-of-water-and-mineral-salts-in-plants",
       "topic": "waec-transport-system",
-      "name": "Uptake and movement of water and mineral salts in plants. Description of uptake of water and mineral salts from the soil into a plant. Movement of water and mineral salts through the plant. Experiments using eosin solution to show water and mineral salts uptake. (ii) Translocation Movement of organic materials from leaves to roots. Basic theories (Pressure flow hypothesis and cytoplasmic streaming) underlying translocation. Ringing experiment to demonstrate that transport of synthesized organic nutrients occurs through the phloem. (iii) Transpiration Advantages and disadvantages of transpiration. Types of transpiration. Environmental factors affecting transpiration. Determination of the rate of transpiration. (iv) Movement of water to Physiological factors affecting the rise of the apex of trees and water in the xylem: Root pressure, herbs. transpiration, cohesion-tension mechanism, adhesion, water potential gradient. Experiments to measure the rate of transpiration",
-      "order": 6,
+      "name": "Uptake and movement of water and mineral salts in plants",
+      "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-body-surface-cutaneous-gills-and-lungs-characteristics-of-re",
+      "slug": "waec-translocation",
+      "topic": "waec-transport-system",
+      "name": "Translocation",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-transpiration",
+      "topic": "waec-transport-system",
+      "name": "Transpiration",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-body-surface-cutaneous-gills-and-lungs",
       "topic": "waec-respiratory-system",
-      "name": "Body surface: cutaneous, gills and lungs. Characteristics of respiratory surfaces in these systems should be studied. Respiratory organs of insects should be mentioned. Candidates should be able to observe, draw and label the respiratory organs of a bony fish (e.g. Tilapia) and a small mammal (e.g. rat)",
+      "name": "Body surface: cutaneous, gills and lungs",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-mechanisms-of-gaseous-exchange-in-respiratory-movements-in-t",
+      "slug": "waec-mechanisms-of-gaseous-exchange-in-fish-toad-mammals-and-plan",
       "topic": "waec-respiratory-system",
-      "name": "Mechanisms of gaseous exchange in Respiratory movements in these animals should fish, toad, mammals and plants. be mentioned. The mechanisms of opening and closing of stomata should be mentioned",
+      "name": "Mechanisms of gaseous exchange in fish, toad, mammals and plants",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-characteristics-of-excretory-organs-in-these-types-of-excret",
+      "slug": "waec-types-of-excretory-systems-kidney-stomata-and-lenticels",
       "topic": "waec-excretory-systems-and-mechanisms",
-      "name": "Characteristics of excretory organs in these Types of excretory systems: Kidney, stomata systems should be studied. Candidates and lenticels should observe, draw and label the excretory organs of a small mammal (e.g. rat). Explanation of the concept of excretion in plants. Excretory products of plants (water, carbon dioxide, oxygen, alkaloids, tannins, gums, resins and acids) should be mentioned",
+      "name": "Types of excretory systems: Kidney, stomata and lenticels",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-osmoregulation-excretion-and-maintenance-of-homeostasis-acid",
+      "slug": "waec-homeostasis",
       "topic": "waec-regulation-of-internal-environment",
-      "name": "Osmoregulation, excretion and maintenance of (Homeostasis) acid-base balance should be mentioned. The conditions that affect functions of the kidney",
+      "name": "Homeostasis",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-kidney-structure-and-functions-such-as-the-water-and-salt-co",
+      "slug": "waec-kidney-structure-and-functions",
       "topic": "waec-regulation-of-internal-environment",
-      "name": "Kidney: Structure and functions such as the water and salt content of the blood, environmental temperature should also be mentioned. Excretory products such as urea, water, salts, uric acid should be mentioned",
+      "name": "Kidney: Structure and functions",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-liver-functions-of-the-liver-candidates-should-be-able-to-id",
+      "slug": "waec-liver-functions-of-the-liver",
       "topic": "waec-regulation-of-internal-environment",
-      "name": "Liver: Functions of the liver. Candidates should be able to identify the liver; and its position relative to the gall bladder, bile",
+      "name": "Liver: Functions of the liver",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-the-skin-duct-pancreas-duodenum-and-stomach-candidates-shoul",
+      "slug": "waec-the-skin",
       "topic": "waec-regulation-of-internal-environment",
-      "name": "The skin: duct, pancreas, duodenum and stomach. Candidates should observe, draw and label the Structure and function. mammalian skin. The regulation of internal environment by the skin should be emphasized. 12. Hormonal Coordination",
+      "name": "The skin",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-animal-hormones-endocrine-glands-pituitary-thyroid-adrenal-s",
+      "slug": "waec-animal-hormones",
       "topic": "waec-regulation-of-internal-environment",
-      "name": "Animal hormones: Endocrine glands: pituitary, thyroid, adrenal, Site of secretion, functions and pancreas, gonads and their secretions should be effects of over and under-mentioned. The stages in the metamorphosis secretion. of toad and the role of thyroxine should be mentioned",
+      "name": "Animal hormones",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-plant-hormones-the-effects-of-auxins-on-lateral-bud-developm",
+      "slug": "waec-plant-hormones",
       "topic": "waec-regulation-of-internal-environment",
-      "name": "Plant hormones The effects of auxins on lateral bud development, leaf fall and initiation of adventitious roots should be mentioned. Reference to crop harvesting, growth and weed",
+      "name": "Plant hormones",
       "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-control-should-be-made",
-      "topic": "waec-nervous-coordination",
-      "name": "control should be made",
-      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-the-central-nervous-system",
       "topic": "waec-nervous-coordination",
       "name": "The central nervous system",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-components-of-the-central-nervous-system",
+      "topic": "waec-nervous-coordination",
+      "name": "Components of the central nervous system",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-components-of-the-central-nervous-system-ii-parts-of-the-bra",
+      "slug": "waec-parts-of-the-brain-and-their-functions-cerebrum-cerebellum-m",
       "topic": "waec-nervous-coordination",
-      "name": "Components of the central nervous system (ii) Parts of the brain and their functions; cerebrum, cerebellum, medulla oblongata, hypothalamus Candidates should be able to locate the position and their functions of the brain and spinal cord in a dissected vertebrate and identify the various regions of (iii) Structure and function of the Spinal the brain. Cord",
+      "name": "Parts of the brain and their functions; cerebrum, cerebellum, medulla oblongata, hypothalamus and their functions",
       "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-structure-and-function-of-the-spinal-cord",
+      "topic": "waec-nervous-coordination",
+      "name": "Structure and function of the Spinal Cord",
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-peripheral-nervous-system",
       "topic": "waec-nervous-coordination",
       "name": "Peripheral Nervous System",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-somatic-nervous-system-ii-autonomic-nervous-system-functions",
-      "topic": "waec-nervous-coordination",
-      "name": "Somatic Nervous System (ii) Autonomic nervous system. Functions of the sympathetic and parasympathetic systems only. (iii) Structure and functions of the neurone. Candidates should observe, draw and label a (iv) Classification of neurones. neurone from a slide. Afferent (sensory), efferent (motor) and",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-types-of-nervous-actions-intermediate-neurones-should-be-men",
+      "slug": "waec-somatic-nervous-system",
       "topic": "waec-nervous-coordination",
-      "name": "Types of nervous actions intermediate neurones should be mentioned",
+      "name": "Somatic Nervous System",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-the-reflex-arc-ii-reflex-and-voluntary-actions-candidates-sh",
+      "slug": "waec-autonomic-nervous-system",
       "topic": "waec-nervous-coordination",
-      "name": "The reflex arc (ii) Reflex and voluntary actions Candidates should perform experiments to (iii) Differences between reflex and illustrate reflex actions such as blinking of the voluntary actions. eyes, knee jerk and withdrawal of hand from hot objects. (iv) Conditioned reflex and its role on behaviour. Candidates should be able to enumerate",
+      "name": "Autonomic nervous system",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-conditioned-reflexes-such-as-salivation-the-driving-a-car-wa",
-      "topic": "waec-sense-organs-structure-and-function",
-      "name": "conditioned reflexes such as salivation, the driving a car, walking and swimming",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-eye-candidates-should-examine-the-mammalian-eye-noting-the-s",
-      "topic": "waec-sense-organs-structure-and-function",
-      "name": "Eye. Candidates should examine the mammalian eye noting the shape, colour and positions of the optic muscle and optic nerve",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-ear-mention-should-be-made-of-eye-defects-and-their-correcti",
-      "topic": "waec-sense-organs-structure-and-function",
-      "name": "Ear. Mention should be made of eye defects and their corrections. 15 (a) Reproductive system of mammals",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-structure-and-function-of-male-and-female-reproductive-syste",
-      "topic": "waec-sense-organs-structure-and-function",
-      "name": "Structure and function of male and female reproductive systems. (ii) Differences between male and female Candidates should examine and draw dissected reproductive organs. male and female small mammals showing the reproductive organs. They should also draw (iii) Structure of the gametes sperm and ovum from prepared slides. (sperm and ovum) (iv) Fertilization, development of the embryo and birth",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-birth-control-explanation-of-the-different-methods-of-birth",
-      "topic": "waec-sense-organs-structure-and-function",
-      "name": "Birth control Explanation of the different methods of birth (b) Metamorphosis in insects, life histories of control. butterfly and cockroach. These examples should be used to illustrate complete and incomplete metamorphosis. The period it takes to develop from egg to adult should be studied. The different stages in the life history of butterfly and cockroach should be drawn and labelled. (c) Comparison of reproduction in fish, amphibian, reptile, bird and mammal. Reference should be made to the method of fertilization, number of eggs and parental care. (d) Reproduction in flowering plants",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-arrangements-of-floral-parts-of-a-named-insect-pollinated-fl",
-      "topic": "waec-sense-organs-structure-and-function",
-      "name": "Arrangements of floral parts of a named insect-pollinated flower and a named wind-pollinated flower. (ii) Structure and function of the male and female parts of a flower",
-      "order": 6,
-      "objectives": []
-    },
-    {
-      "slug": "waec-pollination-in-plants",
-      "topic": "waec-sense-organs-structure-and-function",
-      "name": "Pollination in Plants",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-types-of-pollination-ii-features-of-cross-pollinated-and-sel",
-      "topic": "waec-sense-organs-structure-and-function",
-      "name": "Types of pollination (ii) Features of cross-pollinated and self-pollinated flowers Named examples should be used to illustrate the types of pollination. (iii) Agents of Pollination (iv) Kinds of placentation: axile, marginal and parietal. The features of the flower should be related to the agents of pollination",
+      "slug": "waec-structure-and-functions-of-the-neurone",
+      "topic": "waec-nervous-coordination",
+      "name": "Structure and functions of the neurone",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-process-of-development-of-zygote-in-flowering-plants-fertili",
-      "topic": "waec-sense-organs-structure-and-function",
-      "name": "Process of development of zygote in flowering plants: Fertilization. Pollen grains germinated in sucrose solution should be observed, prepared slides or charts showing various stages of embryo",
+      "slug": "waec-classification-of-neurones",
+      "topic": "waec-nervous-coordination",
+      "name": "Classification of neurones",
       "order": 9,
       "objectives": []
     },
     {
-      "slug": "waec-i-types-of-fruits-classification-development-in-flowering-pl",
-      "topic": "waec-sense-organs-structure-and-function",
-      "name": "(i) Types of fruits (classification). development in flowering plants should be observed and drawn. (ii) Structure of fruits Fruits should be classified into dry and fleshy fruits. The internal structure of a leguminous fruit, orange, maize and tomato should be examined and drawn",
+      "slug": "waec-types-of-nervous-actions",
+      "topic": "waec-nervous-coordination",
+      "name": "Types of nervous actions",
       "order": 10,
       "objectives": []
     },
     {
-      "slug": "waec-dispersal-of-fruits-and-seeds-agents-of-dispersal-the-follow",
-      "topic": "waec-sense-organs-structure-and-function",
-      "name": "Dispersal of fruits and seeds: Agents of dispersal The following fruits should be studied as examples to show the features that aid their respective methods of dispersal. Sunflower (achene) Combretum, cotton, Crotalaria/bean, Desmodium, Bidens sp. Tridax sp. and Coconut. Distinguishing differences between a fruit and a B. Plant and Animal Nutrition seed should be mentioned",
+      "slug": "waec-the-reflex-arc",
+      "topic": "waec-nervous-coordination",
+      "name": "The reflex arc",
       "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-reflex-and-voluntary-actions",
+      "topic": "waec-nervous-coordination",
+      "name": "Reflex and voluntary actions",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-differences-between-reflex-and-voluntary-actions",
+      "topic": "waec-nervous-coordination",
+      "name": "Differences between reflex and voluntary actions",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-conditioned-reflex-and-its-role-on-behaviour",
+      "topic": "waec-nervous-coordination",
+      "name": "Conditioned reflex and its role on behaviour",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-eye",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Eye",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-ear-15-a-reproductive-system-of-mammals",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Ear. 15 (a) Reproductive system of mammals",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-structure-and-function-of-male-and-female-reproductive-syste",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Structure and function of male and female reproductive systems",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-differences-between-male-and-female-reproductive-organs",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Differences between male and female reproductive organs",
+      "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-structure-of-the-gametes",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Structure of the gametes",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-fertilization-development-of-the-embryo-and-birth",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Fertilization, development of the embryo and birth",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-birth-control-in-fish-amphibian-reptile-bird-and-mammal",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Birth control in fish, amphibian, reptile, bird and mammal",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-arrangements-of-floral-parts-of-a-named-insect-pollinated-fl",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Arrangements of floral parts of a named insect-pollinated flower and a named wind-pollinated flower",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-structure-and-function-of-the-male-and-female-parts-of-a-flo",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Structure and function of the male and female parts of a flower",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-pollination-in-plants",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Pollination in Plants",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-pollination",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Types of pollination",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-features-of-cross-pollinated-and-self",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Features of cross-pollinated and self",
+      "order": 12,
+      "objectives": []
+    },
+    {
+      "slug": "waec-agents-of-pollination",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Agents of Pollination",
+      "order": 13,
+      "objectives": []
+    },
+    {
+      "slug": "waec-kinds-of-placentation-axile-marginal-and-parietal",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Kinds of placentation: axile, marginal and parietal",
+      "order": 14,
+      "objectives": []
+    },
+    {
+      "slug": "waec-process-of-development-of-zygote-in-flowering-plants-fertili",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Process of development of zygote in flowering plants: Fertilization",
+      "order": 15,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-fruits-classification",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Types of fruits (classification)",
+      "order": 16,
+      "objectives": []
+    },
+    {
+      "slug": "waec-structure-of-fruits",
+      "topic": "waec-sense-organs-structure-and-function-of-the-sperm-and-ovum-pl",
+      "name": "Structure of fruits",
+      "order": 17,
       "objectives": []
     },
     {
@@ -1283,93 +1469,128 @@
       "objectives": []
     },
     {
-      "slug": "waec-process-of-photosynthesis-and-its-biochemical-nature-of-phot",
+      "slug": "waec-process-of-photosynthesis-and-its",
       "topic": "waec-plant-nutrition",
-      "name": "Process of photosynthesis and its Biochemical nature of photosynthesis, chemical equation photoactivation of chlorophyll resulting in the conversion of light energy to ATP and the (ii) Light and dark reactions reduction of NADP (Biochemical detail is not required) (iii) Materials and conditions necessary for photosynthesis (iv) Evidence of photosynthesis The translocating and storage of excess food as a result of photosynthesis should be mentioned. Test for starch in green leaves should be carried",
+      "name": "Process of photosynthesis and its",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-mineral-requirement-of-plants-out-fate-of-the-products-of-ph",
+      "slug": "waec-light-and-dark-reactions",
       "topic": "waec-plant-nutrition",
-      "name": "Mineral requirement of plants out. Fate of the products of photosynthesis should",
+      "name": "Light and dark reactions",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-mineral-nutrition-macro-and-be-mentioned-micro-nutrients-mac",
+      "slug": "waec-materials-and-conditions-necessary-for-photosynthesis",
       "topic": "waec-plant-nutrition",
-      "name": "Mineral nutrition: Macro and be mentioned. micro-nutrients Macro elements should include: carbon, hydrogen, oxygen, nitrogen, potassium, (ii) Soil and atmosphere as sources of phosphorus, magnesium, sulphur, calcium and mineral elements. iron. The micro elements should include: copper, manganese, zinc and boron. Candidates should distinguish between food produced and mineral elements",
+      "name": "Materials and conditions necessary for photosynthesis",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-food-substances-classes-and-sources-local-examples-as-source",
-      "topic": "waec-animal-nutrition",
-      "name": "Food substances; classes and sources Local examples as sources of food substance (b) Balanced diet and its importance should be given. Reference should be made to food relationship between plants and animals. Importance of each class of food in a balanced diet should be stressed. Candidates should relate the idea of balanced diet to their own diet. (c) Food tests Malnutrition and its effects on humans should be mentioned",
+      "slug": "waec-evidence-of-photosynthesis",
+      "topic": "waec-plant-nutrition",
+      "name": "Evidence of photosynthesis",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mineral-requirement-of-plants",
+      "topic": "waec-plant-nutrition",
+      "name": "Mineral requirement of plants",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mineral-nutrition-macro-and-micro-nutrients",
+      "topic": "waec-plant-nutrition",
+      "name": "Mineral nutrition: Macro and micro-nutrients",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-soil-and-atmosphere-as-sources-of-mineral-elements",
+      "topic": "waec-plant-nutrition",
+      "name": "Soil and atmosphere as sources of mineral elements",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-food-substances-classes-and-sources",
+      "topic": "waec-animal-nutrition-biology",
+      "name": "Food substances; classes and sources",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-digestive-enzymes-tests-for-starch-reducing-sugar-protein-fa",
-      "topic": "waec-animal-nutrition",
-      "name": "Digestive enzymes: Tests for starch, reducing sugar, protein, fats and Classes, characteristics and functions oil should be carried out. Candidates should perform experiments to show that ptyalin in saliva changes cooked starch to reducing sugar. Candidates should know source, site of action, substrate and effect of each digestive enzyme. Experiments to show the characteristics of enzymes, including effects of pH, temperature and concentration should be carried out",
+      "slug": "waec-digestive-enzymes",
+      "topic": "waec-animal-nutrition-biology",
+      "name": "Digestive enzymes",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-modes-of-nutrition",
-      "topic": "waec-animal-nutrition",
+      "topic": "waec-animal-nutrition-biology",
       "name": "Modes of Nutrition",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-autotrophic-photosynthesis-ii-heterotrophic-holozoic-parasit",
-      "topic": "waec-animal-nutrition",
-      "name": "Autotrophic: Photosynthesis, (ii) Heterotrophic: holozoic, parasitic, symbiotic and saprophytic",
+      "slug": "waec-autotrophic-photosynthesis-biology",
+      "topic": "waec-animal-nutrition-biology",
+      "name": "Autotrophic: Photosynthesis",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-alimentary-system-named-examples-should-be-used-to-illustrat",
-      "topic": "waec-animal-nutrition",
-      "name": "Alimentary System: Named examples should be used to illustrate different modes of nutrition. Alimentary tract of different animals. Comparison should be made using dissected named bird and mammal. Description and functions of parts of the alimentary canal and modification of parts to",
+      "slug": "waec-heterotrophic-holozoic-parasitic-symbiotic-and-saprophytic",
+      "topic": "waec-animal-nutrition-biology",
+      "name": "Heterotrophic: holozoic, parasitic, symbiotic and saprophytic",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-dental-formula-reflect-their-digestive-functions-should-be-m",
-      "topic": "waec-animal-nutrition",
-      "name": "Dental Formula reflect their digestive functions should be mentioned. Meaning of dental formula. Determination of the dental formulae of mammals. Arrangements of teeth in the jaw bones of",
+      "slug": "waec-alimentary-system-alimentary-tract-of-different-animals",
+      "topic": "waec-animal-nutrition-biology",
+      "name": "Alimentary System: Alimentary tract of different animals",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-feeding-in-protozoa-and-mammals-herbivores-carnivores-and-of",
-      "topic": "waec-animal-nutrition",
-      "name": "Feeding in protozoa and mammals herbivores, carnivores and of humans. Importance of dental care in humans. C. Basic Ecological Concepts Reference should be made to feeding habits in",
+      "slug": "waec-dental-formula",
+      "topic": "waec-animal-nutrition-biology",
+      "name": "Dental Formula",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-protozoa-and-mammals-components-of-the-ecosystem-and-sizes",
+      "slug": "waec-feeding-in-protozoa-and-mammals",
+      "topic": "waec-animal-nutrition-biology",
+      "name": "Feeding in protozoa and mammals",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-components-of-the-ecosystem-and-sizes",
       "topic": "waec-ecosystem",
-      "name": "protozoa and mammals. Components of the ecosystem and sizes",
+      "name": "Components of the ecosystem and sizes",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-ecological-components-examples-and-explanation-are-required",
+      "slug": "waec-ecological-components-environment-biosphere-habitat-populati",
       "topic": "waec-ecosystem",
-      "name": "Ecological components: Examples and explanation are required. environment, biosphere, habitat, population, biotic community and ecosystem. Importance of ecological factors common to all habitat should be mentioned. The",
+      "name": "Ecological components: environment, biosphere, habitat, population, biotic community and ecosystem",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-components-of-the-importance-of-ecological-factors-to-ecosys",
+      "slug": "waec-components-of-the-ecosystem-biotic-and-abiotic",
       "topic": "waec-ecosystem",
-      "name": "Components of the importance of ecological factors to ecosystem: population of animals and plants should be Biotic and abiotic stressed",
+      "name": "Components of the ecosystem: Biotic and abiotic",
       "order": 3,
       "objectives": []
     },
@@ -1381,122 +1602,143 @@
       "objectives": []
     },
     {
-      "slug": "waec-candidates-should-measure-some-of-the-factors-ecological-fac",
+      "slug": "waec-factors",
       "topic": "waec-simple-measurement-of-ecological",
-      "name": "Candidates should measure some of the Factors. ecological factors including humidity, temperature, wind speed, rainfall and light",
+      "name": "Factors",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-physical-factors-intensity-climatic-topographic-and-gaseous",
+      "slug": "waec-physical-factors-climatic-topographic-and-gaseous",
       "topic": "waec-simple-measurement-of-ecological",
-      "name": "Physical factors: intensity. Climatic, topographic and gaseous",
+      "name": "Physical factors: Climatic, topographic and gaseous",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-edaphic-factors-chemical-and-physical-composition-moisture-c",
       "topic": "waec-simple-measurement-of-ecological",
-      "name": "Edaphic factors: Chemical and physical composition, moisture content and soil texture. Candidates should be able to classify organisms",
+      "name": "Edaphic factors: Chemical and physical composition, moisture content and soil texture",
       "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-as-producers-consumers-and-decomposers",
-      "topic": "waec-food-webs-and-trophic-levels",
-      "name": "as producers, consumers and decomposers",
-      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-autotrophs-and-heterotrophs",
       "topic": "waec-food-webs-and-trophic-levels",
       "name": "Autotrophs and Heterotrophs",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-producers-autotrophs",
+      "topic": "waec-food-webs-and-trophic-levels",
+      "name": "Producers: autotrophs",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-producers-autotrophs-aquatic-and-terrestrial-producers-consu",
+      "slug": "waec-consumers-heterotrophs",
       "topic": "waec-food-webs-and-trophic-levels",
-      "name": "Producers: autotrophs Aquatic and terrestrial producers, consumers (ii) Consumers: heterotrophs and decomposers should be known. (iii) Decomposers",
+      "name": "Consumers: heterotrophs",
       "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-decomposers",
+      "topic": "waec-food-webs-and-trophic-levels",
+      "name": "Decomposers",
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-trophic-levels-energy-relationships",
       "topic": "waec-food-webs-and-trophic-levels",
       "name": "Trophic levels energy relationships",
-      "order": 4,
+      "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-food-chain-candidates-should-illustrate-food-relationships-i",
+      "slug": "waec-food-chain",
       "topic": "waec-food-webs-and-trophic-levels",
-      "name": "Food chain Candidates should illustrate food relationships (ii) Food web in a food chain and food web using specific examples",
-      "order": 5,
+      "name": "Food chain",
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-energy-flow",
       "topic": "waec-food-webs-and-trophic-levels",
       "name": "Energy flow",
-      "order": 6,
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-food-energy-relationship-in-aquatic-and-terrestrial-environm",
       "topic": "waec-food-webs-and-trophic-levels",
-      "name": "Food/Energy relationship in aquatic and terrestrial environment. Non-cyclic nature of energy transfer should be (ii) Pyramid of energy and Pyramid of mentioned. numbers",
-      "order": 7,
-      "objectives": []
-    },
-    {
-      "slug": "waec-decomposition-in-nature-candidates-should-be-able-to-constru",
-      "topic": "waec-food-webs-and-trophic-levels",
-      "name": "Decomposition in nature Candidates should be able to construct and",
+      "name": "Food/Energy relationship in aquatic and terrestrial environment",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-decomposers-explain-pyramid-of-energy-pyramid-of-micro-and-m",
+      "slug": "waec-decomposition-in-nature",
       "topic": "waec-food-webs-and-trophic-levels",
-      "name": "Decomposers: explain pyramid of energy, pyramid of (micro and macro-decomposers) numbers and point out the major differences between them. (ii) Gaseous products Candidates should observe demonstrations to show that carbon dioxide, hydrogen sulphide, (iii) Role of decomposers heat energy are released during decomposition",
+      "name": "Decomposition in nature",
       "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-decomposers-micro-and-macro-decomposers",
+      "topic": "waec-food-webs-and-trophic-levels",
+      "name": "Decomposers: (micro and macro-decomposers)",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-gaseous-products",
+      "topic": "waec-food-webs-and-trophic-levels",
+      "name": "Gaseous products",
+      "order": 11,
       "objectives": []
     },
     {
       "slug": "waec-biological-associations-type-of-associations-parasitism-symb",
       "topic": "waec-ecological-management",
-      "name": "Biological Associations Type of associations: Parasitism, symbiosis, commensalism and Features of biological importance associated saprophytism. with each type should be mentioned. Named examples should be used to illustrate these",
+      "name": "Biological Associations Type of associations: Parasitism, symbiosis, commensalism and saprophytism",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-adaptation-of-organisms-to-associations-habitats-adaptations",
+      "slug": "waec-adaptation-of-organisms-to-habitats",
       "topic": "waec-ecological-management",
-      "name": "Adaptation of organisms to associations. habitats. Adaptations of plants and animals to",
+      "name": "Adaptation of organisms to habitats",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-pollution-of-the-atmosphere-environmental-conditions-with-pa",
+      "slug": "waec-pollution-of-the-atmosphere",
       "topic": "waec-ecological-management",
-      "name": "Pollution of the atmosphere environmental conditions with particular reference to differences in habitats should be",
+      "name": "Pollution of the atmosphere",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-nature-names-sources-and-effects-mentioned-of-air-pollutants",
+      "slug": "waec-nature-names-sources-and-effects-of-air-pollutants",
       "topic": "waec-ecological-management",
-      "name": "Nature, names, sources and effects mentioned. of air pollutants. Examples of air pollutants should include carbon monoxide, sulphur dioxide, oxides of (ii) Effect of noise nitrogen, smoke, smog, dust and particles released into the air from factories. Health hazards and damage to the environment should be emphasized",
+      "name": "Nature, names, sources and effects of air pollutants",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-water-and-soil-pollution-type-and-effects-of-pollutants-harm",
+      "slug": "waec-effect-of-noise",
       "topic": "waec-ecological-management",
-      "name": "Water and Soil Pollution Type and effects of pollutants. Harmful effect of noise from generators, aeroplane and electronic sound gadgets, e.t.c. should be mentioned. Water and soil pollutants to be studied include: synthetic substances (detergent), insecticides, artificial fertilizers, herbicides, sewage, domestic and industrial wastes, crude oil and decaying organic matter. The health hazards and harmful effects of water and soil pollutants on organisms should also be mentioned. Mention should be made of oil spillage and its effects",
+      "name": "Effect of noise",
       "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-water-and-soil-pollution-type-and-effects-of-pollutants",
+      "topic": "waec-ecological-management",
+      "name": "Water and Soil Pollution Type and effects of pollutants",
+      "order": 6,
       "objectives": []
     },
     {
@@ -1509,77 +1751,84 @@
     {
       "slug": "waec-structural-changes-in-species-composition-variety-or-diversi",
       "topic": "waec-ecology-of-population",
-      "name": "Structural changes in species composition, variety or diversity and increase in numbers. (ii) General characteristics and outcomes of succession",
+      "name": "Structural changes in species composition, variety or diversity and increase in numbers",
       "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-general-characteristics-and-outcomes-of-succession",
+      "topic": "waec-ecology-of-population",
+      "name": "General characteristics and outcomes of succession",
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-primary-succession-succession-in-terrestrial-and-aquatic-hab",
       "topic": "waec-ecology-of-population",
-      "name": "Primary succession. Succession in terrestrial and aquatic habitats. Candidates should study succession in an",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-secondary-succession-climax-abandoned-farmland-lawn-and-in-a",
-      "topic": "waec-ecology-of-population",
-      "name": "Secondary succession, climax abandoned farmland, lawn, and in a pond over a of the succession: characteristic period of time to discover a definite sequence of a stable ecosystem. of colonization by plants. Reference should be made to population",
+      "name": "Primary succession. Succession in terrestrial and aquatic habitats",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-factors-that-affect-population-size-natality-mortality-emigr",
+      "slug": "waec-secondary-succession-climax-of-the-succession-characteristic",
       "topic": "waec-ecology-of-population",
-      "name": "Factors that affect population size: natality, mortality, emigration, immigration, food shortage, predation,competition and diseases",
+      "name": "Secondary succession, climax of the succession: characteristic of a stable ecosystem",
       "order": 5,
       "objectives": []
     },
     {
-      "slug": "waec-preservation-and-storage-of-foods-description-of-various-met",
+      "slug": "waec-preservation-and-storage-of-foods",
       "topic": "waec-ecology-of-population",
-      "name": "Preservation and storage of foods Description of various methods of preserving and storing food. The use of ionizing radiations (x-ray, etc) should be mentioned. Explanation of the biological",
+      "name": "Preservation and storage of foods",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-the-life-of-selected-insects-basis-of-preserving-and-storing",
+      "slug": "waec-the-life-of-selected-insects",
       "topic": "waec-ecology-of-population",
-      "name": "The life of selected insects; basis of preserving and storing food. Local",
+      "name": "The life of selected insects",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-weevils-and-cotton-strainers-methods-of-preserving-food-such",
+      "slug": "waec-weevils-and-cotton-strainers",
       "topic": "waec-ecology-of-population",
-      "name": "Weevils and cotton strainers. methods of preserving food such as drying, salting and smoking should be mentioned. External features of weevils and cotton stainers, their mode of life, adaptation (ii) Control of pests to their habitats and their economic importance",
+      "name": "Weevils and cotton strainers",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-various-methods-of-pest-control-physical",
+      "slug": "waec-control-of-pests",
+      "topic": "waec-ecology-of-population",
+      "name": "Control of pests",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-carriers-of-microorganisms",
       "topic": "waec-microorganisms-man-and-health",
-      "name": "Various methods of pest control: physical,",
+      "name": "Carriers of microorganisms",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-carriers-of-microorganisms-chemical-biological-etc-and-their",
+      "slug": "waec-microorganisms-in-action",
       "topic": "waec-microorganisms-man-and-health",
-      "name": "Carriers of microorganisms chemical biological, etc; and their advantages and disadvantages should be mentioned",
+      "name": "Microorganisms in action",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-microorganisms-in-action-effects-of-micro-organisms-on-our-b",
+      "slug": "waec-beneficial-effects-in-nature-medicine-and-industries",
       "topic": "waec-microorganisms-man-and-health",
-      "name": "Microorganisms in action Effects of micro-organisms on our bodies",
+      "name": "Beneficial effects in nature, medicine and industries",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-beneficial-effects-in-nature-medicine-should-be-mentioned-an",
+      "slug": "waec-harmful-effects-of-microorganisms-diseases-caused-by-microor",
       "topic": "waec-microorganisms-man-and-health",
-      "name": "Beneficial effects in nature, medicine should be mentioned. and industries. Examples of carriers: housefly; mosquitoes; tsetsefly should be mentioned. (ii) Harmful effects of microorganisms, Candidates should perform experiments on diseases caused by microorganisms: fermentation, curdling of milk etc. to illustrate cholera, measles, malaria and ring worm. the beneficial uses of microorganisms",
+      "name": "Harmful effects of microorganisms, diseases caused by microorganisms: cholera, measles, malaria and ring worm",
       "order": 4,
       "objectives": []
     },
@@ -1591,108 +1840,94 @@
       "objectives": []
     },
     {
-      "slug": "waec-methods-of-controlling-harmful-the-diseases-should-be-studie",
+      "slug": "waec-methods-of-controlling-harmful-dehydration",
       "topic": "waec-microorganisms-man-and-health",
-      "name": "Methods of .controlling harmful The diseases should be studied with respect to microorganisms: high temperature, the causative organisms, mode of transmission antibiotics, antiseptics, high salinity and dehydration. and symptoms. Effects of these methods on the micro- (ii) Ways of controlling the vectors. organisms should be mentioned",
+      "name": "Methods of.controlling harmful dehydration",
       "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-public-health-the-importance-of-the-following-towards-the-ma",
       "topic": "waec-microorganisms-man-and-health",
-      "name": "Public Health: The importance of the following towards the maintenance of good health practices: Methods of controlling housefly and mosquito should be studied",
+      "name": "Public Health: The importance of the following towards the maintenance of good health practices",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-refuse-and-sewage-disposal-candidates-should-be-familiar-wit",
+      "slug": "waec-refuse-and-sewage-disposal",
       "topic": "waec-microorganisms-man-and-health",
-      "name": "Refuse and sewage disposal. Candidates should be familiar with the proper methods of carrying out these public health (ii) Immunization, vaccination practices in their community. and inoculation (control of diseases). Various forms of immunization should be mentioned. Explanation of the terms immunization, D. Conservation of Natural Resources: vaccination and inoculation. Candidates should be able to show how these terms are 1. Resources to be conserved: soil, water, related. wildlife, forest and minerals",
+      "name": "Refuse and sewage disposal",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-the-meaning-and-need-for-conservation-of-natural-resources-s",
-      "topic": "waec-ways-of-ensuring-conservation",
-      "name": "The meaning and need for conservation of natural resources should be mentioned. Problems of conservation should be mentioned in relation to economic and social development, overgrazing and poaching. The following should be studied",
-      "order": 1,
+      "slug": "waec-immunization-vaccination-and-inoculation-control-of-diseases",
+      "topic": "waec-microorganisms-man-and-health",
+      "name": "Immunization, vaccination and inoculation (control of diseases)",
+      "order": 9,
       "objectives": []
     },
     {
       "slug": "waec-agencies-responsible-for-conservation",
       "topic": "waec-ways-of-ensuring-conservation",
-      "name": "agencies responsible for conservation",
-      "order": 2,
+      "name": "Agencies responsible for conservation",
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-conservation-education-e-variation-in-population",
       "topic": "waec-ways-of-ensuring-conservation",
-      "name": "conservation education E. Variation in Population",
-      "order": 3,
+      "name": "Conservation education E. Variation in Population",
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-conservation-laws",
       "topic": "waec-ways-of-ensuring-conservation",
-      "name": "conservation laws",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-benefits-of-conservation-appearance-of-individuals-variation",
-      "topic": "waec-morphological-variations-in-the-physical",
-      "name": "benefits of conservation. appearance of individuals Variation can be classified into morphological",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-size-height-and-weight-and-physiological-or-continuous-and-d",
-      "topic": "waec-morphological-variations-in-the-physical",
-      "name": "size, height and weight and physiological or continuous and discontinuous",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-colour-skin-eye-hair-coat-of-animals-candidates-are-required",
-      "topic": "waec-morphological-variations-in-the-physical",
-      "name": "colour (skin, eye, hair coat of animals) Candidates are required to measure heights and weights of pupils of the same age group and plot graphs of frequency distribution of the",
+      "name": "Conservation laws",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-finger-prints-height-and-weight-observe-and-record-various-s",
-      "topic": "waec-morphological-variations-in-the-physical",
-      "name": "finger prints height and weight. Observe and record various skin colour, colour",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-pattern-of-some-animals-cow-goat-rabbits-colour-pattern-of-p",
-      "topic": "waec-physiological-variations",
-      "name": "pattern of some animals (cow, goat, rabbits), colour pattern of plants (maize cob and leaves)",
+      "slug": "waec-size-height-and-weight",
+      "topic": "waec-morphological-variations-in-the-physical-appearance-of-indiv",
+      "name": "Size, height and weight",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-ability-to-roll-tongue-make-finger-prints-and-classify-them",
-      "topic": "waec-physiological-variations",
-      "name": "Ability to roll tongue Make finger prints and classify them into arches, loops, whorls and compounds",
+      "slug": "waec-colour-skin-eye-hair-coat-of-animals",
+      "topic": "waec-morphological-variations-in-the-physical-appearance-of-indiv",
+      "name": "Colour (skin, eye, hair coat of animals)",
       "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-finger-prints",
+      "topic": "waec-morphological-variations-in-the-physical-appearance-of-indiv",
+      "name": "Finger prints",
+      "order": 3,
+      "objectives": []
+    },
+    {
+      "slug": "waec-ability-to-roll-tongue",
+      "topic": "waec-physiological-variations",
+      "name": "Ability to roll tongue",
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-ability-to-taste-phenylthiocarbamide-ptc",
       "topic": "waec-physiological-variations",
       "name": "Ability to taste phenylthiocarbamide (PTC)",
-      "order": 3,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-blood-groups-abo-classification-f-biology-of-heredity-geneti",
       "topic": "waec-physiological-variations",
       "name": "Blood groups (ABO) classification) F. Biology of Heredity (Genetics)",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
@@ -1703,93 +1938,72 @@
       "objectives": []
     },
     {
-      "slug": "waec-definition-of-the-following-basic-genetic-organisms-terms-su",
+      "slug": "waec-organisms",
       "topic": "waec-transmission-and-expression-of-characteristics",
-      "name": "Definition of the following basic genetic organisms. terms such as gene, genotype, phenotype, dominant, recessive, allele, locus, test cross,",
+      "name": "Organisms",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-hereditary-variation-and-back-cross-reference-should-be-made",
+      "slug": "waec-hereditary-variation",
       "topic": "waec-transmission-and-expression-of-characteristics",
-      "name": "Hereditary variation and back cross. Reference should be made to characters that",
+      "name": "Hereditary variation",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-mendel-s-work-in-genetics-can-be-transmitted-from-generation",
+      "slug": "waec-mendel-s-work-in-genetics",
       "topic": "waec-transmission-and-expression-of-characteristics",
-      "name": "Mendel's work in genetics can be transmitted from generation to generation such as colour of skin, eye, hair, blood group, sickle cell, shape of face and nose",
+      "name": "Mendel's work in genetics",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-mendel-s-experiments-mendel-s-experiment-with-red-and-white",
+      "slug": "waec-mendel-s-experiments",
       "topic": "waec-transmission-and-expression-of-characteristics",
-      "name": "Mendel’s experiments Mendel's experiment with red and white flowered peas should be mentioned. (ii) Mendelian traits Mendel’s experiment on monohybrid and dihybrid inheritance should be mentioned. (iii) Mendelian laws",
+      "name": "Mendel’s experiments",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-reference-should-be-made-to-dominant-and-recessive-character",
+      "slug": "waec-mendelian-traits",
+      "topic": "waec-transmission-and-expression-of-characteristics",
+      "name": "Mendelian traits",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-mendelian-laws",
+      "topic": "waec-transmission-and-expression-of-characteristics",
+      "name": "Mendelian laws",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-structure",
       "topic": "waec-chromosomes-the-basis-of-heredity",
-      "name": "Reference should be made to dominant and recessive characters in plants and animals",
+      "name": "Structure",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-structure-candidates-should-observe-chromosomes-in-permanent",
+      "slug": "waec-process-of-transmission-of-hereditary-characters-from-parent",
       "topic": "waec-chromosomes-the-basis-of-heredity",
-      "name": "Structure Candidates should observe chromosomes in permanently prepared slides of cells and root tips of onion or lily. Candidates should study the structure of DNA and gene replication using",
+      "name": "Process of transmission of hereditary characters from parents to offspring",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-process-of-transmission-of-models-and-charts-hereditary-char",
-      "topic": "waec-chromosomes-the-basis-of-heredity",
-      "name": "Process of transmission of models and charts. hereditary characters from parents to offspring",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-segregation-of-genes-at-meiosis-and-recombination-at-fertili",
+      "slug": "waec-probability-in-genetics-hybrid-formation-biology",
       "topic": "waec-probability-in-genetics-hybrid-formation",
-      "name": "Segregation of genes at meiosis and recombination at fertilization should be used to",
+      "name": "Probability in genetics (Hybrid formation)",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-explain-the-process-of-transmission-of-characters-hereditary",
+      "slug": "waec-characters",
       "topic": "waec-linkage-sex-determination-and-sex-linked",
-      "name": "explain the process of transmission of characters. hereditary characters from parents to offspring. Computation of probability is not required",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-explanation-of-the-terms-linkage-sex-determination-and-sex-l",
-      "topic": "waec-application-of-the-principles-of-heredity-in",
-      "name": "Explanation of the terms linkage, sex determination and sex linked characters such as haemophilia, colour blindness, baldness and hairy ear lobes",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-agriculture-data-on-cross-breeding-experiments-should-be-stu",
-      "topic": "waec-application-of-the-principles-of-heredity-in",
-      "name": "Agriculture Data on cross-breeding experiments should be studied",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-medicine-examples-of-new-varieties-of-crops-and-livestock-ob",
-      "topic": "waec-application-of-the-principles-of-heredity-in",
-      "name": "Medicine Examples of new varieties of crops and livestock obtained through cross-breeding should be mentioned. The advantages and disadvantages of cross-fertilization, out and inbreeding should be explained. G. Adaptation for survival and Evolution. The application of knowledge of heredity in marriage counseling with particular reference to",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-sickle-cell-anaemia-and-rhesus-factor-should-be-mentioned",
-      "topic": "waec-behavioural-adaptations-in-social-animals",
-      "name": "sickle cell anaemia and rhesus factor should be mentioned",
+      "name": "Characters",
       "order": 1,
       "objectives": []
     },
@@ -1797,28 +2011,21 @@
       "slug": "waec-termites",
       "topic": "waec-behavioural-adaptations-in-social-animals",
       "name": "Termites",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-bees-candidates-should-be-able-to-identify-the-various-caste",
-      "topic": "waec-behavioural-adaptations-in-social-animals",
-      "name": "Bees Candidates should be able to identify the various castes of social insects. The division of labour in social insects and the roles of different castes should be stressed. Examples of communication among animals such as contact notes and warning cries should be mentioned. Reference should be made to basking by lizard, territorial behaviour in birds",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-and-lizards-and-behaviour-of-other-animals-under-unfavourabl",
-      "topic": "waec-evolution",
-      "name": "and lizards and behaviour of other animals under unfavourable conditions-hibernation and aestivation. The behaviour of an organism as a member of a group and the effect of grouping on the behaviour of an organism should be mentioned. Candidates are expected to know the evolutionary trends in plants and animals such as from simple to complex structural adaptations and from aquatic to terrestrial (a) Evidence of evolution. organisms. The role of mutation in evolution should be mentioned",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-theories-of-evolution-the-following-evidence-of-evolution-sh",
-      "topic": "waec-evolution",
-      "name": "Theories of evolution The following evidence of evolution should be mentioned: Paleontology (fossil records), comparative biochemistry, geographical distribution, comparative anatomy and physiology, adaptive radiation, comparative embryology and systematics. The contributions of Lamarck and Darwin to the development of the theory of evolution should be mentioned. (For candidates in Ghana only) A. Introducing Biology",
+      "slug": "waec-bees",
+      "topic": "waec-behavioural-adaptations-in-social-animals",
+      "name": "Bees",
       "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-theories-of-evolution-for-candidates-in-ghana-only",
+      "topic": "waec-evolution",
+      "name": "Theories of evolution (For candidates in Ghana only)",
+      "order": 1,
       "objectives": []
     },
     {
@@ -1829,227 +2036,185 @@
       "objectives": []
     },
     {
-      "slug": "waec-and-an-organism-the-two-major-branches-of-biology-botany-and",
+      "slug": "waec-procedure-for-biological-work-biology",
       "topic": "waec-procedure-for-biological-work",
-      "name": "and an organism. The two major branches of biology: Botany and zoology; specialized areas: bacteriology, molecular biology, histology, cell biology, ecology etc. Description of skills required by biologists in their work. The scientific method: Identifying the problem, defining the problem, hypothesizing, experimenting, recording, analyzing and concluding. Description of",
+      "name": "Procedure for biological work",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-following-steps-for-writing-report-on-biological-experiment",
+      "slug": "waec-importance-of-biology-biology",
       "topic": "waec-importance-of-biology",
-      "name": "following steps for writing report on biological experiment or investigation: Aim, hypothesis/ scientific framework, materials/",
+      "name": "Importance of Biology",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-drawing-of-set-up-method-results-orientation-observation-dis",
-      "topic": "waec-body-symmetry-sectioning",
-      "name": "drawing of set-up, method, results/ orientation observation, discussion and conclusion. Application of biology to everyday life. Careers associated with the study of biology. Description of the following terms",
+      "slug": "waec-body-symmetry-bilateral-and-radial",
+      "topic": "waec-body-symmetry-sectioning-and-orientation",
+      "name": "Body symmetry (bilateral and radial)",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-body-symmetry-bilateral-and-radial-ii-sectioning-longitudina",
-      "topic": "waec-body-symmetry-sectioning",
-      "name": "Body symmetry (bilateral and radial) (ii) Sectioning: longitudinal and transverse and vertical (iii) Body orientation of specimen: anterior, posterior, lateral, dorsal and",
+      "slug": "waec-sectioning-longitudinal-and-transverse-and-vertical",
+      "topic": "waec-body-symmetry-sectioning-and-orientation",
+      "name": "Sectioning: longitudinal and transverse and vertical",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-ventral-views-distinction-between",
+      "slug": "waec-cells-endocytosis-and-exocytosis",
       "topic": "waec-the-microscope",
-      "name": "ventral views). Distinction between",
+      "name": "Cells: Endocytosis and Exocytosis",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-posterior-and-anterior-views-ii-dorsal-and-ventral-views-iii",
-      "topic": "waec-the-microscope",
-      "name": "posterior and anterior views (ii) dorsal and ventral views (iii) transverse and longitudinal section Examination of simple light, compound light and stereoscopic light microscopes and identification of the various parts. Handling and caring for microscopes. Use of the light microscope to observe prepared slides. Techniques involved in the preparation of temporary slides of animal and plant cells. Mounting varieties of specialized eukaryotic cells. Drawing of cells as seen under the microscope. Resolution and magnification of 6. Biological drawings microscope. Determination of magnification of drawings. Measuring lengths using compound light microscope. Electron microscope should be mentioned Appropriate headings for biological drawings. Magnification/ size of biological drawings. B. Cell Biology Quality of biological drawings e.g. clarity of lines, neatness of labels, labels of biological drawings. 1. Movement of substances into and out of cells: Endocytosis and Exocytosis",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-explanation-of-the-process-of-endocytosis-phagocytosis-and-p",
+      "slug": "waec-nucleic-acids-biology",
       "topic": "waec-nucleic-acids",
-      "name": "Explanation of the process of endocytosis ( phagocytosis and pinocytosis) and exocytosis. Explanation of the term nucleic acid. Types of nucleic acids: Deoxyribonucleic acid 3. DNA structure and replication, (DNA) and ribonucleic acid (RNA). Basic RNA transcription. chemical differences between DNA and RNA. Description of double helix model of DNA structure by Watson and Crick. Processes of DNA replication and RNA transcription. 4. Protein synthesis Description of the process of protein synthesis. The roles of m-RNA, t-RNA,",
+      "name": "Nucleic acids",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-and-r-rna-and-ribosomes-in-protein-synthesis-must-be-emphasi",
+      "slug": "waec-cell-cycle-biology",
       "topic": "waec-cell-cycle",
-      "name": "and r-RNA and ribosomes in protein synthesis must be emphasized. Importance of protein synthesis. Examples of proteins synthesized by humans. Explanation of the of the term cell cycle. Phases of the cell cycle [Interphase: G + S + G2 phases, Mitosis: M phase ( karyokinesis and cytokinesis)]. The processes of mitosis and meiosis and their importance. Preparation of a squash of onion root tip and observing stages of meiosis under C. Life Processes in Living Things the microscope. Observing stages of meiosis",
+      "name": "Cell cycle",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-in-plant-and-animal-cells-permanent-slides-euglena-may-be-us",
-      "topic": "waec-amoeba-paramecium",
-      "name": "in plant and animal cells (Permanent slides Euglena may be used)",
+      "slug": "waec-in-plant-and-animal-cells-permanent-slides-may-be-used",
+      "topic": "waec-amoeba-paramecium-and-euglena",
+      "name": "In plant and animal cells (Permanent slides may be used)",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-external-structure-and-life-processes-of-amoeba-paramecium-a",
+      "slug": "waec-spirogyra-and-rhizopus-biology",
       "topic": "waec-spirogyra-and-rhizopus",
-      "name": "External structure and life processes of Amoeba, Paramecium, and Euglena. Mounting of Paramecium and Euglena under the compound light microscope",
+      "name": "Spirogyra and Rhizopus",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-structure-of-spirogyra-and-rhizopus-nutrition-and-reproducti",
+      "slug": "waec-mosses-and-ferns-biology",
       "topic": "waec-mosses-and-ferns",
-      "name": "Structure of Spirogyra and Rhizopus. Nutrition and reproduction of Spirogyra and Rhizopus. Identification of stages of conjugation of Spirogyra. Structure of mosses (Brachymenium and Funaria) and ferns (Nephrolepis, ( Platycerium, Phymatodes). Description of external features of mosses and ferns. Nutrition and reproduction in mosses. Reproduction in ferns. D. Diversity of Living Things",
+      "name": "Mosses and ferns",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-orders-of-class-insecta-orders-of-class-insecta-odonata-2-id",
-      "topic": "waec-characteristics-of-some-of",
-      "name": "orders of Class Insecta Orders of Class Insecta (Odonata 2. Identification of organisms using Orthoptera, Coleoptera, Hymenoptera, biological keys Hemiptera, Diptera, Isoptera, Lepidoptera, Dictyoptera, and Neuroptera). E. Interactions in Nature Identification of organisms using numbered Soil and dichotomous keys. Construction of identification keys. F. Mammalian Anatomy and Physiology",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-identification-of-mineral-salts-ca2-fe2-in-a-soil-fe3-mg2-k",
+      "slug": "waec-dissection-of-a-small-mammal-biology",
       "topic": "waec-dissection-of-a-small-mammal",
-      "name": "Identification of mineral salts (Ca2+, Fe2+, -) in a soil Fe3+, Mg2+, K+, SO4 -, NO3 -, PO4 sample. Soil reclamation. The arrangement of internal organs of",
+      "name": "Dissection of a small mammal",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-mammals-functions-of-the-internal-organs-structure-of-the-ma",
+      "slug": "waec-structure-of-the-mammalian-heart",
       "topic": "waec-transport",
-      "name": "mammals. Functions of the internal organs. Structure of the mammalian heart. Candidates should be able to cut open a chloroformed mammal (guinea pig, rat,",
+      "name": "Structure of the mammalian heart",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-mouse-and-rabbit-and-draw-the-internal-organs",
       "topic": "waec-cellular-respiration",
-      "name": "mouse and rabbit) and draw the internal organs",
+      "name": "Mouse and rabbit) and draw the internal organs",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-mechanism-of-the-heartbeat-excitation-and-contractions-san-a",
+      "slug": "waec-muscles",
       "topic": "waec-movement-biology",
-      "name": "Mechanism of the heartbeat: excitation and contractions (SAN, AVN, Purkinge tissue)",
+      "name": "Muscles",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-muscles-determination-of-respiratory-quotient-rq-of-differen",
+      "slug": "waec-skeletal-tissues",
       "topic": "waec-movement-biology",
-      "name": "Muscles Determination of respiratory quotient (RQ) of different substrates. Explanation of the significance of RQ. Types of muscle (Smooth, striated and cardiac muscles). Description of how muscles",
+      "name": "Skeletal tissues",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-skeletal-tissues-bring-about-movement-explanation-of-sliding",
-      "topic": "waec-movement-biology",
-      "name": "Skeletal tissues bring about movement. Explanation of sliding filament model of",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-muscle-contraction",
+      "slug": "waec-secondary-sexual-characteristics",
       "topic": "waec-reproduction",
-      "name": "muscle contraction",
+      "name": "Secondary sexual characteristics",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-secondary-sexual-characteristics-description-of-the-structur",
+      "slug": "waec-prenatal-antenatal-care",
       "topic": "waec-reproduction",
-      "name": "Secondary sexual characteristics Description of the structure of skeletal tissues( Bones and cartilage)",
+      "name": "Prenatal/Antenatal care",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-prenatal-antenatal-care-physical-changes-that-occur-in-males",
-      "topic": "waec-reproduction",
-      "name": "Prenatal/Antenatal care Physical changes that occur in males and females during puberty. The role of hormones in the development of secondary sexual characteristics in humans. G. Plant Structure and Physiology Meaning of antenatal care. Antenatal visits requirements. Nutrition and diet. Exercise 1. Morphology of monocotyledonous during pregnancy. Benefits of the use of and dicotyledonous plants. natural products by mother and child. External features of monocotyledonous and dicotyledonous plants. Functions of roots, stems and leaves of monocotyledonous and 2. Transport: dicotyledonous plants. Differences between Guttation monocotyledonous and dicotyledonous plants. Modifications of roots, stems and 3. Reproduction: leaves. Floral formula Biological principles underlying guttation. H. Humans and their Environment Determination and writing of the floral",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-formulae-of-the-following-flowers-management-flamboyant-delo",
+      "slug": "waec-management",
       "topic": "waec-integrated-water-resources",
-      "name": "formulae of the following flowers: management. Flamboyant (Delonix), Pride of Barbados (Caesalpinia) and Rattle box (Crotalaria). Floral diagrams are not required",
+      "name": "Management",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-description-of-the-integrated-water-resources-management-iwr",
+      "slug": "waec-drug-abuse",
       "topic": "waec-health-and-hygiene",
-      "name": "Description of the integrated water resources management (IWRM). Explanation of how IWRM can reduce undesirable change in the environment",
+      "name": "Drug abuse",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-drug-abuse-definition-of-terms-health-hygiene-and-sanitation",
+      "slug": "waec-community-health",
       "topic": "waec-health-and-hygiene",
-      "name": "Drug abuse Definition of terms: health, hygiene, and sanitation. Means of achieving personal",
+      "name": "Community health",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-community-health-cleanliness-hygiene",
+      "slug": "waec-first-aid-recombinant-dna-technology",
       "topic": "waec-health-and-hygiene",
-      "name": "Community health cleanliness/ hygiene",
+      "name": "First Aid Recombinant DNA Technology",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-first-aid-explanation-of-the-term-drug-abuse-consequences-of",
-      "topic": "waec-health-and-hygiene",
-      "name": "First Aid Explanation of the term drug abuse. Consequences of drug abuse. Importance of town planning and its effects I. Evolution on health of the community. Recombinant DNA Technology Explanation of the term First Aid. Different methods of administering First Aid. J. Biology and Industry",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-contamination-of-water-explanation-of-the-term-recombinant-d",
+      "slug": "waec-contamination-of-water",
       "topic": "waec-biology-and-water-industry",
-      "name": "Contamination of water Explanation of the term Recombinant DNA Technology and state its application",
+      "name": "Contamination of water",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-identification-of-polluted-water-candidates-should-carry-out",
+      "slug": "waec-identification-of-polluted-water",
       "topic": "waec-biology-and-water-industry",
-      "name": "Identification of polluted water Candidates should carry out experiments to test water samples for bacterial",
+      "name": "Identification of polluted water",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-waste-water-treatment-contamination-the-use-of-biological-ox",
+      "slug": "waec-waste-water-treatment",
       "topic": "waec-biology-and-water-industry",
-      "name": "Waste water treatment contamination. The use of Biological Oxygen Demand",
+      "name": "Waste water treatment",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-bod-in-the-measurement-of-the-level-of-organic-pollution-in",
+      "slug": "waec-fish-stock-management",
       "topic": "waec-biology-and-fishing-industry",
-      "name": "(BOD) in the measurement of the level of organic pollution in water",
+      "name": "Fish stock management",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-fish-stock-management-description-of-biological-processes-of",
+      "slug": "waec-fish-farming-biology",
       "topic": "waec-biology-and-fishing-industry",
-      "name": "Fish stock management Description of biological processes of purifying sewage. Cesspit activated sludge process should be mentioned",
+      "name": "Fish farming",
       "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-fish-farming-explanation-of-why-fish-is-an-efficient-convert",
-      "topic": "waec-biology-and-fishing-industry",
-      "name": "Fish farming Explanation of why fish is an efficient converter of plankton into flesh. Description of ways of conserving fish stocks in water bodies. Importance of fish farming. Advantages and disadvantages of fish farming",
-      "order": 3,
       "objectives": []
     },
     {
@@ -2060,23 +2225,23 @@
       "objectives": []
     },
     {
-      "slug": "waec-explanation-of-the-term-food-additives-identification-of-the",
+      "slug": "waec-biology-and-agriculture-biology",
       "topic": "waec-biology-and-agriculture",
-      "name": "Explanation of the term food additives. Identification of the categories of food additives (Naturally occurring and artificial food additives). Health implications in the use of food additives",
+      "name": "Biology and agriculture",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-explanation-of-the-biological-principles-by-which-fertilizer",
+      "slug": "waec-biotechnology-biology",
       "topic": "waec-biotechnology",
-      "name": "Explanation of the biological principles by which fertilizer, pesticides, selective breeding, resistance to disease and irrigation can respectively lead to successful agriculture. Explanation of the concept of biotechnology. The use of micro-organisms in the manufacture of food such as cheese, yoghurt,",
+      "name": "Biotechnology",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-kenkey-bread-and-butter-the-role-of-micro-organisms-in-the-p",
+      "slug": "waec-for-candidates-in-nigeria-sierra-leone-the-gambia-and-liberi",
       "topic": "waec-biological-fuel-generation",
-      "name": "kenkey, bread and butter. The role of micro-organisms in the production of alcoholic drinks and organic acids. The role of micro-organisms in pharmaceutical, tanning and mining industries. Explanation of the need for new sources of energy. The use of biogas, use of green crops to produce ethanol, the generation of hydrogen gas from chloroplasts should be mentioned (For candidates in Nigeria, Sierra Leone, The Gambia and Liberia) A. Concept of Living",
+      "name": "For candidates in Nigeria, Sierra Leone, The Gambia and Liberia",
       "order": 1,
       "objectives": []
     },
@@ -2088,17 +2253,10 @@
       "objectives": []
     },
     {
-      "slug": "waec-protoplasm",
-      "topic": "waec-irritability-as-a-basic-characteristic",
-      "name": "protoplasm",
+      "slug": "waec-types-of-responses-taxis-and-nastism",
+      "topic": "waec-irritability-as-a-basic-characteristic-of-protoplasm",
+      "name": "Types of responses: taxis and nastism",
       "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-types-of-responses-taxis-and-nastism-the-cell-theory-includi",
-      "topic": "waec-irritability-as-a-basic-characteristic",
-      "name": "Types of responses: taxis and nastism The cell theory including the work of Hooke, Dujardin, Schleiden and Schwann should be (b) Environmental factors that evoke outlined. responses; temperature, pH etc",
-      "order": 2,
       "objectives": []
     },
     {
@@ -2111,7 +2269,7 @@
     {
       "slug": "waec-diseases-of-the-liver-infective-hepatitis-cancer-of-the-live",
       "topic": "waec-excretory-systems",
-      "name": "Diseases of the liver: infective hepatitis, cancer of the liver and gall Excretory organs of earthworm and insects stones. Their effects and remedies. should be mentioned",
+      "name": "Diseases of the liver: infective hepatitis, cancer of the liver and gall stones. Their effects and remedies",
       "order": 2,
       "objectives": []
     },
@@ -2123,227 +2281,220 @@
       "objectives": []
     },
     {
-      "slug": "waec-tongue-the-process-of-perception-of-smell-including-the-role",
+      "slug": "waec-tongue",
       "topic": "waec-sense-organs",
-      "name": "Tongue. The process of perception of smell including the roles of sensory cells in nose and olfactory lobes should be studied",
+      "name": "Tongue",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-the-skin-experiments-should-be-carried-out-to-determine-5-re",
+      "slug": "waec-the-skin-biology",
       "topic": "waec-sense-organs",
-      "name": "The skin. Experiments should be carried out to determine 5. Reproduction the different areas of the tongue associated with (a) Courtship behaviour in animals: different tastes. The association between the (i) Pairing organs of taste and smell should be mentioned. (ii) Display e.g. peacocks Mention should be made of taste buds. (iii) Territoriality (iv) Seasonal migration The function of the skin as a sensory organ associated with breeding in should be emphasized. herrings, eels and birds",
+      "name": "The skin",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-metamorphosis-and-life-courtship-pattern-in-male-and-female",
+      "slug": "waec-seasonal-migration",
       "topic": "waec-sense-organs",
-      "name": "Metamorphosis and life Courtship pattern in male and female animals and territorialism in lizards should history of housefly. be observed",
+      "name": "Seasonal migration",
       "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-metamorphosis-and-life",
+      "topic": "waec-sense-organs",
+      "name": "Metamorphosis and life",
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-adaptive-features-in-a-developing-animal",
       "topic": "waec-sense-organs",
       "name": "Adaptive features in a developing animal",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-yolk-in-egg-of-fish-toad-and-birds-for-nourishment-ii-placen",
-      "topic": "waec-sense-organs",
-      "name": "Yolk in egg of fish, toad and birds for nourishment (ii) Placenta in animals The content (yolk and albumen) of birds' egg",
       "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-germination-of-seeds-should-be-examined",
+      "slug": "waec-yolk-in-egg-of-fish-toad-and-birds-for-nourishment",
       "topic": "waec-sense-organs",
-      "name": "Germination of seeds should be examined",
+      "name": "Yolk in egg of fish, toad and birds for nourishment",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-essential-factors-candidates-should-observe-the-connection-o",
+      "slug": "waec-placenta-in-animals",
       "topic": "waec-sense-organs",
-      "name": "Essential factors Candidates should observe the connection of the which affect developing embryo. foetus to the mother and the adaptive features of (ii) Types of germination the placenta, umbilical cord and amnion in a dissected pregnant rat. The meaning of oviparity and viviparity should be mentioned. B. Plant and Animal Nutrition",
+      "name": "Placenta in animals",
       "order": 8,
       "objectives": []
     },
     {
-      "slug": "waec-experiments-to-show-the-importance-of-oxygen-adequate-moistu",
+      "slug": "waec-germination-of-seeds",
+      "topic": "waec-sense-organs",
+      "name": "Germination of seeds",
+      "order": 9,
+      "objectives": []
+    },
+    {
+      "slug": "waec-essential-factors-which-affect-developing-embryo",
+      "topic": "waec-sense-organs",
+      "name": "Essential factors which affect developing embryo",
+      "order": 10,
+      "objectives": []
+    },
+    {
+      "slug": "waec-types-of-germination",
+      "topic": "waec-sense-organs",
+      "name": "Types of germination",
+      "order": 11,
+      "objectives": []
+    },
+    {
+      "slug": "waec-plants",
       "topic": "waec-nitrogen-cycle",
-      "name": "Experiments to show the importance of oxygen, adequate moisture and suitable temperature, should be carried out. The stages in hypogeal and epigeal germination 2. Modes of nutrition: should be observed and drawn autotrophic, chemosynthetic, carnivorous plants",
+      "name": "Plants",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-alimentary-tracts-of-different-animals-the-names-and-roles-o",
+      "slug": "waec-alimentary-tracts-of-different-animals",
       "topic": "waec-alimentary-system",
-      "name": "Alimentary tracts of different animals The names and roles of bacteria involved in nitrogen cycle should be mentioned. Candidates to observe root nodules in",
+      "name": "Alimentary tracts of different animals",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-description-and-function-of-various-leguminous-plants-parts",
+      "slug": "waec-description-and-function-of-various-parts",
       "topic": "waec-alimentary-system",
-      "name": "Description and function of various leguminous plants. parts. Examples of carnivorous plants should be",
+      "name": "Description and function of various parts",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-studied",
+      "slug": "waec-categories-carnivorous-herbivorous-and-omnivorous",
       "topic": "waec-feeding-habits",
-      "name": "studied",
+      "name": "Categories: Carnivorous, herbivorous and omnivorous",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-categories-carnivorous-herbivorous-and-omnivorous-comparison",
-      "topic": "waec-feeding-habits",
-      "name": "Categories: Carnivorous, herbivorous and omnivorous Comparison should be made using dissected earthworm, grasshopper/cockroach to show the",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-modifications-and-mechanisms-important-features-of-the-alime",
-      "topic": "waec-feeding-habits",
-      "name": "Modifications and mechanisms important features of the alimentary canal. associated with the following habits; filter feeding, fluid feeding, feeding adaptation in Use a bird and cockroach/grasshopper to show insects, saprophytic feeding, parasitic feeding modifications for functions etc. C. Basic Ecological Concepts",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-mosquito-larva-housefly-butterfly-cockroach-lithosphere-hydr",
+      "slug": "waec-lithosphere-hydrosphere-atmosphere-niche",
       "topic": "waec-ecological-components",
-      "name": "Mosquito larva, housefly, butterfly, cockroach, Lithosphere, hydrosphere, atmosphere, niche adult mosquito, maize weevil, rhizopods, tapeworm should be used to illustrate the 2.Population Studies by Sampling different types of feeding mechanisms and",
+      "name": "Lithosphere, hydrosphere, atmosphere, niche",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-population-size-various-modifications",
-      "topic": "waec-ecological-components",
-      "name": "Population size various modifications",
-      "order": 2,
+      "slug": "waec-population-size",
+      "topic": "waec-population-studies-by-sampling",
+      "name": "Population size",
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-dominance",
-      "topic": "waec-ecological-components",
+      "topic": "waec-population-studies-by-sampling",
       "name": "Dominance",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-density-candidates-are-expected-to-explain-and-give",
-      "topic": "waec-ecological-components",
-      "name": "Density Candidates are expected to explain and give",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-examples-of-the-terms",
-      "topic": "waec-energy-transformation-in-nature",
-      "name": "examples of the terms",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-energy-loss-in-the-ecosystem-candidates-are-required-to-carr",
-      "topic": "waec-energy-transformation-in-nature",
-      "name": "Energy loss in the ecosystem Candidates are required to carry out a project to determine population density by counting the",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-solar-radiation-its-intake-and-loss-at-individual-types-of-p",
-      "topic": "waec-energy-transformation-in-nature",
-      "name": "Solar radiation: its intake and loss at individual types of plants and animals and record the earth's surface. such count in a given plot",
+      "slug": "waec-density",
+      "topic": "waec-population-studies-by-sampling",
+      "name": "Density",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-energy-loss-in-the-biosphere-laws-of-thermodynamics-and-its",
+      "slug": "waec-energy-loss-in-the-ecosystem",
       "topic": "waec-energy-transformation-in-nature",
-      "name": "Energy loss in the biosphere. Laws of thermodynamics and its application to ecological phenomena should be mentioned. The laws of thermodynamics should be used to explain energy flow across tropic levels. 4. Nutrient Cycling in Nature Candidates should discuss energy as a limiting (a) Carbon Cycle: factor in primary production i.e production of autotrophs. (i) Process of carbon cycle Reference should be made to harvest as a (ii) Importance of carbon in nature. means of measuring primary production. Candidates should be able to draw the carbon cycle, list the sources of carbon (burning, respiration, decay) and discuss the relative importance of the cycle. Reference should be made to carbon dioxide- (b) Water Cycle: oxygen balance in nature. (i) Importance of water cycle, Candidates should carry out experiments to (ii) Importance of water to living show absorption of carbon dioxide and release organisms. of oxygen during photosynthesis",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-and-maximum-range-candidates-should-carry-out-experiments-to",
-      "topic": "waec-ecological-management-tolerance-minimum",
-      "name": "and maximum range Candidates should carry out experiments to show the presence of water in expired air and that water is given off during respiration",
+      "name": "Energy loss in the ecosystem",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-candidates-should-perform-experiments-to",
-      "topic": "waec-habitats",
-      "name": "Candidates should perform experiments to",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-aquatic-habitat-marine-estuarine-fresh-water-show-the-limit",
-      "topic": "waec-habitats",
-      "name": "Aquatic habitat: marine, estuarine fresh water show the limit of tolerance of Tilapia to various under the following headings: concentrations of salt solution or sensitivity of",
+      "slug": "waec-solar-radiation-its-intake-and-loss-at-the-earth-s-surface",
+      "topic": "waec-energy-transformation-in-nature",
+      "name": "Solar radiation: its intake and loss at the earth's surface",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-characteristics-of-habitat-wood-lice-to-temperature-ii-distr",
-      "topic": "waec-habitats",
-      "name": "characteristics of habitat wood lice to temperature. (ii) distribution of plants and animals in the habitat, (iii) adaptive features of plants and Measurement of physical factors: animals in the habitat. temperature, salinity, light intensity, turbidity, current, pH, should be carried out. (b) Terrestrial habitat: marsh, forest, grass land, arid land should be studied under the The pattern of distribution including dominant following headings: types and seasonal changes of population, size of organisms in the habitat should be noted",
+      "slug": "waec-energy-loss-in-the-biosphere",
+      "topic": "waec-energy-transformation-in-nature",
+      "name": "Energy loss in the biosphere",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-characteristics-of-habitat-ii-distribution-of-plants-and-ani",
-      "topic": "waec-habitats",
-      "name": "characteristics of habitat (ii) distribution of plants and animals in The measurement of the physical factors, temperature, relative humidity, light, wind, habitat. and pH should be carried out",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-balance-in-nature-reference-should-be-made-to-edaphic-factor",
-      "topic": "waec-habitats",
-      "name": "Balance in Nature Reference should be made to edaphic factors. Dynamic equilibrium population and The effect of physical factors on distribution population density. of plants and animals should be mentioned",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-the-process-by-which-carnivores-maintain-a-constant-populati",
-      "topic": "waec-relevance-of-biology-to-agriculture",
-      "name": "The process by which carnivores maintain a constant population should be mentioned",
+      "slug": "waec-ecological-management-tolerance-minimum-and-maximum-range-biology",
+      "topic": "waec-ecological-management-tolerance-minimum-and-maximum-range",
+      "name": "Ecological Management: Tolerance, Minimum and maximum range",
       "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-aquatic-habitat-marine-estuarine-fresh-water-under-the-follo",
+      "topic": "waec-habitats",
+      "name": "Aquatic habitat: marine, estuarine fresh water under the following headings",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-characteristics-of-habitat",
+      "topic": "waec-habitats",
+      "name": "Characteristics of habitat",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-distribution-of-plants-and-animals-in-the-habitat",
+      "topic": "waec-habitats",
+      "name": "Distribution of plants and animals in the habitat",
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-classification-of-plants-based-on-life-cycle",
       "topic": "waec-relevance-of-biology-to-agriculture",
       "name": "Classification of plants based on life cycle",
-      "order": 2,
+      "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-effects-of-agricultural-practices-on-ecology",
       "topic": "waec-relevance-of-biology-to-agriculture",
       "name": "Effects of agricultural practices on ecology",
+      "order": 2,
+      "objectives": []
+    },
+    {
+      "slug": "waec-bush-burning",
+      "topic": "waec-relevance-of-biology-to-agriculture",
+      "name": "Bush burning",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-bush-burning-effects-of-human-activities-on-ecological-ii-ti",
+      "slug": "waec-fertilizer",
       "topic": "waec-relevance-of-biology-to-agriculture",
-      "name": "Bush burning Effects of human activities on ecological (ii) Tillage systems should be mentioned. (iii) Fertilizer (iv) Herbicide/pesticide",
+      "name": "Fertilizer",
       "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-herbicide-pesticide",
+      "topic": "waec-relevance-of-biology-to-agriculture",
+      "name": "Herbicide/pesticide",
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-different-farming-methods",
       "topic": "waec-relevance-of-biology-to-agriculture",
       "name": "Different farming methods",
-      "order": 5,
+      "order": 6,
       "objectives": []
     },
     {
@@ -2354,51 +2505,51 @@
       "objectives": []
     },
     {
-      "slug": "waec-microorganisms-in-air-and-water-ii-groups-of-microorganisms",
+      "slug": "waec-microorganisms-in-air-and-water",
       "topic": "waec-microorganisms-man-and-his-health",
-      "name": "Microorganisms in air and water (ii) Groups of microorganisms: bacteria, viruses, some algae, protozoa and some Microorganisms in air, water and expired air fungi. should be observed and identified by their colour, pattern of growth and appearance of",
+      "name": "Microorganisms in air and water",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-microorganisms-in-our-bodies-and-food-their-colony-microorga",
+      "slug": "waec-groups-of-microorganisms-bacteria-viruses-some-algae-protozo",
       "topic": "waec-microorganisms-man-and-his-health",
-      "name": "Microorganisms in our bodies and food their colony. Microorganisms under the finger nails, mouth",
+      "name": "Groups of microorganisms: bacteria, viruses, some algae, protozoa and some fungi",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-public-health-cavity-expired-air-and-decomposing-food-food-h",
+      "slug": "waec-microorganisms-in-our-bodies-and-food",
       "topic": "waec-microorganisms-man-and-his-health",
-      "name": "Public Health cavity, expired air, and decomposing food Food hygiene and health organization. substance should be observed and identified by their colour, pattern of growth, and appearance D. Application of Variations of colony",
+      "name": "Microorganisms in our bodies and food",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-reference-should-be-made-to-the-roles-of-national-and-intern",
+      "slug": "waec-public-health-food-hygiene-and-health-organization",
+      "topic": "waec-microorganisms-man-and-his-health",
+      "name": "Public Health Food hygiene and health organization",
+      "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-crime-detection-biology",
       "topic": "waec-crime-detection",
-      "name": "Reference should be made to the roles of national and international health organizations in maintenance of good public health",
+      "name": "Crime detection",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-the-uniqueness-of-each-individual-s-finger-print-should-be-m",
+      "slug": "waec-blood-transfusion-biology",
       "topic": "waec-blood-transfusion",
-      "name": "The uniqueness of each individual's finger print should be mentioned in relation to crime detection",
+      "name": "Blood transfusion",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-reference-should-be-made-to-importance-of-e-evolution-knowle",
+      "slug": "waec-determination-of-paternity-biology",
       "topic": "waec-determination-of-paternity",
-      "name": "Reference should be made to importance of E. Evolution knowledge of blood groups in blood",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-transfusion-and-determination-of-paternity",
-      "topic": "waec-adaptation-for-survival",
-      "name": "transfusion and determination of paternity",
+      "name": "Determination of paternity",
       "order": 1,
       "objectives": []
     },
@@ -2406,63 +2557,49 @@
       "slug": "waec-factors-that-bring-about-competition",
       "topic": "waec-adaptation-for-survival",
       "name": "Factors that bring about competition",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-intra-and-inter-species-competition-reference-should-be-made",
-      "topic": "waec-adaptation-for-survival",
-      "name": "Intra and Inter-species competition Reference should be made to the factors such as food, space, water, light and mates which organisms share and form the basis of competition. The effects of intra-species competition should be observed by growing many",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-relationship-between-seedlings-of-maize-in-a-small-area-whil",
-      "topic": "waec-adaptation-for-survival",
-      "name": "Relationship between seedlings of maize in a small area, while the competition and succession effects of interspecies competition can be observed by planting many seedlings of maize and pepper in a small area. Candidates should observe competition and succession on a moistened exposed",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-slice-of-bread-over-a-period-of-time",
-      "topic": "waec-structural-adaptation-for",
-      "name": "slice of bread over a period of time",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-obtaining-food",
-      "topic": "waec-structural-adaptation-for",
-      "name": "obtaining food",
+      "slug": "waec-intra-and-inter-species-competition",
+      "topic": "waec-adaptation-for-survival",
+      "name": "Intra and Inter-species competition",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-protection-and-defense",
-      "topic": "waec-structural-adaptation-for",
-      "name": "protection and defense",
+      "slug": "waec-relationship-between-competition-and-succession",
+      "topic": "waec-adaptation-for-survival",
+      "name": "Relationship between competition and succession",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-securing-mates-for-reproduction",
-      "topic": "waec-structural-adaptation-for",
-      "name": "securing mates for reproduction",
-      "order": 4,
+      "slug": "waec-obtaining-food",
+      "topic": "waec-structural-adaptation-for-reproduction-functions",
+      "name": "Obtaining food",
+      "order": 1,
+      "objectives": []
+    },
+    {
+      "slug": "waec-protection-and-defense",
+      "topic": "waec-structural-adaptation-for-reproduction-functions",
+      "name": "Protection and defense",
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-regulating-body-temperature",
-      "topic": "waec-structural-adaptation-for",
-      "name": "regulating body temperature",
-      "order": 5,
+      "topic": "waec-structural-adaptation-for-reproduction-functions",
+      "name": "Regulating body temperature",
+      "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-conserving-water-candidates-should-observe-examples-of-organ",
-      "topic": "waec-structural-adaptation-for",
-      "name": "conserving water Candidates should observe examples of organisms that show structural adaptation for obtaining food, escaping from enemies, 3. Adaptive Colouration securing mates, regulating body temperature (a) Plants and animals and conserving water. (b) Colouration and their functions Candidates are required to observe examples of adaptive colouration in plants and animals",
-      "order": 6,
+      "slug": "waec-conserving-water",
+      "topic": "waec-structural-adaptation-for-reproduction-functions",
+      "name": "Conserving water",
+      "order": 4,
       "objectives": []
     }
   ]

@@ -71,6 +71,18 @@ class Profile:
 
 
 PROFILES: dict[str, Profile] = {
+    "nigerian-history": Profile(
+        slug="nigerian-history",
+        display="Nigerian History",
+        topic_re=r"^(\d+)\.\s*(.+)$",
+        subtopic_re=r"^\(([a-z])\)\s*(.+)$",
+        topic_x_max=130,
+        topic_continuation_x_max=160,
+        body_x_min=110,
+        body_x_max=600,
+        sentence_split=False,
+        section_re=r"^(?:SECTION\s+[A-Z].*|PAPER\s+[0-9]+.*|[A-Z][A-Z ,&/()-]{3,})$",
+    ),
     "health-education": Profile(
         slug="health-education",
         display="Health Education",
@@ -224,6 +236,8 @@ PROFILES: dict[str, Profile] = {
         topic_re=r"^(?P<name>[(*A-Z].*)$",
         topic_x_min=115,
         topic_x_max=170,
+        topic_continuation_x_max=200,
+        topic_continuation_words=4,
         body_x_min=250,
         body_x_max=600,
         sentence_split=True,

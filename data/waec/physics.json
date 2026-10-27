@@ -273,41 +273,21 @@
       "countries": []
     },
     {
-      "slug": "waec-magnetic-field-physics",
+      "slug": "waec-simple-a-c-circuits",
       "subject": "physics",
       "exam": "WAEC",
-      "name": "Magnetic field",
+      "name": "Simple a.c. circuits",
       "order": 27,
       "weight": 0,
       "objectives": [],
       "countries": []
     },
     {
-      "slug": "waec-electromagnetic-field-physics",
-      "subject": "physics",
-      "exam": "WAEC",
-      "name": "Electromagnetic field",
-      "order": 28,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-simple-a-c-circuits",
-      "subject": "physics",
-      "exam": "WAEC",
-      "name": "Simple a.c. circuits",
-      "order": 29,
-      "weight": 0,
-      "objectives": [],
-      "countries": []
-    },
-    {
-      "slug": "waec-structure-of-the-atom-physics",
+      "slug": "waec-structure-of-the-atom",
       "subject": "physics",
       "exam": "WAEC",
       "name": "Structure of the atom",
-      "order": 30,
+      "order": 28,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -317,7 +297,7 @@
       "subject": "physics",
       "exam": "WAEC",
       "name": "Wave-particle paradox",
-      "order": 31,
+      "order": 29,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -327,7 +307,7 @@
       "subject": "physics",
       "exam": "WAEC",
       "name": "Projectile motion concept of into space",
-      "order": 32,
+      "order": 30,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -337,7 +317,7 @@
       "subject": "physics",
       "exam": "WAEC",
       "name": "Satellites and rockets",
-      "order": 33,
+      "order": 31,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -347,7 +327,7 @@
       "subject": "physics",
       "exam": "WAEC",
       "name": "Elastic Properties of solid",
-      "order": 34,
+      "order": 32,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -357,7 +337,7 @@
       "subject": "physics",
       "exam": "WAEC",
       "name": "Fibre Optics",
-      "order": 35,
+      "order": 33,
       "weight": 0,
       "objectives": [],
       "countries": []
@@ -365,9 +345,9 @@
   ],
   "subtopics": [
     {
-      "slug": "waec-simple-structure-of-matter-should-be-discussed-three-physics",
+      "slug": "waec-concepts-of-matter-physics",
       "topic": "waec-concepts-of-matter",
-      "name": "Simple structure of matter should be discussed. Three physics states of matter, namely solid, liquid and gas should be treated. Evidence of the particle nature of matter e.g. Brownian motion experiment, Kinetic theory of matter. Use of the theory to explain; states of matter (solid, liquid and gas), pressure in a gas, evaporation and boiling; cohesion, adhesion, capillarity. Crystalline and amorphous substances to be compared (Arrangement of atoms in crystalline structure to be described e.g. face centred, body centred",
+      "name": "Concepts of matter",
       "order": 1,
       "objectives": []
     },
@@ -428,17 +408,24 @@
       "objectives": []
     },
     {
-      "slug": "waec-equilibrium-of-bodies",
+      "slug": "waec-equilibrium-of-bodies-physics",
       "topic": "waec-fluid-at-rest",
       "name": "Equilibrium of bodies",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-archimedes-principle-ii-law-of-flotation",
+      "slug": "waec-archimedes-principle",
       "topic": "waec-fluid-at-rest",
-      "name": "Archimedes’ principle (ii) Law of flotation",
+      "name": "Archimedes’ principle",
       "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-law-of-flotation",
+      "topic": "waec-fluid-at-rest",
+      "name": "Law of flotation",
+      "order": 5,
       "objectives": []
     },
     {
@@ -470,31 +457,38 @@
       "objectives": []
     },
     {
-      "slug": "waec-contact-force-ii-non-contact-force-field-force",
+      "slug": "waec-contact-force",
       "topic": "waec-motion",
-      "name": "Contact force (ii) Non-contact force(field force)",
+      "name": "Contact force",
       "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-non-contact-force-field-force",
+      "topic": "waec-motion",
+      "name": "Non-contact force(field force)",
+      "order": 6,
       "objectives": []
     },
     {
       "slug": "waec-solid-friction",
       "topic": "waec-motion",
       "name": "Solid friction",
-      "order": 6,
+      "order": 7,
       "objectives": []
     },
     {
       "slug": "waec-viscosity-friction-in-fluids",
       "topic": "waec-motion",
       "name": "Viscosity (friction in fluids)",
-      "order": 7,
+      "order": 8,
       "objectives": []
     },
     {
       "slug": "waec-simple-ideas-of-circular-motion",
       "topic": "waec-motion",
       "name": "Simple ideas of circular motion",
-      "order": 8,
+      "order": 9,
       "objectives": []
     },
     {
@@ -549,7 +543,7 @@
     {
       "slug": "waec-direction-direction",
       "topic": "waec-scalars-and-vectors",
-      "name": "direction direction",
+      "name": "Direction direction",
       "order": 1,
       "objectives": []
     },
@@ -638,16 +632,16 @@
       "objectives": []
     },
     {
-      "slug": "waec-examples-of-various-forms-of-energy-should-be-a-forms-of-ene",
+      "slug": "waec-conservation-of-energy-and-its-use-in-explaining-energy-tran",
       "topic": "waec-energy",
-      "name": "Examples of various forms of energy should be (a) Forms of energy mentioned e.g. mechanical (potential and kinetic), heat chemical, electrical, light, sound, nuclear. Renewable (e.g. solar, wind, tides, hydro, ocean (b) World energy resources waves) and non-renewable (e.g. petroleum, coal, nuclear, biomass) sources of energy should be discussed briefly. Statement of the principle of conservation of energy (c) Conservation of energy. and its use in explaining energy transformations",
+      "name": "Conservation of energy. and its use in explaining energy transformations",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-energy-transfer",
       "topic": "waec-work-energy-and-power",
-      "name": "energy transfer",
+      "name": "Energy transfer",
       "order": 1,
       "objectives": []
     },
@@ -666,17 +660,24 @@
       "objectives": []
     },
     {
-      "slug": "waec-potential-energy-p-e-ii-kinetic-energy-k-e",
+      "slug": "waec-potential-energy-p-e",
       "topic": "waec-work-energy-and-power",
-      "name": "Potential energy (P.E.) (ii) Kinetic energy (K.E)",
+      "name": "Potential energy (P.E.)",
       "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-kinetic-energy-k-e",
+      "topic": "waec-work-energy-and-power",
+      "name": "Kinetic energy (K.E)",
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-conservation-of-mechanical-energy-doing-work",
       "topic": "waec-work-energy-and-power",
       "name": "Conservation of mechanical energy. doing work",
-      "order": 5,
+      "order": 6,
       "objectives": []
     },
     {
@@ -701,38 +702,59 @@
       "objectives": []
     },
     {
-      "slug": "waec-concept-of-heat-capacity-ii-specific-heat-capacity",
+      "slug": "waec-concept-of-heat-capacity",
       "topic": "waec-heat-energy",
-      "name": "Concept of heat capacity (ii) Specific heat capacity",
+      "name": "Concept of heat capacity",
       "order": 4,
+      "objectives": []
+    },
+    {
+      "slug": "waec-specific-heat-capacity",
+      "topic": "waec-heat-energy",
+      "name": "Specific heat capacity",
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-latent-heat",
       "topic": "waec-heat-energy",
       "name": "Latent heat",
-      "order": 5,
+      "order": 6,
       "objectives": []
     },
     {
-      "slug": "waec-concept-of-latent-heat-ii-melting-point-and-boiling-point-ii",
+      "slug": "waec-concept-of-latent-heat",
       "topic": "waec-heat-energy",
-      "name": "Concept of latent heat (ii) Melting point and boiling Point (iii) Specific latent heat of fusion and of vaporization",
-      "order": 6,
+      "name": "Concept of latent heat",
+      "order": 7,
+      "objectives": []
+    },
+    {
+      "slug": "waec-melting-point-and-boiling-point",
+      "topic": "waec-heat-energy",
+      "name": "Melting point and boiling Point",
+      "order": 8,
+      "objectives": []
+    },
+    {
+      "slug": "waec-specific-latent-heat-of-fusion-and-of-vaporization",
+      "topic": "waec-heat-energy",
+      "name": "Specific latent heat of fusion and of vaporization",
+      "order": 9,
       "objectives": []
     },
     {
       "slug": "waec-humidity-relative-humidity-and-dew-point",
       "topic": "waec-heat-energy",
       "name": "Humidity, relative humidity and dew point",
-      "order": 7,
+      "order": 10,
       "objectives": []
     },
     {
       "slug": "waec-humidity-and-the-weather",
       "topic": "waec-heat-energy",
       "name": "Humidity and the weather",
-      "order": 8,
+      "order": 11,
       "objectives": []
     },
     {
@@ -780,7 +802,7 @@
     {
       "slug": "waec-progressive-waves-producing-standing-stationary-waves",
       "topic": "waec-properties-of-waves-reflection-refraction-diffraction-interf",
-      "name": "progressive waves producing standing stationary waves",
+      "name": "Progressive waves producing standing stationary waves",
       "order": 1,
       "objectives": []
     },
@@ -862,44 +884,44 @@
       "objectives": []
     },
     {
-      "slug": "waec-speed-of-sound-in-solid-liquid-and",
-      "topic": "waec-sound-waves",
-      "name": "Speed of sound in solid, liquid and",
-      "order": 3,
-      "objectives": []
-    },
-    {
       "slug": "waec-noise-and-music",
       "topic": "waec-sound-waves",
       "name": "Noise and music",
-      "order": 4,
+      "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-characteristics-of-sound",
       "topic": "waec-sound-waves",
       "name": "Characteristics of sound",
-      "order": 5,
+      "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-vibration-in-strings",
       "topic": "waec-sound-waves",
       "name": "Vibration in strings",
-      "order": 6,
+      "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-forced-vibration",
       "topic": "waec-sound-waves",
       "name": "Forced vibration",
+      "order": 6,
+      "objectives": []
+    },
+    {
+      "slug": "waec-resonance",
+      "topic": "waec-sound-waves",
+      "name": "Resonance",
       "order": 7,
       "objectives": []
     },
     {
-      "slug": "waec-resonance-ii-harmonies-and-overtones",
+      "slug": "waec-harmonies-and-overtones",
       "topic": "waec-sound-waves",
-      "name": "Resonance (ii) Harmonies and overtones",
+      "name": "Harmonies and overtones",
       "order": 8,
       "objectives": []
     },
@@ -925,30 +947,30 @@
       "objectives": []
     },
     {
-      "slug": "waec-1-electrostatics-charges-coulomb-s-law-gradient-and-electric",
+      "slug": "waec-electrostatics-charges-coulomb-s-law-gradient-and-electric-p",
       "topic": "waec-electric-field",
-      "name": "(1) Electrostatics charges: Coulomb’s law gradient) and electric potential. (2) Current electricity resistance of a cell",
+      "name": "Electrostatics charges: Coulomb’s law gradient) and electric potential. (2) Current electricity resistance of a cell",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-magnetic-materials",
       "topic": "waec-magnetic-field",
-      "name": "magnetic materials",
+      "name": "Magnetic materials",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-magnetic-force-on",
+      "slug": "waec-a-current-carrying-conductor-placed-in-a-magnetic-field",
       "topic": "waec-magnetic-field",
-      "name": "Magnetic force on",
+      "name": "A current-carrying conductor placed in a magnetic field",
       "order": 2,
       "objectives": []
     },
     {
-      "slug": "waec-a-current-carrying-conductor-placed-in-a-magnetic-field-ii-b",
+      "slug": "waec-between-two-parallel-current-carrying-conductors",
       "topic": "waec-magnetic-field",
-      "name": "a current-carrying conductor placed in a magnetic field; (ii) between two parallel current-carrying conductors",
+      "name": "Between two parallel current-carrying conductors",
       "order": 3,
       "objectives": []
     },
@@ -981,80 +1003,38 @@
       "objectives": []
     },
     {
-      "slug": "waec-magnetic-materials-physics",
-      "topic": "waec-magnetic-field-physics",
-      "name": "magnetic materials",
-      "order": 1,
-      "objectives": []
-    },
-    {
-      "slug": "waec-magnetic-force-on-physics",
-      "topic": "waec-magnetic-field-physics",
-      "name": "Magnetic force on",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-a-current-carrying-conductor-placed-in-a-magnetic-field-ii-b-physics",
-      "topic": "waec-magnetic-field-physics",
-      "name": "a current-carrying conductor placed in a magnetic field; (ii) between two parallel current-carrying conductors",
-      "order": 3,
-      "objectives": []
-    },
-    {
-      "slug": "waec-use-of-electromagnets-physics",
-      "topic": "waec-magnetic-field-physics",
-      "name": "Use of electromagnets",
-      "order": 4,
-      "objectives": []
-    },
-    {
-      "slug": "waec-the-earth-s-magnetic-field-physics",
-      "topic": "waec-magnetic-field-physics",
-      "name": "The earth’s magnetic field",
-      "order": 5,
-      "objectives": []
-    },
-    {
-      "slug": "waec-magnetic-force-on-a-moving-charged-particle-physics",
-      "topic": "waec-magnetic-field-physics",
-      "name": "Magnetic force on a moving charged particle",
-      "order": 6,
-      "objectives": []
-    },
-    {
       "slug": "waec-concept-of-electromagnetic-field",
-      "topic": "waec-electromagnetic-field-physics",
+      "topic": "waec-electromagnetic-field",
       "name": "Concept of electromagnetic field",
-      "order": 1,
+      "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-electromagnetic-induction",
-      "topic": "waec-electromagnetic-field-physics",
+      "topic": "waec-electromagnetic-field",
       "name": "Electromagnetic induction",
-      "order": 2,
-      "objectives": []
-    },
-    {
-      "slug": "waec-inductance",
-      "topic": "waec-electromagnetic-field-physics",
-      "name": "Inductance",
       "order": 3,
       "objectives": []
     },
     {
-      "slug": "waec-eddy-currents",
-      "topic": "waec-electromagnetic-field-physics",
-      "name": "Eddy currents",
+      "slug": "waec-inductance",
+      "topic": "waec-electromagnetic-field",
+      "name": "Inductance",
       "order": 4,
       "objectives": []
     },
     {
-      "slug": "waec-power-transmission-and-distribution",
-      "topic": "waec-electromagnetic-field-physics",
-      "name": "Power transmission and distribution",
+      "slug": "waec-eddy-currents",
+      "topic": "waec-electromagnetic-field",
+      "name": "Eddy currents",
       "order": 5,
+      "objectives": []
+    },
+    {
+      "slug": "waec-power-transmission-and-distribution",
+      "topic": "waec-electromagnetic-field",
+      "name": "Power transmission and distribution",
+      "order": 6,
       "objectives": []
     },
     {
@@ -1101,42 +1081,42 @@
     },
     {
       "slug": "waec-models-of-the-atom",
-      "topic": "waec-structure-of-the-atom-physics",
+      "topic": "waec-structure-of-the-atom",
       "name": "Models of the atom",
       "order": 1,
       "objectives": []
     },
     {
       "slug": "waec-energy-quantization",
-      "topic": "waec-structure-of-the-atom-physics",
+      "topic": "waec-structure-of-the-atom",
       "name": "Energy quantization",
       "order": 2,
       "objectives": []
     },
     {
       "slug": "waec-photoelectric-effect",
-      "topic": "waec-structure-of-the-atom-physics",
+      "topic": "waec-structure-of-the-atom",
       "name": "Photoelectric effect",
       "order": 3,
       "objectives": []
     },
     {
       "slug": "waec-thermionic-emission",
-      "topic": "waec-structure-of-the-atom-physics",
+      "topic": "waec-structure-of-the-atom",
       "name": "Thermionic emission",
       "order": 4,
       "objectives": []
     },
     {
       "slug": "waec-radioactivity-natural-and-artificial",
-      "topic": "waec-structure-of-the-atom-physics",
+      "topic": "waec-structure-of-the-atom",
       "name": "Radioactivity – Natural and artificial",
       "order": 5,
       "objectives": []
     },
     {
       "slug": "waec-nuclear-reactions-fusion-and-fission",
-      "topic": "waec-structure-of-the-atom-physics",
+      "topic": "waec-structure-of-the-atom",
       "name": "Nuclear reactions --- Fusion and Fission",
       "order": 6,
       "objectives": []
@@ -1158,28 +1138,28 @@
     {
       "slug": "waec-projectiles-as-an-object-thrown-release",
       "topic": "waec-projectile-motion-concept-of-into-space",
-      "name": "projectiles as an object thrown/release",
+      "name": "Projectiles as an object thrown/release",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-meaning-of-a-satellite-comparison-of-natural-and-artificial",
+      "slug": "waec-satellites-and-rockets-physics",
       "topic": "waec-satellites-and-rockets",
-      "name": "Meaning of a satellite comparison of natural and artificial satellites parking orbits, Geostationary satellites and period of revolution and speed of a satellite. Uses of satellites and rockets",
+      "name": "Satellites and rockets",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-hooke-s-law-young-s-modules-and-work-done-in-springs-and-str",
+      "slug": "waec-elastic-properties-of-solid-physics",
       "topic": "waec-elastic-properties-of-solid",
-      "name": "Hooke’s law, Young’s modules and work done in springs and string Thermal conductivity: Solar energy collector and Black body Radiation",
+      "name": "Elastic Properties of solid",
       "order": 1,
       "objectives": []
     },
     {
-      "slug": "waec-explanation-of-concept-of-fibre-optics-principle-of-transmis",
+      "slug": "waec-fibre-optics-physics",
       "topic": "waec-fibre-optics",
-      "name": "Explanation of concept of fibre optics. Principle of transmission of light through an optical fibre Applications of fibre optics e.g. local area Networks (LAN) medicine, rensing devices, carrying laser beams e.t.c. Meaning of LASER 6. Introduction to LASER Types of LASERS (Solid state, gas, liquid and semi-conductor LASERS Application of LASERS (in Scientific research, communication, medicine military technology, Holograms e.t.c. Dangers involved in using LASERS. Uses of magnets and ferromagnetic materials. 7. Magnetic materials Distinction between conductors, semiconductors and 8. Electrical Conduction through insulators in term of band theory. materials [Electronic] Semi conductor materials (silicon and germanium) Meaning of intrinsic semiconductors. (Example of materials silicon and germanium). Charge carriers Doping production of p-type and n-type extrinsic semi conductors. Junction diode – forward and reverse biasing, voltage characteristics. Uses of diodes Half and full wave rectification. Use of kinetic theory to explain diffusion. 9. Structure of matter Electron diffraction 10. Wave – particle paradox Duality of matter Simple illustrations of dual nature of light",
+      "name": "Fibre Optics",
       "order": 1,
       "objectives": []
     }
