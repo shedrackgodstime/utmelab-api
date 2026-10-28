@@ -37,6 +37,8 @@ RETRYABLE_CATEGORIES = frozenset(
         "provider_unavailable",
         "upstream",
         "transport",
+        "output",
+        "schema",
     }
 )
 

@@ -74,6 +74,34 @@
         "enabled": true,
         "authorized": true,
         "priority": 10
+      },
+      {
+        "id": "nvidia-02",
+        "api_key_env": "NVIDIA_API_KEY_02",
+        "enabled": true,
+        "authorized": true,
+        "priority": 20
+      },
+      {
+        "id": "nvidia-03",
+        "api_key_env": "NVIDIA_API_KEY_03",
+        "enabled": true,
+        "authorized": true,
+        "priority": 30
+      },
+      {
+        "id": "nvidia-04",
+        "api_key_env": "NVIDIA_API_KEY_04",
+        "enabled": true,
+        "authorized": true,
+        "priority": 40
+      },
+      {
+        "id": "nvidia-05",
+        "api_key_env": "NVIDIA_API_KEY_05",
+        "enabled": true,
+        "authorized": true,
+        "priority": 50
       }
     ],
     "cloudflare-free": [
