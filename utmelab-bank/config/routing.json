@@ -10,9 +10,8 @@
       "allowed_model_statuses": ["verified_candidate", "unstable_candidate"],
       "candidates": [
         {"provider": "openai", "model": "nvidia-nemotron-super-vl", "priority": 5},
-        {"provider": "opencode", "model": "deepseek-v4.1-flash-free", "priority": 10},
-        {"provider": "openai", "model": "cloudflare-llama4-scout", "priority": 20},
-        {"provider": "kilo", "model": "kilo-auto-free", "priority": 40}
+        {"provider": "openai", "model": "cloudflare-llama4-scout", "priority": 10},
+        {"provider": "kilo", "model": "kilo-auto-free", "priority": 20}
       ]
     },
     "topic_classification": {
