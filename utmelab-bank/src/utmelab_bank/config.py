@@ -80,6 +80,7 @@ PROD_READONLY_TOKEN = "TURSO_PROD_AUTH_TOKEN_READONLY"
 PROD_WRITE_TOKEN = "TURSO_PROD_AUTH_TOKEN"
 BANK_DATABASE_URL = "TURSO_BANK_DATABASE_URL"
 BANK_AUTH_TOKEN = "TURSO_BANK_AUTH_TOKEN"
+BANK_WRITE_TOKEN = "TURSO_BANK_AUTH_TOKEN_WRITE"
 GITLAB_TOKEN = "GITLAB_TOKEN"
 OCR_API_KEY = "OCR_API_KEY"
 NVIDIA_API_KEY = "NVIDIA_API_KEY"
@@ -263,6 +264,24 @@ def catalog_write_credentials() -> tuple[str, str]:
     return url, token
 
 
+def bank_write_credentials() -> tuple[str, str]:
+    """The URL and full token for bank writes.
+
+    Kept out of :class:`Settings` on purpose: the bank pipeline uses read-only
+    by default. Only explicit migration/cleanup commands use this.
+    """
+    values = _read_env()
+    url = values.get(BANK_DATABASE_URL, "")
+    # Prefer explicit write token, fall back to regular auth token (which has write perms)
+    token = values.get(BANK_WRITE_TOKEN, "") or values.get(BANK_AUTH_TOKEN, "")
+    if not url or not token:
+        raise ConfigError(
+            "bank writes need the bank URL and a write-capable token: set "
+            f"{BANK_DATABASE_URL} and {BANK_WRITE_TOKEN} (or {BANK_AUTH_TOKEN}) in {ENV_FILE}"
+        )
+    return url, token
+
+
 __all__ = [
     "BANK_ROOT",
     "CONFIG_DIR_ENV",
@@ -279,6 +298,28 @@ __all__ = [
     "DEFAULT_OPENAI_IMAGE_MODEL",
     "DEFAULT_OPENAI_IMAGE_SECOND_MODEL",
     "DEFAULT_OPENAI_MODEL",
+    "BANK_WRITE_TOKEN",
+    "PROD_WRITE_TOKEN",
+    "PROD_READONLY_TOKEN",
+    "BANK_AUTH_TOKEN",
+    "BANK_DATABASE_URL",
+    "PROD_DATABASE_URL",
+    "GITLAB_TOKEN",
+    "OCR_API_KEY",
+    "NVIDIA_API_KEY",
+    "OPENAI_BASE_URL",
+    "OPENAI_MODEL",
+    "OPENAI_IMAGE_MODEL",
+    "OPENAI_IMAGE_SECOND_MODEL",
+    "GITLAB_MEDIA_REPO",
+    "GITLAB_HOST",
+    "MEDIA_BRANCH",
+    "MEDIA_BASE_URL",
+    "AI_MODEL",
+    "AI_IMAGE_MODEL",
+    "AI_IMAGE_SECOND_MODEL",
     "Settings",
     "load_settings",
+    "catalog_write_credentials",
+    "bank_write_credentials",
 ]

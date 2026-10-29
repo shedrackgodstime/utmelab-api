@@ -22,7 +22,7 @@ from utmelab_bank.adapters.media import MediaError
 from utmelab_bank.adapters.providers import OpenAICompatibleError, ProviderExhausted
 from utmelab_bank.adapters.providers.opencode import OpenCodeError
 from utmelab_bank.adapters.sources import create_source
-from utmelab_bank.config import ConfigError, load_settings
+from utmelab_bank.config import ConfigError, load_settings, catalog_write_credentials
 from utmelab_bank.runtime import Runtime, open_pipeline_runtime, open_store_runtime
 from utmelab_bank.tasks import (
     PRESETS,
@@ -149,6 +149,16 @@ def build_parser() -> argparse.ArgumentParser:
     status_command = sub.add_parser("status", help=TASK_HELP["status"])
     _add_batch(status_command)
 
+    migrate = sub.add_parser("migrate", help="Apply catalog migrations to production (WAEC subject alignment)")
+    migrate.add_argument("--apply", action="store_true", help="Execute the migration (default: dry-run)")
+    migrate.add_argument("--yes", action="store_true", help="Skip confirmation prompt when applying")
+    _add_output(migrate)
+
+    bank_clear = sub.add_parser("bank-clear", help="Clear WAEC data from bank database (one-time cleanup)")
+    bank_clear.add_argument("--apply", action="store_true", help="Execute the cleanup (default: dry-run)")
+    bank_clear.add_argument("--yes", action="store_true", help="Skip confirmation prompt when applying")
+    _add_output(bank_clear)
+
     return parser
 
 
@@ -265,10 +275,255 @@ async def _execute(args: argparse.Namespace) -> tuple[list[TaskResult], str | No
             actual_provider, actual_model = _get_provider_info(runtime)
             return await run_preset("process", runtime, options), actual_provider, actual_model
 
+    if command == "migrate":
+        return await _execute_migrate(args), None, None
+
+    if command == "bank-clear":
+        return await _execute_bank_clear(args), None, None
+
     raise UsageError(f"unknown command {command!r}")
 
 
-def _print_tasks(*, json_output: bool) -> None:
+async def _execute_migrate(args: argparse.Namespace) -> list:
+    """Execute the WAEC subject catalog migration."""
+    from utmelab_bank.adapters.database import TursoClient
+    from utmelab_bank.config import catalog_write_credentials
+
+    # Migration plan
+    updates = [
+        # (old_slug, new_slug, new_name)
+        ("agricultural-science", "agriculture", "Agriculture"),
+        ("animal-husbandry", "livestock-farming", "Livestock Farming"),
+        ("financial-accounting", "accounting", "Accounting"),
+        ("visual-arts", "visual-art", "Visual Art"),
+    ]
+    name_only_updates = [
+        ("health-education", "Health Education / Health Science"),
+        ("literature-in-english", "Literature-In-English"),
+    ]
+    inserts = [
+        ("arabic", "Arabic", ["NG"]),
+        ("beauty-and-cosmetology", "Beauty & Cosmetology", ["NG"]),
+        ("computer-hardware-and-gsm-repairs", "Computer Hardware and GSM Repairs", ["NG"]),
+        ("fashion-design-and-garment-making", "Fashion Design & Garment Making", ["NG"]),
+        ("solar-photovoltaic-installation-and-maintenance", "Solar Photovoltaic Installation and Maintenance", ["NG"]),
+        ("citizenship-and-heritage-studies", "Citizenship and Heritage Studies Education", ["NG"]),
+        ("digital-technologies", "Digital Technologies", ["NG"]),
+        ("horticulture-and-crop-production", "Horticulture and Crop Production", ["NG"]),
+    ]
+
+    dry_run = not args.apply
+    json_out = args.json
+
+    # Print plan
+    if json_out:
+        plan = {
+            "dry_run": dry_run,
+            "updates": [{"old_slug": u[0], "new_slug": u[1], "new_name": u[2]} for u in updates],
+            "name_only_updates": [{"slug": u[0], "new_name": u[1]} for u in name_only_updates],
+            "inserts": [{"slug": u[0], "name": u[1], "countries": u[2]} for u in inserts],
+        }
+        print(json.dumps(plan, indent=2))
+    else:
+        print("=== WAEC Subject Catalog Migration ===")
+        print(f"Mode: {'DRY-RUN' if dry_run else 'APPLY'}")
+        print()
+        print("Slug + name changes:")
+        for old, new, name in updates:
+            print(f"  {old} -> {new}  (name: {name})")
+        print()
+        print("Name-only updates:")
+        for slug, name in name_only_updates:
+            print(f"  {slug} -> {name}")
+        print()
+        print("New subjects to insert:")
+        for slug, name, countries in inserts:
+            print(f"  {slug} | {name} | countries={countries}")
+        print()
+
+    if dry_run:
+        print("DRY-RUN: no changes made. Re-run with --apply to execute.")
+        return []
+
+    # Confirm
+    if not args.yes:
+        try:
+            confirm = input("Apply these changes to PRODUCTION catalog? [y/N]: ").strip().lower()
+        except EOFError:
+            confirm = "n"
+        if confirm != "y":
+            print("Aborted.")
+            return []
+
+    # Get write credentials and execute
+    prod_url, prod_token = catalog_write_credentials()
+    client = TursoClient(prod_url, prod_token, retries=3, backoff=1.5)
+
+    try:
+        # Start transaction by running statements with commit=False, then commit at end
+        await client.execute("BEGIN", commit=False)
+
+        # 1. Update slugs + names (need to update all FK references first)
+        for old_slug, new_slug, new_name in updates:
+            # Update topics (FK to subjects.slug)
+            await client.execute(
+                "UPDATE topics SET subject = ? WHERE subject = ? AND exam = 'WAEC'",
+                [new_slug, old_slug],
+                commit=False,
+            )
+            # Update questions (subject column)
+            await client.execute(
+                "UPDATE questions SET subject = ? WHERE subject = ? AND exam = 'WAEC'",
+                [new_slug, old_slug],
+                commit=False,
+            )
+            # Update passages (subject column)
+            await client.execute(
+                "UPDATE passages SET subject = ? WHERE subject = ? AND exam = 'WAEC'",
+                [new_slug, old_slug],
+                commit=False,
+            )
+            # Update exam_requirements.subjects JSON array
+            await client.execute(
+                "UPDATE exam_requirements SET subjects = json_set(subjects, '$', (SELECT json_group_array(CASE WHEN value = ? THEN ? ELSE value END) FROM json_each(subjects))) WHERE exam = 'WAEC' AND json_type(subjects) = 'array'",
+                [old_slug, new_slug],
+                commit=False,
+            )
+            # Update blueprints (subject column)
+            await client.execute(
+                "UPDATE blueprints SET subject = ? WHERE subject = ? AND exam = 'WAEC'",
+                [new_slug, old_slug],
+                commit=False,
+            )
+            # Update subjects
+            await client.execute(
+                "UPDATE subjects SET slug = ?, name = ?, syllabus_subject = ? WHERE slug = ? AND exam = 'WAEC'",
+                [new_slug, new_name, new_slug, old_slug],
+                commit=False,
+            )
+
+        # 2. Name-only updates
+        for slug, new_name in name_only_updates:
+            await client.execute(
+                "UPDATE subjects SET name = ? WHERE slug = ? AND exam = 'WAEC'",
+                [new_name, slug],
+                commit=False,
+            )
+
+        # 3. Insert new subjects
+        for slug, name, countries in inserts:
+            countries_json = json.dumps(countries)
+            await client.execute(
+                """INSERT INTO subjects (slug, exam, name, is_compulsory, objective_paper_questions,
+                   syllabus_exam, syllabus_subject, countries)
+                   VALUES (?, 'WAEC', ?, 0, 50, 'WAEC', ?, ?)""",
+                [slug, name, slug, countries_json],
+                commit=False,
+            )
+
+        # Commit transaction
+        await client.commit()
+
+        print("Migration applied successfully.")
+        if not json_out:
+            print("Verifying...")
+        # Quick verification
+        for old_slug, new_slug, _ in updates:
+            result = await client.execute(
+                "SELECT slug, name FROM subjects WHERE slug = ? AND exam = 'WAEC'", [new_slug]
+            )
+            if result.rows:
+                print(f"  subjects: {result.rows[0][0]} | {result.rows[0][1]}")
+            # Verify topics
+            result = await client.execute(
+                "SELECT COUNT(*) FROM topics WHERE subject = ? AND exam = 'WAEC'", [new_slug]
+            )
+            print(f"  topics with {new_slug}: {result.rows[0][0]}")
+            # Verify questions
+            result = await client.execute(
+                "SELECT COUNT(*) FROM questions WHERE subject = ? AND exam = 'WAEC'", [new_slug]
+            )
+            print(f"  questions with {new_slug}: {result.rows[0][0]}")
+            # Verify passages
+            result = await client.execute(
+                "SELECT COUNT(*) FROM passages WHERE subject = ? AND exam = 'WAEC'", [new_slug]
+            )
+            print(f"  passages with {new_slug}: {result.rows[0][0]}")
+            # Verify blueprints
+            result = await client.execute(
+                "SELECT COUNT(*) FROM blueprints WHERE subject = ? AND exam = 'WAEC'", [new_slug]
+            )
+            print(f"  blueprints with {new_slug}: {result.rows[0][0]}")
+        for slug, name, _ in inserts:
+            result = await client.execute(
+                "SELECT slug, name FROM subjects WHERE slug = ? AND exam = 'WAEC'", [slug]
+            )
+            if result.rows:
+                print(f"  Verified: {result.rows[0][0]} | {result.rows[0][1]}")
+
+        return [{"status": "applied", "updates": len(updates), "inserts": len(inserts)}]
+
+    except Exception as exc:
+        # Rollback on error
+        try:
+            await client.execute("ROLLBACK", commit=False)
+        except Exception:
+            pass
+        raise
+    finally:
+        await client.close()
+
+
+async def _execute_bank_clear(args: argparse.Namespace) -> list:
+    """Clear WAEC data from bank database (one-time cleanup)."""
+    from utmelab_bank.adapters.database import TursoClient
+    from utmelab_bank.config import bank_write_credentials
+
+    dry_run = not args.apply
+    json_out = args.json
+
+    if json_out:
+        plan = {"dry_run": dry_run, "action": "DELETE FROM staging_items WHERE exam='WAEC'; DELETE FROM passages WHERE exam='WAEC'"}
+        print(json.dumps(plan, indent=2))
+    else:
+        print("=== Bank WAEC Data Cleanup ===")
+        print(f"Mode: {'DRY-RUN' if dry_run else 'APPLY'}")
+        print("Will delete from bank database:")
+        print("  DELETE FROM staging_items WHERE exam='WAEC';")
+        print("  DELETE FROM passages WHERE exam='WAEC';")
+        print()
+
+    if dry_run:
+        print("DRY-RUN: no changes made. Re-run with --apply to execute.")
+        return []
+
+    if not args.yes:
+        try:
+            confirm = input("Delete ALL WAEC data from bank database? [y/N]: ").strip().lower()
+        except EOFError:
+            confirm = "n"
+        if confirm != "y":
+            print("Aborted.")
+            return []
+
+    bank_url, bank_token = bank_write_credentials()
+    client = TursoClient(bank_url, bank_token, retries=3, backoff=1.5)
+
+    try:
+        await client.execute("BEGIN", commit=False)
+        await client.execute("DELETE FROM staging_items WHERE exam='WAEC'", commit=False)
+        await client.execute("DELETE FROM passages WHERE exam='WAEC'", commit=False)
+        await client.commit()
+        print("Bank WAEC data cleared successfully.")
+        return [{"status": "cleared", "tables": ["staging_items", "passages"]}]
+    except Exception as exc:
+        try:
+            await client.execute("ROLLBACK", commit=False)
+        except Exception:
+            pass
+        raise
+    finally:
+        await client.close()
     if json_output:
         print(
             json.dumps(
