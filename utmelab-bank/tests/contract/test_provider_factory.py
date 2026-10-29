@@ -177,11 +177,14 @@ def test_is_retryable_recognizes_categories() -> None:
     assert _is_retryable(OpenCodeError("upstream", category="upstream"))
     assert _is_retryable(OpenAICompatibleError("transport fail", category="transport"))
     assert _is_retryable(OpenAICompatibleError("503", category="provider_unavailable", status=503))
+    # A bad output or schema is a wrong answer from one account, not a bad key,
+    # so the next account gets a turn.
+    assert _is_retryable(OpenAICompatibleError("bad output", category="output"))
+    assert _is_retryable(OpenAICompatibleError("schema fail", category="schema"))
 
     # Non-retryable
     assert not _is_retryable(OpenAICompatibleError("bad auth", category="authentication"))
     assert not _is_retryable(OpenCodeError("invalid request", category="invalid_request"))
-    assert not _is_retryable(OpenAICompatibleError("bad output", category="output"))
     assert not _is_retryable(OpenCodeError("schema fail", category="output_schema"))
 
     # 5xx status without category

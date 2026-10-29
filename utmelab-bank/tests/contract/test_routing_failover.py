@@ -181,6 +181,7 @@ def test_select_routes_skips_disabled_accounts() -> None:
             "question_explanation",
             routing=_make_mock_routing(),
             manifests=_make_mock_manifests(),
+            environment={},
         )
     assert routes == ()
 

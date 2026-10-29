@@ -32,7 +32,7 @@ def _var_dir() -> Path:
     override = os.environ.get("UTMELAB_BANK_VAR_DIR")
     if override:
         return Path(override)
-    if _SOURCE_CHECKOUT and (BANK_ROOT / "var").is_dir():
+    if _SOURCE_CHECKOUT:
         return BANK_ROOT / "var"
     xdg_data = os.environ.get("XDG_DATA_HOME", str(Path.home() / ".local" / "share"))
     return Path(xdg_data) / "utmelab-bank" / "var"
@@ -43,7 +43,7 @@ def _env_file() -> Path:
     override = os.environ.get("UTMELAB_BANK_ENV_FILE")
     if override:
         return Path(override)
-    if _SOURCE_CHECKOUT and (BANK_ROOT / ".env").is_file():
+    if _SOURCE_CHECKOUT:
         return BANK_ROOT / ".env"
     cwd_env = Path.cwd() / ".env"
     if cwd_env.is_file():

@@ -30,7 +30,7 @@ def test_image_routing_prefers_openai_then_opencode() -> None:
     assert "cloudflare-secret" not in repr(routes[0])
 
 
-def test_text_routing_prefers_kilo_then_opencode_then_nvidia_then_cloudflare() -> None:
+def test_text_routing_prefers_nvidia_then_cloudflare_then_kilo() -> None:
     routes = select_routes(
         "question_explanation",
         environment={
@@ -40,21 +40,20 @@ def test_text_routing_prefers_kilo_then_opencode_then_nvidia_then_cloudflare() -
         },
     )
 
-    assert [route.family for route in routes] == ["kilo", "opencode", "openai", "openai"]
+    assert [route.family for route in routes] == ["openai", "openai", "kilo"]
     assert [route.provider for route in routes] == [
-        "kilo",
-        "opencode",
         "nvidia",
         "cloudflare",
+        "kilo",
     ]
-    assert routes[0].model_id == "kilo/kilo-auto/free"
+    assert routes[0].model_id == "nvidia/nemotron-3.5-super-vl-120b-a12b"
 
 
 def test_credential_free_routes_need_no_secret() -> None:
     routes = select_routes("question_explanation", environment={})
 
-    assert [route.family for route in routes] == ["kilo", "opencode"]
-    kilo, opencode = routes
+    assert [route.family for route in routes] == ["kilo"]
+    (kilo,) = routes
     assert kilo.protocol == "opencode-cli"
     assert kilo.model_id == "kilo/kilo-auto/free"
     assert kilo.api_key == ""
@@ -67,10 +66,6 @@ def test_credential_free_routes_need_no_secret() -> None:
         "-m",
         "{model}",
     ]
-    assert opencode.protocol == "opencode-cli"
-    assert opencode.model_id == "opencode/deepseek-v4.1-flash-free"
-    assert opencode.api_key == ""
-    assert opencode.transport["command"] == "opencode"
 
 
 def test_missing_task_is_a_configuration_error() -> None:
