@@ -118,7 +118,11 @@
         { "source": "physics", "slug": "physics", "name": "Physics" },
         { "source": "technical-drawing", "slug": "technical-drawing", "name": "Technical Drawing" },
         { "source": "fine-arts", "slug": "visual-arts", "name": "Visual Arts" },
-        { "source": "yoruba", "slug": "yoruba", "name": "Yoruba" }
+        { "source": "yoruba", "slug": "yoruba", "name": "Yoruba" },
+        { "source": "beauty-and-cosmetology", "slug": "beauty-and-cosmetology", "name": "Beauty and Cosmetology" },
+        { "source": "computer-hardware-and-gsm-repairs", "slug": "computer-hardware-and-gsm-repairs", "name": "Computer Hardware and GSM Repairs" },
+        { "source": "fashion-design-and-garment-making", "slug": "fashion-design-and-garment-making", "name": "Fashion Design and Garment Making" },
+        { "source": "health-education", "slug": "health-education", "name": "Health Education" }
       ]
     }
   },
