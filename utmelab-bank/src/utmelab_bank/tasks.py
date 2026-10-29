@@ -401,6 +401,20 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
                     known_passage_ids=known_passages,
                 )
                 item = await _advance(runtime, item, gate, ingestor)
+                if (
+                    item.state is State.REJECTED
+                    and item.error is not None
+                    and item.error.startswith("duplicate_")
+                ):
+                    # A duplicate is counted, never stored. The index already
+                    # holds the original, so writing the copy would only bloat
+                    # the bank; a future scrape re-checks and refuses it again.
+                    result.skipped += 1
+                    result.note(
+                        f"{item.id}: filtered at {item.state.value}: "
+                        f"{item.error or item.state.value}"
+                    )
+                    continue
                 await runtime.staging.save(item)
                 states[item.id] = (
                     item.state.value,
@@ -411,9 +425,9 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
                 if item.state is State.DEDUPED:
                     result.done += 1
                 elif item.state is State.REJECTED:
-                    # A gate, dedupe, or post-capture duplicate refusal is the
-                    # scrape doing its job, not a failed run. The row is kept in
-                    # the bank with its reason, and it never reaches media.
+                    # A gate or review refusal is the scrape doing its job, not
+                    # a failed run. The row is kept in the bank with its reason,
+                    # and it never reaches media.
                     result.skipped += 1
                     result.note(
                         f"{item.id}: filtered at {item.state.value}: "

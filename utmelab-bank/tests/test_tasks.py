@@ -772,7 +772,7 @@ async def test_payload_validation_issue_still_fails_the_run() -> None:
     assert staging.items == {}
 
 
-async def test_a_duplicate_is_filtered_without_uploading_a_figure() -> None:
+async def test_a_duplicate_is_filtered_without_storing_or_uploading_a_figure() -> None:
     runtime, staging, fetcher = make_runtime()
     source = runtime.source
     assert source is not None
@@ -791,10 +791,7 @@ async def test_a_duplicate_is_filtered_without_uploading_a_figure() -> None:
     assert result.ok
     assert result.done == 0
     assert result.skipped == 1
-    row = next(iter(staging.items.values()))
-    assert row.state is State.REJECTED
-    assert "duplicate_exact" in (row.error or "")
-    assert row.media_assets == ()
+    assert staging.items == {}
     assert fetcher.urls == []
 
 

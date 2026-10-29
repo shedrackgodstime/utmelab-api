@@ -4,9 +4,9 @@ The gate asks whether a row is well formed. Dedupe asks whether it is new.
 They are separate steps because they answer different questions, and the
 state machine has a state for each.
 
-A duplicate is counted, never silently overwritten. The item is refused with
-the reason and the id of the row it duplicates, so a person can see whether
-the duplicate is worth keeping.
+A duplicate is counted, never overwritten. The item is refused with the reason
+and the id of the row it duplicates; the scrape counts that refusal but does
+not store the copy, because the index already holds the original.
 
 The two keys carry the exam year. The same question in 2025 and 2026 is two
 rows, because a paper is a year's paper; the same question twice in one year
