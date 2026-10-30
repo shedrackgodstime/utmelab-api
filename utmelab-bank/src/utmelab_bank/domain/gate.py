@@ -378,6 +378,9 @@ def _check_options(content: Content, issues: list[Issue]) -> None:
         check_inline(option.text.text, option.text.inline, f"option {option.id!r}", issues)
         check_plain_text(option.text.text, f"option {option.id!r}", issues)
 
+    if content.passage_id is not None:
+        return
+
     blob = (content.stem.text + " " + " ".join(o.text.text for o in options)).lower()
     for marker in NOVEL_MARKERS:
         if marker in blob:
