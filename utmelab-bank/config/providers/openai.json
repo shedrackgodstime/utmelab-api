@@ -153,6 +153,17 @@
         "confidence_output_issue": true
       }
     },
+    "nemotron-3-ultra-550b-a55b": {
+      "provider": "nvidia",
+      "model_id": "nvidia/nemotron-3-ultra-550b-a55b",
+      "capabilities": ["text", "image_input"],
+      "structured_output": "json_object",
+      "status": "verified_candidate",
+      "observations": {
+        "context_window": 1048576,
+        "hybrid_mamba_transformer_moe": true
+      }
+    },
     "nvidia-nemotron-super-vl": {
       "provider": "nvidia",
       "model_id": "nvidia/nemotron-3.5-super-vl-120b-a12b",
