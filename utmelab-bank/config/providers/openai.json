@@ -226,6 +226,50 @@
       "status": "disabled",
       "observations": {"reason": "image timeout during local-media test"}
     },
+    "nvidia-llama-3.1-70b": {
+      "provider": "nvidia",
+      "model_id": "meta/llama-3.1-70b-instruct",
+      "capabilities": ["text"],
+      "structured_output": "json_object",
+      "status": "verified_candidate",
+      "observations": {
+        "context_window": 131072,
+        "fast_inference": true
+      }
+    },
+    "nvidia-llama-3.1-8b": {
+      "provider": "nvidia",
+      "model_id": "meta/llama-3.1-8b-instruct",
+      "capabilities": ["text"],
+      "structured_output": "json_object",
+      "status": "verified_candidate",
+      "observations": {
+        "context_window": 131072,
+        "very_fast_inference": true
+      }
+    },
+    "nvidia-mistral-7b": {
+      "provider": "nvidia",
+      "model_id": "mistralai/mistral-7b-instruct-v0.3",
+      "capabilities": ["text"],
+      "structured_output": "json_object",
+      "status": "verified_candidate",
+      "observations": {
+        "context_window": 32768,
+        "fast_inference": true
+      }
+    },
+    "nvidia-gemma-2-9b": {
+      "provider": "nvidia",
+      "model_id": "google/gemma-2-9b-it",
+      "capabilities": ["text"],
+      "structured_output": "json_object",
+      "status": "verified_candidate",
+      "observations": {
+        "context_window": 8192,
+        "fast_inference": true
+      }
+    },
     "openrouter-pending": {
       "provider": "openrouter",
       "model_id": "pending_verification",

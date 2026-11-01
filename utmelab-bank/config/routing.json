@@ -20,9 +20,13 @@
       "on_no_provider": "block",
       "allowed_model_statuses": ["verified_candidate", "unstable_candidate"],
       "candidates": [
-        {"provider": "openai", "model": "nemotron-3-ultra-550b-a55b", "priority": 5},
-        {"provider": "openai", "model": "cloudflare-llama4-scout", "priority": 10},
-        {"provider": "kilo", "model": "kilo-auto-free", "priority": 20}
+        {"provider": "openai", "model": "nvidia-llama-3.1-8b", "priority": 5},
+        {"provider": "openai", "model": "nvidia-mistral-7b", "priority": 10},
+        {"provider": "openai", "model": "nvidia-gemma-2-9b", "priority": 15},
+        {"provider": "openai", "model": "nvidia-llama-3.1-70b", "priority": 20},
+        {"provider": "openai", "model": "nemotron-3-ultra-550b-a55b", "priority": 25},
+        {"provider": "openai", "model": "cloudflare-llama4-scout", "priority": 30},
+        {"provider": "kilo", "model": "kilo-auto-free", "priority": 40}
       ]
     },
     "image_description": {
