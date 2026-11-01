@@ -242,10 +242,9 @@
       "model_id": "meta/llama-3.1-8b-instruct",
       "capabilities": ["text"],
       "structured_output": "json_object",
-      "status": "verified_candidate",
+      "status": "disabled",
       "observations": {
-        "context_window": 131072,
-        "very_fast_inference": true
+        "reason": "EOL 2026-08-26, 410 Gone"
       }
     },
     "nvidia-mistral-7b": {
@@ -253,10 +252,11 @@
       "model_id": "mistralai/mistral-7b-instruct-v0.3",
       "capabilities": ["text"],
       "structured_output": "json_object",
-      "status": "verified_candidate",
+      "status": "unstable_candidate",
       "observations": {
         "context_window": 32768,
-        "fast_inference": true
+        "fast_inference": true,
+        "account_function_missing": true
       }
     },
     "nvidia-gemma-2-9b": {
