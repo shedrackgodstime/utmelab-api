@@ -60,6 +60,8 @@ class ProviderRoute:
     api_key: str = field(repr=False)
     transport: dict[str, Any] = field(default_factory=dict, repr=False)
     family: str = ""
+    timeout_seconds: float = 120.0
+    cooldown_seconds: float = 300.0
 
 
 @dataclass(frozen=True)
@@ -172,30 +174,37 @@ def select_routes(
         model_key = candidate["model"]
         model = manifest["models"][model_key]
         if model.get("status") not in allowed_statuses:
-            _log.debug(
-                "skipping model %s in family %s: status %s not in allowed %s",
-                model_key,
+            _log.info(
+                "skipping route: family=%s model=%s status=%s not in %s",
                 family,
+                model_key,
                 model.get("status"),
-                allowed_statuses,
+                sorted(allowed_statuses),
             )
             continue
         provider_name = model["provider"]
         provider = manifest["providers"][provider_name]
         if provider.get("status") != "enabled":
-            _log.debug("skipping provider %s in family %s: disabled", provider_name, family)
+            _log.info(
+                "skipping route: family=%s provider=%s disabled",
+                family,
+                provider_name,
+            )
             continue
         protocol = provider["protocol"]
         auth_kind = provider.get("auth", {}).get("kind", "env")
         transport: dict[str, Any] = dict(provider.get("transport", {}))
         base_url_template = provider.get("base_url", "")
         pool_name = provider["account_pool"]
+        defaults = manifest.get("defaults", {})
+        timeout_seconds = float(defaults.get("timeout_seconds", 120.0))
+        cooldown_seconds = float(defaults.get("cooldown_seconds", 300.0))
         for account in sorted(manifest["accounts"][pool_name], key=lambda item: item["priority"]):
             if not account.get("enabled") or not account.get("authorized"):
-                _log.debug(
-                    "skipping account %s in pool %s: enabled=%s authorized=%s",
-                    account["id"],
+                _log.info(
+                    "skipping route: pool=%s account=%s enabled=%s authorized=%s",
                     pool_name,
+                    account["id"],
                     account.get("enabled"),
                     account.get("authorized"),
                 )
@@ -208,7 +217,12 @@ def select_routes(
                     )
                 api_key = env.get(api_key_env, "")
                 if not api_key:
-                    _log.debug("skipping account %s: env %s not set", account["id"], api_key_env)
+                    _log.warning(
+                        "skipping route: pool=%s account=%s env %s is not set",
+                        pool_name,
+                        account["id"],
+                        api_key_env,
+                    )
                     continue
             else:
                 api_key = ""
@@ -232,10 +246,13 @@ def select_routes(
                 api_key=api_key,
                 transport=transport,
                 family=family,
+                timeout_seconds=timeout_seconds,
+                cooldown_seconds=cooldown_seconds,
             )
             routes.append(route)
-            _log.debug(
-                "selected route: family=%s provider=%s model=%s account=%s protocol=%s",
+            _log.info(
+                "route %d: family=%s provider=%s model=%s account=%s protocol=%s",
+                len(routes),
                 family,
                 provider_name,
                 model["model_id"],

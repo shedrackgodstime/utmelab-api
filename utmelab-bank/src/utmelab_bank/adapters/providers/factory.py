@@ -10,6 +10,7 @@ tag it writes is indistinguishable from a real one once it reaches the bank.
 from __future__ import annotations
 
 import logging
+import time
 from typing import Any, TypeVar, cast
 
 from utmelab_bank.config import ConfigError, Settings
@@ -88,6 +89,7 @@ def create_from_route(route: ProviderRoute) -> OpenAICompatibleProvider | OpenCo
             model=route.model_id,
             provider_name=route.provider,
             account_id=route.account_id,
+            timeout=route.timeout_seconds,
         )
     if route.protocol == "opencode-cli":
         raw_args = route.transport.get("args")
@@ -112,6 +114,9 @@ class FailoverProvider(Tagger, Explainer, AnswerVerifier):
         self._routes = routes
         self._current = 0
         self._exhausted: ProviderExhausted | None = None
+        self._last_success: int | None = None
+        self._dead_until: dict[int, float] = {}
+        self._cooldown = max((route.cooldown_seconds for route in routes), default=300.0)
         self.producer = create_from_route(routes[0]).producer
         self._log = logging.getLogger(__name__)
 
@@ -130,14 +135,36 @@ class FailoverProvider(Tagger, Explainer, AnswerVerifier):
 
         last_exc: BaseException | None = None
         tried: list[str] = []
+        now = time.monotonic()
+        cooling = {i for i, _ in enumerate(self._routes) if self._dead_until.get(i, 0.0) > now}
+        if cooling:
+            self._log.info(
+                "skipping %d cooling route(s) of %d after recent retryable failures",
+                len(cooling),
+                len(self._routes),
+            )
         for i, route in enumerate(self._routes):
+            if i in cooling:
+                continue
             self._current = i
             self._update_current()
             tried.append(f"{route.provider}/{route.model_key}")
             provider = self._build()
             try:
                 method = getattr(provider, method_name)
-                return cast(_R, await method(request))
+                result = cast(_R, await method(request))
+                self._dead_until.pop(i, None)
+                if i != self._last_success:
+                    self._log.info(
+                        "using route %d/%d: provider=%s model=%s account=%s",
+                        i + 1,
+                        len(self._routes),
+                        route.provider,
+                        route.model_id,
+                        route.account_id,
+                    )
+                    self._last_success = i
+                return result
             except BaseException as exc:
                 last_exc = exc
                 if not _is_retryable(exc):
@@ -150,27 +177,27 @@ class FailoverProvider(Tagger, Explainer, AnswerVerifier):
                         exc,
                     )
                     raise
-                if i == len(self._routes) - 1:
-                    self._exhausted = ProviderExhausted(
-                        f"all {len(self._routes)} provider route(s) failed: {exc}",
-                        routes=tuple(tried),
-                        cause=exc,
-                    )
-                    self._log.error(
-                        "provider exhausted after %d route(s): %s",
-                        len(self._routes),
-                        exc,
-                    )
-                    raise self._exhausted from exc
+                self._dead_until[i] = time.monotonic() + self._cooldown
                 self._log.warning(
-                    "failover %s: route=%s provider=%s model=%s error=%s -> trying next",
+                    "failover %s: route=%s provider=%s model=%s error=%s "
+                    "-> cooling down %ss, trying next",
                     method_name,
                     route.model_key,
                     route.provider,
                     route.model_id,
                     exc,
+                    self._cooldown,
                 )
-        raise last_exc or ConfigError("all routes exhausted")
+        if cooling and not tried:
+            message = (
+                f"all {len(self._routes)} provider route(s) are cooling down "
+                f"after retryable failures"
+            )
+        else:
+            message = f"all {len(self._routes)} provider route(s) failed: {last_exc}"
+        self._exhausted = ProviderExhausted(message, routes=tuple(tried), cause=last_exc)
+        self._log.error("provider exhausted: %s", message)
+        raise self._exhausted from last_exc
 
     async def explain(self, request: ExplainRequest) -> Explanation:
         return await self._try_routes("explain", request)
