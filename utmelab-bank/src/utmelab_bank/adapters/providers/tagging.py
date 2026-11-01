@@ -74,7 +74,7 @@ def _resolve[T: _Identified](
 class TagService:
     """Tag a row only when its catalog choice and confidence are supported."""
 
-    def __init__(self, tagger: Tagger, *, min_confidence: float = 0.6) -> None:
+    def __init__(self, tagger: Tagger, *, min_confidence: float = 0.4) -> None:
         if not 0.0 <= min_confidence <= 1.0:
             raise ValueError("tag confidence threshold must be between 0 and 1")
         self._tagger = tagger
