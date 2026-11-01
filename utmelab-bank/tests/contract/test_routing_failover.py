@@ -163,12 +163,12 @@ def test_load_manifest_creates_valid_object() -> None:
 
 def test_select_routes_returns_routes_with_available_keys() -> None:
     """Test that select_routes returns routes when API keys are available."""
-    with patch.dict("os.environ", {"NVIDIA_API_KEY_01": "key-01"}, clear=True):
-        routes = select_routes(
-            "question_explanation",
-            routing=_make_mock_routing(),
-            manifests=_make_mock_manifests(),
-        )
+    routes = select_routes(
+        "question_explanation",
+        routing=_make_mock_routing(),
+        manifests=_make_mock_manifests(),
+        environment={"NVIDIA_API_KEY_01": "key-01"},
+    )
     assert len(routes) == 1
     assert routes[0].account_id == "nvidia-01"
     assert routes[0].api_key == "key-01"
@@ -188,31 +188,23 @@ def test_select_routes_skips_disabled_accounts() -> None:
 
 def test_select_routes_prioritizes_by_priority() -> None:
     """Test that select_routes returns accounts in priority order."""
-    with patch.dict(
-        "os.environ",
-        {"NVIDIA_API_KEY_01": "key-01", "NVIDIA_API_KEY_02": "key-02"},
-        clear=True,
-    ):
-        routes = select_routes(
-            "question_explanation",
-            routing=_make_mock_routing(),
-            manifests=_make_mock_manifests(),
-        )
+    routes = select_routes(
+        "question_explanation",
+        routing=_make_mock_routing(),
+        manifests=_make_mock_manifests(),
+        environment={"NVIDIA_API_KEY_01": "key-01", "NVIDIA_API_KEY_02": "key-02"},
+    )
     assert [route.account_id for route in routes] == ["nvidia-01", "nvidia-02"]
 
 
 def test_select_routes_with_multiple_accounts_per_pool() -> None:
     """Test select_routes selects from multiple accounts in the same pool."""
-    with patch.dict(
-        "os.environ",
-        {"NVIDIA_API_KEY_01": "key-01", "NVIDIA_API_KEY_02": "key-02"},
-        clear=True,
-    ):
-        routes = select_routes(
-            "question_explanation",
-            routing=_make_mock_routing(),
-            manifests=_make_mock_manifests(),
-        )
+    routes = select_routes(
+        "question_explanation",
+        routing=_make_mock_routing(),
+        manifests=_make_mock_manifests(),
+        environment={"NVIDIA_API_KEY_01": "key-01", "NVIDIA_API_KEY_02": "key-02"},
+    )
     account_ids = [route.account_id for route in routes]
     assert "nvidia-01" in account_ids
     assert "nvidia-02" in account_ids

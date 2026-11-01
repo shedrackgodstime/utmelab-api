@@ -177,15 +177,16 @@ def test_is_retryable_recognizes_categories() -> None:
     assert _is_retryable(OpenCodeError("upstream", category="upstream"))
     assert _is_retryable(OpenAICompatibleError("transport fail", category="transport"))
     assert _is_retryable(OpenAICompatibleError("503", category="provider_unavailable", status=503))
-    # A bad output or schema is a wrong answer from one account, not a bad key,
-    # so the next account gets a turn.
-    assert _is_retryable(OpenAICompatibleError("bad output", category="output"))
-    assert _is_retryable(OpenAICompatibleError("schema fail", category="schema"))
+    # The manifest's do_not_failover wins: a malformed answer fails this row
+    # instead of cycling the account pool.
+    assert not _is_retryable(OpenAICompatibleError("bad output", category="output"))
+    assert not _is_retryable(OpenAICompatibleError("schema fail", category="schema"))
+    assert not _is_retryable(OpenCodeError("schema fail", category="output_schema"))
+    assert not _is_retryable(OpenCodeError("protocol desync", category="protocol"))
 
     # Non-retryable
     assert not _is_retryable(OpenAICompatibleError("bad auth", category="authentication"))
     assert not _is_retryable(OpenCodeError("invalid request", category="invalid_request"))
-    assert not _is_retryable(OpenCodeError("schema fail", category="output_schema"))
 
     # 5xx status without category
     class StatusError(Exception):
@@ -246,6 +247,89 @@ async def test_failover_stops_after_every_route_is_exhausted(
     with pytest.raises(ProviderExhausted):
         await provider._try_routes("tag", object())
     assert calls == ["first", "second"]
+
+
+def test_is_retryable_obeys_the_route_policy() -> None:
+    """The manifest, not a hardcoded set, decides whether to rotate accounts."""
+    allow = ProviderRoute(
+        task="t",
+        model_key="m",
+        provider="p",
+        protocol="openai-compatible",
+        model_id="p/m",
+        account_id="a",
+        base_url="https://a.invalid",
+        api_key="k",
+        failover_categories=frozenset({"output"}),
+        no_failover_categories=frozenset(),
+    )
+    deny = ProviderRoute(
+        task="t",
+        model_key="m",
+        provider="p",
+        protocol="openai-compatible",
+        model_id="p/m",
+        account_id="a",
+        base_url="https://a.invalid",
+        api_key="k",
+        failover_categories=frozenset({"output"}),
+        no_failover_categories=frozenset({"output"}),
+    )
+    error = OpenAICompatibleError("bad output", category="output")
+
+    assert _is_retryable(error, allow)
+    assert not _is_retryable(error, deny)
+
+
+async def test_failover_cools_a_route_after_the_threshold(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """After the threshold the route is skipped instead of retried every row."""
+    calls: list[str] = []
+
+    class Adapter:
+        def __init__(self, label: str) -> None:
+            self._label = label
+            self.producer = Producer(provider="fake", model=label)
+
+        async def tag(self, request: object) -> object:
+            calls.append(self._label)
+            if self._label == "dead":
+                raise OpenAICompatibleError("quota", category="quota", status=429)
+            return "ok"
+
+    monkeypatch.setattr(
+        "utmelab_bank.adapters.providers.factory.create_from_route",
+        lambda route: Adapter(route.model_key),
+    )
+    dead = ProviderRoute(
+        task="t",
+        model_key="dead",
+        provider="p",
+        protocol="openai-compatible",
+        model_id="p/dead",
+        account_id="a",
+        base_url="https://a.invalid",
+        api_key="k",
+        max_consecutive_failures=1,
+        cooldown_seconds=300,
+    )
+    live = ProviderRoute(
+        task="t",
+        model_key="live",
+        provider="p",
+        protocol="openai-compatible",
+        model_id="p/live",
+        account_id="b",
+        base_url="https://b.invalid",
+        api_key="k",
+    )
+    provider = FailoverProvider((dead, live))
+
+    assert await provider._try_routes("tag", object()) == "ok"
+    assert await provider._try_routes("tag", object()) == "ok"
+
+    assert calls == ["dead", "live", "live"]
 
 
 async def test_failover_does_not_rotate_on_a_non_retryable_error(

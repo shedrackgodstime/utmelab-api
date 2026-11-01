@@ -17,8 +17,26 @@
     "health_probe_before_reenable": false
   },
   "error_policy": {
-    "failover_to_next_account": ["rate_limit", "quota", "timeout", "provider_unavailable"],
-    "do_not_failover": ["authentication", "invalid_request", "input", "output", "schema", "policy", "not_found"],
+    "failover_to_next_account": [
+      "rate_limit",
+      "quota",
+      "timeout",
+      "provider_unavailable",
+      "upstream",
+      "transport",
+      "process"
+    ],
+    "do_not_failover": [
+      "authentication",
+      "invalid_request",
+      "input",
+      "output",
+      "output_schema",
+      "schema",
+      "protocol",
+      "policy",
+      "not_found"
+    ],
     "max_consecutive_failures_before_cooldown": 2,
     "never_retry_without_a_new_account_or_health_check": true
   },

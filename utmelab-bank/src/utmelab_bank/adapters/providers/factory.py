@@ -21,27 +21,18 @@ from utmelab_bank.domain.models import (
     TagProposal,
 )
 from utmelab_bank.domain.ports import AnswerVerifier, Explainer, Tagger
-from utmelab_bank.routing import ProviderRoute, select_routes
+from utmelab_bank.routing import (
+    DEFAULT_FAILOVER_CATEGORIES,
+    DEFAULT_NO_FAILOVER_CATEGORIES,
+    ProviderRoute,
+    select_routes,
+)
 
 from .openai_compatible import OpenAICompatibleProvider
 from .opencode import OpenCodeProvider
 
 #: Every text provider the runner knows how to build.
 KNOWN_PROVIDERS = ("opencode", "openai", "config")
-
-#: Error categories that trigger failover to the next route.
-RETRYABLE_CATEGORIES = frozenset(
-    {
-        "rate_limit",
-        "quota",
-        "timeout",
-        "provider_unavailable",
-        "upstream",
-        "transport",
-        "output",
-        "schema",
-    }
-)
 
 _R = TypeVar("_R")
 
@@ -66,14 +57,24 @@ class ProviderExhausted(RuntimeError):
             self.__cause__ = cause
 
 
-def _is_retryable(exc: BaseException) -> bool:
+def _is_retryable(exc: BaseException, route: ProviderRoute | None = None) -> bool:
+    """Classify one failure with the route's manifest ``error_policy``.
+
+    ``do_not_failover`` wins over ``failover_to_next_account`` so a declared
+    policy is authoritative. A 5xx with no category is still treated as a
+    transient provider failure.
+    """
+    failover = route.failover_categories if route else DEFAULT_FAILOVER_CATEGORIES
+    no_failover = route.no_failover_categories if route else DEFAULT_NO_FAILOVER_CATEGORIES
     for e in (exc, getattr(exc, "__cause__", None)):
         if e is None:
             continue
         cat = getattr(e, "category", None)
-        if cat in RETRYABLE_CATEGORIES:
-            return True
-        # OpenAI status 5xx without category -> provider_unavailable
+        if cat is not None:
+            if cat in no_failover:
+                return False
+            if cat in failover:
+                return True
         status = getattr(e, "status", None)
         if isinstance(status, int) and 500 <= status < 600:
             return True
@@ -116,7 +117,9 @@ class FailoverProvider(Tagger, Explainer, AnswerVerifier):
         self._exhausted: ProviderExhausted | None = None
         self._last_success: int | None = None
         self._dead_until: dict[int, float] = {}
+        self._failures: dict[int, int] = {}
         self._cooldown = max((route.cooldown_seconds for route in routes), default=300.0)
+        self._max_cooldown = max((route.max_cooldown_seconds for route in routes), default=3600.0)
         self.producer = create_from_route(routes[0]).producer
         self._log = logging.getLogger(__name__)
 
@@ -154,6 +157,7 @@ class FailoverProvider(Tagger, Explainer, AnswerVerifier):
                 method = getattr(provider, method_name)
                 result = cast(_R, await method(request))
                 self._dead_until.pop(i, None)
+                self._failures.pop(i, None)
                 if i != self._last_success:
                     self._log.info(
                         "using route %d/%d: provider=%s model=%s account=%s",
@@ -167,7 +171,7 @@ class FailoverProvider(Tagger, Explainer, AnswerVerifier):
                 return result
             except BaseException as exc:
                 last_exc = exc
-                if not _is_retryable(exc):
+                if not _is_retryable(exc, route):
                     self._log.error(
                         "not failing over for %s: route=%s provider=%s model=%s error=%s",
                         method_name,
@@ -177,16 +181,37 @@ class FailoverProvider(Tagger, Explainer, AnswerVerifier):
                         exc,
                     )
                     raise
-                self._dead_until[i] = time.monotonic() + self._cooldown
+                failures = self._failures.get(i, 0) + 1
+                self._failures[i] = failures
+                threshold = max(1, route.max_consecutive_failures)
+                if failures < threshold:
+                    self._log.warning(
+                        "failover %s: route=%s provider=%s model=%s error=%s "
+                        "-> trying next (failure %d below cooldown threshold %d)",
+                        method_name,
+                        route.model_key,
+                        route.provider,
+                        route.model_id,
+                        exc,
+                        failures,
+                        threshold,
+                    )
+                    continue
+                delay = min(
+                    self._cooldown * (2 ** (failures - threshold)),
+                    self._max_cooldown,
+                )
+                self._dead_until[i] = time.monotonic() + delay
                 self._log.warning(
                     "failover %s: route=%s provider=%s model=%s error=%s "
-                    "-> cooling down %ss, trying next",
+                    "-> cooling down %.0fs (failure %d), trying next",
                     method_name,
                     route.model_key,
                     route.provider,
                     route.model_id,
                     exc,
-                    self._cooldown,
+                    delay,
+                    failures,
                 )
         if cooling and not tried:
             message = (

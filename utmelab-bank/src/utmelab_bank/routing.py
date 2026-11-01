@@ -45,6 +45,34 @@ OPENCODE_MANIFEST_PATH = PROVIDERS_DIR / "opencode.json"
 #: The authentication kinds a provider manifest may declare.
 AUTH_KINDS = ("env", "cli", "none")
 
+#: Error categories retried on another route when a manifest omits a policy.
+DEFAULT_FAILOVER_CATEGORIES = frozenset(
+    {
+        "rate_limit",
+        "quota",
+        "timeout",
+        "provider_unavailable",
+        "upstream",
+        "transport",
+        "process",
+    }
+)
+
+#: Error categories that must surface instead of rotating accounts.
+DEFAULT_NO_FAILOVER_CATEGORIES = frozenset(
+    {
+        "authentication",
+        "invalid_request",
+        "input",
+        "output",
+        "output_schema",
+        "schema",
+        "protocol",
+        "policy",
+        "not_found",
+    }
+)
+
 
 @dataclass(frozen=True)
 class ProviderRoute:
@@ -62,6 +90,10 @@ class ProviderRoute:
     family: str = ""
     timeout_seconds: float = 120.0
     cooldown_seconds: float = 300.0
+    max_cooldown_seconds: float = 3600.0
+    max_consecutive_failures: int = 2
+    failover_categories: frozenset[str] = DEFAULT_FAILOVER_CATEGORIES
+    no_failover_categories: frozenset[str] = DEFAULT_NO_FAILOVER_CATEGORIES
 
 
 @dataclass(frozen=True)
@@ -199,6 +231,17 @@ def select_routes(
         defaults = manifest.get("defaults", {})
         timeout_seconds = float(defaults.get("timeout_seconds", 120.0))
         cooldown_seconds = float(defaults.get("cooldown_seconds", 300.0))
+        max_cooldown_seconds = float(defaults.get("max_cooldown_seconds", 3600.0))
+        error_policy = manifest.get("error_policy", {})
+        failover_categories = frozenset(
+            error_policy.get("failover_to_next_account", DEFAULT_FAILOVER_CATEGORIES)
+        )
+        no_failover_categories = frozenset(
+            error_policy.get("do_not_failover", DEFAULT_NO_FAILOVER_CATEGORIES)
+        )
+        max_consecutive_failures = int(
+            error_policy.get("max_consecutive_failures_before_cooldown", 2)
+        )
         for account in sorted(manifest["accounts"][pool_name], key=lambda item: item["priority"]):
             if not account.get("enabled") or not account.get("authorized"):
                 _log.info(
@@ -248,6 +291,10 @@ def select_routes(
                 family=family,
                 timeout_seconds=timeout_seconds,
                 cooldown_seconds=cooldown_seconds,
+                max_cooldown_seconds=max_cooldown_seconds,
+                max_consecutive_failures=max_consecutive_failures,
+                failover_categories=failover_categories,
+                no_failover_categories=no_failover_categories,
             )
             routes.append(route)
             _log.info(

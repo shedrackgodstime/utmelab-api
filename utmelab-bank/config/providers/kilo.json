@@ -21,14 +21,19 @@
       "rate_limit",
       "quota",
       "timeout",
-      "provider_unavailable"
+      "provider_unavailable",
+      "upstream",
+      "transport",
+      "process"
     ],
     "do_not_failover": [
       "authentication",
       "invalid_request",
       "input",
       "output",
+      "output_schema",
       "schema",
+      "protocol",
       "policy",
       "not_found"
     ],
