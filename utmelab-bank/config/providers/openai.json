@@ -62,13 +62,13 @@
           "provider_unavailable",
           "upstream",
           "transport",
-          "process"
+          "process",
+          "output"
         ],
         "do_not_failover": [
           "authentication",
           "invalid_request",
           "input",
-          "output",
           "output_schema",
           "schema",
           "protocol",
