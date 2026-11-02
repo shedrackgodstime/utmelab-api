@@ -129,6 +129,7 @@ jobs:
       CLOUDFLARE_API_TOKEN_02: ${{ secrets.CLOUDFLARE_API_TOKEN_02 }}
       CLOUDFLARE_ACCOUNT_ID_03: ${{ secrets.CLOUDFLARE_ACCOUNT_ID_03 }}
       CLOUDFLARE_API_TOKEN_03: ${{ secrets.CLOUDFLARE_API_TOKEN_03 }}
+      GROQ_API_TOKEN: ${{ secrets.GROQ_API_TOKEN }}
       UTMELAB_BANK_AI_MODEL: ${{ inputs.model }}
     steps:
       - uses: actions/checkout@v4
