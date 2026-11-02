@@ -106,6 +106,7 @@
         "source": "https://console.groq.com/docs/rate-limits"
       }
     },
+    "openrouter": {
       "protocol": "openai-compatible",
       "base_url": "https://openrouter.ai/api/v1",
       "account_pool": "openrouter-free",
@@ -193,8 +194,8 @@
         "priority": 10
       }
     ],
+    "openrouter-free": [
       {
-        "id": "openrouter-01",
         "api_key_env": "OPENROUTER_API_KEY_01",
         "enabled": false,
         "authorized": false,
@@ -298,6 +299,7 @@
         "json_mode": true
       }
     },
+    "openrouter-pending": {
       "provider": "openrouter",
       "model_id": "pending_verification",
       "capabilities": [],
