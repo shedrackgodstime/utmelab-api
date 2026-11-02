@@ -196,6 +196,7 @@
     ],
     "openrouter-free": [
       {
+        "id": "openrouter-01",
         "api_key_env": "OPENROUTER_API_KEY_01",
         "enabled": false,
         "authorized": false,
