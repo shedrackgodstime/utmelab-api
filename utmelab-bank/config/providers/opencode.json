@@ -1,6 +1,7 @@
 {
   "$schema": "../schema/provider.schema.json",
   "version": 3,
+  "id": "opencode",
   "purpose": "Routing for the OpenCode CLI provider family.",
   "secrets": {
     "source": "environment",

@@ -1,6 +1,7 @@
 {
   "$schema": "../schema/provider.schema.json",
   "version": 3,
+  "id": "kilo",
   "purpose": "Routing for the Kilo CLI provider family. The free tier answers without credentials; the CLI is an OpenCode fork, so it shares the CLI transport.",
   "secrets": {
     "source": "none",
