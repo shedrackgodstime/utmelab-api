@@ -93,7 +93,19 @@
         "source": "https://developers.cloudflare.com/workers-ai/platform/pricing/"
       }
     },
-    "openrouter": {
+    "groq": {
+      "protocol": "openai-compatible",
+      "base_url": "https://api.groq.com/openai/v1",
+      "account_pool": "groq-free",
+      "status": "enabled",
+      "auth": {"kind": "env"},
+      "transport": {"kind": "http"},
+      "limits": {
+        "rate_limit_rpm": 30,
+        "rate_limit_rpd": 1000,
+        "source": "https://console.groq.com/docs/rate-limits"
+      }
+    },
       "protocol": "openai-compatible",
       "base_url": "https://openrouter.ai/api/v1",
       "account_pool": "openrouter-free",
@@ -172,7 +184,15 @@
         "priority": 30
       }
     ],
-    "openrouter-free": [
+    "groq-free": [
+      {
+        "id": "groq-01",
+        "api_key_env": "GROQ_API_TOKEN",
+        "enabled": true,
+        "authorized": true,
+        "priority": 10
+      }
+    ],
       {
         "id": "openrouter-01",
         "api_key_env": "OPENROUTER_API_KEY_01",
@@ -266,7 +286,18 @@
         "reason": "404 Not Found on free tier accounts"
       }
     },
-    "openrouter-pending": {
+    "groq-qwen3-8-27b": {
+      "provider": "groq",
+      "model_id": "qwen/qwen3.8-27b",
+      "capabilities": ["text"],
+      "structured_output": "json_object",
+      "status": "verified_candidate",
+      "observations": {
+        "context_window": 32768,
+        "fast_inference": true,
+        "json_mode": true
+      }
+    },
       "provider": "openrouter",
       "model_id": "pending_verification",
       "capabilities": [],
