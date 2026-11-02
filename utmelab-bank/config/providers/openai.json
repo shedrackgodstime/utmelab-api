@@ -1,7 +1,6 @@
 {
   "$schema": "../schema/provider.schema.json",
   "version": 3,
-  "id": "openai",
   "purpose": "Capability routing for authorized OpenAI-compatible free-tier accounts.",
   "secrets": {
     "source": "environment",
