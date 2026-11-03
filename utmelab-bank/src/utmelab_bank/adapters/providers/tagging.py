@@ -68,6 +68,14 @@ def _resolve[T: _Identified](
                 f"provider named {kind} {wanted!r} which matches {len(matches)} "
                 "catalog entries, so it is ambiguous"
             )
+    # Try suffix omission match (e.g., "importance-and-functions" -> "importance-and-functions-commerce")
+    suffixes = ("-commerce", "-physics", "-biology", "-chemistry", "-mathematics", "-english", "-literature", "-geography", "-history", "-government", "-economics", "-agriculture")
+    for suffix in suffixes:
+        candidate_id = wanted + suffix
+        matches = [c for c in candidates if c.id == candidate_id]
+        if len(matches) == 1:
+            _log.info("resolved suffix-omitted %s id %r to %r", kind, wanted, matches[0].id)
+            return matches[0]
     raise error(f"provider named {kind} {wanted!r} which is not in the catalog")
 
 
