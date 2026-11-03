@@ -30,6 +30,7 @@ from ..payload import adapt_payload, validate_payload
 from .errors import SourceError
 from .parser import (
     api_last_page,
+    fetch_detail_figures,
     listing_url,
     parse_api_listing,
     parse_api_question,
@@ -153,10 +154,31 @@ class MyschoolSource:
                     # an older row is not a scrape failure.
                     continue
 
-                # The parser turns every data: URL into a blob marker and
-                # keeps its bytes here. The media list only carries resolved
-                # urls or blob: markers, so there is nothing left to decode.
+                # If the question mentions figures but has no image, fetch the detail page
+                figures = list(parsed.figures)
                 media_blobs: dict[str, bytes] = dict(parsed.payload.get("media_blobs", {}))
+                if (
+                    any(
+                        hint in parsed.payload.get("stem", "").lower()
+                        for hint in ("diagram", "figure", "graph", "illustrat", "shown", "sketch", "table")
+                    )
+                    and not figures
+                ):
+                    try:
+                        detail_figures, detail_blobs = await fetch_detail_figures(
+                            self._client,
+                            source_slug,
+                            parsed.source_item_id,
+                            exam,
+                            year,
+                        )
+                        for fig in detail_figures:
+                            if fig not in figures:
+                                figures.append(fig)
+                        media_blobs.update(detail_blobs)
+                    except Exception:
+                        # If detail fetch fails, continue with what we have
+                        pass
 
                 # Remove media_blobs from payload before hashing (bytes not JSON-serializable)
                 payload_for_hash = {k: v for k, v in parsed.payload.items() if k != "media_blobs"}

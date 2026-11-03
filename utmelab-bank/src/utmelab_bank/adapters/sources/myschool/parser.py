@@ -13,9 +13,14 @@ with a guessed key is the one defect a candidate cannot recover from.
 
 from __future__ import annotations
 
+import asyncio
 import json
 from dataclasses import dataclass
 from typing import Any, Final
+from urllib.parse import urljoin
+
+import httpx
+from lxml import html as lxml_html
 
 from utmelab_bank.domain.enums import ImagePosition, InlineKind
 from utmelab_bank.domain.models import Inline
@@ -86,6 +91,94 @@ def listing_url(exam: str, subject_slug_value: str, year: int, page: int = 1) ->
 def detail_url(slug: str, item_id: str, exam: str, year: int) -> str:
     """Where a person can read the question, with its answer key."""
     return DETAIL_URL.format(slug=slug, item_id=item_id, exam=exam, year=year)
+
+
+def figure_url(name: object) -> str | None:
+    """The absolute URL of a figure, or ``None`` when there is not a real one.
+
+    A bare filename is resolved against the classroom storage host. A path
+    that already starts at the site root, a protocol-relative URL and an
+    absolute URL are all kept. A placeholder or a non-http scheme is not a
+    figure and is refused rather than downloaded.
+    """
+    if not isinstance(name, str):
+        return None
+    candidate = name.strip()
+    if not candidate:
+        return None
+    if any(marker in candidate.lower() for marker in PLACEHOLDER_MARKERS):
+        return None
+    if candidate.startswith(("http://", "https://")):
+        return candidate
+    if candidate.startswith("//"):
+        return f"https:{candidate}"
+    if candidate.startswith(("/", "storage/")):
+        return f"{BASE}/{candidate.lstrip('/')}"
+    if candidate.startswith(("data:", "javascript:", "mailto:")):
+        return None
+    return f"{IMAGE_BASE}/{candidate.lstrip('/')}"
+
+
+async def fetch_detail_figures(
+    client: httpx.AsyncClient,
+    slug: str,
+    item_id: str,
+    exam: str,
+    year: int,
+) -> tuple[list[str], dict[str, bytes]]:
+    """Fetch the detail HTML page and extract figure URLs and inline images.
+
+    Returns a tuple of (figure_urls, media_blobs).
+    """
+    url = detail_url(slug, item_id, exam, year)
+    try:
+        async with asyncio.timeout(30.0):
+            resp = await client.get(url)
+            resp.raise_for_status()
+    except Exception:
+        return [], {}
+
+    # Parse HTML and extract figure images
+    doc = lxml_html.fromstring(resp.text)
+    doc.make_links_absolute(BASE)
+
+    figures: list[str] = []
+    media_blobs: dict[str, bytes] = {}
+
+    # Look for images in common figure containers
+    # MySchool typically uses specific classes for figures
+    selectors = [
+        ".question-figure img",
+        ".figure img",
+        ".diagram img",
+        ".question-image img",
+        ".question-content img",
+        "article img",
+        ".content img",
+        "img[src*='storage']",
+        "img[src*='upload']",
+    ]
+
+    for selector in selectors:
+        for img in doc.cssselect(selector):
+            src = img.get("src") or img.get("data-src")
+            if not src:
+                continue
+            # Make absolute
+            src = urljoin(BASE, src)
+            if src not in figures:
+                figures.append(src)
+
+    # Also extract inline images from question content
+    for img in doc.cssselect("img"):
+        src = img.get("src") or img.get("data-src")
+        if not src:
+            continue
+        src = urljoin(BASE, src)
+        if src not in figures:
+            figures.append(src)
+
+    return figures, media_blobs
 
 
 def parse_api_listing(payload: dict[str, Any], *, limit: int | None = None) -> list[dict[str, Any]]:
