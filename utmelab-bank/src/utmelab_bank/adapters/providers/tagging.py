@@ -64,6 +64,11 @@ def _resolve[T: _Identified](
             _log.info("resolved truncated %s id %r to %r", kind, wanted, matches[0].id)
             return matches[0]
         if len(matches) > 1:
+            # Prefer the longest match (most specific)
+            longest = max(matches, key=lambda c: len(c.id))
+            _log.info("resolved ambiguous %s id %r to longest match %r", kind, wanted, longest.id)
+            return longest
+        if len(matches) > 1:
             raise error(
                 f"provider named {kind} {wanted!r} which matches {len(matches)} "
                 "catalog entries, so it is ambiguous"
