@@ -59,7 +59,7 @@ def candidate_ids(
     catalog: CatalogSnapshot,
     question: str,
     *,
-    max_candidates: int = 12,
+    max_candidates: int = 20,
 ) -> tuple[tuple[str, ...], tuple[str, ...]]:
     """Return the topic and subtopic ids worth showing objectives for.
 
@@ -91,7 +91,7 @@ def catalog_for_prompt(
     catalog: CatalogSnapshot,
     question: str,
     *,
-    max_candidates: int = 12,
+    max_candidates: int = 20,
 ) -> dict[str, object]:
     """Build the catalog block the model sees.
 

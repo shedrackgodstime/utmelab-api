@@ -167,8 +167,12 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
                 'these keys: "topic_id" (an id from catalog.topics), "subtopic_id" (an id '
                 "from catalog.subtopics whose topic_id matches the chosen topic), "
                 '"evidence" (an exact quote from the question, passage, or accepted OCR '
-                'text), and "confidence" (a number from 0.0 to 1.0). Use the ids, not the '
-                "names. Do not add any other keys.",
+                'text), and "confidence" (a number from 0.0 to 1.0). '
+                "CRITICAL: You MUST use the EXACT id strings from the provided catalog. "
+                "Do not abbreviate, truncate, or modify any id. The subtopic_id MUST exactly "
+                "match one of the catalog.subtopics.id values AND its topic_id must match "
+                "the chosen topic_id. If no exact match exists, set confidence to 0.0. "
+                "Do not add any other keys.",
                 payload,
             )
         )
