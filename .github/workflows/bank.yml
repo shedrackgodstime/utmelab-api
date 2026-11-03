@@ -138,10 +138,14 @@ jobs:
         with:
           python-version: "3.14"
 
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y libxml2-dev libxslt-dev
       - name: Install the bank
         working-directory: utmelab-bank
         run: |
           python -m pip install --upgrade pip
+          pip install lxml
           pip install -e ".[dev]"
 
       - name: Check the production catalog
