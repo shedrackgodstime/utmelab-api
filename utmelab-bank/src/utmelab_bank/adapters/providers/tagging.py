@@ -116,7 +116,30 @@ class TagService:
         topic = _resolve(catalog.topics, proposal.topic_id, UnknownTopic, "topic")
         subtopic = _resolve(catalog.subtopics, proposal.subtopic_id, UnknownSubtopic, "subtopic")
         if subtopic.topic_id != topic.id:
-            raise UnknownSubtopic(f"subtopic {subtopic.id!r} does not belong to topic {topic.id!r}")
+            # Try to find a similar subtopic under the correct topic
+            similar = [
+                s for c in catalog.subtopics
+                for s in [c] if c.id == proposal.subtopic_id
+            ]
+            if not similar:
+                # Try fuzzy match: find subtopic under the correct topic with similar name
+                target_name = next((s.name for s in catalog.subtopics if s.id == proposal.subtopic_id), "")
+                similar = [
+                    s for s in catalog.subtopics
+                    if s.topic_id == topic.id and target_name.lower() in s.name.lower()
+                ]
+                if len(similar) == 1:
+                    _log.info(
+                        "redirected subtopic %r to %r under topic %r",
+                        proposal.subtopic_id,
+                        similar[0].id,
+                        topic.id,
+                    )
+                    subtopic = similar[0]
+                else:
+                    raise UnknownSubtopic(f"subtopic {subtopic.id!r} does not belong to topic {topic.id!r}")
+            else:
+                raise UnknownSubtopic(f"subtopic {subtopic.id!r} does not belong to topic {topic.id!r}")
         if not _evidence_present(item_text=proposal.evidence, item=item):
             raise ValueError("tag evidence does not appear in the question or passage")
         return topic, subtopic
