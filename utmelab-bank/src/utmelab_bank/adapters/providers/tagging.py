@@ -25,6 +25,9 @@ _log = logging.getLogger(__name__)
 #: benefit of the doubt, and only when exactly one entry matches.
 _MIN_TRUNCATED_ID = 8
 
+#: Catalog slugs are truncated at 60 chars (see utmelab_bank.catalog.model.SLUG_LIMIT)
+_SLUG_LIMIT = 60
+
 
 class _Identified(Protocol):
     @property
@@ -64,11 +67,6 @@ def _resolve[T: _Identified](
             _log.info("resolved truncated %s id %r to %r", kind, wanted, matches[0].id)
             return matches[0]
         if len(matches) > 1:
-            # Prefer the longest match (most specific)
-            longest = max(matches, key=lambda c: len(c.id))
-            _log.info("resolved ambiguous %s id %r to longest match %r", kind, wanted, longest.id)
-            return longest
-        if len(matches) > 1:
             raise error(
                 f"provider named {kind} {wanted!r} which matches {len(matches)} "
                 "catalog entries, so it is ambiguous"
@@ -80,6 +78,14 @@ def _resolve[T: _Identified](
         matches = [c for c in candidates if c.id == candidate_id]
         if len(matches) == 1:
             _log.info("resolved suffix-omitted %s id %r to %r", kind, wanted, matches[0].id)
+            return matches[0]
+    # Try reverse truncation: model gave a longer ID than the catalog (e.g. SLUG_LIMIT truncation)
+    # Catalog truncates at 60 chars; try truncating the wanted ID and matching
+    if len(wanted) > _SLUG_LIMIT:
+        truncated = wanted[:_SLUG_LIMIT].rstrip("-")
+        matches = [c for c in candidates if c.id == truncated]
+        if len(matches) == 1:
+            _log.info("resolved reverse-truncated %s id %r to %r", kind, wanted, matches[0].id)
             return matches[0]
     raise error(f"provider named {kind} {wanted!r} which is not in the catalog")
 
