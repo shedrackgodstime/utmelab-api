@@ -8,7 +8,7 @@
     "never_store_in_this_file": true
   },
   "defaults": {
-    "timeout_seconds": 30,
+    "timeout_seconds": 120,
     "max_retries": 0,
     "max_tokens": 2048,
     "temperature": 0,
@@ -192,6 +192,20 @@
         "enabled": true,
         "authorized": true,
         "priority": 10
+      },
+      {
+        "id": "groq-02",
+        "api_key_env": "GROQ_API_TOKEN_02",
+        "enabled": true,
+        "authorized": true,
+        "priority": 20
+      },
+      {
+        "id": "groq-03",
+        "api_key_env": "GROQ_API_TOKEN_03",
+        "enabled": true,
+        "authorized": true,
+        "priority": 30
       }
     ],
     "openrouter-free": [

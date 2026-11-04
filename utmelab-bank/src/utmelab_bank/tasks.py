@@ -13,8 +13,9 @@ disappearing into a batch total.
 
 from __future__ import annotations
 
+import asyncio
 import logging
-from collections.abc import Awaitable, Callable
+from collections.abc import Awaitable, Callable, Sequence
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 
@@ -38,6 +39,14 @@ logger = logging.getLogger(__name__)
 #: How many rows a batch task takes when the caller does not say.
 DEFAULT_LIMIT = 100
 
+#: The most rows one batch task works on at once.
+#:
+#: A worker spends nearly all of its time waiting for a model, so a little
+#: overlap buys most of the speedup. The database writes stay serialized
+#: behind the client's single worker thread, and a free tier rate limit is
+#: measured in requests per minute, not concurrency.
+MAX_CONCURRENCY = 8
+
 
 class UsageError(RuntimeError):
     """The command was asked to do something it cannot do as written."""
@@ -55,6 +64,7 @@ class TaskOptions:
     limit: int | None = None
     max_failures: int = 3
     dry_run: bool = False
+    concurrency: int = 1
 
 
 @dataclass
@@ -178,6 +188,112 @@ def _stops_the_batch(exc: BaseException) -> bool:
     return isinstance(exc, STOPPING_ERRORS)
 
 
+def _concurrency(options: TaskOptions) -> int:
+    """How many rows to work on at once, with a sane range enforced."""
+    width = options.concurrency
+    if width < 1:
+        raise UsageError("--concurrency must be positive")
+    if width > MAX_CONCURRENCY:
+        raise UsageError(f"--concurrency cannot exceed {MAX_CONCURRENCY}")
+    return width
+
+
+@dataclass(frozen=True)
+class Outcome:
+    """What one worker did with its row, for the batch to count.
+
+    ``done`` and ``skipped`` move a counter. ``blocked`` moves the blocked
+    counter and carries the reason. ``note`` only records something the
+    operator should see, such as a dry-run line.
+    """
+
+    kind: str
+    note: str | None = None
+
+
+DONE = Outcome("done")
+
+
+def skipped(note: str | None = None) -> Outcome:
+    return Outcome("skipped", note)
+
+
+def blocked(note: str) -> Outcome:
+    return Outcome("blocked", note)
+
+
+def noted(note: str) -> Outcome:
+    return Outcome("note", note)
+
+
+async def _run_batch(
+    runtime: Runtime,
+    result: TaskResult,
+    rows: Sequence[StagingItem],
+    options: TaskOptions,
+    worker: Callable[[StagingItem], Awaitable[Outcome]],
+) -> None:
+    """Run one worker per row, with a fixed number of rows in flight.
+
+    This is a pool, not a barrier. When one call is slow (a reasoning model, a
+    cold route, or a retry across accounts), the other workers keep pulling
+    rows. A barrier would leave the other slots idle for the length of the
+    slowest call in every chunk.
+
+    The worker does the row's work and returns what happened; it does not
+    touch the result. This function owns the counters, the failure record and
+    the stop rules, so every task stops the same way. A stop stops new rows
+    from starting; rows already in flight finish and are still recorded.
+
+    The consecutive-failure rule is approximate above concurrency 1, because
+    outcomes arrive in completion order. It still means what an operator
+    needs: a run of stopping failures with no success between them.
+    """
+    width = _concurrency(options)
+    queue: asyncio.Queue[StagingItem] = asyncio.Queue()
+    for item in rows:
+        queue.put_nowait(item)
+
+    failures = 0
+    stop = False
+
+    async def consume() -> None:
+        nonlocal failures, stop
+        while not stop:
+            try:
+                item = queue.get_nowait()
+            except asyncio.QueueEmpty:
+                return
+            result.seen += 1
+            try:
+                outcome = await worker(item)
+            except Exception as exc:
+                logger.warning("%s failed for %s: %s", result.task, item.id, exc)
+                result.fail(f"{item.id}: {type(exc).__name__}: {exc}")
+                await _record_failure(runtime, item, exc)
+                if isinstance(exc, ProviderExhausted):
+                    result.stopped = True
+                    result.note(f"stopped: {exc}")
+                    stop = True
+                    return
+                failures = failures + 1 if _stops_the_batch(exc) else 0
+                if _stop_after_failures(result, failures, options):
+                    stop = True
+                    return
+                continue
+            failures = 0
+            if outcome.kind == "done":
+                result.done += 1
+            elif outcome.kind == "skipped":
+                result.skipped += 1
+            elif outcome.kind == "blocked":
+                result.block(outcome.note or f"{item.id}: blocked")
+            elif outcome.note is not None:
+                result.note(outcome.note)
+
+    await asyncio.gather(*(consume() for _ in range(width)))
+
+
 async def _rows(
     runtime: Runtime,
     states: tuple[State, ...],
@@ -245,10 +361,18 @@ async def _advance(
     if item.state is State.ADAPTED:
         item = gate.apply(item)
         if item.state is State.REJECTED:
+            # If the item was previously indexed (has content_hash), remove it.
+            # A gate failure on a re-run means the item is no longer valid.
+            if item.hashes and item.hashes.content_hash:
+                await runtime.index.forget_question(item.id, origin=BANK)
             return item
     if item.state is State.GATED:
         item = await runtime.dedupe.apply(item)
         if item.state is State.REJECTED:
+            # If the item was previously indexed (has content_hash), remove it.
+            # A dedupe failure on a re-run means the item is a duplicate.
+            if item.hashes and item.hashes.content_hash:
+                await runtime.index.forget_question(item.id, origin=BANK)
             return item
 
     captured = False
@@ -488,48 +612,29 @@ async def capture(runtime: Runtime, options: TaskOptions) -> TaskResult:
     # media refuses to describe uncaptured refs and capture never sees it.
     rows = await _rows(runtime, (State.DEDUPED, State.CATALOGUED), options, has_media=True)
 
-    failures = 0
-    for item in rows:
-        result.seen += 1
+    async def one(item: StagingItem) -> Outcome:
         if not item.media_refs:
             # Already captured (has media_assets) or no figures at all.
-            result.skipped += 1
-            failures = 0
-            result.note(f"{item.id}: no pending refs")
-            continue
+            return skipped(f"{item.id}: no pending refs")
         if options.dry_run:
-            result.note(f"{item.id}: would capture {len(item.media_refs)} figure(s)")
-            continue
-        try:
-            captured = await ingestor.capture_refs(item)
-            await runtime.index.forget_question(item.id, origin=BANK)
-            found = await runtime.dedupe.find(captured)
-            if found is not None:
-                rejected = captured.transition_to(
-                    State.REJECTED,
-                    error=f"duplicate_{found.kind}: {found.question_id}",
-                )
-                await runtime.staging.save(rejected)
-                result.skipped += 1
-                failures = 0
-                result.note(f"{rejected.id}: duplicate after capture: {found.question_id}")
-                continue
-            await runtime.dedupe.remember(captured, origin=BANK)
-            await runtime.staging.save(captured)
-            result.done += 1
-            failures = 0
-        except Exception as exc:
-            logger.warning("capture failed for %s: %s", item.id, exc)
-            result.fail(f"{item.id}: {type(exc).__name__}: {exc}")
-            await _record_failure(runtime, item, exc)
-            if isinstance(exc, ProviderExhausted):
-                result.stopped = True
-                result.note(f"stopped: {exc}")
-                break
-            failures = failures + 1 if _stops_the_batch(exc) else 0
-            if _stop_after_failures(result, failures, options):
-                break
+            return noted(f"{item.id}: would capture {len(item.media_refs)} figure(s)")
+        captured = await ingestor.capture_refs(item)
+        await runtime.index.forget_question(item.id, origin=BANK)
+        found = await runtime.dedupe.find(captured)
+        if found is not None:
+            rejected = captured.transition_to(
+                State.REJECTED,
+                error=f"duplicate_{found.kind}: {found.question_id}",
+            )
+            await runtime.staging.save(rejected)
+            return skipped(
+                f"{rejected.id}: duplicate after capture: {found.question_id}"
+            )
+        await runtime.dedupe.remember(captured, origin=BANK)
+        await runtime.staging.save(captured)
+        return DONE
 
+    await _run_batch(runtime, result, rows, options, one)
     return result
 
 
@@ -539,41 +644,24 @@ async def tag(runtime: Runtime, options: TaskOptions) -> TaskResult:
     result = TaskResult(task="tag")
     rows = await _rows(runtime, (State.DEDUPED,), options)
 
-    failures = 0
-    for item in rows:
-        result.seen += 1
+    async def one(item: StagingItem) -> Outcome:
         if options.dry_run:
-            result.note(f"{item.id}: would tag as {item.provenance.scope.subject}")
-            continue
-        try:
-            catalog = await runtime.catalog_for(
-                item.provenance.scope.exam,
-                item.provenance.scope.subject,
-                item.provenance.scope.country,
+            return noted(f"{item.id}: would tag as {item.provenance.scope.subject}")
+        catalog = await runtime.catalog_for(
+            item.provenance.scope.exam,
+            item.provenance.scope.subject,
+            item.provenance.scope.country,
+        )
+        if not catalog.subtopics:
+            return blocked(
+                f"{item.id}: no catalog subtopics for "
+                f"{item.provenance.scope.exam}/{item.provenance.scope.subject}"
             )
-            if not catalog.subtopics:
-                result.block(
-                    f"{item.id}: no catalog subtopics for "
-                    f"{item.provenance.scope.exam}/{item.provenance.scope.subject}"
-                )
-                failures = 0
-                continue
-            catalogued = await service.tag(item, catalog)
-            await runtime.staging.save(catalogued)
-            result.done += 1
-            failures = 0
-        except Exception as exc:
-            logger.warning("tag failed for %s: %s", item.id, exc)
-            result.fail(f"{item.id}: {type(exc).__name__}: {exc}")
-            await _record_failure(runtime, item, exc)
-            if isinstance(exc, ProviderExhausted):
-                result.stopped = True
-                result.note(f"stopped: {exc}")
-                break
-            failures = failures + 1 if _stops_the_batch(exc) else 0
-            if _stop_after_failures(result, failures, options):
-                break
+        catalogued = await service.tag(item, catalog)
+        await runtime.staging.save(catalogued)
+        return DONE
 
+    await _run_batch(runtime, result, rows, options, one)
     return result
 
 
@@ -583,42 +671,21 @@ async def media(runtime: Runtime, options: TaskOptions) -> TaskResult:
     result = TaskResult(task="media")
     rows = await _rows(runtime, (State.CATALOGUED, State.MEDIA_READY), options, has_media=True)
 
-    failures = 0
-    for item in rows:
-        result.seen += 1
+    async def one(item: StagingItem) -> Outcome:
         if item.state is State.CATALOGUED and item.media_refs:
-            result.skipped += 1
-            failures = 0
-            result.note(f"{item.id}: figures have not been captured; run capture first")
-            continue
+            return skipped(f"{item.id}: figures have not been captured; run capture first")
         if options.dry_run:
-            result.note(f"{item.id}: would describe {len(item.media_assets)} figure(s)")
-            continue
-        try:
-            described = await service.apply(item)
-            if described.state is State.DESCRIBED:
-                await runtime.staging.save(described)
-                result.done += 1
-            elif described.state is State.CATALOGUED:
-                result.skipped += 1
-                result.note(f"{item.id}: no captured figures")
-            else:
-                await runtime.staging.save(described)
-                result.skipped += 1
-                result.note(f"{item.id}: left at {described.state.value}")
-            failures = 0
-        except Exception as exc:
-            logger.warning("media failed for %s: %s", item.id, exc)
-            result.fail(f"{item.id}: {type(exc).__name__}: {exc}")
-            await _record_failure(runtime, item, exc)
-            if isinstance(exc, ProviderExhausted):
-                result.stopped = True
-                result.note(f"stopped: {exc}")
-                break
-            failures = failures + 1 if _stops_the_batch(exc) else 0
-            if _stop_after_failures(result, failures, options):
-                break
+            return noted(f"{item.id}: would describe {len(item.media_assets)} figure(s)")
+        described = await service.apply(item)
+        if described.state is State.DESCRIBED:
+            await runtime.staging.save(described)
+            return DONE
+        if described.state is State.CATALOGUED:
+            return skipped(f"{item.id}: no captured figures")
+        await runtime.staging.save(described)
+        return skipped(f"{item.id}: left at {described.state.value}")
 
+    await _run_batch(runtime, result, rows, options, one)
     return result
 
 
@@ -628,39 +695,21 @@ async def explain(runtime: Runtime, options: TaskOptions) -> TaskResult:
     result = TaskResult(task="explain")
     rows = await _rows(runtime, (State.DESCRIBED, State.CATALOGUED), options)
 
-    failures = 0
-    for item in rows:
-        result.seen += 1
+    async def one(item: StagingItem) -> Outcome:
         if item.state is State.CATALOGUED and (item.media_assets or item.media_refs):
-            result.skipped += 1
-            failures = 0
-            result.note(f"{item.id}: media has not run; run capture and media first")
-            continue
+            return skipped(f"{item.id}: media has not run; run capture and media first")
         if options.dry_run:
-            result.note(f"{item.id}: would explain")
-            continue
-        try:
-            catalog = await runtime.catalog_for(
-                item.provenance.scope.exam,
-                item.provenance.scope.subject,
-                item.provenance.scope.country,
-            )
-            enriched = await service.explain(item, catalog)
-            await runtime.staging.save(enriched)
-            result.done += 1
-            failures = 0
-        except Exception as exc:
-            logger.warning("explain failed for %s: %s", item.id, exc)
-            result.fail(f"{item.id}: {type(exc).__name__}: {exc}")
-            await _record_failure(runtime, item, exc)
-            if isinstance(exc, ProviderExhausted):
-                result.stopped = True
-                result.note(f"stopped: {exc}")
-                break
-            failures = failures + 1 if _stops_the_batch(exc) else 0
-            if _stop_after_failures(result, failures, options):
-                break
+            return noted(f"{item.id}: would explain")
+        catalog = await runtime.catalog_for(
+            item.provenance.scope.exam,
+            item.provenance.scope.subject,
+            item.provenance.scope.country,
+        )
+        enriched = await service.explain(item, catalog)
+        await runtime.staging.save(enriched)
+        return DONE
 
+    await _run_batch(runtime, result, rows, options, one)
     return result
 
 
@@ -670,37 +719,21 @@ async def review(runtime: Runtime, options: TaskOptions) -> TaskResult:
     result = TaskResult(task="review")
     rows = await _rows(runtime, (State.ENRICHED,), options)
 
-    failures = 0
-    for item in rows:
-        result.seen += 1
+    async def one(item: StagingItem) -> Outcome:
         if options.dry_run:
-            result.note(f"{item.id}: would review")
-            continue
-        try:
-            catalog = await runtime.catalog_for(
-                item.provenance.scope.exam,
-                item.provenance.scope.subject,
-                item.provenance.scope.country,
-            )
-            reviewed = await service.apply(item, catalog)
-            await runtime.staging.save(reviewed)
-            if reviewed.state is State.VERIFIED:
-                result.done += 1
-            else:
-                result.block(f"{item.id}: {reviewed.error or reviewed.state.value}")
-            failures = 0
-        except Exception as exc:
-            logger.warning("review failed for %s: %s", item.id, exc)
-            result.fail(f"{item.id}: {type(exc).__name__}: {exc}")
-            await _record_failure(runtime, item, exc)
-            if isinstance(exc, ProviderExhausted):
-                result.stopped = True
-                result.note(f"stopped: {exc}")
-                break
-            failures = failures + 1 if _stops_the_batch(exc) else 0
-            if _stop_after_failures(result, failures, options):
-                break
+            return noted(f"{item.id}: would review")
+        catalog = await runtime.catalog_for(
+            item.provenance.scope.exam,
+            item.provenance.scope.subject,
+            item.provenance.scope.country,
+        )
+        reviewed = await service.apply(item, catalog)
+        await runtime.staging.save(reviewed)
+        if reviewed.state is State.VERIFIED:
+            return DONE
+        return blocked(f"{item.id}: {reviewed.error or reviewed.state.value}")
 
+    await _run_batch(runtime, result, rows, options, one)
     return result
 
 
@@ -710,46 +743,30 @@ async def ready(runtime: Runtime, options: TaskOptions) -> TaskResult:
     rows = await _rows(runtime, (State.VERIFIED,), options)
     known_passages = await runtime.staging.passage_ids()
 
-    failures = 0
-    for item in rows:
-        result.seen += 1
+    async def one(item: StagingItem) -> Outcome:
         if options.dry_run:
-            result.note(f"{item.id}: would run the ready conditions")
-            continue
-        try:
-            catalog = await runtime.catalog_for(
-                item.provenance.scope.exam,
-                item.provenance.scope.subject,
-                item.provenance.scope.country,
-            )
-            service = ReadyService(
-                catalog=catalog,
-                known_passage_ids=known_passages,
-            )
-            bundle = service.promote([item])
-            promoted = bundle.items[0]
-            if promoted.state is State.READY:
-                await runtime.staging.save(promoted)
-                result.done += 1
-            else:
-                reasons: list[str] = []
-                for condition in bundle.report.unmet():
-                    detail = ", ".join(bundle.report.reason_for(condition))
-                    reasons.append(f"{condition.value}: {detail or 'not met'}")
-                result.block(f"{item.id}: not ready ({'; '.join(reasons)})")
-            failures = 0
-        except Exception as exc:
-            logger.warning("ready failed for %s: %s", item.id, exc)
-            result.fail(f"{item.id}: {type(exc).__name__}: {exc}")
-            await _record_failure(runtime, item, exc)
-            if isinstance(exc, ProviderExhausted):
-                result.stopped = True
-                result.note(f"stopped: {exc}")
-                break
-            failures = failures + 1 if _stops_the_batch(exc) else 0
-            if _stop_after_failures(result, failures, options):
-                break
+            return noted(f"{item.id}: would run the ready conditions")
+        catalog = await runtime.catalog_for(
+            item.provenance.scope.exam,
+            item.provenance.scope.subject,
+            item.provenance.scope.country,
+        )
+        service = ReadyService(
+            catalog=catalog,
+            known_passage_ids=known_passages,
+        )
+        bundle = service.promote([item])
+        promoted = bundle.items[0]
+        if promoted.state is State.READY:
+            await runtime.staging.save(promoted)
+            return DONE
+        reasons: list[str] = []
+        for condition in bundle.report.unmet():
+            detail = ", ".join(bundle.report.reason_for(condition))
+            reasons.append(f"{condition.value}: {detail or 'not met'}")
+        return blocked(f"{item.id}: not ready ({'; '.join(reasons)})")
 
+    await _run_batch(runtime, result, rows, options, one)
     return result
 
 
@@ -807,6 +824,103 @@ async def status(runtime: Runtime, options: TaskOptions) -> TaskResult:
     return result
 
 
+async def index_sync(runtime: Runtime, options: TaskOptions) -> TaskResult:
+    """Sync the bank index with staging: remove orphans, report drift.
+
+    Reads only by default (--dry-run). With --apply, removes index entries
+    for items no longer in staging or in non-indexable states, and re-indexes
+    items that should be indexed (DEDUPED and later) but aren't.
+    """
+    result = TaskResult(task="index-sync")
+
+    # Both staging and index use the same bank client
+    client = runtime.staging._client
+
+    # States that should be indexed (DEDUPED and later, non-terminal)
+    indexed_states = (
+        "'deduped', 'catalogued', 'media_ready', 'described', "
+        "'enriched', 'verified', 'ready', 'live', 'reported'"
+    )
+    # States that should NOT be indexed
+    non_indexed_states = (
+        "'planned', 'acquired', 'adapted', 'gated', 'rejected', 'failed'"
+    )
+
+    # Count orphans (no staging row at all)
+    orphan_result = await client.execute("""
+        SELECT COUNT(*) FROM content_index ci
+        LEFT JOIN staging_items si ON ci.question_id = si.id
+        WHERE ci.origin = 'bank' AND si.id IS NULL
+    """)
+    orphan_count = int(orphan_result.rows[0][0])
+
+    # Count mis-indexed (staging items in non-indexable states but in index)
+    misindexed_result = await client.execute(f"""
+        SELECT COUNT(*) FROM content_index ci
+        JOIN staging_items si ON ci.question_id = si.id
+        WHERE ci.origin = 'bank' AND si.state IN ({non_indexed_states})
+    """)
+    misindexed_count = int(misindexed_result.rows[0][0])
+
+    # Count missing (staging items in indexable states not in index)
+    missing_result = await client.execute(f"""
+        SELECT COUNT(*) FROM staging_items si
+        LEFT JOIN content_index ci ON si.id = ci.question_id AND ci.origin = 'bank'
+        WHERE ci.question_id IS NULL AND si.state IN ({indexed_states}) AND si.content_hash != ''
+    """)
+    missing_count = int(missing_result.rows[0][0])
+
+    result.note(f"Orphaned index entries (no staging row): {orphan_count}")
+    result.note(f"Mis-indexed entries (staging row in non-indexable state): {misindexed_count}")
+    result.note(f"Missing index entries (staging row in indexable state not indexed): {missing_count}")
+
+    if options.dry_run:
+        result.note("DRY RUN: no changes made. Use --apply to fix.")
+        return result
+
+    if orphan_count > 0:
+        await client.execute("""
+            DELETE FROM content_index
+            WHERE origin = 'bank'
+            AND question_id NOT IN (SELECT id FROM staging_items)
+        """)
+        result.done += orphan_count
+        result.note(f"Removed {orphan_count} orphaned index entries")
+
+    if misindexed_count > 0:
+        await client.execute(f"""
+            DELETE FROM content_index
+            WHERE origin = 'bank'
+            AND question_id IN (SELECT id FROM staging_items WHERE state IN ({non_indexed_states}))
+        """)
+        result.done += misindexed_count
+        result.note(f"Removed {misindexed_count} mis-indexed entries")
+
+    if missing_count > 0:
+        # Re-index missing items
+        missing_items = await client.execute(f"""
+            SELECT si.id, si.content_hash, si.bundle_hash
+            FROM staging_items si
+            LEFT JOIN content_index ci ON si.id = ci.question_id AND ci.origin = 'bank'
+            WHERE ci.question_id IS NULL AND si.state IN ({indexed_states}) AND si.content_hash != ''
+        """)
+        entries = []
+        for row in missing_items.rows:
+            question_id, content_hash, bundle_hash = row
+            entries.append((content_hash, content_hash, BANK, question_id))
+
+        if entries:
+            await runtime.index.remember_many(entries)
+            await runtime.index.commit()
+            result.done += len(entries)
+            result.note(f"Re-indexed {len(entries)} missing items")
+
+    total = await runtime.index.count()
+    bank = await runtime.index.count(BANK)
+    result.note(f"Index now holds {total} (bank {bank})")
+    return result
+
+
 TASKS: dict[str, TaskFn] = {
     "fetch": fetch,
     "capture": capture,
@@ -816,6 +930,7 @@ TASKS: dict[str, TaskFn] = {
     "review": review,
     "ready": ready,
     "index": index,
+    "index-sync": index_sync,
     "status": status,
 }
 
@@ -833,6 +948,7 @@ TASK_HELP: dict[str, str] = {
     "review": "Check the answer and record the verification.",
     "ready": "Check the ready conditions and promote the bundle.",
     "index": "Reload the production half of the content index.",
+    "index-sync": "Sync bank index with staging (remove orphans, re-index missing).",
     "status": "Report counts per state and index size.",
 }
 

@@ -88,6 +88,12 @@ def _add_batch(parser: argparse.ArgumentParser) -> None:
         help="stop the task after this many consecutive failures (0 means no cap)",
     )
     parser.add_argument(
+        "--concurrency",
+        type=int,
+        default=1,
+        help="work on this many rows at once (default: 1, max: 8)",
+    )
+    parser.add_argument(
         "--provider",
         choices=PROVIDERS,
         default="config",
@@ -146,6 +152,10 @@ def build_parser() -> argparse.ArgumentParser:
     index_command = sub.add_parser("index", help=TASK_HELP["index"])
     _add_batch(index_command)
 
+    index_sync_command = sub.add_parser("index-sync", help=TASK_HELP["index-sync"])
+    _add_batch(index_sync_command)
+    index_sync_command.add_argument("--apply", action="store_true", help="Execute the sync (default: dry-run)")
+
     status_command = sub.add_parser("status", help=TASK_HELP["status"])
     _add_batch(status_command)
 
@@ -154,7 +164,8 @@ def build_parser() -> argparse.ArgumentParser:
     migrate.add_argument("--yes", action="store_true", help="Skip confirmation prompt when applying")
     _add_output(migrate)
 
-    bank_clear = sub.add_parser("bank-clear", help="Clear WAEC data from bank database (one-time cleanup)")
+    bank_clear = sub.add_parser("bank-clear", help="Clear exam data from bank database (with index cleanup)")
+    bank_clear.add_argument("--exam", default="WAEC", help="Exam to clear (default: WAEC)")
     bank_clear.add_argument("--apply", action="store_true", help="Execute the cleanup (default: dry-run)")
     bank_clear.add_argument("--yes", action="store_true", help="Skip confirmation prompt when applying")
     _add_output(bank_clear)
@@ -164,6 +175,11 @@ def build_parser() -> argparse.ArgumentParser:
 
 async def _execute(args: argparse.Namespace) -> tuple[list[TaskResult], str | None, str | None]:
     """Open the smallest runtime each command can run with. Returns (results, provider, model)."""
+    # For index-sync, --apply means NOT dry-run
+    dry_run = bool(getattr(args, "dry_run", False))
+    if getattr(args, "apply", False):
+        dry_run = False
+
     options = TaskOptions(
         exam=getattr(args, "exam", None),
         subject=getattr(args, "subject", None),
@@ -172,7 +188,8 @@ async def _execute(args: argparse.Namespace) -> tuple[list[TaskResult], str | No
         country=getattr(args, "country", None),
         limit=getattr(args, "limit", None),
         max_failures=getattr(args, "max_failures", 3),
-        dry_run=bool(getattr(args, "dry_run", False)),
+        dry_run=dry_run,
+        concurrency=getattr(args, "concurrency", 1),
     )
     command = str(args.command)
     provider = getattr(args, "provider", None)
@@ -211,7 +228,7 @@ async def _execute(args: argparse.Namespace) -> tuple[list[TaskResult], str | No
 
     settings = load_settings()
 
-    if command in ("status", "index", "ready"):
+    if command in ("status", "index", "index-sync", "ready"):
         async with open_store_runtime(settings) as runtime:
             return [await run_named(command, runtime, options)], None, None
 
@@ -475,22 +492,33 @@ async def _execute_migrate(args: argparse.Namespace) -> list:
 
 
 async def _execute_bank_clear(args: argparse.Namespace) -> list:
-    """Clear WAEC data from bank database (one-time cleanup)."""
+    """Clear data from bank database (with index cleanup)."""
     from utmelab_bank.adapters.database import TursoClient
     from utmelab_bank.config import bank_write_credentials
 
+    # Default to WAEC for backward compatibility, but allow override via --exam
+    exam = getattr(args, "exam", "WAEC")
     dry_run = not args.apply
     json_out = args.json
 
     if json_out:
-        plan = {"dry_run": dry_run, "action": "DELETE FROM staging_items WHERE exam='WAEC'; DELETE FROM passages WHERE exam='WAEC'"}
+        plan = {
+            "dry_run": dry_run,
+            "exam": exam,
+            "action": [
+                f"DELETE FROM staging_items WHERE exam='{exam}';",
+                f"DELETE FROM passages WHERE exam='{exam}';",
+                f"DELETE FROM content_index WHERE origin='bank' AND question_id NOT IN (SELECT id FROM staging_items);",
+            ],
+        }
         print(json.dumps(plan, indent=2))
     else:
-        print("=== Bank WAEC Data Cleanup ===")
+        print(f"=== Bank {exam} Data Cleanup ===")
         print(f"Mode: {'DRY-RUN' if dry_run else 'APPLY'}")
         print("Will delete from bank database:")
-        print("  DELETE FROM staging_items WHERE exam='WAEC';")
-        print("  DELETE FROM passages WHERE exam='WAEC';")
+        print(f"  DELETE FROM staging_items WHERE exam='{exam}';")
+        print(f"  DELETE FROM passages WHERE exam='{exam}';")
+        print("  DELETE orphaned content_index entries (bank origin);")
         print()
 
     if dry_run:
@@ -499,7 +527,7 @@ async def _execute_bank_clear(args: argparse.Namespace) -> list:
 
     if not args.yes:
         try:
-            confirm = input("Delete ALL WAEC data from bank database? [y/N]: ").strip().lower()
+            confirm = input(f"Delete ALL {exam} data from bank database? [y/N]: ").strip().lower()
         except EOFError:
             confirm = "n"
         if confirm != "y":
@@ -511,11 +539,16 @@ async def _execute_bank_clear(args: argparse.Namespace) -> list:
 
     try:
         await client.execute("BEGIN", commit=False)
-        await client.execute("DELETE FROM staging_items WHERE exam='WAEC'", commit=False)
-        await client.execute("DELETE FROM passages WHERE exam='WAEC'", commit=False)
+        await client.execute(f"DELETE FROM staging_items WHERE exam='{exam}'", commit=False)
+        await client.execute(f"DELETE FROM passages WHERE exam='{exam}'", commit=False)
+        # Clean orphaned index entries for this exam's items
+        await client.execute(
+            "DELETE FROM content_index WHERE origin='bank' AND question_id NOT IN (SELECT id FROM staging_items)",
+            commit=False,
+        )
         await client.commit()
-        print("Bank WAEC data cleared successfully.")
-        return [{"status": "cleared", "tables": ["staging_items", "passages"]}]
+        print(f"Bank {exam} data cleared successfully (including orphaned index entries).")
+        return [{"status": "cleared", "exam": exam, "tables": ["staging_items", "passages", "content_index (orphans)"]}]
     except Exception as exc:
         try:
             await client.execute("ROLLBACK", commit=False)
@@ -524,6 +557,10 @@ async def _execute_bank_clear(args: argparse.Namespace) -> list:
         raise
     finally:
         await client.close()
+
+
+def _print_tasks(json_output: bool) -> None:
+    """Print the available tasks and presets."""
     if json_output:
         print(
             json.dumps(

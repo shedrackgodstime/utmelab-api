@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import asyncio
+import time
 from collections.abc import AsyncIterator, Sequence
 from datetime import UTC, datetime
 from pathlib import Path
@@ -37,12 +39,14 @@ from utmelab_bank.domain.models import (
     RichText,
     SourceItem,
     StagingItem,
+    TagProposal,
 )
 from utmelab_bank.runtime import Runtime
 from utmelab_bank.tasks import (
     TaskOptions,
     UsageError,
     _advance,
+    _concurrency,
     _scope,
     capture,
     explain,
@@ -69,6 +73,15 @@ def test_waec_scope_requires_and_normalises_country() -> None:
 
     scope = _scope(TaskOptions(exam="WAEC", subject="biology", year=2025, country="ng"))
     assert scope.country == "NG"
+
+
+def test_concurrency_is_checked() -> None:
+    assert _concurrency(TaskOptions()) == 1
+    assert _concurrency(TaskOptions(concurrency=4)) == 4
+    with pytest.raises(UsageError, match="must be positive"):
+        _concurrency(TaskOptions(concurrency=0))
+    with pytest.raises(UsageError, match="cannot exceed"):
+        _concurrency(TaskOptions(concurrency=9))
 
 
 def make_catalog() -> CatalogSnapshot:
@@ -606,6 +619,86 @@ async def test_tag_stops_on_the_first_exhausted_provider(staging_item: StagingIt
     assert result.stopped
     assert result.seen == 1
     assert tagger.calls == 1
+
+
+class ConcurrencyTagger:
+    """A slow tagger that records how many calls overlap and when each starts."""
+
+    def __init__(self, delays: dict[str, float] | None = None) -> None:
+        self.in_flight = 0
+        self.peak = 0
+        self.starts: list[tuple[float, str]] = []
+        self.delays = delays or {}
+        self.producer = Producer(provider="fake", model="fake")
+
+    async def tag(self, request: object) -> TagProposal:
+        item = request.item
+        self.starts.append((time.monotonic(), item.id))
+        self.in_flight += 1
+        self.peak = max(self.peak, self.in_flight)
+        try:
+            await asyncio.sleep(self.delays.get(item.id, 0.01))
+            return TagProposal(
+                topic_id="cell-biology",
+                subtopic_id="cell-structure",
+                evidence="What is 2 + 2?",
+                confidence=0.9,
+                producer=self.producer,
+            )
+        finally:
+            self.in_flight -= 1
+
+
+async def _four_deduped(staging: FakeStaging, staging_item: StagingItem) -> None:
+    for position in range(4):
+        await staging.save(
+            staging_item.model_copy(
+                update={
+                    "id": f"source-1:parallel-{position}",
+                    "provenance": staging_item.provenance.model_copy(
+                        update={"source_item_id": f"parallel-{position}"}
+                    ),
+                    "state": State.DEDUPED,
+                }
+            )
+        )
+
+
+async def test_tag_runs_a_bounded_pool(staging_item: StagingItem) -> None:
+    runtime, staging, _ = make_runtime()
+    tagger = ConcurrencyTagger()
+    runtime.tagger = tagger
+    await _four_deduped(staging, staging_item)
+
+    result = await tag(
+        runtime,
+        TaskOptions(exam="JAMB", subject="Biology", year=2024, concurrency=2),
+    )
+
+    assert result.done == 4
+    assert result.seen == 4
+    assert tagger.peak == 2, "no more than the asked-for width may overlap"
+
+
+async def test_a_slow_row_does_not_idle_the_other_workers(
+    staging_item: StagingItem,
+) -> None:
+    runtime, staging, _ = make_runtime()
+    slow = "source-1:parallel-0"
+    tagger = ConcurrencyTagger(delays={slow: 0.25})
+    runtime.tagger = tagger
+    await _four_deduped(staging, staging_item)
+
+    result = await tag(
+        runtime,
+        TaskOptions(exam="JAMB", subject="Biology", year=2024, concurrency=2),
+    )
+
+    assert result.done == 4
+    starts = dict((item_id, started) for started, item_id in tagger.starts)
+    # The third row starts while the slow first row is still in flight. A
+    # chunk barrier would hold it until the slow row finished.
+    assert starts["source-1:parallel-2"] - starts[slow] < 0.2
 
 
 class ExplodingIngestor:

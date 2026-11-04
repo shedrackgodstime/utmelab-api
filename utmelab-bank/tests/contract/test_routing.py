@@ -4,7 +4,7 @@ from utmelab_bank.config import ConfigError
 from utmelab_bank.routing import select_routes
 
 
-def test_image_routing_prefers_openai_then_opencode() -> None:
+def test_image_routing_prefers_cloudflare_then_opencode() -> None:
     routes = select_routes(
         "image_description",
         environment={
@@ -16,21 +16,23 @@ def test_image_routing_prefers_openai_then_opencode() -> None:
 
     assert [route.family for route in routes] == [
         "openai",
+        "opencode",
+        "opencode",
+        "kilo",
         "openai",
-        "opencode",
-        "opencode",
     ]
     assert [route.model_id for route in routes] == [
         "@cf/meta/llama-4-scout-17b-16e-instruct",
-        "nvidia/nemotron-3.5-super-vl-120b-a12b",
         "opencode/nemotron-3.5-super-vl-free",
         "opencode/glm-5.3-flash-free",
+        "kilo/nvidia/nemotron-3.5-super-vl:free",
+        "nvidia/nemotron-3-ultra-550b-a55b",
     ]
     assert routes[0].base_url.endswith("accounts/account-1/ai/v1")
     assert "cloudflare-secret" not in repr(routes[0])
 
 
-def test_text_routing_prefers_nvidia_then_cloudflare_then_kilo() -> None:
+def test_text_routing_prefers_cloudflare_then_opencode_then_kilo() -> None:
     routes = select_routes(
         "question_explanation",
         environment={
@@ -40,20 +42,21 @@ def test_text_routing_prefers_nvidia_then_cloudflare_then_kilo() -> None:
         },
     )
 
-    assert [route.family for route in routes] == ["openai", "openai", "kilo"]
     assert [route.provider for route in routes] == [
-        "nvidia",
         "cloudflare",
+        "opencode",
         "kilo",
+        "nvidia",
     ]
-    assert routes[0].model_id == "nvidia/nemotron-3.5-super-vl-120b-a12b"
+    assert routes[0].model_id == "@cf/meta/llama-4-scout-17b-16e-instruct"
+    assert routes[-1].model_id == "nvidia/nemotron-3-ultra-550b-a55b"
 
 
 def test_credential_free_routes_need_no_secret() -> None:
     routes = select_routes("question_explanation", environment={})
 
-    assert [route.family for route in routes] == ["kilo"]
-    (kilo,) = routes
+    assert [route.family for route in routes] == ["opencode", "kilo"]
+    kilo = routes[-1]
     assert kilo.protocol == "opencode-cli"
     assert kilo.model_id == "kilo/kilo-auto/free"
     assert kilo.api_key == ""
