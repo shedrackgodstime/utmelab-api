@@ -14,13 +14,13 @@ from pathlib import Path
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-from utmelab_bank.adapters.database import get_client
+from utmelab_bank.adapters.database import bank_client
 from utmelab_bank.domain.models import StagingItem
 
 
 def audit_rejected(exam: str | None = None, subject: str | None = None, year: int | None = None) -> list[dict]:
     """Fetch all rejected items with their error details."""
-    client = get_client("bank")
+    client = bank_client()
 
     where_parts = ["state = 'rejected'"]
     params = []
