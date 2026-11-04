@@ -106,10 +106,6 @@ on:
         required: false
         default: false
 
-concurrency:
-  group: bank-pipeline
-  cancel-in-progress: false
-
 permissions:
   contents: read
 
