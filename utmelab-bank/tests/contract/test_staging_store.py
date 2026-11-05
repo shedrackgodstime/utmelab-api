@@ -75,6 +75,14 @@ class FakeClient:
                 state = str(row[1])
                 counts[state] = counts.get(state, 0) + 1
             return FakeResult(list(counts.items()))
+        if "WHERE exam = ? AND subject = ? AND year = ?" in statement:
+            exam, subject, year = values[:3]
+            found = [
+                (r[0], r[1], False, False)
+                for r in self.rows.values()
+                if r[2] == exam and r[3] == subject and r[4] == year
+            ]
+            return FakeResult(found)
         if "SELECT id, state" in statement:
             key = values[0]
             row = self.rows.get(key)
@@ -147,6 +155,25 @@ async def test_save_then_load_round_trips() -> None:
     assert back.state is State.CATALOGUED
     assert back.hashes is not None
     assert back.hashes.content_hash == "c" * 64
+
+
+async def test_states_for_finds_a_row_whatever_country_it_stored() -> None:
+    """The paper, not the country, is how an existing row is found.
+
+    A request that names no country used to miss a row stored under one, so
+    the scrape treated the row as new and overwrote the enrichment it held.
+    """
+    client = FakeClient()
+    store = StagingStore(client)
+    await store.prepare()
+    await store.save(make_item(item_id="q1", country=None))
+    await store.save(make_item(item_id="q2", country="NG"))
+
+    states = await store.states_for(
+        exam="JAMB", subject="biology", year=2024, country=None
+    )
+
+    assert set(states) == {"live:q1", "live:q2"}
 
 
 async def test_save_then_load_preserves_country() -> None:

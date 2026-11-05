@@ -147,20 +147,26 @@ class StagingStore:
         year: int,
         country: str | None = None,
     ) -> dict[str, tuple[str, bool, bool]]:
-        """The state of every row already held for one scope.
+        """The state of every row already held for one paper.
 
         One query lets a scrape skip a finished row without a load per source
         item. The error flag says a DEDUPED row failed and must be retried;
         the pending flag says a row still holds refs or blobs, which is the
         crash window between dedupe and capture. Either one means load it.
+
+        The lookup is keyed by the paper, not by country. A source item id is
+        unique, and the caller compares the loaded scope before it reuses a
+        row. Filtering on country here made an existing row whose stored
+        country differed from the request look new, so the scrape re-adapted
+        it and overwrote the enrichment it already carried. ``country`` stays
+        in the signature because the caller names the scope it asked for.
         """
         result = await self._client.execute(
             "SELECT id, state, error IS NOT NULL, "
             "(media_refs IS NOT NULL AND media_refs != '[]') OR "
             "(media_blobs IS NOT NULL AND media_blobs != '{}') "
-            "FROM staging_items WHERE exam = ? AND subject = ? AND year = ? "
-            "AND ((country IS NULL AND ? IS NULL) OR country = ?)",
-            [exam, subject, year, country, country],
+            "FROM staging_items WHERE exam = ? AND subject = ? AND year = ?",
+            [exam, subject, year],
         )
         return {str(row[0]): (str(row[1]), bool(row[2]), bool(row[3])) for row in result.rows}
 
