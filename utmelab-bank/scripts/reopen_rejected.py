@@ -54,7 +54,13 @@ _GATE_RE = re.compile(r"^v\d+:\s*(?P<codes>.+)$")
 
 
 def codes_for(error: str | None) -> set[str]:
-    match = _GATE_RE.match((error or "").strip())
+    text = (error or "").strip()
+    # A duplicate refusal names a row that was held when the row was checked.
+    # If that row is gone, the reason is gone with it, so treat the whole
+    # duplicate family as one recoverable code.
+    if text.startswith("duplicate_"):
+        return {"duplicate"}
+    match = _GATE_RE.match(text)
     if not match:
         return set()
     return {code.strip() for code in match.group("codes").split(",") if code.strip()}
