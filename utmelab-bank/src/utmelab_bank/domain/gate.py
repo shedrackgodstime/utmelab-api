@@ -83,7 +83,13 @@ from .models.common import (
 #: as text, so the rule was refusing answerable rows by the hundred. A row is
 #: judged now only when it points at a figure: "the diagram above", "the
 #: graph below", "study the sketch", "as shown in the figure".
-RULES_VERSION = "v6"
+#:
+#: v7: the underline and figure checks read the passage as well as the stem.
+#: A question about "the underlined lines" carries the mark in the passage it
+#: introduces; checking only the stem refused it as missing a mark it had.
+#: The underline check also reads a reference ("the underlined word"), not the
+#: bare stem "underlin", which also matches the ordinary verb "underlines".
+RULES_VERSION = "v7"
 
 #: The nouns that name a figure a reader has to see.
 _FIGURE_NOUN = r"(?:diagram|figure|graph|sketch|chart)"
@@ -336,23 +342,57 @@ def check_option_count(count: int, issues: list[Issue]) -> None:
         )
 
 
-def _check_stem(content: Content, issues: list[Issue]) -> None:
+#: The ways a question points at an underline mark. The bare stem "underlin"
+#: is not enough: "the concept which underlines double entry bookkeeping" is
+#: the ordinary verb, and the rule refused that row as a missing mark.
+_UNDERLINE_NOUNS = (
+    r"(?:word|words|letter|letters|line|lines|expression|expressions|"
+    r"phrase|phrases|part|parts|item|items|syllable|syllables|option|"
+    r"options|clause|clauses)"
+)
+_UNDERLINE_PATTERNS: tuple[re.Pattern[str], ...] = (
+    re.compile(rf"\bunderlined\s+{_UNDERLINE_NOUNS}\b", re.I),
+    re.compile(
+        rf"\bunderlined\s+(?:in|below|above|on|here|there)\b",
+        re.I,
+    ),
+    re.compile(r"\bunderlined\b(?=\s*(?:[.?!,;:]|$))", re.I),
+    re.compile(r"\bunderline\s+(?:the|each|all|every|any)\b", re.I),
+)
+
+
+def mentions_underline(text: str) -> bool:
+    """Whether the text points at an underline mark the reader has to see."""
+    return any(pattern.search(text) for pattern in _UNDERLINE_PATTERNS)
+
+
+def _check_stem(content: Content, passage: Passage | None, issues: list[Issue]) -> None:
     stem = content.stem
     if not stem.text.strip():
         issues.append(_error("stem_empty", "the stem has no text", "text"))
     check_inline(stem.text, stem.inline, "text", issues)
     check_plain_text(stem.text, "text", issues)
 
+    # A question can refer to the passage: "The underlined lines portray..."
+    # The mark belongs to the passage then, not to the stem, so both are in
+    # scope. Checking the stem alone refused every passage-backed question
+    # that used the word "underlined".
+    passage_marks = passage.text.inline if passage is not None else ()
+    marks = (*stem.inline, *passage_marks)
+
     lower = stem.text.lower()
-    if "underlin" in lower and not any(mark.kind.value == "underline" for mark in stem.inline):
+    if mentions_underline(lower) and not any(
+        mark.kind.value == "underline" for mark in marks
+    ):
         issues.append(
             _judgement(
                 "underline_missing",
-                "the stem mentions underlining but carries no underline mark",
+                "the stem mentions underlining but neither the stem nor the "
+                "passage carries an underline mark",
                 "text",
             )
         )
-    if mentions_figure(stem.text) and not any(mark.kind.value == "image" for mark in stem.inline):
+    if mentions_figure(stem.text) and not any(mark.kind.value == "image" for mark in marks):
         issues.append(
             _judgement(
                 "missing_figure",
@@ -585,7 +625,7 @@ def run_gate(context: GateContext) -> GateVerdict:
     person. The unresolved issues are the person's queue.
     """
     issues: list[Issue] = []
-    _check_stem(context.content, issues)
+    _check_stem(context.content, context.passage, issues)
     _check_options(context.content, issues)
     _check_explanation(context.content, issues)
     _check_numbers(context, issues)
@@ -629,6 +669,7 @@ __all__ = [
     "check_plain_text",
     "has_numbered_gap",
     "mentions_figure",
+    "mentions_underline",
     "refusal_counts",
     "run_gate",
 ]

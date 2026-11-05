@@ -60,9 +60,9 @@ def codes_for(error: str | None) -> set[str]:
     return {code.strip() for code in match.group("codes").split(",") if code.strip()}
 
 
-def scope_of(row: StagingItem) -> tuple[str, str, int | None]:
+def scope_of(row: StagingItem) -> tuple[str, str, int | None, str | None]:
     scope = row.provenance.scope
-    return scope.exam, scope.subject, scope.year
+    return scope.exam, scope.subject, scope.year, scope.country
 
 
 def backup(rows: list[StagingItem]) -> Path:
@@ -126,8 +126,9 @@ async def reopen(runtime, selected: list[StagingItem], *, apply: bool) -> None:
     print(f"\nreopen candidates: {len(selected)}")
     if scopes:
         print("\nfetch runs needed after reopening:")
-        for (exam, subject, year), number in sorted(scopes.items()):
-            print(f"  {exam} {subject} {year}  ({number} rows)")
+        for (exam, subject, year, country), number in sorted(scopes.items()):
+            suffix = f" country={country}" if country else ""
+            print(f"  {exam} {subject} {year}{suffix}  ({number} rows)")
     if not apply:
         print("\ndry run: nothing written. Re-run with --apply.")
         return
@@ -160,8 +161,9 @@ async def run(args: argparse.Namespace) -> int:
             for code in (codes_for(row.error) & wanted)
         )
         print(f"rejected read: {len(rows)}")
-        for (code, exam, subject, year), number in sorted(counts.items()):
-            print(f"  {code:<22} {exam:<5} {subject:<28} {year}  {number}")
+        for (code, exam, subject, year, country), number in sorted(counts.items()):
+            suffix = f" {country}" if country else ""
+            print(f"  {code:<22} {exam:<5} {subject:<28} {year}{suffix}  {number}")
 
         if args.regrade:
             await regrade(runtime, selected, apply=args.apply)

@@ -26,6 +26,7 @@ from utmelab_bank.domain.gate import (
     check_option_ids,
     has_numbered_gap,
     mentions_figure,
+    mentions_underline,
     refusal_counts,
     run_gate,
 )
@@ -409,6 +410,51 @@ def test_an_underline_mention_without_an_underline_is_a_judgement() -> None:
     verdict = gate(content)
 
     assert "underline_missing" in codes(verdict)
+
+
+def test_the_ordinary_verb_underlines_is_not_a_mark() -> None:
+    """"The concept which underlines double entry" points at no mark."""
+    content = make_content(
+        stem=RichText(text="The concept which underlines double entry bookkeeping is")
+    )
+
+    verdict = gate(content)
+
+    assert verdict.passed is True
+    assert "underline_missing" not in codes(verdict)
+
+
+def test_mentions_underline_reads_a_reference() -> None:
+    assert mentions_underline("the underlined word") is True
+    assert mentions_underline("which of the following is underlined?") is True
+    assert mentions_underline("Underline the correct answer") is True
+    assert mentions_underline("the concept which underlines double entry") is False
+
+
+def test_a_passage_underline_answers_the_stem_reference() -> None:
+    """The mark can be in the passage, which is where "underlined lines" live.
+
+    WAEC literature asks about "the underlined lines" and marks them in the
+    extract, not the stem. The gate read only the stem and refused the row.
+    """
+    passage = make_passage(
+        text=RichText(
+            text="So should the murdered look",
+            inline=(Inline(kind=InlineKind.UNDERLINE, start=0, len=17),),
+        )
+    )
+    content = make_content(
+        stem=RichText(text="The underlined lines portray the addressee as a"),
+        passage_id="psg_1",
+    )
+
+    verdict = gate(
+        content,
+        passage=passage,
+        known_passage_ids=frozenset({"psg_1"}),
+    )
+
+    assert verdict.passed is True
 
 
 # ── duplicates ──────────────────────────────────────────────────────────────
