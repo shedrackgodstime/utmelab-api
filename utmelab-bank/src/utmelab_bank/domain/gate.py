@@ -75,18 +75,36 @@ from .models.common import (
 #: holds valid five-option and short questions, and the source carries the
 #: same range; refusing them lost useful content. The source still refuses a
 #: row with fewer than two usable options, so two is the floor.
-RULES_VERSION = "v5"
+#:
+#: v6: the figure rule reads a deictic reference, not a bare noun. The old
+#: word list fired on "illustrates", "figure of speech", "periodic table",
+#: "shown in the balance sheet" and the numeric sense of "figure". Those are
+#: ordinary English, and the source writes tables and diagrams into the stem
+#: as text, so the rule was refusing answerable rows by the hundred. A row is
+#: judged now only when it points at a figure: "the diagram above", "the
+#: graph below", "study the sketch", "as shown in the figure".
+RULES_VERSION = "v6"
 
-#: The word hints that mean a question is about a figure. These collide with
-#: ordinary English, which is why the rule judges rather than refuses.
-FIGURE_HINTS: tuple[tuple[str, bool, bool], ...] = (
-    ("diagram", True, False),
-    ("figure", False, False),
-    ("graph", True, False),
-    ("illustrat", False, True),
-    ("shown", False, False),
-    ("sketch", True, False),
-    ("table", False, False),
+#: The nouns that name a figure a reader has to see.
+_FIGURE_NOUN = r"(?:diagram|figure|graph|sketch|chart)"
+
+#: A figure reference is deictic. The noun alone is not enough, because
+#: "table", "graph" and "figure" all carry ordinary senses. The patterns are
+#: deliberately narrow: the source embeds table and diagram data in the stem
+#: as text, and a row that carries its own data is answerable without an
+#: image.
+_FIGURE_PATTERNS: tuple[re.Pattern[str], ...] = (
+    re.compile(rf"\b{_FIGURE_NOUN}\s+(?:above|below|shown|given|provided)\b", re.I),
+    re.compile(rf"\b(?:above|below|following)\s+{_FIGURE_NOUN}\b", re.I),
+    re.compile(
+        rf"\b(?:use|study|consider|observe|examine|refer\s+to)\s+"
+        rf"(?:the\s+)?{_FIGURE_NOUN}\b",
+        re.I,
+    ),
+    re.compile(
+        rf"\b(?:as\s+)?shown\s+(?:in|on|by)\s+(?:the\s+)?{_FIGURE_NOUN}\b",
+        re.I,
+    ),
 )
 
 #: Strings that mean a question was lifted from a novel and leaked into the
@@ -139,33 +157,15 @@ class GateContext:
 
 
 def mentions_figure(text: str) -> bool:
-    """Whether the text refers to a figure, by word boundary.
+    """Whether the text points at a figure the reader has to see.
 
-    Per hint strictness: figure and table are exact words, because both
-    double as ordinary words. diagram, graph and sketch tolerate a plural.
-    illustrat is a prefix stem. shown is exact.
+    A figure reference is a phrase, not a word. "The diagram above" points at
+    something missing; "the process illustrates", "a figure of speech", "the
+    periodic table" and "shown in the balance sheet" do not. The source also
+    writes table and diagram data into the stem as text, so a bare "table
+    below" is not treated as a missing image.
     """
-    lower = text.lower()
-    for hint, plural, prefix in FIGURE_HINTS:
-        start = 0
-        while True:
-            pos = lower.find(hint, start)
-            if pos < 0:
-                break
-            before_ok = pos == 0 or not (lower[pos - 1].isalpha() or lower[pos - 1] == "-")
-            run = 0
-            index = pos + len(hint)
-            while index < len(lower) and (lower[index].isalpha() or lower[index] == "-"):
-                run += 1
-                index += 1
-            if prefix or run == 0:
-                after_ok = True
-            else:
-                after_ok = plural and run == 1 and lower[pos + len(hint)] == "s"
-            if before_ok and after_ok:
-                return True
-            start = pos + 1
-    return False
+    return any(pattern.search(text) for pattern in _FIGURE_PATTERNS)
 
 
 def has_numbered_gap(text: str) -> bool:

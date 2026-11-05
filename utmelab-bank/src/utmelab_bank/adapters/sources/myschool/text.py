@@ -46,6 +46,14 @@ INLINE_TAGS: Final[dict[str, str]] = {
 _BREAK_TAGS: Final[frozenset[str]] = frozenset({"br"})
 
 _TAG: Final[re.Pattern[str]] = re.compile(r"<\s*(/?)\s*([a-zA-Z0-9]+)[^>]*>")
+#: Comments and raw script/style blocks are not content. MySchool pastes
+#: Notion's editor bookkeeping into the stem (``<!-- notionvc: ... -->``), and
+#: the tag scanner does not match it, so it reaches the ledger as literal text
+#: and the gate refuses the row. Strip these before anything is measured.
+_COMMENT: Final[re.Pattern[str]] = re.compile(r"<!--.*?-->", re.DOTALL)
+_RAW_BLOCK: Final[re.Pattern[str]] = re.compile(
+    r"<(script|style)\b[^>]*>.*?</\1\s*>", re.IGNORECASE | re.DOTALL
+)
 _WS: Final[re.Pattern[str]] = re.compile(r"\s+")
 _ATTR: Final[re.Pattern[str]] = re.compile(r"""([a-zA-Z-]+)\s*=\s*["']([^"']*)["']""")
 
@@ -63,6 +71,11 @@ def clean_inline(markup: str) -> tuple[str, tuple[Inline, ...]]:
     open_at: dict[str, int] = {}
     size = 0
     position = 0
+
+    # Editor metadata and raw blocks are not part of the question. Removing
+    # them before the scanner keeps their offsets out of the text entirely.
+    markup = _RAW_BLOCK.sub("", markup)
+    markup = _COMMENT.sub("", markup)
 
     def push(run: str) -> None:
         nonlocal size

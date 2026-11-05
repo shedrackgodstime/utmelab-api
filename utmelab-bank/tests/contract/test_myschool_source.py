@@ -269,6 +269,32 @@ def test_inserted_html_survives_as_an_underline_mark() -> None:
     assert any(mark["kind"] == "underline" for mark in marks)
 
 
+def test_editor_comments_do_not_reach_the_stem() -> None:
+    parsed = parse_api_question(
+        api_row(
+            question=(
+                "<!-- notionvc: 26270388-a207-4774-a672-ab6f345c035b -->"
+                "<p>Yerima always holds his own.</p><!-- notionvc: trailing -->"
+            )
+        ),
+        exam="jamb",
+        subject="english-language",
+        year=2024,
+    )
+    assert parsed.payload["stem"] == "Yerima always holds his own."
+    assert "notionvc" not in parsed.payload["stem"]
+
+
+def test_script_blocks_do_not_reach_the_stem() -> None:
+    parsed = parse_api_question(
+        api_row(question="<p>Read the passage.</p><script>alert('x')</script>"),
+        exam="jamb",
+        subject="english-language",
+        year=2024,
+    )
+    assert parsed.payload["stem"] == "Read the passage."
+
+
 def test_the_answer_comes_from_the_api() -> None:
     parsed = parse_api_question(
         api_row(

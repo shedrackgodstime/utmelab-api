@@ -365,13 +365,12 @@ def test_a_clearance_for_another_rule_does_not_pass() -> None:
     assert verdict.passed is False
 
 
-def test_the_figure_rule_fires_on_the_word_table_and_a_person_clears_it() -> None:
-    """The word table is not a figure, and the rule cannot tell.
+def test_the_word_table_is_not_a_figure() -> None:
+    """A stress question whose last option is the word table.
 
-    This is the false positive the live bank carries, on a stress question
-    whose last option is the word table. The rule still fires, because a rule
-    that guessed would let a real missing figure through, but it fires as a
-    judgement, so a person clears it in seconds and the clearance is kept.
+    The old word list refused this row as a missing figure. A bare "table" is
+    an ordinary word, and the row is answerable as it stands, so v6 lets it
+    through.
     """
     content = make_content(
         stem=RichText(
@@ -381,27 +380,13 @@ def test_the_figure_rule_fires_on_the_word_table_and_a_person_clears_it() -> Non
 
     verdict = gate(content)
 
-    assert verdict.passed is False
-    issue = next(i for i in verdict.issues if i.code == "missing_figure")
-    assert issue.severity is Severity.JUDGEMENT
-
-    cleared = gate(
-        content,
-        clearances=(
-            Clearance(
-                rule="missing_figure",
-                by="owner",
-                reason="the word is ordinary, there is no figure to add",
-                created_at=NOW,
-            ),
-        ),
-    )
-    assert cleared.passed is True
+    assert verdict.passed is True
+    assert "missing_figure" not in codes(verdict)
 
 
 def test_the_figure_rule_fires_on_a_real_figure() -> None:
     content = make_content(
-        stem=RichText(text="In the displacement-time graph of simple harmonic motion:")
+        stem=RichText(text="In the displacement-time graph below, the slope is:")
     )
 
     verdict = gate(content)
@@ -647,12 +632,18 @@ def test_the_counts_are_ordered_by_volume() -> None:
 
 
 def test_mentions_figure_finds_a_graph() -> None:
-    assert mentions_figure("in the displacement-time graph of motion") is True
+    assert mentions_figure("in the displacement-time graph below") is True
+    assert mentions_figure("study the sketch and answer") is True
+    assert mentions_figure("as shown in the figure") is True
 
 
-def test_mentions_figure_ignores_an_ordinary_table() -> None:
-    assert mentions_figure("record, begin, commit, table") is True
-    assert mentions_figure("the table below") is True
+def test_mentions_figure_ignores_ordinary_words() -> None:
+    assert mentions_figure("record, begin, commit, table") is False
+    assert mentions_figure("the table below") is False
+    assert mentions_figure("this illustrates the process") is False
+    assert mentions_figure("the figure of speech used here") is False
+    assert mentions_figure("elements in the periodic table") is False
+    assert mentions_figure("subscription in arrears is shown in the balance sheet") is False
 
 
 def test_mentions_figure_ignores_a_word_that_only_contains_a_hint() -> None:
