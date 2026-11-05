@@ -24,6 +24,7 @@ from utmelab_bank.domain.gate import (
     check_inline,
     check_option_count,
     check_option_ids,
+    figure_is_inline,
     has_numbered_gap,
     mentions_figure,
     mentions_underline,
@@ -410,6 +411,35 @@ def test_an_underline_mention_without_an_underline_is_a_judgement() -> None:
     verdict = gate(content)
 
     assert "underline_missing" in codes(verdict)
+
+
+def test_a_numbered_figure_the_stem_defines_is_not_missing() -> None:
+    """WAEC flattens an Excel table into the stem and still names Figure 3.
+
+    The data sits between the first and last "Figure 3" labels, so the row is
+    answerable and the rule must not ask for an image.
+    """
+    stem = (
+        "Figure 3 is a Microsoft Excel Worksheet. Use it to answer questions "
+        "20 and 21. A B C D E 1 IDENTICATION NUMBER BASIC SALARY (N) TOTAL "
+        "ALLOWANCE (N) 2 WASC/LPT/001 800000 60000 3 WASC/LPT/002 700000 "
+        "40000 Figure 3 What formula will correctly display the total?"
+    )
+    content = make_content(stem=RichText(text=stem))
+
+    verdict = gate(content)
+
+    assert figure_is_inline(stem) is True
+    assert "missing_figure" not in codes(verdict)
+
+
+def test_a_numbered_figure_with_no_inline_data_still_fires() -> None:
+    content = make_content(stem=RichText(text="Use the diagram above to answer the question."))
+
+    verdict = gate(content)
+
+    assert figure_is_inline(content.stem.text) is False
+    assert "missing_figure" in codes(verdict)
 
 
 def test_the_ordinary_verb_underlines_is_not_a_mark() -> None:

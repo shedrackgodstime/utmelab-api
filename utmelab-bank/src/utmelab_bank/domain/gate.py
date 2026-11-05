@@ -44,6 +44,7 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable, Sequence
 from dataclasses import dataclass, field
+from typing import Final
 
 from .dedupe import near_duplicate_fingerprint
 from .enums import Severity
@@ -89,6 +90,8 @@ from .models.common import (
 #: introduces; checking only the stem refused it as missing a mark it had.
 #: The underline check also reads a reference ("the underlined word"), not the
 #: bare stem "underlin", which also matches the ordinary verb "underlines".
+#: A numbered figure that the stem defines twice ("Figure 3 is a worksheet ...
+#: Figure 3 What formula") is inline, not missing.
 RULES_VERSION = "v7"
 
 #: The nouns that name a figure a reader has to see.
@@ -361,6 +364,21 @@ _UNDERLINE_PATTERNS: tuple[re.Pattern[str], ...] = (
 )
 
 
+#: A stem that names the same numbered figure more than once carries that
+#: figure inline. "Figure 3 is a Microsoft Excel Worksheet ... Figure 3 What
+#: formula ..." is the source's flattened table; the row is answerable and
+#: must not be refused for a missing image.
+_NUMBERED_FIGURE_RE: Final[re.Pattern[str]] = re.compile(
+    r"\b(?:figure|table|diagram|chart|graph)\s+(\d+)\b", re.I
+)
+
+
+def figure_is_inline(text: str) -> bool:
+    """Whether the stem defines the numbered figure it refers to."""
+    labels = _NUMBERED_FIGURE_RE.findall(text)
+    return len(labels) > 1 and len(labels) != len(set(labels))
+
+
 def mentions_underline(text: str) -> bool:
     """Whether the text points at an underline mark the reader has to see."""
     return any(pattern.search(text) for pattern in _UNDERLINE_PATTERNS)
@@ -392,7 +410,11 @@ def _check_stem(content: Content, passage: Passage | None, issues: list[Issue]) 
                 "text",
             )
         )
-    if mentions_figure(stem.text) and not any(mark.kind.value == "image" for mark in marks):
+    if (
+        mentions_figure(stem.text)
+        and not figure_is_inline(stem.text)
+        and not any(mark.kind.value == "image" for mark in marks)
+    ):
         issues.append(
             _judgement(
                 "missing_figure",
@@ -668,6 +690,7 @@ __all__ = [
     "check_option_ids",
     "check_plain_text",
     "has_numbered_gap",
+    "figure_is_inline",
     "mentions_figure",
     "mentions_underline",
     "refusal_counts",
