@@ -627,9 +627,7 @@ async def capture(runtime: Runtime, options: TaskOptions) -> TaskResult:
                 error=f"duplicate_{found.kind}: {found.question_id}",
             )
             await runtime.staging.save(rejected)
-            return skipped(
-                f"{rejected.id}: duplicate after capture: {found.question_id}"
-            )
+            return skipped(f"{rejected.id}: duplicate after capture: {found.question_id}")
         await runtime.dedupe.remember(captured, origin=BANK)
         await runtime.staging.save(captured)
         return DONE
@@ -834,7 +832,7 @@ async def index_sync(runtime: Runtime, options: TaskOptions) -> TaskResult:
     result = TaskResult(task="index-sync")
 
     # Both staging and index use the same bank client
-    client = runtime.staging._client
+    client = runtime.staging._client  # type: ignore[attr-defined]
 
     # States that should be indexed (DEDUPED and later, non-terminal)
     indexed_states = (
@@ -842,9 +840,7 @@ async def index_sync(runtime: Runtime, options: TaskOptions) -> TaskResult:
         "'enriched', 'verified', 'ready', 'live', 'reported'"
     )
     # States that should NOT be indexed
-    non_indexed_states = (
-        "'planned', 'acquired', 'adapted', 'gated', 'rejected', 'failed'"
-    )
+    non_indexed_states = "'planned', 'acquired', 'adapted', 'gated', 'rejected', 'failed'"
 
     # Count orphans (no staging row at all)
     orphan_result = await client.execute("""
@@ -872,7 +868,9 @@ async def index_sync(runtime: Runtime, options: TaskOptions) -> TaskResult:
 
     result.note(f"Orphaned index entries (no staging row): {orphan_count}")
     result.note(f"Mis-indexed entries (staging row in non-indexable state): {misindexed_count}")
-    result.note(f"Missing index entries (staging row in indexable state not indexed): {missing_count}")
+    result.note(
+        f"Missing index entries (staging row in indexable state not indexed): {missing_count}"
+    )
 
     if options.dry_run:
         result.note("DRY RUN: no changes made. Use --apply to fix.")

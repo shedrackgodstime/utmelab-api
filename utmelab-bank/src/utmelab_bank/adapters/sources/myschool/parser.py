@@ -20,7 +20,7 @@ from typing import Any, Final
 from urllib.parse import urljoin
 
 import httpx
-from lxml import html as lxml_html
+from lxml import html as lxml_html  # type: ignore[import-untyped]
 
 from utmelab_bank.domain.enums import ImagePosition, InlineKind
 from utmelab_bank.domain.models import Inline
@@ -214,32 +214,6 @@ def api_last_page(payload: dict[str, Any]) -> int:
         return max(1, int(practice.get("last_page", 1)))
     except TypeError, ValueError:
         return 1
-
-
-def figure_url(name: object) -> str | None:
-    """The absolute URL of a figure, or ``None`` when there is not a real one.
-
-    A bare filename is resolved against the classroom storage host. A path
-    that already starts at the site root, a protocol-relative URL and an
-    absolute URL are all kept. A placeholder or a non-http scheme is not a
-    figure and is refused rather than downloaded.
-    """
-    if not isinstance(name, str):
-        return None
-    candidate = name.strip()
-    if not candidate:
-        return None
-    if any(marker in candidate.lower() for marker in PLACEHOLDER_MARKERS):
-        return None
-    if candidate.startswith(("http://", "https://")):
-        return candidate
-    if candidate.startswith("//"):
-        return f"https:{candidate}"
-    if candidate.startswith(("/", "storage/")):
-        return f"{BASE}/{candidate.lstrip('/')}"
-    if candidate.startswith(("data:", "javascript:", "mailto:")):
-        return None
-    return f"{IMAGE_BASE}/{candidate.lstrip('/')}"
 
 
 def parse_api_question(

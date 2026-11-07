@@ -169,9 +169,7 @@ async def test_states_for_finds_a_row_whatever_country_it_stored() -> None:
     await store.save(make_item(item_id="q1", country=None))
     await store.save(make_item(item_id="q2", country="NG"))
 
-    states = await store.states_for(
-        exam="JAMB", subject="biology", year=2024, country=None
-    )
+    states = await store.states_for(exam="JAMB", subject="biology", year=2024, country=None)
 
     assert set(states) == {"live:q1", "live:q2"}
 

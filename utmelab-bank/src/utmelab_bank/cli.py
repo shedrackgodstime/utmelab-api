@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import contextlib
 import json
 import logging
 import sys
@@ -22,7 +23,7 @@ from utmelab_bank.adapters.media import MediaError
 from utmelab_bank.adapters.providers import OpenAICompatibleError, ProviderExhausted
 from utmelab_bank.adapters.providers.opencode import OpenCodeError
 from utmelab_bank.adapters.sources import create_source
-from utmelab_bank.config import ConfigError, load_settings, catalog_write_credentials
+from utmelab_bank.config import ConfigError, catalog_write_credentials, load_settings
 from utmelab_bank.runtime import Runtime, open_pipeline_runtime, open_store_runtime
 from utmelab_bank.tasks import (
     PRESETS,
@@ -154,20 +155,34 @@ def build_parser() -> argparse.ArgumentParser:
 
     index_sync_command = sub.add_parser("index-sync", help=TASK_HELP["index-sync"])
     _add_batch(index_sync_command)
-    index_sync_command.add_argument("--apply", action="store_true", help="Execute the sync (default: dry-run)")
+    index_sync_command.add_argument(
+        "--apply", action="store_true", help="Execute the sync (default: dry-run)"
+    )
 
     status_command = sub.add_parser("status", help=TASK_HELP["status"])
     _add_batch(status_command)
 
-    migrate = sub.add_parser("migrate", help="Apply catalog migrations to production (WAEC subject alignment)")
-    migrate.add_argument("--apply", action="store_true", help="Execute the migration (default: dry-run)")
-    migrate.add_argument("--yes", action="store_true", help="Skip confirmation prompt when applying")
+    migrate = sub.add_parser(
+        "migrate", help="Apply catalog migrations to production (WAEC subject alignment)"
+    )
+    migrate.add_argument(
+        "--apply", action="store_true", help="Execute the migration (default: dry-run)"
+    )
+    migrate.add_argument(
+        "--yes", action="store_true", help="Skip confirmation prompt when applying"
+    )
     _add_output(migrate)
 
-    bank_clear = sub.add_parser("bank-clear", help="Clear exam data from bank database (with index cleanup)")
+    bank_clear = sub.add_parser(
+        "bank-clear", help="Clear exam data from bank database (with index cleanup)"
+    )
     bank_clear.add_argument("--exam", default="WAEC", help="Exam to clear (default: WAEC)")
-    bank_clear.add_argument("--apply", action="store_true", help="Execute the cleanup (default: dry-run)")
-    bank_clear.add_argument("--yes", action="store_true", help="Skip confirmation prompt when applying")
+    bank_clear.add_argument(
+        "--apply", action="store_true", help="Execute the cleanup (default: dry-run)"
+    )
+    bank_clear.add_argument(
+        "--yes", action="store_true", help="Skip confirmation prompt when applying"
+    )
     _add_output(bank_clear)
 
     return parser
@@ -301,10 +316,9 @@ async def _execute(args: argparse.Namespace) -> tuple[list[TaskResult], str | No
     raise UsageError(f"unknown command {command!r}")
 
 
-async def _execute_migrate(args: argparse.Namespace) -> list:
+async def _execute_migrate(args: argparse.Namespace) -> list[TaskResult]:
     """Execute the WAEC subject catalog migration."""
     from utmelab_bank.adapters.database import TursoClient
-    from utmelab_bank.config import catalog_write_credentials
 
     # Migration plan
     updates = [
@@ -323,7 +337,11 @@ async def _execute_migrate(args: argparse.Namespace) -> list:
         ("beauty-and-cosmetology", "Beauty & Cosmetology", ["NG"]),
         ("computer-hardware-and-gsm-repairs", "Computer Hardware and GSM Repairs", ["NG"]),
         ("fashion-design-and-garment-making", "Fashion Design & Garment Making", ["NG"]),
-        ("solar-photovoltaic-installation-and-maintenance", "Solar Photovoltaic Installation and Maintenance", ["NG"]),
+        (
+            "solar-photovoltaic-installation-and-maintenance",
+            "Solar Photovoltaic Installation and Maintenance",
+            ["NG"],
+        ),
         ("citizenship-and-heritage-studies", "Citizenship and Heritage Studies Education", ["NG"]),
         ("digital-technologies", "Digital Technologies", ["NG"]),
         ("horticulture-and-crop-production", "Horticulture and Crop Production", ["NG"]),
@@ -332,15 +350,19 @@ async def _execute_migrate(args: argparse.Namespace) -> list:
     dry_run = not args.apply
     json_out = args.json
 
-    # Print plan
+    # Print plan. On a dry run the result list is empty, so the plan is the
+    # whole output. When applying with --json the result below is the output.
     if json_out:
-        plan = {
-            "dry_run": dry_run,
-            "updates": [{"old_slug": u[0], "new_slug": u[1], "new_name": u[2]} for u in updates],
-            "name_only_updates": [{"slug": u[0], "new_name": u[1]} for u in name_only_updates],
-            "inserts": [{"slug": u[0], "name": u[1], "countries": u[2]} for u in inserts],
-        }
-        print(json.dumps(plan, indent=2))
+        if dry_run:
+            plan = {
+                "dry_run": dry_run,
+                "updates": [
+                    {"old_slug": u[0], "new_slug": u[1], "new_name": u[2]} for u in updates
+                ],
+                "name_only_updates": [{"slug": u[0], "new_name": u[1]} for u in name_only_updates],
+                "inserts": [{"slug": u[0], "name": u[1], "countries": u[2]} for u in inserts],
+            }
+            print(json.dumps(plan, indent=2))
     else:
         print("=== WAEC Subject Catalog Migration ===")
         print(f"Mode: {'DRY-RUN' if dry_run else 'APPLY'}")
@@ -445,7 +467,7 @@ async def _execute_migrate(args: argparse.Namespace) -> list:
         if not json_out:
             print("Verifying...")
         # Quick verification
-        for old_slug, new_slug, _ in updates:
+        for _old_slug, new_slug, _ in updates:
             result = await client.execute(
                 "SELECT slug, name FROM subjects WHERE slug = ? AND exam = 'WAEC'", [new_slug]
             )
@@ -471,27 +493,31 @@ async def _execute_migrate(args: argparse.Namespace) -> list:
                 "SELECT COUNT(*) FROM blueprints WHERE subject = ? AND exam = 'WAEC'", [new_slug]
             )
             print(f"  blueprints with {new_slug}: {result.rows[0][0]}")
-        for slug, name, _ in inserts:
+        for slug, _name, _ in inserts:
             result = await client.execute(
                 "SELECT slug, name FROM subjects WHERE slug = ? AND exam = 'WAEC'", [slug]
             )
             if result.rows:
                 print(f"  Verified: {result.rows[0][0]} | {result.rows[0][1]}")
 
-        return [{"status": "applied", "updates": len(updates), "inserts": len(inserts)}]
+        return [
+            TaskResult(
+                task="migrate",
+                done=1,
+                notes=[f"applied {len(updates)} updates and {len(inserts)} inserts"],
+            )
+        ]
 
-    except Exception as exc:
+    except Exception:
         # Rollback on error
-        try:
+        with contextlib.suppress(Exception):
             await client.execute("ROLLBACK", commit=False)
-        except Exception:
-            pass
         raise
     finally:
         await client.close()
 
 
-async def _execute_bank_clear(args: argparse.Namespace) -> list:
+async def _execute_bank_clear(args: argparse.Namespace) -> list[TaskResult]:
     """Clear data from bank database (with index cleanup)."""
     from utmelab_bank.adapters.database import TursoClient
     from utmelab_bank.config import bank_write_credentials
@@ -502,16 +528,17 @@ async def _execute_bank_clear(args: argparse.Namespace) -> list:
     json_out = args.json
 
     if json_out:
-        plan = {
-            "dry_run": dry_run,
-            "exam": exam,
-            "action": [
-                f"DELETE FROM staging_items WHERE exam='{exam}';",
-                f"DELETE FROM passages WHERE exam='{exam}';",
-                f"DELETE FROM content_index WHERE origin='bank' AND question_id NOT IN (SELECT id FROM staging_items);",
-            ],
-        }
-        print(json.dumps(plan, indent=2))
+        if dry_run:
+            plan = {
+                "dry_run": dry_run,
+                "exam": exam,
+                "action": [
+                    f"DELETE FROM staging_items WHERE exam='{exam}';",
+                    f"DELETE FROM passages WHERE exam='{exam}';",
+                    "DELETE FROM content_index WHERE origin='bank' AND question_id NOT IN (SELECT id FROM staging_items);",
+                ],
+            }
+            print(json.dumps(plan, indent=2))
     else:
         print(f"=== Bank {exam} Data Cleanup ===")
         print(f"Mode: {'DRY-RUN' if dry_run else 'APPLY'}")
@@ -548,12 +575,16 @@ async def _execute_bank_clear(args: argparse.Namespace) -> list:
         )
         await client.commit()
         print(f"Bank {exam} data cleared successfully (including orphaned index entries).")
-        return [{"status": "cleared", "exam": exam, "tables": ["staging_items", "passages", "content_index (orphans)"]}]
-    except Exception as exc:
-        try:
+        return [
+            TaskResult(
+                task="bank-clear",
+                done=1,
+                notes=[f"cleared {exam} staging items, passages and orphaned index entries"],
+            )
+        ]
+    except Exception:
+        with contextlib.suppress(Exception):
             await client.execute("ROLLBACK", commit=False)
-        except Exception:
-            pass
         raise
     finally:
         await client.close()

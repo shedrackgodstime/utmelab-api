@@ -356,7 +356,7 @@ _UNDERLINE_NOUNS = (
 _UNDERLINE_PATTERNS: tuple[re.Pattern[str], ...] = (
     re.compile(rf"\bunderlined\s+{_UNDERLINE_NOUNS}\b", re.I),
     re.compile(
-        rf"\bunderlined\s+(?:in|below|above|on|here|there)\b",
+        r"\bunderlined\s+(?:in|below|above|on|here|there)\b",
         re.I,
     ),
     re.compile(r"\bunderlined\b(?=\s*(?:[.?!,;:]|$))", re.I),
@@ -399,9 +399,7 @@ def _check_stem(content: Content, passage: Passage | None, issues: list[Issue]) 
     marks = (*stem.inline, *passage_marks)
 
     lower = stem.text.lower()
-    if mentions_underline(lower) and not any(
-        mark.kind.value == "underline" for mark in marks
-    ):
+    if mentions_underline(lower) and not any(mark.kind.value == "underline" for mark in marks):
         issues.append(
             _judgement(
                 "underline_missing",
@@ -680,7 +678,6 @@ def refusal_counts(verdicts: Iterable[GateVerdict]) -> dict[str, int]:
 
 
 __all__ = [
-    "FIGURE_HINTS",
     "GAP_MARKERS",
     "GateContext",
     "NOVEL_MARKERS",

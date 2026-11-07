@@ -443,7 +443,7 @@ def test_a_numbered_figure_with_no_inline_data_still_fires() -> None:
 
 
 def test_the_ordinary_verb_underlines_is_not_a_mark() -> None:
-    """"The concept which underlines double entry" points at no mark."""
+    """ "The concept which underlines double entry" points at no mark."""
     content = make_content(
         stem=RichText(text="The concept which underlines double entry bookkeeping is")
     )

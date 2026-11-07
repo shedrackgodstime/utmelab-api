@@ -370,8 +370,7 @@ async def _diff(args: argparse.Namespace) -> int:
             removed_subtopics = len(plan.delete_subtopics)
             if not (added_topics or added_subtopics or removed_topics or removed_subtopics):
                 print(
-                    f"{slug}: in sync ({len(plan.topics)} topics, "
-                    f"{len(plan.subtopics)} subtopics)"
+                    f"{slug}: in sync ({len(plan.topics)} topics, {len(plan.subtopics)} subtopics)"
                 )
                 continue
             print(

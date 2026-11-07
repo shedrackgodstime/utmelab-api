@@ -160,7 +160,15 @@ class MyschoolSource:
                 if (
                     any(
                         hint in parsed.payload.get("stem", "").lower()
-                        for hint in ("diagram", "figure", "graph", "illustrat", "shown", "sketch", "table")
+                        for hint in (
+                            "diagram",
+                            "figure",
+                            "graph",
+                            "illustrat",
+                            "shown",
+                            "sketch",
+                            "table",
+                        )
                     )
                     and not figures
                 ):
