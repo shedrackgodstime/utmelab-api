@@ -105,8 +105,10 @@ def test_tag_service_abstains_on_low_confidence(
                 producer=self.producer,
             )
 
+    # The threshold is a policy value, so the test names it instead of
+    # depending on the default, which is free to move as the bank learns.
     with pytest.raises(LowConfidenceTag, match="below"):
-        asyncio.run(TagService(UncertainTagger()).tag(staging_item, catalog))
+        asyncio.run(TagService(UncertainTagger(), min_confidence=0.6).tag(staging_item, catalog))
 
 
 def test_tag_service_refuses_evidence_that_is_not_in_the_question(

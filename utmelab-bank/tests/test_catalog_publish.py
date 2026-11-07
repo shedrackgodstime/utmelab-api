@@ -7,7 +7,8 @@ from pathlib import Path
 from typing import Any
 
 from utmelab_bank.catalog.apply import Plan, apply_plan
-from utmelab_bank.catalog.cli import _apply, _publish_defects, _validate_catalog
+from utmelab_bank.catalog.cli import _apply, _publish_defects, _validate_catalog, _write
+from utmelab_bank.catalog.model import Subtopic, Syllabus, Topic
 
 
 class FakeResult:
@@ -126,6 +127,25 @@ def test_a_clean_file_has_no_errors(tmp_path: Path) -> None:
     assert result.subtopics == 1
 
 
+def test_a_build_uses_the_official_subject_name(tmp_path: Path) -> None:
+    syllabus = Syllabus(
+        subject="health-education",
+        display="Health Education",
+        topics=[
+            Topic(
+                name="Safety",
+                order=1,
+                subtopics=[Subtopic(name="First aid", order=1)],
+            )
+        ],
+    )
+
+    path = _write(tmp_path, syllabus, {})
+
+    subject = json.loads(path.read_text())["subjects"][0]
+    assert subject["name"] == "Health Education / Health Science"
+
+
 def test_a_prose_name_is_a_contract_error(tmp_path: Path) -> None:
     _write_subject(tmp_path, "geography", "X" * 310)
 
@@ -136,7 +156,7 @@ def test_a_prose_name_is_a_contract_error(tmp_path: Path) -> None:
 
 def test_publish_refuses_a_dirty_contract_before_it_connects(tmp_path: Path) -> None:
     _write_subject(tmp_path, "geography", "X" * 310)
-    args = argparse.Namespace(data_dir=tmp_path, subject=None, apply=True, limit=5)
+    args = argparse.Namespace(build_dir=tmp_path, subject=None, apply=True, limit=5)
 
     assert asyncio.run(_apply(args)) == 1
 

@@ -1,9 +1,9 @@
 """Reseed one subject in the production WAEC catalog.
 
-The JSON is the source of truth for names and order. Production keeps the
-slug when the name has not changed, so existing snapshots keep resolving, and
-keeps any subtopic a question still points at even when the rebuilt catalog no
-longer lists it. A dry run is the default.
+The built JSON describes the names and order the publisher wants. Production
+keeps the slug when the name has not changed, so existing snapshots keep
+resolving, and keeps any subtopic a question still points at even when the
+rebuilt catalog no longer lists it. A dry run is the default.
 """
 
 from __future__ import annotations
@@ -32,13 +32,16 @@ class Plan:
     delete_topics: list[str] = field(default_factory=list)
     kept_referenced: list[str] = field(default_factory=list)
     kept_topics: list[str] = field(default_factory=list)
+    added_topics: list[str] = field(default_factory=list)
+    added_subtopics: list[str] = field(default_factory=list)
     reused_topics: int = 0
     reused_subtopics: int = 0
 
     def summary(self) -> str:
         return (
             f"{self.subject_slug}: {len(self.topics)} topics, "
-            f"{len(self.subtopics)} subtopics; reuse {self.reused_topics} topics/"
+            f"{len(self.subtopics)} subtopics; add {len(self.added_topics)} topics/"
+            f"{len(self.added_subtopics)} subtopics; reuse {self.reused_topics} topics/"
             f"{self.reused_subtopics} subtopics; delete "
             f"{len(self.delete_topics)} topics/{len(self.delete_subtopics)} subtopics; "
             f"keep {len(self.kept_referenced)} referenced subtopics"
@@ -152,6 +155,7 @@ async def plan_subject(client: TursoClient, data: dict[str, Any], subject_slug: 
             weight = int(row.get("weight") or 0)
             objectives = _json(row.get("objectives"))
             countries = _json(row.get("countries"))
+            plan.added_topics.append(name)
         plan.topics.append(
             {
                 "slug": final_slug,
@@ -180,6 +184,7 @@ async def plan_subject(client: TursoClient, data: dict[str, Any], subject_slug: 
             else:
                 final_sub_slug = _unique(sub_slug, all_subtopic_slugs)
                 objectives = _json(sub.get("objectives"))
+                plan.added_subtopics.append(sub_name)
             plan.subtopics.append(
                 {
                     "slug": final_sub_slug,

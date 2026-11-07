@@ -1,5 +1,11 @@
 """Build, check and apply the WAEC catalog.
 
+The pinned PDFs in ``data/waec/sources.json`` are the external authority. A
+parse writes a local build under ``var/catalog-build``; ``diff`` compares that
+build with production, and ``apply`` is the only thing that writes production.
+Nothing but the manifest is checked in, so the production database is the one
+persistent catalog.
+
 This command is the catalog owner. The bank pipeline only reads the catalog, so
 the full production token stays here and never enters a batch job.
 """
@@ -17,7 +23,7 @@ from typing import Any
 
 from ..adapters.database import TursoClient, prod_client
 from ..adapters.sources.myschool.subjects import load_map
-from ..config import catalog_write_credentials, load_settings
+from ..config import VAR_DIR, catalog_write_credentials, load_settings
 from .apply import Plan, apply_plan, plan_subject
 from .contract import RowDefect, subject_defects, summarise
 from .model import Syllabus
@@ -103,20 +109,22 @@ def _render(syllabus: Syllabus, limit: int) -> None:
         print(f"  ... {len(syllabus.topics) - limit} more topics")
 
 
-def _write(data_dir: Path, syllabus: Syllabus, metadata: dict[str, Any]) -> Path:
-    taken = _taken_slugs(data_dir, syllabus.subject)
+def _write(build_dir: Path, syllabus: Syllabus, metadata: dict[str, Any]) -> Path:
+    taken = _taken_slugs(build_dir, syllabus.subject)
     topic_rows, subtopic_rows = syllabus.rows(taken=taken, hint=syllabus.subject)
+    official = {entry.slug: entry.name for entry in load_map().exam("WAEC").subjects}
     subject = {
         "slug": syllabus.subject,
         "exam": "WAEC",
-        "name": syllabus.display,
+        "name": official.get(syllabus.subject, syllabus.display),
         "is_compulsory": bool(metadata.get("is_compulsory", False)),
         "objective_paper_questions": int(metadata.get("objective_paper_questions", 50)),
         "countries": metadata.get("countries", []),
         "syllabus_exam": "WAEC",
         "syllabus_subject": syllabus.subject,
     }
-    path = data_dir / f"{syllabus.subject}.json"
+    path = build_dir / f"{syllabus.subject}.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(
         json.dumps(
             {"subjects": [subject], "topics": topic_rows, "subtopics": subtopic_rows},
@@ -130,6 +138,7 @@ def _write(data_dir: Path, syllabus: Syllabus, metadata: dict[str, Any]) -> Path
 
 def cmd_parse(args: argparse.Namespace) -> int:
     data_dir: Path = args.data_dir
+    build_dir: Path = args.build_dir
     manifest = load_manifest(data_dir / "sources.json")
     pdf_dir: Path = args.pdf_dir
     subjects = args.subject or ["all"]
@@ -157,7 +166,7 @@ def cmd_parse(args: argparse.Namespace) -> int:
                 continue
             _render(syllabus, args.limit)
             if args.write:
-                path = _write(data_dir, syllabus, _metadata(data_dir, slug))
+                path = _write(build_dir, syllabus, _metadata(build_dir, slug))
                 print(f"  wrote {path}")
         except (ParseError, ValueError, OSError) as exc:
             failures += 1
@@ -297,10 +306,16 @@ def _print_semantic(result: _CheckResult) -> None:
 
 
 def cmd_check(args: argparse.Namespace) -> int:
-    """Apply the catalog contract to the JSON before any write."""
+    """Apply the catalog contract to the built JSON before any write."""
     manifest = load_manifest(args.data_dir / "sources.json")
     subjects = args.subject or sorted(manifest)
-    result = _validate_catalog(args.data_dir, subjects)
+    if not args.build_dir.is_dir():
+        print(
+            f"no build directory {args.build_dir}; run utmelab-catalog parse --write first",
+            file=sys.stderr,
+        )
+        return 1
+    result = _validate_catalog(args.build_dir, subjects)
     _print_semantic(result)
     print(
         f"checked {result.subjects} subjects: {result.topics} topics, {result.subtopics} subtopics"
@@ -317,51 +332,64 @@ def cmd_check(args: argparse.Namespace) -> int:
 
 
 def cmd_diff(args: argparse.Namespace) -> int:
-    """Compare a fresh PDF parse with the JSON now on disk. No writes."""
-    data_dir: Path = args.data_dir
-    manifest = load_manifest(data_dir / "sources.json")
-    subjects = args.subject or sorted(manifest)
-    for slug in subjects:
-        source = manifest.get(slug)
-        if source is None:
-            print(f"{slug}: not in sources.json", file=sys.stderr)
-            return 1
-        path = data_dir / f"{slug}.json"
-        if not path.exists():
-            print(f"{slug}: no catalog file", file=sys.stderr)
-            return 1
-        try:
-            lines = read_lines(fetch(source, args.pdf_dir / f"{slug}.pdf"))
-            new = parse(lines, profile_for(slug, source.name))
-        except (ParseError, ValueError, OSError) as exc:
-            print(f"{slug}: {exc}", file=sys.stderr)
-            return 1
-        _subject, old_topics, old_subtopics = _load_catalog(path)
-        old_by = {normalise(str(row.get("name") or "")): row for row in old_topics}
-        new_by = {normalise(topic.name): topic for topic in new.topics}
-        removed = [row for key, row in old_by.items() if key not in new_by]
-        added = [topic for key, topic in new_by.items() if key not in old_by]
-        new_sub_count = sum(len(topic.subtopics) for topic in new.topics)
+    """Compare the built catalog with production. No writes."""
+    return asyncio.run(_diff(args))
+
+
+async def _diff(args: argparse.Namespace) -> int:
+    build_dir: Path = args.build_dir
+    if not build_dir.is_dir():
         print(
-            f"{slug}: topics {len(old_topics)} -> {len(new.topics)} "
-            f"(+{len(added)} -{len(removed)}), "
-            f"subtopics {len(old_subtopics)} -> {new_sub_count}"
+            f"no build directory {build_dir}; run utmelab-catalog parse --write first",
+            file=sys.stderr,
         )
-        for row in removed[: args.limit]:
-            print(f"  - topic {row.get('name')!r}")
-        for topic in added[: args.limit]:
-            print(f"  + topic {topic.name!r}")
-        for key in sorted(old_by.keys() & new_by.keys()):
-            old_subs = {
-                normalise(str(row.get("name") or ""))
-                for row in old_subtopics
-                if str(row.get("topic")) == old_by[key].get("slug")
-            }
-            new_subs = {normalise(sub.name) for sub in new_by[key].subtopics}
-            lost = old_subs - new_subs
-            if lost:
-                print(f"  - {len(lost)} subtopic(s) under {old_by[key].get('name')!r}")
-    return 0
+        return 1
+    manifest = load_manifest(args.data_dir / "sources.json")
+    subjects = args.subject or sorted(manifest)
+    client = prod_client(load_settings())
+    failures = 0
+    try:
+        for slug in subjects:
+            path = build_dir / f"{slug}.json"
+            if not path.exists():
+                print(
+                    f"{slug}: no build file; run utmelab-catalog parse --write",
+                    file=sys.stderr,
+                )
+                failures += 1
+                continue
+            try:
+                plan = await plan_subject(client, json.loads(path.read_text()), slug)
+            except Exception as exc:  # noqa: BLE001 - report the subject and continue
+                print(f"{slug}: {exc}", file=sys.stderr)
+                failures += 1
+                continue
+            added_topics = len(plan.added_topics)
+            added_subtopics = len(plan.added_subtopics)
+            removed_topics = len(plan.delete_topics)
+            removed_subtopics = len(plan.delete_subtopics)
+            if not (added_topics or added_subtopics or removed_topics or removed_subtopics):
+                print(
+                    f"{slug}: in sync ({len(plan.topics)} topics, "
+                    f"{len(plan.subtopics)} subtopics)"
+                )
+                continue
+            print(
+                f"{slug}: topics +{added_topics} -{removed_topics}, "
+                f"subtopics +{added_subtopics} -{removed_subtopics}"
+                + (f", keep {len(plan.kept_referenced)} referenced" if plan.kept_referenced else "")
+            )
+            for name in plan.added_topics[: args.limit]:
+                print(f"  + topic {name!r}")
+            for topic_slug in plan.delete_topics[: args.limit]:
+                print(f"  - topic {topic_slug!r}")
+            for name in plan.added_subtopics[: args.limit]:
+                print(f"  + subtopic {name!r}")
+            for subtopic_slug in plan.delete_subtopics[: args.limit]:
+                print(f"  - subtopic {subtopic_slug!r}")
+    finally:
+        await client.close()
+    return 1 if failures else 0
 
 
 def cmd_apply(args: argparse.Namespace) -> int:
@@ -425,13 +453,25 @@ async def _publish_defects(client: TursoClient, plans: list[Plan]) -> list[str]:
 
 
 async def _apply(args: argparse.Namespace) -> int:
-    data_dir: Path = args.data_dir
+    build_dir: Path = args.build_dir
+    if not build_dir.is_dir():
+        print(
+            f"no build directory {build_dir}; run utmelab-catalog parse --write first",
+            file=sys.stderr,
+        )
+        return 1
     subjects = args.subject or ["all"]
     if "all" in subjects:
-        subjects = [path.stem for path in _subject_files(data_dir)]
+        subjects = [path.stem for path in _subject_files(build_dir)]
+        if not subjects:
+            print(
+                f"no built subjects in {build_dir}; run utmelab-catalog parse --write first",
+                file=sys.stderr,
+            )
+            return 1
 
     if args.apply:
-        contract = _validate_catalog(data_dir, subjects)
+        contract = _validate_catalog(build_dir, subjects)
         if contract.errors:
             _print_semantic(contract)
             for item in contract.errors[: args.limit]:
@@ -450,9 +490,9 @@ async def _apply(args: argparse.Namespace) -> int:
     failures = 0
     try:
         for slug in subjects:
-            path = data_dir / f"{slug}.json"
+            path = build_dir / f"{slug}.json"
             if not path.exists():
-                print(f"{slug}: no catalog file", file=sys.stderr)
+                print(f"{slug}: no build file", file=sys.stderr)
                 failures += 1
                 continue
             try:
@@ -463,10 +503,14 @@ async def _apply(args: argparse.Namespace) -> int:
                 continue
             plans.append(plan)
             print(plan.summary())
-            for topic in plan.topics[: args.limit]:
-                print(f"  + topic {topic['name']!r}")
+            for name in plan.added_topics[: args.limit]:
+                print(f"  + topic {name!r}")
+            for name in plan.added_subtopics[: args.limit]:
+                print(f"  + subtopic {name!r}")
             for slug_to_delete in plan.delete_topics[: args.limit]:
                 print(f"  - topic {slug_to_delete!r}")
+            for slug_to_delete in plan.delete_subtopics[: args.limit]:
+                print(f"  - subtopic {slug_to_delete!r}")
             if plan.kept_referenced:
                 print(f"  kept referenced: {', '.join(plan.kept_referenced[: args.limit])}")
         if failures:
@@ -504,7 +548,13 @@ def main(argv: list[str] | None = None) -> int:
         "--data-dir",
         type=Path,
         default=None,
-        help="the data/waec directory (default: discover it)",
+        help="the data/waec input directory holding sources.json (default: discover it)",
+    )
+    parser.add_argument(
+        "--build-dir",
+        type=Path,
+        default=None,
+        help="where parsed catalog JSON is built (default: var/catalog-build)",
     )
     parser.add_argument(
         "--pdf-dir",
@@ -514,13 +564,13 @@ def main(argv: list[str] | None = None) -> int:
     )
     sub = parser.add_subparsers(dest="command", required=True)
 
-    parse_cmd = sub.add_parser("parse", help="rebuild subject JSON from the PDFs")
+    parse_cmd = sub.add_parser("parse", help="rebuild subject JSON in the build directory")
     parse_cmd.add_argument("subject", nargs="*", help="subject slugs; default: all")
-    parse_cmd.add_argument("--write", action="store_true", help="replace the subject JSON")
+    parse_cmd.add_argument("--write", action="store_true", help="replace the built subject JSON")
     parse_cmd.add_argument("--limit", type=int, default=0, help="print at most N topics each")
     parse_cmd.set_defaults(handler=cmd_parse)
 
-    check_cmd = sub.add_parser("check", help="apply the catalog contract to the JSON")
+    check_cmd = sub.add_parser("check", help="apply the catalog contract to the built JSON")
     check_cmd.add_argument("subject", nargs="*", help="subject slugs; default: all")
     check_cmd.add_argument(
         "--strict",
@@ -530,12 +580,14 @@ def main(argv: list[str] | None = None) -> int:
     check_cmd.add_argument("--limit", type=int, default=20, help="print at most N findings each")
     check_cmd.set_defaults(handler=cmd_check)
 
-    diff_cmd = sub.add_parser("diff", help="compare a fresh parse with the JSON on disk")
+    diff_cmd = sub.add_parser("diff", help="compare the built catalog with production")
     diff_cmd.add_argument("subject", nargs="*", help="subject slugs; default: all")
     diff_cmd.add_argument("--limit", type=int, default=10, help="print at most N changes each")
     diff_cmd.set_defaults(handler=cmd_diff)
 
-    apply_cmd = sub.add_parser("apply", help="reseed production from the JSON; dry run by default")
+    apply_cmd = sub.add_parser(
+        "apply", help="reseed production from the built JSON; dry run by default"
+    )
     apply_cmd.add_argument("subject", nargs="*", help="subject slugs; default: all")
     apply_cmd.add_argument("--apply", action="store_true", help="write the plan (default: dry run)")
     apply_cmd.add_argument(
@@ -546,6 +598,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if args.data_dir is None:
         args.data_dir = repo_data_dir()
+    if args.build_dir is None:
+        args.build_dir = VAR_DIR / "catalog-build"
     if args.pdf_dir is None:
         args.pdf_dir = cache_dir()
     return int(args.handler(args))

@@ -15,9 +15,6 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from pdfminer.high_level import extract_pages
-from pdfminer.layout import LAParams, LTTextContainer, LTTextLine
-
 #: Two elements within this vertical distance are on the same printed line.
 LINE_TOLERANCE = 3.5
 
@@ -84,6 +81,11 @@ def _merge(raw: list[tuple[float, float, str, float]]) -> list[Line]:
 
 def read_lines(path: Path) -> list[Line]:
     """Every non-empty printed line in the document, in reading order."""
+    # Imported here so the catalog commands that never read a PDF (check,
+    # apply, diff) still work when the PDF stack is unavailable.
+    from pdfminer.high_level import extract_pages
+    from pdfminer.layout import LAParams, LTTextContainer, LTTextLine
+
     laparams = LAParams(char_margin=2.0, line_margin=0.3)
     lines: list[Line] = []
     for page_number, page in enumerate(extract_pages(str(path), laparams=laparams), start=1):

@@ -230,6 +230,25 @@ endpoint to learners.
 Until that job exists, the bank's scope ends at preparing and certifying
 content as `READY`.
 
+## D15. Production is the only persistent catalog
+
+The bank reads the WAEC catalog from production through
+`ProductionCatalogReader`; no source adapter and no checked-in file supplies
+it. The catalog tool keeps the official PDFs honest with one checked-in input,
+`data/waec/sources.json`, which pins each PDF by URL and SHA-256.
+
+A parse builds local JSON under `var/catalog-build/`. That build is an
+artifact, not a truth: it exists long enough to run `check`, compare with
+production in `diff`, and feed `apply`. Production is the only copy that
+persists. The per-subject JSON files that used to live in `data/waec/` were a
+second copy, and they drifted when production subject slugs changed. Removing
+them removes that failure mode.
+
+`diff` is the review step. It reads production with the read-only token and
+prints the inserts and deletes the build implies. `apply` stays a dry run
+unless `--apply` is passed, and it refuses to open a write connection when the
+build fails the contract.
+
 ---
 
 ## The plan of record

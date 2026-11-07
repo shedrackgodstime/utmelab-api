@@ -187,9 +187,9 @@ PROFILES: dict[str, Profile] = {
         uppercase_continuation_in_body=True,
         expected_topics=26,
     ),
-    "animal-husbandry": Profile(
-        slug="animal-husbandry",
-        display="Animal Husbandry",
+    "livestock-farming": Profile(
+        slug="livestock-farming",
+        display="Livestock Farming",
         topic_re=r"^(\d+)\.\s*(.+)$",
         subtopic_re=r"^\(([a-z])\)\s*(.+)$",
         topic_x_min=150,
@@ -214,9 +214,9 @@ PROFILES: dict[str, Profile] = {
         sentence_split=False,
         section_re=r"^(?:[A-Z]\.\s+[A-Z][A-Za-z ]+|[A-Z][A-Z ,&/()-]{3,})$",
     ),
-    "agricultural-science": Profile(
-        slug="agricultural-science",
-        display="Agricultural Science",
+    "agriculture": Profile(
+        slug="agriculture",
+        display="Agriculture",
         topic_re=r"^(\d+)\.\s*(.+)$",
         subtopic_re=r"^\(([a-z])\)\s*(.+)$",
         topic_x_max=130,
@@ -337,9 +337,9 @@ PROFILES: dict[str, Profile] = {
         start_marker="CONTENT",
         section_re=r"^(?:Section|SECTION)\s+[A-Z].*$",
     ),
-    "visual-arts": Profile(
-        slug="visual-arts",
-        display="Visual Arts",
+    "visual-art": Profile(
+        slug="visual-art",
+        display="Visual Art",
         topic_re=r"^(?P<name>.+)$",
         subtopic_re=r"^\(([a-z0-9]+)\)\s*(.+)$",
         heading_heuristic=True,

@@ -1,4 +1,9 @@
-"""The checked-in WAEC syllabus inputs stay aligned with the source map."""
+"""The checked-in WAEC input is the pinned source manifest, nothing else.
+
+The per-subject catalog is a local build artifact. Production holds the only
+persistent catalog, so a checked-in subject JSON would be a second, drifting
+copy.
+"""
 
 from __future__ import annotations
 
@@ -9,39 +14,32 @@ from utmelab_bank.adapters.sources.myschool.subjects import load_map
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 WAEC_DIR = REPO_ROOT / "data" / "waec"
+MANIFEST = WAEC_DIR / "sources.json"
 
-#: Checked-in files beside the subject syllabuses: the pinned source map and
-#: the extraction verifications. They are not subjects.
+#: Inputs beside the subject syllabuses that are not catalog rows.
 NON_CATALOG_FILES = frozenset({"sources", "verifications"})
 
 
-def test_every_waec_syllabus_input_is_mapped_and_structurally_complete() -> None:
-    entries = load_map().exam("WAEC").subjects
-    catalog_by_slug = {entry.slug: entry for entry in entries}
-    catalog_slugs = set(catalog_by_slug)
-    files = sorted(path for path in WAEC_DIR.glob("*.json") if path.stem not in NON_CATALOG_FILES)
+def test_data_waec_holds_no_per_subject_catalog() -> None:
+    files = sorted(path.stem for path in WAEC_DIR.glob("*.json"))
+    assert MANIFEST.is_file()
+    assert set(files) - NON_CATALOG_FILES == set()
 
-    assert files
-    assert {path.stem for path in files} <= catalog_slugs
 
-    for path in files:
-        payload = json.loads(path.read_text(encoding="utf-8"))
-        subjects = payload["subjects"]
-        topics = payload["topics"]
-        subtopics = payload["subtopics"]
+def test_every_manifest_subject_is_an_official_waec_subject() -> None:
+    payload = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    subjects = payload["subjects"]
+    official = {entry.slug for entry in load_map().exam("WAEC").subjects}
 
-        assert len(subjects) == 1
-        assert subjects[0]["exam"] == "WAEC"
-        assert subjects[0]["slug"] == path.stem
-        assert subjects[0]["name"] == catalog_by_slug[path.stem].name
-        assert topics
-        assert subtopics
+    assert subjects
+    assert set(subjects) <= official
 
-        topic_slugs = {topic["slug"] for topic in topics}
-        assert len(topic_slugs) == len(topics)
-        assert all(len(topic["slug"]) <= 120 for topic in topics)
-        assert all(len(subtopic["slug"]) <= 120 for subtopic in subtopics)
-        assert all(subtopic["topic"] in topic_slugs for subtopic in subtopics)
-        assert all(
-            set(topic.get("countries", [])) <= {"NG", "GH", "SL", "GM", "LR"} for topic in topics
-        )
+
+def test_every_manifest_entry_pins_the_pdf_it_builds_from() -> None:
+    payload = json.loads(MANIFEST.read_text(encoding="utf-8"))
+
+    for slug, item in payload["subjects"].items():
+        assert item["pdf"].startswith("https://"), slug
+        assert len(item["sha256"]) == 64, slug
+        assert int(item["bytes"]) > 0, slug
+        assert int(item["pages"]) > 0, slug

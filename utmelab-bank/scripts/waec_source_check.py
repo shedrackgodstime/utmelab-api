@@ -7,6 +7,7 @@ Outputs CSV/JSON with availability per subject per year.
 """
 import asyncio
 import json
+import os
 import sys
 import subprocess
 from pathlib import Path
@@ -15,6 +16,7 @@ import httpx
 PROJECT_ROOT = Path(__file__).parent.parent
 SUBJECTS_JSON = PROJECT_ROOT / "src/utmelab_bank/adapters/sources/myschool/subjects.json"
 UTMELAB_DB = PROJECT_ROOT / ".venv/bin/utmelab-db"
+VAR_DIR = Path(os.environ.get("UTMELAB_BANK_VAR_DIR", PROJECT_ROOT / "var"))
 
 HEADERS = {
     "User-Agent": "utmelab-bank/2.0 (+https://utmelab.com)",
@@ -122,7 +124,8 @@ async def main():
         print(",".join(row))
     
     # Output JSON
-    out_file = PROJECT_ROOT / "waec_source_check_results.json"
+    out_file = VAR_DIR / "waec-source-check-results.json"
+    out_file.parent.mkdir(parents=True, exist_ok=True)
     with open(out_file, "w") as f:
         json.dump(results, f, indent=2)
     print(f"\nJSON written to {out_file}")

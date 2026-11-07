@@ -61,8 +61,10 @@ pages repeat some lost headings (`<dt></dt>`) and split prose into fragments,
 so they cannot be the source of truth. The official PDF is.
 
 The 36 official PDFs are pinned by URL, byte count, page count and SHA-256 in
-`data/waec/sources.json`. The local copies live in `/tmp/opencode/pdfs` during
-work and are reproduced by the manifest.
+`data/waec/sources.json`. That manifest is the only checked-in catalog input.
+The local copies live in `/tmp/opencode/pdfs` during work and are reproduced by
+the manifest. Parsed catalog JSON is a local build under `var/catalog-build/`,
+not a checked-in copy of production.
 
 ## Plan
 
@@ -80,10 +82,10 @@ catalog; the bank only reads it.
 Subcommands:
 
 - `fetch` - download and hash-check the PDFs in the manifest.
-- `parse` - rebuild `data/waec/<subject>.json` from the PDF.
-- `check` - apply the catalog contract to the JSON, before any write.
-- `diff` - compare the rebuilt JSON against production.
-- `apply` - guarded upsert, one subject at a time.
+- `parse` - rebuild the subject JSON into `var/catalog-build/` from the PDF.
+- `check` - apply the catalog contract to the built JSON, before any write.
+- `diff` - compare the built JSON against production.
+- `apply` - guarded upsert, one subject at a time (dry run by default).
 
 Parser rules:
 
@@ -107,8 +109,9 @@ Build order:
    literature-in-english, marketing, islamic-studies, yoruba.
 3. the rest, until all 36 pass `check`.
 
-Exit: 36 rebuilt JSON files, `utmelab-catalog check --all` zero defects, and a
-diff report that explains every removal and rename.
+Exit: 36 rebuilt JSON files in `var/catalog-build/`, `utmelab-catalog check
+--strict` zero defects, and a diff report that explains every removal and
+rename.
 
 ### Phase 2 - reseed
 
@@ -283,7 +286,8 @@ configuration error rather than quietly ignored.
   line. `utmelab-db --database prod catalog` is the health check.
 - **Separate catalog CLI.** `utmelab-catalog` is the only writer. It reads the
   full token from `.env`, never prints it, and refuses to delete referenced
-  rows.
+  rows. It builds into `var/catalog-build/`, diffs that build against
+  production, and dry-runs unless `--apply` is given.
 - **Toolchain.** Python 3.14 in `.python-version`, `pyproject.toml` and the
   workflows. Use `.venv/bin/utmelab-bank`, `.venv/bin/utmelab-db` and
   `.venv/bin/utmelab-catalog`.

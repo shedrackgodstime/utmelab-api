@@ -122,6 +122,30 @@ task stops after three consecutive failures by default, so a provider that has
 run out of quota cannot keep the run going row after row; change that with
 `--max-failures`, or pass `0` to remove the cap.
 
+## Catalog publishing
+
+The WAEC catalog has one checked-in input and one persistent home. The manifest
+`data/waec/sources.json` pins each official PDF by URL, SHA-256, byte count and
+page count. The production database holds the catalog itself, and the bank
+reads it through `ProductionCatalogReader`. A parsed catalog is a local build
+under `var/catalog-build/`, which is gitignored. No per-subject catalog JSON is
+checked in, so there is no second copy to drift.
+
+```bash
+utmelab-catalog parse --write   # build var/catalog-build/ from the pinned PDFs
+utmelab-catalog check --strict  # apply the catalog contract to the build
+utmelab-catalog diff            # compare the build with production, read only
+utmelab-catalog apply           # dry run: print the production plan
+utmelab-catalog apply --apply   # write the plan to production
+```
+
+`parse` reads the manifest and writes the build directory. `check` and `diff`
+never write production. `diff` opens production with the read-only token and
+reports the inserts and deletes `apply` would make. `apply` stays a dry run
+unless `--apply` is passed, and it refuses to connect with the write token when
+the build fails the contract. Use `--data-dir` to point at another manifest
+directory and `--build-dir` to build somewhere else.
+
 ## Configuration
 
 Copy `.env.example` to `.env` and provide:
