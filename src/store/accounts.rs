@@ -7,7 +7,12 @@ use argon2::{
     Algorithm, Argon2, Params, Version,
 };
 
-use crate::{auth::Auth, error::AppError, obs, state::DbState};
+use crate::{
+    auth::{Auth, Credential, SCOPE_READ_CATALOG},
+    error::AppError,
+    obs,
+    state::DbState,
+};
 
 use super::{upstream, with_conn};
 
@@ -80,15 +85,136 @@ pub(crate) async fn verify_key(s: &DbState, full: &str) -> Result<Auth, AppError
             Ok(Auth {
                 key_id: prefix.clone(),
                 is_admin: tier == "admin",
-                scopes: scopes
-                    .split(',')
-                    .map(|s| s.trim().to_string())
-                    .filter(|s| !s.is_empty())
-                    .collect(),
+                scopes: split_scopes(&scopes),
+                credential: Credential::Secret,
             })
         }
     })
     .await
+}
+
+/// Parse a stored comma list. One definition, so a token grant and a key grant
+/// are read the same way.
+fn split_scopes(list: &str) -> Vec<String> {
+    list.split(',')
+        .map(str::trim)
+        .filter(|s| !s.is_empty())
+        .map(str::to_string)
+        .collect()
+}
+
+/// Resolve a short-lived client token to its parent key's identity.
+///
+/// The token row holds only a hash, exactly like a session. Verification joins
+/// the parent key so three rules are enforced on every call rather than at
+/// mint time alone: a revoked parent kills its whole token family, a parent's
+/// scope downgrade narrows every token minted before it, and expiry is checked
+/// against the server clock. A token is never an admin, whatever its parent's
+/// tier: client credentials do not reach administration.
+pub(crate) async fn verify_token(s: &DbState, full: &str) -> Result<Auth, AppError> {
+    if !s.sync.readiness().allows_keyed_reads() {
+        return Err(AppError::DbUnavailable("sync"));
+    }
+    if !full.starts_with(crate::auth::api_key::TOKEN_PREFIX) || full.len() > 128 {
+        return Err(AppError::Unauthorized);
+    }
+    let hashed = hash_key(full);
+    with_conn(s, |conn| {
+        let hashed = hashed.clone();
+        async move {
+            let mut stmt = conn
+                .prepare(
+                    "SELECT t.parent_prefix, t.scopes, t.expires_at, t.revoked, k.scopes, k.revoked \
+                     FROM api_access_tokens t JOIN api_keys k ON k.prefix = t.parent_prefix \
+                     WHERE t.token_hash = ?1",
+                )
+                .await
+                .map_err(upstream)?;
+            let mut rows = stmt.query([hashed.as_str()]).await.map_err(upstream)?;
+            let row = rows
+                .next()
+                .await
+                .map_err(upstream)?
+                .ok_or(AppError::Unauthorized)?;
+            let parent: String = row.get(0).map_err(upstream)?;
+            let token_scopes: String = row.get(1).map_err(upstream)?;
+            let expires_at: i64 = row.get(2).map_err(upstream)?;
+            let token_revoked: i64 = row.get(3).map_err(upstream)?;
+            let parent_scopes: String = row.get(4).map_err(upstream)?;
+            let parent_revoked: i64 = row.get(5).map_err(upstream)?;
+            if token_revoked != 0
+                || parent_revoked != 0
+                || expires_at <= crate::auth::session::now_unix()
+            {
+                return Err(AppError::Unauthorized);
+            }
+            let granted = split_scopes(&parent_scopes);
+            let scopes = split_scopes(&token_scopes)
+                .into_iter()
+                .filter(|scope| granted.iter().any(|g| g == scope))
+                .collect();
+            Ok(Auth {
+                key_id: parent,
+                is_admin: false,
+                scopes,
+                credential: Credential::Token,
+            })
+        }
+    })
+    .await
+}
+
+/// Mint a short-lived token for a client app. Only a secret key may mint, and
+/// the grant is read-only by construction: the token carries `read:catalog`
+/// when the parent has it, and nothing else. Returns the plaintext once; the
+/// table keeps only its hash.
+pub(crate) async fn mint_token(
+    s: &DbState,
+    parent: &Auth,
+    expires_in_secs: u64,
+) -> Result<(String, Vec<String>), AppError> {
+    if parent.credential != Credential::Secret {
+        return Err(AppError::Forbidden);
+    }
+    let scopes: Vec<String> = parent
+        .scopes
+        .iter()
+        .filter(|scope| scope.as_str() == SCOPE_READ_CATALOG)
+        .cloned()
+        .collect();
+    if scopes.is_empty() {
+        return Err(AppError::Forbidden);
+    }
+    let scopes = scopes.join(",");
+    let expires_in = i64::try_from(expires_in_secs)
+        .map_err(|_| AppError::BadRequest("expires_in too large".to_string()))?;
+    let expires_at = crate::auth::session::now_unix() + expires_in;
+    // A hash collision would mean returning a token that was not stored, so
+    // retry rather than trust the conflict clause.
+    for _ in 0..3 {
+        let token = format!(
+            "{}{}",
+            crate::auth::api_key::TOKEN_PREFIX,
+            crate::core::hex::encode(&rand::random::<[u8; 24]>())
+        );
+        let n = super::write::execute_write(
+            s,
+            "INSERT INTO api_access_tokens (token_hash, parent_prefix, scopes, expires_at) VALUES (?1, ?2, ?3, ?4) ON CONFLICT DO NOTHING",
+            vec![
+                turso::Value::Text(hash_key(&token)),
+                turso::Value::Text(parent.key_id.clone()),
+                turso::Value::Text(scopes.clone()),
+                turso::Value::Integer(expires_at),
+            ],
+        )
+        .await?;
+        if n == 1 {
+            return Ok((token, split_scopes(&scopes)));
+        }
+    }
+    Err(AppError::Upstream(
+        "could not allocate a unique token hash".to_string(),
+    ))
 }
 
 /// Hash a password for storage. CPU-heavy: callers on async workers
@@ -328,6 +454,18 @@ pub async fn purge_expired(s: &DbState) -> Result<u64, AppError> {
     super::write::execute_write(
         s,
         "DELETE FROM sessions WHERE expires_at < ?1",
+        vec![turso::Value::Integer(crate::auth::session::now_unix())],
+    )
+    .await
+}
+
+/// Delete expired access tokens. The same janitor cadence as sessions: an
+/// expired token already fails verification, so this only keeps the table
+/// from growing without bound.
+pub async fn purge_expired_tokens(s: &DbState) -> Result<u64, AppError> {
+    super::write::execute_write(
+        s,
+        "DELETE FROM api_access_tokens WHERE expires_at < ?1",
         vec![turso::Value::Integer(crate::auth::session::now_unix())],
     )
     .await
@@ -847,6 +985,176 @@ mod tests {
                 "{bad:?} must not authenticate"
             );
         }
+    }
+
+    /// A token is the parent's identity with a narrower grant: same key_id for
+    /// quota and audit, read-only scopes, never admin.
+    #[tokio::test]
+    async fn a_minted_token_resolves_to_its_parent_read_only() {
+        let s = local_accounts_db().await;
+        seed_key(
+            &s,
+            "k1.secret",
+            "commercial",
+            "read:catalog,write:reports",
+            0,
+        )
+        .await;
+        let parent = verify_key(&s, "k1.secret").await.expect("parent key");
+        let (token, scopes) = mint_token(&s, &parent, 300).await.expect("mint");
+        assert!(token.starts_with("tok_"), "{token}");
+        assert_eq!(scopes, ["read:catalog"]);
+
+        let auth = verify_token(&s, &token).await.expect("token verifies");
+        assert_eq!(auth.key_id, "k1", "quota and audit name the parent");
+        assert_eq!(auth.credential, Credential::Token);
+        assert!(!auth.is_admin, "a token is never an admin");
+        assert!(auth.has_scope("read:catalog"));
+        assert!(
+            !auth.has_scope("write:reports"),
+            "client tokens are read-only"
+        );
+        assert!(!auth.has_scope("manage:keys"));
+    }
+
+    /// Expiry, per-token revocation, and parent revocation all fail the same
+    /// way, and the parent's current scopes narrow an already-minted token.
+    #[tokio::test]
+    async fn token_verification_fails_closed_and_follows_the_parent() {
+        let s = local_accounts_db().await;
+        seed_key(&s, "k1.secret", "commercial", "read:catalog", 0).await;
+        let parent = verify_key(&s, "k1.secret").await.expect("parent key");
+
+        let (expired, _) = mint_token(&s, &parent, 60).await.expect("mint");
+        seed(
+            &s,
+            "UPDATE api_access_tokens SET expires_at=?1 WHERE token_hash=?2",
+            vec![
+                turso::Value::Integer(crate::auth::session::now_unix() - 1),
+                turso::Value::Text(hash_token(&expired)),
+            ],
+        )
+        .await;
+        assert!(
+            matches!(
+                verify_token(&s, &expired).await,
+                Err(AppError::Unauthorized)
+            ),
+            "an expired token must not authenticate"
+        );
+
+        let (revoked, _) = mint_token(&s, &parent, 60).await.expect("mint");
+        seed(
+            &s,
+            "UPDATE api_access_tokens SET revoked=1 WHERE token_hash=?1",
+            vec![turso::Value::Text(hash_token(&revoked))],
+        )
+        .await;
+        assert!(
+            matches!(
+                verify_token(&s, &revoked).await,
+                Err(AppError::Unauthorized)
+            ),
+            "a revoked token must not authenticate"
+        );
+
+        let (orphaned, _) = mint_token(&s, &parent, 60).await.expect("mint");
+        seed(
+            &s,
+            "UPDATE api_keys SET revoked=1 WHERE prefix='k1'",
+            vec![],
+        )
+        .await;
+        assert!(
+            matches!(
+                verify_token(&s, &orphaned).await,
+                Err(AppError::Unauthorized)
+            ),
+            "revoking the parent kills its whole token family"
+        );
+
+        for bad in ["tok_nope", "live.secret", "", "tok_"] {
+            assert!(
+                matches!(verify_token(&s, bad).await, Err(AppError::Unauthorized)),
+                "{bad:?} must not authenticate"
+            );
+        }
+    }
+
+    /// A token grant can never exceed what the parent holds today: a scope
+    /// removed from the key is removed from every token minted before it.
+    #[tokio::test]
+    async fn a_parent_scope_downgrade_narrows_existing_tokens() {
+        let s = local_accounts_db().await;
+        seed_key(&s, "k1.secret", "commercial", "read:catalog", 0).await;
+        let parent = verify_key(&s, "k1.secret").await.expect("parent key");
+        let (token, _) = mint_token(&s, &parent, 300).await.expect("mint");
+
+        seed(
+            &s,
+            "UPDATE api_keys SET scopes='write:reports' WHERE prefix='k1'",
+            vec![],
+        )
+        .await;
+        let auth = verify_token(&s, &token)
+            .await
+            .expect("token still verifies");
+        assert!(
+            !auth.has_scope("read:catalog"),
+            "the parent no longer grants it"
+        );
+        assert!(
+            !auth.has_scope("write:reports"),
+            "the token was never granted it"
+        );
+    }
+
+    /// Only a secret can mint, and only a key that holds the read scope. A
+    /// token cannot mint its way into a longer-lived credential.
+    #[tokio::test]
+    async fn minting_requires_a_read_scoped_secret() {
+        let s = local_accounts_db().await;
+        seed_key(&s, "writer.secret", "commercial", "write:reports", 0).await;
+        let writer = verify_key(&s, "writer.secret").await.expect("writer key");
+        assert!(matches!(
+            mint_token(&s, &writer, 300).await,
+            Err(AppError::Forbidden)
+        ));
+
+        seed_key(&s, "k1.secret", "commercial", "read:catalog", 0).await;
+        let parent = verify_key(&s, "k1.secret").await.expect("parent key");
+        let token_auth = Auth {
+            key_id: parent.key_id.clone(),
+            is_admin: false,
+            scopes: parent.scopes.clone(),
+            credential: Credential::Token,
+        };
+        assert!(matches!(
+            mint_token(&s, &token_auth, 300).await,
+            Err(AppError::Forbidden)
+        ));
+    }
+
+    #[tokio::test]
+    async fn the_janitor_removes_expired_tokens() {
+        let s = local_accounts_db().await;
+        seed_key(&s, "k1.secret", "commercial", "read:catalog", 0).await;
+        let parent = verify_key(&s, "k1.secret").await.expect("parent key");
+        let (token, _) = mint_token(&s, &parent, 60).await.expect("mint");
+        seed(
+            &s,
+            "UPDATE api_access_tokens SET expires_at=?1 WHERE token_hash=?2",
+            vec![
+                turso::Value::Integer(crate::auth::session::now_unix() - 1),
+                turso::Value::Text(hash_token(&token)),
+            ],
+        )
+        .await;
+        assert_eq!(purge_expired_tokens(&s).await.expect("purge"), 1);
+        assert!(
+            matches!(verify_token(&s, &token).await, Err(AppError::Unauthorized)),
+            "the row is gone, so the token cannot resolve"
+        );
     }
 
     #[tokio::test]

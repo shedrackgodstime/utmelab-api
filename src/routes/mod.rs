@@ -436,6 +436,7 @@ mod tests {
         ),
         ("GET", "/api/v1/questions/{id}", "/api/v1/questions/q1"),
         ("GET", "/api/v1/keys/me", "/api/v1/keys/me"),
+        ("POST", "/api/v1/tokens", "/api/v1/tokens"),
         ("GET", "/api/v1/meta/tables", "/api/v1/meta/tables"),
         (
             "GET",
@@ -839,8 +840,11 @@ mod tests {
             serde_json::to_value(crate::api::openapi::document()).expect("the document serialises");
         assert_eq!(
             doc.get("security"),
-            Some(&serde_json::json!([{ "ApiKeyAuth": [] }])),
-            "the document root must still require the key scheme"
+            Some(&serde_json::json!([
+                { "ApiKeyAuth": [] },
+                { "BearerAuth": [] }
+            ])),
+            "the document root must offer the secret and the client token"
         );
         let item = |path: &str| doc.get("paths").and_then(|paths| paths.get(path));
         let op = |method: &str, path: &str| {
@@ -849,6 +853,11 @@ mod tests {
                 .get(method.to_lowercase())
                 .unwrap_or_else(|| panic!("{method} {path} is not documented"))
         };
+        assert_eq!(
+            op("POST", "/api/v1/tokens").get("security"),
+            Some(&serde_json::json!([{ "ApiKeyAuth": [] }])),
+            "only a long-lived secret may mint a token"
+        );
         let keyless = |op: &serde_json::Value| {
             op.get("security")
                 .and_then(serde_json::Value::as_array)
@@ -865,10 +874,13 @@ mod tests {
             );
         }
         for &(method, path, _) in API_ROUTES {
-            assert!(
-                op(method, path).get("security").is_none(),
-                "{method} {path} is keyed and must inherit the document's requirement"
-            );
+            let operation = op(method, path);
+            if operation.get("security").is_some() {
+                assert!(
+                    !keyless(operation),
+                    "{method} {path} is keyed and must not declare an empty requirement"
+                );
+            }
         }
     }
 }

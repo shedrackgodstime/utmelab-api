@@ -29,6 +29,7 @@ pub mod questions;
 pub mod reports;
 pub mod subjects;
 pub mod theory;
+pub mod tokens;
 pub mod topics;
 
 use axum::Router;

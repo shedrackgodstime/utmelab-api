@@ -25,7 +25,7 @@ pub const CONTRACT_VERSION: u64 = 1;
 
 /// Version of the API-owned schema. This is separate from
 /// [`CONTRACT_VERSION`], which belongs to the content pipeline.
-pub const API_SCHEMA_VERSION: u64 = 5;
+pub const API_SCHEMA_VERSION: u64 = 6;
 
 /// Tables the API owns and creates at boot.
 pub(crate) const DDL: &[&str] = &[
@@ -34,6 +34,7 @@ pub(crate) const DDL: &[&str] = &[
     "CREATE TABLE IF NOT EXISTS api_keys (prefix TEXT PRIMARY KEY, hash TEXT NOT NULL, tier TEXT NOT NULL DEFAULT 'commercial', scopes TEXT NOT NULL DEFAULT 'read:catalog', revoked INTEGER NOT NULL DEFAULT 0, owner TEXT NOT NULL DEFAULT '', idempotency_hash TEXT UNIQUE, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS dashboard_users (username TEXT PRIMARY KEY, pw_hash TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'customer', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS sessions (token_hash TEXT PRIMARY KEY, username TEXT NOT NULL, expires_at INTEGER NOT NULL)",
+    "CREATE TABLE IF NOT EXISTS api_access_tokens (token_hash TEXT PRIMARY KEY, parent_prefix TEXT NOT NULL, scopes TEXT NOT NULL, expires_at INTEGER NOT NULL, revoked INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS reports (id TEXT PRIMARY KEY, target_type TEXT NOT NULL, target_id TEXT NOT NULL, reporter TEXT NOT NULL, reason TEXT NOT NULL, detail TEXT, created_at INTEGER NOT NULL, UNIQUE(reporter, target_type, target_id, reason))",
     "CREATE TABLE IF NOT EXISTS topic_notes (id TEXT PRIMARY KEY, exam TEXT NOT NULL, subject TEXT NOT NULL, topic_slug TEXT NOT NULL, subtopic_slug TEXT, title TEXT NOT NULL, read_time_minutes INTEGER NOT NULL, key_takeaway TEXT NOT NULL, sections TEXT NOT NULL, worked_examples TEXT NOT NULL DEFAULT '[]', formulas TEXT NOT NULL DEFAULT '[]', active_recall_checks TEXT NOT NULL DEFAULT '[]', examiner_traps TEXT NOT NULL DEFAULT '[]', linked_question_ids TEXT NOT NULL DEFAULT '[]', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS theory_questions (id TEXT PRIMARY KEY, exam TEXT NOT NULL, subject TEXT NOT NULL, year INTEGER NOT NULL, paper INTEGER NOT NULL DEFAULT 2, section TEXT NOT NULL, question_number TEXT NOT NULL, topic_slug TEXT NOT NULL, subtopic_slug TEXT, total_marks INTEGER NOT NULL, stem TEXT NOT NULL, diagram_url TEXT, sub_parts TEXT NOT NULL DEFAULT '[]', formulation_bridge TEXT NOT NULL DEFAULT '[]', marking_methods TEXT NOT NULL DEFAULT '[]', diagram_rubric TEXT, penalties TEXT NOT NULL DEFAULT '[]', examiner_report TEXT NOT NULL, content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
@@ -44,6 +45,8 @@ pub(crate) const DDL: &[&str] = &[
 /// collapse duplicates before the unique ones exist.
 pub(crate) const INDEXES: &[&str] = &[
     "CREATE UNIQUE INDEX IF NOT EXISTS idx_api_keys_idempotency_hash ON api_keys(idempotency_hash)",
+    "CREATE INDEX IF NOT EXISTS idx_access_tokens_parent ON api_access_tokens(parent_prefix)",
+    "CREATE INDEX IF NOT EXISTS idx_access_tokens_expiry ON api_access_tokens(expires_at)",
     "CREATE INDEX IF NOT EXISTS idx_notes_lookup ON topic_notes (exam, subject, topic_slug)",
     "CREATE INDEX IF NOT EXISTS idx_notes_subtopic_lookup ON topic_notes (exam, subject, subtopic_slug)",
     "CREATE UNIQUE INDEX IF NOT EXISTS idx_notes_unique_topic ON topic_notes (exam, subject, topic_slug) WHERE subtopic_slug IS NULL OR subtopic_slug = ''",
@@ -82,6 +85,17 @@ pub const READ_SHAPES: &[(&str, &[&str])] = &[
         &["username", "pw_hash", "role", "created_at"],
     ),
     ("sessions", &["token_hash", "username", "expires_at"]),
+    (
+        "api_access_tokens",
+        &[
+            "token_hash",
+            "parent_prefix",
+            "scopes",
+            "expires_at",
+            "revoked",
+            "created_at",
+        ],
+    ),
     (
         "reports",
         &[
@@ -312,7 +326,7 @@ pub async fn ensure_schema(s: &DbState) -> Result<(), AppError> {
 /// API-owned migrations are numbered, applied once, and never rewritten.
 /// Fresh databases receive the current DDL first; upgraded databases receive
 /// the same DDL idempotently and then any missing migrations.
-const MIGRATIONS: &[u64] = &[1, 2, 3, 4, 5];
+const MIGRATIONS: &[u64] = &[1, 2, 3, 4, 5, 6];
 
 async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
     for &version in MIGRATIONS {
@@ -425,6 +439,23 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 super::write::execute_ddl_local(
                     s,
                     "CREATE UNIQUE INDEX IF NOT EXISTS idx_theory_unique ON theory_questions (exam, subject, year, question_number)",
+                )
+                .await?;
+            }
+            6 => {
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE TABLE IF NOT EXISTS api_access_tokens (token_hash TEXT PRIMARY KEY, parent_prefix TEXT NOT NULL, scopes TEXT NOT NULL, expires_at INTEGER NOT NULL, revoked INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+                )
+                .await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE INDEX IF NOT EXISTS idx_access_tokens_parent ON api_access_tokens(parent_prefix)",
+                )
+                .await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE INDEX IF NOT EXISTS idx_access_tokens_expiry ON api_access_tokens(expires_at)",
                 )
                 .await?;
             }
@@ -956,8 +987,12 @@ mod tests {
             .execute("DROP TABLE reports", ())
             .await
             .expect("replace legacy reports");
+        let reports_ddl = DDL
+            .iter()
+            .find(|ddl| ddl.starts_with("CREATE TABLE IF NOT EXISTS reports "))
+            .expect("the reports table is declared");
         upgraded_conn
-            .execute(DDL[5], ())
+            .execute(reports_ddl, ())
             .await
             .expect("current reports");
         upgraded_conn

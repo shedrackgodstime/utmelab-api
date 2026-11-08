@@ -68,6 +68,35 @@ pub(crate) async fn conn_of(s: &DbState) -> turso::Connection {
     connect(&db).await
 }
 
+/// Expire a minted access token behind the service's back, so a test can prove
+/// the read path honors expiry without waiting out the clock.
+pub(crate) async fn expire_token(s: &DbState, token: &str) {
+    conn_of(s)
+        .await
+        .execute(
+            "UPDATE api_access_tokens SET expires_at=?1 WHERE token_hash=?2",
+            vec![
+                turso::Value::Integer(crate::auth::session::now_unix() - 1),
+                turso::Value::Text(crate::store::accounts::hash_key(token)),
+            ],
+        )
+        .await
+        .expect("expire token");
+}
+
+/// Revoke a key behind the service's back, so a test can prove its token
+/// family dies on the next request.
+pub(crate) async fn revoke_key(s: &DbState, prefix: &str) {
+    conn_of(s)
+        .await
+        .execute(
+            "UPDATE api_keys SET revoked=1 WHERE prefix=?1",
+            vec![turso::Value::Text(prefix.to_string())],
+        )
+        .await
+        .expect("revoke key");
+}
+
 /// The tables the API owns, at their production shape. Single-sourced from
 /// [`crate::store::schema::DDL`], so a test cannot seed a shape the service
 /// does not create.

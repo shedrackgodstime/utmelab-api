@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "UTME Lab API",
-    "description": "A keyed question bank for Nigerian entry exams. Every question is keyed to a subtopic so a weak spot is a twenty-question sitting rather than a mock. Explanations carry the trap that catches people. Send your key in the `X-API-Key` header; the whole surface is keyed.",
+    "description": "A keyed question bank for Nigerian entry exams. Every question is keyed to a subtopic so a weak spot is a twenty-question sitting rather than a mock. Explanations carry the trap that catches people. Send your long-lived key in the `X-API-Key` header, or mint a short-lived client token at `POST /api/v1/tokens` and send it as `Authorization: Bearer tok_...`; every data route accepts either credential.",
     "license": {
       "name": ""
     },
@@ -3194,6 +3194,82 @@
         }
       }
     },
+    "/api/v1/tokens": {
+      "post": {
+        "tags": [
+          "account"
+        ],
+        "summary": "Mint a short-lived token for a client app.",
+        "description": "Requires a secret key with `read:catalog`. The returned token can read the catalog and nothing else, expires in at most 15 minutes, cannot mint another token, and is billed to the presenting key's quota.",
+        "operationId": "mintAccessToken",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TokenRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessToken"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key lacks the required scope.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The caller has exceeded the applicable rate limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The API is temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ]
+      }
+    },
     "/api/v1/topics/{exam}/{subject}/{slug}": {
       "get": {
         "tags": [
@@ -3296,6 +3372,37 @@
   },
   "components": {
     "schemas": {
+      "AccessToken": {
+        "type": "object",
+        "description": "A freshly minted short-lived client token, in plaintext and only once.\nThe table keeps the hash alone, so this response cannot be replayed.",
+        "required": [
+          "access_token",
+          "token_type",
+          "expires_in",
+          "scopes"
+        ],
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "expires_in": {
+            "type": "integer",
+            "format": "int64",
+            "description": "The lifetime actually granted, in seconds.",
+            "minimum": 0
+          },
+          "scopes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The grant carried by the token. Today always `[\"read:catalog\"]`."
+          },
+          "token_type": {
+            "type": "string"
+          }
+        }
+      },
       "ActiveRecallCheck": {
         "type": "object",
         "required": [
@@ -6114,6 +6221,21 @@
           }
         }
       },
+      "TokenRequest": {
+        "type": "object",
+        "description": "What a mint asks for. Only the lifetime is negotiable; the grant is derived\nfrom the presenting key, so a client cannot name a scope.",
+        "properties": {
+          "expires_in": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int64",
+            "description": "Requested lifetime in seconds. Defaults to 300; clamped to 60-900.",
+            "minimum": 0
+          }
+        }
+      },
       "Topic": {
         "type": "object",
         "description": "A topic within one exam's syllabus.",
@@ -6278,13 +6400,22 @@
         "type": "apiKey",
         "in": "header",
         "name": "X-API-Key",
-        "description": "Send your key in the `X-API-Key` header. One key type: it works from a server, an app, or curl. We never ask where it lives. If you embed it in a client app it can be extracted, and whoever extracts it shares your quota."
+        "description": "Send your long-lived key in the `X-API-Key` header. This is the server credential: keep it on a backend. To call from a browser or app without shipping the secret, mint a short-lived token at `POST /api/v1/tokens` and send it as `Authorization: Bearer tok_...`."
+      },
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "tok_...",
+        "description": "A short-lived token minted by `POST /api/v1/tokens`. It can read the catalog, nothing else, and expires in at most 15 minutes. It cannot mint another token; quota is billed to the key that minted it."
       }
     }
   },
   "security": [
     {
       "ApiKeyAuth": []
+    },
+    {
+      "BearerAuth": []
     }
   ],
   "tags": [
@@ -6306,7 +6437,7 @@
     },
     {
       "name": "account",
-      "description": "The calling key."
+      "description": "The calling credential: the key itself, and short-lived client tokens."
     },
     {
       "name": "meta",

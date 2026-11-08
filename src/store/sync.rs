@@ -7,7 +7,7 @@
 //! After five idle minutes, even that wait sleeps completely. The first
 //! database request after sleep performs one locked pull before reading.
 //!
-//! Every engine call goes through [`Engine`] with an explicit budget. Every
+//! Every engine call goes through `Engine` with an explicit budget. Every
 //! retry delay and every readiness answer comes from [`SyncPolicy`] and
 //! [`SyncStatus`]. Nothing here invents either.
 
@@ -740,6 +740,17 @@ async fn supervise(probe: &DbState, db: &SyncDb, idle_after: Duration, policy: &
                 Ok(Ok(n)) => tracing::info!("purged {n} expired sessions"),
                 Ok(Err(e)) => tracing::warn!("session purge failed: {e}"),
                 Err(_) => tracing::warn!("session purge exceeded its budget"),
+            }
+            match tokio::time::timeout(
+                policy.budgets.verify.duration(),
+                super::accounts::purge_expired_tokens(probe),
+            )
+            .await
+            {
+                Ok(Ok(0)) => {}
+                Ok(Ok(n)) => tracing::info!("purged {n} expired access tokens"),
+                Ok(Err(e)) => tracing::warn!("access token purge failed: {e}"),
+                Err(_) => tracing::warn!("access token purge exceeded its budget"),
             }
         }
     }

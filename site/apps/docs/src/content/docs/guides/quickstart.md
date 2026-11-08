@@ -14,8 +14,8 @@ curl -s "https://api.utmelab.com/api/v1/questions?exam=JAMB&subject=use-of-engli
 ```
 
 3. Read the `questions` array. Each `id` is your stable reference for that
-   row — fetch it later with `/api/v1/questions/{id}`, and flag trouble
-   with `/api/v1/questions/{id}/report`.
+   row: fetch it later with `/api/v1/questions/{id}`, and flag trouble
+   with `POST /api/v1/report`.
 
 ## What you just called
 
@@ -35,10 +35,54 @@ for them on the [request coverage](/docs/guides/catalog/request/) page.
 
 - **Base URL:** `https://api.utmelab.com` (production).
 - **Auth header:** every metered call needs `x-api-key: <key>` (raw key, no
-  scheme).
+  scheme), or a short-lived bearer token as described below.
   Keys are issued by email for now; dashboard issue/rotation comes with accounts.
 - **Rate limits:** 60 requests/minute per key. Over that you get `429` with
-  a `Retry-After` header — wait as told, then retry.
+  a `Retry-After` header. Wait as told, then retry.
+
+## Calling from a browser or app
+
+Keep your key on a server. A key shipped inside a browser bundle, desktop app,
+or mobile binary can be extracted, and whoever extracts it shares your quota.
+If the client must call the API directly, mint a short-lived token on your
+backend and hand the client that instead:
+
+```bash
+curl -s -X POST "https://api.utmelab.com/api/v1/tokens" \
+  -H 'x-api-key: YOUR_KEY' \
+  -H 'content-type: application/json' \
+  -d '{"expires_in": 300}'
+```
+
+```json
+{
+  "access_token": "tok_...",
+  "token_type": "Bearer",
+  "expires_in": 300,
+  "scopes": ["read:catalog"]
+}
+```
+
+The client then sends the token in the standard header:
+
+```bash
+curl -s "https://api.utmelab.com/api/v1/questions?exam=JAMB&subject=use-of-english" \
+  -H 'authorization: Bearer tok_...'
+```
+
+What the token can and cannot do:
+
+- It reads the catalog and nothing else. No reports, no key management, no MCP.
+- It lives between 60 and 900 seconds. `expires_in` is a request; the response
+  states the lifetime actually granted, capped at 15 minutes.
+- Only a secret key can mint one. A token cannot mint another token, so a
+  leaked token cannot refresh itself.
+- Quota is billed to the key that minted it, so minting more tokens never buys
+  a fresh bucket.
+- Revoking or narrowing the parent key applies to every token it minted, on the
+  next request.
+- Send exactly one credential. A request carrying both `x-api-key` and
+  `authorization` is refused with `401`.
 
 ## Response envelope
 

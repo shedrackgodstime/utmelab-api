@@ -15,12 +15,12 @@
 //! regenerates it under `UPDATE_SPEC=1` and otherwise fails the moment it
 //! drifts from the code.
 
-use utoipa::openapi::security::{ApiKey, ApiKeyValue, SecurityScheme};
+use utoipa::openapi::security::{ApiKey, ApiKeyValue, HttpAuthScheme, HttpBuilder, SecurityScheme};
 use utoipa::{Modify, OpenApi};
 
 use crate::api::v1::{
     blueprints, exams, keys, meta, notes, novels, papers, passages, public, questions, reports,
-    subjects, theory, topics,
+    subjects, theory, tokens, topics,
 };
 
 /// The whole contract, as a value. `site/openapi.json` is this serialised.
@@ -28,12 +28,16 @@ pub fn document() -> utoipa::openapi::OpenApi {
     ApiDoc::openapi()
 }
 
-const AUTH_NOTE: &str = "Send your key in the `X-API-Key` header. One key type: it works from \
-a server, an app, or curl. We never ask where it lives. If you embed it in a client app it can \
-be extracted, and whoever extracts it shares your quota.";
+const AUTH_NOTE: &str = "Send your long-lived key in the `X-API-Key` header. This is the server \
+credential: keep it on a backend. To call from a browser or app without shipping the secret, mint \
+a short-lived token at `POST /api/v1/tokens` and send it as `Authorization: Bearer tok_...`.";
 
-/// Adds the one security scheme, including the explanation utoipa has no field
-/// for.
+const BEARER_NOTE: &str = "A short-lived token minted by `POST /api/v1/tokens`. It can read the \
+catalog, nothing else, and expires in at most 15 minutes. It cannot mint another token; quota is \
+billed to the key that minted it.";
+
+/// Adds the two credential schemes, including the explanations utoipa has no
+/// field for.
 struct AuthScheme;
 
 impl Modify for AuthScheme {
@@ -46,6 +50,16 @@ impl Modify for AuthScheme {
                     AUTH_NOTE,
                 ))),
             );
+            components.add_security_scheme(
+                "BearerAuth",
+                SecurityScheme::Http(
+                    HttpBuilder::new()
+                        .scheme(HttpAuthScheme::Bearer)
+                        .bearer_format("tok_...")
+                        .description(Some(BEARER_NOTE))
+                        .build(),
+                ),
+            );
         }
     }
 }
@@ -57,8 +71,9 @@ impl Modify for AuthScheme {
         version = "0.1.0",
         description = "A keyed question bank for Nigerian entry exams. Every question is keyed \
 to a subtopic so a weak spot is a twenty-question sitting rather than a mock. Explanations \
-carry the trap that catches people. Send your key in the `X-API-Key` header; the whole \
-surface is keyed.",
+carry the trap that catches people. Send your long-lived key in the `X-API-Key` header, or mint \
+a short-lived client token at `POST /api/v1/tokens` and send it as `Authorization: Bearer \
+tok_...`; every data route accepts either credential.",
     ),
     servers((url = "https://api.utmelab.com", description = "Production")),
     paths(
@@ -85,6 +100,7 @@ surface is keyed.",
         questions::sample,
         questions::one,
         keys::me,
+        tokens::mint,
         meta::tables,
         meta::rows,
         papers::readiness,
@@ -155,6 +171,8 @@ surface is keyed.",
         crate::core::models::TableRef,
         crate::core::models::RowPage,
         crate::core::models::KeyInfo,
+        crate::core::models::AccessToken,
+        crate::core::models::TokenRequest,
         crate::core::papers::PaperMode,
         papers::PaperSectionOut,
         papers::AssembledPaperOut,
@@ -163,14 +181,14 @@ surface is keyed.",
         papers::ScoreRequest,
         reports::ReportBody,
     )),
-    security(("ApiKeyAuth" = [])),
+    security(("ApiKeyAuth" = []), ("BearerAuth" = [])),
     modifiers(&AuthScheme),
     tags(
         (name = "public", description = "What is in the bank, before you have a key. No credential, coarse on purpose."),
         (name = "catalog", description = "Exams, subjects, syllabi, topics, blueprints, passages and prescribed texts."),
         (name = "questions", description = "The metered question surface."),
         (name = "papers", description = "Seeded assembly and server-side scoring."),
-        (name = "account", description = "The calling key."),
+        (name = "account", description = "The calling credential: the key itself, and short-lived client tokens."),
         (name = "meta", description = "The tables the bank exposes."),
         (name = "reports", description = "Consumer flags against bank records."),
     )

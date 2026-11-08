@@ -49,7 +49,7 @@ use rmcp::{
 };
 
 use crate::{
-    auth::{api_key::verify_key, Auth, SCOPE_MANAGE_KEYS},
+    auth::{api_key::verify_key, Auth, Credential, SCOPE_MANAGE_KEYS},
     config::Config,
     error::AppError,
     state::{AppState, DbState},
@@ -60,6 +60,9 @@ pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
 
     let catalog = Router::new()
         .route_service("/mcp", service(db.clone(), Surface::Catalog))
+        // Client tokens are a browser/app credential; MCP is a server and
+        // agent surface. Refuse the token before rmcp sees a message.
+        .route_layer(from_fn(require_secret))
         .route_layer(from_fn_with_state(state.clone(), verify_key))
         .layer(cfg.slow_timeout());
 
@@ -69,11 +72,28 @@ pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
         // and the scope check reads the identity it stashed. Without this, the
         // admin tools would still be scope-refused, but only per call; with it,
         // the surface itself is closed.
+        .route_layer(from_fn(require_secret))
         .route_layer(from_fn(require_manage_keys))
         .route_layer(from_fn_with_state(state.clone(), verify_key))
         .layer(cfg.slow_timeout());
 
     catalog.merge(admin).with_state(state)
+}
+
+/// MCP is reachable with a long-lived secret only. A short-lived token is
+/// refused here, after `verify_key` has resolved it, so a browser app cannot
+/// reach catalog tools, and certainly not administration, with a client
+/// credential.
+async fn require_secret(request: Request, next: Next) -> Response {
+    let secret = request
+        .extensions()
+        .get::<Auth>()
+        .is_some_and(|auth| auth.credential == Credential::Secret);
+    if secret {
+        next.run(request).await
+    } else {
+        AppError::Forbidden.into_response()
+    }
 }
 
 /// One endpoint's rmcp service. Both surfaces share the configuration: stateless

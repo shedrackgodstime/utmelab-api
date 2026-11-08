@@ -105,6 +105,27 @@ pub struct KeyInfo {
     pub scopes: Vec<String>,
 }
 
+/// A freshly minted short-lived client token, in plaintext and only once.
+/// The table keeps the hash alone, so this response cannot be replayed.
+#[derive(Clone, Debug, serde::Serialize, utoipa::ToSchema)]
+pub struct AccessToken {
+    pub access_token: String,
+    pub token_type: String,
+    /// The lifetime actually granted, in seconds.
+    pub expires_in: u64,
+    /// The grant carried by the token. Today always `["read:catalog"]`.
+    pub scopes: Vec<String>,
+}
+
+/// What a mint asks for. Only the lifetime is negotiable; the grant is derived
+/// from the presenting key, so a client cannot name a scope.
+#[derive(Clone, Debug, serde::Deserialize, utoipa::ToSchema)]
+pub struct TokenRequest {
+    /// Requested lifetime in seconds. Defaults to 300; clamped to 60-900.
+    #[serde(default)]
+    pub expires_in: Option<u64>,
+}
+
 /// The receipt for a state-changing key or role call. `ok` reports whether
 /// the operation matched anything: deleting a key you do not own is `false`,
 /// not an error.

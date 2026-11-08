@@ -38,6 +38,22 @@ pub fn check_tier(tier: &str) -> Result<(), AppError> {
     }
 }
 
+/// Client token lifetimes. Five minutes is long enough for a page session and
+/// short enough that a leaked token is not a standing grant; fifteen is the
+/// ceiling, and the floor stops a client from minting in a tight loop.
+pub const TOKEN_DEFAULT_TTL_SECS: u64 = 300;
+pub const TOKEN_MAX_TTL_SECS: u64 = 900;
+pub const TOKEN_MIN_TTL_SECS: u64 = 60;
+
+/// The lifetime a mint request asks for, clamped to the policy. Absent means
+/// the default; an out-of-range value is corrected rather than refused,
+/// because the response always states the lifetime that was actually granted.
+pub fn token_lifetime(requested: Option<u64>) -> u64 {
+    requested
+        .unwrap_or(TOKEN_DEFAULT_TTL_SECS)
+        .clamp(TOKEN_MIN_TTL_SECS, TOKEN_MAX_TTL_SECS)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -67,5 +83,16 @@ mod tests {
         assert!(check_tier("commercial").is_ok());
         assert!(check_tier("root").is_err());
         assert!(check_tier("").is_err());
+    }
+
+    /// The mint response states the granted lifetime, so the policy owns it
+    /// and a request can never widen it past the ceiling.
+    #[test]
+    fn token_lifetime_is_clamped_to_policy() {
+        assert_eq!(token_lifetime(None), TOKEN_DEFAULT_TTL_SECS);
+        assert_eq!(token_lifetime(Some(1)), TOKEN_MIN_TTL_SECS);
+        assert_eq!(token_lifetime(Some(300)), 300);
+        assert_eq!(token_lifetime(Some(86_400)), TOKEN_MAX_TTL_SECS);
+        assert_eq!(token_lifetime(Some(u64::MAX)), TOKEN_MAX_TTL_SECS);
     }
 }

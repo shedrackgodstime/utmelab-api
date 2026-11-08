@@ -24,6 +24,10 @@ pub const PUBLIC_MAX_PER_MINUTE: u32 = 120;
 /// Expensive paper and sampling operations get their own ceiling so a caller
 /// cannot consume the normal catalog quota with CPU-heavy requests.
 pub const EXPENSIVE_MAX_PER_MINUTE: u32 = 20;
+/// Minting is a write and a credential grant, so it gets a tight ceiling of
+/// its own. A stolen secret or token cannot turn into an unlimited token
+/// faucet, and the parent's normal request bucket stays for real traffic.
+pub const MINT_MAX_PER_MINUTE: u32 = 10;
 const MAX_BUCKETS: usize = 10_000;
 
 pub struct RateLimiter {
@@ -119,6 +123,14 @@ impl RateLimiter {
         )
         .await
     }
+
+    /// Token minting is a write, so it is metered apart from the reads the
+    /// minted token will spend. Keyed by the parent prefix: every token a key
+    /// mints shares the one faucet.
+    pub async fn check_mint(&self, key_id: &str) -> bool {
+        self.check(&format!("mint:{key_id}"), MINT_MAX_PER_MINUTE, API_WINDOW)
+            .await
+    }
 }
 
 #[cfg(test)]
@@ -186,6 +198,22 @@ mod tests {
         assert!(
             r.check_api_key("key-a", false).await,
             "normal reads are separate"
+        );
+    }
+
+    /// The mint faucet is per parent, so minting many tokens never widens the
+    /// bucket the tokens themselves spend from.
+    #[tokio::test]
+    async fn minting_has_its_own_per_parent_ceiling() {
+        let r = RateLimiter::new();
+        for _ in 0..MINT_MAX_PER_MINUTE {
+            assert!(r.check_mint("key-a").await);
+        }
+        assert!(!r.check_mint("key-a").await);
+        assert!(r.check_mint("key-b").await, "another parent is unaffected");
+        assert!(
+            r.check_api_key("key-a", false).await,
+            "minting must not consume the parent's read bucket"
         );
     }
 }

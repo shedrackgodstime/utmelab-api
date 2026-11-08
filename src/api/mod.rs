@@ -1,10 +1,11 @@
 //! Public HTTP router. Merges versioned routers; surface-wide HTTP layers
 //! attach here, global limits stay in `routes`.
 //!
-//! CORS is permissive on purpose: browser apps call us directly, and the
-//! key is extractable from any client anyway, so a wildcard origin adds
-//! no exposure the key model did not already accept. Credentials stay
-//! off; the key travels in a header, never a cookie.
+//! CORS is permissive on purpose: browser and app clients call us directly,
+//! and they do it with a short-lived bearer token minted for that purpose, so
+//! a wildcard origin adds no exposure the credential model did not already
+//! accept. Credentials travel in a header, never in a cookie, so a wildcard
+//! origin cannot turn a browser into an ambient authority.
 
 pub mod middleware;
 pub mod openapi;
@@ -40,10 +41,11 @@ pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
             axum::http::header::CONTENT_TYPE,
             axum::http::HeaderName::from_static("x-bank-version"),
         ]));
-    // Reads run on the read budget and carry ETag; the report routes write
-    // (they push to the cloud), so they sit outside both and take the global
-    // write budget from `routes`. Same split as `internal` and `mcp`, where
-    // the verb, not the path, picks the budget.
+    // Reads run on the read budget and carry ETag; reports and token minting
+    // write (a report pushes to the cloud, a mint inserts a token row), so they
+    // sit outside both and take the global write budget from `routes`. Same
+    // split as `internal` and `mcp`, where the verb, not the path, picks the
+    // budget.
     //
     // `verify_key` rides inside each budget, so key verification is bounded by
     // the same timeout as the work it guards, and outside CORS (applied last
@@ -61,8 +63,9 @@ pub fn router(state: AppState, cfg: &Config) -> Router<AppState> {
         .layer(from_fn(middleware::etag))
         .layer(from_fn(middleware::public_cache))
         .layer(cfg.fast_timeout());
-    let writes =
-        v1::reports::router(state.clone()).layer(from_fn_with_state(state.clone(), verify_key));
+    let writes = v1::reports::router(state.clone())
+        .merge(v1::tokens::router(state.clone()))
+        .layer(from_fn_with_state(state.clone(), verify_key));
     Router::new()
         .merge(reads)
         .merge(public)
