@@ -3,6 +3,9 @@ name = "utmelab-api"
 version = "0.0.1"
 edition = "2021"
 
+[profile.release]
+strip = "symbols"
+
 [workspace]
 
 [lib]
