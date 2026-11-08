@@ -88,6 +88,8 @@ class Staging(Protocol):
 
     async def counts_by_state(self) -> dict[str, int]: ...
 
+    async def failure_counts(self, attempt_cap: int) -> tuple[int, int, int]: ...
+
 
 class Index(ContentIndex, Protocol):
     """The index methods the runner uses, beyond the read-only port."""

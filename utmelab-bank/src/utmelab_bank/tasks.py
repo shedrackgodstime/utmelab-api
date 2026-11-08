@@ -32,6 +32,7 @@ from utmelab_bank.adapters.store.index import BANK, BATCH, PRODUCTION
 from utmelab_bank.domain.enums import State
 from utmelab_bank.domain.models import Scope, StagingItem
 from utmelab_bank.domain.ports import Source
+from utmelab_bank.domain.state import TERMINAL_STATES
 from utmelab_bank.runtime import Runtime, require
 
 logger = logging.getLogger(__name__)
@@ -46,6 +47,14 @@ DEFAULT_LIMIT = 100
 #: behind the client's single worker thread, and a free tier rate limit is
 #: measured in requests per minute, not concurrency.
 MAX_CONCURRENCY = 8
+
+#: Consecutive failures a row may collect before it is quarantined as FAILED.
+#:
+#: A successful step clears the counter, so this is a retry ceiling for one
+#: stuck row, not a lifetime budget across the pipeline. Without it a row can
+#: spend provider calls forever, which is how ``myschool:67629`` reached 140
+#: attempts.
+MAX_ATTEMPTS = 5
 
 
 class UsageError(RuntimeError):
@@ -329,18 +338,45 @@ async def _record_failure(
     item: StagingItem,
     exc: BaseException,
 ) -> None:
-    """Keep the failure on the row, so a retry and a person both see it."""
+    """Keep the failure on the row, so a retry and a person both see it.
+
+    A row that reaches the attempt ceiling is quarantined as ``FAILED`` with
+    the last reason still attached. That keeps a broken row out of every later
+    batch without hiding why it stopped.
+    """
     message = f"{type(exc).__name__}: {exc}".strip()
     if not message:
         message = type(exc).__name__
-    failed = item.model_copy(
-        update={
-            "attempts": item.attempts + 1,
-            "error": message,
-            "updated_at": datetime.now(UTC),
-        }
-    )
+    attempts = item.attempts + 1
+    if attempts >= MAX_ATTEMPTS and item.state not in TERMINAL_STATES:
+        failed = item.transition_to(
+            State.FAILED,
+            error=f"attempt_limit: {attempts} attempts; last error: {message}",
+        ).model_copy(update={"attempts": attempts})
+    else:
+        failed = item.model_copy(
+            update={
+                "attempts": attempts,
+                "error": message,
+                "updated_at": datetime.now(UTC),
+            }
+        )
     await runtime.staging.save(failed)
+
+
+async def _save_progress(runtime: Runtime, item: StagingItem) -> StagingItem:
+    """Save a row that succeeded and clear an earlier failure from it.
+
+    ``attempts`` counts consecutive failures, so a success resets it. Leaving
+    the old count in place would let unrelated failures at different stages
+    add up and quarantine a row that is still moving.
+    """
+    if item.attempts or item.error is not None:
+        item = item.model_copy(
+            update={"attempts": 0, "error": None, "updated_at": datetime.now(UTC)}
+        )
+    await runtime.staging.save(item)
+    return item
 
 
 async def _advance(
@@ -539,7 +575,10 @@ async def fetch(runtime: Runtime, options: TaskOptions) -> TaskResult:
                         f"{item.error or item.state.value}"
                     )
                     continue
-                await runtime.staging.save(item)
+                if item.state in TERMINAL_STATES:
+                    await runtime.staging.save(item)
+                else:
+                    item = await _save_progress(runtime, item)
                 states[item.id] = (
                     item.state.value,
                     item.error is not None,
@@ -629,7 +668,7 @@ async def capture(runtime: Runtime, options: TaskOptions) -> TaskResult:
             await runtime.staging.save(rejected)
             return skipped(f"{rejected.id}: duplicate after capture: {found.question_id}")
         await runtime.dedupe.remember(captured, origin=BANK)
-        await runtime.staging.save(captured)
+        await _save_progress(runtime, captured)
         return DONE
 
     await _run_batch(runtime, result, rows, options, one)
@@ -656,7 +695,7 @@ async def tag(runtime: Runtime, options: TaskOptions) -> TaskResult:
                 f"{item.provenance.scope.exam}/{item.provenance.scope.subject}"
             )
         catalogued = await service.tag(item, catalog)
-        await runtime.staging.save(catalogued)
+        await _save_progress(runtime, catalogued)
         return DONE
 
     await _run_batch(runtime, result, rows, options, one)
@@ -676,7 +715,7 @@ async def media(runtime: Runtime, options: TaskOptions) -> TaskResult:
             return noted(f"{item.id}: would describe {len(item.media_assets)} figure(s)")
         described = await service.apply(item)
         if described.state is State.DESCRIBED:
-            await runtime.staging.save(described)
+            await _save_progress(runtime, described)
             return DONE
         if described.state is State.CATALOGUED:
             return skipped(f"{item.id}: no captured figures")
@@ -704,7 +743,7 @@ async def explain(runtime: Runtime, options: TaskOptions) -> TaskResult:
             item.provenance.scope.country,
         )
         enriched = await service.explain(item, catalog)
-        await runtime.staging.save(enriched)
+        await _save_progress(runtime, enriched)
         return DONE
 
     await _run_batch(runtime, result, rows, options, one)
@@ -726,9 +765,10 @@ async def review(runtime: Runtime, options: TaskOptions) -> TaskResult:
             item.provenance.scope.country,
         )
         reviewed = await service.apply(item, catalog)
-        await runtime.staging.save(reviewed)
         if reviewed.state is State.VERIFIED:
+            await _save_progress(runtime, reviewed)
             return DONE
+        await runtime.staging.save(reviewed)
         return blocked(f"{item.id}: {reviewed.error or reviewed.state.value}")
 
     await _run_batch(runtime, result, rows, options, one)
@@ -756,7 +796,7 @@ async def ready(runtime: Runtime, options: TaskOptions) -> TaskResult:
         bundle = service.promote([item])
         promoted = bundle.items[0]
         if promoted.state is State.READY:
-            await runtime.staging.save(promoted)
+            await _save_progress(runtime, promoted)
             return DONE
         reasons: list[str] = []
         for condition in bundle.report.unmet():
@@ -812,12 +852,17 @@ async def status(runtime: Runtime, options: TaskOptions) -> TaskResult:
     """Report what the bank holds. Reads only, never writes."""
     result = TaskResult(task="status")
     counts = await runtime.staging.counts_by_state()
+    with_error, at_cap, highest = await runtime.staging.failure_counts(MAX_ATTEMPTS)
     total = await runtime.index.count()
     production = await runtime.index.count(PRODUCTION)
     bank = await runtime.index.count(BANK)
 
     for state in State:
         result.note(f"{state.value:12} {counts.get(state.value, 0)}")
+    result.note(
+        f"{'errors':12} {with_error} row(s) with a stored error, "
+        f"{at_cap} at or over the attempt cap (max attempts {highest})"
+    )
     result.note(f"{'index':12} {total} (production {production}, bank {bank})")
     return result
 

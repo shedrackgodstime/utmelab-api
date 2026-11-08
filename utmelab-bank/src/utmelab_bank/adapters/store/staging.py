@@ -270,6 +270,26 @@ class StagingStore:
         )
         return {str(row[0]): int(row[1]) for row in result.rows}
 
+    async def failure_counts(self, attempt_cap: int) -> tuple[int, int, int]:
+        """Rows with a stored error, rows at the cap, and the highest count.
+
+        A failure count is not a state, so ``status`` has to ask for it
+        separately. The cap is a parameter because the runner owns the policy.
+        """
+        result = await self._client.execute(
+            "SELECT "
+            "SUM(CASE WHEN error IS NOT NULL AND error <> '' THEN 1 ELSE 0 END), "
+            "SUM(CASE WHEN attempts >= ? THEN 1 ELSE 0 END), "
+            "COALESCE(MAX(attempts), 0) "
+            "FROM staging_items",
+            [attempt_cap],
+        )
+        row = result.rows[0] if result.rows else (0, 0, 0)
+        with_error = int(row[0] or 0)
+        at_cap = int(row[1] or 0)
+        highest = int(row[2] or 0)
+        return with_error, at_cap, highest
+
 
 def _evidence(item: StagingItem) -> dict[str, Any]:
     return {

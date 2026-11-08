@@ -253,3 +253,23 @@ async def test_a_subject_without_topics_in_a_live_exam_stays_a_warning() -> None
     assert health.warnings == 1
     assert health.ok()
     assert not health.ok(strict=True)
+
+
+async def test_a_pending_subject_does_not_fail_strict() -> None:
+    health = await check_catalog(
+        FakeCatalogDatabase(
+            {
+                "exam_counts": [("WAEC", 44, 878)],
+                "subtopic_counts": [("WAEC", 3330)],
+                "subjects_without_topics": [("WAEC", "arabic")],
+            }
+        )
+    )
+
+    assert health.pending == 1
+    assert health.warnings == 0
+    assert health.ok(strict=True)
+    assert health.as_dict()["pending"] == {
+        "subjects_without_topics": [{"exam": "WAEC", "subject": "arabic", "slug": "arabic"}],
+        "count": 1,
+    }

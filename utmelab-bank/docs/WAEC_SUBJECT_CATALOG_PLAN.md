@@ -115,3 +115,19 @@ Iterate **all current prod WAEC subjects** (the 36 rows) and verify MySchool ava
 ## 7. Next Action
 
 **Run the strict source check script** against current prod + current `subjects.json` to produce the baseline availability table. Then review results before any prod writes.
+
+---
+
+## 8. Pending subjects, 2026-11-08
+
+Production lists eight WAEC subjects with no topics. None has a page or a PDF
+on the pinned source host: `waecsyllabus.com` returns 404 for all eight slugs,
+and its `digital-technology` page is the ICT syllabus, not the 2028 Digital
+Technologies subject.
+
+The production rows are left in place. `utmelab-db --database prod catalog
+--strict` reports them as pending rather than failing, through
+`PENDING_SUBJECTS` in `utmelab_bank/catalog_health.py`. When a syllabus becomes
+available, add its PDF to `data/waec/sources.json`, parse and apply it, and
+remove the subject from that set. The 2028 pair remains a product question, not
+a catalog defect.

@@ -43,10 +43,13 @@ from utmelab_bank.domain.models import (
 )
 from utmelab_bank.runtime import Runtime
 from utmelab_bank.tasks import (
+    MAX_ATTEMPTS,
     TaskOptions,
     UsageError,
     _advance,
     _concurrency,
+    _record_failure,
+    _save_progress,
     _scope,
     capture,
     explain,
@@ -186,6 +189,12 @@ class FakeStaging:
         for item in self.items.values():
             counts[item.state.value] = counts.get(item.state.value, 0) + 1
         return counts
+
+    async def failure_counts(self, attempt_cap: int) -> tuple[int, int, int]:
+        errors = sum(1 for item in self.items.values() if item.error)
+        at_cap = sum(1 for item in self.items.values() if item.attempts >= attempt_cap)
+        highest = max((item.attempts for item in self.items.values()), default=0)
+        return errors, at_cap, highest
 
 
 class FakeIndex:
@@ -947,6 +956,41 @@ async def test_status_reports_the_pipeline_and_the_index() -> None:
     assert result.ok
     assert any(note.startswith("ready") and note.strip().endswith("1") for note in result.notes)
     assert any(note.startswith("index") and "bank 1" in note for note in result.notes)
+    assert any(note.startswith("errors") for note in result.notes)
+
+
+async def test_a_row_is_quarantined_at_the_attempt_ceiling(
+    staging_item: StagingItem,
+) -> None:
+    runtime, staging, _ = make_runtime()
+    item = staging_item
+
+    for expected in range(1, MAX_ATTEMPTS):
+        await _record_failure(runtime, item, RuntimeError("provider is down"))
+        item = await staging.load(item.id)
+        assert item is not None
+        assert item.state is State.CATALOGUED
+        assert item.attempts == expected
+        assert "provider is down" in (item.error or "")
+
+    await _record_failure(runtime, item, RuntimeError("provider is down"))
+    item = await staging.load(item.id)
+    assert item is not None
+    assert item.state is State.FAILED
+    assert item.attempts == MAX_ATTEMPTS
+    assert "attempt_limit" in (item.error or "")
+
+
+async def test_a_success_clears_the_failure_count(staging_item: StagingItem) -> None:
+    runtime, staging, _ = make_runtime()
+    failed = staging_item.model_copy(update={"attempts": 4, "error": "provider is down"})
+
+    await _save_progress(runtime, failed)
+
+    saved = await staging.load(failed.id)
+    assert saved is not None
+    assert saved.attempts == 0
+    assert saved.error is None
 
 
 async def test_index_reloads_only_the_production_origin() -> None:

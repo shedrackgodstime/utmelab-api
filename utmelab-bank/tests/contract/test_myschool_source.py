@@ -400,6 +400,14 @@ def test_a_placeholder_is_not_a_figure() -> None:
     assert figure_url("some/placeholder.gif") is None
 
 
+def test_a_wrapped_browser_blob_is_not_a_figure() -> None:
+    assert figure_url("blob:https://www.facebook.com/92e77fe4") is None
+    assert (
+        figure_url("https://myschool.ng/storage/classroom/blob:https://www.facebook.com/92e77fe4")
+        is None
+    )
+
+
 def test_an_absolute_url_is_left_alone() -> None:
     assert figure_url("https://cdn.example/a.png") == "https://cdn.example/a.png"
     assert figure_url("//cdn.example/a.png") == "https://cdn.example/a.png"

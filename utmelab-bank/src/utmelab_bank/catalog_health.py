@@ -57,6 +57,24 @@ GROUP BY t.exam, t.subject
 ORDER BY topics DESC, t.exam, t.subject
 """
 
+#: Subjects production lists but no pinned source covers yet. The gap is known:
+#: the subject is waiting for a syllabus, not missing by accident. Counting it
+#: as a strict failure would keep the check red until the source arrives, which
+#: teaches operators to ignore the check. Reviewed 2026-11-08 against
+#: ``data/waec/sources.json``; remove an entry when its PDF is added there.
+PENDING_SUBJECTS: frozenset[tuple[str, str]] = frozenset(
+    {
+        ("WAEC", "arabic"),
+        ("WAEC", "beauty-and-cosmetology"),
+        ("WAEC", "citizenship-and-heritage-studies"),
+        ("WAEC", "computer-hardware-and-gsm-repairs"),
+        ("WAEC", "digital-technologies"),
+        ("WAEC", "fashion-design-and-garment-making"),
+        ("WAEC", "horticulture-and-crop-production"),
+        ("WAEC", "solar-photovoltaic-installation-and-maintenance"),
+    }
+)
+
 EXAM_COUNTS = """
 SELECT s.exam, COUNT(DISTINCT s.slug) AS subjects,
        (SELECT COUNT(*) FROM topics t WHERE t.exam = s.exam) AS topics
@@ -110,6 +128,7 @@ class CatalogHealth:
     blank_topics: tuple[Defect, ...]
     blank_subtopics: tuple[Defect, ...]
     orphan_subtopics: tuple[Defect, ...]
+    pending_subjects_without_topics: tuple[Defect, ...]
     subjects_without_topics: tuple[Defect, ...]
     topics_without_subtopics: tuple[SubjectGap, ...]
 
@@ -117,6 +136,11 @@ class CatalogHealth:
     def errors(self) -> int:
         """Defects that make a row impossible to place."""
         return len(self.blank_topics) + len(self.blank_subtopics) + len(self.orphan_subtopics)
+
+    @property
+    def pending(self) -> int:
+        """Known gaps waiting for a source, not defects in the catalog."""
+        return len(self.pending_subjects_without_topics)
 
     @property
     def warnings(self) -> int:
@@ -144,6 +168,12 @@ class CatalogHealth:
                 for exam in self.exams
             ],
             "parked": [{"exam": exam.exam, "subjects": exam.subjects} for exam in self.parked],
+            "pending": {
+                "subjects_without_topics": [
+                    _defect(item) for item in self.pending_subjects_without_topics
+                ],
+                "count": self.pending,
+            },
             "errors": {
                 "blank_topics": [_defect(item) for item in self.blank_topics],
                 "blank_subtopics": [_defect(item) for item in self.blank_subtopics],
@@ -202,10 +232,16 @@ async def check_catalog(database: Database) -> CatalogHealth:
     # stays a gap, because that subject can never be tagged.
     parked = tuple(exam for exam in exams if exam.topics == 0)
     parked_names = {exam.exam for exam in parked}
-    subjects_without_topics = tuple(
+    live_gaps = tuple(
         Defect(exam=str(row[0]), subject=str(row[1]), slug=str(row[1]))
         for row in (await database.query(SUBJECTS_WITHOUT_TOPICS)).rows
         if str(row[0]) not in parked_names
+    )
+    pending_subjects = tuple(
+        item for item in live_gaps if (item.exam, item.subject) in PENDING_SUBJECTS
+    )
+    subjects_without_topics = tuple(
+        item for item in live_gaps if (item.exam, item.subject) not in PENDING_SUBJECTS
     )
     topics_without_subtopics = tuple(
         SubjectGap(exam=str(row[0]), subject=str(row[1]), topics=int(row[2]))
@@ -218,12 +254,14 @@ async def check_catalog(database: Database) -> CatalogHealth:
         blank_topics=blank_topics,
         blank_subtopics=blank_subtopics,
         orphan_subtopics=orphan_subtopics,
+        pending_subjects_without_topics=pending_subjects,
         subjects_without_topics=subjects_without_topics,
         topics_without_subtopics=topics_without_subtopics,
     )
 
 
 __all__ = [
+    "PENDING_SUBJECTS",
     "CatalogHealth",
     "Defect",
     "ExamCounts",

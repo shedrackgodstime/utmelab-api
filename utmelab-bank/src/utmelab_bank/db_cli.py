@@ -125,6 +125,11 @@ def build_parser() -> argparse.ArgumentParser:
     items.add_argument("--year", type=int, default=None)
     items.add_argument("--state", default=None)
     items.add_argument(
+        "--errors",
+        action="store_true",
+        help="only rows that carry a stored error",
+    )
+    items.add_argument(
         "--limit",
         type=int,
         default=50,
@@ -201,6 +206,8 @@ async def _items(db: Database, args: argparse.Namespace) -> int:
     if args.state:
         where.append("state = ?")
         params.append(args.state)
+    if args.errors:
+        where.append("error IS NOT NULL AND error <> ''")
     query = (
         "SELECT id, state, exam, subject, year, country, attempts, error, updated_at "
         "FROM staging_items"
@@ -255,6 +262,8 @@ async def _catalog(db: Database, *, json_output: bool, strict: bool) -> int:
     for item in health.orphan_subtopics:
         print(f"  orphan subtopic: {item.slug} (missing topic {item.subject})")
     print(f"warnings: {health.warnings}")
+    for item in health.pending_subjects_without_topics:
+        print(f"  pending subject, no source: {item.exam}/{item.subject}")
     for item in health.subjects_without_topics:
         print(f"  subject without topics: {item.exam}/{item.subject}")
     for gap in health.topics_without_subtopics:

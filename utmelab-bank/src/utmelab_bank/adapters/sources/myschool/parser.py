@@ -108,6 +108,14 @@ def figure_url(name: object) -> str | None:
         return None
     if any(marker in candidate.lower() for marker in PLACEHOLDER_MARKERS):
         return None
+    # A source row sometimes carries a browser blob handle wrapped as a path,
+    # e.g. ``<storage>/blob:https://www.facebook.com/<uuid>``. It is an
+    # artifact of how the page was saved, not a file on the site, and fetching
+    # it returns an HTML error page. Dropping it lets the detail page supply
+    # the real figure instead of failing the row on an unrecoverable URL.
+    lowered = candidate.lower()
+    if lowered.startswith("blob:") or "/blob:" in lowered:
+        return None
     if candidate.startswith(("http://", "https://")):
         return candidate
     if candidate.startswith("//"):
