@@ -1587,6 +1587,57 @@ pub async fn import_notes_from_json(s: &DbState, json_str: &str) -> Result<usize
     let notes: Vec<core::models::TopicNote> = serde_json::from_str(json_str)
         .map_err(|e| AppError::BadRequest(format!("invalid notes json: {e}")))?;
 
+    // Pre-validation pass: every note must satisfy size ceiling and placement in the syllabus.
+    for note in &notes {
+        let size = serde_json::to_vec(note)
+            .map_err(|e| AppError::Internal(e.to_string()))?
+            .len();
+        if size >= crate::routes::MAX_BODY_BYTES {
+            return Err(AppError::BadRequest(format!(
+                "note {} serializes to {size} bytes, exceeding ceiling of {} bytes",
+                note.id,
+                crate::routes::MAX_BODY_BYTES
+            )));
+        }
+
+        let placement_valid = with_conn(s, |conn| {
+            let exam = note.exam.clone();
+            let subject = note.subject.clone();
+            let topic_slug = note.topic_slug.clone();
+            async move {
+                let mut stmt = conn
+                    .prepare(
+                        "SELECT 1 FROM topics t \
+                         WHERE ( \
+                           (t.exam = ?1 AND t.subject = ?2) \
+                           OR EXISTS ( \
+                             SELECT 1 FROM subjects s \
+                             WHERE s.exam = ?1 AND s.slug = ?2 \
+                               AND t.exam = s.syllabus_exam AND t.subject = s.syllabus_subject \
+                           ) \
+                         ) AND t.slug = ?3 \
+                         LIMIT 1",
+                    )
+                    .await
+                    .map_err(upstream)?;
+                let mut rows = stmt
+                    .query([exam.as_str(), subject.as_str(), topic_slug.as_str()])
+                    .await
+                    .map_err(upstream)?;
+                Ok(rows.next().await.map_err(upstream)?.is_some())
+            }
+        })
+        .await?;
+
+        if !placement_valid {
+            return Err(AppError::BadRequest(format!(
+                "note {} references topic '{}' which does not exist in {} {}",
+                note.id, note.topic_slug, note.exam, note.subject
+            )));
+        }
+    }
+
+    let mut statements = Vec::with_capacity(notes.len());
     for note in &notes {
         let takeaway_json = serde_json::to_string(&note.key_takeaway)
             .map_err(|e| AppError::Internal(e.to_string()))?;
@@ -1617,8 +1668,7 @@ pub async fn import_notes_from_json(s: &DbState, json_str: &str) -> Result<usize
             _ => turso::Value::Null,
         };
 
-        super::write::execute_write(
-            s,
+        statements.push((
             "INSERT OR REPLACE INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, linked_question_ids, content_hash) \
              VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15)",
             vec![
@@ -1638,8 +1688,10 @@ pub async fn import_notes_from_json(s: &DbState, json_str: &str) -> Result<usize
                 turso::Value::Text(linked_q_json),
                 turso::Value::Text(hash),
             ],
-        ).await?;
+        ));
     }
+
+    super::write::execute_write_batch(s, statements).await?;
 
     Ok(notes.len())
 }
@@ -1707,12 +1759,23 @@ pub async fn get_theory_question(
         async move {
             let mut stmt = conn
                 .prepare(
-                    "SELECT id, exam, subject, year, paper, section, question_number, \
-                     topic_slug, subtopic_slug, total_marks, stem, diagram_url, sub_parts, \
-                     formulation_bridge, marking_methods, diagram_rubric, penalties, \
-                     examiner_report \
-                     FROM theory_questions \
-                     WHERE exam = ?1 AND subject = ?2 AND id = ?3 \
+                    "SELECT tq.id, tq.exam, tq.subject, tq.year, tq.paper, tq.section, tq.question_number, \
+                     tq.topic_slug, tq.subtopic_slug, tq.total_marks, tq.stem, tq.diagram_url, tq.sub_parts, \
+                     tq.formulation_bridge, tq.marking_methods, tq.diagram_rubric, tq.penalties, \
+                     tq.examiner_report \
+                     FROM theory_questions tq \
+                     WHERE tq.exam = ?1 AND tq.subject = ?2 AND tq.id = ?3 \
+                       AND EXISTS ( \
+                         SELECT 1 FROM topics t \
+                         WHERE ( \
+                           (t.exam = tq.exam AND t.subject = tq.subject) \
+                           OR EXISTS ( \
+                             SELECT 1 FROM subjects s \
+                             WHERE s.exam = tq.exam AND s.slug = tq.subject \
+                               AND t.exam = s.syllabus_exam AND t.subject = s.syllabus_subject \
+                           ) \
+                         ) AND t.slug = tq.topic_slug \
+                       ) \
                      LIMIT 1",
                 )
                 .await
@@ -1754,7 +1817,19 @@ pub async fn list_theory_questions(
         let topic = topic.clone();
         let section = section.clone();
         async move {
-            let mut filter_sql = String::from("WHERE exam = ?1 AND subject = ?2");
+            let mut filter_sql = String::from(
+                "WHERE exam = ?1 AND subject = ?2 AND EXISTS ( \
+                   SELECT 1 FROM topics t \
+                   WHERE ( \
+                     (t.exam = theory_questions.exam AND t.subject = theory_questions.subject) \
+                     OR EXISTS ( \
+                       SELECT 1 FROM subjects s \
+                       WHERE s.exam = theory_questions.exam AND s.slug = theory_questions.subject \
+                         AND t.exam = s.syllabus_exam AND t.subject = s.syllabus_subject \
+                     ) \
+                   ) AND t.slug = theory_questions.topic_slug \
+                 )"
+            );
             let mut count_params = vec![
                 turso::Value::Text(exam.clone()),
                 turso::Value::Text(subject.clone()),
@@ -1823,7 +1898,8 @@ pub async fn list_theory_questions(
                     json_col(&sub_parts_raw, "theory_questions.sub_parts")?;
 
                 let preview = if stem.text.len() > 140 {
-                    format!("{}...", &stem.text[..140])
+                    let end = stem.text.floor_char_boundary(140);
+                    format!("{}...", &stem.text[..end])
                 } else {
                     stem.text.clone()
                 };
@@ -1877,8 +1953,14 @@ pub fn evaluate_theory_submission(
     let mut independent_marks_awarded = 0u32;
 
     let mut diagnostic_feedback = Vec::new();
-    let mut part_method_failed: std::collections::HashSet<String> =
-        std::collections::HashSet::new();
+    // Precompute failed method parts so prerequisite enforcement (M0 -> A0)
+    // is completely order-independent and deterministic.
+    let part_method_failed: std::collections::HashSet<String> = method
+        .steps
+        .iter()
+        .filter(|s| s.mark_type == "M" && !achieved_set.contains(s.step_id.as_str()))
+        .map(|s| s.part_label.clone())
+        .collect();
 
     for step in &method.steps {
         match step.mark_type.as_str() {
@@ -1887,7 +1969,6 @@ pub fn evaluate_theory_submission(
                 if achieved_set.contains(step.step_id.as_str()) {
                     method_marks_awarded += step.mark_value;
                 } else {
-                    part_method_failed.insert(step.part_label.clone());
                     diagnostic_feedback.push(format!(
                         "Missed method mark in {}: {}",
                         step.part_label, step.description
@@ -1910,7 +1991,7 @@ pub fn evaluate_theory_submission(
                     ));
                 }
             }
-            "B" | _ => {
+            "B" => {
                 independent_marks_possible += step.mark_value;
                 if achieved_set.contains(step.step_id.as_str()) {
                     independent_marks_awarded += step.mark_value;
@@ -1920,6 +2001,12 @@ pub fn evaluate_theory_submission(
                         step.part_label, step.description
                     ));
                 }
+            }
+            other => {
+                return Err(AppError::BadRequest(format!(
+                    "invalid mark type '{other}' in step '{}'",
+                    step.step_id
+                )));
             }
         }
     }
@@ -1959,6 +2046,12 @@ pub fn evaluate_theory_submission(
 
     let total_marks_possible =
         method_marks_possible + accuracy_marks_possible + independent_marks_possible;
+    if total_marks_possible != q.total_marks {
+        return Err(AppError::Internal(format!(
+            "rubric method '{}' mark sum ({total_marks_possible}) does not match question total_marks ({})",
+            method.method_id, q.total_marks
+        )));
+    }
     let earned_raw = method_marks_awarded + accuracy_marks_awarded + independent_marks_awarded;
     let awarded_marks = earned_raw.saturating_sub(total_penalty_deductions);
     let percentage = if total_marks_possible > 0 {
@@ -1998,6 +2091,79 @@ pub async fn import_theory_questions_from_json(
     let questions: Vec<core::models::TheoryQuestion> = serde_json::from_str(json_str)
         .map_err(|e| AppError::BadRequest(format!("invalid theory questions json: {e}")))?;
 
+    // Pre-validation pass: every question must satisfy size ceiling, mark consistency, mark types, and topic placement.
+    for q in &questions {
+        let size = serde_json::to_vec(q)
+            .map_err(|e| AppError::Internal(e.to_string()))?
+            .len();
+        if size >= crate::routes::MAX_BODY_BYTES {
+            return Err(AppError::BadRequest(format!(
+                "theory question {} serializes to {size} bytes, exceeding ceiling of {} bytes",
+                q.id,
+                crate::routes::MAX_BODY_BYTES
+            )));
+        }
+
+        for method in &q.marking_methods {
+            let mut method_total = 0u32;
+            for step in &method.steps {
+                match step.mark_type.as_str() {
+                    "M" | "A" | "B" => {}
+                    other => {
+                        return Err(AppError::BadRequest(format!(
+                            "theory question {} method '{}' step '{}' has invalid mark type '{other}'",
+                            q.id, method.method_id, step.step_id
+                        )));
+                    }
+                }
+                method_total += step.mark_value;
+            }
+            if method_total != q.total_marks {
+                return Err(AppError::BadRequest(format!(
+                    "theory question {} method '{}' step marks sum ({method_total}) does not equal question total_marks ({})",
+                    q.id, method.method_id, q.total_marks
+                )));
+            }
+        }
+
+        let placement_valid = with_conn(s, |conn| {
+            let exam = q.exam.clone();
+            let subject = q.subject.clone();
+            let topic_slug = q.topic_slug.clone();
+            async move {
+                let mut stmt = conn
+                    .prepare(
+                        "SELECT 1 FROM topics t \
+                         WHERE ( \
+                           (t.exam = ?1 AND t.subject = ?2) \
+                           OR EXISTS ( \
+                             SELECT 1 FROM subjects s \
+                             WHERE s.exam = ?1 AND s.slug = ?2 \
+                               AND t.exam = s.syllabus_exam AND t.subject = s.syllabus_subject \
+                           ) \
+                         ) AND t.slug = ?3 \
+                         LIMIT 1",
+                    )
+                    .await
+                    .map_err(upstream)?;
+                let mut rows = stmt
+                    .query([exam.as_str(), subject.as_str(), topic_slug.as_str()])
+                    .await
+                    .map_err(upstream)?;
+                Ok(rows.next().await.map_err(upstream)?.is_some())
+            }
+        })
+        .await?;
+
+        if !placement_valid {
+            return Err(AppError::BadRequest(format!(
+                "theory question {} references topic '{}' which does not exist in {} {}",
+                q.id, q.topic_slug, q.exam, q.subject
+            )));
+        }
+    }
+
+    let mut statements = Vec::with_capacity(questions.len());
     for q in &questions {
         let stem_json = serde_json::to_string(&q.stem)
             .map_err(|e| AppError::Internal(e.to_string()))?;
@@ -2040,8 +2206,7 @@ pub async fn import_theory_questions_from_json(
             None => turso::Value::Null,
         };
 
-        super::write::execute_write(
-            s,
+        statements.push((
             "INSERT OR REPLACE INTO theory_questions (id, exam, subject, year, paper, section, question_number, topic_slug, subtopic_slug, total_marks, stem, diagram_url, sub_parts, formulation_bridge, marking_methods, diagram_rubric, penalties, examiner_report, content_hash) \
              VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19)",
             vec![
@@ -2065,8 +2230,10 @@ pub async fn import_theory_questions_from_json(
                 turso::Value::Text(report_json),
                 turso::Value::Text(hash),
             ],
-        ).await?;
+        ));
     }
+
+    super::write::execute_write_batch(s, statements).await?;
 
     Ok(questions.len())
 }

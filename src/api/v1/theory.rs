@@ -12,18 +12,18 @@ use crate::{
     store,
 };
 
-async fn resolve_owner(
+async fn verify_exam_subject(
     s: &DbState,
     exam: &str,
     subject: &str,
-) -> Result<(String, String), AppError> {
+) -> Result<(), AppError> {
     if store::catalog::get_exam(s, exam).await?.is_none() {
         return Err(AppError::NotFound);
     }
-    let Some(record) = store::catalog::get_subject(s, exam, subject).await? else {
+    if store::catalog::get_subject(s, exam, subject).await?.is_none() {
         return Err(AppError::NotFound);
-    };
-    Ok(core::catalog::syllabus_owner(exam, subject, &record))
+    }
+    Ok(())
 }
 
 fn prepare_theory_question(
@@ -36,18 +36,7 @@ fn prepare_theory_question(
         *url = core::catalog::resolve_media_url(url, media_base_url);
     }
 
-    let size = serde_json::to_vec(&q)
-        .map_err(|e| AppError::Internal(format!("theory question serialization failed: {e}")))?
-        .len();
-    if size >= crate::routes::MAX_BODY_BYTES {
-        return Err(AppError::Internal(format!(
-            "theory question {} serializes to {size} bytes, over the {} byte ceiling",
-            q.id,
-            crate::routes::MAX_BODY_BYTES
-        )));
-    }
-
-    Ok(core::models::RenderedTheoryQuestion {
+    let rendered = core::models::RenderedTheoryQuestion {
         id: q.id,
         exam: q.exam,
         subject: q.subject,
@@ -83,7 +72,20 @@ fn prepare_theory_question(
             None
         },
         includes_rubric: include_rubric,
-    })
+    };
+
+    let size = serde_json::to_vec(&rendered)
+        .map_err(|e| AppError::Internal(format!("rendered theory question serialization failed: {e}")))?
+        .len();
+    if size >= crate::routes::MAX_BODY_BYTES {
+        return Err(AppError::Internal(format!(
+            "rendered theory question {} serializes to {size} bytes, over the {} byte ceiling",
+            rendered.id,
+            crate::routes::MAX_BODY_BYTES
+        )));
+    }
+
+    Ok(rendered)
 }
 
 #[derive(Debug, serde::Deserialize)]
@@ -123,11 +125,11 @@ pub async fn list_theory(
     Query(params): Query<TheoryListParams>,
 ) -> Result<Json<core::models::Page<core::models::TheoryQuestionSummary>>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
-    let (owner_exam, owner_subject) = resolve_owner(&s, &exam, &subject).await?;
+    verify_exam_subject(&s, &exam, &subject).await?;
     let page = store::catalog::list_theory_questions(
         &s,
-        &owner_exam,
-        &owner_subject,
+        &exam,
+        &subject,
         params.year,
         params.topic.as_deref(),
         params.section.as_deref(),
@@ -168,8 +170,8 @@ pub async fn get_theory(
     Query(params): Query<TheoryGetParams>,
 ) -> Result<Json<core::models::RenderedTheoryQuestion>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
-    let (owner_exam, owner_subject) = resolve_owner(&s, &exam, &subject).await?;
-    let question = store::catalog::get_theory_question(&s, &owner_exam, &owner_subject, &id).await?;
+    verify_exam_subject(&s, &exam, &subject).await?;
+    let question = store::catalog::get_theory_question(&s, &exam, &subject, &id).await?;
     let include_rubric = params.include_rubric.unwrap_or(false);
     match question {
         Some(q) => Ok(Json(prepare_theory_question(
@@ -204,8 +206,8 @@ pub async fn get_theory_rubric(
     Path((exam, subject, id)): Path<(String, String, String)>,
 ) -> Result<Json<core::models::RenderedTheoryQuestion>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
-    let (owner_exam, owner_subject) = resolve_owner(&s, &exam, &subject).await?;
-    let question = store::catalog::get_theory_question(&s, &owner_exam, &owner_subject, &id).await?;
+    verify_exam_subject(&s, &exam, &subject).await?;
+    let question = store::catalog::get_theory_question(&s, &exam, &subject, &id).await?;
     match question {
         Some(q) => Ok(Json(prepare_theory_question(
             q,
@@ -242,8 +244,8 @@ pub async fn evaluate_theory(
     Json(req): Json<core::models::TheoryEvaluationRequest>,
 ) -> Result<Json<core::models::TheoryEvaluationResponse>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
-    let (owner_exam, owner_subject) = resolve_owner(&s, &exam, &subject).await?;
-    let question = store::catalog::get_theory_question(&s, &owner_exam, &owner_subject, &id).await?;
+    verify_exam_subject(&s, &exam, &subject).await?;
+    let question = store::catalog::get_theory_question(&s, &exam, &subject, &id).await?;
     let Some(q) = question else {
         return Err(AppError::NotFound);
     };
@@ -420,5 +422,50 @@ mod tests {
         assert_eq!(body["percentage"], 62.5);
         assert_eq!(body["penalties_applied"].as_array().expect("penalties").len(), 1);
         assert_eq!(body["penalties_applied"][0]["penalty_type"], "unit_omission");
+    }
+
+    #[tokio::test]
+    async fn theory_queries_requested_exam_not_syllabus_owner() {
+        let db = replica().await;
+        let conn = connect(&db).await;
+        api_schema(&conn).await;
+        bank_schema(&conn, &["exams", "subjects", "topics"]).await;
+        seed_bank_exam(&conn, "WAEC", "general-mathematics", None).await;
+        seed_bank_topic(&conn, "WAEC", "general-mathematics", "algebra").await;
+        seed_theory_question(&conn, "wq_waec_2023_math_p2_q4").await;
+        // NECO delegates its syllabus to WAEC:
+        seed_bank_exam(
+            &conn,
+            "NECO",
+            "general-mathematics",
+            Some(("WAEC", "general-mathematics")),
+        )
+        .await;
+        issue_key(&conn, "reader.secret", "commercial", "read:catalog", false).await;
+        let app = crate::routes::router(state(db), &crate::config::Config::default());
+
+        // NECO request must query NECO's own theory questions (0 found), NOT WAEC's.
+        let (status, body) = call(
+            app.clone(),
+            "GET",
+            "/api/v1/theory/NECO/general-mathematics",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK);
+        assert_eq!(body["questions"].as_array().expect("array").len(), 0);
+        assert_eq!(body["total_records"], 0);
+
+        // Individual question lookup for NECO must also not find the WAEC question.
+        let (status, _) = call(
+            app,
+            "GET",
+            "/api/v1/theory/NECO/general-mathematics/wq_waec_2023_math_p2_q4",
+            Some("reader.secret"),
+            None,
+        )
+        .await;
+        assert_eq!(status, StatusCode::NOT_FOUND);
     }
 }

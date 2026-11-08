@@ -127,6 +127,68 @@ pub async fn execute_write(
     Ok(n)
 }
 
+/// Execute a batch of write statements under a single transaction and write lock.
+/// If any statement fails, the entire transaction is rolled back so no partial batch is left.
+pub async fn execute_write_batch(
+    s: &DbState,
+    statements: Vec<(&str, Vec<turso::Value>)>,
+) -> Result<u64, AppError> {
+    if statements.is_empty() {
+        return Ok(0);
+    }
+    let _permit = gate(s)?;
+    let wait_started = std::time::Instant::now();
+    let _w = s.write_mutex.lock().await;
+    record_write_wait(s, wait_started.elapsed());
+    ensure_write_admitted(s)?;
+    let db = synced(s).await?;
+    let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
+    let local_started = std::time::Instant::now();
+
+    if let Err(e) = conn.execute("BEGIN TRANSACTION", ()).await {
+        s.conns.put(conn).await;
+        record_local_write(s, local_started);
+        return Err(upstream(e));
+    }
+
+    let mut total_rows = 0u64;
+    let mut total_estimated = 0u64;
+    let mut err = None;
+    for (sql, params) in statements {
+        total_estimated = total_estimated.saturating_add(estimated_bytes(sql, &params));
+        match conn.execute(sql, params).await {
+            Ok(n) => total_rows = total_rows.saturating_add(n),
+            Err(e) => {
+                err = Some(upstream(e));
+                break;
+            }
+        }
+    }
+
+    if let Some(e) = err {
+        let _ = conn.execute("ROLLBACK", ()).await;
+        s.conns.put(conn).await;
+        record_local_write(s, local_started);
+        return Err(e);
+    }
+
+    if let Err(e) = conn.execute("COMMIT", ()).await {
+        let _ = conn.execute("ROLLBACK", ()).await;
+        s.conns.put(conn).await;
+        record_local_write(s, local_started);
+        return Err(upstream(e));
+    }
+
+    s.conns.put(conn).await;
+    record_local_write(s, local_started);
+
+    if total_rows > 0 {
+        s.sync.mark_write_committed(total_rows, total_estimated);
+        queue_push(s);
+    }
+    Ok(total_rows)
+}
+
 /// DDL twin of [`execute_write`]. `changes()` is meaningless for schema
 /// statements, so no visibility check: failure still surfaces as Err.
 pub async fn execute_ddl(s: &DbState, sql: &str) -> Result<(), AppError> {
