@@ -111,6 +111,14 @@ pub async fn list(
     Query(f): Query<List>,
 ) -> Result<Json<core::models::QuestionPageResponse>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
+    if f.q
+        .as_deref()
+        .is_some_and(|query| query.chars().count() > 256)
+    {
+        return Err(AppError::BadRequest(
+            "question search text must be at most 256 characters".to_string(),
+        ));
+    }
     // A filter naming a combination the bank never had must 404, not
     // return a confident empty list.
     if let (Some(exam), Some(subject)) = (&f.exam, &f.subject) {
@@ -227,6 +235,9 @@ pub async fn sample(
     Query(f): Query<SampleParams>,
 ) -> Result<Json<core::models::SampledQuestions>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
+    if !s.limiter.check_expensive(&auth.key_id, auth.is_admin).await {
+        return Err(AppError::RateLimited);
+    }
     if !store::catalog::subject_exists(&s, &f.exam, &f.subject).await? {
         return Err(AppError::NotFound);
     }

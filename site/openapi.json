@@ -603,6 +603,34 @@
                 "null"
               ]
             }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "1-based page. Default: 1.",
+            "required": false,
+            "schema": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "Rows per page, clamped to 1..200. Default: 50.",
+            "required": false,
+            "schema": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32",
+              "minimum": 0
+            }
           }
         ],
         "responses": {
@@ -1142,37 +1170,13 @@
         "tags": [
           "catalog"
         ],
-        "summary": "Batch retrieve reading passages by IDs or list by subject.",
+        "summary": "Batch retrieve reading passages by IDs.",
         "operationId": "listPassages",
         "parameters": [
           {
             "name": "ids",
             "in": "query",
             "description": "Comma-separated passage IDs to fetch in a single round-trip.",
-            "required": false,
-            "schema": {
-              "type": [
-                "string",
-                "null"
-              ]
-            }
-          },
-          {
-            "name": "exam",
-            "in": "query",
-            "description": "Optional exam filter when listing passages for a subject.",
-            "required": false,
-            "schema": {
-              "type": [
-                "string",
-                "null"
-              ]
-            }
-          },
-          {
-            "name": "subject",
-            "in": "query",
-            "description": "Optional subject slug filter when listing passages for a subject.",
             "required": false,
             "schema": {
               "type": [
@@ -1191,6 +1195,110 @@
                   "items": {
                     "$ref": "#/components/schemas/Passage"
                   }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key lacks the required scope.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The caller has exceeded the applicable rate limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The API is temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/passages/catalog/{exam}/{subject}": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "A SQL-paged passage catalog for one exam and subject.",
+        "operationId": "listPassageCatalog",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "exam",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PassagePage"
                 }
               }
             }
@@ -3593,6 +3701,43 @@
           "year": {
             "type": "integer",
             "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
+      "PassagePage": {
+        "type": "object",
+        "required": [
+          "passages",
+          "page",
+          "per_page",
+          "total_pages",
+          "total_records"
+        ],
+        "properties": {
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "passages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Passage"
+            }
+          },
+          "per_page": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "total_pages": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "total_records": {
+            "type": "integer",
             "minimum": 0
           }
         }

@@ -118,6 +118,7 @@ async fn run(cfg: Config) {
         db_max = cfg.db_max_concurrent,
         port = cfg.port,
         has_db = cfg.has_db(),
+        sync_long_poll_secs = cfg.sync_long_poll_secs,
         "starting"
     );
 
@@ -125,6 +126,8 @@ async fn run(cfg: Config) {
     let db: SyncCell = Arc::new(tokio::sync::RwLock::new(None));
     let db_gate = Arc::new(tokio::sync::Semaphore::new(cfg.db_max_concurrent));
     let write_mutex = Arc::new(tokio::sync::Mutex::new(()));
+    let push_notify = Arc::new(tokio::sync::Notify::new());
+    let pull_notify = Arc::new(tokio::sync::Notify::new());
     let contract_ok = Arc::new(std::sync::atomic::AtomicBool::new(true));
     let limiter = Arc::new(utmelab_api::auth::rate_limit::RateLimiter::with_api_limits(
         cfg.rate_limit_per_min,
@@ -138,13 +141,18 @@ async fn run(cfg: Config) {
         conns: Arc::new(ConnPool::new(cfg.db_max_concurrent)),
         metrics,
         cookie_secure: cfg.cookie_secure,
+        read_timeout_secs: cfg.read_timeout_secs,
         write_mutex,
+        push_notify,
+        pull_notify,
         contract_ok,
         limiter,
         bank_version: Arc::new(std::sync::RwLock::new(format!(
             "v{}",
             utmelab_api::store::schema::CONTRACT_VERSION
         ))),
+        discovery_cache: Arc::new(tokio::sync::RwLock::new(None)),
+        paper_metadata_cache: Arc::new(tokio::sync::RwLock::new(None)),
         media_base_url: Arc::from(cfg.media_base_url.as_str()),
     };
     store::sync::spawn_sync_task(&state, cfg.clone());

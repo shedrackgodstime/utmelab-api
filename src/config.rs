@@ -15,24 +15,32 @@ pub const DEFAULT_PORT: u16 = 3100;
 pub const BIND_HOST: [u8; 4] = [127, 0, 0, 1];
 pub const DEFAULT_SERVER_URL: &str = "http://localhost:3100";
 pub const DEFAULT_REPLICA_PATH: &str = "db/sync.db";
-/// Seconds between background replica pulls, and therefore the bound on how
-/// long a change made elsewhere can take to land on this replica. Reads never
-/// queue behind the sync (they run on pooled connections); a write waits for a
-/// pull in progress, because both hold the same mutex, and never for more than
-/// one pull. Not a long-poll window: each tick waits, pulls once, and leaves
-/// the worker free in between.
-///
-/// Measured against the real remote, not inherited: an empty pull is one round
-/// trip, ~0.2s while the HTTP connection is still warm and ~0.7s once it has
-/// sat idle and been re-established, carrying ~160 bytes of sync payload and
-/// ~2.3KB of local log writes. Idle at this window measured 0.05% of one core,
-/// no held request, no busy loop. So a window of N seconds spends about one
-/// pull's time in N of the serialized write path and costs the remote one
-/// request per window: 10s is ~6 requests/minute and holds a write behind a
-/// pull for at most ~0.7s. Windows at or below ~5s pay the connection setup on
-/// every tick for a freshness gain nobody can perceive; raise it to trade
-/// propagation delay for less chatter.
-pub const DEFAULT_SYNC_SECS: u64 = 10;
+/// After this many seconds without real traffic, the long-poll pull loop
+/// sleeps. The first database request wakes it with one locked pull.
+pub const DEFAULT_SYNC_IDLE_SECS: u64 = 300;
+/// Turso caps effective long-polling at five seconds. Three seconds leaves
+/// room below the default five-second read timeout for the first request that
+/// wakes a sleeping replica.
+pub const DEFAULT_SYNC_LONG_POLL_SECS: u64 = 3;
+
+#[derive(Clone, Copy)]
+pub enum SyncMode {
+    LongPoll { idle_after_secs: u64 },
+}
+
+impl SyncMode {
+    pub const fn default() -> Self {
+        Self::LongPoll {
+            idle_after_secs: DEFAULT_SYNC_IDLE_SECS,
+        }
+    }
+
+    pub const fn idle_after_secs(self) -> u64 {
+        match self {
+            Self::LongPoll { idle_after_secs } => idle_after_secs,
+        }
+    }
+}
 pub const DEFAULT_DB_MAX_CONCURRENT: usize = 16;
 /// Secure-by-default: a session cookie is only non-`Secure` when an operator
 /// explicitly sets `COOKIE_SECURE=0` for local http work. A typo or a missing
@@ -64,7 +72,8 @@ pub struct Config {
     pub turso_url: String,
     pub turso_token: String,
     pub replica_path: String,
-    pub sync_secs: u64,
+    pub sync_mode: SyncMode,
+    pub sync_long_poll_secs: u64,
     pub db_max_concurrent: usize,
     pub cookie_secure: bool,
     pub read_timeout_secs: u64,
@@ -85,7 +94,8 @@ impl Default for Config {
             turso_url: String::new(),
             turso_token: String::new(),
             replica_path: DEFAULT_REPLICA_PATH.to_string(),
-            sync_secs: DEFAULT_SYNC_SECS,
+            sync_mode: SyncMode::default(),
+            sync_long_poll_secs: DEFAULT_SYNC_LONG_POLL_SECS,
             db_max_concurrent: DEFAULT_DB_MAX_CONCURRENT,
             cookie_secure: DEFAULT_COOKIE_SECURE,
             read_timeout_secs: DEFAULT_READ_TIMEOUT_SECS,
@@ -159,7 +169,10 @@ impl Config {
             turso_url: text(source, "TURSO_DB_URL", ""),
             turso_token: text(source, "TURSO_DB_TOKEN", ""),
             replica_path: text(source, "REPLICA_PATH", &d.replica_path),
-            sync_secs: number(source, "SYNC_SECS", d.sync_secs)?,
+            sync_mode: SyncMode::LongPoll {
+                idle_after_secs: number(source, "SYNC_IDLE_SECS", d.sync_mode.idle_after_secs())?,
+            },
+            sync_long_poll_secs: number(source, "SYNC_LONG_POLL_SECS", d.sync_long_poll_secs)?,
             db_max_concurrent: number(source, "DB_MAX_CONCURRENT", d.db_max_concurrent)?,
             cookie_secure: boolean(source, "COOKIE_SECURE", d.cookie_secure)?,
             read_timeout_secs: number(source, "READ_TIMEOUT_SECS", d.read_timeout_secs)?,
@@ -225,8 +238,17 @@ impl Config {
         if self.port == 0 {
             return Err(bad("PORT"));
         }
-        if self.sync_secs == 0 {
-            return Err(bad("SYNC_SECS"));
+        if self.sync_mode.idle_after_secs() == 0 {
+            return Err(bad("SYNC_IDLE_SECS"));
+        }
+        if self.sync_long_poll_secs == 0 || self.sync_long_poll_secs > 5 {
+            return Err("invalid config: SYNC_LONG_POLL_SECS must be 1-5".to_string());
+        }
+        if self.sync_long_poll_secs >= self.read_timeout_secs {
+            return Err(
+                "invalid config: SYNC_LONG_POLL_SECS must be less than READ_TIMEOUT_SECS"
+                    .to_string(),
+            );
         }
         if self.db_max_concurrent == 0 {
             return Err(bad("DB_MAX_CONCURRENT"));
@@ -284,7 +306,7 @@ mod tests {
             err.contains("PORT"),
             "message must name the variable: {err}"
         );
-        assert!(parse(&[("SYNC_SECS", "-1")]).is_err());
+        assert!(parse(&[("SYNC_IDLE_SECS", "-1")]).is_err());
         assert!(parse(&[("DB_MAX_CONCURRENT", "many")]).is_err());
     }
 

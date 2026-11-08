@@ -21,6 +21,9 @@ pub const API_WINDOW: Duration = Duration::from_secs(60);
 /// script. The catalog is public by design, so this is abuse protection, not
 /// secrecy: it cannot be the thing that keeps the taxonomy in.
 pub const PUBLIC_MAX_PER_MINUTE: u32 = 120;
+/// Expensive paper and sampling operations get their own ceiling so a caller
+/// cannot consume the normal catalog quota with CPU-heavy requests.
+pub const EXPENSIVE_MAX_PER_MINUTE: u32 = 20;
 const MAX_BUCKETS: usize = 10_000;
 
 pub struct RateLimiter {
@@ -53,6 +56,18 @@ impl RateLimiter {
     pub async fn check(&self, key: &str, max: u32, window: Duration) -> bool {
         let mut map = self.inner.lock().await;
         let now = Instant::now();
+
+        // Never admit an unbounded number of caller buckets. Retaining only
+        // expired values is not enough: a botnet can keep every bucket alive
+        // and grow the map forever. A new caller is temporarily throttled when
+        // all slots are occupied; existing callers keep their normal window.
+        if !map.contains_key(key) && map.len() >= MAX_BUCKETS {
+            map.retain(|_, v| v.back().is_some_and(|t| now.duration_since(*t) <= window));
+            if map.len() >= MAX_BUCKETS {
+                return false;
+            }
+        }
+
         let q = map.entry(key.to_string()).or_default();
         while q.front().is_some_and(|t| now.duration_since(*t) > window) {
             q.pop_front();
@@ -61,9 +76,6 @@ impl RateLimiter {
             return false;
         }
         q.push_back(now);
-        if map.len() > MAX_BUCKETS {
-            map.retain(|_, v| v.back().is_some_and(|t| now.duration_since(*t) <= window));
-        }
         true
     }
 
@@ -94,6 +106,18 @@ impl RateLimiter {
     pub async fn check_public(&self, ip: &str) -> bool {
         self.check(&format!("public:{ip}"), PUBLIC_MAX_PER_MINUTE, API_WINDOW)
             .await
+    }
+
+    pub async fn check_expensive(&self, key_id: &str, is_admin: bool) -> bool {
+        if is_admin {
+            return true;
+        }
+        self.check(
+            &format!("expensive:{key_id}"),
+            EXPENSIVE_MAX_PER_MINUTE,
+            API_WINDOW,
+        )
+        .await
     }
 }
 
@@ -141,5 +165,27 @@ mod tests {
         for _ in 0..200 {
             assert!(r.check_api_key("key-a", false).await);
         }
+    }
+
+    #[tokio::test]
+    async fn active_bucket_count_has_a_hard_cap() {
+        let r = RateLimiter::new();
+        for i in 0..MAX_BUCKETS {
+            assert!(r.check(&format!("caller-{i}"), 1, API_WINDOW).await);
+        }
+        assert!(!r.check("caller-over-cap", 1, API_WINDOW).await);
+    }
+
+    #[tokio::test]
+    async fn expensive_operations_have_a_separate_ceiling() {
+        let r = RateLimiter::new();
+        for _ in 0..EXPENSIVE_MAX_PER_MINUTE {
+            assert!(r.check_expensive("key-a", false).await);
+        }
+        assert!(!r.check_expensive("key-a", false).await);
+        assert!(
+            r.check_api_key("key-a", false).await,
+            "normal reads are separate"
+        );
     }
 }

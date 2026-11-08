@@ -22,8 +22,15 @@ pub struct ServiceStatus {
     pub gate_rejections: u64,
     pub pulls_applied: u64,
     pub pulls_empty: u64,
+    pub sync_failures: u64,
     /// Unix seconds of the last pull attempt (0 = none yet).
     pub last_pull_unix: u64,
+    pub last_pull_duration_ms: u64,
+    pub last_request_unix: u64,
+    pub sync_sleeping: bool,
+    pub write_wait_count: u64,
+    pub write_wait_ms_total: u64,
+    pub write_wait_ms_max: u64,
     /// Request telemetry since boot; the two probe routes are excluded so
     /// health checks cannot drown out real traffic. Latency buckets are
     /// fast < 25ms, ok < 100ms, slow >= 100ms.

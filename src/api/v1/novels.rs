@@ -23,6 +23,10 @@ pub struct List {
     pub featured: Option<bool>,
     /// Scope to a category, e.g. `literature`.
     pub category: Option<String>,
+    /// 1-based page. Default: 1.
+    pub page: Option<u32>,
+    /// Rows per page, clamped to 1..200. Default: 50.
+    pub per_page: Option<u32>,
 }
 
 #[utoipa::path(
@@ -38,14 +42,16 @@ pub async fn list(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,
     Query(f): Query<List>,
-) -> Result<Json<Vec<core::models::Novel>>, AppError> {
+) -> Result<Json<core::models::NovelPage>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
-    let mut novels = store::catalog::list_novels(
+    let (mut novels, total_records) = store::catalog::list_novels_page(
         &s,
         f.exam.as_deref(),
         f.year,
         f.featured,
         f.category.as_deref(),
+        f.page.unwrap_or(1),
+        f.per_page.unwrap_or(50),
     )
     .await?;
     for n in &mut novels {
@@ -53,7 +59,13 @@ pub async fn list(
             *img = core::catalog::resolve_media_url(img, s.media_base_url.as_ref());
         }
     }
-    Ok(Json(novels))
+    let (page, per_page) = core::catalog::page_query(f.page, f.per_page);
+    Ok(Json(core::models::NovelPage::new(
+        novels,
+        page,
+        per_page,
+        total_records,
+    )))
 }
 
 #[utoipa::path(
@@ -126,16 +138,13 @@ pub async fn questions(
     auth.require(SCOPE_READ_CATALOG)?;
     let with_explanation = f.include_explanation.unwrap_or(false);
     let (page, per_page) = core::catalog::page_query(f.page, f.per_page);
-    let all = store::catalog::list_novel_questions(&s, &id, f.chapter).await?;
-    if all.is_empty() && store::catalog::get_novel_doc(&s, &id).await?.is_none() {
+    let (all, total_records) =
+        store::catalog::list_novel_questions_page(&s, &id, f.chapter, page, per_page).await?;
+    if total_records == 0 && !store::catalog::novel_exists(&s, &id).await? {
         return Err(AppError::NotFound);
     }
-    let total_records = all.len();
-    let start = ((page - 1) * per_page) as usize;
     let rendered = all
         .into_iter()
-        .skip(start)
-        .take(per_page as usize)
         .map(|q| {
             core::catalog::render_novel_question(
                 &id,
@@ -219,7 +228,7 @@ mod tests {
         )
         .await;
         assert_eq!(status, StatusCode::OK);
-        let novels = list.as_array().expect("array");
+        let novels = list["novels"].as_array().expect("novels");
         assert_eq!(novels.len(), 1);
         assert_eq!(novels[0]["id"], "lekki");
         assert_eq!(novels[0]["featured"], true);
@@ -239,7 +248,7 @@ mod tests {
         assert_eq!(status, StatusCode::OK);
         assert_eq!(doc["id"], "lekki");
         assert_eq!(doc["chapters"].as_array().expect("chapters").len(), 0);
-        assert_eq!(doc["questions"].as_array().expect("questions").len(), 1);
+        assert_eq!(doc["questions"].as_array().expect("questions").len(), 0);
 
         let (status, page) = call(
             app.clone(),

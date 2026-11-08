@@ -134,6 +134,7 @@ fn is_contention(e: &(dyn std::error::Error + 'static)) -> bool {
 }
 
 async fn synced(s: &DbState) -> Result<SyncDb, AppError> {
+    sync::wake_if_sleeping(s).await?;
     s.db.read()
         .await
         .clone()

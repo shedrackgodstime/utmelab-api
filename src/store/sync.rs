@@ -1,16 +1,11 @@
-//! Replica lifecycle. Builds the synced database in the background so
-//! serving never blocks on it, fills the connection pool while the engine's IO
-//! worker is still free, then re-pulls on its own interval. We deliberately do
-//! not long-poll: a pull in flight occupies that worker, and `connect()`/`push()`
-//! on the serving path would queue behind it.
+//! Replica lifecycle. Builds the synced database in the background, fills the
+//! connection pool while the engine's IO worker is free, then uses a long-poll
+//! pull loop and a separately signalled push loop.
 //!
-//! The interval is the point: the replica is pulled every `SYNC_SECS` whether
-//! or not a request arrives, so a change made anywhere (the pipeline promoting
-//! content, a key revoked elsewhere) lands on this replica within `SYNC_SECS`.
-//! An idle process therefore costs one pull per window and nothing else: no
-//! held request, no busy loop, and only the pull's own ~2.3KB of local log
-//! writes. `SYNC_SECS` is both the bound on propagation delay and the single
-//! knob for freshness against chatter (see its doc in `config`).
+//! Pulls use Turso long-polling, so the remote request waits for a change or a
+//! short server-side timeout instead of generating empty interval requests.
+//! After five idle minutes, even that wait sleeps completely. The first
+//! database request after sleep performs one locked pull before reading.
 //!
 //! Nothing here ever returns. Every failure is retried in place, so the
 //! replica recovers without a process restart.
@@ -29,11 +24,13 @@ const BUILD_RETRY: Duration = Duration::from_secs(5);
 const READY_RETRY: Duration = Duration::from_secs(10);
 const PULL_RETRY: Duration = Duration::from_secs(5);
 const PURGE_EVERY: Duration = Duration::from_secs(3600);
+const SLEEP_RECHECK: Duration = Duration::from_secs(60);
 
 async fn build(cfg: &Config) -> Option<SyncDb> {
     turso::sync::Builder::new_remote(&cfg.replica_path)
         .with_remote_url(cfg.normalized_url())
         .with_auth_token(cfg.turso_token.clone())
+        .with_long_poll_timeout(Duration::from_secs(cfg.sync_long_poll_secs))
         .bootstrap_if_empty(true)
         .build()
         .await
@@ -52,7 +49,7 @@ pub async fn ready_db(cfg: &Config) -> Option<SyncDb> {
     Some(db)
 }
 
-fn now_unix() -> u64 {
+pub(crate) fn unix_now() -> u64 {
     std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)
         .map(|d| d.as_secs())
@@ -79,12 +76,19 @@ pub fn spawn_sync_task(state: &AppState, cfg: Config) {
         tracing::warn!("no TURSO_DB_URL/TOKEN, db routes will return 503");
         return;
     }
+    state
+        .metrics
+        .last_request_unix
+        .store(unix_now(), std::sync::atomic::Ordering::Relaxed);
     let probe = DbState::from_ref(state);
-    let window = Duration::from_secs(cfg.sync_secs);
+    let idle_after = Duration::from_secs(cfg.sync_mode.idle_after_secs());
     tokio::spawn(async move {
         let db = open(&probe, &cfg).await;
         converge(&probe, &db).await;
-        supervise(&probe, window, &db).await;
+        let push_probe = probe.clone();
+        let push_db = db.clone();
+        tokio::spawn(async move { supervise_push(push_probe, push_db).await });
+        supervise(&probe, &db, idle_after).await;
     });
 }
 
@@ -118,6 +122,10 @@ async fn converge(probe: &DbState, db: &SyncDb) {
         match db.pull().await {
             Ok(had) => record_pull(&probe.metrics, had),
             Err(e) => {
+                probe
+                    .metrics
+                    .sync_failures
+                    .fetch_add(1, std::sync::atomic::Ordering::Relaxed);
                 tracing::warn!("first pull failed, will retry: {e}");
                 tokio::time::sleep(READY_RETRY).await;
                 continue;
@@ -151,42 +159,59 @@ async fn converge(probe: &DbState, db: &SyncDb) {
     }
 }
 
-/// Steady state: one pull per `window`, under the write mutex so a pull can
-/// never interleave an unpushed local write. This runs whatever the traffic, and
-/// that is what lets an unattended process converge: a change made in the cloud
-/// lands within one window instead of waiting for the next request. Re-checks
-/// the contract when changes land, and purges expired sessions hourly. A failed
-/// pull retries on the short gap rather than waiting out the whole window.
-async fn supervise(probe: &DbState, window: Duration, db: &SyncDb) {
+/// Steady state long-poll pull loop. Pulls are serialized with local writes so
+/// a remote apply can never interleave an unpushed local write. The long poll
+/// itself waits in the sync engine; it does not create timer-driven empty
+/// requests. After idle sleep, the first request wakes the replica.
+async fn supervise(probe: &DbState, db: &SyncDb, idle_after: Duration) {
     let mut last_purge = tokio::time::Instant::now();
-    let mut wait = window;
     loop {
-        tokio::time::sleep(wait).await;
+        let last_request = probe
+            .metrics
+            .last_request_unix
+            .load(std::sync::atomic::Ordering::Relaxed);
+        if last_request != 0 && unix_now().saturating_sub(last_request) >= idle_after.as_secs() {
+            probe
+                .metrics
+                .sync_sleeping
+                .store(true, std::sync::atomic::Ordering::Relaxed);
+            tracing::info!("replica sync sleeping after idle traffic window");
+            tokio::select! {
+                _ = tokio::time::sleep(SLEEP_RECHECK) => {}
+                _ = probe.pull_notify.notified() => {}
+            }
+            continue;
+        }
         // Stamp the attempt before pulling, so ops still sees the poll running
         // while the remote is unreachable.
         probe
             .metrics
             .last_pull_unix
-            .store(now_unix(), std::sync::atomic::Ordering::Relaxed);
+            .store(unix_now(), std::sync::atomic::Ordering::Relaxed);
+        let started = tokio::time::Instant::now();
         let pulled = {
             let _w = probe.write_mutex.lock().await;
             db.pull().await
         };
-        wait = match pulled {
+        probe.metrics.last_pull_duration_ms.store(
+            started.elapsed().as_millis().min(u64::MAX as u128) as u64,
+            std::sync::atomic::Ordering::Relaxed,
+        );
+        match pulled {
             Ok(true) => {
                 record_pull(&probe.metrics, true);
                 recheck_contract(probe).await;
-                window
             }
             Ok(false) => {
                 record_pull(&probe.metrics, false);
-                window
             }
             Err(e) => {
-                tracing::warn!("pull failed: {e}");
-                // Retry on the short gap, not the whole window, so a blip does
-                // not cost a full interval of freshness.
-                PULL_RETRY
+                probe
+                    .metrics
+                    .sync_failures
+                    .fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+                tracing::warn!("sync push or pull failed: {e}");
+                tokio::time::sleep(PULL_RETRY).await;
             }
         };
         if last_purge.elapsed() >= PURGE_EVERY {
@@ -198,6 +223,84 @@ async fn supervise(probe: &DbState, window: Duration, db: &SyncDb) {
             }
         }
     }
+}
+
+/// Push retries are signalled by a failed request write. A slow or long-poll
+/// pull therefore cannot block the write handler forever, and the retry path
+/// does not issue an empty push on every pull timeout. The long fallback keeps
+/// a pending local commit recoverable after a process restart.
+async fn supervise_push(probe: DbState, db: SyncDb) {
+    loop {
+        loop {
+            let result = {
+                let _w = probe.write_mutex.lock().await;
+                db.push().await
+            };
+            match result {
+                Ok(()) => break,
+                Err(e) => {
+                    probe
+                        .metrics
+                        .sync_failures
+                        .fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+                    tracing::warn!("push retry failed: {e}");
+                    tokio::time::sleep(PULL_RETRY).await;
+                }
+            }
+        }
+        tokio::select! {
+            _ = probe.push_notify.notified() => {}
+            _ = tokio::time::sleep(Duration::from_secs(300)) => {}
+        }
+    }
+}
+
+/// Wake a sleeping replica exactly once. The write mutex makes concurrent
+/// first requests share one pull instead of creating a pull storm.
+pub(crate) async fn wake_if_sleeping(s: &DbState) -> Result<(), crate::error::AppError> {
+    use std::sync::atomic::Ordering::Relaxed;
+    if !s.metrics.sync_sleeping.load(Relaxed) {
+        return Ok(());
+    }
+    let _w = s.write_mutex.lock().await;
+    if !s.metrics.sync_sleeping.load(Relaxed) {
+        return Ok(());
+    }
+    let Some(db) = s.db.read().await.clone() else {
+        return Err(crate::error::AppError::DbUnavailable("sync"));
+    };
+    let started = tokio::time::Instant::now();
+    let had = match db.pull().await.map_err(super::upstream) {
+        Ok(had) => had,
+        Err(e) => {
+            s.metrics
+                .sync_failures
+                .fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+            return Err(e);
+        }
+    };
+    s.metrics.last_pull_duration_ms.store(
+        started.elapsed().as_millis().min(u64::MAX as u128) as u64,
+        Relaxed,
+    );
+    s.metrics.last_pull_unix.store(unix_now(), Relaxed);
+    record_pull(&s.metrics, had);
+    s.metrics.sync_sleeping.store(false, Relaxed);
+    if had {
+        // A wake pull can be the first observation of a remote revision after
+        // the replica slept. Refresh the version now so version-keyed caches
+        // cannot serve the pre-sleep discovery tree.
+        if let Ok(stats) = db.stats().await {
+            if let Some(revision) = stats.revision.filter(|value| !value.trim().is_empty()) {
+                if let Ok(mut version) = s.bank_version.write() {
+                    *version = revision;
+                }
+            }
+        }
+    }
+    s.pull_notify.notify_one();
+    drop(_w);
+    Ok(())
 }
 
 async fn update_bank_version(probe: &DbState) {
@@ -279,16 +382,16 @@ mod tests {
         assert!(super::stats(&without).await.expect("stats").is_none());
     }
 
-    /// The property the interval exists for: the replica converges with no
-    /// request at all, so a change made anywhere in the cloud lands within the
-    /// window even on a server nobody is using. A demand-driven pull fails this.
+    /// The property the pull loop exists for: the replica converges with no
+    /// request at all, so a change made anywhere in the cloud lands without
+    /// timer-driven empty requests.
     #[tokio::test]
     async fn the_replica_is_pulled_with_no_request() {
         let s = db_state(replica().await);
         let db = s.db.read().await.clone().expect("replica");
         let task = tokio::spawn({
             let probe = s.clone();
-            async move { super::supervise(&probe, std::time::Duration::from_millis(20), &db).await }
+            async move { super::supervise(&probe, &db, std::time::Duration::from_secs(300)).await }
         });
         tokio::time::sleep(std::time::Duration::from_millis(150)).await;
         task.abort();

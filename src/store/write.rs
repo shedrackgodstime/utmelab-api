@@ -7,19 +7,42 @@
 use super::{gate, synced, upstream};
 use crate::{error::AppError, state::DbState};
 
+fn record_write_wait(s: &DbState, elapsed: std::time::Duration) {
+    use std::sync::atomic::Ordering::Relaxed;
+    let ms = elapsed.as_millis().min(u64::MAX as u128) as u64;
+    if ms == 0 {
+        return;
+    }
+    s.metrics.write_wait_count.fetch_add(1, Relaxed);
+    s.metrics.write_wait_ms_total.fetch_add(ms, Relaxed);
+    let max = &s.metrics.write_wait_ms_max;
+    let mut current = max.load(Relaxed);
+    while ms > current {
+        match max.compare_exchange_weak(current, ms, Relaxed, Relaxed) {
+            Ok(_) => break,
+            Err(actual) => current = actual,
+        }
+    }
+}
+
 pub async fn execute_write(
     s: &DbState,
     sql: &str,
     params: Vec<turso::Value>,
 ) -> Result<u64, AppError> {
     let _permit = gate(s)?;
+    let wait_started = std::time::Instant::now();
     let _w = s.write_mutex.lock().await;
+    record_write_wait(s, wait_started.elapsed());
     let db = synced(s).await?;
     let conn = s.conns.take(&db).await?;
     let result = execute_and_verify(&conn, sql, params).await;
     s.conns.put(conn).await;
     let n = result?;
-    db.push().await.map_err(upstream)?;
+    if let Err(e) = db.push().await {
+        s.push_notify.notify_one();
+        return Err(upstream(e));
+    }
     Ok(n)
 }
 
@@ -27,13 +50,18 @@ pub async fn execute_write(
 /// statements, so no visibility check: failure still surfaces as Err.
 pub async fn execute_ddl(s: &DbState, sql: &str) -> Result<(), AppError> {
     let _permit = gate(s)?;
+    let wait_started = std::time::Instant::now();
     let _w = s.write_mutex.lock().await;
+    record_write_wait(s, wait_started.elapsed());
     let db = synced(s).await?;
     let conn = s.conns.take(&db).await?;
     let result = conn.execute(sql, ()).await.map_err(upstream);
     s.conns.put(conn).await;
     result?;
-    db.push().await.map_err(upstream)?;
+    if let Err(e) = db.push().await {
+        s.push_notify.notify_one();
+        return Err(upstream(e));
+    }
     Ok(())
 }
 

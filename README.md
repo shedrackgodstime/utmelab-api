@@ -21,7 +21,7 @@ from outside the server.
 
 ## Project areas
 
-- `crates/`: Rust API and domain code.
+- `src/`: Rust API, domain, authentication, storage, and server code.
 - `site/`: Documentation and public site.
 - `utmelab-bank/`: Content preparation tool and its tests.
 - `.github/workflows/`: CI, bank operations, deployment, and monitoring.

@@ -46,10 +46,12 @@ pub async fn load_passage(
 pub struct BatchQuery {
     /// Comma-separated passage IDs to fetch in a single round-trip.
     pub ids: Option<String>,
-    /// Optional exam filter when listing passages for a subject.
-    pub exam: Option<String>,
-    /// Optional subject slug filter when listing passages for a subject.
-    pub subject: Option<String>,
+}
+
+#[derive(Deserialize, utoipa::IntoParams)]
+pub struct CatalogQuery {
+    pub page: Option<u32>,
+    pub per_page: Option<u32>,
 }
 
 #[utoipa::path(
@@ -57,7 +59,7 @@ pub struct BatchQuery {
     path = "/api/v1/passages",
     tag = "catalog",
     operation_id = "listPassages",
-    summary = "Batch retrieve reading passages by IDs or list by subject.",
+    summary = "Batch retrieve reading passages by IDs.",
     params(BatchQuery),
     responses(
         (status = 200, body = [core::models::Passage]),
@@ -79,6 +81,11 @@ pub async fn list(
         .filter(|s| !s.is_empty())
         .collect();
     if !ids.is_empty() {
+        if ids.len() > 100 {
+            return Err(AppError::BadRequest(
+                "at most 100 passage ids may be requested at once".to_string(),
+            ));
+        }
         let mut map = load_passages_map(&s, &ids).await?;
         let mut out = Vec::new();
         for id in ids {
@@ -88,14 +95,37 @@ pub async fn list(
         }
         return Ok(Json(out));
     }
-    if let (Some(exam), Some(subject)) = (&f.exam, &f.subject) {
-        let mut passages = store::catalog::list_passages(&s, exam, subject).await?;
-        for p in &mut passages {
-            core::catalog::resolve_rich_text(&mut p.text, s.media_base_url.as_ref());
-        }
-        return Ok(Json(passages));
-    }
     Ok(Json(Vec::new()))
+}
+
+#[utoipa::path(
+    get,
+    path = "/api/v1/passages/catalog/{exam}/{subject}",
+    tag = "catalog",
+    operation_id = "listPassageCatalog",
+    summary = "A SQL-paged passage catalog for one exam and subject.",
+    params(CatalogQuery),
+    responses((status = 200, body = core::models::PassagePage), core::models::ApiErrorResponses),
+)]
+pub async fn catalog(
+    State(s): State<DbState>,
+    AuthedKey(auth): AuthedKey,
+    Path((exam, subject)): Path<(String, String)>,
+    Query(f): Query<CatalogQuery>,
+) -> Result<Json<core::models::PassagePage>, AppError> {
+    auth.require(SCOPE_READ_CATALOG)?;
+    let (page, per_page) = core::catalog::page_query(f.page, f.per_page);
+    let (mut passages, total_records) =
+        store::catalog::list_passages_page(&s, &exam, &subject, page, per_page).await?;
+    for passage in &mut passages {
+        core::catalog::resolve_rich_text(&mut passage.text, s.media_base_url.as_ref());
+    }
+    Ok(Json(core::models::PassagePage::new(
+        passages,
+        page,
+        per_page,
+        total_records,
+    )))
 }
 
 #[utoipa::path(
@@ -126,6 +156,7 @@ pub async fn one(
 pub fn router(state: AppState) -> Router<AppState> {
     Router::new()
         .route("/v1/passages", get(list))
+        .route("/v1/passages/catalog/{exam}/{subject}", get(catalog))
         .route("/v1/passages/{id}", get(one))
         .with_state(state)
 }
@@ -229,14 +260,13 @@ mod tests {
         let (status, v_subj) = call(
             app,
             "GET",
-            "/api/v1/passages?exam=JAMB&subject=english",
+            "/api/v1/passages/catalog/JAMB/english",
             Some("reader.secret"),
             None,
         )
         .await;
         assert_eq!(status, StatusCode::OK);
-        let subj_arr = v_subj.as_array().expect("array");
-        assert_eq!(subj_arr.len(), 1);
-        assert_eq!(subj_arr[0]["id"], "p1");
+        assert_eq!(v_subj["total_records"], 1);
+        assert_eq!(v_subj["passages"][0]["id"], "p1");
     }
 }

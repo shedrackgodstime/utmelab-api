@@ -114,6 +114,11 @@ pub fn templates() -> Vec<ResourceTemplate> {
         ),
         tmpl("passages/{id}", "Passage", "One reading passage."),
         tmpl(
+            "passages/catalog/{exam}/{subject}",
+            "Passage catalog",
+            "A SQL-paged passage catalog. `page`, `per_page`.",
+        ),
+        tmpl(
             "novels/{id}",
             "Novel",
             "One novel's detail: chapters, characters, themes.",
@@ -218,8 +223,15 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
             AuthedKey(auth.clone()),
             Query(passages::BatchQuery {
                 ids: opt(&query, "ids"),
-                exam: opt(&query, "exam"),
-                subject: opt(&query, "subject"),
+            }),
+        )),
+        ["passages", "catalog", exam, subject] => read!(passages::catalog(
+            State(db.clone()),
+            AuthedKey(auth.clone()),
+            Path((exam.to_string(), subject.to_string())),
+            Query(passages::CatalogQuery {
+                page: num(&query, "page")?,
+                per_page: num(&query, "per_page")?,
             }),
         )),
         ["passages", id] => read!(passages::one(
@@ -235,6 +247,8 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
                 year: num(&query, "year")?,
                 featured: flag(&query, "featured")?,
                 category: opt(&query, "category"),
+                page: num(&query, "page")?,
+                per_page: num(&query, "per_page")?,
             }),
         )),
         ["novels", id] => read!(novels::detail(

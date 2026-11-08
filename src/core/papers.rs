@@ -508,9 +508,21 @@ pub fn governs(blueprints: &[Blueprint], cohorts: usize) -> bool {
 /// mixed, never falling back.
 pub fn assemble(bank: &SubjectBank, seed: u64) -> Result<AssembledPaper, Unready> {
     if governs(&bank.blueprints, cohorts(bank).len()) {
-        assemble_blueprint(bank, seed)
+        assemble_mode(bank, seed, PaperMode::Blueprint)
     } else {
-        assemble_count(bank, seed)
+        assemble_mode(bank, seed, PaperMode::Count)
+    }
+}
+
+/// Assemble using a gate decided from streamed database statistics.
+pub fn assemble_mode(
+    bank: &SubjectBank,
+    seed: u64,
+    mode: PaperMode,
+) -> Result<AssembledPaper, Unready> {
+    match mode {
+        PaperMode::Blueprint => assemble_blueprint(bank, seed),
+        PaperMode::Count => assemble_count(bank, seed),
     }
 }
 

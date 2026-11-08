@@ -13,7 +13,7 @@
 //! `.../score` re-assembles with the same seed and marks only submitted
 //! ids: stateless, no paper table, no stored attempts.
 
-use std::collections::HashMap;
+use std::{collections::HashMap, sync::Arc};
 
 use axum::{
     extract::{Path, Query, State},
@@ -26,7 +26,7 @@ use crate::{
     auth::{api_key::AuthedKey, SCOPE_READ_CATALOG},
     core,
     error::AppError,
-    state::{AppState, DbState},
+    state::{AppState, DbState, PaperMetadata},
     store,
 };
 
@@ -175,6 +175,9 @@ pub async fn assemble_paper(
     Query(f): Query<AssembleQuery>,
 ) -> Result<Json<AssembledPaperOut>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
+    if !s.limiter.check_expensive(&auth.key_id, auth.is_admin).await {
+        return Err(AppError::RateLimited);
+    }
     let seed = f.seed.unwrap_or(1);
     let paper = build(&s, &exam, &subject, seed, f.country.as_deref()).await?;
     let mut out = into_out(
@@ -229,6 +232,9 @@ pub async fn score_paper(
     Json(body): Json<ScoreRequest>,
 ) -> Result<Json<ScoredPaper>, AppError> {
     auth.require(SCOPE_READ_CATALOG)?;
+    if !s.limiter.check_expensive(&auth.key_id, auth.is_admin).await {
+        return Err(AppError::RateLimited);
+    }
     let paper = build(&s, &exam, &subject, body.seed, body.country.as_deref()).await?;
     let total = paper.total();
     let (score, marked) = core::papers::mark(&paper, &body.answers);
@@ -298,9 +304,48 @@ async fn build(
     seed: u64,
     country: Option<&str>,
 ) -> Result<core::papers::AssembledPaper, AppError> {
-    let Some(record) = store::catalog::get_exam(s, exam).await? else {
-        return Err(AppError::NotFound);
+    let version = s
+        .bank_version
+        .read()
+        .map(|value| value.clone())
+        .unwrap_or_else(|_| format!("v{}", crate::store::schema::CONTRACT_VERSION));
+    let cached = s.paper_metadata_cache.read().await.as_ref().and_then(
+        |(cached_version, cached_exam, cached_subject, metadata)| {
+            (cached_version == &version && cached_exam == exam && cached_subject == subject)
+                .then(|| Arc::clone(metadata))
+        },
+    );
+    let metadata = if let Some(metadata) = cached {
+        metadata
+    } else {
+        let Some(exam_record) = store::catalog::get_exam(s, exam).await? else {
+            return Err(AppError::NotFound);
+        };
+        let Some(subject_record) = store::catalog::get_subject(s, exam, subject).await? else {
+            return Err(AppError::NotFound);
+        };
+        let metadata = Arc::new(PaperMetadata {
+            exam: exam_record,
+            subject: subject_record,
+            blueprints: store::catalog::list_blueprints(s, exam, subject).await?,
+            syllabus: store::catalog::list_syllabus(s, exam, subject).await?,
+        });
+        let current_version = s
+            .bank_version
+            .read()
+            .map(|value| value.clone())
+            .unwrap_or_else(|_| format!("v{}", crate::store::schema::CONTRACT_VERSION));
+        if current_version == version {
+            *s.paper_metadata_cache.write().await = Some((
+                version.clone(),
+                exam.to_string(),
+                subject.to_string(),
+                Arc::clone(&metadata),
+            ));
+        }
+        metadata
     };
+    let record = metadata.exam.clone();
     let country =
         core::papers::effective_country(&record, country).map_err(AppError::BadRequest)?;
     // A multi-country exam has no single honest pool: a paper built from all
@@ -312,24 +357,77 @@ async fn build(
             record.countries.join(", ")
         )));
     }
-    let Some(record) = store::catalog::get_subject(s, exam, subject).await? else {
-        return Err(AppError::NotFound);
-    };
     if let Some(c) = country.as_deref() {
-        if !core::catalog::subject_offered(&record, c) {
+        if !core::catalog::subject_offered(&metadata.subject, c) {
             return Err(AppError::NotFound);
         }
     }
-    let blueprints = store::catalog::list_blueprints(s, exam, subject).await?;
-    let syllabus = store::catalog::list_syllabus(s, exam, subject).await?;
-    let rows = store::catalog::subject_rows(s, exam, subject, country.as_deref()).await?;
+    let cohort_count =
+        store::catalog::subject_cohort_count(s, exam, subject, country.as_deref()).await?;
+    let mode = if core::papers::governs(&metadata.blueprints, cohort_count) {
+        core::papers::PaperMode::Blueprint
+    } else {
+        core::papers::PaperMode::Count
+    };
+    let topic_needs: HashMap<String, u32> = metadata
+        .blueprints
+        .iter()
+        .filter_map(|blueprint| {
+            let topic = blueprint.topic.as_ref()?;
+            if blueprint.level != "topic" {
+                return None;
+            }
+            let need = blueprint.expected.unwrap_or(0.0).ceil() as u32;
+            Some((topic.clone(), need))
+        })
+        .collect();
+    let topic_by_subtopic: HashMap<String, String> = metadata
+        .syllabus
+        .iter()
+        .flat_map(|topic| {
+            topic
+                .subtopics
+                .iter()
+                .map(|subtopic| (subtopic.slug.clone(), topic.slug.clone()))
+        })
+        .collect();
+    let rows = store::catalog::select_subject_candidates(
+        s,
+        exam,
+        subject,
+        country.as_deref(),
+        store::catalog::PaperSelection {
+            mode,
+            topic_needs,
+            topic_by_subtopic,
+            paper_size: metadata.subject.objective_paper_questions,
+            seed,
+        },
+    )
+    .await?;
     let bank = core::papers::SubjectBank {
-        subject: record,
-        blueprints,
-        syllabus,
+        subject: metadata.subject.clone(),
+        blueprints: metadata.blueprints.clone(),
+        syllabus: metadata.syllabus.clone(),
         rows,
     };
-    core::papers::assemble(&bank, seed).map_err(|u| AppError::Conflict(u.detail()))
+    let mut paper = core::papers::assemble_mode(&bank, seed, mode)
+        .map_err(|u| AppError::Conflict(u.detail()))?;
+    let ids: Vec<String> = paper
+        .sections
+        .iter()
+        .flat_map(|section| section.questions.iter().map(|question| question.id.clone()))
+        .collect();
+    let selected = store::catalog::questions_by_ids(s, &ids).await?;
+    for section in &mut paper.sections {
+        for question in &mut section.questions {
+            *question = selected
+                .get(&question.id)
+                .cloned()
+                .ok_or_else(|| AppError::Upstream("selected question disappeared".to_string()))?;
+        }
+    }
+    Ok(paper)
 }
 
 fn into_out(

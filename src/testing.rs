@@ -192,13 +192,18 @@ pub(crate) fn db_state_without_db(contract_ok: bool, permits: usize) -> DbState 
         conns: Arc::new(ConnPool::new(permits)),
         metrics: Arc::new(Metrics::default()),
         cookie_secure: false,
+        read_timeout_secs: crate::config::DEFAULT_READ_TIMEOUT_SECS,
         write_mutex: Arc::new(tokio::sync::Mutex::new(())),
+        push_notify: Arc::new(tokio::sync::Notify::new()),
+        pull_notify: Arc::new(tokio::sync::Notify::new()),
         contract_ok: Arc::new(std::sync::atomic::AtomicBool::new(contract_ok)),
         limiter: Arc::new(RateLimiter::new()),
         bank_version: Arc::new(std::sync::RwLock::new(format!(
             "v{}",
             crate::store::schema::CONTRACT_VERSION
         ))),
+        discovery_cache: Arc::new(tokio::sync::RwLock::new(None)),
+        paper_metadata_cache: Arc::new(tokio::sync::RwLock::new(None)),
         media_base_url: Arc::from(crate::config::DEFAULT_MEDIA_BASE_URL),
     }
 }
@@ -222,10 +227,15 @@ fn app_from(d: DbState) -> AppState {
         conns: d.conns,
         metrics: d.metrics,
         cookie_secure: false,
+        read_timeout_secs: d.read_timeout_secs,
         write_mutex: d.write_mutex,
+        push_notify: d.push_notify,
+        pull_notify: d.pull_notify,
         contract_ok: d.contract_ok,
         limiter: d.limiter,
         bank_version: d.bank_version,
+        discovery_cache: d.discovery_cache,
+        paper_metadata_cache: d.paper_metadata_cache,
         media_base_url: d.media_base_url,
     }
 }

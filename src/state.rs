@@ -22,9 +22,16 @@ pub struct Metrics {
     pub gate_rejections: AtomicU64,
     pub pulls_applied: AtomicU64,
     pub pulls_empty: AtomicU64,
+    pub sync_failures: AtomicU64,
     /// Unix seconds of the last pull attempt (0 = none yet). Lets an
     /// operator see replica freshness without querying the DB.
     pub last_pull_unix: AtomicU64,
+    pub last_pull_duration_ms: AtomicU64,
+    pub last_request_unix: AtomicU64,
+    pub sync_sleeping: std::sync::atomic::AtomicBool,
+    pub write_wait_count: AtomicU64,
+    pub write_wait_ms_total: AtomicU64,
+    pub write_wait_ms_max: AtomicU64,
     /// Request telemetry, probes excluded. `in_flight` is a gauge, the rest
     /// are since-boot totals.
     pub requests_ok: AtomicU64,
@@ -44,7 +51,14 @@ impl Metrics {
             gate_rejections: self.gate_rejections.load(Ordering::Relaxed),
             pulls_applied: self.pulls_applied.load(Ordering::Relaxed),
             pulls_empty: self.pulls_empty.load(Ordering::Relaxed),
+            sync_failures: self.sync_failures.load(Ordering::Relaxed),
             last_pull_unix: self.last_pull_unix.load(Ordering::Relaxed),
+            last_pull_duration_ms: self.last_pull_duration_ms.load(Ordering::Relaxed),
+            last_request_unix: self.last_request_unix.load(Ordering::Relaxed),
+            sync_sleeping: self.sync_sleeping.load(Ordering::Relaxed),
+            write_wait_count: self.write_wait_count.load(Ordering::Relaxed),
+            write_wait_ms_total: self.write_wait_ms_total.load(Ordering::Relaxed),
+            write_wait_ms_max: self.write_wait_ms_max.load(Ordering::Relaxed),
             requests_ok: self.requests_ok.load(Ordering::Relaxed),
             requests_client_error: self.requests_client_error.load(Ordering::Relaxed),
             requests_server_error: self.requests_server_error.load(Ordering::Relaxed),
@@ -60,7 +74,14 @@ pub struct MetricsSnapshot {
     pub gate_rejections: u64,
     pub pulls_applied: u64,
     pub pulls_empty: u64,
+    pub sync_failures: u64,
     pub last_pull_unix: u64,
+    pub last_pull_duration_ms: u64,
+    pub last_request_unix: u64,
+    pub sync_sleeping: bool,
+    pub write_wait_count: u64,
+    pub write_wait_ms_total: u64,
+    pub write_wait_ms_max: u64,
     pub requests_ok: u64,
     pub requests_client_error: u64,
     pub requests_server_error: u64,
@@ -74,6 +95,22 @@ pub type SharedMetrics = Arc<Metrics>;
 
 pub type SharedLimiter = Arc<RateLimiter>;
 pub type BankVersion = Arc<std::sync::RwLock<String>>;
+/// Bounded metadata cache for the keyless discovery surface. It stores only
+/// the small exam/subject/count tree and is keyed by the replica bank version.
+pub type PublicDiscoveryCache =
+    Arc<RwLock<Option<(String, Arc<Vec<crate::core::models::PublicExam>>)>>>;
+
+/// One-entry cache for the small metadata bundle needed before selecting a
+/// paper. Question rows and verification results never enter this cache.
+#[derive(Clone)]
+pub struct PaperMetadata {
+    pub exam: crate::core::models::Exam,
+    pub subject: crate::core::models::Subject,
+    pub blueprints: Vec<crate::core::models::Blueprint>,
+    pub syllabus: Vec<crate::core::papers::SyllabusTopic>,
+}
+
+pub type PaperMetadataCache = Arc<RwLock<Option<(String, String, String, Arc<PaperMetadata>)>>>;
 
 #[derive(Clone)]
 pub struct AppState {
@@ -83,10 +120,15 @@ pub struct AppState {
     pub conns: Arc<ConnPool>,
     pub metrics: SharedMetrics,
     pub cookie_secure: bool,
+    pub read_timeout_secs: u64,
     pub write_mutex: WriteMutex,
+    pub push_notify: Arc<tokio::sync::Notify>,
+    pub pull_notify: Arc<tokio::sync::Notify>,
     pub contract_ok: ContractFlag,
     pub limiter: SharedLimiter,
     pub bank_version: BankVersion,
+    pub discovery_cache: PublicDiscoveryCache,
+    pub paper_metadata_cache: PaperMetadataCache,
     pub media_base_url: Arc<str>,
 }
 
@@ -115,10 +157,15 @@ pub struct DbState {
     pub conns: Arc<ConnPool>,
     pub metrics: SharedMetrics,
     pub cookie_secure: bool,
+    pub read_timeout_secs: u64,
     pub write_mutex: WriteMutex,
+    pub push_notify: Arc<tokio::sync::Notify>,
+    pub pull_notify: Arc<tokio::sync::Notify>,
     pub contract_ok: ContractFlag,
     pub limiter: SharedLimiter,
     pub bank_version: BankVersion,
+    pub discovery_cache: PublicDiscoveryCache,
+    pub paper_metadata_cache: PaperMetadataCache,
     pub media_base_url: Arc<str>,
 }
 
@@ -133,13 +180,18 @@ impl DbState {
             conns: Arc::new(ConnPool::new(crate::config::DEFAULT_DB_MAX_CONCURRENT)),
             metrics: Arc::new(Metrics::default()),
             cookie_secure: false,
+            read_timeout_secs: crate::config::DEFAULT_READ_TIMEOUT_SECS,
             write_mutex: Arc::new(tokio::sync::Mutex::new(())),
+            push_notify: Arc::new(tokio::sync::Notify::new()),
+            pull_notify: Arc::new(tokio::sync::Notify::new()),
             contract_ok: Arc::new(std::sync::atomic::AtomicBool::new(true)),
             limiter: Arc::new(crate::auth::rate_limit::RateLimiter::new()),
             bank_version: Arc::new(std::sync::RwLock::new(format!(
                 "v{}",
                 crate::store::schema::CONTRACT_VERSION
             ))),
+            discovery_cache: Arc::new(RwLock::new(None)),
+            paper_metadata_cache: Arc::new(RwLock::new(None)),
             media_base_url: Arc::from(crate::config::DEFAULT_MEDIA_BASE_URL),
         }
     }
@@ -153,10 +205,15 @@ impl axum::extract::FromRef<AppState> for DbState {
             conns: Arc::clone(&state.conns),
             metrics: Arc::clone(&state.metrics),
             cookie_secure: state.cookie_secure,
+            read_timeout_secs: state.read_timeout_secs,
             write_mutex: Arc::clone(&state.write_mutex),
+            push_notify: Arc::clone(&state.push_notify),
+            pull_notify: Arc::clone(&state.pull_notify),
             contract_ok: Arc::clone(&state.contract_ok),
             limiter: Arc::clone(&state.limiter),
             bank_version: Arc::clone(&state.bank_version),
+            discovery_cache: Arc::clone(&state.discovery_cache),
+            paper_metadata_cache: Arc::clone(&state.paper_metadata_cache),
             media_base_url: Arc::clone(&state.media_base_url),
         }
     }

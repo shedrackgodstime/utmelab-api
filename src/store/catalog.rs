@@ -4,6 +4,8 @@
 
 use super::{upstream, with_conn};
 use crate::{core, error::AppError, state::DbState};
+use rand::RngExt;
+use rand::SeedableRng;
 
 /// Names a key may see. The SQL no longer carries a deny list: a name that is
 /// not in the `core` allowlist is dropped here, so an engine table such as
@@ -225,6 +227,21 @@ const LATEST_VERIFIED_CTE: &str = "WITH latest_ver AS (
                     AND EXISTS (SELECT 1 FROM json_each(v.scope) WHERE value='explanation')
                 )";
 
+/// The paper selector already knows one exam and subject. Restrict the
+/// verification window before ranking it so unrelated subjects do not enter
+/// every paper request's temporary result.
+const LATEST_VERIFIED_SUBJECT_CTE: &str = "WITH latest_ver AS (
+                  SELECT v.question_id AS qid, v.verdict, v.content_hash,
+                         ROW_NUMBER() OVER (PARTITION BY v.question_id ORDER BY v.created_at DESC, v.id DESC) AS rn
+                  FROM verifications v
+                  JOIN questions verified_q ON verified_q.id = v.question_id
+                  WHERE verified_q.exam=?1
+                    AND verified_q.subject=?2
+                    AND v.kind='human'
+                    AND EXISTS (SELECT 1 FROM json_each(v.scope) WHERE value='answer')
+                    AND EXISTS (SELECT 1 FROM json_each(v.scope) WHERE value='explanation')
+                )";
+
 /// D62's rule, spelled once. `table` is a compile-time literal from this
 /// module (never user input), so interpolating it is safe. The outer row is
 /// matched by `table.id`/`table.content_hash`, which both `questions` and
@@ -256,8 +273,13 @@ fn verified_predicate(table: &str) -> String {
 /// moment the bank states topic scope, every reader honours it without a
 /// rewrite.
 fn scope_predicate(param: u8) -> String {
+    scope_predicate_for("questions", param)
+}
+
+fn scope_predicate_for(table: &str, param: u8) -> String {
     format!(
-        "(?{p} IS NULL OR NOT EXISTS (SELECT 1 FROM subtopics st JOIN topics t ON t.slug = st.topic WHERE st.slug = questions.subtopic_id AND json_array_length(t.countries) > 0 AND NOT EXISTS (SELECT 1 FROM json_each(t.countries) je WHERE je.value = ?{p})))",
+        "(?{p} IS NULL OR NOT EXISTS (SELECT 1 FROM subtopics st JOIN topics t ON t.slug = st.topic WHERE st.slug = {table}.subtopic_id AND json_array_length(t.countries) > 0 AND NOT EXISTS (SELECT 1 FROM json_each(t.countries) je WHERE je.value = ?{p})))",
+        table = table,
         p = param
     )
 }
@@ -396,8 +418,9 @@ pub async fn list_questions(
 }
 
 /// Draw a seeded sample of questions matching a filter.
-/// Only matching IDs are queried initially to avoid loading the whole pool,
-/// then shuffled with the seed before fetching the requested count.
+/// Reservoir sampling keeps memory proportional to `count`, rather than to
+/// the number of matching rows. The query still counts the whole match set,
+/// but never stores the whole pool of IDs in the service process.
 pub async fn sample_questions(
     s: &DbState,
     filter: &QuestionFilter,
@@ -411,21 +434,27 @@ pub async fn sample_questions(
         let params = params.clone();
         async move {
             let mut rows = conn.query(&ids_sql, params).await.map_err(upstream)?;
-            let mut ids = Vec::new();
+            use rand::RngExt;
+            use rand::SeedableRng;
+
+            let mut rng = rand::rngs::StdRng::seed_from_u64(seed);
+            let mut ids = Vec::with_capacity(count);
+            let mut total = 0usize;
             while let Some(row) = rows.next().await.map_err(upstream)? {
                 let id: String = row.get(0).map_err(upstream)?;
-                ids.push(id);
+                total += 1;
+                if ids.len() < count {
+                    ids.push(id);
+                } else if count > 0 {
+                    let slot = rng.random_range(0..total);
+                    if slot < count {
+                        ids[slot] = id;
+                    }
+                }
             }
-            let total = ids.len();
             if ids.is_empty() || count == 0 {
                 return Ok((Vec::new(), total));
             }
-
-            use rand::seq::SliceRandom;
-            use rand::SeedableRng;
-            let mut rng = rand::rngs::StdRng::seed_from_u64(seed);
-            ids.shuffle(&mut rng);
-            ids.truncate(count);
 
             let placeholders = vec!["?"; ids.len()].join(",");
             let sql = format!(
@@ -523,7 +552,8 @@ fn map_novel(row: &turso::Row) -> Result<core::models::Novel, AppError> {
 /// order consumers already page through. Filters apply in Rust over the
 /// full set: the table is a handful of rows, and pushing the JSON
 /// `year_prescribed` predicate into SQL buys nothing.
-pub async fn list_novels(
+#[cfg(test)]
+async fn list_novels(
     s: &DbState,
     exam: Option<&str>,
     year: Option<u16>,
@@ -571,6 +601,71 @@ pub async fn list_novels(
     .await
 }
 
+/// SQL-paged novel listing. Filtering, counting, ordering, and slicing stay
+/// in SQLite so the service never loads the whole catalog to serve one page.
+pub async fn list_novels_page(
+    s: &DbState,
+    exam: Option<&str>,
+    year: Option<u16>,
+    featured: Option<bool>,
+    category: Option<&str>,
+    page: u32,
+    per_page: u32,
+) -> Result<(Vec<core::models::Novel>, usize), AppError> {
+    let (page, per_page) = core::catalog::page_bounds(page, per_page);
+    let mut clauses = Vec::new();
+    let mut params = Vec::new();
+    if let Some(value) = exam {
+        clauses.push("exam=?".to_string());
+        params.push(turso::Value::Text(value.to_string()));
+    }
+    if let Some(value) = year {
+        clauses.push("EXISTS (SELECT 1 FROM json_each(year_prescribed) WHERE value=?)".to_string());
+        params.push(turso::Value::Integer(value as i64));
+    }
+    if let Some(value) = featured {
+        clauses.push("featured=?".to_string());
+        params.push(turso::Value::Integer(i64::from(value)));
+    }
+    if let Some(value) = category {
+        clauses.push("category=?".to_string());
+        params.push(turso::Value::Text(value.to_string()));
+    }
+    let where_sql = if clauses.is_empty() {
+        String::new()
+    } else {
+        format!(" WHERE {}", clauses.join(" AND "))
+    };
+    let count_sql = format!("SELECT COUNT(*) FROM novels{where_sql}");
+    let page_sql = format!(
+        "SELECT id,title,author,year_published,exam,year_prescribed,category,featured,synopsis,setting_place,setting_period,cover_image FROM novels{where_sql} ORDER BY CAST(json_extract(year_prescribed, '$[0]') AS INTEGER) DESC, title LIMIT {per_page} OFFSET {offset}",
+        offset = core::catalog::page_offset(page, per_page)
+    );
+    with_conn(s, |conn| {
+        let count_sql = count_sql.clone();
+        let page_sql = page_sql.clone();
+        let params = params.clone();
+        async move {
+            let total: i64 = conn
+                .query(&count_sql, params.clone())
+                .await
+                .map_err(upstream)?
+                .next()
+                .await
+                .map_err(upstream)?
+                .and_then(|row| row.get(0).ok())
+                .unwrap_or(0);
+            let mut rows = conn.query(&page_sql, params).await.map_err(upstream)?;
+            let mut out = Vec::with_capacity(per_page as usize);
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                out.push(map_novel(&row)?);
+            }
+            Ok((out, total as usize))
+        }
+    })
+    .await
+}
+
 fn map_novel_question(row: &turso::Row) -> Result<core::models::NovelQuestion, AppError> {
     let text_raw: String = row.get(2).map_err(upstream)?;
     let inline_raw: String = row.get(3).map_err(upstream)?;
@@ -598,9 +693,8 @@ fn map_novel_question(row: &turso::Row) -> Result<core::models::NovelQuestion, A
     })
 }
 
-/// One novel with everything: book plus chapters, characters, themes.
-/// Five queries, same shape as the established detail, including quiz
-/// rows with answers, which callers already read here.
+/// One novel with book metadata and its bounded descriptive children.
+/// Quiz rows are never loaded here; consumers use the paged quiz endpoint.
 pub async fn get_novel_doc(
     s: &DbState,
     id: &str,
@@ -672,19 +766,19 @@ pub async fn get_novel_doc(
                     evidence: json_col(&ev_raw, "novel_theme.evidence")?,
                 });
             }
-            let questions = list_novel_questions_inner(&conn, &id).await?;
             Ok(Some(core::models::NovelDoc {
                 novel,
                 chapters,
                 characters,
                 themes,
-                questions,
+                questions: Vec::new(),
             }))
         }
     })
     .await
 }
 
+#[cfg(test)]
 async fn list_novel_questions_inner(
     conn: &turso::Connection,
     id: &str,
@@ -704,7 +798,8 @@ async fn list_novel_questions_inner(
 /// Quiz rows for one novel in id order. No paging in SQL: a book's
 /// questions are bounded by its chapters, and the handler pages the
 /// filtered set with the shared `page_bounds` rule.
-pub async fn list_novel_questions(
+#[cfg(test)]
+async fn list_novel_questions(
     s: &DbState,
     id: &str,
     chapter: Option<u8>,
@@ -718,6 +813,76 @@ pub async fn list_novel_questions(
                 out.retain(|q| q.chapter_number == Some(ch));
             }
             Ok(out)
+        }
+    })
+    .await
+}
+
+/// One SQL-paged window of quiz rows, plus the filtered total. The handler
+/// must never load a whole novel merely to answer page two.
+pub async fn list_novel_questions_page(
+    s: &DbState,
+    id: &str,
+    chapter: Option<u8>,
+    page: u32,
+    per_page: u32,
+) -> Result<(Vec<core::models::NovelQuestion>, usize), AppError> {
+    let (page, per_page) = core::catalog::page_bounds(page, per_page);
+    let id = id.to_string();
+    with_conn(s, |conn| {
+        let id = id.clone();
+        async move {
+            let (chapter_clause, chapter_value) = match chapter {
+                Some(ch) => (" AND chapter_number=?2", Some(ch as i64)),
+                None => ("", None),
+            };
+            let count_sql = format!(
+                "SELECT COUNT(*) FROM novel_questions WHERE novel_id=?1{chapter_clause}"
+            );
+            let page_sql = format!(
+                "SELECT id,chapter_number,text,inline,options,answer,explanation, ({verified_predicate}) AS verified
+                 FROM novel_questions
+                 WHERE novel_id=?1{chapter_clause}
+                 ORDER BY id LIMIT {per_page} OFFSET {offset}",
+                verified_predicate = verified_predicate("novel_questions"),
+                per_page = per_page,
+                offset = core::catalog::page_offset(page, per_page),
+            );
+            let mut params = vec![turso::Value::Text(id)];
+            if let Some(ch) = chapter_value {
+                params.push(turso::Value::Integer(ch));
+            }
+            let total: i64 = conn
+                .query(&count_sql, params.clone())
+                .await
+                .map_err(upstream)?
+                .next()
+                .await
+                .map_err(upstream)?
+                .and_then(|row| row.get(0).ok())
+                .unwrap_or(0);
+            let mut rows = conn.query(&page_sql, params).await.map_err(upstream)?;
+            let mut out = Vec::with_capacity(per_page as usize);
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                out.push(map_novel_question(&row)?);
+            }
+            Ok((out, total as usize))
+        }
+    })
+    .await
+}
+
+/// Check a novel identity without assembling its complete document.
+pub async fn novel_exists(s: &DbState, id: &str) -> Result<bool, AppError> {
+    let id = id.to_string();
+    with_conn(s, |conn| {
+        let id = id.clone();
+        async move {
+            let mut rows = conn
+                .query("SELECT 1 FROM novels WHERE id=?1 LIMIT 1", [id.as_str()])
+                .await
+                .map_err(upstream)?;
+            Ok(rows.next().await.map_err(upstream)?.is_some())
         }
     })
     .await
@@ -762,7 +927,11 @@ pub async fn get_passages(
     if unique_ids.is_empty() {
         return Ok(std::collections::HashMap::new());
     }
-    unique_ids.truncate(100);
+    if unique_ids.len() > 100 {
+        return Err(AppError::BadRequest(
+            "at most 100 passage ids may be requested at once".to_string(),
+        ));
+    }
 
     let placeholders = vec!["?"; unique_ids.len()].join(",");
     let sql = format!(
@@ -786,7 +955,8 @@ pub async fn get_passages(
 }
 
 /// List passages for an exam and subject, ordered by year descending then id ascending.
-pub async fn list_passages(
+#[cfg(test)]
+async fn list_passages(
     s: &DbState,
     exam: &str,
     subject: &str,
@@ -810,6 +980,47 @@ pub async fn list_passages(
                 out.push(map_passage(&row)?);
             }
             Ok(out)
+        }
+    })
+    .await
+}
+
+pub async fn list_passages_page(
+    s: &DbState,
+    exam: &str,
+    subject: &str,
+    page: u32,
+    per_page: u32,
+) -> Result<(Vec<core::models::Passage>, usize), AppError> {
+    let (page, per_page) = core::catalog::page_bounds(page, per_page);
+    let exam = exam.to_string();
+    let subject = subject.to_string();
+    with_conn(s, |conn| {
+        let exam = exam.clone();
+        let subject = subject.clone();
+        async move {
+            let total: i64 = conn
+                .query(
+                    "SELECT COUNT(*) FROM passages WHERE exam=?1 AND subject=?2",
+                    [exam.as_str(), subject.as_str()],
+                )
+                .await
+                .map_err(upstream)?
+                .next()
+                .await
+                .map_err(upstream)?
+                .and_then(|row| row.get(0).ok())
+                .unwrap_or(0);
+            let sql = format!(
+                "SELECT id,exam,subject,year,kind,title,author,text,inline FROM passages WHERE exam=?1 AND subject=?2 ORDER BY year DESC, id ASC LIMIT {per_page} OFFSET {offset}",
+                offset = core::catalog::page_offset(page, per_page)
+            );
+            let mut rows = conn.query(&sql, [exam.as_str(), subject.as_str()]).await.map_err(upstream)?;
+            let mut out = Vec::with_capacity(per_page as usize);
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                out.push(map_passage(&row)?);
+            }
+            Ok((out, total as usize))
         }
     })
     .await
@@ -898,7 +1109,7 @@ pub async fn target_exists(
     match target_type {
         "question" => Ok(get_question(s, target_id).await?.is_some()),
         "passage" => Ok(get_passage(s, target_id).await?.is_some()),
-        "novel" => Ok(get_novel_doc(s, target_id).await?.is_some()),
+        "novel" => novel_exists(s, target_id).await,
         // A topic's identity is (exam, subject, slug): a single id
         // cannot address it, so the target id is the slash-joined triple.
         "topic" => {
@@ -1168,6 +1379,16 @@ pub async fn subject_stats(
 /// visitor needs before they have a key. No row of content is reachable
 /// through it at any size.
 pub async fn public_exams(s: &DbState) -> Result<Vec<core::models::PublicExam>, AppError> {
+    let version = s
+        .bank_version
+        .read()
+        .map(|v| v.clone())
+        .unwrap_or_else(|_| format!("v{}", super::schema::CONTRACT_VERSION));
+    if let Some((cached_version, cached)) = s.discovery_cache.read().await.as_ref() {
+        if cached_version == &version {
+            return Ok((**cached).clone());
+        }
+    }
     let exams = list_exams(s).await?;
     let counted: Vec<(String, core::models::PublicSubject)> = with_conn(s, |conn| async move {
         let sql = format!(
@@ -1214,7 +1435,7 @@ pub async fn public_exams(s: &DbState) -> Result<Vec<core::models::PublicExam>, 
     })
     .await?;
 
-    Ok(exams
+    let result: Vec<core::models::PublicExam> = exams
         .into_iter()
         .map(|exam| {
             let subjects: Vec<core::models::PublicSubject> = counted
@@ -1235,7 +1456,16 @@ pub async fn public_exams(s: &DbState) -> Result<Vec<core::models::PublicExam>, 
                 subjects,
             }
         })
-        .collect())
+        .collect();
+    let current_version = s
+        .bank_version
+        .read()
+        .map(|v| v.clone())
+        .unwrap_or_else(|_| format!("v{}", super::schema::CONTRACT_VERSION));
+    if current_version == version {
+        *s.discovery_cache.write().await = Some((version, std::sync::Arc::new(result.clone())));
+    }
+    Ok(result)
 }
 
 /// Totals for the landing page, summed from [`public_exams`] rather than
@@ -1252,15 +1482,187 @@ pub async fn public_summary(s: &DbState) -> Result<core::models::PublicSummary, 
     })
 }
 
-/// Every row one subject holds, in id order, `verified` derived. No paging:
-/// assembly and readiness need the whole pool, and a paged read would
-/// silently under-count a subject that outgrows one page.
-pub async fn subject_rows(
+/// Fetch only the final question bodies selected by paper assembly.
+pub async fn questions_by_ids(
+    s: &DbState,
+    ids: &[String],
+) -> Result<std::collections::HashMap<String, core::models::Question>, AppError> {
+    if ids.is_empty() {
+        return Ok(std::collections::HashMap::new());
+    }
+    let ids = ids.to_vec();
+    with_conn(s, |conn| {
+        let ids = ids.clone();
+        async move {
+            let placeholders = vec!["?"; ids.len()].join(",");
+            let sql = format!(
+                "SELECT id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty,({}) AS verified FROM questions WHERE id IN ({placeholders})",
+                verified_predicate("questions")
+            );
+            let params: Vec<turso::Value> = ids.iter().cloned().map(turso::Value::Text).collect();
+            let mut rows = conn.query(&sql, params).await.map_err(upstream)?;
+            let mut out = std::collections::HashMap::with_capacity(ids.len());
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                let question = map_question(&row)?;
+                out.insert(question.id.clone(), question);
+            }
+            Ok(out)
+        }
+    })
+    .await
+}
+
+/// Stream lightweight subject metadata and retain only the bounded reservoir
+/// required by the paper gate. Full question bodies remain in SQLite.
+pub struct PaperSelection {
+    pub mode: core::papers::PaperMode,
+    pub topic_needs: std::collections::HashMap<String, u32>,
+    pub topic_by_subtopic: std::collections::HashMap<String, String>,
+    pub paper_size: Option<u32>,
+    pub seed: u64,
+}
+
+pub async fn select_subject_candidates(
     s: &DbState,
     exam: &str,
     subject: &str,
     country: Option<&str>,
+    selection: PaperSelection,
 ) -> Result<Vec<core::models::Question>, AppError> {
+    let exam = exam.to_string();
+    let subject = subject.to_string();
+    let country = country.map(str::to_string);
+    let mode = selection.mode;
+    let topic_needs = selection.topic_needs;
+    let topic_by_subtopic = selection.topic_by_subtopic;
+    let paper_size = selection.paper_size;
+    let seed = selection.seed;
+    with_conn(s, |conn| {
+        let exam = exam.clone();
+        let subject = subject.clone();
+        let country = country.clone();
+        let topic_needs = topic_needs.clone();
+        let topic_by_subtopic = topic_by_subtopic.clone();
+        async move {
+            let sql = format!(
+                "{LATEST_VERIFIED_SUBJECT_CTE}
+                 SELECT q.id,q.exam,q.subject,q.year,q.subtopic_id,
+                   CASE WHEN lv.qid IS NOT NULL AND lv.verdict='pass' AND lv.content_hash=q.content_hash THEN 1 ELSE 0 END AS verified
+                 FROM questions q
+                 LEFT JOIN latest_ver lv ON lv.qid=q.id AND lv.rn=1
+                 WHERE q.exam=?1 AND q.subject=?2 AND {}
+                 ORDER BY q.id",
+                scope_predicate_for("q", 3)
+            );
+            let mut stmt = conn.prepare(&sql).await.map_err(upstream)?;
+            let params = [
+                turso::Value::Text(exam),
+                turso::Value::Text(subject),
+                scope_param(&country),
+            ];
+            let mut rows = stmt.query(params).await.map_err(upstream)?;
+            let mut rng = rand::rngs::StdRng::seed_from_u64(seed);
+            let mut verified_seen = 0usize;
+            let mut flat = Vec::new();
+            let mut by_topic: std::collections::HashMap<
+                String,
+                Vec<core::models::Question>,
+            > = std::collections::HashMap::new();
+            let mut topic_seen: std::collections::HashMap<String, usize> =
+                std::collections::HashMap::new();
+
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                let candidate = lightweight_question(&row)?;
+                if !candidate.verified {
+                    continue;
+                }
+                verified_seen += 1;
+                match mode {
+                    core::papers::PaperMode::Count => reservoir_push(
+                        &mut flat,
+                        candidate,
+                        paper_size.unwrap_or(0) as usize,
+                        verified_seen,
+                        &mut rng,
+                    ),
+                    core::papers::PaperMode::Blueprint => {
+                        let Some(subtopic) = candidate.subtopic_id.as_ref() else {
+                            continue;
+                        };
+                        let Some(topic) = topic_by_subtopic.get(subtopic) else {
+                            continue;
+                        };
+                        let need = topic_needs.get(topic).copied().unwrap_or(0) as usize;
+                        if need == 0 {
+                            continue;
+                        }
+                        let seen = topic_seen.entry(topic.clone()).or_default();
+                        *seen += 1;
+                        let entry = by_topic.entry(topic.clone()).or_default();
+                        reservoir_push(entry, candidate, need, *seen, &mut rng);
+                    }
+                }
+            }
+
+            Ok(match mode {
+                core::papers::PaperMode::Count => flat,
+                core::papers::PaperMode::Blueprint => by_topic.into_values().flatten().collect(),
+            })
+        }
+    })
+    .await
+}
+
+fn reservoir_push(
+    reservoir: &mut Vec<core::models::Question>,
+    candidate: core::models::Question,
+    capacity: usize,
+    seen: usize,
+    rng: &mut rand::rngs::StdRng,
+) {
+    if capacity == 0 {
+        return;
+    }
+    if reservoir.len() < capacity {
+        reservoir.push(candidate);
+    } else {
+        let slot = rng.random_range(0..seen);
+        if slot < capacity {
+            reservoir[slot] = candidate;
+        }
+    }
+}
+
+fn lightweight_question(row: &turso::Row) -> Result<core::models::Question, AppError> {
+    Ok(core::models::Question {
+        id: row.get(0).map_err(upstream)?,
+        exam: row.get(1).map_err(upstream)?,
+        subject: row.get(2).map_err(upstream)?,
+        year: req_int::<u16>(row.get_value(3).map_err(upstream)?, "question.year")?,
+        source: String::new(),
+        text: core::models::RichText {
+            text: String::new(),
+            inline: Vec::new(),
+        },
+        options: Vec::new(),
+        answer: String::new(),
+        subtopic_id: opt_string(row.get_value(4).map_err(upstream)?, "question.subtopic_id")?,
+        section: None,
+        passage_id: None,
+        explanation: None,
+        marks: 0.0,
+        difficulty: 0,
+        verified: req_bool(row.get_value(5).map_err(upstream)?, "question.verified")?,
+    })
+}
+
+/// Count distinct cohorts without loading any question rows.
+pub async fn subject_cohort_count(
+    s: &DbState,
+    exam: &str,
+    subject: &str,
+    country: Option<&str>,
+) -> Result<usize, AppError> {
     let exam = exam.to_string();
     let subject = subject.to_string();
     let country = country.map(str::to_string);
@@ -1270,22 +1672,26 @@ pub async fn subject_rows(
         let country = country.clone();
         async move {
             let sql = format!(
-                "SELECT id,exam,subject,year,source,text,inline,options,answer,subtopic_id,section,passage_id,explanation,marks,difficulty,({}) AS verified FROM questions WHERE exam=?1 AND subject=?2 AND {} ORDER BY id",
-                verified_predicate("questions"),
+                "SELECT COUNT(DISTINCT year) FROM questions WHERE exam=?1 AND subject=?2 AND {}",
                 scope_predicate(3)
             );
-            let mut stmt = conn.prepare(&sql).await.map_err(upstream)?;
-            let params = [
-                turso::Value::Text(exam),
-                turso::Value::Text(subject),
-                scope_param(&country),
-            ];
-            let mut rows = stmt.query(params).await.map_err(upstream)?;
-            let mut out = Vec::new();
-            while let Some(row) = rows.next().await.map_err(upstream)? {
-                out.push(map_question(&row)?);
-            }
-            Ok(out)
+            let mut rows = conn
+                .query(
+                    &sql,
+                    [
+                        turso::Value::Text(exam),
+                        turso::Value::Text(subject),
+                        scope_param(&country),
+                    ],
+                )
+                .await
+                .map_err(upstream)?;
+            Ok(rows
+                .next()
+                .await
+                .map_err(upstream)?
+                .and_then(|row| row.get::<i64>(0).ok())
+                .unwrap_or(0) as usize)
         }
     })
     .await
@@ -1803,6 +2209,12 @@ mod tests {
             .await
             .expect("source filter");
         assert_eq!(total, 1);
+
+        let (empty, total) = list_questions(&s, &blank, u32::MAX, 200)
+            .await
+            .expect("large page");
+        assert_eq!(total, 3);
+        assert!(empty.is_empty());
     }
 
     #[tokio::test]
@@ -2049,7 +2461,7 @@ mod tests {
         assert_eq!(doc.characters[0].name, "Ada");
         assert_eq!(doc.themes.len(), 1);
         assert_eq!(doc.themes[0].evidence, vec!["dawn".to_string()]);
-        assert_eq!(doc.questions.len(), 2);
+        assert!(doc.questions.is_empty());
         let missing = get_novel_doc(&s, "nope").await.expect("query succeeds");
         assert!(missing.is_none());
     }
@@ -2387,20 +2799,6 @@ mod tests {
     }
 
     #[tokio::test]
-    async fn subject_rows_returns_the_whole_pool_verified_flag_and_all() {
-        let db = local_exams_db().await;
-        let s = crate::state::DbState::detached(db);
-        let rows = subject_rows(&s, "JAMB", "physics", None)
-            .await
-            .expect("query");
-        assert_eq!(rows.len(), 2, "no page cap: the whole pool");
-        let q1 = rows.iter().find(|q| q.id == "q1").expect("q1");
-        assert!(q1.verified);
-        let q2 = rows.iter().find(|q| q.id == "q2").expect("q2");
-        assert!(!q2.verified);
-    }
-
-    #[tokio::test]
     async fn list_syllabus_groups_subtopics_under_their_topic() {
         let db = local_exams_db().await;
         let s = crate::state::DbState::detached(db);
@@ -2486,6 +2884,65 @@ mod tests {
             .await
             .expect("empty passages");
         assert!(empty.is_empty());
+    }
+
+    #[tokio::test]
+    async fn novel_question_pages_fetch_only_the_requested_window() {
+        let s = crate::state::DbState::detached(local_exams_db().await);
+        let (first, total) = list_novel_questions_page(&s, "lekki", None, 1, 1)
+            .await
+            .expect("first page");
+        assert_eq!(total, 2);
+        assert_eq!(first.len(), 1);
+        assert_eq!(first[0].id, "nq1");
+
+        let (second, total) = list_novel_questions_page(&s, "lekki", None, 2, 1)
+            .await
+            .expect("second page");
+        assert_eq!(total, 2);
+        assert_eq!(second.len(), 1);
+        assert_eq!(second[0].id, "nq2");
+
+        let (empty, total) = list_novel_questions_page(&s, "lekki", None, u32::MAX, 200)
+            .await
+            .expect("large novel page");
+        assert_eq!(total, 2);
+        assert!(empty.is_empty());
+    }
+
+    #[test]
+    fn paper_reservoir_stays_bounded_for_a_large_candidate_stream() {
+        let mut reservoir = Vec::new();
+        let mut rng = rand::rngs::StdRng::seed_from_u64(7);
+        for seen in 1..=100_000 {
+            reservoir_push(
+                &mut reservoir,
+                core::models::Question {
+                    id: seen.to_string(),
+                    exam: "JAMB".to_string(),
+                    subject: "physics".to_string(),
+                    year: 2025,
+                    source: String::new(),
+                    text: core::models::RichText {
+                        text: String::new(),
+                        inline: Vec::new(),
+                    },
+                    options: Vec::new(),
+                    answer: String::new(),
+                    subtopic_id: None,
+                    section: None,
+                    passage_id: None,
+                    explanation: None,
+                    marks: 0.0,
+                    difficulty: 0,
+                    verified: true,
+                },
+                50,
+                seen,
+                &mut rng,
+            );
+        }
+        assert_eq!(reservoir.len(), 50);
     }
 
     #[tokio::test]

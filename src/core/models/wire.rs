@@ -101,6 +101,67 @@ impl<T> Page<T> {
 /// the bank. A consumer pages `total_pages`, never guesses.
 pub type QuestionPageResponse = Page<RenderedQuestion>;
 
+/// A bounded page of prescribed texts.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
+pub struct NovelPage {
+    pub novels: Vec<super::domain::Novel>,
+    pub page: u32,
+    pub per_page: u32,
+    pub total_pages: u32,
+    pub total_records: usize,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
+pub struct PassagePage {
+    pub passages: Vec<super::domain::Passage>,
+    pub page: u32,
+    pub per_page: u32,
+    pub total_pages: u32,
+    pub total_records: usize,
+}
+
+impl PassagePage {
+    pub fn new(
+        passages: Vec<super::domain::Passage>,
+        page: u32,
+        per_page: u32,
+        total_records: usize,
+    ) -> Self {
+        Self {
+            passages,
+            page,
+            per_page,
+            total_pages: if total_records == 0 {
+                0
+            } else {
+                total_records.div_ceil(per_page as usize) as u32
+            },
+            total_records,
+        }
+    }
+}
+
+impl NovelPage {
+    pub fn new(
+        novels: Vec<super::domain::Novel>,
+        page: u32,
+        per_page: u32,
+        total_records: usize,
+    ) -> Self {
+        Self {
+            novels,
+            page,
+            per_page,
+            total_pages: if total_records == 0 {
+                0
+            } else {
+                total_records.div_ceil(per_page as usize) as u32
+            },
+            total_records,
+        }
+    }
+}
+
 /// A sampled set of questions for fast practice or quick quiz flows.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
 pub struct SampledQuestions {

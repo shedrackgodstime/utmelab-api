@@ -280,7 +280,11 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 .await?;
                 ensure_column(s, "api_keys", "owner", "owner TEXT NOT NULL DEFAULT ''").await?;
             }
-            _ => unreachable!("migration version is declared but not implemented"),
+            _ => {
+                return Err(AppError::Internal(
+                    "unsupported schema migration".to_string(),
+                ));
+            }
         }
 
         super::write::execute_write(

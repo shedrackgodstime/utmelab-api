@@ -68,6 +68,10 @@ async fn telemetry(State(state): State<AppState>, request: Request<Body>, next: 
         return next.run(request).await;
     }
     let m = &state.metrics;
+    m.last_request_unix.store(
+        crate::store::sync::unix_now(),
+        std::sync::atomic::Ordering::Relaxed,
+    );
     m.in_flight.fetch_add(1, Relaxed);
     let started = std::time::Instant::now();
     let response = next.run(request).await;
@@ -94,6 +98,36 @@ async fn telemetry(State(state): State<AppState>, request: Request<Body>, next: 
     response
 }
 
+/// Read request bodies under a total deadline. The normal handler timeout
+/// starts too late for a client that trickles bytes while the extractor waits.
+/// The body is bounded to the same 16 KiB transport limit before it is handed
+/// to Axum's JSON extractor.
+async fn body_deadline(
+    State(state): State<AppState>,
+    request: Request<Body>,
+    next: Next,
+) -> Response {
+    if !matches!(
+        request.method(),
+        &axum::http::Method::POST | &axum::http::Method::PUT | &axum::http::Method::PATCH
+    ) {
+        return next.run(request).await;
+    }
+    let (parts, body) = request.into_parts();
+    let read = tokio::time::timeout(
+        std::time::Duration::from_secs(state.read_timeout_secs),
+        axum::body::to_bytes(body, 16 * 1024),
+    )
+    .await;
+    let bytes = match read {
+        Ok(Ok(bytes)) => bytes,
+        Ok(Err(_)) => return axum::http::StatusCode::PAYLOAD_TOO_LARGE.into_response(),
+        Err(_) => return AppError::RequestTimeout.into_response(),
+    };
+    next.run(Request::from_parts(parts, Body::from(bytes)))
+        .await
+}
+
 fn span_for(request: &Request<Body>) -> tracing::Span {
     let id = request
         .headers()
@@ -118,6 +152,7 @@ pub fn router(state: AppState, cfg: &Config) -> Router {
             contract_guard,
         ));
     let telemetry_state = state.clone();
+    let body_state = state.clone();
     Router::new()
         .route(
             "/health",
@@ -149,6 +184,10 @@ pub fn router(state: AppState, cfg: &Config) -> Router {
             // run forever and hold a DB permit. Read routes layer 5s inside
             // this. Telemetry sits above it and only observes.
             cfg.slow_timeout(),
+        ))
+        .layer(axum::middleware::from_fn_with_state(
+            body_state,
+            body_deadline,
         ))
         .layer(axum::middleware::from_fn_with_state(
             telemetry_state,
@@ -354,6 +393,11 @@ mod tests {
             "/api/v1/blueprints/JAMB/physics",
         ),
         ("GET", "/api/v1/passages", "/api/v1/passages?ids=p1"),
+        (
+            "GET",
+            "/api/v1/passages/catalog/{exam}/{subject}",
+            "/api/v1/passages/catalog/JAMB/english",
+        ),
         ("GET", "/api/v1/passages/{id}", "/api/v1/passages/p1"),
         ("GET", "/api/v1/novels", "/api/v1/novels"),
         ("GET", "/api/v1/novels/{id}", "/api/v1/novels/lekki"),
