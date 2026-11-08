@@ -25,7 +25,7 @@ pub const CONTRACT_VERSION: u64 = 1;
 
 /// Version of the API-owned schema. This is separate from
 /// [`CONTRACT_VERSION`], which belongs to the content pipeline.
-pub const API_SCHEMA_VERSION: u64 = 6;
+pub const API_SCHEMA_VERSION: u64 = 7;
 
 /// Tables the API owns and creates at boot.
 pub(crate) const DDL: &[&str] = &[
@@ -326,7 +326,7 @@ pub async fn ensure_schema(s: &DbState) -> Result<(), AppError> {
 /// API-owned migrations are numbered, applied once, and never rewritten.
 /// Fresh databases receive the current DDL first; upgraded databases receive
 /// the same DDL idempotently and then any missing migrations.
-const MIGRATIONS: &[u64] = &[1, 2, 3, 4, 5, 6];
+const MIGRATIONS: &[u64] = &[1, 2, 3, 4, 5, 6, 7];
 
 async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
     for &version in MIGRATIONS {
@@ -438,7 +438,7 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 .await?;
                 super::write::execute_ddl_local(
                     s,
-                    "CREATE UNIQUE INDEX IF NOT EXISTS idx_theory_unique ON theory_questions (exam, subject, year, paper, question_number)",
+                    "CREATE UNIQUE INDEX IF NOT EXISTS idx_theory_unique ON theory_questions (exam, subject, year, question_number)",
                 )
                 .await?;
             }
@@ -456,6 +456,18 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 super::write::execute_ddl_local(
                     s,
                     "CREATE INDEX IF NOT EXISTS idx_access_tokens_expiry ON api_access_tokens(expires_at)",
+                )
+                .await?;
+            }
+            7 => {
+                // Migration 5 shipped the index without `paper`. A database
+                // that already recorded version 5 keeps that older index, so
+                // replace it explicitly instead of relying on `IF NOT EXISTS`.
+                super::write::execute_ddl_local(s, "DROP INDEX IF EXISTS idx_theory_unique")
+                    .await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE UNIQUE INDEX IF NOT EXISTS idx_theory_unique ON theory_questions (exam, subject, year, paper, question_number)",
                 )
                 .await?;
             }
@@ -926,6 +938,50 @@ mod tests {
         )
         .await
         .expect("paper 3 question with same number must be allowed");
+    }
+
+    #[tokio::test]
+    async fn migration_seven_replaces_the_legacy_theory_unique_index() {
+        let s = local_db().await;
+        let conn = conn_of(&s).await;
+        crate::testing::api_schema(&conn).await;
+
+        // A database that already recorded versions 1-6 still carries the
+        // original four-column index, because `IF NOT EXISTS` matches it by
+        // name. Migration 7 has to replace it rather than skip it.
+        conn.execute("DROP INDEX idx_theory_unique", ())
+            .await
+            .expect("drop current index");
+        conn.execute(
+            "CREATE UNIQUE INDEX idx_theory_unique ON theory_questions (exam, subject, year, question_number)",
+            (),
+        )
+        .await
+        .expect("legacy index");
+        for version in 1..=6 {
+            conn.execute(
+                "INSERT INTO api_schema_migrations (version) VALUES (?1)",
+                vec![turso::Value::Integer(version)],
+            )
+            .await
+            .expect("record migration");
+        }
+
+        ensure_schema(&s).await.expect("upgrade");
+
+        let mut rows = conn
+            .query("PRAGMA index_info('idx_theory_unique')", ())
+            .await
+            .expect("index info");
+        let mut columns = Vec::new();
+        while let Some(row) = rows.next().await.expect("index row") {
+            columns.push(row.get::<String>(2).expect("column name"));
+        }
+        assert_eq!(
+            columns,
+            ["exam", "subject", "year", "paper", "question_number"],
+            "the upgraded index must include paper"
+        );
     }
 
     async fn owned_shape(conn: &turso::Connection) -> Vec<(String, Vec<String>)> {

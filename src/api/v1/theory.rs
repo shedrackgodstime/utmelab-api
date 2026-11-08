@@ -533,7 +533,16 @@ mod tests {
         assert_eq!(status, StatusCode::OK);
         assert_eq!(body["awarded_marks"], 7);
         assert_eq!(body["total_marks_possible"], 8);
-        assert_eq!(body["penalties_applied"].as_array().expect("penalties").len(), 1);
-        assert_eq!(body["penalties_applied"][0]["penalty_type"], "unit_omission");
+        assert_eq!(
+            body["penalties_applied"]
+                .as_array()
+                .expect("penalties")
+                .len(),
+            1
+        );
+        assert_eq!(
+            body["penalties_applied"][0]["penalty_type"],
+            "unit_omission"
+        );
     }
 }
