@@ -28,6 +28,9 @@ use tower_http::{
 };
 use tracing::Level;
 
+/// The transport ceiling for request bodies and complete note payloads.
+pub const MAX_BODY_BYTES: usize = 16 * 1024;
+
 use crate::{
     api,
     config::Config,
@@ -128,7 +131,7 @@ async fn body_deadline(
     let (parts, body) = request.into_parts();
     let read = tokio::time::timeout(
         std::time::Duration::from_secs(state.read_timeout_secs),
-        axum::body::to_bytes(body, 16 * 1024),
+        axum::body::to_bytes(body, MAX_BODY_BYTES),
     )
     .await;
     let bytes = match read {
@@ -189,7 +192,7 @@ pub fn router(state: AppState, cfg: &Config) -> Router {
             PropagateRequestIdLayer::new(axum::http::HeaderName::from_static(REQUEST_ID)),
             // 16 KiB is ~5x our largest body (a 40-answer paper score). A
             // JSON bomb dies at the edge, not in serde.
-            axum::extract::DefaultBodyLimit::max(16 * 1024),
+            axum::extract::DefaultBodyLimit::max(MAX_BODY_BYTES),
             ConcurrencyLimitLayer::new(cfg.concurrency_limit),
             // Outermost timeout by construction, so it is the net every route
             // falls back on: a route that forgets its own budget still cannot
@@ -449,6 +452,26 @@ mod tests {
             "POST",
             "/api/v1/papers/{exam}/{subject}/score",
             "/api/v1/papers/JAMB/physics/score",
+        ),
+        (
+            "GET",
+            "/api/v1/theory/{exam}/{subject}",
+            "/api/v1/theory/WAEC/general-mathematics",
+        ),
+        (
+            "GET",
+            "/api/v1/theory/{exam}/{subject}/{id}",
+            "/api/v1/theory/WAEC/general-mathematics/wq_waec_2023_math_p2_q4",
+        ),
+        (
+            "GET",
+            "/api/v1/theory/{exam}/{subject}/{id}/rubric",
+            "/api/v1/theory/WAEC/general-mathematics/wq_waec_2023_math_p2_q4/rubric",
+        ),
+        (
+            "POST",
+            "/api/v1/theory/{exam}/{subject}/{id}/evaluate",
+            "/api/v1/theory/WAEC/general-mathematics/wq_waec_2023_math_p2_q4/evaluate",
         ),
     ];
 

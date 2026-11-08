@@ -3,7 +3,7 @@
 
 use super::models::{
     Question, RenderedNovelQuestion, RenderedQuestion, Subject, Syllabus, SyllabusSubtopic,
-    SyllabusSummary, SyllabusTopic, TableRef,
+    SyllabusSummary, SyllabusTopic, TableRef, TopicNote,
 };
 use super::papers;
 
@@ -33,6 +33,23 @@ pub fn resolve_rich_text(rt: &mut super::models::RichText, media_base_url: &str)
         if let super::models::InlineKind::Image { url, .. } = &mut inline.kind {
             *url = resolve_media_url(url, media_base_url);
         }
+    }
+}
+
+/// Resolve every rich-text field a note carries. Notes are served from the
+/// same media host as questions and passages, so a stored filename must never
+/// leak to a client unresolved.
+pub fn resolve_note(note: &mut TopicNote, media_base_url: &str) {
+    resolve_rich_text(&mut note.key_takeaway, media_base_url);
+    for section in &mut note.sections {
+        resolve_rich_text(&mut section.content, media_base_url);
+        if let Some(callout) = &mut section.callout {
+            resolve_rich_text(&mut callout.text, media_base_url);
+        }
+    }
+    for example in &mut note.worked_examples {
+        resolve_rich_text(&mut example.problem_statement, media_base_url);
+        resolve_rich_text(&mut example.final_answer, media_base_url);
     }
 }
 
@@ -190,7 +207,7 @@ pub fn assemble_syllabus_from_counts(
                 question_count: count,
                 objectives: st.objectives.clone(),
                 countries: t.countries.clone(),
-                has_note: None,
+                has_note: false,
                 note_id: None,
             });
         }
@@ -208,7 +225,7 @@ pub fn assemble_syllabus_from_counts(
             objectives: t.objectives.clone(),
             countries: t.countries.clone(),
             subtopics,
-            has_note: None,
+            has_note: false,
             note_id: None,
         });
     }
@@ -221,18 +238,29 @@ pub fn assemble_syllabus_from_counts(
     }
 }
 
+/// The exam and subject whose syllabus a subject offering uses. A board may
+/// share another board's syllabus; anything unstated is itself.
+pub fn syllabus_owner(exam: &str, slug: &str, subject: &Subject) -> (String, String) {
+    match (&subject.syllabus_exam, &subject.syllabus_subject) {
+        (Some(syllabus_exam), Some(syllabus_subject)) => {
+            (syllabus_exam.clone(), syllabus_subject.clone())
+        }
+        _ => (exam.to_string(), slug.to_string()),
+    }
+}
+
 pub fn attach_notes_to_syllabus(
     syllabus: &mut Syllabus,
     notes: &std::collections::HashMap<(String, Option<String>), String>,
 ) {
     for t in &mut syllabus.topics {
         if let Some(note_id) = notes.get(&(t.slug.clone(), None)) {
-            t.has_note = Some(true);
+            t.has_note = true;
             t.note_id = Some(note_id.clone());
         }
         for st in &mut t.subtopics {
             if let Some(note_id) = notes.get(&(t.slug.clone(), Some(st.slug.clone()))) {
-                st.has_note = Some(true);
+                st.has_note = true;
                 st.note_id = Some(note_id.clone());
             }
         }
@@ -584,6 +612,104 @@ mod tests {
         assert_eq!(s.topics[0].question_count, 1);
         assert_eq!(s.topics[1].question_count, 0);
         assert_eq!(s.topics[0].objectives, vec!["solve".to_string()]);
+        assert!(!s.topics[0].has_note);
+        assert!(!s.topics[0].subtopics[0].has_note);
+    }
+
+    #[test]
+    fn attach_notes_marks_only_the_nodes_that_have_notes() {
+        let mut s = assemble_syllabus("JAMB", subject_fixture(), &tree_fixture(), &[], None);
+        let mut notes = std::collections::HashMap::new();
+        notes.insert(("algebra".to_string(), None), "note_algebra".to_string());
+        notes.insert(
+            ("algebra".to_string(), Some("linear".to_string())),
+            "note_linear".to_string(),
+        );
+
+        attach_notes_to_syllabus(&mut s, &notes);
+
+        assert!(s.topics[0].has_note);
+        assert_eq!(s.topics[0].note_id.as_deref(), Some("note_algebra"));
+        assert!(s.topics[0].subtopics[0].has_note);
+        assert_eq!(
+            s.topics[0].subtopics[0].note_id.as_deref(),
+            Some("note_linear")
+        );
+        assert!(!s.topics[1].has_note);
+        assert!(!s.topics[1].subtopics[0].has_note);
+    }
+
+    #[test]
+    fn resolve_note_reaches_every_rich_text_field() {
+        use crate::core::models::*;
+        let image = |url: &str| Inline {
+            start: 0,
+            len: 0,
+            kind: InlineKind::Image {
+                url: url.to_string(),
+                position: ImagePosition::Above,
+                alt: None,
+            },
+        };
+        let rich = |url: &str| RichText {
+            text: "see".to_string(),
+            inline: vec![image(url)],
+        };
+        let mut note = TopicNote {
+            id: "n".to_string(),
+            exam: "JAMB".to_string(),
+            subject: "physics".to_string(),
+            topic_slug: "motion".to_string(),
+            subtopic_slug: None,
+            title: "Motion".to_string(),
+            read_time_minutes: 3,
+            key_takeaway: rich("key.png"),
+            sections: vec![NoteSection {
+                section_number: 1,
+                heading: "One".to_string(),
+                content: rich("section.png"),
+                callout: Some(NoteCallout {
+                    kind: "tip".to_string(),
+                    text: rich("callout.png"),
+                }),
+            }],
+            worked_examples: vec![WorkedExample {
+                title: "Example".to_string(),
+                problem_statement: rich("problem.png"),
+                steps: vec![],
+                final_answer: rich("answer.png"),
+                method_tip: None,
+            }],
+            formulas: vec![],
+            active_recall_checks: vec![],
+            examiner_traps: vec![],
+            linked_question_ids: vec![],
+        };
+
+        resolve_note(&mut note, crate::config::DEFAULT_MEDIA_BASE_URL);
+
+        let url = |rt: &RichText| match &rt.inline[0].kind {
+            InlineKind::Image { url, .. } => url.clone(),
+            _ => panic!("expected image"),
+        };
+        let base = crate::config::DEFAULT_MEDIA_BASE_URL.trim_end_matches('/');
+        assert_eq!(url(&note.key_takeaway), format!("{base}/images/key.png"));
+        assert_eq!(
+            url(&note.sections[0].content),
+            format!("{base}/images/section.png")
+        );
+        assert_eq!(
+            url(&note.sections[0].callout.as_ref().expect("callout").text),
+            format!("{base}/images/callout.png")
+        );
+        assert_eq!(
+            url(&note.worked_examples[0].problem_statement),
+            format!("{base}/images/problem.png")
+        );
+        assert_eq!(
+            url(&note.worked_examples[0].final_answer),
+            format!("{base}/images/answer.png")
+        );
     }
 
     #[test]

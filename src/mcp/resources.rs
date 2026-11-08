@@ -23,7 +23,7 @@ use rmcp::model::{Resource, ResourceTemplate};
 use crate::{
     api::v1::{
         blueprints, exams, keys, meta, notes, novels, papers, passages, questions, subjects,
-        topics,
+        theory, topics,
     },
     auth::{api_key::AuthedKey, Auth},
     error::AppError,
@@ -149,6 +149,21 @@ pub fn templates() -> Vec<ResourceTemplate> {
             "Subtopic study note",
             "High-yield study note for a specific syllabus subtopic.",
         ),
+        tmpl(
+            "theory/{exam}/{subject}",
+            "Theory questions list",
+            "Paged list of Paper 2 theory questions for a subject.",
+        ),
+        tmpl(
+            "theory/{exam}/{subject}/{id}",
+            "Theory question practice view",
+            "A Paper 2 theory question with practice view (rubric withheld).",
+        ),
+        tmpl(
+            "theory/{exam}/{subject}/{id}/rubric",
+            "Theory question marking rubric",
+            "Complete step-by-step examiner marking rubric with M/A/B marks.",
+        ),
     ]
 }
 
@@ -227,12 +242,45 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
         ["notes", exam, subject, topic_slug] => read!(notes::topic_note(
             State(db.clone()),
             AuthedKey(auth.clone()),
-            Path((exam.to_string(), subject.to_string(), topic_slug.to_string())),
+            Path((
+                exam.to_string(),
+                subject.to_string(),
+                topic_slug.to_string()
+            )),
         )),
         ["notes", "subtopic", exam, subject, subtopic_slug] => read!(notes::subtopic_note(
             State(db.clone()),
             AuthedKey(auth.clone()),
-            Path((exam.to_string(), subject.to_string(), subtopic_slug.to_string())),
+            Path((
+                exam.to_string(),
+                subject.to_string(),
+                subtopic_slug.to_string()
+            )),
+        )),
+        ["theory", exam, subject] => read!(theory::list_theory(
+            State(db.clone()),
+            AuthedKey(auth.clone()),
+            Path((exam.to_string(), subject.to_string())),
+            Query(theory::TheoryListParams {
+                year: num(&query, "year")?,
+                topic: opt(&query, "topic"),
+                section: opt(&query, "section"),
+                page: num(&query, "page")?,
+                per_page: num(&query, "per_page")?,
+            }),
+        )),
+        ["theory", exam, subject, id] => read!(theory::get_theory(
+            State(db.clone()),
+            AuthedKey(auth.clone()),
+            Path((exam.to_string(), subject.to_string(), id.to_string())),
+            Query(theory::TheoryGetParams {
+                include_rubric: flag(&query, "include_rubric")?,
+            }),
+        )),
+        ["theory", exam, subject, id, "rubric"] => read!(theory::get_theory_rubric(
+            State(db.clone()),
+            AuthedKey(auth.clone()),
+            Path((exam.to_string(), subject.to_string(), id.to_string())),
         )),
         ["blueprints", exam, subject] => read!(blueprints::list(
             State(db.clone()),

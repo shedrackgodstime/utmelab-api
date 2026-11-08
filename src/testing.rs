@@ -75,6 +75,9 @@ pub(crate) async fn api_schema(conn: &turso::Connection) {
     for ddl in crate::store::schema::DDL {
         conn.execute(ddl, ()).await.expect("api schema");
     }
+    for index in crate::store::schema::INDEXES {
+        conn.execute(index, ()).await.expect("api index");
+    }
 }
 
 /// The bank tables named, at the shapes the readers depend on. The column list
@@ -209,6 +212,126 @@ pub(crate) async fn issue_key(
     .await
     .expect("insert key");
     full.to_string()
+}
+
+/// Seed one bank exam and its subject offering. `syllabus` points the
+/// offering at another board's syllabus when the catalog does that.
+pub(crate) async fn seed_bank_exam(
+    conn: &turso::Connection,
+    exam: &str,
+    subject: &str,
+    syllabus: Option<(&str, &str)>,
+) {
+    conn.execute(
+        "INSERT INTO exams VALUES (?1, ?1, '[\"NG\"]', 'live', 1, NULL, NULL, '[]')",
+        vec![turso::Value::Text(exam.to_string())],
+    )
+    .await
+    .expect("seed exam");
+    let (syllabus_exam, syllabus_subject) = match syllabus {
+        Some((exam, subject)) => (
+            turso::Value::Text(exam.to_string()),
+            turso::Value::Text(subject.to_string()),
+        ),
+        None => (turso::Value::Null, turso::Value::Null),
+    };
+    conn.execute(
+        "INSERT INTO subjects VALUES (?1, ?2, ?1, 0, 40, '[]', ?3, ?4)",
+        vec![
+            turso::Value::Text(subject.to_string()),
+            turso::Value::Text(exam.to_string()),
+            syllabus_exam,
+            syllabus_subject,
+        ],
+    )
+    .await
+    .expect("seed subject");
+}
+
+pub(crate) async fn seed_bank_topic(
+    conn: &turso::Connection,
+    exam: &str,
+    subject: &str,
+    topic: &str,
+) {
+    conn.execute(
+        "INSERT INTO topics VALUES (?1, ?2, ?3, ?1, 1, 0, '[]', '[]')",
+        vec![
+            turso::Value::Text(topic.to_string()),
+            turso::Value::Text(subject.to_string()),
+            turso::Value::Text(exam.to_string()),
+        ],
+    )
+    .await
+    .expect("seed topic");
+}
+
+pub(crate) async fn seed_bank_subtopic(conn: &turso::Connection, topic: &str, subtopic: &str) {
+    conn.execute(
+        "INSERT INTO subtopics VALUES (?1, ?2, ?1, 1, '[]')",
+        vec![
+            turso::Value::Text(subtopic.to_string()),
+            turso::Value::Text(topic.to_string()),
+        ],
+    )
+    .await
+    .expect("seed subtopic");
+}
+
+#[allow(clippy::too_many_arguments)]
+pub(crate) async fn seed_note(
+    conn: &turso::Connection,
+    id: &str,
+    exam: &str,
+    subject: &str,
+    topic_slug: &str,
+    subtopic_slug: Option<&str>,
+    key_takeaway: &str,
+    sections: &str,
+) {
+    conn.execute(
+        "INSERT INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, linked_question_ids, content_hash) \
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6, 3, ?7, ?8, '[]', '[]', '[]', '[]', '[]', 'hash')",
+        vec![
+            turso::Value::Text(id.to_string()),
+            turso::Value::Text(exam.to_string()),
+            turso::Value::Text(subject.to_string()),
+            turso::Value::Text(topic_slug.to_string()),
+            subtopic_slug
+                .map(|slug| turso::Value::Text(slug.to_string()))
+                .unwrap_or(turso::Value::Null),
+            turso::Value::Text(format!("{id} title")),
+            turso::Value::Text(key_takeaway.to_string()),
+            turso::Value::Text(sections.to_string()),
+        ],
+    )
+    .await
+    .expect("seed note");
+}
+
+pub(crate) async fn seed_theory_question(conn: &turso::Connection, id: &str) {
+    conn.execute(
+        "INSERT INTO theory_questions (id, exam, subject, year, paper, section, question_number, topic_slug, subtopic_slug, total_marks, stem, diagram_url, sub_parts, formulation_bridge, marking_methods, diagram_rubric, penalties, examiner_report, content_hash) \
+         VALUES (?1, 'WAEC', 'general-mathematics', 2023, 2, 'Section A', '4', 'algebra', null, 8, \
+         '{\"text\":\"Garden problem\",\"inline\":[]}', 'diagrams/garden.png', \
+         '[{\"part_label\":\"(a)\",\"prompt\":\"Form equation\",\"allocated_marks\":3},{\"part_label\":\"(b)\",\"prompt\":\"Solve equation\",\"allocated_marks\":5}]', \
+         '[{\"clause\":\"Perimeter is 48\",\"variable_mapping\":\"2(L+B)=48\",\"derived_equation\":\"B=24-L\"}]', \
+         '[{\"method_id\":\"m1\",\"method_name\":\"Method 1\",\"is_primary\":true,\"steps\":[\
+            {\"step_id\":\"s1\",\"part_label\":\"(a)\",\"description\":\"Isolate B\",\"expression\":\"B=24-L\",\"mark_type\":\"M\",\"mark_value\":1,\"notes\":null},\
+            {\"step_id\":\"s2\",\"part_label\":\"(a)\",\"description\":\"Form quadratic\",\"expression\":\"L^2-24L+135=0\",\"mark_type\":\"M\",\"mark_value\":1,\"notes\":null},\
+            {\"step_id\":\"s3\",\"part_label\":\"(a)\",\"description\":\"Standard form\",\"expression\":\"L^2-24L+135=0\",\"mark_type\":\"A\",\"mark_value\":1,\"notes\":null},\
+            {\"step_id\":\"s4\",\"part_label\":\"(b)\",\"description\":\"Factorize\",\"expression\":\"(L-15)(L-9)=0\",\"mark_type\":\"M\",\"mark_value\":2,\"notes\":null},\
+            {\"step_id\":\"s5\",\"part_label\":\"(b)\",\"description\":\"Solve roots\",\"expression\":\"L=15 or 9\",\"mark_type\":\"A\",\"mark_value\":1,\"notes\":null},\
+            {\"step_id\":\"s6\",\"part_label\":\"(b)\",\"description\":\"Dimensions with units\",\"expression\":\"15m and 9m\",\"mark_type\":\"A\",\"mark_value\":2,\"notes\":null}\
+         ]} ]', \
+         '{\"title_marks\":1,\"line_quality_marks\":1,\"proportion_marks\":1,\"label_marks\":1,\"guidelines\":[\"Use continuous lines\"]}', \
+         '[{\"penalty_type\":\"unit_omission\",\"deduction\":1,\"description\":\"Missing metre unit\"},{\"penalty_type\":\"premature_rounding\",\"deduction\":1,\"description\":\"Early rounding\"}]', \
+         '{\"general_performance\":\"Fair\",\"common_errors\":[\"Did not convert back to x\"],\"remedies\":\"Check final units\"}', \
+         'hash_test')",
+        vec![turso::Value::Text(id.to_string())],
+    )
+    .await
+    .expect("insert theory question");
 }
 
 /// `DbState` over a replica.

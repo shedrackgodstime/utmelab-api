@@ -130,6 +130,12 @@ pub async fn ready_db(cfg: &Config) -> Option<SyncDb> {
     Some(db)
 }
 
+/// Push local committed changes up to the remote database for one-shot commands.
+pub async fn push_db(db: &SyncDb, cfg: &Config) -> Result<(), SyncError> {
+    let policy = SyncPolicy::from_config(cfg);
+    Engine::new(db.clone(), policy.budgets).push().await
+}
+
 pub(crate) fn unix_now() -> u64 {
     std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)

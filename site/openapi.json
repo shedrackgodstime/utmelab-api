@@ -2727,6 +2727,473 @@
         }
       }
     },
+    "/api/v1/theory/{exam}/{subject}": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Paged list of Paper 2 theory questions with filtering.",
+        "operationId": "listTheoryQuestions",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "path",
+            "description": "Exam code, e.g. `WAEC` or `NECO`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "path",
+            "description": "Subject slug, e.g. `general-mathematics` or `physics`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "Optional examination year filter, e.g. 2023.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "topic",
+            "in": "query",
+            "description": "Optional syllabus topic slug filter.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "section",
+            "in": "query",
+            "description": "Optional paper section filter, e.g. `Section A`.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number (defaults to 1).",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "Items per page (1 to 200, defaults to 20).",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Page_TheoryQuestionSummary"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key lacks the required scope.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Exam or subject not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The caller has exceeded the applicable rate limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The API is temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/theory/{exam}/{subject}/{id}": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Paper 2 theory question with practice or full rubric view.",
+        "operationId": "getTheoryQuestion",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "path",
+            "description": "Exam code, e.g. `WAEC`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "path",
+            "description": "Subject slug, e.g. `physics`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Theory question identifier.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "include_rubric",
+            "in": "query",
+            "description": "Whether to include full marking rubric (defaults to false).",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RenderedTheoryQuestion"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key lacks the required scope.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Question not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The caller has exceeded the applicable rate limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The API is temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/theory/{exam}/{subject}/{id}/evaluate": {
+      "post": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Evaluate candidate checklist selections against official WAEC/NECO marking criteria.",
+        "operationId": "evaluateTheorySubmission",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "path",
+            "description": "Exam code, e.g. `WAEC`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "path",
+            "description": "Subject slug, e.g. `general-mathematics`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Theory question identifier.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TheoryEvaluationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TheoryEvaluationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid method or submission data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key lacks the required scope.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Question not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The caller has exceeded the applicable rate limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The API is temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/theory/{exam}/{subject}/{id}/rubric": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "Complete step-by-step marking rubric with M/A/B marks and Chief Examiner notes.",
+        "operationId": "getTheoryRubric",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "path",
+            "description": "Exam code, e.g. `WAEC`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "path",
+            "description": "Subject slug, e.g. `physics`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Theory question identifier.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RenderedTheoryQuestion"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key lacks the required scope.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Question not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The caller has exceeded the applicable rate limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The API is temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/topics/{exam}/{subject}/{slug}": {
       "get": {
         "tags": [
@@ -2859,6 +3326,27 @@
             }
           },
           "prompt": {
+            "type": "string"
+          }
+        }
+      },
+      "AppliedPenalty": {
+        "type": "object",
+        "required": [
+          "penalty_type",
+          "deduction",
+          "reason"
+        ],
+        "properties": {
+          "deduction": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "penalty_type": {
+            "type": "string"
+          },
+          "reason": {
             "type": "string"
           }
         }
@@ -3064,6 +3552,43 @@
           }
         }
       },
+      "DiagramRubric": {
+        "type": "object",
+        "required": [
+          "title_marks",
+          "line_quality_marks",
+          "proportion_marks",
+          "label_marks"
+        ],
+        "properties": {
+          "guidelines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "label_marks": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "line_quality_marks": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "proportion_marks": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "title_marks": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
       "ErrorResponse": {
         "type": "object",
         "description": "Stable body returned by HTTP error responses.",
@@ -3142,6 +3667,27 @@
           }
         }
       },
+      "ExaminerPenalty": {
+        "type": "object",
+        "required": [
+          "penalty_type",
+          "deduction",
+          "description"
+        ],
+        "properties": {
+          "deduction": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "description": {
+            "type": "string"
+          },
+          "penalty_type": {
+            "type": "string"
+          }
+        }
+      },
       "ExaminerTrap": {
         "type": "object",
         "required": [
@@ -3198,6 +3744,25 @@
             "type": "string"
           },
           "unit": {
+            "type": "string"
+          }
+        }
+      },
+      "FormulationClause": {
+        "type": "object",
+        "required": [
+          "clause",
+          "variable_mapping",
+          "derived_equation"
+        ],
+        "properties": {
+          "clause": {
+            "type": "string"
+          },
+          "derived_equation": {
+            "type": "string"
+          },
+          "variable_mapping": {
             "type": "string"
           }
         }
@@ -3375,6 +3940,73 @@
             "items": {
               "type": "string"
             }
+          }
+        }
+      },
+      "MarkingMethod": {
+        "type": "object",
+        "required": [
+          "method_id",
+          "method_name",
+          "is_primary",
+          "steps"
+        ],
+        "properties": {
+          "is_primary": {
+            "type": "boolean"
+          },
+          "method_id": {
+            "type": "string"
+          },
+          "method_name": {
+            "type": "string"
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MarkingStep"
+            }
+          }
+        }
+      },
+      "MarkingStep": {
+        "type": "object",
+        "required": [
+          "step_id",
+          "part_label",
+          "description",
+          "mark_type",
+          "mark_value"
+        ],
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "expression": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "mark_type": {
+            "type": "string"
+          },
+          "mark_value": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "notes": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "part_label": {
+            "type": "string"
+          },
+          "step_id": {
+            "type": "string"
           }
         }
       },
@@ -3948,6 +4580,127 @@
           }
         }
       },
+      "Page_TheoryQuestionSummary": {
+        "type": "object",
+        "description": "One page of a collection in the shape every paged endpoint serves.\nThe envelope lives here, once, so a new paged endpoint cannot\nre-derive the counts: `total_pages` comes from `total_records` and\n`per_page` through [`Page::new`], never from the call site.\n\nThe collection field is `questions` because both surfaces that page\ntoday page questions; a future non-question page renames it there.",
+        "required": [
+          "questions",
+          "page",
+          "per_page",
+          "total_pages",
+          "total_records",
+          "includes_explanation"
+        ],
+        "properties": {
+          "includes_explanation": {
+            "type": "boolean"
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "passages": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Passage"
+            },
+            "propertyNames": {
+              "type": "string"
+            }
+          },
+          "per_page": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "Short summary of a Paper 2 theory question for paged discovery.",
+              "required": [
+                "id",
+                "exam",
+                "subject",
+                "year",
+                "paper",
+                "section",
+                "question_number",
+                "topic_slug",
+                "total_marks",
+                "preview",
+                "has_diagram",
+                "sub_parts_count"
+              ],
+              "properties": {
+                "exam": {
+                  "type": "string"
+                },
+                "has_diagram": {
+                  "type": "boolean"
+                },
+                "id": {
+                  "type": "string"
+                },
+                "paper": {
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": 0
+                },
+                "preview": {
+                  "type": "string"
+                },
+                "question_number": {
+                  "type": "string"
+                },
+                "section": {
+                  "type": "string"
+                },
+                "sub_parts_count": {
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": 0
+                },
+                "subject": {
+                  "type": "string"
+                },
+                "subtopic_slug": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "topic_slug": {
+                  "type": "string"
+                },
+                "total_marks": {
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": 0
+                },
+                "year": {
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": 0
+                }
+              }
+            }
+          },
+          "total_pages": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "total_records": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      },
       "PaperMode": {
         "type": "string",
         "description": "Which gate built a paper (D70). Disclosed on the wire: a consumer must\nbe able to tell a balanced mock from a full-length draw.",
@@ -4363,6 +5116,128 @@
           },
           "verified": {
             "type": "boolean"
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
+      "RenderedTheoryQuestion": {
+        "type": "object",
+        "description": "Served representation of a theory question.",
+        "required": [
+          "id",
+          "exam",
+          "subject",
+          "year",
+          "paper",
+          "section",
+          "question_number",
+          "topic_slug",
+          "total_marks",
+          "stem",
+          "sub_parts",
+          "formulation_bridge",
+          "includes_rubric"
+        ],
+        "properties": {
+          "diagram_rubric": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/DiagramRubric"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "diagram_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "exam": {
+            "type": "string"
+          },
+          "examiner_report": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TheoryExaminerReport"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "formulation_bridge": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FormulationClause"
+            }
+          },
+          "id": {
+            "type": "string"
+          },
+          "includes_rubric": {
+            "type": "boolean"
+          },
+          "marking_methods": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/MarkingMethod"
+            }
+          },
+          "paper": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "penalties": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "$ref": "#/components/schemas/ExaminerPenalty"
+            }
+          },
+          "question_number": {
+            "type": "string"
+          },
+          "section": {
+            "type": "string"
+          },
+          "stem": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "sub_parts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TheorySubPart"
+            }
+          },
+          "subject": {
+            "type": "string"
+          },
+          "subtopic_slug": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "topic_slug": {
+            "type": "string"
+          },
+          "total_marks": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
           },
           "year": {
             "type": "integer",
@@ -4865,7 +5740,8 @@
           "order",
           "question_count",
           "objectives",
-          "countries"
+          "countries",
+          "has_note"
         ],
         "properties": {
           "countries": {
@@ -4876,10 +5752,7 @@
             "description": "Inherited from the parent topic. A subtopic carries no scope of its own."
           },
           "has_note": {
-            "type": [
-              "boolean",
-              "null"
-            ]
+            "type": "boolean"
           },
           "name": {
             "type": "string"
@@ -4954,7 +5827,8 @@
           "question_count",
           "objectives",
           "countries",
-          "subtopics"
+          "subtopics",
+          "has_note"
         ],
         "properties": {
           "countries": {
@@ -4965,10 +5839,7 @@
             "description": "Countries this topic belongs to. Empty means every member country."
           },
           "has_note": {
-            "type": [
-              "boolean",
-              "null"
-            ]
+            "type": "boolean"
           },
           "name": {
             "type": "string"
@@ -5017,6 +5888,228 @@
         ],
         "properties": {
           "name": {
+            "type": "string"
+          }
+        }
+      },
+      "TheoryEvaluationRequest": {
+        "type": "object",
+        "description": "Payload sent by a candidate or app to evaluate an attempted solution.",
+        "required": [
+          "selected_method_id",
+          "achieved_step_ids",
+          "unit_included",
+          "intermediate_rounding_avoided"
+        ],
+        "properties": {
+          "achieved_step_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "intermediate_rounding_avoided": {
+            "type": "boolean"
+          },
+          "selected_method_id": {
+            "type": "string"
+          },
+          "unit_included": {
+            "type": "boolean"
+          }
+        }
+      },
+      "TheoryEvaluationResponse": {
+        "type": "object",
+        "description": "Evaluation outcome applying official WAEC/NECO marking criteria.",
+        "required": [
+          "question_id",
+          "selected_method_id",
+          "total_marks_possible",
+          "awarded_marks",
+          "percentage",
+          "method_marks_awarded",
+          "method_marks_possible",
+          "accuracy_marks_awarded",
+          "accuracy_marks_possible",
+          "independent_marks_awarded",
+          "independent_marks_possible",
+          "penalties_applied",
+          "diagnostic_feedback"
+        ],
+        "properties": {
+          "accuracy_marks_awarded": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "accuracy_marks_possible": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "awarded_marks": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "diagnostic_feedback": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "independent_marks_awarded": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "independent_marks_possible": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "method_marks_awarded": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "method_marks_possible": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "penalties_applied": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AppliedPenalty"
+            }
+          },
+          "percentage": {
+            "type": "number",
+            "format": "double"
+          },
+          "question_id": {
+            "type": "string"
+          },
+          "selected_method_id": {
+            "type": "string"
+          },
+          "total_marks_possible": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
+      "TheoryExaminerReport": {
+        "type": "object",
+        "required": [
+          "general_performance",
+          "remedies"
+        ],
+        "properties": {
+          "common_errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "general_performance": {
+            "type": "string"
+          },
+          "remedies": {
+            "type": "string"
+          }
+        }
+      },
+      "TheoryQuestionSummary": {
+        "type": "object",
+        "description": "Short summary of a Paper 2 theory question for paged discovery.",
+        "required": [
+          "id",
+          "exam",
+          "subject",
+          "year",
+          "paper",
+          "section",
+          "question_number",
+          "topic_slug",
+          "total_marks",
+          "preview",
+          "has_diagram",
+          "sub_parts_count"
+        ],
+        "properties": {
+          "exam": {
+            "type": "string"
+          },
+          "has_diagram": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string"
+          },
+          "paper": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "preview": {
+            "type": "string"
+          },
+          "question_number": {
+            "type": "string"
+          },
+          "section": {
+            "type": "string"
+          },
+          "sub_parts_count": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "subject": {
+            "type": "string"
+          },
+          "subtopic_slug": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "topic_slug": {
+            "type": "string"
+          },
+          "total_marks": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "year": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
+      "TheorySubPart": {
+        "type": "object",
+        "required": [
+          "part_label",
+          "prompt",
+          "allocated_marks"
+        ],
+        "properties": {
+          "allocated_marks": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "part_label": {
+            "type": "string"
+          },
+          "prompt": {
             "type": "string"
           }
         }

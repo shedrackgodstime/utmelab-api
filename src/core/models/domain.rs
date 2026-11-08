@@ -428,3 +428,93 @@ pub struct ExaminerTrap {
     pub misconception: String,
     pub correction: String,
 }
+
+/// A WAEC or NECO Paper 2 theory question with step-by-step marking scheme.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct TheoryQuestion {
+    pub id: String,
+    pub exam: String,
+    pub subject: String,
+    pub year: u32,
+    pub paper: u8,
+    pub section: String,
+    pub question_number: String,
+    pub topic_slug: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub subtopic_slug: Option<String>,
+    pub total_marks: u32,
+    pub stem: RichText,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub diagram_url: Option<String>,
+    #[serde(default)]
+    pub sub_parts: Vec<TheorySubPart>,
+    #[serde(default)]
+    pub formulation_bridge: Vec<FormulationClause>,
+    #[serde(default)]
+    pub marking_methods: Vec<MarkingMethod>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub diagram_rubric: Option<DiagramRubric>,
+    #[serde(default)]
+    pub penalties: Vec<ExaminerPenalty>,
+    pub examiner_report: TheoryExaminerReport,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct TheorySubPart {
+    pub part_label: String,
+    pub prompt: String,
+    pub allocated_marks: u32,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct FormulationClause {
+    pub clause: String,
+    pub variable_mapping: String,
+    pub derived_equation: String,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct MarkingMethod {
+    pub method_id: String,
+    pub method_name: String,
+    pub is_primary: bool,
+    pub steps: Vec<MarkingStep>,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct MarkingStep {
+    pub step_id: String,
+    pub part_label: String,
+    pub description: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub expression: Option<String>,
+    pub mark_type: String,
+    pub mark_value: u32,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub notes: Option<String>,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct DiagramRubric {
+    pub title_marks: u32,
+    pub line_quality_marks: u32,
+    pub proportion_marks: u32,
+    pub label_marks: u32,
+    #[serde(default)]
+    pub guidelines: Vec<String>,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct ExaminerPenalty {
+    pub penalty_type: String,
+    pub deduction: u32,
+    pub description: String,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct TheoryExaminerReport {
+    pub general_performance: String,
+    #[serde(default)]
+    pub common_errors: Vec<String>,
+    pub remedies: String,
+}

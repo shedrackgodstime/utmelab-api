@@ -33,6 +33,14 @@ fn main() {
     if args.get(1).is_some_and(|a| a == "seed-reference-notes") {
         std::process::exit(seed_reference_notes_cmd());
     }
+    if args.get(1).is_some_and(|a| a == "import-notes") {
+        let path = args.get(2).cloned().unwrap_or_default();
+        std::process::exit(import_notes_cmd(path));
+    }
+    if args.get(1).is_some_and(|a| a == "import-theory") {
+        let path = args.get(2).cloned().unwrap_or_default();
+        std::process::exit(import_theory_cmd(path));
+    }
     let cfg = match Config::from_env() {
         Ok(c) => c,
         Err(e) => {
@@ -151,6 +159,120 @@ fn seed_reference_notes_cmd() -> i32 {
             }
             Err(e) => {
                 eprintln!("seed notes failed: {e}");
+                1
+            }
+        }
+    })
+}
+
+fn import_notes_cmd(path_str: String) -> i32 {
+    if path_str.is_empty() {
+        eprintln!("usage: import-notes <path/to/notes.json>");
+        return 2;
+    }
+    let content = match std::fs::read_to_string(&path_str) {
+        Ok(c) => c,
+        Err(e) => {
+            eprintln!("failed to read file '{path_str}': {e}");
+            return 1;
+        }
+    };
+    let cfg = match Config::from_env() {
+        Ok(c) => c,
+        Err(e) => {
+            eprintln!("{e}");
+            return 1;
+        }
+    };
+    if !cfg.has_db() {
+        eprintln!("no TURSO_DB_URL/TOKEN; nothing to import into");
+        return 1;
+    }
+    let rt = match tokio::runtime::Builder::new_current_thread()
+        .enable_all()
+        .build()
+    {
+        Ok(r) => r,
+        Err(e) => {
+            eprintln!("failed to start command runtime: {e}");
+            return 1;
+        }
+    };
+    rt.block_on(async move {
+        let Some(db) = store::sync::ready_db(&cfg).await else {
+            eprintln!("could not open replica (is the server running?) or reach cloud");
+            return 1;
+        };
+        let st = utmelab_api::state::DbState::detached(db.clone());
+        if let Err(e) = store::schema::ensure_schema(&st).await {
+            eprintln!("ensure schema failed: {e}");
+            return 1;
+        }
+        match store::catalog::import_notes_from_json(&st, &content).await {
+            Ok(count) => {
+                println!("imported {count} study notes from {path_str}");
+                let _ = store::sync::push_db(&db, &cfg).await;
+                0
+            }
+            Err(e) => {
+                eprintln!("import notes failed: {e}");
+                1
+            }
+        }
+    })
+}
+
+fn import_theory_cmd(path_str: String) -> i32 {
+    if path_str.is_empty() {
+        eprintln!("usage: import-theory <path/to/theory_questions.json>");
+        return 2;
+    }
+    let content = match std::fs::read_to_string(&path_str) {
+        Ok(c) => c,
+        Err(e) => {
+            eprintln!("failed to read file '{path_str}': {e}");
+            return 1;
+        }
+    };
+    let cfg = match Config::from_env() {
+        Ok(c) => c,
+        Err(e) => {
+            eprintln!("{e}");
+            return 1;
+        }
+    };
+    if !cfg.has_db() {
+        eprintln!("no TURSO_DB_URL/TOKEN; nothing to import into");
+        return 1;
+    }
+    let rt = match tokio::runtime::Builder::new_current_thread()
+        .enable_all()
+        .build()
+    {
+        Ok(r) => r,
+        Err(e) => {
+            eprintln!("failed to start command runtime: {e}");
+            return 1;
+        }
+    };
+    rt.block_on(async move {
+        let Some(db) = store::sync::ready_db(&cfg).await else {
+            eprintln!("could not open replica (is the server running?) or reach cloud");
+            return 1;
+        };
+        let st = utmelab_api::state::DbState::detached(db.clone());
+        if let Err(e) = store::schema::ensure_schema(&st).await {
+            eprintln!("ensure schema failed: {e}");
+            return 1;
+        }
+        match store::catalog::import_theory_questions_from_json(&st, &content).await {
+            Ok(count) => {
+                println!("imported {count} theory questions from {path_str}");
+                let _ = store::sync::push_db(&db, &cfg).await;
+                0
+            }
+            Err(e) => {
+                eprintln!("import theory failed: {e}");
                 1
             }
         }

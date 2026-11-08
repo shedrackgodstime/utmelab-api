@@ -96,11 +96,8 @@ pub async fn build_syllabus(
         }
     }
 
-    // Resolve syllabus mapping: NECO subjects may point to WAEC syllabus
-    let (syllabus_exam, syllabus_subject) = match (&subject.syllabus_exam, &subject.syllabus_subject) {
-        (Some(se), Some(ss)) => (se.clone(), ss.clone()),
-        _ => (exam.to_string(), slug.to_string()),
-    };
+    // Resolve syllabus mapping: NECO subjects may point to WAEC syllabus.
+    let (syllabus_exam, syllabus_subject) = core::catalog::syllabus_owner(exam, slug, &subject);
 
     let tree = store::catalog::list_syllabus(s, &syllabus_exam, &syllabus_subject).await?;
     let counts =
@@ -113,9 +110,8 @@ pub async fn build_syllabus(
         &counts,
         country.as_deref(),
     );
-    if let Ok(notes) = store::catalog::notes_index(s, &syllabus_exam, &syllabus_subject).await {
-        core::catalog::attach_notes_to_syllabus(&mut syllabus, &notes);
-    }
+    let notes = store::catalog::notes_index(s, &syllabus_exam, &syllabus_subject).await?;
+    core::catalog::attach_notes_to_syllabus(&mut syllabus, &notes);
     Ok(syllabus)
 }
 

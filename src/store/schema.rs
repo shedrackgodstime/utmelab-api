@@ -25,7 +25,7 @@ pub const CONTRACT_VERSION: u64 = 1;
 
 /// Version of the API-owned schema. This is separate from
 /// [`CONTRACT_VERSION`], which belongs to the content pipeline.
-pub const API_SCHEMA_VERSION: u64 = 3;
+pub const API_SCHEMA_VERSION: u64 = 5;
 
 /// Tables the API owns and creates at boot.
 pub(crate) const DDL: &[&str] = &[
@@ -36,6 +36,21 @@ pub(crate) const DDL: &[&str] = &[
     "CREATE TABLE IF NOT EXISTS sessions (token_hash TEXT PRIMARY KEY, username TEXT NOT NULL, expires_at INTEGER NOT NULL)",
     "CREATE TABLE IF NOT EXISTS reports (id TEXT PRIMARY KEY, target_type TEXT NOT NULL, target_id TEXT NOT NULL, reporter TEXT NOT NULL, reason TEXT NOT NULL, detail TEXT, created_at INTEGER NOT NULL, UNIQUE(reporter, target_type, target_id, reason))",
     "CREATE TABLE IF NOT EXISTS topic_notes (id TEXT PRIMARY KEY, exam TEXT NOT NULL, subject TEXT NOT NULL, topic_slug TEXT NOT NULL, subtopic_slug TEXT, title TEXT NOT NULL, read_time_minutes INTEGER NOT NULL, key_takeaway TEXT NOT NULL, sections TEXT NOT NULL, worked_examples TEXT NOT NULL DEFAULT '[]', formulas TEXT NOT NULL DEFAULT '[]', active_recall_checks TEXT NOT NULL DEFAULT '[]', examiner_traps TEXT NOT NULL DEFAULT '[]', linked_question_ids TEXT NOT NULL DEFAULT '[]', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+    "CREATE TABLE IF NOT EXISTS theory_questions (id TEXT PRIMARY KEY, exam TEXT NOT NULL, subject TEXT NOT NULL, year INTEGER NOT NULL, paper INTEGER NOT NULL DEFAULT 2, section TEXT NOT NULL, question_number TEXT NOT NULL, topic_slug TEXT NOT NULL, subtopic_slug TEXT, total_marks INTEGER NOT NULL, stem TEXT NOT NULL, diagram_url TEXT, sub_parts TEXT NOT NULL DEFAULT '[]', formulation_bridge TEXT NOT NULL DEFAULT '[]', marking_methods TEXT NOT NULL DEFAULT '[]', diagram_rubric TEXT, penalties TEXT NOT NULL DEFAULT '[]', examiner_report TEXT NOT NULL, content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+];
+
+/// Indexes the API owns. Kept out of [`DDL`] because that list is the table
+/// shape contract; these are applied after migrations so an upgrade can
+/// collapse duplicates before the unique ones exist.
+pub(crate) const INDEXES: &[&str] = &[
+    "CREATE UNIQUE INDEX IF NOT EXISTS idx_api_keys_idempotency_hash ON api_keys(idempotency_hash)",
+    "CREATE INDEX IF NOT EXISTS idx_notes_lookup ON topic_notes (exam, subject, topic_slug)",
+    "CREATE INDEX IF NOT EXISTS idx_notes_subtopic_lookup ON topic_notes (exam, subject, subtopic_slug)",
+    "CREATE UNIQUE INDEX IF NOT EXISTS idx_notes_unique_topic ON topic_notes (exam, subject, topic_slug) WHERE subtopic_slug IS NULL OR subtopic_slug = ''",
+    "CREATE UNIQUE INDEX IF NOT EXISTS idx_notes_unique_subtopic ON topic_notes (exam, subject, subtopic_slug) WHERE subtopic_slug IS NOT NULL AND subtopic_slug <> ''",
+    "CREATE INDEX IF NOT EXISTS idx_theory_lookup ON theory_questions (exam, subject, topic_slug)",
+    "CREATE INDEX IF NOT EXISTS idx_theory_year_lookup ON theory_questions (exam, subject, year)",
+    "CREATE UNIQUE INDEX IF NOT EXISTS idx_theory_unique ON theory_questions (exam, subject, year, question_number)",
 ];
 
 /// Every table the store reads, and the columns it depends on. This is the
@@ -96,6 +111,30 @@ pub const READ_SHAPES: &[(&str, &[&str])] = &[
             "active_recall_checks",
             "examiner_traps",
             "linked_question_ids",
+            "content_hash",
+        ],
+    ),
+    (
+        "theory_questions",
+        &[
+            "id",
+            "exam",
+            "subject",
+            "year",
+            "paper",
+            "section",
+            "question_number",
+            "topic_slug",
+            "subtopic_slug",
+            "total_marks",
+            "stem",
+            "diagram_url",
+            "sub_parts",
+            "formulation_bridge",
+            "marking_methods",
+            "diagram_rubric",
+            "penalties",
+            "examiner_report",
             "content_hash",
         ],
     ),
@@ -264,13 +303,16 @@ pub async fn ensure_schema(s: &DbState) -> Result<(), AppError> {
         super::write::execute_ddl_local(s, ddl).await?;
     }
     apply_migrations(s).await?;
+    for index in INDEXES {
+        super::write::execute_ddl_local(s, index).await?;
+    }
     Ok(())
 }
 
 /// API-owned migrations are numbered, applied once, and never rewritten.
 /// Fresh databases receive the current DDL first; upgraded databases receive
 /// the same DDL idempotently and then any missing migrations.
-const MIGRATIONS: &[u64] = &[1, 2, 3];
+const MIGRATIONS: &[u64] = &[1, 2, 3, 4, 5];
 
 async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
     for &version in MIGRATIONS {
@@ -323,6 +365,66 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 super::write::execute_ddl_local(
                     s,
                     "CREATE INDEX IF NOT EXISTS idx_notes_subtopic_lookup ON topic_notes (exam, subject, subtopic_slug)",
+                )
+                .await?;
+            }
+            4 => {
+                // Collapse duplicate placements before the unique indexes
+                // exist. Keep the most recently inserted row in each group.
+                super::write::execute_write_local(
+                    s,
+                    r#"DELETE FROM topic_notes
+                       WHERE (subtopic_slug IS NULL OR subtopic_slug = '')
+                         AND rowid NOT IN (
+                           SELECT MAX(rowid) FROM topic_notes
+                           WHERE subtopic_slug IS NULL OR subtopic_slug = ''
+                           GROUP BY exam, subject, topic_slug
+                         )"#,
+                    vec![],
+                )
+                .await?;
+                super::write::execute_write_local(
+                    s,
+                    r#"DELETE FROM topic_notes
+                       WHERE subtopic_slug IS NOT NULL AND subtopic_slug <> ''
+                         AND rowid NOT IN (
+                           SELECT MAX(rowid) FROM topic_notes
+                           WHERE subtopic_slug IS NOT NULL AND subtopic_slug <> ''
+                           GROUP BY exam, subject, subtopic_slug
+                         )"#,
+                    vec![],
+                )
+                .await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE UNIQUE INDEX IF NOT EXISTS idx_notes_unique_topic ON topic_notes (exam, subject, topic_slug) WHERE subtopic_slug IS NULL OR subtopic_slug = ''",
+                )
+                .await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE UNIQUE INDEX IF NOT EXISTS idx_notes_unique_subtopic ON topic_notes (exam, subject, subtopic_slug) WHERE subtopic_slug IS NOT NULL AND subtopic_slug <> ''",
+                )
+                .await?;
+            }
+            5 => {
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE TABLE IF NOT EXISTS theory_questions (id TEXT PRIMARY KEY, exam TEXT NOT NULL, subject TEXT NOT NULL, year INTEGER NOT NULL, paper INTEGER NOT NULL DEFAULT 2, section TEXT NOT NULL, question_number TEXT NOT NULL, topic_slug TEXT NOT NULL, subtopic_slug TEXT, total_marks INTEGER NOT NULL, stem TEXT NOT NULL, diagram_url TEXT, sub_parts TEXT NOT NULL DEFAULT '[]', formulation_bridge TEXT NOT NULL DEFAULT '[]', marking_methods TEXT NOT NULL DEFAULT '[]', diagram_rubric TEXT, penalties TEXT NOT NULL DEFAULT '[]', examiner_report TEXT NOT NULL, content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+                )
+                .await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE INDEX IF NOT EXISTS idx_theory_lookup ON theory_questions (exam, subject, topic_slug)",
+                )
+                .await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE INDEX IF NOT EXISTS idx_theory_year_lookup ON theory_questions (exam, subject, year)",
+                )
+                .await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE UNIQUE INDEX IF NOT EXISTS idx_theory_unique ON theory_questions (exam, subject, year, question_number)",
                 )
                 .await?;
             }
@@ -718,6 +820,72 @@ mod tests {
         assert!(!MIGRATIONS.is_empty());
         assert!(MIGRATIONS.windows(2).all(|pair| pair[0] < pair[1]));
         assert_eq!(MIGRATIONS.last().copied(), Some(API_SCHEMA_VERSION));
+    }
+
+    async fn insert_note(
+        conn: &turso::Connection,
+        id: &str,
+        subtopic: Option<&str>,
+    ) -> Result<u64, turso::Error> {
+        conn.execute(
+            "INSERT INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, linked_question_ids, content_hash) \
+             VALUES (?1, 'JAMB', 'physics', 'motion', ?2, 'T', 3, '{\"text\":\"x\",\"inline\":[]}', '[]', '[]', '[]', '[]', '[]', '[]', 'h')",
+            vec![
+                turso::Value::Text(id.to_string()),
+                subtopic
+                    .map(|slug| turso::Value::Text(slug.to_string()))
+                    .unwrap_or(turso::Value::Null),
+            ],
+        )
+        .await
+    }
+
+    #[tokio::test]
+    async fn duplicate_note_placements_are_rejected_by_the_unique_indexes() {
+        let s = local_db().await;
+        let conn = conn_of(&s).await;
+        crate::testing::api_schema(&conn).await;
+
+        insert_note(&conn, "n1", None)
+            .await
+            .expect("first topic note");
+        assert!(
+            insert_note(&conn, "n2", None).await.is_err(),
+            "a second topic note for the same placement must be rejected"
+        );
+
+        insert_note(&conn, "s1", Some("projectiles"))
+            .await
+            .expect("first subtopic note");
+        assert!(
+            insert_note(&conn, "s2", Some("projectiles")).await.is_err(),
+            "a second subtopic note for the same placement must be rejected"
+        );
+    }
+
+    #[tokio::test]
+    async fn duplicate_theory_questions_are_rejected_by_the_unique_index() {
+        let s = local_db().await;
+        let conn = conn_of(&s).await;
+        crate::testing::api_schema(&conn).await;
+
+        let insert = |id: &'static str| {
+            let conn = &conn;
+            async move {
+                conn.execute(
+                    "INSERT INTO theory_questions (id, exam, subject, year, paper, section, question_number, topic_slug, subtopic_slug, total_marks, stem, diagram_url, sub_parts, formulation_bridge, marking_methods, diagram_rubric, penalties, examiner_report, content_hash) \
+                     VALUES (?1, 'WAEC', 'general-mathematics', 2023, 2, 'Section A', '4', 'algebra', null, 8, '{\"text\":\"s\",\"inline\":[]}', null, '[]', '[]', '[]', null, '[]', '{\"general_performance\":\"g\",\"common_errors\":[],\"remedies\":\"r\"}', 'hash')",
+                    vec![turso::Value::Text(id.to_string())],
+                )
+                .await
+            }
+        };
+
+        insert("q1").await.expect("first question");
+        assert!(
+            insert("q2").await.is_err(),
+            "a second question for the same exam, subject, year, and question_number must be rejected"
+        );
     }
 
     async fn owned_shape(conn: &turso::Connection) -> Vec<(String, Vec<String>)> {

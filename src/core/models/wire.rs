@@ -8,7 +8,10 @@
 
 use std::collections::HashMap;
 
-use super::domain::{Choice, Explanation, Passage, RichText, Subject};
+use super::domain::{
+    Choice, DiagramRubric, ExaminerPenalty, Explanation, FormulationClause, MarkingMethod,
+    Passage, RichText, Subject, TheoryExaminerReport, TheorySubPart,
+};
 
 /// Stable body returned by HTTP error responses.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
@@ -199,8 +202,7 @@ pub struct SyllabusTopic {
     /// Countries this topic belongs to. Empty means every member country.
     pub countries: Vec<String>,
     pub subtopics: Vec<SyllabusSubtopic>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub has_note: Option<bool>,
+    pub has_note: bool,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub note_id: Option<String>,
 }
@@ -214,8 +216,7 @@ pub struct SyllabusSubtopic {
     pub objectives: Vec<String>,
     /// Inherited from the parent topic. A subtopic carries no scope of its own.
     pub countries: Vec<String>,
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub has_note: Option<bool>,
+    pub has_note: bool,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub note_id: Option<String>,
 }
@@ -346,6 +347,89 @@ pub struct PublicSubject {
     pub objective_paper_questions: Option<u32>,
     pub held: u32,
     pub verified: u32,
+}
+
+/// Short summary of a Paper 2 theory question for paged discovery.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
+pub struct TheoryQuestionSummary {
+    pub id: String,
+    pub exam: String,
+    pub subject: String,
+    pub year: u32,
+    pub paper: u8,
+    pub section: String,
+    pub question_number: String,
+    pub topic_slug: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub subtopic_slug: Option<String>,
+    pub total_marks: u32,
+    pub preview: String,
+    pub has_diagram: bool,
+    pub sub_parts_count: u8,
+}
+
+/// Served representation of a theory question.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
+pub struct RenderedTheoryQuestion {
+    pub id: String,
+    pub exam: String,
+    pub subject: String,
+    pub year: u32,
+    pub paper: u8,
+    pub section: String,
+    pub question_number: String,
+    pub topic_slug: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub subtopic_slug: Option<String>,
+    pub total_marks: u32,
+    pub stem: RichText,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub diagram_url: Option<String>,
+    pub sub_parts: Vec<TheorySubPart>,
+    pub formulation_bridge: Vec<FormulationClause>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub marking_methods: Option<Vec<MarkingMethod>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub diagram_rubric: Option<DiagramRubric>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub penalties: Option<Vec<ExaminerPenalty>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub examiner_report: Option<TheoryExaminerReport>,
+    pub includes_rubric: bool,
+}
+
+/// Payload sent by a candidate or app to evaluate an attempted solution.
+#[derive(Clone, Debug, PartialEq, serde::Deserialize, utoipa::ToSchema)]
+pub struct TheoryEvaluationRequest {
+    pub selected_method_id: String,
+    pub achieved_step_ids: Vec<String>,
+    pub unit_included: bool,
+    pub intermediate_rounding_avoided: bool,
+}
+
+/// Evaluation outcome applying official WAEC/NECO marking criteria.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
+pub struct TheoryEvaluationResponse {
+    pub question_id: String,
+    pub selected_method_id: String,
+    pub total_marks_possible: u32,
+    pub awarded_marks: u32,
+    pub percentage: f64,
+    pub method_marks_awarded: u32,
+    pub method_marks_possible: u32,
+    pub accuracy_marks_awarded: u32,
+    pub accuracy_marks_possible: u32,
+    pub independent_marks_awarded: u32,
+    pub independent_marks_possible: u32,
+    pub penalties_applied: Vec<AppliedPenalty>,
+    pub diagnostic_feedback: Vec<String>,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
+pub struct AppliedPenalty {
+    pub penalty_type: String,
+    pub deduction: u32,
+    pub reason: String,
 }
 
 #[cfg(test)]

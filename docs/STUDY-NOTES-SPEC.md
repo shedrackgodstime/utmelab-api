@@ -238,5 +238,6 @@ Mounted under `src/api/v1/notes.rs` and merged into `src/api/v1/mod.rs`:
    * Mount in `src/api/v1/mod.rs` and update OpenAPI contract test.
 4. **Step 4: Unit & Integration Tests**
    * Test keyed access, scope verification, ETag support, 404 behavior, and media URL resolution on seeded test replicas.
-5. **Step 5: Content Factory Tooling (`utmelab-bank`)**
-   * Author initial reference notes for flagship subjects (JAMB Physics, Biology, Chemistry).
+5. **Step 5: Manual Note Authoring**
+   * Author reference notes by hand in the API repository.
+   * Load them with the `seed-reference-notes` command after verifying syllabus placement.

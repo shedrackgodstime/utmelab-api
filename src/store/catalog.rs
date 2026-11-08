@@ -1101,9 +1101,15 @@ fn map_topic_note(row: &turso::Row) -> Result<core::models::TopicNote, AppError>
     let exam: String = row.get(1).map_err(upstream)?;
     let subject: String = row.get(2).map_err(upstream)?;
     let topic_slug: String = row.get(3).map_err(upstream)?;
-    let subtopic_slug = opt_string(row.get_value(4).map_err(upstream)?, "topic_notes.subtopic_slug")?;
+    let subtopic_slug = opt_string(
+        row.get_value(4).map_err(upstream)?,
+        "topic_notes.subtopic_slug",
+    )?;
     let title: String = row.get(5).map_err(upstream)?;
-    let read_time_minutes = req_int::<u8>(row.get_value(6).map_err(upstream)?, "topic_notes.read_time_minutes")?;
+    let read_time_minutes = req_int::<u8>(
+        row.get_value(6).map_err(upstream)?,
+        "topic_notes.read_time_minutes",
+    )?;
     let key_takeaway_raw: String = row.get(7).map_err(upstream)?;
     let sections_raw: String = row.get(8).map_err(upstream)?;
     let worked_examples_raw: String = row.get(9).map_err(upstream)?;
@@ -1124,7 +1130,10 @@ fn map_topic_note(row: &turso::Row) -> Result<core::models::TopicNote, AppError>
         sections: json_col(&sections_raw, "topic_notes.sections")?,
         worked_examples: json_col(&worked_examples_raw, "topic_notes.worked_examples")?,
         formulas: json_col(&formulas_raw, "topic_notes.formulas")?,
-        active_recall_checks: json_col(&active_recall_checks_raw, "topic_notes.active_recall_checks")?,
+        active_recall_checks: json_col(
+            &active_recall_checks_raw,
+            "topic_notes.active_recall_checks",
+        )?,
         examiner_traps: json_col(&examiner_traps_raw, "topic_notes.examiner_traps")?,
         linked_question_ids: json_col(&linked_question_ids_raw, "topic_notes.linked_question_ids")?,
     })
@@ -1146,11 +1155,16 @@ pub async fn get_topic_note(
         async move {
             let mut stmt = conn
                 .prepare(
-                    "SELECT id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, \
-                     key_takeaway, sections, worked_examples, formulas, active_recall_checks, \
-                     examiner_traps, linked_question_ids \
-                     FROM topic_notes \
-                     WHERE exam = ?1 AND subject = ?2 AND topic_slug = ?3 AND (subtopic_slug IS NULL OR subtopic_slug = '') \
+                    "SELECT n.id, n.exam, n.subject, n.topic_slug, n.subtopic_slug, n.title, \
+                     n.read_time_minutes, n.key_takeaway, n.sections, n.worked_examples, \
+                     n.formulas, n.active_recall_checks, n.examiner_traps, n.linked_question_ids \
+                     FROM topic_notes n \
+                     WHERE n.exam = ?1 AND n.subject = ?2 AND n.topic_slug = ?3 \
+                       AND (n.subtopic_slug IS NULL OR n.subtopic_slug = '') \
+                       AND EXISTS ( \
+                         SELECT 1 FROM topics t \
+                         WHERE t.exam = n.exam AND t.subject = n.subject AND t.slug = n.topic_slug \
+                       ) \
                      LIMIT 1",
                 )
                 .await
@@ -1184,11 +1198,18 @@ pub async fn get_subtopic_note(
         async move {
             let mut stmt = conn
                 .prepare(
-                    "SELECT id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, \
-                     key_takeaway, sections, worked_examples, formulas, active_recall_checks, \
-                     examiner_traps, linked_question_ids \
-                     FROM topic_notes \
-                     WHERE exam = ?1 AND subject = ?2 AND subtopic_slug = ?3 \
+                    "SELECT n.id, n.exam, n.subject, n.topic_slug, n.subtopic_slug, n.title, \
+                     n.read_time_minutes, n.key_takeaway, n.sections, n.worked_examples, \
+                     n.formulas, n.active_recall_checks, n.examiner_traps, n.linked_question_ids \
+                     FROM topic_notes n \
+                     WHERE n.exam = ?1 AND n.subject = ?2 AND n.subtopic_slug = ?3 \
+                       AND n.subtopic_slug <> '' \
+                       AND EXISTS ( \
+                         SELECT 1 FROM subtopics st \
+                         JOIN topics t ON t.slug = st.topic \
+                         WHERE t.exam = n.exam AND t.subject = n.subject \
+                           AND t.slug = n.topic_slug AND st.slug = n.subtopic_slug \
+                       ) \
                      LIMIT 1",
                 )
                 .await
@@ -1236,6 +1257,16 @@ pub async fn notes_index(
         }
     })
     .await
+}
+
+fn note_content_hash(parts: &[&str]) -> String {
+    use sha2::Digest;
+    let mut hasher = sha2::Sha256::new();
+    for part in parts {
+        hasher.update(part.as_bytes());
+        hasher.update([0u8]);
+    }
+    crate::core::hex::encode(&hasher.finalize())
 }
 
 /// Seed reference study notes for testing and demonstration.
@@ -1295,7 +1326,8 @@ pub async fn seed_reference_notes(s: &DbState) -> Result<(), AppError> {
             ],
             "conditions": ["Constant linear acceleration"]
         }
-    ]).to_string();
+    ])
+    .to_string();
 
     let topic_checks = serde_json::json!([
         {
@@ -1467,6 +1499,41 @@ pub async fn seed_reference_notes(s: &DbState) -> Result<(), AppError> {
         }
     ]).to_string();
 
+    // A note without a verified placement is not storable. Fail before any
+    // write so a bad seed cannot leave a half-applied pair behind.
+    let tree = list_syllabus(s, "JAMB", "physics").await?;
+    let Some(topic) = tree.iter().find(|t| t.slug == "motion") else {
+        return Err(AppError::BadRequest(
+            "JAMB physics has no topic 'motion'; note placement is unverified".to_string(),
+        ));
+    };
+    if !topic
+        .subtopics
+        .iter()
+        .any(|st| st.slug == "projectiles-range-maximum-height-time-of-flight-and-applicat")
+    {
+        return Err(AppError::BadRequest(
+            "JAMB physics topic 'motion' has no projectiles subtopic; note placement is unverified"
+                .to_string(),
+        ));
+    }
+
+    let topic_hash = note_content_hash(&[
+        &topic_takeaway,
+        &topic_sections,
+        &topic_formulas,
+        &topic_checks,
+        &topic_traps,
+    ]);
+    let subtopic_hash = note_content_hash(&[
+        &subtopic_takeaway,
+        &subtopic_sections,
+        &subtopic_examples,
+        &subtopic_formulas,
+        &subtopic_checks,
+        &subtopic_traps,
+    ]);
+
     super::write::execute_write(
         s,
         "INSERT OR REPLACE INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, linked_question_ids, content_hash) \
@@ -1485,7 +1552,7 @@ pub async fn seed_reference_notes(s: &DbState) -> Result<(), AppError> {
             turso::Value::Text(topic_checks),
             turso::Value::Text(topic_traps),
             turso::Value::Text("[]".to_string()),
-            turso::Value::Text("content_hash_motion".to_string()),
+            turso::Value::Text(topic_hash),
         ],
     ).await?;
 
@@ -1508,11 +1575,500 @@ pub async fn seed_reference_notes(s: &DbState) -> Result<(), AppError> {
             turso::Value::Text(subtopic_checks),
             turso::Value::Text(subtopic_traps),
             turso::Value::Text("[]".to_string()),
-            turso::Value::Text("content_hash_projectiles".to_string()),
+            turso::Value::Text(subtopic_hash),
         ],
     ).await?;
 
     Ok(())
+}
+
+/// Import an array of notes from a JSON string into the topic_notes table.
+pub async fn import_notes_from_json(s: &DbState, json_str: &str) -> Result<usize, AppError> {
+    let notes: Vec<core::models::TopicNote> = serde_json::from_str(json_str)
+        .map_err(|e| AppError::BadRequest(format!("invalid notes json: {e}")))?;
+
+    for note in &notes {
+        let takeaway_json = serde_json::to_string(&note.key_takeaway)
+            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let sections_json = serde_json::to_string(&note.sections)
+            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let examples_json = serde_json::to_string(&note.worked_examples)
+            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let formulas_json = serde_json::to_string(&note.formulas)
+            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let checks_json = serde_json::to_string(&note.active_recall_checks)
+            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let traps_json = serde_json::to_string(&note.examiner_traps)
+            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let linked_q_json = serde_json::to_string(&note.linked_question_ids)
+            .map_err(|e| AppError::Internal(e.to_string()))?;
+
+        let hash = note_content_hash(&[
+            &takeaway_json,
+            &sections_json,
+            &examples_json,
+            &formulas_json,
+            &checks_json,
+            &traps_json,
+        ]);
+
+        let subtopic_val = match &note.subtopic_slug {
+            Some(slug) if !slug.is_empty() => turso::Value::Text(slug.clone()),
+            _ => turso::Value::Null,
+        };
+
+        super::write::execute_write(
+            s,
+            "INSERT OR REPLACE INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, linked_question_ids, content_hash) \
+             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15)",
+            vec![
+                turso::Value::Text(note.id.clone()),
+                turso::Value::Text(note.exam.clone()),
+                turso::Value::Text(note.subject.clone()),
+                turso::Value::Text(note.topic_slug.clone()),
+                subtopic_val,
+                turso::Value::Text(note.title.clone()),
+                turso::Value::Integer(note.read_time_minutes as i64),
+                turso::Value::Text(takeaway_json),
+                turso::Value::Text(sections_json),
+                turso::Value::Text(examples_json),
+                turso::Value::Text(formulas_json),
+                turso::Value::Text(checks_json),
+                turso::Value::Text(traps_json),
+                turso::Value::Text(linked_q_json),
+                turso::Value::Text(hash),
+            ],
+        ).await?;
+    }
+
+    Ok(notes.len())
+}
+
+fn map_theory_question(row: &turso::Row) -> Result<core::models::TheoryQuestion, AppError> {
+    let id: String = row.get(0).map_err(upstream)?;
+    let exam: String = row.get(1).map_err(upstream)?;
+    let subject: String = row.get(2).map_err(upstream)?;
+    let year: i64 = row.get(3).map_err(upstream)?;
+    let paper: i64 = row.get(4).map_err(upstream)?;
+    let section: String = row.get(5).map_err(upstream)?;
+    let question_number: String = row.get(6).map_err(upstream)?;
+    let topic_slug: String = row.get(7).map_err(upstream)?;
+    let subtopic_slug: Option<String> = row.get(8).map_err(upstream)?;
+    let total_marks: i64 = row.get(9).map_err(upstream)?;
+    let stem_raw: String = row.get(10).map_err(upstream)?;
+    let diagram_url: Option<String> = row.get(11).map_err(upstream)?;
+    let sub_parts_raw: String = row.get(12).map_err(upstream)?;
+    let formulation_bridge_raw: String = row.get(13).map_err(upstream)?;
+    let marking_methods_raw: String = row.get(14).map_err(upstream)?;
+    let diagram_rubric_raw: Option<String> = row.get(15).map_err(upstream)?;
+    let penalties_raw: String = row.get(16).map_err(upstream)?;
+    let examiner_report_raw: String = row.get(17).map_err(upstream)?;
+
+    Ok(core::models::TheoryQuestion {
+        id,
+        exam,
+        subject,
+        year: year as u32,
+        paper: paper as u8,
+        section,
+        question_number,
+        topic_slug,
+        subtopic_slug,
+        total_marks: total_marks as u32,
+        stem: json_col(&stem_raw, "theory_questions.stem")?,
+        diagram_url,
+        sub_parts: json_col(&sub_parts_raw, "theory_questions.sub_parts")?,
+        formulation_bridge: json_col(&formulation_bridge_raw, "theory_questions.formulation_bridge")?,
+        marking_methods: json_col(&marking_methods_raw, "theory_questions.marking_methods")?,
+        diagram_rubric: match diagram_rubric_raw {
+            Some(ref raw) if !raw.is_empty() && raw != "null" => {
+                Some(json_col(raw, "theory_questions.diagram_rubric")?)
+            }
+            _ => None,
+        },
+        penalties: json_col(&penalties_raw, "theory_questions.penalties")?,
+        examiner_report: json_col(&examiner_report_raw, "theory_questions.examiner_report")?,
+    })
+}
+
+pub async fn get_theory_question(
+    s: &DbState,
+    exam: &str,
+    subject: &str,
+    id: &str,
+) -> Result<Option<core::models::TheoryQuestion>, AppError> {
+    let exam = exam.to_string();
+    let subject = subject.to_string();
+    let id = id.to_string();
+    with_conn(s, |conn| {
+        let exam = exam.clone();
+        let subject = subject.clone();
+        let id = id.clone();
+        async move {
+            let mut stmt = conn
+                .prepare(
+                    "SELECT id, exam, subject, year, paper, section, question_number, \
+                     topic_slug, subtopic_slug, total_marks, stem, diagram_url, sub_parts, \
+                     formulation_bridge, marking_methods, diagram_rubric, penalties, \
+                     examiner_report \
+                     FROM theory_questions \
+                     WHERE exam = ?1 AND subject = ?2 AND id = ?3 \
+                     LIMIT 1",
+                )
+                .await
+                .map_err(upstream)?;
+            let mut rows = stmt
+                .query([exam.as_str(), subject.as_str(), id.as_str()])
+                .await
+                .map_err(upstream)?;
+            let Some(row) = rows.next().await.map_err(upstream)? else {
+                return Ok(None);
+            };
+            Ok(Some(map_theory_question(&row)?))
+        }
+    })
+    .await
+}
+
+pub async fn list_theory_questions(
+    s: &DbState,
+    exam: &str,
+    subject: &str,
+    year: Option<u32>,
+    topic: Option<&str>,
+    section: Option<&str>,
+    page: u32,
+    per_page: u32,
+) -> Result<core::models::Page<core::models::TheoryQuestionSummary>, AppError> {
+    let (page, per_page) = core::catalog::page_bounds(page, per_page);
+    let offset = (page.saturating_sub(1)) * per_page;
+
+    let exam = exam.to_string();
+    let subject = subject.to_string();
+    let topic = topic.map(|t| t.to_string());
+    let section = section.map(|sec| sec.to_string());
+
+    with_conn(s, |conn| {
+        let exam = exam.clone();
+        let subject = subject.clone();
+        let topic = topic.clone();
+        let section = section.clone();
+        async move {
+            let mut filter_sql = String::from("WHERE exam = ?1 AND subject = ?2");
+            let mut count_params = vec![
+                turso::Value::Text(exam.clone()),
+                turso::Value::Text(subject.clone()),
+            ];
+
+            if let Some(y) = year {
+                filter_sql.push_str(&format!(" AND year = ?{}", count_params.len() + 1));
+                count_params.push(turso::Value::Integer(y as i64));
+            }
+            if let Some(ref t) = topic {
+                filter_sql.push_str(&format!(" AND topic_slug = ?{}", count_params.len() + 1));
+                count_params.push(turso::Value::Text(t.clone()));
+            }
+            if let Some(ref sec) = section {
+                filter_sql.push_str(&format!(" AND section = ?{}", count_params.len() + 1));
+                count_params.push(turso::Value::Text(sec.clone()));
+            }
+
+            let count_sql = format!("SELECT COUNT(*) FROM theory_questions {}", filter_sql);
+            let mut count_stmt = conn.prepare(&count_sql).await.map_err(upstream)?;
+            let mut count_rows = count_stmt.query(count_params.clone()).await.map_err(upstream)?;
+            let total_records: usize = match count_rows.next().await.map_err(upstream)? {
+                Some(row) => {
+                    let n: i64 = row.get(0).map_err(upstream)?;
+                    n.max(0) as usize
+                }
+                None => 0,
+            };
+
+            let query_sql = format!(
+                "SELECT id, exam, subject, year, paper, section, question_number, \
+                 topic_slug, subtopic_slug, total_marks, stem, diagram_url, sub_parts \
+                 FROM theory_questions {} \
+                 ORDER BY year DESC, section ASC, question_number ASC \
+                 LIMIT ?{} OFFSET ?{}",
+                filter_sql,
+                count_params.len() + 1,
+                count_params.len() + 2
+            );
+
+            let mut query_params = count_params;
+            query_params.push(turso::Value::Integer(per_page as i64));
+            query_params.push(turso::Value::Integer(offset as i64));
+
+            let mut stmt = conn.prepare(&query_sql).await.map_err(upstream)?;
+            let mut rows = stmt.query(query_params).await.map_err(upstream)?;
+
+            let mut items = Vec::new();
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                let id: String = row.get(0).map_err(upstream)?;
+                let exam: String = row.get(1).map_err(upstream)?;
+                let subject: String = row.get(2).map_err(upstream)?;
+                let year: i64 = row.get(3).map_err(upstream)?;
+                let paper: i64 = row.get(4).map_err(upstream)?;
+                let section: String = row.get(5).map_err(upstream)?;
+                let question_number: String = row.get(6).map_err(upstream)?;
+                let topic_slug: String = row.get(7).map_err(upstream)?;
+                let subtopic_slug: Option<String> = row.get(8).map_err(upstream)?;
+                let total_marks: i64 = row.get(9).map_err(upstream)?;
+                let stem_raw: String = row.get(10).map_err(upstream)?;
+                let diagram_url: Option<String> = row.get(11).map_err(upstream)?;
+                let sub_parts_raw: String = row.get(12).map_err(upstream)?;
+
+                let stem: core::models::RichText = json_col(&stem_raw, "theory_questions.stem")?;
+                let sub_parts: Vec<core::models::TheorySubPart> =
+                    json_col(&sub_parts_raw, "theory_questions.sub_parts")?;
+
+                let preview = if stem.text.len() > 140 {
+                    format!("{}...", &stem.text[..140])
+                } else {
+                    stem.text.clone()
+                };
+
+                items.push(core::models::TheoryQuestionSummary {
+                    id,
+                    exam,
+                    subject,
+                    year: year as u32,
+                    paper: paper as u8,
+                    section,
+                    question_number,
+                    topic_slug,
+                    subtopic_slug,
+                    total_marks: total_marks as u32,
+                    preview,
+                    has_diagram: diagram_url.is_some(),
+                    sub_parts_count: sub_parts.len() as u8,
+                });
+            }
+
+            Ok(core::models::Page::new(items, page, per_page, total_records, false))
+        }
+    })
+    .await
+}
+
+pub fn evaluate_theory_submission(
+    q: &core::models::TheoryQuestion,
+    req: &core::models::TheoryEvaluationRequest,
+) -> Result<core::models::TheoryEvaluationResponse, AppError> {
+    let Some(method) = q
+        .marking_methods
+        .iter()
+        .find(|m| m.method_id == req.selected_method_id)
+    else {
+        return Err(AppError::BadRequest(format!(
+            "method '{}' not found for question '{}'",
+            req.selected_method_id, q.id
+        )));
+    };
+
+    let achieved_set: std::collections::HashSet<&str> =
+        req.achieved_step_ids.iter().map(|s| s.as_str()).collect();
+
+    let mut method_marks_possible = 0u32;
+    let mut method_marks_awarded = 0u32;
+    let mut accuracy_marks_possible = 0u32;
+    let mut accuracy_marks_awarded = 0u32;
+    let mut independent_marks_possible = 0u32;
+    let mut independent_marks_awarded = 0u32;
+
+    let mut diagnostic_feedback = Vec::new();
+    let mut part_method_failed: std::collections::HashSet<String> =
+        std::collections::HashSet::new();
+
+    for step in &method.steps {
+        match step.mark_type.as_str() {
+            "M" => {
+                method_marks_possible += step.mark_value;
+                if achieved_set.contains(step.step_id.as_str()) {
+                    method_marks_awarded += step.mark_value;
+                } else {
+                    part_method_failed.insert(step.part_label.clone());
+                    diagnostic_feedback.push(format!(
+                        "Missed method mark in {}: {}",
+                        step.part_label, step.description
+                    ));
+                }
+            }
+            "A" => {
+                accuracy_marks_possible += step.mark_value;
+                if part_method_failed.contains(&step.part_label) {
+                    diagnostic_feedback.push(format!(
+                        "Accuracy mark forfeited in {} due to preceding method error (M0 -> A0): {}",
+                        step.part_label, step.description
+                    ));
+                } else if achieved_set.contains(step.step_id.as_str()) {
+                    accuracy_marks_awarded += step.mark_value;
+                } else {
+                    diagnostic_feedback.push(format!(
+                        "Accuracy mark missed in {}: {}",
+                        step.part_label, step.description
+                    ));
+                }
+            }
+            "B" | _ => {
+                independent_marks_possible += step.mark_value;
+                if achieved_set.contains(step.step_id.as_str()) {
+                    independent_marks_awarded += step.mark_value;
+                } else {
+                    diagnostic_feedback.push(format!(
+                        "Independent mark missed in {}: {}",
+                        step.part_label, step.description
+                    ));
+                }
+            }
+        }
+    }
+
+    let mut penalties_applied = Vec::new();
+    let mut total_penalty_deductions = 0u32;
+
+    if !req.unit_included {
+        if let Some(p) = q
+            .penalties
+            .iter()
+            .find(|p| p.penalty_type == "unit_omission")
+        {
+            penalties_applied.push(core::models::AppliedPenalty {
+                penalty_type: "unit_omission".to_string(),
+                deduction: p.deduction,
+                reason: p.description.clone(),
+            });
+            total_penalty_deductions += p.deduction;
+        }
+    }
+
+    if !req.intermediate_rounding_avoided {
+        if let Some(p) = q
+            .penalties
+            .iter()
+            .find(|p| p.penalty_type == "premature_rounding")
+        {
+            penalties_applied.push(core::models::AppliedPenalty {
+                penalty_type: "premature_rounding".to_string(),
+                deduction: p.deduction,
+                reason: p.description.clone(),
+            });
+            total_penalty_deductions += p.deduction;
+        }
+    }
+
+    let total_marks_possible =
+        method_marks_possible + accuracy_marks_possible + independent_marks_possible;
+    let earned_raw = method_marks_awarded + accuracy_marks_awarded + independent_marks_awarded;
+    let awarded_marks = earned_raw.saturating_sub(total_penalty_deductions);
+    let percentage = if total_marks_possible > 0 {
+        ((awarded_marks as f64 / total_marks_possible as f64) * 1000.0).round() / 10.0
+    } else {
+        0.0
+    };
+
+    if diagnostic_feedback.is_empty() && penalties_applied.is_empty() {
+        diagnostic_feedback.push(
+            "Full credit awarded. All method, accuracy, and formatting criteria were satisfied."
+                .to_string(),
+        );
+    }
+
+    Ok(core::models::TheoryEvaluationResponse {
+        question_id: q.id.clone(),
+        selected_method_id: method.method_id.clone(),
+        total_marks_possible,
+        awarded_marks,
+        percentage,
+        method_marks_awarded,
+        method_marks_possible,
+        accuracy_marks_awarded,
+        accuracy_marks_possible,
+        independent_marks_awarded,
+        independent_marks_possible,
+        penalties_applied,
+        diagnostic_feedback,
+    })
+}
+
+pub async fn import_theory_questions_from_json(
+    s: &DbState,
+    json_str: &str,
+) -> Result<usize, AppError> {
+    let questions: Vec<core::models::TheoryQuestion> = serde_json::from_str(json_str)
+        .map_err(|e| AppError::BadRequest(format!("invalid theory questions json: {e}")))?;
+
+    for q in &questions {
+        let stem_json = serde_json::to_string(&q.stem)
+            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let sub_parts_json = serde_json::to_string(&q.sub_parts)
+            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let bridge_json = serde_json::to_string(&q.formulation_bridge)
+            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let methods_json = serde_json::to_string(&q.marking_methods)
+            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let diagram_rubric_json = match &q.diagram_rubric {
+            Some(dr) => {
+                Some(serde_json::to_string(dr).map_err(|e| AppError::Internal(e.to_string()))?)
+            }
+            None => None,
+        };
+        let penalties_json = serde_json::to_string(&q.penalties)
+            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let report_json = serde_json::to_string(&q.examiner_report)
+            .map_err(|e| AppError::Internal(e.to_string()))?;
+
+        let hash = note_content_hash(&[
+            &stem_json,
+            &sub_parts_json,
+            &bridge_json,
+            &methods_json,
+            &penalties_json,
+            &report_json,
+        ]);
+
+        let subtopic_val = match &q.subtopic_slug {
+            Some(slug) if !slug.is_empty() => turso::Value::Text(slug.clone()),
+            _ => turso::Value::Null,
+        };
+        let diagram_val = match &q.diagram_url {
+            Some(url) if !url.is_empty() => turso::Value::Text(url.clone()),
+            _ => turso::Value::Null,
+        };
+        let rubric_val = match diagram_rubric_json {
+            Some(s) => turso::Value::Text(s),
+            None => turso::Value::Null,
+        };
+
+        super::write::execute_write(
+            s,
+            "INSERT OR REPLACE INTO theory_questions (id, exam, subject, year, paper, section, question_number, topic_slug, subtopic_slug, total_marks, stem, diagram_url, sub_parts, formulation_bridge, marking_methods, diagram_rubric, penalties, examiner_report, content_hash) \
+             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16, ?17, ?18, ?19)",
+            vec![
+                turso::Value::Text(q.id.clone()),
+                turso::Value::Text(q.exam.clone()),
+                turso::Value::Text(q.subject.clone()),
+                turso::Value::Integer(q.year as i64),
+                turso::Value::Integer(q.paper as i64),
+                turso::Value::Text(q.section.clone()),
+                turso::Value::Text(q.question_number.clone()),
+                turso::Value::Text(q.topic_slug.clone()),
+                subtopic_val,
+                turso::Value::Integer(q.total_marks as i64),
+                turso::Value::Text(stem_json),
+                diagram_val,
+                turso::Value::Text(sub_parts_json),
+                turso::Value::Text(bridge_json),
+                turso::Value::Text(methods_json),
+                rubric_val,
+                turso::Value::Text(penalties_json),
+                turso::Value::Text(report_json),
+                turso::Value::Text(hash),
+            ],
+        ).await?;
+    }
+
+    Ok(questions.len())
 }
 
 /// Does a reportable target exist? One arm per kind, so adding a kind

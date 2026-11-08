@@ -28,6 +28,7 @@ pub mod public;
 pub mod questions;
 pub mod reports;
 pub mod subjects;
+pub mod theory;
 pub mod topics;
 
 use axum::Router;
@@ -48,5 +49,6 @@ pub fn router(state: AppState) -> Router<AppState> {
         .merge(questions::router(state.clone()))
         .merge(passages::router(state.clone()))
         .merge(blueprints::router(state.clone()))
-        .merge(notes::router(state))
+        .merge(notes::router(state.clone()))
+        .merge(theory::router(state))
 }

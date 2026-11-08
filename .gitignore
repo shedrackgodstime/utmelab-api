@@ -46,6 +46,10 @@ Thumbs.db
 *.db-changes
 *.db-log
 
+# Authored study notes and theory json - local editor drafts only, kept in live DB
+data/notes/
+data/theory/
+
 # editor/backup artifacts: never commit (a .env backup already leaked once)
 *.bak
 *.orig
