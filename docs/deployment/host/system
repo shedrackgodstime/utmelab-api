@@ -482,7 +482,7 @@ cmd_report() {
     flag_stray "$lpid" "listens $(printf '%s' "$line" | awk '{print $4}')"
   done < <(ss -ltnp 2>/dev/null | tail -n +2)
   if [ "$strays" -eq 0 ]; then
-    say "  none — every process under ${BASE_DIR} and every listener is owned by a unit or infrastructure"
+    say "  none"
   else
     printf '  %s%s stray process(es) above are running outside the system: no unit, no restart, no health check.\n' "$R" "$D"
   fi
