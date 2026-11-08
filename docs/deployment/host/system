@@ -424,7 +424,68 @@ cmd_report() {
   say "  UFW: $(ufw status 2>/dev/null | head -1)"
   say "  OS: $(grep PRETTY /etc/os-release | cut -d'"' -f2)  Kernel: $(uname -r)"
   say "  Journal: $(journalctl --disk-usage 2>/dev/null | sed 's/.*take up //;s/ in the file system.*//')"
-  say "  Root SSH: $(sshd -T 2>/dev/null | awk '/^permitrootlogin /{print $2; exit}')"
+  say "  Root SSH: $(sshd -T 2>/dev/null | awk '/^permitrootlogin /{print $2; exit}')"; hr
+
+  # Everything above only knows the declared services. A process launched
+  # outside systemd (a stray binary, a forgotten test server) never shows up
+  # there, so it is scanned for directly: anything whose executable lives
+  # under the app tree but is not a unit pid is unmanaged, and anything
+  # listening that is neither a unit pid nor host infrastructure is too.
+  say "${B}UNMANAGED${D}"
+  local managed=""
+  local svc2 pid2
+  for svc2 in $(list_services); do
+    pid2="$(systemctl show -p MainPID --value "utmelab@$svc2" 2>/dev/null)"
+    [ "${pid2:-0}" -gt 0 ] 2>/dev/null && managed="$managed $pid2"
+  done
+  # A worker is part of the system when its ancestor chain reaches a unit
+  # pid. The walk needs each ancestor's own parent, read from that
+  # ancestor's own status file.
+  is_managed() {
+    local p="$1" pp
+    while [ "${p:-0}" -gt 0 ] 2>/dev/null; do
+      case " $managed " in *" $p "*) return 0 ;; esac
+      pp="$(awk '/^PPid:/{print $2}' "/proc/$p/status" 2>/dev/null)" || return 1
+      case "$pp" in ''|0) return 1 ;; esac
+      p="$pp"
+    done
+    return 1
+  }
+  local strays=0 spid sexec suser setime scmd sport
+  declare -A seen=()
+  flag_stray() {
+    local pid="$1" why="$2"
+    [ -n "${seen[$pid]:-}" ] && return 0
+    seen[$pid]=1; strays=$((strays + 1))
+    suser="$(ps -o user= -p "$pid" 2>/dev/null | tr -d ' ')"
+    setime="$(ps -o etime= -p "$pid" 2>/dev/null | tr -d ' ')"
+    scmd="$(tr '\0' ' ' <"/proc/$pid/cmdline" 2>/dev/null)"
+    sport="$(ss -ltnp 2>/dev/null | awk -v p="pid=$pid," 'index($0,p) {n=split($4,a,":"); print a[n]}' | sort -un | paste -sd, - 2>/dev/null)"
+    printf '  %sunmanaged%s pid=%-7s user=%-8s up=%-12s ports=%-14s %s\n' "$Y" "$D" "$pid" "${suser:-?}" "${setime:-?}" "${sport:-none}" "${why} ${scmd}"
+  }
+  for spid in $(pgrep -f "${BASE_DIR}/" 2>/dev/null); do
+    sexec="$(readlink "/proc/$spid/exe" 2>/dev/null)" || continue
+    case "$sexec" in "${BASE_DIR}/"*) ;; *) continue ;; esac
+    is_managed "$spid" || flag_stray "$spid" "$sexec"
+  done
+  # Listeners are the other place a stray must surface, whatever its
+  # binary's home. Infrastructure (sshd, the edge proxy, systemd itself)
+  # is expected to listen; everything else must be a unit pid.
+  local infra=" sshd caddy systemd systemd-journald systemd-resolved systemd-logind systemd-timesyncd "
+  while IFS= read -r line; do
+    local lpid lname
+    lpid="$(printf '%s' "$line" | grep -o 'pid=[0-9]*' | head -1 | cut -d= -f2)"
+    lname="$(printf '%s' "$line" | grep -o '"[^"]*"' | head -1 | tr -d '"')"
+    [ -n "$lpid" ] || continue
+    is_managed "$lpid" && continue
+    case "$infra" in *" ${lname} "*) continue ;; esac
+    flag_stray "$lpid" "listens $(printf '%s' "$line" | awk '{print $4}')"
+  done < <(ss -ltnp 2>/dev/null | tail -n +2)
+  if [ "$strays" -eq 0 ]; then
+    say "  none — every process under ${BASE_DIR} and every listener is owned by a unit or infrastructure"
+  else
+    printf '  %s%s stray process(es) above are running outside the system: no unit, no restart, no health check.\n' "$R" "$D"
+  fi
 }
 
 cmd_deploy_preview() {
