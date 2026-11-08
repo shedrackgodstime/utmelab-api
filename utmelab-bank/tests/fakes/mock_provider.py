@@ -5,10 +5,12 @@ from utmelab_bank.domain.capabilities import (
     ExplainRequest,
     TagRequest,
     VerifyAnswerRequest,
+    VerifyDescriptionRequest,
 )
 from utmelab_bank.domain.enums import Capability, Verdict
 from utmelab_bank.domain.models import (
     AnswerVerdict,
+    DescriptionVerdict,
     Explanation,
     ImageDescription,
     Producer,
@@ -79,6 +81,14 @@ class MockProvider:
         return AnswerVerdict(
             verdict=self._verdict,
             reasoning="Mock verification of the canonical answer.",
+            confidence=self._confidence,
+            producer=self.producer,
+        )
+
+    async def verify_description(self, request: VerifyDescriptionRequest) -> DescriptionVerdict:
+        return DescriptionVerdict(
+            verdict=self._verdict,
+            reasoning="Mock verification of a description.",
             confidence=self._confidence,
             producer=self.producer,
         )

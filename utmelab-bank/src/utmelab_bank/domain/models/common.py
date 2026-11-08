@@ -711,6 +711,24 @@ class DescribeImageRequest(DomainModel):
     data: bytes | None = None
 
 
+class VerifyDescriptionRequest(DomainModel):
+    """Ask a different witness whether a proposed description matches a figure.
+
+    The verifier sees the figure and the proposed words, and judges whether
+    the words could be this figure. It does not describe the figure again:
+    comparing two independently phrased descriptions word for word would
+    refuse every same-figure pair whose witnesses chose different synonyms.
+    """
+
+    asset: MediaAsset
+    description: NonEmptyStr
+    facts: tuple[NonEmptyStr, ...] = ()
+    context: NonEmptyStr | None = None
+    #: The downloaded bytes, when the caller holds them, as on
+    #: :class:`DescribeImageRequest`.
+    data: bytes | None = None
+
+
 class ExplainRequest(DomainModel):
     """Explain request WITH catalog context for AI to reference syllabus."""
 

@@ -12,8 +12,47 @@ from utmelab_bank.adapters.media import (
     Dissent,
     MissingWitness,
 )
-from utmelab_bank.domain.capabilities import DescribeImageRequest
-from utmelab_bank.domain.models import ImageDescription, MediaAsset, Producer
+from utmelab_bank.domain.capabilities import (
+    DescribeImageRequest,
+    VerifyDescriptionRequest,
+)
+from utmelab_bank.domain.enums import Verdict
+from utmelab_bank.domain.models import (
+    DescriptionVerdict,
+    ImageDescription,
+    MediaAsset,
+    Producer,
+)
+
+
+class FixedDescriber:
+    """A witness that describes fixed text and returns a fixed verdict."""
+
+    def __init__(
+        self,
+        text: str,
+        producer: Producer,
+        verdict: Verdict = Verdict.PASS,
+    ) -> None:
+        self.text = text
+        self.producer = producer
+        self._verdict = verdict
+
+    async def describe(self, request: DescribeImageRequest) -> ImageDescription:
+        return ImageDescription(
+            asset_id=request.asset.asset_id,
+            description=self.text,
+            confidence=0.9,
+            producer=self.producer,
+        )
+
+    async def verify_description(self, request: VerifyDescriptionRequest) -> DescriptionVerdict:
+        return DescriptionVerdict(
+            verdict=self._verdict,
+            reasoning="test verdict",
+            confidence=0.9,
+            producer=self.producer,
+        )
 
 
 def make_asset() -> MediaAsset:
@@ -107,24 +146,68 @@ def test_the_witnesses_must_differ() -> None:
         DescribeImageConsensus(describers=(MockProvider(), MockProvider()))
 
 
-def test_a_dissent_fails() -> None:
-    class FixedDescriber:
-        def __init__(self, text: str, producer: Producer) -> None:
-            self.text = text
-            self.producer = producer
-
-        async def describe(self, request: DescribeImageRequest) -> ImageDescription:
-            return ImageDescription(
-                asset_id=request.asset.asset_id,
-                description=self.text,
-                confidence=0.9,
-                producer=self.producer,
-            )
-
+def test_a_failed_verification_is_dissent() -> None:
     consensus = DescribeImageConsensus(
         describers=(
-            FixedDescriber("a cell with a nucleus", Producer(provider="p1", model="m1")),
-            FixedDescriber("a flower with petals", Producer(provider="p2", model="m2")),
+            FixedDescriber(
+                "a cell with a nucleus",
+                Producer(provider="p1", model="m1"),
+                verdict=Verdict.FAIL,
+            ),
+            FixedDescriber(
+                "a flower with petals, a stem, and green leaves",
+                Producer(provider="p2", model="m2"),
+            ),
+        )
+    )
+
+    async def run() -> ImageDescription:
+        request = DescribeImageRequest(asset=make_asset(), context="test")
+        return await consensus.describe(request)
+
+    with pytest.raises(Dissent):
+        asyncio.run(run())
+
+
+def test_different_wordings_pass_when_verified() -> None:
+    """Two accurate descriptions share no words; verification still passes.
+
+    This is the case string comparison could never accept: one witness says
+    "farm tool", the other says "wheeled agricultural implement". The second
+    witness looks at the figure and confirms the first one's description, so
+    the row keeps the richest wording and every witness as a contributor.
+    """
+    consensus = DescribeImageConsensus(
+        describers=(
+            FixedDescriber("a farm tool with labeled parts", Producer(provider="p1", model="m1")),
+            FixedDescriber(
+                "a wheeled agricultural implement with a rectangular frame",
+                Producer(provider="p2", model="m2"),
+            ),
+        )
+    )
+
+    async def run() -> ImageDescription:
+        request = DescribeImageRequest(asset=make_asset(), context="test")
+        return await consensus.describe(request)
+
+    result = asyncio.run(run())
+    assert result.description == "a wheeled agricultural implement with a rectangular frame"
+    assert len(result.contributors) == 2
+
+
+def test_an_abstention_is_dissent() -> None:
+    consensus = DescribeImageConsensus(
+        describers=(
+            FixedDescriber(
+                "a map of Nigeria",
+                Producer(provider="p1", model="m1"),
+                verdict=Verdict.ABSTAIN,
+            ),
+            FixedDescriber(
+                "a pie chart of Nigerian population by state",
+                Producer(provider="p2", model="m2"),
+            ),
         )
     )
 

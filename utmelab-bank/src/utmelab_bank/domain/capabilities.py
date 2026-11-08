@@ -10,6 +10,7 @@ from .models import (
     MediaAsset,
     TagRequest,
     VerifyAnswerRequest,
+    VerifyDescriptionRequest,
 )
 from .models.common import (
     ExplainResponse,
@@ -42,4 +43,5 @@ __all__ = [
     "MediaAsset",
     "TagRequest",
     "VerifyAnswerRequest",
+    "VerifyDescriptionRequest",
 ]

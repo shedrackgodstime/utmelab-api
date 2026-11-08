@@ -19,10 +19,12 @@ from utmelab_bank.domain.capabilities import (
     ExplainRequest,
     TagRequest,
     VerifyAnswerRequest,
+    VerifyDescriptionRequest,
 )
 from utmelab_bank.domain.enums import Capability
 from utmelab_bank.domain.models import (
     AnswerVerdict,
+    DescriptionVerdict,
     Explanation,
     ImageDescription,
     Producer,
@@ -158,6 +160,49 @@ class OpenCodeProvider:
                 "asset_id": request.asset.asset_id,
                 "description": data.get("description"),
                 "facts": data.get("facts", []),
+                "confidence": data.get("confidence"),
+                "producer": self.producer,
+            },
+        )
+
+    async def verify_description(self, request: VerifyDescriptionRequest) -> DescriptionVerdict:
+        prompt = self._prompt(
+            "Decide whether the proposed description could describe the attached "
+            "image for an exam question. Judge the subject and the visible facts, "
+            "not the wording: two accurate descriptions of one figure may use "
+            "different words. If the description names a different subject or "
+            "visible facts the figure does not show, it fails. If you cannot "
+            'tell, abstain. Return JSON with keys verdict ("pass", "fail", or '
+            '"abstain"), reasoning (string), confidence (number from 0 to 1).',
+            {
+                "proposed_description": request.description,
+                "proposed_facts": list(request.facts),
+                "context": request.context,
+                "mime": request.asset.mime,
+            },
+        )
+        # Same bytes handling as describe: the caller's bytes become a scratch
+        # file; otherwise the store must address a real local file.
+        if request.data is not None:
+            path = _write_scratch(request.data, request.asset.mime)
+            try:
+                data = self._extract_json(await self._complete(prompt, files=(path,)))
+            finally:
+                path.unlink(missing_ok=True)
+        else:
+            data = self._extract_json(
+                await self._complete(
+                    prompt,
+                    files=(
+                        _local_asset_path(request.asset.storage_url, provider=self._provider_name),
+                    ),
+                )
+            )
+        return self._validate(
+            DescriptionVerdict,
+            {
+                "verdict": data.get("verdict", "abstain"),
+                "reasoning": data.get("reasoning"),
                 "confidence": data.get("confidence"),
                 "producer": self.producer,
             },

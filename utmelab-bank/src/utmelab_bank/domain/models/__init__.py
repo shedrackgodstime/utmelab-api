@@ -47,10 +47,12 @@ from .common import (
     Verification,
     VerifyAnswerRequest,
     VerifyAnswerResponse,
+    VerifyDescriptionRequest,
     Year,
 )
 from .proposals import (
     AnswerVerdict,
+    DescriptionVerdict,
     Explanation,
     ImageDescription,
     TagProposal,
@@ -72,6 +74,7 @@ def rebuild(model: BaseModel, **updates: object) -> BaseModel:
 
 __all__ = [
     "AnswerVerdict",
+    "DescriptionVerdict",
     "BUNDLE_HASH",
     "CONTENT_HASH",
     "CatalogRef",
@@ -119,6 +122,7 @@ __all__ = [
     "TagResponse",
     "Verification",
     "VerifyAnswerRequest",
+    "VerifyDescriptionRequest",
     "VerifyAnswerResponse",
     "Year",
     "rebuild",

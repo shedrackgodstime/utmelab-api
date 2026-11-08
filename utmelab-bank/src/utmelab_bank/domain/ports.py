@@ -8,6 +8,7 @@ from .capabilities import (
     ExplainRequest,
     TagRequest,
     VerifyAnswerRequest,
+    VerifyDescriptionRequest,
 )
 from .dedupe import Duplicate
 from .models.common import (
@@ -22,6 +23,7 @@ from .models.common import (
 )
 from .models.proposals import (
     AnswerVerdict,
+    DescriptionVerdict,
     Explanation,
     ImageDescription,
     TagProposal,
@@ -53,6 +55,30 @@ class ImageDescriber(Protocol):
     producer: Producer
 
     async def describe(self, request: DescribeImageRequest) -> ImageDescription: ...
+
+
+@runtime_checkable
+class DescriptionVerifier(Protocol):
+    """A describer that can also judge another witness's description.
+
+    A figure is checked by a different model than the one that described it,
+    so the consensus takes witnesses that satisfy both shapes.
+    """
+
+    producer: Producer
+
+    async def verify_description(self, request: VerifyDescriptionRequest) -> DescriptionVerdict: ...
+
+
+@runtime_checkable
+class ImageWitness(ImageDescriber, DescriptionVerifier, Protocol):
+    """One model that can describe a figure and judge another's description."""
+
+    producer: Producer
+
+    async def describe(self, request: DescribeImageRequest) -> ImageDescription: ...
+
+    async def verify_description(self, request: VerifyDescriptionRequest) -> DescriptionVerdict: ...
 
 
 @runtime_checkable

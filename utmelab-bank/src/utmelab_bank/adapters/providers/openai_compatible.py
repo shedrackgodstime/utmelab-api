@@ -14,10 +14,12 @@ from utmelab_bank.domain.capabilities import (
     ExplainRequest,
     TagRequest,
     VerifyAnswerRequest,
+    VerifyDescriptionRequest,
 )
 from utmelab_bank.domain.enums import Capability
 from utmelab_bank.domain.models import (
     AnswerVerdict,
+    DescriptionVerdict,
     Explanation,
     ImageDescription,
     Producer,
@@ -25,7 +27,13 @@ from utmelab_bank.domain.models import (
     StagingItem,
     TagProposal,
 )
-from utmelab_bank.domain.ports import AnswerVerifier, Explainer, ImageDescriber, Tagger
+from utmelab_bank.domain.ports import (
+    AnswerVerifier,
+    DescriptionVerifier,
+    Explainer,
+    ImageDescriber,
+    Tagger,
+)
 
 from .catalog_prompt import catalog_for_prompt
 
@@ -52,7 +60,9 @@ class OpenAICompatibleError(RuntimeError):
         super().__init__(f"{label}: {message}")
 
 
-class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier):
+class OpenAICompatibleProvider(
+    ImageDescriber, DescriptionVerifier, Explainer, Tagger, AnswerVerifier
+):
     """Use any OpenAI-compatible endpoint through the official SDK.
 
     NVIDIA is the first deployment target, but the adapter does not encode
@@ -130,6 +140,51 @@ class OpenAICompatibleProvider(ImageDescriber, Explainer, Tagger, AnswerVerifier
                 "asset_id": request.asset.asset_id,
                 "description": data.get("description"),
                 "facts": data.get("facts", []),
+                "confidence": data.get("confidence"),
+                "producer": self.producer,
+            },
+        )
+
+    async def verify_description(self, request: VerifyDescriptionRequest) -> DescriptionVerdict:
+        if request.data is None:
+            raise OpenAICompatibleError("describe_image needs image bytes", category="input")
+        mime = request.asset.mime
+        image = base64.b64encode(request.data).decode("ascii")
+        prompt = (
+            "Decide whether the proposed description could describe this exam figure. "
+            "Judge the subject and the visible facts, not the wording: two accurate "
+            "descriptions of one figure may use different words. If the description "
+            "names a different subject or visible facts the figure does not show, it "
+            "fails. If you cannot tell, abstain. "
+            'Return exactly {"verdict": "pass", "reasoning": "string", '
+            '"confidence": 0.0}. "verdict" must be "pass", "fail", or "abstain". '
+            "Do not add other fields."
+        )
+        proposed = "\n".join(request.facts)
+        context = f"\nContext: {request.context}" if request.context else ""
+        data = await self._complete(
+            [
+                {"role": "system", "content": "Return exactly one JSON object."},
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": (
+                                f"{prompt}\nProposed description: {request.description}\n"
+                                f"Proposed facts: {proposed}{context}"
+                            ),
+                        },
+                        {"type": "image_url", "image_url": {"url": f"data:{mime};base64,{image}"}},
+                    ],
+                },
+            ]
+        )
+        return self._validate(
+            DescriptionVerdict,
+            {
+                "verdict": data.get("verdict", "abstain"),
+                "reasoning": data.get("reasoning"),
                 "confidence": data.get("confidence"),
                 "producer": self.producer,
             },

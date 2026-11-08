@@ -42,3 +42,19 @@ class AnswerVerdict(DomainModel):
     reasoning: NonEmptyStr
     confidence: Confidence
     producer: Producer
+
+
+class DescriptionVerdict(DomainModel):
+    """A witness's verdict on another witness's figure description.
+
+    The consensus uses this instead of comparing description strings: two
+    models that see the same figure will describe it in different words, so
+    agreement has to be a judgement about the same figure, not identical
+    prose. One witness describes, a different witness verifies, and only a
+    pass lets the description onto a row.
+    """
+
+    verdict: Verdict
+    reasoning: NonEmptyStr
+    confidence: Confidence
+    producer: Producer

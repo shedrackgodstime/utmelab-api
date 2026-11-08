@@ -1,11 +1,26 @@
-"""Consensus service: reconcile multiple image descriptions into one."""
+"""Consensus service: reconcile multiple image descriptions into one.
+
+Two models that see the same figure describe it in different words: "a farm
+tool" versus "a wheeled agricultural implement". Comparing the strings word for
+word would refuse every same-figure pair, which is why this service does not
+compare strings at all. One witness describes, a different witness verifies
+that description against the figure, and only a pass lets it onto a row. That
+is the same shape the bank uses for answers: a producer and a verifier, and
+the verifier has to be a different model.
+"""
+
+from __future__ import annotations
 
 import asyncio
 from collections import Counter
 
-from utmelab_bank.domain.capabilities import DescribeImageRequest
+from utmelab_bank.domain.capabilities import (
+    DescribeImageRequest,
+    VerifyDescriptionRequest,
+)
+from utmelab_bank.domain.enums import Verdict
 from utmelab_bank.domain.models import ImageDescription, Producer
-from utmelab_bank.domain.ports import ImageDescriber
+from utmelab_bank.domain.ports import ImageWitness
 
 
 class ConsensusPolicy:
@@ -76,13 +91,16 @@ class DescribeImageConsensus:
     - **The witnesses have to be different models.** Two runs of one model
       agree because they are the same model, which proves nothing. A repeated
       witness is refused when the policy is built.
-    - **Every witness has to answer, and the answer has to win a majority.**
-      A witness that errors is a missing witness, and a set of descriptions
-      with no majority is a dissent. Either one refuses the asset, so a
-      figure nothing agrees on never reaches a row.
+    - **A description is verified by a different witness.** Two descriptions
+      of one figure will never match word for word, because one model says
+      "farm tool" and the other says "wheeled agricultural implement". So the
+      richest description is the primary, and a witness that did not write it
+      looks at the figure and judges it. Only a pass lets the description
+      onto a row; a fail, an abstention, or a missing witness refuses the
+      figure, so a description nothing confirms never reaches a row.
     """
 
-    def __init__(self, describers: tuple[ImageDescriber, ...]) -> None:
+    def __init__(self, describers: tuple[ImageWitness, ...]) -> None:
         if len(describers) < 2:
             raise ValueError("Consensus requires at least 2 describers")
         identities = [(d.producer.provider, d.producer.model) for d in describers]
@@ -108,9 +126,28 @@ class DescribeImageConsensus:
             missing = len(self._describers) - len(good)
             raise MissingWitness(f"{missing} of {len(self._describers)} witnesses did not answer")
 
-        counts = Counter(description.description for description in good)
-        winner = counts.most_common(1)[0][1]
-        if winner * 2 <= len(good):
+        primary = max(good, key=lambda item: len(item.description))
+        verifier = next(
+            d
+            for d in self._describers
+            if (d.producer.provider, d.producer.model)
+            != (primary.producer.provider, primary.producer.model)
+        )
+        try:
+            verdict = await verifier.verify_description(
+                VerifyDescriptionRequest(
+                    asset=request.asset,
+                    description=primary.description,
+                    facts=primary.facts,
+                    context=request.context,
+                    data=request.data,
+                )
+            )
+        except Exception as exc:
+            raise MissingWitness(
+                f"witness {verifier.producer.model} did not verify: {exc}"
+            ) from exc
+        if verdict.verdict is not Verdict.PASS:
             raise Dissent("the witnesses did not agree on what the figure shows")
 
         return ConsensusPolicy.reconcile(tuple(good))
