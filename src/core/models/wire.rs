@@ -405,6 +405,8 @@ pub struct TheoryEvaluationRequest {
     pub achieved_step_ids: Vec<String>,
     pub unit_included: bool,
     pub intermediate_rounding_avoided: bool,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub incurred_penalty_types: Option<Vec<String>>,
 }
 
 /// Evaluation outcome applying official WAEC/NECO marking criteria.

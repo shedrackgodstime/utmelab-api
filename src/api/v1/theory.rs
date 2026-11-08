@@ -486,4 +486,54 @@ mod tests {
         .await;
         assert_eq!(status, StatusCode::NOT_FOUND);
     }
+
+    #[tokio::test]
+    async fn evaluate_endpoint_rejects_unknown_step_ids() {
+        let app = seeded_app().await;
+
+        let payload = serde_json::json!({
+            "selected_method_id": "m1",
+            "achieved_step_ids": ["s1", "bogus_step_id"],
+            "unit_included": true,
+            "intermediate_rounding_avoided": true
+        });
+
+        let (status, body) = call(
+            app,
+            "POST",
+            "/api/v1/theory/WAEC/general-mathematics/wq_waec_2023_math_p2_q4/evaluate",
+            Some("reader.secret"),
+            Some(&payload.to_string()),
+        )
+        .await;
+        assert_eq!(status, StatusCode::BAD_REQUEST);
+        assert!(body["error"].as_str().unwrap().contains("bogus_step_id"));
+    }
+
+    #[tokio::test]
+    async fn evaluate_endpoint_applies_dynamic_incurred_penalties() {
+        let app = seeded_app().await;
+
+        let payload = serde_json::json!({
+            "selected_method_id": "m1",
+            "achieved_step_ids": ["s1", "s2", "s3", "s4", "s5", "s6"],
+            "unit_included": true,
+            "intermediate_rounding_avoided": true,
+            "incurred_penalty_types": ["unit_omission"]
+        });
+
+        let (status, body) = call(
+            app,
+            "POST",
+            "/api/v1/theory/WAEC/general-mathematics/wq_waec_2023_math_p2_q4/evaluate",
+            Some("reader.secret"),
+            Some(&payload.to_string()),
+        )
+        .await;
+        assert_eq!(status, StatusCode::OK);
+        assert_eq!(body["awarded_marks"], 7);
+        assert_eq!(body["total_marks_possible"], 8);
+        assert_eq!(body["penalties_applied"].as_array().expect("penalties").len(), 1);
+        assert_eq!(body["penalties_applied"][0]["penalty_type"], "unit_omission");
+    }
 }

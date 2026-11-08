@@ -53,7 +53,7 @@ pub(crate) const INDEXES: &[&str] = &[
     "CREATE UNIQUE INDEX IF NOT EXISTS idx_notes_unique_subtopic ON topic_notes (exam, subject, subtopic_slug) WHERE subtopic_slug IS NOT NULL AND subtopic_slug <> ''",
     "CREATE INDEX IF NOT EXISTS idx_theory_lookup ON theory_questions (exam, subject, topic_slug)",
     "CREATE INDEX IF NOT EXISTS idx_theory_year_lookup ON theory_questions (exam, subject, year)",
-    "CREATE UNIQUE INDEX IF NOT EXISTS idx_theory_unique ON theory_questions (exam, subject, year, question_number)",
+    "CREATE UNIQUE INDEX IF NOT EXISTS idx_theory_unique ON theory_questions (exam, subject, year, paper, question_number)",
 ];
 
 /// Every table the store reads, and the columns it depends on. This is the
@@ -438,7 +438,7 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 .await?;
                 super::write::execute_ddl_local(
                     s,
-                    "CREATE UNIQUE INDEX IF NOT EXISTS idx_theory_unique ON theory_questions (exam, subject, year, question_number)",
+                    "CREATE UNIQUE INDEX IF NOT EXISTS idx_theory_unique ON theory_questions (exam, subject, year, paper, question_number)",
                 )
                 .await?;
             }
@@ -915,8 +915,17 @@ mod tests {
         insert("q1").await.expect("first question");
         assert!(
             insert("q2").await.is_err(),
-            "a second question for the same exam, subject, year, and question_number must be rejected"
+            "a second question for the same exam, subject, year, paper, and question_number must be rejected"
         );
+
+        // Different paper in the same year and question_number is allowed
+        conn.execute(
+            "INSERT INTO theory_questions (id, exam, subject, year, paper, section, question_number, topic_slug, subtopic_slug, total_marks, stem, diagram_url, sub_parts, formulation_bridge, marking_methods, diagram_rubric, penalties, examiner_report, content_hash) \
+             VALUES ('q3', 'WAEC', 'general-mathematics', 2023, 3, 'Section A', '4', 'algebra', null, 8, '{\"text\":\"s\",\"inline\":[]}', null, '[]', '[]', '[]', null, '[]', '{\"general_performance\":\"g\",\"common_errors\":[],\"remedies\":\"r\"}', 'hash')",
+            (),
+        )
+        .await
+        .expect("paper 3 question with same number must be allowed");
     }
 
     async fn owned_shape(conn: &turso::Connection) -> Vec<(String, Vec<String>)> {

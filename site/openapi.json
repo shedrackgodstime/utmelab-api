@@ -6015,6 +6015,15 @@
               "type": "string"
             }
           },
+          "incurred_penalty_types": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
           "intermediate_rounding_avoided": {
             "type": "boolean"
           },

@@ -1604,7 +1604,33 @@ pub async fn import_notes_from_json(s: &DbState, json_str: &str) -> Result<usize
             let exam = note.exam.clone();
             let subject = note.subject.clone();
             let topic_slug = note.topic_slug.clone();
+            let subtopic_slug = note.subtopic_slug.clone();
             async move {
+                if let Some(ref st_slug) = subtopic_slug {
+                    if !st_slug.is_empty() {
+                        let mut stmt = conn
+                            .prepare(
+                                "SELECT 1 FROM subtopics st \
+                                 JOIN topics t ON t.slug = st.topic \
+                                 WHERE ( \
+                                   (t.exam = ?1 AND t.subject = ?2) \
+                                   OR EXISTS ( \
+                                     SELECT 1 FROM subjects s \
+                                     WHERE s.exam = ?1 AND s.slug = ?2 \
+                                       AND t.exam = s.syllabus_exam AND t.subject = s.syllabus_subject \
+                                   ) \
+                                 ) AND t.slug = ?3 AND st.slug = ?4 \
+                                 LIMIT 1",
+                            )
+                            .await
+                            .map_err(upstream)?;
+                        let mut rows = stmt
+                            .query([exam.as_str(), subject.as_str(), topic_slug.as_str(), st_slug.as_str()])
+                            .await
+                            .map_err(upstream)?;
+                        return Ok(rows.next().await.map_err(upstream)?.is_some());
+                    }
+                }
                 let mut stmt = conn
                     .prepare(
                         "SELECT 1 FROM topics t \
@@ -1631,8 +1657,8 @@ pub async fn import_notes_from_json(s: &DbState, json_str: &str) -> Result<usize
 
         if !placement_valid {
             return Err(AppError::BadRequest(format!(
-                "note {} references topic '{}' which does not exist in {} {}",
-                note.id, note.topic_slug, note.exam, note.subject
+                "note {} references topic '{}' and subtopic '{:?}' which do not exist in {} {}",
+                note.id, note.topic_slug, note.subtopic_slug, note.exam, note.subject
             )));
         }
     }
@@ -1810,7 +1836,7 @@ pub async fn list_theory_questions(
     per_page: u32,
 ) -> Result<core::models::Page<core::models::TheoryQuestionSummary>, AppError> {
     let (page, per_page) = core::catalog::page_bounds(page, per_page);
-    let offset = (page.saturating_sub(1)) * per_page;
+    let offset = core::catalog::page_offset(page, per_page);
 
     let exam = exam.to_string();
     let subject = subject.to_string();
@@ -1957,6 +1983,17 @@ pub fn evaluate_theory_submission(
         )));
     };
 
+    let valid_step_ids: std::collections::HashSet<&str> =
+        method.steps.iter().map(|s| s.step_id.as_str()).collect();
+    for id in &req.achieved_step_ids {
+        if !valid_step_ids.contains(id.as_str()) {
+            return Err(AppError::BadRequest(format!(
+                "step '{}' does not belong to method '{}'",
+                id, method.method_id
+            )));
+        }
+    }
+
     let achieved_set: std::collections::HashSet<&str> =
         req.achieved_step_ids.iter().map(|s| s.as_str()).collect();
 
@@ -2028,6 +2065,7 @@ pub fn evaluate_theory_submission(
 
     let mut penalties_applied = Vec::new();
     let mut total_penalty_deductions = 0u32;
+    let mut applied_types = std::collections::HashSet::new();
 
     if !req.unit_included {
         if let Some(p) = q
@@ -2035,12 +2073,14 @@ pub fn evaluate_theory_submission(
             .iter()
             .find(|p| p.penalty_type == "unit_omission")
         {
-            penalties_applied.push(core::models::AppliedPenalty {
-                penalty_type: "unit_omission".to_string(),
-                deduction: p.deduction,
-                reason: p.description.clone(),
-            });
-            total_penalty_deductions += p.deduction;
+            if applied_types.insert("unit_omission".to_string()) {
+                penalties_applied.push(core::models::AppliedPenalty {
+                    penalty_type: "unit_omission".to_string(),
+                    deduction: p.deduction,
+                    reason: p.description.clone(),
+                });
+                total_penalty_deductions += p.deduction;
+            }
         }
     }
 
@@ -2050,12 +2090,29 @@ pub fn evaluate_theory_submission(
             .iter()
             .find(|p| p.penalty_type == "premature_rounding")
         {
-            penalties_applied.push(core::models::AppliedPenalty {
-                penalty_type: "premature_rounding".to_string(),
-                deduction: p.deduction,
-                reason: p.description.clone(),
-            });
-            total_penalty_deductions += p.deduction;
+            if applied_types.insert("premature_rounding".to_string()) {
+                penalties_applied.push(core::models::AppliedPenalty {
+                    penalty_type: "premature_rounding".to_string(),
+                    deduction: p.deduction,
+                    reason: p.description.clone(),
+                });
+                total_penalty_deductions += p.deduction;
+            }
+        }
+    }
+
+    if let Some(ref custom_penalties) = req.incurred_penalty_types {
+        for ptype in custom_penalties {
+            if let Some(p) = q.penalties.iter().find(|p| &p.penalty_type == ptype) {
+                if applied_types.insert(ptype.clone()) {
+                    penalties_applied.push(core::models::AppliedPenalty {
+                        penalty_type: ptype.clone(),
+                        deduction: p.deduction,
+                        reason: p.description.clone(),
+                    });
+                    total_penalty_deductions += p.deduction;
+                }
+            }
         }
     }
 
@@ -2145,7 +2202,33 @@ pub async fn import_theory_questions_from_json(
             let exam = q.exam.clone();
             let subject = q.subject.clone();
             let topic_slug = q.topic_slug.clone();
+            let subtopic_slug = q.subtopic_slug.clone();
             async move {
+                if let Some(ref st_slug) = subtopic_slug {
+                    if !st_slug.is_empty() {
+                        let mut stmt = conn
+                            .prepare(
+                                "SELECT 1 FROM subtopics st \
+                                 JOIN topics t ON t.slug = st.topic \
+                                 WHERE ( \
+                                   (t.exam = ?1 AND t.subject = ?2) \
+                                   OR EXISTS ( \
+                                     SELECT 1 FROM subjects s \
+                                     WHERE s.exam = ?1 AND s.slug = ?2 \
+                                       AND t.exam = s.syllabus_exam AND t.subject = s.syllabus_subject \
+                                   ) \
+                                 ) AND t.slug = ?3 AND st.slug = ?4 \
+                                 LIMIT 1",
+                            )
+                            .await
+                            .map_err(upstream)?;
+                        let mut rows = stmt
+                            .query([exam.as_str(), subject.as_str(), topic_slug.as_str(), st_slug.as_str()])
+                            .await
+                            .map_err(upstream)?;
+                        return Ok(rows.next().await.map_err(upstream)?.is_some());
+                    }
+                }
                 let mut stmt = conn
                     .prepare(
                         "SELECT 1 FROM topics t \
@@ -2172,8 +2255,8 @@ pub async fn import_theory_questions_from_json(
 
         if !placement_valid {
             return Err(AppError::BadRequest(format!(
-                "theory question {} references topic '{}' which does not exist in {} {}",
-                q.id, q.topic_slug, q.exam, q.subject
+                "theory question {} references topic '{}' and subtopic '{:?}' which do not exist in {} {}",
+                q.id, q.topic_slug, q.subtopic_slug, q.exam, q.subject
             )));
         }
     }
