@@ -1796,6 +1796,9 @@ pub async fn get_theory_question(
     .await
 }
 
+/// The filter set mirrors the public query surface, so the arguments stay
+/// one-for-one instead of inventing a second struct to translate.
+#[allow(clippy::too_many_arguments)]
 pub async fn list_theory_questions(
     s: &DbState,
     exam: &str,
