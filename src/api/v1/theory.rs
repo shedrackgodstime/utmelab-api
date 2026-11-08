@@ -12,15 +12,14 @@ use crate::{
     store,
 };
 
-async fn verify_exam_subject(
-    s: &DbState,
-    exam: &str,
-    subject: &str,
-) -> Result<(), AppError> {
+async fn verify_exam_subject(s: &DbState, exam: &str, subject: &str) -> Result<(), AppError> {
     if store::catalog::get_exam(s, exam).await?.is_none() {
         return Err(AppError::NotFound);
     }
-    if store::catalog::get_subject(s, exam, subject).await?.is_none() {
+    if store::catalog::get_subject(s, exam, subject)
+        .await?
+        .is_none()
+    {
         return Err(AppError::NotFound);
     }
     Ok(())
@@ -75,7 +74,11 @@ fn prepare_theory_question(
     };
 
     let size = serde_json::to_vec(&rendered)
-        .map_err(|e| AppError::Internal(format!("rendered theory question serialization failed: {e}")))?
+        .map_err(|e| {
+            AppError::Internal(format!(
+                "rendered theory question serialization failed: {e}"
+            ))
+        })?
         .len();
     if size >= crate::routes::MAX_BODY_BYTES {
         return Err(AppError::Internal(format!(
@@ -391,7 +394,13 @@ mod tests {
         assert_eq!(body["awarded_marks"], 8);
         assert_eq!(body["total_marks_possible"], 8);
         assert_eq!(body["percentage"], 100.0);
-        assert_eq!(body["penalties_applied"].as_array().expect("penalties").len(), 0);
+        assert_eq!(
+            body["penalties_applied"]
+                .as_array()
+                .expect("penalties")
+                .len(),
+            0
+        );
     }
 
     #[tokio::test]
@@ -420,8 +429,17 @@ mod tests {
         assert_eq!(body["awarded_marks"], 5);
         assert_eq!(body["total_marks_possible"], 8);
         assert_eq!(body["percentage"], 62.5);
-        assert_eq!(body["penalties_applied"].as_array().expect("penalties").len(), 1);
-        assert_eq!(body["penalties_applied"][0]["penalty_type"], "unit_omission");
+        assert_eq!(
+            body["penalties_applied"]
+                .as_array()
+                .expect("penalties")
+                .len(),
+            1
+        );
+        assert_eq!(
+            body["penalties_applied"][0]["penalty_type"],
+            "unit_omission"
+        );
     }
 
     #[tokio::test]

@@ -1641,12 +1641,12 @@ pub async fn import_notes_from_json(s: &DbState, json_str: &str) -> Result<usize
     for note in &notes {
         let takeaway_json = serde_json::to_string(&note.key_takeaway)
             .map_err(|e| AppError::Internal(e.to_string()))?;
-        let sections_json = serde_json::to_string(&note.sections)
-            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let sections_json =
+            serde_json::to_string(&note.sections).map_err(|e| AppError::Internal(e.to_string()))?;
         let examples_json = serde_json::to_string(&note.worked_examples)
             .map_err(|e| AppError::Internal(e.to_string()))?;
-        let formulas_json = serde_json::to_string(&note.formulas)
-            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let formulas_json =
+            serde_json::to_string(&note.formulas).map_err(|e| AppError::Internal(e.to_string()))?;
         let checks_json = serde_json::to_string(&note.active_recall_checks)
             .map_err(|e| AppError::Internal(e.to_string()))?;
         let traps_json = serde_json::to_string(&note.examiner_traps)
@@ -1730,7 +1730,10 @@ fn map_theory_question(row: &turso::Row) -> Result<core::models::TheoryQuestion,
         stem: json_col(&stem_raw, "theory_questions.stem")?,
         diagram_url,
         sub_parts: json_col(&sub_parts_raw, "theory_questions.sub_parts")?,
-        formulation_bridge: json_col(&formulation_bridge_raw, "theory_questions.formulation_bridge")?,
+        formulation_bridge: json_col(
+            &formulation_bridge_raw,
+            "theory_questions.formulation_bridge",
+        )?,
         marking_methods: json_col(&marking_methods_raw, "theory_questions.marking_methods")?,
         diagram_rubric: match diagram_rubric_raw {
             Some(ref raw) if !raw.is_empty() && raw != "null" => {
@@ -1828,7 +1831,7 @@ pub async fn list_theory_questions(
                          AND t.exam = s.syllabus_exam AND t.subject = s.syllabus_subject \
                      ) \
                    ) AND t.slug = theory_questions.topic_slug \
-                 )"
+                 )",
             );
             let mut count_params = vec![
                 turso::Value::Text(exam.clone()),
@@ -1850,7 +1853,10 @@ pub async fn list_theory_questions(
 
             let count_sql = format!("SELECT COUNT(*) FROM theory_questions {}", filter_sql);
             let mut count_stmt = conn.prepare(&count_sql).await.map_err(upstream)?;
-            let mut count_rows = count_stmt.query(count_params.clone()).await.map_err(upstream)?;
+            let mut count_rows = count_stmt
+                .query(count_params.clone())
+                .await
+                .map_err(upstream)?;
             let total_records: usize = match count_rows.next().await.map_err(upstream)? {
                 Some(row) => {
                     let n: i64 = row.get(0).map_err(upstream)?;
@@ -1921,7 +1927,13 @@ pub async fn list_theory_questions(
                 });
             }
 
-            Ok(core::models::Page::new(items, page, per_page, total_records, false))
+            Ok(core::models::Page::new(
+                items,
+                page,
+                per_page,
+                total_records,
+                false,
+            ))
         }
     })
     .await
@@ -2165,10 +2177,10 @@ pub async fn import_theory_questions_from_json(
 
     let mut statements = Vec::with_capacity(questions.len());
     for q in &questions {
-        let stem_json = serde_json::to_string(&q.stem)
-            .map_err(|e| AppError::Internal(e.to_string()))?;
-        let sub_parts_json = serde_json::to_string(&q.sub_parts)
-            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let stem_json =
+            serde_json::to_string(&q.stem).map_err(|e| AppError::Internal(e.to_string()))?;
+        let sub_parts_json =
+            serde_json::to_string(&q.sub_parts).map_err(|e| AppError::Internal(e.to_string()))?;
         let bridge_json = serde_json::to_string(&q.formulation_bridge)
             .map_err(|e| AppError::Internal(e.to_string()))?;
         let methods_json = serde_json::to_string(&q.marking_methods)
@@ -2179,8 +2191,8 @@ pub async fn import_theory_questions_from_json(
             }
             None => None,
         };
-        let penalties_json = serde_json::to_string(&q.penalties)
-            .map_err(|e| AppError::Internal(e.to_string()))?;
+        let penalties_json =
+            serde_json::to_string(&q.penalties).map_err(|e| AppError::Internal(e.to_string()))?;
         let report_json = serde_json::to_string(&q.examiner_report)
             .map_err(|e| AppError::Internal(e.to_string()))?;
 

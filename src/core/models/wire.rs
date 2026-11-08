@@ -9,8 +9,8 @@
 use std::collections::HashMap;
 
 use super::domain::{
-    Choice, DiagramRubric, ExaminerPenalty, Explanation, FormulationClause, MarkingMethod,
-    Passage, RichText, Subject, TheoryExaminerReport, TheorySubPart,
+    Choice, DiagramRubric, ExaminerPenalty, Explanation, FormulationClause, MarkingMethod, Passage,
+    RichText, Subject, TheoryExaminerReport, TheorySubPart,
 };
 
 /// Stable body returned by HTTP error responses.

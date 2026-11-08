@@ -463,6 +463,9 @@ mod tests {
             }
         }
 
-        assert!(total_notes >= 24, "expected at least 24 authored reference notes");
+        assert!(
+            total_notes >= 24,
+            "expected at least 24 authored reference notes"
+        );
     }
 }
