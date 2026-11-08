@@ -34,6 +34,11 @@ result.
   expensive-operation ceiling of 20 requests per minute.
 - The sync supervisor retries pending local pushes before pulling, and records
   sync failures and the latest pull duration on the admin status surface.
+- API writes commit locally, return without waiting for Turso, and expose their
+  cloud-delivery state through `X-Utmelab-Sync`. A single coalescing push worker
+  retries pending work and drains it during shutdown.
+- Admin sync status exposes local-write and cloud-push count, average, and
+  maximum durations.
 - Sync polling sleeps after five minutes without traffic. The first database
   request wakes it with one locked pull before serving.
 - Active synchronization uses Turso long-polling. There is no interval-pull
@@ -75,7 +80,8 @@ Status: mostly complete.
 
 ### Batch 3: database speed
 
-Status: query-plan audit complete. Rust-side optimization next.
+Status: API-side audit complete. Bank-owned index work is handed off in
+`docs/BANK-INDEX-HANDOFF.md` and remains outside this Rust project.
 
 Measured Turso plans on 2026-11-07:
 
@@ -93,9 +99,8 @@ Measured Turso plans on 2026-11-07:
   the content pipeline, followed by another live plan and latency measurement.
 
 1. Done. Inspect Turso query plans for questions, verifications, subjects, and
-   country scope.
-2. Hand measured bank-index changes to the pipeline owner. Do not create bank
-   indexes from the API.
+   country scope. Candidate bank indexes are recorded in the handoff document.
+2. Done for this project. The API does not create indexes on bank-owned tables.
 3. In progress. Paper candidate verification is now restricted to the requested
    exam and subject before ranking. A ten-run live comparison reduced paper
    assembly from a median of about 0.81s to about 0.54s.
@@ -104,7 +109,8 @@ Measured Turso plans on 2026-11-07:
    and candidate rows remain uncached. Live warm requests were about 0.52–0.57s
    after a cold request of about 0.94s.
 5. Keep database work streamed even when the result is small.
-6. Re-run live plans and latency measurements after each index or query change.
+6. Done for the current code. Re-run live plans and latency measurements after
+   each future index or query change.
 
 ### Batch 4: traffic protection
 
@@ -119,15 +125,17 @@ Status: baseline load-tested. Broader resource profiling remains.
 4. Done for expensive traffic. Twenty-five concurrent paper requests produced
    both successful responses and `429` shedding, with no unbounded queue.
 5. Keep admin limits bounded in production configuration.
-6. Add a small load profile for public discovery, keyed reads, paper assembly,
-   and sync activity.
+6. Done. The live profile covered public discovery, keyed reads, paper
+   assembly, and the synced replica.
 
 ### Batch 5: write and sync safety
 
-1. Done. Writes commit locally under the write mutex, surface push failure, and
-   the sync supervisor retries pending pushes before pulling.
-2. Done. Reports use conflict-safe inserts. Key creation and rotation remain
-   non-idempotent by design, so an unknown result must not be blindly retried.
+1. Done. Writes commit locally under the write mutex, return with explicit
+   pending-sync state, and the sync supervisor retries pending pushes before
+   pulling.
+2. Done. Reports use conflict-safe inserts. Key creation accepts an
+   `Idempotency-Key`; repeated creation attempts return a conflict and cannot
+   mint a duplicate.
 3. Done. Failed pulls and pushes retry after short backoff while the last safe
    replica remains available.
 4. Done. Admin status exposes engine WAL sizes, freshness, pull duration, and
@@ -149,46 +157,47 @@ Status: baseline load-tested. Broader resource profiling remains.
 
 ### Batch 7: operational readiness
 
-Status: in progress.
+Status: complete for the current hardening scope.
 
-1. In progress. Live no-database startup returns health `200`, readiness `503`,
+1. Done. Live no-database startup returns health `200`, readiness `503`,
    and data-route `503` while the process remains healthy.
-2. Confirm logs never contain API keys, passwords, session tokens, or database
+2. Done. Logs never contain API keys, passwords, session tokens, or database
    tokens.
-3. Check admin metrics for freshness, pull duration, write wait, failures, and
+3. Done. Admin metrics expose freshness, pull duration, write wait, failures, and
    request latency.
-4. Confirm graceful shutdown does not leave a local write or pending push
+4. Done. Graceful shutdown does not leave a local write or pending push
    unaccounted for.
-5. Document the production rollback and replica-rebuild procedure.
+5. Done. Automatic corrupt-replica quarantine and the recovery procedure are
+   documented in `docs/SYNC-RECOVERY.md`.
 
 ### Batch 8: release validation
 
-Status: pending.
+Status: in progress.
 
-1. Run the complete Rust test, format, Clippy, and OpenAPI checks from a clean
-   checkout.
-2. Run live smoke tests against a read-only production-like database.
-3. Verify public, keyed, admin, and MCP route boundaries.
-4. Record baseline latency and response sizes for the main endpoints.
-5. Review every changed file for stale code, accidental secrets, and unrelated
-   scope before release.
+1. Done. Complete Rust tests, format, Clippy, and OpenAPI checks pass.
+2. Done. Live smoke tests pass against the configured Turso-backed replica.
+3. Done. Public, keyed, admin, and MCP route boundaries were checked.
+4. Done. Baseline latency and response sizes were recorded by the live
+   benchmark.
+5. Done. Final diff, stale wording, accidental-secret patterns, and unrelated
+   scope were reviewed.
 
 ### Batch 9: security stress validation
 
-Status: started after implementation batches.
+Status: in progress after implementation batches.
 
 1. Done. Missing and invalid API keys return `401`.
 2. Done. Malformed JSON returns `400`, and oversized request bodies return
    `413`.
 3. Done. A 100-request public flood completed without a process failure.
-4. Done for keyed floods and database-gate saturation. A 30-request test with
-   one DB permit returned one `200` and twenty-nine fast `503` responses. Slow
-   clients remain an open finding: a 10-bytes-per-second upload held the body
-   path beyond 15 seconds, so the current handler timeout is not a total upload
-   deadline.
-5. Observe CPU, RSS, open connections, latency, status distribution, sync
-   failures, and replica freshness during each test.
-6. Stop every test cleanly and confirm the service returns to its baseline.
+4. Done for keyed floods, database-gate saturation, and slow clients. A
+   30-request test with one DB permit returned one `200` and twenty-nine fast
+   `503` responses. A 10-bytes-per-second upload now receives `408` at the
+   total body deadline.
+5. Done for request status and latency. A live debug sample after 100 public
+   requests measured about 107 MiB RSS and 9.3% CPU on this host. This remains
+   a baseline, not proof of the target VPS limit.
+6. Done. Tests stopped cleanly and the service returned to its baseline.
 
 The local host has substantially more than the target shared-VPS memory, so
 the observed RSS is a baseline only. It does not prove behavior under a 2 GB
