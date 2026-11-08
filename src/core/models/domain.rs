@@ -339,3 +339,92 @@ pub struct PaperReadiness {
     /// verified questions to fill its `min_select` slots.
     pub complete: bool,
 }
+
+/// A high-yield study note mapped to a syllabus topic or subtopic.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct TopicNote {
+    pub id: String,
+    pub exam: String,
+    pub subject: String,
+    pub topic_slug: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub subtopic_slug: Option<String>,
+    pub title: String,
+    pub read_time_minutes: u8,
+    pub key_takeaway: RichText,
+    pub sections: Vec<NoteSection>,
+    #[serde(default)]
+    pub worked_examples: Vec<WorkedExample>,
+    #[serde(default)]
+    pub formulas: Vec<NoteFormula>,
+    #[serde(default)]
+    pub active_recall_checks: Vec<ActiveRecallCheck>,
+    #[serde(default)]
+    pub examiner_traps: Vec<ExaminerTrap>,
+    #[serde(default)]
+    pub linked_question_ids: Vec<String>,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct NoteSection {
+    pub section_number: u8,
+    pub heading: String,
+    pub content: RichText,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub callout: Option<NoteCallout>,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct NoteCallout {
+    pub kind: String,
+    pub text: RichText,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct WorkedExample {
+    pub title: String,
+    pub problem_statement: RichText,
+    pub steps: Vec<SolutionStep>,
+    pub final_answer: RichText,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub method_tip: Option<String>,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct SolutionStep {
+    pub step_number: u8,
+    pub description: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub expression: Option<String>,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct NoteFormula {
+    pub name: String,
+    pub latex: String,
+    pub variables: Vec<FormulaVariable>,
+    #[serde(default)]
+    pub conditions: Vec<String>,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct FormulaVariable {
+    pub symbol: String,
+    pub name: String,
+    pub unit: String,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct ActiveRecallCheck {
+    pub check_number: u8,
+    pub prompt: String,
+    pub options: Vec<String>,
+    pub correct_index: u8,
+    pub explanation: String,
+}
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct ExaminerTrap {
+    pub misconception: String,
+    pub correction: String,
+}

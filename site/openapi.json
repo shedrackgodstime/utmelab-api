@@ -546,6 +546,204 @@
         }
       }
     },
+    "/api/v1/notes/subtopic/{exam}/{subject}/{subtopic_slug}": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "High-yield study note for a specific syllabus subtopic.",
+        "operationId": "getSubtopicNote",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "path",
+            "description": "Exam code, e.g. `JAMB`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "path",
+            "description": "Subject slug, e.g. `physics`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subtopic_slug",
+            "in": "path",
+            "description": "Subtopic slug, e.g. `projectiles`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TopicNote"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key lacks the required scope.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No note found for this subtopic",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The caller has exceeded the applicable rate limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The API is temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/notes/{exam}/{subject}/{topic_slug}": {
+      "get": {
+        "tags": [
+          "catalog"
+        ],
+        "summary": "High-yield study note for a syllabus topic.",
+        "operationId": "getTopicNote",
+        "parameters": [
+          {
+            "name": "exam",
+            "in": "path",
+            "description": "Exam code, e.g. `JAMB`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "subject",
+            "in": "path",
+            "description": "Subject slug, e.g. `physics`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "topic_slug",
+            "in": "path",
+            "description": "Topic slug, e.g. `motion`.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TopicNote"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "An API key is missing or invalid.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "The API key lacks the required scope.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No note found for this topic",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The caller has exceeded the applicable rate limit.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "The API is temporarily unavailable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/novels": {
       "get": {
         "tags": [
@@ -2631,6 +2829,40 @@
   },
   "components": {
     "schemas": {
+      "ActiveRecallCheck": {
+        "type": "object",
+        "required": [
+          "check_number",
+          "prompt",
+          "options",
+          "correct_index",
+          "explanation"
+        ],
+        "properties": {
+          "check_number": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "correct_index": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "explanation": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "prompt": {
+            "type": "string"
+          }
+        }
+      },
       "AssembledPaperOut": {
         "type": "object",
         "required": [
@@ -2910,6 +3142,21 @@
           }
         }
       },
+      "ExaminerTrap": {
+        "type": "object",
+        "required": [
+          "misconception",
+          "correction"
+        ],
+        "properties": {
+          "correction": {
+            "type": "string"
+          },
+          "misconception": {
+            "type": "string"
+          }
+        }
+      },
       "Explanation": {
         "type": "object",
         "description": "Why the answer is what it is: teaser, working, and the distractor\nthat catches people.",
@@ -2933,6 +3180,25 @@
                 "type": "null"
               }
             ]
+          }
+        }
+      },
+      "FormulaVariable": {
+        "type": "object",
+        "required": [
+          "symbol",
+          "name",
+          "unit"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "symbol": {
+            "type": "string"
+          },
+          "unit": {
+            "type": "string"
           }
         }
       },
@@ -3109,6 +3375,80 @@
             "items": {
               "type": "string"
             }
+          }
+        }
+      },
+      "NoteCallout": {
+        "type": "object",
+        "required": [
+          "kind",
+          "text"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string"
+          },
+          "text": {
+            "$ref": "#/components/schemas/RichText"
+          }
+        }
+      },
+      "NoteFormula": {
+        "type": "object",
+        "required": [
+          "name",
+          "latex",
+          "variables"
+        ],
+        "properties": {
+          "conditions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "latex": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "variables": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FormulaVariable"
+            }
+          }
+        }
+      },
+      "NoteSection": {
+        "type": "object",
+        "required": [
+          "section_number",
+          "heading",
+          "content"
+        ],
+        "properties": {
+          "callout": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/NoteCallout"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "content": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "heading": {
+            "type": "string"
+          },
+          "section_number": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
           }
         }
       },
@@ -4377,6 +4717,29 @@
           }
         }
       },
+      "SolutionStep": {
+        "type": "object",
+        "required": [
+          "step_number",
+          "description"
+        ],
+        "properties": {
+          "description": {
+            "type": "string"
+          },
+          "expression": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "step_number": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          }
+        }
+      },
       "Subject": {
         "type": "object",
         "description": "One exam's offering of a subject. The same concept appears once per\nexam carrying that board's own name, not one row with an alias.",
@@ -4512,8 +4875,20 @@
             },
             "description": "Inherited from the parent topic. A subtopic carries no scope of its own."
           },
+          "has_note": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
           "name": {
             "type": "string"
+          },
+          "note_id": {
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "objectives": {
             "type": "array",
@@ -4589,8 +4964,20 @@
             },
             "description": "Countries this topic belongs to. Empty means every member country."
           },
+          "has_note": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
           "name": {
             "type": "string"
+          },
+          "note_id": {
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "objectives": {
             "type": "array",
@@ -4676,6 +5063,119 @@
             "format": "int32",
             "description": "Marks the board gives this topic. Zero means \"not published\",\nnever \"worth nothing\". A fabricated weight would reach\nconsumers as a fact.",
             "minimum": 0
+          }
+        }
+      },
+      "TopicNote": {
+        "type": "object",
+        "description": "A high-yield study note mapped to a syllabus topic or subtopic.",
+        "required": [
+          "id",
+          "exam",
+          "subject",
+          "topic_slug",
+          "title",
+          "read_time_minutes",
+          "key_takeaway",
+          "sections"
+        ],
+        "properties": {
+          "active_recall_checks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ActiveRecallCheck"
+            }
+          },
+          "exam": {
+            "type": "string"
+          },
+          "examiner_traps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExaminerTrap"
+            }
+          },
+          "formulas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NoteFormula"
+            }
+          },
+          "id": {
+            "type": "string"
+          },
+          "key_takeaway": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "linked_question_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "read_time_minutes": {
+            "type": "integer",
+            "format": "int32",
+            "minimum": 0
+          },
+          "sections": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NoteSection"
+            }
+          },
+          "subject": {
+            "type": "string"
+          },
+          "subtopic_slug": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "topic_slug": {
+            "type": "string"
+          },
+          "worked_examples": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkedExample"
+            }
+          }
+        }
+      },
+      "WorkedExample": {
+        "type": "object",
+        "required": [
+          "title",
+          "problem_statement",
+          "steps",
+          "final_answer"
+        ],
+        "properties": {
+          "final_answer": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "method_tip": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "problem_statement": {
+            "$ref": "#/components/schemas/RichText"
+          },
+          "steps": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SolutionStep"
+            }
+          },
+          "title": {
+            "type": "string"
           }
         }
       }

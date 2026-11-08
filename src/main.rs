@@ -30,6 +30,9 @@ fn main() {
         let role = args.get(3).cloned().unwrap_or_else(|| "admin".to_string());
         std::process::exit(seed_admin_cmd(username, role));
     }
+    if args.get(1).is_some_and(|a| a == "seed-reference-notes") {
+        std::process::exit(seed_reference_notes_cmd());
+    }
     let cfg = match Config::from_env() {
         Ok(c) => c,
         Err(e) => {
@@ -107,6 +110,47 @@ fn seed_admin_cmd(username: String, role: String) -> i32 {
             }
             Err(e) => {
                 eprintln!("seed failed: {e}");
+                1
+            }
+        }
+    })
+}
+
+fn seed_reference_notes_cmd() -> i32 {
+    let cfg = match Config::from_env() {
+        Ok(c) => c,
+        Err(e) => {
+            eprintln!("{e}");
+            return 1;
+        }
+    };
+    if !cfg.has_db() {
+        eprintln!("no TURSO_DB_URL/TOKEN; nothing to seed into");
+        return 1;
+    }
+    let rt = match tokio::runtime::Builder::new_current_thread()
+        .enable_all()
+        .build()
+    {
+        Ok(r) => r,
+        Err(e) => {
+            eprintln!("failed to start command runtime: {e}");
+            return 1;
+        }
+    };
+    rt.block_on(async move {
+        let Some(db) = store::sync::ready_db(&cfg).await else {
+            eprintln!("could not open replica (is the server running?) or reach cloud");
+            return 1;
+        };
+        let st = utmelab_api::state::DbState::detached(db);
+        match store::catalog::seed_reference_notes(&st).await {
+            Ok(()) => {
+                println!("seeded reference study notes for JAMB physics motion and projectiles");
+                0
+            }
+            Err(e) => {
+                eprintln!("seed notes failed: {e}");
                 1
             }
         }

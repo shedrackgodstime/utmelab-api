@@ -1096,6 +1096,425 @@ pub async fn get_topic(
     .await
 }
 
+fn map_topic_note(row: &turso::Row) -> Result<core::models::TopicNote, AppError> {
+    let id: String = row.get(0).map_err(upstream)?;
+    let exam: String = row.get(1).map_err(upstream)?;
+    let subject: String = row.get(2).map_err(upstream)?;
+    let topic_slug: String = row.get(3).map_err(upstream)?;
+    let subtopic_slug = opt_string(row.get_value(4).map_err(upstream)?, "topic_notes.subtopic_slug")?;
+    let title: String = row.get(5).map_err(upstream)?;
+    let read_time_minutes = req_int::<u8>(row.get_value(6).map_err(upstream)?, "topic_notes.read_time_minutes")?;
+    let key_takeaway_raw: String = row.get(7).map_err(upstream)?;
+    let sections_raw: String = row.get(8).map_err(upstream)?;
+    let worked_examples_raw: String = row.get(9).map_err(upstream)?;
+    let formulas_raw: String = row.get(10).map_err(upstream)?;
+    let active_recall_checks_raw: String = row.get(11).map_err(upstream)?;
+    let examiner_traps_raw: String = row.get(12).map_err(upstream)?;
+    let linked_question_ids_raw: String = row.get(13).map_err(upstream)?;
+
+    Ok(core::models::TopicNote {
+        id,
+        exam,
+        subject,
+        topic_slug,
+        subtopic_slug,
+        title,
+        read_time_minutes,
+        key_takeaway: json_col(&key_takeaway_raw, "topic_notes.key_takeaway")?,
+        sections: json_col(&sections_raw, "topic_notes.sections")?,
+        worked_examples: json_col(&worked_examples_raw, "topic_notes.worked_examples")?,
+        formulas: json_col(&formulas_raw, "topic_notes.formulas")?,
+        active_recall_checks: json_col(&active_recall_checks_raw, "topic_notes.active_recall_checks")?,
+        examiner_traps: json_col(&examiner_traps_raw, "topic_notes.examiner_traps")?,
+        linked_question_ids: json_col(&linked_question_ids_raw, "topic_notes.linked_question_ids")?,
+    })
+}
+
+pub async fn get_topic_note(
+    s: &DbState,
+    exam: &str,
+    subject: &str,
+    topic_slug: &str,
+) -> Result<Option<core::models::TopicNote>, AppError> {
+    let exam = exam.to_string();
+    let subject = subject.to_string();
+    let topic_slug = topic_slug.to_string();
+    with_conn(s, |conn| {
+        let exam = exam.clone();
+        let subject = subject.clone();
+        let topic_slug = topic_slug.clone();
+        async move {
+            let mut stmt = conn
+                .prepare(
+                    "SELECT id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, \
+                     key_takeaway, sections, worked_examples, formulas, active_recall_checks, \
+                     examiner_traps, linked_question_ids \
+                     FROM topic_notes \
+                     WHERE exam = ?1 AND subject = ?2 AND topic_slug = ?3 AND (subtopic_slug IS NULL OR subtopic_slug = '') \
+                     LIMIT 1",
+                )
+                .await
+                .map_err(upstream)?;
+            let mut rows = stmt
+                .query([exam.as_str(), subject.as_str(), topic_slug.as_str()])
+                .await
+                .map_err(upstream)?;
+            let Some(row) = rows.next().await.map_err(upstream)? else {
+                return Ok(None);
+            };
+            Ok(Some(map_topic_note(&row)?))
+        }
+    })
+    .await
+}
+
+pub async fn get_subtopic_note(
+    s: &DbState,
+    exam: &str,
+    subject: &str,
+    subtopic_slug: &str,
+) -> Result<Option<core::models::TopicNote>, AppError> {
+    let exam = exam.to_string();
+    let subject = subject.to_string();
+    let subtopic_slug = subtopic_slug.to_string();
+    with_conn(s, |conn| {
+        let exam = exam.clone();
+        let subject = subject.clone();
+        let subtopic_slug = subtopic_slug.clone();
+        async move {
+            let mut stmt = conn
+                .prepare(
+                    "SELECT id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, \
+                     key_takeaway, sections, worked_examples, formulas, active_recall_checks, \
+                     examiner_traps, linked_question_ids \
+                     FROM topic_notes \
+                     WHERE exam = ?1 AND subject = ?2 AND subtopic_slug = ?3 \
+                     LIMIT 1",
+                )
+                .await
+                .map_err(upstream)?;
+            let mut rows = stmt
+                .query([exam.as_str(), subject.as_str(), subtopic_slug.as_str()])
+                .await
+                .map_err(upstream)?;
+            let Some(row) = rows.next().await.map_err(upstream)? else {
+                return Ok(None);
+            };
+            Ok(Some(map_topic_note(&row)?))
+        }
+    })
+    .await
+}
+
+pub async fn notes_index(
+    s: &DbState,
+    exam: &str,
+    subject: &str,
+) -> Result<std::collections::HashMap<(String, Option<String>), String>, AppError> {
+    let exam = exam.to_string();
+    let subject = subject.to_string();
+    with_conn(s, |conn| {
+        let exam = exam.clone();
+        let subject = subject.clone();
+        async move {
+            let mut stmt = conn
+                .prepare(
+                    "SELECT id, topic_slug, subtopic_slug FROM topic_notes WHERE exam = ?1 AND subject = ?2",
+                )
+                .await
+                .map_err(upstream)?;
+            let mut rows = stmt.query([exam.as_str(), subject.as_str()]).await.map_err(upstream)?;
+            let mut map = std::collections::HashMap::new();
+            while let Some(row) = rows.next().await.map_err(upstream)? {
+                let id: String = row.get(0).map_err(upstream)?;
+                let topic_slug: String = row.get(1).map_err(upstream)?;
+                let subtopic_slug = opt_string(row.get_value(2).map_err(upstream)?, "topic_notes.subtopic_slug")?
+                    .filter(|s| !s.is_empty());
+                map.insert((topic_slug, subtopic_slug), id);
+            }
+            Ok(map)
+        }
+    })
+    .await
+}
+
+/// Seed reference study notes for testing and demonstration.
+pub async fn seed_reference_notes(s: &DbState) -> Result<(), AppError> {
+    let topic_takeaway = serde_json::json!({
+        "text": "Motion is the continuous change in position of an object relative to a reference frame over time.",
+        "inline": []
+    }).to_string();
+
+    let topic_sections = serde_json::json!([
+        {
+            "section_number": 1,
+            "heading": "1. Distance and Displacement",
+            "content": {
+                "text": "Distance is a scalar quantity representing the total ground covered. Displacement is a vector quantity pointing directly from the starting position to the final position.",
+                "inline": [
+                    { "start": 0, "len": 8, "kind": "bold" },
+                    { "start": 68, "len": 12, "kind": "bold" }
+                ]
+            },
+            "callout": {
+                "kind": "key_concept",
+                "text": {
+                    "text": "Displacement can be zero even after walking ten kilometers if you return to your starting point.",
+                    "inline": []
+                }
+            }
+        },
+        {
+            "section_number": 2,
+            "heading": "2. Equations of Uniformly Accelerated Motion",
+            "content": {
+                "text": "When acceleration remains constant, kinematic equations connect initial velocity (u), final velocity (v), acceleration (a), time (t), and displacement (s).",
+                "inline": []
+            },
+            "callout": null
+        }
+    ]).to_string();
+
+    let topic_formulas = serde_json::json!([
+        {
+            "name": "Velocity Equation",
+            "latex": "v = u + at",
+            "variables": [
+                { "symbol": "v", "name": "Final velocity", "unit": "m/s" },
+                { "symbol": "u", "name": "Initial velocity", "unit": "m/s" },
+                { "symbol": "a", "name": "Acceleration", "unit": "m/s²" },
+                { "symbol": "t", "name": "Time", "unit": "s" }
+            ],
+            "conditions": ["Constant linear acceleration"]
+        },
+        {
+            "name": "Displacement Equation",
+            "latex": "s = ut + \\frac{1}{2}at^2",
+            "variables": [
+                { "symbol": "s", "name": "Displacement", "unit": "m" }
+            ],
+            "conditions": ["Constant linear acceleration"]
+        }
+    ]).to_string();
+
+    let topic_checks = serde_json::json!([
+        {
+            "check_number": 1,
+            "prompt": "Which of the following is a vector quantity?",
+            "options": ["Speed", "Distance", "Displacement", "Mass"],
+            "correct_index": 2,
+            "explanation": "Displacement has both magnitude and direction, whereas speed, distance, and mass are scalar quantities."
+        }
+    ]).to_string();
+
+    let topic_traps = serde_json::json!([
+        {
+            "misconception": "Confusing average speed with average velocity.",
+            "correction": "Average speed uses total distance divided by total time. Average velocity uses total displacement divided by total time."
+        }
+    ]).to_string();
+
+    let subtopic_takeaway = serde_json::json!({
+        "text": "Projectile motion combines constant horizontal velocity with constant vertical gravitational acceleration.",
+        "inline": []
+    }).to_string();
+
+    let subtopic_sections = serde_json::json!([
+        {
+            "section_number": 1,
+            "heading": "1. Independence of Motion",
+            "content": {
+                "text": "A projectile launched into the air moves in two dimensions at the same time. The horizontal motion experiences zero acceleration when air resistance is neglected. Gravity pulls downward, accelerating the vertical motion at 9.8 m/s² (or 10 m/s² in standard JAMB calculations). Because gravity acts only downward, the horizontal velocity component never changes throughout the flight.",
+                "inline": [
+                    { "start": 80, "len": 17, "kind": "bold" },
+                    { "start": 169, "len": 7, "kind": "italic" }
+                ]
+            },
+            "callout": {
+                "kind": "examiner_tip",
+                "text": {
+                    "text": "Horizontal velocity (u_x = u cos θ) remains constant at every point on the trajectory, including at maximum height.",
+                    "inline": [
+                        { "start": 21, "len": 13, "kind": "bold" }
+                    ]
+                }
+            }
+        },
+        {
+            "section_number": 2,
+            "heading": "2. Velocity at Maximum Height",
+            "content": {
+                "text": "At the peak of flight, the projectile stops climbing for an instant. The vertical velocity component becomes zero (v_y = 0). However, the total velocity at maximum height is not zero: the object still moves forward with its original horizontal speed (u cos θ).",
+                "inline": [
+                    { "start": 98, "len": 9, "kind": "bold" }
+                ]
+            },
+            "callout": {
+                "kind": "warning",
+                "text": {
+                    "text": "Never set total velocity to zero at the maximum height. Only the vertical component is zero.",
+                    "inline": [
+                        { "start": 0, "len": 55, "kind": "bold" }
+                    ]
+                }
+            }
+        }
+    ]).to_string();
+
+    let subtopic_examples = serde_json::json!([
+        {
+            "title": "Finding Time of Flight and Maximum Height",
+            "problem_statement": {
+                "text": "A stone is projected from the ground with a velocity of 40 m/s at an angle of 30 degrees to the horizontal. Calculate: (a) the time taken to reach the maximum height, (b) the total time of flight. (Take g = 10 m/s²)",
+                "inline": []
+            },
+            "steps": [
+                {
+                    "step_number": 1,
+                    "description": "Identify known variables and formula for time to maximum height",
+                    "expression": "u = 40\\text{ m/s}, \\quad \\theta = 30^\\circ, \\quad g = 10\\text{ m/s}^2, \\quad t = \\frac{u \\sin \\theta}{g}"
+                },
+                {
+                    "step_number": 2,
+                    "description": "Substitute values into the formula to find t",
+                    "expression": "t = \\frac{40 \\times \\sin(30^\\circ)}{10} = \\frac{40 \\times 0.5}{10} = \\frac{20}{10} = 2.0\\text{ seconds}"
+                },
+                {
+                    "step_number": 3,
+                    "description": "Calculate total time of flight by doubling the time to maximum height",
+                    "expression": "T = 2 \\times t = 2 \\times 2.0 = 4.0\\text{ seconds}"
+                }
+            ],
+            "final_answer": {
+                "text": "Time to maximum height is 2.0 seconds. Total time of flight is 4.0 seconds.",
+                "inline": []
+            },
+            "method_tip": "Always evaluate sin(30°) = 0.5 first before multiplying by velocity."
+        }
+    ]).to_string();
+
+    let subtopic_formulas = serde_json::json!([
+        {
+            "name": "Time to Maximum Height",
+            "latex": "t = \\frac{u \\sin \\theta}{g}",
+            "variables": [
+                { "symbol": "u", "name": "Initial velocity", "unit": "m/s" },
+                { "symbol": "\\theta", "name": "Angle of projection to horizontal", "unit": "degrees" },
+                { "symbol": "g", "name": "Gravitational acceleration", "unit": "m/s²" }
+            ],
+            "conditions": [
+                "Level ground launch and landing",
+                "Air resistance ignored"
+            ]
+        },
+        {
+            "name": "Maximum Height Reached",
+            "latex": "H = \\frac{u^2 \\sin^2 \\theta}{2g}",
+            "variables": [
+                { "symbol": "H", "name": "Maximum vertical height", "unit": "m" }
+            ],
+            "conditions": [
+                "Measured relative to launch plane"
+            ]
+        },
+        {
+            "name": "Horizontal Range",
+            "latex": "R = \\frac{u^2 \\sin 2\\theta}{g}",
+            "variables": [
+                { "symbol": "R", "name": "Total horizontal distance", "unit": "m" }
+            ],
+            "conditions": [
+                "Maximum range happens at 45 degrees launch angle"
+            ]
+        }
+    ]).to_string();
+
+    let subtopic_checks = serde_json::json!([
+        {
+            "check_number": 1,
+            "prompt": "What happens to the horizontal velocity of a projectile during flight when air resistance is ignored?",
+            "options": [
+                "It decreases to zero at maximum height",
+                "It increases steadily until landing",
+                "It remains constant throughout the entire flight",
+                "It reverses direction after reaching the peak"
+            ],
+            "correct_index": 2,
+            "explanation": "Because gravity only acts downward (vertically), there is zero horizontal acceleration. The horizontal speed never changes."
+        },
+        {
+            "check_number": 2,
+            "prompt": "At what launch angle does a projectile achieve its maximum horizontal range on flat ground?",
+            "options": [
+                "30 degrees",
+                "45 degrees",
+                "60 degrees",
+                "90 degrees"
+            ],
+            "correct_index": 1,
+            "explanation": "The range formula depends on sin(2θ). The maximum possible value for sine is 1, which happens when 2θ = 90 degrees, meaning θ = 45 degrees."
+        }
+    ]).to_string();
+
+    let subtopic_traps = serde_json::json!([
+        {
+            "misconception": "Thinking acceleration at the top of the flight path is zero.",
+            "correction": "Gravitational acceleration stays 9.8 m/s² downward at all times, even when vertical velocity is momentarily zero at the peak."
+        },
+        {
+            "misconception": "Using the angle to the vertical instead of horizontal.",
+            "correction": "If an exam question states 'projected at 30 degrees to the vertical', you must subtract it from 90 degrees to get 60 degrees to the horizontal before using the standard formulas."
+        }
+    ]).to_string();
+
+    super::write::execute_write(
+        s,
+        "INSERT OR REPLACE INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, linked_question_ids, content_hash) \
+         VALUES (?1, ?2, ?3, ?4, NULL, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14)",
+        vec![
+            turso::Value::Text("note_phys_jamb_motion".to_string()),
+            turso::Value::Text("JAMB".to_string()),
+            turso::Value::Text("physics".to_string()),
+            turso::Value::Text("motion".to_string()),
+            turso::Value::Text("General Principles of Motion and Dynamics".to_string()),
+            turso::Value::Integer(4),
+            turso::Value::Text(topic_takeaway),
+            turso::Value::Text(topic_sections),
+            turso::Value::Text("[]".to_string()),
+            turso::Value::Text(topic_formulas),
+            turso::Value::Text(topic_checks),
+            turso::Value::Text(topic_traps),
+            turso::Value::Text("[]".to_string()),
+            turso::Value::Text("content_hash_motion".to_string()),
+        ],
+    ).await?;
+
+    super::write::execute_write(
+        s,
+        "INSERT OR REPLACE INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, linked_question_ids, content_hash) \
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15)",
+        vec![
+            turso::Value::Text("note_phys_jamb_projectile_motion".to_string()),
+            turso::Value::Text("JAMB".to_string()),
+            turso::Value::Text("physics".to_string()),
+            turso::Value::Text("motion".to_string()),
+            turso::Value::Text("projectiles-range-maximum-height-time-of-flight-and-applicat".to_string()),
+            turso::Value::Text("Projectile Motion: Flight Path, Range, and Maximum Height".to_string()),
+            turso::Value::Integer(5),
+            turso::Value::Text(subtopic_takeaway),
+            turso::Value::Text(subtopic_sections),
+            turso::Value::Text(subtopic_examples),
+            turso::Value::Text(subtopic_formulas),
+            turso::Value::Text(subtopic_checks),
+            turso::Value::Text(subtopic_traps),
+            turso::Value::Text("[]".to_string()),
+            turso::Value::Text("content_hash_projectiles".to_string()),
+        ],
+    ).await?;
+
+    Ok(())
+}
+
 /// Does a reportable target exist? One arm per kind, so adding a kind
 /// is one line here plus one in `core::reports::parse_target_type`.
 /// Reuses the readers rather than a parallel existence query: a report

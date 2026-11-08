@@ -199,6 +199,10 @@ pub struct SyllabusTopic {
     /// Countries this topic belongs to. Empty means every member country.
     pub countries: Vec<String>,
     pub subtopics: Vec<SyllabusSubtopic>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub has_note: Option<bool>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub note_id: Option<String>,
 }
 
 #[derive(Clone, Debug, PartialEq, serde::Serialize, utoipa::ToSchema)]
@@ -210,6 +214,10 @@ pub struct SyllabusSubtopic {
     pub objectives: Vec<String>,
     /// Inherited from the parent topic. A subtopic carries no scope of its own.
     pub countries: Vec<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub has_note: Option<bool>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub note_id: Option<String>,
 }
 
 /// Counts over a subject's syllabus, for progress bars and checklists.

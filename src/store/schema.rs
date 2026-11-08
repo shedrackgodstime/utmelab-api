@@ -25,7 +25,7 @@ pub const CONTRACT_VERSION: u64 = 1;
 
 /// Version of the API-owned schema. This is separate from
 /// [`CONTRACT_VERSION`], which belongs to the content pipeline.
-pub const API_SCHEMA_VERSION: u64 = 2;
+pub const API_SCHEMA_VERSION: u64 = 3;
 
 /// Tables the API owns and creates at boot.
 pub(crate) const DDL: &[&str] = &[
@@ -35,6 +35,7 @@ pub(crate) const DDL: &[&str] = &[
     "CREATE TABLE IF NOT EXISTS dashboard_users (username TEXT PRIMARY KEY, pw_hash TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'customer', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS sessions (token_hash TEXT PRIMARY KEY, username TEXT NOT NULL, expires_at INTEGER NOT NULL)",
     "CREATE TABLE IF NOT EXISTS reports (id TEXT PRIMARY KEY, target_type TEXT NOT NULL, target_id TEXT NOT NULL, reporter TEXT NOT NULL, reason TEXT NOT NULL, detail TEXT, created_at INTEGER NOT NULL, UNIQUE(reporter, target_type, target_id, reason))",
+    "CREATE TABLE IF NOT EXISTS topic_notes (id TEXT PRIMARY KEY, exam TEXT NOT NULL, subject TEXT NOT NULL, topic_slug TEXT NOT NULL, subtopic_slug TEXT, title TEXT NOT NULL, read_time_minutes INTEGER NOT NULL, key_takeaway TEXT NOT NULL, sections TEXT NOT NULL, worked_examples TEXT NOT NULL DEFAULT '[]', formulas TEXT NOT NULL DEFAULT '[]', active_recall_checks TEXT NOT NULL DEFAULT '[]', examiner_traps TEXT NOT NULL DEFAULT '[]', linked_question_ids TEXT NOT NULL DEFAULT '[]', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
 ];
 
 /// Every table the store reads, and the columns it depends on. This is the
@@ -76,6 +77,26 @@ pub const READ_SHAPES: &[(&str, &[&str])] = &[
             "reason",
             "detail",
             "created_at",
+        ],
+    ),
+    (
+        "topic_notes",
+        &[
+            "id",
+            "exam",
+            "subject",
+            "topic_slug",
+            "subtopic_slug",
+            "title",
+            "read_time_minutes",
+            "key_takeaway",
+            "sections",
+            "worked_examples",
+            "formulas",
+            "active_recall_checks",
+            "examiner_traps",
+            "linked_question_ids",
+            "content_hash",
         ],
     ),
     // Bank tables the pipeline owns.
@@ -249,7 +270,7 @@ pub async fn ensure_schema(s: &DbState) -> Result<(), AppError> {
 /// API-owned migrations are numbered, applied once, and never rewritten.
 /// Fresh databases receive the current DDL first; upgraded databases receive
 /// the same DDL idempotently and then any missing migrations.
-const MIGRATIONS: &[u64] = &[1, 2];
+const MIGRATIONS: &[u64] = &[1, 2, 3];
 
 async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
     for &version in MIGRATIONS {
@@ -285,6 +306,23 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 super::write::execute_ddl_local(
                     s,
                     "CREATE UNIQUE INDEX IF NOT EXISTS idx_api_keys_idempotency_hash ON api_keys(idempotency_hash)",
+                )
+                .await?;
+            }
+            3 => {
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE TABLE IF NOT EXISTS topic_notes (id TEXT PRIMARY KEY, exam TEXT NOT NULL, subject TEXT NOT NULL, topic_slug TEXT NOT NULL, subtopic_slug TEXT, title TEXT NOT NULL, read_time_minutes INTEGER NOT NULL, key_takeaway TEXT NOT NULL, sections TEXT NOT NULL, worked_examples TEXT NOT NULL DEFAULT '[]', formulas TEXT NOT NULL DEFAULT '[]', active_recall_checks TEXT NOT NULL DEFAULT '[]', examiner_traps TEXT NOT NULL DEFAULT '[]', linked_question_ids TEXT NOT NULL DEFAULT '[]', content_hash TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+                )
+                .await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE INDEX IF NOT EXISTS idx_notes_lookup ON topic_notes (exam, subject, topic_slug)",
+                )
+                .await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE INDEX IF NOT EXISTS idx_notes_subtopic_lookup ON topic_notes (exam, subject, subtopic_slug)",
                 )
                 .await?;
             }

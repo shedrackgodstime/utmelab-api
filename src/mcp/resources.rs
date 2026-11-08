@@ -22,7 +22,8 @@ use rmcp::model::{Resource, ResourceTemplate};
 
 use crate::{
     api::v1::{
-        blueprints, exams, keys, meta, novels, papers, passages, questions, subjects, topics,
+        blueprints, exams, keys, meta, notes, novels, papers, passages, questions, subjects,
+        topics,
     },
     auth::{api_key::AuthedKey, Auth},
     error::AppError,
@@ -138,6 +139,16 @@ pub fn templates() -> Vec<ResourceTemplate> {
             "Table rows",
             "A page of rows from an allowlisted table. `limit` caps it.",
         ),
+        tmpl(
+            "notes/{exam}/{subject}/{topic_slug}",
+            "Topic study note",
+            "High-yield study note for a syllabus topic.",
+        ),
+        tmpl(
+            "notes/subtopic/{exam}/{subject}/{subtopic_slug}",
+            "Subtopic study note",
+            "High-yield study note for a specific syllabus subtopic.",
+        ),
     ]
 }
 
@@ -212,6 +223,16 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
             State(db.clone()),
             AuthedKey(auth.clone()),
             Path((exam.to_string(), subject.to_string(), slug.to_string())),
+        )),
+        ["notes", exam, subject, topic_slug] => read!(notes::topic_note(
+            State(db.clone()),
+            AuthedKey(auth.clone()),
+            Path((exam.to_string(), subject.to_string(), topic_slug.to_string())),
+        )),
+        ["notes", "subtopic", exam, subject, subtopic_slug] => read!(notes::subtopic_note(
+            State(db.clone()),
+            AuthedKey(auth.clone()),
+            Path((exam.to_string(), subject.to_string(), subtopic_slug.to_string())),
         )),
         ["blueprints", exam, subject] => read!(blueprints::list(
             State(db.clone()),

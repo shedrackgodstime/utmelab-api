@@ -19,8 +19,8 @@ use utoipa::openapi::security::{ApiKey, ApiKeyValue, SecurityScheme};
 use utoipa::{Modify, OpenApi};
 
 use crate::api::v1::{
-    blueprints, exams, keys, meta, novels, papers, passages, public, questions, reports, subjects,
-    topics,
+    blueprints, exams, keys, meta, notes, novels, papers, passages, public, questions, reports,
+    subjects, topics,
 };
 
 /// The whole contract, as a value. `site/openapi.json` is this serialised.
@@ -68,6 +68,8 @@ surface is keyed.",
         subjects::syllabus,
         subjects::coverage,
         topics::one,
+        notes::topic_note,
+        notes::subtopic_note,
         blueprints::list,
         passages::list,
         passages::catalog,
@@ -93,6 +95,15 @@ surface is keyed.",
         crate::core::models::Exam,
         crate::core::models::Subject,
         crate::core::models::Topic,
+        crate::core::models::TopicNote,
+        crate::core::models::NoteSection,
+        crate::core::models::NoteCallout,
+        crate::core::models::WorkedExample,
+        crate::core::models::SolutionStep,
+        crate::core::models::NoteFormula,
+        crate::core::models::FormulaVariable,
+        crate::core::models::ActiveRecallCheck,
+        crate::core::models::ExaminerTrap,
         crate::core::models::Blueprint,
         crate::core::models::Passage,
         crate::core::models::PassagePage,

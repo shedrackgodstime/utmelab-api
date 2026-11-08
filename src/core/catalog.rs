@@ -190,6 +190,8 @@ pub fn assemble_syllabus_from_counts(
                 question_count: count,
                 objectives: st.objectives.clone(),
                 countries: t.countries.clone(),
+                has_note: None,
+                note_id: None,
             });
         }
         let count: usize = subtopics.iter().map(|s| s.question_count).sum();
@@ -206,6 +208,8 @@ pub fn assemble_syllabus_from_counts(
             objectives: t.objectives.clone(),
             countries: t.countries.clone(),
             subtopics,
+            has_note: None,
+            note_id: None,
         });
     }
 
@@ -214,6 +218,24 @@ pub fn assemble_syllabus_from_counts(
         subject,
         topics,
         summary,
+    }
+}
+
+pub fn attach_notes_to_syllabus(
+    syllabus: &mut Syllabus,
+    notes: &std::collections::HashMap<(String, Option<String>), String>,
+) {
+    for t in &mut syllabus.topics {
+        if let Some(note_id) = notes.get(&(t.slug.clone(), None)) {
+            t.has_note = Some(true);
+            t.note_id = Some(note_id.clone());
+        }
+        for st in &mut t.subtopics {
+            if let Some(note_id) = notes.get(&(t.slug.clone(), Some(st.slug.clone()))) {
+                st.has_note = Some(true);
+                st.note_id = Some(note_id.clone());
+            }
+        }
     }
 }
 

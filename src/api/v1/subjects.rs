@@ -97,26 +97,26 @@ pub async fn build_syllabus(
     }
 
     // Resolve syllabus mapping: NECO subjects may point to WAEC syllabus
-    let (syllabus_exam, syllabus_subject) = if let (Some(se), Some(ss)) = (
-        subject.syllabus_exam.as_deref(),
-        subject.syllabus_subject.as_deref(),
-    ) {
-        (se, ss)
-    } else {
-        (exam, slug)
+    let (syllabus_exam, syllabus_subject) = match (&subject.syllabus_exam, &subject.syllabus_subject) {
+        (Some(se), Some(ss)) => (se.clone(), ss.clone()),
+        _ => (exam.to_string(), slug.to_string()),
     };
 
-    let tree = store::catalog::list_syllabus(s, syllabus_exam, syllabus_subject).await?;
+    let tree = store::catalog::list_syllabus(s, &syllabus_exam, &syllabus_subject).await?;
     let counts =
-        store::catalog::subtopic_counts(s, syllabus_exam, syllabus_subject, country.as_deref())
+        store::catalog::subtopic_counts(s, &syllabus_exam, &syllabus_subject, country.as_deref())
             .await?;
-    Ok(core::catalog::assemble_syllabus_from_counts(
+    let mut syllabus = core::catalog::assemble_syllabus_from_counts(
         exam, // Keep original exam for response
         subject,
         &tree,
         &counts,
         country.as_deref(),
-    ))
+    );
+    if let Ok(notes) = store::catalog::notes_index(s, &syllabus_exam, &syllabus_subject).await {
+        core::catalog::attach_notes_to_syllabus(&mut syllabus, &notes);
+    }
+    Ok(syllabus)
 }
 
 /// The whole topic tree with live counts.
@@ -245,6 +245,20 @@ mod tests {
         )
         .await
         .expect("insert question");
+        conn.execute(
+            "INSERT INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, linked_question_ids, content_hash) \
+             VALUES ('note_mech', 'JAMB', 'physics', 'mechanics', NULL, 'Mechanics Overview', 4, '{\"text\":\"Takeaway\",\"inline\":[]}', '[]', '[]', '[]', '[]', '[]', '[]', 'h1')",
+            (),
+        )
+        .await
+        .expect("insert topic note");
+        conn.execute(
+            "INSERT INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, linked_question_ids, content_hash) \
+             VALUES ('note_newton', 'JAMB', 'physics', 'mechanics', 'newton', 'Newton Laws', 3, '{\"text\":\"Takeaway\",\"inline\":[]}', '[]', '[]', '[]', '[]', '[]', '[]', 'h2')",
+            (),
+        )
+        .await
+        .expect("insert subtopic note");
         issue_key(&conn, "reader.secret", "commercial", "read:catalog", false).await;
         issue_key(
             &conn,
@@ -331,7 +345,11 @@ mod tests {
         assert_eq!(v["topics"][0]["slug"], "mechanics");
         assert_eq!(v["topics"][0]["question_count"], 1);
         assert_eq!(v["topics"][0]["objectives"][0], "state newton laws");
+        assert_eq!(v["topics"][0]["has_note"], true);
+        assert_eq!(v["topics"][0]["note_id"], "note_mech");
         assert_eq!(v["topics"][0]["subtopics"][0]["question_count"], 1);
+        assert_eq!(v["topics"][0]["subtopics"][0]["has_note"], true);
+        assert_eq!(v["topics"][0]["subtopics"][0]["note_id"], "note_newton");
 
         // A country JAMB does not run in is refused, not silently unscoped.
         assert_eq!(

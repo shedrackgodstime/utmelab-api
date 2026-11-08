@@ -398,6 +398,16 @@ mod tests {
         ),
         (
             "GET",
+            "/api/v1/notes/{exam}/{subject}/{topic_slug}",
+            "/api/v1/notes/JAMB/physics/motion",
+        ),
+        (
+            "GET",
+            "/api/v1/notes/subtopic/{exam}/{subject}/{subtopic_slug}",
+            "/api/v1/notes/subtopic/JAMB/physics/projectiles",
+        ),
+        (
+            "GET",
             "/api/v1/blueprints/{exam}/{subject}",
             "/api/v1/blueprints/JAMB/physics",
         ),
