@@ -41,6 +41,35 @@ impl SyncMode {
         }
     }
 }
+/// Sync operation budgets. Every engine call has one; a call without a
+/// budget is a bug, not a default. The long poll runs inside the pull budget,
+/// so the pull budget must exceed `SYNC_LONG_POLL_SECS`.
+pub const DEFAULT_SYNC_BUILD_TIMEOUT_SECS: u64 = 60;
+pub const DEFAULT_SYNC_CONNECT_TIMEOUT_SECS: u64 = 5;
+pub const DEFAULT_SYNC_PULL_TIMEOUT_SECS: u64 = 30;
+pub const DEFAULT_SYNC_PUSH_TIMEOUT_SECS: u64 = 30;
+pub const DEFAULT_SYNC_STATS_TIMEOUT_SECS: u64 = 5;
+pub const DEFAULT_SYNC_VERIFY_TIMEOUT_SECS: u64 = 15;
+pub const DEFAULT_SYNC_SHUTDOWN_TIMEOUT_SECS: u64 = 15;
+/// Retry cadence for sync work: base, doubling factor, ceiling, additive
+/// jitter percentage, and the slow probe used for permanent errors.
+pub const DEFAULT_SYNC_RETRY_BASE_SECS: u64 = 5;
+pub const DEFAULT_SYNC_RETRY_MAX_SECS: u64 = 60;
+pub const DEFAULT_SYNC_RETRY_FACTOR: u32 = 2;
+pub const DEFAULT_SYNC_RETRY_JITTER_PCT: u8 = 20;
+pub const DEFAULT_SYNC_PERMANENT_PROBE_SECS: u64 = 300;
+/// How long the last successful pull may back content and credentials.
+/// Content can be older than credentials: a stale catalog is inconvenient,
+/// a stale revocation list is a security boundary.
+pub const DEFAULT_SYNC_MAX_STALENESS_SECS: u64 = 900;
+pub const DEFAULT_SYNC_AUTH_MAX_STALENESS_SECS: u64 = 300;
+/// The supervisor stamps a heartbeat every loop. A gap past this budget means
+/// the task is no longer running and readiness must stop trusting the replica.
+pub const DEFAULT_SYNC_HEARTBEAT_MAX_SECS: u64 = 180;
+/// Local work committed during a push outage is bounded. New writes are
+/// refused once the process-local pending counter reaches either limit.
+pub const DEFAULT_SYNC_MAX_PENDING_OPERATIONS: u64 = 256;
+pub const DEFAULT_SYNC_MAX_PENDING_BYTES: u64 = 64 * 1024 * 1024;
 pub const DEFAULT_DB_MAX_CONCURRENT: usize = 16;
 /// Secure-by-default: a session cookie is only non-`Secure` when an operator
 /// explicitly sets `COOKIE_SECURE=0` for local http work. A typo or a missing
@@ -74,6 +103,23 @@ pub struct Config {
     pub replica_path: String,
     pub sync_mode: SyncMode,
     pub sync_long_poll_secs: u64,
+    pub sync_build_timeout_secs: u64,
+    pub sync_connect_timeout_secs: u64,
+    pub sync_pull_timeout_secs: u64,
+    pub sync_push_timeout_secs: u64,
+    pub sync_stats_timeout_secs: u64,
+    pub sync_verify_timeout_secs: u64,
+    pub sync_shutdown_timeout_secs: u64,
+    pub sync_retry_base_secs: u64,
+    pub sync_retry_max_secs: u64,
+    pub sync_retry_factor: u32,
+    pub sync_retry_jitter_pct: u8,
+    pub sync_permanent_probe_secs: u64,
+    pub sync_max_staleness_secs: u64,
+    pub sync_auth_max_staleness_secs: u64,
+    pub sync_heartbeat_max_secs: u64,
+    pub sync_max_pending_operations: u64,
+    pub sync_max_pending_bytes: u64,
     pub db_max_concurrent: usize,
     pub cookie_secure: bool,
     pub read_timeout_secs: u64,
@@ -96,6 +142,23 @@ impl Default for Config {
             replica_path: DEFAULT_REPLICA_PATH.to_string(),
             sync_mode: SyncMode::default(),
             sync_long_poll_secs: DEFAULT_SYNC_LONG_POLL_SECS,
+            sync_build_timeout_secs: DEFAULT_SYNC_BUILD_TIMEOUT_SECS,
+            sync_connect_timeout_secs: DEFAULT_SYNC_CONNECT_TIMEOUT_SECS,
+            sync_pull_timeout_secs: DEFAULT_SYNC_PULL_TIMEOUT_SECS,
+            sync_push_timeout_secs: DEFAULT_SYNC_PUSH_TIMEOUT_SECS,
+            sync_stats_timeout_secs: DEFAULT_SYNC_STATS_TIMEOUT_SECS,
+            sync_verify_timeout_secs: DEFAULT_SYNC_VERIFY_TIMEOUT_SECS,
+            sync_shutdown_timeout_secs: DEFAULT_SYNC_SHUTDOWN_TIMEOUT_SECS,
+            sync_retry_base_secs: DEFAULT_SYNC_RETRY_BASE_SECS,
+            sync_retry_max_secs: DEFAULT_SYNC_RETRY_MAX_SECS,
+            sync_retry_factor: DEFAULT_SYNC_RETRY_FACTOR,
+            sync_retry_jitter_pct: DEFAULT_SYNC_RETRY_JITTER_PCT,
+            sync_permanent_probe_secs: DEFAULT_SYNC_PERMANENT_PROBE_SECS,
+            sync_max_staleness_secs: DEFAULT_SYNC_MAX_STALENESS_SECS,
+            sync_auth_max_staleness_secs: DEFAULT_SYNC_AUTH_MAX_STALENESS_SECS,
+            sync_heartbeat_max_secs: DEFAULT_SYNC_HEARTBEAT_MAX_SECS,
+            sync_max_pending_operations: DEFAULT_SYNC_MAX_PENDING_OPERATIONS,
+            sync_max_pending_bytes: DEFAULT_SYNC_MAX_PENDING_BYTES,
             db_max_concurrent: DEFAULT_DB_MAX_CONCURRENT,
             cookie_secure: DEFAULT_COOKIE_SECURE,
             read_timeout_secs: DEFAULT_READ_TIMEOUT_SECS,
@@ -173,6 +236,79 @@ impl Config {
                 idle_after_secs: number(source, "SYNC_IDLE_SECS", d.sync_mode.idle_after_secs())?,
             },
             sync_long_poll_secs: number(source, "SYNC_LONG_POLL_SECS", d.sync_long_poll_secs)?,
+            sync_build_timeout_secs: number(
+                source,
+                "SYNC_BUILD_TIMEOUT_SECS",
+                d.sync_build_timeout_secs,
+            )?,
+            sync_connect_timeout_secs: number(
+                source,
+                "SYNC_CONNECT_TIMEOUT_SECS",
+                d.sync_connect_timeout_secs,
+            )?,
+            sync_pull_timeout_secs: number(
+                source,
+                "SYNC_PULL_TIMEOUT_SECS",
+                d.sync_pull_timeout_secs,
+            )?,
+            sync_push_timeout_secs: number(
+                source,
+                "SYNC_PUSH_TIMEOUT_SECS",
+                d.sync_push_timeout_secs,
+            )?,
+            sync_stats_timeout_secs: number(
+                source,
+                "SYNC_STATS_TIMEOUT_SECS",
+                d.sync_stats_timeout_secs,
+            )?,
+            sync_verify_timeout_secs: number(
+                source,
+                "SYNC_VERIFY_TIMEOUT_SECS",
+                d.sync_verify_timeout_secs,
+            )?,
+            sync_shutdown_timeout_secs: number(
+                source,
+                "SYNC_SHUTDOWN_TIMEOUT_SECS",
+                d.sync_shutdown_timeout_secs,
+            )?,
+            sync_retry_base_secs: number(source, "SYNC_RETRY_BASE_SECS", d.sync_retry_base_secs)?,
+            sync_retry_max_secs: number(source, "SYNC_RETRY_MAX_SECS", d.sync_retry_max_secs)?,
+            sync_retry_factor: number(source, "SYNC_RETRY_FACTOR", d.sync_retry_factor)?,
+            sync_retry_jitter_pct: number(
+                source,
+                "SYNC_RETRY_JITTER_PCT",
+                d.sync_retry_jitter_pct,
+            )?,
+            sync_permanent_probe_secs: number(
+                source,
+                "SYNC_PERMANENT_PROBE_SECS",
+                d.sync_permanent_probe_secs,
+            )?,
+            sync_max_staleness_secs: number(
+                source,
+                "SYNC_MAX_STALENESS_SECS",
+                d.sync_max_staleness_secs,
+            )?,
+            sync_auth_max_staleness_secs: number(
+                source,
+                "SYNC_AUTH_MAX_STALENESS_SECS",
+                d.sync_auth_max_staleness_secs,
+            )?,
+            sync_heartbeat_max_secs: number(
+                source,
+                "SYNC_HEARTBEAT_MAX_SECS",
+                d.sync_heartbeat_max_secs,
+            )?,
+            sync_max_pending_operations: number(
+                source,
+                "SYNC_MAX_PENDING_OPERATIONS",
+                d.sync_max_pending_operations,
+            )?,
+            sync_max_pending_bytes: number(
+                source,
+                "SYNC_MAX_PENDING_BYTES",
+                d.sync_max_pending_bytes,
+            )?,
             db_max_concurrent: number(source, "DB_MAX_CONCURRENT", d.db_max_concurrent)?,
             cookie_secure: boolean(source, "COOKIE_SECURE", d.cookie_secure)?,
             read_timeout_secs: number(source, "READ_TIMEOUT_SECS", d.read_timeout_secs)?,
@@ -250,6 +386,54 @@ impl Config {
                     .to_string(),
             );
         }
+        for (key, value) in [
+            ("SYNC_BUILD_TIMEOUT_SECS", self.sync_build_timeout_secs),
+            ("SYNC_CONNECT_TIMEOUT_SECS", self.sync_connect_timeout_secs),
+            ("SYNC_PULL_TIMEOUT_SECS", self.sync_pull_timeout_secs),
+            ("SYNC_PUSH_TIMEOUT_SECS", self.sync_push_timeout_secs),
+            ("SYNC_STATS_TIMEOUT_SECS", self.sync_stats_timeout_secs),
+            ("SYNC_VERIFY_TIMEOUT_SECS", self.sync_verify_timeout_secs),
+            (
+                "SYNC_SHUTDOWN_TIMEOUT_SECS",
+                self.sync_shutdown_timeout_secs,
+            ),
+            ("SYNC_RETRY_BASE_SECS", self.sync_retry_base_secs),
+            ("SYNC_RETRY_MAX_SECS", self.sync_retry_max_secs),
+            ("SYNC_PERMANENT_PROBE_SECS", self.sync_permanent_probe_secs),
+            ("SYNC_MAX_STALENESS_SECS", self.sync_max_staleness_secs),
+            (
+                "SYNC_AUTH_MAX_STALENESS_SECS",
+                self.sync_auth_max_staleness_secs,
+            ),
+            ("SYNC_HEARTBEAT_MAX_SECS", self.sync_heartbeat_max_secs),
+            (
+                "SYNC_MAX_PENDING_OPERATIONS",
+                self.sync_max_pending_operations,
+            ),
+            ("SYNC_MAX_PENDING_BYTES", self.sync_max_pending_bytes),
+        ] {
+            if value == 0 {
+                return Err(bad(key));
+            }
+        }
+        if self.sync_pull_timeout_secs <= self.sync_long_poll_secs {
+            return Err(
+                "invalid config: SYNC_PULL_TIMEOUT_SECS must be greater than SYNC_LONG_POLL_SECS"
+                    .to_string(),
+            );
+        }
+        if self.sync_retry_factor == 0 {
+            return Err(bad("SYNC_RETRY_FACTOR"));
+        }
+        if self.sync_retry_max_secs < self.sync_retry_base_secs {
+            return Err(
+                "invalid config: SYNC_RETRY_MAX_SECS must be at least SYNC_RETRY_BASE_SECS"
+                    .to_string(),
+            );
+        }
+        if self.sync_retry_jitter_pct > 100 {
+            return Err("invalid config: SYNC_RETRY_JITTER_PCT must be 0-100".to_string());
+        }
         if self.db_max_concurrent == 0 {
             return Err(bad("DB_MAX_CONCURRENT"));
         }
@@ -314,6 +498,44 @@ mod tests {
     fn zero_parses_but_fails_validation() {
         assert!(parse(&[("PORT", "0")]).is_err());
         assert!(parse(&[("WORKER_THREADS", "0")]).is_err());
+    }
+
+    /// Every sync budget is a boot-time contract. A zero or an impossible
+    /// relationship must fail the boot naming the variable, never degrade to
+    /// an accidental default or an unbounded wait.
+    #[test]
+    fn sync_policy_is_complete_and_validated() {
+        let c = parse(&[("SYNC_CONNECT_TIMEOUT_SECS", "7")]).expect("valid override");
+        assert_eq!(c.sync_connect_timeout_secs, 7);
+        assert_eq!(c.sync_build_timeout_secs, DEFAULT_SYNC_BUILD_TIMEOUT_SECS);
+        assert_eq!(c.sync_pull_timeout_secs, DEFAULT_SYNC_PULL_TIMEOUT_SECS);
+        assert_eq!(c.sync_max_staleness_secs, DEFAULT_SYNC_MAX_STALENESS_SECS);
+        assert_eq!(
+            c.sync_auth_max_staleness_secs,
+            DEFAULT_SYNC_AUTH_MAX_STALENESS_SECS
+        );
+        assert_eq!(
+            c.sync_max_pending_operations,
+            DEFAULT_SYNC_MAX_PENDING_OPERATIONS
+        );
+        assert_eq!(c.sync_max_pending_bytes, DEFAULT_SYNC_MAX_PENDING_BYTES);
+
+        let err = parse(&[("SYNC_PULL_TIMEOUT_SECS", "0")])
+            .err()
+            .expect("zero pull budget must fail");
+        assert!(err.contains("SYNC_PULL_TIMEOUT_SECS"), "{err}");
+
+        let err = parse(&[("SYNC_PULL_TIMEOUT_SECS", "3")])
+            .err()
+            .expect("pull budget must exceed the long poll");
+        assert!(err.contains("SYNC_PULL_TIMEOUT_SECS"), "{err}");
+
+        assert!(parse(&[("SYNC_RETRY_MAX_SECS", "1")]).is_err());
+        assert!(parse(&[("SYNC_RETRY_FACTOR", "0")]).is_err());
+        assert!(parse(&[("SYNC_RETRY_JITTER_PCT", "101")]).is_err());
+        assert!(parse(&[("SYNC_HEARTBEAT_MAX_SECS", "0")]).is_err());
+        assert!(parse(&[("SYNC_MAX_PENDING_OPERATIONS", "0")]).is_err());
+        assert!(parse(&[("SYNC_MAX_PENDING_BYTES", "0")]).is_err());
     }
 
     #[test]

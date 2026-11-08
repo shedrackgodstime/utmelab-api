@@ -14,7 +14,18 @@ pub struct TableRef {
 pub struct ServiceStatus {
     pub service: &'static str,
     pub has_sync: bool,
+    /// Retained for compatibility: true only when the readiness rule allows
+    /// data surfaces to serve.
     pub contract_ok: bool,
+    pub sync_state: &'static str,
+    pub sync_readiness: &'static str,
+    pub last_success_pull_unix: u64,
+    pub sync_staleness_secs: u64,
+    pub sync_consecutive_failures: u64,
+    pub sync_last_error: Option<&'static str>,
+    pub sync_pending_operations: u64,
+    pub sync_pending_bytes: u64,
+    pub sync_push_pending: bool,
     /// Engine-side sync figures, read-only. Null when no replica is attached
     /// (or the engine cannot answer): absence is honest, never zeros. This
     /// never checkpoints; checkpointing is the engine's own job.

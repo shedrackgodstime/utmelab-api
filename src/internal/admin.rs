@@ -26,10 +26,26 @@ pub async fn status(
     AdminUser(_): AdminUser,
 ) -> Result<Json<ServiceStatus>, AppError> {
     let m = s.metrics.snapshot();
+    let health = s.sync.health();
+    let now = store::sync::unix_now();
+    let staleness_secs = if health.last_success_pull_unix == 0 {
+        0
+    } else {
+        now.saturating_sub(health.last_success_pull_unix)
+    };
     Ok(Json(ServiceStatus {
         service: "utmelab-api",
         has_sync: s.db.read().await.is_some(),
-        contract_ok: s.contract_ok.load(std::sync::atomic::Ordering::Relaxed),
+        contract_ok: s.sync.readiness().allows_public_reads(),
+        sync_state: s.sync.state().label(),
+        sync_readiness: s.sync.readiness().reason_label(),
+        last_success_pull_unix: health.last_success_pull_unix,
+        sync_staleness_secs: staleness_secs,
+        sync_consecutive_failures: health.consecutive_failures as u64,
+        sync_last_error: health.last_error_class.map(|c| c.as_str()),
+        sync_pending_operations: health.pending_operations,
+        sync_pending_bytes: health.pending_bytes,
+        sync_push_pending: health.push_pending,
         sync: store::sync::stats(&s).await?,
         gate_rejections: m.gate_rejections,
         pulls_applied: m.pulls_applied,
@@ -133,7 +149,7 @@ async fn apply(
 
 #[cfg(test)]
 mod tests {
-    use crate::testing::{api_schema, call_session, connect, replica, state};
+    use crate::testing::{api_schema, call_session, connect, issue_session, replica, state};
     use axum::http::StatusCode;
 
     const CREATE: &str = "/api/internal/admin/keys/create";
@@ -150,25 +166,7 @@ mod tests {
             ("ada", "admin", "ada-token"),
             ("sam", "customer", "sam-token"),
         ] {
-            conn.execute(
-                "INSERT INTO dashboard_users (username, pw_hash, role) VALUES (?1, 'unused', ?2)",
-                vec![
-                    turso::Value::Text(user.to_string()),
-                    turso::Value::Text(role.to_string()),
-                ],
-            )
-            .await
-            .expect("seed user");
-            conn.execute(
-                "INSERT INTO sessions (token_hash, username, expires_at) VALUES (?1, ?2, ?3)",
-                vec![
-                    turso::Value::Text(crate::store::accounts::hash_key(token)),
-                    turso::Value::Text(user.to_string()),
-                    turso::Value::Integer(now + 3600),
-                ],
-            )
-            .await
-            .expect("seed session");
+            issue_session(&conn, user, role, token, now + 3600).await;
         }
         let app = crate::routes::router(state(db.clone()), &crate::config::Config::default());
         (app, db, "ada-token".to_string(), "sam-token".to_string())

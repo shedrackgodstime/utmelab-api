@@ -28,7 +28,14 @@ use tower_http::{
 };
 use tracing::Level;
 
-use crate::{api, config::Config, error::AppError, internal, mcp, state::AppState};
+use crate::{
+    api,
+    config::Config,
+    error::AppError,
+    internal, mcp,
+    state::AppState,
+    store::sync::{BlockedReason, Readiness},
+};
 
 const REQUEST_ID: &str = "x-request-id";
 
@@ -36,18 +43,23 @@ async fn not_found() -> AppError {
     AppError::NotFound
 }
 
-/// Fail closed while the sync task reports a schema contract mismatch. The
-/// replica's shape is then not the one this build reads, so answering would
-/// mean serving rows we cannot trust; the log already says "refusing to trust
-/// replica", and this is what makes that true. `/health` stays outside the
-/// guard so liveness is independent of the database.
+/// Fail closed unless the one readiness rule says the replica can be trusted:
+/// first pull complete, contract verified, and content inside its freshness
+/// budget. The replica's shape being wrong is one blocked reason, not the only
+/// one. `/health` stays outside the guard so liveness is independent of the
+/// database.
 async fn contract_guard(
     State(state): State<AppState>,
     request: Request<Body>,
     next: Next,
 ) -> Response {
-    if !state.contract_ok.load(std::sync::atomic::Ordering::Relaxed) {
-        return AppError::SchemaMismatch.into_response();
+    let readiness = state.sync.readiness();
+    if !readiness.allows_public_reads() {
+        let error = match readiness {
+            Readiness::Blocked(BlockedReason::SchemaMismatch) => AppError::SchemaMismatch,
+            _ => AppError::DbUnavailable("sync"),
+        };
+        return error.into_response();
     }
     next.run(request).await
 }

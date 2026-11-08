@@ -240,7 +240,7 @@ pub const READ_SHAPES: &[(&str, &[&str])] = &[
 /// Create every production table we read. Idempotent; safe to run at boot.
 pub async fn ensure_schema(s: &DbState) -> Result<(), AppError> {
     for ddl in DDL {
-        super::write::execute_ddl(s, ddl).await?;
+        super::write::execute_ddl_local(s, ddl).await?;
     }
     apply_migrations(s).await?;
     Ok(())
@@ -287,7 +287,7 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
             }
         }
 
-        super::write::execute_write(
+        super::write::execute_write_local(
             s,
             "INSERT INTO api_schema_migrations (version) VALUES (?1)",
             vec![turso::Value::Integer(version as i64)],
@@ -335,7 +335,7 @@ async fn legacy_reports_rows(s: &DbState) -> Result<Option<i64>, AppError> {
 async fn migrate_reports_to_targets(s: &DbState) -> Result<(), AppError> {
     match legacy_reports_rows(s).await? {
         None => Ok(()),
-        Some(0) => super::write::execute_ddl(s, "DROP TABLE reports").await,
+        Some(0) => super::write::execute_ddl_local(s, "DROP TABLE reports").await,
         Some(n) => Err(AppError::Upstream(format!(
             "reports table holds {n} legacy-shape rows; refusing to drop them"
         ))),
@@ -365,7 +365,8 @@ pub(crate) async fn ensure_column(
     })
     .await?;
     if !has {
-        super::write::execute_ddl(s, &format!("ALTER TABLE {table} ADD COLUMN {ddl}")).await?;
+        super::write::execute_ddl_local(s, &format!("ALTER TABLE {table} ADD COLUMN {ddl}"))
+            .await?;
     }
     Ok(())
 }
@@ -420,7 +421,7 @@ pub async fn check_contract(s: &DbState) -> Result<Option<String>, AppError> {
     .await?;
     match current {
         None => {
-            super::write::execute_write(
+            super::write::execute_write_local(
                 s,
                 "INSERT INTO meta (key, value) VALUES ('contract_version', ?1)",
                 vec![turso::Value::Text(CONTRACT_VERSION.to_string())],
@@ -478,6 +479,60 @@ mod tests {
 
     async fn local_db() -> crate::state::DbState {
         db_state(replica().await)
+    }
+
+    /// Startup schema work is local. An unreachable remote must not keep the
+    /// process from serving reads: every DDL and migration lands, each failed
+    /// push is handed to the supervisor, and only a request write surfaces the
+    /// failure to the caller.
+    #[tokio::test]
+    async fn startup_schema_completes_while_the_remote_is_unreachable() {
+        let s = local_db().await;
+        ensure_schema(&s)
+            .await
+            .expect("schema work must not depend on a successful push");
+
+        let conn = conn_of(&s).await;
+        let mut rows = conn
+            .query("SELECT COUNT(*) FROM api_schema_migrations", ())
+            .await
+            .expect("migration table");
+        let count: i64 = rows
+            .next()
+            .await
+            .expect("next")
+            .and_then(|r| r.get(0).ok())
+            .expect("count");
+        assert_eq!(
+            count,
+            MIGRATIONS.len() as i64,
+            "every migration must be recorded locally"
+        );
+
+        let mut rows = conn
+            .query(
+                "SELECT 1 FROM sqlite_master WHERE type='table' AND name='api_keys'",
+                (),
+            )
+            .await
+            .expect("sqlite_master");
+        assert!(
+            rows.next().await.expect("next").is_some(),
+            "the schema must be present even when the cloud is not"
+        );
+
+        // The contrast: a request write is not startup work, so the same
+        // offline push still reaches the caller.
+        let failed = crate::store::write::execute_write(
+            &s,
+            "INSERT INTO meta (key, value) VALUES ('probe', 'v')",
+            vec![],
+        )
+        .await;
+        assert!(
+            failed.is_err(),
+            "a request write must surface the failed push"
+        );
     }
 
     #[tokio::test]

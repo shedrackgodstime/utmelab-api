@@ -5,7 +5,11 @@ use utmelab_api::{
     config::{Config, BIND_HOST},
     routes,
     state::{AppState, Metrics, SyncCell},
-    store::{self, ConnPool},
+    store::{
+        self,
+        sync::{SyncPolicy, SyncStatus},
+        ConnPool,
+    },
 };
 
 fn main() {
@@ -123,12 +127,12 @@ async fn run(cfg: Config) {
     );
 
     let metrics = Arc::new(Metrics::default());
+    let sync = Arc::new(SyncStatus::new(SyncPolicy::from_config(&cfg)));
     let db: SyncCell = Arc::new(tokio::sync::RwLock::new(None));
     let db_gate = Arc::new(tokio::sync::Semaphore::new(cfg.db_max_concurrent));
     let write_mutex = Arc::new(tokio::sync::Mutex::new(()));
     let push_notify = Arc::new(tokio::sync::Notify::new());
     let pull_notify = Arc::new(tokio::sync::Notify::new());
-    let contract_ok = Arc::new(std::sync::atomic::AtomicBool::new(true));
     let limiter = Arc::new(utmelab_api::auth::rate_limit::RateLimiter::with_api_limits(
         cfg.rate_limit_per_min,
         cfg.rate_limit_admin_per_min,
@@ -136,6 +140,7 @@ async fn run(cfg: Config) {
 
     let state = AppState {
         name: Arc::from("utmelab-api"),
+        sync,
         db,
         db_gate,
         conns: Arc::new(ConnPool::new(cfg.db_max_concurrent)),
@@ -145,7 +150,6 @@ async fn run(cfg: Config) {
         write_mutex,
         push_notify,
         pull_notify,
-        contract_ok,
         limiter,
         bank_version: Arc::new(std::sync::RwLock::new(format!(
             "v{}",
@@ -155,7 +159,7 @@ async fn run(cfg: Config) {
         paper_metadata_cache: Arc::new(tokio::sync::RwLock::new(None)),
         media_base_url: Arc::from(cfg.media_base_url.as_str()),
     };
-    store::sync::spawn_sync_task(&state, cfg.clone());
+    let sync_task = store::sync::spawn_sync_task(&state, cfg.clone());
     let app = routes::router(state, &cfg);
 
     let addr = SocketAddr::from((BIND_HOST, cfg.port));
@@ -179,6 +183,8 @@ async fn run(cfg: Config) {
         eprintln!("server stopped with error: {e}");
         std::process::exit(1);
     }
+
+    sync_task.shutdown().await;
 }
 
 /// Human-readable lines by default, which is what local work wants. Set

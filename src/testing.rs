@@ -20,7 +20,10 @@ use tower::ServiceExt;
 use crate::{
     auth::rate_limit::RateLimiter,
     state::{AppState, DbState, Metrics},
-    store::{ConnPool, SyncDb},
+    store::{
+        sync::{BlockedReason, SyncPolicy, SyncStatus},
+        ConnPool, SyncDb,
+    },
 };
 
 /// A path no other call in this process uses. The nonce is fixed per run, so a
@@ -152,6 +155,36 @@ const BANK_DDL: &[(&str, &str)] = &[
     ),
 ];
 
+/// Seed one dashboard user and one signed-in session, keeping the engine
+/// value types inside the store test boundary.
+pub(crate) async fn issue_session(
+    conn: &turso::Connection,
+    user: &str,
+    role: &str,
+    token: &str,
+    expires_at: i64,
+) {
+    conn.execute(
+        "INSERT INTO dashboard_users (username, pw_hash, role) VALUES (?1, 'unused', ?2)",
+        vec![
+            turso::Value::Text(user.to_string()),
+            turso::Value::Text(role.to_string()),
+        ],
+    )
+    .await
+    .expect("seed user");
+    conn.execute(
+        "INSERT INTO sessions (token_hash, username, expires_at) VALUES (?1, ?2, ?3)",
+        vec![
+            turso::Value::Text(crate::store::accounts::hash_key(token)),
+            turso::Value::Text(user.to_string()),
+            turso::Value::Integer(expires_at),
+        ],
+    )
+    .await
+    .expect("seed session");
+}
+
 /// Mint a key. `full` is the whole credential (`prefix.secret`); the table
 /// stores only the prefix and its hash. Returns `full`, so a test presents
 /// exactly what it seeded.
@@ -186,7 +219,14 @@ pub(crate) fn db_state(db: SyncDb) -> DbState {
 /// `DbState` with no replica: a chosen contract flag and gate width, for tests
 /// that never reach the store.
 pub(crate) fn db_state_without_db(contract_ok: bool, permits: usize) -> DbState {
+    let policy = SyncPolicy::default();
+    let sync = if contract_ok {
+        SyncStatus::verified(policy)
+    } else {
+        SyncStatus::blocked(policy, BlockedReason::SchemaMismatch)
+    };
     DbState {
+        sync: Arc::new(sync),
         db: Arc::new(tokio::sync::RwLock::new(None)),
         db_gate: Arc::new(tokio::sync::Semaphore::new(permits)),
         conns: Arc::new(ConnPool::new(permits)),
@@ -196,7 +236,6 @@ pub(crate) fn db_state_without_db(contract_ok: bool, permits: usize) -> DbState 
         write_mutex: Arc::new(tokio::sync::Mutex::new(())),
         push_notify: Arc::new(tokio::sync::Notify::new()),
         pull_notify: Arc::new(tokio::sync::Notify::new()),
-        contract_ok: Arc::new(std::sync::atomic::AtomicBool::new(contract_ok)),
         limiter: Arc::new(RateLimiter::new()),
         bank_version: Arc::new(std::sync::RwLock::new(format!(
             "v{}",
@@ -222,6 +261,7 @@ pub(crate) fn state_without_db(contract_ok: bool) -> AppState {
 fn app_from(d: DbState) -> AppState {
     AppState {
         name: Arc::from("test"),
+        sync: d.sync,
         db: d.db,
         db_gate: d.db_gate,
         conns: d.conns,
@@ -231,7 +271,6 @@ fn app_from(d: DbState) -> AppState {
         write_mutex: d.write_mutex,
         push_notify: d.push_notify,
         pull_notify: d.pull_notify,
-        contract_ok: d.contract_ok,
         limiter: d.limiter,
         bank_version: d.bank_version,
         discovery_cache: d.discovery_cache,

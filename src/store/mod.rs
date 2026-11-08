@@ -18,7 +18,11 @@ use std::{future::Future, sync::Arc};
 
 use tokio::sync::{Mutex, OwnedSemaphorePermit, Semaphore};
 
-use crate::{error::AppError, state::DbState};
+use crate::{
+    error::AppError,
+    state::DbState,
+    store::sync::{BudgetSet, Engine, ErrorClass},
+};
 
 pub type SyncDb = Arc<turso::sync::Database>;
 pub type DbGate = Arc<Semaphore>;
@@ -47,13 +51,14 @@ impl ConnPool {
     }
 
     /// Open connections up to capacity. Called at boot, before the pull loop
-    /// starts, while the IO worker is still free.
-    pub(crate) async fn fill(&self, db: &SyncDb) {
+    /// starts, while the IO worker is still free. Each connect spends the
+    /// shared connect budget.
+    pub(crate) async fn fill(&self, db: &SyncDb, budgets: BudgetSet) {
         for _ in 0..self.capacity {
-            match db.connect().await {
+            match Engine::new(db.clone(), budgets).connect().await {
                 Ok(conn) => self.put(conn).await,
                 Err(e) => {
-                    tracing::warn!("connection pool fill stopped: {e}");
+                    tracing::warn!(class = e.class.as_str(), error = %e.message, "connection pool fill stopped");
                     return;
                 }
             }
@@ -63,11 +68,20 @@ impl ConnPool {
     /// Take an idle connection. Opening one here only happens for one-shot
     /// commands or if the boot fill came up short; it is cheap then because no
     /// pull is in flight.
-    async fn take(&self, db: &SyncDb) -> Result<turso::Connection, AppError> {
+    async fn take(&self, db: &SyncDb, budgets: BudgetSet) -> Result<turso::Connection, AppError> {
         let idle = self.idle.lock().await.pop();
         match idle {
             Some(conn) => Ok(conn),
-            None => db.connect().await.map_err(upstream),
+            None => Engine::new(db.clone(), budgets)
+                .connect()
+                .await
+                .map_err(|e| {
+                    if matches!(e.class, ErrorClass::Contention) {
+                        AppError::DbContended
+                    } else {
+                        AppError::Upstream(e.message)
+                    }
+                }),
         }
     }
 
@@ -157,7 +171,7 @@ where
         let outcome = {
             let _permit = gate(s)?;
             let db = synced(s).await?;
-            let conn = s.conns.take(&db).await?;
+            let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
             let outcome = op(conn.clone()).await;
             s.conns.put(conn).await;
             outcome

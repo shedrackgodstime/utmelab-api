@@ -39,8 +39,13 @@ fn dummy_hash() -> Result<String, AppError> {
         .map_err(|e| AppError::Internal(e.to_string()))
 }
 
-/// Verify a raw `<prefix>.<secret>` key. Fails closed on anything odd.
+/// Verify a raw `<prefix>.<secret>` key. Fails closed on anything odd, and
+/// fails closed when the replica is too stale for its revocation list to be
+/// trusted.
 pub(crate) async fn verify_key(s: &DbState, full: &str) -> Result<Auth, AppError> {
+    if !s.sync.readiness().allows_keyed_reads() {
+        return Err(AppError::DbUnavailable("sync"));
+    }
     let (prefix, _secret) = full.split_once('.').ok_or(AppError::Unauthorized)?;
     if prefix.is_empty() || full.len() > 256 {
         return Err(AppError::Unauthorized);
@@ -116,7 +121,7 @@ async fn backfill_key_owners(s: &DbState) -> Result<(), AppError> {
     })
     .await?;
     if orphans {
-        super::write::execute_write(
+        super::write::execute_write_local(
             s,
             "UPDATE api_keys SET owner='admin' WHERE owner=''",
             vec![],

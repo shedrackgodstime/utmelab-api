@@ -4,8 +4,73 @@
 //! surfaces (upstream, or contended when the engine says busy), while the local row
 //! exists, so the cloud lags until the next push.
 
-use super::{gate, synced, upstream};
+use super::{
+    gate,
+    sync::{admit_write, unix_now, Engine, ErrorClass, SyncEvent, WriteDecision, WriteRejection},
+    synced, upstream,
+};
 use crate::{error::AppError, state::DbState};
+
+fn push_error(error: super::sync::SyncError) -> AppError {
+    match error.class {
+        ErrorClass::Contention => AppError::DbContended,
+        _ => AppError::Upstream(error.message),
+    }
+}
+
+fn estimated_bytes(sql: &str, params: &[turso::Value]) -> u64 {
+    // This is an admission estimate, not an accounting record. It keeps a
+    // large outbound statement from looking like empty pending work.
+    (sql.len() as u64).saturating_add((params.len() as u64).saturating_mul(32))
+}
+
+fn ensure_write_admitted(s: &DbState) -> Result<(), AppError> {
+    if s.sync.stop_requested() {
+        return Err(AppError::DbUnavailable("sync"));
+    }
+    match admit_write(s.sync.pending_work(), &s.sync.policy().write_admission) {
+        WriteDecision::Admit => Ok(()),
+        WriteDecision::Reject(reason) => {
+            tracing::warn!(
+                event = "write_admission_rejected",
+                reason = match reason {
+                    WriteRejection::PendingOperationBudget => "pending_operations",
+                    WriteRejection::PendingByteBudget => "pending_bytes",
+                },
+                pending_operations = s.sync.health().pending_operations,
+                pending_bytes = s.sync.health().pending_bytes,
+                "write admission rejected"
+            );
+            Err(AppError::DbSaturated)
+        }
+    }
+}
+
+fn record_push_result(
+    s: &DbState,
+    result: &Result<(), super::sync::SyncError>,
+) -> Result<(), AppError> {
+    match result {
+        Ok(()) => {
+            s.sync.apply(SyncEvent::PushSucceeded { at: unix_now() });
+            Ok(())
+        }
+        Err(error) => {
+            s.sync.apply(SyncEvent::PushFailed {
+                error: error.clone(),
+                at: unix_now(),
+            });
+            s.push_notify.notify_one();
+            Err(push_error(error.clone()))
+        }
+    }
+}
+
+async fn finish_push(s: &DbState, db: super::SyncDb) -> Result<(), AppError> {
+    s.sync.apply(SyncEvent::PushStarted { at: unix_now() });
+    let result = Engine::new(db, s.sync.policy().budgets).push().await;
+    record_push_result(s, &result)
+}
 
 fn record_write_wait(s: &DbState, elapsed: std::time::Duration) {
     use std::sync::atomic::Ordering::Relaxed;
@@ -34,15 +99,17 @@ pub async fn execute_write(
     let wait_started = std::time::Instant::now();
     let _w = s.write_mutex.lock().await;
     record_write_wait(s, wait_started.elapsed());
+    ensure_write_admitted(s)?;
     let db = synced(s).await?;
-    let conn = s.conns.take(&db).await?;
+    let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
+    let estimated = estimated_bytes(sql, &params);
     let result = execute_and_verify(&conn, sql, params).await;
     s.conns.put(conn).await;
     let n = result?;
-    if let Err(e) = db.push().await {
-        s.push_notify.notify_one();
-        return Err(upstream(e));
+    if n > 0 {
+        s.sync.mark_write_committed(n, estimated);
     }
+    finish_push(s, db).await?;
     Ok(n)
 }
 
@@ -53,16 +120,73 @@ pub async fn execute_ddl(s: &DbState, sql: &str) -> Result<(), AppError> {
     let wait_started = std::time::Instant::now();
     let _w = s.write_mutex.lock().await;
     record_write_wait(s, wait_started.elapsed());
+    ensure_write_admitted(s)?;
     let db = synced(s).await?;
-    let conn = s.conns.take(&db).await?;
+    let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
+    let estimated = estimated_bytes(sql, &[] as &[turso::Value]);
     let result = conn.execute(sql, ()).await.map_err(upstream);
     s.conns.put(conn).await;
     result?;
-    if let Err(e) = db.push().await {
-        s.push_notify.notify_one();
-        return Err(upstream(e));
+    s.sync.mark_write_committed(1, estimated);
+    finish_push(s, db).await?;
+    Ok(())
+}
+
+/// Startup DDL. The local schema is the read path's contract, so a push
+/// failure is recorded for the push supervisor instead of blocking
+/// convergence. A read-only token can then boot and serve reads while writes
+/// keep reporting their own failure.
+pub async fn execute_ddl_local(s: &DbState, sql: &str) -> Result<(), AppError> {
+    let _permit = gate(s)?;
+    let wait_started = std::time::Instant::now();
+    let _w = s.write_mutex.lock().await;
+    record_write_wait(s, wait_started.elapsed());
+    ensure_write_admitted(s)?;
+    let db = synced(s).await?;
+    let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
+    let estimated = estimated_bytes(sql, &[] as &[turso::Value]);
+    let result = conn.execute(sql, ()).await.map_err(upstream);
+    s.conns.put(conn).await;
+    result?;
+    s.sync.mark_write_committed(1, estimated);
+    s.sync.apply(SyncEvent::PushStarted { at: unix_now() });
+    if let Err(error) = Engine::new(db, s.sync.policy().budgets).push().await {
+        tracing::debug!(class = error.class.as_str(), "startup DDL push pending");
+        let _ = record_push_result(s, &Err(error));
+    } else {
+        s.sync.apply(SyncEvent::PushSucceeded { at: unix_now() });
     }
     Ok(())
+}
+
+/// Startup data work, same contract as [`execute_ddl_local`].
+pub async fn execute_write_local(
+    s: &DbState,
+    sql: &str,
+    params: Vec<turso::Value>,
+) -> Result<u64, AppError> {
+    let _permit = gate(s)?;
+    let wait_started = std::time::Instant::now();
+    let _w = s.write_mutex.lock().await;
+    record_write_wait(s, wait_started.elapsed());
+    ensure_write_admitted(s)?;
+    let db = synced(s).await?;
+    let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
+    let estimated = estimated_bytes(sql, &params);
+    let result = execute_and_verify(&conn, sql, params).await;
+    s.conns.put(conn).await;
+    let n = result?;
+    if n > 0 {
+        s.sync.mark_write_committed(n, estimated);
+    }
+    s.sync.apply(SyncEvent::PushStarted { at: unix_now() });
+    if let Err(error) = Engine::new(db, s.sync.policy().budgets).push().await {
+        tracing::debug!(class = error.class.as_str(), "startup write push pending");
+        let _ = record_push_result(s, &Err(error));
+    } else {
+        s.sync.apply(SyncEvent::PushSucceeded { at: unix_now() });
+    }
+    Ok(n)
 }
 
 /// Execute then confirm the row count is visible on the same connection.
@@ -120,5 +244,54 @@ mod tests {
             .expect("query");
         let row = rows.next().await.expect("next").expect("row");
         assert_eq!(row.get::<String>(0).expect("value"), "v");
+    }
+
+    #[tokio::test]
+    async fn pending_work_marks_the_write_and_then_blocks_new_writes_at_the_budget() {
+        use crate::store::sync::{SyncPolicy, SyncStatus};
+        use std::sync::Arc;
+
+        let db = replica().await;
+        api_schema(&connect(&db).await).await;
+        let mut policy = SyncPolicy::default();
+        policy.write_admission.max_pending_operations = 1;
+        policy.write_admission.max_pending_bytes = 1024;
+        let mut s = db_state(db);
+        s.sync = Arc::new(SyncStatus::verified(policy));
+
+        let result = super::execute_write(
+            &s,
+            "INSERT INTO meta (key, value) VALUES ('k', 'v')",
+            vec![],
+        )
+        .await;
+        assert!(result.is_err(), "the offline push fails");
+        let health = s.sync.health();
+        assert!(health.push_pending);
+        assert_eq!(health.pending_operations, 1);
+
+        let blocked = super::execute_write(
+            &s,
+            "INSERT INTO meta (key, value) VALUES ('k2', 'v2')",
+            vec![],
+        )
+        .await;
+        assert!(
+            blocked.is_err(),
+            "the pending budget must refuse the next write before it reaches the local store"
+        );
+
+        let conn = conn_of(&s).await;
+        let mut rows = conn
+            .query("SELECT COUNT(*) FROM meta WHERE key='k2'", ())
+            .await
+            .expect("query");
+        let count: i64 = rows
+            .next()
+            .await
+            .expect("next")
+            .and_then(|r| r.get(0).ok())
+            .expect("count");
+        assert_eq!(count, 0, "the refused write must not reach the local store");
     }
 }

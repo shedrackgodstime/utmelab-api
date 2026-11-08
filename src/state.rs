@@ -10,7 +10,10 @@ use std::sync::{
 
 use tokio::sync::RwLock;
 
-use crate::store::{ConnPool, DbGate, SyncDb};
+use crate::store::{
+    sync::{SyncPolicy, SyncStatus},
+    ConnPool, DbGate, SyncDb,
+};
 
 use super::auth::rate_limit::RateLimiter;
 
@@ -115,6 +118,7 @@ pub type PaperMetadataCache = Arc<RwLock<Option<(String, String, String, Arc<Pap
 #[derive(Clone)]
 pub struct AppState {
     pub name: Arc<str>,
+    pub sync: Arc<SyncStatus>,
     pub db: SyncCell,
     pub db_gate: DbGate,
     pub conns: Arc<ConnPool>,
@@ -124,7 +128,6 @@ pub struct AppState {
     pub write_mutex: WriteMutex,
     pub push_notify: Arc<tokio::sync::Notify>,
     pub pull_notify: Arc<tokio::sync::Notify>,
-    pub contract_ok: ContractFlag,
     pub limiter: SharedLimiter,
     pub bank_version: BankVersion,
     pub discovery_cache: PublicDiscoveryCache,
@@ -134,8 +137,6 @@ pub struct AppState {
 
 pub type SyncCell = Arc<RwLock<Option<SyncDb>>>;
 pub type WriteMutex = Arc<tokio::sync::Mutex<()>>;
-// Contract health. Set by the sync task; read by status without a permit.
-pub type ContractFlag = Arc<std::sync::atomic::AtomicBool>;
 
 #[derive(Clone)]
 pub struct HealthState {
@@ -152,6 +153,7 @@ impl axum::extract::FromRef<AppState> for HealthState {
 
 #[derive(Clone)]
 pub struct DbState {
+    pub sync: Arc<SyncStatus>,
     pub db: SyncCell,
     pub db_gate: DbGate,
     pub conns: Arc<ConnPool>,
@@ -161,7 +163,6 @@ pub struct DbState {
     pub write_mutex: WriteMutex,
     pub push_notify: Arc<tokio::sync::Notify>,
     pub pull_notify: Arc<tokio::sync::Notify>,
-    pub contract_ok: ContractFlag,
     pub limiter: SharedLimiter,
     pub bank_version: BankVersion,
     pub discovery_cache: PublicDiscoveryCache,
@@ -173,6 +174,7 @@ impl DbState {
     /// One-shot commands (`seed-admin`): fresh gate, no sharing.
     pub fn detached(db: SyncDb) -> Self {
         Self {
+            sync: Arc::new(SyncStatus::verified(SyncPolicy::default())),
             db: Arc::new(RwLock::new(Some(db))),
             db_gate: Arc::new(tokio::sync::Semaphore::new(
                 crate::config::DEFAULT_DB_MAX_CONCURRENT,
@@ -184,7 +186,6 @@ impl DbState {
             write_mutex: Arc::new(tokio::sync::Mutex::new(())),
             push_notify: Arc::new(tokio::sync::Notify::new()),
             pull_notify: Arc::new(tokio::sync::Notify::new()),
-            contract_ok: Arc::new(std::sync::atomic::AtomicBool::new(true)),
             limiter: Arc::new(crate::auth::rate_limit::RateLimiter::new()),
             bank_version: Arc::new(std::sync::RwLock::new(format!(
                 "v{}",
@@ -200,6 +201,7 @@ impl DbState {
 impl axum::extract::FromRef<AppState> for DbState {
     fn from_ref(state: &AppState) -> Self {
         Self {
+            sync: Arc::clone(&state.sync),
             db: Arc::clone(&state.db),
             db_gate: Arc::clone(&state.db_gate),
             conns: Arc::clone(&state.conns),
@@ -209,7 +211,6 @@ impl axum::extract::FromRef<AppState> for DbState {
             write_mutex: Arc::clone(&state.write_mutex),
             push_notify: Arc::clone(&state.push_notify),
             pull_notify: Arc::clone(&state.pull_notify),
-            contract_ok: Arc::clone(&state.contract_ok),
             limiter: Arc::clone(&state.limiter),
             bank_version: Arc::clone(&state.bank_version),
             discovery_cache: Arc::clone(&state.discovery_cache),
