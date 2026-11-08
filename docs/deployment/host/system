@@ -620,6 +620,45 @@ cmd_root() {
   esac
 }
 
+cmd_journal() {
+  need_root
+  local sub="${1:-}"
+  case "$sub" in
+    clear)
+      shift
+      local keep="${1:-50M}" before after
+      case "$keep" in *[!0-9KMGkmg]*) die "usage: system journal clear [SIZE, e.g. 50M]" ;; esac
+      before="$(journalctl --disk-usage 2>/dev/null | sed 's/Archived and active journals take up //;s/ in the file system.*//')"
+      say "Journal before: ${before}"
+      journalctl --rotate 2>/dev/null
+      journalctl --vacuum-size="$keep" 2>/dev/null || die "vacuum failed"
+      after="$(journalctl --disk-usage 2>/dev/null | sed 's/Archived and active journals take up //;s/ in the file system.*//')"
+      ok "journal rotated and vacuumed to ${keep} (now ${after})"
+      ;;
+    *)
+      local n=100 unit="" level="" since="" grep=""
+      while [ $# -gt 0 ]; do
+        case "$1" in
+          -n|--lines) n="${2:-}"; shift 2 ;;
+          -u|--unit) unit="${2:-}"; shift 2 ;;
+          -p|--level) level="${2:-}"; shift 2 ;;
+          -s|--since) since="${2:-}"; shift 2 ;;
+          -g|--grep) grep="${2:-}"; shift 2 ;;
+          -a|--all) unit=""; level=""; since=""; shift ;;
+          *) die "usage: system journal [-n N] [-u UNIT] [-p LEVEL] [-s SINCE] [-g PATTERN]" ;;
+        esac
+      done
+      case "$n" in ''|*[!0-9]*) die "usage: system journal [-n N] [-u UNIT] [-p LEVEL] [-s SINCE] [-g PATTERN]" ;; esac
+      local jargs=()
+      [ -n "$unit" ] && jargs+=( -u "$unit" )
+      [ -n "$level" ] && jargs+=( -p "$level" )
+      [ -n "$since" ] && jargs+=( --since "$since" )
+      [ -n "$grep" ] && jargs+=( --grep "$grep" )
+      journalctl "${jargs[@]}" --no-pager -n "$n" 2>/dev/null
+      ;;
+  esac
+}
+
 usage() {
   cat <<'USAGE'
 system — one admin tool for every service on this host
@@ -628,6 +667,9 @@ system — one admin tool for every service on this host
   system enroll <key>               register a CI public key for the deploy identity
   system verify                     check every service against its manifest
   system report                     resource + service health
+  system journal [-n N] [-u UNIT] [-p LEVEL] [-s SINCE] [-g PATTERN]
+                                    read the journal (default: last 100)
+  system journal clear [SIZE]       rotate and vacuum the journal (default: 50M)
   system deploy preview             what a deploy would do (read-only)
   system rollback <service>         flip back to the previous release
   system service list               the manifests on this host
@@ -645,6 +687,7 @@ provision) shift; cmd_provision "$@" ;;
 enroll) shift; cmd_enroll "$@" ;;
 verify) shift; cmd_verify "$@" ;;
 report) shift; cmd_report "$@" ;;
+journal) shift; cmd_journal "$@" ;;
 deploy | preview) shift; cmd_deploy_preview "$@" ;;
 rollback) shift; cmd_rollback "$@" ;;
 service) shift; [ "${1:-}" = "list" ] && cmd_service_list || cmd_service_show "${2:-$1}" ;;
