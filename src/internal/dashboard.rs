@@ -82,9 +82,32 @@ pub async fn my_keys(
 pub async fn create_key(
     State(s): State<DbState>,
     SessionUser(u): SessionUser,
+    headers: HeaderMap,
 ) -> Result<Json<NewKey>, AppError> {
-    let key = store::accounts::create_key(&s, &u).await?;
+    let idempotency_key = idempotency_key(&headers)?;
+    let key = store::accounts::create_key_spec_idempotent(
+        &s,
+        &u,
+        "commercial",
+        &u,
+        idempotency_key.as_deref(),
+    )
+    .await?;
     Ok(Json(NewKey { key }))
+}
+
+fn idempotency_key(headers: &HeaderMap) -> Result<Option<String>, AppError> {
+    let Some(value) = headers.get("idempotency-key") else {
+        return Ok(None);
+    };
+    let key = value
+        .to_str()
+        .map_err(|_| AppError::BadRequest("invalid idempotency key".to_string()))?
+        .trim();
+    if key.is_empty() || key.len() > 128 {
+        return Err(AppError::BadRequest("invalid idempotency key".to_string()));
+    }
+    Ok(Some(key.to_string()))
 }
 
 pub async fn delete_key(

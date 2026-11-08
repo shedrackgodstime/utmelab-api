@@ -118,3 +118,36 @@ fn every_sync_environment_variable_is_documented() {
         "sync variables missing from .env.example: {missing:?}"
     );
 }
+
+#[test]
+fn every_sync_health_fact_is_exposed_by_admin_status() {
+    let model = source(&root().join("src/core/models/admin.rs"));
+    let handler = source(&root().join("src/internal/admin.rs"));
+    for (health_field, status_field) in [
+        ("last_attempt_pull_unix", "sync_last_attempt_pull_unix"),
+        ("last_success_pull_unix", "last_success_pull_unix"),
+        ("last_attempt_push_unix", "sync_last_attempt_push_unix"),
+        ("last_success_push_unix", "sync_last_success_push_unix"),
+        ("last_error_unix", "sync_last_error_unix"),
+        ("last_error_class", "sync_last_error"),
+        ("consecutive_failures", "sync_consecutive_failures"),
+        (
+            "consecutive_push_failures",
+            "sync_consecutive_push_failures",
+        ),
+        ("heartbeat_unix", "sync_heartbeat_unix"),
+        ("pending_operations", "sync_pending_operations"),
+        ("pending_bytes", "sync_pending_bytes"),
+        ("push_pending", "sync_push_pending"),
+        ("sleeping", "sync_sleeping"),
+    ] {
+        assert!(
+            model.contains(status_field),
+            "admin model lost sync field {health_field}"
+        );
+        assert!(
+            handler.contains(&format!("health.{health_field}")),
+            "admin handler does not map sync field {health_field}"
+        );
+    }
+}

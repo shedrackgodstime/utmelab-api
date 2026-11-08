@@ -36,7 +36,7 @@ use crate::{
     state::{AppState, DbState, SharedMetrics},
 };
 use axum::extract::FromRef;
-use policy::{PURGE_EVERY, PUSH_FALLBACK, SLEEP_RECHECK};
+use policy::{PURGE_EVERY, PUSH_COALESCE, PUSH_FALLBACK, SLEEP_RECHECK};
 
 async fn build(cfg: &Config, policy: &SyncPolicy) -> Result<SyncDb, SyncError> {
     let future = turso::sync::Builder::new_remote(&cfg.replica_path)
@@ -53,6 +53,64 @@ async fn build(cfg: &Config, policy: &SyncPolicy) -> Result<SyncDb, SyncError> {
         )),
         Err(_) => Err(SyncError::timeout("build", policy.budgets.build)),
     }
+}
+
+fn should_quarantine_replica(error: &SyncError) -> bool {
+    if error.class != ErrorClass::LocalStorage {
+        return false;
+    }
+    let message = error.message.to_ascii_lowercase();
+    [
+        "corrupt",
+        "not a database",
+        "notadb",
+        "malformed",
+        "invalid database",
+    ]
+    .iter()
+    .any(|needle| message.contains(needle))
+}
+
+fn replica_header_is_invalid(path: &str) -> Result<bool, String> {
+    let file = match std::fs::File::open(path) {
+        Ok(file) => file,
+        Err(error) if error.kind() == std::io::ErrorKind::NotFound => return Ok(false),
+        Err(error) => return Err(format!("open {path}: {error}")),
+    };
+    let mut header = [0_u8; 16];
+    let mut reader = std::io::BufReader::new(file);
+    use std::io::Read;
+    let read = reader
+        .read(&mut header)
+        .map_err(|error| format!("read {path}: {error}"))?;
+    if read == 0 {
+        return Ok(false);
+    }
+    Ok(read >= 16 && header != *b"SQLite format 3\0")
+}
+
+fn quarantine_replica(path: &str) -> Result<bool, String> {
+    let source = std::path::Path::new(path);
+    if !source.exists() {
+        return Ok(false);
+    }
+    let suffix = format!(".corrupt-{}-{}", unix_now(), std::process::id());
+    let mut moved = false;
+    for candidate in [
+        path.to_string(),
+        format!("{path}-wal"),
+        format!("{path}-shm"),
+    ] {
+        let candidate_path = std::path::Path::new(&candidate);
+        if !candidate_path.exists() {
+            continue;
+        }
+        let target = format!("{candidate}{suffix}");
+        std::fs::rename(candidate_path, &target)
+            .map_err(|error| format!("rename {candidate} to {target}: {error}"))?;
+        moved = true;
+    }
+    Ok(moved)
 }
 
 /// One-shot connect for commands: build, converge once, hand over.
@@ -97,6 +155,22 @@ fn record_failure(metrics: &SharedMetrics) {
     metrics
         .sync_failures
         .fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+}
+
+fn record_push_duration(metrics: &SharedMetrics, started: tokio::time::Instant) {
+    use std::sync::atomic::Ordering::Relaxed;
+    let ms = started.elapsed().as_millis().min(u64::MAX as u128) as u64;
+    metrics.push_count.fetch_add(1, Relaxed);
+    metrics.push_ms_total.fetch_add(ms, Relaxed);
+    metrics.last_push_duration_ms.store(ms, Relaxed);
+    let max = &metrics.push_ms_max;
+    let mut current = max.load(Relaxed);
+    while ms > current {
+        match max.compare_exchange_weak(current, ms, Relaxed, Relaxed) {
+            Ok(_) => break,
+            Err(actual) => current = actual,
+        }
+    }
 }
 
 /// The sleep after a failed attempt comes from the reducer, never from a
@@ -193,6 +267,7 @@ async fn run_sync_root(probe: DbState, cfg: Config, policy: SyncPolicy, idle_aft
     if probe.sync.stop_requested() {
         return;
     }
+    recover_pending_from_change_log(&probe, &db, &policy).await;
     let push_probe = probe.clone();
     let push_db = db.clone();
     let push_policy = policy.clone();
@@ -204,6 +279,27 @@ async fn run_sync_root(probe: DbState, cfg: Config, policy: SyncPolicy, idle_aft
         .is_err()
     {
         push_handle.abort();
+    }
+}
+
+async fn recover_pending_from_change_log(probe: &DbState, db: &SyncDb, policy: &SyncPolicy) {
+    match Engine::new(db.clone(), policy.budgets).stats().await {
+        Ok(stats) if stats.cdc_operations > 0 => {
+            probe
+                .sync
+                .mark_pending_from_change_log(stats.cdc_operations as u64);
+            tracing::warn!(
+                event = "sync_pending_recovered",
+                cdc_operations = stats.cdc_operations,
+                "local change-log work recovered after startup"
+            );
+        }
+        Ok(_) => {}
+        Err(error) => tracing::warn!(
+            class = error.class.as_str(),
+            error = %error.message,
+            "could not inspect local change log during startup"
+        ),
     }
 }
 
@@ -313,11 +409,13 @@ async fn final_push_if_pending(probe: &DbState, policy: &SyncPolicy) {
     let mut budgets = policy.budgets;
     budgets.push = policy.budgets.shutdown;
     probe.sync.apply(SyncEvent::PushStarted { at: unix_now() });
+    let push_started = tokio::time::Instant::now();
     let result = tokio::time::timeout(policy.budgets.shutdown.duration(), async {
         let _w = probe.write_mutex.lock().await;
         Engine::new(db, budgets).push().await
     })
     .await;
+    record_push_duration(&probe.metrics, push_started);
     match result {
         Ok(Ok(())) => {
             probe
@@ -359,6 +457,29 @@ async fn open(probe: &DbState, cfg: &Config, policy: &SyncPolicy) -> Option<Sync
                 .apply(SyncEvent::BuildSucceeded { at: unix_now() });
             return Some(db);
         }
+        match replica_header_is_invalid(&cfg.replica_path) {
+            Ok(true) => match quarantine_replica(&cfg.replica_path) {
+                Ok(true) => {
+                    tracing::error!(
+                        event = "sync_replica_quarantined",
+                        path = %cfg.replica_path,
+                        "local replica header is invalid; rebuilding"
+                    );
+                    probe
+                        .sync
+                        .apply(SyncEvent::RebuildStarted { at: unix_now() });
+                    continue;
+                }
+                Ok(false) => {}
+                Err(error) => tracing::error!(
+                    event = "sync_replica_quarantine_failed",
+                    error = %error,
+                    "could not quarantine local replica with an invalid header"
+                ),
+            },
+            Ok(false) => {}
+            Err(error) => tracing::warn!(error = %error, "could not inspect local replica header"),
+        }
         probe.sync.apply(SyncEvent::BuildStarted { at: unix_now() });
         match build(cfg, policy).await {
             Ok(db) => {
@@ -374,10 +495,34 @@ async fn open(probe: &DbState, cfg: &Config, policy: &SyncPolicy) -> Option<Sync
             }
             Err(error) => {
                 record_failure(&probe.metrics);
+                let rebuild = should_quarantine_replica(&error);
                 let transition = probe.sync.apply(SyncEvent::BuildFailed {
-                    error,
+                    error: error.clone(),
                     at: unix_now(),
                 });
+                if rebuild {
+                    match quarantine_replica(&cfg.replica_path) {
+                        Ok(true) => {
+                            tracing::error!(
+                                event = "sync_replica_quarantined",
+                                path = %cfg.replica_path,
+                                "corrupt local replica quarantined; rebuilding"
+                            );
+                            probe
+                                .sync
+                                .apply(SyncEvent::RebuildStarted { at: unix_now() });
+                            continue;
+                        }
+                        Ok(false) => {}
+                        Err(quarantine_error) => {
+                            tracing::error!(
+                                event = "sync_replica_quarantine_failed",
+                                error = %quarantine_error,
+                                "could not quarantine corrupt local replica"
+                            );
+                        }
+                    }
+                }
                 if retry_after(&probe.sync, &transition, policy).await {
                     return None;
                 }
@@ -520,16 +665,19 @@ async fn supervise(probe: &DbState, db: &SyncDb, idle_after: Duration, policy: &
             .last_request_unix
             .load(std::sync::atomic::Ordering::Relaxed);
         if last_request != 0 && unix_now().saturating_sub(last_request) >= idle_after.as_secs() {
-            probe
-                .metrics
-                .sync_sleeping
-                .store(true, std::sync::atomic::Ordering::Relaxed);
+            probe.sync.apply(SyncEvent::SleepStarted { at: unix_now() });
             tracing::info!("replica sync sleeping after idle traffic window");
             probe.sync.apply(SyncEvent::Heartbeat { at: unix_now() });
             tokio::select! {
                 _ = probe.sync.wait_for_stop() => return,
                 _ = tokio::time::sleep(SLEEP_RECHECK) => {}
-                _ = probe.pull_notify.notified() => {}
+                _ = probe.pull_notify.notified() => {
+                    // A request already completed the wake pull. Resume the
+                    // long-poll loop without immediately pulling a second time.
+                    if !probe.sync.sleeping() {
+                        continue;
+                    }
+                }
             }
             continue;
         }
@@ -602,15 +750,18 @@ async fn supervise_push(probe: DbState, db: SyncDb, policy: SyncPolicy) {
             return;
         }
         if probe.sync.push_pending() {
+            tokio::time::sleep(PUSH_COALESCE).await;
             loop {
                 if probe.sync.stop_requested() {
                     return;
                 }
                 probe.sync.apply(SyncEvent::PushStarted { at: unix_now() });
+                let push_started = tokio::time::Instant::now();
                 let result = {
                     let _w = probe.write_mutex.lock().await;
                     Engine::new(db.clone(), policy.budgets).push().await
                 };
+                record_push_duration(&probe.metrics, push_started);
                 match result {
                     Ok(()) => {
                         probe
@@ -647,14 +798,14 @@ pub(crate) async fn wake_if_sleeping(s: &DbState) -> Result<(), crate::error::Ap
     if s.sync.stop_requested() {
         return Err(crate::error::AppError::DbUnavailable("sync"));
     }
-    if !s.metrics.sync_sleeping.load(Relaxed) {
+    if !s.sync.sleeping() {
         return Ok(());
     }
     if !s.sync.wake_allowed() {
         return Err(crate::error::AppError::DbUnavailable("sync"));
     }
     let guard = s.write_mutex.lock().await;
-    if !s.metrics.sync_sleeping.load(Relaxed) {
+    if !s.sync.sleeping() {
         return Ok(());
     }
     let Some(db) = s.db.read().await.clone() else {
@@ -672,8 +823,8 @@ pub(crate) async fn wake_if_sleeping(s: &DbState) -> Result<(), crate::error::Ap
             );
             s.metrics.last_pull_unix.store(unix_now(), Relaxed);
             record_pull(&s.metrics, had);
+            s.sync.apply(SyncEvent::SleepEnded { at: unix_now() });
             s.sync.record_wake_success(had, unix_now());
-            s.metrics.sync_sleeping.store(false, Relaxed);
             drop(guard);
             // The supervisor slept through the idle window. Tell it the
             // replica is awake so it resumes long-polling now instead of
@@ -790,6 +941,7 @@ pub async fn stats(
 #[cfg(test)]
 mod tests {
     use crate::testing::{db_state, db_state_without_db, replica};
+    use std::time::Duration;
 
     /// A replica answers engine figures; with none attached the field is
     /// honestly absent, so the ops status never invents zeros.
@@ -831,6 +983,25 @@ mod tests {
         );
     }
 
+    #[tokio::test]
+    async fn shutdown_attempts_one_bounded_push_for_pending_work() {
+        let s = db_state(replica().await);
+        let mut policy = super::SyncPolicy::default();
+        policy.budgets.push = super::Budget::new(Duration::from_millis(50));
+        s.sync.mark_write_committed(1, 1);
+
+        super::final_push_if_pending(&s, &policy).await;
+
+        assert!(s.sync.push_pending(), "failed shutdown push stays pending");
+        assert_eq!(
+            s.metrics
+                .push_count
+                .load(std::sync::atomic::Ordering::Relaxed),
+            1,
+            "shutdown makes one bounded push attempt"
+        );
+    }
+
     #[test]
     fn restart_delay_uses_the_slow_probe_when_blocked_and_backoff_otherwise() {
         let policy = super::SyncPolicy::default();
@@ -847,5 +1018,63 @@ mod tests {
             policy.retry.base
         );
         assert!(super::restart_delay(&policy, 100, super::SyncState::Ready) <= policy.retry.max);
+    }
+
+    #[test]
+    fn only_corrupt_local_storage_errors_request_quarantine() {
+        assert!(super::should_quarantine_replica(&super::SyncError::new(
+            super::ErrorClass::LocalStorage,
+            "database is corrupt",
+        )));
+        assert!(!super::should_quarantine_replica(&super::SyncError::new(
+            super::ErrorClass::LocalStorage,
+            "permission denied",
+        )));
+        assert!(!super::should_quarantine_replica(&super::SyncError::new(
+            super::ErrorClass::Auth,
+            "database is corrupt",
+        )));
+    }
+
+    #[test]
+    fn invalid_replica_header_is_detected_without_rejecting_empty_bootstrap() {
+        let base = std::env::temp_dir().join(format!(
+            "utmelab-sync-header-{}-{}",
+            std::process::id(),
+            super::unix_now()
+        ));
+        let path = base.to_string_lossy().into_owned();
+        std::fs::write(&path, b"this is not sqlite").expect("create invalid fixture");
+        assert!(super::replica_header_is_invalid(&path).expect("inspect invalid fixture"));
+        std::fs::write(&path, []).expect("empty fixture");
+        assert!(!super::replica_header_is_invalid(&path).expect("inspect empty fixture"));
+        std::fs::remove_file(path).expect("remove header fixture");
+    }
+
+    #[test]
+    fn corrupt_replica_files_are_quarantined_without_deletion() {
+        let base = std::env::temp_dir().join(format!(
+            "utmelab-sync-rebuild-{}-{}",
+            std::process::id(),
+            super::unix_now()
+        ));
+        let path = base.to_string_lossy().into_owned();
+        std::fs::write(&path, b"corrupt").expect("create replica fixture");
+        std::fs::write(format!("{path}-wal"), b"wal").expect("create wal fixture");
+        std::fs::write(format!("{path}-shm"), b"shm").expect("create shm fixture");
+
+        assert!(super::quarantine_replica(&path).expect("quarantine fixture"));
+        assert!(!std::path::Path::new(&path).exists());
+        assert!(!std::path::Path::new(&format!("{path}-wal")).exists());
+        assert!(!std::path::Path::new(&format!("{path}-shm")).exists());
+
+        let prefix = format!("{}.corrupt-", path);
+        for entry in std::fs::read_dir(std::env::temp_dir()).expect("read temp directory") {
+            let entry = entry.expect("read quarantine entry");
+            let name = entry.path().to_string_lossy().into_owned();
+            if name.starts_with(&prefix) {
+                std::fs::remove_file(entry.path()).expect("remove quarantine fixture");
+            }
+        }
     }
 }

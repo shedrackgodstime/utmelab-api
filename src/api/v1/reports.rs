@@ -6,7 +6,12 @@
 //! a tight daily cap (see `core::reports`): reporting is rare, so the cap
 //! is generous for humans and useless for floods.
 
-use axum::{extract::State, http::StatusCode, routing::post, Json, Router};
+use axum::{
+    extract::State,
+    http::{HeaderValue, StatusCode},
+    routing::post,
+    Json, Router,
+};
 use serde::Deserialize;
 
 use crate::{
@@ -50,7 +55,14 @@ pub async fn file(
     State(s): State<DbState>,
     AuthedKey(auth): AuthedKey,
     Json(b): Json<ReportBody>,
-) -> Result<(StatusCode, Json<core::models::ReportFiled>), AppError> {
+) -> Result<
+    (
+        StatusCode,
+        [(&'static str, HeaderValue); 1],
+        Json<core::models::ReportFiled>,
+    ),
+    AppError,
+> {
     report(s, auth, b.target_type, b.target_id, b.reason, b.detail).await
 }
 
@@ -62,7 +74,14 @@ async fn report(
     target_id: String,
     reason: String,
     detail: Option<String>,
-) -> Result<(StatusCode, Json<core::models::ReportFiled>), AppError> {
+) -> Result<
+    (
+        StatusCode,
+        [(&'static str, HeaderValue); 1],
+        Json<core::models::ReportFiled>,
+    ),
+    AppError,
+> {
     auth.require(SCOPE_WRITE_REPORTS)?;
     if !s
         .limiter
@@ -106,8 +125,16 @@ async fn report(
     } else {
         StatusCode::CREATED
     };
+    let sync_status = if duplicate {
+        "unchanged"
+    } else if s.sync.push_pending() {
+        "pending"
+    } else {
+        "queued"
+    };
     Ok((
         status,
+        [("x-utmelab-sync", HeaderValue::from_static(sync_status))],
         Json(core::models::ReportFiled {
             id: rid,
             target_type: target_type.to_string(),
@@ -126,7 +153,9 @@ pub fn router(state: AppState) -> Router<AppState> {
 
 #[cfg(test)]
 mod tests {
-    use crate::testing::{api_schema, bank_schema, call, connect, issue_key, replica, state};
+    use crate::testing::{
+        api_schema, bank_schema, call, call_with_headers, connect, issue_key, replica, state,
+    };
     use axum::http::StatusCode;
 
     /// Offline replica with a read key and a write key, seeded through a raw
@@ -138,6 +167,12 @@ mod tests {
         let conn = connect(&db).await;
         api_schema(&conn).await;
         bank_schema(&conn, &["questions", "verifications"]).await;
+        conn.execute(
+            "INSERT INTO questions VALUES ('q1','JAMB','physics',2025,'past_paper','What is 2+2?','[]','[{\"id\":\"a\",\"text\":{\"text\":\"4\",\"inline\":[]}}]','a',NULL,NULL,'p1','{\"key_point\":{\"text\":\"addition\",\"inline\":[]},\"body\":{\"text\":\"2+2=4\",\"inline\":[]}}',1.0,2,'h1')",
+            (),
+        )
+        .await
+        .expect("question fixture");
         issue_key(&conn, "reader.secret", "commercial", "read:catalog", false).await;
         issue_key(
             &conn,
@@ -180,8 +215,34 @@ mod tests {
         // A well-formed filing for a target we do not hold is 404, so the gate
         // let it through to the read.
         assert_eq!(
-            post(app, Some("reporter.secret"), ok).await,
+            post(
+                app,
+                Some("reporter.secret"),
+                r#"{"target_type":"question","target_id":"missing","reason":"other"}"#,
+            )
+            .await,
             StatusCode::NOT_FOUND
+        );
+    }
+
+    #[tokio::test]
+    async fn filing_reports_that_cloud_sync_is_pending() {
+        let app = seeded_app().await;
+        let (status, headers, _) = call_with_headers(
+            app,
+            "POST",
+            "/api/v1/report",
+            Some("reporter.secret"),
+            &[],
+            Some(r#"{"target_type":"question","target_id":"q1","reason":"other"}"#),
+        )
+        .await;
+        assert_eq!(status, StatusCode::CREATED);
+        assert_eq!(
+            headers
+                .get("x-utmelab-sync")
+                .and_then(|value| value.to_str().ok()),
+            Some("pending")
         );
     }
 }

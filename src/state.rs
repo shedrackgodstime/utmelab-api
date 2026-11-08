@@ -4,7 +4,7 @@
 //! see handles they do not need (`HealthState` carries no database at all).
 
 use std::sync::{
-    atomic::{AtomicU64, Ordering},
+    atomic::{AtomicBool, AtomicU64, Ordering},
     Arc,
 };
 
@@ -31,10 +31,17 @@ pub struct Metrics {
     pub last_pull_unix: AtomicU64,
     pub last_pull_duration_ms: AtomicU64,
     pub last_request_unix: AtomicU64,
-    pub sync_sleeping: std::sync::atomic::AtomicBool,
     pub write_wait_count: AtomicU64,
     pub write_wait_ms_total: AtomicU64,
     pub write_wait_ms_max: AtomicU64,
+    pub local_write_count: AtomicU64,
+    pub local_write_ms_total: AtomicU64,
+    pub local_write_ms_max: AtomicU64,
+    pub push_count: AtomicU64,
+    pub push_ms_total: AtomicU64,
+    pub push_ms_max: AtomicU64,
+    pub last_push_duration_ms: AtomicU64,
+    pub sync_sleeping: AtomicBool,
     /// Request telemetry, probes excluded. `in_flight` is a gauge, the rest
     /// are since-boot totals.
     pub requests_ok: AtomicU64,
@@ -62,6 +69,21 @@ impl Metrics {
             write_wait_count: self.write_wait_count.load(Ordering::Relaxed),
             write_wait_ms_total: self.write_wait_ms_total.load(Ordering::Relaxed),
             write_wait_ms_max: self.write_wait_ms_max.load(Ordering::Relaxed),
+            local_write_count: self.local_write_count.load(Ordering::Relaxed),
+            local_write_ms_total: self.local_write_ms_total.load(Ordering::Relaxed),
+            local_write_ms_max: self.local_write_ms_max.load(Ordering::Relaxed),
+            local_write_avg_ms: average_ms(
+                self.local_write_ms_total.load(Ordering::Relaxed),
+                self.local_write_count.load(Ordering::Relaxed),
+            ),
+            push_count: self.push_count.load(Ordering::Relaxed),
+            push_ms_total: self.push_ms_total.load(Ordering::Relaxed),
+            push_ms_max: self.push_ms_max.load(Ordering::Relaxed),
+            last_push_duration_ms: self.last_push_duration_ms.load(Ordering::Relaxed),
+            push_avg_ms: average_ms(
+                self.push_ms_total.load(Ordering::Relaxed),
+                self.push_count.load(Ordering::Relaxed),
+            ),
             requests_ok: self.requests_ok.load(Ordering::Relaxed),
             requests_client_error: self.requests_client_error.load(Ordering::Relaxed),
             requests_server_error: self.requests_server_error.load(Ordering::Relaxed),
@@ -73,6 +95,10 @@ impl Metrics {
     }
 }
 
+fn average_ms(total: u64, count: u64) -> u64 {
+    total.checked_div(count).unwrap_or(0)
+}
+
 pub struct MetricsSnapshot {
     pub gate_rejections: u64,
     pub pulls_applied: u64,
@@ -80,11 +106,20 @@ pub struct MetricsSnapshot {
     pub sync_failures: u64,
     pub last_pull_unix: u64,
     pub last_pull_duration_ms: u64,
-    pub last_request_unix: u64,
     pub sync_sleeping: bool,
+    pub last_request_unix: u64,
     pub write_wait_count: u64,
     pub write_wait_ms_total: u64,
     pub write_wait_ms_max: u64,
+    pub local_write_count: u64,
+    pub local_write_ms_total: u64,
+    pub local_write_ms_max: u64,
+    pub local_write_avg_ms: u64,
+    pub push_count: u64,
+    pub push_ms_total: u64,
+    pub push_ms_max: u64,
+    pub last_push_duration_ms: u64,
+    pub push_avg_ms: u64,
     pub requests_ok: u64,
     pub requests_client_error: u64,
     pub requests_server_error: u64,

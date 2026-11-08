@@ -222,7 +222,7 @@ impl McpServer {
         Parameters(args): Parameters<FileReportArgs>,
         context: RequestContext<RoleServer>,
     ) -> Result<CallToolResponse, ErrorData> {
-        let (_, axum::Json(filed)) = reports::file(
+        let (_, _, axum::Json(filed)) = reports::file(
             State(self.db.clone()),
             AuthedKey(auth_from(&context)?),
             axum::Json(reports::ReportBody {

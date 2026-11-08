@@ -26,6 +26,13 @@ pub struct ServiceStatus {
     pub sync_pending_operations: u64,
     pub sync_pending_bytes: u64,
     pub sync_push_pending: bool,
+    pub sync_sleeping: bool,
+    pub sync_last_attempt_pull_unix: u64,
+    pub sync_last_attempt_push_unix: u64,
+    pub sync_last_success_push_unix: u64,
+    pub sync_consecutive_push_failures: u64,
+    pub sync_heartbeat_unix: u64,
+    pub sync_last_error_unix: u64,
     /// Engine-side sync figures, read-only. Null when no replica is attached
     /// (or the engine cannot answer): absence is honest, never zeros. This
     /// never checkpoints; checkpointing is the engine's own job.
@@ -38,10 +45,18 @@ pub struct ServiceStatus {
     pub last_pull_unix: u64,
     pub last_pull_duration_ms: u64,
     pub last_request_unix: u64,
-    pub sync_sleeping: bool,
     pub write_wait_count: u64,
     pub write_wait_ms_total: u64,
     pub write_wait_ms_max: u64,
+    pub local_write_count: u64,
+    pub local_write_ms_total: u64,
+    pub local_write_ms_max: u64,
+    pub local_write_avg_ms: u64,
+    pub push_count: u64,
+    pub push_ms_total: u64,
+    pub push_ms_max: u64,
+    pub push_avg_ms: u64,
+    pub last_push_duration_ms: u64,
     /// Request telemetry since boot; the two probe routes are excluded so
     /// health checks cannot drown out real traffic. Latency buckets are
     /// fast < 25ms, ok < 100ms, slow >= 100ms.

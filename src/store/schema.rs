@@ -25,13 +25,13 @@ pub const CONTRACT_VERSION: u64 = 1;
 
 /// Version of the API-owned schema. This is separate from
 /// [`CONTRACT_VERSION`], which belongs to the content pipeline.
-pub const API_SCHEMA_VERSION: u64 = 1;
+pub const API_SCHEMA_VERSION: u64 = 2;
 
 /// Tables the API owns and creates at boot.
 pub(crate) const DDL: &[&str] = &[
     "CREATE TABLE IF NOT EXISTS meta (key TEXT PRIMARY KEY, value TEXT NOT NULL)",
     "CREATE TABLE IF NOT EXISTS api_schema_migrations (version INTEGER PRIMARY KEY, applied_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
-    "CREATE TABLE IF NOT EXISTS api_keys (prefix TEXT PRIMARY KEY, hash TEXT NOT NULL, tier TEXT NOT NULL DEFAULT 'commercial', scopes TEXT NOT NULL DEFAULT 'read:catalog', revoked INTEGER NOT NULL DEFAULT 0, owner TEXT NOT NULL DEFAULT '', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
+    "CREATE TABLE IF NOT EXISTS api_keys (prefix TEXT PRIMARY KEY, hash TEXT NOT NULL, tier TEXT NOT NULL DEFAULT 'commercial', scopes TEXT NOT NULL DEFAULT 'read:catalog', revoked INTEGER NOT NULL DEFAULT 0, owner TEXT NOT NULL DEFAULT '', idempotency_hash TEXT UNIQUE, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS dashboard_users (username TEXT PRIMARY KEY, pw_hash TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'customer', created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP)",
     "CREATE TABLE IF NOT EXISTS sessions (token_hash TEXT PRIMARY KEY, username TEXT NOT NULL, expires_at INTEGER NOT NULL)",
     "CREATE TABLE IF NOT EXISTS reports (id TEXT PRIMARY KEY, target_type TEXT NOT NULL, target_id TEXT NOT NULL, reporter TEXT NOT NULL, reason TEXT NOT NULL, detail TEXT, created_at INTEGER NOT NULL, UNIQUE(reporter, target_type, target_id, reason))",
@@ -249,7 +249,7 @@ pub async fn ensure_schema(s: &DbState) -> Result<(), AppError> {
 /// API-owned migrations are numbered, applied once, and never rewritten.
 /// Fresh databases receive the current DDL first; upgraded databases receive
 /// the same DDL idempotently and then any missing migrations.
-const MIGRATIONS: &[u64] = &[1];
+const MIGRATIONS: &[u64] = &[1, 2];
 
 async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
     for &version in MIGRATIONS {
@@ -279,6 +279,14 @@ async fn apply_migrations(s: &DbState) -> Result<(), AppError> {
                 )
                 .await?;
                 ensure_column(s, "api_keys", "owner", "owner TEXT NOT NULL DEFAULT ''").await?;
+            }
+            2 => {
+                ensure_column(s, "api_keys", "idempotency_hash", "idempotency_hash TEXT").await?;
+                super::write::execute_ddl_local(
+                    s,
+                    "CREATE UNIQUE INDEX IF NOT EXISTS idx_api_keys_idempotency_hash ON api_keys(idempotency_hash)",
+                )
+                .await?;
             }
             _ => {
                 return Err(AppError::Internal(
@@ -522,17 +530,14 @@ mod tests {
         );
 
         // The contrast: a request write is not startup work, so the same
-        // offline push still reaches the caller.
-        let failed = crate::store::write::execute_write(
+        // the cloud push remains pending.
+        let accepted = crate::store::write::execute_write(
             &s,
             "INSERT INTO meta (key, value) VALUES ('probe', 'v')",
             vec![],
         )
         .await;
-        assert!(
-            failed.is_err(),
-            "a request write must surface the failed push"
-        );
+        assert!(accepted.is_ok(), "a request write is accepted locally");
     }
 
     #[tokio::test]
@@ -763,6 +768,10 @@ mod tests {
             )
             .await
             .expect("migrate key owner");
+        upgraded_conn
+            .execute("ALTER TABLE api_keys ADD COLUMN idempotency_hash TEXT", ())
+            .await
+            .expect("migrate key idempotency hash");
         upgraded_conn
             .execute("INSERT INTO api_schema_migrations (version) VALUES (1)", ())
             .await

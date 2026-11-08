@@ -2,7 +2,7 @@
 //! use: one operation, two surfaces, never duplicated. Every mutation
 //! passes the acting admin to the store so the audit event is attributable.
 
-use axum::{extract::State, Json};
+use axum::{extract::State, http::HeaderMap, Json};
 
 use crate::{
     auth::session::AdminUser,
@@ -46,6 +46,13 @@ pub async fn status(
         sync_pending_operations: health.pending_operations,
         sync_pending_bytes: health.pending_bytes,
         sync_push_pending: health.push_pending,
+        sync_sleeping: health.sleeping,
+        sync_last_attempt_pull_unix: health.last_attempt_pull_unix,
+        sync_last_attempt_push_unix: health.last_attempt_push_unix,
+        sync_last_success_push_unix: health.last_success_push_unix,
+        sync_consecutive_push_failures: health.consecutive_push_failures as u64,
+        sync_heartbeat_unix: health.heartbeat_unix,
+        sync_last_error_unix: health.last_error_unix,
         sync: store::sync::stats(&s).await?,
         gate_rejections: m.gate_rejections,
         pulls_applied: m.pulls_applied,
@@ -54,10 +61,18 @@ pub async fn status(
         last_pull_unix: m.last_pull_unix,
         last_pull_duration_ms: m.last_pull_duration_ms,
         last_request_unix: m.last_request_unix,
-        sync_sleeping: m.sync_sleeping,
         write_wait_count: m.write_wait_count,
         write_wait_ms_total: m.write_wait_ms_total,
         write_wait_ms_max: m.write_wait_ms_max,
+        local_write_count: m.local_write_count,
+        local_write_ms_total: m.local_write_ms_total,
+        local_write_ms_max: m.local_write_ms_max,
+        local_write_avg_ms: m.local_write_avg_ms,
+        push_count: m.push_count,
+        push_ms_total: m.push_ms_total,
+        push_ms_max: m.push_ms_max,
+        push_avg_ms: m.push_avg_ms,
+        last_push_duration_ms: m.last_push_duration_ms,
         requests_ok: m.requests_ok,
         requests_client_error: m.requests_client_error,
         requests_server_error: m.requests_server_error,
@@ -89,9 +104,27 @@ pub async fn set_role(
 pub async fn create_key(
     State(s): State<DbState>,
     AdminUser(u): AdminUser,
+    headers: HeaderMap,
     Json(b): Json<NewKeySpec>,
 ) -> Result<Json<NewKey>, AppError> {
-    let key = store::accounts::create_key_spec(&s, &u, &b.tier, &b.owner).await?;
+    let Some(value) = headers.get("idempotency-key") else {
+        return Err(AppError::BadRequest("missing idempotency key".to_string()));
+    };
+    let idempotency_key = value
+        .to_str()
+        .map_err(|_| AppError::BadRequest("invalid idempotency key".to_string()))?
+        .trim();
+    if idempotency_key.is_empty() || idempotency_key.len() > 128 {
+        return Err(AppError::BadRequest("invalid idempotency key".to_string()));
+    }
+    let key = store::accounts::create_key_spec_idempotent(
+        &s,
+        &u,
+        &b.tier,
+        &b.owner,
+        Some(idempotency_key),
+    )
+    .await?;
     Ok(Json(NewKey { key }))
 }
 
@@ -149,7 +182,9 @@ async fn apply(
 
 #[cfg(test)]
 mod tests {
-    use crate::testing::{api_schema, call_session, connect, issue_session, replica, state};
+    use crate::testing::{
+        api_schema, call_session, call_session_with_headers, connect, issue_session, replica, state,
+    };
     use axum::http::StatusCode;
 
     const CREATE: &str = "/api/internal/admin/keys/create";
@@ -173,21 +208,22 @@ mod tests {
     }
 
     /// An admin session mints a consumer key with the owner it named. The
-    /// replica is offline, so the write commits locally and the call surfaces
-    /// the failed push; the committed row is what this test reads.
+    /// replica is offline, so the write commits locally and the background
+    /// push remains pending; the committed row is what this test reads.
     #[tokio::test]
     async fn an_admin_session_mints_a_consumer_key_for_an_owner() {
         let (app, db, admin, customer) = app().await;
 
-        let (status, body) = call_session(
+        let (status, body) = call_session_with_headers(
             app.clone(),
             "POST",
             CREATE,
             &admin,
+            &[("idempotency-key", "admin-test-1")],
             Some(r#"{"tier":"commercial","owner":"utmelab-app"}"#),
         )
         .await;
-        assert_eq!(status, StatusCode::BAD_GATEWAY, "{body}");
+        assert_eq!(status, StatusCode::OK, "{body}");
 
         let conn = connect(&db).await;
         let mut rows = conn

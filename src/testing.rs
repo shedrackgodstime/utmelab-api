@@ -216,11 +216,11 @@ pub(crate) fn db_state(db: SyncDb) -> DbState {
     DbState::detached(db)
 }
 
-/// `DbState` with no replica: a chosen contract flag and gate width, for tests
-/// that never reach the store.
-pub(crate) fn db_state_without_db(contract_ok: bool, permits: usize) -> DbState {
+/// `DbState` with no replica: a chosen readiness state and gate width, for
+/// tests that never reach the store.
+pub(crate) fn db_state_without_db(ready: bool, permits: usize) -> DbState {
     let policy = SyncPolicy::default();
-    let sync = if contract_ok {
+    let sync = if ready {
         SyncStatus::verified(policy)
     } else {
         SyncStatus::blocked(policy, BlockedReason::SchemaMismatch)
@@ -252,9 +252,9 @@ pub(crate) fn state(db: SyncDb) -> AppState {
     app_from(db_state(db))
 }
 
-/// `AppState` with no replica and a chosen contract flag.
-pub(crate) fn state_without_db(contract_ok: bool) -> AppState {
-    app_from(db_state_without_db(contract_ok, 1))
+/// `AppState` with no replica and a chosen readiness state.
+pub(crate) fn state_without_db(ready: bool) -> AppState {
+    app_from(db_state_without_db(ready, 1))
 }
 
 /// The one place tests assemble an `AppState` from a `DbState`.
@@ -358,7 +358,20 @@ pub(crate) async fn call_session(
     token: &str,
     body: Option<&str>,
 ) -> (axum::http::StatusCode, serde_json::Value) {
+    call_session_with_headers(app, method, uri, token, &[], body).await
+}
+
+pub(crate) async fn call_session_with_headers(
+    app: axum::Router,
+    method: &str,
+    uri: &str,
+    token: &str,
+    extra: &[(&str, &str)],
+    body: Option<&str>,
+) -> (axum::http::StatusCode, serde_json::Value) {
     let cookie = format!("{}={token}", crate::auth::session::SESSION_COOKIE);
-    let (status, _, value) = drive(app, method, uri, &[("cookie", cookie.as_str())], body).await;
+    let mut headers = vec![("cookie", cookie.as_str())];
+    headers.extend_from_slice(extra);
+    let (status, _, value) = drive(app, method, uri, &headers, body).await;
     (status, value)
 }

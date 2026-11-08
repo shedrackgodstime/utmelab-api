@@ -14,6 +14,8 @@ use crate::{config::Config, error::AppError};
 /// A push notification is the fast path. This fallback only recovers pending
 /// local work after a restart or a missed notification.
 pub const PUSH_FALLBACK: Duration = Duration::from_secs(300);
+/// Small debounce window that lets a burst of local writes share one push.
+pub const PUSH_COALESCE: Duration = Duration::from_millis(25);
 /// Expired dashboard sessions are purged on this cadence, not on the request
 /// path.
 pub const PURGE_EVERY: Duration = Duration::from_secs(3600);
@@ -456,6 +458,10 @@ mod tests {
         assert_eq!(
             classify_engine(&turso::Error::Error("no such table: exams".into())),
             ErrorClass::Schema
+        );
+        assert_eq!(
+            classify_engine(&turso::Error::Error("HTTP 429 rate limit".into())),
+            ErrorClass::TransientRemote
         );
     }
 

@@ -1,8 +1,7 @@
-//! Single write path. Execute plus push under one mutex that the pull
-//! loop also holds, so a pull can never interleave (and discard) an
-//! unpushed local write. Callers get the affected-row count; a push failure
-//! surfaces (upstream, or contended when the engine says busy), while the local row
-//! exists, so the cloud lags until the next push.
+//! Single write path. Execute under the write mutex, record the local change,
+//! then wake the one background push worker. The pull loop and push worker
+//! still serialize database synchronization, but request latency no longer
+//! includes the Turso push.
 
 use super::{
     gate,
@@ -66,10 +65,8 @@ fn record_push_result(
     }
 }
 
-async fn finish_push(s: &DbState, db: super::SyncDb) -> Result<(), AppError> {
-    s.sync.apply(SyncEvent::PushStarted { at: unix_now() });
-    let result = Engine::new(db, s.sync.policy().budgets).push().await;
-    record_push_result(s, &result)
+fn queue_push(s: &DbState) {
+    s.push_notify.notify_one();
 }
 
 fn record_write_wait(s: &DbState, elapsed: std::time::Duration) {
@@ -81,6 +78,21 @@ fn record_write_wait(s: &DbState, elapsed: std::time::Duration) {
     s.metrics.write_wait_count.fetch_add(1, Relaxed);
     s.metrics.write_wait_ms_total.fetch_add(ms, Relaxed);
     let max = &s.metrics.write_wait_ms_max;
+    let mut current = max.load(Relaxed);
+    while ms > current {
+        match max.compare_exchange_weak(current, ms, Relaxed, Relaxed) {
+            Ok(_) => break,
+            Err(actual) => current = actual,
+        }
+    }
+}
+
+fn record_local_write(s: &DbState, started: std::time::Instant) {
+    use std::sync::atomic::Ordering::Relaxed;
+    let ms = started.elapsed().as_millis().min(u64::MAX as u128) as u64;
+    s.metrics.local_write_count.fetch_add(1, Relaxed);
+    s.metrics.local_write_ms_total.fetch_add(ms, Relaxed);
+    let max = &s.metrics.local_write_ms_max;
     let mut current = max.load(Relaxed);
     while ms > current {
         match max.compare_exchange_weak(current, ms, Relaxed, Relaxed) {
@@ -103,13 +115,15 @@ pub async fn execute_write(
     let db = synced(s).await?;
     let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
     let estimated = estimated_bytes(sql, &params);
+    let local_started = std::time::Instant::now();
     let result = execute_and_verify(&conn, sql, params).await;
     s.conns.put(conn).await;
+    record_local_write(s, local_started);
     let n = result?;
     if n > 0 {
         s.sync.mark_write_committed(n, estimated);
+        queue_push(s);
     }
-    finish_push(s, db).await?;
     Ok(n)
 }
 
@@ -124,11 +138,13 @@ pub async fn execute_ddl(s: &DbState, sql: &str) -> Result<(), AppError> {
     let db = synced(s).await?;
     let conn = s.conns.take(&db, s.sync.policy().budgets).await?;
     let estimated = estimated_bytes(sql, &[] as &[turso::Value]);
+    let local_started = std::time::Instant::now();
     let result = conn.execute(sql, ()).await.map_err(upstream);
     s.conns.put(conn).await;
+    record_local_write(s, local_started);
     result?;
     s.sync.mark_write_committed(1, estimated);
-    finish_push(s, db).await?;
+    queue_push(s);
     Ok(())
 }
 
@@ -215,12 +231,9 @@ async fn execute_and_verify(
 mod tests {
     use crate::testing::{api_schema, conn_of, connect, db_state, replica};
 
-    /// The harness's remote is unreachable, so `push()` fails after the row is
-    /// committed locally. That failure is the boundary the note named: the
-    /// write path's own work (gate, mutex, execute, the `changes()` visibility
-    /// check) still runs, and the local row stays for the next successful push.
+    /// The local write succeeds without waiting for the unreachable remote.
     #[tokio::test]
-    async fn a_write_lands_locally_before_the_push_fails() {
+    async fn a_write_lands_locally_without_waiting_for_push() {
         let db = replica().await;
         api_schema(&connect(&db).await).await;
         let s = db_state(db);
@@ -232,8 +245,8 @@ mod tests {
         )
         .await;
         assert!(
-            result.is_err(),
-            "the offline push fails, so the call surfaces it"
+            result.is_ok(),
+            "local commit should not wait for cloud push"
         );
 
         // The row is committed locally all the same.
@@ -265,7 +278,7 @@ mod tests {
             vec![],
         )
         .await;
-        assert!(result.is_err(), "the offline push fails");
+        assert!(result.is_ok(), "the local commit should be accepted");
         let health = s.sync.health();
         assert!(health.push_pending);
         assert_eq!(health.pending_operations, 1);

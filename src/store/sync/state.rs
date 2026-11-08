@@ -141,6 +141,7 @@ pub struct SyncHealth {
     pub pending_operations: u64,
     pub pending_bytes: u64,
     pub push_pending: bool,
+    pub sleeping: bool,
 }
 
 impl SyncHealth {
@@ -166,6 +167,7 @@ pub enum SyncEvent {
     BuildStarted { at: Timestamp },
     BuildSucceeded { at: Timestamp },
     BuildFailed { error: SyncError, at: Timestamp },
+    RebuildStarted { at: Timestamp },
     PullStarted { at: Timestamp },
     PullSucceeded { changes: bool, at: Timestamp },
     PullFailed { error: SyncError, at: Timestamp },
@@ -177,6 +179,8 @@ pub enum SyncEvent {
     ContractMismatch { reason: String, at: Timestamp },
     VerifyFailed { error: SyncError, at: Timestamp },
     Heartbeat { at: Timestamp },
+    SleepStarted { at: Timestamp },
+    SleepEnded { at: Timestamp },
     Stopping { at: Timestamp },
     Stopped { at: Timestamp },
 }
@@ -187,6 +191,7 @@ impl SyncEvent {
             Self::BuildStarted { at }
             | Self::BuildSucceeded { at }
             | Self::BuildFailed { at, .. }
+            | Self::RebuildStarted { at }
             | Self::PullStarted { at }
             | Self::PullSucceeded { at, .. }
             | Self::PullFailed { at, .. }
@@ -198,6 +203,8 @@ impl SyncEvent {
             | Self::ContractMismatch { at, .. }
             | Self::VerifyFailed { at, .. }
             | Self::Heartbeat { at }
+            | Self::SleepStarted { at }
+            | Self::SleepEnded { at }
             | Self::Stopping { at }
             | Self::Stopped { at } => *at,
         }
@@ -302,6 +309,9 @@ pub fn transition(
                 SyncState::Bootstrapping
             };
         }
+        SyncEvent::RebuildStarted { .. } => {
+            next_state = SyncState::Bootstrapping;
+        }
         SyncEvent::PullStarted { .. } => {
             next_health.last_attempt_pull_unix = at;
         }
@@ -374,6 +384,12 @@ pub fn transition(
         }
         SyncEvent::Heartbeat { .. } => {
             next_health.heartbeat_unix = at;
+        }
+        SyncEvent::SleepStarted { .. } => {
+            next_health.sleeping = true;
+        }
+        SyncEvent::SleepEnded { .. } => {
+            next_health.sleeping = false;
         }
         SyncEvent::Stopping { .. } => {
             next_state = SyncState::Stopping;
@@ -608,6 +624,10 @@ impl SyncStatus {
         self.lock().health.push_pending
     }
 
+    pub fn sleeping(&self) -> bool {
+        self.lock().health.sleeping
+    }
+
     /// Record a local commit that has not yet reached the remote. The write
     /// path calls this while it still holds the write mutex, so concurrent
     /// writers cannot over-admit against a stale count.
@@ -621,6 +641,23 @@ impl SyncStatus {
             .pending_operations
             .saturating_add(operations);
         snapshot.health.pending_bytes = snapshot.health.pending_bytes.saturating_add(bytes);
+        snapshot.health.push_pending = true;
+    }
+
+    /// Recover a conservative pending-work lower bound from the engine's
+    /// local change log after a process restart. The exact byte count is not
+    /// available from the engine, so the operation budget is closed until a
+    /// successful push clears it.
+    pub fn mark_pending_from_change_log(&self, operations: u64) {
+        if operations == 0 {
+            return;
+        }
+        let mut snapshot = self.lock();
+        snapshot.health.pending_operations = snapshot
+            .health
+            .pending_operations
+            .max(operations)
+            .max(self.policy.write_admission.max_pending_operations);
         snapshot.health.push_pending = true;
     }
 
@@ -789,7 +826,9 @@ pub fn classify(error: &crate::error::AppError) -> ErrorClass {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::store::sync::policy::{Budget, RetryPolicy};
+    use crate::store::sync::policy::{
+        admit_write, Budget, PendingWork, RetryPolicy, WriteDecision, WriteRejection,
+    };
 
     fn policy() -> SyncPolicy {
         SyncPolicy {
@@ -897,6 +936,74 @@ mod tests {
     }
 
     #[test]
+    fn permanent_failure_matrix_blocks_every_sync_entrypoint() {
+        let at = 100;
+        for class in [
+            ErrorClass::Auth,
+            ErrorClass::Configuration,
+            ErrorClass::LocalStorage,
+            ErrorClass::Schema,
+        ] {
+            let built = apply(
+                SyncState::Bootstrapping,
+                &healthy(at),
+                SyncEvent::BuildFailed {
+                    error: error(class),
+                    at: at + 1,
+                },
+            );
+            assert_eq!(
+                built.state,
+                SyncState::Blocked(BlockedReason::from_class(class))
+            );
+            assert_eq!(
+                built.retry.expect("build retry").delay,
+                Duration::from_secs(300)
+            );
+
+            let verified = apply(
+                SyncState::Verifying,
+                &healthy(at),
+                SyncEvent::VerifyFailed {
+                    error: error(class),
+                    at: at + 1,
+                },
+            );
+            assert_eq!(
+                verified.state,
+                SyncState::Blocked(BlockedReason::from_class(class))
+            );
+        }
+    }
+
+    #[test]
+    fn transient_failure_matrix_keeps_reads_available_until_staleness() {
+        let at = 100;
+        for class in [
+            ErrorClass::TransientNetwork,
+            ErrorClass::TransientRemote,
+            ErrorClass::Timeout,
+            ErrorClass::Contention,
+            ErrorClass::Unknown,
+        ] {
+            let failed = apply(
+                SyncState::Ready,
+                &healthy(at),
+                SyncEvent::PullFailed {
+                    error: error(class),
+                    at: at + 1,
+                },
+            );
+            assert_eq!(
+                failed.state,
+                SyncState::Degraded(DegradedReason::Failure(class))
+            );
+            assert!(failed.readiness.http_ready());
+            assert!(failed.retry.expect("transient retry").delay <= Duration::from_secs(60));
+        }
+    }
+
+    #[test]
     fn a_successful_pull_resets_consecutive_failures() {
         let at = 100;
         let mut health = healthy(at);
@@ -972,6 +1079,46 @@ mod tests {
         assert!(health.push_pending);
         assert_eq!(health.pending_operations, 1);
         assert_eq!(health.consecutive_push_failures, 1);
+    }
+
+    #[test]
+    fn sleeping_is_independent_from_pending_push_work() {
+        let status = SyncStatus::verified(policy());
+        status.mark_write_committed(1, 128);
+        status.apply(SyncEvent::SleepStarted { at: unix_now() });
+
+        let health = status.health();
+        assert!(health.sleeping);
+        assert!(health.push_pending);
+        assert_eq!(health.pending_operations, 1);
+
+        status.apply(SyncEvent::SleepEnded { at: unix_now() });
+        let health = status.health();
+        assert!(!health.sleeping);
+        assert!(health.push_pending);
+        assert_eq!(health.pending_operations, 1);
+    }
+
+    #[test]
+    fn change_log_recovery_closes_write_admission_until_push() {
+        let status = SyncStatus::verified(policy());
+        status.mark_pending_from_change_log(2);
+        let health = status.health();
+        assert!(health.push_pending);
+        assert_eq!(
+            health.pending_operations,
+            policy().write_admission.max_pending_operations
+        );
+        assert_eq!(
+            admit_write(
+                PendingWork::Known {
+                    operations: health.pending_operations,
+                    bytes: health.pending_bytes,
+                },
+                &policy().write_admission,
+            ),
+            WriteDecision::Reject(WriteRejection::PendingOperationBudget)
+        );
     }
 
     #[test]

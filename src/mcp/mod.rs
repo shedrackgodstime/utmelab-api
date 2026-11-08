@@ -627,7 +627,8 @@ mod tests {
     /// The admin surface can hand out a consumer key: the tool dispatches into
     /// the store, which derives the grant from the tier and refuses one it does
     /// not know. (The grant itself is pinned in the store tests; the test
-    /// replica is offline, so a valid call would stop at the failed push.)
+    /// replica is offline, so a valid call commits locally and leaves push
+    /// pending.)
     #[tokio::test]
     async fn an_admin_key_reaches_the_create_key_tool() {
         let app = app().await;

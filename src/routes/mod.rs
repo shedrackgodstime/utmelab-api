@@ -217,22 +217,19 @@ mod tests {
     use std::sync::Arc;
     use tower::ServiceExt;
 
-    /// The composed app over a contract flag, no replica behind it: the layer
+    /// The composed app over a readiness state, no replica behind it: the layer
     /// stack and the router tables, nothing that reads a store.
-    fn app(contract_ok: bool) -> Router {
-        crate::routes::router(
-            state_without_db(contract_ok),
-            &crate::config::Config::default(),
-        )
+    fn app(ready: bool) -> Router {
+        crate::routes::router(state_without_db(ready), &crate::config::Config::default())
     }
 
     /// The raw body out, for the guard test: a non-JSON handler body must not
     /// leak past the guard, which a parsed value could not show.
-    async fn probe(contract_ok: bool) -> (axum::http::StatusCode, String) {
+    async fn probe(ready: bool) -> (axum::http::StatusCode, String) {
         let app = Router::new()
             .route("/data", get(|| async { "payload" }))
             .layer(axum::middleware::from_fn_with_state(
-                state_without_db(contract_ok),
+                state_without_db(ready),
                 contract_guard,
             ));
         let res = app

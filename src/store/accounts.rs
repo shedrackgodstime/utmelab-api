@@ -459,12 +459,24 @@ pub async fn create_key_spec(
     tier: &str,
     owner: &str,
 ) -> Result<String, AppError> {
+    create_key_spec_idempotent(s, actor, tier, owner, None).await
+}
+
+pub async fn create_key_spec_idempotent(
+    s: &DbState,
+    actor: &str,
+    tier: &str,
+    owner: &str,
+    idempotency_key: Option<&str>,
+) -> Result<String, AppError> {
     crate::core::accounts::check_tier(tier)?;
+    let idempotency_hash =
+        idempotency_key.map(|key| hash_key(&format!("{actor}\0{tier}\0{owner}\0{key}")));
     let (scopes, owner) = match tier {
         "admin" => (ADMIN_SCOPES, ""),
         _ => (COMMERCIAL_SCOPES, check_owner(owner)?),
     };
-    let full = create_key_raw(s, tier, scopes, owner).await?;
+    let full = create_key_raw(s, tier, scopes, owner, idempotency_hash.as_deref()).await?;
     obs::key_created(actor, key_prefix(&full), tier);
     Ok(full)
 }
@@ -519,7 +531,7 @@ pub async fn rotate_key(s: &DbState, prefix: &str, actor: &str) -> Result<String
     // Mint the replacement with the old key's authority. The local insert
     // commits even when the cloud push fails; we proceed to revoke the old key
     // regardless.
-    let full = match create_key_raw(s, &tier, &scopes, &owner).await {
+    let full = match create_key_raw(s, &tier, &scopes, &owner, None).await {
         Ok(full) => full,
         Err(_) => {
             // Push failed but the insert committed locally. Revoke the old
@@ -542,29 +554,46 @@ async fn create_key_raw(
     tier: &str,
     scopes: &str,
     owner: &str,
+    idempotency_hash: Option<&str>,
 ) -> Result<String, AppError> {
-    let prefix: String = crate::core::hex::encode(&rand::random::<[u8; 6]>());
-    let secret: String = crate::core::hex::encode(&rand::random::<[u8; 24]>());
-    let full = format!("{prefix}.{secret}");
-    let n = super::write::execute_write(
-        s,
-        "INSERT INTO api_keys (prefix, hash, tier, scopes, revoked, owner) VALUES (?1, ?2, ?3, ?4, 0, ?5)",
-        vec![
-            turso::Value::Text(prefix),
-            turso::Value::Text(hash_key(&full)),
-            turso::Value::Text(tier.to_string()),
-            turso::Value::Text(scopes.to_string()),
-            turso::Value::Text(owner.to_string()),
-        ],
-    )
-    .await?;
-    if n != 1 {
-        return Err(AppError::Upstream("key not stored".to_string()));
+    // A prefix collision is exceptionally unlikely, but the conflict clause
+    // means it must be retried rather than returning a secret that was not
+    // stored.
+    for _ in 0..3 {
+        let prefix = crate::core::hex::encode(&rand::random::<[u8; 6]>());
+        let secret = crate::core::hex::encode(&rand::random::<[u8; 24]>());
+        let full = format!("{prefix}.{secret}");
+        let n = super::write::execute_write(
+            s,
+            "INSERT INTO api_keys (prefix, hash, tier, scopes, revoked, owner, idempotency_hash) VALUES (?1, ?2, ?3, ?4, 0, ?5, ?6) ON CONFLICT DO NOTHING",
+            vec![
+                turso::Value::Text(prefix),
+                turso::Value::Text(crate::store::accounts::hash_key(&full)),
+                turso::Value::Text(tier.to_string()),
+                turso::Value::Text(scopes.to_string()),
+                turso::Value::Text(owner.to_string()),
+                idempotency_hash
+                    .map(|hash| turso::Value::Text(hash.to_string()))
+                    .unwrap_or(turso::Value::Null),
+            ],
+        )
+        .await?;
+        if n == 1 {
+            return Ok(full);
+        }
+        if idempotency_hash.is_some() {
+            return Err(AppError::Conflict(
+                "idempotency key has already been used".to_string(),
+            ));
+        }
     }
-    Ok(full)
+
+    Err(AppError::Upstream(
+        "could not allocate a unique key prefix".to_string(),
+    ))
 }
 
-/// Customer key deletion. Scoped to the caller's own keys: the owner
+/// Customer key deletion is scoped to the caller's own keys. The owner
 /// predicate makes another user's prefix undeletable, not an error.
 pub async fn delete_key(s: &DbState, owner: &str, prefix: &str) -> Result<bool, AppError> {
     crate::core::accounts::check_prefix(prefix)?;
@@ -936,9 +965,9 @@ mod tests {
             .expect("value")
     }
 
-    /// A mutation commits locally before the push, so with a dead remote the
-    /// call surfaces the push error while the row stays for the next successful
-    /// push. That is the boundary mutation coverage reaches without a remote,
+    /// A mutation commits locally before the background push. With a dead
+    /// remote the call succeeds locally and the row stays for the next push.
+    /// That is the boundary mutation coverage reaches without a remote,
     /// and it is enough to prove each statement's columns and parameter order:
     /// a renamed column fails the execute, a swapped parameter fails the read.
     #[tokio::test]
@@ -952,15 +981,14 @@ mod tests {
         .await;
         seed_key(&s, "k1.secret", "commercial", "read:catalog", 0).await;
 
-        // Every one of these commits and then fails at push; the error is the
-        // expected half of the contract, not the thing under test.
-        assert!(set_revoked(&s, "k1", true, "actor").await.is_err());
-        assert!(set_user_role(&s, "u", "admin", "actor").await.is_err());
-        assert!(create_key(&s, "owner1").await.is_err());
+        // Every one of these commits locally and queues the cloud push.
+        assert!(set_revoked(&s, "k1", true, "actor").await.is_ok());
+        assert!(set_user_role(&s, "u", "admin", "actor").await.is_ok());
+        assert!(create_key(&s, "owner1").await.is_ok());
         assert!(
             file_report(&s, "k1", "question", "q1", "wrong_answer", None)
                 .await
-                .is_err()
+                .is_ok()
         );
 
         // All four rows are committed locally.
@@ -986,7 +1014,7 @@ mod tests {
         );
 
         // Delete goes last: it removes the `k1` row read above.
-        assert!(delete_key(&s, "", "k1").await.is_err());
+        assert!(delete_key(&s, "", "k1").await.is_ok());
         assert_eq!(
             cell(&s, "SELECT COUNT(*) FROM api_keys WHERE prefix='k1'").await,
             turso::Value::Integer(0)
@@ -1000,14 +1028,14 @@ mod tests {
     #[tokio::test]
     async fn create_key_spec_derives_the_grant_from_the_tier() {
         let s = local_accounts_db().await;
-        // Offline: each write commits locally and then fails at the push; the
-        // local rows are what this test reads.
+        // Offline: each write commits locally and queues the push; the local
+        // rows are what this test reads.
         assert!(create_key_spec(&s, "root", "commercial", "utmelab-app")
             .await
-            .is_err());
+            .is_ok());
         assert!(create_key_spec(&s, "root", "admin", "ignored")
             .await
-            .is_err());
+            .is_ok());
 
         let keys = list_keys(&s, None).await.expect("list keys");
         let consumer = keys
@@ -1040,6 +1068,25 @@ mod tests {
         );
     }
 
+    #[tokio::test]
+    async fn idempotency_key_prevents_duplicate_creation_after_a_lost_result() {
+        let s = local_accounts_db().await;
+        let first =
+            create_key_spec_idempotent(&s, "root", "commercial", "owner1", Some("req-1")).await;
+        assert!(first.is_ok(), "local creation should be accepted");
+
+        let retry =
+            create_key_spec_idempotent(&s, "root", "commercial", "owner1", Some("req-1")).await;
+        assert!(
+            matches!(retry, Err(AppError::Conflict(_))),
+            "retry={retry:?}"
+        );
+        assert_eq!(
+            cell(&s, "SELECT COUNT(*) FROM api_keys WHERE owner='owner1'").await,
+            turso::Value::Integer(1)
+        );
+    }
+
     /// Rotation carries the old key's authority across unchanged. A fixed
     /// replacement would escalate a commercial key to `manage:keys`, so a
     /// customer key rotation could hand out administration.
@@ -1061,9 +1108,8 @@ mod tests {
         )
         .await;
 
-        // Offline: the push fails, so the call surfaces the error, but the
-        // local rows still commit (new key minted, old key revoked).
-        assert!(rotate_key(&s, "k1", "root").await.is_err());
+        // Offline: the local rows still commit and the push remains pending.
+        assert!(rotate_key(&s, "k1", "root").await.is_ok());
 
         // The old prefix is revoked locally.
         assert!(verify_key(&s, "k1.secret").await.is_err());
