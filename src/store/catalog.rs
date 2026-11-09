@@ -1116,7 +1116,8 @@ fn map_topic_note(row: &turso::Row) -> Result<core::models::TopicNote, AppError>
     let formulas_raw: String = row.get(10).map_err(upstream)?;
     let active_recall_checks_raw: String = row.get(11).map_err(upstream)?;
     let examiner_traps_raw: String = row.get(12).map_err(upstream)?;
-    let linked_question_ids_raw: String = row.get(13).map_err(upstream)?;
+    let sources_raw: String = row.get(13).map_err(upstream)?;
+    let linked_question_ids_raw: String = row.get(14).map_err(upstream)?;
 
     Ok(core::models::TopicNote {
         id,
@@ -1135,6 +1136,7 @@ fn map_topic_note(row: &turso::Row) -> Result<core::models::TopicNote, AppError>
             "topic_notes.active_recall_checks",
         )?,
         examiner_traps: json_col(&examiner_traps_raw, "topic_notes.examiner_traps")?,
+        sources: json_col(&sources_raw, "topic_notes.sources")?,
         linked_question_ids: json_col(&linked_question_ids_raw, "topic_notes.linked_question_ids")?,
     })
 }
@@ -1157,7 +1159,7 @@ pub async fn get_topic_note(
                 .prepare(
                     "SELECT n.id, n.exam, n.subject, n.topic_slug, n.subtopic_slug, n.title, \
                      n.read_time_minutes, n.key_takeaway, n.sections, n.worked_examples, \
-                     n.formulas, n.active_recall_checks, n.examiner_traps, n.linked_question_ids \
+                     n.formulas, n.active_recall_checks, n.examiner_traps, n.sources, n.linked_question_ids \
                      FROM topic_notes n \
                      WHERE n.exam = ?1 AND n.subject = ?2 AND n.topic_slug = ?3 \
                        AND (n.subtopic_slug IS NULL OR n.subtopic_slug = '') \
@@ -1200,7 +1202,7 @@ pub async fn get_subtopic_note(
                 .prepare(
                     "SELECT n.id, n.exam, n.subject, n.topic_slug, n.subtopic_slug, n.title, \
                      n.read_time_minutes, n.key_takeaway, n.sections, n.worked_examples, \
-                     n.formulas, n.active_recall_checks, n.examiner_traps, n.linked_question_ids \
+                     n.formulas, n.active_recall_checks, n.examiner_traps, n.sources, n.linked_question_ids \
                      FROM topic_notes n \
                      WHERE n.exam = ?1 AND n.subject = ?2 AND n.subtopic_slug = ?3 \
                        AND n.subtopic_slug <> '' \
@@ -1345,6 +1347,20 @@ pub async fn seed_reference_notes(s: &DbState) -> Result<(), AppError> {
             "correction": "Average speed uses total distance divided by total time. Average velocity uses total displacement divided by total time."
         }
     ]).to_string();
+
+    let topic_sources = serde_json::json!([
+        {
+            "title": "College Physics 2e, Section 2.1: Displacement",
+            "url": "https://openstax.org/books/college-physics-2e/pages/2-1-displacement",
+            "locator": "Section 2.1"
+        },
+        {
+            "title": "College Physics 2e, Section 2.5: Motion Equations for Constant Acceleration in One Dimension",
+            "url": "https://openstax.org/books/college-physics-2e/pages/2-5-motion-equations-for-constant-acceleration-in-one-dimension",
+            "locator": "Section 2.5"
+        }
+    ])
+    .to_string();
 
     let subtopic_takeaway = serde_json::json!({
         "text": "Projectile motion combines constant horizontal velocity with constant vertical gravitational acceleration.",
@@ -1499,6 +1515,15 @@ pub async fn seed_reference_notes(s: &DbState) -> Result<(), AppError> {
         }
     ]).to_string();
 
+    let subtopic_sources = serde_json::json!([
+        {
+            "title": "College Physics 2e, Section 3.4: Projectile Motion",
+            "url": "https://openstax.org/books/college-physics-2e/pages/3-4-projectile-motion",
+            "locator": "Section 3.4"
+        }
+    ])
+    .to_string();
+
     // A note without a verified placement is not storable. Fail before any
     // write so a bad seed cannot leave a half-applied pair behind.
     let tree = list_syllabus(s, "JAMB", "physics").await?;
@@ -1524,6 +1549,7 @@ pub async fn seed_reference_notes(s: &DbState) -> Result<(), AppError> {
         &topic_formulas,
         &topic_checks,
         &topic_traps,
+        &topic_sources,
     ]);
     let subtopic_hash = note_content_hash(&[
         &subtopic_takeaway,
@@ -1532,12 +1558,13 @@ pub async fn seed_reference_notes(s: &DbState) -> Result<(), AppError> {
         &subtopic_formulas,
         &subtopic_checks,
         &subtopic_traps,
+        &subtopic_sources,
     ]);
 
     super::write::execute_write(
         s,
-        "INSERT OR REPLACE INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, linked_question_ids, content_hash) \
-         VALUES (?1, ?2, ?3, ?4, NULL, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14)",
+        "INSERT OR REPLACE INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, sources, linked_question_ids, content_hash) \
+         VALUES (?1, ?2, ?3, ?4, NULL, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15)",
         vec![
             turso::Value::Text("note_phys_jamb_motion".to_string()),
             turso::Value::Text("JAMB".to_string()),
@@ -1551,6 +1578,7 @@ pub async fn seed_reference_notes(s: &DbState) -> Result<(), AppError> {
             turso::Value::Text(topic_formulas),
             turso::Value::Text(topic_checks),
             turso::Value::Text(topic_traps),
+            turso::Value::Text(topic_sources),
             turso::Value::Text("[]".to_string()),
             turso::Value::Text(topic_hash),
         ],
@@ -1558,8 +1586,8 @@ pub async fn seed_reference_notes(s: &DbState) -> Result<(), AppError> {
 
     super::write::execute_write(
         s,
-        "INSERT OR REPLACE INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, linked_question_ids, content_hash) \
-         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15)",
+        "INSERT OR REPLACE INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, sources, linked_question_ids, content_hash) \
+         VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16)",
         vec![
             turso::Value::Text("note_phys_jamb_projectile_motion".to_string()),
             turso::Value::Text("JAMB".to_string()),
@@ -1574,6 +1602,7 @@ pub async fn seed_reference_notes(s: &DbState) -> Result<(), AppError> {
             turso::Value::Text(subtopic_formulas),
             turso::Value::Text(subtopic_checks),
             turso::Value::Text(subtopic_traps),
+            turso::Value::Text(subtopic_sources),
             turso::Value::Text("[]".to_string()),
             turso::Value::Text(subtopic_hash),
         ],
@@ -1677,6 +1706,8 @@ pub async fn import_notes_from_json(s: &DbState, json_str: &str) -> Result<usize
             .map_err(|e| AppError::Internal(e.to_string()))?;
         let traps_json = serde_json::to_string(&note.examiner_traps)
             .map_err(|e| AppError::Internal(e.to_string()))?;
+        let sources_json =
+            serde_json::to_string(&note.sources).map_err(|e| AppError::Internal(e.to_string()))?;
         let linked_q_json = serde_json::to_string(&note.linked_question_ids)
             .map_err(|e| AppError::Internal(e.to_string()))?;
 
@@ -1687,6 +1718,7 @@ pub async fn import_notes_from_json(s: &DbState, json_str: &str) -> Result<usize
             &formulas_json,
             &checks_json,
             &traps_json,
+            &sources_json,
         ]);
 
         let subtopic_val = match &note.subtopic_slug {
@@ -1695,8 +1727,8 @@ pub async fn import_notes_from_json(s: &DbState, json_str: &str) -> Result<usize
         };
 
         statements.push((
-            "INSERT OR REPLACE INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, linked_question_ids, content_hash) \
-             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15)",
+            "INSERT OR REPLACE INTO topic_notes (id, exam, subject, topic_slug, subtopic_slug, title, read_time_minutes, key_takeaway, sections, worked_examples, formulas, active_recall_checks, examiner_traps, sources, linked_question_ids, content_hash) \
+             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, ?15, ?16)",
             vec![
                 turso::Value::Text(note.id.clone()),
                 turso::Value::Text(note.exam.clone()),
@@ -1711,6 +1743,7 @@ pub async fn import_notes_from_json(s: &DbState, json_str: &str) -> Result<usize
                 turso::Value::Text(formulas_json),
                 turso::Value::Text(checks_json),
                 turso::Value::Text(traps_json),
+                turso::Value::Text(sources_json),
                 turso::Value::Text(linked_q_json),
                 turso::Value::Text(hash),
             ],

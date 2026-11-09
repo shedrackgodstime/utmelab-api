@@ -683,6 +683,7 @@ mod tests {
             formulas: vec![],
             active_recall_checks: vec![],
             examiner_traps: vec![],
+            sources: vec![],
             linked_question_ids: vec![],
         };
 

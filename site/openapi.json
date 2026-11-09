@@ -4191,6 +4191,28 @@
           }
         }
       },
+      "NoteSource": {
+        "type": "object",
+        "description": "A citation for the claims in a study note. `locator` names the exact\nsection, page, or heading so a reviewer can check the source without\nsearching the whole document.",
+        "required": [
+          "title",
+          "url"
+        ],
+        "properties": {
+          "locator": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      },
       "Novel": {
         "type": "object",
         "description": "A prescribed text. One row per (exam, cycle): the set text rotates,\nso the prescription years are load-bearing, not decorative.",
@@ -6346,6 +6368,12 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/NoteSection"
+            }
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NoteSource"
             }
           },
           "subject": {

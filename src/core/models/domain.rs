@@ -362,6 +362,8 @@ pub struct TopicNote {
     #[serde(default)]
     pub examiner_traps: Vec<ExaminerTrap>,
     #[serde(default)]
+    pub sources: Vec<NoteSource>,
+    #[serde(default)]
     pub linked_question_ids: Vec<String>,
 }
 
@@ -427,6 +429,17 @@ pub struct ActiveRecallCheck {
 pub struct ExaminerTrap {
     pub misconception: String,
     pub correction: String,
+}
+
+/// A citation for the claims in a study note. `locator` names the exact
+/// section, page, or heading so a reviewer can check the source without
+/// searching the whole document.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct NoteSource {
+    pub title: String,
+    pub url: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub locator: Option<String>,
 }
 
 /// A WAEC or NECO Paper 2 theory question with step-by-step marking scheme.

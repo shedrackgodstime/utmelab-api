@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS topic_notes (
     formulas TEXT NOT NULL DEFAULT '[]',
     active_recall_checks TEXT NOT NULL DEFAULT '[]',
     examiner_traps TEXT NOT NULL DEFAULT '[]',
+    sources TEXT NOT NULL DEFAULT '[]',
     linked_question_ids TEXT NOT NULL DEFAULT '[]',
     content_hash TEXT NOT NULL,
     created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -68,6 +69,7 @@ Declared columns in `src/store/schema.rs`:
         "formulas",
         "active_recall_checks",
         "examiner_traps",
+        "sources",
         "linked_question_ids",
         "content_hash",
     ],
@@ -101,6 +103,8 @@ pub struct TopicNote {
     pub active_recall_checks: Vec<ActiveRecallCheck>,
     #[serde(default)]
     pub examiner_traps: Vec<ExaminerTrap>,
+    #[serde(default)]
+    pub sources: Vec<NoteSource>,
     #[serde(default)]
     pub linked_question_ids: Vec<String>,
 }
@@ -168,7 +172,34 @@ pub struct ExaminerTrap {
     pub misconception: String,
     pub correction: String,
 }
+
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct NoteSource {
+    pub title: String,
+    pub url: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub locator: Option<String>, // section, page, or heading
+}
 ```
+
+### Source Attribution
+
+Every note must carry at least one `NoteSource`. A source is a live page or
+document that directly supports the note's claims, not a search result and not a
+homepage. `locator` names the exact section or page so a reviewer can verify the
+claim without reading the whole document. The note's `content_hash` includes the
+serialized sources, so a citation change is a content change.
+
+Preferred order of authority:
+
+1. Official examining-body syllabus or regulation document.
+2. Official examiner report or marking scheme.
+3. Recognised educational reference or textbook (for example OpenStax,
+   Cambridge, Purdue OWL).
+
+`docs/STUDY-NOTES-SOURCES.md` records the editorial standard;
+`docs/STUDY-NOTES-SOURCE-MANIFEST.md` maps each production note to its exact
+sources.
 
 ---
 

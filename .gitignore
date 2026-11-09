@@ -49,6 +49,11 @@ Thumbs.db
 # Authored study notes and theory json - local editor drafts only, kept in live DB
 data/notes/
 data/theory/
+# Study note snapshots and replacement batches - local rollback / import
+# staging only, never committed; the live DB plus
+# docs/STUDY-NOTES-SOURCE-MANIFEST.md is the source of truth
+data/notes-snapshots/
+data/notes-replacements/
 
 # editor/backup artifacts: never commit (a .env backup already leaked once)
 *.bak
