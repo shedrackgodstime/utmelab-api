@@ -49,6 +49,9 @@ Thumbs.db
 # Authored study notes and theory json - local editor drafts only, kept in live DB
 data/notes/
 data/theory/
+# Manual content candidate staging (fetched, mapped, verified before load);
+# production DB and source detail pages are the source of truth
+data/manual/
 # Study note snapshots and replacement batches - local rollback / import
 # staging only, never committed; the live DB plus
 # docs/STUDY-NOTES-SOURCE-MANIFEST.md is the source of truth
