@@ -150,7 +150,7 @@ NECO English sees the 7 WAEC English notes through the shared syllabus. It is th
 - [ ] **G7. Restore the authored note source.**
   No note JSON exists in git or on disk. The 26 rows live only in the database. Add a tracked source or an export command before authoring more, or the next editor has no file to change.
 
-- [ ] **G8. Add the missing JAMB commerce blueprint.**
+- [x] **G8. Add the missing JAMB commerce blueprint.** Done 10 November 2026: inserted the subject-level `unmapped` row (16 topics, paper size 40), matching the other unsourced subjects. All 25 JAMB subjects now have blueprint rows; a sourced section breakdown is still open for a future pass.
   JAMB has a full paper count for all 25 subjects, but only 24 subjects have blueprint rows. Commerce is the missing one, so it uses the count gate while the other subjects can report blueprint readiness.
 
 ---
