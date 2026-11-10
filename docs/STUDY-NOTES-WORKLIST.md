@@ -111,8 +111,8 @@ NECO English sees the 7 WAEC English notes through the shared syllabus. It is th
 - [ ] **G1. Fix or retire `note_phys_jamb_motion`.**
   It is the only topic-level note and the only note below the editorial standard: 2 sections, 0 worked examples, 1 recall check, 1 trap, 4 minutes. Either bring it to standard or mark it as a demo and remove it from the live table.
 
-- [ ] **G2. Decide the WAEC question gap.**
-  WAEC has 1 question in the whole bank, verified, in livestock-farming. All 7 WAEC English notes have no question to link. Decide whether WAEC notes are notes-only for now or whether the WAEC question bank needs a batch. Until then, the "Start Quiz" path cannot work for any WAEC note.
+- [x] **G2. WAEC question bank (partially closed, 10 November 2026).**
+  WAEC grew from 1 verified question to 1,227 verified questions (all with sourced explanations and human verification records), across 25 subjects: 19 core subjects at 50 each, english-language 60, marketing 50, office-practice 50, catering-craft 49, livestock-farming 41, book-keeping 27. Sources: myschool.ng classroom collections (2016 to 2025 pools), each question carries a citation with source item ID, source URL, and sourced explanation URL. Figures are content-addressed in the media repo. In progress: topping every subject up toward deeper pools (target 2,000 WAEC questions). Remaining zero-coverage WAEC subjects on myschool.ng: nigerian-history, foods-and-nutrition, physical-education, home-management, music, hausa, igbo, technical-drawing, visual-art, french, arabic. WAEC notes can now link questions for most subjects.
 
 - [ ] **G3. Add questions for JAMB physics motion and projectiles.**
   JAMB physics has 105 questions, 102 verified, but both motion notes sit on subtopics with zero questions. Add questions to the two subtopics or link existing ones.
@@ -195,3 +195,5 @@ ORDER BY q_in_subtopic, n.exam, n.subject;
 ## 4. Snapshot limit
 
 These numbers come from commit `348a458` and the live database on 9 November 2026. They are not a permanent contract. Re-run the queries in section 3 after any import.
+
+Question counts updated 10 November 2026: WAEC 1,227 verified (G2), JAMB 2,241 unchanged.
