@@ -1,0 +1,443 @@
+{
+  "chapter_id": "phy_two_dimensional_kinematics",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Two-Dimensional Kinematics",
+  "book_id": "secondary_physics",
+  "part_id": "part-1",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "learning_objectives": [
+    "Add and subtract vectors graphically and analytically, and use the result for velocity.",
+    "Analyse projectile motion: the horizontal and the vertical motion handled separately.",
+    "Work out the range, the maximum height and the time of flight of a projectile."
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to Two-Dimensional Kinematics",
+      "module": "m42126",
+      "est_minutes": 8,
+      "locator": "CNXML module m42126",
+      "objectives": [
+        "Describe what changes when motion is no longer along a straight line."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Motion in two dimensions is just motion in one dimension done twice.",
+          "correction": "Two dimensional motion is described by two coordinates, and the two of them follow separate rules."
+        }
+      ],
+      "summary": [
+        "Two dimensional motion needs two coordinates, usually x and y.",
+        "The horizontal and the vertical motion are handled separately.",
+        "The reason is that gravity acts only in the vertical direction."
+      ],
+      "tags": [
+        "kinematics",
+        "two-dimensions"
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "Kinematics in Two Dimensions: An Introduction",
+      "module": "m42104",
+      "est_minutes": 14,
+      "locator": "CNXML module m42104",
+      "objectives": [
+        "State that the x and the y coordinates are independent of each other."
+      ],
+      "misconceptions": [
+        {
+          "claim": "A ball thrown into the air travels in a curve because it is pushed sideways by the air.",
+          "correction": "The curve comes from the two motions acting at once. The horizontal motion is steady, and the vertical motion is accelerated by gravity."
+        }
+      ],
+      "summary": [
+        "The x and the y motions are independent.",
+        "Each one follows the rules of one dimensional motion.",
+        "The path of the object is the curve that the two together describe."
+      ],
+      "tags": [
+        "two-dimensions",
+        "independence"
+      ],
+      "worked_from": "exr-24"
+    },
+    {
+      "id": "sec-3",
+      "title": "Vector Addition and Subtraction: Graphical Methods",
+      "module": "m42127",
+      "est_minutes": 20,
+      "locator": "CNXML module m42127",
+      "objectives": [
+        "Add two vectors by drawing them head to tail and measuring the resultant.",
+        "Subtract a vector by adding its reverse."
+      ],
+      "misconceptions": [
+        {
+          "claim": "To subtract a vector, draw it again pointing the other way and add it.",
+          "correction": "That is exactly right. The reverse of a vector has the same size and the opposite direction, so adding it is the subtraction."
+        }
+      ],
+      "summary": [
+        "A vector is drawn as an arrow, with the tail at the starting point.",
+        "Vectors add head to tail, and the resultant runs from the first tail to the last head.",
+        "To subtract, add the reverse."
+      ],
+      "tags": [
+        "vectors",
+        "graphical-methods"
+      ],
+      "worked_from": "exr-74"
+    },
+    {
+      "id": "sec-4",
+      "title": "Vector Addition and Subtraction: Analytical Methods",
+      "module": "m42128",
+      "est_minutes": 22,
+      "locator": "CNXML module m42128",
+      "objectives": [
+        "Resolve a vector into components and add the components separately."
+      ],
+      "misconceptions": [
+        {
+          "claim": "You have to add vectors by drawing them, there is no other way.",
+          "correction": "Drawing works, but for numbers it is slow and imprecise. Resolving into components gives the same answer exactly."
+        }
+      ],
+      "summary": [
+        "A vector can be broken into components along chosen axes.",
+        "The components are added one axis at a time, and then put back together.",
+        "The magnitude and the direction of the resultant follow from its components."
+      ],
+      "tags": [
+        "vectors",
+        "components",
+        "analytical-methods"
+      ],
+      "worked_from": "exr-61"
+    },
+    {
+      "id": "sec-5",
+      "title": "Projectile Motion",
+      "module": "m42042",
+      "est_minutes": 26,
+      "locator": "CNXML module m42042",
+      "objectives": [
+        "Analyse a projectile by splitting its motion into horizontal and vertical parts.",
+        "Calculate the time of flight, the maximum height and the range of a projectile."
+      ],
+      "misconceptions": [
+        {
+          "claim": "The projectile keeps the speed it was launched with for the whole flight.",
+          "correction": "The horizontal speed stays the same, because there is no horizontal force. The vertical speed changes every second, because gravity acts downward."
+        }
+      ],
+      "summary": [
+        "The horizontal motion is uniform, the vertical motion is accelerated.",
+        "The time of flight is set by the vertical motion alone.",
+        "The maximum height is reached when the vertical velocity is zero."
+      ],
+      "tags": [
+        "projectile",
+        "range",
+        "maximum-height"
+      ],
+      "worked_from": "exr-70"
+    },
+    {
+      "id": "sec-6",
+      "title": "Addition of Velocities",
+      "module": "m42045",
+      "est_minutes": 22,
+      "locator": "CNXML module m42045",
+      "objectives": [
+        "Add the velocities of a moving frame and of an object to find the velocity seen by an observer.",
+        "Apply vector addition to relative velocity."
+      ],
+      "misconceptions": [
+        {
+          "claim": "If you run twice as fast on a moving train, you move twice as fast compared with the ground.",
+          "correction": "Your speed compared with the train is unchanged, but compared with the ground the two velocities add."
+        }
+      ],
+      "summary": [
+        "The velocity an observer measures is the sum of the object's velocity and the velocity of the frame.",
+        "The sum is a vector sum, so directions matter.",
+        "The same reasoning gives the relative velocity of two objects."
+      ],
+      "tags": [
+        "relative-velocity",
+        "vectors"
+      ],
+      "worked_from": "exr-64"
+    }
+  ],
+  "formula_sheet": [
+    {
+      "id": "f-1",
+      "expression": "$\\vec{v} = v_x \\hat{i} + v_y \\hat{j}$",
+      "caption": {
+        "text": "A vector in components",
+        "inline": []
+      },
+      "conditions": {
+        "text": "For motion in a plane, with the axes chosen for the problem.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42128/index.cnxml",
+        "locator": "CNXML module m42128, section 'Vector Addition and Subtraction: Analytical Methods'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-2",
+      "expression": "$v = \\sqrt{v_x^2 + v_y^2}$",
+      "caption": {
+        "text": "The magnitude of a vector from its components",
+        "inline": []
+      },
+      "conditions": {
+        "text": "For orthogonal components along x and y.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42128/index.cnxml",
+        "locator": "CNXML module m42128, section 'Vector Addition and Subtraction: Analytical Methods'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-3",
+      "expression": "$\\tan \\theta = \\frac{v_y}{v_x}$",
+      "caption": {
+        "text": "The direction of a vector from its components",
+        "inline": []
+      },
+      "conditions": {
+        "text": "The angle is measured from the positive x axis.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42128/index.cnxml",
+        "locator": "CNXML module m42128, section 'Vector Addition and Subtraction: Analytical Methods'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-4",
+      "expression": "$x = v_{0x} t$,   $y = v_{0y} t + \\frac{1}{2} g t^2$",
+      "caption": {
+        "text": "The two motions of a projectile",
+        "inline": []
+      },
+      "conditions": {
+        "text": "With no air resistance, and g taken as the acceleration due to gravity, which is negative when the positive y direction is upward.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42042/index.cnxml",
+        "locator": "CNXML module m42042, section 'Projectile Motion'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-5",
+      "expression": "$t_{flight} = \\frac{2 v_{0y}}{|g|}$",
+      "caption": {
+        "text": "The time of flight of a projectile",
+        "inline": []
+      },
+      "conditions": {
+        "text": "For a projectile that lands at the height it was launched from, with no air resistance.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42042/index.cnxml",
+        "locator": "CNXML module m42042, section 'Projectile Motion'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "vector",
+        "inline": []
+      },
+      "definition": {
+        "text": "A quantity with both magnitude and direction, drawn as an arrow.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42127/index.cnxml",
+        "locator": "CNXML module m42127",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "component",
+        "inline": []
+      },
+      "definition": {
+        "text": "One of the parts a vector is broken into along a chosen axis.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42128/index.cnxml",
+        "locator": "CNXML module m42128",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "resultant",
+        "inline": []
+      },
+      "definition": {
+        "text": "The single vector that has the same effect as a set of vectors added together.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42127/index.cnxml",
+        "locator": "CNXML module m42127",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "projectile",
+        "inline": []
+      },
+      "definition": {
+        "text": "An object launched into the air and then moved only by gravity, with air resistance neglected.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42042/index.cnxml",
+        "locator": "CNXML module m42042",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "range",
+        "inline": []
+      },
+      "definition": {
+        "text": "The horizontal distance a projectile travels before it returns to the height it was launched from.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42042/index.cnxml",
+        "locator": "CNXML module m42042",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "relative velocity",
+        "inline": []
+      },
+      "definition": {
+        "text": "The velocity of one object as seen from another, found by subtracting the two velocities as vectors.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42045/index.cnxml",
+        "locator": "CNXML module m42045",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_links": [
+    {
+      "exam": "JAMB",
+      "subject": "physics",
+      "topic_slug": "motion",
+      "subtopic_slug": "projectiles-range-maximum-height-time-of-flight-and-applicat",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic motion, subtopic projectiles-range-maximum-height-time-of-flight-and-applicat (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "WAEC",
+      "subject": "physics",
+      "topic_slug": "waec-projectile-motion-concept-of-into-space",
+      "subtopic_slug": "waec-projectiles-as-an-object-thrown-release",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic waec-projectile-motion-concept-of-into-space, subtopic waec-projectiles-as-an-object-thrown-release (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "WAEC",
+      "subject": "physics",
+      "topic_slug": "waec-scalars-and-vectors",
+      "subtopic_slug": "waec-resultant-velocity-using-vector-representation-2",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic waec-scalars-and-vectors, subtopic waec-resultant-velocity-using-vector-representation-2 (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "NECO",
+      "subject": "physics",
+      "topic_slug": null,
+      "subtopic_slug": null,
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "not_catalogued",
+      "source_locator": "the production catalog holds the NECO physics subject and no topics for it yet (read-only fetch 2026-11-12)",
+      "question_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Two-Dimensional Kinematics', modules m42126, m42104, m42127, m42128, m42042, m42045",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

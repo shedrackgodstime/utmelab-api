@@ -1,0 +1,481 @@
+{
+  "chapter_id": "phy_circular_motion_and_gravitation",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Uniform Circular Motion and Gravitation",
+  "book_id": "secondary_physics",
+  "part_id": "part-1",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "learning_objectives": [
+    "Define the angle turned, the angular velocity and the angular acceleration.",
+    "Explain centripetal acceleration and centripetal force, and give them a direction.",
+    "State Newton's law of universal gravitation and use it, and describe Kepler's laws."
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to Uniform Circular Motion and Gravitation",
+      "module": "m42140",
+      "est_minutes": 8,
+      "locator": "CNXML module m42140",
+      "objectives": [
+        "Describe what makes circular motion different from motion in a straight line."
+      ],
+      "misconceptions": [
+        {
+          "claim": "In circular motion the object is accelerating because it is going round a corner.",
+          "correction": "That is right. Its direction keeps changing, and a change of direction is a change of velocity, which is an acceleration."
+        }
+      ],
+      "summary": [
+        "Circular motion is accelerated motion, because the direction of the velocity keeps changing.",
+        "Uniform circular motion has a constant speed and a constant centripetal acceleration.",
+        "The force that does it always points to the centre."
+      ],
+      "tags": [
+        "circular-motion",
+        "centripetal"
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "Rotation Angle and Angular Velocity",
+      "module": "m42083",
+      "est_minutes": 18,
+      "locator": "CNXML module m42083",
+      "objectives": [
+        "Define the rotation angle, the angular velocity and the angular acceleration.",
+        "Convert between angular and linear quantities at a radius."
+      ],
+      "misconceptions": [
+        {
+          "claim": "The angular velocity of a wheel is the same everywhere on the wheel.",
+          "correction": "The linear speed is larger the further out you are, but the angle turned per second is the same for every point on the wheel."
+        }
+      ],
+      "summary": [
+        "The rotation angle is measured in radians.",
+        "Angular velocity is the rate at which the angle changes.",
+        "The linear speed at a radius is the angular speed times the radius."
+      ],
+      "tags": [
+        "angular-velocity",
+        "rotation",
+        "radians"
+      ],
+      "worked_from": "exr-41"
+    },
+    {
+      "id": "sec-3",
+      "title": "Centripetal Acceleration",
+      "module": "m42084",
+      "est_minutes": 20,
+      "locator": "CNXML module m42084",
+      "objectives": [
+        "Define centripetal acceleration and give its size and its direction.",
+        "Derive the centripetal acceleration from the components of the acceleration."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Centripetal acceleration pushes the object outward, away from the centre.",
+          "correction": "It points inward. The inward acceleration is exactly what is needed to keep the object on the circle."
+        }
+      ],
+      "summary": [
+        "Centripetal acceleration always points to the centre of the circle.",
+        "Its size is the square of the speed over the radius.",
+        "It exists only while the object is turning."
+      ],
+      "tags": [
+        "centripetal-acceleration"
+      ],
+      "worked_from": "exr-36"
+    },
+    {
+      "id": "sec-4",
+      "title": "Centripetal Force",
+      "module": "m42086",
+      "est_minutes": 20,
+      "locator": "CNXML module m42086",
+      "objectives": [
+        "Compute the centripetal force and give its direction.",
+        "Explain which forces combine to make it."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Centripetal force is a new kind of force that pulls objects to the centre.",
+          "correction": "It is not a new force at all. It is the name for the net inward force that an existing force, such as tension or friction, provides."
+        }
+      ],
+      "summary": [
+        "The centripetal force is the net force pointing to the centre.",
+        "Its size is mass times the centripetal acceleration.",
+        "Whatever force supplies it, gravity, tension or friction, the object stays on the circle."
+      ],
+      "tags": [
+        "centripetal-force"
+      ],
+      "worked_from": "exr-71"
+    },
+    {
+      "id": "sec-5",
+      "title": "Fictitious Forces and Non-inertial Frames: The Coriolis Force",
+      "module": "m42142",
+      "est_minutes": 16,
+      "locator": "CNXML module m42142",
+      "objectives": [
+        "Describe what changes for an observer in an accelerating frame.",
+        "Explain the Coriolis force that a rotating observer feels."
+      ],
+      "misconceptions": [
+        {
+          "claim": "If you feel a force, then there is a real force acting on you.",
+          "correction": "In an accelerating or rotating frame the observer feels a force that the observer's own frame has invented. That is why a turn feels like a push."
+        }
+      ],
+      "summary": [
+        "An accelerating frame has its own fictitious forces.",
+        "A rotating frame adds the Coriolis force, which depends on the direction of the motion.",
+        "The laws of physics are simplest in an inertial frame."
+      ],
+      "tags": [
+        "non-inertial-frames",
+        "coriolis"
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-6",
+      "title": "Newton's Universal Law of Gravitation",
+      "module": "m42143",
+      "est_minutes": 22,
+      "locator": "CNXML module m42143",
+      "objectives": [
+        "State Newton's law of universal gravitation and use it.",
+        "Find the acceleration due to gravity at the surface of a body."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Gravity pulls harder on a heavy object than on a light one.",
+          "correction": "The force is larger, but so is the mass that has to be accelerated. The acceleration due to gravity at the surface is the same for every object, whatever its mass."
+        }
+      ],
+      "summary": [
+        "The gravitational force falls off with the square of the distance.",
+        "The force on a small mass near a large one is small, but the acceleration is large.",
+        "g at the surface of the Earth is about 9.8 m/s², and it is the same for every falling object."
+      ],
+      "tags": [
+        "gravitation",
+        "universal-gravitation"
+      ],
+      "worked_from": "exr-57"
+    },
+    {
+      "id": "sec-7",
+      "title": "Satellites and Kepler's Laws: An Argument for Simplicity",
+      "module": "m42144",
+      "est_minutes": 20,
+      "locator": "CNXML module m42144",
+      "objectives": [
+        "State Kepler's three laws of planetary motion.",
+        "Explain why a satellite stays in orbit."
+      ],
+      "misconceptions": [
+        {
+          "claim": "A satellite is held up by the engine that keeps it flying.",
+          "correction": "Most of them coast. They fall towards the Earth while moving sideways fast enough to keep missing it, and that falling is the orbit."
+        }
+      ],
+      "summary": [
+        "An orbit is a fall that keeps missing the ground.",
+        "Kepler's first law says planets travel in ellipses with the Sun at one focus.",
+        "The third law ties the period of an orbit to the size of the orbit."
+      ],
+      "tags": [
+        "keplers-laws",
+        "satellites",
+        "orbits"
+      ],
+      "worked_from": "exr-60"
+    }
+  ],
+  "formula_sheet": [
+    {
+      "id": "f-1",
+      "expression": "$\\omega = \\frac{\\Delta \\theta}{\\Delta t}$",
+      "caption": {
+        "text": "Angular velocity",
+        "inline": []
+      },
+      "conditions": {
+        "text": "The angle is measured in radians.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42083/index.cnxml",
+        "locator": "CNXML module m42083, section 'Rotation Angle and Angular Velocity'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-2",
+      "expression": "$a_c = \\frac{v^2}{r} = r\\omega^2$",
+      "caption": {
+        "text": "Centripetal acceleration",
+        "inline": []
+      },
+      "conditions": {
+        "text": "For uniform circular motion, directed to the centre of the circle.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42084/index.cnxml",
+        "locator": "CNXML module m42084, section 'Centripetal Acceleration'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-3",
+      "expression": "$F_c = m a_c = \\frac{m v^2}{r}$",
+      "caption": {
+        "text": "Centripetal force",
+        "inline": []
+      },
+      "conditions": {
+        "text": "The net force on the body, directed to the centre of the circle.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42086/index.cnxml",
+        "locator": "CNXML module m42086, section 'Centripetal Force'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-4",
+      "expression": "$F = G \\frac{m_1 m_2}{r^2}$",
+      "caption": {
+        "text": "Newton's law of universal gravitation",
+        "inline": []
+      },
+      "conditions": {
+        "text": "The force between two masses is along the line joining them, and is attractive.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42143/index.cnxml",
+        "locator": "CNXML module m42143, section 'Newton's Universal Law of Gravitation'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-5",
+      "expression": "$g = \\frac{GM}{R^2}$",
+      "caption": {
+        "text": "The acceleration due to gravity at the surface",
+        "inline": []
+      },
+      "conditions": {
+        "text": "At the surface of a body of mass M and radius R.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42143/index.cnxml",
+        "locator": "CNXML module m42143, section 'Newton's Universal Law of Gravitation'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "angular velocity",
+        "inline": []
+      },
+      "definition": {
+        "text": "The rate at which the rotation angle changes, measured in radians per second.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42083/index.cnxml",
+        "locator": "CNXML module m42083",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "centripetal acceleration",
+        "inline": []
+      },
+      "definition": {
+        "text": "The acceleration of an object moving in a circle, always directed to the centre of the circle.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42084/index.cnxml",
+        "locator": "CNXML module m42084",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "centripetal force",
+        "inline": []
+      },
+      "definition": {
+        "text": "The net force on an object moving in a circle, directed to the centre.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42086/index.cnxml",
+        "locator": "CNXML module m42086",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "inertial frame",
+        "inline": []
+      },
+      "definition": {
+        "text": "A frame in which Newton's first law holds, so that a body at rest stays at rest.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42142/index.cnxml",
+        "locator": "CNXML module m42142",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "coriolis force",
+        "inline": []
+      },
+      "definition": {
+        "text": "The fictitious force a rotating observer feels, which depends on the direction of the motion in that frame.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42142/index.cnxml",
+        "locator": "CNXML module m42142",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "orbit",
+        "inline": []
+      },
+      "definition": {
+        "text": "The path of a satellite that falls towards the body while moving sideways fast enough to keep missing it.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42144/index.cnxml",
+        "locator": "CNXML module m42144",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_links": [
+    {
+      "exam": "JAMB",
+      "subject": "physics",
+      "topic_slug": "gravitational-field",
+      "subtopic_slug": "newton-s-law-of-universal-gravitation",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic gravitational-field, subtopic newton-s-law-of-universal-gravitation (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "JAMB",
+      "subject": "physics",
+      "topic_slug": "gravitational-field",
+      "subtopic_slug": "acceleration-due-to-gravity-g-gm-r-and-its-variation-on-the",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic gravitational-field, subtopic acceleration-due-to-gravity-g-gm-r-and-its-variation-on-the (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "WAEC",
+      "subject": "physics",
+      "topic_slug": "waec-gravitational-field",
+      "subtopic_slug": "waec-gravitational-force-between-two",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic waec-gravitational-field, subtopic waec-gravitational-force-between-two (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "WAEC",
+      "subject": "physics",
+      "topic_slug": "waec-motion",
+      "subtopic_slug": "waec-simple-ideas-of-circular-motion",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic waec-motion, subtopic waec-simple-ideas-of-circular-motion (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "NECO",
+      "subject": "physics",
+      "topic_slug": null,
+      "subtopic_slug": null,
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "not_catalogued",
+      "source_locator": "the production catalog holds the NECO physics subject and no topics for it yet (read-only fetch 2026-11-12)",
+      "question_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Uniform Circular Motion and Gravitation', modules m42140, m42083, m42084, m42086, m42142, m42143, m42144",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

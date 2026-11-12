@@ -243,6 +243,10 @@ def source_blocks(concept, module, solutions):
             ]
             item["answer"] = rt(" ".join(item["solution"]))
             item.pop("solution", None)
+    # An example block with no prose after it is an empty shell. Its content
+    # sits in the exercise nested inside it, and that exercise carries the
+    # solution.
+    worked = [item for item in worked if item.get("steps")]
     return teaching, worked, exercises
 
 

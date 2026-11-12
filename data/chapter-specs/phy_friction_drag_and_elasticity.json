@@ -1,0 +1,374 @@
+{
+  "chapter_id": "phy_friction_drag_and_elasticity",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Friction, Drag and Elasticity",
+  "book_id": "secondary_physics",
+  "part_id": "part-1",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "learning_objectives": [
+    "Compute the kinetic and static friction forces and know which one applies.",
+    "Explain what drag is and how it depends on speed.",
+    "Relate stress and strain in a material, and use Hooke's law."
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction: Further Applications of Newton's Laws",
+      "module": "m42138",
+      "est_minutes": 8,
+      "locator": "CNXML module m42138",
+      "objectives": [
+        "Describe how friction, drag and elasticity each enter Newton's laws."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Newton's second law is the last word on any force.",
+          "correction": "It is the rule that connects the forces to the motion. Friction, drag and elasticity are three of the forces it is applied to."
+        }
+      ],
+      "summary": [
+        "Newton's second law applies to any force, once the force is known.",
+        "This chapter takes three of them: friction, drag and the force in a spring.",
+        "Each one resists motion, and each one has its own rule."
+      ],
+      "tags": [
+        "newtons-laws",
+        "friction",
+        "elasticity"
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "Friction",
+      "module": "m42139",
+      "est_minutes": 24,
+      "locator": "CNXML module m42139",
+      "objectives": [
+        "Tell static friction from kinetic friction and compute the friction force.",
+        "Use the coefficient of friction with the normal force."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Friction is always the same force, whatever the weight on the surface.",
+          "correction": "The maximum static friction is proportional to the normal force, so a heavier object presses harder and the friction limit rises with it."
+        }
+      ],
+      "summary": [
+        "Static friction adjusts itself up to a limit, then the object slides.",
+        "Kinetic friction has a steady value once the object is sliding.",
+        "Both are set by the normal force and the coefficient of friction."
+      ],
+      "tags": [
+        "friction",
+        "static-friction",
+        "kinetic-friction"
+      ],
+      "worked_from": "exr-46"
+    },
+    {
+      "id": "sec-3",
+      "title": "Drag Forces",
+      "module": "m42080",
+      "est_minutes": 18,
+      "locator": "CNXML module m42080",
+      "objectives": [
+        "Explain what drag is and how it grows with speed.",
+        "Sketch the drag force against speed for low and for high speed."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Drag is a small force that only matters for very fast objects.",
+          "correction": "At low speeds the drag grows with the square of the speed, so doubling the speed quadruples it. It matters for anything that moves through air at speed."
+        }
+      ],
+      "summary": [
+        "Drag opposes the motion and always points against the velocity.",
+        "At low speeds the drag is small and grows with the square of the speed.",
+        "At high speeds the drag grows faster still."
+      ],
+      "tags": [
+        "drag",
+        "air-resistance"
+      ],
+      "worked_from": "exr-49"
+    },
+    {
+      "id": "sec-4",
+      "title": "Elasticity: Stress and Strain",
+      "module": "m42081",
+      "est_minutes": 24,
+      "locator": "CNXML module m42081",
+      "objectives": [
+        "Define stress and strain, and use Hooke's law for a spring.",
+        "Tell the elastic limit, the yield point and the breaking point apart."
+      ],
+      "misconceptions": [
+        {
+          "claim": "A spring stretches a little and then springs back, no matter how hard you pull.",
+          "correction": "Not past the elastic limit. Beyond it the material does not return to its original shape, and beyond the breaking point it fails altogether."
+        }
+      ],
+      "summary": [
+        "Stress is force over area. Strain is the change in length over the original length.",
+        "Hooke's law holds while the material stays in the elastic region.",
+        "The elastic limit, the yield point and the breaking point mark three different failures."
+      ],
+      "tags": [
+        "elasticity",
+        "hookes-law",
+        "stress",
+        "strain"
+      ],
+      "worked_from": "exr-97"
+    }
+  ],
+  "formula_sheet": [
+    {
+      "id": "f-1",
+      "expression": "$f_s \\le \\mu_s N$",
+      "caption": {
+        "text": "The maximum static friction",
+        "inline": []
+      },
+      "conditions": {
+        "text": "The static friction force is at most this value, and only reaches it when the object is about to slide.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139, section 'Friction'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-2",
+      "expression": "$f_k = \\mu_k N$",
+      "caption": {
+        "text": "Kinetic friction",
+        "inline": []
+      },
+      "conditions": {
+        "text": "For an object sliding on a surface.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139, section 'Friction'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-3",
+      "expression": "$F_D = \\frac{1}{2} \\rho C A v^2$",
+      "caption": {
+        "text": "The drag force at low speeds",
+        "inline": []
+      },
+      "conditions": {
+        "text": "For a body moving through a fluid at low speed, with $\\rho$ the density of the fluid and $C$ the drag coefficient.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42080/index.cnxml",
+        "locator": "CNXML module m42080, section 'Drag Forces'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-4",
+      "expression": "$F_s = k \\Delta x$",
+      "caption": {
+        "text": "Hooke's law",
+        "inline": []
+      },
+      "conditions": {
+        "text": "While the spring stays in the elastic region, where $k$ is the spring constant and $\\Delta x$ the stretch from the relaxed length.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+        "locator": "CNXML module m42081, section 'Elasticity: Stress and Strain'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "static friction",
+        "inline": []
+      },
+      "definition": {
+        "text": "The friction force that acts on a body at rest, between zero and the maximum the surface allows.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "kinetic friction",
+        "inline": []
+      },
+      "definition": {
+        "text": "The friction force on a body that is sliding, proportional to the normal force.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "normal force",
+        "inline": []
+      },
+      "definition": {
+        "text": "The contact force a surface exerts perpendicular to itself, which sets the size of the friction force.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "drag",
+        "inline": []
+      },
+      "definition": {
+        "text": "The resistive force a fluid exerts on a body moving through it, always opposite to the motion.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42080/index.cnxml",
+        "locator": "CNXML module m42080",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "stress",
+        "inline": []
+      },
+      "definition": {
+        "text": "The force per unit area applied to a material.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+        "locator": "CNXML module m42081",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "strain",
+        "inline": []
+      },
+      "definition": {
+        "text": "The fractional change in length of a material under stress.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+        "locator": "CNXML module m42081",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_links": [
+    {
+      "exam": "JAMB",
+      "subject": "physics",
+      "topic_slug": "friction",
+      "subtopic_slug": "static-and-dynamic-friction",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic friction, subtopic static-and-dynamic-friction (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "JAMB",
+      "subject": "physics",
+      "topic_slug": "elasticity",
+      "subtopic_slug": "elastic-limit-yield-point-and-breaking-point",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic elasticity, subtopic elastic-limit-yield-point-and-breaking-point (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "WAEC",
+      "subject": "physics",
+      "topic_slug": "waec-motion",
+      "subtopic_slug": "waec-solid-friction-2",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic waec-motion, subtopic waec-solid-friction-2 (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "NECO",
+      "subject": "physics",
+      "topic_slug": null,
+      "subtopic_slug": null,
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "not_catalogued",
+      "source_locator": "the production catalog holds the NECO physics subject and no topics for it yet (read-only fetch 2026-11-12)",
+      "question_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Further Applications of Newton's Laws: Friction, Drag, and Elasticity', modules m42138, m42139, m42080, m42081",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

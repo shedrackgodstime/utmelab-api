@@ -1,0 +1,3484 @@
+{
+  "chapter_id": "phy_friction_drag_and_elasticity",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Friction, Drag and Elasticity",
+  "book_id": "secondary_physics",
+  "part_id": "part-1",
+  "learning_objectives": [
+    {
+      "id": "lo-1",
+      "statement": "Compute the kinetic and static friction forces and know which one applies.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-2",
+      "statement": "Explain what drag is and how it depends on speed.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-3",
+      "statement": "Relate stress and strain in a material, and use Hooke's law.",
+      "bloom_level": "understand"
+    }
+  ],
+  "prerequisites": [],
+  "formula_sheet": [
+    {
+      "id": "f-1",
+      "expression": "$f_s \\le \\mu_s N$",
+      "caption": {
+        "text": "The maximum static friction",
+        "inline": []
+      },
+      "conditions": {
+        "text": "The static friction force is at most this value, and only reaches it when the object is about to slide.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139, section 'Friction'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-2",
+      "expression": "$f_k = \\mu_k N$",
+      "caption": {
+        "text": "Kinetic friction",
+        "inline": []
+      },
+      "conditions": {
+        "text": "For an object sliding on a surface.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139, section 'Friction'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-3",
+      "expression": "$F_D = \\frac{1}{2} \\rho C A v^2$",
+      "caption": {
+        "text": "The drag force at low speeds",
+        "inline": []
+      },
+      "conditions": {
+        "text": "For a body moving through a fluid at low speed, with $\\rho$ the density of the fluid and $C$ the drag coefficient.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42080/index.cnxml",
+        "locator": "CNXML module m42080, section 'Drag Forces'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-4",
+      "expression": "$F_s = k \\Delta x$",
+      "caption": {
+        "text": "Hooke's law",
+        "inline": []
+      },
+      "conditions": {
+        "text": "While the spring stays in the elastic region, where $k$ is the spring constant and $\\Delta x$ the stretch from the relaxed length.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+        "locator": "CNXML module m42081, section 'Elasticity: Stress and Strain'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "static friction",
+        "inline": []
+      },
+      "definition": {
+        "text": "The friction force that acts on a body at rest, between zero and the maximum the surface allows.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "kinetic friction",
+        "inline": []
+      },
+      "definition": {
+        "text": "The friction force on a body that is sliding, proportional to the normal force.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "normal force",
+        "inline": []
+      },
+      "definition": {
+        "text": "The contact force a surface exerts perpendicular to itself, which sets the size of the friction force.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "drag",
+        "inline": []
+      },
+      "definition": {
+        "text": "The resistive force a fluid exerts on a body moving through it, always opposite to the motion.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42080/index.cnxml",
+        "locator": "CNXML module m42080",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "stress",
+        "inline": []
+      },
+      "definition": {
+        "text": "The force per unit area applied to a material.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+        "locator": "CNXML module m42081",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "strain",
+        "inline": []
+      },
+      "definition": {
+        "text": "The fractional change in length of a material under stress.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+        "locator": "CNXML module m42081",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "sections": [
+    {
+      "id": "sec-1",
+      "order": 1,
+      "slug": "introduction-further-applications-of-newton-s-laws",
+      "title": "Introduction: Further Applications of Newton's Laws",
+      "est_minutes": 8,
+      "learning_objectives": [
+        {
+          "id": "lo-1",
+          "statement": "Describe how friction, drag and elasticity each enter Newton's laws.",
+          "bloom_level": "understand"
+        }
+      ],
+      "teaching_text": {
+        "blocks": [
+          {
+            "id": "b-1",
+            "type": "figure",
+            "asset_url": "images/phy_m42138_Figure_06_00_01.jpg",
+            "caption": {
+              "text": "Total hip replacement surgery has become a common procedure. The head (or ball) of the patient’s femur fits into a cup that has a hard plastic-like inner lining. (credit: National Institutes of Health, via Wikimedia Commons)",
+              "inline": []
+            },
+            "alt": "An x-ray image of a person’s hips. The right hip joint (on the left in the photograph) has been replaced. A metal prosthesis is cemented in the top of the right femur and the head of the femur has been replaced by the rounded head of the prosthesis. A white plastic cup is cemented into the acetabulum to complete the two surfaces of the artificial ball and socket joint.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-2",
+            "type": "paragraph",
+            "content": {
+              "text": "Describe the forces on the hip joint. What means are taken to ensure that this will be a good movable joint? From the photograph (for an adult) in , estimate the dimensions of the artificial device.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-3",
+            "type": "paragraph",
+            "content": {
+              "text": "It is difficult to categorize forces into various types (aside from the four basic forces discussed in previous chapter). We know that a net force affects the motion, position, and shape of an object. It is useful at this point to look at some particularly interesting and common forces that will provide further applications of Newton’s laws of motion. We have in mind the forces of friction, air or liquid drag, and deformation.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-4",
+            "type": "paragraph",
+            "content": {
+              "text": "OpenStax AP Physics Chapter 5: Terminal Velocity (Physics Concept Trailer™)",
+              "inline": []
+            }
+          }
+        ]
+      },
+      "worked_examples": [],
+      "misconceptions": [
+        {
+          "id": "mis-1",
+          "claim": {
+            "text": "Newton's second law is the last word on any force.",
+            "inline": []
+          },
+          "correction": {
+            "text": "It is the rule that connects the forces to the motion. Friction, drag and elasticity are three of the forces it is applied to.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Physics 2e",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+            "locator": "CNXML module m42138",
+            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+          }
+        }
+      ],
+      "summary_points": [
+        {
+          "text": "Newton's second law applies to any force, once the force is known.",
+          "inline": []
+        },
+        {
+          "text": "This chapter takes three of them: friction, drag and the force in a spring.",
+          "inline": []
+        },
+        {
+          "text": "Each one resists motion, and each one has its own rule.",
+          "inline": []
+        }
+      ],
+      "exercise_ids": [],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+        "locator": "CNXML module m42138",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      },
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "order": 2,
+      "slug": "friction",
+      "title": "Friction",
+      "est_minutes": 24,
+      "learning_objectives": [
+        {
+          "id": "lo-1",
+          "statement": "Tell static friction from kinetic friction and compute the friction force.",
+          "bloom_level": "understand"
+        },
+        {
+          "id": "lo-2",
+          "statement": "Use the coefficient of friction with the normal force.",
+          "bloom_level": "understand"
+        }
+      ],
+      "teaching_text": {
+        "blocks": [
+          {
+            "id": "b-1",
+            "type": "paragraph",
+            "content": {
+              "text": "Friction is a force that is around us all the time that opposes relative motion between surfaces in contact but also allows us to move (which you have discovered if you have ever tried to walk on ice). While a common force, the behavior of friction is actually very complicated and is still not completely understood. We have to rely heavily on observations for whatever understandings we can gain. However, we can still deal with its more elementary general characteristics and understand the circumstances in which it behaves.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-2",
+            "type": "paragraph",
+            "content": {
+              "text": "Friction is a force that opposes relative motion between surfaces in contact.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-3",
+            "type": "paragraph",
+            "content": {
+              "text": "One of the simpler characteristics of friction is that it is parallel to the contact surface between surfaces and always in a direction that opposes motion or attempted motion of the systems relative to each other. If two surfaces are in contact and moving relative to one another, then the friction between them is called kinetic friction . For example, friction slows a hockey puck sliding on ice. But when objects are stationary, static friction can act between them; the static friction is usually greater than the kinetic friction between the surfaces.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-4",
+            "type": "paragraph",
+            "content": {
+              "text": "If two surfaces are in contact and moving relative to one another, then the friction between them is called kinetic friction.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-5",
+            "type": "paragraph",
+            "content": {
+              "text": "Imagine, for example, trying to slide a heavy crate across a concrete floor—you may push harder and harder on the crate and not move it at all. This means that the static friction responds to what you do—it increases to be equal to and in the opposite direction of your push. But if you finally push hard enough, the crate seems to slip suddenly and starts to move. Once in motion it is easier to keep it in motion than it was to get it started, indicating that the kinetic friction force is less than the static friction force. If you add mass to the crate, say by placing a box on top of it, you need to push even harder to get it started and also to keep it moving. Furthermore, if you oiled the concrete you would find it to be easier to get the crate started and keep it going (as you might expect).",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-6",
+            "type": "paragraph",
+            "content": {
+              "text": "is a crude pictorial representation of how friction occurs at the interface between two objects. Close-up inspection of these surfaces shows them to be rough. So when you push to get an object moving (in this case, a crate), you must raise the object until it can skip along with just the tips of the surface hitting, break off the points, or do both. A considerable force can be resisted by friction with no apparent motion. The harder the surfaces are pushed together (such as if another box is placed on the crate), the more force is needed to move them. Part of the friction is due to adhesive forces between the surface molecules of the two objects, which explain the dependence of friction on the nature of the substances. Adhesion varies with substances in contact and is a complicated aspect of surface physics. Once an object is moving, there are fewer points of contact (fewer molecules adhering), so less force is required to keep the object moving. At small but nonzero speeds, friction is nearly independent of speed.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-7",
+            "type": "figure",
+            "asset_url": "images/phy_m42139_Figure_06_01_01a.jpg",
+            "caption": {
+              "text": "Frictional forces, such as $f$ , always oppose motion or attempted motion between surfaces in contact. Friction arises in part because of the roughness of the surfaces in contact, as seen in the expanded view. In order for the object to move, it must rise to where the peaks can skip along the bottom surface. Thus a force is required just to set the object in motion. Some of the peaks will be broken off, also requiring a force to maintain motion. Much of the friction is actually due to attractive forces between molecules making up the two objects, so that even perfectly smooth surfaces are not friction-free. Such adhesive forces also depend on the substances the surfaces are made of, explaining, for example, why rubber-soled shoes slip less than those with leather soles.",
+              "inline": []
+            },
+            "alt": "The figure shows a crate on a flat surface, and a magnified view of a bottom corner of the crate and the supporting surface. The magnified view shows that there is roughness in the two surfaces in contact with each other. A black arrow points toward the right, away from the crate, and it is labeled as the direction of motion or attempted motion. A red arrow pointing toward the left is located near the bottom left corner of the crate, at the interface between that corner and the supporting surface. The red arrow is labeled as f, representing friction between the two surfaces in contact with each other.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-8",
+            "type": "paragraph",
+            "content": {
+              "text": "The magnitude of the frictional force has two forms: one for static situations (static friction), the other for when there is motion (kinetic friction).",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-9",
+            "type": "paragraph",
+            "content": {
+              "text": "When there is no motion between the objects, the magnitude of static friction ${f}_{s}$ is",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-10",
+            "type": "paragraph",
+            "content": {
+              "text": "where ${μ}_{s}$ is the coefficient of static friction and $N$ is the magnitude of the normal force (the force perpendicular to the surface).",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-11",
+            "type": "paragraph",
+            "content": {
+              "text": "Magnitude of static friction ${f}_{s}$ is",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-12",
+            "type": "paragraph",
+            "content": {
+              "text": "where ${μ}_{s}$ is the coefficient of static friction and $N$ is the magnitude of the normal force.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-13",
+            "type": "paragraph",
+            "content": {
+              "text": "The symbol $≤$ means *less than or equal to* , implying that static friction can have a minimum and a maximum value of ${μ}_{s}N$ . Static friction is a responsive force that increases to be equal and opposite to whatever force is exerted, up to its maximum limit. Once the applied force exceeds ${f}_{s(max)}$ , the object will move. Thus",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-14",
+            "type": "paragraph",
+            "content": {
+              "text": "Once an object is moving, the magnitude of kinetic friction ${f}_{k}$ is given by",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-15",
+            "type": "paragraph",
+            "content": {
+              "text": "where ${μ}_{k}$ is the coefficient of kinetic friction. A system in which ${f}_{k}={μ}_{k}N$ is described as a system in which *friction behaves simply* .",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-16",
+            "type": "paragraph",
+            "content": {
+              "text": "The magnitude of kinetic friction ${f}_{k}$ is given by",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-17",
+            "type": "paragraph",
+            "content": {
+              "text": "where ${μ}_{k}$ is the coefficient of kinetic friction.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-18",
+            "type": "paragraph",
+            "content": {
+              "text": "As seen in , the coefficients of kinetic friction are less than their static counterparts. That values of $μ$ in are stated to only one or, at most, two digits is an indication of the approximate description of friction given by the above two equations.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-19",
+            "type": "paragraph",
+            "content": {
+              "text": "The equations given earlier include the dependence of friction on materials and the normal force. The direction of friction is always opposite that of motion, parallel to the surface between objects, and perpendicular to the normal force. For example, if the crate you try to push (with a force parallel to the floor) has a mass of 100 kg, then the normal force would be equal to its weight, $W=mg=(100 kg)(9.80{m/s}^{2})=980 N$ , perpendicular to the floor. If the coefficient of static friction is 0.45, you would have to exert a force parallel to the floor greater than ${f}_{s(max)}={μ}_{s}N=(0.45)(980N)=440N$ to move the crate. Once there is motion, friction is less and the coefficient of kinetic friction might be 0.30, so that a force of only 290 N ( ${f}_{k}={μ}_{k}N=(0.30)(980N)=290N$ ) would keep it moving at a constant speed. If the floor is lubricated, both coefficients are considerably less than they would be without lubrication. Coefficient of friction is a unitless quantity with a magnitude usually between 0 and 1.0. The coefficient of the friction depends on the two surfaces that are in contact.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-20",
+            "type": "paragraph",
+            "content": {
+              "text": "Find a small plastic object (such as a food container) and slide it on a kitchen table by giving it a gentle tap. Now spray water on the table, simulating a light shower of rain. What happens now when you give the object the same-sized tap? Now add a few drops of (vegetable or olive) oil on the surface of the water and give the same tap. What happens now? This latter situation is particularly important for drivers to note, especially after a light rain shower. Why?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-21",
+            "type": "paragraph",
+            "content": {
+              "text": "Many people have experienced the slipperiness of walking on ice. However, many parts of the body, especially the joints, have much smaller coefficients of friction—often three or four times less than ice. A joint is formed by the ends of two bones, which are connected by thick tissues. The knee joint is formed by the lower leg bone (the tibia) and the thighbone (the femur). The hip is a ball (at the end of the femur) and socket (part of the pelvis) joint. The ends of the bones in the joint are covered by cartilage, which provides a smooth, almost glassy surface. The joints also produce a fluid (synovial fluid) that reduces friction and wear. A damaged or arthritic joint can be replaced by an artificial joint ( ). These replacements can be made of metals (stainless steel or titanium) or plastic (polyethylene), also with very small coefficients of friction.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-22",
+            "type": "figure",
+            "asset_url": "images/phy_m42139_Figure_06_01_02a.jpg",
+            "caption": {
+              "text": "Artificial knee replacement is a procedure that has been performed for more than 20 years. In this figure, we see the post-op X-rays of the right knee joint replacement. (credit: Mike Baird, Flickr)",
+              "inline": []
+            },
+            "alt": "Two X-x rays of an artificial knee replacement are shown.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-23",
+            "type": "paragraph",
+            "content": {
+              "text": "Other natural lubricants include saliva produced in our mouths to aid in the swallowing process, and the slippery mucus found between organs in the body, allowing them to move freely past each other during heartbeats, during breathing, and when a person moves. Artificial lubricants are also common in hospitals and doctor’s clinics. For example, when ultrasonic imaging is carried out, the gel that couples the transducer to the skin also serves to lubricate the surface between the transducer and the skin—thereby reducing the coefficient of friction between the two surfaces. This allows the transducer to move freely over the skin.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-24",
+            "type": "figure",
+            "asset_url": "images/phy_m42139_Figure_06_01_03a.jpg",
+            "caption": {
+              "text": "The motion of the skier and friction are parallel to the slope and so it is most convenient to project all forces onto a coordinate system where one axis is parallel to the slope and the other is perpendicular (axes shown to left of skier). $N$ (the normal force) is perpendicular to the slope, and $f$ (the friction) is parallel to the slope, but $w$ (the skier’s weight) has components along both axes, namely ${w}_{⊥}$ and ${W}_{//}$ . $N$ is equal in magnitude to ${w}_{⊥}$ , so there is no motion perpendicular to the slope. However, $f$ is less than ${W}_{//}$ in magnitude, so there is acceleration down the slope (along the *x* -axis).",
+              "inline": []
+            },
+            "alt": "The figure shows a skier going down a slope that forms an angle of 25 degrees with the horizontal. The weight of the skier, labeled w, is represented by a red arrow pointing vertically downward. This weight is divided into two components, w perpendicular is perpendicular to the slope, and w parallel is parallel to the slope. The normal force, labeled N, is also perpendicular to the slope, equal in magnitude but opposite in direction to w perpendicular. The friction, f, is represented by a red arrow pointing upslope. In addition, the figure shows a free body diagram that shows the relative magnitudes and directions of w, f, and N.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-25",
+            "type": "paragraph",
+            "content": {
+              "text": "Substituting this into our expression for kinetic friction, we get",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-26",
+            "type": "paragraph",
+            "content": {
+              "text": "which can now be solved for the coefficient of kinetic friction ${μ}_{k}$ .",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-27",
+            "type": "paragraph",
+            "content": {
+              "text": "Solving for ${μ}_{k}$ gives",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-28",
+            "type": "paragraph",
+            "content": {
+              "text": "Substituting known values on the right-hand side of the equation,",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-29",
+            "type": "paragraph",
+            "content": {
+              "text": "This result is a little smaller than the coefficient listed in for waxed wood on snow, but it is still reasonable since values of the coefficients of friction can vary greatly. In situations like this, where an object of mass $m$ slides down a slope that makes an angle $θ$ with the horizontal, friction is given by ${f}_{k}={μ}_{k}mgcosθ$ . All objects will slide down a slope with constant acceleration under these circumstances. Proof of this is left for this chapter’s Problems and Exercises.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-30",
+            "type": "paragraph",
+            "content": {
+              "text": "An object will slide down an inclined plane at a constant velocity if the net force on the object is zero. We can use this fact to measure the coefficient of kinetic friction between two objects. As shown in , the kinetic friction on a slope ${f}_{k}={μ}_{k}mgcosθ$ . The component of the weight down the slope is equal to $mgsinθ$ (see the free-body diagram in ). These forces act in opposite directions, so when they have equal magnitude, the acceleration is zero. Writing these out:",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-31",
+            "type": "paragraph",
+            "content": {
+              "text": "Solving for ${μ}_{k}$ , we find that",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-32",
+            "type": "paragraph",
+            "content": {
+              "text": "Put a coin on a book and tilt it until the coin slides at a constant velocity down the book. You might need to tap the book lightly to get the coin to move. Measure the angle of tilt relative to the horizontal and find ${μ}_{k}$ . Note that the coin will not start to slide at all until an angle greater than $θ$ is attained, since the coefficient of static friction is larger than the coefficient of kinetic friction. Discuss how this may affect the value for ${μ}_{k}$ and its uncertainty.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-33",
+            "type": "paragraph",
+            "content": {
+              "text": "We have discussed that when an object rests on a horizontal surface, there is a normal force supporting it equal in magnitude to its weight. Furthermore, simple friction is always proportional to the normal force.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-34",
+            "type": "paragraph",
+            "content": {
+              "text": "The simpler aspects of friction dealt with so far are its macroscopic (large-scale) characteristics. Great strides have been made in the atomic-scale explanation of friction during the past several decades. Researchers are finding that the atomic nature of friction seems to have several fundamental characteristics. These characteristics not only explain some of the simpler aspects of friction—they also hold the potential for the development of nearly friction-free environments that could save hundreds of billions of dollars in energy which is currently being converted (unnecessarily) to heat.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-35",
+            "type": "paragraph",
+            "content": {
+              "text": "illustrates one macroscopic characteristic of friction that is explained by microscopic (small-scale) research. We have noted that friction is proportional to the normal force, but not to the area in contact, a somewhat counterintuitive notion. When two rough surfaces are in contact, the actual contact area is a tiny fraction of the total area since only high spots touch. When a greater normal force is exerted, the actual contact area increases, and it is found that the friction is proportional to this area.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-36",
+            "type": "figure",
+            "asset_url": "images/phy_m42139_Figure_06_01_04a.jpg",
+            "caption": {
+              "text": "Two rough surfaces in contact have a much smaller area of actual contact than their total area. When there is a greater normal force as a result of a greater applied force, the area of actual contact increases as does friction.",
+              "inline": []
+            },
+            "alt": "This figure has two parts, each of which shows two rough surfaces in close proximity to each other. In the first part, the normal force is small, so that the area of contact between the two surfaces is much smaller than their total area. In the second part, the normal force is large, so that the area of contact between the two surfaces has increased. As a result, the friction between the two surfaces in the second part is also greater than the friction in the first part.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-37",
+            "type": "paragraph",
+            "content": {
+              "text": "But the atomic-scale view promises to explain far more than the simpler features of friction. The mechanism for how heat is generated is now being determined. In other words, why do surfaces get warmer when rubbed? Essentially, atoms are linked with one another to form lattices. When surfaces rub, the surface atoms adhere and cause atomic lattices to vibrate—essentially creating sound waves that penetrate the material. The sound waves diminish with distance and their energy is converted into heat. Chemical reactions that are related to frictional wear can also occur between atoms and molecules on the surfaces. shows how the tip of a probe drawn across another material is deformed by atomic-scale friction. The force needed to drag the tip can be measured and is found to be related to shear stress, which will be discussed later in this chapter. The variation in shear stress is remarkable (more than a factor of ${10}^{12}$ ) and difficult to predict theoretically, but shear stress is yielding a fundamental understanding of a large-scale phenomenon known since ancient times—friction.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-38",
+            "type": "figure",
+            "asset_url": "images/phy_m42139_Figure_06_01_05a.jpg",
+            "caption": {
+              "text": "The tip of a probe is deformed sideways by frictional force as the probe is dragged across a surface. Measurements of how the force varies for different materials are yielding fundamental insights into the atomic nature of friction.",
+              "inline": []
+            },
+            "alt": "This figure shows a molecular model of a probe that is dragged over the surface of a substrate. The substrate is represented by a rectangular prism, made up of a grid of small spheres, each sphere representing an atom. The probe, made up of a different grid of small spheres, is in the form of an inverted pyramid with a flattened peak. The pyramid is somewhat distorted because of friction.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-39",
+            "type": "paragraph",
+            "content": {
+              "text": "Explore the forces at work when you try to push a filing cabinet. Create an applied force and see the resulting friction force and total force acting on the cabinet. Charts show the forces, position, velocity, and acceleration vs. time. Draw a free-body diagram of all the forces (including gravitational and normal forces).",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-40",
+            "type": "paragraph",
+            "content": {
+              "text": "When a force of 20 N is applied to a stationary box weighing 40 N, the box does not move. This means the coefficient of static friction",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-41",
+            "type": "paragraph",
+            "content": {
+              "text": "A 2-kg block slides down a ramp which is at an incline of 25º. If the frictional force is 4.86 N, what is the coefficient of friction? At what incline will the box slide at a constant velocity? Assume g = 10 m/s 2 .",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-42",
+            "type": "paragraph",
+            "content": {
+              "text": "A block is given a short push and then slides with constant friction across a horizontal floor. Which statement best explains the direction of the force that friction applies on the moving block?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-43",
+            "type": "paragraph",
+            "content": {
+              "text": "A student pushes a cardboard box across a carpeted floor and afterwards notices that the bottom of the box feels warm. Explain how interactions between molecules in the cardboard and molecules in the carpet produced this heat.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-44",
+            "type": "paragraph",
+            "content": {
+              "text": "Define normal force. What is its relationship to friction when friction behaves simply?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-45",
+            "type": "paragraph",
+            "content": {
+              "text": "The glue on a piece of tape can exert forces. Can these forces be a type of simple friction? Explain, considering especially that tape can stick to vertical walls and even to ceilings.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-46",
+            "type": "paragraph",
+            "content": {
+              "text": "When you learn to drive, you discover that you need to let up slightly on the brake pedal as you come to a stop or the car will stop with a jerk. Explain this in terms of the relationship between static and kinetic friction.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-47",
+            "type": "paragraph",
+            "content": {
+              "text": "When you push a piece of chalk across a chalkboard, it sometimes screeches because it rapidly alternates between slipping and sticking to the board. Describe this process in more detail, in particular explaining how it is related to the fact that kinetic friction is less than static friction. (The same slip-grab process occurs when tires screech on pavement.)",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-48",
+            "type": "heading",
+            "text": {
+              "text": "Problems & Exercises",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-49",
+            "type": "paragraph",
+            "content": {
+              "text": "A physics major is cooking breakfast when he notices that the frictional force between his steel spatula and his Teflon frying pan is only 0.200 N. Knowing the coefficient of kinetic friction between the two materials, he quickly calculates the normal force. What is it?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-50",
+            "type": "paragraph",
+            "content": {
+              "text": "(a) When rebuilding her car’s engine, a physics major must exert 300 N of force to insert a dry steel piston into a steel cylinder. What is the magnitude of the normal force between the piston and cylinder? (b) What is the magnitude of the force would she have to exert if the steel parts were oiled?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-51",
+            "type": "paragraph",
+            "content": {
+              "text": "(a) What is the maximum frictional force in the knee joint of a person who supports 66.0 kg of her mass on that knee? (b) During strenuous exercise it is possible to exert forces to the joints that are easily ten times greater than the weight being supported. What is the maximum force of friction under such conditions? The frictional forces in joints are relatively small in all circumstances except when the joints deteriorate, such as from injury or arthritis. Increased frictional forces can cause further damage and pain.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-52",
+            "type": "paragraph",
+            "content": {
+              "text": "Suppose you have a 120-kg wooden crate resting on a wood floor. (a) What maximum force can you exert horizontally on the crate without moving it? (b) If you continue to exert this force once the crate starts to slip, what will the magnitude of its acceleration then be?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-53",
+            "type": "paragraph",
+            "content": {
+              "text": "(b) $1.96 m{/s}^{2}$",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-54",
+            "type": "paragraph",
+            "content": {
+              "text": "(a) If half of the weight of a small $1.00×{10}^{3}kg$ utility truck is supported by its two drive wheels, what is the magnitude of the maximum acceleration it can achieve on dry concrete? (b) Will a metal cabinet lying on the wooden bed of the truck slip if it accelerates at this rate? (c) Solve both problems assuming the truck has four-wheel drive.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-55",
+            "type": "paragraph",
+            "content": {
+              "text": "A team of eight dogs pulls a sled with waxed wood runners on wet snow (mush!). The dogs have average masses of 19.0 kg, and the loaded sled with its rider has a mass of 210 kg. (a) Calculate the magnitude of the acceleration starting from rest if each dog exerts an average force of 185 N backward on the snow. (b) What is the magnitude of the acceleration once the sled starts to move? (c) For both situations, calculate the magnitude of the force in the coupling between the dogs and the sled.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-56",
+            "type": "paragraph",
+            "content": {
+              "text": "Consider the 65.0-kg ice skater being pushed by two others shown in . (a) Find the direction and magnitude of ${F}_{tot}$ , the total force exerted on her by the others, given that the magnitudes ${F}_{1}$ and ${F}_{2}$ are 26.4 N and 18.6 N, respectively. (b) What is her initial acceleration if she is initially stationary and wearing steel-bladed skates that point in the direction of ${F}_{tot}$ ? (c) What is her acceleration assuming she is already moving in the direction of ${F}_{tot}$ ? (Remember that friction always acts in the direction opposite that of motion or attempted motion between surfaces in contact.)",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-57",
+            "type": "figure",
+            "asset_url": "images/phy_m42139_Figure_04_01_01a-e066.jpg",
+            "caption": {
+              "text": "(a) Overhead view of two ice skaters pushing on a third. One skater pushes with a force F two, represented by an arrow pointing up, and a second skater pushes with a force F one, represented by an arrow pointing from left to right. Vector F one and vector F two are along the arms of the two skaters acting on the third skater. A vector diagram is shown in the form of a right triangle in which the base is vector F one pointing east, and perpendicular to F one is vector F two pointing north. The resultant vector is shown by the hypotenuse pointing northeast. (b) Free-body diagram showing only the forces acting on the skater.",
+              "inline": []
+            },
+            "alt": "(a) Overhead view of two ice skaters pushing on a third. One skater pushes with a force F two, represented by an arrow pointing up, and a second skater pushes with a force F one, represented by an arrow pointing from left to right. Vector F one and vector F two are along the arms of the two skaters acting on the third skater. A vector diagram is shown in the form of a right triangle in which the base is vector F one pointing east, and perpendicular to F one is vector F two pointing north. The resultant vector is shown by the hypotenuse pointing northeast. (b) Free-body diagram showing only the forces acting on the skater.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-58",
+            "type": "paragraph",
+            "content": {
+              "text": "Show that the acceleration of any object down a frictionless incline that makes an angle $θ$ with the horizontal is $a=gsinθ$ . (Note that this acceleration is independent of mass.)",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-59",
+            "type": "paragraph",
+            "content": {
+              "text": "Show that the acceleration of any object down an incline where friction behaves simply (that is, where ${f}_{k}={μ}_{k}N$ ) is $a=g(sinθ-{μ}_{k}cosθ).$ Note that the acceleration is independent of mass and reduces to the expression found in the previous problem when friction becomes negligibly small $({μ}_{k}=0).$",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-60",
+            "type": "paragraph",
+            "content": {
+              "text": "Calculate the deceleration of a snow boarder going up a $5.0º$ , slope assuming the coefficient of friction for waxed wood on wet snow. The result of may be useful, but be careful to consider the fact that the snow boarder is going uphill. Explicitly show how you follow the steps in Problem-Solving Strategies .",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-61",
+            "type": "paragraph",
+            "content": {
+              "text": "(a) Calculate the acceleration of a skier heading down a $10.0º$ slope, assuming the coefficient of friction for waxed wood on wet snow. (b) Find the angle of the slope down which this skier could coast at a constant velocity. You can neglect air resistance in both parts, and you will find the result of to be useful. Explicitly show how you follow the steps in the Problem-Solving Strategies .",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-62",
+            "type": "paragraph",
+            "content": {
+              "text": "If an object is to rest on an incline without slipping, then friction must equal the component of the weight of the object parallel to the incline. This requires greater and greater friction for steeper slopes. Show that the maximum angle of an incline above the horizontal for which an object will not slide down is $θ={tan}^{–1}{μ}_{s}$ . You may use the result of the previous problem. Assume that $a=0$ and that static friction has reached its maximum value.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-63",
+            "type": "paragraph",
+            "content": {
+              "text": "Calculate the maximum deceleration of a car that is heading down a $6º$ slope (one that makes an angle of $6º$ with the horizontal) under the following road conditions. You may assume that the weight of the car is evenly distributed on all four tires and that the coefficient of static friction is involved—that is, the tires are not allowed to slip during the deceleration. (Ignore rolling.) Calculate for a car: (a) On dry concrete. (b) On wet concrete. (c) On ice, assuming that ${μ}_{s}=0.100$ , the same as for shoes on ice.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-64",
+            "type": "paragraph",
+            "content": {
+              "text": "Calculate the maximum acceleration of a car that is heading up a $4º$ slope (one that makes an angle of $4º$ with the horizontal) under the following road conditions. Assume that only half the weight of the car is supported by the two drive wheels and that the coefficient of static friction is involved—that is, the tires are not allowed to slip during the acceleration. (Ignore rolling.) (a) On dry concrete. (b) On wet concrete. (c) On ice, assuming that ${μ}_{s}=0.100$ , the same as for shoes on ice.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-65",
+            "type": "paragraph",
+            "content": {
+              "text": "(a) $4.{20 m/s}^{2}$",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-66",
+            "type": "paragraph",
+            "content": {
+              "text": "(b) $2.{74 m/s}^{2}$",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-67",
+            "type": "paragraph",
+            "content": {
+              "text": "(c) $–0.{195 m/s}^{2}$",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-68",
+            "type": "paragraph",
+            "content": {
+              "text": "Repeat for a car with four-wheel drive.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-69",
+            "type": "paragraph",
+            "content": {
+              "text": "A freight train consists of two $8.00×{10}^{5}-kg$ engines and 45 cars with average masses of $5.50×{10}^{5}kg$ . (a) What force must each engine exert backward on the track to accelerate the train at a rate of $5.00×{10}^{-2}m/{s}^{2}$ if the force of friction is $7.50×{10}^{5}N$ , assuming the engines exert identical forces? This is not a large frictional force for such a massive system. Rolling friction for trains is small, and consequently trains are very energy-efficient transportation systems. (b) What is the magnitude of the force in the coupling between the 37th and 38th cars (this is the force each exerts on the other), assuming all cars have the same mass and that friction is evenly distributed among all of the cars and engines?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-70",
+            "type": "paragraph",
+            "content": {
+              "text": "(a) $1.03×{10}^{6}N$",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-71",
+            "type": "paragraph",
+            "content": {
+              "text": "(b) $3.48×{10}^{5}N$",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-72",
+            "type": "paragraph",
+            "content": {
+              "text": "Consider the 52.0-kg mountain climber in . (a) Find the tension in the rope and the force that the mountain climber must exert with her feet on the vertical rock face to remain stationary. Assume that the force is exerted parallel to her legs. Also, assume negligible force exerted by her arms. (b) What is the minimum coefficient of friction between her shoes and the cliff?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-73",
+            "type": "figure",
+            "asset_url": "images/phy_m42139_Figure_06_01_06.jpg",
+            "caption": {
+              "text": "Part of the climber’s weight is supported by her rope and part by friction between her feet and the rock face.",
+              "inline": []
+            },
+            "alt": "A mountain climber with a mass of fifty two kilograms exerts force with her feet parallel to her legs on a vertical rock face to remain stationary. The angle between her legs and the rock face is fifteen degrees, whereas the angle between the rope and the cliff is thirty one degrees.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-74",
+            "type": "paragraph",
+            "content": {
+              "text": "A contestant in a winter sporting event pushes a 45.0-kg block of ice across a frozen lake as shown in (a). (a) Calculate the minimum force $F$ he must exert to get the block moving. (b) What is the magnitude of its acceleration once it starts to move, if that force is maintained?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-75",
+            "type": "paragraph",
+            "content": {
+              "text": "(b) $0.720 m{/s}^{2}$",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-76",
+            "type": "paragraph",
+            "content": {
+              "text": "Repeat with the contestant pulling the block of ice with a rope over his shoulder at the same angle above the horizontal as shown in (b).",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-77",
+            "type": "figure",
+            "asset_url": "images/phy_m42139_Figure_06_01_07a.jpg",
+            "caption": {
+              "text": "Which method of sliding a block of ice requires less force—(a) pushing or (b) pulling at the same angle above the horizontal?",
+              "inline": []
+            },
+            "alt": "(a) A block of ice is being pushed by a contestant in a winter sporting event across a frozen lake at an angle of twenty five degrees. (b) A block of ice is being pulled by a contestant in a winter sporting event across a frozen lake at an angle of twenty five degrees.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          }
+        ]
+      },
+      "worked_examples": [
+        {
+          "id": "we-ex-26",
+          "statement": {
+            "text": "Skiing Exercise",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+            "locator": "CNXML module m42139, worked example",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "A skier with a mass of 62 kg is sliding down a snowy slope."
+            },
+            {
+              "step_number": 2,
+              "expression": "Find the coefficient of kinetic friction for the skier if friction is known to be 45.0 N."
+            },
+            {
+              "step_number": 3,
+              "expression": "The magnitude of kinetic friction was given in to be 45.0 N."
+            },
+            {
+              "step_number": 4,
+              "expression": "Kinetic friction is related to the normal force $N$ as ${f}_{k}={μ}_{k}N$ ; thus, the coefficient of kinetic friction can be found if we can find the normal force of the skier on a slope."
+            },
+            {
+              "step_number": 5,
+              "expression": "The normal force is always perpendicular to the surface, and since there is no motion perpendicular to the surface, the normal force should equal the component of the skier’s weight perpendicular to the slope."
+            },
+            {
+              "step_number": 6,
+              "expression": "(See the skier and free-body diagram in .)"
+            }
+          ],
+          "answer": {
+            "text": "A skier with a mass of 62 kg is sliding down a snowy slope. Find the coefficient of kinetic friction for the skier if friction is known to be 45.0 N. The magnitude of kinetic friction was given in to be 45.0 N. Kinetic friction is related to the normal force $N$ as ${f}_{k}={μ}_{k}N$ ; thus, the coefficient of kinetic friction can be found if we can find the normal force of the skier on a slope. The normal force is always perpendicular to the surface, and since there is no motion perpendicular to the surface, the normal force should equal the component of the skier’s weight perpendicular to the slope. (See the skier and free-body diagram in .)",
+            "inline": []
+          }
+        },
+        {
+          "id": "we-exr-46",
+          "statement": {
+            "text": "When a force of 20 N is applied to a stationary box weighing 40 N, the box does not move. This means the coefficient of static friction is equal to 0.5.; is greater than 0.5.; is less than 0.5.; cannot be determined.",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "(b)"
+            }
+          ],
+          "answer": {
+            "text": "(b)",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+            "locator": "CNXML module m42139, exercise block exr-46",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          }
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "mis-1",
+          "claim": {
+            "text": "Friction is always the same force, whatever the weight on the surface.",
+            "inline": []
+          },
+          "correction": {
+            "text": "The maximum static friction is proportional to the normal force, so a heavier object presses harder and the friction limit rises with it.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Physics 2e",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+            "locator": "CNXML module m42139",
+            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+          }
+        }
+      ],
+      "summary_points": [
+        {
+          "text": "Static friction adjusts itself up to a limit, then the object slides.",
+          "inline": []
+        },
+        {
+          "text": "Kinetic friction has a steady value once the object is sliding.",
+          "inline": []
+        },
+        {
+          "text": "Both are set by the normal force and the coefficient of friction.",
+          "inline": []
+        }
+      ],
+      "exercise_ids": [
+        "ex-sec-2-01",
+        "ex-sec-2-02",
+        "ex-sec-2-03",
+        "ex-sec-2-04",
+        "ex-sec-2-05",
+        "ex-sec-2-06",
+        "ex-sec-2-07",
+        "ex-sec-2-08"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+        "locator": "CNXML module m42139",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "sec-3",
+      "order": 3,
+      "slug": "drag-forces",
+      "title": "Drag Forces",
+      "est_minutes": 18,
+      "learning_objectives": [
+        {
+          "id": "lo-1",
+          "statement": "Explain what drag is and how it grows with speed.",
+          "bloom_level": "understand"
+        },
+        {
+          "id": "lo-2",
+          "statement": "Sketch the drag force against speed for low and for high speed.",
+          "bloom_level": "understand"
+        }
+      ],
+      "teaching_text": {
+        "blocks": [
+          {
+            "id": "b-1",
+            "type": "paragraph",
+            "content": {
+              "text": "Another interesting force in everyday life is the force of drag on an object when it is moving in a fluid (either a gas or a liquid). You feel the drag force when you move your hand through water. You might also feel it if you move your hand during a strong wind. The faster you move your hand, the harder it is to move. You feel a smaller drag force when you tilt your hand so only the side goes through the air—you have decreased the area of your hand that faces the direction of motion. Like friction, the drag force always opposes the motion of an object. Unlike simple friction, the drag force is proportional to some function of the velocity of the object in that fluid. This functionality is complicated and depends upon the shape of the object, its size, its velocity, and the fluid it is in. For most large objects such as bicyclists, cars, and baseballs not moving too slowly, the magnitude of the drag force ${F}_{D}$ is found to be proportional to the square of the speed of the object. We can write this relationship mathematically as *${F}_{D}∝{v}^{2}$* . When taking into account other factors, this relationship becomes",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-2",
+            "type": "paragraph",
+            "content": {
+              "text": "where $C$ is the drag coefficient, $A$ is the area of the object facing the fluid, and $ρ$ is the density of the fluid. (Recall that density is mass per unit volume.) This equation can also be written in a more generalized fashion as ${F}_{D}={bv}^{2}$ , where $b$ is a constant equivalent to $0.5CρA$ . We have set the exponent for these equations as 2 because, when an object is moving at high velocity through air, the magnitude of the drag force is proportional to the square of the speed. As we shall see in a few pages on fluid dynamics, for small particles moving at low speeds in a fluid, the exponent is equal to 1.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-3",
+            "type": "paragraph",
+            "content": {
+              "text": "Drag force ${F}_{D}$ is found to be proportional to the square of the speed of the object. Mathematically",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-4",
+            "type": "paragraph",
+            "content": {
+              "text": "where $C$ is the drag coefficient, $A$ is the area of the object facing the fluid, and $ρ$ is the density of the fluid.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-5",
+            "type": "paragraph",
+            "content": {
+              "text": "Athletes as well as car designers seek to reduce the drag force to lower their race times. (See ). “Aerodynamic” shaping of an automobile can reduce the drag force and so increase a car’s gas mileage.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-6",
+            "type": "figure",
+            "asset_url": "images/phy_m42080_Figure_06_02_02a.jpg",
+            "caption": {
+              "text": "From racing cars to bobsled racers, aerodynamic shaping is crucial to achieving top speeds. Bobsleds are designed for speed. They are shaped like a bullet with tapered fins. (credit: U.S. Army, via Wikimedia Commons)",
+              "inline": []
+            },
+            "alt": "A two-person team in a bobsled race. The bobsled has an aerodynamic design and smooth runners so it can go as fast as possible.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-7",
+            "type": "paragraph",
+            "content": {
+              "text": "The value of the drag coefficient, $C$ , is determined empirically, usually with the use of a wind tunnel. (See ).",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-8",
+            "type": "figure",
+            "asset_url": "images/phy_m42080_Figure_06_02_03a.jpg",
+            "caption": {
+              "text": "NASA researchers test a model plane in a wind tunnel. (credit: NASA/Ames)",
+              "inline": []
+            },
+            "alt": "A model plane is can be seen being tested in a wind tunnel.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-9",
+            "type": "paragraph",
+            "content": {
+              "text": "The drag coefficient can depend upon velocity, but we will assume that it is a constant here. lists some typical drag coefficients for a variety of objects. Notice that the drag coefficient is a dimensionless quantity. At highway speeds, over 50% of the power of a car is used to overcome air drag. The most fuel-efficient cruising speed is about 70–80 km/h (about 45–50 mi/h). For this reason, during the 1970s oil crisis in the United States, maximum speeds on highways were set at about 90 km/h (55 mi/h).",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-10",
+            "type": "paragraph",
+            "content": {
+              "text": "Substantial research is under way in the sporting world to minimize drag. The dimples on golf balls are being redesigned as are the clothes that athletes wear. Bicycle racers and some swimmers and runners wear full bodysuits. Australian Cathy Freeman wore a full body suit in the 2000 Sydney Olympics, and won the gold medal for the 400 m race. Many swimmers in the 2008 Beijing Olympics wore (Speedo) body suits; it might have made a difference in breaking many world records (See ). Most elite swimmers (and cyclists) shave their body hair. Such innovations can have the effect of slicing away milliseconds in a race, sometimes making the difference between a gold and a silver medal. One consequence is that careful and precise guidelines must be continuously developed to maintain the integrity of the sport.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-11",
+            "type": "figure",
+            "asset_url": "images/phy_m42080_Figure_06_02_05a.jpg",
+            "caption": {
+              "text": "Body suits, such as this LZR Racer Suit, have been credited with many world records after their release in 2008. Smoother “skin” and more compression forces on a swimmer’s body provide at least 10% less drag. (credit: NASA/Kathy Barnstorff)",
+              "inline": []
+            },
+            "alt": "Three swimmers with are each wearing an L Z R Racer Suit, which is a swimsuit composed of elastane nylon and polyurethane. The seams of the suit are ultrasonically welded to reduce drag.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-12",
+            "type": "paragraph",
+            "content": {
+              "text": "Some interesting situations connected to Newton’s second law occur when considering the effects of drag forces upon a moving object. For instance, consider a skydiver falling through air under the influence of gravity. The two forces acting on him are the force of gravity and the drag force (ignoring the buoyant force). The downward force of gravity remains constant regardless of the velocity at which the person is moving. However, as the person’s velocity increases, the magnitude of the drag force increases until the magnitude of the drag force is equal to the gravitational force, thus producing a net force of zero. A zero net force means that there is no acceleration, as given by Newton’s second law. At this point, the person’s velocity remains constant and we say that the person has reached his *terminal velocity* ( ${v}_{t}$ ). Since ${F}_{D}$ is proportional to the speed, a heavier skydiver must go faster for ${F}_{D}$ to equal his weight. Let’s see how this works out more quantitatively.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-13",
+            "type": "paragraph",
+            "content": {
+              "text": "At the terminal velocity,",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-14",
+            "type": "paragraph",
+            "content": {
+              "text": "Using the equation for drag force, we have",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-15",
+            "type": "paragraph",
+            "content": {
+              "text": "Solving for the velocity, we obtain",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-16",
+            "type": "paragraph",
+            "content": {
+              "text": "Assume the density of air is $ρ=1.21 kg{/m}^{3}$ . A 75-kg skydiver descending head first will have an area approximately $A=0.18{m}^{2}$ and a drag coefficient of approximately $C=0.70$ . We find that",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-17",
+            "type": "paragraph",
+            "content": {
+              "text": "This means a skydiver with a mass of 75 kg achieves a maximum terminal velocity of about 350 km/h while traveling in a headfirst position, minimizing the area and his drag. In a spread-eagle position, that terminal velocity may decrease to about 200 km/h as the area increases. This terminal velocity becomes much smaller after the parachute opens.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-18",
+            "type": "paragraph",
+            "content": {
+              "text": "This interesting activity examines the effect of weight upon terminal velocity. Gather together some nested coffee filters. Leaving them in their original shape, measure the time it takes for one, two, three, four, and five nested filters to fall to the floor from the same height (roughly 2 m). (Note that, due to the way the filters are nested, drag is constant and only mass varies.) They obtain terminal velocity quite quickly, so find this velocity as a function of mass. Plot the terminal velocity *$v$* versus mass. Also plot *${v}^{2}$* versus mass. Which of these relationships is more linear? What can you conclude from these graphs?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-19",
+            "type": "figure",
+            "asset_url": "images/phy_m42080_Figure_06_02_06a.jpg",
+            "caption": {
+              "text": "Geese fly in a V formation during their long migratory travels. This shape reduces drag and energy consumption for individual birds, and also allows them a better way to communicate. (credit: Julo, Wikimedia Commons)",
+              "inline": []
+            },
+            "alt": "Geese flying across the sky in a V formation.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-20",
+            "type": "paragraph",
+            "content": {
+              "text": "Galileo is said to have dropped two objects of different masses from the Tower of Pisa. He measured how long it took each to reach the ground. Since stopwatches weren’t readily available, how do you think he measured their fall time? If the objects were the same size, but with different masses, what do you think he should have observed? Would this result be different if done on the Moon?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-21",
+            "type": "paragraph",
+            "content": {
+              "text": "Athletes such as swimmers and bicyclists wear body suits in competition. Formulate a list of pros and cons of such suits.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-22",
+            "type": "paragraph",
+            "content": {
+              "text": "Two expressions were used for the drag force experienced by a moving object in a liquid. One depended upon the speed, while the other was proportional to the square of the speed. In which types of motion would each of these expressions be more applicable than the other one?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-23",
+            "type": "paragraph",
+            "content": {
+              "text": "As cars travel, oil and gasoline leaks onto the road surface. If a light rain falls, what does this do to the control of the car? Does a heavy rain make any difference?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-24",
+            "type": "paragraph",
+            "content": {
+              "text": "Why can a squirrel jump from a tree branch to the ground and run away undamaged, while a human could break a bone in such a fall?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-25",
+            "type": "heading",
+            "text": {
+              "text": "Problems & Exercise",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-26",
+            "type": "paragraph",
+            "content": {
+              "text": "The terminal velocity of a person falling in air depends upon the weight and the area of the person facing the fluid. Find the terminal velocity (in meters per second and kilometers per hour) of an 80.0-kg skydiver falling in a headfirst position with a cross-section area facing the fluid of $0.140{m}^{2}$ .",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-27",
+            "type": "paragraph",
+            "content": {
+              "text": "A 60-kg and a 90-kg skydiver jump from an airplane at an altitude of 6000 m, both falling in a headfirst position. Make some assumption on their frontal areas and calculate their terminal velocities. How long will it take for each skydiver to reach the ground (assuming the time to reach terminal velocity is small)? Assume all values are accurate to three significant digits.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-28",
+            "type": "paragraph",
+            "content": {
+              "text": "A 560-g squirrel with a cross-section area facing the fluid of $144{cm}^{2}$ falls from a 5.0-m tree to the ground. Estimate its terminal velocity. (Use a drag coefficient for a horizontal skydiver.) What will be the velocity of a 56-kg person hitting the ground, assuming no drag contribution in such a short distance?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-29",
+            "type": "paragraph",
+            "content": {
+              "text": "$25.1 m/s; 9.90 m/s$",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-30",
+            "type": "paragraph",
+            "content": {
+              "text": "Drag forces vary depending on velocity. (a) What are the magnitudes of drag forces at 70 km/h and 100 km/h for a Toyota Camry? (Drag area is ${0.70 m}^{2}$ ) (b) What is the magnitude of drag force at 70 km/h and 100 km/h for a Hummer H2? (Drag area is $2.{44 m}^{2}$ ) Assume all values are accurate to three significant digits.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-31",
+            "type": "paragraph",
+            "content": {
+              "text": "By what factor does the drag force on a car increase as it goes from 65 to 110 km/h?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-32",
+            "type": "paragraph",
+            "content": {
+              "text": "Calculate the speed a spherical rain drop would achieve falling from 5.00 km (a) in the absence of air drag (b) with air drag. Take the size across of the drop to be 4 mm, the density to be $1.00×{10}^{3}{kg/m}^{3}$ , and the cross-section area facing the fluid to be ${πr}^{2}$ .",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-33",
+            "type": "paragraph",
+            "content": {
+              "text": "Using Stokes’ law, verify that the units for viscosity are kilograms per meter per second.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-34",
+            "type": "paragraph",
+            "content": {
+              "text": "Find the terminal velocity of a spherical bacterium (diameter $2.00 μm$ ) falling in water. You will first need to note that the drag force is equal to the weight at terminal velocity. Take the density of the bacterium to be $1.10×{10}^{3}{kg/m}^{3}$ .",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-35",
+            "type": "paragraph",
+            "content": {
+              "text": "Stokes’ law describes sedimentation of particles in liquids and can be used to measure viscosity. Particles in liquids achieve terminal velocity quickly. One can measure the time it takes for a particle to fall a certain distance and then use Stokes’ law to calculate the viscosity of the liquid. Suppose a steel ball bearing (density $7.8×{10}^{3}{kg/m}^{3}$ , diameter $3.0 mm$ ) is dropped in a container of motor oil. It takes 12 s to fall a distance of 0.60 m. Calculate the viscosity of the oil.",
+              "inline": []
+            }
+          }
+        ]
+      },
+      "worked_examples": [
+        {
+          "id": "we-ex-21",
+          "statement": {
+            "text": "A Terminal Velocity",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42080/index.cnxml",
+            "locator": "CNXML module m42080, worked example",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "Find the terminal velocity of an 85-kg skydiver falling in a spread-eagle position."
+            },
+            {
+              "step_number": 2,
+              "expression": "At terminal velocity, ${F}_{net}=0$ ."
+            },
+            {
+              "step_number": 3,
+              "expression": "Thus the drag force on the skydiver must equal the force of gravity (the person’s weight)."
+            },
+            {
+              "step_number": 4,
+              "expression": "Using the equation of drag force, we find $mg=\\frac{1}{2}{ρCAv}^{2}$ ."
+            },
+            {
+              "step_number": 5,
+              "expression": "Thus the terminal velocity ${v}_{t}$ can be written as All quantities are known except the person’s projected area."
+            },
+            {
+              "step_number": 6,
+              "expression": "This is an adult (85 kg) falling spread eagle."
+            },
+            {
+              "step_number": 7,
+              "expression": "We can estimate the frontal area as Using our equation for ${v}_{t}$ , we find that This result is consistent with the value for ${v}_{t}$ mentioned earlier."
+            },
+            {
+              "step_number": 8,
+              "expression": "The 75-kg skydiver going feet first had a $v=98 m/s$ ."
+            },
+            {
+              "step_number": 9,
+              "expression": "He weighed less but had a smaller frontal area and so a smaller drag due to the air."
+            },
+            {
+              "step_number": 10,
+              "expression": "The size of the object that is falling through air presents another interesting application of air drag."
+            },
+            {
+              "step_number": 11,
+              "expression": "The terminal velocity of a small squirrel is less than the terminal velocity we found previously for the skydiver, and so the squirrel can fall from a significant height without injury."
+            },
+            {
+              "step_number": 12,
+              "expression": "The following interesting quote on animal size and terminal velocity is from a 1928 essay by a British biologist, J.B.S."
+            },
+            {
+              "step_number": 13,
+              "expression": "Haldane, titled “On Being the Right Size.” *To the mouse and any smaller animal, [gravity] presents practically no dangers."
+            },
+            {
+              "step_number": 14,
+              "expression": "You can drop a mouse down a thousand-yard mine shaft; and, on arriving at the bottom, it gets a slight shock and walks away, provided that the ground is fairly soft."
+            },
+            {
+              "step_number": 15,
+              "expression": "A rat is killed, a man is broken, and a horse splashes."
+            },
+            {
+              "step_number": 16,
+              "expression": "For the resistance presented to movement by the air is proportional to the surface of the moving object."
+            },
+            {
+              "step_number": 17,
+              "expression": "Divide an animal’s length, breadth, and height each by ten; its weight is reduced to a thousandth, but its surface only to a hundredth."
+            },
+            {
+              "step_number": 18,
+              "expression": "So the resistance to falling in the case of the small animal is relatively ten times greater than the driving force.* The above quadratic dependence of air drag upon velocity does not hold if the object is very small, is going very slow, or is in a denser medium than air."
+            },
+            {
+              "step_number": 19,
+              "expression": "Then we find that the drag force is proportional just to the velocity."
+            },
+            {
+              "step_number": 20,
+              "expression": "This relationship is given by Stokes’ law , which states that where $r$ is the radius of the object, $η$ is the viscosity of the fluid, and $v$ is the object’s velocity."
+            },
+            {
+              "step_number": 21,
+              "expression": "where $r$ is the radius of the object, $η$ is the viscosity of the fluid, and $v$ is the object’s velocity."
+            },
+            {
+              "step_number": 22,
+              "expression": "Good examples of this law are provided by microorganisms, pollen, and dust particles."
+            },
+            {
+              "step_number": 23,
+              "expression": "Because each of these objects is so small, we find that many of these objects travel unaided only at a constant (terminal) velocity."
+            },
+            {
+              "step_number": 24,
+              "expression": "Terminal velocities for bacteria (size about $1 μm$ ) can be about $2 μm/s$ ."
+            },
+            {
+              "step_number": 25,
+              "expression": "To move at a greater speed, many bacteria swim using flagella (organelles shaped like little tails) that are powered by little motors embedded in the cell."
+            },
+            {
+              "step_number": 26,
+              "expression": "Sediment in a lake can move at a greater terminal velocity (about $5 μm/s$ ), so it can take days to reach the bottom of the lake after being deposited on the surface."
+            },
+            {
+              "step_number": 27,
+              "expression": "If we compare animals living on land with those in water, you can see how drag has influenced evolution."
+            },
+            {
+              "step_number": 28,
+              "expression": "Fishes, dolphins, and even massive whales are streamlined in shape to reduce drag forces."
+            },
+            {
+              "step_number": 29,
+              "expression": "Birds are streamlined and migratory species that fly large distances often have particular features such as long necks."
+            },
+            {
+              "step_number": 30,
+              "expression": "Flocks of birds fly in the shape of a spear head as the flock forms a streamlined pattern (see )."
+            },
+            {
+              "step_number": 31,
+              "expression": "In humans, one important example of streamlining is the shape of sperm, which need to be efficient in their use of energy."
+            }
+          ],
+          "answer": {
+            "text": "Find the terminal velocity of an 85-kg skydiver falling in a spread-eagle position. At terminal velocity, ${F}_{net}=0$ . Thus the drag force on the skydiver must equal the force of gravity (the person’s weight). Using the equation of drag force, we find $mg=\\frac{1}{2}{ρCAv}^{2}$ . Thus the terminal velocity ${v}_{t}$ can be written as All quantities are known except the person’s projected area. This is an adult (85 kg) falling spread eagle. We can estimate the frontal area as Using our equation for ${v}_{t}$ , we find that This result is consistent with the value for ${v}_{t}$ mentioned earlier. The 75-kg skydiver going feet first had a $v=98 m/s$ . He weighed less but had a smaller frontal area and so a smaller drag due to the air. The size of the object that is falling through air presents another interesting application of air drag. The terminal velocity of a small squirrel is less than the terminal velocity we found previously for the skydiver, and so the squirrel can fall from a significant height without injury. The following interesting quote on animal size and terminal velocity is from a 1928 essay by a British biologist, J.B.S. Haldane, titled “On Being the Right Size.” *To the mouse and any smaller animal, [gravity] presents practically no dangers. You can drop a mouse down a thousand-yard mine shaft; and, on arriving at the bottom, it gets a slight shock and walks away, provided that the ground is fairly soft. A rat is killed, a man is broken, and a horse splashes. For the resistance presented to movement by the air is proportional to the surface of the moving object. Divide an animal’s length, breadth, and height each by ten; its weight is reduced to a thousandth, but its surface only to a hundredth. So the resistance to falling in the case of the small animal is relatively ten times greater than the driving force.* The above quadratic dependence of air drag upon velocity does not hold if the object is very small, is going very slow, or is in a denser medium than air. Then we find that the drag force is proportional just to the velocity. This relationship is given by Stokes’ law , which states that where $r$ is the radius of the object, $η$ is the viscosity of the fluid, and $v$ is the object’s velocity. where $r$ is the radius of the object, $η$ is the viscosity of the fluid, and $v$ is the object’s velocity. Good examples of this law are provided by microorganisms, pollen, and dust particles. Because each of these objects is so small, we find that many of these objects travel unaided only at a constant (terminal) velocity. Terminal velocities for bacteria (size about $1 μm$ ) can be about $2 μm/s$ . To move at a greater speed, many bacteria swim using flagella (organelles shaped like little tails) that are powered by little motors embedded in the cell. Sediment in a lake can move at a greater terminal velocity (about $5 μm/s$ ), so it can take days to reach the bottom of the lake after being deposited on the surface. If we compare animals living on land with those in water, you can see how drag has influenced evolution. Fishes, dolphins, and even massive whales are streamlined in shape to reduce drag forces. Birds are streamlined and migratory species that fly large distances often have particular features such as long necks. Flocks of birds fly in the shape of a spear head as the flock forms a streamlined pattern (see ). In humans, one important example of streamlining is the shape of sperm, which need to be efficient in their use of energy.",
+            "inline": []
+          }
+        },
+        {
+          "id": "we-exr-49",
+          "statement": {
+            "text": "The terminal velocity of a person falling in air depends upon the weight and the area of the person facing the fluid. Find the terminal velocity (in meters per second and kilometers per hour) of an 80.0-kg skydiver falling in a headfirst position with a cross-section area facing the fluid of $0.140{m}^{2}$ .",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "$115$ m/s; $414km/hr$"
+            }
+          ],
+          "answer": {
+            "text": "414km/hr",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42080/index.cnxml",
+            "locator": "CNXML module m42080, exercise block exr-49",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          }
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "mis-1",
+          "claim": {
+            "text": "Drag is a small force that only matters for very fast objects.",
+            "inline": []
+          },
+          "correction": {
+            "text": "At low speeds the drag grows with the square of the speed, so doubling the speed quadruples it. It matters for anything that moves through air at speed.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Physics 2e",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+            "locator": "CNXML module m42080",
+            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+          }
+        }
+      ],
+      "summary_points": [
+        {
+          "text": "Drag opposes the motion and always points against the velocity.",
+          "inline": []
+        },
+        {
+          "text": "At low speeds the drag is small and grows with the square of the speed.",
+          "inline": []
+        },
+        {
+          "text": "At high speeds the drag grows faster still.",
+          "inline": []
+        }
+      ],
+      "exercise_ids": [
+        "ex-sec-3-01",
+        "ex-sec-3-02",
+        "ex-sec-3-03",
+        "ex-sec-3-04"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+        "locator": "CNXML module m42080",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "sec-4",
+      "order": 4,
+      "slug": "elasticity-stress-and-strain",
+      "title": "Elasticity: Stress and Strain",
+      "est_minutes": 24,
+      "learning_objectives": [
+        {
+          "id": "lo-1",
+          "statement": "Define stress and strain, and use Hooke's law for a spring.",
+          "bloom_level": "understand"
+        },
+        {
+          "id": "lo-2",
+          "statement": "Tell the elastic limit, the yield point and the breaking point apart.",
+          "bloom_level": "understand"
+        }
+      ],
+      "teaching_text": {
+        "blocks": [
+          {
+            "id": "b-1",
+            "type": "paragraph",
+            "content": {
+              "text": "We now move from consideration of forces that affect the motion of an object (such as friction and drag) to those that affect an object’s shape. If a bulldozer pushes a car into a wall, the car will not move but it will noticeably change shape. A change in shape due to the application of a force is a deformation . Even very small forces are known to cause some deformation. For small deformations, two important characteristics are observed. First, the object returns to its original shape when the force is removed—that is, the deformation is elastic for small deformations. Second, the size of the deformation is proportional to the force—that is, for small deformations, Hooke’s law is obeyed. In equation form, Hooke’s law is given by",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-2",
+            "type": "paragraph",
+            "content": {
+              "text": "where $ΔL$ is the amount of deformation (the change in length, for example) produced by the force $F$ , and $k$ is a proportionality constant that depends on the shape and composition of the object and the direction of the force. Note that this force is a function of the deformation $ΔL$ —it is not constant as a kinetic friction force is. Rearranging this to",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-3",
+            "type": "paragraph",
+            "content": {
+              "text": "makes it clear that the deformation is proportional to the applied force. shows the Hooke’s law relationship between the extension $ΔL$ of a spring or of a human bone. For metals or springs, the straight line region in which Hooke’s law pertains is much larger. Bones are brittle and the elastic region is small and the fracture abrupt. Eventually a large enough stress to the material will cause it to break or fracture. Tensile strength is the breaking stress that will cause permanent deformation or fracture of a material.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-4",
+            "type": "paragraph",
+            "content": {
+              "text": "where $ΔL$ is the amount of deformation (the change in length, for example) produced by the force $F$ , and $k$ is a proportionality constant that depends on the shape and composition of the object and the direction of the force.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-5",
+            "type": "figure",
+            "asset_url": "images/phy_m42081_Figure_06_03_01a.jpg",
+            "caption": {
+              "text": "A graph of deformation $ΔL$ versus applied force $F$ . The straight segment is the linear region where Hooke’s law is obeyed. The slope of the straight region is $\\frac{1}{k}$ . For larger forces, the graph is curved but the deformation is still elastic— $ΔL$ will return to zero if the force is removed. Still greater forces permanently deform the object until it finally fractures. The shape of the curve near fracture depends on several factors, including how the force $F$ is applied. Note that in this graph the slope increases just before fracture, indicating that a small increase in $F$ is producing a large increase in $L$ near the fracture.",
+              "inline": []
+            },
+            "alt": "Line graph of change in length versus applied force. The line has a constant positive slope from the origin in the region where Hooke’s law is obeyed. The slope then decreases, with a lower, still positive slope until the end of the elastic region. The slope then increases dramatically in the region of permanent deformation until fracturing occurs.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-6",
+            "type": "paragraph",
+            "content": {
+              "text": "The proportionality constant $k$ depends upon a number of factors for the material. For example, a guitar string made of nylon stretches when it is tightened, and the elongation $ΔL$ is proportional to the force applied (at least for small deformations). Thicker nylon strings and ones made of steel stretch less for the same applied force, implying they have a larger $k$ (see ). Finally, all three strings return to their normal lengths when the force is removed, provided the deformation is small. Most materials will behave in this manner if the deformation is less than about 0.1% or about 1 part in ${10}^{3}$ .",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-7",
+            "type": "figure",
+            "asset_url": "images/phy_m42081_Figure_06_03_02a.jpg",
+            "caption": {
+              "text": "The same force, in this case a weight ( $w$ ), applied to three different guitar strings of identical length produces the three different deformations shown as shaded segments. The string on the left is thin nylon, the one in the middle is thicker nylon, and the one on the right is steel.",
+              "inline": []
+            },
+            "alt": "Diagram of weight w attached to each of three guitar strings of initial length L zero hanging vertically from a ceiling. The weight pulls down on the strings with force w. The ceiling pulls up on the strings with force w. The first string of thin nylon has a deformation of delta L due to the force of the weight pulling down. The middle string of thicker nylon has a smaller deformation. The third string of thin steel has the smallest deformation.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-8",
+            "type": "paragraph",
+            "content": {
+              "text": "How would you go about measuring the proportionality constant $k$ of a rubber band? If a rubber band stretched 3 cm when a 100-g mass was attached to it, then how much would it stretch if two similar rubber bands were attached to the same mass—even if put together in parallel or alternatively if tied together in series?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-9",
+            "type": "paragraph",
+            "content": {
+              "text": "We now consider three specific types of deformations: changes in length (tension and compression), sideways shear (stress), and changes in volume. All deformations are assumed to be small unless otherwise stated.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-10",
+            "type": "heading",
+            "text": {
+              "text": "Changes in Length—Tension and Compression: Elastic Modulus",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-11",
+            "type": "paragraph",
+            "content": {
+              "text": "A change in length $ΔL$ is produced when a force is applied to a wire or rod parallel to its length ${L}_{0}$ , either stretching it (a tension) or compressing it. (See .)",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-12",
+            "type": "figure",
+            "asset_url": "images/phy_m42081_Figure_06_03_03a-d0a3.jpg",
+            "caption": {
+              "text": "(a) Tension. The rod is stretched a length $ΔL$ when a force is applied parallel to its length. (b) Compression. The same rod is compressed by forces with the same magnitude in the opposite direction. For very small deformations and uniform materials, $ΔL$ is approximately the same for the same magnitude of tension or compression. For larger deformations, the cross-sectional area changes as the rod is compressed or stretched.",
+              "inline": []
+            },
+            "alt": "Figure a is a cylindrical rod standing on its end with a height of L sub zero. Two vectors labeled F extend away from each end. A dotted outline indicates that the rod is stretched by a length of delta L. Figure b is a similar rod of identical height L sub zero, but two vectors labeled F exert a force toward the ends of the rod. A dotted line indicates that the rod is compressed by a length of delta L.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-13",
+            "type": "paragraph",
+            "content": {
+              "text": "Experiments have shown that the change in length ( $ΔL$ ) depends on only a few variables. As already noted, $ΔL$ is proportional to the force $F$ and depends on the substance from which the object is made. Additionally, the change in length is proportional to the original length ${L}_{0}$ and inversely proportional to the cross-sectional area of the wire or rod. For example, a long guitar string will stretch more than a short one, and a thick string will stretch less than a thin one. We can combine all these factors into one equation for $ΔL$ :",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-14",
+            "type": "paragraph",
+            "content": {
+              "text": "where $ΔL$ is the change in length, $F$ the applied force, $Y$ is a factor, called the elastic modulus or Young’s modulus, that depends on the substance, $A$ is the cross-sectional area, and ${L}_{0}$ is the original length. lists values of *$Y$* for several materials—those with a large $Y$ are said to have a large tensile stiffness because they deform less for a given tension or compression.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-15",
+            "type": "paragraph",
+            "content": {
+              "text": "Elastic Moduli Approximate and average values. Young’s moduli $Y$ for tension and compression sometimes differ but are averaged here. Bone has significantly different Young’s moduli for tension and compression. Material Young’s modulus (tension–compression) *Y* $({10}^{9}{N/m}^{2})$ Shear modulus *S* $({10}^{9}{N/m}^{2})$ Bulk modulus *B* $({10}^{9}{N/m}^{2})$ Aluminum 70 25 75 Bone – tension 16 80 8 Bone – compression 9 Brass 90 35 75 Brick 15 Concrete 20 Glass 70 20 30 Granite 45 20 45 Hair (human) 10 Hardwood 15 10 Iron, cast 100 40 90 Lead 16 5 50 Marble 60 20 70 Nylon 5 Polystyrene 3 Silk 6 Spider thread 3 Steel 210 80 130 Tendon 1 Acetone 0.7 Ethanol 0.9 Glycerin 4.5 Mercury 25 Water 2.2",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-16",
+            "type": "paragraph",
+            "content": {
+              "text": "Young’s moduli are not listed for liquids and gases in because they cannot be stretched or compressed in only one direction. Note that there is an assumption that the object does not accelerate, so that there are actually two applied forces of magnitude $F$ acting in opposite directions. For example, the strings in are being pulled down by a force of magnitude $w$ and held up by the ceiling, which also exerts a force of magnitude $w$ .",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-17",
+            "type": "figure",
+            "asset_url": "images/phy_m42081_Figure_06_03_04a.jpg",
+            "caption": {
+              "text": "Gondolas travel along suspension cables at the Gala Yuzawa ski resort in Japan. (credit: Rudy Herman, Flickr)",
+              "inline": []
+            },
+            "alt": "Ski gondolas travel along suspension cables. A vast forest and snowy mountain peaks can be seen in the background.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-18",
+            "type": "paragraph",
+            "content": {
+              "text": "The force is equal to the maximum tension, or $F=3.0×{10}^{6}N$ . The cross-sectional area is ${πr}^{2}=2.46×{10}^{-3}{m}^{2}$ . The equation $ΔL=\\frac{1}{Y}\\frac{F}{A}{L}_{0}$ can be used to find the change in length.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-19",
+            "type": "paragraph",
+            "content": {
+              "text": "All quantities are known. Thus,",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-20",
+            "type": "paragraph",
+            "content": {
+              "text": "This is quite a stretch, but only about 0.6% of the unsupported length. Effects of temperature upon length might be important in these environments.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-21",
+            "type": "paragraph",
+            "content": {
+              "text": "Bones, on the whole, do not fracture due to tension or compression. Rather they generally fracture due to sideways impact or bending, resulting in the bone shearing or snapping. The behavior of bones under tension and compression is important because it determines the load the bones can carry. Bones are classified as weight-bearing structures such as columns in buildings and trees. Weight-bearing structures have special features; columns in building have steel-reinforcing rods while trees and bones are fibrous. The bones in different parts of the body serve different structural functions and are prone to different stresses. Thus the bone in the top of the femur is arranged in thin sheets separated by marrow while in other places the bones can be cylindrical and filled with marrow or just solid. Overweight people have a tendency toward bone damage due to sustained compressions in bone joints and tendons.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-22",
+            "type": "paragraph",
+            "content": {
+              "text": "Another biological example of Hooke’s law occurs in tendons. Functionally, the tendon (the tissue connecting muscle to bone) must stretch easily at first when a force is applied, but offer a much greater restoring force for a greater strain. shows a stress-strain relationship for a human tendon. Some tendons have a high collagen content so there is relatively little strain, or length change; others, like support tendons (as in the leg) can change length up to 10%. Note that this stress-strain curve is nonlinear, since the slope of the line changes in different regions. In the first part of the stretch called the toe region, the fibers in the tendon begin to align in the direction of the stress—this is called *uncrimping* . In the linear region, the fibrils will be stretched, and in the failure region individual fibers begin to break. A simple model of this relationship can be illustrated by springs in parallel: different springs are activated at different lengths of stretch. Examples of this are given in the problems at end of this chapter. Ligaments (tissue connecting bone to bone) behave in a similar way.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-23",
+            "type": "figure",
+            "asset_url": "images/phy_m42081_Figure_06_03_05_xa.jpg",
+            "caption": {
+              "text": "Typical stress-strain curve for mammalian tendon. Three regions are shown: (1) toe region (2) linear region, and (3) failure region.",
+              "inline": []
+            },
+            "alt": "The strain on mammalian tendon is shown by a graph, with strain along the x axis and tensile stress along the y axis. The stress strain curve obtained has three regions, namely, toe region at the bottom, linear region between, and failure region at the top.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-24",
+            "type": "paragraph",
+            "content": {
+              "text": "Unlike bones and tendons, which need to be strong as well as elastic, the arteries and lungs need to be very stretchable. The elastic properties of the arteries are essential for blood flow. The pressure in the arteries increases and arterial walls stretch when the blood is pumped out of the heart. When the aortic valve shuts, the pressure in the arteries drops and the arterial walls relax to maintain the blood flow. When you feel your pulse, you are feeling exactly this—the elastic behavior of the arteries as the blood gushes through with each pump of the heart. If the arteries were rigid, you would not feel a pulse. The heart is also an organ with special elastic properties. The lungs expand with muscular effort when we breathe in but relax freely and elastically when we breathe out. Our skins are particularly elastic, especially for the young. A young person can go from 100 kg to 60 kg with no visible sag in their skins. The elasticity of all organs reduces with age. Gradual physiological aging through reduction in elasticity starts in the early 20s.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-25",
+            "type": "heading",
+            "text": {
+              "text": "Sideways Stress: Shear Modulus",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-26",
+            "type": "paragraph",
+            "content": {
+              "text": "illustrates what is meant by a sideways stress or a *shearing force* . Here the deformation is called $Δx$ and it is perpendicular to ${L}_{0}$ , rather than parallel as with tension and compression. Shear deformation behaves similarly to tension and compression and can be described with similar equations. The expression for shear deformation is",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-27",
+            "type": "paragraph",
+            "content": {
+              "text": "where $S$ is the shear modulus (see ) and $F$ is the force applied perpendicular to ${L}_{0}$ and parallel to the cross-sectional area $A$ . Again, to keep the object from accelerating, there are actually two equal and opposite forces $F$ applied across opposite faces, as illustrated in . The equation is logical—for example, it is easier to bend a long thin pencil (small $A$ ) than a short thick one, and both are more easily bent than similar steel rods (large $S$ ).",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-28",
+            "type": "paragraph",
+            "content": {
+              "text": "where $S$ is the shear modulus and $F$ is the force applied perpendicular to ${L}_{0}$ and parallel to the cross-sectional area $A$ .",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-29",
+            "type": "figure",
+            "asset_url": "images/phy_m42081_Figure_06_03_06a.jpg",
+            "caption": {
+              "text": "Shearing forces are applied perpendicular to the length ${L}_{0}$ and parallel to the area $A$ , producing a deformation $Δx$ . Vertical forces are not shown, but it should be kept in mind that in addition to the two shearing forces, $F$ , there must be supporting forces to keep the object from rotating. The distorting effects of these supporting forces are ignored in this treatment. The weight of the object also is not shown, since it is usually negligible compared with forces large enough to cause significant deformations.",
+              "inline": []
+            },
+            "alt": "Bookcase sheared by a force applied at the bottom right toward the bottom left, and at the top left toward the top right.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-30",
+            "type": "paragraph",
+            "content": {
+              "text": "Examination of the shear moduli in reveals some telling patterns. For example, shear moduli are less than Young’s moduli for most materials. Bone is a remarkable exception. Its shear modulus is not only greater than its Young’s modulus, but it is as large as that of steel. This is why bones are so rigid.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-31",
+            "type": "paragraph",
+            "content": {
+              "text": "The spinal column (consisting of 26 vertebral segments separated by discs) provides the main support for the head and upper part of the body. The spinal column has normal curvature for stability, but this curvature can be increased, leading to increased shearing forces on the lower vertebrae. Discs are better at withstanding compressional forces than shear forces. Because the spine is not vertical, the weight of the upper body exerts some of both. Pregnant women and people that are overweight (with large abdomens) need to move their shoulders back to maintain balance, thereby increasing the curvature in their spine and so increasing the shear component of the stress. An increased angle due to more curvature increases the shear forces along the plane. These higher shear forces increase the risk of back injury through ruptured discs. The lumbosacral disc (the wedge shaped disc below the last vertebrae) is particularly at risk because of its location.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-32",
+            "type": "paragraph",
+            "content": {
+              "text": "The shear moduli for concrete and brick are very small; they are too highly variable to be listed. Concrete used in buildings can withstand compression, as in pillars and arches, but is very poor against shear, as might be encountered in heavily loaded floors or during earthquakes. Modern structures were made possible by the use of steel and steel-reinforced concrete. Almost by definition, liquids and gases have shear moduli near zero, because they flow in response to shearing forces.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-33",
+            "type": "figure",
+            "asset_url": "images/phy_m42081_Figure_06_03_08a.jpg",
+            "caption": {
+              "text": "Side view of a nail with a picture hung from it. The nail flexes very slightly (shown much larger than actual) because of the shearing effect of the supported weight. Also shown is the upward force of the wall on the nail, illustrating that there are equal and opposite forces applied across opposite cross sections of the nail. See for a calculation of the mass of the picture.",
+              "inline": []
+            },
+            "alt": "Diagram showing the side view a nail in a wall, deformed by the weight of a picture hanging from it. The weight w of the picture is downward. There is an equal force w upward on the nail from the wall. The nail is 1 point five zero millimeters thick. The length of the nail that is outside the wall is five point zero zero millimeters. The deformation delta x of the nail as a result of the picture is 1 point eight zero micrometers.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-34",
+            "type": "paragraph",
+            "content": {
+              "text": "The force $F$ on the nail (neglecting the nail’s own weight) is the weight of the picture $w$ . If we can find $w$ , then the mass of the picture is just $\\frac{w}{g}$ . The equation $Δx=\\frac{1}{S}\\frac{F}{A}{L}_{0}$ can be solved for $F$ .",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-35",
+            "type": "paragraph",
+            "content": {
+              "text": "Solving the equation $Δx=\\frac{1}{S}\\frac{F}{A}{L}_{0}$ for $F$ , we see that all other quantities can be found:",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-36",
+            "type": "paragraph",
+            "content": {
+              "text": "*S* is found in and is $S=80×{10}^{9}{N/m}^{2}$ . The radius $r$ is 0.750 mm (as seen in the figure), so the cross-sectional area is",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-37",
+            "type": "paragraph",
+            "content": {
+              "text": "The value for ${L}_{0}$ is also shown in the figure. Thus,",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-38",
+            "type": "paragraph",
+            "content": {
+              "text": "This 51 N force is the weight $w$ of the picture, so the picture’s mass is",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-39",
+            "type": "paragraph",
+            "content": {
+              "text": "This is a fairly massive picture, and it is impressive that the nail flexes only $1.80 µm$ —an amount undetectable to the unaided eye.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-40",
+            "type": "heading",
+            "text": {
+              "text": "Changes in Volume: Bulk Modulus",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-41",
+            "type": "paragraph",
+            "content": {
+              "text": "An object will be compressed in all directions if inward forces are applied evenly on all its surfaces as in . It is relatively easy to compress gases and extremely difficult to compress liquids and solids. For example, air in a wine bottle is compressed when it is corked. But if you try corking a brim-full bottle, you cannot compress the wine—some must be removed if the cork is to be inserted. The reason for these different compressibilities is that atoms and molecules are separated by large empty spaces in gases but packed close together in liquids and solids. To compress a gas, you must force its atoms and molecules closer together. To compress liquids and solids, you must actually compress their atoms and molecules, and very strong electromagnetic forces in them oppose this compression.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-42",
+            "type": "figure",
+            "asset_url": "images/phy_m42081_Figure_06_03_09a.jpg",
+            "caption": {
+              "text": "An inward force on all surfaces compresses this cube. Its change in volume is proportional to the force per unit area and its original volume, and is related to the compressibility of the substance.",
+              "inline": []
+            },
+            "alt": "A cube with area of cross section A and volume V zero is compressed by an inward force F acting on all surfaces. The compression causes a change in volume delta V, which is proportional to the force per unit area and its original volume. This change in volume is related to the compressibility of the substance.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-43",
+            "type": "paragraph",
+            "content": {
+              "text": "We can describe the compression or volume deformation of an object with an equation. First, we note that a force “applied evenly” is defined to have the same stress, or ratio of force to area $\\frac{F}{A}$ on all surfaces. The deformation produced is a change in volume $ΔV$ , which is found to behave very similarly to the shear, tension, and compression previously discussed. (This is not surprising, since a compression of the entire object is equivalent to compressing each of its three dimensions.) The relationship of the change in volume to other physical quantities is given by",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-44",
+            "type": "paragraph",
+            "content": {
+              "text": "where $B$ is the bulk modulus (see ), ${V}_{0}$ is the original volume, and *$\\frac{F}{A}$* is the force per unit area applied uniformly inward on all surfaces. Note that no bulk moduli are given for gases.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-45",
+            "type": "paragraph",
+            "content": {
+              "text": "What are some examples of bulk compression of solids and liquids? One practical example is the manufacture of industrial-grade diamonds by compressing carbon with an extremely large force per unit area. The carbon atoms rearrange their crystalline structure into the more tightly packed pattern of diamonds. In nature, a similar process occurs deep underground, where extremely large forces result from the weight of overlying material. Another natural source of large compressive forces is the pressure created by the weight of water, especially in deep parts of the oceans. Water exerts an inward force on all surfaces of a submerged object, and even on the water itself. At great depths, water is measurably compressed, as the following example illustrates.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-46",
+            "type": "paragraph",
+            "content": {
+              "text": "where $ΔL$ is the amount of deformation (the change in length), $F$ is the applied force, and $k$ is a proportionality constant that depends on the shape and composition of the object and the direction of the force. The relationship between the deformation and the applied force can also be written as",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-47",
+            "type": "paragraph",
+            "content": {
+              "text": "where *$Y$* is *Young’s modulus* , which depends on the substance, *$A$* is the cross-sectional area, and ${L}_{0}$ is the original length.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-48",
+            "type": "paragraph",
+            "content": {
+              "text": "where $S$ is the shear modulus and $F$ is the force applied perpendicular to ${L}_{0}$ and parallel to the cross-sectional area $A$ .",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-49",
+            "type": "paragraph",
+            "content": {
+              "text": "where $B$ is the bulk modulus, ${V}_{0}$ is the original volume, and $\\frac{F}{A}$ is the force per unit area applied uniformly inward on all surfaces.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-50",
+            "type": "paragraph",
+            "content": {
+              "text": "The elastic properties of the arteries are essential for blood flow. Explain the importance of this in terms of the characteristics of the flow of blood (pulsating or continuous).",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-51",
+            "type": "paragraph",
+            "content": {
+              "text": "What are you feeling when you feel your pulse? Measure your pulse rate for 10 s and for 1 min. Is there a factor of 6 difference?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-52",
+            "type": "paragraph",
+            "content": {
+              "text": "Examine different types of shoes, including sports shoes and thongs. In terms of physics, why are the bottom surfaces designed as they are? What differences will dry and wet conditions make for these surfaces?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-53",
+            "type": "paragraph",
+            "content": {
+              "text": "Would you expect your height to be different depending upon the time of day? Why or why not?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-54",
+            "type": "paragraph",
+            "content": {
+              "text": "Would you expect a large or small stress to be required to deform a spider web? Why is this elasticity an important feature for a spider web?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-55",
+            "type": "paragraph",
+            "content": {
+              "text": "Explain why pregnant women often suffer from back strain late in their pregnancy.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-56",
+            "type": "paragraph",
+            "content": {
+              "text": "An old carpenter’s trick to keep nails from bending when they are pounded into hard materials is to grip the center of the nail firmly with pliers. Why does this help?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-57",
+            "type": "paragraph",
+            "content": {
+              "text": "When a glass bottle full of vinegar warms up, both the vinegar and the glass expand, but vinegar expands significantly more with temperature than glass. The bottle will break if it was filled to its tightly capped lid. Explain why, and also explain how a pocket of air above the vinegar would prevent the break. (This is the function of the air above liquids in glass containers.)",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-58",
+            "type": "heading",
+            "text": {
+              "text": "Problems & Exercises",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-59",
+            "type": "paragraph",
+            "content": {
+              "text": "During a circus act, one performer swings upside down hanging from a trapeze holding another, also upside-down, performer by the legs. If the upward force on the lower performer is three times her weight, how much do the bones (the femurs) in her upper legs stretch? You may assume each is equivalent to a uniform rod 35.0 cm long and 1.80 cm in radius. Her mass is 60.0 kg.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-60",
+            "type": "paragraph",
+            "content": {
+              "text": "During a wrestling match, a 150 kg wrestler briefly stands on one hand during a maneuver designed to perplex her adversary. By how much does the upper arm bone shorten in length? The bone can be represented by a uniform rod 38.0 cm in length and 2.10 cm in radius.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-61",
+            "type": "paragraph",
+            "content": {
+              "text": "(a) The “lead” in pencils is a graphite composition with a Young’s modulus of about $1×{10}^{9}N/{m}^{2}$ . Calculate the change in length of the lead in an automatic pencil if you tap it straight into the pencil with a force of 4.0 N. The lead is 0.50 mm in diameter and 60 mm long. (b) Is the answer reasonable? That is, does it seem to be consistent with what you have observed when using pencils?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-62",
+            "type": "paragraph",
+            "content": {
+              "text": "(a)1 mm (b) This does seem reasonable, since the lead does seem to shrink a little when you push on it.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-63",
+            "type": "paragraph",
+            "content": {
+              "text": "TV broadcast antennas are the tallest artificial structures on Earth. In 1987, a 72.0-kg physicist placed himself and 400 kg of equipment at the top of one 610-m high antenna to perform gravity experiments. By how much was the antenna compressed, if we consider it to be equivalent to a steel cylinder 0.150 m in radius?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-64",
+            "type": "paragraph",
+            "content": {
+              "text": "(a) By how much does a 65.0-kg mountain climber stretch her 0.800-cm diameter nylon rope when they hang 35.0 m below a rock outcropping? (b) Does the answer seem to be consistent with what you have observed for nylon ropes? Would it make sense if the rope were actually a bungee cord?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-65",
+            "type": "paragraph",
+            "content": {
+              "text": "(a)9 cm (b)This seems reasonable for nylon climbing rope, since it is not supposed to stretch that much.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-66",
+            "type": "paragraph",
+            "content": {
+              "text": "A 20.0-m tall hollow aluminum flagpole is equivalent in stiffness to a solid cylinder 4.00 cm in diameter. A strong wind bends the pole much as a horizontal force of 900 N exerted at the top would. How far to the side does the top of the pole flex?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-67",
+            "type": "paragraph",
+            "content": {
+              "text": "As an oil well is drilled, each new section of drill pipe supports its own weight and that of the pipe and drill bit beneath it. Calculate the stretch in a new 6.00 m length of steel pipe that supports 3.00 km of pipe having a mass of 20.0 kg/m and a 100-kg drill bit. The pipe is equivalent in stiffness to a solid cylinder 5.00 cm in diameter.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-68",
+            "type": "paragraph",
+            "content": {
+              "text": "Calculate the force a piano tuner applies to stretch a steel piano wire 8.00 mm, if the wire is originally 0.850 mm in diameter and 1.35 m long.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-69",
+            "type": "paragraph",
+            "content": {
+              "text": "A vertebra is subjected to a shearing force of 500 N. Find the shear deformation, taking the vertebra to be a cylinder 3.00 cm high and 4.00 cm in diameter.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-70",
+            "type": "paragraph",
+            "content": {
+              "text": "A disk between vertebrae in the spine is subjected to a shearing force of 600 N. Find its shear deformation, taking it to have the shear modulus of $1×{10}^{9}N/{m}^{2}$ . The disk is equivalent to a solid cylinder 0.700 cm high and 4.00 cm in diameter.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-71",
+            "type": "paragraph",
+            "content": {
+              "text": "When using a pencil eraser, you exert a vertical force of 6.00 N at a distance of 2.00 cm from the hardwood-eraser joint. The pencil is 6.00 mm in diameter and is held at an angle of $20.0º$ to the horizontal. (a) By how much does the wood flex perpendicular to its length? (b) How much is it compressed lengthwise?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-72",
+            "type": "paragraph",
+            "content": {
+              "text": "(a) $3.99×{10}^{-7}m$",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-73",
+            "type": "paragraph",
+            "content": {
+              "text": "(b) $9.67×{10}^{-8}m$",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-74",
+            "type": "paragraph",
+            "content": {
+              "text": "To consider the effect of wires hung on poles, we take data from , in which tensions in wires supporting a traffic light were calculated. The left wire made an angle $30.0º$ below the horizontal with the top of its pole and carried a tension of 108 N. The 12.0 m tall hollow aluminum pole is equivalent in stiffness to a 4.50 cm diameter solid cylinder. (a) How far is it bent to the side? (b) By how much is it compressed?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-75",
+            "type": "paragraph",
+            "content": {
+              "text": "A farmer making grape juice fills a glass bottle to the brim and caps it tightly. The juice expands more than the glass when it warms up, in such a way that the volume increases by 0.2% (that is, $ΔV/{V}_{0}=2×{10}^{-3}$ ) relative to the space available. Calculate the magnitude of the normal force exerted by the juice per square centimeter if its bulk modulus is $1.8×{10}^{9}{N/m}^{2}$ , assuming the bottle does not break. In view of your answer, do you think the bottle will survive?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-76",
+            "type": "paragraph",
+            "content": {
+              "text": "$4×{10}^{6}{N/m}^{2}$ . This is about 36 atm, greater than a typical jar can withstand.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-77",
+            "type": "paragraph",
+            "content": {
+              "text": "(a) When water freezes, its volume increases by 9.05% (that is, $ΔV/{V}_{0}=9.05×{10}^{-2}$ ). What force per unit area is water capable of exerting on a container when it freezes? (It is acceptable to use the bulk modulus of water in this problem.) (b) Is it surprising that such forces can fracture engine blocks, boulders, and the like?",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-78",
+            "type": "paragraph",
+            "content": {
+              "text": "This problem returns to the tightrope walker studied in , who created a tension of $3.94×{10}^{3}N$ in a wire making an angle $5.0º$ below the horizontal with each supporting pole. Calculate how much this tension stretches the steel wire if it was originally 15 m long and 0.50 cm in diameter.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-79",
+            "type": "paragraph",
+            "content": {
+              "text": "The pole in is at a $90.0º$ bend in a power line and is therefore subjected to more shear force than poles in straight parts of the line. The tension in each line is $4.00×{10}^{4}N$ , at the angles shown. The pole is 15.0 m tall, has an 18.0 cm diameter, and can be considered to have half the stiffness of hardwood. (a) Calculate the compression of the pole. (b) Find how much it bends and in what direction. (c) Find the tension in a guy wire used to keep the pole straight if it is attached to the top of the pole at an angle of $30.0º$ with the vertical. (Clearly, the guy wire must be in the opposite direction of the bend.)",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-80",
+            "type": "figure",
+            "asset_url": "images/phy_m42081_Figure_06_03_10a.jpg",
+            "caption": {
+              "text": "This telephone pole is at a $90º$ bend in a power line. A guy wire is attached to the top of the pole at an angle of $30º$ with the vertical.",
+              "inline": []
+            },
+            "alt": "A telephone pole is located at a ninety degree bend in a power line. Each part of the line is at an angle of eighty degrees with the pole and has a tension labeled T. A guy wire is attached to the top of the pole at an angle of thirty degrees with the vertical.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          {
+            "id": "b-81",
+            "type": "paragraph",
+            "content": {
+              "text": "Critical Thinking Two spherical beads of the same mass fall at a constant speed due to a drag force. Bead A takes twice as long to fall the same distance as bead B. (a) Which of these beads has the larger radius? (b) Based on experimental data, an equation that fits the data is suggested for radius of a bead, *r* , which may not be correct: $r=Kt-\\frac{1}{2}$ , where *K* is a constant with appropriate units and *t* is the time it takes for a bead to reach a determined distance. Is this equation consistent with your answer from part a? Explain why or why not. Does this equation make sense? Explain why or why not. (c) Beads of different radii are selected and the time it takes to fall a set distance is recorded. Graph the radius of these beads as a function of the time it takes to fall a determined distance.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-82",
+            "type": "paragraph",
+            "content": {
+              "text": "(a) Bead A has the larger radius because both have the same weight and drag force. Since A takes longer to fall, its speed is less and, therefore, it must have larger area or radius.",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-83",
+            "type": "paragraph",
+            "content": {
+              "text": "(b) i. This equation is not consistent because it shows that the bead that took longer to fall has a smaller radius. ii. It does not make sense because *r* is proportional to *t* .",
+              "inline": []
+            }
+          },
+          {
+            "id": "b-84",
+            "type": "figure",
+            "asset_url": "images/phy_m42081_OSX_CP2e_Figure_05_03Sol_CTQ01c.jpg",
+            "caption": {
+              "text": "The figure is a plot of r as a function of t. The plot is a straight line through the origin with a positive slope.",
+              "inline": []
+            },
+            "alt": "The figure is a plot of r as a function of t. The plot is a straight line through the origin with a positive slope.",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          }
+        ]
+      },
+      "worked_examples": [
+        {
+          "id": "we-ex-19",
+          "statement": {
+            "text": "The Stretch of a Long Cable",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+            "locator": "CNXML module m42081, worked example",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "Suspension cables are used to carry gondolas at ski resorts."
+            },
+            {
+              "step_number": 2,
+              "expression": "(See ) Consider a suspension cable that includes an unsupported span of 3020 m."
+            },
+            {
+              "step_number": 3,
+              "expression": "Calculate the amount of stretch in the steel cable."
+            },
+            {
+              "step_number": 4,
+              "expression": "Assume that the cable has a diameter of 5.6 cm and the maximum tension it can withstand is $3.0×{10}^{6}N$ ."
+            }
+          ],
+          "answer": {
+            "text": "Suspension cables are used to carry gondolas at ski resorts. (See ) Consider a suspension cable that includes an unsupported span of 3020 m. Calculate the amount of stretch in the steel cable. Assume that the cable has a diameter of 5.6 cm and the maximum tension it can withstand is $3.0×{10}^{6}N$ .",
+            "inline": []
+          }
+        },
+        {
+          "id": "we-ex-29",
+          "statement": {
+            "text": "Calculating Deformation: How Much Does Your Leg Shorten When You Stand on It?",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+            "locator": "CNXML module m42081, worked example",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "Calculate the change in length of the upper leg bone (the femur) when a 70.0 kg man supports 62.0 kg of his mass on it, assuming the bone to be equivalent to a uniform rod that is 40.0 cm long and 2.00 cm in radius."
+            },
+            {
+              "step_number": 2,
+              "expression": "The force is equal to the weight supported, or and the cross-sectional area is ${πr}^{2}=1.257×{10}^{-3}{m}^{2}$ ."
+            },
+            {
+              "step_number": 3,
+              "expression": "The equation $ΔL=\\frac{1}{Y}\\frac{F}{A}{L}_{0}$ can be used to find the change in length."
+            },
+            {
+              "step_number": 4,
+              "expression": "All quantities except $ΔL$ are known."
+            },
+            {
+              "step_number": 5,
+              "expression": "Note that the compression value for Young’s modulus for bone must be used here."
+            },
+            {
+              "step_number": 6,
+              "expression": "Thus, This small change in length seems reasonable, consistent with our experience that bones are rigid."
+            },
+            {
+              "step_number": 7,
+              "expression": "In fact, even the rather large forces encountered during strenuous physical activity do not compress or bend bones by large amounts."
+            },
+            {
+              "step_number": 8,
+              "expression": "Although bone is rigid compared with fat or muscle, several of the substances listed in have larger values of Young’s modulus $Y$ ."
+            },
+            {
+              "step_number": 9,
+              "expression": "In other words, they are more rigid."
+            },
+            {
+              "step_number": 10,
+              "expression": "The equation for change in length is traditionally rearranged and written in the following form: The ratio of force to area, *$\\frac{F}{A}$* , is defined as stress (measured in ${N/m}^{2}$ ), and the ratio of the change in length to length, $\\frac{ΔL}{{L}_{0}}$ , is defined as strain (a unitless quantity)."
+            },
+            {
+              "step_number": 11,
+              "expression": "In other words, In this form, the equation is analogous to Hooke’s law, with stress analogous to force and strain analogous to deformation."
+            },
+            {
+              "step_number": 12,
+              "expression": "If we again rearrange this equation to the form we see that it is the same as Hooke’s law with a proportionality constant This general idea—that force and the deformation it causes are proportional for small deformations—applies to changes in length, sideways bending, and changes in volume."
+            },
+            {
+              "step_number": 13,
+              "expression": "The ratio of force to area, *$\\frac{F}{A}$* , is defined as stress measured in N/m 2 ."
+            },
+            {
+              "step_number": 14,
+              "expression": "The ratio of the change in length to length, $\\frac{ΔL}{{L}_{0}}$ , is defined as strain (a unitless quantity)."
+            },
+            {
+              "step_number": 15,
+              "expression": "In other words,"
+            }
+          ],
+          "answer": {
+            "text": "Calculate the change in length of the upper leg bone (the femur) when a 70.0 kg man supports 62.0 kg of his mass on it, assuming the bone to be equivalent to a uniform rod that is 40.0 cm long and 2.00 cm in radius. The force is equal to the weight supported, or and the cross-sectional area is ${πr}^{2}=1.257×{10}^{-3}{m}^{2}$ . The equation $ΔL=\\frac{1}{Y}\\frac{F}{A}{L}_{0}$ can be used to find the change in length. All quantities except $ΔL$ are known. Note that the compression value for Young’s modulus for bone must be used here. Thus, This small change in length seems reasonable, consistent with our experience that bones are rigid. In fact, even the rather large forces encountered during strenuous physical activity do not compress or bend bones by large amounts. Although bone is rigid compared with fat or muscle, several of the substances listed in have larger values of Young’s modulus $Y$ . In other words, they are more rigid. The equation for change in length is traditionally rearranged and written in the following form: The ratio of force to area, *$\\frac{F}{A}$* , is defined as stress (measured in ${N/m}^{2}$ ), and the ratio of the change in length to length, $\\frac{ΔL}{{L}_{0}}$ , is defined as strain (a unitless quantity). In other words, In this form, the equation is analogous to Hooke’s law, with stress analogous to force and strain analogous to deformation. If we again rearrange this equation to the form we see that it is the same as Hooke’s law with a proportionality constant This general idea—that force and the deformation it causes are proportional for small deformations—applies to changes in length, sideways bending, and changes in volume. The ratio of force to area, *$\\frac{F}{A}$* , is defined as stress measured in N/m 2 . The ratio of the change in length to length, $\\frac{ΔL}{{L}_{0}}$ , is defined as strain (a unitless quantity). In other words,",
+            "inline": []
+          }
+        },
+        {
+          "id": "we-ex-50",
+          "statement": {
+            "text": "Calculating Force Required to Deform: That Nail Does Not Bend Much Under a Load",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+            "locator": "CNXML module m42081, worked example",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "Find the mass of the picture hanging from a steel nail as shown in , given that the nail bends only $1.80 µm$ ."
+            },
+            {
+              "step_number": 2,
+              "expression": "(Assume the shear modulus is known to two significant figures.)"
+            }
+          ],
+          "answer": {
+            "text": "Find the mass of the picture hanging from a steel nail as shown in , given that the nail bends only $1.80 µm$ . (Assume the shear modulus is known to two significant figures.)",
+            "inline": []
+          }
+        },
+        {
+          "id": "we-ex-65",
+          "statement": {
+            "text": "Calculating Change in Volume with Deformation: How Much Is Water Compressed at Great Ocean Depths?",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+            "locator": "CNXML module m42081, worked example",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "Calculate the fractional decrease in volume ( $\\frac{ΔV}{{V}_{0}}$ ) for seawater at 5.00 km depth, where the force per unit area is $5.00×{10}^{7}N/{m}^{2}$ ."
+            },
+            {
+              "step_number": 2,
+              "expression": "Equation $ΔV=\\frac{1}{B}\\frac{F}{A}{V}_{0}$ is the correct physical relationship."
+            },
+            {
+              "step_number": 3,
+              "expression": "All quantities in the equation except $\\frac{ΔV}{{V}_{0}}$ are known."
+            },
+            {
+              "step_number": 4,
+              "expression": "Solving for the unknown $\\frac{ΔV}{{V}_{0}}$ gives Substituting known values with the value for the bulk modulus $B$ from , Although measurable, this is not a significant decrease in volume considering that the force per unit area is about 500 atmospheres (1 million pounds per square foot)."
+            },
+            {
+              "step_number": 5,
+              "expression": "Liquids and solids are extraordinarily difficult to compress."
+            },
+            {
+              "step_number": 6,
+              "expression": "Conversely, very large forces are created by liquids and solids when they try to expand but are constrained from doing so—which is equivalent to compressing them to less than their normal volume."
+            },
+            {
+              "step_number": 7,
+              "expression": "This often occurs when a contained material warms up, since most materials expand when their temperature increases."
+            },
+            {
+              "step_number": 8,
+              "expression": "If the materials are tightly constrained, they deform or break their container."
+            },
+            {
+              "step_number": 9,
+              "expression": "Another very common example occurs when water freezes."
+            },
+            {
+              "step_number": 10,
+              "expression": "Water, unlike most materials, expands when it freezes, and it can easily fracture a boulder, rupture a biological cell, or crack an engine block that gets in its way."
+            },
+            {
+              "step_number": 11,
+              "expression": "Other types of deformations, such as torsion or twisting, behave analogously to the tension, shear, and bulk deformations considered here."
+            },
+            {
+              "step_number": 12,
+              "expression": "Simulation: Masses and Springs"
+            }
+          ],
+          "answer": {
+            "text": "Calculate the fractional decrease in volume ( $\\frac{ΔV}{{V}_{0}}$ ) for seawater at 5.00 km depth, where the force per unit area is $5.00×{10}^{7}N/{m}^{2}$ . Equation $ΔV=\\frac{1}{B}\\frac{F}{A}{V}_{0}$ is the correct physical relationship. All quantities in the equation except $\\frac{ΔV}{{V}_{0}}$ are known. Solving for the unknown $\\frac{ΔV}{{V}_{0}}$ gives Substituting known values with the value for the bulk modulus $B$ from , Although measurable, this is not a significant decrease in volume considering that the force per unit area is about 500 atmospheres (1 million pounds per square foot). Liquids and solids are extraordinarily difficult to compress. Conversely, very large forces are created by liquids and solids when they try to expand but are constrained from doing so—which is equivalent to compressing them to less than their normal volume. This often occurs when a contained material warms up, since most materials expand when their temperature increases. If the materials are tightly constrained, they deform or break their container. Another very common example occurs when water freezes. Water, unlike most materials, expands when it freezes, and it can easily fracture a boulder, rupture a biological cell, or crack an engine block that gets in its way. Other types of deformations, such as torsion or twisting, behave analogously to the tension, shear, and bulk deformations considered here. Simulation: Masses and Springs",
+            "inline": []
+          }
+        },
+        {
+          "id": "we-exr-97",
+          "statement": {
+            "text": "During a circus act, one performer swings upside down hanging from a trapeze holding another, also upside-down, performer by the legs. If the upward force on the lower performer is three times her weight, how much do the bones (the femurs) in her upper legs stretch? You may assume each is equivalent to a uniform rod 35.0 cm long and 1.80 cm in radius. Her mass is 60.0 kg.",
+            "inline": []
+          },
+          "steps": [
+            {
+              "step_number": 1,
+              "expression": "$1.90×{10}^{-3}cm$"
+            }
+          ],
+          "answer": {
+            "text": "1.90×{10}^{-3}cm",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "osbooks-college-physics-bundle",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+            "locator": "CNXML module m42081, exercise block exr-97",
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+          }
+        }
+      ],
+      "misconceptions": [
+        {
+          "id": "mis-1",
+          "claim": {
+            "text": "A spring stretches a little and then springs back, no matter how hard you pull.",
+            "inline": []
+          },
+          "correction": {
+            "text": "Not past the elastic limit. Beyond it the material does not return to its original shape, and beyond the breaking point it fails altogether.",
+            "inline": []
+          },
+          "provenance": {
+            "publisher": "OpenStax",
+            "title": "College Physics 2e",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+            "locator": "CNXML module m42081",
+            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+          }
+        }
+      ],
+      "summary_points": [
+        {
+          "text": "Stress is force over area. Strain is the change in length over the original length.",
+          "inline": []
+        },
+        {
+          "text": "Hooke's law holds while the material stays in the elastic region.",
+          "inline": []
+        },
+        {
+          "text": "The elastic limit, the yield point and the breaking point mark three different failures.",
+          "inline": []
+        }
+      ],
+      "exercise_ids": [
+        "ex-sec-4-01",
+        "ex-sec-4-02",
+        "ex-sec-4-03",
+        "ex-sec-4-04",
+        "ex-sec-4-05",
+        "ex-sec-4-06",
+        "ex-sec-4-07",
+        "ex-sec-4-08"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+        "locator": "CNXML module m42081",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exercises": [
+    {
+      "id": "ex-sec-2-01",
+      "section_id": "sec-2",
+      "tier": "warm_up",
+      "kind": "verbal",
+      "difficulty": 1,
+      "marks": 1,
+      "stem": {
+        "text": "A block is given a short push and then slides with constant friction across a horizontal floor. Which statement best explains the direction of the force that friction applies on the moving block? Friction will be in the same direction as the block's motion because molecular interactions between the block and the floor will deform the block in the direction of motion.; Friction will be in the same direction as the block's motion because thermal energy generated at the interface between the block and the floor adds kinetic energy to the block.; Friction will be in the opposite direction of the block's motion because molecular interactions between the block and the floor will deform the block in the opposite direction of motion.; Friction will be in the opposite direction of the block's motion because thermal energy generated at the interface between the block and the floor converts some of the block's kinetic energy to potential energy.",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "(c)",
+        "inline": []
+      },
+      "answer_kind": "explanation",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "(c)"
+        }
+      ],
+      "tags": [
+        "friction",
+        "static-friction",
+        "kinetic-friction"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139, exercise block exr-50",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-2-02",
+      "section_id": "sec-2",
+      "tier": "warm_up",
+      "kind": "numeric",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "A physics major is cooking breakfast when he notices that the frictional force between his steel spatula and his Teflon frying pan is only 0.200 N. Knowing the coefficient of kinetic friction between the two materials, he quickly calculates the normal force. What is it?",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "5.00 N",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$5.00 N$"
+        }
+      ],
+      "tags": [
+        "friction",
+        "static-friction",
+        "kinetic-friction"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139, exercise block exr-65",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-2-03",
+      "section_id": "sec-2",
+      "tier": "core",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "Suppose you have a 120-kg wooden crate resting on a wood floor. (a) What maximum force can you exert horizontally on the crate without moving it? (b) If you continue to exert this force once the crate starts to slip, what will the magnitude of its acceleration then be?",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "1.96 m{/s}^{2}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "(a) 588 N"
+        },
+        {
+          "step_number": 2,
+          "expression": "(b) $1.96 m{/s}^{2}$"
+        }
+      ],
+      "tags": [
+        "friction",
+        "static-friction",
+        "kinetic-friction"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139, exercise block exr-71",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-2-04",
+      "section_id": "sec-2",
+      "tier": "core",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "A team of eight dogs pulls a sled with waxed wood runners on wet snow (mush!). The dogs have average masses of 19.0 kg, and the loaded sled with its rider has a mass of 210 kg. (a) Calculate the magnitude of the acceleration starting from rest if each dog exerts an average force of 185 N backward on the snow. (b) What is the magnitude of the acceleration once the sled starts to move? (c) For both situations, calculate the magnitude of the force in the coupling between the dogs and the sled.",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "(a) 3.29 m/s 2 (b) 3.52 m/s 2 (c) 980 N; 945 N",
+        "inline": []
+      },
+      "answer_kind": "explanation",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "(a) 3.29 m/s 2"
+        },
+        {
+          "step_number": 2,
+          "expression": "(b) 3.52 m/s 2"
+        },
+        {
+          "step_number": 3,
+          "expression": "(c) 980 N; 945 N"
+        }
+      ],
+      "tags": [
+        "friction",
+        "static-friction",
+        "kinetic-friction"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139, exercise block exr-76",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-2-05",
+      "section_id": "sec-2",
+      "tier": "core",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "Calculate the deceleration of a snow boarder going up a $5.0º$ , slope assuming the coefficient of friction for waxed wood on wet snow. The result of may be useful, but be careful to consider the fact that the snow boarder is going uphill. Explicitly show how you follow the steps in Problem-Solving Strategies .",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "1.83{m/s}^{2}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$1.83{m/s}^{2}$"
+        }
+      ],
+      "tags": [
+        "friction",
+        "static-friction",
+        "kinetic-friction"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139, exercise block exr-85",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-2-06",
+      "section_id": "sec-2",
+      "tier": "core",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "Calculate the maximum acceleration of a car that is heading up a $4º$ slope (one that makes an angle of $4º$ with the horizontal) under the following road conditions. Assume that only half the weight of the car is supported by the two drive wheels and that the coefficient of static friction is involved—that is, the tires are not allowed to slip during the acceleration. (Ignore rolling.) (a) On dry concrete. (b) On wet concrete. (c) On ice, assuming that ${μ}_{s}=0.100$ , the same as for shoes on ice.",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "(a) $4.{20 m/s}^{2}$ (b) $2.{74 m/s}^{2}$ (c) $–0.{195 m/s}^{2}$",
+        "inline": []
+      },
+      "answer_kind": "explanation",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "(a) $4.{20 m/s}^{2}$"
+        },
+        {
+          "step_number": 2,
+          "expression": "(b) $2.{74 m/s}^{2}$"
+        },
+        {
+          "step_number": 3,
+          "expression": "(c) $–0.{195 m/s}^{2}$"
+        }
+      ],
+      "tags": [
+        "friction",
+        "static-friction",
+        "kinetic-friction"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139, exercise block exr-93",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-2-07",
+      "section_id": "sec-2",
+      "tier": "core",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "A freight train consists of two $8.00×{10}^{5}-kg$ engines and 45 cars with average masses of $5.50×{10}^{5}kg$ . (a) What force must each engine exert backward on the track to accelerate the train at a rate of $5.00×{10}^{-2}m/{s}^{2}$ if the force of friction is $7.50×{10}^{5}N$ , assuming the engines exert identical forces? This is not a large frictional force for such a massive system. Rolling friction for trains is small, and consequently trains are very energy-efficient transportation systems. (b) What is the magnitude of the force in the coupling between the 37th and 38th cars (this is the force each exerts on the other), assuming all cars have the same mass and that friction is evenly distributed among all of the cars and engines?",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "3.48×{10}^{5}N",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "(a) $1.03×{10}^{6}N$"
+        },
+        {
+          "step_number": 2,
+          "expression": "(b) $3.48×{10}^{5}N$"
+        }
+      ],
+      "tags": [
+        "friction",
+        "static-friction",
+        "kinetic-friction"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139, exercise block exr-100",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-2-08",
+      "section_id": "sec-2",
+      "tier": "core",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "A contestant in a winter sporting event pushes a 45.0-kg block of ice across a frozen lake as shown in (a). (a) Calculate the minimum force $F$ he must exert to get the block moving. (b) What is the magnitude of its acceleration once it starts to move, if that force is maintained?",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "0.720 m{/s}^{2}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "(a) $51.0 N$"
+        },
+        {
+          "step_number": 2,
+          "expression": "(b) $0.720 m{/s}^{2}$"
+        }
+      ],
+      "tags": [
+        "friction",
+        "static-friction",
+        "kinetic-friction"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42139/index.cnxml",
+        "locator": "CNXML module m42139, exercise block exr-107",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-3-01",
+      "section_id": "sec-3",
+      "tier": "warm_up",
+      "kind": "numeric",
+      "difficulty": 1,
+      "marks": 1,
+      "stem": {
+        "text": "A 560-g squirrel with a cross-section area facing the fluid of $144{cm}^{2}$ falls from a 5.0-m tree to the ground. Estimate its terminal velocity. (Use a drag coefficient for a horizontal skydiver.) What will be the velocity of a 56-kg person hitting the ground, assuming no drag contribution in such a short distance?",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "25.1 m/s; 9.90 m/s",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$25.1 m/s; 9.90 m/s$"
+        }
+      ],
+      "tags": [
+        "drag",
+        "air-resistance"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42080/index.cnxml",
+        "locator": "CNXML module m42080, exercise block exr-53",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-3-02",
+      "section_id": "sec-3",
+      "tier": "warm_up",
+      "kind": "numeric",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "By what factor does the drag force on a car increase as it goes from 65 to 110 km/h?",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "2.9",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$2.9$"
+        }
+      ],
+      "tags": [
+        "drag",
+        "air-resistance"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42080/index.cnxml",
+        "locator": "CNXML module m42080, exercise block exr-58",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-3-03",
+      "section_id": "sec-3",
+      "tier": "core",
+      "kind": "algebraic",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "Using Stokes’ law, verify that the units for viscosity are kilograms per meter per second.",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "\\frac{kg}{m\\cdot s}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$(η)=\\frac{({F}_{s})}{(r)(v)}=\\frac{kg\\cdot {m/s}^{2}}{m\\cdot m/s}=\\frac{kg}{m\\cdot s}$"
+        }
+      ],
+      "tags": [
+        "drag",
+        "air-resistance"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42080/index.cnxml",
+        "locator": "CNXML module m42080, exercise block exr-62",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-3-04",
+      "section_id": "sec-3",
+      "tier": "core",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "Stokes’ law describes sedimentation of particles in liquids and can be used to measure viscosity. Particles in liquids achieve terminal velocity quickly. One can measure the time it takes for a particle to fall a certain distance and then use Stokes’ law to calculate the viscosity of the liquid. Suppose a steel ball bearing (density $7.8×{10}^{3}{kg/m}^{3}$ , diameter $3.0 mm$ ) is dropped in a container of motor oil. It takes 12 s to fall a distance of 0.60 m. Calculate the viscosity of the oil.",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "0.76 kg/m\\cdot s",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$0.76 kg/m\\cdot s$"
+        }
+      ],
+      "tags": [
+        "drag",
+        "air-resistance"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42080/index.cnxml",
+        "locator": "CNXML module m42080, exercise block exr-66",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-4-01",
+      "section_id": "sec-4",
+      "tier": "warm_up",
+      "kind": "numeric",
+      "difficulty": 1,
+      "marks": 1,
+      "stem": {
+        "text": "(a) The “lead” in pencils is a graphite composition with a Young’s modulus of about $1×{10}^{9}N/{m}^{2}$ . Calculate the change in length of the lead in an automatic pencil if you tap it straight into the pencil with a force of 4.0 N. The lead is 0.50 mm in diameter and 60 mm long. (b) Is the answer reasonable? That is, does it seem to be consistent with what you have observed when using pencils?",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "(a)1 mm",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "(a)1 mm (b) This does seem reasonable, since the lead does seem to shrink a little when you push on it."
+        }
+      ],
+      "tags": [
+        "elasticity",
+        "hookes-law",
+        "stress",
+        "strain"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+        "locator": "CNXML module m42081, exercise block exr-101",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-4-02",
+      "section_id": "sec-4",
+      "tier": "warm_up",
+      "kind": "numeric",
+      "difficulty": 2,
+      "marks": 2,
+      "stem": {
+        "text": "(a) By how much does a 65.0-kg mountain climber stretch her 0.800-cm diameter nylon rope when they hang 35.0 m below a rock outcropping? (b) Does the answer seem to be consistent with what you have observed for nylon ropes? Would it make sense if the rope were actually a bungee cord?",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "(a)9 cm",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "(a)9 cm (b)This seems reasonable for nylon climbing rope, since it is not supposed to stretch that much."
+        }
+      ],
+      "tags": [
+        "elasticity",
+        "hookes-law",
+        "stress",
+        "strain"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+        "locator": "CNXML module m42081, exercise block exr-106",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-4-03",
+      "section_id": "sec-4",
+      "tier": "core",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "As an oil well is drilled, each new section of drill pipe supports its own weight and that of the pipe and drill bit beneath it. Calculate the stretch in a new 6.00 m length of steel pipe that supports 3.00 km of pipe having a mass of 20.0 kg/m and a 100-kg drill bit. The pipe is equivalent in stiffness to a solid cylinder 5.00 cm in diameter.",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "8.59 mm",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "8.59 mm"
+        }
+      ],
+      "tags": [
+        "elasticity",
+        "hookes-law",
+        "stress",
+        "strain"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+        "locator": "CNXML module m42081, exercise block exr-111",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-4-04",
+      "section_id": "sec-4",
+      "tier": "core",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "A vertebra is subjected to a shearing force of 500 N. Find the shear deformation, taking the vertebra to be a cylinder 3.00 cm high and 4.00 cm in diameter.",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "1.49×{10}^{-7}m",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$1.49×{10}^{-7}m$"
+        }
+      ],
+      "tags": [
+        "elasticity",
+        "hookes-law",
+        "stress",
+        "strain"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+        "locator": "CNXML module m42081, exercise block exr-115",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-4-05",
+      "section_id": "sec-4",
+      "tier": "core",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "When using a pencil eraser, you exert a vertical force of 6.00 N at a distance of 2.00 cm from the hardwood-eraser joint. The pencil is 6.00 mm in diameter and is held at an angle of $20.0º$ to the horizontal. (a) By how much does the wood flex perpendicular to its length? (b) How much is it compressed lengthwise?",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "9.67×{10}^{-8}m",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "(a) $3.99×{10}^{-7}m$"
+        },
+        {
+          "step_number": 2,
+          "expression": "(b) $9.67×{10}^{-8}m$"
+        }
+      ],
+      "tags": [
+        "elasticity",
+        "hookes-law",
+        "stress",
+        "strain"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+        "locator": "CNXML module m42081, exercise block exr-119",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-4-06",
+      "section_id": "sec-4",
+      "tier": "core",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "A farmer making grape juice fills a glass bottle to the brim and caps it tightly. The juice expands more than the glass when it warms up, in such a way that the volume increases by 0.2% (that is, $ΔV/{V}_{0}=2×{10}^{-3}$ ) relative to the space available. Calculate the magnitude of the normal force exerted by the juice per square centimeter if its bulk modulus is $1.8×{10}^{9}{N/m}^{2}$ , assuming the bottle does not break. In view of your answer, do you think the bottle will survive?",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "4×{10}^{6}{N/m}^{2}",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "$4×{10}^{6}{N/m}^{2}$ . This is about 36 atm, greater than a typical jar can withstand."
+        }
+      ],
+      "tags": [
+        "elasticity",
+        "hookes-law",
+        "stress",
+        "strain"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+        "locator": "CNXML module m42081, exercise block exr-125",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-4-07",
+      "section_id": "sec-4",
+      "tier": "core",
+      "kind": "numeric",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "This problem returns to the tightrope walker studied in , who created a tension of $3.94×{10}^{3}N$ in a wire making an angle $5.0º$ below the horizontal with each supporting pole. Calculate how much this tension stretches the steel wire if it was originally 15 m long and 0.50 cm in diameter.",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "1.4 cm",
+        "inline": []
+      },
+      "answer_kind": "expression",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "1.4 cm"
+        }
+      ],
+      "tags": [
+        "elasticity",
+        "hookes-law",
+        "stress",
+        "strain"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+        "locator": "CNXML module m42081, exercise block exr-130",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    },
+    {
+      "id": "ex-sec-4-08",
+      "section_id": "sec-4",
+      "tier": "core",
+      "kind": "verbal",
+      "difficulty": 3,
+      "marks": 3,
+      "stem": {
+        "text": "Critical Thinking Two spherical beads of the same mass fall at a constant speed due to a drag force. Bead A takes twice as long to fall the same distance as bead B. (a) Which of these beads has the larger radius? (b) Based on experimental data, an equation that fits the data is suggested for radius of a bead, *r* , which may not be correct: $r=Kt-\\frac{1}{2}$ , where *K* is a constant with appropriate units and *t* is the time it takes for a bead to reach a determined distance. Is this equation consistent with your answer from part a? Explain why or why not. Does this equation make sense? Explain why or why not. (c) Beads of different radii are selected and the time it takes to fall a set distance is recorded. Graph the radius of these beads as a function of the time it takes to fall a determined distance.",
+        "inline": []
+      },
+      "options": [],
+      "answer": {
+        "text": "(a) Bead A has the larger radius because both have the same weight and drag force. Since A takes longer to fall, its speed is less and, therefore, it must have larger area or radius. (b) i. This equation is not consistent because it shows that the bead that took longer to fall has a smaller radius. ii. It does not make sense because *r* is proportional to *t* $.$ (c)",
+        "inline": []
+      },
+      "answer_kind": "explanation",
+      "solution": [
+        {
+          "step_number": 1,
+          "expression": "(a) Bead A has the larger radius because both have the same weight and drag force. Since A takes longer to fall, its speed is less and, therefore, it must have larger area or radius."
+        },
+        {
+          "step_number": 2,
+          "expression": "(b) i. This equation is not consistent because it shows that the bead that took longer to fall has a smaller radius. ii. It does not make sense because *r* is proportional to *t* $.$"
+        },
+        {
+          "step_number": 3,
+          "expression": "(c)"
+        }
+      ],
+      "tags": [
+        "elasticity",
+        "hookes-law",
+        "stress",
+        "strain"
+      ],
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "osbooks-college-physics-bundle",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42081/index.cnxml",
+        "locator": "CNXML module m42081, exercise block exr-135",
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
+      },
+      "solution_provenance": "OpenStax CNXML solution element (in file)"
+    }
+  ],
+  "exam_links": [
+    {
+      "exam": "JAMB",
+      "subject": "physics",
+      "topic_slug": "friction",
+      "subtopic_slug": "static-and-dynamic-friction",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic friction, subtopic static-and-dynamic-friction (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "JAMB",
+      "subject": "physics",
+      "topic_slug": "elasticity",
+      "subtopic_slug": "elastic-limit-yield-point-and-breaking-point",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic elasticity, subtopic elastic-limit-yield-point-and-breaking-point (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "WAEC",
+      "subject": "physics",
+      "topic_slug": "waec-motion",
+      "subtopic_slug": "waec-solid-friction-2",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic waec-motion, subtopic waec-solid-friction-2 (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "NECO",
+      "subject": "physics",
+      "topic_slug": null,
+      "subtopic_slug": null,
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "not_catalogued",
+      "source_locator": "the production catalog holds the NECO physics subject and no topics for it yet (read-only fetch 2026-11-12)",
+      "question_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Further Applications of Newton's Laws: Friction, Drag, and Elasticity', modules m42138, m42139, m42080, m42081",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}
