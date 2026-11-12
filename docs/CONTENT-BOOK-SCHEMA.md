@@ -299,10 +299,35 @@ into the spec, then reports the coverage. The spec keeps the truth, so the
 chapter rebuilds without a database, and the coverage report is the honest
 measure of what the exam side of the book actually holds.
 
-Right now the report says the bank is thin: ten of the twenty two links point
-at a subtopic with no questions at all, and the covered subtopics hold one or
-two questions each. That is a statement about the bank, not about the
+Right now the report says the bank is thin: sixteen of the thirty eight links
+point at a subtopic with no questions at all, and the covered subtopics hold
+one or two questions each. That is a statement about the bank, not about the
 chapters.
+
+### The exam side of a chapter
+
+The links live on the sections, not on the chapter, so a trap can cite the
+paper that tests that section.
+
+| Object | Holds | Rule |
+| --- | --- | --- |
+| section `exam_links` | the exam, the subject, the topic, the subtopic, and the question ids the bank holds | the question ids are filled by the link step |
+| chapter `exam_traps` | a misconception, the correction, the signal, the paper evidence, the frequency | a trap without paper evidence is not a trap. It stays a chapter misconception |
+| chapter `exam_recall_checks` | a practice item in the exam's wording, with options, an answer and an explanation | the answer must be one of its own options |
+
+### The pack
+
+A pack is what a candidate opens: one exam, one subject, one topic. It holds
+the chapters and sections that teach it, the traps, the recall checks, the
+chapter exercises and the past papers, and it reports what it is missing.
+`scripts/build_packs.py` writes them to `data/packs/`.
+
+The order of the work is fixed, because the link step reads the bank and the
+authoring step rewrites the spec:
+
+```
+author the exam side  ->  link the bank  ->  build the chapters  ->  build the packs
+```
 
 ## Where we are against this
 

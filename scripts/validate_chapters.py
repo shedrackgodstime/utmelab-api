@@ -412,6 +412,94 @@ def validate(path):
     if len(listed) != len(set(listed)):
         errors.append((path, "an exercise is listed by more than one section"))
 
+    # ---- the exam side
+    for section in sections:
+        if not isinstance(section, dict):
+            continue
+        for link in section.get("exam_links", []) or []:
+            if not isinstance(link, dict):
+                errors.append((path, f"section {section.get('id')} exam link not dict"))
+                continue
+            for key in ("exam", "subject", "topic_slug", "subtopic_slug"):
+                if not isinstance(link.get(key), str) or not link.get(key, "").strip():
+                    errors.append((path, f"section {section.get('id')} exam link missing {key}"))
+            if link.get("status") not in {"covered", "partial", "not_catalogued"}:
+                errors.append((path, f"section {section.get('id')} exam link status unknown"))
+            if not isinstance(link.get("question_ids"), list):
+                errors.append((path, f"section {section.get('id')} exam link question_ids must be a list"))
+
+    traps = document.get("exam_traps", [])
+    if traps is not None and not isinstance(traps, list):
+        errors.append((path, "exam_traps must be a list"))
+    else:
+        seen_traps = set()
+        for trap in traps or []:
+            if not isinstance(trap, dict):
+                errors.append((path, "exam trap not dict"))
+                continue
+            trap_id = trap.get("id")
+            if not isinstance(trap_id, str) or not trap_id:
+                errors.append((path, "exam trap missing id"))
+            elif trap_id in seen_traps:
+                errors.append((path, f"duplicate exam trap id {trap_id}"))
+            else:
+                seen_traps.add(trap_id)
+            if not isinstance(trap.get("exam"), str) or not trap.get("exam", "").strip():
+                errors.append((path, f"exam trap {trap_id} names no exam"))
+            if trap.get("section_id") not in section_ids:
+                errors.append((path, f"exam trap {trap_id} points at unknown section"))
+            check_richtext(trap.get("misconception"), f"{path}.{trap_id}.misconception", errors)
+            check_richtext(trap.get("correction"), f"{path}.{trap_id}.correction", errors)
+            check_richtext(trap.get("signal"), f"{path}.{trap_id}.signal", errors)
+            evidence = trap.get("paper_evidence")
+            if not isinstance(evidence, dict):
+                # A trap without paper evidence is a chapter misconception.
+                errors.append((path, f"exam trap {trap_id} has no paper evidence"))
+            else:
+                if not isinstance(evidence.get("question_id"), str) or not evidence.get("question_id", "").strip():
+                    errors.append((path, f"exam trap {trap_id} evidence has no question id"))
+            check_provenance(trap.get("provenance"), f"{path}.{trap_id}.provenance", errors)
+
+    checks = document.get("exam_recall_checks", [])
+    if checks is not None and not isinstance(checks, list):
+        errors.append((path, "exam_recall_checks must be a list"))
+    else:
+        seen_checks = set()
+        for check in checks or []:
+            if not isinstance(check, dict):
+                errors.append((path, "recall check not dict"))
+                continue
+            check_id = check.get("id")
+            if not isinstance(check_id, str) or not check_id:
+                errors.append((path, "recall check missing id"))
+            elif check_id in seen_checks:
+                errors.append((path, f"duplicate recall check id {check_id}"))
+            else:
+                seen_checks.add(check_id)
+            if not isinstance(check.get("exam"), str) or not check.get("exam", "").strip():
+                errors.append((path, f"recall check {check_id} names no exam"))
+            if check.get("section_id") not in section_ids:
+                errors.append((path, f"recall check {check_id} points at unknown section"))
+            check_richtext(check.get("stem"), f"{path}.{check_id}.stem", errors)
+            check_richtext(check.get("explanation"), f"{path}.{check_id}.explanation", errors)
+            options = check.get("options")
+            if not isinstance(options, list) or len(options) < 2:
+                errors.append((path, f"recall check {check_id} needs at least two options"))
+            else:
+                ids = []
+                for option in options:
+                    if not isinstance(option, dict) or not isinstance(option.get("id"), str):
+                        errors.append((path, f"recall check {check_id} option is malformed"))
+                        continue
+                    if not isinstance(option.get("text"), str) or not option.get("text", "").strip():
+                        errors.append((path, f"recall check {check_id} option has no text"))
+                    ids.append(option["id"])
+                if check.get("answer") not in ids:
+                    errors.append((path, f"recall check {check_id} answer is not one of its options"))
+            difficulty = check.get("difficulty")
+            if not isinstance(difficulty, int) or not 1 <= difficulty <= 5:
+                errors.append((path, f"recall check {check_id} difficulty out of range"))
+
     sources = document.get("sources")
     if not isinstance(sources, list) or not sources:
         errors.append((path, "sources missing or empty"))

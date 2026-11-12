@@ -358,6 +358,9 @@ def build(spec):
                 ]
             section_exercises.append(exercise)
 
+        section_exam_links = [
+            dict(link) for link in section_spec.get("exam_links", [])
+        ]
         sections.append({
             "id": section_id,
             "order": index,
@@ -387,6 +390,7 @@ def build(spec):
             ],
             "summary_points": [rt(point) for point in section_spec.get("summary", [])],
             "exercise_ids": [exercise["id"] for exercise in section_exercises],
+            "exam_links": section_exam_links,
             "provenance": {
                 "publisher": spec.get("publisher", "OpenStax"),
                 "title": spec.get("source_title", spec.get("title")),
@@ -398,6 +402,60 @@ def build(spec):
         if section_spec.get("no_worked_example_reason"):
             sections[-1]["no_worked_example_reason"] = section_spec["no_worked_example_reason"]
         exercises.extend(section_exercises)
+
+    # The chapter holds the union of its sections' exam links, so a reader of
+    # the chapter sees the whole exam picture at once.
+    union = {}
+    for section in sections:
+        for link in section.get("exam_links", []):
+            key = (link.get("exam"), link.get("subject"), link.get("topic_slug"), link.get("subtopic_slug"))
+            if key not in union:
+                union[key] = dict(link)
+    if not union and spec.get("exam_links"):
+        union = {
+            (link.get("exam"), link.get("subject"), link.get("topic_slug"), link.get("subtopic_slug")): dict(link)
+            for link in spec["exam_links"]
+        }
+    chapter_links = sorted(
+        union.values(),
+        key=lambda link: (link.get("exam") or "", link.get("topic_slug") or "", link.get("subtopic_slug") or ""),
+    )
+
+    traps = []
+    for trap in spec.get("exam_traps", []):
+        traps.append({
+            "id": trap["id"],
+            "exam": trap["exam"],
+            "subject": trap["subject"],
+            "section_id": trap["section_id"],
+            "misconception": rt(trap["misconception"]),
+            "correction": rt(trap["correction"]),
+            "signal": rt(trap["signal"]),
+            "paper_evidence": trap["paper_evidence"],
+            "frequency": trap.get("frequency", "occasional"),
+            "provenance": {
+                "publisher": "OpenStax",
+                "title": "College Physics 2e",
+                "url": trap["paper_evidence"].get("url", ""),
+                "locator": f"paper question {trap['paper_evidence']['question_id']}",
+                "licence": spec.get("licence", ""),
+            },
+        })
+
+    recall = []
+    for check in spec.get("exam_recall_checks", []):
+        recall.append({
+            "id": check["id"],
+            "exam": check["exam"],
+            "subject": check["subject"],
+            "section_id": check["section_id"],
+            "stem": rt(check["stem"]),
+            "options": check["options"],
+            "answer": check["answer"],
+            "explanation": rt(check["explanation"]),
+            "difficulty": check.get("difficulty", 2),
+            "source": check.get("source", ""),
+        })
 
     chapter = {
         "chapter_id": spec["chapter_id"],
@@ -415,7 +473,9 @@ def build(spec):
         "glossary": spec.get("glossary", []),
         "sections": sections,
         "exercises": exercises,
-        "exam_links": spec.get("exam_links", []),
+        "exam_links": chapter_links,
+        "exam_traps": traps,
+        "exam_recall_checks": recall,
         "sources": spec.get("sources", []),
     }
     return chapter

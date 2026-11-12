@@ -1,0 +1,151 @@
+{
+  "exam": "JAMB",
+  "subject": "mathematics",
+  "topic_slug": "indices-logarithms-and-surds",
+  "topic_name": "",
+  "subtopic_slugs": [
+    "laws-of-indices",
+    "surds"
+  ],
+  "sections": [
+    {
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "chapter_title": "Laws of Indices and Surds",
+      "section_id": "sec-2",
+      "title": "Multiplying powers with the same base",
+      "est_minutes": 9,
+      "learning_objectives": [
+        "Apply the product rule of exponents."
+      ],
+      "subtopic_slug": "laws-of-indices"
+    },
+    {
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "chapter_title": "Laws of Indices and Surds",
+      "section_id": "sec-3",
+      "title": "Dividing powers with the same base",
+      "est_minutes": 8,
+      "learning_objectives": [
+        "Apply the quotient rule of exponents."
+      ],
+      "subtopic_slug": "laws-of-indices"
+    },
+    {
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "chapter_title": "Laws of Indices and Surds",
+      "section_id": "sec-4",
+      "title": "Raising a power to a power, and powers of products and quotients",
+      "est_minutes": 11,
+      "learning_objectives": [
+        "Apply the power rule, the power of a product rule and the power of a quotient rule, and tell them apart from the product rule."
+      ],
+      "subtopic_slug": "laws-of-indices"
+    },
+    {
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "chapter_title": "Laws of Indices and Surds",
+      "section_id": "sec-5",
+      "title": "Zero and negative indices",
+      "est_minutes": 10,
+      "learning_objectives": [
+        "Apply the zero exponent rule and the negative exponent rule, and write results with positive indices."
+      ],
+      "subtopic_slug": "laws-of-indices"
+    },
+    {
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "chapter_title": "Laws of Indices and Surds",
+      "section_id": "sec-7",
+      "title": "Simplifying surds",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Simplify surds with the product and quotient rules for radicals."
+      ],
+      "subtopic_slug": "surds"
+    },
+    {
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "chapter_title": "Laws of Indices and Surds",
+      "section_id": "sec-8",
+      "title": "Adding and subtracting surds",
+      "est_minutes": 9,
+      "learning_objectives": [
+        "Add and subtract like surds."
+      ],
+      "subtopic_slug": "surds"
+    },
+    {
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "chapter_title": "Laws of Indices and Surds",
+      "section_id": "sec-9",
+      "title": "Rationalising the denominator",
+      "est_minutes": 10,
+      "learning_objectives": [
+        "Rationalise a denominator that contains a surd, using the conjugate when it holds two terms."
+      ],
+      "subtopic_slug": "surds"
+    }
+  ],
+  "traps": [],
+  "recall_checks": [],
+  "exercises": [
+    "ex-sec-2-01",
+    "ex-sec-2-02",
+    "ex-sec-2-03",
+    "ex-sec-3-01",
+    "ex-sec-3-02",
+    "ex-sec-4-01",
+    "ex-sec-4-02",
+    "ex-sec-4-03",
+    "ex-sec-4-04",
+    "ex-sec-4-05",
+    "ex-sec-4-06",
+    "ex-sec-4-07",
+    "ex-sec-5-01",
+    "ex-sec-5-02",
+    "ex-sec-5-03",
+    "ex-sec-5-04",
+    "ex-sec-5-05",
+    "ex-sec-7-01",
+    "ex-sec-7-02",
+    "ex-sec-7-03",
+    "ex-sec-7-04",
+    "ex-sec-7-05",
+    "ex-sec-7-06",
+    "ex-sec-7-07",
+    "ex-sec-7-08",
+    "ex-sec-7-09",
+    "ex-sec-7-10",
+    "ex-sec-7-11",
+    "ex-sec-8-01",
+    "ex-sec-8-02",
+    "ex-sec-8-03",
+    "ex-sec-8-04",
+    "ex-sec-8-05",
+    "ex-sec-8-06",
+    "ex-sec-9-01",
+    "ex-sec-9-02",
+    "ex-sec-9-03",
+    "ex-sec-9-04",
+    "ex-sec-9-05",
+    "ex-sec-9-06"
+  ],
+  "past_papers": [
+    "q_authored_math_indices_001",
+    "q_authored_math_surds_001",
+    "q_claim_2025_mathematics_74095",
+    "q_claim_2025_mathematics_74189",
+    "q_claim_2025_mathematics_74194"
+  ],
+  "coverage": {
+    "sections": 7,
+    "traps": 0,
+    "recall_checks": 0,
+    "exercises": 40,
+    "past_papers": 5,
+    "gaps": [
+      "traps",
+      "recall_checks"
+    ]
+  }
+}

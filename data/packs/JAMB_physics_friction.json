@@ -1,0 +1,105 @@
+{
+  "exam": "JAMB",
+  "subject": "physics",
+  "topic_slug": "friction",
+  "topic_name": "",
+  "subtopic_slugs": [
+    "static-and-dynamic-friction"
+  ],
+  "sections": [
+    {
+      "chapter_id": "phy_friction_drag_and_elasticity",
+      "chapter_title": "Friction, Drag and Elasticity",
+      "section_id": "sec-2",
+      "title": "Friction",
+      "est_minutes": 24,
+      "learning_objectives": [
+        "Tell static friction from kinetic friction and compute the friction force.",
+        "Use the coefficient of friction with the normal force."
+      ],
+      "subtopic_slug": "static-and-dynamic-friction"
+    }
+  ],
+  "traps": [
+    {
+      "id": "trap-1",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "Weight is the force that opposes an object sliding on a surface.",
+        "inline": []
+      },
+      "correction": {
+        "text": "The force that opposes sliding is the frictional force. Weight is the pull of the Earth, and it acts downward.",
+        "inline": []
+      },
+      "signal": {
+        "text": "The paper offers the weight as an option in a question asking for the force that opposes sliding.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "question_id": "q_claim_2025_physics_74476",
+        "exam": "JAMB",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_claim_2025_physics_74476"
+      },
+      "frequency": "recurring"
+    }
+  ],
+  "recall_checks": [
+    {
+      "id": "rc-1",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "The normal force on a 20 kg block resting on a horizontal table is 200 N. The coefficient of kinetic friction is 0.3. What is the kinetic friction force on the block while it slides?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "60 N"
+        },
+        {
+          "id": "b",
+          "text": "30 N"
+        },
+        {
+          "id": "c",
+          "text": "200 N"
+        },
+        {
+          "id": "d",
+          "text": "6 N"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The kinetic friction is f = μN = 0.3 × 200 = 60 N.",
+        "inline": []
+      },
+      "difficulty": 2
+    }
+  ],
+  "exercises": [
+    "ex-sec-2-01",
+    "ex-sec-2-02",
+    "ex-sec-2-03",
+    "ex-sec-2-04",
+    "ex-sec-2-05",
+    "ex-sec-2-06",
+    "ex-sec-2-07",
+    "ex-sec-2-08"
+  ],
+  "past_papers": [
+    "q_claim_2025_physics_74476",
+    "q_claim_2025_physics_75421"
+  ],
+  "coverage": {
+    "sections": 1,
+    "traps": 1,
+    "recall_checks": 1,
+    "exercises": 8,
+    "past_papers": 2,
+    "gaps": []
+  }
+}

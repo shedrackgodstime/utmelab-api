@@ -1,0 +1,86 @@
+{
+  "exam": "WAEC",
+  "subject": "general-mathematics",
+  "topic_slug": "waec-surds-radicals",
+  "topic_name": "",
+  "subtopic_slugs": [
+    "waec-simplification-and-rationalization-of-simple-surds"
+  ],
+  "sections": [
+    {
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "chapter_title": "Laws of Indices and Surds",
+      "section_id": "sec-6",
+      "title": "Roots and fractional indices",
+      "est_minutes": 11,
+      "learning_objectives": [
+        "Convert between index and radical notation and evaluate principal square roots."
+      ],
+      "subtopic_slug": "waec-simplification-and-rationalization-of-simple-surds"
+    },
+    {
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "chapter_title": "Laws of Indices and Surds",
+      "section_id": "sec-7",
+      "title": "Simplifying surds",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Simplify surds with the product and quotient rules for radicals."
+      ],
+      "subtopic_slug": "waec-simplification-and-rationalization-of-simple-surds"
+    },
+    {
+      "chapter_id": "math_laws_of_indices_and_surds",
+      "chapter_title": "Laws of Indices and Surds",
+      "section_id": "sec-9",
+      "title": "Rationalising the denominator",
+      "est_minutes": 10,
+      "learning_objectives": [
+        "Rationalise a denominator that contains a surd, using the conjugate when it holds two terms."
+      ],
+      "subtopic_slug": "waec-simplification-and-rationalization-of-simple-surds"
+    }
+  ],
+  "traps": [],
+  "recall_checks": [],
+  "exercises": [
+    "ex-sec-6-01",
+    "ex-sec-6-02",
+    "ex-sec-6-03",
+    "ex-sec-6-04",
+    "ex-sec-6-05",
+    "ex-sec-6-06",
+    "ex-sec-6-07",
+    "ex-sec-6-08",
+    "ex-sec-7-01",
+    "ex-sec-7-02",
+    "ex-sec-7-03",
+    "ex-sec-7-04",
+    "ex-sec-7-05",
+    "ex-sec-7-06",
+    "ex-sec-7-07",
+    "ex-sec-7-08",
+    "ex-sec-7-09",
+    "ex-sec-7-10",
+    "ex-sec-7-11",
+    "ex-sec-9-01",
+    "ex-sec-9-02",
+    "ex-sec-9-03",
+    "ex-sec-9-04",
+    "ex-sec-9-05",
+    "ex-sec-9-06"
+  ],
+  "past_papers": [],
+  "coverage": {
+    "sections": 3,
+    "traps": 0,
+    "recall_checks": 0,
+    "exercises": 25,
+    "past_papers": 0,
+    "gaps": [
+      "traps",
+      "recall_checks",
+      "past_papers"
+    ]
+  }
+}

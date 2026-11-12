@@ -343,6 +343,7 @@
         }
       ],
       "exercise_ids": [],
+      "exam_links": [],
       "provenance": {
         "publisher": "OpenStax",
         "title": "College Physics 2e",
@@ -721,6 +722,24 @@
         "ex-sec-2-02",
         "ex-sec-2-03"
       ],
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "measurements-and-units",
+          "subtopic_slug": "measurement-position-distance-and-displacement-coordinates-a",
+          "status": "covered",
+          "question_ids": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-position-distance-and-displacement",
+          "subtopic_slug": "waec-measurement-of-distance-displacement",
+          "status": "covered",
+          "question_ids": []
+        }
+      ],
       "provenance": {
         "publisher": "OpenStax",
         "title": "College Physics 2e",
@@ -925,6 +944,7 @@
         }
       ],
       "exercise_ids": [],
+      "exam_links": [],
       "provenance": {
         "publisher": "OpenStax",
         "title": "College Physics 2e",
@@ -1482,6 +1502,26 @@
         "ex-sec-4-05",
         "ex-sec-4-06",
         "ex-sec-4-07"
+      ],
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "motion",
+          "subtopic_slug": "linear-motion-speed-velocity-acceleration-equations-of-unifo",
+          "status": "covered",
+          "question_ids": [
+            "q_claim_2025_physics_74658"
+          ]
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-speed-and-velocity",
+          "subtopic_slug": "waec-concept-of-velocity-as-change-of-displacement-with-time-2",
+          "status": "covered",
+          "question_ids": []
+        }
       ],
       "provenance": {
         "publisher": "OpenStax",
@@ -2488,6 +2528,16 @@
         "ex-sec-5-02",
         "ex-sec-5-03",
         "ex-sec-5-04"
+      ],
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-rectilinear-acceleration",
+          "subtopic_slug": "waec-uniform-non-uniform-acceleration-2",
+          "status": "covered",
+          "question_ids": []
+        }
       ],
       "provenance": {
         "publisher": "OpenStax",
@@ -3858,6 +3908,26 @@
         "ex-sec-6-12",
         "ex-sec-6-13"
       ],
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "motion",
+          "subtopic_slug": "linear-motion-speed-velocity-acceleration-equations-of-unifo",
+          "status": "covered",
+          "question_ids": [
+            "q_claim_2025_physics_74658"
+          ]
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-rectilinear-acceleration",
+          "subtopic_slug": "waec-equations-of-motion-with-constant-motion-under-gravity-as-a",
+          "status": "covered",
+          "question_ids": []
+        }
+      ],
       "provenance": {
         "publisher": "OpenStax",
         "title": "College Physics 2e",
@@ -4203,6 +4273,7 @@
         }
       ],
       "exercise_ids": [],
+      "exam_links": [],
       "provenance": {
         "publisher": "OpenStax",
         "title": "College Physics 2e",
@@ -5111,6 +5182,16 @@
         "ex-sec-8-10",
         "ex-sec-8-11"
       ],
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-rectilinear-acceleration",
+          "subtopic_slug": "waec-equations-of-motion-with-constant-motion-under-gravity-as-a",
+          "status": "covered",
+          "question_ids": []
+        }
+      ],
       "provenance": {
         "publisher": "OpenStax",
         "title": "College Physics 2e",
@@ -6000,6 +6081,19 @@
         "ex-sec-9-03",
         "ex-sec-9-04",
         "ex-sec-9-05"
+      ],
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-rectilinear-acceleration",
+          "subtopic_slug": "waec-velocity-time-graph-2",
+          "status": "covered",
+          "question_ids": [
+            "q_waec_2023_physics_69384",
+            "q_waec_1988_physics_16334"
+          ]
+        }
       ],
       "provenance": {
         "publisher": "OpenStax",
@@ -7787,47 +7881,27 @@
     {
       "exam": "JAMB",
       "subject": "physics",
-      "topic_slug": "motion",
-      "subtopic_slug": "linear-motion-speed-velocity-acceleration-equations-of-unifo",
-      "weight_pct": null,
-      "expected_count": null,
+      "topic_slug": "measurements-and-units",
+      "subtopic_slug": "measurement-position-distance-and-displacement-coordinates-a",
       "status": "covered",
-      "source_locator": "production catalog topic motion, subtopic linear-motion-speed-velocity-acceleration-equations-of-unifo (read-only fetch 2026-11-12)",
-      "question_ids": [
-        "q_claim_2025_physics_74658"
-      ]
+      "question_ids": []
     },
     {
       "exam": "JAMB",
       "subject": "physics",
-      "topic_slug": "measurements-and-units",
-      "subtopic_slug": "measurement-position-distance-and-displacement-coordinates-a",
-      "weight_pct": null,
-      "expected_count": null,
+      "topic_slug": "motion",
+      "subtopic_slug": "linear-motion-speed-velocity-acceleration-equations-of-unifo",
       "status": "covered",
-      "source_locator": "production catalog topic measurements-and-units, subtopic measurement-position-distance-and-displacement-coordinates-a (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_claim_2025_physics_74658"
+      ]
     },
     {
       "exam": "WAEC",
       "subject": "physics",
       "topic_slug": "waec-position-distance-and-displacement",
       "subtopic_slug": "waec-measurement-of-distance-displacement",
-      "weight_pct": null,
-      "expected_count": null,
       "status": "covered",
-      "source_locator": "production catalog topic waec-position-distance-and-displacement, subtopic waec-measurement-of-distance-displacement (read-only fetch 2026-11-12)",
-      "question_ids": []
-    },
-    {
-      "exam": "WAEC",
-      "subject": "physics",
-      "topic_slug": "waec-speed-and-velocity",
-      "subtopic_slug": "waec-concept-of-velocity-as-change-of-displacement-with-time-2",
-      "weight_pct": null,
-      "expected_count": null,
-      "status": "covered",
-      "source_locator": "production catalog topic waec-speed-and-velocity, subtopic waec-concept-of-velocity-as-change-of-displacement-with-time-2 (read-only fetch 2026-11-12)",
       "question_ids": []
     },
     {
@@ -7835,22 +7909,108 @@
       "subject": "physics",
       "topic_slug": "waec-rectilinear-acceleration",
       "subtopic_slug": "waec-equations-of-motion-with-constant-motion-under-gravity-as-a",
-      "weight_pct": null,
-      "expected_count": null,
       "status": "covered",
-      "source_locator": "production catalog topic waec-rectilinear-acceleration, subtopic waec-equations-of-motion-with-constant-motion-under-gravity-as-a (read-only fetch 2026-11-12)",
       "question_ids": []
     },
     {
-      "exam": "NECO",
+      "exam": "WAEC",
       "subject": "physics",
-      "topic_slug": null,
-      "subtopic_slug": null,
-      "weight_pct": null,
-      "expected_count": null,
-      "status": "not_catalogued",
-      "source_locator": "the production catalog holds the NECO physics subject and no topics for it yet (read-only fetch 2026-11-12)",
+      "topic_slug": "waec-rectilinear-acceleration",
+      "subtopic_slug": "waec-uniform-non-uniform-acceleration-2",
+      "status": "covered",
       "question_ids": []
+    },
+    {
+      "exam": "WAEC",
+      "subject": "physics",
+      "topic_slug": "waec-rectilinear-acceleration",
+      "subtopic_slug": "waec-velocity-time-graph-2",
+      "status": "covered",
+      "question_ids": [
+        "q_waec_2023_physics_69384",
+        "q_waec_1988_physics_16334"
+      ]
+    },
+    {
+      "exam": "WAEC",
+      "subject": "physics",
+      "topic_slug": "waec-speed-and-velocity",
+      "subtopic_slug": "waec-concept-of-velocity-as-change-of-displacement-with-time-2",
+      "status": "covered",
+      "question_ids": []
+    }
+  ],
+  "exam_traps": [],
+  "exam_recall_checks": [
+    {
+      "id": "rc-1",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A car covers 100 km in 2 hours and its average speed is 50 km/h. It returns over the same road in another 2 hours. What is its average velocity for the round trip?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "50 km/h"
+        },
+        {
+          "id": "b",
+          "text": "0 km/h"
+        },
+        {
+          "id": "c",
+          "text": "25 km/h"
+        },
+        {
+          "id": "d",
+          "text": "100 km/h"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The displacement over the round trip is zero, so the average velocity is zero, even though the average speed is 50 km/h.",
+        "inline": []
+      },
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "A body starts from rest and accelerates uniformly at 4 m/s². What distance does it cover in the first 3 s?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "6 m"
+        },
+        {
+          "id": "b",
+          "text": "12 m"
+        },
+        {
+          "id": "c",
+          "text": "18 m"
+        },
+        {
+          "id": "d",
+          "text": "36 m"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "With no initial velocity, the distance is ½at² = ½ × 4 × 9 = 18 m.",
+        "inline": []
+      },
+      "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
     }
   ],
   "sources": [

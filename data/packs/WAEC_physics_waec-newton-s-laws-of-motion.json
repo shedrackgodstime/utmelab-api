@@ -1,0 +1,72 @@
+{
+  "exam": "WAEC",
+  "subject": "physics",
+  "topic_slug": "waec-newton-s-laws-of-motion",
+  "topic_name": "",
+  "subtopic_slugs": [
+    "waec-second-law-force-acceleration-momentum-and-impulse-2"
+  ],
+  "sections": [
+    {
+      "chapter_id": "phy_forces_and_newtons_laws",
+      "chapter_title": "Forces and Newton's Laws of Motion",
+      "section_id": "sec-4",
+      "title": "Newton's second law and the choice of system",
+      "est_minutes": 26,
+      "learning_objectives": [
+        "State Newton's second law and define net external force.",
+        "Choose a system of interest and identify which forces are external to it.",
+        "Use F_net = ma to predict acceleration for a given system and net force."
+      ],
+      "subtopic_slug": "waec-second-law-force-acceleration-momentum-and-impulse-2"
+    }
+  ],
+  "traps": [
+    {
+      "id": "trap-1",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "The same force for the same time gives the massive body the higher velocity.",
+        "inline": []
+      },
+      "correction": {
+        "text": "The two bodies gain the same impulse, so their momenta are equal. The lighter body moves faster.",
+        "inline": []
+      },
+      "signal": {
+        "text": "The paper offers the higher velocity for the massive body as an option, and the answer is that the momenta are the same.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "question_id": "q_waec_2023_physics_69404",
+        "exam": "WAEC",
+        "year": 2023,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_waec_2023_physics_69404"
+      },
+      "frequency": "recurring"
+    }
+  ],
+  "recall_checks": [],
+  "exercises": [
+    "ex-sec-4-01",
+    "ex-sec-4-02",
+    "ex-sec-4-03",
+    "ex-sec-4-04",
+    "ex-sec-4-05",
+    "ex-sec-4-06"
+  ],
+  "past_papers": [
+    "q_waec_2023_physics_69404"
+  ],
+  "coverage": {
+    "sections": 1,
+    "traps": 1,
+    "recall_checks": 0,
+    "exercises": 6,
+    "past_papers": 1,
+    "gaps": [
+      "recall_checks"
+    ]
+  }
+}

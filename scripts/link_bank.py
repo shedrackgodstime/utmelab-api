@@ -65,7 +65,11 @@ def main():
     for path in sorted(SPECS.glob("*.json")):
         spec = json.loads(path.read_text())
         changed = False
-        for link in spec.get("exam_links", []):
+        links = []
+        for section in spec.get("sections", []):
+            links.extend(section.get("exam_links", []))
+        links.extend(spec.get("exam_links", []))
+        for link in links:
             if not link.get("subtopic_slug"):
                 link["question_ids"] = []
                 continue

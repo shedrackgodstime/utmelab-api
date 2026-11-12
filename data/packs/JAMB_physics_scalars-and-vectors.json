@@ -1,0 +1,43 @@
+{
+  "exam": "JAMB",
+  "subject": "physics",
+  "topic_slug": "scalars-and-vectors",
+  "topic_name": "",
+  "subtopic_slugs": [
+    "types-of-force-contact-force-and-field-force"
+  ],
+  "sections": [
+    {
+      "chapter_id": "phy_forces_and_newtons_laws",
+      "chapter_title": "Forces and Newton's Laws of Motion",
+      "section_id": "sec-2",
+      "title": "The force concept and the free-body diagram",
+      "est_minutes": 20,
+      "learning_objectives": [
+        "Define force as a vector quantity with magnitude and direction.",
+        "Draw and read a free-body diagram for a body in a given situation.",
+        "Explain how a stretched spring can serve as a standard of force."
+      ],
+      "subtopic_slug": "types-of-force-contact-force-and-field-force"
+    }
+  ],
+  "traps": [],
+  "recall_checks": [],
+  "exercises": [
+    "ex-sec-2-01",
+    "ex-sec-2-02"
+  ],
+  "past_papers": [],
+  "coverage": {
+    "sections": 1,
+    "traps": 0,
+    "recall_checks": 0,
+    "exercises": 2,
+    "past_papers": 0,
+    "gaps": [
+      "traps",
+      "recall_checks",
+      "past_papers"
+    ]
+  }
+}

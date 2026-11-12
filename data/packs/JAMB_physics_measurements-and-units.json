@@ -1,0 +1,42 @@
+{
+  "exam": "JAMB",
+  "subject": "physics",
+  "topic_slug": "measurements-and-units",
+  "topic_name": "",
+  "subtopic_slugs": [
+    "measurement-position-distance-and-displacement-coordinates-a"
+  ],
+  "sections": [
+    {
+      "chapter_id": "phy_motion_along_a_straight_line",
+      "chapter_title": "Motion Along a Straight Line",
+      "section_id": "sec-2",
+      "title": "Displacement",
+      "est_minutes": 16,
+      "learning_objectives": [
+        "Define position and displacement on a coordinate system, and tell displacement from distance."
+      ],
+      "subtopic_slug": "measurement-position-distance-and-displacement-coordinates-a"
+    }
+  ],
+  "traps": [],
+  "recall_checks": [],
+  "exercises": [
+    "ex-sec-2-01",
+    "ex-sec-2-02",
+    "ex-sec-2-03"
+  ],
+  "past_papers": [],
+  "coverage": {
+    "sections": 1,
+    "traps": 0,
+    "recall_checks": 0,
+    "exercises": 3,
+    "past_papers": 0,
+    "gaps": [
+      "traps",
+      "recall_checks",
+      "past_papers"
+    ]
+  }
+}

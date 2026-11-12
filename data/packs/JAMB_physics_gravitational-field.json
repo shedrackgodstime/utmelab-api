@@ -1,0 +1,145 @@
+{
+  "exam": "JAMB",
+  "subject": "physics",
+  "topic_slug": "gravitational-field",
+  "topic_name": "",
+  "subtopic_slugs": [
+    "newton-s-law-of-universal-gravitation"
+  ],
+  "sections": [
+    {
+      "chapter_id": "phy_circular_motion_and_gravitation",
+      "chapter_title": "Uniform Circular Motion and Gravitation",
+      "section_id": "sec-6",
+      "title": "Newton's Universal Law of Gravitation",
+      "est_minutes": 22,
+      "learning_objectives": [
+        "State Newton's law of universal gravitation and use it.",
+        "Find the acceleration due to gravity at the surface of a body."
+      ],
+      "subtopic_slug": "newton-s-law-of-universal-gravitation"
+    },
+    {
+      "chapter_id": "phy_circular_motion_and_gravitation",
+      "chapter_title": "Uniform Circular Motion and Gravitation",
+      "section_id": "sec-7",
+      "title": "Satellites and Kepler's Laws: An Argument for Simplicity",
+      "est_minutes": 20,
+      "learning_objectives": [
+        "State Kepler's three laws of planetary motion.",
+        "Explain why a satellite stays in orbit."
+      ],
+      "subtopic_slug": "newton-s-law-of-universal-gravitation"
+    }
+  ],
+  "traps": [
+    {
+      "id": "trap-1",
+      "section_id": "sec-6",
+      "misconception": {
+        "text": "When the distance between two bodies doubles, the gravitational pull halves.",
+        "inline": []
+      },
+      "correction": {
+        "text": "The force varies with the inverse square of the distance, so doubling the distance leaves a quarter of the force.",
+        "inline": []
+      },
+      "signal": {
+        "text": "The paper offers the halved force as an option, and the answer is the quarter.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "question_id": "q_claim_2025_physics_74363",
+        "exam": "JAMB",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_claim_2025_physics_74363"
+      },
+      "frequency": "recurring"
+    },
+    {
+      "id": "trap-2",
+      "section_id": "sec-6",
+      "misconception": {
+        "text": "Doubling both masses leaves the gravitational force between them unchanged.",
+        "inline": []
+      },
+      "correction": {
+        "text": "The force is proportional to the product of the masses, so doubling both of them multiplies the force by four.",
+        "inline": []
+      },
+      "signal": {
+        "text": "The paper offers the unchanged force as an option, and the answer is four times as large.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "question_id": "q_claim_2025_physics_74573",
+        "exam": "JAMB",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_claim_2025_physics_74573"
+      },
+      "frequency": "recurring"
+    }
+  ],
+  "recall_checks": [
+    {
+      "id": "rc-2",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "The gravitational force between two bodies is 5 N. What is the force when the distance between them is halved?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "2.5 N"
+        },
+        {
+          "id": "b",
+          "text": "5 N"
+        },
+        {
+          "id": "c",
+          "text": "10 N"
+        },
+        {
+          "id": "d",
+          "text": "20 N"
+        }
+      ],
+      "answer": "d",
+      "explanation": {
+        "text": "The force varies with the inverse square of the distance, so halving the distance multiplies the force by four, giving 20 N.",
+        "inline": []
+      },
+      "difficulty": 2
+    }
+  ],
+  "exercises": [
+    "ex-sec-6-01",
+    "ex-sec-6-02",
+    "ex-sec-6-03",
+    "ex-sec-6-04",
+    "ex-sec-6-05",
+    "ex-sec-6-06",
+    "ex-sec-6-07",
+    "ex-sec-6-08",
+    "ex-sec-7-01",
+    "ex-sec-7-02",
+    "ex-sec-7-03",
+    "ex-sec-7-04"
+  ],
+  "past_papers": [
+    "q_claim_2025_physics_74363",
+    "q_claim_2025_physics_74573"
+  ],
+  "coverage": {
+    "sections": 2,
+    "traps": 2,
+    "recall_checks": 1,
+    "exercises": 12,
+    "past_papers": 2,
+    "gaps": []
+  }
+}

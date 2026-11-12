@@ -40,7 +40,8 @@
         "circular-motion",
         "centripetal"
       ],
-      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves.",
+      "exam_links": []
     },
     {
       "id": "sec-2",
@@ -68,7 +69,19 @@
         "rotation",
         "radians"
       ],
-      "worked_from": "exr-41"
+      "worked_from": "exr-41",
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-motion",
+          "subtopic_slug": "waec-simple-ideas-of-circular-motion",
+          "status": "covered",
+          "question_ids": [
+            "q_waec_2025_physics_76333"
+          ]
+        }
+      ]
     },
     {
       "id": "sec-3",
@@ -94,7 +107,19 @@
       "tags": [
         "centripetal-acceleration"
       ],
-      "worked_from": "exr-36"
+      "worked_from": "exr-36",
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-motion",
+          "subtopic_slug": "waec-simple-ideas-of-circular-motion",
+          "status": "covered",
+          "question_ids": [
+            "q_waec_2025_physics_76333"
+          ]
+        }
+      ]
     },
     {
       "id": "sec-4",
@@ -120,7 +145,19 @@
       "tags": [
         "centripetal-force"
       ],
-      "worked_from": "exr-71"
+      "worked_from": "exr-71",
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-motion",
+          "subtopic_slug": "waec-simple-ideas-of-circular-motion",
+          "status": "covered",
+          "question_ids": [
+            "q_waec_2025_physics_76333"
+          ]
+        }
+      ]
     },
     {
       "id": "sec-5",
@@ -147,7 +184,8 @@
         "non-inertial-frames",
         "coriolis"
       ],
-      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves.",
+      "exam_links": []
     },
     {
       "id": "sec-6",
@@ -174,7 +212,33 @@
         "gravitation",
         "universal-gravitation"
       ],
-      "worked_from": "exr-57"
+      "worked_from": "exr-57",
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "gravitational-field",
+          "subtopic_slug": "newton-s-law-of-universal-gravitation",
+          "status": "covered",
+          "question_ids": [
+            "q_claim_2025_physics_74363",
+            "q_claim_2025_physics_74573"
+          ]
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-gravitational-field",
+          "subtopic_slug": "waec-gravitational-force-between-two",
+          "status": "covered",
+          "question_ids": [
+            "q_waec_2023_physics_69369",
+            "q_waec_2023_physics_69379",
+            "q_waec_2023_physics_69421",
+            "q_waec_2023_physics_69422"
+          ]
+        }
+      ]
     },
     {
       "id": "sec-7",
@@ -202,7 +266,20 @@
         "satellites",
         "orbits"
       ],
-      "worked_from": "exr-60"
+      "worked_from": "exr-60",
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "gravitational-field",
+          "subtopic_slug": "newton-s-law-of-universal-gravitation",
+          "status": "covered",
+          "question_ids": [
+            "q_claim_2025_physics_74363",
+            "q_claim_2025_physics_74573"
+          ]
+        }
+      ]
     }
   ],
   "formula_sheet": [
@@ -412,75 +489,6 @@
       }
     }
   ],
-  "exam_links": [
-    {
-      "exam": "JAMB",
-      "subject": "physics",
-      "topic_slug": "gravitational-field",
-      "subtopic_slug": "newton-s-law-of-universal-gravitation",
-      "weight_pct": null,
-      "expected_count": null,
-      "status": "covered",
-      "source_locator": "production catalog topic gravitational-field, subtopic newton-s-law-of-universal-gravitation (read-only fetch 2026-11-12)",
-      "question_ids": [
-        "q_claim_2025_physics_74363",
-        "q_claim_2025_physics_74573"
-      ]
-    },
-    {
-      "exam": "JAMB",
-      "subject": "physics",
-      "topic_slug": "gravitational-field",
-      "subtopic_slug": "acceleration-due-to-gravity-g-gm-r-and-its-variation-on-the",
-      "weight_pct": null,
-      "expected_count": null,
-      "status": "covered",
-      "source_locator": "production catalog topic gravitational-field, subtopic acceleration-due-to-gravity-g-gm-r-and-its-variation-on-the (read-only fetch 2026-11-12)",
-      "question_ids": [
-        "q_claim_2025_physics_74570"
-      ]
-    },
-    {
-      "exam": "WAEC",
-      "subject": "physics",
-      "topic_slug": "waec-gravitational-field",
-      "subtopic_slug": "waec-gravitational-force-between-two",
-      "weight_pct": null,
-      "expected_count": null,
-      "status": "covered",
-      "source_locator": "production catalog topic waec-gravitational-field, subtopic waec-gravitational-force-between-two (read-only fetch 2026-11-12)",
-      "question_ids": [
-        "q_waec_2023_physics_69369",
-        "q_waec_2023_physics_69379",
-        "q_waec_2023_physics_69421",
-        "q_waec_2023_physics_69422"
-      ]
-    },
-    {
-      "exam": "WAEC",
-      "subject": "physics",
-      "topic_slug": "waec-motion",
-      "subtopic_slug": "waec-simple-ideas-of-circular-motion",
-      "weight_pct": null,
-      "expected_count": null,
-      "status": "covered",
-      "source_locator": "production catalog topic waec-motion, subtopic waec-simple-ideas-of-circular-motion (read-only fetch 2026-11-12)",
-      "question_ids": [
-        "q_waec_2025_physics_76333"
-      ]
-    },
-    {
-      "exam": "NECO",
-      "subject": "physics",
-      "topic_slug": null,
-      "subtopic_slug": null,
-      "weight_pct": null,
-      "expected_count": null,
-      "status": "not_catalogued",
-      "source_locator": "the production catalog holds the NECO physics subject and no topics for it yet (read-only fetch 2026-11-12)",
-      "question_ids": []
-    }
-  ],
   "sources": [
     {
       "publisher": "OpenStax",
@@ -488,6 +496,119 @@
       "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
       "locator": "CNXML collection college-physics-2e, subcollection 'Uniform Circular Motion and Gravitation', modules m42140, m42083, m42084, m42086, m42142, m42143, m42144",
       "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ],
+  "exam_traps": [
+    {
+      "id": "trap-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "misconception": "When the distance between two bodies doubles, the gravitational pull halves.",
+      "correction": "The force varies with the inverse square of the distance, so doubling the distance leaves a quarter of the force.",
+      "signal": "The paper offers the halved force as an option, and the answer is the quarter.",
+      "paper_evidence": {
+        "question_id": "q_claim_2025_physics_74363",
+        "exam": "JAMB",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_claim_2025_physics_74363"
+      },
+      "frequency": "recurring"
+    },
+    {
+      "id": "trap-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "misconception": "Doubling both masses leaves the gravitational force between them unchanged.",
+      "correction": "The force is proportional to the product of the masses, so doubling both of them multiplies the force by four.",
+      "signal": "The paper offers the unchanged force as an option, and the answer is four times as large.",
+      "paper_evidence": {
+        "question_id": "q_claim_2025_physics_74573",
+        "exam": "JAMB",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_claim_2025_physics_74573"
+      },
+      "frequency": "recurring"
+    },
+    {
+      "id": "trap-3",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": "The angular speed of an object moving in a circle is the linear speed times the radius.",
+      "correction": "The angular speed is the linear speed divided by the radius, so it is the same for every point on the rim.",
+      "signal": "The paper offers the product of the linear speed and the radius as an option.",
+      "paper_evidence": {
+        "question_id": "q_waec_2025_physics_76333",
+        "exam": "WAEC",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_waec_2025_physics_76333"
+      },
+      "frequency": "recurring"
+    }
+  ],
+  "exam_recall_checks": [
+    {
+      "id": "rc-1",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "stem": "A wheel of radius 0.5 m turns at 4 rad/s. What is the linear speed of a point on the rim?",
+      "options": [
+        {
+          "id": "a",
+          "text": "2 m/s"
+        },
+        {
+          "id": "b",
+          "text": "8 m/s"
+        },
+        {
+          "id": "c",
+          "text": "0.125 m/s"
+        },
+        {
+          "id": "d",
+          "text": "1.57 m/s"
+        }
+      ],
+      "answer": "a",
+      "explanation": "The linear speed is v = ωr = 4 × 0.5 = 2 m/s.",
+      "difficulty": 1,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "stem": "The gravitational force between two bodies is 5 N. What is the force when the distance between them is halved?",
+      "options": [
+        {
+          "id": "a",
+          "text": "2.5 N"
+        },
+        {
+          "id": "b",
+          "text": "5 N"
+        },
+        {
+          "id": "c",
+          "text": "10 N"
+        },
+        {
+          "id": "d",
+          "text": "20 N"
+        }
+      ],
+      "answer": "d",
+      "explanation": "The force varies with the inverse square of the distance, so halving the distance multiplies the force by four, giving 20 N.",
+      "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
     }
   ]
 }

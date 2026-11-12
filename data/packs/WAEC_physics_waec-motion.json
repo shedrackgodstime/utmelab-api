@@ -1,0 +1,153 @@
+{
+  "exam": "WAEC",
+  "subject": "physics",
+  "topic_slug": "waec-motion",
+  "topic_name": "",
+  "subtopic_slugs": [
+    "waec-simple-ideas-of-circular-motion",
+    "waec-solid-friction-2"
+  ],
+  "sections": [
+    {
+      "chapter_id": "phy_circular_motion_and_gravitation",
+      "chapter_title": "Uniform Circular Motion and Gravitation",
+      "section_id": "sec-2",
+      "title": "Rotation Angle and Angular Velocity",
+      "est_minutes": 18,
+      "learning_objectives": [
+        "Define the rotation angle, the angular velocity and the angular acceleration.",
+        "Convert between angular and linear quantities at a radius."
+      ],
+      "subtopic_slug": "waec-simple-ideas-of-circular-motion"
+    },
+    {
+      "chapter_id": "phy_circular_motion_and_gravitation",
+      "chapter_title": "Uniform Circular Motion and Gravitation",
+      "section_id": "sec-3",
+      "title": "Centripetal Acceleration",
+      "est_minutes": 20,
+      "learning_objectives": [
+        "Define centripetal acceleration and give its size and its direction.",
+        "Derive the centripetal acceleration from the components of the acceleration."
+      ],
+      "subtopic_slug": "waec-simple-ideas-of-circular-motion"
+    },
+    {
+      "chapter_id": "phy_circular_motion_and_gravitation",
+      "chapter_title": "Uniform Circular Motion and Gravitation",
+      "section_id": "sec-4",
+      "title": "Centripetal Force",
+      "est_minutes": 20,
+      "learning_objectives": [
+        "Compute the centripetal force and give its direction.",
+        "Explain which forces combine to make it."
+      ],
+      "subtopic_slug": "waec-simple-ideas-of-circular-motion"
+    },
+    {
+      "chapter_id": "phy_friction_drag_and_elasticity",
+      "chapter_title": "Friction, Drag and Elasticity",
+      "section_id": "sec-2",
+      "title": "Friction",
+      "est_minutes": 24,
+      "learning_objectives": [
+        "Tell static friction from kinetic friction and compute the friction force.",
+        "Use the coefficient of friction with the normal force."
+      ],
+      "subtopic_slug": "waec-solid-friction-2"
+    }
+  ],
+  "traps": [
+    {
+      "id": "trap-3",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "The angular speed of an object moving in a circle is the linear speed times the radius.",
+        "inline": []
+      },
+      "correction": {
+        "text": "The angular speed is the linear speed divided by the radius, so it is the same for every point on the rim.",
+        "inline": []
+      },
+      "signal": {
+        "text": "The paper offers the product of the linear speed and the radius as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "question_id": "q_waec_2025_physics_76333",
+        "exam": "WAEC",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_waec_2025_physics_76333"
+      },
+      "frequency": "recurring"
+    }
+  ],
+  "recall_checks": [
+    {
+      "id": "rc-1",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "A wheel of radius 0.5 m turns at 4 rad/s. What is the linear speed of a point on the rim?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "2 m/s"
+        },
+        {
+          "id": "b",
+          "text": "8 m/s"
+        },
+        {
+          "id": "c",
+          "text": "0.125 m/s"
+        },
+        {
+          "id": "d",
+          "text": "1.57 m/s"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The linear speed is v = ωr = 4 × 0.5 = 2 m/s.",
+        "inline": []
+      },
+      "difficulty": 1
+    }
+  ],
+  "exercises": [
+    "ex-sec-2-01",
+    "ex-sec-2-02",
+    "ex-sec-2-03",
+    "ex-sec-2-04",
+    "ex-sec-2-05",
+    "ex-sec-2-06",
+    "ex-sec-2-07",
+    "ex-sec-2-08",
+    "ex-sec-3-01",
+    "ex-sec-3-02",
+    "ex-sec-3-03",
+    "ex-sec-3-04",
+    "ex-sec-3-05",
+    "ex-sec-3-06",
+    "ex-sec-3-07",
+    "ex-sec-4-01",
+    "ex-sec-4-02",
+    "ex-sec-4-03",
+    "ex-sec-4-04",
+    "ex-sec-4-05"
+  ],
+  "past_papers": [
+    "q_waec_2025_physics_76333"
+  ],
+  "coverage": {
+    "sections": 4,
+    "traps": 1,
+    "recall_checks": 1,
+    "exercises": 20,
+    "past_papers": 1,
+    "gaps": []
+  }
+}

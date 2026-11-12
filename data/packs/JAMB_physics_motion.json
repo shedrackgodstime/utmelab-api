@@ -1,0 +1,203 @@
+{
+  "exam": "JAMB",
+  "subject": "physics",
+  "topic_slug": "motion",
+  "topic_name": "",
+  "subtopic_slugs": [
+    "linear-motion-speed-velocity-acceleration-equations-of-unifo",
+    "newton-s-laws-of-motion-inertia-mass-impulse-momentum-and-co",
+    "projectiles-range-maximum-height-time-of-flight-and-applicat"
+  ],
+  "sections": [
+    {
+      "chapter_id": "phy_forces_and_newtons_laws",
+      "chapter_title": "Forces and Newton's Laws of Motion",
+      "section_id": "sec-3",
+      "title": "Inertia and Newton's first law",
+      "est_minutes": 16,
+      "learning_objectives": [
+        "State Newton's first law of motion.",
+        "Define inertia and relate it to mass.",
+        "Explain why a net external force is required for any change in velocity."
+      ],
+      "subtopic_slug": "newton-s-laws-of-motion-inertia-mass-impulse-momentum-and-co"
+    },
+    {
+      "chapter_id": "phy_forces_and_newtons_laws",
+      "chapter_title": "Forces and Newton's Laws of Motion",
+      "section_id": "sec-4",
+      "title": "Newton's second law and the choice of system",
+      "est_minutes": 26,
+      "learning_objectives": [
+        "State Newton's second law and define net external force.",
+        "Choose a system of interest and identify which forces are external to it.",
+        "Use F_net = ma to predict acceleration for a given system and net force."
+      ],
+      "subtopic_slug": "newton-s-laws-of-motion-inertia-mass-impulse-momentum-and-co"
+    },
+    {
+      "chapter_id": "phy_forces_and_newtons_laws",
+      "chapter_title": "Forces and Newton's Laws of Motion",
+      "section_id": "sec-5",
+      "title": "Newton's third law and symmetry in forces",
+      "est_minutes": 22,
+      "learning_objectives": [
+        "State Newton's third law of motion.",
+        "Explain why forces occur in pairs and why action and reaction act on different bodies.",
+        "Apply the third law to everyday situations such as swimming, walking and rowing."
+      ],
+      "subtopic_slug": "newton-s-laws-of-motion-inertia-mass-impulse-momentum-and-co"
+    },
+    {
+      "chapter_id": "phy_motion_along_a_straight_line",
+      "chapter_title": "Motion Along a Straight Line",
+      "section_id": "sec-4",
+      "title": "Time, Velocity, and Speed",
+      "est_minutes": 22,
+      "learning_objectives": [
+        "Define average velocity and average speed, and compute them from a motion diagram."
+      ],
+      "subtopic_slug": "linear-motion-speed-velocity-acceleration-equations-of-unifo"
+    },
+    {
+      "chapter_id": "phy_motion_along_a_straight_line",
+      "chapter_title": "Motion Along a Straight Line",
+      "section_id": "sec-6",
+      "title": "Motion Equations for Constant Acceleration in One Dimension",
+      "est_minutes": 26,
+      "learning_objectives": [
+        "Use the equations of constant acceleration, and choose which one fits the question."
+      ],
+      "subtopic_slug": "linear-motion-speed-velocity-acceleration-equations-of-unifo"
+    },
+    {
+      "chapter_id": "phy_two_dimensional_kinematics",
+      "chapter_title": "Two-Dimensional Kinematics",
+      "section_id": "sec-5",
+      "title": "Projectile Motion",
+      "est_minutes": 26,
+      "learning_objectives": [
+        "Analyse a projectile by splitting its motion into horizontal and vertical parts.",
+        "Calculate the time of flight, the maximum height and the range of a projectile."
+      ],
+      "subtopic_slug": "projectiles-range-maximum-height-time-of-flight-and-applicat"
+    }
+  ],
+  "traps": [],
+  "recall_checks": [
+    {
+      "id": "rc-1",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A net force of 12 N acts on a body of mass 3 kg. What is the acceleration of the body?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "4 m/s²"
+        },
+        {
+          "id": "b",
+          "text": "9 m/s²"
+        },
+        {
+          "id": "c",
+          "text": "36 m/s²"
+        },
+        {
+          "id": "d",
+          "text": "0.25 m/s²"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "Newton's second law gives a = F/m = 12/3 = 4 m/s².",
+        "inline": []
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "rc-2",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "A body starts from rest and accelerates uniformly at 4 m/s². What distance does it cover in the first 3 s?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "6 m"
+        },
+        {
+          "id": "b",
+          "text": "12 m"
+        },
+        {
+          "id": "c",
+          "text": "18 m"
+        },
+        {
+          "id": "d",
+          "text": "36 m"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "With no initial velocity, the distance is ½at² = ½ × 4 × 9 = 18 m.",
+        "inline": []
+      },
+      "difficulty": 2
+    }
+  ],
+  "exercises": [
+    "ex-sec-3-01",
+    "ex-sec-4-01",
+    "ex-sec-4-02",
+    "ex-sec-4-03",
+    "ex-sec-4-04",
+    "ex-sec-4-05",
+    "ex-sec-4-06",
+    "ex-sec-4-07",
+    "ex-sec-5-01",
+    "ex-sec-5-02",
+    "ex-sec-5-03",
+    "ex-sec-5-04",
+    "ex-sec-5-05",
+    "ex-sec-5-06",
+    "ex-sec-5-07",
+    "ex-sec-5-08",
+    "ex-sec-5-09",
+    "ex-sec-5-10",
+    "ex-sec-5-11",
+    "ex-sec-5-12",
+    "ex-sec-6-01",
+    "ex-sec-6-02",
+    "ex-sec-6-03",
+    "ex-sec-6-04",
+    "ex-sec-6-05",
+    "ex-sec-6-06",
+    "ex-sec-6-07",
+    "ex-sec-6-08",
+    "ex-sec-6-09",
+    "ex-sec-6-10",
+    "ex-sec-6-11",
+    "ex-sec-6-12",
+    "ex-sec-6-13"
+  ],
+  "past_papers": [
+    "q_claim_2025_physics_74552",
+    "q_claim_2025_physics_74561",
+    "q_claim_2025_physics_74658"
+  ],
+  "coverage": {
+    "sections": 6,
+    "traps": 0,
+    "recall_checks": 2,
+    "exercises": 33,
+    "past_papers": 3,
+    "gaps": [
+      "traps"
+    ]
+  }
+}
