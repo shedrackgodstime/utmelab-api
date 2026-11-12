@@ -92,7 +92,9 @@ Three properties are load-bearing:
    anything moves.
 2. **Activation means `HEALTH_ENDPOINT` answered exactly `HEALTH_EXPECT`.** For
    this service that is `/ready`, which stays 503 until the Turso replica is
-   open. A process that binds 8081 and never syncs is never called live.
+   open and trusted. An idle replica that intentionally slept is still live:
+   the next data request performs one locked pull before serving. A process
+   that binds 8081 and never syncs is never called live.
 3. **Pruning is by mtime, newest first**, and never runs on a failed activation.
    Stable release versions sort predictably, and the workflow refuses a release
    tag that does not match `Cargo.toml`.
