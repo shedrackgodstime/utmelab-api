@@ -290,25 +290,37 @@ give us.
   question bank to add later.
 - No course map exists yet. One table and one authoring pass.
 
-## 10. The licence wall
+## 10. Sourcing
 
-This is the constraint that decides how much of the corpus can ship.
+We take what we can get our hands on. The licence is not a gate we plan
+around; the gate is whether the source is a textbook we can actually serve:
+structured, illustrated where the subject needs it, explained, and reachable
+without a PDF.
 
-| Licence status | Concepts | Commercial use |
-| --- | --- | --- |
-| CC BY-NC-SA 4.0, non-commercial | 462 of 529 | no |
-| All rights reserved, review pending | 45 | unknown |
-| CC BY 4.0 | 11 | yes |
-| CC BY-NC 4.0 | 3 | no |
-| Published as is, status to be reviewed | 8 | unknown |
+OpenStax is the spine, for three reasons.
 
-Nearly every concept we hold is non-commercial or unreviewed. If UTME-Lab
-charges money, the shipped books have to be built from the permissive sources
-and the corpus needs a licence review before the rest of it can be used.
+- It is CNXML, not PDF. The text, the mathematics, the figures, the examples
+  and the solutions are all separate, addressable objects. That is what lets
+  a chapter carry a figure with its caption and alt text, and an exercise
+  with a worked solution.
+- The catalogue is wide enough to finish the platform: mathematics, physics,
+  chemistry, biology, economics, accounting, business, sociology, psychology,
+  political science, statistics and more, from pre-algebra to calculus, from
+  College Physics to University Physics, from Biology 2e to Concepts of
+  Biology.
+- The pipeline is already ours. `scripts/scrape_openstax_cnx.py` turns a
+  module into a concept document with its figures on disk, and
+  `scripts/scrape_openstax_solutions.py` turns the solutions into steps.
 
-This is a business decision, not a technical one, and it changes the plan:
-either we resolve the licence review per source, or we restrict the textbook
-to sources we may ship commercially, or the platform stays free.
+One College Physics 2e is 34 chapters and 318 modules. The whole catalogue is
+several hundred books. The 250 to 400 chapters the platform needs are inside
+it, and the Foundation track is inside it too, because the same catalogue
+runs from College Algebra through to Calculus Volume 3.
+
+Other sources stay in the mix where they are better: the National Open
+University of Nigeria for GST 101 and GST 102, Contemporary Mathematics for
+the Nigerian general mathematics course, and the Nigerian tertiary accounting
+courses. They are already in the corpus.
 
 ## 11. The rules that keep it honest
 
@@ -325,13 +337,10 @@ to sources we may ship commercially, or the platform stays free.
 
 ## 12. Decisions still open
 
-1. **Licensing.** Does UTME-Lab charge money? If yes, the corpus needs a
-   licence review before it ships, and the books are built from the sources we
-   may use commercially. If no, the whole corpus is available as it is.
-2. **Traps.** We have 3,706 claimed-paper questions with years and paper
+1. **Traps.** We have 3,706 claimed-paper questions with years and paper
    numbers. Do we mine them for the trap evidence, or do we write traps from
    the examiner reports first and attach evidence later?
-3. **Foundation pilot.** Mathematics first (Contemporary Mathematics, the
+2. **Foundation pilot.** Mathematics first (Contemporary Mathematics, the
    largest audience and the sources are already here), or Use of English for
    Tertiary first (40 concepts, already organised by module, so the course map
    is nearly written)?
