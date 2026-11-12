@@ -422,7 +422,10 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic gravitational-field, subtopic newton-s-law-of-universal-gravitation (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_claim_2025_physics_74363",
+        "q_claim_2025_physics_74573"
+      ]
     },
     {
       "exam": "JAMB",
@@ -433,7 +436,9 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic gravitational-field, subtopic acceleration-due-to-gravity-g-gm-r-and-its-variation-on-the (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_claim_2025_physics_74570"
+      ]
     },
     {
       "exam": "WAEC",
@@ -444,7 +449,12 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic waec-gravitational-field, subtopic waec-gravitational-force-between-two (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_waec_2023_physics_69369",
+        "q_waec_2023_physics_69379",
+        "q_waec_2023_physics_69421",
+        "q_waec_2023_physics_69422"
+      ]
     },
     {
       "exam": "WAEC",
@@ -455,7 +465,9 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic waec-motion, subtopic waec-simple-ideas-of-circular-motion (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_waec_2025_physics_76333"
+      ]
     },
     {
       "exam": "NECO",

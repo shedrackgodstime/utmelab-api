@@ -2644,10 +2644,10 @@
     {
       "id": "ex-sec-2-01",
       "section_id": "sec-2",
-      "tier": "warm_up",
+      "tier": "stretch",
       "kind": "verbal",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A block is given a short push and then slides with constant friction across a horizontal floor. Which statement best explains the direction of the force that friction applies on the moving block? Friction will be in the same direction as the block's motion because molecular interactions between the block and the floor will deform the block in the direction of motion.; Friction will be in the same direction as the block's motion because thermal energy generated at the interface between the block and the floor adds kinetic energy to the block.; Friction will be in the opposite direction of the block's motion because molecular interactions between the block and the floor will deform the block in the opposite direction of motion.; Friction will be in the opposite direction of the block's motion because thermal energy generated at the interface between the block and the floor converts some of the block's kinetic energy to potential energy.",
         "inline": []
@@ -2681,10 +2681,10 @@
     {
       "id": "ex-sec-2-02",
       "section_id": "sec-2",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "numeric",
-      "difficulty": 2,
-      "marks": 2,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "A physics major is cooking breakfast when he notices that the frictional force between his steel spatula and his Teflon frying pan is only 0.200 N. Knowing the coefficient of kinetic friction between the two materials, he quickly calculates the normal force. What is it?",
         "inline": []
@@ -2718,20 +2718,20 @@
     {
       "id": "ex-sec-2-03",
       "section_id": "sec-2",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Suppose you have a 120-kg wooden crate resting on a wood floor. (a) What maximum force can you exert horizontally on the crate without moving it? (b) If you continue to exert this force once the crate starts to slip, what will the magnitude of its acceleration then be?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "1.96 m{/s}^{2}",
+        "text": "(a) 588 N (b) $1.96 m{/s}^{2}$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -2759,10 +2759,10 @@
     {
       "id": "ex-sec-2-04",
       "section_id": "sec-2",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A team of eight dogs pulls a sled with waxed wood runners on wet snow (mush!). The dogs have average masses of 19.0 kg, and the loaded sled with its rider has a mass of 210 kg. (a) Calculate the magnitude of the acceleration starting from rest if each dog exerts an average force of 185 N backward on the snow. (b) What is the magnitude of the acceleration once the sled starts to move? (c) For both situations, calculate the magnitude of the force in the coupling between the dogs and the sled.",
         "inline": []
@@ -2841,10 +2841,10 @@
     {
       "id": "ex-sec-2-06",
       "section_id": "sec-2",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Calculate the maximum acceleration of a car that is heading up a $4º$ slope (one that makes an angle of $4º$ with the horizontal) under the following road conditions. Assume that only half the weight of the car is supported by the two drive wheels and that the coefficient of static friction is involved—that is, the tires are not allowed to slip during the acceleration. (Ignore rolling.) (a) On dry concrete. (b) On wet concrete. (c) On ice, assuming that ${μ}_{s}=0.100$ , the same as for shoes on ice.",
         "inline": []
@@ -2886,20 +2886,20 @@
     {
       "id": "ex-sec-2-07",
       "section_id": "sec-2",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A freight train consists of two $8.00×{10}^{5}-kg$ engines and 45 cars with average masses of $5.50×{10}^{5}kg$ . (a) What force must each engine exert backward on the track to accelerate the train at a rate of $5.00×{10}^{-2}m/{s}^{2}$ if the force of friction is $7.50×{10}^{5}N$ , assuming the engines exert identical forces? This is not a large frictional force for such a massive system. Rolling friction for trains is small, and consequently trains are very energy-efficient transportation systems. (b) What is the magnitude of the force in the coupling between the 37th and 38th cars (this is the force each exerts on the other), assuming all cars have the same mass and that friction is evenly distributed among all of the cars and engines?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "3.48×{10}^{5}N",
+        "text": "(a) $1.03×{10}^{6}N$ (b) $3.48×{10}^{5}N$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -2927,20 +2927,20 @@
     {
       "id": "ex-sec-2-08",
       "section_id": "sec-2",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A contestant in a winter sporting event pushes a 45.0-kg block of ice across a frozen lake as shown in (a). (a) Calculate the minimum force $F$ he must exert to get the block moving. (b) What is the magnitude of its acceleration once it starts to move, if that force is maintained?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "0.720 m{/s}^{2}",
+        "text": "(a) $51.0 N$ (b) $0.720 m{/s}^{2}$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -2968,10 +2968,10 @@
     {
       "id": "ex-sec-3-01",
       "section_id": "sec-3",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "numeric",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "A 560-g squirrel with a cross-section area facing the fluid of $144{cm}^{2}$ falls from a 5.0-m tree to the ground. Estimate its terminal velocity. (Use a drag coefficient for a horizontal skydiver.) What will be the velocity of a 56-kg person hitting the ground, assuming no drag contribution in such a short distance?",
         "inline": []
@@ -3004,10 +3004,10 @@
     {
       "id": "ex-sec-3-02",
       "section_id": "sec-3",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "numeric",
-      "difficulty": 2,
-      "marks": 2,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "By what factor does the drag force on a car increase as it goes from 65 to 110 km/h?",
         "inline": []
@@ -3112,20 +3112,20 @@
     {
       "id": "ex-sec-4-01",
       "section_id": "sec-4",
-      "tier": "warm_up",
-      "kind": "numeric",
-      "difficulty": 1,
-      "marks": 1,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "(a) The “lead” in pencils is a graphite composition with a Young’s modulus of about $1×{10}^{9}N/{m}^{2}$ . Calculate the change in length of the lead in an automatic pencil if you tap it straight into the pencil with a force of 4.0 N. The lead is 0.50 mm in diameter and 60 mm long. (b) Is the answer reasonable? That is, does it seem to be consistent with what you have observed when using pencils?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "(a)1 mm",
+        "text": "(a)1 mm (b) This does seem reasonable, since the lead does seem to shrink a little when you push on it.",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -3150,20 +3150,20 @@
     {
       "id": "ex-sec-4-02",
       "section_id": "sec-4",
-      "tier": "warm_up",
-      "kind": "numeric",
-      "difficulty": 2,
-      "marks": 2,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "(a) By how much does a 65.0-kg mountain climber stretch her 0.800-cm diameter nylon rope when they hang 35.0 m below a rock outcropping? (b) Does the answer seem to be consistent with what you have observed for nylon ropes? Would it make sense if the rope were actually a bungee cord?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "(a)9 cm",
+        "text": "(a)9 cm (b)This seems reasonable for nylon climbing rope, since it is not supposed to stretch that much.",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -3264,20 +3264,20 @@
     {
       "id": "ex-sec-4-05",
       "section_id": "sec-4",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "When using a pencil eraser, you exert a vertical force of 6.00 N at a distance of 2.00 cm from the hardwood-eraser joint. The pencil is 6.00 mm in diameter and is held at an angle of $20.0º$ to the horizontal. (a) By how much does the wood flex perpendicular to its length? (b) How much is it compressed lengthwise?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "9.67×{10}^{-8}m",
+        "text": "(a) $3.99×{10}^{-7}m$ (b) $9.67×{10}^{-8}m$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -3436,7 +3436,10 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic friction, subtopic static-and-dynamic-friction (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_claim_2025_physics_74476",
+        "q_claim_2025_physics_75421"
+      ]
     },
     {
       "exam": "JAMB",

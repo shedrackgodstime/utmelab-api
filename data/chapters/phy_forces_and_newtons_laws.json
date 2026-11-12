@@ -2619,7 +2619,7 @@
     {
       "id": "ex-sec-2-01",
       "section_id": "sec-2",
-      "tier": "warm_up",
+      "tier": "stretch",
       "kind": "numeric",
       "difficulty": 2,
       "marks": 2,
@@ -2677,7 +2677,7 @@
     {
       "id": "ex-sec-2-02",
       "section_id": "sec-2",
-      "tier": "core",
+      "tier": "stretch",
       "kind": "verbal",
       "difficulty": 3,
       "marks": 3,
@@ -2715,7 +2715,7 @@
     {
       "id": "ex-sec-3-01",
       "section_id": "sec-3",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "algebraic",
       "difficulty": 2,
       "marks": 2,
@@ -2790,7 +2790,7 @@
     {
       "id": "ex-sec-4-02",
       "section_id": "sec-4",
-      "tier": "stretch",
+      "tier": "core",
       "kind": "numeric",
       "difficulty": 4,
       "marks": 4,
@@ -2838,10 +2838,10 @@
       },
       "options": [],
       "answer": {
-        "text": "12{m/s}^{2}",
+        "text": "(a) $12{m/s}^{2}.$ (b) The acceleration is not one-fourth of what it was with all rockets burning because the frictional force is still as large as it was with all rockets burning.",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -2870,7 +2870,7 @@
     {
       "id": "ex-sec-4-04",
       "section_id": "sec-4",
-      "tier": "stretch",
+      "tier": "core",
       "kind": "numeric",
       "difficulty": 4,
       "marks": 4,
@@ -2930,10 +2930,10 @@
       },
       "options": [],
       "answer": {
-        "text": "3750 N; 11.3º",
+        "text": "(a) $3.68×{10}^{3}N$ . This force is 5.00 times greater than his weight. (b) $3750 N; 11.3º$ above horizontal",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -2971,7 +2971,7 @@
     {
       "id": "ex-sec-4-06",
       "section_id": "sec-4",
-      "tier": "stretch",
+      "tier": "core",
       "kind": "numeric",
       "difficulty": 4,
       "marks": 4,
@@ -3018,7 +3018,7 @@
     {
       "id": "ex-sec-5-01",
       "section_id": "sec-5",
-      "tier": "core",
+      "tier": "stretch",
       "kind": "algebraic",
       "difficulty": 3,
       "marks": 3,
@@ -3100,7 +3100,7 @@
     {
       "id": "ex-sec-5-03",
       "section_id": "sec-5",
-      "tier": "core",
+      "tier": "stretch",
       "kind": "numeric",
       "difficulty": 3,
       "marks": 3,
@@ -3215,7 +3215,7 @@
     {
       "id": "ex-sec-5-05",
       "section_id": "sec-5",
-      "tier": "core",
+      "tier": "stretch",
       "kind": "algebraic",
       "difficulty": 3,
       "marks": 3,
@@ -3368,7 +3368,8 @@
       "status": "covered",
       "source_locator": "production catalog topic motion, subtopic newton-s-laws-of-motion-inertia-mass-impulse-momentum-and-co (read-only fetch 2026-11-12)",
       "question_ids": [
-        "q_authored_phys_newton_laws_001"
+        "q_claim_2025_physics_74552",
+        "q_claim_2025_physics_74561"
       ]
     },
     {
@@ -3391,7 +3392,10 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic waec-newton-s-laws-of-motion, subtopic waec-first-law-inertia-of-rest-and-inertia-of-motion-2 (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_waec_2024_physics_72028",
+        "q_waec_2023_physics_69355"
+      ]
     },
     {
       "exam": "WAEC",
@@ -3402,7 +3406,9 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic waec-newton-s-laws-of-motion, subtopic waec-second-law-force-acceleration-momentum-and-impulse-2 (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_waec_2023_physics_69404"
+      ]
     },
     {
       "exam": "NECO",

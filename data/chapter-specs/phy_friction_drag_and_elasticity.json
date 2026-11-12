@@ -326,7 +326,10 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic friction, subtopic static-and-dynamic-friction (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_claim_2025_physics_74476",
+        "q_claim_2025_physics_75421"
+      ]
     },
     {
       "exam": "JAMB",

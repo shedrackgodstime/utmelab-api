@@ -6015,10 +6015,10 @@
     {
       "id": "ex-sec-2-01",
       "section_id": "sec-2",
-      "tier": "warm_up",
+      "tier": "stretch",
       "kind": "algebraic",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Which of the following statements comparing position, distance traveled, and displacement is correct? An object may record a distance traveled of zero while recording a non-zero displacement.; An object may record a non-zero distance traveled while recording a displacement of zero.; An object may record a non-zero distance traveled while maintaining a position of zero.; An object may record a non-zero displacement while maintaining a position of zero.",
         "inline": []
@@ -6052,10 +6052,10 @@
     {
       "id": "ex-sec-2-02",
       "section_id": "sec-2",
-      "tier": "warm_up",
-      "kind": "algebraic",
-      "difficulty": 2,
-      "marks": 2,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Find the following for path A in : (a) The distance traveled. (b) The magnitude of the displacement from start to finish. (c) The displacement from start to finish.",
         "inline": []
@@ -6097,10 +6097,10 @@
     {
       "id": "ex-sec-2-03",
       "section_id": "sec-2",
-      "tier": "core",
-      "kind": "algebraic",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Find the following for path C in : (a) The distance traveled. (b) The magnitude of the displacement from start to finish. (c) The displacement from start to finish.",
         "inline": []
@@ -6142,10 +6142,10 @@
     {
       "id": "ex-sec-4-01",
       "section_id": "sec-4",
-      "tier": "warm_up",
+      "tier": "stretch",
       "kind": "algebraic",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A group of students has two carts, *A* and *B* , with wheels that turn with negligible friction. The two carts travel along a straight horizontal track and eventually collide. Before the collision, cart *A* travels to the right and cart *B* is initially at rest. After the collision, the carts stick together. Describe an experimental procedure to determine the velocities of the carts before and after the collision, including all the additional equipment you would need. You may include a labeled diagram of your setup to help in your description. Indicate what measurements you would take and how you would take them. Include enough detail so that another student could carry out your procedure.; There will be sources of error in the measurements taken in the experiment both before and after the collision. Which velocity will be more greatly affected by this error: the velocity prior to the collision or the velocity after the collision? Or will both sets of data be affected equally? Justify your answer.",
         "inline": []
@@ -6183,20 +6183,20 @@
     {
       "id": "ex-sec-4-02",
       "section_id": "sec-4",
-      "tier": "warm_up",
-      "kind": "algebraic",
-      "difficulty": 2,
-      "marks": 2,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "(a) Calculate Earth’s average speed relative to the Sun. (b) What is its average velocity over a period of one year?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "3.0×{10}^{4}m/s",
+        "text": "(a) $3.0×{10}^{4}m/s$ (b) 0 m/s",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -6298,10 +6298,10 @@
     {
       "id": "ex-sec-4-05",
       "section_id": "sec-4",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A student drove to the university from their home and noted that the odometer reading of their car increased by 12.0 km. The trip took 18.0 min. (a) What was their average speed? (b) If the straight-line distance from their home to the university is 10.3 km in a direction $25.0º$ south of east, what was their average velocity? (c) If they returned home by the same path 7 h 30 min after they left, what were their average speed and velocity for the entire trip?",
         "inline": []
@@ -6380,20 +6380,20 @@
     {
       "id": "ex-sec-4-07",
       "section_id": "sec-4",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "The planetary model of the atom pictures electrons orbiting the atomic nucleus much as planets orbit the Sun. In this model you can view hydrogen, the simplest atom, as having a single electron in a circular orbit $1.06×{10}^{-10}m$ in diameter. (a) If the average speed of the electron in this orbit is known to be $2.20×{10}^{6}m/s$ , calculate the number of revolutions per second it makes about the nucleus. (b) What is the electron’s average velocity per revolution?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "6.61×{10}^{15}rev/s",
+        "text": "(a) $6.61×{10}^{15}rev/s$ (b) 0 m/s",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -6421,10 +6421,10 @@
     {
       "id": "ex-sec-5-01",
       "section_id": "sec-5",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "algebraic",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "An airplane lands on a runway traveling east. Describe its acceleration.",
         "inline": []
@@ -6457,10 +6457,10 @@
     {
       "id": "ex-sec-5-02",
       "section_id": "sec-5",
-      "tier": "warm_up",
+      "tier": "stretch",
       "kind": "algebraic",
-      "difficulty": 2,
-      "marks": 2,
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Push a book across a table and observe it slow to a stop. Draw graphs showing the book's position vs. time and velocity vs. time if the direction of its motion is considered positive. Draw graphs showing the book's position vs. time and velocity vs. time if the direction of its motion is considered negative.",
         "inline": []
@@ -6533,20 +6533,20 @@
     {
       "id": "ex-sec-5-04",
       "section_id": "sec-5",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A commuter backs her car out of her garage with an acceleration of $1.{40 m/s}^{2}$ . (a) How long does it take her to reach a speed of 2.00 m/s? (b) If she then brakes to a stop in 0.800 s, what is her deceleration?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "-2.50{m/s}^{2}",
+        "text": "(a) $1.43 s$ (b) $-2.50{m/s}^{2}$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -6573,10 +6573,10 @@
     {
       "id": "ex-sec-6-01",
       "section_id": "sec-6",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "numeric",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "A rocket accelerates at a rate of ${20 m/s}^{2}$ during launch. How long does it take the rocket to reach a velocity of 400 m/s?",
         "inline": []
@@ -6621,10 +6621,10 @@
     {
       "id": "ex-sec-6-02",
       "section_id": "sec-6",
-      "tier": "warm_up",
-      "kind": "numeric",
-      "difficulty": 2,
-      "marks": 2,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "An Olympic-class sprinter starts a race with an acceleration of $4.{50 m/s}^{2}$ . (a) What is her speed 2.40 s later? (b) Sketch a graph of her position vs. time for this period.",
         "inline": []
@@ -6697,10 +6697,10 @@
     {
       "id": "ex-sec-6-04",
       "section_id": "sec-6",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "(a) A light-rail commuter train accelerates at a rate of $1.{35 m/s}^{2}$ . How long does it take to reach its top speed of 80.0 km/h, starting from rest? (b) The same train ordinarily decelerates at a rate of $1.{65 m/s}^{2}$ . How long does it take to come to a stop from its top speed? (c) In emergencies the train can decelerate more rapidly, coming to rest from 80.0 km/h in 8.30 s. What is its emergency deceleration in ${m/s}^{2}$ ?",
         "inline": []
@@ -6741,10 +6741,10 @@
     {
       "id": "ex-sec-6-05",
       "section_id": "sec-6",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "At the end of a race, a runner decelerates from a velocity of 9.00 m/s at a rate of $2.{00 m/s}^{2}$ . (a) How far does she travel in the next 5.00 s? (b) What is her final velocity? (c) Evaluate the result. Does it make sense?",
         "inline": []
@@ -6821,10 +6821,10 @@
     {
       "id": "ex-sec-6-07",
       "section_id": "sec-6",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Freight trains can produce only relatively small accelerations and decelerations. (a) What is the final velocity of a freight train that accelerates at a rate of $0.{0500 m/s}^{2}$ for 8.00 min, starting with an initial velocity of 4.00 m/s? (b) If the train can slow down at a rate of $0.{550 m/s}^{2}$ , how long will it take to come to a stop from this velocity? (c) How far will it travel in each case?",
         "inline": []
@@ -6865,20 +6865,20 @@
     {
       "id": "ex-sec-6-08",
       "section_id": "sec-6",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A swan on a lake gets airborne by flapping its wings and running on top of the water. (a) If the swan must reach a velocity of 6.00 m/s to take off and it accelerates from rest at an average rate of $0.{350 m/s}^{2}$ , how far will it travel before becoming airborne? (b) How long does this take?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "17.1 s",
+        "text": "(a) $51.4m$ (b) $17.1 s$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -6905,20 +6905,20 @@
     {
       "id": "ex-sec-6-09",
       "section_id": "sec-6",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "An unwary football player collides with a padded goalpost while running at a velocity of 7.50 m/s and comes to a full stop after compressing the padding and his body 0.350 m. (a) What is his deceleration? (b) How long does the collision last?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "9.33×{10}^{-2}s",
+        "text": "(a) $-80.4{m/s}^{2}$ (b) $9.33×{10}^{-2}s$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -6945,20 +6945,20 @@
     {
       "id": "ex-sec-6-10",
       "section_id": "sec-6",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Consider a grey squirrel falling out of a tree to the ground. (a) If we ignore air resistance in this case (only for the sake of this problem), determine a squirrel’s velocity just before hitting the ground, assuming it fell from a height of 3.0 m. (b) If the squirrel stops in a distance of 2.0 cm through bending its limbs, compare its deceleration with that of the airman in the previous problem.",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "-15×{10}^{2}{m/s}^{2}",
+        "text": "(a) $7.7 m/s$ (b) $-15×{10}^{2}{m/s}^{2}$ . This is about 3 times the deceleration of the pilots, who were falling from thousands of meters high!",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -7065,20 +7065,20 @@
     {
       "id": "ex-sec-6-13",
       "section_id": "sec-6",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "(a) A world record was set for the men’s 100-m dash in the 2008 Olympic Games in Beijing by Usain Bolt of Jamaica. Bolt “coasted” across the finish line with a time of 9.69 s. If we assume that Bolt accelerated for 3.00 s to reach his maximum speed, and maintained that speed for the rest of the race, calculate his maximum speed and his acceleration. (b) During the same Olympics, Bolt also set the world record in the 200-m dash with a time of 19.30 s. Using the same assumptions as for the 100-m dash, what was his maximum speed for this race?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "11.2 m/s",
+        "text": "(a) $v=12.2 m/s;a=4.{07 m/s}^{2}$ (b) $v=11.2 m/s$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -7105,10 +7105,10 @@
     {
       "id": "ex-sec-8-01",
       "section_id": "sec-8",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "numeric",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "A chunk of ice breaks off a glacier and falls 30.0 meters before it hits the water. Assuming it falls freely (there is no air resistance), how long does it take to hit the water?",
         "inline": []
@@ -7150,10 +7150,10 @@
     {
       "id": "ex-sec-8-02",
       "section_id": "sec-8",
-      "tier": "warm_up",
+      "tier": "stretch",
       "kind": "numeric",
-      "difficulty": 2,
-      "marks": 2,
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Observing a spacecraft land on a distant asteroid, scientists notice that the craft is falling at a rate of 5 m/s. When it is 100 m closer to the surface of the asteroid, the craft reports a velocity of 8 m/s. According to their data, what is the approximate gravitational acceleration on this asteroid? 0 m/s 2; 0.03 m/s 2; 0.20 m/s 2; 0.65 m/s 2; 33 m/s 2",
         "inline": []
@@ -7187,10 +7187,10 @@
     {
       "id": "ex-sec-8-03",
       "section_id": "sec-8",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Calculate the displacement and velocity at times of (a) 0.500, (b) 1.00, (c) 1.50, and (d) 2.00 s for a ball thrown straight up with an initial velocity of 15.0 m/s. Take the point of release to be ${y}_{0}=0$ .",
         "inline": []
@@ -7326,10 +7326,10 @@
     {
       "id": "ex-sec-8-06",
       "section_id": "sec-8",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "(a) Calculate the height of a cliff if it takes 2.35 s for a rock to hit the ground when it is thrown straight up from the cliff with an initial velocity of 8.00 m/s. (b) How long would it take to reach the ground if it is thrown straight down with the same speed?",
         "inline": []
@@ -7404,20 +7404,20 @@
     {
       "id": "ex-sec-8-08",
       "section_id": "sec-8",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Standing at the base of one of the cliffs of Mt. Arapiles in Victoria, Australia, a hiker hears a rock break loose from a height of 105 m. He can’t see the rock right away but then does, 1.50 s later. (a) How far above the hiker is the rock when he can see it? (b) How much time does he have to move before the rock hits his head?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "(b) 3.13 s",
+        "text": "(a) 94.0 m (b) 3.13 s",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -7445,20 +7445,20 @@
     {
       "id": "ex-sec-8-09",
       "section_id": "sec-8",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "There is a 250-m-high cliff at Half Dome in Yosemite National Park in California. Suppose a boulder breaks loose from the top of this cliff. (a) How fast will it be going when it strikes the ground? (b) Assuming a reaction time of 0.300 s, how long will a tourist at the bottom have to get out of the way after hearing the sound of the rock breaking loose (neglecting the height of the tourist, which would become negligible anyway if hit)? The speed of sound is 335 m/s on this day.",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "(b) 6.10 s",
+        "text": "(a) -70.0 m/s (downward) (b) 6.10 s",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -7486,20 +7486,20 @@
     {
       "id": "ex-sec-8-10",
       "section_id": "sec-8",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Suppose you drop a rock into a dark well and, using precision equipment, you measure the time for the sound of a splash to return. (a) Neglecting the time required for sound to travel up the well, calculate the distance to the water if the sound returns in 2.0000 s. (b) Now calculate the distance taking into account the time for sound to travel up the well. The speed of sound is 332.00 m/s in this well.",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "18.5 m",
+        "text": "(a) $19.6 m$ (b) $18.5 m$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -7527,10 +7527,10 @@
     {
       "id": "ex-sec-8-11",
       "section_id": "sec-8",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A coin is dropped from a hot-air balloon that is 300 m above the ground and rising at 10.0 m/s upward. For the coin, find (a) the maximum height reached, (b) its position and velocity 4.00 s after being released, and (c) the time before it hits the ground.",
         "inline": []
@@ -7572,10 +7572,10 @@
     {
       "id": "ex-sec-9-01",
       "section_id": "sec-9",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "application",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "A graph of velocity vs. time of a ship coming into a harbor is shown below. (a) Describe the motion of the ship based on the graph. (b)What would a graph of the ship’s acceleration look like?",
         "inline": []
@@ -7613,20 +7613,20 @@
     {
       "id": "ex-sec-9-02",
       "section_id": "sec-9",
-      "tier": "warm_up",
-      "kind": "numeric",
-      "difficulty": 2,
-      "marks": 2,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "(a) By taking the slope of the curve in , verify that the velocity of the jet car is 115 m/s at $t=20 s$ . (b) By taking the slope of the curve at any point in , verify that the jet car’s acceleration is $5.{0 m/s}^{2}$ .",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "5.{0 m/s}^{2}",
+        "text": "(a) $115 m/s$ (b) $5.{0 m/s}^{2}$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -7691,10 +7691,10 @@
     {
       "id": "ex-sec-9-04",
       "section_id": "sec-9",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A graph of $v(t)$ is shown for a world-class track sprinter in a 100-m race. (See ). (a) What is his average velocity for the first 4 s? (b) What is his instantaneous velocity at $t=5 s$ ? (c) What is his average acceleration between 0 and 4 s? (d) What is his time for the race?",
         "inline": []
@@ -7793,7 +7793,9 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic motion, subtopic linear-motion-speed-velocity-acceleration-equations-of-unifo (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_claim_2025_physics_74658"
+      ]
     },
     {
       "exam": "JAMB",

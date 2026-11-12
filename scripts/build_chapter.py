@@ -75,7 +75,8 @@ def classify(prompt):
     text = prompt.lower()
     if "explain" in text or text.rstrip().endswith("why") or "discuss" in text:
         return "verbal"
-    if re.search(r"\b(a\)|b\)|i\.|ii\.)\b", text):
+    # A multi part problem is marked with two part markers.
+    if (re.search(r"\(a\)", text) and re.search(r"\(b\)", text)) or ("ⓐ" in prompt and "ⓑ" in prompt):
         return "application"
     if re.search(r"\d", prompt):
         return "numeric"
@@ -142,6 +143,21 @@ def tier_for(difficulty):
     return "stretch"
 
 
+# The source groups its exercises by how hard they are meant to be. The tier
+# comes from that grouping, not from our guess.
+GROUP_TIERS = {
+    "conceptual questions": "warm_up",
+    "problems and exercises": "core",
+    "problem exercises": "core",
+    "section exercises": "core",
+    "test prep for ap courses": "stretch",
+}
+
+
+def tier_for_grouping(grouping):
+    return GROUP_TIERS.get((grouping or "").strip().lower(), "core")
+
+
 def source_blocks(concept, module, solutions):
     """Teaching blocks, worked examples and exercises, from the source."""
     blocks = concept["deep_context"]["blocks"]
@@ -151,6 +167,7 @@ def source_blocks(concept, module, solutions):
     worked = []
     exercises = []
     pending = None
+    grouping = None
 
     def provenance(locator):
         return {
@@ -168,6 +185,7 @@ def source_blocks(concept, module, solutions):
             pending = None
         if kind == "heading":
             title = block["text"]["text"].strip()
+            grouping = title
             if title in {"Learning Objectives", "Section Summary", "Conceptual Questions", "Test Prep for AP Courses"}:
                 continue
             teaching.append({"id": f"b-{len(teaching) + 1}", "type": "heading", "text": rt(title)})
@@ -226,6 +244,7 @@ def source_blocks(concept, module, solutions):
                 "solution": steps,
                 "provenance": provenance(f"CNXML module {module}, exercise block {block['id']}"),
                 "solution_provenance": "OpenStax CNXML solution element (in file)",
+                "grouping": grouping,
             })
 
     if pending is not None:
@@ -306,15 +325,19 @@ def build(spec):
             number += 1
             exercise_id = f"ex-{section_id}-{len(section_exercises) + 1:02d}"
             override = plan.get(source_exercise["block_id"], {})
-            position = len(section_exercises) + 1
-            default_difficulty = 1 if position == 1 else 2 if position == 2 else 3
+            tier = override.get("tier", tier_for_grouping(source_exercise.get("grouping")))
+            if tier == "core" and source_exercise.get("grouping", "").lower().startswith("problems") \
+                    and source_exercise.get("kind") == "application":
+                # A multi part problem is the stretch of the set.
+                tier = "stretch"
+            default_difficulty = {"warm_up": 1, "core": 3, "stretch": 4}.get(tier, 3)
             difficulty = override.get("difficulty", default_difficulty)
             marks = override.get("marks", max(1, min(5, difficulty)))
             kind = override.get("kind", source_exercise["kind"])
             exercise = {
                 "id": exercise_id,
                 "section_id": section_id,
-                "tier": override.get("tier", tier_for(difficulty)),
+                "tier": tier,
                 "kind": kind,
                 "difficulty": difficulty,
                 "marks": marks,

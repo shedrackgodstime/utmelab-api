@@ -2445,7 +2445,7 @@
             }
           ],
           "answer": {
-            "text": "(b) 120 m east",
+            "text": "(a) 1.56 km (b) 120 m east",
             "inline": []
           },
           "provenance": {
@@ -4475,10 +4475,10 @@
     {
       "id": "ex-sec-2-01",
       "section_id": "sec-2",
-      "tier": "warm_up",
+      "tier": "stretch",
       "kind": "numeric",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A student wishes to design an experiment to show that the acceleration of an object is independent of the object's velocity. To do this, ball A is launched horizontally with some initial speed at an elevation 1.5 meters above the ground, ball B is dropped from rest 1.5 meters above the ground, and ball C is launched vertically with some initial speed at an elevation 1.5 meters above the ground. What information would the student need to collect about each ball in order to test the hypothesis?",
         "inline": []
@@ -4511,20 +4511,20 @@
     {
       "id": "ex-sec-3-01",
       "section_id": "sec-3",
-      "tier": "warm_up",
-      "kind": "numeric",
-      "difficulty": 1,
-      "marks": 1,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Find the following for path A in : (a) the total distance traveled, and (b) the magnitude and direction of the displacement from start to finish. The various lines represent paths taken by different people walking in a city. All blocks are 120 m on a side.",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "379 m,18.4º",
+        "text": "(a) $480 m$ (b) $379 m,18.4º$ east of north",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -4551,10 +4551,10 @@
     {
       "id": "ex-sec-3-02",
       "section_id": "sec-3",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "algebraic",
-      "difficulty": 2,
-      "marks": 2,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "Find the north and east components of the displacement for the hikers shown in .",
         "inline": []
@@ -4623,20 +4623,20 @@
     {
       "id": "ex-sec-3-04",
       "section_id": "sec-3",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "(a) Repeat the problem two problems prior, but for the second leg you walk 20.0 m in a direction $40.0º$ north of east, (which is equivalent to subtracting $B$ from $A$ —that is, finding $R′=A-B$ ). (b) Repeat the problem two problems prior, but now you first walk 20.0 m in a direction $40.0º$ east of south (which is equivalent to subtracting $A$ from $B$ —that is, to finding $R′′=B-A=-R′$ ). Show that this is the case.",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "26.6 m,65.1º",
+        "text": "(a) $26.6 m,65.1º$ north of east (b) $26.6 m,65.1º$ south of west",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -4739,10 +4739,10 @@
     {
       "id": "ex-sec-4-01",
       "section_id": "sec-4",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "algebraic",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "Find the north and east components of the displacement from San Francisco to Sacramento shown in .",
         "inline": []
@@ -4776,10 +4776,10 @@
     {
       "id": "ex-sec-4-02",
       "section_id": "sec-4",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "verbal",
-      "difficulty": 2,
-      "marks": 2,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "Repeat using analytical techniques, but reverse the order of the two legs of the walk and show that you get the same final result. (This problem shows that adding them in reverse order gives the same result—that is, $B + A = A + B$ .) Discuss how taking another path to reach the same point might help to overcome an obstacle blocking your other path.",
         "inline": []
@@ -4854,20 +4854,20 @@
     {
       "id": "ex-sec-4-04",
       "section_id": "sec-4",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "You fly $32.0 km$ in a straight line in still air in the direction $35.0º$ south of west. (a) Find the distances you would have to fly straight south and then straight west to arrive at the same point. (This determination is equivalent to finding the components of the displacement along the south and west directions.) (b) Find the distances you would have to fly first in a direction $45.0º$ south of west and then in a direction $45.0º$ west of north. These are the components of the displacement along a different set of axes—one rotated $45º$ .",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "45.0º",
+        "text": "18.4 km south, then 26.2 km west(b) 31.5 km at $45.0º$ south of west, then 5.56 km at $45.0º$ west of north",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -4928,10 +4928,10 @@
     {
       "id": "ex-sec-5-01",
       "section_id": "sec-5",
-      "tier": "warm_up",
-      "kind": "numeric",
-      "difficulty": 1,
-      "marks": 1,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A ball is thrown horizontally from the top of a 60.0-m building and lands 100.0 m from the base of the building. Ignore air resistance. (a) How long is the ball in the air? (b) What must have been the initial horizontal component of the velocity? (c) What is the vertical component of the velocity just before the ball hits the ground? (d) What is the velocity (including both the horizontal and vertical components) of the ball just before it hits the ground?",
         "inline": []
@@ -4973,20 +4973,20 @@
     {
       "id": "ex-sec-5-02",
       "section_id": "sec-5",
-      "tier": "warm_up",
-      "kind": "numeric",
-      "difficulty": 2,
-      "marks": 2,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "An archer shoots an arrow at a 75.0 m distant target; the bull’s-eye of the target is at same height as the release height of the arrow. (a) At what angle must the arrow be released to hit the bull’s-eye if its initial speed is 35.0 m/s? In this part of the problem, explicitly show how you follow the steps involved in solving projectile motion problems. (b) There is a large tree halfway between the archer and the target with an overhanging horizontal branch 3.50 m above the release height of the arrow. Will the arrow go over or under the branch?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "18.4º",
+        "text": "(a) $18.4º$ (b) The arrow will go over the branch.",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -5055,10 +5055,10 @@
     {
       "id": "ex-sec-5-04",
       "section_id": "sec-5",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "The cannon on a battleship can fire a shell a maximum distance of 32.0 km. (a) Calculate the initial velocity of the shell. (b) What maximum height does it reach? (At its highest, the shell is above 60% of the atmosphere—but air resistance is not really negligible as assumed to make this problem easier.) (c) The ocean is not flat, because the Earth is curved. Assume that the radius of the Earth is $6.37×{10}^{3}km$ . How many meters lower will its surface be 32.0 km from the ship along a horizontal line parallel to the surface at the ship? Does your answer imply that error introduced by the assumption of a flat Earth in projectile motion is significant here?",
         "inline": []
@@ -5330,20 +5330,20 @@
     {
       "id": "ex-sec-5-11",
       "section_id": "sec-5",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A football player punts the ball at a $45.0º$ angle. Without an effect from the wind, the ball would travel 60.0 m horizontally. (a) What is the initial speed of the ball? (b) When the ball is near its maximum height it experiences a brief gust of wind that reduces its horizontal velocity by 1.50 m/s. What distance does the ball travel horizontally?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "(a) 24.2 m/s",
+        "text": "(a) 24.2 m/s (b) The ball travels a total of 57.4 m with the brief gust of wind.",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -5428,10 +5428,10 @@
     {
       "id": "ex-sec-6-01",
       "section_id": "sec-6",
-      "tier": "warm_up",
-      "kind": "numeric",
-      "difficulty": 1,
-      "marks": 1,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Near the end of a marathon race, the first two runners are separated by a distance of 45.0 m. The front runner has a velocity of 3.50 m/s, and the second a velocity of 4.20 m/s. (a) What is the velocity of the second runner relative to the first? (b) If the front runner is 250 m from the finish line, who will win the race, assuming they run at constant velocity? (c) What distance ahead will the winner be when she crosses the finish line?",
         "inline": []
@@ -5472,10 +5472,10 @@
     {
       "id": "ex-sec-6-02",
       "section_id": "sec-6",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "numeric",
-      "difficulty": 2,
-      "marks": 2,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "A football quarterback is moving straight backward at a speed of 2.00 m/s when he throws a pass to a player 18.0 m straight downfield. The ball is thrown at an angle of $25.0º$ relative to the ground and is caught at the same height as it is released. What is the initial velocity of the ball *relative to the quarterback* ?",
         "inline": []
@@ -5548,20 +5548,20 @@
     {
       "id": "ex-sec-6-04",
       "section_id": "sec-6",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "(a) Another airplane is flying in a jet stream that is blowing at 45.0 m/s in a direction $20º$ south of east (as in ). Its direction of motion relative to the Earth is $45.0º$ south of west, while its direction of travel relative to the air is $5.00º$ south of west. What is the airplane’s speed relative to the air mass? (b) What is the airplane’s speed relative to the Earth?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "(b) 29.6 m/s",
+        "text": "(a) 63.5 m/s (b) 29.6 m/s",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -5624,20 +5624,20 @@
     {
       "id": "ex-sec-6-06",
       "section_id": "sec-6",
-      "tier": "core",
-      "kind": "algebraic",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "(a) Use the distance and velocity data in to find the rate of expansion as a function of distance. (b) If you extrapolate back in time, how long ago would all of the galaxies have been at approximately the same position? The two parts of this problem give you some idea of how the Hubble constant for universal expansion and the time back to the Big Bang are determined, respectively.",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "14.9\\frac{km/s}{Mly}",
+        "text": "(a) ${H}_{$ average $}=14.9\\frac{km/s}{Mly}$ (b) 20.2 billion years",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -5763,7 +5763,10 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic waec-projectile-motion-concept-of-into-space, subtopic waec-projectiles-as-an-object-thrown-release (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_waec_2025_physics_76334",
+        "q_waec_2023_physics_69391"
+      ]
     },
     {
       "exam": "WAEC",

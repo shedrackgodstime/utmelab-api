@@ -4309,10 +4309,10 @@
     {
       "id": "ex-sec-2-01",
       "section_id": "sec-2",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "numeric",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "An automobile with 0.260 m radius tires travels 80,000 km before wearing them out. How many revolutions do the tires make, neglecting any backing up and any change in radius due to wear?",
         "inline": []
@@ -4346,10 +4346,10 @@
     {
       "id": "ex-sec-2-02",
       "section_id": "sec-2",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "numeric",
-      "difficulty": 2,
-      "marks": 2,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "A baseball pitcher brings his arm forward during a pitch, rotating the forearm about the elbow. If the velocity of the ball in the pitcher’s hand is 35.0 m/s and the ball is 0.300 m from the elbow joint, what is the angular velocity of the forearm?",
         "inline": []
@@ -4425,7 +4425,7 @@
       "id": "ex-sec-2-04",
       "section_id": "sec-2",
       "tier": "core",
-      "kind": "numeric",
+      "kind": "application",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -4469,10 +4469,10 @@
     {
       "id": "ex-sec-3-01",
       "section_id": "sec-3",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "numeric",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "Taking the age of Earth to be about $4×{10}^{9}$ years and assuming its orbital radius of $1.5 ×{10}^{11}$ m has not changed and is circular, calculate the approximate total distance Earth has traveled since its birth (in a frame of reference stationary with respect to the Sun).",
         "inline": []
@@ -4504,20 +4504,20 @@
     {
       "id": "ex-sec-3-02",
       "section_id": "sec-3",
-      "tier": "warm_up",
-      "kind": "numeric",
-      "difficulty": 2,
-      "marks": 2,
+      "tier": "core",
+      "kind": "application",
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "An ordinary workshop grindstone has a radius of 7.50 cm and rotates at 6500 rev/min. (a) Calculate the magnitude of the centripetal acceleration at its edge in meters per second squared and convert it to multiples of $g$ . (b) What is the linear speed of a point on its edge?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "51.1m/s",
+        "text": "a) $3.47×{10}^{4}m/{s}^{2},3.55×{10}^{3}g$ b) $51.1m/s$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -4544,7 +4544,7 @@
       "id": "ex-sec-3-03",
       "section_id": "sec-3",
       "tier": "core",
-      "kind": "numeric",
+      "kind": "application",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -4591,7 +4591,7 @@
       "id": "ex-sec-3-04",
       "section_id": "sec-3",
       "tier": "core",
-      "kind": "numeric",
+      "kind": "application",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -4600,10 +4600,10 @@
       },
       "options": [],
       "answer": {
-        "text": "b) 29.7 km/s",
+        "text": "a) 0.524 km/s b) 29.7 km/s",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -4630,7 +4630,7 @@
       "id": "ex-sec-3-05",
       "section_id": "sec-3",
       "tier": "core",
-      "kind": "numeric",
+      "kind": "application",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -4724,7 +4724,7 @@
       "id": "ex-sec-3-07",
       "section_id": "sec-3",
       "tier": "core",
-      "kind": "numeric",
+      "kind": "application",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -4770,10 +4770,10 @@
     {
       "id": "ex-sec-4-01",
       "section_id": "sec-4",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "numeric",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "What is the ideal banking angle for a gentle turn of 1.20 km radius on a highway with a 105 km/h speed limit (about 65 mi/h), assuming everyone travels at the limit?",
         "inline": []
@@ -4805,10 +4805,10 @@
     {
       "id": "ex-sec-4-02",
       "section_id": "sec-4",
-      "tier": "warm_up",
-      "kind": "numeric",
-      "difficulty": 2,
-      "marks": 2,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "(a) What is the radius of a bobsled turn banked at 75.0° and taken at 30.0 m/s, assuming it is ideally banked? (b) Calculate the centripetal acceleration. (c) Does this acceleration seem large to you?",
         "inline": []
@@ -4848,20 +4848,20 @@
     {
       "id": "ex-sec-4-03",
       "section_id": "sec-4",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A large centrifuge, like the one shown in (a), is used to expose aspiring astronauts to accelerations similar to those experienced in rocket launches and atmospheric reentries. (a) At what angular velocity is the centripetal acceleration $10g$ if the rider is 15.0 m from the center of rotation? (b) The rider’s cage hangs on a pivot at the end of the arm, allowing it to swing outward during rotation as shown in (b). At what angle $θ$ below the horizontal will the cage hang when the centripetal acceleration is $10g$ ? (Hint: The arm supplies centripetal force and supports the weight of the cage. Draw a free body diagram of the forces to see what the angle $θ$ should be.) (a) NASA centrifuge used to subject trainees to accelerations similar to those experienced in rocket launches and reentries. (credit: NASA) (b) Rider in cage showing how the cage pivots outward during rotation. This allows the total force exerted on the rider by the cage to be along its axis at all times.",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "5.71º",
+        "text": "a) 2.56 rad/s b) $5.71º$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -4887,20 +4887,20 @@
     {
       "id": "ex-sec-4-04",
       "section_id": "sec-4",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Integrated Concepts If a car takes a banked curve at less than the ideal speed, friction is needed to keep it from sliding toward the inside of the curve (a real problem on icy mountain roads). (a) Calculate the ideal speed to take a 100 m radius curve banked at 15.0º. (b) What is the minimum coefficient of friction needed for a frightened driver to take the same curve at 20.0 km/h?",
         "inline": []
       },
       "options": [],
       "answer": {
-        "text": "b) 0.234",
+        "text": "a) 16.2 m/s b) 0.234",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -4926,10 +4926,10 @@
     {
       "id": "ex-sec-4-05",
       "section_id": "sec-4",
-      "tier": "core",
-      "kind": "numeric",
-      "difficulty": 3,
-      "marks": 3,
+      "tier": "stretch",
+      "kind": "application",
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "Unreasonable Results (a) Calculate the minimum coefficient of friction needed for a car to negotiate an unbanked 50.0 m radius curve at 30.0 m/s. (b) What is unreasonable about the result? (c) Which premises are unreasonable or inconsistent?",
         "inline": []
@@ -4969,10 +4969,10 @@
     {
       "id": "ex-sec-6-01",
       "section_id": "sec-6",
-      "tier": "warm_up",
+      "tier": "stretch",
       "kind": "numeric",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "In the formula $g=\\frac{GM}{{r}^{2}}$ , what does *G* represent? The acceleration due to gravity; A gravitational constant that is the same everywhere in the universe; A gravitational constant that is inversely proportional to the radius; The factor by which you multiply the inertial mass to obtain the gravitational mass",
         "inline": []
@@ -5005,10 +5005,10 @@
     {
       "id": "ex-sec-6-02",
       "section_id": "sec-6",
-      "tier": "warm_up",
+      "tier": "stretch",
       "kind": "numeric",
-      "difficulty": 2,
-      "marks": 2,
+      "difficulty": 4,
+      "marks": 4,
       "stem": {
         "text": "A recently discovered planet has a mass twice as great as Earth's and a radius twice as large as Earth's. What will be the approximate size of its gravitational field? 19 m/s 2; 4.9 m/s 2; 2.5 m/s 2; 9.8 m/s 2",
         "inline": []
@@ -5042,7 +5042,7 @@
       "id": "ex-sec-6-03",
       "section_id": "sec-6",
       "tier": "core",
-      "kind": "numeric",
+      "kind": "application",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -5051,10 +5051,10 @@
       },
       "options": [],
       "answer": {
-        "text": "5.95296×{10}^{24}kg",
+        "text": "a) $g=\\frac{GM}{{r}^{2}}⇒M=\\frac{{r}^{2}g}{G}=5.95296×{10}^{24}kg$ b) This is slightly, but measurably, smaller than the accepted value, differing in the third significant digit. The equation we used to find *g* assumes a sphere, but we already noted that the radius at the pole is smaller than at the equator. The calculation gives the mass for a sphere of the radius we used—and ignores the additional mass outside that radius.",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -5082,7 +5082,7 @@
       "id": "ex-sec-6-04",
       "section_id": "sec-6",
       "tier": "core",
-      "kind": "numeric",
+      "kind": "application",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -5091,10 +5091,10 @@
       },
       "options": [],
       "answer": {
-        "text": "3.75m/{s}^{2}",
+        "text": "a) $1.62m/{s}^{2}$ b) $3.75m/{s}^{2}$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -5122,7 +5122,7 @@
       "id": "ex-sec-6-05",
       "section_id": "sec-6",
       "tier": "core",
-      "kind": "numeric",
+      "kind": "application",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -5166,7 +5166,7 @@
       "id": "ex-sec-6-06",
       "section_id": "sec-6",
       "tier": "core",
-      "kind": "numeric",
+      "kind": "application",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -5175,10 +5175,10 @@
       },
       "options": [],
       "answer": {
-        "text": "1.35×{10}^{–6}N,0.521",
+        "text": "a) $7.01×{10}^{–7}N$ b) $1.35×{10}^{–6}N,0.521$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -5206,7 +5206,7 @@
       "id": "ex-sec-6-07",
       "section_id": "sec-6",
       "tier": "core",
-      "kind": "numeric",
+      "kind": "application",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -5215,10 +5215,10 @@
       },
       "options": [],
       "answer": {
-        "text": "2.17×{10}^{5}m/s",
+        "text": "a) $1.66×{10}^{–10}m/{s}^{2}$ b) $2.17×{10}^{5}m/s$",
         "inline": []
       },
-      "answer_kind": "expression",
+      "answer_kind": "explanation",
       "solution": [
         {
           "step_number": 1,
@@ -5246,7 +5246,7 @@
       "id": "ex-sec-6-08",
       "section_id": "sec-6",
       "tier": "core",
-      "kind": "numeric",
+      "kind": "application",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -5297,10 +5297,10 @@
     {
       "id": "ex-sec-7-01",
       "section_id": "sec-7",
-      "tier": "warm_up",
+      "tier": "core",
       "kind": "algebraic",
-      "difficulty": 1,
-      "marks": 1,
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "Find the ratio of the mass of Jupiter to that of Earth based on data in .",
         "inline": []
@@ -5334,10 +5334,10 @@
     {
       "id": "ex-sec-7-02",
       "section_id": "sec-7",
-      "tier": "warm_up",
-      "kind": "numeric",
-      "difficulty": 2,
-      "marks": 2,
+      "tier": "core",
+      "kind": "application",
+      "difficulty": 3,
+      "marks": 3,
       "stem": {
         "text": "Integrated Concepts Space debris left from old satellites and their launchers is becoming a hazard to other satellites. (a) Calculate the speed of a satellite in an orbit 900 km above Earth’s surface. (b) Suppose a loose rivet is in an orbit of the same radius that intersects the satellite’s orbit at an angle of $90º$ relative to Earth. What is the velocity of the rivet relative to the satellite just before striking it? (c) Given the rivet is 3.00 mm in size, how long will its collision with the satellite last, approximating acceleration as constant and the rivet comes to a stop? (d) If its mass is 0.500 g, what is the average force it exerts on the satellite? (e) How much energy in joules is generated by the collision? (The satellite’s velocity does not change appreciably, because its mass is much greater than the rivet’s.)",
         "inline": []
@@ -5388,7 +5388,7 @@
       "id": "ex-sec-7-03",
       "section_id": "sec-7",
       "tier": "core",
-      "kind": "numeric",
+      "kind": "application",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -5485,7 +5485,10 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic gravitational-field, subtopic newton-s-law-of-universal-gravitation (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_claim_2025_physics_74363",
+        "q_claim_2025_physics_74573"
+      ]
     },
     {
       "exam": "JAMB",
@@ -5496,7 +5499,9 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic gravitational-field, subtopic acceleration-due-to-gravity-g-gm-r-and-its-variation-on-the (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_claim_2025_physics_74570"
+      ]
     },
     {
       "exam": "WAEC",
@@ -5507,7 +5512,12 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic waec-gravitational-field, subtopic waec-gravitational-force-between-two (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_waec_2023_physics_69369",
+        "q_waec_2023_physics_69379",
+        "q_waec_2023_physics_69421",
+        "q_waec_2023_physics_69422"
+      ]
     },
     {
       "exam": "WAEC",
@@ -5518,7 +5528,9 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic waec-motion, subtopic waec-simple-ideas-of-circular-motion (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_waec_2025_physics_76333"
+      ]
     },
     {
       "exam": "NECO",

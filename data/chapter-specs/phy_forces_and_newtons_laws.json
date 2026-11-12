@@ -581,7 +581,8 @@
       "status": "covered",
       "source_locator": "production catalog topic motion, subtopic newton-s-laws-of-motion-inertia-mass-impulse-momentum-and-co (read-only fetch 2026-11-12)",
       "question_ids": [
-        "q_authored_phys_newton_laws_001"
+        "q_claim_2025_physics_74552",
+        "q_claim_2025_physics_74561"
       ]
     },
     {
@@ -604,7 +605,10 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic waec-newton-s-laws-of-motion, subtopic waec-first-law-inertia-of-rest-and-inertia-of-motion-2 (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_waec_2024_physics_72028",
+        "q_waec_2023_physics_69355"
+      ]
     },
     {
       "exam": "WAEC",
@@ -615,7 +619,9 @@
       "expected_count": null,
       "status": "covered",
       "source_locator": "production catalog topic waec-newton-s-laws-of-motion, subtopic waec-second-law-force-acceleration-momentum-and-impulse-2 (read-only fetch 2026-11-12)",
-      "question_ids": []
+      "question_ids": [
+        "q_waec_2023_physics_69404"
+      ]
     },
     {
       "exam": "NECO",

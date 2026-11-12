@@ -209,6 +209,11 @@ idea, core exercises are the standard work, stretch exercises combine ideas
 or go beyond the section. Every exercise has a tier, so a reader can work
 down the ladder or start at the stretch tier.
 
+The tier is not a guess. It comes from the grouping the source itself uses:
+Conceptual Questions are warm-up, the section exercises are core, and the
+multi part problems and the test preparation sets are stretch. A spec may
+override any of it.
+
 **Hints** are optional and progressive: the first nudges, the second points
 at the method. They are written by us, so they carry our provenance, not the
 source's.
@@ -283,6 +288,21 @@ worked example with `worked_from`.
 The chapter is generated, so it can never drift from its spec: the quality
 workflow rebuilds every chapter and fails if the result differs from the file
 on disk.
+
+## The bank and the exam side
+
+A chapter teaches. An exam examines. The two meet in `exam_links`, and the
+link carries the questions the bank holds for that exam subtopic.
+
+`scripts/link_bank.py` reads the production bank and writes the question ids
+into the spec, then reports the coverage. The spec keeps the truth, so the
+chapter rebuilds without a database, and the coverage report is the honest
+measure of what the exam side of the book actually holds.
+
+Right now the report says the bank is thin: ten of the twenty two links point
+at a subtopic with no questions at all, and the covered subtopics hold one or
+two questions each. That is a statement about the bank, not about the
+chapters.
 
 ## Where we are against this
 
