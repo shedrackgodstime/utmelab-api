@@ -352,7 +352,7 @@ mod tests {
                 .as_array()
                 .expect("resources")
                 .len(),
-            7
+            10
         );
 
         let (_, templates) = rpc(
@@ -367,7 +367,7 @@ mod tests {
                 .as_array()
                 .expect("templates")
                 .len(),
-            18
+            21
         );
     }
 

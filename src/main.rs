@@ -37,6 +37,10 @@ fn main() {
         let path = args.get(2).cloned().unwrap_or_default();
         std::process::exit(import_notes_cmd(path));
     }
+    if args.get(1).is_some_and(|a| a == "import-chapters") {
+        let path = args.get(2).cloned().unwrap_or_default();
+        std::process::exit(import_chapters_cmd(path));
+    }
     if args.get(1).is_some_and(|a| a == "import-theory") {
         let path = args.get(2).cloned().unwrap_or_default();
         std::process::exit(import_theory_cmd(path));
@@ -216,6 +220,73 @@ fn import_notes_cmd(path_str: String) -> i32 {
             }
             Err(e) => {
                 eprintln!("import notes failed: {e}");
+                1
+            }
+        }
+    })
+}
+
+fn import_chapters_cmd(path_str: String) -> i32 {
+    if path_str.is_empty() {
+        eprintln!("usage: import-chapters <path/to/chapters.json>");
+        return 2;
+    }
+    let content = match std::fs::read_to_string(&path_str) {
+        Ok(c) => c,
+        Err(e) => {
+            eprintln!("failed to read file '{path_str}': {e}");
+            return 1;
+        }
+    };
+    let bundle: store::chapters::ChapterBundle = match serde_json::from_str(&content) {
+        Ok(b) => b,
+        Err(e) => {
+            eprintln!("invalid chapters json: {e}");
+            return 1;
+        }
+    };
+    let cfg = match Config::from_env() {
+        Ok(c) => c,
+        Err(e) => {
+            eprintln!("{e}");
+            return 1;
+        }
+    };
+    if !cfg.has_db() {
+        eprintln!("no TURSO_DB_URL/TOKEN; nothing to import into");
+        return 1;
+    }
+    let rt = match tokio::runtime::Builder::new_current_thread()
+        .enable_all()
+        .build()
+    {
+        Ok(r) => r,
+        Err(e) => {
+            eprintln!("failed to start command runtime: {e}");
+            return 1;
+        }
+    };
+    rt.block_on(async move {
+        let Some(db) = store::sync::ready_db(&cfg).await else {
+            eprintln!("could not open replica (is the server running?) or reach cloud");
+            return 1;
+        };
+        let st = utmelab_api::state::DbState::detached(db.clone());
+        if let Err(e) = store::schema::ensure_schema(&st).await {
+            eprintln!("ensure schema failed: {e}");
+            return 1;
+        }
+        match store::chapters::import_bundle(&st, &bundle).await {
+            Ok(count) => {
+                println!(
+                    "imported {count} chapters and {} books from {path_str}",
+                    bundle.books.len()
+                );
+                let _ = store::sync::push_db(&db, &cfg).await;
+                0
+            }
+            Err(e) => {
+                eprintln!("import chapters failed: {e}");
                 1
             }
         }

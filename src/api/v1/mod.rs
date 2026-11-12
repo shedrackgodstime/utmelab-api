@@ -28,6 +28,7 @@ pub mod public;
 pub mod questions;
 pub mod reports;
 pub mod subjects;
+pub mod textbooks;
 pub mod theory;
 pub mod tokens;
 pub mod topics;
@@ -51,5 +52,6 @@ pub fn router(state: AppState) -> Router<AppState> {
         .merge(passages::router(state.clone()))
         .merge(blueprints::router(state.clone()))
         .merge(notes::router(state.clone()))
+        .merge(textbooks::router(state.clone()))
         .merge(theory::router(state))
 }

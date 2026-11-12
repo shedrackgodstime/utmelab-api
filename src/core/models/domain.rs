@@ -340,6 +340,201 @@ pub struct PaperReadiness {
     pub complete: bool,
 }
 
+/// A textbook. The textbook owns the teaching, so it never names an exam.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct Book {
+    pub id: String,
+    pub title: String,
+    pub subject_area: String,
+    pub level: String,
+    pub edition: String,
+    #[serde(default)]
+    pub description: String,
+    #[serde(default)]
+    pub parts: Vec<BookPart>,
+    #[serde(default)]
+    pub sources: Vec<serde_json::Value>,
+}
+
+/// A named part of a book, the way a school textbook divides itself.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct BookPart {
+    pub id: String,
+    pub order: i64,
+    pub title: String,
+}
+
+/// A chapter of a book.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct Chapter {
+    pub chapter_id: String,
+    pub schema_version: u32,
+    pub updated_at: String,
+    pub title: String,
+    pub book_id: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub part_id: Option<String>,
+    #[serde(default)]
+    pub facts_inherited: bool,
+    #[serde(default)]
+    pub learning_objectives: Vec<LearningObjective>,
+    #[serde(default)]
+    pub prerequisites: Vec<String>,
+    #[serde(default)]
+    pub formula_sheet: Vec<serde_json::Value>,
+    #[serde(default)]
+    pub glossary: Vec<serde_json::Value>,
+    #[serde(default)]
+    pub sections: Vec<ChapterSection>,
+    #[serde(default)]
+    pub exercises: Vec<ChapterExercise>,
+    #[serde(default)]
+    pub exam_traps: Vec<ExamTrap>,
+    #[serde(default)]
+    pub exam_recall_checks: Vec<ExamRecallCheck>,
+    #[serde(default)]
+    pub sources: Vec<serde_json::Value>,
+}
+
+/// One thing the reader will be able to do.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct LearningObjective {
+    pub id: String,
+    pub statement: String,
+    #[serde(default)]
+    pub bloom_level: String,
+}
+
+/// The teaching unit of a chapter.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct ChapterSection {
+    pub id: String,
+    pub order: i64,
+    pub slug: String,
+    pub title: String,
+    pub est_minutes: i64,
+    #[serde(default)]
+    pub facts_inherited: bool,
+    #[serde(default)]
+    pub learning_objectives: Vec<LearningObjective>,
+    #[serde(default)]
+    pub teaching_text: serde_json::Value,
+    #[serde(default)]
+    pub worked_examples: Vec<serde_json::Value>,
+    #[serde(default)]
+    pub misconceptions: Vec<serde_json::Value>,
+    #[serde(default)]
+    pub summary_points: Vec<serde_json::Value>,
+    #[serde(default)]
+    pub exercise_ids: Vec<String>,
+    #[serde(default)]
+    pub exam_links: Vec<ExamLink>,
+    #[serde(default)]
+    pub provenance: serde_json::Value,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub no_worked_example_reason: Option<String>,
+}
+
+/// A practice item with its answer and its solution.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct ChapterExercise {
+    pub id: String,
+    pub section_id: String,
+    pub tier: String,
+    pub kind: String,
+    pub difficulty: i64,
+    pub marks: f64,
+    pub stem: serde_json::Value,
+    #[serde(default)]
+    pub options: Vec<serde_json::Value>,
+    pub answer: serde_json::Value,
+    pub answer_kind: String,
+    #[serde(default)]
+    pub solution: Vec<serde_json::Value>,
+    #[serde(default)]
+    pub hints: Vec<serde_json::Value>,
+    #[serde(default)]
+    pub tags: Vec<String>,
+    #[serde(default)]
+    pub provenance: serde_json::Value,
+    #[serde(default)]
+    pub solution_provenance: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub answer_note: Option<String>,
+}
+
+/// How an exam examines a chapter section.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct ExamLink {
+    pub exam: String,
+    pub subject: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub topic_slug: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub subtopic_slug: Option<String>,
+    #[serde(default)]
+    pub status: String,
+    #[serde(default)]
+    pub weight_pct: Option<f64>,
+    #[serde(default)]
+    pub expected_count: Option<f64>,
+    #[serde(default)]
+    pub source_locator: String,
+    #[serde(default)]
+    pub papers: Vec<ExamPaper>,
+}
+
+/// A past paper the exam used, with the provenance it carries.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct ExamPaper {
+    pub question_id: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub year: Option<i64>,
+    #[serde(default)]
+    pub source: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub url: Option<String>,
+}
+
+/// A mistake candidates make, with the evidence behind it.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct ExamTrap {
+    pub id: String,
+    pub exam: String,
+    pub subject: String,
+    pub section_id: String,
+    pub misconception: serde_json::Value,
+    pub correction: serde_json::Value,
+    #[serde(default)]
+    pub signal: serde_json::Value,
+    #[serde(default)]
+    pub status: String,
+    #[serde(default)]
+    pub paper_evidence: serde_json::Value,
+    #[serde(default)]
+    pub frequency: String,
+    #[serde(default)]
+    pub provenance: serde_json::Value,
+}
+
+/// A practice item written in the exam's own wording.
+#[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
+pub struct ExamRecallCheck {
+    pub id: String,
+    pub exam: String,
+    pub subject: String,
+    pub section_id: String,
+    pub stem: serde_json::Value,
+    #[serde(default)]
+    pub options: Vec<serde_json::Value>,
+    pub answer: String,
+    pub explanation: serde_json::Value,
+    #[serde(default)]
+    pub difficulty: i64,
+    #[serde(default)]
+    pub source: String,
+}
+
 /// A high-yield study note mapped to a syllabus topic or subtopic.
 #[derive(Clone, Debug, PartialEq, serde::Serialize, serde::Deserialize, utoipa::ToSchema)]
 pub struct TopicNote {
