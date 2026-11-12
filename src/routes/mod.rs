@@ -13,7 +13,7 @@ pub mod health;
 
 use axum::{
     body::Body,
-    extract::State,
+    extract::{FromRef, State},
     http::Request,
     middleware::Next,
     response::{IntoResponse, Response},
@@ -36,7 +36,7 @@ use crate::{
     config::Config,
     error::AppError,
     internal, mcp,
-    state::AppState,
+    state::{AppState, DbState},
     store::sync::{BlockedReason, Readiness},
 };
 
@@ -58,11 +58,24 @@ async fn contract_guard(
 ) -> Response {
     let readiness = state.sync.readiness();
     if !readiness.allows_public_reads() {
-        let error = match readiness {
-            Readiness::Blocked(BlockedReason::SchemaMismatch) => AppError::SchemaMismatch,
-            _ => AppError::DbUnavailable("sync"),
-        };
-        return error.into_response();
+        if !state.sync.sleeping_ready() {
+            let error = match readiness {
+                Readiness::Blocked(BlockedReason::SchemaMismatch) => AppError::SchemaMismatch,
+                _ => AppError::DbUnavailable("sync"),
+            };
+            return error.into_response();
+        }
+        // The replica is idle, not broken. Wake it here, before the guard
+        // rejects the request: the documented wake path lives in the store,
+        // and a stale idle replica would otherwise never reach it. A failed
+        // wake still fails closed.
+        let db = DbState::from_ref(&state);
+        if let Err(error) = crate::store::sync::wake_if_sleeping(&db).await {
+            return error.into_response();
+        }
+        if !state.sync.readiness().allows_public_reads() {
+            return AppError::DbUnavailable("sync").into_response();
+        }
     }
     next.run(request).await
 }
@@ -214,8 +227,8 @@ pub fn router(state: AppState, cfg: &Config) -> Router {
 mod tests {
     use super::*;
     use crate::testing::{
-        api_schema, bank_schema, call, call_with_headers, connect, db_state_without_db, issue_key,
-        replica, state, state_without_db,
+        api_schema, bank_schema, call, call_with_headers, connect, db_state, db_state_without_db,
+        issue_key, replica, state, state_without_db,
     };
     use std::sync::Arc;
     use tower::ServiceExt;
@@ -272,6 +285,26 @@ mod tests {
             .await
             .expect_err("no replica yet");
         assert!(matches!(err, AppError::DbUnavailable(_)));
+    }
+
+    #[tokio::test]
+    async fn ready_stays_ok_while_the_replica_is_idle_and_stale() {
+        use crate::store::sync::{unix_now, SyncEvent};
+
+        let s = db_state(replica().await);
+        let now = unix_now();
+        s.sync.apply(SyncEvent::PullSucceeded {
+            changes: false,
+            at: now.saturating_sub(1_000),
+        });
+        s.sync.apply(SyncEvent::Heartbeat { at: now });
+        s.sync.apply(SyncEvent::SleepStarted { at: now });
+
+        assert!(!s.sync.readiness().http_ready(), "content budget is spent");
+        assert!(
+            health::ready(State(s)).await.is_ok(),
+            "an idle replica is ready; the next request wakes it"
+        );
     }
 
     #[tokio::test]
