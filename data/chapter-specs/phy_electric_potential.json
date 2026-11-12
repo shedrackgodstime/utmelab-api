@@ -1,0 +1,772 @@
+{
+  "chapter_id": "phy_electric_potential",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Electric Potential and Electric Field",
+  "book_id": "secondary_physics",
+  "part_id": "part-4",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "facts_inherited": true,
+  "learning_objectives": [
+    {
+      "id": "lo-1",
+      "statement": "Define electric potential and electric potential energy.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-2",
+      "statement": "Describe the relationship between potential difference and electrical potential energy.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-3",
+      "statement": "Explain electron volt and its usage in submicroscopic process.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-4",
+      "statement": "Determine electric potential energy given potential difference and amount of charge.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-5",
+      "statement": "Describe the relationship between voltage and electric field.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-6",
+      "statement": "Derive an expression for the electric potential and electric field.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-7",
+      "statement": "Calculate electric field strength given distance and voltage.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-8",
+      "statement": "Explain point charges and express the equation for electric potential of a point charge.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-9",
+      "statement": "Distinguish between electric potential and electric field.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-10",
+      "statement": "Determine the electric potential of a point charge given charge and distance.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-11",
+      "statement": "Explain equipotential lines and equipotential surfaces.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-12",
+      "statement": "Describe the action of grounding an electrical appliance.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-13",
+      "statement": "Compare electric field and equipotential lines.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-14",
+      "statement": "Describe the action of a capacitor and define capacitance.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-15",
+      "statement": "Explain parallel plate capacitors and their capacitances.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-16",
+      "statement": "Discuss the process of increasing the capacitance of a dielectric.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-17",
+      "statement": "Determine capacitance given charge and voltage.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-18",
+      "statement": "Derive expressions for total capacitance in series and in parallel.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-19",
+      "statement": "Identify series and parallel parts in the combination of connection of capacitors.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-20",
+      "statement": "Calculate the effective capacitance in series and parallel given individual capacitances.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-21",
+      "statement": "List some uses of capacitors.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-22",
+      "statement": "Express in equation form the energy stored in a capacitor.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-23",
+      "statement": "Explain the function of a defibrillator.",
+      "bloom_level": "understand"
+    }
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to Electric Potential and Electric Energy",
+      "module": "m42320",
+      "est_minutes": 12,
+      "locator": "CNXML module m42320",
+      "objectives": [
+        "Define electric potential and electric potential energy."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Define electric potential and electric potential energy.",
+        "Describe the relationship between potential difference and electrical potential energy.",
+        "Explain electron volt and its usage in submicroscopic process."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electrostatics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electric-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "Electric Potential Energy: Potential Difference",
+      "module": "m42324",
+      "est_minutes": 12,
+      "locator": "CNXML module m42324",
+      "objectives": [
+        "Define electric potential and electric potential energy.",
+        "Describe the relationship between potential difference and electrical potential energy.",
+        "Explain electron volt and its usage in submicroscopic process.",
+        "Determine electric potential energy given potential difference and amount of charge."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Potential is the same everywhere around a point charge.",
+          "correction": "It falls as one over the distance, so it is only equal on a sphere around the charge."
+        }
+      ],
+      "summary": [
+        "Electric potential is potential energy per unit charge.",
+        "The potential difference between points A and B, VB–VA, defined to be the change in potential energy of a charge q moved from A to B, is equal to the change in potential energy divided by the charge, Potential difference is commonly called voltage, represented by the symbol ΔV. Δ V = ΔPE q and ΔPE = qΔV .",
+        "An electron volt is the energy given to a fundamental charge accelerated through a potential difference of 1 V. In equation form, 1 eV = 1.60 × 10 –19 C 1 V = 1.60 × 10 –19 C 1 J/C = 1.60 × 10 –19 J."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electrostatics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electric-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-55"
+    },
+    {
+      "id": "sec-3",
+      "title": "Electric Potential in a Uniform Electric Field",
+      "module": "m42326",
+      "est_minutes": 12,
+      "locator": "CNXML module m42326",
+      "objectives": [
+        "Describe the relationship between voltage and electric field.",
+        "Derive an expression for the electric potential and electric field.",
+        "Calculate electric field strength given distance and voltage."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "The voltage between points A and B is V AB = Ed E = V AB d (uniform E - field only), where d is the distance from A to B, or the distance between the plates.",
+        "In equation form, the general relationship between voltage and electric field is E=–ΔVΔs, where Δs is the distance over which the change in potential, ΔV, takes place. The minus sign tells us that E points in the direction of decreasing potential.) The electric field is said to be the gradient (as in grade or slope) of the electric potential."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electrostatics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electric-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-33"
+    },
+    {
+      "id": "sec-4",
+      "title": "Electrical Potential Due to a Point Charge",
+      "module": "m42328",
+      "est_minutes": 12,
+      "locator": "CNXML module m42328",
+      "objectives": [
+        "Explain point charges and express the equation for electric potential of a point charge.",
+        "Distinguish between electric potential and electric field.",
+        "Determine the electric potential of a point charge given charge and distance."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Electric potential of a point charge is V=kQ/r.",
+        "Electric potential is a scalar, and electric field is a vector. Addition of voltages as numbers gives the voltage due to a combination of point charges, whereas addition of individual fields as vectors gives the total electric field."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electrostatics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electric-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-26"
+    },
+    {
+      "id": "sec-5",
+      "title": "Equipotential Lines",
+      "module": "m42331",
+      "est_minutes": 12,
+      "locator": "CNXML module m42331",
+      "objectives": [
+        "Explain equipotential lines and equipotential surfaces.",
+        "Describe the action of grounding an electrical appliance.",
+        "Compare electric field and equipotential lines."
+      ],
+      "misconceptions": [
+        {
+          "claim": "A voltmeter measures the energy of a charge.",
+          "correction": "It measures the potential difference between two points, and that difference times the charge is the energy."
+        }
+      ],
+      "summary": [
+        "An equipotential line is a line along which the electric potential is constant.",
+        "An equipotential surface is a three-dimensional version of equipotential lines.",
+        "Equipotential lines are always perpendicular to electric field lines."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electrostatics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electric-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-18"
+    },
+    {
+      "id": "sec-6",
+      "title": "Capacitors and Dielectrics",
+      "module": "m42333",
+      "est_minutes": 12,
+      "locator": "CNXML module m42333",
+      "objectives": [
+        "Describe the action of a capacitor and define capacitance.",
+        "Explain parallel plate capacitors and their capacitances.",
+        "Discuss the process of increasing the capacitance of a dielectric.",
+        "Determine capacitance given charge and voltage."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "A capacitor is a device used to store charge.",
+        "The amount of charge Q a capacitor can store depends on two major factors—the voltage applied and the capacitor’s physical characteristics, such as its size.",
+        "The capacitance C is the amount of charge stored per volt, or C=QV."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electrostatics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electric-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-56"
+    },
+    {
+      "id": "sec-7",
+      "title": "Capacitors in Series and Parallel",
+      "module": "m42336",
+      "est_minutes": 12,
+      "locator": "CNXML module m42336",
+      "objectives": [
+        "Derive expressions for total capacitance in series and in parallel.",
+        "Identify series and parallel parts in the combination of connection of capacitors.",
+        "Calculate the effective capacitance in series and parallel given individual capacitances."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Total capacitance in series 1CS=1C1+1C2+1C3+...",
+        "Total capacitance in parallel Cp=C1+C2+C3+...",
+        "If a circuit contains a combination of capacitors in series and parallel, identify series and parallel parts, compute their capacitances, and then find the total."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electrostatics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electric-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-40"
+    },
+    {
+      "id": "sec-8",
+      "title": "Energy Stored in Capacitors",
+      "module": "m42395",
+      "est_minutes": 12,
+      "locator": "CNXML module m42395",
+      "objectives": [
+        "List some uses of capacitors.",
+        "Express in equation form the energy stored in a capacitor.",
+        "Explain the function of a defibrillator."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Capacitors are used in a variety of devices, including defibrillators, microelectronics such as calculators, and flash lamps, to supply energy.",
+        "The energy stored in a capacitor can be expressed in three ways: Ecap=QV2=CV22=Q22C, where Q is the charge, V is the voltage, and C is the capacitance of the capacitor. The energy is in joules when the charge is in coulombs, voltage is in volts, and capacitance is in farads."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electrostatics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electric-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-17"
+    }
+  ],
+  "formula_sheet": [],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "electric potential",
+        "inline": []
+      },
+      "definition": {
+        "text": "potential energy per unit charge",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42324/index.cnxml",
+        "locator": "CNXML module m42324, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "potential difference (or voltage)",
+        "inline": []
+      },
+      "definition": {
+        "text": "change in potential energy of a charge moved from one point to another, divided by the charge; units of potential difference are joules per coulomb, known as volt",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42324/index.cnxml",
+        "locator": "CNXML module m42324, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "electron volt",
+        "inline": []
+      },
+      "definition": {
+        "text": "the energy given to a fundamental charge accelerated through a potential difference of one volt",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42324/index.cnxml",
+        "locator": "CNXML module m42324, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "mechanical energy",
+        "inline": []
+      },
+      "definition": {
+        "text": "sum of the kinetic energy and potential energy of a system; this sum is a constant",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42324/index.cnxml",
+        "locator": "CNXML module m42324, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "scalar",
+        "inline": []
+      },
+      "definition": {
+        "text": "physical quantity with magnitude but no direction",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42326/index.cnxml",
+        "locator": "CNXML module m42326, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "vector",
+        "inline": []
+      },
+      "definition": {
+        "text": "physical quantity with both magnitude and direction",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42326/index.cnxml",
+        "locator": "CNXML module m42326, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-7",
+      "term": {
+        "text": "equipotential line",
+        "inline": []
+      },
+      "definition": {
+        "text": "a line along which the electric potential is constant",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42331/index.cnxml",
+        "locator": "CNXML module m42331, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-8",
+      "term": {
+        "text": "grounding",
+        "inline": []
+      },
+      "definition": {
+        "text": "fixing a conductor at zero volts by connecting it to the earth or ground",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42331/index.cnxml",
+        "locator": "CNXML module m42331, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-9",
+      "term": {
+        "text": "capacitor",
+        "inline": []
+      },
+      "definition": {
+        "text": "a device that stores electric charge",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42333/index.cnxml",
+        "locator": "CNXML module m42333, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-10",
+      "term": {
+        "text": "capacitance",
+        "inline": []
+      },
+      "definition": {
+        "text": "amount of charge stored per unit volt",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42333/index.cnxml",
+        "locator": "CNXML module m42333, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-11",
+      "term": {
+        "text": "dielectric",
+        "inline": []
+      },
+      "definition": {
+        "text": "an insulating material",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42333/index.cnxml",
+        "locator": "CNXML module m42333, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-12",
+      "term": {
+        "text": "dielectric strength",
+        "inline": []
+      },
+      "definition": {
+        "text": "the maximum electric field above which an insulating material begins to break down and conduct",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42333/index.cnxml",
+        "locator": "CNXML module m42333, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-13",
+      "term": {
+        "text": "parallel plate capacitor",
+        "inline": []
+      },
+      "definition": {
+        "text": "two identical conducting plates separated by a distance",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42333/index.cnxml",
+        "locator": "CNXML module m42333, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-14",
+      "term": {
+        "text": "polar molecule",
+        "inline": []
+      },
+      "definition": {
+        "text": "a molecule with inherent separation of charge",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42333/index.cnxml",
+        "locator": "CNXML module m42333, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-15",
+      "term": {
+        "text": "defibrillator",
+        "inline": []
+      },
+      "definition": {
+        "text": "a machine used to provide an electrical shock to a heart attack victim's heart in order to restore the heart's normal rhythmic pattern",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42395/index.cnxml",
+        "locator": "CNXML module m42395, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_links": [],
+  "exam_traps": [
+    {
+      "id": "trap-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": "Potential is the same everywhere around a point charge.",
+      "correction": "It falls as one over the distance, so it is only equal on a sphere around the charge.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-5",
+      "misconception": "A voltmeter measures the energy of a charge.",
+      "correction": "It measures the potential difference between two points, and that difference times the charge is the energy.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-5",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "exam_recall_checks": [],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Electric Potential and Electric Field', modules m42320, m42324, m42326, m42328, m42331, m42333, m42336, m42395",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

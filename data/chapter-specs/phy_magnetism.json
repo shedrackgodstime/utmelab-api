@@ -1,0 +1,1277 @@
+{
+  "chapter_id": "phy_magnetism",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Magnetism",
+  "book_id": "secondary_physics",
+  "part_id": "part-4",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "facts_inherited": true,
+  "learning_objectives": [
+    {
+      "id": "lo-1",
+      "statement": "Describe the difference between the north and south poles of a magnet.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-2",
+      "statement": "Describe how magnetic poles interact with each other.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-3",
+      "statement": "Define ferromagnet.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-4",
+      "statement": "Describe the role of magnetic domains in magnetization.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-5",
+      "statement": "Explain the significance of the Curie temperature.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-6",
+      "statement": "Describe the relationship between electricity and magnetism.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-7",
+      "statement": "Define magnetic field and describe the magnetic field lines of various magnetic fields.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-8",
+      "statement": "Describe the effects of magnetic fields on moving charges.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-9",
+      "statement": "Use the right hand rule 1 to determine the velocity of a charge, the direction of the magnetic field, and the direction of the magnetic force on a moving charge.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-10",
+      "statement": "Calculate the magnetic force on a moving charge.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-11",
+      "statement": "Describe the effects of a magnetic field on a moving charge.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-12",
+      "statement": "Calculate the radius of curvature of the path of a charge that is moving in a magnetic field.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-13",
+      "statement": "Describe the Hall effect.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-14",
+      "statement": "Calculate the Hall emf across a current-carrying conductor.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-15",
+      "statement": "Describe the effects of a magnetic force on a current-carrying conductor.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-16",
+      "statement": "Calculate the magnetic force on a current-carrying conductor.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-17",
+      "statement": "Describe how motors and meters work in terms of torque on a current loop.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-18",
+      "statement": "Calculate the torque on a current-carrying loop in a magnetic field.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-19",
+      "statement": "Calculate current that produces a magnetic field.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-20",
+      "statement": "Use the right hand rule 2 to determine the direction of current or the direction of magnetic field loops.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-21",
+      "statement": "Describe the effects of the magnetic force between two conductors.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-22",
+      "statement": "Calculate the force between two parallel conductors.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-23",
+      "statement": "Describe some applications of magnetism.",
+      "bloom_level": "understand"
+    }
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to Magnetism",
+      "module": "m42365",
+      "est_minutes": 12,
+      "locator": "CNXML module m42365",
+      "objectives": [
+        "Describe the difference between the north and south poles of a magnet."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Describe the difference between the north and south poles of a magnet.",
+        "Describe how magnetic poles interact with each other.",
+        "Define ferromagnet."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "magnets-and-magnetic-fields",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "Magnets",
+      "module": "m42366",
+      "est_minutes": 12,
+      "locator": "CNXML module m42366",
+      "objectives": [
+        "Describe the difference between the north and south poles of a magnet.",
+        "Describe how magnetic poles interact with each other."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Magnetic field lines can cross each other.",
+          "correction": "They never cross. The field at a point has one direction, and two field lines through the same point would mean two directions at once."
+        }
+      ],
+      "summary": [
+        "Magnetism is a subject that includes the properties of magnets, the effect of the magnetic force on moving charges and currents, and the creation of magnetic fields by currents.",
+        "There are two types of magnetic poles, called the north magnetic pole and south magnetic pole.",
+        "North magnetic poles are those that are attracted toward the Earth’s geographic north pole."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "magnets-and-magnetic-fields",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-3",
+      "title": "Ferromagnets and Electromagnets",
+      "module": "m42368",
+      "est_minutes": 12,
+      "locator": "CNXML module m42368",
+      "objectives": [
+        "Define ferromagnet.",
+        "Describe the role of magnetic domains in magnetization.",
+        "Explain the significance of the Curie temperature.",
+        "Describe the relationship between electricity and magnetism."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Magnetic poles always occur in pairs of north and south—it is not possible to isolate north and south poles.",
+        "All magnetism is created by electric current.",
+        "Ferromagnetic materials, such as iron, are those that exhibit strong magnetic effects."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "magnets-and-magnetic-fields",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-25"
+    },
+    {
+      "id": "sec-4",
+      "title": "Magnetic Fields and Magnetic Field Lines",
+      "module": "m42370",
+      "est_minutes": 12,
+      "locator": "CNXML module m42370",
+      "objectives": [
+        "Define magnetic field and describe the magnetic field lines of various magnetic fields."
+      ],
+      "misconceptions": [
+        {
+          "claim": "A current in a wire has no magnetic field around it.",
+          "correction": "It has one, in circles around the wire, with the direction set by the right hand rule."
+        }
+      ],
+      "summary": [
+        "Magnetic fields can be pictorially represented by magnetic field lines, the properties of which are as follows:",
+        "The field is tangent to the magnetic field line.",
+        "Field strength is proportional to the line density."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "magnets-and-magnetic-fields",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-5",
+      "title": "Magnetic Field Strength: Force on a Moving Charge in a Magnetic Field",
+      "module": "m42372",
+      "est_minutes": 12,
+      "locator": "CNXML module m42372",
+      "objectives": [
+        "Describe the effects of magnetic fields on moving charges.",
+        "Use the right hand rule 1 to determine the velocity of a charge, the direction of the magnetic field, and the direction of the magnetic force on a moving charge.",
+        "Calculate the magnetic force on a moving charge."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Magnetic fields exert a force on a moving charge q, the magnitude of which is F=qvBsinθ, where θ is the angle between the directions of v and B.",
+        "The SI unit for magnetic field strength B is the tesla (T), which is related to other units by 1 T=1 NC⋅m/s=1 NA⋅m.",
+        "The direction of the force on a moving charge is given by right hand rule 1 (RHR-1): Point the thumb of the right hand in the direction of v, the fingers in the direction of B, and a perpendicular to the palm points in the direction of F."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "magnets-and-magnetic-fields",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-20"
+    },
+    {
+      "id": "sec-6",
+      "title": "Force on a Moving Charge in a Magnetic Field: Examples and Applications",
+      "module": "m42375",
+      "est_minutes": 12,
+      "locator": "CNXML module m42375",
+      "objectives": [
+        "Describe the effects of a magnetic field on a moving charge.",
+        "Calculate the radius of curvature of the path of a charge that is moving in a magnetic field."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Magnetic force can supply centripetal force and cause a charged particle to move in a circular path of radius r = mv qB , where v is the component of the velocity perpendicular to B for a charged particle with mass m and charge q.",
+        "Describe the difference between the north and south poles of a magnet.",
+        "Describe how magnetic poles interact with each other."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "magnets-and-magnetic-fields",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-28"
+    },
+    {
+      "id": "sec-7",
+      "title": "The Hall Effect",
+      "module": "m42377",
+      "est_minutes": 12,
+      "locator": "CNXML module m42377",
+      "objectives": [
+        "Describe the Hall effect.",
+        "Calculate the Hall emf across a current-carrying conductor."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "The Hall effect is the creation of voltage ε, known as the Hall emf, across a current-carrying conductor by a magnetic field.",
+        "The Hall emf is given by ε = Blv ( B , v , and l , mutually perpendicular ) for a conductor of width l through which charges move at a speed v."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "magnets-and-magnetic-fields",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-26"
+    },
+    {
+      "id": "sec-8",
+      "title": "Magnetic Force on a Current-Carrying Conductor",
+      "module": "m42398",
+      "est_minutes": 12,
+      "locator": "CNXML module m42398",
+      "objectives": [
+        "Describe the effects of a magnetic force on a current-carrying conductor.",
+        "Calculate the magnetic force on a current-carrying conductor."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "The magnetic force on current-carrying conductors is given by F=IlBsinθ, where I is the current, l is the length of a straight conductor in a uniform magnetic field B, and θ is the angle between I and B. The force follows RHR-1 with the thumb in the direction of I.",
+        "Describe the difference between the north and south poles of a magnet.",
+        "Describe how magnetic poles interact with each other."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "magnets-and-magnetic-fields",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-29"
+    },
+    {
+      "id": "sec-9",
+      "title": "Torque on a Current Loop: Motors and Meters",
+      "module": "m42380",
+      "est_minutes": 12,
+      "locator": "CNXML module m42380",
+      "objectives": [
+        "Describe how motors and meters work in terms of torque on a current loop.",
+        "Calculate the torque on a current-carrying loop in a magnetic field."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "The torque τ on a current-carrying loop of any shape in a uniform magnetic field. is τ=NIABsinθ, where N is the number of turns, I is the current, A is the area of the loop, B is the magnetic field strength, and θ is the angle between the perpendicular to the loop and the magnetic field.",
+        "Describe the difference between the north and south poles of a magnet.",
+        "Describe how magnetic poles interact with each other."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "magnets-and-magnetic-fields",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-24"
+    },
+    {
+      "id": "sec-10",
+      "title": "Magnetic Fields Produced by Currents: Ampere’s Law",
+      "module": "m42382",
+      "est_minutes": 12,
+      "locator": "CNXML module m42382",
+      "objectives": [
+        "Calculate current that produces a magnetic field.",
+        "Use the right hand rule 2 to determine the direction of current or the direction of magnetic field loops."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "The strength of the magnetic field created by current in a long straight wire is given by B = μ 0 I 2πr ( long straight wire ) , where I is the current, r is the shortest distance to the wire, and the constant μ0=4π×10−7T⋅m/A is the permeability of free space.",
+        "The direction of the magnetic field created by a long straight wire is given by right hand rule 2 (RHR-2): Point the thumb of the right hand in the direction of current, and the fingers curl in the direction of the magnetic field loops created by it.",
+        "The magnetic field created by current following any path is the sum (or integral) of the fields due to segments along the path (magnitude and direction as for a straight wire), resulting in a general relationship between current and field known as Ampere’s law."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "magnets-and-magnetic-fields",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-34"
+    },
+    {
+      "id": "sec-11",
+      "title": "Magnetic Force between Two Parallel Conductors",
+      "module": "m42386",
+      "est_minutes": 12,
+      "locator": "CNXML module m42386",
+      "objectives": [
+        "Describe the effects of the magnetic force between two conductors.",
+        "Calculate the force between two parallel conductors."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "The force between two parallel currents I1 and I2, separated by a distance r, has a magnitude per unit length given by Fl=μ0I1I22πr.",
+        "The force is attractive if the currents are in the same direction, repulsive if they are in opposite directions."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "magnets-and-magnetic-fields",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-15"
+    },
+    {
+      "id": "sec-12",
+      "title": "More Applications of Magnetism",
+      "module": "m42388",
+      "est_minutes": 12,
+      "locator": "CNXML module m42388",
+      "objectives": [
+        "Describe some applications of magnetism."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Crossed (perpendicular) electric and magnetic fields act as a velocity filter, giving equal and opposite forces on any charge with velocity perpendicular to the fields and of magnitude v = E B .",
+        "Describe the difference between the north and south poles of a magnet.",
+        "Describe how magnetic poles interact with each other."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "magnets-and-magnetic-fields",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-42"
+    }
+  ],
+  "formula_sheet": [],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "north magnetic pole",
+        "inline": []
+      },
+      "definition": {
+        "text": "the end or the side of a magnet that is attracted toward Earth’s geographic north pole",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42366/index.cnxml",
+        "locator": "CNXML module m42366, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "south magnetic pole",
+        "inline": []
+      },
+      "definition": {
+        "text": "the end or the side of a magnet that is attracted toward Earth’s geographic south pole",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42366/index.cnxml",
+        "locator": "CNXML module m42366, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "ferromagnetic",
+        "inline": []
+      },
+      "definition": {
+        "text": "materials, such as iron, cobalt, nickel, and gadolinium, that exhibit strong magnetic effects",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42368/index.cnxml",
+        "locator": "CNXML module m42368, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "magnetized",
+        "inline": []
+      },
+      "definition": {
+        "text": "to be turned into a magnet; to be induced to be magnetic",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42368/index.cnxml",
+        "locator": "CNXML module m42368, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "domains",
+        "inline": []
+      },
+      "definition": {
+        "text": "regions within a material that behave like small bar magnets",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42368/index.cnxml",
+        "locator": "CNXML module m42368, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "Curie temperature",
+        "inline": []
+      },
+      "definition": {
+        "text": "the temperature above which a ferromagnetic material cannot be magnetized",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42368/index.cnxml",
+        "locator": "CNXML module m42368, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-7",
+      "term": {
+        "text": "electromagnetism",
+        "inline": []
+      },
+      "definition": {
+        "text": "the use of electrical currents to induce magnetism",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42368/index.cnxml",
+        "locator": "CNXML module m42368, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-8",
+      "term": {
+        "text": "electromagnet",
+        "inline": []
+      },
+      "definition": {
+        "text": "an object that is temporarily magnetic when an electrical current is passed through it",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42368/index.cnxml",
+        "locator": "CNXML module m42368, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-9",
+      "term": {
+        "text": "magnetic monopoles",
+        "inline": []
+      },
+      "definition": {
+        "text": "an isolated magnetic pole; a south pole without a north pole, or vice versa (no magnetic monopole has ever been observed)",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42368/index.cnxml",
+        "locator": "CNXML module m42368, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-10",
+      "term": {
+        "text": "magnetic field",
+        "inline": []
+      },
+      "definition": {
+        "text": "the representation of magnetic forces",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42370/index.cnxml",
+        "locator": "CNXML module m42370, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-11",
+      "term": {
+        "text": "B-field",
+        "inline": []
+      },
+      "definition": {
+        "text": "another term for magnetic field",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42370/index.cnxml",
+        "locator": "CNXML module m42370, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-12",
+      "term": {
+        "text": "magnetic field lines",
+        "inline": []
+      },
+      "definition": {
+        "text": "the pictorial representation of the strength and the direction of a magnetic field",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42370/index.cnxml",
+        "locator": "CNXML module m42370, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-13",
+      "term": {
+        "text": "direction of magnetic field lines",
+        "inline": []
+      },
+      "definition": {
+        "text": "the direction that the north end of a compass needle points",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42370/index.cnxml",
+        "locator": "CNXML module m42370, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-14",
+      "term": {
+        "text": "right hand rule 1 (RHR-1)",
+        "inline": []
+      },
+      "definition": {
+        "text": "the rule to determine the direction of the magnetic force on a positive moving charge: when the thumb of the right hand points in the direction of the charge’s velocity v and the fingers point in the direction of the magnetic field B, then the force on the charge is perpendicular and away from the palm; the force on a negative charge is perpendicular and into the palm",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42372/index.cnxml",
+        "locator": "CNXML module m42372, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-15",
+      "term": {
+        "text": "Lorentz force",
+        "inline": []
+      },
+      "definition": {
+        "text": "the force on a charge moving in a magnetic field",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42372/index.cnxml",
+        "locator": "CNXML module m42372, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-16",
+      "term": {
+        "text": "tesla",
+        "inline": []
+      },
+      "definition": {
+        "text": "T, the SI unit of the magnetic field strength; 1 T=1 NA⋅m",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42372/index.cnxml",
+        "locator": "CNXML module m42372, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-17",
+      "term": {
+        "text": "magnetic force",
+        "inline": []
+      },
+      "definition": {
+        "text": "the force on a charge produced by its motion through a magnetic field; the Lorentz force",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42372/index.cnxml",
+        "locator": "CNXML module m42372, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-18",
+      "term": {
+        "text": "gauss",
+        "inline": []
+      },
+      "definition": {
+        "text": "G, the unit of the magnetic field strength; 1 G=10–4T",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42372/index.cnxml",
+        "locator": "CNXML module m42372, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-19",
+      "term": {
+        "text": "Hall effect",
+        "inline": []
+      },
+      "definition": {
+        "text": "the creation of voltage across a current-carrying conductor by a magnetic field",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42377/index.cnxml",
+        "locator": "CNXML module m42377, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-20",
+      "term": {
+        "text": "Hall emf",
+        "inline": []
+      },
+      "definition": {
+        "text": "the electromotive force created by a current-carrying conductor by a magnetic field, ε=Blv",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42377/index.cnxml",
+        "locator": "CNXML module m42377, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-21",
+      "term": {
+        "text": "motor",
+        "inline": []
+      },
+      "definition": {
+        "text": "loop of wire in a magnetic field; when current is passed through the loops, the magnetic field exerts torque on the loops, which rotates a shaft; electrical energy is converted to mechanical work in the process",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42380/index.cnxml",
+        "locator": "CNXML module m42380, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-22",
+      "term": {
+        "text": "meter",
+        "inline": []
+      },
+      "definition": {
+        "text": "common application of magnetic torque on a current-carrying loop that is very similar in construction to a motor; by design, the torque is proportional to I and not θ, so the needle deflection is proportional to the current",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42380/index.cnxml",
+        "locator": "CNXML module m42380, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-23",
+      "term": {
+        "text": "right hand rule 2 (RHR-2)",
+        "inline": []
+      },
+      "definition": {
+        "text": "a rule to determine the direction of the magnetic field induced by a current-carrying wire: Point the thumb of the right hand in the direction of current, and the fingers curl in the direction of the magnetic field loops",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42382/index.cnxml",
+        "locator": "CNXML module m42382, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-24",
+      "term": {
+        "text": "magnetic field strength (magnitude) produced by a long straight current-carrying wire",
+        "inline": []
+      },
+      "definition": {
+        "text": "defined as B=μ0I2πr, where I is the current, r is the shortest distance to the wire, and μ0 is the permeability of free space",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42382/index.cnxml",
+        "locator": "CNXML module m42382, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-25",
+      "term": {
+        "text": "permeability of free space",
+        "inline": []
+      },
+      "definition": {
+        "text": "the measure of the ability of a material, in this case free space, to support a magnetic field; the constant μ0=4π×10−7T⋅m/A",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42382/index.cnxml",
+        "locator": "CNXML module m42382, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-26",
+      "term": {
+        "text": "magnetic field strength at the center of a circular loop",
+        "inline": []
+      },
+      "definition": {
+        "text": "defined as B=μ0I2R where R is the radius of the loop",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42382/index.cnxml",
+        "locator": "CNXML module m42382, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-27",
+      "term": {
+        "text": "solenoid",
+        "inline": []
+      },
+      "definition": {
+        "text": "a thin wire wound into a coil that produces a magnetic field when an electric current is passed through it",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42382/index.cnxml",
+        "locator": "CNXML module m42382, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-28",
+      "term": {
+        "text": "magnetic field strength inside a solenoid",
+        "inline": []
+      },
+      "definition": {
+        "text": "defined as B=μ0nI where n is the number of loops per unit length of the solenoid (n=N/l, with N being the number of loops and l the length)",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42382/index.cnxml",
+        "locator": "CNXML module m42382, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-29",
+      "term": {
+        "text": "Biot-Savart law",
+        "inline": []
+      },
+      "definition": {
+        "text": "a physical law that describes the magnetic field generated by an electric current in terms of a specific equation",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42382/index.cnxml",
+        "locator": "CNXML module m42382, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-30",
+      "term": {
+        "text": "Ampere’s law",
+        "inline": []
+      },
+      "definition": {
+        "text": "the physical law that states that the magnetic field around an electric current is proportional to the current; each segment of current produces a magnetic field like that of a long straight wire, and the total field of any shape current is the vector sum of the fields due to each segment",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42382/index.cnxml",
+        "locator": "CNXML module m42382, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-31",
+      "term": {
+        "text": "Maxwell’s equations",
+        "inline": []
+      },
+      "definition": {
+        "text": "a set of four equations that describe electromagnetic phenomena",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42382/index.cnxml",
+        "locator": "CNXML module m42382, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-32",
+      "term": {
+        "text": "magnetic resonance imaging (MRI)",
+        "inline": []
+      },
+      "definition": {
+        "text": "a medical imaging technique that uses magnetic fields create detailed images of internal tissues and organs",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42388/index.cnxml",
+        "locator": "CNXML module m42388, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-33",
+      "term": {
+        "text": "nuclear magnetic resonance (NMR)",
+        "inline": []
+      },
+      "definition": {
+        "text": "a phenomenon in which an externally applied magnetic field interacts with the nuclei of certain atoms",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42388/index.cnxml",
+        "locator": "CNXML module m42388, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-34",
+      "term": {
+        "text": "magnetocardiogram (MCG)",
+        "inline": []
+      },
+      "definition": {
+        "text": "a recording of the heart’s magnetic field as it beats",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42388/index.cnxml",
+        "locator": "CNXML module m42388, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-35",
+      "term": {
+        "text": "magnetoencephalogram (MEG)",
+        "inline": []
+      },
+      "definition": {
+        "text": "a measurement of the brain’s magnetic field",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42388/index.cnxml",
+        "locator": "CNXML module m42388, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_links": [],
+  "exam_traps": [
+    {
+      "id": "trap-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": "Magnetic field lines can cross each other.",
+      "correction": "They never cross. The field at a point has one direction, and two field lines through the same point would mean two directions at once.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "A current in a wire has no magnetic field around it.",
+      "correction": "It has one, in circles around the wire, with the direction set by the right hand rule.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-4",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "exam_recall_checks": [],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Magnetism', modules m42365, m42366, m42368, m42370, m42372, m42375, m42377, m42398, m42380, m42382, m42386, m42388",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

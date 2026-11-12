@@ -1,0 +1,1513 @@
+{
+  "chapter_id": "phy_radioactivity",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Radioactivity and Nuclear Physics",
+  "book_id": "secondary_physics",
+  "part_id": "part-6",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "facts_inherited": true,
+  "learning_objectives": [
+    {
+      "id": "lo-1",
+      "statement": "Explain nuclear radiation.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-2",
+      "statement": "Explain the types of radiation—alpha emission, beta emission, and gamma emission.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-3",
+      "statement": "Explain the ionization of radiation in an atom.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-4",
+      "statement": "Define the range of radiation.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-5",
+      "statement": "Explain the working principle of a Geiger tube.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-6",
+      "statement": "Define and discuss radiation detectors.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-7",
+      "statement": "Define and discuss the nucleus in an atom.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-8",
+      "statement": "Define atomic number.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-9",
+      "statement": "Define and discuss isotopes.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-10",
+      "statement": "Calculate the density of the nucleus.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-11",
+      "statement": "Explain nuclear force.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-12",
+      "statement": "Define and discuss nuclear decay.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-13",
+      "statement": "State the conservation laws.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-14",
+      "statement": "Explain parent and daughter nucleus.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-15",
+      "statement": "Calculate the energy emitted during nuclear decay.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-16",
+      "statement": "Define half-life.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-17",
+      "statement": "Define dating.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-18",
+      "statement": "Calculate age of old objects by radioactive dating.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-19",
+      "statement": "Define and discuss binding energy.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-20",
+      "statement": "Calculate the binding energy per nucleon of a particle.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-21",
+      "statement": "Define and discuss tunneling.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-22",
+      "statement": "Define potential barrier.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-23",
+      "statement": "Explain quantum tunneling.",
+      "bloom_level": "understand"
+    }
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to Radioactivity and Nuclear Physics",
+      "module": "m42620",
+      "est_minutes": 12,
+      "locator": "CNXML module m42620",
+      "objectives": [
+        "Explain nuclear radiation."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Explain nuclear radiation.",
+        "Explain the types of radiation—alpha emission, beta emission, and gamma emission.",
+        "Explain the ionization of radiation in an atom."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-structure-of-the-atom-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "Nuclear Radioactivity",
+      "module": "m42623",
+      "est_minutes": 12,
+      "locator": "CNXML module m42623",
+      "objectives": [
+        "Explain nuclear radiation.",
+        "Explain the types of radiation—alpha emission, beta emission, and gamma emission.",
+        "Explain the ionization of radiation in an atom.",
+        "Define the range of radiation."
+      ],
+      "misconceptions": [
+        {
+          "claim": "The half life of a radioactive sample is a fixed time.",
+          "correction": "It is a fixed proportion. Half of whatever is left decays in each half life, whatever the amount."
+        }
+      ],
+      "summary": [
+        "Some nuclei are radioactive—they spontaneously decay destroying some part of their mass and emitting energetic rays, a process called nuclear radioactivity.",
+        "Nuclear radiation, like x rays, is ionizing radiation, because energy sufficient to ionize matter is emitted in each decay.",
+        "The range (or distance traveled in a material) of ionizing radiation is directly related to the charge of the emitted particle and its energy, with greater-charge and lower-energy particles having the shortest ranges."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-structure-of-the-atom-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-29"
+    },
+    {
+      "id": "sec-3",
+      "title": "Radiation Detection and Detectors",
+      "module": "m42627",
+      "est_minutes": 12,
+      "locator": "CNXML module m42627",
+      "objectives": [
+        "Explain the working principle of a Geiger tube.",
+        "Define and discuss radiation detectors."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Radiation detectors are based directly or indirectly upon the ionization created by radiation, as are the effects of radiation on living and inert materials.",
+        "Explain nuclear radiation.",
+        "Explain the types of radiation—alpha emission, beta emission, and gamma emission."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-structure-of-the-atom-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-19"
+    },
+    {
+      "id": "sec-4",
+      "title": "Substructure of the Nucleus",
+      "module": "m42631",
+      "est_minutes": 12,
+      "locator": "CNXML module m42631",
+      "objectives": [
+        "Define and discuss the nucleus in an atom.",
+        "Define atomic number.",
+        "Define and discuss isotopes.",
+        "Calculate the density of the nucleus.",
+        "Explain nuclear force."
+      ],
+      "misconceptions": [
+        {
+          "claim": "The activity of a sample depends on the mass of the sample.",
+          "correction": "It depends on how many nuclei are left, so a larger sample is more active even though the half life is the same."
+        }
+      ],
+      "summary": [
+        "Two particles, both called nucleons, are found inside nuclei. The two types of nucleons are protons and neutrons; they are very similar, except that the proton is positively charged while the neutron is neutral. Some of their characteristics are given in and compared with those of the electron. A mass unit convenient to atomic and nuclear processes is the unified atomic mass unit (u), defined to be 1 u = 1.6605 × 10 − 27 kg = 931.46 MeV / c 2 .",
+        "A nuclide is a specific combination of protons and neutrons, denoted by ZAXN or simplyAX,Z is the number of protons or atomic number, X is the symbol for the element, N is the number of neutrons, and A is the mass number or the total number of protons and neutrons, A=N+Z.",
+        "Nuclides having the same Z but different N are isotopes of the same element."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-structure-of-the-atom-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-38"
+    },
+    {
+      "id": "sec-5",
+      "title": "Nuclear Decay and Conservation Laws",
+      "module": "m42633",
+      "est_minutes": 12,
+      "locator": "CNXML module m42633",
+      "objectives": [
+        "Define and discuss nuclear decay.",
+        "State the conservation laws.",
+        "Explain parent and daughter nucleus.",
+        "Calculate the energy emitted during nuclear decay."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "When a parent nucleus decays, it produces a daughter nucleus following rules and conservation laws. There are three major types of nuclear decay, called alpha α, beta β, and gamma γ. The α decay equation is ZAXN→Z−2A−4YN−2+24He2.",
+        "Nuclear decay releases an amount of energy E related to the mass destroyed Δm byE=(Δm)c2.",
+        "There are three forms of beta decay. The β−decay equation is ZAXN→Z+1AYN−1+β−+ν¯e."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-structure-of-the-atom-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-56"
+    },
+    {
+      "id": "sec-6",
+      "title": "Half-Life and Activity",
+      "module": "m42636",
+      "est_minutes": 12,
+      "locator": "CNXML module m42636",
+      "objectives": [
+        "Define half-life.",
+        "Define dating.",
+        "Calculate age of old objects by radioactive dating."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Half-life t1/2 is the time in which there is a 50% chance that a nucleus will decay. The number of nuclei N as a function of time isN=N0e−λt, where N0 is the number present at t=0, and λ is the decay constant, related to the half-life by λ=0.693t1/2.",
+        "One of the applications of radioactive decay is radioactive dating, in which the age of a material is determined by the amount of radioactive decay that occurs. The rate of decay is called the activity R:R= Δ N Δ t .",
+        "The SI unit for R is the becquerel (Bq), defined by 1 Bq=1 decay/s."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-structure-of-the-atom-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-57"
+    },
+    {
+      "id": "sec-7",
+      "title": "Binding Energy",
+      "module": "m42640",
+      "est_minutes": 12,
+      "locator": "CNXML module m42640",
+      "objectives": [
+        "Define and discuss binding energy.",
+        "Calculate the binding energy per nucleon of a particle."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "The binding energy (BE) of a nucleus is the energy needed to separate it into individual protons and neutrons. In terms of atomic masses, BE={[Zm(1H)+Nmn]−m(AX)}c2, where m1H is the mass of a hydrogen atom, mAX is the atomic mass of the nuclide, and mn is the mass of a neutron. Patterns in the binding energy per nucleon, BE/A, reveal details of the nuclear force. The larger the BE/A, the more stable the nucleus.",
+        "Explain nuclear radiation.",
+        "Explain the types of radiation—alpha emission, beta emission, and gamma emission."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-structure-of-the-atom-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-41"
+    },
+    {
+      "id": "sec-8",
+      "title": "Tunneling",
+      "module": "m42644",
+      "est_minutes": 12,
+      "locator": "CNXML module m42644",
+      "objectives": [
+        "Define and discuss tunneling.",
+        "Define potential barrier.",
+        "Explain quantum tunneling."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Tunneling is a quantum mechanical process of potential energy barrier penetration. The concept was first applied to explain α decay, but tunneling is found to occur in other quantum mechanical systems.",
+        "Explain nuclear radiation.",
+        "Explain the types of radiation—alpha emission, beta emission, and gamma emission."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-structure-of-the-atom-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-23"
+    }
+  ],
+  "formula_sheet": [],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "alpha rays",
+        "inline": []
+      },
+      "definition": {
+        "text": "one of the types of rays emitted from the nucleus of an atom",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42623/index.cnxml",
+        "locator": "CNXML module m42623, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "beta rays",
+        "inline": []
+      },
+      "definition": {
+        "text": "one of the types of rays emitted from the nucleus of an atom",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42623/index.cnxml",
+        "locator": "CNXML module m42623, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "gamma rays",
+        "inline": []
+      },
+      "definition": {
+        "text": "one of the types of rays emitted from the nucleus of an atom",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42623/index.cnxml",
+        "locator": "CNXML module m42623, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "ionizing radiation",
+        "inline": []
+      },
+      "definition": {
+        "text": "radiation (whether nuclear in origin or not) that produces ionization whether nuclear in origin or not",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42623/index.cnxml",
+        "locator": "CNXML module m42623, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "nuclear radiation",
+        "inline": []
+      },
+      "definition": {
+        "text": "rays that originate in the nuclei of atoms, the first examples of which were discovered by Becquerel",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42623/index.cnxml",
+        "locator": "CNXML module m42623, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "radioactivity",
+        "inline": []
+      },
+      "definition": {
+        "text": "the emission of rays from the nuclei of atoms",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42623/index.cnxml",
+        "locator": "CNXML module m42623, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-7",
+      "term": {
+        "text": "radioactive",
+        "inline": []
+      },
+      "definition": {
+        "text": "a substance or object that emits nuclear radiation",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42623/index.cnxml",
+        "locator": "CNXML module m42623, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-8",
+      "term": {
+        "text": "range of radiation",
+        "inline": []
+      },
+      "definition": {
+        "text": "the distance that the radiation can travel through a material",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42623/index.cnxml",
+        "locator": "CNXML module m42623, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-9",
+      "term": {
+        "text": "Geiger tube",
+        "inline": []
+      },
+      "definition": {
+        "text": "a very common radiation detector that usually gives an audio output",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42627/index.cnxml",
+        "locator": "CNXML module m42627, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-10",
+      "term": {
+        "text": "photomultiplier",
+        "inline": []
+      },
+      "definition": {
+        "text": "a device that converts light into electrical signals",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42627/index.cnxml",
+        "locator": "CNXML module m42627, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-11",
+      "term": {
+        "text": "radiation detector",
+        "inline": []
+      },
+      "definition": {
+        "text": "a device that is used to detect and track the radiation from a radioactive reaction",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42627/index.cnxml",
+        "locator": "CNXML module m42627, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-12",
+      "term": {
+        "text": "scintillators",
+        "inline": []
+      },
+      "definition": {
+        "text": "a radiation detection method that records light produced when radiation interacts with materials",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42627/index.cnxml",
+        "locator": "CNXML module m42627, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-13",
+      "term": {
+        "text": "solid-state radiation detectors",
+        "inline": []
+      },
+      "definition": {
+        "text": "semiconductors fabricated to directly convert incident radiation into electrical current",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42627/index.cnxml",
+        "locator": "CNXML module m42627, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-14",
+      "term": {
+        "text": "atomic mass",
+        "inline": []
+      },
+      "definition": {
+        "text": "the total mass of the protons, neutrons, and electrons in a single atom",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42631/index.cnxml",
+        "locator": "CNXML module m42631, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-15",
+      "term": {
+        "text": "atomic number",
+        "inline": []
+      },
+      "definition": {
+        "text": "number of protons in a nucleus",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42631/index.cnxml",
+        "locator": "CNXML module m42631, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-16",
+      "term": {
+        "text": "chart of the nuclides",
+        "inline": []
+      },
+      "definition": {
+        "text": "a table comprising stable and unstable nuclei",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42631/index.cnxml",
+        "locator": "CNXML module m42631, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-17",
+      "term": {
+        "text": "isotopes",
+        "inline": []
+      },
+      "definition": {
+        "text": "nuclei having the same Z and different Ns",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42631/index.cnxml",
+        "locator": "CNXML module m42631, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-18",
+      "term": {
+        "text": "magic numbers",
+        "inline": []
+      },
+      "definition": {
+        "text": "a number that indicates a shell structure for the nucleus in which closed shells are more stable",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42631/index.cnxml",
+        "locator": "CNXML module m42631, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-19",
+      "term": {
+        "text": "mass number",
+        "inline": []
+      },
+      "definition": {
+        "text": "number of nucleons in a nucleus",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42631/index.cnxml",
+        "locator": "CNXML module m42631, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-20",
+      "term": {
+        "text": "neutron",
+        "inline": []
+      },
+      "definition": {
+        "text": "a neutral particle that is found in a nucleus",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42631/index.cnxml",
+        "locator": "CNXML module m42631, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-21",
+      "term": {
+        "text": "nucleons",
+        "inline": []
+      },
+      "definition": {
+        "text": "the particles found inside nuclei",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42631/index.cnxml",
+        "locator": "CNXML module m42631, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-22",
+      "term": {
+        "text": "nucleus",
+        "inline": []
+      },
+      "definition": {
+        "text": "a region consisting of protons and neutrons at the center of an atom",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42631/index.cnxml",
+        "locator": "CNXML module m42631, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-23",
+      "term": {
+        "text": "nuclide",
+        "inline": []
+      },
+      "definition": {
+        "text": "a type of atom whose nucleus has specific numbers of protons and neutrons",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42631/index.cnxml",
+        "locator": "CNXML module m42631, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-24",
+      "term": {
+        "text": "protons",
+        "inline": []
+      },
+      "definition": {
+        "text": "the positively charged nucleons found in a nucleus",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42631/index.cnxml",
+        "locator": "CNXML module m42631, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-25",
+      "term": {
+        "text": "radius of a nucleus",
+        "inline": []
+      },
+      "definition": {
+        "text": "the radius of a nucleus is r=r0A1/3",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42631/index.cnxml",
+        "locator": "CNXML module m42631, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-26",
+      "term": {
+        "text": "parent",
+        "inline": []
+      },
+      "definition": {
+        "text": "the original state of nucleus before decay",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-27",
+      "term": {
+        "text": "daughter",
+        "inline": []
+      },
+      "definition": {
+        "text": "the nucleus obtained when parent nucleus decays and produces another nucleus following the rules and the conservation laws",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-28",
+      "term": {
+        "text": "positron",
+        "inline": []
+      },
+      "definition": {
+        "text": "the particle that results from positive beta decay; also known as an antielectron",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-29",
+      "term": {
+        "text": "decay",
+        "inline": []
+      },
+      "definition": {
+        "text": "the process by which an atomic nucleus of an unstable atom loses mass and energy by emitting ionizing particles",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-30",
+      "term": {
+        "text": "alpha decay",
+        "inline": []
+      },
+      "definition": {
+        "text": "type of radioactive decay in which an atomic nucleus emits an alpha particle",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-31",
+      "term": {
+        "text": "beta decay",
+        "inline": []
+      },
+      "definition": {
+        "text": "type of radioactive decay in which an atomic nucleus emits a beta particle",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-32",
+      "term": {
+        "text": "gamma decay",
+        "inline": []
+      },
+      "definition": {
+        "text": "type of radioactive decay in which an atomic nucleus emits a gamma particle",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-33",
+      "term": {
+        "text": "decay equation",
+        "inline": []
+      },
+      "definition": {
+        "text": "the equation to find out how much of a radioactive material is left after a given period of time",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-34",
+      "term": {
+        "text": "nuclear reaction energy",
+        "inline": []
+      },
+      "definition": {
+        "text": "the energy created in a nuclear reaction",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-35",
+      "term": {
+        "text": "neutrino",
+        "inline": []
+      },
+      "definition": {
+        "text": "an electrically neutral, weakly interacting elementary subatomic particle",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-36",
+      "term": {
+        "text": "electron’s antineutrino",
+        "inline": []
+      },
+      "definition": {
+        "text": "antiparticle of electron’s neutrino",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-37",
+      "term": {
+        "text": "positron decay",
+        "inline": []
+      },
+      "definition": {
+        "text": "type of beta decay in which a proton is converted to a neutron, releasing a positron and a neutrino",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-38",
+      "term": {
+        "text": "antielectron",
+        "inline": []
+      },
+      "definition": {
+        "text": "another term for positron",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-39",
+      "term": {
+        "text": "decay series",
+        "inline": []
+      },
+      "definition": {
+        "text": "process whereby subsequent nuclides decay until a stable nuclide is produced",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-40",
+      "term": {
+        "text": "electron’s neutrino",
+        "inline": []
+      },
+      "definition": {
+        "text": "a subatomic elementary particle which has no net electric charge",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-41",
+      "term": {
+        "text": "antimatter",
+        "inline": []
+      },
+      "definition": {
+        "text": "composed of antiparticles",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-42",
+      "term": {
+        "text": "electron capture",
+        "inline": []
+      },
+      "definition": {
+        "text": "the process in which a proton-rich nuclide absorbs an inner atomic electron and simultaneously emits a neutrino",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-43",
+      "term": {
+        "text": "electron capture equation",
+        "inline": []
+      },
+      "definition": {
+        "text": "equation representing the electron capture",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42633/index.cnxml",
+        "locator": "CNXML module m42633, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-44",
+      "term": {
+        "text": "becquerel",
+        "inline": []
+      },
+      "definition": {
+        "text": "SI unit for rate of decay of a radioactive material",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42636/index.cnxml",
+        "locator": "CNXML module m42636, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-45",
+      "term": {
+        "text": "half-life",
+        "inline": []
+      },
+      "definition": {
+        "text": "the time in which there is a 50% chance that a nucleus will decay",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42636/index.cnxml",
+        "locator": "CNXML module m42636, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-46",
+      "term": {
+        "text": "radioactive dating",
+        "inline": []
+      },
+      "definition": {
+        "text": "an application of radioactive decay in which the age of a material is determined by the amount of radioactivity of a particular type that occurs",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42636/index.cnxml",
+        "locator": "CNXML module m42636, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-47",
+      "term": {
+        "text": "decay constant",
+        "inline": []
+      },
+      "definition": {
+        "text": "quantity that is inversely proportional to the half-life and that is used in equation for number of nuclei as a function of time",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42636/index.cnxml",
+        "locator": "CNXML module m42636, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-48",
+      "term": {
+        "text": "carbon-14 dating",
+        "inline": []
+      },
+      "definition": {
+        "text": "a radioactive dating technique based on the radioactivity of carbon-14",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42636/index.cnxml",
+        "locator": "CNXML module m42636, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-49",
+      "term": {
+        "text": "activity",
+        "inline": []
+      },
+      "definition": {
+        "text": "the rate of decay for radioactive nuclides",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42636/index.cnxml",
+        "locator": "CNXML module m42636, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-50",
+      "term": {
+        "text": "rate of decay",
+        "inline": []
+      },
+      "definition": {
+        "text": "the number of radioactive events per unit time",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42636/index.cnxml",
+        "locator": "CNXML module m42636, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-51",
+      "term": {
+        "text": "curie",
+        "inline": []
+      },
+      "definition": {
+        "text": "the activity of 1g of 226 Ra , equal to 3.70 × 10 10 Bq",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42636/index.cnxml",
+        "locator": "CNXML module m42636, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-52",
+      "term": {
+        "text": "binding energy",
+        "inline": []
+      },
+      "definition": {
+        "text": "the energy needed to separate nucleus into individual protons and neutrons",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42640/index.cnxml",
+        "locator": "CNXML module m42640, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-53",
+      "term": {
+        "text": "binding energy per nucleon",
+        "inline": []
+      },
+      "definition": {
+        "text": "the binding energy calculated per nucleon; it reveals the details of the nuclear force—larger the BE/A, the more stable the nucleus",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42640/index.cnxml",
+        "locator": "CNXML module m42640, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-54",
+      "term": {
+        "text": "barrier penetration",
+        "inline": []
+      },
+      "definition": {
+        "text": "quantum mechanical effect whereby a particle has a nonzero probability to cross through a potential energy barrier despite not having sufficient energy to pass over the barrier; also called quantum mechanical tunneling",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42644/index.cnxml",
+        "locator": "CNXML module m42644, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-55",
+      "term": {
+        "text": "quantum mechanical tunneling",
+        "inline": []
+      },
+      "definition": {
+        "text": "quantum mechanical effect whereby a particle has a nonzero probability to cross through a potential energy barrier despite not having sufficient energy to pass over the barrier; also called barrier penetration",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42644/index.cnxml",
+        "locator": "CNXML module m42644, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-56",
+      "term": {
+        "text": "tunneling",
+        "inline": []
+      },
+      "definition": {
+        "text": "a quantum mechanical process of potential energy barrier penetration",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42644/index.cnxml",
+        "locator": "CNXML module m42644, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_links": [],
+  "exam_traps": [
+    {
+      "id": "trap-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": "The half life of a radioactive sample is a fixed time.",
+      "correction": "It is a fixed proportion. Half of whatever is left decays in each half life, whatever the amount.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "The activity of a sample depends on the mass of the sample.",
+      "correction": "It depends on how many nuclei are left, so a larger sample is more active even though the half life is the same.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-4",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "exam_recall_checks": [],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Radioactivity and Nuclear Physics', modules m42620, m42623, m42627, m42631, m42633, m42636, m42640, m42644",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

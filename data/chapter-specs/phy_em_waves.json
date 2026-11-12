@@ -1,0 +1,1003 @@
+{
+  "chapter_id": "phy_em_waves",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Electromagnetic Waves",
+  "book_id": "secondary_physics",
+  "part_id": "part-4",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "facts_inherited": true,
+  "learning_objectives": [
+    {
+      "id": "lo-1",
+      "statement": "Restate Maxwell’s equations.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-2",
+      "statement": "Describe the electric and magnetic waves as they move out from a source, such as an AC generator.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-3",
+      "statement": "Explain the mathematical relationship between the magnetic field strength and the electrical field strength.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-4",
+      "statement": "Calculate the maximum strength of the magnetic field in an electromagnetic wave, given the maximum electric field strength.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-5",
+      "statement": "List three “rules of thumb” that apply to the different frequencies along the electromagnetic spectrum.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-6",
+      "statement": "Explain why the higher the frequency, the shorter the wavelength of an electromagnetic wave.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-7",
+      "statement": "Draw a simplified electromagnetic spectrum, indicating the relative positions, frequencies, and spacing of the different types of radiation bands.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-8",
+      "statement": "List and explain the different methods by which electromagnetic waves are produced across the spectrum.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-9",
+      "statement": "Explain how the energy and amplitude of an electromagnetic wave are related.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-10",
+      "statement": "Given its power output and the heating area, calculate the intensity of a microwave oven’s electromagnetic field, as well as its peak electric and magnetic field strengths",
+      "bloom_level": "understand"
+    }
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to Electromagnetic Waves",
+      "module": "m42434",
+      "est_minutes": 12,
+      "locator": "CNXML module m42434",
+      "objectives": [
+        "Restate Maxwell’s equations."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Restate Maxwell’s equations.",
+        "Describe the electric and magnetic waves as they move out from a source, such as an AC generator.",
+        "Explain the mathematical relationship between the magnetic field strength and the electrical field strength."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-waves",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "Maxwell’s Equations: Electromagnetic Waves Predicted and Observed",
+      "module": "m42437",
+      "est_minutes": 12,
+      "locator": "CNXML module m42437",
+      "objectives": [
+        "Restate Maxwell’s equations."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Electromagnetic waves need a medium to travel through.",
+          "correction": "They do not. They are a changing electric and magnetic field that travel through empty space."
+        }
+      ],
+      "summary": [
+        "Electromagnetic waves consist of oscillating electric and magnetic fields and propagate at the speed of light c . They were predicted by Maxwell, who also showed that c =1μ0ε0,where μ0 is the permeability of free space and ε0 is the permittivity of free space.",
+        "Maxwell’s prediction of electromagnetic waves resulted from his formulation of a complete and symmetric theory of electricity and magnetism, known as Maxwell’s equations.",
+        "These four equations are paraphrased in this text, rather than presented numerically, and encompass the major laws of electricity and magnetism. First is Gauss’s law for electricity, second is Gauss’s law for magnetism, third is Faraday’s law of induction, including Lenz’s law, and fourth is Ampere’s law in a symmetric formulation that adds another source of magnetism—changing electric fields."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-waves",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-3",
+      "title": "Production of Electromagnetic Waves",
+      "module": "m42440",
+      "est_minutes": 12,
+      "locator": "CNXML module m42440",
+      "objectives": [
+        "Describe the electric and magnetic waves as they move out from a source, such as an AC generator.",
+        "Explain the mathematical relationship between the magnetic field strength and the electrical field strength.",
+        "Calculate the maximum strength of the magnetic field in an electromagnetic wave, given the maximum electric field strength."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Electromagnetic waves are created by oscillating charges (which radiate whenever accelerated) and have the same frequency as the oscillation.",
+        "Since the electric and magnetic fields in most electromagnetic waves are perpendicular to the direction in which the wave moves, it is ordinarily a transverse wave.",
+        "The strengths of the electric and magnetic parts of the wave are related by EB= c,which implies that the magnetic field B is very weak relative to the electric field E."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-waves",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-40"
+    },
+    {
+      "id": "sec-4",
+      "title": "The Electromagnetic Spectrum",
+      "module": "m42444",
+      "est_minutes": 12,
+      "locator": "CNXML module m42444",
+      "objectives": [
+        "List three “rules of thumb” that apply to the different frequencies along the electromagnetic spectrum.",
+        "Explain why the higher the frequency, the shorter the wavelength of an electromagnetic wave.",
+        "Draw a simplified electromagnetic spectrum, indicating the relative positions, frequencies, and spacing of the different types of radiation bands.",
+        "List and explain the different methods by which electromagnetic waves are produced across the spectrum."
+      ],
+      "misconceptions": [
+        {
+          "claim": "All electromagnetic waves travel at the same speed in a vacuum.",
+          "correction": "They do, at about three hundred million metres per second, but their frequency and wavelength differ."
+        }
+      ],
+      "summary": [
+        "The relationship among the speed of propagation, wavelength, and frequency for any wave is given by vW=fλ, so that for electromagnetic waves, c=fλ,where f is the frequency, λ is the wavelength, and c is the speed of light.",
+        "The electromagnetic spectrum is separated into many categories and subcategories, based on the frequency and wavelength, source, and uses of the electromagnetic waves.",
+        "Any electromagnetic wave produced by currents in wires is classified as a radio wave, the lowest frequency electromagnetic waves. Radio waves are divided into many types, depending on their applications, ranging up to microwaves at their highest frequencies."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-waves",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-142"
+    },
+    {
+      "id": "sec-5",
+      "title": "Energy in Electromagnetic Waves",
+      "module": "m42446",
+      "est_minutes": 12,
+      "locator": "CNXML module m42446",
+      "objectives": [
+        "Explain how the energy and amplitude of an electromagnetic wave are related.",
+        "Given its power output and the heating area, calculate the intensity of a microwave oven’s electromagnetic field, as well as its peak electric and magnetic field strengths"
+      ],
+      "misconceptions": [],
+      "summary": [
+        "The energy carried by any wave is proportional to its amplitude squared. For electromagnetic waves, this means intensity can be expressed as Iave=cε0E022,where Iave is the average intensity in W/m2, and E0 is the maximum electric field strength of a continuous sinusoidal wave.",
+        "This can also be expressed in terms of the maximum magnetic field strength B0 as I ave = cB 0 2 2μ 0 and in terms of both electric and magnetic fields as Iave=E0B02μ0.",
+        "The three expressions for Iave are all equivalent."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-waves",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-29"
+    }
+  ],
+  "formula_sheet": [],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "electromagnetic waves",
+        "inline": []
+      },
+      "definition": {
+        "text": "radiation in the form of waves of electric and magnetic energy",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42437/index.cnxml",
+        "locator": "CNXML module m42437, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "Maxwell’s equations",
+        "inline": []
+      },
+      "definition": {
+        "text": "a set of four equations that comprise a complete, overarching theory of electromagnetism",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42437/index.cnxml",
+        "locator": "CNXML module m42437, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "RLC circuit",
+        "inline": []
+      },
+      "definition": {
+        "text": "an electric circuit that includes a resistor, capacitor and inductor",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42437/index.cnxml",
+        "locator": "CNXML module m42437, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "hertz",
+        "inline": []
+      },
+      "definition": {
+        "text": "an SI unit denoting the frequency of an electromagnetic wave, in cycles per second",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42437/index.cnxml",
+        "locator": "CNXML module m42437, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "speed of light",
+        "inline": []
+      },
+      "definition": {
+        "text": "in a vacuum, such as space, the speed of light is a constant 3 x 108 m/s",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42437/index.cnxml",
+        "locator": "CNXML module m42437, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "electromotive force (emf)",
+        "inline": []
+      },
+      "definition": {
+        "text": "energy produced per unit charge, drawn from a source that produces an electrical current",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42437/index.cnxml",
+        "locator": "CNXML module m42437, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-7",
+      "term": {
+        "text": "electric field lines",
+        "inline": []
+      },
+      "definition": {
+        "text": "a pattern of imaginary lines that extend between an electric source and charged objects in the surrounding area, with arrows pointed away from positively charged objects and toward negatively charged objects. The more lines in the pattern, the stronger the electric field in that region",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42437/index.cnxml",
+        "locator": "CNXML module m42437, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-8",
+      "term": {
+        "text": "magnetic field lines",
+        "inline": []
+      },
+      "definition": {
+        "text": "a pattern of continuous, imaginary lines that emerge from and enter into opposite magnetic poles. The density of the lines indicates the magnitude of the magnetic field",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42437/index.cnxml",
+        "locator": "CNXML module m42437, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-9",
+      "term": {
+        "text": "electric field",
+        "inline": []
+      },
+      "definition": {
+        "text": "a vector quantity (E); the lines of electric force per unit charge, moving radially outward from a positive charge and in toward a negative charge",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42440/index.cnxml",
+        "locator": "CNXML module m42440, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-10",
+      "term": {
+        "text": "electric field strength",
+        "inline": []
+      },
+      "definition": {
+        "text": "the magnitude of the electric field, denoted E-field",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42440/index.cnxml",
+        "locator": "CNXML module m42440, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-11",
+      "term": {
+        "text": "magnetic field",
+        "inline": []
+      },
+      "definition": {
+        "text": "a vector quantity (B); can be used to determine the magnetic force on a moving charged particle",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42440/index.cnxml",
+        "locator": "CNXML module m42440, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-12",
+      "term": {
+        "text": "magnetic field strength",
+        "inline": []
+      },
+      "definition": {
+        "text": "the magnitude of the magnetic field, denoted B-field",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42440/index.cnxml",
+        "locator": "CNXML module m42440, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-13",
+      "term": {
+        "text": "transverse wave",
+        "inline": []
+      },
+      "definition": {
+        "text": "a wave, such as an electromagnetic wave, which oscillates perpendicular to the axis along the line of travel",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42440/index.cnxml",
+        "locator": "CNXML module m42440, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-14",
+      "term": {
+        "text": "standing wave",
+        "inline": []
+      },
+      "definition": {
+        "text": "a wave that oscillates in place, with nodes where no motion happens",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42440/index.cnxml",
+        "locator": "CNXML module m42440, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-15",
+      "term": {
+        "text": "wavelength",
+        "inline": []
+      },
+      "definition": {
+        "text": "the distance from one peak to the next in a wave",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42440/index.cnxml",
+        "locator": "CNXML module m42440, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-16",
+      "term": {
+        "text": "amplitude",
+        "inline": []
+      },
+      "definition": {
+        "text": "the height, or magnitude, of an electromagnetic wave",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42440/index.cnxml",
+        "locator": "CNXML module m42440, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-17",
+      "term": {
+        "text": "frequency",
+        "inline": []
+      },
+      "definition": {
+        "text": "the number of complete wave cycles (up-down-up) passing a given point within one second (cycles/second)",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42440/index.cnxml",
+        "locator": "CNXML module m42440, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-18",
+      "term": {
+        "text": "resonant",
+        "inline": []
+      },
+      "definition": {
+        "text": "a system that displays enhanced oscillation when subjected to a periodic disturbance of the same frequency as its natural frequency",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42440/index.cnxml",
+        "locator": "CNXML module m42440, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-19",
+      "term": {
+        "text": "oscillate",
+        "inline": []
+      },
+      "definition": {
+        "text": "to fluctuate back and forth in a steady beat",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42440/index.cnxml",
+        "locator": "CNXML module m42440, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-20",
+      "term": {
+        "text": "electromagnetic spectrum",
+        "inline": []
+      },
+      "definition": {
+        "text": "the full range of wavelengths or frequencies of electromagnetic radiation",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-21",
+      "term": {
+        "text": "radio waves",
+        "inline": []
+      },
+      "definition": {
+        "text": "electromagnetic waves with wavelengths in the range from 1 mm to 100 km; they are produced by currents in wires and circuits and by astronomical phenomena",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-22",
+      "term": {
+        "text": "microwaves",
+        "inline": []
+      },
+      "definition": {
+        "text": "electromagnetic waves with wavelengths in the range from 1 mm to 1 m; they can be produced by currents in macroscopic circuits and devices",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-23",
+      "term": {
+        "text": "thermal agitation",
+        "inline": []
+      },
+      "definition": {
+        "text": "the thermal motion of atoms and molecules in any object at a temperature above absolute zero, which causes them to emit and absorb radiation",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-24",
+      "term": {
+        "text": "radar",
+        "inline": []
+      },
+      "definition": {
+        "text": "a common application of microwaves. Radar can determine the distance to objects as diverse as clouds and aircraft, as well as determine the speed of a car or the intensity of a rainstorm",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-25",
+      "term": {
+        "text": "infrared radiation (IR)",
+        "inline": []
+      },
+      "definition": {
+        "text": "a region of the electromagnetic spectrum with a frequency range that extends from just below the red region of the visible light spectrum up to the microwave region, or from 0.74μm to 300μm",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-26",
+      "term": {
+        "text": "ultraviolet radiation (UV)",
+        "inline": []
+      },
+      "definition": {
+        "text": "electromagnetic radiation in the range extending upward in frequency from violet light and overlapping with the lowest X-ray frequencies, with wavelengths from 400 nm down to about 10 nm",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-27",
+      "term": {
+        "text": "visible light",
+        "inline": []
+      },
+      "definition": {
+        "text": "the narrow segment of the electromagnetic spectrum to which the normal human eye responds",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-28",
+      "term": {
+        "text": "amplitude modulation (AM)",
+        "inline": []
+      },
+      "definition": {
+        "text": "a method for placing information on electromagnetic waves by modulating the amplitude of a carrier wave with an audio signal, resulting in a wave with constant frequency but varying amplitude",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-29",
+      "term": {
+        "text": "extremely low frequency (ELF)",
+        "inline": []
+      },
+      "definition": {
+        "text": "electromagnetic radiation with wavelengths usually in the range of 0 to 300 Hz, but also about 1kHz",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-30",
+      "term": {
+        "text": "carrier wave",
+        "inline": []
+      },
+      "definition": {
+        "text": "an electromagnetic wave that carries a signal by modulation of its amplitude or frequency",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-31",
+      "term": {
+        "text": "frequency modulation (FM)",
+        "inline": []
+      },
+      "definition": {
+        "text": "a method of placing information on electromagnetic waves by modulating the frequency of a carrier wave with an audio signal, producing a wave of constant amplitude but varying frequency",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-32",
+      "term": {
+        "text": "TV",
+        "inline": []
+      },
+      "definition": {
+        "text": "video and audio signals broadcast on electromagnetic waves",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-33",
+      "term": {
+        "text": "very high frequency (VHF)",
+        "inline": []
+      },
+      "definition": {
+        "text": "TV channels utilizing frequencies in the two ranges of 54 to 88 MHz and 174 to 222 MHz",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-34",
+      "term": {
+        "text": "ultra-high frequency (UHF)",
+        "inline": []
+      },
+      "definition": {
+        "text": "TV channels in an even higher frequency range than VHF, of 470 to 1000 MHz",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-35",
+      "term": {
+        "text": "X-ray",
+        "inline": []
+      },
+      "definition": {
+        "text": "invisible, penetrating form of very high frequency electromagnetic radiation, overlapping both the ultraviolet range and the γ-ray range",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-36",
+      "term": {
+        "text": "gamma ray",
+        "inline": []
+      },
+      "definition": {
+        "text": "(γ ray); extremely high frequency electromagnetic radiation emitted by the nucleus of an atom, either from natural nuclear decay or induced nuclear processes in nuclear reactors and weapons. The lower end of the γ-ray frequency range overlaps the upper end of the X-ray range, but γ rays can have the highest frequency of any electromagnetic radiation",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42444/index.cnxml",
+        "locator": "CNXML module m42444, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-37",
+      "term": {
+        "text": "maximum field strength",
+        "inline": []
+      },
+      "definition": {
+        "text": "the maximum amplitude an electromagnetic wave can reach, representing the maximum amount of electric force and/or magnetic flux that the wave can exert",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42446/index.cnxml",
+        "locator": "CNXML module m42446, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-38",
+      "term": {
+        "text": "intensity",
+        "inline": []
+      },
+      "definition": {
+        "text": "the power of an electric or magnetic field per unit area, for example, Watts per square meter",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42446/index.cnxml",
+        "locator": "CNXML module m42446, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_links": [],
+  "exam_traps": [
+    {
+      "id": "trap-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": "Electromagnetic waves need a medium to travel through.",
+      "correction": "They do not. They are a changing electric and magnetic field that travel through empty space.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "All electromagnetic waves travel at the same speed in a vacuum.",
+      "correction": "They do, at about three hundred million metres per second, but their frequency and wavelength differ.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-4",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "exam_recall_checks": [],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Electromagnetic Waves', modules m42434, m42437, m42440, m42444, m42446",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

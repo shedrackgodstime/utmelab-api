@@ -1,0 +1,894 @@
+{
+  "chapter_id": "phy_fluid_dynamics",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Fluid Dynamics",
+  "book_id": "secondary_physics",
+  "part_id": "part-2",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "facts_inherited": true,
+  "learning_objectives": [
+    {
+      "id": "lo-1",
+      "statement": "Calculate flow rate.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-2",
+      "statement": "Define units of volume.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-3",
+      "statement": "Describe incompressible fluids.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-4",
+      "statement": "Explain the consequences of the equation of continuity.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-5",
+      "statement": "Explain the terms in Bernoulli’s equation.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-6",
+      "statement": "Explain how Bernoulli’s equation is related to conservation of energy.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-7",
+      "statement": "Explain how to derive Bernoulli’s principle from Bernoulli’s equation.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-8",
+      "statement": "Calculate with Bernoulli’s principle.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-9",
+      "statement": "List some applications of Bernoulli’s principle.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-10",
+      "statement": "Calculate using Torricelli’s theorem.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-11",
+      "statement": "Calculate power in fluid flow.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-12",
+      "statement": "Define laminar flow and turbulent flow.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-13",
+      "statement": "Explain what viscosity is.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-14",
+      "statement": "Calculate flow and resistance with Poiseuille’s law.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-15",
+      "statement": "Explain how pressure drops due to resistance.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-16",
+      "statement": "Calculate Reynolds number.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-17",
+      "statement": "Use the Reynolds number for a system to determine whether it is laminar or turbulent.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-18",
+      "statement": "Calculate the Reynolds number for an object moving through a fluid.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-19",
+      "statement": "Explain whether the Reynolds number indicates laminar or turbulent flow.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-20",
+      "statement": "Describe the conditions under which an object has a terminal speed.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-21",
+      "statement": "Define diffusion, osmosis, dialysis, and active transport.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-22",
+      "statement": "Calculate diffusion rates.",
+      "bloom_level": "understand"
+    }
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to Fluid Dynamics and Its Biological and Medical Applications",
+      "module": "m42204",
+      "est_minutes": 12,
+      "locator": "CNXML module m42204",
+      "objectives": [
+        "Calculate flow rate."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Calculate flow rate.",
+        "Define units of volume.",
+        "Describe incompressible fluids."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-motion",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "liquids-at-rest",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "Flow Rate and Its Relation to Velocity",
+      "module": "m42205",
+      "est_minutes": 12,
+      "locator": "CNXML module m42205",
+      "objectives": [
+        "Calculate flow rate.",
+        "Define units of volume.",
+        "Describe incompressible fluids.",
+        "Explain the consequences of the equation of continuity."
+      ],
+      "misconceptions": [
+        {
+          "claim": "A fluid flowing at a steady rate has no acceleration.",
+          "correction": "A change in speed or direction is an acceleration, so the fluid is accelerating even at a steady rate."
+        }
+      ],
+      "summary": [
+        "Flow rate Q is defined to be the volume V flowing past a point in time t, or Q=Vt where V is volume and t is time.",
+        "The SI unit of volume is m3.",
+        "Another common unit is the liter (L), which is 10−3m3."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-motion",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "liquids-at-rest",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-40"
+    },
+    {
+      "id": "sec-3",
+      "title": "Bernoulli’s Equation",
+      "module": "m42206",
+      "est_minutes": 12,
+      "locator": "CNXML module m42206",
+      "objectives": [
+        "Explain the terms in Bernoulli’s equation.",
+        "Explain how Bernoulli’s equation is related to conservation of energy.",
+        "Explain how to derive Bernoulli’s principle from Bernoulli’s equation.",
+        "Calculate with Bernoulli’s principle.",
+        "List some applications of Bernoulli’s principle."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Calculate flow rate.",
+        "Define units of volume.",
+        "Describe incompressible fluids."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-motion",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "liquids-at-rest",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-44"
+    },
+    {
+      "id": "sec-4",
+      "title": "The Most General Applications of Bernoulli’s Equation",
+      "module": "m42208",
+      "est_minutes": 12,
+      "locator": "CNXML module m42208",
+      "objectives": [
+        "Calculate using Torricelli’s theorem.",
+        "Calculate power in fluid flow."
+      ],
+      "misconceptions": [
+        {
+          "claim": "The Bernoulli effect explains why a curve ball curves.",
+          "correction": "It explains the pressure difference between the two sides of a spinning ball, and the deflection of the air around it."
+        }
+      ],
+      "summary": [
+        "Calculate flow rate.",
+        "Define units of volume.",
+        "Describe incompressible fluids."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-motion",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "liquids-at-rest",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-30"
+    },
+    {
+      "id": "sec-5",
+      "title": "Viscosity and Laminar Flow; Poiseuille’s Law",
+      "module": "m42209",
+      "est_minutes": 12,
+      "locator": "CNXML module m42209",
+      "objectives": [
+        "Define laminar flow and turbulent flow.",
+        "Explain what viscosity is.",
+        "Calculate flow and resistance with Poiseuille’s law.",
+        "Explain how pressure drops due to resistance."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Laminar flow is characterized by smooth flow of the fluid in layers that do not mix.",
+        "Turbulence is characterized by eddies and swirls that mix layers of fluid together.",
+        "Fluid viscosity η is due to friction within a fluid. Representative values are given in . Viscosity has units of ( N/m 2 ) s or Pa ⋅ s ."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-motion",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "liquids-at-rest",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-63"
+    },
+    {
+      "id": "sec-6",
+      "title": "The Onset of Turbulence",
+      "module": "m42210",
+      "est_minutes": 12,
+      "locator": "CNXML module m42210",
+      "objectives": [
+        "Calculate Reynolds number.",
+        "Use the Reynolds number for a system to determine whether it is laminar or turbulent."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "The Reynolds number NR can reveal whether flow is laminar or turbulent. It isNR=2ρvrη.",
+        "For NR below about 2000, flow is laminar. For NR above about 3000, flow is turbulent. For values of NR between 2000 and 3000, it may be either or both."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-motion",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "liquids-at-rest",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-24"
+    },
+    {
+      "id": "sec-7",
+      "title": "Motion of an Object in a Viscous Fluid",
+      "module": "m42211",
+      "est_minutes": 12,
+      "locator": "CNXML module m42211",
+      "objectives": [
+        "Calculate the Reynolds number for an object moving through a fluid.",
+        "Explain whether the Reynolds number indicates laminar or turbulent flow.",
+        "Describe the conditions under which an object has a terminal speed."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "When an object moves in a fluid, there is a different form of the Reynolds number NR′=ρvLη(object in fluid), which indicates whether flow is laminar or turbulent.",
+        "For NR′ less than about one, flow is laminar.",
+        "For NR′ greater than 106, flow is entirely turbulent."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-motion",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "liquids-at-rest",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-8",
+      "title": "Molecular Transport Phenomena: Diffusion, Osmosis, and Related Processes",
+      "module": "m42212",
+      "est_minutes": 12,
+      "locator": "CNXML module m42212",
+      "objectives": [
+        "Define diffusion, osmosis, dialysis, and active transport.",
+        "Calculate diffusion rates."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Diffusion is the movement of substances due to random thermal molecular motion.",
+        "The average distance xrms a molecule travels by diffusion in a given amount of time is given byxrms=2Dt,where D is the diffusion constant, representative values of which are found in .",
+        "Osmosis is a process by which molecules of a solvent pass through a semipermeable membrane from a less concentrated solution into a more concentrated one, thus, equalizing the solute concentrations on each side of the membrane."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-motion",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "liquids-at-rest",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-37"
+    }
+  ],
+  "formula_sheet": [],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "fluid dynamics",
+        "inline": []
+      },
+      "definition": {
+        "text": "the physics of fluids in motion",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42204/index.cnxml",
+        "locator": "CNXML module m42204, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "flow rate",
+        "inline": []
+      },
+      "definition": {
+        "text": "abbreviated Q, it is the volume V that flows past a particular point during a time t, or Q = V/t",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42205/index.cnxml",
+        "locator": "CNXML module m42205, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "liter",
+        "inline": []
+      },
+      "definition": {
+        "text": "a unit of volume, equal to 10−3 m3",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42205/index.cnxml",
+        "locator": "CNXML module m42205, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "Bernoulli’s equation",
+        "inline": []
+      },
+      "definition": {
+        "text": "the equation resulting from applying conservation of energy to an incompressible frictionless fluid: P + 1/2pv2 + pgh = constant , through the fluid",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42206/index.cnxml",
+        "locator": "CNXML module m42206, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "Bernoulli’s principle",
+        "inline": []
+      },
+      "definition": {
+        "text": "Bernoulli’s equation applied at constant depth: P1 + 1/2pv12 = P2 + 1/2pv22",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42206/index.cnxml",
+        "locator": "CNXML module m42206, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "laminar",
+        "inline": []
+      },
+      "definition": {
+        "text": "a type of fluid flow in which layers do not mix",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42209/index.cnxml",
+        "locator": "CNXML module m42209, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-7",
+      "term": {
+        "text": "turbulence",
+        "inline": []
+      },
+      "definition": {
+        "text": "fluid flow in which layers mix together via eddies and swirls",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42209/index.cnxml",
+        "locator": "CNXML module m42209, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-8",
+      "term": {
+        "text": "viscosity",
+        "inline": []
+      },
+      "definition": {
+        "text": "the friction in a fluid, defined in terms of the friction between layers",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42209/index.cnxml",
+        "locator": "CNXML module m42209, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-9",
+      "term": {
+        "text": "Poiseuille’s law for resistance",
+        "inline": []
+      },
+      "definition": {
+        "text": "the resistance to laminar flow of an incompressible fluid in a tube: R = 8ηl/πr4",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42209/index.cnxml",
+        "locator": "CNXML module m42209, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-10",
+      "term": {
+        "text": "Poiseuille’s law",
+        "inline": []
+      },
+      "definition": {
+        "text": "the rate of laminar flow of an incompressible fluid in a tube: Q = (P2 − P1)πr4/8ηl",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42209/index.cnxml",
+        "locator": "CNXML module m42209, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-11",
+      "term": {
+        "text": "Reynolds number",
+        "inline": []
+      },
+      "definition": {
+        "text": "a dimensionless parameter that can reveal whether a particular flow is laminar or turbulent",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42210/index.cnxml",
+        "locator": "CNXML module m42210, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-12",
+      "term": {
+        "text": "viscous drag",
+        "inline": []
+      },
+      "definition": {
+        "text": "a resistance force exerted on a moving object, with a nontrivial dependence on velocity",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42211/index.cnxml",
+        "locator": "CNXML module m42211, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-13",
+      "term": {
+        "text": "terminal speed",
+        "inline": []
+      },
+      "definition": {
+        "text": "the speed at which the viscous drag of an object falling in a viscous fluid is equal to the other forces acting on the object (such as gravity), so that the acceleration of the object is zero",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42211/index.cnxml",
+        "locator": "CNXML module m42211, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-14",
+      "term": {
+        "text": "diffusion",
+        "inline": []
+      },
+      "definition": {
+        "text": "the movement of substances due to random thermal molecular motion",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42212/index.cnxml",
+        "locator": "CNXML module m42212, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-15",
+      "term": {
+        "text": "semipermeable",
+        "inline": []
+      },
+      "definition": {
+        "text": "a type of membrane that allows only certain small molecules to pass through",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42212/index.cnxml",
+        "locator": "CNXML module m42212, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-16",
+      "term": {
+        "text": "osmosis",
+        "inline": []
+      },
+      "definition": {
+        "text": "the transport of water through a semipermeable membrane from a region of high concentration to one of low concentration",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42212/index.cnxml",
+        "locator": "CNXML module m42212, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-17",
+      "term": {
+        "text": "dialysis",
+        "inline": []
+      },
+      "definition": {
+        "text": "the transport of any molecule other than water through a semipermeable membrane from a region of high concentration to one of low concentration",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42212/index.cnxml",
+        "locator": "CNXML module m42212, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-18",
+      "term": {
+        "text": "relative osmotic pressure",
+        "inline": []
+      },
+      "definition": {
+        "text": "the back pressure which stops the osmotic process if neither solution is pure water",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42212/index.cnxml",
+        "locator": "CNXML module m42212, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-19",
+      "term": {
+        "text": "osmotic pressure",
+        "inline": []
+      },
+      "definition": {
+        "text": "the back pressure which stops the osmotic process if one solution is pure water",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42212/index.cnxml",
+        "locator": "CNXML module m42212, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-20",
+      "term": {
+        "text": "reverse osmosis",
+        "inline": []
+      },
+      "definition": {
+        "text": "the process that occurs when back pressure is sufficient to reverse the normal direction of osmosis through membranes",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42212/index.cnxml",
+        "locator": "CNXML module m42212, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-21",
+      "term": {
+        "text": "reverse dialysis",
+        "inline": []
+      },
+      "definition": {
+        "text": "the process that occurs when back pressure is sufficient to reverse the normal direction of dialysis through membranes",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42212/index.cnxml",
+        "locator": "CNXML module m42212, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-22",
+      "term": {
+        "text": "active transport",
+        "inline": []
+      },
+      "definition": {
+        "text": "the process in which a living membrane expends energy to move substances across",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42212/index.cnxml",
+        "locator": "CNXML module m42212, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_links": [],
+  "exam_traps": [
+    {
+      "id": "trap-1",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": "A fluid flowing at a steady rate has no acceleration.",
+      "correction": "A change in speed or direction is an acceleration, so the fluid is accelerating even at a steady rate.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-2",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "The Bernoulli effect explains why a curve ball curves.",
+      "correction": "It explains the pressure difference between the two sides of a spinning ball, and the deflection of the air around it.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-4",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "exam_recall_checks": [],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Fluid Dynamics and Its Biological and Medical Applications', modules m42204, m42205, m42206, m42208, m42209, m42210, m42211, m42212",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

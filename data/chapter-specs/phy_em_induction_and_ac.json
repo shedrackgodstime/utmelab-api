@@ -1,0 +1,1253 @@
+{
+  "chapter_id": "phy_em_induction_and_ac",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Electromagnetic Induction, AC Circuits, and Electrical Technologies",
+  "book_id": "secondary_physics",
+  "part_id": "part-4",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "facts_inherited": true,
+  "learning_objectives": [
+    {
+      "id": "lo-1",
+      "statement": "Calculate the flux of a uniform magnetic field through a loop of arbitrary orientation.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-2",
+      "statement": "Describe methods to produce an electromotive force (emf) with a magnetic field or magnet and a loop of wire.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-3",
+      "statement": "Calculate emf, current, and magnetic fields using Faraday’s Law.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-4",
+      "statement": "Explain the physical results of Lenz’s Law",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-5",
+      "statement": "Calculate emf, force, magnetic field, and work due to the motion of an object in a magnetic field.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-6",
+      "statement": "Explain the magnitude and direction of an induced eddy current, and the effect this will have on the object it is induced in.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-7",
+      "statement": "Describe several applications of magnetic damping.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-8",
+      "statement": "Calculate the emf induced in a generator.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-9",
+      "statement": "Calculate the peak emf which can be induced in a particular generator system.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-10",
+      "statement": "Explain what back emf is and how it is induced.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-11",
+      "statement": "Explain how a transformer works.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-12",
+      "statement": "Calculate voltage, current, and/or number of turns given the other quantities.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-13",
+      "statement": "Explain how various modern safety features in electric circuits work, with an emphasis on how induction is employed.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-14",
+      "statement": "Calculate the inductance of an inductor.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-15",
+      "statement": "Calculate the energy stored in an inductor.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-16",
+      "statement": "Calculate the emf generated in an inductor.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-17",
+      "statement": "Calculate the current in an RL circuit after a specified number of characteristic time steps.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-18",
+      "statement": "Calculate the characteristic time of an RL circuit.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-19",
+      "statement": "Sketch the current in an RL circuit over time.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-20",
+      "statement": "Sketch voltage and current versus time in simple inductive, capacitive, and resistive circuits.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-21",
+      "statement": "Calculate inductive and capacitive reactance.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-22",
+      "statement": "Calculate current and/or voltage in simple inductive, capacitive, and resistive circuits.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-23",
+      "statement": "Calculate the impedance, phase angle, resonant frequency, power, power factor, voltage, and/or current in a RLC series circuit.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-24",
+      "statement": "Draw the circuit diagram for an RLC series circuit.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-25",
+      "statement": "Explain the significance of the resonant frequency.",
+      "bloom_level": "understand"
+    }
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to Electromagnetic Induction, AC Circuits and Electrical Technologies",
+      "module": "m42389",
+      "est_minutes": 12,
+      "locator": "CNXML module m42389",
+      "objectives": [
+        "Calculate the flux of a uniform magnetic field through a loop of arbitrary orientation."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Calculate the flux of a uniform magnetic field through a loop of arbitrary orientation.",
+        "Describe methods to produce an electromotive force (emf) with a magnetic field or magnet and a loop of wire.",
+        "Calculate emf, current, and magnetic fields using Faraday’s Law."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "Induced Emf and Magnetic Flux",
+      "module": "m42390",
+      "est_minutes": 12,
+      "locator": "CNXML module m42390",
+      "objectives": [
+        "Calculate the flux of a uniform magnetic field through a loop of arbitrary orientation.",
+        "Describe methods to produce an electromotive force (emf) with a magnetic field or magnet and a loop of wire."
+      ],
+      "misconceptions": [
+        {
+          "claim": "A generator and a motor are the same device.",
+          "correction": "A generator turns motion into current, and a motor turns current into motion. The same coil can do either, depending on what drives it."
+        }
+      ],
+      "summary": [
+        "The crucial quantity in induction is magnetic flux Φ, defined to be Φ=BAcosθ, where B is the magnetic field strength over an area A at an angle θ with the perpendicular to the area.",
+        "Units of magnetic flux Φ are T⋅m2.",
+        "Any change in magnetic flux Φ induces an emf—the process is defined to be electromagnetic induction."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-13"
+    },
+    {
+      "id": "sec-3",
+      "title": "Faraday’s Law of Induction: Lenz’s Law",
+      "module": "m42392",
+      "est_minutes": 12,
+      "locator": "CNXML module m42392",
+      "objectives": [
+        "Calculate emf, current, and magnetic fields using Faraday’s Law.",
+        "Explain the physical results of Lenz’s Law"
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Faraday’s law of induction states that the emfinduced by a change in magnetic flux is emf = − N Δ Φ Δt when flux changes by ΔΦ in a time Δt.",
+        "If emf is induced in a coil, N is its number of turns.",
+        "The minus sign means that the emf creates a current I and magnetic field B that oppose the change in flux ΔΦ —this opposition is known as Lenz’s law."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-35"
+    },
+    {
+      "id": "sec-4",
+      "title": "Motional Emf",
+      "module": "m42400",
+      "est_minutes": 12,
+      "locator": "CNXML module m42400",
+      "objectives": [
+        "Calculate emf, force, magnetic field, and work due to the motion of an object in a magnetic field."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Transformers work on direct current.",
+          "correction": "They work on alternating current, because a changing current is what gives a changing flux and therefore an induced voltage."
+        }
+      ],
+      "summary": [
+        "An emf induced by motion relative to a magnetic field B is called a motional emf and is given by emf=Bℓv(B, ℓ, andv perpendicular), where ℓ is the length of the object moving at speed v relative to the field.",
+        "Calculate the flux of a uniform magnetic field through a loop of arbitrary orientation.",
+        "Describe methods to produce an electromotive force (emf) with a magnetic field or magnet and a loop of wire."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-35"
+    },
+    {
+      "id": "sec-5",
+      "title": "Eddy Currents and Magnetic Damping",
+      "module": "m42404",
+      "est_minutes": 12,
+      "locator": "CNXML module m42404",
+      "objectives": [
+        "Explain the magnitude and direction of an induced eddy current, and the effect this will have on the object it is induced in.",
+        "Describe several applications of magnetic damping."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Current loops induced in moving conductors are called eddy currents.",
+        "They can create significant drag, called magnetic damping."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-6",
+      "title": "Electric Generators",
+      "module": "m42408",
+      "est_minutes": 12,
+      "locator": "CNXML module m42408",
+      "objectives": [
+        "Calculate the emf induced in a generator.",
+        "Calculate the peak emf which can be induced in a particular generator system."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "An electric generator rotates a coil in a magnetic field, inducing an emfgiven as a function of time by emf=NABωsinωt, where A is the area of an N-turn coil rotated at a constant angular velocity ω in a uniform magnetic field B.",
+        "The peak emf emf0 of a generator is emf0=NABω."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-35"
+    },
+    {
+      "id": "sec-7",
+      "title": "Back Emf",
+      "module": "m42411",
+      "est_minutes": 12,
+      "locator": "CNXML module m42411",
+      "objectives": [
+        "Explain what back emf is and how it is induced."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Any rotating coil will have an induced emf—in motors, this is called back emf, since it opposes the emf input to the motor.",
+        "Calculate the flux of a uniform magnetic field through a loop of arbitrary orientation.",
+        "Describe methods to produce an electromotive force (emf) with a magnetic field or magnet and a loop of wire."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-11"
+    },
+    {
+      "id": "sec-8",
+      "title": "Transformers",
+      "module": "m42414",
+      "est_minutes": 12,
+      "locator": "CNXML module m42414",
+      "objectives": [
+        "Explain how a transformer works.",
+        "Calculate voltage, current, and/or number of turns given the other quantities."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Transformers use induction to transform voltages from one value to another.",
+        "For a transformer, the voltages across the primary and secondary coils are related by VsVp=NsNp, where Vp and Vs are the voltages across primary and secondary coils having Np and Ns turns.",
+        "The currents Ip and Is in the primary and secondary coils are related by IsIp=NpNs."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-36"
+    },
+    {
+      "id": "sec-9",
+      "title": "Electrical Safety: Systems and Devices",
+      "module": "m42416",
+      "est_minutes": 12,
+      "locator": "CNXML module m42416",
+      "objectives": [
+        "Explain how various modern safety features in electric circuits work, with an emphasis on how induction is employed."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Electrical safety systems and devices are employed to prevent thermal and shock hazards.",
+        "Circuit breakers and fuses interrupt excessive currents to prevent thermal hazards.",
+        "The three-wire system guards against thermal and shock hazards, utilizing live/hot, neutral, and earth/ground wires, and grounding the neutral wire and case of the appliance."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-21"
+    },
+    {
+      "id": "sec-10",
+      "title": "Inductance",
+      "module": "m42420",
+      "est_minutes": 12,
+      "locator": "CNXML module m42420",
+      "objectives": [
+        "Calculate the inductance of an inductor.",
+        "Calculate the energy stored in an inductor.",
+        "Calculate the emf generated in an inductor."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Inductance is the property of a device that tells how effectively it induces an emf in another device.",
+        "Mutual inductance is the effect of two devices in inducing emfs in each other.",
+        "A change in current ΔI1/Δt in one induces an emf emf2 in the second: emf2=−MΔI1Δt, where M is defined to be the mutual inductance between the two devices, and the minus sign is due to Lenz’s law."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-48"
+    },
+    {
+      "id": "sec-11",
+      "title": "RL Circuits",
+      "module": "m42425",
+      "est_minutes": 12,
+      "locator": "CNXML module m42425",
+      "objectives": [
+        "Calculate the current in an RL circuit after a specified number of characteristic time steps.",
+        "Calculate the characteristic time of an RL circuit.",
+        "Sketch the current in an RL circuit over time."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "When a series connection of a resistor and an inductor—an RL circuit—is connected to a voltage source, the time variation of the current is I=I0(1−e−t/τ) (turning on). where I0=V/R is the final current.",
+        "The characteristic time constant τ is τ=LR , where L is the inductance and R is the resistance.",
+        "In the first time constant τ, the current rises from zero to 0.632I0, and 0.632 of the remainder in every subsequent time interval τ."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-22"
+    },
+    {
+      "id": "sec-12",
+      "title": "Reactance, Inductive and Capacitive",
+      "module": "m42427",
+      "est_minutes": 12,
+      "locator": "CNXML module m42427",
+      "objectives": [
+        "Sketch voltage and current versus time in simple inductive, capacitive, and resistive circuits.",
+        "Calculate inductive and capacitive reactance.",
+        "Calculate current and/or voltage in simple inductive, capacitive, and resistive circuits."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "For inductors in AC circuits, we find that when a sinusoidal voltage is applied to an inductor, the voltage leads the current by one-fourth of a cycle, or by a 90º phase angle.",
+        "The opposition of an inductor to a change in current is expressed as a type of AC resistance.",
+        "Ohm’s law for an inductor is I=VXL, where V is the rms voltage across the inductor."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-57"
+    },
+    {
+      "id": "sec-13",
+      "title": "RLC Series AC Circuits",
+      "module": "m42431",
+      "est_minutes": 12,
+      "locator": "CNXML module m42431",
+      "objectives": [
+        "Calculate the impedance, phase angle, resonant frequency, power, power factor, voltage, and/or current in a RLC series circuit.",
+        "Draw the circuit diagram for an RLC series circuit.",
+        "Explain the significance of the resonant frequency."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "The AC analogy to resistance is impedance Z , the combined effect of resistors, inductors, and capacitors, defined by the AC version of Ohm’s law: I 0 = V 0 Z or I rms = V rms Z , where I0 is the peak current and V0 is the peak source voltage.",
+        "Impedance has units of ohms and is given by Z=R2+(XL−XC)2.",
+        "The resonant frequency f0, at which XL=XC, is f0=12πLC."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "electromagnetic-induction",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-electromagnetic-field",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-69"
+    }
+  ],
+  "formula_sheet": [],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "induction",
+        "inline": []
+      },
+      "definition": {
+        "text": "(magnetic induction) the creation of emfs and hence currents by magnetic fields",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42389/index.cnxml",
+        "locator": "CNXML module m42389, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "magnetic flux",
+        "inline": []
+      },
+      "definition": {
+        "text": "the amount of magnetic field going through a particular area, calculated with Φ=BAcosθ where B is the magnetic field strength over an area A at an angle θ with the perpendicular to the area",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42390/index.cnxml",
+        "locator": "CNXML module m42390, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "electromagnetic induction",
+        "inline": []
+      },
+      "definition": {
+        "text": "the process of inducing an emf (voltage) with a change in magnetic flux",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42390/index.cnxml",
+        "locator": "CNXML module m42390, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "Faraday’s law of induction",
+        "inline": []
+      },
+      "definition": {
+        "text": "the means of calculating the emf in a coil due to changing magnetic flux, given by emf = − N ΔΦ Δt",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42392/index.cnxml",
+        "locator": "CNXML module m42392, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "Lenz’s law",
+        "inline": []
+      },
+      "definition": {
+        "text": "the minus sign in Faraday’s law, signifying that the emf induced in a coil opposes the change in magnetic flux",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42392/index.cnxml",
+        "locator": "CNXML module m42392, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "eddy current",
+        "inline": []
+      },
+      "definition": {
+        "text": "a current loop in a conductor caused by motional emf",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42404/index.cnxml",
+        "locator": "CNXML module m42404, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-7",
+      "term": {
+        "text": "magnetic damping",
+        "inline": []
+      },
+      "definition": {
+        "text": "the drag produced by eddy currents",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42404/index.cnxml",
+        "locator": "CNXML module m42404, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-8",
+      "term": {
+        "text": "electric generator",
+        "inline": []
+      },
+      "definition": {
+        "text": "a device for converting mechanical work into electric energy; it induces an emf by rotating a coil in a magnetic field",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42408/index.cnxml",
+        "locator": "CNXML module m42408, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-9",
+      "term": {
+        "text": "emf induced in a generator coil",
+        "inline": []
+      },
+      "definition": {
+        "text": "emf=NABωsinωt, where A is the area of an N -turn coil rotated at a constant angular velocity ω in a uniform magnetic field B , over a period of time t",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42408/index.cnxml",
+        "locator": "CNXML module m42408, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-10",
+      "term": {
+        "text": "peak emf",
+        "inline": []
+      },
+      "definition": {
+        "text": "emf0=NABω",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42408/index.cnxml",
+        "locator": "CNXML module m42408, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-11",
+      "term": {
+        "text": "back emf",
+        "inline": []
+      },
+      "definition": {
+        "text": "the emf generated by a running motor, because it consists of a coil turning in a magnetic field; it opposes the voltage powering the motor",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42411/index.cnxml",
+        "locator": "CNXML module m42411, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-12",
+      "term": {
+        "text": "transformer",
+        "inline": []
+      },
+      "definition": {
+        "text": "a device that transforms voltages from one value to another using induction",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42414/index.cnxml",
+        "locator": "CNXML module m42414, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-13",
+      "term": {
+        "text": "transformer equation",
+        "inline": []
+      },
+      "definition": {
+        "text": "the equation showing that the ratio of the secondary to primary voltages in a transformer equals the ratio of the number of loops in their coils; VsVp=NsNp",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42414/index.cnxml",
+        "locator": "CNXML module m42414, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-14",
+      "term": {
+        "text": "step-up transformer",
+        "inline": []
+      },
+      "definition": {
+        "text": "a transformer that increases voltage",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42414/index.cnxml",
+        "locator": "CNXML module m42414, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-15",
+      "term": {
+        "text": "step-down transformer",
+        "inline": []
+      },
+      "definition": {
+        "text": "a transformer that decreases voltage",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42414/index.cnxml",
+        "locator": "CNXML module m42414, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-16",
+      "term": {
+        "text": "thermal hazard",
+        "inline": []
+      },
+      "definition": {
+        "text": "the term for electrical hazards due to overheating",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42416/index.cnxml",
+        "locator": "CNXML module m42416, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-17",
+      "term": {
+        "text": "shock hazard",
+        "inline": []
+      },
+      "definition": {
+        "text": "the term for electrical hazards due to current passing through a human",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42416/index.cnxml",
+        "locator": "CNXML module m42416, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-18",
+      "term": {
+        "text": "three-wire system",
+        "inline": []
+      },
+      "definition": {
+        "text": "the wiring system used at present for safety reasons, with live, neutral, and ground wires",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42416/index.cnxml",
+        "locator": "CNXML module m42416, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-19",
+      "term": {
+        "text": "inductance",
+        "inline": []
+      },
+      "definition": {
+        "text": "a property of a device describing how efficient it is at inducing emf in another device",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42420/index.cnxml",
+        "locator": "CNXML module m42420, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-20",
+      "term": {
+        "text": "mutual inductance",
+        "inline": []
+      },
+      "definition": {
+        "text": "how effective a pair of devices are at inducing emfs in each other",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42420/index.cnxml",
+        "locator": "CNXML module m42420, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-21",
+      "term": {
+        "text": "henry",
+        "inline": []
+      },
+      "definition": {
+        "text": "the unit of inductance; 1H=1Ω⋅s",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42420/index.cnxml",
+        "locator": "CNXML module m42420, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-22",
+      "term": {
+        "text": "self-inductance",
+        "inline": []
+      },
+      "definition": {
+        "text": "how effective a device is at inducing emf in itself",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42420/index.cnxml",
+        "locator": "CNXML module m42420, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-23",
+      "term": {
+        "text": "inductor",
+        "inline": []
+      },
+      "definition": {
+        "text": "a device that exhibits significant self-inductance",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42420/index.cnxml",
+        "locator": "CNXML module m42420, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-24",
+      "term": {
+        "text": "energy stored in an inductor",
+        "inline": []
+      },
+      "definition": {
+        "text": "self-explanatory; calculated by Eind=12LI2",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42420/index.cnxml",
+        "locator": "CNXML module m42420, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-25",
+      "term": {
+        "text": "characteristic time constant",
+        "inline": []
+      },
+      "definition": {
+        "text": "denoted by τ, of a particular series RL circuit is calculated by τ=LR, where L is the inductance and R is the resistance",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42425/index.cnxml",
+        "locator": "CNXML module m42425, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-26",
+      "term": {
+        "text": "inductive reactance",
+        "inline": []
+      },
+      "definition": {
+        "text": "the opposition of an inductor to a change in current; calculated by XL=2πfL",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42427/index.cnxml",
+        "locator": "CNXML module m42427, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-27",
+      "term": {
+        "text": "capacitive reactance",
+        "inline": []
+      },
+      "definition": {
+        "text": "the opposition of a capacitor to a change in current; calculated by XC=12πfC",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42427/index.cnxml",
+        "locator": "CNXML module m42427, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-28",
+      "term": {
+        "text": "impedance",
+        "inline": []
+      },
+      "definition": {
+        "text": "the AC analogue to resistance in a DC circuit; it is the combined effect of resistance, inductive reactance, and capacitive reactance in the form Z=R2+(XL−XC)2",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42431/index.cnxml",
+        "locator": "CNXML module m42431, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-29",
+      "term": {
+        "text": "resonant frequency",
+        "inline": []
+      },
+      "definition": {
+        "text": "the frequency at which the impedance in a circuit is at a minimum, and also the frequency at which the circuit would oscillate if not driven by a voltage source; calculated by f0=12πLC",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42431/index.cnxml",
+        "locator": "CNXML module m42431, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-30",
+      "term": {
+        "text": "phase angle",
+        "inline": []
+      },
+      "definition": {
+        "text": "denoted by ϕ, the amount by which the voltage and current are out of phase with each other in a circuit",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42431/index.cnxml",
+        "locator": "CNXML module m42431, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-31",
+      "term": {
+        "text": "power factor",
+        "inline": []
+      },
+      "definition": {
+        "text": "the amount by which the power delivered in the circuit is less than the theoretical maximum of the circuit due to voltage and current being out of phase; calculated by cosϕ",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42431/index.cnxml",
+        "locator": "CNXML module m42431, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_links": [],
+  "exam_traps": [
+    {
+      "id": "trap-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": "A generator and a motor are the same device.",
+      "correction": "A generator turns motion into current, and a motor turns current into motion. The same coil can do either, depending on what drives it.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "Transformers work on direct current.",
+      "correction": "They work on alternating current, because a changing current is what gives a changing flux and therefore an induced voltage.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-4",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "exam_recall_checks": [],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Electromagnetic Induction, AC Circuits, and Electrical Technologies', modules m42389, m42390, m42392, m42400, m42404, m42408, m42411, m42414, m42416, m42420, m42425, m42427, m42431",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "exam": "JAMB",
+  "subject": "physics",
+  "topic_slug": "pressure",
+  "topic_name": "",
+  "subtopic_slugs": [],
+  "sections": [
+    {
+      "chapter_id": "phy_fluid_statics",
+      "chapter_title": "Fluid Statics",
+      "section_id": "sec-1",
+      "title": "Introduction to Fluid Statics",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "State the common phases of matter."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_statics",
+      "chapter_title": "Fluid Statics",
+      "section_id": "sec-10",
+      "title": "Pressures in the Body",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Explain the concept of pressure the in human body.",
+        "Explain systolic and diastolic blood pressures.",
+        "Describe pressures in the eye, lungs, spinal column, bladder, and skeletal system."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_statics",
+      "chapter_title": "Fluid Statics",
+      "section_id": "sec-2",
+      "title": "What Is a Fluid?",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "State the common phases of matter.",
+        "Explain the physical characteristics of solids, liquids, and gases.",
+        "Describe the arrangement of atoms in solids, liquids, and gases."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_statics",
+      "chapter_title": "Fluid Statics",
+      "section_id": "sec-3",
+      "title": "Density",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define density.",
+        "Calculate the mass of a reservoir from its density.",
+        "Compare and contrast the densities of various substances."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_statics",
+      "chapter_title": "Fluid Statics",
+      "section_id": "sec-4",
+      "title": "Pressure",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define pressure.",
+        "Explain the relationship between pressure and force.",
+        "Calculate force given pressure and area."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_statics",
+      "chapter_title": "Fluid Statics",
+      "section_id": "sec-5",
+      "title": "Variation of Pressure with Depth in a Fluid",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define pressure in terms of weight.",
+        "Explain the variation of pressure with depth in a fluid.",
+        "Calculate density given pressure and altitude."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_statics",
+      "chapter_title": "Fluid Statics",
+      "section_id": "sec-6",
+      "title": "Pascal’s Principle",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define pressure.",
+        "State Pascal’s principle.",
+        "Understand applications of Pascal’s principle.",
+        "Derive relationships between forces in a hydraulic system."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_statics",
+      "chapter_title": "Fluid Statics",
+      "section_id": "sec-7",
+      "title": "Gauge Pressure, Absolute Pressure, and Pressure Measurement",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define gauge pressure and absolute pressure.",
+        "Understand the working of aneroid and open-tube barometers."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_statics",
+      "chapter_title": "Fluid Statics",
+      "section_id": "sec-8",
+      "title": "Archimedes’ Principle",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define buoyant force.",
+        "State Archimedes’ principle.",
+        "Understand why objects float or sink.",
+        "Understand the relationship between density and Archimedes’ principle."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_statics",
+      "chapter_title": "Fluid Statics",
+      "section_id": "sec-9",
+      "title": "Cohesion and Adhesion in Liquids: Surface Tension and Capillary Action",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Understand cohesive and adhesive forces.",
+        "Define surface tension.",
+        "Understand capillary action."
+      ],
+      "subtopic_slug": null
+    }
+  ],
+  "traps": [
+    {
+      "id": "phy_fluid_statics:trap-1",
+      "chapter_id": "phy_fluid_statics",
+      "status": "candidate",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "The pressure in a liquid is the same at every depth.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It grows with depth, so the pressure at the bottom of a container is greater than at the top.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_fluid_statics:trap-2",
+      "chapter_id": "phy_fluid_statics",
+      "status": "candidate",
+      "section_id": "sec-3",
+      "misconception": {
+        "text": "An object floats or sinks according to whether it is lighter or heavier than the same volume of water.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It floats or sinks according to its density compared with the fluid, not its weight compared with the fluid.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "section_id": "sec-3",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "recall_checks": [],
+  "exercises": [
+    "ex-sec-10-01",
+    "ex-sec-10-02",
+    "ex-sec-10-03",
+    "ex-sec-10-04",
+    "ex-sec-10-05",
+    "ex-sec-10-06",
+    "ex-sec-10-07",
+    "ex-sec-10-08",
+    "ex-sec-10-09",
+    "ex-sec-3-01",
+    "ex-sec-3-02",
+    "ex-sec-3-03",
+    "ex-sec-3-04",
+    "ex-sec-3-05",
+    "ex-sec-3-06",
+    "ex-sec-3-07",
+    "ex-sec-3-08",
+    "ex-sec-4-01",
+    "ex-sec-5-01",
+    "ex-sec-5-02",
+    "ex-sec-5-03",
+    "ex-sec-5-04",
+    "ex-sec-6-01",
+    "ex-sec-6-02",
+    "ex-sec-7-01",
+    "ex-sec-7-02",
+    "ex-sec-7-03",
+    "ex-sec-8-01",
+    "ex-sec-8-02",
+    "ex-sec-8-03",
+    "ex-sec-8-04",
+    "ex-sec-8-05",
+    "ex-sec-8-06",
+    "ex-sec-8-07",
+    "ex-sec-8-08",
+    "ex-sec-9-01",
+    "ex-sec-9-02",
+    "ex-sec-9-03",
+    "ex-sec-9-04",
+    "ex-sec-9-05",
+    "ex-sec-9-06"
+  ],
+  "past_papers": [],
+  "paper_note": "No past paper for this topic yet.",
+  "coverage": {
+    "sections": 10,
+    "traps": 2,
+    "recall_checks": 0,
+    "exercises": 41,
+    "past_papers": 0,
+    "gaps": [
+      "recall_checks",
+      "past_papers"
+    ]
+  }
+}

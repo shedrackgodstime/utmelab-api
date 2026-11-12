@@ -1,0 +1,393 @@
+{
+  "exam": "WAEC",
+  "subject": "physics",
+  "topic_slug": "waec-electromagnetic-field",
+  "topic_name": "",
+  "subtopic_slugs": [],
+  "sections": [
+    {
+      "chapter_id": "phy_em_induction_and_ac",
+      "chapter_title": "Electromagnetic Induction, AC Circuits, and Electrical Technologies",
+      "section_id": "sec-1",
+      "title": "Introduction to Electromagnetic Induction, AC Circuits and Electrical Technologies",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate the flux of a uniform magnetic field through a loop of arbitrary orientation."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_em_induction_and_ac",
+      "chapter_title": "Electromagnetic Induction, AC Circuits, and Electrical Technologies",
+      "section_id": "sec-10",
+      "title": "Inductance",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate the inductance of an inductor.",
+        "Calculate the energy stored in an inductor.",
+        "Calculate the emf generated in an inductor."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_em_induction_and_ac",
+      "chapter_title": "Electromagnetic Induction, AC Circuits, and Electrical Technologies",
+      "section_id": "sec-11",
+      "title": "RL Circuits",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate the current in an RL circuit after a specified number of characteristic time steps.",
+        "Calculate the characteristic time of an RL circuit.",
+        "Sketch the current in an RL circuit over time."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_em_induction_and_ac",
+      "chapter_title": "Electromagnetic Induction, AC Circuits, and Electrical Technologies",
+      "section_id": "sec-12",
+      "title": "Reactance, Inductive and Capacitive",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Sketch voltage and current versus time in simple inductive, capacitive, and resistive circuits.",
+        "Calculate inductive and capacitive reactance.",
+        "Calculate current and/or voltage in simple inductive, capacitive, and resistive circuits."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_em_induction_and_ac",
+      "chapter_title": "Electromagnetic Induction, AC Circuits, and Electrical Technologies",
+      "section_id": "sec-13",
+      "title": "RLC Series AC Circuits",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate the impedance, phase angle, resonant frequency, power, power factor, voltage, and/or current in a RLC series circuit.",
+        "Draw the circuit diagram for an RLC series circuit.",
+        "Explain the significance of the resonant frequency."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_em_induction_and_ac",
+      "chapter_title": "Electromagnetic Induction, AC Circuits, and Electrical Technologies",
+      "section_id": "sec-2",
+      "title": "Induced Emf and Magnetic Flux",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate the flux of a uniform magnetic field through a loop of arbitrary orientation.",
+        "Describe methods to produce an electromotive force (emf) with a magnetic field or magnet and a loop of wire."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_em_induction_and_ac",
+      "chapter_title": "Electromagnetic Induction, AC Circuits, and Electrical Technologies",
+      "section_id": "sec-3",
+      "title": "Faraday’s Law of Induction: Lenz’s Law",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate emf, current, and magnetic fields using Faraday’s Law.",
+        "Explain the physical results of Lenz’s Law"
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_em_induction_and_ac",
+      "chapter_title": "Electromagnetic Induction, AC Circuits, and Electrical Technologies",
+      "section_id": "sec-4",
+      "title": "Motional Emf",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate emf, force, magnetic field, and work due to the motion of an object in a magnetic field."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_em_induction_and_ac",
+      "chapter_title": "Electromagnetic Induction, AC Circuits, and Electrical Technologies",
+      "section_id": "sec-5",
+      "title": "Eddy Currents and Magnetic Damping",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Explain the magnitude and direction of an induced eddy current, and the effect this will have on the object it is induced in.",
+        "Describe several applications of magnetic damping."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_em_induction_and_ac",
+      "chapter_title": "Electromagnetic Induction, AC Circuits, and Electrical Technologies",
+      "section_id": "sec-6",
+      "title": "Electric Generators",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate the emf induced in a generator.",
+        "Calculate the peak emf which can be induced in a particular generator system."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_em_induction_and_ac",
+      "chapter_title": "Electromagnetic Induction, AC Circuits, and Electrical Technologies",
+      "section_id": "sec-7",
+      "title": "Back Emf",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Explain what back emf is and how it is induced."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_em_induction_and_ac",
+      "chapter_title": "Electromagnetic Induction, AC Circuits, and Electrical Technologies",
+      "section_id": "sec-8",
+      "title": "Transformers",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Explain how a transformer works.",
+        "Calculate voltage, current, and/or number of turns given the other quantities."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_em_induction_and_ac",
+      "chapter_title": "Electromagnetic Induction, AC Circuits, and Electrical Technologies",
+      "section_id": "sec-9",
+      "title": "Electrical Safety: Systems and Devices",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Explain how various modern safety features in electric circuits work, with an emphasis on how induction is employed."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_magnetism",
+      "chapter_title": "Magnetism",
+      "section_id": "sec-1",
+      "title": "Introduction to Magnetism",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe the difference between the north and south poles of a magnet."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_magnetism",
+      "chapter_title": "Magnetism",
+      "section_id": "sec-10",
+      "title": "Magnetic Fields Produced by Currents: Ampere’s Law",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate current that produces a magnetic field.",
+        "Use the right hand rule 2 to determine the direction of current or the direction of magnetic field loops."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_magnetism",
+      "chapter_title": "Magnetism",
+      "section_id": "sec-11",
+      "title": "Magnetic Force between Two Parallel Conductors",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe the effects of the magnetic force between two conductors.",
+        "Calculate the force between two parallel conductors."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_magnetism",
+      "chapter_title": "Magnetism",
+      "section_id": "sec-12",
+      "title": "More Applications of Magnetism",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe some applications of magnetism."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_magnetism",
+      "chapter_title": "Magnetism",
+      "section_id": "sec-2",
+      "title": "Magnets",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe the difference between the north and south poles of a magnet.",
+        "Describe how magnetic poles interact with each other."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_magnetism",
+      "chapter_title": "Magnetism",
+      "section_id": "sec-3",
+      "title": "Ferromagnets and Electromagnets",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define ferromagnet.",
+        "Describe the role of magnetic domains in magnetization.",
+        "Explain the significance of the Curie temperature.",
+        "Describe the relationship between electricity and magnetism."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_magnetism",
+      "chapter_title": "Magnetism",
+      "section_id": "sec-4",
+      "title": "Magnetic Fields and Magnetic Field Lines",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define magnetic field and describe the magnetic field lines of various magnetic fields."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_magnetism",
+      "chapter_title": "Magnetism",
+      "section_id": "sec-5",
+      "title": "Magnetic Field Strength: Force on a Moving Charge in a Magnetic Field",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe the effects of magnetic fields on moving charges.",
+        "Use the right hand rule 1 to determine the velocity of a charge, the direction of the magnetic field, and the direction of the magnetic force on a moving charge.",
+        "Calculate the magnetic force on a moving charge."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_magnetism",
+      "chapter_title": "Magnetism",
+      "section_id": "sec-6",
+      "title": "Force on a Moving Charge in a Magnetic Field: Examples and Applications",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe the effects of a magnetic field on a moving charge.",
+        "Calculate the radius of curvature of the path of a charge that is moving in a magnetic field."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_magnetism",
+      "chapter_title": "Magnetism",
+      "section_id": "sec-7",
+      "title": "The Hall Effect",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe the Hall effect.",
+        "Calculate the Hall emf across a current-carrying conductor."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_magnetism",
+      "chapter_title": "Magnetism",
+      "section_id": "sec-8",
+      "title": "Magnetic Force on a Current-Carrying Conductor",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe the effects of a magnetic force on a current-carrying conductor.",
+        "Calculate the magnetic force on a current-carrying conductor."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_magnetism",
+      "chapter_title": "Magnetism",
+      "section_id": "sec-9",
+      "title": "Torque on a Current Loop: Motors and Meters",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe how motors and meters work in terms of torque on a current loop.",
+        "Calculate the torque on a current-carrying loop in a magnetic field."
+      ],
+      "subtopic_slug": null
+    }
+  ],
+  "traps": [],
+  "recall_checks": [],
+  "exercises": [
+    "ex-sec-10-01",
+    "ex-sec-10-02",
+    "ex-sec-10-03",
+    "ex-sec-10-04",
+    "ex-sec-10-05",
+    "ex-sec-11-01",
+    "ex-sec-11-02",
+    "ex-sec-11-03",
+    "ex-sec-11-04",
+    "ex-sec-12-01",
+    "ex-sec-12-02",
+    "ex-sec-12-03",
+    "ex-sec-12-04",
+    "ex-sec-12-05",
+    "ex-sec-12-06",
+    "ex-sec-12-07",
+    "ex-sec-12-08",
+    "ex-sec-12-09",
+    "ex-sec-12-10",
+    "ex-sec-12-11",
+    "ex-sec-12-12",
+    "ex-sec-12-13",
+    "ex-sec-12-14",
+    "ex-sec-12-15",
+    "ex-sec-12-16",
+    "ex-sec-12-17",
+    "ex-sec-13-01",
+    "ex-sec-13-02",
+    "ex-sec-13-03",
+    "ex-sec-13-04",
+    "ex-sec-13-05",
+    "ex-sec-13-06",
+    "ex-sec-13-07",
+    "ex-sec-13-08",
+    "ex-sec-2-01",
+    "ex-sec-3-01",
+    "ex-sec-3-02",
+    "ex-sec-3-03",
+    "ex-sec-3-04",
+    "ex-sec-4-01",
+    "ex-sec-4-02",
+    "ex-sec-5-01",
+    "ex-sec-5-02",
+    "ex-sec-5-03",
+    "ex-sec-5-04",
+    "ex-sec-5-05",
+    "ex-sec-5-06",
+    "ex-sec-6-01",
+    "ex-sec-6-02",
+    "ex-sec-6-03",
+    "ex-sec-6-04",
+    "ex-sec-6-05",
+    "ex-sec-6-06",
+    "ex-sec-7-01",
+    "ex-sec-7-02",
+    "ex-sec-7-03",
+    "ex-sec-7-04",
+    "ex-sec-8-01",
+    "ex-sec-8-02",
+    "ex-sec-8-03",
+    "ex-sec-8-04",
+    "ex-sec-8-05",
+    "ex-sec-9-01",
+    "ex-sec-9-02",
+    "ex-sec-9-03",
+    "ex-sec-9-04"
+  ],
+  "past_papers": [],
+  "paper_note": "No past paper for this topic yet.",
+  "coverage": {
+    "sections": 25,
+    "traps": 0,
+    "recall_checks": 0,
+    "exercises": 66,
+    "past_papers": 0,
+    "gaps": [
+      "traps",
+      "recall_checks",
+      "past_papers"
+    ]
+  }
+}

@@ -45,6 +45,109 @@
       "subtopic_slug": "waec-simple-ideas-of-circular-motion"
     },
     {
+      "chapter_id": "phy_fluid_dynamics",
+      "chapter_title": "Fluid Dynamics",
+      "section_id": "sec-1",
+      "title": "Introduction to Fluid Dynamics and Its Biological and Medical Applications",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate flow rate."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_dynamics",
+      "chapter_title": "Fluid Dynamics",
+      "section_id": "sec-2",
+      "title": "Flow Rate and Its Relation to Velocity",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate flow rate.",
+        "Define units of volume.",
+        "Describe incompressible fluids.",
+        "Explain the consequences of the equation of continuity."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_dynamics",
+      "chapter_title": "Fluid Dynamics",
+      "section_id": "sec-3",
+      "title": "Bernoulli’s Equation",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Explain the terms in Bernoulli’s equation.",
+        "Explain how Bernoulli’s equation is related to conservation of energy.",
+        "Explain how to derive Bernoulli’s principle from Bernoulli’s equation.",
+        "Calculate with Bernoulli’s principle.",
+        "List some applications of Bernoulli’s principle."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_dynamics",
+      "chapter_title": "Fluid Dynamics",
+      "section_id": "sec-4",
+      "title": "The Most General Applications of Bernoulli’s Equation",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate using Torricelli’s theorem.",
+        "Calculate power in fluid flow."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_dynamics",
+      "chapter_title": "Fluid Dynamics",
+      "section_id": "sec-5",
+      "title": "Viscosity and Laminar Flow; Poiseuille’s Law",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define laminar flow and turbulent flow.",
+        "Explain what viscosity is.",
+        "Calculate flow and resistance with Poiseuille’s law.",
+        "Explain how pressure drops due to resistance."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_dynamics",
+      "chapter_title": "Fluid Dynamics",
+      "section_id": "sec-6",
+      "title": "The Onset of Turbulence",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate Reynolds number.",
+        "Use the Reynolds number for a system to determine whether it is laminar or turbulent."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_dynamics",
+      "chapter_title": "Fluid Dynamics",
+      "section_id": "sec-7",
+      "title": "Motion of an Object in a Viscous Fluid",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate the Reynolds number for an object moving through a fluid.",
+        "Explain whether the Reynolds number indicates laminar or turbulent flow.",
+        "Describe the conditions under which an object has a terminal speed."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_fluid_dynamics",
+      "chapter_title": "Fluid Dynamics",
+      "section_id": "sec-8",
+      "title": "Molecular Transport Phenomena: Diffusion, Osmosis, and Related Processes",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define diffusion, osmosis, dialysis, and active transport.",
+        "Calculate diffusion rates."
+      ],
+      "subtopic_slug": null
+    },
+    {
       "chapter_id": "phy_friction_drag_and_elasticity",
       "chapter_title": "Friction, Drag and Elasticity",
       "section_id": "sec-2",
@@ -55,6 +158,108 @@
         "Use the coefficient of friction with the normal force."
       ],
       "subtopic_slug": "waec-solid-friction-2"
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-1",
+      "title": "Introduction to Rotational Motion and Angular Momentum",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe uniform circular motion."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-2",
+      "title": "Angular Acceleration",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe uniform circular motion.",
+        "Explain non-uniform circular motion.",
+        "Calculate angular acceleration of an object.",
+        "Observe the link between linear and angular acceleration."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-3",
+      "title": "Kinematics of Rotational Motion",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Observe the kinematics of rotational motion.",
+        "Derive rotational kinematic equations.",
+        "Evaluate problem solving strategies for rotational kinematics."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-4",
+      "title": "Dynamics of Rotational Motion: Rotational Inertia",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Understand the relationship between force, mass and acceleration.",
+        "Study the turning effect of force.",
+        "Study the analogy between force and torque, mass and moment of inertia, and linear acceleration and angular acceleration."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-5",
+      "title": "Rotational Kinetic Energy: Work and Energy Revisited",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Derive the equation for rotational work.",
+        "Calculate rotational kinetic energy.",
+        "Demonstrate the Law of Conservation of Energy."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-6",
+      "title": "Angular Momentum and Its Conservation",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Understand the analogy between angular momentum and linear momentum.",
+        "Observe the relationship between torque and angular momentum.",
+        "Apply the law of conservation of angular momentum."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-7",
+      "title": "Collisions of Extended Bodies in Two Dimensions",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Observe collisions of extended bodies in two dimensions.",
+        "Examine collision at the point of percussion."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-8",
+      "title": "Gyroscopic Effects: Vector Aspects of Angular Momentum",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe the right-hand rule to find the direction of angular velocity, momentum, and torque.",
+        "Explain the gyroscopic effect.",
+        "Study how Earth acts like a gigantic gyroscope."
+      ],
+      "subtopic_slug": null
     }
   ],
   "traps": [
@@ -128,6 +333,56 @@
       },
       "paper_evidence": {
         "check_id": "rc-9",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_fluid_dynamics:trap-1",
+      "chapter_id": "phy_fluid_dynamics",
+      "status": "candidate",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "A fluid flowing at a steady rate has no acceleration.",
+        "inline": []
+      },
+      "correction": {
+        "text": "A change in speed or direction is an acceleration, so the fluid is accelerating even at a steady rate.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_fluid_dynamics:trap-2",
+      "chapter_id": "phy_fluid_dynamics",
+      "status": "candidate",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "The Bernoulli effect explains why a curve ball curves.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It explains the pressure difference between the two sides of a spinning ball, and the deflection of the air around it.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "section_id": "sec-4",
         "exam": "WAEC",
         "year": null,
         "source": "authored"
@@ -381,7 +636,38 @@
     "ex-sec-4-02",
     "ex-sec-4-03",
     "ex-sec-4-04",
-    "ex-sec-4-05"
+    "ex-sec-4-05",
+    "ex-sec-4-06",
+    "ex-sec-4-07",
+    "ex-sec-4-08",
+    "ex-sec-4-09",
+    "ex-sec-4-10",
+    "ex-sec-5-01",
+    "ex-sec-5-02",
+    "ex-sec-5-03",
+    "ex-sec-5-04",
+    "ex-sec-5-05",
+    "ex-sec-5-06",
+    "ex-sec-5-07",
+    "ex-sec-5-08",
+    "ex-sec-5-09",
+    "ex-sec-6-01",
+    "ex-sec-6-02",
+    "ex-sec-6-03",
+    "ex-sec-6-04",
+    "ex-sec-6-05",
+    "ex-sec-6-06",
+    "ex-sec-6-07",
+    "ex-sec-6-08",
+    "ex-sec-7-01",
+    "ex-sec-7-02",
+    "ex-sec-7-03",
+    "ex-sec-7-04",
+    "ex-sec-7-05",
+    "ex-sec-7-06",
+    "ex-sec-7-07",
+    "ex-sec-8-01",
+    "ex-sec-8-02"
   ],
   "past_papers": [
     {
@@ -395,10 +681,10 @@
   ],
   "paper_note": "1 of 1 papers are self-published claims, labelled as such, and the rest are confirmed.",
   "coverage": {
-    "sections": 4,
-    "traps": 4,
+    "sections": 20,
+    "traps": 6,
     "recall_checks": 6,
-    "exercises": 20,
+    "exercises": 51,
     "past_papers": 1,
     "gaps": []
   }

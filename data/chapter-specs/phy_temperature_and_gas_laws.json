@@ -1,0 +1,1125 @@
+{
+  "chapter_id": "phy_temperature_and_gas_laws",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Temperature, Kinetic Theory, and the Gas Laws",
+  "book_id": "secondary_physics",
+  "part_id": "part-3",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "facts_inherited": true,
+  "learning_objectives": [
+    {
+      "id": "lo-1",
+      "statement": "Define temperature.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-2",
+      "statement": "Convert temperatures between the Celsius, Fahrenheit, and Kelvin scales.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-3",
+      "statement": "Define thermal equilibrium.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-4",
+      "statement": "State the zeroth law of thermodynamics.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-5",
+      "statement": "Define and describe thermal expansion.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-6",
+      "statement": "Calculate the linear expansion of an object given its initial length, change in temperature, and coefficient of linear expansion.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-7",
+      "statement": "Calculate the volume expansion of an object given its initial volume, change in temperature, and coefficient of volume expansion.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-8",
+      "statement": "Calculate thermal stress on an object given its original volume, temperature change, volume change, and bulk modulus.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-9",
+      "statement": "State the ideal gas law in terms of molecules and in terms of moles.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-10",
+      "statement": "Use the ideal gas law to calculate pressure change, temperature change, volume change, or the number of molecules or moles in a given volume.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-11",
+      "statement": "Use Avogadro’s number to convert between number of molecules and number of moles.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-12",
+      "statement": "Express the ideal gas law in terms of molecular mass and velocity.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-13",
+      "statement": "Define thermal energy.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-14",
+      "statement": "Calculate the kinetic energy of a gas molecule, given its temperature.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-15",
+      "statement": "Describe the relationship between the temperature of a gas and the kinetic energy of atoms and molecules.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-16",
+      "statement": "Describe the distribution of speeds of molecules in a gas.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-17",
+      "statement": "Interpret a phase diagram.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-18",
+      "statement": "State Dalton’s law.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-19",
+      "statement": "Identify and describe the triple point of a gas from its phase diagram.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-20",
+      "statement": "Describe the state of equilibrium between a liquid and a gas, a liquid and a solid, and a gas and a solid.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-21",
+      "statement": "Explain the relationship between vapor pressure of water and the capacity of air to hold water vapor.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-22",
+      "statement": "Explain the relationship between relative humidity and partial pressure of water vapor in the air.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-23",
+      "statement": "Calculate vapor density using vapor pressure.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-24",
+      "statement": "Calculate humidity and dew point.",
+      "bloom_level": "understand"
+    }
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to Temperature, Kinetic Theory, and the Gas Laws",
+      "module": "m42213",
+      "est_minutes": 12,
+      "locator": "CNXML module m42213",
+      "objectives": [
+        "Define temperature."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Define temperature.",
+        "Convert temperatures between the Celsius, Fahrenheit, and Kelvin scales.",
+        "Define thermal equilibrium."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "temperature-and-its-measurement",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "structure-of-matter-and-kinetic-theory",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "gas-laws",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "Temperature",
+      "module": "m42214",
+      "est_minutes": 12,
+      "locator": "CNXML module m42214",
+      "objectives": [
+        "Define temperature.",
+        "Convert temperatures between the Celsius, Fahrenheit, and Kelvin scales.",
+        "Define thermal equilibrium.",
+        "State the zeroth law of thermodynamics."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Temperature is the same thing as heat.",
+          "correction": "Temperature measures how hot a body is, the average kinetic energy of its particles. Heat is the energy that moves because of a temperature difference."
+        }
+      ],
+      "summary": [
+        "Temperature is the quantity measured by a thermometer.",
+        "Temperature is related to the average kinetic energy of atoms and molecules in a system.",
+        "Absolute zero is the temperature at which there is no molecular motion."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "temperature-and-its-measurement",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "structure-of-matter-and-kinetic-theory",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "gas-laws",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-42"
+    },
+    {
+      "id": "sec-3",
+      "title": "Thermal Expansion of Solids and Liquids",
+      "module": "m42215",
+      "est_minutes": 12,
+      "locator": "CNXML module m42215",
+      "objectives": [
+        "Define and describe thermal expansion.",
+        "Calculate the linear expansion of an object given its initial length, change in temperature, and coefficient of linear expansion.",
+        "Calculate the volume expansion of an object given its initial volume, change in temperature, and coefficient of volume expansion.",
+        "Calculate thermal stress on an object given its original volume, temperature change, volume change, and bulk modulus."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Thermal expansion is the increase, or decrease, of the size (length, area, or volume) of a body due to a change in temperature.",
+        "Thermal expansion is large for gases, and relatively small, but not negligible, for liquids and solids.",
+        "Linear thermal expansion is ΔL=αLΔT, where ΔL is the change in length L, ΔT is the change in temperature, and α is the coefficient of linear expansion, which varies slightly with temperature."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "temperature-and-its-measurement",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "structure-of-matter-and-kinetic-theory",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "gas-laws",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-50"
+    },
+    {
+      "id": "sec-4",
+      "title": "The Ideal Gas Law",
+      "module": "m42216",
+      "est_minutes": 12,
+      "locator": "CNXML module m42216",
+      "objectives": [
+        "State the ideal gas law in terms of molecules and in terms of moles.",
+        "Use the ideal gas law to calculate pressure change, temperature change, volume change, or the number of molecules or moles in a given volume.",
+        "Use Avogadro’s number to convert between number of molecules and number of moles."
+      ],
+      "misconceptions": [
+        {
+          "claim": "The pressure of a gas depends only on its temperature.",
+          "correction": "It depends on the temperature and on the volume, which is what the gas laws state."
+        }
+      ],
+      "summary": [
+        "The ideal gas law relates the pressure and volume of a gas to the number of gas molecules and the temperature of the gas.",
+        "The ideal gas law can be written in terms of the number of molecules of gas: PV=NkT, where P is pressure, V is volume, T is temperature, N is number of molecules, and k is the Boltzmann constant k=1.38×10–23 J/K.",
+        "A mole is the number of atoms in a 12-g sample of carbon-12."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "temperature-and-its-measurement",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "structure-of-matter-and-kinetic-theory",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "gas-laws",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-38"
+    },
+    {
+      "id": "sec-5",
+      "title": "Kinetic Theory: Atomic and Molecular Explanation of Pressure and Temperature",
+      "module": "m42217",
+      "est_minutes": 12,
+      "locator": "CNXML module m42217",
+      "objectives": [
+        "Express the ideal gas law in terms of molecular mass and velocity.",
+        "Define thermal energy.",
+        "Calculate the kinetic energy of a gas molecule, given its temperature.",
+        "Describe the relationship between the temperature of a gas and the kinetic energy of atoms and molecules.",
+        "Describe the distribution of speeds of molecules in a gas."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Kinetic theory is the atomistic description of gases as well as liquids and solids.",
+        "Kinetic theory models the properties of matter in terms of continuous random motion of atoms and molecules.",
+        "The ideal gas law can also be expressed as PV = 1 3 Nm v 2 ¯ , where P is the pressure (average force per unit area), V is the volume of gas in the container, N is the number of molecules in the container, m is the mass of a molecule, and v 2 ¯ is the average of the molecular speed squared."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "temperature-and-its-measurement",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "structure-of-matter-and-kinetic-theory",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "gas-laws",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-50"
+    },
+    {
+      "id": "sec-6",
+      "title": "Phase Changes",
+      "module": "m42218",
+      "est_minutes": 12,
+      "locator": "CNXML module m42218",
+      "objectives": [
+        "Interpret a phase diagram.",
+        "State Dalton’s law.",
+        "Identify and describe the triple point of a gas from its phase diagram.",
+        "Describe the state of equilibrium between a liquid and a gas, a liquid and a solid, and a gas and a solid."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Most substances have three distinct phases: gas, liquid, and solid.",
+        "Phase changes among the various phases of matter depend on temperature and pressure.",
+        "The existence of the three phases with respect to pressure and temperature can be described in a phase diagram."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "temperature-and-its-measurement",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "structure-of-matter-and-kinetic-theory",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "gas-laws",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-21"
+    },
+    {
+      "id": "sec-7",
+      "title": "Humidity, Evaporation, and Boiling",
+      "module": "m42219",
+      "est_minutes": 12,
+      "locator": "CNXML module m42219",
+      "objectives": [
+        "Explain the relationship between vapor pressure of water and the capacity of air to hold water vapor.",
+        "Explain the relationship between relative humidity and partial pressure of water vapor in the air.",
+        "Calculate vapor density using vapor pressure.",
+        "Calculate humidity and dew point."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Relative humidity is the fraction of water vapor in a gas compared to the saturation value.",
+        "The saturation vapor density can be determined from the vapor pressure for a given temperature.",
+        "Percent relative humidity is defined to be percent relative humidity = vapor density saturation vapor density × 100 ."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "temperature-and-its-measurement",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "structure-of-matter-and-kinetic-theory",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "gas-laws",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-30"
+    }
+  ],
+  "formula_sheet": [],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "temperature",
+        "inline": []
+      },
+      "definition": {
+        "text": "the quantity measured by a thermometer",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42214/index.cnxml",
+        "locator": "CNXML module m42214, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "Celsius scale",
+        "inline": []
+      },
+      "definition": {
+        "text": "temperature scale in which the freezing point of water is 0ºC and the boiling point of water is 100ºC",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42214/index.cnxml",
+        "locator": "CNXML module m42214, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "degree Celsius",
+        "inline": []
+      },
+      "definition": {
+        "text": "unit on the Celsius temperature scale",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42214/index.cnxml",
+        "locator": "CNXML module m42214, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "Fahrenheit scale",
+        "inline": []
+      },
+      "definition": {
+        "text": "temperature scale in which the freezing point of water is 32ºF and the boiling point of water is 212ºF",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42214/index.cnxml",
+        "locator": "CNXML module m42214, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "degree Fahrenheit",
+        "inline": []
+      },
+      "definition": {
+        "text": "unit on the Fahrenheit temperature scale",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42214/index.cnxml",
+        "locator": "CNXML module m42214, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "Kelvin scale",
+        "inline": []
+      },
+      "definition": {
+        "text": "temperature scale in which 0 K is the lowest possible temperature, representing absolute zero",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42214/index.cnxml",
+        "locator": "CNXML module m42214, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-7",
+      "term": {
+        "text": "absolute zero",
+        "inline": []
+      },
+      "definition": {
+        "text": "the lowest possible temperature; the temperature at which all molecular motion ceases",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42214/index.cnxml",
+        "locator": "CNXML module m42214, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-8",
+      "term": {
+        "text": "thermal equilibrium",
+        "inline": []
+      },
+      "definition": {
+        "text": "the condition in which heat no longer flows between two objects that are in contact; the two objects have the same temperature",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42214/index.cnxml",
+        "locator": "CNXML module m42214, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-9",
+      "term": {
+        "text": "zeroth law of thermodynamics",
+        "inline": []
+      },
+      "definition": {
+        "text": "law that states that if two objects are in thermal equilibrium, and a third object is in thermal equilibrium with one of those objects, it is also in thermal equilibrium with the other object",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42214/index.cnxml",
+        "locator": "CNXML module m42214, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-10",
+      "term": {
+        "text": "thermal expansion",
+        "inline": []
+      },
+      "definition": {
+        "text": "the change in size or volume of an object with change in temperature",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42215/index.cnxml",
+        "locator": "CNXML module m42215, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-11",
+      "term": {
+        "text": "coefficient of linear expansion",
+        "inline": []
+      },
+      "definition": {
+        "text": "α, the change in length, per unit length, per 1ºC change in temperature; a constant used in the calculation of linear expansion; the coefficient of linear expansion depends on the material and to some degree on the temperature of the material",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42215/index.cnxml",
+        "locator": "CNXML module m42215, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-12",
+      "term": {
+        "text": "coefficient of volume expansion",
+        "inline": []
+      },
+      "definition": {
+        "text": "β, the change in volume, per unit volume, per 1ºC change in temperature",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42215/index.cnxml",
+        "locator": "CNXML module m42215, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-13",
+      "term": {
+        "text": "thermal stress",
+        "inline": []
+      },
+      "definition": {
+        "text": "stress caused by thermal expansion or contraction",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42215/index.cnxml",
+        "locator": "CNXML module m42215, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-14",
+      "term": {
+        "text": "ideal gas law",
+        "inline": []
+      },
+      "definition": {
+        "text": "the physical law that relates the pressure and volume of a gas to the number of gas molecules or number of moles of gas and the temperature of the gas",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42216/index.cnxml",
+        "locator": "CNXML module m42216, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-15",
+      "term": {
+        "text": "Boltzmann constant",
+        "inline": []
+      },
+      "definition": {
+        "text": "k , a physical constant that relates energy to temperature; k = 1.38 × 10 –23 J/K",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42216/index.cnxml",
+        "locator": "CNXML module m42216, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-16",
+      "term": {
+        "text": "Avogadro’s number",
+        "inline": []
+      },
+      "definition": {
+        "text": "N A , the number of molecules or atoms in one mole of a substance; N A = 6 . 02 × 10 23 particles/mole",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42216/index.cnxml",
+        "locator": "CNXML module m42216, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-17",
+      "term": {
+        "text": "mole",
+        "inline": []
+      },
+      "definition": {
+        "text": "the quantity of a substance whose mass (in grams) is equal to its molecular mass",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42216/index.cnxml",
+        "locator": "CNXML module m42216, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-18",
+      "term": {
+        "text": "thermal energy",
+        "inline": []
+      },
+      "definition": {
+        "text": "KE ¯ , the average translational kinetic energy of a molecule",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42217/index.cnxml",
+        "locator": "CNXML module m42217, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-19",
+      "term": {
+        "text": "PV diagram",
+        "inline": []
+      },
+      "definition": {
+        "text": "a graph of pressure vs. volume",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42218/index.cnxml",
+        "locator": "CNXML module m42218, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-20",
+      "term": {
+        "text": "critical point",
+        "inline": []
+      },
+      "definition": {
+        "text": "the temperature above which a liquid cannot exist",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42218/index.cnxml",
+        "locator": "CNXML module m42218, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-21",
+      "term": {
+        "text": "critical temperature",
+        "inline": []
+      },
+      "definition": {
+        "text": "the temperature above which a liquid cannot exist",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42218/index.cnxml",
+        "locator": "CNXML module m42218, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-22",
+      "term": {
+        "text": "critical pressure",
+        "inline": []
+      },
+      "definition": {
+        "text": "the minimum pressure needed for a liquid to exist at the critical temperature",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42218/index.cnxml",
+        "locator": "CNXML module m42218, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-23",
+      "term": {
+        "text": "vapor",
+        "inline": []
+      },
+      "definition": {
+        "text": "a gas at a temperature below the boiling temperature",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42218/index.cnxml",
+        "locator": "CNXML module m42218, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-24",
+      "term": {
+        "text": "vapor pressure",
+        "inline": []
+      },
+      "definition": {
+        "text": "the pressure at which a gas coexists with its solid or liquid phase",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42218/index.cnxml",
+        "locator": "CNXML module m42218, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-25",
+      "term": {
+        "text": "phase diagram",
+        "inline": []
+      },
+      "definition": {
+        "text": "a graph of pressure vs. temperature of a particular substance, showing at which pressures and temperatures the three phases of the substance occur",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42218/index.cnxml",
+        "locator": "CNXML module m42218, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-26",
+      "term": {
+        "text": "triple point",
+        "inline": []
+      },
+      "definition": {
+        "text": "the pressure and temperature at which a substance exists in equilibrium as a solid, liquid, and gas",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42218/index.cnxml",
+        "locator": "CNXML module m42218, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-27",
+      "term": {
+        "text": "sublimation",
+        "inline": []
+      },
+      "definition": {
+        "text": "the phase change from solid to gas",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42218/index.cnxml",
+        "locator": "CNXML module m42218, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-28",
+      "term": {
+        "text": "partial pressure",
+        "inline": []
+      },
+      "definition": {
+        "text": "the pressure a gas would create if it occupied the total volume of space available",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42218/index.cnxml",
+        "locator": "CNXML module m42218, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-29",
+      "term": {
+        "text": "Dalton’s law of partial pressures",
+        "inline": []
+      },
+      "definition": {
+        "text": "the physical law that states that the total pressure of a gas is the sum of partial pressures of the component gases",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42218/index.cnxml",
+        "locator": "CNXML module m42218, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-30",
+      "term": {
+        "text": "dew point",
+        "inline": []
+      },
+      "definition": {
+        "text": "the temperature at which relative humidity is 100%; the temperature at which water starts to condense out of the air",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42219/index.cnxml",
+        "locator": "CNXML module m42219, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-31",
+      "term": {
+        "text": "saturation",
+        "inline": []
+      },
+      "definition": {
+        "text": "the condition of 100% relative humidity",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42219/index.cnxml",
+        "locator": "CNXML module m42219, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-32",
+      "term": {
+        "text": "percent relative humidity",
+        "inline": []
+      },
+      "definition": {
+        "text": "the ratio of vapor density to saturation vapor density",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42219/index.cnxml",
+        "locator": "CNXML module m42219, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-33",
+      "term": {
+        "text": "relative humidity",
+        "inline": []
+      },
+      "definition": {
+        "text": "the amount of water in the air relative to the maximum amount the air can hold",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42219/index.cnxml",
+        "locator": "CNXML module m42219, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_links": [],
+  "exam_traps": [
+    {
+      "id": "trap-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": "Temperature is the same thing as heat.",
+      "correction": "Temperature measures how hot a body is, the average kinetic energy of its particles. Heat is the energy that moves because of a temperature difference.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "The pressure of a gas depends only on its temperature.",
+      "correction": "It depends on the temperature and on the volume, which is what the gas laws state.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-4",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "exam_recall_checks": [],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Temperature, Kinetic Theory, and the Gas Laws', modules m42213, m42214, m42215, m42216, m42217, m42218, m42219",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

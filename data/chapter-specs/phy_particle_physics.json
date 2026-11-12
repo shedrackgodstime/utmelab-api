@@ -1,0 +1,1223 @@
+{
+  "chapter_id": "phy_particle_physics",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Particle Physics",
+  "book_id": "secondary_physics",
+  "part_id": "part-6",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "facts_inherited": true,
+  "learning_objectives": [
+    {
+      "id": "lo-1",
+      "statement": "Define Yukawa particle.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-2",
+      "statement": "State the Heisenberg uncertainty principle.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-3",
+      "statement": "Describe pion.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-4",
+      "statement": "Estimate the mass of a pion.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-5",
+      "statement": "Explain meson.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-6",
+      "statement": "State the four basic forces.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-7",
+      "statement": "Explain the Feynman diagram for the exchange of a virtual photon between two positive charges.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-8",
+      "statement": "Define QED.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-9",
+      "statement": "Describe the Feynman diagram for the exchange of a between a proton and a neutron.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-10",
+      "statement": "State the principle of a cyclotron.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-11",
+      "statement": "Explain the principle of a synchrotron.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-12",
+      "statement": "Describe the voltage needed by an accelerator between accelerating tubes.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-13",
+      "statement": "State Fermilab’s accelerator principle.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-14",
+      "statement": "Define matter and antimatter.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-15",
+      "statement": "Outline the differences between hadrons and leptons.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-16",
+      "statement": "State the differences between mesons and baryons.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-17",
+      "statement": "Define fundamental particle.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-18",
+      "statement": "Describe quark and antiquark.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-19",
+      "statement": "List the flavors of quark.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-20",
+      "statement": "Outline the quark composition of hadrons.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-21",
+      "statement": "Determine quantum numbers from quark composition.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-22",
+      "statement": "State the grand unified theory.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-23",
+      "statement": "Explain the electroweak theory.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-24",
+      "statement": "Define gluons.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-25",
+      "statement": "Describe the principle of quantum chromodynamics.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-26",
+      "statement": "Define the standard model.",
+      "bloom_level": "understand"
+    }
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to Particle Physics",
+      "module": "m42667",
+      "est_minutes": 12,
+      "locator": "CNXML module m42667",
+      "objectives": [
+        "Define Yukawa particle."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Define Yukawa particle.",
+        "State the Heisenberg uncertainty principle.",
+        "Describe pion."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "The Yukawa Particle and the Heisenberg Uncertainty Principle Revisited",
+      "module": "m42669",
+      "est_minutes": 12,
+      "locator": "CNXML module m42669",
+      "objectives": [
+        "Define Yukawa particle.",
+        "State the Heisenberg uncertainty principle.",
+        "Describe pion.",
+        "Estimate the mass of a pion.",
+        "Explain meson."
+      ],
+      "misconceptions": [
+        {
+          "claim": "The standard model explains every particle there is.",
+          "correction": "It explains the particles we have found so far. Gravity is not in it, and the matter and antimatter imbalance is not explained either."
+        }
+      ],
+      "summary": [
+        "Define Yukawa particle.",
+        "State the Heisenberg uncertainty principle.",
+        "Describe pion."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-23"
+    },
+    {
+      "id": "sec-3",
+      "title": "The Four Basic Forces",
+      "module": "m42671",
+      "est_minutes": 12,
+      "locator": "CNXML module m42671",
+      "objectives": [
+        "State the four basic forces.",
+        "Explain the Feynman diagram for the exchange of a virtual photon between two positive charges.",
+        "Define QED.",
+        "Describe the Feynman diagram for the exchange of a between a proton and a neutron."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Define Yukawa particle.",
+        "State the Heisenberg uncertainty principle.",
+        "Describe pion."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-15"
+    },
+    {
+      "id": "sec-4",
+      "title": "Accelerators Create Matter from Energy",
+      "module": "m42718",
+      "est_minutes": 12,
+      "locator": "CNXML module m42718",
+      "objectives": [
+        "State the principle of a cyclotron.",
+        "Explain the principle of a synchrotron.",
+        "Describe the voltage needed by an accelerator between accelerating tubes.",
+        "State Fermilab’s accelerator principle."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Particles and antiparticles are the same thing with the opposite charge.",
+          "correction": "They have the same mass and opposite charge, and when they meet they annihilate into photons."
+        }
+      ],
+      "summary": [
+        "Define Yukawa particle.",
+        "State the Heisenberg uncertainty principle.",
+        "Describe pion."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-23"
+    },
+    {
+      "id": "sec-5",
+      "title": "Particles, Patterns, and Conservation Laws",
+      "module": "m42674",
+      "est_minutes": 12,
+      "locator": "CNXML module m42674",
+      "objectives": [
+        "Define matter and antimatter.",
+        "Outline the differences between hadrons and leptons.",
+        "State the differences between mesons and baryons."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Define Yukawa particle.",
+        "State the Heisenberg uncertainty principle.",
+        "Describe pion."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-34"
+    },
+    {
+      "id": "sec-6",
+      "title": "Quarks: Is That All There Is?",
+      "module": "m42678",
+      "est_minutes": 12,
+      "locator": "CNXML module m42678",
+      "objectives": [
+        "Define fundamental particle.",
+        "Describe quark and antiquark.",
+        "List the flavors of quark.",
+        "Outline the quark composition of hadrons.",
+        "Determine quantum numbers from quark composition."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Define Yukawa particle.",
+        "State the Heisenberg uncertainty principle.",
+        "Describe pion."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-43"
+    },
+    {
+      "id": "sec-7",
+      "title": "GUTs: The Unification of Forces",
+      "module": "m42680",
+      "est_minutes": 12,
+      "locator": "CNXML module m42680",
+      "objectives": [
+        "State the grand unified theory.",
+        "Explain the electroweak theory.",
+        "Define gluons.",
+        "Describe the principle of quantum chromodynamics.",
+        "Define the standard model."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Define Yukawa particle.",
+        "State the Heisenberg uncertainty principle.",
+        "Describe pion."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "elementary-modern-physics",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-30"
+    }
+  ],
+  "formula_sheet": [],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "particle physics",
+        "inline": []
+      },
+      "definition": {
+        "text": "the study of and the quest for those truly fundamental particles having no substructure",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42667/index.cnxml",
+        "locator": "CNXML module m42667, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "pion",
+        "inline": []
+      },
+      "definition": {
+        "text": "particle exchanged between nucleons, transmitting the force between them",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42669/index.cnxml",
+        "locator": "CNXML module m42669, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "virtual particles",
+        "inline": []
+      },
+      "definition": {
+        "text": "particles which cannot be directly observed but their effects can be directly observed",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42669/index.cnxml",
+        "locator": "CNXML module m42669, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "meson",
+        "inline": []
+      },
+      "definition": {
+        "text": "particle whose mass is intermediate between the electron and nucleon masses",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42669/index.cnxml",
+        "locator": "CNXML module m42669, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "Feynman diagram",
+        "inline": []
+      },
+      "definition": {
+        "text": "a graph of time versus position that describes the exchange of virtual particles between subatomic particles",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42671/index.cnxml",
+        "locator": "CNXML module m42671, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "gluons",
+        "inline": []
+      },
+      "definition": {
+        "text": "exchange particles, analogous to the exchange of photons that gives rise to the electromagnetic force between two charged particles",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42671/index.cnxml",
+        "locator": "CNXML module m42671, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-7",
+      "term": {
+        "text": "quantum electrodynamics",
+        "inline": []
+      },
+      "definition": {
+        "text": "the theory of electromagnetism on the particle scale",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42671/index.cnxml",
+        "locator": "CNXML module m42671, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-8",
+      "term": {
+        "text": "colliding beams",
+        "inline": []
+      },
+      "definition": {
+        "text": "head-on collisions between particles moving in opposite directions",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42718/index.cnxml",
+        "locator": "CNXML module m42718, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-9",
+      "term": {
+        "text": "cyclotron",
+        "inline": []
+      },
+      "definition": {
+        "text": "accelerator that uses fixed-frequency alternating electric fields and fixed magnets to accelerate particles in a circular spiral path",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42718/index.cnxml",
+        "locator": "CNXML module m42718, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-10",
+      "term": {
+        "text": "linear accelerator",
+        "inline": []
+      },
+      "definition": {
+        "text": "accelerator that accelerates particles in a straight line",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42718/index.cnxml",
+        "locator": "CNXML module m42718, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-11",
+      "term": {
+        "text": "synchrotron",
+        "inline": []
+      },
+      "definition": {
+        "text": "a version of a cyclotron in which the frequency of the alternating voltage and the magnetic field strength are increased as the beam particles are accelerated",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42718/index.cnxml",
+        "locator": "CNXML module m42718, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-12",
+      "term": {
+        "text": "synchrotron radiation",
+        "inline": []
+      },
+      "definition": {
+        "text": "radiation caused by a magnetic field accelerating a charged particle perpendicular to its velocity",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42718/index.cnxml",
+        "locator": "CNXML module m42718, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-13",
+      "term": {
+        "text": "Van de Graaff",
+        "inline": []
+      },
+      "definition": {
+        "text": "early accelerator: simple, large-scale version of the electron gun",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42718/index.cnxml",
+        "locator": "CNXML module m42718, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-14",
+      "term": {
+        "text": "boson",
+        "inline": []
+      },
+      "definition": {
+        "text": "particle with zero or an integer value of intrinsic spin",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42674/index.cnxml",
+        "locator": "CNXML module m42674, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-15",
+      "term": {
+        "text": "baryons",
+        "inline": []
+      },
+      "definition": {
+        "text": "hadrons that always decay to another baryon",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42674/index.cnxml",
+        "locator": "CNXML module m42674, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-16",
+      "term": {
+        "text": "baryon number",
+        "inline": []
+      },
+      "definition": {
+        "text": "a conserved physical quantity that is zero for mesons and leptons and ±1 for baryons and antibaryons, respectively",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42674/index.cnxml",
+        "locator": "CNXML module m42674, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-17",
+      "term": {
+        "text": "conservation of total baryon number",
+        "inline": []
+      },
+      "definition": {
+        "text": "a general rule based on the observation that the total number of nucleons was always conserved in nuclear reactions and decays",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42674/index.cnxml",
+        "locator": "CNXML module m42674, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-18",
+      "term": {
+        "text": "conservation of total electron family number",
+        "inline": []
+      },
+      "definition": {
+        "text": "a general rule stating that the total electron family number stays the same through an interaction",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42674/index.cnxml",
+        "locator": "CNXML module m42674, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-19",
+      "term": {
+        "text": "conservation of total muon family number",
+        "inline": []
+      },
+      "definition": {
+        "text": "a general rule stating that the total muon family number stays the same through an interaction",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42674/index.cnxml",
+        "locator": "CNXML module m42674, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-20",
+      "term": {
+        "text": "electron family number",
+        "inline": []
+      },
+      "definition": {
+        "text": "the number ±1 that is assigned to all members of the electron family, or the number 0 that is assigned to all particles not in the electron family",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42674/index.cnxml",
+        "locator": "CNXML module m42674, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-21",
+      "term": {
+        "text": "fermion",
+        "inline": []
+      },
+      "definition": {
+        "text": "particle with a half-integer value of intrinsic spin",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42674/index.cnxml",
+        "locator": "CNXML module m42674, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-22",
+      "term": {
+        "text": "gauge boson",
+        "inline": []
+      },
+      "definition": {
+        "text": "particle that carries one of the four forces",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42674/index.cnxml",
+        "locator": "CNXML module m42674, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-23",
+      "term": {
+        "text": "hadrons",
+        "inline": []
+      },
+      "definition": {
+        "text": "particles that feel the strong nuclear force",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42674/index.cnxml",
+        "locator": "CNXML module m42674, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-24",
+      "term": {
+        "text": "leptons",
+        "inline": []
+      },
+      "definition": {
+        "text": "particles that do not feel the strong nuclear force",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42674/index.cnxml",
+        "locator": "CNXML module m42674, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-25",
+      "term": {
+        "text": "muon family number",
+        "inline": []
+      },
+      "definition": {
+        "text": "the number ±1 that is assigned to all members of the muon family, or the number 0 that is assigned to all particles not in the muon family",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42674/index.cnxml",
+        "locator": "CNXML module m42674, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-26",
+      "term": {
+        "text": "strangeness",
+        "inline": []
+      },
+      "definition": {
+        "text": "a physical quantity assigned to various particles based on decay systematics",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42674/index.cnxml",
+        "locator": "CNXML module m42674, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-27",
+      "term": {
+        "text": "tau family number",
+        "inline": []
+      },
+      "definition": {
+        "text": "the number ±1 that is assigned to all members of the tau family, or the number 0 that is assigned to all particles not in the tau family",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42674/index.cnxml",
+        "locator": "CNXML module m42674, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-28",
+      "term": {
+        "text": "bottom",
+        "inline": []
+      },
+      "definition": {
+        "text": "a quark flavor",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42678/index.cnxml",
+        "locator": "CNXML module m42678, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-29",
+      "term": {
+        "text": "charm",
+        "inline": []
+      },
+      "definition": {
+        "text": "a quark flavor, which is the counterpart of the strange quark",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42678/index.cnxml",
+        "locator": "CNXML module m42678, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-30",
+      "term": {
+        "text": "color",
+        "inline": []
+      },
+      "definition": {
+        "text": "a quark flavor",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42678/index.cnxml",
+        "locator": "CNXML module m42678, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-31",
+      "term": {
+        "text": "down",
+        "inline": []
+      },
+      "definition": {
+        "text": "the second-lightest of all quarks",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42678/index.cnxml",
+        "locator": "CNXML module m42678, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-32",
+      "term": {
+        "text": "flavors",
+        "inline": []
+      },
+      "definition": {
+        "text": "quark type",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42678/index.cnxml",
+        "locator": "CNXML module m42678, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-33",
+      "term": {
+        "text": "fundamental particle",
+        "inline": []
+      },
+      "definition": {
+        "text": "particle with no substructure",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42678/index.cnxml",
+        "locator": "CNXML module m42678, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-34",
+      "term": {
+        "text": "quantum chromodynamics",
+        "inline": []
+      },
+      "definition": {
+        "text": "quark theory including color",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42678/index.cnxml",
+        "locator": "CNXML module m42678, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-35",
+      "term": {
+        "text": "quark",
+        "inline": []
+      },
+      "definition": {
+        "text": "an elementary particle and a fundamental constituent of matter",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42678/index.cnxml",
+        "locator": "CNXML module m42678, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-36",
+      "term": {
+        "text": "strange",
+        "inline": []
+      },
+      "definition": {
+        "text": "the third lightest of all quarks",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42678/index.cnxml",
+        "locator": "CNXML module m42678, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-37",
+      "term": {
+        "text": "theory of quark confinement",
+        "inline": []
+      },
+      "definition": {
+        "text": "explains how quarks can exist and yet never be isolated or directly observed",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42678/index.cnxml",
+        "locator": "CNXML module m42678, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-38",
+      "term": {
+        "text": "top",
+        "inline": []
+      },
+      "definition": {
+        "text": "a quark flavor",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42678/index.cnxml",
+        "locator": "CNXML module m42678, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-39",
+      "term": {
+        "text": "up",
+        "inline": []
+      },
+      "definition": {
+        "text": "the lightest of all quarks",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42678/index.cnxml",
+        "locator": "CNXML module m42678, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-40",
+      "term": {
+        "text": "electroweak theory",
+        "inline": []
+      },
+      "definition": {
+        "text": "theory showing connections between EM and weak forces",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42680/index.cnxml",
+        "locator": "CNXML module m42680, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-41",
+      "term": {
+        "text": "grand unified theory",
+        "inline": []
+      },
+      "definition": {
+        "text": "theory that shows unification of the strong and electroweak forces",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42680/index.cnxml",
+        "locator": "CNXML module m42680, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-42",
+      "term": {
+        "text": "Higgs boson",
+        "inline": []
+      },
+      "definition": {
+        "text": "a massive particle that, if observed, would give validity to the theory that carrier particles are identical under certain circumstances",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42680/index.cnxml",
+        "locator": "CNXML module m42680, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-43",
+      "term": {
+        "text": "standard model",
+        "inline": []
+      },
+      "definition": {
+        "text": "combination of quantum chromodynamics and electroweak theory",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42680/index.cnxml",
+        "locator": "CNXML module m42680, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-44",
+      "term": {
+        "text": "superstring theory",
+        "inline": []
+      },
+      "definition": {
+        "text": "a theory of everything based on vibrating strings some 10−35m in length",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42680/index.cnxml",
+        "locator": "CNXML module m42680, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_links": [],
+  "exam_traps": [
+    {
+      "id": "trap-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": "The standard model explains every particle there is.",
+      "correction": "It explains the particles we have found so far. Gravity is not in it, and the matter and antimatter imbalance is not explained either.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "Particles and antiparticles are the same thing with the opposite charge.",
+      "correction": "They have the same mass and opposite charge, and when they meet they annihilate into photons.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-4",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "exam_recall_checks": [],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Particle Physics', modules m42667, m42669, m42671, m42718, m42674, m42678, m42680",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

@@ -1,0 +1,1107 @@
+{
+  "chapter_id": "phy_dc_circuits",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Circuits and DC Instruments",
+  "book_id": "secondary_physics",
+  "part_id": "part-4",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "facts_inherited": true,
+  "learning_objectives": [
+    {
+      "id": "lo-1",
+      "statement": "Draw a circuit with resistors in parallel and in series.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-2",
+      "statement": "Calculate the voltage drop of a current across a resistor using Ohm’s law.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-3",
+      "statement": "Contrast the way total resistance is calculated for resistors in series and in parallel.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-4",
+      "statement": "Explain why total resistance of a parallel circuit is less than the smallest resistance of any of the resistors in that circuit.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-5",
+      "statement": "Calculate total resistance of a circuit that contains a mixture of resistors connected in series and in parallel.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-6",
+      "statement": "Compare and contrast the voltage and the electromagnetic force of an electric power source.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-7",
+      "statement": "Describe what happens to the terminal voltage, current, and power delivered to a load as internal resistance of the voltage source increases (due to aging of batteries, for example).",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-8",
+      "statement": "Explain why it is beneficial to use more than one voltage source connected in parallel.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-9",
+      "statement": "Analyze a complex circuit using Kirchhoff’s rules, using the conventions for determining the correct signs of various terms.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-10",
+      "statement": "Explain why a voltmeter must be connected in parallel with the circuit.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-11",
+      "statement": "Draw a diagram showing an ammeter correctly connected in a circuit.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-12",
+      "statement": "Describe how a galvanometer can be used as either a voltmeter or an ammeter.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-13",
+      "statement": "Find the resistance that must be placed in series with a galvanometer to allow it to be used as a voltmeter with a given reading.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-14",
+      "statement": "Explain why measuring the voltage or current in a circuit can never be exact.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-15",
+      "statement": "Explain why a null measurement device is more accurate than a standard voltmeter or ammeter.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-16",
+      "statement": "Demonstrate how a Wheatstone bridge can be used to accurately calculate the resistance in a circuit.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-17",
+      "statement": "Explain the importance of the time constant, τ , and calculate the time constant for a given resistance and capacitance.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-18",
+      "statement": "Explain why batteries in a flashlight gradually lose power and the light dims over time.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-19",
+      "statement": "Describe what happens to a graph of the voltage across a capacitor over time as it charges.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-20",
+      "statement": "Explain how a timing circuit works and list some applications.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-21",
+      "statement": "Calculate the necessary speed of a strobe flash needed to “stop” the movement of an object over a particular length.",
+      "bloom_level": "understand"
+    }
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to Circuits and DC Instruments",
+      "module": "m42354",
+      "est_minutes": 12,
+      "locator": "CNXML module m42354",
+      "objectives": [
+        "Draw a circuit with resistors in parallel and in series."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Draw a circuit with resistors in parallel and in series.",
+        "Calculate the voltage drop of a current across a resistor using Ohm’s law.",
+        "Contrast the way total resistance is calculated for resistors in series and in parallel."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "current-electricity",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "simple-a-c-circuits",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-simple-a-c-circuits",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "Resistors in Series and Parallel",
+      "module": "m42356",
+      "est_minutes": 12,
+      "locator": "CNXML module m42356",
+      "objectives": [
+        "Draw a circuit with resistors in parallel and in series.",
+        "Calculate the voltage drop of a current across a resistor using Ohm’s law.",
+        "Contrast the way total resistance is calculated for resistors in series and in parallel.",
+        "Explain why total resistance of a parallel circuit is less than the smallest resistance of any of the resistors in that circuit.",
+        "Calculate total resistance of a circuit that contains a mixture of resistors connected in series and in parallel."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Current is used up as it goes round a circuit.",
+          "correction": "The same current flows at every point of a series circuit. What is used up is the energy, not the current."
+        }
+      ],
+      "summary": [
+        "The total resistance of an electrical circuit with resistors wired in a series is the sum of the individual resistances: Rs=R1+R2+R3+....",
+        "Each resistor in a series circuit has the same amount of current flowing through it.",
+        "The voltage drop, or power dissipation, across each individual resistor in a series is different, and their combined total adds up to the power source input."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "current-electricity",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "simple-a-c-circuits",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-simple-a-c-circuits",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-97"
+    },
+    {
+      "id": "sec-3",
+      "title": "Electromotive Force: Terminal Voltage",
+      "module": "m42357",
+      "est_minutes": 12,
+      "locator": "CNXML module m42357",
+      "objectives": [
+        "Compare and contrast the voltage and the electromagnetic force of an electric power source.",
+        "Describe what happens to the terminal voltage, current, and power delivered to a load as internal resistance of the voltage source increases (due to aging of batteries, for example).",
+        "Explain why it is beneficial to use more than one voltage source connected in parallel."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "All voltage sources have two fundamental parts—a source of electrical energy that has a characteristic electromotive force (emf), and an internal resistance r.",
+        "The emf is the potential difference of a source when no current is flowing.",
+        "The numerical value of the emf depends on the source of potential difference."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "current-electricity",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "simple-a-c-circuits",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-simple-a-c-circuits",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-78"
+    },
+    {
+      "id": "sec-4",
+      "title": "Kirchhoff’s Rules",
+      "module": "m42359",
+      "est_minutes": 12,
+      "locator": "CNXML module m42359",
+      "objectives": [
+        "Analyze a complex circuit using Kirchhoff’s rules, using the conventions for determining the correct signs of various terms."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Putting a resistor in a series circuit changes the current everywhere.",
+          "correction": "It does, and that is why a series resistor dims the whole circuit rather than one lamp."
+        }
+      ],
+      "summary": [
+        "Kirchhoff’s rules can be used to analyze any circuit, simple or complex.",
+        "Kirchhoff’s first rule—the junction rule: The sum of all currents entering a junction must equal the sum of all currents leaving the junction.",
+        "Kirchhoff’s second rule—the loop rule: The algebraic sum of changes in potential around any closed circuit path (loop) must be zero."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "current-electricity",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "simple-a-c-circuits",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-simple-a-c-circuits",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-37"
+    },
+    {
+      "id": "sec-5",
+      "title": "DC Voltmeters and Ammeters",
+      "module": "m42360",
+      "est_minutes": 12,
+      "locator": "CNXML module m42360",
+      "objectives": [
+        "Explain why a voltmeter must be connected in parallel with the circuit.",
+        "Draw a diagram showing an ammeter correctly connected in a circuit.",
+        "Describe how a galvanometer can be used as either a voltmeter or an ammeter.",
+        "Find the resistance that must be placed in series with a galvanometer to allow it to be used as a voltmeter with a given reading.",
+        "Explain why measuring the voltage or current in a circuit can never be exact."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Voltmeters measure voltage, and ammeters measure current.",
+        "A voltmeter is placed in parallel with the voltage source to receive full voltage and must have a large resistance to limit its effect on the circuit.",
+        "An ammeter is placed in series to get the full current flowing through a branch and must have a small resistance to limit its effect on the circuit."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "current-electricity",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "simple-a-c-circuits",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-simple-a-c-circuits",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-33"
+    },
+    {
+      "id": "sec-6",
+      "title": "Null Measurements",
+      "module": "m42362",
+      "est_minutes": 12,
+      "locator": "CNXML module m42362",
+      "objectives": [
+        "Explain why a null measurement device is more accurate than a standard voltmeter or ammeter.",
+        "Demonstrate how a Wheatstone bridge can be used to accurately calculate the resistance in a circuit."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Null measurement techniques achieve greater accuracy by balancing a circuit so that no current flows through the measuring device.",
+        "One such device, for determining voltage, is a potentiometer.",
+        "Another null measurement device, for determining resistance, is the Wheatstone bridge."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "current-electricity",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "simple-a-c-circuits",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-simple-a-c-circuits",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-24"
+    },
+    {
+      "id": "sec-7",
+      "title": "DC Circuits Containing Resistors and Capacitors",
+      "module": "m42363",
+      "est_minutes": 12,
+      "locator": "CNXML module m42363",
+      "objectives": [
+        "Explain the importance of the time constant, τ , and calculate the time constant for a given resistance and capacitance.",
+        "Explain why batteries in a flashlight gradually lose power and the light dims over time.",
+        "Describe what happens to a graph of the voltage across a capacitor over time as it charges.",
+        "Explain how a timing circuit works and list some applications.",
+        "Calculate the necessary speed of a strobe flash needed to “stop” the movement of an object over a particular length."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "An RC circuit is one that has both a resistor and a capacitor.",
+        "The time constant τ for an RC circuit is τ=RC.",
+        "When an initially uncharged (V0=0 at t=0) capacitor in series with a resistor is charged by a DC voltage source, the voltage rises, asymptotically approaching the emf of the voltage source; as a function of time, V=emf(1−e−t/RC) (charging)."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "current-electricity",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "simple-a-c-circuits",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-simple-a-c-circuits",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-43"
+    }
+  ],
+  "formula_sheet": [],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "series",
+        "inline": []
+      },
+      "definition": {
+        "text": "a sequence of resistors or other components wired into a circuit one after the other",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42356/index.cnxml",
+        "locator": "CNXML module m42356, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "resistor",
+        "inline": []
+      },
+      "definition": {
+        "text": "a component that provides resistance to the current flowing through an electrical circuit",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42356/index.cnxml",
+        "locator": "CNXML module m42356, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "resistance",
+        "inline": []
+      },
+      "definition": {
+        "text": "causing a loss of electrical power in a circuit",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42356/index.cnxml",
+        "locator": "CNXML module m42356, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "Ohm’s law",
+        "inline": []
+      },
+      "definition": {
+        "text": "the relationship between current, voltage, and resistance within an electrical circuit: V=IR",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42356/index.cnxml",
+        "locator": "CNXML module m42356, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "voltage",
+        "inline": []
+      },
+      "definition": {
+        "text": "the electrical potential energy per unit charge; electric pressure created by a power source, such as a battery",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42356/index.cnxml",
+        "locator": "CNXML module m42356, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "voltage drop",
+        "inline": []
+      },
+      "definition": {
+        "text": "the loss of electrical power as a current travels through a resistor, wire or other component",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42356/index.cnxml",
+        "locator": "CNXML module m42356, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-7",
+      "term": {
+        "text": "current",
+        "inline": []
+      },
+      "definition": {
+        "text": "the flow of charge through an electric circuit past a given point of measurement",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42356/index.cnxml",
+        "locator": "CNXML module m42356, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-8",
+      "term": {
+        "text": "Joule’s law",
+        "inline": []
+      },
+      "definition": {
+        "text": "the relationship between potential electrical power, voltage, and resistance in an electrical circuit, given by: Pe=IV",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42356/index.cnxml",
+        "locator": "CNXML module m42356, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-9",
+      "term": {
+        "text": "parallel",
+        "inline": []
+      },
+      "definition": {
+        "text": "the wiring of resistors or other components in an electrical circuit such that each component receives an equal voltage from the power source; often pictured in a ladder-shaped diagram, with each component on a rung of the ladder",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42356/index.cnxml",
+        "locator": "CNXML module m42356, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-10",
+      "term": {
+        "text": "electromotive force (emf)",
+        "inline": []
+      },
+      "definition": {
+        "text": "the potential difference of a source of electricity when no current is flowing; measured in volts",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42357/index.cnxml",
+        "locator": "CNXML module m42357, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-11",
+      "term": {
+        "text": "internal resistance",
+        "inline": []
+      },
+      "definition": {
+        "text": "the amount of resistance within the voltage source",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42357/index.cnxml",
+        "locator": "CNXML module m42357, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-12",
+      "term": {
+        "text": "potential difference",
+        "inline": []
+      },
+      "definition": {
+        "text": "the difference in electric potential between two points in an electric circuit, measured in volts",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42357/index.cnxml",
+        "locator": "CNXML module m42357, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-13",
+      "term": {
+        "text": "terminal voltage",
+        "inline": []
+      },
+      "definition": {
+        "text": "the voltage measured across the terminals of a source of potential difference",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42357/index.cnxml",
+        "locator": "CNXML module m42357, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-14",
+      "term": {
+        "text": "Kirchhoff’s rules",
+        "inline": []
+      },
+      "definition": {
+        "text": "a set of two rules, based on conservation of charge and energy, governing current and changes in potential in an electric circuit",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42359/index.cnxml",
+        "locator": "CNXML module m42359, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-15",
+      "term": {
+        "text": "junction rule",
+        "inline": []
+      },
+      "definition": {
+        "text": "Kirchhoff’s first rule, which applies the conservation of charge to a junction; current is the flow of charge; thus, whatever charge flows into the junction must flow out; the rule can be stated I1=I2+I3",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42359/index.cnxml",
+        "locator": "CNXML module m42359, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-16",
+      "term": {
+        "text": "loop rule",
+        "inline": []
+      },
+      "definition": {
+        "text": "Kirchhoff’s second rule, which states that in a closed loop, whatever energy is supplied by emf must be transferred into other forms by devices in the loop, since there are no other ways in which energy can be transferred into or out of the circuit. Thus, the emf equals the sum of the IR (voltage) drops in the loop and can be stated: emf=Ir+IR1+IR2",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42359/index.cnxml",
+        "locator": "CNXML module m42359, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-17",
+      "term": {
+        "text": "conservation laws",
+        "inline": []
+      },
+      "definition": {
+        "text": "require that energy and charge be conserved in a system",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42359/index.cnxml",
+        "locator": "CNXML module m42359, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-18",
+      "term": {
+        "text": "voltmeter",
+        "inline": []
+      },
+      "definition": {
+        "text": "an instrument that measures voltage",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42360/index.cnxml",
+        "locator": "CNXML module m42360, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-19",
+      "term": {
+        "text": "ammeter",
+        "inline": []
+      },
+      "definition": {
+        "text": "an instrument that measures current",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42360/index.cnxml",
+        "locator": "CNXML module m42360, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-20",
+      "term": {
+        "text": "analog meter",
+        "inline": []
+      },
+      "definition": {
+        "text": "a measuring instrument that gives a readout in the form of a needle movement over a marked gauge",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42360/index.cnxml",
+        "locator": "CNXML module m42360, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-21",
+      "term": {
+        "text": "digital meter",
+        "inline": []
+      },
+      "definition": {
+        "text": "a measuring instrument that gives a readout in a digital form",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42360/index.cnxml",
+        "locator": "CNXML module m42360, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-22",
+      "term": {
+        "text": "galvanometer",
+        "inline": []
+      },
+      "definition": {
+        "text": "an analog measuring device, denoted by G, that measures current flow using a needle deflection caused by a magnetic field force acting upon a current-carrying wire",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42360/index.cnxml",
+        "locator": "CNXML module m42360, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-23",
+      "term": {
+        "text": "current sensitivity",
+        "inline": []
+      },
+      "definition": {
+        "text": "the maximum current that a galvanometer can read",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42360/index.cnxml",
+        "locator": "CNXML module m42360, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-24",
+      "term": {
+        "text": "full-scale deflection",
+        "inline": []
+      },
+      "definition": {
+        "text": "the maximum deflection of a galvanometer needle, also known as current sensitivity; a galvanometer with a full-scale deflection of 50 μA has a maximum deflection of its needle when 50 μA flows through it",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42360/index.cnxml",
+        "locator": "CNXML module m42360, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-25",
+      "term": {
+        "text": "shunt resistance",
+        "inline": []
+      },
+      "definition": {
+        "text": "a small resistance R placed in parallel with a galvanometer G to produce an ammeter; the larger the current to be measured, the smaller R must be; most of the current flowing through the meter is shunted through R to protect the galvanometer",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42360/index.cnxml",
+        "locator": "CNXML module m42360, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-26",
+      "term": {
+        "text": "null measurements",
+        "inline": []
+      },
+      "definition": {
+        "text": "methods of measuring current and voltage more accurately by balancing the circuit so that no current flows through the measurement device",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42362/index.cnxml",
+        "locator": "CNXML module m42362, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-27",
+      "term": {
+        "text": "potentiometer",
+        "inline": []
+      },
+      "definition": {
+        "text": "a null measurement device for measuring potentials (voltages)",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42362/index.cnxml",
+        "locator": "CNXML module m42362, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-28",
+      "term": {
+        "text": "ohmmeter",
+        "inline": []
+      },
+      "definition": {
+        "text": "an instrument that applies a voltage to a resistance, measures the current, calculates the resistance using Ohm’s law, and provides a readout of this calculated resistance",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42362/index.cnxml",
+        "locator": "CNXML module m42362, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-29",
+      "term": {
+        "text": "bridge device",
+        "inline": []
+      },
+      "definition": {
+        "text": "a device that forms a bridge between two branches of a circuit; some bridge devices are used to make null measurements in circuits",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42362/index.cnxml",
+        "locator": "CNXML module m42362, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-30",
+      "term": {
+        "text": "Wheatstone bridge",
+        "inline": []
+      },
+      "definition": {
+        "text": "a null measurement device for calculating resistance by balancing potential drops in a circuit",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42362/index.cnxml",
+        "locator": "CNXML module m42362, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-31",
+      "term": {
+        "text": "RC circuit",
+        "inline": []
+      },
+      "definition": {
+        "text": "a circuit that contains both a resistor and a capacitor",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42363/index.cnxml",
+        "locator": "CNXML module m42363, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-32",
+      "term": {
+        "text": "capacitor",
+        "inline": []
+      },
+      "definition": {
+        "text": "an electrical component used to store energy by separating electric charge on two opposing plates",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42363/index.cnxml",
+        "locator": "CNXML module m42363, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-33",
+      "term": {
+        "text": "capacitance",
+        "inline": []
+      },
+      "definition": {
+        "text": "the maximum amount of electric potential energy that can be stored (or separated) for a given electric potential",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42363/index.cnxml",
+        "locator": "CNXML module m42363, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_links": [],
+  "exam_traps": [
+    {
+      "id": "trap-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": "Current is used up as it goes round a circuit.",
+      "correction": "The same current flows at every point of a series circuit. What is used up is the energy, not the current.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "Putting a resistor in a series circuit changes the current everywhere.",
+      "correction": "It does, and that is why a series resistor dims the whole circuit rather than one lamp.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-4",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "exam_recall_checks": [],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Circuits and DC Instruments', modules m42354, m42356, m42357, m42359, m42360, m42362, m42363",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

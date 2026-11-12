@@ -1,0 +1,930 @@
+{
+  "chapter_id": "phy_thermodynamics",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Thermodynamics",
+  "book_id": "secondary_physics",
+  "part_id": "part-3",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "facts_inherited": true,
+  "learning_objectives": [
+    {
+      "id": "lo-1",
+      "statement": "Define the first law of thermodynamics.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-2",
+      "statement": "Describe how conservation of energy relates to the first law of thermodynamics.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-3",
+      "statement": "Identify instances of the first law of thermodynamics working in everyday situations, including biological metabolism.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-4",
+      "statement": "Calculate changes in the internal energy of a system, after accounting for heat transfer and work done.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-5",
+      "statement": "Describe the processes of a simple heat engine.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-6",
+      "statement": "Explain the differences among the simple thermodynamic processes—isobaric, isochoric, isothermal, and adiabatic.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-7",
+      "statement": "Calculate total work done in a cyclical thermodynamic process.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-8",
+      "statement": "State the expressions of the second law of thermodynamics.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-9",
+      "statement": "Calculate the efficiency and carbon dioxide emission of a coal-fired electricity plant, using second law characteristics.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-10",
+      "statement": "Describe and define the Otto cycle.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-11",
+      "statement": "Identify a Carnot cycle.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-12",
+      "statement": "Calculate maximum theoretical efficiency of a nuclear reactor.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-13",
+      "statement": "Explain how dissipative processes affect the ideal Carnot engine.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-14",
+      "statement": "Describe the use of heat engines in heat pumps and refrigerators.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-15",
+      "statement": "Demonstrate how a heat pump works to warm an interior space.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-16",
+      "statement": "Explain the differences between heat pumps and refrigerators.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-17",
+      "statement": "Calculate a heat pump’s coefficient of performance.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-18",
+      "statement": "Define entropy and calculate the increase of entropy in a system with reversible and irreversible processes.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-19",
+      "statement": "Explain the expected fate of the universe in entropic terms.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-20",
+      "statement": "Calculate the increasing disorder of a system.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-21",
+      "statement": "Identify probabilities in entropy.",
+      "bloom_level": "understand"
+    },
+    {
+      "id": "lo-22",
+      "statement": "Analyze statistical probabilities in entropic systems.",
+      "bloom_level": "understand"
+    }
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to Thermodynamics",
+      "module": "m42231",
+      "est_minutes": 12,
+      "locator": "CNXML module m42231",
+      "objectives": [
+        "Define the first law of thermodynamics."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Define the first law of thermodynamics.",
+        "Describe how conservation of energy relates to the first law of thermodynamics.",
+        "Identify instances of the first law of thermodynamics working in everyday situations, including biological metabolism."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "quantity-of-heat",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-heat-energy",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "The First Law of Thermodynamics",
+      "module": "m42232",
+      "est_minutes": 12,
+      "locator": "CNXML module m42232",
+      "objectives": [
+        "Define the first law of thermodynamics.",
+        "Describe how conservation of energy relates to the first law of thermodynamics.",
+        "Identify instances of the first law of thermodynamics working in everyday situations, including biological metabolism.",
+        "Calculate changes in the internal energy of a system, after accounting for heat transfer and work done."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Heat added to a gas always raises its temperature.",
+          "correction": "It can raise the temperature, do work as it expands, or both. The first law says where it goes."
+        }
+      ],
+      "summary": [
+        "The first law of thermodynamics is given as ΔEint=Q−W, where ΔEint is the change in internal energy of a system, Q is the net heat transfer (the sum of all heat transfer into and out of the system), and W is the net work done (the sum of all work done on or by the system).",
+        "Both Q and W are energy in transit; only ΔEint represents an independent quantity capable of being stored.",
+        "The internal energy Eint of a system depends only on the state of the system and not how it reached that state."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "quantity-of-heat",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-heat-energy",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-39"
+    },
+    {
+      "id": "sec-3",
+      "title": "The First Law of Thermodynamics and Some Simple Processes",
+      "module": "m42233",
+      "est_minutes": 12,
+      "locator": "CNXML module m42233",
+      "objectives": [
+        "Describe the processes of a simple heat engine.",
+        "Explain the differences among the simple thermodynamic processes—isobaric, isochoric, isothermal, and adiabatic.",
+        "Calculate total work done in a cyclical thermodynamic process."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "One of the important implications of the first law of thermodynamics is that machines can be harnessed to do work that humans previously did by hand or by external energy supplies such as running water or the heat of the Sun. A machine that uses heat transfer to do work is known as a heat engine.",
+        "There are several simple processes, used by heat engines, that flow from the first law of thermodynamics. Among them are the isobaric, isochoric, isothermal and adiabatic processes.",
+        "These processes differ from one another based on how they affect pressure, volume, temperature, and heat transfer."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "quantity-of-heat",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-heat-energy",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-41"
+    },
+    {
+      "id": "sec-4",
+      "title": "Introduction to the Second Law of Thermodynamics: Heat Engines and Their Efficiency",
+      "module": "m42234",
+      "est_minutes": 12,
+      "locator": "CNXML module m42234",
+      "objectives": [
+        "State the expressions of the second law of thermodynamics.",
+        "Calculate the efficiency and carbon dioxide emission of a coal-fired electricity plant, using second law characteristics.",
+        "Describe and define the Otto cycle."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Heat always flows from a hot body to a cold one.",
+          "correction": "It flows that way on its own, but a refrigerator moves it the other way by doing work on it."
+        }
+      ],
+      "summary": [
+        "The two expressions of the second law of thermodynamics are: (i) Heat transfer occurs spontaneously from higher- to lower-temperature bodies but never spontaneously in the reverse direction; and (ii) It is impossible in any system for heat transfer from a reservoir to completely convert to work in a cyclical process in which the system returns to its initial state.",
+        "Irreversible processes depend on path and do not return to their original state. Cyclical processes are processes that return to their original state at the end of every cycle.",
+        "In a cyclical process, such as a heat engine, the net work done by the system equals the net heat transfer into the system, or W = Q h – Q c , where Q h is the heat transfer from the hot object (hot reservoir), and Q c is the heat transfer into the cold object (cold reservoir)."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "quantity-of-heat",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-heat-energy",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-51"
+    },
+    {
+      "id": "sec-5",
+      "title": "Carnot’s Perfect Heat Engine: The Second Law of Thermodynamics Restated",
+      "module": "m42235",
+      "est_minutes": 12,
+      "locator": "CNXML module m42235",
+      "objectives": [
+        "Identify a Carnot cycle.",
+        "Calculate maximum theoretical efficiency of a nuclear reactor.",
+        "Explain how dissipative processes affect the ideal Carnot engine."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "The Carnot cycle is a theoretical cycle that is the most efficient cyclical process possible. Any engine using the Carnot cycle, which uses only reversible processes (adiabatic and isothermal), is known as a Carnot engine.",
+        "Any engine that uses the Carnot cycle enjoys the maximum theoretical efficiency.",
+        "While Carnot engines are ideal engines, in reality, no engine achieves Carnot’s theoretical maximum efficiency, since dissipative processes, such as friction, play a role. Carnot cycles without heat loss may be possible at absolute zero, but this has never been seen in nature."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "quantity-of-heat",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-heat-energy",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-32"
+    },
+    {
+      "id": "sec-6",
+      "title": "Applications of Thermodynamics: Heat Pumps and Refrigerators",
+      "module": "m42236",
+      "est_minutes": 12,
+      "locator": "CNXML module m42236",
+      "objectives": [
+        "Describe the use of heat engines in heat pumps and refrigerators.",
+        "Demonstrate how a heat pump works to warm an interior space.",
+        "Explain the differences between heat pumps and refrigerators.",
+        "Calculate a heat pump’s coefficient of performance."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "An artifact of the second law of thermodynamics is the ability to heat an interior space using a heat pump. Heat pumps compress cold ambient air and, in so doing, heat it to room temperature without violation of conservation principles.",
+        "To calculate the heat pump’s coefficient of performance, use the equation COPhp=QhW.",
+        "A refrigerator is a heat pump; it takes warm ambient air and expands it to chill it."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "quantity-of-heat",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-heat-energy",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-44"
+    },
+    {
+      "id": "sec-7",
+      "title": "Entropy and the Second Law of Thermodynamics: Disorder and the Unavailability of Energy",
+      "module": "m42237",
+      "est_minutes": 12,
+      "locator": "CNXML module m42237",
+      "objectives": [
+        "Define entropy and calculate the increase of entropy in a system with reversible and irreversible processes.",
+        "Explain the expected fate of the universe in entropic terms.",
+        "Calculate the increasing disorder of a system."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Entropy is the loss of energy available to do work.",
+        "Another form of the second law of thermodynamics states that the total entropy of a system either increases or remains constant; it never decreases.",
+        "Entropy is zero in a reversible process; it increases in an irreversible process."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "quantity-of-heat",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-heat-energy",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-74"
+    },
+    {
+      "id": "sec-8",
+      "title": "Statistical Interpretation of Entropy and the Second Law of Thermodynamics: The Underlying Explanation",
+      "module": "m42238",
+      "est_minutes": 12,
+      "locator": "CNXML module m42238",
+      "objectives": [
+        "Identify probabilities in entropy.",
+        "Analyze statistical probabilities in entropic systems."
+      ],
+      "misconceptions": [],
+      "summary": [
+        "Disorder is far more likely than order, which can be seen statistically.",
+        "The entropy of a system in a given state (a macrostate) can be written as S=klnW, where k=1.38×10–23J/K is Boltzmann’s constant, and lnW is the natural logarithm of the number of microstates W corresponding to the given macrostate."
+      ],
+      "tags": [],
+      "facts_inherited": true,
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "quantity-of-heat",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-heat-energy",
+          "subtopic_slug": null,
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-29"
+    }
+  ],
+  "formula_sheet": [],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "first law of thermodynamics",
+        "inline": []
+      },
+      "definition": {
+        "text": "states that the change in internal energy of a system equals the net heat transfer into the system minus the net work done by the system",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42232/index.cnxml",
+        "locator": "CNXML module m42232, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "internal energy",
+        "inline": []
+      },
+      "definition": {
+        "text": "the sum of the kinetic and potential energies of a system’s atoms and molecules",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42232/index.cnxml",
+        "locator": "CNXML module m42232, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "human metabolism",
+        "inline": []
+      },
+      "definition": {
+        "text": "conversion of food into heat transfer, work, and stored fat",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42232/index.cnxml",
+        "locator": "CNXML module m42232, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "heat engine",
+        "inline": []
+      },
+      "definition": {
+        "text": "a machine that uses heat transfer to do work",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42233/index.cnxml",
+        "locator": "CNXML module m42233, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "isobaric process",
+        "inline": []
+      },
+      "definition": {
+        "text": "constant-pressure process in which a gas does work",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42233/index.cnxml",
+        "locator": "CNXML module m42233, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "isochoric process",
+        "inline": []
+      },
+      "definition": {
+        "text": "a constant-volume process",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42233/index.cnxml",
+        "locator": "CNXML module m42233, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-7",
+      "term": {
+        "text": "isothermal process",
+        "inline": []
+      },
+      "definition": {
+        "text": "a constant-temperature process",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42233/index.cnxml",
+        "locator": "CNXML module m42233, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-8",
+      "term": {
+        "text": "adiabatic process",
+        "inline": []
+      },
+      "definition": {
+        "text": "a process in which no heat transfer takes place",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42233/index.cnxml",
+        "locator": "CNXML module m42233, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-9",
+      "term": {
+        "text": "reversible process",
+        "inline": []
+      },
+      "definition": {
+        "text": "a process in which both the heat engine system and the external environment theoretically can be returned to their original states",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42233/index.cnxml",
+        "locator": "CNXML module m42233, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-10",
+      "term": {
+        "text": "irreversible process",
+        "inline": []
+      },
+      "definition": {
+        "text": "any process that depends on path direction",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42234/index.cnxml",
+        "locator": "CNXML module m42234, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-11",
+      "term": {
+        "text": "second law of thermodynamics",
+        "inline": []
+      },
+      "definition": {
+        "text": "heat transfer flows from a hotter to a cooler object, never the reverse, and some heat energy in any process is lost to available work in a cyclical process",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42234/index.cnxml",
+        "locator": "CNXML module m42234, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-12",
+      "term": {
+        "text": "cyclical process",
+        "inline": []
+      },
+      "definition": {
+        "text": "a process in which the path returns to its original state at the end of every cycle",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42234/index.cnxml",
+        "locator": "CNXML module m42234, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-13",
+      "term": {
+        "text": "Otto cycle",
+        "inline": []
+      },
+      "definition": {
+        "text": "a thermodynamic cycle, consisting of a pair of adiabatic processes and a pair of isochoric processes, that converts heat into work, e.g., the four-stroke engine cycle of intake, compression, ignition, and exhaust",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42234/index.cnxml",
+        "locator": "CNXML module m42234, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-14",
+      "term": {
+        "text": "Carnot cycle",
+        "inline": []
+      },
+      "definition": {
+        "text": "a cyclical process that uses only reversible processes, the adiabatic and isothermal processes",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42235/index.cnxml",
+        "locator": "CNXML module m42235, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-15",
+      "term": {
+        "text": "Carnot engine",
+        "inline": []
+      },
+      "definition": {
+        "text": "a heat engine that uses a Carnot cycle",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42235/index.cnxml",
+        "locator": "CNXML module m42235, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-16",
+      "term": {
+        "text": "Carnot efficiency",
+        "inline": []
+      },
+      "definition": {
+        "text": "the maximum theoretical efficiency for a heat engine",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42235/index.cnxml",
+        "locator": "CNXML module m42235, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-17",
+      "term": {
+        "text": "heat pump",
+        "inline": []
+      },
+      "definition": {
+        "text": "a machine that generates heat transfer from cold to hot",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42236/index.cnxml",
+        "locator": "CNXML module m42236, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-18",
+      "term": {
+        "text": "coefficient of performance",
+        "inline": []
+      },
+      "definition": {
+        "text": "for a heat pump, it is the ratio of heat transfer at the output (the hot reservoir) to the work supplied; for a refrigerator or air conditioner, it is the ratio of heat transfer from the cold reservoir to the work supplied",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42236/index.cnxml",
+        "locator": "CNXML module m42236, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-19",
+      "term": {
+        "text": "entropy",
+        "inline": []
+      },
+      "definition": {
+        "text": "a measurement of a system's disorder and its inability to do work in a system",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42237/index.cnxml",
+        "locator": "CNXML module m42237, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-20",
+      "term": {
+        "text": "change in entropy",
+        "inline": []
+      },
+      "definition": {
+        "text": "the ratio of heat transfer to temperature Q/T",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42237/index.cnxml",
+        "locator": "CNXML module m42237, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-21",
+      "term": {
+        "text": "second law of thermodynamics stated in terms of entropy",
+        "inline": []
+      },
+      "definition": {
+        "text": "the total entropy of a system either increases or remains constant; it never decreases",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42237/index.cnxml",
+        "locator": "CNXML module m42237, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-22",
+      "term": {
+        "text": "macrostate",
+        "inline": []
+      },
+      "definition": {
+        "text": "an overall property of a system",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42238/index.cnxml",
+        "locator": "CNXML module m42238, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-23",
+      "term": {
+        "text": "microstate",
+        "inline": []
+      },
+      "definition": {
+        "text": "each sequence within a larger macrostate",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42238/index.cnxml",
+        "locator": "CNXML module m42238, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-24",
+      "term": {
+        "text": "statistical analysis",
+        "inline": []
+      },
+      "definition": {
+        "text": "using statistics to examine data, such as counting microstates and macrostates",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42238/index.cnxml",
+        "locator": "CNXML module m42238, glossary",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_links": [],
+  "exam_traps": [
+    {
+      "id": "trap-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": "Heat added to a gas always raises its temperature.",
+      "correction": "It can raise the temperature, do work as it expands, or both. The first law says where it goes.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "Heat always flows from a hot body to a cold one.",
+      "correction": "It flows that way on its own, but a refrigerator moves it the other way by doing work on it.",
+      "signal": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+      "status": "candidate",
+      "paper_evidence": {
+        "section_id": "sec-4",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "exam_recall_checks": [],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Thermodynamics', modules m42231, m42232, m42233, m42234, m42235, m42236, m42237, m42238",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

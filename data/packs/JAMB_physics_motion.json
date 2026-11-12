@@ -82,6 +82,108 @@
       "subtopic_slug": "linear-motion-speed-velocity-acceleration-equations-of-unifo"
     },
     {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-1",
+      "title": "Introduction to Rotational Motion and Angular Momentum",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe uniform circular motion."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-2",
+      "title": "Angular Acceleration",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe uniform circular motion.",
+        "Explain non-uniform circular motion.",
+        "Calculate angular acceleration of an object.",
+        "Observe the link between linear and angular acceleration."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-3",
+      "title": "Kinematics of Rotational Motion",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Observe the kinematics of rotational motion.",
+        "Derive rotational kinematic equations.",
+        "Evaluate problem solving strategies for rotational kinematics."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-4",
+      "title": "Dynamics of Rotational Motion: Rotational Inertia",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Understand the relationship between force, mass and acceleration.",
+        "Study the turning effect of force.",
+        "Study the analogy between force and torque, mass and moment of inertia, and linear acceleration and angular acceleration."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-5",
+      "title": "Rotational Kinetic Energy: Work and Energy Revisited",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Derive the equation for rotational work.",
+        "Calculate rotational kinetic energy.",
+        "Demonstrate the Law of Conservation of Energy."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-6",
+      "title": "Angular Momentum and Its Conservation",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Understand the analogy between angular momentum and linear momentum.",
+        "Observe the relationship between torque and angular momentum.",
+        "Apply the law of conservation of angular momentum."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-7",
+      "title": "Collisions of Extended Bodies in Two Dimensions",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Observe collisions of extended bodies in two dimensions.",
+        "Examine collision at the point of percussion."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_rotational_motion",
+      "chapter_title": "Rotational Motion and Angular Momentum",
+      "section_id": "sec-8",
+      "title": "Gyroscopic Effects: Vector Aspects of Angular Momentum",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe the right-hand rule to find the direction of angular velocity, momentum, and torque.",
+        "Explain the gyroscopic effect.",
+        "Study how Earth acts like a gigantic gyroscope."
+      ],
+      "subtopic_slug": null
+    },
+    {
       "chapter_id": "phy_two_dimensional_kinematics",
       "chapter_title": "Two-Dimensional Kinematics",
       "section_id": "sec-5",
@@ -139,6 +241,56 @@
       },
       "paper_evidence": {
         "check_id": "rc-1",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_rotational_motion:trap-1",
+      "chapter_id": "phy_rotational_motion",
+      "status": "candidate",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "A body rotating with a constant angular velocity has no acceleration.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Its angular velocity is constant, but its direction changes every instant, so the angular acceleration and the centripetal acceleration are not zero.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_rotational_motion:trap-2",
+      "chapter_id": "phy_rotational_motion",
+      "status": "candidate",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "The torque on a body is the force applied.",
+        "inline": []
+      },
+      "correction": {
+        "text": "The torque is the force times the perpendicular distance from the pivot, so the same force further out the arm turns the body more.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "section_id": "sec-4",
         "exam": "JAMB",
         "year": null,
         "source": "authored"
@@ -384,6 +536,8 @@
     "ex-sec-2-02",
     "ex-sec-2-03",
     "ex-sec-3-01",
+    "ex-sec-3-02",
+    "ex-sec-3-03",
     "ex-sec-4-01",
     "ex-sec-4-02",
     "ex-sec-4-03",
@@ -391,6 +545,9 @@
     "ex-sec-4-05",
     "ex-sec-4-06",
     "ex-sec-4-07",
+    "ex-sec-4-08",
+    "ex-sec-4-09",
+    "ex-sec-4-10",
     "ex-sec-5-01",
     "ex-sec-5-02",
     "ex-sec-5-03",
@@ -415,7 +572,16 @@
     "ex-sec-6-10",
     "ex-sec-6-11",
     "ex-sec-6-12",
-    "ex-sec-6-13"
+    "ex-sec-6-13",
+    "ex-sec-7-01",
+    "ex-sec-7-02",
+    "ex-sec-7-03",
+    "ex-sec-7-04",
+    "ex-sec-7-05",
+    "ex-sec-7-06",
+    "ex-sec-7-07",
+    "ex-sec-8-01",
+    "ex-sec-8-02"
   ],
   "past_papers": [
     {
@@ -445,10 +611,10 @@
   ],
   "paper_note": "3 of 3 papers are self-published claims, labelled as such, and the rest are confirmed.",
   "coverage": {
-    "sections": 7,
-    "traps": 2,
+    "sections": 15,
+    "traps": 4,
     "recall_checks": 7,
-    "exercises": 36,
+    "exercises": 50,
     "past_papers": 3,
     "gaps": []
   }

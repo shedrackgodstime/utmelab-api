@@ -1,0 +1,240 @@
+{
+  "exam": "JAMB",
+  "subject": "physics",
+  "topic_slug": "characteristics-of-sound-waves",
+  "topic_name": "",
+  "subtopic_slugs": [],
+  "sections": [
+    {
+      "chapter_id": "phy_physics_of_hearing",
+      "chapter_title": "Physics of Hearing",
+      "section_id": "sec-1",
+      "title": "Introduction to the Physics of Hearing",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define sound and hearing."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_physics_of_hearing",
+      "chapter_title": "Physics of Hearing",
+      "section_id": "sec-2",
+      "title": "Sound",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define sound and hearing.",
+        "Describe sound as a longitudinal wave."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_physics_of_hearing",
+      "chapter_title": "Physics of Hearing",
+      "section_id": "sec-3",
+      "title": "Speed of Sound, Frequency, and Wavelength",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define pitch.",
+        "Describe the relationship between the speed of sound, its frequency, and its wavelength.",
+        "Describe the effects on the speed of sound as it travels through various media.",
+        "Describe the effects of temperature on the speed of sound."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_physics_of_hearing",
+      "chapter_title": "Physics of Hearing",
+      "section_id": "sec-4",
+      "title": "Sound Intensity and Sound Level",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define intensity, sound intensity, and sound pressure level.",
+        "Calculate sound intensity levels in decibels (dB)."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_physics_of_hearing",
+      "chapter_title": "Physics of Hearing",
+      "section_id": "sec-5",
+      "title": "Doppler Effect and Sonic Booms",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define Doppler effect, Doppler shift, and sonic boom.",
+        "Calculate the frequency of a sound heard by someone observing Doppler shift.",
+        "Describe the sounds produced by objects moving faster than the speed of sound."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_physics_of_hearing",
+      "chapter_title": "Physics of Hearing",
+      "section_id": "sec-6",
+      "title": "Sound Interference and Resonance: Standing Waves in Air Columns",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define antinode, node, fundamental, overtones, and harmonics.",
+        "Identify instances of sound interference in everyday situations.",
+        "Describe how sound interference occurring inside open and closed tubes changes the characteristics of the sound, and how this applies to sounds produced by musical instruments.",
+        "Calculate the length of a tube using sound wave measurements."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_physics_of_hearing",
+      "chapter_title": "Physics of Hearing",
+      "section_id": "sec-7",
+      "title": "Hearing",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define hearing, pitch, loudness, timbre, note, tone, phon, ultrasound, and infrasound.",
+        "Compare loudness to frequency and intensity of a sound.",
+        "Identify structures of the inner ear and explain how they relate to sound perception."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_physics_of_hearing",
+      "chapter_title": "Physics of Hearing",
+      "section_id": "sec-8",
+      "title": "Ultrasound",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define acoustic impedance and intensity reflection coefficient.",
+        "Describe medical and other uses of ultrasound technology.",
+        "Calculate acoustic impedance using density values and the speed of ultrasound.",
+        "Calculate the velocity of a moving object using Doppler-shifted ultrasound."
+      ],
+      "subtopic_slug": null
+    }
+  ],
+  "traps": [
+    {
+      "id": "phy_physics_of_hearing:trap-1",
+      "chapter_id": "phy_physics_of_hearing",
+      "status": "candidate",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "The pitch of a sound is its loudness.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Pitch is the frequency of the vibration, and loudness is how large the vibration is.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_physics_of_hearing:trap-2",
+      "chapter_id": "phy_physics_of_hearing",
+      "status": "candidate",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "Sound is louder in air than in water.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Sound travels faster in water, and it is the speed and the resistance that decide how loud it seems.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "section_id": "sec-4",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "recall_checks": [],
+  "exercises": [
+    "ex-sec-3-01",
+    "ex-sec-3-02",
+    "ex-sec-3-03",
+    "ex-sec-3-04",
+    "ex-sec-3-05",
+    "ex-sec-3-06",
+    "ex-sec-3-07",
+    "ex-sec-3-08",
+    "ex-sec-4-01",
+    "ex-sec-4-02",
+    "ex-sec-4-03",
+    "ex-sec-4-04",
+    "ex-sec-4-05",
+    "ex-sec-4-06",
+    "ex-sec-4-07",
+    "ex-sec-4-08",
+    "ex-sec-4-09",
+    "ex-sec-4-10",
+    "ex-sec-4-11",
+    "ex-sec-5-01",
+    "ex-sec-5-02",
+    "ex-sec-5-03",
+    "ex-sec-5-04",
+    "ex-sec-5-05",
+    "ex-sec-5-06",
+    "ex-sec-6-01",
+    "ex-sec-6-02",
+    "ex-sec-6-03",
+    "ex-sec-6-04",
+    "ex-sec-6-05",
+    "ex-sec-6-06",
+    "ex-sec-6-07",
+    "ex-sec-6-08",
+    "ex-sec-6-09",
+    "ex-sec-6-10",
+    "ex-sec-6-11",
+    "ex-sec-6-12",
+    "ex-sec-6-13",
+    "ex-sec-6-14",
+    "ex-sec-6-15",
+    "ex-sec-6-16",
+    "ex-sec-6-17",
+    "ex-sec-6-18",
+    "ex-sec-6-19",
+    "ex-sec-7-01",
+    "ex-sec-7-02",
+    "ex-sec-7-03",
+    "ex-sec-7-04",
+    "ex-sec-7-05",
+    "ex-sec-7-06",
+    "ex-sec-7-07",
+    "ex-sec-7-08",
+    "ex-sec-7-09",
+    "ex-sec-8-01",
+    "ex-sec-8-02",
+    "ex-sec-8-03",
+    "ex-sec-8-04",
+    "ex-sec-8-05",
+    "ex-sec-8-06",
+    "ex-sec-8-07"
+  ],
+  "past_papers": [],
+  "paper_note": "No past paper for this topic yet.",
+  "coverage": {
+    "sections": 8,
+    "traps": 2,
+    "recall_checks": 0,
+    "exercises": 60,
+    "past_papers": 0,
+    "gaps": [
+      "recall_checks",
+      "past_papers"
+    ]
+  }
+}

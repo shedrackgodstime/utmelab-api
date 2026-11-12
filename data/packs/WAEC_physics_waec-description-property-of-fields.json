@@ -1,0 +1,158 @@
+{
+  "exam": "WAEC",
+  "subject": "physics",
+  "topic_slug": "waec-description-property-of-fields",
+  "topic_name": "",
+  "subtopic_slugs": [],
+  "sections": [
+    {
+      "chapter_id": "phy_special_relativity",
+      "chapter_title": "Special Relativity",
+      "section_id": "sec-1",
+      "title": "Introduction to Special Relativity",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "State and explain both of Einstein’s postulates."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_special_relativity",
+      "chapter_title": "Special Relativity",
+      "section_id": "sec-2",
+      "title": "Einstein’s Postulates",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "State and explain both of Einstein’s postulates.",
+        "Explain what an inertial frame of reference is.",
+        "Describe one way the speed of light can be changed."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_special_relativity",
+      "chapter_title": "Special Relativity",
+      "section_id": "sec-3",
+      "title": "Simultaneity And Time Dilation",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe simultaneity.",
+        "Describe time dilation.",
+        "Calculate γ.",
+        "Compare proper time and the observer’s measured time.",
+        "Explain why the twin paradox is a false paradox."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_special_relativity",
+      "chapter_title": "Special Relativity",
+      "section_id": "sec-4",
+      "title": "Length Contraction",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe proper length.",
+        "Calculate length contraction.",
+        "Explain why we don’t notice these effects at everyday scales."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_special_relativity",
+      "chapter_title": "Special Relativity",
+      "section_id": "sec-5",
+      "title": "Relativistic Addition of Velocities",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate relativistic velocity addition.",
+        "Explain when relativistic velocity addition should be used instead of classical addition of velocities.",
+        "Calculate relativistic Doppler shift."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_special_relativity",
+      "chapter_title": "Special Relativity",
+      "section_id": "sec-6",
+      "title": "Relativistic Momentum",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate relativistic momentum.",
+        "Explain why the only mass it makes sense to talk about is rest mass."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_special_relativity",
+      "chapter_title": "Special Relativity",
+      "section_id": "sec-7",
+      "title": "Relativistic Energy",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Compute total energy of a relativistic object.",
+        "Compute the kinetic energy of a relativistic object.",
+        "Describe rest energy, and explain how it can be converted to other forms.",
+        "Explain why massive particles cannot reach C."
+      ],
+      "subtopic_slug": null
+    }
+  ],
+  "traps": [],
+  "recall_checks": [],
+  "exercises": [
+    "ex-sec-2-01",
+    "ex-sec-3-01",
+    "ex-sec-3-02",
+    "ex-sec-3-03",
+    "ex-sec-3-04",
+    "ex-sec-3-05",
+    "ex-sec-3-06",
+    "ex-sec-4-01",
+    "ex-sec-4-02",
+    "ex-sec-4-03",
+    "ex-sec-4-04",
+    "ex-sec-5-01",
+    "ex-sec-5-02",
+    "ex-sec-5-03",
+    "ex-sec-5-04",
+    "ex-sec-5-05",
+    "ex-sec-5-06",
+    "ex-sec-5-07",
+    "ex-sec-5-08",
+    "ex-sec-5-09",
+    "ex-sec-6-01",
+    "ex-sec-6-02",
+    "ex-sec-6-03",
+    "ex-sec-6-04",
+    "ex-sec-7-01",
+    "ex-sec-7-02",
+    "ex-sec-7-03",
+    "ex-sec-7-04",
+    "ex-sec-7-05",
+    "ex-sec-7-06",
+    "ex-sec-7-07",
+    "ex-sec-7-08",
+    "ex-sec-7-09",
+    "ex-sec-7-10",
+    "ex-sec-7-11",
+    "ex-sec-7-12",
+    "ex-sec-7-13",
+    "ex-sec-7-14",
+    "ex-sec-7-15",
+    "ex-sec-7-16"
+  ],
+  "past_papers": [],
+  "paper_note": "No past paper for this topic yet.",
+  "coverage": {
+    "sections": 7,
+    "traps": 0,
+    "recall_checks": 0,
+    "exercises": 40,
+    "past_papers": 0,
+    "gaps": [
+      "traps",
+      "recall_checks",
+      "past_papers"
+    ]
+  }
+}

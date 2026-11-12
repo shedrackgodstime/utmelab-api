@@ -1,0 +1,280 @@
+{
+  "exam": "WAEC",
+  "subject": "physics",
+  "topic_slug": "waec-heat-energy",
+  "topic_name": "",
+  "subtopic_slugs": [],
+  "sections": [
+    {
+      "chapter_id": "phy_heat_transfer",
+      "chapter_title": "Heat and Heat Transfer Methods",
+      "section_id": "sec-1",
+      "title": "Introduction to Heat and Heat Transfer Methods",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define heat as transfer of energy."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_heat_transfer",
+      "chapter_title": "Heat and Heat Transfer Methods",
+      "section_id": "sec-2",
+      "title": "Heat",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define heat as transfer of energy."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_heat_transfer",
+      "chapter_title": "Heat and Heat Transfer Methods",
+      "section_id": "sec-3",
+      "title": "Temperature Change and Heat Capacity",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Observe heat transfer and change in temperature and mass.",
+        "Calculate final temperature after heat transfer between two objects."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_heat_transfer",
+      "chapter_title": "Heat and Heat Transfer Methods",
+      "section_id": "sec-4",
+      "title": "Phase Change and Latent Heat",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Examine heat transfer.",
+        "Calculate final temperature from heat transfer."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_heat_transfer",
+      "chapter_title": "Heat and Heat Transfer Methods",
+      "section_id": "sec-5",
+      "title": "Heat Transfer Methods",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Discuss the different methods of heat transfer."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_heat_transfer",
+      "chapter_title": "Heat and Heat Transfer Methods",
+      "section_id": "sec-6",
+      "title": "Conduction",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Calculate thermal conductivity.",
+        "Observe conduction of heat in collisions.",
+        "Study thermal conductivities of common substances."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_heat_transfer",
+      "chapter_title": "Heat and Heat Transfer Methods",
+      "section_id": "sec-7",
+      "title": "Convection",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Discuss the method of heat transfer by convection."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_heat_transfer",
+      "chapter_title": "Heat and Heat Transfer Methods",
+      "section_id": "sec-8",
+      "title": "Radiation",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Discuss heat transfer by radiation.",
+        "Explain the power of different materials."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_thermodynamics",
+      "chapter_title": "Thermodynamics",
+      "section_id": "sec-1",
+      "title": "Introduction to Thermodynamics",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define the first law of thermodynamics."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_thermodynamics",
+      "chapter_title": "Thermodynamics",
+      "section_id": "sec-2",
+      "title": "The First Law of Thermodynamics",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define the first law of thermodynamics.",
+        "Describe how conservation of energy relates to the first law of thermodynamics.",
+        "Identify instances of the first law of thermodynamics working in everyday situations, including biological metabolism.",
+        "Calculate changes in the internal energy of a system, after accounting for heat transfer and work done."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_thermodynamics",
+      "chapter_title": "Thermodynamics",
+      "section_id": "sec-3",
+      "title": "The First Law of Thermodynamics and Some Simple Processes",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe the processes of a simple heat engine.",
+        "Explain the differences among the simple thermodynamic processes—isobaric, isochoric, isothermal, and adiabatic.",
+        "Calculate total work done in a cyclical thermodynamic process."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_thermodynamics",
+      "chapter_title": "Thermodynamics",
+      "section_id": "sec-4",
+      "title": "Introduction to the Second Law of Thermodynamics: Heat Engines and Their Efficiency",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "State the expressions of the second law of thermodynamics.",
+        "Calculate the efficiency and carbon dioxide emission of a coal-fired electricity plant, using second law characteristics.",
+        "Describe and define the Otto cycle."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_thermodynamics",
+      "chapter_title": "Thermodynamics",
+      "section_id": "sec-5",
+      "title": "Carnot’s Perfect Heat Engine: The Second Law of Thermodynamics Restated",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Identify a Carnot cycle.",
+        "Calculate maximum theoretical efficiency of a nuclear reactor.",
+        "Explain how dissipative processes affect the ideal Carnot engine."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_thermodynamics",
+      "chapter_title": "Thermodynamics",
+      "section_id": "sec-6",
+      "title": "Applications of Thermodynamics: Heat Pumps and Refrigerators",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Describe the use of heat engines in heat pumps and refrigerators.",
+        "Demonstrate how a heat pump works to warm an interior space.",
+        "Explain the differences between heat pumps and refrigerators.",
+        "Calculate a heat pump’s coefficient of performance."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_thermodynamics",
+      "chapter_title": "Thermodynamics",
+      "section_id": "sec-7",
+      "title": "Entropy and the Second Law of Thermodynamics: Disorder and the Unavailability of Energy",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define entropy and calculate the increase of entropy in a system with reversible and irreversible processes.",
+        "Explain the expected fate of the universe in entropic terms.",
+        "Calculate the increasing disorder of a system."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_thermodynamics",
+      "chapter_title": "Thermodynamics",
+      "section_id": "sec-8",
+      "title": "Statistical Interpretation of Entropy and the Second Law of Thermodynamics: The Underlying Explanation",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Identify probabilities in entropy.",
+        "Analyze statistical probabilities in entropic systems."
+      ],
+      "subtopic_slug": null
+    }
+  ],
+  "traps": [],
+  "recall_checks": [],
+  "exercises": [
+    "ex-sec-2-01",
+    "ex-sec-2-02",
+    "ex-sec-2-03",
+    "ex-sec-2-04",
+    "ex-sec-2-05",
+    "ex-sec-2-06",
+    "ex-sec-2-07",
+    "ex-sec-3-01",
+    "ex-sec-3-02",
+    "ex-sec-3-03",
+    "ex-sec-3-04",
+    "ex-sec-3-05",
+    "ex-sec-3-06",
+    "ex-sec-4-01",
+    "ex-sec-4-02",
+    "ex-sec-4-03",
+    "ex-sec-4-04",
+    "ex-sec-4-05",
+    "ex-sec-4-06",
+    "ex-sec-4-07",
+    "ex-sec-4-08",
+    "ex-sec-4-09",
+    "ex-sec-4-10",
+    "ex-sec-5-01",
+    "ex-sec-5-02",
+    "ex-sec-5-03",
+    "ex-sec-5-04",
+    "ex-sec-6-01",
+    "ex-sec-6-02",
+    "ex-sec-6-03",
+    "ex-sec-6-04",
+    "ex-sec-6-05",
+    "ex-sec-6-06",
+    "ex-sec-6-07",
+    "ex-sec-6-08",
+    "ex-sec-6-09",
+    "ex-sec-6-10",
+    "ex-sec-7-01",
+    "ex-sec-7-02",
+    "ex-sec-7-03",
+    "ex-sec-7-04",
+    "ex-sec-7-05",
+    "ex-sec-7-06",
+    "ex-sec-8-01",
+    "ex-sec-8-02",
+    "ex-sec-8-03",
+    "ex-sec-8-04",
+    "ex-sec-8-05",
+    "ex-sec-8-06",
+    "ex-sec-8-07",
+    "ex-sec-8-08",
+    "ex-sec-8-09",
+    "ex-sec-8-10",
+    "ex-sec-8-11",
+    "ex-sec-8-12",
+    "ex-sec-8-13",
+    "ex-sec-8-14"
+  ],
+  "past_papers": [],
+  "paper_note": "No past paper for this topic yet.",
+  "coverage": {
+    "sections": 16,
+    "traps": 0,
+    "recall_checks": 0,
+    "exercises": 57,
+    "past_papers": 0,
+    "gaps": [
+      "traps",
+      "recall_checks",
+      "past_papers"
+    ]
+  }
+}

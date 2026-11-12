@@ -192,7 +192,6 @@
         "acceleration",
         "motion-diagrams"
       ],
-      "no_worked_example_reason": "The source carries no worked example for this section, and it holds no solved exercise to promote, so the practice is left to the exercises themselves.",
       "exam_links": [
         {
           "exam": "WAEC",
@@ -202,7 +201,8 @@
           "status": "covered",
           "papers": []
         }
-      ]
+      ],
+      "worked_from": "exr-80"
     },
     {
       "id": "sec-6",
@@ -228,7 +228,6 @@
         "equations-of-motion",
         "constant-acceleration"
       ],
-      "no_worked_example_reason": "The source carries no worked example for this section, and it holds no solved exercise to promote, so the practice is left to the exercises themselves.",
       "exam_links": [
         {
           "exam": "JAMB",
@@ -252,7 +251,8 @@
           "status": "covered",
           "papers": []
         }
-      ]
+      ],
+      "worked_from": "exr-109"
     },
     {
       "id": "sec-7",
@@ -305,7 +305,6 @@
         "gravity",
         "projectile"
       ],
-      "no_worked_example_reason": "The source carries no worked example for this section, and it holds no solved exercise to promote, so the practice is left to the exercises themselves.",
       "exam_links": [
         {
           "exam": "WAEC",
@@ -315,7 +314,8 @@
           "status": "covered",
           "papers": []
         }
-      ]
+      ],
+      "worked_from": "exr-59"
     },
     {
       "id": "sec-9",
@@ -342,7 +342,6 @@
         "position-time-graph",
         "velocity-time-graph"
       ],
-      "no_worked_example_reason": "The source carries no worked example for this section, and it holds no solved exercise to promote, so the practice is left to the exercises themselves.",
       "exam_links": [
         {
           "exam": "WAEC",
@@ -363,7 +362,8 @@
             }
           ]
         }
-      ]
+      ],
+      "worked_from": "exr-51"
     }
   ],
   "formula_sheet": [

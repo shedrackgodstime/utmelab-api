@@ -43,8 +43,9 @@ def main():
                 pack["exam"] = link["exam"]
                 pack["subject"] = link["subject"]
                 pack["topic_slug"] = link["topic_slug"]
-                if link["subtopic_slug"] not in pack["subtopic_slugs"]:
-                    pack["subtopic_slugs"].append(link["subtopic_slug"])
+                subtopic = link.get("subtopic_slug")
+                if subtopic and subtopic not in pack["subtopic_slugs"]:
+                    pack["subtopic_slugs"].append(subtopic)
                 pack["sections"].append({
                     "chapter_id": chapter["chapter_id"],
                     "chapter_title": chapter["title"],

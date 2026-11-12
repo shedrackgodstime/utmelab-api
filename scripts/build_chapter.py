@@ -346,7 +346,7 @@ def build(spec):
                 "answer": source_exercise["answer"],
                 "answer_kind": source_exercise["answer_kind"],
                 "solution": source_exercise["solution"],
-                "tags": section_spec.get("tags", []),
+                "tags": section_spec.get("tags") or [slugify(section_spec["title"])],
                 "provenance": source_exercise["provenance"],
                 "solution_provenance": source_exercise["solution_provenance"],
             }
@@ -367,6 +367,7 @@ def build(spec):
             "slug": section_spec.get("slug", slugify(section_spec["title"])),
             "title": section_spec["title"],
             "est_minutes": section_spec.get("est_minutes", 10),
+            "facts_inherited": bool(section_spec.get("facts_inherited")),
             "learning_objectives": [
                 {"id": f"lo-{position}", "statement": objective, "bloom_level": section_spec.get("bloom_level", "understand")}
                 for position, objective in enumerate(section_spec.get("objectives", []), start=1)
@@ -472,8 +473,10 @@ def build(spec):
         "title": spec["title"],
         "book_id": spec["book_id"],
         "part_id": spec.get("part_id"),
+        "facts_inherited": bool(spec.get("facts_inherited")),
         "learning_objectives": [
-            {"id": f"lo-{position}", "statement": objective, "bloom_level": spec.get("bloom_level", "understand")}
+            objective if isinstance(objective, dict)
+            else {"id": f"lo-{position}", "statement": objective, "bloom_level": spec.get("bloom_level", "understand")}
             for position, objective in enumerate(spec.get("learning_objectives", []), start=1)
         ],
         "prerequisites": spec.get("prerequisites", []),

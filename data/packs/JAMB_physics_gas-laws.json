@@ -1,0 +1,216 @@
+{
+  "exam": "JAMB",
+  "subject": "physics",
+  "topic_slug": "gas-laws",
+  "topic_name": "",
+  "subtopic_slugs": [],
+  "sections": [
+    {
+      "chapter_id": "phy_temperature_and_gas_laws",
+      "chapter_title": "Temperature, Kinetic Theory, and the Gas Laws",
+      "section_id": "sec-1",
+      "title": "Introduction to Temperature, Kinetic Theory, and the Gas Laws",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define temperature."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_temperature_and_gas_laws",
+      "chapter_title": "Temperature, Kinetic Theory, and the Gas Laws",
+      "section_id": "sec-2",
+      "title": "Temperature",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define temperature.",
+        "Convert temperatures between the Celsius, Fahrenheit, and Kelvin scales.",
+        "Define thermal equilibrium.",
+        "State the zeroth law of thermodynamics."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_temperature_and_gas_laws",
+      "chapter_title": "Temperature, Kinetic Theory, and the Gas Laws",
+      "section_id": "sec-3",
+      "title": "Thermal Expansion of Solids and Liquids",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Define and describe thermal expansion.",
+        "Calculate the linear expansion of an object given its initial length, change in temperature, and coefficient of linear expansion.",
+        "Calculate the volume expansion of an object given its initial volume, change in temperature, and coefficient of volume expansion.",
+        "Calculate thermal stress on an object given its original volume, temperature change, volume change, and bulk modulus."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_temperature_and_gas_laws",
+      "chapter_title": "Temperature, Kinetic Theory, and the Gas Laws",
+      "section_id": "sec-4",
+      "title": "The Ideal Gas Law",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "State the ideal gas law in terms of molecules and in terms of moles.",
+        "Use the ideal gas law to calculate pressure change, temperature change, volume change, or the number of molecules or moles in a given volume.",
+        "Use Avogadro’s number to convert between number of molecules and number of moles."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_temperature_and_gas_laws",
+      "chapter_title": "Temperature, Kinetic Theory, and the Gas Laws",
+      "section_id": "sec-5",
+      "title": "Kinetic Theory: Atomic and Molecular Explanation of Pressure and Temperature",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Express the ideal gas law in terms of molecular mass and velocity.",
+        "Define thermal energy.",
+        "Calculate the kinetic energy of a gas molecule, given its temperature.",
+        "Describe the relationship between the temperature of a gas and the kinetic energy of atoms and molecules.",
+        "Describe the distribution of speeds of molecules in a gas."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_temperature_and_gas_laws",
+      "chapter_title": "Temperature, Kinetic Theory, and the Gas Laws",
+      "section_id": "sec-6",
+      "title": "Phase Changes",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Interpret a phase diagram.",
+        "State Dalton’s law.",
+        "Identify and describe the triple point of a gas from its phase diagram.",
+        "Describe the state of equilibrium between a liquid and a gas, a liquid and a solid, and a gas and a solid."
+      ],
+      "subtopic_slug": null
+    },
+    {
+      "chapter_id": "phy_temperature_and_gas_laws",
+      "chapter_title": "Temperature, Kinetic Theory, and the Gas Laws",
+      "section_id": "sec-7",
+      "title": "Humidity, Evaporation, and Boiling",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Explain the relationship between vapor pressure of water and the capacity of air to hold water vapor.",
+        "Explain the relationship between relative humidity and partial pressure of water vapor in the air.",
+        "Calculate vapor density using vapor pressure.",
+        "Calculate humidity and dew point."
+      ],
+      "subtopic_slug": null
+    }
+  ],
+  "traps": [
+    {
+      "id": "phy_temperature_and_gas_laws:trap-1",
+      "chapter_id": "phy_temperature_and_gas_laws",
+      "status": "candidate",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "Temperature is the same thing as heat.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Temperature measures how hot a body is, the average kinetic energy of its particles. Heat is the energy that moves because of a temperature difference.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "section_id": "sec-2",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_temperature_and_gas_laws:trap-2",
+      "chapter_id": "phy_temperature_and_gas_laws",
+      "status": "candidate",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "The pressure of a gas depends only on its temperature.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It depends on the temperature and on the volume, which is what the gas laws state.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own teaching of the section, waiting for a paper question that shows the same mistake.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "section_id": "sec-4",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "recall_checks": [],
+  "exercises": [
+    "ex-sec-2-01",
+    "ex-sec-2-02",
+    "ex-sec-2-03",
+    "ex-sec-2-04",
+    "ex-sec-3-01",
+    "ex-sec-3-02",
+    "ex-sec-3-03",
+    "ex-sec-3-04",
+    "ex-sec-3-05",
+    "ex-sec-3-06",
+    "ex-sec-3-07",
+    "ex-sec-4-01",
+    "ex-sec-4-02",
+    "ex-sec-4-03",
+    "ex-sec-4-04",
+    "ex-sec-4-05",
+    "ex-sec-4-06",
+    "ex-sec-4-07",
+    "ex-sec-4-08",
+    "ex-sec-4-09",
+    "ex-sec-4-10",
+    "ex-sec-4-11",
+    "ex-sec-4-12",
+    "ex-sec-5-01",
+    "ex-sec-5-02",
+    "ex-sec-5-03",
+    "ex-sec-5-04",
+    "ex-sec-5-05",
+    "ex-sec-5-06",
+    "ex-sec-5-07",
+    "ex-sec-5-08",
+    "ex-sec-6-01",
+    "ex-sec-7-01",
+    "ex-sec-7-02",
+    "ex-sec-7-03",
+    "ex-sec-7-04",
+    "ex-sec-7-05",
+    "ex-sec-7-06",
+    "ex-sec-7-07",
+    "ex-sec-7-08",
+    "ex-sec-7-09",
+    "ex-sec-7-10",
+    "ex-sec-7-11",
+    "ex-sec-7-12"
+  ],
+  "past_papers": [],
+  "paper_note": "No past paper for this topic yet.",
+  "coverage": {
+    "sections": 7,
+    "traps": 2,
+    "recall_checks": 0,
+    "exercises": 44,
+    "past_papers": 0,
+    "gaps": [
+      "recall_checks",
+      "past_papers"
+    ]
+  }
+}

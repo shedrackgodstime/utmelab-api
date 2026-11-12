@@ -420,9 +420,15 @@ def validate(path):
             if not isinstance(link, dict):
                 errors.append((path, f"section {section.get('id')} exam link not dict"))
                 continue
-            for key in ("exam", "subject", "topic_slug", "subtopic_slug"):
+            for key in ("exam", "subject", "topic_slug"):
                 if not isinstance(link.get(key), str) or not link.get(key, "").strip():
                     errors.append((path, f"section {section.get('id')} exam link missing {key}"))
+            # A link may name a whole exam topic. The finer subtopic mapping
+            # comes later, and a missing subtopic is not a broken link.
+            if link.get("subtopic_slug") is not None and (
+                not isinstance(link.get("subtopic_slug"), str) or not link.get("subtopic_slug", "").strip()
+            ):
+                errors.append((path, f"section {section.get('id')} exam link subtopic is not a string"))
             if link.get("status") not in {"covered", "partial", "not_catalogued"}:
                 errors.append((path, f"section {section.get('id')} exam link status unknown"))
             papers = link.get("papers")
@@ -468,8 +474,9 @@ def validate(path):
             else:
                 has_question = isinstance(evidence.get("question_id"), str) and evidence.get("question_id", "").strip()
                 has_check = isinstance(evidence.get("check_id"), str) and evidence.get("check_id", "").strip()
-                if not has_question and not has_check:
-                    errors.append((path, f"exam trap {trap_id} evidence names neither a question nor a practice check"))
+                has_section = isinstance(evidence.get("section_id"), str) and evidence.get("section_id", "").strip()
+                if not (has_question or has_check or has_section):
+                    errors.append((path, f"exam trap {trap_id} evidence names neither a question, a practice check nor a section"))
                 status = trap.get("status")
                 source = evidence.get("source")
                 if status not in {"proven", "candidate"}:
@@ -480,6 +487,8 @@ def validate(path):
                     errors.append((path, f"exam trap {trap_id} is a candidate but its evidence is a paper"))
                 elif status == "proven" and not has_question:
                     errors.append((path, f"exam trap {trap_id} claims a paper but cites no paper question"))
+                elif status == "candidate" and not (has_check or has_section or (has_question and source == "authored")):
+                    errors.append((path, f"exam trap {trap_id} is a candidate without a check, a section or a question of our own"))
             check_provenance(trap.get("provenance"), f"{path}.{trap_id}.provenance", errors)
 
     checks = document.get("exam_recall_checks", [])
@@ -532,12 +541,14 @@ def validate(path):
     # The style rules apply to what we author. Teaching text is the source's
     # own prose, quoted with its provenance, and keeps the source's punctuation.
     authored = []
-    collect_text(document.get("learning_objectives"), authored)
+    if not document.get("facts_inherited"):
+        collect_text(document.get("learning_objectives"), authored)
     for section in sections:
         if isinstance(section, dict):
-            collect_text(section.get("learning_objectives"), authored)
+            if not section.get("facts_inherited"):
+                collect_text(section.get("learning_objectives"), authored)
+                collect_text(section.get("summary_points"), authored)
             collect_text(section.get("misconceptions"), authored)
-            collect_text(section.get("summary_points"), authored)
     for chunk in authored:
         check_style(chunk, path, errors)
 
