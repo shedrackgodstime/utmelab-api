@@ -52,9 +52,15 @@ data/theory/
 # Authored concept documents and images (static CDN staging, local only)
 # Layout: data/concepts/{concept_id}.json + data/concepts/images/
 data/concepts/
+<<<<<<< Updated upstream
 # Manual content candidate staging (fetched, mapped, verified before load);
 # production DB and source detail pages are the source of truth
 data/manual/
+=======
+# Handwritten concept archive (local only, never committed)
+data/concepts-archive/
+data/concepts-handwritten-2026-11-09.tar.gz
+>>>>>>> Stashed changes
 # Study note snapshots and replacement batches - local rollback / import
 # staging only, never committed; the live DB plus
 # docs/STUDY-NOTES-SOURCE-MANIFEST.md is the source of truth
