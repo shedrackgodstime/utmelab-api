@@ -78,6 +78,13 @@ async fn import_book(s: &DbState, book: &Book) -> Result<(), AppError> {
     Ok(())
 }
 
+/// The stored id of a chapter's child object. The documents number their
+/// sections and exercises from one, so the id is only unique inside the
+/// chapter; the store needs it unique across the book.
+fn namespaced(chapter_id: &str, local_id: &str) -> String {
+    format!("{chapter_id}:{local_id}")
+}
+
 async fn import_chapter(s: &DbState, chapter: &Chapter) -> Result<(), AppError> {
     let objectives = json_of(&chapter.learning_objectives, "chapters.learning_objectives")?;
     let prerequisites = json_of(&chapter.prerequisites, "chapters.prerequisites")?;
@@ -151,6 +158,7 @@ async fn import_section(
         "{}|{}|{}",
         section.id, section.title, teaching_text
     ));
+    let stored_id = namespaced(chapter_id, &section.id);
     execute_write_local(
         s,
         "INSERT INTO chapter_sections (id, chapter_id, order_index, slug, title, est_minutes, \
@@ -162,7 +170,7 @@ async fn import_section(
          worked_examples = ?10, misconceptions = ?11, summary_points = ?12, exam_links = ?13, \
          provenance = ?14, no_worked_example_reason = ?15, content_hash = ?16, updated_at = CURRENT_TIMESTAMP",
         vec![
-            turso::Value::Text(section.id.clone()),
+            turso::Value::Text(stored_id),
             turso::Value::Text(chapter_id.to_string()),
             turso::Value::Integer(section.order),
             turso::Value::Text(section.slug.clone()),
@@ -200,6 +208,8 @@ async fn import_exercise(
     let tags = json_of(&exercise.tags, "chapter_exercises.tags")?;
     let provenance = json_of(&exercise.provenance, "chapter_exercises.provenance")?;
     let hash = hash_of(&format!("{}|{}|{}", exercise.id, stem, answer));
+    let stored_id = namespaced(chapter_id, &exercise.id);
+    let stored_section = namespaced(chapter_id, &exercise.section_id);
     execute_write_local(
         s,
         "INSERT INTO chapter_exercises (id, chapter_id, section_id, tier, kind, difficulty, marks, \
@@ -211,9 +221,9 @@ async fn import_exercise(
          solution = ?12, hints = ?13, tags = ?14, provenance = ?15, solution_provenance = ?16, \
          answer_note = ?17, content_hash = ?18, updated_at = CURRENT_TIMESTAMP",
         vec![
-            turso::Value::Text(exercise.id.clone()),
+            turso::Value::Text(stored_id),
             turso::Value::Text(chapter_id.to_string()),
-            turso::Value::Text(exercise.section_id.clone()),
+            turso::Value::Text(stored_section),
             turso::Value::Text(exercise.tier.clone()),
             turso::Value::Text(exercise.kind.clone()),
             turso::Value::Integer(exercise.difficulty),
@@ -245,6 +255,8 @@ async fn import_trap(s: &DbState, chapter_id: &str, trap: &ExamTrap) -> Result<(
     let evidence = json_of(&trap.paper_evidence, "exam_traps.paper_evidence")?;
     let provenance = json_of(&trap.provenance, "exam_traps.provenance")?;
     let hash = hash_of(&format!("{}|{}|{}", trap.id, misconception, correction));
+    let stored_id = namespaced(chapter_id, &trap.id);
+    let stored_section = namespaced(chapter_id, &trap.section_id);
     execute_write_local(
         s,
         "INSERT INTO exam_traps (id, chapter_id, exam, subject, section_id, misconception, correction, \
@@ -254,11 +266,11 @@ async fn import_trap(s: &DbState, chapter_id: &str, trap: &ExamTrap) -> Result<(
          misconception = ?6, correction = ?7, signal = ?8, status = ?9, paper_evidence = ?10, \
          frequency = ?11, provenance = ?12, content_hash = ?13, updated_at = CURRENT_TIMESTAMP",
         vec![
-            turso::Value::Text(trap.id.clone()),
+            turso::Value::Text(stored_id),
             turso::Value::Text(chapter_id.to_string()),
             turso::Value::Text(trap.exam.clone()),
             turso::Value::Text(trap.subject.clone()),
-            turso::Value::Text(trap.section_id.clone()),
+            turso::Value::Text(stored_section),
             turso::Value::Text(misconception),
             turso::Value::Text(correction),
             turso::Value::Text(signal),
@@ -282,6 +294,8 @@ async fn import_recall_check(
     let options = json_of(&check.options, "exam_recall_checks.options")?;
     let explanation = json_of(&check.explanation, "exam_recall_checks.explanation")?;
     let hash = hash_of(&format!("{}|{}|{}", check.id, stem, check.answer));
+    let stored_id = namespaced(chapter_id, &check.id);
+    let stored_section = namespaced(chapter_id, &check.section_id);
     execute_write_local(
         s,
         "INSERT INTO exam_recall_checks (id, chapter_id, exam, subject, section_id, stem, options, \
@@ -291,11 +305,11 @@ async fn import_recall_check(
          stem = ?6, options = ?7, answer = ?8, explanation = ?9, difficulty = ?10, source = ?11, \
          content_hash = ?12, updated_at = CURRENT_TIMESTAMP",
         vec![
-            turso::Value::Text(check.id.clone()),
+            turso::Value::Text(stored_id),
             turso::Value::Text(chapter_id.to_string()),
             turso::Value::Text(check.exam.clone()),
             turso::Value::Text(check.subject.clone()),
-            turso::Value::Text(check.section_id.clone()),
+            turso::Value::Text(stored_section),
             turso::Value::Text(stem),
             turso::Value::Text(options),
             turso::Value::Text(check.answer.clone()),
@@ -867,11 +881,13 @@ mod tests {
         assert_eq!(chapter.sections.len(), 1);
         assert_eq!(chapter.exercises.len(), 1);
         assert_eq!(chapter.exam_traps.len(), 1);
-        // The section carries the ids of its own exercises.
+        // The section carries the ids of its own exercises, and every stored
+        // id is namespaced by its chapter so the book has no collisions.
         assert_eq!(
             chapter.sections[0].exercise_ids,
-            vec!["ex-sec-1-01".to_string()]
+            vec!["phy_forces_and_newtons_laws:ex-sec-1-01".to_string()]
         );
+        assert_eq!(chapter.sections[0].id, "phy_forces_and_newtons_laws:sec-1");
     }
 
     #[tokio::test]
@@ -908,10 +924,14 @@ mod tests {
             .expect("exercises");
         assert_eq!(all.len(), 1);
 
-        let by_section =
-            super::list_exercises(&state, "phy_forces_and_newtons_laws", Some("sec-1"), None)
-                .await
-                .expect("exercises");
+        let by_section = super::list_exercises(
+            &state,
+            "phy_forces_and_newtons_laws",
+            Some("phy_forces_and_newtons_laws:sec-1"),
+            None,
+        )
+        .await
+        .expect("exercises");
         assert_eq!(by_section.len(), 1);
 
         let by_tier =
