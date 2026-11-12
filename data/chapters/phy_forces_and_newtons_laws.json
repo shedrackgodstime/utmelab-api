@@ -1,6 +1,8 @@
 {
   "chapter_id": "phy_forces_and_newtons_laws",
-  "schema_version": 1,
+  "schema_version": 2,
+  "book_id": "secondary_physics",
+  "part_id": "part-1",
   "updated_at": "2026-11-12",
   "title": "Forces and Newton's Laws of Motion",
   "book": {
@@ -42,12 +44,217 @@
       "bloom_level": "analyse"
     }
   ],
+  "prerequisites": [],
+  "formula_sheet": [
+    {
+      "id": "f-1",
+      "expression": "$F_{net} = ma$",
+      "caption": {
+        "text": "Newton's second law",
+        "inline": []
+      },
+      "conditions": {
+        "text": "For a system with constant mass, where $F_{net}$ is the vector sum of the external forces on the system.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
+        "locator": "section 'Newton's Second Law of Motion: Concept of a System'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-2",
+      "expression": "$a = \\frac{F_{net}}{m}$",
+      "caption": {
+        "text": "Acceleration from the net external force",
+        "inline": []
+      },
+      "conditions": {
+        "text": "Acceleration is directly proportional to the net external force and inversely proportional to the mass.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
+        "locator": "section 'Newton's Second Law of Motion: Concept of a System'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "force",
+        "inline": []
+      },
+      "definition": {
+        "text": "A push or a pull, with magnitude and direction, so a force is a vector.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42069/index.cnxml",
+        "locator": "section 'Development of Force Concept'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "vector",
+        "inline": []
+      },
+      "definition": {
+        "text": "A quantity with both magnitude and direction, which adds like other vectors.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42069/index.cnxml",
+        "locator": "section 'Development of Force Concept'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "free-body diagram",
+        "inline": []
+      },
+      "definition": {
+        "text": "A diagram of a single body showing only the external forces acting on it from outside.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42069/index.cnxml",
+        "locator": "section 'Development of Force Concept'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "inertia",
+        "inline": []
+      },
+      "definition": {
+        "text": "The tendency of a body to resist a change in its velocity.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42130/index.cnxml",
+        "locator": "section 'Newton's First Law of Motion: Inertia'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "mass",
+        "inline": []
+      },
+      "definition": {
+        "text": "The measure of a body's inertia. Mass is intrinsic and does not change with the gravitational field.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42130/index.cnxml",
+        "locator": "section 'Newton's First Law of Motion: Inertia'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "net external force",
+        "inline": []
+      },
+      "definition": {
+        "text": "The vector sum of all the external forces acting on a system of interest.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
+        "locator": "section 'Newton's Second Law of Motion: Concept of a System'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-7",
+      "term": {
+        "text": "system of interest",
+        "inline": []
+      },
+      "definition": {
+        "text": "The object, or collection of objects, whose motion we are studying. Forces internal to the system cancel.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
+        "locator": "section 'Newton's Second Law of Motion: Concept of a System'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-8",
+      "term": {
+        "text": "action and reaction",
+        "inline": []
+      },
+      "definition": {
+        "text": "The two forces of Newton's third law. They always act on two different bodies, so they never cancel.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
+        "locator": "section 'Newton's Third Law of Motion: Symmetry in Forces'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
   "sections": [
     {
       "id": "sec-1",
       "order": 1,
+      "slug": "introduction-to-dynamics-newton-s-laws-of-motion",
       "title": "Introduction to Dynamics: Newton's Laws of Motion",
       "est_minutes": 12,
+      "learning_objectives": [
+        {
+          "id": "lo-1",
+          "statement": "Describe what dynamics studies and why forces are the subject of it.",
+          "bloom_level": "understand"
+        },
+        {
+          "id": "lo-2",
+          "statement": "Explain the role observation played in the development of Newton's laws.",
+          "bloom_level": "understand"
+        },
+        {
+          "id": "lo-3",
+          "statement": "State the conditions under which Newton's laws of motion give a good approximation.",
+          "bloom_level": "understand"
+        }
+      ],
       "teaching_text": {
         "blocks": [
           {
@@ -187,7 +394,7 @@
           "inline": []
         }
       ],
-      "practice_exercise_ids": [],
+      "exercise_ids": [],
       "provenance": {
         "publisher": "OpenStax",
         "title": "College Physics 2e",
@@ -200,8 +407,26 @@
     {
       "id": "sec-2",
       "order": 2,
+      "slug": "the-force-concept-and-the-free-body-diagram",
       "title": "The force concept and the free-body diagram",
       "est_minutes": 20,
+      "learning_objectives": [
+        {
+          "id": "lo-1",
+          "statement": "Define force as a vector quantity with magnitude and direction.",
+          "bloom_level": "understand"
+        },
+        {
+          "id": "lo-2",
+          "statement": "Draw and read a free-body diagram for a body in a given situation.",
+          "bloom_level": "understand"
+        },
+        {
+          "id": "lo-3",
+          "statement": "Explain how a stretched spring can serve as a standard of force.",
+          "bloom_level": "understand"
+        }
+      ],
       "teaching_text": {
         "blocks": [
           {
@@ -507,7 +732,7 @@
           "inline": []
         }
       ],
-      "practice_exercise_ids": [
+      "exercise_ids": [
         "ex-sec-2-01",
         "ex-sec-2-02"
       ],
@@ -522,8 +747,26 @@
     {
       "id": "sec-3",
       "order": 3,
+      "slug": "inertia-and-newton-s-first-law",
       "title": "Inertia and Newton's first law",
       "est_minutes": 16,
+      "learning_objectives": [
+        {
+          "id": "lo-1",
+          "statement": "State Newton's first law of motion.",
+          "bloom_level": "understand"
+        },
+        {
+          "id": "lo-2",
+          "statement": "Define inertia and relate it to mass.",
+          "bloom_level": "understand"
+        },
+        {
+          "id": "lo-3",
+          "statement": "Explain why a net external force is required for any change in velocity.",
+          "bloom_level": "understand"
+        }
+      ],
       "teaching_text": {
         "blocks": [
           {
@@ -718,7 +961,7 @@
           "inline": []
         }
       ],
-      "practice_exercise_ids": [
+      "exercise_ids": [
         "ex-sec-3-01"
       ],
       "provenance": {
@@ -732,8 +975,26 @@
     {
       "id": "sec-4",
       "order": 4,
+      "slug": "newton-s-second-law-and-the-choice-of-system",
       "title": "Newton's second law and the choice of system",
       "est_minutes": 26,
+      "learning_objectives": [
+        {
+          "id": "lo-1",
+          "statement": "State Newton's second law and define net external force.",
+          "bloom_level": "understand"
+        },
+        {
+          "id": "lo-2",
+          "statement": "Choose a system of interest and identify which forces are external to it.",
+          "bloom_level": "understand"
+        },
+        {
+          "id": "lo-3",
+          "statement": "Use F_net = ma to predict acceleration for a given system and net force.",
+          "bloom_level": "understand"
+        }
+      ],
       "teaching_text": {
         "blocks": [
           {
@@ -1645,7 +1906,7 @@
           "inline": []
         }
       ],
-      "practice_exercise_ids": [
+      "exercise_ids": [
         "ex-sec-4-01",
         "ex-sec-4-02",
         "ex-sec-4-03",
@@ -1664,8 +1925,26 @@
     {
       "id": "sec-5",
       "order": 5,
+      "slug": "newton-s-third-law-and-symmetry-in-forces",
       "title": "Newton's third law and symmetry in forces",
       "est_minutes": 22,
+      "learning_objectives": [
+        {
+          "id": "lo-1",
+          "statement": "State Newton's third law of motion.",
+          "bloom_level": "understand"
+        },
+        {
+          "id": "lo-2",
+          "statement": "Explain why forces occur in pairs and why action and reaction act on different bodies.",
+          "bloom_level": "understand"
+        },
+        {
+          "id": "lo-3",
+          "statement": "Apply the third law to everyday situations such as swimming, walking and rowing.",
+          "bloom_level": "understand"
+        }
+      ],
       "teaching_text": {
         "blocks": [
           {
@@ -2325,7 +2604,7 @@
           "inline": []
         }
       ],
-      "practice_exercise_ids": [
+      "exercise_ids": [
         "ex-sec-5-01",
         "ex-sec-5-02",
         "ex-sec-5-03",
@@ -2348,6 +2627,7 @@
       "id": "ex-sec-2-01",
       "section_id": "sec-2",
       "kind": "numeric",
+      "tier": "warm_up",
       "difficulty": 2,
       "marks": 2,
       "stem": {
@@ -2404,6 +2684,7 @@
       "id": "ex-sec-2-02",
       "section_id": "sec-2",
       "kind": "verbal",
+      "tier": "core",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -2440,6 +2721,7 @@
       "id": "ex-sec-3-01",
       "section_id": "sec-3",
       "kind": "algebraic",
+      "tier": "warm_up",
       "difficulty": 2,
       "marks": 2,
       "stem": {
@@ -2475,6 +2757,7 @@
       "id": "ex-sec-4-01",
       "section_id": "sec-4",
       "kind": "numeric",
+      "tier": "core",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -2511,6 +2794,7 @@
       "id": "ex-sec-4-02",
       "section_id": "sec-4",
       "kind": "numeric",
+      "tier": "stretch",
       "difficulty": 4,
       "marks": 4,
       "stem": {
@@ -2547,6 +2831,7 @@
       "id": "ex-sec-4-03",
       "section_id": "sec-4",
       "kind": "numeric",
+      "tier": "core",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -2587,6 +2872,7 @@
       "id": "ex-sec-4-04",
       "section_id": "sec-4",
       "kind": "numeric",
+      "tier": "stretch",
       "difficulty": 4,
       "marks": 4,
       "stem": {
@@ -2635,6 +2921,7 @@
       "id": "ex-sec-4-05",
       "section_id": "sec-4",
       "kind": "numeric",
+      "tier": "core",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -2669,12 +2956,22 @@
         "locator": "CNXML module m42073, exercise block exr-115",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
       },
-      "solution_provenance": "OpenStax CNXML solution element (in file)"
+      "solution_provenance": "OpenStax CNXML solution element (in file)",
+      "hints": [
+        {
+          "hint_number": 1,
+          "text": {
+            "text": "Work out the thrust from the mass and the acceleration, then remember that the friction force does not change.",
+            "inline": []
+          }
+        }
+      ]
     },
     {
       "id": "ex-sec-4-06",
       "section_id": "sec-4",
       "kind": "numeric",
+      "tier": "stretch",
       "difficulty": 4,
       "marks": 4,
       "stem": {
@@ -2705,12 +3002,22 @@
         "locator": "CNXML module m42073, exercise block exr-122",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
       },
-      "solution_provenance": "OpenStax CNXML solution element (in file)"
+      "solution_provenance": "OpenStax CNXML solution element (in file)",
+      "hints": [
+        {
+          "hint_number": 1,
+          "text": {
+            "text": "Use Newton's third law: the force on the ground equals the force on the person.",
+            "inline": []
+          }
+        }
+      ]
     },
     {
       "id": "ex-sec-5-01",
       "section_id": "sec-5",
       "kind": "algebraic",
+      "tier": "core",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -2754,6 +3061,7 @@
       "id": "ex-sec-5-02",
       "section_id": "sec-5",
       "kind": "algebraic",
+      "tier": "stretch",
       "difficulty": 4,
       "marks": 4,
       "stem": {
@@ -2789,6 +3097,7 @@
       "id": "ex-sec-5-03",
       "section_id": "sec-5",
       "kind": "numeric",
+      "tier": "core",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -2828,6 +3137,7 @@
       "id": "ex-sec-5-04",
       "section_id": "sec-5",
       "kind": "numeric",
+      "tier": "stretch",
       "difficulty": 4,
       "marks": 4,
       "stem": {
@@ -2885,12 +3195,22 @@
         "locator": "CNXML module m42074, exercise block exr-58",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
       },
-      "solution_provenance": "OpenStax CNXML solution element (in file)"
+      "solution_provenance": "OpenStax CNXML solution element (in file)",
+      "hints": [
+        {
+          "hint_number": 1,
+          "text": {
+            "text": "Write F = ma first, then divide the net force by the acceleration.",
+            "inline": []
+          }
+        }
+      ]
     },
     {
       "id": "ex-sec-5-05",
       "section_id": "sec-5",
       "kind": "algebraic",
+      "tier": "core",
       "difficulty": 3,
       "marks": 3,
       "stem": {
@@ -2926,6 +3246,7 @@
       "id": "ex-sec-5-06",
       "section_id": "sec-5",
       "kind": "numeric",
+      "tier": "stretch",
       "difficulty": 4,
       "marks": 4,
       "stem": {
@@ -2975,12 +3296,22 @@
         "locator": "CNXML module m42074, exercise block exr-75",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
       },
-      "solution_provenance": "OpenStax CNXML solution element (in file)"
+      "solution_provenance": "OpenStax CNXML solution element (in file)",
+      "hints": [
+        {
+          "hint_number": 1,
+          "text": {
+            "text": "Choose the system that includes both skaters, then apply the third law to the push between them.",
+            "inline": []
+          }
+        }
+      ]
     },
     {
       "id": "ex-sec-5-07",
       "section_id": "sec-5",
       "kind": "numeric",
+      "tier": "core",
       "difficulty": 3,
       "marks": 3,
       "stem": {

@@ -1,0 +1,40 @@
+{
+  "book_id": "secondary_physics",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Secondary Physics",
+  "subject_area": "physics",
+  "level": "secondary",
+  "edition": "draft-1",
+  "description": "The physics a senior secondary student in Nigeria needs, taught as a book rather than as a revision list. One book serves every exam that examines it.",
+  "parts": [
+    {
+      "id": "part-1",
+      "order": 1,
+      "title": "Motion and Force"
+    },
+    {
+      "id": "part-2",
+      "order": 2,
+      "title": "Energy and Motion"
+    },
+    {
+      "id": "part-3",
+      "order": 3,
+      "title": "Electricity and Magnetism"
+    }
+  ],
+  "chapters": [
+    "phy_forces_and_newtons_laws"
+  ],
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle",
+      "locator": "CNXML modules m42129, m42069, m42130, m42073, m42074",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

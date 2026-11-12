@@ -25,7 +25,8 @@ And three document schemas on the authoring side, which also do not meet:
 | `topic_notes` rows and their API model | no version | the exam scoped notes in production |
 | `data/chapters/*.json` | 1 | the new textbook chapters |
 
-The chapters are the canonical shape. Everything else adapts to them.
+The content shape is `docs/CONTENT-BOOK-SCHEMA.md`. The chapters are that
+shape in storage. Everything else adapts to them.
 
 ## 2. The layers
 

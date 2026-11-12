@@ -5,7 +5,7 @@ Last updated: 2026-11-12
 
 This is the whole picture: what we are building, what owns what, what the
 data looks like, what the API looks like, how content gets made, and the order
-we build it in. It is the map. Individual specs (`docs/CONTENT-CHAPTER-SPEC.md`,
+we build it in. It is the map. Individual specs (`docs/CONTENT-BOOK-SCHEMA.md`,
 `docs/CONTENT-WORKFLOW-CONTRACT.md`) are the detail under it.
 
 ## 1. What we are building
