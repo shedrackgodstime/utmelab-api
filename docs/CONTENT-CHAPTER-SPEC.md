@@ -217,6 +217,113 @@ An exam link says how one exam relates to this chapter.
       chapter alone.
 - [ ] Exam links resolve against the production catalog.
 
+## The exam side: where exam-only artefacts live
+
+Content teaches. An exam tests. An artefact belongs to the exam when it is
+only true inside that exam's world: paper style, mark allocation, what bit
+candidates last year, how the paper is weighted. It belongs to the chapter
+when it is true of the subject matter, whoever examines it.
+
+The exam side is not a dumping ground and it is not a footnote on the
+chapter. It is a set of objects owned by an exam, each pointing at the chapter
+section it examines.
+
+### The objects
+
+| Object | Belongs to | Holds | Points at |
+| --- | --- | --- | --- |
+| `exam_syllabus_map` | exam | what the exam examines, with weight, expected count, syllabus version and locator | `chapter_section_id` |
+| `exam_trap` | exam | a misconception candidates hold, how the paper shows it, the past paper that shows it | `chapter_section_id` |
+| `exam_recall_check` | exam | a practice item in the exam's own wording, with an answer and an explanation | `chapter_section_id` |
+| `exam_task` | exam | a theory or essay question with its marking method, formulation bridge, examiner report, diagram rubric and penalties | `chapter_section_id` |
+| `exam_paper_plan` | exam | the assessment plan for a paper: sections, paper size, percentage ranges, expected counts, method and confidence | `chapter_section_id` |
+| `exam_item` | exam | a question in the paper, with year, paper and number | `chapter_section_id` |
+
+Every one of them carries the exam, and every one of them carries the chapter
+section it belongs to. The chapter never references an exam object; the
+reference always points one way, from the exam to the chapter.
+
+### Shapes
+
+```jsonc
+// exam_syllabus_map
+{"exam": "JAMB", "subject": "mathematics", "topic_slug": "indices-logarithms-and-surds",
+ "subtopic_slug": "laws-of-indices", "chapter_section_id": "sec-2",
+ "weight_pct": null, "expected_count": null, "syllabus_version": "2024",
+ "source_locator": "production catalog topic and subtopic (read-only fetch YYYY-MM-DD)",
+ "status": "covered"}
+
+// exam_trap
+{"id": "trap_jamb_math_ap_nth_term",
+ "exam": "JAMB", "subject": "mathematics",
+ "topic_slug": "progression", "subtopic_slug": "sum-of-arithmetic-progression-a-p",
+ "chapter_section_id": "sec-2",
+ "misconception": "Using 'n' instead of 'n - 1' in the formula: writing T_n = a + nd.",
+ "correction": "The first term corresponds to n = 1, where (1 - 1)d = 0. Using 'nd' advances the sequence by one step.",
+ "signal": "the option is offered as the last term rather than the nth term",
+ "paper_evidence": {"exam": "JAMB", "year": 2023, "paper": 1, "question_number": "18",
+                    "source": "claimed_paper"},
+ "frequency": "recurring"}
+
+// exam_recall_check
+{"id": "rc_jamb_math_ap_01", "exam": "JAMB", "subject": "mathematics",
+ "chapter_section_id": "sec-2",
+ "stem": {"text": "Find the 15th term of the sequence 7, 11, 15, 19, ...", "inline": []},
+ "options": ["63", "59", "67", "71"], "answer": "a",
+ "explanation": {"text": "Here a = 7, d = 4, n = 15. T_15 = 7 + (15 - 1) * 4 = 63.", "inline": []},
+ "difficulty": 2, "source": "authored against the JAMB mathematics syllabus"}
+```
+
+### The borderline, decided
+
+- **A fact about the subject** stays in the chapter. "$a^0 = 1$ needs a nonzero
+  base" is true for every exam and every learner.
+- **A fact about a paper** goes to the exam. "JAMB puts the synonym first as
+  option A" is true of JAMB only, and WAEC does it differently.
+- **A misconception** is written in the chapter, because it is about the
+  subject. **A trap** is the same misconception with the exam's evidence
+  attached, and lives with the exam.
+- **A worked example** is teaching and stays in the chapter. **A past paper
+  question with its examiner report** is an exam item and an exam task.
+- **Mark allocation** belongs to the exam. **The reasoning behind the answer**
+  belongs to the chapter.
+- **Chapter exercises** are the source's own exercises, with the source's
+  solutions, and they teach. **Recall checks** are ours, written in the
+  exam's wording, and they drill. When a recall check is really a teaching
+  exercise, it belongs in the chapter and the exam pack links to it.
+
+### What a learner gets
+
+The exam pack is the artefact a candidate actually uses, and it is assembled
+per exam, subject and topic:
+
+1. the chapter sections that teach the topic,
+2. the exam's traps for that topic, with their paper evidence,
+3. the exam's recall checks,
+4. the exam's own past questions for the topic,
+5. the marking schemes for the exam's theory tasks.
+
+One route, one document, and the chapter is the teaching half of it:
+
+```
+GET /api/v2/exams/{exam}/subjects/{slug}/packs/{topic_slug}
+```
+
+### Migration from the current notes
+
+| Today | Moves to |
+| --- | --- |
+| `topic_notes.examiner_traps` (31 traps) | `exam_trap`, with paper evidence attached |
+| `topic_notes.active_recall_checks` (52 checks) | `exam_recall_check` |
+| `topic_notes.exam`, `.subject`, `.topic_slug`, `.subtopic_slug` | `exam_syllabus_map` rows |
+| `theory_questions` with marking methods and examiner reports (46, WAEC only) | `exam_task` |
+| `blueprints` (81 rows, JAMB only) | `exam_paper_plan` |
+| `questions` (3,870) | `exam_item`, each linked to the chapter section it teaches |
+
+A trap without paper evidence is an opinion. It may stay as a chapter
+misconception, but it does not become an exam trap until a past paper shows
+it.
+
 ## Migration from exam-scoped notes
 
 `topic_notes` stays in place while chapters are authored. Each production note
