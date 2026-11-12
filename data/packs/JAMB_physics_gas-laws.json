@@ -153,7 +153,107 @@
       "frequency": "candidate"
     }
   ],
-  "recall_checks": [],
+  "recall_checks": [
+    {
+      "id": "phy_temperature_and_gas_laws:rc-3",
+      "chapter_id": "phy_temperature_and_gas_laws",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "The pressure of a gas is explained by kinetic theory as arising from",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "the attraction between the molecules"
+        },
+        {
+          "id": "b",
+          "text": "the collisions of the molecules with the walls of the container"
+        },
+        {
+          "id": "c",
+          "text": "the weight of the gas above"
+        },
+        {
+          "id": "d",
+          "text": "the electrostatic repulsion between the molecules"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Each collision with a wall delivers an impulse, and the rate of these collisions gives the pressure.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_temperature_and_gas_laws:rc-4",
+      "chapter_id": "phy_temperature_and_gas_laws",
+      "section_id": "sec-7",
+      "stem": {
+        "text": "The relative humidity is the ratio of",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "the vapour pressure to the saturation vapour pressure"
+        },
+        {
+          "id": "b",
+          "text": "the vapour pressure to the atmospheric pressure"
+        },
+        {
+          "id": "c",
+          "text": "the saturation vapour pressure to the vapour pressure"
+        },
+        {
+          "id": "d",
+          "text": "the temperature to the dew point"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "Relative humidity is the vapour pressure divided by the saturation vapour pressure at the same temperature, expressed as a percentage.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_temperature_and_gas_laws:rc-5",
+      "chapter_id": "phy_temperature_and_gas_laws",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "During boiling, the temperature of the liquid",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "rises steadily"
+        },
+        {
+          "id": "b",
+          "text": "stays constant"
+        },
+        {
+          "id": "c",
+          "text": "falls steadily"
+        },
+        {
+          "id": "d",
+          "text": "rises and then falls"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The heat supplied goes into the latent heat of vaporisation, so the temperature stays at the boiling point until the liquid has gone.",
+        "inline": []
+      },
+      "difficulty": 2
+    }
+  ],
   "exercises": [
     "ex-sec-2-01",
     "ex-sec-2-02",
@@ -205,11 +305,10 @@
   "coverage": {
     "sections": 7,
     "traps": 2,
-    "recall_checks": 0,
+    "recall_checks": 3,
     "exercises": 44,
     "past_papers": 0,
     "gaps": [
-      "recall_checks",
       "past_papers"
     ]
   }

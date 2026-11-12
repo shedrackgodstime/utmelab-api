@@ -1081,7 +1081,635 @@
       "frequency": "candidate"
     }
   ],
-  "recall_checks": [],
+  "recall_checks": [
+    {
+      "id": "phy_atomic_physics:rc-3",
+      "chapter_id": "phy_atomic_physics",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "X-rays are produced when high-speed electrons strike a metal target. The characteristic X-rays of an element depend on",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "the speed of the electrons"
+        },
+        {
+          "id": "b",
+          "text": "the target material"
+        },
+        {
+          "id": "c",
+          "text": "the temperature of the target"
+        },
+        {
+          "id": "d",
+          "text": "the distance from the source"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The characteristic spectrum of an element is set by the energy levels of its atoms, so it identifies the target material. The speed of the electrons sets the continuous part of the spectrum.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_atomic_physics:rc-4",
+      "chapter_id": "phy_atomic_physics",
+      "section_id": "sec-9",
+      "stem": {
+        "text": "How many quantum numbers are needed to describe the state of an electron in an atom?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "Two"
+        },
+        {
+          "id": "b",
+          "text": "Three"
+        },
+        {
+          "id": "c",
+          "text": "Four"
+        },
+        {
+          "id": "d",
+          "text": "Five"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The four are the principal quantum number $n$, the orbital angular momentum quantum number $\\ell$, the magnetic quantum number $m_\\ell$ and the spin quantum number $m_s$.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_atomic_physics:rc-5",
+      "chapter_id": "phy_atomic_physics",
+      "section_id": "sec-10",
+      "stem": {
+        "text": "The Pauli exclusion principle states that",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "two electrons in an atom cannot have the same four quantum numbers"
+        },
+        {
+          "id": "b",
+          "text": "an atom can hold at most two electrons"
+        },
+        {
+          "id": "c",
+          "text": "electrons spin in the same direction"
+        },
+        {
+          "id": "d",
+          "text": "no two atoms can be identical"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "No two electrons in the same atom can have the same set of four quantum numbers. That is why each orbital holds at most two electrons, and those two must have opposite spins.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_frontiers_of_physics:rc-2",
+      "chapter_id": "phy_frontiers_of_physics",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "General relativity describes gravity as",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "a force between masses"
+        },
+        {
+          "id": "b",
+          "text": "the curvature of spacetime produced by mass and energy"
+        },
+        {
+          "id": "c",
+          "text": "a magnetic effect of the sun"
+        },
+        {
+          "id": "d",
+          "text": "a change in the electric field"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "In general relativity mass and energy curve spacetime, and bodies follow geodesics in that curved spacetime, which we experience as gravity.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_frontiers_of_physics:rc-3",
+      "chapter_id": "phy_frontiers_of_physics",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "A hallmark of chaos is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "a loss of predictability after a long time"
+        },
+        {
+          "id": "b",
+          "text": "an increase in the energy of the system"
+        },
+        {
+          "id": "c",
+          "text": "a periodic doubling of the period"
+        },
+        {
+          "id": "d",
+          "text": "perfect reversibility"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "In a chaotic system nearby starting points separate exponentially, so the outcome cannot be predicted far ahead even though the laws themselves remain reversible.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_nuclear_medicine:rc-2",
+      "chapter_id": "phy_nuclear_medicine",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "The most damaging effect of ionising radiation on the body is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "heating of the skin"
+        },
+        {
+          "id": "b",
+          "text": "damage to the genetic material in cells"
+        },
+        {
+          "id": "c",
+          "text": "a change in colour of the blood"
+        },
+        {
+          "id": "d",
+          "text": "loss of body weight"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The danger is that the radiation damages DNA, which can kill cells or cause mutations that become cancers.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_nuclear_medicine:rc-3",
+      "chapter_id": "phy_nuclear_medicine",
+      "section_id": "sec-7",
+      "stem": {
+        "text": "In nuclear fission",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "two light nuclei join to form a heavier one"
+        },
+        {
+          "id": "b",
+          "text": "a heavy nucleus splits into lighter ones and releases energy"
+        },
+        {
+          "id": "c",
+          "text": "mass is converted entirely into energy"
+        },
+        {
+          "id": "d",
+          "text": "a nucleus changes its charge without splitting"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Fission is the splitting of a heavy nucleus into lighter nuclei with the release of neutrons and energy.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_nuclear_medicine:rc-4",
+      "chapter_id": "phy_nuclear_medicine",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "The main difficulty with nuclear fusion as a power source is that",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "it produces too little energy"
+        },
+        {
+          "id": "b",
+          "text": "the nuclei must be brought together against their mutual repulsion at very high temperatures"
+        },
+        {
+          "id": "c",
+          "text": "the reaction cannot be sustained at all"
+        },
+        {
+          "id": "d",
+          "text": "it produces radioactive waste only"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Fusion needs temperatures of millions of kelvin to overcome the electrostatic repulsion between the nuclei, which is why it is hard to sustain.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_particle_physics:rc-2",
+      "chapter_id": "phy_particle_physics",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "Protons and neutrons are not elementary particles because they are",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "made of lighter particles"
+        },
+        {
+          "id": "b",
+          "text": "made of quarks"
+        },
+        {
+          "id": "c",
+          "text": "unstable"
+        },
+        {
+          "id": "d",
+          "text": "not affected by the strong force"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Protons and neutrons are each made of three quarks bound by the strong force.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_particle_physics:rc-3",
+      "chapter_id": "phy_particle_physics",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "The Heisenberg uncertainty principle says that",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "a particle's position and momentum cannot both be known precisely"
+        },
+        {
+          "id": "b",
+          "text": "energy is not conserved in quantum systems"
+        },
+        {
+          "id": "c",
+          "text": "the speed of light is variable"
+        },
+        {
+          "id": "d",
+          "text": "electrons orbit the nucleus in fixed paths"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The product of the uncertainties in position and momentum has a lower bound set by the reduced Planck constant.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_quantum_physics:rc-3",
+      "chapter_id": "phy_quantum_physics",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "The momentum of a photon of wavelength $\\lambda$ is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "$h/\\lambda$"
+        },
+        {
+          "id": "b",
+          "text": "$h\\lambda$"
+        },
+        {
+          "id": "c",
+          "text": "$\\lambda/h$"
+        },
+        {
+          "id": "d",
+          "text": "$hc/\\lambda$"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "From $E = hf$ and $E = pc$, we get $p = h/\\lambda$.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_quantum_physics:rc-4",
+      "chapter_id": "phy_quantum_physics",
+      "section_id": "sec-8",
+      "stem": {
+        "text": "The Heisenberg uncertainty principle states that",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "the position and the momentum of a particle cannot both be precisely known at the same time"
+        },
+        {
+          "id": "b",
+          "text": "an electron cannot exist"
+        },
+        {
+          "id": "c",
+          "text": "the speed of light is constant"
+        },
+        {
+          "id": "d",
+          "text": "energy is always quantised"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The uncertainty in position and the uncertainty in momentum satisfy $\\Delta x \\Delta p \\geq \\hbar/2$, so they cannot both be arbitrarily small.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_quantum_physics:rc-5",
+      "chapter_id": "phy_quantum_physics",
+      "section_id": "sec-9",
+      "stem": {
+        "text": "The particle-wave duality means that",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "light is either a wave or a particle but never both"
+        },
+        {
+          "id": "b",
+          "text": "light and matter show both wave and particle behaviour"
+        },
+        {
+          "id": "c",
+          "text": "only light shows wave behaviour"
+        },
+        {
+          "id": "d",
+          "text": "only matter shows particle behaviour"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Light shows interference and diffraction but also behaves as photons in the photoelectric effect, and matter shows the same duality.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_radioactivity:rc-3",
+      "chapter_id": "phy_radioactivity",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "In beta decay, a neutron changes into a proton and the nucleus emits",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "an alpha particle"
+        },
+        {
+          "id": "b",
+          "text": "an electron and an antineutrino"
+        },
+        {
+          "id": "c",
+          "text": "a positron"
+        },
+        {
+          "id": "d",
+          "text": "a photon"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Beta minus decay turns a neutron into a proton and releases an electron and an antineutrino, which is why the atomic number rises by one.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_radioactivity:rc-4",
+      "chapter_id": "phy_radioactivity",
+      "section_id": "sec-7",
+      "stem": {
+        "text": "The binding energy per nucleon of a nucleus is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "the same for every nucleus"
+        },
+        {
+          "id": "b",
+          "text": "largest for the nuclei near iron and smaller for very heavy nuclei"
+        },
+        {
+          "id": "c",
+          "text": "largest for the heaviest nuclei"
+        },
+        {
+          "id": "d",
+          "text": "zero for stable nuclei"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The curve rises to a maximum near iron and falls again for very heavy nuclei, which is why fission and fusion both release energy.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_radioactivity:rc-5",
+      "chapter_id": "phy_radioactivity",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "The activity of a sample of radioactive material depends on",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "only the number of nuclei present"
+        },
+        {
+          "id": "b",
+          "text": "the number of nuclei and the decay constant"
+        },
+        {
+          "id": "c",
+          "text": "the temperature of the sample"
+        },
+        {
+          "id": "d",
+          "text": "the pressure of the sample"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The activity is $A = \\lambda N$, so it depends on how many nuclei there are and on the decay constant of the isotope.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_special_relativity:rc-3",
+      "chapter_id": "phy_special_relativity",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A rod of proper length $L$ moves at a speed close to the speed of light. Its length measured in the laboratory frame is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "longer than $L$"
+        },
+        {
+          "id": "b",
+          "text": "shorter than $L$"
+        },
+        {
+          "id": "c",
+          "text": "equal to $L$"
+        },
+        {
+          "id": "d",
+          "text": "zero"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Length contraction means the moving rod is measured to be shorter along its direction of motion. Its proper length, measured in its own rest frame, is $L$.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_special_relativity:rc-4",
+      "chapter_id": "phy_special_relativity",
+      "section_id": "sec-7",
+      "stem": {
+        "text": "The rest energy of a particle of mass $m$ is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "$mc$"
+        },
+        {
+          "id": "b",
+          "text": "$mc^2$"
+        },
+        {
+          "id": "c",
+          "text": "$m/c^2$"
+        },
+        {
+          "id": "d",
+          "text": "$2mc^2$"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The rest energy is $E_0 = mc^2$.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_special_relativity:rc-5",
+      "chapter_id": "phy_special_relativity",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "At speeds close to the speed of light, the relativistic momentum is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "$mv$"
+        },
+        {
+          "id": "b",
+          "text": "$\\gamma mv$"
+        },
+        {
+          "id": "c",
+          "text": "$mv^2$"
+        },
+        {
+          "id": "d",
+          "text": "$m/v$"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The relativistic momentum is $p = \\gamma mv$, with $\\gamma = 1/\\sqrt{1-v^2/c^2}$, so it grows faster than $mv$.",
+        "inline": []
+      },
+      "difficulty": 3
+    }
+  ],
   "exercises": [
     "ex-sec-10-01",
     "ex-sec-10-02",
@@ -1188,11 +1816,10 @@
   "coverage": {
     "sections": 57,
     "traps": 14,
-    "recall_checks": 0,
+    "recall_checks": 19,
     "exercises": 99,
     "past_papers": 0,
     "gaps": [
-      "recall_checks",
       "past_papers"
     ]
   }

@@ -144,7 +144,74 @@
       "frequency": "candidate"
     }
   ],
-  "recall_checks": [],
+  "recall_checks": [
+    {
+      "id": "phy_vision_and_instruments:rc-3",
+      "chapter_id": "phy_vision_and_instruments",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "The angular magnification of an astronomical telescope, for small angles, is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "the ratio of the focal lengths of the objective and the eyepiece"
+        },
+        {
+          "id": "b",
+          "text": "the sum of the focal lengths"
+        },
+        {
+          "id": "c",
+          "text": "the product of the focal lengths"
+        },
+        {
+          "id": "d",
+          "text": "the ratio of the apertures"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "For small angles the magnification is $M = f_o/f_e$, the focal length of the objective divided by that of the eyepiece.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_vision_and_instruments:rc-4",
+      "chapter_id": "phy_vision_and_instruments",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "Red light and blue light have the same wavelength but different",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "speeds"
+        },
+        {
+          "id": "b",
+          "text": "frequencies"
+        },
+        {
+          "id": "c",
+          "text": "energies"
+        },
+        {
+          "id": "d",
+          "text": "refractive indices only"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Different colours have different frequencies, and since the speed in vacuum is the same, different wavelengths too. Blue has the higher frequency.",
+        "inline": []
+      },
+      "difficulty": 2
+    }
+  ],
   "exercises": [
     "ex-sec-2-01",
     "ex-sec-2-02",
@@ -173,11 +240,10 @@
   "coverage": {
     "sections": 7,
     "traps": 2,
-    "recall_checks": 0,
+    "recall_checks": 2,
     "exercises": 21,
     "past_papers": 0,
     "gaps": [
-      "recall_checks",
       "past_papers"
     ]
   }

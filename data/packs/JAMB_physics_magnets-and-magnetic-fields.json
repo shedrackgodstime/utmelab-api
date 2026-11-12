@@ -202,7 +202,107 @@
       "frequency": "candidate"
     }
   ],
-  "recall_checks": [],
+  "recall_checks": [
+    {
+      "id": "phy_magnetism:rc-3",
+      "chapter_id": "phy_magnetism",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "A particle moving parallel to a uniform magnetic field experiences",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "a maximum force"
+        },
+        {
+          "id": "b",
+          "text": "no magnetic force"
+        },
+        {
+          "id": "c",
+          "text": "a force that reverses it"
+        },
+        {
+          "id": "d",
+          "text": "a force perpendicular to the field"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The force is $qvB\\sin\\theta$, and with the velocity along the field the angle is zero, so the force is zero. The field changes only the direction of the particle's path.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_magnetism:rc-4",
+      "chapter_id": "phy_magnetism",
+      "section_id": "sec-10",
+      "stem": {
+        "text": "Ampere's law relates the magnetic field around a current-carrying conductor to",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "the current it carries"
+        },
+        {
+          "id": "b",
+          "text": "the voltage across it"
+        },
+        {
+          "id": "c",
+          "text": "the charge on it"
+        },
+        {
+          "id": "d",
+          "text": "the resistance of the conductor"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "Ampere's law says the circulation of the magnetic field around the conductor is proportional to the current enclosed.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_magnetism:rc-5",
+      "chapter_id": "phy_magnetism",
+      "section_id": "sec-11",
+      "stem": {
+        "text": "Two long parallel wires carrying currents in the same direction",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "attract each other"
+        },
+        {
+          "id": "b",
+          "text": "repel each other"
+        },
+        {
+          "id": "c",
+          "text": "have no effect on each other"
+        },
+        {
+          "id": "d",
+          "text": "attract only if the currents are unequal"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Same-direction currents repel, and opposite-direction currents attract.",
+        "inline": []
+      },
+      "difficulty": 3
+    }
+  ],
   "exercises": [
     "ex-sec-10-01",
     "ex-sec-11-01",
@@ -257,11 +357,10 @@
   "coverage": {
     "sections": 12,
     "traps": 2,
-    "recall_checks": 0,
+    "recall_checks": 3,
     "exercises": 47,
     "past_papers": 0,
     "gaps": [
-      "recall_checks",
       "past_papers"
     ]
   }

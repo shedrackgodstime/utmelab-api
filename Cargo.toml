@@ -24,7 +24,7 @@ schemars = "1"
 utoipa = { version = "6", features = ["axum_extras"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
-turso = { version = "0.8", features = ["sync"] }
+turso = { version = "0.8", default-features = false, features = ["sync", "mimalloc"] }
 dotenvy = "0.15"
 sha2 = "0.11.1"
 constant_time_eq = "0.6.1"

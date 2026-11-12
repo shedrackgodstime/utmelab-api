@@ -60,9 +60,9 @@ pub fn resolve_teaching_text(teaching: &mut serde_json::Value, media_base_url: &
         }
         for field in ["caption", "content", "text"] {
             if let Some(rt) = block.get_mut(field) {
-                if let Ok(mut parsed) = serde_json::from_value::<super::models::RichText>(
-                    rt.clone(),
-                ) {
+                if let Ok(mut parsed) =
+                    serde_json::from_value::<super::models::RichText>(rt.clone())
+                {
                     resolve_rich_text(&mut parsed, media_base_url);
                     if let Ok(written) = serde_json::to_value(&parsed) {
                         *rt = written;

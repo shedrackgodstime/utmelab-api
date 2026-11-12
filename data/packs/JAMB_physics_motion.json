@@ -498,6 +498,105 @@
       "difficulty": 1
     },
     {
+      "id": "phy_rotational_motion:rc-3",
+      "chapter_id": "phy_rotational_motion",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "When no external torque acts on a rotating body, its angular momentum",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "increases"
+        },
+        {
+          "id": "b",
+          "text": "decreases"
+        },
+        {
+          "id": "c",
+          "text": "is conserved"
+        },
+        {
+          "id": "d",
+          "text": "becomes zero"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "A body acted on by no net external torque keeps its angular momentum, though its rate of rotation may change as its inertia changes.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_rotational_motion:rc-4",
+      "chapter_id": "phy_rotational_motion",
+      "section_id": "sec-7",
+      "stem": {
+        "text": "In an inelastic collision between two rotating bodies, angular momentum is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "lost"
+        },
+        {
+          "id": "b",
+          "text": "conserved"
+        },
+        {
+          "id": "c",
+          "text": "doubled"
+        },
+        {
+          "id": "d",
+          "text": "converted entirely into heat"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Angular momentum is conserved in every collision when no external torque acts. Kinetic energy is the quantity that is not conserved in an inelastic collision.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_rotational_motion:rc-5",
+      "chapter_id": "phy_rotational_motion",
+      "section_id": "sec-8",
+      "stem": {
+        "text": "A spinning top precesses because",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "gravity exerts a torque about a point other than the pivot"
+        },
+        {
+          "id": "b",
+          "text": "the top's mass decreases"
+        },
+        {
+          "id": "c",
+          "text": "the top's angular momentum is zero"
+        },
+        {
+          "id": "d",
+          "text": "the top is in equilibrium"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The weight acts at the centre of mass, which is not on the axis of the pivot, so it exerts a torque that changes the direction of the angular momentum.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
       "id": "phy_two_dimensional_kinematics:rc-5",
       "chapter_id": "phy_two_dimensional_kinematics",
       "section_id": "sec-5",
@@ -572,7 +671,6 @@
     "ex-sec-6-10",
     "ex-sec-6-11",
     "ex-sec-6-12",
-    "ex-sec-6-13",
     "ex-sec-7-01",
     "ex-sec-7-02",
     "ex-sec-7-03",
@@ -613,8 +711,8 @@
   "coverage": {
     "sections": 15,
     "traps": 4,
-    "recall_checks": 7,
-    "exercises": 50,
+    "recall_checks": 10,
+    "exercises": 49,
     "past_papers": 3,
     "gaps": []
   }

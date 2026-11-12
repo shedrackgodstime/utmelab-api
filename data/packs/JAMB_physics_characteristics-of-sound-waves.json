@@ -161,7 +161,107 @@
       "frequency": "candidate"
     }
   ],
-  "recall_checks": [],
+  "recall_checks": [
+    {
+      "id": "phy_physics_of_hearing:rc-3",
+      "chapter_id": "phy_physics_of_hearing",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "The Doppler effect in sound is used to",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "measure the wavelength of sound"
+        },
+        {
+          "id": "b",
+          "text": "determine the relative motion of a source and an observer"
+        },
+        {
+          "id": "c",
+          "text": "measure the intensity of a sound"
+        },
+        {
+          "id": "d",
+          "text": "calculate the frequency of a tuning fork"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The shift in the observed frequency carries information about whether the source and the observer are approaching or separating.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_physics_of_hearing:rc-4",
+      "chapter_id": "phy_physics_of_hearing",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "In a closed pipe, the fundamental frequency corresponds to a column that is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "half a wavelength long"
+        },
+        {
+          "id": "b",
+          "text": "a wavelength long"
+        },
+        {
+          "id": "c",
+          "text": "a quarter wavelength long"
+        },
+        {
+          "id": "d",
+          "text": "two wavelengths long"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "A closed pipe has a node at the closed end and an antinode at the open end, so the fundamental is a quarter wavelength. An open pipe fundamental is a half wavelength.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_physics_of_hearing:rc-5",
+      "chapter_id": "phy_physics_of_hearing",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A sound intensity level of $0\\,\\text{dB}$ corresponds to",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "the threshold of hearing"
+        },
+        {
+          "id": "b",
+          "text": "the threshold of pain"
+        },
+        {
+          "id": "c",
+          "text": "the loudest sound audible"
+        },
+        {
+          "id": "d",
+          "text": "complete silence"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "Zero decibels is the faintest sound the average human ear can detect, and the threshold of pain is around $120\\,\\text{dB}$.",
+        "inline": []
+      },
+      "difficulty": 3
+    }
+  ],
   "exercises": [
     "ex-sec-3-01",
     "ex-sec-3-02",
@@ -229,11 +329,10 @@
   "coverage": {
     "sections": 8,
     "traps": 2,
-    "recall_checks": 0,
+    "recall_checks": 3,
     "exercises": 60,
     "past_papers": 0,
     "gaps": [
-      "recall_checks",
       "past_papers"
     ]
   }

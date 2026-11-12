@@ -1,0 +1,14 @@
+# The Rust version this repository builds with.
+#
+# The toolchain is pinned rather than floating on `stable`, because a new
+# Rust release can break a dependency without a line of our code changing.
+# That is not hypothetical: Rust 1.100 stabilised `Vec::new_in`, and
+# `turso_core 0.8.3` did not compile against it, so the quality gate failed
+# on a commit that changed nothing of ours.
+#
+# To move the pin, change this file, then run the gate on the new toolchain
+# before the release that needs it. `rustup toolchain install <version>` and
+# `cargo +<version> test --workspace` are the local equivalent.
+[toolchain]
+channel = "1.100.0"
+components = ["rustfmt", "clippy"]

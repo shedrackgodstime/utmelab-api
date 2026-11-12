@@ -350,8 +350,358 @@
       "subtopic_slug": null
     }
   ],
-  "traps": [],
-  "recall_checks": [],
+  "traps": [
+    {
+      "id": "phy_atomic_physics:trap-3",
+      "chapter_id": "phy_atomic_physics",
+      "status": "candidate",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "The atom was first shown to have a nucleus by J. J. Thomson.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It was Rutherford, from the gold foil experiment. Thomson's model had the positive charge spread through the atom, and the scattering of the fast alpha particles was what showed the mass was concentrated in a tiny nucleus.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers Thomson as the answer.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-1",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_atomic_physics:trap-4",
+      "chapter_id": "phy_atomic_physics",
+      "status": "candidate",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "The energy of an electron in the ground state of the hydrogen atom is zero.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It is negative, because the electron is bound to the nucleus. It takes a positive amount of energy, the ionisation energy, to free it, which is why the bound states sit below zero.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers zero as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-2",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_quantum_physics:trap-3",
+      "chapter_id": "phy_quantum_physics",
+      "status": "candidate",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "The energy of a photon is proportional to its wavelength.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It is proportional to its frequency, $E = hf$, so a longer wavelength means a lower energy. This is why the blue end of the spectrum carries more energy per photon than the red end.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the wavelength reading as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-1",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_quantum_physics:trap-4",
+      "chapter_id": "phy_quantum_physics",
+      "status": "candidate",
+      "section_id": "sec-3",
+      "misconception": {
+        "text": "The kinetic energy of the electrons emitted in the photoelectric effect is set by the intensity of the light.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It is set by the frequency, $K = hf - \\phi$. The intensity decides how many electrons come out, not how fast they are, which is the observation that told Bohr the light was quantised.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the intensity reading as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-2",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_radioactivity:trap-3",
+      "chapter_id": "phy_radioactivity",
+      "status": "candidate",
+      "section_id": "sec-6",
+      "misconception": {
+        "text": "The half-life of a radioactive sample is the time in which all of it decays.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It is the time in which half the nuclei decay. The sample never decays completely in a finite time, and the same half-life applies however much you start with.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the full decay as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-1",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_radioactivity:trap-4",
+      "chapter_id": "phy_radioactivity",
+      "status": "candidate",
+      "section_id": "sec-5",
+      "misconception": {
+        "text": "In alpha decay the nucleus emits an electron.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It emits a helium nucleus, made of two protons and two neutrons, and the atomic number falls by two. The electron is the beta particle, emitted in beta decay instead.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the electron as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-2",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "recall_checks": [
+    {
+      "id": "phy_atomic_physics:rc-1",
+      "chapter_id": "phy_atomic_physics",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "Who proposed the model of the atom as a positively charged nucleus with electrons around it?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "J. J. Thomson"
+        },
+        {
+          "id": "b",
+          "text": "Ernest Rutherford"
+        },
+        {
+          "id": "c",
+          "text": "Niels Bohr"
+        },
+        {
+          "id": "d",
+          "text": "James Chadwick"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Rutherford's gold foil experiment led to the nuclear model of the atom: a small, dense, positively charged nucleus with electrons around it.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_atomic_physics:rc-2",
+      "chapter_id": "phy_atomic_physics",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "According to Bohr's model of the hydrogen atom, the energy of an electron in the ground state is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "zero"
+        },
+        {
+          "id": "b",
+          "text": "negative"
+        },
+        {
+          "id": "c",
+          "text": "positive"
+        },
+        {
+          "id": "d",
+          "text": "the same as the energy of a free electron"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The electron is bound, so its total energy is negative. It takes a positive amount of energy, the ionisation energy, to free it.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_quantum_physics:rc-1",
+      "chapter_id": "phy_quantum_physics",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "The energy of a photon is given by",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "$E = hf$"
+        },
+        {
+          "id": "b",
+          "text": "$E = h/f$"
+        },
+        {
+          "id": "c",
+          "text": "$E = mc^2$"
+        },
+        {
+          "id": "d",
+          "text": "$E = hv$"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "Planck's relation gives $E = hf$, so a photon's energy is proportional to its frequency.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_quantum_physics:rc-2",
+      "chapter_id": "phy_quantum_physics",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "In the photoelectric effect, the kinetic energy of the emitted electrons depends on",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "the intensity of the light"
+        },
+        {
+          "id": "b",
+          "text": "the frequency of the light"
+        },
+        {
+          "id": "c",
+          "text": "the distance of the metal from the source"
+        },
+        {
+          "id": "d",
+          "text": "the area of the metal surface"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The maximum kinetic energy is $K = hf - \\phi$, so it is set by the frequency of the light. The intensity changes only how many electrons are emitted.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_radioactivity:rc-1",
+      "chapter_id": "phy_radioactivity",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "The half-life of a radioactive sample is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "the time for all of it to decay"
+        },
+        {
+          "id": "b",
+          "text": "the time for half of it to decay"
+        },
+        {
+          "id": "c",
+          "text": "the time for its mass to halve by any route"
+        },
+        {
+          "id": "d",
+          "text": "the time for the activity to reach zero"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The half-life is the time in which half the nuclei decay. The mass also halves in that time, but the definition is in terms of the nuclei.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_radioactivity:rc-2",
+      "chapter_id": "phy_radioactivity",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "In an alpha decay the nucleus emits",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "an electron"
+        },
+        {
+          "id": "b",
+          "text": "a helium nucleus"
+        },
+        {
+          "id": "c",
+          "text": "a positron"
+        },
+        {
+          "id": "d",
+          "text": "a gamma ray only"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Alpha decay emits a helium nucleus, made of two protons and two neutrons.",
+        "inline": []
+      },
+      "difficulty": 2
+    }
+  ],
   "exercises": [
     "ex-sec-10-01",
     "ex-sec-10-02",
@@ -440,13 +790,11 @@
   "paper_note": "No past paper for this topic yet.",
   "coverage": {
     "sections": 27,
-    "traps": 0,
-    "recall_checks": 0,
+    "traps": 6,
+    "recall_checks": 6,
     "exercises": 82,
     "past_papers": 0,
     "gaps": [
-      "traps",
-      "recall_checks",
       "past_papers"
     ]
   }

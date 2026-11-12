@@ -304,7 +304,231 @@
       "frequency": "candidate"
     }
   ],
-  "recall_checks": [],
+  "recall_checks": [
+    {
+      "id": "phy_heat_transfer:rc-4",
+      "chapter_id": "phy_heat_transfer",
+      "section_id": "sec-7",
+      "stem": {
+        "text": "In convection, the heated fluid",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "expands, becomes less dense and rises"
+        },
+        {
+          "id": "b",
+          "text": "contracts, becomes denser and rises"
+        },
+        {
+          "id": "c",
+          "text": "expands, becomes denser and rises"
+        },
+        {
+          "id": "d",
+          "text": "flows downwards as it is heated"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "Heating makes the fluid expand and less dense, so it rises and cooler denser fluid takes its place. That circulation carries the heat.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_heat_transfer:rc-5",
+      "chapter_id": "phy_heat_transfer",
+      "section_id": "sec-8",
+      "stem": {
+        "text": "The radiation emitted by a body depends on",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "only its temperature"
+        },
+        {
+          "id": "b",
+          "text": "only its surface area"
+        },
+        {
+          "id": "c",
+          "text": "its temperature and its surface area and colour"
+        },
+        {
+          "id": "d",
+          "text": "the medium surrounding it"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "A hot dark surface radiates far better than a hot polished one, and the rate rises with the fourth power of the absolute temperature.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_thermodynamics:rc-1",
+      "chapter_id": "phy_thermodynamics",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "The first law of thermodynamics is a statement of the conservation of",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "momentum"
+        },
+        {
+          "id": "b",
+          "text": "energy"
+        },
+        {
+          "id": "c",
+          "text": "charge"
+        },
+        {
+          "id": "d",
+          "text": "mass"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The first law says the change in internal energy equals the heat added less the work done by the gas.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_thermodynamics:rc-2",
+      "chapter_id": "phy_thermodynamics",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "Heat added to a gas always raises its temperature.",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "True"
+        },
+        {
+          "id": "b",
+          "text": "False"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The heat may go into raising the temperature, into doing work as the gas expands, or into both. The first law says where it goes, not where it ends.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_thermodynamics:rc-3",
+      "chapter_id": "phy_thermodynamics",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "The efficiency of a heat engine is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "the ratio of the work done to the heat absorbed"
+        },
+        {
+          "id": "b",
+          "text": "the ratio of the heat rejected to the heat absorbed"
+        },
+        {
+          "id": "c",
+          "text": "the heat absorbed divided by the work done"
+        },
+        {
+          "id": "d",
+          "text": "always 100 percent"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The efficiency is $\\eta = W/Q_h$, the useful work as a fraction of the heat taken from the hot source. It is always less than one.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_thermodynamics:rc-4",
+      "chapter_id": "phy_thermodynamics",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "The Carnot efficiency is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "$\\eta = 1 - T_c/T_h$"
+        },
+        {
+          "id": "b",
+          "text": "$\\eta = T_h/T_c$"
+        },
+        {
+          "id": "c",
+          "text": "$\\eta = 1 - T_h/T_c$"
+        },
+        {
+          "id": "d",
+          "text": "$\\eta = T_h - T_c$"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The Carnot efficiency depends only on the absolute temperatures of the source and the sink: $\\eta = 1 - T_c/T_h$.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_thermodynamics:rc-5",
+      "chapter_id": "phy_thermodynamics",
+      "section_id": "sec-7",
+      "stem": {
+        "text": "The second law of thermodynamics says that",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "energy is not conserved"
+        },
+        {
+          "id": "b",
+          "text": "the entropy of an isolated system never decreases"
+        },
+        {
+          "id": "c",
+          "text": "all processes are reversible"
+        },
+        {
+          "id": "d",
+          "text": "heat flows from cold to hot spontaneously"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The second law states that the total entropy of an isolated system cannot decrease. It does not affect the conservation of energy, which is the first law.",
+        "inline": []
+      },
+      "difficulty": 3
+    }
+  ],
   "exercises": [
     "ex-sec-2-01",
     "ex-sec-2-02",
@@ -369,11 +593,10 @@
   "coverage": {
     "sections": 16,
     "traps": 4,
-    "recall_checks": 0,
+    "recall_checks": 7,
     "exercises": 57,
     "past_papers": 0,
     "gaps": [
-      "recall_checks",
       "past_papers"
     ]
   }

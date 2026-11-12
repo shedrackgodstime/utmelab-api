@@ -54,7 +54,12 @@ jobs:
           ref: ${{ github.event_name == 'release' && github.event.release.tag_name || github.sha }}
 
       - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
+        # The version comes from rust-toolchain.toml, so the gate and the
+        # deploy build with the same compiler, and a new Rust release cannot
+        # break a dependency without a line of our code changing.
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: 1.100.0
       - name: Rust cache
         uses: Swatinem/rust-cache@v2
 

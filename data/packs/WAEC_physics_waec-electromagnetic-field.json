@@ -306,8 +306,242 @@
       "subtopic_slug": null
     }
   ],
-  "traps": [],
-  "recall_checks": [],
+  "traps": [
+    {
+      "id": "phy_em_induction_and_ac:trap-3",
+      "chapter_id": "phy_em_induction_and_ac",
+      "status": "candidate",
+      "section_id": "sec-3",
+      "misconception": {
+        "text": "Faraday's law says the induced emf is proportional to the magnetic flux itself.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It is proportional to the rate of change of the flux, so a steady flux induces nothing at all. The minus sign in Lenz's law is what says the induced current opposes the change.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the flux itself as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-1",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_em_induction_and_ac:trap-4",
+      "chapter_id": "phy_em_induction_and_ac",
+      "status": "candidate",
+      "section_id": "sec-3",
+      "misconception": {
+        "text": "The induced current flows so as to reinforce the magnetic field that caused it.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It opposes the change that produced it, which is how the conservation of energy shows up in induction. A current that reinforced the field would give away energy for nothing.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the reinforcing direction as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-2",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_magnetism:trap-3",
+      "chapter_id": "phy_magnetism",
+      "status": "candidate",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "Like poles of a magnet attract each other.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Like poles repel and unlike poles attract. That is the first law of magnetism, and it is the same pattern as the repulsion between like electric charges.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers attraction as the answer.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-1",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_magnetism:trap-4",
+      "chapter_id": "phy_magnetism",
+      "status": "candidate",
+      "section_id": "sec-5",
+      "misconception": {
+        "text": "The force on a charged particle in a magnetic field does not depend on the speed of the particle.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It does, because the force is $F = qvB\\sin\\theta$. A stationary charge in a magnetic field feels no magnetic force at all, and the force grows with the speed.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the speed-independent reading as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-2",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "recall_checks": [
+    {
+      "id": "phy_em_induction_and_ac:rc-1",
+      "chapter_id": "phy_em_induction_and_ac",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "Faraday's law states that the induced emf is proportional to",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "the magnetic flux"
+        },
+        {
+          "id": "b",
+          "text": "the rate of change of magnetic flux"
+        },
+        {
+          "id": "c",
+          "text": "the current in the coil"
+        },
+        {
+          "id": "d",
+          "text": "the area of the coil alone"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Faraday's law gives $\\mathcal{E} = -N\\frac{\\Delta\\Phi}{\\Delta t}$, so it is the rate of change of the flux, not the flux itself.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_em_induction_and_ac:rc-2",
+      "chapter_id": "phy_em_induction_and_ac",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "Lenz's law says that the direction of the induced current is such that it",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "adds to the magnetic field that caused it"
+        },
+        {
+          "id": "b",
+          "text": "opposes the change that produced it"
+        },
+        {
+          "id": "c",
+          "text": "is always clockwise"
+        },
+        {
+          "id": "d",
+          "text": "is the same as the current in the primary coil"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The induced current opposes the change in magnetic flux that produced it, which is how the conservation of energy appears here.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_magnetism:rc-1",
+      "chapter_id": "phy_magnetism",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "Like poles of a magnet",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "attract"
+        },
+        {
+          "id": "b",
+          "text": "repel"
+        },
+        {
+          "id": "c",
+          "text": "have no effect"
+        },
+        {
+          "id": "d",
+          "text": "attract only when close"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Like poles repel and unlike poles attract, which is the first law of magnetism.",
+        "inline": []
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "phy_magnetism:rc-2",
+      "chapter_id": "phy_magnetism",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "The force on a charged particle moving in a magnetic field is proportional to",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "its speed"
+        },
+        {
+          "id": "b",
+          "text": "the square of its speed"
+        },
+        {
+          "id": "c",
+          "text": "the field only"
+        },
+        {
+          "id": "d",
+          "text": "the charge and the speed and the field"
+        }
+      ],
+      "answer": "d",
+      "explanation": {
+        "text": "The magnetic force is $F = qvB\\sin\\theta$, so it depends on the charge, the speed, the field and the angle between the velocity and the field.",
+        "inline": []
+      },
+      "difficulty": 2
+    }
+  ],
   "exercises": [
     "ex-sec-10-01",
     "ex-sec-10-02",
@@ -380,13 +614,11 @@
   "paper_note": "No past paper for this topic yet.",
   "coverage": {
     "sections": 25,
-    "traps": 0,
-    "recall_checks": 0,
+    "traps": 4,
+    "recall_checks": 4,
     "exercises": 66,
     "past_papers": 0,
     "gaps": [
-      "traps",
-      "recall_checks",
       "past_papers"
     ]
   }

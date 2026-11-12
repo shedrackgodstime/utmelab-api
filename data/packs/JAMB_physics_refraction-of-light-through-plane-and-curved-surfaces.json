@@ -152,7 +152,107 @@
       "frequency": "candidate"
     }
   ],
-  "recall_checks": [],
+  "recall_checks": [
+    {
+      "id": "phy_geometric_optics:rc-3",
+      "chapter_id": "phy_geometric_optics",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "Total internal reflection occurs when light passes from",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "a less dense to a more dense medium"
+        },
+        {
+          "id": "b",
+          "text": "a more dense to a less dense medium at an angle above the critical angle"
+        },
+        {
+          "id": "c",
+          "text": "any medium into a vacuum"
+        },
+        {
+          "id": "d",
+          "text": "a denser medium into the same denser medium"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "It needs a denser medium and an incident angle above the critical angle, and at that point the refracted ray disappears.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_geometric_optics:rc-4",
+      "chapter_id": "phy_geometric_optics",
+      "section_id": "sec-7",
+      "stem": {
+        "text": "A converging lens forms a real, inverted, magnified image when the object is placed",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "beyond the focal length"
+        },
+        {
+          "id": "b",
+          "text": "at the focal point"
+        },
+        {
+          "id": "c",
+          "text": "inside the focal length"
+        },
+        {
+          "id": "d",
+          "text": "at twice the focal length"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "With the object beyond the focal length the image is real and inverted, and it is magnified when the object is between one and two focal lengths.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "phy_geometric_optics:rc-5",
+      "chapter_id": "phy_geometric_optics",
+      "section_id": "sec-8",
+      "stem": {
+        "text": "A convex mirror always produces an image that is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "real and inverted"
+        },
+        {
+          "id": "b",
+          "text": "virtual, upright and diminished"
+        },
+        {
+          "id": "c",
+          "text": "virtual and inverted"
+        },
+        {
+          "id": "d",
+          "text": "real and magnified"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "A convex mirror always gives a virtual, upright and diminished image behind the mirror, which is why it is used as a rear view mirror.",
+        "inline": []
+      },
+      "difficulty": 2
+    }
+  ],
   "exercises": [
     "ex-sec-2-01",
     "ex-sec-4-01",
@@ -194,11 +294,10 @@
   "coverage": {
     "sections": 8,
     "traps": 2,
-    "recall_checks": 0,
+    "recall_checks": 3,
     "exercises": 34,
     "past_papers": 0,
     "gaps": [
-      "recall_checks",
       "past_papers"
     ]
   }
