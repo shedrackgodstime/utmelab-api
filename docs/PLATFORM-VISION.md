@@ -223,7 +223,94 @@ them in one place, per topic.
 
 Phase A is done. Phase B is the next real piece of work.
 
-## 9. The rules that keep it honest
+## 9. Levels: secondary and foundation
+
+The main audience is senior secondary. The platform should also serve the
+tertiary audience, because a student who enters university with a weak
+foundation in mathematics, English or accounting is the same learner a year
+later.
+
+We already hold the material. 211 of the 529 concepts in the corpus are
+university level:
+
+| Source | Concepts | Level |
+| --- | --- | --- |
+| University Physics (OpenStax) | 93 | university |
+| College Algebra (OpenStax) | 27 | university bridge |
+| Contemporary Mathematics (OpenStax) | 20 | Nigerian university general mathematics |
+| Calculus Volume 1 (OpenStax) | 7 | university |
+| GST 101 and GST 102 Use of English (National Open University of Nigeria) | 40 | Nigerian university course |
+| Spoken English: Phonetics and Phonology | 4 | tertiary ELT |
+| Communication Essentials for College | 3 | tertiary ELT |
+| Writing for Success | 2 | tertiary ELT |
+| BBA1003 and BCOM1003 Principles of Financial Accounting | 4 | Nigerian university course |
+| ACC 308 Public Sector Accounting | 2 | Nigerian university course |
+| Statistics, Prealgebra, Algebra and Trigonometry, Entrepreneurship, World Regional Geography | 11 | university |
+
+### Two tracks
+
+| Track | Audience | Exam layer | Textbook |
+| --- | --- | --- | --- |
+| Secondary | senior secondary candidates | JAMB, WAEC, NECO | one book per subject area |
+| Foundation | university entrants and students | none | one foundation book per subject area where it pays |
+
+A book carries a level. A chapter may override it, so a secondary book can
+hold the advanced chapters that bridge into the first year of university
+without a second book for every subject area.
+
+The foundation books that pay, in order of audience size: Mathematics
+(Contemporary Mathematics plus College Algebra, Calculus and Statistics),
+English Language (GST 101 and GST 102), Physics (University Physics),
+Accounting (BBA1003 and ACC 308), Economics, Chemistry, Biology, Computer
+Studies.
+
+### The course layer
+
+Tertiary content has no exam, so the exam layer does not apply to it. It has
+a smaller sibling, the course layer:
+
+- `course_syllabus_map`: course code, course title, institution, level, the
+  chapter sections it uses, and the module structure where the course has one
+  (GST 101 is organised as M1U1 to M1U5, and our concepts are already keyed
+  to that structure).
+- No traps, no past papers, no paper plan. A course is a map, not an exam.
+
+This is the cleanest test of the architecture. If a university student will
+pay for the textbook alone, with no exam layer at all, then the textbook is
+genuinely good. That is a harder standard than anything the exam layer can
+give us.
+
+### The gaps for the foundation track
+
+- Concepts carry no level today. Adding a `level` field to the concept schema
+  is the first change.
+- No tertiary practice bank. All 3,870 questions are secondary level. The
+  chapter exercises are the practice, and they come from the sources with
+  their solutions, so the track works, but there is no Nigerian tertiary
+  question bank to add later.
+- No course map exists yet. One table and one authoring pass.
+
+## 10. The licence wall
+
+This is the constraint that decides how much of the corpus can ship.
+
+| Licence status | Concepts | Commercial use |
+| --- | --- | --- |
+| CC BY-NC-SA 4.0, non-commercial | 462 of 529 | no |
+| All rights reserved, review pending | 45 | unknown |
+| CC BY 4.0 | 11 | yes |
+| CC BY-NC 4.0 | 3 | no |
+| Published as is, status to be reviewed | 8 | unknown |
+
+Nearly every concept we hold is non-commercial or unreviewed. If UTME-Lab
+charges money, the shipped books have to be built from the permissive sources
+and the corpus needs a licence review before the rest of it can be used.
+
+This is a business decision, not a technical one, and it changes the plan:
+either we resolve the licence review per source, or we restrict the textbook
+to sources we may ship commercially, or the platform stays free.
+
+## 11. The rules that keep it honest
 
 - **No invention.** Every fact, figure, example and answer traces to a source
   with a locator.
@@ -236,19 +323,15 @@ Phase A is done. Phase B is the next real piece of work.
 - **The learner is the test.** A chapter that only makes sense to someone who
   already knows the topic is not finished.
 
-## 10. Decisions I want from you
+## 12. Decisions still open
 
-1. **Book granularity.** One book per subject area (Secondary Mathematics,
-   English Language and Literature, Physics, Chemistry, Biology, Economics,
-   Government, Commerce and Accounting, Computer Studies, Geography and
-   History, Religious Studies, Nigerian Languages, Arts and Music), or one
-   book per exam subject (which would recreate the duplication we are
-   removing)?
-2. **Level.** We are writing for senior secondary. Do we also serve the
-   tertiary audience (WAEC NECO are senior secondary, JAMB is for the
-   university), or is one level enough?
-3. **Traps.** We have 3,706 claimed-paper questions with years and paper
+1. **Licensing.** Does UTME-Lab charge money? If yes, the corpus needs a
+   licence review before it ships, and the books are built from the sources we
+   may use commercially. If no, the whole corpus is available as it is.
+2. **Traps.** We have 3,706 claimed-paper questions with years and paper
    numbers. Do we mine them for the trap evidence, or do we write traps from
    the examiner reports first and attach evidence later?
-4. **Novels.** 6 novels and 220 novel questions, only 54 with an explanation.
-   Are novels part of the textbook, or a separate product surface?
+3. **Foundation pilot.** Mathematics first (Contemporary Mathematics, the
+   largest audience and the sources are already here), or Use of English for
+   Tertiary first (40 concepts, already organised by module, so the course map
+   is nearly written)?
