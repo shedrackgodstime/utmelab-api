@@ -92,6 +92,81 @@
         "url": "https://api.utmelab.com/api/v1/questions/q_waec_2023_physics_69404"
       },
       "frequency": "recurring"
+    },
+    {
+      "id": "phy_linear_momentum_and_collisions:trap-2",
+      "chapter_id": "phy_linear_momentum_and_collisions",
+      "status": "candidate",
+      "section_id": "sec-3",
+      "misconception": {
+        "text": "Impulse is the force divided by the time it acts.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Impulse is the force multiplied by the time, and it equals the change in momentum.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the force divided by the time as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-2",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_linear_momentum_and_collisions:trap-3",
+      "chapter_id": "phy_linear_momentum_and_collisions",
+      "status": "candidate",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "Momentum is conserved only in a collision where the bodies bounce apart.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Momentum is conserved in every collision where the net external force is negligible, whether or not the bodies bounce.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the conservation of momentum only for a rebound.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-3",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_linear_momentum_and_collisions:trap-4",
+      "chapter_id": "phy_linear_momentum_and_collisions",
+      "status": "candidate",
+      "section_id": "sec-5",
+      "misconception": {
+        "text": "In an elastic collision only the momentum is conserved.",
+        "inline": []
+      },
+      "correction": {
+        "text": "In an elastic collision the total kinetic energy is conserved as well, and the bodies exchange speed.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the conservation of the momentum alone as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-4",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
     }
   ],
   "recall_checks": [
@@ -124,6 +199,105 @@
       "answer": "a",
       "explanation": {
         "text": "Newton's second law gives $a = F/m = 15/5 = 3$ m/s².",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_linear_momentum_and_collisions:rc-2",
+      "chapter_id": "phy_linear_momentum_and_collisions",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "A force of 20 N acts on a body for 5 s. What is the impulse?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "4 N s"
+        },
+        {
+          "id": "b",
+          "text": "25 N s"
+        },
+        {
+          "id": "c",
+          "text": "100 N s"
+        },
+        {
+          "id": "d",
+          "text": "400 N s"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "Impulse is force times time, so J = 20 x 5 = 100 N s, and that is the change in momentum.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_linear_momentum_and_collisions:rc-3",
+      "chapter_id": "phy_linear_momentum_and_collisions",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "In a collision where the net external force on the system is negligible, the total momentum before the collision",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "is always zero"
+        },
+        {
+          "id": "b",
+          "text": "equals the total momentum after the collision"
+        },
+        {
+          "id": "c",
+          "text": "is greater than the total momentum after the collision"
+        },
+        {
+          "id": "d",
+          "text": "equals the total kinetic energy"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Momentum is conserved in a collision when the net external force is negligible, and it holds in every direction at once.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_linear_momentum_and_collisions:rc-4",
+      "chapter_id": "phy_linear_momentum_and_collisions",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "In an elastic collision, which of these is conserved?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "only the momentum"
+        },
+        {
+          "id": "b",
+          "text": "only the kinetic energy"
+        },
+        {
+          "id": "c",
+          "text": "both the momentum and the kinetic energy"
+        },
+        {
+          "id": "d",
+          "text": "neither of them"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "An elastic collision conserves the total momentum and the total kinetic energy. The bodies exchange speed.",
         "inline": []
       },
       "difficulty": 2
@@ -176,8 +350,8 @@
   "paper_note": "1 of 1 papers are self-published claims, labelled as such, and the rest are confirmed.",
   "coverage": {
     "sections": 5,
-    "traps": 1,
-    "recall_checks": 1,
+    "traps": 4,
+    "recall_checks": 4,
     "exercises": 32,
     "past_papers": 1,
     "gaps": []

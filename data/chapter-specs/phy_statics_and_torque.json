@@ -82,7 +82,13 @@
           "topic_slug": "waec-equilibrium-of-forces",
           "subtopic_slug": "waec-conditions-for-equilibrium-of-rigid-bodies-under-the-action-2",
           "status": "covered",
-          "papers": []
+          "papers": [
+            {
+              "question_id": "q_waec_1988_physics_16341",
+              "year": 1988,
+              "source": "claimed_paper"
+            }
+          ]
         }
       ],
       "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
@@ -119,7 +125,18 @@
           "topic_slug": "equilibrium-of-forces",
           "subtopic_slug": "principle-of-moments-moment-of-a-force-couple-and-torque-app",
           "status": "covered",
-          "papers": []
+          "papers": [
+            {
+              "question_id": "q_claim_2025_physics_74377",
+              "year": 2025,
+              "source": "claimed_paper"
+            },
+            {
+              "question_id": "q_claim_2025_physics_74492",
+              "year": 2025,
+              "source": "claimed_paper"
+            }
+          ]
         },
         {
           "exam": "WAEC",
@@ -171,7 +188,13 @@
           "topic_slug": "waec-equilibrium-of-forces",
           "subtopic_slug": "waec-centre-of-gravity-and-stability-2",
           "status": "covered",
-          "papers": []
+          "papers": [
+            {
+              "question_id": "q_waec_2023_physics_69407",
+              "year": 2023,
+              "source": "claimed_paper"
+            }
+          ]
         }
       ],
       "worked_from": "exr-24"
@@ -410,8 +433,354 @@
       }
     }
   ],
-  "exam_traps": [],
-  "exam_recall_checks": [],
+  "exam_traps": [
+    {
+      "id": "trap-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": "The normal force on a body resting on a floor is half its weight.",
+      "correction": "The floor pushes up with a force equal to the weight, so the normal force is the whole weight.",
+      "signal": "Our own question offers half the weight as an option.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-4",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "misconception": "The angle between the force and the arm does not change the moment.",
+      "correction": "Only the component of the force perpendicular to the arm turns the body, so the moment is F d sin(theta).",
+      "signal": "Our own question offers the moment with the angle ignored.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-5",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-3",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "A body is stable when its centre of gravity is high.",
+      "correction": "A body is stable when a small tilt raises its centre of gravity, so a low centre of gravity inside a wide base is stable.",
+      "signal": "Our own question offers the high centre of gravity case.",
+      "status": "candidate",
+      "paper_evidence": {
+        "check_id": "rc-6",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "trap-4",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "misconception": "The output work of a machine is the input work divided by the efficiency.",
+      "correction": "The output work is the input work multiplied by the efficiency, and the mechanical advantage is the load over the effort.",
+      "signal": "The paper offers the value from dividing, and the answer is the value from multiplying.",
+      "status": "proven",
+      "paper_evidence": {
+        "question_id": "q_claim_2025_physics_74380",
+        "exam": "JAMB",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_claim_2025_physics_74380"
+      },
+      "frequency": "recurring"
+    },
+    {
+      "id": "trap-5",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": "The normal force on a body resting on a floor is a tenth of its weight.",
+      "correction": "It is the whole weight. The floor pushes up with exactly the force the weight pushes down.",
+      "signal": "Our own question offers the value with the mass alone.",
+      "status": "proven",
+      "paper_evidence": {
+        "question_id": "waec",
+        "exam": "WAEC",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/waec"
+      },
+      "frequency": "recurring"
+    },
+    {
+      "id": "trap-6",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "misconception": "The moment of a force is the force divided by the distance from the pivot.",
+      "correction": "The moment is the force multiplied by the perpendicular distance from the pivot.",
+      "signal": "Our own question offers the force divided by the distance as an option.",
+      "status": "proven",
+      "paper_evidence": {
+        "question_id": "waec",
+        "exam": "WAEC",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/waec"
+      },
+      "frequency": "recurring"
+    },
+    {
+      "id": "trap-7",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": "A narrow base makes a body stable.",
+      "correction": "A narrow base makes a body unstable. A body is stable when a small tilt raises its centre of gravity.",
+      "signal": "Our own question offers the narrow base as the stable case.",
+      "status": "proven",
+      "paper_evidence": {
+        "question_id": "waec",
+        "exam": "WAEC",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/waec"
+      },
+      "frequency": "recurring"
+    },
+    {
+      "id": "trap-8",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "misconception": "The mechanical advantage of a machine includes its efficiency.",
+      "correction": "The mechanical advantage is the load over the effort. The efficiency is a separate ratio, and multiplying the two is not the mechanical advantage.",
+      "signal": "The paper offers the efficiency times the mechanical advantage, and the answer is the mechanical advantage alone.",
+      "status": "proven",
+      "paper_evidence": {
+        "question_id": "q_waec_2025_physics_76337",
+        "exam": "WAEC",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_waec_2025_physics_76337"
+      },
+      "frequency": "recurring"
+    }
+  ],
+  "exam_recall_checks": [
+    {
+      "id": "rc-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "stem": "A box of mass 20 kg rests on a horizontal floor. What is the normal force on the box? (Take g = 10 m/s2.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "20 N"
+        },
+        {
+          "id": "b",
+          "text": "100 N"
+        },
+        {
+          "id": "c",
+          "text": "200 N"
+        },
+        {
+          "id": "d",
+          "text": "400 N"
+        }
+      ],
+      "answer": "c",
+      "explanation": "The floor pushes up with a force equal to the weight, so the normal force is 200 N.",
+      "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-2",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": "A force of 100 N acts at a point 2 m from a pivot, at 30 degrees to the arm. What is the moment about the pivot?",
+      "options": [
+        {
+          "id": "a",
+          "text": "50 N m"
+        },
+        {
+          "id": "b",
+          "text": "100 N m"
+        },
+        {
+          "id": "c",
+          "text": "173 N m"
+        },
+        {
+          "id": "d",
+          "text": "200 N m"
+        }
+      ],
+      "answer": "b",
+      "explanation": "Only the component perpendicular to the arm turns the body, so the moment is 100 x 2 x sin 30 = 100 N m.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-3",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": "A body stands on a wide base with its centre of gravity low and inside the base. It is",
+      "options": [
+        {
+          "id": "a",
+          "text": "stable"
+        },
+        {
+          "id": "b",
+          "text": "unstable"
+        },
+        {
+          "id": "c",
+          "text": "neutral"
+        },
+        {
+          "id": "d",
+          "text": "in equilibrium only if it is free to rotate"
+        }
+      ],
+      "answer": "a",
+      "explanation": "A body is stable when a small tilt raises its centre of gravity, so it falls back. A low centre of gravity inside a wide base does that.",
+      "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-4",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "stem": "A crate of mass 50 kg rests on a horizontal floor. What is the normal force on the crate? (Take g = 10 m/s2.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "50 N"
+        },
+        {
+          "id": "b",
+          "text": "250 N"
+        },
+        {
+          "id": "c",
+          "text": "500 N"
+        },
+        {
+          "id": "d",
+          "text": "1000 N"
+        }
+      ],
+      "answer": "c",
+      "explanation": "The floor pushes up with a force equal to the weight, so the normal force is 500 N.",
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-5",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": "A force of 60 N acts at a point 1.5 m from a pivot, perpendicular to the arm. What is the moment about the pivot?",
+      "options": [
+        {
+          "id": "a",
+          "text": "40 N m"
+        },
+        {
+          "id": "b",
+          "text": "90 N m"
+        },
+        {
+          "id": "c",
+          "text": "150 N m"
+        },
+        {
+          "id": "d",
+          "text": "220 N m"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The moment is the force times the perpendicular distance, so 60 x 1.5 = 90 N m.",
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-6",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": "A body stands on a narrow base with its centre of gravity above the base. It is",
+      "options": [
+        {
+          "id": "a",
+          "text": "stable"
+        },
+        {
+          "id": "b",
+          "text": "unstable"
+        },
+        {
+          "id": "c",
+          "text": "neutral"
+        },
+        {
+          "id": "d",
+          "text": "in equilibrium"
+        }
+      ],
+      "answer": "b",
+      "explanation": "A small tilt lowers its centre of gravity, so the body falls over. That is unstable.",
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-7",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "stem": "A machine has a mechanical advantage of 3 and an efficiency of 50%. What effort is needed to raise a load of 120 N?",
+      "options": [
+        {
+          "id": "a",
+          "text": "20 N"
+        },
+        {
+          "id": "b",
+          "text": "40 N"
+        },
+        {
+          "id": "c",
+          "text": "60 N"
+        },
+        {
+          "id": "d",
+          "text": "360 N"
+        }
+      ],
+      "answer": "b",
+      "explanation": "The mechanical advantage is the load over the effort, so the effort is 120/3 = 40 N. The efficiency does not change the mechanical advantage.",
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
+    }
+  ],
   "sources": [
     {
       "publisher": "OpenStax",

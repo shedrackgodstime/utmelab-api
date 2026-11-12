@@ -824,7 +824,18 @@
           "topic_slug": "work-energy-and-power",
           "subtopic_slug": "definitions-of-work-energy-and-power-and-their-forms",
           "status": "covered",
-          "papers": []
+          "papers": [
+            {
+              "question_id": "q_claim_2025_physics_74366",
+              "year": 2025,
+              "source": "claimed_paper"
+            },
+            {
+              "question_id": "q_claim_2025_physics_74378",
+              "year": 2025,
+              "source": "claimed_paper"
+            }
+          ]
         },
         {
           "exam": "WAEC",
@@ -2659,7 +2670,13 @@
           "topic_slug": "waec-work-energy-and-power",
           "subtopic_slug": "waec-types-of-mechanical-energy-2",
           "status": "covered",
-          "papers": []
+          "papers": [
+            {
+              "question_id": "q_waec_2025_physics_76337",
+              "year": 2025,
+              "source": "claimed_paper"
+            }
+          ]
         }
       ],
       "provenance": {
@@ -3675,7 +3692,13 @@
           "topic_slug": "work-energy-and-power",
           "subtopic_slug": "conservation-of-energy-and-qualitative-transformations-betwe",
           "status": "covered",
-          "papers": []
+          "papers": [
+            {
+              "question_id": "q_claim_2025_physics_74550",
+              "year": 2025,
+              "source": "claimed_paper"
+            }
+          ]
         },
         {
           "exam": "WAEC",
@@ -3683,7 +3706,13 @@
           "topic_slug": "waec-work-energy-and-power",
           "subtopic_slug": "waec-conservation-of-mechanical-energy-doing-work",
           "status": "covered",
-          "papers": []
+          "papers": [
+            {
+              "question_id": "q_waec_2025_physics_76352",
+              "year": 2025,
+              "source": "claimed_paper"
+            }
+          ]
         }
       ],
       "provenance": {
@@ -5742,7 +5771,13 @@
       "topic_slug": "work-energy-and-power",
       "subtopic_slug": "conservation-of-energy-and-qualitative-transformations-betwe",
       "status": "covered",
-      "papers": []
+      "papers": [
+        {
+          "question_id": "q_claim_2025_physics_74550",
+          "year": 2025,
+          "source": "claimed_paper"
+        }
+      ]
     },
     {
       "exam": "JAMB",
@@ -5750,7 +5785,18 @@
       "topic_slug": "work-energy-and-power",
       "subtopic_slug": "definitions-of-work-energy-and-power-and-their-forms",
       "status": "covered",
-      "papers": []
+      "papers": [
+        {
+          "question_id": "q_claim_2025_physics_74366",
+          "year": 2025,
+          "source": "claimed_paper"
+        },
+        {
+          "question_id": "q_claim_2025_physics_74378",
+          "year": 2025,
+          "source": "claimed_paper"
+        }
+      ]
     },
     {
       "exam": "JAMB",
@@ -5766,7 +5812,13 @@
       "topic_slug": "waec-work-energy-and-power",
       "subtopic_slug": "waec-conservation-of-mechanical-energy-doing-work",
       "status": "covered",
-      "papers": []
+      "papers": [
+        {
+          "question_id": "q_waec_2025_physics_76352",
+          "year": 2025,
+          "source": "claimed_paper"
+        }
+      ]
     },
     {
       "exam": "WAEC",
@@ -5790,7 +5842,13 @@
       "topic_slug": "waec-work-energy-and-power",
       "subtopic_slug": "waec-types-of-mechanical-energy-2",
       "status": "covered",
-      "papers": []
+      "papers": [
+        {
+          "question_id": "q_waec_2025_physics_76337",
+          "year": 2025,
+          "source": "claimed_paper"
+        }
+      ]
     },
     {
       "exam": "WAEC",
@@ -5801,8 +5859,419 @@
       "papers": []
     }
   ],
-  "exam_traps": [],
-  "exam_recall_checks": [],
+  "exam_traps": [
+    {
+      "id": "trap-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "The work done by a force is the force times the distance travelled.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It is the component of the force along the displacement, so W = F d cos(theta). A force at right angles to the motion does no work.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the force times the distance as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-1",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_work_and_energy/sections/sec-2",
+        "locator": "our practice question rc-1",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "trap-2",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "misconception": {
+        "text": "The kinetic energy of a body is half its mass times its speed.",
+        "inline": []
+      },
+      "correction": {
+        "text": "The speed enters as a square, so K = 1/2 m v^2. Doubling the speed multiplies the kinetic energy by four.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the value with the speed unsquared.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-2",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_work_and_energy/sections/sec-3",
+        "locator": "our practice question rc-2",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "trap-3",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "The gain in gravitational potential energy is the mass times the height.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It is the weight times the height, so U = mgh. The weight of the body matters, not only its mass.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the value with the mass alone.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-3",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_work_and_energy/sections/sec-4",
+        "locator": "our practice question rc-3",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "trap-4",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-5",
+      "misconception": {
+        "text": "A conservative force does positive work around a closed path, because the path is longer.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It does zero net work around any closed path, which is what makes a potential energy possible.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers a positive net work as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-4",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_work_and_energy/sections/sec-5",
+        "locator": "our practice question rc-4",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "trap-5",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-7",
+      "misconception": {
+        "text": "Friction destroys energy.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Friction does not destroy energy. It turns mechanical energy into thermal energy, so the total energy is unchanged.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the destroyed energy as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-5",
+        "exam": "JAMB",
+        "year": null,
+        "source": "authored"
+      },
+      "status": "candidate",
+      "frequency": "candidate",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/chapters/phy_work_and_energy/sections/sec-7",
+        "locator": "our practice question rc-5",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "trap-6",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-8",
+      "misconception": {
+        "text": "In the power formula the mass is used instead of the weight.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Power is the force times the speed, and the force here is the weight, so P = mgv. The paper offers the value with the mass alone.",
+        "inline": []
+      },
+      "signal": {
+        "text": "The paper offers the value computed with the mass instead of the weight, and the answer is the one with the weight.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "question_id": "q_claim_2025_physics_74366",
+        "exam": "JAMB",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_claim_2025_physics_74366"
+      },
+      "status": "proven",
+      "frequency": "recurring",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/questions/q_claim_2025_physics_74366",
+        "locator": "paper question q_claim_2025_physics_74366",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_recall_checks": [
+    {
+      "id": "rc-1",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "A force of 10 N acts at 60 degrees to the direction of the motion, over a distance of 4 m. How much work is done?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "40 J"
+        },
+        {
+          "id": "b",
+          "text": "20 J"
+        },
+        {
+          "id": "c",
+          "text": "10 J"
+        },
+        {
+          "id": "d",
+          "text": "5 J"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Work is force times the displacement along the force, so W = 10 x 4 x cos 60 = 20 J.",
+        "inline": []
+      },
+      "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-2",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "A body of mass 2 kg moves at 6 m/s. What is its kinetic energy?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "12 J"
+        },
+        {
+          "id": "b",
+          "text": "24 J"
+        },
+        {
+          "id": "c",
+          "text": "36 J"
+        },
+        {
+          "id": "d",
+          "text": "72 J"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "K = 1/2 mv^2 = 1/2 x 2 x 36 = 36 J.",
+        "inline": []
+      },
+      "difficulty": 1,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-3",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A body of mass 5 kg is lifted through 3 m. What is the gain in gravitational potential energy? (Take g = 10 m/s2.)",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "15 J"
+        },
+        {
+          "id": "b",
+          "text": "30 J"
+        },
+        {
+          "id": "c",
+          "text": "150 J"
+        },
+        {
+          "id": "d",
+          "text": "5 J"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The gain is the weight times the height, so U = mg h = 5 x 10 x 3 = 150 J.",
+        "inline": []
+      },
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-4",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "A body is moved around a closed path and returns to where it started. For a conservative force the net work done over the path is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "zero"
+        },
+        {
+          "id": "b",
+          "text": "positive"
+        },
+        {
+          "id": "c",
+          "text": "negative"
+        },
+        {
+          "id": "d",
+          "text": "equal to the work done by friction"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "A conservative force does zero net work around any closed path, so the work depends only on the endpoints.",
+        "inline": []
+      },
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-5",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-7",
+      "stem": {
+        "text": "A block slides down a rough slope and its mechanical energy falls. What has happened to the energy?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "It has been destroyed"
+        },
+        {
+          "id": "b",
+          "text": "It has become thermal energy"
+        },
+        {
+          "id": "c",
+          "text": "It has become kinetic energy"
+        },
+        {
+          "id": "d",
+          "text": "It is unchanged"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Total energy is conserved. Friction turns the mechanical energy into thermal energy, so the mechanical energy falls by exactly that amount.",
+        "inline": []
+      },
+      "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-6",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-8",
+      "stem": {
+        "text": "A machine does 600 J of work in 4 s. What is its power?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "24 W"
+        },
+        {
+          "id": "b",
+          "text": "150 W"
+        },
+        {
+          "id": "c",
+          "text": "2400 W"
+        },
+        {
+          "id": "d",
+          "text": "240 W"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Power is work done per second, so P = 600/4 = 150 W.",
+        "inline": []
+      },
+      "difficulty": 1,
+      "source": "authored against the JAMB physics syllabus"
+    }
+  ],
   "sources": [
     {
       "publisher": "OpenStax",

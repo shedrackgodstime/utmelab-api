@@ -39,7 +39,7 @@ Fields:
   - `examiner_traps`: array of ExaminerTrap.
   - `sources`: array of NoteSource (title, url, optional locator).
 - `deep_context`: object. Textbook-grade depth for AI retrieval and full-chapter views. Stored as ordered blocks, not a pre-baked string, so any consumer can render it to `full_markdown` at process time.
-  - `blocks`: ordered array of Block. This is the entire deep content in reading order. Every block has `id` and `type` and renders from the project types.
+  - `blocks`: ordered array of Block. This is the entire deep content in reading order. Every block has `id`, `type`, and `level` (`core` or `enrichment`). `core` blocks are the JAMB/WAEC syllabus scope; `enrichment` blocks are textbook depth (proofs, cross-cultural notes, omitted-figure context) shown only on demand.
 - `placements`: array of objects. Each entry states where the revision summary applies.
   - `exam`: string.
   - `subject`: string.

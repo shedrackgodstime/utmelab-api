@@ -19,8 +19,69 @@
       "subtopic_slug": "definition-of-a-machine-and-types-of-machines"
     }
   ],
-  "traps": [],
-  "recall_checks": [],
+  "traps": [
+    {
+      "id": "phy_statics_and_torque:trap-4",
+      "chapter_id": "phy_statics_and_torque",
+      "status": "proven",
+      "section_id": "sec-6",
+      "misconception": {
+        "text": "The output work of a machine is the input work divided by the efficiency.",
+        "inline": []
+      },
+      "correction": {
+        "text": "The output work is the input work multiplied by the efficiency, and the mechanical advantage is the load over the effort.",
+        "inline": []
+      },
+      "signal": {
+        "text": "The paper offers the value from dividing, and the answer is the value from multiplying.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "question_id": "q_claim_2025_physics_74380",
+        "exam": "JAMB",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_claim_2025_physics_74380"
+      },
+      "frequency": "recurring"
+    }
+  ],
+  "recall_checks": [
+    {
+      "id": "phy_statics_and_torque:rc-7",
+      "chapter_id": "phy_statics_and_torque",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "A machine has a mechanical advantage of 3 and an efficiency of 50%. What effort is needed to raise a load of 120 N?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "20 N"
+        },
+        {
+          "id": "b",
+          "text": "40 N"
+        },
+        {
+          "id": "c",
+          "text": "60 N"
+        },
+        {
+          "id": "d",
+          "text": "360 N"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The mechanical advantage is the load over the effort, so the effort is 120/3 = 40 N. The efficiency does not change the mechanical advantage.",
+        "inline": []
+      },
+      "difficulty": 3
+    }
+  ],
   "exercises": [
     "ex-sec-6-01",
     "ex-sec-6-02",
@@ -31,13 +92,11 @@
   "paper_note": "No past paper for this topic yet.",
   "coverage": {
     "sections": 1,
-    "traps": 0,
-    "recall_checks": 0,
+    "traps": 1,
+    "recall_checks": 1,
     "exercises": 4,
     "past_papers": 0,
     "gaps": [
-      "traps",
-      "recall_checks",
       "past_papers"
     ]
   }

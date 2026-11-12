@@ -67,8 +67,184 @@
       "subtopic_slug": "waec-conservation-of-mechanical-energy-doing-work"
     }
   ],
-  "traps": [],
-  "recall_checks": [],
+  "traps": [
+    {
+      "id": "phy_work_and_energy:trap-2",
+      "chapter_id": "phy_work_and_energy",
+      "status": "candidate",
+      "section_id": "sec-3",
+      "misconception": {
+        "text": "The kinetic energy of a body is half its mass times its speed.",
+        "inline": []
+      },
+      "correction": {
+        "text": "The speed enters as a square, so K = 1/2 m v^2. Doubling the speed multiplies the kinetic energy by four.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the value with the speed unsquared.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-2",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_work_and_energy:trap-3",
+      "chapter_id": "phy_work_and_energy",
+      "status": "candidate",
+      "section_id": "sec-4",
+      "misconception": {
+        "text": "The gain in gravitational potential energy is the mass times the height.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It is the weight times the height, so U = mgh. The weight of the body matters, not only its mass.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers the value with the mass alone.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-3",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    },
+    {
+      "id": "phy_work_and_energy:trap-4",
+      "chapter_id": "phy_work_and_energy",
+      "status": "candidate",
+      "section_id": "sec-5",
+      "misconception": {
+        "text": "A conservative force does positive work around a closed path, because the path is longer.",
+        "inline": []
+      },
+      "correction": {
+        "text": "It does zero net work around any closed path, which is what makes a potential energy possible.",
+        "inline": []
+      },
+      "signal": {
+        "text": "Our own question offers a positive net work as an option.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "check_id": "rc-4",
+        "exam": "WAEC",
+        "year": null,
+        "source": "authored"
+      },
+      "frequency": "candidate"
+    }
+  ],
+  "recall_checks": [
+    {
+      "id": "phy_work_and_energy:rc-2",
+      "chapter_id": "phy_work_and_energy",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "A body of mass 2 kg moves at 6 m/s. What is its kinetic energy?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "12 J"
+        },
+        {
+          "id": "b",
+          "text": "24 J"
+        },
+        {
+          "id": "c",
+          "text": "36 J"
+        },
+        {
+          "id": "d",
+          "text": "72 J"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "K = 1/2 mv^2 = 1/2 x 2 x 36 = 36 J.",
+        "inline": []
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "phy_work_and_energy:rc-3",
+      "chapter_id": "phy_work_and_energy",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A body of mass 5 kg is lifted through 3 m. What is the gain in gravitational potential energy? (Take g = 10 m/s2.)",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "15 J"
+        },
+        {
+          "id": "b",
+          "text": "30 J"
+        },
+        {
+          "id": "c",
+          "text": "150 J"
+        },
+        {
+          "id": "d",
+          "text": "5 J"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The gain is the weight times the height, so U = mg h = 5 x 10 x 3 = 150 J.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "phy_work_and_energy:rc-4",
+      "chapter_id": "phy_work_and_energy",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "A body is moved around a closed path and returns to where it started. For a conservative force the net work done over the path is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "zero"
+        },
+        {
+          "id": "b",
+          "text": "positive"
+        },
+        {
+          "id": "c",
+          "text": "negative"
+        },
+        {
+          "id": "d",
+          "text": "equal to the work done by friction"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "A conservative force does zero net work around any closed path, so the work depends only on the endpoints.",
+        "inline": []
+      },
+      "difficulty": 3
+    }
+  ],
   "exercises": [
     "ex-sec-2-01",
     "ex-sec-2-02",
@@ -101,18 +277,31 @@
     "ex-sec-7-06",
     "ex-sec-7-07"
   ],
-  "past_papers": [],
-  "paper_note": "No past paper for this topic yet.",
+  "past_papers": [
+    {
+      "question_id": "q_waec_2025_physics_76337",
+      "year": 2025,
+      "source": "claimed_paper",
+      "exam": "WAEC",
+      "subject": "physics",
+      "subtopic_slug": "waec-types-of-mechanical-energy-2"
+    },
+    {
+      "question_id": "q_waec_2025_physics_76352",
+      "year": 2025,
+      "source": "claimed_paper",
+      "exam": "WAEC",
+      "subject": "physics",
+      "subtopic_slug": "waec-conservation-of-mechanical-energy-doing-work"
+    }
+  ],
+  "paper_note": "2 of 2 papers are self-published claims, labelled as such, and the rest are confirmed.",
   "coverage": {
     "sections": 5,
-    "traps": 0,
-    "recall_checks": 0,
+    "traps": 3,
+    "recall_checks": 3,
     "exercises": 30,
-    "past_papers": 0,
-    "gaps": [
-      "traps",
-      "recall_checks",
-      "past_papers"
-    ]
+    "past_papers": 2,
+    "gaps": []
   }
 }
