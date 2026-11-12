@@ -64,6 +64,7 @@ jobs:
       - name: Verify release version
         env:
           MANUAL_VERSION: ${{ inputs.version }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           package_version="$(cargo metadata --no-deps --format-version 1 | python3 -c 'import json, sys; print(json.load(sys.stdin)["packages"][0]["version"])')"
@@ -79,7 +80,34 @@ jobs:
             echo "Release version ${requested_version} does not match Cargo.toml (${expected_version})"
             exit 1
           fi
-          echo "Release version verified: ${requested_version}"
+
+          # A version reaches production through a release. The release is the
+          # record of what is live and the tag is the record of the commit it
+          # came from, so both must exist and the tag must point at the commit
+          # being built. A dispatch that skips the release fails here, before
+          # anything is built or shipped.
+          if ! gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${requested_version}" \
+            --jq '.tag_name' > /dev/null 2>&1; then
+            echo "No published release for ${requested_version}."
+            echo "Publish it first, then the release itself ships this build:"
+            echo "  gh release create ${requested_version} --generate-notes"
+            echo "Nothing was built and nothing was shipped."
+            exit 1
+          fi
+
+          deployed_commit="$(git rev-parse HEAD)"
+          tag_commit="$(git ls-remote origin "refs/tags/${requested_version}^{}" | cut -f1)"
+          if [[ -z "${tag_commit}" ]]; then
+            tag_commit="$(git ls-remote origin "refs/tags/${requested_version}" | cut -f1)"
+          fi
+          if [[ -z "${tag_commit}" || "${tag_commit}" != "${deployed_commit}" ]]; then
+            echo "Tag ${requested_version} does not point at the commit being deployed."
+            echo "  deployed: ${deployed_commit}"
+            echo "  tagged:   ${tag_commit:-none}"
+            echo "Move the tag to the commit you mean to ship, or deploy the commit the tag names."
+            exit 1
+          fi
+          echo "Release version verified: ${requested_version} at ${deployed_commit}"
 
       - name: Resolve version
         id: v
