@@ -257,6 +257,33 @@ the document, and later the routes will check them on write.
 11. The written style applies to what we author. Quoted source prose keeps
     the source's punctuation.
 
+## The spec and the factory
+
+A chapter is built, not typed. The spec holds everything a human authors,
+and the factory assembles the chapter from the spec and the source:
+
+```
+data/chapter-specs/<chapter_id>.json     the authored part, the source of truth
+data/concepts/*.json                     the source material, with the figures
+data/staging/openstax_clean_solutions.json   the solutions, prose apart from maths
+        │
+        ▼  scripts/build_chapter.py
+data/chapters/<chapter_id>.json          the built artifact
+        │
+        ▼  scripts/validate_chapters.py
+0 errors
+```
+
+The spec names the source module for each section, the objectives, the
+misconceptions, the summary points, the formula sheet, the glossary and the
+exam links. It also selects the exercises it wants from the module and says
+how hard each one is, and it may promote one solved exercise to the section's
+worked example with `worked_from`.
+
+The chapter is generated, so it can never drift from its spec: the quality
+workflow rebuilds every chapter and fails if the result differs from the file
+on disk.
+
 ## Where we are against this
 
 Two chapters exist today and both were written before this schema was

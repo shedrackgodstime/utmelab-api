@@ -1,0 +1,562 @@
+{
+  "chapter_id": "phy_motion_along_a_straight_line",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Motion Along a Straight Line",
+  "book_id": "secondary_physics",
+  "part_id": "part-1",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "learning_objectives": [
+    "Describe one dimensional motion in terms of position, displacement, distance, velocity, speed and acceleration.",
+    "Tell a scalar from a vector and apply that distinction to the quantities of motion.",
+    "Use the equations of constant acceleration to solve problems about motion in a straight line.",
+    "Read a motion from a position time graph and from a velocity time graph."
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to One-Dimensional Kinematics",
+      "module": "m42122",
+      "est_minutes": 8,
+      "locator": "CNXML module m42122",
+      "objectives": [
+        "Describe what kinematics studies and how it differs from dynamics."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Kinematics and dynamics are two names for the same subject.",
+          "correction": "Kinematics describes how things move, with no mention of a cause. Dynamics explains why they move, through forces."
+        }
+      ],
+      "summary": [
+        "Kinematics describes motion in terms of position and time.",
+        "One dimensional motion happens along a straight line.",
+        "Kinematics comes first, because the causes of motion come later."
+      ],
+      "tags": [
+        "kinematics",
+        "motion"
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section, and it holds no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "Displacement",
+      "module": "m42033",
+      "est_minutes": 16,
+      "locator": "CNXML module m42033",
+      "objectives": [
+        "Define position and displacement on a coordinate system, and tell displacement from distance."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Distance and displacement are the same quantity.",
+          "correction": "Distance is the length of the path and is never negative. Displacement is the straight line from the start to the end, and it carries a direction."
+        }
+      ],
+      "summary": [
+        "Position locates an object on a coordinate system.",
+        "Displacement is the change in position, and it is a vector.",
+        "Distance is the total path length, and it is a scalar."
+      ],
+      "tags": [
+        "displacement",
+        "position",
+        "coordinate-system"
+      ],
+      "worked_from": "exr-20"
+    },
+    {
+      "id": "sec-3",
+      "title": "Vectors, Scalars, and Coordinate Systems",
+      "module": "m42124",
+      "est_minutes": 14,
+      "locator": "CNXML module m42124",
+      "objectives": [
+        "Tell a scalar from a vector, and place a point on a one dimensional coordinate system."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Speed and velocity mean the same thing.",
+          "correction": "Speed is a scalar, the distance over time. Velocity is a vector, the displacement over time, and it also carries a direction."
+        }
+      ],
+      "summary": [
+        "A scalar has magnitude only. A vector has magnitude and direction.",
+        "Displacement and velocity are vectors. Distance and speed are scalars.",
+        "A one dimensional coordinate system is a number line with an origin and a positive direction."
+      ],
+      "tags": [
+        "vectors",
+        "scalars",
+        "coordinate-system"
+      ],
+      "worked_from": "exr-9"
+    },
+    {
+      "id": "sec-4",
+      "title": "Time, Velocity, and Speed",
+      "module": "m42096",
+      "est_minutes": 22,
+      "locator": "CNXML module m42096",
+      "objectives": [
+        "Define average velocity and average speed, and compute them from a motion diagram."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Average velocity tells you how fast the object is moving right now.",
+          "correction": "Average velocity covers the whole journey. The speed at a moment is the instantaneous speed."
+        }
+      ],
+      "summary": [
+        "Average velocity is displacement over time.",
+        "Average speed is distance over time.",
+        "Average speed is never smaller than the magnitude of the average velocity."
+      ],
+      "tags": [
+        "velocity",
+        "speed",
+        "average"
+      ],
+      "worked_from": "exr-29"
+    },
+    {
+      "id": "sec-5",
+      "title": "Acceleration",
+      "module": "m42100",
+      "est_minutes": 24,
+      "locator": "CNXML module m42100",
+      "objectives": [
+        "Define acceleration as the rate of change of velocity and read it from a velocity time graph."
+      ],
+      "misconceptions": [
+        {
+          "claim": "An object with zero acceleration must be at rest.",
+          "correction": "Zero acceleration means the velocity is not changing. The object may be moving at a constant velocity."
+        }
+      ],
+      "summary": [
+        "Acceleration is the rate of change of velocity, so it is a vector.",
+        "Positive acceleration means the velocity is increasing, negative means it is decreasing.",
+        "The sign of acceleration does not tell you the direction of the motion."
+      ],
+      "tags": [
+        "acceleration",
+        "motion-diagrams"
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section, and it holds no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-6",
+      "title": "Motion Equations for Constant Acceleration in One Dimension",
+      "module": "m42099",
+      "est_minutes": 26,
+      "locator": "CNXML module m42099",
+      "objectives": [
+        "Use the equations of constant acceleration, and choose which one fits the question."
+      ],
+      "misconceptions": [
+        {
+          "claim": "The constant acceleration equations work for any motion.",
+          "correction": "They hold only while the acceleration stays constant. If the acceleration changes, the equations do not apply."
+        }
+      ],
+      "summary": [
+        "The equations relate position, velocity, acceleration and time for constant acceleration.",
+        "Each equation leaves out one of the quantities.",
+        "Choose the equation by listing what you know and what you want."
+      ],
+      "tags": [
+        "equations-of-motion",
+        "constant-acceleration"
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section, and it holds no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-7",
+      "title": "Problem-Solving Basics for One-Dimensional Kinematics",
+      "module": "m42125",
+      "est_minutes": 10,
+      "locator": "CNXML module m42125",
+      "objectives": [
+        "Set up a kinematics problem: draw it, list what is known, choose the equation, solve, and check."
+      ],
+      "misconceptions": [
+        {
+          "claim": "You can start algebra on a physics problem without knowing which quantities you have.",
+          "correction": "List what is known and what is wanted first. Then the equation chooses itself."
+        }
+      ],
+      "summary": [
+        "Draw the situation, then list what is known and what is wanted.",
+        "Choose the equation, solve, and check the signs and the units.",
+        "A sign convention applies to every quantity, not only to the answer."
+      ],
+      "tags": [
+        "problem-solving"
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section, and it holds no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-8",
+      "title": "Falling Objects",
+      "module": "m42102",
+      "est_minutes": 22,
+      "locator": "CNXML module m42102",
+      "objectives": [
+        "Model free fall as constant acceleration and read the motion off a motion diagram."
+      ],
+      "misconceptions": [
+        {
+          "claim": "A heavier object falls faster than a lighter one.",
+          "correction": "Without air resistance every object falls with the same acceleration, whatever its mass. Air resistance is what separates a feather from a stone."
+        }
+      ],
+      "summary": [
+        "Near the Earth's surface, free fall has an acceleration of about 9.8 m/s² downward.",
+        "The acceleration is the same for every object. The velocity is not.",
+        "Air resistance makes real falls differ from the model."
+      ],
+      "tags": [
+        "free-fall",
+        "gravity",
+        "projectile"
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section, and it holds no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-9",
+      "title": "Graphical Analysis of One-Dimensional Motion",
+      "module": "m42103",
+      "est_minutes": 26,
+      "locator": "CNXML module m42103",
+      "objectives": [
+        "Read a position time graph and a velocity time graph, and use their slopes and areas."
+      ],
+      "misconceptions": [
+        {
+          "claim": "The area under a velocity time graph is the distance travelled.",
+          "correction": "The area under the curve is the displacement, because velocity is signed. Distance is the area under the speed curve, where the speed is never negative."
+        }
+      ],
+      "summary": [
+        "The slope of a position time graph is the velocity.",
+        "The slope of a velocity time graph is the acceleration.",
+        "The area under a velocity time graph is the displacement."
+      ],
+      "tags": [
+        "graphs",
+        "position-time-graph",
+        "velocity-time-graph"
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section, and it holds no solved exercise to promote, so the practice is left to the exercises themselves."
+    }
+  ],
+  "formula_sheet": [
+    {
+      "id": "f-1",
+      "expression": "$\\Delta x = x_f - x_i$",
+      "caption": {
+        "text": "Displacement",
+        "inline": []
+      },
+      "conditions": {
+        "text": "For motion along a straight line, with one chosen positive direction.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42033/index.cnxml",
+        "locator": "CNXML module m42033, section 'Displacement'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-2",
+      "expression": "$v_{avg} = \\frac{\\Delta x}{\\Delta t}$",
+      "caption": {
+        "text": "Average velocity",
+        "inline": []
+      },
+      "conditions": {
+        "text": "Displacement over time.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42096/index.cnxml",
+        "locator": "CNXML module m42096, section 'Time, Velocity, and Speed'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-3",
+      "expression": "$a = \\frac{\\Delta v}{\\Delta t}$",
+      "caption": {
+        "text": "Average acceleration",
+        "inline": []
+      },
+      "conditions": {
+        "text": "The rate of change of velocity.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42100/index.cnxml",
+        "locator": "CNXML module m42100, section 'Acceleration'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-4",
+      "expression": "$v = v_0 + at$",
+      "caption": {
+        "text": "Velocity under constant acceleration",
+        "inline": []
+      },
+      "conditions": {
+        "text": "For constant acceleration.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42099/index.cnxml",
+        "locator": "CNXML module m42099, section 'Motion Equations for Constant Acceleration in One Dimension'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-5",
+      "expression": "$\\Delta x = v_0 t + \\frac{1}{2} a t^2$",
+      "caption": {
+        "text": "Displacement under constant acceleration",
+        "inline": []
+      },
+      "conditions": {
+        "text": "For constant acceleration, and for an object released from rest, where $\\Delta x = \\frac{1}{2} a t^2$.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42099/index.cnxml",
+        "locator": "CNXML module m42099, section 'Motion Equations for Constant Acceleration in One Dimension'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-6",
+      "expression": "$a = g = 9.8\\ {m/s^2}$",
+      "caption": {
+        "text": "Acceleration in free fall near the Earth's surface",
+        "inline": []
+      },
+      "conditions": {
+        "text": "With air resistance neglected, and the positive direction taken downward.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42102/index.cnxml",
+        "locator": "CNXML module m42102, section 'Falling Objects'",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "kinematics",
+        "inline": []
+      },
+      "definition": {
+        "text": "The study of how objects move, without asking what causes the motion.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42122/index.cnxml",
+        "locator": "CNXML module m42122",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "position",
+        "inline": []
+      },
+      "definition": {
+        "text": "The location of an object on a coordinate system, measured from the origin.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42033/index.cnxml",
+        "locator": "CNXML module m42033",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "displacement",
+        "inline": []
+      },
+      "definition": {
+        "text": "The change in position of an object, with direction. It is the straight line from the start to the end, not the path.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42033/index.cnxml",
+        "locator": "CNXML module m42033",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "average velocity",
+        "inline": []
+      },
+      "definition": {
+        "text": "Displacement divided by the time it took, so it is a vector.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42096/index.cnxml",
+        "locator": "CNXML module m42096",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "acceleration",
+        "inline": []
+      },
+      "definition": {
+        "text": "The rate at which the velocity changes with time. It is a vector.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42100/index.cnxml",
+        "locator": "CNXML module m42100",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-6",
+      "term": {
+        "text": "free fall",
+        "inline": []
+      },
+      "definition": {
+        "text": "Motion under gravity alone, with air resistance neglected, so every object shares the same acceleration.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42102/index.cnxml",
+        "locator": "CNXML module m42102",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_links": [
+    {
+      "exam": "JAMB",
+      "subject": "physics",
+      "topic_slug": "motion",
+      "subtopic_slug": "linear-motion-speed-velocity-acceleration-equations-of-unifo",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic motion, subtopic linear-motion-speed-velocity-acceleration-equations-of-unifo (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "JAMB",
+      "subject": "physics",
+      "topic_slug": "measurements-and-units",
+      "subtopic_slug": "measurement-position-distance-and-displacement-coordinates-a",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic measurements-and-units, subtopic measurement-position-distance-and-displacement-coordinates-a (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "WAEC",
+      "subject": "physics",
+      "topic_slug": "waec-position-distance-and-displacement",
+      "subtopic_slug": "waec-measurement-of-distance-displacement",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic waec-position-distance-and-displacement, subtopic waec-measurement-of-distance-displacement (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "WAEC",
+      "subject": "physics",
+      "topic_slug": "waec-speed-and-velocity",
+      "subtopic_slug": "waec-concept-of-velocity-as-change-of-displacement-with-time-2",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic waec-speed-and-velocity, subtopic waec-concept-of-velocity-as-change-of-displacement-with-time-2 (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "WAEC",
+      "subject": "physics",
+      "topic_slug": "waec-rectilinear-acceleration",
+      "subtopic_slug": "waec-equations-of-motion-with-constant-motion-under-gravity-as-a",
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "covered",
+      "source_locator": "production catalog topic waec-rectilinear-acceleration, subtopic waec-equations-of-motion-with-constant-motion-under-gravity-as-a (read-only fetch 2026-11-12)",
+      "question_ids": []
+    },
+    {
+      "exam": "NECO",
+      "subject": "physics",
+      "topic_slug": null,
+      "subtopic_slug": null,
+      "weight_pct": null,
+      "expected_count": null,
+      "status": "not_catalogued",
+      "source_locator": "the production catalog holds the NECO physics subject and no topics for it yet (read-only fetch 2026-11-12)",
+      "question_ids": []
+    }
+  ],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Kinematics', modules m42122, m42033, m42124, m42096, m42100, m42099, m42125, m42102, m42103",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

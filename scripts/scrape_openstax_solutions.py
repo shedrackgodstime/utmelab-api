@@ -253,6 +253,12 @@ def main():
 
     out = ROOT / "data/staging/openstax_clean_solutions.json"
     out.parent.mkdir(parents=True, exist_ok=True)
+    # Keep the modules that were extracted earlier. This file is the extract
+    # for the whole corpus, not for the run.
+    if out.exists():
+        existing = json.loads(out.read_text())
+        existing.update(clean)
+        clean = existing
     out.write_text(json.dumps(clean, ensure_ascii=False, indent=2) + "\n")
     print("wrote", out, len(clean), "solutions")
 

@@ -1,17 +1,10 @@
 {
   "chapter_id": "phy_forces_and_newtons_laws",
   "schema_version": 2,
-  "book_id": "secondary_physics",
-  "part_id": "part-1",
   "updated_at": "2026-11-12",
   "title": "Forces and Newton's Laws of Motion",
-  "book": {
-    "id": "secondary_physics",
-    "title": "Secondary Physics",
-    "subject_area": "physics",
-    "level": "secondary",
-    "edition": "draft-1"
-  },
+  "book_id": "secondary_physics",
+  "part_id": "part-1",
   "learning_objectives": [
     {
       "id": "lo-1",
@@ -26,22 +19,22 @@
     {
       "id": "lo-3",
       "statement": "Choose a system of interest and identify the external forces acting on it.",
-      "bloom_level": "apply"
+      "bloom_level": "understand"
     },
     {
       "id": "lo-4",
       "statement": "Use F_net = ma to determine the acceleration of a system.",
-      "bloom_level": "apply"
+      "bloom_level": "understand"
     },
     {
       "id": "lo-5",
       "statement": "Explain why forces occur in pairs and why action and reaction act on different bodies.",
-      "bloom_level": "analyse"
+      "bloom_level": "understand"
     },
     {
       "id": "lo-6",
       "statement": "Distinguish mass from weight, and inertia from force.",
-      "bloom_level": "analyse"
+      "bloom_level": "understand"
     }
   ],
   "prerequisites": [],
@@ -266,7 +259,7 @@
               "inline": []
             },
             "alt": "Two dolphins are shown in a pool at Lisbon Zoo. One is in the water, and the other is in the air diving back into water",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-2",
@@ -293,7 +286,7 @@
               "inline": []
             },
             "alt": "Cover page of the first edition of a book, Philosophiae Naturalis Principia Mathematica, written by Isaac Newton.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-5",
@@ -352,7 +345,7 @@
           "provenance": {
             "publisher": "OpenStax",
             "title": "College Physics 2e",
-            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42129/index.cnxml",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
             "locator": "CNXML module m42129, paragraph on the limits of the laws",
             "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
           }
@@ -370,7 +363,7 @@
           "provenance": {
             "publisher": "OpenStax",
             "title": "College Physics 2e",
-            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42129/index.cnxml",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
             "locator": "CNXML module m42129, paragraph on Galileo",
             "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
           }
@@ -398,7 +391,7 @@
       "provenance": {
         "publisher": "OpenStax",
         "title": "College Physics 2e",
-        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42129/index.cnxml",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
         "locator": "CNXML module m42129, Introduction to Dynamics: Newton’s Laws of Motion",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
       },
@@ -446,7 +439,7 @@
               "inline": []
             },
             "alt": "(a) Overhead view of two ice skaters pushing on a third. One skater pushes with a force F two, represented by an arrow pointing up, and a second skater pushes with a force F one, represented by an arrow pointing from left to right. Vector F one and vector F two are along the arms of the two skaters acting on the third skater. A vector diagram is shown in the form of a right triangle in which the base is vector F one pointing east and perpendicular is shown by vector F two pointing north. The resultant vector is shown by the hypotenuse pointing northeast. (b) Free-body diagram showing only the forces acting on the skater.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-3",
@@ -473,7 +466,7 @@
               "inline": []
             },
             "alt": "(a) A spring of length x, fixed at one end, is shown in horizontal position. (b) The same spring is shown pulled by a person by a distance of delta x. The restoring force F restore is represented by an arrow pointing left toward the position where the spring is fixed. (c) A spring balance containing a spring stretched a distance delta x is shown. The restoring force is represented by an arrow F restore pointing toward the left in the direction opposite to the elongation of the spring.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-6",
@@ -492,7 +485,7 @@
               "inline": []
             },
             "alt": "The diagram looks like a solid black oval race track with 16 equally-spaced short perpendicular hash marks crossing the track. The oval is longer than it is tall and the top and bottom parts of the track are horizontal and parallel to the bottom of the page. To complete the oval, the race track starts to curve in a half-circle starting from the second perpendicular hash mark to the right of the top center hash mark. The curve continues for four perpendicular hash marks and the horizontal bottom part of the track starts two perpendicular hash marks to the right of the center bottom hash mark. The half-circle is mirrored on the left side of the track. On the right side of the oval is an arrow curving around the track and pointing up with the text “Direction of Cars’ Motion.” There is one solid line above the track and one to the right outside of the track. Both lines are indicated by the lowercase letter d. One line starts at the first hash mark’s location on a horizontally straight bit of track in the upper right side and indicates that the size of the line goes for 4 additional hash marks. The second line starts at the end of the horizontal stretch on the upper left of the track and curves around for 4 additional hash marks.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-8",
@@ -519,7 +512,7 @@
               "inline": []
             },
             "alt": "There are two dashed oval tracks representative of the larger oval track shown in figure 04_M1_track_img earlier. Both tracks have the same 16 equally spaced perpendicular hash marks shown in the earlier figure but there are dashes around the tracks instead of a solid line. Between each of the perpendicular dashes is one smaller dash at the perpendicular dash and three additional dashes. Centered above the figure on the left is the text Car X and over the figure on the left is Car Y. There are 6 black dots positioned on each of the Car X and Car Y tracks. The position of the six dots on the Car X track on the left are as follows: The first dot is on dashed line on the perpendicular hash mark at the very center left of the track.  Moving to the right past three perpendicular hash marks the second dot is on the top horizontal line on the second of four small dashes before the top center perpendicular hash mark. The third dot is one perpendicular hash mark to the right of the center perpendicular hash mark. The fourth dot is two perpendicular hash marks from the third dot and one perpendicular hash mark above the right center perpendicular hash mark. The fifth dot is on the bottom horizontal line of the track and about one and one-third perpendicular hash marks to the right of the center bottom perpendicular hash mark. The sixth dot is on the bottom horizontal line about one and two-third perpendicular hash marks to the left of the center bottom perpendicular dash.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-11",
@@ -554,7 +547,7 @@
               "inline": []
             },
             "alt": "Two identical diagrams feature oval-shaped dashed paths with alternating plus and minus signs. Each path includes black dots with arrows indicating specific vector directions at points along the loop.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-15",
@@ -690,7 +683,7 @@
           "provenance": {
             "publisher": "OpenStax",
             "title": "College Physics 2e",
-            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42069/index.cnxml",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
             "locator": "CNXML module m42069, conceptual question on the hawk",
             "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
           }
@@ -708,7 +701,7 @@
           "provenance": {
             "publisher": "OpenStax",
             "title": "College Physics 2e",
-            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42069/index.cnxml",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
             "locator": "CNXML module m42069, paragraph on the swimmer",
             "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
           }
@@ -739,7 +732,7 @@
       "provenance": {
         "publisher": "OpenStax",
         "title": "College Physics 2e",
-        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42069/index.cnxml",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
         "locator": "CNXML module m42069, Development of Force Concept",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
       }
@@ -919,7 +912,7 @@
           "provenance": {
             "publisher": "OpenStax",
             "title": "College Physics 2e",
-            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42130/index.cnxml",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
             "locator": "CNXML module m42130, paragraph on the sliding object",
             "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
           }
@@ -937,7 +930,7 @@
           "provenance": {
             "publisher": "OpenStax",
             "title": "College Physics 2e",
-            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42130/index.cnxml",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
             "locator": "CNXML module m42130, conceptual question on mass and weight",
             "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
           }
@@ -967,7 +960,7 @@
       "provenance": {
         "publisher": "OpenStax",
         "title": "College Physics 2e",
-        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42130/index.cnxml",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
         "locator": "CNXML module m42130, Newton’s First Law of Motion: Inertia",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
       }
@@ -1030,7 +1023,7 @@
               "inline": []
             },
             "alt": "(a) A boy in a wagon is pushed by two girls toward the right. The force on the boy is represented by vector F one toward the right, and the force on the wagon is represented by vector F two in the same direction. Acceleration a is shown by a vector a toward the right and a friction force f is acting in the opposite direction, represented by a vector pointing toward the left. The weight W of the wagon is shown by a vector acting downward, and the normal force acting upward on the wagon is represented by a vector N. A free-body diagram is also shown, with F one and F two represented by arrows in the same direction toward the right and f represented by an arrow toward the left, so the resultant force F net is represented by an arrow toward the right. W is represented by an arrow downward and N is represented by an arrow upward; both the arrows have same length.           (b) A boy in a wagon is pushed by a woman with a force F adult, represented by an arrow pointing toward the right. A vector a-prime, represented by an arrow, depicts acceleration toward the right. Friction force, represented by a vector f, acts toward the left. The weight of the wagon W is shown by a vector pointing downward, and the Normal force, represented by a vector N having same length as W, acts upward. A free-body diagram for this situation shows force F represented by an arrow pointing to the right having a large length; a friction force vector represented by an arrow f pointing left has a small length. The weight W is represented by an arrow pointing downward, and the normal force N, is represented by an arrow pointing upward, having the same length as W.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-5",
@@ -1081,7 +1074,7 @@
               "inline": []
             },
             "alt": "(a) A basketball player pushes the ball with the force shown by a vector F toward the right and an acceleration a-one represented by an arrow toward the right. M sub one is the mass of the ball. (b) The same basketball player is pushing a car with the same force, represented by the vector F towards the right, resulting in an acceleration shown by a vector a toward the right. The mass of the car is m sub two. The acceleration in the second case, a sub two, is represented by a shorter arrow than in the first case, a sub one.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-11",
@@ -1300,7 +1293,7 @@
               "inline": []
             },
             "alt": "A man pushing a lawnmower to the right. A red vector above the lawnmower is pointing to the right and labeled F sub net.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-38",
@@ -1359,7 +1352,7 @@
               "inline": []
             },
             "alt": "A sled is shown with four rockets, each producing the same thrust, represented by equal length arrows labeled as vector T pushing the sled toward the right. Friction force is represented by an arrow labeled as vector f pointing toward the left on the sled. The weight of the sled is represented by an arrow labeled as vector W, shown pointing downward, and the normal force is represented by an arrow labeled as vector N having the same length as W acting upward on the sled. A free-body diagram is also shown for the situation. Four arrows of equal length representing vector T point toward the right, a vector f represented by a smaller arrow points left, vector N is an arrow pointing upward, and the weight W is an arrow of equal length pointing downward.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-45",
@@ -1634,7 +1627,7 @@
               "inline": []
             },
             "alt": "A sled is shown with four rockets. Friction force is represented by an arrow labeled as vector f pointing toward the left on the sled. Weight of the sled is represented by an arrow labeled as vector W, shown pointing downward, and normal force is represented by an arrow labeled as vector N having the same length as W acting upward on the sled.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-79",
@@ -1661,7 +1654,7 @@
               "inline": []
             },
             "alt": "A sled is shown with thrust represented by a vector T pushing the sled toward the right. Friction force is represented by an arrow labeled as vector f pointing toward the left on the sled. The weight of the sled is represented by an arrow labeled as vector W, shown pointing downward, and the normal force is represented by an arrow labeled as vector N having the same length as W acting upward on the sled.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-82",
@@ -1744,7 +1737,7 @@
               "inline": []
             },
             "alt": "A sled is shown with four rockets. Friction force is represented by an arrow labeled as vector f pointing toward the left on the sled. The weight of the sled is represented by an arrow labeled as vector W, shown pointing downward, and the normal force is represented by an arrow labeled as vector N having the same length as W acting upward on the sled. ",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-92",
@@ -1789,10 +1782,10 @@
           },
           "provenance": {
             "publisher": "OpenStax",
-            "title": "College Physics 2e",
+            "title": "osbooks-college-physics-bundle",
             "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
             "locator": "CNXML module m42073, worked example",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           "steps": [
             {
@@ -1821,10 +1814,10 @@
           },
           "provenance": {
             "publisher": "OpenStax",
-            "title": "College Physics 2e",
+            "title": "osbooks-college-physics-bundle",
             "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
             "locator": "CNXML module m42073, worked example",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           "steps": [
             {
@@ -1864,7 +1857,7 @@
           "provenance": {
             "publisher": "OpenStax",
             "title": "College Physics 2e",
-            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
             "locator": "CNXML module m42073, paragraph on inverse proportionality to mass",
             "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
           }
@@ -1882,7 +1875,7 @@
           "provenance": {
             "publisher": "OpenStax",
             "title": "College Physics 2e",
-            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
             "locator": "CNXML module m42073, paragraph on external forces",
             "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
           }
@@ -1917,7 +1910,7 @@
       "provenance": {
         "publisher": "OpenStax",
         "title": "College Physics 2e",
-        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
         "locator": "CNXML module m42073, Newton’s Second Law of Motion: Concept of a System",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
       }
@@ -1988,7 +1981,7 @@
               "inline": []
             },
             "alt": "A swimmer is exerting a force with her feet on a wall inside a swimming pool represented by an arrow labeled as vector F sub Feet on wall, pointing toward the right, and the wall is also exerting an equal force on her feet, represented by an arrow labeled as vector F sub Wall on feet, having the same length but pointing toward the left. The direction of acceleration of the swimmer is toward the left, shown by an arrow toward the left.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-6",
@@ -2007,7 +2000,7 @@
               "inline": []
             },
             "alt": "A professor is pushing a cart of demonstration equipment. Two systems are labeled in the figure. System one includes both the professor and cart, and system two only has the cart. She is exerting some force F sub prof toward the right, shown by a vector arrow, and the cart is also pushing her with the same magnitude of force directed toward the left, shown by a vector F sub cart, having same length as F sub prof. The friction force small f is shown by a vector arrow pointing left acting between the wheels of the cart and the floor. The professor is pushing the floor with her feet with a force F sub foot toward the left, shown by a vector arrow. The floor is pushing her feet with a force that has the same magnitude, F sub floor, shown by a vector arrow pointing right that has the same length as the vector F sub foot. A free-body diagram is also shown. For system one, friction force acting toward the left is shown by a vector arrow having a small length, and the force F sub floor is acting toward the right, shown by a vector arrow larger than the length of vector f. In system two, friction force represented by a short vector small f acts toward the left and another vector F sub prof is represented by a vector arrow toward the right. F sub prof is longer than small f.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-8",
@@ -2162,7 +2155,7 @@
               "inline": []
             },
             "alt": "A free-body diagram illustrating four forces acting on a central point. Fw (13.0 N) points left, Fc (9.0 N) points right, Fb points upward, and Fg points downward.",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           {
             "id": "b-27",
@@ -2447,10 +2440,10 @@
           },
           "provenance": {
             "publisher": "OpenStax",
-            "title": "College Physics 2e",
+            "title": "osbooks-college-physics-bundle",
             "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
             "locator": "CNXML module m42074, worked example",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           "steps": [
             {
@@ -2483,10 +2476,10 @@
           },
           "provenance": {
             "publisher": "OpenStax",
-            "title": "College Physics 2e",
+            "title": "osbooks-college-physics-bundle",
             "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
             "locator": "CNXML module m42074, worked example",
-            "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+            "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
           },
           "steps": [
             {
@@ -2562,7 +2555,7 @@
           "provenance": {
             "publisher": "OpenStax",
             "title": "College Physics 2e",
-            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
             "locator": "CNXML module m42074, paragraph on the swimmer and the wall",
             "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
           }
@@ -2580,7 +2573,7 @@
           "provenance": {
             "publisher": "OpenStax",
             "title": "College Physics 2e",
-            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
+            "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
             "locator": "CNXML module m42074, conceptual question on rowing",
             "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
           }
@@ -2616,7 +2609,7 @@
       "provenance": {
         "publisher": "OpenStax",
         "title": "College Physics 2e",
-        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
         "locator": "CNXML module m42074, Newton’s Third Law of Motion: Symmetry in Forces",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
       }
@@ -2626,14 +2619,15 @@
     {
       "id": "ex-sec-2-01",
       "section_id": "sec-2",
-      "kind": "numeric",
       "tier": "warm_up",
+      "kind": "numeric",
       "difficulty": 2,
       "marks": 2,
       "stem": {
         "text": "The figure above represents a racetrack with semicircular sections connected by straight sections. Each section has length *d* , and markers along the track are spaced *d* /4 apart. Two people drive cars counterclockwise around the track, as shown. Car *X* goes around the curves at constant speed *v* c , increases speed at constant acceleration for half of each straight section to reach a maximum speed of 2 *v* c , then brakes at constant acceleration for the other half of each straight section to return to speed *v* c . Car *Y* also goes around the curves at constant speed *v* c , increases its speed at constant acceleration for one-fourth of each straight section to reach the same maximum speed 2 *v* c , stays at that speed for half of each straight section, then brakes at constant acceleration for the remaining fourth of each straight section to return to speed *v* c . (a) On the figures below, draw an arrow showing the direction of the net force on each of the cars at the positions noted by the dots. If the net force is zero at any position, label the dot with 0. The position of the six dots on the Car Y track on the right are as follows: The first dot on the left center of the track is at the same position as it is on the Car X track.; The second dot is just slight to the right of the Car X dot (less than a dash) past three perpendicular hash marks moving to the right.; The third dot is about one and two-thirds perpendicular hash marks to the right of the center top perpendicular has mark.; The fourth dot is in the same position as the Car X figure (one perpendicular hash mark above the center right perpendicular hash mark).; The fifth dot is about one and two-third perpendicular hash marks to the right of the center bottom perpendicular hash mark.; The sixth dot is in the same position as the Car Y dot (one and two third perpendicular hash marks to the left of the center bottom hash mark). (b) i. Indicate which car, if either, completes one trip around the track in less time, and justify your answer qualitatively without using equations. ii. Justify your answer about which car, if either, completes one trip around the track in less time quantitatively with appropriate equations.",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "Car *X* is shown on the left, and Car *Y* is shown on the right. i. Car *X* takes longer to accelerate and does not spend any time traveling at top speed. Car *Y* accelerates over a shorter time and spends time going at top speed. So Car *Y* must cover the straightaways in a shorter time. Curves take the same time, so Car *Y* must overall take a shorter time. ii. The only difference in the calculations for the time of one segment of linear acceleration is the difference in distances. That shows that Car *X* takes longer to accelerate. The equation $\\frac{d}{4{v}_{c}}={t}_{c}$ corresponds to Car *Y* traveling for a time at top speed. Substituting $a=\\frac{{v}_{c}}{{t}_{1}}$ into the displacement equation in part (b) ii gives $D=\\frac{3}{2}{v}_{c}{t}_{1}$ . This shows that a car takes less time to reach its maximum speed when it accelerates over a shorter distance. Therefore, Car *Y* reaches its maximum speed more quickly, and spends more time at its maximum speed than Car *X* does, as argued in part (b) i.",
         "inline": []
@@ -2667,30 +2661,31 @@
       ],
       "tags": [
         "force",
-        "vectors",
+        "force-standard",
         "free-body-diagram",
-        "force-standard"
+        "vectors"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42069/index.cnxml",
         "locator": "CNXML module m42069, exercise block exr-9",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
       "id": "ex-sec-2-02",
       "section_id": "sec-2",
-      "kind": "verbal",
       "tier": "core",
+      "kind": "verbal",
       "difficulty": 3,
       "marks": 3,
       "stem": {
         "text": "A hawk accelerates as it glides in the air. Does the force causing the acceleration come from the hawk itself? Explain.",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "A body cannot exert a force on itself. The hawk may accelerate as a result of several forces. The hawk may accelerate toward Earth as a result of the force due to gravity. The hawk may accelerate as a result of the additional force exerted on it by wind. The hawk may accelerate as a result of orienting its body to create less air resistance, thus increasing the net force forward.",
         "inline": []
@@ -2704,30 +2699,31 @@
       ],
       "tags": [
         "force",
-        "vectors",
+        "force-standard",
         "free-body-diagram",
-        "force-standard"
+        "vectors"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42069/index.cnxml",
         "locator": "CNXML module m42069, exercise block exr-24",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
       "id": "ex-sec-3-01",
       "section_id": "sec-3",
-      "kind": "algebraic",
       "tier": "warm_up",
+      "kind": "algebraic",
       "difficulty": 2,
       "marks": 2,
       "stem": {
         "text": "Which has more mass: a kilogram of cotton balls or a kilogram of gold?",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "They are equal. A kilogram of one substance is equal in mass to a kilogram of another substance. The quantities that might differ between them are volume and density.",
         "inline": []
@@ -2746,24 +2742,25 @@
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42130/index.cnxml",
         "locator": "CNXML module m42130, exercise block exr-10",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
       "id": "ex-sec-4-01",
       "section_id": "sec-4",
-      "kind": "numeric",
       "tier": "core",
+      "kind": "numeric",
       "difficulty": 3,
       "marks": 3,
       "stem": {
         "text": "A 63.0-kg sprinter starts a race with an acceleration of $4.20 m{/s}^{2}$ . What is the net external force on him?",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "265 N",
         "inline": []
@@ -2776,31 +2773,32 @@
         }
       ],
       "tags": [
-        "newtons-second-law",
         "acceleration",
-        "system-of-interest",
-        "free-body-diagram"
+        "free-body-diagram",
+        "newtons-second-law",
+        "system-of-interest"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
         "locator": "CNXML module m42073, exercise block exr-89",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
       "id": "ex-sec-4-02",
       "section_id": "sec-4",
-      "kind": "numeric",
       "tier": "stretch",
+      "kind": "numeric",
       "difficulty": 4,
       "marks": 4,
       "stem": {
         "text": "A cleaner pushes a 4.50-kg laundry cart in such a way that the net external force on it is 60.0 N. Calculate the magnitude of its acceleration.",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "{13.3 m/s}^{2}",
         "inline": []
@@ -2813,31 +2811,32 @@
         }
       ],
       "tags": [
-        "newtons-second-law",
         "acceleration",
-        "system-of-interest",
-        "free-body-diagram"
+        "free-body-diagram",
+        "newtons-second-law",
+        "system-of-interest"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
         "locator": "CNXML module m42073, exercise block exr-93",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
       "id": "ex-sec-4-03",
       "section_id": "sec-4",
-      "kind": "numeric",
       "tier": "core",
+      "kind": "numeric",
       "difficulty": 3,
       "marks": 3,
       "stem": {
         "text": "(a) If the rocket sled shown in starts with only one rocket burning, what is the magnitude of its acceleration? Assume that the mass of the system is 2100 kg, the thrust T is $2.59×{10}^{4}$ N, and the force of friction opposing the motion is known to be 650 N. (b) Why is the acceleration not one-fourth of what it is with all rockets burning?",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "12{m/s}^{2}",
         "inline": []
@@ -2854,31 +2853,32 @@
         }
       ],
       "tags": [
-        "newtons-second-law",
         "acceleration",
-        "system-of-interest",
-        "free-body-diagram"
+        "free-body-diagram",
+        "newtons-second-law",
+        "system-of-interest"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
         "locator": "CNXML module m42073, exercise block exr-102",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
       "id": "ex-sec-4-04",
       "section_id": "sec-4",
-      "kind": "numeric",
       "tier": "stretch",
+      "kind": "numeric",
       "difficulty": 4,
       "marks": 4,
       "stem": {
         "text": "Suppose two children push horizontally, but in exactly opposite directions, on a third child in a wagon. The first child exerts a force of 75.0 N, the second a force of 90.0 N, friction is 12.0 N, and the mass of the third child plus wagon is 23.0 kg. What is the system of interest if the acceleration of the child in the wagon is to be calculated?; Draw a free-body diagram, including all forces acting on the system.; Calculate the acceleration.; What would the acceleration be if friction were 15.0 N?",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "(a) The system is the child in the wagon plus the wagon. (b) (c) $a=0.130{m/s}^{2}$ in the direction of the second child’s push. (d) $a=0.00{m/s}^{2}$",
         "inline": []
@@ -2903,31 +2903,32 @@
         }
       ],
       "tags": [
-        "newtons-second-law",
         "acceleration",
-        "system-of-interest",
-        "free-body-diagram"
+        "free-body-diagram",
+        "newtons-second-law",
+        "system-of-interest"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
         "locator": "CNXML module m42073, exercise block exr-108",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
       "id": "ex-sec-4-05",
       "section_id": "sec-4",
-      "kind": "numeric",
       "tier": "core",
+      "kind": "numeric",
       "difficulty": 3,
       "marks": 3,
       "stem": {
         "text": "The rocket sled shown in accelerates at a rate of $49.0{m/s}^{2}$ . Its passenger has a mass of 75.0 kg. (a) Calculate the horizontal component of the force the seat exerts against his body. Compare this with his weight by using a ratio. (b) Calculate the direction and magnitude of the total force the seat exerts against his body.",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "3750 N; 11.3º",
         "inline": []
@@ -2944,17 +2945,17 @@
         }
       ],
       "tags": [
-        "newtons-second-law",
         "acceleration",
-        "system-of-interest",
-        "free-body-diagram"
+        "free-body-diagram",
+        "newtons-second-law",
+        "system-of-interest"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
         "locator": "CNXML module m42073, exercise block exr-115",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)",
       "hints": [
@@ -2970,14 +2971,15 @@
     {
       "id": "ex-sec-4-06",
       "section_id": "sec-4",
-      "kind": "numeric",
       "tier": "stretch",
+      "kind": "numeric",
       "difficulty": 4,
       "marks": 4,
       "stem": {
         "text": "The weight of an astronaut plus their space suit on the Moon is only 250 N. How much do they weigh on Earth? What is the mass on the Moon? On Earth?",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "1.5×{10}^{3}N,150 kg,150 kg",
         "inline": []
@@ -2990,17 +2992,17 @@
         }
       ],
       "tags": [
-        "newtons-second-law",
         "acceleration",
-        "system-of-interest",
-        "free-body-diagram"
+        "free-body-diagram",
+        "newtons-second-law",
+        "system-of-interest"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42073/index.cnxml",
         "locator": "CNXML module m42073, exercise block exr-122",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)",
       "hints": [
@@ -3016,14 +3018,15 @@
     {
       "id": "ex-sec-5-01",
       "section_id": "sec-5",
-      "kind": "algebraic",
       "tier": "core",
+      "kind": "algebraic",
       "difficulty": 3,
       "marks": 3,
       "stem": {
         "text": "What object or objects commonly exert forces on the following objects in motion? (a) a soccer ball being kicked, (b) a dolphin jumping, (c) a parachutist drifting to Earth.",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "(a) A soccer player, gravity, air, and friction commonly exert forces on a soccer ball being kicked. (b) Gravity and the surrounding water commonly exert forces on a dolphin jumping. (The dolphin moves its muscles to exert a force on the water. The water exerts an equal force on the dolphin, resulting in the dolphin’s motion.) (c) Gravity and air exert forces on a parachutist drifting to Earth.",
         "inline": []
@@ -3044,30 +3047,31 @@
         }
       ],
       "tags": [
-        "newtons-third-law",
         "action-reaction",
+        "newtons-third-law",
         "symmetry"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
         "locator": "CNXML module m42074, exercise block exr-40",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
       "id": "ex-sec-5-02",
       "section_id": "sec-5",
-      "kind": "algebraic",
       "tier": "stretch",
+      "kind": "algebraic",
       "difficulty": 4,
       "marks": 4,
       "stem": {
         "text": "Which of the following is true? Earth exerts a force due to gravity on your body, and your body exerts a smaller force on the Earth, because your mass is smaller than the mass of the Earth.; The Moon orbits the Earth because the Earth exerts a force on the Moon and the Moon exerts a force equal in magnitude and direction on the Earth.; A rocket taking off exerts a force on the Earth equal to the force the Earth exerts on the rocket.; An airplane cruising at a constant speed is not affected by gravity.",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "(c)",
         "inline": []
@@ -3080,30 +3084,31 @@
         }
       ],
       "tags": [
-        "newtons-third-law",
         "action-reaction",
+        "newtons-third-law",
         "symmetry"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
         "locator": "CNXML module m42074, exercise block exr-47",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
       "id": "ex-sec-5-03",
       "section_id": "sec-5",
-      "kind": "numeric",
       "tier": "core",
+      "kind": "numeric",
       "difficulty": 3,
       "marks": 3,
       "stem": {
         "text": "The current in a river exerts a force of 9.0 N on a balloon floating in the river. A wind exerts a force of 13.0 N on the balloon in the opposite direction. Draw a free-body diagram to show the forces acting on the balloon. Use your free-body diagram to predict the effect on the balloon.",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "The diagram consists of a black dot in the center and two small red arrows pointing up (Fb) and down (Fg) and two long red arrows pointing right (Fc = 9.0 N) and left (Fw=13.0 N). In the diagram, *F* g represents the force due to gravity on the balloon, and *Fb* represents the buoyant force. These two forces are equal in magnitude and opposite in direction. *F* c represents the force of the current. *F* w represents the force of the wind. The net force on the balloon will be ${F}_{w}-{F}_{c}=4.0$ N and the balloon will accelerate in the direction the wind is blowing.",
         "inline": []
@@ -3120,30 +3125,31 @@
         }
       ],
       "tags": [
-        "newtons-third-law",
         "action-reaction",
+        "newtons-third-law",
         "symmetry"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
         "locator": "CNXML module m42074, exercise block exr-51",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
       "id": "ex-sec-5-04",
       "section_id": "sec-5",
-      "kind": "numeric",
       "tier": "stretch",
+      "kind": "numeric",
       "difficulty": 4,
       "marks": 4,
       "stem": {
         "text": "A parachutist’s fall to Earth is determined by two opposing forces. A gravitational force of 539 N acts on the parachutist. After 2 s, she opens her parachute and experiences an air resistance of 615 N. At what speed is the parachutist falling after 10 s?",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "Since $m=F/a$ , the parachutist has a mass of $539N/9{.8 km/s}^{2}=55kg.$ For the first 2 s, the parachutist accelerates at 9.8 m/s 2 $.$ $v=at=9.8\\frac{m}{{s}^{2}}•2s=19.6\\frac{m}{s}$ Her speed after 2 s is 19.6 m/s. From 2 s to 10 s, the net force on the parachutist is 539 N – 615 N, or 76 N upward. $a=\\frac{F}{m}=\\frac{-76N}{55​​​​kg}=-1.4\\frac{m}{{s}^{2}}$ Since $v={v}_{0}+at,v=19.6{m/s}^{2}+(-1.4{m/s}^{2})(8$ s) $=8.4{m/s}^{2}.$ At 10 s, the parachutist is falling to Earth at 8.4 m/s.",
         "inline": []
@@ -3184,16 +3190,16 @@
         }
       ],
       "tags": [
-        "newtons-third-law",
         "action-reaction",
+        "newtons-third-law",
         "symmetry"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
         "locator": "CNXML module m42074, exercise block exr-58",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)",
       "hints": [
@@ -3209,14 +3215,15 @@
     {
       "id": "ex-sec-5-05",
       "section_id": "sec-5",
-      "kind": "algebraic",
       "tier": "core",
+      "kind": "algebraic",
       "difficulty": 3,
       "marks": 3,
       "stem": {
         "text": "A landscaper is easing a wheelbarrow full of soil down a hill. Define the system you would analyze and list all the forces that you would need to include to calculate the acceleration of the wheelbarrow.",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "The system includes the gardener and the wheelbarrow with its contents. The following forces are important to include: the weight of the wheelbarrow, the weight of the gardener, the normal force for the wheelbarrow and the gardener, the force of the gardener pushing against the ground and the equal force of the ground pushing back against the gardener, and any friction in the wheelbarrow’s wheels.",
         "inline": []
@@ -3229,30 +3236,31 @@
         }
       ],
       "tags": [
-        "newtons-third-law",
         "action-reaction",
+        "newtons-third-law",
         "symmetry"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
         "locator": "CNXML module m42074, exercise block exr-70",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     },
     {
       "id": "ex-sec-5-06",
       "section_id": "sec-5",
-      "kind": "numeric",
       "tier": "stretch",
+      "kind": "numeric",
       "difficulty": 4,
       "marks": 4,
       "stem": {
         "text": "A figure skater has a mass of 40 kg and her partner's mass is 50 kg. She pushes against the ice with a force of 120 N, causing her and her partner to move forward. Calculate the pair’s acceleration. Assume that all forces opposing the motion, such as friction and air resistance, total 5.0 N.",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "The system undergoing acceleration is the two figure skaters together. Net force = $120N–5.0N=115N.$ Total mass = $40kg + 50 kg = 90 kg.$ Using Newton’s second law, we have that $a=\\frac{F}{m}=\\frac{115N}{90kg}=1.28\\frac{m}{{s}^{2}}$ The pair accelerates forward at 1.28 m/s 2 $.$",
         "inline": []
@@ -3285,16 +3293,16 @@
         }
       ],
       "tags": [
-        "newtons-third-law",
         "action-reaction",
+        "newtons-third-law",
         "symmetry"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
         "locator": "CNXML module m42074, exercise block exr-75",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)",
       "hints": [
@@ -3310,14 +3318,15 @@
     {
       "id": "ex-sec-5-07",
       "section_id": "sec-5",
-      "kind": "numeric",
       "tier": "core",
+      "kind": "numeric",
       "difficulty": 3,
       "marks": 3,
       "stem": {
         "text": "What net external force is exerted on a 1100-kg artillery shell fired from a battleship if the shell is accelerated at $2.40×{10}^{4}{m/s}^{2}$ ? What is the magnitude of the force exerted on the ship by the artillery shell?",
         "inline": []
       },
+      "options": [],
       "answer": {
         "text": "Force on shell: $2.64×{10}^{7}N$ Force exerted on ship = $-2.64×{10}^{7}N$ , by Newton’s third law",
         "inline": []
@@ -3334,16 +3343,16 @@
         }
       ],
       "tags": [
-        "newtons-third-law",
         "action-reaction",
+        "newtons-third-law",
         "symmetry"
       ],
       "provenance": {
         "publisher": "OpenStax",
-        "title": "College Physics 2e",
+        "title": "osbooks-college-physics-bundle",
         "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42074/index.cnxml",
         "locator": "CNXML module m42074, exercise block exr-98",
-        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+        "licence": "CC BY-NC-SA 4.0 (non-commercial staging; attribution required)"
       },
       "solution_provenance": "OpenStax CNXML solution element (in file)"
     }

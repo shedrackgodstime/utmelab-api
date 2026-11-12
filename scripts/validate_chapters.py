@@ -434,12 +434,59 @@ def validate(path):
     return errors
 
 
+REQUIRED_BOOK = ["book_id", "schema_version", "title", "subject_area", "level", "parts", "chapters", "sources"]
+
+
+def validate_book(path):
+    """A book document: the parts it divides into and the chapters it holds."""
+    errors = []
+    try:
+        document = json.loads(Path(path).read_text())
+    except Exception as error:
+        return [(path, f"json parse: {error}")]
+    for key in REQUIRED_BOOK:
+        if key not in document:
+            errors.append((path, f"missing {key}"))
+    if document.get("schema_version") != 2:
+        errors.append((path, "schema_version != 2"))
+    parts = document.get("parts")
+    if not isinstance(parts, list) or not parts:
+        errors.append((path, "a book needs at least one part"))
+    else:
+        for index, part in enumerate(parts, start=1):
+            if not isinstance(part, dict):
+                errors.append((path, "part not dict"))
+                continue
+            if part.get("order") != index:
+                errors.append((path, f"part {part.get('id')} order {part.get('order')} != {index}"))
+            if not isinstance(part.get("title"), str) or not part.get("title", "").strip():
+                errors.append((path, f"part {part.get('id')} has no title"))
+    chapters = document.get("chapters")
+    if not isinstance(chapters, list) or not chapters:
+        errors.append((path, "a book needs at least one chapter"))
+    else:
+        for chapter_id in chapters:
+            path_on_disk = Path(__file__).resolve().parent.parent / "data/chapters" / f"{chapter_id}.json"
+            if not path_on_disk.exists():
+                errors.append((path, f"chapter {chapter_id} has no document"))
+    sources = document.get("sources")
+    if not isinstance(sources, list) or not sources:
+        errors.append((path, "sources missing or empty"))
+    else:
+        for source in sources:
+            check_provenance(source, f"{path}.sources", errors)
+    return errors
+
+
 def main():
     pattern = sys.argv[1] if len(sys.argv) > 1 else "data/chapters/*.json"
     paths = sorted(p for p in glob.glob(pattern) if not Path(p).name.startswith("_"))
     all_errors = []
     for path in paths:
         all_errors.extend(validate(path))
+    if pattern == "data/chapters/*.json":
+        for book in sorted(glob.glob("data/books/*.json")):
+            all_errors.extend(validate_book(book))
     print("files", len(paths))
     print("errors", len(all_errors))
     for message, count in Counter(m for _, m in all_errors).most_common(20):
