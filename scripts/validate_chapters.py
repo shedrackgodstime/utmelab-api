@@ -49,7 +49,7 @@ KNOWN_BLOCK_TYPES = {
     "exercise_ref",
     "glossary_entry",
 }
-CALLOUT_KINDS = {"key_concept", "warning", "law", "examiner_tip", "definition"}
+CALLOUT_KINDS = {"key_concept", "warning", "law", "tip", "definition"}
 EXERCISE_KINDS = {"numeric", "algebraic", "verbal", "application", "proof"}
 EXERCISE_TIERS = {"warm_up", "core", "stretch"}
 ANSWER_KINDS = {"expression", "explanation"}

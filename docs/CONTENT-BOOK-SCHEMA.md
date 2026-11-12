@@ -132,7 +132,7 @@ types are these and no others.
 | `figure` | asset_url, caption, alt | an illustration with its description |
 | `table` | title, rows, alt | a table with its description |
 | `list` | ordered, items | a list |
-| `callout` | kind, text | a box in the margin: key_concept, warning, law, examiner_tip, definition |
+| `callout` | kind, text | a box in the margin: key_concept, warning, law, tip, definition |
 | `summary` | points | the summary of the section |
 | `exercise_ref` | exercise_id, prompt | a pointer: try this now |
 | `glossary_entry` | term, definition | a term defined in place |
