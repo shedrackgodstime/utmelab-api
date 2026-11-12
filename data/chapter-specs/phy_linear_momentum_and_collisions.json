@@ -1,0 +1,391 @@
+{
+  "chapter_id": "phy_linear_momentum_and_collisions",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Linear Momentum and Collisions",
+  "book_id": "secondary_physics",
+  "part_id": "part-2",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "learning_objectives": [
+    "Define linear momentum and give it a direction.",
+    "Relate impulse to the change in momentum.",
+    "Apply conservation of momentum to collisions, and tell elastic from inelastic."
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to Linear Momentum and Collisions",
+      "module": "m42155",
+      "est_minutes": 8,
+      "locator": "CNXML module m42155",
+      "objectives": [
+        "Describe what momentum adds to the description of a collision."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Momentum is just another word for speed.",
+          "correction": "Momentum is mass times velocity, so a heavy body moving slowly can carry as much momentum as a light one moving fast."
+        }
+      ],
+      "summary": [
+        "Momentum measures how hard it is to stop a body.",
+        "Collisions are where momentum conservation does its work.",
+        "Momentum is a vector, so direction matters."
+      ],
+      "tags": [
+        "momentum",
+        "collisions"
+      ],
+      "exam_links": [],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "Linear Momentum and Force",
+      "module": "m42156",
+      "est_minutes": 14,
+      "locator": "CNXML module m42156",
+      "objectives": [
+        "Compute the linear momentum of a body and give it a direction."
+      ],
+      "misconceptions": [
+        {
+          "claim": "The momentum of a body depends only on its speed.",
+          "correction": "It depends on the mass as well: p = mv, so doubling the mass doubles the momentum."
+        }
+      ],
+      "summary": [
+        "p = mv, and it is a vector.",
+        "Momentum is measured in kilogram metres per second.",
+        "The momentum of a system of particles is the vector sum of the momenta."
+      ],
+      "tags": [
+        "momentum"
+      ],
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "motion",
+          "subtopic_slug": "newton-s-laws-of-motion-inertia-mass-impulse-momentum-and-co",
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-newton-s-laws-of-motion",
+          "subtopic_slug": "waec-second-law-force-acceleration-momentum-and-impulse-2",
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-35"
+    },
+    {
+      "id": "sec-3",
+      "title": "Impulse",
+      "module": "m42159",
+      "est_minutes": 12,
+      "locator": "CNXML module m42159",
+      "objectives": [
+        "Relate impulse to the change in momentum, and compute both for a collision."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Impulse is the force applied.",
+          "correction": "Impulse is the force applied over the time it acts, so it is the change in momentum."
+        }
+      ],
+      "summary": [
+        "J = F dt, and the impulse equals the change in momentum.",
+        "A longer contact time means a smaller force for the same change.",
+        "This is why a cricket bat hurts more than a ball."
+      ],
+      "tags": [
+        "impulse"
+      ],
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-newton-s-laws-of-motion",
+          "subtopic_slug": "waec-second-law-force-acceleration-momentum-and-impulse-2",
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-28"
+    },
+    {
+      "id": "sec-4",
+      "title": "Conservation of Momentum",
+      "module": "m42162",
+      "est_minutes": 16,
+      "locator": "CNXML module m42162",
+      "objectives": [
+        "Apply conservation of momentum to a collision in which no external force acts."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Momentum is conserved in every collision.",
+          "correction": "It is conserved when the net external force on the system is zero, which is nearly true for a short collision."
+        }
+      ],
+      "summary": [
+        "The total momentum before the collision equals the total momentum after it.",
+        "Momentum is conserved in all directions at once, unlike kinetic energy.",
+        "It holds for the system, not for each body."
+      ],
+      "tags": [
+        "conservation-of-momentum"
+      ],
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-newton-s-laws-of-motion",
+          "subtopic_slug": "waec-second-law-force-acceleration-momentum-and-impulse-2",
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-30"
+    },
+    {
+      "id": "sec-5",
+      "title": "Elastic Collisions in One Dimension",
+      "module": "m42163",
+      "est_minutes": 16,
+      "locator": "CNXML module m42163",
+      "objectives": [
+        "Solve a one dimensional elastic collision and show that kinetic energy is conserved as well."
+      ],
+      "misconceptions": [
+        {
+          "claim": "In an elastic collision the bodies bounce apart with no change in speed.",
+          "correction": "They exchange speed, so the speeds of the two bodies change while the total kinetic energy stays the same."
+        }
+      ],
+      "summary": [
+        "An elastic collision conserves both momentum and kinetic energy.",
+        "The two bodies exchange velocities in the one dimensional case.",
+        "The relative speed of approach equals the relative speed of separation."
+      ],
+      "tags": [
+        "elastic-collisions"
+      ],
+      "exam_links": [
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-newton-s-laws-of-motion",
+          "subtopic_slug": "waec-third-law-action-and-reaction-energy-mechanical-and-heat",
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-25"
+    },
+    {
+      "id": "sec-6",
+      "title": "Inelastic Collisions in One Dimension",
+      "module": "m42164",
+      "est_minutes": 14,
+      "locator": "CNXML module m42164",
+      "objectives": [
+        "Solve a one dimensional inelastic collision, where the bodies stick together or lose energy."
+      ],
+      "misconceptions": [
+        {
+          "claim": "In an inelastic collision the momentum is not conserved.",
+          "correction": "Momentum is still conserved. What is lost is kinetic energy, and it goes into heat, sound and deformation."
+        }
+      ],
+      "summary": [
+        "Momentum is conserved in an inelastic collision too.",
+        "Kinetic energy is not, and the difference becomes internal energy.",
+        "A completely inelastic collision leaves the bodies moving together."
+      ],
+      "tags": [
+        "inelastic-collisions"
+      ],
+      "exam_links": [],
+      "worked_from": "exr-36"
+    },
+    {
+      "id": "sec-7",
+      "title": "Collisions of Point Masses in Two Dimensions",
+      "module": "m42165",
+      "est_minutes": 16,
+      "locator": "CNXML module m42165",
+      "objectives": [
+        "Solve a two dimensional collision using the components of momentum."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Momentum is only conserved in a straight line collision.",
+          "correction": "Momentum is conserved in every direction. In two dimensions the components are conserved separately."
+        }
+      ],
+      "summary": [
+        "The x and the y components of momentum are conserved separately.",
+        "The kinetic energy tells you whether the collision is elastic.",
+        "The geometry of the components is what the two dimensional problems are really about."
+      ],
+      "tags": [
+        "two-dimensional-collisions"
+      ],
+      "exam_links": [],
+      "worked_from": "exr-36"
+    }
+  ],
+  "formula_sheet": [
+    {
+      "id": "f-1",
+      "expression": "$p = m v$",
+      "caption": {
+        "text": "Linear momentum",
+        "inline": []
+      },
+      "conditions": {
+        "text": "A vector, in kilogram metres per second.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42156/index.cnxml",
+        "locator": "CNXML module m42156",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-2",
+      "expression": "$J = F \\Delta t = \\Delta p$",
+      "caption": {
+        "text": "Impulse and the change in momentum",
+        "inline": []
+      },
+      "conditions": {
+        "text": "For a constant force over the interval, and for any force over the same interval.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42159/index.cnxml",
+        "locator": "CNXML module m42159",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-3",
+      "expression": "$\\Sigma p_{before} = \\Sigma p_{after}$",
+      "caption": {
+        "text": "Conservation of momentum",
+        "inline": []
+      },
+      "conditions": {
+        "text": "When the net external force on the system is negligible.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42162/index.cnxml",
+        "locator": "CNXML module m42162",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "linear momentum",
+        "inline": []
+      },
+      "definition": {
+        "text": "The product of the mass of a body and its velocity, a vector measured in kilogram metres per second.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42156/index.cnxml",
+        "locator": "CNXML module m42156",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "impulse",
+        "inline": []
+      },
+      "definition": {
+        "text": "The product of a force and the time it acts, equal to the change in momentum it produces.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42159/index.cnxml",
+        "locator": "CNXML module m42159",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "elastic collision",
+        "inline": []
+      },
+      "definition": {
+        "text": "A collision in which both the total momentum and the total kinetic energy are conserved.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42163/index.cnxml",
+        "locator": "CNXML module m42163",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "inelastic collision",
+        "inline": []
+      },
+      "definition": {
+        "text": "A collision in which the total momentum is conserved but kinetic energy is not.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42164/index.cnxml",
+        "locator": "CNXML module m42164",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_traps": [],
+  "exam_recall_checks": [],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Linear Momentum and Collisions', modules m42155, m42156, m42159, m42162, m42163, m42164, m42165",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "exam": "JAMB",
+  "subject": "physics",
+  "topic_slug": "equilibrium-of-forces",
+  "topic_name": "",
+  "subtopic_slugs": [
+    "centre-of-gravity-and-stability-stable-unstable-and-neutral",
+    "conditions-for-equilibrium-of-rigid-bodies-under-parallel-an",
+    "principle-of-moments-moment-of-a-force-couple-and-torque-app"
+  ],
+  "sections": [
+    {
+      "chapter_id": "phy_statics_and_torque",
+      "chapter_title": "Statics and Torque",
+      "section_id": "sec-2",
+      "title": "The First Condition for Equilibrium",
+      "est_minutes": 14,
+      "learning_objectives": [
+        "Use the first condition for equilibrium, that the net force is zero."
+      ],
+      "subtopic_slug": "conditions-for-equilibrium-of-rigid-bodies-under-parallel-an"
+    },
+    {
+      "chapter_id": "phy_statics_and_torque",
+      "chapter_title": "Statics and Torque",
+      "section_id": "sec-3",
+      "title": "The Second Condition for Equilibrium",
+      "est_minutes": 16,
+      "learning_objectives": [
+        "Use the second condition for equilibrium, that the net moment is zero."
+      ],
+      "subtopic_slug": "principle-of-moments-moment-of-a-force-couple-and-torque-app"
+    },
+    {
+      "chapter_id": "phy_statics_and_torque",
+      "chapter_title": "Statics and Torque",
+      "section_id": "sec-4",
+      "title": "Stability",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Explain stability from the position of the centre of gravity relative to the base of support."
+      ],
+      "subtopic_slug": "centre-of-gravity-and-stability-stable-unstable-and-neutral"
+    }
+  ],
+  "traps": [],
+  "recall_checks": [],
+  "exercises": [
+    "ex-sec-3-01",
+    "ex-sec-3-02",
+    "ex-sec-3-03",
+    "ex-sec-4-01",
+    "ex-sec-4-02",
+    "ex-sec-4-03",
+    "ex-sec-4-04",
+    "ex-sec-4-05",
+    "ex-sec-4-06"
+  ],
+  "past_papers": [],
+  "paper_note": "No past paper for this topic yet.",
+  "coverage": {
+    "sections": 3,
+    "traps": 0,
+    "recall_checks": 0,
+    "exercises": 9,
+    "past_papers": 0,
+    "gaps": [
+      "traps",
+      "recall_checks",
+      "past_papers"
+    ]
+  }
+}

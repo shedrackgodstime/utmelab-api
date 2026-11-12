@@ -10,8 +10,7 @@ spec, and reports what the exam side of the book actually holds.
 The spec keeps the truth, so the chapter can be rebuilt without a database.
 """
 import json
-import os
-import re
+import sys
 from pathlib import Path
 
 import requests
@@ -19,6 +18,7 @@ import requests
 ROOT = Path(__file__).resolve().parent.parent
 SPECS = ROOT / "data/chapter-specs"
 REPORT = ROOT / "data/coverage/bank-coverage.json"
+CACHE = ROOT / "data/staging/bank-papers.json"
 NS = {"c": "http://cnx.rice.edu/cnxml"}
 
 
@@ -70,6 +70,17 @@ def query(stmt, args=None):
 
 
 def main():
+    """Fill the question ids for every exam link.
+
+    Reads of the production catalogue are metered, so the answers are cached
+    and the cache is only refreshed on request. Every run says how many reads
+    it made.
+    """
+    refresh = "--refresh" in sys.argv[1:]
+    cache = {}
+    if CACHE.exists():
+        cache = json.loads(CACHE.read_text())
+    reads = 0
     report = []
     for path in sorted(SPECS.glob("*.json")):
         spec = json.loads(path.read_text())
@@ -82,19 +93,25 @@ def main():
             if not link.get("subtopic_slug"):
                 link["papers"] = []
                 continue
-            rows = query(
-                "SELECT id, year, source FROM questions WHERE exam = ? AND subject = ? AND subtopic_id = ? "
-                "ORDER BY year DESC, id",
-                [link["exam"], link["subject"], link["subtopic_slug"]],
-            )
-            papers = [
-                {
-                    "question_id": row["id"],
-                    "year": int(row["year"]) if row.get("year") is not None else None,
-                    "source": row.get("source") or "unknown",
-                }
-                for row in rows
-            ]
+            key = "|".join([link["exam"], link["subject"], link["subtopic_slug"]])
+            if not refresh and key in cache:
+                papers = cache[key]
+            else:
+                rows = query(
+                    "SELECT id, year, source FROM questions WHERE exam = ? AND subject = ? AND subtopic_id = ? "
+                    "ORDER BY year DESC, id",
+                    [link["exam"], link["subject"], link["subtopic_slug"]],
+                )
+                reads += 1
+                papers = [
+                    {
+                        "question_id": row["id"],
+                        "year": int(row["year"]) if row.get("year") is not None else None,
+                        "source": row.get("source") or "unknown",
+                    }
+                    for row in rows
+                ]
+                cache[key] = papers
             if link.get("papers") != papers:
                 link["papers"] = papers
                 changed = True
@@ -113,6 +130,9 @@ def main():
 
     REPORT.parent.mkdir(parents=True, exist_ok=True)
     REPORT.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
+    CACHE.parent.mkdir(parents=True, exist_ok=True)
+    CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=2) + "\n")
+    print(f"reads of the production catalogue: {reads} (cached otherwise)")
 
     print()
     print(f"{'chapter':<40} {'exam':<6} {'questions in the bank':>21}")

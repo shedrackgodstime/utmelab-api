@@ -1,0 +1,44 @@
+{
+  "exam": "JAMB",
+  "subject": "physics",
+  "topic_slug": "simple-machines",
+  "topic_name": "",
+  "subtopic_slugs": [
+    "definition-of-a-machine-and-types-of-machines"
+  ],
+  "sections": [
+    {
+      "chapter_id": "phy_statics_and_torque",
+      "chapter_title": "Statics and Torque",
+      "section_id": "sec-6",
+      "title": "Simple Machines",
+      "est_minutes": 12,
+      "learning_objectives": [
+        "Explain the mechanical advantage of a simple machine and compute it from the forces."
+      ],
+      "subtopic_slug": "definition-of-a-machine-and-types-of-machines"
+    }
+  ],
+  "traps": [],
+  "recall_checks": [],
+  "exercises": [
+    "ex-sec-6-01",
+    "ex-sec-6-02",
+    "ex-sec-6-03",
+    "ex-sec-6-04"
+  ],
+  "past_papers": [],
+  "paper_note": "No past paper for this topic yet.",
+  "coverage": {
+    "sections": 1,
+    "traps": 0,
+    "recall_checks": 0,
+    "exercises": 4,
+    "past_papers": 0,
+    "gaps": [
+      "traps",
+      "recall_checks",
+      "past_papers"
+    ]
+  }
+}

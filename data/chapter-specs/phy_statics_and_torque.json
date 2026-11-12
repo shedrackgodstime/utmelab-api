@@ -1,0 +1,424 @@
+{
+  "chapter_id": "phy_statics_and_torque",
+  "schema_version": 2,
+  "updated_at": "2026-11-12",
+  "title": "Statics and Torque",
+  "book_id": "secondary_physics",
+  "part_id": "part-2",
+  "publisher": "OpenStax",
+  "source_title": "College Physics 2e",
+  "source_url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+  "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0",
+  "learning_objectives": [
+    "State the first condition for equilibrium and use it to solve for unknown forces.",
+    "State the second condition for equilibrium and compute a moment.",
+    "Explain the stability of a body from the position of its centre of gravity."
+  ],
+  "prerequisites": [],
+  "sections": [
+    {
+      "id": "sec-1",
+      "title": "Introduction to Statics and Torque",
+      "module": "m42167",
+      "est_minutes": 8,
+      "locator": "CNXML module m42167",
+      "objectives": [
+        "Describe what statics studies and why the turning effect of a force matters."
+      ],
+      "misconceptions": [
+        {
+          "claim": "Statics is the study of moving objects.",
+          "correction": "It is the study of objects at rest, and of the forces and moments that keep them there."
+        }
+      ],
+      "summary": [
+        "Statics is the study of equilibrium.",
+        "A moment is the turning effect of a force about a pivot.",
+        "Two conditions decide whether a body is in equilibrium."
+      ],
+      "tags": [
+        "statics",
+        "torque"
+      ],
+      "exam_links": [],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-2",
+      "title": "The First Condition for Equilibrium",
+      "module": "m42170",
+      "est_minutes": 14,
+      "locator": "CNXML module m42170",
+      "objectives": [
+        "Use the first condition for equilibrium, that the net force is zero."
+      ],
+      "misconceptions": [
+        {
+          "claim": "A body at rest has no forces acting on it.",
+          "correction": "It has forces acting on it that balance, so the net force is zero."
+        }
+      ],
+      "summary": [
+        "The first condition is that the vector sum of the forces is zero.",
+        "Balanced forces need not be equal pairs, they must sum to zero in every direction.",
+        "The forces need not act at the same point for this condition."
+      ],
+      "tags": [
+        "equilibrium",
+        "statics"
+      ],
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "equilibrium-of-forces",
+          "subtopic_slug": "conditions-for-equilibrium-of-rigid-bodies-under-parallel-an",
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-equilibrium-of-forces",
+          "subtopic_slug": "waec-conditions-for-equilibrium-of-rigid-bodies-under-the-action-2",
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "no_worked_example_reason": "The source carries no worked example for this section and no solved exercise to promote, so the practice is left to the exercises themselves."
+    },
+    {
+      "id": "sec-3",
+      "title": "The Second Condition for Equilibrium",
+      "module": "m42171",
+      "est_minutes": 16,
+      "locator": "CNXML module m42171",
+      "objectives": [
+        "Use the second condition for equilibrium, that the net moment is zero."
+      ],
+      "misconceptions": [
+        {
+          "claim": "If the forces balance, the body is in equilibrium.",
+          "correction": "Only if the forces balance and the turning effects balance as well. A couple is a pair of forces that turn a body without changing its motion."
+        }
+      ],
+      "summary": [
+        "The second condition is that the net moment about any pivot is zero.",
+        "A moment is force times the perpendicular distance from the pivot.",
+        "A couple turns a body and gives it no net force."
+      ],
+      "tags": [
+        "moment",
+        "torque",
+        "equilibrium"
+      ],
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "equilibrium-of-forces",
+          "subtopic_slug": "principle-of-moments-moment-of-a-force-couple-and-torque-app",
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-equilibrium-of-forces",
+          "subtopic_slug": "waec-principle-of-moments-2",
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-39"
+    },
+    {
+      "id": "sec-4",
+      "title": "Stability",
+      "module": "m42172",
+      "est_minutes": 12,
+      "locator": "CNXML module m42172",
+      "objectives": [
+        "Explain stability from the position of the centre of gravity relative to the base of support."
+      ],
+      "misconceptions": [
+        {
+          "claim": "A body is stable when its centre of gravity is high.",
+          "correction": "It is stable when the centre of gravity is low, or when it lies over the base of support, so a small tilt raises it."
+        }
+      ],
+      "summary": [
+        "Stable, unstable and neutral depend on the centre of gravity and the base of support.",
+        "Tilting a stable body raises its centre of gravity, so it falls back.",
+        "A hanging object is stable because its centre of gravity is below the pivot."
+      ],
+      "tags": [
+        "stability",
+        "centre-of-gravity"
+      ],
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "equilibrium-of-forces",
+          "subtopic_slug": "centre-of-gravity-and-stability-stable-unstable-and-neutral",
+          "status": "covered",
+          "papers": []
+        },
+        {
+          "exam": "WAEC",
+          "subject": "physics",
+          "topic_slug": "waec-equilibrium-of-forces",
+          "subtopic_slug": "waec-centre-of-gravity-and-stability-2",
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-24"
+    },
+    {
+      "id": "sec-5",
+      "title": "Applications of Statics, Including Problem-Solving Strategies",
+      "module": "m42173",
+      "est_minutes": 14,
+      "locator": "CNXML module m42173",
+      "objectives": [
+        "Set up a statics problem by drawing the free-body diagram before writing any equation."
+      ],
+      "misconceptions": [
+        {
+          "claim": "You can write the equilibrium equations straight away.",
+          "correction": "You draw the free-body diagram first, choose a pivot, and only then write the equations."
+        }
+      ],
+      "summary": [
+        "Always draw the free-body diagram first.",
+        "Choose a pivot that removes an unknown force where you can.",
+        "Solve the force equations and the moment equations together."
+      ],
+      "tags": [
+        "problem-solving",
+        "statics"
+      ],
+      "exam_links": [],
+      "worked_from": "exr-29"
+    },
+    {
+      "id": "sec-6",
+      "title": "Simple Machines",
+      "module": "m42174",
+      "est_minutes": 12,
+      "locator": "CNXML module m42174",
+      "objectives": [
+        "Explain the mechanical advantage of a simple machine and compute it from the forces."
+      ],
+      "misconceptions": [
+        {
+          "claim": "A machine multiplies the force applied.",
+          "correction": "It trades force for distance, so it multiplies the force only when it moves the load less far, and the mechanical advantage says by how much."
+        }
+      ],
+      "summary": [
+        "The mechanical advantage is the load over the effort.",
+        "No machine is better than the effort: the work in equals the work out.",
+        "Machines save force or save distance, never both."
+      ],
+      "tags": [
+        "simple-machines",
+        "mechanical-advantage"
+      ],
+      "exam_links": [
+        {
+          "exam": "JAMB",
+          "subject": "physics",
+          "topic_slug": "simple-machines",
+          "subtopic_slug": "definition-of-a-machine-and-types-of-machines",
+          "status": "covered",
+          "papers": []
+        }
+      ],
+      "worked_from": "exr-25"
+    }
+  ],
+  "formula_sheet": [
+    {
+      "id": "f-1",
+      "expression": "$\\Sigma \\vec{F} = 0$",
+      "caption": {
+        "text": "The first condition for equilibrium",
+        "inline": []
+      },
+      "conditions": {
+        "text": "The vector sum of the forces on the body is zero.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42170/index.cnxml",
+        "locator": "CNXML module m42170",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-2",
+      "expression": "$\\tau = F d$",
+      "caption": {
+        "text": "Moment of a force",
+        "inline": []
+      },
+      "conditions": {
+        "text": "With d the perpendicular distance from the pivot to the line of the force.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42171/index.cnxml",
+        "locator": "CNXML module m42171",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-3",
+      "expression": "$\\Sigma \\tau = 0$",
+      "caption": {
+        "text": "The second condition for equilibrium",
+        "inline": []
+      },
+      "conditions": {
+        "text": "The net moment about the pivot is zero.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42171/index.cnxml",
+        "locator": "CNXML module m42171",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "f-4",
+      "expression": "$MA = \\frac{load}{effort}$",
+      "caption": {
+        "text": "Mechanical advantage",
+        "inline": []
+      },
+      "conditions": {
+        "text": "For an ideal machine, where the work in equals the work out.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42174/index.cnxml",
+        "locator": "CNXML module m42174",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "glossary": [
+    {
+      "id": "g-1",
+      "term": {
+        "text": "equilibrium",
+        "inline": []
+      },
+      "definition": {
+        "text": "The state of a body at rest or in uniform motion, with the net force and the net moment both zero.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42170/index.cnxml",
+        "locator": "CNXML module m42170",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-2",
+      "term": {
+        "text": "moment (torque)",
+        "inline": []
+      },
+      "definition": {
+        "text": "The turning effect of a force about a pivot, equal to the force times the perpendicular distance from the pivot.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42171/index.cnxml",
+        "locator": "CNXML module m42171",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-3",
+      "term": {
+        "text": "couple",
+        "inline": []
+      },
+      "definition": {
+        "text": "A pair of equal and opposite forces whose lines of action are apart, which turns a body without moving its centre.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42171/index.cnxml",
+        "locator": "CNXML module m42171",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-4",
+      "term": {
+        "text": "centre of gravity",
+        "inline": []
+      },
+      "definition": {
+        "text": "The point at which the whole weight of a body can be treated as acting.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42172/index.cnxml",
+        "locator": "CNXML module m42172",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "g-5",
+      "term": {
+        "text": "mechanical advantage",
+        "inline": []
+      },
+      "definition": {
+        "text": "The factor by which a machine multiplies the effort, equal to the load over the effort.",
+        "inline": []
+      },
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/modules/m42174/index.cnxml",
+        "locator": "CNXML module m42174",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    }
+  ],
+  "exam_traps": [],
+  "exam_recall_checks": [],
+  "sources": [
+    {
+      "publisher": "OpenStax",
+      "title": "College Physics 2e",
+      "url": "https://github.com/openstax/osbooks-college-physics-bundle/blob/main/collections/college-physics-2e.collection.xml",
+      "locator": "CNXML collection college-physics-2e, subcollection 'Statics and Torque', modules m42167, m42170, m42171, m42172, m42173, m42174",
+      "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+    }
+  ]
+}

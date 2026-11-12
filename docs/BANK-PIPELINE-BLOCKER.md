@@ -93,10 +93,26 @@ error: query failed: Operation was blocked: SQL read operations are forbidden ..
 The production catalogue reads fine. Only the bank's staging database is
 closed.
 
-**The fix is one action in the Turso dashboard**: give the group
-`utmelab-bank-shedrackgodstime08` a plan that allows reads, or point its
-read token at a readable location. Nothing in the repository needs to change
-for that, and the probe above confirms it is the only thing in the way.
+**What actually happened**: the group's monthly read quota ran out. The
+block is not a setting to toggle, it is a bill. Reads of the bank database
+were metered, the pipeline ran a great many of them, and the month ended
+with the quota spent. The group is down until the quota resets or the plan
+is raised.
+
+Two things follow.
+
+**Nothing in the repository needs to change.** The probe above confirms the
+only thing in the way is the exhausted quota.
+
+**The production catalogue is on the same meter.** It has been read by the
+API's sync, by our own tooling and by the source census. The rule from now
+on: the catalogue is read sparingly and the answers are cached, never
+re-read on every run.
+
+`scripts/link_bank.py` now keeps its answers in `data/staging/bank-papers.json`
+and only reads the catalogue when a link is missing from the cache or when
+`--refresh` is passed. It prints how many reads it made. The source census
+is a separate, deliberate probe, not something to run on a loop.
 
 ## What happens the moment it is unlocked
 
