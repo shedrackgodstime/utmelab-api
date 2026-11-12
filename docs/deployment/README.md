@@ -21,6 +21,24 @@ Deploys are **serialized** by the workflow (`concurrency: deploy-api`). The gate
 prunes release directories, so two overlapping runs could delete the release the
 other one was activating.
 
+### Release discipline
+
+**A version that reaches production has a tag, and the release that publishes
+the tag is what ships it.** The manual path exists for when you need something
+out now, but it leaves no immutable record: the release list then lies about
+what is live, and nobody can say which commit a given production build came
+from.
+
+So when a version has to go out by hand:
+
+1. tag the commit you are deploying, and push the tag;
+2. publish the release for that tag, which re-runs the same build through the
+   tagged path.
+
+Do not publish an old release to tidy the list. Publishing v0.0.3 after
+v0.0.5 deploys v0.0.3, and the gate rolls production back to it. The tags
+are the record; the release says what is live.
+
 ## One service is one file
 
 `/etc/deploy-service/<service>.env` — `0600 root:root`, read twice: by systemd as
