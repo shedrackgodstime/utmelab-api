@@ -251,7 +251,9 @@ the document, and later the routes will check them on write.
 4. Every exercise has at most three hints, numbered in order.
 5. Every section has learning objectives, at least two summary points, and a
    worked example or a reason for having none.
-6. Every figure has an asset, a caption and alt text.
+6. Every figure has an asset, a caption and alt text. The asset is a
+   published path under the book's own directory, and it passes the media
+   rules: real image bytes, under the size ceiling, over the pixel floor.
 7. Every exercise belongs to exactly one section, and that section lists it.
 8. Sections are numbered 1 to n with no gaps. Chapters are numbered within
    their book. Exercises are numbered within their chapter.
@@ -269,8 +271,7 @@ and the factory assembles the chapter from the spec and the source:
 
 ```
 data/chapter-specs/<chapter_id>.json     the authored part, the source of truth
-data/concepts/*.json                     the source material, with the figures
-data/staging/openstax_clean_solutions.json   the solutions, prose apart from maths
+data/chapter-sources/<module>.json       the source material, with the figures
         │
         ▼  scripts/build_chapter.py
 data/chapters/<chapter_id>.json          the built artifact
@@ -285,9 +286,41 @@ exam links. It also selects the exercises it wants from the module and says
 how hard each one is, and it may promote one solved exercise to the section's
 worked example with `worked_from`.
 
+The source material is tracked. It used to be read from `data/concepts/` and
+`data/staging/`, which are gitignored, so a clean checkout could not rebuild
+a chapter and the quality gate failed for the wrong reason: it could not find
+the source at all. `scripts/extract_chapter_sources.py` copies the part of
+that source the factory needs into `data/chapter-sources/`, one file per
+module, and the factory reads that.
+
 The chapter is generated, so it can never drift from its spec: the quality
 workflow rebuilds every chapter and fails if the result differs from the file
 on disk.
+
+## The figures
+
+A figure ships only when it is a figure. The rules are in
+`scripts/book_media.py`, and the validator, the publisher and the factory all
+read them from there:
+
+- the bytes must be a real image, sniffed from their own header;
+- under 1.5 MB, because anything larger is a scanned page and not a figure;
+- over 32 pixels in each direction, because below that it is a rule or a dot.
+
+The figures live in the media project under the book's own directory,
+`books/<book_id>/`, addressed by the sha256 of their bytes. The bank has its
+own `images/` namespace for its own figures, and the two never mix.
+
+`scripts/publish_book_images.py` uploads them, many files to a commit, and
+writes `data/book-images.json`: the manifest of what was published, what it
+was, and where it went. The factory reads the manifest to point a figure at
+its published path, and the validator reads it to check a figure without
+fetching it. A figure that failed the rules is recorded in the manifest as
+rejected, with the reason, and the factory leaves it out of the chapter
+rather than teaching from a broken image.
+
+The API resolves a figure to its full URL under the book's own namespace, so
+a client never sees a stored path.
 
 ## The bank and the exam side
 

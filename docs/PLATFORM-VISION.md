@@ -166,6 +166,13 @@ adds the traps and the past questions.
   concept document ......... data/concepts/*.json, schema v4, one per idea,
         │                   provenance and deep context, no exam in sight
         ▼
+  source extract ........... data/chapter-sources/<module>.json, tracked, so
+        │                   a clean checkout can rebuild a chapter
+        ▼
+  figures .................. published to the media project under the book's
+        │                   own directory, books/<book_id>/, only the ones
+        │                   that pass the media rules
+        ▼
   chapter .................. data/chapters/*.json, exam independent
         │                   validate_chapters.py must report 0 errors
         ▼
@@ -178,6 +185,13 @@ adds the traps and the past questions.
 
 Two pipelines, one rule: the chapter pipeline never mentions an exam, and the
 exam pipeline never explains the subject.
+
+The figures have their own pipeline because a figure is the one piece of a
+chapter that a client actually fetches. It has to be on the web, it has to be
+under the book's own namespace so it never mixes with the bank's figures, and
+it has to be a real image that is worth sending. The rules live in one place,
+`scripts/book_media.py`, and the validator, the publisher and the factory all
+read them from there.
 
 Grounding rules stay as they are in `docs/CONTENT-WORKFLOW-CONTRACT.md`: no
 invention, provenance on everything, honest licences, validation before
@@ -356,3 +370,7 @@ never dropped.
    largest audience and the sources are already here), or Use of English for
    Tertiary first (40 concepts, already organised by module, so the course map
    is nearly written)?
+3. **Past papers.** Forty packs still report no past paper, and every one of
+   them is waiting on the bank's monthly read quota rather than on our work.
+   When it resets, the pipeline runs one subject-year at a time so a run
+   cannot burn the quota again.
