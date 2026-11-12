@@ -71,7 +71,10 @@ fn opt_int<T: TryFrom<i64>>(v: turso::Value, col: &'static str) -> Result<Option
     }
 }
 
-fn json_col<T: serde::de::DeserializeOwned>(raw: &str, col: &'static str) -> Result<T, AppError> {
+pub(crate) fn json_col<T: serde::de::DeserializeOwned>(
+    raw: &str,
+    col: &'static str,
+) -> Result<T, AppError> {
     serde_json::from_str(raw).map_err(|e| AppError::Upstream(format!("{col}: {e}")))
 }
 
@@ -79,7 +82,7 @@ fn json_list(raw: &str, col: &'static str) -> Result<Vec<String>, AppError> {
     json_col(raw, col)
 }
 
-fn opt_string(v: turso::Value, col: &'static str) -> Result<Option<String>, AppError> {
+pub(crate) fn opt_string(v: turso::Value, col: &'static str) -> Result<Option<String>, AppError> {
     match v {
         turso::Value::Null => Ok(None),
         turso::Value::Text(t) => Ok(Some(t)),
@@ -1141,6 +1144,30 @@ fn map_topic_note(row: &turso::Row) -> Result<core::models::TopicNote, AppError>
     })
 }
 
+/// Run a read and collect every row. The textbook layer reads whole
+/// chapters, so it wants the rows rather than one at a time.
+pub(crate) async fn rows(
+    s: &DbState,
+    sql: &str,
+    args: Vec<turso::Value>,
+) -> Result<Vec<turso::Row>, AppError> {
+    let sql = sql.to_string();
+    let args = std::sync::Arc::new(args);
+    with_conn(s, |conn| {
+        let sql = sql.clone();
+        let args = args.clone();
+        async move {
+            let mut stmt = conn.prepare(&sql).await.map_err(upstream)?;
+            let mut cursor = stmt.query(args.as_ref().clone()).await.map_err(upstream)?;
+            let mut collected = Vec::new();
+            while let Some(row) = cursor.next().await.map_err(upstream)? {
+                collected.push(row);
+            }
+            Ok(collected)
+        }
+    })
+    .await
+}
 pub async fn get_topic_note(
     s: &DbState,
     exam: &str,

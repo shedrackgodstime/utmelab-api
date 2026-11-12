@@ -39,8 +39,9 @@ result.
   retries pending work and drains it during shutdown.
 - Admin sync status exposes local-write and cloud-push count, average, and
   maximum durations.
-- Sync polling sleeps after five minutes without traffic. The first database
-  request wakes it with one locked pull before serving.
+- Sync polling sleeps after five minutes without traffic, but only from a ready
+  state. The first database request wakes it with one locked pull before
+  serving.
 - Active synchronization uses Turso long-polling. There is no interval-pull
   mode or legacy polling configuration.
 - Long-poll duration is bounded to 1-5 seconds by configuration, and admin

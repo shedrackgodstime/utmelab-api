@@ -23,7 +23,7 @@ use rmcp::model::{Resource, ResourceTemplate};
 use crate::{
     api::v1::{
         blueprints, exams, keys, meta, notes, novels, papers, passages, questions, subjects,
-        theory, topics,
+        textbooks, theory, topics,
     },
     auth::{api_key::AuthedKey, Auth},
     error::AppError,
@@ -39,6 +39,22 @@ const JSON: &str = "application/json";
 /// Concrete resources: catalog reads that take no parameter.
 pub fn list() -> Vec<Resource> {
     vec![
+        res(
+            "textbooks",
+            "Textbooks",
+            "Every book, with the subject area and the level it teaches.",
+        ),
+        res(
+            "exam-traps",
+            "Examiner traps",
+            "The mistakes candidates make, with the evidence behind each one. \
+Filter by `exam` or `section_id`.",
+        ),
+        res(
+            "exam-practice",
+            "Exam practice",
+            "Practice items written in an exam's own wording. Filter by `exam` or `section_id`.",
+        ),
         res("exams", "Exams", "Every exam the bank holds."),
         res(
             "novels",
@@ -78,6 +94,22 @@ pub fn list() -> Vec<Resource> {
 /// with [`list`] these are the whole keyed read surface.
 pub fn templates() -> Vec<ResourceTemplate> {
     vec![
+        tmpl(
+            "textbooks/{book_id}",
+            "Textbook",
+            "One book and the chapters it holds.",
+        ),
+        tmpl(
+            "chapters/{chapter_id}",
+            "Chapter",
+            "One chapter: its sections, its exercises and its exam side.",
+        ),
+        tmpl(
+            "chapters/{chapter_id}/exercises",
+            "Chapter exercises",
+            "The exercises of a chapter, each with its answer and its solution. \
+Filter by `section_id` or `tier`.",
+        ),
         tmpl(
             "exams/{exam}/subjects",
             "Exam subjects",
@@ -199,6 +231,45 @@ pub async fn read(db: &DbState, auth: &Auth, uri: &str) -> Result<serde_json::Va
     };
     let seg: Vec<&str> = path.split('/').filter(|s| !s.is_empty()).collect();
     match seg.as_slice() {
+        ["textbooks"] => read!(textbooks::list_textbooks(
+            State(db.clone()),
+            AuthedKey(auth.clone()),
+        )),
+        ["textbooks", book_id] => read!(textbooks::get_textbook(
+            State(db.clone()),
+            AuthedKey(auth.clone()),
+            Path(book_id.to_string()),
+        )),
+        ["chapters", chapter_id] => read!(textbooks::get_chapter(
+            State(db.clone()),
+            AuthedKey(auth.clone()),
+            Path(chapter_id.to_string()),
+        )),
+        ["chapters", chapter_id, "exercises"] => read!(textbooks::list_chapter_exercises(
+            State(db.clone()),
+            AuthedKey(auth.clone()),
+            Path(chapter_id.to_string()),
+            Query(textbooks::ExerciseQuery {
+                section_id: opt(&query, "section_id"),
+                tier: opt(&query, "tier"),
+            }),
+        )),
+        ["exam-traps"] => read!(textbooks::list_exam_traps(
+            State(db.clone()),
+            AuthedKey(auth.clone()),
+            Query(textbooks::TrapQuery {
+                exam: opt(&query, "exam"),
+                section_id: opt(&query, "section_id"),
+            }),
+        )),
+        ["exam-practice"] => read!(textbooks::list_exam_practice(
+            State(db.clone()),
+            AuthedKey(auth.clone()),
+            Query(textbooks::RecallQuery {
+                exam: opt(&query, "exam"),
+                section_id: opt(&query, "section_id"),
+            }),
+        )),
         ["exams"] => read!(exams::list(State(db.clone()), AuthedKey(auth.clone()))),
         ["exams", exam, "subjects"] => read!(subjects::by_exam(
             State(db.clone()),

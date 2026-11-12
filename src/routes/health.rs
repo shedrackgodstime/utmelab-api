@@ -30,6 +30,12 @@ pub async fn ready(State(s): State<DbState>) -> Result<&'static str, AppError> {
     if readiness.http_ready() {
         return Ok("ok");
     }
+    // An idle replica is still ready: its freshness clocks are allowed to run
+    // out while it sleeps, and the next data request wakes it with a pull
+    // before reading. Only a blocked replica or a dead supervisor is not.
+    if s.sync.sleeping_ready() {
+        return Ok("ok");
+    }
     Err(match readiness {
         Readiness::Blocked(BlockedReason::SchemaMismatch) => AppError::SchemaMismatch,
         _ => AppError::DbUnavailable("sync"),

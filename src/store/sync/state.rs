@@ -688,6 +688,20 @@ impl SyncStatus {
         )
     }
 
+    /// True when the replica is intentionally asleep and still trusted. The
+    /// freshness clocks are allowed to run out while idle: every request that
+    /// passes the readiness guard wakes the replica with a pull before it
+    /// reads. A blocked state or a stale supervisor heartbeat is never
+    /// wakeable, because neither can be repaired by an ordinary request.
+    pub fn sleeping_ready(&self) -> bool {
+        let snapshot = self.lock();
+        snapshot.health.sleeping
+            && matches!(snapshot.state, SyncState::Ready)
+            && snapshot.health.heartbeat_unix != 0
+            && snapshot.health.heartbeat_age_secs(unix_now())
+                <= self.policy.freshness.heartbeat_max_age.as_secs()
+    }
+
     /// Apply one event and return the resulting transition. The caller uses
     /// the retry instruction and never invents a delay.
     pub fn apply(&self, event: SyncEvent) -> Transition {
@@ -1156,6 +1170,48 @@ mod tests {
         health.heartbeat_unix = at - 181;
         let r = readiness(SyncState::Ready, &health, at, &policy().freshness);
         assert_eq!(r, Readiness::Blocked(BlockedReason::SupervisorStalled));
+    }
+
+    #[test]
+    fn a_sleeping_replica_is_wakeable_after_its_freshness_window() {
+        let status = SyncStatus::verified(policy());
+        let now = unix_now();
+        status.apply(SyncEvent::PullSucceeded {
+            changes: false,
+            at: now.saturating_sub(policy().freshness.content_max_age.as_secs() + 1),
+        });
+        status.apply(SyncEvent::Heartbeat { at: now });
+        status.apply(SyncEvent::SleepStarted { at: now });
+
+        assert!(!status.readiness().http_ready(), "content budget is spent");
+        assert!(
+            status.sleeping_ready(),
+            "an idle replica is trusted; the next request wakes it"
+        );
+    }
+
+    #[test]
+    fn a_sleeping_replica_with_a_stalled_supervisor_is_not_ready() {
+        let status = SyncStatus::verified(policy());
+        let now = unix_now();
+        status.apply(SyncEvent::Heartbeat {
+            at: now.saturating_sub(policy().freshness.heartbeat_max_age.as_secs() + 1),
+        });
+        status.apply(SyncEvent::SleepStarted { at: now });
+
+        assert!(!status.sleeping_ready(), "a dead supervisor cannot wake");
+    }
+
+    #[test]
+    fn a_blocked_replica_is_never_wakeable_by_a_request() {
+        let status = SyncStatus::verified(policy());
+        status.apply(SyncEvent::ContractMismatch {
+            reason: "missing column".into(),
+            at: unix_now(),
+        });
+        status.apply(SyncEvent::SleepStarted { at: unix_now() });
+
+        assert!(!status.sleeping_ready());
     }
 
     #[test]

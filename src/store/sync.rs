@@ -655,6 +655,20 @@ async fn converge(probe: &DbState, db: &SyncDb, policy: &SyncPolicy) {
     }
 }
 
+/// Idle sleep is an optimization for a healthy replica, never a hiding place
+/// for a failure. A degraded or blocked replica keeps probing so it can heal
+/// without waiting for traffic that may never come.
+fn may_enter_idle_sleep(
+    state: SyncState,
+    last_request: Timestamp,
+    now: Timestamp,
+    idle_after: Duration,
+) -> bool {
+    matches!(state, SyncState::Ready)
+        && last_request != 0
+        && now.saturating_sub(last_request) >= idle_after.as_secs()
+}
+
 /// Steady state long-poll pull loop. Pulls are serialized with local writes so
 /// a remote apply can never interleave an unpushed local write. The long poll
 /// itself waits in the sync engine; it does not create timer-driven empty
@@ -665,12 +679,13 @@ async fn supervise(probe: &DbState, db: &SyncDb, idle_after: Duration, policy: &
         if probe.sync.stop_requested() {
             return;
         }
-        probe.sync.apply(SyncEvent::Heartbeat { at: unix_now() });
+        let now = unix_now();
+        probe.sync.apply(SyncEvent::Heartbeat { at: now });
         let last_request = probe
             .metrics
             .last_request_unix
             .load(std::sync::atomic::Ordering::Relaxed);
-        if last_request != 0 && unix_now().saturating_sub(last_request) >= idle_after.as_secs() {
+        if may_enter_idle_sleep(probe.sync.state(), last_request, now, idle_after) {
             probe.sync.apply(SyncEvent::SleepStarted { at: unix_now() });
             tracing::info!("replica sync sleeping after idle traffic window");
             probe.sync.apply(SyncEvent::Heartbeat { at: unix_now() });
@@ -1016,6 +1031,39 @@ mod tests {
                 .load(std::sync::atomic::Ordering::Relaxed),
             1,
             "shutdown makes one bounded push attempt"
+        );
+    }
+
+    #[test]
+    fn only_a_ready_replica_enters_idle_sleep() {
+        let idle = Duration::from_secs(300);
+        assert!(super::may_enter_idle_sleep(
+            super::SyncState::Ready,
+            1_000,
+            1_300,
+            idle
+        ));
+        assert!(!super::may_enter_idle_sleep(
+            super::SyncState::Degraded(super::DegradedReason::Failure(
+                super::ErrorClass::TransientNetwork
+            )),
+            1_000,
+            1_300,
+            idle
+        ));
+        assert!(!super::may_enter_idle_sleep(
+            super::SyncState::Blocked(super::BlockedReason::Auth),
+            1_000,
+            1_300,
+            idle
+        ));
+        assert!(
+            !super::may_enter_idle_sleep(super::SyncState::Ready, 0, 1_300, idle),
+            "no request may not be mistaken for an idle window"
+        );
+        assert!(
+            !super::may_enter_idle_sleep(super::SyncState::Ready, 1_000, 1_299, idle),
+            "the window must actually be spent"
         );
     }
 
