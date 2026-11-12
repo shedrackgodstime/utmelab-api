@@ -306,7 +306,7 @@ per exam, subject and topic:
 One route, one document, and the chapter is the teaching half of it:
 
 ```
-GET /api/v2/exams/{exam}/subjects/{slug}/packs/{topic_slug}
+GET /api/v1/exams/{exam}/subjects/{slug}/packs/{topic_slug}
 ```
 
 ### Migration from the current notes
@@ -341,5 +341,7 @@ chapter's `exam_links[].question_ids` in reverse.
 | `topic_notes.sources` | `sources[]` and per-object `provenance` |
 | `topic_notes.linked_question_ids` | `exam_links[].question_ids` |
 
-The notes API stays on v1 while v2 serves chapters. No client reads the notes
-API today, so the switch costs nothing yet.
+The notes routes are replaced in place by the chapter routes. v1 is still
+being built and is expected to break while it takes shape, and only our own
+app calls the API, so the break is ours to take. No client reads the notes
+API today.
