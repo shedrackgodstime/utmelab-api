@@ -42,7 +42,104 @@
     }
   ],
   "traps": [],
-  "recall_checks": [],
+  "recall_checks": [
+    {
+      "id": "rc-5",
+      "section_id": "sec-7",
+      "stem": {
+        "text": "Simplify $\\sqrt{50x^2y^3z}$, taking x and y to be positive.",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "$5xy\\sqrt{2z}$"
+        },
+        {
+          "id": "b",
+          "text": "$5\\sqrt{2xyz}$"
+        },
+        {
+          "id": "c",
+          "text": "$10xy\\sqrt{z}$"
+        },
+        {
+          "id": "d",
+          "text": "$25x^2y^2\\sqrt{z}$"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "Split the radicand into factors and pull out the squares: $\\sqrt{50x^2y^3z} = \\sqrt{25x^2y^2} \\sqrt{2yz} = 5xy\\sqrt{2yz}$.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "rc-6",
+      "section_id": "sec-9",
+      "stem": {
+        "text": "Write $\\frac{4}{1+\\sqrt{5}}$ in its simplest form.",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "$1+\\sqrt{5}$"
+        },
+        {
+          "id": "b",
+          "text": "$\\sqrt{5}-1$"
+        },
+        {
+          "id": "c",
+          "text": "$4(\\sqrt{5}-1)$"
+        },
+        {
+          "id": "d",
+          "text": "$\\frac{\\sqrt{5}}{4}$"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Multiply by the conjugate $1-\\sqrt{5}$. The denominator becomes $1-5 = -4$, so the result is $\\sqrt{5}-1$.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "rc-7",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "Simplify $\\sqrt{\\frac{16}{25}}$.",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "$\\frac{4}{5}$"
+        },
+        {
+          "id": "b",
+          "text": "$\\frac{16}{25}$"
+        },
+        {
+          "id": "c",
+          "text": "$\\frac{5}{4}$"
+        },
+        {
+          "id": "d",
+          "text": "$4\\times 5$"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The square root of a quotient is the quotient of the square roots, so $\\sqrt{16/25} = 4/5$.",
+        "inline": []
+      },
+      "difficulty": 1
+    }
+  ],
   "exercises": [
     "ex-sec-6-01",
     "ex-sec-6-02",
@@ -74,12 +171,11 @@
   "coverage": {
     "sections": 3,
     "traps": 0,
-    "recall_checks": 0,
+    "recall_checks": 3,
     "exercises": 25,
     "past_papers": 0,
     "gaps": [
       "traps",
-      "recall_checks",
       "past_papers"
     ]
   }

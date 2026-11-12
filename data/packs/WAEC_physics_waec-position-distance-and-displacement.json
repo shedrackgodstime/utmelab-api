@@ -20,7 +20,40 @@
     }
   ],
   "traps": [],
-  "recall_checks": [],
+  "recall_checks": [
+    {
+      "id": "rc-4",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "A body moves 6 m east and then 4 m west. What is its displacement?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "10 m east"
+        },
+        {
+          "id": "b",
+          "text": "2 m east"
+        },
+        {
+          "id": "c",
+          "text": "4 m west"
+        },
+        {
+          "id": "d",
+          "text": "zero"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The displacement is the change in position: 6 m east minus 4 m west is 2 m east. The distance travelled is 10 m.",
+        "inline": []
+      },
+      "difficulty": 2
+    }
+  ],
   "exercises": [
     "ex-sec-2-01",
     "ex-sec-2-02",
@@ -30,12 +63,11 @@
   "coverage": {
     "sections": 1,
     "traps": 0,
-    "recall_checks": 0,
+    "recall_checks": 1,
     "exercises": 3,
     "past_papers": 0,
     "gaps": [
       "traps",
-      "recall_checks",
       "past_papers"
     ]
   }

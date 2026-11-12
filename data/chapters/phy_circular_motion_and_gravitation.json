@@ -5613,6 +5613,7 @@
         "source": "claimed_paper",
         "url": "https://api.utmelab.com/api/v1/questions/q_claim_2025_physics_74363"
       },
+      "status": "proven",
       "frequency": "recurring",
       "provenance": {
         "publisher": "OpenStax",
@@ -5646,6 +5647,7 @@
         "source": "claimed_paper",
         "url": "https://api.utmelab.com/api/v1/questions/q_claim_2025_physics_74573"
       },
+      "status": "proven",
       "frequency": "recurring",
       "provenance": {
         "publisher": "OpenStax",
@@ -5679,6 +5681,7 @@
         "source": "claimed_paper",
         "url": "https://api.utmelab.com/api/v1/questions/q_waec_2025_physics_76333"
       },
+      "status": "proven",
       "frequency": "recurring",
       "provenance": {
         "publisher": "OpenStax",
@@ -5759,6 +5762,181 @@
       },
       "difficulty": 2,
       "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-3",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "A wheel of radius 1 m turns at 2 rad/s. What is the linear speed at the rim?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "0.5 m/s"
+        },
+        {
+          "id": "b",
+          "text": "1 m/s"
+        },
+        {
+          "id": "c",
+          "text": "2 m/s"
+        },
+        {
+          "id": "d",
+          "text": "4 m/s"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The linear speed is $v = \\omega r = 2 \\times 1 = 2$ m/s.",
+        "inline": []
+      },
+      "difficulty": 2,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-4",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "A car travels at 20 m/s round a circle of radius 50 m. What is its centripetal acceleration?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "2 m/s²"
+        },
+        {
+          "id": "b",
+          "text": "4 m/s²"
+        },
+        {
+          "id": "c",
+          "text": "8 m/s²"
+        },
+        {
+          "id": "d",
+          "text": "20 m/s²"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The centripetal acceleration is $a = v^2/r = 400/50 = 8$ m/s².",
+        "inline": []
+      },
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-5",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A 1000 kg car goes round a bend of radius 100 m at 20 m/s. What centripetal force is needed?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "200 N"
+        },
+        {
+          "id": "b",
+          "text": "2000 N"
+        },
+        {
+          "id": "c",
+          "text": "4000 N"
+        },
+        {
+          "id": "d",
+          "text": "20000 N"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The centripetal force is $F = mv^2/r = 1000 \\times 400/100 = 4000$ N.",
+        "inline": []
+      },
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-6",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "The gravitational force between two bodies is 9 N. If one of the masses is doubled, the force becomes",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "4.5 N"
+        },
+        {
+          "id": "b",
+          "text": "9 N"
+        },
+        {
+          "id": "c",
+          "text": "18 N"
+        },
+        {
+          "id": "d",
+          "text": "36 N"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The force is proportional to the product of the masses, so doubling one mass doubles the force.",
+        "inline": []
+      },
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-7",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-7",
+      "stem": {
+        "text": "A satellite in a lower orbit moves faster than one in a higher orbit because",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "the gravitational field is stronger there"
+        },
+        {
+          "id": "b",
+          "text": "the orbit is smaller"
+        },
+        {
+          "id": "c",
+          "text": "the satellite has a greater mass"
+        },
+        {
+          "id": "d",
+          "text": "the satellite has less inertia"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The orbital speed grows as the radius shrinks, so a lower orbit is a faster one.",
+        "inline": []
+      },
+      "difficulty": 3,
+      "source": "authored against the WAEC physics syllabus"
     }
   ],
   "sources": [

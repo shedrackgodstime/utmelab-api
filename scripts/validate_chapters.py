@@ -458,6 +458,14 @@ def validate(path):
             else:
                 if not isinstance(evidence.get("question_id"), str) or not evidence.get("question_id", "").strip():
                     errors.append((path, f"exam trap {trap_id} evidence has no question id"))
+                status = trap.get("status")
+                source = evidence.get("source")
+                if status not in {"proven", "candidate"}:
+                    errors.append((path, f"exam trap {trap_id} status {status!r} unknown"))
+                elif status == "proven" and source == "authored":
+                    errors.append((path, f"exam trap {trap_id} claims a paper but its evidence is our own question"))
+                elif status == "candidate" and source != "authored":
+                    errors.append((path, f"exam trap {trap_id} is a candidate but its evidence is a paper"))
             check_provenance(trap.get("provenance"), f"{path}.{trap_id}.provenance", errors)
 
     checks = document.get("exam_recall_checks", [])

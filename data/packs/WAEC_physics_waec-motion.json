@@ -81,6 +81,30 @@
         "url": "https://api.utmelab.com/api/v1/questions/q_waec_2025_physics_76333"
       },
       "frequency": "recurring"
+    },
+    {
+      "id": "trap-3",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "The force opposing a body sliding down an incline is the friction alone.",
+        "inline": []
+      },
+      "correction": {
+        "text": "The component of the weight down the slope pushes against the motion as well, so the total opposing force is the friction plus that component.",
+        "inline": []
+      },
+      "signal": {
+        "text": "The paper offers the friction alone as an option, and the answer is the friction plus the component of the weight.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "question_id": "q_waec_2023_physics_69369",
+        "exam": "WAEC",
+        "year": 2023,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_waec_2023_physics_69369"
+      },
+      "frequency": "recurring"
     }
   ],
   "recall_checks": [
@@ -115,6 +139,102 @@
         "inline": []
       },
       "difficulty": 1
+    },
+    {
+      "id": "rc-4",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "A car travels at 20 m/s round a circle of radius 50 m. What is its centripetal acceleration?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "2 m/s²"
+        },
+        {
+          "id": "b",
+          "text": "4 m/s²"
+        },
+        {
+          "id": "c",
+          "text": "8 m/s²"
+        },
+        {
+          "id": "d",
+          "text": "20 m/s²"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The centripetal acceleration is $a = v^2/r = 400/50 = 8$ m/s².",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "rc-5",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A 1000 kg car goes round a bend of radius 100 m at 20 m/s. What centripetal force is needed?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "200 N"
+        },
+        {
+          "id": "b",
+          "text": "2000 N"
+        },
+        {
+          "id": "c",
+          "text": "4000 N"
+        },
+        {
+          "id": "d",
+          "text": "20000 N"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The centripetal force is $F = mv^2/r = 1000 \\times 400/100 = 4000$ N.",
+        "inline": []
+      },
+      "difficulty": 3
+    },
+    {
+      "id": "rc-3",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "A body slides on a horizontal surface at constant speed. The horizontal force applied to it is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "zero"
+        },
+        {
+          "id": "b",
+          "text": "greater than the friction force"
+        },
+        {
+          "id": "c",
+          "text": "less than the friction force"
+        },
+        {
+          "id": "d",
+          "text": "equal in magnitude to the friction force"
+        }
+      ],
+      "answer": "d",
+      "explanation": {
+        "text": "Constant speed means the net force is zero, so the applied force balances the friction exactly.",
+        "inline": []
+      },
+      "difficulty": 3
     }
   ],
   "exercises": [
@@ -144,8 +264,8 @@
   ],
   "coverage": {
     "sections": 4,
-    "traps": 1,
-    "recall_checks": 1,
+    "traps": 2,
+    "recall_checks": 4,
     "exercises": 20,
     "past_papers": 1,
     "gaps": []

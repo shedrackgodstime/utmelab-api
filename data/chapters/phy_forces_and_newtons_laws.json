@@ -3473,12 +3473,47 @@
         "source": "claimed_paper",
         "url": "https://api.utmelab.com/api/v1/questions/q_waec_2023_physics_69404"
       },
+      "status": "proven",
       "frequency": "recurring",
       "provenance": {
         "publisher": "OpenStax",
         "title": "College Physics 2e",
         "url": "https://api.utmelab.com/api/v1/questions/q_waec_2023_physics_69404",
         "locator": "paper question q_waec_2023_physics_69404",
+        "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
+      }
+    },
+    {
+      "id": "trap-2",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "misconception": {
+        "text": "A body moving at constant velocity needs a force to keep it moving.",
+        "inline": []
+      },
+      "correction": {
+        "text": "Newton's first law says a body in motion stays in motion at constant velocity unless a net external force acts. The net force on it is zero.",
+        "inline": []
+      },
+      "signal": {
+        "text": "The paper offers a force greater than the friction as the answer, and the answer is that the resultant force is zero.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "question_id": "q_waec_2024_physics_72028",
+        "exam": "WAEC",
+        "year": 2024,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_waec_2024_physics_72028"
+      },
+      "status": "proven",
+      "frequency": "recurring",
+      "provenance": {
+        "publisher": "OpenStax",
+        "title": "College Physics 2e",
+        "url": "https://api.utmelab.com/api/v1/questions/q_waec_2024_physics_72028",
+        "locator": "paper question q_waec_2024_physics_72028",
         "licence": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0"
       }
     }
@@ -3553,6 +3588,146 @@
       },
       "difficulty": 2,
       "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-3",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-2",
+      "stem": {
+        "text": "Which of the following is a contact force?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "gravitational force"
+        },
+        {
+          "id": "b",
+          "text": "magnetic force"
+        },
+        {
+          "id": "c",
+          "text": "friction"
+        },
+        {
+          "id": "d",
+          "text": "nuclear force"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "Friction acts between surfaces that touch. The other three act at a distance.",
+        "inline": []
+      },
+      "difficulty": 1,
+      "source": "authored against the JAMB physics syllabus"
+    },
+    {
+      "id": "rc-4",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "The quantity that measures a body's inertia is its",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "weight"
+        },
+        {
+          "id": "b",
+          "text": "mass"
+        },
+        {
+          "id": "c",
+          "text": "momentum"
+        },
+        {
+          "id": "d",
+          "text": "force"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "Mass measures inertia, and it is the same wherever the body is. Weight changes with the gravitational field.",
+        "inline": []
+      },
+      "difficulty": 1,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-5",
+      "exam": "WAEC",
+      "subject": "physics",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A net force of 15 N acts on a body of mass 5 kg. What is its acceleration?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "3 m/s²"
+        },
+        {
+          "id": "b",
+          "text": "5 m/s²"
+        },
+        {
+          "id": "c",
+          "text": "20 m/s²"
+        },
+        {
+          "id": "d",
+          "text": "75 m/s²"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "Newton's second law gives $a = F/m = 15/5 = 3$ m/s².",
+        "inline": []
+      },
+      "difficulty": 2,
+      "source": "authored against the WAEC physics syllabus"
+    },
+    {
+      "id": "rc-6",
+      "exam": "JAMB",
+      "subject": "physics",
+      "section_id": "sec-5",
+      "stem": {
+        "text": "A book rests on a table. The force the table exerts on the book is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "half the weight of the book"
+        },
+        {
+          "id": "b",
+          "text": "equal in magnitude to the weight of the book"
+        },
+        {
+          "id": "c",
+          "text": "twice the weight of the book"
+        },
+        {
+          "id": "d",
+          "text": "zero"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The book is in equilibrium, so the upward force from the table equals its weight. They act on different bodies, so they do not cancel.",
+        "inline": []
+      },
+      "difficulty": 3,
+      "source": "authored against the JAMB physics syllabus"
     }
   ],
   "sources": [

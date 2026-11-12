@@ -44,6 +44,30 @@
         "url": "https://api.utmelab.com/api/v1/questions/q_claim_2025_physics_74476"
       },
       "frequency": "recurring"
+    },
+    {
+      "id": "trap-2",
+      "section_id": "sec-2",
+      "misconception": {
+        "text": "The coefficient of friction is the acceleration of the sliding body.",
+        "inline": []
+      },
+      "correction": {
+        "text": "The coefficient of friction is a ratio between the friction force and the normal force. It has no units, while an acceleration does.",
+        "inline": []
+      },
+      "signal": {
+        "text": "The paper offers the acceleration from the question as an option, and the answer is a different number.",
+        "inline": []
+      },
+      "paper_evidence": {
+        "question_id": "q_claim_2025_physics_74360",
+        "exam": "JAMB",
+        "year": 2025,
+        "source": "claimed_paper",
+        "url": "https://api.utmelab.com/api/v1/questions/q_claim_2025_physics_74360"
+      },
+      "frequency": "recurring"
     }
   ],
   "recall_checks": [
@@ -96,7 +120,7 @@
   ],
   "coverage": {
     "sections": 1,
-    "traps": 1,
+    "traps": 2,
     "recall_checks": 1,
     "exercises": 8,
     "past_papers": 2,

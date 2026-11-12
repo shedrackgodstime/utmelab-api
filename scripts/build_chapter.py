@@ -432,6 +432,7 @@ def build(spec):
             "correction": rt(trap["correction"]),
             "signal": rt(trap["signal"]),
             "paper_evidence": trap["paper_evidence"],
+            "status": trap.get("status", "proven"),
             "frequency": trap.get("frequency", "occasional"),
             "provenance": {
                 "publisher": "OpenStax",

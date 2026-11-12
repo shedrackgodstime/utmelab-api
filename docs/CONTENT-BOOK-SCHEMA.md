@@ -312,7 +312,7 @@ paper that tests that section.
 | Object | Holds | Rule |
 | --- | --- | --- |
 | section `exam_links` | the exam, the subject, the topic, the subtopic, and the question ids the bank holds | the question ids are filled by the link step |
-| chapter `exam_traps` | a misconception, the correction, the signal, the paper evidence, the frequency | a trap without paper evidence is not a trap. It stays a chapter misconception |
+| chapter `exam_traps` | a misconception, the correction, the signal, the evidence question, the frequency, and a status | a trap needs a question that shows the misconception. Backed by a past paper it is `proven`. Backed by one of our own questions it is a `candidate`, and it waits for a paper |
 | chapter `exam_recall_checks` | a practice item in the exam's wording, with options, an answer and an explanation | the answer must be one of its own options |
 
 ### The pack

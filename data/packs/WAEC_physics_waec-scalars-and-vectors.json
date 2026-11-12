@@ -44,7 +44,104 @@
     }
   ],
   "traps": [],
-  "recall_checks": [],
+  "recall_checks": [
+    {
+      "id": "rc-3",
+      "section_id": "sec-3",
+      "stem": {
+        "text": "The resultant of a 3 N force to the east and a 4 N force to the north is",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "1 N"
+        },
+        {
+          "id": "b",
+          "text": "5 N"
+        },
+        {
+          "id": "c",
+          "text": "7 N"
+        },
+        {
+          "id": "d",
+          "text": "12 N"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The resultant is the diagonal of the right angled triangle, so it is $\\sqrt{3^2 + 4^2} = 5$ N.",
+        "inline": []
+      },
+      "difficulty": 2
+    },
+    {
+      "id": "rc-4",
+      "section_id": "sec-4",
+      "stem": {
+        "text": "A vector has a component of 3 N along the x axis and 4 N along the y axis. What is its magnitude?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "5 N"
+        },
+        {
+          "id": "b",
+          "text": "7 N"
+        },
+        {
+          "id": "c",
+          "text": "12 N"
+        },
+        {
+          "id": "d",
+          "text": "1 N"
+        }
+      ],
+      "answer": "a",
+      "explanation": {
+        "text": "The magnitude is $\\sqrt{3^2 + 4^2} = 5$ N.",
+        "inline": []
+      },
+      "difficulty": 1
+    },
+    {
+      "id": "rc-6",
+      "section_id": "sec-6",
+      "stem": {
+        "text": "A train moves at 15 m/s and a passenger walks forward at 2 m/s inside it. What is the passenger's velocity relative to the ground?",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "13 m/s"
+        },
+        {
+          "id": "b",
+          "text": "15 m/s"
+        },
+        {
+          "id": "c",
+          "text": "17 m/s"
+        },
+        {
+          "id": "d",
+          "text": "30 m/s"
+        }
+      ],
+      "answer": "c",
+      "explanation": {
+        "text": "The velocities add as vectors: 15 m/s + 2 m/s = 17 m/s.",
+        "inline": []
+      },
+      "difficulty": 2
+    }
+  ],
   "exercises": [
     "ex-sec-3-01",
     "ex-sec-3-02",
@@ -70,12 +167,11 @@
   "coverage": {
     "sections": 3,
     "traps": 0,
-    "recall_checks": 0,
+    "recall_checks": 3,
     "exercises": 19,
     "past_papers": 0,
     "gaps": [
       "traps",
-      "recall_checks",
       "past_papers"
     ]
   }

@@ -43,10 +43,19 @@ if URL.startswith("turso://"):
 def query(stmt, args=None):
     typed = [{"type": "text", "value": value} for value in (args or [])]
     body = {"requests": [{"type": "execute", "stmt": {"sql": stmt, "args": typed}}, {"type": "close"}]}
-    response = requests.post(
-        URL + "/v2/pipeline", json=body, headers={"Authorization": f"Bearer {TOKEN}"}, timeout=60
-    )
-    response.raise_for_status()
+    last = None
+    for attempt in range(4):
+        try:
+            response = requests.post(
+                URL + "/v2/pipeline", json=body, headers={"Authorization": f"Bearer {TOKEN}"}, timeout=60
+            )
+            response.raise_for_status()
+            break
+        except Exception as error:
+            # The remote times out now and then. Try again.
+            last = error
+    else:
+        raise SystemExit(f"the bank did not answer: {last}")
     rows = []
     for item in response.json().get("results", []):
         if item.get("type") != "ok":

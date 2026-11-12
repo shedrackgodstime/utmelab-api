@@ -55,7 +55,40 @@
     }
   ],
   "traps": [],
-  "recall_checks": [],
+  "recall_checks": [
+    {
+      "id": "rc-7",
+      "section_id": "sec-9",
+      "stem": {
+        "text": "On a position against time graph, the gradient of the line gives the",
+        "inline": []
+      },
+      "options": [
+        {
+          "id": "a",
+          "text": "distance travelled"
+        },
+        {
+          "id": "b",
+          "text": "velocity"
+        },
+        {
+          "id": "c",
+          "text": "acceleration"
+        },
+        {
+          "id": "d",
+          "text": "time of flight"
+        }
+      ],
+      "answer": "b",
+      "explanation": {
+        "text": "The gradient of a position against time graph is the velocity. The gradient of a velocity against time graph is the acceleration.",
+        "inline": []
+      },
+      "difficulty": 2
+    }
+  ],
   "exercises": [
     "ex-sec-5-01",
     "ex-sec-5-02",
@@ -98,12 +131,11 @@
   "coverage": {
     "sections": 4,
     "traps": 0,
-    "recall_checks": 0,
+    "recall_checks": 1,
     "exercises": 33,
     "past_papers": 2,
     "gaps": [
-      "traps",
-      "recall_checks"
+      "traps"
     ]
   }
 }
