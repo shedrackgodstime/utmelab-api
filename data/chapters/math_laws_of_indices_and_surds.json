@@ -2882,7 +2882,7 @@
         },
         {
           "step_number": 2,
-          "expression": "$\\frac{2\\sqrt{3}}{3\\sqrt{10}}\\cdot \\frac{\\sqrt{10}}{\\sqrt{10}}$ $\\frac{2\\sqrt{30}}{30}$ $\\frac{\\sqrt{30}}{15}$"
+          "expression": "$\\frac{2\\sqrt{3}}{3\\sqrt{10}}\\cdot \\frac{\\sqrt{10}}{\\sqrt{10}}\\frac{2\\sqrt{30}}{30}\\frac{\\sqrt{30}}{15}$"
         }
       ],
       "tags": [
@@ -3045,6 +3045,7 @@
       "subtopic_slug": "laws-of-indices",
       "weight_pct": null,
       "expected_count": null,
+      "status": "covered",
       "source_locator": "production catalog topic indices-logarithms-and-surds, subtopic laws-of-indices (read-only fetch 2026-11-12)",
       "question_ids": [
         "q_authored_math_indices_001",
@@ -3059,6 +3060,7 @@
       "subtopic_slug": "surds",
       "weight_pct": null,
       "expected_count": null,
+      "status": "covered",
       "source_locator": "production catalog topic indices-logarithms-and-surds, subtopic surds (read-only fetch 2026-11-12)",
       "question_ids": [
         "q_authored_math_surds_001",
@@ -3072,6 +3074,7 @@
       "subtopic_slug": "waec-simplification-and-rationalization-of-simple-surds",
       "weight_pct": null,
       "expected_count": null,
+      "status": "covered",
       "source_locator": "production catalog topic waec-surds-radicals, subtopic waec-simplification-and-rationalization-of-simple-surds (read-only fetch 2026-11-12)",
       "question_ids": []
     }

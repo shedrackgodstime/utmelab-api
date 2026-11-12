@@ -19,6 +19,7 @@ Writes data/staging/openstax_clean_solutions.json, keyed
 Non-commercial staging only (CC BY-NC-SA 4.0 attribution kept in file).
 """
 import json
+import re
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
@@ -32,11 +33,27 @@ import scrape_openstax_cnx as scraper  # noqa: E402  the same traversal, so ids 
 NS = {"c": "http://cnx.rice.edu/cnxml"}
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 MARK = "\u0001"
-REPO = "osbooks-college-algebra-bundle"
-MODULES = {
-    "m51241": "data/concepts/math_indices.json",
-    "m51242": "data/concepts/math_surds.json",
-}
+# A concept records the book it came from and the module id, so the modules to
+# re-extract are discovered from the corpus rather than listed by hand.
+BOOK_RE = re.compile(r"^(osbooks-[a-z0-9-]+)$")
+
+
+def discover_modules():
+    """Map "<repo>:<module_id>" to the concept files that came from it."""
+    found = {}
+    for path in sorted((ROOT / "data/concepts").glob("*.json")):
+        try:
+            document = json.loads(path.read_text())
+        except Exception:
+            continue
+        source = document.get("source_attribution") or {}
+        book = (source.get("book") or "").strip()
+        module = (source.get("section") or "").strip()
+        if not module:
+            continue
+        if BOOK_RE.match(book):
+            found.setdefault(f"{book}:{module}", []).append(path)
+    return found
 
 
 def tex_marked(el) -> str:
@@ -53,6 +70,13 @@ def tex_marked(el) -> str:
     if tag == "mo":
         return {"−": "-", "–": "-", "·": "\\cdot ", "⋅": "\\cdot "}.get(txt, txt)
     if tag == "mtext":
+        # OpenStax sometimes puts a number or a unit inside <mtext> even
+        # though it is part of the expression. Prose stays prose; a value
+        # that carries a digit, or a short unit such as "m/s", is maths.
+        if re.search(r"\d", txt) or (
+            len(txt) <= 6 and " " not in txt and re.fullmatch(r"[A-Za-z/°%^0-9]+", txt)
+        ):
+            return txt
         return f"{MARK}{txt}{MARK}"
     if tag == "mfrac":
         a = tex_marked(kids[0]) if len(kids) > 0 else "?"
@@ -82,19 +106,62 @@ def tex_marked(el) -> str:
     return (txt + "".join(tex_marked(k) for k in kids)).strip()
 
 
+def clean_math(text: str) -> str:
+    """Repair the way CNXML splits numbers and units across MathML nodes.
+
+    OpenStax writes a value such as 2.64 x 10^7 as separate nodes, so the
+    raw conversion yields "2 . 64 x { 10 }^{7}" and the decimal point drifts
+    away from its digits. Strip the stray dollar signs the source sometimes
+    leaves inside the maths, and pull the spaces back around the separators.
+    """
+    text = text.replace("$", "")
+    text = re.sub(r"(?<!\\)\s*([.,])\s*", r"\1", text)
+    text = re.sub(r"\s{2,}", " ", text)
+    return text.strip()
+
+
 def split_marked(latex):
-    """Split marked LaTeX into alternating maths and prose parts."""
+    """Split marked LaTeX into maths and prose parts, then merge the maths."""
     parts = []
     for index, chunk in enumerate(latex.split(MARK)):
         if not chunk.strip():
             continue
-        parts.append(("text" if index % 2 else "math", " ".join(chunk.split())))
-    return parts
+        if index % 2:
+            parts.append(("text", " ".join(chunk.split())))
+        else:
+            parts.append(("math", clean_math(chunk)))
+    merged = []
+    for kind, value in parts:
+        if kind == "math" and merged and merged[-1][0] == "math":
+            merged[-1] = ("math", merged[-1][1] + value)
+        else:
+            merged.append((kind, value))
+    return merged
 
 
 def parts_of(el):
     """Ordered parts of an element: ('text', str) or ('math', latex)."""
     parts = []
+    _collect(el, parts)
+    # A decimal point or a comma between two maths parts is part of the
+    # number, not a sentence. OpenStax writes "2 . 64" that way.
+    parts = [
+        ("math", part[1])
+        if part[0] == "text" and part[1].strip() and not re.search(r"[A-Za-z0-9]", part[1])
+        else part
+        for part in parts
+    ]
+    # A number split across parts, such as 2 . 64, belongs together.
+    merged = []
+    for kind, value in parts:
+        if kind == "math" and merged and merged[-1][0] == "math":
+            merged[-1] = ("math", merged[-1][1] + value)
+        else:
+            merged.append((kind, value))
+    return merged
+
+
+def _collect(el, parts):
     if el.text and el.text.strip():
         parts.append(("text", el.text.strip()))
     for child in el:
@@ -106,7 +173,7 @@ def parts_of(el):
             if inner:
                 parts.append(("text", f"*{inner}*"))
         elif tag == "equation":
-            parts.append(("equation", parts_of(child)))
+            parts.extend(parts_of(child))
         elif tag == "list":
             items = []
             for item in child:
@@ -161,26 +228,28 @@ def walk(module, url):
 
 
 def main():
-    wanted = sys.argv[1:] or list(MODULES)
+    discovered = discover_modules()
+    wanted = sys.argv[1:]
     clean = {}
-    for module in wanted:
-        concept_path = MODULES.get(module)
-        if concept_path is None:
-            print(f"unknown module {module}, skipping")
+    for key, concept_paths in discovered.items():
+        repo, module = key.split(":", 1)
+        if wanted and module not in wanted and key not in wanted:
             continue
-        url = f"https://raw.githubusercontent.com/openstax/{REPO}/main/modules/{module}/index.cnxml"
+        url = f"https://raw.githubusercontent.com/openstax/{repo}/main/modules/{module}/index.cnxml"
         blocks = walk(module, url)
-        concept = json.loads((ROOT / concept_path).read_text())
-        concept_ids = [b["id"] for b in concept["deep_context"]["blocks"]]
-        if len(concept_ids) != len(blocks):
-            print(f"warning: {module} block count {len(blocks)} != concept {len(concept_ids)}")
-        for block, concept_id in zip(blocks, concept_ids):
-            if block["type"] == "exercise" and block["paragraphs"]:
-                clean[f"{module}:{concept_id}"] = [
-                    [{"kind": kind, "text": value} for kind, value in paragraph]
-                    for paragraph in block["paragraphs"]
-                ]
-        print(f"{module}: {len(blocks)} blocks")
+        for concept_path in concept_paths:
+            concept = json.loads(concept_path.read_text())
+            concept_ids = [b["id"] for b in concept["deep_context"]["blocks"]]
+            if len(concept_ids) != len(blocks):
+                print(f"warning: {key} block count {len(blocks)} != concept {len(concept_ids)}")
+                continue
+            for block, concept_id in zip(blocks, concept_ids):
+                if block["type"] == "exercise" and block["paragraphs"]:
+                    clean[f"{key}:{concept_id}"] = [
+                        [{"kind": kind, "text": value} for kind, value in paragraph]
+                        for paragraph in block["paragraphs"]
+                    ]
+        print(f"{key}: {len(blocks)} blocks, {len(concept_paths)} concept file(s)")
 
     out = ROOT / "data/staging/openstax_clean_solutions.json"
     out.parent.mkdir(parents=True, exist_ok=True)

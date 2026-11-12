@@ -140,6 +140,15 @@ def check_blocks(blocks, path, errors):
             if not isinstance(block.get("expression"), str) or not block.get("expression", "").strip():
                 errors.append((path, f"{path}[{block_id}] formula has no expression"))
             check_richtext(block.get("caption"), f"{path}[{block_id}].caption", errors)
+        elif block_type == "figure":
+            asset = block.get("asset_url")
+            if not isinstance(asset, str) or not asset.strip():
+                errors.append((path, f"{path}[{block_id}] figure has no asset_url"))
+            elif not asset.startswith(("http://", "https://", "/", "images/", "assets/")):
+                errors.append((path, f"{path}[{block_id}] figure asset_url is not a usable path"))
+            check_richtext(block.get("caption"), f"{path}[{block_id}].caption", errors)
+            if not isinstance(block.get("alt"), str) or not block.get("alt", "").strip():
+                errors.append((path, f"{path}[{block_id}] figure has no alt text"))
         elif block_type == "summary":
             for point in block.get("points", []) or []:
                 check_richtext(point, f"{path}[{block_id}].points", errors)
@@ -250,8 +259,12 @@ def validate(path):
             for point in summary:
                 check_richtext(point, f"{path}.{section_id}.summary_points", errors)
         worked = section.get("worked_examples")
+        reason = section.get("no_worked_example_reason")
+        if reason is not None and (not isinstance(reason, str) or not reason.strip()):
+            errors.append((path, f"section {section_id} no_worked_example_reason is empty"))
         if not isinstance(worked, list) or not worked:
-            errors.append((path, f"section {section_id} needs a worked example"))
+            if not (isinstance(reason, str) and reason.strip()):
+                errors.append((path, f"section {section_id} needs a worked example"))
         else:
             for example in worked:
                 if not isinstance(example, dict):
@@ -343,9 +356,20 @@ def validate(path):
             if not isinstance(link, dict):
                 errors.append((path, "exam link not dict"))
                 continue
-            for key in ("exam", "subject", "topic_slug"):
+            for key in ("exam", "subject"):
                 if not isinstance(link.get(key), str) or not link.get(key, "").strip():
                     errors.append((path, f"exam link missing {key}"))
+            topic = link.get("topic_slug")
+            status = link.get("status")
+            if status not in {"covered", "partial", "not_catalogued"}:
+                errors.append((path, f"exam link status {status!r} unknown"))
+            if topic is None:
+                # A subject level link is only honest when the exam's catalog
+                # for that subject has not been built yet.
+                if status != "not_catalogued":
+                    errors.append((path, "exam link without a topic must be not_catalogued"))
+            elif not isinstance(topic, str) or not topic.strip():
+                errors.append((path, "exam link topic_slug must be a non-empty string or null"))
             subtopic = link.get("subtopic_slug")
             if subtopic is not None and not isinstance(subtopic, str):
                 errors.append((path, "exam link subtopic_slug must be a string or null"))
@@ -361,9 +385,15 @@ def validate(path):
         for source in sources:
             check_provenance(source, f"{path}.sources", errors)
 
-    text = []
-    collect_text(document, text)
-    for chunk in text:
+    # The style rules apply to what we author. Teaching text is the source's
+    # own prose, quoted with its provenance, and keeps the source's punctuation.
+    authored = []
+    collect_text(document.get("learning_objectives"), authored)
+    for section in sections:
+        if isinstance(section, dict):
+            collect_text(section.get("misconceptions"), authored)
+            collect_text(section.get("summary_points"), authored)
+    for chunk in authored:
         check_style(chunk, path, errors)
 
     return errors

@@ -124,7 +124,13 @@ Block types are the ones the concept documents already use: `paragraph`,
 {"id": "b-2", "type": "definition", "term": {...}, "definition": {...}}
 {"id": "b-3", "type": "formula", "expression": "a^m \\times a^n = a^{m+n}",
  "caption": {...}, "conditions": {...}}
+{"id": "b-4", "type": "figure", "asset_url": "images/phy_m42069_Figure_04_01_02.jpg",
+ "caption": {...}, "alt": "...", "licence": "..."}
 ```
+
+A figure carries the asset, its caption and its alt text. Alt text is not
+optional: a learner using a screen reader gets the caption and the
+description, and a learner who cannot see the figure still learns from it.
 
 Text is RichText: `{"text": "...", "inline": []}`. Inline offsets are Unicode
 scalar offsets into the owning text, `start` inclusive and `end` exclusive.
@@ -147,6 +153,13 @@ exercise carries:
 
 An exercise may carry `answer_note` when the source states the value before
 the commentary, so a reader can see why the answer was taken from that line.
+
+### Quoted text and authored text
+
+The style rules apply to what we author: learning objectives, misconceptions,
+summary points, and anything else we write. Teaching text is the source's own
+prose, quoted with its provenance, and it keeps the source's punctuation. An
+em dash in a quoted textbook passage is not our writing.
 
 ## Grounding
 
@@ -173,6 +186,9 @@ An exam link says how one exam relates to this chapter.
   a whole topic.
 - `weight_pct`, `expected_count`: the exam's weighting, when it is known.
   Null means not known, which is different from zero.
+- `status`: `covered`, `partial`, or `not_catalogued`. A link with no
+  `topic_slug` is only honest when the exam's catalog for that subject has
+  not been built yet, and then the status must be `not_catalogued`.
 - `source_locator`: where the mapping came from, for example the production
   catalog read on a given date.
 - `question_ids`: the exam's own questions that test this chapter. These stay
@@ -182,7 +198,7 @@ An exam link says how one exam relates to this chapter.
 
 - `chapter_id`: `<subject_area>_<topic>` in lower snake case, for example
   `math_laws_of_indices_and_surds`.
-- Section ids: `sec-<n>`. Exercise ids: `ex-<nn>`, numbered within the
+- Section ids: `sec-<n>`. Exercise ids: `ex-<section>-<nn>`, unique in the
   chapter.
 - Book ids: `<level>_<subject_area>`, for example `secondary_mathematics`.
 - Concept ids are unchanged, so a chapter can cite the concepts it was built
@@ -196,7 +212,9 @@ An exam link says how one exam relates to this chapter.
 3. Pull exercises and their solutions from the source. For OpenStax CNXML,
    run `python3 scripts/scrape_openstax_solutions.py` first: the concept
    scraper folds prose into the mathematics, and this script keeps them apart
-   so a solution reads as steps.
+   so a solution reads as steps. The same scripts repair the way OpenStax
+   splits a value across MathML nodes, so "2 . 64 x 10^7" comes out as
+   "2.64 x 10^7".
 4. Validate: `python3 scripts/validate_chapters.py` must report 0 errors.
 5. Review the rendered chapter by reading it end to end. A validator cannot
    tell you that a chapter teaches badly.
@@ -210,7 +228,8 @@ An exam link says how one exam relates to this chapter.
 - [ ] Every exercise has an answer, an answer kind, and a solution with at
       least one step.
 - [ ] Every section has learning objectives behind it, at least two summary
-      points, and at least one worked example.
+      points, and at least one worked example, or a
+      `no_worked_example_reason` saying why the section has none.
 - [ ] Every exercise is listed by the section it belongs to.
 - [ ] `scripts/validate_chapters.py` reports 0 errors.
 - [ ] A reader who has not taken the exam can learn the topic from the
