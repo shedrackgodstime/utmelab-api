@@ -5,8 +5,8 @@ Last updated: 2026-11-12
 
 This is the whole picture: what we are building, what owns what, what the
 data looks like, what the API looks like, how content gets made, and the order
-we build it in. It is the map. Individual specs (`docs/CONTENT-BOOK-SCHEMA.md`,
-`docs/CONTENT-WORKFLOW-CONTRACT.md`) are the detail under it.
+we build it in. It is the map. Individual specs ([`docs/CONTENT-BOOK-SCHEMA.md`](https://github.com/shedrackgodstime/utmelab-bank/blob/main/docs/CONTENT-BOOK-SCHEMA.md),
+[`docs/CONTENT-WORKFLOW-CONTRACT.md`](https://github.com/shedrackgodstime/utmelab-bank/blob/main/docs/CONTENT-WORKFLOW-CONTRACT.md)) are the detail under it.
 
 ## 1. What we are building
 
@@ -159,6 +159,9 @@ adds the traps and the past questions.
 
 ## 6. How content gets made
 
+The paths in this diagram live in the content repository
+(`shedrackgodstime/utmelab-bank`), not in this one.
+
 ```
   source (book, paper, syllabus)
         │
@@ -190,10 +193,10 @@ The figures have their own pipeline because a figure is the one piece of a
 chapter that a client actually fetches. It has to be on the web, it has to be
 under the book's own namespace so it never mixes with the bank's figures, and
 it has to be a real image that is worth sending. The rules live in one place,
-`scripts/book_media.py`, and the validator, the publisher and the factory all
-read them from there.
+`book/book_media.py` in the content repository, and the validator, the
+publisher and the factory all read them from there.
 
-Grounding rules stay as they are in `docs/CONTENT-WORKFLOW-CONTRACT.md`: no
+Grounding rules stay as they are in [`docs/CONTENT-WORKFLOW-CONTRACT.md`](https://github.com/shedrackgodstime/utmelab-bank/blob/main/docs/CONTENT-WORKFLOW-CONTRACT.md): no
 invention, provenance on everything, honest licences, validation before
 import.
 
@@ -322,9 +325,10 @@ OpenStax is the spine, for three reasons.
   political science, statistics and more, from pre-algebra to calculus, from
   College Physics to University Physics, from Biology 2e to Concepts of
   Biology.
-- The pipeline is already ours. `scripts/scrape_openstax_cnx.py` turns a
-  module into a concept document with its figures on disk, and
-  `scripts/scrape_openstax_solutions.py` turns the solutions into steps.
+- The pipeline is already ours. The content repository's
+  `book/scrape_openstax_cnx.py` turns a module into a concept document with its
+  figures on disk, and `book/scrape_openstax_solutions.py` turns the solutions
+  into steps.
 
 One College Physics 2e is 34 chapters and 318 modules. The whole catalogue is
 several hundred books. The 250 to 400 chapters the platform needs are inside

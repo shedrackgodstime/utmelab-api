@@ -17,7 +17,9 @@ Production holds 27 tables. They came from three sources that never met:
 | The exam catalogue | `exams`, `countries`, `exam_requirements`, `subjects`, `topics`, `subtopics`, `topic_countries` | the exam's own syllabus layer, fine as it is |
 | The content bank | `questions`, `passages`, `topic_notes`, `theory_questions`, `novels`, `novel_chapters`, `novel_characters`, `novel_themes`, `novel_questions`, `blueprints`, `verifications` | the old content model, exam scoped |
 
-And three document schemas on the authoring side, which also do not meet:
+And three document schemas on the authoring side, which also do not meet.
+The authoring paths in this table live in the content repository, not in this
+one:
 
 | Document | Version | Used for |
 | --- | --- | --- |
@@ -25,7 +27,7 @@ And three document schemas on the authoring side, which also do not meet:
 | `topic_notes` rows and their API model | no version | the exam scoped notes in production |
 | `data/chapters/*.json` | 1 | the new textbook chapters |
 
-The content shape is `docs/CONTENT-BOOK-SCHEMA.md`. The chapters are that
+The content shape is [`docs/CONTENT-BOOK-SCHEMA.md`](https://github.com/shedrackgodstime/utmelab-bank/blob/main/docs/CONTENT-BOOK-SCHEMA.md). The chapters are that
 shape in storage. Everything else adapts to them.
 
 ## 2. The layers
@@ -147,7 +149,7 @@ CREATE TABLE IF NOT EXISTS chapter_sources (
 A section is one object. Here it is as a document, as a row and as JSON:
 
 ```jsonc
-// document, data/chapters/phy_forces_and_newtons_laws.json
+// document in the content repo, data/chapters/phy_forces_and_newtons_laws.json
 {
   "id": "sec-2",
   "order": 2,

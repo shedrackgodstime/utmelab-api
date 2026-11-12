@@ -8,7 +8,7 @@ Date: 2026-11-09
 This plan describes how the current study-notes system can grow toward a serious
 educational technology platform with AI tutoring and learning features, without
 breaking the existing mobile revision experience. The data structure is defined
-in `docs/CONCEPT-DOCUMENT-SCHEMA.md`.
+in [`docs/CONCEPT-DOCUMENT-SCHEMA.md`](https://github.com/shedrackgodstime/utmelab-bank/blob/main/docs/CONCEPT-DOCUMENT-SCHEMA.md).
 
 ## Current state
 
@@ -58,7 +58,7 @@ the public notes endpoint.
 Goal: prove that one authored document can serve multiple exams without changing
 the public API.
 
-- Define the authored document shape in `docs/CONCEPT-DOCUMENT-SCHEMA.md`.
+- Define the authored document shape in [`docs/CONCEPT-DOCUMENT-SCHEMA.md`](https://github.com/shedrackgodstime/utmelab-bank/blob/main/docs/CONCEPT-DOCUMENT-SCHEMA.md).
 - Add two nullable pointer columns to `topic_notes`: `concept_slug` and
   `concept_url`. No new join table is introduced.
 - Author one pilot document: right-triangle trigonometry, from OpenStax
@@ -85,8 +85,9 @@ Priority order:
 3. JAMB physics topics Measurements and Units, and Scalars and Vectors.
 
 Each new concept is authored once as a static document, then ingested into one
-or more placement rows. Each ingested row must pass `scripts/validate_notes.py`,
-carry verified sources with locators, and keep the 16 KiB ceiling. Figures are
+or more placement rows. Each ingested row must pass the content repository's
+`book/validate_notes.py`, carry verified sources with locators, and keep the
+16 KiB ceiling. Figures are
 added only where the meaning is spatial, graphical or layout based, and only
 from licensed sources with attribution.
 
@@ -137,11 +138,13 @@ Listed here for sequencing only; none is committed in Phase 4:
 - Static concept documents are the source of truth for deep content and are
   held outside the repository.
 - The repository holds code and configuration, not product data.
-- `data/notes/`, `data/theory/`, `data/notes-snapshots/` and
-  `data/notes-replacements/` remain local-only and gitignored.
-- Durable exports are produced with `scripts/export_notes.py` after each bulk
-  import and retained locally with per-note hashes.
-- The source manifest (`docs/STUDY-NOTES-SOURCE-MANIFEST.md`) records which
+- The content repository keeps `data/notes/`, `data/theory/`,
+  `data/notes-snapshots/` and `data/notes-replacements/` local-only and
+  gitignored.
+- Durable exports are produced with the content repository's
+  `book/export_notes.py` after each bulk import and retained locally with
+  per-note hashes.
+- The source manifest ([`docs/STUDY-NOTES-SOURCE-MANIFEST.md`](https://github.com/shedrackgodstime/utmelab-bank/blob/main/docs/STUDY-NOTES-SOURCE-MANIFEST.md)) records which
   sources support which claims and which claims were withdrawn.
 - Existing production notes can be replaced wholesale as their canonical
   documents are authored; no dual-version maintenance is required.

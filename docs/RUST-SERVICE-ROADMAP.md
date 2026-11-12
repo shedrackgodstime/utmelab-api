@@ -82,7 +82,7 @@ Status: mostly complete.
 ### Batch 3: database speed
 
 Status: API-side audit complete. Bank-owned index work is handed off in
-`docs/BANK-INDEX-HANDOFF.md` and remains outside this Rust project.
+[`docs/BANK-INDEX-HANDOFF.md`](https://github.com/shedrackgodstime/utmelab-bank/blob/main/docs/BANK-INDEX-HANDOFF.md) and remains outside this Rust project.
 
 Measured Turso plans on 2026-11-07:
 
